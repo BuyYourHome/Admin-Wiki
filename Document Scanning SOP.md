@@ -1,0 +1,249 @@
+# Document Scanning SOP
+
+## Purpose
+
+This SOP explains how the `document-scanning` skill and automation process scanned Office Admin documents, what a human needs to do to support the process, and what to do if the automation does not work.
+
+## Scope
+
+This process applies to scanned financial/admin PDFs placed in:
+
+`C:\Users\wesbr\Buy Your Home\Buy Your Home - Office Admin\Scanned Files`
+
+Supported document types include:
+
+- Mortgage statements
+- Bank statements
+- Credit card statements
+- Loan and line-of-credit statements
+- Invoices
+- Receipts
+- CPA and tax forms
+- Donation records
+- Medical statements
+
+## Key Locations
+
+Scan intake folder:
+
+`C:\Users\wesbr\Buy Your Home\Buy Your Home - Office Admin\Scanned Files`
+
+Scan logs:
+
+`C:\Users\wesbr\Buy Your Home\Buy Your Home - Office Admin\Scanned Files\Logs`
+
+Archived originals:
+
+`C:\Users\wesbr\Buy Your Home\Buy Your Home - Office Admin\Scanned Files\Archived`
+
+Destination root:
+
+`C:\Users\wesbr\Buy Your Home\Buy Your Home - Office Admin\2026`
+
+Installed skill:
+
+`C:\Users\wesbr\.codex\skills\document-scanning`
+
+Skill spec:
+
+`C:\Users\wesbr\Buy Your Home\Buy Your Home - Office Admin\Wiki Files\Document Scanning Skill Spec.md`
+
+Folder map:
+
+`C:\Users\wesbr\Buy Your Home\Buy Your Home - Office Admin\Wiki Files\Document Scanning Folder Map.md`
+
+## Automation Schedule
+
+The `Document scanning` automation runs every 2 hours between 10:00 AM and 5:00 PM:
+
+- 10:00 AM
+- 12:00 PM
+- 2:00 PM
+- 4:00 PM
+
+It stays quiet when there are no new scans. It reports only when it processes files, finds a problem, needs review, or needs a human decision.
+
+## What The Skill Does
+
+1. Checks the scan intake folder for new PDF files.
+2. Ignores files already inside `Logs` or `Archived`.
+3. Opens each new PDF and checks:
+   - Page count
+   - Whether text is embedded
+   - Whether the scan is image-only
+4. If the PDF has no embedded text, treats it as a scanned image document and uses visual/OCR-style parsing.
+5. Reviews each page for:
+   - Company, lender, bank, or vendor name
+   - Account number or account suffix
+   - Statement date, billing date, or invoice date
+   - Page numbering
+   - Document headers and payment coupons
+6. Determines where each separate document starts and ends.
+7. Splits one combined scan into separate PDF files when the document boundaries are clear.
+8. Names each output file using:
+
+   `YY-MM-DD - Company.pdf`
+
+   Example:
+
+   `26-05-05 - First Citizens Bank VISA.pdf`
+
+9. Saves each split PDF into the correct mapped folder under:
+
+   `C:\Users\wesbr\Buy Your Home\Buy Your Home - Office Admin\2026`
+
+10. Creates or updates a plain text log file in:
+
+    `Scanned Files\Logs`
+
+11. Archives the original source scan in:
+
+    `Scanned Files\Archived`
+
+12. If the scan cannot be confidently parsed or routed, it does not guess. It flags the document for review.
+
+## Human Responsibilities Before Scanning
+
+1. Sort pages in the order they should be processed.
+2. Keep all pages for the same statement together.
+3. Avoid mixing unrelated documents unless the scan is intended to be split.
+4. Make sure pages are not upside down if practical.
+5. Make sure account numbers, dates, and company names are visible.
+6. Scan to PDF format.
+7. Do not rename the scanned PDF unless there is a specific reason. The scanner's default PDF name is enough because the automation will read, split, rename, and file the documents.
+8. Place the PDF in:
+
+   `C:\Users\wesbr\Buy Your Home\Buy Your Home - Office Admin\Scanned Files`
+
+9. Do not place new scans directly into `Logs` or `Archived`.
+
+## Human Responsibilities After Automation Runs
+
+1. Review any notification from the automation.
+2. If files were processed, spot-check the output files when needed.
+3. Check the log file in `Scanned Files\Logs` for:
+   - Source scan name
+   - Page ranges
+   - Destination folders
+   - Output file names
+   - Confidence notes
+   - Review items
+4. If the automation flags a file for review, inspect the scan manually and decide where it belongs.
+
+## Filing Rules
+
+The skill uses the mapped folder structure as the routing authority.
+
+Common routing examples:
+
+- First Citizens credit card statement -> `2026\Credit Cards\...`
+- SECU mortgage statement -> `2026\Loans\...`
+- Bank statement -> `2026\Bank Statement\...`
+- Lowe's Pro statement -> `2026\Credit Cards\Lowe's Pro-SYH-6140`
+- Quest invoice -> `2026\Quest\Invoices\...`
+- Receipt -> `2026\Receipts` or a specific receipt subfolder if mapped
+
+The skill prefers exact matches using:
+
+- Last 4 account digits
+- Institution/vendor name
+- Business/entity label such as BYH, SYH, Heritage Mgmt, 401K, or personal/home
+
+If the match is not clear, the skill should route to review instead of guessing.
+
+## Logging Requirements
+
+Every processed source scan should have one `.log.txt` file in:
+
+`C:\Users\wesbr\Buy Your Home\Buy Your Home - Office Admin\Scanned Files\Logs`
+
+The log should include:
+
+- Source scan path
+- Page count
+- Whether the PDF was image-only
+- Planned and completed split ranges
+- Document identity for each output file
+- Date used for naming
+- Destination folder
+- Output file path
+- Confidence notes
+- Review items
+- Archive path for the original scan
+
+## If The Automation Fails
+
+Use this checklist.
+
+1. Confirm the scan is a PDF.
+2. Confirm the scan is in:
+
+   `C:\Users\wesbr\Buy Your Home\Buy Your Home - Office Admin\Scanned Files`
+
+3. Confirm it is not already in:
+
+   `Scanned Files\Archived`
+
+4. Check whether a log was created in:
+
+   `Scanned Files\Logs`
+
+5. Check whether output files were created in the expected 2026 destination folder.
+6. If there is no log and no output, ask Codex:
+
+   `Use the document-scanning skill to process the newest scan.`
+
+7. If the file was partially processed, compare:
+   - Source scan pages
+   - Log file page ranges
+   - Output PDF page counts
+8. If a destination was wrong, move the output file manually to the correct folder and update the log.
+9. If a file was not split correctly, ask Codex to reprocess the archived original scan and specify the correct page ranges.
+10. If the automation itself is not running, ask Codex:
+
+    `Show me the Document scanning automation.`
+
+## Manual Processing If Automation Is Down
+
+1. Open the scan PDF from `Scanned Files`.
+2. Identify each separate document by company, account number, statement date, and page number.
+3. Write down the page ranges.
+4. Use the naming convention:
+
+   `YY-MM-DD - Company.pdf`
+
+5. Save each split file into the correct mapped folder.
+6. Create a log file in `Scanned Files\Logs`.
+7. Move the original scan to `Scanned Files\Archived`.
+8. If any match is uncertain, move or copy the uncertain document to a review location and note the reason in the log.
+
+## Safety Rules
+
+- Do not delete source scans.
+- Do not overwrite existing filed PDFs.
+- Do not pay invoices.
+- Do not submit forms.
+- Do not contact vendors.
+- Do not move money.
+- Do not share verification codes, passwords, or security codes found in scans.
+- If a scan contains a security code or suspicious verification message, flag it for review.
+
+## Example Successful Processing
+
+Source scan:
+
+`Receipt_2026-05-24_134923.pdf`
+
+Detected documents:
+
+1. First Citizens Bank VISA, account ending 4696, statement date 2026-05-05, pages 1-1
+2. First Citizens Bank VISA, SYH account ending 4882, statement date 2026-05-05, pages 2-3
+3. Lowe's Pro, account ending 6140, statement date 2026-05-02, pages 4-5
+
+Created files:
+
+- `26-05-05 - First Citizens Bank VISA.pdf`
+- `26-05-05 - First Citizens Bank VISA.pdf`
+- `26-05-02 - Lowe's Pro.pdf`
+
+Original source scan was archived after successful processing.

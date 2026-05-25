@@ -1,4 +1,4 @@
-# Local editor and OS files
+﻿# Local editor and OS files
 .DS_Store
 Thumbs.db
 desktop.ini
@@ -7,3 +7,5 @@ desktop.ini
 *.tmp
 *.temp
 ~$*
+*.log
+.tmp_scan_preview/
