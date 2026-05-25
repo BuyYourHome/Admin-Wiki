@@ -137,7 +137,7 @@ The skill uses the mapped folder structure as the routing authority.
 Common routing examples:
 
 - First Citizens credit card statement -> `2026\Credit Cards\...`
-- SECU mortgage statement -> `2026\Loans\...`
+- Mortgage statement -> matching property folder under `C:\Users\wesbr\Buy Your Home\Buy Your Home - Property`, then `Owning`, then the folder named for the mortgage company
 - Bank statement -> `2026\Bank Statement\...`
 - Lowe's Pro statement -> `2026\Credit Cards\Lowe's Pro-SYH-6140`
 - Quest invoice -> `2026\Quest\Invoices\...`
@@ -150,6 +150,36 @@ The skill prefers exact matches using:
 - Business/entity label such as BYH, SYH, Heritage Mgmt, 401K, or personal/home
 
 If the match is not clear, the skill should route to review instead of guessing.
+
+## Mortgage Statement Filing
+
+Mortgage statements are routed by property, not to the generic Office Admin loan folders.
+
+For every scanned mortgage statement:
+
+1. Confirm the scanned document is a mortgage statement.
+2. Split each individual mortgage statement into its own PDF.
+3. Identify the related property using the property address, numeric street address, borrower/entity, loan number or suffix, mortgage company, servicer, or other reliable details on the statement.
+4. Match the property to a project folder under:
+
+   `C:\Users\wesbr\Buy Your Home\Buy Your Home - Property`
+
+5. Open the matched property folder and drill into:
+
+   `Owning`
+
+6. In `Owning`, find the folder named after the mortgage company.
+7. Save the split mortgage statement PDF in that mortgage-company folder.
+
+Use a credit-card-style naming pattern:
+
+`YYYY-MM - Mortgage Company - AccountSuffix - Mortgage Statement.pdf`
+
+Example:
+
+`2026-05 - Shellpoint - 1234 - Mortgage Statement.pdf`
+
+If the property folder or mortgage-company folder cannot be identified confidently, do not guess and do not create a new folder automatically. Route the item to review and note the uncertainty in the log.
 
 ## Logging Requirements
 

@@ -61,7 +61,8 @@ Primary routing categories:
 - Bank statements: `2026\Bank Statement\...`
 - Credit cards: `2026\Credit Cards\...`
 - Lines of credit: `2026\Line of Credit\...`
-- Loans and mortgages: `2026\Loans\...`
+- Non-property-specific loans: `2026\Loans\...`
+- Mortgage statements: match the statement to the related property folder under `C:\Users\wesbr\Buy Your Home\Buy Your Home - Property`, drill into that property's `Owning` folder, then save the statement in the folder named for the mortgage company.
 - Quest invoices: `2026\Quest\Invoices\...`
 - Quest receipts: `2026\Quest\Receipts\...`
 - General receipts: `2026\Receipts`
@@ -75,6 +76,25 @@ If no confident destination exists, route to a review folder, not to an approxim
 Recommended review folder:
 
 `C:\Users\wesbr\Buy Your Home\Buy Your Home - Office Admin\2026\_Needs Review`
+
+## Mortgage Statement Routing
+
+Mortgage statements are property documents. Do not file them in the generic Office Admin `2026\Loans` folder unless Boss explicitly instructs that for a specific document.
+
+For each scanned PDF:
+
+1. Determine whether the scan contains mortgage statements.
+2. If it does, identify each individual mortgage statement and split each statement into its own PDF.
+3. Match each statement to the correct project/property folder under:
+
+   `C:\Users\wesbr\Buy Your Home\Buy Your Home - Property`
+
+4. Use reliable document details such as property address, numeric street address, borrower/entity, loan number or suffix, mortgage company, servicer, or other statement details.
+5. Open the matched property folder and drill down to its `Owning` folder.
+6. Inside `Owning`, find the folder named for the mortgage company shown on the statement.
+7. Save the split statement PDF in that mortgage-company folder.
+
+If the property or mortgage-company folder cannot be identified confidently, do not guess and do not create a new folder automatically. Route the item to review and document what was unclear in the log.
 
 ## Boundary Detection Rules
 
@@ -117,6 +137,14 @@ Examples:
 - `2026-05 - SECU - Mortgage 3953-91 - Statement.pdf`
 - `2026-05 - Chase BYH - 5323 - Credit Card Statement.pdf`
 - `2026-05 - Quest - Escalade - Invoice.pdf`
+
+For mortgage statements, use the same style as credit card statements:
+
+`YYYY-MM - Mortgage Company - AccountSuffix - Mortgage Statement.pdf`
+
+Example:
+
+- `2026-05 - Shellpoint - 1234 - Mortgage Statement.pdf`
 
 If only a due date is available, use the statement date if present; otherwise use the scan date and add a note in the review log.
 
