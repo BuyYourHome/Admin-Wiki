@@ -54,6 +54,7 @@ Use this repo when formulating solutions for office-admin workflows, SOPs, autom
 ## Email Sender Safety
 
 - When sending email as Jean or Office Assistant, use only `OfficeAssist@BuyYourHomeLLC.com` unless the user explicitly names another sender for that specific message.
-- Do not rely on a script variable alone to prove the sender. Before sending, create/save the draft in the OfficeAssist mailbox and verify Outlook still shows `SendUsingAccount` as `OfficeAssist@BuyYourHomeLLC.com`.
-- If Outlook does not preserve `OfficeAssist@BuyYourHomeLLC.com` as the send account, do not send automatically. Notify the user that Outlook is falling back to another account and either provide a draft for manual send or wait until the mailbox/account configuration is fixed.
-- After any automated send, verify the message appears in the OfficeAssist Sent Items folder. If it appears under a different mailbox or shows a different `SendUsingAccount`, notify the user immediately and treat the sender configuration as broken until corrected.
+- Do not rely on a script variable alone to prove the sender. Before sending, create/save the draft in the OfficeAssist mailbox and verify the draft is stored under the OfficeAssist Drafts folder.
+- Outlook may leave the internal `SendUsingAccount` field blank even when the visible From line is correctly OfficeAssist. A blank `SendUsingAccount` is acceptable only when the draft is stored in the OfficeAssist mailbox and the draft's visible sender/From identity is OfficeAssist.
+- If Outlook shows a non-blank `SendUsingAccount` other than `OfficeAssist@BuyYourHomeLLC.com`, or the draft is not stored in the OfficeAssist mailbox, do not send automatically. Notify the user that Outlook is falling back to another account and either provide a draft for manual send or wait until the mailbox/account configuration is fixed.
+- After any automated send, verify the message appears in the OfficeAssist Sent Items folder. If it appears under a different mailbox or shows a non-blank `SendUsingAccount` other than `OfficeAssist@BuyYourHomeLLC.com`, notify the user immediately and treat the sender configuration as broken until corrected.
