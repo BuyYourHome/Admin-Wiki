@@ -1,50 +1,52 @@
-# Wiki Maintenance Rules
+# Buy Your Home Admin Wiki Rules
 
-This workspace is a local Markdown wiki inspired by Andrej Karpathy's LLM Wiki pattern.
+This workspace is the working knowledge base for Buy Your Home office-admin operations.
 
-## Directory Contract
+## Source Of Truth
 
-- `sources/` contains source notes, URLs, excerpts, and provenance. Treat these as the evidence layer.
-- `wiki/` contains synthesized pages. These pages can be created and updated by the assistant.
-- `wiki/index.md` is the table of contents. Update it whenever adding or renaming wiki pages.
-- `wiki/log.md` is append-only. Add a dated entry after meaningful ingests or maintenance passes.
+- Working folder: `C:\Codex\Wiki Files`
+- GitHub repository: `BuyYourHome/Admin-Wiki`
+- Obsidian vault: `C:\Codex\Wiki Files`
+- Teams folders are not the default wiki location. Copy files to Teams only when the user explicitly asks for a final deliverable there.
 
-## Source Discipline
+Use this repo when formulating solutions for office-admin workflows, SOPs, automations, document scanning, invoice routing, grocery-list handling, and related operating rules.
 
-- Keep important claims tied to a source note or a direct URL.
-- Prefer primary sources: Karpathy's website, GitHub, official project pages, papers, talks, and company announcements.
-- Mark interpretation as `Inference:` when it goes beyond the cited source.
-- Do not overwrite source notes when the upstream source changes; create a new captured note or add a dated update.
+## Start Here
 
-## Page Style
+- Read `Admin Home.md` first for the current operating map.
+- Use `Repository Location Rule.md` for repo/location policy.
+- Use `SOP Spreadsheet Maintenance Rule.md` before editing the SOP workbook.
+- Use `Document Scanning SOP.md`, `Document Scanning Skill Spec.md`, and `Document Scanning Folder Map.md` for scanned statement workflows.
+- Use `Invoice and Receipt Processing Notes.md` and `Invoice Project List.md` for invoice/receipt routing.
+- Use `operations/grocery-list/` for grocery-list rules and data.
 
-- Use short summaries, concrete bullets, and Obsidian-style links such as `[[Andrej Karpathy]]`.
-- Each page should include `Evidence`, `Related Pages`, `Open Questions`, and `Review Notes`.
-- Keep pages useful for future answers, not just summaries of one source.
+## Editing Rules
 
-## Workflows
+- Keep durable operating instructions in Markdown.
+- Prefer concise sections with clear routing rules, exception rules, and human responsibilities.
+- Use Obsidian-style links for related local docs, such as `[[Invoice Project List]]`.
+- When the user gives a durable instruction, update the relevant Markdown file and commit it.
+- After committing, push to GitHub unless the user says not to.
+- Do not commit Obsidian local settings, temporary scan previews, logs, or generated scratch files.
 
-### Ingest
+## Git Workflow
 
-1. Add a source note in `sources/`.
-2. Update or create the relevant page in `wiki/`.
-3. Add links from `wiki/index.md`.
-4. Append an entry to `wiki/log.md`.
+1. Check `git status --short --branch`.
+2. Edit the relevant Markdown files.
+3. Review the diff.
+4. Commit with a plain-English message.
+5. Push to GitHub.
+6. Tell the user what changed and the commit id.
 
-### Query
+## Teams Workflow
 
-1. Read `wiki/index.md` first.
-2. Read the relevant wiki pages.
-3. Check source notes for high-impact factual claims.
-4. If the answer creates durable synthesis, offer to file it back into the wiki.
+- Do not use Teams as the working wiki repository.
+- Copy one-off final files to Teams only when requested.
+- If an SOP spreadsheet is updated, follow `SOP Spreadsheet Maintenance Rule.md`.
 
-### Lint
+## Automation And Skill Notes
 
-Periodically check for:
-
-- pages with no inbound links,
-- claims without evidence,
-- stale career or project status,
-- duplicate concepts,
-- contradictions between pages,
-- open questions that now have answers.
+- Automation prompts should point to the relevant Markdown instructions when possible.
+- If a workflow becomes repeatable, document it here before or while creating the automation.
+- Keep review folders separate when the user has specified separate workflows, such as statement review versus invoice review.
+- If a mailbox, folder, or external service is unavailable, do not substitute a similar one without explicit permission.
