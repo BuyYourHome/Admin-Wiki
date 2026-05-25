@@ -138,13 +138,13 @@ Examples:
 - `2026-05 - Chase BYH - 5323 - Credit Card Statement.pdf`
 - `2026-05 - Quest - Escalade - Invoice.pdf`
 
-For mortgage statements, use the same style as credit card statements:
+For mortgage statements, use the same style as credit card statements, but the file name must start with the full statement date in `YY-MM-DD` format:
 
-`YYYY-MM - Mortgage Company - AccountSuffix - Mortgage Statement.pdf`
+`YY-MM-DD - Mortgage Company - AccountSuffix - Mortgage Statement.pdf`
 
 Example:
 
-- `2026-05 - Shellpoint - 1234 - Mortgage Statement.pdf`
+- `26-05-03 - Shellpoint - 1234 - Mortgage Statement.pdf`
 
 If only a due date is available, use the statement date if present; otherwise use the scan date and add a note in the review log.
 

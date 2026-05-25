@@ -171,13 +171,13 @@ For every scanned mortgage statement:
 6. In `Owning`, find the folder named after the mortgage company.
 7. Save the split mortgage statement PDF in that mortgage-company folder.
 
-Use a credit-card-style naming pattern:
+Use a credit-card-style naming pattern, with the file name starting with the full statement date in `YY-MM-DD` format:
 
-`YYYY-MM - Mortgage Company - AccountSuffix - Mortgage Statement.pdf`
+`YY-MM-DD - Mortgage Company - AccountSuffix - Mortgage Statement.pdf`
 
 Example:
 
-`2026-05 - Shellpoint - 1234 - Mortgage Statement.pdf`
+`26-05-03 - Shellpoint - 1234 - Mortgage Statement.pdf`
 
 If the property folder or mortgage-company folder cannot be identified confidently, do not guess and do not create a new folder automatically. Route the item to review and note the uncertainty in the log.
 
