@@ -269,7 +269,10 @@ officeassist-morning-email-summary\
 
 Each folder contains an `automation.toml` file with the real schedule, prompt, status, and execution settings.
 
+## Related Connector Rules
+
+Use `Connector and Plugin Usage Rules.md` to see which installed plugins/connectors should be preferred for GitHub, spreadsheet, browser, and Outlook/email work.
+
 ## Maintenance Rule
 
 When creating, renaming, pausing, deleting, or materially changing an agent-like function, update this registry in the same change.
-

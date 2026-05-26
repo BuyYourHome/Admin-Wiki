@@ -15,6 +15,7 @@ This is the entry point for the compiled wiki.
 ## Core Pages
 
 - [[../Agents and Automations Registry|Agents and Automations Registry]]
+- [[../Connector and Plugin Usage Rules|Connector and Plugin Usage Rules]]
 - [[Second Brain Architecture]]
 - [[LLM Wiki Pattern]]
 - [[../Project Room Workflow|AI Project Room Workflow]]

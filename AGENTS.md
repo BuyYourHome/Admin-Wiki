@@ -15,6 +15,7 @@ Use this repo when formulating solutions for office-admin workflows, SOPs, autom
 
 - Read `Admin Home.md` first for the current operating map.
 - Use `Agents and Automations Registry.md` to inspect named agent-like roles, active automations, skills, schedules, and where each is defined.
+- Use `Connector and Plugin Usage Rules.md` to decide when to prefer installed connectors/plugins over local desktop automation.
 - Use `Project Room Workflow.md` before major work that depends on multiple source files, emails, scans, notes, spreadsheets, or prior drafts.
 - Use `Repository Location Rule.md` for repo/location policy.
 - Use `SOP Spreadsheet Maintenance Rule.md` before editing the SOP workbook.
