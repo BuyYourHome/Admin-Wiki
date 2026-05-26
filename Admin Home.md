@@ -26,6 +26,10 @@ This is the starting page for the Buy Your Home admin wiki.
 - [[wiki/index|Wiki Index]]
 - [[wiki/log|Wiki Log]]
 
+## Register Rules
+
+- Scanned document account register rules are maintained in [[Document Scanning Skill Spec#Scanned Document Register Rules]].
+
 ## Working Rules
 
 - The working Git/wiki folder is `C:\Codex\Wiki Files`.

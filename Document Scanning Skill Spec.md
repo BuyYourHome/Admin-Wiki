@@ -173,6 +173,71 @@ Log file requirement:
 - Include the planned or completed split ranges, document identities, output file names, destination folders, confidence notes, and review items.
 - Use a log file name based on the source scan file name, for example `Receipt_2026-05-24_134923.log.txt`.
 
+## Scanned Document Register Rules
+
+Maintain the scanned document register as an account-level tracker, not as a statement-history ledger.
+
+Register workbook:
+
+`C:\Users\wesbr\Buy Your Home\Buy Your Home - Office Admin\Scanned Files\Scanned Document Register.xlsx`
+
+Register sheets:
+
+- `Mortgage`
+- `Credit Cards`
+- `Invoices`
+
+Use one row per account. Match an existing account row using:
+
+`Document Category + Lender / Vendor + Account / Loan Last 4 + Property / Project`
+
+When a new statement is found, compare its `Statement / Invoice Date` to the existing row's `Statement / Invoice Date`.
+
+If the new statement date is newer:
+
+1. Update the existing account row instead of adding a new row.
+2. Before overwriting, move the old `Current Min Payment` value into `Last Min Payment`.
+3. Update the current fields:
+   - `Statement / Invoice Date`
+   - `Due Date`
+   - `Amount Due`
+   - `Current Balance`
+   - `Current Min Payment`
+   - `Source Scan File`
+   - `Source Scan Path`
+   - `Status`
+   - `Confidence`
+   - `Last Updated`
+
+If the new statement date is the same:
+
+1. Do not overwrite the row unless the new scan fills missing details or improves confidence.
+2. Add a note that a duplicate or same-period scan was found.
+
+If the new statement date is older:
+
+1. Do not update the account row.
+2. Add a note only when it is useful for traceability, or ignore it if already represented.
+
+If the statement date cannot be confidently read:
+
+1. Do not update the account row.
+2. Mark the item for review.
+
+Never infer or update `Username` or `Password` from scanned statements. Leave those fields blank unless Boss explicitly provides them.
+
+Priority register columns should stay at the left in this order:
+
+1. `Property / Project`
+2. `Lender / Vendor`
+3. `Statement / Invoice Date`
+4. `Due Date`
+5. `Amount Due`
+6. `Current Balance`
+7. `Last Min Payment`
+8. `Current Min Payment`
+9. `Download Flag`
+
 ## Safety Rules
 
 - Never delete or overwrite the original scan.
