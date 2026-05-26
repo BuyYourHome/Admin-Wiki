@@ -226,6 +226,16 @@ If the statement date cannot be confidently read:
 
 Never infer or update `Username` or `Password` from scanned statements. Leave those fields blank unless Boss explicitly provides them.
 
+### Register Alert Rules
+
+After updating or reviewing a register row, check whether it meets any alert rule. If a row meets an alert rule, email Jenny at `Jenny@BuyYourHomeLLC.com` and copy Wes. If the email is sent by OfficeAssist, send it from the OfficeAssist email account and state that it is sent on Wes's behalf.
+
+Current alert rules:
+
+1. `Current Min Payment` is greater than `Last Min Payment`.
+
+The alert email should identify the sheet, property/project, lender/vendor, statement date, last minimum payment, current minimum payment, and source statement file when available. Do not send duplicate alerts for the same row and same statement date unless a later update changes the alert details.
+
 Priority register columns should stay at the left in this order:
 
 1. `Property / Project`
