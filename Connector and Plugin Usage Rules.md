@@ -68,7 +68,17 @@ Important:
 
 ## Outlook / Email Connector
 
-Status: desired but not yet confirmed installed.
+Status: installed and confirmed for `Wes@myBrowning.net`; not yet confirmed for Buy Your Home shared/delegated mailboxes.
+
+Connector profile confirmed:
+
+- `Wes@myBrowning.net`
+
+Shared/delegated mailbox access tested on 2026-05-26:
+
+- `OfficeAssist@BuyYourHomeLLC.com` - shared mailbox folder listing failed with `Default folder Root not found`.
+- `WesWill@BuyYourHomeLLC.com` - shared mailbox folder listing failed with `Default folder Root not found`.
+- `Jenny@BuyYourHomeLLC.com` - shared mailbox folder listing failed with `Default folder Root not found`.
 
 Use when available for:
 
@@ -84,7 +94,7 @@ Priority:
 
 Fallback:
 
-- Until the Outlook/email connector is confirmed available for the correct mailboxes, use the local Outlook safety rules in `AGENTS.md`.
+- Until the Outlook/email connector is confirmed available for the correct Buy Your Home mailboxes, use the local Outlook safety rules in `AGENTS.md`.
 
 Required mailboxes:
 
@@ -92,10 +102,13 @@ Required mailboxes:
 - `WesWill@BuyYourHomeLLC.com`
 - `Jenny@BuyYourHomeLLC.com` when Jenny summary/calendar workflows resume.
 
+Next setup step:
+
+- In Microsoft 365 / Exchange, verify that `Wes@myBrowning.net` has Full Access and Send As or Send on behalf permissions for the required Buy Your Home mailboxes, then retest shared mailbox folder listing through the connector.
+
 ## Current Priority Order
 
 1. Outlook/email connector, when available for the correct mailboxes.
 2. Spreadsheets plugin for local workbook work.
 3. GitHub connector for repository inspection and optional GitHub workflow features.
 4. Browser plugin for REI and web workflows.
-
