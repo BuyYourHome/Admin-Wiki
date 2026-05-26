@@ -60,3 +60,9 @@ Use this repo when formulating solutions for office-admin workflows, SOPs, autom
 - Outlook may leave the internal `SendUsingAccount` field blank even when the visible From line is correctly OfficeAssist. A blank `SendUsingAccount` is acceptable only when the draft is stored in the OfficeAssist mailbox and the draft's visible sender/From identity is OfficeAssist.
 - If Outlook shows a non-blank `SendUsingAccount` other than `OfficeAssist@BuyYourHomeLLC.com`, or the draft is not stored in the OfficeAssist mailbox, do not send automatically. Notify the user that Outlook is falling back to another account and either provide a draft for manual send or wait until the mailbox/account configuration is fixed.
 - After any automated send, verify the message appears in the OfficeAssist Sent Items folder. If it appears under a different mailbox or shows a non-blank `SendUsingAccount` other than `OfficeAssist@BuyYourHomeLLC.com`, notify the user immediately and treat the sender configuration as broken until corrected.
+
+## Calendar Scheduling
+
+- When checking availability for calls, meetings, or appointment replies, check both Wes's calendar and Jenny's calendar whenever Jenny's calendar is available in Outlook.
+- Do not send or approve a calendar request, meeting time, or availability response that conflicts with either Wes's or Jenny's calendar unless Wes explicitly approves the conflict for that specific request.
+- If Jenny's calendar is unavailable locally, do not assume she is free. Tell Wes that Jenny's calendar could not be checked before sending or approving the meeting time.
