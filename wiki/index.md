@@ -16,6 +16,11 @@ This is the entry point for the compiled wiki.
 
 - [[Second Brain Architecture]]
 - [[LLM Wiki Pattern]]
+- [[../Project Room Workflow|AI Project Room Workflow]]
+
+## Active Project Rooms
+
+- [[../Project Rooms/Project Management Spreadsheet Rewrite/README|Project Management Spreadsheet Rewrite]]
 
 ## Sources
 

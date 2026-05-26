@@ -14,6 +14,7 @@ Use this repo when formulating solutions for office-admin workflows, SOPs, autom
 ## Start Here
 
 - Read `Admin Home.md` first for the current operating map.
+- Use `Project Room Workflow.md` before major work that depends on multiple source files, emails, scans, notes, spreadsheets, or prior drafts.
 - Use `Repository Location Rule.md` for repo/location policy.
 - Use `SOP Spreadsheet Maintenance Rule.md` before editing the SOP workbook.
 - Use `Document Scanning SOP.md`, `Document Scanning Skill Spec.md`, and `Document Scanning Folder Map.md` for scanned statement workflows.
@@ -50,6 +51,13 @@ Use this repo when formulating solutions for office-admin workflows, SOPs, autom
 - If a workflow becomes repeatable, document it here before or while creating the automation.
 - Keep review folders separate when the user has specified separate workflows, such as statement review versus invoice review.
 - If a mailbox, folder, or external service is unavailable, do not substitute a similar one without explicit permission.
+
+## AI Project Rooms
+
+- Use Project Rooms for substantial drafting, analysis, redesign, or automation work that depends on multiple sources.
+- Project Rooms live under `Project Rooms\<Project Name>\` with `sources\`, `working\`, and `outputs\` subfolders.
+- Build source inventory, duplicate/conflict log, and missing-context notes before drafting final outputs.
+- Draft from authoritative sources only. Mark unsupported claims instead of blending or guessing.
 
 ## Email Sender Safety
 

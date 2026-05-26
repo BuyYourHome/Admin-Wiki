@@ -20,6 +20,7 @@ wiki/index.md         Table of contents and map of the wiki
 templates/            Page and source-note templates
 prompts/              Reusable prompts for compiling and maintaining the wiki
 decisions/            Architecture and workflow decisions
+Project Rooms/        Source-preparation workspaces for complex projects
 ```
 
 ## Recommended First Workflow
@@ -29,6 +30,10 @@ decisions/            Architecture and workflow decisions
 3. Review the generated page in `wiki/`.
 4. Add links from `wiki/index.md`.
 5. Repeat with new sources.
+
+## Project Rooms
+
+For complex work involving multiple sources, use `Project Room Workflow.md` before drafting. Project Rooms keep raw inputs, working inventories, conflict checks, and final outputs separated so Codex can reason from authoritative sources instead of blending stale or conflicting files.
 
 ## When To Add OpenBrain
 
@@ -40,4 +45,3 @@ Add an OpenBrain-style database or MCP memory layer when you need:
 - An API that tools can read and write.
 
 Keep the Markdown wiki even then. It is the browsable, reviewable output layer.
-
