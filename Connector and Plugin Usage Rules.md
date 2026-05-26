@@ -68,17 +68,17 @@ Important:
 
 ## Outlook / Email Connector
 
-Status: installed and confirmed for `Wes@myBrowning.net`; not yet confirmed for Buy Your Home shared/delegated mailboxes.
+Status: installed and confirmed for `Wes@myBrowning.net` and delegated/shared mailbox folder access is confirmed for the required Buy Your Home mailboxes.
 
 Connector profile confirmed:
 
 - `Wes@myBrowning.net`
 
-Shared/delegated mailbox access tested on 2026-05-26:
+Shared/delegated mailbox access initially failed on 2026-05-26, then was fixed after Exchange permissions were added. Retest succeeded on 2026-05-26:
 
-- `OfficeAssist@BuyYourHomeLLC.com` - shared mailbox folder listing failed with `Default folder Root not found`.
-- `WesWill@BuyYourHomeLLC.com` - shared mailbox folder listing failed with `Default folder Root not found`.
-- `Jenny@BuyYourHomeLLC.com` - shared mailbox folder listing failed with `Default folder Root not found`.
+- `OfficeAssist@BuyYourHomeLLC.com` - folder listing succeeded.
+- `WesWill@BuyYourHomeLLC.com` - folder listing succeeded.
+- `Jenny@BuyYourHomeLLC.com` - folder listing succeeded.
 
 Use when available for:
 
@@ -94,7 +94,7 @@ Priority:
 
 Fallback:
 
-- Until the Outlook/email connector is confirmed available for the correct Buy Your Home mailboxes, use the local Outlook safety rules in `AGENTS.md`.
+- Use the local Outlook safety rules in `AGENTS.md` only when the Outlook/email connector cannot perform the needed action, lacks the needed write permission, or returns an access error.
 
 Required mailboxes:
 
@@ -102,9 +102,10 @@ Required mailboxes:
 - `WesWill@BuyYourHomeLLC.com`
 - `Jenny@BuyYourHomeLLC.com` when Jenny summary/calendar workflows resume.
 
-Next setup step:
+Remaining setup checks:
 
-- In Microsoft 365 / Exchange, verify that `Wes@myBrowning.net` has Full Access and Send As or Send on behalf permissions for the required Buy Your Home mailboxes, then retest shared mailbox folder listing through the connector.
+- Before using the connector for production sending from OfficeAssist, send one explicit test message only if Wes approves, then verify the Sent Items behavior.
+- Calendar access still needs separate confirmation before relying on the connector for Wes/Jenny availability checks.
 
 ## Current Priority Order
 
