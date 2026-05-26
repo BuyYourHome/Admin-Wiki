@@ -54,6 +54,7 @@ Use this repo when formulating solutions for office-admin workflows, SOPs, autom
 ## Email Sender Safety
 
 - When sending email as Jean or Office Assistant, use only `OfficeAssist@BuyYourHomeLLC.com` unless the user explicitly names another sender for that specific message.
+- When sending an email directly as Jean/Office Assistant, send from `OfficeAssist@BuyYourHomeLLC.com` and state in the message that Jean is sending it on Wes's behalf.
 - When sending any email on Wes's behalf from any account, always copy `WesWill@BuyYourHomeLLC.com` unless Wes explicitly says not to copy himself for that specific message.
 - Do not rely on a script variable alone to prove the sender. Before sending, create/save the draft in the OfficeAssist mailbox and verify the draft is stored under the OfficeAssist Drafts folder.
 - Outlook may leave the internal `SendUsingAccount` field blank even when the visible From line is correctly OfficeAssist. A blank `SendUsingAccount` is acceptable only when the draft is stored in the OfficeAssist mailbox and the draft's visible sender/From identity is OfficeAssist.
