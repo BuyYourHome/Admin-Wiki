@@ -4,6 +4,7 @@ This is the starting page for the Buy Your Home admin wiki.
 
 ## Core Operating Areas
 
+- [[Agents and Automations Registry]]
 - [[Document Scanning SOP]]
 - [[Document Scanning Skill Spec]]
 - [[Invoice and Receipt Processing Notes]]

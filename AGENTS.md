@@ -14,6 +14,7 @@ Use this repo when formulating solutions for office-admin workflows, SOPs, autom
 ## Start Here
 
 - Read `Admin Home.md` first for the current operating map.
+- Use `Agents and Automations Registry.md` to inspect named agent-like roles, active automations, skills, schedules, and where each is defined.
 - Use `Project Room Workflow.md` before major work that depends on multiple source files, emails, scans, notes, spreadsheets, or prior drafts.
 - Use `Repository Location Rule.md` for repo/location policy.
 - Use `SOP Spreadsheet Maintenance Rule.md` before editing the SOP workbook.
@@ -49,6 +50,7 @@ Use this repo when formulating solutions for office-admin workflows, SOPs, autom
 
 - Automation prompts should point to the relevant Markdown instructions when possible.
 - If a workflow becomes repeatable, document it here before or while creating the automation.
+- When creating, renaming, pausing, deleting, or materially changing an agent-like function, update `Agents and Automations Registry.md`.
 - Keep review folders separate when the user has specified separate workflows, such as statement review versus invoice review.
 - If a mailbox, folder, or external service is unavailable, do not substitute a similar one without explicit permission.
 
