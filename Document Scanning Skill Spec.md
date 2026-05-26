@@ -233,6 +233,7 @@ After updating or reviewing a register row, check whether it meets any alert rul
 Current alert rules:
 
 1. `Current Min Payment` is greater than `Last Min Payment`.
+2. `Current Min Payment` is more than `$10.00` less than `Last Min Payment`.
 
 The alert email should identify the sheet, property/project, lender/vendor, statement date, last minimum payment, current minimum payment, and source statement file when available. Do not send duplicate alerts for the same row and same statement date unless a later update changes the alert details.
 
