@@ -61,6 +61,14 @@ Use this repo when formulating solutions for office-admin workflows, SOPs, autom
 - If Outlook shows a non-blank `SendUsingAccount` other than `OfficeAssist@BuyYourHomeLLC.com`, or the draft is not stored in the OfficeAssist mailbox, do not send automatically. Notify the user that Outlook is falling back to another account and either provide a draft for manual send or wait until the mailbox/account configuration is fixed.
 - After any automated send, verify the message appears in the OfficeAssist Sent Items folder. If it appears under a different mailbox or shows a non-blank `SendUsingAccount` other than `OfficeAssist@BuyYourHomeLLC.com`, notify the user immediately and treat the sender configuration as broken until corrected.
 
+## Email Summary Scope
+
+- Morning email summaries for Wes must scan the entire `WesWill@BuyYourHomeLLC.com` Outlook mailbox store, including all subfolders where Outlook rules may move messages.
+- Do not limit the summary to Inbox unless Wes explicitly asks for an Inbox-only summary.
+- Focus on unread or newly received messages since the last successful summary. Include rule-routed folders when messages are financial, legal, property-related, vendor/admin-related, time-sensitive, or action-oriented.
+- Exclude routine promotional, automated, or newsletter messages unless they are time-sensitive, financial, legal, property-related, or require action.
+- Record the summary cutoff time used so the next summary can avoid both missed rule-routed messages and duplicate reporting.
+
 ## Calendar Scheduling
 
 - When checking availability for calls, meetings, or appointment replies, check both Wes's calendar and Jenny's calendar whenever Jenny's calendar is available in Outlook.
