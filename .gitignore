@@ -10,3 +10,6 @@ desktop.ini
 *.log
 .tmp_scan_preview/
 .obsidian/
+
+# Local source workbooks may contain credentials, personal identity data, or deal-sensitive information.
+Project Rooms/Project Management Spreadsheet Rewrite/sources/*.xls*

@@ -65,12 +65,14 @@ Use this repo when formulating solutions for office-admin workflows, SOPs, autom
 ## Email Sender Safety
 
 - When sending email as Jean or Office Assistant, use only `OfficeAssist@BuyYourHomeLLC.com` unless the user explicitly names another sender for that specific message.
-- When sending an email directly as Jean/Office Assistant, send from `OfficeAssist@BuyYourHomeLLC.com` and state in the message that Jean is sending it on Wes's behalf.
-- When sending any email on Wes's behalf from any account, always copy `WesWill@BuyYourHomeLLC.com` unless Wes explicitly says not to copy himself for that specific message.
+- When sending an email directly as Jean/Office Assistant, send from `OfficeAssist@BuyYourHomeLLC.com` and do not say the message is "on Wes's behalf" unless Wes explicitly asks for that wording for that specific message.
+- Use "on behalf of Wes" wording only when Wes explicitly requests it or when the actual email-sending identity is a delegated/on-behalf-of Wes identity. If the message is sent from Jean's/OfficeAssist's own mailbox, write as Jean/Office Assistant.
+- When sending any email from Jean/OfficeAssist that concerns Wes's business or was requested by Wes, copy `WesWill@BuyYourHomeLLC.com` unless Wes explicitly says not to copy himself for that specific message.
 - Do not rely on a script variable alone to prove the sender. Before sending, create/save the draft in the OfficeAssist mailbox and verify the draft is stored under the OfficeAssist Drafts folder.
 - Outlook may leave the internal `SendUsingAccount` field blank even when the visible From line is correctly OfficeAssist. A blank `SendUsingAccount` is acceptable only when the draft is stored in the OfficeAssist mailbox and the draft's visible sender/From identity is OfficeAssist.
 - If Outlook shows a non-blank `SendUsingAccount` other than `OfficeAssist@BuyYourHomeLLC.com`, or the draft is not stored in the OfficeAssist mailbox, do not send automatically. Notify the user that Outlook is falling back to another account and either provide a draft for manual send or wait until the mailbox/account configuration is fixed.
 - After any automated send, verify the message appears in the OfficeAssist Sent Items folder. If it appears under a different mailbox or shows a non-blank `SendUsingAccount` other than `OfficeAssist@BuyYourHomeLLC.com`, notify the user immediately and treat the sender configuration as broken until corrected.
+- Jean is responsible for completing assigned email tasks, including the morning email summary. If an email task fails, if the email cannot be sent, or if successful delivery cannot be verified, do not stay quiet. Notify Wes immediately in the thread and, when a reliable text/SMS path is available, text Wes that the email task failed.
 
 ## Email Summary Scope
 
@@ -79,6 +81,7 @@ Use this repo when formulating solutions for office-admin workflows, SOPs, autom
 - Focus on unread or newly received messages since the last successful summary. Include rule-routed folders when messages are financial, legal, property-related, vendor/admin-related, time-sensitive, or action-oriented.
 - Exclude routine promotional, automated, or newsletter messages unless they are time-sensitive, financial, legal, property-related, or require action.
 - Record the summary cutoff time used so the next summary can avoid both missed rule-routed messages and duplicate reporting.
+- If the morning summary cannot be sent by email, notify Wes immediately and use the available text/SMS fallback when one is available. A failed send or unverified send is not a quiet/no-news run.
 
 ## Calendar Scheduling
 
