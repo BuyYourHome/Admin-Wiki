@@ -1,28 +1,29 @@
-# Source Note Template
+# Source Note
 
 ## Metadata
 
 - Title:
-- Author / creator:
-- URL or file path:
+- Source file:
+- Source type: Email / Spreadsheet / Attachment / Other
+- Date received:
 - Date captured:
-- Date published:
-- Source type:
+- Sender / owner:
+- Related process:
 - Reliability notes:
 
-## Raw Notes
+## Raw Summary
 
-Paste excerpts, summaries, transcript sections, or observations here.
+Briefly summarize what this source contains.
 
-## Key Claims
-
-- 
-
-## Concepts
+## Key Claims / Instructions
 
 - 
 
-## People / Organizations / Tools
+## Tools / Systems Mentioned
+
+- 
+
+## People / Roles Mentioned
 
 - 
 
@@ -30,7 +31,6 @@ Paste excerpts, summaries, transcript sections, or observations here.
 
 - 
 
-## Suggested Wiki Pages
+## Suggested SOP Pages
 
 - 
-
