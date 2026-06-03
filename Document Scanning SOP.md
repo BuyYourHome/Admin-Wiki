@@ -6,7 +6,7 @@ This SOP explains how the `document-scanning` skill and automation process scann
 
 ## Scope
 
-This process applies to scanned financial/admin PDFs placed in:
+This process applies to scanned financial/admin PDFs and image scans (`.jpg` / `.jpeg`) placed in:
 
 `C:\Users\wesbr\Buy Your Home\Buy Your Home - Office Admin\Scanned Files`
 
@@ -65,13 +65,13 @@ It stays quiet when there are no new scans. It reports only when it processes fi
 
 ## What The Skill Does
 
-1. Checks the scan intake folder for new PDF files.
+1. Checks the scan intake folder for new PDF, JPG, and JPEG files.
 2. Ignores files already inside `Logs` or `Archived`.
-3. Opens each new PDF and checks:
+3. Opens each new scan and checks:
    - Page count
    - Whether text is embedded
    - Whether the scan is image-only
-4. If the PDF has no embedded text, treats it as a scanned image document and uses visual/OCR-style parsing.
+4. If the PDF has no embedded text, or if the source is a JPG/JPEG image, treats it as a scanned image document and uses visual/OCR-style parsing.
 5. Reviews each page for:
    - Company, lender, bank, or vendor name
    - Account number or account suffix
@@ -79,7 +79,7 @@ It stays quiet when there are no new scans. It reports only when it processes fi
    - Page numbering
    - Document headers and payment coupons
 6. Determines where each separate document starts and ends.
-7. Splits one combined scan into separate PDF files when the document boundaries are clear.
+7. Splits one combined PDF scan into separate PDF files when the document boundaries are clear. For JPG/JPEG scans, convert or file the document as a single PDF output unless the file is routed to review.
 8. Names each output file using:
 
    `YY-MM-DD - Company.pdf`
@@ -88,7 +88,7 @@ It stays quiet when there are no new scans. It reports only when it processes fi
 
    `26-05-05 - First Citizens Bank VISA.pdf`
 
-9. Saves each split PDF into the correct mapped folder under:
+9. Saves each split or converted output PDF into the correct mapped folder under:
 
    `C:\Users\wesbr\Buy Your Home\Buy Your Home - Office Admin\2026`
 
@@ -109,9 +109,9 @@ It stays quiet when there are no new scans. It reports only when it processes fi
 3. Avoid mixing unrelated documents unless the scan is intended to be split.
 4. Make sure pages are not upside down if practical.
 5. Make sure account numbers, dates, and company names are visible.
-6. Scan to PDF format.
-7. Do not rename the scanned PDF unless there is a specific reason. The scanner's default PDF name is enough because the automation will read, split, rename, and file the documents.
-8. Place the PDF in:
+6. Scan to PDF format when practical. JPG/JPEG image scans are also accepted when the scanner or phone workflow produces an image file.
+7. Do not rename the scanned file unless there is a specific reason. The scanner's default file name is enough because the automation will read, split or convert, rename, and file the documents.
+8. Place the PDF, JPG, or JPEG in:
 
    `C:\Users\wesbr\Buy Your Home\Buy Your Home - Office Admin\Scanned Files`
 
@@ -191,7 +191,7 @@ The log should include:
 
 - Source scan path
 - Page count
-- Whether the PDF was image-only
+- Whether the source was a PDF or JPG/JPEG image, and whether a PDF was image-only
 - Planned and completed split ranges
 - Document identity for each output file
 - Date used for naming
@@ -205,7 +205,7 @@ The log should include:
 
 Use this checklist.
 
-1. Confirm the scan is a PDF.
+1. Confirm the scan is a PDF, JPG, or JPEG.
 2. Confirm the scan is in:
 
    `C:\Users\wesbr\Buy Your Home\Buy Your Home - Office Admin\Scanned Files`
@@ -235,7 +235,7 @@ Use this checklist.
 
 ## Manual Processing If Automation Is Down
 
-1. Open the scan PDF from `Scanned Files`.
+1. Open the scan file from `Scanned Files`.
 2. Identify each separate document by company, account number, statement date, and page number.
 3. Write down the page ranges.
 4. Use the naming convention:

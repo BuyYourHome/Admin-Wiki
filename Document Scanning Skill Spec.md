@@ -2,7 +2,7 @@
 
 Working name: `document-scanning`
 
-Purpose: process scanned financial/admin PDFs, split combined scans into separate documents, name them consistently, and route them into the correct Office Admin folder.
+Purpose: process scanned financial/admin PDFs and image scans (`.jpg` / `.jpeg`), split combined scans into separate documents when applicable, name them consistently, and route them into the correct Office Admin folder.
 
 Installed skill location:
 
@@ -24,18 +24,19 @@ Example user requests:
 - Split this mortgage statement scan by account.
 - File the scanned statements in the 2026 Office Admin folders.
 - Review the scan intake folder and route anything new.
-- Parse this PDF into separate account files.
+- Parse this PDF or image scan into separate account files.
 
 ## Core Responsibilities
 
-1. Read one or more scanned PDFs from an intake folder or explicit file path.
-2. OCR pages when text is not already embedded.
+1. Read one or more scanned PDFs, JPGs, or JPEGs from an intake folder or explicit file path.
+2. OCR pages when text is not already embedded, and visually/OCR-parse JPG/JPEG image scans.
 3. Identify document type, institution/vendor, account number suffix, statement date, invoice date, and page boundaries.
-4. Split multi-document scans into one PDF per account/document.
-5. Name each output PDF using a consistent naming convention.
-6. Route each output PDF to the best matching folder under the 2026 Office Admin folder map.
-7. Avoid destructive changes. Never delete the original scan automatically.
-8. Flag uncertain classifications for human review instead of guessing.
+4. Split multi-document PDF scans into one PDF per account/document when boundaries are clear.
+5. Convert JPG/JPEG scans to a PDF output when filing, unless the item is routed to review.
+6. Name each output PDF using a consistent naming convention.
+7. Route each output PDF to the best matching folder under the 2026 Office Admin folder map.
+8. Avoid destructive changes. Never delete the original scan automatically.
+9. Flag uncertain classifications for human review instead of guessing.
 
 ## Document Types
 
@@ -81,7 +82,7 @@ Recommended review folder:
 
 Mortgage statements are property documents. Do not file them in the generic Office Admin `2026\Loans` folder unless Boss explicitly instructs that for a specific document.
 
-For each scanned PDF:
+For each scanned PDF, JPG, or JPEG:
 
 1. Determine whether the scan contains mortgage statements.
 2. If it does, identify each individual mortgage statement and split each statement into its own PDF.
@@ -152,7 +153,7 @@ If only a due date is available, use the statement date if present; otherwise us
 
 For each processed scan, produce:
 
-- Split/routed PDF files.
+- Split/routed PDF files, including PDF outputs converted from JPG/JPEG scans.
 - A processing summary.
 - A review log entry for uncertain pages or unmatched folders.
 - A plain text log file in `C:\Users\wesbr\Buy Your Home\Buy Your Home - Office Admin\Scanned Files\Logs`.
@@ -264,7 +265,7 @@ The automation should call this skill rather than contain document-processing lo
 Automation responsibilities:
 
 - Watch `C:\Users\wesbr\Buy Your Home\Buy Your Home - Office Admin\Scanned Files` on a schedule.
-- Pass new PDFs to the `document-scanning` skill.
+- Pass new PDFs, JPGs, and JPEGs to the `document-scanning` skill.
 - Save output PDFs to destination folders.
 - Post only meaningful summaries: files created, uncertain matches, errors, or decisions needed.
 - Stay quiet when there are no new scans.
