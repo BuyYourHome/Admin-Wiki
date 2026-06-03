@@ -46,11 +46,11 @@ Installed skill:
 
 Skill spec:
 
-`C:\Users\wesbr\Buy Your Home\Buy Your Home - Office Admin\Wiki Files\Document Scanning Skill Spec.md`
+`C:\Codex\Wiki Files\Document Scanning Skill Spec.md`
 
 Folder map:
 
-`C:\Users\wesbr\Buy Your Home\Buy Your Home - Office Admin\Wiki Files\Document Scanning Folder Map.md`
+`C:\Codex\Wiki Files\Document Scanning Folder Map.md`
 
 ## Automation Schedule
 
