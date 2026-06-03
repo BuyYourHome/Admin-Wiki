@@ -40,6 +40,10 @@ Destination root:
 
 `C:\Users\wesbr\Buy Your Home\Buy Your Home - Office Admin\2026`
 
+Property/project destination root:
+
+`C:\Users\wesbr\Buy Your Home\Buy Your Home - Property`
+
 Installed skill:
 
 `C:\Users\wesbr\.codex\skills\document-scanning`
@@ -88,9 +92,11 @@ It stays quiet when there are no new scans. It reports only when it processes fi
 
    `26-05-05 - First Citizens Bank VISA.pdf`
 
-9. Saves each split or converted output PDF into the correct mapped folder under:
+9. Saves each split or converted output PDF into the correct mapped folder under the Office Admin 2026 folder or the matching property/project folder, depending on the document type:
 
    `C:\Users\wesbr\Buy Your Home\Buy Your Home - Office Admin\2026`
+
+   `C:\Users\wesbr\Buy Your Home\Buy Your Home - Property`
 
 10. Creates or updates a plain text log file in:
 
@@ -138,10 +144,11 @@ Common routing examples:
 
 - First Citizens credit card statement -> `2026\Credit Cards\...`
 - Mortgage statement -> matching property folder under `C:\Users\wesbr\Buy Your Home\Buy Your Home - Property`, then `Owning`, then the folder named for the mortgage company
+- Project/property invoice or receipt with a specific property address -> matching property folder under `C:\Users\wesbr\Buy Your Home\Buy Your Home - Property`, then `Owning`
 - Bank statement -> `2026\Bank Statement\...`
 - Lowe's Pro statement -> `2026\Credit Cards\Lowe's Pro-SYH-6140`
 - Quest invoice -> `2026\Quest\Invoices\...`
-- Receipt -> `2026\Receipts` or a specific receipt subfolder if mapped
+- General receipt not tied to a specific property/project -> `2026\Receipts` or a specific receipt subfolder if mapped
 
 The skill prefers exact matches using:
 
@@ -150,6 +157,24 @@ The skill prefers exact matches using:
 - Business/entity label such as BYH, SYH, Heritage Mgmt, 401K, or personal/home
 
 If the match is not clear, the skill should route to review instead of guessing.
+
+## Project Invoice And Receipt Filing
+
+Project/property invoices and receipts are property documents when the scan identifies a specific property address, project folder, or property number. Do not file those documents in the generic Office Admin invoice/receipt folders.
+
+For every scanned project invoice or receipt:
+
+1. Identify the related property using the property address, numeric street address, project name, entity label, or other reliable project details on the document.
+2. Match the property to a project folder under:
+
+   `C:\Users\wesbr\Buy Your Home\Buy Your Home - Property`
+
+3. Open the matched property folder and drill into:
+
+   `Owning`
+
+4. Save the filed PDF directly in the `Owning` folder unless a more specific approved subfolder already exists for that document type.
+5. If the property folder cannot be identified confidently, route the item to review and note the uncertainty in the log.
 
 ## Mortgage Statement Filing
 

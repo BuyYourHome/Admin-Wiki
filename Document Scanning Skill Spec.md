@@ -2,7 +2,7 @@
 
 Working name: `document-scanning`
 
-Purpose: process scanned financial/admin PDFs and image scans (`.jpg` / `.jpeg`), split combined scans into separate documents when applicable, name them consistently, and route them into the correct Office Admin folder.
+Purpose: process scanned financial/admin PDFs and image scans (`.jpg` / `.jpeg`), split combined scans into separate documents when applicable, name them consistently, and route them into the correct Office Admin or property/project folder.
 
 Installed skill location:
 
@@ -12,6 +12,7 @@ Primary folder map:
 
 - `Document Scanning Folder Map.md`
 - Root document destination: `C:\Users\wesbr\Buy Your Home\Buy Your Home - Office Admin\2026`
+- Property/project destination root: `C:\Users\wesbr\Buy Your Home\Buy Your Home - Property`
 - Scan intake folder: `C:\Users\wesbr\Buy Your Home\Buy Your Home - Office Admin\Scanned Files`
 
 ## Skill Trigger
@@ -34,7 +35,7 @@ Example user requests:
 4. Split multi-document PDF scans into one PDF per account/document when boundaries are clear.
 5. Convert JPG/JPEG scans to a PDF output when filing, unless the item is routed to review.
 6. Name each output PDF using a consistent naming convention.
-7. Route each output PDF to the best matching folder under the 2026 Office Admin folder map.
+7. Route each output PDF to the best matching folder under the 2026 Office Admin folder map or the matching property/project folder.
 8. Avoid destructive changes. Never delete the original scan automatically.
 9. Flag uncertain classifications for human review instead of guessing.
 
@@ -64,6 +65,7 @@ Primary routing categories:
 - Lines of credit: `2026\Line of Credit\...`
 - Non-property-specific loans: `2026\Loans\...`
 - Mortgage statements: match the statement to the related property folder under `C:\Users\wesbr\Buy Your Home\Buy Your Home - Property`, drill into that property's `Owning` folder, then save the statement in the folder named for the mortgage company.
+- Project/property invoices and receipts: match the document to the related property folder under `C:\Users\wesbr\Buy Your Home\Buy Your Home - Property`, drill into that property's `Owning` folder, then save the filed PDF there unless a more specific approved subfolder already exists.
 - Quest invoices: `2026\Quest\Invoices\...`
 - Quest receipts: `2026\Quest\Receipts\...`
 - General receipts: `2026\Receipts`
@@ -77,6 +79,21 @@ If no confident destination exists, route to a review folder, not to an approxim
 Recommended review folder:
 
 `C:\Users\wesbr\Buy Your Home\Buy Your Home - Office Admin\2026\_Needs Review`
+
+## Project Invoice And Receipt Routing
+
+Project/property invoices and receipts are property documents when the scan identifies a specific property address, project folder, or property number.
+
+For each project invoice or receipt:
+
+1. Match the document to the correct property folder under:
+
+   `C:\Users\wesbr\Buy Your Home\Buy Your Home - Property`
+
+2. Use reliable details such as property address, numeric street address, project number, entity label, vendor/payee, or other project details.
+3. Open the matched property folder and drill down to its `Owning` folder.
+4. Save the filed PDF directly in `Owning` unless a more specific approved subfolder already exists.
+5. If the property folder cannot be identified confidently, route the item to review and document what was unclear in the log.
 
 ## Mortgage Statement Routing
 
