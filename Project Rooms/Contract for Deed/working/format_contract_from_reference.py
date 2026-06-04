@@ -14,10 +14,12 @@ PROTOTYPE = ROOT / "reference" / "Rose contract prototype" / "320 Rose - Contrac
 REFERENCE = ROOT / "reference" / "Cool Springs selling docs" / "25-02-21 Seller Docs.docx"
 OUTPUT = ROOT / "output" / "320 Rose - Contract for Deed Agreement - DRAFT.docx"
 ATTORNEY_CONTINGENCY_TEXT = (
-    "This Contract is signed contingent upon any changes Seller's attorney may make or require. "
-    "The parties shall sign the Contract again at closing with any such alterations incorporated. "
-    "If any such changes are sufficient to cause Purchaser to withdraw from the transaction, "
-    "Purchaser's due diligence funds shall be returned to Purchaser."
+    "This Contract is signed subject to any changes Seller's attorney may make or require. "
+    "The parties shall sign the Contract again at closing, or execute any required amendment, "
+    "with any such attorney-required alterations incorporated. If such changes are material "
+    "and Purchaser does not agree to proceed, Seller may elect to proceed under the previously "
+    "signed Contract. If Seller does not so elect, Purchaser's due diligence funds shall be "
+    "returned to Purchaser."
 )
 
 
@@ -220,6 +222,17 @@ def fill_cell_lines_preserve_formatting(cell, lines):
         remove_paragraph(paragraph)
 
 
+def fill_value_table_preserve_formatting(table, lines):
+    while len(table.rows) < len(lines):
+        table.add_row()
+    for idx, line in enumerate(lines):
+        cell = table.cell(idx, 0)
+        set_cell_text_preserve_formatting(cell, line)
+    for row in table.rows[len(lines) :]:
+        for cell in row.cells:
+            set_cell_text_preserve_formatting(cell, "")
+
+
 def table_after_heading_before(doc, heading_idx, end_idx):
     body = doc._body._element
     children = list(body)
@@ -287,7 +300,10 @@ def replace_installment_block_with_table(doc, x):
         if target_cell is None and len(existing_table.columns) > 1:
             target_cell = existing_table.cell(0, 1)
         if target_cell is not None:
-            fill_cell_lines_preserve_formatting(target_cell, value_rows)
+            if target_cell.tables:
+                fill_value_table_preserve_formatting(target_cell.tables[0], value_rows)
+            else:
+                fill_cell_lines_preserve_formatting(target_cell, value_rows)
             return
 
     template_paragraphs = doc.paragraphs[heading_idx + 1 : end_idx]
@@ -333,7 +349,9 @@ def replace_installment_block_with_table(doc, x):
 
 
 def ensure_attorney_contingency_clause(doc):
-    if any("signed contingent upon any changes Seller's attorney" in paragraph.text for paragraph in doc.paragraphs):
+    existing_idx = find_paragraph_containing(doc, "Seller's attorney may make or require")
+    if existing_idx is not None:
+        set_paragraph(doc.paragraphs[existing_idx], ATTORNEY_CONTINGENCY_TEXT)
         return
     heading_idx = find_paragraph(doc, "Additional Terms")
     if heading_idx is None:
