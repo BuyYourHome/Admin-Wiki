@@ -1,0 +1,4 @@
+interface:
+  display_name: "Document Scanning"
+  short_description: "Split and file scanned financial documents."
+  default_prompt: "Process scanned financial/admin PDFs by splitting combined scans into separate account files, naming them consistently, routing them to Office Admin folders, and logging the result."

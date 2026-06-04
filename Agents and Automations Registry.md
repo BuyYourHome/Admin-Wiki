@@ -11,7 +11,9 @@ Codex does not currently show every role below in one unified "Agents" list. Som
 | Jean Wright / Office Assistant | Assistant profile and operating role | Active | On demand and through related automations | `C:\Codex\Office Assistant Profile.md`; `AGENTS.md` |
 | REI Text Message Watcher | Heartbeat automation | Active | Every 15 minutes during 8:00 AM-9:00 PM Eastern; adaptive 1-minute checks during activity | `C:\Users\wesbr\.codex\automations\morning-weswill-email-summary\automation.toml` |
 | OfficeAssist Morning Email Summary | Cron automation | Active | Daily at 8:00 AM Eastern | `C:\Users\wesbr\.codex\automations\officeassist-morning-email-summary\automation.toml` |
-| Document Scanning | Skill plus cron automation | Active | Daily at 10:00 AM, 12:00 PM, 2:00 PM, and 4:00 PM | `C:\Users\wesbr\.codex\skills\document-scanning\SKILL.md`; `C:\Users\wesbr\.codex\automations\document-scanning\automation.toml` |
+| Document Scanning | Wiki-managed skill plus cron automation | Active | Daily at 10:00 AM, 12:00 PM, 2:00 PM, and 4:00 PM | `skills\document-scanning\SKILL.md`; `C:\Users\wesbr\.codex\skills\document-scanning\SKILL.md`; `C:\Users\wesbr\.codex\automations\document-scanning\automation.toml` |
+| Codex Skill Source Control | Wiki-managed skill system | Active | On demand after skill changes or wiki pulls | `Codex Skill Source Rule.md`; `tools\sync-codex-skills.ps1`; `skills\` |
+| Contract for Deed Sale Docs | Wiki-managed skill plus project room | Active | On demand | `skills\contract-for-deed-sale-docs\SKILL.md`; `Project Rooms\Contract for Deed\PROJECT-ROOM.md` |
 | Grocery List Handler | Wiki rule and data workflow | Active | On demand, including approved Boss/Jenny text instructions | `operations/grocery-list/` |
 | AI Project Room Workflow | Wiki workflow | Active | On demand before complex multi-source work | `Project Room Workflow.md` |
 | Project Management Spreadsheet Rewrite | Project Room | Active/planning | On demand | `Project Rooms\Project Management Spreadsheet Rewrite\README.md` |
@@ -105,6 +107,7 @@ Purpose:
 - Recursively review the full `WesWill@BuyYourHomeLLC.com` Outlook mailbox, including rule-routed subfolders.
 - Summarize unread or newly received financial, legal, property, vendor/admin, time-sensitive, or action-oriented messages.
 - Send Wes a concise priority summary from `OfficeAssist@BuyYourHomeLLC.com`.
+- Jean is responsible for confirming the summary is actually delivered. If the summary cannot be sent, if sender verification fails, or if delivery cannot be confirmed, do not stay quiet. Notify Wes immediately in the thread and, when a reliable text/SMS path is available, text Wes that the email summary failed.
 
 Defined in:
 
@@ -120,10 +123,11 @@ Tools/services used:
 
 - Local Outlook profile, unless replaced by a future Outlook connector.
 - OfficeAssist mailbox for sending.
+- Text/SMS fallback for failed email summary delivery, when available.
 
 ## Document Scanning
 
-Type: custom skill plus cron automation.
+Type: wiki-managed skill plus cron automation.
 
 Status: active.
 
@@ -145,7 +149,8 @@ Purpose:
 
 Defined in:
 
-- Skill: `C:\Users\wesbr\.codex\skills\document-scanning\SKILL.md`
+- Canonical skill source: `C:\Codex\Wiki Files\skills\document-scanning\SKILL.md`
+- Installed local skill copy: `C:\Users\wesbr\.codex\skills\document-scanning\SKILL.md`
 - Automation: `C:\Users\wesbr\.codex\automations\document-scanning\automation.toml`
 - Wiki support:
   - `Document Scanning SOP.md`
@@ -160,6 +165,53 @@ Important rules:
 - Never overwrite filed PDFs.
 - Never pay invoices or contact vendors.
 - If routing confidence is low, route to review and log why.
+
+## Codex Skill Source Control
+
+Type: wiki-managed skill system.
+
+Status: active.
+
+Purpose:
+
+- Keep Buy Your Home admin skills versioned in the Admin wiki.
+- Sync canonical wiki skill folders into each computer's local Codex skills folder.
+- Make skill updates portable across computers through the normal GitHub pull and local sync process.
+
+Defined in:
+
+- `C:\Codex\Wiki Files\Codex Skill Source Rule.md`
+- `C:\Codex\Wiki Files\tools\sync-codex-skills.ps1`
+- `C:\Codex\Wiki Files\skills\`
+
+Important rules:
+
+- Edit canonical skill source under `C:\Codex\Wiki Files\skills`.
+- Treat `%USERPROFILE%\.codex\skills` as the installed local copy only.
+- After changing a wiki-managed skill, sync locally, commit, and push the wiki update.
+
+## Contract for Deed Sale Docs
+
+Type: wiki-managed skill plus project room.
+
+Status: active.
+
+Purpose:
+
+- Refresh and regenerate contract-for-deed seller document packages from project spreadsheets.
+- Preserve Wes-edited prototypes, refresh values from the `Docs` worksheet, and generate clean drafts or attorney-review packages.
+- Current active package is 320 Rose.
+
+Defined in:
+
+- Skill source: `C:\Codex\Wiki Files\skills\contract-for-deed-sale-docs\SKILL.md`
+- Project room: `C:\Codex\Wiki Files\Project Rooms\Contract for Deed\PROJECT-ROOM.md`
+
+Important rules:
+
+- Use the project room for project-specific prototypes, scripts, staged spreadsheets, outputs, and source history.
+- Use the skill as the reusable workflow wrapper.
+- Do not include deed documents unless Wes changes the package scope.
 
 ## Grocery List Handler
 

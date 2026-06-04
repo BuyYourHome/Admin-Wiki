@@ -34,6 +34,10 @@ Excluded for now:
 - Working notes: `working\`
 - Outputs: `outputs\`
 
+## Working Templates
+
+- Buyer proposal email template: `working\Buyer proposal email template.md`
+
 ## Source Inventory Status
 
 - Authoritative sources: pending
@@ -61,4 +65,3 @@ Excluded for now:
 4. Build `working/duplicate-and-conflict-log.md`.
 5. Build `working/missing-context.md`.
 6. Draft the spreadsheet redesign spec only after the source set is clean.
-

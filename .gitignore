@@ -10,6 +10,16 @@ desktop.ini
 *.log
 .tmp_scan_preview/
 .obsidian/
+_scan_archive_pages/
+_scan_archive_preview/
+temp_inspect_*.py
+
+# Spreadsheet package work folders and historical workbook backups.
+Design/.xlsx_*/
+Project Rooms/*/working/backups/
+Project Rooms/*/working/invoice-project-updates/*.xls*
 
 # Local source workbooks may contain credentials, personal identity data, or deal-sensitive information.
 Project Rooms/Project Management Spreadsheet Rewrite/sources/*.xls*
+Project Rooms/*/sources/*.xls*
+Project Rooms/*/Need Verification/*.xls*

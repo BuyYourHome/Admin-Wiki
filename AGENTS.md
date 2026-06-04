@@ -18,6 +18,7 @@ Use this repo when formulating solutions for office-admin workflows, SOPs, autom
 - Use `Connector and Plugin Usage Rules.md` to decide when to prefer installed connectors/plugins over local desktop automation.
 - Use `Project Room Workflow.md` before major work that depends on multiple source files, emails, scans, notes, spreadsheets, or prior drafts.
 - Use `Repository Location Rule.md` for repo/location policy.
+- Use `Codex Skill Source Rule.md` before creating, editing, syncing, or installing Admin wiki-managed Codex skills.
 - Use `SOP Spreadsheet Maintenance Rule.md` before editing the SOP workbook.
 - Use `Document Scanning SOP.md`, `Document Scanning Skill Spec.md`, and `Document Scanning Folder Map.md` for scanned statement workflows.
 - Use `Invoice and Receipt Processing Notes.md` and `Invoice Project List.md` for invoice/receipt routing.
@@ -51,6 +52,8 @@ Use this repo when formulating solutions for office-admin workflows, SOPs, autom
 
 - Automation prompts should point to the relevant Markdown instructions when possible.
 - If a workflow becomes repeatable, document it here before or while creating the automation.
+- Canonical Admin workflow skills live under `C:\Codex\Wiki Files\skills`; local `%USERPROFILE%\.codex\skills` copies are installed/synced copies, not the source of truth.
+- After changing a wiki-managed skill, run `tools\sync-codex-skills.ps1`, commit the wiki update, and push to GitHub so other computers can pull and sync it.
 - When creating, renaming, pausing, deleting, or materially changing an agent-like function, update `Agents and Automations Registry.md`.
 - Keep review folders separate when the user has specified separate workflows, such as statement review versus invoice review.
 - If a mailbox, folder, or external service is unavailable, do not substitute a similar one without explicit permission.
