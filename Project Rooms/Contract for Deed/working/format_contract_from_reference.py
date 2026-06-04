@@ -28,6 +28,11 @@ ADVERSE_CONDITION_RESPONSIBILITY_TEXT = (
     "shall cause it to be released, satisfied, or otherwise resolved before or at the closing of "
     "Purchaser's future sale of the Property, unless resolved earlier or otherwise agreed in writing."
 )
+INDEPENDENT_COUNSEL_TEXT = (
+    "Purchaser acknowledges that Seller is not providing legal advice to Purchaser. "
+    "Purchaser has been advised that Purchaser may, at Purchaser's own expense, consult with "
+    "an attorney of Purchaser's choice before signing this Contract and before closing."
+)
 
 
 def split_address(address):
@@ -378,6 +383,23 @@ def ensure_attorney_contingency_clause(doc):
             run.bold = source_bold
 
 
+def ensure_independent_counsel_clause(doc):
+    existing_idx = find_paragraph_containing(doc, "Seller is not providing legal advice to Purchaser")
+    if existing_idx is not None:
+        set_paragraph(doc.paragraphs[existing_idx], INDEPENDENT_COUNSEL_TEXT)
+        return
+    contingency_idx = find_paragraph_containing(doc, "Seller's attorney may make or require")
+    if contingency_idx is None:
+        return
+    anchor = doc.paragraphs[contingency_idx]
+    paragraph = insert_paragraph_after(anchor, INDEPENDENT_COUNSEL_TEXT)
+    copy_paragraph_format(anchor, paragraph)
+    source_bold = next((run.bold for run in anchor.runs if run.text), None)
+    if source_bold is not None:
+        for run in paragraph.runs:
+            run.bold = source_bold
+
+
 def set_adverse_condition(doc, text):
     pending_idx = find_paragraph(doc, "PENDING ORDERS OR ADVERSE CONDITIONS:")
     cure_idx = find_paragraph(doc, "RIGHT TO CURE DEFAULT")
@@ -632,6 +654,7 @@ def main():
     ensure_notary_signature_lines(doc)
     ensure_ach_terms(doc)
     ensure_attorney_contingency_clause(doc)
+    ensure_independent_counsel_clause(doc)
 
     # Table 0 is the price table in the contract. Keep the table formatting and replace only values.
     table = doc.tables[0]
