@@ -21,6 +21,13 @@ ATTORNEY_CONTINGENCY_TEXT = (
     "signed Contract. If Seller does not so elect, Purchaser's due diligence funds shall be "
     "returned to Purchaser."
 )
+ADVERSE_CONDITION_RESPONSIBILITY_TEXT = (
+    "Seller shall remain responsible for the pending orders or adverse conditions listed below. "
+    "These matters may remain in place during the term of this Contract. To the extent any such "
+    "matter must be released, satisfied, or otherwise resolved to convey marketable title, Seller "
+    "shall cause it to be released, satisfied, or otherwise resolved before or at the closing of "
+    "Purchaser's future sale of the Property, unless resolved earlier or otherwise agreed in writing."
+)
 
 
 def split_address(address):
@@ -379,15 +386,25 @@ def set_adverse_condition(doc, text):
     text = str(text or "").strip()
     if not text:
         text = "NOTE FOR ATTORNEY REVIEW: Confirm whether any pending orders, liens, adverse conditions, title matters, or required disclosures should be listed here before signing."
-    inserted = False
+    use_responsibility_text = not text.startswith("NOTE FOR ATTORNEY REVIEW:")
+    inserted_responsibility = False
+    inserted_adverse = False
     for idx in range(pending_idx + 1, cure_idx or len(doc.paragraphs)):
         if doc.paragraphs[idx].text.strip():
-            if not inserted:
+            if use_responsibility_text and not inserted_responsibility:
+                set_paragraph(doc.paragraphs[idx], ADVERSE_CONDITION_RESPONSIBILITY_TEXT)
+                inserted_responsibility = True
+            elif not inserted_adverse:
                 set_paragraph(doc.paragraphs[idx], text)
-                inserted = True
+                inserted_adverse = True
             else:
                 set_paragraph(doc.paragraphs[idx], "")
-    if inserted:
+    if inserted_adverse:
+        return
+    if use_responsibility_text and inserted_responsibility:
+        anchor = doc.paragraphs[pending_idx + 1]
+        paragraph = insert_paragraph_after(anchor, text)
+        copy_paragraph_format(anchor, paragraph)
         return
     if pending_idx + 1 < len(doc.paragraphs):
         set_paragraph(doc.paragraphs[pending_idx + 1], text)
