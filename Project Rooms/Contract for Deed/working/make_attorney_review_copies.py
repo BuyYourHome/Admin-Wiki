@@ -21,7 +21,7 @@ DOCS = [
                 "ATTORNEY REVIEW NOTE: Please confirm this Contract for Deed complies with North Carolina Chapter 47H, including required contents, signed-and-acknowledged party requirements, delivery of an exact copy to the purchaser, recordation timing, cancellation rights, default/cure rights, periodic-statement obligations, and any additional statutory notices or disclosures that should be included before the document is sent to the seller or buyer.",
             ),
             (
-                "INSTALLMENT PAYMENTS:",
+                "Installment Payments",
                 "MANAGEMENT REVIEW NOTE: Confirm these business terms match the intended deal before sending to counsel or the parties: purchase price, down payment, loan amount, interest rate, monthly ACH draft/payment amount, first payment date, final payment date, number of payments, escrow amounts, and annual statement process. Do not ask the attorney to compare these values against the spreadsheet because the spreadsheet is not part of the attorney review package.",
             ),
             (
@@ -31,6 +31,10 @@ DOCS = [
             (
                 "RIGHT TO CURE DEFAULT:",
                 "ATTORNEY REVIEW NOTE: Please review the default, right-to-cure, forfeiture, eviction, acceleration, and remedy language as a single package across the Contract for Deed and Promissory Note. Confirm whether the cure periods, notice method, and stated remedy are consistent with Chapter 47H and with the intended enforcement process.",
+            ),
+            (
+                "Additional Terms, Conditions or Addenda",
+                "ATTORNEY REVIEW NOTE: Please review the attorney-change contingency language, including Seller's option to proceed under the previously signed Contract if material attorney-required changes cause Purchaser not to proceed, and confirm whether the due diligence/earnest money return language is clear and enforceable.",
             ),
             (
                 "RIGHT TO CANCEL:",
@@ -77,7 +81,7 @@ DOCS = [
                 "ATTORNEY REVIEW NOTE: Please confirm this Promissory Note is appropriate for the Contract for Deed structure, including whether the note should be separate from or incorporated into the Contract for Deed, and whether it conflicts with the Contract for Deed Agreement or Memorandum.",
             ),
             (
-                "7.500% APR",
+                "8.500% APR",
                 "MANAGEMENT REVIEW NOTE: Confirm the principal amount, interest rate, monthly payment, first payment date, final payment date, and maturity/payment count match the intended business terms. Attorney review should focus on legal sufficiency, default remedies, attorney-fee language, and satisfaction language.",
             ),
             (
