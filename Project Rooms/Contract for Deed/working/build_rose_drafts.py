@@ -81,14 +81,8 @@ def normalize_values(v):
     sale_price = float(v.get("SellingPurchasePrice") or v.get("Selling Purchase Price:") or 0)
     down_payment = float(v.get("SellingDownPayment:") or v.get("Selling Down Payment:") or 0)
     earnest_money = float(
-        v.get("SellingErnestMoney:")
-        or v.get("Selling Ernest Money:")
-        or v.get("SellingEarnestMoney:")
+        v.get("SellingEarnestMoney:")
         or v.get("Selling Earnest Money:")
-        or v.get("EarnestMoney")
-        or v.get("Earnest Money")
-        or v.get("BinderDeposit")
-        or v.get("Binder Deposit:")
         or 0
     )
     remaining_down_payment = down_payment - earnest_money

@@ -55,7 +55,7 @@ For the current 320 Rose package:
 
 - Do not include a deed in the package unless Wes changes the scope.
 - Use only `LoanStart1` and `LoanEnd1`; ignore `LoanStart2` and `LoanEnd2`.
-- Earnest money paid at contract signing comes from `Selling Ernest Money:` on the `Docs` worksheet.
+- Earnest money paid at contract signing comes from `Selling Earnest Money:` on the `Docs` worksheet. Do not use buying-side `BinderDeposit` / `Binder Deposit:` fields for seller documents.
 - `Selling Down Payment:` is the total down payment; remaining down payment due at closing is total down payment minus earnest money.
 - Preserve Wes-edited purchase-price table formatting, including row height and justification, when refreshing table values.
 - Seller signature stays anonymous as the trust/trustee structure: `Investment Services LLC, Trustee - Wes Browning, Manager`.
