@@ -17,6 +17,8 @@ Create contract-for-deed sale document packages, currently focused on selling 32
 
 Use Cool Springs as the transaction/document reference and 320 Rose as the property/project source. Do not alter originals in the Property folders from this room; work from staged copies and write drafts to `working` or `output`.
 
+Do not sync the installed `contract-for-deed` Codex skill merely because scripts, drafts, or prototypes in this project room changed. Keep project-room work here until the new prototypes/workflow are completed. Sync the installed skill only after the prototypes are ready or when Wes explicitly asks to update the installed skill.
+
 ## Spreadsheet Refresh Rule
 
 When Wes says the Teams/Property workbook has been updated and asks for doc values, copy a fresh staged copy from:

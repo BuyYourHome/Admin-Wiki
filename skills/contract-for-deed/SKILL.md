@@ -73,5 +73,5 @@ When changing this skill:
 
 1. Make the change in the wiki copy first.
 2. If project-room scripts or instructions change, update the project room at the same time.
-3. Run `C:\Codex\Wiki Files\tools\sync-codex-skills.ps1` to refresh the local installed copy.
-4. Commit and push the Admin wiki changes.
+3. Commit and push the Admin wiki changes.
+4. Do not sync the installed local skill merely because project-room scripts, prototypes, or drafts changed. Sync after the new prototypes/workflow are completed, or when Wes explicitly asks to update the installed skill.

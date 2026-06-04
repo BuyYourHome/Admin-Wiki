@@ -53,7 +53,7 @@ Use this repo when formulating solutions for office-admin workflows, SOPs, autom
 - Automation prompts should point to the relevant Markdown instructions when possible.
 - If a workflow becomes repeatable, document it here before or while creating the automation.
 - Canonical Admin workflow skills live under `C:\Codex\Wiki Files\skills`; local `%USERPROFILE%\.codex\skills` copies are installed/synced copies, not the source of truth.
-- After changing a wiki-managed skill, run `tools\sync-codex-skills.ps1`, commit the wiki update, and push to GitHub so other computers can pull and sync it.
+- After changing a wiki-managed skill, commit the wiki update and push to GitHub. Run `tools\sync-codex-skills.ps1` only when the updated skill is ready to become the installed local version.
 - When creating, renaming, pausing, deleting, or materially changing an agent-like function, update `Agents and Automations Registry.md`.
 - Keep review folders separate when the user has specified separate workflows, such as statement review versus invoice review.
 - If a mailbox, folder, or external service is unavailable, do not substitute a similar one without explicit permission.
