@@ -97,6 +97,7 @@ This project room is the working version of a process that may later become a Co
    - Preserve Wes's section 7 installment-payment formatting, including justification, boldness, indentation, spacing, page breaks, and edited table layout. Keep the labels in the left column and update the spreadsheet-derived installment values in the values table in the right column rather than recreating the section.
    - Include an Additional Terms paragraph stating the contract is signed subject to changes Seller's attorney may make or require, that the parties will sign the contract again at closing or execute a required amendment, that Seller may elect to proceed under the previously signed contract if material attorney-required changes cause Purchaser not to proceed, and that Purchaser's due diligence funds will be returned if Seller does not so elect.
    - Include an Additional Terms paragraph stating that Seller is not providing legal advice and Purchaser may consult an attorney of Purchaser's choice, at Purchaser's expense, before signing and before closing.
+   - Prefer section-title references over paragraph-number references when referring to conditions in `Additional Terms, Conditions or Addenda`, so references do not drift when numbered sections are inserted or reordered.
    - Use only `LoanStart1` and `LoanEnd1`; ignore `LoanStart2` and `LoanEnd2`.
    - The section 9 adverse-condition placeholder should explicitly say `NOTE FOR ATTORNEY REVIEW` and should appear only once.
    - Trim any trailing blank/text content after the final purchaser notary block.
