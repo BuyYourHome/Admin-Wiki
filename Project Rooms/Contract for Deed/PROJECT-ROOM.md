@@ -31,6 +31,8 @@ to:
 
 Then use the `Docs` worksheet as the source of truth for document values.
 
+All fields needed by the document generators should be exposed on the `Docs` worksheet. Do not have the document generators pull contract values directly from other workbook tabs such as `Amortization`, `Contract`, `Base`, or buying/acquisition tabs. If a needed value is calculated elsewhere, add or correct a named field on `Docs` and have the generator read that `Docs` field.
+
 For Rose sale documents, use only `LoanStart1` and `LoanEnd1` for loan/payment date fields. Ignore `LoanStart2` and `LoanEnd2`.
 
 When regenerating Rose draft documents, overwrite the standard `DRAFT` files in `output` each time instead of creating revision-numbered copies, unless Wes explicitly asks to preserve a separate version.
@@ -55,7 +57,7 @@ This project room is the working version of a process that may later become a Co
 
 2. When Wes updates the 320 Rose spreadsheet, refresh the staged workbook from the Teams/Property source path into `source\320 Rose project spreadsheet`.
 
-3. Read document values from the `Docs` worksheet. Current important fields include:
+3. Read document values from the `Docs` worksheet only. Current important fields include:
    - `Selling-Buyer1`
    - `Selling-Buyer2`
    - `Selling-Buyer Add1`

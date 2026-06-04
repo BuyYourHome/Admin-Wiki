@@ -33,7 +33,7 @@ Use this workflow when Wes asks to refresh or recreate contract-for-deed sale do
 3. If any draft is newer than its prototype, inspect it for generated review blocks.
 4. Save clean newer drafts as the current prototype before regenerating. Do not preserve generated attorney-review notes as template content.
 5. Refresh the staged project spreadsheet from the live project spreadsheet.
-6. Read document values from the workbook `Docs` worksheet.
+6. Read document values from the workbook `Docs` worksheet only. If a value is calculated elsewhere in the workbook, it must be exposed as a `Docs` field before the document generator uses it.
 7. Regenerate the standard clean draft files, overwriting the existing drafts unless Wes asks for revision copies.
 8. Verify clean drafts contain no generated attorney-review or management-review blocks.
 9. Verify key values from the `Docs` worksheet appear in the generated documents.
@@ -55,6 +55,7 @@ For the current 320 Rose package:
 
 - Do not include a deed in the package unless Wes changes the scope.
 - Use only `LoanStart1` and `LoanEnd1`; ignore `LoanStart2` and `LoanEnd2`.
+- Document generators must read contract values from the `Docs` worksheet, not directly from other workbook tabs. Add/correct `Docs` fields when new values are needed.
 - Earnest money paid at contract signing comes from `Selling Earnest Money:` on the `Docs` worksheet. Do not use buying-side `BinderDeposit` / `Binder Deposit:` fields for seller documents.
 - `Selling Down Payment:` is the total down payment; remaining down payment due at closing is total down payment minus earnest money.
 - Preserve Wes-edited purchase-price table formatting, including row height and justification, when refreshing table values.
