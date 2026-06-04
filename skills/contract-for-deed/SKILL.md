@@ -55,6 +55,9 @@ For the current 320 Rose package:
 
 - Do not include a deed in the package unless Wes changes the scope.
 - Use only `LoanStart1` and `LoanEnd1`; ignore `LoanStart2` and `LoanEnd2`.
+- Earnest money paid at contract signing comes from `BinderDeposit` / `Binder Deposit:` on the `Docs` worksheet unless a more specific `Selling Earnest Money` field is added.
+- `Selling Down Payment:` is the total down payment; remaining down payment due at closing is total down payment minus earnest money.
+- Preserve Wes-edited purchase-price table formatting, including row height and justification, when refreshing table values.
 - Seller signature stays anonymous as the trust/trustee structure: `Investment Services LLC, Trustee - Wes Browning, Manager`.
 - The ACH draft paragraph belongs where Wes placed it as section 7(d).
 - Buyer ACH account/routing blanks stay on the buyer signature page.

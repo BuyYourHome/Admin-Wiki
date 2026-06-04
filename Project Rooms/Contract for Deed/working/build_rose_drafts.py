@@ -80,6 +80,16 @@ def normalize_values(v):
     buyer = " and ".join(part for part in [buyer1, buyer2] if part)
     sale_price = float(v.get("SellingPurchasePrice") or v.get("Selling Purchase Price:") or 0)
     down_payment = float(v.get("SellingDownPayment:") or v.get("Selling Down Payment:") or 0)
+    earnest_money = float(
+        v.get("SellingEarnestMoney:")
+        or v.get("Selling Earnest Money:")
+        or v.get("EarnestMoney")
+        or v.get("Earnest Money")
+        or v.get("BinderDeposit")
+        or v.get("Binder Deposit:")
+        or 0
+    )
+    remaining_down_payment = down_payment - earnest_money
     loan_amount = float(v.get("LoanAmount:") or v.get("Loan Amount:") or (sale_price - down_payment))
     monthly_pi = float(v.get("Monthly Payment1") or v.get("PrincipalInterst") or 0)
     insurance = float(v.get("PropertyInsurance") or v.get("Property Insurance:") or 0)
@@ -125,6 +135,8 @@ def normalize_values(v):
         "brief_legal": str(v.get("BriefLegalDescription") or v.get("Brief Legal Description") or ""),
         "sale_price": sale_price,
         "down_payment": down_payment,
+        "earnest_money": earnest_money,
+        "remaining_down_payment": remaining_down_payment,
         "loan_amount": loan_amount,
         "monthly_pi": monthly_pi,
         "insurance": insurance,

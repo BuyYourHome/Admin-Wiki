@@ -143,6 +143,23 @@ def set_first_paragraph_starting(doc, startswith, text):
     return idx
 
 
+def set_first_paragraph_starting_any(doc, startswith_options, text, red=False):
+    for startswith in startswith_options:
+        idx = find_paragraph(doc, startswith)
+        if idx is not None:
+            set_paragraph(doc.paragraphs[idx], text, red=red)
+            return idx
+    return None
+
+
+def set_cell_text_preserve_formatting(cell, text, red=False):
+    if not cell.paragraphs:
+        cell.add_paragraph()
+    set_paragraph(cell.paragraphs[0], text, red=red)
+    for paragraph in cell.paragraphs[1:]:
+        set_paragraph(paragraph, "")
+
+
 def set_adverse_condition(doc, text):
     pending_idx = find_paragraph(doc, "PENDING ORDERS OR ADVERSE CONDITIONS:")
     cure_idx = find_paragraph(doc, "RIGHT TO CURE DEFAULT")
@@ -213,8 +230,29 @@ def trim_after_last_notary(doc):
 
 
 def set_receipt_acknowledgment(doc, x):
-    text = f"[ ] Agent   [X] Seller, by the signature below, acknowledge receipt of {money(x['down_payment'])} [  ] Cash   [   ] Check, as binder deposit, which is the amount mentioned in paragraph 1A of this Agreement."
-    set_first_paragraph_starting(doc, "[ ] Agent", text)
+    text = f"[ ] Agent   [X] Seller, by the signature below, acknowledge receipt of {money(x['earnest_money'])} [  ] Cash   [   ] Check, as earnest money deposit, which is credited toward the total down payment mentioned in paragraph 1A of this Agreement. The remaining down payment balance of {money(x['remaining_down_payment'])} shall be paid at closing."
+    set_first_paragraph_starting_any(doc, ["[ ] Agent"], text, red=True)
+
+
+def set_earnest_money_terms(doc, x):
+    set_first_paragraph_starting_any(
+        doc,
+        [
+            "Earnest money deposit",
+            "Binder deposit which will remain as a binder",
+        ],
+        "Earnest money deposit to be paid by Purchaser upon execution of this Contract. This earnest money shall remain as a binder until closing, unless sooner forfeited or returned according to the provisions in this Agreement, and shall be credited toward the total down payment.",
+        red=True,
+    )
+    set_first_paragraph_starting_any(
+        doc,
+        [
+            "Remaining balance of the down payment",
+            "Additional binder deposit due",
+        ],
+        "Remaining balance of the down payment due at closing.",
+        red=True,
+    )
 
 
 def set_purchaser_notary(doc, x):
@@ -357,6 +395,7 @@ def main():
     set_first_paragraph_starting(doc, "Total Monthly Payment:", f"Total Monthly Payment:\t{money(x['total_payment']).replace('$', '')}")
     set_first_paragraph_starting(doc, "Total Number of Installment Payments:", f"Total Number of Installment Payments:\t{x['term_months']}")
     set_adverse_condition(doc, x["adverse"])
+    set_earnest_money_terms(doc, x)
 
     set_seller_signature_manager(doc, x)
     set_receipt_acknowledgment(doc, x)
@@ -368,13 +407,17 @@ def main():
 
     # Table 0 is the price table in the contract. Keep the table formatting and replace only values.
     table = doc.tables[0]
-    table.cell(0, 1).text = money(x["down_payment"]).replace("$", "")
+    set_cell_text_preserve_formatting(table.cell(0, 0), "$", red=True)
+    set_cell_text_preserve_formatting(table.cell(0, 1), money(x["earnest_money"]).replace("$", ""), red=True)
+    if len(table.rows) > 1:
+        set_cell_text_preserve_formatting(table.cell(1, 0), "$", red=True)
+        set_cell_text_preserve_formatting(table.cell(1, 1), money(x["remaining_down_payment"]).replace("$", ""), red=True)
     loan_row = 6 if len(table.rows) > 6 else len(table.rows) - 2
     total_row = 8 if len(table.rows) == 9 else 9
     if len(table.rows) > 2:
-        table.cell(2, 1).text = ""
-    table.cell(loan_row, 1).text = money(x["loan_amount"]).replace("$", "")
-    table.cell(total_row, 1).text = money(x["sale_price"]).replace("$", "")
+        set_cell_text_preserve_formatting(table.cell(2, 1), "")
+    set_cell_text_preserve_formatting(table.cell(loan_row, 1), money(x["loan_amount"]).replace("$", ""))
+    set_cell_text_preserve_formatting(table.cell(total_row, 1), money(x["sale_price"]).replace("$", ""))
 
     replace_text_in_paragraphs(
         doc,
