@@ -2,6 +2,7 @@ from copy import deepcopy
 from pathlib import Path
 
 from docx import Document
+from docx.enum.table import WD_TABLE_ALIGNMENT, WD_CELL_VERTICAL_ALIGNMENT
 from docx.shared import RGBColor
 
 from build_rose_drafts import get_docs_values, normalize_values, money, short_date
@@ -164,6 +165,98 @@ def set_cell_text_preserve_formatting(cell, text, red=False):
     set_paragraph(cell.paragraphs[0], text, red=red)
     for paragraph in cell.paragraphs[1:]:
         set_paragraph(paragraph, "")
+
+
+def copy_paragraph_format(source, target):
+    target.style = source.style
+    target.alignment = source.alignment
+    target.paragraph_format.left_indent = source.paragraph_format.left_indent
+    target.paragraph_format.right_indent = source.paragraph_format.right_indent
+    target.paragraph_format.first_line_indent = source.paragraph_format.first_line_indent
+    target.paragraph_format.space_before = source.paragraph_format.space_before
+    target.paragraph_format.space_after = source.paragraph_format.space_after
+    target.paragraph_format.line_spacing = source.paragraph_format.line_spacing
+
+
+def remove_paragraph(paragraph):
+    paragraph._element.getparent().remove(paragraph._element)
+
+
+def insert_table_after_paragraph(doc, paragraph, rows, cols):
+    table = doc.add_table(rows=rows, cols=cols)
+    paragraph._p.addnext(table._tbl)
+    return table
+
+
+def replace_installment_block_with_table(doc, x):
+    heading_idx = find_paragraph(doc, "INSTALLMENT PAYMENTS:")
+    if heading_idx is None:
+        return
+    end_idx = find_paragraph(doc, "ACH DRAFT PAYMENTS:")
+    if end_idx is None:
+        end_idx = find_paragraph(doc, "AMORTIZATION SCHEDULE:")
+    if end_idx is None or end_idx <= heading_idx:
+        return
+
+    template_paragraphs = doc.paragraphs[heading_idx + 1 : end_idx]
+    while template_paragraphs and not template_paragraphs[-1].text.strip():
+        template_paragraphs.pop()
+    base_paragraph = template_paragraphs[0] if template_paragraphs else doc.paragraphs[heading_idx]
+
+    value_rows = [
+        str(x["term_months"]),
+        short_date(x["loan_start"]),
+        short_date(x["loan_end"]),
+        money(x["monthly_pi"]).replace("$", ""),
+        money(x["insurance"]).replace("$", ""),
+        money(x["tax"]).replace("$", ""),
+        money(x["total_payment"]).replace("$", ""),
+    ]
+    label_rows = [
+        "For the first instalments:",
+        "Due Date of the First Installment Payment:",
+        "Due Date of the Last Installment Payment:",
+        "Principal and Interest:",
+        "Property Insurance *:",
+        "Property Tax *:",
+        "Total Monthly Payment:",
+    ]
+
+    body = doc._body._element
+    children = list(body)
+    start_pos = children.index(doc.paragraphs[heading_idx]._p)
+    end_pos = children.index(doc.paragraphs[end_idx]._p)
+    for child in children[start_pos + 1 : end_pos]:
+        body.remove(child)
+
+    outer = insert_table_after_paragraph(doc, doc.paragraphs[heading_idx], 1, 2)
+    outer.alignment = WD_TABLE_ALIGNMENT.CENTER
+    left_cell = outer.cell(0, 0)
+    right_cell = outer.cell(0, 1)
+    left_cell.vertical_alignment = WD_CELL_VERTICAL_ALIGNMENT.TOP
+    right_cell.vertical_alignment = WD_CELL_VERTICAL_ALIGNMENT.TOP
+
+    nested = left_cell.add_table(rows=7, cols=1)
+    nested.alignment = WD_TABLE_ALIGNMENT.CENTER
+    nested.style = "Table Grid"
+    if left_cell.paragraphs and not left_cell.paragraphs[0].text.strip():
+        remove_paragraph(left_cell.paragraphs[0])
+    for idx, value in enumerate(value_rows):
+        nested_cell = nested.cell(idx, 0)
+        nested_cell.vertical_alignment = WD_CELL_VERTICAL_ALIGNMENT.CENTER
+        set_cell_text_preserve_formatting(nested_cell, value)
+        nested_cell.paragraphs[0].alignment = base_paragraph.alignment
+
+    set_paragraph(right_cell.paragraphs[0], label_rows[0])
+    copy_paragraph_format(base_paragraph, right_cell.paragraphs[0])
+    for label in label_rows[1:]:
+        p = right_cell.add_paragraph()
+        copy_paragraph_format(base_paragraph, p)
+        set_paragraph(p, label)
+
+    p = right_cell.add_paragraph()
+    copy_paragraph_format(base_paragraph, p)
+    set_paragraph(p, "(*) The property Insurance and Property Tax values are correct for the contract year only and will adjust annually.")
 
 
 def set_adverse_condition(doc, text):
@@ -398,6 +491,7 @@ def main():
     set_first_paragraph_starting(doc, "Property Tax:", f"Property Tax:\t\t {money(x['tax']).replace('$', '')}")
     set_first_paragraph_starting(doc, "Total Monthly Payment:", f"Total Monthly Payment:\t{money(x['total_payment']).replace('$', '')}")
     set_first_paragraph_starting(doc, "Total Number of Installment Payments:", f"Total Number of Installment Payments:\t{x['term_months']}")
+    replace_installment_block_with_table(doc, x)
     set_adverse_condition(doc, x["adverse"])
     set_earnest_money_terms(doc, x)
 

@@ -91,6 +91,8 @@ This project room is the working version of a process that may later become a Co
    - Earnest money paid at contract signing comes from `Selling Earnest Money:` on the `Docs` worksheet. Do not use the buying-side `BinderDeposit` / `Binder Deposit:` fields for seller documents.
    - `Selling Down Payment:` is the total down payment. The remaining down payment due at closing is `Selling Down Payment:` minus earnest money.
    - Preserve Wes's table formatting, including row height and justification, when refreshing earnest-money and down-payment table values.
+   - Preserve Wes's centered formatting for the inserted `Adverse Conditions`/lien lines in section 9.
+   - In section 7, show the installment values in a seven-row table in the left column and the related installment-payment labels in the right column.
    - Use only `LoanStart1` and `LoanEnd1`; ignore `LoanStart2` and `LoanEnd2`.
    - The section 9 adverse-condition placeholder should explicitly say `NOTE FOR ATTORNEY REVIEW` and should appear only once.
    - Trim any trailing blank/text content after the final purchaser notary block.
