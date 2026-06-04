@@ -143,6 +143,12 @@ def set_first_paragraph_starting(doc, startswith, text):
     return idx
 
 
+def set_county_of_paragraph(paragraph, county):
+    original = paragraph.text
+    prefix = original[: len(original) - len(original.lstrip())]
+    set_paragraph(paragraph, f"{prefix}County of: {str(county).title()}")
+
+
 def set_first_paragraph_starting_any(doc, startswith_options, text, red=False):
     for startswith in startswith_options:
         idx = find_paragraph(doc, startswith)
@@ -187,7 +193,7 @@ def set_seller_signature_manager(doc, x):
     for idx, paragraph in enumerate(doc.paragraphs):
         text = paragraph.text
         if "[MANAGER NAME]" in text or (x["trustee"] in text and "Trustee" in text and "Manager" in text):
-            set_paragraph(paragraph, signature_text, red=True)
+            set_paragraph(paragraph, signature_text)
             if idx + 1 < len(doc.paragraphs) and doc.paragraphs[idx + 1].text.strip() == f"{x['manager']}, Manager":
                 set_paragraph(doc.paragraphs[idx + 1], "")
             return
@@ -204,7 +210,7 @@ def set_seller_notary_manager(doc, x):
         if "personally appeared before me this day and acknowledged the execution" in text and (
             "[MANAGER NAME]" in text or x["manager"] not in text
         ):
-            set_notary_acknowledgment(paragraph, x["manager"], red_signer=True)
+            set_notary_acknowledgment(paragraph, x["manager"])
             return
 
 
@@ -231,7 +237,7 @@ def trim_after_last_notary(doc):
 
 def set_receipt_acknowledgment(doc, x):
     text = f"[ ] Agent   [X] Seller, by the signature below, acknowledge receipt of {money(x['earnest_money'])} [  ] Cash   [   ] Check, as earnest money deposit, which is credited toward the total down payment mentioned in paragraph 1A of this Agreement. The remaining down payment balance of {money(x['remaining_down_payment'])} shall be paid at closing."
-    set_first_paragraph_starting_any(doc, ["[ ] Agent"], text, red=True)
+    set_first_paragraph_starting_any(doc, ["[ ] Agent"], text)
 
 
 def set_earnest_money_terms(doc, x):
@@ -242,7 +248,6 @@ def set_earnest_money_terms(doc, x):
             "Binder deposit which will remain as a binder",
         ],
         "Earnest money deposit to be paid by Purchaser upon execution of this Contract. This earnest money shall remain as a binder until closing, unless sooner forfeited or returned according to the provisions in this Agreement, and shall be credited toward the total down payment.",
-        red=True,
     )
     set_first_paragraph_starting_any(
         doc,
@@ -251,7 +256,6 @@ def set_earnest_money_terms(doc, x):
             "Additional binder deposit due",
         ],
         "Remaining balance of the down payment due at closing.",
-        red=True,
     )
 
 
@@ -306,9 +310,9 @@ def apply_notary_block_revisions(doc, x):
                     break
             if prefix_idx is not None:
                 set_notary_certification_prefix(doc.paragraphs[prefix_idx])
-                set_notary_signer_continuation(paragraph, signer_text, red_signer=True)
+                set_notary_signer_continuation(paragraph, signer_text)
             else:
-                set_notary_acknowledgment(paragraph, signer_text, red_signer=True)
+                set_notary_acknowledgment(paragraph, signer_text)
 
 
 def insert_paragraph_after(paragraph, text):
@@ -370,7 +374,7 @@ def main():
     remove_after_contract(doc)
 
     # Direct paragraph substitutions at the same paragraph positions as the Cool Springs contract.
-    set_paragraph(doc.paragraphs[3], f"{x['trust']}, by and through {x['trustee']}, Trustee, (Seller)", red=True)
+    set_paragraph(doc.paragraphs[3], f"{x['trust']}, by and through {x['trustee']}, Trustee, (Seller)")
     set_paragraph(doc.paragraphs[5], trustee_line1)
     set_paragraph(doc.paragraphs[6], trustee_line2)
     set_paragraph(doc.paragraphs[8], f"{x['buyer']}, (Purchaser)")
@@ -379,7 +383,7 @@ def main():
     set_paragraph(doc.paragraphs[17], x["property_address"])
     set_paragraph(doc.paragraphs[18], x["property_city_state"])
     set_paragraph(doc.paragraphs[21], x["brief_legal"] or x["legal"])
-    set_paragraph(doc.paragraphs[23], f"County of: {x['county']}")
+    set_county_of_paragraph(doc.paragraphs[23], x["county"])
 
     set_first_paragraph_starting(
         doc,
@@ -407,11 +411,11 @@ def main():
 
     # Table 0 is the price table in the contract. Keep the table formatting and replace only values.
     table = doc.tables[0]
-    set_cell_text_preserve_formatting(table.cell(0, 0), "$", red=True)
-    set_cell_text_preserve_formatting(table.cell(0, 1), money(x["earnest_money"]).replace("$", ""), red=True)
+    set_cell_text_preserve_formatting(table.cell(0, 0), "$")
+    set_cell_text_preserve_formatting(table.cell(0, 1), money(x["earnest_money"]).replace("$", ""))
     if len(table.rows) > 1:
-        set_cell_text_preserve_formatting(table.cell(1, 0), "$", red=True)
-        set_cell_text_preserve_formatting(table.cell(1, 1), money(x["remaining_down_payment"]).replace("$", ""), red=True)
+        set_cell_text_preserve_formatting(table.cell(1, 0), "$")
+        set_cell_text_preserve_formatting(table.cell(1, 1), money(x["remaining_down_payment"]).replace("$", ""))
     loan_row = 6 if len(table.rows) > 6 else len(table.rows) - 2
     total_row = 8 if len(table.rows) == 9 else 9
     if len(table.rows) > 2:
