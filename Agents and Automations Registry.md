@@ -13,7 +13,7 @@ Codex does not currently show every role below in one unified "Agents" list. Som
 | OfficeAssist Morning Email Summary | Cron automation | Active | Daily at 8:00 AM Eastern | `C:\Users\wesbr\.codex\automations\officeassist-morning-email-summary\automation.toml` |
 | Document Scanning | Wiki-managed skill plus cron automation | Active | Daily at 10:00 AM, 12:00 PM, 2:00 PM, and 4:00 PM | `skills\document-scanning\SKILL.md`; `C:\Users\wesbr\.codex\skills\document-scanning\SKILL.md`; `C:\Users\wesbr\.codex\automations\document-scanning\automation.toml` |
 | Codex Skill Source Control | Wiki-managed skill system | Active | On demand after skill changes or wiki pulls | `Codex Skill Source Rule.md`; `tools\sync-codex-skills.ps1`; `skills\` |
-| Contract for Deed Sale Docs | Wiki-managed skill plus project room | Active | On demand | `skills\contract-for-deed-sale-docs\SKILL.md`; `Project Rooms\Contract for Deed\PROJECT-ROOM.md` |
+| Contract for Deed | Wiki-managed skill plus project room | Active | On demand | `skills\contract-for-deed\SKILL.md`; `Project Rooms\Contract for Deed\PROJECT-ROOM.md` |
 | Grocery List Handler | Wiki rule and data workflow | Active | On demand, including approved Boss/Jenny text instructions | `operations/grocery-list/` |
 | AI Project Room Workflow | Wiki workflow | Active | On demand before complex multi-source work | `Project Room Workflow.md` |
 | Project Management Spreadsheet Rewrite | Project Room | Active/planning | On demand | `Project Rooms\Project Management Spreadsheet Rewrite\README.md` |
@@ -190,7 +190,7 @@ Important rules:
 - Treat `%USERPROFILE%\.codex\skills` as the installed local copy only.
 - After changing a wiki-managed skill, sync locally, commit, and push the wiki update.
 
-## Contract for Deed Sale Docs
+## Contract for Deed
 
 Type: wiki-managed skill plus project room.
 
@@ -204,7 +204,7 @@ Purpose:
 
 Defined in:
 
-- Skill source: `C:\Codex\Wiki Files\skills\contract-for-deed-sale-docs\SKILL.md`
+- Skill source: `C:\Codex\Wiki Files\skills\contract-for-deed\SKILL.md`
 - Project room: `C:\Codex\Wiki Files\Project Rooms\Contract for Deed\PROJECT-ROOM.md`
 
 Important rules:

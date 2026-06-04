@@ -1,4 +1,4 @@
 interface:
-  display_name: "Contract for Deed Sale Docs"
+  display_name: "Contract for Deed"
   short_description: "Refresh seller document packages."
   default_prompt: "Refresh the contract-for-deed seller documents from the project spreadsheet."

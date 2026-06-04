@@ -1,9 +1,9 @@
 ---
-name: contract-for-deed-sale-docs
+name: contract-for-deed
 description: Use when refreshing, regenerating, reviewing, or packaging contract-for-deed seller documents from a real estate project spreadsheet, including the 320 Rose package and future similar Buy Your Home seller document packages.
 ---
 
-# Contract For Deed Sale Docs
+# Contract For Deed
 
 ## Source Of Truth
 
