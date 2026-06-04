@@ -88,6 +88,7 @@ This project room is the working version of a process that may later become a Co
    - Seller stays anonymous as the trust. The trust is seller, and the trustee signs for the trust.
    - Seller signature line should read in substance: `Investment Services LLC, Trustee - Wes Browning, Manager`.
    - Do not add a second standalone `Wes Browning, Manager` line under the seller signature line.
+   - Seller/trustee mailing addresses must include the full city, state, and ZIP from the `Docs` worksheet. Do not truncate comma-separated address fields.
    - Earnest money paid at contract signing comes from `Selling Earnest Money:` on the `Docs` worksheet. Do not use the buying-side `BinderDeposit` / `Binder Deposit:` fields for seller documents.
    - `Selling Down Payment:` is the total down payment. The remaining down payment due at closing is `Selling Down Payment:` minus earnest money.
    - Preserve Wes's table formatting, including row height and justification, when refreshing earnest-money and down-payment table values.

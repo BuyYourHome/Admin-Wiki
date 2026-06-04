@@ -25,10 +25,8 @@ ATTORNEY_CONTINGENCY_TEXT = (
 
 def split_address(address):
     parts = [part.strip() for part in str(address).split(",") if part.strip()]
-    if len(parts) >= 3:
-        return parts[0], f"{parts[1]}, {parts[2]}"
-    if len(parts) == 2:
-        return parts[0], parts[1]
+    if len(parts) >= 2:
+        return parts[0], ", ".join(parts[1:])
     return str(address), ""
 
 
