@@ -61,7 +61,7 @@ This project room is the working version of a process that may later become a Co
    - `Selling -Seller`
    - `Selling Purchase Price:`
    - `Selling Down Payment:`
-   - `BinderDeposit` or `Binder Deposit:` for earnest money paid at contract signing
+   - `Selling Ernest Money:` for earnest money paid at contract signing
    - `Loan Amount:`
    - `Monthly Payment1`
    - `Loan Start1`
@@ -83,7 +83,7 @@ This project room is the working version of a process that may later become a Co
    - Seller stays anonymous as the trust. The trust is seller, and the trustee signs for the trust.
    - Seller signature line should read in substance: `Investment Services LLC, Trustee - Wes Browning, Manager`.
    - Do not add a second standalone `Wes Browning, Manager` line under the seller signature line.
-   - Earnest money paid at contract signing comes from `BinderDeposit` / `Binder Deposit:` on the `Docs` worksheet.
+   - Earnest money paid at contract signing comes from `Selling Ernest Money:` on the `Docs` worksheet.
    - `Selling Down Payment:` is the total down payment. The remaining down payment due at closing is `Selling Down Payment:` minus earnest money.
    - Preserve Wes's table formatting, including row height and justification, when refreshing earnest-money and down-payment table values.
    - Use only `LoanStart1` and `LoanEnd1`; ignore `LoanStart2` and `LoanEnd2`.
