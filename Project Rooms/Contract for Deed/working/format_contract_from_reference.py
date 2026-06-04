@@ -4,6 +4,7 @@ from pathlib import Path
 from docx import Document
 from docx.enum.table import WD_TABLE_ALIGNMENT, WD_CELL_VERTICAL_ALIGNMENT
 from docx.shared import RGBColor
+from docx.table import Table
 
 from build_rose_drafts import get_docs_values, normalize_values, money, short_date
 
@@ -12,6 +13,12 @@ ROOT = Path(r"C:\Codex\Wiki Files\Project Rooms\Contract for Deed")
 PROTOTYPE = ROOT / "reference" / "Rose contract prototype" / "320 Rose - Contract for Deed Agreement - PROTOTYPE.docx"
 REFERENCE = ROOT / "reference" / "Cool Springs selling docs" / "25-02-21 Seller Docs.docx"
 OUTPUT = ROOT / "output" / "320 Rose - Contract for Deed Agreement - DRAFT.docx"
+ATTORNEY_CONTINGENCY_TEXT = (
+    "This Contract is signed contingent upon any changes Seller's attorney may make or require. "
+    "The parties shall sign the Contract again at closing with any such alterations incorporated. "
+    "If any such changes are sufficient to cause Purchaser to withdraw from the transaction, "
+    "Purchaser's due diligence funds shall be returned to Purchaser."
+)
 
 
 def split_address(address):
@@ -137,6 +144,14 @@ def find_paragraph(doc, startswith):
     return None
 
 
+def find_paragraph_containing(doc, needle):
+    needle = needle.lower()
+    for idx, paragraph in enumerate(doc.paragraphs):
+        if needle in paragraph.text.strip().lower():
+            return idx
+    return None
+
+
 def set_first_paragraph_starting(doc, startswith, text):
     idx = find_paragraph(doc, startswith)
     if idx is not None:
@@ -188,20 +203,43 @@ def insert_table_after_paragraph(doc, paragraph, rows, cols):
     return table
 
 
+def cell_text(cell):
+    return "\n".join(paragraph.text for paragraph in cell.paragraphs).strip()
+
+
+def fill_cell_lines_preserve_formatting(cell, lines):
+    if not cell.paragraphs:
+        cell.add_paragraph()
+    template = cell.paragraphs[0]
+    while len(cell.paragraphs) < len(lines):
+        paragraph = cell.add_paragraph()
+        copy_paragraph_format(template, paragraph)
+    for idx, line in enumerate(lines):
+        set_paragraph(cell.paragraphs[idx], line)
+    for paragraph in list(cell.paragraphs[len(lines) :]):
+        remove_paragraph(paragraph)
+
+
+def table_after_heading_before(doc, heading_idx, end_idx):
+    body = doc._body._element
+    children = list(body)
+    start_pos = children.index(doc.paragraphs[heading_idx]._p)
+    end_pos = children.index(doc.paragraphs[end_idx]._p)
+    for child in children[start_pos + 1 : end_pos]:
+        if child.tag.endswith("}tbl"):
+            return Table(child, doc)
+    return None
+
+
 def replace_installment_block_with_table(doc, x):
-    heading_idx = find_paragraph(doc, "INSTALLMENT PAYMENTS:")
+    heading_idx = find_paragraph_containing(doc, "Installment Payments")
     if heading_idx is None:
         return
-    end_idx = find_paragraph(doc, "ACH DRAFT PAYMENTS:")
+    end_idx = find_paragraph_containing(doc, "ACH DRAFT PAYMENTS:")
     if end_idx is None:
-        end_idx = find_paragraph(doc, "AMORTIZATION SCHEDULE:")
+        end_idx = find_paragraph_containing(doc, "AMORTIZATION SCHEDULE:")
     if end_idx is None or end_idx <= heading_idx:
         return
-
-    template_paragraphs = doc.paragraphs[heading_idx + 1 : end_idx]
-    while template_paragraphs and not template_paragraphs[-1].text.strip():
-        template_paragraphs.pop()
-    base_paragraph = template_paragraphs[0] if template_paragraphs else doc.paragraphs[heading_idx]
 
     value_rows = [
         str(x["term_months"]),
@@ -221,6 +259,41 @@ def replace_installment_block_with_table(doc, x):
         "Property Tax *:",
         "Total Monthly Payment:",
     ]
+
+    existing_table = table_after_heading_before(doc, heading_idx, end_idx)
+    if existing_table is not None:
+        target_cell = None
+        label_markers = ("Number of Installments", "For the first", "Due Date of the First", "Principal and Interest")
+        for row in existing_table.rows:
+            cells = row.cells
+            for col_idx, cell in enumerate(cells):
+                text = cell_text(cell)
+                if any(marker in text for marker in label_markers):
+                    if col_idx == 0 and len(cells) > 1:
+                        target_cell = cells[1]
+                    elif col_idx > 0:
+                        target_cell = cells[col_idx - 1]
+                    break
+            if target_cell is not None:
+                break
+        if target_cell is None:
+            for row in existing_table.rows:
+                for cell in row.cells:
+                    if not cell_text(cell):
+                        target_cell = cell
+                        break
+                if target_cell is not None:
+                    break
+        if target_cell is None and len(existing_table.columns) > 1:
+            target_cell = existing_table.cell(0, 1)
+        if target_cell is not None:
+            fill_cell_lines_preserve_formatting(target_cell, value_rows)
+            return
+
+    template_paragraphs = doc.paragraphs[heading_idx + 1 : end_idx]
+    while template_paragraphs and not template_paragraphs[-1].text.strip():
+        template_paragraphs.pop()
+    base_paragraph = template_paragraphs[0] if template_paragraphs else doc.paragraphs[heading_idx]
 
     body = doc._body._element
     children = list(body)
@@ -257,6 +330,29 @@ def replace_installment_block_with_table(doc, x):
     p = right_cell.add_paragraph()
     copy_paragraph_format(base_paragraph, p)
     set_paragraph(p, "(*) The property Insurance and Property Tax values are correct for the contract year only and will adjust annually.")
+
+
+def ensure_attorney_contingency_clause(doc):
+    if any("signed contingent upon any changes Seller's attorney" in paragraph.text for paragraph in doc.paragraphs):
+        return
+    heading_idx = find_paragraph(doc, "Additional Terms")
+    if heading_idx is None:
+        return
+    anchor_idx = None
+    for idx in range(heading_idx + 1, len(doc.paragraphs)):
+        if doc.paragraphs[idx].text.strip():
+            anchor_idx = idx
+            break
+    if anchor_idx is None:
+        return
+    anchor = doc.paragraphs[anchor_idx]
+    paragraph = anchor.insert_paragraph_before()
+    copy_paragraph_format(anchor, paragraph)
+    set_paragraph(paragraph, ATTORNEY_CONTINGENCY_TEXT)
+    source_bold = next((run.bold for run in anchor.runs if run.text), None)
+    if source_bold is not None:
+        for run in paragraph.runs:
+            run.bold = source_bold
 
 
 def set_adverse_condition(doc, text):
@@ -502,6 +598,7 @@ def main():
     apply_notary_block_revisions(doc, x)
     ensure_notary_signature_lines(doc)
     ensure_ach_terms(doc)
+    ensure_attorney_contingency_clause(doc)
 
     # Table 0 is the price table in the contract. Keep the table formatting and replace only values.
     table = doc.tables[0]

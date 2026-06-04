@@ -92,7 +92,8 @@ This project room is the working version of a process that may later become a Co
    - `Selling Down Payment:` is the total down payment. The remaining down payment due at closing is `Selling Down Payment:` minus earnest money.
    - Preserve Wes's table formatting, including row height and justification, when refreshing earnest-money and down-payment table values.
    - Preserve Wes's centered formatting for the inserted `Adverse Conditions`/lien lines in section 9.
-   - In section 7, show the installment values in a seven-row table in the left column and the related installment-payment labels in the right column.
+   - Preserve Wes's section 7 installment-payment formatting, including justification, boldness, indentation, and edited table layout. Update the spreadsheet-derived installment values inside the existing section 7 layout rather than recreating the section.
+   - Include an Additional Terms paragraph stating the contract is signed contingent upon changes Seller's attorney may make or require, that the contract will be signed again at closing with alterations incorporated, and that Purchaser's due diligence funds will be returned if such changes cause Purchaser to withdraw.
    - Use only `LoanStart1` and `LoanEnd1`; ignore `LoanStart2` and `LoanEnd2`.
    - The section 9 adverse-condition placeholder should explicitly say `NOTE FOR ATTORNEY REVIEW` and should appear only once.
    - Trim any trailing blank/text content after the final purchaser notary block.
