@@ -70,6 +70,7 @@ This project room is the working version of a process that may later become a Co
    - `Monthly Payment1`
    - `Loan Start1`
    - `Loan End1`
+   - `Adverse Conditions`, with each listed lien/adverse condition in the same `Docs` row
    - property fields under the Property/Deed/Trust sections
    - `Manger` for the trustee manager name
 

@@ -43,6 +43,7 @@ def get_docs_values():
     wb = openpyxl.load_workbook(str(WORKBOOK), data_only=True, read_only=True, keep_vba=False)
     ws = wb["Docs"]
     values = {}
+    multi_value_rows = {"adverse conditions"}
     for col in range(1, ws.max_column + 1):
         key = ws.cell(1, col).value
         if key:
@@ -51,13 +52,21 @@ def get_docs_values():
         key = ws.cell(row, 1).value
         if key:
             clean_key = str(key).strip()
+            if clean_key.lower() in multi_value_rows:
+                cell_values = [
+                    clean(ws.cell(row, col).value)
+                    for col in range(2, ws.max_column + 1)
+                ]
+                row_value = "\n".join(str(value) for value in cell_values if value)
+            else:
+                row_value = ws.cell(row, 2).value
             if clean_key in values:
                 i = 2
                 while f"{clean_key}__{i}" in values:
                     i += 1
-                values[f"{clean_key}__{i}"] = ws.cell(row, 2).value
+                values[f"{clean_key}__{i}"] = row_value
             else:
-                values[clean_key] = ws.cell(row, 2).value
+                values[clean_key] = row_value
     return values
 
 
@@ -108,7 +117,14 @@ def normalize_values(v):
     ]
     buyer_address = ", ".join(str(part).strip() for part in buyer_address_parts if part not in (None, ""))
     seller = clean(trust) or selling_seller
-    adverse = clean(v.get("AdverseCondition") or v.get("Adverse Condition") or v.get("Pending Orders or Adverse Conditions") or v.get("Pending Orders"))
+    adverse = clean(
+        v.get("Adverse Conditions")
+        or v.get("AdverseConditions")
+        or v.get("AdverseCondition")
+        or v.get("Adverse Condition")
+        or v.get("Pending Orders or Adverse Conditions")
+        or v.get("Pending Orders")
+    )
     if not adverse:
         adverse = "NOTE FOR ATTORNEY REVIEW: Confirm whether any pending orders, liens, adverse conditions, title matters, or required disclosures should be listed here before signing."
 
