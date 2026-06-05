@@ -1,0 +1,41 @@
+# Tenant Credit Worthiness for Contract for Deed
+
+## Purpose
+
+Develop a repeatable process for evaluating whether a tenant-buyer is financially suitable for a Contract for Deed purchase and for documenting the decision in a way that supports Dodd-Frank / Regulation Z compliance review.
+
+## Scope
+
+This room is for Buy Your Home's occasional Contract for Deed sale workflow, currently expected to be no more than one house per year. The process should be conservative enough to show that Buy Your Home reviewed the buyer's ability to handle the proposed payment, even if attorney review later confirms that a specific transaction qualifies for a limited seller-financer exclusion.
+
+## Intended Output
+
+- Review-ready creditworthiness checklist for tenant-buyers.
+- Ability-to-repay documentation packet outline.
+- Compliance decision log for attorney or management review.
+- Notes on when Buy Your Home must use a licensed mortgage loan originator, attorney, or outside compliance reviewer.
+
+## Current Status
+
+Project room created. Initial official-source notes and a first working process draft are in progress. This is not legal advice and is not ready for operational use until reviewed by a qualified real estate / consumer-credit attorney.
+
+## Current Assumptions
+
+- The buyer may be a tenant already occupying the property.
+- The transaction may be secured by the buyer's dwelling.
+- Buy Your Home expects to sell only one house per year using this structure.
+- The seller identity may be an LLC, trust, estate, or individual depending on the property, and the correct seller identity must be confirmed for each transaction.
+
+## Next Actions
+
+1. Confirm the seller entity type for the expected transaction.
+2. Confirm the state law requirements for the property location.
+3. Have counsel decide whether the one-property seller-financer exclusion applies to the actual seller and transaction.
+4. Decide whether Buy Your Home wants to require an ability-to-repay review even when an exclusion may apply.
+5. Convert the working draft into a review-ready SOP after attorney feedback.
+
+## Related Wiki Links
+
+- [[Project Room Workflow]]
+- [[Project Rooms/Contract for Deed/PROJECT-ROOM|Contract for Deed Project Room]]
+- [[Agents and Automations Registry]]
