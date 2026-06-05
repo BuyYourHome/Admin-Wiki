@@ -55,3 +55,31 @@ Needed source documents:
 Open estate-document question:
 
 - Because the current estate documents show Buy Your Home, LLC membership interest assigned to the Browning Family Revocable Trust, Heritage Management LLC may be indirectly controlled through BYH if BYH's 100% ownership is confirmed. The current estate source set does not itself prove that ownership chain or list Heritage Management LLC assets.
+
+## Investment Services LLC
+
+Status: user-reported; source documents not yet copied into this Project Room.
+
+Facts reported by Wes on 2026-06-05:
+
+- Entity name: Investment Services LLC.
+- Investment Services LLC has no checking account or assets.
+- Investment Services LLC is owned by Buy Your Home, LLC.
+- Investment Services LLC provides services for the other entities.
+- Investment Services LLC is trustee of Sell Your Home, LLC, also known as SYH.
+- Investment Services LLC acts as manager for signing purposes for all entities.
+- Investment Services LLC is not separately addressed in the current estate documents copied into this Project Room, except that the current estate documents show Buy Your Home, LLC assigned to the Browning Family Revocable Trust.
+
+Needed source documents:
+
+- Entity formation documents.
+- Operating agreement or governing agreement.
+- Membership ledger or other record confirming Buy Your Home, LLC owns Investment Services LLC.
+- Manager, officer, signer, and authority records showing Investment Services LLC's signing authority for other entities.
+- Documents showing Investment Services LLC's trustee relationship to Sell Your Home, LLC / SYH.
+- Service agreements, management agreements, resolutions, consents, or other records showing the services Investment Services LLC provides for other entities.
+- Current records confirming Investment Services LLC has no checking account or assets.
+
+Open estate-document question:
+
+- Because the current estate documents show Buy Your Home, LLC membership interest assigned to the Browning Family Revocable Trust, Investment Services LLC may be indirectly controlled through BYH if BYH's ownership is confirmed. The current estate source set does not itself prove that ownership chain, the SYH trustee role, or Investment Services LLC's signing/manager authority for all entities.

@@ -14,7 +14,7 @@
 | `sources/Office Admin Estate/POA - Wes Browning to Jenny Hollinger.pdf` | PDF | 2024-08-02 | Power of attorney from Wes Browning to Jenny Hollinger copied from the Office Admin Estate folder. | authoritative | Not yet reviewed for execution status, scope, durability, or revocation. |
 | `sources/Office Admin Estate/POA Health Care - Jenny Hollinger.pdf` | PDF | 2024-08-02 | Health-care power of attorney for Jenny Hollinger copied from the Office Admin Estate folder. | authoritative | Not yet reviewed for execution status, agent authority, or later health-care directives. |
 | `sources/Office Admin Estate/POA Health Care- Wes Browning.pdf` | PDF | 2024-08-02 | Health-care power of attorney for Wes Browning copied from the Office Admin Estate folder. | authoritative | Not yet reviewed for execution status, agent authority, or later health-care directives. |
-| `working/user-reported-entity-facts.md` | User-reported working note | 2026-06-05 | Records Wes's statements about entity facts not yet supported by copied source documents, including BYH 401K LLC and Heritage Management LLC. | unclear | Source documents are not yet copied into this Project Room. Treat as context only until supported by source files. |
+| `working/user-reported-entity-facts.md` | User-reported working note | 2026-06-05 | Records Wes's statements about entity facts not yet supported by copied source documents, including BYH 401K LLC, Heritage Management LLC, and Investment Services LLC. | unclear | Source documents are not yet copied into this Project Room. Treat as context only until supported by source files. |
 
 ## Status Terms
 
