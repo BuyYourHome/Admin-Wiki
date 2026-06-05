@@ -83,3 +83,29 @@ Needed source documents:
 Open estate-document question:
 
 - Because the current estate documents show Buy Your Home, LLC membership interest assigned to the Browning Family Revocable Trust, Investment Services LLC may be indirectly controlled through BYH if BYH's ownership is confirmed. The current estate source set does not itself prove that ownership chain, the SYH trustee role, or Investment Services LLC's signing/manager authority for all entities.
+
+## Sell Your Home, LLC
+
+Status: user-reported; source documents not yet copied into this Project Room.
+
+Facts reported by Wes on 2026-06-05:
+
+- Entity name: Sell Your Home, LLC.
+- Abbreviation / known as: SYH.
+- Sell Your Home, LLC is owned by two Roth accounts and one HSA belonging to Wes and Jenny.
+- Investment Services LLC is trustee of Sell Your Home, LLC and acts as manager for signing purposes, according to Wes's related Investment Services LLC note above.
+- Sell Your Home, LLC is not directly addressed in the current estate documents copied into this Project Room.
+
+Needed source documents:
+
+- Entity formation documents.
+- Operating agreement or governing agreement.
+- Membership ledger or other record showing the two Roth accounts and one HSA ownership interests.
+- Roth account documents showing ownership, custodian, account holder, beneficiary designations, and authority to own SYH interests.
+- HSA account documents showing ownership, custodian, account holder, beneficiary designations, and authority to own SYH interests.
+- Documents showing Investment Services LLC's trustee and manager/signing authority for SYH.
+- Tax, account, bank, property, and asset schedules for SYH, if Wes wants them included for estate-planning reference.
+
+Open estate-document question:
+
+- The current estate source set does not show how Sell Your Home, LLC membership interests pass at death. If SYH is owned by Roth and HSA accounts, beneficiary designations or account/custodial documents may control succession of those account-held interests separately from the wills and revocable trust.

@@ -8,6 +8,7 @@
 - Locate and inventory beneficiary designation documents for Wes's and Jenny's Solo 401K interests/accounts, because those may control succession separately from the revocable trust and wills.
 - Copy and inventory Heritage Management LLC documents. Wes reports that Heritage Management LLC is wholly owned by Buy Your Home, LLC and owns property held long term, but the current estate source set does not include Heritage Management LLC documents or property schedules.
 - Copy and inventory Investment Services LLC documents. Wes reports that Investment Services LLC is owned by Buy Your Home, LLC, has no checking account or assets, provides services for other entities, is trustee of Sell Your Home, LLC / SYH, and acts as manager for signing purposes for all entities. The current estate source set does not include documents proving those relationships or signing authorities.
+- Copy and inventory Sell Your Home, LLC / SYH documents. Wes reports that SYH is owned by two Roth accounts and one HSA belonging to Wes and Jenny, but the current estate source set does not include the SYH operating agreement, ownership ledger, Roth/HSA account records, or beneficiary designation documents.
 - Review the copied PDFs before answering document-specific questions that depend on execution dates, signatures, amendments, revocations, trustee/executor/agent authority, asset ownership, or beneficiary instructions.
 
 ## Review Flags
