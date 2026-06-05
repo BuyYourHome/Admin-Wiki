@@ -41,6 +41,28 @@ Use the project room for source inventory, conflict logs, missing-context notes,
 - State whether the result is approval, decline, or conditional reconsideration. If the file is not approval-ready, say that directly.
 - Include attorney/compliance review needs for seller-financing, Regulation Z/Dodd-Frank, state law, and adverse-action notice questions.
 
+## Optional Approval-Assumption Mode
+
+Default mode is evidence mode. In evidence mode, do not assume missing facts that would make a buyer approvable.
+
+Use approval-assumption mode only when Wes explicitly calls the evaluator with a conditional flag or equivalent instruction, such as:
+
+- `approval_assumption_mode=true`
+- `assume good answers`
+- `run as if sufficient answers were provided`
+- `show what assumptions would allow approval`
+
+When approval-assumption mode is active:
+
+1. Label the output as a hypothetical or conditional approval scenario.
+2. State the exact assumptions that must be true before the result can be relied on.
+3. Keep assumed facts separate from verified facts in the source basis and report body.
+4. Do not convert missing documents into verified evidence. Say that the approval result depends on later receipt and review of the assumed documents.
+5. Use the assumed facts only to test whether approval could be supportable, not to erase risk flags.
+6. If the scenario supports approval, call the result `conditional approval supportable under stated assumptions`, not unconditional approval, unless all required evidence is actually present and reviewed.
+7. Preserve a fallback result that says what the evaluator would conclude if the assumptions are not proven.
+8. Version any formal report produced in this mode, and include the mode label in the report subtitle, revision note, or scenario basis.
+
 ## Report Copy-Back Rule
 
 When an evaluator run produces or updates a formal report:
