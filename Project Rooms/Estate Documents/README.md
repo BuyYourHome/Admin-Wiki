@@ -16,6 +16,7 @@ Create a dedicated Project Room for Wes's estate documents so source files, work
 Included:
 
 - Estate planning documents provided by Wes.
+- User-reported estate/entity facts that still need source documents, recorded in `working\user-reported-entity-facts.md`.
 - Source notes or summaries created from estate-related emails, scans, PDFs, Word documents, spreadsheets, or other records.
 - Questions and answers about the estate documents, only when supported by inventoried sources.
 
@@ -35,7 +36,7 @@ Excluded unless Wes specifically adds them:
 
 - Authoritative sources: 11 PDFs copied from `C:\Users\wesbr\Buy Your Home\Buy Your Home - Office Admin\Estate`
 - Duplicate/outdated sources: no duplicates identified from file names; document contents not yet reviewed
-- Missing context: whether newer, signed, amended, or externally held estate documents exist
+- Missing context: whether newer, signed, amended, externally held, Teams-held, entity, retirement-plan, or beneficiary documents exist
 
 ## Answering Rules
 
