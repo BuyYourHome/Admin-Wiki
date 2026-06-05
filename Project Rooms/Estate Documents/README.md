@@ -33,9 +33,9 @@ Excluded unless Wes specifically adds them:
 
 ## Source Inventory Status
 
-- Authoritative sources: pending
-- Duplicate/outdated sources: pending
-- Missing context: pending
+- Authoritative sources: 11 PDFs copied from `C:\Users\wesbr\Buy Your Home\Buy Your Home - Office Admin\Estate`
+- Duplicate/outdated sources: no duplicates identified from file names; document contents not yet reviewed
+- Missing context: whether newer, signed, amended, or externally held estate documents exist
 
 ## Answering Rules
 

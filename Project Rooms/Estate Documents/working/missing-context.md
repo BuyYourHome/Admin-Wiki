@@ -2,8 +2,9 @@
 
 ## Needed Before Answering Estate Questions
 
-- Estate source documents have not yet been added to `sources\`.
-- No authoritative inventory exists yet for wills, trusts, powers of attorney, health-care directives, beneficiary designations, deeds, account ownership records, business ownership records, insurance records, or other estate-related records.
+- Confirm whether the copied Office Admin Estate folder is the complete current estate document set.
+- Confirm whether any newer wills, trust amendments, trust restatements, deed recordings, beneficiary designations, account titling records, insurance records, business ownership records, or attorney-held originals exist.
+- Review the copied PDFs before answering document-specific questions that depend on execution dates, signatures, amendments, revocations, trustee/executor/agent authority, asset ownership, or beneficiary instructions.
 
 ## Review Flags
 

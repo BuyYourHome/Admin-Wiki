@@ -1,6 +1,8 @@
 # Duplicate And Conflict Log
 
-No estate source documents have been added yet.
+Eleven PDF source documents were copied from `C:\Users\wesbr\Buy Your Home\Buy Your Home - Office Admin\Estate` into `sources\Office Admin Estate`.
+
+No duplicate file names were identified in that source folder. Document contents have not yet been reviewed for duplicate clauses, superseded documents, amendments, restatements, revocations, or internal conflicts.
 
 Use this log to record:
 
