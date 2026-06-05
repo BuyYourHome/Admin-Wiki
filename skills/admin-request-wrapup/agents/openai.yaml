@@ -1,0 +1,4 @@
+interface:
+  display_name: "Admin Request Wrapup"
+  short_description: "Report elapsed time and hold Git pushes"
+  default_prompt: "Use $admin-request-wrapup to finish an Admin wiki task with elapsed time and the correct Git push decision."

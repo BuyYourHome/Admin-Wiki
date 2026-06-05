@@ -13,6 +13,7 @@ Codex does not currently show every role below in one unified "Agents" list. Som
 | OfficeAssist Morning Email Summary | Cron automation | Active | Daily at 8:00 AM Eastern | `C:\Users\wesbr\.codex\automations\officeassist-morning-email-summary\automation.toml` |
 | Document Scanning | Wiki-managed skill plus cron automation | Active | Daily at 10:00 AM, 12:00 PM, 2:00 PM, and 4:00 PM | `skills\document-scanning\SKILL.md`; `C:\Users\wesbr\.codex\skills\document-scanning\SKILL.md`; `C:\Users\wesbr\.codex\automations\document-scanning\automation.toml` |
 | Codex Skill Source Control | Wiki-managed skill system | Active | On demand after skill changes or wiki pulls | `Codex Skill Source Rule.md`; `tools\sync-codex-skills.ps1`; `skills\` |
+| Admin Request Wrapup | Wiki-managed skill | Active | At the end of Admin wiki requests | `skills\admin-request-wrapup\SKILL.md`; `AGENTS.md` |
 | Contract for Deed | Wiki-managed skill plus project room | Active | On demand | `skills\contract-for-deed\SKILL.md`; `Project Rooms\Contract for Deed\PROJECT-ROOM.md` |
 | Grocery List Handler | Wiki rule and data workflow | Active | On demand, including approved Boss/Jenny text instructions | `operations/grocery-list/` |
 | AI Project Room Workflow | Wiki workflow | Active | On demand before complex multi-source work | `Project Room Workflow.md` |
@@ -188,7 +189,30 @@ Important rules:
 
 - Edit canonical skill source under `C:\Codex\Wiki Files\skills`.
 - Treat `%USERPROFILE%\.codex\skills` as the installed local copy only.
-- After changing a wiki-managed skill, sync locally, commit, and push the wiki update.
+- After changing a wiki-managed skill, commit locally. Sync or push only when Wes says the skill is ready, asks for it, or the skill change is a finished product.
+
+## Admin Request Wrapup
+
+Type: wiki-managed skill.
+
+Status: active.
+
+Purpose:
+
+- Apply Wes's request wrap-up rules for Admin wiki work.
+- Report one total elapsed time for each request.
+- Prevent automatic Git pushes until Wes says the work is a finished product, explicitly asks for a push, or the deliverable is clearly final and ready to publish.
+
+Defined in:
+
+- `C:\Codex\Wiki Files\skills\admin-request-wrapup\SKILL.md`
+- `C:\Codex\Wiki Files\AGENTS.md`
+
+Important rules:
+
+- Include total request time in final responses.
+- Say whether a commit was made and whether it was pushed.
+- Do not report per-step timing unless Wes asks.
 
 ## Contract for Deed
 

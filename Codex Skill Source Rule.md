@@ -15,9 +15,10 @@ Do not treat `%USERPROFILE%\.codex\skills` as the source of truth. Local install
 
 1. Edit the canonical skill under `C:\Codex\Wiki Files\skills`.
 2. If the skill depends on a project room, update the project room instructions/scripts at the same time.
-3. Commit and push the Admin wiki changes.
-4. Run `powershell -NoProfile -ExecutionPolicy Bypass -File "C:\Codex\Wiki Files\tools\sync-codex-skills.ps1"` only when the updated skill is ready to become the installed local version.
-5. On another computer, pull the Admin wiki repo, run the sync script only when the updated skill is ready to install there, then start a new Codex chat/session so the updated skill is loaded.
+3. Commit the Admin wiki changes locally.
+4. Push only when Wes says the skill is a finished product, explicitly asks for a push, or the task instructions already define the deliverable as final and ready to publish.
+5. Run `powershell -NoProfile -ExecutionPolicy Bypass -File "C:\Codex\Wiki Files\tools\sync-codex-skills.ps1"` only when the updated skill is ready to become the installed local version.
+6. On another computer, pull the Admin wiki repo, run the sync script only when the updated skill is ready to install there, then start a new Codex chat/session so the updated skill is loaded.
 
 ## Project Rooms
 
@@ -29,4 +30,4 @@ For contract-for-deed work, do not sync the installed `contract-for-deed` skill 
 
 ## Direct Local Edits
 
-If a skill is accidentally edited directly in `%USERPROFILE%\.codex\skills`, copy the change back into `C:\Codex\Wiki Files\skills` before relying on it. Then commit and push the wiki update.
+If a skill is accidentally edited directly in `%USERPROFILE%\.codex\skills`, copy the change back into `C:\Codex\Wiki Files\skills` before relying on it. Then commit the wiki update locally and push only under the normal finished-product rule.
