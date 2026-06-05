@@ -27,8 +27,10 @@ Use the project room for source inventory, conflict logs, missing-context notes,
    - formal report if one exists or is requested.
 6. Use authoritative sources only. Mark unsupported items instead of smoothing them over.
 7. Render and visually check formal DOCX reports before delivery when the Documents skill/runtime is available.
-8. Copy the final or updated formal report back into the live buyer source folder where the source files were retrieved.
-9. Commit durable wiki/project-room changes locally. Do not push unless Wes says the work is finished or explicitly asks for a push.
+8. Add page numbers to formal reports before delivery.
+9. If a formal report is rerun, preserve a versioned copy instead of silently replacing the prior report.
+10. Copy the final or updated formal report back into the live buyer source folder where the source files were retrieved.
+11. Commit durable wiki/project-room changes locally. Do not push unless Wes says the work is finished or explicitly asks for a push.
 
 ## Evaluation Rules
 
@@ -52,6 +54,18 @@ When an evaluator run produces or updates a formal report:
 4. In the final response, report both locations.
 
 Do not copy generated text extracts, render images, scratch logs, or source-inventory working files back to the buyer folder unless Wes explicitly asks.
+
+## Report Versioning And Page Numbers
+
+- Formal DOCX reports must include page numbers in the footer.
+- Use the unversioned filename for the current report when there is no prior delivered report.
+- When rerunning or materially updating a previously delivered report, save the new file with a version suffix, such as:
+
+  `320 Rose Ever Cardoza - Creditworthiness Evaluation Report v2.docx`
+
+- Keep prior delivered report versions in both the project room `outputs\` folder and the live buyer source folder unless Wes explicitly asks to replace or remove them.
+- If the report body includes a report date, revision date, version label, or source cutoff date, update it to match the rerun.
+- In the final response, identify the current version and both saved locations.
 
 ## Final Response
 
