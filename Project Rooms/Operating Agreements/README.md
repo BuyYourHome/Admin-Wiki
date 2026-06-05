@@ -34,7 +34,7 @@ Excluded unless Wes specifically adds them:
 ## Source Inventory Status
 
 - Authoritative sources: none confirmed yet.
-- Copied sources: 10 operating-agreement files from Teams/SharePoint `Corp` channels, excluding `Corp-Providence Landing Management LLC`.
+- Copied sources: 10 operating-agreement files from Teams/SharePoint `Corp` channels, plus 5 Jeff Watson drafting files for new Sell Your Home OA versions. `Corp-Providence Landing Management LLC` remains excluded.
 - Duplicate/outdated sources: multiple versions exist and need review before one agreement is treated as controlling.
 - Missing context: one expected `Corp` channel was not found in the visible SharePoint root folder list; attorney/CPA confirmation is still needed for controlling versions.
 
@@ -56,9 +56,10 @@ Excluded unless Wes specifically adds them:
 
 1. Confirm whether there is a sixth `Corp` channel outside the visible SharePoint document-library root.
 2. Review copied agreements for signatures, amendments, effective dates, and superseded versions.
-3. Mark controlling documents as `authoritative` only after version review.
-4. Record duplicates, outdated documents, and contradictions in `working/duplicate-and-conflict-log.md`.
-5. Draft summaries or review packets only after the relevant source set is inventoried.
+3. Use the Jeff Watson folder files as starting points when developing new Sell Your Home OA versions, but do not treat them as controlling until reviewed.
+4. Mark controlling documents as `authoritative` only after version review.
+5. Record duplicates, outdated documents, and contradictions in `working/duplicate-and-conflict-log.md`.
+6. Draft summaries or review packets only after the relevant source set is inventoried.
 
 ## Related Wiki Links
 
