@@ -33,9 +33,10 @@ Excluded unless Wes specifically adds them:
 
 ## Source Inventory Status
 
-- Authoritative sources: none added yet.
-- Duplicate/outdated sources: not reviewed yet.
-- Missing context: which entities and agreement versions should be included.
+- Authoritative sources: none confirmed yet.
+- Copied sources: 9 operating-agreement files from Teams/SharePoint `Corp` channels, excluding `Corp-Providence Landing Management LLC`.
+- Duplicate/outdated sources: multiple versions exist and need review before one agreement is treated as controlling.
+- Missing context: one expected `Corp` channel was not found in the visible SharePoint root folder list; attorney/CPA confirmation is still needed for controlling versions.
 
 ## Review Rules
 
@@ -53,10 +54,10 @@ Excluded unless Wes specifically adds them:
 
 ## Next Actions
 
-1. Add operating agreement source files or source summaries to `sources\`.
-2. Fill in `working/source-inventory.md`.
-3. Record duplicates, outdated documents, and contradictions in `working/duplicate-and-conflict-log.md`.
-4. Record missing facts and questions in `working/missing-context.md`.
+1. Confirm whether there is a sixth `Corp` channel outside the visible SharePoint document-library root.
+2. Review copied agreements for signatures, amendments, effective dates, and superseded versions.
+3. Mark controlling documents as `authoritative` only after version review.
+4. Record duplicates, outdated documents, and contradictions in `working/duplicate-and-conflict-log.md`.
 5. Draft summaries or review packets only after the relevant source set is inventoried.
 
 ## Related Wiki Links
