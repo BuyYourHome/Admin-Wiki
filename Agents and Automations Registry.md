@@ -14,6 +14,7 @@ Codex does not currently show every role below in one unified "Agents" list. Som
 | Document Scanning | Wiki-managed skill plus cron automation | Active | Daily at 10:00 AM, 12:00 PM, 2:00 PM, and 4:00 PM | `skills\document-scanning\SKILL.md`; `C:\Users\wesbr\.codex\skills\document-scanning\SKILL.md`; `C:\Users\wesbr\.codex\automations\document-scanning\automation.toml` |
 | Codex Skill Source Control | Wiki-managed skill system | Active | On demand after skill changes or wiki pulls | `Codex Skill Source Rule.md`; `tools\sync-codex-skills.ps1`; `skills\` |
 | Admin Request Wrapup | Wiki-managed skill | Active | At the end of Admin wiki requests | `skills\admin-request-wrapup\SKILL.md`; `AGENTS.md` |
+| Credit Worthiness Evaluator | Wiki-managed skill plus project room | Active | On demand | `skills\credit-worthiness-evaluator\SKILL.md`; `Project Rooms\Credit Worthiness Evaluator\README.md` |
 | Contract for Deed | Wiki-managed skill plus project room | Active | On demand | `skills\contract-for-deed\SKILL.md`; `Project Rooms\Contract for Deed\PROJECT-ROOM.md` |
 | Grocery List Handler | Wiki rule and data workflow | Active | On demand, including approved Boss/Jenny text instructions | `operations/grocery-list/` |
 | AI Project Room Workflow | Wiki workflow | Active | On demand before complex multi-source work | `Project Room Workflow.md` |
@@ -213,6 +214,29 @@ Important rules:
 - Include total request time in final responses.
 - Say whether a commit was made and whether it was pushed.
 - Do not report per-step timing unless Wes asks.
+
+## Credit Worthiness Evaluator
+
+Type: wiki-managed skill plus project room.
+
+Status: active.
+
+Purpose:
+
+- Refresh buyer source documents into the Credit Worthiness Evaluator project room.
+- Evaluate tenant-buyer creditworthiness and ability to repay for seller-financed or Contract for Deed transactions.
+- Produce/update an Investment Services, LLC formal report and copy that report back into the live buyer source folder.
+
+Defined in:
+
+- `C:\Codex\Wiki Files\skills\credit-worthiness-evaluator\SKILL.md`
+- `C:\Codex\Wiki Files\Project Rooms\Credit Worthiness Evaluator\README.md`
+
+Important rules:
+
+- Distinguish gross business deposits from verified borrower-level net income.
+- Keep project-room outputs in the project room, and copy the final formal report to the buyer folder where the source files were retrieved.
+- Do not push Git changes unless Wes says the work is finished or explicitly asks for a push.
 
 ## Contract for Deed
 
