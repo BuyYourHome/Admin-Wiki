@@ -34,7 +34,7 @@ Excluded unless Wes specifically adds them:
 ## Source Inventory Status
 
 - Authoritative sources: none confirmed yet.
-- Copied sources: 9 operating-agreement files from Teams/SharePoint `Corp` channels, excluding `Corp-Providence Landing Management LLC`.
+- Copied sources: 10 operating-agreement files from Teams/SharePoint `Corp` channels, excluding `Corp-Providence Landing Management LLC`.
 - Duplicate/outdated sources: multiple versions exist and need review before one agreement is treated as controlling.
 - Missing context: one expected `Corp` channel was not found in the visible SharePoint root folder list; attorney/CPA confirmation is still needed for controlling versions.
 
