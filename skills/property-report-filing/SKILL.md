@@ -33,9 +33,19 @@ Use the existing property folder that best matches the report address or project
 2. Identify the property address or project name from the report request or the report title.
 3. Match that address/project to exactly one folder under the property root.
 4. Confirm the matched folder has an `Owning` subfolder.
-5. Copy the final report file into `Owning`.
+5. Copy the final report file into `Owning` with a date prefix in `yy-mm-dd` format.
 6. Do not overwrite an existing file silently. If the same filename already exists, create a timestamped copy unless Wes explicitly approves replacement.
 7. In the final response, include both the working output path and the Teams `Owning` copy path.
+
+## File Naming
+
+Prefix the copied Teams file with the report date in `yy-mm-dd` format:
+
+```text
+26-06-05 4121-tensity-cma-report.docx
+```
+
+If the source report already starts with a `yy-mm-dd` prefix, keep that prefix instead of adding a second one.
 
 ## Matching Rules
 
@@ -54,4 +64,3 @@ powershell -NoProfile -ExecutionPolicy Bypass -File "C:\Codex\Wiki Files\skills\
 ```
 
 The script returns the destination path when the copy succeeds.
-

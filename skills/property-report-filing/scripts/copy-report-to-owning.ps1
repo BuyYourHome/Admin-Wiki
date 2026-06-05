@@ -7,6 +7,8 @@ param(
 
     [string]$PropertyRoot = "C:\Users\wesbr\Buy Your Home\Buy Your Home - Property",
 
+    [datetime]$ReportDate = (Get-Date),
+
     [switch]$Force
 )
 
@@ -69,6 +71,10 @@ if (-not (Test-Path -LiteralPath $owning)) {
 }
 
 $fileName = Split-Path -Leaf $resolvedReport
+if ($fileName -notmatch '^\d{2}-\d{2}-\d{2}\s+') {
+    $datePrefix = $ReportDate.ToString("yy-MM-dd")
+    $fileName = "$datePrefix $fileName"
+}
 $destination = Join-Path $owning $fileName
 
 if (Test-Path -LiteralPath $destination) {
