@@ -1,4 +1,4 @@
-# Tenant Credit Worthiness for Contract for Deed
+# Credit Worthiness Evaluator
 
 ## Purpose
 
