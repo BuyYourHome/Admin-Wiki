@@ -41,6 +41,16 @@ Use the project room for source inventory, conflict logs, missing-context notes,
 - State whether the result is approval, decline, or conditional reconsideration. If the file is not approval-ready, say that directly.
 - Include attorney/compliance review needs for seller-financing, Regulation Z/Dodd-Frank, state law, and adverse-action notice questions.
 
+## Formal Report Naming And Voice
+
+- Use the buyer's full legal-style name from the most authoritative available source, such as the screening report or application, in the report body and filename.
+- Use the actual transaction/business entity name instead of Wes's personal name in formal reports.
+- Do not write formal reports as personal requests from Wes. Use neutral entity language, such as `Sell Your Home requested...`, `for Sell Your Home review`, or `seller/business entity`.
+- If the entity is not confirmed, mark it as `[ENTITY TO CONFIRM]` instead of using Wes's personal name.
+- Keep report filenames date-prefixed in `yy-mm-dd` format and include the buyer full name, such as:
+
+  `26-06-05 320 Rose Ever Amarildo Cardoza - Creditworthiness Evaluation Report.docx`
+
 ## Optional Approval-Assumption Mode
 
 Default mode is evidence mode. In evidence mode, do not assume missing facts that would make a buyer approvable.
