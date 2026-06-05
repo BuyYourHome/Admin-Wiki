@@ -22,6 +22,7 @@ This is the entry point for the compiled wiki.
 
 ## Active Project Rooms
 
+- [[../Project Rooms/Estate Documents/README|Estate Documents]]
 - [[../Project Rooms/Project Management Spreadsheet Rewrite/README|Project Management Spreadsheet Rewrite]]
 
 ## Sources
