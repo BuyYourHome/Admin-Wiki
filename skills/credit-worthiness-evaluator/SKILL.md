@@ -100,6 +100,30 @@ Do not copy generated text extracts, render images, scratch logs, or source-inve
 - If the report body includes a report date, revision date, version label, or source cutoff date, update it to match the rerun.
 - In the final response, identify the current version and both saved locations.
 
+## Optional Spanish Append Mode
+
+Default mode is English-only.
+
+Use Spanish append mode only when Wes explicitly calls the evaluator with a conditional flag or equivalent instruction, such as:
+
+- `spanish_append=true`
+- `Spanish switch`
+- `append Spanish`
+- `include Spanish copy`
+
+When Spanish append mode is active:
+
+1. Build the English report first as the controlling report.
+2. Append a complete Spanish translation copy after the English report in the same DOCX file.
+3. Start the Spanish portion on a new page with a clear heading, such as `COPIA EN ESPANOL`.
+4. Add a short translation note at the start of the Spanish portion stating that the Spanish copy is provided for convenience and the English report controls if there is any conflict, unless Wes instructs otherwise.
+5. Preserve the same structure, section order, numbers, dates, entity names, buyer names, conditions, and decision language in Spanish.
+6. Do not summarize or shorten the Spanish copy unless Wes explicitly asks for a summary instead of a full appended copy.
+7. Keep page numbers active across the combined English and Spanish report.
+8. Include the Spanish append mode in the filename or version note when it helps distinguish the deliverable, such as:
+
+   `26-06-05 320 Rose Ever Amarildo Cardoza - Creditworthiness Evaluation Report - English-Spanish v4.docx`
+
 ## Final Response
 
 Summarize:
