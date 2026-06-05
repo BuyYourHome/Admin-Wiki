@@ -37,6 +37,8 @@ Visible `Corp` folders found:
 
 Wes identified the files in `Corp-Sell Your Home 83-4027719/Jeff Watson` as important starting points for new OA versions. These were copied into `sources/Corp-Sell Your Home 83-4027719/Jeff Watson/`.
 
+Keep this folder segregated. Do not merge, flatten, rename into the main Sell Your Home source folder, or treat these drafting files as the same source class as current/potentially controlling OA documents.
+
 | Channel Folder | File | SharePoint Modified Time |
 | --- | --- | --- |
 | `Corp-Sell Your Home 83-4027719/Jeff Watson` | `Sell Your Home LLC (Browning & Hollinger) AMENDED AND RESTATED IRA-OWNED LLC OPERATING AGREEMENT.docx` | 2025-07-08T18:47:15Z |

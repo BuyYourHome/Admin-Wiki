@@ -28,8 +28,16 @@ Excluded unless Wes specifically adds them:
 ## Source Locations
 
 - Room sources: `sources\`
+- Jeff Watson drafting sources: `sources\Corp-Sell Your Home 83-4027719\Jeff Watson\`
 - Working notes: `working\`
 - Outputs: `outputs\`
+
+## Segregation Rule
+
+- Keep Jeff Watson drafting files segregated in `sources\Corp-Sell Your Home 83-4027719\Jeff Watson\`.
+- Do not merge, rename, flatten, or mix those files into the main Sell Your Home source folder.
+- Treat the Jeff Watson folder as a separate drafting reference set for new OA versions, not as the same source class as current or potentially controlling operating agreements.
+- When drafting new OA versions, cite whether a source came from the Jeff Watson drafting folder or from the main copied OA source set.
 
 ## Source Inventory Status
 
@@ -41,6 +49,7 @@ Excluded unless Wes specifically adds them:
 ## Review Rules
 
 - Preserve original source files. Edit only working notes or output drafts.
+- Keep drafting reference files separated from current/potentially controlling OA source files.
 - Treat signed agreements, signed amendments, and attorney-confirmed documents as potentially authoritative, subject to inventory review.
 - Mark unsupported items as `[UNSUPPORTED]` instead of filling gaps.
 - Flag legal, tax, authority, ownership, member-rights, or entity-formation questions that need attorney or CPA review.
