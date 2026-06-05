@@ -1,0 +1,4 @@
+interface:
+  display_name: "CMA Report"
+  short_description: "Create and file property CMA reports."
+  default_prompt: "Use $cma-report to create or file a completed CMA report into the matching Teams property Owning folder."

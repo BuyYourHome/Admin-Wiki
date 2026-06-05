@@ -1,9 +1,9 @@
 ---
-name: property-report-filing
-description: File completed real-estate property report deliverables into the Teams-synced property Owning folder. Use when Codex creates, finalizes, or delivers a property report, including CMA reports, valuation reports, lender reports, property packets, creditworthiness reports tied to a property, or other formal reports for a Buy Your Home property.
+name: cma-report
+description: Create, rerun, finalize, and file Buy Your Home CMA report and related real-estate property report deliverables. Use when Codex prepares or updates a CMA report, valuation report, lender report, property packet, creditworthiness report tied to a property, or other formal report for a Buy Your Home property, including copying the completed report into the Teams-synced property Owning folder.
 ---
 
-# Property Report Filing
+# CMA Report
 
 ## Rule
 
@@ -60,7 +60,7 @@ If the source report already starts with a `yy-mm-dd` prefix, keep that prefix i
 Use `scripts/copy-report-to-owning.ps1` for deterministic copies when practical:
 
 ```powershell
-powershell -NoProfile -ExecutionPolicy Bypass -File "C:\Codex\Wiki Files\skills\property-report-filing\scripts\copy-report-to-owning.ps1" -ReportPath "<report path>" -PropertyQuery "<address or project>"
+powershell -NoProfile -ExecutionPolicy Bypass -File "C:\Codex\Wiki Files\skills\cma-report\scripts\copy-report-to-owning.ps1" -ReportPath "<report path>" -PropertyQuery "<address or project>"
 ```
 
 The script returns the destination path when the copy succeeds.

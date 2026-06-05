@@ -16,7 +16,7 @@ Codex does not currently show every role below in one unified "Agents" list. Som
 | Admin Request Wrapup | Wiki-managed skill | Active | At the end of Admin wiki requests | `skills\admin-request-wrapup\SKILL.md`; `AGENTS.md` |
 | Credit Worthiness Evaluator | Wiki-managed skill plus project room | Active | On demand | `skills\credit-worthiness-evaluator\SKILL.md`; `Project Rooms\Credit Worthiness Evaluator\README.md` |
 | Contract for Deed | Wiki-managed skill plus project room | Active | On demand | `skills\contract-for-deed\SKILL.md`; `Project Rooms\Contract for Deed\PROJECT-ROOM.md` |
-| Property Report Filing | Wiki-managed skill | Active | On demand when a property report is created | `skills\property-report-filing\SKILL.md` |
+| CMA Report | Wiki-managed skill | Active | On demand when a CMA or property report is created | `skills\cma-report\SKILL.md` |
 | Grocery List Handler | Wiki rule and data workflow | Active | On demand, including approved Boss/Jenny text instructions | `operations/grocery-list/` |
 | AI Project Room Workflow | Wiki workflow | Active | On demand before complex multi-source work | `Project Room Workflow.md` |
 | Project Management Spreadsheet Rewrite | Project Room | Active/planning | On demand | `Project Rooms\Project Management Spreadsheet Rewrite\README.md` |
@@ -262,7 +262,7 @@ Important rules:
 - Use the skill as the reusable workflow wrapper.
 - Do not include deed documents unless Wes changes the package scope.
 
-## Property Report Filing
+## CMA Report
 
 Type: wiki-managed skill.
 
@@ -276,7 +276,7 @@ Purpose:
 
 Defined in:
 
-- `C:\Codex\Wiki Files\skills\property-report-filing\SKILL.md`
+- `C:\Codex\Wiki Files\skills\cma-report\SKILL.md`
 
 Important rules:
 
