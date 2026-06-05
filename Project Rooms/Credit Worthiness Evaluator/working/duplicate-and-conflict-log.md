@@ -14,12 +14,14 @@
 | Duplicate | Status | Notes |
 | --- | --- | --- |
 | `April 2025.msg` attachment `Document.pdf` and `25-04-31 Bank Statement.pdf` | duplicate | Hashes match. Treat the PDF as the source file and the email as delivery context only. |
+| `June 2025.msg` attachment `Document.pdf` and `25-06-30 Business Bank Statement.pdf` | duplicate | Hashes match. Treat the PDF as the source file and the email as delivery context only. |
 | `25-05-31 Bank Statement.pdf` and `25-06-31 Bank Statement.pdf` | duplicate or mislabeled | Both extracted as the same 2025-05-08 through 2025-06-06 statement period with the same beginning balance, deposits, withdrawals, and ending balance. Do not count both as separate months for income averaging. |
+| `25-08-30 Business Bank Statement.pdf` and `25-09-30 Business Bank Statement.pdf` | duplicate or mislabeled | Hashes match and both extract as the August 31, 2025 Matthew Flooring LLC statement. Do not count both as separate business-account months. |
 
 ## Current Buyer-File Conflicts
 
 | Issue | Status | Notes |
 | --- | --- | --- |
-| Applicant-stated income versus bank deposits | unresolved | Applicant details state $9,500/month self-employment income, but the provided Wells Fargo statements show much lower routine deposits and are not current for June 2026. |
-| Twelve months requested versus statements provided | unresolved | Twelve PDFs are present, but one statement appears duplicated/mislabeled and the period ending 2025-05-07 appears missing. The set also does not include 2026 statements. |
-| Current cash reserves versus bank balances | unresolved | Statement ending balances are generally very low, with only $503.73 shown on the latest provided 2025 statement. No separate reserve or down-payment proof is present. |
+| Applicant-stated income versus bank deposits | partially resolved | Applicant details state $9,500/month self-employment income. The new Matthew Flooring LLC business statements show gross business deposits well above that level in many months, but withdrawals are also high. Gross deposits cannot be treated as personal income without tax returns, profit-and-loss records, ownership/compensation verification, or owner-draw documentation. |
+| Twelve months requested versus statements provided | partially resolved | Business statements now extend through May 2026, but the business set has a duplicate/mislabeled August/September 2025 file and current personal statements are still not present. |
+| Current cash reserves versus bank balances | unresolved | Latest provided business statement ending balance is $5,058.11 and latest provided personal statement ending balance is $503.73. No separate down-payment, closing-fund, or reserve proof is present. |

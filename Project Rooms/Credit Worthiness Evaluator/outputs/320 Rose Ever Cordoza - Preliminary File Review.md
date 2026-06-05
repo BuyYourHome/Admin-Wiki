@@ -2,9 +2,9 @@
 
 ## Status
 
-Refreshed preliminary file review after copying the Teams-synced Rose Pl / Ever Cordoza folder into the Credit Worthiness Evaluator project room on 2026-06-05.
+Rerun preliminary file review after copying the updated Teams-synced Rose Pl / Ever Cordoza folder into the Credit Worthiness Evaluator project room on 2026-06-05.
 
-Current result: **do not approve from the current file.** The buyer has some favorable screening indicators, but the file does not support a documented ability-to-repay decision for the proposed seller-financed payment.
+Current result: **do not approve from the current file, but the new documents materially improve the file.** The new business bank statements support that Matthew Flooring LLC has active gross business cash flow, and the rent verification letter supports timely rent history. The file still does not support a documented approval because borrower-level net self-employment income, ownership/compensation, down-payment funds, closing funds, and post-closing reserves are not proven.
 
 ## Sources Reviewed
 
@@ -13,8 +13,11 @@ Current result: **do not approve from the current file.** The buyer has some fav
 - `sources/320 Rose Ever Cordoza/applicant-details.pdf`
 - `sources/320 Rose Ever Cordoza/credit-report.pdf`
 - `sources/320 Rose Ever Cordoza/background-check.pdf`
-- `sources/320 Rose Ever Cordoza/25-01-31 Bank Statement.pdf` through `25-12-31 Bank Statement.pdf`
+- `sources/320 Rose Ever Cordoza/25-01-31 Personal Bank Statement.pdf` through `25-12-31 Personal Bank Statement.pdf`
+- `sources/320 Rose Ever Cordoza/25-01-31 Business Bank Statement.pdf` through `26-05-30 Business Bank Statement.pdf`
+- `sources/320 Rose Ever Cordoza/2026-06-05 - Ever Cardoza Rent Payment Verification Letter.docx`
 - `sources/320 Rose Ever Cordoza/April 2025.msg`
+- `sources/320 Rose Ever Cordoza/June 2025.msg`
 - `sources/2026-06-05 - 320 Rose Ever Cordoza meeting files source note.md`
 - `working/extracted-text/320 Rose Ever Cordoza/`
 
@@ -33,6 +36,7 @@ The June 4, 2026 meeting materials support the following working transaction sna
 - Monthly payment discussed: $2,701 including principal, interest, property taxes, and insurance escrow.
 - Earnest money discussed: $6,000 at contract signing, with remaining down payment due at attorney closing.
 - Current rent shown on applicant details: $1,885/month.
+- Buy Your Home rent verification letter states rent at 4121 Tensity Dr was $1,850/month from July 2025 through June 2026 and was paid timely.
 
 ## Screening Positives
 
@@ -40,14 +44,31 @@ The June 4, 2026 meeting materials support the following working transaction sna
 - Zillow credit report shows a 706 VantageScore 4.0 score.
 - Credit report shows 100% on-time payments, no collections, no delinquent or derogatory account, and no bankruptcies found.
 - Background check reports no housing court records and no criminal records.
+- Buy Your Home rent verification letter supports timely rent payments during the tenancy.
+- Matthew Flooring LLC business bank statements show active business cash flow through May 2026.
 
 ## Ability-To-Repay Analysis
 
 ### Income
 
-Applicant details state self-employment income of **$9,500/month**, but this is self-reported. The refreshed folder does not include tax returns, a profit-and-loss statement, 1099s, invoices/contracts, employer/customer verification, or current 2026 bank statements.
+Applicant details state self-employment income of **$9,500/month**, but this is self-reported. The refreshed folder now includes current 2026 business statements through May 2026, but it still does not include tax returns, a profit-and-loss statement, 1099s, invoices/contracts, ownership/compensation verification, or current 2026 personal bank statements.
 
-The provided Wells Fargo statements do not verify $9,500/month income. They cover mostly 2025 statement periods and show total deposits that are materially lower than the stated income in ordinary months. One statement period, 2025-09-09 through 2025-10-07, shows $9,891 in deposits, but much of that activity appears to be Zelle transfers from Kimberly Terrill and related outgoing transfers rather than clearly documented business income. The latest provided statement ends 2025-12-05, about six months before the June 2026 application.
+The new Matthew Flooring LLC business statements materially change the income picture. The unique business statements now reviewed cover January 2025 through May 2026, excluding one duplicate/mislabeled August/September 2025 file. Across 16 unique business statements:
+
+- Total deposits/credits: **$434,462.90**.
+- Average deposits/credits: **$27,153.93/month**.
+- Total withdrawals/debits: **$433,300.52**.
+- Average withdrawals/debits: **$27,081.28/month**.
+- Average monthly net account increase: **$72.65/month**.
+
+For the five 2026 business statements through May 2026:
+
+- Average deposits/credits: **$24,631.93/month**.
+- Average withdrawals/debits: **$24,103.11/month**.
+- Average monthly net account increase: **$528.82/month**.
+- Latest business ending balance, May 31, 2026: **$5,058.11**.
+
+This supports real business activity and gross revenue. It does **not** by itself verify borrower-level net income of $9,500/month because the business account has high expense/outflow activity and the file still lacks tax returns, a current profit-and-loss statement, ownership/compensation records, and owner-draw analysis.
 
 ### Debts
 
@@ -79,13 +100,13 @@ The file does not prove the buyer has:
 - Post-closing reserves.
 - Repair capacity after taking responsibility for the property.
 
-The bank statements generally show very low ending balances. The latest provided 2025 statement ending balance is **$503.73**. That does not support cash-to-close or reserve capacity by itself.
+The new business bank statements still do not prove cash to close. The latest business statement ending balance is **$5,058.11**. The latest provided personal statement ending balance is **$503.73**. Those balances do not prove the $6,000 earnest money, $20,790 total down payment, closing funds, and post-closing reserves.
 
 ## Decision
 
 **Recommendation: do not approve the buyer from the current file.**
 
-This is not a final permanent decline if Wes wants to request more documentation, but the current package does not support a defensible approval. The key blockers are unverified self-employment income, a high back-end ratio even using the unverified income, stale 2025 bank statements, no proof of down payment or reserves, and unexplained transfer activity that should not be counted as stable income without support.
+This is not a final permanent decline if Wes wants to request more documentation. The new business bank statements and rent verification make the file stronger than the first review, but they support only a **conditional reconsideration path**, not approval. The key blockers are unverified net self-employment income, a high back-end ratio even using the self-reported income, no proof of down payment or reserves, missing current personal statements, and the need to confirm Ever's ownership/compensation relationship with Matthew Flooring LLC.
 
 ## Preliminary Risk Flags
 
@@ -96,23 +117,24 @@ This is not a final permanent decline if Wes wants to request more documentation
 - The buyer will reportedly be responsible for repairs after sale, so the review should not ignore repair capacity and cash reserves.
 - The one-property-per-year point does not eliminate the need for attorney review because the actual seller entity and transaction structure control whether a seller-financer exclusion applies.
 - The credit report debt load is high relative to the proposed payment.
-- The supplied bank statements are stale for a June 2026 purchase and do not verify current income.
-- One bank statement appears duplicated or mislabeled, and the period ending around 2025-05-07 appears missing.
-- The October 2025 statement includes high Zelle activity from Kimberly Terrill and outgoing transfers that need explanation before being treated as recurring income.
+- Business statements support gross revenue, but high withdrawals mean gross deposits should not be treated as personal income.
+- The current business statements run through May 2026, but current personal statements are still missing.
+- The latest business and personal balances do not prove cash to close or reserves.
+- The business bank statement set includes a duplicate/mislabeled August/September 2025 statement.
 
 ## Documents Needed Before Reconsideration
 
 1. Legal name and ID for each buyer / obligor.
-2. Current 2026 bank statements through the application month for every account used for business or household income.
-3. Self-employment income package: tax returns, year-to-date profit-and-loss, 1099s, invoices/contracts, or customer/payment verification.
-4. Explanation of Matthew Flooring LLC relationship and whether payments are wages, contractor payments, owner draws, or customer receipts.
-5. Explanation and documentation for the Kimberly Terrill Zelle activity and outgoing "Yo Ever" transfers.
+2. Current 2026 personal bank statements through the application month.
+3. Self-employment income package: tax returns, year-to-date profit-and-loss, 1099s, invoices/contracts, payroll or owner-draw records, and customer/payment verification where available.
+4. Explanation of Ever's ownership, officer role, or compensation relationship with Matthew Flooring LLC.
+5. Explanation and documentation for material non-routine transfer activity, including Kimberly Terrill activity and outgoing "Yo Ever" transfers.
 6. Current debt obligations and monthly payments, including whether the auto loans will remain after closing.
 7. Proof of down payment, earnest money source, closing funds, and reserves.
-8. Current rent ledger or payment history for Tensity.
+8. Current rent ledger or payment history backup if counsel or lender review requires more than the Buy Your Home verification letter.
 9. Final proposed payment schedule and escrow breakdown.
 10. Attorney review of seller-financing compliance and any adverse-action or conditional-approval notice requirements.
 
 ## Recommended Next Step
 
-Do not approve the Contract for Deed from the current package. If Wes wants to continue, condition reconsideration on a current, verified self-employment income package; proof of down payment and reserves; and a written debt/residual-income worksheet reviewed against the final $2,701 payment structure.
+Do not approve the Contract for Deed from the current package. If Wes wants to continue, request a complete self-employment income package, proof of cash to close and reserves, and current personal bank statements. Then prepare a debt/residual-income worksheet using verified net income, not gross business deposits, against the final $2,701 payment structure.

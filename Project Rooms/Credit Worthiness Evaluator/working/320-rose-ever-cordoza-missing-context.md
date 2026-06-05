@@ -7,11 +7,12 @@
 - Confirm legal seller name and entity type for 320 Rose Pl.
 - Confirm whether the buyer will occupy 320 Rose Pl as a principal dwelling.
 - Confirm whether the transaction will be a Contract for Deed, note and mortgage, or another structure; the meeting description uses mixed language.
+- Confirm Ever's ownership interest, officer role, or compensation relationship with Matthew Flooring LLC.
 
 ## Underwriting Documents Still Needed
 
-- Current 2026 bank statements through the application month. The provided statements are 2025-period statements and do not prove current cash flow.
-- Self-employment income verification: recent tax returns, year-to-date profit-and-loss, bank statements for all business/personal accounts receiving business income, 1099s, invoices/contracts, or customer/payment verification.
+- Current 2026 personal bank statements through the application month. Current business statements are now present through May 2026, but current personal statements are not.
+- Self-employment income verification: recent tax returns, year-to-date profit-and-loss, 1099s, invoices/contracts, payroll/owner-draw records, or customer/payment verification.
 - Explanation of whether Matthew Flooring LLC is an employer, customer, related company, or the applicant's own business.
 - Explanation and source documentation for the high September/October 2025 activity involving Kimberly Terrill and outgoing Zelle transfers to "Yo Ever."
 - Current debt obligations.
