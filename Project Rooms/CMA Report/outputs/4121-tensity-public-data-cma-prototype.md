@@ -14,6 +14,14 @@ Public-source subject profile:
 - Built in 2002.
 - Approximately 4,356 sq ft lot.
 
+User-provided rerun assumptions:
+
+- Newly upgraded house.
+- Two large storage buildings in the back yard.
+- Fully fenced back yard.
+- Paver covered deck.
+- 3 parking spaces.
+
 ## Important Limitation
 
 This is a prototype CMA built from public web sources only. It is not an appraisal, broker price opinion, or final market recommendation. Before use for pricing, lending, acquisition, resale, or underwriting, add MLS data, Wake County property records, and verified subject condition.
@@ -34,17 +42,19 @@ This is a prototype CMA built from public web sources only. It is not an apprais
 
 The public-data signals cluster around approximately $295,000 to $315,000 for an average-condition property comparable to the nearby Tensity homes. The subject's Redfin estimate, the 4145 Tensity sale, and the 4236 Tensity sale all support a low-$300k working value before condition adjustment.
 
+For this rerun, Wes's assumptions indicate above-average marketability versus the original public-data prototype: newly upgraded condition, two large storage buildings, a fully fenced back yard, a paver covered deck, and 3 parking spaces. Those features support an upward adjustment from the average-condition range, subject to photo/MLS verification.
+
 Prototype working ranges:
 
 - Conservative/as-is range: $285,000 to $300,000.
 - Average-condition market range: $295,000 to $315,000.
-- Prototype midpoint for workflow testing: $305,000.
+- Upgraded-condition range using Wes's assumptions: $315,000 to $335,000.
+- Prototype midpoint for this rerun: $325,000.
 
 ## Follow-Up Required
 
 - Verify the subject property against Wake County records.
 - Pull MLS closed, pending, and active comps.
 - Review photos and condition for each comparable.
-- Confirm subject repairs, updates, and occupancy.
+- Confirm subject repairs, updates, storage buildings, fenced yard, paver covered deck, parking, and occupancy.
 - Decide whether the final CMA should be as-is, retail-ready, after-repair, quick-sale, or lender-support value.
-
