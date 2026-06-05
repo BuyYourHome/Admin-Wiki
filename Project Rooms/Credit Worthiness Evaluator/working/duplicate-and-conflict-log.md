@@ -11,4 +11,15 @@
 
 ## Duplicates
 
-No duplicate source files identified yet.
+| Duplicate | Status | Notes |
+| --- | --- | --- |
+| `April 2025.msg` attachment `Document.pdf` and `25-04-31 Bank Statement.pdf` | duplicate | Hashes match. Treat the PDF as the source file and the email as delivery context only. |
+| `25-05-31 Bank Statement.pdf` and `25-06-31 Bank Statement.pdf` | duplicate or mislabeled | Both extracted as the same 2025-05-08 through 2025-06-06 statement period with the same beginning balance, deposits, withdrawals, and ending balance. Do not count both as separate months for income averaging. |
+
+## Current Buyer-File Conflicts
+
+| Issue | Status | Notes |
+| --- | --- | --- |
+| Applicant-stated income versus bank deposits | unresolved | Applicant details state $9,500/month self-employment income, but the provided Wells Fargo statements show much lower routine deposits and are not current for June 2026. |
+| Twelve months requested versus statements provided | unresolved | Twelve PDFs are present, but one statement appears duplicated/mislabeled and the period ending 2025-05-07 appears missing. The set also does not include 2026 statements. |
+| Current cash reserves versus bank balances | unresolved | Statement ending balances are generally very low, with only $503.73 shown on the latest provided 2025 statement. No separate reserve or down-payment proof is present. |
