@@ -71,7 +71,7 @@ When an evaluator run produces or updates a formal report:
 2. Copy the same report into the live buyer source folder where the buyer documents were retrieved.
 3. Use a clear filename that preserves the buyer/property identity, such as:
 
-   `320 Rose Ever Cardoza - Creditworthiness Evaluation Report.docx`
+   `26-06-05 320 Rose Ever Cardoza - Creditworthiness Evaluation Report.docx`
 
 4. In the final response, report both locations.
 
@@ -80,10 +80,11 @@ Do not copy generated text extracts, render images, scratch logs, or source-inve
 ## Report Versioning And Page Numbers
 
 - Formal DOCX reports must include page numbers in the footer.
+- Formal report filenames must start with the report date in `yy-mm-dd` format.
 - Use the unversioned filename for the current report when there is no prior delivered report.
 - When rerunning or materially updating a previously delivered report, save the new file with a version suffix, such as:
 
-  `320 Rose Ever Cardoza - Creditworthiness Evaluation Report v2.docx`
+  `26-06-05 320 Rose Ever Cardoza - Creditworthiness Evaluation Report v2.docx`
 
 - Keep prior delivered report versions in both the project room `outputs\` folder and the live buyer source folder unless Wes explicitly asks to replace or remove them.
 - If the report body includes a report date, revision date, version label, or source cutoff date, update it to match the rerun.
