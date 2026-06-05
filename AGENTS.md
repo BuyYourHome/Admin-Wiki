@@ -30,8 +30,9 @@ Use this repo when formulating solutions for office-admin workflows, SOPs, autom
 - Prefer concise sections with clear routing rules, exception rules, and human responsibilities.
 - Use Obsidian-style links for related local docs, such as `[[Invoice Project List]]`.
 - When the user gives a durable instruction, update the relevant Markdown file and commit it.
-- After committing, push to GitHub unless the user says not to.
+- Do not push every commit to GitHub automatically. Push only when Wes says the work is a finished product, explicitly asks for a push, or the task instructions already define the deliverable as final and ready to publish.
 - Do not commit Obsidian local settings, temporary scan previews, logs, or generated scratch files.
+- In final responses, report the total elapsed time for the whole request. Do not report timing for each individual step unless Wes explicitly asks for step timing.
 
 ## Git Workflow
 
@@ -39,8 +40,8 @@ Use this repo when formulating solutions for office-admin workflows, SOPs, autom
 2. Edit the relevant Markdown files.
 3. Review the diff.
 4. Commit with a plain-English message.
-5. Push to GitHub.
-6. Tell the user what changed and the commit id.
+5. Push to GitHub only when Wes says the work is a finished product, explicitly asks for a push, or the task instructions already define the deliverable as final and ready to publish.
+6. Tell the user what changed, the commit id if a commit was made, whether it was pushed, and the total request time.
 
 ## Teams Workflow
 
