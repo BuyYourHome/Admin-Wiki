@@ -90,11 +90,20 @@ This project room is the working version of a process that may later become a Co
 
    `output\320 Rose - Term Sheet - DRAFT.docx`
 
+   Build the Buyer Acknowledgment Addendum with:
+
+   `working\format_buyer_acknowledgment_addendum.py`
+
+   The script should overwrite:
+
+   `output\320 Rose - Buyer Acknowledgment Addendum - DRAFT.docx`
+
 5. The Contract for Deed refresh must preserve the prototype formatting and update only the controlled variable fields. Avoid paragraph-number assumptions where possible; locate sections by their visible text because Wes may adjust spacing or wording in the prototype.
 
 6. Current contract-specific rules:
    - Seller stays anonymous as the trust. The trust is seller, and the trustee signs for the trust.
    - The Term Sheet is a formal summary document. It must read values from the `Docs` worksheet, not from prior email text. It may use prior email wording only as structural guidance. Include a clear statement that the Term Sheet is for review and discussion, is not the final contract, does not transfer title, is subject to final documents and attorney review, and is controlled by the final signed documents if there is a conflict.
+   - The Buyer Acknowledgment Addendum is a formal buyer-understanding document. It should provide two buyer-initial columns for each acknowledgment, signature lines for both buyers, and the standard buyer notary acknowledgment block.
    - Seller signature line should read in substance: `Investment Services LLC, Trustee - Wes Browning, Manager`.
    - Do not add a second standalone `Wes Browning, Manager` line under the seller signature line.
    - Seller/trustee mailing addresses must include the full city, state, and ZIP from the `Docs` worksheet. Do not truncate comma-separated address fields.
@@ -128,6 +137,7 @@ This project room is the working version of a process that may later become a Co
 Current package documents:
 
 - Term Sheet
+- Buyer Acknowledgment Addendum
 - Contract for Deed Agreement
 - Memorandum of Contract for Deed
 - Promissory Note for Contract for Deed
