@@ -47,6 +47,7 @@ Use this repo when formulating solutions for office-admin workflows, SOPs, autom
 
 - Do not use Teams as the working wiki repository.
 - Copy one-off final files to Teams only when requested.
+- When Wes asks for a property report, treat that as standing permission to copy the completed report deliverable to the matching Teams-synced property folder under `Owning`; use the `property-report-filing` skill.
 - If an SOP spreadsheet is updated, follow `SOP Spreadsheet Maintenance Rule.md`.
 
 ## Automation And Skill Notes

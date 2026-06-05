@@ -1,0 +1,5 @@
+interface:
+  display_name: "Property Report Filing"
+  short_description: "Copy property reports to Teams Owning folders."
+  default_prompt: "Use $property-report-filing to file a completed property report into the matching Teams property Owning folder."
+

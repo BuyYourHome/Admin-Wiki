@@ -16,6 +16,7 @@ Codex does not currently show every role below in one unified "Agents" list. Som
 | Admin Request Wrapup | Wiki-managed skill | Active | At the end of Admin wiki requests | `skills\admin-request-wrapup\SKILL.md`; `AGENTS.md` |
 | Credit Worthiness Evaluator | Wiki-managed skill plus project room | Active | On demand | `skills\credit-worthiness-evaluator\SKILL.md`; `Project Rooms\Credit Worthiness Evaluator\README.md` |
 | Contract for Deed | Wiki-managed skill plus project room | Active | On demand | `skills\contract-for-deed\SKILL.md`; `Project Rooms\Contract for Deed\PROJECT-ROOM.md` |
+| Property Report Filing | Wiki-managed skill | Active | On demand when a property report is created | `skills\property-report-filing\SKILL.md` |
 | Grocery List Handler | Wiki rule and data workflow | Active | On demand, including approved Boss/Jenny text instructions | `operations/grocery-list/` |
 | AI Project Room Workflow | Wiki workflow | Active | On demand before complex multi-source work | `Project Room Workflow.md` |
 | Project Management Spreadsheet Rewrite | Project Room | Active/planning | On demand | `Project Rooms\Project Management Spreadsheet Rewrite\README.md` |
@@ -260,6 +261,27 @@ Important rules:
 - Use the project room for project-specific prototypes, scripts, staged spreadsheets, outputs, and source history.
 - Use the skill as the reusable workflow wrapper.
 - Do not include deed documents unless Wes changes the package scope.
+
+## Property Report Filing
+
+Type: wiki-managed skill.
+
+Status: active.
+
+Purpose:
+
+- When Wes asks for a report for a property, keep the working report in the wiki/project room and copy the completed report to the matching Teams-synced property folder.
+- Use the matched property folder under `C:\Users\wesbr\Buy Your Home\Buy Your Home - Property`, then copy the report into that property's `Owning` folder.
+- Avoid silent overwrites. If a report with the same name already exists, create a timestamped copy unless Wes explicitly approves replacement.
+
+Defined in:
+
+- `C:\Codex\Wiki Files\skills\property-report-filing\SKILL.md`
+
+Important rules:
+
+- A request for a property report counts as standing permission to copy the final report deliverable into Teams `Owning`.
+- Do not create new Teams property folders or choose between multiple possible property matches without Wes's approval.
 
 ## Grocery List Handler
 
