@@ -165,27 +165,82 @@ def fill_notary_counties(doc, x):
 def update_notary_acknowledgments(doc, x):
     buyer = x["buyer"]
     seller_segments = [
-        ("I, ______________________________, a Notary Public, certify that ", False),
+        ("I certify that the following person(s) personally appeared before me this day, each acknowledging to me that he/she/they signed the foregoing document: ", False),
         (x["manager"], True),
         (", Manager of ", False),
         (x["trustee"], True),
         (", Trustee of ", False),
         (x["trust"], True),
-        (" personally appeared before me this day and acknowledged the due execution of the foregoing instrument.", False),
+        (".", False),
     ]
     buyer_segments = [
-        ("I, ______________________________, a Notary Public, certify that ", False),
+        ("I certify that the following person(s) personally appeared before me this day, each acknowledging to me that he/she/they signed the foregoing document: ", False),
         (buyer, True),
-        (" personally appeared before me this day and acknowledged the due execution of the foregoing instrument.", False),
+        (".", False),
     ]
     for paragraph in doc.paragraphs:
         text = paragraph.text
-        if "personally appeared before me this day and acknowledged the due execution" not in text:
+        if "personally appeared before me this day" not in text:
             continue
         if x["manager"] in text or x["trustee"] in text or x["trust"] in text:
             set_mixed_runs(paragraph, seller_segments)
         elif buyer in text or "Ever Cardoza" in text or "Maria Sarmjento" in text:
             set_mixed_runs(paragraph, buyer_segments)
+
+
+def notary_block_lines(county, signer_text):
+    return [
+        "STATE OF: NORTH CAROLINA",
+        f"COUNTY OF: {str(county).upper()}",
+        (
+            "I certify that the following person(s) personally appeared before me this day, "
+            "each acknowledging to me that he/she/they signed the foregoing document: "
+            f"{signer_text}."
+        ),
+        "Date: ____________________",
+        "Official Signature of Notary: ________________________________________",
+        "Notary's printed or typed name: ______________________________, Notary Public",
+        "My commission expires: ______________________",
+    ]
+
+
+def replace_paragraph_range_with_lines(doc, start_idx, end_idx, lines):
+    anchor = doc.paragraphs[start_idx]
+    inserted = []
+    for text in lines:
+        inserted.append(anchor.insert_paragraph_before(text))
+    body = doc._body._element
+    for paragraph in doc.paragraphs[start_idx + len(inserted) : end_idx + 1 + len(inserted)]:
+        body.remove(paragraph._element)
+
+
+def standardize_notary_blocks(doc, x):
+    signer_order = [
+        f"{x['manager']}, Manager of {x['trustee']}, Trustee of {x['trust']}",
+        x["buyer"],
+    ]
+    starts = []
+    for idx, paragraph in enumerate(doc.paragraphs):
+        text = paragraph.text.strip().upper()
+        if not text.startswith("STATE OF"):
+            continue
+        window = "\n".join(p.text for p in doc.paragraphs[idx : min(len(doc.paragraphs), idx + 10)])
+        if "personally appeared before me this day" in window:
+            starts.append(idx)
+    for block_number, start_idx in reversed(list(enumerate(starts[:2]))):
+        end_idx = None
+        for idx in range(start_idx, min(len(doc.paragraphs), start_idx + 12)):
+            if doc.paragraphs[idx].text.strip().lower().startswith("my commission expires"):
+                end_idx = idx
+                break
+        if end_idx is None:
+            continue
+        replace_paragraph_range_with_lines(
+            doc,
+            start_idx,
+            end_idx,
+            notary_block_lines(x["county"], signer_order[block_number]),
+        )
 
 
 def update_seller_signature_fields(doc, x):
@@ -316,6 +371,7 @@ def main():
     fill_notary_counties(doc, x)
     update_seller_signature_fields(doc, x)
     update_notary_acknowledgments(doc, x)
+    standardize_notary_blocks(doc, x)
     remove_page_breaks_from_section(doc, "5. RIGHT TO CANCEL.")
 
     update_buyer_signature_fields(doc, x)

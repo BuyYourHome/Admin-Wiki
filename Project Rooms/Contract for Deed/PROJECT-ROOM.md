@@ -99,6 +99,16 @@ This project room is the working version of a process that may later become a Co
    - Include an Additional Terms paragraph stating the contract is signed subject to changes Seller's attorney may make or require, that the parties will sign the contract again at closing or execute a required amendment, that Seller may elect to proceed under the previously signed contract if material attorney-required changes cause Purchaser not to proceed, and that Purchaser's due diligence funds will be returned if Seller does not so elect.
    - Include an Additional Terms paragraph stating that Seller is not providing legal advice and Purchaser may consult an attorney of Purchaser's choice, at Purchaser's expense, before signing and before closing.
    - Prefer section-title references over paragraph-number references when referring to conditions in `Additional Terms, Conditions or Addenda`, so references do not drift when numbered sections are inserted or reordered.
+   - Standardize notary acknowledgment blocks in the Contract, Memorandum, and Note using the North Carolina acknowledgment structure from G.S. 10B-41. Use the following layout with the document-specific signer inserted:
+     - `STATE OF: NORTH CAROLINA`
+     - `COUNTY OF: [COUNTY]`
+     - `I certify that the following person(s) personally appeared before me this day, each acknowledging to me that he/she/they signed the foregoing document: [SIGNER NAME(S) AND CAPACITY].`
+     - `Date: ____________________`
+     - `Official Signature of Notary: ________________________________________`
+     - `Notary's printed or typed name: ______________________________, Notary Public`
+     - `My commission expires: ______________________`
+   - For seller/trust blocks, identify the signer in representative/fiduciary capacity, such as `Wes Browning, Manager of Investment Services LLC, Trustee of 320 Rose Pl Real Estate Trust dated March, 5 2025`.
+   - For buyer blocks, include all buyer names in the same acknowledgment unless attorney review requires separate notary blocks.
    - Use only `LoanStart1` and `LoanEnd1`; ignore `LoanStart2` and `LoanEnd2`.
    - The section 9 adverse-condition placeholder should explicitly say `NOTE FOR ATTORNEY REVIEW` and should appear only once.
    - Trim any trailing blank/text content after the final purchaser notary block.

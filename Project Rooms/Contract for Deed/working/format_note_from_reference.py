@@ -188,18 +188,20 @@ def ensure_notary_block(doc, x):
     if "Notary Public" in full_text and "personally appeared before me" in full_text:
         return
     doc.add_paragraph("")
-    doc.add_paragraph("STATE OF NORTH CAROLINA")
-    doc.add_paragraph("COUNTY OF WAKE")
+    doc.add_paragraph("STATE OF: NORTH CAROLINA")
+    doc.add_paragraph(f"COUNTY OF: {str(x['county']).upper()}")
     doc.add_paragraph("")
     doc.add_paragraph(
-        f"I, ______________________________, a Notary Public of the County and State aforesaid, certify that {x['buyer']} personally appeared before me this day and acknowledged the execution of the foregoing Promissory Note."
+        "I certify that the following person(s) personally appeared before me this day, "
+        "each acknowledging to me that he/she/they signed the foregoing document: "
+        f"{x['buyer']}."
     )
     doc.add_paragraph("")
-    doc.add_paragraph("Witness my hand and notarial seal, this ____ day of __________________, 2026.")
+    doc.add_paragraph("Date: ____________________")
     doc.add_paragraph("")
-    doc.add_paragraph("________________________________________")
-    doc.add_paragraph("Notary Public")
-    doc.add_paragraph("My commission expires: __________________")
+    doc.add_paragraph("Official Signature of Notary: ________________________________________")
+    doc.add_paragraph("Notary's printed or typed name: ______________________________, Notary Public")
+    doc.add_paragraph("My commission expires: ______________________")
     doc.add_paragraph("")
     doc.add_paragraph("Maker Signature: ______________________________")
     doc.add_paragraph(f"Printed Name: {buyer1}")
@@ -233,13 +235,66 @@ def update_signature_and_notary_names(doc, x):
             set_mixed_runs(
                 paragraph,
                 [
-                    ("I, ______________________________, a Notary Public of the County and State aforesaid, certify that ", None),
+                    ("I certify that the following person(s) personally appeared before me this day, each acknowledging to me that he/she/they signed the foregoing document: ", None),
                     (combined, True),
-                    (" personally appeared before me this day and acknowledged the execution of the foregoing Promissory Note.", None),
+                    (".", None),
                 ],
             )
             continue
         bold_matching_runs(paragraph, buyers)
+
+
+def notary_block_lines(county, signer_text):
+    return [
+        "STATE OF: NORTH CAROLINA",
+        f"COUNTY OF: {str(county).upper()}",
+        (
+            "I certify that the following person(s) personally appeared before me this day, "
+            "each acknowledging to me that he/she/they signed the foregoing document: "
+            f"{signer_text}."
+        ),
+        "Date: ____________________",
+        "Official Signature of Notary: ________________________________________",
+        "Notary's printed or typed name: ______________________________, Notary Public",
+        "My commission expires: ______________________",
+    ]
+
+
+def replace_paragraph_range_with_lines(doc, start_idx, end_idx, lines):
+    anchor = doc.paragraphs[start_idx]
+    inserted = []
+    for text in lines:
+        inserted.append(anchor.insert_paragraph_before(text))
+    body = doc._body._element
+    for paragraph in doc.paragraphs[start_idx + len(inserted) : end_idx + 1 + len(inserted)]:
+        body.remove(paragraph._element)
+
+
+def standardize_notary_blocks(doc, x):
+    buyer1 = x.get("buyer1") or "Ever Cardoza"
+    buyer2 = x.get("buyer2") or "Maria Sarmjento"
+    buyers = [name for name in [buyer1, buyer2] if name]
+    combined = " and ".join(buyers)
+    for start_idx in reversed(
+        [
+            idx
+            for idx, paragraph in enumerate(doc.paragraphs)
+            if paragraph.text.strip().upper().startswith("STATE OF")
+        ]
+    ):
+        end_idx = None
+        for idx in range(start_idx, min(len(doc.paragraphs), start_idx + 12)):
+            if doc.paragraphs[idx].text.strip().lower().startswith("my commission expires"):
+                end_idx = idx
+                break
+        if end_idx is None:
+            continue
+        replace_paragraph_range_with_lines(
+            doc,
+            start_idx,
+            end_idx,
+            notary_block_lines(x["county"], combined),
+        )
 
 
 def ensure_page_break_before_in_testimony(doc):
@@ -291,6 +346,7 @@ def main():
 
     ensure_notary_block(doc, x)
     update_signature_and_notary_names(doc, x)
+    standardize_notary_blocks(doc, x)
 
     OUTPUT.parent.mkdir(parents=True, exist_ok=True)
     doc.save(OUTPUT)

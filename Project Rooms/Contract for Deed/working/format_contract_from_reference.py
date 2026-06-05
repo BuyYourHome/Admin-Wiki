@@ -76,13 +76,9 @@ def set_notary_acknowledgment(paragraph, signer_text, red_signer=False):
     set_paragraph_runs(
         paragraph,
         [
-            {"text": "I, "},
-            {"text": "\t\t\t\t\t", "underline": True},
-            {"text": ", a Notary Public of the County and State aforesaid, do hereby certify that "},
+            {"text": "I certify that the following person(s) personally appeared before me this day, each acknowledging to me that he/she/they signed the foregoing document: "},
             {"text": signer_text, "red": red_signer},
-            {
-                "text": " personally appeared before me this day and acknowledged the execution of the foregoing instrument.  Witness my hand and notarial seal,"
-            },
+            {"text": "."},
         ],
     )
 
@@ -91,9 +87,7 @@ def set_notary_certification_prefix(paragraph):
     set_paragraph_runs(
         paragraph,
         [
-            {"text": "I, "},
-            {"text": "\t\t\t\t\t", "underline": True},
-            {"text": ", a Notary Public of the County and State aforesaid, do hereby certify that\xa0"},
+            {"text": "I certify that the following person(s) personally appeared before me this day, each acknowledging to me that he/she/they signed the foregoing document: "},
         ],
     )
 
@@ -103,11 +97,62 @@ def set_notary_signer_continuation(paragraph, signer_text, red_signer=False):
         paragraph,
         [
             {"text": signer_text, "red": red_signer},
-            {
-                "text": " personally appeared before me this day and acknowledged the execution of the foregoing instrument.  Witness my hand and notarial seal,"
-            },
+            {"text": "."},
         ],
     )
+
+
+def notary_block_lines(county, signer_text):
+    return [
+        "STATE OF: NORTH CAROLINA",
+        f"COUNTY OF: {str(county).title()}",
+        (
+            "I certify that the following person(s) personally appeared before me this day, "
+            "each acknowledging to me that he/she/they signed the foregoing document: "
+            f"{signer_text}."
+        ),
+        "Date: ____________________",
+        "Official Signature of Notary: ________________________________________",
+        "Notary's printed or typed name: ______________________________, Notary Public",
+        "My commission expires: ______________________",
+    ]
+
+
+def replace_paragraph_range_with_lines(doc, start_idx, end_idx, lines):
+    anchor = doc.paragraphs[start_idx]
+    inserted = []
+    for text in lines:
+        inserted.append(anchor.insert_paragraph_before(text))
+    body = doc._body._element
+    for paragraph in doc.paragraphs[start_idx + len(inserted) : end_idx + 1 + len(inserted)]:
+        body.remove(paragraph._element)
+    return inserted
+
+
+def standardize_contract_notary_blocks(doc, x):
+    signer_order = [
+        x["buyer"],
+        f"{x['manager']}, Manager of {x['trustee']}, Trustee of {x['trust']}",
+    ]
+    starts = []
+    for idx, paragraph in enumerate(doc.paragraphs):
+        text = paragraph.text.strip().upper()
+        if idx > 100 and (text.startswith("STATE:") or text.startswith("STATE OF")):
+            starts.append(idx)
+    for block_number, start_idx in reversed(list(enumerate(starts[:2]))):
+        end_idx = None
+        for idx in range(start_idx, min(len(doc.paragraphs), start_idx + 16)):
+            text = doc.paragraphs[idx].text.strip()
+            if text.startswith("Notary Public") or text.startswith("My commission expires") or text.startswith("Notary Public My Commission expires"):
+                end_idx = idx
+        if end_idx is None:
+            continue
+        replace_paragraph_range_with_lines(
+            doc,
+            start_idx,
+            end_idx,
+            notary_block_lines(x["county"], signer_order[block_number]),
+        )
 
 
 def insert_underlined_signature_line_before(paragraph):
@@ -652,6 +697,7 @@ def main():
     set_purchaser_notary(doc, x)
     apply_notary_block_revisions(doc, x)
     ensure_notary_signature_lines(doc)
+    standardize_contract_notary_blocks(doc, x)
     ensure_ach_terms(doc)
     ensure_attorney_contingency_clause(doc)
     ensure_independent_counsel_clause(doc)
@@ -679,6 +725,7 @@ def main():
         },
     )
 
+    standardize_contract_notary_blocks(doc, x)
     trim_after_last_notary(doc)
     doc.save(OUTPUT)
     print(OUTPUT)
