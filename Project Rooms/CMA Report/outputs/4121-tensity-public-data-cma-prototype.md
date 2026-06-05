@@ -42,13 +42,13 @@ This is a prototype CMA built from public web sources only. It is not an apprais
 
 The public-data signals cluster around approximately $295,000 to $315,000 for an average-condition property comparable to the nearby Tensity homes. The subject's Redfin estimate, the 4145 Tensity sale, and the 4236 Tensity sale all support a low-$300k working value before condition adjustment.
 
-For this rerun, Wes's assumptions indicate above-average marketability versus the original public-data prototype: newly upgraded condition, two large storage buildings, a fully fenced back yard, a paver covered deck, and 3 parking spaces. Those features support an upward adjustment from the average-condition range, subject to photo/MLS verification.
+For this rerun, Owner-provided assumptions indicate above-average marketability versus the original public-data prototype: newly upgraded condition, two large storage buildings, a fully fenced back yard, a paver covered deck, and 3 parking spaces. Those features support an upward adjustment from the average-condition range, subject to photo/MLS verification.
 
 Prototype working ranges:
 
 - Conservative/as-is range: $285,000 to $300,000.
 - Average-condition market range: $295,000 to $315,000.
-- Upgraded-condition range using Wes's assumptions: $315,000 to $335,000.
+- Upgraded-condition range using Owner-provided assumptions: $315,000 to $335,000.
 - Prototype midpoint for this rerun: $325,000.
 
 ## Follow-Up Required

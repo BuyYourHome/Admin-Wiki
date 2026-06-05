@@ -7,9 +7,9 @@ description: Create, rerun, finalize, and file Buy Your Home CMA report and rela
 
 ## Rule
 
-When Wes asks for a report for a property, keep the working copy in the project room or wiki workspace, then put a copy of the completed report in the matching Teams-synced property folder under `Owning`.
+When the owner asks for a report for a property, keep the working copy in the project room or wiki workspace, then put a copy of the completed report in the matching Teams-synced property folder under `Owning`.
 
-This is a standing instruction. A request for a property report counts as permission to copy the final report deliverable to Teams unless Wes explicitly says not to for that report.
+This is a standing instruction. A request for a property report counts as permission to copy the final report deliverable to Teams unless the owner explicitly says not to for that report.
 
 ## Destination
 
@@ -25,7 +25,7 @@ For a property report, copy the final report file to:
 C:\Users\wesbr\Buy Your Home\Buy Your Home - Property\<Matched Property>\Owning
 ```
 
-Use the existing property folder that best matches the report address or project name. Do not create a new property folder unless Wes explicitly asks.
+Use the existing property folder that best matches the report address or project name. Do not create a new property folder unless the owner explicitly asks.
 
 ## Workflow
 
@@ -34,8 +34,14 @@ Use the existing property folder that best matches the report address or project
 3. Match that address/project to exactly one folder under the property root.
 4. Confirm the matched folder has an `Owning` subfolder.
 5. Copy the final report file into `Owning` with a date prefix in `yy-mm-dd` format.
-6. Do not overwrite an existing file silently. If the same filename already exists, create a timestamped copy unless Wes explicitly approves replacement.
+6. Do not overwrite an existing file silently. If the same filename already exists, create a timestamped copy unless the owner explicitly approves replacement.
 7. In the final response, include both the working output path and the Teams `Owning` copy path.
+
+## Report Wording
+
+Use depersonalized source wording in CMA reports. When a value, condition, repair status, feature list, or assumption comes from the property owner or requester, label it `Owner-provided`.
+
+Do not write the owner's personal name in report assumptions or valuation reasoning unless the owner explicitly asks for that wording.
 
 ## File Naming
 
@@ -52,7 +58,7 @@ If the source report already starts with a `yy-mm-dd` prefix, keep that prefix i
 - Prefer an exact address match, such as `4121 Tensity` matching `24-HM-4121 Tensity Dr`.
 - If exactly one property folder contains the street number and street name, use it.
 - If no property folder matches, report the blocker and leave the report in the project room.
-- If multiple property folders match, list the candidates and ask Wes which one to use.
+- If multiple property folders match, list the candidates and ask the owner which one to use.
 - Do not substitute a similar property folder without explicit permission.
 
 ## Script

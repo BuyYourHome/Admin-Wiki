@@ -270,9 +270,9 @@ Status: active.
 
 Purpose:
 
-- When Wes asks for a report for a property, keep the working report in the wiki/project room and copy the completed report to the matching Teams-synced property folder.
+- When the owner asks for a report for a property, keep the working report in the wiki/project room and copy the completed report to the matching Teams-synced property folder.
 - Use the matched property folder under `C:\Users\wesbr\Buy Your Home\Buy Your Home - Property`, then copy the report into that property's `Owning` folder.
-- Avoid silent overwrites. If a report with the same name already exists, create a timestamped copy unless Wes explicitly approves replacement.
+- Avoid silent overwrites. If a report with the same name already exists, create a timestamped copy unless the owner explicitly approves replacement.
 
 Defined in:
 
@@ -281,7 +281,8 @@ Defined in:
 Important rules:
 
 - A request for a property report counts as standing permission to copy the final report deliverable into Teams `Owning`.
-- Do not create new Teams property folders or choose between multiple possible property matches without Wes's approval.
+- Use `Owner-provided` in report assumptions and valuation reasoning instead of the owner's personal name.
+- Do not create new Teams property folders or choose between multiple possible property matches without the owner's approval.
 
 ## Grocery List Handler
 

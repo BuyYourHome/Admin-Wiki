@@ -8,7 +8,7 @@ Source collection date: 2026-06-05.
 
 ## User-Provided Property Assumptions
 
-Wes provided the following assumptions for this rerun:
+Owner-provided assumptions for this rerun:
 
 - House is newly upgraded.
 - Back yard includes two large storage buildings.
@@ -44,7 +44,7 @@ For public-data prototyping only:
 
 - Conservative/as-is working range: $285,000 to $300,000.
 - Typical market working range if average condition: $295,000 to $315,000.
-- Upgraded-condition working range using Wes's assumptions: $315,000 to $335,000.
+- Upgraded-condition working range using Owner-provided assumptions: $315,000 to $335,000.
 - Preliminary upgraded-condition prototype midpoint: $325,000.
 
 ## Confidence
