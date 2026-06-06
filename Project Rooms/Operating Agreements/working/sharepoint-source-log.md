@@ -59,5 +59,25 @@ Keep the simplified OA subfiles in the Jeff Watson subfolder: `sources/Jeff Wats
 | --- | --- | --- |
 | `Corp-Sell Your Home 83-4027719/Jeff Watson` | `Sell Your Home LLC (Browning & Hollinger) AMENDED AND RESTATED IRA-OWNED LLC OPERATING AGREEMENT.docx` copied as `Jeff Base OA - Sell Your Home LLC (Browning & Hollinger) AMENDED AND RESTATED IRA-OWNED LLC OPERATING AGREEMENT.docx` | 2025-07-08T18:47:15Z |
 | `Corp-Sell Your Home 83-4027719/Jeff Watson` | `25-06-25 SELL_YOUR_HOME_LLC Jeff Watson's Original with Simplified Addition.docx` copied as `Wes Simplified Draft - 25-06-25 SELL_YOUR_HOME_LLC Jeff Watson's Original with Simplified Addition.docx` | 2025-07-09T20:34:25Z |
-| `Corp-Sell Your Home 83-4027719/Jeff Watson` | `25-06-25 SELL_YOUR_HOME_LLC Simplified with Summary with Jeff Watson tracked edits.docx` copied as `Simplified OA - 25-06-25 SELL_YOUR_HOME_LLC Simplified with Summary with Jeff Watson tracked edits.docx` | Refreshed 2026-06-06 before retirement-account provisions analysis; SharePoint showed "About an hour ago" when refreshed |
+| `Corp-Sell Your Home 83-4027719/Jeff Watson` | `25-06-25 SELL_YOUR_HOME_LLC Simplified with Summary with Jeff Watson tracked edits.docx` copied as `Simplified OA - 25-06-25 SELL_YOUR_HOME_LLC Simplified with Summary with Jeff Watson tracked edits.docx` | Refreshed 2026-06-06 before retirement-account provisions analysis; refreshed again 2026-06-06 before BYH derivative redline draft |
 | `Corp-Sell Your Home 83-4027719/Jeff Watson` | `Sell Your Home LLC (Browning & Hollinger) AMENDED AND RESTATED IRA-OWNED LLC OPERATING AGREEMENT.pdf` | 2025-06-20T12:24:38Z |
+
+## BYH Derivative Draft
+
+On 2026-06-06, refreshed the Simplified OA from Teams/SharePoint before creating the BYH derivative redline draft.
+
+Output folder:
+
+`sources/Jeff Watson/BYH/`
+
+Output files:
+
+- `BYH OA Draft - redline from Simplified OA.docx`
+- `BYH OA Draft Notes.md`
+
+Drafting assumptions used:
+
+- Buy Your Home, LLC is a single-member LLC.
+- Browning Family Trust is named as the beneficiary/beneficial ownership reference.
+- Wesley Dale Browning is named as Manager.
+- Retirement-account-specific source provisions are retained but marked with strikethrough, with BYH replacement language added in red.
