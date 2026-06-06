@@ -11,6 +11,7 @@ Current draft:
 - `BYH OA Draft V5 Fresh Original-Based Redline - from Simplified OA.docx`
 - `BYH OA Draft V6 Fresh Clean Redline - from Simplified OA.docx`
 - `BYH OA Draft V7 Signature Block - from V6 Fresh Clean Redline.docx`
+- `BYH OA Draft V8 Operative Language - from V7 Signature Block.docx`
 
 Current notes:
 
@@ -21,6 +22,7 @@ Current notes:
 - `BYH OA Draft V5 Fresh Original-Based Redline Notes.md`
 - `BYH OA Draft V6 Fresh Clean Redline Notes.md`
 - `BYH OA Draft V7 Signature Block Notes.md`
+- `BYH OA Draft V8 Operative Language Notes.md`
 
 Drafting assumptions:
 
@@ -39,5 +41,6 @@ Version notes:
 - V5 Fresh Original-Based Redline restarts from the original Simplified OA source instead of layering on V4. It preserves the plural `Manager(s)` framework, applies the known BYH corrections, and avoids the stale `Manager(s) Manager` artifact.
 - V6 Fresh Clean Redline restarts from the original Simplified OA source, reduces repeated notes, keeps 4.10 trustee voting as inline sentence redline text, strikes the 3.7 Account Holder note without adding a redundant note, strikes only `on a non recourse basis` in 5.1(b)(iv), and leaves 5.1(b)(xi) intact.
 - V7 Signature Block carries forward V6 and replaces the certification signature drafting note with proposed signature blocks for Browning Family Revocable Trust as sole Member, co-trustees Wesley Dale Browning and Jeanette Wilson Hollinger, and Manager(s) Wesley Dale Browning, Jeanette Wilson Hollinger, and Investment Services LLC.
+- V8 Operative Language carries forward V7 and replaces remaining drafting notes with proposed operative language where practical, including Article 2, Exhibit A, and the manager appointment paragraph naming Wesley Dale Browning, Jeanette Wilson Hollinger, and Investment Services LLC as initial Manager(s). It also strikes retirement-account-only Manager/account-holder restrictions.
 
 Before final use, confirm the full legal trust name, signer or trustee authority, the exact member/beneficiary structure, and S corporation tax language with attorney/CPA review.
