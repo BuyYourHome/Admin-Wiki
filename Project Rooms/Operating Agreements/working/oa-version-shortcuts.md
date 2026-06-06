@@ -20,7 +20,7 @@ File:
 
 Meaning:
 
-Wes prolog/summary plus blue simplified replacement paragraphs, with Jeff original text still present.
+Wes prolog/summary plus blue simplified replacement paragraphs, with some of Jeff's original text still present.
 
 ## Simplified OA
 
