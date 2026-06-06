@@ -39,6 +39,10 @@ Excluded unless Wes specifically adds them:
 - Treat the Jeff Watson folder as a separate drafting reference set for new OA versions, not as the same source class as current or potentially controlling operating agreements.
 - When drafting new OA versions, cite whether a source came from the Jeff Watson drafting folder or from the main copied OA source set.
 
+## OA Revision Process Rules
+
+1. The base file for the new Sell Your Home OA revision process is Jeff Watson's authored operating agreement: `sources\Corp-Sell Your Home 83-4027719\Jeff Watson\Sell Your Home LLC (Browning & Hollinger) AMENDED AND RESTATED IRA-OWNED LLC OPERATING AGREEMENT.docx`.
+
 ## Source Inventory Status
 
 - Authoritative sources: none confirmed yet.
