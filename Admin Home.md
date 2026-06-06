@@ -12,6 +12,7 @@ This is the starting page for the Buy Your Home admin wiki.
 - [[Invoice Project List]]
 - [[SOP Spreadsheet Maintenance Rule]]
 - [[Repository Location Rule]]
+- [[Git Work Scope Rule]]
 - [[Codex Skill Source Rule]]
 
 ## Grocery List

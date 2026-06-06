@@ -18,6 +18,7 @@ Use this repo when formulating solutions for office-admin workflows, SOPs, autom
 - Use `Connector and Plugin Usage Rules.md` to decide when to prefer installed connectors/plugins over local desktop automation.
 - Use `Project Room Workflow.md` before major work that depends on multiple source files, emails, scans, notes, spreadsheets, or prior drafts.
 - Use `Repository Location Rule.md` for repo/location policy.
+- Use `Git Work Scope Rule.md` before committing or pushing Admin wiki work.
 - Use `Codex Skill Source Rule.md` before creating, editing, syncing, or installing Admin wiki-managed Codex skills.
 - Use `SOP Spreadsheet Maintenance Rule.md` before editing the SOP workbook.
 - Use `Document Scanning SOP.md`, `Document Scanning Skill Spec.md`, and `Document Scanning Folder Map.md` for scanned statement workflows.
@@ -37,11 +38,13 @@ Use this repo when formulating solutions for office-admin workflows, SOPs, autom
 ## Git Workflow
 
 1. Check `git status --short --branch`.
-2. Edit the relevant Markdown files.
-3. Review the diff.
-4. Commit with a plain-English message.
-5. Push to GitHub only when Wes says the work is a finished product, explicitly asks for a push, or the task instructions already define the deliverable as final and ready to publish.
-6. Tell the user what changed, the commit id if a commit was made, whether it was pushed, and the total request time.
+2. Identify the current chat's body of work and keep commits scoped to that body of work. Do not mix unrelated project rooms, unrelated files, or prior local changes into the commit.
+3. Edit the relevant Markdown files.
+4. Review the diff.
+5. Commit with a plain-English message.
+6. Push to GitHub only when Wes says the scoped body of work is a finished product, explicitly asks for a push, or the task instructions already define that scoped deliverable as final and ready to publish.
+7. If the current branch contains unrelated unpushed commits, do not make Wes choose between pushing everything and pushing nothing. Create or use a scoped branch for the current body of work, move or cherry-pick only the relevant commits there, and push that branch when pushing is approved.
+8. Tell the user what changed, the commit id if a commit was made, whether it was pushed, and the total request time.
 
 ## Teams Workflow
 
