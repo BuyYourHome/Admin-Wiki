@@ -12,6 +12,10 @@ Jeff Watson drafting folder:
 
 `sources\Corp-Sell Your Home 83-4027719\Jeff Watson\`
 
+Simplified OA subfile folder:
+
+`sources\Corp-Sell Your Home 83-4027719\Jeff Watson\Simplified OA Subfiles\`
+
 ## Source Classification
 
 - Keep Jeff Watson drafting files segregated in `sources\Corp-Sell Your Home 83-4027719\Jeff Watson\`.
@@ -91,9 +95,9 @@ Examples:
 
 Keep the simplified OA subfiles in the Jeff Watson subfolder:
 
-`sources\Corp-Sell Your Home 83-4027719\Jeff Watson\`
+`sources\Corp-Sell Your Home 83-4027719\Jeff Watson\Simplified OA Subfiles\`
 
-Do not place those subfiles in the main Sell Your Home source folder or another project-room folder unless Wes explicitly asks.
+Do not place those subfiles in the Jeff Watson root folder, the main Sell Your Home source folder, or another project-room folder unless Wes explicitly asks.
 
 ## Drafting Rules
 

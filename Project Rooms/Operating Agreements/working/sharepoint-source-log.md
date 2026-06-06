@@ -49,7 +49,7 @@ For further analysis or derivative drafting, split the simplified OA into separa
 
 Each simplified OA subfile should have a meaningful filename that includes both reassembly order and segment subject, such as `01 - Opening Paragraphs`, `02 - Summary`, and `03 - Article 1 - Offices and Records`.
 
-Keep the simplified OA subfiles in the Jeff Watson subfolder: `sources/Corp-Sell Your Home 83-4027719/Jeff Watson/`. Do not place those subfiles in the main Sell Your Home source folder or another project-room folder unless Wes explicitly asks.
+Keep the simplified OA subfiles in the Jeff Watson subfolder: `sources/Corp-Sell Your Home 83-4027719/Jeff Watson/Simplified OA Subfiles/`. Do not place those subfiles in the Jeff Watson root folder, the main Sell Your Home source folder, or another project-room folder unless Wes explicitly asks.
 
 | Channel Folder | File | SharePoint Modified Time |
 | --- | --- | --- |

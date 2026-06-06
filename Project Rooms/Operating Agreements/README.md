@@ -29,6 +29,7 @@ Excluded unless Wes specifically adds them:
 
 - Room sources: `sources\`
 - Jeff Watson drafting sources: `sources\Corp-Sell Your Home 83-4027719\Jeff Watson\`
+- Simplified OA subfiles: `sources\Corp-Sell Your Home 83-4027719\Jeff Watson\Simplified OA Subfiles\`
 - Working notes: `working\`
 - Outputs: `outputs\`
 
@@ -46,7 +47,7 @@ Excluded unless Wes specifically adds them:
 3. All new Sell Your Home OA versions should be derived from `sources\Corp-Sell Your Home 83-4027719\Jeff Watson\25-06-25 SELL_YOUR_HOME_LLC Simplified with Summary with Jeff Watson tracked edits.docx`, which is the working "simplified OA" and includes Jeff Watson's tracked edits. Use this file as the starting document unless Wes explicitly chooses another source.
 4. For further analysis or derivative drafting, break the simplified OA into separate reassemblable files before making substantive changes. Segment it by opening paragraphs, summary, and each article. Preserve a clear reassembly order so the separate files can be recombined into a complete OA.
 5. Give each simplified OA subfile a meaningful name. Include the reassembly order and the segment subject in the filename, such as `01 - Opening Paragraphs`, `02 - Summary`, and `03 - Article 1 - Offices and Records`.
-6. Keep the simplified OA subfiles in the Jeff Watson subfolder: `sources\Corp-Sell Your Home 83-4027719\Jeff Watson\`. Do not place those subfiles in the main Sell Your Home source folder or another project-room folder unless Wes explicitly asks.
+6. Keep the simplified OA subfiles in the Jeff Watson subfolder `sources\Corp-Sell Your Home 83-4027719\Jeff Watson\Simplified OA Subfiles\`. Do not place those subfiles in the Jeff Watson root folder, the main Sell Your Home source folder, or another project-room folder unless Wes explicitly asks.
 
 ## Source Inventory Status
 
