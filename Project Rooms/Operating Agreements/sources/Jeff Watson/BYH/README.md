@@ -2,6 +2,12 @@
 
 This folder contains derivative BYH operating-agreement drafts created from the refreshed Simplified OA source.
 
+## Current Build Rule
+
+Future BYH builds should treat Wes's instructions as cumulative and generate a fresh draft from the refreshed Simplified OA source, rather than layering edits on top of the latest V-numbered BYH draft, unless Wes explicitly asks to continue from a specific prior version.
+
+After the next BYH fresh-from-original build, compare it against the latest layered V-numbered build so Wes can see how the approaches differ.
+
 Current draft:
 
 - `BYH OA Draft - redline from Simplified OA.docx`
