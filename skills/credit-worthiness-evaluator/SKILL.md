@@ -41,6 +41,15 @@ Use the project room for source inventory, conflict logs, missing-context notes,
 - State whether the result is approval, decline, or conditional reconsideration. If the file is not approval-ready, say that directly.
 - Include attorney/compliance review needs for seller-financing, Regulation Z/Dodd-Frank, state law, and adverse-action notice questions.
 
+## Related-Company Rent History Rule
+
+- For the 320 Rose / Ever Cardoza file, recognize that the buyer's current rent history is with related company `Buy Your Home, LLC`.
+- Treat `Buy Your Home, LLC` rent verification as related-company, seller-adjacent payment history, not as an unrelated third-party landlord record.
+- The related-company rent history can still be a strong compensating factor because Sell Your Home or its related company can directly verify payment timing and tenant performance.
+- When using this factor, say the current landlord is `Buy Your Home, LLC`, a related company, and distinguish it from the transaction/seller entity used in the formal report voice.
+- Do not overstate the rent history as independent third-party verification. Document it as direct related-company verification.
+- If a report uses a tenant-buyer payment-history exception, include the related-company relationship in the exception rationale.
+
 ## Formal Report Naming And Voice
 
 - Use the buyer's full legal-style name from the most authoritative available source, such as the screening report or application, in the report body and filename.
