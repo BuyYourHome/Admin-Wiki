@@ -76,11 +76,13 @@ Output files:
 - `BYH OA Draft Notes.md`
 - `BYH OA Draft V2 Targeted Redline - from Simplified OA.docx`
 - `BYH OA Draft V2 Targeted Redline Notes.md`
+- `BYH OA Draft V3 Trustee Voting Members - from V2 Targeted Redline.docx`
+- `BYH OA Draft V3 Trustee Voting Members Notes.md`
 
 Drafting assumptions used:
 
 - Buy Your Home, LLC is a single-member LLC.
-- Browning Family Trust is named as the beneficiary/beneficial ownership reference.
+- Browning Family Revocable Trust is named as the beneficiary/beneficial ownership reference.
 - Wesley Dale Browning is named as Manager.
 - Retirement-account-specific source provisions are retained but marked with strikethrough, with BYH replacement language added in red.
 
@@ -88,3 +90,4 @@ Version distinction:
 
 - V1 uses broader paragraph-level replacement notes.
 - V2 Targeted Redline favors word-level replacements where a few words are enough and reserves full-clause strikethrough for retirement-account-specific mechanics.
+- V3 Trustee Voting Members carries forward V2, corrects the trust name to Browning Family Revocable Trust, and adds that voting authority is exercised by the Trustees, currently Wes Browning and Jenny Hollinger.
