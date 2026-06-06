@@ -45,6 +45,8 @@ The base file for the new Sell Your Home OA revision process is Jeff Watson's au
 
 `25-06-25 SELL_YOUR_HOME_LLC Simplified with Summary with Jeff Watson tracked edits.docx` is the working "simplified OA" and includes Jeff Watson's tracked edits. All new Sell Your Home OA versions should be derived from this file unless Wes explicitly chooses another source.
 
+Wes may edit this file directly in Teams. Before any derivative request, drafting request, analysis request, or subfile regeneration based on the simplified OA, refresh this tracked-edits file from Teams/SharePoint into the project room and record the refresh in the source inventory or source log.
+
 For further analysis or derivative drafting, split the simplified OA into separate reassemblable files before substantive changes. Required segments are opening paragraphs, summary, and each article, with a clear reassembly order.
 
 When creating simplified OA subfiles, retain the original Word formatting, including font color, tracked-edit markings, paragraph styles, numbering, spacing, page-break behavior, and other visible formatting. Verify that the subfiles can be reassembled into the same original file before using them for analysis, drafting, or derivative work.

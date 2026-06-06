@@ -58,6 +58,8 @@ All new Sell Your Home OA versions should be derived from:
 
 This file is the working "simplified OA" and includes Jeff Watson's tracked edits.
 
+Wes may edit this file directly in Teams. Before any derivative request, drafting request, analysis request, or subfile regeneration based on the simplified OA, refresh this tracked-edits file from Teams/SharePoint into this project room and record the refresh in the source inventory or source log.
+
 Related simplified file:
 
 `sources\Corp-Sell Your Home 83-4027719\Jeff Watson\25-06-25 SELL_YOUR_HOME_LLC Simplified with Summary.docx`
@@ -107,6 +109,7 @@ Do not place those subfiles in the Jeff Watson root folder, the main Sell Your H
 
 - Preserve original source files.
 - Edit only working copies, segmented subfiles, or output drafts.
+- Before derivative work, refresh the tracked-edits simplified OA from Teams/SharePoint because Wes may have edited it there.
 - Draft from the tracked-edits simplified OA unless Wes explicitly chooses another starting source.
 - Do not blend drafting-reference material with potentially controlling OA source material without identifying the source class.
 - Mark unsupported factual claims as `[UNSUPPORTED]`.
