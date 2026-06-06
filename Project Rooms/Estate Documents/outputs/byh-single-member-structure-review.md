@@ -42,7 +42,15 @@ The option may be viable if there is a real business and estate-planning reason 
    - The second member should have documented rights and economics.
    - The second member's succession path must be documented.
 
-4. Confirm whether single-member concern is actually the highest risk.
+4. Divide the revocable trust structure into two separate trusts.
+   - One trust could be created for Wes's beneficial interest and one trust for Jenny's beneficial interest.
+   - BYH could then be owned by the two trusts as members, rather than by one joint revocable trust.
+   - The trust dispositive provisions could be designed to stay substantially similar, but each trust would need its own grantor, trustee, successor trustee, beneficiary, tax, amendment, revocation, and funding provisions.
+   - BYH's operating agreement would need to show both trusts as members and define voting, manager appointment, deadlock handling, transfer restrictions, death/incapacity handling, and successor trustee recognition.
+   - This may preserve trust-based estate planning while creating a genuine multi-member LLC structure, if the trusts are respected as separate members with real economic interests.
+   - Attorney and CPA review is needed to confirm gift, income-tax, grantor-trust, basis, accounting, creditor, and administration consequences.
+
+5. Confirm whether single-member concern is actually the highest risk.
    - Lawsuits against BYH expose BYH assets regardless of member count.
    - Single-member concern is more about creditor remedies against the membership interest and how courts treat the entity in creditor, bankruptcy, or equitable-remedy situations.
 
@@ -55,7 +63,8 @@ The option may be viable if there is a real business and estate-planning reason 
 - Tax and accounting records showing member allocations.
 - Any subsidiary operating agreements and ownership ledgers.
 - Any estate-plan documents affected if personal or non-trust interests are created.
+- If using two trusts, both trust instruments, both trust funding assignments, BYH ownership ledger, and BYH operating agreement provisions for two trust members.
 
 ## Working Recommendation
 
-Do not add 1% interests until the attorney and CPA review the tradeoff. The cleaner first step is to update BYH's operating agreement and records to reflect the Trust as owner and separate manager/signing authority from member voting rights. If a second member is still desired, create it as a real, documented ownership structure with its own succession plan.
+Do not add 1% interests or split the trust structure until the attorney and CPA review the tradeoff. The cleaner first step is to update BYH's operating agreement and records to reflect the current Trust as owner and separate manager/signing authority from member voting rights. If a second member is still desired, the two-trust option may be cleaner than personal 1% interests because it could preserve trust-based succession while creating two real members, but it must be documented as a genuine two-member structure with separate trust funding and LLC governance.
