@@ -8,7 +8,7 @@ Project-room copies should begin with the shortcut name. The Teams file name is 
 
 Project-room file:
 
-`sources\Corp-Sell Your Home 83-4027719\Jeff Watson\Jeff Base OA - Sell Your Home LLC (Browning & Hollinger) AMENDED AND RESTATED IRA-OWNED LLC OPERATING AGREEMENT.docx`
+`sources\Jeff Watson\Jeff Base OA - Sell Your Home LLC (Browning & Hollinger) AMENDED AND RESTATED IRA-OWNED LLC OPERATING AGREEMENT.docx`
 
 Teams file name:
 
@@ -22,7 +22,7 @@ Jeff Watson-authored base file for the new Sell Your Home OA revision process.
 
 Project-room file:
 
-`sources\Corp-Sell Your Home 83-4027719\Jeff Watson\Wes Simplified Draft - 25-06-25 SELL_YOUR_HOME_LLC Jeff Watson's Original with Simplified Addition.docx`
+`sources\Jeff Watson\Wes Simplified Draft - 25-06-25 SELL_YOUR_HOME_LLC Jeff Watson's Original with Simplified Addition.docx`
 
 Teams file name:
 
@@ -36,7 +36,7 @@ Wes prolog/summary plus blue simplified replacement paragraphs, with some of Jef
 
 Project-room file:
 
-`sources\Corp-Sell Your Home 83-4027719\Jeff Watson\Simplified OA - 25-06-25 SELL_YOUR_HOME_LLC Simplified with Summary with Jeff Watson tracked edits.docx`
+`sources\Jeff Watson\Simplified OA - 25-06-25 SELL_YOUR_HOME_LLC Simplified with Summary with Jeff Watson tracked edits.docx`
 
 Teams file name:
 
@@ -54,7 +54,7 @@ Wes may edit this file directly in Teams. Refresh it from Teams/SharePoint befor
 
 Project-room folder:
 
-`sources\Corp-Sell Your Home 83-4027719\Jeff Watson\Simplified OA Subfiles\`
+`sources\Jeff Watson\Simplified OA Subfiles\`
 
 Teams file name:
 
@@ -68,7 +68,7 @@ The broken-out opening, summary, article, certification, and exhibit subfiles de
 
 Project-room file:
 
-`sources\Corp-Sell Your Home 83-4027719\Jeff Watson\Simplified OA Subfiles\Reassembled OA Check - 00 - Reassembled Verification - Simplified OA with Jeff Watson tracked edits.docx`
+`sources\Jeff Watson\Simplified OA Subfiles\Reassembled OA Check - 00 - Reassembled Verification - Simplified OA with Jeff Watson tracked edits.docx`
 
 Teams file name:
 

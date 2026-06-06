@@ -14,9 +14,9 @@ SECTPR = f"{{{W_NS}}}sectPr"
 
 
 BASE = Path(__file__).resolve().parents[1]
-SOURCE = BASE / "sources" / "Corp-Sell Your Home 83-4027719" / "Jeff Watson" / "Simplified OA - 25-06-25 SELL_YOUR_HOME_LLC Simplified with Summary with Jeff Watson tracked edits.docx"
+SOURCE = BASE / "sources" / "Jeff Watson" / "Simplified OA - 25-06-25 SELL_YOUR_HOME_LLC Simplified with Summary with Jeff Watson tracked edits.docx"
 SOURCE_TEAMS_NAME = "25-06-25 SELL_YOUR_HOME_LLC Simplified with Summary with Jeff Watson tracked edits.docx"
-OUT_DIR = BASE / "sources" / "Corp-Sell Your Home 83-4027719" / "Jeff Watson" / "Simplified OA Subfiles"
+OUT_DIR = BASE / "sources" / "Jeff Watson" / "Simplified OA Subfiles"
 REASSEMBLED = OUT_DIR / "Reassembled OA Check - 00 - Reassembled Verification - Simplified OA with Jeff Watson tracked edits.docx"
 REPORT = OUT_DIR / "reassembly-verification.md"
 

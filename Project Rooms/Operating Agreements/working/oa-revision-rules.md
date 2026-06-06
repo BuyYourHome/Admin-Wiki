@@ -10,15 +10,15 @@ Project room:
 
 Jeff Watson drafting folder:
 
-`sources\Corp-Sell Your Home 83-4027719\Jeff Watson\`
+`sources\Jeff Watson\`
 
 Simplified OA subfile folder:
 
-`sources\Corp-Sell Your Home 83-4027719\Jeff Watson\Simplified OA Subfiles\`
+`sources\Jeff Watson\Simplified OA Subfiles\`
 
 ## Source Classification
 
-- Keep Jeff Watson drafting files segregated in `sources\Corp-Sell Your Home 83-4027719\Jeff Watson\`.
+- Keep Jeff Watson drafting files segregated in `sources\Jeff Watson\`.
 - Do not merge, flatten, rename into the main Sell Your Home source folder, or otherwise mix Jeff Watson drafting files with current or potentially controlling operating-agreement files.
 - Treat the Jeff Watson folder as a separate drafting reference set for new OA versions.
 - Do not treat Jeff Watson drafting files as controlling operating agreements unless Wes later confirms that status.
@@ -28,7 +28,7 @@ Simplified OA subfile folder:
 
 The base file for the new Sell Your Home OA revision process is Jeff Watson's authored operating agreement:
 
-`sources\Corp-Sell Your Home 83-4027719\Jeff Watson\Jeff Base OA - Sell Your Home LLC (Browning & Hollinger) AMENDED AND RESTATED IRA-OWNED LLC OPERATING AGREEMENT.docx`
+`sources\Jeff Watson\Jeff Base OA - Sell Your Home LLC (Browning & Hollinger) AMENDED AND RESTATED IRA-OWNED LLC OPERATING AGREEMENT.docx`
 
 Teams file name:
 
@@ -38,7 +38,7 @@ Teams file name:
 
 A derivative of the base file is:
 
-`sources\Corp-Sell Your Home 83-4027719\Jeff Watson\Wes Simplified Draft - 25-06-25 SELL_YOUR_HOME_LLC Jeff Watson's Original with Simplified Addition.docx`
+`sources\Jeff Watson\Wes Simplified Draft - 25-06-25 SELL_YOUR_HOME_LLC Jeff Watson's Original with Simplified Addition.docx`
 
 Teams file name:
 
@@ -62,7 +62,7 @@ Interpretation rules:
 
 All new Sell Your Home OA versions should be derived from:
 
-`sources\Corp-Sell Your Home 83-4027719\Jeff Watson\Simplified OA - 25-06-25 SELL_YOUR_HOME_LLC Simplified with Summary with Jeff Watson tracked edits.docx`
+`sources\Jeff Watson\Simplified OA - 25-06-25 SELL_YOUR_HOME_LLC Simplified with Summary with Jeff Watson tracked edits.docx`
 
 Teams file name:
 
@@ -107,7 +107,7 @@ Examples:
 
 Keep the simplified OA subfiles in the Jeff Watson subfolder:
 
-`sources\Corp-Sell Your Home 83-4027719\Jeff Watson\Simplified OA Subfiles\`
+`sources\Jeff Watson\Simplified OA Subfiles\`
 
 Do not place those subfiles in the Jeff Watson root folder, the main Sell Your Home source folder, or another project-room folder unless Wes explicitly asks.
 
