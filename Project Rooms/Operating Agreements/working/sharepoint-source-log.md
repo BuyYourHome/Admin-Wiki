@@ -74,6 +74,8 @@ Output files:
 
 - `BYH OA Draft - redline from Simplified OA.docx`
 - `BYH OA Draft Notes.md`
+- `BYH OA Draft V2 Targeted Redline - from Simplified OA.docx`
+- `BYH OA Draft V2 Targeted Redline Notes.md`
 
 Drafting assumptions used:
 
@@ -81,3 +83,8 @@ Drafting assumptions used:
 - Browning Family Trust is named as the beneficiary/beneficial ownership reference.
 - Wesley Dale Browning is named as Manager.
 - Retirement-account-specific source provisions are retained but marked with strikethrough, with BYH replacement language added in red.
+
+Version distinction:
+
+- V1 uses broader paragraph-level replacement notes.
+- V2 Targeted Redline favors word-level replacements where a few words are enough and reserves full-clause strikethrough for retirement-account-specific mechanics.
