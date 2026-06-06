@@ -17,6 +17,8 @@
 | `working/user-reported-entity-facts.md` | User-reported working note | 2026-06-05 | Records Wes's statements about entity facts not yet supported by copied source documents, including BYH 401K LLC, Heritage Management LLC, Investment Services LLC, and Sell Your Home, LLC. | unclear | Source documents are not yet copied into this Project Room. Treat as context only until supported by source files. |
 | `outputs/entity-estate-review-matrix.md` | Working output | 2026-06-05 | Summarizes each known/reported entity, reported ownership, purpose, estate-file treatment needed, and missing source documents. | background | Built from copied estate documents plus user-reported facts; not a legal opinion. |
 | `outputs/byh-single-member-structure-review.md` | Working output | 2026-06-06 | Reviews the BYH single-member LLC concern and the 1% ownership option for attorney/CPA review. | background | Not legal advice. Built from the copied BYH assignment, Trust summary, and Wes's structure question. |
+| `outputs/word-conversions-no-signatures/` | OCR Word conversion output | 2026-06-06 | Contains OCR-based `.docx` conversions of the scanned estate PDFs, with no embedded signature images. | background | Generated from image-only scans. Use as editable reference drafts, not certified originals. |
+| `working/convert_scanned_estate_pdfs_to_docx.py` | Conversion script | 2026-06-06 | Reproducible OCR conversion script used to generate the Word files in `outputs/word-conversions-no-signatures/`. | background | Uses local OCR; output requires human review for OCR accuracy. |
 
 ## Status Terms
 
