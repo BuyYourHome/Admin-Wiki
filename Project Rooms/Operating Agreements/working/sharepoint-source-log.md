@@ -47,6 +47,8 @@ The base file for the new Sell Your Home OA revision process is Jeff Watson's au
 
 For further analysis or derivative drafting, split the simplified OA into separate reassemblable files before substantive changes. Required segments are opening paragraphs, summary, and each article, with a clear reassembly order.
 
+When creating simplified OA subfiles, retain the original Word formatting, including font color, tracked-edit markings, paragraph styles, numbering, spacing, page-break behavior, and other visible formatting. Verify that the subfiles can be reassembled into the same original file before using them for analysis, drafting, or derivative work.
+
 Each simplified OA subfile should have a meaningful filename that includes both reassembly order and segment subject, such as `01 - Opening Paragraphs`, `02 - Summary`, and `03 - Article 1 - Offices and Records`.
 
 Keep the simplified OA subfiles in the Jeff Watson subfolder: `sources/Corp-Sell Your Home 83-4027719/Jeff Watson/Simplified OA Subfiles/`. Do not place those subfiles in the Jeff Watson root folder, the main Sell Your Home source folder, or another project-room folder unless Wes explicitly asks.

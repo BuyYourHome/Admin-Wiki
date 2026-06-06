@@ -76,6 +76,10 @@ Required segments:
 
 Preserve a clear reassembly order so the separate files can be recombined into a complete operating agreement.
 
+When creating subfiles, retain the original Word formatting, including font color, tracked-edit markings, paragraph styles, numbering, spacing, page-break behavior, and other visible formatting.
+
+After creating subfiles, verify that they can be reassembled into the same original file before using them for analysis, drafting, or derivative work. The reassembled file should match the original text and formatting unless Wes has explicitly approved a documented exception.
+
 ## Subfile Naming Rule
 
 Give each simplified OA subfile a meaningful name.
