@@ -60,12 +60,6 @@ This file is the working "simplified OA" and includes Jeff Watson's tracked edit
 
 Wes may edit this file directly in Teams. Before any derivative request, drafting request, analysis request, or subfile regeneration based on the simplified OA, refresh this tracked-edits file from Teams/SharePoint into this project room and record the refresh in the source inventory or source log.
 
-Related simplified file:
-
-`sources\Corp-Sell Your Home 83-4027719\Jeff Watson\25-06-25 SELL_YOUR_HOME_LLC Simplified with Summary.docx`
-
-Do not use the non-tracked-edits `Simplified with Summary.docx` as the starting source unless Wes explicitly chooses it.
-
 ## Subfile Rule
 
 For further analysis or derivative drafting, break the simplified OA into separate reassemblable files before making substantive changes.

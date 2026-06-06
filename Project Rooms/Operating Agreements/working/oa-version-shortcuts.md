@@ -36,16 +36,6 @@ Refresh rule:
 
 Wes may edit this file directly in Teams. Refresh it from Teams/SharePoint before any derivative request, drafting request, analysis request, or subfile regeneration based on the simplified OA.
 
-## Plain Simplified OA
-
-File:
-
-`sources\Corp-Sell Your Home 83-4027719\Jeff Watson\25-06-25 SELL_YOUR_HOME_LLC Simplified with Summary.docx`
-
-Meaning:
-
-Related simplified version without the tracked-edits filename. Use only if Wes specifically chooses it.
-
 ## Segmented OA
 
 Folder:
