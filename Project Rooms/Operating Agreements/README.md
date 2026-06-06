@@ -84,3 +84,4 @@ Excluded unless Wes specifically adds them:
 
 - [[Project Room Workflow]]
 - [[Project Rooms/Operating Agreements/working/oa-revision-rules|Operating Agreement Revision Rules]]
+- [[Project Rooms/Operating Agreements/working/oa-version-shortcuts|OA Version Shortcuts]]
