@@ -82,6 +82,8 @@ Output files:
 - `BYH OA Draft V4 Sole Trust Member Co-Trustee Voting Multiple Managers Notes.md`
 - `BYH OA Draft V5 Fresh Original-Based Redline - from Simplified OA.docx`
 - `BYH OA Draft V5 Fresh Original-Based Redline Notes.md`
+- `BYH OA Draft V6 Fresh Clean Redline - from Simplified OA.docx`
+- `BYH OA Draft V6 Fresh Clean Redline Notes.md`
 
 Drafting assumptions used:
 
@@ -97,3 +99,4 @@ Version distinction:
 - V3 Trustee Voting Members carries forward V2, corrects the trust name to Browning Family Revocable Trust, and adds trustee voting authority. V4 supersedes the V3 trustee-name details with the full co-trustee names Wesley Dale Browning and Jeanette Wilson Hollinger.
 - V4 Sole Trust Member Co-Trustee Voting Multiple Managers carries forward V3, clarifies that Browning Family Revocable Trust is the only LLC Member, names co-trustees Wesley Dale Browning and Jeanette Wilson Hollinger as the voting-authority holders, preserves the possibility of multiple Managers, and strikes the Section 3.7 Account Holder note.
 - V5 Fresh Original-Based Redline restarts from the Simplified OA source rather than layering on V4, preserves plural `Manager(s)` language, applies the known BYH corrections, and avoids the stale single-manager redline artifact.
+- V6 Fresh Clean Redline restarts from the Simplified OA source, reduces repeated notes, keeps 4.10 trustee voting as inline redline text, strikes the 3.7 Account Holder note without a redundant added note, strikes only `on a non recourse basis` in 5.1(b)(iv), and leaves 5.1(b)(xi) intact.
