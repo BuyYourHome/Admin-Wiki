@@ -42,6 +42,7 @@ Excluded unless Wes specifically adds them:
 ## OA Revision Process Rules
 
 1. The base file for the new Sell Your Home OA revision process is Jeff Watson's authored operating agreement: `sources\Corp-Sell Your Home 83-4027719\Jeff Watson\Sell Your Home LLC (Browning & Hollinger) AMENDED AND RESTATED IRA-OWNED LLC OPERATING AGREEMENT.docx`.
+2. A derivative of that base file is `sources\Corp-Sell Your Home 83-4027719\Jeff Watson\25-06-25 SELL_YOUR_HOME_LLC Jeff Watson's Original with Simplified Addition.docx`. This derivative contains many simplified paragraphs and a prolog/summary of the whole document by Wes Browning. Treat the prolog/summary as wholly authored by Wes. Treat Wes's replacement paragraphs as blue-font text. Treat Jeff Watson's original text as black-font text. Treat Jeff's later review pass as red-font edits.
 
 ## Source Inventory Status
 
