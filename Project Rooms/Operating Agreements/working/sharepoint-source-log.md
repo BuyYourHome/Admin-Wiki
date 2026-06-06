@@ -78,6 +78,8 @@ Output files:
 - `BYH OA Draft V2 Targeted Redline Notes.md`
 - `BYH OA Draft V3 Trustee Voting Members - from V2 Targeted Redline.docx`
 - `BYH OA Draft V3 Trustee Voting Members Notes.md`
+- `BYH OA Draft V4 Sole Trust Member Co-Trustee Voting Multiple Managers - from V3.docx`
+- `BYH OA Draft V4 Sole Trust Member Co-Trustee Voting Multiple Managers Notes.md`
 
 Drafting assumptions used:
 
@@ -90,4 +92,5 @@ Version distinction:
 
 - V1 uses broader paragraph-level replacement notes.
 - V2 Targeted Redline favors word-level replacements where a few words are enough and reserves full-clause strikethrough for retirement-account-specific mechanics.
-- V3 Trustee Voting Members carries forward V2, corrects the trust name to Browning Family Revocable Trust, and adds that voting authority is exercised by the Trustees, currently Wes Browning and Jenny Hollinger.
+- V3 Trustee Voting Members carries forward V2, corrects the trust name to Browning Family Revocable Trust, and adds trustee voting authority. V4 supersedes the V3 trustee-name details with the full co-trustee names Wesley Dale Browning and Jeanette Wilson Hollinger.
+- V4 Sole Trust Member Co-Trustee Voting Multiple Managers carries forward V3, clarifies that Browning Family Revocable Trust is the only LLC Member, names co-trustees Wesley Dale Browning and Jeanette Wilson Hollinger as the voting-authority holders, preserves the possibility of multiple Managers, and strikes the Section 3.7 Account Holder note.
