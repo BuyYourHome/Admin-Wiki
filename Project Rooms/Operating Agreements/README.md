@@ -45,6 +45,7 @@ Excluded unless Wes specifically adds them:
 2. A derivative of that base file is `sources\Corp-Sell Your Home 83-4027719\Jeff Watson\25-06-25 SELL_YOUR_HOME_LLC Jeff Watson's Original with Simplified Addition.docx`. This derivative contains many simplified paragraphs and a prolog/summary of the whole document by Wes Browning. Treat the prolog/summary as wholly authored by Wes. Treat Wes's replacement paragraphs as blue-font text. Treat Jeff Watson's original text as black-font text. Treat Jeff's later review pass as red-font edits.
 3. All new Sell Your Home OA versions should be derived from `sources\Corp-Sell Your Home 83-4027719\Jeff Watson\25-06-25 SELL_YOUR_HOME_LLC Simplified with Summary.docx`, which is the working "simplified OA." Treat this file as the starting document for new versions unless Wes explicitly chooses another source.
 4. For further analysis or derivative drafting, break the simplified OA into separate reassemblable files before making substantive changes. Segment it by opening paragraphs, summary, and each article. Preserve a clear reassembly order so the separate files can be recombined into a complete OA.
+5. Give each simplified OA subfile a meaningful name. Include the reassembly order and the segment subject in the filename, such as `01 - Opening Paragraphs`, `02 - Summary`, and `03 - Article 1 - Offices and Records`.
 
 ## Source Inventory Status
 

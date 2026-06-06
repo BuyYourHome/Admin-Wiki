@@ -47,6 +47,8 @@ The base file for the new Sell Your Home OA revision process is Jeff Watson's au
 
 For further analysis or derivative drafting, split the simplified OA into separate reassemblable files before substantive changes. Required segments are opening paragraphs, summary, and each article, with a clear reassembly order.
 
+Each simplified OA subfile should have a meaningful filename that includes both reassembly order and segment subject, such as `01 - Opening Paragraphs`, `02 - Summary`, and `03 - Article 1 - Offices and Records`.
+
 | Channel Folder | File | SharePoint Modified Time |
 | --- | --- | --- |
 | `Corp-Sell Your Home 83-4027719/Jeff Watson` | `Sell Your Home LLC (Browning & Hollinger) AMENDED AND RESTATED IRA-OWNED LLC OPERATING AGREEMENT.docx` | 2025-07-08T18:47:15Z |
