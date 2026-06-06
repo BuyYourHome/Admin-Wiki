@@ -58,7 +58,6 @@ Keep the simplified OA subfiles in the Jeff Watson subfolder: `sources/Corp-Sell
 | Channel Folder | File | SharePoint Modified Time |
 | --- | --- | --- |
 | `Corp-Sell Your Home 83-4027719/Jeff Watson` | `Sell Your Home LLC (Browning & Hollinger) AMENDED AND RESTATED IRA-OWNED LLC OPERATING AGREEMENT.docx` copied as `Jeff Base OA - Sell Your Home LLC (Browning & Hollinger) AMENDED AND RESTATED IRA-OWNED LLC OPERATING AGREEMENT.docx` | 2025-07-08T18:47:15Z |
-| `Corp-Sell Your Home 83-4027719/Jeff Watson` | `Draft of Amended Operating Agreement.msg` | 2025-06-20T11:10:00Z |
 | `Corp-Sell Your Home 83-4027719/Jeff Watson` | `25-06-25 SELL_YOUR_HOME_LLC Jeff Watson's Original with Simplified Addition.docx` copied as `Wes Simplified Draft - 25-06-25 SELL_YOUR_HOME_LLC Jeff Watson's Original with Simplified Addition.docx` | 2025-07-09T20:34:25Z |
 | `Corp-Sell Your Home 83-4027719/Jeff Watson` | `25-06-25 SELL_YOUR_HOME_LLC Simplified with Summary with Jeff Watson tracked edits.docx` copied as `Simplified OA - 25-06-25 SELL_YOUR_HOME_LLC Simplified with Summary with Jeff Watson tracked edits.docx` | 2026-06-06; SharePoint showed "About a minute ago" when copied |
 | `Corp-Sell Your Home 83-4027719/Jeff Watson` | `Sell Your Home LLC (Browning & Hollinger) AMENDED AND RESTATED IRA-OWNED LLC OPERATING AGREEMENT.pdf` | 2025-06-20T12:24:38Z |

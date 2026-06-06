@@ -52,7 +52,7 @@ Excluded unless Wes specifically adds them:
 ## Source Inventory Status
 
 - Authoritative sources: none confirmed yet.
-- Copied sources: 10 operating-agreement files from Teams/SharePoint `Corp` channels, plus 5 Jeff Watson drafting files for new Sell Your Home OA versions. `Corp-Providence Landing Management LLC` remains excluded.
+- Copied sources: 10 operating-agreement files from Teams/SharePoint `Corp` channels, plus 4 Jeff Watson drafting files for new Sell Your Home OA versions. `Corp-Providence Landing Management LLC` remains excluded.
 - Duplicate/outdated sources: multiple versions exist and need review before one agreement is treated as controlling.
 - Missing context: one expected `Corp` channel was not found in the visible SharePoint root folder list; attorney/CPA confirmation is still needed for controlling versions.
 
