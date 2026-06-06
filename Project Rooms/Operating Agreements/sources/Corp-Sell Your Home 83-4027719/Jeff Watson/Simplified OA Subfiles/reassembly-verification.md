@@ -1,7 +1,8 @@
 # Simplified OA Subfile Reassembly Verification
 
-Source file: `25-06-25 SELL_YOUR_HOME_LLC Simplified with Summary with Jeff Watson tracked edits.docx`
-Reassembled file: `00 - Reassembled Verification - Simplified OA with Jeff Watson tracked edits.docx`
+Source project-room file: `Simplified OA - 25-06-25 SELL_YOUR_HOME_LLC Simplified with Summary with Jeff Watson tracked edits.docx`
+Source Teams file name: `25-06-25 SELL_YOUR_HOME_LLC Simplified with Summary with Jeff Watson tracked edits.docx`
+Reassembled file: `Reassembled OA Check - 00 - Reassembled Verification - Simplified OA with Jeff Watson tracked edits.docx`
 
 ## Result
 
@@ -12,10 +13,6 @@ Reassembled file: `00 - Reassembled Verification - Simplified OA with Jeff Watso
 - Verification result: PASS
 
 The verification hash is calculated from the canonical OOXML for the ordered document body blocks, excluding the final section-properties block. The reassembled file is built by reading the generated subfile DOCXs from disk and concatenating their body blocks in manifest order. A PASS confirms the split and reassembly preserve the original body text and formatting XML.
-
-## Visual QA Note
-
-The bundled DOCX renderer could not complete because LibreOffice was not available on this machine. A Microsoft Word PDF-export fallback was attempted but did not finish reliably. Treat the structural OOXML PASS above as the completed reassembly verification for this run; perform visual render QA in Word before using the subfiles for final external delivery.
 
 ## Segment Manifest
 

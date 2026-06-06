@@ -2,7 +2,7 @@
 
 Use this folder for segmented files created from:
 
-`..\25-06-25 SELL_YOUR_HOME_LLC Simplified with Summary with Jeff Watson tracked edits.docx`
+`..\Simplified OA - 25-06-25 SELL_YOUR_HOME_LLC Simplified with Summary with Jeff Watson tracked edits.docx`
 
 Expected segments include:
 

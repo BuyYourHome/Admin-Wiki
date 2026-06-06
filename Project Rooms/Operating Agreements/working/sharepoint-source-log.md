@@ -39,11 +39,11 @@ Wes identified the files in `Corp-Sell Your Home 83-4027719/Jeff Watson` as impo
 
 Keep this folder segregated. Do not merge, flatten, rename into the main Sell Your Home source folder, or treat these drafting files as the same source class as current/potentially controlling OA documents.
 
-The base file for the new Sell Your Home OA revision process is Jeff Watson's authored operating agreement: `Sell Your Home LLC (Browning & Hollinger) AMENDED AND RESTATED IRA-OWNED LLC OPERATING AGREEMENT.docx`.
+The base file for the new Sell Your Home OA revision process is Jeff Watson's authored operating agreement. Teams file name: `Sell Your Home LLC (Browning & Hollinger) AMENDED AND RESTATED IRA-OWNED LLC OPERATING AGREEMENT.docx`. Project-room file name: `Jeff Base OA - Sell Your Home LLC (Browning & Hollinger) AMENDED AND RESTATED IRA-OWNED LLC OPERATING AGREEMENT.docx`.
 
-`25-06-25 SELL_YOUR_HOME_LLC Jeff Watson's Original with Simplified Addition.docx` is a derivative of that base file. It contains Wes Browning's prolog/summary and blue-font replacement paragraphs, Jeff Watson's original black-font text, and Jeff's later red-font edits.
+Teams file name `25-06-25 SELL_YOUR_HOME_LLC Jeff Watson's Original with Simplified Addition.docx` is the Wes Simplified Draft. Project-room file name: `Wes Simplified Draft - 25-06-25 SELL_YOUR_HOME_LLC Jeff Watson's Original with Simplified Addition.docx`. It contains Wes Browning's prolog/summary and blue-font replacement paragraphs, Jeff Watson's original black-font text, and Jeff's later red-font edits.
 
-`25-06-25 SELL_YOUR_HOME_LLC Simplified with Summary with Jeff Watson tracked edits.docx` is the working "simplified OA" and includes Jeff Watson's tracked edits. All new Sell Your Home OA versions should be derived from this file unless Wes explicitly chooses another source.
+Teams file name `25-06-25 SELL_YOUR_HOME_LLC Simplified with Summary with Jeff Watson tracked edits.docx` is the working "simplified OA" and includes Jeff Watson's tracked edits. Project-room file name: `Simplified OA - 25-06-25 SELL_YOUR_HOME_LLC Simplified with Summary with Jeff Watson tracked edits.docx`. All new Sell Your Home OA versions should be derived from this file unless Wes explicitly chooses another source.
 
 Wes may edit this file directly in Teams. Before any derivative request, drafting request, analysis request, or subfile regeneration based on the simplified OA, refresh this tracked-edits file from Teams/SharePoint into the project room and record the refresh in the source inventory or source log.
 
@@ -57,8 +57,8 @@ Keep the simplified OA subfiles in the Jeff Watson subfolder: `sources/Corp-Sell
 
 | Channel Folder | File | SharePoint Modified Time |
 | --- | --- | --- |
-| `Corp-Sell Your Home 83-4027719/Jeff Watson` | `Sell Your Home LLC (Browning & Hollinger) AMENDED AND RESTATED IRA-OWNED LLC OPERATING AGREEMENT.docx` | 2025-07-08T18:47:15Z |
+| `Corp-Sell Your Home 83-4027719/Jeff Watson` | `Sell Your Home LLC (Browning & Hollinger) AMENDED AND RESTATED IRA-OWNED LLC OPERATING AGREEMENT.docx` copied as `Jeff Base OA - Sell Your Home LLC (Browning & Hollinger) AMENDED AND RESTATED IRA-OWNED LLC OPERATING AGREEMENT.docx` | 2025-07-08T18:47:15Z |
 | `Corp-Sell Your Home 83-4027719/Jeff Watson` | `Draft of Amended Operating Agreement.msg` | 2025-06-20T11:10:00Z |
-| `Corp-Sell Your Home 83-4027719/Jeff Watson` | `25-06-25 SELL_YOUR_HOME_LLC Jeff Watson's Original with Simplified Addition.docx` | 2025-07-09T20:34:25Z |
-| `Corp-Sell Your Home 83-4027719/Jeff Watson` | `25-06-25 SELL_YOUR_HOME_LLC Simplified with Summary with Jeff Watson tracked edits.docx` | 2026-06-06; SharePoint showed "About a minute ago" when copied |
+| `Corp-Sell Your Home 83-4027719/Jeff Watson` | `25-06-25 SELL_YOUR_HOME_LLC Jeff Watson's Original with Simplified Addition.docx` copied as `Wes Simplified Draft - 25-06-25 SELL_YOUR_HOME_LLC Jeff Watson's Original with Simplified Addition.docx` | 2025-07-09T20:34:25Z |
+| `Corp-Sell Your Home 83-4027719/Jeff Watson` | `25-06-25 SELL_YOUR_HOME_LLC Simplified with Summary with Jeff Watson tracked edits.docx` copied as `Simplified OA - 25-06-25 SELL_YOUR_HOME_LLC Simplified with Summary with Jeff Watson tracked edits.docx` | 2026-06-06; SharePoint showed "About a minute ago" when copied |
 | `Corp-Sell Your Home 83-4027719/Jeff Watson` | `Sell Your Home LLC (Browning & Hollinger) AMENDED AND RESTATED IRA-OWNED LLC OPERATING AGREEMENT.pdf` | 2025-06-20T12:24:38Z |
