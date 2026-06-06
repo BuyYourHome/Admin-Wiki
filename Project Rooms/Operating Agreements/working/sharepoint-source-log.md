@@ -90,6 +90,9 @@ Output files:
 - `BYH OA Draft V8 Operative Language Notes.md`
 - `BYH OA Draft V9 Article 2 Managers Tax Title Certification - from V8.docx`
 - `BYH OA Draft V9 Article 2 Managers Tax Title Certification Notes.md`
+- `BYH OA Draft V10 Fresh Cumulative Build - from Simplified OA.docx`
+- `BYH OA Draft V10 Fresh Cumulative Build Notes.md`
+- `BYH OA V10 Fresh Build vs V9 Layered Build Comparison.md`
 
 Drafting assumptions used:
 
@@ -109,3 +112,4 @@ Version distinction:
 - V7 Signature Block carries forward V6 and replaces the certification signature drafting note with proposed signature blocks for Browning Family Revocable Trust as sole Member, co-trustees Wesley Dale Browning and Jeanette Wilson Hollinger, and Manager(s) Wesley Dale Browning, Jeanette Wilson Hollinger, and Investment Services LLC.
 - V8 Operative Language carries forward V7 and replaces remaining drafting notes with proposed operative language where practical, including Article 2, Exhibit A, and the manager appointment paragraph naming Wesley Dale Browning, Jeanette Wilson Hollinger, and Investment Services LLC as initial Manager(s). It also strikes retirement-account-only Manager/account-holder restrictions.
 - V9 Article 2 Managers Tax Title Certification carries forward V8, makes the sole-member/trustee-voting language new Article 2.1, preserves the former 2.1 as new 2.2, changes initial Manager(s) to current Manager(s), conforms the tax-classification heading, keeps 5.1(b)(xi) operative, and starts the Manager(s) certification block on the next page with three separate Manager groups.
+- V10 Fresh Cumulative Build restarts from the Simplified OA source using cumulative BYH instructions rather than layering on V9. It includes a comparison file against the V9 layered build.
