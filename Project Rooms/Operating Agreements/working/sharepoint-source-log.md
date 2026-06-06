@@ -43,6 +43,8 @@ The base file for the new Sell Your Home OA revision process is Jeff Watson's au
 
 `25-06-25 SELL_YOUR_HOME_LLC Jeff Watson's Original with Simplified Addition.docx` is a derivative of that base file. It contains Wes Browning's prolog/summary and blue-font replacement paragraphs, Jeff Watson's original black-font text, and Jeff's later red-font edits.
 
+`25-06-25 SELL_YOUR_HOME_LLC Simplified with Summary.docx` is the working "simplified OA." All new Sell Your Home OA versions should be derived from this file unless Wes explicitly chooses another source.
+
 | Channel Folder | File | SharePoint Modified Time |
 | --- | --- | --- |
 | `Corp-Sell Your Home 83-4027719/Jeff Watson` | `Sell Your Home LLC (Browning & Hollinger) AMENDED AND RESTATED IRA-OWNED LLC OPERATING AGREEMENT.docx` | 2025-07-08T18:47:15Z |
