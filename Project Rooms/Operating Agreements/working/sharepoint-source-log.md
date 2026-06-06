@@ -88,6 +88,8 @@ Output files:
 - `BYH OA Draft V7 Signature Block Notes.md`
 - `BYH OA Draft V8 Operative Language - from V7 Signature Block.docx`
 - `BYH OA Draft V8 Operative Language Notes.md`
+- `BYH OA Draft V9 Article 2 Managers Tax Title Certification - from V8.docx`
+- `BYH OA Draft V9 Article 2 Managers Tax Title Certification Notes.md`
 
 Drafting assumptions used:
 
@@ -106,3 +108,4 @@ Version distinction:
 - V6 Fresh Clean Redline restarts from the Simplified OA source, reduces repeated notes, keeps 4.10 trustee voting as inline redline text, strikes the 3.7 Account Holder note without a redundant added note, strikes only `on a non recourse basis` in 5.1(b)(iv), and leaves 5.1(b)(xi) intact.
 - V7 Signature Block carries forward V6 and replaces the certification signature drafting note with proposed signature blocks for Browning Family Revocable Trust as sole Member, co-trustees Wesley Dale Browning and Jeanette Wilson Hollinger, and Manager(s) Wesley Dale Browning, Jeanette Wilson Hollinger, and Investment Services LLC.
 - V8 Operative Language carries forward V7 and replaces remaining drafting notes with proposed operative language where practical, including Article 2, Exhibit A, and the manager appointment paragraph naming Wesley Dale Browning, Jeanette Wilson Hollinger, and Investment Services LLC as initial Manager(s). It also strikes retirement-account-only Manager/account-holder restrictions.
+- V9 Article 2 Managers Tax Title Certification carries forward V8, makes the sole-member/trustee-voting language new Article 2.1, preserves the former 2.1 as new 2.2, changes initial Manager(s) to current Manager(s), conforms the tax-classification heading, keeps 5.1(b)(xi) operative, and starts the Manager(s) certification block on the next page with three separate Manager groups.
