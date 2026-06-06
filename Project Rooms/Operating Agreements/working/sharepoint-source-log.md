@@ -43,7 +43,7 @@ The base file for the new Sell Your Home OA revision process is Jeff Watson's au
 
 `25-06-25 SELL_YOUR_HOME_LLC Jeff Watson's Original with Simplified Addition.docx` is a derivative of that base file. It contains Wes Browning's prolog/summary and blue-font replacement paragraphs, Jeff Watson's original black-font text, and Jeff's later red-font edits.
 
-Wes identified the intended simplified OA as `25-06-25 SELL_YOUR_HOME_LLC Simplified with Summary with Jeff Aatson tracked edits.docx`. That exact file is not currently present in the copied Jeff Watson folder. The closest available file is `25-06-25 SELL_YOUR_HOME_LLC Simplified with Summary.docx`. Do not treat the available file as the tracked-edits version unless Wes explicitly confirms it should be used.
+`25-06-25 SELL_YOUR_HOME_LLC Simplified with Summary with Jeff Watson tracked edits.docx` is the working "simplified OA" and includes Jeff Watson's tracked edits. All new Sell Your Home OA versions should be derived from this file unless Wes explicitly chooses another source.
 
 For further analysis or derivative drafting, split the simplified OA into separate reassemblable files before substantive changes. Required segments are opening paragraphs, summary, and each article, with a clear reassembly order.
 
@@ -56,5 +56,6 @@ Keep the simplified OA subfiles in the Jeff Watson subfolder: `sources/Corp-Sell
 | `Corp-Sell Your Home 83-4027719/Jeff Watson` | `Sell Your Home LLC (Browning & Hollinger) AMENDED AND RESTATED IRA-OWNED LLC OPERATING AGREEMENT.docx` | 2025-07-08T18:47:15Z |
 | `Corp-Sell Your Home 83-4027719/Jeff Watson` | `Draft of Amended Operating Agreement.msg` | 2025-06-20T11:10:00Z |
 | `Corp-Sell Your Home 83-4027719/Jeff Watson` | `25-06-25 SELL_YOUR_HOME_LLC Jeff Watson's Original with Simplified Addition.docx` | 2025-07-09T20:34:25Z |
+| `Corp-Sell Your Home 83-4027719/Jeff Watson` | `25-06-25 SELL_YOUR_HOME_LLC Simplified with Summary with Jeff Watson tracked edits.docx` | 2026-06-06; SharePoint showed "About a minute ago" when copied |
 | `Corp-Sell Your Home 83-4027719/Jeff Watson` | `25-06-25 SELL_YOUR_HOME_LLC Simplified with Summary.docx` | 2025-07-09T20:33:46Z |
 | `Corp-Sell Your Home 83-4027719/Jeff Watson` | `Sell Your Home LLC (Browning & Hollinger) AMENDED AND RESTATED IRA-OWNED LLC OPERATING AGREEMENT.pdf` | 2025-06-20T12:24:38Z |
