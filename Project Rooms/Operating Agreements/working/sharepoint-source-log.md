@@ -43,7 +43,7 @@ The base file for the new Sell Your Home OA revision process is Jeff Watson's au
 
 `25-06-25 SELL_YOUR_HOME_LLC Jeff Watson's Original with Simplified Addition.docx` is a derivative of that base file. It contains Wes Browning's prolog/summary and blue-font replacement paragraphs, Jeff Watson's original black-font text, and Jeff's later red-font edits.
 
-`25-06-25 SELL_YOUR_HOME_LLC Simplified with Summary.docx` is the working "simplified OA." All new Sell Your Home OA versions should be derived from this file unless Wes explicitly chooses another source.
+Wes identified the intended simplified OA as `25-06-25 SELL_YOUR_HOME_LLC Simplified with Summary with Jeff Aatson tracked edits.docx`. That exact file is not currently present in the copied Jeff Watson folder. The closest available file is `25-06-25 SELL_YOUR_HOME_LLC Simplified with Summary.docx`. Do not treat the available file as the tracked-edits version unless Wes explicitly confirms it should be used.
 
 For further analysis or derivative drafting, split the simplified OA into separate reassemblable files before substantive changes. Required segments are opening paragraphs, summary, and each article, with a clear reassembly order.
 

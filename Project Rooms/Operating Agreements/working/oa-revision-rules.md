@@ -46,19 +46,23 @@ Interpretation rules:
 - Treat Jeff Watson's original text as black-font text.
 - Treat Jeff Watson's later review pass as red-font edits.
 
-## Current Starting Document
+## Intended Starting Document
 
-All new Sell Your Home OA versions should be derived from:
+Wes identified the intended starting document as:
+
+`25-06-25 SELL_YOUR_HOME_LLC Simplified with Summary with Jeff Aatson tracked edits.docx`
+
+That exact file is not currently present in the copied Jeff Watson folder.
+
+The closest currently available file is:
 
 `sources\Corp-Sell Your Home 83-4027719\Jeff Watson\25-06-25 SELL_YOUR_HOME_LLC Simplified with Summary.docx`
 
-This file is the working "simplified OA."
-
-Use this file as the starting document for new Sell Your Home OA versions unless Wes explicitly chooses another source.
+Do not treat the available `Simplified with Summary.docx` file as the tracked-edits version. Before drafting new OA versions, either locate the tracked-edits file or get Wes's explicit confirmation that the available `Simplified with Summary.docx` should be used instead.
 
 ## Subfile Rule
 
-For further analysis or derivative drafting, break the simplified OA into separate reassemblable files before making substantive changes.
+For further analysis or derivative drafting, break the confirmed simplified OA into separate reassemblable files before making substantive changes.
 
 Required segments:
 
@@ -95,7 +99,7 @@ Do not place those subfiles in the main Sell Your Home source folder or another 
 
 - Preserve original source files.
 - Edit only working copies, segmented subfiles, or output drafts.
-- Draft from the simplified OA unless Wes explicitly chooses another starting source.
+- Draft from the confirmed simplified OA only after the tracked-edits source issue is resolved.
 - Do not blend drafting-reference material with potentially controlling OA source material without identifying the source class.
 - Mark unsupported factual claims as `[UNSUPPORTED]`.
 - Flag legal, tax, authority, ownership, member-rights, entity-formation, or controlling-version questions for attorney or CPA review.
