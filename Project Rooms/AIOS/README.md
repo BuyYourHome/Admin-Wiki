@@ -18,7 +18,7 @@ Wes requested a new project room for AIOS. No source materials or final output r
 
 ## Current Status
 
-Set up. One background video source has been summarized into source notes, and a first implementation outline has been drafted in `working/implementation-outline.md`.
+Set up. Two background video sources have been summarized into source notes, and a first implementation outline has been drafted in `working/implementation-outline.md`.
 
 ## Next Actions
 

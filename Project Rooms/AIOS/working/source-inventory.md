@@ -3,6 +3,7 @@
 | Source | Location | Status | Notes |
 | --- | --- | --- | --- |
 | The 3-File AI System That Works With ANY MODEL | `sources/video-3-file-ai-system-notes.md` | background | Paraphrased video notes for portable AIOS implementation ideas. |
+| Create Your Digital Home: Obsidian Walkthrough | `sources/video-obsidian-digital-home-notes.md` | background | Paraphrased video notes for ACE folder/headspace organization. |
 | AIOS project purpose and desired output | Not yet provided | missing | Needed before creating final AIOS files. |
 
 ## Status Terms

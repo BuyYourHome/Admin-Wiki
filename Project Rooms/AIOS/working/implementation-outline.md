@@ -28,12 +28,37 @@ AIOS/
 
 Tool-specific startup files should be thin pointers to the portable AIOS files, not the source of truth.
 
+## ACE-Informed Wiki Organization
+
+The second video source introduces ACE as a stable orientation system:
+
+| ACE Area | Thinking Mode | Admin Wiki Fit |
+| --- | --- | --- |
+| `Atlas` | Knowledge | Durable SOPs, source-of-truth rules, folder maps, registry pages, connector rules, and reference notes. |
+| `Calendar` | Time | Dated logs, recurring summary cutoffs, meeting or reminder notes, and time-based review records. |
+| `Efforts` | Action | Project rooms, active document packages, workflow redesigns, implementations, and open work with deliverables. |
+
+The current Admin wiki already behaves partly like an ACE system even though it does not use those folder names. For AIOS, the practical implementation should not rename the existing wiki. Instead, `AIOS/vault-map.md` should explain the existing structure through the ACE lens so an AI tool can quickly decide whether a request is asking for durable knowledge, time-based context, or active project work.
+
+## Proposed Vault-Map Sections
+
+1. Source of truth and repository location.
+2. Admin wiki orientation map.
+3. ACE lens for the existing wiki:
+   - Atlas-like areas: SOPs, rules, registries, maps, skills.
+   - Calendar-like areas: logs, recurring cutoffs, dated summaries.
+   - Efforts-like areas: Project Rooms and active deliverables.
+4. Routing rules for common requests.
+5. File creation and placement rules.
+6. Privacy and AI-access boundaries.
+7. Maintenance cadence and stale-context cleanup.
+
 ## Implementation Steps
 
 1. Confirm AIOS scope: Admin wiki only, personal Obsidian vault, or both.
 2. Create the `AIOS/` folder in the wiki.
 3. Draft `AIOS/me.md` from durable existing instructions, avoiding unsupported personal claims.
-4. Draft `AIOS/vault-map.md` from the current wiki map and repository rules.
+4. Draft `AIOS/vault-map.md` from the current wiki map and repository rules, using ACE as an explanatory lens without renaming the repo.
 5. Draft `AIOS/skills-map.md` from the registry and canonical `skills/` folder.
 6. Add tool-startup pointers only for tools Wes actually uses.
 7. Add maintenance rules: review cadence, stale-rule cleanup, privacy exclusions, and AI-assisted content marking.
