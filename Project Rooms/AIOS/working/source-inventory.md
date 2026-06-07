@@ -2,7 +2,8 @@
 
 | Source | Location | Status | Notes |
 | --- | --- | --- | --- |
-| No sources added yet | `sources/` | missing | Add source materials before drafting or analysis. |
+| The 3-File AI System That Works With ANY MODEL | `sources/video-3-file-ai-system-notes.md` | background | Paraphrased video notes for portable AIOS implementation ideas. |
+| AIOS project purpose and desired output | Not yet provided | missing | Needed before creating final AIOS files. |
 
 ## Status Terms
 

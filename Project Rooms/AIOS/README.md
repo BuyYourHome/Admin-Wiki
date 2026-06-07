@@ -18,14 +18,14 @@ Wes requested a new project room for AIOS. No source materials or final output r
 
 ## Current Status
 
-Set up. Awaiting source files, notes, emails, scans, spreadsheets, or output instructions.
+Set up. One background video source has been summarized into source notes, and a first implementation outline has been drafted in `working/implementation-outline.md`.
 
 ## Next Actions
 
-1. Add AIOS source materials to `sources/`.
-2. Update `working/source-inventory.md` with each source and its status.
-3. Record source conflicts or duplicates in `working/duplicate-and-conflict-log.md`.
-4. Record missing facts, decisions, or data in `working/missing-context.md`.
+1. Confirm whether AIOS should cover only the Admin wiki or a broader knowledge base.
+2. Confirm the intended output: final AIOS files, design spec, SOP, or tool-startup files.
+3. Identify privacy exclusions and the preferred AI-assisted content marker.
+4. Add any additional source materials to `sources/`.
 5. Draft outputs only from authoritative sources.
 
 ## Related Rules
