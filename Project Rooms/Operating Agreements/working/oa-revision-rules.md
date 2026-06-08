@@ -119,6 +119,7 @@ Do not place those subfiles in the Jeff Watson root folder, the main Sell Your H
 - Draft from the tracked-edits simplified OA unless Wes explicitly chooses another starting source.
 - For BYH operating-agreement work, treat Wes's instructions as cumulative drafting instructions. Each new requested build should be generated fresh from the refreshed Simplified OA source using the cumulative instruction set, rather than layering edits on top of the latest V-numbered BYH draft, unless Wes explicitly asks to continue from a specific prior version.
 - After the next BYH fresh-from-original build, compare it against the latest layered V-numbered build so Wes can see the practical differences between the two approaches.
+- For BYH redlines, do not strike and reinsert source text just to relocate or renumber it. Preserve the existing source paragraph where possible, add only the needed BYH language in red, and avoid duplicate replacement paragraphs such as striking the existing `2.1 Membership Units Authorized` paragraph and reinserting the same text as `2.2`.
 - Do not blend drafting-reference material with potentially controlling OA source material without identifying the source class.
 - Mark unsupported factual claims as `[UNSUPPORTED]`.
 - Flag legal, tax, authority, ownership, member-rights, entity-formation, or controlling-version questions for attorney or CPA review.
