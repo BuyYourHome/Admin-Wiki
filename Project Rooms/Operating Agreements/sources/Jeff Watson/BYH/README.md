@@ -50,6 +50,7 @@ Drafting assumptions:
 - Retirement-account-specific source provisions are retained with strikethrough rather than deleted.
 - BYH replacement language is added in red.
 - Source text should not be struck and reinserted merely to relocate or renumber it; preserve the existing paragraph and add only needed BYH language where possible.
+- Do not add article-title description text where the baseline article had none. For Article 2, place the BYH sole-member / trustee-voting language between `2.3(a)` and `2.3(b)`, not between the `Membership Units` article title and `2.1`.
 
 Version notes:
 
