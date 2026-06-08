@@ -30,6 +30,7 @@ Do not rename this folder. Do not move existing root folders as part of AIOS set
 | Path | Role |
 | --- | --- |
 | `AIOS/` | Portable AI operating layer for the Admin wiki. |
+| `AIOS/tool-startup/` | Thin startup pointers for specific AI tools. These point back to `AIOS/start-here.md`; they are not separate sources of truth. |
 | `Project Rooms/` | Active and historical multi-source work rooms with `sources`, `working`, and `outputs`. |
 | `skills/` | Canonical source for Buy Your Home Codex skills. |
 | `operations/` | Durable operational data and rules such as grocery-list handling. |

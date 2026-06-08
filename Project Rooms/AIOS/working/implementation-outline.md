@@ -63,8 +63,8 @@ The current Admin wiki already behaves partly like an ACE system even though it 
 6. Add ACE Overlay. Status: first draft completed in `AIOS/vault-map.md`.
 7. Create `skills-map.md`. Status: first draft completed.
 8. Add Privacy Rules. Status: first draft completed in `AIOS/privacy-rules.md` and linked from startup files.
-9. Optional Tool Startup Pointers. Status: not started.
-10. Test With New Chat. Status: not started.
+9. Optional Tool Startup Pointers. Status: first draft completed.
+10. Test With New Chat. Status: smoke test completed; see `working/new-chat-smoke-test-2026-06-08.md`.
 11. Revise Based On Failures. Status: not started.
 12. Later Physical ACE. Status: deferred.
 

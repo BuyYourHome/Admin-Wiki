@@ -18,7 +18,7 @@ Wes requested a new project room for AIOS. No source materials or final output r
 
 ## Current Status
 
-Implementation started. Steps 1-8 of the overlay strategy are underway: the root `AIOS/` folder exists with first-draft startup, identity, vault-map, skills-map, ACE overlay, and privacy-rule files. No existing folders have been moved or renamed.
+Implementation started. Steps 1-10 of the overlay strategy are underway: the root `AIOS/` folder exists with first-draft startup, identity, vault-map, skills-map, ACE overlay, privacy-rule, and tool-startup pointer files. A smoke test has confirmed the startup files and representative routing paths. No existing folders have been moved or renamed.
 
 ## Implementation Timing
 
