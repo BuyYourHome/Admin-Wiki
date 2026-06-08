@@ -18,7 +18,7 @@ Wes requested a new project room for AIOS. No source materials or final output r
 
 ## Current Status
 
-First usable AIOS overlay completed through step 11. The root `AIOS/` folder exists with startup, identity, vault-map, skills-map, ACE overlay, privacy-rule, maintenance-log, and tool-startup pointer files. A smoke test confirmed the startup files and representative routing paths, followed by a step-11 hardening pass. No existing folders have been moved or renamed.
+AIOS overlay completed through step 12 as a non-destructive ACE index implementation. The root `AIOS/` folder exists with startup, identity, vault-map, skills-map, ACE indexes, privacy-rule, maintenance-log, and tool-startup pointer files. A smoke test confirmed the startup files and representative routing paths, followed by a step-11 hardening pass. No existing folders have been moved or renamed.
 
 ## Implementation Timing
 
@@ -30,7 +30,7 @@ Wes expects to ask for implementation later when he does not need active access 
 2. Record any routing failures or privacy misses.
 3. Revise the AIOS maps if the new chat lands in the wrong folder, misses a workflow rule, or overreads sensitive context.
 4. Add any additional source materials to `sources/`.
-5. Keep physical ACE migration deferred unless Wes explicitly approves a later migration project.
+5. Keep physical ACE folder migration deferred unless Wes explicitly approves a later migration project.
 
 ## Related Rules
 

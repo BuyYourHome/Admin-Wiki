@@ -6,6 +6,9 @@ This is the starting page for the Buy Your Home admin wiki.
 
 - [[AIOS/start-here|AIOS Start Here]]
 - [[AIOS/vault-map|AIOS Vault Map]]
+- [[AIOS/atlas-index|AIOS Atlas Index]]
+- [[AIOS/calendar-index|AIOS Calendar Index]]
+- [[AIOS/efforts-index|AIOS Efforts Index]]
 - [[Agents and Automations Registry]]
 - [[Connector and Plugin Usage Rules]]
 - [[Document Scanning SOP]]

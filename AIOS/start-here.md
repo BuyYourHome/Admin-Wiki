@@ -30,6 +30,12 @@ Do not switch to a Teams folder, another `Wiki Files` folder, or a project-room 
 7. Use the routing table in `AIOS/vault-map.md` to choose the workflow file that matches the request.
 8. Read that workflow file before acting.
 
+Optional ACE index views:
+
+- `AIOS/atlas-index.md` for durable knowledge and rules.
+- `AIOS/calendar-index.md` for dated logs and recurring context.
+- `AIOS/efforts-index.md` for active work and project rooms.
+
 ## Current Implementation Rule
 
 This AIOS is an overlay. It does not replace or rename the existing wiki structure.

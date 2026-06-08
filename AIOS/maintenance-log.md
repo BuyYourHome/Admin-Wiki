@@ -25,3 +25,19 @@ Decision:
 Next review trigger:
 
 - Revise after a real independent new-chat trial, after an AI assistant routes work incorrectly, or after a major wiki workflow changes.
+
+## 2026-06-08 - ACE Index Completion
+
+Status: completed non-destructive ACE overlay.
+
+Added:
+
+- `AIOS/atlas-index.md`
+- `AIOS/calendar-index.md`
+- `AIOS/efforts-index.md`
+
+Decision:
+
+- Step 12 is completed as an overlay/index implementation.
+- Physical ACE folder migration remains deferred and should require a separate explicit migration project.
+- Existing root folders remain in place.

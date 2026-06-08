@@ -30,6 +30,9 @@ Do not rename this folder. Do not move existing root folders as part of AIOS set
 | Path | Role |
 | --- | --- |
 | `AIOS/` | Portable AI operating layer for the Admin wiki. |
+| `AIOS/atlas-index.md` | ACE Atlas view of durable knowledge and reference areas. |
+| `AIOS/calendar-index.md` | ACE Calendar view of dated logs, recurring cutoffs, and time-based context. |
+| `AIOS/efforts-index.md` | ACE Efforts view of active work, project rooms, and deliverables. |
 | `AIOS/tool-startup/` | Thin startup pointers for specific AI tools. These point back to `AIOS/start-here.md`; they are not separate sources of truth. |
 | `Project Rooms/` | Active and historical multi-source work rooms with `sources`, `working`, and `outputs`. |
 | `skills/` | Canonical source for Buy Your Home Codex skills. |
@@ -73,6 +76,8 @@ When deciding where to look:
 - If the request asks what the rule is, look in Atlas-like files first.
 - If the request asks what happened, what ran, or what changed by date, look in Calendar-like logs and automation records.
 - If the request asks to build, analyze, draft, or implement something with multiple sources, use an Efforts-like project room.
+
+Use the ACE index pages when a request is broad and needs orientation before choosing a specific workflow file.
 
 ## Project Rooms
 
@@ -145,4 +150,5 @@ Update this file when:
 - a major project room is added,
 - a source-of-truth workflow file changes materially,
 - AIOS startup behavior changes,
+- ACE index pages need refreshing,
 - or the ACE overlay no longer describes the wiki accurately.

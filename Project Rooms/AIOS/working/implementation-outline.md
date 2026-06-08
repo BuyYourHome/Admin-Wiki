@@ -66,11 +66,11 @@ The current Admin wiki already behaves partly like an ACE system even though it 
 9. Optional Tool Startup Pointers. Status: finalized first usable version.
 10. Test With New Chat. Status: local smoke test completed; see `working/new-chat-smoke-test-2026-06-08.md`.
 11. Revise Based On Failures. Status: completed for first usable overlay; see `working/step-11-revision-log-2026-06-08.md`.
-12. Later Physical ACE. Status: deferred.
+12. Later Physical ACE. Status: completed as non-destructive ACE index overlay; physical folder migration remains deferred.
 
 ## Timing Strategy
 
-Implementation should wait for a low-access window when Wes does not need active use of the wiki. The first implementation should remain an overlay only: add root-level `AIOS/` files and indexes, avoid renaming `C:\Codex\Wiki Files`, and avoid moving existing folders.
+Implementation was completed as an overlay only: root-level `AIOS/` files and indexes were added, `C:\Codex\Wiki Files` was not renamed, and existing folders were not moved.
 
 ## Open Decisions
 
