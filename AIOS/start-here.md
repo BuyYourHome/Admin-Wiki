@@ -1,0 +1,72 @@
+# AIOS Start Here
+
+This is the first file an AI assistant should read before working in the Buy Your Home Admin wiki.
+
+## Working Folder
+
+The working wiki, Obsidian vault, and local Git repository are all the same folder:
+
+```text
+C:\Codex\Wiki Files
+```
+
+Do not switch to a Teams folder, another `Wiki Files` folder, or a project-room source folder unless Wes explicitly gives that instruction for the specific task.
+
+## Source Of Truth
+
+- Local working folder: `C:\Codex\Wiki Files`
+- GitHub repository: `BuyYourHome/Admin-Wiki`
+- Obsidian vault: `C:\Codex\Wiki Files`
+- Teams folders are not the working wiki location.
+
+## Startup Reading Order
+
+1. Read this file.
+2. Read `AIOS/me.md`.
+3. Read `Admin Home.md`.
+4. Read the workflow file that matches the request.
+
+Planned AIOS files not yet created:
+
+- `AIOS/vault-map.md`
+- `AIOS/skills-map.md`
+
+Until those files exist, use `Admin Home.md`, `Agents and Automations Registry.md`, and the relevant workflow rules as the navigation map.
+
+## Current Implementation Rule
+
+This AIOS is an overlay. It does not replace or rename the existing wiki structure.
+
+Do not rename:
+
+- `C:\Codex\Wiki Files`
+- `Project Rooms`
+- `skills`
+- `operations`
+- existing SOP or registry files
+
+## Working Rules
+
+- Use Markdown files for durable operating instructions.
+- Use Project Rooms for substantial drafting, analysis, redesign, or automation work that depends on multiple sources.
+- Keep Teams as a final-deliverable destination only when Wes explicitly asks.
+- Prefer installed connectors and plugins when they are more reliable than local desktop automation.
+- Stage and commit only files that belong to the current body of work.
+- Do not push unless Wes explicitly asks, says the work is finished, or the task itself defines a final publishable deliverable.
+
+## Privacy Default
+
+Use the smallest necessary set of files for the task. Do not upload, summarize, or expose sensitive files outside the local workspace unless Wes explicitly approves that specific source for that specific purpose.
+
+## If The Task Is Unclear
+
+First determine whether the request is:
+
+- durable knowledge or rule maintenance,
+- time-based calendar/log work,
+- active project/deliverable work,
+- email or connector work,
+- document/scanning/spreadsheet work,
+- or general wiki maintenance.
+
+Then open the relevant workflow rule before acting.

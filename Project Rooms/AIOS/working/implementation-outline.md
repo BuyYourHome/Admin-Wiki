@@ -53,18 +53,20 @@ The current Admin wiki already behaves partly like an ACE system even though it 
 6. Privacy and AI-access boundaries.
 7. Maintenance cadence and stale-context cleanup.
 
-## Implementation Steps
+## 12-Step Implementation Status
 
-1. Confirm AIOS scope: Admin wiki only, personal Obsidian vault, or both.
-2. Confirm Wes does not need uninterrupted access during the implementation window.
-3. Create the `AIOS/` folder in the wiki.
-4. Draft `AIOS/me.md` from durable existing instructions, avoiding unsupported personal claims.
-5. Draft `AIOS/vault-map.md` from the current wiki map and repository rules, using ACE as an explanatory lens without renaming the repo.
-6. Draft `AIOS/skills-map.md` from the registry and canonical `skills/` folder.
-7. Add tool-startup pointers only for tools Wes actually uses.
-8. Add maintenance rules: review cadence, stale-rule cleanup, privacy exclusions, and AI-assisted content marking.
-9. Test with a real workflow by giving an AI tool only the AIOS files and asking it to locate the right source docs.
-10. Revise maps based on what the tool missed or misunderstood.
+1. No Moves. Status: completed. Keep `C:\Codex\Wiki Files` as the vault root and do not rename or move existing folders.
+2. Add Root AIOS Folder. Status: completed. Create `C:\Codex\Wiki Files\AIOS\`.
+3. Create `start-here.md`. Status: first draft completed.
+4. Create `me.md`. Status: first draft completed.
+5. Create `vault-map.md`. Status: not started.
+6. Add ACE Overlay. Status: not started.
+7. Create `skills-map.md`. Status: not started.
+8. Add Privacy Rules. Status: not started.
+9. Optional Tool Startup Pointers. Status: not started.
+10. Test With New Chat. Status: not started.
+11. Revise Based On Failures. Status: not started.
+12. Later Physical ACE. Status: deferred.
 
 ## Timing Strategy
 

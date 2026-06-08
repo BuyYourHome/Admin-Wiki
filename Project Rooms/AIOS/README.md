@@ -18,7 +18,7 @@ Wes requested a new project room for AIOS. No source materials or final output r
 
 ## Current Status
 
-Set up. Two background video sources have been summarized into source notes, and a first implementation outline has been drafted in `working/implementation-outline.md`.
+Implementation started. Steps 1-4 of the overlay strategy are underway: the root `AIOS/` folder exists with first-draft `start-here.md` and `me.md` files. No existing folders have been moved or renamed.
 
 ## Implementation Timing
 
