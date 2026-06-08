@@ -4,9 +4,13 @@ This folder contains derivative BYH operating-agreement drafts created from the 
 
 ## Current Build Rule
 
+Discussion, review comments, and process corrections do not authorize a new V-numbered build. Record those points as rules or open issues and wait until Wes explicitly asks to build a new version.
+
 Future BYH builds should treat Wes's instructions as cumulative and generate a fresh draft from the refreshed Simplified OA source, rather than layering edits on top of the latest V-numbered BYH draft, unless Wes explicitly asks to continue from a specific prior version.
 
 After the next BYH fresh-from-original build, compare it against the latest layered V-numbered build so Wes can see how the approaches differ.
+
+This folder is also being used to develop a repeatable process for creating a BYH operating agreement from SYH / Jeff Watson source pieces. When the process is stable, it should be bundled into a reusable Codex skill.
 
 Current draft:
 

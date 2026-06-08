@@ -117,9 +117,22 @@ Do not place those subfiles in the Jeff Watson root folder, the main Sell Your H
 - Edit only working copies, segmented subfiles, or output drafts.
 - Before derivative work, refresh the tracked-edits simplified OA from Teams/SharePoint because Wes may have edited it there.
 - Draft from the tracked-edits simplified OA unless Wes explicitly chooses another starting source.
+- Do not create a new BYH OA version merely because Wes gives process corrections, review comments, assumptions, or drafting preferences. Record the rules and wait until Wes explicitly asks to build a new version.
 - For BYH operating-agreement work, treat Wes's instructions as cumulative drafting instructions. Each new requested build should be generated fresh from the refreshed Simplified OA source using the cumulative instruction set, rather than layering edits on top of the latest V-numbered BYH draft, unless Wes explicitly asks to continue from a specific prior version.
 - After the next BYH fresh-from-original build, compare it against the latest layered V-numbered build so Wes can see the practical differences between the two approaches.
 - For BYH redlines, do not strike and reinsert source text just to relocate or renumber it. Preserve the existing source paragraph where possible, add only the needed BYH language in red, and avoid duplicate replacement paragraphs such as striking the existing `2.1 Membership Units Authorized` paragraph and reinserting the same text as `2.2`.
 - Do not blend drafting-reference material with potentially controlling OA source material without identifying the source class.
 - Mark unsupported factual claims as `[UNSUPPORTED]`.
 - Flag legal, tax, authority, ownership, member-rights, entity-formation, or controlling-version questions for attorney or CPA review.
+
+## BYH Process And Skill Goal
+
+The BYH operating-agreement work is not only a one-off document build. It is a process-development project for creating a new Buy Your Home operating agreement from Sell Your Home / Jeff Watson source pieces.
+
+Process goals:
+
+- Use the Sell Your Home simplified OA and segmented source files as reusable drafting inputs.
+- Accumulate Wes's BYH-specific transformation rules before building new versions.
+- Keep process rules separate from generated V-numbered output drafts.
+- Preserve source text whenever possible, using red additions and strikethrough only where the BYH conversion requires a visible change.
+- When the workflow is stable, bundle the reusable BYH-from-SYH OA process into a Codex skill so similar OA conversions can be repeated consistently.
