@@ -31,6 +31,7 @@ Excluded unless Wes specifically adds them:
 - Jeff Watson drafting sources: `sources\Jeff Watson\`
 - Simplified OA subfiles: `sources\Jeff Watson\Simplified OA Subfiles\`
 - Working notes: `working\`
+- BYH process control workbook: `working\BYH OA Process Control.xlsx`
 - Outputs: `outputs\`
 
 ## Segregation Rule

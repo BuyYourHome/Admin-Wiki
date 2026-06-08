@@ -133,6 +133,12 @@ Do not place those subfiles in the Jeff Watson root folder, the main Sell Your H
 
 The BYH operating-agreement work is not only a one-off document build. It is a process-development project for creating a new Buy Your Home operating agreement from Sell Your Home / Jeff Watson source pieces.
 
+The process-control workbook is:
+
+`working\BYH OA Process Control.xlsx`
+
+Use that workbook to track the version log, cumulative rule register, article/section change map, open issues, build checklist, reusable skill inputs, and controlled lists.
+
 Process goals:
 
 - Use the Sell Your Home simplified OA and segmented source files as reusable drafting inputs.
