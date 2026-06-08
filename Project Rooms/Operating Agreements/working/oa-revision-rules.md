@@ -128,6 +128,7 @@ Do not place those subfiles in the Jeff Watson root folder, the main Sell Your H
 - Use green font for new BYH additions and BYH replacement text going forward so those additions can be distinguished from Jeff's red-font source edits. Green BYH text should otherwise match the surrounding source formatting unless Wes gives a different style instruction.
 - Use the workbook to record the author/source class of each visible drafting change, including `Jeff source edit`, `Wes simplified text`, `BYH addition`, and `BYH strikeout`.
 - Preserve lead-in title treatment within mixed title/body paragraphs. For Article 5, `Manager(s) – Number and Tenure.` should remain the original title run, while only the changed body language after that title is struck or replaced.
+- For BYH, Section `5.1(b)(xi)` should remain operative and should not be struck. Jeff's strikeout on that clause is acceptable source history for the simplified OA, but the next BYH build should restore the clause as retained text because it applies to BYH.
 - Treat section and article edits as reference-sensitive changes. Do not renumber sections, articles, exhibits, or paragraph labels unless Wes explicitly approves renumbering as a separate cleanup step.
 - Prefer adding new language inside an existing section or using suffix-style numbering, such as `2.3A` or `2.3.1`, instead of inserting a new numbered section that shifts later references.
 - Do not delete numbered sections. Strike unwanted text but leave the section number in place unless renumbering has been explicitly approved.
