@@ -11,7 +11,7 @@ XML_SPACE = "{http://www.w3.org/XML/1998/namespace}space"
 
 BASE = Path(__file__).resolve().parents[1]
 SOURCE = BASE / "sources" / "Jeff Watson" / "Simplified OA - 25-06-25 SELL_YOUR_HOME_LLC Simplified with Summary with Jeff Watson tracked edits.docx"
-OUT_DIR = BASE / "sources" / "Jeff Watson" / "BYH"
+OUT_DIR = BASE / "working" / "BYH"
 OUT = OUT_DIR / "BYH OA Draft V11 Fresh Cumulative No 2.1 Strike - from Simplified OA.docx"
 NOTES = OUT_DIR / "BYH OA Draft V11 Fresh Cumulative No 2.1 Strike Notes.md"
 COMPARE = OUT_DIR / "BYH OA V11 Fresh Build vs V10 Comparison.md"

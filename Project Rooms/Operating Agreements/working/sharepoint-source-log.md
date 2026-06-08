@@ -68,7 +68,7 @@ On 2026-06-06, refreshed the Simplified OA from Teams/SharePoint before creating
 
 Output folder:
 
-`sources/Jeff Watson/BYH/`
+`working/BYH/`
 
 Output files:
 

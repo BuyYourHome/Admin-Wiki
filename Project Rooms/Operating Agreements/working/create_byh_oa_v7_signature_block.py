@@ -10,8 +10,8 @@ NS = {"w": W}
 XML_SPACE = "{http://www.w3.org/XML/1998/namespace}space"
 
 BASE = Path(__file__).resolve().parents[1]
-SOURCE = BASE / "sources" / "Jeff Watson" / "BYH" / "BYH OA Draft V6 Fresh Clean Redline - from Simplified OA.docx"
-OUT_DIR = BASE / "sources" / "Jeff Watson" / "BYH"
+SOURCE = BASE / "working" / "BYH" / "BYH OA Draft V6 Fresh Clean Redline - from Simplified OA.docx"
+OUT_DIR = BASE / "working" / "BYH"
 OUT = OUT_DIR / "BYH OA Draft V7 Signature Block - from V6 Fresh Clean Redline.docx"
 NOTES = OUT_DIR / "BYH OA Draft V7 Signature Block Notes.md"
 
