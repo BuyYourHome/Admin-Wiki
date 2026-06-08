@@ -125,6 +125,10 @@ Do not place those subfiles in the Jeff Watson root folder, the main Sell Your H
 - Do not add descriptive text immediately after an article title when the baseline article had no descriptive paragraph there. For Article 2, the BYH sole-member / trustee-voting concept should be inserted between `2.3(a)` and `2.3(b)`, not as a new description between the `Membership Units` article title and `2.1`.
 - Preserve source run formatting when redlining within a paragraph. Unchanged and struck source text should keep the baseline font, size, bolding, color, and other direct formatting. Added BYH replacement text should be red, but otherwise should match the surrounding source formatting unless Wes gives a different style instruction.
 - Preserve lead-in title treatment within mixed title/body paragraphs. For Article 5, `Manager(s) – Number and Tenure.` should remain the original title run, while only the changed body language after that title is struck or replaced.
+- Treat section and article edits as reference-sensitive changes. Do not renumber sections, articles, exhibits, or paragraph labels unless Wes explicitly approves renumbering as a separate cleanup step.
+- Prefer adding new language inside an existing section or using suffix-style numbering, such as `2.3A` or `2.3.1`, instead of inserting a new numbered section that shifts later references.
+- Do not delete numbered sections. Strike unwanted text but leave the section number in place unless renumbering has been explicitly approved.
+- Before any BYH OA build is treated as review-ready, audit all internal references to sections, articles, exhibits, and paragraph labels affected by the change. Track affected references in `working\BYH OA Process Control.xlsx` on the `Reference Audit` tab.
 - Do not blend drafting-reference material with potentially controlling OA source material without identifying the source class.
 - Mark unsupported factual claims as `[UNSUPPORTED]`.
 - Flag legal, tax, authority, ownership, member-rights, entity-formation, or controlling-version questions for attorney or CPA review.
@@ -137,7 +141,7 @@ The process-control workbook is:
 
 `working\BYH OA Process Control.xlsx`
 
-Use that workbook to track the version log, cumulative rule register, article/section change map, open issues, build checklist, user inputs, and controlled lists.
+Use that workbook to track the version log, cumulative rule register, article/section change map, reference audit, open issues, build checklist, user inputs, and controlled lists.
 
 Process goals:
 
