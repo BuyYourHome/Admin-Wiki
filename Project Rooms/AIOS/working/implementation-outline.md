@@ -56,14 +56,19 @@ The current Admin wiki already behaves partly like an ACE system even though it 
 ## Implementation Steps
 
 1. Confirm AIOS scope: Admin wiki only, personal Obsidian vault, or both.
-2. Create the `AIOS/` folder in the wiki.
-3. Draft `AIOS/me.md` from durable existing instructions, avoiding unsupported personal claims.
-4. Draft `AIOS/vault-map.md` from the current wiki map and repository rules, using ACE as an explanatory lens without renaming the repo.
-5. Draft `AIOS/skills-map.md` from the registry and canonical `skills/` folder.
-6. Add tool-startup pointers only for tools Wes actually uses.
-7. Add maintenance rules: review cadence, stale-rule cleanup, privacy exclusions, and AI-assisted content marking.
-8. Test with a real workflow by giving an AI tool only the AIOS files and asking it to locate the right source docs.
-9. Revise maps based on what the tool missed or misunderstood.
+2. Confirm Wes does not need uninterrupted access during the implementation window.
+3. Create the `AIOS/` folder in the wiki.
+4. Draft `AIOS/me.md` from durable existing instructions, avoiding unsupported personal claims.
+5. Draft `AIOS/vault-map.md` from the current wiki map and repository rules, using ACE as an explanatory lens without renaming the repo.
+6. Draft `AIOS/skills-map.md` from the registry and canonical `skills/` folder.
+7. Add tool-startup pointers only for tools Wes actually uses.
+8. Add maintenance rules: review cadence, stale-rule cleanup, privacy exclusions, and AI-assisted content marking.
+9. Test with a real workflow by giving an AI tool only the AIOS files and asking it to locate the right source docs.
+10. Revise maps based on what the tool missed or misunderstood.
+
+## Timing Strategy
+
+Implementation should wait for a low-access window when Wes does not need active use of the wiki. The first implementation should remain an overlay only: add root-level `AIOS/` files and indexes, avoid renaming `C:\Codex\Wiki Files`, and avoid moving existing folders.
 
 ## Open Decisions
 

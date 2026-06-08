@@ -20,6 +20,10 @@ Wes requested a new project room for AIOS. No source materials or final output r
 
 Set up. Two background video sources have been summarized into source notes, and a first implementation outline has been drafted in `working/implementation-outline.md`.
 
+## Implementation Timing
+
+Wes expects to ask for implementation later when he does not need active access to the wiki. Do not start structural AIOS implementation during a time when Wes needs uninterrupted working access unless he explicitly approves that timing.
+
 ## Next Actions
 
 1. Confirm whether AIOS should cover only the Admin wiki or a broader knowledge base.
