@@ -8,6 +8,8 @@ Discussion, review comments, and process corrections do not authorize a new V-nu
 
 Future BYH builds should treat Wes's instructions as cumulative and generate a fresh draft from the refreshed Simplified OA source, rather than layering edits on top of the latest V-numbered BYH draft, unless Wes explicitly asks to continue from a specific prior version.
 
+Future BYH version filenames should start with the version identifier, such as `V13 - BYH OA Draft ...`, so they sort cleanly. Existing BYH version files should not be renamed solely to apply this convention.
+
 After the next BYH fresh-from-original build, compare it against the latest layered V-numbered build so Wes can see how the approaches differ.
 
 This folder is also being used to develop a repeatable process for creating a BYH operating agreement from SYH / Jeff Watson source pieces. When the process is stable, it should be bundled into a reusable Codex skill.
