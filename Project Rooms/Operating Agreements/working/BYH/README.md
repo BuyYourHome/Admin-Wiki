@@ -28,6 +28,7 @@ Current draft:
 - `BYH OA Draft V10 Fresh Cumulative Build - from Simplified OA.docx`
 - `BYH OA Draft V11 Fresh Cumulative No 2.1 Strike - from Simplified OA.docx`
 - `BYH OA Draft V12 Format Preserving Article 5 - from Simplified OA.docx`
+- `V13 - BYH OA Draft Clean Certification and Exhibit A - from Simplified OA.docx`
 
 Current notes:
 
@@ -46,6 +47,8 @@ Current notes:
 - `BYH OA V11 Fresh Build vs V10 Comparison.md`
 - `BYH OA Draft V12 Format Preserving Article 5 Notes.md`
 - `BYH OA V12 vs V11 Comparison.md`
+- `V13 - BYH OA Draft Clean Certification and Exhibit A Notes.md`
+- `V13 - BYH OA vs V12 Comparison.md`
 
 Drafting assumptions:
 
@@ -72,5 +75,6 @@ Version notes:
 - V10 Fresh Cumulative Build restarts from the Simplified OA source using the cumulative BYH instructions rather than layering on V9. It also includes a comparison file showing V10 versus the V9 layered build.
 - V11 Fresh Cumulative No 2.1 Strike restarts from the Simplified OA source, preserves the original Membership Units Authorized paragraph without strikethrough, avoids inserting a duplicate 2.2 paragraph, and compares the result against V10.
 - V12 Format Preserving Article 5 restarts from the Simplified OA source, preserves source run formatting in 4.10, keeps the Article 5 `Manager(s) - Number and Tenure.` lead-in title treatment, moves the Article 2 sole-member/trustee-voting language between 2.3(a) and 2.3(b), and compares the result against V11.
+- V13 Clean Certification and Exhibit A restarts from the Simplified OA source, uses green BYH additions/replacements while preserving Jeff red source edits, applies the opening ownership block indentation and entity-spacing rules, creates a clean certification/signature page, and rebuilds Exhibit A with only current BYH member information. Local visual rendering failed because the converter executable is unavailable; structural DOCX checks passed.
 
 Before final use, confirm the full legal trust name, signer or trustee authority, the exact member/beneficiary structure, and S corporation tax language with attorney/CPA review.
