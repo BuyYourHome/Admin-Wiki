@@ -96,6 +96,9 @@ Output files:
 - `BYH OA Draft V11 Fresh Cumulative No 2.1 Strike - from Simplified OA.docx`
 - `BYH OA Draft V11 Fresh Cumulative No 2.1 Strike Notes.md`
 - `BYH OA V11 Fresh Build vs V10 Comparison.md`
+- `BYH OA Draft V12 Format Preserving Article 5 - from Simplified OA.docx`
+- `BYH OA Draft V12 Format Preserving Article 5 Notes.md`
+- `BYH OA V12 vs V11 Comparison.md`
 
 Drafting assumptions used:
 
@@ -117,3 +120,4 @@ Version distinction:
 - V9 Article 2 Managers Tax Title Certification carries forward V8, makes the sole-member/trustee-voting language new Article 2.1, preserves the former 2.1 as new 2.2, changes initial Manager(s) to current Manager(s), conforms the tax-classification heading, keeps 5.1(b)(xi) operative, and starts the Manager(s) certification block on the next page with three separate Manager groups.
 - V10 Fresh Cumulative Build restarts from the Simplified OA source using cumulative BYH instructions rather than layering on V9. It includes a comparison file against the V9 layered build.
 - V11 Fresh Cumulative No 2.1 Strike restarts from the Simplified OA source, preserves the original Membership Units Authorized paragraph without strikethrough, avoids inserting a duplicate 2.2 paragraph, and compares the result against V10.
+- V12 Format Preserving Article 5 restarts from the Simplified OA source, preserves source run formatting in 4.10, keeps the Article 5 `Manager(s) – Number and Tenure.` lead-in title treatment, moves the Article 2 sole-member/trustee-voting language between 2.3(a) and 2.3(b), and compares the result against V11.

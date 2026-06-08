@@ -25,6 +25,7 @@ Current draft:
 - `BYH OA Draft V9 Article 2 Managers Tax Title Certification - from V8.docx`
 - `BYH OA Draft V10 Fresh Cumulative Build - from Simplified OA.docx`
 - `BYH OA Draft V11 Fresh Cumulative No 2.1 Strike - from Simplified OA.docx`
+- `BYH OA Draft V12 Format Preserving Article 5 - from Simplified OA.docx`
 
 Current notes:
 
@@ -41,6 +42,8 @@ Current notes:
 - `BYH OA V10 Fresh Build vs V9 Layered Build Comparison.md`
 - `BYH OA Draft V11 Fresh Cumulative No 2.1 Strike Notes.md`
 - `BYH OA V11 Fresh Build vs V10 Comparison.md`
+- `BYH OA Draft V12 Format Preserving Article 5 Notes.md`
+- `BYH OA V12 vs V11 Comparison.md`
 
 Drafting assumptions:
 
@@ -51,6 +54,7 @@ Drafting assumptions:
 - BYH replacement language is added in red.
 - Source text should not be struck and reinserted merely to relocate or renumber it; preserve the existing paragraph and add only needed BYH language where possible.
 - Do not add article-title description text where the baseline article had none. For Article 2, place the BYH sole-member / trustee-voting language between `2.3(a)` and `2.3(b)`, not between the `Membership Units` article title and `2.1`.
+- Preserve source run formatting during paragraph-level redlines. For Article 5, keep `Manager(s) – Number and Tenure.` as the original title run and redline only the changed body language after it.
 
 Version notes:
 
@@ -65,5 +69,6 @@ Version notes:
 - V9 Article 2 Managers Tax Title Certification carries forward V8, makes the sole-member/trustee-voting language new Article 2.1, preserves the former 2.1 as new 2.2, changes initial Manager(s) to current Manager(s), conforms the tax-classification heading, keeps 5.1(b)(xi) operative, and starts the Manager(s) certification block on the next page with three separate Manager groups.
 - V10 Fresh Cumulative Build restarts from the Simplified OA source using the cumulative BYH instructions rather than layering on V9. It also includes a comparison file showing V10 versus the V9 layered build.
 - V11 Fresh Cumulative No 2.1 Strike restarts from the Simplified OA source, preserves the original Membership Units Authorized paragraph without strikethrough, avoids inserting a duplicate 2.2 paragraph, and compares the result against V10.
+- V12 Format Preserving Article 5 restarts from the Simplified OA source, preserves source run formatting in 4.10, keeps the Article 5 `Manager(s) – Number and Tenure.` lead-in title treatment, moves the Article 2 sole-member/trustee-voting language between 2.3(a) and 2.3(b), and compares the result against V11.
 
 Before final use, confirm the full legal trust name, signer or trustee authority, the exact member/beneficiary structure, and S corporation tax language with attorney/CPA review.
