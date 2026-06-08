@@ -137,7 +137,7 @@ The process-control workbook is:
 
 `working\BYH OA Process Control.xlsx`
 
-Use that workbook to track the version log, cumulative rule register, article/section change map, open issues, build checklist, reusable skill inputs, and controlled lists.
+Use that workbook to track the version log, cumulative rule register, article/section change map, open issues, build checklist, user inputs, and controlled lists.
 
 Process goals:
 
