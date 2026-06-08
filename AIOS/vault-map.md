@@ -56,6 +56,7 @@ Do not rename this folder. Do not move existing root folders as part of AIOS set
 | `Invoice and Receipt Processing Notes.md` | Invoice and receipt classification, naming, routing, and review rules. |
 | `Invoice Project List.md` | Project/property routing reference for invoice workflows. |
 | `SOP Spreadsheet Maintenance Rule.md` | Rules for SOP workbook and project-management workbook changes. |
+| `AIOS/maintenance-log.md` | Material AIOS changes, tests, and revision decisions. |
 
 ## ACE Overlay
 
@@ -115,7 +116,7 @@ Before drafting from multiple sources, create or use a project room and update:
 
 | Request Type | First Files To Read |
 | --- | --- |
-| New Admin wiki work | `AIOS/start-here.md`, `AIOS/me.md`, `Admin Home.md` |
+| New Admin wiki work | `AIOS/start-here.md`, `AIOS/me.md`, this file, then `Admin Home.md` |
 | Multi-source drafting or analysis | `Project Room Workflow.md`, then the matching project room |
 | AIOS work | `Project Rooms/AIOS/README.md`, `Project Rooms/AIOS/working/implementation-outline.md`, and this file |
 | Skill creation or updates | `Codex Skill Source Rule.md`, then `AIOS/skills-map.md` |

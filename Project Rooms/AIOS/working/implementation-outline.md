@@ -57,15 +57,15 @@ The current Admin wiki already behaves partly like an ACE system even though it 
 
 1. No Moves. Status: completed. Keep `C:\Codex\Wiki Files` as the vault root and do not rename or move existing folders.
 2. Add Root AIOS Folder. Status: completed. Create `C:\Codex\Wiki Files\AIOS\`.
-3. Create `start-here.md`. Status: first draft completed.
-4. Create `me.md`. Status: first draft completed.
-5. Create `vault-map.md`. Status: first draft completed.
-6. Add ACE Overlay. Status: first draft completed in `AIOS/vault-map.md`.
-7. Create `skills-map.md`. Status: first draft completed.
-8. Add Privacy Rules. Status: first draft completed in `AIOS/privacy-rules.md` and linked from startup files.
-9. Optional Tool Startup Pointers. Status: first draft completed.
-10. Test With New Chat. Status: smoke test completed; see `working/new-chat-smoke-test-2026-06-08.md`.
-11. Revise Based On Failures. Status: not started.
+3. Create `start-here.md`. Status: finalized first usable version.
+4. Create `me.md`. Status: finalized first usable version.
+5. Create `vault-map.md`. Status: finalized first usable version.
+6. Add ACE Overlay. Status: finalized first usable version in `AIOS/vault-map.md`.
+7. Create `skills-map.md`. Status: finalized first usable version.
+8. Add Privacy Rules. Status: finalized first usable version in `AIOS/privacy-rules.md` and linked from startup files.
+9. Optional Tool Startup Pointers. Status: finalized first usable version.
+10. Test With New Chat. Status: local smoke test completed; see `working/new-chat-smoke-test-2026-06-08.md`.
+11. Revise Based On Failures. Status: completed for first usable overlay; see `working/step-11-revision-log-2026-06-08.md`.
 12. Later Physical ACE. Status: deferred.
 
 ## Timing Strategy

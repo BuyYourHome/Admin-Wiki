@@ -27,7 +27,8 @@ Do not switch to a Teams folder, another `Wiki Files` folder, or a project-room 
 4. Read `AIOS/skills-map.md` when the request involves skills, agents, automations, or repeatable workflows.
 5. Read `AIOS/privacy-rules.md` before using sensitive files or external services.
 6. Read `Admin Home.md`.
-7. Read the workflow file that matches the request.
+7. Use the routing table in `AIOS/vault-map.md` to choose the workflow file that matches the request.
+8. Read that workflow file before acting.
 
 ## Current Implementation Rule
 
@@ -44,6 +45,7 @@ Do not rename:
 ## Working Rules
 
 - Use Markdown files for durable operating instructions.
+- Use `AIOS/vault-map.md` to route requests before guessing from memory.
 - Use Project Rooms for substantial drafting, analysis, redesign, or automation work that depends on multiple sources.
 - Keep Teams as a final-deliverable destination only when Wes explicitly asks.
 - Prefer installed connectors and plugins when they are more reliable than local desktop automation.
@@ -66,3 +68,7 @@ First determine whether the request is:
 - or general wiki maintenance.
 
 Then open the relevant workflow rule before acting.
+
+## Version Status
+
+This is the first usable AIOS overlay version as of 2026-06-08. It has passed a local startup-path smoke test. Revise it after a real independent new-chat failure or after a major Admin wiki workflow changes.

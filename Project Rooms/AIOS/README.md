@@ -18,7 +18,7 @@ Wes requested a new project room for AIOS. No source materials or final output r
 
 ## Current Status
 
-Implementation started. Steps 1-10 of the overlay strategy are underway: the root `AIOS/` folder exists with first-draft startup, identity, vault-map, skills-map, ACE overlay, privacy-rule, and tool-startup pointer files. A smoke test has confirmed the startup files and representative routing paths. No existing folders have been moved or renamed.
+First usable AIOS overlay completed through step 11. The root `AIOS/` folder exists with startup, identity, vault-map, skills-map, ACE overlay, privacy-rule, maintenance-log, and tool-startup pointer files. A smoke test confirmed the startup files and representative routing paths, followed by a step-11 hardening pass. No existing folders have been moved or renamed.
 
 ## Implementation Timing
 
@@ -26,11 +26,11 @@ Wes expects to ask for implementation later when he does not need active access 
 
 ## Next Actions
 
-1. Confirm whether AIOS should cover only the Admin wiki or a broader knowledge base.
-2. Confirm the intended output: final AIOS files, design spec, SOP, or tool-startup files.
-3. Identify privacy exclusions and the preferred AI-assisted content marker.
+1. Run a real independent new-chat trial using only `C:\Codex\Wiki Files\AIOS\start-here.md`.
+2. Record any routing failures or privacy misses.
+3. Revise the AIOS maps if the new chat lands in the wrong folder, misses a workflow rule, or overreads sensitive context.
 4. Add any additional source materials to `sources/`.
-5. Draft outputs only from authoritative sources.
+5. Keep physical ACE migration deferred unless Wes explicitly approves a later migration project.
 
 ## Related Rules
 
