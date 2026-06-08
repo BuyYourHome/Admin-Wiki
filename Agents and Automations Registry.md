@@ -149,6 +149,7 @@ Purpose:
 - Name outputs using approved conventions.
 - Route mortgage statements, credit card statements, bank statements, invoices, receipts, tax forms, and related documents to the correct Teams/SharePoint folder.
 - Write logs and archive original scans.
+- Resume one dedicated Codex chat for status, follow-up, and automation tuning instead of creating a fresh standalone run thread each time.
 
 Defined in:
 
@@ -168,6 +169,7 @@ Important rules:
 - Never overwrite filed PDFs.
 - Never pay invoices or contact vendors.
 - If routing confidence is low, route to review and log why.
+- Keep the automation attached to one dedicated status thread via `target_thread_id` so the user can review run history and adjust behavior in one place.
 
 ## Codex Skill Source Control
 
