@@ -121,9 +121,12 @@ Do not place those subfiles in the Jeff Watson root folder, the main Sell Your H
 - For BYH operating-agreement work, treat Wes's instructions as cumulative drafting instructions. Each new requested build should be generated fresh from the refreshed Simplified OA source using the cumulative instruction set, rather than layering edits on top of the latest V-numbered BYH draft, unless Wes explicitly asks to continue from a specific prior version.
 - For future BYH OA versions, put the version identifier at the beginning of the filename so the folder sorts by version, such as `V13 - BYH OA Draft ...`. Do not rename existing BYH version files solely to apply this convention.
 - After the next BYH fresh-from-original build, compare it against the latest layered V-numbered build so Wes can see the practical differences between the two approaches.
-- For BYH redlines, do not strike and reinsert source text just to relocate or renumber it. Preserve the existing source paragraph where possible, add only the needed BYH language in red, and avoid duplicate replacement paragraphs such as striking the existing `2.1 Membership Units Authorized` paragraph and reinserting the same text as `2.2`.
+- For BYH redlines, do not strike and reinsert source text just to relocate or renumber it. Preserve the existing source paragraph where possible, add only the needed BYH language, and avoid duplicate replacement paragraphs such as striking the existing `2.1 Membership Units Authorized` paragraph and reinserting the same text as `2.2`.
 - Do not add descriptive text immediately after an article title when the baseline article had no descriptive paragraph there. For Article 2, the BYH sole-member / trustee-voting concept should be inserted between `2.3(a)` and `2.3(b)`, not as a new description between the `Membership Units` article title and `2.1`.
-- Preserve source run formatting when redlining within a paragraph. Unchanged and struck source text should keep the baseline font, size, bolding, color, and other direct formatting. Added BYH replacement text should be red, but otherwise should match the surrounding source formatting unless Wes gives a different style instruction.
+- Preserve source run formatting when redlining within a paragraph. Unchanged and struck source text should keep the baseline font, size, bolding, color, and other direct formatting.
+- Preserve Jeff Watson's later review edits as red-font source text. Do not recolor Jeff's red edits in derivative BYH builds.
+- Use green font for new BYH additions and BYH replacement text going forward so those additions can be distinguished from Jeff's red-font source edits. Green BYH text should otherwise match the surrounding source formatting unless Wes gives a different style instruction.
+- Use the workbook to record the author/source class of each visible drafting change, including `Jeff source edit`, `Wes simplified text`, `BYH addition`, and `BYH strikeout`.
 - Preserve lead-in title treatment within mixed title/body paragraphs. For Article 5, `Manager(s) – Number and Tenure.` should remain the original title run, while only the changed body language after that title is struck or replaced.
 - Treat section and article edits as reference-sensitive changes. Do not renumber sections, articles, exhibits, or paragraph labels unless Wes explicitly approves renumbering as a separate cleanup step.
 - Prefer adding new language inside an existing section or using suffix-style numbering, such as `2.3A` or `2.3.1`, instead of inserting a new numbered section that shifts later references.
@@ -148,5 +151,5 @@ Process goals:
 - Use the Sell Your Home simplified OA and segmented source files as reusable drafting inputs.
 - Accumulate Wes's BYH-specific transformation rules before building new versions.
 - Keep process rules separate from generated V-numbered output drafts.
-- Preserve source text whenever possible, using red additions and strikethrough only where the BYH conversion requires a visible change.
+- Preserve source text whenever possible, using green BYH additions and strikethrough only where the BYH conversion requires a visible change.
 - When the workflow is stable, bundle the reusable BYH-from-SYH OA process into a Codex skill so similar OA conversions can be repeated consistently.
