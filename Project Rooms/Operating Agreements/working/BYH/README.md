@@ -29,6 +29,7 @@ Current draft:
 - `BYH OA Draft V11 Fresh Cumulative No 2.1 Strike - from Simplified OA.docx`
 - `BYH OA Draft V12 Format Preserving Article 5 - from Simplified OA.docx`
 - `V13 - BYH OA Draft Clean Certification and Exhibit A - from Simplified OA.docx`
+- `V14 - BYH OA Draft Observation Fixes - from Simplified OA.docx`
 
 Current notes:
 
@@ -49,6 +50,8 @@ Current notes:
 - `BYH OA V12 vs V11 Comparison.md`
 - `V13 - BYH OA Draft Clean Certification and Exhibit A Notes.md`
 - `V13 - BYH OA vs V12 Comparison.md`
+- `V14 - BYH OA Draft Observation Fixes Notes.md`
+- `V14 - BYH OA vs V13 Comparison.md`
 
 Drafting assumptions:
 
@@ -76,5 +79,6 @@ Version notes:
 - V11 Fresh Cumulative No 2.1 Strike restarts from the Simplified OA source, preserves the original Membership Units Authorized paragraph without strikethrough, avoids inserting a duplicate 2.2 paragraph, and compares the result against V10.
 - V12 Format Preserving Article 5 restarts from the Simplified OA source, preserves source run formatting in 4.10, keeps the Article 5 `Manager(s) - Number and Tenure.` lead-in title treatment, moves the Article 2 sole-member/trustee-voting language between 2.3(a) and 2.3(b), and compares the result against V11.
 - V13 Clean Certification and Exhibit A restarts from the Simplified OA source, uses green BYH additions/replacements while preserving Jeff red source edits, applies the opening ownership block indentation and entity-spacing rules, creates a clean certification/signature page, and rebuilds Exhibit A with only current BYH member information. Local visual rendering failed because the converter executable is unavailable; structural DOCX checks passed.
+- V14 Observation Fixes restarts from the Simplified OA source, changes the Article 2 sole-member/trustee-voting insertion to `2.1(d)`, keeps 5.1(b)(xi) operative and unstruck, preserves 9.5 Borrowing Money except for the final retirement-account/disqualified-person sentence, and strengthens the opening agreement spacing fix.
 
 Before final use, confirm the full legal trust name, signer or trustee authority, the exact member/beneficiary structure, and S corporation tax language with attorney/CPA review.
