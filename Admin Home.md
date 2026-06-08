@@ -38,4 +38,6 @@ This is the starting page for the Buy Your Home admin wiki.
 - GitHub repository: `BuyYourHome/Admin-Wiki`.
 - Teams folders receive only final deliverables when specifically requested.
 - Obsidian is the reading/editing interface; GitHub is the versioned source of truth.
-- Codex skills for admin workflows are source-controlled under `C:\Codex\Wiki Files\skills` and synced locally with `tools\sync-codex-skills.ps1`.
+- Codex skills for admin workflows are source-controlled under `C:\Codex\Wiki Files\skills`.
+- Treat wiki skills as the source and `%USERPROFILE%\.codex\skills` as the installed runtime copies used by Codex.
+- Sync installed copies with `tools\sync-codex-skills.ps1`.

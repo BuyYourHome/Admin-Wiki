@@ -5,11 +5,13 @@ Codex skills for Buy Your Home admin workflows are source-controlled in the Admi
 ## Canonical Source
 
 - Canonical wiki skill folder: `C:\Codex\Wiki Files\skills`
+- Meaning: wiki skills = source
 - Local installed skill folder: `%USERPROFILE%\.codex\skills`
+- Meaning: `.codex` skills = installed runtime copy
 - Sync script: `C:\Codex\Wiki Files\tools\sync-codex-skills.ps1`
 - Sync command: `powershell -NoProfile -ExecutionPolicy Bypass -File "C:\Codex\Wiki Files\tools\sync-codex-skills.ps1"`
 
-Do not treat `%USERPROFILE%\.codex\skills` as the source of truth. Local installed skill folders are generated copies used by Codex on that computer.
+Do not treat `%USERPROFILE%\.codex\skills` as the source of truth. Codex discovers and runs the installed runtime copies from that folder, but those copies should be treated like deployed artifacts, not the place to author or version the skills.
 
 ## Update Workflow
 
@@ -19,6 +21,12 @@ Do not treat `%USERPROFILE%\.codex\skills` as the source of truth. Local install
 4. Push only when Wes says the skill is a finished product, explicitly asks for a push, or the task instructions already define the deliverable as final and ready to publish.
 5. Run `powershell -NoProfile -ExecutionPolicy Bypass -File "C:\Codex\Wiki Files\tools\sync-codex-skills.ps1"` only when the updated skill is ready to become the installed local version.
 6. On another computer, pull the Admin wiki repo, run the sync script only when the updated skill is ready to install there, then start a new Codex chat/session so the updated skill is loaded.
+
+## Simple Mental Model
+
+- `C:\Codex\Wiki Files\skills` = source
+- `%USERPROFILE%\.codex\skills` = installed runtime copy
+- `tools\sync-codex-skills.ps1` = install/deploy step
 
 ## Project Rooms
 
