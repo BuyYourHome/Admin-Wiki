@@ -111,6 +111,7 @@ Purpose:
 - Summarize unread or newly received financial, legal, property, vendor/admin, time-sensitive, or action-oriented messages.
 - Send Wes a concise priority summary from `OfficeAssist@BuyYourHomeLLC.com`.
 - Jean is responsible for confirming the summary is actually delivered. If the summary cannot be sent, if sender verification fails, or if delivery cannot be confirmed, do not stay quiet. Notify Wes immediately in the thread and, when a reliable text/SMS path is available, text Wes that the email summary failed.
+- Resume one dedicated Codex status chat for failures, blockers, and notable summary-task visibility instead of creating separate standalone run chats.
 
 Defined in:
 
@@ -121,6 +122,7 @@ Important limitations:
 
 - Jenny's summary is paused until `Jenny@BuyYourHomeLLC.com` is available locally or through a reliable connector.
 - Do not substitute another mailbox for Jenny.
+- Keep the automation attached to one dedicated status thread via `target_thread_id` so failure notifications and follow-up stay in one chat.
 
 Tools/services used:
 
