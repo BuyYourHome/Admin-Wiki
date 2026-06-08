@@ -56,6 +56,7 @@ It should guide work in this repo unless Wes explicitly gives different instruct
 ## Privacy Defaults
 
 - Use the minimum necessary context.
+- Follow `AIOS/privacy-rules.md`.
 - Do not expose private source files to internet services unless Wes explicitly approves that source and purpose.
 - Treat financial, legal, medical, identity, credential, personal journal, and scanned statement material as sensitive.
 - Keep AIOS maps useful without turning them into a bulk dump of private data.

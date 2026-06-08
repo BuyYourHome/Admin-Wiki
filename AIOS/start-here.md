@@ -23,15 +23,11 @@ Do not switch to a Teams folder, another `Wiki Files` folder, or a project-room 
 
 1. Read this file.
 2. Read `AIOS/me.md`.
-3. Read `Admin Home.md`.
-4. Read the workflow file that matches the request.
-
-Planned AIOS files not yet created:
-
-- `AIOS/vault-map.md`
-- `AIOS/skills-map.md`
-
-Until those files exist, use `Admin Home.md`, `Agents and Automations Registry.md`, and the relevant workflow rules as the navigation map.
+3. Read `AIOS/vault-map.md`.
+4. Read `AIOS/skills-map.md` when the request involves skills, agents, automations, or repeatable workflows.
+5. Read `AIOS/privacy-rules.md` before using sensitive files or external services.
+6. Read `Admin Home.md`.
+7. Read the workflow file that matches the request.
 
 ## Current Implementation Rule
 
@@ -56,7 +52,7 @@ Do not rename:
 
 ## Privacy Default
 
-Use the smallest necessary set of files for the task. Do not upload, summarize, or expose sensitive files outside the local workspace unless Wes explicitly approves that specific source for that specific purpose.
+Use the smallest necessary set of files for the task. Follow `AIOS/privacy-rules.md`. Do not upload, summarize, or expose sensitive files outside the local workspace unless Wes explicitly approves that specific source for that specific purpose.
 
 ## If The Task Is Unclear
 

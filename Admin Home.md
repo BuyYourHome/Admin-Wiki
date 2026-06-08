@@ -4,6 +4,8 @@ This is the starting page for the Buy Your Home admin wiki.
 
 ## Core Operating Areas
 
+- [[AIOS/start-here|AIOS Start Here]]
+- [[AIOS/vault-map|AIOS Vault Map]]
 - [[Agents and Automations Registry]]
 - [[Connector and Plugin Usage Rules]]
 - [[Document Scanning SOP]]

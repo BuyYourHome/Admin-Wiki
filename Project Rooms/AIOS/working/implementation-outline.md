@@ -59,10 +59,10 @@ The current Admin wiki already behaves partly like an ACE system even though it 
 2. Add Root AIOS Folder. Status: completed. Create `C:\Codex\Wiki Files\AIOS\`.
 3. Create `start-here.md`. Status: first draft completed.
 4. Create `me.md`. Status: first draft completed.
-5. Create `vault-map.md`. Status: not started.
-6. Add ACE Overlay. Status: not started.
-7. Create `skills-map.md`. Status: not started.
-8. Add Privacy Rules. Status: not started.
+5. Create `vault-map.md`. Status: first draft completed.
+6. Add ACE Overlay. Status: first draft completed in `AIOS/vault-map.md`.
+7. Create `skills-map.md`. Status: first draft completed.
+8. Add Privacy Rules. Status: first draft completed in `AIOS/privacy-rules.md` and linked from startup files.
 9. Optional Tool Startup Pointers. Status: not started.
 10. Test With New Chat. Status: not started.
 11. Revise Based On Failures. Status: not started.
