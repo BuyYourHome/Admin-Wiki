@@ -22,15 +22,19 @@ Prepared: 2026-06-09
 - Related-Company Rent Payment History support document or affidavit.
   - Purpose: support tenant-buyer payment-history exception and document related-company rent verification.
   - Current note: use related-company wording; do not overstate as independent third-party verification.
+  - Current CFD status: generated as draft signature-ready support document; final execution subject to attorney/compliance review and notarized signature.
 - Cash Reserves and Receivables Observation support document or affidavit.
   - Purpose: support funds-to-close and reserve condition through observed cash, receivables, and stated foreign-fund access.
   - Current note: obtain final notarized version or substitute closing-approved proof of funds.
+  - Current CFD status: generated as draft signature-ready support document; final execution subject to attorney/compliance review and notarized signature.
 - Receipt Package Review and Acceptance support document or affidavit.
   - Purpose: document seller/business acceptance of receipts as gross receipt support.
   - Current note: confirm authority/signature block before inclusion; do not state this proves net income.
+  - Current CFD status: generated as draft signature-ready support document; final execution subject to attorney/compliance review and notarized signature.
 - Business Judgment Approval Direction support document or affidavit.
   - Purpose: document the business decision to proceed despite nonstandard income proof, high debt ratio, and related-company rent verification.
   - Current note: include only after authority and compliance review are satisfied.
+  - Current CFD status: generated as draft signature-ready support document; final execution subject to attorney/compliance review and notarized signature.
 
 ## Funds And Identity Items
 
