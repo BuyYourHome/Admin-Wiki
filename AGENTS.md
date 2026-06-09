@@ -35,6 +35,13 @@ Use this repo when formulating solutions for office-admin workflows, SOPs, autom
 - Do not commit Obsidian local settings, temporary scan previews, logs, or generated scratch files.
 - In final responses, report the total elapsed time for the whole request. Do not report timing for each individual step unless Wes explicitly asks for step timing.
 
+## Discussion Before Action Rule
+
+- Treat Wes's questions, process-design discussion, and sequences of instructions as discussion-only until Wes clearly says to act.
+- Do not make file changes, start or restart processes, message other chats, delete files, sync skills, commit, push, send emails, or run external workflow actions merely because Wes is describing what he wants.
+- Proceed only after an explicit action instruction such as `proceed`, `implement`, `do it`, `make the change`, `run it`, `start`, or another clear instruction to act.
+- If Wes says to write or implement one specific rule, keep the work limited to that rule and do not expand into related process changes unless he separately authorizes them.
+
 ## Git Workflow
 
 1. Check `git status --short --branch`.
