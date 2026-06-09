@@ -15,9 +15,32 @@ Create contract-for-deed sale document packages, currently focused on selling 32
 
 ## Working Rule
 
-Use Cool Springs as the transaction/document reference and 320 Rose as the property/project source. Do not alter originals in the Property folders from this room; work from staged copies and write drafts to `working` or `output`.
+Use Cool Springs as the transaction/document reference and 320 Rose as the property/project source. Do not alter originals in the Property folders from this room; work from staged copies and write drafts to `working`, `output`, or the appropriate transaction folder. Copy current buyer-specific deliverables to Teams as a delivery mirror under the matching property/buyer folder.
 
 Do not sync the installed `contract-for-deed` Codex skill merely because scripts, drafts, or prototypes in this project room changed. Keep project-room work here until the new prototypes/workflow are completed. Sync the installed skill only after the prototypes are ready or when Wes explicitly asks to update the installed skill.
+
+## Teams Copy Rule
+
+Keep the project room as the working source of truth. Also copy current buyer-specific Contract for Deed deliverables to the matching Teams property buyer folder so Wes can access them from the property file.
+
+Teams buyer folder pattern:
+
+`C:\Users\wesbr\Buy Your Home\Buy Your Home - Property\<Property Project>\Selling\<Buyer>\Contract for Deed\`
+
+Recommended Teams subfolders:
+
+- `Clean Package\`
+- `Attorney Review Package\`
+- `Closing Checklist\`
+- `Affidavits\`
+
+For 320 Rose / Ever Cardoza, use:
+
+`C:\Users\wesbr\Buy Your Home\Buy Your Home - Property\28-SYH-320 Rose Pl\Selling\Ever Cordoza\Contract for Deed\`
+
+Copy clean packages, attorney-review packages, closing checklists, and CFD-generated closing-package affidavits to the matching Teams subfolder after each requested regeneration or package update unless Wes says project-room only. Do not copy prototypes, staged spreadsheets, scratch files, extracted text, rendered QA images, logs, or temporary working files to Teams.
+
+The project-room copy remains authoritative. If Wes edits a Teams copy and says to keep those edits, first bring the edited file back into the project room and apply the normal edit-preservation/prototype rule before regenerating. Do not use Teams copies as regeneration sources unless Wes identifies the Teams-edited file as the version to preserve.
 
 ## Spreadsheet Refresh Rule
 
@@ -47,13 +70,12 @@ For the Memorandum of Contract for Deed draft, use Wes's edited prototype at `re
 
 ## Credit Worthiness Handoff Intake
 
-- Credit Worthiness Evaluator affidavit handoffs are copied into:
+- Credit Worthiness Evaluator handoffs are copied into the matching buyer transaction folder:
 
-  `source\credit-worthiness-handoffs\`
+  `transactions\<Property> - <Buyer>\handoffs\credit-worthiness\Credit Worthiness Handoff.md`
 
-- Treat these handoffs as source inputs for affidavit packet needs, signer/capacity requirements, supported facts, open assumptions, and attorney-review notes.
-- Do not overwrite existing handoff files. Use versioned handoff filenames.
-- Contract for Deed owns final document package drafting, formatting, signature-block placement, and attorney-review package assembly after consuming the handoff.
+- Treat these handoffs as source inputs for buyer roles, affidavit packet needs, signer/capacity requirements, supported facts, open assumptions, and attorney-review notes.
+- Contract for Deed owns final document package drafting, formatting, signature-block placement, Teams copy placement, and attorney-review package assembly after consuming the handoff.
 
 ## Current Contract for Deed Workflow
 

@@ -13,7 +13,7 @@ Use the Admin wiki as the source of truth.
 - Current project room: `C:\Codex\Wiki Files\Project Rooms\Contract for Deed`
 - Current project room instructions: `C:\Codex\Wiki Files\Project Rooms\Contract for Deed\PROJECT-ROOM.md`
 
-This skill is a reusable workflow wrapper. Project-specific source files, prototypes, generated outputs, and history stay in the project room unless Wes explicitly asks to move or copy a final deliverable elsewhere.
+This skill is a reusable workflow wrapper. Project-specific source files, prototypes, generated outputs, and history stay in the project room. For buyer-specific Contract for Deed work, copy current deliverables to the matching Teams buyer folder as a delivery mirror; do not use Teams as the working source.
 
 ## Required Startup
 
@@ -56,6 +56,29 @@ Each transaction folder should include:
 - `output\closing-checklist\` for closing checklist outputs.
 
 During the 320 Rose transition, the existing top-level `source`, `reference`, `working`, and `output` folders remain the active script/prototype locations. Still use the buyer transaction folder for cross-skill handoffs, buyer-specific checklist work, and transaction metadata.
+
+## Teams Copy Rule
+
+Keep all source files, prototypes, scripts, handoffs, working drafts, clean outputs, attorney-review outputs, and checklist outputs in the Contract for Deed project room. Also copy current buyer-specific deliverables to the matching Teams property buyer folder so Wes can find and share them from the property file.
+
+Use the Teams buyer folder pattern:
+
+`C:\Users\wesbr\Buy Your Home\Buy Your Home - Property\<Property Project>\Selling\<Buyer>\Contract for Deed\`
+
+Recommended subfolders:
+
+- `Clean Package\` for current clean signing/review copies.
+- `Attorney Review Package\` for current attorney-review copies and ZIPs.
+- `Closing Checklist\` for buyer-specific checklist outputs.
+- `Affidavits\` for CFD-generated closing-package affidavits.
+
+For 320 Rose / Ever Cardoza, use:
+
+`C:\Users\wesbr\Buy Your Home\Buy Your Home - Property\28-SYH-320 Rose Pl\Selling\Ever Cordoza\Contract for Deed\`
+
+Copy project-room outputs to Teams after each requested regeneration or package update unless Wes says project-room only. The project-room copy remains authoritative. If a Teams copy is edited and Wes says to keep those edits, bring that edited file back into the project room and apply the normal edit-preservation/prototype rule before regenerating.
+
+Do not copy scratch files, extracted text, rendered QA images, logs, staged spreadsheets, prototypes, or temporary working files to Teams. Do not use Teams copies as the source for regeneration unless Wes identifies a Teams-edited file as the version to preserve.
 
 ## Credit Worthiness Handoff
 
@@ -115,6 +138,7 @@ Do not convert underwriting-only affidavits into closing documents unless Wes or
 For the current 320 Rose package:
 
 - Transaction folder: `C:\Codex\Wiki Files\Project Rooms\Contract for Deed\transactions\320 Rose Pl - Ever Cardoza`
+- Teams mirror folder: `C:\Users\wesbr\Buy Your Home\Buy Your Home - Property\28-SYH-320 Rose Pl\Selling\Ever Cordoza\Contract for Deed`
 - Live spreadsheet: `C:\Users\wesbr\Buy Your Home\Buy Your Home - Property\28_Project Management - 320 Rose Pl.xlsm`
 - Staged spreadsheet: `C:\Codex\Wiki Files\Project Rooms\Contract for Deed\source\320 Rose project spreadsheet\28_Project Management - 320 Rose Pl.xlsm`
 - Output folder: `C:\Codex\Wiki Files\Project Rooms\Contract for Deed\output`

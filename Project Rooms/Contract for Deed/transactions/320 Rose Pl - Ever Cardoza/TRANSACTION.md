@@ -22,6 +22,7 @@ Buyer-specific Contract for Deed transaction folder for selling 320 Rose Pl to E
 - Live Rose project spreadsheet: `C:\Users\wesbr\Buy Your Home\Buy Your Home - Property\28_Project Management - 320 Rose Pl.xlsm`
 - Staged Rose project spreadsheet: `C:\Codex\Wiki Files\Project Rooms\Contract for Deed\source\320 Rose project spreadsheet\28_Project Management - 320 Rose Pl.xlsm`
 - Credit Worthiness project room: `C:\Codex\Wiki Files\Project Rooms\Credit Worthiness Evaluator`
+- Teams mirror folder: `C:\Users\wesbr\Buy Your Home\Buy Your Home - Property\28-SYH-320 Rose Pl\Selling\Ever Cordoza\Contract for Deed`
 
 ## Handoff
 
@@ -42,3 +43,14 @@ Current Contract for Deed package scope:
 Excluded unless Wes changes the scope:
 
 - Deed documents
+
+## Teams Copy Placement
+
+Keep project-room files as the working source. Copy current deliverables to the Teams mirror folder under:
+
+- `Clean Package\`
+- `Attorney Review Package\`
+- `Closing Checklist\`
+- `Affidavits\`
+
+Do not copy prototypes, staged spreadsheets, scratch files, rendered QA images, logs, or temporary working files to Teams.
