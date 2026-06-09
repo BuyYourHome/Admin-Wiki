@@ -42,6 +42,14 @@ Use this repo when formulating solutions for office-admin workflows, SOPs, autom
 - Proceed only after an explicit action instruction such as `proceed`, `implement`, `do it`, `make the change`, `run it`, `start`, or another clear instruction to act.
 - If Wes says to write or implement one specific rule, keep the work limited to that rule and do not expand into related process changes unless he separately authorizes them.
 
+## Skill Ownership Boundary Rule
+
+- When working from a process-specific chat, write only that process's own skill source unless Wes explicitly authorizes editing another skill.
+- The Contract for Deed chat owns `skills\contract-for-deed\SKILL.md`.
+- The Credit Worthiness Evaluator chat owns `skills\credit-worthiness-evaluator\SKILL.md`.
+- If a proposed rule affects another process, record it as a proposed rule for that other process, tell Wes it should be written from that process's chat, or ask for explicit permission to edit both skill sources.
+- A general instruction such as `write proposed rules to skills` does not override this ownership boundary. It means write the current chat's owned skill rules only unless Wes names the other skill or says to update both.
+
 ## Git Workflow
 
 1. Check `git status --short --branch`.
