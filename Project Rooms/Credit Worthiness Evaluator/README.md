@@ -14,6 +14,14 @@ This room is for Buy Your Home's occasional Contract for Deed sale workflow, cur
 - Ability-to-repay documentation packet outline.
 - Compliance decision log for attorney or management review.
 - Notes on when Buy Your Home must use a licensed mortgage loan originator, attorney, or outside compliance reviewer.
+- Final report and affidavit handoff deliverables that can be copied to the buyer's Teams-synced folder only when final or explicitly requested.
+
+## Teams Copy Rule
+
+- Use the project room `outputs\` folder for drafts and intermediate deliverables.
+- Copy documents to the buyer's Teams-synced folder only when Wes explicitly asks for that copy or the document is final.
+- Never overwrite an existing Teams document. If a filename already exists, create a versioned filename or ask Wes before replacing it.
+- Do not copy scratch files, extracted text, rendered images, source inventories, or non-final drafts to Teams.
 
 ## Current Status
 

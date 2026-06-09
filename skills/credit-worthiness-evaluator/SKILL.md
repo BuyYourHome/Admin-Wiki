@@ -29,7 +29,7 @@ Use the project room for source inventory, conflict logs, missing-context notes,
 7. Render and visually check formal DOCX reports before delivery when the Documents skill/runtime is available.
 8. Add page numbers to formal reports before delivery.
 9. If a formal report is rerun, preserve a versioned copy instead of silently replacing the prior report.
-10. Copy the final or updated formal report back into the live buyer source folder where the source files were retrieved.
+10. Copy only final deliverables, or deliverables Wes explicitly asks to place there, back into the live buyer source folder where the source files were retrieved.
 11. Commit durable wiki/project-room changes locally. Do not push unless Wes says the work is finished or explicitly asks for a push.
 
 ## Evaluation Rules
@@ -87,14 +87,16 @@ When approval-assumption mode is active:
 When an evaluator run produces or updates a formal report:
 
 1. Save the report in the project room `outputs\` folder.
-2. Copy the same report into the live buyer source folder where the buyer documents were retrieved.
+2. Copy the same report into the live buyer source folder where the buyer documents were retrieved only when the report is final, Wes explicitly asks for a Teams/buyer-folder copy, or the run is clearly a final deliverable.
 3. Use a clear filename that preserves the buyer/property identity, such as:
 
    `26-06-05 320 Rose Ever Cardoza - Creditworthiness Evaluation Report.docx`
 
 4. In the final response, report both locations.
 
-Do not copy generated text extracts, render images, scratch logs, or source-inventory working files back to the buyer folder unless Wes explicitly asks.
+Never overwrite an existing Teams/buyer-folder document. If a same-named file already exists, create a new versioned filename or ask Wes before replacing anything.
+
+Do not copy generated text extracts, render images, scratch logs, source-inventory working files, or non-final drafts back to the buyer folder unless Wes explicitly asks.
 
 ## Report Versioning And Page Numbers
 
