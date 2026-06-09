@@ -9,8 +9,8 @@
 - Source cutoff: files available in the live buyer folder at the 2026-06-09 refresh; newest reviewed buyer-folder item was the 2026-06-09 approval-scenario report. That report is assumption-mode background and is not treated as current verified approval evidence.
 - Current evaluation mode: evidence mode, not approval-assumption mode.
 - Source discipline: this summary was rebuilt from durable local sources, not from delegated prompt-provided transaction facts. The project, spreadsheet path, buyer folder, and CFD handoff placement came from the Contract for Deed transaction/project-room files and Credit Worthiness Evaluator skill instructions; transaction values came from the live spreadsheet `Docs` worksheet.
-- Full DOCX report: `C:\Codex\Wiki Files\Project Rooms\Credit Worthiness Evaluator\outputs\320 Rose Pl - Ever Cardoza\26-06-09 320 Rose Ever Amarildo Cardoza Bolanos - Creditworthiness Evaluation Report - Conditional v11.docx`
-- Teams report copy: `C:\Users\wesbr\Buy Your Home\Buy Your Home - Property\28-SYH-320 Rose Pl\Selling\Ever Cordoza\Credit Worthiness\v11 320 Rose Ever Amarildo Cardoza Bolanos - Creditworthiness Evaluation Report - Conditional.docx`
+- Full DOCX report: `C:\Codex\Wiki Files\Project Rooms\Credit Worthiness Evaluator\outputs\320 Rose Pl - Ever Cardoza\26-06-09 320 Rose Ever Amarildo Cardoza Bolanos - Creditworthiness Evaluation Report - Conditional v12.docx`
+- Teams report copy: `C:\Users\wesbr\Buy Your Home\Buy Your Home - Property\28-SYH-320 Rose Pl\Selling\Ever Cordoza\Credit Worthiness\v12 320 Rose Ever Amarildo Cardoza Bolanos - Creditworthiness Evaluation Report - Conditional.docx`
 
 ## Spreadsheet Transaction Snapshot
 
@@ -67,7 +67,7 @@ The current blockers are:
 - Self-employment income is supported by business activity and receipts, but not by tax returns, CPA letter, profit-and-loss statement, payroll records, or a complete owner-draw analysis.
 - The two June 2026 receivables totaling $14,000 are due/open receivables, not collected income unless later paid and verified.
 - Funds to close are supported by an observation statement, but final closing proof is still needed if counsel or closing review requires more than the affidavit package.
-- Maria's spreadsheet name is `Maria Geraldine Sarmiento`, while the passport image file and prior review notes identify `Maria Geraldina Sarmiento`; final spelling and role should be confirmed for contract documents.
+- Maria is a signing buyer because she is listed as `Selling-Buyer2` in the project spreadsheet. Her spreadsheet name is `Maria Geraldine Sarmiento`, while the passport image file and prior review notes identify `Maria Geraldina Sarmiento`; final legal-name spelling should be confirmed for contract documents.
 - The current project spreadsheet payment is $2,504.43/month, while older reports used $2,701/month from prior meeting materials. CFD should use the current spreadsheet value unless Wes or counsel directs otherwise.
 
 ## Funds To Close
@@ -96,7 +96,7 @@ Current recommendation: CFD may proceed with package preparation only as a condi
 CFD should:
 
 1. Use the spreadsheet values as the current document-package source.
-2. Treat Ever Amarildo Cardoza Bolanos as Buyer 1 and Maria Geraldine Sarmiento as Buyer 2 unless counsel or updated ID documents correct the spelling/role.
+2. Treat Ever Amarildo Cardoza Bolanos as Buyer 1 and Maria Geraldine Sarmiento as Buyer 2/signing buyer unless counsel or updated ID documents correct the spelling.
 3. Use $2,504.43/month as the current spreadsheet payment, while noting older reports used $2,701/month.
 4. Obtain or verify final signed/notarized affidavit package before treating the file as approval-ready.
 5. Have counsel review North Carolina Contract for Deed and seller-financing compliance, including Regulation Z/Dodd-Frank and any adverse-action or conditional-approval notice issues.

@@ -10,8 +10,8 @@
 - Buyer source folder refreshed from: `C:\Users\wesbr\Buy Your Home\Buy Your Home - Property\28-SYH-320 Rose Pl\Selling\Ever Cordoza`
 - Project-room source copy: `C:\Codex\Wiki Files\Project Rooms\Credit Worthiness Evaluator\sources\320 Rose Pl - Ever Cardoza`
 - Current evaluation summary: `C:\Codex\Wiki Files\Project Rooms\Credit Worthiness Evaluator\outputs\320 Rose Pl - Ever Cardoza\26-06-09 Current Evidence Evaluation Summary.md`
-- Current full DOCX report: `C:\Codex\Wiki Files\Project Rooms\Credit Worthiness Evaluator\outputs\320 Rose Pl - Ever Cardoza\26-06-09 320 Rose Ever Amarildo Cardoza Bolanos - Creditworthiness Evaluation Report - Conditional v11.docx`
-- Teams report copy: `C:\Users\wesbr\Buy Your Home\Buy Your Home - Property\28-SYH-320 Rose Pl\Selling\Ever Cordoza\Credit Worthiness\v11 320 Rose Ever Amarildo Cardoza Bolanos - Creditworthiness Evaluation Report - Conditional.docx`
+- Current full DOCX report: `C:\Codex\Wiki Files\Project Rooms\Credit Worthiness Evaluator\outputs\320 Rose Pl - Ever Cardoza\26-06-09 320 Rose Ever Amarildo Cardoza Bolanos - Creditworthiness Evaluation Report - Conditional v12.docx`
+- Teams report copy: `C:\Users\wesbr\Buy Your Home\Buy Your Home - Property\28-SYH-320 Rose Pl\Selling\Ever Cordoza\Credit Worthiness\v12 320 Rose Ever Amarildo Cardoza Bolanos - Creditworthiness Evaluation Report - Conditional.docx`
 - Prior formal report reviewed as background: `C:\Codex\Wiki Files\Project Rooms\Credit Worthiness Evaluator\outputs\26-06-09 320 Rose Ever Amarildo Cardoza Bolanos - Creditworthiness Evaluation Report - Approval Scenario v9.docx`
 - Control note: the prior formal report is an approval-scenario report. This handoff is current-evidence mode and does not treat assumed signed/notarized affidavits as verified unless final signed/notarized versions are confirmed.
 - Source discipline: this handoff was rebuilt from durable local sources, not from delegated prompt-provided transaction facts. The project, spreadsheet path, buyer folder, and handoff placement came from the Contract for Deed transaction/project-room files and Credit Worthiness Evaluator skill instructions; transaction values came from the live spreadsheet `Docs` worksheet.
@@ -42,7 +42,7 @@ Source: live project spreadsheet `C:\Users\wesbr\Buy Your Home\Buy Your Home - P
 | Person | Role for CFD package | Evidence/status | CFD note |
 | --- | --- | --- | --- |
 | Ever Amarildo Cardoza Bolanos | Buyer 1 / primary tenant-buyer. | Spreadsheet names him as Selling-Buyer1. Passport image supports `Ever Amarildo Cardoza Bolanos`. Zillow uses shorter `Ever Amarildo Cardoza`. | Use spreadsheet/passport name unless counsel or updated ID resolves otherwise. |
-| Maria Geraldine Sarmiento | Buyer 2 per spreadsheet. | Spreadsheet names her as Selling-Buyer2. Passport/source file indicates `Maria Geraldina Sarmiento`, creating a Geraldine/Geraldina spelling conflict. | Confirm legal spelling and whether she signs as buyer, co-obligor, spouse, or another role. |
+| Maria Geraldine Sarmiento | Buyer 2 / signing buyer per spreadsheet. | Spreadsheet names her as Selling-Buyer2. Passport/source file indicates `Maria Geraldina Sarmiento`, creating a Geraldine/Geraldina spelling conflict. | Treat as signing buyer. Confirm legal spelling before final documents. |
 
 ## Evaluation Status
 
@@ -88,7 +88,7 @@ These are credit-worthiness-related documents CFD should create, finalize, and d
 - Tax returns, CPA letter, profit-and-loss statement, payroll records, or owner-draw analysis if stricter self-employment income proof is required.
 - Proof that the $14,000 June 2026 receivables were collected, if counted as income or liquid reserves.
 - Final funds-to-close evidence for earnest money, down payment, closing costs, and post-closing reserves.
-- Final legal-name and role confirmation for Maria because spreadsheet and passport/source naming conflict.
+- Final legal-name spelling confirmation for Maria because spreadsheet and passport/source naming conflict. Her signing role is not open because she is listed as Selling-Buyer2.
 - Final payment/escrow breakdown using the spreadsheet monthly payment of $2,504.43, with any conflict against older $2,701 report values resolved.
 
 ## Unresolved Underwriting, Legal, And Compliance Issues
@@ -104,7 +104,7 @@ These are credit-worthiness-related documents CFD should create, finalize, and d
 
 1. Use the live project spreadsheet values as the current CFD drafting source unless Wes or counsel updates them.
 2. Treat this as a conditional credit-worthiness handoff, not a final approval.
-3. Confirm buyer legal names and Maria's role/spelling before signature pages are finalized.
+3. Confirm buyer legal names before signature pages are finalized. Treat Maria as a signing buyer because she is listed as Selling-Buyer2; confirm only her final legal spelling.
 4. Obtain or verify final signed/notarized affidavit package if the transaction relies on the tenant-buyer exception, receipt package, cash reserve observation, or business-judgment approval.
 5. Confirm final funds to close and post-closing reserves through the closing process.
 6. Route the seller-financing and Contract for Deed compliance issues for attorney review before final execution.

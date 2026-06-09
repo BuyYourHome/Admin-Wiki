@@ -57,6 +57,8 @@ Use the project room for source inventory, conflict logs, missing-context notes,
 - Inspect the spreadsheet before declaring core transaction facts missing.
 - Use the project spreadsheet first for buyer/co-buyer/secondary buyer, spouse, occupant, seller, trustee, manager/signature authority, payment terms, and Contract for Deed document fields.
 - If a person appears in a spreadsheet buyer field, such as `Selling-Buyer1`, `Selling-Buyer2`, or similar document-package buyer fields, treat that person according to the spreadsheet role unless a later authoritative source conflicts.
+- Assume anyone listed as a buyer in the project spreadsheet is going to closing and needs to sign the closing documents. Do not list that person's signing role as unknown merely because the file has not separately restated it.
+- If a spreadsheet buyer's name conflicts with an ID or passport, treat the person as a signing buyer and list only the name-spelling/legal-name confirmation as unresolved.
 - If the spreadsheet conflicts with other file materials, log the conflict and use the spreadsheet as the working document-package source until Wes or counsel resolves it.
 - For the 320 Rose example, the project spreadsheet identifies `Ever Amarildo Cardoza Bolanos` as `Selling-Buyer1` and `Maria Geraldine Sarmiento` as `Selling-Buyer2`; Maria's status should therefore not be listed as unknown unless another source creates a conflict.
 
