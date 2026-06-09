@@ -1,4 +1,4 @@
 interface:
   display_name: "Contract for Deed"
-  short_description: "Refresh seller document packages."
-  default_prompt: "Refresh the contract-for-deed seller documents from the project spreadsheet."
+  short_description: "Refresh buyer-specific seller document packages."
+  default_prompt: "Use $contract-for-deed to refresh the buyer-specific contract-for-deed package from the project spreadsheet and any Credit Worthiness handoff."

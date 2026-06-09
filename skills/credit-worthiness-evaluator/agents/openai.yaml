@@ -1,4 +1,4 @@
 interface:
   display_name: "Credit Worthiness Evaluator"
   short_description: "Evaluate buyer ability to repay"
-  default_prompt: "Use $credit-worthiness-evaluator to refresh a buyer project room, evaluate creditworthiness, and copy the report back to the buyer folder."
+  default_prompt: "Use $credit-worthiness-evaluator to refresh a buyer project room, evaluate creditworthiness, and create any needed Contract for Deed handoff."

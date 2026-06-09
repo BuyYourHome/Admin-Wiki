@@ -1,6 +1,6 @@
 ---
 name: credit-worthiness-evaluator
-description: Use for Buy Your Home tenant-buyer creditworthiness and ability-to-repay reviews, especially Contract for Deed or seller-financed buyer evaluations using the Credit Worthiness Evaluator project room. Trigger when Wes asks to refresh buyer documents, rerun the evaluator, evaluate a buyer, update a buyer credit report, or produce an Investment Services, LLC buyer creditworthiness report.
+description: Use for Buy Your Home tenant-buyer creditworthiness and ability-to-repay reviews, especially buyer-specific Contract for Deed or seller-financed evaluations using the Credit Worthiness Evaluator project room. Trigger when Wes asks to refresh buyer documents, rerun the evaluator, evaluate a buyer, update a buyer credit report, produce an Investment Services, LLC buyer creditworthiness report, or create a Credit Worthiness handoff for Contract for Deed closing documents.
 ---
 
 # Credit Worthiness Evaluator
@@ -62,15 +62,34 @@ Use the project room for source inventory, conflict logs, missing-context notes,
 
 ## Contract For Deed Handoff Rule
 
-- When the evaluator identifies affidavit needs for a buyer, create an `Affidavit Requirements Handoff` in the buyer's segregated CWE `outputs\` folder.
-- The handoff should include buyer/property, project spreadsheet used, evaluation result, required affidavits, facts each affidavit supports, signer, signer capacity, authority source, status, open assumptions, and CFD action needed.
-- Copy a versioned copy of the handoff into the Contract for Deed project room for CFD to consume.
+- When the evaluator is used for a buyer who may proceed to Contract for Deed documents, create or update a buyer-specific `Credit Worthiness Handoff.md`.
+- Keep the handoff in the buyer's segregated CWE `outputs\` folder and copy the current handoff into the matching CFD buyer transaction folder.
 - CFD handoff destination:
 
-  `C:\Codex\Wiki Files\Project Rooms\Contract for Deed\source\credit-worthiness-handoffs\`
+  `C:\Codex\Wiki Files\Project Rooms\Contract for Deed\transactions\<Property> - <Buyer>\handoffs\credit-worthiness\Credit Worthiness Handoff.md`
 
-- Use a version-prefixed or otherwise unique handoff filename and never overwrite an existing CFD handoff file.
-- The CWE handoff is an input to CFD. CFD owns final Contract for Deed package drafting, formatting, signature-block placement, and attorney-review package assembly.
+- The handoff should include buyer/property, project spreadsheet used, evaluation result, report path, source cutoff date, buyer legal names and roles, funds-to-close status, affidavit requirements, signer, signer capacity, authority source, status, open assumptions, legal/compliance items, and CFD action needed.
+- The CFD transaction folder is allowed to have one current `Credit Worthiness Handoff.md` that is overwritten when the evaluator produces a newer current handoff. Preserve versioned handoffs in the CWE project-room outputs when history matters.
+- The CWE handoff is an input to CFD. CFD owns final Contract for Deed package drafting, formatting, signature-block placement, closing-package affidavit generation, and attorney-review package assembly.
+
+## Affidavit Requirements
+
+When an affidavit need appears during evaluation, list it in the handoff instead of assuming the evaluator should always produce the final document.
+
+For each affidavit, state:
+
+- affidavit name,
+- purpose,
+- condition or gap addressed,
+- required/recommended/optional status,
+- signer and signer capacity,
+- facts to be sworn or acknowledged,
+- source of the facts,
+- whether notarization is needed,
+- whether it is underwriting-only or closing-package material,
+- requested CFD action.
+
+CWE may draft underwriting-only affidavits when they support the approval file, such as rent-history, reserve-observation, receipt-review, or business-judgment approval affidavits. CFD should generate the final signature-ready version when the affidavit belongs in the closing or Contract for Deed package.
 
 ## Related-Company Rent History Rule
 

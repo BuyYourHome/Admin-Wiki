@@ -57,7 +57,33 @@ For the Memorandum of Contract for Deed draft, use Wes's edited prototype at `re
 
 ## Current Contract for Deed Workflow
 
-This project room is the working version of a process that may later become a Codex skill. Until then, use this room's scripts and notes as the operating procedure.
+This project room is the project-specific operating base used by the `contract-for-deed` skill. Use this room's scripts, prototypes, staged sources, transaction folders, and notes as the operating procedure.
+
+## Buyer Transaction Folder Convention
+
+Use transaction folders for buyer-specific Contract for Deed work:
+
+`transactions\<Property> - <Buyer>\`
+
+Each transaction folder should contain:
+
+- `TRANSACTION.md` for the transaction identity, seller, buyer roles, spreadsheet paths, linked Credit Worthiness report/handoff, and current package scope.
+- `handoffs\credit-worthiness\Credit Worthiness Handoff.md` for the current buyer-specific handoff from the Credit Worthiness Evaluator.
+- `output\clean\` for transaction-specific clean signing copies when the package is moved out of the legacy top-level `output\` folder.
+- `output\attorney-review\` for attorney-review package copies.
+- `output\closing-checklist\` for closing document checklist outputs.
+
+During the 320 Rose transition, keep the existing top-level `source`, `reference`, `working`, and `output` folders as the script/prototype locations. Use the transaction folder for cross-skill handoffs, transaction metadata, and buyer-specific checklist work.
+
+For 320 Rose / Ever Cardoza, use:
+
+`transactions\320 Rose Pl - Ever Cardoza\`
+
+The Credit Worthiness Evaluator should drop the current handoff at:
+
+`transactions\320 Rose Pl - Ever Cardoza\handoffs\credit-worthiness\Credit Worthiness Handoff.md`
+
+Do not use the old global handoff pattern for new buyer-specific work.
 
 1. If Wes has edited `output\320 Rose - Contract for Deed Agreement - DRAFT.docx` and says it looks good, copy that file to:
 
@@ -151,6 +177,11 @@ Current package documents:
 - Contract for Deed Agreement
 - Memorandum of Contract for Deed
 - Promissory Note for Contract for Deed
+
+Buyer-specific handoff/checklist inputs:
+
+- Credit Worthiness Handoff from the matching buyer transaction folder.
+- Affidavit requirements identified by CWE. CFD decides which affidavit requests become signature-ready closing-package documents.
 
 Excluded for now:
 
