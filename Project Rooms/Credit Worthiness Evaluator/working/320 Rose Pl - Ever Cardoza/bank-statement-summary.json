@@ -1,0 +1,203 @@
+{
+  "business_statement_count": 17,
+  "total_business_deposits": "472156.56",
+  "average_business_deposits": "27773.92",
+  "total_business_withdrawals": "469574.46",
+  "average_business_withdrawals": "27622.03",
+  "latest_business_ending_balance": 5058.11,
+  "months_with_1850_rent_ach": 11,
+  "rows": [
+    {
+      "file": "25-01-31 Business Bank Statement.txt",
+      "period_start": "1/1",
+      "begin": 1627.01,
+      "deposits": 20626.5,
+      "withdrawals": 12908.96,
+      "period_end": "1/31",
+      "ending": 9344.55,
+      "rent_like_ach_amounts": []
+    },
+    {
+      "file": "25-02-31 Business Bank Statement.txt",
+      "period_start": "2/1",
+      "begin": 9344.55,
+      "deposits": 19890.95,
+      "withdrawals": 25557.52,
+      "period_end": "2/28",
+      "ending": 3677.98,
+      "rent_like_ach_amounts": []
+    },
+    {
+      "file": "25-03-30 Business Bank Statement.txt",
+      "period_start": "3/1",
+      "begin": 3677.98,
+      "deposits": 24792.68,
+      "withdrawals": 22872.63,
+      "period_end": "3/31",
+      "ending": 5598.03,
+      "rent_like_ach_amounts": []
+    },
+    {
+      "file": "25-04-30 Business Bank Statement.txt",
+      "period_start": "4/1",
+      "begin": 5598.03,
+      "deposits": 23608.54,
+      "withdrawals": 21225.77,
+      "period_end": "4/30",
+      "ending": 7980.8,
+      "rent_like_ach_amounts": []
+    },
+    {
+      "file": "25-05-30 Business Bank Statement.txt",
+      "period_start": "5/1",
+      "begin": 7980.8,
+      "deposits": 26938.73,
+      "withdrawals": 26393.56,
+      "period_end": "5/31",
+      "ending": 8525.97,
+      "rent_like_ach_amounts": []
+    },
+    {
+      "file": "25-06-30 Business Bank Statement.txt",
+      "period_start": "6/1",
+      "begin": 8525.97,
+      "deposits": 27187.6,
+      "withdrawals": 33128.51,
+      "period_end": "6/30",
+      "ending": 2585.06,
+      "rent_like_ach_amounts": []
+    },
+    {
+      "file": "25-07-30 Business Bank Statement.txt",
+      "period_start": "7/1",
+      "begin": 2585.06,
+      "deposits": 19334.18,
+      "withdrawals": 16162.61,
+      "period_end": "7/31",
+      "ending": 5756.63,
+      "rent_like_ach_amounts": [
+        1850.0
+      ]
+    },
+    {
+      "file": "25-08-30 Business Bank Statement.txt",
+      "period_start": "8/1",
+      "begin": 5756.63,
+      "deposits": 37693.66,
+      "withdrawals": 36273.94,
+      "period_end": "8/31",
+      "ending": 7176.35,
+      "rent_like_ach_amounts": [
+        1850.0
+      ]
+    },
+    {
+      "file": "25-09-30 Business Bank Statement.txt",
+      "period_start": "8/1",
+      "begin": 5756.63,
+      "deposits": 37693.66,
+      "withdrawals": 36273.94,
+      "period_end": "8/31",
+      "ending": 7176.35,
+      "rent_like_ach_amounts": [
+        1850.0
+      ]
+    },
+    {
+      "file": "25-10-30 Business Bank Statement.txt",
+      "period_start": "10/1",
+      "begin": 9445.07,
+      "deposits": 53469.4,
+      "withdrawals": 52902.88,
+      "period_end": "10/31",
+      "ending": 10011.59,
+      "rent_like_ach_amounts": [
+        1850.0
+      ]
+    },
+    {
+      "file": "25-11-30 Business Bank Statement.txt",
+      "period_start": "11/1",
+      "begin": 10011.59,
+      "deposits": 32922.64,
+      "withdrawals": 40850.58,
+      "period_end": "11/30",
+      "ending": 2083.65,
+      "rent_like_ach_amounts": [
+        1850.0
+      ]
+    },
+    {
+      "file": "25-12-30 Business Bank Statement.txt",
+      "period_start": "12/1",
+      "begin": 2083.65,
+      "deposits": 24838.39,
+      "withdrawals": 24508.02,
+      "period_end": "12/31",
+      "ending": 2414.02,
+      "rent_like_ach_amounts": [
+        1850.0
+      ]
+    },
+    {
+      "file": "26-01-30 Business Bank Statement.txt",
+      "period_start": "1/1",
+      "begin": 2414.02,
+      "deposits": 18390.08,
+      "withdrawals": 17730.59,
+      "period_end": "1/31",
+      "ending": 3073.51,
+      "rent_like_ach_amounts": [
+        1850.0
+      ]
+    },
+    {
+      "file": "26-02-28 Business Bank Statement.txt",
+      "period_start": "2/1",
+      "begin": 3073.51,
+      "deposits": 22060.44,
+      "withdrawals": 22644.08,
+      "period_end": "2/28",
+      "ending": 2489.87,
+      "rent_like_ach_amounts": [
+        1850.0
+      ]
+    },
+    {
+      "file": "26-03-30 Business Bank Statement.txt",
+      "period_start": "3/1",
+      "begin": 2489.87,
+      "deposits": 26568.25,
+      "withdrawals": 27067.15,
+      "period_end": "3/31",
+      "ending": 1990.97,
+      "rent_like_ach_amounts": [
+        1850.0
+      ]
+    },
+    {
+      "file": "26-04-30 Business Bank Statement.txt",
+      "period_start": "4/1",
+      "begin": 1990.97,
+      "deposits": 30831.01,
+      "withdrawals": 27638.46,
+      "period_end": "4/30",
+      "ending": 5183.52,
+      "rent_like_ach_amounts": [
+        1850.0
+      ]
+    },
+    {
+      "file": "26-05-30 Business Bank Statement.txt",
+      "period_start": "5/1",
+      "begin": 5183.52,
+      "deposits": 25309.85,
+      "withdrawals": 25435.26,
+      "period_end": "5/31",
+      "ending": 5058.11,
+      "rent_like_ach_amounts": [
+        1850.0
+      ]
+    }
+  ]
+}

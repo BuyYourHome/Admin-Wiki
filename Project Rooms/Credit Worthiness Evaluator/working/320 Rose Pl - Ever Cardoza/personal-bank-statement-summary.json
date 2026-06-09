@@ -1,0 +1,79 @@
+{
+  "personal_statement_count": 12,
+  "total_personal_deposits": "24481.66",
+  "average_personal_deposits": "2040.14",
+  "rows": [
+    {
+      "file": "25-01-31 Personal Bank Statement.txt",
+      "deposits": 2385.0,
+      "withdrawals": 2379.62,
+      "ending": null
+    },
+    {
+      "file": "25-02-28 Personal Bank Statement.txt",
+      "deposits": 400.0,
+      "withdrawals": 403.58,
+      "ending": null
+    },
+    {
+      "file": "25-03-30 Personal Bank Statement.txt",
+      "deposits": 3608.0,
+      "withdrawals": 3603.59,
+      "ending": null
+    },
+    {
+      "file": "25-04-31 Personal Bank Statement.txt",
+      "deposits": 1900.0,
+      "withdrawals": 1836.93,
+      "ending": null
+    },
+    {
+      "file": "25-05-31 Personal Bank Statement.txt",
+      "deposits": 550.0,
+      "withdrawals": 560.05,
+      "ending": null
+    },
+    {
+      "file": "25-06-31 Personal Bank Statement.txt",
+      "deposits": 550.0,
+      "withdrawals": 560.05,
+      "ending": null
+    },
+    {
+      "file": "25-07-31 Personal Bank Statement.txt",
+      "deposits": 1010.0,
+      "withdrawals": 1006.66,
+      "ending": null
+    },
+    {
+      "file": "25-08-31 Personal Bank Statement.txt",
+      "deposits": 0.0,
+      "withdrawals": 5.0,
+      "ending": null
+    },
+    {
+      "file": "25-09-31 Personal Bank Statement.txt",
+      "deposits": 212.66,
+      "withdrawals": 177.2,
+      "ending": null
+    },
+    {
+      "file": "25-10-31 Personal Bank Statement.txt",
+      "deposits": 9891.0,
+      "withdrawals": 9874.71,
+      "ending": null
+    },
+    {
+      "file": "25-11-31 Personal Bank Statement.txt",
+      "deposits": 2275.0,
+      "withdrawals": 2319.57,
+      "ending": null
+    },
+    {
+      "file": "25-12-31 Personal Bank Statement.txt",
+      "deposits": 1700.0,
+      "withdrawals": 1199.09,
+      "ending": null
+    }
+  ]
+}
