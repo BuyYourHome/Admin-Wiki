@@ -28,7 +28,7 @@ Before file work:
 
 Use this workflow when Wes asks to refresh or recreate contract-for-deed sale documents.
 
-1. Confirm the project before acting. Do not infer the project only from the chat, skill name, prior 320 Rose work, or a default path.
+1. Verify the project before acting. You may propose the last active CFD project, but do not proceed until Wes confirms it remains the project to use.
 2. Identify the confirmed project spreadsheet and buyer-specific transaction folder when the task is buyer-specific.
 3. Read `TRANSACTION.md` and any Credit Worthiness handoff before compiling closing documents or buyer-specific affidavits.
 4. Check the output folder for Word lock files: `~$*.docx`.
@@ -42,19 +42,19 @@ Use this workflow when Wes asks to refresh or recreate contract-for-deed sale do
 12. Verify key values from the `Docs` worksheet appear in the generated documents.
 13. Report output file locations and elapsed time for each major task.
 
-## Project Confirmation Rule
+## Project Verification Rule
 
-Always confirm the project before starting a new buyer-specific CFD process, refreshing a package, or kicking off CWE.
+Always verify the project before starting a new buyer-specific CFD process, refreshing a package, or kicking off CWE.
 
-Confirmation can come from:
+Verification can come from:
 
 - Wes naming the project/property in the request,
 - Wes providing the live project spreadsheet path,
-- Wes confirming a project that Codex proposes from nearby context.
+- Wes confirming a project that Codex proposes from nearby context or the last active CFD project.
 
-If the request does not name a project, ask a short confirmation question before file work or before messaging CWE. Do not treat the current chat's prior project as enough by itself. After the project is confirmed, use that project's spreadsheet `Docs` worksheet as the buyer/source-of-truth input.
+If the request does not name a project, propose the last active CFD project if one is clear, and ask Wes to verify it remains the project to use. Do not treat the current chat's prior project as enough by itself, and do not proceed with file work or message CWE until Wes verifies the project. After the project is verified, use that project's spreadsheet `Docs` worksheet as the buyer/source-of-truth input.
 
-For example, if Wes says only `start the CFD process`, ask which project/property to use. If Wes says `start the CFD process for 320 Rose`, proceed and read the 320 Rose spreadsheet buyer fields.
+For example, if Wes says only `start the CFD process`, respond in substance: `I am assuming the last active CFD project is 320 Rose. Please confirm that is still the project to use.` If Wes says `start the CFD process for 320 Rose`, proceed and read the 320 Rose spreadsheet buyer fields.
 
 ## Buyer Transaction Folders
 
@@ -109,12 +109,12 @@ Use the project spreadsheet `Docs` worksheet and document prototypes for contrac
 
 ## Missing Handoff Startup Rule
 
-When Wes starts a new buyer-specific Contract for Deed matter for a confirmed project and no CWE handoff exists, use the confirmed project spreadsheet as the active-buyer source and get CWE started instead of treating the missing handoff as a blocker.
+When Wes starts a new buyer-specific Contract for Deed matter for a verified project and no CWE handoff exists, use the verified project spreadsheet as the active-buyer source and get CWE started instead of treating the missing handoff as a blocker.
 
 Use this rule when:
 
 - the task is for a real buyer-specific sale or closing package,
-- the project/property has been confirmed,
+- the project/property has been verified,
 - the project spreadsheet identifies the current buyer or buyers,
 - no current `Credit Worthiness Handoff.md` exists in the transaction folder,
 - Wes has not asked for draft-only documents that intentionally bypass underwriting.
@@ -127,7 +127,7 @@ In that situation:
 4. Tell Wes that CWE has been started and that its report/handoff will identify missing buyer files.
 5. Do not represent the buyer as approved until the CWE handoff or report supports that result.
 
-Because Wes normally works one active buyer prospect at a time and updates the confirmed project spreadsheet when the prospect changes, the spreadsheet buyer fields are the default current-buyer source after project confirmation. If the spreadsheet buyer conflicts with a named buyer in the request or multiple buyer folders appear active, ask Wes before starting CWE.
+Because Wes normally works one active buyer prospect at a time and updates the verified project spreadsheet when the prospect changes, the spreadsheet buyer fields are the default current-buyer source after project verification. If the spreadsheet buyer conflicts with a named buyer in the request or multiple buyer folders appear active, ask Wes before starting CWE.
 
 ## Affidavit Ownership
 

@@ -81,7 +81,7 @@ For the Memorandum of Contract for Deed draft, use Wes's edited prototype at `re
 
 This project room is the project-specific operating base used by the `contract-for-deed` skill. Use this room's scripts, prototypes, staged sources, transaction folders, and notes as the operating procedure.
 
-Even when working in this project room, confirm the project before starting a new buyer-specific CFD process or kicking off CWE if Wes has not named the project/property in the request. This project room is currently configured for 320 Rose, but the generic `contract-for-deed` skill should not assume a project from prior chat context alone.
+Even when working in this project room, verify the project before starting a new buyer-specific CFD process or kicking off CWE if Wes has not named the project/property in the request. It is acceptable to propose the last active CFD project and ask Wes to confirm it remains the project to use. This project room is currently configured for 320 Rose, but the generic `contract-for-deed` skill should not proceed from prior chat context alone.
 
 ## Buyer Transaction Folder Convention
 
