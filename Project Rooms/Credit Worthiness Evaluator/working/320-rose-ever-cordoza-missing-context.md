@@ -7,17 +7,17 @@
 - Confirm legal seller name and entity type for 320 Rose Pl.
 - Confirm whether the buyer will occupy 320 Rose Pl as a principal dwelling.
 - Confirm whether the transaction will be a Contract for Deed, note and mortgage, or another structure; the meeting description uses mixed language.
-- Confirm Ever's ownership interest, officer role, or compensation relationship with Matthew Flooring LLC.
+- Confirm final closing-file treatment of Ever's Matthew Flooring LLC role. The 2026 Secretary of State annual report supports Ever A Cardoza Bolanos as managing member and registered agent of Matthew Flooring LLC.
 
 ## Underwriting Documents Still Needed
 
 - Current 2026 personal bank statements through the application month. Current business statements are now present through May 2026, but current personal statements are not.
-- Self-employment income verification: recent tax returns, year-to-date profit-and-loss, 1099s, invoices/contracts, payroll/owner-draw records, or third-party customer/payment verification. The new paid receipt images support substantial gross cash receipts, but do not replace net-income verification.
-- Explanation of whether Matthew Flooring LLC is an employer, customer, related company, or the applicant's own business.
+- Self-employment income verification if Sell Your Home or counsel requires audited/tax-level proof. For the 2026-06-09 approval scenario, Wes instructed that the approval affidavits are assumed signed and notarized, and the receipt-package affidavit accepts the paid receipts as sufficient gross-receipt support for the business-judgment approval.
+- Explanation of whether Matthew Flooring LLC is an employer, customer, related company, or the applicant's own business. The Secretary of State annual report supports that Ever A Cardoza Bolanos is managing member of Matthew Flooring LLC.
 - Explanation and source documentation for the high September/October 2025 activity involving Kimberly Terrill and outgoing Zelle transfers to "Yo Ever."
 - Current debt obligations.
 - Alimony or child-support obligations, if any.
-- Notarized cash-reserves affidavit or other final funds-to-close evidence if counsel/closing review requires notarization. The new scanned PDF is signed and states $24,000 counted cash, $14,000 accounts receivable, and $10,000 access to funds in El Salvador, but the notary block remains blank.
+- Notarized cash-reserves affidavit or other final funds-to-close evidence if counsel/closing review requires notarization. For the 2026-06-09 approval scenario, Wes instructed that the relevant affidavits are assumed signed and notarized.
 - Proof of down payment and earnest money source if counsel or closing review requires more than the signed cash affidavit.
 - Cash reserve evidence after down payment and closing, including any closing-cost estimate. The $14,000 receivables and $10,000 El Salvador funds are less direct than counted cash unless collected, transferred, or otherwise verified.
 - Evidence that the two June 2026 receivables marked due/balance due were actually paid, if they are to be counted as income or liquid reserves.

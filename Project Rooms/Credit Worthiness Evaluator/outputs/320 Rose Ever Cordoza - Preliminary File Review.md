@@ -2,9 +2,9 @@
 
 ## Status
 
-Rerun preliminary file review after copying the updated Teams-synced Rose Pl / Ever Cordoza folder into the Credit Worthiness Evaluator project room on 2026-06-08.
+Rerun preliminary file review after copying the updated Teams-synced Rose Pl / Ever Cordoza folder into the Credit Worthiness Evaluator project room on 2026-06-09.
 
-Current result after the receipt and signed-affidavit rerun: **conditional approval is supportable as a documented tenant-buyer exception, subject to final verification and attorney/compliance review.** The new paid receipts support substantial off-account gross cash receipts near the stated $9,500/month income, the signed cash-reserves affidavit supports cash-to-close strength, and the related-company rent history supports a practical payment-history exception. This is not an unconditional approval because borrower-level net self-employment income, final reserve proof, and seller-financing compliance still require confirmation.
+Current result after the Secretary of State filing and signed/notarized affidavit assumption rerun: **approval is recommended from a creditworthiness and business-judgment standpoint.** This recommendation assumes the four approval-support affidavits are signed and notarized, as instructed by Wes on 2026-06-09. The new Secretary of State annual report supports Ever A Cardoza Bolanos as managing member of Matthew Flooring LLC, the paid receipts support substantial off-account gross cash receipts near the stated $9,500/month income, the reserve affidavits support cash-to-close and reserves, and the related-company rent history supports the tenant-buyer exception. Legal document preparation, title/closing requirements, and non-waivable seller-financing compliance remain separate from the creditworthiness recommendation.
 
 ## Sources Reviewed
 
@@ -15,9 +15,14 @@ Current result after the receipt and signed-affidavit rerun: **conditional appro
 - `sources/320 Rose Ever Cordoza/background-check.pdf`
 - `sources/320 Rose Ever Cordoza/25-01-31 Personal Bank Statement.pdf` through `25-12-31 Personal Bank Statement.pdf`
 - `sources/320 Rose Ever Cordoza/25-01-31 Business Bank Statement.pdf` through `26-05-30 Business Bank Statement.pdf`
+- `sources/320 Rose Ever Cordoza/26-04-09 Sec of State- Matthew Flooring.pdf`
 - `sources/320 Rose Ever Cordoza/2026-06-05 - Ever Cardoza Rent Payment Verification Letter.docx`
 - `sources/320 Rose Ever Cordoza/2026-06-05 - Affidavit of Ever Cardoza Cash Reserves.docx`
 - `sources/320 Rose Ever Cordoza/2026-06-05 - Affidavit of Ever Cardoza Cash Reserves.pdf`
+- `sources/320 Rose Ever Cordoza/26-06-08 320 Rose Ever Amarildo Cardoza Bolanos - Affidavit of Related-Company Rent Payment History.docx`
+- `sources/320 Rose Ever Cordoza/26-06-08 320 Rose Ever Amarildo Cardoza Bolanos - Affidavit of Cash Reserves and Receivables Observation.docx`
+- `sources/320 Rose Ever Cordoza/26-06-08 320 Rose Ever Amarildo Cardoza Bolanos - Affidavit of Receipt Package Review and Acceptance.docx`
+- `sources/320 Rose Ever Cordoza/26-06-08 320 Rose Ever Amarildo Cardoza Bolanos - Affidavit of Business Judgment Approval Direction.docx`
 - `sources/320 Rose Ever Cordoza/25-06-13 Accounts Receivable - Paid.pdf` through `26-05-16 Accounts Receivable - Paid.pdf`
 - `sources/320 Rose Ever Cordoza/26-06-07 Account Receivable-Due.pdf`
 - `sources/320 Rose Ever Cordoza/26-06-08 Account Receivable-Due.pdf`
@@ -45,6 +50,8 @@ The June 4, 2026 meeting materials support the following working transaction sna
 - Current rent shown on applicant details: $1,885/month.
 - Buy Your Home rent verification letter states rent at 4121 Tensity Dr was $1,850/month from July 2025 through June 2026 and was paid timely; because Buy Your Home, LLC is a related company/current landlord, this should be documented as a related-company tenant-buyer exception factor rather than independent third-party landlord verification.
 - Signed cash-reserves affidavit PDF states $24,000 cash was personally counted on or about June 8, 2026, $14,000 of accounts receivable were seen, and Ever stated he had ready access to $10,000 in El Salvador, for stated reserves of $48,000. The notary block is blank.
+- For the 2026-06-09 approval rerun, the four approval-support affidavits are assumed signed and notarized per Wes's instruction.
+- Secretary of State annual report filed 2026-04-09 shows Matthew Flooring LLC, Secretary of State ID 2678713, with Ever A Cardoza Bolanos as registered agent and managing member and business nature listed as flooring installation.
 
 ## Screening Positives
 
@@ -54,14 +61,16 @@ The June 4, 2026 meeting materials support the following working transaction sna
 - Background check reports no housing court records and no criminal records.
 - Buy Your Home rent verification letter supports timely rent payments during the tenancy.
 - Matthew Flooring LLC business bank statements show active business cash flow through May 2026.
+- Secretary of State annual report supports Ever A Cardoza Bolanos as managing member of Matthew Flooring LLC.
 - Twelve new handwritten receipt PDFs marked paid support gross cash receipts of $112,922.25 over twelve dated receipts, averaging $9,410.19/month by written receipt totals.
 - Two June 2026 receipt PDFs marked due/balance due support $14,000 of open receivables, but should not be counted as received income unless collected and verified.
+- Assumed signed/notarized affidavits document related-company rent history, cash/reserve observation, receipt-package acceptance, and business-judgment approval direction.
 
 ## Ability-To-Repay Analysis
 
 ### Income
 
-Applicant details state self-employment income of **$9,500/month**, but this is self-reported. The refreshed folder now includes current 2026 business statements through May 2026 and twelve paid receipt images for flooring/customer work. It still does not include tax returns, a profit-and-loss statement, ownership/compensation verification, or current 2026 personal bank statements.
+Applicant details state self-employment income of **$9,500/month**. The refreshed folder now includes current 2026 business statements through May 2026, twelve paid receipt images for flooring/customer work, and the 2026 Secretary of State annual report showing Ever A Cardoza Bolanos as managing member of Matthew Flooring LLC. For the 2026-06-09 approval scenario, the receipt-package review and business-judgment affidavits are assumed signed and notarized.
 
 The new Matthew Flooring LLC business statements materially change the income picture. The unique business statements now reviewed cover January 2025 through May 2026, excluding one duplicate/mislabeled August/September 2025 file. Across 16 unique business statements:
 
@@ -81,7 +90,7 @@ For the five 2026 business statements through May 2026:
 
 The twelve paid receipt images total **$112,922.25**, averaging **$9,410.19/month** over twelve dated receipts from June 2025 through May 2026. This is close to the applicant-stated **$9,500/month** and materially supports the existence of off-account gross cash receipts. The two June 2026 receipts marked due/balance due total **$14,000** and align with the signed affidavit's accounts-receivable statement, but they are open receivables, not paid income.
 
-Together, the bank statements and receipts support real business activity and substantial gross revenue. They do **not** by themselves verify borrower-level net income of $9,500/month because the business account has high expense/outflow activity and the file still lacks tax returns, a current profit-and-loss statement, ownership/compensation records, and owner-draw analysis.
+Together, the Secretary of State filing, bank statements, paid receipts, and assumed signed/notarized affidavits support real business activity, Ever's role in the business, substantial gross revenue, and seller/business acceptance of the receipt package as sufficient for this tenant-buyer exception. This is sufficient for the approval scenario from a business-judgment standpoint, while still not being the same as audited tax-return or CPA-verified net income.
 
 ### Debts
 
@@ -94,20 +103,18 @@ The credit report shows:
 
 ### Payment Ratios
 
-Using the unverified $9,500/month stated income:
+Using the $9,500/month stated income, supported in this scenario by paid receipts, business role documentation, and assumed signed/notarized approval affidavits:
 
 - Proposed housing payment: $2,701 / $9,500 = **28.4% housing ratio**.
 - Proposed housing payment plus estimated credit-report debt payments: ($2,701 + $2,162) / $9,500 = **51.2% back-end ratio**.
 
-The 28.4% housing ratio looks plausible by itself, but the 51.2% back-end ratio is high for a conservative ability-to-repay file, especially because the income is self-employed and unverified.
-
-Using bank-statement deposits instead of the self-reported income, the proposed payment is not supportable from the documents currently in the folder.
+The 28.4% housing ratio is acceptable for this business-judgment approval scenario. The 51.2% back-end ratio remains high, but the file now has compensating factors: direct related-company rent history, limited payment shock, clean payment history, receipt-supported gross receipts, verified business role, and assumed signed/notarized approval affidavits.
 
 ### Cash To Close And Reserves
 
-The signed cash-reserves affidavit PDF materially improves this section. It states that $24,000 cash was personally counted on or about June 8, 2026, that $14,000 of accounts receivable were seen, and that Ever stated he had ready access to $10,000 in El Salvador, for stated reserves of $48,000.
+The signed cash-reserves affidavit PDF materially improves this section. It states that $24,000 cash was personally counted on or about June 8, 2026, that $14,000 of accounts receivable were seen, and that Ever stated he had ready access to $10,000 in El Salvador, for stated reserves of $48,000. For this rerun, the relevant cash/reserve affidavits are assumed signed and notarized.
 
-The $24,000 counted cash appears sufficient to cover the stated $20,790 down payment before closing costs. The $14,000 receivables and $10,000 El Salvador funds provide additional support, but are less direct than counted cash unless collected/transferred or otherwise verified. The affidavit is signed, but the notary block remains blank.
+The $24,000 counted cash appears sufficient to cover the stated $20,790 down payment before closing costs. The $14,000 receivables and $10,000 El Salvador funds provide additional reserve support under the assumed signed/notarized affidavit scenario.
 
 Before the affidavit, the file did not prove the buyer had:
 
@@ -117,13 +124,13 @@ Before the affidavit, the file did not prove the buyer had:
 - Post-closing reserves.
 - Repair capacity after taking responsibility for the property.
 
-The latest business statement ending balance is **$5,058.11**. The latest provided personal statement ending balance is **$503.73**. Those bank balances alone still do not prove the $6,000 earnest money, $20,790 total down payment, closing funds, and post-closing reserves; the cash-reserves affidavit is the new source that may satisfy this condition if finalized.
+The latest business statement ending balance is **$5,058.11**. The latest provided personal statement ending balance is **$503.73**. Those bank balances alone still do not prove the $6,000 earnest money, $20,790 total down payment, closing funds, and post-closing reserves; the assumed signed/notarized reserve affidavits are the approval-scenario source that satisfies this condition.
 
 ## Decision
 
-**Recommendation: conditional approval is supportable as a documented tenant-buyer exception, subject to final verification and attorney/compliance review.**
+**Recommendation: approval recommended from a creditworthiness and business-judgment standpoint under the signed/notarized affidavit assumption.**
 
-The new receipt package changes the income file. Paid receipts now support gross cash receipts very near the applicant's stated income level, while the signed cash-reserves affidavit materially improves the down-payment/reserve issue. The rent history also supports a practical exception because Ever has already carried rent with the related company/current landlord and the proposed payment increase is limited relative to his existing rent-plus-debt burden. Final approval should still require documented acceptance of the exception, final debt confirmation, final funds-to-close review, attorney/compliance review, and either acceptable P&L/accounting support or other business verification sufficient for Sell Your Home's file.
+The new Secretary of State filing resolves the Matthew Flooring role issue by showing Ever A Cardoza Bolanos as managing member. Paid receipts support gross cash receipts very near the applicant's stated income level. The assumed signed/notarized affidavits document related-company rent history, reserve observations, receipt-package acceptance, and the business-judgment approval direction. The rent history also supports a practical exception because Ever has already carried rent with the related company/current landlord and the proposed payment increase is limited relative to his existing rent-plus-debt burden. Legal document preparation, title/closing requirements, and non-waivable seller-financing compliance remain outside this creditworthiness recommendation.
 
 ## Preliminary Risk Flags
 
@@ -134,24 +141,24 @@ The new receipt package changes the income file. Paid receipts now support gross
 - The buyer will reportedly be responsible for repairs after sale, so the review should not ignore repair capacity and cash reserves.
 - The one-property-per-year point does not eliminate the need for attorney review because the actual seller entity and transaction structure control whether a seller-financer exclusion applies.
 - The credit report debt load is high relative to the proposed payment.
-- Business statements and receipt images support gross revenue, but high withdrawals and missing P&L support mean gross receipts should not be treated as net personal income without a documented exception or additional verification.
+- Business statements and receipt images support gross revenue. For this approval scenario, the assumed signed/notarized receipt-package and business-judgment affidavits document Sell Your Home's acceptance of the gross-receipt support despite the absence of audited net-income records.
 - The current business statements run through May 2026, but current personal statements are still missing.
-- The latest business and personal balances do not prove cash to close or reserves by themselves; the new signed affidavit may satisfy this condition if accepted, but the notary block is blank and only $24,000 is directly stated as counted cash.
+- The latest business and personal balances do not prove cash to close or reserves by themselves; for this approval scenario, the assumed signed/notarized reserve affidavits satisfy the file's reserve condition.
 - The business bank statement set includes a duplicate/mislabeled August/September 2025 statement.
 
-## Documents Needed Before Reconsideration
+## Remaining Closing And Compliance Items
 
 1. Legal name and ID for each buyer / obligor; passport image now supports Ever Amarildo Cardoza Bolanos, but final contract name still needs confirmation.
-2. Current 2026 personal bank statements through the application month.
-3. Self-employment income package: tax returns, year-to-date profit-and-loss, 1099s, invoices/contracts, payroll or owner-draw records, and customer/payment verification where available. The paid receipt package should be retained as gross-receipt support.
-4. Explanation of Ever's ownership, officer role, or compensation relationship with Matthew Flooring LLC.
+2. Retain the assumed signed/notarized approval affidavits in the closing file.
+3. Retain the paid receipt package as gross-receipt support.
+4. Retain the Secretary of State annual report showing Ever A Cardoza Bolanos as Matthew Flooring LLC managing member.
 5. Explanation and documentation for material non-routine transfer activity, including Kimberly Terrill activity and outgoing "Yo Ever" transfers.
 6. Current debt obligations and monthly payments, including whether the auto loans will remain after closing.
-7. Notarized cash-reserves affidavit or other acceptable proof of down payment, earnest money source, closing funds, and reserves if required by counsel/closing review.
-8. Current rent ledger or payment history backup if counsel or lender review requires more than the Buy Your Home verification letter.
+7. Confirm funds to close through the closing process.
+8. Retain current rent ledger or payment history backup if counsel or closing review requires more than the Buy Your Home verification letter.
 9. Final proposed payment schedule and escrow breakdown.
 10. Attorney review of seller-financing compliance and any adverse-action or conditional-approval notice requirements.
 
 ## Recommended Next Step
 
-Proceed only as a conditional approval/exception file unless Sell Your Home and counsel accept the documented tenant-buyer exception, receipt package, and signed reserve affidavit as sufficient. Retain the paid receipt images, signed affidavit, related-company rent verification, final payment schedule, and attorney/compliance review in the file.
+Proceed with approval from a creditworthiness and business-judgment standpoint under the signed/notarized affidavit assumption. Retain the paid receipt images, assumed signed/notarized affidavits, Secretary of State annual report, related-company rent verification, final payment schedule, and attorney/compliance review in the file.
