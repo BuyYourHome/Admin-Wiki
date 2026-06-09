@@ -127,6 +127,37 @@ CWE may draft underwriting-only affidavits when they support the approval file, 
 
   `26-06-05 320 Rose Ever Amarildo Cardoza - Creditworthiness Evaluation Report.docx`
 
+## Preferred Formal Report Format
+
+- Use the Version 9 report format as the required CWE report style unless Wes explicitly asks for a different format.
+- Preferred style reference:
+
+  `C:\Codex\Wiki Files\Project Rooms\Credit Worthiness Evaluator\outputs\26-06-09 320 Rose Ever Amarildo Cardoza Bolanos - Creditworthiness Evaluation Report - Approval Scenario v9.docx`
+
+- Do not replace the v9-style business report with a centered cover-page layout, modern memo layout, or table-heavy redesign.
+- Start with the same plain business-report opening:
+  - all-caps title line, such as `UPDATED CREDITWORTHINESS EVALUATION REPORT`,
+  - one short subtitle line naming the scenario, buyer, and property,
+  - a compact two-column metadata table with `Prepared by`, `Report date`, `Subject buyer`, `Property`, `Purpose`, and `Overall result`.
+- Include an `Executive Recommendation` callout immediately after the metadata/opening section. For conditional results, title the callout `Executive Recommendation` and put the conditional recommendation language inside it.
+- Use the v9 section rhythm and heading order unless the file facts require a clearly labeled extra section:
+  1. `What Changed In This Rerun`
+  2. `Transaction Snapshot`
+  3. `Screening Strengths`
+  4. `Ability-To-Repay Findings`
+  5. `Income And Business Cash Flow`
+  6. `Debt Burden`
+  7. `Payment Ratios`
+  8. `Cash To Close And Reserves`
+  9. `Decision`
+  10. conditions or documents required before approval/closing
+  11. CFD closing-package document requests, when the buyer may proceed to Contract for Deed documents
+  12. legal/compliance review items
+  13. recommended next step
+- Use v9-style compact tables for transaction snapshot, income/reserve context, debt summary, payment-ratio test, and final recommendation/decision callouts.
+- Keep the tone and formatting formal, plain, and businesslike. Prefer the v9 simple heading/table structure over decorative design elements.
+- When a report is conditional, preserve the v9 format while clearly labeling the result as conditional and listing conditions; do not shorten the report or move the recommendation only into later sections.
+
 ## Optional Approval-Assumption Mode
 
 Default mode is evidence mode. In evidence mode, do not assume missing facts that would make a buyer approvable.
