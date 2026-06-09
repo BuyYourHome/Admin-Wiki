@@ -54,6 +54,34 @@ def bold_matching_runs(paragraph, names):
             text = paragraph.text
 
 
+def replace_legacy_buyer_name_variants(doc, x):
+    buyer2 = (x.get("buyer2") or "").strip()
+    if not buyer2:
+        return
+    replacements = {
+        "Maria Sarmjento": buyer2,
+        "MARIA SARMJENTO": buyer2.upper(),
+        "Maria Geraldine Sarmiento": buyer2,
+        "MARIA GERALDINE SARMIENTO": buyer2.upper(),
+    }
+
+    def update_paragraph(paragraph):
+        text = paragraph.text
+        new_text = text
+        for old, new in replacements.items():
+            new_text = new_text.replace(old, new)
+        if new_text != text:
+            set_paragraph(paragraph, new_text)
+
+    for paragraph in doc.paragraphs:
+        update_paragraph(paragraph)
+    for table in doc.tables:
+        for row in table.rows:
+            for cell in row.cells:
+                for paragraph in cell.paragraphs:
+                    update_paragraph(paragraph)
+
+
 ONES = [
     "Zero",
     "One",
@@ -183,7 +211,7 @@ def split_address(address):
 
 def ensure_notary_block(doc, x):
     buyer1 = x.get("buyer1") or "Ever Cardoza"
-    buyer2 = x.get("buyer2") or "Maria Sarmjento"
+    buyer2 = x.get("buyer2") or "Maria Sarmiento"
     full_text = "\n".join(paragraph.text for paragraph in doc.paragraphs)
     if "Notary Public" in full_text and "personally appeared before me" in full_text:
         return
@@ -212,7 +240,7 @@ def ensure_notary_block(doc, x):
 
 def update_signature_and_notary_names(doc, x):
     buyer1 = x.get("buyer1") or "Ever Cardoza"
-    buyer2 = x.get("buyer2") or "Maria Sarmjento"
+    buyer2 = x.get("buyer2") or "Maria Sarmiento"
     buyers = [name for name in [buyer1, buyer2] if name]
     combined = " and ".join(buyers)
     signature_index = 0
@@ -272,7 +300,7 @@ def replace_paragraph_range_with_lines(doc, start_idx, end_idx, lines):
 
 def standardize_notary_blocks(doc, x):
     buyer1 = x.get("buyer1") or "Ever Cardoza"
-    buyer2 = x.get("buyer2") or "Maria Sarmjento"
+    buyer2 = x.get("buyer2") or "Maria Sarmiento"
     buyers = [name for name in [buyer1, buyer2] if name]
     combined = " and ".join(buyers)
     for start_idx in reversed(
@@ -347,6 +375,7 @@ def main():
     ensure_notary_block(doc, x)
     update_signature_and_notary_names(doc, x)
     standardize_notary_blocks(doc, x)
+    replace_legacy_buyer_name_variants(doc, x)
 
     OUTPUT.parent.mkdir(parents=True, exist_ok=True)
     doc.save(OUTPUT)

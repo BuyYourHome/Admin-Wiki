@@ -75,6 +75,34 @@ def split_address(address):
     return str(address), ""
 
 
+def replace_legacy_buyer_name_variants(doc, x):
+    buyer2 = (x.get("buyer2") or "").strip()
+    if not buyer2:
+        return
+    replacements = {
+        "Maria Sarmjento": buyer2,
+        "MARIA SARMJENTO": buyer2.upper(),
+        "Maria Geraldine Sarmiento": buyer2,
+        "MARIA GERALDINE SARMIENTO": buyer2.upper(),
+    }
+
+    def update_paragraph(paragraph):
+        text = paragraph.text
+        new_text = text
+        for old, new in replacements.items():
+            new_text = new_text.replace(old, new)
+        if new_text != text:
+            set_paragraph(paragraph, new_text)
+
+    for paragraph in doc.paragraphs:
+        update_paragraph(paragraph)
+    for table in doc.tables:
+        for row in table.rows:
+            for cell in row.cells:
+                for paragraph in cell.paragraphs:
+                    update_paragraph(paragraph)
+
+
 def replace_or_update(doc, startswith, text):
     for paragraph in doc.paragraphs:
         if paragraph.text.strip().startswith(startswith):
@@ -375,6 +403,7 @@ def main():
     remove_page_breaks_from_section(doc, "5. RIGHT TO CANCEL.")
 
     update_buyer_signature_fields(doc, x)
+    replace_legacy_buyer_name_variants(doc, x)
     doc.save(OUTPUT)
     print(OUTPUT)
 

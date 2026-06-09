@@ -239,6 +239,34 @@ def set_cell_text_preserve_formatting(cell, text, red=False):
         set_paragraph(paragraph, "")
 
 
+def replace_legacy_buyer_name_variants(doc, x):
+    buyer2 = (x.get("buyer2") or "").strip()
+    if not buyer2:
+        return
+    replacements = {
+        "Maria Sarmjento": buyer2,
+        "MARIA SARMJENTO": buyer2.upper(),
+        "Maria Geraldine Sarmiento": buyer2,
+        "MARIA GERALDINE SARMIENTO": buyer2.upper(),
+    }
+
+    def update_paragraph(paragraph):
+        text = paragraph.text
+        new_text = text
+        for old, new in replacements.items():
+            new_text = new_text.replace(old, new)
+        if new_text != text:
+            set_paragraph(paragraph, new_text)
+
+    for paragraph in doc.paragraphs:
+        update_paragraph(paragraph)
+    for table in doc.tables:
+        for row in table.rows:
+            for cell in row.cells:
+                for paragraph in cell.paragraphs:
+                    update_paragraph(paragraph)
+
+
 def copy_paragraph_format(source, target):
     target.style = source.style
     target.alignment = source.alignment
@@ -727,6 +755,7 @@ def main():
 
     standardize_contract_notary_blocks(doc, x)
     trim_after_last_notary(doc)
+    replace_legacy_buyer_name_variants(doc, x)
     doc.save(OUTPUT)
     print(OUTPUT)
 
