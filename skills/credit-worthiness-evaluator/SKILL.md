@@ -66,6 +66,8 @@ Use the project room for source inventory, conflict logs, missing-context notes,
 - Do not treat business revenue as personal income without tax returns, profit-and-loss records, ownership/compensation verification, payroll records, or owner-draw analysis.
 - Consider current debt obligations, current rent/payment history, cash to close, reserves, repair capacity, and final proposed housing payment.
 - State whether the result is approval, decline, or conditional reconsideration. If the file is not approval-ready, say that directly.
+- A conditional approval or conditional reconsideration still requires a full formal report. Do not substitute a short summary, memo, or handoff-only output because the result is conditional.
+- The full report for a conditional result must include the same core sections expected for approval or decline: source basis, transaction snapshot, buyer identity/roles, evidence reviewed, income analysis, debt/payment-ratio analysis, cash-to-close/reserve analysis, compensating factors, conditions to approval, missing documents, legal/compliance review items, and next actions.
 - Include attorney/compliance review needs for seller-financing, Regulation Z/Dodd-Frank, state law, and adverse-action notice questions.
 
 ## Contract For Deed Handoff Rule
@@ -147,7 +149,7 @@ When approval-assumption mode is active:
 
 ## Mandatory DOCX And Teams Copy Rule
 
-Every evaluator run must produce a formal DOCX report. Markdown summaries, handoffs, inventories, and missing-context notes may support the run, but they do not replace the DOCX report.
+Every evaluator run must produce a full formal DOCX report. Markdown summaries, handoffs, inventories, and missing-context notes may support the run, but they do not replace the DOCX report. Conditional approval, conditional reconsideration, and not-approval-ready results must receive a full report, not a shortened summary.
 
 When an evaluator run produces or updates the formal report:
 
