@@ -7,10 +7,10 @@
 - Kickoff file used for routing only: `C:\Codex\Wiki Files\Project Rooms\Contract for Deed\transactions\320 Rose Pl - Ever Cardoza\handoffs\credit-worthiness\CWE Kickoff.md`
 - Buyer source folder refreshed from: `C:\Users\wesbr\Buy Your Home\Buy Your Home - Property\28-SYH-320 Rose Pl\Selling\Ever Cordoza`
 - Project-room source copy: `C:\Codex\Wiki Files\Project Rooms\Credit Worthiness Evaluator\sources\320 Rose Pl - Ever Cardoza`
-- Source refresh date/time: 2026-06-09 14:07 ET.
+- Source refresh date/time: 2026-06-09 14:31 ET.
 - Current evaluation mode: evidence mode, not approval-assumption mode.
-- Full DOCX report: `C:\Codex\Wiki Files\Project Rooms\Credit Worthiness Evaluator\outputs\320 Rose Pl - Ever Cardoza\26-06-09 320 Rose Ever Amarildo Cardoza Bolanos - Creditworthiness Evaluation Report - New Buyer Restart v16.docx`
-- Teams report copy: `C:\Users\wesbr\Buy Your Home\Buy Your Home - Property\28-SYH-320 Rose Pl\Selling\Ever Cordoza\Credit Worthiness\v16 320 Rose Ever Amarildo Cardoza Bolanos - Creditworthiness Evaluation Report - New Buyer Restart.docx`
+- Full DOCX report: `C:\Codex\Wiki Files\Project Rooms\Credit Worthiness Evaluator\outputs\320 Rose Pl - Ever Cardoza\26-06-09 320 Rose Ever Amarildo Cardoza Bolanos - Creditworthiness Evaluation Report - New Buyer Restart v17.docx`
+- Teams report copy: `C:\Users\wesbr\Buy Your Home\Buy Your Home - Property\28-SYH-320 Rose Pl\Selling\Ever Cordoza\Credit Worthiness\v17 320 Rose Ever Amarildo Cardoza Bolanos - Creditworthiness Evaluation Report - New Buyer Restart.docx`
 
 ## Spreadsheet Transaction Snapshot
 
