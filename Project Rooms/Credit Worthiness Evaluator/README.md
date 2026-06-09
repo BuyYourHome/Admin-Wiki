@@ -34,7 +34,11 @@ This room is for Buy Your Home's occasional Contract for Deed sale workflow, cur
 ## Teams Copy Rule
 
 - Use the project room `outputs\` folder for drafts and intermediate deliverables.
-- Copy documents to the buyer's Teams-synced folder only when Wes explicitly asks for that copy or the document is final.
+- Copy documents to Teams only when Wes explicitly asks for that copy or the document is final.
+- The Teams destination for Credit Worthiness Evaluator reports is `[Project]\Selling\[Buyer]\Credit Worthiness\`.
+- Save all intentionally copied versions of CWE reports in that `Credit Worthiness` folder.
+- Project-room `outputs\` filenames should remain date-prefixed for chronological project-room tracking.
+- Teams `Credit Worthiness` filenames should begin with the report version, not the date, such as `v9 320 Rose Ever Amarildo Cardoza Bolanos - Creditworthiness Evaluation Report - Approval Scenario.docx`.
 - Never overwrite an existing Teams document. If a filename already exists, create a versioned filename or ask Wes before replacing it.
 - Do not copy scratch files, extracted text, rendered images, source inventories, or non-final drafts to Teams.
 

@@ -39,7 +39,7 @@ Use the project room for source inventory, conflict logs, missing-context notes,
 8. Render and visually check formal DOCX reports before delivery when the Documents skill/runtime is available.
 9. Add page numbers to formal reports before delivery.
 10. If a formal report is rerun, preserve a versioned copy instead of silently replacing the prior report.
-11. Copy only final deliverables, or deliverables Wes explicitly asks to place there, back into the live buyer source folder where the source files were retrieved.
+11. Copy only final deliverables, or deliverables Wes explicitly asks to place there, into the buyer's Teams `Credit Worthiness` folder.
 12. Commit durable wiki/project-room changes locally. Do not push unless Wes says the work is finished or explicitly asks for a push.
 
 ## Project Spreadsheet Rule
@@ -106,12 +106,18 @@ When approval-assumption mode is active:
 When an evaluator run produces or updates a formal report:
 
 1. Save the report in the project room `outputs\` folder.
-2. Copy the same report into the live buyer source folder where the buyer documents were retrieved only when the report is final, Wes explicitly asks for a Teams/buyer-folder copy, or the run is clearly a final deliverable.
-3. Use a clear filename that preserves the buyer/property identity, such as:
+2. Copy the same report into Teams only when the report is final, Wes explicitly asks for a Teams/buyer-folder copy, or the run is clearly a final deliverable.
+3. Teams destination must be:
 
-   `26-06-05 320 Rose Ever Cardoza - Creditworthiness Evaluation Report.docx`
+   `[Project]\Selling\[Buyer]\Credit Worthiness\`
 
-4. In the final response, report both locations.
+4. Save all Teams copies of Credit Worthiness Evaluator reports in that `Credit Worthiness` folder, including every version that is intentionally copied to Teams.
+5. For the project-room `outputs\` copy, keep using date-prefixed filenames for chronological project-room tracking.
+6. For the Teams `Credit Worthiness` copy, precede the filename with the report version, not the date, such as:
+
+   `v9 320 Rose Ever Amarildo Cardoza Bolanos - Creditworthiness Evaluation Report - Approval Scenario.docx`
+
+7. In the final response, report both locations when a Teams copy is made.
 
 Never overwrite an existing Teams/buyer-folder document. If a same-named file already exists, create a new versioned filename or ask Wes before replacing anything.
 
@@ -127,6 +133,7 @@ Do not copy generated text extracts, render images, scratch logs, source-invento
   `26-06-05 320 Rose Ever Cardoza - Creditworthiness Evaluation Report v2.docx`
 
 - Keep prior delivered report versions in both the project room `outputs\` folder and the live buyer source folder unless Wes explicitly asks to replace or remove them.
+- In Teams, preserve all intentionally copied CWE versions in `[Project]\Selling\[Buyer]\Credit Worthiness\` and use version-prefixed filenames rather than date-prefixed filenames.
 - If the report body includes a report date, revision date, version label, or source cutoff date, update it to match the rerun.
 - In the final response, identify the current version and both saved locations.
 
