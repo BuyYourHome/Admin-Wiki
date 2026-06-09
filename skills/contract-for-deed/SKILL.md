@@ -1,6 +1,6 @@
 ---
 name: contract-for-deed
-description: Use when refreshing, regenerating, reviewing, or packaging contract-for-deed seller documents from a real estate project spreadsheet, including buyer-specific transaction folders, Credit Worthiness handoffs, closing document checklists, affidavits, the 320 Rose package, and future similar Buy Your Home seller document packages.
+description: Use when refreshing, regenerating, reviewing, or packaging contract-for-deed seller documents from a confirmed real estate project spreadsheet, including buyer-specific transaction folders, Credit Worthiness handoffs, closing document checklists, affidavits, and Buy Your Home seller document packages.
 ---
 
 # Contract For Deed
@@ -13,7 +13,7 @@ Use the Admin wiki as the source of truth.
 - Current project room: `C:\Codex\Wiki Files\Project Rooms\Contract for Deed`
 - Current project room instructions: `C:\Codex\Wiki Files\Project Rooms\Contract for Deed\PROJECT-ROOM.md`
 
-This skill is a reusable workflow wrapper. Project-specific source files, prototypes, generated outputs, and history stay in the project room. For buyer-specific Contract for Deed work, copy current deliverables to the matching Teams buyer folder as a delivery mirror; do not use Teams as the working source.
+This skill is a reusable workflow wrapper. It is not tied to one property or buyer. Project-specific source files, prototypes, generated outputs, and history stay in the confirmed project room. For buyer-specific Contract for Deed work, copy current deliverables to the matching Teams buyer folder as a delivery mirror; do not use Teams as the working source.
 
 ## Required Startup
 
@@ -28,18 +28,33 @@ Before file work:
 
 Use this workflow when Wes asks to refresh or recreate contract-for-deed sale documents.
 
-1. Identify the buyer-specific transaction folder when the task is buyer-specific.
-2. Read `TRANSACTION.md` and any Credit Worthiness handoff before compiling closing documents or buyer-specific affidavits.
-3. Check the output folder for Word lock files: `~$*.docx`.
-4. Compare each draft output timestamp against its prototype.
-5. If any draft is newer than its prototype, inspect it for generated review blocks.
-6. Save clean newer drafts as the current prototype before regenerating. Do not preserve generated attorney-review notes as template content.
-7. Refresh the staged project spreadsheet from the live project spreadsheet.
-8. Read document values from the workbook `Docs` worksheet only. If a value is calculated elsewhere in the workbook, it must be exposed as a `Docs` field before the document generator uses it.
-9. Regenerate the standard clean draft files, overwriting the existing drafts unless Wes asks for revision copies.
-10. Verify clean drafts contain no generated attorney-review or management-review blocks.
-11. Verify key values from the `Docs` worksheet appear in the generated documents.
-12. Report output file locations and elapsed time for each major task.
+1. Confirm the project before acting. Do not infer the project only from the chat, skill name, prior 320 Rose work, or a default path.
+2. Identify the confirmed project spreadsheet and buyer-specific transaction folder when the task is buyer-specific.
+3. Read `TRANSACTION.md` and any Credit Worthiness handoff before compiling closing documents or buyer-specific affidavits.
+4. Check the output folder for Word lock files: `~$*.docx`.
+5. Compare each draft output timestamp against its prototype.
+6. If any draft is newer than its prototype, inspect it for generated review blocks.
+7. Save clean newer drafts as the current prototype before regenerating. Do not preserve generated attorney-review notes as template content.
+8. Refresh the staged project spreadsheet from the live project spreadsheet.
+9. Read document values from the workbook `Docs` worksheet only. If a value is calculated elsewhere in the workbook, it must be exposed as a `Docs` field before the document generator uses it.
+10. Regenerate the standard clean draft files, overwriting the existing drafts unless Wes asks for revision copies.
+11. Verify clean drafts contain no generated attorney-review or management-review blocks.
+12. Verify key values from the `Docs` worksheet appear in the generated documents.
+13. Report output file locations and elapsed time for each major task.
+
+## Project Confirmation Rule
+
+Always confirm the project before starting a new buyer-specific CFD process, refreshing a package, or kicking off CWE.
+
+Confirmation can come from:
+
+- Wes naming the project/property in the request,
+- Wes providing the live project spreadsheet path,
+- Wes confirming a project that Codex proposes from nearby context.
+
+If the request does not name a project, ask a short confirmation question before file work or before messaging CWE. Do not treat the current chat's prior project as enough by itself. After the project is confirmed, use that project's spreadsheet `Docs` worksheet as the buyer/source-of-truth input.
+
+For example, if Wes says only `start the CFD process`, ask which project/property to use. If Wes says `start the CFD process for 320 Rose`, proceed and read the 320 Rose spreadsheet buyer fields.
 
 ## Buyer Transaction Folders
 
@@ -72,10 +87,6 @@ Recommended subfolders:
 - `Closing Checklist\` for buyer-specific checklist outputs.
 - `Affidavits\` for CFD-generated closing-package affidavits.
 
-For 320 Rose / Ever Cardoza, use:
-
-`C:\Users\wesbr\Buy Your Home\Buy Your Home - Property\28-SYH-320 Rose Pl\Selling\Ever Cordoza\Contract Package\`
-
 Copy project-room outputs to Teams after each requested regeneration or package update unless Wes says project-room only. The project-room copy remains authoritative. If a Teams copy is edited and Wes says to keep those edits, bring that edited file back into the project room and apply the normal edit-preservation/prototype rule before regenerating.
 
 Do not copy scratch files, extracted text, rendered QA images, logs, staged spreadsheets, prototypes, or temporary working files to Teams. Do not use Teams copies as the source for regeneration unless Wes identifies a Teams-edited file as the version to preserve.
@@ -98,11 +109,12 @@ Use the project spreadsheet `Docs` worksheet and document prototypes for contrac
 
 ## Missing Handoff Startup Rule
 
-When Wes starts a new buyer-specific Contract for Deed matter and no CWE handoff exists, use the project spreadsheet as the active-buyer source and get CWE started instead of treating the missing handoff as a blocker.
+When Wes starts a new buyer-specific Contract for Deed matter for a confirmed project and no CWE handoff exists, use the confirmed project spreadsheet as the active-buyer source and get CWE started instead of treating the missing handoff as a blocker.
 
 Use this rule when:
 
 - the task is for a real buyer-specific sale or closing package,
+- the project/property has been confirmed,
 - the project spreadsheet identifies the current buyer or buyers,
 - no current `Credit Worthiness Handoff.md` exists in the transaction folder,
 - Wes has not asked for draft-only documents that intentionally bypass underwriting.
@@ -115,7 +127,7 @@ In that situation:
 4. Tell Wes that CWE has been started and that its report/handoff will identify missing buyer files.
 5. Do not represent the buyer as approved until the CWE handoff or report supports that result.
 
-Because Wes normally works one active buyer prospect at a time and updates the project spreadsheet when the prospect changes, the spreadsheet buyer fields are the default current-buyer source. If the spreadsheet buyer conflicts with a named buyer in the request or multiple buyer folders appear active, ask Wes before starting CWE.
+Because Wes normally works one active buyer prospect at a time and updates the confirmed project spreadsheet when the prospect changes, the spreadsheet buyer fields are the default current-buyer source after project confirmation. If the spreadsheet buyer conflicts with a named buyer in the request or multiple buyer folders appear active, ask Wes before starting CWE.
 
 ## Affidavit Ownership
 
@@ -132,20 +144,6 @@ For each affidavit request, confirm:
 - source used for names, entity capacity, and transaction terms.
 
 Do not convert underwriting-only affidavits into closing documents unless Wes or counsel asks for that treatment.
-
-## 320 Rose Current Paths
-
-For the current 320 Rose package:
-
-- Transaction folder: `C:\Codex\Wiki Files\Project Rooms\Contract for Deed\transactions\320 Rose Pl - Ever Cardoza`
-- Teams mirror folder: `C:\Users\wesbr\Buy Your Home\Buy Your Home - Property\28-SYH-320 Rose Pl\Selling\Ever Cordoza\Contract Package`
-- Live spreadsheet: `C:\Users\wesbr\Buy Your Home\Buy Your Home - Property\28_Project Management - 320 Rose Pl.xlsm`
-- Staged spreadsheet: `C:\Codex\Wiki Files\Project Rooms\Contract for Deed\source\320 Rose project spreadsheet\28_Project Management - 320 Rose Pl.xlsm`
-- Output folder: `C:\Codex\Wiki Files\Project Rooms\Contract for Deed\output`
-- Contract generator: `C:\Codex\Wiki Files\Project Rooms\Contract for Deed\working\format_contract_from_reference.py`
-- Memorandum generator: `C:\Codex\Wiki Files\Project Rooms\Contract for Deed\working\format_memo_from_prototype.py`
-- Note generator: `C:\Codex\Wiki Files\Project Rooms\Contract for Deed\working\format_note_from_reference.py`
-- Attorney-review package generator: `C:\Codex\Wiki Files\Project Rooms\Contract for Deed\working\make_attorney_review_copies.py`
 
 ## Document Rules
 
