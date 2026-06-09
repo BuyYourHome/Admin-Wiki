@@ -42,6 +42,18 @@ This room is for Buy Your Home's occasional Contract for Deed sale workflow, cur
 - Never overwrite an existing Teams document. If a filename already exists, create a versioned filename or ask Wes before replacing it.
 - Do not copy scratch files, extracted text, rendered images, source inventories, or non-final drafts to Teams.
 
+## Contract For Deed Handoff Rule
+
+- Create an `Affidavit Requirements Handoff` when the evaluation identifies affidavits needed for a buyer.
+- Keep the primary handoff in that buyer's segregated CWE `outputs\` folder.
+- Copy a versioned copy to the Contract for Deed project room so CFD can consume it as a source:
+
+  `C:\Codex\Wiki Files\Project Rooms\Contract for Deed\source\credit-worthiness-handoffs\`
+
+- The handoff should list required affidavits, signer/capacity, authority source, supported facts, status, open assumptions, and CFD action needed.
+- Never overwrite an existing CFD handoff file.
+- CWE owns the evaluation and affidavit requirements; CFD owns final Contract for Deed package drafting, formatting, signature-block placement, and attorney-review package assembly.
+
 ## Current Status
 
 Project room created. Initial official-source notes and a first working process draft are in progress. This is not legal advice and is not ready for operational use until reviewed by a qualified real estate / consumer-credit attorney.

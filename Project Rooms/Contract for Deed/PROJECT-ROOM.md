@@ -45,6 +45,16 @@ For the Contract for Deed draft, use Wes's edited prototype at `reference\Rose c
 
 For the Memorandum of Contract for Deed draft, use Wes's edited prototype at `reference\Rose memorandum prototype\320 Rose - Memorandum of Contract for Deed - PROTOTYPE.docx` as the formatting source going forward. Preserve Wes's formatting changes while refreshing controlled values from the latest spreadsheet. The memo must include county and parcel ID from the `Docs` worksheet, and the purchaser signature block must include separate signature lines for both buyers. The helper script is `working\format_memo_from_prototype.py`.
 
+## Credit Worthiness Handoff Intake
+
+- Credit Worthiness Evaluator affidavit handoffs are copied into:
+
+  `source\credit-worthiness-handoffs\`
+
+- Treat these handoffs as source inputs for affidavit packet needs, signer/capacity requirements, supported facts, open assumptions, and attorney-review notes.
+- Do not overwrite existing handoff files. Use versioned handoff filenames.
+- Contract for Deed owns final document package drafting, formatting, signature-block placement, and attorney-review package assembly after consuming the handoff.
+
 ## Current Contract for Deed Workflow
 
 This project room is the working version of a process that may later become a Codex skill. Until then, use this room's scripts and notes as the operating procedure.

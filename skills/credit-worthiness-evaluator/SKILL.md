@@ -60,6 +60,18 @@ Use the project room for source inventory, conflict logs, missing-context notes,
 - State whether the result is approval, decline, or conditional reconsideration. If the file is not approval-ready, say that directly.
 - Include attorney/compliance review needs for seller-financing, Regulation Z/Dodd-Frank, state law, and adverse-action notice questions.
 
+## Contract For Deed Handoff Rule
+
+- When the evaluator identifies affidavit needs for a buyer, create an `Affidavit Requirements Handoff` in the buyer's segregated CWE `outputs\` folder.
+- The handoff should include buyer/property, project spreadsheet used, evaluation result, required affidavits, facts each affidavit supports, signer, signer capacity, authority source, status, open assumptions, and CFD action needed.
+- Copy a versioned copy of the handoff into the Contract for Deed project room for CFD to consume.
+- CFD handoff destination:
+
+  `C:\Codex\Wiki Files\Project Rooms\Contract for Deed\source\credit-worthiness-handoffs\`
+
+- Use a version-prefixed or otherwise unique handoff filename and never overwrite an existing CFD handoff file.
+- The CWE handoff is an input to CFD. CFD owns final Contract for Deed package drafting, formatting, signature-block placement, and attorney-review package assembly.
+
 ## Related-Company Rent History Rule
 
 - For the 320 Rose / Ever Cardoza file, recognize that the buyer's current rent history is with related company `Buy Your Home, LLC`.
