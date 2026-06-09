@@ -225,7 +225,7 @@ After messaging CWE, CFD must create a visible follow-up check in the same CFD c
 
 CFD must not rely on Wes to manually prompt the handoff check. If no follow-up/check mechanism is available, disclose that before starting CWE and ask whether to proceed without monitoring.
 
-When the handoff appears, notify Wes that the handoff is ready, summarize the readiness result, and wait for permission before regenerating or continuing the CFD package unless Wes already gave a clear instruction to proceed after the handoff is ready.
+When the handoff appears, notify Wes that the handoff is ready, summarize the readiness result, and continue the CFD package.
 
 Do not automatically regenerate documents merely because CWE created a handoff.
 
