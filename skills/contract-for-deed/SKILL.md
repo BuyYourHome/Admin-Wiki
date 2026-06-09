@@ -239,6 +239,12 @@ Then message the regular visible CWE chat with the short new-buyer restart promp
 
 Credit Worthiness Evaluator identifies affidavit needs. Contract for Deed produces signature-ready affidavits when the affidavit belongs in the contract, closing, or attorney-review package.
 
+When a CWE handoff lists CFD closing-package affidavit or support-document requests, CFD must generate draft signature-ready affidavit/support documents as part of continuing the CFD package. A checklist entry alone is not enough unless Wes specifically asks for checklist-only handling.
+
+Save generated affidavit/support documents in the buyer transaction folder under `output\affidavits\` and copy them to the matching Teams buyer folder under `Contract Package\Affidavits\` when package deliverables are copied to Teams.
+
+If CFD cannot generate a requested affidavit/support document because required signer, capacity, facts, or source authority are missing, report that document as blocked with the exact missing information and keep it on the closing checklist.
+
 For each affidavit request, confirm:
 
 - purpose and gap addressed,
