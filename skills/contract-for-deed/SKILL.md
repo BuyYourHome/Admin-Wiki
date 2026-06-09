@@ -122,12 +122,35 @@ Use this rule when:
 In that situation:
 
 1. Create or update the buyer transaction folder from the spreadsheet buyer/property fields.
-2. Start or message a Credit Worthiness Evaluator thread with the property, buyer names, live spreadsheet path, buyer source folder if known, and CFD handoff destination.
-3. Ask CWE to refresh available buyer documents, identify missing uploads, evaluate as far as the file permits, and create the handoff.
+2. Create or update the file-based CWE kickoff described below.
+3. Start or message a Credit Worthiness Evaluator thread with a minimal instruction to process the pending file-based CFD kickoff from the project files.
 4. Tell Wes that CWE has been started and that its report/handoff will identify missing buyer files.
 5. Do not represent the buyer as approved until the CWE handoff or report supports that result.
 
 Because Wes normally works one active buyer prospect at a time and updates the verified project spreadsheet when the prospect changes, the spreadsheet buyer fields are the default current-buyer source after project verification. If the spreadsheet buyer conflicts with a named buyer in the request or multiple buyer folders appear active, ask Wes before starting CWE.
+
+## CWE File-Based Kickoff
+
+Do not pass buyer, seller, payment, affidavit, or transaction facts to CWE in the kickoff prompt. Let CWE derive those facts from the verified project spreadsheet and durable project files.
+
+When a CWE handoff is missing and CWE should get started, write a kickoff file in the transaction folder:
+
+`handoffs\credit-worthiness\CWE Kickoff.md`
+
+The kickoff file should contain only routing/source-control information:
+
+- verified project/property name,
+- live project spreadsheet path,
+- CFD transaction folder path,
+- required CFD handoff destination,
+- date/time of kickoff,
+- instruction that the project spreadsheet and durable project files control all buyer, seller, payment, affidavit, and transaction facts.
+
+Then message CWE with a minimal prompt such as:
+
+`Please process the pending file-based CFD kickoff from the Contract for Deed project files. Derive all buyer, seller, payment, source-folder, affidavit, and transaction facts from the files. If the files do not provide enough context, report exactly what is missing.`
+
+Do not include spreadsheet values, buyer names, payment amounts, seller names, source-folder guesses, or affidavit conclusions in the CWE prompt. If CWE needs those details, it must read them from the kickoff file, project spreadsheet, transaction metadata, project-room instructions, or other durable source files.
 
 ## Affidavit Ownership
 

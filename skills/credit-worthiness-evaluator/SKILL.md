@@ -20,6 +20,7 @@ Use the project room for source inventory, conflict logs, missing-context notes,
 - A CFD kickoff may supply routing context, such as the target CFD handoff folder, but it does not reduce the required CWE outputs.
 - A direct user request for an evaluation must still create/update the CFD handoff when the buyer may proceed to Contract for Deed documents, so CFD receives the same closing-package document request list it would receive from a CFD-initiated run.
 - If a caller provides transaction facts in a prompt, verify them from the project spreadsheet and durable project-room/source files before using them as source facts. If the files do not support a fact, mark it missing or unresolved.
+- For CFD-initiated work, prefer the file-based kickoff in the Contract for Deed transaction folder over prompt-provided facts. Do not use buyer, seller, payment, affidavit, or transaction facts from the kickoff prompt as source facts.
 
 ## Buyer Segregation Rule
 
@@ -73,6 +74,7 @@ Use the project room for source inventory, conflict logs, missing-context notes,
 ## Contract For Deed Handoff Rule
 
 - Accept kickoff requests from CFD when the project spreadsheet identifies a current buyer but no handoff exists yet.
+- For a CFD kickoff, look for `CWE Kickoff.md` in the matching Contract for Deed transaction folder. Use that kickoff file to find the live project spreadsheet and required CFD handoff destination.
 - A CFD kickoff is enough to begin the evaluator even if buyer files still need to be uploaded. Refresh whatever buyer documents are available, then report missing files and assumptions in the CWE report and handoff.
 - Treat the project spreadsheet buyer fields as the current buyer source unless the request names a different buyer or the file evidence shows an active conflict.
 - When the evaluator is used for a buyer who may proceed to Contract for Deed documents, create or update a buyer-specific `Credit Worthiness Handoff.md`.
@@ -82,7 +84,7 @@ Use the project room for source inventory, conflict logs, missing-context notes,
 
   `C:\Codex\Wiki Files\Project Rooms\Contract for Deed\transactions\<Property> - <Buyer>\handoffs\credit-worthiness\Credit Worthiness Handoff.md`
 
-- The handoff should include buyer/property, project spreadsheet used, evaluation result, report path, source cutoff date, buyer legal names and roles, funds-to-close status, and a closing-package document request list for CFD.
+- The handoff must identify the live project spreadsheet used. Include buyer/property, project spreadsheet path, evaluation result, report path, source cutoff date, buyer legal names and roles, funds-to-close status, and a closing-package document request list for CFD.
 - For each requested CFD closing-package document, state the document name, why it is needed, condition or gap addressed, required/recommended/optional status, signer, signer capacity, authority source, facts to include, notarization need, current evidence/status, and exact CFD action needed.
 - The CFD transaction folder is allowed to have one current `Credit Worthiness Handoff.md` that is overwritten when the evaluator produces a newer current handoff. Preserve versioned handoffs in the CWE project-room outputs when history matters.
 - The CWE handoff is a closing-package document request and source input to CFD. CFD owns final Contract for Deed package drafting, formatting, signature-block placement, closing-package affidavit generation, inclusion/exclusion decisions, and attorney-review package assembly.

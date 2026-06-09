@@ -27,6 +27,7 @@ Buyer-specific Contract for Deed transaction folder for selling 320 Rose Pl to E
 ## Handoff
 
 - Current CWE handoff destination: `handoffs\credit-worthiness\Credit Worthiness Handoff.md`
+- Current CWE kickoff file: `handoffs\credit-worthiness\CWE Kickoff.md`
 - Treat the handoff as buyer/underwriting input. Use the spreadsheet `Docs` worksheet and document prototypes for contract terms, seller names, property data, and formatting.
 
 ## Package Scope

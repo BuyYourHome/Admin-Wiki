@@ -109,9 +109,15 @@ The Credit Worthiness Evaluator should drop the current handoff at:
 
 Do not use the old global handoff pattern for new buyer-specific work.
 
-If no current CWE handoff exists for a new buyer-specific sale package, use the project spreadsheet as the current-buyer source and get CWE started. The CWE kickoff should provide the property, buyer names, live spreadsheet path, known buyer source folder if available, and the handoff destination. CWE should then refresh available files, evaluate as far as the current file permits, and identify missing uploads in its report/handoff.
+If no current CWE handoff exists for a new buyer-specific sale package, use the project spreadsheet as the current-buyer source and get CWE started through the file-based kickoff. CWE should then refresh available files, evaluate as far as the current file permits, and identify missing uploads in its report/handoff.
 
 Do not block the CFD setup merely because buyer files still need to be uploaded. Do not represent the buyer as approved until the CWE handoff or report supports that result. If the project spreadsheet buyer conflicts with Wes's request or more than one buyer appears active, ask Wes before starting CWE.
+
+Use a file-based CWE kickoff instead of passing transaction facts in the prompt. Write:
+
+`transactions\<Property> - <Buyer>\handoffs\credit-worthiness\CWE Kickoff.md`
+
+The kickoff file should identify the verified project/property, live project spreadsheet path, CFD transaction folder path, and required `Credit Worthiness Handoff.md` destination. CWE must derive buyer, seller, payment, affidavit, source-folder, and transaction facts from the files, not from a detailed prompt.
 
 1. If Wes has edited `output\320 Rose - Contract for Deed Agreement - DRAFT.docx` and says it looks good, copy that file to:
 
