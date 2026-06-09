@@ -9,8 +9,8 @@
 - Source cutoff: files available in the live buyer folder at the 2026-06-09 refresh; newest reviewed buyer-folder item was the 2026-06-09 approval-scenario report. That report is assumption-mode background and is not treated as current verified approval evidence.
 - Current evaluation mode: evidence mode, not approval-assumption mode.
 - Source discipline: this summary was rebuilt from durable local sources, not from delegated prompt-provided transaction facts. The project, spreadsheet path, buyer folder, and CFD handoff placement came from the Contract for Deed transaction/project-room files and Credit Worthiness Evaluator skill instructions; transaction values came from the live spreadsheet `Docs` worksheet.
-- Full DOCX report: `C:\Codex\Wiki Files\Project Rooms\Credit Worthiness Evaluator\outputs\320 Rose Pl - Ever Cardoza\26-06-09 320 Rose Ever Amarildo Cardoza Bolanos - Creditworthiness Evaluation Report - Conditional v10.docx`
-- Teams report copy: `C:\Users\wesbr\Buy Your Home\Buy Your Home - Property\28-SYH-320 Rose Pl\Selling\Ever Cordoza\Credit Worthiness\v10 320 Rose Ever Amarildo Cardoza Bolanos - Creditworthiness Evaluation Report - Conditional.docx`
+- Full DOCX report: `C:\Codex\Wiki Files\Project Rooms\Credit Worthiness Evaluator\outputs\320 Rose Pl - Ever Cardoza\26-06-09 320 Rose Ever Amarildo Cardoza Bolanos - Creditworthiness Evaluation Report - Conditional v11.docx`
+- Teams report copy: `C:\Users\wesbr\Buy Your Home\Buy Your Home - Property\28-SYH-320 Rose Pl\Selling\Ever Cordoza\Credit Worthiness\v11 320 Rose Ever Amarildo Cardoza Bolanos - Creditworthiness Evaluation Report - Conditional.docx`
 
 ## Spreadsheet Transaction Snapshot
 
