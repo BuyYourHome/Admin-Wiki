@@ -109,7 +109,7 @@ Recommended subfolders:
 - `Clean Package\` for current clean signing/review copies.
 - `Attorney Review Package\` for current attorney-review copies and ZIPs.
 - `Closing Checklist\` for buyer-specific checklist outputs.
-- `Affidavits\` for CFD-generated closing-package affidavits.
+- `Affidavits\` for closing-package affidavits.
 
 Copy project-room outputs to Teams after each requested regeneration or package update unless Wes says project-room only. The project-room copy remains authoritative. If a Teams copy is edited and Wes says to keep those edits, bring that edited file back into the project room and apply the normal edit-preservation/prototype rule before regenerating.
 
@@ -237,23 +237,43 @@ Then message the regular visible CWE chat with the short new-buyer restart promp
 
 ## Affidavit Ownership
 
-Credit Worthiness Evaluator identifies affidavit needs. Contract for Deed produces signature-ready affidavits when the affidavit belongs in the contract, closing, or attorney-review package.
+Credit Worthiness Evaluator owns the substantive drafting of creditworthiness, funds, rent-history, receipt-review, business-judgment, and underwriting-support affidavits. Contract for Deed packages those CWE-authored affidavits when they belong in the contract, closing, or attorney-review package.
 
-When a CWE handoff lists CFD closing-package affidavit or support-document requests, CFD must generate draft signature-ready affidavit/support documents as part of continuing the CFD package. A checklist entry alone is not enough unless Wes specifically asks for checklist-only handling.
+When a CWE handoff lists affidavit package items, treat those affidavits as CWE-authored documents. Do not rewrite them from summary metadata and do not generate substitute affidavits from metadata-only handoff rows.
 
-Save generated affidavit/support documents in the buyer transaction folder under `output\affidavits\` and copy them to the matching Teams buyer folder under `Contract Package\Affidavits\` when package deliverables are copied to Teams.
+For each affidavit item in the CWE handoff, verify:
 
-If CFD cannot generate a requested affidavit/support document because required signer, capacity, facts, or source authority are missing, report that document as blocked with the exact missing information and keep it on the closing checklist.
-
-For each affidavit request, confirm:
-
-- purpose and gap addressed,
-- required/recommended/optional status,
+- the affidavit title,
+- file name,
+- full file path,
+- that the file exists at that path,
+- that the file is a DOCX affidavit draft,
+- whether it is intended as a closing-package deliverable,
 - signer and signer capacity,
-- facts to be sworn or acknowledged,
+- required/recommended/optional status,
 - notary requirement,
-- whether the affidavit is underwriting-only or closing-package material,
-- source used for names, entity capacity, and transaction terms.
+- known conflicts or cautions to carry into the closing checklist.
+
+If the CWE-provided affidavit file exists, copy it into the buyer transaction folder under `output\affidavits\` as the package record copy and copy it to the matching Teams buyer folder under `Contract Package\Affidavits\` when package deliverables are copied to Teams.
+
+CFD may make only package-level changes unless Wes specifically approves substance edits. Package-level changes include file naming consistency, placement in the correct CFD transaction folder, copying to the correct Teams folder, checklist updates, and clearly authorized formatting or notary-block standardization.
+
+CFD must not:
+
+- convert CWE affidavit wording into technical handoff language,
+- replace first-person sworn statements with summary statements,
+- change who is swearing to which facts,
+- remove limitation or caution language,
+- change signer capacity,
+- change required/recommended/optional status,
+- treat missing affidavit files as ready for packaging,
+- generate substitute affidavits from metadata-only handoff rows.
+
+If an affidavit listed in the handoff is missing from the provided path, mark it as missing on the closing checklist and report the missing file to Wes.
+
+If the affidavit text conflicts with the current project spreadsheet, contract terms, or another source document, do not silently resolve the conflict. Flag the conflict and either preserve the affidavit as received or wait for direction, depending on whether the conflict affects a signed statement.
+
+If the handoff identifies an affidavit as still needing attorney/compliance review, CFD may package it as a draft but must keep that status visible in the closing checklist.
 
 Do not convert underwriting-only affidavits into closing documents unless Wes or counsel asks for that treatment.
 
