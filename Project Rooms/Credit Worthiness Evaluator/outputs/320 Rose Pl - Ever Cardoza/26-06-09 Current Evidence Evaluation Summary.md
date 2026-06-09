@@ -8,10 +8,11 @@
 - Source refresh date: 2026-06-09.
 - Source cutoff: files available in the live buyer folder at the 2026-06-09 refresh; newest reviewed buyer-folder item was the 2026-06-09 approval-scenario report. That report is assumption-mode background and is not treated as current verified approval evidence.
 - Current evaluation mode: evidence mode, not approval-assumption mode.
+- Source discipline: this summary was rebuilt from durable local sources, not from delegated prompt-provided transaction facts. The project, spreadsheet path, buyer folder, and CFD handoff placement came from the Contract for Deed transaction/project-room files and Credit Worthiness Evaluator skill instructions; transaction values came from the live spreadsheet `Docs` worksheet.
 
 ## Spreadsheet Transaction Snapshot
 
-The live project spreadsheet `C:\Users\wesbr\Buy Your Home\Buy Your Home - Property\28_Project Management - 320 Rose Pl.xlsm` supplies the current document-package facts:
+The live project spreadsheet `C:\Users\wesbr\Buy Your Home\Buy Your Home - Property\28_Project Management - 320 Rose Pl.xlsm` supplies the current document-package facts through the `Docs` worksheet:
 
 - Buyer 1: Ever Amarildo Cardoza Bolanos.
 - Buyer 2: Maria Geraldine Sarmiento.

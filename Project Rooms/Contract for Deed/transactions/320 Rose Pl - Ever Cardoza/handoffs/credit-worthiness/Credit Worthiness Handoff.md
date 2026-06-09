@@ -12,10 +12,11 @@
 - Current evaluation summary: `C:\Codex\Wiki Files\Project Rooms\Credit Worthiness Evaluator\outputs\320 Rose Pl - Ever Cardoza\26-06-09 Current Evidence Evaluation Summary.md`
 - Prior formal report reviewed as background: `C:\Codex\Wiki Files\Project Rooms\Credit Worthiness Evaluator\outputs\26-06-09 320 Rose Ever Amarildo Cardoza Bolanos - Creditworthiness Evaluation Report - Approval Scenario v9.docx`
 - Control note: the prior formal report is an approval-scenario report. This handoff is current-evidence mode and does not treat assumed signed/notarized affidavits as verified unless final signed/notarized versions are confirmed.
+- Source discipline: this handoff was rebuilt from durable local sources, not from delegated prompt-provided transaction facts. The project, spreadsheet path, buyer folder, and handoff placement came from the Contract for Deed transaction/project-room files and Credit Worthiness Evaluator skill instructions; transaction values came from the live spreadsheet `Docs` worksheet.
 
 ## Buyer And Transaction Snapshot
 
-Source: live project spreadsheet `C:\Users\wesbr\Buy Your Home\Buy Your Home - Property\28_Project Management - 320 Rose Pl.xlsm`.
+Source: live project spreadsheet `C:\Users\wesbr\Buy Your Home\Buy Your Home - Property\28_Project Management - 320 Rose Pl.xlsm`, `Docs` worksheet.
 
 | Field | Current value |
 | --- | --- |
