@@ -24,21 +24,32 @@ Use the project room for source inventory, conflict logs, missing-context notes,
 ## Standard Workflow
 
 1. Read `Project Room Workflow.md`, the project room README, and the current buyer-specific inventory/output files.
-2. Identify the live buyer source folder named by Wes or already recorded in the room.
-3. Refresh the project room source copy from that buyer folder into the buyer's segregated `sources\` subfolder.
-4. Extract readable text from PDFs, DOCX files, and email attachments as working artifacts.
-5. Update:
+2. Locate and inspect the property project spreadsheet from the Teams property folder. Use it as the first source for property, buyer, co-buyer, seller/entity, trustee, manager/signature authority, payment terms, and document-package fields.
+3. Identify the live buyer source folder named by Wes, recorded in the project spreadsheet, or already recorded in the room.
+4. Refresh the project room source copy from that buyer folder into the buyer's segregated `sources\` subfolder.
+5. Extract readable text from PDFs, DOCX files, and email attachments as working artifacts.
+6. Update:
    - buyer source inventory,
    - duplicate/conflict log,
    - missing-context list,
    - preliminary file review,
+   - affidavit requirements handoff,
    - formal report if one exists or is requested.
-6. Use authoritative sources only. Mark unsupported items instead of smoothing them over.
-7. Render and visually check formal DOCX reports before delivery when the Documents skill/runtime is available.
-8. Add page numbers to formal reports before delivery.
-9. If a formal report is rerun, preserve a versioned copy instead of silently replacing the prior report.
-10. Copy only final deliverables, or deliverables Wes explicitly asks to place there, back into the live buyer source folder where the source files were retrieved.
-11. Commit durable wiki/project-room changes locally. Do not push unless Wes says the work is finished or explicitly asks for a push.
+7. Use authoritative sources only. Mark unsupported items instead of smoothing them over.
+8. Render and visually check formal DOCX reports before delivery when the Documents skill/runtime is available.
+9. Add page numbers to formal reports before delivery.
+10. If a formal report is rerun, preserve a versioned copy instead of silently replacing the prior report.
+11. Copy only final deliverables, or deliverables Wes explicitly asks to place there, back into the live buyer source folder where the source files were retrieved.
+12. Commit durable wiki/project-room changes locally. Do not push unless Wes says the work is finished or explicitly asks for a push.
+
+## Project Spreadsheet Rule
+
+- A new evaluation can start from the project spreadsheet in the Teams property folder.
+- Inspect the spreadsheet before declaring core transaction facts missing.
+- Use the project spreadsheet first for buyer/co-buyer/secondary buyer, spouse, occupant, seller, trustee, manager/signature authority, payment terms, and Contract for Deed document fields.
+- If a person appears in a spreadsheet buyer field, such as `Selling-Buyer1`, `Selling-Buyer2`, or similar document-package buyer fields, treat that person according to the spreadsheet role unless a later authoritative source conflicts.
+- If the spreadsheet conflicts with other file materials, log the conflict and use the spreadsheet as the working document-package source until Wes or counsel resolves it.
+- For the 320 Rose example, the project spreadsheet identifies `Ever Amarildo Cardoza Bolanos` as `Selling-Buyer1` and `Maria Geraldine Sarmiento` as `Selling-Buyer2`; Maria's status should therefore not be listed as unknown unless another source creates a conflict.
 
 ## Evaluation Rules
 

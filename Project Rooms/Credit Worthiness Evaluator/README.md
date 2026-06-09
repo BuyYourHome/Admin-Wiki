@@ -23,6 +23,14 @@ This room is for Buy Your Home's occasional Contract for Deed sale workflow, cur
 - Do not mix source inventories, conflict logs, missing-context notes, assumptions, affidavit requirements, or reports across buyers.
 - If a shared index or summary is needed, give each buyer a clearly labeled section and link back to that buyer's segregated folder.
 
+## Project Spreadsheet Rule
+
+- A new evaluation should be able to start from the project spreadsheet in the Teams property folder.
+- Inspect the project spreadsheet before marking core transaction facts as missing.
+- Use the spreadsheet first for buyer/co-buyer/secondary buyer, spouse, occupant, seller, trustee, manager/signature authority, payment terms, and Contract for Deed document-package fields.
+- If a person appears in a spreadsheet buyer field, such as `Selling-Buyer1` or `Selling-Buyer2`, treat that person according to the spreadsheet role unless a later authoritative source conflicts.
+- For the 320 Rose example, the project spreadsheet identifies `Ever Amarildo Cardoza Bolanos` as `Selling-Buyer1` and `Maria Geraldine Sarmiento` as `Selling-Buyer2`; Maria's status should not be treated as unknown unless another source creates a conflict.
+
 ## Teams Copy Rule
 
 - Use the project room `outputs\` folder for drafts and intermediate deliverables.
