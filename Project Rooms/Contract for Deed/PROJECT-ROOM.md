@@ -25,7 +25,7 @@ Keep the project room as the working source of truth. Also copy current buyer-sp
 
 Teams buyer folder pattern:
 
-`C:\Users\wesbr\Buy Your Home\Buy Your Home - Property\<Property Project>\Selling\<Buyer>\Contract for Deed\`
+`C:\Users\wesbr\Buy Your Home\Buy Your Home - Property\<Property Project>\Selling\<Buyer>\Contract Package\`
 
 Recommended Teams subfolders:
 
@@ -36,7 +36,7 @@ Recommended Teams subfolders:
 
 For 320 Rose / Ever Cardoza, use:
 
-`C:\Users\wesbr\Buy Your Home\Buy Your Home - Property\28-SYH-320 Rose Pl\Selling\Ever Cordoza\Contract for Deed\`
+`C:\Users\wesbr\Buy Your Home\Buy Your Home - Property\28-SYH-320 Rose Pl\Selling\Ever Cordoza\Contract Package\`
 
 Copy clean packages, attorney-review packages, closing checklists, and CFD-generated closing-package affidavits to the matching Teams subfolder after each requested regeneration or package update unless Wes says project-room only. Do not copy prototypes, staged spreadsheets, scratch files, extracted text, rendered QA images, logs, or temporary working files to Teams.
 

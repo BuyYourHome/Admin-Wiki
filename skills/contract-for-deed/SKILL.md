@@ -63,7 +63,7 @@ Keep all source files, prototypes, scripts, handoffs, working drafts, clean outp
 
 Use the Teams buyer folder pattern:
 
-`C:\Users\wesbr\Buy Your Home\Buy Your Home - Property\<Property Project>\Selling\<Buyer>\Contract for Deed\`
+`C:\Users\wesbr\Buy Your Home\Buy Your Home - Property\<Property Project>\Selling\<Buyer>\Contract Package\`
 
 Recommended subfolders:
 
@@ -74,7 +74,7 @@ Recommended subfolders:
 
 For 320 Rose / Ever Cardoza, use:
 
-`C:\Users\wesbr\Buy Your Home\Buy Your Home - Property\28-SYH-320 Rose Pl\Selling\Ever Cordoza\Contract for Deed\`
+`C:\Users\wesbr\Buy Your Home\Buy Your Home - Property\28-SYH-320 Rose Pl\Selling\Ever Cordoza\Contract Package\`
 
 Copy project-room outputs to Teams after each requested regeneration or package update unless Wes says project-room only. The project-room copy remains authoritative. If a Teams copy is edited and Wes says to keep those edits, bring that edited file back into the project room and apply the normal edit-preservation/prototype rule before regenerating.
 
@@ -138,7 +138,7 @@ Do not convert underwriting-only affidavits into closing documents unless Wes or
 For the current 320 Rose package:
 
 - Transaction folder: `C:\Codex\Wiki Files\Project Rooms\Contract for Deed\transactions\320 Rose Pl - Ever Cardoza`
-- Teams mirror folder: `C:\Users\wesbr\Buy Your Home\Buy Your Home - Property\28-SYH-320 Rose Pl\Selling\Ever Cordoza\Contract for Deed`
+- Teams mirror folder: `C:\Users\wesbr\Buy Your Home\Buy Your Home - Property\28-SYH-320 Rose Pl\Selling\Ever Cordoza\Contract Package`
 - Live spreadsheet: `C:\Users\wesbr\Buy Your Home\Buy Your Home - Property\28_Project Management - 320 Rose Pl.xlsm`
 - Staged spreadsheet: `C:\Codex\Wiki Files\Project Rooms\Contract for Deed\source\320 Rose project spreadsheet\28_Project Management - 320 Rose Pl.xlsm`
 - Output folder: `C:\Codex\Wiki Files\Project Rooms\Contract for Deed\output`
