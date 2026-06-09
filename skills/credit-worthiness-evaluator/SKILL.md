@@ -62,6 +62,9 @@ Use the project room for source inventory, conflict logs, missing-context notes,
 
 ## Contract For Deed Handoff Rule
 
+- Accept kickoff requests from CFD when the project spreadsheet identifies a current buyer but no handoff exists yet.
+- A CFD kickoff is enough to begin the evaluator even if buyer files still need to be uploaded. Refresh whatever buyer documents are available, then report missing files and assumptions in the CWE report and handoff.
+- Treat the project spreadsheet buyer fields as the current buyer source unless the request names a different buyer or the file evidence shows an active conflict.
 - When the evaluator is used for a buyer who may proceed to Contract for Deed documents, create or update a buyer-specific `Credit Worthiness Handoff.md`.
 - Keep the handoff in the buyer's segregated CWE `outputs\` folder and copy the current handoff into the matching CFD buyer transaction folder.
 - CFD handoff destination:

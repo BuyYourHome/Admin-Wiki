@@ -73,6 +73,27 @@ The handoff may provide:
 
 Use the project spreadsheet `Docs` worksheet and document prototypes for contract terms, property data, seller data, and document formatting. If the handoff conflicts with the spreadsheet or prototype, log the conflict and ask Wes or counsel only when the conflict would affect a signed document.
 
+## Missing Handoff Startup Rule
+
+When Wes starts a new buyer-specific Contract for Deed matter and no CWE handoff exists, use the project spreadsheet as the active-buyer source and get CWE started instead of treating the missing handoff as a blocker.
+
+Use this rule when:
+
+- the task is for a real buyer-specific sale or closing package,
+- the project spreadsheet identifies the current buyer or buyers,
+- no current `Credit Worthiness Handoff.md` exists in the transaction folder,
+- Wes has not asked for draft-only documents that intentionally bypass underwriting.
+
+In that situation:
+
+1. Create or update the buyer transaction folder from the spreadsheet buyer/property fields.
+2. Start or message a Credit Worthiness Evaluator thread with the property, buyer names, live spreadsheet path, buyer source folder if known, and CFD handoff destination.
+3. Ask CWE to refresh available buyer documents, identify missing uploads, evaluate as far as the file permits, and create the handoff.
+4. Tell Wes that CWE has been started and that its report/handoff will identify missing buyer files.
+5. Do not represent the buyer as approved until the CWE handoff or report supports that result.
+
+Because Wes normally works one active buyer prospect at a time and updates the project spreadsheet when the prospect changes, the spreadsheet buyer fields are the default current-buyer source. If the spreadsheet buyer conflicts with a named buyer in the request or multiple buyer folders appear active, ask Wes before starting CWE.
+
 ## Affidavit Ownership
 
 Credit Worthiness Evaluator identifies affidavit needs. Contract for Deed produces signature-ready affidavits when the affidavit belongs in the contract, closing, or attorney-review package.
