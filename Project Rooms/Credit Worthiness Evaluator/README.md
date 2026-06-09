@@ -16,6 +16,13 @@ This room is for Buy Your Home's occasional Contract for Deed sale workflow, cur
 - Notes on when Buy Your Home must use a licensed mortgage loan originator, attorney, or outside compliance reviewer.
 - Final report and affidavit handoff deliverables that can be copied to the buyer's Teams-synced folder only when final or explicitly requested.
 
+## Buyer Segregation Rule
+
+- The project room can support multiple buyers, but each buyer's materials must stay separated.
+- Use buyer-specific subfolders under `sources\`, `working\`, and `outputs\` for buyer documents, extracts, notes, reports, affidavit handoffs, and generated artifacts.
+- Do not mix source inventories, conflict logs, missing-context notes, assumptions, affidavit requirements, or reports across buyers.
+- If a shared index or summary is needed, give each buyer a clearly labeled section and link back to that buyer's segregated folder.
+
 ## Teams Copy Rule
 
 - Use the project room `outputs\` folder for drafts and intermediate deliverables.

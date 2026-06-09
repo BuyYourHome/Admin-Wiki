@@ -13,11 +13,19 @@ description: Use for Buy Your Home tenant-buyer creditworthiness and ability-to-
 
 Use the project room for source inventory, conflict logs, missing-context notes, and outputs. Preserve raw buyer/source documents.
 
+## Buyer Segregation Rule
+
+- Treat the evaluator as a generic buyer-specific process. The named buyer is an input, not a hard-coded workflow.
+- Keep each buyer's materials segregated inside the project room.
+- Use buyer-specific folders under `sources\`, `working\`, and `outputs\` whenever a run involves buyer documents, buyer-specific notes, reports, affidavit handoffs, or generated artifacts.
+- Do not blend source inventories, missing-context notes, conflict logs, reports, affidavit requirements, or assumptions across buyers.
+- If a shared project-room file summarizes multiple buyers, each buyer must have a clearly labeled section and must link back to that buyer's segregated folder.
+
 ## Standard Workflow
 
 1. Read `Project Room Workflow.md`, the project room README, and the current buyer-specific inventory/output files.
 2. Identify the live buyer source folder named by Wes or already recorded in the room.
-3. Refresh the project room source copy from that buyer folder.
+3. Refresh the project room source copy from that buyer folder into the buyer's segregated `sources\` subfolder.
 4. Extract readable text from PDFs, DOCX files, and email attachments as working artifacts.
 5. Update:
    - buyer source inventory,
