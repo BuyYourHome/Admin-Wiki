@@ -204,19 +204,26 @@ The kickoff file is only a pointer file; the CWE skill and project-room instruct
 
 Then message CWE with a minimal prompt such as:
 
-`Please process the pending file-based CFD kickoff from the Contract for Deed project files under your current Credit Worthiness Evaluator rules. If the files do not provide enough context, report exactly what is missing.`
+`Please process the pending file-based CFD kickoff under your current Credit Worthiness Evaluator rules. Do not push unless Wes explicitly asks.`
 
-Do not include spreadsheet values, buyer names, payment amounts, seller names, source-folder guesses, or affidavit conclusions in the CWE prompt. If CWE needs those details, it must read them from the project spreadsheet, transaction metadata, project-room instructions, or other durable source files.
+If Wes says to start the process as a new buyer, use this prompt:
+
+`Please process the pending file-based CFD kickoff as a new-buyer restart under your current Credit Worthiness Evaluator rules. Do not push unless Wes explicitly asks.`
+
+Do not include spreadsheet values, buyer names, payment amounts, seller names, source-folder guesses, affidavit conclusions, or CWE operating rules in the CWE prompt. If CWE cannot act from the short prompt plus the kickoff file, update the CWE skill rules instead of making the CFD prompt longer.
 
 ## Handoff Watch And No Auto-Restart
 
 A handoff file is durable communication, not automatic notification. If CFD starts CWE, CFD must not assume it will be notified when CWE finishes.
 
-After messaging CWE, CFD must do one of the following:
+After messaging CWE, CFD must create a visible follow-up check in the same CFD chat when the app supports it. The check should inspect the expected `Credit Worthiness Handoff.md` path every 2-5 minutes until one of these occurs:
 
-- stay active and periodically check for the required `Credit Worthiness Handoff.md`,
-- create a visible reminder or check step if the app supports it,
-- or tell Wes exactly how to return and ask CFD to check the handoff path.
+- the handoff appears,
+- CWE reports a blocker,
+- Wes pauses or stops the process,
+- or a reasonable timeout is reached.
+
+CFD must not rely on Wes to manually prompt the handoff check. If no follow-up/check mechanism is available, disclose that before starting CWE and ask whether to proceed without monitoring.
 
 When the handoff appears, notify Wes that the handoff is ready, summarize the readiness result, and wait for permission before regenerating or continuing the CFD package unless Wes already gave a clear instruction to proceed after the handoff is ready.
 
@@ -224,9 +231,9 @@ Do not automatically regenerate documents merely because CWE created a handoff.
 
 ## Fresh Evaluation Restart
 
-If Wes says to restart as if the buyer has not been evaluated, first verify the project. After project verification, delete or move aside the current CFD handoff only if Wes has clearly authorized replacing the current handoff.
+If Wes says to `start the process as a new buyer`, restart as if the buyer has not been evaluated. First verify the project. After project verification, delete or move aside the current CFD handoff if one exists.
 
-Then message the regular visible CWE chat and instruct CWE to treat prior reports, summaries, and handoffs as non-source evidence and non-controlling conclusions. Prior materials may be used only for naming or placement conventions if needed.
+Then message the regular visible CWE chat with the short new-buyer restart prompt from the kickoff section. Do not restate CWE's evidence rules in the prompt; CWE owns those rules.
 
 ## Affidavit Ownership
 
