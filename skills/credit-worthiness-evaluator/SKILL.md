@@ -34,12 +34,12 @@ Use the project room for source inventory, conflict logs, missing-context notes,
    - missing-context list,
    - preliminary file review,
    - affidavit requirements handoff,
-   - formal report if one exists or is requested.
+   - formal DOCX report for every evaluation or rerun.
 7. Use authoritative sources only. Mark unsupported items instead of smoothing them over.
 8. Render and visually check formal DOCX reports before delivery when the Documents skill/runtime is available.
 9. Add page numbers to formal reports before delivery.
 10. If a formal report is rerun, preserve a versioned copy instead of silently replacing the prior report.
-11. Copy only final deliverables, or deliverables Wes explicitly asks to place there, into the buyer's Teams `Credit Worthiness` folder.
+11. Copy every formal DOCX evaluation report into the buyer's Teams `Credit Worthiness` folder, including conditional, draft, evidence-mode, and assumption-mode reruns. Never overwrite an existing Teams document.
 12. Commit durable wiki/project-room changes locally. Do not push unless Wes says the work is finished or explicitly asks for a push.
 
 ## Project Spreadsheet Rule
@@ -135,23 +135,25 @@ When approval-assumption mode is active:
 7. Preserve a fallback result that says what the evaluator would conclude if the assumptions are not proven.
 8. Version any formal report produced in this mode, and include the mode label in the report subtitle, revision note, or scenario basis.
 
-## Report Copy-Back Rule
+## Mandatory DOCX And Teams Copy Rule
 
-When an evaluator run produces or updates a formal report:
+Every evaluator run must produce a formal DOCX report. Markdown summaries, handoffs, inventories, and missing-context notes may support the run, but they do not replace the DOCX report.
 
-1. Save the report in the project room `outputs\` folder.
-2. Copy the same report into Teams only when the report is final, Wes explicitly asks for a Teams/buyer-folder copy, or the run is clearly a final deliverable.
-3. Teams destination must be:
+When an evaluator run produces or updates the formal report:
+
+1. Save the report in the buyer's segregated project-room `outputs\` folder.
+2. Copy the same report into the buyer's Teams `Credit Worthiness` folder, even when the result is conditional, draft, evidence-mode, assumption-mode, or not approval-ready.
+3. Teams destination must be derived from the live buyer source folder:
 
    `[Project]\Selling\[Buyer]\Credit Worthiness\`
 
-4. Save all Teams copies of Credit Worthiness Evaluator reports in that `Credit Worthiness` folder, including every version that is intentionally copied to Teams.
+4. If the live buyer folder is `[Project]\Selling\[Buyer]`, create or use `[Project]\Selling\[Buyer]\Credit Worthiness\` for the Teams report copy.
 5. For the project-room `outputs\` copy, keep using date-prefixed filenames for chronological project-room tracking.
 6. For the Teams `Credit Worthiness` copy, precede the filename with the report version, not the date, such as:
 
    `v9 320 Rose Ever Amarildo Cardoza Bolanos - Creditworthiness Evaluation Report - Approval Scenario.docx`
 
-7. In the final response, report both locations when a Teams copy is made.
+7. In the final response, report both the project-room DOCX path and the Teams DOCX path.
 
 Never overwrite an existing Teams/buyer-folder document. If a same-named file already exists, create a new versioned filename or ask Wes before replacing anything.
 
