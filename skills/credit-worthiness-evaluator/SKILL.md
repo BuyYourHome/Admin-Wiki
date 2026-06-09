@@ -23,6 +23,13 @@ Use the project room for source inventory, conflict logs, missing-context notes,
 - For CFD-initiated work, prefer the file-based kickoff in the Contract for Deed transaction folder over prompt-provided facts. Do not use buyer, seller, payment, affidavit, or transaction facts from the kickoff prompt as source facts.
 - Derive buyer, seller, payment, source-folder, affidavit, and transaction facts from the live project spreadsheet and durable project-room/source files. If those files do not provide enough context, report exactly what is missing instead of relying on prompt-supplied facts.
 
+## Process Boundary Rule
+
+- This is a universal process rule: do not write or change rules for other processes or skills while working from the Credit Worthiness Evaluator process.
+- CWE may define what CWE produces, what CWE needs, and what CWE hands off to another process.
+- CWE may propose that another process, such as Contract for Deed, add a matching intake or consumption rule, but CWE must not edit that other process's skill, project-room instructions, scripts, templates, or operating rules unless Wes explicitly authorizes cross-process editing for that specific request.
+- For CWE/CFD coordination, write the CWE-side handoff rule in the CWE skill and list any needed CFD-side rule as a proposed CFD rule for CFD to write into its own process.
+
 ## Buyer Segregation Rule
 
 - Treat the evaluator as a generic buyer-specific process. The named buyer is an input, not a hard-coded workflow.
@@ -104,24 +111,36 @@ Use the project room for source inventory, conflict logs, missing-context notes,
 - The CFD transaction folder is allowed to have one current `Credit Worthiness Handoff.md` that is overwritten when the evaluator produces a newer current handoff. Preserve versioned handoffs in the CWE project-room outputs when history matters.
 - The CWE handoff is a closing-package document request and source input to CFD. CFD owns final Contract for Deed package drafting, formatting, signature-block placement, closing-package affidavit generation, inclusion/exclusion decisions, and attorney-review package assembly.
 
-## Affidavit Requirements
+## Contract For Deed Affidavit Handoff Rules
 
-When an affidavit or other credit-worthiness support document is needed for the closing package, list it in the handoff as a CFD document request instead of assuming the evaluator should produce the final document.
+When CWE determines that affidavits are needed for a Contract for Deed matter, CWE owns the substantive drafting of affidavits based on creditworthiness evidence, funds evidence, rent-history evidence, receipt review, business-judgment approval, or underwriting-support facts.
 
-For each affidavit, state:
+CWE must not pass only summary metadata when an affidavit is expected to be packaged for signing. CWE must pass either an existing affidavit draft or complete affidavit-ready wording.
 
-- affidavit name,
-- purpose,
-- condition or gap addressed,
-- required/recommended/optional status,
-- signer and signer capacity,
-- facts to be sworn or acknowledged,
-- source of the facts,
-- whether notarization is needed,
-- whether it is underwriting-only or closing-package material,
-- requested CFD closing-package action.
+For each affidavit intended for the Contract for Deed closing package, CWE must include an affidavit package item in the handoff. Each affidavit package item must include:
 
-CWE may draft underwriting-only affidavits when they support the approval file, such as rent-history, reserve-observation, receipt-review, or business-judgment approval affidavits. CFD should generate the final signature-ready version and decide whether to include it when the affidavit belongs in the closing or Contract for Deed package.
+- affidavit title,
+- handoff mode: `source_docx`, `body_payload`, or `metadata_only_not_ready`,
+- exact source DOCX path, if mode is `source_docx`,
+- full affidavit text, if mode is `body_payload`,
+- purpose of the affidavit,
+- required, recommended, or optional status,
+- whether it is intended as a closing-package deliverable,
+- signer name,
+- signer capacity,
+- entity represented, if any,
+- notary requirement,
+- known conflicts with the project spreadsheet, report, or source evidence,
+- cautions or limitation language that must be preserved,
+- whether the draft is ready for package formatting or still needs attorney/compliance review.
+
+Use `source_docx` when CWE has already produced an affidavit draft.
+
+Use `body_payload` only when no DOCX draft exists but CWE has complete affidavit-ready wording.
+
+Use `metadata_only_not_ready` when the affidavit need has been identified but CWE has not produced affidavit-ready wording. In that case, clearly state what is missing before the affidavit can be packaged.
+
+For the current 320 Rose / Ever Cardoza matter, CWE should pass the already-produced affidavit DOCX drafts as `source_docx` affidavit package items.
 
 ## Related-Company Rent History Rule
 
