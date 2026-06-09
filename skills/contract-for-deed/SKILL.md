@@ -24,6 +24,22 @@ Before file work:
 3. Read `Admin Home.md`, `AGENTS.md`, `Repository Location Rule.md`, `Codex Skill Source Rule.md`, and the active project room `PROJECT-ROOM.md`.
 4. Check `git status --short --branch`.
 
+## Discussion Before Action
+
+Treat Wes's questions, process-design discussion, and sequences of instructions as discussion-only until Wes clearly says to act. Do not make file changes, start or restart CWE, delete handoffs, regenerate documents, sync skills, commit, push, send emails, or run external workflow actions merely because Wes is describing what he wants.
+
+Proceed only after an explicit action instruction such as `proceed`, `implement`, `do it`, `make the change`, `run it`, `start`, or another clear instruction to act.
+
+If Wes says to write or implement one specific rule, keep the work limited to that rule and do not expand into related process changes unless he separately authorizes them.
+
+## Installed Skill And Development Mode
+
+Default operational mode is to use the current installed skill from `%USERPROFILE%\.codex\skills\contract-for-deed\SKILL.md`.
+
+When acting in an existing chat after a skill update, reread the relevant installed skill before acting if the installed copy is expected to be current. A new chat should use the synced installed skill when the skill triggers.
+
+If Wes says `do not use compiled skills`, `do not use installed skills`, or similar, treat the task as process-development mode. In process-development mode, reason from the current discussion and canonical source files instead of assuming the installed runtime copy controls.
+
 ## Core Workflow
 
 Use this workflow when Wes asks to refresh or recreate contract-for-deed sale documents.
@@ -71,6 +87,14 @@ Each transaction folder should include:
 - `output\closing-checklist\` for closing checklist outputs.
 
 During the 320 Rose transition, the existing top-level `source`, `reference`, `working`, and `output` folders remain the active script/prototype locations. Still use the buyer transaction folder for cross-skill handoffs, buyer-specific checklist work, and transaction metadata.
+
+## Visible Chat Routing
+
+Run CFD work in the regular visible `Contract for Deed` chat whenever possible. Run CWE work in the regular visible `Credit Worthiness Evaluator` chat whenever possible.
+
+If a CFD request starts in another chat, route or message the regular visible CFD chat instead of carrying out the CFD process in a hidden or projectless delegated thread. If the visible CFD chat cannot be found or messaged, tell Wes and wait for direction.
+
+If CFD needs CWE, message the regular visible `Credit Worthiness Evaluator` chat with the minimal file-based kickoff request. Do not spawn hidden/projectless delegated CWE threads for normal CFD/CWE coordination. If a new CWE chat is truly needed, ask Wes first and make sure it will be visible and inspectable.
 
 ## Teams Copy Rule
 
@@ -153,9 +177,10 @@ In that situation:
 
 1. Create or update the buyer transaction folder from the spreadsheet buyer/property fields.
 2. Create or update the file-based CWE kickoff described below.
-3. Start or message a Credit Worthiness Evaluator thread with a minimal instruction to process the pending file-based CFD kickoff from the project files.
-4. Tell Wes that CWE has been started and that its report/handoff will identify missing buyer files.
-5. Do not represent the buyer as approved until the CWE handoff or report supports that result.
+3. Message the regular visible Credit Worthiness Evaluator chat with a minimal instruction to process the pending file-based CFD kickoff from the project files.
+4. Establish a visible handoff check plan before pausing CFD work.
+5. Tell Wes that CWE has been started and that its report/handoff will identify missing buyer files.
+6. Do not represent the buyer as approved until the CWE handoff or report supports that result.
 
 Because Wes normally works one active buyer prospect at a time and updates the verified project spreadsheet when the prospect changes, the spreadsheet buyer fields are the default current-buyer source after project verification. If the spreadsheet buyer conflicts with a named buyer in the request or multiple buyer folders appear active, ask Wes before starting CWE.
 
@@ -175,13 +200,33 @@ The kickoff file should contain only routing/source-control information:
 - required CFD handoff destination,
 - date/time of kickoff.
 
-Do not include buyer names, payment terms, affidavit conclusions, or instructions about how to derive facts in the kickoff file. The kickoff file is only a pointer file; the CWE skill and project-room instructions define how CWE evaluates files and derives facts.
+The kickoff file is only a pointer file; the CWE skill and project-room instructions define how CWE evaluates files and derives facts.
 
 Then message CWE with a minimal prompt such as:
 
 `Please process the pending file-based CFD kickoff from the Contract for Deed project files under your current Credit Worthiness Evaluator rules. If the files do not provide enough context, report exactly what is missing.`
 
 Do not include spreadsheet values, buyer names, payment amounts, seller names, source-folder guesses, or affidavit conclusions in the CWE prompt. If CWE needs those details, it must read them from the project spreadsheet, transaction metadata, project-room instructions, or other durable source files.
+
+## Handoff Watch And No Auto-Restart
+
+A handoff file is durable communication, not automatic notification. If CFD starts CWE, CFD must not assume it will be notified when CWE finishes.
+
+After messaging CWE, CFD must do one of the following:
+
+- stay active and periodically check for the required `Credit Worthiness Handoff.md`,
+- create a visible reminder or check step if the app supports it,
+- or tell Wes exactly how to return and ask CFD to check the handoff path.
+
+When the handoff appears, notify Wes that the handoff is ready, summarize the readiness result, and wait for permission before regenerating or continuing the CFD package unless Wes already gave a clear instruction to proceed after the handoff is ready.
+
+Do not automatically regenerate documents merely because CWE created a handoff.
+
+## Fresh Evaluation Restart
+
+If Wes says to restart as if the buyer has not been evaluated, first verify the project. After project verification, delete or move aside the current CFD handoff only if Wes has clearly authorized replacing the current handoff.
+
+Then message the regular visible CWE chat and instruct CWE to treat prior reports, summaries, and handoffs as non-source evidence and non-controlling conclusions. Prior materials may be used only for naming or placement conventions if needed.
 
 ## Affidavit Ownership
 
@@ -218,9 +263,12 @@ Do not convert underwriting-only affidavits into closing documents unless Wes or
 
 Canonical skill source lives in the wiki under `C:\Codex\Wiki Files\skills`. Installed local copies under `%USERPROFILE%\.codex\skills` are generated copies.
 
+When Wes says `write the rules to skill source` or similar, interpret that as permission to write only the skill-source rules for the current process being discussed. Do not modify unrelated skills, project files, scripts, outputs, handoffs, or documents unless Wes names them.
+
 When changing this skill:
 
 1. Make the change in the wiki copy first.
 2. If project-room scripts or instructions change, update the project room at the same time.
-3. Commit and push the Admin wiki changes.
-4. Do not sync the installed local skill merely because project-room scripts, prototypes, or drafts changed. Sync after the new prototypes/workflow are completed, or when Wes explicitly asks to update the installed skill.
+3. Commit the Admin wiki changes locally when the durable rule update is complete.
+4. Do not sync the installed local skill merely because canonical source changed. Sync only when Wes explicitly asks to sync, install, or make the updated skill active.
+5. Do not push unless Wes explicitly asks to push or says the update is finished and ready to publish.
