@@ -10,6 +10,8 @@
 - Buyer source folder refreshed from: `C:\Users\wesbr\Buy Your Home\Buy Your Home - Property\28-SYH-320 Rose Pl\Selling\Ever Cordoza`
 - Project-room source copy: `C:\Codex\Wiki Files\Project Rooms\Credit Worthiness Evaluator\sources\320 Rose Pl - Ever Cardoza`
 - Current evaluation summary: `C:\Codex\Wiki Files\Project Rooms\Credit Worthiness Evaluator\outputs\320 Rose Pl - Ever Cardoza\26-06-09 Current Evidence Evaluation Summary.md`
+- Current full DOCX report: `C:\Codex\Wiki Files\Project Rooms\Credit Worthiness Evaluator\outputs\320 Rose Pl - Ever Cardoza\26-06-09 320 Rose Ever Amarildo Cardoza Bolanos - Creditworthiness Evaluation Report - Conditional v10.docx`
+- Teams report copy: `C:\Users\wesbr\Buy Your Home\Buy Your Home - Property\28-SYH-320 Rose Pl\Selling\Ever Cordoza\Credit Worthiness\v10 320 Rose Ever Amarildo Cardoza Bolanos - Creditworthiness Evaluation Report - Conditional.docx`
 - Prior formal report reviewed as background: `C:\Codex\Wiki Files\Project Rooms\Credit Worthiness Evaluator\outputs\26-06-09 320 Rose Ever Amarildo Cardoza Bolanos - Creditworthiness Evaluation Report - Approval Scenario v9.docx`
 - Control note: the prior formal report is an approval-scenario report. This handoff is current-evidence mode and does not treat assumed signed/notarized affidavits as verified unless final signed/notarized versions are confirmed.
 - Source discipline: this handoff was rebuilt from durable local sources, not from delegated prompt-provided transaction facts. The project, spreadsheet path, buyer folder, and handoff placement came from the Contract for Deed transaction/project-room files and Credit Worthiness Evaluator skill instructions; transaction values came from the live spreadsheet `Docs` worksheet.
@@ -67,9 +69,11 @@ Most important support:
 | Closing costs | Not quantified in reviewed evidence. | Missing. |
 | Post-closing reserves | Affidavit references $14,000 receivables and $10,000 foreign funds in addition to counted cash. | Conditional; receivables and foreign funds need collection, transfer, or affidavit/closing acceptance. |
 
-## Affidavit Requirements For CFD
+## CFD Closing-Package Document Requests
 
-| Affidavit | Purpose | Signer/capacity | Authority/source | Current status | Notary need | CFD action needed |
+These are credit-worthiness-related documents CFD should create, finalize, and decide whether to include in the closing package.
+
+| Document | Purpose | Signer/capacity | Authority/source | Current status | Notary need | CFD action needed |
 | --- | --- | --- | --- | --- | --- | --- |
 | Related-Company Rent Payment History | Supports tenant-buyer payment-history exception and documents that rent history comes from related company Buy Your Home, LLC. | Buy Your Home, LLC manager or authorized representative, signing in company capacity. | Rent verification letter and related-company landlord records. | Draft in buyer folder; final signed/notarized version not confirmed in refreshed source set. | Recommended if used as underwriting or closing support. | Prepare or confirm final version and retain in closing file if relied on. |
 | Cash Reserves and Receivables Observation | Supports funds-to-close/reserve condition through observed cash, receivables, and stated foreign-fund access. | Observing person/entity representative with exact capacity. Existing signed PDF identifies Buy Your Home, LLC manager for observation facts. | Cash-reserves affidavit PDF and due receivable PDFs. | Signed PDF present, but notary block blank; later DOCX draft also present. | Needed if affidavit is used as formal proof. | Obtain final notarized version or substitute closing-approved proof of funds. |

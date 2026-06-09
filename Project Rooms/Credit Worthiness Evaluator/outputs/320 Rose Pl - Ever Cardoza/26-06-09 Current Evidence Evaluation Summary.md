@@ -9,6 +9,8 @@
 - Source cutoff: files available in the live buyer folder at the 2026-06-09 refresh; newest reviewed buyer-folder item was the 2026-06-09 approval-scenario report. That report is assumption-mode background and is not treated as current verified approval evidence.
 - Current evaluation mode: evidence mode, not approval-assumption mode.
 - Source discipline: this summary was rebuilt from durable local sources, not from delegated prompt-provided transaction facts. The project, spreadsheet path, buyer folder, and CFD handoff placement came from the Contract for Deed transaction/project-room files and Credit Worthiness Evaluator skill instructions; transaction values came from the live spreadsheet `Docs` worksheet.
+- Full DOCX report: `C:\Codex\Wiki Files\Project Rooms\Credit Worthiness Evaluator\outputs\320 Rose Pl - Ever Cardoza\26-06-09 320 Rose Ever Amarildo Cardoza Bolanos - Creditworthiness Evaluation Report - Conditional v10.docx`
+- Teams report copy: `C:\Users\wesbr\Buy Your Home\Buy Your Home - Property\28-SYH-320 Rose Pl\Selling\Ever Cordoza\Credit Worthiness\v10 320 Rose Ever Amarildo Cardoza Bolanos - Creditworthiness Evaluation Report - Conditional.docx`
 
 ## Spreadsheet Transaction Snapshot
 
@@ -78,9 +80,9 @@ The current blockers are:
 
 The $24,000 counted cash, if accepted and properly documented, appears sufficient for the $20,790 down payment before closing costs. It does not by itself prove the $6,000 earnest money, all closing costs, or post-closing reserves. The $14,000 receivables and $10,000 foreign-funds statement are additional support but should remain conditional until collected, transferred, or accepted through a signed/notarized affidavit and closing review.
 
-## Affidavit Requirements
+## CFD Closing-Package Document Requests
 
-| Affidavit | Purpose | Signer and capacity | Current status | Notary need | CFD action |
+| Document | Purpose | Signer and capacity | Current status | Notary need | CFD action |
 | --- | --- | --- | --- | --- | --- |
 | Related-Company Rent Payment History | Documents buyer's verified tenant payment history with related company Buy Your Home, LLC and explains why it is useful but not independent third-party verification. | Buy Your Home, LLC manager or authorized representative, in company capacity. | Draft located in buyer source folder; final signed/notarized version not confirmed in current file. | Recommended if used for underwriting or closing support. | Generate or retain final signature-ready version if CFD package relies on rent-history exception. |
 | Cash Reserves and Receivables Observation | Documents counted cash, observed receivables, and stated access to foreign funds. | Person/entity representative who personally observed cash and receivables, with exact capacity. Current draft/signature history identifies Buy Your Home, LLC manager for observation facts. | Signed PDF exists but notary block is blank; later DOCX draft exists. | Needed if used as formal funds-to-close or reserves support. | Require final signed and notarized version or substitute closing-approved proof of funds. |
