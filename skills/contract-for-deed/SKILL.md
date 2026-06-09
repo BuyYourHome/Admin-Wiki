@@ -93,6 +93,14 @@ Do not copy scratch files, extracted text, rendered QA images, logs, staged spre
 
 ## Credit Worthiness Handoff
 
+For every buyer-specific CFD startup, check the matching transaction folder for the current CWE handoff before messaging CWE:
+
+`transactions\<Property> - <Buyer>\handoffs\credit-worthiness\Credit Worthiness Handoff.md`
+
+If the handoff exists, read and use it. Do not call CWE again merely because a `CWE Kickoff.md` file also exists. The handoff is the current cross-skill input and the kickoff never replaces it.
+
+Do not delete, refresh, or ignore an existing handoff unless Wes says it is stale, aborted, or should be regenerated. If Wes does say to delete or regenerate the handoff, remove the stale handoff first, then restart CWE through the file-based kickoff process.
+
 Before producing buyer-specific closing documents or affidavits, read the CWE handoff if present. Treat it as an input, not as the source of contract terms.
 
 The handoff may provide:
@@ -131,7 +139,7 @@ For 320 Rose / Ever Cardoza, if the handoff says `Ready for document preparation
 
 ## Missing Handoff Startup Rule
 
-When Wes starts a new buyer-specific Contract for Deed matter for a verified project and no CWE handoff exists, use the verified project spreadsheet as the active-buyer source and get CWE started instead of treating the missing handoff as a blocker.
+When Wes starts a new buyer-specific Contract for Deed matter for a verified project and no current CWE handoff exists in the transaction folder, use the verified project spreadsheet as the active-buyer source and get CWE started instead of treating the missing handoff as a blocker.
 
 Use this rule when:
 
@@ -153,7 +161,7 @@ Because Wes normally works one active buyer prospect at a time and updates the v
 
 ## CWE File-Based Kickoff
 
-Do not pass buyer, seller, payment, affidavit, or transaction facts to CWE in the kickoff prompt. Let CWE derive those facts from the verified project spreadsheet and durable project files.
+Do not pass buyer, seller, payment, affidavit, or transaction facts to CWE in the kickoff prompt. CWE owns the rule to derive those facts from the verified project spreadsheet and durable project files.
 
 When a CWE handoff is missing and CWE should get started, write a kickoff file in the transaction folder:
 
@@ -165,14 +173,15 @@ The kickoff file should contain only routing/source-control information:
 - live project spreadsheet path,
 - CFD transaction folder path,
 - required CFD handoff destination,
-- date/time of kickoff,
-- instruction that the project spreadsheet and durable project files control all buyer, seller, payment, affidavit, and transaction facts.
+- date/time of kickoff.
+
+Do not include buyer names, payment terms, affidavit conclusions, or instructions about how to derive facts in the kickoff file. The kickoff file is only a pointer file; the CWE skill and project-room instructions define how CWE evaluates files and derives facts.
 
 Then message CWE with a minimal prompt such as:
 
-`Please process the pending file-based CFD kickoff from the Contract for Deed project files. Derive all buyer, seller, payment, source-folder, affidavit, and transaction facts from the files. If the files do not provide enough context, report exactly what is missing.`
+`Please process the pending file-based CFD kickoff from the Contract for Deed project files under your current Credit Worthiness Evaluator rules. If the files do not provide enough context, report exactly what is missing.`
 
-Do not include spreadsheet values, buyer names, payment amounts, seller names, source-folder guesses, or affidavit conclusions in the CWE prompt. If CWE needs those details, it must read them from the kickoff file, project spreadsheet, transaction metadata, project-room instructions, or other durable source files.
+Do not include spreadsheet values, buyer names, payment amounts, seller names, source-folder guesses, or affidavit conclusions in the CWE prompt. If CWE needs those details, it must read them from the project spreadsheet, transaction metadata, project-room instructions, or other durable source files.
 
 ## Affidavit Ownership
 

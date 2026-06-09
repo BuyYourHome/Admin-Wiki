@@ -17,10 +17,11 @@ Use the project room for source inventory, conflict logs, missing-context notes,
 
 - Run the Credit Worthiness Evaluator the same way whether it is called directly by Wes/user or kicked off by the Contract for Deed workflow.
 - The trigger source must not change the evaluation standard, source requirements, buyer segregation, report format, DOCX creation, Teams copy rule, handoff creation, versioning, or Git/no-push rules.
-- A CFD kickoff may supply routing context, such as the target CFD handoff folder, but it does not reduce the required CWE outputs.
+- A CFD kickoff file supplies only routing/source-control context, such as the live project spreadsheet path and target CFD handoff destination. It must not be expected to contain buyer, seller, payment, affidavit, source-folder, or transaction facts.
 - A direct user request for an evaluation must still create/update the CFD handoff when the buyer may proceed to Contract for Deed documents, so CFD receives the same closing-package document request list it would receive from a CFD-initiated run.
 - If a caller provides transaction facts in a prompt, verify them from the project spreadsheet and durable project-room/source files before using them as source facts. If the files do not support a fact, mark it missing or unresolved.
 - For CFD-initiated work, prefer the file-based kickoff in the Contract for Deed transaction folder over prompt-provided facts. Do not use buyer, seller, payment, affidavit, or transaction facts from the kickoff prompt as source facts.
+- Derive buyer, seller, payment, source-folder, affidavit, and transaction facts from the live project spreadsheet and durable project-room/source files. If those files do not provide enough context, report exactly what is missing instead of relying on prompt-supplied facts.
 
 ## Buyer Segregation Rule
 
@@ -83,6 +84,7 @@ Use the project room for source inventory, conflict logs, missing-context notes,
 
 - Accept kickoff requests from CFD when the project spreadsheet identifies a current buyer but no handoff exists yet.
 - For a CFD kickoff, look for `CWE Kickoff.md` in the matching Contract for Deed transaction folder. Use that kickoff file to find the live project spreadsheet and required CFD handoff destination.
+- Treat `CWE Kickoff.md` as a pointer file only. It should contain the verified project/property, live project spreadsheet path, CFD transaction folder path, required handoff destination, and kickoff date/time. The derivation rule lives in this skill, not in the kickoff file.
 - A CFD kickoff is enough to begin the evaluator even if buyer files still need to be uploaded. Refresh whatever buyer documents are available, then report missing files and assumptions in the CWE report and handoff.
 - Treat the project spreadsheet buyer fields as the current buyer source unless the request names a different buyer or the file evidence shows an active conflict.
 - When the evaluator is used for a buyer who may proceed to Contract for Deed documents, create or update a buyer-specific `Credit Worthiness Handoff.md`.

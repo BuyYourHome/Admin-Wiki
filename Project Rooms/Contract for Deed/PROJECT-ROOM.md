@@ -74,6 +74,9 @@ For the Memorandum of Contract for Deed draft, use Wes's edited prototype at `re
 
   `transactions\<Property> - <Buyer>\handoffs\credit-worthiness\Credit Worthiness Handoff.md`
 
+- On CFD startup, check for this handoff before messaging CWE. If the handoff exists, use it and do not call CWE again merely because `CWE Kickoff.md` also exists.
+- Delete or regenerate an existing handoff only when Wes says it is stale, aborted, or should be replaced.
+- `CWE Kickoff.md` is only a routing/source-control pointer file. It never replaces the handoff.
 - Treat these handoffs as source inputs for buyer roles, affidavit packet needs, signer/capacity requirements, supported facts, open assumptions, and attorney-review notes.
 - Contract for Deed owns final document package drafting, formatting, signature-block placement, Teams copy placement, and attorney-review package assembly after consuming the handoff.
 
@@ -117,7 +120,7 @@ Use a file-based CWE kickoff instead of passing transaction facts in the prompt.
 
 `transactions\<Property> - <Buyer>\handoffs\credit-worthiness\CWE Kickoff.md`
 
-The kickoff file should identify the verified project/property, live project spreadsheet path, CFD transaction folder path, and required `Credit Worthiness Handoff.md` destination. CWE must derive buyer, seller, payment, affidavit, source-folder, and transaction facts from the files, not from a detailed prompt.
+The kickoff file should identify only the verified project/property, live project spreadsheet path, CFD transaction folder path, required `Credit Worthiness Handoff.md` destination, and kickoff date/time. Do not include buyer names, payment terms, affidavit conclusions, or fact-derivation instructions in the kickoff file. CWE's own skill and project-room rules require it to derive buyer, seller, payment, affidavit, source-folder, and transaction facts from the files, not from a detailed prompt.
 
 1. If Wes has edited `output\320 Rose - Contract for Deed Agreement - DRAFT.docx` and says it looks good, copy that file to:
 
