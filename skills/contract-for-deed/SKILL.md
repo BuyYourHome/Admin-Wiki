@@ -107,6 +107,28 @@ The handoff may provide:
 
 Use the project spreadsheet `Docs` worksheet and document prototypes for contract terms, property data, seller data, and document formatting. If the handoff conflicts with the spreadsheet or prototype, log the conflict and ask Wes or counsel only when the conflict would affect a signed document.
 
+## CWE Readiness Status Rule
+
+Do not treat a CWE `conditional` label as an automatic stop. Separate the credit/evaluation status from CFD package readiness.
+
+Read the CWE handoff for two distinct decisions:
+
+1. Can CFD prepare documents?
+2. What must be completed before final closing/execution?
+
+Use these readiness meanings:
+
+- `Not ready for documents`: core underwriting or identity facts are missing. Do not prepare closing documents except rough drafts if Wes explicitly asks.
+- `Ready for document preparation`: buyer appears supportable enough for CFD to prepare the package, but listed items still need to be signed, notarized, verified, or reviewed.
+- `Ready for closing execution`: final package can be used for closing, with listed closing deliverables to be completed at signing/closing.
+- `Closed / completed`: required documents have been signed/notarized and copied, recorded, or delivered as applicable.
+
+If the handoff says affidavits are required but expected to be signed/notarized at closing, treat those affidavits as closing deliverables, not blockers to document preparation.
+
+When the file is ready for document preparation, CFD may prepare the closing package before the affidavits are signed or notarized, provided the closing checklist clearly lists the affidavits and other unresolved items. Do not label the file `closed`, `complete`, `final approval complete`, or equivalent until the required closing deliverables are actually completed.
+
+For 320 Rose / Ever Cardoza, if the handoff says `Ready for document preparation; closing execution subject to required affidavits, funds proof, name/role confirmation, and attorney/compliance review`, proceed with document preparation and carry those items into the closing checklist.
+
 ## Missing Handoff Startup Rule
 
 When Wes starts a new buyer-specific Contract for Deed matter for a verified project and no CWE handoff exists, use the verified project spreadsheet as the active-buyer source and get CWE started instead of treating the missing handoff as a blocker.

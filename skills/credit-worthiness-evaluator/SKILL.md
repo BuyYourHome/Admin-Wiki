@@ -68,9 +68,15 @@ Use the project room for source inventory, conflict logs, missing-context notes,
 - For self-employed buyers, distinguish gross business deposits from verified borrower-level net income.
 - Do not treat business revenue as personal income without tax returns, profit-and-loss records, ownership/compensation verification, payroll records, or owner-draw analysis.
 - Consider current debt obligations, current rent/payment history, cash to close, reserves, repair capacity, and final proposed housing payment.
-- State whether the result is approval, decline, or conditional reconsideration. If the file is not approval-ready, say that directly.
-- A conditional approval or conditional reconsideration still requires a full formal report. Do not substitute a short summary, memo, or handoff-only output because the result is conditional.
-- The full report for a conditional result must include the same core sections expected for approval or decline: source basis, transaction snapshot, buyer identity/roles, evidence reviewed, income analysis, debt/payment-ratio analysis, cash-to-close/reserve analysis, compensating factors, conditions to approval, missing documents, legal/compliance review items, and next actions.
+- Separate credit/evaluation status from closing-package readiness status.
+- Do not use `conditional` wording in a way that blocks CFD from preparing the closing package when remaining items are expected to be satisfied by documents signed/notarized at closing.
+- Use these closing-package readiness statuses:
+  1. `Not ready for documents` - core underwriting or identity facts are missing. CFD should not prepare closing documents except rough drafts.
+  2. `Ready for document preparation` - buyer appears supportable enough for CFD to prepare the package, but listed items still need to be signed, notarized, verified, or reviewed.
+  3. `Ready for closing execution` - final package can be used for closing, with listed closing deliverables to be completed at signing/closing.
+  4. `Closed / completed` - required documents have been signed/notarized, copied, recorded/delivered as applicable.
+- If affidavits are required but expected to be signed/notarized at closing, mark them as `closing deliverables`, not as blockers to document preparation.
+- The full report for a supportable file that is not yet ready for final execution must include the same core sections expected for approval or decline: source basis, transaction snapshot, buyer identity/roles, evidence reviewed, income analysis, debt/payment-ratio analysis, cash-to-close/reserve analysis, compensating factors, document-preparation readiness, closing deliverables, items required before final execution, legal/compliance review items, and next actions.
 - Include attorney/compliance review needs for seller-financing, Regulation Z/Dodd-Frank, state law, and adverse-action notice questions.
 
 ## Contract For Deed Handoff Rule
@@ -86,8 +92,10 @@ Use the project room for source inventory, conflict logs, missing-context notes,
 
   `C:\Codex\Wiki Files\Project Rooms\Contract for Deed\transactions\<Property> - <Buyer>\handoffs\credit-worthiness\Credit Worthiness Handoff.md`
 
-- The handoff must identify the live project spreadsheet used. Include buyer/property, project spreadsheet path, evaluation result, report path, source cutoff date, buyer legal names and roles, funds-to-close status, and a closing-package document request list for CFD.
-- For each requested CFD closing-package document, state the document name, why it is needed, condition or gap addressed, required/recommended/optional status, signer, signer capacity, authority source, facts to include, notarization need, current evidence/status, and exact CFD action needed.
+- The handoff must identify the live project spreadsheet used. Include buyer/property, project spreadsheet path, credit/evaluation status, closing-package readiness status, report path, source cutoff date, buyer legal names and roles, funds-to-close status, and a closing-package document request list for CFD.
+- The handoff must tell CFD whether the file is ready for document preparation, which affidavits or support documents must be included as closing deliverables, which items must be resolved before final execution, which items require attorney/compliance review, and whether any issue is serious enough to stop CFD from preparing documents.
+- For each requested CFD closing-package document, state the document name, why it is needed, condition or gap addressed, required/recommended/optional status, signer, signer capacity, authority source, facts to include, notarization need, whether it is a closing deliverable, current evidence/status, and exact CFD action needed.
+- For 320 Rose / Ever Cardoza, if the current evidence supports proceeding subject to execution of affidavits and attorney/compliance review, use wording like: `Ready for document preparation; closing execution subject to required affidavits, funds proof, name/role confirmation, and attorney/compliance review.`
 - The CFD transaction folder is allowed to have one current `Credit Worthiness Handoff.md` that is overwritten when the evaluator produces a newer current handoff. Preserve versioned handoffs in the CWE project-room outputs when history matters.
 - The CWE handoff is a closing-package document request and source input to CFD. CFD owns final Contract for Deed package drafting, formatting, signature-block placement, closing-package affidavit generation, inclusion/exclusion decisions, and attorney-review package assembly.
 
@@ -158,7 +166,7 @@ CWE may draft underwriting-only affidavits when they support the approval file, 
   13. recommended next step
 - Use v9-style compact tables for transaction snapshot, income/reserve context, debt summary, payment-ratio test, and final recommendation/decision callouts.
 - Keep the tone and formatting formal, plain, and businesslike. Prefer the v9 simple heading/table structure over decorative design elements.
-- When a report is conditional, preserve the v9 format while clearly labeling the result as conditional and listing conditions; do not shorten the report or move the recommendation only into later sections.
+- When a report is not yet ready for closing execution, preserve the v9 format while using the readiness statuses above; do not shorten the report or move the Executive Recommendation only into later sections.
 
 ## Optional Approval-Assumption Mode
 
@@ -184,7 +192,7 @@ When approval-assumption mode is active:
 
 ## Mandatory DOCX And Teams Copy Rule
 
-Every evaluator run must produce a full formal DOCX report. Markdown summaries, handoffs, inventories, and missing-context notes may support the run, but they do not replace the DOCX report. Conditional approval, conditional reconsideration, and not-approval-ready results must receive a full report, not a shortened summary.
+Every evaluator run must produce a full formal DOCX report. Markdown summaries, handoffs, inventories, and missing-context notes may support the run, but they do not replace the DOCX report. `Ready for document preparation`, `not ready for documents`, and other non-final-execution results must receive a full report, not a shortened summary.
 
 When an evaluator run produces or updates the formal report:
 
