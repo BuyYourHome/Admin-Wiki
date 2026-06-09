@@ -66,18 +66,20 @@ Use the project room for source inventory, conflict logs, missing-context notes,
 - A CFD kickoff is enough to begin the evaluator even if buyer files still need to be uploaded. Refresh whatever buyer documents are available, then report missing files and assumptions in the CWE report and handoff.
 - Treat the project spreadsheet buyer fields as the current buyer source unless the request names a different buyer or the file evidence shows an active conflict.
 - When the evaluator is used for a buyer who may proceed to Contract for Deed documents, create or update a buyer-specific `Credit Worthiness Handoff.md`.
+- The handoff's main purpose is to tell CFD what credit-worthiness-related documents CFD must create, finalize, and include in the closing package.
 - Keep the handoff in the buyer's segregated CWE `outputs\` folder and copy the current handoff into the matching CFD buyer transaction folder.
 - CFD handoff destination:
 
   `C:\Codex\Wiki Files\Project Rooms\Contract for Deed\transactions\<Property> - <Buyer>\handoffs\credit-worthiness\Credit Worthiness Handoff.md`
 
-- The handoff should include buyer/property, project spreadsheet used, evaluation result, report path, source cutoff date, buyer legal names and roles, funds-to-close status, affidavit requirements, signer, signer capacity, authority source, status, open assumptions, legal/compliance items, and CFD action needed.
+- The handoff should include buyer/property, project spreadsheet used, evaluation result, report path, source cutoff date, buyer legal names and roles, funds-to-close status, and a closing-package document request list for CFD.
+- For each requested CFD closing-package document, state the document name, why it is needed, condition or gap addressed, required/recommended/optional status, signer, signer capacity, authority source, facts to include, notarization need, current evidence/status, and exact CFD action needed.
 - The CFD transaction folder is allowed to have one current `Credit Worthiness Handoff.md` that is overwritten when the evaluator produces a newer current handoff. Preserve versioned handoffs in the CWE project-room outputs when history matters.
-- The CWE handoff is an input to CFD. CFD owns final Contract for Deed package drafting, formatting, signature-block placement, closing-package affidavit generation, and attorney-review package assembly.
+- The CWE handoff is a closing-package document request and source input to CFD. CFD owns final Contract for Deed package drafting, formatting, signature-block placement, closing-package affidavit generation, inclusion/exclusion decisions, and attorney-review package assembly.
 
 ## Affidavit Requirements
 
-When an affidavit need appears during evaluation, list it in the handoff instead of assuming the evaluator should always produce the final document.
+When an affidavit or other credit-worthiness support document is needed for the closing package, list it in the handoff as a CFD document request instead of assuming the evaluator should produce the final document.
 
 For each affidavit, state:
 
@@ -90,9 +92,9 @@ For each affidavit, state:
 - source of the facts,
 - whether notarization is needed,
 - whether it is underwriting-only or closing-package material,
-- requested CFD action.
+- requested CFD closing-package action.
 
-CWE may draft underwriting-only affidavits when they support the approval file, such as rent-history, reserve-observation, receipt-review, or business-judgment approval affidavits. CFD should generate the final signature-ready version when the affidavit belongs in the closing or Contract for Deed package.
+CWE may draft underwriting-only affidavits when they support the approval file, such as rent-history, reserve-observation, receipt-review, or business-judgment approval affidavits. CFD should generate the final signature-ready version and decide whether to include it when the affidavit belongs in the closing or Contract for Deed package.
 
 ## Related-Company Rent History Rule
 
