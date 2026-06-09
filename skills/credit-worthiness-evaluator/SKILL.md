@@ -142,6 +142,12 @@ Use `metadata_only_not_ready` when the affidavit need has been identified but CW
 
 For the current 320 Rose / Ever Cardoza matter, CWE should pass the already-produced affidavit DOCX drafts as `source_docx` affidavit package items.
 
+When Wes asks CWE for help writing an affidavit for a buyer, save the affidavit in the buyer's Teams contract-package affidavit folder:
+
+`[Project]\Selling\[Buyer]\Contract Package\Affidavits\`
+
+For example, if the live buyer folder is `[Project]\Selling\[Buyer]`, create or use `[Project]\Selling\[Buyer]\Contract Package\Affidavits\`. Never overwrite an existing affidavit in that folder; use a versioned filename when needed. This is a CWE output-placement rule only and does not define how CFD consumes or packages the affidavit.
+
 ## Related-Company Rent History Rule
 
 - For the 320 Rose / Ever Cardoza file, recognize that the buyer's current rent history is with related company `Buy Your Home, LLC`.
