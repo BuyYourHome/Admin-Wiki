@@ -332,6 +332,8 @@ Spanish translation rules:
 - For centered English paragraphs, do not apply a left or right indent to the Spanish translation paragraph in a way that pulls it off center.
 - For non-centered English paragraphs, visually shift the Spanish translation paragraph to the right by adding a left indent. Do not use Word's `right indent` setting for this purpose, because right indent changes the right edge rather than moving the paragraph start to the right.
 - Spanish paragraphs must not be part of any Word numbered-list structure.
+- Do not insert the English-control notice in English into the bilingual body. Insert only the Spanish-language English-control notice, place it immediately above paragraph 2 of the Contract for Deed Agreement, and format it bold, blue, and 12 point.
+- Do not insert Spanish translations for paragraph 4 / the `ADDITIONAL CHARGES AND FEES` table-area content. Skip that section's check-box option lines and payer-responsibility lines because the Spanish insertions make the table-like layout visually cluttered.
 - Do not add Spanish text inside tables.
 - Do not add Spanish text in signature blocks.
 - Do not add Spanish text in notary blocks.
