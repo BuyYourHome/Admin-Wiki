@@ -16,6 +16,7 @@ Codex does not currently show every role below in one unified "Agents" list. Som
 | Admin Request Wrapup | Wiki-managed skill | Active | At the end of Admin wiki requests | `skills\admin-request-wrapup\SKILL.md`; `AGENTS.md` |
 | Credit Worthiness Evaluator | Wiki-managed skill plus project room | Active | On demand | `skills\credit-worthiness-evaluator\SKILL.md`; `Project Rooms\Credit Worthiness Evaluator\README.md` |
 | Contract for Deed | Wiki-managed skill plus project room | Active | On demand | `skills\contract-for-deed\SKILL.md`; `Project Rooms\Contract for Deed\PROJECT-ROOM.md` |
+| CFD Email Package Delivery | Wiki-managed support skill | Active | Called by Contract for Deed Email Package mode | `skills\cfd-email-package-delivery\SKILL.md` |
 | CMA Report | Wiki-managed skill | Active | On demand when a CMA or property report is created | `skills\cma-report\SKILL.md` |
 | Grocery List Handler | Wiki rule and data workflow | Active | On demand, including approved Boss/Jenny text instructions | `operations/grocery-list/` |
 | AI Project Room Workflow | Wiki workflow | Active | On demand before complex multi-source work | `Project Room Workflow.md` |
@@ -274,6 +275,28 @@ Important rules:
 - Use the project room for project-specific prototypes, scripts, staged spreadsheets, outputs, and source history.
 - Use the skill as the reusable workflow wrapper.
 - Do not include deed documents unless Wes changes the package scope.
+
+## CFD Email Package Delivery
+
+Type: wiki-managed support skill.
+
+Status: active.
+
+Purpose:
+
+- Provide the OfficeAssist email sender-safety and delivery-verification workflow for Contract for Deed Email Package mode.
+- Send CFD package review emails to Wes only, from `OfficeAssist@BuyYourHomeLLC.com`, with all files listed in the Closing Checklist attached.
+- Keep the reusable email delivery rules separate from the OfficeAssist Morning Email Summary automation.
+
+Defined in:
+
+- `C:\Codex\Wiki Files\skills\cfd-email-package-delivery\SKILL.md`
+
+Important rules:
+
+- Called by Contract for Deed; it does not determine package contents.
+- Prefer the Outlook/email connector with OfficeAssist Drafts and Sent Items verification.
+- Use local Outlook only as fallback when connector send or verification is unavailable.
 
 ## CMA Report
 
