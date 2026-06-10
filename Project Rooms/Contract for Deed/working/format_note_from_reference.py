@@ -58,12 +58,17 @@ def replace_legacy_buyer_name_variants(doc, x):
     buyer2 = (x.get("buyer2") or "").strip()
     if not buyer2:
         return
-    replacements = {
-        "Maria Sarmjento": buyer2,
-        "MARIA SARMJENTO": buyer2.upper(),
-        "Maria Geraldine Sarmiento": buyer2,
-        "MARIA GERALDINE SARMIENTO": buyer2.upper(),
-    }
+    legacy_buyer2_names = [
+        "Maria Sarmjento",
+        "Maria Sarmiento",
+        "Maria Geraldine Sarmiento",
+        "Maria Geraldina Sarmiento",
+    ]
+    replacements = {}
+    for old in legacy_buyer2_names:
+        if old != buyer2:
+            replacements[old] = buyer2
+            replacements[old.upper()] = buyer2.upper()
 
     def update_paragraph(paragraph):
         text = paragraph.text
@@ -211,7 +216,7 @@ def split_address(address):
 
 def ensure_notary_block(doc, x):
     buyer1 = x.get("buyer1") or "Ever Cardoza"
-    buyer2 = x.get("buyer2") or "Maria Sarmiento"
+    buyer2 = x.get("buyer2") or "Purchaser 2"
     full_text = "\n".join(paragraph.text for paragraph in doc.paragraphs)
     if "Notary Public" in full_text and "personally appeared before me" in full_text:
         return
@@ -240,7 +245,7 @@ def ensure_notary_block(doc, x):
 
 def update_signature_and_notary_names(doc, x):
     buyer1 = x.get("buyer1") or "Ever Cardoza"
-    buyer2 = x.get("buyer2") or "Maria Sarmiento"
+    buyer2 = x.get("buyer2") or "Purchaser 2"
     buyers = [name for name in [buyer1, buyer2] if name]
     combined = " and ".join(buyers)
     signature_index = 0
@@ -259,7 +264,12 @@ def update_signature_and_notary_names(doc, x):
                 run.bold = True
             signature_index += 1
             continue
-        if "personally appeared before me" in text and ("Cardoza" in text or "Sarmjento" in text or x["buyer"] in text):
+        if "personally appeared before me" in text and (
+            "Cardoza" in text
+            or "Sarm" in text
+            or (x.get("buyer") and x["buyer"] in text)
+            or (x.get("buyer2") and x["buyer2"] in text)
+        ):
             set_mixed_runs(
                 paragraph,
                 [
@@ -300,7 +310,7 @@ def replace_paragraph_range_with_lines(doc, start_idx, end_idx, lines):
 
 def standardize_notary_blocks(doc, x):
     buyer1 = x.get("buyer1") or "Ever Cardoza"
-    buyer2 = x.get("buyer2") or "Maria Sarmiento"
+    buyer2 = x.get("buyer2") or "Purchaser 2"
     buyers = [name for name in [buyer1, buyer2] if name]
     combined = " and ".join(buyers)
     for start_idx in reversed(
@@ -365,7 +375,7 @@ def main():
                 paragraph,
                 f"This debt instrument is made in connection with the Contract for Deed for the property located at {x['property_address']}, {x['property_city_state']}. The Holder of this Note is the Seller under the Contract for Deed, acting by and through the Trustee identified above.",
             )
-        elif text.strip() == text.strip().upper() and ("CARDOZA" in text or "SARMJENTO" in text):
+        elif text.strip() == text.strip().upper() and ("CARDOZA" in text or "SARM" in text):
             pass
         elif text.strip().startswith("4121 ") or text.strip().endswith("Tensity Dr"):
             set_paragraph(paragraph, buyer_line1)

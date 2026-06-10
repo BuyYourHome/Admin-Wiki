@@ -243,12 +243,17 @@ def replace_legacy_buyer_name_variants(doc, x):
     buyer2 = (x.get("buyer2") or "").strip()
     if not buyer2:
         return
-    replacements = {
-        "Maria Sarmjento": buyer2,
-        "MARIA SARMJENTO": buyer2.upper(),
-        "Maria Geraldine Sarmiento": buyer2,
-        "MARIA GERALDINE SARMIENTO": buyer2.upper(),
-    }
+    legacy_buyer2_names = [
+        "Maria Sarmjento",
+        "Maria Sarmiento",
+        "Maria Geraldine Sarmiento",
+        "Maria Geraldina Sarmiento",
+    ]
+    replacements = {}
+    for old in legacy_buyer2_names:
+        if old != buyer2:
+            replacements[old] = buyer2
+            replacements[old.upper()] = buyer2.upper()
 
     def update_paragraph(paragraph):
         text = paragraph.text

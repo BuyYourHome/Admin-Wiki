@@ -13,7 +13,7 @@ Buyer-specific Contract for Deed transaction folder for selling 320 Rose Pl to E
 
 - Property: 320 Rose Pl.
 - Buyer 1: Ever Cardoza / Ever Amarildo Cardoza Bolanos, final legal signing name to be confirmed from the project spreadsheet and closing file.
-- Buyer 2: Maria Sarmiento / Maria Geraldine Sarmiento, final legal signing name and role to be confirmed from the project spreadsheet and closing file.
+- Buyer 2: Maria Geraldina Sarmiento, final legal signing name and role to be confirmed from the project spreadsheet and closing file.
 - Seller/signing capacity: use the Contract for Deed project spreadsheet and current prototypes as the source of truth.
 
 ## Source Paths

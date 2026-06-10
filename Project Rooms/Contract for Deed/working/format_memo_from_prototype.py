@@ -79,12 +79,17 @@ def replace_legacy_buyer_name_variants(doc, x):
     buyer2 = (x.get("buyer2") or "").strip()
     if not buyer2:
         return
-    replacements = {
-        "Maria Sarmjento": buyer2,
-        "MARIA SARMJENTO": buyer2.upper(),
-        "Maria Geraldine Sarmiento": buyer2,
-        "MARIA GERALDINE SARMIENTO": buyer2.upper(),
-    }
+    legacy_buyer2_names = [
+        "Maria Sarmjento",
+        "Maria Sarmiento",
+        "Maria Geraldine Sarmiento",
+        "Maria Geraldina Sarmiento",
+    ]
+    replacements = {}
+    for old in legacy_buyer2_names:
+        if old != buyer2:
+            replacements[old] = buyer2
+            replacements[old.upper()] = buyer2.upper()
 
     def update_paragraph(paragraph):
         text = paragraph.text
@@ -192,6 +197,8 @@ def fill_notary_counties(doc, x):
 
 def update_notary_acknowledgments(doc, x):
     buyer = x["buyer"]
+    buyer2 = x.get("buyer2") or ""
+    legacy_buyer_names = ["Ever Cardoza", "Maria Sarmjento", "Maria Sarmiento", "Maria Geraldine Sarmiento"]
     seller_segments = [
         ("I certify that the following person(s) personally appeared before me this day, each acknowledging to me that he/she/they signed the foregoing document: ", False),
         (x["manager"], True),
@@ -212,7 +219,7 @@ def update_notary_acknowledgments(doc, x):
             continue
         if x["manager"] in text or x["trustee"] in text or x["trust"] in text:
             set_mixed_runs(paragraph, seller_segments)
-        elif buyer in text or "Ever Cardoza" in text or "Maria Sarmjento" in text:
+        elif any(name and name in text for name in [buyer, buyer2, *legacy_buyer_names]):
             set_mixed_runs(paragraph, buyer_segments)
 
 
@@ -368,7 +375,7 @@ def update_buyer_signature_fields(doc, x):
             set_mixed_runs(paragraph, [("Printed Name:", False), (" ", False), (buyers[buyer_index], True)])
             buyer_index += 1
             continue
-        if text in buyers or text in ("Ever Cardoza", "Maria Sarmjento"):
+        if text in buyers or text in ("Ever Cardoza", "Maria Sarmjento", "Maria Sarmiento", "Maria Geraldine Sarmiento"):
             match_index = min(buyer_index, len(buyers) - 1)
             set_paragraph_bold(paragraph, buyers[match_index])
 
