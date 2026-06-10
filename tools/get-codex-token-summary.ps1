@@ -32,10 +32,32 @@ function Add-Usage($target, $usage) {
     $target.event_count += 1
 }
 
+function Get-PercentRemaining($usedPercent) {
+    if ($null -eq $usedPercent) {
+        return $null
+    }
+
+    $remaining = 100.0 - [double]$usedPercent
+    if ($remaining -lt 0) { $remaining = 0.0 }
+    return [math]::Round($remaining, 2)
+}
+
 $codexHome = if ($env:CODEX_HOME) { $env:CODEX_HOME } else { Join-Path $env:USERPROFILE ".codex" }
 $roots = @((Join-Path $codexHome "sessions"))
 if ($Source -eq "all") {
     $roots += (Join-Path $codexHome "archived_sessions")
+}
+
+$configPath = Join-Path $PSScriptRoot "codex-token-summary.config.json"
+$weeklyTokenBudget = $null
+if (Test-Path $configPath) {
+    try {
+        $config = Get-Content -Raw -LiteralPath $configPath | ConvertFrom-Json
+        if ($null -ne $config.weekly_token_budget -and [string]$config.weekly_token_budget -ne "") {
+            $weeklyTokenBudget = [int64]$config.weekly_token_budget
+        }
+    } catch {
+    }
 }
 
 $yesterdayStart = $Now.Date.AddDays(-1)
@@ -47,6 +69,8 @@ $yesterdayUsage = New-Usage
 $weekUsage = New-Usage
 $yesterdaySessions = [System.Collections.Generic.HashSet[string]]::new()
 $weekSessions = [System.Collections.Generic.HashSet[string]]::new()
+$latestRateLimit = $null
+$latestRateLimitTimestamp = $null
 
 $files = foreach ($root in $roots) {
     if (Test-Path $root) {
@@ -85,6 +109,11 @@ foreach ($file in $files) {
         $timestampUtc = [datetime]::Parse($entry.timestamp, $null, [System.Globalization.DateTimeStyles]::RoundtripKind)
         $timestampLocal = $timestampUtc.ToLocalTime()
 
+        if ($null -eq $latestRateLimitTimestamp -or $timestampUtc -gt $latestRateLimitTimestamp) {
+            $latestRateLimitTimestamp = $timestampUtc
+            $latestRateLimit = $entry.payload.rate_limits
+        }
+
         if ($timestampLocal -ge $yesterdayStart -and $timestampLocal -lt $yesterdayEnd) {
             Add-Usage $yesterdayUsage $usage
             [void]$yesterdaySessions.Add($sessionKey)
@@ -100,11 +129,56 @@ foreach ($file in $files) {
 $yesterdayUsage.session_count = $yesterdaySessions.Count
 $weekUsage.session_count = $weekSessions.Count
 
+$weeklyBudgetSummary = if ($null -ne $weeklyTokenBudget -and $weeklyTokenBudget -gt 0) {
+    $remainingTokens = $weeklyTokenBudget - [int64]$weekUsage.total_tokens
+    if ($remainingTokens -lt 0) { $remainingTokens = 0 }
+    $usedPercent = [math]::Round((([double]$weekUsage.total_tokens / [double]$weeklyTokenBudget) * 100.0), 2)
+    if ($usedPercent -gt 100.0) { $usedPercent = 100.0 }
+    [pscustomobject]@{
+        configured = $true
+        weekly_token_budget = $weeklyTokenBudget
+        used_tokens = [int64]$weekUsage.total_tokens
+        remaining_tokens = [int64]$remainingTokens
+        used_percent = $usedPercent
+        remaining_percent = [math]::Round((100.0 - $usedPercent), 2)
+    }
+} else {
+    [pscustomobject]@{
+        configured = $false
+        weekly_token_budget = $null
+        used_tokens = [int64]$weekUsage.total_tokens
+        remaining_tokens = $null
+        used_percent = $null
+        remaining_percent = $null
+    }
+}
+
+$rateLimitSummary = if ($null -ne $latestRateLimit) {
+    [pscustomobject]@{
+        captured_at = $latestRateLimitTimestamp.ToLocalTime().ToString("o")
+        primary = [pscustomobject]@{
+            window_minutes = $latestRateLimit.primary.window_minutes
+            used_percent = $latestRateLimit.primary.used_percent
+            remaining_percent = (Get-PercentRemaining $latestRateLimit.primary.used_percent)
+            resets_at = if ($latestRateLimit.primary.resets_at) { ([DateTimeOffset]::FromUnixTimeSeconds([int64]$latestRateLimit.primary.resets_at)).ToLocalTime().ToString("o") } else { $null }
+        }
+        secondary = [pscustomobject]@{
+            window_minutes = $latestRateLimit.secondary.window_minutes
+            used_percent = $latestRateLimit.secondary.used_percent
+            remaining_percent = (Get-PercentRemaining $latestRateLimit.secondary.used_percent)
+            resets_at = if ($latestRateLimit.secondary.resets_at) { ([DateTimeOffset]::FromUnixTimeSeconds([int64]$latestRateLimit.secondary.resets_at)).ToLocalTime().ToString("o") } else { $null }
+        }
+    }
+} else {
+    $null
+}
+
 $result = [pscustomobject]@{
     generated_at = $Now.ToString("o")
     timezone = [System.TimeZoneInfo]::Local.Id
     source = $Source
     roots = $roots
+    config_path = $configPath
     yesterday = [pscustomobject]@{
         start = $yesterdayStart.ToString("o")
         end = $yesterdayEnd.ToString("o")
@@ -115,6 +189,8 @@ $result = [pscustomobject]@{
         end = $weekEnd.ToString("o")
         usage = [pscustomobject]$weekUsage
     }
+    rate_limit_remaining = $rateLimitSummary
+    weekly_budget_remaining = $weeklyBudgetSummary
 }
 
 $result | ConvertTo-Json -Depth 6
