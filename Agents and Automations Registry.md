@@ -127,11 +127,16 @@ Important limitations:
 
 Tools/services used:
 
-- Local Outlook profile, unless replaced by a future Outlook connector.
+- Outlook/email connector as the preferred production path for Wes mailbox reads and OfficeAssist send verification.
+- Local Outlook profile as fallback only when the connector cannot perform the needed send or verification step.
 - OfficeAssist mailbox for sending.
 - Live Codex session token helper: `C:\Codex\Wiki Files\tools\get-codex-token-summary.ps1`
 - Token budget config for optional weekly remaining-percent reporting: `C:\Codex\Wiki Files\tools\codex-token-summary.config.json`
 - Text/SMS fallback for failed email summary delivery, when available.
+
+Persistent send-verification rule:
+
+- As confirmed from the successful 2026-06-09 run, a connector-verified OfficeAssist Drafts item followed by a connector-verified OfficeAssist Sent Items record is an acceptable production send path even when `OfficeAssist@BuyYourHomeLLC.com` is not mounted as a local Outlook mailbox root on that machine.
 
 ## Document Scanning
 
