@@ -11,6 +11,8 @@ Use this skill only as a support skill for Contract for Deed `Email Package` mod
 
 This skill only handles safe delivery of that already-compiled package email.
 
+After preparing the CFD package-specific email body and ZIP attachment, call/use `officeassist-email-delivery` for OfficeAssist sender safety, Outlook connector handling, Sent Items verification, local Outlook fallback rules, and failure handling.
+
 ## Recipient And Sender Rules
 
 - Send the CFD package email to `WesWill@BuyYourHomeLLC.com` only so Wes can review and forward it himself.
@@ -37,34 +39,13 @@ When using the Outlook/email connector, pass the ZIP path as an attachment array
 
 If Wes specifically asks for individual attachments, verify the connector's current attachment input format first. If individual attachment upload fails or would risk omitting files, stop and report the blocker instead of sending a partial package.
 
-## Preferred Send Path
+## Delivery Hand Off
 
-Prefer the Outlook/email connector when it can perform the needed sender and delivery verification:
+Pass these caller-supplied values to `officeassist-email-delivery`:
 
-1. Create or verify the message as a draft stored in `OfficeAssist@BuyYourHomeLLC.com` Drafts.
-2. Confirm the visible sender/from identity is `OfficeAssist@BuyYourHomeLLC.com`.
-3. Send the message.
-4. Verify the sent copy appears in `OfficeAssist@BuyYourHomeLLC.com` Sent Items.
-
-A connector-verified OfficeAssist Drafts item followed by a connector-verified OfficeAssist Sent Items record is an acceptable production send path even if the OfficeAssist mailbox root is not mounted in local Outlook on that computer.
-
-## Local Outlook Fallback
-
-Use local Outlook only when the Outlook/email connector cannot perform the needed send or verification step.
-
-Before sending through local Outlook:
-
-- Create or save the draft under the `OfficeAssist@BuyYourHomeLLC.com` Drafts folder.
-- Verify the saved draft is physically stored in the OfficeAssist Drafts folder.
-- Verify the visible sender/from identity is `OfficeAssist@BuyYourHomeLLC.com`.
-
-Outlook may leave `SendUsingAccount` blank after save/reopen. A blank value is acceptable only when the draft is in the OfficeAssist Drafts folder and the visible sender/from identity is OfficeAssist. If Outlook shows a non-blank sending account other than `OfficeAssist@BuyYourHomeLLC.com`, or if the draft is stored in any other mailbox, do not send automatically.
-
-## Failure Handling
-
-If sender verification fails, the email cannot be sent, an attachment is missing, or the OfficeAssist Sent Items record cannot be verified:
-
-- Do not leave a silent Outlook draft for later manual sending.
-- Do not send a partial package.
-- Notify Wes in the chat with the blocker and the proposed email body.
-- Do not send correction emails or retries without Wes's explicit instruction.
+- sender mailbox: `OfficeAssist@BuyYourHomeLLC.com`,
+- recipient: `WesWill@BuyYourHomeLLC.com`,
+- subject beginning with `DRAFT:` unless Wes provides a different review-submission subject for that specific run,
+- plain-text body containing the Closing Checklist content,
+- one complete package ZIP attachment,
+- strict rule that no outside recipient or partial package send is allowed.
