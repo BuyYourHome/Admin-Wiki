@@ -40,6 +40,28 @@ When acting in an existing chat after a skill update, reread the relevant instal
 
 If Wes says `do not use compiled skills`, `do not use installed skills`, or similar, treat the task as process-development mode. In process-development mode, reason from the current discussion and canonical source files instead of assuming the installed runtime copy controls.
 
+## Operating Modes
+
+CFD work should be understood in these operating modes:
+
+1. **Full English Package**
+   Confirm the project and buyer, refresh the project spreadsheet, check/read the current CWE handoff, start CWE if a current handoff is missing and the workflow calls for it, use the handoff to identify closing-package items, read affidavit/support documents already created and stored in Teams by CWE, regenerate the clean Contract for Deed Agreement, Memorandum, Promissory Note, Term Sheet, Buyer Acknowledgment Addendum, and include the closing checklist / cover page. Produce versioned project-room outputs and versioned Teams copies for CFD-created deliverables.
+
+2. **Attorney Review Package**
+   Create attorney-review versions with contextual review blocks. Produce versioned project-room outputs and versioned Teams copies.
+
+3. **Spanish Add-On**
+   Generate the bilingual Spanish Contract for Deed Agreement only, unless Wes explicitly expands the Spanish scope. This mode is additive and does not run the full English package unless Wes asks for the full package too. Produce versioned project-room output and versioned Teams copy.
+
+4. **Maintenance**
+   Update canonical CFD skill rules and/or project-room generator scripts, keep scripts aligned with skill rules, sync the installed Codex skill when requested, and commit or push only under the normal Admin wiki rules.
+
+Teams delivery is not a standalone mode. Every mode that creates or updates a delivery document should place a versioned copy in the appropriate Teams buyer folder unless Wes says project-room only.
+
+Checklist/cover-page handling is not a standalone mode. It belongs inside Full English Package mode.
+
+Affidavit packaging is not a standalone CFD output mode. CFD reads, references, and packages around affidavit/support documents created and stored in Teams by CWE; CFD should not reauthor or generate affidavit outputs unless Wes explicitly changes that division of responsibility.
+
 ## Core Workflow
 
 Use this workflow when Wes asks to refresh or recreate contract-for-deed sale documents.
