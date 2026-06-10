@@ -16,6 +16,7 @@ Use this repo when formulating solutions for office-admin workflows, SOPs, autom
 - Read `Admin Home.md` first for the current operating map.
 - Use `Agents and Automations Registry.md` to inspect named agent-like roles, active automations, skills, schedules, and where each is defined.
 - Use `Connector and Plugin Usage Rules.md` to decide when to prefer installed connectors/plugins over local desktop automation.
+- Use `LibreOffice Location Rule.md` before rendering or converting Word/PDF documents with LibreOffice.
 - Use `Project Room Workflow.md` before major work that depends on multiple source files, emails, scans, notes, spreadsheets, or prior drafts.
 - Use `Repository Location Rule.md` for repo/location policy.
 - Use `Git Work Scope Rule.md` before committing or pushing Admin wiki work.
@@ -77,6 +78,13 @@ Use this repo when formulating solutions for office-admin workflows, SOPs, autom
 - When creating, renaming, pausing, deleting, or materially changing an agent-like function, update `Agents and Automations Registry.md`.
 - Keep review folders separate when the user has specified separate workflows, such as statement review versus invoice review.
 - If a mailbox, folder, or external service is unavailable, do not substitute a similar one without explicit permission.
+
+## Document Rendering Tools
+
+- LibreOffice is installed at `C:\Program Files\LibreOffice\program\soffice.exe`.
+- The LibreOffice program folder is `C:\Program Files\LibreOffice\program`.
+- Do not assume `soffice.exe` is on PATH. For DOCX/PDF render or conversion commands, use the full executable path or prepend the program folder to PATH for that command.
+- See [[LibreOffice Location Rule]] for the current command pattern and timeout cleanup rule.
 
 ## AI Project Rooms
 
