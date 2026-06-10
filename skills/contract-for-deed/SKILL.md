@@ -303,7 +303,7 @@ For example:
 
 `v01 - 320 Rose - Contract for Deed Agreement - DRAFT.docx`
 
-Use the same version-prefixed names in the project-room output folder and the Teams delivery mirror. Reruns overwrite the current version-prefixed files unless Wes explicitly says to increment the version, such as moving from `v01 -` to `v02 -`. Do not create new revision copies on every rerun merely because the package was regenerated.
+Use the same version-prefixed names in the project-room output folder and the Teams delivery mirror. Each generated delivery run should create the next available version number, such as moving from `v01 -` to `v02 -`, then `v03 -`. Do not overwrite an existing version-prefixed delivery file unless Wes explicitly instructs Codex to replace that exact version.
 
 Do not add version prefixes to prototypes, staged spreadsheets, source files, scripts, handoffs, temporary files, or other non-delivery working files unless Wes gives a separate instruction.
 
