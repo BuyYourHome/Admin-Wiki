@@ -129,6 +129,7 @@ Tools/services used:
 
 - Local Outlook profile, unless replaced by a future Outlook connector.
 - OfficeAssist mailbox for sending.
+- Live Codex session token helper: `C:\Codex\Wiki Files\tools\get-codex-token-summary.ps1`
 - Text/SMS fallback for failed email summary delivery, when available.
 
 ## Document Scanning
