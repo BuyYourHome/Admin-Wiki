@@ -323,6 +323,12 @@ Save the bilingual output in the project-room output folder and copy it to the m
 
 `Contract Package\Spanish Package\`
 
+The current project-room generator for the Spanish Contract for Deed deliverable is:
+
+`C:\Codex\Wiki Files\Project Rooms\Contract for Deed\working\generate_spanish_contract.py`
+
+Before rerunning Spanish output, inspect that generator and confirm it implements the current Spanish Translation Flag rules in this skill. If the Spanish rules have changed, update the generator script before rerunning the Spanish output. Do not assume the script automatically changed merely because this skill source changed.
+
 Spanish translation rules:
 
 - Keep the English text, numbering, paragraph order, and formatting intact.
