@@ -293,6 +293,20 @@ Do not convert underwriting-only affidavits into closing documents unless Wes or
 - If the spreadsheet has no adverse-condition text, keep one section 9 `NOTE FOR ATTORNEY REVIEW` placeholder in the clean contract.
 - Attorney-review mode overwrites the standard `ATTORNEY REVIEW PACKAGE` files and adds blue contextual review blocks. Clean drafts must not contain those blocks.
 
+## Version Prefix Rule
+
+Generated buyer-specific package files should use a version prefix before the existing descriptive file name. The default first version is:
+
+`v01 - <existing descriptive file name>`
+
+For example:
+
+`v01 - 320 Rose - Contract for Deed Agreement - DRAFT.docx`
+
+Use the same version-prefixed names in the project-room output folder and the Teams delivery mirror. Reruns overwrite the current version-prefixed files unless Wes explicitly says to increment the version, such as moving from `v01 -` to `v02 -`. Do not create new revision copies on every rerun merely because the package was regenerated.
+
+Do not add version prefixes to prototypes, staged spreadsheets, source files, scripts, handoffs, temporary files, or other non-delivery working files unless Wes gives a separate instruction.
+
 ## Spanish Translation Flag
 
 Wes may invoke the Spanish translation mode by saying `Spanish flag`, `Spanish version`, `bilingual version`, `Spanish contract`, or similar when starting or rerunning CFD.
