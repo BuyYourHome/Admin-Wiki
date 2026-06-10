@@ -24,9 +24,18 @@ This skill only handles safe delivery of that already-compiled package email.
 Before sending:
 
 1. Use the Closing Checklist content supplied by the Contract for Deed workflow as the email body.
-2. Attach every file listed in the Closing Checklist.
+2. Build one complete package ZIP containing every file listed in the Closing Checklist, unless Wes explicitly asks for individual attachments for that specific run.
 3. Verify each listed attachment exists and is readable.
-4. If any listed file is missing or cannot be attached, do not send the email. Report the missing file and provide the proposed email body in the chat.
+4. Verify the ZIP was created and is readable before sending.
+5. If any listed file is missing or cannot be included in the ZIP, do not send the email. Report the missing file and provide the proposed email body in the chat.
+
+## Attachment Rule
+
+Use a single complete package ZIP as the default CFD Email Package attachment. This is the preferred delivery format because it keeps the checklist package together and works reliably with the Outlook/email connector.
+
+When using the Outlook/email connector, pass the ZIP path as an attachment array, even when there is only one ZIP attachment. Do not pass newline-separated paths. Do not pass a single attachment path as a plain string if the connector rejects it; retry with the array form.
+
+If Wes specifically asks for individual attachments, verify the connector's current attachment input format first. If individual attachment upload fails or would risk omitting files, stop and report the blocker instead of sending a partial package.
 
 ## Preferred Send Path
 
