@@ -54,9 +54,10 @@ Use this workflow when Wes asks to refresh or recreate contract-for-deed sale do
 8. Refresh the staged project spreadsheet from the live project spreadsheet.
 9. Read document values from the workbook `Docs` worksheet only. If a value is calculated elsewhere in the workbook, it must be exposed as a `Docs` field before the document generator uses it.
 10. Regenerate the standard clean draft files, overwriting the existing drafts unless Wes asks for revision copies.
-11. Verify clean drafts contain no generated attorney-review or management-review blocks.
-12. Verify key values from the `Docs` worksheet appear in the generated documents.
-13. Report output file locations and elapsed time for each major task.
+11. If the Spanish flag is active, generate the Spanish/bilingual deliverables described in the Spanish Translation Flag section after the standard English clean drafts are current.
+12. Verify clean drafts contain no generated attorney-review or management-review blocks.
+13. Verify key values from the `Docs` worksheet appear in the generated documents.
+14. Report output file locations and elapsed time for each major task.
 
 ## Project Verification Rule
 
@@ -291,6 +292,52 @@ Do not convert underwriting-only affidavits into closing documents unless Wes or
 - Notary blocks must preserve underlined notary-name blanks and include notary signature lines.
 - If the spreadsheet has no adverse-condition text, keep one section 9 `NOTE FOR ATTORNEY REVIEW` placeholder in the clean contract.
 - Attorney-review mode overwrites the standard `ATTORNEY REVIEW PACKAGE` files and adds blue contextual review blocks. Clean drafts must not contain those blocks.
+
+## Spanish Translation Flag
+
+Wes may invoke the Spanish translation mode by saying `Spanish flag`, `Spanish version`, `bilingual version`, `Spanish contract`, or similar when starting or rerunning CFD.
+
+The Spanish flag can be supplied by Wes's chat instruction. A spreadsheet field is not required for the flag to apply. If a future `Docs` worksheet field is added for Spanish/bilingual output, an explicit chat instruction from Wes controls for that run.
+
+The Spanish flag is additive. It does not replace the normal English package and does not alter the English signing copies. First generate or confirm the current English clean package, then create separate Spanish/bilingual deliverables.
+
+For the first implementation, the Spanish flag applies to the Contract for Deed Agreement only unless Wes explicitly expands the scope. The default output name is:
+
+`<Property> - Contract for Deed Agreement - BILINGUAL SPANISH DRAFT.docx`
+
+Save the bilingual output in the project-room output folder and copy it to the matching Teams buyer folder under:
+
+`Contract Package\Spanish Package\`
+
+Spanish translation rules:
+
+- Keep the English text, numbering, paragraph order, and formatting intact.
+- Insert the Spanish translation immediately below each eligible English body paragraph.
+- Spanish translation paragraphs must be blue, smaller than the English body text, and use a dedicated non-numbered style.
+- Spanish paragraphs must not be part of any Word numbered-list structure.
+- Do not add Spanish text inside tables.
+- Do not add Spanish text in signature blocks.
+- Do not add Spanish text in notary blocks.
+- Do not add Spanish text to signature lines, initials, acknowledgment blanks, or notary certificate language.
+- Do not change paragraph numbers to accommodate Spanish text.
+- Add a short English-control clause stating that the English version controls if there is any conflict between English and Spanish.
+- Mark the Spanish text as a draft convenience translation unless Wes, counsel, or a qualified translator approves final translation wording.
+- Do not represent the Spanish version as a certified legal translation unless Wes provides that certification or explicitly instructs that a certified translator has approved it.
+
+Eligibility rules:
+
+- Translate ordinary contract body paragraphs and section text.
+- Skip table content, signature blocks, notary blocks, initials/signature blanks, attorney-review blocks, management-review blocks, and generated package metadata.
+- Once a signature section or notary section begins, do not insert Spanish text below later paragraphs unless a future document-specific rule says otherwise.
+
+Before delivering a Spanish/bilingual document, verify:
+
+- English paragraph numbering is unchanged from the English clean draft.
+- No Spanish text appears in tables, signature blocks, notary blocks, or blanks.
+- Spanish text is blue and smaller than the English text.
+- The English-control clause is present.
+- The draft translation / review status is visible.
+- The English clean draft remains unchanged.
 
 ## Skill Maintenance
 

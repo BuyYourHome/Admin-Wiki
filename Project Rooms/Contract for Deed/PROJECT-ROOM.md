@@ -171,6 +171,8 @@ The kickoff file should identify only the verified project/property, live projec
 
    `output\320 Rose - Buyer Acknowledgment Addendum - DRAFT.docx`
 
+   If Wes invokes the Spanish flag in the chat, first complete the normal English clean package, then create a separate bilingual Spanish Contract for Deed draft. A spreadsheet field is not required for the flag to apply. The bilingual draft should be an added deliverable, not a replacement for the English signing copy.
+
 5. The Contract for Deed refresh must preserve the prototype formatting and update only the controlled variable fields. Avoid paragraph-number assumptions where possible; locate sections by their visible text because Wes may adjust spacing or wording in the prototype.
 
 6. Current contract-specific rules:
@@ -204,6 +206,7 @@ The kickoff file should identify only the verified project/property, live projec
    - The section 9 adverse-condition placeholder should explicitly say `NOTE FOR ATTORNEY REVIEW` and should appear only once.
    - Trim any trailing blank/text content after the final purchaser notary block.
    - Because this is a contract for deed package, a deed is not required at this time and should not be included in the package.
+   - If the Spanish flag is active, create a separate bilingual Spanish Contract for Deed draft by inserting Spanish translation paragraphs below eligible English body paragraphs only. Keep English numbering and formatting intact. Spanish translation paragraphs should be blue, smaller than the English text, and non-numbered. Do not insert Spanish text in tables, signature blocks, notary blocks, signature lines, initials, acknowledgment blanks, or notary certificate language. Add an English-control clause stating that the English version controls if there is any conflict between English and Spanish. Mark Spanish text as a draft convenience translation unless Wes, counsel, or a qualified translator approves final translation wording.
 
 ## Current Package Scope
 
@@ -214,6 +217,12 @@ Current package documents:
 - Contract for Deed Agreement
 - Memorandum of Contract for Deed
 - Promissory Note for Contract for Deed
+
+Spanish flag add-on:
+
+- Contract for Deed Agreement bilingual Spanish draft only, unless Wes explicitly expands the Spanish scope to other documents.
+- Save the bilingual output in the project-room output folder and copy it to the matching Teams buyer folder under `Contract Package\Spanish Package\`.
+- Use an output name ending in `BILINGUAL SPANISH DRAFT.docx`.
 
 Buyer-specific handoff/checklist inputs:
 
