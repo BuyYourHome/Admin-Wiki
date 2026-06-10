@@ -1,4 +1,5 @@
 from pathlib import Path
+import re
 import shutil
 
 from docx import Document
@@ -11,8 +12,8 @@ from docx.shared import Inches, Pt, RGBColor
 
 PROJECT = Path(r"C:\Codex\Wiki Files\Project Rooms\Contract for Deed")
 ENGLISH_CONTRACT = PROJECT / "output" / "320 Rose - Contract for Deed Agreement - DRAFT.docx"
-BILINGUAL_CONTRACT = PROJECT / "output" / "v01 - 320 Rose - Contract for Deed Agreement - BILINGUAL SPANISH DRAFT.docx"
 LEGACY_BILINGUAL_CONTRACT = PROJECT / "output" / "320 Rose - Contract for Deed Agreement - BILINGUAL SPANISH DRAFT.docx"
+SPANISH_BASE_NAME = "320 Rose - Contract for Deed Agreement - BILINGUAL SPANISH DRAFT.docx"
 TEAMS_SPANISH = Path(
     r"C:\Users\wesbr\Buy Your Home\Buy Your Home - Property\28-SYH-320 Rose Pl"
     r"\Selling\Ever Cordoza\Contract Package\Spanish Package"
@@ -20,7 +21,7 @@ TEAMS_SPANISH = Path(
 
 SPANISH_STYLE = "Spanish Translation Draft"
 SPANISH_BLUE = RGBColor(0x00, 0x66, 0xCC)
-VISUAL_RIGHT_SHIFT = Inches(0.18)
+VISUAL_RIGHT_SHIFT = Inches(0.25)
 SPANISH_CONTROL_NOTICE = (
     "Prevalece la version en ingles: El texto en espanol de este borrador bilingue "
     "se proporciona solo como una traduccion preliminar de conveniencia. Si existe "
@@ -32,8 +33,11 @@ CONTROL_NOTICE_PREFIXES = (
     "English Version Controls:",
     "Prevalece la version en ingles:",
 )
-PARAGRAPH_4_START = "ADDITIONAL CHARGES AND FEES:"
-PARAGRAPH_4_END = "INTEREST RATE:"
+VERSION_PATTERN = re.compile(r"^v(?P<num>\d{2}) - 320 Rose - Contract for Deed Agreement - BILINGUAL SPANISH DRAFT\.docx$")
+LIST_SECTION_ENDS = {
+    "Sales Price:": ("ADDITIONAL CHARGES AND FEES:",),
+    "ADDITIONAL CHARGES AND FEES:": ("INTEREST RATE:",),
+}
 
 
 def is_spanish_translation(paragraph):
@@ -71,6 +75,56 @@ def build_translation_memory(path):
         else:
             last_english = text
     return memory
+
+
+def merge_translation_memory(memory, path):
+    if not path.exists():
+        return
+    for english, translations in build_translation_memory(path).items():
+        memory.setdefault(english, translations)
+
+
+def versioned_spanish_files():
+    output = PROJECT / "output"
+    found = []
+    for path in output.glob("v?? - 320 Rose - Contract for Deed Agreement - BILINGUAL SPANISH DRAFT.docx"):
+        match = VERSION_PATTERN.match(path.name)
+        if match:
+            found.append((int(match.group("num")), path))
+    return sorted(found)
+
+
+def translation_memory_paths(output_path):
+    candidates = []
+    for _, path in reversed(versioned_spanish_files()):
+        if path != output_path:
+            candidates.append(path)
+    output = PROJECT / "output"
+    for path in output.glob("*BILINGUAL SPANISH DRAFT*.docx"):
+        if path != output_path and path not in candidates:
+            candidates.append(path)
+    if LEGACY_BILINGUAL_CONTRACT.exists() and LEGACY_BILINGUAL_CONTRACT not in candidates:
+        candidates.append(LEGACY_BILINGUAL_CONTRACT)
+    return candidates
+
+
+def next_output_path():
+    versions = versioned_spanish_files()
+    next_version = (versions[-1][0] + 1) if versions else 1
+    return PROJECT / "output" / f"v{next_version:02d} - {SPANISH_BASE_NAME}"
+
+
+def build_combined_translation_memory(output_path):
+    memory = {}
+    sources = translation_memory_paths(output_path)
+    for path in sources:
+        merge_translation_memory(memory, path)
+    if not memory:
+        raise FileNotFoundError(
+            "Existing bilingual draft is required as translation source: "
+            f"versioned Spanish output or {LEGACY_BILINGUAL_CONTRACT}"
+        )
+    return memory, sources
 
 
 def ensure_spanish_style(doc):
@@ -153,18 +207,48 @@ def insert_control_notice_before(paragraph, style):
 def insert_control_notice_above_paragraph_2(doc, style):
     for paragraph in doc.paragraphs:
         text = paragraph.text.strip()
-        if text.startswith("Sales Price:") or text.startswith("Purchase Price:"):
+        if text.startswith("Real Property:"):
             insert_control_notice_before(paragraph, style)
             return True
     return False
 
 
-def is_paragraph_4_start(text):
-    return text.strip().startswith(PARAGRAPH_4_START)
+def is_list_or_structured_line(text):
+    stripped = text.strip()
+    if not stripped:
+        return True
+    if "(Seller)" in stripped or "(Purchaser)" in stripped:
+        return True
+    if any(token in stripped for token in ("Trustee", "LLC", "Trust dated", "Bolanos", "Sarmiento")):
+        return True
+    if stripped.startswith(("[X]", "[ ]", "[   ]", "(*)")):
+        return True
+    if stripped in {"Purchaser Will Pay the following options, if they apply:", "Seller Will Pay:"}:
+        return True
+    if stripped.startswith(("Property Address:", "Address:", "Legal Description", "County of:")):
+        return True
+    if stripped.startswith(("STE ", "Suite ")):
+        return True
+    if re.search(r"\d{3,} .+", stripped):
+        return True
+    if re.search(r"\b(?:[A-Z]{2}|[A-Z][a-z]+)\s+\d{5}(?:-\d{4})?\b", stripped):
+        return True
+    if stripped.upper() == stripped and len(stripped.split()) <= 8:
+        return True
+    return False
 
 
-def is_paragraph_4_end(text):
-    return text.strip().startswith(PARAGRAPH_4_END)
+def starts_list_section(text):
+    stripped = text.strip()
+    for start in LIST_SECTION_ENDS:
+        if stripped.startswith(start):
+            return start
+    return None
+
+
+def ends_list_section(text, active_start):
+    stripped = text.strip()
+    return any(stripped.startswith(prefix) for prefix in LIST_SECTION_ENDS.get(active_start, ()))
 
 
 def first_signature_index(doc):
@@ -186,15 +270,9 @@ def first_signature_index(doc):
 def main():
     if not ENGLISH_CONTRACT.exists():
         raise FileNotFoundError(ENGLISH_CONTRACT)
-    memory_source = BILINGUAL_CONTRACT if BILINGUAL_CONTRACT.exists() else LEGACY_BILINGUAL_CONTRACT
-    if not memory_source.exists():
-        raise FileNotFoundError(
-            "Existing bilingual draft is required as translation source: "
-            f"{BILINGUAL_CONTRACT} or {LEGACY_BILINGUAL_CONTRACT}"
-        )
-
-    memory = build_translation_memory(memory_source)
-    work_path = BILINGUAL_CONTRACT.with_suffix(".tmp.docx")
+    bilingual_contract = next_output_path()
+    memory, memory_sources = build_combined_translation_memory(bilingual_contract)
+    work_path = bilingual_contract.with_suffix(".tmp.docx")
     shutil.copy2(ENGLISH_CONTRACT, work_path)
 
     doc = Document(str(work_path))
@@ -204,45 +282,53 @@ def main():
     missing = []
 
     original_paragraphs = list(doc.paragraphs[:cutoff])
-    in_paragraph_4_table_area = False
+    active_list_section = None
     for paragraph in original_paragraphs:
         key = paragraph_text(paragraph)
         if not key:
             continue
-        if is_paragraph_4_start(key):
-            in_paragraph_4_table_area = True
-            continue
-        if in_paragraph_4_table_area:
-            if is_paragraph_4_end(key):
-                in_paragraph_4_table_area = False
+        if active_list_section:
+            if ends_list_section(key, active_list_section):
+                active_list_section = None
             else:
                 continue
+        list_section_start = starts_list_section(key)
+        translate_heading_before_list = bool(list_section_start)
         if is_control_notice_text(key):
+            continue
+        if not translate_heading_before_list and is_list_or_structured_line(key):
             continue
         translations = memory.get(key)
         if not translations:
             missing.append(key)
+            if translate_heading_before_list:
+                active_list_section = list_section_start
             continue
         insert_after = paragraph
         for translation in translations:
             insert_after = insert_paragraph_after(insert_after, translation, style, paragraph)
             inserted += 1
+        if translate_heading_before_list:
+            active_list_section = list_section_start
 
     if not insert_control_notice_above_paragraph_2(doc, style):
-        raise RuntimeError("Could not find paragraph 2/Sales Price location for Spanish control notice.")
+        raise RuntimeError("Could not find paragraph 2/Real Property location for Spanish control notice.")
 
     doc.save(str(work_path))
-    work_path.replace(BILINGUAL_CONTRACT)
+    work_path.replace(bilingual_contract)
 
     TEAMS_SPANISH.mkdir(parents=True, exist_ok=True)
-    teams_copy = TEAMS_SPANISH / BILINGUAL_CONTRACT.name
+    teams_copy = TEAMS_SPANISH / bilingual_contract.name
     teams_status = "copied"
     try:
-        shutil.copy2(BILINGUAL_CONTRACT, teams_copy)
+        shutil.copy2(bilingual_contract, teams_copy)
     except PermissionError as exc:
         teams_status = f"blocked: {exc}"
 
-    print(BILINGUAL_CONTRACT)
+    print(bilingual_contract)
+    print("Translation memory sources:")
+    for source in memory_sources:
+        print(f"- {source}")
     print(teams_copy)
     print(f"Teams copy status: {teams_status}")
     print(f"Inserted Spanish/control paragraphs: {inserted}")
