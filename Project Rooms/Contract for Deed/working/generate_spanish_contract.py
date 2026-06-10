@@ -196,6 +196,7 @@ def insert_control_notice_before(paragraph, style):
     new_paragraph.paragraph_format.left_indent = None
     new_paragraph.paragraph_format.right_indent = None
     new_paragraph.paragraph_format.first_line_indent = None
+    new_paragraph.paragraph_format.space_after = Pt(8)
     run = new_paragraph.add_run(SPANISH_CONTROL_NOTICE)
     run.bold = True
     run.font.name = "Arial"
