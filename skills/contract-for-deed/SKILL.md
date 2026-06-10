@@ -54,7 +54,7 @@ CFD work should be understood in these operating modes:
    Generate the bilingual Spanish Contract for Deed Agreement only, unless Wes explicitly expands the Spanish scope. This mode is additive and does not run the full English package unless Wes asks for the full package too. Produce versioned project-room output and versioned Teams copy.
 
 4. **Email Package**
-   Prepare a package email to Wes only so Wes can review and forward it himself. When Wes says `Email Package`, assume the last project/buyer being processed, but confirm that project and buyer with Wes before preparing or sending anything. The email body should include the format and content of the Closing Checklist. Attach every file listed in the Closing Checklist. If any listed file is missing or cannot be attached, do not silently omit it; report the missing file before sending. Use the `cfd-email-package-delivery` skill for CFD package ZIP and checklist handling; that support skill calls `officeassist-email-delivery` for OfficeAssist sender safety, attachment upload handling, delivery, and sent-item verification. Never send the package email directly to outside parties, buyers, attorneys, agents, Jenny, or anyone else unless Wes later creates a separate explicit rule changing that restriction.
+   Prepare a package email to Wes only so Wes can review and forward it himself. When Wes says `Email Package`, assume the last project/buyer being processed, but confirm that project and buyer with Wes before preparing or sending anything. The email body should include the format and content of the Closing Checklist. Build one complete package ZIP containing every file listed in the Closing Checklist, unless Wes explicitly asks for individual attachments for that specific run. If any listed file is missing or cannot be included in the ZIP, do not silently omit it and do not send a partial package; report the missing file before sending. Use the `email-delivery` skill for OfficeAssist sender safety, attachment upload handling, delivery, and sent-item verification. Never send the package email directly to outside parties, buyers, attorneys, agents, Jenny, or anyone else unless Wes later creates a separate explicit rule changing that restriction.
 
 5. **Maintenance**
    Update canonical CFD skill rules and/or project-room generator scripts, keep scripts aligned with skill rules, sync the installed Codex skill when requested, and commit or push only under the normal Admin wiki rules.
@@ -64,6 +64,25 @@ Teams delivery is not a standalone mode. Every mode that creates or updates a de
 Checklist/cover-page handling is not a standalone mode. It belongs inside Full English Package mode.
 
 Affidavit packaging is not a standalone CFD output mode. CFD reads, references, and packages around affidavit/support documents created and stored in Teams by CWE; CFD should not reauthor or generate affidavit outputs unless Wes explicitly changes that division of responsibility.
+
+## Email Package Delivery
+
+When sending a CFD Email Package:
+
+1. Confirm the project and buyer before preparing or sending anything.
+2. Use the Closing Checklist content as the plain-text email body.
+3. Verify every file listed in the Closing Checklist exists and is readable.
+4. Build one complete package ZIP containing every checklist-listed file unless Wes explicitly asks for individual attachments for that run.
+5. Verify the ZIP was created and is readable before sending.
+6. Send to `WesWill@BuyYourHomeLLC.com` only so Wes can review and forward it himself.
+7. Send from `OfficeAssist@BuyYourHomeLLC.com`.
+8. Use a subject beginning with `DRAFT:` unless Wes provides a different review-submission subject for that specific run.
+9. Do not say the message is "on Wes's behalf" unless Wes explicitly asks for that wording for that specific message.
+10. Call/use `email-delivery` for OfficeAssist sender safety, Outlook connector handling, attachment input format, Sent Items verification, local Outlook fallback rules, and failure handling.
+
+For connector send tools, pass the package ZIP path in the attachment input shape the connector currently requires. If the connector rejects a plain path string and reports that it expects an array, retry with an attachment-path array. Do not pass newline-separated paths.
+
+Do not send the CFD package email directly to outside parties, buyers, attorneys, agents, Jenny, or anyone else unless Wes later creates a separate explicit rule changing that restriction. If any checklist-listed file is missing, unreadable, or cannot be included in the ZIP, do not send the email; report the blocker and provide the proposed email body in the chat.
 
 ## Core Workflow
 
