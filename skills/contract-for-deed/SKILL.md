@@ -326,35 +326,39 @@ Save the bilingual output in the project-room output folder and copy it to the m
 Spanish translation rules:
 
 - Keep the English text, numbering, paragraph order, and formatting intact.
-- Insert the Spanish translation immediately below each eligible English body paragraph.
+- Insert the Spanish translation immediately below each eligible English paragraph text.
 - Spanish translation paragraphs must be blue, smaller than the English body text, and use a dedicated non-numbered style.
 - If the English paragraph is centered by direct paragraph formatting or by its Word style, center the Spanish translation paragraph as well.
 - For centered English paragraphs, do not apply a left or right indent to the Spanish translation paragraph in a way that pulls it off center.
-- For non-centered English paragraphs, visually shift the Spanish translation paragraph to the right by adding a left indent. Do not use Word's `right indent` setting for this purpose, because right indent changes the right edge rather than moving the paragraph start to the right.
+- For ordinary non-centered translated paragraph text, visually shift the Spanish translation approximately four spaces to the right of the English paragraph by adding a left indent. Do not use Word's `right indent` setting for this purpose, because right indent changes the right edge rather than moving the paragraph start to the right.
 - Spanish paragraphs must not be part of any Word numbered-list structure.
 - Do not insert the English-control notice in English into the bilingual body. Insert only the Spanish-language English-control notice, place it immediately above paragraph 2 of the Contract for Deed Agreement, and format it bold, blue, and 12 point.
-- Do not insert Spanish translations for paragraph 4 / the `ADDITIONAL CHARGES AND FEES` table-area content. Skip that section's check-box option lines and payer-responsibility lines because the Spanish insertions make the table-like layout visually cluttered.
+- Translate ordinary paragraph text and main numbered/heading paragraphs, including a section heading paragraph that contains explanatory text.
+- Do not translate itemized lists, checkbox lists, payment schedules, table-like rows, address blocks, names, standalone factual identifiers, or structured/listed content unless Wes specifically requests translation for that section.
+- If a section begins with a numbered/heading paragraph followed by itemized or structured content, translate the main numbered/heading paragraph but leave the list or structured rows below it untranslated unless Wes specifically requests otherwise. For example, translate `ADDITIONAL CHARGES AND FEES: Purchaser agrees...`, but do not translate the checkbox/payment-responsibility list below it unless requested.
+- Use paragraph 7, `Installment Payments`, as the layout model for structured payment content: keep the table/values intact and avoid line-by-line Spanish duplication that clutters or moves the layout.
 - Do not add Spanish text inside tables.
 - Do not add Spanish text in signature blocks.
 - Do not add Spanish text in notary blocks.
 - Do not add Spanish text to signature lines, initials, acknowledgment blanks, or notary certificate language.
 - Do not change paragraph numbers to accommodate Spanish text.
-- Add a short English-control clause stating that the English version controls if there is any conflict between English and Spanish.
 - Mark the Spanish text as a draft convenience translation unless Wes, counsel, or a qualified translator approves final translation wording.
 - Do not represent the Spanish version as a certified legal translation unless Wes provides that certification or explicitly instructs that a certified translator has approved it.
 
 Eligibility rules:
 
-- Translate ordinary contract body paragraphs and section text.
-- Skip table content, signature blocks, notary blocks, initials/signature blanks, attorney-review blocks, management-review blocks, and generated package metadata.
+- Translate ordinary contract body paragraphs and main numbered/heading section text.
+- Skip itemized/listed content, checkbox lists, payment schedules, table-like rows, address blocks, names, standalone factual identifiers, table content, signature blocks, notary blocks, initials/signature blanks, attorney-review blocks, management-review blocks, and generated package metadata unless Wes specifically requests translation for that content.
+- Do not infer paragraph numbers from nearby labels. Use the actual document structure and visible numbering before placing, removing, or skipping Spanish text based on a numbered paragraph reference.
 - Once a signature section or notary section begins, do not insert Spanish text below later paragraphs unless a future document-specific rule says otherwise.
 
 Before delivering a Spanish/bilingual document, verify:
 
 - English paragraph numbering is unchanged from the English clean draft.
 - No Spanish text appears in tables, signature blocks, notary blocks, or blanks.
+- No Spanish text appears in itemized/listed content, checkbox lists, payment schedules, table-like rows, address blocks, names, or standalone factual identifiers unless Wes specifically requested that translation.
 - Spanish text is blue and smaller than the English text.
-- The English-control clause is present.
+- The Spanish-only English-control notice is present above the actual paragraph 2 and is bold, blue, and 12 point.
 - The draft translation / review status is visible.
 - The English clean draft remains unchanged.
 
