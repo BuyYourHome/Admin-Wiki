@@ -21,7 +21,7 @@ TEAMS_SPANISH = Path(
 
 SPANISH_STYLE = "Spanish Translation Draft"
 SPANISH_BLUE = RGBColor(0x00, 0x66, 0xCC)
-VISUAL_RIGHT_SHIFT = Inches(0.25)
+VISUAL_RIGHT_SHIFT = Pt(4)
 SPANISH_CONTROL_NOTICE = (
     "Prevalece la version en ingles: El texto en espanol de este borrador bilingue "
     "se proporciona solo como una traduccion preliminar de conveniencia. Si existe "
@@ -207,7 +207,7 @@ def insert_control_notice_before(paragraph, style):
 def insert_control_notice_above_paragraph_2(doc, style):
     for paragraph in doc.paragraphs:
         text = paragraph.text.strip()
-        if text.startswith("Real Property:"):
+        if text.startswith("Date of Agreement:"):
             insert_control_notice_before(paragraph, style)
             return True
     return False
@@ -312,7 +312,7 @@ def main():
             active_list_section = list_section_start
 
     if not insert_control_notice_above_paragraph_2(doc, style):
-        raise RuntimeError("Could not find paragraph 2/Real Property location for Spanish control notice.")
+        raise RuntimeError("Could not find paragraph 2/Date of Agreement location for Spanish control notice.")
 
     doc.save(str(work_path))
     work_path.replace(bilingual_contract)
