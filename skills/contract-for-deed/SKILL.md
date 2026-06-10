@@ -328,8 +328,9 @@ Spanish translation rules:
 - Keep the English text, numbering, paragraph order, and formatting intact.
 - Insert the Spanish translation immediately below each eligible English body paragraph.
 - Spanish translation paragraphs must be blue, smaller than the English body text, and use a dedicated non-numbered style.
-- If the English paragraph is centered, center the Spanish translation paragraph as well.
-- Spanish translation paragraphs should use right indentation rather than left indentation, unless a future document-specific rule requires matching a different layout.
+- If the English paragraph is centered by direct paragraph formatting or by its Word style, center the Spanish translation paragraph as well.
+- For centered English paragraphs, do not apply a left or right indent to the Spanish translation paragraph in a way that pulls it off center.
+- For non-centered English paragraphs, visually shift the Spanish translation paragraph to the right by adding a left indent. Do not use Word's `right indent` setting for this purpose, because right indent changes the right edge rather than moving the paragraph start to the right.
 - Spanish paragraphs must not be part of any Word numbered-list structure.
 - Do not add Spanish text inside tables.
 - Do not add Spanish text in signature blocks.

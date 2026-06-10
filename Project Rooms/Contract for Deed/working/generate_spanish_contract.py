@@ -1,4 +1,3 @@
-from copy import deepcopy
 from pathlib import Path
 import shutil
 
@@ -12,7 +11,8 @@ from docx.shared import Inches, Pt, RGBColor
 
 PROJECT = Path(r"C:\Codex\Wiki Files\Project Rooms\Contract for Deed")
 ENGLISH_CONTRACT = PROJECT / "output" / "320 Rose - Contract for Deed Agreement - DRAFT.docx"
-BILINGUAL_CONTRACT = PROJECT / "output" / "320 Rose - Contract for Deed Agreement - BILINGUAL SPANISH DRAFT.docx"
+BILINGUAL_CONTRACT = PROJECT / "output" / "v01 - 320 Rose - Contract for Deed Agreement - BILINGUAL SPANISH DRAFT.docx"
+LEGACY_BILINGUAL_CONTRACT = PROJECT / "output" / "320 Rose - Contract for Deed Agreement - BILINGUAL SPANISH DRAFT.docx"
 TEAMS_SPANISH = Path(
     r"C:\Users\wesbr\Buy Your Home\Buy Your Home - Property\28-SYH-320 Rose Pl"
     r"\Selling\Ever Cordoza\Contract Package\Spanish Package"
@@ -20,7 +20,7 @@ TEAMS_SPANISH = Path(
 
 SPANISH_STYLE = "Spanish Translation Draft"
 SPANISH_BLUE = RGBColor(0x00, 0x66, 0xCC)
-RIGHT_INDENT = Inches(0.18)
+VISUAL_RIGHT_SHIFT = Inches(0.18)
 
 
 def is_spanish_translation(paragraph):
@@ -63,20 +63,50 @@ def ensure_spanish_style(doc):
     style.font.size = Pt(9)
     style.font.color.rgb = SPANISH_BLUE
     style.paragraph_format.left_indent = None
-    style.paragraph_format.right_indent = RIGHT_INDENT
+    style.paragraph_format.right_indent = None
     return style
 
 
-def insert_paragraph_after(paragraph, text, style):
+def style_chain(paragraph):
+    style = paragraph.style
+    while style is not None:
+        yield style
+        style = style.base_style
+
+
+def effective_alignment(paragraph):
+    if paragraph.alignment is not None:
+        return paragraph.alignment
+    for style in style_chain(paragraph):
+        alignment = style.paragraph_format.alignment
+        if alignment is not None:
+            return alignment
+    return None
+
+
+def effective_left_indent(paragraph):
+    if paragraph.paragraph_format.left_indent is not None:
+        return paragraph.paragraph_format.left_indent
+    for style in style_chain(paragraph):
+        left_indent = style.paragraph_format.left_indent
+        if left_indent is not None:
+            return left_indent
+    return None
+
+
+def insert_paragraph_after(insert_after, text, style, format_source):
     new_p = OxmlElement("w:p")
-    paragraph._p.addnext(new_p)
-    new_paragraph = Paragraph(new_p, paragraph._parent)
+    insert_after._p.addnext(new_p)
+    new_paragraph = Paragraph(new_p, insert_after._parent)
     new_paragraph.style = style
-    new_paragraph.paragraph_format.left_indent = None
-    new_paragraph.paragraph_format.right_indent = RIGHT_INDENT
     new_paragraph.paragraph_format.first_line_indent = None
-    if paragraph.alignment == WD_ALIGN_PARAGRAPH.CENTER:
+    new_paragraph.paragraph_format.right_indent = None
+    if effective_alignment(format_source) == WD_ALIGN_PARAGRAPH.CENTER:
         new_paragraph.alignment = WD_ALIGN_PARAGRAPH.CENTER
+        new_paragraph.paragraph_format.left_indent = None
+    else:
+        base_left_indent = effective_left_indent(format_source) or 0
+        new_paragraph.paragraph_format.left_indent = base_left_indent + VISUAL_RIGHT_SHIFT
     run = new_paragraph.add_run(text)
     run.font.name = "Arial"
     run.font.size = Pt(9)
@@ -103,12 +133,14 @@ def first_signature_index(doc):
 def main():
     if not ENGLISH_CONTRACT.exists():
         raise FileNotFoundError(ENGLISH_CONTRACT)
-    if not BILINGUAL_CONTRACT.exists():
+    memory_source = BILINGUAL_CONTRACT if BILINGUAL_CONTRACT.exists() else LEGACY_BILINGUAL_CONTRACT
+    if not memory_source.exists():
         raise FileNotFoundError(
-            f"Existing bilingual draft is required as translation source: {BILINGUAL_CONTRACT}"
+            "Existing bilingual draft is required as translation source: "
+            f"{BILINGUAL_CONTRACT} or {LEGACY_BILINGUAL_CONTRACT}"
         )
 
-    memory = build_translation_memory(BILINGUAL_CONTRACT)
+    memory = build_translation_memory(memory_source)
     work_path = BILINGUAL_CONTRACT.with_suffix(".tmp.docx")
     shutil.copy2(ENGLISH_CONTRACT, work_path)
 
@@ -129,7 +161,7 @@ def main():
             continue
         insert_after = paragraph
         for translation in translations:
-            insert_after = insert_paragraph_after(insert_after, translation, style)
+            insert_after = insert_paragraph_after(insert_after, translation, style, paragraph)
             inserted += 1
 
     doc.save(str(work_path))
