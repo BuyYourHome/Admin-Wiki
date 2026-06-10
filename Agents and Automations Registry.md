@@ -128,6 +128,7 @@ Important limitations:
 
 Tools/services used:
 
+- Shared send-step skill: `C:\Codex\Wiki Files\skills\email-delivery\SKILL.md`
 - Outlook/email connector as the preferred production path for Wes mailbox reads and OfficeAssist send verification.
 - Local Outlook profile as fallback only when the connector cannot perform the needed send or verification step.
 - OfficeAssist mailbox for sending.
@@ -138,6 +139,11 @@ Tools/services used:
 Persistent send-verification rule:
 
 - As confirmed from the successful 2026-06-09 run, a connector-verified OfficeAssist Drafts item followed by a connector-verified OfficeAssist Sent Items record is an acceptable production send path even when `OfficeAssist@BuyYourHomeLLC.com` is not mounted as a local Outlook mailbox root on that machine.
+
+Workflow boundary:
+
+- The morning-summary automation keeps responsibility for mailbox scanning, cutoff selection, message prioritization, summary drafting, and attachment decisions.
+- The shared `email-delivery` skill handles the send step only: Outlook connector preference, sender safety, attachment input shape, Sent Items verification, local Outlook fallback, and failure reporting.
 
 ## Email Delivery
 

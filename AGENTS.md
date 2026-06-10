@@ -116,7 +116,8 @@ Use this repo when formulating solutions for office-admin workflows, SOPs, autom
 - Focus on unread or newly received messages since the last successful summary. Include rule-routed folders when messages are financial, legal, property-related, vendor/admin-related, time-sensitive, or action-oriented.
 - Exclude routine promotional, automated, or newsletter messages unless they are time-sensitive, financial, legal, property-related, or require action.
 - Record the summary cutoff time used so the next summary can avoid both missed rule-routed messages and duplicate reporting.
-- For the Boss summary send path, prefer the Outlook/email connector when it can verify the draft in `OfficeAssist@BuyYourHomeLLC.com` Drafts and the sent message in `OfficeAssist@BuyYourHomeLLC.com` Sent Items. Do not block a connector-verified send merely because the OfficeAssist mailbox root is absent from local Outlook.
+- The email-summary workflow owns the mailbox scan, cutoff logic, priority selection, summary body, and attachment decision.
+- For the send step only, use the shared `skills\email-delivery\SKILL.md` workflow by passing sender, recipient, subject, plain-text body, attachment paths if any, and the rule that send or verification failure must be reported in the OfficeAssist thread.
 - If the morning summary cannot be sent by email, notify Wes immediately and use the available text/SMS fallback when one is available. A failed send or unverified send is not a quiet/no-news run.
 
 ## Calendar Scheduling
