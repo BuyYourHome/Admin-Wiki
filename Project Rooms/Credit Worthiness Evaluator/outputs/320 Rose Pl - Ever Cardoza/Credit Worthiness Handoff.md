@@ -8,12 +8,13 @@
 - Property/project: 320 Rose / 28-SYH-320 Rose Pl.
 - Kickoff file used for routing only: `C:\Codex\Wiki Files\Project Rooms\Contract for Deed\transactions\320 Rose Pl - Ever Cardoza\handoffs\credit-worthiness\CWE Kickoff.md`
 - CFD transaction folder: `C:\Codex\Wiki Files\Project Rooms\Contract for Deed\transactions\320 Rose Pl - Ever Cardoza`
-- Source refresh date/time: 2026-06-11 15:31 ET.
+- Source refresh date/time: 2026-06-11 16:08 ET.
 - Buyer source folder refreshed from: `C:\Users\wesbr\Buy Your Home\Buy Your Home - Property\28-SYH-320 Rose Pl\Selling\Ever Cordoza`
 - Project-room source copy: `C:\Codex\Wiki Files\Project Rooms\Credit Worthiness Evaluator\sources\320 Rose Pl - Ever Cardoza`
-- Current evaluation summary: `C:\Codex\Wiki Files\Project Rooms\Credit Worthiness Evaluator\outputs\320 Rose Pl - Ever Cardoza\26-06-11 Current Evidence Evaluation Summary.md`
-- Current full DOCX report: `C:\Codex\Wiki Files\Project Rooms\Credit Worthiness Evaluator\outputs\320 Rose Pl - Ever Cardoza\26-06-11 320 Rose Ever Amarildo Cardoza Bolanos - Creditworthiness Evaluation Report - Affidavit Package Handoff v20.docx`
-- Teams report copy: `C:\Users\wesbr\Buy Your Home\Buy Your Home - Property\28-SYH-320 Rose Pl\Selling\Ever Cordoza\Contract Package\Credit Worthiness\v20 1 320 Rose Ever Amarildo Cardoza Bolanos - Creditworthiness Evaluation Report - Affidavit Package Handoff.docx`
+- Current evaluation summary: `C:\Codex\Wiki Files\Project Rooms\Credit Worthiness Evaluator\outputs\320 Rose Pl - Ever Cardoza\26-06-11 Current Evidence Evaluation Summary v21.md`
+- Current full DOCX report: `C:\Codex\Wiki Files\Project Rooms\Credit Worthiness Evaluator\outputs\320 Rose Pl - Ever Cardoza\26-06-11 320 Rose Ever Amarildo Cardoza Bolanos - Creditworthiness Evaluation Report - Document Preparation Ready v21.docx`
+- Teams current report: `C:\Users\wesbr\Buy Your Home\Buy Your Home - Property\28-SYH-320 Rose Pl\Selling\Ever Cordoza\Contract Package Report\320 Rose Ever Amarildo Cardoza Bolanos - Creditworthiness Evaluation Report - Document Preparation Ready.docx`
+- Teams report archive: `C:\Users\wesbr\Buy Your Home\Buy Your Home - Property\28-SYH-320 Rose Pl\Selling\Ever Cordoza\Contract Package\Credit Worthiness Archive`
 
 ## Buyer And Transaction Snapshot
 

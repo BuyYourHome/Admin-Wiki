@@ -56,7 +56,7 @@ Use the project room for source inventory, conflict logs, missing-context notes,
 8. Render and visually check formal DOCX reports before delivery when the Documents skill/runtime is available.
 9. Add page numbers to formal reports before delivery.
 10. If a formal report is rerun, preserve a versioned copy instead of silently replacing the prior report.
-11. Copy every formal DOCX evaluation report into the buyer's Teams `Contract Package\Credit Worthiness` folder, including conditional, draft, evidence-mode, and assumption-mode reruns. Never overwrite an existing Teams document.
+11. Create the current formal DOCX evaluation report in the buyer's Teams `Contract Package Report` folder. Archive any prior current report by moving it to the buyer's `Contract Package\Credit Worthiness Archive` folder with a versioned filename. Never overwrite an existing Teams document.
 12. Commit durable wiki/project-room changes locally. Do not push unless Wes says the work is finished or explicitly asks for a push.
 
 ## Project Spreadsheet Rule
@@ -225,18 +225,24 @@ Every evaluator run must produce a full formal DOCX report. Markdown summaries, 
 When an evaluator run produces or updates the formal report:
 
 1. Save the report in the buyer's segregated project-room `outputs\` folder.
-2. Copy the same report into the buyer's Teams `Contract Package\Credit Worthiness` folder, even when the result is conditional, draft, evidence-mode, assumption-mode, or not approval-ready.
+2. Create the current report in the buyer's Teams `Contract Package Report` folder, even when the result is conditional, draft, evidence-mode, assumption-mode, or not approval-ready.
 3. Teams destination must be derived from the live buyer source folder:
 
-   `[Project]\Selling\[Buyer]\Contract Package\Credit Worthiness\`
+   `[Project]\Selling\[Buyer]\Contract Package Report\`
 
-4. If the live buyer folder is `[Project]\Selling\[Buyer]`, create or use `[Project]\Selling\[Buyer]\Contract Package\Credit Worthiness\` for the Teams report copy.
+4. If the live buyer folder is `[Project]\Selling\[Buyer]`, create or use `[Project]\Selling\[Buyer]\Contract Package Report\` for the current Teams report.
 5. For the project-room `outputs\` copy, keep using date-prefixed filenames for chronological project-room tracking.
-6. For the Teams `Credit Worthiness` copy, precede the filename with the report version, not the date, such as:
+6. For the current Teams `Contract Package Report` copy, do not use a version number in the filename.
+7. If a prior current CWE report already exists in `Contract Package Report`, move that prior report to:
+
+   `[Project]\Selling\[Buyer]\Contract Package\Credit Worthiness Archive\`
+
+   Rename the archived prior report with the next available version prefix, such as:
 
    `v9 320 Rose Ever Amarildo Cardoza Bolanos - Creditworthiness Evaluation Report - Approval Scenario.docx`
 
-7. In the final response, report both the project-room DOCX path and the Teams DOCX path.
+8. Never overwrite an archived report. If the archive filename already exists, use the next available version number or another clear unique version suffix.
+9. In the final response, report both the project-room DOCX path and the Teams current-report DOCX path. If a prior Teams report was archived, report the archive path.
 
 Never overwrite an existing Teams/buyer-folder document. If a same-named file already exists, create a new versioned filename or ask Wes before replacing anything.
 
@@ -252,7 +258,8 @@ Do not copy generated text extracts, render images, scratch logs, source-invento
   `26-06-05 320 Rose Ever Cardoza - Creditworthiness Evaluation Report v2.docx`
 
 - Keep prior delivered report versions in both the project room `outputs\` folder and the live buyer source folder unless Wes explicitly asks to replace or remove them.
-- In Teams, preserve all intentionally copied CWE versions in `[Project]\Selling\[Buyer]\Contract Package\Credit Worthiness\` and use version-prefixed filenames rather than date-prefixed filenames.
+- In Teams, keep only the current CWE report in `[Project]\Selling\[Buyer]\Contract Package Report\` without a version number in the filename.
+- In Teams, preserve prior CWE reports in `[Project]\Selling\[Buyer]\Contract Package\Credit Worthiness Archive\` with version-prefixed filenames rather than date-prefixed filenames.
 - If the report body includes a report date, revision date, version label, or source cutoff date, update it to match the rerun.
 - In the final response, identify the current version and both saved locations.
 
