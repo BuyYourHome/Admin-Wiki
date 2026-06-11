@@ -16,9 +16,10 @@ BUYER_FOLDER = Path(r"C:\Users\wesbr\Buy Your Home\Buy Your Home - Property\28-S
 SPREADSHEET_PATH = Path(r"C:\Users\wesbr\Buy Your Home\Buy Your Home - Property\28_Project Management - 320 Rose Pl.xlsm")
 
 CONTRACT_PACKAGE = BUYER_FOLDER / "Contract Package"
-REPORT_DIR = BUYER_FOLDER / "Contract Package Report"
+REPORT_DIR = CONTRACT_PACKAGE
 ARCHIVE_DIR = CONTRACT_PACKAGE / "Credit Worthiness Archive"
 OLD_CW_DIR = CONTRACT_PACKAGE / "Credit Worthiness"
+WRONG_REPORT_DIR = BUYER_FOLDER / "Contract Package Report"
 
 
 def money(value):
@@ -107,6 +108,24 @@ def archive_existing_teams_reports():
     current_name = "320 Rose Ever Amarildo Cardoza Bolanos - Creditworthiness Evaluation Report - Document Preparation Ready.docx"
     current_report = REPORT_DIR / current_name
     archived_current = None
+
+    if WRONG_REPORT_DIR.exists():
+        for wrong_file in WRONG_REPORT_DIR.glob("*Creditworthiness Evaluation Report*.docx"):
+            ARCHIVE_DIR.mkdir(parents=True, exist_ok=True)
+            counter = 1
+            while True:
+                candidate = ARCHIVE_DIR / f"v{counter} {wrong_file.name}"
+                if not candidate.exists():
+                    break
+                counter += 1
+            shutil.move(str(wrong_file), str(candidate))
+            archived_current = candidate
+            archive_action = (archive_action + " " if archive_action else "") + f"Moved prior current report from {WRONG_REPORT_DIR} to {candidate}."
+        try:
+            WRONG_REPORT_DIR.rmdir()
+        except OSError:
+            pass
+
     if current_report.exists():
         ARCHIVE_DIR.mkdir(parents=True, exist_ok=True)
         counter = 1
@@ -122,12 +141,12 @@ def archive_existing_teams_reports():
 
 
 def next_project_report_path():
-    base = OUT_DIR / "26-06-11 320 Rose Ever Amarildo Cardoza Bolanos - Creditworthiness Evaluation Report - Document Preparation Ready v21.docx"
+    base = OUT_DIR / "26-06-11 320 Rose Ever Amarildo Cardoza Bolanos - Creditworthiness Evaluation Report - Document Preparation Ready v22.docx"
     if not base.exists():
         return base
     counter = 1
     while True:
-        candidate = OUT_DIR / f"26-06-11 320 Rose Ever Amarildo Cardoza Bolanos - Creditworthiness Evaluation Report - Document Preparation Ready v21 {counter}.docx"
+        candidate = OUT_DIR / f"26-06-11 320 Rose Ever Amarildo Cardoza Bolanos - Creditworthiness Evaluation Report - Document Preparation Ready v22 {counter}.docx"
         if not candidate.exists():
             return candidate
         counter += 1
@@ -347,14 +366,14 @@ def build_report(path):
 
 
 def write_summary(path, project_docx, teams_current, archive_action, metrics):
-    summary = f"""# 320 Rose Pl - Ever Cardoza Current Evidence Evaluation Summary v21
+    summary = f"""# 320 Rose Pl - Ever Cardoza Current Evidence Evaluation Summary v22
 
 ## Run Summary
 
 - Run type: current CWE rerun after filing-rule update.
 - Buyer source folder refreshed from: `{BUYER_FOLDER}`
 - Project-room source copy: `{SOURCE_DIR}`
-- Source refresh date/time: June 11, 2026 at 4:08 PM Eastern.
+- Source refresh date/time: June 11, 2026 at 5:19 PM Eastern.
 - Current evaluation mode: evidence mode, not approval-assumption mode.
 - Full DOCX report: `{project_docx}`
 - Teams current report: `{teams_current}`
@@ -420,7 +439,7 @@ def main():
     project_docx = next_project_report_path()
     metrics = build_report(project_docx)
     shutil.copy2(project_docx, teams_current)
-    summary_path = OUT_DIR / "26-06-11 Current Evidence Evaluation Summary v21.md"
+    summary_path = OUT_DIR / "26-06-11 Current Evidence Evaluation Summary v22.md"
     write_summary(summary_path, project_docx, teams_current, archive_action, metrics)
 
     print(f"PROJECT_DOCX={project_docx}")
