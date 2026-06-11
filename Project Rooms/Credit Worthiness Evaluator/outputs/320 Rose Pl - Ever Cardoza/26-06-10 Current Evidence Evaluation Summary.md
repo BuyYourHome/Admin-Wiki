@@ -2,14 +2,14 @@
 
 ## Run Summary
 
-- Run type: affidavit package handoff rerun.
+- Run type: current CWE rerun with affidavit package handoff.
 - Kickoff file used for routing only: `C:\Codex\Wiki Files\Project Rooms\Contract for Deed\transactions\320 Rose Pl - Ever Cardoza\handoffs\credit-worthiness\CWE Kickoff.md`
 - Buyer source folder refreshed from: `C:\Users\wesbr\Buy Your Home\Buy Your Home - Property\28-SYH-320 Rose Pl\Selling\Ever Cordoza`
 - Project-room source copy: `C:\Codex\Wiki Files\Project Rooms\Credit Worthiness Evaluator\sources\320 Rose Pl - Ever Cardoza`
-- Source refresh date/time: 2026-06-10 21:09 ET.
+- Source refresh date/time: 2026-06-10 21:33 ET.
 - Current evaluation mode: evidence mode, not approval-assumption mode.
-- Full DOCX report: `C:\Codex\Wiki Files\Project Rooms\Credit Worthiness Evaluator\outputs\320 Rose Pl - Ever Cardoza\26-06-10 320 Rose Ever Amarildo Cardoza Bolanos - Creditworthiness Evaluation Report - Affidavit Package Handoff v18.docx`
-- Teams report copy: `C:\Users\wesbr\Buy Your Home\Buy Your Home - Property\28-SYH-320 Rose Pl\Selling\Ever Cordoza\Credit Worthiness\v18 320 Rose Ever Amarildo Cardoza Bolanos - Creditworthiness Evaluation Report - Affidavit Package Handoff.docx`
+- Full DOCX report: `C:\Codex\Wiki Files\Project Rooms\Credit Worthiness Evaluator\outputs\320 Rose Pl - Ever Cardoza\26-06-10 320 Rose Ever Amarildo Cardoza Bolanos - Creditworthiness Evaluation Report - Affidavit Package Handoff v19.docx`
+- Teams report copy: `C:\Users\wesbr\Buy Your Home\Buy Your Home - Property\28-SYH-320 Rose Pl\Selling\Ever Cordoza\Credit Worthiness\v19 320 Rose Ever Amarildo Cardoza Bolanos - Creditworthiness Evaluation Report - Affidavit Package Handoff.docx`
 
 ## Spreadsheet Transaction Snapshot
 
