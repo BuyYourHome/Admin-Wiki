@@ -19,7 +19,18 @@ The Contract for Deed process will probably call this skill when it needs a 12-m
 - Create a formal amortization chart for the next 12 months.
 - Write the output file into the project-room output folder supplied by the calling skill.
 - Use a buyer-facing layout by default when the chart will be given to buyers.
+- Use the Amortization project-room template workbook as the layout source when it exists.
 - Output format and some styling details remain open unless the caller or Wes specifies them.
+
+## Template Rule
+
+- Keep the buyer-facing template workbook in `Project Rooms/Amortization/templates/Buyer-Facing Amortization Chart Template.xlsx`.
+- Copy the template to the caller-supplied output folder for each run.
+- Populate the copied workbook with project-spreadsheet values.
+- Preserve the template's formatting, merged cells, column widths, print area, headers, and buyer-facing wording.
+- Export the populated copy to PDF when a PDF is needed.
+- Do not rebuild the visual layout from scratch unless the template is missing or Wes explicitly asks for a redesign.
+- Verify both labels and values are visible before reporting completion.
 
 ## Buyer-Facing Layout Rules
 

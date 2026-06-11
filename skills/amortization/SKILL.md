@@ -67,6 +67,33 @@ Use a clear filename that includes the property/project name when available, suc
 
 If a file with the same name already exists, create a versioned filename instead of overwriting it.
 
+## Template Rule
+
+Use the buyer-facing amortization template workbook as the layout source when it exists:
+
+`C:\Codex\Wiki Files\Project Rooms\Amortization\templates\Buyer-Facing Amortization Chart Template.xlsx`
+
+For buyer-facing outputs:
+
+1. Copy the template workbook to the caller-supplied output folder.
+2. Populate the copied workbook with values from the project spreadsheet.
+3. Preserve the template's formatting, merged cells, column widths, print area, headers, and buyer-facing wording.
+4. Export the populated copy to PDF when a PDF is needed.
+5. Do not rebuild the visual layout from scratch unless the template is missing or Wes explicitly asks for a redesign.
+
+Template value cells:
+
+- `C3` - buyer name(s)
+- `H3` - property
+- `C4` - contract date
+- `H4` - sale amount
+- `C5` - down payment
+- `H5` - loan amount
+- `C6` - buyer rate
+- `H6` - monthly total payment
+- `A9:K20` - 12 payment rows
+- `E21:J21` - totals for the displayed period
+
 ## Chart Content
 
 Include the columns needed to make the 12-month schedule understandable and auditable. Unless the worksheet or caller specifies a different approved format, include:
@@ -94,6 +121,7 @@ When the chart is for the buyer's benefit:
 - Do not include a bottom source note or implementation note.
 - Keep only buyer-useful metadata, such as buyer name, property, contract date, sale amount, down payment, loan amount, buyer rate, and monthly total payment when those values are available.
 - Merge or widen buyer-facing metadata label/value cells as needed so labels and values do not truncate. Labels such as `Contract Date` and `Down Payment` must be fully visible.
+- After populating a copied template, verify both labels and values are visible. Do not treat a chart as complete if buyer, property, contract date, down payment, loan amount, buyer rate, or monthly payment values are blank or hidden.
 - Wrap column headers so columns can be narrower.
 - Narrow columns enough for a compact one-page chart while keeping values readable.
 
@@ -122,8 +150,9 @@ Before reporting completion:
 1. Confirm the output file exists in the caller-supplied output folder.
 2. Confirm the chart covers exactly 12 scheduled months unless the source data supports fewer payments because of payoff, balloon, or contract end.
 3. Confirm the beginning balance, payment, interest, principal, and ending balance columns are populated.
-4. Confirm the output does not overwrite the source workbook or an existing deliverable unintentionally.
-5. Report the output path, assumptions, and any missing or conflicting source data.
+4. Confirm buyer-facing metadata values are present and visible.
+5. Confirm the output does not overwrite the source workbook or an existing deliverable unintentionally.
+6. Report the output path, assumptions, and any missing or conflicting source data.
 
 ## Maintenance Boundaries
 
