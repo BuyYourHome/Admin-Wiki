@@ -52,7 +52,7 @@ Use `working\build_closing_package_email_body.py` to build the polished Email Pa
 
 Do not add a repeated metadata footer at the bottom of the Email Package body. The body should not end with a separate block listing the attached ZIP, property address, buyer names, or seller name after the attorney/compliance section. The introductory paragraph may say that the package ZIP is attached.
 
-When Wes asks for external access or `Anyone with the link` access, do not use ordinary Teams/SharePoint location links from `teams_link_from_local_path.py` as if they grant external access. Attempt to create actual SharePoint `Anyone with the link` sharing links only when a verified SharePoint/OneDrive sharing tool, Microsoft Graph path, or authenticated SharePoint/OneDrive UI path is available. Prefer sharing the package ZIP unless Wes asks for file-by-file or folder sharing. Do not create broad property-folder sharing links. If no verified path can create and confirm permission-granting links, stop and report that blocker before sending an external-access email; ask Wes whether to create the sharing links manually or proceed with the ZIP attachment only.
+When Wes asks for external access or `Anyone with the link` access, do not use ordinary Teams/SharePoint location links from `teams_link_from_local_path.py` as if they grant external access. Use the SharePoint plugin's sharing-link action to create actual anonymous view/read links for each displayed package file, or for the package ZIP/folder if Wes asks for a single package link. Do not create edit links unless Wes explicitly asks for edit access. Do not create broad property-folder sharing links. If no verified path can create and confirm permission-granting links, stop and report that blocker before sending an external-access email; ask Wes whether to create the sharing links manually or proceed with the ZIP attachment only.
 
 ### CFD Email Package Maintenance
 
@@ -74,6 +74,7 @@ Use this fast path:
    - friendly document labels appear,
    - no visible SharePoint URLs appear in the message body,
    - expected link count is present,
+   - external package emails use SharePoint-generated anonymous view links for each displayed file link,
    - stale wording from prior package versions is absent,
    - no repeated metadata footer appears after the attorney/compliance section,
    - the generated HTML and plain-text fallback files exist in Teams `Email Package`.

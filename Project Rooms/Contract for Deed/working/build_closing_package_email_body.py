@@ -120,6 +120,21 @@ ATTORNEY_REVIEW_ITEMS = [
 ]
 
 
+EXTERNAL_VIEW_LINKS = {
+    "v05 - 320 Rose - Term Sheet - DRAFT.docx": "https://lifeisanadventure.sharepoint.com/:w:/s/SellYourHome/IQCeKn8UOy52R4QnLiwLd1KhARk9x-OLq0GfmJAKfIhyAWg",
+    "v05 - 320 Rose - Buyer Acknowledgment Addendum - DRAFT.docx": "https://lifeisanadventure.sharepoint.com/:w:/s/SellYourHome/IQB7UwYjKQ-JqmZeN6uZGMtAWdcTZX5evJyCdoP0ertfWA",
+    "v05 - 320 Rose - Contract for Deed Agreement - DRAFT.docx": "https://lifeisanadventure.sharepoint.com/:w:/s/SellYourHome/IQDMB-skQOsmQqhjBuppAYzFATIf9TmCTeNngKGzvA2_KmE",
+    "v05 - 320 Rose - Memorandum of Contract for Deed - DRAFT.docx": "https://lifeisanadventure.sharepoint.com/:w:/s/SellYourHome/IQAXq3NGLaZZQoMEdEPxrTUnAWSavTbKEtpm9_BUaRWEoU0",
+    "v05 - 320 Rose - Promissory Note for Contract for Deed - DRAFT.docx": "https://lifeisanadventure.sharepoint.com/:w:/s/SellYourHome/IQAdJsO4JFF8SYwzKYucFr3CAeeBANczX8PylIaojRzQ8DI",
+    "v05 - 320 Rose Pl - 12 Month Amortization Chart.pdf": "https://lifeisanadventure.sharepoint.com/:b:/s/SellYourHome/IQCDpg4R5OnXS5jN2ReMLkScAYRUCTmsi7iKNJHP9QQvxWk",
+    "v05 - 320 Rose - Attorney Review Package.zip": "https://lifeisanadventure.sharepoint.com/:u:/s/SellYourHome/IQBPpmr6T6_TRIWAVdKw9TueAZXo-U9zS-0ga4vi40VX3aU",
+    "26-06-08 320 Rose Ever Amarildo Cardoza Bolanos - Affidavit of Related-Company Rent Payment History.docx": "https://lifeisanadventure.sharepoint.com/:w:/s/SellYourHome/IQC-g2ZWDpHaQIeBMpn-EYBjAYt3z5K0ubQwgoi8pFi5zYA",
+    "26-06-08 320 Rose Ever Amarildo Cardoza Bolanos - Affidavit of Cash Reserves and Receivables Observation.docx": "https://lifeisanadventure.sharepoint.com/:w:/s/SellYourHome/IQD2HG7HoFwuTahWl4eBGuh5AVYNFcQ0lE9TRZV2Gdh6Ei0",
+    "26-06-08 320 Rose Ever Amarildo Cardoza Bolanos - Affidavit of Receipt Package Review and Acceptance.docx": "https://lifeisanadventure.sharepoint.com/:w:/s/SellYourHome/IQD51dTsBh8xSZ-THSqA8_HjAbbOnwtAo7CQfeMF3ZhYa3E",
+    "26-06-08 320 Rose Ever Amarildo Cardoza Bolanos - Affidavit of Business Judgment Approval Direction.docx": "https://lifeisanadventure.sharepoint.com/:w:/s/SellYourHome/IQBP5R0fGxoITIeUGuyqecbKAZSKk75YpiWSqDAzzyIVUtE",
+}
+
+
 def latest_version(clean_package: Path) -> str:
     pattern = re.compile(r"^(v\d{2}) - 320 Rose - Ever Cardoza - Closing Package Cover Page\.docx$", re.I)
     versions = []
@@ -135,7 +150,7 @@ def latest_version(clean_package: Path) -> str:
 def linked_anchor(path: Path, label: str) -> str:
     if not path.exists():
         raise FileNotFoundError(path)
-    url = teams_link_for_path(path)["url"]
+    url = EXTERNAL_VIEW_LINKS.get(path.name) or teams_link_for_path(path)["url"]
     return f'<a href="{escape(url, quote=True)}" style="color:#0b57d0;text-decoration:none;">{escape(label)}</a>'
 
 
