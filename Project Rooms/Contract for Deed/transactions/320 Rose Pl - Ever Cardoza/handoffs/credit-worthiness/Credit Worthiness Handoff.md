@@ -4,17 +4,16 @@
 
 - Handoff from: Credit Worthiness Evaluator project room.
 - Handoff to: Contract for Deed project room.
-- Run type: new-buyer restart from source files only.
-- Prior CWE handoffs, summaries, and report conclusions were not used as current source evidence or controlling conclusions.
+- Run type: affidavit package handoff rerun.
 - Property/project: 320 Rose / 28-SYH-320 Rose Pl.
 - Kickoff file used for routing only: `C:\Codex\Wiki Files\Project Rooms\Contract for Deed\transactions\320 Rose Pl - Ever Cardoza\handoffs\credit-worthiness\CWE Kickoff.md`
 - CFD transaction folder: `C:\Codex\Wiki Files\Project Rooms\Contract for Deed\transactions\320 Rose Pl - Ever Cardoza`
-- Source refresh date/time: 2026-06-09 14:31 ET.
+- Source refresh date/time: 2026-06-10 21:09 ET.
 - Buyer source folder refreshed from: `C:\Users\wesbr\Buy Your Home\Buy Your Home - Property\28-SYH-320 Rose Pl\Selling\Ever Cordoza`
 - Project-room source copy: `C:\Codex\Wiki Files\Project Rooms\Credit Worthiness Evaluator\sources\320 Rose Pl - Ever Cardoza`
-- Current evaluation summary: `C:\Codex\Wiki Files\Project Rooms\Credit Worthiness Evaluator\outputs\320 Rose Pl - Ever Cardoza\26-06-09 Current Evidence Evaluation Summary.md`
-- Current full DOCX report: `C:\Codex\Wiki Files\Project Rooms\Credit Worthiness Evaluator\outputs\320 Rose Pl - Ever Cardoza\26-06-09 320 Rose Ever Amarildo Cardoza Bolanos - Creditworthiness Evaluation Report - New Buyer Restart v17.docx`
-- Teams report copy: `C:\Users\wesbr\Buy Your Home\Buy Your Home - Property\28-SYH-320 Rose Pl\Selling\Ever Cordoza\Credit Worthiness\v17 320 Rose Ever Amarildo Cardoza Bolanos - Creditworthiness Evaluation Report - New Buyer Restart.docx`
+- Current evaluation summary: `C:\Codex\Wiki Files\Project Rooms\Credit Worthiness Evaluator\outputs\320 Rose Pl - Ever Cardoza\26-06-10 Current Evidence Evaluation Summary.md`
+- Current full DOCX report: `C:\Codex\Wiki Files\Project Rooms\Credit Worthiness Evaluator\outputs\320 Rose Pl - Ever Cardoza\26-06-10 320 Rose Ever Amarildo Cardoza Bolanos - Creditworthiness Evaluation Report - Affidavit Package Handoff v18.docx`
+- Teams report copy: `C:\Users\wesbr\Buy Your Home\Buy Your Home - Property\28-SYH-320 Rose Pl\Selling\Ever Cordoza\Credit Worthiness\v18 320 Rose Ever Amarildo Cardoza Bolanos - Creditworthiness Evaluation Report - Affidavit Package Handoff.docx`
 
 ## Buyer And Transaction Snapshot
 
@@ -35,7 +34,7 @@ Source: live project spreadsheet `C:\Users\wesbr\Buy Your Home\Buy Your Home - P
 | Loan end | 2056-06-01 |
 | County | Wake |
 | Trustee | Investment Services LLC |
-| Manager field | Al Bennett |
+| Manager field | José Fabre Jr. |
 
 ## Buyer Legal Names And Roles
 
@@ -53,6 +52,69 @@ Source: live project spreadsheet `C:\Users\wesbr\Buy Your Home\Buy Your Home - P
 
 Use this wording for CFD intake: Ready for document preparation; closing execution subject to required affidavits, funds proof, final legal-name spelling confirmation, and attorney/compliance review.
 
+## Affidavit Package Items
+
+### Affidavit of Related-Company Rent Payment History
+
+- Handoff mode: `source_docx`
+- Exact source DOCX path: `C:\Codex\Wiki Files\Project Rooms\Credit Worthiness Evaluator\sources\320 Rose Pl - Ever Cardoza\26-06-08 320 Rose Ever Amarildo Cardoza Bolanos - Affidavit of Related-Company Rent Payment History.docx`
+- Purpose: Documents timely rent history and related-company nature of the verification.
+- Status: Required if relied on
+- Closing-package deliverable: Yes
+- Signer name: Wes Browning
+- Signer capacity: Manager
+- Entity represented: Buy Your Home, LLC
+- Notary requirement: Recommended/expected for closing-package support
+- Known conflicts: None identified against spreadsheet payment terms; rent amount differs from Zillow applicant rent ($1,850 verification vs. $1,885 application).
+- Cautions/limitations to preserve: Preserve related-company/current-landlord limitation language; do not present as independent third-party landlord verification.
+- Draft readiness: Ready for package formatting; still subject to attorney/compliance review.
+
+### Affidavit of Cash Reserves and Receivables Observation
+
+- Handoff mode: `source_docx`
+- Exact source DOCX path: `C:\Codex\Wiki Files\Project Rooms\Credit Worthiness Evaluator\sources\320 Rose Pl - Ever Cardoza\26-06-08 320 Rose Ever Amarildo Cardoza Bolanos - Affidavit of Cash Reserves and Receivables Observation.docx`
+- Purpose: Documents observed cash, receivables, and stated foreign-fund access.
+- Status: Required or substitute acceptable proof of funds
+- Closing-package deliverable: Yes
+- Signer name: Wes Browning
+- Signer capacity: Manager
+- Entity represented: Buy Your Home, LLC
+- Notary requirement: Needed if used as formal funds/reserves support
+- Known conflicts: No conflict with spreadsheet down payment; affidavit supports funds but does not prove earnest money or closing costs.
+- Cautions/limitations to preserve: Preserve limits that observer counted $24,000 cash but did not personally collect receivables or transfer El Salvador funds.
+- Draft readiness: Ready for package formatting; still subject to attorney/compliance review and closing proof standards.
+
+### Affidavit of Receipt Package Review and Acceptance
+
+- Handoff mode: `source_docx`
+- Exact source DOCX path: `C:\Codex\Wiki Files\Project Rooms\Credit Worthiness Evaluator\sources\320 Rose Pl - Ever Cardoza\26-06-08 320 Rose Ever Amarildo Cardoza Bolanos - Affidavit of Receipt Package Review and Acceptance.docx`
+- Purpose: Documents seller/business acceptance of paid receipts as gross-receipt support.
+- Status: Required if receipts are relied on instead of stronger income proof
+- Closing-package deliverable: Yes
+- Signer name: Al Bennett
+- Signer capacity: Manager of Investment Services LLC
+- Entity represented: Sell Your Home, through Investment Services LLC as Manager
+- Notary requirement: Recommended/expected for closing-package support
+- Known conflicts: No payment-term conflict identified; confirms receipts support gross receipts, not net income.
+- Cautions/limitations to preserve: Preserve limitation that receipts support gross receipts only and affiant does not state he performed the work or collected each payment.
+- Draft readiness: Ready for package formatting; still subject to attorney/compliance review and authority confirmation.
+
+### Affidavit of Business Judgment Approval Direction
+
+- Handoff mode: `source_docx`
+- Exact source DOCX path: `C:\Codex\Wiki Files\Project Rooms\Credit Worthiness Evaluator\sources\320 Rose Pl - Ever Cardoza\26-06-08 320 Rose Ever Amarildo Cardoza Bolanos - Affidavit of Business Judgment Approval Direction.docx`
+- Purpose: Documents business decision to proceed despite nonstandard income proof and high back-end ratio.
+- Status: Required if management proceeds on this basis
+- Closing-package deliverable: Yes
+- Signer name: Al Bennett
+- Signer capacity: Manager of Investment Services LLC
+- Entity represented: Sell Your Home, through Investment Services LLC as Manager
+- Notary requirement: Recommended/expected for closing-package support
+- Known conflicts: Draft states proposed monthly housing payment of $2,701, while live spreadsheet shows $2,504.43. Use spreadsheet value unless Wes/counsel updates it.
+- Cautions/limitations to preserve: Preserve limitation that affidavit does not provide legal advice, waive legal requirements, or replace attorney review.
+- Draft readiness: Needs payment-value correction or attorney/compliance review before package formatting as final.
+
+
 ## Funds To Close Status
 
 | Item | Current evidence | Status |
@@ -61,15 +123,6 @@ Use this wording for CFD intake: Ready for document preparation; closing executi
 | $20,790 down payment | Cash-reserves affidavit materials state $24,000 cash was counted. | Supportive if accepted, but final notarized affidavit or closing proof should be retained. |
 | Closing costs | Not quantified in reviewed source evidence. | Missing. |
 | Post-closing reserves | Affidavit materials reference $14,000 receivables and $10,000 foreign funds in addition to counted cash. | Conditional; receivables and foreign funds need collection, transfer, or affidavit/closing acceptance. |
-
-## CFD Closing-Package Document Requests
-
-| Document | Purpose | Signer/capacity | Authority/source | Required/recommended | Closing deliverable | Notary need | CFD action needed |
-| --- | --- | --- | --- | --- | --- | --- | --- |
-| Related-Company Rent Payment History | Supports tenant-buyer payment-history exception and documents that rent history comes from related company Buy Your Home, LLC. | Buy Your Home, LLC manager or authorized representative, signing in company capacity. | Rent verification letter and related-company rent-history affidavit draft. | Required if relied on. | Yes. | Recommended if used as underwriting or closing support. | Prepare or confirm final version and retain in closing file if relied on. |
-| Cash Reserves and Receivables Observation | Supports funds-to-close/reserve condition through observed cash, receivables, and stated foreign-fund access. | Observing person/entity representative with exact capacity; source drafts identify Buy Your Home, LLC manager for observation facts. | Cash-reserves affidavit materials and due receivable PDFs. | Required or substitute acceptable proof of funds. | Yes. | Needed if used as formal proof. | Obtain final notarized version or substitute closing-approved proof of funds. |
-| Receipt Package Review and Acceptance | Documents seller/business acceptance of customer receipts as support for gross cash receipts and non-bank cash receipts. | Sell Your Home, LLC by authorized representative; source draft uses Investment Services LLC, Manager, signed by Al Bennett. | Paid receipt package; Secretary of State filing; receipt-review affidavit draft. | Required if receipts are relied on instead of stronger income proof. | Yes. | Recommended. | Confirm authority/signature block and include final if seller relies on receipts instead of tax/CPA income proof. |
-| Business Judgment Approval Direction | Documents decision to proceed despite nonstandard self-employment proof, high debt ratio, and related-company rent verification. | Sell Your Home, LLC by authorized representative; source draft uses Investment Services LLC, Manager, signed by Al Bennett. | Management approval decision; evaluation source evidence; attorney/compliance review. | Required if management proceeds on this basis. | Yes. | Recommended. | Include final only after authority and compliance review are satisfied. |
 
 ## Missing Uploads Or File Gaps
 
@@ -97,6 +150,10 @@ Use this wording for CFD intake: Ready for document preparation; closing executi
 1. Use the live project spreadsheet values as the current CFD drafting source unless Wes or counsel updates them.
 2. Proceed with document preparation; do not mark the file ready for final closing execution until listed deliverables are complete.
 3. Treat both spreadsheet buyers as signing buyers.
-4. Carry the four affidavit/support-document requests into the closing checklist as closing deliverables.
+4. Carry the four affidavit package items into the closing checklist as closing deliverables.
 5. Confirm final funds to close and post-closing reserves through the closing process.
 6. Route seller-financing and Contract for Deed compliance issues for attorney review before final execution.
+
+## Proposed CFD-Side Rule For CFD To Consider
+
+CWE is not editing CFD rules. If CFD wants to consume this richer handoff format, CFD may add its own intake rule for `source_docx`, `body_payload`, and `metadata_only_not_ready` affidavit package items.
