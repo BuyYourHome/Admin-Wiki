@@ -2,32 +2,32 @@
 
 ## Purpose
 
-Collect and prepare source material for a future `amortization` Codex skill before drafting the skill instructions, scripts, examples, or related durable outputs.
+Own the reusable Amortization generator that creates buyer-facing 12-month amortization chart PDFs from project spreadsheets for Contract for Deed and other seller-financing workflows.
 
 ## Scope
 
 - Topic: amortization.
-- Current intended output: likely a wiki-managed Codex skill named `amortization`.
-- Likely caller: the Contract for Deed process may call this skill when amortization calculations or schedules are needed.
-- Expected source: the project spreadsheet, specifically the worksheet currently referred to as `amateurization`.
-- Expected output: a formal amortization chart for the next 12 months, written into the project-room output folder supplied by the calling skill.
+- Current durable output: wiki-managed Codex skill named `amortization` plus the Amortization-owned generator script.
+- Likely caller: the Contract for Deed process calls this skill when amortization calculations or schedules are needed.
+- Expected source: a provided project spreadsheet path, using worksheet `Amortization` with fallback worksheet `amateurization`.
+- Expected output: a formal buyer-facing amortization chart PDF for the next 12 scheduled payment rows.
+- Caller destination: supplied by the calling skill; Amortization processes in its own project room and copies only the finished PDF to the caller destination by default.
 - Owner intent: started at Wes's request on 2026-06-10.
 
 ## Current Status
 
-Project room started. No authoritative sources have been added yet, and no skill source has been created or edited.
+Reusable generator implemented under `scripts\New-AmortizationChart.ps1`.
 
 ## Folder Map
 
 - `sources/` - raw source files, exported messages, notes, or source summaries.
 - `working/` - source inventory, conflict review, missing context, and draft thinking.
 - `outputs/` - review-ready drafts and final deliverables.
+- `templates/` - buyer-facing workbook template used as the layout source.
+- `scripts/` - reusable generator scripts owned by this project room.
 
 ## Next Actions
 
-1. Identify the project spreadsheet path and exact worksheet name.
-2. Define the 12-month chart columns, formatting, and output file type.
-3. Define the intended skill behavior, inputs, outputs, rounding rules, and examples.
-4. Define the exact call contract for how the Contract for Deed process passes the project spreadsheet and output folder to the `amortization` skill.
-5. Classify sources in `working/source-inventory.md`.
-6. Record duplicates, conflicts, and missing context before drafting.
+1. Continue testing the generator against additional project spreadsheets.
+2. Add validation examples when known-good schedules are available.
+3. Keep the template workbook updated as Wes refines the buyer-facing layout.

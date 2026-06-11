@@ -91,13 +91,16 @@ The CFD closing package includes an Amortization Chart PDF.
 When building or refreshing the Full English Package:
 
 1. Confirm the active project spreadsheet path.
-2. Call/use the `amortization` skill.
-3. Pass the amortization skill:
+2. Call/use the `amortization` skill and its Amortization project-room generator. CFD must not generate the amortization chart itself.
+3. Pass the amortization generator:
    - project/property name,
    - `project_spreadsheet_path`: the full path to the active project spreadsheet,
-   - `output_folder`: the CFD buyer transaction output folder where the finished Amortization Chart PDF should be written.
+   - `caller_destination_folder`: the CFD buyer transaction destination folder where the finished Amortization Chart PDF should be copied,
+   - `output_format`: `PDF` unless Wes specifically asks for the populated workbook too.
 4. Require a PDF output for the CFD closing package unless Wes explicitly asks for a different format.
-5. Include the returned Amortization Chart PDF in the closing checklist / cover page, the project-room package output, the Teams buyer package folder, and the Email Package ZIP.
+5. Use the returned/copied PDF path from Amortization. CFD should only package the returned PDF and list it on the closing checklist / cover page.
+6. Do not place intermediate Amortization working XLSX files in the CFD project room by default.
+7. Include the returned Amortization Chart PDF in the closing checklist / cover page, the project-room package output, the Teams buyer package folder, and the Email Package ZIP.
 
 Use the project spreadsheet already verified for the CFD package. Do not ask Wes to re-enter loan terms that should be available from the project spreadsheet. If the amortization skill reports missing or ambiguous source data, carry that blocker into the CFD package report instead of creating a guessed amortization chart.
 

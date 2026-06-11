@@ -17,23 +17,27 @@ Use this skill as a reusable output generator. Project-specific spreadsheets, no
 
 Require these inputs before generating an amortization chart:
 
+- `project_name` - project/property name for output naming and buyer-facing title.
 - `project_spreadsheet_path` - full path to the project workbook.
-- `output_folder` - folder supplied by the calling skill where the finished chart must be dropped.
+- `caller_destination_folder` - folder supplied by the calling skill where the finished PDF must be copied.
+- `output_format` - optional; default is `PDF`.
 
-Do not infer or search for the output folder when called by another skill. If `output_folder` is missing, stop and ask for it unless Wes has explicitly defined a standalone/manual run mode.
+Do not infer or search for the caller destination folder when called by another skill. If `caller_destination_folder` is missing, stop and ask for it unless Wes has explicitly defined a standalone/manual run mode.
 
 ## Calling Skill Contract
 
 When another skill calls this skill:
 
 1. Accept the project spreadsheet path from the caller.
-2. Accept the project-room output folder from the caller.
-3. Write the finished amortization chart into that output folder.
-4. Return the created output file path to the caller.
+2. Accept the caller destination folder from the caller.
+3. Process inside the Amortization project room.
+4. Write the finished PDF into the Amortization project-room `outputs` area.
+5. Copy the finished PDF to the caller destination folder.
+6. Return/report both PDF paths to the caller.
 
-The calling skill may pass the project-room root, the `outputs` folder, or both only after that convention is explicitly defined. Until then, require a direct folder path for the destination where the file should be written.
+The calling skill must pass a direct destination folder path. The caller should not pass only its project-room root unless that root is also the intended delivery folder.
 
-The Contract for Deed process is the likely first caller. Do not edit the Contract for Deed skill or its project-room files while using this skill unless Wes explicitly asks for that separate process update.
+The Contract for Deed process is the likely first caller. CFD should call the Amortization generator and package the returned PDF; CFD should not generate the amortization chart itself.
 
 ## Spreadsheet Rule
 
@@ -53,7 +57,7 @@ Use the spreadsheet skill/runtime for `.xlsx`, `.xls`, `.csv`, `.tsv`, or workbo
 
 Create a formal amortization chart for the next 12 months.
 
-The chart must be a standalone output file, not only an in-chat table. Save it in the `output_folder` supplied by the caller.
+The chart must be a standalone PDF output, not only an in-chat table. Save the finished PDF in the Amortization project-room `outputs` area and copy it to the caller destination folder.
 
 Until Wes defines a different required format, use the most practical review-ready format for the surrounding workflow:
 
@@ -67,6 +71,33 @@ Use a clear filename that includes the property/project name when available, suc
 
 If a file with the same name already exists, create a versioned filename instead of overwriting it.
 
+## Generator Script
+
+Use the Amortization project-room generator:
+
+`C:\Codex\Wiki Files\Project Rooms\Amortization\scripts\New-AmortizationChart.ps1`
+
+Call pattern:
+
+```powershell
+powershell -NoProfile -ExecutionPolicy Bypass -File "C:\Codex\Wiki Files\Project Rooms\Amortization\scripts\New-AmortizationChart.ps1" -ProjectName "<project/property name>" -ProjectSpreadsheetPath "<project_spreadsheet_path>" -CallerDestinationFolder "<caller_destination_folder>"
+```
+
+Optional parameter:
+
+- `-OutputFormat PDF` - default; create/copy only PDF to the caller.
+- `-OutputFormat XLSX` or `-OutputFormat Both` - copy the populated workbook to the caller only when Wes specifically asks for it.
+
+The script returns JSON containing:
+
+- `amortization_project_room_pdf`
+- `caller_pdf`
+- `worksheet_used`
+- `first_payment_date`
+- `last_payment_date`
+- `payment_rows`
+- `missing_or_ambiguous_source_data`
+
 ## Template Rule
 
 Use the buyer-facing amortization template workbook as the layout source when it exists:
@@ -75,11 +106,15 @@ Use the buyer-facing amortization template workbook as the layout source when it
 
 For buyer-facing outputs:
 
-1. Copy the template workbook to the caller-supplied output folder.
+1. Copy the template workbook to the Amortization project-room working area for the run.
 2. Populate the copied workbook with values from the project spreadsheet.
 3. Preserve the template's formatting, merged cells, column widths, print area, headers, and buyer-facing wording.
-4. Export the populated copy to PDF when a PDF is needed.
-5. Do not rebuild the visual layout from scratch unless the template is missing or Wes explicitly asks for a redesign.
+4. Export the populated copy to PDF using LibreOffice:
+   `C:\Program Files\LibreOffice\program\soffice.exe`
+5. Save the finished PDF in the Amortization project-room `outputs` area.
+6. Copy only the finished PDF to the caller destination folder unless Wes specifically asks for the populated workbook too.
+7. Do not place intermediate working XLSX files in the CFD project room by default.
+8. Do not rebuild the visual layout from scratch unless the template is missing or Wes explicitly asks for a redesign.
 
 Template value cells:
 
@@ -130,6 +165,8 @@ When the chart is for the buyer's benefit:
 
 Use values from the project spreadsheet as the source of truth. If values are calculated in the workbook, prefer the worksheet's exposed calculated values over re-deriving them unless the worksheet is incomplete or visibly wrong.
 
+The generator reads cached workbook values directly from the spreadsheet package and does not modify the source spreadsheet.
+
 Keep rounding consistent with the worksheet. If the worksheet does not specify rounding:
 
 - round displayed currency to cents,
@@ -148,12 +185,14 @@ If the start date is not clear, stop and report the ambiguity. Do not default to
 
 Before reporting completion:
 
-1. Confirm the output file exists in the caller-supplied output folder.
+1. Confirm the project-room PDF exists and is non-empty.
+2. Confirm the copied caller PDF exists and is non-empty.
 2. Confirm the chart covers exactly 12 scheduled months unless the source data supports fewer payments because of payoff, balloon, or contract end.
 3. Confirm the beginning balance, payment, interest, principal, and ending balance columns are populated.
 4. Confirm buyer-facing metadata values are present and visible.
-5. Confirm the output does not overwrite the source workbook or an existing deliverable unintentionally.
-6. Report the output path, assumptions, and any missing or conflicting source data.
+5. Confirm the worksheet used, first payment date, and last payment date are reported.
+6. Confirm the output does not overwrite the source workbook or an existing deliverable unintentionally.
+7. Report the project-room PDF path, copied caller PDF path, assumptions, and any missing or conflicting source data.
 
 ## Maintenance Boundaries
 

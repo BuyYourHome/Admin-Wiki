@@ -17,18 +17,36 @@ The Contract for Deed process will probably call this skill when it needs a 12-m
 ## Expected Output
 
 - Create a formal amortization chart for the next 12 months.
-- Write the output file into the project-room output folder supplied by the calling skill.
+- Process inside the Amortization project room.
+- Write the finished PDF into the Amortization project-room `outputs` area.
+- Copy only the finished PDF to the destination folder supplied by the calling skill unless Wes asks for the populated workbook too.
 - Use a buyer-facing layout by default when the chart will be given to buyers.
 - Use the Amortization project-room template workbook as the layout source when it exists.
 - Output format and some styling details remain open unless the caller or Wes specifies them.
+
+## Generator Script
+
+- Reusable generator: `Project Rooms/Amortization/scripts/New-AmortizationChart.ps1`.
+- Required inputs:
+  - `ProjectName`
+  - `ProjectSpreadsheetPath`
+  - `CallerDestinationFolder`
+  - `OutputFormat`, default `PDF`
+- Read worksheet `Amortization` first; fallback to `amateurization`.
+- Do not modify the source spreadsheet.
+- Export PDF using `C:\Program Files\LibreOffice\program\soffice.exe`.
+- Return/report the Amortization project-room PDF path, copied caller PDF path, worksheet used, first and last payment dates, payment-row count, and missing/ambiguous source data.
 
 ## Template Rule
 
 - Keep the buyer-facing template workbook in `Project Rooms/Amortization/templates/Buyer-Facing Amortization Chart Template.xlsx`.
 - Copy the template to the caller-supplied output folder for each run.
-- Populate the copied workbook with project-spreadsheet values.
+- Copy the template to the Amortization project-room working area for each run.
+- Populate the copied workbook in the Amortization project room with project-spreadsheet values.
 - Preserve the template's formatting, merged cells, column widths, print area, headers, and buyer-facing wording.
 - Export the populated copy to PDF when a PDF is needed.
+- Copy only the finished PDF to the caller destination by default.
+- Do not place intermediate working XLSX files in the CFD project room by default.
 - Do not rebuild the visual layout from scratch unless the template is missing or Wes explicitly asks for a redesign.
 - Verify both labels and values are visible before reporting completion.
 
