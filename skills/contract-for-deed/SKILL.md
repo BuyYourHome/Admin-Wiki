@@ -70,7 +70,10 @@ Affidavit packaging is not a standalone CFD output mode. CFD reads, references, 
 When sending a CFD Email Package:
 
 1. Confirm the project and buyer before preparing or sending anything.
-2. Use the Closing Checklist content as the plain-text email body.
+2. Use the Closing Checklist / cover-page content as the email body.
+   - When package-file links are included, build an HTML email body so each link displays as the file name instead of showing the full SharePoint URL.
+   - Preserve the friendly cover-page structure in the email body: package summary, documents included, affidavits/support documents, items to complete before final closing execution, and notes.
+   - Do not use a plain-text-only send path when Wes has asked for clean display links; plain text may expose long SharePoint URLs and lose the polished checklist formatting.
 3. Verify every file listed in the Closing Checklist exists and is readable, including the Amortization Chart PDF.
 4. Put every checklist-listed package file in the Teams `Clean Package` folder before building the email body, including the polished closing cover page/checklist output and package copies of CWE-authored affidavit/support documents.
 5. Generate clickable Teams/SharePoint links from the Teams `Clean Package` paths and include those links next to the listed package files in the email body when possible.
@@ -87,6 +90,8 @@ Use the CFD Teams-link helper for link generation:
 `C:\Codex\Wiki Files\Project Rooms\Contract for Deed\working\teams_link_from_local_path.py`
 
 The helper reads the local OneDrive/Teams sync metadata and converts a local Teams-synced path, such as a file under `C:\Users\wesbr\Buy Your Home\Buy Your Home - Property\...`, into the matching SharePoint web URL. If the helper cannot map a file, do not invent a web link. In that case, list the exact filename and local Teams path, and report that link generation failed for that item.
+
+When the Outlook connector only supports plain-text message bodies, do not use it for a linked/polished Email Package unless Wes explicitly accepts plain text for that run. Use a send path that supports HTML, normally local Outlook automation with `HTMLBody`, while still following `email-delivery` sender safety: send from `OfficeAssist@BuyYourHomeLLC.com`, send only to Wes, verify the draft/sender when possible, attach the complete package ZIP, and verify the sent copy in OfficeAssist Sent Items.
 
 For connector send tools, pass the package ZIP path in the attachment input shape the connector currently requires. If the connector rejects a plain path string and reports that it expects an array, retry with an attachment-path array. Do not pass newline-separated paths.
 

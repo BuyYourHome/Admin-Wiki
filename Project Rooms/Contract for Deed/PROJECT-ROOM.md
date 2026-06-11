@@ -46,6 +46,8 @@ When affidavits are CWE-authored, copying them into `Clean Package` is a package
 
 Use `working\teams_link_from_local_path.py` to convert Teams-synced package paths into SharePoint web links for the Email Package body. If a file cannot be mapped to a SharePoint link, list the exact filename and local Teams path and report the unmapped item rather than guessing.
 
+For Email Package messages with package-file links, use an HTML email body so each link displays as the file name instead of showing the full SharePoint URL. Preserve the friendly closing cover-page layout in the email body. Do not use a plain-text-only send path for this linked package email unless Wes explicitly accepts plain text for that run.
+
 The project-room copy remains authoritative. If Wes edits a Teams copy and says to keep those edits, first bring the edited file back into the project room and apply the normal edit-preservation/prototype rule before regenerating. Do not use Teams copies as regeneration sources unless Wes identifies the Teams-edited file as the version to preserve.
 
 ## Spreadsheet Refresh Rule
