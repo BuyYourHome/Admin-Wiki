@@ -7,6 +7,7 @@ The project room has been started, but the following context is still needed bef
 | Skill inputs | Defines whether the skill expects principal, interest rate, term, start date, payment amount, balloon terms, extra payments, or CFD-specific fields. | missing |
 | Project spreadsheet path | Needed so the skill can reliably locate the workbook. | missing |
 | Worksheet name | The worksheet is currently referred to as `amateurization`; need to confirm exact spelling and whether the skill should tolerate alternate spellings. | missing |
+| Output folder argument | Calling skills will pass the project-room folder where the output file should be dropped; need exact parameter name and whether it points to the room root or `outputs/`. | missing |
 | Skill outputs | Current target is a formal amortization chart for the next 12 months; need file type and presentation format. | missing |
 | Chart columns | Defines required columns such as payment date, payment number, beginning balance, payment, interest, principal, escrow, fees, ending balance, and notes. | missing |
 | Rounding and date rules | Prevents small calculation differences from changing payment schedules or balances. | missing |
