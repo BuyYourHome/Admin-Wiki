@@ -35,6 +35,10 @@ class AffidavitFile:
 
 
 DOCUMENTS = [
+    LinkedFile(
+        "Credit Worthiness Report",
+        "v19 320 Rose Ever Amarildo Cardoza Bolanos - Creditworthiness Evaluation Report - Affidavit Package Handoff.docx",
+    ),
     LinkedFile("Term Sheet", "{version} - 320 Rose - Term Sheet - DRAFT.docx"),
     LinkedFile(
         "Buyer Acknowledgment Addendum",
@@ -121,6 +125,7 @@ ATTORNEY_REVIEW_ITEMS = [
 
 
 EXTERNAL_VIEW_LINKS = {
+    "v19 320 Rose Ever Amarildo Cardoza Bolanos - Creditworthiness Evaluation Report - Affidavit Package Handoff.docx": "https://lifeisanadventure.sharepoint.com/:w:/s/SellYourHome/IQCcQW8eUynITYVURk2CkwsbAQ6NrJTBkIwq19XQ9ZGXQuk",
     "v05 - 320 Rose - Term Sheet - DRAFT.docx": "https://lifeisanadventure.sharepoint.com/:w:/s/SellYourHome/IQCeKn8UOy52R4QnLiwLd1KhARk9x-OLq0GfmJAKfIhyAWg",
     "v05 - 320 Rose - Buyer Acknowledgment Addendum - DRAFT.docx": "https://lifeisanadventure.sharepoint.com/:w:/s/SellYourHome/IQB7UwYjKQ-JqmZeN6uZGMtAWdcTZX5evJyCdoP0ertfWA",
     "v05 - 320 Rose - Contract for Deed Agreement - DRAFT.docx": "https://lifeisanadventure.sharepoint.com/:w:/s/SellYourHome/IQDMB-skQOsmQqhjBuppAYzFATIf9TmCTeNngKGzvA2_KmE",
@@ -162,7 +167,8 @@ def render_html(version: str, prepared: date) -> str:
     doc_items = []
     for item in DOCUMENTS:
         file_name = item.file_name.format(version=version)
-        doc_items.append(f"<li>{linked_anchor(CLEAN_PACKAGE / file_name, item.label)}</li>")
+        base_folder = TEAMS_PACKAGE_ROOT / "Credit Worthiness" if item.label == "Credit Worthiness Report" else CLEAN_PACKAGE
+        doc_items.append(f"<li>{linked_anchor(base_folder / file_name, item.label)}</li>")
 
     affidavit_blocks = []
     for item in AFFIDAVITS:
@@ -193,13 +199,13 @@ def render_html(version: str, prepared: date) -> str:
 <body style="margin:0;padding:0;background:#f4f6f8;font-family:Arial, Helvetica, sans-serif;color:#1f2933;">
   <div style="max-width:760px;margin:0 auto;padding:24px;">
     <div style="background:#ffffff;border:1px solid #d8dee6;border-radius:6px;padding:28px;">
+      <p style="font-size:15px;line-height:1.5;margin:0 0 18px 0;">Below is the current closing package cover page for review. The package ZIP is attached, and the document names below link to the package files.</p>
+
       <div style="border-bottom:3px solid #254f7a;padding-bottom:14px;margin-bottom:20px;">
         <div style="font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:#5c6b7a;font-weight:bold;">Contract for Deed Closing Package</div>
         <h1 style="margin:6px 0 0 0;font-size:24px;line-height:1.25;color:#17324d;">{escape(PROPERTY_LABEL)} / {escape(BUYER_LABEL)}</h1>
         <div style="margin-top:8px;font-size:14px;color:#5c6b7a;">Prepared: {escape(format_date(prepared))}</div>
       </div>
-
-      <p style="font-size:15px;line-height:1.5;margin:0 0 22px 0;">Wes, below is the current closing package cover page for review. The package ZIP is attached, and the document names below link to the Teams Clean Package files.</p>
 
       <h2 style="font-size:16px;color:#17324d;margin:22px 0 10px 0;border-bottom:1px solid #d8dee6;padding-bottom:5px;">Current Readiness</h2>
       <table style="width:100%;border-collapse:collapse;font-size:14px;line-height:1.4;">
@@ -236,13 +242,13 @@ def render_html(version: str, prepared: date) -> str:
 
 def render_text(version: str, prepared: date) -> str:
     lines = [
+        "Below is the current closing package cover page for review. The package ZIP is attached, and the document names below link to the package files.",
+        "",
         "Contract for Deed Closing Package",
         "",
         f"{PROPERTY_LABEL} / {BUYER_LABEL}",
         "",
         f"Prepared: {format_date(prepared)}",
-        "",
-        "Wes, below is the current closing package cover page for review. The package ZIP is attached, and the document names below link to the Teams Clean Package files in the HTML version.",
         "",
         "Current Readiness",
     ]
