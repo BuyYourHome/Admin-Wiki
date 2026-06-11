@@ -127,7 +127,7 @@ ATTORNEY_REVIEW_ITEMS = [
 EXTERNAL_VIEW_LINKS = {
     "v19 320 Rose Ever Amarildo Cardoza Bolanos - Creditworthiness Evaluation Report - Affidavit Package Handoff.docx": "https://lifeisanadventure.sharepoint.com/:w:/s/SellYourHome/IQCcQW8eUynITYVURk2CkwsbAQ6NrJTBkIwq19XQ9ZGXQuk",
     "v05 - 320 Rose - Term Sheet - DRAFT.docx": "https://lifeisanadventure.sharepoint.com/:w:/s/SellYourHome/IQCeKn8UOy52R4QnLiwLd1KhARk9x-OLq0GfmJAKfIhyAWg",
-    "v05 - 320 Rose - Buyer Acknowledgment Addendum - DRAFT.docx": "https://lifeisanadventure.sharepoint.com/:w:/s/SellYourHome/IQB7UwYjKQ-JqmZeN6uZGMtAWdcTZX5evJyCdoP0ertfWA",
+    "v05 - 320 Rose - Buyer Acknowledgment Addendum - DRAFT.docx": "https://lifeisanadventure.sharepoint.com/:w:/s/SellYourHome/IQB7UwYjKQ-JRqmZeN6uZGMtAWdcTZX5evJyCdoP0ertfWA",
     "v05 - 320 Rose - Contract for Deed Agreement - DRAFT.docx": "https://lifeisanadventure.sharepoint.com/:w:/s/SellYourHome/IQDMB-skQOsmQqhjBuppAYzFATIf9TmCTeNngKGzvA2_KmE",
     "v05 - 320 Rose - Memorandum of Contract for Deed - DRAFT.docx": "https://lifeisanadventure.sharepoint.com/:w:/s/SellYourHome/IQAXq3NGLaZZQoMEdEPxrTUnAWSavTbKEtpm9_BUaRWEoU0",
     "v05 - 320 Rose - Promissory Note for Contract for Deed - DRAFT.docx": "https://lifeisanadventure.sharepoint.com/:w:/s/SellYourHome/IQAdJsO4JFF8SYwzKYucFr3CAeeBANczX8PylIaojRzQ8DI",
