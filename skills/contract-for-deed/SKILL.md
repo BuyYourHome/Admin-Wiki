@@ -45,7 +45,7 @@ If Wes says `do not use compiled skills`, `do not use installed skills`, or simi
 CFD work should be understood in these operating modes:
 
 1. **Full English Package**
-   Confirm the project and buyer, refresh the project spreadsheet, check/read the current CWE handoff, start CWE if a current handoff is missing and the workflow calls for it, use the handoff to identify closing-package items, read affidavit/support documents already created and stored in Teams by CWE, regenerate the clean Contract for Deed Agreement, Memorandum, Promissory Note, Term Sheet, Buyer Acknowledgment Addendum, and include the closing checklist / cover page. Produce versioned project-room outputs and versioned Teams copies for CFD-created deliverables.
+   Confirm the project and buyer, refresh the project spreadsheet, check/read the current CWE handoff, start CWE if a current handoff is missing and the workflow calls for it, use the handoff to identify closing-package items, read affidavit/support documents already created and stored in Teams by CWE, regenerate the clean Contract for Deed Agreement, Memorandum, Promissory Note, Term Sheet, Buyer Acknowledgment Addendum, Amortization Chart PDF, and include the closing checklist / cover page. Produce versioned project-room outputs and versioned Teams copies for CFD-created deliverables.
 
 2. **Attorney Review Package**
    Create attorney-review versions with contextual review blocks. Produce versioned project-room outputs and versioned Teams copies.
@@ -71,7 +71,7 @@ When sending a CFD Email Package:
 
 1. Confirm the project and buyer before preparing or sending anything.
 2. Use the Closing Checklist content as the plain-text email body.
-3. Verify every file listed in the Closing Checklist exists and is readable.
+3. Verify every file listed in the Closing Checklist exists and is readable, including the Amortization Chart PDF.
 4. Build one complete package ZIP containing every checklist-listed file unless Wes explicitly asks for individual attachments for that run.
 5. Verify the ZIP was created and is readable before sending.
 6. Send to `WesWill@BuyYourHomeLLC.com` only so Wes can review and forward it himself.
@@ -83,6 +83,23 @@ When sending a CFD Email Package:
 For connector send tools, pass the package ZIP path in the attachment input shape the connector currently requires. If the connector rejects a plain path string and reports that it expects an array, retry with an attachment-path array. Do not pass newline-separated paths.
 
 Do not send the CFD package email directly to outside parties, buyers, attorneys, agents, Jenny, or anyone else unless Wes later creates a separate explicit rule changing that restriction. If any checklist-listed file is missing, unreadable, or cannot be included in the ZIP, do not send the email; report the blocker and provide the proposed email body in the chat.
+
+## Amortization Chart
+
+The CFD closing package includes an Amortization Chart PDF.
+
+When building or refreshing the Full English Package:
+
+1. Confirm the active project spreadsheet path.
+2. Call/use the `amortization` skill.
+3. Pass the amortization skill:
+   - project/property name,
+   - `project_spreadsheet_path`: the full path to the active project spreadsheet,
+   - `output_folder`: the CFD buyer transaction output folder where the finished Amortization Chart PDF should be written.
+4. Require a PDF output for the CFD closing package unless Wes explicitly asks for a different format.
+5. Include the returned Amortization Chart PDF in the closing checklist / cover page, the project-room package output, the Teams buyer package folder, and the Email Package ZIP.
+
+Use the project spreadsheet already verified for the CFD package. Do not ask Wes to re-enter loan terms that should be available from the project spreadsheet. If the amortization skill reports missing or ambiguous source data, carry that blocker into the CFD package report instead of creating a guessed amortization chart.
 
 ## Core Workflow
 
