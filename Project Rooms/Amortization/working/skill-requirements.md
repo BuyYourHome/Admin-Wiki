@@ -41,6 +41,7 @@ The Contract for Deed process will probably call this skill when it needs a 12-m
 - Do not include a bottom source note or implementation note.
 - Keep only buyer-useful metadata, such as buyer name, property, contract date, sale amount, down payment, loan amount, buyer rate, and monthly total payment when available.
 - Merge or widen buyer-facing metadata label/value cells as needed so labels and values do not truncate. Labels such as `Contract Date` and `Down Payment` must be fully visible.
+- In the current template, keep the buyer value wide enough at `C3:F3`; put the right-side metadata labels at `G3:G6` and values at `I3:I6`.
 
 ## Skill Call Contract
 

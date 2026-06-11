@@ -84,13 +84,13 @@ For buyer-facing outputs:
 Template value cells:
 
 - `C3` - buyer name(s)
-- `H3` - property
+- `I3` - property
 - `C4` - contract date
-- `H4` - sale amount
+- `I4` - sale amount
 - `C5` - down payment
-- `H5` - loan amount
+- `I5` - loan amount
 - `C6` - buyer rate
-- `H6` - monthly total payment
+- `I6` - monthly total payment
 - `A9:K20` - 12 payment rows
 - `E21:J21` - totals for the displayed period
 
@@ -121,6 +121,7 @@ When the chart is for the buyer's benefit:
 - Do not include a bottom source note or implementation note.
 - Keep only buyer-useful metadata, such as buyer name, property, contract date, sale amount, down payment, loan amount, buyer rate, and monthly total payment when those values are available.
 - Merge or widen buyer-facing metadata label/value cells as needed so labels and values do not truncate. Labels such as `Contract Date` and `Down Payment` must be fully visible.
+- In the current template, keep the buyer value wide enough at `C3:F3`; put the right-side metadata labels at `G3:G6` and values at `I3:I6`.
 - After populating a copied template, verify both labels and values are visible. Do not treat a chart as complete if buyer, property, contract date, down payment, loan amount, buyer rate, or monthly payment values are blank or hidden.
 - Wrap column headers so columns can be narrower.
 - Narrow columns enough for a compact one-page chart while keeping values readable.
