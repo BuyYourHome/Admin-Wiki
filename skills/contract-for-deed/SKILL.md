@@ -22,7 +22,8 @@ Before file work:
 1. Confirm the working folder with `Get-Location`.
 2. If it is not `C:\Codex\Wiki Files`, use `C:\Codex\Wiki Files` explicitly as the shell workdir and use absolute paths under `C:\Codex\Wiki Files`.
 3. Read `Admin Home.md`, `AGENTS.md`, `Repository Location Rule.md`, `Codex Skill Source Rule.md`, and the active project room `PROJECT-ROOM.md`.
-4. Check `git status --short --branch`.
+4. Before running Python project-room scripts, follow `Codex Python Runtime Rule.md`; use the Codex workspace Python executable instead of bare `python`.
+5. Check `git status --short --branch`.
 
 ## Discussion Before Action
 
@@ -72,7 +73,9 @@ When sending a CFD Email Package:
 1. Confirm the project and buyer before preparing or sending anything.
 2. Use the Closing Checklist / cover-page content as the email body.
    - When package-file links are included, build an HTML email body so each link displays as the file name instead of showing the full SharePoint URL.
-   - Preserve the friendly cover-page structure in the email body: package summary, documents included, affidavits/support documents, items to complete before final closing execution, and notes.
+   - Use the reference card-style cover-page layout from `C:\Codex\Wiki Files\Project Rooms\Contract for Deed\reference\email-format-reference\DRAFT_ 320 Rose _ Ever Cardoza cover page body test.html`: light page background, centered white card, blue header rule, readiness table, clean section headings, normal bullet lists, and affidavit/support blocks.
+   - Preserve the friendly cover-page structure in the email body: current readiness, current document package, required closing deliverables, funds and identity items, and attorney/compliance review items.
+   - Display package links as short document labels, such as `Contract for Deed Agreement`, `12 Month Amortization Chart`, and `Attorney-review package`, instead of full filenames or full SharePoint URLs.
    - Do not use a plain-text-only send path when Wes has asked for clean display links; plain text may expose long SharePoint URLs and lose the polished checklist formatting.
 3. Verify every file listed in the Closing Checklist exists and is readable, including the Amortization Chart PDF.
 4. Put every checklist-listed package file in the Teams `Clean Package` folder before building the email body, including the polished closing cover page/checklist output and package copies of CWE-authored affidavit/support documents.
@@ -88,6 +91,12 @@ When sending a CFD Email Package:
 Use the CFD Teams-link helper for link generation:
 
 `C:\Codex\Wiki Files\Project Rooms\Contract for Deed\working\teams_link_from_local_path.py`
+
+Use the CFD closing-package email-body builder for the polished HTML body:
+
+`C:\Codex\Wiki Files\Project Rooms\Contract for Deed\working\build_closing_package_email_body.py`
+
+The builder should produce both HTML and plain-text fallback body files in the Teams `Email Package` folder. If the builder is stale or missing a new package item, update the builder before sending the package email.
 
 The helper reads the local OneDrive/Teams sync metadata and converts a local Teams-synced path, such as a file under `C:\Users\wesbr\Buy Your Home\Buy Your Home - Property\...`, into the matching SharePoint web URL. If the helper cannot map a file, do not invent a web link. In that case, list the exact filename and local Teams path, and report that link generation failed for that item.
 

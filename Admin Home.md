@@ -11,6 +11,7 @@ This is the starting page for the Buy Your Home admin wiki.
 - [[AIOS/efforts-index|AIOS Efforts Index]]
 - [[Agents and Automations Registry]]
 - [[Connector and Plugin Usage Rules]]
+- [[Codex Python Runtime Rule]]
 - [[LibreOffice Location Rule]]
 - [[Document Scanning SOP]]
 - [[Document Scanning Skill Spec]]

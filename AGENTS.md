@@ -16,6 +16,7 @@ Use this repo when formulating solutions for office-admin workflows, SOPs, autom
 - Read `Admin Home.md` first for the current operating map.
 - Use `Agents and Automations Registry.md` to inspect named agent-like roles, active automations, skills, schedules, and where each is defined.
 - Use `Connector and Plugin Usage Rules.md` to decide when to prefer installed connectors/plugins over local desktop automation.
+- Use `Codex Python Runtime Rule.md` before running Python scripts for Admin wiki, project-room, document, spreadsheet, or skill-support work.
 - Use `LibreOffice Location Rule.md` before rendering or converting Word/PDF documents with LibreOffice.
 - Use `Project Room Workflow.md` before major work that depends on multiple source files, emails, scans, notes, spreadsheets, or prior drafts.
 - Use `Repository Location Rule.md` for repo/location policy.
@@ -78,6 +79,13 @@ Use this repo when formulating solutions for office-admin workflows, SOPs, autom
 - When creating, renaming, pausing, deleting, or materially changing an agent-like function, update `Agents and Automations Registry.md`.
 - Keep review folders separate when the user has specified separate workflows, such as statement review versus invoice review.
 - If a mailbox, folder, or external service is unavailable, do not substitute a similar one without explicit permission.
+
+## Python Runtime
+
+- Do not call bare `python` or `python3` for routine Codex work in this repository.
+- Use the Codex workspace Python executable returned by workspace dependencies, currently `C:\Users\wesbr\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\python.exe`.
+- Do not ask Wes to install Python, add Python to `PATH`, or change Windows app execution aliases merely so Codex can run Admin wiki or project-room scripts.
+- See [[Codex Python Runtime Rule]].
 
 ## Document Rendering Tools
 
