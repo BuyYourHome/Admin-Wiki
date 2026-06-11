@@ -25,28 +25,28 @@ Package version for this run: v05
 ## Required Closing Deliverables From CWE Handoff
 - Related-Company Rent Payment History Affidavit.
   - File status: FOUND.
-  - Teams path: `C:\Users\wesbr\Buy Your Home\Buy Your Home - Property\28-SYH-320 Rose Pl\Selling\Ever Cordoza\Contract Package\Affidavits\26-06-08 320 Rose Ever Amarildo Cardoza Bolanos - Affidavit of Related-Company Rent Payment History.docx`
+  - Teams package path: `C:\Users\wesbr\Buy Your Home\Buy Your Home - Property\28-SYH-320 Rose Pl\Selling\Ever Cordoza\Contract Package\Clean Package\26-06-08 320 Rose Ever Amarildo Cardoza Bolanos - Affidavit of Related-Company Rent Payment History.docx`
   - Required status: Required if relied on.
   - Signer/capacity: Wes Browning, Manager, Buy Your Home, LLC.
   - Notary need: Recommended/expected for closing-package support.
   - Current CFD status: CWE-authored draft support document; final execution subject to attorney/compliance review and notarized signature if used.
 - Cash Reserves and Receivables Observation Affidavit.
   - File status: FOUND.
-  - Teams path: `C:\Users\wesbr\Buy Your Home\Buy Your Home - Property\28-SYH-320 Rose Pl\Selling\Ever Cordoza\Contract Package\Affidavits\26-06-08 320 Rose Ever Amarildo Cardoza Bolanos - Affidavit of Cash Reserves and Receivables Observation.docx`
+  - Teams package path: `C:\Users\wesbr\Buy Your Home\Buy Your Home - Property\28-SYH-320 Rose Pl\Selling\Ever Cordoza\Contract Package\Clean Package\26-06-08 320 Rose Ever Amarildo Cardoza Bolanos - Affidavit of Cash Reserves and Receivables Observation.docx`
   - Required status: Required or substitute acceptable proof of funds.
   - Signer/capacity: Wes Browning, Manager, Buy Your Home, LLC.
   - Notary need: Needed if used as formal funds/reserves support.
   - Current CFD status: CWE-authored draft support document; final execution subject to attorney/compliance review and notarized signature if used.
 - Receipt Package Review and Acceptance Affidavit.
   - File status: FOUND.
-  - Teams path: `C:\Users\wesbr\Buy Your Home\Buy Your Home - Property\28-SYH-320 Rose Pl\Selling\Ever Cordoza\Contract Package\Affidavits\26-06-08 320 Rose Ever Amarildo Cardoza Bolanos - Affidavit of Receipt Package Review and Acceptance.docx`
+  - Teams package path: `C:\Users\wesbr\Buy Your Home\Buy Your Home - Property\28-SYH-320 Rose Pl\Selling\Ever Cordoza\Contract Package\Clean Package\26-06-08 320 Rose Ever Amarildo Cardoza Bolanos - Affidavit of Receipt Package Review and Acceptance.docx`
   - Required status: Required if receipts are relied on instead of stronger income proof.
   - Signer/capacity: Al Bennett, Manager of Investment Services LLC.
   - Notary need: Recommended/expected for closing-package support.
   - Current CFD status: CWE-authored draft support document; final execution subject to attorney/compliance review and notarized signature if used.
 - Business Judgment Approval Direction Affidavit.
   - File status: FOUND.
-  - Teams path: `C:\Users\wesbr\Buy Your Home\Buy Your Home - Property\28-SYH-320 Rose Pl\Selling\Ever Cordoza\Contract Package\Affidavits\26-06-08 320 Rose Ever Amarildo Cardoza Bolanos - Affidavit of Business Judgment Approval Direction.docx`
+  - Teams package path: `C:\Users\wesbr\Buy Your Home\Buy Your Home - Property\28-SYH-320 Rose Pl\Selling\Ever Cordoza\Contract Package\Clean Package\26-06-08 320 Rose Ever Amarildo Cardoza Bolanos - Affidavit of Business Judgment Approval Direction.docx`
   - Required status: Required if management proceeds on this basis.
   - Signer/capacity: Al Bennett, Manager of Investment Services LLC.
   - Notary need: Recommended/expected for closing-package support.
@@ -71,8 +71,8 @@ Package version for this run: v05
 
 ## Affidavit Packaging Note
 
-- CFD did not reauthor, rewrite, or recopy the CWE affidavit files for this run.
-- The affidavit/support documents remain CWE-authored and stored in Teams; CFD references them as closing-package deliverables.
+- CFD did not reauthor or rewrite the CWE affidavit files for this run.
+- The affidavit/support documents remain CWE-authored. CFD copied package copies into the Teams `Clean Package` folder so the closing package and email links can reference one package folder.
 - If any affidavit is missing from Teams, treat it as missing until CWE or Wes supplies the file.
 
 ## Drafting Notes For CFD

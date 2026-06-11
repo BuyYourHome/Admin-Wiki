@@ -29,16 +29,22 @@ Teams buyer folder pattern:
 
 Recommended Teams subfolders:
 
-- `Clean Package\`
+- `Clean Package\` - current buyer-review/closing package file set.
 - `Attorney Review Package\`
-- `Closing Checklist\`
-- `Affidavits\`
+- `Closing Checklist\` - legacy or separately requested checklist/cover copies only.
+- `Affidavits\` - CWE-authored affidavit/support source copies when CWE writes them there.
 
 For 320 Rose / Ever Cardoza, use:
 
 `C:\Users\wesbr\Buy Your Home\Buy Your Home - Property\28-SYH-320 Rose Pl\Selling\Ever Cordoza\Contract Package\`
 
-Copy clean packages, attorney-review packages, closing checklists, and CFD-generated closing-package affidavits to the matching Teams subfolder after each requested regeneration or package update unless Wes says project-room only. Do not copy prototypes, staged spreadsheets, scratch files, extracted text, rendered QA images, logs, or temporary working files to Teams.
+Copy clean packages, attorney-review packages, closing checklists, and package copies of closing-package affidavit/support documents to Teams after each requested regeneration or package update unless Wes says project-room only. Do not copy prototypes, staged spreadsheets, scratch files, extracted text, rendered QA images, logs, or temporary working files to Teams.
+
+For buyer-review and Email Package use, keep the current package files together in the Teams `Clean Package` folder. This includes clean signing/review copies, the Amortization Chart PDF, the polished closing cover/checklist output, package copies of CWE-authored affidavit/support documents, and attorney-review files when the checklist/email package lists them. Do not make Wes inspect separate `Affidavits`, `Closing Checklist`, or `Attorney Review Package` folders to find the files listed in the email package.
+
+When affidavits are CWE-authored, copying them into `Clean Package` is a package copy only. It does not transfer affidavit authorship or make CFD responsible for reauthoring them.
+
+Use `working\teams_link_from_local_path.py` to convert Teams-synced package paths into SharePoint web links for the Email Package body. If a file cannot be mapped to a SharePoint link, list the exact filename and local Teams path and report the unmapped item rather than guessing.
 
 The project-room copy remains authoritative. If Wes edits a Teams copy and says to keep those edits, first bring the edited file back into the project room and apply the normal edit-preservation/prototype rule before regenerating. Do not use Teams copies as regeneration sources unless Wes identifies the Teams-edited file as the version to preserve.
 

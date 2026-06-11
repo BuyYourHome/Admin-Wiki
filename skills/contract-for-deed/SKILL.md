@@ -54,7 +54,7 @@ CFD work should be understood in these operating modes:
    Generate the bilingual Spanish Contract for Deed Agreement only, unless Wes explicitly expands the Spanish scope. This mode is additive and does not run the full English package unless Wes asks for the full package too. Produce versioned project-room output and versioned Teams copy.
 
 4. **Email Package**
-   Prepare a package email to Wes only so Wes can review and forward it himself. When Wes says `Email Package`, assume the last project/buyer being processed, but confirm that project and buyer with Wes before preparing or sending anything. The email body should include the format and content of the Closing Checklist. Build one complete package ZIP containing every file listed in the Closing Checklist, unless Wes explicitly asks for individual attachments for that specific run. If any listed file is missing or cannot be included in the ZIP, do not silently omit it and do not send a partial package; report the missing file before sending. Use the `email-delivery` skill for OfficeAssist sender safety, attachment upload handling, delivery, and sent-item verification. Never send the package email directly to outside parties, buyers, attorneys, agents, Jenny, or anyone else unless Wes later creates a separate explicit rule changing that restriction.
+   Prepare a package email to Wes only so Wes can review and forward it himself. When Wes says `Email Package`, assume the last project/buyer being processed, but confirm that project and buyer with Wes before preparing or sending anything. The email body should include the format and content of the Closing Checklist and list package files as clickable Teams/SharePoint links when those links can be generated from the Teams-synced file paths. Build one complete package ZIP containing every file listed in the Closing Checklist, unless Wes explicitly asks for individual attachments for that specific run. If any listed file is missing or cannot be included in the ZIP, do not silently omit it and do not send a partial package; report the missing file before sending. Use the `email-delivery` skill for OfficeAssist sender safety, attachment upload handling, delivery, and sent-item verification. Never send the package email directly to outside parties, buyers, attorneys, agents, Jenny, or anyone else unless Wes later creates a separate explicit rule changing that restriction.
 
 5. **Maintenance**
    Update canonical CFD skill rules and/or project-room generator scripts, keep scripts aligned with skill rules, sync the installed Codex skill when requested, and commit or push only under the normal Admin wiki rules.
@@ -72,13 +72,21 @@ When sending a CFD Email Package:
 1. Confirm the project and buyer before preparing or sending anything.
 2. Use the Closing Checklist content as the plain-text email body.
 3. Verify every file listed in the Closing Checklist exists and is readable, including the Amortization Chart PDF.
-4. Build one complete package ZIP containing every checklist-listed file unless Wes explicitly asks for individual attachments for that run.
-5. Verify the ZIP was created and is readable before sending.
-6. Send to `WesWill@BuyYourHomeLLC.com` only so Wes can review and forward it himself.
-7. Send from `OfficeAssist@BuyYourHomeLLC.com`.
-8. Use a subject beginning with `DRAFT:` unless Wes provides a different review-submission subject for that specific run.
-9. Do not say the message is "on Wes's behalf" unless Wes explicitly asks for that wording for that specific message.
-10. Call/use `email-delivery` for OfficeAssist sender safety, Outlook connector handling, attachment input format, Sent Items verification, local Outlook fallback rules, and failure handling.
+4. Put every checklist-listed package file in the Teams `Clean Package` folder before building the email body, including the polished closing cover page/checklist output and package copies of CWE-authored affidavit/support documents.
+5. Generate clickable Teams/SharePoint links from the Teams `Clean Package` paths and include those links next to the listed package files in the email body when possible.
+6. Build one complete package ZIP containing every checklist-listed file unless Wes explicitly asks for individual attachments for that run.
+7. Verify the ZIP was created and is readable before sending.
+8. Send to `WesWill@BuyYourHomeLLC.com` only so Wes can review and forward it himself.
+9. Send from `OfficeAssist@BuyYourHomeLLC.com`.
+10. Use a subject beginning with `DRAFT:` unless Wes provides a different review-submission subject for that specific run.
+11. Do not say the message is "on Wes's behalf" unless Wes explicitly asks for that wording for that specific message.
+12. Call/use `email-delivery` for OfficeAssist sender safety, Outlook connector handling, attachment input format, Sent Items verification, local Outlook fallback rules, and failure handling.
+
+Use the CFD Teams-link helper for link generation:
+
+`C:\Codex\Wiki Files\Project Rooms\Contract for Deed\working\teams_link_from_local_path.py`
+
+The helper reads the local OneDrive/Teams sync metadata and converts a local Teams-synced path, such as a file under `C:\Users\wesbr\Buy Your Home\Buy Your Home - Property\...`, into the matching SharePoint web URL. If the helper cannot map a file, do not invent a web link. In that case, list the exact filename and local Teams path, and report that link generation failed for that item.
 
 For connector send tools, pass the package ZIP path in the attachment input shape the connector currently requires. If the connector rejects a plain path string and reports that it expects an array, retry with an attachment-path array. Do not pass newline-separated paths.
 
@@ -171,12 +179,14 @@ Use the Teams buyer folder pattern:
 
 Recommended subfolders:
 
-- `Clean Package\` for current clean signing/review copies.
+- `Clean Package\` for the current buyer-review/closing package file set, including clean signing/review copies, the Amortization Chart PDF, polished closing cover/checklist output, package copies of CWE-authored affidavit/support documents, and attorney-review files when the checklist/email package lists them.
 - `Attorney Review Package\` for current attorney-review copies and ZIPs.
-- `Closing Checklist\` for polished buyer-facing checklist / cover-page outputs.
-- `Affidavits\` for closing-package affidavits.
+- `Closing Checklist\` for legacy or separately requested polished checklist / cover-page outputs only.
+- `Affidavits\` for CWE-authored affidavit/support source copies when CWE writes them there; CFD should copy package copies into `Clean Package\` when building the buyer-review/closing package.
 
 Copy project-room outputs to Teams after each requested regeneration or package update unless Wes says project-room only. The project-room copy remains authoritative. If a Teams copy is edited and Wes says to keep those edits, bring that edited file back into the project room and apply the normal edit-preservation/prototype rule before regenerating.
+
+For buyer-review and Email Package use, keep the current package files together in the Teams `Clean Package` folder so the email body can link to one coherent package file set. Do not make Wes inspect separate `Affidavits`, `Closing Checklist`, or `Attorney Review Package` folders to find the files listed in the email package. When affidavits are CWE-authored, copying them into `Clean Package` is a package copy only; it does not transfer affidavit authorship or make CFD responsible for reauthoring them.
 
 Keep `Closing Checklist.md` in the CFD project room as the working/source checklist. Do not copy `Closing Checklist.md` to Teams by default. In Teams, provide polished user-facing checklist or cover-page deliverables, such as `Closing Package Cover Page.docx` or future PDF versions. Copy the Markdown checklist to Teams only if Wes explicitly asks for a working/source copy there.
 
