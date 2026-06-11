@@ -1,0 +1,5 @@
+interface:
+  display_name: "Amortization"
+  short_description: "Create 12-month amortization charts."
+  default_prompt: "Use $amortization to create a formal 12-month amortization chart from the project spreadsheet and save it in the supplied project-room output folder."
+

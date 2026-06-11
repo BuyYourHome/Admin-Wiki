@@ -17,6 +17,7 @@ Codex does not currently show every role below in one unified "Agents" list. Som
 | Admin Request Wrapup | Wiki-managed skill | Active | At the end of Admin wiki requests | `skills\admin-request-wrapup\SKILL.md`; `AGENTS.md` |
 | Credit Worthiness Evaluator | Wiki-managed skill plus project room | Active | On demand | `skills\credit-worthiness-evaluator\SKILL.md`; `Project Rooms\Credit Worthiness Evaluator\README.md` |
 | Contract for Deed | Wiki-managed skill plus project room | Active | On demand | `skills\contract-for-deed\SKILL.md`; `Project Rooms\Contract for Deed\PROJECT-ROOM.md` |
+| Amortization | Wiki-managed support skill plus project room | Draft | Called by Contract for Deed or other seller-financing workflows | `skills\amortization\SKILL.md`; `Project Rooms\Amortization\README.md` |
 | CMA Report | Wiki-managed skill | Active | On demand when a CMA or property report is created | `skills\cma-report\SKILL.md` |
 | Grocery List Handler | Wiki rule and data workflow | Active | On demand, including approved Boss/Jenny text instructions | `operations/grocery-list/` |
 | AI Project Room Workflow | Wiki workflow | Active | On demand before complex multi-source work | `Project Room Workflow.md` |
@@ -303,6 +304,30 @@ Important rules:
 - Use the project room for project-specific prototypes, scripts, staged spreadsheets, outputs, and source history.
 - Use the skill as the reusable workflow wrapper.
 - Do not include deed documents unless Wes changes the package scope.
+
+## Amortization
+
+Type: wiki-managed support skill plus project room.
+
+Status: draft.
+
+Purpose:
+
+- Create a formal 12-month amortization chart from a Buy Your Home project spreadsheet.
+- Read the worksheet currently referred to as `amateurization`, with `amortization` as the normalized spelling for skill/output language.
+- Accept a caller-supplied output folder and drop the finished chart there.
+- Support Contract for Deed and other seller-financing workflows that need a reusable amortization output.
+
+Defined in:
+
+- `C:\Codex\Wiki Files\skills\amortization\SKILL.md`
+- `C:\Codex\Wiki Files\Project Rooms\Amortization\README.md`
+
+Important rules:
+
+- Do not infer or search for the output folder when called by another skill.
+- Do not modify the source spreadsheet unless Wes explicitly asks.
+- Stop and report missing or ambiguous spreadsheet terms rather than guessing.
 
 ## CMA Report
 
