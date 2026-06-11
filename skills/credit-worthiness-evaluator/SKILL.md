@@ -167,20 +167,18 @@ For example, if the live buyer folder is `[Project]\Selling\[Buyer]`, create or 
 
   `26-06-05 320 Rose Ever Amarildo Cardoza - Creditworthiness Evaluation Report.docx`
 
-## Preferred Formal Report Format
+## Internal Formal Report Format
 
-- Use the Version 9 report format as the required CWE report style unless Wes explicitly asks for a different format.
-- Preferred style reference:
-
-  `C:\Codex\Wiki Files\Project Rooms\Credit Worthiness Evaluator\outputs\26-06-09 320 Rose Ever Amarildo Cardoza Bolanos - Creditworthiness Evaluation Report - Approval Scenario v9.docx`
-
-- Do not replace the v9-style business report with a centered cover-page layout, modern memo layout, or table-heavy redesign.
-- Start with the same plain business-report opening:
+- The formal CWE report format is defined by this skill, not by any prior report file, prior version, property-specific history, or DOCX template.
+- Never use a previous CWE report, prior version, or prior buyer/property file as the formatting source for a new report. This remains true even when an earlier report had the preferred format.
+- Historical reports, including the 320 Rose v9 report, may be used only to help define this internal standard when the skill itself is being updated. Future evaluator runs must rely on the internal rules below.
+- Do not replace this formal business-report style with a centered cover-page layout, modern memo layout, decorative design, or table-heavy redesign.
+- Start every formal report with a plain business-report opening:
   - all-caps title line, such as `UPDATED CREDITWORTHINESS EVALUATION REPORT`,
   - one short subtitle line naming the scenario, buyer, and property,
   - a compact two-column metadata table with `Prepared by`, `Report date`, `Subject buyer`, `Property`, `Purpose`, and `Overall result`.
-- Include an `Executive Recommendation` callout immediately after the metadata/opening section. For conditional results, title the callout `Executive Recommendation` and put the conditional recommendation language inside it.
-- Use the v9 section rhythm and heading order unless the file facts require a clearly labeled extra section:
+- Include an `Executive Recommendation` callout immediately after the metadata/opening section. For conditional or document-preparation-ready results, title the callout `Executive Recommendation` and put the recommendation language inside it.
+- Use this standard section rhythm and heading order unless the file facts require a clearly labeled extra section:
   1. `What Changed In This Rerun`
   2. `Transaction Snapshot`
   3. `Screening Strengths`
@@ -194,9 +192,9 @@ For example, if the live buyer folder is `[Project]\Selling\[Buyer]`, create or 
   11. CFD closing-package document requests, when the buyer may proceed to Contract for Deed documents
   12. legal/compliance review items
   13. recommended next step
-- Use v9-style compact tables for transaction snapshot, income/reserve context, debt summary, payment-ratio test, and final recommendation/decision callouts.
-- Keep the tone and formatting formal, plain, and businesslike. Prefer the v9 simple heading/table structure over decorative design elements.
-- When a report is not yet ready for closing execution, preserve the v9 format while using the readiness statuses above; do not shorten the report or move the Executive Recommendation only into later sections.
+- Use compact, simple tables for transaction snapshot, income/reserve context, debt summary, payment-ratio test, and final recommendation/decision callouts.
+- Keep the tone and formatting formal, plain, and businesslike.
+- When a report is not yet ready for closing execution, preserve this internal report format while using the readiness statuses above; do not shorten the report or move the Executive Recommendation only into later sections.
 
 ## Optional Approval-Assumption Mode
 
