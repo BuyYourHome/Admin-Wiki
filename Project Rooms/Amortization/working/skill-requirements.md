@@ -18,7 +18,17 @@ The Contract for Deed process will probably call this skill when it needs a 12-m
 
 - Create a formal amortization chart for the next 12 months.
 - Write the output file into the project-room output folder supplied by the calling skill.
-- Output format, styling, and required columns are not yet specified.
+- Use a buyer-facing layout by default when the chart will be given to buyers.
+- Output format and some styling details remain open unless the caller or Wes specifies them.
+
+## Buyer-Facing Layout Rules
+
+- Wrap column headers so columns can be narrower.
+- Do not include cumulative-principal or cumulative-interest columns unless Wes explicitly asks.
+- Do not include a `Prepared from...` subtitle.
+- Do not include internal metadata such as source workbook path, source rows, or chart period.
+- Do not include a bottom source note or implementation note.
+- Keep only buyer-useful metadata, such as buyer name, property, contract date, sale amount, down payment, loan amount, buyer rate, and monthly total payment when available.
 
 ## Skill Call Contract
 

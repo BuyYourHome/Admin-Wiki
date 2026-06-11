@@ -74,14 +74,27 @@ Include the columns needed to make the 12-month schedule understandable and audi
 - payment number,
 - payment due date,
 - beginning balance,
+- interest rate when useful for buyer review,
 - scheduled payment,
 - interest,
 - principal,
 - escrow, fees, or other charges when present in the worksheet,
-- ending balance,
-- notes or assumptions when needed.
+- ending balance.
+
+Do not include cumulative-principal or cumulative-interest columns in the buyer-facing chart unless Wes explicitly asks for them.
 
 Do not invent missing financial terms. If principal, interest rate, payment amount, first payment date, term, balloon terms, or other required values are missing or ambiguous, report the missing fields instead of producing a guessed chart.
+
+## Buyer-Facing Layout
+
+When the chart is for the buyer's benefit:
+
+- Use a clean title only; do not include a subtitle such as `Prepared from...`.
+- Do not include internal metadata such as source workbook path, source rows, or chart period.
+- Do not include a bottom source note or implementation note.
+- Keep only buyer-useful metadata, such as buyer name, property, contract date, sale amount, down payment, loan amount, buyer rate, and monthly total payment when those values are available.
+- Wrap column headers so columns can be narrower.
+- Narrow columns enough for a compact one-page chart while keeping values readable.
 
 ## Calculation Rules
 
@@ -122,4 +135,3 @@ When changing this skill:
 3. Commit the Admin wiki changes locally.
 4. Do not sync the installed local skill unless Wes explicitly asks to sync, install, or make the updated skill active.
 5. Do not push unless Wes explicitly asks or says the update is finished and ready to publish.
-
