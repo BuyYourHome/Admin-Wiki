@@ -50,9 +50,13 @@ For Email Package messages with package-file links, use an HTML email body so ea
 
 Use `working\build_closing_package_email_body.py` to build the polished Email Package body. The builder should follow the card-style formatting reference stored at `reference\email-format-reference\DRAFT_ 320 Rose _ Ever Cardoza cover page body test.html`: light page background, centered white card, blue header rule, readiness table, section heading rules, clean bullet lists, and affidavit/support blocks. Package links should display as short friendly document labels instead of full filenames or full SharePoint URLs.
 
+Start the Email Package body with this neutral line before the package title/header: `Below is the current closing package cover page for review. The package ZIP is attached, and the document names below link to the package files.` Do not personalize this sentence with Wes's name because Wes may edit and forward the message.
+
 Do not add a repeated metadata footer at the bottom of the Email Package body. The body should not end with a separate block listing the attached ZIP, property address, buyer names, or seller name after the attorney/compliance section. The introductory paragraph may say that the package ZIP is attached.
 
 When Wes asks for external access or `Anyone with the link` access, do not use ordinary Teams/SharePoint location links from `teams_link_from_local_path.py` as if they grant external access. Use the SharePoint plugin's sharing-link action to create actual anonymous view/read links for each displayed package file, or for the package ZIP/folder if Wes asks for a single package link. Do not create edit links unless Wes explicitly asks for edit access. Do not create broad property-folder sharing links. If no verified path can create and confirm permission-granting links, stop and report that blocker before sending an external-access email; ask Wes whether to create the sharing links manually or proceed with the ZIP attachment only.
+
+Include the current Credit Worthiness Report as a linked Email Package item when the current CWE handoff, transaction metadata, or CWE-produced package note identifies the latest report file name and path. Prefer the location provided by CWE over old project-room memories or version guesses. Display the link as `Credit Worthiness Report`, not the full file name. For external-access emails, create an anonymous view/read SharePoint sharing link for the report just like the other displayed package files. If the current handoff does not identify the latest report location, do not guess from prior versions; report that the CWE handoff is missing the latest report location and treat that as a proposed CWE-side rule update.
 
 ### CFD Email Package Maintenance
 
@@ -64,6 +68,7 @@ Use this fast path:
 2. Update only the durable inputs that changed:
    - package file inventory,
    - short display labels,
+   - current Credit Worthiness Report file path from the CWE handoff or transaction metadata,
    - readiness/status wording,
    - required closing deliverable wording,
    - funds/identity items,
@@ -75,6 +80,7 @@ Use this fast path:
    - no visible SharePoint URLs appear in the message body,
    - expected link count is present,
    - external package emails use SharePoint-generated anonymous view links for each displayed file link,
+   - the Credit Worthiness Report link is present when the current report path is provided by CWE,
    - stale wording from prior package versions is absent,
    - no repeated metadata footer appears after the attorney/compliance section,
    - the generated HTML and plain-text fallback files exist in Teams `Email Package`.
