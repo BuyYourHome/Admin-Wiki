@@ -64,6 +64,7 @@ def add_page_numbers(doc):
     for instruction in ("PAGE", "NUMPAGES"):
         if instruction == "NUMPAGES":
             paragraph.add_run(" of ")
+        run = paragraph.add_run()
         begin = OxmlElement("w:fldChar")
         begin.set(qn("w:fldCharType"), "begin")
         text = OxmlElement("w:instrText")
@@ -71,9 +72,9 @@ def add_page_numbers(doc):
         text.text = instruction
         end = OxmlElement("w:fldChar")
         end.set(qn("w:fldCharType"), "end")
-        paragraph._p.append(begin)
-        paragraph._p.append(text)
-        paragraph._p.append(end)
+        run._r.append(begin)
+        run._r.append(text)
+        run._r.append(end)
 
 
 def archive_existing_teams_reports():
@@ -141,12 +142,12 @@ def archive_existing_teams_reports():
 
 
 def next_project_report_path():
-    base = OUT_DIR / "26-06-11 320 Rose Ever Amarildo Cardoza Bolanos - Creditworthiness Evaluation Report - Document Preparation Ready v22.docx"
+    base = OUT_DIR / "26-06-11 320 Rose Ever Amarildo Cardoza Bolanos - Creditworthiness Evaluation Report - Document Preparation Ready v23.docx"
     if not base.exists():
         return base
     counter = 1
     while True:
-        candidate = OUT_DIR / f"26-06-11 320 Rose Ever Amarildo Cardoza Bolanos - Creditworthiness Evaluation Report - Document Preparation Ready v22 {counter}.docx"
+        candidate = OUT_DIR / f"26-06-11 320 Rose Ever Amarildo Cardoza Bolanos - Creditworthiness Evaluation Report - Document Preparation Ready v23 {counter}.docx"
         if not candidate.exists():
             return candidate
         counter += 1
@@ -366,14 +367,14 @@ def build_report(path):
 
 
 def write_summary(path, project_docx, teams_current, archive_action, metrics):
-    summary = f"""# 320 Rose Pl - Ever Cardoza Current Evidence Evaluation Summary v22
+    summary = f"""# 320 Rose Pl - Ever Cardoza Current Evidence Evaluation Summary v23
 
 ## Run Summary
 
 - Run type: current CWE rerun after filing-rule update.
 - Buyer source folder refreshed from: `{BUYER_FOLDER}`
 - Project-room source copy: `{SOURCE_DIR}`
-- Source refresh date/time: June 11, 2026 at 5:19 PM Eastern.
+- Source refresh date/time: June 11, 2026 at 6:34 PM Eastern.
 - Current evaluation mode: evidence mode, not approval-assumption mode.
 - Full DOCX report: `{project_docx}`
 - Teams current report: `{teams_current}`
@@ -439,7 +440,7 @@ def main():
     project_docx = next_project_report_path()
     metrics = build_report(project_docx)
     shutil.copy2(project_docx, teams_current)
-    summary_path = OUT_DIR / "26-06-11 Current Evidence Evaluation Summary v22.md"
+    summary_path = OUT_DIR / "26-06-11 Current Evidence Evaluation Summary v23.md"
     write_summary(summary_path, project_docx, teams_current, archive_action, metrics)
 
     print(f"PROJECT_DOCX={project_docx}")
