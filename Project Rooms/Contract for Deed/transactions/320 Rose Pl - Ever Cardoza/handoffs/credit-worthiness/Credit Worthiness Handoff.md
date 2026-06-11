@@ -8,12 +8,12 @@
 - Property/project: 320 Rose / 28-SYH-320 Rose Pl.
 - Kickoff file used for routing only: `C:\Codex\Wiki Files\Project Rooms\Contract for Deed\transactions\320 Rose Pl - Ever Cardoza\handoffs\credit-worthiness\CWE Kickoff.md`
 - CFD transaction folder: `C:\Codex\Wiki Files\Project Rooms\Contract for Deed\transactions\320 Rose Pl - Ever Cardoza`
-- Source refresh date/time: 2026-06-10 21:33 ET.
+- Source refresh date/time: 2026-06-11 15:31 ET.
 - Buyer source folder refreshed from: `C:\Users\wesbr\Buy Your Home\Buy Your Home - Property\28-SYH-320 Rose Pl\Selling\Ever Cordoza`
 - Project-room source copy: `C:\Codex\Wiki Files\Project Rooms\Credit Worthiness Evaluator\sources\320 Rose Pl - Ever Cardoza`
-- Current evaluation summary: `C:\Codex\Wiki Files\Project Rooms\Credit Worthiness Evaluator\outputs\320 Rose Pl - Ever Cardoza\26-06-10 Current Evidence Evaluation Summary.md`
-- Current full DOCX report: `C:\Codex\Wiki Files\Project Rooms\Credit Worthiness Evaluator\outputs\320 Rose Pl - Ever Cardoza\26-06-10 320 Rose Ever Amarildo Cardoza Bolanos - Creditworthiness Evaluation Report - Affidavit Package Handoff v19.docx`
-- Teams report copy: `C:\Users\wesbr\Buy Your Home\Buy Your Home - Property\28-SYH-320 Rose Pl\Selling\Ever Cordoza\Contract Package\Credit Worthiness\v19 320 Rose Ever Amarildo Cardoza Bolanos - Creditworthiness Evaluation Report - Affidavit Package Handoff.docx`
+- Current evaluation summary: `C:\Codex\Wiki Files\Project Rooms\Credit Worthiness Evaluator\outputs\320 Rose Pl - Ever Cardoza\26-06-11 Current Evidence Evaluation Summary.md`
+- Current full DOCX report: `C:\Codex\Wiki Files\Project Rooms\Credit Worthiness Evaluator\outputs\320 Rose Pl - Ever Cardoza\26-06-11 320 Rose Ever Amarildo Cardoza Bolanos - Creditworthiness Evaluation Report - Affidavit Package Handoff v20.docx`
+- Teams report copy: `C:\Users\wesbr\Buy Your Home\Buy Your Home - Property\28-SYH-320 Rose Pl\Selling\Ever Cordoza\Contract Package\Credit Worthiness\v20 1 320 Rose Ever Amarildo Cardoza Bolanos - Creditworthiness Evaluation Report - Affidavit Package Handoff.docx`
 
 ## Buyer And Transaction Snapshot
 
@@ -157,4 +157,6 @@ Use this wording for CFD intake: Ready for document preparation; closing executi
 ## Proposed CFD-Side Rule For CFD To Consider
 
 CWE is not editing CFD rules. If CFD wants to consume this richer handoff format, CFD may add its own intake rule for `source_docx`, `body_payload`, and `metadata_only_not_ready` affidavit package items.
+
+
 
