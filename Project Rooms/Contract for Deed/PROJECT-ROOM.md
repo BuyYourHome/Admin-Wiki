@@ -50,6 +50,10 @@ For Email Package messages with package-file links, use an HTML email body so ea
 
 Use `working\build_closing_package_email_body.py` to build the polished Email Package body. The builder should follow the card-style formatting reference stored at `reference\email-format-reference\DRAFT_ 320 Rose _ Ever Cardoza cover page body test.html`: light page background, centered white card, blue header rule, readiness table, section heading rules, clean bullet lists, and affidavit/support blocks. Package links should display as short friendly document labels instead of full filenames or full SharePoint URLs.
 
+Do not add a repeated metadata footer at the bottom of the Email Package body. The body should not end with a separate block listing the attached ZIP, property address, buyer names, or seller name after the attorney/compliance section. The introductory paragraph may say that the package ZIP is attached.
+
+When Wes asks for external access or `Anyone with the link` access, do not use ordinary Teams/SharePoint location links from `teams_link_from_local_path.py` as if they grant external access. Create actual SharePoint sharing links with `Anyone with the link` permission for the package ZIP, specific files, or folder Wes identifies. Prefer the package ZIP unless Wes asks for file-by-file or folder sharing. Do not create broad property-folder sharing links. If the current tools cannot create and verify permission-granting sharing links, stop and report that blocker before sending an external-access email.
+
 ### CFD Email Package Maintenance
 
 For routine Email Package updates, do not rediscover the layout, rebuild the email body manually, or reinspect the reference `.msg` unless Wes provides a new reference email.
@@ -71,6 +75,7 @@ Use this fast path:
    - no visible SharePoint URLs appear in the message body,
    - expected link count is present,
    - stale wording from prior package versions is absent,
+   - no repeated metadata footer appears after the attorney/compliance section,
    - the generated HTML and plain-text fallback files exist in Teams `Email Package`.
 5. Do not send the email unless Wes explicitly says to send it.
 

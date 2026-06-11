@@ -18,9 +18,6 @@ EMAIL_PACKAGE = TEAMS_PACKAGE_ROOT / "Email Package"
 
 PROPERTY_LABEL = "320 Rose"
 BUYER_LABEL = "Ever Cardoza"
-PROPERTY_ADDRESS = "320 Rose Pl, Wendell, NC 27591"
-BUYERS_FULL = "Ever Amarildo Cardoza Bolanos and Maria Geraldina Sarmiento"
-SELLER = "Sell Your Home, LLC"
 
 
 @dataclass(frozen=True)
@@ -175,8 +172,6 @@ def render_html(version: str, prepared: date) -> str:
 
     funds = "\n".join(f"<li>{escape(item)}</li>" for item in FUNDS_AND_IDENTITY_ITEMS)
     review = "\n".join(f"<li>{escape(item)}</li>" for item in ATTORNEY_REVIEW_ITEMS)
-    package_zip = f"{version} - 320 Rose - Ever Cardoza - Closing Package for Email.zip"
-
     return f"""<!doctype html>
 <html>
 <head><meta charset="utf-8"></head>
@@ -216,7 +211,6 @@ def render_html(version: str, prepared: date) -> str:
         {review}
       </ul>
 
-      <p style="margin:20px 0 0 0;font-size:13px;line-height:1.45;color:#5c6b7a;">Attached ZIP: {escape(package_zip)}<br>Property: {escape(PROPERTY_ADDRESS)}<br>Buyer(s): {escape(BUYERS_FULL)}<br>Seller: {escape(SELLER)}</p>
       <p style="margin:26px 0 0 0;font-size:14px;color:#334e68;">Wes</p>
     </div>
   </div>
@@ -258,17 +252,7 @@ def render_text(version: str, prepared: date) -> str:
     lines.extend(["", "Attorney / Compliance Review Items"])
     for item in ATTORNEY_REVIEW_ITEMS:
         lines.append(f"* {item}")
-    lines.extend(
-        [
-            "",
-            f"Attached ZIP: {version} - 320 Rose - Ever Cardoza - Closing Package for Email.zip",
-            f"Property: {PROPERTY_ADDRESS}",
-            f"Buyer(s): {BUYERS_FULL}",
-            f"Seller: {SELLER}",
-            "",
-            "Wes",
-        ]
-    )
+    lines.extend(["", "Wes"])
     return "\n".join(lines) + "\n"
 
 

@@ -76,6 +76,7 @@ When sending a CFD Email Package:
    - Use the reference card-style cover-page layout from `C:\Codex\Wiki Files\Project Rooms\Contract for Deed\reference\email-format-reference\DRAFT_ 320 Rose _ Ever Cardoza cover page body test.html`: light page background, centered white card, blue header rule, readiness table, clean section headings, normal bullet lists, and affidavit/support blocks.
    - Preserve the friendly cover-page structure in the email body: current readiness, current document package, required closing deliverables, funds and identity items, and attorney/compliance review items.
    - Display package links as short document labels, such as `Contract for Deed Agreement`, `12 Month Amortization Chart`, and `Attorney-review package`, instead of full filenames or full SharePoint URLs.
+   - Do not add a repeated metadata footer after the attorney/compliance section listing the ZIP, property address, buyer names, or seller name.
    - Do not use a plain-text-only send path when Wes has asked for clean display links; plain text may expose long SharePoint URLs and lose the polished checklist formatting.
 3. Verify every file listed in the Closing Checklist exists and is readable, including the Amortization Chart PDF.
 4. Put every checklist-listed package file in the Teams `Clean Package` folder before building the email body, including the polished closing cover page/checklist output and package copies of CWE-authored affidavit/support documents.
@@ -101,6 +102,8 @@ The builder should produce both HTML and plain-text fallback body files in the T
 For routine email-format maintenance, follow the `CFD Email Package Maintenance` section in `C:\Codex\Wiki Files\Project Rooms\Contract for Deed\PROJECT-ROOM.md` and avoid reworking the reference layout from scratch.
 
 The helper reads the local OneDrive/Teams sync metadata and converts a local Teams-synced path, such as a file under `C:\Users\wesbr\Buy Your Home\Buy Your Home - Property\...`, into the matching SharePoint web URL. If the helper cannot map a file, do not invent a web link. In that case, list the exact filename and local Teams path, and report that link generation failed for that item.
+
+If Wes asks for `Anyone with the link` or other external-access links, do not treat the Teams-link helper output as sufficient. Create actual SharePoint sharing links with the requested permission for the package ZIP, specific files, or folder Wes identifies. Prefer sharing the package ZIP unless Wes asks for broader access. Do not create broad property-folder sharing links. If the available tools cannot create and verify permission-granting sharing links, stop and report the blocker before sending an external-access email.
 
 When the Outlook connector only supports plain-text message bodies, do not use it for a linked/polished Email Package unless Wes explicitly accepts plain text for that run. Use a send path that supports HTML, normally local Outlook automation with `HTMLBody`, while still following `email-delivery` sender safety: send from `OfficeAssist@BuyYourHomeLLC.com`, send only to Wes, verify the draft/sender when possible, attach the complete package ZIP, and verify the sent copy in OfficeAssist Sent Items.
 
