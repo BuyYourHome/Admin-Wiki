@@ -1,4 +1,4 @@
----
+﻿---
 name: contract-for-deed
 description: Use when refreshing, regenerating, reviewing, or packaging contract-for-deed seller documents from a confirmed real estate project spreadsheet, including buyer-specific transaction folders, Credit Worthiness handoffs, closing document checklists, affidavits, and Buy Your Home seller document packages.
 ---
@@ -153,10 +153,12 @@ Recommended subfolders:
 
 - `Clean Package\` for current clean signing/review copies.
 - `Attorney Review Package\` for current attorney-review copies and ZIPs.
-- `Closing Checklist\` for buyer-specific checklist outputs.
+- `Closing Checklist\` for polished buyer-facing checklist / cover-page outputs.
 - `Affidavits\` for closing-package affidavits.
 
 Copy project-room outputs to Teams after each requested regeneration or package update unless Wes says project-room only. The project-room copy remains authoritative. If a Teams copy is edited and Wes says to keep those edits, bring that edited file back into the project room and apply the normal edit-preservation/prototype rule before regenerating.
+
+Keep `Closing Checklist.md` in the CFD project room as the working/source checklist. Do not copy `Closing Checklist.md` to Teams by default. In Teams, provide polished user-facing checklist or cover-page deliverables, such as `Closing Package Cover Page.docx` or future PDF versions. Copy the Markdown checklist to Teams only if Wes explicitly asks for a working/source copy there.
 
 Do not copy scratch files, extracted text, rendered QA images, logs, staged spreadsheets, prototypes, or temporary working files to Teams. Do not use Teams copies as the source for regeneration unless Wes identifies a Teams-edited file as the version to preserve.
 
@@ -184,6 +186,14 @@ The handoff may provide:
 
 Use the project spreadsheet `Docs` worksheet and document prototypes for contract terms, property data, seller data, and document formatting. If the handoff conflicts with the spreadsheet or prototype, log the conflict and ask Wes or counsel only when the conflict would affect a signed document.
 
+## Legal-Name Handoff Handling
+
+CWE should verify buyer legal names from available source files and tell CFD either the verified legal names or a specific unresolved name issue. CFD should use verified names from the project spreadsheet, source IDs, and CWE handoff rather than asking Wes to confirm names manually.
+
+Do not carry buyer legal-name spelling as an unresolved checklist item merely because a generic or older handoff caution says to confirm final legal spelling. Carry a legal-name issue into the CFD checklist only when CWE reports a specific unresolved name conflict, missing source document, or uncertainty that affects the signing documents.
+
+If the handoff contains both specific verified-name findings and generic `confirm legal spelling` language, prefer the specific verification finding. Convert generic handoff cautions into closing-practical wording instead of repeating them as drafting blockers. Use wording such as `Confirm signer identity against ID at execution.` Do not phrase that as an unresolved legal-name spelling problem unless there is an actual unresolved conflict.
+
 ## CWE Readiness Status Rule
 
 Do not treat a CWE `conditional` label as an automatic stop. Separate the credit/evaluation status from CFD package readiness.
@@ -204,7 +214,7 @@ If the handoff says affidavits are required but expected to be signed/notarized 
 
 When the file is ready for document preparation, CFD may prepare the closing package before the affidavits are signed or notarized, provided the closing checklist clearly lists the affidavits and other unresolved items. Do not label the file `closed`, `complete`, `final approval complete`, or equivalent until the required closing deliverables are actually completed.
 
-For 320 Rose / Ever Cardoza, if the handoff says `Ready for document preparation; closing execution subject to required affidavits, funds proof, name/role confirmation, and attorney/compliance review`, proceed with document preparation and carry those items into the closing checklist.
+For 320 Rose / Ever Cardoza, if the handoff says `Ready for document preparation; closing execution subject to required affidavits, funds proof, name/role confirmation, and attorney/compliance review`, proceed with document preparation. If the handoff also specifically verifies buyer names and roles, do not repeat `name/role confirmation` as an unresolved drafting blocker; convert it to `Confirm signer identity against ID at execution.` in the closing checklist.
 
 ## Missing Handoff Startup Rule
 
