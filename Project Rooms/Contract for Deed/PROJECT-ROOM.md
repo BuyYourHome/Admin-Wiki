@@ -44,6 +44,8 @@ For buyer-review and Email Package use, keep the current package files together 
 
 When affidavits are CWE-authored, copying them into `Clean Package` is a package copy only. It does not transfer affidavit authorship or make CFD responsible for reauthoring them.
 
+Active buyer-specific package files should use clean current filenames with no version prefix. Use the street-only property prefix, such as `320 Rose Pl`, not the shortened `320 Rose` label and not the full address with city, state, or ZIP. Before writing a new active package file, move the existing active file to an `Archive` subfolder under the same active folder and add the version prefix only to the archived copy, such as `Archive\v05 - 320 Rose Pl - Contract for Deed Agreement - DRAFT.docx`. Do not delete prior versions. Do not archive source files, prototypes, handoffs, scripts, staged spreadsheets, temporary files, or scratch outputs.
+
 Use `working\teams_link_from_local_path.py` to convert Teams-synced package paths into SharePoint web links for the Email Package body. If a file cannot be mapped to a SharePoint link, list the exact filename and local Teams path and report the unmapped item rather than guessing.
 
 For Email Package messages with package-file links, use an HTML email body so each link displays as the file name instead of showing the full SharePoint URL. Preserve the friendly closing cover-page layout in the email body. Do not use a plain-text-only send path for this linked package email unless Wes explicitly accepts plain text for that run.

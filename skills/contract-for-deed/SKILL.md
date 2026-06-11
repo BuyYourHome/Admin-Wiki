@@ -410,19 +410,33 @@ Do not convert underwriting-only affidavits into closing documents unless Wes or
 - If the spreadsheet has no adverse-condition text, keep one section 9 `NOTE FOR ATTORNEY REVIEW` placeholder in the clean contract.
 - Attorney-review mode overwrites the standard `ATTORNEY REVIEW PACKAGE` files and adds blue contextual review blocks. Clean drafts must not contain those blocks.
 
-## Version Prefix Rule
+## Package Filename And Archive Rule
 
-Generated buyer-specific package files should use a version prefix before the existing descriptive file name. The default first version is:
+Active buyer-specific package files should not use version prefixes. Use clean current filenames in active package folders.
 
-`v01 - <existing descriptive file name>`
+Use the street-only property prefix in package filenames:
 
-For example:
+`<Street Address Only> - <Document Name>`
 
-`v01 - 320 Rose - Contract for Deed Agreement - DRAFT.docx`
+For 320 Rose, use `320 Rose Pl`, not `320 Rose` and not the full address with city, state, or ZIP.
 
-Use the same version-prefixed names in the project-room output folder and the Teams delivery mirror. Each generated delivery run should create the next available version number, such as moving from `v01 -` to `v02 -`, then `v03 -`. Do not overwrite an existing version-prefixed delivery file unless Wes explicitly instructs Codex to replace that exact version.
+Active examples:
 
-Do not add version prefixes to prototypes, staged spreadsheets, source files, scripts, handoffs, temporary files, or other non-delivery working files unless Wes gives a separate instruction.
+- `320 Rose Pl - Contract for Deed Agreement - DRAFT.docx`
+- `320 Rose Pl - Term Sheet - DRAFT.docx`
+- `320 Rose Pl - Buyer Acknowledgment Addendum - DRAFT.docx`
+- `320 Rose Pl - 12 Month Amortization Chart.pdf`
+- `320 Rose Pl - Ever Cardoza - Closing Package for Email.zip`
+
+Before creating a new active package version, move existing active package files to an `Archive` subfolder under the same active folder. Add the version prefix when moving the old file into `Archive`, for example:
+
+`Archive\v05 - 320 Rose Pl - Contract for Deed Agreement - DRAFT.docx`
+
+Archive only prior delivery/package files. Do not archive prototypes, staged spreadsheets, source files, scripts, handoffs, temporary files, or other non-delivery working files unless Wes gives a separate instruction.
+
+Do not delete prior versions. Before archiving, verify the destination path is inside the same project-room output tree or Teams `Contract Package` tree as the active file being archived.
+
+Use the same active filename convention across CFD-created documents, the Amortization Chart package copy, the email body files, the Email Package ZIP, the cover page/checklist, attorney-review package files, and Spanish package files unless Wes gives a document-specific exception.
 
 ## Spanish Translation Flag
 
