@@ -1,4 +1,4 @@
-# 320 Rose Pl - Ever Cardoza Current Evidence Evaluation Summary
+﻿# 320 Rose Pl - Ever Cardoza Current Evidence Evaluation Summary
 
 ## Run Summary
 
@@ -9,7 +9,7 @@
 - Source refresh date/time: 2026-06-10 21:33 ET.
 - Current evaluation mode: evidence mode, not approval-assumption mode.
 - Full DOCX report: `C:\Codex\Wiki Files\Project Rooms\Credit Worthiness Evaluator\outputs\320 Rose Pl - Ever Cardoza\26-06-10 320 Rose Ever Amarildo Cardoza Bolanos - Creditworthiness Evaluation Report - Affidavit Package Handoff v19.docx`
-- Teams report copy: `C:\Users\wesbr\Buy Your Home\Buy Your Home - Property\28-SYH-320 Rose Pl\Selling\Ever Cordoza\Credit Worthiness\v19 320 Rose Ever Amarildo Cardoza Bolanos - Creditworthiness Evaluation Report - Affidavit Package Handoff.docx`
+- Teams report copy: `C:\Users\wesbr\Buy Your Home\Buy Your Home - Property\28-SYH-320 Rose Pl\Selling\Ever Cordoza\Contract Package\Credit Worthiness\v19 320 Rose Ever Amarildo Cardoza Bolanos - Creditworthiness Evaluation Report - Affidavit Package Handoff.docx`
 
 ## Spreadsheet Transaction Snapshot
 
@@ -115,3 +115,4 @@ Closing-package readiness status: Ready for document preparation.
 ## CFD Readiness
 
 Ready for document preparation; closing execution subject to required affidavits, funds proof, final legal-name spelling confirmation, and attorney/compliance review.
+

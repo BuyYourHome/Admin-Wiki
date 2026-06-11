@@ -1,4 +1,4 @@
-# Credit Worthiness Handoff
+﻿# Credit Worthiness Handoff
 
 ## Handoff Control
 
@@ -13,7 +13,7 @@
 - Project-room source copy: `C:\Codex\Wiki Files\Project Rooms\Credit Worthiness Evaluator\sources\320 Rose Pl - Ever Cardoza`
 - Current evaluation summary: `C:\Codex\Wiki Files\Project Rooms\Credit Worthiness Evaluator\outputs\320 Rose Pl - Ever Cardoza\26-06-10 Current Evidence Evaluation Summary.md`
 - Current full DOCX report: `C:\Codex\Wiki Files\Project Rooms\Credit Worthiness Evaluator\outputs\320 Rose Pl - Ever Cardoza\26-06-10 320 Rose Ever Amarildo Cardoza Bolanos - Creditworthiness Evaluation Report - Affidavit Package Handoff v19.docx`
-- Teams report copy: `C:\Users\wesbr\Buy Your Home\Buy Your Home - Property\28-SYH-320 Rose Pl\Selling\Ever Cordoza\Credit Worthiness\v19 320 Rose Ever Amarildo Cardoza Bolanos - Creditworthiness Evaluation Report - Affidavit Package Handoff.docx`
+- Teams report copy: `C:\Users\wesbr\Buy Your Home\Buy Your Home - Property\28-SYH-320 Rose Pl\Selling\Ever Cordoza\Contract Package\Credit Worthiness\v19 320 Rose Ever Amarildo Cardoza Bolanos - Creditworthiness Evaluation Report - Affidavit Package Handoff.docx`
 
 ## Buyer And Transaction Snapshot
 
@@ -157,3 +157,4 @@ Use this wording for CFD intake: Ready for document preparation; closing executi
 ## Proposed CFD-Side Rule For CFD To Consider
 
 CWE is not editing CFD rules. If CFD wants to consume this richer handoff format, CFD may add its own intake rule for `source_docx`, `body_payload`, and `metadata_only_not_ready` affidavit package items.
+
