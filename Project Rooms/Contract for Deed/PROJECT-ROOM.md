@@ -50,6 +50,32 @@ For Email Package messages with package-file links, use an HTML email body so ea
 
 Use `working\build_closing_package_email_body.py` to build the polished Email Package body. The builder should follow the card-style formatting reference stored at `reference\email-format-reference\DRAFT_ 320 Rose _ Ever Cardoza cover page body test.html`: light page background, centered white card, blue header rule, readiness table, section heading rules, clean bullet lists, and affidavit/support blocks. Package links should display as short friendly document labels instead of full filenames or full SharePoint URLs.
 
+### CFD Email Package Maintenance
+
+For routine Email Package updates, do not rediscover the layout, rebuild the email body manually, or reinspect the reference `.msg` unless Wes provides a new reference email.
+
+Use this fast path:
+
+1. Confirm the current package version and Teams `Clean Package` folder.
+2. Update only the durable inputs that changed:
+   - package file inventory,
+   - short display labels,
+   - readiness/status wording,
+   - required closing deliverable wording,
+   - funds/identity items,
+   - attorney/compliance review items,
+   - send method rules.
+3. Run `working\build_closing_package_email_body.py` with the Codex workspace Python executable from [[Codex Python Runtime Rule]].
+4. Validate only the email-body basics:
+   - friendly document labels appear,
+   - no visible SharePoint URLs appear in the message body,
+   - expected link count is present,
+   - stale wording from prior package versions is absent,
+   - the generated HTML and plain-text fallback files exist in Teams `Email Package`.
+5. Do not send the email unless Wes explicitly says to send it.
+
+Keep detailed formatting logic in the builder and the saved reference HTML. Keep the project-room instructions focused on when to update the builder and what to validate.
+
 Track two CFD email send methods. Use the plain-text OfficeAssist connector method for simple emails that do not need hidden/display hyperlinks or polished HTML formatting. Use the local Outlook HTML cover-sheet method for CFD cover-sheet / closing-package emails with clean filename links. On Wes's current machine, OfficeAssist is not mounted in local Outlook, so this HTML method uses `WesWill@BuyYourHomeLLC.com` as the sending account when Wes has authorized that sender for the run. Verify the sent copy in Sent Items and keep the complete package ZIP attached.
 
 The project-room copy remains authoritative. If Wes edits a Teams copy and says to keep those edits, first bring the edited file back into the project room and apply the normal edit-preservation/prototype rule before regenerating. Do not use Teams copies as regeneration sources unless Wes identifies the Teams-edited file as the version to preserve.

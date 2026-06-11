@@ -98,6 +98,8 @@ Use the CFD closing-package email-body builder for the polished HTML body:
 
 The builder should produce both HTML and plain-text fallback body files in the Teams `Email Package` folder. If the builder is stale or missing a new package item, update the builder before sending the package email.
 
+For routine email-format maintenance, follow the `CFD Email Package Maintenance` section in `C:\Codex\Wiki Files\Project Rooms\Contract for Deed\PROJECT-ROOM.md` and avoid reworking the reference layout from scratch.
+
 The helper reads the local OneDrive/Teams sync metadata and converts a local Teams-synced path, such as a file under `C:\Users\wesbr\Buy Your Home\Buy Your Home - Property\...`, into the matching SharePoint web URL. If the helper cannot map a file, do not invent a web link. In that case, list the exact filename and local Teams path, and report that link generation failed for that item.
 
 When the Outlook connector only supports plain-text message bodies, do not use it for a linked/polished Email Package unless Wes explicitly accepts plain text for that run. Use a send path that supports HTML, normally local Outlook automation with `HTMLBody`, while still following `email-delivery` sender safety: send from `OfficeAssist@BuyYourHomeLLC.com`, send only to Wes, verify the draft/sender when possible, attach the complete package ZIP, and verify the sent copy in OfficeAssist Sent Items.
