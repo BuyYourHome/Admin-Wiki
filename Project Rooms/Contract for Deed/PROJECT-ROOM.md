@@ -48,6 +48,8 @@ Use `working\teams_link_from_local_path.py` to convert Teams-synced package path
 
 For Email Package messages with package-file links, use an HTML email body so each link displays as the file name instead of showing the full SharePoint URL. Preserve the friendly closing cover-page layout in the email body. Do not use a plain-text-only send path for this linked package email unless Wes explicitly accepts plain text for that run.
 
+Track two CFD email send methods. Use the plain-text OfficeAssist connector method for simple emails that do not need hidden/display hyperlinks or polished HTML formatting. Use the local Outlook HTML cover-sheet method for CFD cover-sheet / closing-package emails with clean filename links. On Wes's current machine, OfficeAssist is not mounted in local Outlook, so this HTML method uses `WesWill@BuyYourHomeLLC.com` as the sending account when Wes has authorized that sender for the run. Verify the sent copy in Sent Items and keep the complete package ZIP attached.
+
 The project-room copy remains authoritative. If Wes edits a Teams copy and says to keep those edits, first bring the edited file back into the project room and apply the normal edit-preservation/prototype rule before regenerating. Do not use Teams copies as regeneration sources unless Wes identifies the Teams-edited file as the version to preserve.
 
 ## Spreadsheet Refresh Rule

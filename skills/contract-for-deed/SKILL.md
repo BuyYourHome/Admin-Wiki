@@ -93,6 +93,11 @@ The helper reads the local OneDrive/Teams sync metadata and converts a local Tea
 
 When the Outlook connector only supports plain-text message bodies, do not use it for a linked/polished Email Package unless Wes explicitly accepts plain text for that run. Use a send path that supports HTML, normally local Outlook automation with `HTMLBody`, while still following `email-delivery` sender safety: send from `OfficeAssist@BuyYourHomeLLC.com`, send only to Wes, verify the draft/sender when possible, attach the complete package ZIP, and verify the sent copy in OfficeAssist Sent Items.
 
+CFD must track two email send methods:
+
+- **Plain-text OfficeAssist connector method:** use when the email body does not need hidden/display hyperlinks or polished HTML formatting. This method sends from `OfficeAssist@BuyYourHomeLLC.com` through the Outlook connector and verifies OfficeAssist Sent Items.
+- **HTML cover-sheet email method:** use when sending the CFD cover-sheet / closing-package email with clean filename links. This method uses local Outlook automation with `HTMLBody`, displays each Teams/SharePoint link as the package file name, attaches the complete package ZIP, sends to Wes only, and verifies the sent copy in Sent Items. Because OfficeAssist is not mounted in local Outlook on Wes's current machine, this method uses `WesWill@BuyYourHomeLLC.com` as the sending account when Wes has authorized that sender for the run. Do not fall back to a plain-text connector email for the cover-sheet package merely because the connector is available.
+
 For connector send tools, pass the package ZIP path in the attachment input shape the connector currently requires. If the connector rejects a plain path string and reports that it expects an array, retry with an attachment-path array. Do not pass newline-separated paths.
 
 Do not send the CFD package email directly to outside parties, buyers, attorneys, agents, Jenny, or anyone else unless Wes later creates a separate explicit rule changing that restriction. If any checklist-listed file is missing, unreadable, or cannot be included in the ZIP, do not send the email; report the blocker and provide the proposed email body in the chat.
