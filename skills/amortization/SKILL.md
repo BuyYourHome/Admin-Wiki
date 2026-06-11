@@ -93,6 +93,7 @@ When the chart is for the buyer's benefit:
 - Do not include internal metadata such as source workbook path, source rows, or chart period.
 - Do not include a bottom source note or implementation note.
 - Keep only buyer-useful metadata, such as buyer name, property, contract date, sale amount, down payment, loan amount, buyer rate, and monthly total payment when those values are available.
+- Merge or widen buyer-facing metadata label/value cells as needed so labels and values do not truncate. Labels such as `Contract Date` and `Down Payment` must be fully visible.
 - Wrap column headers so columns can be narrower.
 - Narrow columns enough for a compact one-page chart while keeping values readable.
 
