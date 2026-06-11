@@ -1,53 +1,63 @@
 # 320 Rose - Ever Cardoza - Closing Checklist
 
-Prepared: 2026-06-09
+Prepared: 2026-06-11
+Package version for this run: v05
 
 ## Current Readiness
 
 - Credit Worthiness handoff status: Ready for document preparation.
-- Closing execution status: not ready until required affidavits, funds proof, final legal-name spelling confirmation, and attorney/compliance review are complete.
-- CFD document-preparation stop issue: none identified in the current handoff if the listed deliverables and review items are carried into the closing checklist.
+- Closing execution status: not ready until required affidavits, funds proof, attorney/compliance review, and final execution checks are complete.
+- CFD document-preparation stop issue: none identified in the current handoff if the listed deliverables and review items are carried into closing.
+- Buyer names used in this package: Ever Amarildo Cardoza Bolanos and Maria Geraldina Sarmiento. Confirm signer identity against ID at execution.
 
 ## Current Document Package
-
-- Term Sheet.
-- Buyer Acknowledgment Addendum.
-- Contract for Deed Agreement.
-- Memorandum of Contract for Deed.
-- Promissory Note for Contract for Deed.
-- Attorney-review copies of the Contract, Memorandum, and Promissory Note.
+- v05 - 320 Rose - Term Sheet - DRAFT.docx
+- v05 - 320 Rose - Buyer Acknowledgment Addendum - DRAFT.docx
+- v05 - 320 Rose - Contract for Deed Agreement - DRAFT.docx
+- v05 - 320 Rose - Memorandum of Contract for Deed - DRAFT.docx
+- v05 - 320 Rose - Promissory Note for Contract for Deed - DRAFT.docx
+- v05 - 320 Rose Pl - 12 Month Amortization Chart.pdf
+- v05 - 320 Rose - Contract for Deed Agreement - ATTORNEY REVIEW PACKAGE.docx
+- v05 - 320 Rose - Memorandum of Contract for Deed - ATTORNEY REVIEW PACKAGE.docx
+- v05 - 320 Rose - Promissory Note for Contract for Deed - ATTORNEY REVIEW PACKAGE.docx
+- v05 - 320 Rose - Attorney Review Package.zip
 
 ## Required Closing Deliverables From CWE Handoff
-
-- Related-Company Rent Payment History support document or affidavit.
-  - Purpose: support tenant-buyer payment-history exception and document related-company rent verification.
-  - Current note: use related-company wording; do not overstate as independent third-party verification.
-  - Current CFD status: CWE-authored affidavit packaged as draft signature-ready document from the Teams Affidavits folder; final execution subject to attorney/compliance review and notarized signature.
-- Cash Reserves and Receivables Observation support document or affidavit.
-  - Purpose: support funds-to-close and reserve condition through observed cash, receivables, and stated foreign-fund access.
-  - Current note: obtain final notarized version or substitute closing-approved proof of funds.
-  - Current CFD status: CWE-authored affidavit packaged as draft signature-ready document from the Teams Affidavits folder; final execution subject to attorney/compliance review and notarized signature.
-- Receipt Package Review and Acceptance support document or affidavit.
-  - Purpose: document seller/business acceptance of receipts as gross receipt support.
-  - Current note: confirm authority/signature block before inclusion; do not state this proves net income.
-  - Current CFD status: CWE-authored affidavit packaged as draft signature-ready document from the Teams Affidavits folder; final execution subject to attorney/compliance review and notarized signature.
-- Business Judgment Approval Direction support document or affidavit.
-  - Purpose: document the business decision to proceed despite nonstandard income proof, high debt ratio, and related-company rent verification.
-  - Current note: include only after authority and compliance review are satisfied.
-  - Current CFD status: CWE-authored affidavit packaged as draft signature-ready document from the Teams Affidavits folder; final execution subject to attorney/compliance review and notarized signature.
-
-## Affidavit Packaging Note
-
-- Four CWE-authored affidavit DOCX files were found in the Teams Affidavits folder and copied into the CFD transaction affidavit output folder as the package record copies.
-- The current CWE handoff identifies the affidavit needs but does not yet pass the exact affidavit file names and full paths. Future CWE handoffs should include those file names and paths so CFD can package affidavits without folder inference.
-- The earlier CFD-generated technical-summary affidavit drafts were removed from the CFD transaction affidavit output folder.
+- Related-Company Rent Payment History Affidavit.
+  - File status: FOUND.
+  - Teams path: `C:\Users\wesbr\Buy Your Home\Buy Your Home - Property\28-SYH-320 Rose Pl\Selling\Ever Cordoza\Contract Package\Affidavits\26-06-08 320 Rose Ever Amarildo Cardoza Bolanos - Affidavit of Related-Company Rent Payment History.docx`
+  - Required status: Required if relied on.
+  - Signer/capacity: Wes Browning, Manager, Buy Your Home, LLC.
+  - Notary need: Recommended/expected for closing-package support.
+  - Current CFD status: CWE-authored draft support document; final execution subject to attorney/compliance review and notarized signature if used.
+- Cash Reserves and Receivables Observation Affidavit.
+  - File status: FOUND.
+  - Teams path: `C:\Users\wesbr\Buy Your Home\Buy Your Home - Property\28-SYH-320 Rose Pl\Selling\Ever Cordoza\Contract Package\Affidavits\26-06-08 320 Rose Ever Amarildo Cardoza Bolanos - Affidavit of Cash Reserves and Receivables Observation.docx`
+  - Required status: Required or substitute acceptable proof of funds.
+  - Signer/capacity: Wes Browning, Manager, Buy Your Home, LLC.
+  - Notary need: Needed if used as formal funds/reserves support.
+  - Current CFD status: CWE-authored draft support document; final execution subject to attorney/compliance review and notarized signature if used.
+- Receipt Package Review and Acceptance Affidavit.
+  - File status: FOUND.
+  - Teams path: `C:\Users\wesbr\Buy Your Home\Buy Your Home - Property\28-SYH-320 Rose Pl\Selling\Ever Cordoza\Contract Package\Affidavits\26-06-08 320 Rose Ever Amarildo Cardoza Bolanos - Affidavit of Receipt Package Review and Acceptance.docx`
+  - Required status: Required if receipts are relied on instead of stronger income proof.
+  - Signer/capacity: Al Bennett, Manager of Investment Services LLC.
+  - Notary need: Recommended/expected for closing-package support.
+  - Current CFD status: CWE-authored draft support document; final execution subject to attorney/compliance review and notarized signature if used.
+- Business Judgment Approval Direction Affidavit.
+  - File status: FOUND.
+  - Teams path: `C:\Users\wesbr\Buy Your Home\Buy Your Home - Property\28-SYH-320 Rose Pl\Selling\Ever Cordoza\Contract Package\Affidavits\26-06-08 320 Rose Ever Amarildo Cardoza Bolanos - Affidavit of Business Judgment Approval Direction.docx`
+  - Required status: Required if management proceeds on this basis.
+  - Signer/capacity: Al Bennett, Manager of Investment Services LLC.
+  - Notary need: Recommended/expected for closing-package support.
+  - Current CFD status: CWE-authored draft support document; final execution subject to attorney/compliance review and notarized signature if used.
 
 ## Funds And Identity Items
 
 - Verify receipt or closing handling of the $6,000 earnest money.
 - Verify remaining down payment due at closing: $14,790.
 - Verify final funds to close, including any closing costs not quantified in the handoff.
-- Confirm final legal-name spelling for Maria Geraldina Sarmiento before execution.
+- Confirm signer identity against ID at execution.
 - Treat Ever Amarildo Cardoza Bolanos and Maria Geraldina Sarmiento as signing buyers unless counsel directs otherwise.
 
 ## Attorney / Compliance Review Items
@@ -57,9 +67,16 @@ Prepared: 2026-06-09
 - Review title, lien, and adverse-condition treatment.
 - Review whether conditional or adverse-action notice language is needed if terms change materially.
 - Confirm seller, trust, trustee, manager, and signature authority before final execution.
+- Resolve or accept the support-affidavit payment-value caution before final use: one CWE affidavit draft references a $2,701 proposed payment while the live spreadsheet monthly finance payment is $2,504.43 and the total monthly payment including insurance/taxes is $2,701.03.
+
+## Affidavit Packaging Note
+
+- CFD did not reauthor, rewrite, or recopy the CWE affidavit files for this run.
+- The affidavit/support documents remain CWE-authored and stored in Teams; CFD references them as closing-package deliverables.
+- If any affidavit is missing from Teams, treat it as missing until CWE or Wes supplies the file.
 
 ## Drafting Notes For CFD
 
 - Use the live project spreadsheet `Docs` worksheet as the current drafting source unless Wes or counsel updates it.
-- Use spreadsheet payment value unless Wes or counsel updates the spreadsheet.
+- Use spreadsheet payment values unless Wes or counsel updates the spreadsheet.
 - Do not mark the file ready for closing execution until the closing deliverables and review items above are complete.
