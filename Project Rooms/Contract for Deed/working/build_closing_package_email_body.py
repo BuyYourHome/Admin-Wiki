@@ -208,7 +208,15 @@ def render_html(version: str, prepared: date) -> str:
       <div style="border-bottom:3px solid #254f7a;padding-bottom:14px;margin-bottom:20px;">
         <div style="font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:#5c6b7a;font-weight:bold;">Contract for Deed Closing Package</div>
         <h1 style="margin:6px 0 0 0;font-size:24px;line-height:1.25;color:#17324d;">{escape(PROPERTY_LABEL)} / {escape(BUYER_LABEL)}</h1>
-        <div style="margin-top:8px;font-size:14px;color:#5c6b7a;">Prepared: {escape(format_date(prepared))}</div>
+        <table role="presentation" style="width:100%;border-collapse:collapse;margin-top:10px;font-size:14px;color:#5c6b7a;">
+          <tr>
+            <td style="padding:0;text-align:left;vertical-align:middle;">Prepared: {escape(format_date(prepared))}</td>
+            <td style="padding:0;text-align:right;vertical-align:middle;">
+              <span style="font-weight:bold;color:#1f2933;">Closing Date:</span>
+              <span style="display:inline-block;min-width:190px;border-bottom:2px solid #1f2933;background:#fff200;color:#1f2933;">&nbsp;</span>
+            </td>
+          </tr>
+        </table>
       </div>
 
       <h2 style="font-size:16px;color:#17324d;margin:22px 0 10px 0;border-bottom:1px solid #d8dee6;padding-bottom:5px;">Current Readiness</h2>
@@ -253,6 +261,7 @@ def render_text(version: str, prepared: date) -> str:
         f"{PROPERTY_LABEL} / {BUYER_LABEL}",
         "",
         f"Prepared: {format_date(prepared)}",
+        "Closing Date: ________________________",
         "",
         "Current Readiness",
     ]

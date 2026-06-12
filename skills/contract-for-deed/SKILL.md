@@ -79,6 +79,7 @@ When sending a CFD Email Package:
    - Preserve the friendly cover-page structure in the email body: current readiness, current document package, required closing deliverables, funds and identity items, and attorney/compliance review items.
    - Start the body with this neutral first line before the package title/header: `Below is the current closing package cover page for review. The package ZIP is attached, and the document names below link to the package files.`
    - Do not personalize that first line with Wes's name because Wes may edit and forward the message.
+   - In the email header, show a fill-in `Closing Date` field to the right of the prepared date. Leave the closing-date value blank for the attorney to complete and highlight the blank field yellow.
    - Display package links as short document labels, such as `Contract for Deed Agreement`, `12 Month Amortization Chart`, and `Attorney-review package`, instead of full filenames or full SharePoint URLs.
    - Do not add a repeated metadata footer after the attorney/compliance section listing the ZIP, property address, buyer names, or seller name.
    - Do not use a plain-text-only send path when Wes has asked for clean display links; plain text may expose long SharePoint URLs and lose the polished checklist formatting.
