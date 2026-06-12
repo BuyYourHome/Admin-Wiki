@@ -40,9 +40,9 @@ For 320 Rose / Ever Cardoza, use:
 
 Copy clean packages, attorney-review packages, closing checklists, and package copies of closing-package affidavit/support documents to Teams after each requested regeneration or package update unless Wes says project-room only. Do not copy prototypes, staged spreadsheets, scratch files, extracted text, rendered QA images, logs, or temporary working files to Teams.
 
-For buyer-review and Email Package use, keep the current package files together in the Teams `Clean Package` folder. This includes clean signing/review copies, the Amortization Chart PDF, the polished closing cover/checklist output, package copies of CWE-authored affidavit/support documents, and attorney-review files when the checklist/email package lists them. Do not make Wes inspect separate `Affidavits`, `Closing Checklist`, or `Attorney Review Package` folders to find the files listed in the email package.
+For buyer-review and Email Package use, keep the current package files together under the Teams `Clean Package` tree. This includes clean signing/review copies, the Amortization Chart PDF, the polished closing cover/checklist output, and attorney-review files when the checklist/email package lists them. Active package copies of CWE-authored affidavit/support documents belong in `Clean Package\Affidavits\`; do not put them loose in the `Clean Package` root. Do not make Wes inspect `Closing Checklist` or `Attorney Review Package` folders to find the files listed in the email package.
 
-When affidavits are CWE-authored, copying them into `Clean Package` is a package copy only. It does not transfer affidavit authorship or make CFD responsible for reauthoring them.
+When affidavits are CWE-authored, copying them into `Clean Package\Affidavits\` is a package copy only. It does not transfer affidavit authorship or make CFD responsible for reauthoring them.
 
 When producing the Word closing document / closing checklist document, place a fill-in `Closing Date` field to the right of the prepared date near the top of the document. Leave the closing-date value blank for the attorney to complete and highlight the blank field yellow so it is visibly marked as needing completion.
 
@@ -53,7 +53,8 @@ Use these `Clean Package\Archive` subfolders:
 - `Archive\Cover Letter\` for prior closing package cover page / cover letter files.
 - `Archive\Affidavits\` for prior affidavit/support package-copy files.
 - `Archive\Credit Worthiness\` for prior Credit Worthiness report package-copy files.
-- `Archive\Contract\` for all other prior contract-package files, including contracts, memoranda, notes, term sheets, buyer acknowledgments, amortization charts, attorney-review package files, signed contract PDFs, and package ZIPs unless Wes gives a document-specific archive location.
+- `Archive\Attorney Review Package\` for prior attorney-review package ZIP files.
+- `Archive\Contract\` for all other prior contract-package files, including contracts, memoranda, notes, term sheets, buyer acknowledgments, amortization charts, attorney-review DOCX files, signed contract PDFs, and package ZIPs unless Wes gives a document-specific archive location.
 
 Do not keep a separate `Clean Package\Credit Worthiness Archive` sibling folder. Credit Worthiness archive files belong under `Clean Package\Archive\Credit Worthiness\`.
 
