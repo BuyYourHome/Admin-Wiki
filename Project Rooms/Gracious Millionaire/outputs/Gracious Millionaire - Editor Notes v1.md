@@ -2,7 +2,7 @@
 
 ## Editorial Approach
 
-This draft uses only the existing email/chapter-seed material from the project room. I re-ordered and lightly reworded the material so it reads as one connected manuscript, but I did not add new stories, claims, facts, examples, or conclusions.
+This draft uses the existing email/chapter-seed material from the project room plus the 115 Rosebrooks project source markdown set added later. I re-ordered and lightly reworded the original chapter-seed material so it reads as one connected manuscript. The 115 Rosebrooks chapter is a new narrative drawn from project records, not from memory or invented scenes.
 
 The main organizing theme is that becoming a gracious millionaire is not about reaching a money amount. It is about money, favor, real estate, blessing, and abundance staying under lordship instead of replacing trust in God.
 
@@ -19,5 +19,9 @@ The main organizing theme is that becoming a gracious millionaire is not about r
 - Several sections are still chapter beginnings rather than full chapters.
 - Providence Landing is clearly an unfinished story in the source material.
 - The Red Quartz and HOA/favor sections are the most developed narrative chapters.
+- The 115 Rosebrooks chapter is the most legally sensitive chapter. It should be reviewed for tone and legal exposure before any external publication.
 - The abundance, gratitude, complaining, and tribes sections are strong thematic material but need more source stories before they can become complete chapters.
 
+## 115 Rosebrooks Source Note
+
+The 115 Rosebrooks narrative draws primarily from the seller acknowledgement, foreclosure notices and withdrawal records, the April 3, 2025 Griffith suit discussion summary, the May 21, 2025 settlement draft, the May 30, 2025 Psalm 37 reflection, and the 2026 summary judgment briefing. The chapter is written as book narrative rather than legal argument.
