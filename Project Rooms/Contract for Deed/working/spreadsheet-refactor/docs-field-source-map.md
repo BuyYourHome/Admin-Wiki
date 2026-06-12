@@ -12,7 +12,7 @@ CFD reads recognized `Docs` label/value pairs wherever they appear in grouped bl
 
 - field label: any cell containing a recognized CFD label
 - field value or formula: the cell immediately to the right of the label
-- multi-value rows, currently `Adverse Conditions`, may use additional cells to the right on the same row
+- section 9 adverse conditions use separate label/value pairs: `Adverse Conditions1`, `Adverse Conditions2`, and `Adverse Conditions3`
 
 CFD no longer needs the horizontal `Docs` row 1 / row 2 field table.
 
@@ -42,7 +42,7 @@ Rows 1-2 were deleted from `Docs` using Excel automation and recalculated. The n
 | Term months | `TermMonths1` | term years label value multiplied by 12 |
 | Loan start | `Loan Start1` | `Amortization!O11` |
 | Loan end | `Loan End1` | `Amortization!Q11` |
-| Adverse conditions | `Adverse Conditions` | direct same-row values to the right of the label |
+| Adverse conditions | `Adverse Conditions1`, `Adverse Conditions2`, `Adverse Conditions3` | direct values combined in label order |
 | Interest rate | `Interest rate1` | `TEXT(Amortization!AA9, "0.000%")` |
 | Property address | `Address` | `Profit!B2` |
 | Property city/state/ZIP | `City-State` | `Profit!E2` |

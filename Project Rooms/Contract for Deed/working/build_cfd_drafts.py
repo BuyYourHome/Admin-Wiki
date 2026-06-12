@@ -64,7 +64,13 @@ DOCS_FIELD_LABELS = {
     "PurchaserAddress",
     "Purchaser Address",
     "Adverse Conditions",
+    "Adverse Conditions1",
+    "Adverse Conditions2",
+    "Adverse Conditions3",
     "AdverseConditions",
+    "AdverseConditions1",
+    "AdverseConditions2",
+    "AdverseConditions3",
     "AdverseCondition",
     "Adverse Condition",
     "Pending Orders or Adverse Conditions",
@@ -124,7 +130,6 @@ def get_docs_values():
     wb = openpyxl.load_workbook(str(WORKBOOK), data_only=True, read_only=True, keep_vba=False)
     ws = wb["Docs"]
     values = {}
-    multi_value_rows = {"adverse conditions"}
     for row in ws.iter_rows(values_only=True):
         for index, key in enumerate(row):
             if not key:
@@ -132,14 +137,7 @@ def get_docs_values():
             clean_key = str(key).strip()
             if clean_key not in DOCS_FIELD_LABELS:
                 continue
-            if clean_key.lower() in multi_value_rows:
-                cell_values = [
-                    clean(value)
-                    for value in row[index + 1:]
-                ]
-                row_value = "\n".join(str(value) for value in cell_values if value)
-            else:
-                row_value = row[index + 1] if index + 1 < len(row) else None
+            row_value = row[index + 1] if index + 1 < len(row) else None
             if clean_key in values:
                 i = 2
                 while f"{clean_key}__{i}" in values:
@@ -202,14 +200,21 @@ def normalize_values(v):
     ]
     buyer_address = ", ".join(str(part).strip() for part in buyer_address_parts if part not in (None, ""))
     seller = clean(trust) or selling_seller
-    adverse = clean(
-        v.get("Adverse Conditions")
-        or v.get("AdverseConditions")
-        or v.get("AdverseCondition")
-        or v.get("Adverse Condition")
-        or v.get("Pending Orders or Adverse Conditions")
-        or v.get("Pending Orders")
-    )
+    adverse_parts = [
+        clean(v.get("Adverse Conditions1") or v.get("AdverseConditions1")),
+        clean(v.get("Adverse Conditions2") or v.get("AdverseConditions2")),
+        clean(v.get("Adverse Conditions3") or v.get("AdverseConditions3")),
+    ]
+    adverse = "\n".join(part for part in adverse_parts if part)
+    if not adverse:
+        adverse = clean(
+            v.get("Adverse Conditions")
+            or v.get("AdverseConditions")
+            or v.get("AdverseCondition")
+            or v.get("Adverse Condition")
+            or v.get("Pending Orders or Adverse Conditions")
+            or v.get("Pending Orders")
+        )
     if not adverse:
         adverse = "NOTE FOR ATTORNEY REVIEW: Confirm whether any pending orders, liens, adverse conditions, title matters, or required disclosures should be listed here before signing."
 
