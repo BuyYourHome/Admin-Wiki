@@ -1,4 +1,5 @@
 from datetime import datetime
+import os
 from pathlib import Path
 
 import openpyxl
@@ -12,7 +13,12 @@ from docx.shared import Inches, Pt
 
 
 ROOT = Path(r"C:\Codex\Wiki Files\Project Rooms\Contract for Deed")
-WORKBOOK = ROOT / "source" / "320 Rose project spreadsheet" / "28_Project Management - 320 Rose Pl.xlsm"
+WORKBOOK = Path(
+    os.environ.get(
+        "CFD_WORKBOOK",
+        str(ROOT / "source" / "320 Rose project spreadsheet" / "28_Project Management - 320 Rose Pl.xlsm"),
+    )
+)
 OUT = ROOT / "output"
 SUFFIX = "DRAFT"
 
@@ -44,10 +50,6 @@ def get_docs_values():
     ws = wb["Docs"]
     values = {}
     multi_value_rows = {"adverse conditions"}
-    for col in range(1, ws.max_column + 1):
-        key = ws.cell(1, col).value
-        if key:
-            values[str(key).strip()] = ws.cell(2, col).value
     for row in range(1, ws.max_row + 1):
         key = ws.cell(row, 1).value
         if key:

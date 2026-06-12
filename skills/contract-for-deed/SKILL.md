@@ -157,6 +157,8 @@ Use this workflow when Wes asks to refresh or recreate contract-for-deed sale do
 7. Save clean newer drafts as the current prototype before regenerating. Do not preserve generated attorney-review notes as template content.
 8. Refresh the staged project spreadsheet from the live project spreadsheet.
 9. Read document values from the workbook `Docs` worksheet only. If a value is calculated elsewhere in the workbook, it must be exposed as a `Docs` field before the document generator uses it.
+   - Treat the vertical `Docs` label/value rows as the CFD source interface, with labels in column `A` and values/formulas in column `B` or the defined multi-value row cells.
+   - Do not depend on the legacy horizontal `Docs` row 1 / row 2 field table. That area may be deleted or repurposed during spreadsheet refactoring.
 10. Regenerate the standard clean draft files, overwriting the existing drafts unless Wes asks for revision copies.
 11. If the Spanish flag is active, generate the Spanish/bilingual deliverables described in the Spanish Translation Flag section after the standard English clean drafts are current.
 12. Verify clean drafts contain no generated attorney-review or management-review blocks.
