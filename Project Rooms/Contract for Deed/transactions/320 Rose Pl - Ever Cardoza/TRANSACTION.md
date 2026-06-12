@@ -47,11 +47,13 @@ Excluded unless Wes changes the scope:
 
 ## Teams Copy Placement
 
-Keep project-room files as the working source. Copy current deliverables to the Teams mirror folder under:
+Keep project-room files as the working source. Copy current deliverables directly to the Teams mirror folder:
 
-- `Clean Package\`
+- `Contract Package\` root for the active package files
 - `Attorney Review Package\`
 - `Closing Checklist\`
 - `Affidavits\`
+- `Spanish Package\`
+- `Archive\`
 
 Do not copy prototypes, staged spreadsheets, scratch files, rendered QA images, logs, or temporary working files to Teams.
