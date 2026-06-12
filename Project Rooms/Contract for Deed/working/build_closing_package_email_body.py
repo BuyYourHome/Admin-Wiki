@@ -16,7 +16,7 @@ TEAMS_PACKAGE_ROOT = Path(
 CLEAN_PACKAGE = TEAMS_PACKAGE_ROOT / "Clean Package"
 EMAIL_PACKAGE = TEAMS_PACKAGE_ROOT / "Email Package"
 
-PROPERTY_LABEL = "320 Rose"
+PROPERTY_LABEL = "320 Rose Pl"
 BUYER_LABEL = "Ever Cardoza"
 
 
@@ -37,32 +37,36 @@ class AffidavitFile:
 DOCUMENTS = [
     LinkedFile(
         "Credit Worthiness Report",
-        "v19 320 Rose Ever Amarildo Cardoza Bolanos - Creditworthiness Evaluation Report - Affidavit Package Handoff.docx",
+        "320 Rose Ever Amarildo Cardoza Bolanos - Creditworthiness Evaluation Report - Document Preparation Ready.docx",
     ),
-    LinkedFile("Term Sheet", "{version} - 320 Rose - Term Sheet - DRAFT.docx"),
+    LinkedFile(
+        "Closing Package Cover Page",
+        "320 Rose Pl - Ever Cardoza - Closing Package Cover Page.docx",
+    ),
+    LinkedFile("Term Sheet", "320 Rose Pl - Term Sheet - DRAFT.docx"),
     LinkedFile(
         "Buyer Acknowledgment Addendum",
-        "{version} - 320 Rose - Buyer Acknowledgment Addendum - DRAFT.docx",
+        "320 Rose Pl - Buyer Acknowledgment Addendum - DRAFT.docx",
     ),
     LinkedFile(
         "Contract for Deed Agreement",
-        "{version} - 320 Rose - Contract for Deed Agreement - DRAFT.docx",
+        "320 Rose Pl - Contract for Deed Agreement - DRAFT.docx",
     ),
     LinkedFile(
         "Memorandum of Contract for Deed",
-        "{version} - 320 Rose - Memorandum of Contract for Deed - DRAFT.docx",
+        "320 Rose Pl - Memorandum of Contract for Deed - DRAFT.docx",
     ),
     LinkedFile(
         "Promissory Note for Contract for Deed",
-        "{version} - 320 Rose - Promissory Note for Contract for Deed - DRAFT.docx",
+        "320 Rose Pl - Promissory Note for Contract for Deed - DRAFT.docx",
     ),
     LinkedFile(
         "12 Month Amortization Chart",
-        "{version} - 320 Rose Pl - 12 Month Amortization Chart.pdf",
+        "320 Rose Pl - 12 Month Amortization Chart.pdf",
     ),
     LinkedFile(
         "Attorney-review package",
-        "{version} - 320 Rose - Attorney Review Package.zip",
+        "320 Rose Pl - Attorney Review Package.zip",
     ),
 ]
 
@@ -125,18 +129,19 @@ ATTORNEY_REVIEW_ITEMS = [
 
 
 EXTERNAL_VIEW_LINKS = {
-    "v19 320 Rose Ever Amarildo Cardoza Bolanos - Creditworthiness Evaluation Report - Affidavit Package Handoff.docx": "https://lifeisanadventure.sharepoint.com/:w:/s/SellYourHome/IQCcQW8eUynITYVURk2CkwsbAQ6NrJTBkIwq19XQ9ZGXQuk",
-    "v05 - 320 Rose - Term Sheet - DRAFT.docx": "https://lifeisanadventure.sharepoint.com/:w:/s/SellYourHome/IQCeKn8UOy52R4QnLiwLd1KhARk9x-OLq0GfmJAKfIhyAWg",
-    "v05 - 320 Rose - Buyer Acknowledgment Addendum - DRAFT.docx": "https://lifeisanadventure.sharepoint.com/:w:/s/SellYourHome/IQB7UwYjKQ-JRqmZeN6uZGMtAWdcTZX5evJyCdoP0ertfWA",
-    "v05 - 320 Rose - Contract for Deed Agreement - DRAFT.docx": "https://lifeisanadventure.sharepoint.com/:w:/s/SellYourHome/IQDMB-skQOsmQqhjBuppAYzFATIf9TmCTeNngKGzvA2_KmE",
-    "v05 - 320 Rose - Memorandum of Contract for Deed - DRAFT.docx": "https://lifeisanadventure.sharepoint.com/:w:/s/SellYourHome/IQAXq3NGLaZZQoMEdEPxrTUnAWSavTbKEtpm9_BUaRWEoU0",
-    "v05 - 320 Rose - Promissory Note for Contract for Deed - DRAFT.docx": "https://lifeisanadventure.sharepoint.com/:w:/s/SellYourHome/IQAdJsO4JFF8SYwzKYucFr3CAeeBANczX8PylIaojRzQ8DI",
-    "v05 - 320 Rose Pl - 12 Month Amortization Chart.pdf": "https://lifeisanadventure.sharepoint.com/:b:/s/SellYourHome/IQCDpg4R5OnXS5jN2ReMLkScAYRUCTmsi7iKNJHP9QQvxWk",
-    "v05 - 320 Rose - Attorney Review Package.zip": "https://lifeisanadventure.sharepoint.com/:u:/s/SellYourHome/IQBPpmr6T6_TRIWAVdKw9TueAZXo-U9zS-0ga4vi40VX3aU",
-    "26-06-08 320 Rose Ever Amarildo Cardoza Bolanos - Affidavit of Related-Company Rent Payment History.docx": "https://lifeisanadventure.sharepoint.com/:w:/s/SellYourHome/IQC-g2ZWDpHaQIeBMpn-EYBjAYt3z5K0ubQwgoi8pFi5zYA",
-    "26-06-08 320 Rose Ever Amarildo Cardoza Bolanos - Affidavit of Cash Reserves and Receivables Observation.docx": "https://lifeisanadventure.sharepoint.com/:w:/s/SellYourHome/IQD2HG7HoFwuTahWl4eBGuh5AVYNFcQ0lE9TRZV2Gdh6Ei0",
-    "26-06-08 320 Rose Ever Amarildo Cardoza Bolanos - Affidavit of Receipt Package Review and Acceptance.docx": "https://lifeisanadventure.sharepoint.com/:w:/s/SellYourHome/IQD51dTsBh8xSZ-THSqA8_HjAbbOnwtAo7CQfeMF3ZhYa3E",
-    "26-06-08 320 Rose Ever Amarildo Cardoza Bolanos - Affidavit of Business Judgment Approval Direction.docx": "https://lifeisanadventure.sharepoint.com/:w:/s/SellYourHome/IQBP5R0fGxoITIeUGuyqecbKAZSKk75YpiWSqDAzzyIVUtE",
+    "320 Rose Ever Amarildo Cardoza Bolanos - Creditworthiness Evaluation Report - Document Preparation Ready.docx": "https://lifeisanadventure.sharepoint.com/:w:/s/SellYourHome/IQAaMf5JXFYfTZMH6RmM7UfWAeCAvUz0q8tMRVox75iPCts",
+    "320 Rose Pl - Ever Cardoza - Closing Package Cover Page.docx": "https://lifeisanadventure.sharepoint.com/:w:/s/SellYourHome/IQBk77DaM_wMTLxv8nUqmtspAc74VVnEZyRr9AGC9FTh7E4",
+    "320 Rose Pl - Term Sheet - DRAFT.docx": "https://lifeisanadventure.sharepoint.com/:w:/s/SellYourHome/IQAsEfMsepUKR4lReZ6G6kBTAZzxG7C499hOx942X_U7Lng",
+    "320 Rose Pl - Buyer Acknowledgment Addendum - DRAFT.docx": "https://lifeisanadventure.sharepoint.com/:w:/s/SellYourHome/IQBZZfXDoaQWS4b1FbC0j6zgAaImngAMc6HzYPc-iflQMqM",
+    "320 Rose Pl - Contract for Deed Agreement - DRAFT.docx": "https://lifeisanadventure.sharepoint.com/:w:/s/SellYourHome/IQC2sv6VxmckSqPZ53yCUrI3AWBYEu3fu7mnZXO60SwjFoU",
+    "320 Rose Pl - Memorandum of Contract for Deed - DRAFT.docx": "https://lifeisanadventure.sharepoint.com/:w:/s/SellYourHome/IQB_mfhk4PPTT6obU7nCW6_yAW0C842ltBSGDF2mRYrXgZA",
+    "320 Rose Pl - Promissory Note for Contract for Deed - DRAFT.docx": "https://lifeisanadventure.sharepoint.com/:w:/s/SellYourHome/IQD9zg7SLquUSZIP3Qq6rA-lAZdIE4PNk7J9CG0ADpzhEiQ",
+    "320 Rose Pl - 12 Month Amortization Chart.pdf": "https://lifeisanadventure.sharepoint.com/:b:/s/SellYourHome/IQACg_iTf20OTqSAQMwPEZs-AXubBZCzVlP2n6X21gHCmsY",
+    "320 Rose Pl - Attorney Review Package.zip": "https://lifeisanadventure.sharepoint.com/:u:/s/SellYourHome/IQD0n7ijOf0uS5u46f1ZjqdWAV_EcuJuwVS43i0ynVxq7os",
+    "26-06-08 320 Rose Ever Amarildo Cardoza Bolanos - Affidavit of Related-Company Rent Payment History.docx": "https://lifeisanadventure.sharepoint.com/:w:/s/SellYourHome/IQBKPSYG0AyqSKssNPUoW3XPAeCkg9PX1gYIaK5bSv09f70",
+    "26-06-08 320 Rose Ever Amarildo Cardoza Bolanos - Affidavit of Cash Reserves and Receivables Observation.docx": "https://lifeisanadventure.sharepoint.com/:w:/s/SellYourHome/IQC7AbQilJI4Q5P5deMSyVOEAQcCkCnyKE8sWlSDAJhpiK8",
+    "26-06-08 320 Rose Ever Amarildo Cardoza Bolanos - Affidavit of Receipt Package Review and Acceptance.docx": "https://lifeisanadventure.sharepoint.com/:w:/s/SellYourHome/IQCl1kHkkq1ETZuJ_-EFQmVwAQC595ymwH-rxE2Jf5N_T5Y",
+    "26-06-08 320 Rose Ever Amarildo Cardoza Bolanos - Affidavit of Business Judgment Approval Direction.docx": "https://lifeisanadventure.sharepoint.com/:w:/s/SellYourHome/IQAudYMMI9o6T46aH1MgHyRPAQe22vbEKOLSdM1VjW1Ycyk",
 }
 
 
@@ -167,8 +172,7 @@ def render_html(version: str, prepared: date) -> str:
     doc_items = []
     for item in DOCUMENTS:
         file_name = item.file_name.format(version=version)
-        base_folder = TEAMS_PACKAGE_ROOT / "Credit Worthiness" if item.label == "Credit Worthiness Report" else CLEAN_PACKAGE
-        doc_items.append(f"<li>{linked_anchor(base_folder / file_name, item.label)}</li>")
+        doc_items.append(f"<li>{linked_anchor(CLEAN_PACKAGE / file_name, item.label)}</li>")
 
     affidavit_blocks = []
     for item in AFFIDAVITS:
@@ -283,12 +287,13 @@ def main() -> None:
     parser.add_argument("--date", help="Prepared date in YYYY-MM-DD format. Defaults to today.")
     args = parser.parse_args()
 
-    version = args.version.lower() if args.version else latest_version(CLEAN_PACKAGE)
+    version = args.version.lower() if args.version else "current"
     prepared = date.fromisoformat(args.date) if args.date else date.today()
     EMAIL_PACKAGE.mkdir(parents=True, exist_ok=True)
 
-    html_path = EMAIL_PACKAGE / f"{version} - 320 Rose - Ever Cardoza - Closing Package Email Body.html"
-    text_path = EMAIL_PACKAGE / f"{version} - 320 Rose - Ever Cardoza - Closing Package Email Body.txt"
+    name_prefix = f"{version} - " if args.version else ""
+    html_path = EMAIL_PACKAGE / f"{name_prefix}320 Rose Pl - Ever Cardoza - Closing Package Email Body.html"
+    text_path = EMAIL_PACKAGE / f"{name_prefix}320 Rose Pl - Ever Cardoza - Closing Package Email Body.txt"
 
     html_path.write_text(render_html(version, prepared), encoding="utf-8")
     text_path.write_text(render_text(version, prepared), encoding="utf-8")
