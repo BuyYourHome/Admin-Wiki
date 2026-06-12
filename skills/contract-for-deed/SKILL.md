@@ -52,7 +52,7 @@ CFD work should be understood in these operating modes:
    Create attorney-review versions with contextual review blocks. Produce versioned project-room outputs and versioned Teams copies.
 
 3. **Spanish Add-On**
-   Generate the bilingual Spanish Contract for Deed Agreement only, unless Wes explicitly expands the Spanish scope. This mode is additive and does not run the full English package unless Wes asks for the full package too. Produce versioned project-room output and versioned Teams copy.
+   Generate the bilingual Spanish Contract for Deed Agreement only, unless Wes explicitly expands the Spanish scope. This mode is additive and does not run the full English package unless Wes asks for the full package too. If Wes expands the Spanish scope to other documents, follow the document-specific Spanish rules in the Spanish Translation Flag section. Produce versioned project-room output and versioned Teams copy.
 
 4. **Email Package**
    Prepare a package email to Wes only so Wes can review and forward it himself. When Wes says `Email Package`, assume the last project/buyer being processed, but confirm that project and buyer with Wes before preparing or sending anything. The email body should include the format and content of the Closing Checklist and list package files as clickable Teams/SharePoint links when those links can be generated from the Teams-synced file paths. Build one complete package ZIP containing every file listed in the Closing Checklist, unless Wes explicitly asks for individual attachments for that specific run. If any listed file is missing or cannot be included in the ZIP, do not silently omit it and do not send a partial package; report the missing file before sending. Use the `email-delivery` skill for OfficeAssist sender safety, attachment upload handling, delivery, and sent-item verification. Never send the package email directly to outside parties, buyers, attorneys, agents, Jenny, or anyone else unless Wes later creates a separate explicit rule changing that restriction.
@@ -500,6 +500,23 @@ Save the bilingual output in the project-room output folder and copy the current
 Archive prior Teams Spanish/bilingual package copies under:
 
 `Contract Package\Archive\Spanish Package\`
+
+### Term Sheet Spanish Add-On
+
+When Wes expands the Spanish scope to include the Term Sheet:
+
+- Treat the Term Sheet Spanish draft as separate from the Contract for Deed bilingual Spanish draft.
+- Do not change the Contract for Deed Spanish generator or its translation-memory rules when fixing or updating the Term Sheet Spanish draft.
+- Generate the Term Sheet Spanish draft from the current English Term Sheet after the Full English Package has been regenerated.
+- The Term Sheet Spanish draft must reflect the current spreadsheet-fed English Term Sheet values from the `Docs` worksheet.
+- Do not reuse old Term Sheet Spanish text when the current English Term Sheet text or values have changed.
+- Translate the Term Sheet headings, explanatory paragraphs, table labels, section labels, and standard instruction text fresh for the current draft.
+- Preserve inserted transaction values exactly as shown in the English Term Sheet unless Wes explicitly asks to translate or restate them.
+- Preserve the three adverse-condition entries exactly as spreadsheet-sourced values unless Wes explicitly asks to translate them: `Adverse Conditions1`, `Adverse Conditions2`, and `Adverse Conditions3`.
+- Use the standard Spanish output name pattern: `<Property> - Term Sheet - SPANISH DRAFT.docx`.
+- Copy the current unversioned Spanish Term Sheet to the Teams `Contract Package\Spanish Package\` folder.
+- Before writing a new active Teams Spanish Term Sheet, archive the prior active Spanish Term Sheet under `Contract Package\Archive\Spanish Package\`.
+- The Spanish Term Sheet belongs to the Spanish Add-On workflow, not Full English Package mode and not Email Package mode unless Wes asks for Spanish documents to be included in the email package.
 
 The current project-room generator for the Spanish Contract for Deed deliverable is:
 
