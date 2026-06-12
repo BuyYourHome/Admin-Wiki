@@ -14,6 +14,7 @@ TEAMS_PACKAGE_ROOT = Path(
     r"C:\Users\wesbr\Buy Your Home\Buy Your Home - Property\28-SYH-320 Rose Pl\Selling\Ever Cordoza\Contract Package"
 )
 CLEAN_PACKAGE = TEAMS_PACKAGE_ROOT / "Clean Package"
+PACKAGE_AFFIDAVITS = CLEAN_PACKAGE / "Affidavits"
 EMAIL_PACKAGE = TEAMS_PACKAGE_ROOT / "Email Package"
 
 PROPERTY_LABEL = "320 Rose Pl"
@@ -176,7 +177,7 @@ def render_html(version: str, prepared: date) -> str:
 
     affidavit_blocks = []
     for item in AFFIDAVITS:
-        title = linked_anchor(CLEAN_PACKAGE / item.file_name, item.title)
+        title = linked_anchor(PACKAGE_AFFIDAVITS / item.file_name, item.title)
         affidavit_blocks.append(
             "<p>"
             f"<strong>{title}</strong><br>"
