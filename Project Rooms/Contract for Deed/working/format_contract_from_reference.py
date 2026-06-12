@@ -6,7 +6,7 @@ from docx.enum.table import WD_TABLE_ALIGNMENT, WD_CELL_VERTICAL_ALIGNMENT
 from docx.shared import RGBColor
 from docx.table import Table
 
-from build_rose_drafts import get_docs_values, normalize_values, money, short_date
+from build_cfd_drafts import get_docs_values, normalize_values, money, short_date
 
 
 ROOT = Path(r"C:\Codex\Wiki Files\Project Rooms\Contract for Deed")
