@@ -128,7 +128,7 @@ Then use the `Docs` worksheet as the source of truth for document values.
 
 All fields needed by the document generators should be exposed on the `Docs` worksheet. Do not have the document generators pull contract values directly from other workbook tabs such as `Amortization`, `Contract`, `Base`, or buying/acquisition tabs. If a needed value is calculated elsewhere, add or correct a named field on `Docs` and have the generator read that `Docs` field.
 
-The CFD generator reads `Docs` label/value pairs as the spreadsheet interface. Field labels may be placed in readable grouped blocks anywhere on `Docs`; the generator reads the value/formula from the cell immediately to the right of the recognized label. For defined multi-value rows such as `Adverse Conditions`, the generator reads the nonblank cells to the right on the same row. Do not rely on the legacy horizontal `Docs` row 1 / row 2 field table; that area may be deleted or repurposed during spreadsheet refactoring.
+The CFD generator reads `Docs` label/value pairs as the spreadsheet interface. Field labels may be placed in readable grouped blocks anywhere on `Docs`; the generator reads the value/formula from the cell immediately to the right of the recognized label. For section 9 adverse conditions, prefer the three separate label/value fields `Adverse Conditions1`, `Adverse Conditions2`, and `Adverse Conditions3`; combine the nonblank values in order for the generated document. Do not rely on the legacy horizontal `Docs` row 1 / row 2 field table; that area may be deleted or repurposed during spreadsheet refactoring.
 
 For Rose sale documents, use only `LoanStart1` and `LoanEnd1` for loan/payment date fields. Ignore `LoanStart2` and `LoanEnd2`.
 
@@ -219,7 +219,7 @@ The kickoff file should identify only the verified project/property, live projec
    - `Monthly Payment1`
    - `Loan Start1`
    - `Loan End1`
-   - `Adverse Conditions`, with each listed lien/adverse condition in the same `Docs` row
+   - `Adverse Conditions1`, `Adverse Conditions2`, and `Adverse Conditions3`, with each listed lien/adverse condition as its own label/value pair
    - property fields under the Property/Deed/Trust sections
    - `Manger` for the trustee manager name
 

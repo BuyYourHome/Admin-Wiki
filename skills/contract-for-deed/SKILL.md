@@ -158,7 +158,7 @@ Use this workflow when Wes asks to refresh or recreate contract-for-deed sale do
 8. Refresh the staged project spreadsheet from the live project spreadsheet.
 9. Read document values from the workbook `Docs` worksheet only. If a value is calculated elsewhere in the workbook, it must be exposed as a `Docs` field before the document generator uses it.
    - Treat `Docs` label/value pairs as the CFD source interface. Field labels may be placed in readable grouped blocks anywhere on `Docs`; read the value/formula from the cell immediately to the right of the recognized label.
-   - For defined multi-value rows such as `Adverse Conditions`, read the nonblank cells to the right on the same row.
+   - For section 9 adverse conditions, prefer the three separate label/value fields `Adverse Conditions1`, `Adverse Conditions2`, and `Adverse Conditions3`; combine the nonblank values in order for the generated document.
    - Do not depend on the legacy horizontal `Docs` row 1 / row 2 field table. That area may be deleted or repurposed during spreadsheet refactoring.
 10. Regenerate the standard clean draft files, overwriting the existing drafts unless Wes asks for revision copies.
 11. If the Spanish flag is active, generate the Spanish/bilingual deliverables described in the Spanish Translation Flag section after the standard English clean drafts are current.
