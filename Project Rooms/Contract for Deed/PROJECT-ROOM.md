@@ -58,7 +58,7 @@ Use these `Clean Package\Archive` subfolders:
 
 Do not keep a separate `Clean Package\Credit Worthiness Archive` sibling folder. Credit Worthiness archive files belong under `Clean Package\Archive\Credit Worthiness\`.
 
-Apply the same active-plus-Archive versioning rule to `Contract Package\Spanish Package\`: the active Spanish Package folder should contain only the current unversioned Spanish/bilingual deliverable for each document type using the street-only property prefix, and prior Spanish/bilingual drafts for that same document type should be moved into `Spanish Package\Archive` with version prefixes preserved or added when archiving an unversioned prior active file.
+Apply the same active-plus-Archive versioning rule to `Contract Package\Clean Package\Spanish Package\`: the active Spanish Package folder should contain only the current unversioned Spanish/bilingual deliverable for each document type using the street-only property prefix, and prior Spanish/bilingual drafts for that same document type should be moved into `Contract Package\Clean Package\Archive\Spanish Package\` with version prefixes preserved or added when archiving an unversioned prior active file. Do not keep a sibling `Contract Package\Spanish Package\` folder.
 
 Use `working\teams_link_from_local_path.py` to convert Teams-synced package paths into SharePoint web links for the Email Package body. If a file cannot be mapped to a SharePoint link, list the exact filename and local Teams path and report the unmapped item rather than guessing.
 
@@ -294,7 +294,7 @@ Spanish flag add-on:
 
 - Contract for Deed Agreement bilingual Spanish draft only, unless Wes explicitly expands the Spanish scope to other documents.
 - When Wes expands the Spanish scope, create separate Spanish draft deliverables for the named document types and place them in the same Spanish Package workflow.
-- Save the Spanish/bilingual output in the project-room output folder and copy it to the matching Teams buyer folder under `Contract Package\Spanish Package\`.
+- Save the Spanish/bilingual output in the project-room output folder and copy the current unversioned package copy to the matching Teams buyer folder under `Contract Package\Clean Package\Spanish Package\`. Archive prior Teams Spanish/bilingual package copies under `Contract Package\Clean Package\Archive\Spanish Package\`.
 - Use an output name ending in `BILINGUAL SPANISH DRAFT.docx` for the Contract for Deed Agreement and `SPANISH DRAFT.docx` for Spanish-only drafts of other package documents.
 
 Buyer-specific handoff/checklist inputs:

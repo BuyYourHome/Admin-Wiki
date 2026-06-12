@@ -453,7 +453,7 @@ Do not delete prior versions. Before archiving, verify the destination path is i
 
 Use the same active filename convention across CFD-created documents, the Amortization Chart package copy, the email body files, the Email Package ZIP, the cover page/checklist, attorney-review package files, and Spanish package files unless Wes gives a document-specific exception.
 
-For `Contract Package\Spanish Package\`, use the same archive convention as the main package folders: keep only the current unversioned Spanish/bilingual deliverable for each document type in the active Spanish Package folder, use the street-only property prefix, and move prior Spanish/bilingual drafts for that same document type into `Spanish Package\Archive` with their version prefix preserved or added when archiving an unversioned prior active file.
+For `Contract Package\Clean Package\Spanish Package\`, use the same archive convention as the main package folders: keep only the current unversioned Spanish/bilingual deliverable for each document type in the active Spanish Package folder, use the street-only property prefix, and move prior Spanish/bilingual drafts for that same document type into `Contract Package\Clean Package\Archive\Spanish Package\` with their version prefix preserved or added when archiving an unversioned prior active file. Do not keep a sibling `Contract Package\Spanish Package\` folder.
 
 ## Spanish Translation Flag
 
@@ -471,9 +471,13 @@ For Spanish-only drafts of other package documents, use this output name pattern
 
 `<Property> - <Document Name> - SPANISH DRAFT.docx`
 
-Save the bilingual output in the project-room output folder and copy it to the matching Teams buyer folder under:
+Save the bilingual output in the project-room output folder and copy the current unversioned Spanish/bilingual package copy to the matching Teams buyer folder under:
 
-`Contract Package\Spanish Package\`
+`Contract Package\Clean Package\Spanish Package\`
+
+Archive prior Teams Spanish/bilingual package copies under:
+
+`Contract Package\Clean Package\Archive\Spanish Package\`
 
 The current project-room generator for the Spanish Contract for Deed deliverable is:
 
