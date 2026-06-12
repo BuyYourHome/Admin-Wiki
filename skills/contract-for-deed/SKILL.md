@@ -438,6 +438,8 @@ Do not delete prior versions. Before archiving, verify the destination path is i
 
 Use the same active filename convention across CFD-created documents, the Amortization Chart package copy, the email body files, the Email Package ZIP, the cover page/checklist, attorney-review package files, and Spanish package files unless Wes gives a document-specific exception.
 
+For `Contract Package\Spanish Package\`, use the same archive convention as the main package folders: keep only the current unversioned Spanish/bilingual deliverable in the active Spanish Package folder, use the street-only property prefix, and move prior Spanish/bilingual drafts into `Spanish Package\Archive` with their version prefix preserved or added when archiving an unversioned prior active file.
+
 ## Spanish Translation Flag
 
 Wes may invoke the Spanish translation mode by saying `Spanish flag`, `Spanish version`, `bilingual version`, `Spanish contract`, or similar when starting or rerunning CFD.
