@@ -32,17 +32,17 @@ Recommended Teams subfolders:
 - `Clean Package\` - current buyer-review/closing package file set.
 - `Attorney Review Package\`
 - `Closing Checklist\` - legacy or separately requested checklist/cover copies only.
-- `Affidavits\` - CWE-authored affidavit/support source copies when CWE writes them there.
+- `Clean Package\Affidavits\` - current CWE-authored affidavit/support documents used by the closing package.
 
 For 320 Rose / Ever Cardoza, use:
 
 `C:\Users\wesbr\Buy Your Home\Buy Your Home - Property\28-SYH-320 Rose Pl\Selling\Ever Cordoza\Contract Package\`
 
-Copy clean packages, attorney-review packages, closing checklists, and package copies of closing-package affidavit/support documents to Teams after each requested regeneration or package update unless Wes says project-room only. Do not copy prototypes, staged spreadsheets, scratch files, extracted text, rendered QA images, logs, or temporary working files to Teams.
+Copy clean packages, attorney-review packages, and closing checklists to Teams after each requested regeneration or package update unless Wes says project-room only. Do not copy prototypes, staged spreadsheets, scratch files, extracted text, rendered QA images, logs, or temporary working files to Teams.
 
-For buyer-review and Email Package use, keep the current package files together under the Teams `Clean Package` tree. This includes clean signing/review copies, the Amortization Chart PDF, the polished closing cover/checklist output, and attorney-review files when the checklist/email package lists them. Active package copies of CWE-authored affidavit/support documents belong in `Clean Package\Affidavits\`; do not put them loose in the `Clean Package` root. Do not make Wes inspect `Closing Checklist` or `Attorney Review Package` folders to find the files listed in the email package.
+For buyer-review and Email Package use, keep the current package files together under the Teams `Clean Package` tree. This includes clean signing/review copies, the Amortization Chart PDF, the polished closing cover/checklist output, and attorney-review files when the checklist/email package lists them. Current CWE-authored affidavit/support documents belong in `Clean Package\Affidavits\`; do not put them loose in the `Clean Package` root and do not use a sibling `Contract Package\Affidavits\` folder for current CFD package work. Do not make Wes inspect `Closing Checklist` or `Attorney Review Package` folders to find the files listed in the email package.
 
-When affidavits are CWE-authored, copying them into `Clean Package\Affidavits\` is a package copy only. It does not transfer affidavit authorship or make CFD responsible for reauthoring them.
+When affidavits are CWE-authored and stored in `Clean Package\Affidavits\`, that package location does not transfer affidavit authorship or make CFD responsible for reauthoring them.
 
 When producing the Word closing document / closing checklist document, place a fill-in `Closing Date` field to the right of the prepared date near the top of the document. Leave the closing-date value blank for the attorney to complete and highlight the blank field yellow so it is visibly marked as needing completion.
 
@@ -300,7 +300,7 @@ Spanish flag add-on:
 Buyer-specific handoff/checklist inputs:
 
 - Credit Worthiness Handoff from the matching buyer transaction folder.
-- Affidavit requirements identified by CWE. CFD decides which affidavit requests become signature-ready closing-package documents.
+- Affidavit/support documents identified and created by CWE in the Teams `Clean Package\Affidavits\` folder. CFD lists and packages those documents but does not decide their substantive content or reauthor them.
 
 Excluded for now:
 
