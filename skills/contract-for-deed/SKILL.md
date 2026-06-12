@@ -60,6 +60,9 @@ CFD work should be understood in these operating modes:
 5. **Maintenance**
    Update canonical CFD skill rules and/or project-room generator scripts, keep scripts aligned with skill rules, sync the installed Codex skill when requested, and commit or push only under the normal Admin wiki rules.
 
+6. **CFD Total Update**
+   Publish approved CFD process changes end to end. When Wes says `Run CFD Total Update`, write approved CFD rule/process changes to the canonical CFD skill source, update matching project-room rules when needed, commit the scoped durable CFD changes locally, run the Admin wiki Codex skill sync so the installed `%USERPROFILE%\.codex\skills\contract-for-deed` copy is current, push the scoped CFD rule/process commit or commits to GitHub, and report commit, sync, push, and elapsed-time status. This mode updates the CFD process itself; it does not regenerate the contract package unless Wes also asks for a package run.
+
 Teams delivery is not a standalone mode. Every mode that creates or updates a delivery document should place a versioned copy in the appropriate Teams buyer folder unless Wes says project-room only.
 
 Checklist/cover-page handling is not a standalone mode. It belongs inside Full English Package mode.

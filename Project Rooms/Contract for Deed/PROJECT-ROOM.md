@@ -19,6 +19,8 @@ Use Cool Springs as the transaction/document reference and 320 Rose as the prope
 
 Do not sync the installed `contract-for-deed` Codex skill merely because scripts, drafts, or prototypes in this project room changed. Keep project-room work here until the new prototypes/workflow are completed. Sync the installed skill only after the prototypes are ready or when Wes explicitly asks to update the installed skill.
 
+When Wes says `Run CFD Total Update`, treat that as explicit approval to publish approved CFD process changes end to end: update the canonical CFD skill source, update matching project-room rules when needed, commit the scoped durable CFD changes, run the Admin wiki Codex skill sync, push the scoped CFD rule/process commit or commits to GitHub, and report commit, sync, push, and elapsed-time status. `Run CFD Total Update` updates the CFD process itself and does not regenerate the contract package unless Wes also asks for a package run.
+
 ## Teams Copy Rule
 
 Keep the project room as the working source of truth. Also copy current buyer-specific Contract for Deed deliverables to the matching Teams property buyer folder so Wes can access them from the property file.
