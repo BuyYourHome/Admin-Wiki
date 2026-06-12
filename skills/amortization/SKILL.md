@@ -114,6 +114,8 @@ For buyer-facing outputs:
 1. Copy the template workbook to the Amortization project-room working area for the run.
 2. Populate the copied workbook with values from the project spreadsheet.
 3. Preserve the template's formatting, merged cells, column widths, print area, headers, and buyer-facing wording.
+   - Preserve template-owned static text above the title, including `Appendix "A"`.
+   - Keep enough bottom margin so the footer/version line is not clipped in the exported PDF.
 4. Export the populated copy to PDF using LibreOffice:
    `C:\Program Files\LibreOffice\program\soffice.exe`
 5. Save the finished PDF in the Amortization project-room `outputs` area.
@@ -123,16 +125,18 @@ For buyer-facing outputs:
 
 Template value cells:
 
-- `C3` - buyer name(s)
-- `I3` - property
-- `C4` - contract date
-- `I4` - sale amount
-- `C5` - down payment
-- `I5` - loan amount
-- `C6` - buyer rate
-- `I6` - monthly total payment
-- `A9:K20` - 12 payment rows
-- `E21:J21` - totals for the displayed period
+- `A1` - template-owned appendix label, such as `Appendix "A"`; do not overwrite this cell during generation.
+- `A2` - generated chart title.
+- `C4` - buyer name(s)
+- `I4` - property
+- `C5` - contract date
+- `I5` - sale amount
+- `C6` - down payment
+- `I6` - loan amount
+- `C7` - buyer rate
+- `I7` - monthly total payment
+- `A10:K21` - 12 payment rows
+- `E22:J22` - totals for the displayed period
 
 ## Document Footer And Version Rule
 
@@ -179,7 +183,7 @@ When the chart is for the buyer's benefit:
 - Do not include a bottom source note or implementation note.
 - Keep only buyer-useful metadata, such as buyer name, property, contract date, sale amount, down payment, loan amount, buyer rate, and monthly total payment when those values are available.
 - Merge or widen buyer-facing metadata label/value cells as needed so labels and values do not truncate. Labels such as `Contract Date` and `Down Payment` must be fully visible.
-- In the current template, keep the buyer value wide enough at `C3:F3`; put the right-side metadata labels at `G3:G6` and values at `I3:I6`.
+- In the current template, keep the buyer value wide enough at `C4:F4`; put the right-side metadata labels at `G4:G7` and values at `I4:I7`.
 - After populating a copied template, verify both labels and values are visible. Do not treat a chart as complete if buyer, property, contract date, down payment, loan amount, buyer rate, or monthly payment values are blank or hidden.
 - Wrap column headers so columns can be narrower.
 - Narrow columns enough for a compact one-page chart while keeping values readable.

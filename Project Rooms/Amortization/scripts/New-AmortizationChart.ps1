@@ -323,6 +323,14 @@ function Set-CellNumber {
 function Set-WorksheetFooter {
     param([xml]$SheetXml, [string]$DocumentVersion)
     $spreadsheetNs = "http://schemas.openxmlformats.org/spreadsheetml/2006/main"
+    $pageMargins = $SheetXml.DocumentElement.SelectSingleNode("*[local-name()='pageMargins']")
+    if ($null -eq $pageMargins) {
+        $pageMargins = $SheetXml.CreateElement("pageMargins", $spreadsheetNs)
+        [void]$SheetXml.DocumentElement.AppendChild($pageMargins)
+    }
+    $pageMargins.SetAttribute("bottom", "0.6")
+    $pageMargins.SetAttribute("footer", "0.25")
+
     $existing = $SheetXml.DocumentElement.SelectSingleNode("*[local-name()='headerFooter']")
     if ($null -ne $existing) {
         [void]$SheetXml.DocumentElement.RemoveChild($existing)
@@ -550,18 +558,18 @@ try {
     $outputSheetPath = Get-SheetPath $outputZip @("12 Month Chart")
     [xml]$outputSheet = Read-ZipEntryText $outputZip $outputSheetPath
 
-    Set-CellString $outputSheet "A1" "$ProjectName - 12 Month Amortization Chart"
-    Set-CellString $outputSheet "C3" $buyerName
-    Set-CellString $outputSheet "I3" $property
-    Set-CellString $outputSheet "C4" $contractDate
-    Set-CellString $outputSheet "I4" $saleAmount
-    Set-CellString $outputSheet "C5" $downPayment
-    Set-CellString $outputSheet "I5" $loanAmount
-    Set-CellString $outputSheet "C6" $buyerRate
-    Set-CellString $outputSheet "I6" $monthlyTotalPayment
+    Set-CellString $outputSheet "A2" "$ProjectName - 12 Month Amortization Chart"
+    Set-CellString $outputSheet "C4" $buyerName
+    Set-CellString $outputSheet "I4" $property
+    Set-CellString $outputSheet "C5" $contractDate
+    Set-CellString $outputSheet "I5" $saleAmount
+    Set-CellString $outputSheet "C6" $downPayment
+    Set-CellString $outputSheet "I6" $loanAmount
+    Set-CellString $outputSheet "C7" $buyerRate
+    Set-CellString $outputSheet "I7" $monthlyTotalPayment
 
     foreach ($row in $paymentRows) {
-        $targetRow = 8 + $row.Number
+        $targetRow = 9 + $row.Number
         Set-CellNumber $outputSheet "A$targetRow" $row.Number
         Set-CellString $outputSheet "B$targetRow" $row.Date
         Set-CellNumber $outputSheet "C$targetRow" $row.BeginningBalance
@@ -589,12 +597,12 @@ try {
         $sumTaxes += [double]$row.Taxes
         $sumTotalPayment += [double]$row.TotalPayment
     }
-    Set-CellNumber $outputSheet "E21" $sumScheduledPayment
-    Set-CellNumber $outputSheet "F21" $sumPrincipal
-    Set-CellNumber $outputSheet "G21" $sumInterest
-    Set-CellNumber $outputSheet "H21" $sumInsurance
-    Set-CellNumber $outputSheet "I21" $sumTaxes
-    Set-CellNumber $outputSheet "J21" $sumTotalPayment
+    Set-CellNumber $outputSheet "E22" $sumScheduledPayment
+    Set-CellNumber $outputSheet "F22" $sumPrincipal
+    Set-CellNumber $outputSheet "G22" $sumInterest
+    Set-CellNumber $outputSheet "H22" $sumInsurance
+    Set-CellNumber $outputSheet "I22" $sumTaxes
+    Set-CellNumber $outputSheet "J22" $sumTotalPayment
 
     Set-WorksheetFooter $outputSheet $documentVersion
     Write-ZipEntryText $outputZip $outputSheetPath $outputSheet.OuterXml
