@@ -1,4 +1,5 @@
 from pathlib import Path
+import time
 
 from docx import Document
 from docx.oxml import OxmlElement
@@ -131,13 +132,32 @@ def add_contextual_review_notes(doc, placements):
         style_review_note(note_paragraph)
 
 
+def save_docx_with_retry(doc, target, attempts=3):
+    temp_target = target.with_name(f".{target.stem}.tmp{target.suffix}")
+    last_error = None
+    for attempt in range(1, attempts + 1):
+        try:
+            if temp_target.exists():
+                temp_target.unlink()
+            doc.save(temp_target)
+            temp_target.replace(target)
+            return
+        except OSError as exc:
+            last_error = exc
+            if attempt == attempts:
+                raise
+            time.sleep(0.25 * attempt)
+    if last_error:
+        raise last_error
+
+
 def main():
     for source_name, output_name, placements in DOCS:
         source = OUTPUT / source_name
         target = OUTPUT / output_name
         doc = Document(str(source))
         add_contextual_review_notes(doc, placements)
-        doc.save(target)
+        save_docx_with_retry(doc, target)
         print(target)
 
 
