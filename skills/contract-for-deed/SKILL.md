@@ -176,9 +176,15 @@ When Wes asks to benchmark, loop, stress-test, or improve CFD run efficiency:
 4. Do not write every observation to canon immediately. Record candidate rule or script changes first, then write stable rules after repetition or Wes approval.
 5. For repeated generator runs, use the CFD orchestration script instead of manually invoking separate document scripts:
    `C:\Codex\Wiki Files\Project Rooms\Contract for Deed\working\run_cfd_generation.py`
-6. The orchestration/run manifest should load and normalize `Docs` values once per run, record the confirmed project/buyer when available, workbook path, transaction folder, Teams package root, output paths, and package-copy results.
-7. After the `Docs` layout stabilizes, prefer a label-location cache or manifest: verify expected labels at their mapped cells, read values from the mapped value cells, and rescan/report only when labels move.
-8. If a run benchmark identifies a repeated blocker or safety issue, fix or write that rule before continuing further loops.
+6. For full production package runs, use the CFD full-package runner instead of manually composing generation, Teams copy, archive, and verification steps:
+   `C:\Codex\Wiki Files\Project Rooms\Contract for Deed\working\run_cfd_full_package.py`
+7. The full-package runner should create a run manifest under `working\run-metrics\<run-id>\` that records the confirmed project/buyer when available, workbook path, transaction folder, Teams package root, output paths, package-copy results, archived paths, warnings, blockers, and verification status.
+8. Use the shared package-delivery helper for Teams archive/copy/versioning:
+   `C:\Codex\Wiki Files\Project Rooms\Contract for Deed\working\package_delivery.py`
+9. The full-package runner should include the current Amortization Chart PDF only from the Amortization workflow's returned/copied output. CFD may verify and package that PDF, but if the PDF is missing it should report the missing Amortization output rather than generating an amortization chart itself.
+10. The full-package runner should prepare and verify the closing cover/checklist document. If the active Teams cover page is newer than the project-room source, preserve the newer Teams copy and report that warning in the manifest instead of silently overwriting it with an older source.
+11. After the `Docs` layout stabilizes, prefer a label-location cache or manifest: verify expected labels at their mapped cells, read values from the mapped value cells, and rescan/report only when labels move.
+12. If a run benchmark identifies a repeated blocker or safety issue, fix or write that rule before continuing further loops.
 
 ## Project Verification Rule
 
