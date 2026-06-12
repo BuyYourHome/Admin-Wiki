@@ -14,9 +14,14 @@ PROJECT = Path(r"C:\Codex\Wiki Files\Project Rooms\Contract for Deed")
 ENGLISH_CONTRACT = PROJECT / "output" / "320 Rose - Contract for Deed Agreement - DRAFT.docx"
 LEGACY_BILINGUAL_CONTRACT = PROJECT / "output" / "320 Rose - Contract for Deed Agreement - BILINGUAL SPANISH DRAFT.docx"
 SPANISH_BASE_NAME = "320 Rose - Contract for Deed Agreement - BILINGUAL SPANISH DRAFT.docx"
+TEAMS_SPANISH_BASE_NAME = "320 Rose Pl - Contract for Deed Agreement - BILINGUAL SPANISH DRAFT.docx"
 TEAMS_SPANISH = Path(
     r"C:\Users\wesbr\Buy Your Home\Buy Your Home - Property\28-SYH-320 Rose Pl"
     r"\Selling\Ever Cordoza\Contract Package\Spanish Package"
+)
+TEAMS_SPANISH_ARCHIVE = Path(
+    r"C:\Users\wesbr\Buy Your Home\Buy Your Home - Property\28-SYH-320 Rose Pl"
+    r"\Selling\Ever Cordoza\Contract Package\Archive\Spanish Package"
 )
 
 SPANISH_STYLE = "Spanish Translation Draft"
@@ -33,7 +38,7 @@ CONTROL_NOTICE_PREFIXES = (
     "English Version Controls:",
     "Prevalece la version en ingles:",
 )
-VERSION_PATTERN = re.compile(r"^v(?P<num>\d{2}) - 320 Rose - Contract for Deed Agreement - BILINGUAL SPANISH DRAFT\.docx$")
+VERSION_PATTERN = re.compile(r"^v(?P<num>\d{2}) - 320 Rose(?: Pl)? - Contract for Deed Agreement - BILINGUAL SPANISH DRAFT\.docx$")
 LIST_SECTION_ENDS = {
     "Sales Price:": ("ADDITIONAL CHARGES AND FEES:",),
     "ADDITIONAL CHARGES AND FEES:": ("INTEREST RATE:",),
@@ -112,6 +117,26 @@ def next_output_path():
     versions = versioned_spanish_files()
     next_version = (versions[-1][0] + 1) if versions else 1
     return PROJECT / "output" / f"v{next_version:02d} - {SPANISH_BASE_NAME}"
+
+
+def next_teams_archive_path():
+    TEAMS_SPANISH_ARCHIVE.mkdir(parents=True, exist_ok=True)
+    versions = []
+    for path in TEAMS_SPANISH_ARCHIVE.glob("v?? - *Contract for Deed Agreement - BILINGUAL SPANISH DRAFT.docx"):
+        match = VERSION_PATTERN.match(path.name)
+        if match:
+            versions.append(int(match.group("num")))
+    next_version = (max(versions) + 1) if versions else 1
+    return TEAMS_SPANISH_ARCHIVE / f"v{next_version:02d} - {TEAMS_SPANISH_BASE_NAME}"
+
+
+def archive_existing_teams_copy():
+    current = TEAMS_SPANISH / TEAMS_SPANISH_BASE_NAME
+    if not current.exists():
+        return None
+    archive_path = next_teams_archive_path()
+    shutil.move(str(current), str(archive_path))
+    return archive_path
 
 
 def build_combined_translation_memory(output_path):
@@ -319,7 +344,8 @@ def main():
     work_path.replace(bilingual_contract)
 
     TEAMS_SPANISH.mkdir(parents=True, exist_ok=True)
-    teams_copy = TEAMS_SPANISH / bilingual_contract.name
+    archived_teams_copy = archive_existing_teams_copy()
+    teams_copy = TEAMS_SPANISH / TEAMS_SPANISH_BASE_NAME
     teams_status = "copied"
     try:
         shutil.copy2(bilingual_contract, teams_copy)
@@ -330,6 +356,8 @@ def main():
     print("Translation memory sources:")
     for source in memory_sources:
         print(f"- {source}")
+    if archived_teams_copy:
+        print(f"Archived prior Teams Spanish copy: {archived_teams_copy}")
     print(teams_copy)
     print(f"Teams copy status: {teams_status}")
     print(f"Inserted Spanish/control paragraphs: {inserted}")

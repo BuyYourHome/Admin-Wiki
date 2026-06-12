@@ -7,7 +7,7 @@ from docx.oxml import OxmlElement
 from docx.oxml.ns import qn
 from docx.shared import Inches, Pt, RGBColor
 
-from build_rose_drafts import get_docs_values, money, normalize_values
+from build_cfd_drafts import get_docs_values, money, normalize_values
 
 
 ROOT = Path(r"C:\Codex\Wiki Files\Project Rooms\Contract for Deed")
@@ -98,8 +98,9 @@ def add_heading(doc, text):
     return paragraph
 
 
-def main():
-    x = normalize_values(get_docs_values())
+def main(x=None):
+    if x is None:
+        x = normalize_values(get_docs_values())
     doc = Document()
     set_document_styles(doc)
 

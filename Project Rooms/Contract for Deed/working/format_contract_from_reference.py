@@ -6,7 +6,7 @@ from docx.enum.table import WD_TABLE_ALIGNMENT, WD_CELL_VERTICAL_ALIGNMENT
 from docx.shared import RGBColor
 from docx.table import Table
 
-from build_rose_drafts import get_docs_values, normalize_values, money, short_date
+from build_cfd_drafts import get_docs_values, normalize_values, money, short_date
 
 
 ROOT = Path(r"C:\Codex\Wiki Files\Project Rooms\Contract for Deed")
@@ -686,8 +686,9 @@ def ensure_ach_terms(doc):
                         run.bold = True
 
 
-def main():
-    x = normalize_values(get_docs_values())
+def main(x=None):
+    if x is None:
+        x = normalize_values(get_docs_values())
     buyer_line1, buyer_line2 = split_address(x["buyer_address"])
     trustee_line1, trustee_line2 = split_address(x["trustee_address"])
 

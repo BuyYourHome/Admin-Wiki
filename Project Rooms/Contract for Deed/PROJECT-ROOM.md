@@ -29,26 +29,36 @@ Teams buyer folder pattern:
 
 Recommended Teams subfolders:
 
-- `Clean Package\` - current buyer-review/closing package file set.
+- `Contract Package\` root - current buyer-review/closing package file set.
 - `Attorney Review Package\`
 - `Closing Checklist\` - legacy or separately requested checklist/cover copies only.
-- `Affidavits\` - CWE-authored affidavit/support source copies when CWE writes them there.
+- `Affidavits\` - current CWE-authored affidavit/support documents used by the closing package.
 
 For 320 Rose / Ever Cardoza, use:
 
 `C:\Users\wesbr\Buy Your Home\Buy Your Home - Property\28-SYH-320 Rose Pl\Selling\Ever Cordoza\Contract Package\`
 
-Copy clean packages, attorney-review packages, closing checklists, and package copies of closing-package affidavit/support documents to Teams after each requested regeneration or package update unless Wes says project-room only. Do not copy prototypes, staged spreadsheets, scratch files, extracted text, rendered QA images, logs, or temporary working files to Teams.
+Copy clean packages, attorney-review packages, and closing checklists to Teams after each requested regeneration or package update unless Wes says project-room only. Do not copy prototypes, staged spreadsheets, scratch files, extracted text, rendered QA images, logs, or temporary working files to Teams.
 
-For buyer-review and Email Package use, keep the current package files together in the Teams `Clean Package` folder. This includes clean signing/review copies, the Amortization Chart PDF, the polished closing cover/checklist output, package copies of CWE-authored affidavit/support documents, and attorney-review files when the checklist/email package lists them. Do not make Wes inspect separate `Affidavits`, `Closing Checklist`, or `Attorney Review Package` folders to find the files listed in the email package.
+For buyer-review and Email Package use, keep the current package files together directly under the Teams `Contract Package` tree. This includes clean signing/review copies, the Amortization Chart PDF, the polished closing cover/checklist output, and attorney-review files when the checklist/email package lists them. Current CWE-authored affidavit/support documents belong in `Contract Package\Affidavits\`; do not put them loose in the `Contract Package` root. Do not make Wes inspect `Closing Checklist` or `Attorney Review Package` folders to find the files listed in the email package.
 
-When affidavits are CWE-authored, copying them into `Clean Package` is a package copy only. It does not transfer affidavit authorship or make CFD responsible for reauthoring them.
+When affidavits are CWE-authored and stored in `Contract Package\Affidavits\`, that package location does not transfer affidavit authorship or make CFD responsible for reauthoring them.
 
 When producing the Word closing document / closing checklist document, place a fill-in `Closing Date` field to the right of the prepared date near the top of the document. Leave the closing-date value blank for the attorney to complete and highlight the blank field yellow so it is visibly marked as needing completion.
 
-Active buyer-specific package files should use clean current filenames with no version prefix. Use the street-only property prefix, such as `320 Rose Pl`, not the shortened `320 Rose` label and not the full address with city, state, or ZIP. Before writing a new active package file, move the existing active file to an `Archive` subfolder under the same active folder and add the version prefix only to the archived copy, such as `Archive\v05 - 320 Rose Pl - Contract for Deed Agreement - DRAFT.docx`. Do not delete prior versions. Do not archive source files, prototypes, handoffs, scripts, staged spreadsheets, temporary files, or scratch outputs.
+Active buyer-specific package files should use clean current filenames with no version prefix. Use the street-only property prefix, such as `320 Rose Pl`, not the shortened `320 Rose` label and not the full address with city, state, or ZIP. Before writing a new active package file, move the existing active file to a categorized subfolder under `Archive` inside the same active folder and add the version prefix only to the archived copy, such as `Archive\Contract\v05 - 320 Rose Pl - Contract for Deed Agreement - DRAFT.docx`. Do not delete prior versions. Do not archive source files, prototypes, handoffs, scripts, staged spreadsheets, temporary files, or scratch outputs.
 
-Apply the same active-plus-Archive versioning rule to `Contract Package\Spanish Package\`: the active Spanish Package folder should contain only the current unversioned Spanish/bilingual deliverable for each document type using the street-only property prefix, and prior Spanish/bilingual drafts for that same document type should be moved into `Spanish Package\Archive` with version prefixes preserved or added when archiving an unversioned prior active file.
+Use these `Contract Package\Archive` subfolders:
+
+- `Archive\Cover Letter\` for prior closing package cover page / cover letter files.
+- `Archive\Affidavits\` for prior affidavit/support package-copy files.
+- `Archive\Credit Worthiness\` for prior Credit Worthiness report package-copy files.
+- `Archive\Attorney Review Package\` for prior attorney-review package ZIP files.
+- `Archive\Contract\` for all other prior contract-package files, including contracts, memoranda, notes, term sheets, buyer acknowledgments, amortization charts, attorney-review DOCX files, signed contract PDFs, and package ZIPs unless Wes gives a document-specific archive location.
+
+Do not keep a separate `Credit Worthiness Archive` sibling folder. Credit Worthiness archive files belong under `Contract Package\Archive\Credit Worthiness\`.
+
+Apply the same active-plus-Archive versioning rule to `Contract Package\Spanish Package\`: the active Spanish Package folder should contain only the current unversioned Spanish/bilingual deliverable for each document type using the street-only property prefix, and prior Spanish/bilingual drafts for that same document type should be moved into `Contract Package\Archive\Spanish Package\` with version prefixes preserved or added when archiving an unversioned prior active file. Do not keep a `Contract Package\Clean Package\` folder.
 
 Use `working\teams_link_from_local_path.py` to convert Teams-synced package paths into SharePoint web links for the Email Package body. If a file cannot be mapped to a SharePoint link, list the exact filename and local Teams path and report the unmapped item rather than guessing.
 
@@ -74,7 +84,7 @@ For routine Email Package updates, do not rediscover the layout, rebuild the ema
 
 Use this fast path:
 
-1. Confirm the current package version and Teams `Clean Package` folder.
+1. Confirm the current package version and Teams `Contract Package` folder.
 2. Update only the durable inputs that changed:
    - package file inventory,
    - short display labels,
@@ -118,9 +128,44 @@ Then use the `Docs` worksheet as the source of truth for document values.
 
 All fields needed by the document generators should be exposed on the `Docs` worksheet. Do not have the document generators pull contract values directly from other workbook tabs such as `Amortization`, `Contract`, `Base`, or buying/acquisition tabs. If a needed value is calculated elsewhere, add or correct a named field on `Docs` and have the generator read that `Docs` field.
 
+The CFD generator reads `Docs` label/value pairs as the spreadsheet interface. Field labels may be placed in readable grouped blocks anywhere on `Docs`; the generator reads the value/formula from the cell immediately to the right of the recognized label. For section 9 adverse conditions, prefer the three separate label/value fields `Adverse Conditions1`, `Adverse Conditions2`, and `Adverse Conditions3`; combine the nonblank values in order for the generated document. Do not rely on the legacy horizontal `Docs` row 1 / row 2 field table; that area may be deleted or repurposed during spreadsheet refactoring.
+
 For Rose sale documents, use only `LoanStart1` and `LoanEnd1` for loan/payment date fields. Ignore `LoanStart2` and `LoanEnd2`.
 
 When regenerating Rose draft documents, overwrite the standard `DRAFT` files in `output` each time instead of creating revision-numbered copies, unless Wes explicitly asks to preserve a separate version.
+
+## CFD Run Metrics And Efficiency
+
+When running repeated CFD iterations to measure or improve the process, save metrics under `working\run-metrics\<run-id>\`.
+
+Each metrics run should record:
+
+- run scope, including whether the loop is generator-only or full production workflow,
+- exact scripts or workflow steps run,
+- per-iteration timing,
+- per-step timing,
+- blockers or missing outputs,
+- output verification status,
+- process-change candidates.
+
+Generator-only loops measure only the project-room document generators. They do not measure Teams copy/version/archive, amortization, closing cover/checklist, email, SharePoint link generation, Git, or skill sync.
+
+Do not write every one-off observation to canon while looping. Keep candidate process changes in the metrics summary first. Write durable rules after a pattern repeats, after a blocker affects reliability, or when Wes explicitly approves the rule.
+
+Use `working\run_cfd_generation.py` for repeated generator runs. It performs lock preflight, loads and normalizes `Docs` once per iteration, calls the document builders in-process, creates attorney-review copies, verifies expected outputs, and writes JSON/Markdown metrics.
+
+Use `working\run_cfd_full_package.py` for full production package runs. It wraps the generator with spreadsheet refresh, closing cover-page preparation, Amortization Chart PDF handoff verification, Teams archive/copy/versioning, Teams verification, and a JSON/Markdown run manifest under `working\run-metrics\<run-id>\`. It excludes email delivery and SharePoint sharing-link creation unless a future mode explicitly adds those steps.
+
+Use `working\package_delivery.py` as the shared Teams delivery helper for active-file replacement, archive version naming, hash verification, and package-copy manifest records. Do not reimplement Teams archive/copy/version logic separately in each runner.
+
+For the closing cover/checklist document, the full-package runner should update project-room cover-page copies when possible, copy the project-room source to Teams when safe, and preserve/report a newer active Teams cover page instead of silently overwriting it with an older project-room source.
+
+For the Amortization Chart, CFD packages the PDF returned or copied by the Amortization workflow. If the PDF is missing, report the missing Amortization output as a blocker rather than generating a chart inside CFD.
+
+Current remaining efficiency targets from the 2026-06-12 generator benchmarks:
+
+- Record the confirmed project, buyer, workbook path, transaction folder, Teams package root, output paths, and package-copy results in the run manifest.
+- After the `Docs` layout stabilizes, keep a label-location cache or manifest that verifies expected labels before reading mapped value cells and rescans only when labels move.
 
 When Wes edits a generated document in `output`, treat that edited document as the replacement template for that document type when he asks to retemplate or continue from his edits. Assume Wes's edits are intentional changes to the template, except for generated attorney-review blocks. If attorney-review blocks are present, ignore them when updating the clean document template; they are generated review-mode content and should not become part of the underlying clean template unless Wes explicitly says otherwise.
 
@@ -145,6 +190,8 @@ For the Memorandum of Contract for Deed draft, use Wes's edited prototype at `re
 ## Current Contract for Deed Workflow
 
 This project room is the project-specific operating base used by the `contract-for-deed` skill. Use this room's scripts, prototypes, staged sources, transaction folders, and notes as the operating procedure.
+
+Existing Rose-named scripts are transitional implementation details for the current 320 Rose work. The reusable Contract for Deed process should move toward generic generator names and explicit inputs for the confirmed project spreadsheet, transaction folder, and Teams package root instead of relying on project-specific script names or hardcoded project facts.
 
 Even when working in this project room, verify the project before starting a new buyer-specific CFD process or kicking off CWE if Wes has not named the project/property in the request. It is acceptable to propose the last active CFD project and ask Wes to confirm it remains the project to use. This project room is currently configured for 320 Rose, but the generic `contract-for-deed` skill should not proceed from prior chat context alone.
 
@@ -205,7 +252,7 @@ The kickoff file should identify only the verified project/property, live projec
    - `Monthly Payment1`
    - `Loan Start1`
    - `Loan End1`
-   - `Adverse Conditions`, with each listed lien/adverse condition in the same `Docs` row
+   - `Adverse Conditions1`, `Adverse Conditions2`, and `Adverse Conditions3`, with each listed lien/adverse condition as its own label/value pair
    - property fields under the Property/Deed/Trust sections
    - `Manger` for the trustee manager name
 
@@ -241,7 +288,7 @@ The kickoff file should identify only the verified project/property, live projec
    - Seller stays anonymous as the trust. The trust is seller, and the trustee signs for the trust.
    - The Term Sheet is a formal summary document. It must read values from the `Docs` worksheet, not from prior email text. It may use prior email wording only as structural guidance. Include a clear statement that the Term Sheet is for review and discussion, is not the final contract, does not transfer title, is subject to final documents and attorney review, and is controlled by the final signed documents if there is a conflict.
    - The Buyer Acknowledgment Addendum is a formal buyer-understanding document. It should provide two buyer-initial columns for each acknowledgment, signature lines for both buyers, and the standard buyer notary acknowledgment block.
-   - Seller signature line should read in substance: `Investment Services LLC, Trustee - Wes Browning, Manager`.
+   - Seller signature line should read in substance: `Investment Services LLC, Trustee - [Manager], Manager`, where `[Manager]` is read from the confirmed project spreadsheet `Docs` worksheet manager field, including the current workbook label `Manger` when that is the available field.
    - Do not add a second standalone `Wes Browning, Manager` line under the seller signature line.
    - Seller/trustee mailing addresses must include the full city, state, and ZIP from the `Docs` worksheet. Do not truncate comma-separated address fields.
    - Earnest money paid at contract signing comes from `Selling Earnest Money:` on the `Docs` worksheet. Do not use the buying-side `BinderDeposit` / `Binder Deposit:` fields for seller documents.
@@ -262,7 +309,7 @@ The kickoff file should identify only the verified project/property, live projec
      - `Official Signature of Notary: ________________________________________`
      - `Notary's printed or typed name: ______________________________, Notary Public`
      - `My commission expires: ______________________`
-   - For seller/trust blocks, identify the signer in representative/fiduciary capacity, such as `Wes Browning, Manager of Investment Services LLC, Trustee of 320 Rose Pl Real Estate Trust dated March, 5 2025`.
+   - For seller/trust blocks, identify the signer in representative/fiduciary capacity, such as `[Manager], Manager of Investment Services LLC, Trustee of 320 Rose Pl Real Estate Trust dated March, 5 2025`, with `[Manager]` coming from the `Docs` worksheet manager field.
    - For buyer blocks, include all buyer names in the same acknowledgment unless attorney review requires separate notary blocks.
    - Use only `LoanStart1` and `LoanEnd1`; ignore `LoanStart2` and `LoanEnd2`.
    - The section 9 adverse-condition placeholder should explicitly say `NOTE FOR ATTORNEY REVIEW` and should appear only once.
@@ -284,13 +331,13 @@ Spanish flag add-on:
 
 - Contract for Deed Agreement bilingual Spanish draft only, unless Wes explicitly expands the Spanish scope to other documents.
 - When Wes expands the Spanish scope, create separate Spanish draft deliverables for the named document types and place them in the same Spanish Package workflow.
-- Save the Spanish/bilingual output in the project-room output folder and copy it to the matching Teams buyer folder under `Contract Package\Spanish Package\`.
+- Save the Spanish/bilingual output in the project-room output folder and copy the current unversioned package copy to the matching Teams buyer folder under `Contract Package\Spanish Package\`. Archive prior Teams Spanish/bilingual package copies under `Contract Package\Archive\Spanish Package\`.
 - Use an output name ending in `BILINGUAL SPANISH DRAFT.docx` for the Contract for Deed Agreement and `SPANISH DRAFT.docx` for Spanish-only drafts of other package documents.
 
 Buyer-specific handoff/checklist inputs:
 
 - Credit Worthiness Handoff from the matching buyer transaction folder.
-- Affidavit requirements identified by CWE. CFD decides which affidavit requests become signature-ready closing-package documents.
+- Affidavit/support documents identified and created by CWE in the Teams `Contract Package\Affidavits\` folder. CFD lists and packages those documents but does not decide their substantive content or reauthor them.
 
 Excluded for now:
 
