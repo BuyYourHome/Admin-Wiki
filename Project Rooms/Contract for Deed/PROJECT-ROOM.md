@@ -158,13 +158,13 @@ Do not write every one-off observation to canon while looping. Keep candidate pr
 
 Use `working\run_cfd_generation.py` for repeated generator runs. It performs lock preflight, loads and normalizes `Docs` once per iteration, calls the document builders in-process, creates attorney-review copies, verifies expected outputs, and writes JSON/Markdown metrics.
 
-Use `working\run_cfd_full_package.py` for full production package runs. It wraps the generator with spreadsheet refresh, closing cover-page preparation, Amortization Chart PDF handoff verification, Teams archive/copy/versioning, Teams verification, and a JSON/Markdown run manifest under `working\run-metrics\<run-id>\`. It excludes email delivery and SharePoint sharing-link creation unless a future mode explicitly adds those steps.
+Use `working\run_cfd_full_package.py` for full production package runs. It wraps the generator with spreadsheet refresh, closing cover-page preparation, Amortization Chart PDF Teams handoff verification, Teams archive/copy/versioning for CFD-created deliverables, Teams verification, and a JSON/Markdown run manifest under `working\run-metrics\<run-id>\`. It excludes email delivery and SharePoint sharing-link creation unless a future mode explicitly adds those steps.
 
 Use `working\package_delivery.py` as the shared Teams delivery helper for active-file replacement, archive version naming, hash verification, and package-copy manifest records. Do not reimplement Teams archive/copy/version logic separately in each runner.
 
 For the closing cover/checklist document, the full-package runner should update project-room cover-page copies when possible, copy the project-room source to Teams when safe, and preserve/report a newer active Teams cover page instead of silently overwriting it with an older project-room source.
 
-For the Amortization Chart, CFD packages the PDF returned or copied by the Amortization workflow. If the PDF is missing, report the missing Amortization output as a blocker rather than generating a chart inside CFD.
+For the Amortization Chart, CFD passes the active Teams buyer `Contract Package` folder to the Amortization workflow as the destination. Amortization writes the active PDF directly to Teams and handles its own archive/versioning under `Contract Package\Archive\Contract\`. CFD should verify the Teams PDF returned or written by Amortization, list it, and include it in package/email inventory, but CFD should not archive, overwrite, or copy the Amortization PDF as its own package item. If the Teams PDF is missing, report the missing Amortization output as a blocker rather than generating a chart inside CFD.
 
 Current remaining efficiency targets from the 2026-06-12 generator benchmarks:
 

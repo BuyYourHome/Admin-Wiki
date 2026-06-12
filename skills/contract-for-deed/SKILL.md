@@ -138,13 +138,16 @@ When building or refreshing the Full English Package:
 3. Pass the amortization generator:
    - project/property name,
    - `project_spreadsheet_path`: the full path to the active project spreadsheet,
-   - `caller_destination_folder`: the CFD buyer transaction destination folder where the finished Amortization Chart PDF should be copied,
+   - buyer/package context,
+   - requested CFD package footer version when available,
+   - `caller_destination_folder` or equivalent destination field: the active Teams buyer `Contract Package` folder where the current Amortization Chart PDF should be written,
    - `output_format`: `PDF` unless Wes specifically asks for the populated workbook too.
 4. Require a PDF output for the CFD closing package unless Wes explicitly asks for a different format.
-5. Use the returned/copied PDF path and document version from Amortization. CFD should only package the returned PDF and list it on the closing checklist / cover page.
-6. Do not place intermediate Amortization working XLSX files in the CFD project room by default.
-7. Do not supply, rewrite, or override the Amortization Chart footer or document version. CFD controls only the caller destination folder for the returned document.
-8. Include the returned Amortization Chart PDF in the closing checklist / cover page, the project-room package output, the Teams buyer package folder, and the Email Package ZIP.
+5. Amortization should write the active Amortization Chart PDF directly to the Teams buyer `Contract Package` folder using the active package filename convention: `<Street Address Only> - 12 Month Amortization Chart.pdf`.
+6. Amortization is responsible for archiving any prior active Amortization Chart PDF under `Contract Package\Archive\Contract\` before writing the new active PDF.
+7. Use the returned Teams PDF path and document/footer version from Amortization. CFD should not overwrite, archive, rewrite, or re-footer the Amortization Chart PDF after Amortization has returned it.
+8. CFD should verify that the returned Teams PDF exists, list it in the closing checklist / cover page, include it in the Email Package ZIP/inventory, and report a blocker if the expected returned Teams PDF is missing.
+9. Do not place intermediate Amortization working XLSX files in the CFD project room by default.
 
 Use the project spreadsheet already verified for the CFD package. Do not ask Wes to re-enter loan terms that should be available from the project spreadsheet. If the amortization skill reports missing or ambiguous source data, carry that blocker into the CFD package report instead of creating a guessed amortization chart.
 
@@ -185,7 +188,7 @@ When Wes asks to benchmark, loop, stress-test, or improve CFD run efficiency:
 7. The full-package runner should create a run manifest under `working\run-metrics\<run-id>\` that records the confirmed project/buyer when available, workbook path, transaction folder, Teams package root, output paths, package-copy results, archived paths, warnings, blockers, and verification status.
 8. Use the shared package-delivery helper for Teams archive/copy/versioning:
    `C:\Codex\Wiki Files\Project Rooms\Contract for Deed\working\package_delivery.py`
-9. The full-package runner should include the current Amortization Chart PDF only from the Amortization workflow's returned/copied output. CFD may verify and package that PDF, but if the PDF is missing it should report the missing Amortization output rather than generating an amortization chart itself.
+9. The full-package runner should verify the current Amortization Chart PDF only at the Teams path returned or written by the Amortization workflow. CFD must not archive, overwrite, or copy that PDF as its own package item. If the Teams PDF is missing, report the missing Amortization output rather than generating an amortization chart inside CFD.
 10. The full-package runner should prepare and verify the closing cover/checklist document. If the active Teams cover page is newer than the project-room source, preserve the newer Teams copy and report that warning in the manifest instead of silently overwriting it with an older source.
 11. After the `Docs` layout stabilizes, prefer a label-location cache or manifest: verify expected labels at their mapped cells, read values from the mapped value cells, and rescan/report only when labels move.
 12. If a run benchmark identifies a repeated blocker or safety issue, fix or write that rule before continuing further loops.

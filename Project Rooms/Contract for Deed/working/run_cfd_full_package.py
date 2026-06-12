@@ -45,7 +45,6 @@ def default_package_items(
     buyer_label: str,
     preserve_newer_cover_page: bool,
 ) -> list[PackageItem]:
-    clean = transaction_folder / "output" / "clean"
     cover_source = (
         transaction_folder
         / "output"
@@ -106,12 +105,6 @@ def default_package_items(
             OUTPUT / "320 Rose - Attorney Review Package.zip",
             teams_root / f"{street_prefix} - Attorney Review Package.zip",
             teams_root / "Archive" / "Attorney Review Package",
-        ),
-        PackageItem(
-            "Amortization Chart PDF",
-            clean / f"{street_prefix} - 12 Month Amortization Chart.pdf",
-            teams_root / f"{street_prefix} - 12 Month Amortization Chart.pdf",
-            teams_root / "Archive" / "Contract",
         ),
         PackageItem(
             "Closing Package Cover Page",
@@ -238,7 +231,8 @@ def run_iteration(number: int, args) -> dict:
         args.preserve_newer_cover_page,
     )
     package_version = {"value": None}
-    verify_only = [args.teams_root / "Affidavits"]
+    amortization_pdf = args.teams_root / f"{args.street_prefix} - 12 Month Amortization Chart.pdf"
+    verify_only = [args.teams_root / "Affidavits", amortization_pdf]
 
     try:
         def preflight():
@@ -313,17 +307,11 @@ def run_iteration(number: int, args) -> dict:
         timed_step(iteration, "prepare_closing_cover_page", prepare_cover_page)
 
         def amortization_handoff():
-            amortization_items = [item for item in package_items if item.label == "Amortization Chart PDF"]
-            status = []
-            for item in amortization_items:
-                status.append(
-                    {
-                        "source": str(item.source),
-                        "exists": item.source.exists(),
-                        "note": "Using Amortization-returned/copied PDF already present in the transaction output. If missing, rerun the Amortization skill before packaging.",
-                    }
-                )
-            return status
+            return {
+                "teams_pdf": str(amortization_pdf),
+                "exists": amortization_pdf.exists(),
+                "note": "CFD verifies the Teams Amortization PDF written by the Amortization workflow. Amortization owns its PDF archive/versioning; CFD does not copy or overwrite it.",
+            }
 
         timed_step(iteration, "verify_amortization_pdf_handoff", amortization_handoff)
 
@@ -421,7 +409,7 @@ def main():
     run_id = args.run_id or datetime.now().strftime("cfd-full-package-%Y%m%d-%H%M%S")
     run = {
         "run_id": run_id,
-        "scope": "full production package: spreadsheet refresh, core generators, cover-page prep, amortization PDF handoff verification, Teams archive/copy, and package verification; excludes email and SharePoint sharing-link creation",
+        "scope": "full production package: spreadsheet refresh, core generators, cover-page prep, Amortization-owned Teams PDF verification, CFD-created Teams archive/copy, and package verification; excludes email and SharePoint sharing-link creation",
         "started_at": datetime.now().isoformat(timespec="seconds"),
         "project_room": str(ROOT),
         "live_workbook": str(args.live_workbook),
