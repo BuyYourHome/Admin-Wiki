@@ -3,6 +3,7 @@ $ErrorActionPreference = "Stop"
 $projectDocx = "C:\Codex\Wiki Files\Project Rooms\Credit Worthiness Evaluator\outputs\320 Rose Pl - Ever Cardoza\26-06-11 320 Rose Ever Amarildo Cardoza Bolanos - Creditworthiness Evaluation Report - Document Preparation Ready v24.docx"
 $teamsDocx = "C:\Users\wesbr\Buy Your Home\Buy Your Home - Property\28-SYH-320 Rose Pl\Selling\Ever Cordoza\Contract Package\Clean Package\320 Rose Ever Amarildo Cardoza Bolanos - Creditworthiness Evaluation Report - Document Preparation Ready.docx"
 $archiveDir = "C:\Users\wesbr\Buy Your Home\Buy Your Home - Property\28-SYH-320 Rose Pl\Selling\Ever Cordoza\Contract Package\Clean Package\Credit Worthiness Archive"
+$footerVersion = "26-06-11 V24"
 
 New-Item -ItemType Directory -Force -Path (Split-Path -Parent $projectDocx) | Out-Null
 New-Item -ItemType Directory -Force -Path $archiveDir | Out-Null
@@ -205,6 +206,9 @@ $footerRange.Collapse(0)
 $footerRange.InsertAfter(" of ")
 $footerRange.Collapse(0)
 $doc.Fields.Add($footerRange, 26) | Out-Null
+$footerRange = $doc.Sections.Item(1).Footers.Item(1).Range
+$footerRange.Collapse(0)
+$footerRange.InsertAfter(" | $footerVersion")
 
 $doc.SaveAs2($projectDocx, 16)
 $doc.SaveAs2($teamsDocx, 16)

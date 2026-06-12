@@ -248,9 +248,22 @@ Never overwrite an existing Teams/buyer-folder document. If a same-named file al
 
 Do not copy generated text extracts, render images, scratch logs, source-inventory working files, or non-final drafts back to the buyer folder unless Wes explicitly asks.
 
+## Document Footer And Version Rule
+
+- Every CWE-produced Word document must include a footer with page numbering and the workflow document/run version.
+- Use this footer format:
+
+  `Page X of Y | YY-MM-DD VX`
+
+- `YY-MM-DD` means two-digit year, two-digit month, and two-digit day. `VX` means the CWE run version for that workflow on that date, such as `V1`, `V2`, or `V3`.
+- Use one package-wide version for all CWE-generated documents in the same run. If CWE produces the report and related support/affidavit documents once on a date, all CWE-generated current deliverables in that run use the same `YY-MM-DD VX`. If current deliverables are regenerated again on the same date, increment the version and apply it consistently to all CWE-generated current deliverables from that run.
+- Apply this footer/version rule to all CWE-authored or CWE-generated Word documents, including the Credit Worthiness Evaluation Report, evidence summaries converted to DOCX, affidavit/support documents, handoff-package documents, and any buyer-facing or closing-support DOCX created by CWE.
+- For documents authored by another workflow, do not rewrite their substantive content or footers from CWE. If CWE hands documents to CFD, include the versioned file path and document version in the handoff. If CFD provides or requests a package version for a closing package, preserve CWE's own document version unless Wes explicitly approves matching the CFD package version for that run.
+- When creating or updating a CWE handoff for CFD, list the current generated document paths and the footer/document version used for each CWE-produced file.
+
 ## Report Versioning And Page Numbers
 
-- Formal DOCX reports must include page numbers in the footer.
+- Formal DOCX reports must include page numbers and the CWE document/run version in the footer using the `Document Footer And Version Rule`.
 - Formal report filenames must start with the report date in `yy-mm-dd` format.
 - Use the unversioned filename for the current report when there is no prior delivered report.
 - When rerunning or materially updating a previously delivered report, save the new file with a version suffix, such as:
