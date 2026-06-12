@@ -56,6 +56,7 @@ The Contract for Deed process will probably call this skill when it needs a 12-m
 - Populate the copied workbook in the Amortization project room with project-spreadsheet values.
 - Preserve the template's formatting, merged cells, column widths, print area, headers, and buyer-facing wording.
 - Preserve the template-owned `Appendix "A"` label above the generated title.
+- Ensure the generated workbook print area includes the appendix row, currently `A1:K22`.
 - Keep enough bottom margin in the generated workbook so the footer/version line is not clipped in the exported PDF.
 - Export the populated copy to PDF when a PDF is needed.
 - Copy only the finished PDF to the caller destination by default.
