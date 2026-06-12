@@ -72,6 +72,59 @@ function Write-ZipEntryText {
     }
 }
 
+function Get-NextDocumentVersion {
+    param([string]$ProjectRoom)
+    $versionDate = Get-Date -Format "yy-MM-dd"
+    $registerPath = Join-Path $ProjectRoom "working\version-register.csv"
+    $maxVersion = 0
+    if (Test-Path -LiteralPath $registerPath) {
+        foreach ($entry in (Import-Csv -LiteralPath $registerPath)) {
+            if ($entry.workflow -ne "Amortization" -or $entry.date -ne $versionDate) {
+                continue
+            }
+            if ($entry.document_version -match "V([0-9]+)$") {
+                $candidate = [int]$Matches[1]
+                if ($candidate -gt $maxVersion) {
+                    $maxVersion = $candidate
+                }
+            }
+        }
+    }
+    return "$versionDate V$($maxVersion + 1)"
+}
+
+function Add-VersionRegisterEntry {
+    param(
+        [string]$ProjectRoom,
+        [string]$ProjectName,
+        [string]$DocumentVersion,
+        [string]$RoomPdfPath,
+        [string]$CallerPdfPath
+    )
+    $registerPath = Join-Path $ProjectRoom "working\version-register.csv"
+    $registerFolder = Split-Path -Parent $registerPath
+    New-Item -ItemType Directory -Force -Path $registerFolder | Out-Null
+    $columns = @("workflow", "date", "document_version", "project_name", "created_at", "room_pdf", "caller_pdf")
+    if (Test-Path -LiteralPath $registerPath) {
+        $existingEntries = Import-Csv -LiteralPath $registerPath
+        $existingEntries | Select-Object $columns | Export-Csv -LiteralPath $registerPath -NoTypeInformation
+    }
+    $entry = [pscustomobject]@{
+        workflow = "Amortization"
+        date = (Get-Date -Format "yy-MM-dd")
+        document_version = $DocumentVersion
+        project_name = $ProjectName
+        created_at = (Get-Date).ToString("s")
+        room_pdf = $RoomPdfPath
+        caller_pdf = $CallerPdfPath
+    }
+    if (Test-Path -LiteralPath $registerPath) {
+        $entry | Export-Csv -LiteralPath $registerPath -NoTypeInformation -Append
+    } else {
+        $entry | Export-Csv -LiteralPath $registerPath -NoTypeInformation
+    }
+}
+
 function Get-SharedStrings {
     param($Zip)
     $text = Read-ZipEntryText $Zip "xl/sharedStrings.xml"
@@ -267,6 +320,20 @@ function Set-CellNumber {
     [void]$cell.AppendChild($v)
 }
 
+function Set-WorksheetFooter {
+    param([xml]$SheetXml, [string]$DocumentVersion)
+    $spreadsheetNs = "http://schemas.openxmlformats.org/spreadsheetml/2006/main"
+    $existing = $SheetXml.DocumentElement.SelectSingleNode("*[local-name()='headerFooter']")
+    if ($null -ne $existing) {
+        [void]$SheetXml.DocumentElement.RemoveChild($existing)
+    }
+    $headerFooter = $SheetXml.CreateElement("headerFooter", $spreadsheetNs)
+    $oddFooter = $SheetXml.CreateElement("oddFooter", $spreadsheetNs)
+    $oddFooter.InnerText = "Page &P of &N | $DocumentVersion"
+    [void]$headerFooter.AppendChild($oddFooter)
+    [void]$SheetXml.DocumentElement.AppendChild($headerFooter)
+}
+
 function Find-LabelValue {
     param([xml]$SheetXml, [object[]]$SharedStrings, [string[]]$Patterns)
     if ($null -eq $SheetXml) {
@@ -383,6 +450,7 @@ $workingWorkbook = Join-Path $runRoot "$safeName - 12 Month Amortization Chart.x
 $roomPdfPath = Join-Path $roomOutputFolder "$safeName - 12 Month Amortization Chart.pdf"
 $callerPdfPath = Join-Path $CallerDestinationFolder "$safeName - 12 Month Amortization Chart.pdf"
 $callerWorkbookPath = Join-Path $CallerDestinationFolder "$safeName - 12 Month Amortization Chart.xlsx"
+$documentVersion = Get-NextDocumentVersion $ProjectRoom
 Copy-Item -LiteralPath $templatePath -Destination $workingWorkbook -Force
 
 $sourceZip = Open-ZipReadShared $ProjectSpreadsheetPath
@@ -528,6 +596,7 @@ try {
     Set-CellNumber $outputSheet "I21" $sumTaxes
     Set-CellNumber $outputSheet "J21" $sumTotalPayment
 
+    Set-WorksheetFooter $outputSheet $documentVersion
     Write-ZipEntryText $outputZip $outputSheetPath $outputSheet.OuterXml
 } finally {
     $outputZip.Dispose()
@@ -554,9 +623,13 @@ if ($paymentRows.Count -ne 12) {
     throw "Expected 12 payment rows, found $($paymentRows.Count)."
 }
 
+Add-VersionRegisterEntry $ProjectRoom $ProjectName $documentVersion $roomPdfPath $callerPdfPath
+
 $result = [ordered]@{
     project_name = $ProjectName
     worksheet_used = $worksheetUsed
+    document_version = $documentVersion
+    footer = "Page X of Y | $documentVersion"
     amortization_project_room_pdf = $roomPdfPath
     caller_pdf = $callerPdfPath
     working_workbook = $workingWorkbook
