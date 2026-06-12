@@ -83,9 +83,12 @@ def normalize_values(v):
     selling_seller = clean(v.get("SellingSeller") or v.get("Selling -Seller"))
     trust = clean(v.get("Trust")) or selling_seller
     trustee = clean(v.get("Trustee")) or "Investment Services LLC"
-    # CFD seller/trustee execution stays with Wes; spreadsheet manager-like
-    # fields may refer to other project roles and should not replace the signer.
-    manager = "Wes Browning"
+    manager = clean(
+        v.get("Manger")
+        or v.get("Manager")
+        or v.get("Trustee Manager")
+        or v.get("TrusteeManager")
+    ) or "[MANAGER NAME]"
     buyer1 = clean(v.get("SellingBuyer") or v.get("Selling-Buyer") or v.get("Selling-Buyer1"))
     buyer2 = clean(v.get("Selling-Buyer2") or v.get("SellingBuyer2"))
     buyer = " and ".join(part for part in [buyer1, buyer2] if part)
