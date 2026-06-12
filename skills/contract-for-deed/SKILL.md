@@ -85,7 +85,7 @@ When sending a CFD Email Package:
    - Do not add a repeated metadata footer after the attorney/compliance section listing the ZIP, property address, buyer names, or seller name.
    - Do not use a plain-text-only send path when Wes has asked for clean display links; plain text may expose long SharePoint URLs and lose the polished checklist formatting.
 3. Verify every file listed in the Closing Checklist exists and is readable, including the Amortization Chart PDF.
-4. Put every checklist-listed package file in the Teams `Clean Package` folder before building the email body, including the polished closing cover page/checklist output. Put active package copies of CWE-authored affidavit/support documents in `Clean Package\Affidavits\`.
+4. Put every checklist-listed package file in the Teams `Clean Package` folder before building the email body, including the polished closing cover page/checklist output. Use `Clean Package\Affidavits\` as the current Teams location for CWE-authored affidavit/support documents.
 5. Generate clickable Teams/SharePoint links from the Teams `Clean Package` paths and include those links next to the listed package files in the email body when possible.
 6. Build one complete package ZIP containing every checklist-listed file unless Wes explicitly asks for individual attachments for that run.
 7. Verify the ZIP was created and is readable before sending.
@@ -212,14 +212,13 @@ Use the Teams buyer folder pattern:
 Recommended subfolders:
 
 - `Clean Package\` for the current buyer-review/closing package file set, including clean signing/review copies, the Amortization Chart PDF, polished closing cover/checklist output, and attorney-review files when the checklist/email package lists them.
-- `Clean Package\Affidavits\` for active package copies of CWE-authored affidavit/support documents.
+- `Clean Package\Affidavits\` for current CWE-authored affidavit/support documents used by the closing package.
 - `Attorney Review Package\` for current attorney-review copies and ZIPs.
 - `Closing Checklist\` for legacy or separately requested polished checklist / cover-page outputs only.
-- `Affidavits\` for CWE-authored affidavit/support source copies when CWE writes them there; CFD should copy package copies into `Clean Package\Affidavits\` when building the buyer-review/closing package.
 
 Copy project-room outputs to Teams after each requested regeneration or package update unless Wes says project-room only. The project-room copy remains authoritative. If a Teams copy is edited and Wes says to keep those edits, bring that edited file back into the project room and apply the normal edit-preservation/prototype rule before regenerating.
 
-For buyer-review and Email Package use, keep the current package files together under the Teams `Clean Package` tree so the email body can link to one coherent package file set. Active package copies of affidavits belong in `Clean Package\Affidavits\`; do not put them loose in the `Clean Package` root. Do not make Wes inspect `Closing Checklist` or `Attorney Review Package` folders to find the files listed in the email package. When affidavits are CWE-authored, copying them into `Clean Package\Affidavits\` is a package copy only; it does not transfer affidavit authorship or make CFD responsible for reauthoring them.
+For buyer-review and Email Package use, keep the current package files together under the Teams `Clean Package` tree so the email body can link to one coherent package file set. Current affidavits belong in `Clean Package\Affidavits\`; do not put them loose in the `Clean Package` root and do not use a sibling `Contract Package\Affidavits\` folder for current CFD package work. Do not make Wes inspect `Closing Checklist` or `Attorney Review Package` folders to find the files listed in the email package. When affidavits are CWE-authored and stored in `Clean Package\Affidavits\`, that location does not transfer affidavit authorship or make CFD responsible for reauthoring them.
 
 Keep `Closing Checklist.md` in the CFD project room as the working/source checklist. Do not copy `Closing Checklist.md` to Teams by default. In Teams, provide polished user-facing checklist or cover-page deliverables, such as `Closing Package Cover Page.docx` or future PDF versions. Copy the Markdown checklist to Teams only if Wes explicitly asks for a working/source copy there.
 
@@ -355,7 +354,7 @@ Then message the regular visible CWE chat with the short new-buyer restart promp
 
 ## Affidavit Handling
 
-Credit Worthiness Evaluator owns the substantive drafting, creation, and Teams storage of creditworthiness, funds, rent-history, receipt-review, business-judgment, and underwriting-support affidavits.
+Credit Worthiness Evaluator owns the substantive drafting, creation, and Teams storage of creditworthiness, funds, rent-history, receipt-review, business-judgment, and underwriting-support affidavits. The expected current Teams location for those CWE-authored documents is `Contract Package\Clean Package\Affidavits\`.
 
 Contract for Deed reads and references those CWE-authored affidavit/support documents when they belong in the contract, closing, or attorney-review package. Affidavit handling is part of Full English Package mode and is not a standalone CFD output mode.
 
@@ -368,14 +367,14 @@ For each affidavit item in the CWE handoff, verify:
 - full file path,
 - that the file exists at that path,
 - that the file is a DOCX affidavit draft,
-- that the file is stored in the expected Teams affidavit location or another location explicitly provided by CWE,
+- that the file is stored in `Contract Package\Clean Package\Affidavits\` or another location explicitly provided by CWE for that specific item,
 - whether it is intended as a closing-package deliverable,
 - signer and signer capacity,
 - required/recommended/optional status,
 - notary requirement,
 - known conflicts or cautions to carry into the closing checklist.
 
-If the CWE-provided affidavit file exists in Teams, leave the affidavit file in place and reference that Teams path in the closing checklist, cover page, package inventory, or handoff notes as needed. Do not copy the affidavit into a CFD `output\affidavits\` folder and do not copy it back to Teams as though CFD authored or produced it.
+If the CWE-provided affidavit file exists in Teams, leave the affidavit file in place and reference that Teams path in the closing checklist, cover page, package inventory, or handoff notes as needed. Do not copy the affidavit into a CFD `output\affidavits\` folder, do not copy it from a sibling `Contract Package\Affidavits\` folder into `Clean Package\Affidavits\`, and do not copy it back to Teams as though CFD authored or produced it.
 
 CFD may make only package-level references unless Wes specifically approves affidavit handling changes. Package-level references include listing the affidavit in the closing checklist, identifying its Teams path, carrying signer/notary/review status into package notes, and flagging missing files or conflicts.
 
