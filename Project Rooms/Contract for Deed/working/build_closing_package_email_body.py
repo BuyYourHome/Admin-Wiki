@@ -106,7 +106,7 @@ READINESS_ROWS = [
         "Not ready until required affidavits, funds proof, signer ID confirmation, and attorney/compliance review are complete.",
     ),
     (
-        "Closing Stop",
+        "Closing Stop Issue",
         "None identified if listed deliverables and review items are carried into the closing checklist.",
     ),
 ]
