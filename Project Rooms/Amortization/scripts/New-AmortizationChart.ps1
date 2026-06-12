@@ -342,6 +342,26 @@ function Set-WorksheetFooter {
     [void]$SheetXml.DocumentElement.AppendChild($headerFooter)
 }
 
+function Set-WorkbookPrintArea {
+    param($Zip, [string]$SheetName, [string]$PrintArea)
+    [xml]$workbookXml = Read-ZipEntryText $Zip "xl/workbook.xml"
+    $spreadsheetNs = "http://schemas.openxmlformats.org/spreadsheetml/2006/main"
+    $definedNames = $workbookXml.DocumentElement.SelectSingleNode("*[local-name()='definedNames']")
+    if ($null -eq $definedNames) {
+        $definedNames = $workbookXml.CreateElement("definedNames", $spreadsheetNs)
+        [void]$workbookXml.DocumentElement.AppendChild($definedNames)
+    }
+    $printAreaNode = $definedNames.SelectSingleNode("*[local-name()='definedName' and @name='_xlnm.Print_Area']")
+    if ($null -eq $printAreaNode) {
+        $printAreaNode = $workbookXml.CreateElement("definedName", $spreadsheetNs)
+        $printAreaNode.SetAttribute("name", "_xlnm.Print_Area")
+        $printAreaNode.SetAttribute("localSheetId", "0")
+        [void]$definedNames.AppendChild($printAreaNode)
+    }
+    $printAreaNode.InnerText = "'$SheetName'!$PrintArea"
+    Write-ZipEntryText $Zip "xl/workbook.xml" $workbookXml.OuterXml
+}
+
 function Find-LabelValue {
     param([xml]$SheetXml, [object[]]$SharedStrings, [string[]]$Patterns)
     if ($null -eq $SheetXml) {
@@ -606,6 +626,7 @@ try {
 
     Set-WorksheetFooter $outputSheet $documentVersion
     Write-ZipEntryText $outputZip $outputSheetPath $outputSheet.OuterXml
+    Set-WorkbookPrintArea $outputZip "12 Month Chart" '$A$1:$K$22'
 } finally {
     $outputZip.Dispose()
 }

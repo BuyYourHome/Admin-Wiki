@@ -115,6 +115,7 @@ For buyer-facing outputs:
 2. Populate the copied workbook with values from the project spreadsheet.
 3. Preserve the template's formatting, merged cells, column widths, print area, headers, and buyer-facing wording.
    - Preserve template-owned static text above the title, including `Appendix "A"`.
+   - Ensure the print area includes the appendix row, currently `A1:K22`, so `Appendix "A"` appears in the PDF.
    - Keep enough bottom margin so the footer/version line is not clipped in the exported PDF.
 4. Export the populated copy to PDF using LibreOffice:
    `C:\Program Files\LibreOffice\program\soffice.exe`
