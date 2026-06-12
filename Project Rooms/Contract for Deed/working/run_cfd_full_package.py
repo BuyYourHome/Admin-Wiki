@@ -7,10 +7,12 @@ import json
 import shutil
 import statistics
 import time
+import zipfile
 from datetime import datetime
 from pathlib import Path
 
 from package_delivery import PackageItem, deliver_package_items, verify_existing
+from package_doc_footer import next_package_version, stamp_docx_files
 import run_cfd_generation
 from update_closing_document_header import update_doc
 
@@ -43,7 +45,6 @@ def default_package_items(
     buyer_label: str,
     preserve_newer_cover_page: bool,
 ) -> list[PackageItem]:
-    clean = transaction_folder / "output" / "clean"
     cover_source = (
         transaction_folder
         / "output"
@@ -104,12 +105,6 @@ def default_package_items(
             OUTPUT / "320 Rose - Attorney Review Package.zip",
             teams_root / f"{street_prefix} - Attorney Review Package.zip",
             teams_root / "Archive" / "Attorney Review Package",
-        ),
-        PackageItem(
-            "Amortization Chart PDF",
-            clean / f"{street_prefix} - 12 Month Amortization Chart.pdf",
-            teams_root / f"{street_prefix} - 12 Month Amortization Chart.pdf",
-            teams_root / "Archive" / "Contract",
         ),
         PackageItem(
             "Closing Package Cover Page",
@@ -235,7 +230,9 @@ def run_iteration(number: int, args) -> dict:
         args.buyer_label,
         args.preserve_newer_cover_page,
     )
-    verify_only = [args.teams_root / "Affidavits"]
+    package_version = {"value": None}
+    amortization_pdf = args.teams_root / f"{args.street_prefix} - 12 Month Amortization Chart.pdf"
+    verify_only = [args.teams_root / "Affidavits", amortization_pdf]
 
     try:
         def preflight():
@@ -252,6 +249,16 @@ def run_iteration(number: int, args) -> dict:
             return {"lock_files": lock_files, "missing": missing}
 
         timed_step(iteration, "preflight_locks_and_paths", preflight)
+
+        def determine_package_version():
+            existing_targets = [
+                item.target for item in package_items if item.target.suffix.lower() == ".docx"
+            ]
+            package_version["value"] = next_package_version(existing_targets)
+            iteration["package_version"] = package_version["value"]
+            return {"package_version": package_version["value"]}
+
+        timed_step(iteration, "determine_package_footer_version", determine_package_version)
 
         def refresh_spreadsheet():
             shutil.copy2(args.live_workbook, args.staged_workbook)
@@ -300,19 +307,50 @@ def run_iteration(number: int, args) -> dict:
         timed_step(iteration, "prepare_closing_cover_page", prepare_cover_page)
 
         def amortization_handoff():
-            amortization_items = [item for item in package_items if item.label == "Amortization Chart PDF"]
-            status = []
-            for item in amortization_items:
-                status.append(
-                    {
-                        "source": str(item.source),
-                        "exists": item.source.exists(),
-                        "note": "Using Amortization-returned/copied PDF already present in the transaction output. If missing, rerun the Amortization skill before packaging.",
-                    }
-                )
-            return status
+            return {
+                "teams_pdf": str(amortization_pdf),
+                "exists": amortization_pdf.exists(),
+                "note": "CFD verifies the Teams Amortization PDF written by the Amortization workflow. Amortization owns its PDF archive/versioning; CFD does not copy or overwrite it.",
+            }
 
         timed_step(iteration, "verify_amortization_pdf_handoff", amortization_handoff)
+
+        def stamp_package_footers():
+            docx_sources = [
+                item.source for item in package_items if item.source.suffix.lower() == ".docx"
+            ]
+            records = stamp_docx_files(docx_sources, package_version["value"])
+            missing = [record for record in records if record["status"] == "missing"]
+            if missing:
+                raise RuntimeError(json.dumps(missing, indent=2))
+            return records
+
+        timed_step(iteration, "stamp_docx_package_footers", stamp_package_footers)
+
+        def refresh_attorney_review_zip():
+            zip_items = [item for item in package_items if item.label == "Attorney Review Package ZIP"]
+            if not zip_items:
+                return {"status": "not_configured"}
+            target_zip = zip_items[0].source
+            review_docs = [
+                item.source
+                for item in package_items
+                if item.source.suffix.lower() == ".docx" and "Attorney Review" in item.label
+            ]
+            missing = [str(path) for path in review_docs if not path.exists()]
+            if missing:
+                raise RuntimeError(json.dumps({"missing_review_docs": missing}, indent=2))
+            target_zip.parent.mkdir(parents=True, exist_ok=True)
+            with zipfile.ZipFile(target_zip, "w", compression=zipfile.ZIP_DEFLATED) as archive:
+                for path in review_docs:
+                    archive.write(path, arcname=path.name)
+            return {
+                "path": str(target_zip),
+                "bytes": target_zip.stat().st_size,
+                "members": [path.name for path in review_docs],
+            }
+
+        timed_step(iteration, "refresh_attorney_review_zip", refresh_attorney_review_zip)
 
         def deliver_to_teams():
             records = deliver_package_items(package_items, args.teams_root)
@@ -371,7 +409,7 @@ def main():
     run_id = args.run_id or datetime.now().strftime("cfd-full-package-%Y%m%d-%H%M%S")
     run = {
         "run_id": run_id,
-        "scope": "full production package: spreadsheet refresh, core generators, cover-page prep, amortization PDF handoff verification, Teams archive/copy, and package verification; excludes email and SharePoint sharing-link creation",
+        "scope": "full production package: spreadsheet refresh, core generators, cover-page prep, Amortization-owned Teams PDF verification, CFD-created Teams archive/copy, and package verification; excludes email and SharePoint sharing-link creation",
         "started_at": datetime.now().isoformat(timespec="seconds"),
         "project_room": str(ROOT),
         "live_workbook": str(args.live_workbook),
