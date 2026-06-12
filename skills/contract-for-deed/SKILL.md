@@ -407,7 +407,7 @@ Do not convert underwriting-only affidavits into closing documents unless Wes or
 - Earnest money paid at contract signing comes from `Selling Earnest Money:` on the `Docs` worksheet. Do not use buying-side `BinderDeposit` / `Binder Deposit:` fields for seller documents.
 - `Selling Down Payment:` is the total down payment; remaining down payment due at closing is total down payment minus earnest money.
 - Preserve Wes-edited purchase-price table formatting, including row height and justification, when refreshing table values.
-- Seller signature stays anonymous as the trust/trustee structure: `Investment Services LLC, Trustee - Wes Browning, Manager`.
+- Seller signature stays in the trust/trustee structure: `Investment Services LLC, Trustee - [Manager], Manager`, where `[Manager]` is read from the confirmed project spreadsheet `Docs` worksheet manager field, including the current workbook label `Manger` when that is the available field. Do not replace the trust/trustee structure with the seller entity name alone, and do not hardcode a manager name in reusable CFD rules or scripts.
 - The ACH draft paragraph belongs where Wes placed it as section 7(d).
 - Buyer ACH account/routing blanks stay on the buyer signature page.
 - Notary blocks must preserve underlined notary-name blanks and include notary signature lines.
@@ -531,6 +531,8 @@ Canonical skill source lives in the wiki under `C:\Codex\Wiki Files\skills`. Ins
 When Wes says `write the rules to skill source` or similar, interpret that as permission to write only the skill-source rules for the current process being discussed. Do not modify unrelated skills, project files, scripts, outputs, handoffs, or documents unless Wes names them.
 
 This Contract for Deed chat owns `C:\Codex\Wiki Files\skills\contract-for-deed\SKILL.md`. Do not edit `skills\credit-worthiness-evaluator\SKILL.md` from this chat unless Wes explicitly authorizes editing the CWE skill too. If a proposed CFD/CWE coordination rule requires a CWE-side change, keep it as a proposed CWE rule and tell Wes it should be written from the Credit Worthiness Evaluator chat, unless Wes authorizes editing both skills.
+
+The reusable CFD workflow must not depend on project-specific script names or hardcoded project facts. Existing Rose-named scripts are transitional 320 Rose implementation details. When refactoring or creating new CFD generators, prefer generic script names and pass the confirmed project spreadsheet, transaction folder, and Teams package root as inputs.
 
 When changing this skill:
 

@@ -156,6 +156,8 @@ For the Memorandum of Contract for Deed draft, use Wes's edited prototype at `re
 
 This project room is the project-specific operating base used by the `contract-for-deed` skill. Use this room's scripts, prototypes, staged sources, transaction folders, and notes as the operating procedure.
 
+Existing Rose-named scripts are transitional implementation details for the current 320 Rose work. The reusable Contract for Deed process should move toward generic generator names and explicit inputs for the confirmed project spreadsheet, transaction folder, and Teams package root instead of relying on project-specific script names or hardcoded project facts.
+
 Even when working in this project room, verify the project before starting a new buyer-specific CFD process or kicking off CWE if Wes has not named the project/property in the request. It is acceptable to propose the last active CFD project and ask Wes to confirm it remains the project to use. This project room is currently configured for 320 Rose, but the generic `contract-for-deed` skill should not proceed from prior chat context alone.
 
 ## Buyer Transaction Folder Convention
@@ -251,7 +253,7 @@ The kickoff file should identify only the verified project/property, live projec
    - Seller stays anonymous as the trust. The trust is seller, and the trustee signs for the trust.
    - The Term Sheet is a formal summary document. It must read values from the `Docs` worksheet, not from prior email text. It may use prior email wording only as structural guidance. Include a clear statement that the Term Sheet is for review and discussion, is not the final contract, does not transfer title, is subject to final documents and attorney review, and is controlled by the final signed documents if there is a conflict.
    - The Buyer Acknowledgment Addendum is a formal buyer-understanding document. It should provide two buyer-initial columns for each acknowledgment, signature lines for both buyers, and the standard buyer notary acknowledgment block.
-   - Seller signature line should read in substance: `Investment Services LLC, Trustee - Wes Browning, Manager`.
+   - Seller signature line should read in substance: `Investment Services LLC, Trustee - [Manager], Manager`, where `[Manager]` is read from the confirmed project spreadsheet `Docs` worksheet manager field, including the current workbook label `Manger` when that is the available field.
    - Do not add a second standalone `Wes Browning, Manager` line under the seller signature line.
    - Seller/trustee mailing addresses must include the full city, state, and ZIP from the `Docs` worksheet. Do not truncate comma-separated address fields.
    - Earnest money paid at contract signing comes from `Selling Earnest Money:` on the `Docs` worksheet. Do not use the buying-side `BinderDeposit` / `Binder Deposit:` fields for seller documents.
@@ -272,7 +274,7 @@ The kickoff file should identify only the verified project/property, live projec
      - `Official Signature of Notary: ________________________________________`
      - `Notary's printed or typed name: ______________________________, Notary Public`
      - `My commission expires: ______________________`
-   - For seller/trust blocks, identify the signer in representative/fiduciary capacity, such as `Wes Browning, Manager of Investment Services LLC, Trustee of 320 Rose Pl Real Estate Trust dated March, 5 2025`.
+   - For seller/trust blocks, identify the signer in representative/fiduciary capacity, such as `[Manager], Manager of Investment Services LLC, Trustee of 320 Rose Pl Real Estate Trust dated March, 5 2025`, with `[Manager]` coming from the `Docs` worksheet manager field.
    - For buyer blocks, include all buyer names in the same acknowledgment unless attorney review requires separate notary blocks.
    - Use only `LoanStart1` and `LoanEnd1`; ignore `LoanStart2` and `LoanEnd2`.
    - The section 9 adverse-condition placeholder should explicitly say `NOTE FOR ATTORNEY REVIEW` and should appear only once.
