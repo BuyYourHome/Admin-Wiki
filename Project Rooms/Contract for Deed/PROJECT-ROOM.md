@@ -134,6 +134,31 @@ For Rose sale documents, use only `LoanStart1` and `LoanEnd1` for loan/payment d
 
 When regenerating Rose draft documents, overwrite the standard `DRAFT` files in `output` each time instead of creating revision-numbered copies, unless Wes explicitly asks to preserve a separate version.
 
+## CFD Run Metrics And Efficiency
+
+When running repeated CFD iterations to measure or improve the process, save metrics under `working\run-metrics\<run-id>\`.
+
+Each metrics run should record:
+
+- run scope, including whether the loop is generator-only or full production workflow,
+- exact scripts or workflow steps run,
+- per-iteration timing,
+- per-step timing,
+- blockers or missing outputs,
+- output verification status,
+- process-change candidates.
+
+Generator-only loops measure only the project-room document generators. They do not measure Teams copy/version/archive, amortization, closing cover/checklist, email, SharePoint link generation, Git, or skill sync.
+
+Do not write every one-off observation to canon while looping. Keep candidate process changes in the metrics summary first. Write durable rules after a pattern repeats, after a blocker affects reliability, or when Wes explicitly approves the rule.
+
+Current efficiency targets from the 2026-06-12 10-iteration generator benchmark:
+
+- Create a single CFD orchestration script or run manifest for package generation.
+- Load and normalize `Docs` values once per run instead of once per document script.
+- Record the confirmed project, buyer, workbook path, transaction folder, Teams package root, output paths, and package-copy results in the run manifest.
+- After the `Docs` layout stabilizes, keep a label-location cache or manifest that verifies expected labels before reading mapped value cells and rescans only when labels move.
+
 When Wes edits a generated document in `output`, treat that edited document as the replacement template for that document type when he asks to retemplate or continue from his edits. Assume Wes's edits are intentional changes to the template, except for generated attorney-review blocks. If attorney-review blocks are present, ignore them when updating the clean document template; they are generated review-mode content and should not become part of the underlying clean template unless Wes explicitly says otherwise.
 
 Before regenerating any document after Wes may have edited output files, inspect the `output` folder timestamps and Word lock files (`~$*.docx`). If an output document is newer than its prototype or appears to be open in Word, stop and capture the saved edited document as the replacement template first. Do not regenerate over a potentially edited output file unless Wes explicitly says to discard those edits.
