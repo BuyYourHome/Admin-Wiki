@@ -60,6 +60,8 @@ Start the Email Package body with this neutral line before the package title/hea
 
 In the Email Package body header, show a fill-in `Closing Date` field to the right of the prepared date. Leave the closing-date value blank for the attorney to complete and highlight the blank field yellow.
 
+In the Email Package readiness table, label any stop-issue row as `Closing Stop`, not `CFD Stop`.
+
 Do not add a repeated metadata footer at the bottom of the Email Package body. The body should not end with a separate block listing the attached ZIP, property address, buyer names, or seller name after the attorney/compliance section. The introductory paragraph may say that the package ZIP is attached.
 
 When Wes asks for external access or `Anyone with the link` access, do not use ordinary Teams/SharePoint location links from `teams_link_from_local_path.py` as if they grant external access. Use the SharePoint plugin's sharing-link action to create actual anonymous view/read links for each displayed package file, or for the package ZIP/folder if Wes asks for a single package link. Do not create edit links unless Wes explicitly asks for edit access. Do not create broad property-folder sharing links. If no verified path can create and confirm permission-granting links, stop and report that blocker before sending an external-access email; ask Wes whether to create the sharing links manually or proceed with the ZIP attachment only.
