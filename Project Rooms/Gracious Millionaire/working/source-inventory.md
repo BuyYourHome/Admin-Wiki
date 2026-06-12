@@ -11,8 +11,12 @@
 | [[2023-11-28-the-gracious-millionaire-providence-landing-expanded]] | Email markdown | 2023-11-28 | Inbox/Gracious Millionaire | authoritative | Expanded Providence Landing opening. |
 | [[2025-04-10-gracious-millionaire-abundance]] | Email markdown | 2025-04-10 | Inbox/Gracious Millionaire | authoritative | Abundance and lordship notes. |
 | [[2025-04-10-gracious-millionaire-abundance-reply]] | Email markdown | 2025-04-10 | Inbox/Gracious Millionaire | authoritative | Stewardship and measurable spiritual reality note. |
+| [[115-rosebrooks-project/_source-inventory]] | Project markdown source set | 2023-2026 | 19-HM-115 Rosebrooks Dr property folder | contextual source set | 754 markdown records created from accessible 115 Rosebrooks project files for chapter context and narrative drafting. |
 
 ## Mailbox Retrieval Note
 
 The Outlook connector exposed 7 retrievable messages in `Inbox/Gracious Millionaire` and 1 retrievable message in `Inbox/Gracious Millionaire/Tribes`. The parent folder metadata reported 11 total items. The difference may be non-mail items, sync artifacts, or items not returned by the connector message listing.
 
+## 115 Rosebrooks Retrieval Note
+
+The local property project folder `C:\Users\wesbr\Buy Your Home\Buy Your Home - Property\19-HM-115 Rosebrooks Dr` was converted into markdown source records under `sources/115-rosebrooks-project`. The import pass created markdown records with source metadata, hashes, extraction status, and extracted text when available. Media, scanned PDFs without readable text layers, legacy `.doc`, and `.msg` items were preserved as metadata-only markdown records.
