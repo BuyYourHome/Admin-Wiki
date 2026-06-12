@@ -334,6 +334,21 @@ Spanish flag add-on:
 - Save the Spanish/bilingual output in the project-room output folder and copy the current unversioned package copy to the matching Teams buyer folder under `Contract Package\Spanish Package\`. Archive prior Teams Spanish/bilingual package copies under `Contract Package\Archive\Spanish Package\`.
 - Use an output name ending in `BILINGUAL SPANISH DRAFT.docx` for the Contract for Deed Agreement and `SPANISH DRAFT.docx` for Spanish-only drafts of other package documents.
 
+Term Sheet Spanish add-on project-room rule:
+
+- Treat the Term Sheet Spanish draft as separate from the Contract for Deed bilingual Spanish draft.
+- Do not change the Contract for Deed Spanish generator or its translation-memory rules when fixing or updating the Term Sheet Spanish draft.
+- Generate the Term Sheet Spanish draft from the current English Term Sheet after the Full English Package has been regenerated.
+- The Term Sheet Spanish draft must reflect the current spreadsheet-fed English Term Sheet values from the `Docs` worksheet.
+- Do not reuse old Term Sheet Spanish text when the current English Term Sheet text or values have changed.
+- Translate the Term Sheet headings, explanatory paragraphs, table labels, section labels, and standard instruction text fresh for the current draft.
+- Preserve inserted transaction values exactly as shown in the English Term Sheet unless Wes explicitly asks to translate or restate them.
+- Preserve the three adverse-condition entries exactly as spreadsheet-sourced values unless Wes explicitly asks to translate them: `Adverse Conditions1`, `Adverse Conditions2`, and `Adverse Conditions3`.
+- Save the project-room output as `output\320 Rose Pl - Term Sheet - SPANISH DRAFT.docx`.
+- Copy the current unversioned Spanish Term Sheet to `Contract Package\Spanish Package\320 Rose Pl - Term Sheet - SPANISH DRAFT.docx`.
+- Before writing a new active Teams Spanish Term Sheet, archive the prior active Spanish Term Sheet under `Contract Package\Archive\Spanish Package`.
+- The Spanish Term Sheet belongs to the Spanish add-on workflow, not Full English Package mode and not Email Package mode unless Wes asks for Spanish documents to be included in the email package.
+
 Buyer-specific handoff/checklist inputs:
 
 - Credit Worthiness Handoff from the matching buyer transaction folder.
