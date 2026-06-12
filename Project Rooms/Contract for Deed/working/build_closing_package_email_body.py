@@ -13,8 +13,8 @@ from teams_link_from_local_path import teams_link_for_path
 TEAMS_PACKAGE_ROOT = Path(
     r"C:\Users\wesbr\Buy Your Home\Buy Your Home - Property\28-SYH-320 Rose Pl\Selling\Ever Cordoza\Contract Package"
 )
-CLEAN_PACKAGE = TEAMS_PACKAGE_ROOT / "Clean Package"
-PACKAGE_AFFIDAVITS = CLEAN_PACKAGE / "Affidavits"
+PACKAGE_ROOT = TEAMS_PACKAGE_ROOT
+PACKAGE_AFFIDAVITS = PACKAGE_ROOT / "Affidavits"
 EMAIL_PACKAGE = TEAMS_PACKAGE_ROOT / "Email Package"
 
 PROPERTY_LABEL = "320 Rose Pl"
@@ -173,7 +173,7 @@ def render_html(version: str, prepared: date) -> str:
     doc_items = []
     for item in DOCUMENTS:
         file_name = item.file_name.format(version=version)
-        doc_items.append(f"<li>{linked_anchor(CLEAN_PACKAGE / file_name, item.label)}</li>")
+        doc_items.append(f"<li>{linked_anchor(PACKAGE_ROOT / file_name, item.label)}</li>")
 
     affidavit_blocks = []
     for item in AFFIDAVITS:
@@ -293,7 +293,7 @@ def render_text(version: str, prepared: date) -> str:
 
 def main() -> None:
     parser = argparse.ArgumentParser(description="Build the CFD closing package email body.")
-    parser.add_argument("--version", help="Version prefix such as v05. Defaults to the latest Clean Package version.")
+    parser.add_argument("--version", help="Version prefix such as v05. Defaults to the latest package version.")
     parser.add_argument("--date", help="Prepared date in YYYY-MM-DD format. Defaults to today.")
     args = parser.parse_args()
 

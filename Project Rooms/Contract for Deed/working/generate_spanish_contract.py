@@ -17,11 +17,11 @@ SPANISH_BASE_NAME = "320 Rose - Contract for Deed Agreement - BILINGUAL SPANISH 
 TEAMS_SPANISH_BASE_NAME = "320 Rose Pl - Contract for Deed Agreement - BILINGUAL SPANISH DRAFT.docx"
 TEAMS_SPANISH = Path(
     r"C:\Users\wesbr\Buy Your Home\Buy Your Home - Property\28-SYH-320 Rose Pl"
-    r"\Selling\Ever Cordoza\Contract Package\Clean Package\Spanish Package"
+    r"\Selling\Ever Cordoza\Contract Package\Spanish Package"
 )
 TEAMS_SPANISH_ARCHIVE = Path(
     r"C:\Users\wesbr\Buy Your Home\Buy Your Home - Property\28-SYH-320 Rose Pl"
-    r"\Selling\Ever Cordoza\Contract Package\Clean Package\Archive\Spanish Package"
+    r"\Selling\Ever Cordoza\Contract Package\Archive\Spanish Package"
 )
 
 SPANISH_STYLE = "Spanish Translation Draft"

@@ -29,10 +29,10 @@ Teams buyer folder pattern:
 
 Recommended Teams subfolders:
 
-- `Clean Package\` - current buyer-review/closing package file set.
+- `Contract Package\` root - current buyer-review/closing package file set.
 - `Attorney Review Package\`
 - `Closing Checklist\` - legacy or separately requested checklist/cover copies only.
-- `Clean Package\Affidavits\` - current CWE-authored affidavit/support documents used by the closing package.
+- `Affidavits\` - current CWE-authored affidavit/support documents used by the closing package.
 
 For 320 Rose / Ever Cardoza, use:
 
@@ -40,15 +40,15 @@ For 320 Rose / Ever Cardoza, use:
 
 Copy clean packages, attorney-review packages, and closing checklists to Teams after each requested regeneration or package update unless Wes says project-room only. Do not copy prototypes, staged spreadsheets, scratch files, extracted text, rendered QA images, logs, or temporary working files to Teams.
 
-For buyer-review and Email Package use, keep the current package files together under the Teams `Clean Package` tree. This includes clean signing/review copies, the Amortization Chart PDF, the polished closing cover/checklist output, and attorney-review files when the checklist/email package lists them. Current CWE-authored affidavit/support documents belong in `Clean Package\Affidavits\`; do not put them loose in the `Clean Package` root and do not use a sibling `Contract Package\Affidavits\` folder for current CFD package work. Do not make Wes inspect `Closing Checklist` or `Attorney Review Package` folders to find the files listed in the email package.
+For buyer-review and Email Package use, keep the current package files together directly under the Teams `Contract Package` tree. This includes clean signing/review copies, the Amortization Chart PDF, the polished closing cover/checklist output, and attorney-review files when the checklist/email package lists them. Current CWE-authored affidavit/support documents belong in `Contract Package\Affidavits\`; do not put them loose in the `Contract Package` root. Do not make Wes inspect `Closing Checklist` or `Attorney Review Package` folders to find the files listed in the email package.
 
-When affidavits are CWE-authored and stored in `Clean Package\Affidavits\`, that package location does not transfer affidavit authorship or make CFD responsible for reauthoring them.
+When affidavits are CWE-authored and stored in `Contract Package\Affidavits\`, that package location does not transfer affidavit authorship or make CFD responsible for reauthoring them.
 
 When producing the Word closing document / closing checklist document, place a fill-in `Closing Date` field to the right of the prepared date near the top of the document. Leave the closing-date value blank for the attorney to complete and highlight the blank field yellow so it is visibly marked as needing completion.
 
 Active buyer-specific package files should use clean current filenames with no version prefix. Use the street-only property prefix, such as `320 Rose Pl`, not the shortened `320 Rose` label and not the full address with city, state, or ZIP. Before writing a new active package file, move the existing active file to a categorized subfolder under `Archive` inside the same active folder and add the version prefix only to the archived copy, such as `Archive\Contract\v05 - 320 Rose Pl - Contract for Deed Agreement - DRAFT.docx`. Do not delete prior versions. Do not archive source files, prototypes, handoffs, scripts, staged spreadsheets, temporary files, or scratch outputs.
 
-Use these `Clean Package\Archive` subfolders:
+Use these `Contract Package\Archive` subfolders:
 
 - `Archive\Cover Letter\` for prior closing package cover page / cover letter files.
 - `Archive\Affidavits\` for prior affidavit/support package-copy files.
@@ -56,9 +56,9 @@ Use these `Clean Package\Archive` subfolders:
 - `Archive\Attorney Review Package\` for prior attorney-review package ZIP files.
 - `Archive\Contract\` for all other prior contract-package files, including contracts, memoranda, notes, term sheets, buyer acknowledgments, amortization charts, attorney-review DOCX files, signed contract PDFs, and package ZIPs unless Wes gives a document-specific archive location.
 
-Do not keep a separate `Clean Package\Credit Worthiness Archive` sibling folder. Credit Worthiness archive files belong under `Clean Package\Archive\Credit Worthiness\`.
+Do not keep a separate `Credit Worthiness Archive` sibling folder. Credit Worthiness archive files belong under `Contract Package\Archive\Credit Worthiness\`.
 
-Apply the same active-plus-Archive versioning rule to `Contract Package\Clean Package\Spanish Package\`: the active Spanish Package folder should contain only the current unversioned Spanish/bilingual deliverable for each document type using the street-only property prefix, and prior Spanish/bilingual drafts for that same document type should be moved into `Contract Package\Clean Package\Archive\Spanish Package\` with version prefixes preserved or added when archiving an unversioned prior active file. Do not keep a sibling `Contract Package\Spanish Package\` folder.
+Apply the same active-plus-Archive versioning rule to `Contract Package\Spanish Package\`: the active Spanish Package folder should contain only the current unversioned Spanish/bilingual deliverable for each document type using the street-only property prefix, and prior Spanish/bilingual drafts for that same document type should be moved into `Contract Package\Archive\Spanish Package\` with version prefixes preserved or added when archiving an unversioned prior active file. Do not keep a `Contract Package\Clean Package\` folder.
 
 Use `working\teams_link_from_local_path.py` to convert Teams-synced package paths into SharePoint web links for the Email Package body. If a file cannot be mapped to a SharePoint link, list the exact filename and local Teams path and report the unmapped item rather than guessing.
 
@@ -84,7 +84,7 @@ For routine Email Package updates, do not rediscover the layout, rebuild the ema
 
 Use this fast path:
 
-1. Confirm the current package version and Teams `Clean Package` folder.
+1. Confirm the current package version and Teams `Contract Package` folder.
 2. Update only the durable inputs that changed:
    - package file inventory,
    - short display labels,
@@ -294,13 +294,13 @@ Spanish flag add-on:
 
 - Contract for Deed Agreement bilingual Spanish draft only, unless Wes explicitly expands the Spanish scope to other documents.
 - When Wes expands the Spanish scope, create separate Spanish draft deliverables for the named document types and place them in the same Spanish Package workflow.
-- Save the Spanish/bilingual output in the project-room output folder and copy the current unversioned package copy to the matching Teams buyer folder under `Contract Package\Clean Package\Spanish Package\`. Archive prior Teams Spanish/bilingual package copies under `Contract Package\Clean Package\Archive\Spanish Package\`.
+- Save the Spanish/bilingual output in the project-room output folder and copy the current unversioned package copy to the matching Teams buyer folder under `Contract Package\Spanish Package\`. Archive prior Teams Spanish/bilingual package copies under `Contract Package\Archive\Spanish Package\`.
 - Use an output name ending in `BILINGUAL SPANISH DRAFT.docx` for the Contract for Deed Agreement and `SPANISH DRAFT.docx` for Spanish-only drafts of other package documents.
 
 Buyer-specific handoff/checklist inputs:
 
 - Credit Worthiness Handoff from the matching buyer transaction folder.
-- Affidavit/support documents identified and created by CWE in the Teams `Clean Package\Affidavits\` folder. CFD lists and packages those documents but does not decide their substantive content or reauthor them.
+- Affidavit/support documents identified and created by CWE in the Teams `Contract Package\Affidavits\` folder. CFD lists and packages those documents but does not decide their substantive content or reauthor them.
 
 Excluded for now:
 
