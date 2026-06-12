@@ -438,7 +438,7 @@ Do not delete prior versions. Before archiving, verify the destination path is i
 
 Use the same active filename convention across CFD-created documents, the Amortization Chart package copy, the email body files, the Email Package ZIP, the cover page/checklist, attorney-review package files, and Spanish package files unless Wes gives a document-specific exception.
 
-For `Contract Package\Spanish Package\`, use the same archive convention as the main package folders: keep only the current unversioned Spanish/bilingual deliverable in the active Spanish Package folder, use the street-only property prefix, and move prior Spanish/bilingual drafts into `Spanish Package\Archive` with their version prefix preserved or added when archiving an unversioned prior active file.
+For `Contract Package\Spanish Package\`, use the same archive convention as the main package folders: keep only the current unversioned Spanish/bilingual deliverable for each document type in the active Spanish Package folder, use the street-only property prefix, and move prior Spanish/bilingual drafts for that same document type into `Spanish Package\Archive` with their version prefix preserved or added when archiving an unversioned prior active file.
 
 ## Spanish Translation Flag
 
@@ -448,9 +448,13 @@ The Spanish flag can be supplied by Wes's chat instruction. A spreadsheet field 
 
 The Spanish flag is additive. It does not replace the normal English package and does not alter the English signing copies. First generate or confirm the current English clean package, then create separate Spanish/bilingual deliverables.
 
-For the first implementation, the Spanish flag applies to the Contract for Deed Agreement only unless Wes explicitly expands the scope. The default output name is:
+For the first implementation, the Spanish flag applies to the Contract for Deed Agreement only unless Wes explicitly expands the scope. When Wes expands the scope to other package documents, create separate Spanish draft deliverables for those document types and place them in the same Spanish Package workflow. The default Contract for Deed Agreement output name is:
 
 `<Property> - Contract for Deed Agreement - BILINGUAL SPANISH DRAFT.docx`
+
+For Spanish-only drafts of other package documents, use this output name pattern unless Wes gives a document-specific name:
+
+`<Property> - <Document Name> - SPANISH DRAFT.docx`
 
 Save the bilingual output in the project-room output folder and copy it to the matching Teams buyer folder under:
 
