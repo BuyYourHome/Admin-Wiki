@@ -9,8 +9,8 @@
 - Current evaluation mode: evidence mode, not approval-assumption mode.
 - Full DOCX report: `C:\Codex\Wiki Files\Project Rooms\Credit Worthiness Evaluator\outputs\320 Rose Pl - Ever Cardoza\26-06-11 320 Rose Ever Amarildo Cardoza Bolanos - Creditworthiness Evaluation Report - Document Preparation Ready v24.docx`
 - Teams current report: `C:\Users\wesbr\Buy Your Home\Buy Your Home - Property\28-SYH-320 Rose Pl\Selling\Ever Cordoza\Contract Package\320 Rose Ever Amarildo Cardoza Bolanos - Creditworthiness Evaluation Report - Document Preparation Ready.docx`
-- Teams archive folder: `C:\Users\wesbr\Buy Your Home\Buy Your Home - Property\28-SYH-320 Rose Pl\Selling\Ever Cordoza\Contract Package\Credit Worthiness Archive`
-- Archive action: Archived the prior current Teams copy to `C:\Users\wesbr\Buy Your Home\Buy Your Home - Property\28-SYH-320 Rose Pl\Selling\Ever Cordoza\Contract Package\Credit Worthiness Archive\v3 320 Rose Ever Amarildo Cardoza Bolanos - Creditworthiness Evaluation Report - Document Preparation Ready.docx` and replaced it with a Microsoft Word-native regenerated copy.
+- Teams archive folder: `C:\Users\wesbr\Buy Your Home\Buy Your Home - Property\28-SYH-320 Rose Pl\Selling\Ever Cordoza\Contract Package\Clean Package\Credit Worthiness Archive`
+- Archive action: Archived prior current Teams copies under `C:\Users\wesbr\Buy Your Home\Buy Your Home - Property\28-SYH-320 Rose Pl\Selling\Ever Cordoza\Contract Package\Clean Package\Credit Worthiness Archive` and replaced the current report with a Microsoft Word-native regenerated copy.
 
 ## Repair Verification
 
