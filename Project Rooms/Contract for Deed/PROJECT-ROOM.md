@@ -152,10 +152,10 @@ Generator-only loops measure only the project-room document generators. They do 
 
 Do not write every one-off observation to canon while looping. Keep candidate process changes in the metrics summary first. Write durable rules after a pattern repeats, after a blocker affects reliability, or when Wes explicitly approves the rule.
 
-Current efficiency targets from the 2026-06-12 10-iteration generator benchmark:
+Use `working\run_cfd_generation.py` for repeated generator runs. It performs lock preflight, loads and normalizes `Docs` once per iteration, calls the document builders in-process, creates attorney-review copies, verifies expected outputs, and writes JSON/Markdown metrics.
 
-- Create a single CFD orchestration script or run manifest for package generation.
-- Load and normalize `Docs` values once per run instead of once per document script.
+Current remaining efficiency targets from the 2026-06-12 generator benchmarks:
+
 - Record the confirmed project, buyer, workbook path, transaction folder, Teams package root, output paths, and package-copy results in the run manifest.
 - After the `Docs` layout stabilizes, keep a label-location cache or manifest that verifies expected labels before reading mapped value cells and rescans only when labels move.
 

@@ -174,8 +174,9 @@ When Wes asks to benchmark, loop, stress-test, or improve CFD run efficiency:
 2. Record at least: run scope, script or workflow steps run, per-iteration seconds, per-step seconds, blockers, output verification status, and process-change candidates.
 3. Distinguish core document-generation metrics from full production workflow metrics. A generator-only loop does not measure Teams copy/version/archive, amortization, closing cover/checklist, email, SharePoint link generation, Git, or skill sync.
 4. Do not write every observation to canon immediately. Record candidate rule or script changes first, then write stable rules after repetition or Wes approval.
-5. For repeated full-package runs, prefer a single CFD orchestration script or run manifest over manually invoking separate document scripts.
-6. The orchestration/run manifest should load and normalize `Docs` values once per run, record the confirmed project/buyer, workbook path, transaction folder, Teams package root, output paths, and package-copy results.
+5. For repeated generator runs, use the CFD orchestration script instead of manually invoking separate document scripts:
+   `C:\Codex\Wiki Files\Project Rooms\Contract for Deed\working\run_cfd_generation.py`
+6. The orchestration/run manifest should load and normalize `Docs` values once per run, record the confirmed project/buyer when available, workbook path, transaction folder, Teams package root, output paths, and package-copy results.
 7. After the `Docs` layout stabilizes, prefer a label-location cache or manifest: verify expected labels at their mapped cells, read values from the mapped value cells, and rescan/report only when labels move.
 8. If a run benchmark identifies a repeated blocker or safety issue, fix or write that rule before continuing further loops.
 

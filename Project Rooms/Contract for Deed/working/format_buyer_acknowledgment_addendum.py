@@ -135,8 +135,9 @@ def add_notary_block(doc, county, buyer_names):
         doc.add_paragraph(line)
 
 
-def main():
-    x = normalize_values(get_docs_values())
+def main(x=None):
+    if x is None:
+        x = normalize_values(get_docs_values())
     buyer1 = x.get("buyer1") or "Purchaser 1"
     buyer2 = x.get("buyer2") or "Purchaser 2"
     buyer_names = " and ".join(name for name in [buyer1, buyer2] if name)

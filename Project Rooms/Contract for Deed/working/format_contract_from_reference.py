@@ -686,8 +686,9 @@ def ensure_ach_terms(doc):
                         run.bold = True
 
 
-def main():
-    x = normalize_values(get_docs_values())
+def main(x=None):
+    if x is None:
+        x = normalize_values(get_docs_values())
     buyer_line1, buyer_line2 = split_address(x["buyer_address"])
     trustee_line1, trustee_line2 = split_address(x["trustee_address"])
 

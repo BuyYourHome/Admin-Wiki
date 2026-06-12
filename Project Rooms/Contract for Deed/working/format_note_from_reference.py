@@ -345,8 +345,9 @@ def ensure_page_break_before_in_testimony(doc):
             return
 
 
-def main():
-    x = normalize_values(get_docs_values())
+def main(x=None):
+    if x is None:
+        x = normalize_values(get_docs_values())
     buyer_line1, buyer_line2 = split_address(x["buyer_address"])
     holder = f"{x['trust']}, by and through {x['trustee']}, Trustee"
     holder_address = x["trustee_address"] or "[HOLDER ADDRESS TO BE INSERTED]"

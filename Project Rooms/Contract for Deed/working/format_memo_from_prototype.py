@@ -380,8 +380,9 @@ def update_buyer_signature_fields(doc, x):
             set_paragraph_bold(paragraph, buyers[match_index])
 
 
-def main():
-    x = normalize_values(get_docs_values())
+def main(x=None):
+    if x is None:
+        x = normalize_values(get_docs_values())
     doc = Document(str(PROTOTYPE))
     buyer_line1, buyer_line2 = split_address(x["buyer_address"])
 

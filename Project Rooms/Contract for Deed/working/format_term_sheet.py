@@ -98,8 +98,9 @@ def add_heading(doc, text):
     return paragraph
 
 
-def main():
-    x = normalize_values(get_docs_values())
+def main(x=None):
+    if x is None:
+        x = normalize_values(get_docs_values())
     doc = Document()
     set_document_styles(doc)
 
