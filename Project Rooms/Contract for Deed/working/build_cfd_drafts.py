@@ -23,6 +23,81 @@ OUT = ROOT / "output"
 SUFFIX = "DRAFT"
 
 
+DOCS_FIELD_LABELS = {
+    "SellingSeller",
+    "Selling -Seller",
+    "Trust",
+    "Trustee",
+    "Manger",
+    "Manager",
+    "Trustee Manager",
+    "TrusteeManager",
+    "SellingBuyer",
+    "Selling-Buyer",
+    "Selling-Buyer1",
+    "Selling-Buyer2",
+    "SellingBuyer2",
+    "SellingPurchasePrice",
+    "Selling Purchase Price:",
+    "SellingDownPayment:",
+    "Selling Down Payment:",
+    "SellingEarnestMoney:",
+    "Selling Earnest Money:",
+    "LoanAmount:",
+    "Loan Amount:",
+    "Monthly Payment1",
+    "PrincipalInterst",
+    "PropertyInsurance",
+    "Property Insurance:",
+    "TaxEscrow",
+    "Tax Escrow:",
+    "Loan Start1",
+    "LoanStart1",
+    "Loan End1",
+    "LoanEnd1",
+    "Selling-Buyer Add1",
+    "Selling-Buyer Add2",
+    "SellingBuyerAddress",
+    "Selling Buyer Address",
+    "SellingBuyerAddress1",
+    "Selling Buyer Address1",
+    "PurchaserAddress",
+    "Purchaser Address",
+    "Adverse Conditions",
+    "AdverseConditions",
+    "AdverseCondition",
+    "Adverse Condition",
+    "Pending Orders or Adverse Conditions",
+    "Pending Orders",
+    "TrusteeAddress1",
+    "Trustee Address1:",
+    "TrusteeAddress2",
+    "Trustee Address2:",
+    "PropertyAddress",
+    "Address",
+    "PropertyCityState",
+    "City-State",
+    "PropertyCounty",
+    "County",
+    "PropertyParcelID",
+    "Property Parcel ID",
+    "LegalDescription",
+    "Legal Description",
+    "BriefLegalDescription",
+    "Brief Legal Description",
+    "TermMonths",
+    "TermMonths1",
+    "Term1",
+    "TermYears",
+    "Interestrate1",
+    "Interest rate1",
+    "DocMonth",
+    "Doc Month:",
+    "DocYear",
+    "Doc Year",
+}
+
+
 def money(value):
     return f"${float(value):,.2f}"
 
@@ -50,18 +125,21 @@ def get_docs_values():
     ws = wb["Docs"]
     values = {}
     multi_value_rows = {"adverse conditions"}
-    for row in range(1, ws.max_row + 1):
-        key = ws.cell(row, 1).value
-        if key:
+    for row in ws.iter_rows(values_only=True):
+        for index, key in enumerate(row):
+            if not key:
+                continue
             clean_key = str(key).strip()
+            if clean_key not in DOCS_FIELD_LABELS:
+                continue
             if clean_key.lower() in multi_value_rows:
                 cell_values = [
-                    clean(ws.cell(row, col).value)
-                    for col in range(2, ws.max_column + 1)
+                    clean(value)
+                    for value in row[index + 1:]
                 ]
                 row_value = "\n".join(str(value) for value in cell_values if value)
             else:
-                row_value = ws.cell(row, 2).value
+                row_value = row[index + 1] if index + 1 < len(row) else None
             if clean_key in values:
                 i = 2
                 while f"{clean_key}__{i}" in values:

@@ -128,7 +128,7 @@ Then use the `Docs` worksheet as the source of truth for document values.
 
 All fields needed by the document generators should be exposed on the `Docs` worksheet. Do not have the document generators pull contract values directly from other workbook tabs such as `Amortization`, `Contract`, `Base`, or buying/acquisition tabs. If a needed value is calculated elsewhere, add or correct a named field on `Docs` and have the generator read that `Docs` field.
 
-The CFD generator reads the vertical `Docs` label/value rows as the spreadsheet interface: field labels in column `A`, values/formulas in column `B`, with defined multi-value rows such as `Adverse Conditions` allowed to use additional cells on the same row. Do not rely on the legacy horizontal `Docs` row 1 / row 2 field table; that area may be deleted or repurposed during spreadsheet refactoring.
+The CFD generator reads `Docs` label/value pairs as the spreadsheet interface. Field labels may be placed in readable grouped blocks anywhere on `Docs`; the generator reads the value/formula from the cell immediately to the right of the recognized label. For defined multi-value rows such as `Adverse Conditions`, the generator reads the nonblank cells to the right on the same row. Do not rely on the legacy horizontal `Docs` row 1 / row 2 field table; that area may be deleted or repurposed during spreadsheet refactoring.
 
 For Rose sale documents, use only `LoanStart1` and `LoanEnd1` for loan/payment date fields. Ignore `LoanStart2` and `LoanEnd2`.
 
