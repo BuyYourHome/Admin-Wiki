@@ -44,6 +44,8 @@ For buyer-review and Email Package use, keep the current package files together 
 
 When affidavits are CWE-authored, copying them into `Clean Package` is a package copy only. It does not transfer affidavit authorship or make CFD responsible for reauthoring them.
 
+When producing the Word closing document / closing checklist document, place a fill-in `Closing Date` field to the right of the prepared date near the top of the document. Leave the closing-date value blank for the attorney to complete and highlight the blank field yellow so it is visibly marked as needing completion.
+
 Active buyer-specific package files should use clean current filenames with no version prefix. Use the street-only property prefix, such as `320 Rose Pl`, not the shortened `320 Rose` label and not the full address with city, state, or ZIP. Before writing a new active package file, move the existing active file to an `Archive` subfolder under the same active folder and add the version prefix only to the archived copy, such as `Archive\v05 - 320 Rose Pl - Contract for Deed Agreement - DRAFT.docx`. Do not delete prior versions. Do not archive source files, prototypes, handoffs, scripts, staged spreadsheets, temporary files, or scratch outputs.
 
 Apply the same active-plus-Archive versioning rule to `Contract Package\Spanish Package\`: the active Spanish Package folder should contain only the current unversioned Spanish/bilingual deliverable for each document type using the street-only property prefix, and prior Spanish/bilingual drafts for that same document type should be moved into `Spanish Package\Archive` with version prefixes preserved or added when archiving an unversioned prior active file.
@@ -93,6 +95,8 @@ Use this fast path:
 Keep detailed formatting logic in the builder and the saved reference HTML. Keep the project-room instructions focused on when to update the builder and what to validate.
 
 Track two CFD email send methods. Use the plain-text OfficeAssist connector method for simple emails that do not need hidden/display hyperlinks or polished HTML formatting. Use the local Outlook HTML cover-sheet method for CFD cover-sheet / closing-package emails with clean filename links. On Wes's current machine, OfficeAssist is not mounted in local Outlook, so this HTML method uses `WesWill@BuyYourHomeLLC.com` as the sending account when Wes has authorized that sender for the run. Verify the sent copy in Sent Items and keep the complete package ZIP attached.
+
+For CFD package emails, do not prefix the subject with `DRAFT:`. Use a neutral review-submission subject such as `<Property> - <Buyer> - Closing Package for Review` unless Wes provides a different subject for that specific run.
 
 The project-room copy remains authoritative. If Wes edits a Teams copy and says to keep those edits, first bring the edited file back into the project room and apply the normal edit-preservation/prototype rule before regenerating. Do not use Teams copies as regeneration sources unless Wes identifies the Teams-edited file as the version to preserve.
 

@@ -66,6 +66,8 @@ Checklist/cover-page handling is not a standalone mode. It belongs inside Full E
 
 Affidavit packaging is not a standalone CFD output mode. CFD reads, references, and packages around affidavit/support documents created and stored in Teams by CWE; CFD should not reauthor or generate affidavit outputs unless Wes explicitly changes that division of responsibility.
 
+When producing the Word closing document / closing checklist document, place a fill-in `Closing Date` field to the right of the prepared date near the top of the document. Leave the closing-date value blank for the attorney to complete and highlight the blank field yellow so it is visibly marked as needing completion.
+
 ## Email Package Delivery
 
 When sending a CFD Email Package:
@@ -87,7 +89,7 @@ When sending a CFD Email Package:
 7. Verify the ZIP was created and is readable before sending.
 8. Send to `WesWill@BuyYourHomeLLC.com` only so Wes can review and forward it himself.
 9. Send from `OfficeAssist@BuyYourHomeLLC.com`.
-10. Use a subject beginning with `DRAFT:` unless Wes provides a different review-submission subject for that specific run.
+10. Do not prefix the CFD package email subject with `DRAFT:`. Use a neutral review-submission subject such as `<Property> - <Buyer> - Closing Package for Review` unless Wes provides a different subject for that specific run.
 11. Do not say the message is "on Wes's behalf" unless Wes explicitly asks for that wording for that specific message.
 12. Call/use `email-delivery` for OfficeAssist sender safety, Outlook connector handling, attachment input format, Sent Items verification, local Outlook fallback rules, and failure handling.
 
