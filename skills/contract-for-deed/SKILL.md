@@ -432,9 +432,18 @@ Active examples:
 - `320 Rose Pl - 12 Month Amortization Chart.pdf`
 - `320 Rose Pl - Ever Cardoza - Closing Package for Email.zip`
 
-Before creating a new active package version, move existing active package files to an `Archive` subfolder under the same active folder. Add the version prefix when moving the old file into `Archive`, for example:
+Before creating a new active package version, move existing active package files to a categorized subfolder under `Archive` inside the same active folder. Add the version prefix when moving the old file into the archive, for example:
 
-`Archive\v05 - 320 Rose Pl - Contract for Deed Agreement - DRAFT.docx`
+`Archive\Contract\v05 - 320 Rose Pl - Contract for Deed Agreement - DRAFT.docx`
+
+Use these `Clean Package\Archive` subfolders:
+
+- `Archive\Cover Letter\` for prior closing package cover page / cover letter files.
+- `Archive\Affidavits\` for prior affidavit/support package-copy files.
+- `Archive\Credit Worthiness\` for prior Credit Worthiness report package-copy files.
+- `Archive\Contract\` for all other prior contract-package files, including contracts, memoranda, notes, term sheets, buyer acknowledgments, amortization charts, attorney-review package files, signed contract PDFs, and package ZIPs unless Wes gives a document-specific archive location.
+
+Do not keep a separate `Clean Package\Credit Worthiness Archive` sibling folder. Credit Worthiness archive files belong under `Clean Package\Archive\Credit Worthiness\`.
 
 Archive only prior delivery/package files. Do not archive prototypes, staged spreadsheets, source files, scripts, handoffs, temporary files, or other non-delivery working files unless Wes gives a separate instruction.
 

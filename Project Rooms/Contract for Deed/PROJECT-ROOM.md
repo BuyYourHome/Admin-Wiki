@@ -46,7 +46,16 @@ When affidavits are CWE-authored, copying them into `Clean Package` is a package
 
 When producing the Word closing document / closing checklist document, place a fill-in `Closing Date` field to the right of the prepared date near the top of the document. Leave the closing-date value blank for the attorney to complete and highlight the blank field yellow so it is visibly marked as needing completion.
 
-Active buyer-specific package files should use clean current filenames with no version prefix. Use the street-only property prefix, such as `320 Rose Pl`, not the shortened `320 Rose` label and not the full address with city, state, or ZIP. Before writing a new active package file, move the existing active file to an `Archive` subfolder under the same active folder and add the version prefix only to the archived copy, such as `Archive\v05 - 320 Rose Pl - Contract for Deed Agreement - DRAFT.docx`. Do not delete prior versions. Do not archive source files, prototypes, handoffs, scripts, staged spreadsheets, temporary files, or scratch outputs.
+Active buyer-specific package files should use clean current filenames with no version prefix. Use the street-only property prefix, such as `320 Rose Pl`, not the shortened `320 Rose` label and not the full address with city, state, or ZIP. Before writing a new active package file, move the existing active file to a categorized subfolder under `Archive` inside the same active folder and add the version prefix only to the archived copy, such as `Archive\Contract\v05 - 320 Rose Pl - Contract for Deed Agreement - DRAFT.docx`. Do not delete prior versions. Do not archive source files, prototypes, handoffs, scripts, staged spreadsheets, temporary files, or scratch outputs.
+
+Use these `Clean Package\Archive` subfolders:
+
+- `Archive\Cover Letter\` for prior closing package cover page / cover letter files.
+- `Archive\Affidavits\` for prior affidavit/support package-copy files.
+- `Archive\Credit Worthiness\` for prior Credit Worthiness report package-copy files.
+- `Archive\Contract\` for all other prior contract-package files, including contracts, memoranda, notes, term sheets, buyer acknowledgments, amortization charts, attorney-review package files, signed contract PDFs, and package ZIPs unless Wes gives a document-specific archive location.
+
+Do not keep a separate `Clean Package\Credit Worthiness Archive` sibling folder. Credit Worthiness archive files belong under `Clean Package\Archive\Credit Worthiness\`.
 
 Apply the same active-plus-Archive versioning rule to `Contract Package\Spanish Package\`: the active Spanish Package folder should contain only the current unversioned Spanish/bilingual deliverable for each document type using the street-only property prefix, and prior Spanish/bilingual drafts for that same document type should be moved into `Spanish Package\Archive` with version prefixes preserved or added when archiving an unversioned prior active file.
 
