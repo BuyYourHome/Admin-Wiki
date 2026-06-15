@@ -139,7 +139,7 @@ When Boss asks for a property insurance status report:
 3. Organize each property's evidence chronologically so the current status is based on the newest reliable status document.
 4. Use color or status labels so review-needed, critical cancellation/lapse, confirmed/strong-match, and closed mortgage rows are easy to scan.
 5. State unknown fields as unknown. Do not invent escrow status, direct-pay status, mortgage acceptance, or payment frequency.
-6. Each time the report is regenerated, email the friendly report PDF to both `WesWill@BuyYourHomeLLC.com` and `Jenny@BuyYourHomeLLC.com`. Summarize the critical matches and unresolved review items in the email body.
+6. Each time the report is regenerated, email the friendly report PDF to both `WesWill@BuyYourHomeLLC.com` and `Jenny@BuyYourHomeLLC.com`. In the email body, note anything in the report that needs attention, including critical matches, coverage gaps, lender acceptance problems, cancellation/lapse notices, unresolved review items, missing policy numbers, missing Insurance folders, or unclear payment responsibility.
 
 ### SharePoint / Teams Fallback
 
