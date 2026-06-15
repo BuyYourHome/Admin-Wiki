@@ -11,6 +11,8 @@ Create the daily Boss summary for `WesWill@BuyYourHomeLLC.com`, then hand off de
 
 This skill owns mailbox scanning, cutoff selection, message prioritization, summary drafting, token-summary inclusion, and summary-run state updates. It does not own sender safety or send verification.
 
+Development notes, source inventory, and open questions for this workflow live in `C:\Codex\Wiki Files\Project Rooms\Email Summary\`.
+
 ## Inputs
 
 Before using this skill, have:

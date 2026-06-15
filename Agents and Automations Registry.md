@@ -10,7 +10,7 @@ Codex does not currently show every role below in one unified "Agents" list. Som
 |---|---|---|---|---|
 | Jean Wright / Office Assistant | Assistant profile and operating role | Active | On demand and through related automations | `C:\Codex\Office Assistant Profile.md`; `AGENTS.md` |
 | REI Text Message Watcher | Heartbeat automation | Active | Every 15 minutes during 8:00 AM-9:00 PM Eastern; adaptive 1-minute checks during activity | `C:\Users\wesbr\.codex\automations\morning-weswill-email-summary\automation.toml` |
-| OfficeAssist Morning Email Summary | Wiki-managed skill plus cron automation | Active | Daily at 8:00 AM Eastern | `skills\officeassist-morning-email-summary\SKILL.md`; `C:\Users\wesbr\.codex\automations\officeassist-morning-email-summary\automation.toml` |
+| OfficeAssist Morning Email Summary | Wiki-managed skill plus cron automation plus project room | Active | Daily at 8:00 AM Eastern | `skills\officeassist-morning-email-summary\SKILL.md`; `Project Rooms\Email Summary\README.md`; `C:\Users\wesbr\.codex\automations\officeassist-morning-email-summary\automation.toml` |
 | Email Delivery | Wiki-managed support skill | Active | Called by email-capable Admin workflows | `skills\email-delivery\SKILL.md` |
 | Document Scanning | Wiki-managed skill plus heartbeat automation | Active | Daily at 10:00 AM, 12:00 PM, 2:00 PM, and 4:00 PM | `skills\document-scanning\SKILL.md`; `C:\Users\wesbr\.codex\skills\document-scanning\SKILL.md`; `C:\Users\wesbr\.codex\automations\document-scanning\automation.toml` |
 | Codex Skill Source Control | Wiki-managed skill system | Active | On demand after skill changes or wiki pulls | `Codex Skill Source Rule.md`; `tools\sync-codex-skills.ps1`; `skills\` |
@@ -119,6 +119,7 @@ Purpose:
 Defined in:
 
 - `C:\Codex\Wiki Files\skills\officeassist-morning-email-summary\SKILL.md`
+- `C:\Codex\Wiki Files\Project Rooms\Email Summary\README.md`
 - `C:\Users\wesbr\.codex\automations\officeassist-morning-email-summary\automation.toml`
 - Email safety rules in `AGENTS.md`.
 
@@ -146,6 +147,7 @@ Workflow boundary:
 
 - The morning-summary automation keeps responsibility for mailbox scanning, cutoff selection, message prioritization, summary drafting, and attachment decisions.
 - The shared `email-delivery` skill handles the send step only: Outlook connector preference, sender safety, attachment input shape, Sent Items verification, local Outlook fallback, and failure reporting.
+- Development work, source inventory, open questions, and review-ready handoffs for this workflow live in `C:\Codex\Wiki Files\Project Rooms\Email Summary\`.
 
 ## Email Delivery
 
