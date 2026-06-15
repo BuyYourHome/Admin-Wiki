@@ -11,6 +11,7 @@ This is the starting page for the Buy Your Home admin wiki.
 - [[AIOS/efforts-index|AIOS Efforts Index]]
 - [[Agents and Automations Registry]]
 - [[Connector and Plugin Usage Rules]]
+- [[Project Rooms/SOPs/README|SOPs Project Room]]
 - [[Codex Python Runtime Rule]]
 - [[LibreOffice Location Rule]]
 - [[Document Scanning SOP]]
@@ -31,6 +32,8 @@ This is the starting page for the Buy Your Home admin wiki.
 
 ## Reference Maps
 
+- [[Project Rooms/SOPs/outputs/SOP Index|SOP Index]]
+- [[Project Rooms/SOPs/working/Source Map|SOP Source Map]]
 - [[Document Scanning Folder Map]]
 - [[wiki/index|Wiki Index]]
 - [[wiki/log|Wiki Log]]

@@ -17,7 +17,7 @@ OpenBrain-style memory can be added later as a structured store behind the wiki.
 sources/              Raw inputs: notes, URLs, transcripts, PDFs summarized to text
 wiki/                 Compiled knowledge pages
 wiki/index.md         Table of contents and map of the wiki
-templates/            Page and source-note templates
+templates/            General wiki and project-room templates
 prompts/              Reusable prompts for compiling and maintaining the wiki
 decisions/            Architecture and workflow decisions
 Project Rooms/        Source-preparation workspaces for complex projects
@@ -25,11 +25,13 @@ Project Rooms/        Source-preparation workspaces for complex projects
 
 ## Recommended First Workflow
 
-1. Put one source in `sources/`, using `templates/source-note.md`.
+1. Put one source in `sources/`.
 2. Ask the assistant to run the prompt in `prompts/compile-source.md`.
 3. Review the generated page in `wiki/`.
 4. Add links from `wiki/index.md`.
 5. Repeat with new sources.
+
+For SOP work, use `Project Rooms/SOPs/` instead of the generic `sources/` and `wiki/` folders.
 
 ## Project Rooms
 
