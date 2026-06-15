@@ -22,11 +22,12 @@ ATTORNEY_CONTINGENCY_TEXT = (
     "returned to Purchaser."
 )
 ADVERSE_CONDITION_RESPONSIBILITY_TEXT = (
-    "Seller shall remain responsible for the pending orders or adverse conditions listed below. "
+    "Seller shall remain responsible for the pending orders or adverse conditions listed above. "
     "These matters may remain in place during the term of this Contract. To the extent any such "
-    "matter must be released, satisfied, or otherwise resolved to convey marketable title, Seller "
-    "shall cause it to be released, satisfied, or otherwise resolved before or at the closing of "
-    "Purchaser's future sale of the Property, unless resolved earlier or otherwise agreed in writing."
+    "matter must be released, satisfied, or otherwise resolved to convey marketable title upon "
+    "completion of this Agreement's term, Seller shall cause it to be released, satisfied, or "
+    "otherwise resolved before or upon payment of all amounts due herein, unless resolved earlier "
+    "or otherwise agreed in writing."
 )
 INDEPENDENT_COUNSEL_TEXT = (
     "Purchaser acknowledges that Seller is not providing legal advice to Purchaser. "
@@ -489,21 +490,24 @@ def set_adverse_condition(doc, text):
     use_responsibility_text = not text.startswith("NOTE FOR ATTORNEY REVIEW:")
     inserted_responsibility = False
     inserted_adverse = False
+    heading_text = doc.paragraphs[pending_idx].text.replace("CONDITIONS: :", "CONDITIONS:")
+    set_paragraph(doc.paragraphs[pending_idx], heading_text)
     for idx in range(pending_idx + 1, cure_idx or len(doc.paragraphs)):
         if doc.paragraphs[idx].text.strip():
-            if use_responsibility_text and not inserted_responsibility:
-                set_paragraph(doc.paragraphs[idx], ADVERSE_CONDITION_RESPONSIBILITY_TEXT)
-                inserted_responsibility = True
-            elif not inserted_adverse:
+            if not inserted_adverse:
                 set_paragraph(doc.paragraphs[idx], text)
                 inserted_adverse = True
+            elif use_responsibility_text and not inserted_responsibility:
+                set_paragraph(doc.paragraphs[idx], ADVERSE_CONDITION_RESPONSIBILITY_TEXT)
+                inserted_responsibility = True
             else:
                 set_paragraph(doc.paragraphs[idx], "")
     if inserted_adverse:
         return
-    if use_responsibility_text and inserted_responsibility:
+    if use_responsibility_text and pending_idx + 1 < len(doc.paragraphs):
         anchor = doc.paragraphs[pending_idx + 1]
-        paragraph = insert_paragraph_after(anchor, text)
+        set_paragraph(anchor, text)
+        paragraph = insert_paragraph_after(anchor, ADVERSE_CONDITION_RESPONSIBILITY_TEXT)
         copy_paragraph_format(anchor, paragraph)
         return
     if pending_idx + 1 < len(doc.paragraphs):
