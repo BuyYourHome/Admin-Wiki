@@ -1,5 +1,7 @@
 # Document Scanning Skill Spec
 
+Project room: [[Project Rooms/Document Scan/README|Document Scan Project Room]]
+
 Working name: `document-scanning`
 
 Purpose: process scanned financial/admin PDFs and image scans (`.jpg` / `.jpeg`), split combined scans into separate documents when applicable, name them consistently, and route them into the correct Office Admin or property/project folder.
@@ -48,6 +50,7 @@ Initial supported types:
 - Credit card statements
 - Line of credit statements
 - Loan statements
+- Property insurance documents from insurance companies or mortgage companies
 - Invoices
 - Receipts
 - CPA/tax forms
@@ -65,6 +68,7 @@ Primary routing categories:
 - Lines of credit: `2026\Line of Credit\...`
 - Non-property-specific loans: `2026\Loans\...`
 - Mortgage statements: match the statement to the related property folder under `C:\Users\wesbr\Buy Your Home\Buy Your Home - Property`, drill into that property's `Owning` folder, then save the statement in the folder named for the mortgage company.
+- Property insurance documents: match the document to the related property folder under `C:\Users\wesbr\Buy Your Home\Buy Your Home - Property`, drill into that property's `Insurance` folder, then save there.
 - Project/property invoices and receipts: match the document to the related property folder under `C:\Users\wesbr\Buy Your Home\Buy Your Home - Property`, drill into that property's `Owning` folder, then save the filed PDF there unless a more specific approved subfolder already exists.
 - Quest invoices: `2026\Quest\Invoices\...`
 - Quest receipts: `2026\Quest\Receipts\...`
@@ -113,6 +117,98 @@ For each scanned PDF, JPG, or JPEG:
 7. Save the split statement PDF in that mortgage-company folder.
 
 If the property or mortgage-company folder cannot be identified confidently, do not guess and do not create a new folder automatically. Route the item to review and document what was unclear in the log.
+
+## Property Insurance Document Routing
+
+Property insurance documents are property documents when they come from an insurance company or from a mortgage company about property insurance coverage.
+
+Reference workbook for current property and mortgage matching:
+
+`C:\Users\wesbr\Buy Your Home\Buy Your Home - Property\Credit Cards Sheet.xlsx`
+
+Reference worksheet:
+
+`Mortgages`
+
+For each scanned property insurance document:
+
+1. Determine whether the sender/source is an insurance company or a mortgage company.
+2. Match the document to the correct project/property folder under:
+
+   `C:\Users\wesbr\Buy Your Home\Buy Your Home - Property`
+
+3. Use reliable details such as property address, borrower/entity, mortgage company, loan number or suffix, insurance company, policy number, or other document details.
+4. Open the matched property folder and drill down to its `Insurance` folder.
+5. Save the filed PDF in the property's `Insurance` folder.
+6. If the matching property folder is clear but the `Insurance` folder does not exist, route the item to review and document that the destination folder is missing. Do not create the folder automatically unless Boss gives a later rule or specific approval.
+7. If the property, policy, coverage status, or payment responsibility cannot be identified confidently, route the item to review and document what was unclear in the log.
+
+For insurance-company documents, extract and track:
+
+- Insurance company name
+- Policy number
+- Property address
+- Annual payment
+- Whether the premium is escrowed in the mortgage payment
+- Whether Buy Your Home pays the insurance company directly
+- Whether payment is monthly or annual
+
+For mortgage-company insurance documents, extract and track:
+
+- Mortgage company name
+- Property address
+- Whether the mortgage company accepted or rejected the coverage
+- Date of status change
+- Policy number or insurance company name when shown
+
+Do not infer escrow status, direct-pay status, payment frequency, acceptance, rejection, or status-change date from weak context. If the document does not say clearly, mark that field as unknown and route to review when the missing field affects filing or follow-up.
+
+### Insurance Chronology And Current Status
+
+Track insurance documents chronologically for each property and policy so the current status can be read from the newest reliable status document while preserving the document history.
+
+For each insurance document, preserve these chronology fields in the log and any register/update handoff:
+
+- Document Date
+- Source Company
+- Document Type / Status Event
+- Coverage Accepted / Rejected, when shown
+- Status Change Date, when shown
+- Escrowed In Mortgage Payment, when shown
+- Paid Directly To Insurance Company, when shown
+- Payment Frequency, when shown
+- Annual Payment, when shown
+- Filed Document Path
+- Confidence
+- Notes / Missing Fields
+
+When a newer insurance document changes the property's or policy's status, keep the prior chronology entries and update the current status fields from the newest reliable document. Do not collapse the history into a single latest-status-only row.
+
+### Insurance Cancellation Notices
+
+When an insurance cancellation, non-renewal, lapse, lender-placed, second notice, or final notice is found:
+
+1. Extract the policy number, insured/entity name, property address if visible, insurance company, mortgage company if visible, effective date, expiration date, processed/notice date, cancellation/rejection reason, annual premium, and whether the policy is bill-to-mortgagee.
+2. Cross-check the policy number against existing filed insurance declarations, evidence-of-insurance files, the current property/mortgage reference workbook, and SharePoint/Teams search when the local synced folders do not show all files.
+3. Treat an exact policy-number match to a filed declaration or EOI as the strongest property match. Record the matched declaration/EOI path in the log or report.
+4. Do not match a cancellation notice to a property by company, entity, or policy dates alone. If the policy number does not match an existing filed policy and no property address is visible, route the notice to review.
+5. For confirmed cancellation/lapse/final-notice documents, mark the property's current insurance status as review-needed until a newer reliable document shows reinstatement, replacement coverage, or lender acceptance.
+6. Keep unmatched cancellation notices in the Office Admin review folder and record why the property could not be confirmed.
+
+### Insurance Status Reports
+
+When Boss asks for a property insurance status report:
+
+1. Use one row per property, with a separate review row for unmatched notices that cannot be tied to a property.
+2. Include columns for property, lender/mortgage company, insurance company, policy number, annual payment, escrow/direct-pay status, payment frequency, latest filed document, new scan/status notices, current status, and review flags.
+3. Organize each property's evidence chronologically so the current status is based on the newest reliable status document.
+4. Use color or status labels so review-needed, critical cancellation/lapse, confirmed/strong-match, and closed mortgage rows are easy to scan.
+5. State unknown fields as unknown. Do not invent escrow status, direct-pay status, mortgage acceptance, or payment frequency.
+6. If the report is emailed, attach the friendly report PDF and summarize the critical matches and unresolved review items in the email body.
+
+### SharePoint / Teams Fallback
+
+If Boss identifies a scan that is present in Teams/SharePoint but it is not visible in the local synced folder, use the SharePoint connector to locate and download a working copy for processing. Preserve the original SharePoint source file, log the SharePoint URL, and do not move or delete the source scan.
 
 ## Boundary Detection Rules
 
@@ -204,6 +300,7 @@ Register sheets:
 - `Mortgage`
 - `Credit Cards`
 - `Invoices`
+- `Insurance` when the workbook has been updated to support insurance tracking
 
 Use one row per account. Match an existing account row using:
 
@@ -243,6 +340,47 @@ If the statement date cannot be confidently read:
 2. Mark the item for review.
 
 Never infer or update `Username` or `Password` from scanned statements. Leave those fields blank unless Boss explicitly provides them.
+
+### Insurance Register Rules
+
+Insurance register tracking should use one row per property and policy, not one row per scanned document.
+
+Insurance chronology should use one history entry per scanned insurance document or status event. The current-status fields should be derived from the newest reliable chronology entry for that property/policy.
+
+Match an existing insurance row using:
+
+`Property / Project + Property Address + Insurance Company + Policy #`
+
+For insurance-company documents, update or hand off these fields when confidently available:
+
+- Insurance Company
+- Policy #
+- Property Address
+- Annual Payment
+- Escrowed In Mortgage Payment
+- Paid Directly To Insurance Company
+- Payment Frequency
+- Source Scan File
+- Source Scan Path
+- Status
+- Confidence
+- Last Updated
+
+For mortgage-company insurance documents, update or hand off these fields when confidently available:
+
+- Mortgage Company
+- Property Address
+- Coverage Accepted / Rejected
+- Status Change Date
+- Insurance Company
+- Policy #
+- Source Scan File
+- Source Scan Path
+- Status
+- Confidence
+- Last Updated
+
+If the insurance register worksheet does not exist yet, do not modify another worksheet as a substitute. Capture the insurance details in the scan log and final summary, and flag that register update is pending.
 
 ### Register Alert Rules
 

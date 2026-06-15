@@ -5,7 +5,9 @@ description: Process scanned financial/admin PDFs from Office Admin scan folders
 
 # Document Scanning
 
-Process scanned Office Admin PDFs conservatively. Split combined scans into separate statement/account files, name them consistently, file them into the mapped Teams/SharePoint folders, and write a plain text log for every source scan.
+Development notes, source inventory, and open questions for this workflow live in `C:\Codex\Wiki Files\Project Rooms\Document Scan\`.
+
+Process scanned Office Admin PDFs and JPG/JPEG image scans conservatively. Split combined scans into separate statement/account files when boundaries are clear, convert single-image scans to filed PDF outputs when appropriate, name them consistently, file them into the mapped Teams/SharePoint folders, and write a plain text log for every source scan.
 
 ## Paths
 
@@ -13,19 +15,20 @@ Process scanned Office Admin PDFs conservatively. Split combined scans into sepa
 - Logs: `C:\Users\wesbr\Buy Your Home\Buy Your Home - Office Admin\Scanned Files\Logs`
 - Archive: `C:\Users\wesbr\Buy Your Home\Buy Your Home - Office Admin\Scanned Files\Archived`
 - Destination root: `C:\Users\wesbr\Buy Your Home\Buy Your Home - Office Admin\2026`
-- Property root for mortgage statements: `C:\Users\wesbr\Buy Your Home\Buy Your Home - Property`
+- Property root for mortgage and property insurance documents: `C:\Users\wesbr\Buy Your Home\Buy Your Home - Property`
+- Current property/mortgage reference workbook: `C:\Users\wesbr\Buy Your Home\Buy Your Home - Property\Credit Cards Sheet.xlsx`, worksheet `Mortgages`
 
 Read `references/folder-map.md` before routing files. Read `references/routing-rules.md` before deciding uncertain matches.
 
 ## Workflow
 
-1. Find the requested scan or the newest PDF in the scan intake folder.
-2. Inspect the PDF page count and whether embedded text exists. Use `scripts/inspect_pdf.py` when useful.
-3. If the PDF is image-only, extract page images for visual inspection or OCR. Do not guess from the source file name alone.
+1. Find the requested scan or the newest PDF, JPG, or JPEG in the scan intake folder.
+2. For PDFs, inspect page count and whether embedded text exists. Use `scripts/inspect_pdf.py` when useful.
+3. If the PDF is image-only, or if the source is a JPG/JPEG image, visually/OCR-parse the scan. Do not guess from the source file name alone.
 4. Identify document boundaries using institution/vendor, account number, statement date, page numbers, and header changes.
 5. Decide one output group per account/document. If confidence is low, route the source or page range to review instead of filing approximately.
 6. Name output PDFs with the approved naming convention.
-7. Split pages with `scripts/split_pdf.py` or equivalent PDF tooling.
+7. Split PDF pages with `scripts/split_pdf.py` or equivalent PDF tooling. For JPG/JPEG scans, create a single filed PDF output unless routing confidence is low.
 8. Save each output PDF into the matching folder from `references/folder-map.md`.
 9. Write or append a `.log.txt` file in the Logs folder with the summary, destinations, confidence notes, and review items.
 10. When processing is complete and intent is clear, move the original scan to Archived. Never delete it.
@@ -58,7 +61,7 @@ If a file already exists, create a unique filename by appending ` (2)`, ` (3)`, 
 
 Mortgage statements are property documents. Do not file them in the generic Office Admin `2026\Loans` folder unless Boss explicitly instructs that for a specific document.
 
-For each scanned PDF:
+For each scanned PDF, JPG, or JPEG:
 
 1. Determine whether the scan contains mortgage statements.
 2. If it does, identify each individual mortgage statement and split each statement into its own PDF.
@@ -72,6 +75,101 @@ For each scanned PDF:
 7. Save the split statement PDF in that mortgage-company folder.
 
 If the property or mortgage-company folder cannot be identified confidently, do not guess and do not create a new folder automatically. Route the item to review and document what was unclear in the log.
+
+## Property Insurance Documents
+
+Property insurance documents are property documents when they come from an insurance company or from a mortgage company about property insurance coverage.
+
+Use `C:\Users\wesbr\Buy Your Home\Buy Your Home - Property\Credit Cards Sheet.xlsx`, worksheet `Mortgages`, as the current property and mortgage reference source when matching insurance documents.
+
+For each scanned property insurance document:
+
+1. Determine whether the document came from an insurance company or a mortgage company.
+2. Match it to the correct property folder under:
+
+   `C:\Users\wesbr\Buy Your Home\Buy Your Home - Property`
+
+3. Use reliable details such as property address, borrower/entity, mortgage company, loan number or suffix, insurance company, policy number, or other document details.
+4. Open the matched property folder and drill down to its `Insurance` folder.
+5. Save the filed PDF in the property's `Insurance` folder.
+6. If the matching property folder is clear but the `Insurance` folder does not exist, route the item to review and document that the destination folder is missing. Do not create the folder automatically unless Boss gives a later rule or specific approval.
+7. If the property, policy, coverage status, or payment responsibility cannot be identified confidently, route the item to review and document the uncertainty in the log.
+
+For insurance-company documents, capture:
+
+- Insurance company name.
+- Policy number.
+- Property address.
+- Annual payment.
+- Whether the premium is escrowed in the mortgage payment.
+- Whether Buy Your Home pays the insurance company directly.
+- Whether payment is monthly or annual.
+
+For mortgage-company insurance documents, capture:
+
+- Mortgage company name.
+- Property address.
+- Whether the mortgage company accepted or rejected the coverage.
+- Date of status change.
+- Policy number or insurance company name when shown.
+
+Do not infer escrow status, direct-pay status, payment frequency, coverage acceptance, coverage rejection, or status-change date from weak context. If the document does not say clearly, mark that field as unknown and route to review when the missing field affects filing or follow-up.
+
+Track insurance documents chronologically for each property and policy so the current status can be read from the newest reliable status document. Preserve each insurance document's date, source company, document type/status event, accepted/rejected coverage status when shown, status-change date when shown, escrow/direct-pay status when shown, payment frequency and amount when shown, filed document path, confidence, and uncertainty notes.
+
+When a newer insurance document changes a property's or policy's status, keep the prior history and update the current status from the newest reliable document. Do not overwrite or collapse the historical trail into only the latest status.
+
+### Insurance Cancellation Notices
+
+When an insurance cancellation, non-renewal, lapse, lender-placed, second notice, or final notice is found:
+
+1. Extract the policy number, insured/entity name, property address if visible, insurance company, mortgage company if visible, effective date, expiration date, processed/notice date, cancellation/rejection reason, annual premium, and whether the policy is bill-to-mortgagee.
+2. Cross-check the policy number against existing filed insurance declarations, evidence-of-insurance files, the current property/mortgage reference workbook, and SharePoint/Teams search when the local synced folders do not show all files.
+3. Treat an exact policy-number match to a filed declaration or EOI as the strongest property match. Record the matched declaration/EOI path in the log or report.
+4. Do not match a cancellation notice to a property by company, entity, or policy dates alone. If the policy number does not match an existing filed policy and no property address is visible, route the notice to review.
+5. For confirmed cancellation/lapse/final-notice documents, mark the property's current insurance status as review-needed until a newer reliable document shows reinstatement, replacement coverage, or lender acceptance.
+6. Keep unmatched cancellation notices in the Office Admin review folder and record why the property could not be confirmed.
+
+### Insurance Status Reports
+
+When Boss asks for a property insurance status report:
+
+1. Use one row per property, with a separate review row for unmatched notices that cannot be tied to a property.
+2. Include columns for property, lender/mortgage company, insurance company, policy number, annual payment, escrow/direct-pay status, payment frequency, latest filed document, new scan/status notices, current status, and review flags.
+3. Organize each property's evidence chronologically so the current status is based on the newest reliable status document.
+4. Use color or status labels so review-needed, critical cancellation/lapse, confirmed/strong-match, and closed mortgage rows are easy to scan.
+5. State unknown fields as unknown. Do not invent escrow status, direct-pay status, mortgage acceptance, or payment frequency.
+6. If the report is emailed, attach the friendly report PDF and summarize the critical matches and unresolved review items in the email body.
+
+### SharePoint / Teams Fallback
+
+If Boss identifies a scan that is present in Teams/SharePoint but it is not visible in the local synced folder, use the SharePoint connector to locate and download a working copy for processing. Preserve the original SharePoint source file, log the SharePoint URL, and do not move or delete the source scan.
+
+## Invoice And Receipt Routing
+
+Keep invoice review separate from statement review.
+
+Project/property invoices and receipts are property documents when the scan identifies a specific property address, project folder, property number, handwritten numeric address marker, or other reliable project designation.
+
+For each scanned invoice or receipt:
+
+1. Decide whether it is project-specific or general.
+2. For project-specific items, match the document to the correct property folder under:
+
+   `C:\Users\wesbr\Buy Your Home\Buy Your Home - Property`
+
+3. Use reliable details such as property address, numeric street address, project number, handwritten property designation, entity label, vendor/payee, or other project details.
+4. Open the matched property folder and drill down to its `Owning` folder.
+5. Save the filed PDF directly in `Owning` unless a more specific approved subfolder already exists.
+6. For general invoices that are not project-related, file under:
+
+   `C:\Users\wesbr\Buy Your Home\Buy Your Home - Office Admin\2026\Invoices & Receipts\{Vendor}`
+
+7. If the project, vendor folder, invoice date, or destination cannot be identified confidently, route to invoice review instead of the statement review folder:
+
+   `C:\Users\wesbr\Buy Your Home\Buy Your Home - Office Admin\2026\Invoices & Receipts\_Needs Review`
+
+Do not create new vendor folders or choose between similar vendor names unless Boss gives a later rule or specific approval.
 
 ## Boundary Rules
 
@@ -112,6 +210,18 @@ Current alert rules:
 
 The alert email should identify the sheet, property/project, lender/vendor, statement date, last minimum payment, current minimum payment, and source statement file when available. Do not send duplicate alerts for the same row and same statement date unless a later update changes the alert details.
 
+## Insurance Register Notes
+
+Insurance tracking should use one row per property and policy when an insurance register worksheet exists.
+
+Insurance chronology should use one history entry per scanned insurance document or status event. Current-status fields should be based on the newest reliable chronology entry for that property/policy.
+
+Match insurance rows using:
+
+`Property / Project + Property Address + Insurance Company + Policy #`
+
+If an insurance worksheet does not exist yet, do not substitute another worksheet. Capture the insurance details in the scan log and final summary, and flag that register update is pending.
+
 ## Safety
 
 - Never delete source scans.
@@ -126,4 +236,8 @@ Use or create:
 
 `C:\Users\wesbr\Buy Your Home\Buy Your Home - Office Admin\2026\_Needs Review`
 
-Move or copy uncertain output there only when needed, and explain what made it uncertain in the log and final summary.
+Move or copy uncertain statement/account output there only when needed, and explain what made it uncertain in the log and final summary.
+
+Invoice and receipt exceptions use the separate invoice review folder:
+
+`C:\Users\wesbr\Buy Your Home\Buy Your Home - Office Admin\2026\Invoices & Receipts\_Needs Review`
