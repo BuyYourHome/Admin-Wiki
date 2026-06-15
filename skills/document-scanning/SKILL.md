@@ -119,6 +119,32 @@ Track insurance documents chronologically for each property and policy so the cu
 
 When a newer insurance document changes a property's or policy's status, keep the prior history and update the current status from the newest reliable document. Do not overwrite or collapse the historical trail into only the latest status.
 
+### Insurance Cancellation Notices
+
+When an insurance cancellation, non-renewal, lapse, lender-placed, second notice, or final notice is found:
+
+1. Extract the policy number, insured/entity name, property address if visible, insurance company, mortgage company if visible, effective date, expiration date, processed/notice date, cancellation/rejection reason, annual premium, and whether the policy is bill-to-mortgagee.
+2. Cross-check the policy number against existing filed insurance declarations, evidence-of-insurance files, the current property/mortgage reference workbook, and SharePoint/Teams search when the local synced folders do not show all files.
+3. Treat an exact policy-number match to a filed declaration or EOI as the strongest property match. Record the matched declaration/EOI path in the log or report.
+4. Do not match a cancellation notice to a property by company, entity, or policy dates alone. If the policy number does not match an existing filed policy and no property address is visible, route the notice to review.
+5. For confirmed cancellation/lapse/final-notice documents, mark the property's current insurance status as review-needed until a newer reliable document shows reinstatement, replacement coverage, or lender acceptance.
+6. Keep unmatched cancellation notices in the Office Admin review folder and record why the property could not be confirmed.
+
+### Insurance Status Reports
+
+When Boss asks for a property insurance status report:
+
+1. Use one row per property, with a separate review row for unmatched notices that cannot be tied to a property.
+2. Include columns for property, lender/mortgage company, insurance company, policy number, annual payment, escrow/direct-pay status, payment frequency, latest filed document, new scan/status notices, current status, and review flags.
+3. Organize each property's evidence chronologically so the current status is based on the newest reliable status document.
+4. Use color or status labels so review-needed, critical cancellation/lapse, confirmed/strong-match, and closed mortgage rows are easy to scan.
+5. State unknown fields as unknown. Do not invent escrow status, direct-pay status, mortgage acceptance, or payment frequency.
+6. If the report is emailed, attach the friendly report PDF and summarize the critical matches and unresolved review items in the email body.
+
+### SharePoint / Teams Fallback
+
+If Boss identifies a scan that is present in Teams/SharePoint but it is not visible in the local synced folder, use the SharePoint connector to locate and download a working copy for processing. Preserve the original SharePoint source file, log the SharePoint URL, and do not move or delete the source scan.
+
 ## Invoice And Receipt Routing
 
 Keep invoice review separate from statement review.
