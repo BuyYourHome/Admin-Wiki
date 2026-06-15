@@ -147,7 +147,7 @@ Common routing examples:
 
 - First Citizens credit card statement -> `2026\Credit Cards\...`
 - Mortgage statement -> matching property folder under `C:\Users\wesbr\Buy Your Home\Buy Your Home - Property`, then `Owning`, then the folder named for the mortgage company
-- Property insurance document -> matching property folder under `C:\Users\wesbr\Buy Your Home\Buy Your Home - Property`, then `Owning`; use an existing insurance-company or mortgage-company subfolder only when the match is clear
+- Property insurance document -> matching property folder under `C:\Users\wesbr\Buy Your Home\Buy Your Home - Property`, then that property's `Insurance` folder
 - Project/property invoice or receipt with a specific property address -> matching property folder under `C:\Users\wesbr\Buy Your Home\Buy Your Home - Property`, then `Owning`
 - Bank statement -> `2026\Bank Statement\...`
 - Lowe's Pro statement -> `2026\Credit Cards\Lowe's Pro-SYH-6140`
@@ -230,11 +230,12 @@ For every scanned property insurance document:
 
 4. Open the matched property folder and drill into:
 
-   `Owning`
+   `Insurance`
 
-5. Save the filed PDF directly in `Owning` unless a clearly matching insurance-company or mortgage-company subfolder already exists.
-6. Do not create a new folder automatically and do not choose between possible property matches by guesswork.
-7. If the property, policy, coverage status, or payment responsibility cannot be identified confidently, route the document to review and note the uncertainty in the log.
+5. Save the filed PDF in the property's `Insurance` folder.
+6. If the matching property folder is clear but the `Insurance` folder does not exist, route the document to review and note that the destination folder is missing. Do not create the folder automatically unless Boss gives a later rule or specific approval.
+7. Do not choose between possible property matches by guesswork.
+8. If the property, policy, coverage status, or payment responsibility cannot be identified confidently, route the document to review and note the uncertainty in the log.
 
 For insurance-company documents, capture these fields in the log and any later register/update handoff:
 

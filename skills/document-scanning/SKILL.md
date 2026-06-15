@@ -90,9 +90,9 @@ For each scanned property insurance document:
    `C:\Users\wesbr\Buy Your Home\Buy Your Home - Property`
 
 3. Use reliable details such as property address, borrower/entity, mortgage company, loan number or suffix, insurance company, policy number, or other document details.
-4. Open the matched property folder and drill down to its `Owning` folder.
-5. Save the filed PDF directly in `Owning` unless a clearly matching insurance-company or mortgage-company subfolder already exists.
-6. Do not create new folders automatically.
+4. Open the matched property folder and drill down to its `Insurance` folder.
+5. Save the filed PDF in the property's `Insurance` folder.
+6. If the matching property folder is clear but the `Insurance` folder does not exist, route the item to review and document that the destination folder is missing. Do not create the folder automatically unless Boss gives a later rule or specific approval.
 7. If the property, policy, coverage status, or payment responsibility cannot be identified confidently, route the item to review and document the uncertainty in the log.
 
 For insurance-company documents, capture:

@@ -49,9 +49,9 @@ Match the document to the correct property folder under:
 
 `C:\Users\wesbr\Buy Your Home\Buy Your Home - Property`
 
-Then file under that property's `Owning` folder.
+Then file under that property's `Insurance` folder.
 
-Use an existing insurance-company or mortgage-company subfolder only when the folder clearly matches the document. Do not create new folders automatically.
+If the matching property folder is clear but the `Insurance` folder does not exist, route the document to review and log that the destination folder is missing. Do not create the folder automatically unless Boss gives a later rule or specific approval.
 
 If the property, policy, coverage status, escrow/direct-pay status, or payment frequency cannot be identified confidently, route the document to review and log the missing or unclear fields.
 
