@@ -25,13 +25,14 @@ Accounting / Payroll Tax
 - Federal income tax withheld
 - Social Security and Medicare wage totals
 - Monthly tax liability breakdown
-- EFTPS access, if payment is due
+- EFTPS access through Login.gov, if payment is due
 
 ## Tools / Systems
 
 - IRS Form 941
 - IRS Free File Fillable Forms or downloaded PDF
 - EFTPS
+- Login.gov authentication for EFTPS
 - Payroll records
 
 ## Steps
@@ -51,7 +52,7 @@ Accounting / Payroll Tax
 13. Leave Part 3 blank unless a valid adjustment applies.
 14. Leave the third-party designee section blank unless intentionally authorizing someone.
 15. Sign and date the form with the correct title.
-16. If payment is owed, pay through EFTPS or the approved tax payment method.
+16. If payment is owed, go to `https://www.eftps.gov`, choose the EFTPS payment/login path, and authenticate using Login.gov.
 17. Save proof of filing and payment.
 18. Confirm quarterly totals will reconcile to year-end W-2 totals.
 
