@@ -2,7 +2,9 @@
 
 | Source | Location | Date | Status | Notes |
 | --- | --- | --- | --- | --- |
-| Claim source materials | `sources/` | TBD | missing | Add claim documents, correspondence, estimates, photos, receipts, and notes here before analysis or drafting. |
+| Outlook folder: `WesWill@BuyYourHomeLLC.com` / `Inbox/Attorneys/Geico Claim` | Outlook connector | 2026-06-15 review | background | Folder showed 33 total items; 33 messages were retrieved through pagination. See [[email-claim-review]]. |
+| GEICO total loss settlement letter attachment | Outlook message dated 2026-05-26 | 2026-05-26 | unclear | Email confirms attachment exists, but shared-mailbox attachment retrieval failed. Needed for actual property damage offer amount and settlement breakdown. |
+| Claim source materials | `sources/` | TBD | missing | Add downloaded PDFs, correspondence, estimates, photos, receipts, and notes here before final complaint submission. |
 
 ## Status Terms
 
