@@ -18,6 +18,8 @@ This project room holds development notes, source inventory, and review artifact
 - Recipient for Wes summary: `WesWill@BuyYourHomeLLC.com`.
 - Preferred mailbox/send path: Outlook Email connector, with OfficeAssist sent-item verification.
 - Fallback: local Outlook only when connector send or verification cannot complete safely.
+- Automation type: heartbeat, attached to the dedicated `OfficeAssist Morning Email Summary Status` thread.
+- Status thread id: `019ecba7-f1cc-7ac1-aaf7-d89a3f21b582`.
 
 ## Room Layout
 
@@ -38,3 +40,7 @@ This project room holds development notes, source inventory, and review artifact
 Use this room for development and design work. Do not change the live automation id, schedule, target thread, sender, recipient, or mailbox scope without a specific instruction from Wes.
 
 When the workflow changes, update the skill, this project room, and the registry together.
+
+## Change Log
+
+- 2026-06-15: With Wes's approval, converted `officeassist-morning-email-summary` from a standalone cron automation to a heartbeat automation attached to the dedicated `OfficeAssist Morning Email Summary Status` thread so daily runs stop creating new chats.

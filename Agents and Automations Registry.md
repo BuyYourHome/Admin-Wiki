@@ -10,7 +10,7 @@ Codex does not currently show every role below in one unified "Agents" list. Som
 |---|---|---|---|---|
 | Jean Wright / Office Assistant | Assistant profile and operating role | Active | On demand and through related automations | `C:\Codex\Office Assistant Profile.md`; `AGENTS.md` |
 | REI Text Message Watcher | Heartbeat automation | Active | Every 15 minutes during 8:00 AM-9:00 PM Eastern; adaptive 1-minute checks during activity | `C:\Users\wesbr\.codex\automations\morning-weswill-email-summary\automation.toml` |
-| OfficeAssist Morning Email Summary | Wiki-managed skill plus cron automation plus project room | Active | Daily at 8:00 AM Eastern | `skills\officeassist-morning-email-summary\SKILL.md`; `Project Rooms\Email Summary\README.md`; `C:\Users\wesbr\.codex\automations\officeassist-morning-email-summary\automation.toml` |
+| OfficeAssist Morning Email Summary | Wiki-managed skill plus heartbeat automation plus project room | Active | Daily at 8:00 AM Eastern | `skills\officeassist-morning-email-summary\SKILL.md`; `Project Rooms\Email Summary\README.md`; `C:\Users\wesbr\.codex\automations\officeassist-morning-email-summary\automation.toml` |
 | Email Delivery | Wiki-managed support skill | Active | Called by email-capable Admin workflows | `skills\email-delivery\SKILL.md` |
 | Document Scanning | Wiki-managed skill plus heartbeat automation | Active | Daily at 10:00 AM, 12:00 PM, 2:00 PM, and 4:00 PM | `skills\document-scanning\SKILL.md`; `C:\Users\wesbr\.codex\skills\document-scanning\SKILL.md`; `C:\Users\wesbr\.codex\automations\document-scanning\automation.toml` |
 | Codex Skill Source Control | Wiki-managed skill system | Active | On demand after skill changes or wiki pulls | `Codex Skill Source Rule.md`; `tools\sync-codex-skills.ps1`; `skills\` |
@@ -95,7 +95,7 @@ Current notification behavior:
 
 ## OfficeAssist Morning Email Summary
 
-Type: wiki-managed skill plus cron automation.
+Type: wiki-managed skill plus heartbeat automation.
 
 Status: active for Wes; Jenny summary paused.
 
@@ -106,6 +106,7 @@ Automation id:
 Schedule:
 
 - Daily around 8:00 AM Eastern.
+- Runs in the dedicated `OfficeAssist Morning Email Summary Status` Codex thread instead of creating a new standalone run chat each morning.
 
 Purpose:
 
@@ -128,6 +129,7 @@ Important limitations:
 - Jenny's summary is paused until `Jenny@BuyYourHomeLLC.com` is available locally or through a reliable connector.
 - Do not substitute another mailbox for Jenny.
 - Keep the automation attached to one dedicated status thread via `target_thread_id` so failure notifications and follow-up stay in one chat.
+- Current status thread id: `019ecba7-f1cc-7ac1-aaf7-d89a3f21b582`.
 
 Tools/services used:
 
