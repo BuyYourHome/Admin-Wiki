@@ -254,6 +254,10 @@ For mortgage-company insurance documents, capture these fields in the log and an
 - Date of status change
 - Policy number or insurance company name when shown
 
+Track insurance documents chronologically for each property and policy so the current status is clear. The log or register handoff should preserve each insurance document's date, source company, document type or status event, accepted/rejected coverage status when shown, escrow/direct-pay status when shown, payment frequency and amount when shown, filed document path, and uncertainty notes.
+
+When a newer insurance document changes the status for a property or policy, keep the older document history and update the current status from the newest reliable document. Do not overwrite the historical trail with only the latest status.
+
 ## Logging Requirements
 
 Every processed source scan should have one `.log.txt` file in:

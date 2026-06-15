@@ -162,6 +162,27 @@ For mortgage-company insurance documents, extract and track:
 
 Do not infer escrow status, direct-pay status, payment frequency, acceptance, rejection, or status-change date from weak context. If the document does not say clearly, mark that field as unknown and route to review when the missing field affects filing or follow-up.
 
+### Insurance Chronology And Current Status
+
+Track insurance documents chronologically for each property and policy so the current status can be read from the newest reliable status document while preserving the document history.
+
+For each insurance document, preserve these chronology fields in the log and any register/update handoff:
+
+- Document Date
+- Source Company
+- Document Type / Status Event
+- Coverage Accepted / Rejected, when shown
+- Status Change Date, when shown
+- Escrowed In Mortgage Payment, when shown
+- Paid Directly To Insurance Company, when shown
+- Payment Frequency, when shown
+- Annual Payment, when shown
+- Filed Document Path
+- Confidence
+- Notes / Missing Fields
+
+When a newer insurance document changes the property's or policy's status, keep the prior chronology entries and update the current status fields from the newest reliable document. Do not collapse the history into a single latest-status-only row.
+
 ## Boundary Detection Rules
 
 Treat a new document as likely starting when a page contains one or more of:
@@ -296,6 +317,8 @@ Never infer or update `Username` or `Password` from scanned statements. Leave th
 ### Insurance Register Rules
 
 Insurance register tracking should use one row per property and policy, not one row per scanned document.
+
+Insurance chronology should use one history entry per scanned insurance document or status event. The current-status fields should be derived from the newest reliable chronology entry for that property/policy.
 
 Match an existing insurance row using:
 

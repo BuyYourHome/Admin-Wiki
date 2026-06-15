@@ -115,6 +115,10 @@ For mortgage-company insurance documents, capture:
 
 Do not infer escrow status, direct-pay status, payment frequency, coverage acceptance, coverage rejection, or status-change date from weak context. If the document does not say clearly, mark that field as unknown and route to review when the missing field affects filing or follow-up.
 
+Track insurance documents chronologically for each property and policy so the current status can be read from the newest reliable status document. Preserve each insurance document's date, source company, document type/status event, accepted/rejected coverage status when shown, status-change date when shown, escrow/direct-pay status when shown, payment frequency and amount when shown, filed document path, confidence, and uncertainty notes.
+
+When a newer insurance document changes a property's or policy's status, keep the prior history and update the current status from the newest reliable document. Do not overwrite or collapse the historical trail into only the latest status.
+
 ## Invoice And Receipt Routing
 
 Keep invoice review separate from statement review.
@@ -183,6 +187,8 @@ The alert email should identify the sheet, property/project, lender/vendor, stat
 ## Insurance Register Notes
 
 Insurance tracking should use one row per property and policy when an insurance register worksheet exists.
+
+Insurance chronology should use one history entry per scanned insurance document or status event. Current-status fields should be based on the newest reliable chronology entry for that property/policy.
 
 Match insurance rows using:
 

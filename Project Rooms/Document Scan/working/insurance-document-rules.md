@@ -59,4 +59,19 @@ If the property, policy, coverage status, escrow/direct-pay status, or payment f
 
 Insurance tracking should use one row per property and policy when an insurance register worksheet exists.
 
+Track scanned insurance documents chronologically for each property/policy so the current insurance status can be read from the newest reliable status document.
+
+Chronological tracking should preserve:
+
+- Document date
+- Source company
+- Document type or status event
+- Coverage accepted/rejected status when shown
+- Escrow/direct-pay status when shown
+- Payment frequency and amount when shown
+- Filed document path
+- Notes about uncertainty or missing fields
+
+When a newer document changes a property/policy status, keep the older history and update the current status fields from the newest reliable document. Do not overwrite history with only the latest status.
+
 If the insurance register worksheet does not exist yet, do not write insurance data into an unrelated worksheet. Capture the fields in the scan log and final summary, and flag the register update as pending.
