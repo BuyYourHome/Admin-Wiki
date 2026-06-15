@@ -26,6 +26,7 @@ Accounting / Payroll Tax
 - Social Security and Medicare wage totals
 - Monthly tax liability breakdown
 - EFTPS access through Login.gov, if payment is due
+- BYH EIN and EFTPS PIN. The PIN is stored in Wes's password manager; do not copy it into the SOP.
 
 ## Tools / Systems
 
@@ -33,6 +34,7 @@ Accounting / Payroll Tax
 - IRS Free File Fillable Forms or downloaded PDF
 - EFTPS
 - Login.gov authentication for EFTPS
+- BYH EIN plus EFTPS PIN from Wes's password manager
 - Payroll records
 
 ## Steps
@@ -52,7 +54,7 @@ Accounting / Payroll Tax
 13. Leave Part 3 blank unless a valid adjustment applies.
 14. Leave the third-party designee section blank unless intentionally authorizing someone.
 15. Sign and date the form with the correct title.
-16. If payment is owed, go to `https://www.eftps.gov`, choose the EFTPS payment/login path, and authenticate using Login.gov.
+16. If payment is owed, go to `https://www.eftps.gov`, choose the EFTPS payment/login path, authenticate using Login.gov, then supply BYH's EIN and the EFTPS PIN stored in Wes's password manager when prompted.
 17. Save proof of filing and payment.
 18. Confirm quarterly totals will reconcile to year-end W-2 totals.
 
@@ -62,6 +64,7 @@ Accounting / Payroll Tax
 - Use Form 941-X to correct prior-quarter mistakes instead of fixing them in a later quarter.
 - W-2 wages and all four 941 filings should reconcile at year end.
 - Confirm deposit schedule with tax records or a tax professional if uncertain.
+- As of 2026-06-15, Wes reports the EFTPS account is ready to make Form 941 payments using BYH's EIN and the EFTPS PIN stored in his password manager.
 
 ## Common Mistakes
 

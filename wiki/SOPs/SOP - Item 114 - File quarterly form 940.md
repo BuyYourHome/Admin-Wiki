@@ -23,12 +23,15 @@ Accounting / Payroll Tax
 - Number of employees and wages per employee
 - State unemployment tax information
 - FUTA taxable wage calculation
-- EFTPS access or filing/payment method
+- EFTPS access through Login.gov, if payment is due
+- BYH EIN and EFTPS PIN. The PIN is stored in Wes's password manager; do not copy it into the SOP.
 
 ## Tools / Systems
 
 - IRS Form 940
 - EFTPS
+- Login.gov authentication for EFTPS
+- BYH EIN plus EFTPS PIN from Wes's password manager
 - Payroll records
 - State unemployment records
 
@@ -49,7 +52,7 @@ Accounting / Payroll Tax
 13. Complete adjustment sections if required.
 14. Report FUTA tax by quarter if the form requires it.
 15. If total FUTA tax is under the deposit threshold, pay with the form or by the approved method.
-16. If payment is due, pay through EFTPS or the approved payment method.
+16. If payment is due, go to `https://www.eftps.gov`, choose the EFTPS payment/login path, authenticate using Login.gov, then supply BYH's EIN and the EFTPS PIN stored in Wes's password manager when prompted.
 17. Sign and date the form.
 18. Save the filing and payment confirmation.
 
@@ -59,6 +62,7 @@ Accounting / Payroll Tax
 - FUTA is separate from state unemployment filings.
 - FUTA taxable wages are capped per employee; do not apply FUTA to all wages without checking the cap.
 - Confirm state credit eligibility before calculating the final amount.
+- As of 2026-06-15, Wes reports the EFTPS account is ready to make Form 940 payments using BYH's EIN and the EFTPS PIN stored in his password manager.
 
 ## Common Mistakes
 
