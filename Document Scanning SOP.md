@@ -18,6 +18,7 @@ Supported document types include:
 - Bank statements
 - Credit card statements
 - Loan and line-of-credit statements
+- Property insurance documents from insurance companies or mortgage companies
 - Invoices
 - Receipts
 - CPA and tax forms
@@ -146,6 +147,7 @@ Common routing examples:
 
 - First Citizens credit card statement -> `2026\Credit Cards\...`
 - Mortgage statement -> matching property folder under `C:\Users\wesbr\Buy Your Home\Buy Your Home - Property`, then `Owning`, then the folder named for the mortgage company
+- Property insurance document -> matching property folder under `C:\Users\wesbr\Buy Your Home\Buy Your Home - Property`, then `Owning`; use an existing insurance-company or mortgage-company subfolder only when the match is clear
 - Project/property invoice or receipt with a specific property address -> matching property folder under `C:\Users\wesbr\Buy Your Home\Buy Your Home - Property`, then `Owning`
 - Bank statement -> `2026\Bank Statement\...`
 - Lowe's Pro statement -> `2026\Credit Cards\Lowe's Pro-SYH-6140`
@@ -207,6 +209,50 @@ Example:
 `26-05-03 - Shellpoint - 1234 - Mortgage Statement.pdf`
 
 If the property folder or mortgage-company folder cannot be identified confidently, do not guess and do not create a new folder automatically. Route the item to review and note the uncertainty in the log.
+
+## Property Insurance Document Filing
+
+Property insurance documents are property documents when they come from an insurance company or from a mortgage company about property insurance coverage.
+
+Use the current property/mortgage reference workbook when matching an insurance document to a property:
+
+`C:\Users\wesbr\Buy Your Home\Buy Your Home - Property\Credit Cards Sheet.xlsx`
+
+The `Mortgages` worksheet lists the current properties and mortgage context.
+
+For every scanned property insurance document:
+
+1. Decide whether the document came from an insurance company or a mortgage company.
+2. Identify the related property using the property address, borrower/entity, mortgage company, loan number or suffix, insurance company, policy number, or other reliable document details.
+3. Match the property to a project folder under:
+
+   `C:\Users\wesbr\Buy Your Home\Buy Your Home - Property`
+
+4. Open the matched property folder and drill into:
+
+   `Owning`
+
+5. Save the filed PDF directly in `Owning` unless a clearly matching insurance-company or mortgage-company subfolder already exists.
+6. Do not create a new folder automatically and do not choose between possible property matches by guesswork.
+7. If the property, policy, coverage status, or payment responsibility cannot be identified confidently, route the document to review and note the uncertainty in the log.
+
+For insurance-company documents, capture these fields in the log and any later register/update handoff:
+
+- Insurance company name
+- Policy number
+- Property address
+- Annual payment
+- Whether the premium is escrowed in the mortgage payment
+- Whether Buy Your Home pays the insurance company directly
+- Whether payment is monthly or annual
+
+For mortgage-company insurance documents, capture these fields in the log and any later register/update handoff:
+
+- Mortgage company name
+- Property address
+- Whether the mortgage company accepted or rejected the coverage
+- Date of status change
+- Policy number or insurance company name when shown
 
 ## Logging Requirements
 

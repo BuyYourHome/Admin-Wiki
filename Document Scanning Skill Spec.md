@@ -50,6 +50,7 @@ Initial supported types:
 - Credit card statements
 - Line of credit statements
 - Loan statements
+- Property insurance documents from insurance companies or mortgage companies
 - Invoices
 - Receipts
 - CPA/tax forms
@@ -67,6 +68,7 @@ Primary routing categories:
 - Lines of credit: `2026\Line of Credit\...`
 - Non-property-specific loans: `2026\Loans\...`
 - Mortgage statements: match the statement to the related property folder under `C:\Users\wesbr\Buy Your Home\Buy Your Home - Property`, drill into that property's `Owning` folder, then save the statement in the folder named for the mortgage company.
+- Property insurance documents: match the document to the related property folder under `C:\Users\wesbr\Buy Your Home\Buy Your Home - Property`, drill into that property's `Owning` folder, then save there unless a clearly matching insurance-company or mortgage-company subfolder already exists.
 - Project/property invoices and receipts: match the document to the related property folder under `C:\Users\wesbr\Buy Your Home\Buy Your Home - Property`, drill into that property's `Owning` folder, then save the filed PDF there unless a more specific approved subfolder already exists.
 - Quest invoices: `2026\Quest\Invoices\...`
 - Quest receipts: `2026\Quest\Receipts\...`
@@ -115,6 +117,50 @@ For each scanned PDF, JPG, or JPEG:
 7. Save the split statement PDF in that mortgage-company folder.
 
 If the property or mortgage-company folder cannot be identified confidently, do not guess and do not create a new folder automatically. Route the item to review and document what was unclear in the log.
+
+## Property Insurance Document Routing
+
+Property insurance documents are property documents when they come from an insurance company or from a mortgage company about property insurance coverage.
+
+Reference workbook for current property and mortgage matching:
+
+`C:\Users\wesbr\Buy Your Home\Buy Your Home - Property\Credit Cards Sheet.xlsx`
+
+Reference worksheet:
+
+`Mortgages`
+
+For each scanned property insurance document:
+
+1. Determine whether the sender/source is an insurance company or a mortgage company.
+2. Match the document to the correct project/property folder under:
+
+   `C:\Users\wesbr\Buy Your Home\Buy Your Home - Property`
+
+3. Use reliable details such as property address, borrower/entity, mortgage company, loan number or suffix, insurance company, policy number, or other document details.
+4. Open the matched property folder and drill down to its `Owning` folder.
+5. Save the filed PDF directly in `Owning` unless a clearly matching insurance-company or mortgage-company subfolder already exists.
+6. If the property, policy, coverage status, or payment responsibility cannot be identified confidently, route the item to review and document what was unclear in the log.
+
+For insurance-company documents, extract and track:
+
+- Insurance company name
+- Policy number
+- Property address
+- Annual payment
+- Whether the premium is escrowed in the mortgage payment
+- Whether Buy Your Home pays the insurance company directly
+- Whether payment is monthly or annual
+
+For mortgage-company insurance documents, extract and track:
+
+- Mortgage company name
+- Property address
+- Whether the mortgage company accepted or rejected the coverage
+- Date of status change
+- Policy number or insurance company name when shown
+
+Do not infer escrow status, direct-pay status, payment frequency, acceptance, rejection, or status-change date from weak context. If the document does not say clearly, mark that field as unknown and route to review when the missing field affects filing or follow-up.
 
 ## Boundary Detection Rules
 
@@ -206,6 +252,7 @@ Register sheets:
 - `Mortgage`
 - `Credit Cards`
 - `Invoices`
+- `Insurance` when the workbook has been updated to support insurance tracking
 
 Use one row per account. Match an existing account row using:
 
@@ -245,6 +292,45 @@ If the statement date cannot be confidently read:
 2. Mark the item for review.
 
 Never infer or update `Username` or `Password` from scanned statements. Leave those fields blank unless Boss explicitly provides them.
+
+### Insurance Register Rules
+
+Insurance register tracking should use one row per property and policy, not one row per scanned document.
+
+Match an existing insurance row using:
+
+`Property / Project + Property Address + Insurance Company + Policy #`
+
+For insurance-company documents, update or hand off these fields when confidently available:
+
+- Insurance Company
+- Policy #
+- Property Address
+- Annual Payment
+- Escrowed In Mortgage Payment
+- Paid Directly To Insurance Company
+- Payment Frequency
+- Source Scan File
+- Source Scan Path
+- Status
+- Confidence
+- Last Updated
+
+For mortgage-company insurance documents, update or hand off these fields when confidently available:
+
+- Mortgage Company
+- Property Address
+- Coverage Accepted / Rejected
+- Status Change Date
+- Insurance Company
+- Policy #
+- Source Scan File
+- Source Scan Path
+- Status
+- Confidence
+- Last Updated
+
+If the insurance register worksheet does not exist yet, do not modify another worksheet as a substitute. Capture the insurance details in the scan log and final summary, and flag that register update is pending.
 
 ### Register Alert Rules
 

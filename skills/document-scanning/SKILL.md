@@ -15,7 +15,8 @@ Process scanned Office Admin PDFs and JPG/JPEG image scans conservatively. Split
 - Logs: `C:\Users\wesbr\Buy Your Home\Buy Your Home - Office Admin\Scanned Files\Logs`
 - Archive: `C:\Users\wesbr\Buy Your Home\Buy Your Home - Office Admin\Scanned Files\Archived`
 - Destination root: `C:\Users\wesbr\Buy Your Home\Buy Your Home - Office Admin\2026`
-- Property root for mortgage statements: `C:\Users\wesbr\Buy Your Home\Buy Your Home - Property`
+- Property root for mortgage and property insurance documents: `C:\Users\wesbr\Buy Your Home\Buy Your Home - Property`
+- Current property/mortgage reference workbook: `C:\Users\wesbr\Buy Your Home\Buy Your Home - Property\Credit Cards Sheet.xlsx`, worksheet `Mortgages`
 
 Read `references/folder-map.md` before routing files. Read `references/routing-rules.md` before deciding uncertain matches.
 
@@ -74,6 +75,45 @@ For each scanned PDF, JPG, or JPEG:
 7. Save the split statement PDF in that mortgage-company folder.
 
 If the property or mortgage-company folder cannot be identified confidently, do not guess and do not create a new folder automatically. Route the item to review and document what was unclear in the log.
+
+## Property Insurance Documents
+
+Property insurance documents are property documents when they come from an insurance company or from a mortgage company about property insurance coverage.
+
+Use `C:\Users\wesbr\Buy Your Home\Buy Your Home - Property\Credit Cards Sheet.xlsx`, worksheet `Mortgages`, as the current property and mortgage reference source when matching insurance documents.
+
+For each scanned property insurance document:
+
+1. Determine whether the document came from an insurance company or a mortgage company.
+2. Match it to the correct property folder under:
+
+   `C:\Users\wesbr\Buy Your Home\Buy Your Home - Property`
+
+3. Use reliable details such as property address, borrower/entity, mortgage company, loan number or suffix, insurance company, policy number, or other document details.
+4. Open the matched property folder and drill down to its `Owning` folder.
+5. Save the filed PDF directly in `Owning` unless a clearly matching insurance-company or mortgage-company subfolder already exists.
+6. Do not create new folders automatically.
+7. If the property, policy, coverage status, or payment responsibility cannot be identified confidently, route the item to review and document the uncertainty in the log.
+
+For insurance-company documents, capture:
+
+- Insurance company name.
+- Policy number.
+- Property address.
+- Annual payment.
+- Whether the premium is escrowed in the mortgage payment.
+- Whether Buy Your Home pays the insurance company directly.
+- Whether payment is monthly or annual.
+
+For mortgage-company insurance documents, capture:
+
+- Mortgage company name.
+- Property address.
+- Whether the mortgage company accepted or rejected the coverage.
+- Date of status change.
+- Policy number or insurance company name when shown.
+
+Do not infer escrow status, direct-pay status, payment frequency, coverage acceptance, coverage rejection, or status-change date from weak context. If the document does not say clearly, mark that field as unknown and route to review when the missing field affects filing or follow-up.
 
 ## Invoice And Receipt Routing
 
@@ -139,6 +179,16 @@ Current alert rules:
 2. `Current Min Payment` is more than `$10.00` less than `Last Min Payment`.
 
 The alert email should identify the sheet, property/project, lender/vendor, statement date, last minimum payment, current minimum payment, and source statement file when available. Do not send duplicate alerts for the same row and same statement date unless a later update changes the alert details.
+
+## Insurance Register Notes
+
+Insurance tracking should use one row per property and policy when an insurance register worksheet exists.
+
+Match insurance rows using:
+
+`Property / Project + Property Address + Insurance Company + Policy #`
+
+If an insurance worksheet does not exist yet, do not substitute another worksheet. Capture the insurance details in the scan log and final summary, and flag that register update is pending.
 
 ## Safety
 
