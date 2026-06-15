@@ -1,5 +1,7 @@
 # Document Scanning SOP
 
+Project room: [[Project Rooms/Document Scan/README|Document Scan Project Room]]
+
 ## Purpose
 
 This SOP explains how the `document-scanning` skill and automation process scanned Office Admin documents, what a human needs to do to support the process, and what to do if the automation does not work.

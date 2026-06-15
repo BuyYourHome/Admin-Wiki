@@ -5,6 +5,8 @@ description: Process scanned financial/admin PDFs from Office Admin scan folders
 
 # Document Scanning
 
+Development notes, source inventory, and open questions for this workflow live in `C:\Codex\Wiki Files\Project Rooms\Document Scan\`.
+
 Process scanned Office Admin PDFs conservatively. Split combined scans into separate statement/account files, name them consistently, file them into the mapped Teams/SharePoint folders, and write a plain text log for every source scan.
 
 ## Paths

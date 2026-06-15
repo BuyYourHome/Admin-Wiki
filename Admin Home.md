@@ -13,6 +13,7 @@ This is the starting page for the Buy Your Home admin wiki.
 - [[Connector and Plugin Usage Rules]]
 - [[Project Rooms/SOPs/README|SOPs Project Room]]
 - [[Project Rooms/Email Summary/README|Email Summary Project Room]]
+- [[Project Rooms/Document Scan/README|Document Scan Project Room]]
 - [[Codex Python Runtime Rule]]
 - [[LibreOffice Location Rule]]
 - [[Document Scanning SOP]]

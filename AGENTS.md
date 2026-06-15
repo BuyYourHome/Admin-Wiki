@@ -21,6 +21,7 @@ Use this repo when formulating solutions for office-admin workflows, SOPs, autom
 - Use `Project Room Workflow.md` before major work that depends on multiple source files, emails, scans, notes, spreadsheets, or prior drafts.
 - Use `Project Rooms\SOPs\` for SOP source emails, extracted notes, SOP pages, SOP index, source map, and SOP review questions.
 - Use `Project Rooms\Email Summary\` for development work on the OfficeAssist morning email summary workflow, including source inventory, automation notes, open questions, and review-ready handoffs.
+- Use `Project Rooms\Document Scan\` for development work on scanned document processing, including scan routing, automation notes, source inventory, and review-ready handoffs.
 - Use `Repository Location Rule.md` for repo/location policy.
 - Use `Git Work Scope Rule.md` before committing or pushing Admin wiki work.
 - Use `Codex Skill Source Rule.md` before creating, editing, syncing, or installing Admin wiki-managed Codex skills.

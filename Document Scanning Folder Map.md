@@ -1,5 +1,7 @@
 # Document Scanning Folder Map
 
+Project room: [[Project Rooms/Document Scan/README|Document Scan Project Room]]
+
 Source folder:
 
 `C:\Users\wesbr\Buy Your Home\Buy Your Home - Office Admin\2026`

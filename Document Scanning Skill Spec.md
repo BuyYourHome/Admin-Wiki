@@ -1,5 +1,7 @@
 # Document Scanning Skill Spec
 
+Project room: [[Project Rooms/Document Scan/README|Document Scan Project Room]]
+
 Working name: `document-scanning`
 
 Purpose: process scanned financial/admin PDFs and image scans (`.jpg` / `.jpeg`), split combined scans into separate documents when applicable, name them consistently, and route them into the correct Office Admin or property/project folder.
