@@ -22,7 +22,10 @@ Use this handoff when resuming development in a dedicated chat.
 
 ## First Development Tasks
 
-1. Confirm where the run memory file lives and whether the skill should name it explicitly.
-2. Decide whether the new development chat should become the live automation status thread.
-3. Test Outlook Email connector access for OfficeAssist, Wes delegated mailbox, and OfficeAssist Sent Items verification.
-4. Review whether the current token-summary section is still useful in the daily email.
+1. Decide whether the new development chat should become the live automation status thread.
+
+## Completed Development Tasks
+
+- 2026-06-15: Confirmed the run memory file lives at `C:\Users\wesbr\.codex\automations\officeassist-morning-email-summary\memory.md`; updated the skill and source inventory to name it explicitly.
+- 2026-06-15: Tested read-only Outlook Email connector access. The connector could list `WesWill@BuyYourHomeLLC.com` folders recursively, including rule-routed business folders; list `OfficeAssist@BuyYourHomeLLC.com` folders, including Drafts and Sent Items; and read recent OfficeAssist Sent Items showing sent Boss summaries to `WesWill@BuyYourHomeLLC.com`. No test email was sent.
+- 2026-06-15: Reviewed token-summary usefulness. `tools\get-codex-token-summary.ps1` returned live JSON with yesterday totals, week-to-date totals, rate-limit remaining percentages, and an explicit unconfigured weekly budget state. Recommendation: keep the token section unless Wes says it is clutter; continue saying weekly budget is not configured rather than estimating it.

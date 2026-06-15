@@ -6,6 +6,12 @@ Source path:
 
 Status: authoritative for the live local automation configuration.
 
+Related run memory:
+
+`C:\Users\wesbr\.codex\automations\officeassist-morning-email-summary\memory.md`
+
+Status: authoritative for persistent run state, including verified send history, cutoff decisions, summary topics, blockers, and Jenny pause notes.
+
 Current observed values as of 2026-06-15:
 
 | Field | Value |
