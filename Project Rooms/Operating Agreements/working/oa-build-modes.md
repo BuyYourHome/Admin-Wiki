@@ -35,6 +35,7 @@ The selected mode determines the entity being drafted for, the working folder, t
 - Refresh Teams/SharePoint sources before derivative work when the controlling source is a Teams file that Wes may edit.
 - Record new source or draft files in `working\source-inventory.md`.
 - Structural and visual QA rules for Word documents apply to all modes.
+- Manager and certification blocks must support entity Managers as well as individual Managers. If Investment Services LLC serves as Manager, include it in the certification block and identify the signer in capacity, such as `[Signer Name], Manager of Investment Services LLC, Manager of [Company Name]`.
 
 ## BYH Mode Differentiation From SYH
 

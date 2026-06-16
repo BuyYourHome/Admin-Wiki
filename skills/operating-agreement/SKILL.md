@@ -76,6 +76,7 @@ When using SYH/Simplified OA material for BYH:
 - Use green font for BYH additions and replacement text unless Wes changes the color rule.
 - Strike SYH/retirement-account language that does not apply to BYH, except for approved clean-edit areas.
 - Use clean edits for certification/signature pages and Exhibit A when historical text would confuse signing or ownership records.
+- Article 5 and the certification/signature block must support entity Managers as well as individual Managers. If Investment Services LLC serves as Manager, include it in the certification block and identify the signer in capacity, such as `[Signer Name], Manager of Investment Services LLC, Manager of [Company Name]`.
 - Do not renumber sections or delete numbered clauses unless Wes explicitly approves that cleanup.
 
 ## Safety And Review

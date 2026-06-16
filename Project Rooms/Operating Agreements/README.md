@@ -67,6 +67,7 @@ Excluded unless Wes specifically adds them:
 - Select the correct OA build mode before drafting. Current modes are `SYH`, `BYH`, `Investment Services`, `BYH 401K`, and `Heritage Management`.
 - Keep mode-specific drafts in their corresponding `working\<Mode>\` folder.
 - Keep drafting reference files separated from current/potentially controlling OA source files.
+- Manager and certification/signature blocks must support entity Managers as well as individual Managers. If Investment Services LLC serves as Manager, include it in the certification block and identify the signer in representative capacity.
 - Treat signed agreements, signed amendments, and attorney-confirmed documents as potentially authoritative, subject to inventory review.
 - Mark unsupported items as `[UNSUPPORTED]` instead of filling gaps.
 - Flag legal, tax, authority, ownership, member-rights, or entity-formation questions that need attorney or CPA review.
