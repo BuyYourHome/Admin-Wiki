@@ -206,6 +206,37 @@ When Boss asks for a property insurance status report:
 5. State unknown fields as unknown. Do not invent escrow status, direct-pay status, mortgage acceptance, or payment frequency.
 6. Each time the report is regenerated, email the friendly report PDF to both `WesWill@BuyYourHomeLLC.com` and `Jenny@BuyYourHomeLLC.com`. In the email body, note anything in the report that needs attention, including critical matches, coverage gaps, lender acceptance problems, cancellation/lapse notices, unresolved review items, missing policy numbers, missing Insurance folders, or unclear payment responsibility.
 
+### Mortgage Statement Reports
+
+When Boss asks for a mortgage statement report, or when a scan run files mortgage statements and a report is appropriate:
+
+1. Use one row per property/loan.
+2. Include columns for property, mortgage company/servicer, loan number or suffix, statement date, due date, payment due, past-due/delinquency/late-fee/foreclosure-warning flag, escrow/tax/insurance notice flag, latest filed statement path, and review flags.
+3. Use color or status labels so late, delinquent, foreclosure-warning, escrow shortage, insurance-request, missing-match, and review rows are easy to scan.
+4. Email the friendly report PDF to both `WesWill@BuyYourHomeLLC.com` and `Jenny@BuyYourHomeLLC.com`.
+5. In the email body, note anything that needs attention, including late notices, payment changes, escrow shortages, insurance requests, lender-placed insurance warnings, foreclosure language, missing property matches, missing mortgage-company folders, or any statement routed to review.
+
+### Credit Card Statement Reports
+
+When Boss asks for a credit card statement report, or when a scan run files credit card statements and a report is appropriate:
+
+1. Use one row per card/account.
+2. Include columns for card issuer/account label, account last 4 or suffix, business/entity or property/project when shown, statement date, due date, statement balance, minimum payment, prior minimum payment comparison when available, latest filed statement path, and review flags.
+3. Use color or status labels so minimum-payment increases, notable minimum-payment decreases, late fees, unusual balance changes, missing account matches, duplicate-looking statements, and review rows are easy to scan.
+4. Email the friendly report PDF to both `WesWill@BuyYourHomeLLC.com` and `Jenny@BuyYourHomeLLC.com`.
+5. In the email body, note anything that needs attention, including minimum-payment increases or notable decreases, late fees, unusual balance jumps, missing account matches, duplicate-looking statements, or any statement routed to review.
+
+### Invoice And Receipt Reports
+
+When Boss asks for an invoice/receipt report, or when a scan run files invoices or receipts and a report is appropriate:
+
+1. Use one row per invoice or receipt.
+2. Include columns for vendor/payee, property/project or general category, invoice or receipt date, due date when shown, amount, invoice number or receipt reference when shown, filed location, review/payment status, and review flags.
+3. Use color or status labels so due-soon, past-due, unknown-vendor, unclear-property-match, duplicate-looking, missing-amount/date, security-code/scam concern, and review rows are easy to scan.
+4. Email the friendly report PDF to both `WesWill@BuyYourHomeLLC.com` and `Jenny@BuyYourHomeLLC.com`.
+5. In the email body, note anything that needs attention, including invoices due soon, past-due notices, unknown vendors, unclear property matches, duplicate-looking invoices, missing amounts or dates, security-code/scam concerns, or any item routed to invoice review.
+6. Do not pay invoices, submit forms, move money, or contact vendors.
+
 ### SharePoint / Teams Fallback
 
 If Boss identifies a scan that is present in Teams/SharePoint but it is not visible in the local synced folder, use the SharePoint connector to locate and download a working copy for processing. Preserve the original SharePoint source file, log the SharePoint URL, and do not move or delete the source scan.
