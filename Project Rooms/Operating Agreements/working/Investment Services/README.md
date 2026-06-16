@@ -33,10 +33,10 @@ Do not copy SYH, BYH, BYH 401K, or Heritage Management entity facts into this mo
 
 ## Current Draft
 
-- `IS V03 - Investment Services OA Draft - from Reassembled OA Check.docx` is the current Investment Services working draft created from the current Reassembled OA Check / SYH framework.
-- `IS V03 - Investment Services OA Draft Notes.md` records source lineage, applied changes, open facts, and QA results.
-- V03 uses the Wyoming Investment Services OA only for the start/effective-date instruction and does not use it as the drafting source.
-- V03 carries forward the source-stack Drafting Legend, adds the required page/version footer to agreement sections, and leaves the final Drafting Legend section without a footer.
+- `IS V04 - Investment Services OA Draft - from Reassembled OA Check.docx` is the current Investment Services working draft created from the current Reassembled OA Check / SYH framework.
+- `IS V04 - Investment Services OA Draft Notes.md` records source lineage, applied changes, open facts, and QA results.
+- V04 uses the Wyoming Investment Services OA only for the start/effective-date instruction and does not use it as the drafting source.
+- V04 carries forward the source-stack Drafting Legend, adds the required page/version footer to agreement sections, leaves the final Drafting Legend section without a footer, uses narrower targeted redlines where practical, omits the Investment Services-as-manager source clause from Investment Services LLC's own OA, keeps Section `5.1(b)(xi)` unstruck, strikes Sections `9.1`, `9.2`, and `9.6`, and removes Investment Services LLC from the certification manager/signature block.
 - Any future OA draft using the SYH/Simplified OA framework should begin from the Reassembled OA Check unless Wes explicitly names another source.
 
 ## Current Investment Services Working Facts

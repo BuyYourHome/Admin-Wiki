@@ -85,6 +85,17 @@ Use these facts in the next Investment Services draft unless Wes changes them:
 - Investment Services LLC's business is not limited to residential real estate investment.
 - Investment Services LLC provides services to other investment companies, including management services, signing authority, buyer-qualification services, and related approved services.
 
+## V04 Adjustment Rules From Wes
+
+Use these rules in the next Investment Services draft unless Wes changes them:
+
+- Make the minimum practical redline changes needed to affect the requested change. Do not replace a whole paragraph when targeted word or phrase replacements will do.
+- In the summary and Article 1 business-purpose counterpart, leave out the added phrase `Business is not limited to residential real estate investment.`
+- Leave out the `Entity Manager Authority` paragraph and the related Investment Services manager-review note from Investment Services LLC's own OA.
+- Keep Section `5.1(b)(xi)` operative and unstruck.
+- Strike Sections `9.1`, `9.2`, and `9.6` while preserving their paragraph positions for reference continuity.
+- Remove Investment Services LLC from the certification page manager/signature block.
+
 ## Build Authorization
 
 - Do not create a new Investment Services OA draft merely because Wes gives process corrections, review comments, assumptions, or drafting preferences.
