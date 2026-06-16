@@ -50,6 +50,9 @@ Excluded unless Wes specifically adds them:
 4. For further analysis or derivative drafting, break the simplified OA into separate reassemblable files before making substantive changes. Segment it by opening paragraphs, summary, and each article. Preserve a clear reassembly order so the separate files can be recombined into a complete OA. When creating subfiles, retain the original Word formatting, including font color, tracked-edit markings, paragraph styles, numbering, spacing, page-break behavior, and other visible formatting. Verify that the subfiles can be reassembled into the same original file before using them for analysis, drafting, or derivative work.
 5. Give each simplified OA subfile a meaningful name. Include the reassembly order and the segment subject in the filename, such as `01 - Opening Paragraphs`, `02 - Summary`, and `03 - Article 1 - Offices and Records`.
 6. Keep the simplified OA subfiles in the Jeff Watson subfolder `sources\Jeff Watson\Simplified OA Subfiles\`. Do not place those subfiles in the Jeff Watson root folder, the main Sell Your Home source folder, or another project-room folder unless Wes explicitly asks.
+7. Build new derivative OAs from the verified Simplified OA subfile set. Use the Reassembled OA Check as the assembled starting `.docx` because it is the verified recombination of those subfiles, while treating the subfiles as the controlled building blocks and article-level map.
+8. Add a footer to assembled OA drafts showing page number and draft/version identifier, following the Contract for Deed footer pattern.
+9. When an OA is finalized, copy the finalized agreement to the appropriate Teams channel/folder for that entity and move prior existing OA files there into an `Operating Agreement Archive` folder.
 
 ## Source Inventory Status
 

@@ -49,11 +49,20 @@ Keep mode outputs in the matching folder under `Project Rooms\Operating Agreemen
 2. Select the OA mode.
 3. Identify the source document from the source inventory, version shortcut file, or Wes's explicit instruction.
 4. Refresh the Teams/SharePoint source first when the project rules require refresh and the connector is available. If unavailable, disclose the limitation in notes and final response.
-5. For any new draft using the SYH/Simplified OA framework, begin from the Reassembled OA Check unless Wes explicitly names a different source for that specific draft.
+5. For any new draft using the SYH/Simplified OA framework, build from the verified Simplified OA subfile set. Use the Reassembled OA Check as the assembled starting `.docx` because it is the verified recombination of those subfiles, while treating the subfiles as the controlled building blocks and article-level map.
 6. Preserve original source files. Edit only working copies, output drafts, or process notes.
 7. Keep source lineage visible: distinguish Jeff Watson source language, Wes simplified language, Jeff later edits, and target-entity additions/replacements.
-8. Record new source, draft, comparison, or process files in `working\source-inventory.md`.
-9. Commit only the current chat's scoped OA body of work. Do not stage unrelated project rooms or prior local changes.
+8. Add a footer to assembled OA drafts showing page number and draft/version identifier, following the Contract for Deed footer pattern.
+9. Record new source, draft, comparison, or process files in `working\source-inventory.md`.
+10. Commit only the current chat's scoped OA body of work. Do not stage unrelated project rooms or prior local changes.
+
+## Finalization And Teams Delivery
+
+When an OA is finalized:
+
+- Copy the finalized agreement to the appropriate Teams channel/folder for that entity.
+- Move prior existing OA files in that Teams channel/folder into an `Operating Agreement Archive` folder so the current OA is easy to identify and prior versions remain preserved.
+- Do not treat Teams as the working repository. Keep working drafts, source inventory, build notes, and process records in the Admin wiki project room.
 
 ## BYH From SYH Conversion
 

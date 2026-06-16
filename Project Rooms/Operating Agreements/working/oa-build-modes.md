@@ -11,6 +11,7 @@ The selected mode determines the entity being drafted for, the working folder, t
 - If the user asks for an OA without naming the entity, ask or infer from the immediate context and state the selected mode.
 - Keep outputs separated by mode-specific working folders.
 - All new OA drafts that use the SYH/Simplified OA framework must begin from the Reassembled OA Check unless Wes explicitly names a different source for that specific draft.
+- New derivative OAs must be built from the verified Simplified OA subfile set. The Reassembled OA Check is the assembled starting `.docx`, but the subfiles remain the controlled building blocks and article-level map.
 - When a draft uses SYH source language as a building block for another entity, preserve the distinction between source-origin language and target-entity changes.
 
 ## Modes
@@ -28,6 +29,8 @@ The selected mode determines the entity being drafted for, the working folder, t
 - Use `sources\` only for original, copied, refreshed, or reference source files.
 - Use `working\<Mode>\` for drafts, build notes, comparisons, and mode-specific process notes.
 - Use `outputs\` only for review-ready or final deliverables when requested.
+- Add a footer to assembled OA drafts showing page number and draft/version identifier, following the Contract for Deed footer pattern.
+- When an OA is finalized, copy it to the appropriate Teams channel/folder for that entity and move prior existing OA files there into an `Operating Agreement Archive` folder.
 - Keep Jeff Watson drafting files segregated under `sources\Jeff Watson\`.
 - Refresh Teams/SharePoint sources before derivative work when the controlling source is a Teams file that Wes may edit.
 - Record new source or draft files in `working\source-inventory.md`.
