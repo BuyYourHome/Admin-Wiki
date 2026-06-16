@@ -1,0 +1,4 @@
+interface:
+  display_name: "Operating Agreement"
+  short_description: "Build and revise entity operating agreements."
+  default_prompt: "Use $operating-agreement to select the correct OA build mode and create, revise, compare, or organize an operating agreement draft from the Operating Agreements project room."

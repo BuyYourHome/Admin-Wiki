@@ -17,6 +17,7 @@ Codex does not currently show every role below in one unified "Agents" list. Som
 | Admin Request Wrapup | Wiki-managed skill | Active | At the end of Admin wiki requests | `skills\admin-request-wrapup\SKILL.md`; `AGENTS.md` |
 | Credit Worthiness Evaluator | Wiki-managed skill plus project room | Active | On demand | `skills\credit-worthiness-evaluator\SKILL.md`; `Project Rooms\Credit Worthiness Evaluator\README.md` |
 | Contract for Deed | Wiki-managed skill plus project room | Active | On demand | `skills\contract-for-deed\SKILL.md`; `Project Rooms\Contract for Deed\PROJECT-ROOM.md` |
+| Operating Agreement | Wiki-managed skill plus project room | Draft | On demand | `skills\operating-agreement\SKILL.md`; `Project Rooms\Operating Agreements\README.md` |
 | Amortization | Wiki-managed support skill plus project room | Draft | Called by Contract for Deed or other seller-financing workflows | `skills\amortization\SKILL.md`; `Project Rooms\Amortization\README.md` |
 | CMA Report | Wiki-managed skill | Active | On demand when a CMA or property report is created | `skills\cma-report\SKILL.md` |
 | Grocery List Handler | Wiki rule and data workflow | Active | On demand, including approved Boss/Jenny text instructions | `operations/grocery-list/` |
