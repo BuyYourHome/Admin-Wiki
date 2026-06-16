@@ -18,7 +18,7 @@ The selected mode determines the entity being drafted for, the working folder, t
 | --- | --- | --- | --- | --- |
 | `SYH` | Sell Your Home, LLC | `working\SYH\` | Sell Your Home OA revisions and SYH manager/member updates. | Simplified OA or Reassembled OA Check unless Wes names another SYH source. |
 | `BYH` | Buy Your Home, LLC | `working\BYH\` | Buy Your Home OA conversion from SYH/Jeff Watson building blocks. | Simplified OA / Reassembled OA Check plus cumulative BYH rules and `BYH OA Process Control.xlsx`. |
-| `Investment Services` | Investment Services LLC | `working\Investment Services\` | Investment Services OA revisions or new drafts. | Inventory-controlled Investment Services source files until a specific source is selected. |
+| `Investment Services` | Investment Services LLC | `working\Investment Services\` | Investment Services OA conversion from SYH/Jeff Watson building blocks, similar to BYH but with Investment Services-specific facts. | Simplified OA / Reassembled OA Check plus Investment Services mode rules. The Wyoming Investment Services OA is reference/background only unless Wes explicitly names it as the source. |
 | `BYH 401K` | BYH 401K LLC | `working\BYH 401K\` | BYH 401K OA drafting where no copied OA source has yet been confirmed. | Missing-source mode until an OA source or drafting direction is provided. |
 | `Heritage Management` | Heritage Management LLC | `working\Heritage Management\` | Heritage Management OA revisions or new drafts. | Inventory-controlled Heritage Management source files until a specific source is selected. |
 
