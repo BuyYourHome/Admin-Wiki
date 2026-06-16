@@ -30,6 +30,7 @@ The selected mode determines the entity being drafted for, the working folder, t
 - Use `working\<Mode>\` for drafts, build notes, comparisons, and mode-specific process notes.
 - Use `outputs\` only for review-ready or final deliverables when requested.
 - Add a footer to assembled OA drafts showing page number and draft/version identifier, following the Contract for Deed footer pattern.
+- Put the Drafting Legend at the end of review/redline OA `.docx` files in a separate final section with no page number or draft footer, so it can persist in the file but be omitted from print/PDF output when needed.
 - When an OA is finalized, copy it to the appropriate Teams channel/folder for that entity and move prior existing OA files there into an `Operating Agreement Archive` folder.
 - Keep Jeff Watson drafting files segregated under `sources\Jeff Watson\`.
 - Refresh Teams/SharePoint sources before derivative work when the controlling source is a Teams file that Wes may edit.
