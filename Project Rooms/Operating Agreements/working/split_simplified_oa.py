@@ -34,6 +34,7 @@ SEGMENTS = [
     ("11 - Article 9 - Special Provisions.docx", "Article 9 - Special Provisions", 383, 393),
     ("12 - Article 10 - Miscellaneous.docx", "Article 10 - Miscellaneous", 393, 405),
     ("13 - Certification and Exhibit A.docx", "Certification and Exhibit A", 405, 412),
+    ("14 - Drafting Legend.docx", "Drafting Legend", 412, 420),
 ]
 
 

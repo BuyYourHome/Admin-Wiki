@@ -6,10 +6,10 @@ Reassembled file: `Reassembled OA Check - 00 - Reassembled Verification - Simpli
 
 ## Result
 
-- Source block count: 412
-- Reassembled block count: 412
-- Source block hash: `1f6fc3f90572cbf4e4a3ab405936d849745cca2b802c90c7810d88706f3c00b7`
-- Reassembled block hash: `1f6fc3f90572cbf4e4a3ab405936d849745cca2b802c90c7810d88706f3c00b7`
+- Source block count: 420
+- Reassembled block count: 420
+- Source block hash: `a0f73a09275f7483b08d0b1aa7b8beb080b06a5f4c54194a01a13d15ddee948d`
+- Reassembled block hash: `a0f73a09275f7483b08d0b1aa7b8beb080b06a5f4c54194a01a13d15ddee948d`
 - Verification result: PASS
 
 The verification hash is calculated from the canonical OOXML for the ordered document body blocks, excluding the final section-properties block. The reassembled file is built by reading the generated subfile DOCXs from disk and concatenating their body blocks in manifest order. A PASS confirms the split and reassembly preserve the original body text and formatting XML.
@@ -31,3 +31,4 @@ The verification hash is calculated from the canonical OOXML for the ordered doc
 | `11 - Article 9 - Special Provisions.docx` | Article 9 - Special Provisions | 10 | Special Provisions |
 | `12 - Article 10 - Miscellaneous.docx` | Article 10 - Miscellaneous | 12 | Miscellaneous |
 | `13 - Certification and Exhibit A.docx` | Certification and Exhibit A | 7 | CERTIFICATION |
+| `14 - Drafting Legend.docx` | Drafting Legend | 8 | Drafting Legend |

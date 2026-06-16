@@ -52,7 +52,7 @@ Excluded unless Wes specifically adds them:
 6. Keep the simplified OA subfiles in the Jeff Watson subfolder `sources\Jeff Watson\Simplified OA Subfiles\`. Do not place those subfiles in the Jeff Watson root folder, the main Sell Your Home source folder, or another project-room folder unless Wes explicitly asks.
 7. Build new derivative OAs from the verified Simplified OA subfile set. Use the Reassembled OA Check as the assembled starting `.docx` because it is the verified recombination of those subfiles, while treating the subfiles as the controlled building blocks and article-level map.
 8. Add a footer to assembled OA drafts showing page number and draft/version identifier, following the Contract for Deed footer pattern.
-9. Put the Drafting Legend at the end of review/redline OA `.docx` files in a separate final section with no page number or draft footer, so it can persist in the file but be omitted from print/PDF output when needed. Format each legend entry in the same visible style it describes, including matching font color and strikethrough.
+9. Put the Drafting Legend at the end of review/redline OA `.docx` files in a separate final section with no page number or draft footer, so it can persist in the file but be omitted from print/PDF output when needed. Format each legend entry in the same visible style it describes, including matching font color and strikethrough. When splitting the Simplified OA stack, keep the legend as the separate `14 - Drafting Legend.docx` subfile.
 10. When an OA is finalized, copy the finalized agreement to the appropriate Teams channel/folder for that entity and move prior existing OA files there into an `Operating Agreement Archive` folder.
 
 ## Teams Delivery Rule
