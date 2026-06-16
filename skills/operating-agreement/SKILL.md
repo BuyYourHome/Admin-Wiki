@@ -53,7 +53,7 @@ Keep mode outputs in the matching folder under `Project Rooms\Operating Agreemen
 6. Preserve original source files. Edit only working copies, output drafts, or process notes.
 7. Keep source lineage visible: distinguish Jeff Watson source language, Wes simplified language, Jeff later edits, and target-entity additions/replacements.
 8. Add a footer to assembled OA drafts showing page number and draft/version identifier, following the Contract for Deed footer pattern.
-9. Put the Drafting Legend at the end of review/redline OA `.docx` files in a separate final section with no page number or draft footer, so it can persist in the file but be omitted from print/PDF output when needed. The legend is drafting metadata, not operative agreement text.
+9. Put the Drafting Legend at the end of review/redline OA `.docx` files in a separate final section with no page number or draft footer, so it can persist in the file but be omitted from print/PDF output when needed. The legend is drafting metadata, not operative agreement text. Format each legend entry in the same visible style it describes, including matching font color and strikethrough.
 10. Record new source, draft, comparison, or process files in `working\source-inventory.md`.
 11. Commit only the current chat's scoped OA body of work. Do not stage unrelated project rooms or prior local changes.
 
