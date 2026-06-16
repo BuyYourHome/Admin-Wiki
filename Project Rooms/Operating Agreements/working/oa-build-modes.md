@@ -26,7 +26,7 @@ The selected mode determines the entity being drafted for, the working folder, t
 
 ## Cross-Mode Controls
 
-- Use `sources\` only for original, copied, refreshed, or reference source files.
+- Use `sources\` only for original, copied, controlled local, or reference source files.
 - Use `working\<Mode>\` for drafts, build notes, comparisons, and mode-specific process notes.
 - Use `outputs\` only for review-ready or final deliverables when requested.
 - Add a footer to assembled OA drafts showing page number and draft/version identifier, following the Contract for Deed footer pattern.
@@ -34,7 +34,7 @@ The selected mode determines the entity being drafted for, the working folder, t
 - Format each Drafting Legend entry in the same visible style it describes, including matching font color and strikethrough.
 - When an OA is finalized, copy it to the appropriate Teams channel/folder for that entity and move prior existing OA files there into an `Operating Agreement Archive` folder.
 - Keep Jeff Watson drafting files segregated under `sources\Jeff Watson\`.
-- Refresh Teams/SharePoint sources before derivative work when the controlling source is a Teams file that Wes may edit.
+- Do not refresh Teams/SharePoint OA files before derivative work. The Admin Wiki project-room source stack is the working source of truth unless Wes explicitly identifies a Teams file as a new source for that specific task.
 - Record new source or draft files in `working\source-inventory.md`.
 - Structural and visual QA rules for Word documents apply to all modes.
 - Manager and certification blocks must support entity Managers as well as individual Managers. If Investment Services LLC serves as Manager, include it in the certification block and identify the signer in capacity, such as `[Signer Name], Manager of Investment Services LLC, Manager of [Company Name]`.

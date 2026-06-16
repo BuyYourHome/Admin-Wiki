@@ -17,7 +17,7 @@ Use the Admin wiki and Operating Agreements project room as the source of truth.
 - Version shortcuts: `C:\Codex\Wiki Files\Project Rooms\Operating Agreements\working\oa-version-shortcuts.md`
 - BYH process workbook: `C:\Codex\Wiki Files\Project Rooms\Operating Agreements\working\BYH OA Process Control.xlsx`
 
-Teams folders are source/delivery locations only when explicitly used for source refresh or final delivery. The Admin wiki project room is the working location.
+Teams folders are final delivery/archive locations only unless Wes explicitly identifies a Teams file as a new source for a specific task. The Admin wiki project room is the working source of truth.
 
 ## Required Startup
 
@@ -48,7 +48,7 @@ Keep mode outputs in the matching folder under `Project Rooms\Operating Agreemen
 1. Identify the requested deliverable: answer, inventory update, comparison, draft, redline, clean draft, final package, or process/skill update.
 2. Select the OA mode.
 3. Identify the source document from the source inventory, version shortcut file, or Wes's explicit instruction.
-4. Refresh the Teams/SharePoint source first when the project rules require refresh and the connector is available. If unavailable, disclose the limitation in notes and final response.
+4. Do not refresh or pull OA drafting files from Teams/SharePoint merely because a derivative, subfile regeneration, or new draft is requested. Use the controlled local project-room source stack unless Wes explicitly identifies a Teams file as a new source for that specific task.
 5. For any new draft using the SYH/Simplified OA framework, build from the verified Simplified OA subfile set. Use the Reassembled OA Check as the assembled starting `.docx` because it is the verified recombination of those subfiles, while treating the subfiles as the controlled building blocks and article-level map.
 6. Preserve original source files. Edit only working copies, output drafts, or process notes.
 7. Keep source lineage visible: distinguish Jeff Watson source language, Wes simplified language, Jeff later edits, and target-entity additions/replacements.

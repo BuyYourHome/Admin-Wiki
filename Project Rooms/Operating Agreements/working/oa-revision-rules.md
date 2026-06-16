@@ -70,7 +70,7 @@ Teams file name:
 
 This file is the working "simplified OA" and includes Jeff Watson's tracked edits.
 
-Wes may edit this file directly in Teams. Before any derivative request, drafting request, analysis request, or subfile regeneration based on the simplified OA, refresh this tracked-edits file from Teams/SharePoint into this project room and record the refresh in the source inventory or source log.
+This project-room file is the controlled local source for OA derivative work. Do not refresh or replace it from Teams before derivative requests, drafting requests, analysis requests, or subfile regeneration. Teams copies are delivery/archive targets only unless Wes explicitly identifies a Teams file as a new source for a specific task.
 
 ## Subfile Rule
 
@@ -120,8 +120,8 @@ Do not place those subfiles in the Jeff Watson root folder, the main Sell Your H
 - Edit only working copies, segmented subfiles, or output drafts.
 - All new drafts that use the SYH/Simplified OA framework should begin with the Reassembled OA Check unless Wes explicitly names a different source for that specific draft.
 - New derivative OAs are built from the verified Simplified OA subfile set. The Reassembled OA Check is the assembled starting `.docx` because it is the verified recombination of those subfiles; the subfiles remain the controlled building blocks and article-level map.
-- Before derivative work, refresh the tracked-edits simplified OA from Teams/SharePoint because Wes may have edited it there.
-- Use the refreshed tracked-edits simplified OA to regenerate/verify the Reassembled OA Check when needed; draft from the Reassembled OA Check unless Wes explicitly chooses another starting source.
+- Do not pull or refresh Teams/SharePoint OA files as drafting sources merely because derivative work is requested. Use the controlled local project-room source stack unless Wes explicitly identifies a Teams file as a new source for that specific task.
+- Use the controlled local Simplified OA to regenerate/verify the Reassembled OA Check when needed; draft from the Reassembled OA Check unless Wes explicitly chooses another starting source.
 - Assembled OA drafts should include a footer with the page number and draft/version identifier, following the Contract for Deed footer pattern.
 - Review/redline OA drafts should include a persistent Drafting Legend at the end of the `.docx` rather than in the operative agreement text. Put the legend in a separate final section with no page number or draft footer so it can be omitted from print/PDF output without disturbing the agreement's pagination.
 - The Drafting Legend should identify the meaning of black, blue, red, green, and strikethrough text. Treat the legend as drafting metadata, not an operative agreement term; omit it from final signing prints or clean final versions when appropriate.

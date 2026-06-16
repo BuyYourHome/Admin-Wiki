@@ -1,7 +1,7 @@
 # Simplified OA Subfile Reassembly Verification
 
 Source project-room file: `Simplified OA - 25-06-25 SELL_YOUR_HOME_LLC Simplified with Summary with Jeff Watson tracked edits.docx`
-Source Teams file name: `25-06-25 SELL_YOUR_HOME_LLC Simplified with Summary with Jeff Watson tracked edits.docx`
+Source rule: Controlled local project-room source; Teams is final delivery/archive only unless Wes explicitly identifies a Teams file as a new source.
 Reassembled file: `Reassembled OA Check - 00 - Reassembled Verification - Simplified OA with Jeff Watson tracked edits.docx`
 
 ## Result
