@@ -61,12 +61,22 @@ Folder map:
 
 ## Automation Schedule
 
-The `Document scanning` automation runs every 2 hours between 10:00 AM and 5:00 PM:
+The `Document scanning` automation runs every 30 minutes from 10:00 AM through 4:30 PM Eastern:
 
 - 10:00 AM
+- 10:30 AM
+- 11:00 AM
+- 11:30 AM
 - 12:00 PM
+- 12:30 PM
+- 1:00 PM
+- 1:30 PM
 - 2:00 PM
+- 2:30 PM
+- 3:00 PM
+- 3:30 PM
 - 4:00 PM
+- 4:30 PM
 
 It stays quiet when there are no new scans. It reports only when it processes files, finds a problem, needs review, or needs a human decision.
 

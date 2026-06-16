@@ -13,7 +13,7 @@ This project room holds development notes, source inventory, and review artifact
 
 - Status: active.
 - Automation id: `document-scanning`.
-- Schedule: daily at 10:00 AM, 12:00 PM, 2:00 PM, and 4:00 PM.
+- Schedule: every 30 minutes from 10:00 AM through 4:30 PM Eastern.
 - Canonical skill source: `C:\Codex\Wiki Files\skills\document-scanning\SKILL.md`.
 - Installed skill copy: `C:\Users\wesbr\.codex\skills\document-scanning\SKILL.md`.
 - Live automation config: `C:\Users\wesbr\.codex\automations\document-scanning\automation.toml`.
