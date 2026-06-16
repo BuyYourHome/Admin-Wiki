@@ -15,8 +15,7 @@ These rules govern Investment Services LLC operating-agreement drafts in `Invest
 - Treat the Wyoming Investment Services OA as background/reference only.
 - Use the Reassembled OA Check as the drafting source for Investment Services builds unless Wes explicitly names another source for that specific draft.
 - Keep Jeff Watson/SYH drafting-source lineage visible.
-- Refresh the Simplified OA from Teams/SharePoint before a derivative build when the connector is available, because Wes may edit that file directly in Teams; regenerate or verify the Reassembled OA Check from that refreshed source when needed.
-- If Teams/SharePoint refresh is unavailable, disclose that limitation in the build notes and final response.
+- Do not refresh or pull the Simplified OA from Teams/SharePoint before a derivative build merely because a new draft is requested. Teams is a final-delivery/archive location unless Wes explicitly identifies a Teams file as a new source for that specific task.
 
 ## BYH-Derived Process Rule
 

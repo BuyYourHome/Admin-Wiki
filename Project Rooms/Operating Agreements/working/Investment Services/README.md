@@ -33,12 +33,13 @@ Do not copy SYH, BYH, BYH 401K, or Heritage Management entity facts into this mo
 
 ## Current Draft
 
-- `IS V02 - Investment Services OA Draft - from Reassembled OA Check.docx` is the current Investment Services working draft created from the Reassembled OA Check / SYH framework.
-- `IS V02 - Investment Services OA Draft Notes.md` records source lineage, first-pass changes, and open facts.
-- V02 uses the Wyoming Investment Services OA only for the start/effective-date instruction and does not use it as the drafting source.
+- `IS V03 - Investment Services OA Draft - from Reassembled OA Check.docx` is the current Investment Services working draft created from the current Reassembled OA Check / SYH framework.
+- `IS V03 - Investment Services OA Draft Notes.md` records source lineage, applied changes, open facts, and QA results.
+- V03 uses the Wyoming Investment Services OA only for the start/effective-date instruction and does not use it as the drafting source.
+- V03 carries forward the source-stack Drafting Legend, adds the required page/version footer to agreement sections, and leaves the final Drafting Legend section without a footer.
 - Any future OA draft using the SYH/Simplified OA framework should begin from the Reassembled OA Check unless Wes explicitly names another source.
 
-## Current V02 Working Facts
+## Current Investment Services Working Facts
 
 - Entity title should be `Investment Services LLC`.
 - Working effective date is January 17, 2025, based on the Wyoming OA file date and effective-date concept, subject to confirmation against the Secretary of State filing record.
