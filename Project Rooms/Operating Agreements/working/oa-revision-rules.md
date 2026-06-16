@@ -114,6 +114,9 @@ Do not place those subfiles in the Jeff Watson root folder, the main Sell Your H
 ## Drafting Rules
 
 - Preserve original source files.
+- Select an OA build mode before creating or modifying any draft. Current modes are `SYH`, `BYH`, `Investment Services`, `BYH 401K`, and `Heritage Management`; use `working\oa-build-modes.md` as the mode register.
+- Keep draft outputs separated by mode-specific working folders, such as `working\SYH\`, `working\BYH\`, `working\Investment Services\`, `working\BYH 401K\`, and `working\Heritage Management\`.
+- Do not carry entity-specific facts from one mode into another mode unless the source or rule explicitly supports that transfer.
 - Edit only working copies, segmented subfiles, or output drafts.
 - Before derivative work, refresh the tracked-edits simplified OA from Teams/SharePoint because Wes may have edited it there.
 - Draft from the tracked-edits simplified OA unless Wes explicitly chooses another starting source.

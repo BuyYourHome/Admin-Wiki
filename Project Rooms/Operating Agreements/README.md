@@ -31,6 +31,7 @@ Excluded unless Wes specifically adds them:
 - Jeff Watson drafting sources: `sources\Jeff Watson\`
 - Simplified OA subfiles: `sources\Jeff Watson\Simplified OA Subfiles\`
 - Working notes: `working\`
+- OA build mode register: `working\oa-build-modes.md`
 - BYH process control workbook: `working\BYH OA Process Control.xlsx`
 - Outputs: `outputs\`
 
@@ -60,6 +61,8 @@ Excluded unless Wes specifically adds them:
 ## Review Rules
 
 - Preserve original source files. Edit only working notes or output drafts.
+- Select the correct OA build mode before drafting. Current modes are `SYH`, `BYH`, `Investment Services`, `BYH 401K`, and `Heritage Management`.
+- Keep mode-specific drafts in their corresponding `working\<Mode>\` folder.
 - Keep drafting reference files separated from current/potentially controlling OA source files.
 - Treat signed agreements, signed amendments, and attorney-confirmed documents as potentially authoritative, subject to inventory review.
 - Mark unsupported items as `[UNSUPPORTED]` instead of filling gaps.
@@ -84,5 +87,6 @@ Excluded unless Wes specifically adds them:
 ## Related Wiki Links
 
 - [[Project Room Workflow]]
+- [[Project Rooms/Operating Agreements/working/oa-build-modes|OA Build Modes]]
 - [[Project Rooms/Operating Agreements/working/oa-revision-rules|Operating Agreement Revision Rules]]
 - [[Project Rooms/Operating Agreements/working/oa-version-shortcuts|OA Version Shortcuts]]
