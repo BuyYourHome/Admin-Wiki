@@ -73,6 +73,19 @@ These are working assumptions only:
 - The Wyoming Investment Services OA should not control the new draft.
 - Retirement-account-specific SYH provisions likely require review for applicability, but do not strike them wholesale until the Investment Services ownership/tax facts are confirmed.
 
+## V02 Working Facts From Wes
+
+Use these facts in the next Investment Services draft unless Wes changes them:
+
+- The title should be `Investment Services LLC`, not `Sell Your Home, LLC`.
+- The start/effective date may be taken from the Wyoming OA, but the Wyoming OA is not the drafting source.
+- The current working effective date is January 17, 2025, based on the `25-01-17 Investment Services LLC Operating Agreement.docx` source date and the Wyoming OA effective-date concept; confirm the Secretary of State filing date before final use.
+- Members are Buy Your Home, LLC, Sell Your Home, LLC, Heritage Management LLC, and BYH 401K LLC.
+- The Members hold equal interests of 25% each.
+- Investment Services LLC is not an investment company.
+- Investment Services LLC's business is not limited to residential real estate investment.
+- Investment Services LLC provides services to other investment companies, including management services, signing authority, buyer-qualification services, and related approved services.
+
 ## Build Authorization
 
 - Do not create a new Investment Services OA draft merely because Wes gives process corrections, review comments, assumptions, or drafting preferences.

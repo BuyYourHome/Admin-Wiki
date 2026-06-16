@@ -33,7 +33,16 @@ Do not copy SYH, BYH, BYH 401K, or Heritage Management entity facts into this mo
 
 ## Current Draft
 
-- `IS V01 - Investment Services OA Draft - from Reassembled OA Check.docx` is the first Investment Services working draft created from the Reassembled OA Check / SYH framework.
-- `IS V01 - Investment Services OA Draft Notes.md` records source lineage, first-pass changes, and open facts.
-- The Wyoming Investment Services OA was not used as the drafting source for V01.
+- `IS V02 - Investment Services OA Draft - from Reassembled OA Check.docx` is the current Investment Services working draft created from the Reassembled OA Check / SYH framework.
+- `IS V02 - Investment Services OA Draft Notes.md` records source lineage, first-pass changes, and open facts.
+- V02 uses the Wyoming Investment Services OA only for the start/effective-date instruction and does not use it as the drafting source.
 - Any future OA draft using the SYH/Simplified OA framework should begin from the Reassembled OA Check unless Wes explicitly names another source.
+
+## Current V02 Working Facts
+
+- Entity title should be `Investment Services LLC`.
+- Working effective date is January 17, 2025, based on the Wyoming OA file date and effective-date concept, subject to confirmation against the Secretary of State filing record.
+- Members are Buy Your Home, LLC; Sell Your Home, LLC; Heritage Management LLC; and BYH 401K LLC.
+- Each Member holds an equal 25% interest.
+- Investment Services LLC is not an investment company and its business is not limited to residential real estate investment.
+- Investment Services LLC provides services to other investment companies, including management services, signing authority, buyer-qualification services, and related approved services.
