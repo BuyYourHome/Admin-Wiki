@@ -49,10 +49,11 @@ Keep mode outputs in the matching folder under `Project Rooms\Operating Agreemen
 2. Select the OA mode.
 3. Identify the source document from the source inventory, version shortcut file, or Wes's explicit instruction.
 4. Refresh the Teams/SharePoint source first when the project rules require refresh and the connector is available. If unavailable, disclose the limitation in notes and final response.
-5. Preserve original source files. Edit only working copies, output drafts, or process notes.
-6. Keep source lineage visible: distinguish Jeff Watson source language, Wes simplified language, Jeff later edits, and target-entity additions/replacements.
-7. Record new source, draft, comparison, or process files in `working\source-inventory.md`.
-8. Commit only the current chat's scoped OA body of work. Do not stage unrelated project rooms or prior local changes.
+5. For any new draft using the SYH/Simplified OA framework, begin from the Reassembled OA Check unless Wes explicitly names a different source for that specific draft.
+6. Preserve original source files. Edit only working copies, output drafts, or process notes.
+7. Keep source lineage visible: distinguish Jeff Watson source language, Wes simplified language, Jeff later edits, and target-entity additions/replacements.
+8. Record new source, draft, comparison, or process files in `working\source-inventory.md`.
+9. Commit only the current chat's scoped OA body of work. Do not stage unrelated project rooms or prior local changes.
 
 ## BYH From SYH Conversion
 
@@ -60,7 +61,7 @@ BYH mode is a conversion workflow, not a simple entity-name swap.
 
 When using SYH/Simplified OA material for BYH:
 
-- Generate each requested BYH build fresh from the refreshed Simplified OA or approved Reassembled OA source using cumulative rules, unless Wes names another source.
+- Generate each requested BYH build fresh from the Reassembled OA Check using cumulative rules, unless Wes names another source.
 - Use `working\BYH OA Process Control.xlsx` for the version log, rule register, article map, reference audit, open issues, build checklist, user inputs, and controlled lists.
 - Preserve Jeff Watson red edits as source edits.
 - Use green font for BYH additions and replacement text unless Wes changes the color rule.

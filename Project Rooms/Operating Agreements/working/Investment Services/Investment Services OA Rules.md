@@ -7,15 +7,15 @@ These rules govern Investment Services LLC operating-agreement drafts in `Invest
 - Mode: `Investment Services`
 - Entity: `Investment Services LLC`
 - Working folder: `Project Rooms\Operating Agreements\working\Investment Services\`
-- Source approach: build from the SYH/Simplified OA framework, with changes similar to BYH but modified for Investment Services.
+- Source approach: build from the Reassembled OA Check / SYH framework, with changes similar to BYH but modified for Investment Services.
 
 ## Source Rule
 
 - Do not use the Wyoming Investment Services OA as the drafting source unless Wes explicitly changes this rule.
 - Treat the Wyoming Investment Services OA as background/reference only.
-- Use the SYH/Simplified OA or approved Reassembled OA Check as the drafting source for Investment Services builds.
+- Use the Reassembled OA Check as the drafting source for Investment Services builds unless Wes explicitly names another source for that specific draft.
 - Keep Jeff Watson/SYH drafting-source lineage visible.
-- Refresh the Simplified OA from Teams/SharePoint before a derivative build when the connector is available, because Wes may edit that file directly in Teams.
+- Refresh the Simplified OA from Teams/SharePoint before a derivative build when the connector is available, because Wes may edit that file directly in Teams; regenerate or verify the Reassembled OA Check from that refreshed source when needed.
 - If Teams/SharePoint refresh is unavailable, disclose that limitation in the build notes and final response.
 
 ## BYH-Derived Process Rule
@@ -69,7 +69,7 @@ Do not treat any of these as final until confirmed by Wes and, where needed, att
 These are working assumptions only:
 
 - Target entity legal name: `Investment Services LLC`.
-- The SYH/Simplified OA framework is the drafting template.
+- The Reassembled OA Check / SYH framework is the drafting template.
 - The Wyoming Investment Services OA should not control the new draft.
 - Retirement-account-specific SYH provisions likely require review for applicability, but do not strike them wholesale until the Investment Services ownership/tax facts are confirmed.
 
