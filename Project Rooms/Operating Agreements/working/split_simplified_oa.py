@@ -27,13 +27,13 @@ SEGMENTS = [
     ("04 - Article 2 - Membership Units.docx", "Article 2 - Membership Units", 129, 152),
     ("05 - Article 3 - Buy-Sell Rights and Transfer Restrictions.docx", "Article 3 - Buy-Sell Rights and Transfer Restrictions", 152, 193),
     ("06 - Article 4 - Meetings of Members.docx", "Article 4 - Meetings of Members", 193, 252),
-    ("07 - Article 5 - Managers.docx", "Article 5 - Managers", 252, 294),
-    ("08 - Article 6 - Indemnification.docx", "Article 6 - Indemnification", 294, 339),
-    ("09 - Article 7 - Fiscal Matters.docx", "Article 7 - Fiscal Matters", 339, 361),
-    ("10 - Article 8 - Dissolution.docx", "Article 8 - Dissolution", 361, 382),
-    ("11 - Article 9 - Special Provisions.docx", "Article 9 - Special Provisions", 382, 392),
-    ("12 - Article 10 - Miscellaneous.docx", "Article 10 - Miscellaneous", 392, 404),
-    ("13 - Certification and Exhibit A.docx", "Certification and Exhibit A", 404, 411),
+    ("07 - Article 5 - Managers.docx", "Article 5 - Managers", 252, 295),
+    ("08 - Article 6 - Indemnification.docx", "Article 6 - Indemnification", 295, 340),
+    ("09 - Article 7 - Fiscal Matters.docx", "Article 7 - Fiscal Matters", 340, 362),
+    ("10 - Article 8 - Dissolution.docx", "Article 8 - Dissolution", 362, 383),
+    ("11 - Article 9 - Special Provisions.docx", "Article 9 - Special Provisions", 383, 393),
+    ("12 - Article 10 - Miscellaneous.docx", "Article 10 - Miscellaneous", 393, 405),
+    ("13 - Certification and Exhibit A.docx", "Certification and Exhibit A", 405, 412),
 ]
 
 
