@@ -1,0 +1,130 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1050" viewBox="0 0 1600 1050">
+  <defs>
+    <style>
+      .title { font: 700 34px Arial, sans-serif; fill: #1f2937; }
+      .subtitle { font: 18px Arial, sans-serif; fill: #4b5563; }
+      .box-title { font: 700 18px Arial, sans-serif; fill: #111827; }
+      .box-text { font: 15px Arial, sans-serif; fill: #1f2937; }
+      .small { font: 13px Arial, sans-serif; fill: #374151; }
+      .supported { fill: #dff3e3; stroke: #247a3d; stroke-width: 3; }
+      .reported { fill: #fff3cd; stroke: #b58100; stroke-width: 3; stroke-dasharray: 9 7; }
+      .role { fill: #e8efff; stroke: #365fbd; stroke-width: 3; stroke-dasharray: 9 7; }
+      .conflict { fill: #fde2e1; stroke: #b3261e; stroke-width: 3; }
+      .label { font: 14px Arial, sans-serif; fill: #374151; }
+      .line { stroke: #374151; stroke-width: 2.5; fill: none; marker-end: url(#arrow); }
+      .dash { stroke: #6b7280; stroke-width: 2.5; fill: none; stroke-dasharray: 8 7; marker-end: url(#arrowGray); }
+      .legend { font: 14px Arial, sans-serif; fill: #374151; }
+    </style>
+    <marker id="arrow" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto" markerUnits="strokeWidth">
+      <path d="M2,2 L10,6 L2,10 Z" fill="#374151" />
+    </marker>
+    <marker id="arrowGray" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto" markerUnits="strokeWidth">
+      <path d="M2,2 L10,6 L2,10 Z" fill="#6b7280" />
+    </marker>
+  </defs>
+
+  <rect x="0" y="0" width="1600" height="1050" fill="#f8fafc" />
+  <text x="60" y="65" class="title">Buy Your Home Entity Relationship Chart</text>
+  <text x="60" y="96" class="subtitle">Review draft: solid lines are source-backed; dashed lines are user-reported, working-draft, or need confirmation.</text>
+
+  <rect x="60" y="125" width="420" height="92" rx="10" class="supported" />
+  <text x="85" y="160" class="box-title">Wesley Dale Browning</text>
+  <text x="85" y="188" class="box-text">Grantor / initial co-trustee</text>
+
+  <rect x="520" y="125" width="420" height="92" rx="10" class="supported" />
+  <text x="545" y="160" class="box-title">Jeanette Wilson Hollinger / Jenny</text>
+  <text x="545" y="188" class="box-text">Grantor / initial co-trustee</text>
+
+  <rect x="290" y="285" width="420" height="110" rx="10" class="supported" />
+  <text x="315" y="322" class="box-title">Browning Family Revocable Trust</text>
+  <text x="315" y="350" class="box-text">dated June 21, 2023</text>
+  <text x="315" y="376" class="box-text">Trustee exercises trust-held rights</text>
+
+  <rect x="290" y="465" width="420" height="105" rx="10" class="supported" />
+  <text x="315" y="502" class="box-title">Buy Your Home, LLC (BYH)</text>
+  <text x="315" y="530" class="box-text">100% membership assigned to Trust</text>
+  <text x="315" y="555" class="box-text">Main holding / operating entity</text>
+
+  <rect x="60" y="660" width="360" height="100" rx="10" class="reported" />
+  <text x="85" y="697" class="box-title">Heritage Management LLC</text>
+  <text x="85" y="725" class="box-text">Reported BYH-owned</text>
+  <text x="85" y="748" class="box-text">Long-term property holder</text>
+
+  <rect x="65" y="840" width="350" height="82" rx="10" class="reported" />
+  <text x="90" y="875" class="box-title">Long-term property holdings</text>
+  <text x="90" y="902" class="box-text">Property records needed for chain</text>
+
+  <rect x="520" y="660" width="370" height="112" rx="10" class="role" />
+  <text x="545" y="697" class="box-title">Investment Services LLC</text>
+  <text x="545" y="725" class="box-text">Service / signing / management role</text>
+  <text x="545" y="750" class="box-text">Ownership source conflict exists</text>
+
+  <rect x="990" y="640" width="360" height="105" rx="10" class="reported" />
+  <text x="1015" y="677" class="box-title">Sell Your Home, LLC (SYH)</text>
+  <text x="1015" y="705" class="box-text">Reported owned by two Roth</text>
+  <text x="1015" y="730" class="box-text">accounts and one HSA</text>
+
+  <rect x="990" y="480" width="360" height="92" rx="10" class="reported" />
+  <text x="1015" y="516" class="box-title">Wes/Jenny Roth + HSA accounts</text>
+  <text x="1015" y="544" class="box-text">Beneficiary records needed</text>
+
+  <rect x="990" y="825" width="360" height="92" rx="10" class="reported" />
+  <text x="1015" y="861" class="box-title">BYH 401K LLC</text>
+  <text x="1015" y="889" class="box-text">Solo 401K relationship unclear</text>
+
+  <rect x="990" y="965" width="360" height="58" rx="10" class="reported" />
+  <text x="1015" y="1000" class="box-title">Wes/Jenny Solo 401K</text>
+
+  <rect x="1060" y="145" width="470" height="210" rx="10" class="conflict" />
+  <text x="1085" y="183" class="box-title">Conflict To Resolve</text>
+  <text x="1085" y="216" class="box-text">Investment Services ownership differs by source:</text>
+  <text x="1085" y="248" class="box-text">1. Estate matrix: user-reported BYH-owned.</text>
+  <text x="1085" y="280" class="box-text">2. OA V02 working facts: BYH, SYH, Heritage,</text>
+  <text x="1105" y="306" class="box-text">and BYH 401K each hold 25%.</text>
+  <text x="1085" y="336" class="small">Confirm operating agreement, ledger, and resolutions.</text>
+
+  <path d="M270 217 C300 250, 365 270, 430 285" class="line" />
+  <text x="255" y="258" class="label">grantor / co-trustee</text>
+
+  <path d="M700 217 C670 250, 605 270, 540 285" class="line" />
+  <text x="645" y="258" class="label">grantor / co-trustee</text>
+
+  <path d="M500 395 L500 465" class="line" />
+  <text x="520" y="438" class="label">100% BYH membership interest</text>
+
+  <path d="M360 570 C320 610, 280 625, 245 660" class="dash" />
+  <text x="205" y="625" class="label">reported 100% owner</text>
+
+  <path d="M240 760 L240 840" class="dash" />
+  <text x="260" y="807" class="label">reported property holder</text>
+
+  <path d="M650 570 C690 600, 705 625, 705 660" class="dash" />
+  <text x="690" y="625" class="label">possible 25% member</text>
+
+  <path d="M420 710 C465 710, 485 710, 520 710" class="dash" />
+  <text x="430" y="695" class="label">possible 25% member</text>
+
+  <path d="M990 692 C950 692, 925 695, 890 705" class="dash" />
+  <text x="898" y="681" class="label">possible 25% member</text>
+
+  <path d="M990 870 C910 845, 850 795, 800 772" class="dash" />
+  <text x="805" y="842" class="label">possible 25% member</text>
+
+  <path d="M1170 572 L1170 640" class="dash" />
+  <text x="1190" y="612" class="label">reported owner</text>
+
+  <path d="M1170 965 L1170 917" class="dash" />
+  <text x="1190" y="946" class="label">relationship unclear</text>
+
+  <path d="M890 705 C940 720, 965 720, 990 708" class="dash" />
+  <text x="900" y="750" class="label">reported trustee / manager role</text>
+
+  <path d="M890 690 C980 595, 1085 430, 1180 355" class="dash" />
+  <text x="950" y="575" class="label">ownership conflict</text>
+
+  <rect x="60" y="955" width="760" height="58" rx="8" fill="#ffffff" stroke="#cbd5e1" />
+  <line x1="85" y1="982" x2="155" y2="982" class="line" />
+  <text x="170" y="987" class="legend">Source-backed by copied estate documents / summaries</text>
+  <line x1="475" y1="982" x2="545" y2="982" class="dash" />
+  <text x="560" y="987" class="legend">User-reported, draft, or needs source confirmation</text>
+</svg>
