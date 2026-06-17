@@ -103,6 +103,7 @@ Use these facts and drafting rules in the next Investment Services draft unless 
 - Joshua Kennedy is confirmed as the current Manager of Investment Services LLC.
 - Do not replace Joshua Kennedy with an `[UNCONFIRMED Manager(s)]` placeholder.
 - The certification page should use clean Investment Services-specific signature blocks, not historical SYH/IRA signature blocks.
+- The certification page should preserve the Simplified OA two-column certification-table approach where practical.
 - The certification page should include member signature groups for Buy Your Home, LLC; Sell Your Home, LLC; Heritage Management LLC; and BYH 401K LLC, plus a Manager signature group for Joshua Kennedy.
 - Exhibit A should use the four Investment Services Members at equal 25-unit interests, with address/email details left as TBD until confirmed.
 

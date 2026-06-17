@@ -10,12 +10,6 @@ Output DOCX:
 
 `IS V06 - Investment Services OA Draft - from Reassembled OA Check.docx`
 
-Source-stack refresh:
-
-- The tracked Simplified OA was saved with Wes's latest source-stack edits.
-- The accepted-build copy was refreshed by accepting 5 tracked insertions and 5 tracked deletions, leaving zero tracked insertion/deletion wrappers.
-- The Simplified OA Subfiles and Reassembled OA Check were regenerated from the accepted-build copy with reassembly verification PASS across 14 segments.
-
 Wyoming OA use:
 
 `sources\Investment Services LLC 30-1435731\25-01-17 Investment Services LLC Operating Agreement.docx`
@@ -35,7 +29,7 @@ Changes applied from Wes's cumulative Investment Services list:
 - Leaves out the source `Entity Manager Authority` paragraph and related manager-review note.
 - Keeps Section 5.1(b)(xi), `Any increase or decrease in the number of Manager(s).`, operative and unstruck.
 - Strikes Article 9.1, 9.2, and 9.6 while preserving the paragraphs for reference continuity.
-- Replaces the certification page placeholder with Investment Services member signature groups and a Joshua Kennedy Manager signature group.
+- Replaces the certification page placeholder with a clean two-column Investment Services certification table, using member signature groups and a Joshua Kennedy Manager signature group.
 - Updates Exhibit A to the four known Investment Services Members at 25 units each, with address/email details marked TBD.
 - Adds a review marker for unresolved tax classification.
 - Adds the required page/version footer to agreement sections while leaving the final Drafting Legend section without a footer.
@@ -43,10 +37,9 @@ Changes applied from Wes's cumulative Investment Services list:
 
 QA results:
 
-- Structural DOCX checks passed for title, V06 markers, absence of V05 markers, Joshua current-Manager language, Joshua certification block, clean Investment Services member certification blocks, removal of old IRA certification text, Exhibit A 25-unit member table, unstruck Section 5.1(b)(xi), struck Sections 9.1, 9.2, and 9.6, footer label, and Drafting Legend.
-- Standard document renderer failed because the converter executable path was unavailable; LibreOffice fallback PDF conversion succeeded.
-- Rendered PDF has 27 pages.
-- Visual page checks passed for Article 5 Manager language, certification pages, Exhibit A, footer/version placement, and unnumbered final Drafting Legend.
+- Structural DOCX checks passed for the certification table, old IRA certification removal, Joshua Kennedy Manager block, Exhibit A 25-unit member table, and V06 footer/legend handling.
+- LibreOffice fallback PDF conversion succeeded at 26 pages.
+- Visual page checks passed for the one-page two-column certification layout, Exhibit A, and final Drafting Legend.
 
 Open facts before review-ready build:
 

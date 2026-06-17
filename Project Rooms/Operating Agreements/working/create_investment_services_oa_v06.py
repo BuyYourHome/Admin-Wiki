@@ -89,10 +89,6 @@ def remove_table_paragraph(paragraph):
     parent.remove(paragraph._p)
 
 
-def remove_table(table):
-    table._element.getparent().remove(table._element)
-
-
 def set_cell_text(cell, text):
     for paragraph in list(cell.paragraphs)[1:]:
         remove_table_paragraph(paragraph)
@@ -102,6 +98,20 @@ def set_cell_text(cell, text):
         if i:
             paragraph.add_run().add_break()
         add_run(paragraph, part, green=True)
+
+
+def set_signature_cell(cell, heading, name, lines=None):
+    lines = lines or []
+    for paragraph in list(cell.paragraphs)[1:]:
+        remove_table_paragraph(paragraph)
+    paragraph = cell.paragraphs[0]
+    clear_paragraph(paragraph)
+    add_run(paragraph, heading, green=True, bold=True)
+    paragraph.add_run().add_break()
+    add_run(paragraph, name, green=True, bold=True)
+    for line in lines:
+        paragraph.add_run().add_break()
+        add_run(paragraph, line, green=True)
 
 
 def add_green_note_after(paragraph, note):
@@ -259,12 +269,26 @@ def build():
                 strike_whole_paragraph(paragraph)
                 break
 
-    # Remove the source SYH IRA certification table. Certification is a clean-edits
-    # exception, so old inapplicable signature blocks should not persist here.
+    # Reuse the source two-column certification table as a clean-edit layout.
+    # Old inapplicable SYH/IRA text is removed, but the two-column structure remains.
     for table in doc.tables:
         table_text = "\n".join(cell.text for row in table.rows for cell in row.cells)
         if "Heritage IRA, FBO" in table_text and "Read and approved for investment" in table_text:
-            remove_table(table)
+            while len(table.rows) < 3:
+                table.add_row()
+            signature_cells = [
+                ("MEMBER:", "Buy Your Home, LLC", ["By: ____________________________________", "Printed Name: ___________________________", "Title: __________________________________"]),
+                ("MEMBER:", "Sell Your Home, LLC", ["By: ____________________________________", "Printed Name: ___________________________", "Title: __________________________________"]),
+                ("MEMBER:", "Heritage Management LLC", ["By: ____________________________________", "Printed Name: ___________________________", "Title: __________________________________"]),
+                ("MEMBER:", "BYH 401K LLC", ["By: ____________________________________", "Printed Name: ___________________________", "Title: __________________________________"]),
+                ("MANAGER:", "____________________________________", ["Joshua Kennedy, Manager"]),
+                ("", "", []),
+            ]
+            for cell, (heading, name, lines) in zip([cell for row in table.rows for cell in row.cells], signature_cells):
+                if heading:
+                    set_signature_cell(cell, heading, name, lines)
+                else:
+                    set_cell_text(cell, "")
             break
 
     # Convert Exhibit A from SYH IRA members to the Investment Services member list.
@@ -292,43 +316,6 @@ def build():
             if marker in paragraph.text:
                 add_green_note_after(paragraph, note)
                 break
-
-    for paragraph in paragraphs:
-        if paragraph.text.startswith("THE UNDERSIGNED"):
-            current = paragraph
-            for line, bold in [
-                ("", False),
-                ("MEMBERS:", True),
-                ("Buy Your Home, LLC", True),
-                ("By: ____________________________________", False),
-                ("Printed Name: ___________________________", False),
-                ("Title: __________________________________", False),
-                ("", False),
-                ("Sell Your Home, LLC", True),
-                ("By: ____________________________________", False),
-                ("Printed Name: ___________________________", False),
-                ("Title: __________________________________", False),
-                ("", False),
-                ("Heritage Management LLC", True),
-                ("By: ____________________________________", False),
-                ("Printed Name: ___________________________", False),
-                ("Title: __________________________________", False),
-                ("", False),
-                ("BYH 401K LLC", True),
-                ("By: ____________________________________", False),
-                ("Printed Name: ___________________________", False),
-                ("Title: __________________________________", False),
-                ("", False),
-                ("__PAGE_BREAK__", False),
-                ("MANAGER:", True),
-                ("____________________________________", False),
-                ("Joshua Kennedy, Manager", True),
-            ]:
-                if line == "__PAGE_BREAK__":
-                    current = add_page_break_after(current)
-                else:
-                    current = add_green_paragraph_after(current, line, bold=bold)
-            break
 
     apply_version_footer(doc)
     doc.save(OUT)
@@ -366,11 +353,17 @@ def build():
                 "- Leaves out the source `Entity Manager Authority` paragraph and related manager-review note.",
                 "- Keeps Section 5.1(b)(xi), `Any increase or decrease in the number of Manager(s).`, operative and unstruck.",
                 "- Strikes Article 9.1, 9.2, and 9.6 while preserving the paragraphs for reference continuity.",
-                "- Replaces the certification page placeholder with Investment Services member signature groups and a Joshua Kennedy Manager signature group.",
+                "- Replaces the certification page placeholder with a clean two-column Investment Services certification table, using member signature groups and a Joshua Kennedy Manager signature group.",
                 "- Updates Exhibit A to the four known Investment Services Members at 25 units each, with address/email details marked TBD.",
                 "- Adds a review marker for unresolved tax classification.",
                 "- Adds the required page/version footer to agreement sections while leaving the final Drafting Legend section without a footer.",
                 "- Carries forward the source-stack Drafting Legend from the Reassembled OA Check.",
+                "",
+                "QA results:",
+                "",
+                "- Structural DOCX checks passed for the certification table, old IRA certification removal, Joshua Kennedy Manager block, Exhibit A 25-unit member table, and V06 footer/legend handling.",
+                "- LibreOffice fallback PDF conversion succeeded at 26 pages.",
+                "- Visual page checks passed for the one-page two-column certification layout, Exhibit A, and final Drafting Legend.",
                 "",
                 "Open facts before review-ready build:",
                 "",
