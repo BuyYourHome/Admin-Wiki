@@ -6,6 +6,16 @@ This folder holds working drafts for Sell Your Home, LLC operating agreement rev
 
 - `SYH V01 - Sell Your Home OA Draft - from Reassembled OA Check.docx`
 
+## Current Final Candidate
+
+- `SYH Final Candidate 01 - Sell Your Home OA.docx`
+  - Source used: `SYH V01 - Sell Your Home OA Draft - from Reassembled OA Check.docx`.
+  - Treatment: removed the separate non-operative Drafting Legend section and applied the final-candidate footer.
+  - Preserves agreement text, source colors, formatting, tables, numbering, certification layout, and Exhibit A.
+  - No numbered paragraphs were deleted or hidden.
+  - LibreOffice fallback PDF conversion passed at 25 pages with visual checks of the first page, Article 9/10, certification, and Exhibit A.
+  - Not approved final and not copied to Teams.
+
 ## Draft Notes
 
 - `SYH V01 - Sell Your Home OA Draft - from Reassembled OA Check.docx`
