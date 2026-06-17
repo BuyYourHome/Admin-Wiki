@@ -14,7 +14,7 @@ SECTPR = f"{{{W_NS}}}sectPr"
 
 
 BASE = Path(__file__).resolve().parents[1]
-SOURCE = BASE / "sources" / "Jeff Watson" / "Simplified OA - 25-06-25 SELL_YOUR_HOME_LLC Simplified with Summary with Jeff Watson tracked edits.docx"
+SOURCE = BASE / "sources" / "Jeff Watson" / "Simplified OA Accepted Build Copy - 25-06-25 SELL_YOUR_HOME_LLC Simplified with Summary with Jeff Watson tracked edits.docx"
 OUT_DIR = BASE / "sources" / "Jeff Watson" / "Simplified OA Subfiles"
 REASSEMBLED = OUT_DIR / "Reassembled OA Check - 00 - Reassembled Verification - Simplified OA with Jeff Watson tracked edits.docx"
 REPORT = OUT_DIR / "reassembly-verification.md"
@@ -126,7 +126,7 @@ def main():
         "# Simplified OA Subfile Reassembly Verification",
         "",
         f"Source project-room file: `{SOURCE.name}`",
-        "Source rule: Controlled local project-room source; Teams is final delivery/archive only unless Wes explicitly identifies a Teams file as a new source.",
+        "Source rule: Accepted-build copy generated from the controlled local Simplified OA tracked source; Teams is final delivery/archive only unless Wes explicitly identifies a Teams file as a new source.",
         f"Reassembled file: `{REASSEMBLED.name}`",
         "",
         "## Result",

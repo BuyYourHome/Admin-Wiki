@@ -72,9 +72,17 @@ This file is the working "simplified OA" and includes Jeff Watson's tracked edit
 
 This project-room file is the controlled local source for OA derivative work. Do not refresh or replace it from Teams before derivative requests, drafting requests, analysis requests, or subfile regeneration. Teams copies are delivery/archive targets only unless Wes explicitly identifies a Teams file as a new source for a specific task.
 
+## Accepted-Build Copy
+
+When Wes edits the Simplified OA directly with Word tracked changes, keep that Simplified OA as the tracked source record. Before regenerating subfiles, the Reassembled OA Check, or downstream entity variants, create or refresh this accepted-build copy:
+
+`sources\Jeff Watson\Simplified OA Accepted Build Copy - 25-06-25 SELL_YOUR_HOME_LLC Simplified with Summary with Jeff Watson tracked edits.docx`
+
+Accept Word tracked insertions and deletions in the accepted-build copy only. Do not accept tracked changes in the tracked Simplified OA unless Wes explicitly asks. Use the accepted-build copy as the input for the Simplified OA Subfiles and Reassembled OA Check so downstream variants use accepted text and do not show purple tracked insertions or struck tracked deletions from source-stack edits.
+
 ## Subfile Rule
 
-For further analysis or derivative drafting, break the simplified OA into separate reassemblable files before making substantive changes.
+For further analysis or derivative drafting, break the accepted-build copy of the simplified OA into separate reassemblable files before making substantive changes.
 
 Required segments:
 
@@ -84,7 +92,7 @@ Required segments:
 
 Preserve a clear reassembly order so the separate files can be recombined into a complete operating agreement.
 
-When creating subfiles, retain the original Word formatting, including font color, tracked-edit markings, paragraph styles, numbering, spacing, page-break behavior, and other visible formatting.
+When creating subfiles, retain the Word formatting that remains in the accepted-build copy, including font color, paragraph styles, numbering, spacing, page-break behavior, and other visible formatting. Do not carry Word tracked-change wrappers from the tracked Simplified OA into downstream subfiles or variants.
 
 After creating subfiles, verify that they can be reassembled into the same original file before using them for analysis, drafting, or derivative work. The reassembled file should match the original text and formatting unless Wes has explicitly approved a documented exception.
 
@@ -121,7 +129,7 @@ Do not place those subfiles in the Jeff Watson root folder, the main Sell Your H
 - All new drafts that use the SYH/Simplified OA framework should begin with the Reassembled OA Check unless Wes explicitly names a different source for that specific draft.
 - New derivative OAs are built from the verified Simplified OA subfile set. The Reassembled OA Check is the assembled starting `.docx` because it is the verified recombination of those subfiles; the subfiles remain the controlled building blocks and article-level map.
 - Do not pull or refresh Teams/SharePoint OA files as drafting sources merely because derivative work is requested. Use the controlled local project-room source stack unless Wes explicitly identifies a Teams file as a new source for that specific task.
-- Use the controlled local Simplified OA to regenerate/verify the Reassembled OA Check when needed; draft from the Reassembled OA Check unless Wes explicitly chooses another starting source.
+- Use the controlled local Simplified OA as the tracked source record. Use the accepted-build copy to regenerate/verify the Reassembled OA Check when needed; draft from the Reassembled OA Check unless Wes explicitly chooses another starting source.
 - Assembled OA drafts should include a footer with the page number and draft/version identifier, following the Contract for Deed footer pattern.
 - Review/redline OA drafts should include a persistent Drafting Legend at the end of the `.docx` rather than in the operative agreement text. Put the legend in a separate final section with no page number or draft footer so it can be omitted from print/PDF output without disturbing the agreement's pagination.
 - The Drafting Legend should identify the meaning of black, blue, red, green, and strikethrough text. Treat the legend as drafting metadata, not an operative agreement term; omit it from final signing prints or clean final versions when appropriate.

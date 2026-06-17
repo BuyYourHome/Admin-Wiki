@@ -1,15 +1,15 @@
 # Simplified OA Subfile Reassembly Verification
 
-Source project-room file: `Simplified OA - 25-06-25 SELL_YOUR_HOME_LLC Simplified with Summary with Jeff Watson tracked edits.docx`
-Source rule: Controlled local project-room source; Teams is final delivery/archive only unless Wes explicitly identifies a Teams file as a new source.
+Source project-room file: `Simplified OA Accepted Build Copy - 25-06-25 SELL_YOUR_HOME_LLC Simplified with Summary with Jeff Watson tracked edits.docx`
+Source rule: Accepted-build copy generated from the controlled local Simplified OA tracked source; Teams is final delivery/archive only unless Wes explicitly identifies a Teams file as a new source.
 Reassembled file: `Reassembled OA Check - 00 - Reassembled Verification - Simplified OA with Jeff Watson tracked edits.docx`
 
 ## Result
 
 - Source block count: 420
 - Reassembled block count: 420
-- Source block hash: `a0f73a09275f7483b08d0b1aa7b8beb080b06a5f4c54194a01a13d15ddee948d`
-- Reassembled block hash: `a0f73a09275f7483b08d0b1aa7b8beb080b06a5f4c54194a01a13d15ddee948d`
+- Source block hash: `47d72a69687b09ffe596844a1c6ea878a1783ecd04929f1f15890ebcfc5b9545`
+- Reassembled block hash: `47d72a69687b09ffe596844a1c6ea878a1783ecd04929f1f15890ebcfc5b9545`
 - Verification result: PASS
 
 The verification hash is calculated from the canonical OOXML for the ordered document body blocks, excluding the final section-properties block. The reassembled file is built by reading the generated subfile DOCXs from disk and concatenating their body blocks in manifest order. A PASS confirms the split and reassembly preserve the original body text and formatting XML.
