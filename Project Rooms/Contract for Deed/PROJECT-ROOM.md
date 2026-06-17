@@ -286,7 +286,7 @@ The kickoff file should identify only the verified project/property, live projec
 
    `output\320 Rose - Buyer Acknowledgment Addendum - DRAFT.docx`
 
-   If Wes invokes the Spanish flag in the chat, first complete the normal English clean package, then create a separate bilingual Spanish Contract for Deed draft. A spreadsheet field is not required for the flag to apply. The bilingual draft should be an added deliverable, not a replacement for the English signing copy.
+   If Wes invokes the Spanish flag in the chat, first complete or confirm the normal English clean package, then create the current Spanish Package set as added deliverables, not replacements for the English signing copies. A spreadsheet field is not required for the flag to apply.
 
 5. The Contract for Deed refresh must preserve the prototype formatting and update only the controlled variable fields. Avoid paragraph-number assumptions where possible; locate sections by their visible text because Wes may adjust spacing or wording in the prototype.
 
@@ -336,12 +336,16 @@ Current package documents:
 
 Spanish flag add-on:
 
-- Contract for Deed Agreement bilingual Spanish draft only, unless Wes explicitly expands the Spanish scope to other documents.
-- When Wes expands the Spanish scope, create separate Spanish draft deliverables for the named document types and place them in the same Spanish Package workflow.
+- `run CFD Spanish` regenerates the current Spanish Package set unless Wes expressly limits the scope, such as `contract only`.
+- Current Spanish Package set:
+  - Contract for Deed Agreement bilingual Spanish draft.
+  - Term Sheet Spanish draft.
+  - Buyer Acknowledgment Addendum Spanish draft.
+- When Wes expands the Spanish scope, add separate Spanish draft deliverables for the named document types and place them in the same Spanish Package workflow.
 - Save the Spanish/bilingual output in the project-room output folder and copy the current unversioned package copy to the matching Teams buyer folder under `Contract Package\Spanish Package\`. Archive prior Teams Spanish/bilingual package copies under `Contract Package\Archive\Spanish Package\`.
 - Use an output name ending in `BILINGUAL SPANISH DRAFT.docx` for the Contract for Deed Agreement and `SPANISH DRAFT.docx` for Spanish-only drafts of other package documents.
 
-Term Sheet Spanish add-on project-room rule:
+Spanish package project-room rule:
 
 - Treat the Term Sheet Spanish draft as separate from the Contract for Deed bilingual Spanish draft.
 - Do not change the Contract for Deed Spanish generator or its translation-memory rules when fixing or updating the Term Sheet Spanish draft.
@@ -354,7 +358,13 @@ Term Sheet Spanish add-on project-room rule:
 - Save the project-room output as `output\320 Rose Pl - Term Sheet - SPANISH DRAFT.docx`.
 - Copy the current unversioned Spanish Term Sheet to `Contract Package\Spanish Package\320 Rose Pl - Term Sheet - SPANISH DRAFT.docx`.
 - Before writing a new active Teams Spanish Term Sheet, archive the prior active Spanish Term Sheet under `Contract Package\Archive\Spanish Package`.
-- The Spanish Term Sheet belongs to the Spanish add-on workflow, not Full English Package mode and not Email Package mode unless Wes asks for Spanish documents to be included in the email package.
+- Generate the Buyer Acknowledgment Addendum Spanish draft from the current English Buyer Acknowledgment Addendum.
+- Translate the acknowledgment title, purpose, buyer-facing headings, buyer-facing labels, and acknowledgment statements.
+- Preserve buyer names, property values, seller/trustee names, amounts, signature names, initials blanks, and notary/certificate text exactly unless Wes asks for a translated notary version.
+- Save the project-room output as `output\320 Rose Pl - Buyer Acknowledgment Addendum - SPANISH DRAFT.docx`.
+- Copy the current unversioned Spanish Buyer Acknowledgment Addendum to `Contract Package\Spanish Package\320 Rose Pl - Buyer Acknowledgment Addendum - SPANISH DRAFT.docx`.
+- Before writing a new active Teams Spanish Buyer Acknowledgment Addendum, archive the prior active Spanish Buyer Acknowledgment Addendum under `Contract Package\Archive\Spanish Package`.
+- The Spanish Term Sheet and Spanish Buyer Acknowledgment Addendum belong to the Spanish add-on workflow, not Full English Package mode and not Email Package mode unless Wes asks for Spanish documents to be included in the email package.
 
 Buyer-specific handoff/checklist inputs:
 

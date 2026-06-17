@@ -52,7 +52,7 @@ CFD work should be understood in these operating modes:
    Create attorney-review versions with contextual review blocks. Produce versioned project-room outputs and versioned Teams copies.
 
 3. **Spanish Add-On**
-   Generate the bilingual Spanish Contract for Deed Agreement only, unless Wes explicitly expands the Spanish scope. This mode is additive and does not run the full English package unless Wes asks for the full package too. If Wes expands the Spanish scope to other documents, follow the document-specific Spanish rules in the Spanish Translation Flag section. Produce versioned project-room output and versioned Teams copy.
+   Generate the current Spanish Package set: the bilingual Spanish Contract for Deed Agreement, Spanish Term Sheet, and Spanish Buyer Acknowledgment Addendum. This mode is additive and does not run the full English package unless Wes asks for the full package too. Produce versioned project-room output and versioned Teams copies for all current Spanish Package documents.
 
 4. **Email Package**
    Prepare a package email to Wes only so Wes can review and forward it himself. When Wes says `Email Package`, assume the last project/buyer being processed, but confirm that project and buyer with Wes before preparing or sending anything. The email body should include the format and content of the Closing Checklist and list package files as clickable Teams/SharePoint links when those links can be generated from the Teams-synced file paths. Build one complete package ZIP containing every file listed in the Closing Checklist, unless Wes explicitly asks for individual attachments for that specific run. If any listed file is missing or cannot be included in the ZIP, do not silently omit it and do not send a partial package; report the missing file before sending. Use the `email-delivery` skill for OfficeAssist sender safety, attachment upload handling, delivery, and sent-item verification. Never send the package email directly to outside parties, buyers, attorneys, agents, Jenny, or anyone else unless Wes later creates a separate explicit rule changing that restriction.
@@ -511,7 +511,13 @@ The Spanish flag can be supplied by Wes's chat instruction. A spreadsheet field 
 
 The Spanish flag is additive. It does not replace the normal English package and does not alter the English signing copies. First generate or confirm the current English clean package, then create separate Spanish/bilingual deliverables.
 
-For the first implementation, the Spanish flag applies to the Contract for Deed Agreement only unless Wes explicitly expands the scope. When Wes expands the scope to other package documents, create separate Spanish draft deliverables for those document types and place them in the same Spanish Package workflow. The default Contract for Deed Agreement output name is:
+When Wes says `run CFD Spanish`, regenerate the current Spanish Package set unless Wes expressly limits the scope, such as `contract only`. The current Spanish Package set includes:
+
+- bilingual Spanish Contract for Deed Agreement,
+- Spanish Term Sheet,
+- Spanish Buyer Acknowledgment Addendum.
+
+When Wes expands the Spanish Package set to other package documents, add those document types to the same Spanish Package workflow. The default Contract for Deed Agreement output name is:
 
 `<Property> - Contract for Deed Agreement - BILINGUAL SPANISH DRAFT.docx`
 
@@ -527,9 +533,9 @@ Archive prior Teams Spanish/bilingual package copies under:
 
 `Contract Package\Archive\Spanish Package\`
 
-### Term Sheet Spanish Add-On
+### Term Sheet And Buyer Acknowledgment Spanish Add-On
 
-When Wes expands the Spanish scope to include the Term Sheet:
+When generating the Spanish Package set:
 
 - Treat the Term Sheet Spanish draft as separate from the Contract for Deed bilingual Spanish draft.
 - Do not change the Contract for Deed Spanish generator or its translation-memory rules when fixing or updating the Term Sheet Spanish draft.
@@ -542,7 +548,17 @@ When Wes expands the Spanish scope to include the Term Sheet:
 - Use the standard Spanish output name pattern: `<Property> - Term Sheet - SPANISH DRAFT.docx`.
 - Copy the current unversioned Spanish Term Sheet to the Teams `Contract Package\Spanish Package\` folder.
 - Before writing a new active Teams Spanish Term Sheet, archive the prior active Spanish Term Sheet under `Contract Package\Archive\Spanish Package\`.
-- The Spanish Term Sheet belongs to the Spanish Add-On workflow, not Full English Package mode and not Email Package mode unless Wes asks for Spanish documents to be included in the email package.
+- Generate the Buyer Acknowledgment Addendum Spanish draft from the current English Buyer Acknowledgment Addendum.
+- Translate the acknowledgment title, purpose, buyer-facing headings, buyer-facing labels, and acknowledgment statements.
+- Preserve buyer names, property values, seller/trustee names, amounts, signature names, initials blanks, and notary/certificate text exactly unless Wes asks for a translated notary version.
+- Use the standard Spanish output name pattern: `<Property> - Buyer Acknowledgment Addendum - SPANISH DRAFT.docx`.
+- Copy the current unversioned Spanish Buyer Acknowledgment Addendum to the Teams `Contract Package\Spanish Package\` folder.
+- Before writing a new active Teams Spanish Buyer Acknowledgment Addendum, archive the prior active Spanish Buyer Acknowledgment Addendum under `Contract Package\Archive\Spanish Package\`.
+- The Spanish Term Sheet and Spanish Buyer Acknowledgment Addendum belong to the Spanish Add-On workflow, not Full English Package mode and not Email Package mode unless Wes asks for Spanish documents to be included in the email package.
+
+The current project-room generator for the Spanish Package set is:
+
+`C:\Codex\Wiki Files\Project Rooms\Contract for Deed\working\generate_spanish_package.py`
 
 The current project-room generator for the Spanish Contract for Deed deliverable is:
 
