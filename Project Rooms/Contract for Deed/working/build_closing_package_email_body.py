@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import argparse
+import json
 import re
 from dataclasses import dataclass
 from datetime import date
@@ -16,6 +17,7 @@ TEAMS_PACKAGE_ROOT = Path(
 PACKAGE_ROOT = TEAMS_PACKAGE_ROOT
 PACKAGE_AFFIDAVITS = PACKAGE_ROOT / "Affidavits"
 EMAIL_PACKAGE = TEAMS_PACKAGE_ROOT / "Email Package"
+SHAREPOINT_LINK_MANIFEST = EMAIL_PACKAGE / "current-sharepoint-view-links.json"
 
 PROPERTY_LABEL = "320 Rose Pl"
 BUYER_LABEL = "Ever Cardoza"
@@ -129,21 +131,20 @@ ATTORNEY_REVIEW_ITEMS = [
 ]
 
 
-EXTERNAL_VIEW_LINKS = {
-    "320 Rose Ever Amarildo Cardoza Bolanos - Creditworthiness Evaluation Report - Document Preparation Ready.docx": "https://lifeisanadventure.sharepoint.com/:w:/s/SellYourHome/IQAaMf5JXFYfTZMH6RmM7UfWAeCAvUz0q8tMRVox75iPCts",
-    "320 Rose Pl - Ever Cardoza - Closing Package Cover Page.docx": "https://lifeisanadventure.sharepoint.com/:w:/s/SellYourHome/IQBk77DaM_wMTLxv8nUqmtspAc74VVnEZyRr9AGC9FTh7E4",
-    "320 Rose Pl - Term Sheet - DRAFT.docx": "https://lifeisanadventure.sharepoint.com/:w:/s/SellYourHome/IQAsEfMsepUKR4lReZ6G6kBTAZzxG7C499hOx942X_U7Lng",
-    "320 Rose Pl - Buyer Acknowledgment Addendum - DRAFT.docx": "https://lifeisanadventure.sharepoint.com/:w:/s/SellYourHome/IQBZZfXDoaQWS4b1FbC0j6zgAaImngAMc6HzYPc-iflQMqM",
-    "320 Rose Pl - Contract for Deed Agreement - DRAFT.docx": "https://lifeisanadventure.sharepoint.com/:w:/s/SellYourHome/IQC2sv6VxmckSqPZ53yCUrI3AWBYEu3fu7mnZXO60SwjFoU",
-    "320 Rose Pl - Memorandum of Contract for Deed - DRAFT.docx": "https://lifeisanadventure.sharepoint.com/:w:/s/SellYourHome/IQB_mfhk4PPTT6obU7nCW6_yAW0C842ltBSGDF2mRYrXgZA",
-    "320 Rose Pl - Promissory Note for Contract for Deed - DRAFT.docx": "https://lifeisanadventure.sharepoint.com/:w:/s/SellYourHome/IQD9zg7SLquUSZIP3Qq6rA-lAZdIE4PNk7J9CG0ADpzhEiQ",
-    "320 Rose Pl - 12 Month Amortization Chart.pdf": "https://lifeisanadventure.sharepoint.com/:b:/s/SellYourHome/IQACg_iTf20OTqSAQMwPEZs-AXubBZCzVlP2n6X21gHCmsY",
-    "320 Rose Pl - Attorney Review Package.zip": "https://lifeisanadventure.sharepoint.com/:u:/s/SellYourHome/IQD0n7ijOf0uS5u46f1ZjqdWAV_EcuJuwVS43i0ynVxq7os",
-    "26-06-08 320 Rose Ever Amarildo Cardoza Bolanos - Affidavit of Related-Company Rent Payment History.docx": "https://lifeisanadventure.sharepoint.com/:w:/s/SellYourHome/IQBKPSYG0AyqSKssNPUoW3XPAeCkg9PX1gYIaK5bSv09f70",
-    "26-06-08 320 Rose Ever Amarildo Cardoza Bolanos - Affidavit of Cash Reserves and Receivables Observation.docx": "https://lifeisanadventure.sharepoint.com/:w:/s/SellYourHome/IQC7AbQilJI4Q5P5deMSyVOEAQcCkCnyKE8sWlSDAJhpiK8",
-    "26-06-08 320 Rose Ever Amarildo Cardoza Bolanos - Affidavit of Receipt Package Review and Acceptance.docx": "https://lifeisanadventure.sharepoint.com/:w:/s/SellYourHome/IQCl1kHkkq1ETZuJ_-EFQmVwAQC595ymwH-rxE2Jf5N_T5Y",
-    "26-06-08 320 Rose Ever Amarildo Cardoza Bolanos - Affidavit of Business Judgment Approval Direction.docx": "https://lifeisanadventure.sharepoint.com/:w:/s/SellYourHome/IQAudYMMI9o6T46aH1MgHyRPAQe22vbEKOLSdM1VjW1Ycyk",
-}
+REQUIRE_SHAREPOINT_LINKS = False
+
+
+def load_sharepoint_view_links() -> dict[str, str]:
+    if not SHAREPOINT_LINK_MANIFEST.exists():
+        return {}
+    data = json.loads(SHAREPOINT_LINK_MANIFEST.read_text(encoding="utf-8-sig"))
+    links = data.get("links", data)
+    if not isinstance(links, dict):
+        raise ValueError(f"Invalid SharePoint link manifest: {SHAREPOINT_LINK_MANIFEST}")
+    return {str(key): str(value) for key, value in links.items()}
+
+
+SHAREPOINT_VIEW_LINKS = load_sharepoint_view_links()
 
 
 def latest_version(clean_package: Path) -> str:
@@ -161,7 +162,14 @@ def latest_version(clean_package: Path) -> str:
 def linked_anchor(path: Path, label: str) -> str:
     if not path.exists():
         raise FileNotFoundError(path)
-    url = EXTERNAL_VIEW_LINKS.get(path.name) or teams_link_for_path(path)["url"]
+    url = SHAREPOINT_VIEW_LINKS.get(path.name)
+    if not url and REQUIRE_SHAREPOINT_LINKS:
+        raise KeyError(
+            f"Missing current SharePoint sharing link for {path.name}; "
+            f"refresh {SHAREPOINT_LINK_MANIFEST} before building the email body."
+        )
+    if not url:
+        url = teams_link_for_path(path)["url"]
     return f'<a href="{escape(url, quote=True)}" style="color:#0b57d0;text-decoration:none;">{escape(label)}</a>'
 
 
@@ -295,7 +303,15 @@ def main() -> None:
     parser = argparse.ArgumentParser(description="Build the CFD closing package email body.")
     parser.add_argument("--version", help="Version prefix such as v05. Defaults to the latest package version.")
     parser.add_argument("--date", help="Prepared date in YYYY-MM-DD format. Defaults to today.")
+    parser.add_argument(
+        "--require-sharepoint-links",
+        action="store_true",
+        help="Fail unless every displayed file link is supplied by the current SharePoint link manifest.",
+    )
     args = parser.parse_args()
+
+    global REQUIRE_SHAREPOINT_LINKS
+    REQUIRE_SHAREPOINT_LINKS = args.require_sharepoint_links
 
     version = args.version.lower() if args.version else "current"
     prepared = date.fromisoformat(args.date) if args.date else date.today()

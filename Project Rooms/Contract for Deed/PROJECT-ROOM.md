@@ -82,6 +82,8 @@ When Wes asks for external access or `Anyone with the link` access, do not use o
 
 Include the current Credit Worthiness Report as a linked Email Package item when the current CWE handoff, transaction metadata, or CWE-produced package note identifies the latest report file name and path. Prefer the location provided by CWE over old project-room memories or version guesses. Display the link as `Credit Worthiness Report`, not the full file name. For external-access emails, create an anonymous view/read SharePoint sharing link for the report just like the other displayed package files. If the current handoff does not identify the latest report location, do not guess from prior versions; report that the CWE handoff is missing the latest report location and treat that as a proposed CWE-side rule update.
 
+Do not hardcode package-file sharing URLs in `working\build_closing_package_email_body.py`. For each external-access Email Package run, create or refresh anonymous view links for the actual current files in the Teams `Contract Package` folder, write those current links to `Contract Package\Email Package\current-sharepoint-view-links.json`, build the email body with link-manifest enforcement, and validate that every displayed email link comes from the current manifest before sending.
+
 ### CFD Email Package Maintenance
 
 For routine Email Package updates, do not rediscover the layout, rebuild the email body manually, or reinspect the reference `.msg` unless Wes provides a new reference email.
