@@ -31,7 +31,7 @@ def read_footer_versions(path: Path) -> list[tuple[str, int]]:
                 text = docx.read(name).decode("utf-8", errors="ignore")
                 for match in VERSION_RE.finditer(text):
                     versions.append((match.group("date"), int(match.group("version"))))
-    except zipfile.BadZipFile:
+    except (zipfile.BadZipFile, PermissionError, OSError):
         return []
     return versions
 
