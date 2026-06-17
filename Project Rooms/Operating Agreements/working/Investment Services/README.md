@@ -21,22 +21,18 @@ Do not create a new Investment Services OA draft merely because Wes gives proces
 
 Before any Investment Services draft is review-ready, confirm:
 
-- Current Member or Members.
-- Membership percentages or units.
-- Manager or Managers.
 - Tax classification.
 - Effective date.
 - Signature authority and signer titles.
-- Exhibit A content.
 
 Do not copy SYH, BYH, BYH 401K, or Heritage Management entity facts into this mode unless a source or Wes explicitly says they apply.
 
 ## Current Draft
 
-- `IS V05 - Investment Services OA Draft - from Reassembled OA Check.docx` is the current Investment Services working draft created from the current Reassembled OA Check / SYH framework.
-- `IS V05 - Investment Services OA Draft Notes.md` records source lineage, applied changes, open facts, and QA results.
-- V05 uses the Wyoming Investment Services OA only for the start/effective-date instruction and does not use it as the drafting source.
-- V05 carries forward the source-stack Drafting Legend, adds the required page/version footer to agreement sections, leaves the final Drafting Legend section without a footer, uses narrower targeted redlines where practical, omits the Investment Services-as-manager source clause from Investment Services LLC's own OA, keeps Section `5.1(b)(xi)` unstruck, strikes Sections `9.1`, `9.2`, and `9.6`, removes SYH-specific and Investment Services LLC-as-manager signature blocks from certification, and replaces SYH Joshua Kennedy manager language with an Investment Services `[UNCONFIRMED Manager(s)]` placeholder.
+- `IS V06 - Investment Services OA Draft - from Reassembled OA Check.docx` is the current Investment Services working draft created from the refreshed Reassembled OA Check / SYH framework.
+- `IS V06 - Investment Services OA Draft Notes.md` records source lineage, applied changes, open facts, and QA results.
+- V06 uses the Wyoming Investment Services OA only for the start/effective-date instruction and does not use it as the drafting source.
+- V06 carries forward the source-stack Drafting Legend, adds the required page/version footer to agreement sections, leaves the final Drafting Legend section without a footer, uses targeted redlines where practical, omits the Investment Services-as-manager source clause from Investment Services LLC's own OA, keeps Section `5.1(b)(xi)` unstruck, strikes Sections `9.1`, `9.2`, and `9.6`, lists Joshua Kennedy as the confirmed current Manager, replaces the certification page with clean Investment Services member and Manager signature blocks, and updates Exhibit A to the four known Members at 25 units each with address/email details marked TBD.
 - Any future OA draft using the SYH/Simplified OA framework should begin from the Reassembled OA Check unless Wes explicitly names another source.
 
 ## Current Investment Services Working Facts
@@ -45,5 +41,6 @@ Do not copy SYH, BYH, BYH 401K, or Heritage Management entity facts into this mo
 - Working effective date is January 17, 2025, based on the Wyoming OA file date and effective-date concept, subject to confirmation against the Secretary of State filing record.
 - Members are Buy Your Home, LLC; Sell Your Home, LLC; Heritage Management LLC; and BYH 401K LLC.
 - Each Member holds an equal 25% interest.
+- Joshua Kennedy is the confirmed current Manager unless Wes changes that fact.
 - Investment Services LLC is not an investment company and its business is not limited to residential real estate investment.
 - Investment Services LLC provides services to other investment companies, including management services, signing authority, buyer-qualification services, and related approved services.

@@ -96,6 +96,16 @@ Use these rules in the next Investment Services draft unless Wes changes them:
 - Strike Sections `9.1`, `9.2`, and `9.6` while preserving their paragraph positions for reference continuity.
 - Remove Investment Services LLC from the certification page manager/signature block.
 
+## V06 Confirmed Manager And Clean Signing Records
+
+Use these facts and drafting rules in the next Investment Services draft unless Wes changes them:
+
+- Joshua Kennedy is confirmed as the current Manager of Investment Services LLC.
+- Do not replace Joshua Kennedy with an `[UNCONFIRMED Manager(s)]` placeholder.
+- The certification page should use clean Investment Services-specific signature blocks, not historical SYH/IRA signature blocks.
+- The certification page should include member signature groups for Buy Your Home, LLC; Sell Your Home, LLC; Heritage Management LLC; and BYH 401K LLC, plus a Manager signature group for Joshua Kennedy.
+- Exhibit A should use the four Investment Services Members at equal 25-unit interests, with address/email details left as TBD until confirmed.
+
 ## Build Authorization
 
 - Do not create a new Investment Services OA draft merely because Wes gives process corrections, review comments, assumptions, or drafting preferences.

@@ -8,8 +8,8 @@ Reassembled file: `Reassembled OA Check - 00 - Reassembled Verification - Simpli
 
 - Source block count: 420
 - Reassembled block count: 420
-- Source block hash: `47d72a69687b09ffe596844a1c6ea878a1783ecd04929f1f15890ebcfc5b9545`
-- Reassembled block hash: `47d72a69687b09ffe596844a1c6ea878a1783ecd04929f1f15890ebcfc5b9545`
+- Source block hash: `02fa4fd4d489eb5dac081bfca0187a12088cd533f2d19885387f4609309f5892`
+- Reassembled block hash: `02fa4fd4d489eb5dac081bfca0187a12088cd533f2d19885387f4609309f5892`
 - Verification result: PASS
 
 The verification hash is calculated from the canonical OOXML for the ordered document body blocks, excluding the final section-properties block. The reassembled file is built by reading the generated subfile DOCXs from disk and concatenating their body blocks in manifest order. A PASS confirms the split and reassembly preserve the original body text and formatting XML.
