@@ -50,12 +50,14 @@ Keep mode outputs in the matching folder under `Project Rooms\Operating Agreemen
 3. Identify the source document from the source inventory, version shortcut file, or Wes's explicit instruction.
 4. Do not refresh or pull OA drafting files from Teams/SharePoint merely because a derivative, subfile regeneration, or new draft is requested. Use the controlled local project-room source stack unless Wes explicitly identifies a Teams file as a new source for that specific task.
 5. For any new draft using the SYH/Simplified OA framework, build from the verified Simplified OA subfile set. Use the Reassembled OA Check as the assembled starting `.docx` because it is the verified recombination of those subfiles, while treating the subfiles as the controlled building blocks and article-level map.
-6. Preserve original source files. Edit only working copies, output drafts, or process notes.
-7. Keep source lineage visible: distinguish Jeff Watson source language, Wes simplified language, Jeff later edits, and target-entity additions/replacements.
-8. Add a footer to assembled OA drafts showing page number and draft/version identifier, following the Contract for Deed footer pattern.
-9. Put the Drafting Legend at the end of review/redline OA `.docx` files in a separate final section with no page number or draft footer, so it can persist in the file but be omitted from print/PDF output when needed. The legend is drafting metadata, not operative agreement text. Format each legend entry in the same visible style it describes, including matching font color and strikethrough. When splitting the Simplified OA stack, keep the legend as the separate `14 - Drafting Legend.docx` subfile.
-10. Record new source, draft, comparison, or process files in `working\source-inventory.md`.
-11. Commit only the current chat's scoped OA body of work. Do not stage unrelated project rooms or prior local changes.
+6. When Wes starts a new OA build, asks for a refresher, or asks where the OA build process stands, send the OA build-order refresher from `working\oa-version-shortcuts.md`: Jeff Base OA, Wes Simplified Draft, Simplified OA, Segmented OA, Reassembled OA Check, Mode Rules / Inputs, Entity Draft.
+7. If Wes explicitly asks to edit the Simplified OA directly so the change propagates downstream, treat that as a source-stack edit: edit the controlled local Simplified OA, regenerate the Segmented OA subfiles, regenerate/verify the Reassembled OA Check, then build downstream variants from that refreshed Reassembled OA Check.
+8. Preserve original source files. Edit only working copies, output drafts, process notes, or the controlled local Simplified OA when Wes explicitly directs a source-stack edit.
+9. Keep source lineage visible: distinguish Jeff Watson source language, Wes simplified language, Jeff later edits, and target-entity additions/replacements.
+10. Add a footer to assembled OA drafts showing page number and draft/version identifier, following the Contract for Deed footer pattern.
+11. Put the Drafting Legend at the end of review/redline OA `.docx` files in a separate final section with no page number or draft footer, so it can persist in the file but be omitted from print/PDF output when needed. The legend is drafting metadata, not operative agreement text. Format each legend entry in the same visible style it describes, including matching font color and strikethrough. When splitting the Simplified OA stack, keep the legend as the separate `14 - Drafting Legend.docx` subfile.
+12. Record new source, draft, comparison, or process files in `working\source-inventory.md`.
+13. Commit only the current chat's scoped OA body of work. Do not stage unrelated project rooms or prior local changes.
 
 ## Finalization And Teams Delivery
 

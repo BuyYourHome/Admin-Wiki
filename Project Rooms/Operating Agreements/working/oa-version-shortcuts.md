@@ -46,9 +46,9 @@ Meaning:
 
 Current working starting point for new Sell Your Home OA versions. This file includes Jeff Watson's tracked edits.
 
-Refresh rule:
+Source-control rule:
 
-Wes may edit this file directly in Teams. Refresh it from Teams/SharePoint before any derivative request, drafting request, analysis request, or subfile regeneration based on the simplified OA.
+Use this project-room copy as the controlled local source for derivative work. Do not refresh or pull this file from Teams/SharePoint merely because a derivative, subfile regeneration, or new draft is requested. Teams is a final delivery/archive location unless Wes explicitly identifies a Teams file as a new source for that specific task.
 
 ## Segmented OA
 
@@ -77,3 +77,17 @@ Not applicable. This is a project-room verification file.
 Meaning:
 
 Rebuilt from the segmented files to verify the split can be recombined into the same original body text and formatting XML.
+
+## OA Build Order Refresher
+
+When Wes starts a new OA build, asks for a refresher, or asks where the OA build process stands, provide this build order:
+
+1. **Jeff Base OA** - Jeff Watson-authored base file.
+2. **Wes Simplified Draft** - Jeff base plus Wes prolog/summary and blue simplified replacement language.
+3. **Simplified OA** - controlled local SYH framework source with Jeff tracked edits and later source-stack additions.
+4. **Segmented OA** - Simplified OA split into opening, summary, article, certification/exhibit, and Drafting Legend subfiles.
+5. **Reassembled OA Check** - verified recombination of the segmented files and the assembled starting point for new SYH-framework drafts.
+6. **Mode Rules / Inputs** - apply the selected entity mode rules, revision rules, process workbook, and source inventory.
+7. **Entity Draft** - build the target entity OA in the matching mode folder.
+
+Current practical rule: for new SYH-framework builds, use **Reassembled OA Check** as the assembled starting file, backed by the **Segmented OA** subfiles and controlled by the selected mode's rules. Direct edits to **Simplified OA** are source-stack edits and should be followed by regenerating the **Segmented OA** and **Reassembled OA Check** before building downstream variants.
