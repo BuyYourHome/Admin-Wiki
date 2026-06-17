@@ -90,13 +90,14 @@ When sending a CFD Email Package:
 3. Verify every file listed in the Closing Checklist exists and is readable, including the Amortization Chart PDF.
 4. Put every checklist-listed package file directly in the Teams `Contract Package` folder before building the email body, including the polished closing cover page/checklist output. Use `Contract Package\Affidavits\` as the current Teams location for CWE-authored affidavit/support documents.
 5. Generate clickable Teams/SharePoint links from the Teams `Contract Package` paths and include those links next to the listed package files in the email body when possible.
-6. Build one complete package ZIP containing every checklist-listed file unless Wes explicitly asks for individual attachments for that run.
-7. Verify the ZIP was created and is readable before sending.
-8. Send to `WesWill@BuyYourHomeLLC.com` only so Wes can review and forward it himself.
-9. Send from `OfficeAssist@BuyYourHomeLLC.com`.
-10. Do not prefix the CFD package email subject with `DRAFT:`. Use a neutral review-submission subject such as `<Property> - <Buyer> - Closing Package for Review` unless Wes provides a different subject for that specific run.
-11. Do not say the message is "on Wes's behalf" unless Wes explicitly asks for that wording for that specific message.
-12. Call/use `email-delivery` for OfficeAssist sender safety, Outlook connector handling, attachment input format, Sent Items verification, local Outlook fallback rules, and failure handling.
+6. If current active Spanish/bilingual files exist under `Contract Package\Spanish Package\` and Spanish files are part of the package scope for that run, include those active files in the Closing Package Cover Page / Checklist, email body, displayed links, sharing-link manifest, and package ZIP under a separate `Spanish / Bilingual Drafts` section. Include only active unversioned files from `Spanish Package`; do not include archived Spanish versions. Label them as draft convenience translations and keep them separate from the English signing package.
+7. Build one complete package ZIP containing every checklist-listed file unless Wes explicitly asks for individual attachments for that run.
+8. Verify the ZIP was created and is readable before sending.
+9. Send to `WesWill@BuyYourHomeLLC.com` only so Wes can review and forward it himself.
+10. Send from `OfficeAssist@BuyYourHomeLLC.com`.
+11. Do not prefix the CFD package email subject with `DRAFT:`. Use a neutral review-submission subject such as `<Property> - <Buyer> - Closing Package for Review` unless Wes provides a different subject for that specific run.
+12. Do not say the message is "on Wes's behalf" unless Wes explicitly asks for that wording for that specific message.
+13. Call/use `email-delivery` for OfficeAssist sender safety, Outlook connector handling, attachment input format, Sent Items verification, local Outlook fallback rules, and failure handling.
 
 Use the CFD Teams-link helper for link generation:
 

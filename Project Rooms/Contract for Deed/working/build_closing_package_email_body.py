@@ -16,6 +16,7 @@ TEAMS_PACKAGE_ROOT = Path(
 )
 PACKAGE_ROOT = TEAMS_PACKAGE_ROOT
 PACKAGE_AFFIDAVITS = PACKAGE_ROOT / "Affidavits"
+SPANISH_PACKAGE = PACKAGE_ROOT / "Spanish Package"
 EMAIL_PACKAGE = TEAMS_PACKAGE_ROOT / "Email Package"
 SHAREPOINT_LINK_MANIFEST = EMAIL_PACKAGE / "current-sharepoint-view-links.json"
 
@@ -72,6 +73,14 @@ DOCUMENTS = [
         "320 Rose Pl - Attorney Review Package.zip",
     ),
 ]
+
+SPANISH_LABELS = {
+    "320 Rose Pl - Contract for Deed Agreement - BILINGUAL SPANISH DRAFT.docx": "Contract for Deed Agreement - Bilingual Spanish Draft",
+    "320 Rose Pl - Term Sheet - SPANISH DRAFT.docx": "Term Sheet - Spanish Draft",
+    "320 Rose Pl - Buyer Acknowledgment Addendum - SPANISH DRAFT.docx": "Buyer Acknowledgment Addendum - Spanish Draft",
+}
+
+SPANISH_ORDER = {name: index for index, name in enumerate(SPANISH_LABELS)}
 
 
 AFFIDAVITS = [
@@ -147,6 +156,18 @@ def load_sharepoint_view_links() -> dict[str, str]:
 SHAREPOINT_VIEW_LINKS = load_sharepoint_view_links()
 
 
+def spanish_documents() -> list[LinkedFile]:
+    if not SPANISH_PACKAGE.exists():
+        return []
+    paths = [
+        path
+        for path in SPANISH_PACKAGE.glob("*.docx")
+        if not path.name.startswith("~$") and path.is_file()
+    ]
+    paths.sort(key=lambda path: (SPANISH_ORDER.get(path.name, 999), path.name.lower()))
+    return [LinkedFile(SPANISH_LABELS.get(path.name, path.stem), path.name) for path in paths]
+
+
 def latest_version(clean_package: Path) -> str:
     pattern = re.compile(r"^(v\d{2}) - 320 Rose - Ever Cardoza - Closing Package Cover Page\.docx$", re.I)
     versions = []
@@ -182,6 +203,19 @@ def render_html(version: str, prepared: date) -> str:
     for item in DOCUMENTS:
         file_name = item.file_name.format(version=version)
         doc_items.append(f"<li>{linked_anchor(PACKAGE_ROOT / file_name, item.label)}</li>")
+
+    spanish_items = []
+    for item in spanish_documents():
+        spanish_items.append(f"<li>{linked_anchor(SPANISH_PACKAGE / item.file_name, item.label)}</li>")
+    spanish_section = ""
+    if spanish_items:
+        spanish_section = f"""
+      <h2 style="font-size:16px;color:#17324d;margin:24px 0 10px 0;border-bottom:1px solid #d8dee6;padding-bottom:5px;">Spanish / Bilingual Drafts</h2>
+      <p style="margin:0 0 8px 0;font-size:14px;line-height:1.45;color:#334e68;">Draft convenience translations; English documents control unless separately approved.</p>
+      <ul style="margin:0 0 0 20px;padding:0;font-size:14px;line-height:1.55;">
+        {''.join(spanish_items)}
+      </ul>
+"""
 
     affidavit_blocks = []
     for item in AFFIDAVITS:
@@ -237,6 +271,7 @@ def render_html(version: str, prepared: date) -> str:
       <ul style="margin:0 0 0 20px;padding:0;font-size:14px;line-height:1.55;">
         {''.join(doc_items)}
       </ul>
+{spanish_section}
 
       <h2 style="font-size:16px;color:#17324d;margin:24px 0 10px 0;border-bottom:1px solid #d8dee6;padding-bottom:5px;">Required Closing Deliverables</h2>
       <div style="font-size:14px;line-height:1.45;">
@@ -279,6 +314,17 @@ def render_text(version: str, prepared: date) -> str:
     lines.extend(["", "Current Document Package"])
     for item in DOCUMENTS:
         lines.append(f"* {item.label}")
+    spanish_items = spanish_documents()
+    if spanish_items:
+        lines.extend(
+            [
+                "",
+                "Spanish / Bilingual Drafts",
+                "Draft convenience translations; English documents control unless separately approved.",
+            ]
+        )
+        for item in spanish_items:
+            lines.append(f"* {item.label}")
     lines.extend(["", "Required Closing Deliverables"])
     for item in AFFIDAVITS:
         lines.extend(

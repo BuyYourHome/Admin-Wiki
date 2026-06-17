@@ -70,6 +70,8 @@ For Email Package messages with package-file links, use an HTML email body so ea
 
 Use `working\build_closing_package_email_body.py` to build the polished Email Package body. The builder should follow the card-style formatting reference stored at `reference\email-format-reference\DRAFT_ 320 Rose _ Ever Cardoza cover page body test.html`: light page background, centered white card, blue header rule, readiness table, section heading rules, clean bullet lists, and affidavit/support blocks. Package links should display as short friendly document labels instead of full filenames or full SharePoint URLs.
 
+When current active Spanish/bilingual files exist under the Teams `Contract Package\Spanish Package\` folder and Spanish files are part of the current package scope, include those active files in the Closing Package Cover Page / Checklist, Email Package body, displayed links, SharePoint sharing-link manifest, and package ZIP under a separate `Spanish / Bilingual Drafts` section. Include only active unversioned Spanish Package files, not archived Spanish versions. Keep the section clearly labeled as draft convenience translations and separate from the English signing package.
+
 Start the Email Package body with this neutral line before the package title/header: `Below is the current closing package cover page for review. The package ZIP is attached, and the document names below link to the package files.` Do not personalize this sentence with Wes's name because Wes may edit and forward the message.
 
 In the Email Package body header, show a fill-in `Closing Date` field to the right of the prepared date. Leave the closing-date value blank for the attorney to complete and highlight the blank field yellow.
