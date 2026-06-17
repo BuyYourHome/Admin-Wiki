@@ -47,7 +47,8 @@ Do not reuse from BYH unless separately confirmed for Investment Services:
 - Preserve Wes simplified blue text as source-origin simplified language.
 - Use green font for Investment Services additions and replacement text unless Wes changes the color rule.
 - Use strikethrough for SYH/retirement-account language that does not apply to Investment Services, except for approved clean-edit areas.
-- Do not delete numbered clauses in review drafts merely because they do not apply. Preserve numbering unless Wes approves a clean final version or renumbering pass.
+- Do not delete numbered clauses or numbered paragraphs merely because they do not apply. Preserve the number and paragraph position, and leave unwanted numbered text visibly struck through unless Wes explicitly approves renumbering as a separate cleanup step.
+- Do not hide deleted text inside numbered paragraphs as a workaround in Investment Services builds.
 
 ## Investment Services Facts To Confirm
 

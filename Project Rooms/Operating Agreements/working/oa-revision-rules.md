@@ -165,8 +165,9 @@ Do not place those subfiles in the Jeff Watson root folder, the main Sell Your H
 - Section `9.5 Borrowing Money` should remain operative for BYH. Strike only the last retirement-account/disqualified-person sentence beginning `However, Members described in Section 9.1...`; do not strike the whole borrowing provision.
 - Treat section and article edits as reference-sensitive changes. Do not renumber sections, articles, exhibits, or paragraph labels unless Wes explicitly approves renumbering as a separate cleanup step.
 - Prefer adding new language inside an existing section or using suffix-style numbering, such as `2.3A` or `2.3.1`, instead of inserting a new numbered section that shifts later references.
-- Do not delete numbered sections. Strike unwanted text but leave the section number in place unless renumbering has been explicitly approved.
-- When later converting a review draft into a final clean version, remove partial word/phrase strikeouts and resolve them into final clean text. Preserve only whole struck numbered clauses when keeping the number is needed to avoid changing enumeration or breaking cross-references.
+- Do not delete numbered sections or numbered paragraphs. Strike unwanted numbered text but leave the number and paragraph position in place unless Wes explicitly approves renumbering as a separate cleanup step.
+- Do not hide deleted text inside numbered paragraphs as a workaround. If numbered text is no longer operative, it should remain visibly struck through so reference continuity can be reviewed.
+- When later converting a review draft into a final clean version, remove partial word/phrase strikeouts only in non-numbered text and approved clean-edit areas such as certification/signature pages and Exhibit A. Numbered paragraphs remain visible and struck if they are being omitted, unless Wes explicitly approves renumbering or deletion.
 - Before any BYH OA build is treated as review-ready, audit all internal references to sections, articles, exhibits, and paragraph labels affected by the change. Track affected references in `working\BYH OA Process Control.xlsx` on the `Reference Audit` tab.
 - Do not blend drafting-reference material with potentially controlling OA source material without identifying the source class.
 - Mark unsupported factual claims as `[UNSUPPORTED]`.

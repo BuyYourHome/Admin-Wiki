@@ -35,6 +35,12 @@ Do not copy SYH, BYH, BYH 401K, or Heritage Management entity facts into this mo
 - V06 carries forward the source-stack Drafting Legend, adds the required page/version footer to agreement sections, leaves the final Drafting Legend section without a footer, uses targeted redlines where practical, omits the Investment Services-as-manager source clause from Investment Services LLC's own OA, keeps Section `5.1(b)(xi)` unstruck, strikes Sections `9.1`, `9.2`, and `9.6`, lists Joshua Kennedy as the confirmed current Manager, replaces the certification page with a clean two-column Investment Services member and Manager signature table, and updates Exhibit A to the four known Members at 25 units each with address/email details marked TBD.
 - Any future OA draft using the SYH/Simplified OA framework should begin from the Reassembled OA Check unless Wes explicitly names another source.
 
+## Current Final Candidate
+
+- `IS Final Candidate 01 - Investment Services OA.docx` is the current Investment Services final candidate for Wes review.
+- The candidate starts from IS V06, removes the separate Drafting Legend and draft-review markers, preserves numbered paragraph positions, and leaves unwanted numbered text visibly struck rather than deleted or hidden.
+- It is not an approved final and should not be copied to Teams until Wes approves it.
+
 ## Current Investment Services Working Facts
 
 - Entity title should be `Investment Services LLC`.
