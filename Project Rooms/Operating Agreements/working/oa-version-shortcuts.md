@@ -102,7 +102,7 @@ When Wes starts a new OA build, asks for a refresher, or asks where the OA build
 4. **Simplified OA Accepted Build Copy** - clean build input made by accepting tracked changes in a copy only.
 5. **Segmented OA** - accepted-build copy split into opening, summary, article, certification/exhibit, and Drafting Legend subfiles.
 6. **Reassembled OA Check** - verified recombination of the segmented files and the assembled starting point for new SYH-framework drafts.
-7. **Mode Rules / Inputs** - apply the selected entity mode rules, revision rules, process workbook, and source inventory.
-8. **Entity Draft** - build the target entity OA in the matching mode folder.
+7. **Entity Inputs / Process Controls** - apply the selected entity mode rules, entity facts, process workbook, source inventory, open issues, and any user-approved mode inputs.
+8. **Entity Drafts / Mode Working Files** - build and keep the target entity OA drafts, notes, comparisons, and QA records in the matching mode folder.
 
 Current practical rule: for new SYH-framework builds, use **Reassembled OA Check** as the assembled starting file, backed by the **Segmented OA** subfiles and controlled by the selected mode's rules. Direct edits to **Simplified OA** are source-stack edits and should be followed by refreshing the **Simplified OA Accepted Build Copy**, then regenerating the **Segmented OA** and **Reassembled OA Check** before building downstream variants.
