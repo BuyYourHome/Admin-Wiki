@@ -95,7 +95,8 @@ Use this repo when formulating solutions for office-admin workflows, SOPs, autom
 - LibreOffice is installed at `C:\Program Files\LibreOffice\program\soffice.exe`.
 - The LibreOffice program folder is `C:\Program Files\LibreOffice\program`.
 - Do not assume `soffice.exe` is on PATH. For DOCX/PDF render or conversion commands, use the full executable path or prepend the program folder to PATH for that command.
-- See [[LibreOffice Location Rule]] for the current command pattern and timeout cleanup rule.
+- If LibreOffice headless conversion still fails after using the documented path, follow [[LibreOffice Location Rule]]: retry from a short local workspace copy, then use Microsoft Word PDF export as the Windows visual-QA fallback when needed.
+- See [[LibreOffice Location Rule]] for the current command pattern, timeout cleanup rule, and fallback rule.
 
 ## AI Project Rooms
 
