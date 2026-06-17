@@ -468,7 +468,12 @@ def build_contract(x):
 def build_memorandum(x):
     doc = setup_doc("MEMORANDUM OF A CONTRACT FOR DEED")
     add_page_numbers(doc)
-    doc.add_paragraph(f"Prepared By: {x['prepared_by']}    Return To: Preparer")
+    return_to = (
+        f"{x['trustee']}, Trustee, {x['trustee_address']}"
+        if x["trustee_address"]
+        else f"{x['trustee']}, Trustee"
+    )
+    doc.add_paragraph(f"Prepared By: {x['prepared_by']}\nReturn To:\t{return_to}")
     doc.add_paragraph("STATE OF NORTH CAROLINA    COUNTY OF ________________________")
     doc.add_paragraph("This Memorandum of a Contract for Deed is made and entered into this ____ day of __________________, 20____, to memorialize the Contract for Deed of even date hereto.")
     add_label_red_value(doc, "1. PARTIES. ", f"The Contract for Deed is by and between {x['trust']} (Seller), by and through {x['trustee']}, Trustee, and {x['buyer']} (Purchaser).")

@@ -12,7 +12,7 @@ TRANSACTION = ROOT / "transactions" / "320 Rose Pl - Ever Cardoza"
 OUT = TRANSACTION / "output" / "affidavits"
 TEAMS = Path(
     r"C:\Users\wesbr\Buy Your Home\Buy Your Home - Property\28-SYH-320 Rose Pl"
-    r"\Selling\Ever Cordoza\Contract Package\Affidavits"
+    r"\Selling\Ever Cardoza\Contract Package\Affidavits"
 )
 
 

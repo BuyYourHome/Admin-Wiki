@@ -11,7 +11,7 @@ from docx.shared import Inches, Pt
 PROJECT_ROOT = Path(r"C:\Codex\Wiki Files\Project Rooms\Contract for Deed")
 TEAMS_ROOT = Path(
     r"C:\Users\wesbr\Buy Your Home\Buy Your Home - Property\28-SYH-320 Rose Pl"
-    r"\Selling\Ever Cordoza\Contract Package"
+    r"\Selling\Ever Cardoza\Contract Package"
 )
 
 DEFAULT_PATHS = [

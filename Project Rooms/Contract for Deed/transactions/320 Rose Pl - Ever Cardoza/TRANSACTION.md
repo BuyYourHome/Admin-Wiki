@@ -22,7 +22,7 @@ Buyer-specific Contract for Deed transaction folder for selling 320 Rose Pl to E
 - Live Rose project spreadsheet: `C:\Users\wesbr\Buy Your Home\Buy Your Home - Property\28_Project Management - 320 Rose Pl.xlsm`
 - Staged Rose project spreadsheet: `C:\Codex\Wiki Files\Project Rooms\Contract for Deed\source\320 Rose project spreadsheet\28_Project Management - 320 Rose Pl.xlsm`
 - Credit Worthiness project room: `C:\Codex\Wiki Files\Project Rooms\Credit Worthiness Evaluator`
-- Teams mirror folder: `C:\Users\wesbr\Buy Your Home\Buy Your Home - Property\28-SYH-320 Rose Pl\Selling\Ever Cordoza\Contract Package`
+- Teams mirror folder: `C:\Users\wesbr\Buy Your Home\Buy Your Home - Property\28-SYH-320 Rose Pl\Selling\Ever Cardoza\Contract Package`
 
 ## Handoff
 

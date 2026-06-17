@@ -75,6 +75,248 @@ def split_address(address):
     return str(address), ""
 
 
+def long_date(value):
+    return f"{value.strftime('%B')} {value.day}, {value.year}"
+
+
+def paragraph_startswith(doc, startswith):
+    for paragraph in doc.paragraphs:
+        if paragraph.text.strip().startswith(startswith):
+            return paragraph
+    return None
+
+
+def set_run_text(paragraph, run_index, text, underline=None, bold=None):
+    while len(paragraph.runs) <= run_index:
+        paragraph.add_run("")
+    run = paragraph.runs[run_index]
+    run.text = str(text)
+    if underline is not None:
+        run.underline = underline
+    if bold is not None:
+        run.bold = bold
+    return run
+
+
+def clear_runs(paragraph, start_index):
+    for run in paragraph.runs[start_index:]:
+        run.text = ""
+
+
+def replace_runs(paragraph, segments):
+    if not paragraph.runs:
+        paragraph.add_run("")
+    base = paragraph.runs[0]
+    for run in paragraph.runs:
+        run.text = ""
+    for idx, segment in enumerate(segments):
+        run = base if idx == 0 else paragraph.add_run()
+        run.text = str(segment.get("text", ""))
+        if "underline" in segment:
+            run.underline = segment["underline"]
+        if "bold" in segment:
+            run.bold = segment["bold"]
+
+
+def set_kyle_top_table(doc, x):
+    if not doc.tables:
+        return
+    table = doc.tables[0]
+    if len(table.rows) < 1 or len(table.rows[0].cells) < 2:
+        return
+    state_cell = table.rows[0].cells[0]
+    title_cell = table.rows[0].cells[1]
+    state_cell.text = f"STATE OF NORTH CAROLINA\nCOUNTY OF {x['county']}"
+    title_cell.text = "MEMORANDUM OF A\nCONTRACT FOR DEED\n(N.C. Gen. Stat. \u00a7 47H-2(d))"
+    for cell in (state_cell, title_cell):
+        for paragraph in cell.paragraphs:
+            for run in paragraph.runs:
+                run.bold = True
+
+
+def update_kyle_parties(doc, x):
+    paragraph = paragraph_startswith(doc, "1. PARTIES.")
+    if not paragraph:
+        return
+    trustee_capacity = f"{x['trustee']}, a Wyoming limited liability company, as Trustee of the"
+    parts = [
+        "\n",
+        "1. PARTIES.",
+        " ",
+        "This ",
+        "Contract for Deed is ",
+        "by and between ",
+        trustee_capacity,
+        " ",
+        x["trust"],
+        " whose principal address is ",
+        x["trustee_address"] or "[SELLER ADDRESS TO BE INSERTED]",
+        " (\u201cSeller\u201d) and",
+        " the following ",
+        "Purchaser",
+        "(s)",
+        ":",
+    ]
+    for idx, text in enumerate(parts):
+        set_run_text(paragraph, idx, text)
+    set_run_text(paragraph, 6, trustee_capacity, underline=True)
+    set_run_text(paragraph, 8, x["trust"], underline=True)
+    set_run_text(paragraph, 10, x["trustee_address"] or "[SELLER ADDRESS TO BE INSERTED]", underline=True)
+    clear_runs(paragraph, len(parts))
+
+
+def update_kyle_value_lines(doc, x):
+    replacements = [
+        ("Full Legal Name(s):", 1, x["buyer"]),
+        ("Address:", 1, x["buyer_address"]),
+        ("Street Address (if applicable):", 1, f"{x['property_address']}, {x['property_city_state']}".strip(", ")),
+        ("Legal Description:", 1, x["brief_legal"] or x["legal"]),
+        ("Due Date of the First Installment Payment:", 1, long_date(x["loan_start"])),
+        ("Due Date of the Last Installment Payment:", 1, long_date(x["loan_end"])),
+        ("Total Number of Installment Payments:", 2, x["term_months"]),
+    ]
+    for startswith, run_index, value in replacements:
+        paragraph = paragraph_startswith(doc, startswith)
+        if paragraph:
+            set_run_text(paragraph, run_index, value, underline=True)
+
+    county_line = paragraph_startswith(doc, "County:")
+    if county_line:
+        replace_runs(
+            county_line,
+            [
+                {"text": "\tCounty: "},
+                {"text": x["county"], "underline": True},
+                {"text": "\t\t\t\t", "underline": True},
+                {"text": " Parcel ID: "},
+                {"text": x["parcel"], "underline": True},
+                {"text": "\t\t\t\t", "underline": True},
+            ],
+        )
+
+
+def update_return_to_line(doc, x):
+    trustee_return_to = (
+        f"{x['trustee']}, Trustee, {x['trustee_address']}"
+        if x["trustee_address"]
+        else f"{x['trustee']}, Trustee"
+    )
+    for paragraph in doc.paragraphs:
+        text = paragraph.text
+        if "Prepared By:" in text and "Return To:" in text:
+            set_mixed_runs(
+                paragraph,
+                [
+                    ("Prepared By: ", False),
+                    ("\t", False),
+                    (x["prepared_by"], False),
+                    ("\nReturn To:", False),
+                    ("\t", False),
+                    (trustee_return_to, False),
+                ],
+            )
+            return
+
+
+def update_kyle_seller_signature(doc, x):
+    seller_seen = False
+    for paragraph in doc.paragraphs:
+        text = paragraph.text.strip()
+        if text.startswith("SELLER:"):
+            seller_seen = True
+            continue
+        if not seller_seen:
+            continue
+        if text.startswith("STATE OF"):
+            break
+        if x["trust"] in text or "Real Estate Trust" in text:
+            set_paragraph_bold(paragraph, x["trust"])
+            continue
+        if text.startswith("By:") and ("trustee" in text.lower() or x["trustee"] in text):
+            set_run_text(paragraph, 0, "By:", bold=True)
+            set_run_text(paragraph, 1, "\t", bold=True)
+            set_run_text(paragraph, 2, f"{x['trustee']}, a Wyoming limited liability company", bold=True)
+            set_run_text(paragraph, 3, ", trustee", bold=True)
+            clear_runs(paragraph, 4)
+            continue
+        if "Printed Name:" in text and "Title:" in text and "Date:" in text:
+            # Preserve Kyle's underlined signature-line layout while filling spreadsheet-sourced capacity.
+            set_run_text(paragraph, 22, f"{x['manager']}\t", underline=True)
+            set_run_text(paragraph, 23, "\t", underline=True)
+            set_run_text(paragraph, 24, "", underline=True)
+            set_run_text(paragraph, 25, "", underline=True)
+            set_run_text(paragraph, 34, "Manager\t", underline=True)
+            set_run_text(paragraph, 35, "\t", underline=True)
+            set_run_text(paragraph, 36, "", underline=True)
+            set_run_text(paragraph, 37, "", underline=True)
+            set_run_text(paragraph, 38, "", underline=True)
+            set_run_text(paragraph, 39, "", underline=True)
+            return
+
+
+def update_kyle_state_county(paragraph, x):
+    if not paragraph:
+        return
+    set_run_text(paragraph, 0, "STATE OF ")
+    set_run_text(paragraph, 1, "NORTH CAROLINA", underline=True)
+    set_run_text(paragraph, 2, "", underline=True)
+    set_run_text(paragraph, 3, "", underline=True)
+    set_run_text(paragraph, 4, "", underline=True)
+    set_run_text(paragraph, 5, "\nCOUNTY OF ")
+    set_run_text(paragraph, 6, x["county"], underline=True)
+    for idx in range(7, len(paragraph.runs)):
+        paragraph.runs[idx].text = ""
+
+
+def update_kyle_notaries(doc, x):
+    state_blocks = []
+    for idx, paragraph in enumerate(doc.paragraphs):
+        if paragraph.text.strip().startswith("STATE OF"):
+            state_blocks.append((idx, paragraph))
+
+    if len(state_blocks) >= 1:
+        update_kyle_state_county(state_blocks[0][1], x)
+    if len(state_blocks) >= 2:
+        update_kyle_state_county(state_blocks[1][1], x)
+
+    for paragraph in doc.paragraphs:
+        text = paragraph.text
+        if "certify that" in text and ("as Manager of Investment Services LLC" in text or "Trustee of the 320 Rose" in text):
+            set_run_text(paragraph, 10, x["manager"], bold=True)
+            set_run_text(paragraph, 11, "")
+            set_run_text(paragraph, 12, f", as Manager of {x['trustee']}, Trustee of the {x['trust']}")
+            continue
+        if "personally appeared before me this day" in text and ("Ever" in text or "Maria" in text):
+            set_run_text(paragraph, 10, x["buyer1"] or x["buyer"], bold=True)
+            set_run_text(paragraph, 11, " and ", bold=True)
+            set_run_text(paragraph, 12, x["buyer2"], bold=True)
+            set_run_text(paragraph, 13, " ")
+            set_run_text(paragraph, 14, "")
+            continue
+
+
+def update_kyle_purchaser_signature(doc, x):
+    buyer_lines = []
+    in_purchaser = False
+    for paragraph in doc.paragraphs:
+        text = paragraph.text.strip()
+        if text.startswith("PURCHASER"):
+            in_purchaser = True
+            continue
+        if in_purchaser and text.startswith("STATE OF"):
+            break
+        if in_purchaser and text.startswith("Printed Name:"):
+            buyer_lines.append(paragraph)
+
+    buyers = [x.get("buyer1") or x["buyer"], x.get("buyer2") or ""]
+    for paragraph, buyer in zip(buyer_lines, buyers):
+        if not buyer:
+            continue
+        set_run_text(paragraph, 9, buyer, underline=True)
+        for idx in range(10, min(len(paragraph.runs), 14)):
+            paragraph.runs[idx].text = ""
+
+
 def replace_legacy_buyer_name_variants(doc, x):
     buyer2 = (x.get("buyer2") or "").strip()
     if not buyer2:
@@ -384,33 +626,13 @@ def main(x=None):
     if x is None:
         x = normalize_values(get_docs_values())
     doc = Document(str(PROTOTYPE))
-    buyer_line1, buyer_line2 = split_address(x["buyer_address"])
-
-    fill_county_and_date(doc, x)
-
-    replace_section_or_update(
-        doc,
-        "1. PARTIES.",
-        "1. PARTIES.",
-        "",
-    )
-    replace_label_or_update(doc, "Seller address:", "Seller address: ", x["trustee_address"])
-    replace_label_or_update(doc, "Purchaser address:", "Purchaser address: ", f"{buyer_line1}, {buyer_line2}".strip(", "))
-    replace_section_or_update(doc, "2. REAL PROPERTY.", "2. REAL PROPERTY.", f" {x['property_address']}, {x['property_city_state']}")
-    replace_label_or_update(doc, "Legal Description:", "Legal Description: ", x["legal"])
-    replace_label_or_update(doc, "County / Parcel ID:", "County / Parcel ID: ", f"{x['county']} / {x['parcel']}")
-    replace_label_or_update(doc, "County:", "County: ", x["county"])
-    replace_label_or_update(doc, "Parcel ID:", "Parcel ID: ", x["parcel"])
-    replace_label_or_update(doc, "Due Date of the First Installment Payment:", "Due Date of the First Installment Payment: ", short_date(x["loan_start"]))
-    replace_label_or_update(doc, "Due Date of the Last Installment Payment:", "Due Date of the Last Installment Payment: ", short_date(x["loan_end"]))
-    replace_label_or_update(doc, "Total Number of Installment Payments:", "Total Number of Installment Payments: ", x["term_months"])
-    fill_notary_counties(doc, x)
-    update_seller_signature_fields(doc, x)
-    update_notary_acknowledgments(doc, x)
-    standardize_notary_blocks(doc, x)
-    remove_page_breaks_from_section(doc, "5. RIGHT TO CANCEL.")
-
-    update_buyer_signature_fields(doc, x)
+    update_return_to_line(doc, x)
+    set_kyle_top_table(doc, x)
+    update_kyle_parties(doc, x)
+    update_kyle_value_lines(doc, x)
+    update_kyle_seller_signature(doc, x)
+    update_kyle_purchaser_signature(doc, x)
+    update_kyle_notaries(doc, x)
     replace_legacy_buyer_name_variants(doc, x)
     doc.save(OUTPUT)
     print(OUTPUT)

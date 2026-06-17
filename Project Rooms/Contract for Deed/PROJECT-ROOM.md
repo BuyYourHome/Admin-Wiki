@@ -38,7 +38,7 @@ Recommended Teams subfolders:
 
 For 320 Rose / Ever Cardoza, use:
 
-`C:\Users\wesbr\Buy Your Home\Buy Your Home - Property\28-SYH-320 Rose Pl\Selling\Ever Cordoza\Contract Package\`
+`C:\Users\wesbr\Buy Your Home\Buy Your Home - Property\28-SYH-320 Rose Pl\Selling\Ever Cardoza\Contract Package\`
 
 Copy clean packages, attorney-review packages, and closing checklists to Teams after each requested regeneration or package update unless Wes says project-room only. Do not copy prototypes, staged spreadsheets, scratch files, extracted text, rendered QA images, logs, or temporary working files to Teams.
 
@@ -177,7 +177,7 @@ Before regenerating any document after Wes may have edited output files, inspect
 
 For the Contract for Deed draft, use Wes's edited prototype at `reference\Rose contract prototype\320 Rose - Contract for Deed Agreement - PROTOTYPE.docx` as the formatting source going forward. Preserve the edited Word formatting, indents, price table, boldness throughout the document, and signature spacing while refreshing values from the latest spreadsheet. If the prototype is missing, fall back to `reference\Cool Springs selling docs\25-02-21 Seller Docs.docx`, remove the memorandum portion, and replace Cool Springs values with Rose values. The helper script is `working\format_contract_from_reference.py`.
 
-For the Memorandum of Contract for Deed draft, use Wes's edited prototype at `reference\Rose memorandum prototype\320 Rose - Memorandum of Contract for Deed - PROTOTYPE.docx` as the formatting source going forward. Preserve Wes's formatting changes while refreshing controlled values from the latest spreadsheet. The memo must include county and parcel ID from the `Docs` worksheet, and the purchaser signature block must include separate signature lines for both buyers. The helper script is `working\format_memo_from_prototype.py`.
+For the Memorandum of Contract for Deed draft, use Wes's edited prototype at `reference\Rose memorandum prototype\320 Rose - Memorandum of Contract for Deed - PROTOTYPE.docx` as the formatting source going forward. Preserve Wes's formatting changes while refreshing controlled values from the latest spreadsheet. The memo must include county and parcel ID from the `Docs` worksheet, and the purchaser signature block must include separate signature lines for both buyers. The memo `Return To:` recording header must be regenerated from the trustee entity and trustee mailing address on the `Docs` worksheet, not left as a static prototype address. The helper script is `working\format_memo_from_prototype.py`.
 
 ## Credit Worthiness Handoff Intake
 
@@ -295,6 +295,7 @@ The kickoff file should identify only the verified project/property, live projec
    - Seller signature line should read in substance: `Investment Services LLC, Trustee - [Manager], Manager`, where `[Manager]` is read from the confirmed project spreadsheet `Docs` worksheet manager field, including the current workbook label `Manger` when that is the available field.
    - Do not add a second standalone `Wes Browning, Manager` line under the seller signature line.
    - Seller/trustee mailing addresses must include the full city, state, and ZIP from the `Docs` worksheet. Do not truncate comma-separated address fields.
+   - The Memorandum `Return To:` recording header must use the trustee entity and full trustee mailing address from the `Docs` worksheet.
    - Earnest money paid at contract signing comes from `Selling Earnest Money:` on the `Docs` worksheet. Do not use the buying-side `BinderDeposit` / `Binder Deposit:` fields for seller documents.
    - `Selling Down Payment:` is the total down payment. The remaining down payment due at closing is `Selling Down Payment:` minus earnest money.
    - Preserve Wes's table formatting, including row height and justification, when refreshing earnest-money and down-payment table values.

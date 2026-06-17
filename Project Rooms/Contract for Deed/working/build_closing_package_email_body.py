@@ -11,7 +11,7 @@ from teams_link_from_local_path import teams_link_for_path
 
 
 TEAMS_PACKAGE_ROOT = Path(
-    r"C:\Users\wesbr\Buy Your Home\Buy Your Home - Property\28-SYH-320 Rose Pl\Selling\Ever Cordoza\Contract Package"
+    r"C:\Users\wesbr\Buy Your Home\Buy Your Home - Property\28-SYH-320 Rose Pl\Selling\Ever Cardoza\Contract Package"
 )
 PACKAGE_ROOT = TEAMS_PACKAGE_ROOT
 PACKAGE_AFFIDAVITS = PACKAGE_ROOT / "Affidavits"

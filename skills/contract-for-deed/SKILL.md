@@ -438,6 +438,7 @@ Do not convert underwriting-only affidavits into closing documents unless Wes or
 - `Selling Down Payment:` is the total down payment; remaining down payment due at closing is total down payment minus earnest money.
 - Preserve Wes-edited purchase-price table formatting, including row height and justification, when refreshing table values.
 - Seller signature stays in the trust/trustee structure: `Investment Services LLC, Trustee - [Manager], Manager`, where `[Manager]` is read from the confirmed project spreadsheet `Docs` worksheet manager field, including the current workbook label `Manger` when that is the available field. Do not replace the trust/trustee structure with the seller entity name alone, and do not hardcode a manager name in reusable CFD rules or scripts.
+- The Memorandum `Return To:` recording header must be regenerated from the trustee entity and full trustee mailing address on the confirmed project spreadsheet `Docs` worksheet. Do not preserve static prototype return-address text from a prior seller or attorney template.
 - The ACH draft paragraph belongs where Wes placed it as section 7(d).
 - Buyer ACH account/routing blanks stay on the buyer signature page.
 - Notary blocks must preserve underlined notary-name blanks and include notary signature lines.
