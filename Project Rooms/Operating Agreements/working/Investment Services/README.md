@@ -42,5 +42,6 @@ Do not copy SYH, BYH, BYH 401K, or Heritage Management entity facts into this mo
 - Members are Buy Your Home, LLC; Sell Your Home, LLC; Heritage Management LLC; and BYH 401K LLC.
 - Each Member holds an equal 25% interest.
 - Joshua Kennedy is the confirmed current Manager unless Wes changes that fact.
+- For member certification printed-name lines, Wesley Dale Browning signs for Buy Your Home, LLC, Heritage Management LLC, and BYH 401K LLC; Joshua Kennedy signs for Sell Your Home, LLC.
 - Investment Services LLC is not an investment company and its business is not limited to residential real estate investment.
 - Investment Services LLC provides services to other investment companies, including management services, signing authority, buyer-qualification services, and related approved services.

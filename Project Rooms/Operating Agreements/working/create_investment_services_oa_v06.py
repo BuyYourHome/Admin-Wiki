@@ -277,10 +277,10 @@ def build():
             while len(table.rows) < 3:
                 table.add_row()
             signature_cells = [
-                ("MEMBER:", "Buy Your Home, LLC", ["By: ____________________________________", "Printed Name: ___________________________", "Title: __________________________________"]),
-                ("MEMBER:", "Sell Your Home, LLC", ["By: ____________________________________", "Printed Name: ___________________________", "Title: __________________________________"]),
-                ("MEMBER:", "Heritage Management LLC", ["By: ____________________________________", "Printed Name: ___________________________", "Title: __________________________________"]),
-                ("MEMBER:", "BYH 401K LLC", ["By: ____________________________________", "Printed Name: ___________________________", "Title: __________________________________"]),
+                ("MEMBER:", "Buy Your Home, LLC", ["By: ____________________________________", "Printed Name: Wesley Dale Browning", "Title: __________________________________"]),
+                ("MEMBER:", "Sell Your Home, LLC", ["By: ____________________________________", "Printed Name: Joshua Kennedy", "Title: __________________________________"]),
+                ("MEMBER:", "Heritage Management LLC", ["By: ____________________________________", "Printed Name: Wesley Dale Browning", "Title: __________________________________"]),
+                ("MEMBER:", "BYH 401K LLC", ["By: ____________________________________", "Printed Name: Wesley Dale Browning", "Title: __________________________________"]),
                 ("MANAGER:", "____________________________________", ["Joshua Kennedy, Manager"]),
                 ("", "", []),
             ]
@@ -354,6 +354,7 @@ def build():
                 "- Keeps Section 5.1(b)(xi), `Any increase or decrease in the number of Manager(s).`, operative and unstruck.",
                 "- Strikes Article 9.1, 9.2, and 9.6 while preserving the paragraphs for reference continuity.",
                 "- Replaces the certification page placeholder with a clean two-column Investment Services certification table, using member signature groups and a Joshua Kennedy Manager signature group.",
+                "- Member certification printed-name lines list Wesley Dale Browning for Buy Your Home, LLC, Heritage Management LLC, and BYH 401K LLC, and Joshua Kennedy for Sell Your Home, LLC.",
                 "- Updates Exhibit A to the four known Investment Services Members at 25 units each, with address/email details marked TBD.",
                 "- Adds a review marker for unresolved tax classification.",
                 "- Adds the required page/version footer to agreement sections while leaving the final Drafting Legend section without a footer.",
