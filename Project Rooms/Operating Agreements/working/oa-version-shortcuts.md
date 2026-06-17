@@ -120,7 +120,8 @@ Use the entity mode rules before building a derivative:
 
 Build the target OA, such as:
 
-- [IS V04 - Investment Services OA Draft](C:/Codex/Wiki%20Files/Project%20Rooms/Operating%20Agreements/working/Investment%20Services/IS%20V04%20-%20Investment%20Services%20OA%20Draft%20-%20from%20Reassembled%20OA%20Check.docx)
+- [SYH V01 - Sell Your Home OA Draft](C:/Codex/Wiki%20Files/Project%20Rooms/Operating%20Agreements/working/SYH/SYH%20V01%20-%20Sell%20Your%20Home%20OA%20Draft%20-%20from%20Reassembled%20OA%20Check.docx)
+- [IS V06 - Investment Services OA Draft](C:/Codex/Wiki%20Files/Project%20Rooms/Operating%20Agreements/working/Investment%20Services/IS%20V06%20-%20Investment%20Services%20OA%20Draft%20-%20from%20Reassembled%20OA%20Check.docx)
 - [V14 - BYH OA Draft Observation Fixes](C:/Codex/Wiki%20Files/Project%20Rooms/Operating%20Agreements/working/BYH/V14%20-%20BYH%20OA%20Draft%20Observation%20Fixes%20-%20from%20Simplified%20OA.docx)
 
 ### Approved Final OAs
