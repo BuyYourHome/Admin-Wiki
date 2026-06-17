@@ -104,6 +104,7 @@ When Wes starts a new OA build, asks for a refresher, or asks where the OA build
 6. **Reassembled OA Check** - verified recombination of the segmented files and the assembled starting point for new SYH-framework drafts.
 7. **Mode Rules / Inputs** - use the entity mode rules and process inputs before building a derivative. Include the linked mode/process files listed below.
 8. **Entity Drafts** - build the target OA and keep draft examples visible. Include the linked draft examples listed below.
+9. **Approved Final OAs** - Wes-approved final agreements ready for Teams delivery. None have been approved yet.
 
 ### Mode Rules / Inputs
 
@@ -121,5 +122,9 @@ Build the target OA, such as:
 
 - [IS V04 - Investment Services OA Draft](C:/Codex/Wiki%20Files/Project%20Rooms/Operating%20Agreements/working/Investment%20Services/IS%20V04%20-%20Investment%20Services%20OA%20Draft%20-%20from%20Reassembled%20OA%20Check.docx)
 - [V14 - BYH OA Draft Observation Fixes](C:/Codex/Wiki%20Files/Project%20Rooms/Operating%20Agreements/working/BYH/V14%20-%20BYH%20OA%20Draft%20Observation%20Fixes%20-%20from%20Simplified%20OA.docx)
+
+### Approved Final OAs
+
+Approved Final OAs are Wes-approved final operating agreements ready for delivery to the appropriate Teams channel/folder. No OA has been approved as final yet. When one is approved, copy that final OA to Teams and move prior existing OAs in that Teams location into an `Operating Agreement Archive` folder.
 
 Current practical rule: for new SYH-framework builds, use **Reassembled OA Check** as the assembled starting file, backed by the **Segmented OA** subfiles and controlled by the selected mode's rules. Direct edits to **Simplified OA** are source-stack edits and should be followed by refreshing the **Simplified OA Accepted Build Copy**, then regenerating the **Segmented OA** and **Reassembled OA Check** before building downstream variants.
