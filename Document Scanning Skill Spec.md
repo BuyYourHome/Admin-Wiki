@@ -17,6 +17,11 @@ Primary folder map:
 - Property/project destination root: `C:\Users\wesbr\Buy Your Home\Buy Your Home - Property`
 - Scan intake folder: `C:\Users\wesbr\Buy Your Home\Buy Your Home - Office Admin\Scanned Files`
 
+Connector preference:
+
+- Use the SharePoint/Teams connector as the default discovery path for locating scan files and matching destination folders when connector access is available.
+- Use the local synced paths as the scanner drop-zone, working-copy, PDF processing, logging, archive, and fallback paths.
+
 ## Skill Trigger
 
 Use this skill when asked to process scanned mortgage statements, credit card statements, bank statements, invoices, receipts, tax documents, CPA forms, medical bills, donation records, or similar Office Admin documents.
@@ -31,13 +36,13 @@ Example user requests:
 
 ## Core Responsibilities
 
-1. Read one or more scanned PDFs, JPGs, or JPEGs from an intake folder or explicit file path.
+1. Locate one or more scanned PDFs, JPGs, or JPEGs through the SharePoint/Teams connector when available, then through the local synced intake folder or explicit file path as the processing/fallback path.
 2. OCR pages when text is not already embedded, and visually/OCR-parse JPG/JPEG image scans.
 3. Identify document type, institution/vendor, account number suffix, statement date, invoice date, and page boundaries.
 4. Split multi-document PDF scans into one PDF per account/document when boundaries are clear.
 5. Convert JPG/JPEG scans to a PDF output when filing, unless the item is routed to review.
 6. Name each output PDF using a consistent naming convention.
-7. Route each output PDF to the best matching folder under the 2026 Office Admin folder map or the matching property/project folder.
+7. Route each output PDF to the best matching folder under the 2026 Office Admin folder map or the matching property/project/entity folder, using the SharePoint/Teams connector first to discover and confirm folder matches when available.
 8. Avoid destructive changes. Never delete the original scan automatically.
 9. Flag uncertain classifications for human review instead of guessing.
 
@@ -298,9 +303,13 @@ When Boss asks for an invoice/receipt report, or when a scan run files invoices 
 5. In the email body, note anything that needs attention, including invoices due soon, past-due notices, unknown vendors, unclear property matches, duplicate-looking invoices, missing amounts or dates, security-code/scam concerns, or any item routed to invoice review.
 6. Do not pay invoices, submit forms, move money, or contact vendors.
 
-### SharePoint / Teams Fallback
+### SharePoint / Teams Connector Default
 
-If Boss identifies a scan that is present in Teams/SharePoint but it is not visible in the local synced folder, use the SharePoint connector to locate and download a working copy for processing. Preserve the original SharePoint source file, log the SharePoint URL, and do not move or delete the source scan.
+Use the SharePoint/Teams connector as the default discovery path for scanned files, property folders, entity folders, insurance folders, and matching source documents when connector access is available.
+
+Use the local synced folders as the scanner drop-zone, processing workspace, archive/log path, and fallback path. If the connector finds a scan that is not visible locally, download a working copy for processing, preserve the original SharePoint source file, log the SharePoint URL, and do not move or delete the source scan.
+
+Use local synced folders as fallback when the connector is unavailable, lacks the needed site/library/folder, is stale, or cannot perform the required read/write action safely.
 
 ## Boundary Detection Rules
 
@@ -511,7 +520,7 @@ The automation should call this skill rather than contain document-processing lo
 
 Automation responsibilities:
 
-- Watch `C:\Users\wesbr\Buy Your Home\Buy Your Home - Office Admin\Scanned Files` on a schedule.
+- Check the Office Admin scanned-files location through the SharePoint/Teams connector when available, and check `C:\Users\wesbr\Buy Your Home\Buy Your Home - Office Admin\Scanned Files` as the local scanner drop-zone and fallback path on a schedule.
 - Pass new PDFs, JPGs, and JPEGs to the `document-scanning` skill.
 - Save output PDFs to destination folders.
 - Post only meaningful summaries: files created, uncertain matches, errors, or decisions needed.

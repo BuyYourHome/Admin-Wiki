@@ -50,6 +50,32 @@ Important:
 - It is appropriate for files stored locally or in Teams-synced folders.
 - Before major spreadsheet rewrites, use `Project Room Workflow.md`.
 
+## SharePoint / Teams Connector
+
+Status: installed and preferred for Teams/SharePoint file discovery in document workflows.
+
+Use first when available for:
+
+- Locating scanned files in Teams/SharePoint.
+- Confirming whether a scan exists when the local synced folder appears empty.
+- Finding destination folders for property, entity, insurance, closing-package, operating-agreement, invoice, receipt, and statement documents.
+- Searching property or entity folders for existing unsigned, approved-final, filed, declaration, evidence-of-insurance, or other matching source documents.
+- Resolving folder ambiguity when local sync is stale, incomplete, or missing a Teams folder.
+
+Continue using local synced folders for:
+
+- Scanner drop-zone intake when the scanner writes directly to the local `Scanned Files` folder.
+- Temporary working copies for PDF inspection, OCR/visual parsing, splitting, report generation, logs, and archive movement.
+- Filing when the connector cannot perform the write safely or when local sync provides the same Teams-backed folder with clearer overwrite control.
+
+Required behavior:
+
+- Treat Teams/SharePoint connector discovery as the default for locating scans and matching destination folders.
+- Treat the local synced path as the processing and fallback path.
+- Preserve source scans whether they are found through Teams/SharePoint or local sync.
+- Do not delete or move the original Teams/SharePoint source scan. If a cloud-only file must be processed, download a working copy, process the working copy, and log the SharePoint URL.
+- Never overwrite filed PDFs or image files silently through either path.
+
 ## Browser Plugin
 
 Status: installed and available.
@@ -110,6 +136,7 @@ Remaining setup checks:
 ## Current Priority Order
 
 1. Outlook/email connector, when available for the correct mailboxes.
-2. Spreadsheets plugin for local workbook work.
-3. GitHub connector for repository inspection and optional GitHub workflow features.
-4. Browser plugin for REI and web workflows.
+2. SharePoint/Teams connector for Teams/SharePoint file discovery and folder matching.
+3. Spreadsheets plugin for local workbook work.
+4. GitHub connector for repository inspection and optional GitHub workflow features.
+5. Browser plugin for REI and web workflows.

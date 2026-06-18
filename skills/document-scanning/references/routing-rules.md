@@ -2,6 +2,8 @@
 
 Use the folder map as the routing authority. Prefer exact folder matches over fuzzy matches.
 
+Use the SharePoint/Teams connector as the default discovery path for locating scans, destination folders, and matching source documents when connector access is available. Use local synced folders as the scanner drop-zone, processing workspace, archive/log path, and fallback path.
+
 Primary routing:
 
 - Bank statements: `2026\Bank Statement\...`

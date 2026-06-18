@@ -242,6 +242,7 @@ Schedule:
 Purpose:
 
 - Check scanned PDFs in the Office Admin scan intake folder.
+- Use the SharePoint/Teams connector as the default discovery path for scans and destination-folder matching when available, with local synced folders as the scanner drop-zone, processing workspace, archive/log path, and fallback.
 - Split combined scans into separate financial/admin documents, including property closing packages and signed operating-agreement packages.
 - Name outputs using approved conventions.
 - Route mortgage statements, credit card statements, bank statements, invoices, receipts, property closing documents, signed operating agreements, tax forms, and related documents to the correct Teams/SharePoint folder.

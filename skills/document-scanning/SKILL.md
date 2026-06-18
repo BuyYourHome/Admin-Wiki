@@ -19,20 +19,24 @@ Process scanned Office Admin PDFs and JPG/JPEG image scans conservatively. Split
 - Operating Agreements project room for signed operating-agreement source matching: `C:\Codex\Wiki Files\Project Rooms\Operating Agreements`
 - Current property/mortgage reference workbook: `C:\Users\wesbr\Buy Your Home\Buy Your Home - Property\Credit Cards Sheet.xlsx`, worksheet `Mortgages`
 
+Use the SharePoint/Teams connector as the default discovery path for locating scan files and matching destination folders when connector access is available. Use local synced folders as the scanner drop-zone, working-copy path, PDF processing path, archive/log path, and fallback path.
+
 Read `references/folder-map.md` before routing files. Read `references/routing-rules.md` before deciding uncertain matches.
 
 ## Workflow
 
-1. Find the requested scan or the newest PDF, JPG, or JPEG in the scan intake folder.
-2. For PDFs, inspect page count and whether embedded text exists. Use `scripts/inspect_pdf.py` when useful.
-3. If the PDF is image-only, or if the source is a JPG/JPEG image, visually/OCR-parse the scan. Do not guess from the source file name alone.
-4. Identify document boundaries using institution/vendor, account number, statement date, page numbers, and header changes.
-5. Decide one output group per account/document. If confidence is low, route the source or page range to review instead of filing approximately.
-6. Name output PDFs with the approved naming convention.
-7. Split PDF pages with `scripts/split_pdf.py` or equivalent PDF tooling. For JPG/JPEG scans, create a single filed PDF output unless routing confidence is low.
-8. Save each output PDF into the matching folder from `references/folder-map.md`.
-9. Write or append a `.log.txt` file in the Logs folder with the summary, destinations, confidence notes, and review items.
-10. When processing is complete and intent is clear, move the original scan to Archived. Never delete it.
+1. Use the SharePoint/Teams connector first to locate requested or newest PDF, JPG, or JPEG scans in the Office Admin scanned-files location when connector access is available.
+2. Check the local synced scan intake folder as the scanner drop-zone, processing workspace, and fallback path.
+3. For PDFs, inspect page count and whether embedded text exists. Use `scripts/inspect_pdf.py` when useful.
+4. If the PDF is image-only, or if the source is a JPG/JPEG image, visually/OCR-parse the scan. Do not guess from the source file name alone.
+5. Identify document boundaries using institution/vendor, account number, statement date, page numbers, and header changes.
+6. Decide one output group per account/document. If confidence is low, route the source or page range to review instead of filing approximately.
+7. Name output PDFs with the approved naming convention.
+8. Split PDF pages with `scripts/split_pdf.py` or equivalent PDF tooling. For JPG/JPEG scans, create a single filed PDF output unless routing confidence is low.
+9. Use the SharePoint/Teams connector first to confirm matching destination folders and source documents when available.
+10. Save each output PDF into the matching folder from `references/folder-map.md`.
+11. Write or append a `.log.txt` file in the Logs folder with the summary, destinations, confidence notes, and review items.
+12. When processing is complete and intent is clear, move the original scan to Archived. Never delete it.
 
 ## Naming
 
@@ -222,9 +226,13 @@ When Boss asks for an invoice/receipt report, or when a scan run files invoices 
 5. In the email body, note anything that needs attention, including invoices due soon, past-due notices, unknown vendors, unclear property matches, duplicate-looking invoices, missing amounts or dates, security-code/scam concerns, or any item routed to invoice review.
 6. Do not pay invoices, submit forms, move money, or contact vendors.
 
-### SharePoint / Teams Fallback
+### SharePoint / Teams Connector Default
 
-If Boss identifies a scan that is present in Teams/SharePoint but it is not visible in the local synced folder, use the SharePoint connector to locate and download a working copy for processing. Preserve the original SharePoint source file, log the SharePoint URL, and do not move or delete the source scan.
+Use the SharePoint/Teams connector as the default discovery path for scanned files, property folders, entity folders, insurance folders, and matching source documents when connector access is available.
+
+Use local synced folders as the scanner drop-zone, processing workspace, archive/log path, and fallback path. If the connector finds a scan that is not visible locally, download a working copy for processing, preserve the original SharePoint source file, log the SharePoint URL, and do not move or delete the source scan.
+
+Use local synced folders as fallback when the connector is unavailable, lacks the needed site/library/folder, is stale, or cannot perform the required read/write action safely.
 
 ## Invoice And Receipt Routing
 

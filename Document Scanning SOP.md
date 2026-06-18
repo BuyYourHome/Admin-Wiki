@@ -33,6 +33,11 @@ Scan intake folder:
 
 `C:\Users\wesbr\Buy Your Home\Buy Your Home - Office Admin\Scanned Files`
 
+Primary Teams/SharePoint discovery path:
+
+- Use the SharePoint/Teams connector first to locate scans and destination folders when connector access is available.
+- Use the local synced folders as the scanner drop-zone, PDF processing workspace, archive/log location, and fallback path when the connector is unavailable or incomplete.
+
 Scan logs:
 
 `C:\Users\wesbr\Buy Your Home\Buy Your Home - Office Admin\Scanned Files\Logs`
@@ -84,22 +89,26 @@ It stays quiet when there are no new scans. It reports only when it processes fi
 
 ## What The Skill Does
 
-1. Checks the scan intake folder for new PDF, JPG, and JPEG files.
-2. Ignores files already inside `Logs` or `Archived`.
-3. Opens each new scan and checks:
+1. Checks Teams/SharePoint with the connector for new PDF, JPG, and JPEG scan files in the Office Admin scanned-files location when connector access is available.
+2. Checks the local synced scan intake folder as the scanner drop-zone, processing workspace, and fallback:
+
+   `C:\Users\wesbr\Buy Your Home\Buy Your Home - Office Admin\Scanned Files`
+
+3. Ignores files already inside `Logs` or `Archived`.
+4. Opens each new scan and checks:
    - Page count
    - Whether text is embedded
    - Whether the scan is image-only
-4. If the PDF has no embedded text, or if the source is a JPG/JPEG image, treats it as a scanned image document and uses visual/OCR-style parsing.
-5. Reviews each page for:
+5. If the PDF has no embedded text, or if the source is a JPG/JPEG image, treats it as a scanned image document and uses visual/OCR-style parsing.
+6. Reviews each page for:
    - Company, lender, bank, or vendor name
    - Account number or account suffix
    - Statement date, billing date, or invoice date
    - Page numbering
    - Document headers and payment coupons
-6. Determines where each separate document starts and ends.
-7. Splits one combined PDF scan into separate PDF files when the document boundaries are clear. For JPG/JPEG scans, convert or file the document as a single PDF output unless the file is routed to review.
-8. Names each output file using:
+7. Determines where each separate document starts and ends.
+8. Splits one combined PDF scan into separate PDF files when the document boundaries are clear. For JPG/JPEG scans, convert or file the document as a single PDF output unless the file is routed to review.
+9. Names each output file using:
 
    `YY-MM-DD - Company.pdf`
 
@@ -107,21 +116,22 @@ It stays quiet when there are no new scans. It reports only when it processes fi
 
    `26-05-05 - First Citizens Bank VISA.pdf`
 
-9. Saves each split or converted output PDF into the correct mapped folder under the Office Admin 2026 folder or the matching property/project folder, depending on the document type:
+10. Uses the SharePoint/Teams connector first to confirm destination folders and matching source documents when connector access is available.
+11. Saves each split or converted output PDF into the correct mapped folder under the Office Admin 2026 folder or the matching property/project/entity folder, depending on the document type:
 
    `C:\Users\wesbr\Buy Your Home\Buy Your Home - Office Admin\2026`
 
    `C:\Users\wesbr\Buy Your Home\Buy Your Home - Property`
 
-10. Creates or updates a plain text log file in:
+12. Creates or updates a plain text log file in:
 
     `Scanned Files\Logs`
 
-11. Archives the original source scan in:
+13. Archives the original source scan in:
 
     `Scanned Files\Archived`
 
-12. If the scan cannot be confidently parsed or routed, it does not guess. It flags the document for review.
+14. If the scan cannot be confidently parsed or routed, it does not guess. It flags the document for review.
 
 ## Human Responsibilities Before Scanning
 
@@ -372,9 +382,13 @@ Include columns for vendor/payee, property/project or general category, invoice 
 
 Email the report PDF to both `WesWill@BuyYourHomeLLC.com` and `Jenny@BuyYourHomeLLC.com`. In the email body, note invoice or receipt items that need attention, including invoices due soon, past-due notices, unknown vendors, unclear property matches, duplicate-looking invoices, missing amounts or dates, security-code/scam concerns, or any item routed to invoice review. Do not pay invoices, submit forms, move money, or contact vendors.
 
-### SharePoint / Teams Fallback
+### SharePoint / Teams Connector Default
 
-If Boss identifies a scan that is present in Teams/SharePoint but it is not visible in the local synced folder, use the SharePoint connector to locate and download a working copy for processing. Preserve the original SharePoint source file, log the SharePoint URL, and do not move or delete the source scan.
+Use the SharePoint/Teams connector as the default discovery path for scanned files and destination-folder matching when connector access is available.
+
+The local synced folders remain the processing path for files dropped by the scanner and for PDF splitting, visual parsing, report generation, logging, and archiving. If the connector finds a scan that is not visible locally, download a working copy for processing, preserve the original SharePoint source file, log the SharePoint URL, and do not move or delete the source scan.
+
+Use local synced folders as fallback when the connector is unavailable, lacks the needed site/library/folder, is stale, or cannot perform the required read/write action safely.
 
 ## Logging Requirements
 
@@ -401,30 +415,31 @@ The log should include:
 Use this checklist.
 
 1. Confirm the scan is a PDF, JPG, or JPEG.
-2. Confirm the scan is in:
+2. Use the SharePoint/Teams connector to confirm whether the scan exists in the Office Admin scanned-files location.
+3. Confirm whether the scan is visible in the local synced folder:
 
    `C:\Users\wesbr\Buy Your Home\Buy Your Home - Office Admin\Scanned Files`
 
-3. Confirm it is not already in:
+4. Confirm it is not already in:
 
    `Scanned Files\Archived`
 
-4. Check whether a log was created in:
+5. Check whether a log was created in:
 
    `Scanned Files\Logs`
 
-5. Check whether output files were created in the expected 2026 destination folder.
-6. If there is no log and no output, ask Codex:
+6. Check whether output files were created in the expected 2026 destination folder.
+7. If there is no log and no output, ask Codex:
 
    `Use the document-scanning skill to process the newest scan.`
 
-7. If the file was partially processed, compare:
+8. If the file was partially processed, compare:
    - Source scan pages
    - Log file page ranges
    - Output PDF page counts
-8. If a destination was wrong, move the output file manually to the correct folder and update the log.
-9. If a file was not split correctly, ask Codex to reprocess the archived original scan and specify the correct page ranges.
-10. If the automation itself is not running, ask Codex:
+9. If a destination was wrong, move the output file manually to the correct folder and update the log.
+10. If a file was not split correctly, ask Codex to reprocess the archived original scan and specify the correct page ranges.
+11. If the automation itself is not running, ask Codex:
 
     `Show me the Document scanning automation.`
 
