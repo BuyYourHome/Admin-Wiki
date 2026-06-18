@@ -19,6 +19,7 @@ Supported document types include:
 - Credit card statements
 - Loan and line-of-credit statements
 - Property insurance documents from insurance companies or mortgage companies
+- Property closing documents
 - Invoices
 - Receipts
 - CPA and tax forms
@@ -158,6 +159,7 @@ Common routing examples:
 - First Citizens credit card statement -> `2026\Credit Cards\...`
 - Mortgage statement -> matching property folder under `C:\Users\wesbr\Buy Your Home\Buy Your Home - Property`, then `Owning`, then the folder named for the mortgage company
 - Property insurance document -> matching property folder under `C:\Users\wesbr\Buy Your Home\Buy Your Home - Property`, then that property's `Insurance` folder
+- Property closing document -> matching property folder under `C:\Users\wesbr\Buy Your Home\Buy Your Home - Property`, then the same subfolder that already contains the unsigned version
 - Project/property invoice or receipt with a specific property address -> matching property folder under `C:\Users\wesbr\Buy Your Home\Buy Your Home - Property`, then `Owning`
 - Bank statement -> `2026\Bank Statement\...`
 - Lowe's Pro statement -> `2026\Credit Cards\Lowe's Pro-SYH-6140`
@@ -219,6 +221,36 @@ Example:
 `26-05-03 - Shellpoint - 1234 - Mortgage Statement.pdf`
 
 If the property folder or mortgage-company folder cannot be identified confidently, do not guess and do not create a new folder automatically. Route the item to review and note the uncertainty in the log.
+
+## Property Closing Document Filing
+
+Property closing documents are property documents when the scan includes signed closing-package documents for a Buy Your Home property.
+
+These documents may arrive as one combined scan. For every scanned property closing package:
+
+1. Identify each separate closing document and split the combined scan into one PDF per document when boundaries are clear.
+2. Identify the related property using the property address, buyer/seller names, entity name, project folder name, closing date, document title, or other reliable closing-package details.
+3. Match the property to a project folder under:
+
+   `C:\Users\wesbr\Buy Your Home\Buy Your Home - Property`
+
+4. Search that property's Teams-synced folder tree for the existing unsigned version of each document.
+5. File the signed document in the same folder as the matching unsigned version.
+6. Use the unsigned document's file name as the base name and add ` - Signed` before `.pdf`.
+
+Example:
+
+- Unsigned source: `320 Rose Pl - Contract for Deed Agreement - DRAFT.pdf`
+- Signed filing name: `320 Rose Pl - Contract for Deed Agreement - DRAFT - Signed.pdf`
+
+If the unsigned version is a Word document, keep the same base name and file the signed scan as a PDF:
+
+- Unsigned source: `320 Rose Pl - Promissory Note for Contract for Deed - DRAFT.docx`
+- Signed filing name: `320 Rose Pl - Promissory Note for Contract for Deed - DRAFT - Signed.pdf`
+
+If a signed file with the target name already exists, do not overwrite it. Add ` (2)`, ` (3)`, or the next available suffix and note the duplicate-looking condition in the log.
+
+If the property, document boundary, document title, or matching unsigned version cannot be identified confidently, route the page range or source scan to the general review folder and explain what was unclear in the log. Do not create a new property folder or choose an approximate unsigned document by guesswork.
 
 ## Property Insurance Document Filing
 

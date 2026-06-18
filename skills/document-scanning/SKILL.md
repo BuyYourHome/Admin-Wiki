@@ -1,6 +1,6 @@
 ---
 name: document-scanning
-description: Process scanned financial/admin PDFs from Office Admin scan folders. Use when Codex needs to inspect, OCR or visually parse, split, name, route, archive, or log scanned mortgage statements, bank statements, credit card statements, loan/line-of-credit statements, invoices, receipts, CPA/tax forms, donation records, or medical statements.
+description: Process scanned financial/admin PDFs from Office Admin scan folders. Use when Codex needs to inspect, OCR or visually parse, split, name, route, archive, or log scanned mortgage statements, bank statements, credit card statements, loan/line-of-credit statements, property insurance documents, property closing documents, invoices, receipts, CPA/tax forms, donation records, or medical statements.
 ---
 
 # Document Scanning
@@ -15,7 +15,7 @@ Process scanned Office Admin PDFs and JPG/JPEG image scans conservatively. Split
 - Logs: `C:\Users\wesbr\Buy Your Home\Buy Your Home - Office Admin\Scanned Files\Logs`
 - Archive: `C:\Users\wesbr\Buy Your Home\Buy Your Home - Office Admin\Scanned Files\Archived`
 - Destination root: `C:\Users\wesbr\Buy Your Home\Buy Your Home - Office Admin\2026`
-- Property root for mortgage and property insurance documents: `C:\Users\wesbr\Buy Your Home\Buy Your Home - Property`
+- Property root for mortgage, property insurance, and property closing documents: `C:\Users\wesbr\Buy Your Home\Buy Your Home - Property`
 - Current property/mortgage reference workbook: `C:\Users\wesbr\Buy Your Home\Buy Your Home - Property\Credit Cards Sheet.xlsx`, worksheet `Mortgages`
 
 Read `references/folder-map.md` before routing files. Read `references/routing-rules.md` before deciding uncertain matches.
@@ -75,6 +75,32 @@ For each scanned PDF, JPG, or JPEG:
 7. Save the split statement PDF in that mortgage-company folder.
 
 If the property or mortgage-company folder cannot be identified confidently, do not guess and do not create a new folder automatically. Route the item to review and document what was unclear in the log.
+
+## Property Closing Documents
+
+Property closing documents are property documents when a scan contains signed closing-package documents for a Buy Your Home property.
+
+Property closing packages may arrive as one combined scan. For each scanned property closing package:
+
+1. Determine whether the scan contains signed property closing documents.
+2. Identify each individual closing document and split each document into its own PDF when boundaries are clear.
+3. Match each document to the correct project/property folder under:
+
+   `C:\Users\wesbr\Buy Your Home\Buy Your Home - Property`
+
+4. Use reliable details such as property address, buyer/seller names, entity name, project folder name, closing date, document title, or other closing-package details.
+5. Search the matched property's folder tree for the existing unsigned version of the same document.
+6. Save the signed scan in the same folder as the unsigned version.
+7. Name the signed PDF with the unsigned document's base name plus ` - Signed` before `.pdf`.
+
+Examples:
+
+- `320 Rose Pl - Contract for Deed Agreement - DRAFT.docx` -> `320 Rose Pl - Contract for Deed Agreement - DRAFT - Signed.pdf`
+- `320 Rose Pl - Promissory Note for Contract for Deed - DRAFT.pdf` -> `320 Rose Pl - Promissory Note for Contract for Deed - DRAFT - Signed.pdf`
+
+If the target signed filename already exists, do not overwrite it. Use the next available suffix such as ` (2)` and document the duplicate-looking condition in the log.
+
+If the property, document boundary, document title, or matching unsigned version cannot be identified confidently, route the item to general review and document what was unclear in the log. Do not create a new property folder or file beside an approximate unsigned match.
 
 ## Property Insurance Documents
 
