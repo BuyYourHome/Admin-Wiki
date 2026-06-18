@@ -10,6 +10,7 @@ Codex does not currently show every role below in one unified "Agents" list. Som
 |---|---|---|---|---|
 | Jean Wright / Office Assistant | Assistant profile and operating role | Active | On demand and through related automations | `C:\Codex\Office Assistant Profile.md`; `AGENTS.md` |
 | REI Text Message Watcher | Heartbeat automation | Active | Every 15 minutes during 8:00 AM-9:00 PM Eastern; adaptive 1-minute checks during activity | `C:\Users\wesbr\.codex\automations\morning-weswill-email-summary\automation.toml` |
+| OfficeAssist Instruction Inbox Monitor | Planned heartbeat automation | Pending activation | Every 15 minutes during weekday working hours, currently 8:00 AM-5:00 PM Eastern | `AGENTS.md` |
 | OfficeAssist Morning Email Summary | Wiki-managed skill plus heartbeat automation plus project room | Active | Daily at 8:00 AM Eastern | `skills\officeassist-morning-email-summary\SKILL.md`; `Project Rooms\Email Summary\README.md`; `C:\Users\wesbr\.codex\automations\officeassist-morning-email-summary\automation.toml` |
 | Email Delivery | Wiki-managed support skill | Active | Called by email-capable Admin workflows | `skills\email-delivery\SKILL.md` |
 | Document Scanning | Wiki-managed skill plus heartbeat automation plus project room | Active | Every 30 minutes from 10:00 AM through 4:30 PM Eastern | `skills\document-scanning\SKILL.md`; `Project Rooms\Document Scan\README.md`; `C:\Users\wesbr\.codex\skills\document-scanning\SKILL.md`; app automation id `document-scanning` |
@@ -56,9 +57,9 @@ Where to inspect:
 
 ## REI Text Message Watcher
 
-Type: heartbeat automation.
+Type: planned heartbeat automation.
 
-Status: active.
+Status: pending activation.
 
 Automation id:
 
@@ -93,6 +94,57 @@ Current notification behavior:
 
 - Quiet runs use `DONT_NOTIFY`.
 - Non-Boss/Jenny texts are not answered; notify Wes if action is needed.
+
+## OfficeAssist Instruction Inbox Monitor
+
+Type: heartbeat automation.
+
+Status: active.
+
+Automation id:
+
+- `officeassist-instruction-inbox-monitor`
+
+Schedule:
+
+- Every 15 minutes during weekday working hours.
+- Current working-hours window: 8:00 AM through 5:00 PM Eastern.
+
+Purpose:
+
+- Monitor `OfficeAssist@BuyYourHomeLLC.com` for instruction emails from Wes or Jenny.
+- Treat emails from `WesWill@BuyYourHomeLLC.com` and `Jenny@BuyYourHomeLLC.com` as OfficeAssist instruction intake.
+- Carry out safe, in-scope admin actions when the email instruction and applicable workflow rules allow it, except when a routing rule assigns the work to an existing anchored project-room chat.
+- Report blockers, ambiguous authority, mailbox failures, or decisions needed in the attached status thread.
+- Avoid repeated processing by tracking handled message ids in local monitor memory.
+- Keep routine no-new-instruction checks quiet with `DONT_NOTIFY`.
+
+Special routing:
+
+- If an instruction email has a subject containing `gracious millionaire`, route it into `Project Rooms\Gracious Millionaire\` as book source material and hand the work to the existing Gracious Millionaire project-room chat.
+- Preserve each routed Gracious Millionaire email as its own Markdown file under `Project Rooms\Gracious Millionaire\sources\email\`, including available sender, recipient, timestamp, subject, message id or web link, and body text.
+- Current Gracious Millionaire project-room thread id: `019eb9b0-6780-7fb3-a278-29a18d17998c`.
+- Do not create a new chat for Gracious Millionaire routing unless Wes explicitly asks for a new chat.
+- Do not draft, edit, or send the requested Gracious Millionaire book response from the OfficeAssist monitor thread.
+
+Defined in:
+
+- `C:\Codex\Wiki Files\AGENTS.md`
+
+Activation note:
+
+- The live automation has not been created yet. When activated, attach it to the OfficeAssist status context and do not create a new Gracious Millionaire chat. Routed Gracious Millionaire work should be directed to the existing Gracious Millionaire project-room thread id `019eb9b0-6780-7fb3-a278-29a18d17998c`.
+
+Tools/services used:
+
+- Outlook Email connector for OfficeAssist mailbox reads.
+- Admin wiki workflow rules for action safety.
+
+Important limitations:
+
+- Do not use the instruction inbox monitor to resume Jenny's morning email summary unless Wes explicitly says to resume it.
+- Do not execute high-impact actions from email unless the email clearly authorizes the specific action and the applicable workflow rules allow it.
+- Do not substitute another mailbox if OfficeAssist mailbox access fails.
 
 ## OfficeAssist Morning Email Summary
 

@@ -121,6 +121,19 @@ Use this repo when formulating solutions for office-admin workflows, SOPs, autom
 - After any automated send, verify the message appears in the OfficeAssist Sent Items folder. If it appears under a different mailbox or shows a non-blank `SendUsingAccount` other than `OfficeAssist@BuyYourHomeLLC.com`, notify the user immediately and treat the sender configuration as broken until corrected.
 - Jean is responsible for completing assigned email tasks, including the morning email summary. If an email task fails, if the email cannot be sent, or if successful delivery cannot be verified, do not stay quiet. Notify Wes immediately in the thread and, when a reliable text/SMS path is available, text Wes that the email task failed.
 
+## OfficeAssist Instruction Inbox
+
+- OfficeAssist should monitor `OfficeAssist@BuyYourHomeLLC.com` for instruction emails from Wes and Jenny during working hours.
+- The monitor schedule is every 15 minutes during weekday working hours, currently 8:00 AM through 5:00 PM Eastern unless Wes gives a different window.
+- Use the Outlook Email connector as the preferred mailbox access path.
+- Treat emails from `WesWill@BuyYourHomeLLC.com` and `Jenny@BuyYourHomeLLC.com` as OfficeAssist instruction intake.
+- Keep local monitor memory so the same instruction email is not processed repeatedly.
+- Quiet checks with no new actionable instruction email should not create routine visible messages.
+- If an instruction email asks for a safe, in-scope admin action and the applicable Admin wiki or workflow rules allow it, carry out the task or start the correct workflow.
+- If an instruction email asks for a high-impact action such as sending external email, moving money, approving invoices, deleting files, changing automations, or updating legal/financial documents, proceed only when the email clearly authorizes the specific action and the workflow safety rules allow it. Otherwise report the decision needed.
+- Do not treat a Jenny email as resuming Jenny's morning email summary unless Wes explicitly says to resume it.
+- If an OfficeAssist instruction email has a subject containing `gracious millionaire`, route the email into `Project Rooms\Gracious Millionaire\` as book source material and hand the work to the existing Gracious Millionaire project-room chat, currently identified as thread `019eb9b0-6780-7fb3-a278-29a18d17998c`. Preserve the email as its own Markdown source file under `Project Rooms\Gracious Millionaire\sources\email\`, including sender, recipients, sent/received time, subject, message id or web link when available, and body text. Do not create a new chat for Gracious Millionaire routing. Do not draft, edit, or send the requested book response from the OfficeAssist monitor thread.
+
 ## Email Summary Scope
 
 - Morning email summaries for Wes must scan the entire `WesWill@BuyYourHomeLLC.com` Outlook mailbox store, including all subfolders where Outlook rules may move messages.
