@@ -20,6 +20,7 @@ Supported document types include:
 - Loan and line-of-credit statements
 - Property insurance documents from insurance companies or mortgage companies
 - Property closing documents
+- Signed operating agreements
 - Invoices
 - Receipts
 - CPA and tax forms
@@ -160,6 +161,7 @@ Common routing examples:
 - Mortgage statement -> matching property folder under `C:\Users\wesbr\Buy Your Home\Buy Your Home - Property`, then `Owning`, then the folder named for the mortgage company
 - Property insurance document -> matching property folder under `C:\Users\wesbr\Buy Your Home\Buy Your Home - Property`, then that property's `Insurance` folder
 - Property closing document -> matching property folder under `C:\Users\wesbr\Buy Your Home\Buy Your Home - Property`, then the same subfolder that already contains the unsigned version
+- Signed operating agreement -> the same entity folder that already contains the unsigned or approved-final operating agreement
 - Project/property invoice or receipt with a specific property address -> matching property folder under `C:\Users\wesbr\Buy Your Home\Buy Your Home - Property`, then `Owning`
 - Bank statement -> `2026\Bank Statement\...`
 - Lowe's Pro statement -> `2026\Credit Cards\Lowe's Pro-SYH-6140`
@@ -251,6 +253,29 @@ If the unsigned version is a Word document, keep the same base name and file the
 If a signed file with the target name already exists, do not overwrite it. Add ` (2)`, ` (3)`, or the next available suffix and note the duplicate-looking condition in the log.
 
 If the property, document boundary, document title, or matching unsigned version cannot be identified confidently, route the page range or source scan to the general review folder and explain what was unclear in the log. Do not create a new property folder or choose an approximate unsigned document by guesswork.
+
+## Signed Operating Agreement Filing
+
+Signed operating agreements are entity governance documents when a scan contains newly signed operating agreements, amendments, consents, membership schedules, or related signature pages for a Buy Your Home-related entity.
+
+These documents may arrive as one combined scan. For every scanned signed operating-agreement package:
+
+1. Identify each separate entity document and split the combined scan into one PDF per document when boundaries are clear.
+2. Identify the related entity using the entity name, EIN when shown, agreement title, effective date, member/manager names, signature block, or other reliable document details.
+3. Search the relevant Teams-synced entity folder and the Operating Agreements project-room outputs for the existing unsigned, approved-final, or controlling source version of the same document.
+4. File the signed PDF in the same folder as the matched unsigned or approved-final version.
+5. Use the matched document's file name as the base name and add ` - Signed` before `.pdf`.
+
+Example:
+
+- Unsigned source: `26-06-18 Sell Your Home LLC Operating Agreement - Approved Final.docx`
+- Signed filing name: `26-06-18 Sell Your Home LLC Operating Agreement - Approved Final - Signed.pdf`
+
+If a signed file with the target name already exists, do not overwrite it. Add ` (2)`, ` (3)`, or the next available suffix and note the duplicate-looking condition in the log and report.
+
+If the entity, document boundary, document title, or matching unsigned/approved-final version cannot be identified confidently, route the page range or source scan to the general review folder and explain what was unclear in the log. Do not create a new entity folder, move prior operating agreements into archive, or choose an approximate unsigned document by guesswork.
+
+When a scan run files signed operating agreements, generate a friendly PDF status report showing one row per detected entity document, including entity, document title, page range, matched unsigned/approved-final source, filed signed PDF path, filing status, and review flags. Email the report PDF to both `WesWill@BuyYourHomeLLC.com` and `Jenny@BuyYourHomeLLC.com`. In the email body, note anything that needs attention, including unmatched entities, missing source versions, duplicate-looking signed files, unclear signature status, missing pages, or any item routed to review.
 
 ## Property Insurance Document Filing
 

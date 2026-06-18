@@ -11,6 +11,7 @@ Primary routing:
 - Mortgage statements: match the related property folder under `C:\Users\wesbr\Buy Your Home\Buy Your Home - Property`, drill into that property's `Owning` folder, then save in the folder named for the mortgage company.
 - Property insurance documents from insurance companies or mortgage companies: match the related property folder under `C:\Users\wesbr\Buy Your Home\Buy Your Home - Property`, drill into that property's `Insurance` folder, then save there.
 - Property closing documents: match the related property folder under `C:\Users\wesbr\Buy Your Home\Buy Your Home - Property`, find the existing unsigned version in that property's folder tree, then save the signed scan beside it using the unsigned base name plus ` - Signed`.
+- Signed operating agreements: match the related entity, find the existing unsigned, approved-final, or controlling source version in the entity folder or Operating Agreements project-room outputs, then save the signed scan beside it using the matched base name plus ` - Signed`.
 - Project/property invoices and receipts: match the related property folder under `C:\Users\wesbr\Buy Your Home\Buy Your Home - Property`, drill into that property's `Owning` folder, then save there unless a more specific approved subfolder already exists.
 - General invoices that are not project-related: `2026\Invoices & Receipts\{Vendor}`
 - Quest invoices: `2026\Quest\Invoices\...`
@@ -32,5 +33,7 @@ If no confident statement/account destination exists, route to `2026\_Needs Revi
 If no confident property insurance destination or tracking status exists, route to `2026\_Needs Review` and log the reason. Keep insurance review with statement/account review unless Boss creates a separate insurance review folder later.
 
 If no confident property closing destination or matching unsigned document exists, route to `2026\_Needs Review` and log the reason. Do not create a new property folder or file beside an approximate unsigned match.
+
+If no confident signed operating-agreement entity, destination, or matching unsigned/approved-final source exists, route to `2026\_Needs Review` and log the reason. Do not create a new entity folder, move prior operating agreements into archive, or file beside an approximate match.
 
 If no confident invoice or receipt destination exists, route to `2026\Invoices & Receipts\_Needs Review` and log the reason. Do not use the statement review folder for invoice exceptions.

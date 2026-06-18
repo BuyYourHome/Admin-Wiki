@@ -1,6 +1,6 @@
 ---
 name: document-scanning
-description: Process scanned financial/admin PDFs from Office Admin scan folders. Use when Codex needs to inspect, OCR or visually parse, split, name, route, archive, or log scanned mortgage statements, bank statements, credit card statements, loan/line-of-credit statements, property insurance documents, property closing documents, invoices, receipts, CPA/tax forms, donation records, or medical statements.
+description: Process scanned financial/admin PDFs from Office Admin scan folders. Use when Codex needs to inspect, OCR or visually parse, split, name, route, archive, or log scanned mortgage statements, bank statements, credit card statements, loan/line-of-credit statements, property insurance documents, property closing documents, signed operating agreements, invoices, receipts, CPA/tax forms, donation records, or medical statements.
 ---
 
 # Document Scanning
@@ -16,6 +16,7 @@ Process scanned Office Admin PDFs and JPG/JPEG image scans conservatively. Split
 - Archive: `C:\Users\wesbr\Buy Your Home\Buy Your Home - Office Admin\Scanned Files\Archived`
 - Destination root: `C:\Users\wesbr\Buy Your Home\Buy Your Home - Office Admin\2026`
 - Property root for mortgage, property insurance, and property closing documents: `C:\Users\wesbr\Buy Your Home\Buy Your Home - Property`
+- Operating Agreements project room for signed operating-agreement source matching: `C:\Codex\Wiki Files\Project Rooms\Operating Agreements`
 - Current property/mortgage reference workbook: `C:\Users\wesbr\Buy Your Home\Buy Your Home - Property\Credit Cards Sheet.xlsx`, worksheet `Mortgages`
 
 Read `references/folder-map.md` before routing files. Read `references/routing-rules.md` before deciding uncertain matches.
@@ -101,6 +102,29 @@ Examples:
 If the target signed filename already exists, do not overwrite it. Use the next available suffix such as ` (2)` and document the duplicate-looking condition in the log.
 
 If the property, document boundary, document title, or matching unsigned version cannot be identified confidently, route the item to general review and document what was unclear in the log. Do not create a new property folder or file beside an approximate unsigned match.
+
+## Signed Operating Agreements
+
+Signed operating agreements are entity governance documents when a scan contains newly signed operating agreements, amendments, consents, membership schedules, or related signature pages for a Buy Your Home-related entity.
+
+For each scanned signed operating-agreement package:
+
+1. Determine whether the scan contains signed operating-agreement documents.
+2. Identify each individual entity document and split each document into its own PDF when boundaries are clear.
+3. Match each document to the correct entity using reliable details such as entity name, EIN when shown, agreement title, effective date, member/manager names, signature block, or other document details.
+4. Search the relevant Teams-synced entity folder and the Operating Agreements project-room outputs for the existing unsigned, approved-final, or controlling source version of the same document.
+5. Save the signed PDF in the same folder as the matched unsigned or approved-final version.
+6. Name the signed PDF with the matched document's base name plus ` - Signed` before `.pdf`.
+
+Example:
+
+- `26-06-18 Sell Your Home LLC Operating Agreement - Approved Final.docx` -> `26-06-18 Sell Your Home LLC Operating Agreement - Approved Final - Signed.pdf`
+
+If the target signed filename already exists, do not overwrite it. Use the next available suffix such as ` (2)` and document the duplicate-looking condition in the log and report.
+
+If the entity, document boundary, document title, or matching unsigned/approved-final version cannot be identified confidently, route the item to general review and document what was unclear in the log. Do not create a new entity folder, move prior operating agreements into archive, or file beside an approximate unsigned match.
+
+When a scan run files signed operating agreements, generate a friendly PDF status report with one row per detected entity document. Include entity, document title, page range, matched unsigned/approved-final source, filed signed PDF path, filing status, and review flags. Email the report PDF to both `WesWill@BuyYourHomeLLC.com` and `Jenny@BuyYourHomeLLC.com`. In the email body, note anything that needs attention, including unmatched entities, missing source versions, duplicate-looking signed files, unclear signature status, missing pages, or any item routed to review.
 
 ## Property Insurance Documents
 

@@ -52,6 +52,7 @@ Initial supported types:
 - Loan statements
 - Property insurance documents from insurance companies or mortgage companies
 - Property closing documents
+- Signed operating agreements
 - Invoices
 - Receipts
 - CPA/tax forms
@@ -71,6 +72,7 @@ Primary routing categories:
 - Mortgage statements: match the statement to the related property folder under `C:\Users\wesbr\Buy Your Home\Buy Your Home - Property`, drill into that property's `Owning` folder, then save the statement in the folder named for the mortgage company.
 - Property insurance documents: match the document to the related property folder under `C:\Users\wesbr\Buy Your Home\Buy Your Home - Property`, drill into that property's `Insurance` folder, then save there.
 - Property closing documents: match the document to the related property folder under `C:\Users\wesbr\Buy Your Home\Buy Your Home - Property`, find the existing unsigned version in that property's folder tree, then save the signed scan beside it using the unsigned name plus ` - Signed`.
+- Signed operating agreements: match the document to the related entity, find the existing unsigned, approved-final, or controlling source version in the entity folder or Operating Agreements project-room outputs, then save the signed scan beside it using the matched name plus ` - Signed`.
 - Project/property invoices and receipts: match the document to the related property folder under `C:\Users\wesbr\Buy Your Home\Buy Your Home - Property`, drill into that property's `Owning` folder, then save the filed PDF there unless a more specific approved subfolder already exists.
 - Quest invoices: `2026\Quest\Invoices\...`
 - Quest receipts: `2026\Quest\Receipts\...`
@@ -145,6 +147,37 @@ Examples:
 If the target signed filename already exists, do not overwrite it. Use the next available suffix such as ` (2)` and document the duplicate-looking condition in the log.
 
 If the property, document boundary, document title, or matching unsigned version cannot be identified confidently, route the item to general review and document what was unclear in the log. Do not create a new property folder or file beside an approximate unsigned match.
+
+## Signed Operating Agreement Routing
+
+Signed operating agreements are entity governance documents when a scan contains newly signed operating agreements, amendments, consents, membership schedules, or related signature pages for a Buy Your Home-related entity.
+
+For each scanned signed operating-agreement package:
+
+1. Determine whether the scan contains signed operating-agreement documents.
+2. Identify each individual entity document and split each document into its own PDF when boundaries are clear.
+3. Match each document to the correct entity using reliable details such as entity name, EIN when shown, agreement title, effective date, member/manager names, signature block, or other document details.
+4. Search the relevant Teams-synced entity folder and the Operating Agreements project-room outputs for the existing unsigned, approved-final, or controlling source version of the same document.
+5. Save the signed PDF in the same folder as the matched unsigned or approved-final version.
+6. Name the signed PDF with the matched document's base name plus ` - Signed` before `.pdf`.
+
+Example:
+
+- `26-06-18 Investment Services LLC Operating Agreement - Approved Final.docx` -> `26-06-18 Investment Services LLC Operating Agreement - Approved Final - Signed.pdf`
+
+If the target signed filename already exists, do not overwrite it. Use the next available suffix such as ` (2)` and document the duplicate-looking condition in the log and report.
+
+If the entity, document boundary, document title, or matching unsigned/approved-final version cannot be identified confidently, route the item to general review and document what was unclear in the log. Do not create a new entity folder, move prior operating agreements into archive, or file beside an approximate unsigned match.
+
+### Signed Operating Agreement Reports
+
+When a scan run files signed operating agreements:
+
+1. Use one row per detected entity document.
+2. Include columns for entity, document title, page range, matched unsigned/approved-final source, filed signed PDF path, filing status, and review flags.
+3. Use color or status labels so filed, duplicate-looking, missing-source, unclear-entity, unclear-signature, missing-page, and review rows are easy to scan.
+4. Email the friendly report PDF to both `WesWill@BuyYourHomeLLC.com` and `Jenny@BuyYourHomeLLC.com`.
+5. In the email body, note anything that needs attention, including unmatched entities, missing source versions, duplicate-looking signed files, unclear signature status, missing pages, or any item routed to review.
 
 ## Property Insurance Document Routing
 

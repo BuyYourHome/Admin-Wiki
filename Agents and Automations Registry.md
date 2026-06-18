@@ -242,9 +242,9 @@ Schedule:
 Purpose:
 
 - Check scanned PDFs in the Office Admin scan intake folder.
-- Split combined scans into separate financial/admin documents, including property closing packages.
+- Split combined scans into separate financial/admin documents, including property closing packages and signed operating-agreement packages.
 - Name outputs using approved conventions.
-- Route mortgage statements, credit card statements, bank statements, invoices, receipts, property closing documents, tax forms, and related documents to the correct Teams/SharePoint folder.
+- Route mortgage statements, credit card statements, bank statements, invoices, receipts, property closing documents, signed operating agreements, tax forms, and related documents to the correct Teams/SharePoint folder.
 - Write logs and archive original scans.
 - Resume one dedicated Codex chat for status, follow-up, and automation tuning instead of creating a fresh standalone run thread each time.
 
