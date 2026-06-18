@@ -17,10 +17,15 @@ The main organizing theme is that becoming a gracious millionaire is not about r
 ## Current Draft Limitations
 
 - Several sections are still chapter beginnings rather than full chapters.
+- The new Failures in Real Estate chapter is placed early because it gives necessary context before the favor and success stories.
 - Providence Landing is clearly an unfinished story in the source material.
 - The Red Quartz and HOA/favor sections are the most developed narrative chapters.
 - The 115 Rosebrooks chapter is the most legally sensitive chapter. It should be reviewed for tone and legal exposure before any external publication.
 - The abundance, gratitude, complaining, and tribes sections are strong thematic material but need more source stories before they can become complete chapters.
+
+## June 18 Failures Source Note
+
+The Failures in Real Estate chapter was drafted from Wes's June 18, 2026 email. It preserves the core facts: the Raleigh house renovation, the Galveston-area hotel, the Johnston County duplexes, the 2008 mortgage crisis, the failed marriage context, and the contrast between earlier ambition/education and the later understanding of favor and lordship.
 
 ## 115 Rosebrooks Source Note
 
