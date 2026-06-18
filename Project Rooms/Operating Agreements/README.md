@@ -66,7 +66,8 @@ Excluded unless Wes specifically adds them:
 
 ## Source Inventory Status
 
-- Authoritative sources: none confirmed yet.
+- Approved final OAs: Sell Your Home LLC and Investment Services LLC were approved by Wes on 2026-06-18 and delivered to their Teams folders. Prior operating-agreement files in those Teams folders were moved into `Operating Agreement Archive`.
+- Authoritative sources: approved final OAs are recorded in `outputs\` and `working\source-inventory.md`; other copied sources remain unclear unless separately confirmed.
 - Copied sources: 10 operating-agreement files from Teams/SharePoint `Corp` channels, plus 4 Jeff Watson drafting files for new Sell Your Home OA versions. `Corp-Providence Landing Management LLC` remains excluded.
 - Duplicate/outdated sources: multiple versions exist and need review before one agreement is treated as controlling.
 - Missing context: BYH 401K LLC has a local working folder but no OA source file yet; attorney/CPA confirmation is still needed for controlling versions.

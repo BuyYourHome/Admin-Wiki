@@ -33,6 +33,15 @@ Visible `Corp` folders found:
 | `Corp-Sell Your Home 83-4027719` | `25-02-19 Sell Your Home -LLC Operating Agreement - Jessica Santcruz - Change Roth membership.pdf` | 2025-02-19T14:10:04.0000000Z |
 | `Corp-Sell Your Home 83-4027719` | `Sell Your Home LLC (Browning & Hollinger) AMENDED AND RESTATED IRA-OWNED LLC OPERATING AGREEMENT.docx` | 2025-07-08T18:42:00.0000000Z |
 
+## Approved Final Deliveries
+
+On 2026-06-18, Wes approved the SYH and Investment Services operating agreements as final. Final files were created in the project-room `outputs\` folder, uploaded to the matching Teams folders, and prior operating-agreement files in those Teams folders were moved into `Operating Agreement Archive`.
+
+| Teams Folder | Approved Final Uploaded | Archived Prior OA Files |
+| --- | --- | --- |
+| `Corp-Sell Your Home 83-4027719` | `26-06-18 Sell Your Home LLC Operating Agreement - Approved Final.docx` | `20-01-26 Sell Your Home -LLC Operating Agreement - Anne Marsland.pdf`; `20-01-29 Sell Your Home -LLC Operating Agreement.docx`; `22-11-04 Sell Your Home -LLC Operating Agreement - Jessica Santcruz.docx`; `22-11-28 Sell Your Home -LLC Operating Agreement - Jessica Santacruz.pdf`; `25-01-29 Sell Your Home -LLC Operating Agreement - Jessica Santcruz - Change Roth members.docx`; `25-02-19 Sell Your Home -LLC Operating Agreement - Jessica Santcruz - Change Roth membership.pdf`; `25-06-18 Sell Your Home -LLC Operating Agreement - Al Bennett- Change Roth members.docx`; `26-06-16 Sell Your Home- Operating Agreement - Joshua Kennedy Manager.docx` |
+| `Corp-Investment Services LLC 30-1435731` | `26-06-18 Investment Services LLC Operating Agreement - Approved Final.docx` | `25-01-17 Investment Services LLC Operating Agreement.docx` |
+
 ## Jeff Watson Folder
 
 Wes identified the files in `Corp-Sell Your Home 83-4027719/Jeff Watson` as important starting points for new OA versions. These were copied into `sources/Jeff Watson/`.
