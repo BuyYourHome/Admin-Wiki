@@ -46,6 +46,8 @@ The Contract for Deed process is the likely first caller. CFD should call the Am
 
 Read the project spreadsheet and use the amortization worksheet.
 
+When the project spreadsheet is an active Teams/SharePoint project workbook, use the SharePoint/Teams connector as the authoritative discovery and transfer path before trusting a local synced path. A local path under `C:\Users\wesbr\Buy Your Home\...` may be used as a working copy only after the connector has verified or fetched the current workbook. If connector access is unavailable or cannot identify the exact current workbook item, stop and report the blocker instead of silently using the local synced copy.
+
 Worksheet lookup:
 
 1. Prefer an exact worksheet named `Amortization`.
