@@ -310,6 +310,14 @@ Implementation note:
 - When a target was created from the wrong workbook base, do not attempt to repair the shell in place. Back up the wrong-base target, copy the correct source/original to the target path, and rerun the full conversion from that clean copy.
 - If Excel reports repairs that remove `/xl/tables/table*.xml`, the formal Excel table metadata is damaged. Do not create or modify the table with file-level table XML writers. Rebuild from the clean source and have Excel itself create `tblCarryingExpenses`, then verify the file reopens cleanly and the formulas still use structured references.
 
+## Completion Lesson Capture Rule
+
+At completion of every project workbook conversion, migration, sheet swap, or similar spreadsheet update, record any new reusable lesson in the appropriate durable rule file before treating the work as complete.
+
+Capture lessons such as connector discovery, freshness, upload, or permission behavior; workbook-open, Excel automation, link-breaking, or macro-enabled save behavior; template formula/layout differences from prior assumptions; validation checks that caught an issue or should be repeated next time; formula-driven value changes that need to be logged for Wes; and rollback, migration-log, or post-upload verification issues.
+
+If a run produced no new reusable lesson, state that in the final response. Do not leave a reusable lesson only in a chat message or one-off migration log.
+
 ## Review Rules
 
 Route the project workbook update for review when:
