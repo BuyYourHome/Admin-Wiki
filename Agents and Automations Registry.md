@@ -24,6 +24,7 @@ Codex does not currently show every role below in one unified "Agents" list. Som
 | Grocery List Handler | Wiki rule and data workflow | Active | On demand, including approved Boss/Jenny text instructions | `operations/grocery-list/` |
 | AI Project Room Workflow | Wiki workflow | Active | On demand before complex multi-source work | `Project Room Workflow.md` |
 | Project Management Spreadsheet Rewrite | Project Room | Active/planning | On demand | `Project Rooms\Project Management Spreadsheet Rewrite\README.md` |
+| New Project | Wiki-managed skill plus project room | Draft | On demand | `skills\new-project\SKILL.md`; `Project Rooms\New Project\README.md` |
 | Jenny Daily Email Summary | Planned/paused automation behavior | Paused | Would run daily with Wes summary after Jenny mailbox is available | `officeassist-morning-email-summary` prompt notes |
 
 ## Jean Wright / Office Assistant
@@ -477,6 +478,27 @@ Next needed inputs:
 - At least one good project instance.
 - At least one messy or frustrating project instance.
 - Desired reports and project lifecycle stages.
+
+## New Project
+
+Type: wiki-managed skill plus project room.
+
+Status: draft.
+
+Purpose:
+
+- Hold a newly scoped Buy Your Home admin project once Wes defines the goal.
+- Keep source files, working notes, open questions, and review-ready outputs separated from other project rooms.
+
+Defined in:
+
+- `C:\Codex\Wiki Files\skills\new-project\SKILL.md`
+- `C:\Codex\Wiki Files\Project Rooms\New Project\README.md`
+
+Important rules:
+
+- Record the project goal and controlling sources before drafting final outputs.
+- Do not use New Project when an existing specialized project room is the better fit.
 
 ## Jenny Daily Email Summary
 

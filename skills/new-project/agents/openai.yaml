@@ -1,0 +1,4 @@
+interface:
+  display_name: "New Project"
+  short_description: "Start and maintain the New Project room"
+  default_prompt: "Use $new-project to define scope and organize sources for the New Project room."

@@ -13,6 +13,7 @@ This project room is a placeholder for a newly scoped effort.
 - Status: created; awaiting project scope.
 - Owner intent: not yet defined.
 - Next action: add source materials or define the project goal.
+- Related skill: `C:\Codex\Wiki Files\skills\new-project\SKILL.md`.
 
 ## Room Layout
 
