@@ -140,6 +140,7 @@ Use this repo when formulating solutions for office-admin workflows, SOPs, autom
 - Do not limit the summary to Inbox unless Wes explicitly asks for an Inbox-only summary.
 - Focus on unread or newly received messages since the last successful summary. Include rule-routed folders when messages are financial, legal, property-related, vendor/admin-related, time-sensitive, or action-oriented.
 - Exclude routine promotional, automated, or newsletter messages unless they are time-sensitive, financial, legal, property-related, or require action.
+- When the OfficeAssist heartbeat runs every 15 minutes for email monitoring, send the Boss morning email summary only once per calendar day: the first eligible run at or after 8:00 AM Eastern sends it if it has not already been sent and verified; later same-day heartbeat runs perform instruction-email monitoring only.
 - Record the summary cutoff time used so the next summary can avoid both missed rule-routed messages and duplicate reporting.
 - The email-summary workflow owns the mailbox scan, cutoff logic, priority selection, summary body, and attachment decision.
 - For the send step only, use the shared `skills\email-delivery\SKILL.md` workflow by passing sender, recipient, subject, plain-text body, attachment paths if any, and the rule that send or verification failure must be reported in the OfficeAssist thread.
