@@ -4,7 +4,7 @@ Prepared: 2026-06-19.
 
 ## Subject Snapshot
 
-5021 Sunnyfield Dr, Raleigh, NC 27610 is treated as a manufactured home based on Owner-provided information. Public data reviewed during this pass did not confirm size, year, bed/bath count, condition, or land/title status.
+5021 Sunnyfield Dr, Raleigh, NC 27610 is treated as a double-wide manufactured home based on Owner-provided information. Owner-provided information also says land is not included. Public data reviewed during this pass did not confirm size, year, bed/bath count, condition, title status, or lot/community terms.
 
 ## Market Signals
 
@@ -19,28 +19,23 @@ Prepared: 2026-06-19.
 
 ## Scenario Reasoning
 
-The most important unresolved issue is whether the subject is land-owned real property or a home-only manufactured home on a leased pad. The active public signals separate into two different value bands:
+The ownership premise is now narrowed: land is not included. That means land-owned manufactured-home listings should not control value. The useful active public signal is the home-only / leased-lot mobile-home signal at 1104 Deep River Ct. The higher Auburn Rd and Polo Dr signals are retained only as context for land-owned or retail listings that are not directly comparable.
 
-- Home-only / leased-lot mobile-home signal: 1104 Deep River Ct at $74,900.
-- Land-owned / retail mobile-manufactured signal: 2001 Auburn Rd around the low-to-mid $230k range and 1140 Polo Dr at $285k.
+Because the subject is a double wide, it may warrant an upward adjustment versus a smaller single-wide or lower-condition leased-lot home, but size, age, condition, lot rent, and community transfer terms remain unverified.
 
-Because no public source confirmed subject square footage, age, condition, or land/title status, the CMA should not be narrowed to a single value.
+Because no public source confirmed subject square footage, age, condition, title status, or lot/community terms, the CMA remains preliminary.
 
 ## Preliminary Value Range
 
 For public-data prototyping only:
 
-- Home-only / leased-lot scenario: $60,000 to $95,000.
-- Land-owned manufactured-home scenario, average condition: $190,000 to $250,000.
-- Land-owned manufactured-home scenario, larger or updated: $230,000 to $285,000.
+- Home-only / leased-lot double-wide scenario: $75,000 to $115,000.
+- Working midpoint before condition adjustment: $95,000.
 
 ## Preliminary Indication
 
-If the subject is a home-only manufactured home in a park or on leased land, the working indication is approximately $75,000 before condition adjustment.
-
-If the subject includes land and is financeable as real property, the working indication is approximately $225,000 to $250,000 before condition adjustment, with upside toward the high-$200k range if the home is larger, updated, and has good land/utility characteristics.
+Because land is not included and the subject is Owner-provided as a double wide, the working indication is approximately $95,000 before condition adjustment. A lower-condition, older, or high-lot-rent home could fall closer to $75,000. A larger, updated double wide with favorable lot rent and clean title/transfer terms could support the low-$100k range.
 
 ## Confidence
 
 Low. The current CMA is useful for framing value scenarios, not for final pricing or lender use.
-

@@ -9,6 +9,8 @@ Source collection date: 2026-06-19.
 Owner-provided fact:
 
 - Subject is a manufactured home.
+- Subject is a double wide.
+- Land is not included.
 
 Public-source status:
 
@@ -18,7 +20,8 @@ Public-source status:
 Use in CMA:
 
 - Treat the subject type as Owner-provided.
-- Do not finalize value until subject specifications and land/title status are confirmed.
+- Treat the report as a home-only / leased-lot manufactured-home CMA unless later information shows a different ownership structure.
+- Do not finalize value until subject specifications, condition, and lot/community terms are confirmed.
 
 ## Market And Comparable Signals
 
@@ -109,4 +112,3 @@ Supported public-source facts:
 Use in CMA:
 
 - Confirms manufactured-home product type in the local market. Sale is too old to use directly for current 2026 valuation.
-
