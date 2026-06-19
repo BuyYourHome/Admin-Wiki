@@ -10,7 +10,7 @@ Codex does not currently show every role below in one unified "Agents" list. Som
 |---|---|---|---|---|
 | Jean Wright / Office Assistant | Assistant profile and operating role | Active | On demand and through related automations | `C:\Codex\Office Assistant Profile.md`; `AGENTS.md` |
 | REI Text Message Watcher | Heartbeat automation | Active | Every 15 minutes during 8:00 AM-9:00 PM Eastern; adaptive 1-minute checks during activity | `C:\Users\wesbr\.codex\automations\morning-weswill-email-summary\automation.toml` |
-| OfficeAssist Instruction Inbox Monitor | Planned heartbeat automation | Pending activation | Every 15 minutes during weekday working hours, currently 8:00 AM-5:00 PM Eastern | `AGENTS.md` |
+| OfficeAssist Instruction Inbox Monitor | Planned heartbeat automation plus active Gracious Millionaire intake heartbeat | Partial active | Every 15 minutes during weekday working hours, currently 8:00 AM-5:00 PM Eastern | `AGENTS.md`; `C:\Users\wesbr\.codex\automations\gracious-millionaire-officeassist-email-intake\automation.toml` |
 | OfficeAssist Morning Email Summary | Wiki-managed skill plus heartbeat automation plus project room | Active | Daily at 8:00 AM Eastern | `skills\officeassist-morning-email-summary\SKILL.md`; `Project Rooms\Email Summary\README.md`; `C:\Users\wesbr\.codex\automations\officeassist-morning-email-summary\automation.toml` |
 | Email Delivery | Wiki-managed support skill | Active | Called by email-capable Admin workflows | `skills\email-delivery\SKILL.md` |
 | Document Scanning | Wiki-managed skill plus heartbeat automation plus project room | Active | Every 30 minutes from 10:00 AM through 4:30 PM Eastern | `skills\document-scanning\SKILL.md`; `Project Rooms\Document Scan\README.md`; `C:\Users\wesbr\.codex\skills\document-scanning\SKILL.md`; app automation id `document-scanning` |
@@ -97,9 +97,9 @@ Current notification behavior:
 
 ## OfficeAssist Instruction Inbox Monitor
 
-Type: heartbeat automation.
+Type: planned general heartbeat automation plus active Gracious Millionaire-specific heartbeat automation.
 
-Status: active.
+Status: partial active. Gracious Millionaire intake is active; the broader OfficeAssist instruction inbox monitor is not separately active because the existing OfficeAssist status thread already has the morning-summary heartbeat attached.
 
 Automation id:
 
@@ -133,7 +133,8 @@ Defined in:
 
 Activation note:
 
-- The live automation has not been created yet. When activated, attach it to the OfficeAssist status context and do not create a new Gracious Millionaire chat. Routed Gracious Millionaire work should be directed to the existing Gracious Millionaire project-room thread id `019eb9b0-6780-7fb3-a278-29a18d17998c`.
+- The Gracious Millionaire-specific intake automation is active as `gracious-millionaire-officeassist-email-intake` and is attached directly to the existing Gracious Millionaire project-room thread id `019eb9b0-6780-7fb3-a278-29a18d17998c`, so routed book work stays in that anchored chat and does not create a new chat.
+- The broader OfficeAssist instruction inbox monitor remains pending as a separate live heartbeat until there is a dedicated OfficeAssist status thread available or Wes explicitly approves changing the existing OfficeAssist heartbeat/thread arrangement.
 
 Tools/services used:
 
