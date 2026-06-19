@@ -17,6 +17,7 @@ This draft stays in the project room until the process is proven. Do not copy it
 - For `.xlsm` table-driven project workbooks, prefer Excel-native automation for edits and saves. Do not rewrite the workbook through libraries that strip table/query/external-data metadata.
 - Treat the template as structure, formatting, formulas, tables, queries, relationships, and VBA.
 - Treat the source workbook as project values and project-specific table rows.
+- At completion of every workbook conversion, migration, or sheet-swap run, write any new lesson, failure mode, validation requirement, connector behavior, formula drift, or rollback issue discovered during that run into the appropriate durable rule file before marking the work complete. If there were no new reusable lessons, say that in the final response.
 - Do not allow constants from a real project template to survive unless explicitly approved as defaults.
 - After every generated workbook, reopen with Excel before delivery. If Excel reports repair/recovery, discard that output and diagnose before continuing.
 
