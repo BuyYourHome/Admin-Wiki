@@ -23,6 +23,8 @@ This project room is a placeholder for a newly scoped effort.
 
 ## Operating Rules
 
+- When Wes says to create a new project, first suggest an existing project to use as the template for the new project spreadsheet and associated folders.
+- Wait for Wes to confirm the suggested template project or provide another project to use instead.
 - Preserve originals.
 - Do not blend unsupported facts into final outputs.
 - Use authoritative sources only for factual claims.

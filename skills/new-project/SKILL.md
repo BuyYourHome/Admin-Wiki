@@ -23,14 +23,15 @@ Read these files first:
 
 1. Work only from `C:\Codex\Wiki Files`.
 2. Keep New Project materials under `C:\Codex\Wiki Files\Project Rooms\New Project`.
-3. If Wes has not defined the project scope, record the missing scope in `working\missing-context.md` and ask only for the minimum needed next decision.
-4. Put raw source files or source notes in `sources\`.
-5. Update `working\source-inventory.md` before drafting from sources.
-6. Record duplicate, outdated, conflicting, or unclear sources in `working\duplicate-and-conflict-log.md`.
-7. Keep analysis, experiments, and drafts in `working\`.
-8. Put review-ready drafts and final deliverables in `outputs\`.
-9. Mark unsupported factual claims instead of smoothing over gaps.
-10. Commit durable wiki changes locally. Push only under the Admin wiki push rules.
+3. When Wes says to create a new project, suggest an existing project to use as the template for the new project spreadsheet and associated folders, then wait for Wes to confirm that template or name another one.
+4. If Wes has not defined the project scope, record the missing scope in `working\missing-context.md` and ask only for the minimum needed next decision.
+5. Put raw source files or source notes in `sources\`.
+6. Update `working\source-inventory.md` before drafting from sources.
+7. Record duplicate, outdated, conflicting, or unclear sources in `working\duplicate-and-conflict-log.md`.
+8. Keep analysis, experiments, and drafts in `working\`.
+9. Put review-ready drafts and final deliverables in `outputs\`.
+10. Mark unsupported factual claims instead of smoothing over gaps.
+11. Commit durable wiki changes locally. Push only under the Admin wiki push rules.
 
 ## Boundaries
 
