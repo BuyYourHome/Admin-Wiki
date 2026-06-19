@@ -22,9 +22,33 @@ I think I knew a good bit about proper confession, but I do not think I was walk
 
 That is the context for this story.
 
-There were three major real estate transactions that number two and I engaged in that, in the end, were total failures. I think if I knew then what I know now, they might not have been. But there is no way to know that. A proper story about my life as a real estate investor would not be complete without talking about them.
+My history with real estate did not start with success.
 
-The first transaction was a home for us to live in when we were in Raleigh. At that time I was traveling back and forth between Houston and Raleigh. I shared custody of my four children with my first wife, and when I was in Raleigh I would pick them up and they would live with me while I was there.
+My first house was bought with my first wife in Florida. We bought that house just before Ashley and Brandon were born. I was self-employed in the sign business then, and I built a garage on the back side of the house where my shop was. I had operated that business for about eight years, I think.
+
+But I felt like my life was not going in the direction I wanted it to go. At the age of 30, we signed the deed over to my first wife's parents, moved in with them, and I started to college full time. Actually, I started double time. I enrolled in the local community college and finished a two-year associate's degree in one year.
+
+Then we moved to Gainesville, and I enrolled at the University of Florida.
+
+Mechanical engineering was a hard degree. It took me two years to finish one year of college there while I was working part-time to pay the bills and keep up with my studies. After completing my third year of college, we ran out of financial aid. It looked like college was going to have to stop, and I was going to have to go to work full-time.
+
+So we packed up and moved to North Carolina to get started in a new location where I might finish college part-time. That never really happened. I found work, and my career in computer programming continued to develop.
+
+We bought a little farmhouse in Johnston County, an old beat-up house.
+
+I used to say I burned that house down one splinter at a time because when I was remodeling and taking all the old wood out, it went on the fire in the back and was replaced, little by little, with new stuff.
+
+That is the house I lost two times.
+
+The first time was when number one divorced me and took the house. Then she moved out of it and would not sell it to me. She sold it to some third party. We had four kids at the time, and I had no house to share with them when I had custody. So I bought the house back from the lady she had sold it to.
+
+That is the house I was living in when I married number two.
+
+Real estate had not been my friend at this point in my life.
+
+Still, I kept going. There were also three major real estate transactions that number two and I engaged in that, in the end, were total failures. I think if I knew then what I know now, they might not have been. But there is no way to know that. A proper story about my life as a real estate investor would not be complete without talking about them.
+
+One transaction was a home for us to live in when we were in Raleigh. At that time I was traveling back and forth between Houston and Raleigh. I shared custody of my four children with my first wife, and when I was in Raleigh I would pick them up and they would live with me while I was there.
 
 The house we bought had two floors. The first floor was finished with three bedrooms and two bathrooms, and it opened up to the roadside and the driveway. Underneath it was an unfinished basement that was the same size as the upstairs and opened out from the back of the property.
 
@@ -72,6 +96,8 @@ As my marriage with number two began to fall apart under the stress of the finan
 
 The divorce was initiated, and number two demanded that we sell the Raleigh house. I offered to buy it from her. I had a loan in place to do it. But she would have nothing to do with that and demanded that it be sold. She sold it and took the proceeds because she had invested the money.
 
+As part of the divorce settlement with number two, she also took the Johnston County farmhouse that I had owned before our marriage and that was being rented out at the time. So I lost that house the second time in a second divorce.
+
 I moved into a nearby apartment where I could house my children. We stayed there for a little over a year, until my children were old enough to move out except for my youngest.
 
 Then I bought an RV that was big enough for me to live in permanently and still have room for my youngest son when he stayed with me. We parked the RV in the backyard of one of the duplexes, where I could keep a close eye on the tenants and manage the properties.
@@ -82,7 +108,7 @@ This was around the time of the 2008 mortgage crisis. The bank was not very tole
 
 One by one, the banks foreclosed on all of them.
 
-Over a period of about five years, we had bought a hotel, a personal residence, five rental duplexes, and some other investment properties. At the end of that time, we had lost all of it and the marriage had ended in failure.
+Over a period of about five years, we had bought a hotel, a personal residence, five rental duplexes, and some other investment properties. By the end of that season, both houses were gone in the second divorce, the hotel investment was gone, the duplexes were gone, and the marriage had ended in failure.
 
 There were a lot of things wrong, and I will not try to go into all of them. I do not know what would have happened if I had been walking in the same principles I am trying to talk about in this book. I cannot say that I was daily taking my needs to God. I cannot say that I was asking for His favor. There were other dynamics wrong in the marriage for sure.
 

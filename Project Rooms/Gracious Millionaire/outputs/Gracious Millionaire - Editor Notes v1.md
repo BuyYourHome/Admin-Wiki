@@ -27,6 +27,10 @@ The main organizing theme is that becoming a gracious millionaire is not about r
 
 The Failures in Real Estate chapter was drafted from Wes's June 18, 2026 email. It preserves the core facts: the Raleigh house renovation, the Galveston-area hotel, the Johnston County duplexes, the 2008 mortgage crisis, the failed marriage context, and the contrast between earlier ambition/education and the later understanding of favor and lordship.
 
+## June 19 Failed Real Estate Addition
+
+The failed real estate chapter was updated from the routed OfficeAssist source `2026-06-18-gracious-millionaire-failed-real-estate-additional-points.md`. The revision adds the Florida house, the move through college, the Johnston County farmhouse, and Wes's clarification that both houses were lost in the second divorce.
+
 ## 115 Rosebrooks Source Note
 
 The 115 Rosebrooks narrative draws primarily from the seller acknowledgement, foreclosure notices and withdrawal records, the April 3, 2025 Griffith suit discussion summary, the May 21, 2025 settlement draft, the May 30, 2025 Psalm 37 reflection, and the 2026 summary judgment briefing. The chapter is written as book narrative rather than legal argument.

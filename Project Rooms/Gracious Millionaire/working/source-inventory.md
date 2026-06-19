@@ -12,6 +12,7 @@
 | [[2025-04-10-gracious-millionaire-abundance]] | Email markdown | 2025-04-10 | Inbox/Gracious Millionaire | authoritative | Abundance and lordship notes. |
 | [[2025-04-10-gracious-millionaire-abundance-reply]] | Email markdown | 2025-04-10 | Inbox/Gracious Millionaire | authoritative | Stewardship and measurable spiritual reality note. |
 | [[2026-06-18-gracious-millionaire-failures-in-real-estate]] | Email markdown | 2026-06-18 | Outlook search: Gracious Millionaire | authoritative | Chapter seed on early real estate failures before the later favor/success stories. |
+| [[2026-06-18-gracious-millionaire-failed-real-estate-additional-points]] | Routed email markdown | 2026-06-19 | OfficeAssist intake for Gracious Millionaire | authoritative | Additional chronology and details for the failed real estate chapter, including the Florida house, college transition, Johnston County farmhouse, and the note that both houses were lost in the second divorce. |
 | [[115-rosebrooks-project/_source-inventory]] | Project markdown source set | 2023-2026 | 19-HM-115 Rosebrooks Dr property folder | contextual source set | 754 markdown records created from accessible 115 Rosebrooks project files for chapter context and narrative drafting. |
 
 ## Mailbox Retrieval Note
