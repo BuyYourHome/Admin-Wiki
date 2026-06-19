@@ -10,8 +10,8 @@ Codex does not currently show every role below in one unified "Agents" list. Som
 |---|---|---|---|---|
 | Jean Wright / Office Assistant | Assistant profile and operating role | Active | On demand and through related automations | `C:\Codex\Office Assistant Profile.md`; `AGENTS.md` |
 | REI Text Message Watcher | Heartbeat automation | Active | Every 15 minutes during 8:00 AM-9:00 PM Eastern; adaptive 1-minute checks during activity | `C:\Users\wesbr\.codex\automations\morning-weswill-email-summary\automation.toml` |
-| OfficeAssist Instruction Inbox Monitor | Planned heartbeat automation plus active Gracious Millionaire intake heartbeat | Partial active | Every 15 minutes during weekday working hours, currently 8:00 AM-5:00 PM Eastern | `AGENTS.md`; `C:\Users\wesbr\.codex\automations\gracious-millionaire-officeassist-email-intake\automation.toml` |
-| OfficeAssist Morning Email Summary | Wiki-managed skill plus heartbeat automation plus project room | Active | Daily at 8:00 AM Eastern | `skills\officeassist-morning-email-summary\SKILL.md`; `Project Rooms\Email Summary\README.md`; `C:\Users\wesbr\.codex\automations\officeassist-morning-email-summary\automation.toml` |
+| OfficeAssist Instruction Inbox Monitor | Behavior inside OfficeAssist Morning Email Summary heartbeat | Active | Every 15 minutes during working hours; source routing only for Gracious Millionaire | `AGENTS.md`; `C:\Users\wesbr\.codex\automations\officeassist-morning-email-summary\automation.toml` |
+| OfficeAssist Morning Email Summary | Wiki-managed skill plus heartbeat automation plus project room | Active | Every 15 minutes from 8:00 AM-4:45 PM Eastern; Boss summary runs once daily at/after 8:00 AM | `skills\officeassist-morning-email-summary\SKILL.md`; `Project Rooms\Email Summary\README.md`; `C:\Users\wesbr\.codex\automations\officeassist-morning-email-summary\automation.toml` |
 | Email Delivery | Wiki-managed support skill | Active | Called by email-capable Admin workflows | `skills\email-delivery\SKILL.md` |
 | Document Scanning | Wiki-managed skill plus heartbeat automation plus project room | Active | Every 30 minutes from 10:00 AM through 4:30 PM Eastern | `skills\document-scanning\SKILL.md`; `Project Rooms\Document Scan\README.md`; `C:\Users\wesbr\.codex\skills\document-scanning\SKILL.md`; app automation id `document-scanning` |
 | Codex Skill Source Control | Wiki-managed skill system | Active | On demand after skill changes or wiki pulls | `Codex Skill Source Rule.md`; `tools\sync-codex-skills.ps1`; `skills\` |
@@ -97,13 +97,13 @@ Current notification behavior:
 
 ## OfficeAssist Instruction Inbox Monitor
 
-Type: planned general heartbeat automation plus active Gracious Millionaire-specific heartbeat automation.
+Type: behavior inside the `officeassist-morning-email-summary` heartbeat automation.
 
-Status: partial active. Gracious Millionaire intake is active; the broader OfficeAssist instruction inbox monitor is not separately active because the existing OfficeAssist status thread already has the morning-summary heartbeat attached.
+Status: active.
 
 Automation id:
 
-- `officeassist-instruction-inbox-monitor`
+- `officeassist-morning-email-summary`
 
 Schedule:
 
@@ -114,18 +114,19 @@ Purpose:
 
 - Monitor `OfficeAssist@BuyYourHomeLLC.com` for instruction emails from Wes or Jenny.
 - Treat emails from `WesWill@BuyYourHomeLLC.com` and `Jenny@BuyYourHomeLLC.com` as OfficeAssist instruction intake.
-- Carry out safe, in-scope admin actions when the email instruction and applicable workflow rules allow it, except when a routing rule assigns the work to an existing anchored project-room chat.
+- Carry out safe, in-scope admin actions when the email instruction and applicable workflow rules allow it.
 - Report blockers, ambiguous authority, mailbox failures, or decisions needed in the attached status thread.
 - Avoid repeated processing by tracking handled message ids in local monitor memory.
 - Keep routine no-new-instruction checks quiet with `DONT_NOTIFY`.
 
 Special routing:
 
-- If an instruction email has a subject containing `gracious millionaire`, route it into `Project Rooms\Gracious Millionaire\` as book source material and hand the work to the existing Gracious Millionaire project-room chat.
+- If an instruction email has a subject containing `gracious millionaire`, route it into `Project Rooms\Gracious Millionaire\` as book source material from the OfficeAssist monitor.
 - Preserve each routed Gracious Millionaire email as its own Markdown file under `Project Rooms\Gracious Millionaire\sources\email\`, including available sender, recipient, timestamp, subject, message id or web link, and body text.
-- Current Gracious Millionaire project-room thread id: `019eb9b0-6780-7fb3-a278-29a18d17998c`.
+- Current Gracious Millionaire project-room thread id for manual project-room work: `019eb9b0-6780-7fb3-a278-29a18d17998c`.
+- Do not attach a heartbeat to the Gracious Millionaire thread.
 - Do not create a new chat for Gracious Millionaire routing unless Wes explicitly asks for a new chat.
-- Do not draft, edit, or send the requested Gracious Millionaire book response from the OfficeAssist monitor thread.
+- Do not draft, edit, or send the requested Gracious Millionaire book response from the OfficeAssist monitor thread unless Wes explicitly asks for processing there; the default action is source routing only.
 
 Defined in:
 
@@ -133,8 +134,7 @@ Defined in:
 
 Activation note:
 
-- The Gracious Millionaire-specific intake automation is active as `gracious-millionaire-officeassist-email-intake` and is attached directly to the existing Gracious Millionaire project-room thread id `019eb9b0-6780-7fb3-a278-29a18d17998c`, so routed book work stays in that anchored chat and does not create a new chat.
-- The broader OfficeAssist instruction inbox monitor remains pending as a separate live heartbeat until there is a dedicated OfficeAssist status thread available or Wes explicitly approves changing the existing OfficeAssist heartbeat/thread arrangement.
+- The former `gracious-millionaire-officeassist-email-intake` heartbeat was deleted on 2026-06-18 at Wes's request. All OfficeAssist email monitoring now belongs to the OfficeAssist morning-summary/instruction-monitor heartbeat.
 
 Tools/services used:
 
