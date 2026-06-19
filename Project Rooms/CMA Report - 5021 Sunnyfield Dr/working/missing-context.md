@@ -8,7 +8,8 @@
 - Bedrooms and bathrooms.
 - Condition, updates, roof, HVAC, plumbing, electrical, flooring, and skirting.
 - Confirmation of the exact leased-lot or pad arrangement; Owner-provided information says land is not included.
-- If leased-lot/home-only: monthly lot rent, park approval requirements, age restrictions, pet restrictions, and transfer fees.
+- If leased-lot/home-only: what the $782 monthly lot rent includes, park approval requirements, age restrictions, pet restrictions, and transfer fees.
+- Tenant lease, rent roll, and payment history supporting the $1,950 monthly tenant payment.
 - MLS or COMPER closed sales of similar manufactured homes.
 - Current photos.
 

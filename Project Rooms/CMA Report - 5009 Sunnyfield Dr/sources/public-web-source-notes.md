@@ -8,6 +8,12 @@ Prepared: 2026-06-19
 - The home is paying lot rent.
 - Land is not included.
 
+## Internal Trade Metrics
+
+Source workbook: `Project Rooms\Property Trade Evaluation\outputs\Manufactured Home Trade Metrics.xlsx`.
+
+The workbook lists 5009 Sunnyfield Dr as a single wide with monthly lot rent of $782 and monthly tenant payment of $1,800. The resulting gross spread is $1,018 per month, or $12,216 annually, before repairs, taxes, insurance, management, vacancy, collections, financing, or other costs.
+
 ## Public Address Signals
 
 Public web search returned limited direct information for 5009 Sunnyfield Dr. The address appears in Raleigh, NC 27610 public-directory/social references, but public CMA-relevant facts such as title status, year, size, bed/bath count, condition, and lot rent were not verified.
@@ -24,4 +30,3 @@ Public web search returned limited direct information for 5009 Sunnyfield Dr. Th
 ## Source Limitations
 
 Public sources reviewed did not verify the subject's year, square footage, bedroom/bathroom count, condition, remodel status, lot-rent amount, title status, or whether the home can remain in place after transfer.
-

@@ -3,6 +3,7 @@
 | Source | Type | Status | Key Data | Use |
 |---|---|---:|---|---|
 | Owner-provided request | Owner-provided fact | background | Subject is a double-wide manufactured home at 5021 Sunnyfield Dr, Raleigh, NC 27610; land is not included | Subject type, ownership premise, and report request |
+| Manufactured Home Trade Metrics.xlsx | Internal workbook | authoritative | Lot rent $782/month; tenant payment $1,950/month; gross spread $1,168/month | Income and lot-rent section |
 | `sources/public-web-source-notes.md` - Redfin 27610 housing market | Public market page | background | Median sale price $329,402, down 4.5% YoY, 49 DOM | Broad ZIP context only |
 | `sources/public-web-source-notes.md` - Redfin Wake County mobile homes | Public listing search page | background | 2001 Auburn Rd around $229k; 1140 Polo Dr around $285k | Active manufactured-home listing context |
 | `sources/public-web-source-notes.md` - 2001 Auburn Rd Realtor.com | Public listing page | background | 2 bed, 2 bath, 922 sq ft mobile home, listed $235k | Active small mobile/manufactured listing signal |

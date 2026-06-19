@@ -8,6 +8,12 @@ Prepared: 2026-06-19
 - The home is paying lot rent.
 - Land is not included.
 
+## Internal Trade Metrics
+
+Source workbook: `Project Rooms\Property Trade Evaluation\outputs\Manufactured Home Trade Metrics.xlsx`.
+
+The workbook lists 5512 Desert Willow Ln as a single wide with monthly lot rent of $500 and monthly tenant payment of $1,600. The resulting gross spread is $1,100 per month, or $13,200 annually, before repairs, taxes, insurance, management, vacancy, collections, financing, or other costs.
+
 ## Public Address Signals
 
 Public search results point to 5512 Desert Willow Ln, Knightdale, NC 27545. The report uses that public address signal and should be corrected if internal records identify a different city or ZIP.
@@ -26,4 +32,3 @@ Public sources reviewed did not verify the subject's year, square footage, bed/b
 ## Source Limitations
 
 The subject's exact city/ZIP, lot rent, condition, title transfer rules, and whether the home can stay in place after sale remain unverified.
-

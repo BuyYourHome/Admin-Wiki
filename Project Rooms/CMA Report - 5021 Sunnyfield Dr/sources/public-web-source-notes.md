@@ -12,6 +12,12 @@ Owner-provided fact:
 - Subject is a double wide.
 - Land is not included.
 
+Internal trade metrics:
+
+- Source workbook: `Project Rooms\Property Trade Evaluation\outputs\Manufactured Home Trade Metrics.xlsx`.
+- The workbook lists monthly lot rent of $782 and monthly tenant payment of $1,950.
+- The resulting gross spread is $1,168 per month, or $14,016 annually, before repairs, taxes, insurance, management, vacancy, collections, financing, or other costs.
+
 Public-source status:
 
 - Public search results confirm Sunnyfield Dr exists in Raleigh ZIP 27610 and show public-record/resident references to 5021 Sunnyfield Dr, but the reviewed public real-estate pages did not provide reliable subject size, year, bed/bath count, condition, land ownership, or assessed value.
