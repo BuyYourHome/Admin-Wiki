@@ -24,14 +24,17 @@ Read these files first:
 1. Work only from `C:\Codex\Wiki Files`.
 2. Keep New Project materials under `C:\Codex\Wiki Files\Project Rooms\New Project`.
 3. When Wes says to create a new project, suggest an existing project to use as the template for the new project spreadsheet and associated folders, then wait for Wes to confirm that template or name another one.
-4. If Wes has not defined the project scope, record the missing scope in `working\missing-context.md` and ask only for the minimum needed next decision.
-5. Put raw source files or source notes in `sources\`.
-6. Update `working\source-inventory.md` before drafting from sources.
-7. Record duplicate, outdated, conflicting, or unclear sources in `working\duplicate-and-conflict-log.md`.
-8. Keep analysis, experiments, and drafts in `working\`.
-9. Put review-ready drafts and final deliverables in `outputs\`.
-10. Mark unsupported factual claims instead of smoothing over gaps.
-11. Commit durable wiki changes locally. Push only under the Admin wiki push rules.
+4. Expect Wes to provide the new project address. Use that address for the new project spreadsheet and associated folders after the template project is confirmed.
+5. When the new project spreadsheet is created, review the `Profit` sheet and blank out specific values that came from the prototype/template project and should not carry into the new project. Preserve formulas, labels, structural formatting, and reusable assumptions unless Wes says to change them.
+6. If it is unclear whether a `Profit` sheet value is template-specific or a reusable formula/assumption, record it for review instead of deleting it.
+7. If Wes has not defined the project scope, record the missing scope in `working\missing-context.md` and ask only for the minimum needed next decision.
+8. Put raw source files or source notes in `sources\`.
+9. Update `working\source-inventory.md` before drafting from sources.
+10. Record duplicate, outdated, conflicting, or unclear sources in `working\duplicate-and-conflict-log.md`.
+11. Keep analysis, experiments, and drafts in `working\`.
+12. Put review-ready drafts and final deliverables in `outputs\`.
+13. Mark unsupported factual claims instead of smoothing over gaps.
+14. Commit durable wiki changes locally. Push only under the Admin wiki push rules.
 
 ## Boundaries
 
