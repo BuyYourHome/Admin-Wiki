@@ -14,6 +14,7 @@ Read these files first:
 - `C:\Codex\Wiki Files\Admin Home.md`
 - `C:\Codex\Wiki Files\AGENTS.md`
 - `C:\Codex\Wiki Files\Project Room Workflow.md`
+- `C:\Codex\Wiki Files\Codex Skill Source Rule.md`
 - `C:\Codex\Wiki Files\Project Rooms\New Project\README.md`
 - `C:\Codex\Wiki Files\Project Rooms\New Project\working\source-inventory.md`
 - `C:\Codex\Wiki Files\Project Rooms\New Project\working\duplicate-and-conflict-log.md`

@@ -498,6 +498,11 @@ Defined in:
 Important rules:
 
 - Record the project goal and controlling sources before drafting final outputs.
+- When Wes says to create a new project, first suggest an existing project to use as the template for the new project spreadsheet and associated folders.
+- Wait for Wes to confirm the suggested template project or provide another project to use instead.
+- Use the confirmed template project and Wes-provided address for the new project spreadsheet and associated folders.
+- When creating the new project spreadsheet, review the `Profit` sheet and blank out prototype/template-specific values while preserving formulas, labels, structural formatting, and reusable assumptions.
+- If it is unclear whether a `Profit` sheet value is template-specific or reusable, record it for review instead of deleting it.
 - Do not use New Project when an existing specialized project room is the better fit.
 
 ## Jenny Daily Email Summary
