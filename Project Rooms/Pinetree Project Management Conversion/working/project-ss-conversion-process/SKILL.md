@@ -10,6 +10,10 @@ This draft stays in the project room until the process is proven. Do not copy it
 ## Operating Rules
 
 - Stop if any Excel process or project workbook is open, even if the user believes spreadsheets are closed. Report the process and get it closed first.
+- Use the SharePoint/Teams connector as the authoritative discovery and transfer path for active project workbooks. Do not assume a local Teams-synced workbook is current merely because it exists or has a recent timestamp.
+- Before converting or swapping sheets in an active project workbook, fetch or verify the exact current workbook through the SharePoint/Teams connector, record the connector URL/item used, and stage a working copy in the project room.
+- After a workbook edit is validated, write the updated workbook back through the SharePoint/Teams connector to the same authoritative Teams/SharePoint item unless Wes explicitly asks for a project-room-only review copy.
+- Treat local Teams-synced paths under `C:\Users\wesbr\Buy Your Home\...` as convenience working paths only after connector verification. If the connector is unavailable, cannot locate the workbook, or cannot write back safely, stop and report the blocker instead of falling back silently to the local sync folder.
 - For `.xlsm` table-driven project workbooks, prefer Excel-native automation for edits and saves. Do not rewrite the workbook through libraries that strip table/query/external-data metadata.
 - Treat the template as structure, formatting, formulas, tables, queries, relationships, and VBA.
 - Treat the source workbook as project values and project-specific table rows.
@@ -43,15 +47,17 @@ Goal: populate an approved clean template with values from an active or older pr
 
 Process:
 1. Confirm Excel is closed.
-2. Use only an approved clean template, not a real project workbook with residual values.
-3. Inspect source workbook structure and map tabs before editing.
-4. Open a copy of the clean template with Excel automation.
-5. Clear target input/table areas that will receive source data.
-6. Populate only mapped source values and rows.
-7. Preserve target formulas unless a documented rule says to replace them.
-8. Recalculate/save/reopen in Excel.
-9. Run formula drift and template-residue audits.
-10. Produce reconciliation notes before review.
+2. Locate the active workbook through the SharePoint/Teams connector and fetch or verify the current item before using any local synced path.
+3. Use only an approved clean template, not a real project workbook with residual values.
+4. Inspect source workbook structure and map tabs before editing.
+5. Open a copy of the clean template with Excel automation.
+6. Clear target input/table areas that will receive source data.
+7. Populate only mapped source values and rows.
+8. Preserve target formulas unless a documented rule says to replace them.
+9. Recalculate/save/reopen in Excel.
+10. Run formula drift and template-residue audits.
+11. Write the verified workbook back through the SharePoint/Teams connector when the request is to update the live Teams workbook.
+12. Produce reconciliation notes before review.
 
 Required audits:
 - Formula audit: known formula cells match the approved formula map.
