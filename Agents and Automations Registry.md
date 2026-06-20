@@ -25,7 +25,7 @@ Codex does not currently show every role below in one unified "Agents" list. Som
 | AI Project Room Workflow | Wiki workflow | Active | On demand before complex multi-source work | `Project Room Workflow.md` |
 | Project Management Spreadsheet Rewrite | Project Room | Active/planning | On demand | `Project Rooms\Project Management Spreadsheet Rewrite\README.md` |
 | New Project | Wiki-managed skill plus project room | Draft | On demand | `skills\new-project\SKILL.md`; `Project Rooms\New Project\README.md` |
-| Investigate Computer | Wiki-managed skill plus project room | Draft | On demand; daily automation not yet created | `skills\investigate-computer\SKILL.md`; `Project Rooms\Investigate Computer\README.md` |
+| Investigate Computer | Wiki-managed skill plus project room plus heartbeat automation | Active | Daily at 6:00 AM Eastern; email Wes only when an issue is detected | `skills\investigate-computer\SKILL.md`; `Project Rooms\Investigate Computer\README.md`; app automation id `investigate-computer-daily-check` |
 | Jenny Daily Email Summary | Planned/paused automation behavior | Paused | Would run daily with Wes summary after Jenny mailbox is available | `officeassist-morning-email-summary` prompt notes |
 
 ## Jean Wright / Office Assistant
@@ -508,9 +508,9 @@ Important rules:
 
 ## Investigate Computer
 
-Type: wiki-managed skill plus project room.
+Type: wiki-managed skill plus project room plus heartbeat automation.
 
-Status: draft.
+Status: active.
 
 Purpose:
 
@@ -527,7 +527,10 @@ Defined in:
 Current schedule:
 
 - On demand.
-- Daily automation has not yet been created.
+- Daily heartbeat at 6:00 AM Eastern.
+- Automation id: `investigate-computer-daily-check`.
+- Clean runs should stay quiet with `DONT_NOTIFY`.
+- If any issue is detected, send Wes an OfficeAssist email from `OfficeAssist@BuyYourHomeLLC.com` to `WesWill@BuyYourHomeLLC.com`, attach the diagnostic report when practical, and verify the sent copy in OfficeAssist Sent Items.
 
 Important rules:
 
