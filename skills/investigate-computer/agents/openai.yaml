@@ -1,0 +1,4 @@
+interface:
+  display_name: "Investigate Computer"
+  short_description: "Daily computer compromise diagnostics and evidence reporting."
+  default_prompt: "Run the Investigate Computer diagnostics and report whether remote-access tools, suspicious services, startup entries, or known incident indicators are present."

@@ -25,6 +25,7 @@ Codex does not currently show every role below in one unified "Agents" list. Som
 | AI Project Room Workflow | Wiki workflow | Active | On demand before complex multi-source work | `Project Room Workflow.md` |
 | Project Management Spreadsheet Rewrite | Project Room | Active/planning | On demand | `Project Rooms\Project Management Spreadsheet Rewrite\README.md` |
 | New Project | Wiki-managed skill plus project room | Draft | On demand | `skills\new-project\SKILL.md`; `Project Rooms\New Project\README.md` |
+| Investigate Computer | Wiki-managed skill plus project room | Draft | On demand; daily automation not yet created | `skills\investigate-computer\SKILL.md`; `Project Rooms\Investigate Computer\README.md` |
 | Jenny Daily Email Summary | Planned/paused automation behavior | Paused | Would run daily with Wes summary after Jenny mailbox is available | `officeassist-morning-email-summary` prompt notes |
 
 ## Jean Wright / Office Assistant
@@ -504,6 +505,35 @@ Important rules:
 - When creating the new project spreadsheet, review the `Profit` sheet and blank out prototype/template-specific values while preserving formulas, labels, structural formatting, and reusable assumptions.
 - If it is unclear whether a `Profit` sheet value is template-specific or reusable, record it for review instead of deleting it.
 - Do not use New Project when an existing specialized project room is the better fit.
+
+## Investigate Computer
+
+Type: wiki-managed skill plus project room.
+
+Status: draft.
+
+Purpose:
+
+- Run repeatable Windows compromise diagnostics for Wes's computer.
+- Check for ScreenConnect/RMM services, processes, known folders, uninstall entries, startup entries, scheduled tasks, known suspicious remote connections, and known RMM download indicators.
+- Preserve and document incident evidence before cleanup.
+- Support post-reboot verification and OfficeAssist email reporting.
+
+Defined in:
+
+- `C:\Codex\Wiki Files\skills\investigate-computer\SKILL.md`
+- `C:\Codex\Wiki Files\Project Rooms\Investigate Computer\README.md`
+
+Current schedule:
+
+- On demand.
+- Daily automation has not yet been created.
+
+Important rules:
+
+- Do not delete evidence unless Wes explicitly asks.
+- If active remote access is found, tell Wes plainly and recommend disconnecting the computer from the internet.
+- Use `email-delivery` for OfficeAssist email reports and verify sent copies in OfficeAssist Sent Items.
 
 ## Jenny Daily Email Summary
 
