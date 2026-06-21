@@ -38,3 +38,7 @@ The 115 Rosebrooks narrative draws primarily from the seller acknowledgement, fo
 ## June 21 Tensity/Rose Place Source Note
 
 The new chapter draft, currently titled `The Orphaned Property`, was drafted from the routed OfficeAssist source `2026-06-21-164026-gracious-millionaire-new-chapter-outline-forward-to-jean.md`. Earlier June 21 routed files are treated as superseded outlines. The chapter is intentionally marked as a narrative draft because Wes said he would provide further facts, lessons, context, and application later.
+
+## Manuscript Draft v2 Note
+
+`Gracious Millionaire - Manuscript Draft v2.md` is a full-manuscript narrative pass that applies the more developed treatment used in `The Orphaned Property` across the manuscript. It preserves the existing source-backed facts, strengthens transitions, expands the shorter theme chapters from source ideas, and leaves unfinished stories such as Providence Landing in an intentionally unfinished posture rather than inventing missing facts.
