@@ -33,7 +33,7 @@ Follow `Project Room Workflow.md` before drafting from multiple sources.
 | `Project Rooms/Credit Worthiness Evaluator` | Tenant-buyer creditworthiness and ability-to-repay reports. |
 | `Project Rooms/Estate Documents` | Estate document review and related drafts. |
 | `Project Rooms/Operating Agreements` | Operating agreement source review and drafts. |
-| `Project Rooms/Pinetree Project Management Conversion` | Pinetree project-management conversion work. |
+| `Project Rooms/Project Management Spreadsheet Redesign` | Project-management spreadsheet redesign, template, and rollout work. |
 | `Project Rooms/Project Management Spreadsheet Rewrite` | Project-management spreadsheet redesign planning. |
 
 ## Active Workflow Skills

@@ -97,7 +97,7 @@ Current rooms include:
 | `Credit Worthiness Evaluator` | Tenant-buyer creditworthiness and ability-to-repay reports. |
 | `Estate Documents` | Estate document review and related drafts. |
 | `Operating Agreements` | Operating agreement source review and drafts. |
-| `Pinetree Project Management Conversion` | Pinetree project-management conversion work. |
+| `Project Management Spreadsheet Redesign` | Project-management spreadsheet redesign, template, and rollout work. |
 | `Project Management Spreadsheet Rewrite` | Project-management spreadsheet redesign planning. |
 
 Before drafting from multiple sources, create or use a project room and update:
