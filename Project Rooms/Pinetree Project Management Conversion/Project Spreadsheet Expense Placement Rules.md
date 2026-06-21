@@ -320,6 +320,8 @@ Implementation note:
 - When mapping interest rates, only accept percentage-like numeric values between 0 and 1. Old layouts may have loan-balance amounts near the rate/payment table; treating those as rates can produce `#NUM!` payment results.
 - If the old workbook's loan amount equals selling purchase price minus down payment, preserve that relationship in the Rose layout by mapping the appreciation/price input so `Amortization!O3` equals the selling purchase price and leaving `X5` at zero. Use `X5` only when the old workbook intentionally carried a separate selling-price adjustment outside the financing base.
 - If the approved Rose layout recalculates a payment materially differently from the old workbook, log the old and new values as a formula-driven change before upload. Do not hide the change by forcing the old payment into the new template.
+- When designing an Amortization replacement sheet, copy the current `Amortization` worksheet to a new replacement worksheet and make all design changes only in the replacement. Do not rename, overwrite, or reconnect dependent formulas to the replacement until Wes approves the design. Verify after saving that the original `Amortization` sheet is still present and its key formulas remain unchanged.
+- For Amortization rate-change redesigns, keep the subject-to loan schedule separate from the buyer Contract for Deed schedule. Prefer one buyer schedule with explicit rate-change inputs, such as first-rate period in years/months, Rate 1, Rate 2, and payment formulas that reference the buyer schedule's own period counter rather than the subject-to loan year column.
 
 ## Completion Lesson Capture Rule
 
