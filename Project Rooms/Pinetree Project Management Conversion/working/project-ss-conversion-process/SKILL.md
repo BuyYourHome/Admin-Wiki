@@ -10,6 +10,7 @@ This draft stays in the project room until the process is proven. Do not copy it
 ## Operating Rules
 
 - Stop if any Excel process or project workbook is open, even if the user believes spreadsheets are closed. Report the process and get it closed first.
+- Before any connector search, local synced-file inspection, workbook open, read-only review, backup, edit, migration, upload, or validation run, confirm the exact target workbook and project with Wes in the thread. If the target has not already been confirmed in the current turn, pause and wait for confirmation. Do not switch to a source/template workbook or another project workbook during design discussion unless Wes confirms that workbook as the target.
 - Use the SharePoint/Teams connector as the authoritative discovery and transfer path for active project workbooks. Do not assume a local Teams-synced workbook is current merely because it exists or has a recent timestamp.
 - Before converting or swapping sheets in an active project workbook, fetch or verify the exact current workbook through the SharePoint/Teams connector, record the connector URL/item used, and stage a working copy in the project room.
 - After a workbook edit is validated, write the updated workbook back through the SharePoint/Teams connector to the same authoritative Teams/SharePoint item unless Wes explicitly asks for a project-room-only review copy.

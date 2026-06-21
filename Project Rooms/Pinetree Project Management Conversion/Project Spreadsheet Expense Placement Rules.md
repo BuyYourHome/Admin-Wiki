@@ -32,6 +32,12 @@ Use this project-room folder as the staging area for invoice-to-project-spreadsh
 
 `C:\Codex\Wiki Files\Project Rooms\Project Management Spreadsheet Rewrite\working\invoice-project-updates`
 
+## Target Confirmation Rule
+
+Before starting any project spreadsheet action, confirm the exact target workbook with Wes in the thread. This includes connector searches, local synced-file inspection, workbook opening, read-only inspection, backups, edits, migrations, uploads, and validation runs.
+
+The confirmation must name the workbook and project plainly, such as `24_Project Management - 4121 Tensity Dr 2.xlsm` for Tensity. If the target has not already been confirmed in the current turn, pause and wait for Wes to confirm before taking the action. Do not substitute a template workbook, prior source workbook, or another project workbook merely because it is related to the design discussion.
+
 Use the SharePoint/Teams connector as the authoritative discovery, freshness-check, and write-back path for active project workbooks. Locate or verify the workbook through the connector before relying on any local Teams-synced file. Copy the connector-verified workbook into this folder before editing it. After the edited copy is verified, write it back through the connector to the same Teams/SharePoint item unless Wes explicitly asks for a project-room-only review copy.
 
 Local Teams-synced paths, including `C:\Users\wesbr\Buy Your Home\Buy Your Home - Property\...`, are working conveniences only. Do not treat them as proof that a workbook is current. If the connector is unavailable, cannot identify the exact workbook item, or cannot safely write back the finished workbook, stop and report the blocker instead of silently using the synced folder.
