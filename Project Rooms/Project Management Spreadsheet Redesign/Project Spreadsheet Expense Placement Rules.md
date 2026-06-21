@@ -32,7 +32,15 @@ Use this project-room folder as the staging area for invoice-to-project-spreadsh
 
 `C:\Codex\Wiki Files\Project Rooms\Project Management Spreadsheet Rewrite\working\invoice-project-updates`
 
-Copy the original project workbook into this folder before editing it. After the edited copy is verified, copy it back to the original Teams/SharePoint property location.
+## Target Confirmation Rule
+
+Before starting any project spreadsheet action, confirm the exact target workbook with Wes in the thread. This includes connector searches, local synced-file inspection, workbook opening, read-only inspection, backups, edits, migrations, uploads, and validation runs.
+
+The confirmation must name the workbook and project plainly, such as `24_Project Management - 4121 Tensity Dr 2.xlsm` for Tensity. If the target has not already been confirmed in the current turn, pause and wait for Wes to confirm before taking the action. Do not substitute a template workbook, prior source workbook, or another project workbook merely because it is related to the design discussion.
+
+Use the SharePoint/Teams connector as the authoritative discovery, freshness-check, and write-back path for active project workbooks. Locate or verify the workbook through the connector before relying on any local Teams-synced file. Copy the connector-verified workbook into this folder before editing it. After the edited copy is verified, write it back through the connector to the same Teams/SharePoint item unless Wes explicitly asks for a project-room-only review copy.
+
+Local Teams-synced paths, including `C:\Users\wesbr\Buy Your Home\Buy Your Home - Property\...`, are working conveniences only. Do not treat them as proof that a workbook is current. If the connector is unavailable, cannot identify the exact workbook item, or cannot safely write back the finished workbook, stop and report the blocker instead of silently using the synced folder.
 
 ## Known Placement Rules
 
@@ -273,25 +281,27 @@ Repeatable conversion process for an expense tab:
 
 Project-wide Carrying conversion process:
 
-1. Work from the project-room source copy, not directly in Teams, unless Wes explicitly approves a live invoice insertion.
-2. Save converted workbooks to `C:\Codex\Wiki Files\Project Rooms\Project Management Spreadsheet Rewrite\Need Verification`.
-3. Put timestamped pre-conversion backups in `C:\Codex\Wiki Files\Project Rooms\Project Management Spreadsheet Rewrite\working\invoice-project-updates`.
-4. Skip locked/open workbooks and ask Wes to close them before retrying.
-5. Do not run conversions while any project management workbook is open in Excel. Even if the target file is not locked, a running Excel instance with another project workbook open can confuse the user's view and increase automation risk.
-6. When processing multiple project workbooks, convert and verify one workbook at a time.
-7. If a conversion reveals a reusable rule or failure mode, document it in this file before starting the next workbook.
-8. Confirm the source/original workbook path exists before opening the target. Source files may have nonstandard names, such as `28_Project Management - 320 Rose P-originall.xlsm`.
-9. Rebuild `tblCarryingExpenses` from the current source/original Carrying grid each time. Do not assume an earlier converted table is trustworthy.
-10. Migrate real existing Carrying entries from the old grid. Keep dated nonzero amounts, and also keep dated zero-dollar schedule rows when the old workbook used them as part of a visible schedule. Skip blank placeholder rows.
-11. Map old labels into the standard category list before loading `tblCarryingExpenses`.
-12. Put migrated rows into `tblCarryingExpenses` with `Include=Yes`, `Source=Existing Workbook`, and `Status=Migrated`.
-13. Add or preserve blank standard category blocks in the visible grid, such as `Lawn`, even when the table has no rows for that category yet.
-14. Rebuild the visible Carrying grid with date-ascending formulas against `tblCarryingExpenses`.
-15. Rebuild visible Carrying grid totals with the Tensity pattern: each category total cell must use `SUMIFS(tblCarryingExpenses[Amount],tblCarryingExpenses[Category],...,tblCarryingExpenses[Include],"Yes")`, except escrowed Property Taxes where Wes has approved a separate escrow-offset display. Do not use a separate formula system that bypasses table totals.
-16. Rebuild the `Profit` Carrying rows to match the standard Carrying categories and remove `Town Cary Solid Waste`.
-17. Reopen each converted workbook read-only and verify `tblCarryingExpenses`, `Profit!A42=Carrying Cost`, no visible `Town Cary Solid Waste`, and no `#REF!` formulas in the Carrying grid.
-18. Verify workbook identity before releasing the converted file. Check that project-specific worksheets from the source are still present and unrelated project shell markers are not present. Example: Pond should contain sheets such as `Depends`, `Glasgow`, `Tim`, `Others`, `Draws`, `Lumber`, `Smart`, and `2024`; it should not contain Outrigger-only shell markers such as `Past`, `UpdateContract`, `Recap`, or `MISC`.
-19. Reconcile original-vs-converted Carrying totals before release. Read the original source workbook's Carrying totals for every mapped source category, compare them with the rebuilt `tblCarryingExpenses` totals and visible Carrying subtotal cells, and stop if any category differs except for documented intentional changes such as removed obsolete categories or escrow netting for Property Taxes.
+1. Use the SharePoint/Teams connector to locate and fetch or verify the active source/original workbook. Do not start from a stale project-room or synced-folder copy.
+2. Work from the project-room source copy after connector verification, not directly in Teams, unless Wes explicitly approves a live invoice insertion.
+3. Save converted workbooks to `C:\Codex\Wiki Files\Project Rooms\Project Management Spreadsheet Rewrite\Need Verification`.
+4. Put timestamped pre-conversion backups in `C:\Codex\Wiki Files\Project Rooms\Project Management Spreadsheet Rewrite\working\invoice-project-updates`.
+5. Skip locked/open workbooks and ask Wes to close them before retrying.
+6. Do not run conversions while any project management workbook is open in Excel. Even if the target file is not locked, a running Excel instance with another project workbook open can confuse the user's view and increase automation risk.
+7. When processing multiple project workbooks, convert and verify one workbook at a time.
+8. If a conversion reveals a reusable rule or failure mode, document it in this file before starting the next workbook.
+9. Confirm the connector item and source/original workbook path before opening the target. Source files may have nonstandard names, such as `28_Project Management - 320 Rose P-originall.xlsm`.
+10. Rebuild `tblCarryingExpenses` from the current source/original Carrying grid each time. Do not assume an earlier converted table is trustworthy.
+11. Migrate real existing Carrying entries from the old grid. Keep dated nonzero amounts, and also keep dated zero-dollar schedule rows when the old workbook used them as part of a visible schedule. Skip blank placeholder rows.
+12. Map old labels into the standard category list before loading `tblCarryingExpenses`.
+13. Put migrated rows into `tblCarryingExpenses` with `Include=Yes`, `Source=Existing Workbook`, and `Status=Migrated`.
+14. Add or preserve blank standard category blocks in the visible grid, such as `Lawn`, even when the table has no rows for that category yet.
+15. Rebuild the visible Carrying grid with date-ascending formulas against `tblCarryingExpenses`.
+16. Rebuild visible Carrying grid totals with the Tensity pattern: each category total cell must use `SUMIFS(tblCarryingExpenses[Amount],tblCarryingExpenses[Category],...,tblCarryingExpenses[Include],"Yes")`, except escrowed Property Taxes where Wes has approved a separate escrow-offset display. Do not use a separate formula system that bypasses table totals.
+17. Rebuild the `Profit` Carrying rows to match the standard Carrying categories and remove `Town Cary Solid Waste`.
+18. Reopen each converted workbook read-only and verify `tblCarryingExpenses`, `Profit!A42=Carrying Cost`, no visible `Town Cary Solid Waste`, and no `#REF!` formulas in the Carrying grid.
+19. Verify workbook identity before releasing the converted file. Check that project-specific worksheets from the source are still present and unrelated project shell markers are not present. Example: Pond should contain sheets such as `Depends`, `Glasgow`, `Tim`, `Others`, `Draws`, `Lumber`, `Smart`, and `2024`; it should not contain Outrigger-only shell markers such as `Past`, `UpdateContract`, `Recap`, or `MISC`.
+20. Reconcile original-vs-converted Carrying totals before release. Read the original source workbook's Carrying totals for every mapped source category, compare them with the rebuilt `tblCarryingExpenses` totals and visible Carrying subtotal cells, and stop if any category differs except for documented intentional changes such as removed obsolete categories or escrow netting for Property Taxes.
+21. Write the verified workbook back through the SharePoint/Teams connector when the request is to update the live Teams workbook.
 
 Implementation note:
 
@@ -305,6 +315,26 @@ Implementation note:
 - If Excel automation hangs or repeatedly opens the wrong workbook shell, stop the hidden Excel process if it has no visible workbook window, replace the target from the correct source workbook again, and rerun from the clean source. Record the source path and workbook identity markers in the verification output.
 - When a target was created from the wrong workbook base, do not attempt to repair the shell in place. Back up the wrong-base target, copy the correct source/original to the target path, and rerun the full conversion from that clean copy.
 - If Excel reports repairs that remove `/xl/tables/table*.xml`, the formal Excel table metadata is damaged. Do not create or modify the table with file-level table XML writers. Rebuild from the clean source and have Excel itself create `tblCarryingExpenses`, then verify the file reopens cleanly and the formulas still use structured references.
+- For Amortization sheet swaps, do not assume every workbook uses the same Docs row layout. Some old layouts use selling fields around `Docs!B10:B23`, while others use property/document fields around `Docs!B7:B36`. Prefer labeled rows and Amortization output cells, such as `AA3:AA5`, `T4:T6`, `O3:O5`, and payment cells `Z8:Z10`, over fixed Docs cell positions when mapping source values.
+- When mapping loan start dates, reject small percentage/rate values even if they are numeric. Prefer real Excel date serials from labeled loan-start rows, such as `Docs!B33`, `Docs!B20`, or `Docs!B18`, and require the numeric value to look like a date serial rather than an interest rate.
+- When mapping interest rates, only accept percentage-like numeric values between 0 and 1. Old layouts may have loan-balance amounts near the rate/payment table; treating those as rates can produce `#NUM!` payment results.
+- If the old workbook's loan amount equals selling purchase price minus down payment, preserve that relationship in the Rose layout by mapping the appreciation/price input so `Amortization!O3` equals the selling purchase price and leaving `X5` at zero. Use `X5` only when the old workbook intentionally carried a separate selling-price adjustment outside the financing base.
+- If the approved Rose layout recalculates a payment materially differently from the old workbook, log the old and new values as a formula-driven change before upload. Do not hide the change by forcing the old payment into the new template.
+- When designing an Amortization replacement sheet, copy the current `Amortization` worksheet to a new replacement worksheet and make all design changes only in the replacement. Do not rename, overwrite, or reconnect dependent formulas to the replacement until Wes approves the design. Verify after saving that the original `Amortization` sheet is still present and its key formulas remain unchanged.
+- During rollout of the redesigned Amortization pattern to active projects, do not replace the Amortization sheet on Cool Springs as a standard batch item. Cool Springs has an actively used amortization table; skip it by default and handle it only with explicit Wes approval, a separate review plan, an extra rollback copy, and extreme caution around any dependent formulas or document outputs.
+- For Amortization rate-change redesigns, keep the subject-to loan schedule separate from the buyer Contract for Deed schedule. Prefer one buyer schedule with explicit rate-change inputs, such as first-rate period in years/months, Rate 1, Rate 2, and payment formulas that reference the buyer schedule's own period counter rather than the subject-to loan year column.
+- Before clearing a legacy Amortization buyer table such as `N14:W830`, scan for formulas outside that range that still depend on those cells. In the Tensity replacement pass, helper columns and the `M` period/year logic also depended on the legacy table; rewrite those formulas to use the replacement buyer schedule (`Y:AL` and `AM`) before clearing or hiding the legacy table.
+- During iterative Amortization redesign, do not rely on old address labels such as "legacy table" after Wes manually moves the design. Re-identify the active schedule by function and formulas before deleting or rewriting ranges. In the Tensity replacement pass, `N:W` became the active Contract for Deed schedule, so it had to be preserved and extended to `N:X` with `X` as ending balance, while `Y:AL` became supporting outputs. Also verify rate-term inputs do not create circular formulas; use separate total-term and remaining-term cells for Rate 1 and Rate 2 payments.
+- When clearing or rewriting Amortization helper headers, check for merged cells before targeting individual cells. In the Tensity helper-output cleanup, direct `ClearContents` against a merged header cell failed; unmerge the exact small header range first or clear the whole intended merged range through Excel automation, then verify formulas and visible labels.
+- When reconnecting other worksheets from old `Amortization` to a redesigned replacement sheet, do not use a blind address-level sheet-name replacement as the final mapping. First replace the references, then inspect affected formulas by label and value because replacement layouts may have moved fields such as term years, contract dates, payments, taxes, insurance, interest rates, and five-year balance summaries. In the Tensity reconnect pass, same-address replacement initially sent several `Docs` and `Profit` formulas to blank or wrong cells; the correct final mapping used replacement labels such as `V8/V10` for Rate 1/Rate 2 payments, `W2/W3` for insurance/taxes, `S12/U12` for contract start/end, `O8/O10` for Rate 1/Rate 2 rates, and schedule lookups for five-year balances.
+
+## Completion Lesson Capture Rule
+
+At completion of every project workbook conversion, migration, sheet swap, or similar spreadsheet update, record any new reusable lesson in the appropriate durable rule file before treating the work as complete.
+
+Capture lessons such as connector discovery, freshness, upload, or permission behavior; workbook-open, Excel automation, link-breaking, or macro-enabled save behavior; template formula/layout differences from prior assumptions; validation checks that caught an issue or should be repeated next time; formula-driven value changes that need to be logged for Wes; and rollback, migration-log, or post-upload verification issues.
+
+If a run produced no new reusable lesson, state that in the final response. Do not leave a reusable lesson only in a chat message or one-off migration log.
 
 ## Review Rules
 
@@ -321,10 +351,11 @@ Route the project workbook update for review when:
 Follow `SOP Spreadsheet Maintenance Rule.md` before editing any project management workbook:
 
 1. Confirm the original project workbook is closed.
-2. Copy the workbook into the safe working folder above.
-3. Edit the project-room copy.
-4. Verify the workbook opens cleanly.
-5. Copy the verified workbook back to the original Teams/SharePoint folder.
+2. Locate or verify the active workbook through the SharePoint/Teams connector.
+3. Copy the connector-verified workbook into the safe working folder above.
+4. Edit the project-room copy.
+5. Verify the workbook opens cleanly.
+6. Write the verified workbook back through the SharePoint/Teams connector to the original Teams/SharePoint item, unless Wes asked for a project-room-only review copy.
 
 ### Pleasant Garden clean rebuild rule added 2026-05-30
 
