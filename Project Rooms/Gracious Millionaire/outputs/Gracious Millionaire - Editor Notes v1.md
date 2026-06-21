@@ -34,3 +34,7 @@ The failed real estate chapter was updated from the routed OfficeAssist source `
 ## 115 Rosebrooks Source Note
 
 The 115 Rosebrooks narrative draws primarily from the seller acknowledgement, foreclosure notices and withdrawal records, the April 3, 2025 Griffith suit discussion summary, the May 21, 2025 settlement draft, the May 30, 2025 Psalm 37 reflection, and the 2026 summary judgment briefing. The chapter is written as book narrative rather than legal argument.
+
+## June 21 Tensity/Rose Place Source Note
+
+The new chapter draft, currently titled `The Orphaned Property`, was drafted from the routed OfficeAssist source `2026-06-21-164026-gracious-millionaire-new-chapter-outline-forward-to-jean.md`. Earlier June 21 routed files are treated as superseded outlines. The chapter is intentionally marked as a narrative draft because Wes said he would provide further facts, lessons, context, and application later.
