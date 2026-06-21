@@ -322,6 +322,7 @@ Implementation note:
 - If the approved Rose layout recalculates a payment materially differently from the old workbook, log the old and new values as a formula-driven change before upload. Do not hide the change by forcing the old payment into the new template.
 - When designing an Amortization replacement sheet, copy the current `Amortization` worksheet to a new replacement worksheet and make all design changes only in the replacement. Do not rename, overwrite, or reconnect dependent formulas to the replacement until Wes approves the design. Verify after saving that the original `Amortization` sheet is still present and its key formulas remain unchanged.
 - For Amortization rate-change redesigns, keep the subject-to loan schedule separate from the buyer Contract for Deed schedule. Prefer one buyer schedule with explicit rate-change inputs, such as first-rate period in years/months, Rate 1, Rate 2, and payment formulas that reference the buyer schedule's own period counter rather than the subject-to loan year column.
+- Before clearing a legacy Amortization buyer table such as `N14:W830`, scan for formulas outside that range that still depend on those cells. In the Tensity replacement pass, helper columns and the `M` period/year logic also depended on the legacy table; rewrite those formulas to use the replacement buyer schedule (`Y:AL` and `AM`) before clearing or hiding the legacy table.
 
 ## Completion Lesson Capture Rule
 
