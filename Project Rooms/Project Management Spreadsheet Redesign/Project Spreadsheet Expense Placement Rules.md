@@ -44,6 +44,15 @@ Project management spreadsheets are stored directly under the SharePoint/Teams `
 
 Local Teams-synced paths, including `C:\Users\wesbr\Buy Your Home\Buy Your Home - Property\...`, are working conveniences only. Do not treat them as proof that a workbook is current. If the connector is unavailable, cannot identify the exact workbook item, or cannot safely write back the finished workbook, stop and report the blocker instead of silently using the synced folder.
 
+## Spreadsheet Color Conventions
+
+Use Wes's color conventions when designing or revising project spreadsheet inputs and protected formulas:
+
+- Yellow cells indicate values that need user input or user review.
+- Orange cells indicate formulas, controls, or calculated values that should not be changed during ordinary use.
+- Preserve existing yellow/orange meaning when copying layouts, converting ranges to tables, or migrating a design across project workbooks.
+- If a cell's role changes, update its fill color to match the new role instead of leaving stale color cues.
+
 ## Known Placement Rules
 
 | Invoice Type / Work Type | Project Workbook Placement | Notes |
