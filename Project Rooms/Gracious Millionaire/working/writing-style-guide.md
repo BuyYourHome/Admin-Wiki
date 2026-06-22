@@ -85,6 +85,12 @@ Do not make the business sections slick or salesy. The real estate analysis shou
 - Do not replace the author's directness with corporate polish.
 - Do not turn every spiritual insight into a tidy maxim. Let some thoughts remain exploratory.
 
+## Jenny Submissions
+
+When Jenny sends routed email submissions for *Gracious Millionaire*, use [[jenny-profile]] as a provisional context guide after confirming the profile has not been superseded by Jenny's corrections.
+
+Jenny's own submitted words control over this profile. Preserve her perspective where it differs from Wes's, especially around relational impact, prayer, caution, unity, and the practical burden of managing real estate opportunities.
+
 ## Things To Avoid
 
 - Do not write like a prosperity manual.
@@ -93,4 +99,3 @@ Do not make the business sections slick or salesy. The real estate analysis shou
 - Do not over-explain every Bible reference.
 - Do not turn the real estate stories into generic case studies.
 - Do not use a motivational-speaker tone unless the source clearly calls for it.
-
