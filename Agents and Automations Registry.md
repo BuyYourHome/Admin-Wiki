@@ -11,6 +11,7 @@ Codex does not currently show every role below in one unified "Agents" list. Som
 | Jean Wright / Office Assistant | Assistant profile and operating role | Active | On demand and through related automations | `C:\Codex\Office Assistant Profile.md`; `AGENTS.md` |
 | REI Text Message Watcher | Heartbeat automation | Active | Every 15 minutes during 8:00 AM-9:00 PM Eastern; adaptive 1-minute checks during activity | `C:\Users\wesbr\.codex\automations\morning-weswill-email-summary\automation.toml` |
 | OfficeAssist Instruction Inbox Monitor | Behavior inside OfficeAssist Morning Email Summary heartbeat | Active | Every 15 minutes during working hours; source routing only for Gracious Millionaire | `AGENTS.md`; `C:\Users\wesbr\.codex\automations\officeassist-morning-email-summary\automation.toml` |
+| Gracious Millionaire Project Room Heartbeat | Project-room heartbeat automation | Active | Every 15 minutes from 8:00 AM-5:45 PM Eastern; project-room Markdown intake processing only | `Project Rooms\Gracious Millionaire\README.md`; `Project Rooms\Gracious Millionaire\working\intake-heartbeat-rules.md`; `C:\Users\wesbr\.codex\automations\gracious-millionaire-project-room-heartbeat\automation.toml` |
 | OfficeAssist Morning Email Summary | Wiki-managed skill plus heartbeat automation plus project room | Active | Every 15 minutes from 8:00 AM-4:45 PM Eastern; Boss summary runs once daily at/after 8:00 AM | `skills\officeassist-morning-email-summary\SKILL.md`; `Project Rooms\Email Summary\README.md`; `C:\Users\wesbr\.codex\automations\officeassist-morning-email-summary\automation.toml` |
 | Email Delivery | Wiki-managed support skill | Active | Called by email-capable Admin workflows | `skills\email-delivery\SKILL.md` |
 | Document Scanning | Wiki-managed skill plus heartbeat automation plus project room | Active | Every 30 minutes from 10:00 AM through 4:30 PM Eastern | `skills\document-scanning\SKILL.md`; `Project Rooms\Document Scan\README.md`; `C:\Users\wesbr\.codex\skills\document-scanning\SKILL.md`; app automation id `document-scanning` |
@@ -126,7 +127,7 @@ Special routing:
 - If an instruction email has a subject containing `gracious millionaire`, route it into `Project Rooms\Gracious Millionaire\` as book source material from the OfficeAssist monitor.
 - Preserve each routed Gracious Millionaire email as its own Markdown file under `Project Rooms\Gracious Millionaire\sources\email\`, including available sender, recipient, timestamp, subject, message id or web link, and body text.
 - Current Gracious Millionaire project-room thread id for manual project-room work: `019eb9b0-6780-7fb3-a278-29a18d17998c`.
-- Do not attach a heartbeat to the Gracious Millionaire thread.
+- Do not attach an OfficeAssist mailbox-monitoring heartbeat to the Gracious Millionaire thread; the separate `gracious-millionaire-project-room-heartbeat` owns project-room Markdown/source processing in that thread.
 - Do not create a new chat for Gracious Millionaire routing unless Wes explicitly asks for a new chat.
 - Do not draft, edit, or send the requested Gracious Millionaire book response from the OfficeAssist monitor thread unless Wes explicitly asks for processing there; the default action is source routing only.
 
@@ -148,6 +149,45 @@ Important limitations:
 - Do not use the instruction inbox monitor to resume Jenny's morning email summary unless Wes explicitly says to resume it.
 - Do not execute high-impact actions from email unless the email clearly authorizes the specific action and the applicable workflow rules allow it.
 - Do not substitute another mailbox if OfficeAssist mailbox access fails.
+
+## Gracious Millionaire Project Room Heartbeat
+
+Type: project-room heartbeat automation.
+
+Status: active.
+
+Automation id:
+
+- `gracious-millionaire-project-room-heartbeat`
+
+Schedule:
+
+- Every 15 minutes from 8:00 AM through 5:45 PM Eastern.
+
+Purpose:
+
+- Inspect `Project Rooms\Gracious Millionaire\` for routed Markdown/source files and intake-log entries dropped by OfficeAssist or another approved process.
+- Process newly routed Gracious Millionaire writing instructions into project-room working notes, chapter drafts, manuscript revisions, and ledger updates.
+- Keep routine no-new-source checks quiet with `DONT_NOTIFY`.
+
+Defined in:
+
+- `C:\Codex\Wiki Files\Project Rooms\Gracious Millionaire\README.md`
+- `C:\Codex\Wiki Files\Project Rooms\Gracious Millionaire\working\intake-heartbeat-rules.md`
+- `C:\Users\wesbr\.codex\automations\gracious-millionaire-project-room-heartbeat\automation.toml`
+
+Important limitations:
+
+- This heartbeat must not read Outlook, OfficeAssist mail, Wes mail, Jenny mail, or any mailbox directly.
+- OfficeAssist remains responsible for email monitoring and source routing.
+- Do not create new chats, delete source files, push Git changes, or take external actions from this heartbeat.
+- If a routed source requests email sending or a major manuscript direction decision, mark the item blocked or deferred and notify Wes in the Gracious Millionaire thread.
+
+Tools/services used:
+
+- Local project-room Markdown files and ledgers.
+- Admin wiki project-room workflow rules.
+- Git for scoped local commits when durable project-room changes are made.
 
 ## OfficeAssist Morning Email Summary
 
@@ -573,6 +613,8 @@ Current automation folders:
 
 ```text
 document-scanning\
+gracious-millionaire-project-room-heartbeat\
+investigate-computer-daily-check\
 morning-weswill-email-summary\
 officeassist-morning-email-summary\
 ```
