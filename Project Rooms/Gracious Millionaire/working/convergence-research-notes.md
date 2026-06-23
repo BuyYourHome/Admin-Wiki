@@ -13,4 +13,4 @@ These notes support the Gracious Millionaire chapter draft about Wes's database/
 
 ## Drafting Use
 
-Use this research only as background context. The chapter should remain Wes's testimony, not an explanation of Wallnau's teaching. The controlling source for facts is `sources/email/2026-06-22-212547-gracious-millionaire-database-systems-convergence.md`.
+Use this research only as background context. The chapter should remain Wes's testimony, not an explanation of Wallnau's teaching. The controlling source for facts is `sources/email/2026-06-22-224534-gracious-millionaire-systems-convergence-expanded-forward.md`; the earlier `sources/email/2026-06-22-212547-gracious-millionaire-database-systems-convergence.md` is superseded.

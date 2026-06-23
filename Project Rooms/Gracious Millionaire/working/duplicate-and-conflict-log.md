@@ -6,6 +6,7 @@
 - `2023-11-28-the-gracious-millionaire-providence-landing-expanded.md` expands the brief November 27 Providence Landing opening and should be treated as the stronger source for that chapter opening.
 - `2025-04-10-gracious-millionaire-abundance-reply.md` quotes the earlier abundance email and adds a stewardship note.
 - `2026-06-21-143811-gracious-millionaire-new-chapter-outline.md` and `2026-06-21-152052-gracious-millionaire-new-chapter-outline-forward.md` are earlier/incomplete versions of the Tensity/Rose Place chapter outline. Use `2026-06-21-164026-gracious-millionaire-new-chapter-outline-forward-to-jean.md` as the controlling source.
+- `2026-06-22-212547-gracious-millionaire-database-systems-convergence.md` is an earlier version of the Convergence chapter seed. Use `2026-06-22-224534-gracious-millionaire-systems-convergence-expanded-forward.md` as the controlling source because it adds sign-business automation, the early Radio Shack computer story, AI/Jean, and spreadsheet-evolution material.
 
 ## Conflicts
 
