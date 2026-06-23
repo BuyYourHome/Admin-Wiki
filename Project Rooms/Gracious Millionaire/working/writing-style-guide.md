@@ -91,6 +91,12 @@ When Jenny sends routed email submissions for *Gracious Millionaire*, use [[jenn
 
 Jenny's own submitted words control over this profile. Preserve her perspective where it differs from Wes's, especially around relational impact, prayer, caution, unity, and the practical burden of managing real estate opportunities.
 
+## Wes Submissions
+
+When Wes sends routed email submissions for *Gracious Millionaire*, use [[wes-profile]] as a provisional context guide after confirming the profile has not been superseded by Wes's corrections.
+
+Wes's own submitted words control over this profile. Preserve his first-person testimony, reflective cadence, spiritual self-examination, systems-thinking background, and the tension between profit, favor, assignment, and lordship.
+
 ## Things To Avoid
 
 - Do not write like a prosperity manual.
