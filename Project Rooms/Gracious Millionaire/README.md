@@ -16,6 +16,7 @@ The separate emails in `sources/email/` are early chapter starts, fragments, and
 - Current Gracious Millionaire project-room thread id for manual project-room work: `019eb9b0-6780-7fb3-a278-29a18d17998c`.
 - Do not create a new chat for routed Gracious Millionaire emails unless Wes explicitly asks for one.
 - Intake-heartbeat behavior is defined in [[intake-heartbeat-rules]]. The Gracious Millionaire project-room role may act only on markdown files, project-room source files, intake logs, and other source material already dropped into this project room by OfficeAssist or another approved process.
+- When this project-room role finds a new routed Markdown file or intake-log item with a clear Gracious Millionaire writing instruction, it should begin processing that source under the intake-heartbeat rules instead of only reporting that the file exists.
 - This project-room role must not query Outlook, OfficeAssist mail, Wes mail, Jenny mail, or any mailbox directly. If Wes asks whether a new email exists, answer from routed project-room files and intake logs only, or tell Wes that OfficeAssist must route the email first.
 
 ## Current Status

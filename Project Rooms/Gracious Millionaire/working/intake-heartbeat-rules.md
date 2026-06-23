@@ -56,6 +56,7 @@ Do not process the same source file repeatedly. Use the intake ledger to identif
 
 - Preserve every source file unchanged.
 - Do not overwrite, rewrite, move, or delete the original source file.
+- Finding a new routed Markdown file or intake-log item is the start of processing, not a stopping point, when the source includes a clear Gracious Millionaire writing instruction from Wes.
 - Before acting on a new intake item, read this project room README, `working/writing-style-guide.md`, the intake ledger, current manuscript outputs, and any relevant source inventory.
 - Decide whether the new source is a chapter seed, chapter section, revision instruction, source note, admin/routing note, or non-actionable item.
 - If the source contains a clear writing instruction from Wes, the heartbeat may process it according to the Gracious Millionaire project-room rules.
