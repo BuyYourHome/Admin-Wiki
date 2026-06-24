@@ -32,6 +32,7 @@ For framing notes, preserve the intended perception without overstating facts be
 | 2026-06-24 | Introduction / Bill Johnson integration | source/framing | Introduce Bill Johnson before the first Bill Johnson reference. Explain his relevance to Wes and to the manuscript themes before using the sermon concepts. | open |
 | 2026-06-24 | Whole manuscript | tone | Do not convert Wes's bullet points, dictated punctuation, or quick instruction fragments into repetitive question clusters or choppy one-line prose. Use the meaning and emphasis, then shape it into natural narrative. | open |
 | 2026-06-24 | Favor / Introduction | source/framing | The definition of favor is introduced in the manuscript but should be attributed to Lance Wallnau when it appears. Explain his relevance before relying on the definition. | open |
+| 2026-06-24 | Introduction | fact | Replace the older statement that Jenny and Wes made a million dollars in a short period. That was true when the source material was written, but the current introduction should say that at the point of this writing Jenny and Wes have increased their net worth to $4 million, and that when they got married they had a negative net worth of $200,000. | open |
 
 ## Applied Notes
 
