@@ -19,6 +19,7 @@
 | [[2026-06-22-212547-gracious-millionaire-database-systems-convergence]] | Routed email markdown | 2026-06-23 | OfficeAssist intake for Gracious Millionaire | duplicate/superseded | Original Convergence chapter seed about Wes's database/systems career and applying systems skill to real estate investing. Superseded by the fuller 2026-06-22 22:45 forward. |
 | [[2026-06-22-224534-gracious-millionaire-systems-convergence-expanded-forward]] | Routed email markdown | 2026-06-23 | OfficeAssist intake for Gracious Millionaire | authoritative | Fuller controlling Convergence chapter seed adding the sign-business systems instinct, early Radio Shack computer, remote-business attempt, AI/Jean, and spreadsheet-evolution thread. Used for `Convergence` narrative draft v2 and manuscript draft v4 insertion. |
 | [[115-rosebrooks-project/_source-inventory]] | Project markdown source set | 2023-2026 | 19-HM-115 Rosebrooks Dr property folder | contextual source set | 754 markdown records created from accessible 115 Rosebrooks project files for chapter context and narrative drafting. |
+| [[2026-06-24-bill-johnson-increase-your-expectation-source]] | YouTube transcript/source markdown | 2015-12-27; retrieved 2026-06-24 | Bill Johnson Teaching / Bethel Church | contextual source | Sermon source on expectation, reward, stewardship, increase, and the Father's goodness. Used as contextual material for manuscript draft v5; direct quotation kept short and attributed. |
 
 ## Mailbox Retrieval Note
 
