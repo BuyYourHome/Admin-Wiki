@@ -14,6 +14,8 @@ The dominant posture is humility: "I am learning this," not "I have mastered thi
 
 Use mostly plain, direct sentences. Let paragraphs move by thought association: a story detail leads to a spiritual observation, which leads to a question, which leads back to a business example.
 
+Do not mistake Wes's dictated instructions, bullet points, or quick message fragments for the manuscript's finished prose style. Treat those inputs as source meaning, sequence, emphasis, and raw material. Convert them into natural narrative paragraphs unless Wes explicitly says to preserve a list, outline, or question sequence.
+
 The writing often uses short thesis sentences after a longer story setup:
 
 - "This was not the end of this story."
@@ -21,7 +23,7 @@ The writing often uses short thesis sentences after a longer story setup:
 - "Some things have to be said."
 - "This is not a how-to book. Maybe it is a how-to-be book."
 
-Preserve that rhythm. Do not over-polish every sentence into formal nonfiction. The style should feel spoken, prayerful, and self-examining.
+Preserve that rhythm in moderation. Do not over-polish every sentence into formal nonfiction, but also do not reduce the manuscript to repeated one-line statements. The style should feel spoken, prayerful, and self-examining, with enough paragraph development that the reader feels carried through a thought rather than presented with a stack of notes.
 
 ## Narrative Pattern
 
@@ -58,7 +60,7 @@ Speak to the reader as someone invited into a story, not as someone being lectur
 - "Of course there is nothing specific about real estate in that definition."
 - "But how can you write a book titled *The Gracious Millionaire* and not be teaching about success?"
 
-Questions are useful. They let the author wrestle with tension instead of flattening it.
+Questions are useful. They let the author wrestle with tension instead of flattening it. Use them selectively. Avoid long runs of consecutive questions unless the source material clearly calls for that effect. When several questions are present in notes, often choose the strongest one or two and turn the rest into reflective prose.
 
 ## Business And Real Estate Detail
 
@@ -79,7 +81,7 @@ Do not make the business sections slick or salesy. The real estate analysis shou
 
 - Preserve first-person singular and plural: "I," "Jenny and I," and "we."
 - Preserve humility and uncertainty where present.
-- Keep rhetorical questions.
+- Keep rhetorical questions when they create genuine tension or transition, but prune redundant question lists.
 - Keep plain transitions such as "Let me back up," "Here is another example," and "That is the flavor of that appointment."
 - Smooth obvious transcription errors only when they distract from meaning.
 - Do not replace the author's directness with corporate polish.
@@ -96,6 +98,8 @@ Jenny's own submitted words control over this profile. Preserve her perspective 
 When Wes sends routed email submissions for *Gracious Millionaire*, use [[wes-profile]] as a provisional context guide after confirming the profile has not been superseded by Wes's corrections.
 
 Wes's own submitted words control over this profile. Preserve his first-person testimony, reflective cadence, spiritual self-examination, systems-thinking background, and the tension between profit, favor, assignment, and lordship.
+
+If Wes later sends a corrected personal profile, treat that corrected profile as controlling over this provisional guide where they differ. In particular, do not infer that his operational bullet points, dictated punctuation, or short instruction fragments are the desired book rhythm.
 
 ## Things To Avoid
 

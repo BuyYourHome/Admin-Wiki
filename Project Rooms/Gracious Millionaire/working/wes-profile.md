@@ -74,23 +74,25 @@ The manuscript should preserve moments where Wes admits the story is unfinished.
 
 Wes's voice is plain, reflective, direct, and self-examining. It often moves from concrete business detail to spiritual interpretation and then back to a practical question.
 
+Do not confuse Wes's quick instruction messages, dictated punctuation, or bullet-point notes with his finished book voice. Those inputs usually identify the idea, sequence, or concern he wants addressed. They should be shaped into readable narrative unless he explicitly asks for an outline or list.
+
 Common voice patterns:
 
 - Short thesis sentences after longer explanation.
-- Rhetorical questions.
+- Rhetorical questions, used selectively.
 - Direct admissions of uncertainty.
 - Plain transitions such as "Let me back up," "That matters," and "Some things have to be said."
 - First-person testimony rather than abstract instruction.
 - Practical real estate detail used as evidence for spiritual formation.
 
-Do not polish the voice into corporate nonfiction. The writing should retain the feel of a man thinking, praying, remembering, and interpreting his life in front of the reader.
+Do not polish the voice into corporate nonfiction. The writing should retain the feel of a man thinking, praying, remembering, and interpreting his life in front of the reader. At the same time, avoid overusing short question clusters or repeating the same reflective structure until it becomes predictable.
 
 ## Drafting Guidance For Wes's Submissions
 
 When Wes sends material for *Gracious Millionaire*:
 
 - Preserve his first-person voice unless a section clearly belongs in shared "Jenny and I" language.
-- Keep his directness and rhetorical questions.
+- Keep his directness and the strongest rhetorical questions, but prune redundant question lists.
 - Smooth obvious transcription errors, but do not over-polish the thought pattern.
 - Preserve confession, uncertainty, and incomplete lessons.
 - Keep concrete business details close to the spiritual point.
