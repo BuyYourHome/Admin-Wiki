@@ -4,6 +4,8 @@
 
 Use this guide to reproduce Wes's writing voice for *Gracious Millionaire* while drafting from the email sources.
 
+Before drafting or revising manuscript sections, check [[manuscript-edit-and-fact-notes]] for current factual corrections, framing direction, and perception notes. Those notes control over this guide where they conflict.
+
 ## Core Voice
 
 The voice is first-person, reflective, candid, and faith-centered. It reads like a personal testimony shaped into a business memoir. The narrator is not trying to sound like an expert standing above the reader. He is working through lessons in public, using real estate stories as evidence of spiritual principles.
