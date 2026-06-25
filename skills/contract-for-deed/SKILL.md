@@ -259,6 +259,8 @@ Keep `Closing Checklist.md` in the CFD project room as the working/source checkl
 
 Do not copy scratch files, extracted text, rendered QA images, logs, staged spreadsheets, prototypes, or temporary working files to Teams. Do not use Teams copies as the source for regeneration unless Wes identifies a Teams-edited file as the version to preserve.
 
+Do not create project-spreadsheet copies, `.url` shortcuts, `.lnk` shortcuts, Office desktop-edit links, or other workbook links inside Teams `Contract Package` folders by default. The live project spreadsheet stays in its normal Teams/Property folder location and should be opened from that source location when Wes needs to edit it. If a user needs help finding the spreadsheet, provide the source workbook path in the chat or package notes rather than adding a link artifact to the Contract Package. Only create a spreadsheet link in a package folder if Wes explicitly asks for that specific link after being told that shortcut-style links may open a downloaded or temporary copy instead of the synced source workbook.
+
 ## Credit Worthiness Handoff
 
 For every buyer-specific CFD startup, check the matching transaction folder for the current CWE handoff before messaging CWE:

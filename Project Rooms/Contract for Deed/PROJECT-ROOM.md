@@ -29,7 +29,7 @@ Teams buyer folder pattern:
 
 `C:\Users\wesbr\Buy Your Home\Buy Your Home - Property\<Property Project>\Selling\<Buyer>\Contract Package\`
 
-When setting up or refreshing a Teams `Selling` / `Contract Package` folder, create or refresh a friendly internet shortcut in the `Contract Package` root named `Project Spreadsheet - <Street Address Only>.url`. The shortcut must point to the actual live project spreadsheet in the Teams/Property folder, using the SharePoint/Teams URL generated from the verified live project spreadsheet path with `working\teams_link_from_local_path.py`. Do not copy the workbook into the contract package, do not point the shortcut at a staged project-room workbook, and do not use a local `C:\...` target when a SharePoint/Teams URL can be generated. If the helper cannot map the live workbook to a SharePoint/Teams URL, report the blocker instead of guessing a web link.
+Do not create project-spreadsheet copies, `.url` shortcuts, `.lnk` shortcuts, Office desktop-edit links, or other workbook links inside Teams `Contract Package` folders by default. The `Contract Package` folder should hold delivery documents only. The live project spreadsheet stays in its normal Teams/Property folder location and should be opened from that source location when Wes needs to edit it. If Wes needs help finding the spreadsheet, provide the source workbook path in the chat or package notes rather than adding a link artifact to the Contract Package. Only create a spreadsheet link in a package folder if Wes explicitly asks for that specific link after being told that shortcut-style links may open a downloaded or temporary copy instead of the synced source workbook.
 
 Recommended Teams subfolders:
 
