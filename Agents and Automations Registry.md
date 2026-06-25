@@ -168,7 +168,7 @@ Purpose:
 
 - Inspect `Project Rooms\Gracious Millionaire\` for routed Markdown/source files and intake-log entries dropped by OfficeAssist or another approved process.
 - Process newly routed Gracious Millionaire writing instructions into project-room working notes, chapter drafts, manuscript revisions, and ledger updates.
-- Keep routine no-new-source checks quiet with `DONT_NOTIFY`.
+- Keep routine no-new-source checks silent with no user-visible notification.
 
 Defined in:
 
