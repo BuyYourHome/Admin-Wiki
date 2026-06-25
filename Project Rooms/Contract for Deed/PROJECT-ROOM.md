@@ -260,13 +260,18 @@ The kickoff file should identify only the verified project/property, live projec
    - `Selling Purchase Price:`
    - `Selling Down Payment:`
    - `Selling Earnest Money:` for earnest money paid at contract signing
-   - `Loan Amount:`
-   - `Monthly Payment1`
-   - `Loan Start1`
-   - `Loan End1`
+   - `Selling Seller-Financed Principal:` for the remaining seller-financed balance
+   - `Selling Note Principal Sum:` for the note principal, normally matching the seller-financed principal
+   - `Selling Note Normal Payment:` for the monthly principal-and-interest payment
+   - `Selling Note Installment Months:` for the scheduled payment count
+   - `Selling Note Interest Rate:` for the note interest rate
+   - `Selling Note First Payment Date:`
+   - `Selling Note Final Scheduled Payment Date:`
    - `Adverse Conditions1`, `Adverse Conditions2`, and `Adverse Conditions3`, with each listed lien/adverse condition as its own label/value pair
    - property fields under the Property/Deed/Trust sections
    - `Manger` for the trustee manager name
+
+   Do not require old compatibility labels such as `Loan Amount:`, `Monthly Payment1`, `Principal&Interst:`, `TermYears`, `TermMonths1`, `Loan Start1`, `Loan End1`, or `Interest rate1` in the selling-document source block. If a project spreadsheet still has those labels, treat them as legacy fields to retire rather than source fields for new CFD selling packages.
 
 4. Rebuild the Contract for Deed with:
 

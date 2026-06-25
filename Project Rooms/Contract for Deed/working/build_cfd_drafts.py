@@ -1,6 +1,7 @@
 from datetime import datetime
 import os
 from pathlib import Path
+import re
 
 import openpyxl
 from docx import Document
@@ -43,6 +44,14 @@ DOCS_FIELD_LABELS = {
     "Selling Down Payment:",
     "SellingEarnestMoney:",
     "Selling Earnest Money:",
+    "Selling Note Maker (Buyer):",
+    "Selling Note Principal Sum:",
+    "Selling Note Normal Payment:",
+    "Selling Note Installment Months:",
+    "Selling Note Interest Rate:",
+    "Selling Note First Payment Date:",
+    "Selling Note Final Scheduled Payment Date:",
+    "Selling Seller-Financed Principal:",
     "LoanAmount:",
     "Loan Amount:",
     "Monthly Payment1",
@@ -157,6 +166,35 @@ def clean(value):
     return "" if text == "0" else text
 
 
+def number_value(value, default=0):
+    text = clean(value)
+    if text == "":
+        return default
+    if isinstance(value, str):
+        text = text.replace("$", "").replace(",", "").replace("%", "")
+    return float(text)
+
+
+def percent_text(value, default="7.500%"):
+    if value in (None, ""):
+        return default
+    if isinstance(value, (int, float)):
+        return f"{value:.3%}" if abs(value) < 1 else f"{value:.3f}%"
+    text = clean(value)
+    return text or default
+
+
+def looks_like_street_address(value):
+    text = clean(value).lower()
+    if not text or not re.search(r"\d", text):
+        return False
+    street_markers = (
+        " st", " street", " dr", " drive", " ave", " avenue", " rd", " road",
+        " ln", " lane", " ct", " court", " pl", " place", " unit", " ste",
+    )
+    return any(marker in text for marker in street_markers)
+
+
 def normalize_values(v):
     selling_seller = clean(v.get("SellingSeller") or v.get("Selling -Seller"))
     trust = clean(v.get("Trust")) or selling_seller
@@ -167,26 +205,48 @@ def normalize_values(v):
         or v.get("Trustee Manager")
         or v.get("TrusteeManager")
     ) or "[MANAGER NAME]"
+    note_maker = clean(v.get("Selling Note Maker (Buyer):"))
     buyer1 = clean(v.get("SellingBuyer") or v.get("Selling-Buyer") or v.get("Selling-Buyer1"))
-    buyer2 = clean(v.get("Selling-Buyer2") or v.get("SellingBuyer2"))
+    raw_buyer2 = clean(v.get("Selling-Buyer2") or v.get("SellingBuyer2"))
+    buyer2 = "" if looks_like_street_address(raw_buyer2) else raw_buyer2
     buyer = " and ".join(part for part in [buyer1, buyer2] if part)
-    sale_price = float(v.get("SellingPurchasePrice") or v.get("Selling Purchase Price:") or 0)
-    down_payment = float(v.get("SellingDownPayment:") or v.get("Selling Down Payment:") or 0)
-    earnest_money = float(
+    sale_price = number_value(v.get("SellingPurchasePrice") or v.get("Selling Purchase Price:"), 0)
+    down_payment = number_value(v.get("SellingDownPayment:") or v.get("Selling Down Payment:"), 0)
+    earnest_money = number_value(
         v.get("SellingEarnestMoney:")
-        or v.get("Selling Earnest Money:")
-        or 0
+        or v.get("Selling Earnest Money:"),
+        0,
     )
     remaining_down_payment = down_payment - earnest_money
-    loan_amount = float(v.get("LoanAmount:") or v.get("Loan Amount:") or (sale_price - down_payment))
-    monthly_pi = float(v.get("Monthly Payment1") or v.get("PrincipalInterst") or 0)
-    insurance = float(v.get("PropertyInsurance") or v.get("Property Insurance:") or 0)
-    tax = float(v.get("TaxEscrow") or v.get("Tax Escrow:") or 0)
+    loan_amount = number_value(
+        v.get("Selling Seller-Financed Principal:")
+        or v.get("Selling Note Principal Sum:")
+        or v.get("LoanAmount:")
+        or v.get("Loan Amount:"),
+        sale_price - down_payment,
+    )
+    monthly_pi = number_value(
+        v.get("Selling Note Normal Payment:")
+        or v.get("Monthly Payment1")
+        or v.get("PrincipalInterst"),
+        0,
+    )
+    insurance = number_value(v.get("PropertyInsurance") or v.get("Property Insurance:"), 0)
+    tax = number_value(v.get("TaxEscrow") or v.get("Tax Escrow:"), 0)
     total_payment = monthly_pi + insurance + tax
-    loan_start = v.get("Loan Start1") or v.get("LoanStart1")
-    loan_end = v.get("Loan End1") or v.get("LoanEnd1")
+    loan_start = (
+        v.get("Selling Note First Payment Date:")
+        or v.get("Loan Start1")
+        or v.get("LoanStart1")
+    )
+    loan_end = (
+        v.get("Selling Note Final Scheduled Payment Date:")
+        or v.get("Loan End1")
+        or v.get("LoanEnd1")
+    )
     payment_count = inclusive_months(loan_start, loan_end)
     buyer_address_parts = [
+        raw_buyer2 if looks_like_street_address(raw_buyer2) else "",
         clean(v.get("Selling-Buyer Add1")),
         clean(v.get("Selling-Buyer Add2")),
         clean(v.get("Selling-Buyer Add1__2")),
@@ -225,7 +285,7 @@ def normalize_values(v):
         "trustee": str(trustee),
         "trustee_address": f"{clean(v.get('TrusteeAddress1') or v.get('Trustee Address1:'))}, {clean(v.get('TrusteeAddress2') or v.get('Trustee Address2:'))}".strip(", "),
         "manager": str(manager),
-        "buyer": str(clean(buyer)),
+        "buyer": str(clean(note_maker or buyer)),
         "buyer1": str(clean(buyer1)),
         "buyer2": str(clean(buyer2)),
         "buyer_address": buyer_address or "[BUYER ADDRESS TO BE INSERTED]",
@@ -244,9 +304,9 @@ def normalize_values(v):
         "insurance": insurance,
         "tax": tax,
         "total_payment": total_payment,
-        "term_months": payment_count or int(float(v.get("TermMonths") or v.get("TermMonths1") or 360)),
-        "term_years": int(float(v.get("Term1") or v.get("TermYears") or 30)),
-        "interest": str(v.get("Interestrate1") or v.get("Interest rate1") or "7.500%"),
+        "term_months": payment_count or int(number_value(v.get("Selling Note Installment Months:") or v.get("TermMonths") or v.get("TermMonths1"), 360)),
+        "term_years": int(number_value(v.get("Term1") or v.get("TermYears"), (payment_count or int(number_value(v.get("Selling Note Installment Months:"), 360))) / 12)),
+        "interest": percent_text(v.get("Selling Note Interest Rate:") or v.get("Interestrate1") or v.get("Interest rate1")),
         "loan_start": loan_start,
         "loan_end": loan_end,
         "doc_month": int(float(v.get("DocMonth") or v.get("Doc Month:") or datetime.now().month)),
@@ -592,16 +652,16 @@ def build_review_notes(x, paths):
         f"- Total monthly payment shown in contract draft: {money(x['total_payment'])}",
         f"- Interest: {x['interest']}",
         f"- Loan dates used: {short_date(x['loan_start'])} to {short_date(x['loan_end'])}",
-        f"- Installments counted from LoanStart1 through LoanEnd1: {x['term_months']}",
+        f"- Installments counted from the Selling Note first and final payment dates: {x['term_months']}",
         "",
         "## Needs Review Before Signing",
         "",
-        "- Buyer mailing address is not in the Docs worksheet and is left as a bracketed placeholder.",
+        "- Confirm the buyer mailing address before signing if the Docs worksheet address fields are incomplete.",
         "- Seller/trustee formulation has been changed in red font: the trust is seller, and the trustee signs through its manager.",
         "- Confirm the trustee manager name. The Docs worksheet currently does not provide it, so the drafts use [MANAGER NAME].",
         "- Confirm adverse-condition/title disclosure language. The Docs worksheet currently has no inserted adverse condition text.",
         "- Confirm whether the Deed of Trust should be part of this Rose package.",
-        "- Confirm whether the 60-installment LoanStart1-to-LoanEnd1 term should include a balloon/refinance/remaining-balance clause.",
+        "- Confirm whether the Selling Note term should include a balloon, refinance, or remaining-balance clause.",
         "- Confirm whether total monthly payment should include tax and insurance escrow or whether only principal and interest should be shown.",
     ])
     path = ROOT / "working" / "draft-review-notes.md"
