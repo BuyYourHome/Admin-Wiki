@@ -39,3 +39,4 @@ For framing notes, preserve the intended perception without overstating facts be
 
 | Date Applied | Manuscript/File | Original Note | What Changed |
 | --- | --- | --- | --- |
+| 2026-06-26 | `outputs/Always God Is There - Narrative Draft v1.md`; `outputs/Gracious Millionaire - Manuscript Draft v7 - Always God Is There.md` | In `Always God Is There`, the truck hit by the train was not the second new vehicle Wes bought; it was the first. The second new vehicle came years later in North Carolina. | Corrected the vehicle sequence and changed the earlier dozing-off accident setup so it no longer says the train-damaged truck was bought after totaling a prior new vehicle. |

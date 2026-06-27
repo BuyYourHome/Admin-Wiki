@@ -52,9 +52,9 @@ But it does make me grateful.
 
 That was not my first automobile accident, and it was far from my last. One thing many of them have in common is that I walked away. Vehicles were totaled. Metal was bent. Insurance questions had to be answered. Jenny had to come pick me up. But again and again, I walked away.
 
-The truck that was hit by the train was one of only two vehicles I have ever bought new in my lifetime. I bought it after totaling the first new vehicle I had bought.
+The truck that was hit by the train was the first of only two vehicles I have ever bought new in my lifetime. The second new vehicle came years later, after I had moved to North Carolina.
 
-That first accident happened late at night while I was coming home from being with friends. I was tired. Less than half a mile from where the railroad-track incident later happened, I dozed off at the wheel.
+Before the train incident, there had already been another accident late at night while I was coming home from being with friends. I was tired. Less than half a mile from where the railroad-track incident later happened, I dozed off at the wheel.
 
 I woke up startled as my car crossed the line on the highway and went down an embankment on the left side of the road. I woke up just in time to hit the brakes before plowing into a utility pole in the ditch.
 
