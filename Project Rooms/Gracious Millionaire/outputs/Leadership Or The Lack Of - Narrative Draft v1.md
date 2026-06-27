@@ -98,6 +98,24 @@ Sometimes it is pride.
 
 Sometimes it is my attempt to make sure the thing I built does not fall apart.
 
+That is why another teaching from Bill Johnson has been helpful to me in thinking about leadership. In a message on being filled with the Holy Spirit, he talks about authority being connected to commission. The way I hear that is simple: authority is not the same thing as personality, pressure, charisma, or even a good idea. Authority is tied to being submitted to the mission God actually gave.
+
+That matters to me because I can confuse a plan with a commission.
+
+I can have an idea and assume the authority of God is behind it because the idea seems useful, efficient, or even necessary. But if I am not submitted to God in the way I carry that idea, then my leadership begins to draw its strength from me. Then I have to push. I have to persuade. I have to manage the reactions of the people around me.
+
+Bill also makes the point that the disciples could function under Jesus' mantle while He was with them, but after the resurrection they had to receive and carry their own authority and power for the mission. That is a sobering thought. It is possible to be near someone else's gift and think it is yours. It is possible to be around an atmosphere of faith, vision, or leadership and mistake borrowed influence for formed authority.
+
+I think that can happen in business too.
+
+I can be around good teaching. I can quote good lines. I can talk about Kingdom principles, favor, assignment, and stewardship. But if I have not allowed God to form the way I actually lead, then the words are ahead of the man.
+
+In that same teaching, Bill points to Acts and the phrase that Jesus began both to do and to teach. That order matters. In our culture a person can teach business without owning a business, teach leadership without leading people well, and teach spiritual principles without living them under pressure. But Kingdom leadership is not merely concept. It is life first, then words.
+
+That lands hard for me.
+
+If I want to teach gracious increase, I have to become gracious while increase is happening. If I want to teach leadership, I have to learn to lead when people are slow, cautious, unconvinced, or different from me. If I want to say God is building something, I have to stop acting as though everything depends on my ability to keep the structure standing.
+
 One of my favorite quotes from Bill Johnson is, "If you build it, you have to support it. If God builds it, He supports it."
 
 That quote has stayed with me because it speaks directly to the kind of man I have been. I know how to build things in my mind. I know how to imagine a structure. I know how to create systems, plans, processes, files, lists, and projections. I know how to look at a business and say, "Here is how this could work."

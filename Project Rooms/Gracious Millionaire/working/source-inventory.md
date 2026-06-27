@@ -22,6 +22,7 @@
 | [[2026-06-26-232832-gracious-millionaire-leadership-lack-of]] | Routed email markdown | 2026-06-27 | OfficeAssist intake for Gracious Millionaire | authoritative | Chapter seed about leadership, planning, influence, frustration, patience, and submitting plans to God's leadership. Used for `Leadership Or The Lack Of` narrative draft v1 and manuscript draft v8 insertion. |
 | [[115-rosebrooks-project/_source-inventory]] | Project markdown source set | 2023-2026 | 19-HM-115 Rosebrooks Dr property folder | contextual source set | 754 markdown records created from accessible 115 Rosebrooks project files for chapter context and narrative drafting. |
 | [[2026-06-24-bill-johnson-increase-your-expectation-source]] | YouTube transcript/source markdown | 2015-12-27; retrieved 2026-06-24 | Bill Johnson Teaching / Bethel Church | contextual source | Sermon source on expectation, reward, stewardship, increase, and the Father's goodness. Used as contextual material for manuscript draft v5; direct quotation kept short and attributed. |
+| [[2026-06-27-bill-johnson-why-you-need-filled-holy-spirit-leadership-reference]] | YouTube sermon/source markdown | Retrieved 2026-06-27 | Bill Johnson Teaching / YouTube | contextual source | User-provided leadership reference beginning around 47:00. Used for `Leadership Or The Lack Of` and manuscript draft v10, especially submitted authority, commission, borrowed influence, and doing before teaching. |
 
 ## Mailbox Retrieval Note
 
