@@ -188,6 +188,16 @@ Lordship is the invitation.
 
 ## Introduction
 
+This book began as a question about money, but the longer I sit with it, the more I realize it is a question about life.
+
+It is about formation.
+
+It is about success.
+
+It is about what happens inside a person when opportunity begins to increase. It is about what money reveals, what pressure exposes, what ambition wants, what fear protects, and what God is asking to govern in the middle of it all.
+
+Real estate is the setting for many of the stories, but real estate is not the deepest subject. Houses, sellers, contracts, mortgages, equity, private money, lawsuits, tenants, and spreadsheets all become part of the classroom. But the lesson underneath them is about lordship.
+
 How much money is too much money?
 
 That is not really a question about an amount.
@@ -206,17 +216,21 @@ This is not a how-to book.
 
 Maybe it is a how-to-be book.
 
-After listening to Bill Johnson teach on increasing expectation, I hear another question underneath my own question. What am I expecting God to do with what He has already placed in my hand? Bill returns to Hebrews 11:6, where God is described as the rewarder of those who diligently seek Him, and to the parable of the talents, where increase is not treated as greed but as faithfulness.
+Bill Johnson has been one of the teachers who has helped me think about the Father's goodness, expectation, reward, stewardship, and increase without turning those words into a formula for self-centered prosperity. I am not trying to make his teaching the authority for this book. Scripture is the authority. But Bill has given language to some of the questions I am already wrestling with.
+
+After listening to him teach on increasing expectation, I hear another question underneath my own question. What am I expecting God to do with what He has already placed in my hand? Bill returns to Hebrews 11:6, where God is described as the rewarder of those who diligently seek Him, and to the parable of the talents, where increase is not treated as greed but as faithfulness.
 
 That does not make this a book about getting God to make us rich. It makes it a book about whether we can believe the Father is good, steward what He has trusted to us, and let Him decide what increase should look like.
 
-It is our story of our adventures with real estate investment and the lessons we have learned, or are learning. Jenny and I have made a million dollars in a short period of time in real estate. That is true. But the number is not the point. The point is what happened to our hearts while the number was being formed.
+It is our story of our adventures with real estate investment and the lessons we have learned, or are learning. When Jenny and I got married, our net worth was about negative $200,000. At the point of this writing, God has increased our net worth to about $4 million. That is a real number, and I do not want to pretend it is unimportant. But the number is not the point. The point is what happened to our hearts while the number was being formed.
 
 The bulk of this book is made of stories. Real transactions. Real sellers. Real houses. Real phone calls. Real pressure. Real fear. Real favor. Some of the stories are profitable. Some are painful. Some are unfinished. Some still make me ask whether I understood what God was doing as clearly as I thought I did at the time.
 
 That is part of why I am writing.
 
 At the time I am writing this, I am still building the framework. The framework is a set of Biblical principles that I want to hang stories upon. I do not have all of the stories identified. I do not have all of the lessons learned. But while I am writing, I am praying that God will give the examples needed to reveal the truths.
+
+Lance Wallnau is one of the teachers who has shaped the way I think about favor and assignment. I do not want to pretend that I can reproduce all of his teaching, but one definition associated with his teaching has helped me frame what Jenny and I have experienced.
 
 Favor is the attraction of God to you that releases an influence through you so other people are inclined to like, to trust, and to cooperate with you in the assignment God gave you.
 
@@ -725,11 +739,11 @@ It was private money.
 
 It was spreadsheets that could tell us whether a property was worth pursuing, whether the numbers were honest, whether the cash flow made sense, and whether a creative structure might turn a problem into a possibility.
 
-By that September, I had bought three houses that had the potential to replace my very good income as a database developer.
+By that October, I had bought three houses that had the potential to replace my very good income as a database developer.
 
 That happened quickly.
 
-From May to September.
+From May to October.
 
 I do not say that to make it sound easy. It was not easy. It was work. It was study. It was phone calls. It was risk. It was pressure. It was learning a whole new industry while carrying the weight of a good job and a future that was not guaranteed.
 
