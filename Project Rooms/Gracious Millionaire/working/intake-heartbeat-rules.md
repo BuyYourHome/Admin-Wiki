@@ -14,6 +14,7 @@ The heartbeat is for project-room intake and manuscript work only. It does not o
 - The heartbeat must not read OfficeAssist, Wes, Jenny, or any other mailbox directly.
 - A question from Wes such as "Do you see a new email?" does not expand this project-room role's scope to Outlook. Answer from routed markdown/source files and intake logs only, or say that OfficeAssist needs to route the email into the project room first.
 - OfficeAssist or another approved process owns mailbox monitoring and may drop routed source files into this project room.
+- If Wes separately authorizes a non-heartbeat Codex role to check mail and that check finds a Gracious Millionaire email, that mailbox-checking role becomes the approved intake process for that email and must drop a Markdown source file into `sources/email/` before ending the request.
 - The heartbeat must not send email, approve invoices, move money, modify legal or financial documents, delete source files, or take external actions.
 - If a requested action would exceed manuscript or project-room processing, mark the item blocked and ask Wes.
 
@@ -86,4 +87,5 @@ Do not process the same source file repeatedly. Use the intake ledger to identif
 - OfficeAssist owns email monitoring.
 - The Gracious Millionaire heartbeat owns project-room intake processing.
 - OfficeAssist may drop source files and intake-log entries into this project room.
+- User-authorized, non-heartbeat mailbox checks may also drop source files and intake-log entries into this project room when they find Gracious Millionaire email.
 - The Gracious Millionaire heartbeat acts only on project-room files and logs, not on mailboxes.
