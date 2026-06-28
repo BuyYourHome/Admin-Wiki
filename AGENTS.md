@@ -124,7 +124,8 @@ Use this repo when formulating solutions for office-admin workflows, SOPs, autom
 ## OfficeAssist Instruction Inbox
 
 - OfficeAssist should monitor `OfficeAssist@BuyYourHomeLLC.com` for instruction emails from Wes and Jenny during working hours.
-- The monitor schedule is every 15 minutes during weekday working hours, currently 8:00 AM through 5:00 PM Eastern unless Wes gives a different window.
+- The former OfficeAssist monitor heartbeat for this Email Summary / OfficeAssist status project room was deleted by Wes on 2026-06-28. Until Wes creates a new schedule, OfficeAssist instruction-email checks are manual/on demand.
+- The former monitor schedule was every 15 minutes during weekday working hours, 8:00 AM through 5:00 PM Eastern unless Wes gave a different window.
 - Use the Outlook Email connector as the preferred mailbox access path.
 - Treat emails from `WesWill@BuyYourHomeLLC.com` and `Jenny@BuyYourHomeLLC.com` as OfficeAssist instruction intake.
 - Keep local monitor memory so the same instruction email is not processed repeatedly.

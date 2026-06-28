@@ -10,9 +10,9 @@ Codex does not currently show every role below in one unified "Agents" list. Som
 |---|---|---|---|---|
 | Jean Wright / Office Assistant | Assistant profile and operating role | Active | On demand and through related automations | `C:\Codex\Office Assistant Profile.md`; `AGENTS.md` |
 | REI Text Message Watcher | Heartbeat automation | Active | Every 15 minutes during 8:00 AM-9:00 PM Eastern; adaptive 1-minute checks during activity | `C:\Users\wesbr\.codex\automations\morning-weswill-email-summary\automation.toml` |
-| OfficeAssist Instruction Inbox Monitor | Behavior inside OfficeAssist Morning Email Summary heartbeat | Active | Every 15 minutes during working hours; source routing only for Gracious Millionaire | `AGENTS.md`; `C:\Users\wesbr\.codex\automations\officeassist-morning-email-summary\automation.toml` |
+| OfficeAssist Instruction Inbox Monitor | Former behavior inside OfficeAssist Morning Email Summary heartbeat | Deleted with OfficeAssist heartbeat | No active schedule after Wes deleted this project-room heartbeat on 2026-06-28; source routing remains available on demand | `AGENTS.md`; former local path `C:\Users\wesbr\.codex\automations\officeassist-morning-email-summary\automation.toml` |
 | Gracious Millionaire Project Room Heartbeat | Project-room heartbeat automation | Active | Every 15 minutes from 8:00 AM-5:45 PM Eastern; project-room Markdown intake processing only | `Project Rooms\Gracious Millionaire\README.md`; `Project Rooms\Gracious Millionaire\working\intake-heartbeat-rules.md`; `C:\Users\wesbr\.codex\automations\gracious-millionaire-project-room-heartbeat\automation.toml` |
-| OfficeAssist Morning Email Summary | Wiki-managed skill plus heartbeat automation plus project room | Active | Every 15 minutes from 8:00 AM-4:45 PM Eastern; Boss summary runs once daily at/after 8:00 AM | `skills\officeassist-morning-email-summary\SKILL.md`; `Project Rooms\Email Summary\README.md`; `C:\Users\wesbr\.codex\automations\officeassist-morning-email-summary\automation.toml` |
+| OfficeAssist Morning Email Summary | Wiki-managed skill plus former heartbeat automation plus project room | Deleted heartbeat; workflow available on demand | No active schedule after Wes deleted this project-room heartbeat on 2026-06-28; Boss summary and instruction monitoring require manual/on-demand runs unless a new schedule is created | `skills\officeassist-morning-email-summary\SKILL.md`; `Project Rooms\Email Summary\README.md`; former local path `C:\Users\wesbr\.codex\automations\officeassist-morning-email-summary\automation.toml` |
 | Email Delivery | Wiki-managed support skill | Active | Called by email-capable Admin workflows | `skills\email-delivery\SKILL.md` |
 | Document Scanning | Wiki-managed skill plus heartbeat automation plus project room | Active | Every 30 minutes from 10:00 AM through 4:30 PM Eastern | `skills\document-scanning\SKILL.md`; `Project Rooms\Document Scan\README.md`; `C:\Users\wesbr\.codex\skills\document-scanning\SKILL.md`; app automation id `document-scanning` |
 | Codex Skill Source Control | Wiki-managed skill system | Active | On demand after skill changes or wiki pulls | `Codex Skill Source Rule.md`; `tools\sync-codex-skills.ps1`; `skills\` |
@@ -102,7 +102,7 @@ Current notification behavior:
 
 Type: behavior inside the `officeassist-morning-email-summary` heartbeat automation.
 
-Status: active.
+Status: deleted with the OfficeAssist Morning Email Summary heartbeat on 2026-06-28 at Wes's request. The behavior remains available on demand.
 
 Automation id:
 
@@ -110,8 +110,8 @@ Automation id:
 
 Schedule:
 
-- Every 15 minutes during weekday working hours.
-- Current working-hours window: 8:00 AM through 5:00 PM Eastern.
+- None active after Wes deleted this project-room heartbeat on 2026-06-28.
+- Former working-hours window: every 15 minutes during weekday working hours.
 
 Purpose:
 
@@ -193,9 +193,9 @@ Tools/services used:
 
 ## OfficeAssist Morning Email Summary
 
-Type: wiki-managed skill plus heartbeat automation.
+Type: wiki-managed skill plus former heartbeat automation.
 
-Status: active for Wes; Jenny summary paused.
+Status: heartbeat deleted on 2026-06-28 at Wes's request; workflow remains available for manual/on-demand runs. Jenny summary paused.
 
 Automation id:
 
@@ -203,8 +203,8 @@ Automation id:
 
 Schedule:
 
-- Daily around 8:00 AM Eastern.
-- Runs in the dedicated `OfficeAssist Morning Email Summary Status` Codex thread instead of creating a new standalone run chat each morning.
+- None active after Wes deleted this project-room heartbeat on 2026-06-28.
+- Formerly ran in the dedicated `OfficeAssist Morning Email Summary Status` Codex thread instead of creating a new standalone run chat each morning.
 
 Purpose:
 
