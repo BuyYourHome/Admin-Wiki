@@ -17,7 +17,9 @@ Do not use the name `Project LumenScale` for this process. Use plain labels such
 - A question from Wes such as "Do you see a new email?" does not expand this project-room role's scope to Outlook. Answer from routed markdown/source files and intake logs only, or say that OfficeAssist needs to route the email into the project room first.
 - OfficeAssist or another approved process owns mailbox monitoring and may drop routed source files into this project room.
 - If Wes separately authorizes a non-heartbeat Codex role to check mail and that check finds a Gracious Millionaire email, that mailbox-checking role becomes the approved intake process for that email and must drop a Markdown source file into `sources/email/` before ending the request.
-- The heartbeat must not send email, approve invoices, move money, modify legal or financial documents, delete source files, or take external actions.
+- The heartbeat may send the current Jenny clickable chapter review packet only after it has processed a significant manuscript change, using the shared `skills\email-delivery\SKILL.md` workflow, from `OfficeAssist@BuyYourHomeLLC.com` to `Jenny@BuyYourHomeLLC.com`, copying `WesWill@BuyYourHomeLLC.com`, and verifying the sent copy in OfficeAssist Sent Items.
+- The heartbeat must not query any mailbox directly, send unrelated email, approve invoices, move money, modify legal or financial documents, delete source files, create new chats, or take unrelated external actions.
+- If the Jenny review-packet email cannot be sent or verified safely, notify Wes immediately in this Gracious Millionaire thread with the blocker and the intended attachment path.
 - If a requested action would exceed manuscript or project-room processing, mark the item blocked and ask Wes.
 
 ## Intake Locations
@@ -76,11 +78,12 @@ Do not process the same source file repeatedly. Use the intake ledger to identif
 - Avoid generic business prose unless Wes explicitly asks for it.
 - Keep manuscript changes traceable to the source file that triggered them.
 - After processing, update the intake ledger with status, action taken, output path, processing timestamp, and open questions.
+- If the change is significant, regenerate the stable current Jenny clickable chapter review packet and send it through the OfficeAssist email-delivery workflow.
 
 ## Notification Rules
 
 - If no new intake files or new intake-log items are found, stay quiet.
-- If new files are processed successfully and no decision is needed, stay quiet unless Wes requests routine notices.
+- If new files are processed successfully and no decision is needed, stay quiet unless Wes requests routine notices, except that any sent Jenny review-packet email should be recorded in the intake ledger.
 - If a new file cannot be processed safely, notify Wes in the Gracious Millionaire thread with the source path and blocker.
 - If a source requires a major manuscript direction decision, notify Wes before making the change.
 
