@@ -10,9 +10,9 @@ Codex does not currently show every role below in one unified "Agents" list. Som
 |---|---|---|---|---|
 | Jean Wright / Office Assistant | Assistant profile and operating role | Active | On demand and through related automations | `C:\Codex\Office Assistant Profile.md`; `AGENTS.md` |
 | REI Text Message Watcher | Heartbeat automation | Active | Every 15 minutes during 8:00 AM-9:00 PM Eastern; adaptive 1-minute checks during activity | `C:\Users\wesbr\.codex\automations\morning-weswill-email-summary\automation.toml` |
-| OfficeAssist Instruction Inbox Monitor | Behavior inside OfficeAssist Morning Email Summary heartbeat | Active | Every 15 minutes during the OfficeAssist heartbeat active window; checks email and takes defined actions | `AGENTS.md`; `C:\Users\wesbr\.codex\automations\officeassist-morning-email-summary\automation.toml` |
+| OfficeAssist Instruction Inbox Monitor | Behavior inside OfficeAssist Morning Email Summary heartbeat | Active | Starts at 7:45 AM Eastern, then every 15 minutes through 4:45 PM Eastern; checks email and takes defined actions | `AGENTS.md`; `C:\Users\wesbr\.codex\automations\officeassist-morning-email-summary-and-instruction-monitor\automation.toml` |
 | Gracious Millionaire Project Room Heartbeat | Project-room heartbeat automation | Active | Every 15 minutes from 8:00 AM-11:45 PM Eastern; project-room Markdown intake processing only | `Project Rooms\Gracious Millionaire\README.md`; `Project Rooms\Gracious Millionaire\working\intake-heartbeat-rules.md`; `C:\Users\wesbr\.codex\automations\gracious-millionaire-project-room-heartbeat\automation.toml` |
-| OfficeAssist Morning Email Summary | Wiki-managed skill plus heartbeat automation plus project room | Active | Every 15 minutes from 8:00 AM-4:45 PM Eastern in the current local config; Boss summary runs once daily at/after 8:00 AM, and instruction monitoring checks OfficeAssist email | `skills\officeassist-morning-email-summary\SKILL.md`; `Project Rooms\Email Summary\README.md`; `C:\Users\wesbr\.codex\automations\officeassist-morning-email-summary\automation.toml` |
+| OfficeAssist Morning Email Summary | Wiki-managed skill plus heartbeat automation plus project room | Active | Starts at 7:45 AM Eastern, then every 15 minutes through 4:45 PM Eastern; Boss summary runs once daily at/after 8:00 AM, and instruction monitoring checks OfficeAssist email | `skills\officeassist-morning-email-summary\SKILL.md`; `Project Rooms\Email Summary\README.md`; `C:\Users\wesbr\.codex\automations\officeassist-morning-email-summary-and-instruction-monitor\automation.toml` |
 | Email Delivery | Wiki-managed support skill | Active | Called by email-capable Admin workflows | `skills\email-delivery\SKILL.md` |
 | Document Scanning | Wiki-managed skill plus heartbeat automation plus project room | Active | Every 30 minutes from 10:00 AM through 4:30 PM Eastern | `skills\document-scanning\SKILL.md`; `Project Rooms\Document Scan\README.md`; `C:\Users\wesbr\.codex\skills\document-scanning\SKILL.md`; app automation id `document-scanning` |
 | Codex Skill Source Control | Wiki-managed skill system | Active | On demand after skill changes or wiki pulls | `Codex Skill Source Rule.md`; `tools\sync-codex-skills.ps1`; `skills\` |
@@ -100,18 +100,22 @@ Current notification behavior:
 
 ## OfficeAssist Instruction Inbox Monitor
 
-Type: behavior inside the `officeassist-morning-email-summary` heartbeat automation.
+Type: behavior inside the `officeassist-morning-email-summary-and-instruction-monitor` heartbeat automation.
 
 Status: active as behavior inside the OfficeAssist Morning Email Summary heartbeat.
 
 Automation id:
 
-- `officeassist-morning-email-summary`
+- `officeassist-morning-email-summary-and-instruction-monitor`
+
+Legacy local id:
+
+- `officeassist-morning-email-summary` may still exist as stale local metadata from the deleted app automation. Do not treat that stale local folder as the active app heartbeat.
 
 Schedule:
 
-- Every 15 minutes during the OfficeAssist heartbeat active window.
-- Current local OfficeAssist heartbeat config runs 8:00 AM through 4:45 PM Eastern.
+- Starts at 7:45 AM Eastern.
+- Then runs every 15 minutes from 8:00 AM through 4:45 PM Eastern.
 
 Purpose:
 
@@ -200,11 +204,16 @@ Status: active for Wes; Jenny summary paused.
 
 Automation id:
 
-- `officeassist-morning-email-summary`
+- `officeassist-morning-email-summary-and-instruction-monitor`
+
+Legacy local id:
+
+- `officeassist-morning-email-summary` may still exist as stale local metadata from the deleted app automation. Do not use it as the active app automation id.
 
 Schedule:
 
-- Current local config runs every 15 minutes from 8:00 AM through 4:45 PM Eastern.
+- Starts at 7:45 AM Eastern.
+- Then runs every 15 minutes from 8:00 AM through 4:45 PM Eastern.
 - Runs in the dedicated `OfficeAssist Morning Email Summary Status` Codex thread instead of creating a new standalone run chat each morning.
 
 Purpose:
@@ -221,7 +230,7 @@ Defined in:
 
 - `C:\Codex\Wiki Files\skills\officeassist-morning-email-summary\SKILL.md`
 - `C:\Codex\Wiki Files\Project Rooms\Email Summary\README.md`
-- `C:\Users\wesbr\.codex\automations\officeassist-morning-email-summary\automation.toml`
+- `C:\Users\wesbr\.codex\automations\officeassist-morning-email-summary-and-instruction-monitor\automation.toml`
 - Email safety rules in `AGENTS.md`.
 
 Important limitations:
@@ -599,7 +608,7 @@ Why paused:
 
 Defined in:
 
-- Pause rule inside `C:\Users\wesbr\.codex\automations\officeassist-morning-email-summary\automation.toml`
+- Pause rule inside `C:\Users\wesbr\.codex\automations\officeassist-morning-email-summary-and-instruction-monitor\automation.toml`
 
 Resume condition:
 
@@ -621,9 +630,10 @@ gracious-millionaire-project-room-heartbeat\
 investigate-computer-daily-check\
 morning-weswill-email-summary\
 officeassist-morning-email-summary\
+officeassist-morning-email-summary-and-instruction-monitor\
 ```
 
-Each folder contains an `automation.toml` file with the real schedule, prompt, status, and execution settings.
+Each active automation folder contains an `automation.toml` file with the real schedule, prompt, status, and execution settings. The legacy `officeassist-morning-email-summary\` folder may still exist as stale local metadata; use `officeassist-morning-email-summary-and-instruction-monitor\` for the active OfficeAssist heartbeat.
 
 ## Related Connector Rules
 
