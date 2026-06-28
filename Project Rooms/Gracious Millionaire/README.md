@@ -17,8 +17,8 @@ The separate emails in `sources/email/` are early chapter starts, fragments, and
 - When Wes authorizes any Codex role to check email and that check finds a Gracious Millionaire email, the role that performed the mailbox check must immediately preserve that email as an individual Markdown source file under `sources/email/` and update `working/officeassist-intake-log.md`. Do not wait for a separate routing instruction after the email is found.
 - Current Gracious Millionaire project-room thread id for manual project-room work: `019eb9b0-6780-7fb3-a278-29a18d17998c`.
 - Do not create a new chat for routed Gracious Millionaire emails unless Wes explicitly asks for one.
-- Former project-room heartbeat automation: `gracious-millionaire-project-room-heartbeat`, deleted on 2026-06-28 at Wes's request. No active project-room heartbeat schedule should be assumed unless Wes recreates or replaces it.
-- Until a new heartbeat is created, Gracious Millionaire project-room processing is manual or on demand. Process newly routed Markdown/source items that contain clear Gracious Millionaire writing instructions when Wes asks or when another approved process explicitly invokes this room.
+- Active project-room heartbeat automation: `gracious-millionaire-project-room-heartbeat`, defined at `C:\Users\wesbr\.codex\automations\gracious-millionaire-project-room-heartbeat\automation.toml`.
+- The heartbeat checks the project room every 15 minutes from 8:00 AM through 5:45 PM Eastern and processes newly routed Markdown/source items that contain clear Gracious Millionaire writing instructions.
 - Naming rule: do not call this project-room process `Project LumenScale`. Use plain names such as `Gracious Millionaire project-room process`, `Gracious Millionaire project-room heartbeat`, or `Gracious Millionaire project room`.
 - Intake-heartbeat behavior is defined in [[intake-heartbeat-rules]]. The Gracious Millionaire project-room role may act only on markdown files, project-room source files, intake logs, and other source material already dropped into this project room by OfficeAssist or another approved process.
 - When this project-room role finds a new routed Markdown file or intake-log item with a clear Gracious Millionaire writing instruction, it should begin processing that source under the intake-heartbeat rules instead of only reporting that the file exists.
@@ -43,4 +43,4 @@ Started. Initial email source files were created from the retrievable messages i
 
 - Decide whether each email is a chapter opening, a chapter section, an appendix note, or a discarded fragment.
 - Build a chapter map from the source themes.
-- Use the intake rules for manual, on-demand, or future scheduled processing as new routed chapter sources arrive.
+- Monitor the active intake heartbeat and refine processing rules as new routed chapter sources arrive.
