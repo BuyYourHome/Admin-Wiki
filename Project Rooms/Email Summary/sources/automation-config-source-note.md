@@ -2,33 +2,33 @@
 
 Source path:
 
-`C:\Users\wesbr\.codex\automations\officeassist-morning-email-summary\automation.toml`
+`C:\Users\wesbr\.codex\automations\officeassist-morning-email-summary-and-instruction-monitor\automation.toml`
 
 Status: authoritative for the live local automation configuration.
 
 Related run memory:
 
-`C:\Users\wesbr\.codex\automations\officeassist-morning-email-summary\memory.md`
+`C:\Users\wesbr\.codex\automations\officeassist-morning-email-summary-and-instruction-monitor\memory.md`
 
 Status: authoritative for persistent run state, including verified send history, cutoff decisions, summary topics, blockers, and Jenny pause notes.
 
-Current observed values as of 2026-06-15:
+Current observed values as of 2026-06-28:
 
 | Field | Value |
 |---|---|
-| id | `officeassist-morning-email-summary` |
+| id | `officeassist-morning-email-summary-and-instruction-monitor` |
 | kind | `heartbeat` |
-| name | `OfficeAssist morning email summary` |
+| name | `Email Summary` |
 | status | `ACTIVE` |
-| schedule | Daily at 8:00 AM Eastern via `FREQ=DAILY;BYHOUR=8;BYMINUTE=0;BYSECOND=0` |
-| target thread | `OfficeAssist Morning Email Summary Status` |
+| schedule | Starts at 7:45 AM Eastern, then every 15 minutes from 8:00 AM through 4:45 PM Eastern |
+| target thread | `Email Summary` |
 | target thread id | `019ecba7-f1cc-7ac1-aaf7-d89a3f21b582` |
 
 The automation prompt points to:
 
 - `C:\Codex\Office Assistant Profile.md`
 - `C:\Codex\Wiki Files\AGENTS.md`
-- `C:\Codex\Wiki Files\skills\officeassist-morning-email-summary\SKILL.md`
+- `C:\Codex\Wiki Files\skills\email-summary\SKILL.md`
 
 Important notes:
 

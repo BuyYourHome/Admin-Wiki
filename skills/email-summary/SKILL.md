@@ -1,9 +1,9 @@
 ---
-name: officeassist-morning-email-summary
+name: email-summary
 description: Create Wes's daily OfficeAssist morning mailbox summary for Buy Your Home. Use when Codex needs to scan `WesWill@BuyYourHomeLLC.com`, apply the stored cutoff, select priority unread or newly received business messages across Inbox and rule-routed folders, draft the plain-text morning summary, and hand the send step to `email-delivery`.
 ---
 
-# OfficeAssist Morning Email Summary
+# Email Summary
 
 ## Overview
 
@@ -19,13 +19,13 @@ Before using this skill, have:
 
 - the global profile at `C:\Codex\Office Assistant Profile.md`,
 - the admin rules in `C:\Codex\Wiki Files\AGENTS.md`,
-- the automation memory file for this workflow at `C:\Users\wesbr\.codex\automations\officeassist-morning-email-summary\memory.md`,
+- the automation memory file for this workflow at `C:\Users\wesbr\.codex\automations\officeassist-morning-email-summary-and-instruction-monitor\memory.md`,
 - access to `WesWill@BuyYourHomeLLC.com` mailbox contents,
 - access to `C:\Codex\Wiki Files\tools\get-codex-token-summary.ps1` when token totals are needed.
 
 ## Workflow
 
-1. Read `C:\Users\wesbr\.codex\automations\officeassist-morning-email-summary\memory.md` and find the last verified Boss summary send time.
+1. Read `C:\Users\wesbr\.codex\automations\officeassist-morning-email-summary-and-instruction-monitor\memory.md` and find the last verified Boss summary send time.
 2. Use that verified send time as the cutoff unless a newer verified Boss summary is already present in `OfficeAssist@BuyYourHomeLLC.com` Sent Items for the same day.
 3. Scan only `WesWill@BuyYourHomeLLC.com`.
 4. Review the entire mailbox recursively, including Inbox and rule-routed subfolders.
@@ -118,4 +118,4 @@ After a successful verified send, update the automation memory with:
 
 If the send fails or verification fails, record the blocker and the action taken.
 
-Use `C:\Users\wesbr\.codex\automations\officeassist-morning-email-summary\memory.md` as the persistent run memory unless Wes explicitly changes the live automation storage location.
+Use `C:\Users\wesbr\.codex\automations\officeassist-morning-email-summary-and-instruction-monitor\memory.md` as the persistent run memory unless Wes explicitly changes the live automation storage location.

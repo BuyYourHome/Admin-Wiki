@@ -10,9 +10,9 @@ Codex does not currently show every role below in one unified "Agents" list. Som
 |---|---|---|---|---|
 | Jean Wright / Office Assistant | Assistant profile and operating role | Active | On demand and through related automations | `C:\Codex\Office Assistant Profile.md`; `AGENTS.md` |
 | REI Text Message Watcher | Heartbeat automation | Active | Every 15 minutes during 8:00 AM-9:00 PM Eastern; adaptive 1-minute checks during activity | `C:\Users\wesbr\.codex\automations\morning-weswill-email-summary\automation.toml` |
-| OfficeAssist Instruction Inbox Monitor | Behavior inside OfficeAssist Morning Email Summary heartbeat | Active | Starts at 7:45 AM Eastern, then every 15 minutes through 4:45 PM Eastern; checks email and takes defined actions | `AGENTS.md`; `C:\Users\wesbr\.codex\automations\officeassist-morning-email-summary-and-instruction-monitor\automation.toml` |
+| OfficeAssist Instruction Inbox Monitor | Behavior inside Email Summary heartbeat | Active | Starts at 7:45 AM Eastern, then every 15 minutes through 4:45 PM Eastern; checks email and takes defined actions | `AGENTS.md`; `C:\Users\wesbr\.codex\automations\officeassist-morning-email-summary-and-instruction-monitor\automation.toml` |
 | Gracious Millionaire Project Room Heartbeat | Project-room heartbeat automation | Active | Every 15 minutes from 8:00 AM-11:45 PM Eastern; project-room Markdown intake processing only | `Project Rooms\Gracious Millionaire\README.md`; `Project Rooms\Gracious Millionaire\working\intake-heartbeat-rules.md`; `C:\Users\wesbr\.codex\automations\gracious-millionaire-project-room-heartbeat\automation.toml` |
-| OfficeAssist Morning Email Summary | Wiki-managed skill plus heartbeat automation plus project room | Active | Starts at 7:45 AM Eastern, then every 15 minutes through 4:45 PM Eastern; Boss summary runs once daily at/after 8:00 AM, and instruction monitoring checks OfficeAssist email | `skills\officeassist-morning-email-summary\SKILL.md`; `Project Rooms\Email Summary\README.md`; `C:\Users\wesbr\.codex\automations\officeassist-morning-email-summary-and-instruction-monitor\automation.toml` |
+| Email Summary | Wiki-managed skill plus heartbeat automation plus project room | Active | Starts at 7:45 AM Eastern, then every 15 minutes through 4:45 PM Eastern; Boss summary runs once daily at/after 8:00 AM, and instruction monitoring checks OfficeAssist email | `skills\email-summary\SKILL.md`; `Project Rooms\Email Summary\README.md`; `C:\Users\wesbr\.codex\automations\officeassist-morning-email-summary-and-instruction-monitor\automation.toml` |
 | Email Delivery | Wiki-managed support skill | Active | Called by email-capable Admin workflows | `skills\email-delivery\SKILL.md` |
 | Document Scanning | Wiki-managed skill plus heartbeat automation plus project room | Active | Every 30 minutes from 10:00 AM through 4:30 PM Eastern | `skills\document-scanning\SKILL.md`; `Project Rooms\Document Scan\README.md`; `C:\Users\wesbr\.codex\skills\document-scanning\SKILL.md`; app automation id `document-scanning` |
 | Codex Skill Source Control | Wiki-managed skill system | Active | On demand after skill changes or wiki pulls | `Codex Skill Source Rule.md`; `tools\sync-codex-skills.ps1`; `skills\` |
@@ -27,7 +27,7 @@ Codex does not currently show every role below in one unified "Agents" list. Som
 | Project Management Spreadsheet Rewrite | Project Room | Active/planning | On demand | `Project Rooms\Project Management Spreadsheet Rewrite\README.md` |
 | New Project | Wiki-managed skill plus project room | Draft | On demand | `skills\new-project\SKILL.md`; `Project Rooms\New Project\README.md` |
 | Investigate Computer | Wiki-managed skill plus project room plus heartbeat automation | Active | Daily at 6:00 AM Eastern; email Wes only when an issue is detected | `skills\investigate-computer\SKILL.md`; `Project Rooms\Investigate Computer\README.md`; app automation id `investigate-computer-daily-check` |
-| Jenny Daily Email Summary | Planned/paused automation behavior | Paused | Would run daily with Wes summary after Jenny mailbox is available | `officeassist-morning-email-summary` prompt notes |
+| Jenny Daily Email Summary | Planned/paused automation behavior | Paused | Would run daily with Wes summary after Jenny mailbox is available | `Email Summary` prompt notes |
 
 ## Jean Wright / Office Assistant
 
@@ -102,7 +102,7 @@ Current notification behavior:
 
 Type: behavior inside the `officeassist-morning-email-summary-and-instruction-monitor` heartbeat automation.
 
-Status: active as behavior inside the OfficeAssist Morning Email Summary heartbeat.
+Status: active as behavior inside the Email Summary heartbeat.
 
 Automation id:
 
@@ -140,7 +140,7 @@ Defined in:
 
 Activation note:
 
-- The former `gracious-millionaire-officeassist-email-intake` heartbeat was deleted on 2026-06-18 at Wes's request. All OfficeAssist email monitoring now belongs to the OfficeAssist morning-summary/instruction-monitor heartbeat.
+- The former `gracious-millionaire-officeassist-email-intake` heartbeat was deleted on 2026-06-18 at Wes's request. All OfficeAssist email monitoring now belongs to the Email Summary heartbeat.
 
 Tools/services used:
 
@@ -193,7 +193,7 @@ Tools/services used:
 - Admin wiki project-room workflow rules.
 - Git for scoped local commits when durable project-room changes are made.
 
-## OfficeAssist Morning Email Summary
+## Email Summary
 
 Type: wiki-managed skill plus heartbeat automation.
 
@@ -207,7 +207,7 @@ Schedule:
 
 - Starts at 7:45 AM Eastern.
 - Then runs every 15 minutes from 8:00 AM through 4:45 PM Eastern.
-- Runs in the dedicated `OfficeAssist Morning Email Summary Status` Codex thread instead of creating a new standalone run chat each morning.
+- Runs in the dedicated `Email Summary` Codex thread instead of creating a new standalone run chat each morning.
 
 Purpose:
 
@@ -221,7 +221,7 @@ Purpose:
 
 Defined in:
 
-- `C:\Codex\Wiki Files\skills\officeassist-morning-email-summary\SKILL.md`
+- `C:\Codex\Wiki Files\skills\email-summary\SKILL.md`
 - `C:\Codex\Wiki Files\Project Rooms\Email Summary\README.md`
 - `C:\Users\wesbr\.codex\automations\officeassist-morning-email-summary-and-instruction-monitor\automation.toml`
 - Email safety rules in `AGENTS.md`.

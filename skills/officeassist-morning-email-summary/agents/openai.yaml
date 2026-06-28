@@ -1,4 +1,0 @@
-interface:
-  display_name: "OfficeAssist Morning Summary"
-  short_description: "Draft Wes's daily OfficeAssist mailbox summary"
-  default_prompt: "Use $officeassist-morning-email-summary to scan WesWill@BuyYourHomeLLC.com, draft the Boss summary, and hand delivery to email-delivery."

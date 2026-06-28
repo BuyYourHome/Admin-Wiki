@@ -1,0 +1,4 @@
+interface:
+  display_name: "Email Summary"
+  short_description: "Draft Wes's daily OfficeAssist mailbox summary"
+  default_prompt: "Use $email-summary to scan WesWill@BuyYourHomeLLC.com, draft the Boss summary, and hand delivery to email-delivery."

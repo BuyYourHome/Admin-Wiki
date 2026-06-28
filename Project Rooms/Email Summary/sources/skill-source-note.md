@@ -2,9 +2,9 @@
 
 Source path:
 
-`C:\Codex\Wiki Files\skills\officeassist-morning-email-summary\SKILL.md`
+`C:\Codex\Wiki Files\skills\email-summary\SKILL.md`
 
-Status: authoritative for the reusable OfficeAssist morning email summary workflow.
+Status: authoritative for the reusable Email Summary workflow.
 
 The skill owns:
 
