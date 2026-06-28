@@ -78,7 +78,7 @@ Do not process the same source file repeatedly. Use the intake ledger to identif
 - Avoid generic business prose unless Wes explicitly asks for it.
 - Keep manuscript changes traceable to the source file that triggered them.
 - After processing, update the intake ledger with status, action taken, output path, processing timestamp, and open questions.
-- If the change is significant, regenerate the stable current Jenny clickable chapter review packet and send it through the OfficeAssist email-delivery workflow.
+- If the change is significant, regenerate the stable current Jenny clickable chapter review packet and send it through the OfficeAssist email-delivery workflow. The email body must include the current manuscript word count, estimated page count, and a brief comparison to typical book lengths; use a formatted PDF/DOCX page count when available, otherwise estimate about 250 words per manuscript page and label it approximate.
 
 ## Notification Rules
 
