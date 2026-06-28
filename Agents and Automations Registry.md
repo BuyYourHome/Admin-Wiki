@@ -126,6 +126,7 @@ Special routing:
 
 - If an instruction email has a subject containing `gracious millionaire`, route it into `Project Rooms\Gracious Millionaire\` as book source material from the OfficeAssist monitor.
 - Preserve each routed Gracious Millionaire email as its own Markdown file under `Project Rooms\Gracious Millionaire\sources\email\`, including available sender, recipient, timestamp, subject, message id or web link, and body text.
+- Use plain names for this workflow. Do not call it `Project LumenScale`; refer to it as the Gracious Millionaire project-room process or Gracious Millionaire project-room heartbeat.
 - Current Gracious Millionaire project-room thread id for manual project-room work: `019eb9b0-6780-7fb3-a278-29a18d17998c`.
 - Do not attach an OfficeAssist mailbox-monitoring heartbeat to the Gracious Millionaire thread; the separate `gracious-millionaire-project-room-heartbeat` owns project-room Markdown/source processing in that thread.
 - Do not create a new chat for Gracious Millionaire routing unless Wes explicitly asks for a new chat.
@@ -168,6 +169,7 @@ Purpose:
 
 - Inspect `Project Rooms\Gracious Millionaire\` for routed Markdown/source files and intake-log entries dropped by OfficeAssist or another approved process.
 - Process newly routed Gracious Millionaire writing instructions into project-room working notes, chapter drafts, manuscript revisions, and ledger updates.
+- This process works from emails that have already been received and routed as Markdown files into the Gracious Millionaire project room; it is not a separate branded role and should not be called `Project LumenScale`.
 - Keep routine no-new-source checks silent with no user-visible notification.
 
 Defined in:

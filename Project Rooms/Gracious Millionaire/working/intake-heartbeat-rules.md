@@ -6,6 +6,8 @@ These rules define how a Gracious Millionaire project-room heartbeat may handle 
 
 The heartbeat is for project-room intake and manuscript work only. It does not own OfficeAssist mailbox monitoring and must not access mailboxes directly.
 
+Do not use the name `Project LumenScale` for this process. Use plain labels such as `Gracious Millionaire project-room process`, `Gracious Millionaire project-room heartbeat`, or `Gracious Millionaire project room`.
+
 ## Boundaries
 
 - The Gracious Millionaire heartbeat may watch this project room for newly dropped files, intake-log entries, and source-material updates.
