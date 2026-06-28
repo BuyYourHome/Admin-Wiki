@@ -2,9 +2,9 @@
 
 ## Purpose
 
-These rules define how a Gracious Millionaire project-room heartbeat may handle source files dropped into this project room by OfficeAssist or other approved processes.
+These rules define how a Gracious Millionaire project-room heartbeat, or any future replacement/manual project-room intake process, may handle source files dropped into this project room by OfficeAssist or other approved processes.
 
-The heartbeat is for project-room intake and manuscript work only. It does not own OfficeAssist mailbox monitoring and must not access mailboxes directly.
+The former heartbeat was deleted on 2026-06-28 at Wes's request. These rules remain as the operating rules for manual, on-demand, or future scheduled Gracious Millionaire project-room intake. This process is for project-room intake and manuscript work only. It does not own OfficeAssist mailbox monitoring and must not access mailboxes directly.
 
 Do not use the name `Project LumenScale` for this process. Use plain labels such as `Gracious Millionaire project-room process`, `Gracious Millionaire project-room heartbeat`, or `Gracious Millionaire project room`.
 
