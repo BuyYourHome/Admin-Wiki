@@ -8,7 +8,7 @@ This project room holds development notes, source inventory, and review artifact
 - Preserve the active automation id: `officeassist-morning-email-summary-and-instruction-monitor`.
 - Keep the canonical workflow source in `C:\Codex\Wiki Files\skills\officeassist-morning-email-summary\SKILL.md`.
 - Track the active OfficeAssist heartbeat config at `C:\Users\wesbr\.codex\automations\officeassist-morning-email-summary-and-instruction-monitor\automation.toml`.
-- The legacy local folder `C:\Users\wesbr\.codex\automations\officeassist-morning-email-summary\` may still exist from the deleted app automation and should not be treated as the active app heartbeat.
+- Keep OfficeAssist instruction-email monitor memory in `C:\Users\wesbr\.codex\automations\officeassist-morning-email-summary-and-instruction-monitor\memory.md`.
 - Record open decisions before changing mailbox scope, cutoff behavior, delivery behavior, or automation thread targeting.
 
 ## Current Status
@@ -48,5 +48,6 @@ When the workflow changes, update the skill, this project room, and the registry
 ## Change Log
 
 - 2026-06-28: Wes clarified the separation between rooms: the Gracious Millionaire heartbeat watches for new Markdown files dropped into that project room; the OfficeAssist Morning Email Summary heartbeat watches email and takes defined actions when it finds actionable instructions.
+- 2026-06-28: Removed the stale local `officeassist-morning-email-summary` automation folder after moving monitor memory into the active `officeassist-morning-email-summary-and-instruction-monitor` folder.
 - 2026-06-28: Recreated the OfficeAssist heartbeat in the app under `officeassist-morning-email-summary-and-instruction-monitor` after the old app id was missing, and changed the active schedule to start at 7:45 AM Eastern.
 - 2026-06-15: With Wes's approval, converted `officeassist-morning-email-summary` from a standalone cron automation to a heartbeat automation attached to the dedicated `OfficeAssist Morning Email Summary Status` thread so daily runs stop creating new chats.

@@ -108,10 +108,6 @@ Automation id:
 
 - `officeassist-morning-email-summary-and-instruction-monitor`
 
-Legacy local id:
-
-- `officeassist-morning-email-summary` may still exist as stale local metadata from the deleted app automation. Do not treat that stale local folder as the active app heartbeat.
-
 Schedule:
 
 - Starts at 7:45 AM Eastern.
@@ -140,6 +136,7 @@ Special routing:
 Defined in:
 
 - `C:\Codex\Wiki Files\AGENTS.md`
+- `C:\Users\wesbr\.codex\automations\officeassist-morning-email-summary-and-instruction-monitor\memory.md` for local message-id memory.
 
 Activation note:
 
@@ -205,10 +202,6 @@ Status: active for Wes; Jenny summary paused.
 Automation id:
 
 - `officeassist-morning-email-summary-and-instruction-monitor`
-
-Legacy local id:
-
-- `officeassist-morning-email-summary` may still exist as stale local metadata from the deleted app automation. Do not use it as the active app automation id.
 
 Schedule:
 
@@ -629,11 +622,10 @@ document-scanning\
 gracious-millionaire-project-room-heartbeat\
 investigate-computer-daily-check\
 morning-weswill-email-summary\
-officeassist-morning-email-summary\
 officeassist-morning-email-summary-and-instruction-monitor\
 ```
 
-Each active automation folder contains an `automation.toml` file with the real schedule, prompt, status, and execution settings. The legacy `officeassist-morning-email-summary\` folder may still exist as stale local metadata; use `officeassist-morning-email-summary-and-instruction-monitor\` for the active OfficeAssist heartbeat.
+Each active automation folder contains an `automation.toml` file with the real schedule, prompt, status, and execution settings. Use `officeassist-morning-email-summary-and-instruction-monitor\` for the active OfficeAssist heartbeat and its `memory.md` instruction-email monitor state.
 
 ## Related Connector Rules
 
