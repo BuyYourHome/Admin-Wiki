@@ -10,9 +10,9 @@ Codex does not currently show every role below in one unified "Agents" list. Som
 |---|---|---|---|---|
 | Jean Wright / Office Assistant | Assistant profile and operating role | Active | On demand and through related automations | `C:\Codex\Office Assistant Profile.md`; `AGENTS.md` |
 | REI Text Message Watcher | Heartbeat automation | Active | Every 15 minutes during 8:00 AM-9:00 PM Eastern; adaptive 1-minute checks during activity | `C:\Users\wesbr\.codex\automations\morning-weswill-email-summary\automation.toml` |
-| OfficeAssist Instruction Inbox Monitor | Former behavior inside OfficeAssist Morning Email Summary heartbeat | Deleted with OfficeAssist heartbeat | No active schedule after Wes deleted this project-room heartbeat on 2026-06-28; source routing remains available on demand | `AGENTS.md`; former local path `C:\Users\wesbr\.codex\automations\officeassist-morning-email-summary\automation.toml` |
-| Gracious Millionaire Project Room Heartbeat | Project-room heartbeat automation | Active | Every 15 minutes from 8:00 AM-5:45 PM Eastern; project-room Markdown intake processing only | `Project Rooms\Gracious Millionaire\README.md`; `Project Rooms\Gracious Millionaire\working\intake-heartbeat-rules.md`; `C:\Users\wesbr\.codex\automations\gracious-millionaire-project-room-heartbeat\automation.toml` |
-| OfficeAssist Morning Email Summary | Wiki-managed skill plus former heartbeat automation plus project room | Deleted heartbeat; workflow available on demand | No active schedule after Wes deleted this project-room heartbeat on 2026-06-28; Boss summary and instruction monitoring require manual/on-demand runs unless a new schedule is created | `skills\officeassist-morning-email-summary\SKILL.md`; `Project Rooms\Email Summary\README.md`; former local path `C:\Users\wesbr\.codex\automations\officeassist-morning-email-summary\automation.toml` |
+| OfficeAssist Instruction Inbox Monitor | Behavior inside OfficeAssist Morning Email Summary heartbeat | Active | Every 15 minutes during the OfficeAssist heartbeat active window; checks email and takes defined actions | `AGENTS.md`; `C:\Users\wesbr\.codex\automations\officeassist-morning-email-summary\automation.toml` |
+| Gracious Millionaire Project Room Heartbeat | Project-room heartbeat automation | Active | Every 15 minutes from 8:00 AM-11:45 PM Eastern; project-room Markdown intake processing only | `Project Rooms\Gracious Millionaire\README.md`; `Project Rooms\Gracious Millionaire\working\intake-heartbeat-rules.md`; `C:\Users\wesbr\.codex\automations\gracious-millionaire-project-room-heartbeat\automation.toml` |
+| OfficeAssist Morning Email Summary | Wiki-managed skill plus heartbeat automation plus project room | Active | Every 15 minutes from 8:00 AM-4:45 PM Eastern in the current local config; Boss summary runs once daily at/after 8:00 AM, and instruction monitoring checks OfficeAssist email | `skills\officeassist-morning-email-summary\SKILL.md`; `Project Rooms\Email Summary\README.md`; `C:\Users\wesbr\.codex\automations\officeassist-morning-email-summary\automation.toml` |
 | Email Delivery | Wiki-managed support skill | Active | Called by email-capable Admin workflows | `skills\email-delivery\SKILL.md` |
 | Document Scanning | Wiki-managed skill plus heartbeat automation plus project room | Active | Every 30 minutes from 10:00 AM through 4:30 PM Eastern | `skills\document-scanning\SKILL.md`; `Project Rooms\Document Scan\README.md`; `C:\Users\wesbr\.codex\skills\document-scanning\SKILL.md`; app automation id `document-scanning` |
 | Codex Skill Source Control | Wiki-managed skill system | Active | On demand after skill changes or wiki pulls | `Codex Skill Source Rule.md`; `tools\sync-codex-skills.ps1`; `skills\` |
@@ -102,7 +102,7 @@ Current notification behavior:
 
 Type: behavior inside the `officeassist-morning-email-summary` heartbeat automation.
 
-Status: deleted with the OfficeAssist Morning Email Summary heartbeat on 2026-06-28 at Wes's request. The behavior remains available on demand.
+Status: active as behavior inside the OfficeAssist Morning Email Summary heartbeat.
 
 Automation id:
 
@@ -110,14 +110,15 @@ Automation id:
 
 Schedule:
 
-- None active after Wes deleted this project-room heartbeat on 2026-06-28.
-- Former working-hours window: every 15 minutes during weekday working hours.
+- Every 15 minutes during the OfficeAssist heartbeat active window.
+- Current local OfficeAssist heartbeat config runs 8:00 AM through 4:45 PM Eastern.
 
 Purpose:
 
 - Monitor `OfficeAssist@BuyYourHomeLLC.com` for instruction emails from Wes or Jenny.
 - Treat emails from `WesWill@BuyYourHomeLLC.com` and `Jenny@BuyYourHomeLLC.com` as OfficeAssist instruction intake.
 - Carry out safe, in-scope admin actions when the email instruction and applicable workflow rules allow it.
+- Route Gracious Millionaire email into the Gracious Millionaire project room as Markdown source files, but do not process the manuscript from the OfficeAssist monitor thread.
 - Report blockers, ambiguous authority, mailbox failures, or decisions needed in the attached status thread.
 - Avoid repeated processing by tracking handled message ids in local monitor memory.
 - Keep routine no-new-instruction checks quiet with `DONT_NOTIFY`.
@@ -128,7 +129,7 @@ Special routing:
 - Preserve each routed Gracious Millionaire email as its own Markdown file under `Project Rooms\Gracious Millionaire\sources\email\`, including available sender, recipient, timestamp, subject, message id or web link, and body text.
 - Use plain names for this workflow. Do not call it `Project LumenScale`; refer to it as the Gracious Millionaire project-room process or Gracious Millionaire project-room heartbeat.
 - Current Gracious Millionaire project-room thread id for manual project-room work: `019eb9b0-6780-7fb3-a278-29a18d17998c`.
-- Do not attach an OfficeAssist mailbox-monitoring heartbeat to the Gracious Millionaire thread; the separate `gracious-millionaire-project-room-heartbeat` owns project-room Markdown/source processing in that thread.
+- Do not attach an OfficeAssist mailbox-monitoring heartbeat to the Gracious Millionaire thread; the separate `gracious-millionaire-project-room-heartbeat` owns project-room Markdown/source processing in that thread and must not check email.
 - Do not create a new chat for Gracious Millionaire routing unless Wes explicitly asks for a new chat.
 - Do not draft, edit, or send the requested Gracious Millionaire book response from the OfficeAssist monitor thread unless Wes explicitly asks for processing there; the default action is source routing only.
 
@@ -193,9 +194,9 @@ Tools/services used:
 
 ## OfficeAssist Morning Email Summary
 
-Type: wiki-managed skill plus former heartbeat automation.
+Type: wiki-managed skill plus heartbeat automation.
 
-Status: heartbeat deleted on 2026-06-28 at Wes's request; workflow remains available for manual/on-demand runs. Jenny summary paused.
+Status: active for Wes; Jenny summary paused.
 
 Automation id:
 
@@ -203,13 +204,14 @@ Automation id:
 
 Schedule:
 
-- None active after Wes deleted this project-room heartbeat on 2026-06-28.
-- Formerly ran in the dedicated `OfficeAssist Morning Email Summary Status` Codex thread instead of creating a new standalone run chat each morning.
+- Current local config runs every 15 minutes from 8:00 AM through 4:45 PM Eastern.
+- Runs in the dedicated `OfficeAssist Morning Email Summary Status` Codex thread instead of creating a new standalone run chat each morning.
 
 Purpose:
 
 - Recursively review the full `WesWill@BuyYourHomeLLC.com` Outlook mailbox, including rule-routed subfolders.
 - Summarize unread or newly received financial, legal, property, vendor/admin, time-sensitive, or action-oriented messages.
+- Monitor the OfficeAssist mailbox for instruction emails and take defined actions when the email instruction and safety rules allow it.
 - Send Wes a concise priority summary from `OfficeAssist@BuyYourHomeLLC.com`.
 - Include a short token-usage section for yesterday and the current week to date when reliable token totals are available; if not available, say so rather than estimating.
 - Jean is responsible for confirming the summary is actually delivered. If the summary cannot be sent, if sender verification fails, or if delivery cannot be confirmed, do not stay quiet. Notify Wes immediately in the thread and, when a reliable text/SMS path is available, text Wes that the email summary failed.

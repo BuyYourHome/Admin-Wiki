@@ -123,9 +123,9 @@ Use this repo when formulating solutions for office-admin workflows, SOPs, autom
 
 ## OfficeAssist Instruction Inbox
 
-- OfficeAssist should monitor `OfficeAssist@BuyYourHomeLLC.com` for instruction emails from Wes and Jenny during working hours.
-- The former OfficeAssist monitor heartbeat for this Email Summary / OfficeAssist status project room was deleted by Wes on 2026-06-28. Until Wes creates a new schedule, OfficeAssist instruction-email checks are manual/on demand.
-- The former monitor schedule was every 15 minutes during weekday working hours, 8:00 AM through 5:00 PM Eastern unless Wes gave a different window.
+- OfficeAssist should use the `officeassist-morning-email-summary` heartbeat to monitor `OfficeAssist@BuyYourHomeLLC.com` for instruction emails from Wes and Jenny during the configured active window.
+- The OfficeAssist heartbeat owns email checking and defined email-triggered actions. The Gracious Millionaire project-room heartbeat does not check email.
+- The current local OfficeAssist heartbeat config is every 15 minutes from 8:00 AM through 4:45 PM Eastern unless Wes changes the schedule.
 - Use the Outlook Email connector as the preferred mailbox access path.
 - Treat emails from `WesWill@BuyYourHomeLLC.com` and `Jenny@BuyYourHomeLLC.com` as OfficeAssist instruction intake.
 - Keep local monitor memory so the same instruction email is not processed repeatedly.
