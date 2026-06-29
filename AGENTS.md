@@ -132,7 +132,7 @@ Use this repo when formulating solutions for office-admin workflows, SOPs, autom
 - Quiet checks with no new actionable instruction email should not create routine visible messages.
 - If an instruction email asks for a safe, in-scope admin action and the applicable Admin wiki or workflow rules allow it, carry out the task or start the correct workflow.
 - If an instruction email asks for a high-impact action such as sending external email, moving money, approving invoices, deleting files, changing automations, or updating legal/financial documents, proceed only when the email clearly authorizes the specific action and the workflow safety rules allow it. Otherwise report the decision needed.
-- Do not treat a Jenny email as resuming Jenny's morning email summary unless Wes explicitly says to resume it.
+- Jenny's daily email summary is active as of 2026-06-29 because Wes explicitly asked to resume it and the Outlook Email connector can read `Jenny@BuyYourHomeLLC.com`.
 - If an OfficeAssist instruction email has a subject containing `gracious millionaire`, route the email into `Project Rooms\Gracious Millionaire\` as book source material from the OfficeAssist monitor. Preserve the email as its own Markdown source file under `Project Rooms\Gracious Millionaire\sources\email\`, including sender, recipients, sent/received time, subject, message id or web link when available, and body text. Do not attach an OfficeAssist mailbox-monitoring heartbeat to the Gracious Millionaire thread. The separate `gracious-millionaire-project-room-heartbeat` may stay attached to the Gracious Millionaire thread to process Markdown/source files already dropped into the project room. Do not create a new chat for Gracious Millionaire routing. Do not draft, edit, or send the requested book response from the OfficeAssist monitor thread unless Wes explicitly asks for processing there; the default action is source routing only.
 - If Wes authorizes any Codex role to check email and that check finds a Gracious Millionaire email, route the found email into `Project Rooms\Gracious Millionaire\` before ending the request. Preserve it as its own Markdown source file under `Project Rooms\Gracious Millionaire\sources\email\` and update the project-room intake ledger. This rule does not authorize the Gracious Millionaire project-room heartbeat to query any mailbox directly.
 - Do not use the name `Project LumenScale` for Gracious Millionaire work. Use plain labels such as `Gracious Millionaire project-room process`, `Gracious Millionaire project-room heartbeat`, or `Gracious Millionaire project room`.
@@ -140,14 +140,17 @@ Use this repo when formulating solutions for office-admin workflows, SOPs, autom
 ## Email Summary Scope
 
 - Morning email summaries for Wes must scan the entire `WesWill@BuyYourHomeLLC.com` Outlook mailbox store, including all subfolders where Outlook rules may move messages.
+- Morning email summaries for Jenny are resumed as of 2026-06-29. Scan the entire `Jenny@BuyYourHomeLLC.com` Outlook mailbox store, including all subfolders where Outlook rules may move messages.
+- For Jenny's first resumed summary, use the 2026-06-29 resume timestamp as the new-mail cutoff unless a prior Jenny summary record is later found. Include older unread Jenny items only when they are clearly priority business items.
 - Do not limit the summary to Inbox unless Wes explicitly asks for an Inbox-only summary.
 - Focus on unread or newly received messages since the last successful summary. Include rule-routed folders when messages are financial, legal, property-related, vendor/admin-related, time-sensitive, or action-oriented.
 - Exclude routine promotional, automated, or newsletter messages unless they are time-sensitive, financial, legal, property-related, or require action.
-- When the OfficeAssist heartbeat runs every 15 minutes for email monitoring, send the Boss morning email summary only once per calendar day: the first eligible run at or after 8:00 AM Eastern sends it if it has not already been sent and verified; later same-day heartbeat runs perform instruction-email monitoring only.
+- When the OfficeAssist heartbeat runs every 15 minutes for email monitoring, run each morning summary only once per calendar day: the first eligible run at or after 8:00 AM Eastern sends Boss's summary if it has not already been sent and verified, and posts Jenny's summary in the attached Email Summary thread if it has not already been posted. Later same-day heartbeat runs perform instruction-email monitoring only.
 - Record the summary cutoff time used so the next summary can avoid both missed rule-routed messages and duplicate reporting.
-- The email-summary workflow owns the mailbox scan, cutoff logic, priority selection, summary body, and attachment decision.
+- The email-summary workflow owns the mailbox scan, cutoff logic, priority selection, summary body, and attachment decision for Wes and Jenny.
 - For the send step only, use the shared `skills\email-delivery\SKILL.md` workflow by passing sender, recipient, subject, plain-text body, attachment paths if any, and the rule that send or verification failure must be reported in the OfficeAssist thread.
 - If the morning summary cannot be sent by email, notify Wes immediately and use the available text/SMS fallback when one is available. A failed send or unverified send is not a quiet/no-news run.
+- Jenny's summary is not emailed to Jenny under the current global profile. Post Jenny's summary in the attached Email Summary thread unless Wes explicitly changes the routing.
 
 ## Calendar Scheduling
 

@@ -12,7 +12,7 @@ Codex does not currently show every role below in one unified "Agents" list. Som
 | REI Text Message Watcher | Heartbeat automation | Active | Every 15 minutes during 8:00 AM-9:00 PM Eastern; adaptive 1-minute checks during activity | `C:\Users\wesbr\.codex\automations\morning-weswill-email-summary\automation.toml` |
 | OfficeAssist Instruction Inbox Monitor | Behavior inside Email Summary heartbeat | Active | Runs every day; starts at 7:45 AM Eastern, then every 15 minutes through 4:45 PM Eastern; checks email and takes defined actions | `AGENTS.md`; `C:\Users\wesbr\.codex\automations\officeassist-morning-email-summary-and-instruction-monitor\automation.toml` |
 | Gracious Millionaire Project Room Heartbeat | Project-room heartbeat automation | Active | Every 15 minutes from 8:00 AM-11:45 PM Eastern; project-room Markdown intake processing only | `Project Rooms\Gracious Millionaire\README.md`; `Project Rooms\Gracious Millionaire\working\intake-heartbeat-rules.md`; `C:\Users\wesbr\.codex\automations\gracious-millionaire-project-room-heartbeat\automation.toml` |
-| Email Summary | Wiki-managed skill plus heartbeat automation plus project room | Active | Runs every day; starts at 7:45 AM Eastern, then every 15 minutes through 4:45 PM Eastern; Boss summary runs once daily at/after 8:00 AM, and instruction monitoring checks OfficeAssist email | `skills\email-summary\SKILL.md`; `Project Rooms\Email Summary\README.md`; `C:\Users\wesbr\.codex\automations\officeassist-morning-email-summary-and-instruction-monitor\automation.toml` |
+| Email Summary | Wiki-managed skill plus heartbeat automation plus project room | Active | Runs every day; starts at 7:45 AM Eastern, then every 15 minutes through 4:45 PM Eastern; Boss and Jenny summaries run once daily at/after 8:00 AM, and instruction monitoring checks OfficeAssist email | `skills\email-summary\SKILL.md`; `Project Rooms\Email Summary\README.md`; `C:\Users\wesbr\.codex\automations\officeassist-morning-email-summary-and-instruction-monitor\automation.toml` |
 | Email Delivery | Wiki-managed support skill | Active | Called by email-capable Admin workflows | `skills\email-delivery\SKILL.md` |
 | Document Scanning | Wiki-managed skill plus heartbeat automation plus project room | Active | Every 30 minutes from 10:00 AM through 4:30 PM Eastern | `skills\document-scanning\SKILL.md`; `Project Rooms\Document Scan\README.md`; `C:\Users\wesbr\.codex\skills\document-scanning\SKILL.md`; app automation id `document-scanning` |
 | Codex Skill Source Control | Wiki-managed skill system | Active | On demand after skill changes or wiki pulls | `Codex Skill Source Rule.md`; `tools\sync-codex-skills.ps1`; `skills\` |
@@ -27,7 +27,7 @@ Codex does not currently show every role below in one unified "Agents" list. Som
 | Project Management Spreadsheet Rewrite | Project Room | Active/planning | On demand | `Project Rooms\Project Management Spreadsheet Rewrite\README.md` |
 | New Project | Wiki-managed skill plus project room | Draft | On demand | `skills\new-project\SKILL.md`; `Project Rooms\New Project\README.md` |
 | Investigate Computer | Wiki-managed skill plus project room plus heartbeat automation | Active | Daily at 6:00 AM Eastern; email Wes only when an issue is detected | `skills\investigate-computer\SKILL.md`; `Project Rooms\Investigate Computer\README.md`; app automation id `investigate-computer-daily-check` |
-| Jenny Daily Email Summary | Planned/paused automation behavior | Paused | Would run daily with Wes summary after Jenny mailbox is available | `Email Summary` prompt notes |
+| Jenny Daily Email Summary | Behavior inside Email Summary heartbeat | Active | Runs once daily at/after 8:00 AM Eastern with the Email Summary heartbeat; posts in the Email Summary thread | `skills\email-summary\SKILL.md`; `Email Summary` prompt notes |
 
 ## Jean Wright / Office Assistant
 
@@ -197,7 +197,7 @@ Tools/services used:
 
 Type: wiki-managed skill plus heartbeat automation.
 
-Status: active for Wes; Jenny summary paused.
+Status: active for Wes and Jenny.
 
 Automation id:
 
@@ -213,9 +213,11 @@ Schedule:
 Purpose:
 
 - Recursively review the full `WesWill@BuyYourHomeLLC.com` Outlook mailbox, including rule-routed subfolders.
+- Recursively review the full `Jenny@BuyYourHomeLLC.com` Outlook mailbox, including rule-routed subfolders.
 - Summarize unread or newly received financial, legal, property, vendor/admin, time-sensitive, or action-oriented messages.
 - Monitor the OfficeAssist mailbox for instruction emails and take defined actions when the email instruction and safety rules allow it.
 - Send Wes a concise priority summary from `OfficeAssist@BuyYourHomeLLC.com`.
+- Post Jenny's concise priority summary in the attached Email Summary thread under the current global profile.
 - Include a short token-usage section for yesterday and the current week to date when reliable token totals are available; if not available, say so rather than estimating.
 - Jean is responsible for confirming the summary is actually delivered. If the summary cannot be sent, if sender verification fails, or if delivery cannot be confirmed, do not stay quiet. Notify Wes immediately in the thread and, when a reliable text/SMS path is available, text Wes that the email summary failed.
 - Resume one dedicated Codex status chat for failures, blockers, and notable summary-task visibility instead of creating separate standalone run chats.
@@ -229,7 +231,7 @@ Defined in:
 
 Important limitations:
 
-- Jenny's summary is paused until `Jenny@BuyYourHomeLLC.com` is available locally or through a reliable connector.
+- Jenny's summary is active as of 2026-06-29 because Wes explicitly asked to resume it and the Outlook Email connector can read `Jenny@BuyYourHomeLLC.com`.
 - Do not substitute another mailbox for Jenny.
 - Keep the automation attached to one dedicated status thread via `target_thread_id` so failure notifications and follow-up stay in one chat.
 - Current status thread id: `019ecba7-f1cc-7ac1-aaf7-d89a3f21b582`.
@@ -587,26 +589,30 @@ Important rules:
 
 ## Jenny Daily Email Summary
 
-Type: planned/paused automation behavior.
+Type: behavior inside the Email Summary heartbeat.
 
-Status: paused.
+Status: active as of 2026-06-29.
 
 Purpose:
 
-- Eventually send Jenny a daily summary of her new email at the same time as Wes's morning summary.
+- Produce a daily summary of Jenny's new email at the same first eligible Email Summary heartbeat run used for Wes's morning summary.
+- Post Jenny's summary in the attached Email Summary thread unless Wes explicitly changes the routing.
 
-Why paused:
+Activation note:
 
-- `Jenny@BuyYourHomeLLC.com` mailbox is not currently available on this machine.
-- Wes instructed that Jenny summary should remain paused until the mailbox is added.
+- Wes explicitly asked to resume Jenny's daily email summary on 2026-06-29.
+- The Outlook Email connector can read `Jenny@BuyYourHomeLLC.com` folders, including Inbox and rule-routed subfolders.
+- Initial cutoff for new Jenny mail is the 2026-06-29 resume timestamp unless a prior Jenny summary record is later found. Older unread items may still be included when they are clearly priority business items.
 
 Defined in:
 
-- Pause rule inside `C:\Users\wesbr\.codex\automations\officeassist-morning-email-summary-and-instruction-monitor\automation.toml`
+- `C:\Users\wesbr\.codex\automations\officeassist-morning-email-summary-and-instruction-monitor\automation.toml`
+- `C:\Codex\Wiki Files\skills\email-summary\SKILL.md`
 
-Resume condition:
+Operating rule:
 
-- Wes confirms Jenny's mailbox has been added and explicitly asks to resume the Jenny summary.
+- Run once per calendar day at the first eligible Email Summary heartbeat at or after 8:00 AM Eastern if Jenny's daily summary has not already been posted.
+- Do not email Jenny's summary to Jenny under the current global profile; post it in the Email Summary thread.
 
 ## How To Inspect Actual Automations
 

@@ -13,10 +13,10 @@ This project room holds development notes, source inventory, and review artifact
 
 ## Current Status
 
-- Status: active for Wes.
+- Status: active for Wes and Jenny.
 - Active automation id: `officeassist-morning-email-summary-and-instruction-monitor`.
 - Schedule: starts at 7:45 AM Eastern, then every 15 minutes from 8:00 AM through 4:45 PM Eastern.
-- Jenny summary: paused until Wes explicitly resumes it.
+- Jenny summary: active as of 2026-06-29; scan `Jenny@BuyYourHomeLLC.com` and post the summary in this Email Summary thread.
 - Send identity: `OfficeAssist@BuyYourHomeLLC.com`.
 - Recipient for Wes summary: `WesWill@BuyYourHomeLLC.com`.
 - Preferred mailbox/send path: Outlook Email connector, with OfficeAssist sent-item verification.
@@ -47,6 +47,7 @@ When the workflow changes, update the skill, this project room, and the registry
 
 ## Change Log
 
+- 2026-06-29: Resumed Jenny's daily email summary after Wes explicitly requested it and the Outlook Email connector verified access to `Jenny@BuyYourHomeLLC.com`; Jenny's summary posts in the Email Summary thread under the current global profile.
 - 2026-06-28: Updated the live heartbeat prompt so OfficeAssist instruction-email monitoring runs every day during the configured active window, not weekdays only.
 - 2026-06-28: Wes clarified the separation between rooms: the Gracious Millionaire heartbeat watches for new Markdown files dropped into that project room; the Email Summary heartbeat watches email and takes defined actions when it finds actionable instructions.
 - 2026-06-28: Renamed the project room, chat, and skill to `Email Summary`; the live automation id remains `officeassist-morning-email-summary-and-instruction-monitor`.
