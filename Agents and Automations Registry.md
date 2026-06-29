@@ -165,7 +165,7 @@ Automation id:
 
 Schedule:
 
-- Every 15 minutes from 8:00 AM through 5:45 PM Eastern.
+- Every 15 minutes from 8:00 AM through 11:45 PM Eastern.
 
 Purpose:
 
@@ -184,7 +184,8 @@ Important limitations:
 
 - This heartbeat must not read Outlook, OfficeAssist mail, Wes mail, Jenny mail, or any mailbox directly.
 - OfficeAssist remains responsible for email monitoring and source routing.
-- Do not create new chats, delete source files, push Git changes, or take external actions from this heartbeat.
+- Do not create new chats, delete source files, push Git changes, or take unrelated external actions from this heartbeat.
+- After a significant manuscript change, the Jenny clickable chapter review packet is the one allowed email exception: send it through the OfficeAssist email-delivery workflow from `OfficeAssist@BuyYourHomeLLC.com` to `Jenny@BuyYourHomeLLC.com`, copy `WesWill@BuyYourHomeLLC.com`, and verify the sent copy.
 - If a routed source requests email sending or a major manuscript direction decision, mark the item blocked or deferred and notify Wes in the Gracious Millionaire thread.
 
 Tools/services used:
