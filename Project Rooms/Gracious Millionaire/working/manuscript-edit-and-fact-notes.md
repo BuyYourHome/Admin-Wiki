@@ -28,6 +28,7 @@ For framing notes, preserve the intended perception without overstating facts be
 
 | Date Added | Section/Chapter | Type | Direction | Status |
 | --- | --- | --- | --- | --- |
+| 2026-06-30 | Jean/editor review sections | style | When Jean is speaking in an editor review section, do not have Jean refer to herself in the third person. Use first person inside Jean's review voice. | open |
 | 2026-06-30 | Whole manuscript | style | Do not use people's full names in manuscript prose. Use only the first name provided unless Wes explicitly directs otherwise for a specific person or context. | open |
 | 2026-06-30 | Whole manuscript | style | When referring to real estate projects, use only the street name. Do not include the numeric part of the address in manuscript prose. | open |
 | 2026-06-24 | Whole manuscript | tone | Do not convert Wes's bullet points, dictated punctuation, or quick instruction fragments into repetitive question clusters or choppy one-line prose. Use the meaning and emphasis, then shape it into natural narrative. | open |
@@ -36,6 +37,7 @@ For framing notes, preserve the intended perception without overstating facts be
 
 | Date Applied | Manuscript/File | Original Note | What Changed |
 | --- | --- | --- | --- |
+| 2026-06-30 | `outputs/Providence Landing - Editor Business Review Chapter v3.md`; `outputs/Gracious Millionaire - Manuscript Draft v16 - Providence Landing Channel Rescan.md`; `outputs/jenny-chapter-review-current/Gracious Millionaire - Jenny Clickable Chapter Review - CURRENT.html` | In Jean's review, Jean should not talk in the third person. | Changed the third-person line inside Jean's review from "Jean's review" to "my review." |
 | 2026-06-26 | `outputs/Always God Is There - Narrative Draft v1.md`; `outputs/Gracious Millionaire - Manuscript Draft v7 - Always God Is There.md` | In `Always God Is There`, the truck hit by the train was not the second new vehicle Wes bought; it was the first. The second new vehicle came years later in North Carolina. | Corrected the vehicle sequence and changed the earlier dozing-off accident setup so it no longer says the train-damaged truck was bought after totaling a prior new vehicle. |
 | 2026-06-26 | `outputs/Gracious Millionaire - Manuscript Draft v7 - Always God Is There.md` | Open the Introduction more broadly around life, formation, success, and lordship before introducing the question, "How much money is too much money?" | Added a broader opening frame before the money question, naming formation, success, pressure, opportunity, real estate as classroom, and lordship as the deeper subject. |
 | 2026-06-26 | `outputs/Gracious Millionaire - Manuscript Draft v7 - Always God Is There.md` | Introduce Bill Johnson before the first Bill Johnson reference. Explain his relevance to Wes and to the manuscript themes before using the sermon concepts. | Added a short Introduction paragraph positioning Bill Johnson as a teacher whose language helps frame the Father's goodness, expectation, reward, stewardship, and increase without making his teaching the manuscript authority. |

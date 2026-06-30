@@ -2568,7 +2568,7 @@ The legal documents sharpen that pressure. A term sheet for Providence Landing H
 
 A later partnership agreement made the structure more specific. Providence Landing Management LLC would act as general partner. The minimum total capital needed for the project was stated as $3 million, with no more than $5.806 million in capital contributions to be accepted. Limited partners would not control the business. The general partner would have broad discretion over the project. There was an 8 percent distribution priority, a 3 percent annual management fee based on capital under management, a ten-year term, and language allowing certain interested-party contracts.
 
-Those details matter for Jean's review because they show the project crossing a threshold.
+Those details matter for my review because they show the project crossing a threshold.
 
 Once investor money enters a dream at that scale, the question is no longer only, "Is this beautiful?" or "Could this work?" It becomes, "Can we carry fiduciary pressure, legal disclosure, reporting, liquidity limits, conflicts, investor expectations, and operating complexity without losing clarity?"
 
