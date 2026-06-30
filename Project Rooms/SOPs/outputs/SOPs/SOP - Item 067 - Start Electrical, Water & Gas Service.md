@@ -31,6 +31,7 @@ Property Rehab
 - Project Management Sheet in Teams
 - Utility provider websites or phone systems
 - Company credential records
+- City of Raleigh Landlord Utilities Authorization: https://survey123.arcgis.com/share/2c6ea4b7e7014c54a058444b76145b27
 
 ## Steps
 
@@ -42,6 +43,7 @@ Property Rehab
 6. Identify which services need to be started.
 7. Contact the correct provider for each required service.
 8. For water, check whether service is through City of Raleigh Water, Carolina Water Service of North Carolina, or another local provider.
+   - If City of Raleigh requires landlord utilities authorization, use the City of Raleigh Landlord Utilities Authorization link listed above.
 9. For electric, check whether service is through Duke Energy or another electric provider.
 10. For gas, check whether service is through Dominion Energy or another gas provider.
 11. Start service under the correct company name.
