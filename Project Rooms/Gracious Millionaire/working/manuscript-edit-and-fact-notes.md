@@ -28,6 +28,8 @@ For framing notes, preserve the intended perception without overstating facts be
 
 | Date Added | Section/Chapter | Type | Direction | Status |
 | --- | --- | --- | --- | --- |
+| 2026-06-30 | Whole manuscript | style | Do not use people's full names in manuscript prose. Use only the first name provided unless Wes explicitly directs otherwise for a specific person or context. | open |
+| 2026-06-30 | Whole manuscript | style | When referring to real estate projects, use only the street name. Do not include the numeric part of the address in manuscript prose. | open |
 | 2026-06-24 | Whole manuscript | tone | Do not convert Wes's bullet points, dictated punctuation, or quick instruction fragments into repetitive question clusters or choppy one-line prose. Use the meaning and emphasis, then shape it into natural narrative. | open |
 
 ## Applied Notes
