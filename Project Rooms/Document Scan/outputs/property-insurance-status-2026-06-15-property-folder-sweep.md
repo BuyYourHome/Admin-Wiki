@@ -1,0 +1,36 @@
+# Property Insurance Status Report - Property Folder Sweep
+
+Prepared: 2026-06-15
+
+- Property-folder sweep moved 23 clear property-insurance documents into property `Owning/Insurance` folders.
+- Left false positives in place, including title insurance, HOA contact info, HUD/payoff documents, auto-draft notices, and a non-property Progressive claim.
+- Current-status rows use the newest reliable evidence now filed, with older lender notices retained in the chronology.
+
+## Attention items
+- **7001 Outrigger Rd**: Village Capital says acceptable hazard proof was not received and lender-placed coverage was purchased. Need proof of current policy and lender cancellation/acceptance.
+- **908 Pond St**: Needs policy number captured from declaration and lender acceptance check.
+- **4121 Tensity Dr**: Proposal-only evidence. Need current declaration/EOI before treating coverage as confirmed.
+- **2325 Cool Springs Rd**: Planet notice dated 2026-01-20 says evidence was received but named insured was incorrect. Need proof lender accepted corrected/current declarations.
+- **115 Rosebrooks Dr**: Older BSI letter requested declarations. Later evidence suggests reinstatement, but lender acceptance/coverage confirmation still needs filing if available.
+- **3413 Pinetree Ln**: Named-insured change still needs review if not already resolved.
+- **3325 Banks Rd**: Rushmore 2025 final notice said hazard insurance expired. 2026 docs show activity, but Rushmore acceptance after 2026-05-05 remains unconfirmed.
+- **320 Rose Pl**: Cancellation notice says non-payment after the receipt date. Need reinstatement/replacement coverage or lender acceptance after 2026-05-09.
+- **Unmatched Heritage Mgmt notice**: Keep in Needs Review until matched by policy number, address, or source declaration.
+
+| Property | Type | Lender | Carrier / Policy | Annual / Pay Status | Latest filed document | Current status | Needs attention |
+|---|---|---|---|---|---|---|---|
+| 7001 Outrigger Rd | Open | Village Capital | State Farm proposal; lender-placed Integon notice / not confirmed; loan 0008364802 | Workbook $2,094; lender-placed notice $2,094.30; Unknown; lender-placed charged to borrower if not corrected | Moved 25-10-29 Village Capital lender-placed hazard notice; also 26-02-23 State Farm proposal | CRITICAL REVIEW | Village Capital says acceptable hazard proof was not received and lender-placed coverage was purchased. Need proof of current policy and lender cancellation/acceptance. |
+| 612 Britton Ct | Open | Coastal Federal CU | NCJUA / DW00948658 | Workbook $3,521; Unknown / likely direct or escrow not confirmed | Moved seller proof/renewal plus 26-01-23 policy and 26-03-25/26-04-10 NCJUA declarations | Coverage evidence strong | No urgent gap found. Confirm payment responsibility and lender acceptance when available. |
+| 908 Pond St | Open | Casa Lending | NCJUA current; NREIG prior / not captured in row | Workbook $5,228.88; Unknown | No new folder-sweep move; email run filed 26-03-25 declarations/receipt, NREIG cancellation, EOI, Casa requirements | Review needed | Needs policy number captured from declaration and lender acceptance check. |
+| 4121 Tensity Dr | Open | Truist | State Farm proposal only / not found | Workbook $1,677; Unknown | No new folder-sweep move; 26-02-23 State Farm proposal only | Review needed | Proposal-only evidence. Need current declaration/EOI before treating coverage as confirmed. |
+| 2325 Cool Springs Rd | Open | Planet Home Lending | State Farm current; NREIG prior / NREIG0028603-00 seen on 26-01-20 lender letter; current State Farm policy not captured | Workbook $899.28; Unknown | Moved 25-03-05 insurance changes and 26-01-20 Planet Home Lending property insurance letter; email run filed 26-02-04 State Farm declaration/binder receipt | REVIEW | Planet notice dated 2026-01-20 says evidence was received but named insured was incorrect. Need proof lender accepted corrected/current declarations. |
+| 115 Rosebrooks Dr | Open | Shellpoint / BSI | NCJUA current; NREIG prior / not confirmed in row | Workbook $1,094.76; Unknown | Moved 24-11-14 BSI request; email run filed 26-05-27 NCJUA Statement of No Loss and 2026 NCJUA/NREIG docs | Review needed | Older BSI letter requested declarations. Later evidence suggests reinstatement, but lender acceptance/coverage confirmation still needs filing if available. |
+| 1426 Pleasant Garden Ln | Open | Wells Fargo | State Farm / 93-QN-2379-3 | $780 on 2026 renewal; workbook $851; Renewal says to be paid by mortgagee | Moved 26-07-07 State Farm renewal certificate plus 2025 State Farm policy/balance docs | Coverage confirmed | No urgent gap found. Premium differs from workbook; update tracker if needed. |
+| 3413 Pinetree Ln | Open | Mr Cooper / Rocket | State Farm / 93-VA-Y621-2 | Workbook $1,606; Unknown | No new folder-sweep move; existing COI/declarations already filed | Coverage docs exist | Named-insured change still needs review if not already resolved. |
+| 3325 Banks Rd | Open | Rushmore | NREIG / NCJUA trail / REIP0000763; NCJUA policy not captured | Workbook $2,102.76; 2025 Rushmore lender estimate $2,391; Unknown | Moved 2021-2025 history including 25-11-03 Rushmore second/final notice; email run filed 2026 EOI/NCJUA/NOIC docs | CRITICAL REVIEW | Rushmore 2025 final notice said hazard insurance expired. 2026 docs show activity, but Rushmore acceptance after 2026-05-05 remains unconfirmed. |
+| 320 Rose Pl | Open | Shellpoint / Rocket | NCJUA / DW00948692 | Unknown from docs; workbook policy premium not captured here; Unknown | Email run filed 26-03-05/26-03-25 NCJUA docs and 26-05-08 receipt; scan cancellation dated 26-05-09 | CRITICAL REVIEW | Cancellation notice says non-payment after the receipt date. Need reinstatement/replacement coverage or lender acceptance after 2026-05-09. |
+| 6316 Willowdell Dr | Closed | SECU | unknown / unknown | Unknown; Unknown | No insurance docs found in sweep | Closed row | No open-property action unless closed-file review is needed. |
+| 1343 Old Buckhorn Rd | Closed | Shellpoint / Specialized Loan Servicing | Lender-placed hazard / loan 1028061093 | Unknown; Charged to escrow per lender letter | Moved 25-05-08 second notice and 25-06-02 lender-placed insurance change | Closed row / historical critical | Closed in mortgage sheet, but historical lender-placed coverage is now filed. |
+| 5008 Larchmont Dr | Not in current Mortgages list | Matt Everett / unknown | EOI evidence / unknown | Unknown; Unknown | Moved 24-05-17 mortgagee updated EOI | Historical / not current row | Not part of current Mortgages worksheet. Filed for property history only. |
+| 8225 Burgwyn Ln | Not in current Mortgages list | Rushmore | Unknown / unknown | Unknown; Unknown | Moved 24-07-01 Rushmore insurance letter | Historical / not current row | Not part of current Mortgages worksheet. Filed for property history only. |
+| Unmatched Heritage Mgmt notice | Review | unknown | NCJUA / DW00948982 | Unknown; Unknown | No policy-number/property match found in local/email search | REVIEW | Keep in Needs Review until matched by policy number, address, or source declaration. |

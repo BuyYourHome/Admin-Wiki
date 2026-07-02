@@ -1,0 +1,592 @@
+﻿{
+    "migrated_at":  "2026-06-19 16:59:22 -04:00",
+    "source_template_workbook":  "C:\\Codex\\Wiki Files\\Project Rooms\\Property Trade Evaluation\\working\\tensity-inspection\\connector-verified\\20260619-163109\\28_Project Management - 320 Rose Pl - SharePoint template.xlsm",
+    "source_template_url":  "https://lifeisanadventure.sharepoint.com/sites/SellYourHome/_layouts/15/Doc.aspx?sourcedoc=%7BD39E03A5-035A-4BBF-9346-ADD40A7758EE%7D\u0026file=28_Project+Management+-+320+Rose+Pl.xlsm\u0026action=default\u0026mobileredirect=true\u0026web=1",
+    "target_project_workbook":  "C:\\Codex\\Wiki Files\\Project Rooms\\Property Trade Evaluation\\working\\tensity-inspection\\connector-verified\\20260619-163109\\24_Project Management - 4121 Tensity Dr 2 - Amortization swap working.xlsm",
+    "target_project_url":  "https://lifeisanadventure.sharepoint.com/sites/SellYourHome/_layouts/15/Doc.aspx?sourcedoc=%7BFB8825B0-06EF-4B3E-8015-A106EEEA5C7C%7D\u0026file=24_Project+Management+-+4121+Tensity+Dr+2.xlsm\u0026action=default\u0026mobileredirect=true\u0026web=1",
+    "rollback_copy":  "C:\\Codex\\Wiki Files\\Project Rooms\\Property Trade Evaluation\\working\\tensity-inspection\\connector-verified\\20260619-163109\\24_Project Management - 4121 Tensity Dr 2 - rollback before amortization swap.xlsm",
+    "sheets_before":  [
+                          "Profit",
+                          "Amortization",
+                          "Docs",
+                          "Trade Properties",
+                          "MOG",
+                          "Contact",
+                          "Carrying",
+                          "Contract",
+                          "UpdateContract",
+                          "Gnatt Chart",
+                          "Invoice",
+                          "Recap",
+                          "Legal",
+                          "Seller Advance",
+                          "MISC",
+                          "Demo \u0026 Trash Haul",
+                          "Appliances",
+                          "Plumbing Fixtures",
+                          "Windows \u0026 Doors",
+                          "Cabinets",
+                          "Paint",
+                          "Flooring",
+                          "HVAC",
+                          "Electrical Fixtures",
+                          "Landscape",
+                          "Exterior",
+                          "STR",
+                          "2024",
+                          "2023",
+                          "2022",
+                          "2021",
+                          "2020",
+                          "Furnishing"
+                      ],
+    "sheets_after":  [
+                         "Profit",
+                         "Amortization",
+                         "Amortization - Old",
+                         "Docs",
+                         "Trade Properties",
+                         "MOG",
+                         "Contact",
+                         "Carrying",
+                         "Contract",
+                         "UpdateContract",
+                         "Gnatt Chart",
+                         "Invoice",
+                         "Recap",
+                         "Legal",
+                         "Seller Advance",
+                         "MISC",
+                         "Demo \u0026 Trash Haul",
+                         "Appliances",
+                         "Plumbing Fixtures",
+                         "Windows \u0026 Doors",
+                         "Cabinets",
+                         "Paint",
+                         "Flooring",
+                         "HVAC",
+                         "Electrical Fixtures",
+                         "Landscape",
+                         "Exterior",
+                         "STR",
+                         "2024",
+                         "2023",
+                         "2022",
+                         "2021",
+                         "2020",
+                         "Furnishing"
+                     ],
+    "approved_layout_checks":  {
+                                   "rose_docs_b7":  {
+                                                        "address":  "B7",
+                                                        "value":  "346,500 ",
+                                                        "value2":  346500,
+                                                        "formula":  "=+Amortization!AA4"
+                                                    },
+                                   "rose_docs_b10":  {
+                                                         "address":  "B10",
+                                                         "value":  "325,710.00",
+                                                         "value2":  325710,
+                                                         "formula":  "=+Amortization!O5"
+                                                     },
+                                   "rose_docs_b12":  {
+                                                         "address":  "B12",
+                                                         "value":  "2504.430",
+                                                         "value2":  2504.43,
+                                                         "formula":  "=+Amortization!Z9"
+                                                     },
+                                   "rose_docs_b13":  {
+                                                         "address":  "B13",
+                                                         "value":  "2545.850",
+                                                         "value2":  2545.85,
+                                                         "formula":  "=+Amortization!Z10"
+                                                     },
+                                   "rose_docs_b14":  {
+                                                         "address":  "B14",
+                                                         "value":  "$2,545.85 ",
+                                                         "value2":  2545.85,
+                                                         "formula":  "=SUM(B13:B13)"
+                                                     },
+                                   "rose_docs_b15":  {
+                                                         "address":  "B15",
+                                                         "value":  "30.00",
+                                                         "value2":  30,
+                                                         "formula":  "=+Amortization!O9"
+                                                     },
+                                   "rose_docs_b18":  {
+                                                         "address":  "B18",
+                                                         "value":  "July 1, 2026",
+                                                         "value2":  46204,
+                                                         "formula":  "=+Amortization!O11"
+                                                     },
+                                   "rose_docs_b19":  {
+                                                         "address":  "B19",
+                                                         "value":  "June 1, 2056",
+                                                         "value2":  57132,
+                                                         "formula":  "=+Amortization!Q11"
+                                                     },
+                                   "rose_docs_b50":  {
+                                                         "address":  "B50",
+                                                         "value":  "4.500%",
+                                                         "value2":  "4.500%",
+                                                         "formula":  "=TEXT(Amortization!$C$4,\"0.000%\")"
+                                                     },
+                                   "rose_am_aa4":  {
+                                                       "address":  "AA4",
+                                                       "value":  "346,500 ",
+                                                       "value2":  346500,
+                                                       "formula":  "=IF($AW$2=1,AB4,IF($AW$2=2,AC4,IF($AW$2=3,AD4)))"
+                                                   },
+                                   "rose_am_z9":  {
+                                                      "address":  "Z9",
+                                                      "value":  "2,504 ",
+                                                      "value2":  2504.43,
+                                                      "formula":  "=ROUND(PMT($AA$9/12,$AC$9,-$AB$9,0), 2)"
+                                                  },
+                                   "rose_am_z10":  {
+                                                       "address":  "Z10",
+                                                       "value":  "2,546 ",
+                                                       "value2":  2545.85,
+                                                       "formula":  "=ROUND(PMT($AA$10/12,$AC$10,-$AB$10,0), 2)"
+                                                   },
+                                   "rose_am_q11":  {
+                                                       "address":  "Q11",
+                                                       "value":  "6/1/2056",
+                                                       "value2":  57132,
+                                                       "formula":  "=EDATE(O11, P9-1)"
+                                                   }
+                               },
+    "before":  {
+                   "docs_b7_purchase_price":  {
+                                                  "address":  "B7",
+                                                  "value":  "331,193 ",
+                                                  "value2":  331193.4,
+                                                  "formula":  "=+Amortization!AA5"
+                                              },
+                   "docs_b8_earnest_money":  {
+                                                 "address":  "B8",
+                                                 "value":  "0 ",
+                                                 "value2":  0,
+                                                 "formula":  "=+Amortization!K2"
+                                             },
+                   "docs_b9_down_payment":  {
+                                                "address":  "B9",
+                                                "value":  "28,964 ",
+                                                "value2":  28964,
+                                                "formula":  "=+Amortization!$O$4-B48"
+                                            },
+                   "docs_b10_loan_amount":  {
+                                                "address":  "B10",
+                                                "value":  "323,403.81",
+                                                "value2":  323403.81,
+                                                "formula":  "323403.81"
+                                            },
+                   "docs_b11_monthly_payment_reduced_total":  {
+                                                                  "address":  "B11",
+                                                                  "value":  "$1,533.81 ",
+                                                                  "value2":  1533.81,
+                                                                  "formula":  "=SUM(B12:B12)"
+                                                              },
+                   "docs_b12_monthly_payment_reduced_pi":  {
+                                                               "address":  "B12",
+                                                               "value":  "1533.810",
+                                                               "value2":  1533.81,
+                                                               "formula":  "=+Amortization!Z8"
+                                                           },
+                   "docs_b13_monthly_payment_full_pi":  {
+                                                            "address":  "B13",
+                                                            "value":  "1630.040",
+                                                            "value2":  1630.04,
+                                                            "formula":  "=+Amortization!Z9"
+                                                        },
+                   "docs_b14_monthly_payment_full_total":  {
+                                                               "address":  "B14",
+                                                               "value":  "$1,630.04 ",
+                                                               "value2":  1630.04,
+                                                               "formula":  "=SUM(B13:B13)"
+                                                           },
+                   "docs_b15_term_years":  {
+                                               "address":  "B15",
+                                               "value":  "30.00",
+                                               "value2":  30,
+                                               "formula":  "30"
+                                           },
+                   "docs_b18_loan_start":  {
+                                               "address":  "B18",
+                                               "value":  "April 1, 2025",
+                                               "value2":  45748,
+                                               "formula":  "45748"
+                                           },
+                   "docs_b19_loan_end_first":  {
+                                                   "address":  "B19",
+                                                   "value":  "March 1, 2030",
+                                                   "value2":  47543,
+                                                   "formula":  "=+$B$18+(5*365)-DAY(+$B$18+(5*365))+1"
+                                               },
+                   "docs_b20_loan_start_second":  {
+                                                      "address":  "B20",
+                                                      "value":  "April 1, 2030",
+                                                      "value2":  47574,
+                                                      "formula":  "=+$B$18+(5*365)-DAY(+$B$18+(5*365))+32"
+                                                  },
+                   "docs_b21_loan_end_final":  {
+                                                   "address":  "B21",
+                                                   "value":  "March 1, 2055",
+                                                   "value2":  56674,
+                                                   "formula":  "=+$B$18+($B$15*365)-DAY(+$B$18+($B$15*365))+1"
+                                               },
+                   "docs_b50_base_rate":  {
+                                              "address":  "B50",
+                                              "value":  "3.750%",
+                                              "value2":  "3.750%",
+                                              "formula":  "=TEXT(Amortization!$C$3,\"0.000%\")"
+                                          },
+                   "docs_b51_reduced_rate":  {
+                                                 "address":  "B51",
+                                                 "value":  "3.750%",
+                                                 "value2":  "3.750%",
+                                                 "formula":  "=TEXT(+Amortization!AA8,\"0.000%\")"
+                                             },
+                   "docs_b52_full_rate":  {
+                                              "address":  "B52",
+                                              "value":  "6.250%",
+                                              "value2":  "6.250%",
+                                              "formula":  "=TEXT(Amortization!$O$6,\"0.000%\")"
+                                          },
+                   "amort_o2_purchase_price":  {
+                                                   "address":  "O2",
+                                                   "value":  "0.10",
+                                                   "value2":  0.1,
+                                                   "formula":  "=IF($AW$2=1,P2,IF($AW$2=2,Q2,IF($AW$2=3,R2)))"
+                                               },
+                   "amort_o3_sale_price":  {
+                                               "address":  "O3",
+                                               "value":  "290,640 ",
+                                               "value2":  290640,
+                                               "formula":  "=IF($AW$2=1,P3,IF($AW$2=2,Q3,IF($AW$2=3,R3)))"
+                                           },
+                   "amort_o4_down_payment":  {
+                                                 "address":  "O4",
+                                                 "value":  "29,064 ",
+                                                 "value2":  29064,
+                                                 "formula":  "=IF($AW$2=1,P4,IF($AW$2=2,Q4,IF($AW$2=3,R4)))"
+                                             },
+                   "amort_o5_loan_amount":  {
+                                                "address":  "O5",
+                                                "value":  "261,576 ",
+                                                "value2":  261576,
+                                                "formula":  "=IF($AW$2=1,P5,IF($AW$2=2,Q5,IF($AW$2=3,R5)))"
+                                            },
+                   "amort_c3_old_base_rate":  {
+                                                  "address":  "C3",
+                                                  "value":  "3.750%",
+                                                  "value2":  0.0375,
+                                                  "formula":  "=+Profit!B15"
+                                              },
+                   "amort_o7_term_years":  {
+                                               "address":  "O7",
+                                               "value":  "30.00",
+                                               "value2":  30,
+                                               "formula":  "30"
+                                           },
+                   "amort_t8_insurance":  {
+                                              "address":  "T8",
+                                              "value":  "134.17",
+                                              "value2":  134.17,
+                                              "formula":  "134.17"
+                                          },
+                   "amort_t9_taxes":  {
+                                          "address":  "T9",
+                                          "value":  "188.55",
+                                          "value2":  188.55,
+                                          "formula":  "188.55"
+                                      },
+                   "amort_m4_above_arv":  {
+                                              "address":  "M4",
+                                              "value":  "5%",
+                                              "value2":  0.05,
+                                              "formula":  "0.05"
+                                          },
+                   "amort_o2_down_pct":  {
+                                             "address":  "O2",
+                                             "value":  "0.10",
+                                             "value2":  0.1,
+                                             "formula":  "=IF($AW$2=1,P2,IF($AW$2=2,Q2,IF($AW$2=3,R2)))"
+                                         },
+                   "amort_p1_point1":  {
+                                           "address":  "P1",
+                                           "value":  "0.03",
+                                           "value2":  0.025,
+                                           "formula":  "0.025"
+                                       },
+                   "amort_q1_point2":  {
+                                           "address":  "Q1",
+                                           "value":  "0.04",
+                                           "value2":  0.035,
+                                           "formula":  "0.035"
+                                       },
+                   "amort_r1_point3":  {
+                                           "address":  "R1",
+                                           "value":  "0.03",
+                                           "value2":  0.0325,
+                                           "formula":  "0.0325"
+                                       },
+                   "amort_aa8_reduced_rate":  {
+                                                  "address":  "AA8",
+                                                  "value":  "3.750%",
+                                                  "value2":  0.0375,
+                                                  "formula":  "=+C3"
+                                              },
+                   "amort_ab8_reduced_loan":  {
+                                                  "address":  "AB8",
+                                                  "value":  "331,193 ",
+                                                  "value2":  331193.4,
+                                                  "formula":  "=+AA5"
+                                              },
+                   "amort_ac8_reduced_months":  {
+                                                    "address":  "AC8",
+                                                    "value":  "360",
+                                                    "value2":  360,
+                                                    "formula":  "=+AB7*12"
+                                                },
+                   "amort_aa9_full_rate":  {
+                                               "address":  "AA9",
+                                               "value":  "6.250%",
+                                               "value2":  0.0625,
+                                               "formula":  "=IF($AW$2=1,AB6,IF($AW$2=2,AC6,IF($AW$2=3,AD6)))"
+                                           },
+                   "amort_ab9_full_loan":  {
+                                               "address":  "AB9",
+                                               "value":  "247,099 ",
+                                               "value2":  247099,
+                                               "formula":  "247099"
+                                           },
+                   "amort_ac9_full_months":  {
+                                                 "address":  "AC9",
+                                                 "value":  "300",
+                                                 "value2":  300,
+                                                 "formula":  "=+AC8-60"
+                                             }
+               },
+    "after":  {
+                  "docs_b7_purchase_price":  {
+                                                 "address":  "B7",
+                                                 "value":  "331,193 ",
+                                                 "value2":  331193.4,
+                                                 "formula":  "=+Amortization!AA4"
+                                             },
+                  "docs_b8_earnest_money":  {
+                                                "address":  "B8",
+                                                "value":  "0 ",
+                                                "value2":  0,
+                                                "formula":  "=+Amortization!K2"
+                                            },
+                  "docs_b9_down_payment":  {
+                                               "address":  "B9",
+                                               "value":  "29,064 ",
+                                               "value2":  29064,
+                                               "formula":  "=+Amortization!$O$4"
+                                           },
+                  "docs_b10_loan_amount":  {
+                                               "address":  "B10",
+                                               "value":  "261,576.00",
+                                               "value2":  261576,
+                                               "formula":  "=+Amortization!O5"
+                                           },
+                  "docs_b11_monthly_payment_reduced_total":  {
+                                                                 "address":  "B11",
+                                                                 "value":  "$1,534.00 ",
+                                                                 "value2":  1534,
+                                                                 "formula":  "=SUM(B12:B12)"
+                                                             },
+                  "docs_b12_monthly_payment_reduced_pi":  {
+                                                              "address":  "B12",
+                                                              "value":  "1534.000",
+                                                              "value2":  1534,
+                                                              "formula":  "=+Amortization!Z9"
+                                                          },
+                  "docs_b13_monthly_payment_full_pi":  {
+                                                           "address":  "B13",
+                                                           "value":  "1630.000",
+                                                           "value2":  1630,
+                                                           "formula":  "=+Amortization!Z10"
+                                                       },
+                  "docs_b14_monthly_payment_full_total":  {
+                                                              "address":  "B14",
+                                                              "value":  "$1,630.00 ",
+                                                              "value2":  1630,
+                                                              "formula":  "=SUM(B13:B13)"
+                                                          },
+                  "docs_b15_term_years":  {
+                                              "address":  "B15",
+                                              "value":  "30.00",
+                                              "value2":  30,
+                                              "formula":  "=+Amortization!O9"
+                                          },
+                  "docs_b18_loan_start":  {
+                                              "address":  "B18",
+                                              "value":  "April 1, 2025",
+                                              "value2":  45748,
+                                              "formula":  "=+Amortization!O11"
+                                          },
+                  "docs_b19_loan_end_first":  {
+                                                  "address":  "B19",
+                                                  "value":  "March 1, 2055",
+                                                  "value2":  56674,
+                                                  "formula":  "=+Amortization!Q11"
+                                              },
+                  "docs_b20_loan_start_second":  {
+                                                     "address":  "B20",
+                                                     "value":  "April 1, 2025",
+                                                     "value2":  45748,
+                                                     "formula":  "=+Amortization!O11"
+                                                 },
+                  "docs_b21_loan_end_final":  {
+                                                  "address":  "B21",
+                                                  "value":  "March 1, 2055",
+                                                  "value2":  56674,
+                                                  "formula":  "=+$B$18+($B$15*365)-DAY(+$B$18+($B$15*365))+1"
+                                              },
+                  "docs_b50_base_rate":  {
+                                             "address":  "B50",
+                                             "value":  "3.750%",
+                                             "value2":  "3.750%",
+                                             "formula":  "=TEXT(Amortization!$C$4,\"0.000%\")"
+                                         },
+                  "docs_b51_reduced_rate":  {
+                                                "address":  "B51",
+                                                "value":  "3.750%",
+                                                "value2":  "3.750%",
+                                                "formula":  "=TEXT(+Amortization!AA9,\"0.000%\")"
+                                            },
+                  "docs_b52_full_rate":  {
+                                             "address":  "B52",
+                                             "value":  "6.250%",
+                                             "value2":  "6.250%",
+                                             "formula":  "=TEXT(Amortization!$O$7,\"0.000%\")"
+                                         },
+                  "amort_o2_purchase_price":  {
+                                                  "address":  "O2",
+                                                  "value":  "5%",
+                                                  "value2":  0.05,
+                                                  "formula":  "=IF($AW$2=1,P2,IF($AW$2=2,Q2,IF($AW$2=3,R2)))"
+                                              },
+                  "amort_o3_sale_price":  {
+                                              "address":  "O3",
+                                              "value":  "290,640 ",
+                                              "value2":  290640,
+                                              "formula":  "=IF($AW$2=1,P3,IF($AW$2=2,Q3,IF($AW$2=3,R3)))"
+                                          },
+                  "amort_o4_down_payment":  {
+                                                "address":  "O4",
+                                                "value":  "29,064 ",
+                                                "value2":  29064,
+                                                "formula":  "=IF($AW$2=1,P4,IF($AW$2=2,Q4,IF($AW$2=3,R4)))"
+                                            },
+                  "amort_o5_loan_amount":  {
+                                               "address":  "O5",
+                                               "value":  "261,576 ",
+                                               "value2":  261576,
+                                               "formula":  "=IF($AW$2=1,P5,IF($AW$2=2,Q5,IF($AW$2=3,R5)))"
+                                           },
+                  "amort_k3_down_pct":  {
+                                            "address":  "K3",
+                                            "value":  "10%",
+                                            "value2":  0.1,
+                                            "formula":  "0.1"
+                                        },
+                  "amort_c4_base_rate":  {
+                                             "address":  "C4",
+                                             "value":  "3.750%",
+                                             "value2":  0.0375,
+                                             "formula":  "=+Profit!B15"
+                                         },
+                  "amort_o9_term_years":  {
+                                              "address":  "O9",
+                                              "value":  "30.00",
+                                              "value2":  30,
+                                              "formula":  "30"
+                                          },
+                  "amort_o11_loan_start":  {
+                                               "address":  "O11",
+                                               "value":  "4/1/2025",
+                                               "value2":  45748,
+                                               "formula":  "45748"
+                                           },
+                  "amort_t9_insurance":  {
+                                             "address":  "T9",
+                                             "value":  "134.17",
+                                             "value2":  134.17,
+                                             "formula":  "134.17"
+                                         },
+                  "amort_t10_taxes":  {
+                                          "address":  "T10",
+                                          "value":  "188.55",
+                                          "value2":  188.55,
+                                          "formula":  "188.55"
+                                      },
+                  "amort_aa9_reduced_rate":  {
+                                                 "address":  "AA9",
+                                                 "value":  "3.75%",
+                                                 "value2":  0.0375,
+                                                 "formula":  "0.0375"
+                                             },
+                  "amort_ab9_reduced_loan":  {
+                                                 "address":  "AB9",
+                                                 "value":  "331,193 ",
+                                                 "value2":  331193.4,
+                                                 "formula":  "331193.4"
+                                             },
+                  "amort_ac9_reduced_months":  {
+                                                   "address":  "AC9",
+                                                   "value":  "360",
+                                                   "value2":  360,
+                                                   "formula":  "360"
+                                               },
+                  "amort_aa10_full_rate":  {
+                                               "address":  "AA10",
+                                               "value":  "6.25%",
+                                               "value2":  0.0625,
+                                               "formula":  "0.0625"
+                                           },
+                  "amort_ab10_full_loan":  {
+                                               "address":  "AB10",
+                                               "value":  "247,099 ",
+                                               "value2":  247099,
+                                               "formula":  "247099"
+                                           },
+                  "amort_ac10_full_months":  {
+                                                 "address":  "AC10",
+                                                 "value":  "300",
+                                                 "value2":  300,
+                                                 "formula":  "300"
+                                             },
+                  "amort_z9_reduced_payment":  {
+                                                   "address":  "Z9",
+                                                   "value":  "1,534 ",
+                                                   "value2":  1534,
+                                                   "formula":  "=ROUND(PMT(AA9/12,AC9,AB9),0)*-1"
+                                               },
+                  "amort_z10_full_payment":  {
+                                                 "address":  "Z10",
+                                                 "value":  "1,630 ",
+                                                 "value2":  1630,
+                                                 "formula":  "=ROUND(PMT(AA10/12,AC10,AB10),0)*-1"
+                                             }
+              },
+    "manual_mappings":  [
+                            "Amortization!K2 from old Docs!B8 earnest money.",
+                            "Amortization!K3 from old Amortization!O2 down-payment percentage.",
+                            "Amortization!P2:R2 from old Amortization!M4 above-ARV setting.",
+                            "Amortization!P6:R6 from old Amortization!P1:R1 point settings.",
+                            "Amortization!O9 from old Amortization!O7 term years.",
+                            "Amortization!O11 from Docs!B18 loan start date.",
+                            "Amortization!T9:T10 from old insurance/tax escrow cells T8:T9.",
+                            "Amortization!AA9:AC10 from old reduced/full payment scenario table AA8:AC9.",
+                            "Amortization!X5 adjusted so Docs selling purchase price remains tied to the project sale value.",
+                            "Docs B7:B21/B49:B52 and Profit B5/B7/I9/G13/F15 retargeted to the new Rose-layout Amortization sheet."
+                        ],
+    "unresolved_issues":  [
+
+                          ]
+}

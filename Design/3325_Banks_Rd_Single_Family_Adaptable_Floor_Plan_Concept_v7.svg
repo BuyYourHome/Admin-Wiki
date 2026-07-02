@@ -1,0 +1,150 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900">
+  <defs>
+    <style>
+      .title { font: 700 34px Arial, sans-serif; fill: #111; }
+      .subtitle { font: 600 20px Arial, sans-serif; fill: #333; }
+      .label { font: 700 18px Arial, sans-serif; fill: #111; }
+      .small { font: 600 14px Arial, sans-serif; fill: #222; }
+      .tiny { font: 500 12px Arial, sans-serif; fill: #333; }
+      .wall { fill: none; stroke: #111; stroke-width: 7; stroke-linejoin: round; }
+      .intwall { fill: none; stroke: #111; stroke-width: 4; stroke-linejoin: round; }
+      .door { fill: none; stroke: #111; stroke-width: 3; }
+      .dash { fill: none; stroke: #c77b00; stroke-width: 4; stroke-dasharray: 12 8; }
+      .rail { fill: none; stroke: #555; stroke-width: 3; stroke-dasharray: 6 6; }
+      .bed { fill: #cfe5cf; }
+      .bath { fill: #cfe7f7; }
+      .living { fill: #fff8ea; }
+      .service { fill: #f1dfbd; }
+      .hall { fill: #e9e9e9; }
+      .open { fill: #f7f1df; }
+      .porch { fill: #e3ded4; }
+      .future { fill: #fff3cf; opacity: .65; }
+    </style>
+  </defs>
+
+  <rect width="1600" height="900" fill="#fff"/>
+  <text x="800" y="48" text-anchor="middle" class="title">3325 Banks Rd - Single Family First / Adaptable Later</text>
+  <text x="800" y="82" text-anchor="middle" class="subtitle">Four bedroom suites stacked on one side, open living volume on the other</text>
+
+  <!-- FIRST FLOOR -->
+  <g transform="translate(80,135)">
+    <text x="350" y="-28" text-anchor="middle" class="subtitle">First Floor - 2 Bedroom Suites + Open Living</text>
+    <rect x="0" y="0" width="680" height="580" class="living"/>
+    <rect x="0" y="0" width="680" height="580" class="wall"/>
+
+    <!-- Bedroom suite wing -->
+    <rect x="0" y="0" width="255" height="580" class="future"/>
+    <rect x="0" y="0" width="255" height="580" class="dash"/>
+    <text x="128" y="24" text-anchor="middle" class="tiny">Future Suite Conversion Zone</text>
+
+    <rect x="0" y="0" width="255" height="250" class="bed"/>
+    <rect x="0" y="330" width="255" height="250" class="bed"/>
+    <rect x="150" y="30" width="105" height="98" class="bath"/>
+    <rect x="150" y="452" width="105" height="98" class="bath"/>
+    <path d="M255 0 L255 580" class="intwall"/>
+    <path d="M0 250 L255 250 M0 330 L255 330" class="intwall"/>
+    <path d="M150 30 L150 128 M150 452 L150 550" class="intwall"/>
+    <text x="73" y="118" text-anchor="middle" class="label">Bedroom 1</text>
+    <text x="203" y="78" text-anchor="middle" class="label">Bath 1</text>
+    <text x="73" y="460" text-anchor="middle" class="label">Bedroom 2</text>
+    <text x="203" y="503" text-anchor="middle" class="label">Bath 2</text>
+    <text x="128" y="292" text-anchor="middle" class="small">Shared Plumbing Core</text>
+
+    <!-- suite doors to central hall -->
+    <path d="M255 155 C288 155 288 188 255 188" class="door"/>
+    <path d="M255 415 C288 415 288 448 255 448" class="door"/>
+
+    <!-- central hall and stair -->
+    <rect x="255" y="0" width="118" height="580" class="hall" stroke="#111" stroke-width="3"/>
+    <text x="314" y="52" text-anchor="middle" class="label">Hall</text>
+    <rect x="268" y="210" width="92" height="165" fill="#dcdcdc" stroke="#111" stroke-width="3"/>
+    <text x="314" y="280" text-anchor="middle" class="small">Stair</text>
+    <text x="314" y="304" text-anchor="middle" class="tiny">up to loft hall</text>
+    <path d="M278 232 L350 232 M278 255 L350 255 M278 278 L350 278 M278 301 L350 301 M278 324 L350 324 M278 347 L350 347" stroke="#777" stroke-width="2"/>
+
+    <!-- open plan side -->
+    <rect x="373" y="0" width="307" height="160" class="service"/>
+    <rect x="373" y="160" width="307" height="150" class="living"/>
+    <rect x="373" y="310" width="307" height="270" class="open"/>
+    <path d="M373 160 L680 160 M373 310 L680 310" class="intwall"/>
+    <text x="485" y="62" text-anchor="middle" class="label">Kitchen</text>
+    <rect x="435" y="92" width="100" height="28" rx="10" fill="#d6b36d" stroke="#6f5520" stroke-width="2"/>
+    <text x="485" y="112" text-anchor="middle" class="tiny">Island</text>
+    <text x="607" y="50" text-anchor="middle" class="small">Pantry</text>
+    <text x="607" y="92" text-anchor="middle" class="small">Laundry</text>
+    <text x="607" y="134" text-anchor="middle" class="small">Mudroom</text>
+    <text x="526" y="236" text-anchor="middle" class="label">Dining</text>
+    <text x="526" y="430" text-anchor="middle" class="label">Great Room</text>
+    <text x="526" y="462" text-anchor="middle" class="tiny">Open floor plan / tall volume above</text>
+
+    <rect x="373" y="-56" width="307" height="44" class="porch" stroke="#555" stroke-width="2"/>
+    <text x="526" y="-28" text-anchor="middle" class="small">Covered Porch</text>
+    <rect x="373" y="592" width="307" height="48" class="porch" stroke="#555" stroke-width="2"/>
+    <text x="526" y="622" text-anchor="middle" class="small">Covered Outdoor Living</text>
+    <text x="340" y="668" text-anchor="middle" class="tiny">Concept only - not construction drawings or code review</text>
+  </g>
+
+  <!-- SECOND FLOOR -->
+  <g transform="translate(840,135)">
+    <text x="350" y="-28" text-anchor="middle" class="subtitle">Second Floor - 2 Bedroom Suites + Loft / Open Below</text>
+    <rect x="0" y="0" width="680" height="580" class="living"/>
+    <rect x="0" y="0" width="680" height="580" class="wall"/>
+
+    <!-- Stacked bedroom suite wing -->
+    <rect x="0" y="0" width="255" height="580" class="future"/>
+    <rect x="0" y="0" width="255" height="580" class="dash"/>
+    <text x="128" y="24" text-anchor="middle" class="tiny">Future Suite Conversion Zone</text>
+
+    <rect x="0" y="0" width="255" height="250" class="bed"/>
+    <rect x="0" y="330" width="255" height="250" class="bed"/>
+    <rect x="150" y="30" width="105" height="98" class="bath"/>
+    <rect x="150" y="452" width="105" height="98" class="bath"/>
+    <path d="M255 0 L255 580" class="intwall"/>
+    <path d="M0 250 L255 250 M0 330 L255 330" class="intwall"/>
+    <path d="M150 30 L150 128 M150 452 L150 550" class="intwall"/>
+    <text x="73" y="118" text-anchor="middle" class="label">Bedroom 3</text>
+    <text x="203" y="78" text-anchor="middle" class="label">Bath 3</text>
+    <text x="73" y="460" text-anchor="middle" class="label">Bedroom 4</text>
+    <text x="203" y="503" text-anchor="middle" class="label">Bath 4</text>
+    <text x="128" y="292" text-anchor="middle" class="small">Future Plumbing Chase</text>
+
+    <!-- Continuous same-level hall and stair arrival -->
+    <rect x="255" y="0" width="135" height="580" class="hall" stroke="#111" stroke-width="3"/>
+    <text x="323" y="52" text-anchor="middle" class="label">Loft Hall</text>
+    <text x="323" y="78" text-anchor="middle" class="tiny">same-level access</text>
+    <rect x="270" y="210" width="100" height="165" fill="#dcdcdc" stroke="#111" stroke-width="3"/>
+    <text x="320" y="279" text-anchor="middle" class="small">Stair</text>
+    <text x="320" y="303" text-anchor="middle" class="tiny">arrival</text>
+    <path d="M280 232 L360 232 M280 255 L360 255 M280 278 L360 278 M280 301 L360 301 M280 324 L360 324 M280 347 L360 347" stroke="#777" stroke-width="2"/>
+    <text x="323" y="515" text-anchor="middle" class="tiny">Bedroom 4 opens</text>
+    <text x="323" y="538" text-anchor="middle" class="tiny">to this hall</text>
+
+    <!-- doors from both upstairs suites to hall -->
+    <path d="M255 155 C288 155 288 188 255 188" class="door"/>
+    <path d="M255 415 C288 415 288 448 255 448" class="door"/>
+
+    <!-- open-to-below only on living side -->
+    <rect x="390" y="0" width="290" height="580" class="open" stroke="#777" stroke-width="2"/>
+    <rect x="412" y="34" width="246" height="512" fill="#fffaf0" stroke="#555" stroke-width="3"/>
+    <path d="M412 34 L658 34 L658 546 L412 546 Z" class="rail"/>
+    <text x="535" y="248" text-anchor="middle" class="label">Open to Below</text>
+    <text x="535" y="279" text-anchor="middle" class="small">over Great Room</text>
+    <text x="535" y="309" text-anchor="middle" class="tiny">not over bedrooms</text>
+    <text x="535" y="380" text-anchor="middle" class="small">Loft Overlook</text>
+
+    <text x="340" y="668" text-anchor="middle" class="tiny">All bedrooms remain inside one straight post-frame wall line</text>
+  </g>
+
+  <g transform="translate(205,820)">
+    <rect x="0" y="-20" width="22" height="22" class="bed" stroke="#555"/>
+    <text x="32" y="-3" class="tiny">Bedroom suites</text>
+    <rect x="165" y="-20" width="22" height="22" class="bath" stroke="#555"/>
+    <text x="197" y="-3" class="tiny">Private baths</text>
+    <rect x="330" y="-20" width="22" height="22" class="open" stroke="#555"/>
+    <text x="362" y="-3" class="tiny">Open living / open-to-below</text>
+    <rect x="595" y="-20" width="22" height="22" class="hall" stroke="#555"/>
+    <text x="627" y="-3" class="tiny">Hall / stair circulation</text>
+    <rect x="850" y="-20" width="22" height="22" class="future" stroke="#c77b00" stroke-width="3" stroke-dasharray="6 4"/>
+    <text x="882" y="-3" class="tiny">Future conversion zone</text>
+  </g>
+</svg>

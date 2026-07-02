@@ -1,0 +1,165 @@
+﻿# 3325 Banks Rd Co-Living Development
+
+## Project Program & Market Positioning
+
+Source workbook: `3325_Banks_Rd_Investor_ROI.xlsx`
+
+---
+
+# Project Description
+
+## Project Overview
+
+The 3325 Banks Rd project is a sponsor-led co-living residential development located in Wake County near Raleigh, North Carolina. The project is being developed as a long-term income-producing residential asset designed to serve:
+
+* workforce housing,
+* graduate student housing,
+* professional co-living,
+* and furnished medium-term rental demand.
+
+The development is positioned as a professionally managed boutique residential operating platform rather than a speculative resale project.
+
+The project combines:
+
+* controlled land position,
+* favorable existing financing,
+* engineered wastewater planning,
+* entitlement-first development sequencing,
+* staged capitalization,
+* operational flexibility,
+* and long-term hold/refinance economics.
+
+---
+
+# Development Program
+
+## Site & Building
+
+* Approximately 1.1 acres
+* Two-story post-frame residential structure
+* Approximately 5,000-6,000 SF
+* Slab-on-grade construction
+* Engineered onsite wastewater system
+* Sponsor-controlled equipment and construction crew
+
+---
+
+## Residential Configuration
+
+### First Floor Premium Suites (4 Units)
+
+Each suite includes:
+
+* private bedroom,
+* private bathroom,
+* kitchenette,
+* storage.
+
+These units function similarly to compact furnished studio apartments and support premium rental pricing.
+
+### Target Monthly Rent
+
+Market-supported underwriting range:
+
+| Case | Monthly Rent / Suite |
+|---|---:|
+| Low | 1,350 |
+| Medium | 1,600 |
+| High | 1,750 |
+
+### Projected Monthly Revenue
+
+| Case | Monthly Revenue |
+|---|---:|
+| Low | 5,400 |
+| Medium | 6,400 |
+| High | 7,000 |
+
+---
+
+### Second Floor Co-Living Suites (4 Units)
+
+Each suite includes:
+
+* private bedroom,
+* private bathroom,
+* storage,
+* with shared common amenities.
+
+This configuration supports:
+
+* lower-cost co-living inventory,
+* diversified tenant targeting,
+* and affordability flexibility.
+
+### Target Monthly Rent
+
+Market-supported underwriting range:
+
+| Case | Monthly Rent / Suite |
+|---|---:|
+| Low | 850 |
+| Medium | 1,100 |
+| High | 1,250 |
+
+### Projected Monthly Revenue
+
+| Case | Monthly Revenue |
+|---|---:|
+| Low | 3,400 |
+| Medium | 4,400 |
+| High | 5,000 |
+
+---
+
+## Rent Timing Used In Workbook
+
+The workbook now shows rent scenarios left to right, with rent levels increasing from low to medium to high. Each scenario has an editable effective year. The current schedule makes the low rent case end after Year 1.
+
+| Effective Year | Rent Case | Total Monthly Gross Rent | Annual Gross Potential Rent |
+|---:|---|---:|---:|
+| 1 | Low | 8,800 | 105,600 |
+| 2 | Medium | 10,800 | 129,600 |
+| 4 | High | 12,000 | 144,000 |
+
+The Annual Model uses the rent case with the latest effective year that is less than or equal to the model year. Under the current schedule, Year 1 uses low rent, Years 2-3 use medium rent, and Year 4 forward uses high rent.
+
+The stabilized monthly gross rent assumption now follows the same Rent Scenario Schedule based on the selected stabilization/refinance year. With the current refinance year selection of **Year 3**, the selected stabilized monthly gross rent is **10,800** for refinance valuation. Years 4 and later use the high rent case of **12,000** under the current schedule.
+
+---
+
+## Shared Amenities
+
+* communal kitchen,
+* dining area,
+* lounge/living space,
+* laundry,
+* storage/mechanical areas,
+* covered outdoor gathering spaces.
+
+---
+
+# Market Positioning
+
+The project targets:
+
+* RTP professionals,
+* healthcare workers,
+* graduate students,
+* traveling professionals,
+* and medium-term furnished renters.
+
+The property is positioned between:
+
+* traditional apartments,
+* workforce housing,
+* student housing,
+* and furnished rental inventory.
+
+The core market thesis is based on continued Triangle-region demand driven by:
+
+* population growth,
+* housing affordability pressure,
+* university expansion,
+* and increasing demand for flexible professionally managed housing.
+

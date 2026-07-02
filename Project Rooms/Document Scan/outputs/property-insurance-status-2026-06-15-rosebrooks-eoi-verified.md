@@ -1,0 +1,32 @@
+# Property Insurance Status Report - Rosebrooks EOI Verified
+
+Prepared: 2026-06-15
+
+- New email attachment processed: NCJUA declarations for policy DW00948982, 115 Rosebrooks Dr.
+- Prior unmatched Heritage/NCJUA cancellation notice DW00948982 is now matched to 115 Rosebrooks and filed in the property Insurance folder.
+- The report no longer has an unmatched Heritage Mgmt notice row.
+
+## Attention items
+- **7001 Outrigger Rd**: EOI/proof on file: No - proposal only; lender accepted: No / lender-placed. Need current EOI/declaration and lender cancellation/acceptance of lender-placed coverage.
+- **908 Pond St**: EOI/proof on file: Yes - declaration/receipt filed; lender accepted: Unknown. Capture policy number from declaration and confirm Casa accepted coverage.
+- **4121 Tensity Dr**: EOI/proof on file: No - proposal only; lender accepted: Unknown. Need current declaration/EOI before treating coverage as confirmed.
+- **2325 Cool Springs Rd**: EOI/proof on file: Yes - declaration/binder filed; lender accepted: No / rejected name issue. Need proof Planet accepted corrected/current declarations.
+- **115 Rosebrooks Dr**: EOI/proof on file: Yes - current NCJUA declarations filed; lender accepted: Unknown / mortgagee billed. Unmatched notice is resolved to Rosebrooks. Need lender acceptance/payment confirmation if available.
+- **3413 Pinetree Ln**: EOI/proof on file: Yes - COI/declarations filed; lender accepted: Unknown / name review. Named-insured change still needs review if not already resolved.
+- **3325 Banks Rd**: EOI/proof on file: Yes - corrected EOI on file; lender accepted: Partial / not final. EOI is on file and lender-placed policy was cancelled, but final Rushmore acceptance of corrected 2026-04-17 mortgagee proof is not explicit.
+- **320 Rose Pl**: EOI/proof on file: Yes - NCJUA docs filed; lender accepted: No / cancellation unresolved. Need reinstatement/replacement coverage or lender acceptance after 2026-05-09.
+
+| Property | Lender | Carrier / Policy | Annual | EOI / Proof on File | Lender Accepted EOI | Latest filed document | Current status | Needs attention |
+|---|---|---|---|---|---|---|---|---|
+| 7001 Outrigger Rd | Village Capital | State Farm proposal; lender-placed Integon notice / not confirmed; loan 0008364802 | Workbook $2,094; lender-placed $2,094.30 | No - proposal only | No / lender-placed | 25-10-29 lender-placed notice; 26-02-23 State Farm proposal | CRITICAL REVIEW | Need current EOI/declaration and lender cancellation/acceptance of lender-placed coverage. |
+| 612 Britton Ct | Coastal Federal CU | NCJUA / DW00948658 | Workbook $3,521 | Yes - declarations on file | Unknown | Seller proof/renewal plus 26-01-23 policy and 26-03-25/26-04-10 NCJUA declarations | Coverage evidence strong | Confirm lender acceptance and payment responsibility when available. |
+| 908 Pond St | Casa Lending | NCJUA current; NREIG prior / not captured in row | Workbook $5,228.88 | Yes - declaration/receipt filed | Unknown | 26-03-25 declarations/receipt, NREIG cancellation, EOI, Casa requirements | Review needed | Capture policy number from declaration and confirm Casa accepted coverage. |
+| 4121 Tensity Dr | Truist | State Farm proposal only / not found | Workbook $1,677 | No - proposal only | Unknown | 26-02-23 State Farm proposal only | Review needed | Need current declaration/EOI before treating coverage as confirmed. |
+| 2325 Cool Springs Rd | Planet Home Lending | State Farm current; NREIG prior / current State Farm policy not captured | Workbook $899.28 | Yes - declaration/binder filed | No / rejected name issue | 25-03-05 insurance changes; 26-01-20 Planet letter; 26-02-04 State Farm declaration/binder receipt | REVIEW | Need proof Planet accepted corrected/current declarations. |
+| 115 Rosebrooks Dr | Shellpoint / BSI | NCJUA current; NREIG prior cancelled / DW00948982; prior NREIG not confirmed | NCJUA premium $724; workbook $1,094.76 | Yes - current NCJUA declarations filed | Unknown / mortgagee billed | NEW: 26-06-04 NCJUA declarations filed and prior orphaned 26-05-10 cancellation matched/filed; email said policy back in force | REVIEW - improved | Unmatched notice is resolved to Rosebrooks. Need lender acceptance/payment confirmation if available. |
+| 1426 Pleasant Garden Ln | Wells Fargo | State Farm / 93-QN-2379-3 | $780 on 2026 renewal; workbook $851 | Yes - renewal certificate filed | Likely / mortgagee listed | 26-07-07 State Farm renewal certificate plus 2025 State Farm policy/balance docs | Coverage confirmed | Premium differs from workbook; update tracker if needed. |
+| 3413 Pinetree Ln | Mr Cooper / Rocket | State Farm / 93-VA-Y621-2 | Workbook $1,606 | Yes - COI/declarations filed | Unknown / name review | Existing COI/declarations already filed | Coverage docs exist | Named-insured change still needs review if not already resolved. |
+| 3325 Banks Rd | Rushmore | Spinnaker / REInsurePro plus Standard Guaranty lender-placed cancellation / Q0333PRO00001-00; REIP0000763; loan 0708108824 | $2,102.76 annual/location cost | Yes - corrected EOI on file | Partial / not final | Six docs from Document_2026-06-15_133340 filed; lender-placed cancellation effective 2026-03-26 | REVIEW - improved | EOI is on file and lender-placed policy was cancelled, but final Rushmore acceptance of corrected 2026-04-17 mortgagee proof is not explicit. |
+| 320 Rose Pl | Shellpoint / Rocket | NCJUA / DW00948692 | Unknown from docs | Yes - NCJUA docs filed | No / cancellation unresolved | 26-03-05/26-03-25 NCJUA docs and 26-05-08 receipt; cancellation dated 26-05-09 | CRITICAL REVIEW | Need reinstatement/replacement coverage or lender acceptance after 2026-05-09. |
+| 6316 Willowdell Dr | SECU | unknown / unknown | Unknown | No docs found | N/A closed | No insurance docs found in sweep | Closed row | No open-property action unless closed-file review is needed. |
+| 1343 Old Buckhorn Rd | Shellpoint / Specialized Loan Servicing | Lender-placed hazard / loan 1028061093 | Unknown | No owner policy found | No / lender-placed historical | 25-05-08 second notice and 25-06-02 lender-placed insurance change | Closed row / historical critical | Closed in mortgage sheet, but historical lender-placed coverage is filed. |

@@ -1,0 +1,312 @@
+﻿{
+    "migrated_at":  "2026-06-19 18:04:25 -04:00",
+    "status":  "migrated",
+    "source_template_workbook":  "C:\\Codex\\Wiki Files\\Project Rooms\\Property Trade Evaluation\\working\\amortization-rollout\\20260619-173556\\28_Project Management - 320 Rose Pl - SharePoint template.xlsm",
+    "source_template_url":  "https://lifeisanadventure.sharepoint.com/sites/SellYourHome/_layouts/15/Doc.aspx?sourcedoc=%7BD39E03A5-035A-4BBF-9346-ADD40A7758EE%7D\u0026file=28_Project+Management+-+320+Rose+Pl.xlsm\u0026action=default\u0026mobileredirect=true\u0026web=1",
+    "target_project_workbook":  "C:\\Codex\\Wiki Files\\Project Rooms\\Property Trade Evaluation\\working\\amortization-rollout\\20260619-173556\\27-outrigger\\27_Project Management - 7001 Outrigger Dr - Amortization swap working.xlsm",
+    "target_project_url":  "https://lifeisanadventure.sharepoint.com/sites/SellYourHome/_layouts/15/Doc.aspx?sourcedoc=%7BBAFDD468-E840-4D85-9AE4-FC5C59512E62%7D\u0026file=27_Project+Management+-+7001+Outrigger+Dr.xlsm\u0026action=default\u0026mobileredirect=true\u0026web=1",
+    "rollback_copy":  "C:\\Codex\\Wiki Files\\Project Rooms\\Property Trade Evaluation\\working\\amortization-rollout\\20260619-173556\\27-outrigger\\27_Project Management - 7001 Outrigger Dr - rollback before amortization swap.xlsm",
+    "before":  {
+                   "docs_b7":  {
+                                   "address":  "B7",
+                                   "value":  "",
+                                   "value2":  null,
+                                   "formula":  ""
+                               },
+                   "docs_b10":  {
+                                    "address":  "B10",
+                                    "value":  "314,924 ",
+                                    "value2":  314924.1,
+                                    "formula":  "=+Amortization!AA5"
+                                },
+                   "docs_b11":  {
+                                    "address":  "B11",
+                                    "value":  "26,517 ",
+                                    "value2":  26516.5,
+                                    "formula":  "=+Amortization!$O$4-B50"
+                                },
+                   "docs_b12":  {
+                                    "address":  "B12",
+                                    "value":  "214,002.11",
+                                    "value2":  214002.10499999998,
+                                    "formula":  "=+B10-SUM(B50:B77)"
+                                },
+                   "docs_b14":  {
+                                    "address":  "B14",
+                                    "value":  "1595.670",
+                                    "value2":  1595.67,
+                                    "formula":  "=+Amortization!Z8"
+                                },
+                   "docs_b15":  {
+                                    "address":  "B15",
+                                    "value":  "1746.440",
+                                    "value2":  1746.44,
+                                    "formula":  "=+Amortization!Z9"
+                                },
+                   "docs_b17":  {
+                                    "address":  "B17",
+                                    "value":  "30",
+                                    "value2":  30,
+                                    "formula":  "30"
+                                },
+                   "docs_b20":  {
+                                    "address":  "B20",
+                                    "value":  "April 1, 2025",
+                                    "value2":  45748,
+                                    "formula":  "45748"
+                                },
+                   "docs_b21":  {
+                                    "address":  "B21",
+                                    "value":  "March 1, 2030",
+                                    "value2":  47543,
+                                    "formula":  "=+$B$20+(5*365)-DAY(+$B$20+(5*365))+1"
+                                },
+                   "docs_b22":  {
+                                    "address":  "B22",
+                                    "value":  "April 1, 2030",
+                                    "value2":  47574,
+                                    "formula":  "=+$B$20+(5*365)-DAY(+$B$20+(5*365))+32"
+                                },
+                   "docs_b23":  {
+                                    "address":  "B23",
+                                    "value":  "March 1, 2055",
+                                    "value2":  56674,
+                                    "formula":  "=+$B$20+($B$17*365)-DAY(+$B$20+($B$17*365))+1"
+                                },
+                   "docs_b40":  {
+                                    "address":  "B40",
+                                    "value":  "",
+                                    "value2":  null,
+                                    "formula":  ""
+                                },
+                   "docs_b41":  {
+                                    "address":  "B41",
+                                    "value":  "",
+                                    "value2":  null,
+                                    "formula":  ""
+                                },
+                   "docs_b42":  {
+                                    "address":  "B42",
+                                    "value":  ":",
+                                    "value2":  ":",
+                                    "formula":  ":"
+                                },
+                   "docs_b50":  {
+                                    "address":  "B50",
+                                    "value":  "500",
+                                    "value2":  500,
+                                    "formula":  "500"
+                                },
+                   "docs_b51":  {
+                                    "address":  "B51",
+                                    "value":  "14,500.00",
+                                    "value2":  14500,
+                                    "formula":  "=+Profit!C20-B50"
+                                },
+                   "docs_b52":  {
+                                    "address":  "B52",
+                                    "value":  "4.500%",
+                                    "value2":  "4.500%",
+                                    "formula":  "=TEXT(Amortization!$C$3,\"0.000%\")"
+                                },
+                   "am_o3":  {
+                                 "address":  "O3",
+                                 "value":  "270,165 ",
+                                 "value2":  270165,
+                                 "formula":  "=IF($AW$2=1,P3,IF($AW$2=2,Q3,IF($AW$2=3,R3)))"
+                             },
+                   "am_o4":  {
+                                 "address":  "O4",
+                                 "value":  "27,017 ",
+                                 "value2":  27016.5,
+                                 "formula":  "=IF($AW$2=1,P4,IF($AW$2=2,Q4,IF($AW$2=3,R4)))"
+                             },
+                   "am_o5":  {
+                                 "address":  "O5",
+                                 "value":  "243,149 ",
+                                 "value2":  243148.5,
+                                 "formula":  "=IF($AW$2=1,P5,IF($AW$2=2,Q5,IF($AW$2=3,R5)))"
+                             },
+                   "am_t4":  {
+                                 "address":  "T4",
+                                 "value":  "",
+                                 "value2":  null,
+                                 "formula":  ""
+                             },
+                   "am_t5":  {
+                                 "address":  "T5",
+                                 "value":  "",
+                                 "value2":  null,
+                                 "formula":  ""
+                             },
+                   "am_t6":  {
+                                 "address":  "T6",
+                                 "value":  "",
+                                 "value2":  null,
+                                 "formula":  ""
+                             }
+               },
+    "mapped_inputs":  {
+                          "oldSale":  341940.6,
+                          "oldDownRaw":  27016.5,
+                          "oldLoan":  314924.1,
+                          "oldPayment1":  1595.67,
+                          "oldPayment2":  1746.44,
+                          "oldAboveArv":  0.32895685969685173,
+                          "oldTermYears":  30,
+                          "oldLoanStart":  45748,
+                          "reducedRate":  0.045,
+                          "fullRate":  0.07,
+                          "insurance":  134.17,
+                          "taxes":  188.55
+                      },
+    "after":  {
+                  "docs_b7":  {
+                                  "address":  "B7",
+                                  "value":  "341,941 ",
+                                  "value2":  341940.60000000003,
+                                  "formula":  "=+Amortization!AA4"
+                              },
+                  "docs_b9":  {
+                                  "address":  "B9",
+                                  "value":  "27,017 ",
+                                  "value2":  27016.500000000004,
+                                  "formula":  "=+Amortization!$O$4"
+                              },
+                  "docs_b10":  {
+                                   "address":  "B10",
+                                   "value":  "314,924 ",
+                                   "value2":  314924.10000000003,
+                                   "formula":  "=+Amortization!O5"
+                               },
+                  "docs_b11":  {
+                                   "address":  "B11",
+                                   "value":  "1,596 ",
+                                   "value2":  1596,
+                                   "formula":  "=SUM(B12:B12)"
+                               },
+                  "docs_b14":  {
+                                   "address":  "B14",
+                                   "value":  "2029.000",
+                                   "value2":  2029,
+                                   "formula":  "=SUM(B13:B13)"
+                               },
+                  "docs_b15":  {
+                                   "address":  "B15",
+                                   "value":  "30.000",
+                                   "value2":  30,
+                                   "formula":  "=+Amortization!O9"
+                               },
+                  "docs_b18":  {
+                                   "address":  "B18",
+                                   "value":  "4/1/2025",
+                                   "value2":  45748,
+                                   "formula":  "=+Amortization!O11"
+                               },
+                  "docs_b19":  {
+                                   "address":  "B19",
+                                   "value":  "3/1/2055",
+                                   "value2":  56674,
+                                   "formula":  "=+Amortization!Q11"
+                               },
+                  "docs_b20":  {
+                                   "address":  "B20",
+                                   "value":  "April 1, 2025",
+                                   "value2":  45748,
+                                   "formula":  "=+Amortization!O11"
+                               },
+                  "docs_b21":  {
+                                   "address":  "B21",
+                                   "value":  "March 1, 2055",
+                                   "value2":  56674,
+                                   "formula":  "=+$B$18+($B$15*365)-DAY(+$B$18+($B$15*365))+1"
+                               },
+                  "docs_b50":  {
+                                   "address":  "B50",
+                                   "value":  "4.500%",
+                                   "value2":  "4.500%",
+                                   "formula":  "=TEXT(Amortization!$C$4,\"0.000%\")"
+                               },
+                  "docs_b51":  {
+                                   "address":  "B51",
+                                   "value":  "4.500%",
+                                   "value2":  "4.500%",
+                                   "formula":  "=TEXT(+Amortization!AA9,\"0.000%\")"
+                               },
+                  "docs_b52":  {
+                                   "address":  "B52",
+                                   "value":  "11.500%",
+                                   "value2":  "11.500%",
+                                   "formula":  "=TEXT(Amortization!$O$7,\"0.000%\")"
+                               },
+                  "am_o3":  {
+                                "address":  "O3",
+                                "value":  "341,941 ",
+                                "value2":  341940.60000000003,
+                                "formula":  "=IF($AW$2=1,P3,IF($AW$2=2,Q3,IF($AW$2=3,R3)))"
+                            },
+                  "am_o4":  {
+                                "address":  "O4",
+                                "value":  "27,017 ",
+                                "value2":  27016.500000000004,
+                                "formula":  "=IF($AW$2=1,P4,IF($AW$2=2,Q4,IF($AW$2=3,R4)))"
+                            },
+                  "am_o5":  {
+                                "address":  "O5",
+                                "value":  "314,924 ",
+                                "value2":  314924.10000000003,
+                                "formula":  "=IF($AW$2=1,P5,IF($AW$2=2,Q5,IF($AW$2=3,R5)))"
+                            },
+                  "am_x5":  {
+                                "address":  "X5",
+                                "value":  "0 ",
+                                "value2":  0,
+                                "formula":  "0"
+                            },
+                  "am_aa9":  {
+                                 "address":  "AA9",
+                                 "value":  "4.50%",
+                                 "value2":  0.045,
+                                 "formula":  "0.045"
+                             },
+                  "am_ab9":  {
+                                 "address":  "AB9",
+                                 "value":  "314,924 ",
+                                 "value2":  314924.1,
+                                 "formula":  "314924.1"
+                             },
+                  "am_ac9":  {
+                                 "address":  "AC9",
+                                 "value":  "360",
+                                 "value2":  360,
+                                 "formula":  "360"
+                             },
+                  "am_aa10":  {
+                                  "address":  "AA10",
+                                  "value":  "7.00%",
+                                  "value2":  0.07,
+                                  "formula":  "0.07"
+                              },
+                  "am_ab10":  {
+                                  "address":  "AB10",
+                                  "value":  "287,137 ",
+                                  "value2":  287137,
+                                  "formula":  "=ROUND(PV(AA9/12,AC9-60,-Z9),0)"
+                              },
+                  "am_ac10":  {
+                                  "address":  "AC10",
+                                  "value":  "300",
+                                  "value2":  300,
+                                  "formula":  "300"
+                              }
+              },
+    "manual_mappings":  [
+                            "Rose Amortization sheet copied beside old Amortization, then old sheet renamed Amortization - Old.",
+                            "Project inputs mapped from old Amortization/Profit/Docs outputs into Rose input cells.",
+                            "Docs B7:B21 and B50:B52 retargeted to Rose-layout Amortization outputs.",
+                            "Rose template external link broken through Excel before save."
+                        ],
+    "unresolved_issues":  [
+
+                          ]
+}
