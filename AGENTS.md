@@ -145,12 +145,12 @@ Use this repo when formulating solutions for office-admin workflows, SOPs, autom
 - Do not limit the summary to Inbox unless Wes explicitly asks for an Inbox-only summary.
 - Focus on unread or newly received messages since the last successful summary. Include rule-routed folders when messages are financial, legal, property-related, vendor/admin-related, time-sensitive, or action-oriented.
 - Exclude routine promotional, automated, or newsletter messages unless they are time-sensitive, financial, legal, property-related, or require action.
-- When the OfficeAssist heartbeat runs every 15 minutes for email monitoring, run each morning summary only once per calendar day: the first eligible run at or after 8:00 AM Eastern sends Boss's summary if it has not already been sent and verified, and posts Jenny's summary in the attached Email Summary thread if it has not already been posted. Later same-day heartbeat runs perform instruction-email monitoring only.
+- When the OfficeAssist heartbeat runs every 15 minutes for email monitoring, run each morning summary only once per calendar day: the first eligible run at or after 8:00 AM Eastern sends Boss's summary if it has not already been sent and verified, and sends Jenny's summary to `Jenny@BuyYourHomeLLC.com` from `OfficeAssist@BuyYourHomeLLC.com` if it has not already been sent and verified. Later same-day heartbeat runs perform instruction-email monitoring only.
 - Record the summary cutoff time used so the next summary can avoid both missed rule-routed messages and duplicate reporting.
 - The email-summary workflow owns the mailbox scan, cutoff logic, priority selection, summary body, and attachment decision for Wes and Jenny.
 - For the send step only, use the shared `skills\email-delivery\SKILL.md` workflow by passing sender, recipient, subject, plain-text body, attachment paths if any, and the rule that send or verification failure must be reported in the OfficeAssist thread.
 - If the morning summary cannot be sent by email, notify Wes immediately and use the available text/SMS fallback when one is available. A failed send or unverified send is not a quiet/no-news run.
-- Jenny's summary is not emailed to Jenny under the current global profile. Post Jenny's summary in the attached Email Summary thread unless Wes explicitly changes the routing.
+- Jenny's summary is emailed to `Jenny@BuyYourHomeLLC.com` from `OfficeAssist@BuyYourHomeLLC.com` under the current global profile. Verify the sent copy in OfficeAssist Sent Items and report any send or verification failure in the Email Summary thread.
 
 ## Calendar Scheduling
 

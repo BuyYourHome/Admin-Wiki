@@ -27,7 +27,7 @@ Codex does not currently show every role below in one unified "Agents" list. Som
 | Project Management Spreadsheet Rewrite | Project Room | Active/planning | On demand | `Project Rooms\Project Management Spreadsheet Rewrite\README.md` |
 | New Project | Wiki-managed skill plus project room | Draft | On demand | `skills\new-project\SKILL.md`; `Project Rooms\New Project\README.md` |
 | Investigate Computer | Wiki-managed skill plus project room plus heartbeat automation | Active | Daily at 6:00 AM Eastern; email Wes only when an issue is detected | `skills\investigate-computer\SKILL.md`; `Project Rooms\Investigate Computer\README.md`; app automation id `investigate-computer-daily-check` |
-| Jenny Daily Email Summary | Behavior inside Email Summary heartbeat | Active | Runs once daily at/after 8:00 AM Eastern with the Email Summary heartbeat; posts in the Email Summary thread | `skills\email-summary\SKILL.md`; `Email Summary` prompt notes |
+| Jenny Daily Email Summary | Behavior inside Email Summary heartbeat | Active | Runs once daily at/after 8:00 AM Eastern with the Email Summary heartbeat; emails Jenny from OfficeAssist and verifies Sent Items | `skills\email-summary\SKILL.md`; `Email Summary` prompt notes |
 
 ## Jean Wright / Office Assistant
 
@@ -218,7 +218,7 @@ Purpose:
 - Summarize unread or newly received financial, legal, property, vendor/admin, time-sensitive, or action-oriented messages.
 - Monitor the OfficeAssist mailbox for instruction emails and take defined actions when the email instruction and safety rules allow it.
 - Send Wes a concise priority summary from `OfficeAssist@BuyYourHomeLLC.com`.
-- Post Jenny's concise priority summary in the attached Email Summary thread under the current global profile.
+- Email Jenny's concise priority summary to `Jenny@BuyYourHomeLLC.com` from `OfficeAssist@BuyYourHomeLLC.com` under the current global profile, and verify the sent copy in OfficeAssist Sent Items.
 - Include a short token-usage section for yesterday and the current week to date when reliable token totals are available; if not available, say so rather than estimating.
 - Jean is responsible for confirming the summary is actually delivered. If the summary cannot be sent, if sender verification fails, or if delivery cannot be confirmed, do not stay quiet. Notify Wes immediately in the thread and, when a reliable text/SMS path is available, text Wes that the email summary failed.
 - Resume one dedicated Codex status chat for failures, blockers, and notable summary-task visibility instead of creating separate standalone run chats.
@@ -597,7 +597,7 @@ Status: active as of 2026-06-29.
 Purpose:
 
 - Produce a daily summary of Jenny's new email at the same first eligible Email Summary heartbeat run used for Wes's morning summary.
-- Post Jenny's summary in the attached Email Summary thread unless Wes explicitly changes the routing.
+- Email Jenny's summary to `Jenny@BuyYourHomeLLC.com` from `OfficeAssist@BuyYourHomeLLC.com` unless Wes explicitly changes the routing.
 
 Activation note:
 
@@ -612,8 +612,8 @@ Defined in:
 
 Operating rule:
 
-- Run once per calendar day at the first eligible Email Summary heartbeat at or after 8:00 AM Eastern if Jenny's daily summary has not already been posted.
-- Do not email Jenny's summary to Jenny under the current global profile; post it in the Email Summary thread.
+- Run once per calendar day at the first eligible Email Summary heartbeat at or after 8:00 AM Eastern if Jenny's daily summary has not already been sent and verified.
+- Email Jenny's summary to Jenny under the current global profile, verify the OfficeAssist Sent Items copy, and report any send or verification failure in the Email Summary thread.
 
 ## How To Inspect Actual Automations
 

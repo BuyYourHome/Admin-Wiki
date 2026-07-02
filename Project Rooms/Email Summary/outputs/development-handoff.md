@@ -16,7 +16,7 @@ Use this handoff when resuming development in a dedicated chat.
 - Sender: `OfficeAssist@BuyYourHomeLLC.com`
 - Recipient: `WesWill@BuyYourHomeLLC.com`
 - Wes mailbox scope: full recursive mailbox scan, including rule-routed folders
-- Jenny summary status: active; post in the Email Summary thread under the global profile
+- Jenny summary status: active; email to `Jenny@BuyYourHomeLLC.com` from OfficeAssist and verify Sent Items under the global profile
 - Preferred connector: Outlook Email connector
 - Failure handling: report failed or unverified sends immediately
 
@@ -31,4 +31,5 @@ Use this handoff when resuming development in a dedicated chat.
 - 2026-06-15: Reviewed token-summary usefulness. `tools\get-codex-token-summary.ps1` returned live JSON with yesterday totals, week-to-date totals, rate-limit remaining percentages, and an explicit unconfigured weekly budget state. Recommendation: keep the token section unless Wes says it is clutter; continue saying weekly budget is not configured rather than estimating it.
 - 2026-06-15: With Wes's approval, created and pinned dedicated thread `Email Summary` (`019ecba7-f1cc-7ac1-aaf7-d89a3f21b582`) and converted `officeassist-morning-email-summary` from cron to heartbeat attached to that thread. This should stop daily runs from creating new chats.
 - 2026-06-28: Renamed the project room, chat, and skill to `Email Summary`. The active automation id remains `officeassist-morning-email-summary-and-instruction-monitor`.
-- 2026-06-29: Wes resumed Jenny's daily email summary. Outlook Email connector access to `Jenny@BuyYourHomeLLC.com` was verified; Jenny's summary should be posted in the Email Summary thread, not emailed to Jenny, unless Wes changes the profile/routing.
+- 2026-06-29: Wes resumed Jenny's daily email summary. Outlook Email connector access to `Jenny@BuyYourHomeLLC.com` was verified.
+- 2026-07-02: Wes changed the profile/routing so Jenny's summary is emailed to `Jenny@BuyYourHomeLLC.com` from OfficeAssist and verified in OfficeAssist Sent Items.

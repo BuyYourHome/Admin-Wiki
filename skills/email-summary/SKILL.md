@@ -7,7 +7,7 @@ description: Create Wes's and Jenny's daily OfficeAssist morning mailbox summari
 
 ## Overview
 
-Create the daily Boss summary for `WesWill@BuyYourHomeLLC.com`, then hand off delivery to the shared `email-delivery` skill. Create the daily Jenny summary for `Jenny@BuyYourHomeLLC.com` and post it in the attached Email Summary thread.
+Create the daily Boss summary for `WesWill@BuyYourHomeLLC.com`, then hand off delivery to the shared `email-delivery` skill. Create the daily Jenny summary for `Jenny@BuyYourHomeLLC.com`, then hand off delivery to the shared `email-delivery` skill for sending to Jenny from OfficeAssist.
 
 This skill owns mailbox scanning, cutoff selection, message prioritization, summary drafting, token-summary inclusion, and summary-run state updates. It does not own sender safety or send verification.
 
@@ -26,9 +26,9 @@ Before using this skill, have:
 
 ## Workflow
 
-1. Read `C:\Users\wesbr\.codex\automations\officeassist-morning-email-summary-and-instruction-monitor\memory.md` and find the last verified Boss summary send time and the last posted Jenny summary time.
+1. Read `C:\Users\wesbr\.codex\automations\officeassist-morning-email-summary-and-instruction-monitor\memory.md` and find the last verified Boss summary send time and the last verified Jenny summary send time.
 2. Use that verified send time as the cutoff unless a newer verified Boss summary is already present in `OfficeAssist@BuyYourHomeLLC.com` Sent Items for the same day.
-3. Use the last posted Jenny summary time as Jenny's cutoff unless a newer Jenny summary is already recorded in the memory file for the same day. If there is no prior Jenny summary record, use the 2026-06-29 resume timestamp as the initial new-mail cutoff.
+3. Use the last verified Jenny summary send time as Jenny's cutoff unless a newer Jenny summary is already recorded in the memory file for the same day. If there is no prior Jenny summary record, use the 2026-06-29 resume timestamp as the initial new-mail cutoff.
 4. Scan only the intended mailbox for the current summary: `WesWill@BuyYourHomeLLC.com` for Boss, or `Jenny@BuyYourHomeLLC.com` for Jenny.
 5. Review the entire mailbox recursively, including Inbox and rule-routed subfolders.
 6. Focus on:
@@ -79,7 +79,7 @@ Include:
 
 Do not say the email is on Wes's behalf unless the actual sending identity requires that wording.
 
-For Jenny's summary, write a concise thread post instead of an email. Include the mailbox scanned, cutoff used, priority items, low-priority exclusions when applicable, and a clear note if no priority messages were found.
+For Jenny's summary, write a concise plain-text email to Jenny. Include the mailbox scanned, cutoff used, priority items, low-priority exclusions when applicable, and a clear note if no priority messages were found.
 
 ## Attachment Decision
 
@@ -89,7 +89,7 @@ Only include attachments when the workflow specifically requires them and the ex
 
 ## Delivery Handoff
 
-For Boss's send step only, call the shared `email-delivery` skill and pass:
+For Boss's send step, call the shared `email-delivery` skill and pass:
 
 - sender: `OfficeAssist@BuyYourHomeLLC.com`,
 - recipient: `WesWill@BuyYourHomeLLC.com`,
@@ -100,7 +100,16 @@ For Boss's send step only, call the shared `email-delivery` skill and pass:
 
 Let `email-delivery` handle Outlook connector preference, sender safety, attachment input format, Sent Items verification, local Outlook fallback, and failure reporting.
 
-Jenny's summary is not emailed to Jenny under the current global profile. Post Jenny's summary in the attached Email Summary thread unless Wes explicitly changes the routing.
+For Jenny's send step, call the shared `email-delivery` skill and pass:
+
+- sender: `OfficeAssist@BuyYourHomeLLC.com`,
+- recipient: `Jenny@BuyYourHomeLLC.com`,
+- subject,
+- plain-text body,
+- attachment paths if any,
+- the rule that send or verification failure must be reported in the OfficeAssist thread.
+
+Jenny's summary is emailed to Jenny under the current global profile unless Wes explicitly changes the routing.
 
 ## Failure Handling
 
@@ -122,12 +131,12 @@ After a successful verified Boss send, update the automation memory with:
 - the verified send timestamp from OfficeAssist Sent Items,
 - any note about a verification draft remaining in OfficeAssist Drafts.
 
-After a successful Jenny summary post, update the automation memory with:
+After a successful verified Jenny send, update the automation memory with:
 
 - the summary date,
 - the cutoff used,
-- the summary topics posted,
-- the post timestamp,
+- the summary topics sent,
+- the verified send timestamp from OfficeAssist Sent Items,
 - any mailbox-access blocker or unusual routing note.
 
 If the send fails or verification fails, record the blocker and the action taken.
