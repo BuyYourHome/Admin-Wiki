@@ -12,7 +12,7 @@ Related run memory:
 
 Status: authoritative for persistent run state, including verified send history, cutoff decisions, summary topics, blockers, and Jenny pause notes.
 
-Current observed values as of 2026-06-28:
+Current observed values as of 2026-07-01:
 
 | Field | Value |
 |---|---|
@@ -20,7 +20,7 @@ Current observed values as of 2026-06-28:
 | kind | `heartbeat` |
 | name | `Email Summary` |
 | status | `ACTIVE` |
-| schedule | Runs every day; starts at 7:45 AM Eastern, then every 15 minutes from 8:00 AM through 4:45 PM Eastern |
+| schedule | Runs every day; starts at 7:45 AM Eastern, then every 15 minutes from 8:00 AM through 11:00 PM Eastern |
 | target thread | `Email Summary` |
 | target thread id | `019ecba7-f1cc-7ac1-aaf7-d89a3f21b582` |
 
