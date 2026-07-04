@@ -107,6 +107,10 @@ When reconnecting Profit to `Gnatt Chart` expense totals, do not assume the appr
 
 When a migrated Profit row feeds an adjacent percentage or payout row, remap and validate the paired downstream formula at the same time. Known Pond example: fixing new `Profit!B66` to the correct `Gnatt Chart` grand total was not enough; new `Profit!B68` still used the copied template formula `=IF(M13,0,+B67*SUM(B66:C66))`, while old Pond calculated Murphy's Cut from the Gantt total because old `Q12` was blank. The corrected Pond formula was `=+B67*SUM(B66:C66)`, matching the old Murphy's Cut value.
 
+Some older project workbooks have pre-redesign Profit source sheets that do not share the modern row structure. In those cases, map by visible label and business meaning instead of modern source coordinates. Known Banks example: old `B8` Rent mapped to new `C9`, old `C35` Number of Rent Payments mapped to new `B9`, old `K4` Finalized `No` mapped to new `M13=FALSE`, old private-lender text `yes` mapped to the new boolean/control field, and old realtor toggles in `B32:B34` mapped to the new `W3:W5` helper controls.
+
+When a field exists in the approved Profit template but has no equivalent in an older source sheet, do not leave copied template errors in place. Set the field to a neutral value when the business meaning is clearly absent and verify downstream totals. Known Banks example: the newer `STR Expense` row had copied `#REF!` in `Profit!B29`; Banks had no old STR expense source, so `B29` was set to `0`, which cleared downstream `J29`, `J53`, and `J54` errors.
+
 ## Profit Formula Rules
 
 When rewiring Profit mode logic to a numeric selector such as `Profit!E1`, change only formulas that actually depend on mode labels like `B1`, `C1`, or `D1`.
