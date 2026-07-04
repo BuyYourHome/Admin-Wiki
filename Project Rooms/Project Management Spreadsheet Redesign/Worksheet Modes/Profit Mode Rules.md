@@ -111,6 +111,10 @@ Some older project workbooks have pre-redesign Profit source sheets that do not 
 
 When a field exists in the approved Profit template but has no equivalent in an older source sheet, do not leave copied template errors in place. Set the field to a neutral value when the business meaning is clearly absent and verify downstream totals. Known Banks example: the newer `STR Expense` row had copied `#REF!` in `Profit!B29`; Banks had no old STR expense source, so `B29` was set to `0`, which cleared downstream `J29`, `J53`, and `J54` errors.
 
+Some older project workbooks can reject direct Excel automation writes to percentage, boolean, or text constants even when the same cells are ordinary inputs. In those cases, write mapped constants through the cell formula interface, using invariant numeric text such as `0.1`, `TRUE`, or `FALSE`, then recalculate and re-read the saved workbook. Known Pinetree example: direct writes to `Profit!C5` failed, while formula-constant writes preserved the intended 10% value.
+
+When a sheet has no visible `#REF!` cells but the package still contains `#REF!` strings on the migrated Profit worksheet, inspect conditional formatting rules before treating the workbook as clean. Remove stale conditional-format rules only when they reference deleted helper cells and do not drive business values. Known Pinetree example: old conditional formatting on `Profit!D11` and `Profit!H12:H13` retained `#REF!` references after formulas were otherwise valid.
+
 ## Profit Formula Rules
 
 When rewiring Profit mode logic to a numeric selector such as `Profit!E1`, change only formulas that actually depend on mode labels like `B1`, `C1`, or `D1`.
