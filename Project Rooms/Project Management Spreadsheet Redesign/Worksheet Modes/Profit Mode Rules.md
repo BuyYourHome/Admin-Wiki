@@ -93,6 +93,7 @@ When writing mapped Profit values through Excel automation:
 - Do not treat numeric `0` as blank.
 - Zero-dollar, zero-percent, and false/disabled control values are real project values and must be written when mapped.
 - For merged destination cells, resolve the merge area's top-left row and column before writing.
+- When a mapped source value is blank and the destination is merged, do not blindly clear the merged target if it is already blank; Excel automation may reject the clear operation. Skip the write or handle the whole merge area deliberately.
 - Clear the whole merge area only when the source is truly blank or an unmapped template residue.
 - Verify at least one zero-valued mapped field after save.
 
