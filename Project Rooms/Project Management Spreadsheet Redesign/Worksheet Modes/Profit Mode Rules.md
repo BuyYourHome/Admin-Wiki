@@ -84,6 +84,8 @@ When writing form-control checkboxes, set both the linked helper cell and the co
 
 If a checkbox disables a related amount, confirm whether formulas still include the amount independently. Known example: if `Profit!C43` is `FALSE`, `Profit!B44` must not retain a copied private-lender debt amount if downstream formulas such as total debt still include `B44`.
 
+Not every TRUE/FALSE Profit input has a visible form control. Map and verify direct boolean cells by label as well. Known Britton example: the old `Finalized` value at `Profit - Old 0703!K13` belongs in new `Profit!M13`; if it is skipped, the destination can retain a copied label such as `Min Profit:` instead of a usable TRUE/FALSE value.
+
 ## Merged Cells And Zero Values
 
 When writing mapped Profit values through Excel automation:
