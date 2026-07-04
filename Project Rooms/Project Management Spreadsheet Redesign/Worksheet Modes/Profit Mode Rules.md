@@ -100,6 +100,8 @@ Known Rosebrooks failure: `Profit!B9` monthly rent was initially cleared instead
 
 When old Profit detail blocks shift rows in the approved template, map by label and business purpose, not by row number. Known Cool Springs example: old `F72:J72` carried `Days Invested`, `Start Date`, and `End Date`, while old `G74:J74` carried investor-distribution headers. In the new layout, `Profit!F74:J74` is the days/start/end row, so it must receive the old start/end date values, not the old investor headers.
 
+When an old Profit sheet stores a project value as a calculated output rather than in the matching input cell, map the value by business meaning and document the source used. Known Pond example: old `Profit - Old 0703!C15` was blank, but old `E15` held the subject-to balance output; new `Profit!C15` needed that balance input instead of a blank copied from the old input position.
+
 ## Profit Formula Rules
 
 When rewiring Profit mode logic to a numeric selector such as `Profit!E1`, change only formulas that actually depend on mode labels like `B1`, `C1`, or `D1`.
