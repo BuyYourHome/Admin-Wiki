@@ -114,6 +114,8 @@ Do not stop after replacing old sheet names. Verify no outside formulas still po
 
 When formulas outside a source sheet depend on summary/output cells in that source sheet, prefer workbook-level names over direct cell addresses once the business meaning is stable.
 
+When Profit uses workbook-level names that point into `Trade Properties`, validate the name target as part of the migration. The visible Profit formula can look correct while the name itself points to `#REF!`. Known Cool Springs example: `Profit!O9` used `tradeMonthlyNetSpread`, but the name pointed to `#REF!`; it needed to point to `'Trade Properties'!$S$8`, the `Total Monthly Net Spread` output.
+
 ## Required Profit Validation
 
 Before marking a Profit migration complete, verify:
@@ -129,6 +131,7 @@ Before marking a Profit migration complete, verify:
 - closing-cost totals match the old/source detail where applicable
 - workbook links count is zero
 - workbook-level and sheet-scoped names do not point to external workbooks
+- workbook-level names used by Profit do not point to `#REF!`
 - the package has zero `xl/externalLinks` parts
 
 ## Lesson Capture
