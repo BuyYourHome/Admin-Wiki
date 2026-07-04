@@ -104,6 +104,8 @@ When an old Profit sheet stores a project value as a calculated output rather th
 
 When reconnecting Profit to `Gnatt Chart` expense totals, do not assume the approved template's source cell applies to every project. Map the `Gnatt Chart` total by label and old/source formula for each workbook. Known Pond example: Tensity used `Gnatt Chart!J5` for `Profit!B66`, but Pond's old Profit used `Gnatt Chart!I6`, where `F6` is labeled `Grand Total`; copying `J5` left the expense at zero.
 
+When a migrated Profit row feeds an adjacent percentage or payout row, remap and validate the paired downstream formula at the same time. Known Pond example: fixing new `Profit!B66` to the correct `Gnatt Chart` grand total was not enough; new `Profit!B68` still used the copied template formula `=IF(M13,0,+B67*SUM(B66:C66))`, while old Pond calculated Murphy's Cut from the Gantt total because old `Q12` was blank. The corrected Pond formula was `=+B67*SUM(B66:C66)`, matching the old Murphy's Cut value.
+
 ## Profit Formula Rules
 
 When rewiring Profit mode logic to a numeric selector such as `Profit!E1`, change only formulas that actually depend on mode labels like `B1`, `C1`, or `D1`.
