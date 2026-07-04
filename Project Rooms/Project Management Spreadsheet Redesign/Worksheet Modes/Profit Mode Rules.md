@@ -109,6 +109,8 @@ When a migrated Profit row feeds an adjacent percentage or payout row, remap and
 
 Some older project workbooks have pre-redesign Profit source sheets that do not share the modern row structure. In those cases, map by visible label and business meaning instead of modern source coordinates. Known Banks example: old `B8` Rent mapped to new `C9`, old `C35` Number of Rent Payments mapped to new `B9`, old `K4` Finalized `No` mapped to new `M13=FALSE`, old private-lender text `yes` mapped to the new boolean/control field, and old realtor toggles in `B32:B34` mapped to the new `W3:W5` helper controls.
 
+When a project has a real `Carrying` sheet, do not use the copied template carrying formulas blindly. Locate the project's own carrying summary row and map each Profit carrying category from that row by label. Known Pleasant Garden example: the actual carrying totals were on `Carrying!B47:Z47`, while copied formulas pointed to row 25 and produced errors.
+
 When a field exists in the approved Profit template but has no equivalent in an older source sheet, do not leave copied template errors in place. Set the field to a neutral value when the business meaning is clearly absent and verify downstream totals. Known Banks example: the newer `STR Expense` row had copied `#REF!` in `Profit!B29`; Banks had no old STR expense source, so `B29` was set to `0`, which cleared downstream `J29`, `J53`, and `J54` errors.
 
 Some older project workbooks can reject direct Excel automation writes to percentage, boolean, or text constants even when the same cells are ordinary inputs. In those cases, write mapped constants through the cell formula interface, using invariant numeric text such as `0.1`, `TRUE`, or `FALSE`, then recalculate and re-read the saved workbook. Known Pinetree example: direct writes to `Profit!C5` failed, while formula-constant writes preserved the intended 10% value.
@@ -132,6 +134,8 @@ Do not stop after replacing old sheet names. Verify no outside formulas still po
 When formulas outside a source sheet depend on summary/output cells in that source sheet, prefer workbook-level names over direct cell addresses once the business meaning is stable.
 
 When Profit uses workbook-level names that point into `Trade Properties`, validate the name target as part of the migration. The visible Profit formula can look correct while the name itself points to `#REF!`. Known Cool Springs example: `Profit!O9` used `tradeMonthlyNetSpread`, but the name pointed to `#REF!`; it needed to point to `'Trade Properties'!$S$8`, the `Total Monthly Net Spread` output.
+
+When validating the investor/annualized-return block, confirm formulas use the actual start/end date row, not the header labels. Known Pleasant Garden example: `Profit!L78:L82` referenced `DAYS(J73,H73)`, where row 73 contained headers; the formulas needed `DAYS(J$74,H$74)` to avoid visible `#VALUE!` errors.
 
 ## Required Profit Validation
 
