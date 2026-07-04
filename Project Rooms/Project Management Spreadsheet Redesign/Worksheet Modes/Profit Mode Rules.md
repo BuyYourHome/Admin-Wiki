@@ -96,6 +96,8 @@ When writing mapped Profit values through Excel automation:
 
 Known Rosebrooks failure: `Profit!B9` monthly rent was initially cleared instead of written as `0` because zero was treated like blank. That must not recur.
 
+When old Profit detail blocks shift rows in the approved template, map by label and business purpose, not by row number. Known Cool Springs example: old `F72:J72` carried `Days Invested`, `Start Date`, and `End Date`, while old `G74:J74` carried investor-distribution headers. In the new layout, `Profit!F74:J74` is the days/start/end row, so it must receive the old start/end date values, not the old investor headers.
+
 ## Profit Formula Rules
 
 When rewiring Profit mode logic to a numeric selector such as `Profit!E1`, change only formulas that actually depend on mode labels like `B1`, `C1`, or `D1`.
