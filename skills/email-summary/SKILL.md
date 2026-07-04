@@ -58,14 +58,14 @@ Before finalizing the summary body, run:
 
 Use the helper's JSON output to include a usage section in every daily summary email, both Boss and Jenny:
 
-- yesterday total process time from `yesterday.elapsed.human`,
-- week-to-date total process time from `week_to_date.elapsed.human`,
+- yesterday total wall-clock process time from `yesterday.elapsed.human`,
+- week-to-date total wall-clock process time from `week_to_date.elapsed.human`,
 - yesterday total tokens,
 - week-to-date total tokens,
 - rate-limit remaining percentages,
 - weekly token budget remaining only when `configured` is true.
 
-Lead this section with total time. Tokens and rate-limit details are secondary.
+Lead this section with total wall-clock time. Tokens and rate-limit details are secondary.
 
 If the helper fails or returns unreliable totals, state that usage totals were unavailable. Do not estimate them.
 
@@ -85,7 +85,7 @@ Do not say the email is on Wes's behalf unless the actual sending identity requi
 
 For Jenny's summary, write a concise plain-text email to Jenny. Include the mailbox scanned, cutoff used, priority items, low-priority exclusions when applicable, and a clear note if no priority messages were found.
 
-Also include the usage section in Jenny's daily summary, using the same day and week total-time and token totals included in Boss's summary.
+Also include the usage section in Jenny's daily summary, using the same day and week wall-clock total-time and token totals included in Boss's summary.
 
 ## Attachment Decision
 

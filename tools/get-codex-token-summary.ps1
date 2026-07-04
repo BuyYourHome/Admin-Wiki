@@ -60,13 +60,42 @@ function Add-SessionTimestamp($spans, [string]$SessionKey, [datetime]$TimestampL
 }
 
 function Get-SessionElapsed($spans) {
-    $totalSeconds = 0.0
-    foreach ($key in $spans.Keys) {
-        $span = $spans[$key]
-        $seconds = ($span.last - $span.first).TotalSeconds
-        if ($seconds -gt 0) {
-            $totalSeconds += $seconds
+    $intervals = @(
+        foreach ($key in $spans.Keys) {
+            $span = $spans[$key]
+            if ($span.last -gt $span.first) {
+                [pscustomobject]@{
+                    start = $span.first
+                    end = $span.last
+                }
+            }
         }
+    ) | Sort-Object start
+
+    $totalSeconds = 0.0
+    $currentStart = $null
+    $currentEnd = $null
+    foreach ($interval in $intervals) {
+        if ($null -eq $currentStart) {
+            $currentStart = $interval.start
+            $currentEnd = $interval.end
+            continue
+        }
+
+        if ($interval.start -le $currentEnd) {
+            if ($interval.end -gt $currentEnd) {
+                $currentEnd = $interval.end
+            }
+            continue
+        }
+
+        $totalSeconds += ($currentEnd - $currentStart).TotalSeconds
+        $currentStart = $interval.start
+        $currentEnd = $interval.end
+    }
+
+    if ($null -ne $currentStart) {
+        $totalSeconds += ($currentEnd - $currentStart).TotalSeconds
     }
 
     $roundedSeconds = [int64][math]::Round($totalSeconds, 0)
