@@ -9,7 +9,7 @@ description: Create Wes's and Jenny's daily OfficeAssist morning mailbox summari
 
 Create the daily Boss summary for `WesWill@BuyYourHomeLLC.com`, then hand off delivery to the shared `email-delivery` skill. Create the daily Jenny summary for `Jenny@BuyYourHomeLLC.com`, then hand off delivery to the shared `email-delivery` skill for sending to Jenny from OfficeAssist.
 
-This skill owns mailbox scanning, cutoff selection, message prioritization, summary drafting, token-summary inclusion, and summary-run state updates. It does not own sender safety or send verification.
+This skill owns mailbox scanning, cutoff selection, message prioritization, summary drafting, usage-summary inclusion, and summary-run state updates. It does not own sender safety or send verification.
 
 Development notes, source inventory, and open questions for this workflow live in `C:\Codex\Wiki Files\Project Rooms\Email Summary\`.
 
@@ -22,7 +22,7 @@ Before using this skill, have:
 - the automation memory file for this workflow at `C:\Users\wesbr\.codex\automations\officeassist-morning-email-summary-and-instruction-monitor\memory.md`,
 - access to `WesWill@BuyYourHomeLLC.com` mailbox contents,
 - access to `Jenny@BuyYourHomeLLC.com` mailbox contents when running Jenny's summary,
-- access to `C:\Codex\Wiki Files\tools\get-codex-token-summary.ps1` when token totals are needed.
+- access to `C:\Codex\Wiki Files\tools\get-codex-token-summary.ps1` when usage totals are needed.
 
 ## Workflow
 
@@ -50,20 +50,24 @@ Prefer these message classes in the summary:
 
 Do not pad the summary with low-signal marketing mail just because it is unread.
 
-## Token Section
+## Usage Section
 
 Before finalizing the summary body, run:
 
 `powershell -ExecutionPolicy Bypass -File "C:\Codex\Wiki Files\tools\get-codex-token-summary.ps1"`
 
-Use the helper's JSON output to include a token section in every daily summary email, both Boss and Jenny:
+Use the helper's JSON output to include a usage section in every daily summary email, both Boss and Jenny:
 
+- yesterday total process time from `yesterday.elapsed.human`,
+- week-to-date total process time from `week_to_date.elapsed.human`,
 - yesterday total tokens,
 - week-to-date total tokens,
 - rate-limit remaining percentages,
 - weekly token budget remaining only when `configured` is true.
 
-If the helper fails or returns unreliable totals, state that token totals were unavailable. Do not estimate them.
+Lead this section with total time. Tokens and rate-limit details are secondary.
+
+If the helper fails or returns unreliable totals, state that usage totals were unavailable. Do not estimate them.
 
 ## Summary Body
 
@@ -73,7 +77,7 @@ Include:
 
 - the cutoff used,
 - a short priority list ordered by urgency,
-- the token section,
+- the usage section,
 - a one-line note that low-priority promotional/newsletter traffic was excluded when applicable,
 - signature as `Jean Wright` / `Office Assistant`.
 
@@ -81,7 +85,7 @@ Do not say the email is on Wes's behalf unless the actual sending identity requi
 
 For Jenny's summary, write a concise plain-text email to Jenny. Include the mailbox scanned, cutoff used, priority items, low-priority exclusions when applicable, and a clear note if no priority messages were found.
 
-Also include the token section in Jenny's daily summary, using the same day and week totals included in Boss's summary.
+Also include the usage section in Jenny's daily summary, using the same day and week total-time and token totals included in Boss's summary.
 
 ## Attachment Decision
 

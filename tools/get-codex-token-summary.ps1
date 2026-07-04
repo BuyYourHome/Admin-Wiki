@@ -42,6 +42,47 @@ function Get-PercentRemaining($usedPercent) {
     return [math]::Round($remaining, 2)
 }
 
+function Add-SessionTimestamp($spans, [string]$SessionKey, [datetime]$TimestampLocal) {
+    if (-not $spans.ContainsKey($SessionKey)) {
+        $spans[$SessionKey] = @{
+            first = $TimestampLocal
+            last = $TimestampLocal
+        }
+        return
+    }
+
+    if ($TimestampLocal -lt $spans[$SessionKey].first) {
+        $spans[$SessionKey].first = $TimestampLocal
+    }
+    if ($TimestampLocal -gt $spans[$SessionKey].last) {
+        $spans[$SessionKey].last = $TimestampLocal
+    }
+}
+
+function Get-SessionElapsed($spans) {
+    $totalSeconds = 0.0
+    foreach ($key in $spans.Keys) {
+        $span = $spans[$key]
+        $seconds = ($span.last - $span.first).TotalSeconds
+        if ($seconds -gt 0) {
+            $totalSeconds += $seconds
+        }
+    }
+
+    $roundedSeconds = [int64][math]::Round($totalSeconds, 0)
+    $timeSpan = [TimeSpan]::FromSeconds($roundedSeconds)
+    $parts = @()
+    if ($timeSpan.Days -gt 0) { $parts += "$($timeSpan.Days)d" }
+    if ($timeSpan.Hours -gt 0) { $parts += "$($timeSpan.Hours)h" }
+    if ($timeSpan.Minutes -gt 0) { $parts += "$($timeSpan.Minutes)m" }
+    if ($parts.Count -eq 0) { $parts += "$($timeSpan.Seconds)s" }
+
+    return [pscustomobject]@{
+        seconds = $roundedSeconds
+        human = ($parts -join " ")
+    }
+}
+
 $codexHome = if ($env:CODEX_HOME) { $env:CODEX_HOME } else { Join-Path $env:USERPROFILE ".codex" }
 $roots = @((Join-Path $codexHome "sessions"))
 if ($Source -eq "all") {
@@ -69,6 +110,8 @@ $yesterdayUsage = New-Usage
 $weekUsage = New-Usage
 $yesterdaySessions = [System.Collections.Generic.HashSet[string]]::new()
 $weekSessions = [System.Collections.Generic.HashSet[string]]::new()
+$yesterdaySessionSpans = @{}
+$weekSessionSpans = @{}
 $latestRateLimit = $null
 $latestRateLimitTimestamp = $null
 
@@ -117,11 +160,13 @@ foreach ($file in $files) {
         if ($timestampLocal -ge $yesterdayStart -and $timestampLocal -lt $yesterdayEnd) {
             Add-Usage $yesterdayUsage $usage
             [void]$yesterdaySessions.Add($sessionKey)
+            Add-SessionTimestamp $yesterdaySessionSpans $sessionKey $timestampLocal
         }
 
         if ($timestampLocal -ge $weekStart -and $timestampLocal -lt $weekEnd) {
             Add-Usage $weekUsage $usage
             [void]$weekSessions.Add($sessionKey)
+            Add-SessionTimestamp $weekSessionSpans $sessionKey $timestampLocal
         }
     }
 }
@@ -183,11 +228,13 @@ $result = [pscustomobject]@{
         start = $yesterdayStart.ToString("o")
         end = $yesterdayEnd.ToString("o")
         usage = [pscustomobject]$yesterdayUsage
+        elapsed = Get-SessionElapsed $yesterdaySessionSpans
     }
     week_to_date = [pscustomobject]@{
         start = $weekStart.ToString("o")
         end = $weekEnd.ToString("o")
         usage = [pscustomobject]$weekUsage
+        elapsed = Get-SessionElapsed $weekSessionSpans
     }
     rate_limit_remaining = $rateLimitSummary
     weekly_budget_remaining = $weeklyBudgetSummary
