@@ -56,7 +56,7 @@ Before finalizing the summary body, run:
 
 `powershell -ExecutionPolicy Bypass -File "C:\Codex\Wiki Files\tools\get-codex-token-summary.ps1"`
 
-Use the helper's JSON output to include:
+Use the helper's JSON output to include a token section in every daily summary email, both Boss and Jenny:
 
 - yesterday total tokens,
 - week-to-date total tokens,
@@ -80,6 +80,8 @@ Include:
 Do not say the email is on Wes's behalf unless the actual sending identity requires that wording.
 
 For Jenny's summary, write a concise plain-text email to Jenny. Include the mailbox scanned, cutoff used, priority items, low-priority exclusions when applicable, and a clear note if no priority messages were found.
+
+Also include the token section in Jenny's daily summary, using the same day and week totals included in Boss's summary.
 
 ## Attachment Decision
 
