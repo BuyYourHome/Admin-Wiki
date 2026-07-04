@@ -18,6 +18,7 @@ This draft stays in the project room until the process is proven. Do not copy it
 - For `.xlsm` table-driven project workbooks, prefer Excel-native automation for edits and saves. Do not rewrite the workbook through libraries that strip table/query/external-data metadata.
 - Treat the template as structure, formatting, formulas, tables, queries, relationships, and VBA.
 - Treat the source workbook as project values and project-specific table rows.
+- Before setting any project-specific values on any migrated worksheet, build a full value map for that exact project and worksheet. Do not reuse another project's map as an assumption. Compare the target worksheet against that same project's source or archived old sheet after mapping, and do not mark the workbook complete until the mapped values reconcile.
 - At completion of every workbook conversion, migration, or sheet-swap run, write any new lesson, failure mode, validation requirement, connector behavior, formula drift, or rollback issue discovered during that run into the appropriate durable rule file before marking the work complete. If there were no new reusable lessons, say that in the final response.
 - Do not allow constants from a real project template to survive unless explicitly approved as defaults.
 - After every generated workbook, reopen with Excel before delivery. If Excel reports repair/recovery, discard that output and diagnose before continuing.
@@ -54,16 +55,18 @@ Process:
 4. Inspect source workbook structure and map tabs before editing.
 5. Open a copy of the clean template with Excel automation.
 6. Clear target input/table areas that will receive source data.
-7. Populate only mapped source values and rows.
-8. Preserve target formulas unless a documented rule says to replace them.
-9. Recalculate/save/reopen in Excel.
-10. Run formula drift and template-residue audits.
-11. Write the verified workbook back through the SharePoint/Teams connector when the request is to update the live Teams workbook.
-12. Produce reconciliation notes before review.
+7. Build a complete source-to-target value map for this workbook's current worksheet. The map must be based on this project only, using labels, business meaning, named ranges, and archived old-sheet values as needed; do not assume the mapping from a prior project applies.
+8. Populate only mapped source values and rows.
+9. Preserve target formulas unless a documented rule says to replace them.
+10. Recalculate/save/reopen in Excel.
+11. Run formula drift, template-residue, and per-workbook mapped-value audits.
+12. Write the verified workbook back through the SharePoint/Teams connector when the request is to update the live Teams workbook.
+13. Produce reconciliation notes before review.
 
 Required audits:
 - Formula audit: known formula cells match the approved formula map.
 - Template-residue audit: constant/input cells either came from source mapping or are intentionally blank/defaulted.
+- Mapped-value audit: key values on the migrated worksheet reconcile against the same workbook's source or archived old sheet, not against another project or the template.
 - Table integrity audit: key structured-reference formulas still resolve to table names, not `#REF!`.
 - Excel open audit: no repair/recovery prompt.
 
