@@ -63,6 +63,8 @@ For mode selector option buttons such as the `Profit!B1:D1` Flip/Hold/Slow Flip 
 
 A correct `E1` value with missing, unlinked, or wrong selected buttons is not a successful Profit migration.
 
+When recreating form-control option buttons, preserve creation order. Excel assigns the linked-cell numeric value by option-button group order, not by the cell the button visually covers. If one button is missing, do not simply append it after the existing controls; rebuild or copy the whole `B1:D1` group so `B1=1`, `C1=2`, and `D1=3`.
+
 ## Checkbox And Control Values
 
 Treat in-cell checkboxes, option buttons, and other controls as part of the Profit design, not as ordinary text values.
@@ -77,6 +79,10 @@ Known example:
 - If an old Profit sheet has `yes` in the corresponding private-lender active field, map it to checked/`TRUE`, not literal text `yes`.
 
 After save, verify both the underlying linked/value cell and the visible control behavior or display.
+
+When writing form-control checkboxes, set both the linked helper cell and the control state, then re-read the helper cells after saving. Excel can overwrite helper cells from control state during save or recalculation if the sequencing is wrong.
+
+If a checkbox disables a related amount, confirm whether formulas still include the amount independently. Known example: if `Profit!C43` is `FALSE`, `Profit!B44` must not retain a copied private-lender debt amount if downstream formulas such as total debt still include `B44`.
 
 ## Merged Cells And Zero Values
 
@@ -126,4 +132,3 @@ Before marking a Profit migration complete, verify:
 ## Lesson Capture
 
 At completion of every Profit-mode workbook update, write new reusable lessons to this file before marking the work complete. If there were no new Profit-specific lessons, say that in the final response.
-
