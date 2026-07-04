@@ -21,6 +21,7 @@ Included:
 - Template workbook: `template-reference\26_Project Management - 908 Pond St 3 - template.xlsm`
 - Carrying reference workbook: `template-reference\19_Project Management - 1426 Pleasant Garden Ln - Carrying reference.xlsx`
 - Authoritative conversion rules: `Project Spreadsheet Expense Placement Rules.md`
+- Worksheet-mode rules: `Worksheet Modes\`
 
 Excluded unless Wes explicitly approves:
 
@@ -39,6 +40,8 @@ Excluded unless Wes explicitly approves:
 - Rebuild table rows completely from source data.
 - Expand visible grids so they show all migrated source rows, not just the old fixed display height.
 - Reconcile source totals to output totals before calling a conversion ready for review.
+- Before each worksheet-specific redesign or rollout task, identify the active worksheet mode and read the matching file under `Worksheet Modes\`.
+- Record new reusable lessons in the matching worksheet-mode file, not only in the broad project rule file.
 
 ## Current Status
 

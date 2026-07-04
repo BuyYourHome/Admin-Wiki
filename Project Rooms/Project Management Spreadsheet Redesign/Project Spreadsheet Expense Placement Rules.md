@@ -383,6 +383,8 @@ Implementation note:
 
 At completion of every project workbook conversion, migration, sheet swap, or similar spreadsheet update, record any new reusable lesson in the appropriate durable rule file before treating the work as complete.
 
+For worksheet-specific work, first identify the active worksheet mode and record worksheet-specific lessons in the matching file under `Worksheet Modes\`, such as `Worksheet Modes\Profit Mode Rules.md` for Profit mode. Use this broad file for cross-mode connector, rollback, workbook-integrity, and general rollout rules.
+
 Capture lessons such as connector discovery, freshness, upload, or permission behavior; workbook-open, Excel automation, link-breaking, or macro-enabled save behavior; template formula/layout differences from prior assumptions; validation checks that caught an issue or should be repeated next time; formula-driven value changes that need to be logged for Wes; and rollback, migration-log, or post-upload verification issues.
 
 If a run produced no new reusable lesson, state that in the final response. Do not leave a reusable lesson only in a chat message or one-off migration log.
