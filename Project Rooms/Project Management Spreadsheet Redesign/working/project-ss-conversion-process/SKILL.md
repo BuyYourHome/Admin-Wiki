@@ -19,6 +19,7 @@ This draft stays in the project room until the process is proven. Do not copy it
 - Treat the template as structure, formatting, formulas, tables, queries, relationships, and VBA.
 - Treat the source workbook as project values and project-specific table rows.
 - Before setting any project-specific values on any migrated worksheet, build a full value map for that exact project and worksheet. Do not reuse another project's map as an assumption. Compare the target worksheet against that same project's source or archived old sheet after mapping, and do not mark the workbook complete until the mapped values reconcile.
+- Map checkbox and option-control fields as controls. If the approved template uses an in-cell checkbox, option button, or other control linked to a cell, preserve or recreate that control display and map old text or numeric source values into the TRUE/FALSE or selected-state value. Do not replace a control cell with visible text such as `yes`.
 - At completion of every workbook conversion, migration, or sheet-swap run, write any new lesson, failure mode, validation requirement, connector behavior, formula drift, or rollback issue discovered during that run into the appropriate durable rule file before marking the work complete. If there were no new reusable lessons, say that in the final response.
 - Do not allow constants from a real project template to survive unless explicitly approved as defaults.
 - After every generated workbook, reopen with Excel before delivery. If Excel reports repair/recovery, discard that output and diagnose before continuing.
@@ -67,6 +68,7 @@ Required audits:
 - Formula audit: known formula cells match the approved formula map.
 - Template-residue audit: constant/input cells either came from source mapping or are intentionally blank/defaulted.
 - Mapped-value audit: key values on the migrated worksheet reconcile against the same workbook's source or archived old sheet, not against another project or the template.
+- Control audit: in-cell checkboxes, option buttons, and other controls that exist in the approved template still exist or display the same way, are on the intended worksheet, and hold the intended linked/value state after source values are mapped.
 - Table integrity audit: key structured-reference formulas still resolve to table names, not `#REF!`.
 - Excel open audit: no repair/recovery prompt.
 
