@@ -102,6 +102,8 @@ When old Profit detail blocks shift rows in the approved template, map by label 
 
 When an old Profit sheet stores a project value as a calculated output rather than in the matching input cell, map the value by business meaning and document the source used. Known Pond example: old `Profit - Old 0703!C15` was blank, but old `E15` held the subject-to balance output; new `Profit!C15` needed that balance input instead of a blank copied from the old input position.
 
+When reconnecting Profit to `Gnatt Chart` expense totals, do not assume the approved template's source cell applies to every project. Map the `Gnatt Chart` total by label and old/source formula for each workbook. Known Pond example: Tensity used `Gnatt Chart!J5` for `Profit!B66`, but Pond's old Profit used `Gnatt Chart!I6`, where `F6` is labeled `Grand Total`; copying `J5` left the expense at zero.
+
 ## Profit Formula Rules
 
 When rewiring Profit mode logic to a numeric selector such as `Profit!E1`, change only formulas that actually depend on mode labels like `B1`, `C1`, or `D1`.
