@@ -7,4 +7,4 @@ Before doing workbook work, identify the active worksheet mode and read that mod
 Current mode files:
 
 - `Profit Mode Rules.md`
-
+- `Docs Mode Rules.md`
