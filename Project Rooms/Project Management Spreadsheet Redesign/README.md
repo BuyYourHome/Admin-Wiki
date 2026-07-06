@@ -47,6 +47,10 @@ Excluded unless Wes explicitly approves:
 
 Project room created. Conversion has not started.
 
+## Matching Skill
+
+- Skill source: `C:\Codex\Wiki Files\skills\project-management-spreadsheet-redesign\SKILL.md`
+
 ## Next Actions
 
 1. Start a new chat with the prompt in `prompts\start-pinetree-conversion.md`.

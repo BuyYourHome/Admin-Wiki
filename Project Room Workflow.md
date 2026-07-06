@@ -4,6 +4,8 @@ Use an AI Project Room for any task that depends on multiple source files, email
 
 The purpose is to prepare the source set before drafting, analyzing, rewriting, or making recommendations. Do not ask Codex to produce a final deliverable from a messy folder. Build the room first.
 
+For repeatable workflow roles that combine a Project Room, skill, registry entry, chat/thread, or automation, also follow [[Agent Unit Standard]].
+
 ## When To Use
 
 Use this workflow when:
@@ -75,4 +77,3 @@ When drafting from a Project Room, Codex must distinguish:
 - unsupported items that still need confirmation.
 
 Unsupported factual claims should be marked `[UNSUPPORTED]` in working drafts instead of being smoothed over.
-

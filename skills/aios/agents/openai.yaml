@@ -1,0 +1,4 @@
+interface:
+  display_name: "AIOS"
+  short_description: "Maintain the Admin wiki AIOS startup and routing overlay."
+  default_prompt: "Use the AIOS skill to work on startup files, vault maps, privacy rules, and AIOS project-room planning."

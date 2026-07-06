@@ -1,0 +1,4 @@
+interface:
+  display_name: "Property Trade Evaluation"
+  short_description: "Evaluate property trade proposals and term-sheet outputs."
+  default_prompt: "Use the Property Trade Evaluation skill to inventory sources, analyze trade structures, and prepare review-ready outputs."

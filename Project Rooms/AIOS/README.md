@@ -20,6 +20,10 @@ Wes requested a new project room for AIOS. No source materials or final output r
 
 AIOS overlay completed through step 12 as a non-destructive ACE index implementation. The root `AIOS/` folder exists with startup, identity, vault-map, skills-map, ACE indexes, privacy-rule, maintenance-log, and tool-startup pointer files. A smoke test confirmed the startup files and representative routing paths, followed by a step-11 hardening pass. No existing folders have been moved or renamed.
 
+## Matching Skill
+
+- Skill source: `C:\Codex\Wiki Files\skills\aios\SKILL.md`
+
 ## Implementation Timing
 
 Wes expects to ask for implementation later when he does not need active access to the wiki. Do not start structural AIOS implementation during a time when Wes needs uninterrupted working access unless he explicitly approves that timing.

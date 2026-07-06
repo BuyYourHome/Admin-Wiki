@@ -37,6 +37,10 @@ Status: active.
 
 The SOP corpus was moved into this Project Room on 2026-06-15 so future SOP work has one durable home.
 
+## Matching Skill
+
+- Skill source: `C:\Codex\Wiki Files\skills\sops\SKILL.md`
+
 ## Next Actions
 
 - Use `working\source-inventory.md` before any large SOP rewrite or reconciliation.

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Gracious Millionaire"
+  short_description: "Process Gracious Millionaire project-room sources and drafts."
+  default_prompt: "Use the Gracious Millionaire skill to route sources, update working notes, and prepare review-ready book outputs."

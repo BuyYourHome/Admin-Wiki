@@ -1,0 +1,4 @@
+interface:
+  display_name: "SOPs"
+  short_description: "Create, reconcile, and maintain Buy Your Home SOPs."
+  default_prompt: "Use the SOPs skill to work from the SOPs Project Room, source map, review questions, and SOP index."

@@ -34,6 +34,11 @@ Excluded for now:
 - Working notes: `working\`
 - Outputs: `outputs\`
 
+## Matching Skill
+
+- Skill source: `C:\Codex\Wiki Files\skills\project-management-spreadsheet-redesign\SKILL.md`
+- Use the Redesign skill for active spreadsheet redesign and rollout work. Treat this room as planning/history unless Wes specifically asks to work here.
+
 ## Working Templates
 
 - Buyer proposal email template: `working\Buyer proposal email template.md`

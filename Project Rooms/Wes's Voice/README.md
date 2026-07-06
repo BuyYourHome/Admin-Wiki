@@ -20,6 +20,10 @@ Wes wants to connect usable technologies that can:
 - Controlling source: Wes's project instruction in the Codex thread on 2026-06-24.
 - Next action: decide the first use case and gather candidate technology sources.
 
+## Matching Skill
+
+- Skill source: `C:\Codex\Wiki Files\skills\wes-voice\SKILL.md`
+
 ## Initial Workstreams
 
 1. Voice capture and consent

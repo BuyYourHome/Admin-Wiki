@@ -4,6 +4,8 @@ This is the human-readable control panel for agent-like work in the Buy Your Hom
 
 Codex does not currently show every role below in one unified "Agents" list. Some are scheduled automations, some are skills, some are durable wiki rules, and some are project rooms. This registry maps the practical role name to where it is actually defined.
 
+Use [[Agent Unit Standard]] for the standard package behind an agent-like operating unit: Project Room, skill, registry entry, chat/thread when any, and automation only when needed.
+
 ## Summary
 
 | Name | Type | Status | Schedule | Primary Definition |
@@ -17,6 +19,7 @@ Codex does not currently show every role below in one unified "Agents" list. Som
 | Document Scanning | Wiki-managed skill plus heartbeat automation plus project room | Active | Every 30 minutes from 10:00 AM through 4:30 PM Eastern | `skills\document-scanning\SKILL.md`; `Project Rooms\Document Scan\README.md`; `C:\Users\wesbr\.codex\skills\document-scanning\SKILL.md`; app automation id `document-scanning` |
 | Codex Skill Source Control | Wiki-managed skill system | Active | On demand after skill changes or wiki pulls | `Codex Skill Source Rule.md`; `tools\sync-codex-skills.ps1`; `skills\` |
 | Admin Request Wrapup | Wiki-managed skill | Active | At the end of Admin wiki requests | `skills\admin-request-wrapup\SKILL.md`; `AGENTS.md` |
+| SOPs | Wiki-managed skill plus project room | Active | On demand | `skills\sops\SKILL.md`; `Project Rooms\SOPs\README.md`; `Project Rooms\SOPs\outputs\SOP Index.md` |
 | Credit Worthiness Evaluator | Wiki-managed skill plus project room | Active | On demand | `skills\credit-worthiness-evaluator\SKILL.md`; `Project Rooms\Credit Worthiness Evaluator\README.md` |
 | Contract for Deed | Wiki-managed skill plus project room | Active | On demand | `skills\contract-for-deed\SKILL.md`; `Project Rooms\Contract for Deed\PROJECT-ROOM.md` |
 | Operating Agreement | Wiki-managed skill plus project room | Draft | On demand | `skills\operating-agreement\SKILL.md`; `Project Rooms\Operating Agreements\README.md` |
@@ -24,7 +27,13 @@ Codex does not currently show every role below in one unified "Agents" list. Som
 | CMA Report | Wiki-managed skill | Active | On demand when a CMA or property report is created | `skills\cma-report\SKILL.md` |
 | Grocery List Handler | Wiki rule and data workflow | Active | On demand, including approved Boss/Jenny text instructions | `operations/grocery-list/` |
 | AI Project Room Workflow | Wiki workflow | Active | On demand before complex multi-source work | `Project Room Workflow.md` |
-| Project Management Spreadsheet Rewrite | Project Room | Active/planning | On demand | `Project Rooms\Project Management Spreadsheet Rewrite\README.md` |
+| AIOS | Wiki-managed skill plus project room | Active/planning | On demand | `skills\aios\SKILL.md`; `Project Rooms\AIOS\README.md`; `AIOS\start-here.md` |
+| Entity Relationship | Wiki-managed skill plus project room | Active/planning | On demand | `skills\entity-relationship\SKILL.md`; `Project Rooms\Entity Relationship\README.md` |
+| Gracious Millionaire | Wiki-managed skill plus project room plus heartbeat automation | Active | Project-room heartbeat every 15 minutes during active window; on demand otherwise | `skills\gracious-millionaire\SKILL.md`; `Project Rooms\Gracious Millionaire\README.md`; `Project Rooms\Gracious Millionaire\working\intake-heartbeat-rules.md`; automation id `gracious-millionaire-project-room-heartbeat` |
+| Project Management Spreadsheet Redesign | Wiki-managed skill plus project room | Active | On demand | `skills\project-management-spreadsheet-redesign\SKILL.md`; `Project Rooms\Project Management Spreadsheet Redesign\README.md`; `Project Rooms\Project Management Spreadsheet Redesign\Project Spreadsheet Expense Placement Rules.md` |
+| Project Management Spreadsheet Rewrite | Planning project room, now covered by Spreadsheet Redesign skill | Active/planning | On demand | `skills\project-management-spreadsheet-redesign\SKILL.md`; `Project Rooms\Project Management Spreadsheet Rewrite\README.md` |
+| Property Trade Evaluation | Wiki-managed skill plus project room | Active | On demand | `skills\property-trade-evaluation\SKILL.md`; `Project Rooms\Property Trade Evaluation\README.md` |
+| Wes's Voice | Wiki-managed skill plus project room | Planning | On demand | `skills\wes-voice\SKILL.md`; `Project Rooms\Wes's Voice\README.md` |
 | New Project | Wiki-managed skill plus project room | Draft | On demand | `skills\new-project\SKILL.md`; `Project Rooms\New Project\README.md` |
 | Investigate Computer | Wiki-managed skill plus project room plus heartbeat automation | Active | Daily at 6:00 AM Eastern; email Wes only when an issue is detected | `skills\investigate-computer\SKILL.md`; `Project Rooms\Investigate Computer\README.md`; app automation id `investigate-computer-daily-check` |
 | Jenny Daily Email Summary | Behavior inside Email Summary heartbeat | Active | Runs once daily at/after 8:00 AM Eastern with the Email Summary heartbeat; emails Jenny from OfficeAssist and verifies Sent Items | `skills\email-summary\SKILL.md`; `Email Summary` prompt notes |

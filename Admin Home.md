@@ -10,6 +10,7 @@ This is the starting page for the Buy Your Home admin wiki.
 - [[AIOS/calendar-index|AIOS Calendar Index]]
 - [[AIOS/efforts-index|AIOS Efforts Index]]
 - [[Agents and Automations Registry]]
+- [[Agent Unit Standard]]
 - [[Connector and Plugin Usage Rules]]
 - [[Project Rooms/SOPs/README|SOPs Project Room]]
 - [[Project Rooms/Email Summary/README|Email Summary Project Room]]

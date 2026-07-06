@@ -1,0 +1,4 @@
+interface:
+  display_name: "Entity Relationship"
+  short_description: "Create source-backed entity relationship diagrams and summaries."
+  default_prompt: "Use the Entity Relationship skill to build supported diagrams and relationship notes from the project room."

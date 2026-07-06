@@ -1,5 +1,9 @@
 # Gracious Millionaire
 
+## Matching Skill
+
+- Skill source: `C:\Codex\Wiki Files\skills\gracious-millionaire\SKILL.md`
+
 ## Purpose
 
 This project room gathers source material for a book called *Gracious Millionaire*.
