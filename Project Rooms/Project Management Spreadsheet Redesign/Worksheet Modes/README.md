@@ -6,5 +6,8 @@ Before doing workbook work, identify the active worksheet mode and read that mod
 
 Current mode files:
 
+- `Amortization Mode Rules.md`
 - `Profit Mode Rules.md`
 - `Docs Mode Rules.md`
+- `Gnatt Chart Mode Rules.md`
+- `Trade Properties Mode Rules.md`

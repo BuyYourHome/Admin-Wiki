@@ -103,9 +103,7 @@ When old Profit detail blocks shift rows in the approved template, map by label 
 
 When an old Profit sheet stores a project value as a calculated output rather than in the matching input cell, map the value by business meaning and document the source used. Known Pond example: old `Profit - Old 0703!C15` was blank, but old `E15` held the subject-to balance output; new `Profit!C15` needed that balance input instead of a blank copied from the old input position.
 
-When reconnecting Profit to `Gnatt Chart` expense totals, do not assume the approved template's source cell applies to every project. Map the `Gnatt Chart` total by label and old/source formula for each workbook. Known Pond example: Tensity used `Gnatt Chart!J5` for `Profit!B66`, but Pond's old Profit used `Gnatt Chart!I6`, where `F6` is labeled `Grand Total`; copying `J5` left the expense at zero.
-
-When a migrated Profit row feeds an adjacent percentage or payout row, remap and validate the paired downstream formula at the same time. Known Pond example: fixing new `Profit!B66` to the correct `Gnatt Chart` grand total was not enough; new `Profit!B68` still used the copied template formula `=IF(M13,0,+B67*SUM(B66:C66))`, while old Pond calculated Murphy's Cut from the Gantt total because old `Q12` was blank. The corrected Pond formula was `=+B67*SUM(B66:C66)`, matching the old Murphy's Cut value.
+For Profit formulas that reconnect to `Gnatt Chart` totals, also read `Gnatt Chart Mode Rules.md`.
 
 Some older project workbooks have pre-redesign Profit source sheets that do not share the modern row structure. In those cases, map by visible label and business meaning instead of modern source coordinates. Known Banks example: old `B8` Rent mapped to new `C9`, old `C35` Number of Rent Payments mapped to new `B9`, old `K4` Finalized `No` mapped to new `M13=FALSE`, old private-lender text `yes` mapped to the new boolean/control field, and old realtor toggles in `B32:B34` mapped to the new `W3:W5` helper controls.
 
