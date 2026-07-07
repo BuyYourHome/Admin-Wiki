@@ -4,7 +4,7 @@ This is the human-readable control panel for agent-like work in the Buy Your Hom
 
 Codex does not currently show every role below in one unified "Agents" list. Some are scheduled automations, some are skills, some are durable wiki rules, and some are project rooms. This registry maps the practical role name to where it is actually defined.
 
-Use [[Agent Unit Standard]] for the standard package behind an agent-like operating unit: Project Room, skill, registry entry, chat/thread when any, and automation only when needed.
+Use [[Agent Unit Standard]] for the standard package behind an agent-like operating unit: Project Room, skill, registry entry, chat/thread when any, and automation only when needed. Use [[Project Room Chat Startup Rule]] when creating or resuming Project Room chats.
 
 ## Summary
 

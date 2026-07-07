@@ -16,6 +16,8 @@ Each agent unit should identify these parts:
 | Chat Or Thread | Active discussion and development surface when one exists. |
 | Automation | Scheduled or event-triggered runner only when the workflow needs it. |
 
+Project Room chats must follow [[Project Room Chat Startup Rule]] so new chats self-correct to `C:\Codex\Wiki Files` before doing file work.
+
 ## Project Room Minimum
 
 Each substantial Project Room should contain:
