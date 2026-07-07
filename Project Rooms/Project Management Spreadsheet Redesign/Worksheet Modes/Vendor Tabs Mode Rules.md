@@ -35,3 +35,24 @@ This initial mode list came from the current local Outrigger working copy review
 `C:\Codex\Wiki Files\Project Rooms\Project Management Spreadsheet Redesign\working\profit-mode\full-profit-rerun-outrigger-20260707\27_Project Management - 7001 Outrigger Dr.current.xlsm`
 
 Before editing or uploading an active workbook, follow the project-management spreadsheet rules for confirming the exact target workbook, verifying the current SharePoint/Teams source, making rollback copies, and validating the saved workbook.
+
+## Actual-Invoice Table Pattern
+
+The Outrigger `Flooring` tab now uses the first approved actual-invoice table pattern.
+
+Current pilot table:
+
+- Workbook: `Property/27_Project Management - 7001 Outrigger Dr.xlsm`
+- Worksheet: `Flooring`
+- Table name: `tblFlooringInvoices`
+- Table range: `Flooring!A7:H20`
+- Columns: `Date`, `Description`, `Sq Ft`, `Item #`, `Qty`, `Cost/Unit`, `Sub-Total`, `Tax`
+
+Pattern rules:
+
+- The table replaces the loose yellow actual-invoice entry block for the pilot worksheet.
+- Keep orange template-estimate rows separate from the table.
+- Preserve the worksheet selector behavior. For the pilot, `Flooring!I21` sums the table only when `Flooring!L1` is `No`.
+- Formula columns should use structured references rather than row-only formulas.
+- Preserve yellow fill for user-entry cells and protected/formula color conventions for calculated cells.
+- Do not roll this table pattern to the rest of Vendor Tabs Mode until Wes approves the pilot behavior.

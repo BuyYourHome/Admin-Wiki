@@ -88,3 +88,20 @@ Updated on 2026-07-07:
 - Dropdown choices: `Demo & Trash Haul`, `Appliances`, `Plumbing Fixtures`, `Windows & Doors`, `Cabinets`, `Paint`, `Flooring`, `HVAC`, `Electrical Fixtures`, `Landscape`, `STR`, `Exterior`, `Furnishing`.
 - Verified `Review!A2` has Excel list validation and the workbook has zero workbook links.
 - Uploaded the updated workbook to Teams/SharePoint through the SharePoint connector signed in as `OfficeAssist@BuyYourHomeLLC.com`.
+
+## Flooring Actual-Invoice Table
+
+Updated on 2026-07-07:
+
+- Converted the `Flooring` yellow actual-invoice section into Excel table `tblFlooringInvoices`.
+- Table range: `Flooring!A7:H20`.
+- Columns: `Date`, `Description`, `Sq Ft`, `Item #`, `Qty`, `Cost/Unit`, `Sub-Total`, `Tax`.
+- Preserved Atlantic Discount Flooring invoice `001199` in the first data row.
+- Converted the row formulas to structured references:
+  - `Sub-Total`: `=[@[Sq Ft]]*[@[Cost/Unit]]*[@Qty]`
+  - `Tax`: `=+[@[Sub-Total]]*0.0725`
+- Updated `Flooring!I21` to sum the table when `Flooring!L1` is `No`.
+- Left `Flooring!L1` unchanged at `Yes`, so the current visible Flooring/Gnatt totals still use the template estimate.
+- Verified workbook links: zero.
+- Verified external-link package parts: zero.
+- Uploaded the updated workbook to Teams/SharePoint through the SharePoint connector signed in as `OfficeAssist@BuyYourHomeLLC.com`.
