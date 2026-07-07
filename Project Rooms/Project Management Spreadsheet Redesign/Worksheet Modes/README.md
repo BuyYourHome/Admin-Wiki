@@ -13,3 +13,4 @@ Current mode files:
 - `Docs Mode Rules.md`
 - `Gnatt Chart Mode Rules.md`
 - `Trade Properties Mode Rules.md`
+- `Vendor Tabs Mode Rules.md`
