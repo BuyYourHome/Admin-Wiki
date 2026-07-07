@@ -93,6 +93,27 @@ Default to no attachments.
 
 Only include attachments when the workflow specifically requires them and the exact files are already known. This skill decides whether attachments are needed, but it does not perform attachment-upload logic itself.
 
+## Gracious Millionaire Source Routing
+
+When the Email Summary workflow or the OfficeAssist instruction monitor sees an email that belongs to Gracious Millionaire, route that email as source material before ending the run.
+
+Treat an email as Gracious Millionaire source material when the subject contains `gracious millionaire` or the email otherwise clearly belongs to the Gracious Millionaire book/project-room workflow.
+
+For each routed email:
+
+- preserve the email as its own Markdown source file under `C:\Codex\Wiki Files\Project Rooms\Gracious Millionaire\sources\email\`;
+- include sender, recipients, sent time when available, received time, subject, Outlook message id or web link when available, and body text;
+- use a stable, filesystem-safe filename that starts with the email date/time and a short subject slug;
+- update `C:\Codex\Wiki Files\Project Rooms\Gracious Millionaire\working\officeassist-intake-log.md` when the current Gracious Millionaire project-room rules require the intake ledger;
+- update `C:\Codex\Wiki Files\Project Rooms\Gracious Millionaire\working\source-inventory.md` when the routed source becomes part of the durable source inventory;
+- record the routed Outlook message id in this workflow's monitor memory so the same email is not routed repeatedly.
+
+After saving the source file and ledger entry, send a direct follow-up message to the existing Gracious Millionaire project-room thread with the routed source path and a short summary of the email. Direct message handoff is the primary trigger for Gracious Millionaire project-room processing. The `gracious-millionaire-project-room-heartbeat` remains only a backup processor for files that have already been routed into the project room.
+
+Current Gracious Millionaire project-room thread id: `019eb9b0-6780-7fb3-a278-29a18d17998c`.
+
+Do not attach mailbox checking to the Gracious Millionaire heartbeat. Do not create a new Gracious Millionaire chat. Do not draft, edit, or send the requested book response from this Email Summary or OfficeAssist monitor thread unless Wes explicitly asks for processing here. The default action is source routing plus direct project-room handoff only.
+
 ## Delivery Handoff
 
 For Boss's send step, call the shared `email-delivery` skill and pass:

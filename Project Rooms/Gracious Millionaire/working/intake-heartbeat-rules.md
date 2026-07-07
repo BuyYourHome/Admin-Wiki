@@ -17,6 +17,7 @@ Do not use the name `Project LumenScale` for this process. Use plain labels such
 - A question from Wes such as "Do you see a new email?" does not expand this project-room role's scope to Outlook. Answer from routed markdown/source files and intake logs only, or say that OfficeAssist needs to route the email into the project room first.
 - OfficeAssist or another approved process owns mailbox monitoring and may drop routed source files into this project room.
 - If Wes separately authorizes a non-heartbeat Codex role to check mail and that check finds a Gracious Millionaire email, that mailbox-checking role becomes the approved intake process for that email and must drop a Markdown source file into `sources/email/` before ending the request.
+- The mailbox-checking role must also update `working/officeassist-intake-log.md` and send a direct follow-up message to the existing Gracious Millionaire project-room thread with the routed source path and a short summary. Direct message handoff is the primary trigger for processing routed email source material.
 - The heartbeat may send the current Jenny clickable chapter review packet only after it has processed a significant manuscript change, using the shared `skills\email-delivery\SKILL.md` workflow, from `OfficeAssist@BuyYourHomeLLC.com` to `Jenny@BuyYourHomeLLC.com`, copying `WesWill@BuyYourHomeLLC.com`, and verifying the sent copy in OfficeAssist Sent Items.
 - Treat any generic heartbeat instruction such as "do not send email" as preserving the general boundary against unrelated or source-requested email. It does not cancel the specific Jenny review-packet exception above after a significant manuscript change.
 - The heartbeat must not query any mailbox directly, send unrelated email, approve invoices, move money, modify legal or financial documents, delete source files, create new chats, or take unrelated external actions.
@@ -92,6 +93,6 @@ Do not process the same source file repeatedly. Use the intake ledger to identif
 
 - OfficeAssist owns email monitoring.
 - The Gracious Millionaire heartbeat owns project-room intake processing.
-- OfficeAssist may drop source files and intake-log entries into this project room.
-- User-authorized, non-heartbeat mailbox checks may also drop source files and intake-log entries into this project room when they find Gracious Millionaire email.
-- The Gracious Millionaire heartbeat acts only on project-room files and logs, not on mailboxes.
+- OfficeAssist may drop source files and intake-log entries into this project room, then directly message this Gracious Millionaire project-room thread with the routed source path and short summary.
+- User-authorized, non-heartbeat mailbox checks may also drop source files and intake-log entries into this project room when they find Gracious Millionaire email, then directly message this Gracious Millionaire project-room thread with the routed source path and short summary.
+- The direct message handoff is the primary trigger. The Gracious Millionaire heartbeat acts only as a backup processor for project-room files and logs, not on mailboxes.

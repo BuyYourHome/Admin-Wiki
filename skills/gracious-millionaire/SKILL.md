@@ -25,10 +25,11 @@ Use this skill for Gracious Millionaire project-room processing. OfficeAssist em
 
 1. Identify whether the request is source intake, manuscript development, continuity review, output drafting, or heartbeat-rule maintenance.
 2. Preserve routed source emails as separate Markdown files under `sources\email\` when the active workflow calls for source routing.
-3. Update source inventory and intake logs before drafting from new source material.
-4. Keep manuscript notes and drafting analysis in `working\`.
-5. Put review-ready drafts or final outputs in `outputs\`.
-6. Mark unsupported factual or autobiographical claims instead of smoothing them into narrative.
+3. Expect Email Summary, OfficeAssist, or another approved mailbox-checking workflow to direct-message this project-room thread after routing a Gracious Millionaire email, including the routed source path and short summary. Treat that direct message as the primary processing trigger; use the project-room heartbeat only as backup for already-routed files.
+4. Update source inventory and intake logs before drafting from new source material.
+5. Keep manuscript notes and drafting analysis in `working\`.
+6. Put review-ready drafts or final outputs in `outputs\`.
+7. Mark unsupported factual or autobiographical claims instead of smoothing them into narrative.
 
 ## Boundaries
 
