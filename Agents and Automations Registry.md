@@ -589,7 +589,7 @@ Defined in:
 
 Dedicated chat:
 
-- Thread id: `019f3d4e-4801-7d93-962d-79c5f3d33852`
+- Thread id: `019f3d56-b310-75c0-b084-616bfc1e9f59`
 
 Automation:
 

@@ -126,7 +126,7 @@ Project Spreadsheet Invoice Entry project room:
 
 Dedicated chat/thread:
 
-`019f3d4e-4801-7d93-962d-79c5f3d33852`
+`019f3d56-b310-75c0-b084-616bfc1e9f59`
 
 Document Scan owns scan inspection/OCR, document splitting, invoice/receipt identification, project/property folder routing, saving or copying the invoice file, scan log entries, and invoice packet creation.
 
