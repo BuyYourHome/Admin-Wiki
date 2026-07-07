@@ -11,7 +11,7 @@ Target workbook named in both packets:
 
 - `C:\Users\wesbr\Buy Your Home\Buy Your Home - Property\27_Project Management - 7001 Outrigger Dr.xlsm`
 
-No live workbook insertion was performed.
+Live workbook processing was completed after Wes added the `Review` tab and closed the workbook.
 
 ## Workbook Duplicate Check
 
@@ -46,3 +46,35 @@ Before insertion:
 2. Define or approve the yellow actual-invoice row placement rule for Vendor Tabs Mode.
 3. Decide the final worksheet for GTI Stone Design invoice `101492`: `Cabinets`, `Plumbing Fixtures`, or another approved tab.
 4. Decide whether the `26-03-17 Borris invoice.pdf` file requires Document Scan/source review before GTI is inserted.
+
+## Completed Processing
+
+Completed on 2026-07-07 against:
+
+- `C:\Users\wesbr\Buy Your Home\Buy Your Home - Property\27_Project Management - 7001 Outrigger Dr.xlsm`
+
+Rollback copy:
+
+- `C:\Codex\Wiki Files\Project Rooms\Project Spreadsheet Invoice Entry\working\backups\27_Project Management - 7001 Outrigger Dr.before-invoice-entry-20260707-125449.xlsm`
+
+Actions:
+
+- Inserted Atlantic Discount Flooring LLC invoice `001199` into `Flooring!A8:H8`.
+- Used the first blank yellow actual-invoice row in the `Flooring` tab.
+- Preserved the existing row formulas: `G8 = C8*F8*E8` and `H8 = +G8*0.0725`.
+- Set the unit cost so existing subtotal plus tax formulas calculate to the paid invoice total of `$4,629.65`.
+- Left the `Flooring` template selector unchanged at `Yes`; therefore the current `Flooring` worksheet total and `Gnatt Chart` direct Flooring value remain based on the template estimate.
+- Added GTI Stone Design Corporation invoice `101492` to `Review!A2:K2` for final worksheet/category review.
+
+Validation:
+
+- Workbook reopened cleanly in Excel after save.
+- `Flooring!A8:H8` contains Atlantic invoice `001199`.
+- `Flooring!G8 + H8` recalculates to `$4,629.65`.
+- `Flooring!I21` remains `$0.00` because the selector is still `Yes`.
+- `Flooring!J22` remains `$8,896.26`.
+- `Gnatt Chart!G14` and `Gnatt Chart!H14` remain `$8,896.26`.
+- Workbook link count: zero.
+- External-link package parts: zero.
+- `Flooring` and `Review` have zero `#REF!` formulas.
+- `Gnatt Chart` still has pre-existing `#REF!` formulas in later timeline columns; this was not introduced by the invoice entry.
