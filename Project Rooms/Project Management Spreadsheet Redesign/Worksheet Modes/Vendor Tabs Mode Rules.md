@@ -45,14 +45,14 @@ Current pilot table:
 - Workbook: `Property/27_Project Management - 7001 Outrigger Dr.xlsm`
 - Worksheet: `Flooring`
 - Table name: `tblFlooringInvoices`
-- Table range: `Flooring!A7:H20`
+- Table range: `Flooring!A11:H25`
 - Columns: `Date`, `Description`, `Sq Ft`, `Item #`, `Qty`, `Cost/Unit`, `Sub-Total`, `Tax`
 
 Pattern rules:
 
 - The table replaces the loose yellow actual-invoice entry block for the pilot worksheet.
 - Keep orange template-estimate rows separate from the table.
-- Preserve the worksheet selector behavior. For the pilot, `Flooring!I21` sums the table only when `Flooring!L1` is `No`.
+- Preserve the worksheet selector behavior. For the pilot, `Flooring!K5` carries the downstream total, and `Gnatt Chart!G14` points to that cell.
 - Formula columns should use structured references rather than row-only formulas.
 - Preserve yellow fill for user-entry cells and protected/formula color conventions for calculated cells.
 - When converting existing actual rows, preserve intentionally blank tax cells instead of filling a table tax formula into every row. Some prior actual rows, such as marketplace purchases, are non-taxed and the actual-section total must reconcile to the pre-conversion value.
@@ -66,12 +66,12 @@ Converted Outrigger actual-invoice tables:
 
 | Worksheet | Table | Range | Notes |
 | --- | --- | --- | --- |
-| `Flooring` | `tblFlooringInvoices` | `A11:H24` | Approved pilot pattern. Downstream total is `Flooring!K5`, and `Gnatt Chart!G14` points to that cell. |
-| `Demo & Trash Haul` | `tblDemoTrashHaulInvoices` | `A6:F20` | Uses its existing vendor/date/event/iterations/charge/subtotal layout. Downstream total is `'Demo & Trash Haul'!K5`, and `Gnatt Chart!G8` points to that cell. |
-| `HVAC` | `tblHVACInvoices` | `A8:G17` | Uses its existing no-tax actual layout. Downstream total is `HVAC!K5`, and `Gnatt Chart!G19` and `Gnatt Chart!G24` point to that cell. |
-| `Cabinets` | `tblCabinetsInvoices` | `A11:H42` | Uses one combined actual-invoice table with `Cabinet Group` as the first column. Preserve the intentionally blank tax cell on the marketplace row. The current Outrigger Cabinets downstream total is `Cabinets!K5`, and `Gnatt Chart!G12` points to that cell. |
+| `Flooring` | `tblFlooringInvoices` | `A11:H25` | Approved pilot pattern. Downstream total is `Flooring!K5`, and `Gnatt Chart!G14` points to that cell. |
+| `Demo & Trash Haul` | `tblDemoTrashHaulInvoices` | `A11:F26` | Uses its existing vendor/date/event/iterations/charge/subtotal layout. Downstream total is `'Demo & Trash Haul'!K5`, and `Gnatt Chart!G8` points to that cell. |
+| `HVAC` | `tblHVACInvoices` | `A11:G21` | Uses its existing no-tax actual layout. Downstream total is `HVAC!K5`, and `Gnatt Chart!G19` and `Gnatt Chart!G24` point to that cell. |
+| `Cabinets` | `tblCabinetsInvoices` | `A11:H43` | Uses one combined actual-invoice table with `Cabinet Group` as the first column. Preserve the intentionally blank tax cell on the marketplace row. The current Outrigger Cabinets downstream total is `Cabinets!K5`, and `Gnatt Chart!G12` points to that cell. |
 
-For upgraded Outrigger vendor tabs, freeze panes at `A12` so row 11 remains visible while entering actual-invoice rows.
+For upgraded Outrigger vendor tabs, align the actual-invoice table header at row 11, align the orange template-estimate columns to the actual-invoice table where the worksheet schema allows, and freeze panes at `A12` so row 11 remains visible while entering actual-invoice rows.
 
 Held for Wes/design review before table conversion:
 
