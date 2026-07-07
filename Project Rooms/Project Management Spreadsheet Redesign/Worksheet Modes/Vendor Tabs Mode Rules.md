@@ -55,4 +55,27 @@ Pattern rules:
 - Preserve the worksheet selector behavior. For the pilot, `Flooring!I21` sums the table only when `Flooring!L1` is `No`.
 - Formula columns should use structured references rather than row-only formulas.
 - Preserve yellow fill for user-entry cells and protected/formula color conventions for calculated cells.
+- When converting existing actual rows, preserve intentionally blank tax cells instead of filling a table tax formula into every row. Some prior actual rows, such as marketplace purchases, are non-taxed and the actual-section total must reconcile to the pre-conversion value.
 - Do not roll this table pattern to the rest of Vendor Tabs Mode until Wes approves the pilot behavior.
+
+## Outrigger Vendor-Tab Table Rollout
+
+As of 2026-07-07, Wes approved continuing from the `Flooring` table pilot into the clearly identifiable Outrigger actual-invoice blocks.
+
+Converted Outrigger actual-invoice tables:
+
+| Worksheet | Table | Range | Notes |
+| --- | --- | --- | --- |
+| `Flooring` | `tblFlooringInvoices` | `A11:H24` | Approved pilot pattern. |
+| `Demo & Trash Haul` | `tblDemoTrashHaulInvoices` | `A6:F20` | Uses its existing vendor/date/event/iterations/charge/subtotal layout. |
+| `HVAC` | `tblHVACInvoices` | `A8:G17` | Uses its existing no-tax actual layout. |
+| `Cabinets` | `tblCabinetsInvoices` | `A11:H30` | Preserves the existing `Total` column and the intentionally blank tax cell on the marketplace row. |
+
+Held for Wes/design review before table conversion:
+
+- `Appliances`: template and actual rows are blended with subtotals inside the yellow area.
+- `Plumbing Fixtures`: actual block is shifted right and has inconsistent date placement.
+- `Paint`: materially different column layout with color, square feet, item, quantity, and cost/unit.
+- `Electrical Fixtures`: current actual area lacks a date column.
+- `Landscape`: no clear Flooring-style actual-invoice yellow block is present yet.
+- `STR`: remains a special case until Wes approves its final design.
