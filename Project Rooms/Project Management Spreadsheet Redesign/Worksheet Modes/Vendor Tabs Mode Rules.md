@@ -69,7 +69,7 @@ Converted Outrigger actual-invoice tables:
 | `Flooring` | `tblFlooringInvoices` | `A11:H24` | Approved pilot pattern. |
 | `Demo & Trash Haul` | `tblDemoTrashHaulInvoices` | `A6:F20` | Uses its existing vendor/date/event/iterations/charge/subtotal layout. |
 | `HVAC` | `tblHVACInvoices` | `A8:G17` | Uses its existing no-tax actual layout. |
-| `Cabinets` | `tblCabinetsInvoices` | `A11:H30` | Preserves the existing `Total` column and the intentionally blank tax cell on the marketplace row. |
+| `Cabinets` | `tblCabinetsInvoices` | `A11:H42` | Uses one combined actual-invoice table with `Cabinet Group` as the first column. Preserve the intentionally blank tax cell on the marketplace row. The current Outrigger Cabinets downstream total is `Cabinets!K5`, and `Gnatt Chart!G12` points to that cell. |
 
 Held for Wes/design review before table conversion:
 
