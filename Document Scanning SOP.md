@@ -216,6 +216,8 @@ When Document Scan processes a project-specific invoice or receipt, it should co
 6. Do not edit the project-management spreadsheet directly.
 7. Create a structured invoice packet and hand it off to Project Spreadsheet Invoice Entry.
 
+Default handoff trigger: send a direct follow-up message to the dedicated Project Spreadsheet Invoice Entry chat with the packet path and packet summary. The Project Spreadsheet Invoice Entry heartbeat is a backup monitor that periodically checks the packet folder for handoffs that were not delivered by direct message.
+
 Project Spreadsheet Invoice Entry project room:
 
 `C:\Codex\Wiki Files\Project Rooms\Project Spreadsheet Invoice Entry`

@@ -11,7 +11,7 @@ description: Use for Buy Your Home project-management spreadsheet invoice-entry 
 - Skill source: `C:\Codex\Wiki Files\skills\project-spreadsheet-invoice-entry\SKILL.md`
 - Spreadsheet redesign room: `C:\Codex\Wiki Files\Project Rooms\Project Management Spreadsheet Redesign`
 
-Use this skill for operational invoice insertion into project-management spreadsheets. For scanned invoice and receipt records, Document Scan is the normal intake workflow. Do not use this skill for scan inspection/OCR, document splitting, invoice-file routing, or spreadsheet template redesign.
+Use this skill for operational invoice insertion into project-management spreadsheets. For scanned invoice and receipt records, Document Scan is the normal intake workflow and should trigger this workflow by direct follow-up message after creating the packet. The project-room heartbeat is a backup monitor for missed packet handoffs. Do not use this skill for scan inspection/OCR, document splitting, invoice-file routing, or spreadsheet template redesign.
 
 ## Required Startup
 

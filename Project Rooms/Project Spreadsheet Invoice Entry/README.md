@@ -35,11 +35,12 @@ Excluded unless Wes explicitly expands scope:
 
 ## Current Status
 
-- Status: active heartbeat; invoice insertion procedure still has open design decisions.
+- Status: active direct-message handoff; backup heartbeat available. Invoice insertion procedure still has open design decisions.
 - First supported worksheet group: Vendor Tabs Mode.
 - First workbook for proving the workflow: Outrigger, after Wes approves the Vendor Tabs Mode design.
-- Automation: active project-room heartbeat every 15 minutes. The heartbeat inspects this project room for new or changed structured invoice/receipt packets only; it does not scan inboxes, inspect raw scan folders, copy files into Teams, or edit a live workbook unless Wes has clearly authorized the insertion or an approved automation rule exists for that exact insertion type.
-- Automation id: `project-spreadsheet-invoice-entry-heartbeat`.
+- Primary trigger: direct follow-up message to the dedicated Project Spreadsheet Invoice Entry chat with the packet path and summary.
+- Backup automation: project-room heartbeat every 60 minutes. The heartbeat inspects this project room for new or changed structured invoice/receipt packets only; it does not scan inboxes, inspect raw scan folders, copy files into Teams, or edit a live workbook unless Wes has clearly authorized the insertion or an approved automation rule exists for that exact insertion type.
+- Automation id: `invoice-entry-to-projects-backup-heartbeat`.
 - Dedicated chat/thread id: `019f3d56-b310-75c0-b084-616bfc1e9f59`.
 
 ## Matching Skill
