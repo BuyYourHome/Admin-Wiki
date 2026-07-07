@@ -4,13 +4,14 @@
 
 This project room owns the operational workflow for inserting invoice records into Buy Your Home project-management spreadsheets.
 
-The workflow starts after Email Summary / OfficeAssist has already found a scanned invoice email, copied the invoice file into the correct Teams project folder, and prepared structured invoice facts. This room decides where the record belongs in the project-management spreadsheet, checks for duplicates, inserts the record into the correct worksheet area, validates totals, and reports uncertainty for Wes review.
+The workflow starts after Document Scan has completed scanned invoice or receipt intake and prepared a structured invoice packet. This room receives that packet, decides where the record belongs in the project-management spreadsheet, checks for duplicates, inserts the record into the correct worksheet area, validates totals, and reports uncertainty for Wes review.
 
 ## Scope
 
 Included:
 
-- Receive structured invoice packets from Email Summary, OfficeAssist, Document Scan, or another approved intake workflow.
+- Receive structured invoice packets from Document Scan as the normal scanned-invoice intake source.
+- Receive structured invoice packets from Email Summary, OfficeAssist, or another approved workflow only as a secondary or future handoff source when that workflow provides a complete structured packet.
 - Resolve the correct active project-management workbook through Teams/SharePoint.
 - Route invoice records to the correct worksheet and expense area.
 - For Vendor Tabs Mode, insert records only into the yellow actual-invoice section of the correct vendor tab.
@@ -20,18 +21,17 @@ Included:
 
 Excluded unless Wes explicitly expands scope:
 
-- Scanning email inboxes.
-- Copying invoice attachments into Teams folders.
+- Scan inspection/OCR, document splitting, invoice/receipt identification, scan log entries, or saving/copying invoice files into Teams/project folders.
 - Designing or rolling out project-management spreadsheet templates.
 - Replacing worksheet structures across all project workbooks.
 - Paying invoices, approving invoices, contacting vendors, or changing accounting systems.
 
 ## Responsibility Boundary
 
-- `Email Summary / OfficeAssist`: invoice-email intake, file copy/routing, basic extraction, and handoff packet creation.
-- `Project Spreadsheet Invoice Entry`: project workbook lookup, worksheet routing, duplicate check, row insertion, workbook validation, and insertion logging.
+- `Document Scan`: scan inspection/OCR, document splitting, invoice/receipt identification, project/property folder routing, saving/copying invoice files into Teams/project folders, scan log entries, and structured invoice packet creation.
+- `Project Spreadsheet Invoice Entry`: structured packet receipt, exact live project-management workbook resolution, workbook duplicate checks, final row placement, invoice record insertion, workbook formula/format/selector/table/link preservation, totals and downstream-link validation, authorized upload back to Teams/SharePoint, and insertion logging.
 - `Project Management Spreadsheet Redesign`: worksheet design, worksheet-mode rules, template changes, and rollout across project workbooks.
-- `Document Scan`: scan splitting, document naming, archive/logging, and scan-folder routing.
+- `Email Summary / OfficeAssist`: secondary or future handoff source only when it has a complete structured invoice packet; it is not the default scanned-invoice intake path.
 
 ## Current Status
 

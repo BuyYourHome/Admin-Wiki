@@ -1,6 +1,6 @@
 ---
 name: project-spreadsheet-invoice-entry
-description: Use for Buy Your Home project-management spreadsheet invoice-entry work after an invoice has already been scanned, filed, or summarized by Email Summary, OfficeAssist, Document Scan, or another intake workflow. Trigger when Codex needs to receive a structured invoice packet, choose the correct active project workbook and worksheet, check for duplicate invoice records, insert a record into a Vendor Tab or other approved project-spreadsheet expense area, validate totals and workbook links, and report uncertain routing for Wes review.
+description: Use for Buy Your Home project-management spreadsheet invoice-entry work after Document Scan or another approved intake workflow has prepared a structured invoice or receipt packet. Trigger when Codex needs to receive a structured packet, choose the correct active project workbook and worksheet, check for duplicate invoice records, insert a record into a Vendor Tab or other approved project-spreadsheet expense area, validate totals and workbook links, and report uncertain routing for Wes review.
 ---
 
 # Project Spreadsheet Invoice Entry
@@ -11,7 +11,7 @@ description: Use for Buy Your Home project-management spreadsheet invoice-entry 
 - Skill source: `C:\Codex\Wiki Files\skills\project-spreadsheet-invoice-entry\SKILL.md`
 - Spreadsheet redesign room: `C:\Codex\Wiki Files\Project Rooms\Project Management Spreadsheet Redesign`
 
-Use this skill for operational invoice insertion into project-management spreadsheets. Do not use it for email scanning, invoice-file routing, or spreadsheet template redesign.
+Use this skill for operational invoice insertion into project-management spreadsheets. For scanned invoice and receipt records, Document Scan is the normal intake workflow. Do not use this skill for scan inspection/OCR, document splitting, invoice-file routing, or spreadsheet template redesign.
 
 ## Required Startup
 
@@ -26,20 +26,38 @@ Use this skill for operational invoice insertion into project-management spreads
 
 ## Ownership Boundary
 
+Document Scan normally owns scanned invoice and receipt intake, including:
+
+- scan inspection/OCR,
+- document splitting,
+- invoice/receipt identification,
+- project/property folder routing,
+- saving or copying the invoice file into Teams/project folders,
+- scan log entries,
+- creating the structured invoice packet.
+
+Email Summary / OfficeAssist may hand off an invoice only as a secondary or future source when it has a complete structured invoice packet. It is not the default scanned-invoice intake path.
+
 This skill owns:
 
-- invoice packet review after intake has completed,
-- workbook and worksheet routing,
-- duplicate checks against the target workbook,
-- row insertion into approved project-spreadsheet expense areas,
-- workbook validation after insertion,
+- receiving the structured invoice packet,
+- resolving the exact live project-management workbook,
+- checking workbook records for duplicates,
+- deciding final spreadsheet row placement,
+- inserting the invoice record into approved project-spreadsheet expense areas,
+- preserving workbook formulas, formatting, selectors, tables, and links,
+- validating totals and downstream links,
+- uploading the verified workbook back to Teams/SharePoint when authorized,
 - insertion notes and review questions.
 
 This skill does not own:
 
-- scanning inboxes,
-- copying invoice attachments into Teams folders,
-- OCR or scan splitting,
+- scan inspection/OCR,
+- document splitting,
+- invoice/receipt identification,
+- project/property folder routing,
+- saving or copying invoice files into Teams/project folders,
+- scan log entries,
 - template redesign or worksheet-mode rollout,
 - invoice approval, payment, accounting entries, vendor communication, or legal/financial decision-making.
 

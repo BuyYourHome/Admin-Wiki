@@ -574,7 +574,8 @@ Status: draft.
 
 Purpose:
 
-- Receive structured invoice packets after Email Summary, OfficeAssist, Document Scan, or another approved intake workflow has already found the invoice and copied the file into the correct Teams project folder.
+- Receive structured invoice packets after Document Scan has completed the normal scanned invoice/receipt intake path: inspection/OCR, splitting when needed, invoice/receipt identification, project/property routing, Teams/project-folder save or copy, scan log entry, and packet creation.
+- Receive structured invoice packets from Email Summary, OfficeAssist, or another approved workflow only as a secondary or future handoff source when it provides a complete structured packet.
 - Resolve the active Teams/SharePoint project-management workbook and target worksheet.
 - Check for duplicate invoice records.
 - Insert invoice records into approved project-spreadsheet expense areas, starting with Vendor Tabs Mode yellow actual-invoice sections.

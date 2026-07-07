@@ -1,6 +1,6 @@
 # Invoice Packet Schema
 
-Use this schema when Email Summary, OfficeAssist, Document Scan, or another intake workflow hands an invoice to Project Spreadsheet Invoice Entry.
+Use this schema when Document Scan hands a scanned invoice or receipt packet to Project Spreadsheet Invoice Entry. Email Summary, OfficeAssist, or another approved workflow may also use this schema only as a secondary or future handoff source when it has a complete structured invoice packet.
 
 ## Required Fields
 
