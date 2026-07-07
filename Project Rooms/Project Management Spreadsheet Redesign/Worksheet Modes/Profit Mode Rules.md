@@ -123,6 +123,8 @@ Do not blindly replace nearby cells such as `B2` property address, and do not tr
 
 For `Profit` formulas that need the five-year subject-to payoff balance in option 3 / Slow Flip, align the subject-to loan schedule to the Contract for Deed timeline before looking up the balance. Do not use subject-to period `60` directly; first find the subject-to period containing `cfdContractDate`, add `cfdFirstRateMonths`, then return `tblSubjectToLoan[Balance]` for that aligned period.
 
+For `Profit!H15` subject-to payoff logic, treat a positive `Profit!B34` refinance proceeds value as evidence that the Subject To loan has been refinanced/paid off in the Flip scenario. In Flip mode (`Profit!E1=1`), return `0` when `B34>0`; otherwise return the negative current Subject To balance. Preserve the Hold and Slow Flip lookup behavior against the Amortization schedule.
+
 ## Cross-Sheet Reconnect Rules
 
 When reconnecting `Profit` to a redesigned `Amortization` sheet, update both direct Amortization links and dependent fields derived from those links.
