@@ -260,6 +260,58 @@ For each scanned invoice or receipt:
 
 Do not create new vendor folders or choose between similar vendor names unless Boss gives a later rule or specific approval.
 
+### Project Spreadsheet Invoice Entry Handoff
+
+When Document Scan processes a project-specific invoice or receipt, finish the scan workflow first: inspect/OCR the scan, identify the document as an invoice or receipt, match it to the correct project/property when confidence is high, save or copy the invoice file into the correct Teams project folder, and write the scan routing log.
+
+Do not edit the project-management spreadsheet directly. After filing a high-confidence project invoice or receipt, create a structured invoice packet and hand it off to Project Spreadsheet Invoice Entry.
+
+Project Spreadsheet Invoice Entry project room:
+
+`C:\Codex\Wiki Files\Project Rooms\Project Spreadsheet Invoice Entry`
+
+Dedicated chat/thread:
+
+`019f3d4e-4801-7d93-962d-79c5f3d33852`
+
+Document Scan owns scan inspection/OCR, document splitting, invoice/receipt identification, project/property folder routing, saving or copying the invoice file, scan log entries, and invoice packet creation.
+
+Project Spreadsheet Invoice Entry owns selecting the exact live project-management workbook, checking workbook records for duplicates, deciding final spreadsheet row placement, inserting the invoice record, preserving workbook formulas/formatting/selectors, validating totals and downstream links, and uploading the verified workbook back to Teams/SharePoint.
+
+Include these fields in each scanned-invoice handoff packet:
+
+- Project/property
+- Vendor name
+- Invoice date
+- Invoice number, if available
+- Invoice amount
+- Work category
+- Source scan path
+- Filed invoice path in Teams/project folder
+- Recommended project-management workbook
+- Recommended worksheet/vendor tab
+- Confidence/status
+- Duplicate-risk notes, if any
+- Any missing or uncertain fields
+
+If the invoice appears to belong in Vendor Tabs Mode, recommend one of these vendor tabs when confidence is high:
+
+1. Demo & Trash Haul
+2. Appliances
+3. Plumbing Fixtures
+4. Windows & Doors
+5. Cabinets
+6. Paint
+7. Flooring
+8. HVAC
+9. Electrical Fixtures
+10. STR
+11. Landscape
+
+Do not recommend tabs right of Landscape, such as Exterior or Furnishing, unless Boss expands Vendor Tabs Mode.
+
+If the category, project, workbook, amount, date, or duplicate status is unclear, set `Confidence/status` to `Needs Review` instead of guessing.
+
 ## Boundary Rules
 
 Treat a new document as likely starting when a page contains:
