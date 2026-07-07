@@ -135,6 +135,8 @@ Do not stop after replacing old sheet names. Verify no outside formulas still po
 
 When formulas outside a source sheet depend on summary/output cells in that source sheet, prefer workbook-level names over direct cell addresses once the business meaning is stable.
 
+When a Profit-mode template comparison shows a formula difference that points into a supporting worksheet, do not copy the template's supporting-sheet cell address until the target supporting sheet has been checked. Keep target-specific source cells when the supporting tab layout differs but the business meaning is already correct. Known Outrigger example: Pond's `Profit!B66` used `'Gnatt Chart'!I6`, while Outrigger's `Gnatt Chart` total was still at `J5`, so the Profit-template rollout kept Outrigger's `Profit!B66 = +'Gnatt Chart'!J5` while applying Profit-tab layout changes elsewhere.
+
 When Profit uses workbook-level names that point into `Trade Properties`, validate the name target as part of the migration. The visible Profit formula can look correct while the name itself points to `#REF!`. Known Cool Springs example: `Profit!O9` used `tradeMonthlyNetSpread`, but the name pointed to `#REF!`; it needed to point to `'Trade Properties'!$S$8`, the `Total Monthly Net Spread` output.
 
 When validating the investor/annualized-return block, confirm formulas use the actual start/end date row, not the header labels. Known Pleasant Garden example: `Profit!L78:L82` referenced `DAYS(J73,H73)`, where row 73 contained headers; the formulas needed `DAYS(J$74,H$74)` to avoid visible `#VALUE!` errors.
