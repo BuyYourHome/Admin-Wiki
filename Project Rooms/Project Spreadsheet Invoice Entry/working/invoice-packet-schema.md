@@ -1,0 +1,27 @@
+# Invoice Packet Schema
+
+Use this schema when Email Summary, OfficeAssist, Document Scan, or another intake workflow hands an invoice to Project Spreadsheet Invoice Entry.
+
+## Required Fields
+
+| Field | Required | Notes |
+| --- | --- | --- |
+| `project_property` | yes | Property name or address. |
+| `vendor_name` | yes | Vendor shown on invoice. |
+| `invoice_date` | yes | Invoice date when available; otherwise mark missing. |
+| `invoice_number` | no | Use when present. |
+| `invoice_amount` | yes | Total amount to insert. |
+| `work_category` | yes | Best known category, such as Plumbing Fixtures, HVAC, Paint, or Landscape. |
+| `source_email_sender` | yes | Sender of invoice email. |
+| `source_email_subject` | yes | Subject of invoice email. |
+| `source_email_received_at` | yes | Received date/time. |
+| `source_email_id_or_link` | no | Message ID or Outlook link when available. |
+| `saved_invoice_file_path` | yes | Teams/project-folder path where intake saved the invoice file. |
+| `recommended_workbook` | yes | Active project-management workbook candidate. |
+| `recommended_worksheet` | yes | Candidate worksheet or `Needs Review`. |
+| `confidence_status` | yes | Suggested values: `Ready`, `Needs Review`, `Duplicate Risk`, `Missing Data`. |
+| `notes` | no | Uncertainty, duplicate hints, or routing explanation. |
+
+## Handoff Boundary
+
+The intake workflow should not edit the workbook. It should pass the packet to this project room for routing confirmation, duplicate check, insertion, and validation.

@@ -31,6 +31,7 @@ Use [[Agent Unit Standard]] for the standard package behind an agent-like operat
 | Entity Relationship | Wiki-managed skill plus project room | Active/planning | On demand | `skills\entity-relationship\SKILL.md`; `Project Rooms\Entity Relationship\README.md` |
 | Gracious Millionaire | Wiki-managed skill plus project room plus heartbeat automation | Active | Project-room heartbeat every 15 minutes during active window; on demand otherwise | `skills\gracious-millionaire\SKILL.md`; `Project Rooms\Gracious Millionaire\README.md`; `Project Rooms\Gracious Millionaire\working\intake-heartbeat-rules.md`; automation id `gracious-millionaire-project-room-heartbeat` |
 | Project Management Spreadsheet Redesign | Wiki-managed skill plus project room | Active | On demand | `skills\project-management-spreadsheet-redesign\SKILL.md`; `Project Rooms\Project Management Spreadsheet Redesign\README.md`; `Project Rooms\Project Management Spreadsheet Redesign\Project Spreadsheet Expense Placement Rules.md` |
+| Project Spreadsheet Invoice Entry | Wiki-managed skill plus project room plus dedicated chat | Draft | On demand after invoice intake hands off a structured packet | `skills\project-spreadsheet-invoice-entry\SKILL.md`; `Project Rooms\Project Spreadsheet Invoice Entry\README.md` |
 | Project Management Spreadsheet Rewrite | Planning project room, now covered by Spreadsheet Redesign skill | Active/planning | On demand | `skills\project-management-spreadsheet-redesign\SKILL.md`; `Project Rooms\Project Management Spreadsheet Rewrite\README.md` |
 | Property Trade Evaluation | Wiki-managed skill plus project room | Active | On demand | `skills\property-trade-evaluation\SKILL.md`; `Project Rooms\Property Trade Evaluation\README.md` |
 | Wes's Voice | Wiki-managed skill plus project room | Planning | On demand | `skills\wes-voice\SKILL.md`; `Project Rooms\Wes's Voice\README.md` |
@@ -564,6 +565,43 @@ Important rules:
 - When creating the new project spreadsheet, review the `Profit` sheet and blank out prototype/template-specific values while preserving formulas, labels, structural formatting, and reusable assumptions.
 - If it is unclear whether a `Profit` sheet value is template-specific or reusable, record it for review instead of deleting it.
 - Do not use New Project when an existing specialized project room is the better fit.
+
+## Project Spreadsheet Invoice Entry
+
+Type: wiki-managed skill plus project room plus dedicated chat.
+
+Status: draft.
+
+Purpose:
+
+- Receive structured invoice packets after Email Summary, OfficeAssist, Document Scan, or another approved intake workflow has already found the invoice and copied the file into the correct Teams project folder.
+- Resolve the active Teams/SharePoint project-management workbook and target worksheet.
+- Check for duplicate invoice records.
+- Insert invoice records into approved project-spreadsheet expense areas, starting with Vendor Tabs Mode yellow actual-invoice sections.
+- Validate affected totals, downstream `Gnatt Chart` values, workbook links, and clean Excel open/save behavior.
+- Report uncertain routing or duplicate risk to Wes instead of guessing.
+
+Defined in:
+
+- `C:\Codex\Wiki Files\skills\project-spreadsheet-invoice-entry\SKILL.md`
+- `C:\Codex\Wiki Files\Project Rooms\Project Spreadsheet Invoice Entry\README.md`
+
+Dedicated chat:
+
+- Thread id: `019f3d4e-4801-7d93-962d-79c5f3d33852`
+
+Important limitations:
+
+- Does not scan inboxes or copy invoice attachments into Teams folders.
+- Does not design or roll out workbook templates; that belongs to Project Management Spreadsheet Redesign.
+- Does not approve invoices, pay invoices, contact vendors, or make accounting entries.
+- Uses Teams/SharePoint as the source of truth for active project-management workbooks.
+
+Current status:
+
+- First supported worksheet group is Vendor Tabs Mode.
+- First workbook for proving the workflow is Outrigger after Wes approves the Vendor Tabs Mode design.
+- No automation is active; work is on demand only.
 
 ## Investigate Computer
 
