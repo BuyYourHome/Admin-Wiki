@@ -78,3 +78,13 @@ Validation:
 - External-link package parts: zero.
 - `Flooring` and `Review` have zero `#REF!` formulas.
 - `Gnatt Chart` still has pre-existing `#REF!` formulas in later timeline columns; this was not introduced by the invoice entry.
+
+## Review Tab Dropdown
+
+Updated on 2026-07-07:
+
+- Added `Worksheet` as column A on the `Review` tab.
+- Added a dropdown validation list to `Review!A2:A200` for choosing the destination worksheet.
+- Dropdown choices: `Demo & Trash Haul`, `Appliances`, `Plumbing Fixtures`, `Windows & Doors`, `Cabinets`, `Paint`, `Flooring`, `HVAC`, `Electrical Fixtures`, `Landscape`, `STR`, `Exterior`, `Furnishing`.
+- Verified `Review!A2` has Excel list validation and the workbook has zero workbook links.
+- Uploaded the updated workbook to Teams/SharePoint through the SharePoint connector signed in as `OfficeAssist@BuyYourHomeLLC.com`.
