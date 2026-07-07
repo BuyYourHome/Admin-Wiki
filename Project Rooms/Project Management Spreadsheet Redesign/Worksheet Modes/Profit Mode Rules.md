@@ -159,6 +159,8 @@ Before marking a Profit migration complete, verify:
 - workbook-level names used by Profit do not point to `#REF!`
 - the package has zero `xl/externalLinks` parts
 
+For batch rollouts, run a focused open-clean validation first: reopen each saved workbook in Excel and check the changed Profit cells, key cross-sheet formulas, workbook-link count, and package external-link parts. Avoid starting with a full cell-by-cell scan of every used Profit cell across many workbooks; that can hang Excel automation and obscure which workbook is at issue. Run deeper formula-error scans only after the focused validation identifies a problem or when the workbook has a known risk area.
+
 ## Lesson Capture
 
 At completion of every Profit-mode workbook update, write new reusable lessons to this file before marking the work complete. If there were no new Profit-specific lessons, say that in the final response.
