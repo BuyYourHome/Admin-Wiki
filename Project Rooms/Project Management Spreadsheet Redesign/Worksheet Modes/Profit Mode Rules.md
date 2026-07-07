@@ -6,6 +6,8 @@ Use these rules when designing, repairing, or rolling out the `Profit` worksheet
 
 Profit mode includes the `Profit` worksheet layout, project-specific Profit inputs, mode selector controls, formula links from Profit to `Amortization`, `Trade Properties`, `Docs`, and expense worksheets, and any Profit-specific controls or helper areas.
 
+When working in Profit mode, the template-change audit is inclusive to the `Profit` worksheet. Compare the approved template's `Profit` tab to each target workbook's `Profit` tab and propagate all intentional `Profit`-tab changes. Do not treat changes on other tabs as part of the Profit-mode rollout unless Wes explicitly expands the scope. Cross-sheet checks in Profit mode are validation checks only: confirm that `Profit` formulas, names, and outputs still connect correctly to supporting tabs such as `Amortization`, `Trade Properties`, `Docs`, `Carrying`, and `Gnatt Chart`.
+
 Before touching a project workbook in Profit mode:
 
 1. Confirm the exact target workbook and project with Wes.
