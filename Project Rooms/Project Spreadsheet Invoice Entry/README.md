@@ -35,10 +35,11 @@ Excluded unless Wes explicitly expands scope:
 
 ## Current Status
 
-- Status: draft.
+- Status: active heartbeat; invoice insertion procedure still has open design decisions.
 - First supported worksheet group: Vendor Tabs Mode.
 - First workbook for proving the workflow: Outrigger, after Wes approves the Vendor Tabs Mode design.
-- Automation: none. This is an on-demand workflow until Wes explicitly approves automation.
+- Automation: active project-room heartbeat every 15 minutes. The heartbeat inspects this project room for new or changed structured invoice/receipt packets only; it does not scan inboxes, inspect raw scan folders, copy files into Teams, or edit a live workbook unless Wes has clearly authorized the insertion or an approved automation rule exists for that exact insertion type.
+- Automation id: `project-spreadsheet-invoice-entry-heartbeat`.
 - Dedicated chat/thread id: `019f3d4e-4801-7d93-962d-79c5f3d33852`.
 
 ## Matching Skill

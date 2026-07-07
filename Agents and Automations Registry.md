@@ -31,7 +31,7 @@ Use [[Agent Unit Standard]] for the standard package behind an agent-like operat
 | Entity Relationship | Wiki-managed skill plus project room | Active/planning | On demand | `skills\entity-relationship\SKILL.md`; `Project Rooms\Entity Relationship\README.md` |
 | Gracious Millionaire | Wiki-managed skill plus project room plus heartbeat automation | Active | Project-room heartbeat every 15 minutes during active window; on demand otherwise | `skills\gracious-millionaire\SKILL.md`; `Project Rooms\Gracious Millionaire\README.md`; `Project Rooms\Gracious Millionaire\working\intake-heartbeat-rules.md`; automation id `gracious-millionaire-project-room-heartbeat` |
 | Project Management Spreadsheet Redesign | Wiki-managed skill plus project room | Active | On demand | `skills\project-management-spreadsheet-redesign\SKILL.md`; `Project Rooms\Project Management Spreadsheet Redesign\README.md`; `Project Rooms\Project Management Spreadsheet Redesign\Project Spreadsheet Expense Placement Rules.md` |
-| Project Spreadsheet Invoice Entry | Wiki-managed skill plus project room plus dedicated chat | Draft | On demand after invoice intake hands off a structured packet | `skills\project-spreadsheet-invoice-entry\SKILL.md`; `Project Rooms\Project Spreadsheet Invoice Entry\README.md` |
+| Project Spreadsheet Invoice Entry | Wiki-managed skill plus project room plus heartbeat automation plus dedicated chat | Active | Every 15 minutes; inspects the project room for structured invoice/receipt packets after Document Scan or another approved workflow hands them off | `skills\project-spreadsheet-invoice-entry\SKILL.md`; `Project Rooms\Project Spreadsheet Invoice Entry\README.md`; `C:\Users\wesbr\.codex\automations\project-spreadsheet-invoice-entry-heartbeat\automation.toml` |
 | Project Management Spreadsheet Rewrite | Planning project room, now covered by Spreadsheet Redesign skill | Active/planning | On demand | `skills\project-management-spreadsheet-redesign\SKILL.md`; `Project Rooms\Project Management Spreadsheet Rewrite\README.md` |
 | Property Trade Evaluation | Wiki-managed skill plus project room | Active | On demand | `skills\property-trade-evaluation\SKILL.md`; `Project Rooms\Property Trade Evaluation\README.md` |
 | Wes's Voice | Wiki-managed skill plus project room | Planning | On demand | `skills\wes-voice\SKILL.md`; `Project Rooms\Wes's Voice\README.md` |
@@ -568,9 +568,9 @@ Important rules:
 
 ## Project Spreadsheet Invoice Entry
 
-Type: wiki-managed skill plus project room plus dedicated chat.
+Type: wiki-managed skill plus project room plus heartbeat automation plus dedicated chat.
 
-Status: draft.
+Status: active.
 
 Purpose:
 
@@ -591,6 +591,14 @@ Dedicated chat:
 
 - Thread id: `019f3d4e-4801-7d93-962d-79c5f3d33852`
 
+Automation:
+
+- Heartbeat id: `project-spreadsheet-invoice-entry-heartbeat`.
+- Schedule: every 15 minutes.
+- Automation file: `C:\Users\wesbr\.codex\automations\project-spreadsheet-invoice-entry-heartbeat\automation.toml`
+- Scope: inspect the Project Spreadsheet Invoice Entry project room for new or changed structured invoice/receipt packets only. Do not scan inboxes, inspect raw scan folders, copy files into Teams, approve or pay invoices, contact vendors, redesign workbook templates, or create new chats.
+- Live workbook edits remain gated by clear Wes authorization or an approved automation rule for the exact insertion type.
+
 Important limitations:
 
 - Does not scan inboxes or copy invoice attachments into Teams folders.
@@ -602,7 +610,7 @@ Current status:
 
 - First supported worksheet group is Vendor Tabs Mode.
 - First workbook for proving the workflow is Outrigger after Wes approves the Vendor Tabs Mode design.
-- No automation is active; work is on demand only.
+- Heartbeat automation is active every 15 minutes for project-room packet intake monitoring.
 
 ## Investigate Computer
 
