@@ -57,3 +57,15 @@ Lessons:
 - A formula-only pass is safe when it does not resize tables, paste formatting, or alter table headers.
 - Validate both the invoice total formula text and the downstream grand-total/Gnatt values after the formula change.
 - Do not assume stored total cell locations from prior iterations; inspect the current workbook because Wes may have moved labels and totals manually.
+
+## 2026-07-08 - Outrigger HVAC Tax Formula Repair
+
+Context: Wes identified that `HVAC` was not calculating taxes.
+
+Result: Uploaded a focused HVAC-only formula fix. The `tblHVACInvoices[Tax]` column now uses `=IFERROR([@[Sub-Total]]*0.0725,0)`. The existing HVAC invoice total already summed `tblHVACInvoices[Sub-Total]` and `tblHVACInvoices[Tax]`, so the invoice total, grand total, and `Gnatt Chart` row 19 recalculated after the tax column was repaired.
+
+Lessons:
+
+- When a tab total appears wrong, inspect the table's component columns first; the total formula may already be correct while an input formula column is blank.
+- Keep narrow formula repairs limited to the affected table column when the total chain is already structurally correct.
+- Validate the changed column formula, invoice total, grand total, and Gantt-linked value after recalculation.
