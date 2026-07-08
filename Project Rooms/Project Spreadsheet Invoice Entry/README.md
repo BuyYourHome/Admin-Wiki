@@ -113,6 +113,17 @@ If a Statement Mode packet is received:
 
 Reason: a common invoice usually maps to one project and one tab, but a statement can contain charges for multiple projects and multiple tabs inside each project.
 
+## Lowes Statement Mode Review-First Rule
+
+For Lowes Statement Mode packets:
+
+1. Insert every extracted statement item into the workbook `Review` table first.
+2. Do not insert Lowes statement items directly into vendor tabs during the initial packet-consumption pass.
+3. If the destination tab is clear, fill `Review[Destination Worksheet]` with that worksheet name.
+4. If the destination is not clear, leave `Review[Destination Worksheet]` blank and explain the issue in the review/status fields.
+5. A filled `Destination Worksheet` means Invoice Entry has a confident routing recommendation; it does not by itself mean the row has already been copied into the destination vendor table.
+6. Moving or copying a reviewed Lowes statement row from `Review` into a vendor table happens only after the review/approval rule for that row is satisfied.
+
 ## Vendor Tabs Mode Startup
 
 When inserting into Vendor Tabs Mode, read:
@@ -152,6 +163,7 @@ If a duplicate is likely, stop and route the packet for review instead of insert
 - Whether successful low-risk insertions can later run automatically.
 - Final STR worksheet design, because STR does not yet match the two-group vendor-tab layout.
 - Statement Mode allocation process for splitting extracted statement charges by project and by worksheet/table before insertion.
+- Lowes Statement Mode follow-up process for moving approved Review rows into vendor tables after Wes supplies or accepts the destination worksheet.
 - Safe workbook-structure rollout pattern for Vendor Tabs Mode, including how to standardize table columns and formatting without corrupting table headers.
 
 ## Next Actions

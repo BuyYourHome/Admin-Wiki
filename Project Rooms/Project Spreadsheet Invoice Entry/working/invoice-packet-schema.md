@@ -33,6 +33,15 @@ If the packet is for extracted statement data:
 - Do not recommend a single workbook or worksheet unless the approved Statement Mode process allows that for the specific line item.
 - Do not insert line items into a workbook until the Statement Mode allocation process has been developed, tested, and approved by Wes.
 
+### Lowes Statement Mode Packets
+
+If the packet is for a Lowes statement:
+
+- Every extracted statement line should be represented as a row in the workbook `Review` table before any vendor-tab insertion.
+- Use `Destination Worksheet` only when Invoice Entry has confidence in the final vendor tab.
+- Leave `Destination Worksheet` blank when the line is Home/non-project, mixed-tab, PO-conflicted, accounting-only, or otherwise uncertain.
+- Review-row status and notes should explain whether the line is ready for later copy, needs Wes review, or needs accounting direction.
+
 ## Handoff Boundary
 
 The intake workflow should not edit the workbook. It should pass the packet to this project room for routing confirmation, duplicate check, insertion, and validation. For Statement Mode, Document Scan owns extraction and Project Spreadsheet Invoice Entry owns allocation and insertion decisions.
