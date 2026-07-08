@@ -79,3 +79,15 @@ Lessons:
 - Keep statement extraction in Document Scan and statement allocation in Project Spreadsheet Invoice Entry.
 - Treat extracted statement lines as source data, not approval for insertion.
 - Do not insert Statement Mode lines until the allocation rule for project, worksheet/table, duplicate check, audit trace, and totals validation has been designed, tested, and approved.
+
+## 2026-07-08 - Lowes Statement Allocation Pilot
+
+Context: Processed the Lowes PRO BYH 5997 statement closing 2026-03-17 as the first Statement Mode handoff test for Outrigger.
+
+Lessons:
+
+- For credit-card statement line items, treat the statement amount as the transaction total unless the extracted packet separates pre-tax subtotal and tax. Do not apply the worksheet tax formula again to statement totals.
+- Insert only lines with a clear project, clear worksheet/table, and no duplicate evidence. Route Home/non-project, mixed-tab, PO-conflict, and interest/finance-charge lines to `Review`.
+- Leave `Review[Destination Worksheet]` blank for unresolved Statement Mode rows so Wes can provide the approval/destination explicitly.
+- Record the statement PDF path as source evidence for every inserted or review-routed statement line.
+- When writing Excel tables through automation, restore from rollback after any failed COM write attempt before retrying; partial unsaved attempts should not be carried forward.
