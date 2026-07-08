@@ -354,28 +354,56 @@ When Boss asks for a credit card statement report, or when a scan run files cred
 
 ### Lowe's Statement Allocation Mode
 
-When Credit Card Statement Mode identifies and files a Lowe's statement, preserve all normal Lowe's statement handling first: inspect/OCR, split if needed, file the statement in the approved Lowe's credit-card statement folder, log the routing, include it in the credit card statement report, and flag normal statement review items.
+When Credit Card Statement Mode identifies and files a Lowe's statement, preserve all normal Lowe's statement handling first: inspect/OCR, split if needed, file the statement in the approved Lowe's credit-card statement folder, log the routing, include it in the credit-card statement report, and flag normal statement review items.
 
-After normal statement filing, run Lowe's Statement Allocation Mode as an additive workflow. Extract each eligible purchase, charge, return, or credit line separately as invoice-entry-style source data. Do not treat the entire Lowe's statement as one invoice for one project, and do not force all statement lines into one vendor tab.
+After normal statement filing, run Lowe's Statement Allocation Mode as an additive extraction workflow. Document Scan extracts line-level source data for Project Spreadsheet Invoice Entry. Document Scan must not edit any project-management workbook and must not decide final spreadsheet insertion.
 
-For each line item, capture when available:
+Do not treat the entire Lowe's statement as one invoice for one project. A single Lowe's statement may contain charges, returns, credits, fees, or interest for multiple projects and non-project/Home items.
+
+For each eligible purchase, charge, return, or credit line, capture one packet row or record with:
 
 - Lowe's account label and account last 4.
 - Statement date and statement period.
-- Transaction date and posting date.
-- Transaction description, receipt number, invoice/order/reference number, or memo.
+- Transaction date and posting date, when shown.
+- Transaction description.
+- Receipt number, invoice/order/reference number, or memo, when shown.
 - PO value or other project/property clue shown on the statement.
 - Amount, including whether it is a charge, return, credit, fee, or interest.
-- Likely project/property.
-- Recommended project-management workbook.
-- Recommended worksheet/vendor tab.
-- Source scan path and filed statement path.
+- Source scan path.
+- Filed statement PDF path.
+- Likely project/property, if the PO or other evidence supports it.
+- Recommended project-management workbook, if the project/property is high-confidence.
+- Recommended worksheet/vendor tab, if the item category is high-confidence.
 - Confidence/status.
-- Duplicate-risk notes and missing or uncertain fields.
+- Duplicate-risk notes, if any.
+- Missing or uncertain fields.
 
-Use the PO value as a strong project/property clue when present, but do not guess if the PO is missing, ambiguous, or conflicts with other line details. Evaluate project/property and vendor-tab routing independently for each line item.
+Use the PO value as a strong project/property clue when present, but do not guess if the PO is missing, ambiguous, conflicts with other line details, or appears to belong to another project. Evaluate project/property routing independently for each line item.
 
-For high-confidence line items, create a structured Lowe's statement allocation packet for Project Spreadsheet Invoice Entry with one line item per packet row or record. Mark unclear line items `Needs Review` and include the reason. Document Scan must not edit the project-management workbook directly.
+For non-project/Home items, mark the line as non-project/Home and do not recommend a project-management workbook.
+
+For unclear project items, mark the line `Needs Review - Project` and do not recommend a project-management workbook.
+
+For clear project but unclear vendor-tab items, recommend the project workbook but set the worksheet/vendor tab to blank or `Needs Review`, with a short reason.
+
+For mixed-tab credits or returns, mark the line `Needs Review - Mixed Tab` unless the statement detail clearly identifies the original item and category.
+
+For fees, interest, finance charges, late fees, or payments, mark the line as accounting-review unless Wes has approved a specific project-spreadsheet handling rule. Do not recommend a vendor tab by default.
+
+The packet handed to Project Spreadsheet Invoice Entry should be line-item based. Each line item should carry the shared statement header data plus its own transaction data and routing confidence.
+
+Project Spreadsheet Invoice Entry owns:
+
+- resolving the exact live project-management workbook,
+- deciding whether a line belongs in that workbook,
+- checking workbook records for duplicate statement lines,
+- deciding final worksheet/vendor-tab placement,
+- inserting approved line records,
+- routing uncertain lines to the correct Review or exception process,
+- validating totals and workbook links,
+- uploading the verified workbook back to Teams/SharePoint when authorized.
+
+Default handoff trigger: send a direct follow-up message to the dedicated Project Spreadsheet Invoice Entry chat with the packet path and a short summary of line counts by status, including high-confidence project lines, unclear project lines, non-project/Home lines, mixed-tab lines, and accounting-review lines.
 
 ### Invoice And Receipt Reports
 
