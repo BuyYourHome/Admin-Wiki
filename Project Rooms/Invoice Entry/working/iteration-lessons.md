@@ -72,11 +72,11 @@ Lessons:
 
 ## 2026-07-08 - Statement Mode Handoff Boundary
 
-Context: Doc Scan now has Lowes Statement Mode and will send extracted statement data for Template to Project to consume.
+Context: Doc Scan now has Lowes Statement Mode and will send extracted statement data for Invoice Entry to consume.
 
 Lessons:
 
-- Keep statement extraction in Doc Scan and statement allocation in Template to Project.
+- Keep statement extraction in Doc Scan and statement allocation in Invoice Entry.
 - Treat extracted statement lines as source data, not approval for insertion.
 - Do not insert Statement Mode lines until the allocation rule for project, worksheet/table, duplicate check, audit trace, and totals validation has been designed, tested, and approved.
 
@@ -88,11 +88,46 @@ Lessons:
 
 - For credit-card statement line items, treat the statement amount as the transaction total unless the extracted packet separates pre-tax subtotal and tax. Do not apply the worksheet tax formula again to statement totals.
 - Lowes Statement Mode uses project-first routing, then Review-first handling inside the matched project workbook. Do not insert all lines from a multi-project statement into the current project's `Review` table.
-- Fill `Review[Destination Worksheet]` only when Template to Project has confidence in the destination tab for a line that already belongs to that project. Leave it blank for same-project vendor-tab uncertainty.
+- Fill `Review[Destination Worksheet]` only when Invoice Entry has confidence in the destination tab for a line that already belongs to that project. Leave it blank for same-project vendor-tab uncertainty.
 - Keep Home/non-project, unclear-project, mixed-tab/project-unclear, PO-conflicted, accounting-only, and other non-matched-project lines outside project workbooks until the project/accounting status is resolved.
 - A filled `Destination Worksheet` is a routing recommendation and does not mean the line has already been inserted into the destination vendor table.
 - Record the statement PDF path as source evidence for every inserted or review-routed statement line.
 - When writing Excel tables through automation, restore from rollback after any failed COM write attempt before retrying; partial unsaved attempts should not be carried forward.
 - If a Statement Mode rule changes after an upload, rebuild from the pre-statement rollback and reprocess the packet under the new rule instead of patching already-uploaded Review and vendor-table rows in place.
 - For multi-project statements, do not use the currently open project workbook as the holding place for every line. Route by project/workbook first; only lines belonging to that project should enter that project's `Review` table, and non-project or unclear-project lines should stay outside project workbooks until resolved.
-- For Lowes statement packets, Doc Scan should preserve visible receipt-item detail. A single statement transaction/ref can become multiple Template to Project rows when it contains multiple items, delivery/shipping, or separable credits; do not consume broad transaction-summary rows when item-level rows are needed for later vendor-tab placement.
+- For Lowes statement packets, Doc Scan should preserve visible receipt-item detail. A single statement transaction/ref can become multiple Invoice Entry rows when it contains multiple items, delivery/shipping, or separable credits; do not consume broad transaction-summary rows when item-level rows are needed for later vendor-tab placement.
+
+## 2026-07-08 - Lowes Statement Inclusion Rule Amendment
+
+Context: Wes amended the Lowes Statement Mode rule after reviewing rows 13-25 in the item-level packet. The prior project-first rule was too strict for rows that might belong to Outrigger but had PO, project, destination, mixed-tab, or allocation uncertainty.
+
+Lessons:
+
+- Exclude rows that clearly do not belong to the target project.
+- Include rows that certainly belong to the target project.
+- Also include rows that may belong to the target project but need review before final destination or allocation is known.
+- Exclude sales-tax-only and tax-credit-only rows from Review and vendor tabs during initial statement consumption; tax will be calculated or allocated later by an approved spreadsheet tax method.
+- For possible-project rows, leave `Destination Worksheet` blank unless the destination is clear and explain the uncertainty in the review/status fields.
+- If a Statement Mode inclusion rule changes after upload, rebuild from the clean pre-statement workbook copy and reprocess the packet rather than patching already-uploaded Review rows in place.
+
+## 2026-07-08 - Review Description Column
+
+Context: Wes identified that the `Review` table needs a dedicated item description because reviewed rows will later be copied into vendor tables.
+
+Lessons:
+
+- Keep `Review[Description]` as a separate clean item-description field after `Invoice #` and before `Amount`.
+- Do not rely on the narrative `Review` column as the future vendor-table description source.
+- For Statement Mode rows, preserve source traceability in `Review`, but put only the item description itself in `Description`.
+- Validate the Review header order before upload: `Invoice #`, `Description`, then `Amount`.
+
+## 2026-07-08 - Lowes Item Description Lookup
+
+Context: Wes asked to use Lowe's item numbers to retrieve better product descriptions for the `Review[Description]` column.
+
+Lessons:
+
+- Strip leading zeroes from Lowe's statement item/SKU values when searching for Lowe's product pages.
+- Use Lowe's product-page titles when the item number match is reliable.
+- Keep statement-derived text for delivery/shipping, payment/credit components, and rows where no reliable Lowe's product match is found.
+- Do not overwrite source traceability in the `Review` column; only improve the clean `Description` field.

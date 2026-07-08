@@ -17,7 +17,7 @@ Use [[Agent Unit Standard]] for the standard package behind an agent-like operat
 | Email Summary | Wiki-managed skill plus heartbeat automation plus project room | Active | Runs every day; starts at 7:45 AM Eastern, then every 15 minutes through 11:00 PM Eastern; Boss and Jenny summaries run once daily at/after 8:00 AM, and instruction monitoring checks OfficeAssist email | `skills\email-summary\SKILL.md`; `Project Rooms\Email Summary\README.md`; `C:\Users\wesbr\.codex\automations\officeassist-morning-email-summary-and-instruction-monitor\automation.toml` |
 | Email Delivery | Wiki-managed support skill | Active | Called by email-capable Admin workflows | `skills\email-delivery\SKILL.md` |
 | Doc Scan | Wiki-managed skill plus heartbeat automation plus project room | Active | Every 30 minutes from 10:00 AM through 4:30 PM Eastern | `skills\doc-scan\SKILL.md`; `Project Rooms\Doc Scan\README.md`; `C:\Users\wesbr\.codex\skills\doc-scan\SKILL.md`; app automation id `document-scanning` |
-| Template to Project | Wiki-managed skill plus project room plus backup heartbeat | Active | Hourly backup packet check; direct Doc Scan handoff remains primary trigger | `skills\template-to-project\SKILL.md`; `Project Rooms\Template to Project\README.md`; `C:\Users\wesbr\.codex\automations\invoice-entry-to-projects-backup-heartbeat\automation.toml` |
+| Invoice Entry | Wiki-managed skill plus project room plus backup heartbeat | Active | Hourly backup packet check; direct Doc Scan handoff remains primary trigger | `skills\invoice-entry\SKILL.md`; `Project Rooms\Invoice Entry\README.md`; `C:\Users\wesbr\.codex\automations\invoice-entry-to-projects-backup-heartbeat\automation.toml` |
 | Codex Skill Source Control | Wiki-managed skill system | Active | On demand after skill changes or wiki pulls | `Codex Skill Source Rule.md`; `tools\sync-codex-skills.ps1`; `skills\` |
 | Admin Request Wrapup | Wiki-managed skill | Active | At the end of Admin wiki requests | `skills\admin-request-wrapup\SKILL.md`; `AGENTS.md` |
 | SOPs | Wiki-managed skill plus project room | Active | On demand | `skills\sops\SKILL.md`; `Project Rooms\SOPs\README.md`; `Project Rooms\SOPs\outputs\SOP Index.md` |
@@ -32,7 +32,7 @@ Use [[Agent Unit Standard]] for the standard package behind an agent-like operat
 | Entity Relationship | Wiki-managed skill plus project room | Active/planning | On demand | `skills\entity-relationship\SKILL.md`; `Project Rooms\Entity Relationship\README.md` |
 | Gracious Millionaire | Wiki-managed skill plus project room plus heartbeat automation | Active | Project-room heartbeat every 15 minutes during active window; on demand otherwise | `skills\gracious-millionaire\SKILL.md`; `Project Rooms\Gracious Millionaire\README.md`; `Project Rooms\Gracious Millionaire\working\intake-heartbeat-rules.md`; automation id `gracious-millionaire-project-room-heartbeat` |
 | Project Management Spreadsheet Redesign | Wiki-managed skill plus project room | Active | On demand | `skills\project-management-spreadsheet-redesign\SKILL.md`; `Project Rooms\Project Management Spreadsheet Redesign\README.md`; `Project Rooms\Project Management Spreadsheet Redesign\Project Spreadsheet Expense Placement Rules.md` |
-| Template to Project | Wiki-managed skill plus project room plus backup heartbeat automation plus dedicated chat | Active | Direct message handoff is primary; backup heartbeat checks hourly for structured invoice/receipt packets that were not delivered by direct message | `skills\template-to-project\SKILL.md`; `Project Rooms\Template to Project\README.md`; app automation id `invoice-entry-to-projects-backup-heartbeat` |
+| Invoice Entry | Wiki-managed skill plus project room plus backup heartbeat automation plus dedicated chat | Active | Direct message handoff is primary; backup heartbeat checks hourly for structured invoice/receipt packets that were not delivered by direct message | `skills\invoice-entry\SKILL.md`; `Project Rooms\Invoice Entry\README.md`; app automation id `invoice-entry-to-projects-backup-heartbeat` |
 | Project Management Spreadsheet Rewrite | Planning project room, now covered by Spreadsheet Redesign skill | Active/planning | On demand | `skills\project-management-spreadsheet-redesign\SKILL.md`; `Project Rooms\Project Management Spreadsheet Rewrite\README.md` |
 | Property Trade Evaluation | Wiki-managed skill plus project room | Active | On demand | `skills\property-trade-evaluation\SKILL.md`; `Project Rooms\Property Trade Evaluation\README.md` |
 | Wes's Voice | Wiki-managed skill plus project room | Planning | On demand | `skills\wes-voice\SKILL.md`; `Project Rooms\Wes's Voice\README.md` |
@@ -337,7 +337,7 @@ Important rules:
 - Keep the automation attached to one dedicated status thread via `target_thread_id` so the user can review run history and adjust behavior in one place.
 - Use quiet-run behavior with `DONT_NOTIFY` when no new scans are found so routine empty checks do not create visible chat noise.
 
-## Template to Project
+## Invoice Entry
 
 Type: wiki-managed skill plus project room plus backup heartbeat automation.
 
@@ -364,10 +364,10 @@ Purpose:
 
 Defined in:
 
-- Canonical skill source: `C:\Codex\Wiki Files\skills\template-to-project\SKILL.md`
-- Project room: `C:\Codex\Wiki Files\Project Rooms\Template to Project\README.md`
-- Packet drop folder: `C:\Codex\Wiki Files\Project Rooms\Template to Project\sources\document-scan-packets`
-- Installed local skill copy: `C:\Users\wesbr\.codex\skills\template-to-project\SKILL.md`
+- Canonical skill source: `C:\Codex\Wiki Files\skills\invoice-entry\SKILL.md`
+- Project room: `C:\Codex\Wiki Files\Project Rooms\Invoice Entry\README.md`
+- Packet drop folder: `C:\Codex\Wiki Files\Project Rooms\Invoice Entry\sources\document-scan-packets`
+- Installed local skill copy: `C:\Users\wesbr\.codex\skills\invoice-entry\SKILL.md`
 - Automation: `C:\Users\wesbr\.codex\automations\invoice-entry-to-projects-backup-heartbeat\automation.toml`
 
 Important rules:
@@ -610,7 +610,7 @@ Important rules:
 - If it is unclear whether a `Profit` sheet value is template-specific or reusable, record it for review instead of deleting it.
 - Do not use New Project when an existing specialized project room is the better fit.
 
-## Template to Project
+## Invoice Entry
 
 Type: wiki-managed skill plus project room plus backup heartbeat automation plus dedicated chat.
 
@@ -628,8 +628,8 @@ Purpose:
 
 Defined in:
 
-- `C:\Codex\Wiki Files\skills\template-to-project\SKILL.md`
-- `C:\Codex\Wiki Files\Project Rooms\Template to Project\README.md`
+- `C:\Codex\Wiki Files\skills\invoice-entry\SKILL.md`
+- `C:\Codex\Wiki Files\Project Rooms\Invoice Entry\README.md`
 
 Dedicated chat:
 
@@ -640,8 +640,8 @@ Automation:
 - Heartbeat id: `invoice-entry-to-projects-backup-heartbeat`.
 - Schedule: every 60 minutes as backup.
 - Storage: app automation id `invoice-entry-to-projects-backup-heartbeat`.
-- Primary trigger: Doc Scan sends a direct follow-up message to the dedicated Template to Project chat with the packet path and summary.
-- Backup scope: inspect the Template to Project project room for new or changed structured invoice/receipt packets that were not delivered by direct message. Do not scan inboxes, inspect raw scan folders, copy files into Teams, approve or pay invoices, contact vendors, redesign workbook templates, or create new chats.
+- Primary trigger: Doc Scan sends a direct follow-up message to the dedicated Invoice Entry chat with the packet path and summary.
+- Backup scope: inspect the Invoice Entry project room for new or changed structured invoice/receipt packets that were not delivered by direct message. Do not scan inboxes, inspect raw scan folders, copy files into Teams, approve or pay invoices, contact vendors, redesign workbook templates, or create new chats.
 - Live workbook edits remain gated by clear Wes authorization or an approved automation rule for the exact insertion type.
 
 Important limitations:

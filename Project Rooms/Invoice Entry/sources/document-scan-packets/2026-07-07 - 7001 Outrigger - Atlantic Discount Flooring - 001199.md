@@ -10,6 +10,6 @@
 - Filed invoice path in Teams/project folder: C:\Users\wesbr\Buy Your Home\Buy Your Home - Property\27-HM- 7001 Outrigger Dr\Owning\26-03-09 - Atlantic Discount Flooring - 001199.pdf
 - Recommended project-management workbook: C:\Users\wesbr\Buy Your Home\Buy Your Home - Property\27_Project Management - 7001 Outrigger Dr.xlsm
 - Recommended worksheet/vendor tab: Flooring
-- Confidence/status: Ready for Template to Project duplicate check and placement
+- Confidence/status: Ready for Invoice Entry duplicate check and placement
 - Duplicate-risk notes: No exact local file name match found in 7001 Outrigger Owning folder during Doc Scan routing. Spreadsheet duplicate check not performed by Doc Scan.
 - Missing or uncertain fields: none apparent from scan.

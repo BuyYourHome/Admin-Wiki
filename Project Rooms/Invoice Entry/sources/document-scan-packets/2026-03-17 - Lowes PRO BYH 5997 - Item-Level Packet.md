@@ -5,8 +5,8 @@
 - Source workflow: Doc Scan - Lowe's Statement Allocation Mode
 - Packet purpose: item-level Lowe's handoff under the receipt/transaction item-splitting rule
 - Supersedes:
-  - `C:\Codex\Wiki Files\Project Rooms\Template to Project\sources\document-scan-packets\2026-03-17 - Lowes PRO BYH 5997 - Statement Allocation Test.md`
-  - `C:\Codex\Wiki Files\Project Rooms\Template to Project\sources\document-scan-packets\2026-03-17 - Lowes PRO BYH 5997 - Revised Project-First Packet.md`
+  - `C:\Codex\Wiki Files\Project Rooms\Invoice Entry\sources\document-scan-packets\2026-03-17 - Lowes PRO BYH 5997 - Statement Allocation Test.md`
+  - `C:\Codex\Wiki Files\Project Rooms\Invoice Entry\sources\document-scan-packets\2026-03-17 - Lowes PRO BYH 5997 - Revised Project-First Packet.md`
 - Source statement path: `C:\Users\wesbr\Buy Your Home\Buy Your Home - Office Admin\2026\Credit Cards\Lowe's PRO BYH 5997\26-03-17 .pdf`
 - Filed statement path: `C:\Users\wesbr\Buy Your Home\Buy Your Home - Office Admin\2026\Credit Cards\Lowe's PRO BYH 5997\26-03-17 .pdf`
 - Statement holder: Buy Your Home LLC
@@ -26,9 +26,9 @@
 
 ## Item-Splitting Rule Applied
 
-Each visible purchased item, returned item, delivery/shipping component, tax component, credit component, or finance charge is represented as its own packet row. The shared Lowe's transaction header is repeated on each row so Template to Project can place approved rows into the correct project workbook `Review` table and later copy approved rows to vendor tabs.
+Each visible purchased item, returned item, delivery/shipping component, tax component, credit component, or finance charge is represented as its own packet row. The shared Lowe's transaction header is repeated on each row so Invoice Entry can place approved rows into the correct project workbook `Review` table and later copy approved rows to vendor tabs.
 
-Item amounts below are the statement detail `EXT. PRICE` or separately shown tax/credit/interest amount. Where tax is shown at the transaction level, it is split as a separate row so the transaction can reconcile. Template to Project should not allocate tax across item rows unless an approved allocation rule exists.
+Item amounts below are the statement detail `EXT. PRICE` or separately shown tax/credit/interest amount. Where tax is shown at the transaction level, it is split as a separate row so the transaction can reconcile. Invoice Entry should not allocate tax across item rows unless an approved allocation rule exists.
 
 Doc Scan did not edit any project-management workbook and did not check workbook duplicates.
 
@@ -43,7 +43,7 @@ Doc Scan did not edit any project-management workbook and did not check workbook
 - Mixed-tab/project-review rows: 6
 - PO-conflicted rows: 2
 - Accounting-review rows: 1
-- Payment rows excluded from Template to Project packet: 1
+- Payment rows excluded from invoice-entry packet: 1
 - Zero-dollar promotional discount rows omitted from packet rows: 3
 
 ## High-Confidence Project Rows
@@ -59,15 +59,15 @@ Recommended workbook for these rows:
 | 1 | 2026-02-18 | 2026-02-18 | `74298` | `444` | Printed PO `7001` | `000000000171973` | PFJCRWN L49 3-5/8-INX9/16 | 2 | `$40.74` | Charge item | `27-HM- 7001 Outrigger Dr` | `C:\Users\wesbr\Buy Your Home\Buy Your Home - Property\27_Project Management - 7001 Outrigger Dr.xlsm` | blank | Needs Review - Vendor Tab | Ref total is `$53.66`; zero-dollar promotional discount omitted. Put in Outrigger `Review`; leave `Destination Worksheet` blank. |
 | 2 | 2026-02-18 | 2026-02-18 | `74298` | `444` | Printed PO `7001` | `000000000076250` | 2-8-8 TOP CHOICE #2 SYP P | 1 | `$9.29` | Charge item | `27-HM- 7001 Outrigger Dr` | `C:\Users\wesbr\Buy Your Home\Buy Your Home - Property\27_Project Management - 7001 Outrigger Dr.xlsm` | blank | Needs Review - Vendor Tab | Ref total is `$53.66`; category is not clear from approved Vendor Tabs Mode list. |
 | 3 | 2026-02-18 | 2026-02-18 | `74298` | `444` | Printed PO `7001` | n/a | Sales tax for ref `74298` | n/a | `$3.63` | Tax | `27-HM- 7001 Outrigger Dr` | `C:\Users\wesbr\Buy Your Home\Buy Your Home - Property\27_Project Management - 7001 Outrigger Dr.xlsm` | blank | Needs Review - Allocation / Vendor Tab | Transaction-level tax shown separately. Keep with ref `74298`; do not allocate across item rows without approved rule. |
-| 4 | 2026-02-17 | 2026-02-18 | `83160` | `907` | Printed PO `7001` | `000000000758108` | INSTALL KIT-ELECTRIC WH | 1 | `$31.93` | Charge item | `27-HM- 7001 Outrigger Dr` | `C:\Users\wesbr\Buy Your Home\Buy Your Home - Property\27_Project Management - 7001 Outrigger Dr.xlsm` | `Plumbing Fixtures` | Ready for Template to Project duplicate check; Review-first | Put in Outrigger `Review`, with `Destination Worksheet = Plumbing Fixtures`. |
-| 5 | 2026-02-17 | 2026-02-18 | `83160` | `907` | Printed PO `7001` | `000000000000002` | Delivery and Shipping | 1 | `$20.00` | Delivery/shipping | `27-HM- 7001 Outrigger Dr` | `C:\Users\wesbr\Buy Your Home\Buy Your Home - Property\27_Project Management - 7001 Outrigger Dr.xlsm` | `Plumbing Fixtures` | Ready for Template to Project duplicate check; Review-first | Delivery is separately shown and tied to the water-heater transaction. |
-| 6 | 2026-02-17 | 2026-02-18 | `83160` | `907` | Printed PO `7001` | `000000003488471` | 24-IN PLASTIC WH DRAIN PA | 1 | `$12.58` | Charge item | `27-HM- 7001 Outrigger Dr` | `C:\Users\wesbr\Buy Your Home\Buy Your Home - Property\27_Project Management - 7001 Outrigger Dr.xlsm` | `Plumbing Fixtures` | Ready for Template to Project duplicate check; Review-first | Put in Outrigger `Review`, with `Destination Worksheet = Plumbing Fixtures`. |
-| 7 | 2026-02-17 | 2026-02-18 | `83160` | `907` | Printed PO `7001` | n/a | Sales tax for ref `83160` | n/a | `$4.67` | Tax | `27-HM- 7001 Outrigger Dr` | `C:\Users\wesbr\Buy Your Home\Buy Your Home - Property\27_Project Management - 7001 Outrigger Dr.xlsm` | `Plumbing Fixtures` | Ready for Template to Project duplicate check; Review-first | Ref total is `$69.18`. Tax is transaction-level and tied to plumbing items. |
-| 8 | 2026-02-17 | 2026-02-18 | `91816` | `907` | Printed PO `7001` | `000000002483229` | AOS 50-GAL 6YR ELEC TALL | 1 | `$483.55` | Charge item | `27-HM- 7001 Outrigger Dr` | `C:\Users\wesbr\Buy Your Home\Buy Your Home - Property\27_Project Management - 7001 Outrigger Dr.xlsm` | `Plumbing Fixtures` | Ready for Template to Project duplicate check; Review-first | Put in Outrigger `Review`, with `Destination Worksheet = Plumbing Fixtures`. |
-| 9 | 2026-02-17 | 2026-02-18 | `91816` | `907` | Printed PO `7001` | `000000000000002` | Delivery and Shipping | 1 | `$0.00` | Delivery/shipping | `27-HM- 7001 Outrigger Dr` | `C:\Users\wesbr\Buy Your Home\Buy Your Home - Property\27_Project Management - 7001 Outrigger Dr.xlsm` | `Plumbing Fixtures` | Ready for Template to Project duplicate check; Review-first | Delivery is separately shown at `$0.00`; include for source fidelity but do not create cost unless Template to Project keeps zero rows. |
-| 10 | 2026-02-17 | 2026-02-18 | `91816` | `907` | Printed PO `7001` | n/a | Sales tax for ref `91816` | n/a | `$38.06` | Tax | `27-HM- 7001 Outrigger Dr` | `C:\Users\wesbr\Buy Your Home\Buy Your Home - Property\27_Project Management - 7001 Outrigger Dr.xlsm` | `Plumbing Fixtures` | Ready for Template to Project duplicate check; Review-first | Ref total is `$521.61`. Tax is transaction-level and tied to the water-heater purchase. |
-| 11 | 2026-03-03 | 2026-03-03 | `76164` | `1095` | Printed PO `7001` | `000000003488471` | 24-IN PLASTIC WH DRAIN PA | 1 | `($12.58)` | Credit/return item | `27-HM- 7001 Outrigger Dr` | `C:\Users\wesbr\Buy Your Home\Buy Your Home - Property\27_Project Management - 7001 Outrigger Dr.xlsm` | `Plumbing Fixtures` | Ready for Template to Project duplicate check; Review-first | Return/credit for drain pan. Put in Outrigger `Review`, with `Destination Worksheet = Plumbing Fixtures`. |
-| 12 | 2026-03-03 | 2026-03-03 | `76164` | `1095` | Printed PO `7001` | n/a | Sales tax credit for ref `76164` | n/a | `($0.91)` | Tax credit | `27-HM- 7001 Outrigger Dr` | `C:\Users\wesbr\Buy Your Home\Buy Your Home - Property\27_Project Management - 7001 Outrigger Dr.xlsm` | `Plumbing Fixtures` | Ready for Template to Project duplicate check; Review-first | Ref total is `($13.49)`. Tax credit is transaction-level and tied to the drain-pan return. |
+| 4 | 2026-02-17 | 2026-02-18 | `83160` | `907` | Printed PO `7001` | `000000000758108` | INSTALL KIT-ELECTRIC WH | 1 | `$31.93` | Charge item | `27-HM- 7001 Outrigger Dr` | `C:\Users\wesbr\Buy Your Home\Buy Your Home - Property\27_Project Management - 7001 Outrigger Dr.xlsm` | `Plumbing Fixtures` | Ready for Invoice Entry duplicate check; Review-first | Put in Outrigger `Review`, with `Destination Worksheet = Plumbing Fixtures`. |
+| 5 | 2026-02-17 | 2026-02-18 | `83160` | `907` | Printed PO `7001` | `000000000000002` | Delivery and Shipping | 1 | `$20.00` | Delivery/shipping | `27-HM- 7001 Outrigger Dr` | `C:\Users\wesbr\Buy Your Home\Buy Your Home - Property\27_Project Management - 7001 Outrigger Dr.xlsm` | `Plumbing Fixtures` | Ready for Invoice Entry duplicate check; Review-first | Delivery is separately shown and tied to the water-heater transaction. |
+| 6 | 2026-02-17 | 2026-02-18 | `83160` | `907` | Printed PO `7001` | `000000003488471` | 24-IN PLASTIC WH DRAIN PA | 1 | `$12.58` | Charge item | `27-HM- 7001 Outrigger Dr` | `C:\Users\wesbr\Buy Your Home\Buy Your Home - Property\27_Project Management - 7001 Outrigger Dr.xlsm` | `Plumbing Fixtures` | Ready for Invoice Entry duplicate check; Review-first | Put in Outrigger `Review`, with `Destination Worksheet = Plumbing Fixtures`. |
+| 7 | 2026-02-17 | 2026-02-18 | `83160` | `907` | Printed PO `7001` | n/a | Sales tax for ref `83160` | n/a | `$4.67` | Tax | `27-HM- 7001 Outrigger Dr` | `C:\Users\wesbr\Buy Your Home\Buy Your Home - Property\27_Project Management - 7001 Outrigger Dr.xlsm` | `Plumbing Fixtures` | Ready for Invoice Entry duplicate check; Review-first | Ref total is `$69.18`. Tax is transaction-level and tied to plumbing items. |
+| 8 | 2026-02-17 | 2026-02-18 | `91816` | `907` | Printed PO `7001` | `000000002483229` | AOS 50-GAL 6YR ELEC TALL | 1 | `$483.55` | Charge item | `27-HM- 7001 Outrigger Dr` | `C:\Users\wesbr\Buy Your Home\Buy Your Home - Property\27_Project Management - 7001 Outrigger Dr.xlsm` | `Plumbing Fixtures` | Ready for Invoice Entry duplicate check; Review-first | Put in Outrigger `Review`, with `Destination Worksheet = Plumbing Fixtures`. |
+| 9 | 2026-02-17 | 2026-02-18 | `91816` | `907` | Printed PO `7001` | `000000000000002` | Delivery and Shipping | 1 | `$0.00` | Delivery/shipping | `27-HM- 7001 Outrigger Dr` | `C:\Users\wesbr\Buy Your Home\Buy Your Home - Property\27_Project Management - 7001 Outrigger Dr.xlsm` | `Plumbing Fixtures` | Ready for Invoice Entry duplicate check; Review-first | Delivery is separately shown at `$0.00`; include for source fidelity but do not create cost unless Invoice Entry keeps zero rows. |
+| 10 | 2026-02-17 | 2026-02-18 | `91816` | `907` | Printed PO `7001` | n/a | Sales tax for ref `91816` | n/a | `$38.06` | Tax | `27-HM- 7001 Outrigger Dr` | `C:\Users\wesbr\Buy Your Home\Buy Your Home - Property\27_Project Management - 7001 Outrigger Dr.xlsm` | `Plumbing Fixtures` | Ready for Invoice Entry duplicate check; Review-first | Ref total is `$521.61`. Tax is transaction-level and tied to the water-heater purchase. |
+| 11 | 2026-03-03 | 2026-03-03 | `76164` | `1095` | Printed PO `7001` | `000000003488471` | 24-IN PLASTIC WH DRAIN PA | 1 | `($12.58)` | Credit/return item | `27-HM- 7001 Outrigger Dr` | `C:\Users\wesbr\Buy Your Home\Buy Your Home - Property\27_Project Management - 7001 Outrigger Dr.xlsm` | `Plumbing Fixtures` | Ready for Invoice Entry duplicate check; Review-first | Return/credit for drain pan. Put in Outrigger `Review`, with `Destination Worksheet = Plumbing Fixtures`. |
+| 12 | 2026-03-03 | 2026-03-03 | `76164` | `1095` | Printed PO `7001` | n/a | Sales tax credit for ref `76164` | n/a | `($0.91)` | Tax credit | `27-HM- 7001 Outrigger Dr` | `C:\Users\wesbr\Buy Your Home\Buy Your Home - Property\27_Project Management - 7001 Outrigger Dr.xlsm` | `Plumbing Fixtures` | Ready for Invoice Entry duplicate check; Review-first | Ref total is `($13.49)`. Tax credit is transaction-level and tied to the drain-pan return. |
 
 ## Lines Not Ready For A Project Workbook
 
@@ -93,14 +93,14 @@ These rows should not be placed into the Outrigger workbook merely because the s
 
 | Tran Date | Post Date | Ref # | Description | Amount | Reason |
 | --- | --- | --- | --- | ---: | --- |
-| 2026-02-26 | 2026-02-26 | n/a | Payment - Thank You | `($105.97)` | Payment activity, not an Template to Project purchase or project cost. |
-| 2026-02-18 | 2026-02-18 | `74298` | Promotional discount applied | `$0.00` | Zero-dollar promotional line; noted in packet but not useful as an Template to Project cost row. |
+| 2026-02-26 | 2026-02-26 | n/a | Payment - Thank You | `($105.97)` | Payment activity, not an invoice-entry purchase or project cost. |
+| 2026-02-18 | 2026-02-18 | `74298` | Promotional discount applied | `$0.00` | Zero-dollar promotional line; noted in packet but not useful as an invoice-entry cost row. |
 | 2026-02-25 | 2026-02-25 | `94293` | Promotional discount applied | `$0.00` | Zero-dollar promotional line; non-project/Home transaction. |
 | 2026-03-06 | 2026-03-06 | `94895` | Promotional discount applied | `$0.00` | Zero-dollar promotional line; PO conflict transaction. |
 
 ## Recommended Handoff
 
-Template to Project should consume this item-level packet instead of either prior Lowe's packet.
+Invoice Entry should consume this item-level packet instead of either prior Lowe's packet.
 
 Recommended handling:
 
@@ -109,4 +109,4 @@ Recommended handling:
 - Fill `Destination Worksheet` only where shown above.
 - Do not place rows 13-25 in the Outrigger workbook until their project/accounting/allocation status is resolved.
 - Do not insert any Lowe's statement item directly into a vendor tab during initial packet consumption.
-- For rows marked `Needs Review - Allocation`, do not create final inserted vendor-tab rows until Template to Project has an approved allocation method.
+- For rows marked `Needs Review - Allocation`, do not create final inserted vendor-tab rows until Invoice Entry has an approved allocation method.
