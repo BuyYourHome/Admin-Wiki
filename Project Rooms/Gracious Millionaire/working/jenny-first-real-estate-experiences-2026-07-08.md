@@ -90,4 +90,16 @@ Placement remains after `Always God Is There` and before `Failures in Real Estat
 
 The v2 chapter pass expands Jenny's first-real-estate-experiences material into fuller manuscript chapters in Jenny's first-person voice. It keeps to the known facts in the routed source and does not draft beyond Jenny's stated ending, "To be continued, with Marriage Number Two."
 
-No new email was sent for this expansion pass.
+Initial expansion note: no new email was sent when the v2 manuscript files were first created.
+
+## Expanded Whole-Chapter Send
+
+Wes then instructed Jean to send the completed expanded packet.
+
+Sent Items verification:
+
+- Subject: `Gracious Millionaire - Expanded Jenny First Real Estate Chapters`
+- Sent/received timestamp shown by connector: 2026-07-08T19:49:22Z
+- Sent message id: `AQMkADZkMGMwNDI3LWU5ZjctNDgzMC1iMjdkLTY0NmRiN2IwNmIyZgBGAAADKGOvWJYjX0aEKaRpd0MYQQcAVSXargQY20aF7RLCkro4ggAAAgEJAAAAVSXargQY20aF7RLCkro4ggACbe9zQwAAAA==`
+- Recipients: Jenny only; no CC or BCC
+- Attachment present: yes
