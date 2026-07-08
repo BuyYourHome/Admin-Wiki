@@ -75,3 +75,19 @@ Clickable outline send verification:
 - Sent message id: `AQMkADZkMGMwNDI3LWU5ZjctNDgzMC1iMjdkLTY0NmRiN2IwNmIyZgBGAAADKGOvWJYjX0aEKaRpd0MYQQcAVSXargQY20aF7RLCkro4ggAAAgEJAAAAVSXargQY20aF7RLCkro4ggACbe9zQgAAAA==`
 - Recipients: Jenny only; no CC or BCC
 - Attachment present: yes
+
+## Expanded Whole-Chapter Pass
+
+Wes clarified that he wanted whole chapters from Jenny's sources, not only outline-style chapter starts.
+
+Outputs created:
+
+- `outputs/Jenny First Real Estate Experiences - Manuscript Chapters v2.md`
+- `outputs/Gracious Millionaire - Manuscript Draft v22 - Expanded Jenny First Real Estate Experiences.md`
+- `outputs/jenny-chapter-review-current/Gracious Millionaire - Jenny Clickable Chapter Review - CURRENT.html`
+
+Placement remains after `Always God Is There` and before `Failures in Real Estate`, preserving Jenny's introduction and chapters as a separate Jenny-authored section inside the full manuscript.
+
+The v2 chapter pass expands Jenny's first-real-estate-experiences material into fuller manuscript chapters in Jenny's first-person voice. It keeps to the known facts in the routed source and does not draft beyond Jenny's stated ending, "To be continued, with Marriage Number Two."
+
+No new email was sent for this expansion pass.

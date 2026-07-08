@@ -10,3 +10,4 @@
 
 - Any non-email drafts, notes, recordings, or outlines for *Gracious Millionaire*.
 - Any source documents for the Red Quartz, HOA foreclosure, and Providence Landing stories if factual precision matters.
+- Jenny's promised continuation about Marriage Number Two, if that material should become the next Jenny-authored real-estate section.
