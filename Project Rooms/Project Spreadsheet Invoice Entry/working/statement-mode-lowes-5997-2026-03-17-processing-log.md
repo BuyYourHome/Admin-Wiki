@@ -14,6 +14,14 @@ The initial partial vendor-tab insertion was superseded on 2026-07-08 after Wes 
 
 Review-first work copy: `C:\Codex\Wiki Files\Project Rooms\Project Spreadsheet Invoice Entry\working\statement-mode\lowes-5997-2026-03-17-review-first\27_Project Management - 7001 Outrigger Dr.lowes-5997-review-first.20260708-142327.xlsm`
 
+## Final Hold Pending New Document Scan Consumables
+
+On 2026-07-08, Wes decided not to keep statement lines that do not belong to Outrigger inside the Outrigger workbook `Review` table. The live Teams/SharePoint workbook was reverted again from the same pre-Lowes rollback copy and no Lowes statement lines remain in the workbook.
+
+Current state: waiting for Document Scan to provide revised line-item Statement Mode consumables that support project-first routing before Invoice Entry reprocesses this statement.
+
+Final revert source: `C:\Codex\Wiki Files\Project Rooms\Project Spreadsheet Invoice Entry\working\backups\27_Project Management - 7001 Outrigger Dr.before-lowes-5997-2026-03-17-20260708-140429.xlsm`
+
 ## Duplicate Check
 
 - Searched workbook for refs `83160`, `91816`, `74298`, `94293`, `76164`, `84314`, and `94895`.
@@ -66,3 +74,12 @@ After reprocessing, all eight extracted Lowes statement rows were added to `Revi
 - Workbook links: `0`
 - External link package parts: `0`
 - SharePoint upload completed: 2026-07-08 18:26 UTC, size `806074`
+
+## Final Revert Validation
+
+- `Review` table rows after revert: `1`
+- `Plumbing Fixtures!L14`: `982.744975`
+- `Plumbing Fixtures!L16`: `982.744975`
+- `Gnatt Chart!G10`: `982.744975`
+- Workbook links: `0`
+- SharePoint upload completed: 2026-07-08 18:48 UTC, size `805516`
