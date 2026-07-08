@@ -12,6 +12,7 @@ Included:
 
 - Receive structured invoice packets from Document Scan as the scanned-invoice intake source.
 - Other intake sources are out of scope unless Wes separately approves and documents them.
+- Receive Lowes credit card statement packets only as a held special case until Wes approves a tested statement-splitting process.
 - Resolve the correct active project-management workbook through Teams/SharePoint.
 - Route invoice records to the correct worksheet and expense area.
 - For Vendor Tabs Mode, insert records only into the yellow actual-invoice section of the correct vendor tab.
@@ -81,6 +82,19 @@ Each handoff should include:
 9. Validate affected totals after insertion.
 10. Upload the verified workbook back through the Teams/SharePoint connector only after it opens cleanly and has no unintended workbook links.
 
+## Lowes Credit Card Statement Hold
+
+Lowes credit card statements may be routed to this project room to be treated as invoice-like source material, but they are not normal single-invoice packets.
+
+If a Lowes credit card statement is received:
+
+1. Do not insert statement items into any workbook yet.
+2. Do not treat the statement as a single invoice for one worksheet.
+3. Mark the packet as `Needs Review - Lowes Statement`.
+4. Hold processing until Wes approves a tested process for splitting statement items by project and then by worksheet/tab within each project.
+
+Reason: a common invoice usually maps to one project and one tab, but a Lowes statement can contain charges for multiple projects and multiple tabs inside each project.
+
 ## Vendor Tabs Mode Startup
 
 When inserting into Vendor Tabs Mode, read:
@@ -119,6 +133,7 @@ If a duplicate is likely, stop and route the packet for review instead of insert
 - Exact row-insertion behavior for each Vendor Tab's yellow actual-invoice section.
 - Whether successful low-risk insertions can later run automatically.
 - Final STR worksheet design, because STR does not yet match the two-group vendor-tab layout.
+- Lowes credit card statement process for splitting charges by project and by worksheet/tab before insertion.
 
 ## Next Actions
 

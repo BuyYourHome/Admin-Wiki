@@ -2,6 +2,8 @@
 
 Use this schema when Document Scan hands a scanned invoice or receipt packet to Project Spreadsheet Invoice Entry. Other intake sources are out of scope unless Wes separately approves and documents them.
 
+Lowes credit card statements are a special held source type. They may be routed here as invoice-like source material, but they should not be inserted until Wes approves a tested process for splitting statement line items by project and by worksheet/tab.
+
 ## Required Fields
 
 | Field | Required | Notes |
@@ -18,6 +20,17 @@ Use this schema when Document Scan hands a scanned invoice or receipt packet to 
 | `recommended_worksheet` | yes | Candidate worksheet or `Needs Review`. |
 | `confidence_status` | yes | Suggested values: `Ready`, `Needs Review`, `Duplicate Risk`, `Missing Data`. |
 | `notes` | no | Uncertainty, duplicate hints, or routing explanation. |
+
+## Special Source Types
+
+### Lowes Credit Card Statements
+
+If the packet is for a Lowes credit card statement:
+
+- Set `confidence_status` to `Needs Review - Lowes Statement`.
+- Include the statement period and source file path in `notes` when available.
+- Do not recommend a single worksheet unless the approved Lowes statement process later allows that.
+- Do not insert line items into a workbook until the Lowes statement splitting process has been developed, tested, and approved by Wes.
 
 ## Handoff Boundary
 

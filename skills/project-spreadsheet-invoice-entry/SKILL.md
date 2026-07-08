@@ -13,6 +13,8 @@ description: Use for Buy Your Home project-management spreadsheet invoice-entry 
 
 Use this skill for operational invoice insertion into project-management spreadsheets. For scanned invoice and receipt records, Document Scan is the normal intake workflow and should trigger this workflow by direct follow-up message after creating the packet. The project-room heartbeat is a backup monitor for missed packet handoffs. Do not use this skill for scan inspection/OCR, document splitting, invoice-file routing, or spreadsheet template redesign.
 
+Lowes credit card statements are a held special case. They may arrive as invoice-like source material, but do not process or insert them until Wes approves a tested workflow for splitting statement line items by project and by worksheet/tab.
+
 ## Required Startup
 
 1. Confirm the working folder is `C:\Codex\Wiki Files`.
@@ -80,6 +82,8 @@ Before editing a workbook, obtain or build an invoice packet with:
 
 If required fields are missing, ask Wes or route the packet for review unless the missing value can be safely derived from the filed invoice and approved packet.
 
+For Lowes credit card statement packets, set or treat `confidence/status` as `Needs Review - Lowes Statement` and stop before insertion. Do not treat the statement as a single invoice or route it to a single worksheet unless a later approved Lowes statement process explicitly allows that.
+
 ## Workbook Rules
 
 - Confirm the exact target workbook before editing.
@@ -102,6 +106,17 @@ For Vendor Tabs Mode:
 - Preserve each tab's existing template-estimate formulas.
 - Validate the affected tab total and the `Gnatt Chart` source cell after insertion.
 - Treat `STR` as a special case until Wes approves its final design.
+
+## Lowes Credit Card Statement Hold
+
+If a Lowes credit card statement is received:
+
+- hold processing before workbook insertion,
+- do not split charges across projects or tabs by guesswork,
+- do not insert it as one invoice into one tab,
+- report that the Lowes statement process still needs design and testing.
+
+This hold exists because a common invoice usually maps to one project and one tab, while a Lowes statement can contain line items for multiple projects and multiple tabs inside each project.
 
 ## Duplicate Checks
 
