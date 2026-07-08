@@ -121,3 +121,22 @@ After reprocessing, all eight extracted Lowes statement rows were added to `Revi
 - Workbook links: `0`
 - External link package parts: `0`
 - SharePoint upload completed: 2026-07-08 19:08 UTC, size `805387`
+
+## Reverted Pending Item-Level Doc Scan Package
+
+On 2026-07-08, Wes determined the revised project-first packet still summarized some Lowe's receipt/ref lines too broadly. Specifically, statement line 1 should have been split into three item-level Review rows, and statement line 2 should have been split into two item-level Review rows.
+
+The live Teams/SharePoint workbook was reverted to the pre-project-first insertion copy. No Lowe's statement rows from the revised project-first packet remain in the Outrigger workbook.
+
+Current state: waiting for Doc Scan to send a new item-level Lowe's Statement Mode package.
+
+Final revert source: `C:\Codex\Wiki Files\Project Rooms\Project Spreadsheet Invoice Entry\working\statement-mode\lowes-5997-2026-03-17-project-first\27_Project Management - 7001 Outrigger Dr.sharepoint-current.20260708-150140.xlsm`
+
+Final revert validation:
+
+- `Review` table rows after revert: `1`
+- `Plumbing Fixtures!L14`: `982.744975`
+- `Plumbing Fixtures!L16`: `982.744975`
+- `Gnatt Chart!G10`: `982.744975`
+- Workbook links: `0`
+- SharePoint upload completed: 2026-07-08 19:53 UTC, size `805516`
