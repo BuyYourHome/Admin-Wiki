@@ -352,6 +352,31 @@ When Boss asks for a credit card statement report, or when a scan run files cred
 4. Email the friendly report PDF to both `WesWill@BuyYourHomeLLC.com` and `Jenny@BuyYourHomeLLC.com`.
 5. In the email body, note anything that needs attention, including minimum-payment increases or notable decreases, late fees, unusual balance jumps, missing account matches, duplicate-looking statements, or any statement routed to review.
 
+### Lowe's Statement Allocation Mode
+
+When Credit Card Statement Mode identifies and files a Lowe's statement, preserve all normal Lowe's statement handling first: inspect/OCR, split if needed, file the statement in the approved Lowe's credit-card statement folder, log the routing, include it in the credit card statement report, and flag normal statement review items.
+
+After normal statement filing, run Lowe's Statement Allocation Mode as an additive workflow. Extract each eligible purchase, charge, return, or credit line separately as invoice-entry-style source data. Do not treat the entire Lowe's statement as one invoice for one project, and do not force all statement lines into one vendor tab.
+
+For each line item, capture when available:
+
+- Lowe's account label and account last 4.
+- Statement date and statement period.
+- Transaction date and posting date.
+- Transaction description, receipt number, invoice/order/reference number, or memo.
+- PO value or other project/property clue shown on the statement.
+- Amount, including whether it is a charge, return, credit, fee, or interest.
+- Likely project/property.
+- Recommended project-management workbook.
+- Recommended worksheet/vendor tab.
+- Source scan path and filed statement path.
+- Confidence/status.
+- Duplicate-risk notes and missing or uncertain fields.
+
+Use the PO value as a strong project/property clue when present, but do not guess if the PO is missing, ambiguous, or conflicts with other line details. Evaluate project/property and vendor-tab routing independently for each line item.
+
+For high-confidence line items, create a structured Lowe's statement allocation packet for Project Spreadsheet Invoice Entry with one line item per packet row or record. Mark unclear line items `Needs Review` and include the reason. Document Scan must not edit the project-management workbook directly.
+
 ### Invoice And Receipt Reports
 
 When Boss asks for an invoice/receipt report, or when a scan run files invoices or receipts and a report is appropriate:
