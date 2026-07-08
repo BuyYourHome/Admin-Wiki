@@ -1,6 +1,6 @@
-# Document Scan Modes
+# Doc Scan Modes
 
-These are the defined operating modes for the Document Scan project room. A scan run may use more than one mode when a source scan contains mixed documents. The detailed routing and safety rules remain in `Document Scanning SOP.md`, `Document Scanning Skill Spec.md`, `Document Scanning Folder Map.md`, and the canonical `skills\document-scanning\SKILL.md`.
+These are the defined operating modes for the Doc Scan project room. A scan run may use more than one mode when a source scan contains mixed documents. The detailed routing and safety rules remain in `Document Scanning SOP.md`, `Document Scanning Skill Spec.md`, `Document Scanning Folder Map.md`, and the canonical `skills\doc-scan\SKILL.md`.
 
 ## Mode Selection Rules
 

@@ -1,10 +1,10 @@
-# Document Scan Project Room
+# Doc Scan Project Room
 
-This project room holds development notes, source inventory, and review artifacts for the Buy Your Home document-scanning workflow.
+This project room holds development notes, source inventory, and review artifacts for the Buy Your Home Doc Scan workflow.
 
 ## Purpose
 
-- Keep document-scanning workflow development separate from general Admin Operations.
+- Keep Doc Scan workflow development separate from general Admin Operations.
 - Preserve the current authoritative workflow documents and skill source.
 - Track routing rules, automation behavior, open questions, and review-ready handoffs in one place.
 - Support future work on scanned PDFs, JPG/JPEG scans, invoice routing, statement routing, archive rules, and review folders.
@@ -14,9 +14,9 @@ This project room holds development notes, source inventory, and review artifact
 - Status: active.
 - Automation id: `document-scanning`.
 - Schedule: every 30 minutes from 10:00 AM through 4:30 PM Eastern.
-- Defined operating modes: `working\document-scan-modes.md`.
-- Canonical skill source: `C:\Codex\Wiki Files\skills\document-scanning\SKILL.md`.
-- Installed skill copy: `C:\Users\wesbr\.codex\skills\document-scanning\SKILL.md`.
+- Defined operating modes: `working\doc-scan-modes.md`.
+- Canonical skill source: `C:\Codex\Wiki Files\skills\doc-scan\SKILL.md`.
+- Installed skill copy: `C:\Users\wesbr\.codex\skills\doc-scan\SKILL.md`.
 - Live automation config: `C:\Users\wesbr\.codex\automations\document-scanning\automation.toml`.
 
 ## Room Layout
@@ -27,14 +27,14 @@ This project room holds development notes, source inventory, and review artifact
 
 ## Operating Modes
 
-The project room's defined scan modes are maintained in [[document-scan-modes]]. Treat those modes as the project-room index for scan-category development, while the root SOP/spec/folder-map and canonical skill remain authoritative for the detailed routing rules.
+The project room's defined scan modes are maintained in [[doc-scan-modes]]. Treat those modes as the project-room index for scan-category development, while the root SOP/spec/folder-map and canonical skill remain authoritative for the detailed routing rules.
 
 ## Authoritative Sources
 
 - `C:\Codex\Wiki Files\Document Scanning SOP.md`
 - `C:\Codex\Wiki Files\Document Scanning Skill Spec.md`
 - `C:\Codex\Wiki Files\Document Scanning Folder Map.md`
-- `C:\Codex\Wiki Files\skills\document-scanning\SKILL.md`
+- `C:\Codex\Wiki Files\skills\doc-scan\SKILL.md`
 - `C:\Codex\Wiki Files\Invoice and Receipt Processing Notes.md`
 - `C:\Codex\Wiki Files\Invoice Project List.md`
 - `C:\Users\wesbr\.codex\automations\document-scanning\automation.toml`

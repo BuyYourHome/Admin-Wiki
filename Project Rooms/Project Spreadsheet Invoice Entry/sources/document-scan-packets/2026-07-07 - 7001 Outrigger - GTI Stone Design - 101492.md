@@ -11,5 +11,5 @@
 - Recommended project-management workbook: C:\Users\wesbr\Buy Your Home\Buy Your Home - Property\27_Project Management - 7001 Outrigger Dr.xlsm
 - Recommended worksheet/vendor tab: Needs Review; likely Cabinets, but do not guess because invoice includes countertop fabrication plus sinks and could overlap Plumbing Fixtures.
 - Confidence/status: Needs Review
-- Duplicate-risk notes: A similarly dated file named `26-03-17 Borris invoice.pdf` exists in the 7001 Outrigger Owning folder, but Document Scan did not confirm whether it duplicates GTI invoice #101492. Spreadsheet duplicate check not performed by Document Scan.
+- Duplicate-risk notes: A similarly dated file named `26-03-17 Borris invoice.pdf` exists in the 7001 Outrigger Owning folder, but Doc Scan did not confirm whether it duplicates GTI invoice #101492. Spreadsheet duplicate check not performed by Doc Scan.
 - Missing or uncertain fields: final vendor tab/category and duplicate status.

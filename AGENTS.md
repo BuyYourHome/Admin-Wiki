@@ -9,7 +9,7 @@ This workspace is the working knowledge base for Buy Your Home office-admin oper
 - Obsidian vault: `C:\Codex\Wiki Files`
 - Teams folders are not the default wiki location. Copy files to Teams only when the user explicitly asks for a final deliverable there.
 
-Use this repo when formulating solutions for office-admin workflows, SOPs, automations, document scanning, invoice routing, grocery-list handling, and related operating rules.
+Use this repo when formulating solutions for office-admin workflows, SOPs, automations, Doc Scan, invoice routing, grocery-list handling, and related operating rules.
 
 ## Start Here
 
@@ -21,7 +21,7 @@ Use this repo when formulating solutions for office-admin workflows, SOPs, autom
 - Use `Project Room Workflow.md` before major work that depends on multiple source files, emails, scans, notes, spreadsheets, or prior drafts.
 - Use `Project Rooms\SOPs\` for SOP source emails, extracted notes, SOP pages, SOP index, source map, and SOP review questions.
 - Use `Project Rooms\Email Summary\` for development work on the Email Summary workflow, including source inventory, automation notes, open questions, and review-ready handoffs.
-- Use `Project Rooms\Document Scan\` for development work on scanned document processing, including scan routing, automation notes, source inventory, and review-ready handoffs.
+- Use `Project Rooms\Doc Scan\` for development work on scanned document processing, including scan routing, automation notes, source inventory, and review-ready handoffs.
 - Use `Repository Location Rule.md` for repo/location policy.
 - Use `Git Work Scope Rule.md` before committing or pushing Admin wiki work.
 - Use `Codex Skill Source Rule.md` before creating, editing, syncing, or installing Admin wiki-managed Codex skills.

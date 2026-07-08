@@ -18,7 +18,7 @@ Use this when the request asks:
 | Area | Path |
 | --- | --- |
 | Agents and automation registry | `Agents and Automations Registry.md` |
-| Document scanning automation notes | `Document Scanning SOP.md` |
+| Doc Scan automation notes | `Document Scanning SOP.md` |
 | Morning email summary rules | `AGENTS.md` and `Agents and Automations Registry.md` |
 | Connector availability checks | `Connector and Plugin Usage Rules.md` |
 

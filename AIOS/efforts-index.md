@@ -45,7 +45,7 @@ Use these when the effort matches the skill:
 | CMA or property report | `skills/cma-report/SKILL.md` |
 | Contract-for-deed package | `skills/contract-for-deed/SKILL.md` |
 | Creditworthiness report | `skills/credit-worthiness-evaluator/SKILL.md` |
-| Scanned document processing | `skills/document-scanning/SKILL.md` |
+| Scanned document processing | `skills/doc-scan/SKILL.md` |
 | Admin wiki wrap-up | `skills/admin-request-wrapup/SKILL.md` |
 
 ## Rule

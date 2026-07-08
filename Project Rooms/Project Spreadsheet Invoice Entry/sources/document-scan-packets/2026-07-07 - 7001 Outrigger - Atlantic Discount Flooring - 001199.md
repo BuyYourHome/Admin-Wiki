@@ -11,5 +11,5 @@
 - Recommended project-management workbook: C:\Users\wesbr\Buy Your Home\Buy Your Home - Property\27_Project Management - 7001 Outrigger Dr.xlsm
 - Recommended worksheet/vendor tab: Flooring
 - Confidence/status: Ready for Project Spreadsheet Invoice Entry duplicate check and placement
-- Duplicate-risk notes: No exact local file name match found in 7001 Outrigger Owning folder during Document Scan routing. Spreadsheet duplicate check not performed by Document Scan.
+- Duplicate-risk notes: No exact local file name match found in 7001 Outrigger Owning folder during Doc Scan routing. Spreadsheet duplicate check not performed by Doc Scan.
 - Missing or uncertain fields: none apparent from scan.

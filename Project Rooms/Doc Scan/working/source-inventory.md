@@ -2,18 +2,18 @@
 
 | Source | Location | Status | Notes |
 |---|---|---|---|
-| Document Scanning SOP | `C:\Codex\Wiki Files\Document Scanning SOP.md` | authoritative | Human-facing workflow for scanned document processing. |
-| Document Scanning Skill Spec | `C:\Codex\Wiki Files\Document Scanning Skill Spec.md` | authoritative | Detailed behavior for the document-scanning skill and automation. |
-| Document Scanning Folder Map | `C:\Codex\Wiki Files\Document Scanning Folder Map.md` | authoritative | Routing authority for scanned document destinations. |
-| Document Scanning skill source | `C:\Codex\Wiki Files\skills\document-scanning\SKILL.md` | authoritative | Canonical wiki-managed skill source. |
-| Installed Document Scanning skill copy | `C:\Users\wesbr\.codex\skills\document-scanning\SKILL.md` | installed copy | Runtime copy only; update from canonical skill source when ready. |
+| Doc Scan SOP | `C:\Codex\Wiki Files\Document Scanning SOP.md` | authoritative | Human-facing workflow for scanned document processing. |
+| Doc Scan Skill Spec | `C:\Codex\Wiki Files\Document Scanning Skill Spec.md` | authoritative | Detailed behavior for the document-scanning skill and automation. |
+| Doc Scan Folder Map | `C:\Codex\Wiki Files\Document Scanning Folder Map.md` | authoritative | Routing authority for scanned document destinations. |
+| Doc Scan skill source | `C:\Codex\Wiki Files\skills\doc-scan\SKILL.md` | authoritative | Canonical wiki-managed skill source. |
+| Installed Doc Scan skill copy | `C:\Users\wesbr\.codex\skills\doc-scan\SKILL.md` | installed copy | Runtime copy only; update from canonical skill source when ready. |
 | Live automation config | `C:\Users\wesbr\.codex\automations\document-scanning\automation.toml` | expected local config; not present in 2026-06-15 audit | Wiki and registry point to this path for live schedule, prompt, status, cwd, and execution details, but the file was not found during the automation audit. |
 | Invoice and Receipt Processing Notes | `C:\Codex\Wiki Files\Invoice and Receipt Processing Notes.md` | authoritative for invoice/receipt routing | Used when scans are invoices or receipts. |
 | Invoice Project List | `C:\Codex\Wiki Files\Invoice Project List.md` | authoritative for project invoice matching | Used to route project invoices to the correct property/project folder. |
 | Property/Credit Cards Sheet | `C:\Users\wesbr\Buy Your Home\Buy Your Home - Property\Credit Cards Sheet.xlsx` | authoritative for current property/mortgage context | Use worksheet `Mortgages` when matching insurance-related scanned documents to current properties. |
-| Document Scan Modes | `Project Rooms\Document Scan\working\document-scan-modes.md` | project-room operating index | Defines the project-room mode names used for scan-category development and cross-mode routing discussion. |
-| Insurance Document Rules | `Project Rooms\Document Scan\working\insurance-document-rules.md` | working rule context | Development notes for insurance-company and mortgage-company property insurance document handling. |
-| Workflow source note | `Project Rooms\Document Scan\sources\workflow-source-note.md` | background | Summary of controlling sources and runtime locations. |
+| Doc Scan Modes | `Project Rooms\Doc Scan\working\doc-scan-modes.md` | project-room operating index | Defines the project-room mode names used for scan-category development and cross-mode routing discussion. |
+| Insurance Document Rules | `Project Rooms\Doc Scan\working\insurance-document-rules.md` | working rule context | Development notes for insurance-company and mortgage-company property insurance document handling. |
+| Workflow source note | `Project Rooms\Doc Scan\sources\workflow-source-note.md` | background | Summary of controlling sources and runtime locations. |
 
 ## Inventory Notes
 

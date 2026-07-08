@@ -1,11 +1,11 @@
 ---
-name: document-scanning
+name: doc-scan
 description: Process scanned financial/admin PDFs from Office Admin scan folders. Use when Codex needs to inspect, OCR or visually parse, split, name, route, archive, or log scanned mortgage statements, bank statements, credit card statements, loan/line-of-credit statements, property insurance documents, property closing documents, signed operating agreements, invoices, receipts, CPA/tax forms, donation records, or medical statements.
 ---
 
-# Document Scanning
+# Doc Scan
 
-Development notes, source inventory, and open questions for this workflow live in `C:\Codex\Wiki Files\Project Rooms\Document Scan\`.
+Development notes, source inventory, and open questions for this workflow live in `C:\Codex\Wiki Files\Project Rooms\Doc Scan\`.
 
 Process scanned Office Admin PDFs and JPG/JPEG image scans conservatively. Split combined scans into separate statement/account files when boundaries are clear, convert single-image scans to filed PDF outputs when appropriate, name them consistently, file them into the mapped Teams/SharePoint folders, and write a plain text log for every source scan.
 
@@ -219,7 +219,7 @@ When Boss asks for a credit card statement report, or when a scan run files cred
 
 When Credit Card Statement Mode identifies and files a Lowe's statement, preserve all normal Lowe's statement handling first: inspect/OCR, split if needed, file the statement in the approved Lowe's credit-card statement folder, log the routing, include it in the credit-card statement report, and flag normal statement review items.
 
-After normal statement filing, run Lowe's Statement Allocation Mode as an additive extraction workflow. Document Scan extracts line-level source data for Project Spreadsheet Invoice Entry. Document Scan must not edit any project-management workbook and must not decide final spreadsheet insertion.
+After normal statement filing, run Lowe's Statement Allocation Mode as an additive extraction workflow. Doc Scan extracts line-level source data for Project Spreadsheet Invoice Entry. Doc Scan must not edit any project-management workbook and must not decide final spreadsheet insertion.
 
 Do not treat the entire Lowe's statement as one invoice for one project. A single Lowe's statement may contain charges, returns, credits, fees, or interest for multiple projects and non-project/Home items.
 
@@ -315,7 +315,7 @@ Do not create new vendor folders or choose between similar vendor names unless B
 
 ### Project Spreadsheet Invoice Entry Handoff
 
-When Document Scan processes a project-specific invoice or receipt, finish the scan workflow first: inspect/OCR the scan, identify the document as an invoice or receipt, match it to the correct project/property when confidence is high, save or copy the invoice file into the correct Teams project folder, and write the scan routing log.
+When Doc Scan processes a project-specific invoice or receipt, finish the scan workflow first: inspect/OCR the scan, identify the document as an invoice or receipt, match it to the correct project/property when confidence is high, save or copy the invoice file into the correct Teams project folder, and write the scan routing log.
 
 Do not edit the project-management spreadsheet directly. After filing a high-confidence project invoice or receipt, create a structured invoice packet and hand it off to Project Spreadsheet Invoice Entry.
 
@@ -329,7 +329,7 @@ Dedicated chat/thread:
 
 `019f3d56-b310-75c0-b084-616bfc1e9f59`
 
-Document Scan owns scan inspection/OCR, document splitting, invoice/receipt identification, project/property folder routing, saving or copying the invoice file, scan log entries, and invoice packet creation.
+Doc Scan owns scan inspection/OCR, document splitting, invoice/receipt identification, project/property folder routing, saving or copying the invoice file, scan log entries, and invoice packet creation.
 
 Project Spreadsheet Invoice Entry owns selecting the exact live project-management workbook, checking workbook records for duplicates, deciding final spreadsheet row placement, inserting the invoice record, preserving workbook formulas/formatting/selectors, validating totals and downstream links, and uploading the verified workbook back to Teams/SharePoint.
 

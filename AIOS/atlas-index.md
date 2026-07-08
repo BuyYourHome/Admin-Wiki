@@ -29,9 +29,9 @@ Use this when the request asks:
 
 | Area | Path |
 | --- | --- |
-| Document scanning SOP | `Document Scanning SOP.md` |
-| Document scanning skill spec | `Document Scanning Skill Spec.md` |
-| Document scanning folder map | `Document Scanning Folder Map.md` |
+| Doc Scan SOP | `Document Scanning SOP.md` |
+| Doc Scan skill spec | `Document Scanning Skill Spec.md` |
+| Doc Scan folder map | `Document Scanning Folder Map.md` |
 | Invoice and receipt rules | `Invoice and Receipt Processing Notes.md` |
 | Invoice project list | `Invoice Project List.md` |
 

@@ -4,7 +4,7 @@ Prepared: 2026-06-15
 
 - New scan processed: `Document_2026-06-15_133340.pdf`, 17 image-only pages.
 - Filed six 3325 Banks insurance documents into `13-BYH - 3325 Banks Rd/Owning/Insurance`.
-- Source scan was copied to the Document Scan project room and moved to the scan archive after filing.
+- Source scan was copied to the Doc Scan project room and moved to the scan archive after filing.
 
 ## Attention items
 - **7001 Outrigger Rd**: Village Capital says acceptable hazard proof was not received and lender-placed coverage was purchased. Need proof of current policy and lender cancellation/acceptance.

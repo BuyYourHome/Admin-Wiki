@@ -1,6 +1,6 @@
-# Document Scanning Folder Map
+# Doc Scan Folder Map
 
-Project room: [[Project Rooms/Document Scan/README|Document Scan Project Room]]
+Project room: [[Project Rooms/Doc Scan/README|Doc Scan Project Room]]
 
 Source folder:
 

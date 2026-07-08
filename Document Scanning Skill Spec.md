@@ -1,14 +1,14 @@
-# Document Scanning Skill Spec
+# Doc Scan Skill Spec
 
-Project room: [[Project Rooms/Document Scan/README|Document Scan Project Room]]
+Project room: [[Project Rooms/Doc Scan/README|Doc Scan Project Room]]
 
-Working name: `document-scanning`
+Working name: `doc-scan`
 
 Purpose: process scanned financial/admin PDFs and image scans (`.jpg` / `.jpeg`), split combined scans into separate documents when applicable, name them consistently, and route them into the correct Office Admin or property/project folder.
 
 Installed skill location:
 
-`C:\Users\wesbr\.codex\skills\document-scanning`
+`C:\Users\wesbr\.codex\skills\doc-scan`
 
 Primary folder map:
 
@@ -110,7 +110,7 @@ For each project invoice or receipt:
 
 ### Project Spreadsheet Invoice Entry Handoff
 
-When Document Scan processes a project-specific invoice or receipt, finish the existing scan workflow first:
+When Doc Scan processes a project-specific invoice or receipt, finish the existing scan workflow first:
 
 1. Inspect/OCR the scan.
 2. Identify the document as an invoice or receipt.
@@ -130,7 +130,7 @@ Dedicated chat/thread:
 
 `019f3d56-b310-75c0-b084-616bfc1e9f59`
 
-Document Scan owns scan inspection/OCR, document splitting, invoice/receipt identification, project/property folder routing, saving or copying the invoice file, scan log entries, and invoice packet creation.
+Doc Scan owns scan inspection/OCR, document splitting, invoice/receipt identification, project/property folder routing, saving or copying the invoice file, scan log entries, and invoice packet creation.
 
 Project Spreadsheet Invoice Entry owns selecting the exact live project-management workbook, checking workbook records for duplicates, deciding final spreadsheet row placement, inserting the invoice record, preserving workbook formulas/formatting/selectors, validating totals and downstream links, and uploading the verified workbook back to Teams/SharePoint.
 
@@ -356,7 +356,7 @@ When Boss asks for a credit card statement report, or when a scan run files cred
 
 When Credit Card Statement Mode identifies and files a Lowe's statement, preserve all normal Lowe's statement handling first: inspect/OCR, split if needed, file the statement in the approved Lowe's credit-card statement folder, log the routing, include it in the credit-card statement report, and flag normal statement review items.
 
-After normal statement filing, run Lowe's Statement Allocation Mode as an additive extraction workflow. Document Scan extracts line-level source data for Project Spreadsheet Invoice Entry. Document Scan must not edit any project-management workbook and must not decide final spreadsheet insertion.
+After normal statement filing, run Lowe's Statement Allocation Mode as an additive extraction workflow. Doc Scan extracts line-level source data for Project Spreadsheet Invoice Entry. Doc Scan must not edit any project-management workbook and must not decide final spreadsheet insertion.
 
 Do not treat the entire Lowe's statement as one invoice for one project. A single Lowe's statement may contain charges, returns, credits, fees, or interest for multiple projects and non-project/Home items.
 
@@ -634,7 +634,7 @@ The automation should call this skill rather than contain document-processing lo
 Automation responsibilities:
 
 - Check the Office Admin scanned-files location through the SharePoint/Teams connector when available, and check `C:\Users\wesbr\Buy Your Home\Buy Your Home - Office Admin\Scanned Files` as the local scanner drop-zone and fallback path on a schedule.
-- Pass new PDFs, JPGs, and JPEGs to the `document-scanning` skill.
+- Pass new PDFs, JPGs, and JPEGs to the `doc-scan` skill.
 - Save output PDFs to destination folders.
 - Post only meaningful summaries: files created, uncertain matches, errors, or decisions needed.
 - Stay quiet when there are no new scans.
@@ -649,7 +649,7 @@ Suggested schedule:
 Recommended skill structure:
 
 ```text
-document-scanning
+doc-scan
 ├─ SKILL.md
 ├─ references
 │  ├─ folder-map.md

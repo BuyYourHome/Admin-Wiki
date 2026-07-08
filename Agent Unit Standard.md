@@ -59,8 +59,8 @@ The [[Agents and Automations Registry]] should show:
 
 ## Naming Rules
 
-- Project Room names should be human-readable title case, such as `Document Scan`.
-- Skill names should be lower-case hyphen-case, such as `document-scanning`.
+- Project Room names should be human-readable title case, such as `Doc Scan`.
+- Skill names should be lower-case hyphen-case, such as `doc-scan`.
 - Registry names should match the user-facing role name.
 - If one room has several property-specific subrooms, keep the shared workflow skill on the shared parent role.
 

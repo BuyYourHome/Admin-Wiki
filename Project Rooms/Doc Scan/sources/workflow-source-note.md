@@ -15,11 +15,11 @@ Related routing documents:
 
 Primary skill source:
 
-- `C:\Codex\Wiki Files\skills\document-scanning\SKILL.md`
+- `C:\Codex\Wiki Files\skills\doc-scan\SKILL.md`
 
 Installed runtime copy:
 
-- `C:\Users\wesbr\.codex\skills\document-scanning\SKILL.md`
+- `C:\Users\wesbr\.codex\skills\doc-scan\SKILL.md`
 
 Live automation config:
 

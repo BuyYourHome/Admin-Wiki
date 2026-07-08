@@ -1,10 +1,10 @@
-# Document Scanning SOP
+# Doc Scan SOP
 
-Project room: [[Project Rooms/Document Scan/README|Document Scan Project Room]]
+Project room: [[Project Rooms/Doc Scan/README|Doc Scan Project Room]]
 
 ## Purpose
 
-This SOP explains how the `document-scanning` skill and automation process scanned Office Admin documents, what a human needs to do to support the process, and what to do if the automation does not work.
+This SOP explains how the `doc-scan` skill and `document-scanning` automation process scanned Office Admin documents, what a human needs to do to support the process, and what to do if the automation does not work.
 
 ## Scope
 
@@ -56,7 +56,7 @@ Property/project destination root:
 
 Installed skill:
 
-`C:\Users\wesbr\.codex\skills\document-scanning`
+`C:\Users\wesbr\.codex\skills\doc-scan`
 
 Skill spec:
 
@@ -68,7 +68,7 @@ Folder map:
 
 ## Automation Schedule
 
-The `Document scanning` automation runs every 30 minutes from 10:00 AM through 4:30 PM Eastern:
+The `Doc Scan` automation runs every 30 minutes from 10:00 AM through 4:30 PM Eastern:
 
 - 10:00 AM
 - 10:30 AM
@@ -206,7 +206,7 @@ For every scanned project invoice or receipt:
 
 ### Project Spreadsheet Invoice Entry Handoff
 
-When Document Scan processes a project-specific invoice or receipt, it should continue its existing scan workflow:
+When Doc Scan processes a project-specific invoice or receipt, it should continue its existing scan workflow:
 
 1. Inspect/OCR the scan.
 2. Identify the document as an invoice or receipt.
@@ -226,7 +226,7 @@ Dedicated chat/thread:
 
 `019f3d56-b310-75c0-b084-616bfc1e9f59`
 
-Document Scan owns scan inspection/OCR, document splitting, invoice/receipt identification, project/property folder routing, saving or copying the invoice file, scan log entries, and invoice packet creation.
+Doc Scan owns scan inspection/OCR, document splitting, invoice/receipt identification, project/property folder routing, saving or copying the invoice file, scan log entries, and invoice packet creation.
 
 Project Spreadsheet Invoice Entry owns selecting the exact live project-management workbook, checking workbook records for duplicates, deciding final spreadsheet row placement, inserting the invoice record, preserving workbook formulas/formatting/selectors, validating totals and downstream links, and uploading the verified workbook back to Teams/SharePoint.
 
@@ -438,7 +438,7 @@ Email the report PDF to both `WesWill@BuyYourHomeLLC.com` and `Jenny@BuyYourHome
 
 When Credit Card Statement Mode identifies and files a Lowe's statement, preserve all normal Lowe's statement handling first: inspect/OCR, split if needed, file the statement in the approved Lowe's credit-card statement folder, log the routing, include it in the credit-card statement report, and flag normal statement review items.
 
-After normal statement filing, run Lowe's Statement Allocation Mode as an additive extraction workflow. Document Scan extracts line-level source data for Project Spreadsheet Invoice Entry. Document Scan must not edit any project-management workbook and must not decide final spreadsheet insertion.
+After normal statement filing, run Lowe's Statement Allocation Mode as an additive extraction workflow. Doc Scan extracts line-level source data for Project Spreadsheet Invoice Entry. Doc Scan must not edit any project-management workbook and must not decide final spreadsheet insertion.
 
 Do not treat the entire Lowe's statement as one invoice for one project. A single Lowe's statement may contain charges, returns, credits, fees, or interest for multiple projects and non-project/Home items.
 
@@ -544,7 +544,7 @@ Use this checklist.
 6. Check whether output files were created in the expected 2026 destination folder.
 7. If there is no log and no output, ask Codex:
 
-   `Use the document-scanning skill to process the newest scan.`
+   `Use the doc-scan skill to process the newest scan.`
 
 8. If the file was partially processed, compare:
    - Source scan pages
@@ -554,7 +554,7 @@ Use this checklist.
 10. If a file was not split correctly, ask Codex to reprocess the archived original scan and specify the correct page ranges.
 11. If the automation itself is not running, ask Codex:
 
-    `Show me the Document scanning automation.`
+    `Show me the Doc Scan automation.`
 
 ## Manual Processing If Automation Is Down
 

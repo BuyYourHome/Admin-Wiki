@@ -2,7 +2,7 @@
 
 ## Packet Summary
 
-- Source workflow: Document Scan - Lowe's Statement Allocation Mode test
+- Source workflow: Doc Scan - Lowe's Statement Allocation Mode test
 - Source statement path: `C:\Users\wesbr\Buy Your Home\Buy Your Home - Office Admin\2026\Credit Cards\Lowe's PRO BYH 5997\26-03-17 .pdf`
 - Filed statement path: `C:\Users\wesbr\Buy Your Home\Buy Your Home - Office Admin\2026\Credit Cards\Lowe's PRO BYH 5997\26-03-17 .pdf`
 - Statement holder: Buy Your Home LLC
@@ -26,7 +26,7 @@
 - PO `7001` maps to project/property `27-HM- 7001 Outrigger Dr`.
 - `Home` appears to be non-project or personal/home allocation and should not be inserted into the Outrigger project workbook without Wes approval.
 - Printed PO values are the strongest project clue. Handwritten PO/project notes are useful review clues but should not override conflicting printed data without review.
-- Document Scan did not check the live workbook for duplicates and did not insert any spreadsheet rows.
+- Doc Scan did not check the live workbook for duplicates and did not insert any spreadsheet rows.
 
 ## Line Items
 

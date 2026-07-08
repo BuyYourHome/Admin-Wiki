@@ -1,8 +1,8 @@
 # Invoice Packet Schema
 
-Use this schema when Document Scan hands a scanned invoice, receipt, or Statement Mode packet to Project Spreadsheet Invoice Entry. Other intake sources are out of scope unless Wes separately approves and documents them.
+Use this schema when Doc Scan hands a scanned invoice, receipt, or Statement Mode packet to Project Spreadsheet Invoice Entry. Other intake sources are out of scope unless Wes separately approves and documents them.
 
-Document Scan owns Lowes Statement Mode extraction and will send extracted statement data for Project Spreadsheet Invoice Entry to consume. Statement Mode packets should not be inserted until Wes approves a tested process for allocating statement line items by project and by worksheet/table.
+Doc Scan owns Lowes Statement Mode extraction and will send extracted statement data for Project Spreadsheet Invoice Entry to consume. Statement Mode packets should not be inserted until Wes approves a tested process for allocating statement line items by project and by worksheet/table.
 
 ## Required Fields
 
@@ -14,7 +14,7 @@ Document Scan owns Lowes Statement Mode extraction and will send extracted state
 | `invoice_number` | no | Use when present. |
 | `invoice_amount` | yes | Total amount to insert. |
 | `work_category` | yes | Best known category, such as Plumbing Fixtures, HVAC, Paint, or Landscape. For Statement Mode, use `Needs Allocation` or `Multiple` when line items span categories. |
-| `source_scan_path` | yes for Document Scan packets | Original scan or archived scan path used by Document Scan. |
+| `source_scan_path` | yes for Doc Scan packets | Original scan or archived scan path used by Doc Scan. |
 | `saved_invoice_file_path` | yes | Teams/project-folder path where intake saved the invoice file. |
 | `recommended_workbook` | yes | Active project-management workbook candidate. For Statement Mode, use `Needs Allocation` or list likely project workbooks only when supported by the extracted line data. |
 | `recommended_worksheet` | yes | Candidate worksheet or `Needs Review`. For Statement Mode, use `Needs Allocation` unless every line item has approved worksheet allocation. |
@@ -44,4 +44,4 @@ If the packet is for a Lowes statement:
 
 ## Handoff Boundary
 
-The intake workflow should not edit the workbook. It should pass the packet to this project room for routing confirmation, duplicate check, insertion, and validation. For Statement Mode, Document Scan owns extraction and Project Spreadsheet Invoice Entry owns allocation and insertion decisions.
+The intake workflow should not edit the workbook. It should pass the packet to this project room for routing confirmation, duplicate check, insertion, and validation. For Statement Mode, Doc Scan owns extraction and Project Spreadsheet Invoice Entry owns allocation and insertion decisions.

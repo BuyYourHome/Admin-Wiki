@@ -23,7 +23,7 @@ Do not author or version skills from the installed runtime copy. Edit the canoni
 | Skill | Canonical Source | Use When | Related Context |
 | --- | --- | --- | --- |
 | `admin-request-wrapup` | `skills/admin-request-wrapup/SKILL.md` | Finishing Admin wiki requests; reporting elapsed time; deciding commit/push reporting. | `Git Work Scope Rule.md`, `AGENTS.md` |
-| `document-scanning` | `skills/document-scanning/SKILL.md` | Processing scanned financial/admin PDFs or JPG/JPEG scans, splitting documents, naming, routing, and logging. | `Document Scanning SOP.md`, `Document Scanning Skill Spec.md`, `Document Scanning Folder Map.md`, `Invoice and Receipt Processing Notes.md` |
+| `doc-scan` | `skills/doc-scan/SKILL.md` | Processing scanned financial/admin PDFs or JPG/JPEG scans, splitting documents, naming, routing, and logging. | `Document Scanning SOP.md`, `Document Scanning Skill Spec.md`, `Document Scanning Folder Map.md`, `Invoice and Receipt Processing Notes.md` |
 | `credit-worthiness-evaluator` | `skills/credit-worthiness-evaluator/SKILL.md` | Evaluating tenant-buyer creditworthiness and ability to repay for seller-financed or Contract for Deed transactions. | `Project Rooms/Credit Worthiness Evaluator/README.md` |
 | `contract-for-deed` | `skills/contract-for-deed/SKILL.md` | Refreshing and regenerating contract-for-deed seller document packages from project spreadsheets. | `Project Rooms/Contract for Deed/PROJECT-ROOM.md` |
 | `cma-report` | `skills/cma-report/SKILL.md` | Creating CMA/property reports and copying completed reports to the matching Teams property `Owning` folder. | `Project Rooms/CMA Report/`, property folders under Teams sync |
@@ -36,7 +36,7 @@ Use `Agents and Automations Registry.md` as the controlling registry. Current im
 | --- | --- | --- |
 | Jean Wright / Office Assistant | Assistant profile and operating role | Office assistant work, email drafting/sending under safety rules, grocery updates, and admin coordination. |
 | Email Summary | Heartbeat automation plus wiki-managed skill | Daily Wes email summary from the full mailbox store, including rule-routed folders, plus OfficeAssist instruction-email monitoring. |
-| Document Scanning | Wiki-managed skill plus cron automation | Scheduled scan intake processing and routing. |
+| Doc Scan | Wiki-managed skill plus cron automation | Scheduled scan intake processing and routing. |
 | REI Text Message Watcher | Heartbeat automation | Watch approved Boss/Jenny texts in REI BlackBook / Profit Dial. |
 | Grocery List Handler | Wiki rule and data workflow | Maintain current grocery list, request log, staples, and purchase history. |
 | AI Project Room Workflow | Wiki workflow | Prepare source sets and drafts for complex work. |

@@ -16,8 +16,8 @@ Use [[Agent Unit Standard]] for the standard package behind an agent-like operat
 | Gracious Millionaire Project Room Heartbeat | Project-room heartbeat automation | Active | Every 15 minutes from 8:00 AM-11:45 PM Eastern; project-room Markdown intake processing only | `Project Rooms\Gracious Millionaire\README.md`; `Project Rooms\Gracious Millionaire\working\intake-heartbeat-rules.md`; `C:\Users\wesbr\.codex\automations\gracious-millionaire-project-room-heartbeat\automation.toml` |
 | Email Summary | Wiki-managed skill plus heartbeat automation plus project room | Active | Runs every day; starts at 7:45 AM Eastern, then every 15 minutes through 11:00 PM Eastern; Boss and Jenny summaries run once daily at/after 8:00 AM, and instruction monitoring checks OfficeAssist email | `skills\email-summary\SKILL.md`; `Project Rooms\Email Summary\README.md`; `C:\Users\wesbr\.codex\automations\officeassist-morning-email-summary-and-instruction-monitor\automation.toml` |
 | Email Delivery | Wiki-managed support skill | Active | Called by email-capable Admin workflows | `skills\email-delivery\SKILL.md` |
-| Document Scanning | Wiki-managed skill plus heartbeat automation plus project room | Active | Every 30 minutes from 10:00 AM through 4:30 PM Eastern | `skills\document-scanning\SKILL.md`; `Project Rooms\Document Scan\README.md`; `C:\Users\wesbr\.codex\skills\document-scanning\SKILL.md`; app automation id `document-scanning` |
-| Project Spreadsheet Invoice Entry | Wiki-managed skill plus project room plus backup heartbeat | Active | Hourly backup packet check; direct Document Scan handoff remains primary trigger | `skills\project-spreadsheet-invoice-entry\SKILL.md`; `Project Rooms\Project Spreadsheet Invoice Entry\README.md`; `C:\Users\wesbr\.codex\automations\invoice-entry-to-projects-backup-heartbeat\automation.toml` |
+| Doc Scan | Wiki-managed skill plus heartbeat automation plus project room | Active | Every 30 minutes from 10:00 AM through 4:30 PM Eastern | `skills\doc-scan\SKILL.md`; `Project Rooms\Doc Scan\README.md`; `C:\Users\wesbr\.codex\skills\doc-scan\SKILL.md`; app automation id `document-scanning` |
+| Project Spreadsheet Invoice Entry | Wiki-managed skill plus project room plus backup heartbeat | Active | Hourly backup packet check; direct Doc Scan handoff remains primary trigger | `skills\project-spreadsheet-invoice-entry\SKILL.md`; `Project Rooms\Project Spreadsheet Invoice Entry\README.md`; `C:\Users\wesbr\.codex\automations\invoice-entry-to-projects-backup-heartbeat\automation.toml` |
 | Codex Skill Source Control | Wiki-managed skill system | Active | On demand after skill changes or wiki pulls | `Codex Skill Source Rule.md`; `tools\sync-codex-skills.ps1`; `skills\` |
 | Admin Request Wrapup | Wiki-managed skill | Active | At the end of Admin wiki requests | `skills\admin-request-wrapup\SKILL.md`; `AGENTS.md` |
 | SOPs | Wiki-managed skill plus project room | Active | On demand | `skills\sops\SKILL.md`; `Project Rooms\SOPs\README.md`; `Project Rooms\SOPs\outputs\SOP Index.md` |
@@ -291,7 +291,7 @@ Important rules:
 - Prefer the Outlook/email connector and verify the sent copy in OfficeAssist Sent Items.
 - Use local Outlook only as fallback when connector send or verification is unavailable.
 
-## Document Scanning
+## Doc Scan
 
 Type: wiki-managed skill plus heartbeat automation.
 
@@ -317,9 +317,9 @@ Purpose:
 
 Defined in:
 
-- Canonical skill source: `C:\Codex\Wiki Files\skills\document-scanning\SKILL.md`
-- Project room: `C:\Codex\Wiki Files\Project Rooms\Document Scan\README.md`
-- Installed local skill copy: `C:\Users\wesbr\.codex\skills\document-scanning\SKILL.md`
+- Canonical skill source: `C:\Codex\Wiki Files\skills\doc-scan\SKILL.md`
+- Project room: `C:\Codex\Wiki Files\Project Rooms\Doc Scan\README.md`
+- Installed local skill copy: `C:\Users\wesbr\.codex\skills\doc-scan\SKILL.md`
 - Automation: `C:\Users\wesbr\.codex\automations\document-scanning\automation.toml`
 - Wiki support:
   - `Document Scanning SOP.md`
@@ -353,7 +353,7 @@ Schedule:
 
 Purpose:
 
-- Receive structured invoice and receipt packets from Document Scan.
+- Receive structured invoice and receipt packets from Doc Scan.
 - Resolve the exact live project-management workbook.
 - Check workbook records for duplicate invoices.
 - Decide final spreadsheet row placement.
@@ -372,7 +372,7 @@ Defined in:
 
 Important rules:
 
-- Document Scan is the normal intake workflow for scanned invoice and receipt packets.
+- Doc Scan is the normal intake workflow for scanned invoice and receipt packets.
 - Other packet handoff sources are not part of this workflow unless Wes separately approves and documents them.
 - Do not scan inboxes, inspect raw scan folders, copy invoice files into Teams/project folders, approve or pay invoices, contact vendors, or redesign workbook templates from this workflow.
 - Do not edit a live workbook unless Wes clearly authorizes the insertion or an approved automation rule exists for that exact insertion type.
@@ -618,7 +618,7 @@ Status: active.
 
 Purpose:
 
-- Receive structured invoice packets after Document Scan has completed the normal scanned invoice/receipt intake path: inspection/OCR, splitting when needed, invoice/receipt identification, project/property routing, Teams/project-folder save or copy, scan log entry, and packet creation.
+- Receive structured invoice packets after Doc Scan has completed the normal scanned invoice/receipt intake path: inspection/OCR, splitting when needed, invoice/receipt identification, project/property routing, Teams/project-folder save or copy, scan log entry, and packet creation.
 - Other intake sources are out of scope unless Wes separately approves and documents them.
 - Resolve the active Teams/SharePoint project-management workbook and target worksheet.
 - Check for duplicate invoice records.
@@ -640,7 +640,7 @@ Automation:
 - Heartbeat id: `invoice-entry-to-projects-backup-heartbeat`.
 - Schedule: every 60 minutes as backup.
 - Storage: app automation id `invoice-entry-to-projects-backup-heartbeat`.
-- Primary trigger: Document Scan sends a direct follow-up message to the dedicated Project Spreadsheet Invoice Entry chat with the packet path and summary.
+- Primary trigger: Doc Scan sends a direct follow-up message to the dedicated Project Spreadsheet Invoice Entry chat with the packet path and summary.
 - Backup scope: inspect the Project Spreadsheet Invoice Entry project room for new or changed structured invoice/receipt packets that were not delivered by direct message. Do not scan inboxes, inspect raw scan folders, copy files into Teams, approve or pay invoices, contact vendors, redesign workbook templates, or create new chats.
 - Live workbook edits remain gated by clear Wes authorization or an approved automation rule for the exact insertion type.
 

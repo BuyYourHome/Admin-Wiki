@@ -127,7 +127,7 @@ Before drafting from multiple sources, create or use a project room and update:
 | Skill creation or updates | `Codex Skill Source Rule.md`, then `AIOS/skills-map.md` |
 | Agent or automation changes | `Agents and Automations Registry.md` |
 | Email or calendar work | `Connector and Plugin Usage Rules.md`, then the durable email/calendar safety rules in `AIOS/me.md` and `AGENTS.md` |
-| Document scanning | `Document Scanning SOP.md`, `Document Scanning Skill Spec.md`, `Document Scanning Folder Map.md` |
+| Doc Scan | `Document Scanning SOP.md`, `Document Scanning Skill Spec.md`, `Document Scanning Folder Map.md` |
 | Invoice or receipt routing | `Invoice and Receipt Processing Notes.md`, `Invoice Project List.md` |
 | SOP workbook or spreadsheet edits | `SOP Spreadsheet Maintenance Rule.md` |
 | Grocery-list work | `operations/grocery-list/README.md`, `operations/grocery-list/wiki/Grocery List Rules.md` |
