@@ -44,3 +44,16 @@ Next safer sequence:
 2. Validate that the final table has exactly these headers: `Group`, `Date`, `Vendor`, `Description`, `Sq Ft`, `Item #`, `Qty`, `Cost/Unit`, `Sub-Total`, `Tax`.
 3. Preserve the current grand total of `6561.72` and the `Gnatt Chart` row 8 link.
 4. Standardize `Cabinets` separately and preserve its current actual total of `5563` unless Wes explicitly changes the tax rule.
+
+## 2026-07-08 - Outrigger Column-Based Invoice Totals
+
+Context: Wes identified that several upgraded tabs were still not summing invoice totals by table column. The affected tabs were `Plumbing Fixtures`, `Windows & Doors`, `Cabinets`, `Paint`, `Flooring`, `HVAC`, `Electrical Fixtures`, and `Landscape`.
+
+Result: Uploaded a focused formula-only fix. Each affected `Invoice Total` formula now sums its table's `Sub-Total` and `Tax` columns by table name, while preserving the existing checkbox condition and grand-total cells. Validation passed: each affected grand total matched the linked `Gnatt Chart` value, table headers stayed intact, and no external workbook links were present.
+
+Lessons:
+
+- For invoice table totals, prefer structured table formulas such as `SUM(tblName[Sub-Total])+SUM(tblName[Tax])` over fixed cell ranges.
+- A formula-only pass is safe when it does not resize tables, paste formatting, or alter table headers.
+- Validate both the invoice total formula text and the downstream grand-total/Gnatt values after the formula change.
+- Do not assume stored total cell locations from prior iterations; inspect the current workbook because Wes may have moved labels and totals manually.
