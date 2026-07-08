@@ -140,6 +140,14 @@ Before marking an insertion complete:
 - verify there are no unintended external-link package parts,
 - reopen the saved workbook cleanly in Excel before upload.
 
+## Iteration Lessons
+
+After each workbook or workflow iteration, record, refine, or expand reusable lessons in the project room before marking the work complete. Use:
+
+- `C:\Codex\Wiki Files\Project Rooms\Project Spreadsheet Invoice Entry\working\iteration-lessons.md`
+
+Lessons should include failed attempts, workbook-specific hazards, safer next-step constraints, and validation checks that should be repeated in future iterations.
+
 ## Completion
 
 - Record insertion decisions, duplicate findings, and unresolved questions in the project room.

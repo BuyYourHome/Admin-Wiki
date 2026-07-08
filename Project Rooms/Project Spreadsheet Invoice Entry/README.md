@@ -66,7 +66,7 @@ Each handoff should include:
 ## Folder Map
 
 - `sources\` - copied invoice packets, intake examples, source notes, and supporting references.
-- `working\` - routing decisions, duplicate checks, insertion logs, rollback references, and validation notes.
+- `working\` - routing decisions, duplicate checks, insertion logs, rollback references, validation notes, and iteration lessons.
 - `outputs\` - review-ready reports or handoff summaries for Wes.
 
 ## Operating Rules
@@ -81,6 +81,7 @@ Each handoff should include:
 8. Check for duplicates before insertion.
 9. Validate affected totals after insertion.
 10. Upload the verified workbook back through the Teams/SharePoint connector only after it opens cleanly and has no unintended workbook links.
+11. After each workbook or workflow iteration, record, refine, or expand lessons learned in `working\iteration-lessons.md` before treating the iteration as complete.
 
 ## Lowes Credit Card Statement Hold
 
@@ -134,6 +135,7 @@ If a duplicate is likely, stop and route the packet for review instead of insert
 - Whether successful low-risk insertions can later run automatically.
 - Final STR worksheet design, because STR does not yet match the two-group vendor-tab layout.
 - Lowes credit card statement process for splitting charges by project and by worksheet/tab before insertion.
+- Safe workbook-structure rollout pattern for Vendor Tabs Mode, including how to standardize table columns and formatting without corrupting table headers.
 
 ## Next Actions
 
