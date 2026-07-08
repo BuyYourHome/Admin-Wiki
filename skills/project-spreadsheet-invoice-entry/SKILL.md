@@ -1,6 +1,6 @@
 ---
 name: project-spreadsheet-invoice-entry
-description: Use for Buy Your Home project-management spreadsheet invoice-entry work after Document Scan or another approved intake workflow has prepared a structured invoice or receipt packet. Trigger when Codex needs to receive a structured packet, choose the correct active project workbook and worksheet, check for duplicate invoice records, insert a record into a Vendor Tab or other approved project-spreadsheet expense area, validate totals and workbook links, and report uncertain routing for Wes review.
+description: Use for Buy Your Home project-management spreadsheet invoice-entry work after Document Scan has prepared a structured invoice or receipt packet. Trigger when Codex needs to receive a structured packet, choose the correct active project workbook and worksheet, check for duplicate invoice records, insert a record into a Vendor Tab or other approved project-spreadsheet expense area, validate totals and workbook links, and report uncertain routing for Wes review.
 ---
 
 # Project Spreadsheet Invoice Entry
@@ -36,7 +36,7 @@ Document Scan normally owns scanned invoice and receipt intake, including:
 - scan log entries,
 - creating the structured invoice packet.
 
-Email Summary / OfficeAssist may hand off an invoice only as a secondary or future source when it has a complete structured invoice packet. It is not the default scanned-invoice intake path.
+Do not treat Email Summary or OfficeAssist as invoice-entry intake sources. Other packet handoff sources are out of scope unless Wes separately approves and documents them.
 
 This skill owns:
 
@@ -72,15 +72,13 @@ Before editing a workbook, obtain or build an invoice packet with:
 - invoice amount,
 - work category,
 - source scan path for Document Scan packets,
-- source email sender, subject, and received time for email-based packets,
-- source email/message ID or link when available for email-based packets,
 - saved invoice file path,
 - recommended workbook,
 - recommended worksheet,
 - confidence/status,
 - notes or uncertainty.
 
-If required fields are missing, ask Wes or route the packet for review unless the missing value can be safely derived from the filed invoice and source email.
+If required fields are missing, ask Wes or route the packet for review unless the missing value can be safely derived from the filed invoice and approved packet.
 
 ## Workbook Rules
 
@@ -111,7 +109,7 @@ Check likely duplicates before insertion:
 
 - strongest key: project + vendor + invoice number,
 - fallback key: project + vendor + invoice date + amount,
-- supporting evidence: saved source filename and source email/message ID.
+- supporting evidence: saved source filename and Document Scan packet/source identifier.
 
 If a duplicate is likely, stop and report the duplicate risk instead of inserting.
 

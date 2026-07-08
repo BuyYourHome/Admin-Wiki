@@ -17,6 +17,7 @@ Use [[Agent Unit Standard]] for the standard package behind an agent-like operat
 | Email Summary | Wiki-managed skill plus heartbeat automation plus project room | Active | Runs every day; starts at 7:45 AM Eastern, then every 15 minutes through 11:00 PM Eastern; Boss and Jenny summaries run once daily at/after 8:00 AM, and instruction monitoring checks OfficeAssist email | `skills\email-summary\SKILL.md`; `Project Rooms\Email Summary\README.md`; `C:\Users\wesbr\.codex\automations\officeassist-morning-email-summary-and-instruction-monitor\automation.toml` |
 | Email Delivery | Wiki-managed support skill | Active | Called by email-capable Admin workflows | `skills\email-delivery\SKILL.md` |
 | Document Scanning | Wiki-managed skill plus heartbeat automation plus project room | Active | Every 30 minutes from 10:00 AM through 4:30 PM Eastern | `skills\document-scanning\SKILL.md`; `Project Rooms\Document Scan\README.md`; `C:\Users\wesbr\.codex\skills\document-scanning\SKILL.md`; app automation id `document-scanning` |
+| Project Spreadsheet Invoice Entry | Wiki-managed skill plus project room plus backup heartbeat | Active | Hourly backup packet check; direct Document Scan handoff remains primary trigger | `skills\project-spreadsheet-invoice-entry\SKILL.md`; `Project Rooms\Project Spreadsheet Invoice Entry\README.md`; `C:\Users\wesbr\.codex\automations\invoice-entry-to-projects-backup-heartbeat\automation.toml` |
 | Codex Skill Source Control | Wiki-managed skill system | Active | On demand after skill changes or wiki pulls | `Codex Skill Source Rule.md`; `tools\sync-codex-skills.ps1`; `skills\` |
 | Admin Request Wrapup | Wiki-managed skill | Active | At the end of Admin wiki requests | `skills\admin-request-wrapup\SKILL.md`; `AGENTS.md` |
 | SOPs | Wiki-managed skill plus project room | Active | On demand | `skills\sops\SKILL.md`; `Project Rooms\SOPs\README.md`; `Project Rooms\SOPs\outputs\SOP Index.md` |
@@ -336,6 +337,47 @@ Important rules:
 - Keep the automation attached to one dedicated status thread via `target_thread_id` so the user can review run history and adjust behavior in one place.
 - Use quiet-run behavior with `DONT_NOTIFY` when no new scans are found so routine empty checks do not create visible chat noise.
 
+## Project Spreadsheet Invoice Entry
+
+Type: wiki-managed skill plus project room plus backup heartbeat automation.
+
+Status: active.
+
+Automation id:
+
+- `invoice-entry-to-projects-backup-heartbeat`
+
+Schedule:
+
+- Hourly.
+
+Purpose:
+
+- Receive structured invoice and receipt packets from Document Scan.
+- Resolve the exact live project-management workbook.
+- Check workbook records for duplicate invoices.
+- Decide final spreadsheet row placement.
+- Insert approved invoice records while preserving workbook formulas, formatting, selectors, tables, and links.
+- Validate totals and downstream `Gnatt Chart` links.
+- Upload the verified workbook back to Teams/SharePoint when authorized.
+- Use the heartbeat only as a backup monitor for structured packets that may have missed direct handoff.
+
+Defined in:
+
+- Canonical skill source: `C:\Codex\Wiki Files\skills\project-spreadsheet-invoice-entry\SKILL.md`
+- Project room: `C:\Codex\Wiki Files\Project Rooms\Project Spreadsheet Invoice Entry\README.md`
+- Packet drop folder: `C:\Codex\Wiki Files\Project Rooms\Project Spreadsheet Invoice Entry\sources\document-scan-packets`
+- Installed local skill copy: `C:\Users\wesbr\.codex\skills\project-spreadsheet-invoice-entry\SKILL.md`
+- Automation: `C:\Users\wesbr\.codex\automations\invoice-entry-to-projects-backup-heartbeat\automation.toml`
+
+Important rules:
+
+- Document Scan is the normal intake workflow for scanned invoice and receipt packets.
+- Other packet handoff sources are not part of this workflow unless Wes separately approves and documents them. Do not treat Email Summary or OfficeAssist as invoice-entry intake sources.
+- Do not scan inboxes, inspect raw scan folders, copy invoice files into Teams/project folders, approve or pay invoices, contact vendors, or redesign workbook templates from this workflow.
+- Do not edit a live workbook unless Wes clearly authorizes the insertion or an approved automation rule exists for that exact insertion type.
+- Quiet heartbeat checks with no new packets, failures, or decisions needed should not create routine visible messages.
+
 ## Codex Skill Source Control
 
 Type: wiki-managed skill system.
@@ -577,7 +619,7 @@ Status: active.
 Purpose:
 
 - Receive structured invoice packets after Document Scan has completed the normal scanned invoice/receipt intake path: inspection/OCR, splitting when needed, invoice/receipt identification, project/property routing, Teams/project-folder save or copy, scan log entry, and packet creation.
-- Receive structured invoice packets from Email Summary, OfficeAssist, or another approved workflow only as a secondary or future handoff source when it provides a complete structured packet.
+- Do not treat Email Summary or OfficeAssist as invoice-entry intake sources. Other intake sources are out of scope unless Wes separately approves and documents them.
 - Resolve the active Teams/SharePoint project-management workbook and target worksheet.
 - Check for duplicate invoice records.
 - Insert invoice records into approved project-spreadsheet expense areas, starting with Vendor Tabs Mode yellow actual-invoice sections.

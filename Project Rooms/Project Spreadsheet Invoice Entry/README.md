@@ -10,8 +10,8 @@ The workflow starts after Document Scan has completed scanned invoice or receipt
 
 Included:
 
-- Receive structured invoice packets from Document Scan as the normal scanned-invoice intake source.
-- Receive structured invoice packets from Email Summary, OfficeAssist, or another approved workflow only as a secondary or future handoff source when that workflow provides a complete structured packet.
+- Receive structured invoice packets from Document Scan as the scanned-invoice intake source.
+- Do not treat Email Summary or OfficeAssist as invoice-entry intake sources. Other intake sources are out of scope unless Wes separately approves and documents them.
 - Resolve the correct active project-management workbook through Teams/SharePoint.
 - Route invoice records to the correct worksheet and expense area.
 - For Vendor Tabs Mode, insert records only into the yellow actual-invoice section of the correct vendor tab.
@@ -31,7 +31,7 @@ Excluded unless Wes explicitly expands scope:
 - `Document Scan`: scan inspection/OCR, document splitting, invoice/receipt identification, project/property folder routing, saving/copying invoice files into Teams/project folders, scan log entries, and structured invoice packet creation.
 - `Project Spreadsheet Invoice Entry`: structured packet receipt, exact live project-management workbook resolution, workbook duplicate checks, final row placement, invoice record insertion, workbook formula/format/selector/table/link preservation, totals and downstream-link validation, authorized upload back to Teams/SharePoint, and insertion logging.
 - `Project Management Spreadsheet Redesign`: worksheet design, worksheet-mode rules, template changes, and rollout across project workbooks.
-- `Email Summary / OfficeAssist`: secondary or future handoff source only when it has a complete structured invoice packet; it is not the default scanned-invoice intake path.
+- `Email Summary / OfficeAssist`: not an invoice-entry intake source.
 
 ## Current Status
 
@@ -57,10 +57,6 @@ Each handoff should include:
 - Invoice number, if available
 - Invoice amount
 - Work category
-- Source email sender
-- Source email subject
-- Source email received date/time
-- Source email/message ID or Outlook link, if available
 - Saved invoice file path in Teams/project folder
 - Recommended project workbook
 - Recommended worksheet
@@ -115,7 +111,7 @@ Use these duplicate indicators before inserting:
 
 - Strongest key: project + vendor + invoice number.
 - If no invoice number: project + vendor + invoice date + amount.
-- Also compare source filename and source email/message ID when available.
+- Also compare source filename and Document Scan packet/source identifier when available.
 
 If a duplicate is likely, stop and route the packet for review instead of inserting another row.
 

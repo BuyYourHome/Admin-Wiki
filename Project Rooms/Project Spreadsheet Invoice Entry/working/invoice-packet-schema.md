@@ -1,6 +1,6 @@
 # Invoice Packet Schema
 
-Use this schema when Document Scan hands a scanned invoice or receipt packet to Project Spreadsheet Invoice Entry. Email Summary, OfficeAssist, or another approved workflow may also use this schema only as a secondary or future handoff source when it has a complete structured invoice packet.
+Use this schema when Document Scan hands a scanned invoice or receipt packet to Project Spreadsheet Invoice Entry. Do not treat Email Summary or OfficeAssist as invoice-entry intake sources. Other intake sources are out of scope unless Wes separately approves and documents them.
 
 ## Required Fields
 
@@ -13,10 +13,6 @@ Use this schema when Document Scan hands a scanned invoice or receipt packet to 
 | `invoice_amount` | yes | Total amount to insert. |
 | `work_category` | yes | Best known category, such as Plumbing Fixtures, HVAC, Paint, or Landscape. |
 | `source_scan_path` | yes for Document Scan packets | Original scan or archived scan path used by Document Scan. |
-| `source_email_sender` | yes for email-based packets | Sender of invoice email. Not required for Document Scan packets unless the scan came from a known email source. |
-| `source_email_subject` | yes for email-based packets | Subject of invoice email. Not required for Document Scan packets unless the scan came from a known email source. |
-| `source_email_received_at` | yes for email-based packets | Received date/time. Not required for Document Scan packets unless the scan came from a known email source. |
-| `source_email_id_or_link` | no | Message ID or Outlook link when available. |
 | `saved_invoice_file_path` | yes | Teams/project-folder path where intake saved the invoice file. |
 | `recommended_workbook` | yes | Active project-management workbook candidate. |
 | `recommended_worksheet` | yes | Candidate worksheet or `Needs Review`. |
