@@ -204,7 +204,7 @@ For every scanned project invoice or receipt:
 4. Save the filed PDF directly in the `Owning` folder unless a more specific approved subfolder already exists for that document type.
 5. If the property folder cannot be identified confidently, route the item to review and note the uncertainty in the log.
 
-### Invoice Entry Handoff
+### Template to Project Handoff
 
 When Doc Scan processes a project-specific invoice or receipt, it should continue its existing scan workflow:
 
@@ -214,13 +214,13 @@ When Doc Scan processes a project-specific invoice or receipt, it should continu
 4. Save or copy the invoice file into the correct Teams project folder.
 5. Log the scan routing result.
 6. Do not edit the project-management spreadsheet directly.
-7. Create a structured invoice packet and hand it off to Invoice Entry.
+7. Create a structured invoice packet and hand it off to Template to Project.
 
-Default handoff trigger: send a direct follow-up message to the dedicated Invoice Entry chat with the packet path and packet summary. The Invoice Entry heartbeat is a backup monitor that periodically checks the packet folder for handoffs that were not delivered by direct message.
+Default handoff trigger: send a direct follow-up message to the dedicated Template to Project chat with the packet path and packet summary. The Template to Project heartbeat is a backup monitor that periodically checks the packet folder for handoffs that were not delivered by direct message.
 
-Invoice Entry project room:
+Template to Project project room:
 
-`C:\Codex\Wiki Files\Project Rooms\Invoice Entry`
+`C:\Codex\Wiki Files\Project Rooms\Template to Project`
 
 Dedicated chat/thread:
 
@@ -228,7 +228,7 @@ Dedicated chat/thread:
 
 Doc Scan owns scan inspection/OCR, document splitting, invoice/receipt identification, project/property folder routing, saving or copying the invoice file, scan log entries, and invoice packet creation.
 
-Invoice Entry owns selecting the exact live project-management workbook, checking workbook records for duplicates, deciding final spreadsheet row placement, inserting the invoice record, preserving workbook formulas/formatting/selectors, validating totals and downstream links, and uploading the verified workbook back to Teams/SharePoint.
+Template to Project owns selecting the exact live project-management workbook, checking workbook records for duplicates, deciding final spreadsheet row placement, inserting the invoice record, preserving workbook formulas/formatting/selectors, validating totals and downstream links, and uploading the verified workbook back to Teams/SharePoint.
 
 Include these fields in each scanned-invoice handoff packet:
 
@@ -438,11 +438,11 @@ Email the report PDF to both `WesWill@BuyYourHomeLLC.com` and `Jenny@BuyYourHome
 
 When Credit Card Statement Mode identifies and files a Lowe's statement, preserve all normal Lowe's statement handling first: inspect/OCR, split if needed, file the statement in the approved Lowe's credit-card statement folder, log the routing, include it in the credit-card statement report, and flag normal statement review items.
 
-After normal statement filing, run Lowe's Statement Allocation Mode as an additive extraction workflow. Doc Scan extracts item-level source data for Invoice Entry. Doc Scan must not edit any project-management workbook and must not decide final spreadsheet insertion.
+After normal statement filing, run Lowe's Statement Allocation Mode as an additive extraction workflow. Doc Scan extracts item-level source data for Template to Project. Doc Scan must not edit any project-management workbook and must not decide final spreadsheet insertion.
 
 Do not treat the entire Lowe's statement as one invoice for one project. A single Lowe's statement may contain charges, returns, credits, fees, or interest for multiple projects and non-project/Home items.
 
-Do not treat each statement transaction or reference number as one invoice-entry row when the statement detail shows multiple purchased or returned items. A single Lowe's transaction/reference may produce multiple packet rows. Each packet row should represent one distinct purchasable item, returned item, delivery/shipping charge, fee, or credit component when the detail is visible.
+Do not treat each statement transaction or reference number as one Template to Project row when the statement detail shows multiple purchased or returned items. A single Lowe's transaction/reference may produce multiple packet rows. Each packet row should represent one distinct purchasable item, returned item, delivery/shipping charge, fee, or credit component when the detail is visible.
 
 Preserve the shared transaction header on every item row:
 
@@ -468,7 +468,7 @@ For each item row, capture:
 - Confidence/status.
 - Notes explaining any split, uncertainty, duplicate risk, missing fields, or amount allocation issue.
 
-If the transaction total is visible but item-level amounts are not separable, still split visible items into separate packet rows when useful, but mark amount fields as `Needs Review - Amount Split` and explain that the transaction total must be allocated before Invoice Entry can insert final rows.
+If the transaction total is visible but item-level amounts are not separable, still split visible items into separate packet rows when useful, but mark amount fields as `Needs Review - Amount Split` and explain that the transaction total must be allocated before Template to Project can insert final rows.
 
 Delivery/shipping should be its own row when it is separately shown or materially tied to a transaction. If delivery cannot be assigned to one item confidently, mark it `Needs Review - Allocation`.
 
@@ -484,9 +484,9 @@ For mixed-tab credits or returns, mark the line `Needs Review - Mixed Tab` unles
 
 For fees, interest, finance charges, late fees, or payments, mark the line as accounting-review unless Wes has approved a specific project-spreadsheet handling rule. Do not recommend a vendor tab by default.
 
-The packet handed to Invoice Entry should be item-row based. Each item row should carry the shared statement and transaction header data plus its own item data and routing confidence.
+The packet handed to Template to Project should be item-row based. Each item row should carry the shared statement and transaction header data plus its own item data and routing confidence.
 
-Invoice Entry owns:
+Template to Project owns:
 
 - resolving the exact live project-management workbook,
 - deciding whether a line belongs in that workbook,
@@ -497,7 +497,7 @@ Invoice Entry owns:
 - validating totals and workbook links,
 - uploading the verified workbook back to Teams/SharePoint when authorized.
 
-Default handoff trigger: send a direct follow-up message to the dedicated Invoice Entry chat with the packet path and a short summary of line counts by status, including high-confidence project lines, unclear project lines, non-project/Home lines, mixed-tab lines, and accounting-review lines.
+Default handoff trigger: send a direct follow-up message to the dedicated Template to Project chat with the packet path and a short summary of line counts by status, including high-confidence project lines, unclear project lines, non-project/Home lines, mixed-tab lines, and accounting-review lines.
 
 ### Invoice And Receipt Reports
 

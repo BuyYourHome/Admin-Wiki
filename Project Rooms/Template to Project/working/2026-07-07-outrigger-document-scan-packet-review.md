@@ -55,7 +55,7 @@ Completed on 2026-07-07 against:
 
 Rollback copy:
 
-- `C:\Codex\Wiki Files\Project Rooms\Invoice Entry\working\backups\27_Project Management - 7001 Outrigger Dr.before-invoice-entry-20260707-125449.xlsm`
+- `C:\Codex\Wiki Files\Project Rooms\Template to Project\working\backups\27_Project Management - 7001 Outrigger Dr.before-invoice-entry-20260707-125449.xlsm`
 
 Actions:
 
@@ -77,7 +77,7 @@ Validation:
 - Workbook link count: zero.
 - External-link package parts: zero.
 - `Flooring` and `Review` have zero `#REF!` formulas.
-- `Gnatt Chart` still has pre-existing `#REF!` formulas in later timeline columns; this was not introduced by the invoice entry.
+- `Gnatt Chart` still has pre-existing `#REF!` formulas in later timeline columns; this was not introduced by the template to project.
 
 ## Review Tab Dropdown
 

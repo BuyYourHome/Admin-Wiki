@@ -4,7 +4,7 @@
 
 - Source workflow: Doc Scan - Lowe's Statement Allocation Mode
 - Packet purpose: revised project-first handoff after the prior Lowe's test packet was superseded
-- Prior packet: `C:\Codex\Wiki Files\Project Rooms\Invoice Entry\sources\document-scan-packets\2026-03-17 - Lowes PRO BYH 5997 - Statement Allocation Test.md`
+- Prior packet: `C:\Codex\Wiki Files\Project Rooms\Template to Project\sources\document-scan-packets\2026-03-17 - Lowes PRO BYH 5997 - Statement Allocation Test.md`
 - Source statement path: `C:\Users\wesbr\Buy Your Home\Buy Your Home - Office Admin\2026\Credit Cards\Lowe's PRO BYH 5997\26-03-17 .pdf`
 - Filed statement path: `C:\Users\wesbr\Buy Your Home\Buy Your Home - Office Admin\2026\Credit Cards\Lowe's PRO BYH 5997\26-03-17 .pdf`
 - Statement holder: Buy Your Home LLC
@@ -26,9 +26,9 @@
 
 Do not send every Lowe's statement line to the Outrigger workbook just because some lines belong to Outrigger.
 
-Only lines with a high-confidence project/property match should recommend a project workbook. Lines marked Home/non-project, accounting-review, mixed-tab with unclear project, or PO-conflicted should not recommend a project-management workbook until Invoice Entry or Wes resolves the project first.
+Only lines with a high-confidence project/property match should recommend a project workbook. Lines marked Home/non-project, accounting-review, mixed-tab with unclear project, or PO-conflicted should not recommend a project-management workbook until Template to Project or Wes resolves the project first.
 
-For high-confidence Outrigger rows, Invoice Entry should place the row in the Outrigger workbook `Review` table first. A filled destination worksheet is only a recommendation for later review-copy into a vendor tab.
+For high-confidence Outrigger rows, Template to Project should place the row in the Outrigger workbook `Review` table first. A filled destination worksheet is only a recommendation for later review-copy into a vendor tab.
 
 Doc Scan did not edit any project-management workbook and did not check workbook duplicates.
 
@@ -42,7 +42,7 @@ Doc Scan did not edit any project-management workbook and did not check workbook
 - Non-project/Home lines: 1
 - Mixed-tab lines: 1
 - Accounting-review lines: 1
-- Payment lines excluded from invoice-entry packet: 1
+- Payment lines excluded from Template to Project packet: 1
 
 ## High-Confidence Project Lines
 
@@ -54,10 +54,10 @@ Recommended workbook for these rows:
 
 | Line | Tran Date | Post Date | Invoice/Ref # | Description | PO / Project Clue | Amount | Type | Recommended Project/Property | Recommended Workbook | Recommended Vendor Tab | Confidence / Status | Notes |
 | --- | --- | --- | --- | --- | --- | ---: | --- | --- | --- | --- | --- | --- |
-| 1 | 2026-02-17 | 2026-02-18 | `83160` | Install kit-electric WH; delivery/shipping; 24-in plastic WH drain pan | Printed PO `7001` | `$69.18` | Charge | `27-HM- 7001 Outrigger Dr` | `C:\Users\wesbr\Buy Your Home\Buy Your Home - Property\27_Project Management - 7001 Outrigger Dr.xlsm` | `Plumbing Fixtures` | Ready for Invoice Entry duplicate check; Review-first | Water-heater related materials; store `907`; date of sale `260217`. Put in Outrigger `Review` first, with `Destination Worksheet = Plumbing Fixtures`. |
-| 2 | 2026-02-17 | 2026-02-18 | `91816` | AOS 50-gal 6-year electric tall water heater; delivery/shipping | Printed PO `7001` | `$521.61` | Charge | `27-HM- 7001 Outrigger Dr` | `C:\Users\wesbr\Buy Your Home\Buy Your Home - Property\27_Project Management - 7001 Outrigger Dr.xlsm` | `Plumbing Fixtures` | Ready for Invoice Entry duplicate check; Review-first | Water-heater purchase; store `907`; date of sale `260217`. Put in Outrigger `Review` first, with `Destination Worksheet = Plumbing Fixtures`. |
+| 1 | 2026-02-17 | 2026-02-18 | `83160` | Install kit-electric WH; delivery/shipping; 24-in plastic WH drain pan | Printed PO `7001` | `$69.18` | Charge | `27-HM- 7001 Outrigger Dr` | `C:\Users\wesbr\Buy Your Home\Buy Your Home - Property\27_Project Management - 7001 Outrigger Dr.xlsm` | `Plumbing Fixtures` | Ready for Template to Project duplicate check; Review-first | Water-heater related materials; store `907`; date of sale `260217`. Put in Outrigger `Review` first, with `Destination Worksheet = Plumbing Fixtures`. |
+| 2 | 2026-02-17 | 2026-02-18 | `91816` | AOS 50-gal 6-year electric tall water heater; delivery/shipping | Printed PO `7001` | `$521.61` | Charge | `27-HM- 7001 Outrigger Dr` | `C:\Users\wesbr\Buy Your Home\Buy Your Home - Property\27_Project Management - 7001 Outrigger Dr.xlsm` | `Plumbing Fixtures` | Ready for Template to Project duplicate check; Review-first | Water-heater purchase; store `907`; date of sale `260217`. Put in Outrigger `Review` first, with `Destination Worksheet = Plumbing Fixtures`. |
 | 3 | 2026-02-18 | 2026-02-18 | `74298` | Crown moulding / lumber materials | Printed PO `7001` | `$53.66` | Charge | `27-HM- 7001 Outrigger Dr` | `C:\Users\wesbr\Buy Your Home\Buy Your Home - Property\27_Project Management - 7001 Outrigger Dr.xlsm` | `Needs Review` | Needs Review - Vendor Tab; Review-first | Project is high-confidence from printed PO, but product description does not map cleanly to the current approved Vendor Tabs Mode tab list. Put in Outrigger `Review` first and leave `Destination Worksheet` blank. |
-| 5 | 2026-03-03 | 2026-03-03 | `76164` | Return/credit for 24-in plastic WH drain pan | Printed PO `7001` | `($13.49)` | Credit | `27-HM- 7001 Outrigger Dr` | `C:\Users\wesbr\Buy Your Home\Buy Your Home - Property\27_Project Management - 7001 Outrigger Dr.xlsm` | `Plumbing Fixtures` | Ready for Invoice Entry duplicate check; Review-first | Credit/return tied to water-heater drain pan; store `1095`; date of sale `260303`. Put in Outrigger `Review` first, with `Destination Worksheet = Plumbing Fixtures`. |
+| 5 | 2026-03-03 | 2026-03-03 | `76164` | Return/credit for 24-in plastic WH drain pan | Printed PO `7001` | `($13.49)` | Credit | `27-HM- 7001 Outrigger Dr` | `C:\Users\wesbr\Buy Your Home\Buy Your Home - Property\27_Project Management - 7001 Outrigger Dr.xlsm` | `Plumbing Fixtures` | Ready for Template to Project duplicate check; Review-first | Credit/return tied to water-heater drain pan; store `1095`; date of sale `260303`. Put in Outrigger `Review` first, with `Destination Worksheet = Plumbing Fixtures`. |
 
 ## Lines Not Ready For A Project Workbook
 
@@ -74,11 +74,11 @@ These lines should not be placed into the Outrigger workbook merely because the 
 
 | Tran Date | Post Date | Description | Amount | Reason |
 | --- | --- | --- | ---: | --- |
-| 2026-02-26 | 2026-02-26 | Payment - Thank You | `($105.97)` | Payment activity, not an invoice-entry purchase or project cost. |
+| 2026-02-26 | 2026-02-26 | Payment - Thank You | `($105.97)` | Payment activity, not an Template to Project purchase or project cost. |
 
 ## Recommended Handoff
 
-Invoice Entry should consume this revised packet instead of the prior test packet.
+Template to Project should consume this revised packet instead of the prior test packet.
 
 Recommended handling:
 

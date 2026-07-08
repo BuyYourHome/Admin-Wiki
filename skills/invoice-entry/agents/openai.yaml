@@ -1,4 +1,0 @@
-interface:
-  display_name: "Invoice Entry"
-  short_description: "Insert project invoice records into vendor tabs."
-  default_prompt: "Use the Invoice Entry workflow to process a structured invoice packet, validate routing, check for duplicates, and insert the record into the correct Buy Your Home project-management spreadsheet vendor tab."

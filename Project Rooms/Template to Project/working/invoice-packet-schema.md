@@ -1,8 +1,8 @@
 # Invoice Packet Schema
 
-Use this schema when Doc Scan hands a scanned invoice, receipt, or Statement Mode packet to Invoice Entry. Other intake sources are out of scope unless Wes separately approves and documents them.
+Use this schema when Doc Scan hands a scanned invoice, receipt, or Statement Mode packet to Template to Project. Other intake sources are out of scope unless Wes separately approves and documents them.
 
-Doc Scan owns Lowes Statement Mode extraction and will send extracted statement data for Invoice Entry to consume. Statement Mode packets should not be inserted until Wes approves a tested process for allocating statement line items by project and by worksheet/table.
+Doc Scan owns Lowes Statement Mode extraction and will send extracted statement data for Template to Project to consume. Statement Mode packets should not be inserted until Wes approves a tested process for allocating statement line items by project and by worksheet/table.
 
 ## Required Fields
 
@@ -41,10 +41,10 @@ If the packet is for a Lowes statement:
 - Preserve the shared transaction header on every item row, including statement date, transaction/posting dates, receipt/reference number, store number, PO/project clue, source statement path, and filed statement path.
 - Treat `Needs Review - Amount Split` and `Needs Review - Allocation` rows as not ready for final vendor-tab copy until the amount allocation issue is resolved.
 - Every extracted statement line should be represented as a row in the workbook `Review` table before any vendor-tab insertion.
-- Use `Destination Worksheet` only when Invoice Entry has confidence in the final vendor tab.
+- Use `Destination Worksheet` only when Template to Project has confidence in the final vendor tab.
 - Leave `Destination Worksheet` blank when the line is Home/non-project, mixed-tab, PO-conflicted, accounting-only, or otherwise uncertain.
 - Review-row status and notes should explain whether the line is ready for later copy, needs Wes review, or needs accounting direction.
 
 ## Handoff Boundary
 
-The intake workflow should not edit the workbook. It should pass the packet to this project room for routing confirmation, duplicate check, insertion, and validation. For Statement Mode, Doc Scan owns extraction and Invoice Entry owns allocation and insertion decisions.
+The intake workflow should not edit the workbook. It should pass the packet to this project room for routing confirmation, duplicate check, insertion, and validation. For Statement Mode, Doc Scan owns extraction and Template to Project owns allocation and insertion decisions.

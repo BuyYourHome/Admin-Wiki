@@ -1,14 +1,14 @@
 ---
-name: invoice-entry
-description: Use for Buy Your Home project-management spreadsheet invoice-entry work after Doc Scan has prepared a structured invoice, receipt, or Statement Mode packet. Trigger when Codex needs to receive a structured packet, choose the correct active project workbook and worksheet, check for duplicate invoice or statement-line records, insert approved records into a Vendor Tab or other approved project-spreadsheet expense area, validate totals and workbook links, and report uncertain routing for Wes review.
+name: template-to-project
+description: Use for the Buy Your Home Template to Project workflow after Doc Scan has prepared a structured invoice, receipt, or Statement Mode packet for a project-management spreadsheet. Trigger when Codex needs to receive a structured packet, choose the correct active project workbook and worksheet, check for duplicate invoice or statement-line records, insert approved records into a Vendor Tab or other approved project-spreadsheet expense area, validate totals and workbook links, and report uncertain routing for Wes review.
 ---
 
-# Invoice Entry
+# Template to Project
 
 ## Source Of Truth
 
-- Project room: `C:\Codex\Wiki Files\Project Rooms\Invoice Entry`
-- Skill source: `C:\Codex\Wiki Files\skills\invoice-entry\SKILL.md`
+- Project room: `C:\Codex\Wiki Files\Project Rooms\Template to Project`
+- Skill source: `C:\Codex\Wiki Files\skills\template-to-project\SKILL.md`
 - Spreadsheet redesign room: `C:\Codex\Wiki Files\Project Rooms\Project Management Spreadsheet Redesign`
 
 Use this skill for operational invoice and approved statement-line insertion into project-management spreadsheets. For scanned invoice, receipt, and Statement Mode records, Doc Scan is the normal intake workflow and should trigger this workflow by direct follow-up message after creating the packet. The project-room heartbeat is a backup monitor for missed packet handoffs. Do not use this skill for scan inspection/OCR, document splitting, statement extraction, invoice-file routing, or spreadsheet template redesign.
@@ -166,7 +166,7 @@ Before marking an insertion complete:
 
 After each workbook or workflow iteration, record, refine, or expand reusable lessons in the project room before marking the work complete. Use:
 
-- `C:\Codex\Wiki Files\Project Rooms\Invoice Entry\working\iteration-lessons.md`
+- `C:\Codex\Wiki Files\Project Rooms\Template to Project\working\iteration-lessons.md`
 
 Lessons should include failed attempts, workbook-specific hazards, safer next-step constraints, and validation checks that should be repeated in future iterations.
 

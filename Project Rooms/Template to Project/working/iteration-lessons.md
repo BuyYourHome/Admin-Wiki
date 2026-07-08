@@ -72,11 +72,11 @@ Lessons:
 
 ## 2026-07-08 - Statement Mode Handoff Boundary
 
-Context: Doc Scan now has Lowes Statement Mode and will send extracted statement data for Invoice Entry to consume.
+Context: Doc Scan now has Lowes Statement Mode and will send extracted statement data for Template to Project to consume.
 
 Lessons:
 
-- Keep statement extraction in Doc Scan and statement allocation in Invoice Entry.
+- Keep statement extraction in Doc Scan and statement allocation in Template to Project.
 - Treat extracted statement lines as source data, not approval for insertion.
 - Do not insert Statement Mode lines until the allocation rule for project, worksheet/table, duplicate check, audit trace, and totals validation has been designed, tested, and approved.
 
@@ -88,11 +88,11 @@ Lessons:
 
 - For credit-card statement line items, treat the statement amount as the transaction total unless the extracted packet separates pre-tax subtotal and tax. Do not apply the worksheet tax formula again to statement totals.
 - Lowes Statement Mode uses project-first routing, then Review-first handling inside the matched project workbook. Do not insert all lines from a multi-project statement into the current project's `Review` table.
-- Fill `Review[Destination Worksheet]` only when Invoice Entry has confidence in the destination tab for a line that already belongs to that project. Leave it blank for same-project vendor-tab uncertainty.
+- Fill `Review[Destination Worksheet]` only when Template to Project has confidence in the destination tab for a line that already belongs to that project. Leave it blank for same-project vendor-tab uncertainty.
 - Keep Home/non-project, unclear-project, mixed-tab/project-unclear, PO-conflicted, accounting-only, and other non-matched-project lines outside project workbooks until the project/accounting status is resolved.
 - A filled `Destination Worksheet` is a routing recommendation and does not mean the line has already been inserted into the destination vendor table.
 - Record the statement PDF path as source evidence for every inserted or review-routed statement line.
 - When writing Excel tables through automation, restore from rollback after any failed COM write attempt before retrying; partial unsaved attempts should not be carried forward.
 - If a Statement Mode rule changes after an upload, rebuild from the pre-statement rollback and reprocess the packet under the new rule instead of patching already-uploaded Review and vendor-table rows in place.
 - For multi-project statements, do not use the currently open project workbook as the holding place for every line. Route by project/workbook first; only lines belonging to that project should enter that project's `Review` table, and non-project or unclear-project lines should stay outside project workbooks until resolved.
-- For Lowes statement packets, Doc Scan should preserve visible receipt-item detail. A single statement transaction/ref can become multiple Invoice Entry rows when it contains multiple items, delivery/shipping, or separable credits; do not consume broad transaction-summary rows when item-level rows are needed for later vendor-tab placement.
+- For Lowes statement packets, Doc Scan should preserve visible receipt-item detail. A single statement transaction/ref can become multiple Template to Project rows when it contains multiple items, delivery/shipping, or separable credits; do not consume broad transaction-summary rows when item-level rows are needed for later vendor-tab placement.

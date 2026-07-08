@@ -2,32 +2,32 @@
 
 ## Source
 
-- Superseded packet: `C:\Codex\Wiki Files\Project Rooms\Invoice Entry\sources\document-scan-packets\2026-03-17 - Lowes PRO BYH 5997 - Statement Allocation Test.md`
-- Revised project-first packet: `C:\Codex\Wiki Files\Project Rooms\Invoice Entry\sources\document-scan-packets\2026-03-17 - Lowes PRO BYH 5997 - Revised Project-First Packet.md`
+- Superseded packet: `C:\Codex\Wiki Files\Project Rooms\Template to Project\sources\document-scan-packets\2026-03-17 - Lowes PRO BYH 5997 - Statement Allocation Test.md`
+- Revised project-first packet: `C:\Codex\Wiki Files\Project Rooms\Template to Project\sources\document-scan-packets\2026-03-17 - Lowes PRO BYH 5997 - Revised Project-First Packet.md`
 - Statement PDF: `C:\Users\wesbr\Buy Your Home\Buy Your Home - Office Admin\2026\Credit Cards\Lowe's PRO BYH 5997\26-03-17 .pdf`
 - Target workbook: `Property/27_Project Management - 7001 Outrigger Dr.xlsm`
-- Work copy: `C:\Codex\Wiki Files\Project Rooms\Invoice Entry\working\statement-mode\lowes-5997-2026-03-17\27_Project Management - 7001 Outrigger Dr.lowes-5997-2026-03-17.20260708-140429.xlsm`
-- Rollback copy: `C:\Codex\Wiki Files\Project Rooms\Invoice Entry\working\backups\27_Project Management - 7001 Outrigger Dr.before-lowes-5997-2026-03-17-20260708-140429.xlsm`
+- Work copy: `C:\Codex\Wiki Files\Project Rooms\Template to Project\working\statement-mode\lowes-5997-2026-03-17\27_Project Management - 7001 Outrigger Dr.lowes-5997-2026-03-17.20260708-140429.xlsm`
+- Rollback copy: `C:\Codex\Wiki Files\Project Rooms\Template to Project\working\backups\27_Project Management - 7001 Outrigger Dr.before-lowes-5997-2026-03-17-20260708-140429.xlsm`
 
 ## Supersession
 
 The initial partial vendor-tab insertion was superseded on 2026-07-08 after Wes approved the Lowes Review-first rule. The live Teams/SharePoint workbook was reverted from the pre-Lowes rollback copy and reprocessed so that every extracted Lowes statement item is in `Review` first. No Lowes statement lines remain directly inserted in `Plumbing Fixtures`.
 
-Review-first work copy: `C:\Codex\Wiki Files\Project Rooms\Invoice Entry\working\statement-mode\lowes-5997-2026-03-17-review-first\27_Project Management - 7001 Outrigger Dr.lowes-5997-review-first.20260708-142327.xlsm`
+Review-first work copy: `C:\Codex\Wiki Files\Project Rooms\Template to Project\working\statement-mode\lowes-5997-2026-03-17-review-first\27_Project Management - 7001 Outrigger Dr.lowes-5997-review-first.20260708-142327.xlsm`
 
 ## Final Hold Pending New Doc Scan Consumables
 
 On 2026-07-08, Wes decided not to keep statement lines that do not belong to Outrigger inside the Outrigger workbook `Review` table. The live Teams/SharePoint workbook was reverted again from the same pre-Lowes rollback copy and no Lowes statement lines remain in the workbook.
 
-Current state: waiting for Doc Scan to provide revised line-item Statement Mode consumables that support project-first routing before Invoice Entry reprocesses this statement.
+Current state: waiting for Doc Scan to provide revised line-item Statement Mode consumables that support project-first routing before Template to Project reprocesses this statement.
 
-Final revert source: `C:\Codex\Wiki Files\Project Rooms\Invoice Entry\working\backups\27_Project Management - 7001 Outrigger Dr.before-lowes-5997-2026-03-17-20260708-140429.xlsm`
+Final revert source: `C:\Codex\Wiki Files\Project Rooms\Template to Project\working\backups\27_Project Management - 7001 Outrigger Dr.before-lowes-5997-2026-03-17-20260708-140429.xlsm`
 
 ## Revised Project-First Packet Processing
 
-On 2026-07-08, Doc Scan delivered a revised project-first packet. Invoice Entry consumed that revised packet and placed only the high-confidence Outrigger lines into the Outrigger workbook `Review` table. No Lowes statement line was inserted directly into a vendor tab.
+On 2026-07-08, Doc Scan delivered a revised project-first packet. Template to Project consumed that revised packet and placed only the high-confidence Outrigger lines into the Outrigger workbook `Review` table. No Lowes statement line was inserted directly into a vendor tab.
 
-Work copy: `C:\Codex\Wiki Files\Project Rooms\Invoice Entry\working\statement-mode\lowes-5997-2026-03-17-project-first\27_Project Management - 7001 Outrigger Dr.lowes-project-first.20260708-150140.xlsm`
+Work copy: `C:\Codex\Wiki Files\Project Rooms\Template to Project\working\statement-mode\lowes-5997-2026-03-17-project-first\27_Project Management - 7001 Outrigger Dr.lowes-project-first.20260708-150140.xlsm`
 
 Rows added to `Review`:
 
@@ -130,7 +130,7 @@ The live Teams/SharePoint workbook was reverted to the pre-project-first inserti
 
 Current state: waiting for Doc Scan to send a new item-level Lowe's Statement Mode package.
 
-Final revert source: `C:\Codex\Wiki Files\Project Rooms\Invoice Entry\working\statement-mode\lowes-5997-2026-03-17-project-first\27_Project Management - 7001 Outrigger Dr.sharepoint-current.20260708-150140.xlsm`
+Final revert source: `C:\Codex\Wiki Files\Project Rooms\Template to Project\working\statement-mode\lowes-5997-2026-03-17-project-first\27_Project Management - 7001 Outrigger Dr.sharepoint-current.20260708-150140.xlsm`
 
 Final revert validation:
 
@@ -143,11 +143,11 @@ Final revert validation:
 
 ## Item-Level Packet Processing
 
-On 2026-07-08, Doc Scan delivered the item-level Lowes packet. Invoice Entry consumed that packet and placed only packet rows 1-12, the high-confidence Outrigger rows, into the Outrigger workbook `Review` table. No Lowes statement item was inserted directly into a vendor tab.
+On 2026-07-08, Doc Scan delivered the item-level Lowes packet. Template to Project consumed that packet and placed only packet rows 1-12, the high-confidence Outrigger rows, into the Outrigger workbook `Review` table. No Lowes statement item was inserted directly into a vendor tab.
 
-Packet: `C:\Codex\Wiki Files\Project Rooms\Invoice Entry\sources\document-scan-packets\2026-03-17 - Lowes PRO BYH 5997 - Item-Level Packet.md`
+Packet: `C:\Codex\Wiki Files\Project Rooms\Template to Project\sources\document-scan-packets\2026-03-17 - Lowes PRO BYH 5997 - Item-Level Packet.md`
 
-Work copy: `C:\Codex\Wiki Files\Project Rooms\Invoice Entry\working\statement-mode\lowes-5997-2026-03-17-item-level\27_Project Management - 7001 Outrigger Dr.lowes-item-level.20260708-160244.xlsm`
+Work copy: `C:\Codex\Wiki Files\Project Rooms\Template to Project\working\statement-mode\lowes-5997-2026-03-17-item-level\27_Project Management - 7001 Outrigger Dr.lowes-item-level.20260708-160244.xlsm`
 
 Rows added to `Review`:
 
