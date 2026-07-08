@@ -23,3 +23,24 @@ Next safer sequence:
 2. Validate totals, Gantt link, table headers, workbook links, and reopen behavior.
 3. Upload only if validation passes.
 4. In a later separate pass, standardize one table's columns at a time, starting with a copy or non-live test workbook.
+
+## 2026-07-08 - Outrigger Appliances-Pattern Retry
+
+Context: Wes fixed the `Appliances` tab and asked to retry correcting the other upgraded tables using `Appliances` as the layout standard.
+
+Result: Uploaded a safe nonstructural pass. The pass repaired `Demo & Trash Haul` totals, moved other tabs' template/grand/invoice totals to the `Appliances`-style right-side placement, updated affected `Gnatt Chart` links, and applied the table style without changing table widths. Validation passed with no external workbook links or table-header corruption.
+
+Lessons:
+
+- Preserve Wes's manually fixed tab as the source of truth; do not overwrite it while using it as the pattern.
+- Split totals/layout work from table-width or column-order work. Totals and Gantt relinking can be safely updated without resizing tables.
+- `Demo & Trash Haul` can be repaired safely if its existing 7-column table structure is left intact.
+- If `Demo & Trash Haul` is widened to standard invoice columns, totals must move away from the immediately adjacent column; otherwise Excel may auto-expand the table into the total cells.
+- Standardizing `Cabinets` columns can change totals if tax formulas are filled into rows that previously had intentionally blank tax cells. Preserve existing tax behavior unless Wes explicitly approves recalculating tax.
+
+Next safer sequence:
+
+1. Standardize only `Demo & Trash Haul` on a non-live copy, with totals placed at least one blank column away from the widened table.
+2. Validate that the final table has exactly these headers: `Group`, `Date`, `Vendor`, `Description`, `Sq Ft`, `Item #`, `Qty`, `Cost/Unit`, `Sub-Total`, `Tax`.
+3. Preserve the current grand total of `6561.72` and the `Gnatt Chart` row 8 link.
+4. Standardize `Cabinets` separately and preserve its current actual total of `5563` unless Wes explicitly changes the tax rule.
