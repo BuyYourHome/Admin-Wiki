@@ -2,17 +2,17 @@
 
 ## Purpose
 
-This project room owns the operational workflow for inserting invoice records into Buy Your Home project-management spreadsheets.
+This project room owns the operational workflow for inserting invoice and approved statement-line records into Buy Your Home project-management spreadsheets.
 
-The workflow starts after Document Scan has completed scanned invoice or receipt intake and prepared a structured invoice packet. This room receives that packet, decides where the record belongs in the project-management spreadsheet, checks for duplicates, inserts the record into the correct worksheet area, validates totals, and reports uncertainty for Wes review.
+The workflow starts after Document Scan has completed scanned invoice, receipt, or Statement Mode intake and prepared a structured packet. This room receives that packet, decides where the record or statement line belongs in the project-management spreadsheet, checks for duplicates, inserts approved records into the correct worksheet area, validates totals, and reports uncertainty for Wes review.
 
 ## Scope
 
 Included:
 
-- Receive structured invoice packets from Document Scan as the scanned-invoice intake source.
+- Receive structured invoice, receipt, and Statement Mode packets from Document Scan as the scanned-document intake source.
 - Other intake sources are out of scope unless Wes separately approves and documents them.
-- Receive Lowes credit card statement packets only as a held special case until Wes approves a tested statement-splitting process.
+- Consume Lowes Statement Mode packets extracted by Document Scan; Document Scan owns extraction, and Invoice Entry owns allocation and later spreadsheet insertion when approved.
 - Resolve the correct active project-management workbook through Teams/SharePoint.
 - Route invoice records to the correct worksheet and expense area.
 - For Vendor Tabs Mode, insert records only into the yellow actual-invoice section of the correct vendor tab.
@@ -29,14 +29,15 @@ Excluded unless Wes explicitly expands scope:
 
 ## Responsibility Boundary
 
-- `Document Scan`: scan inspection/OCR, document splitting, invoice/receipt identification, project/property folder routing, saving/copying invoice files into Teams/project folders, scan log entries, and structured invoice packet creation.
-- `Project Spreadsheet Invoice Entry`: structured packet receipt, exact live project-management workbook resolution, workbook duplicate checks, final row placement, invoice record insertion, workbook formula/format/selector/table/link preservation, totals and downstream-link validation, authorized upload back to Teams/SharePoint, and insertion logging.
+- `Document Scan`: scan inspection/OCR, document splitting, invoice/receipt/statement identification, project/property folder routing when applicable, saving/copying filed PDFs into Teams/project folders, scan log entries, Statement Mode extraction, and structured packet creation.
+- `Project Spreadsheet Invoice Entry`: structured packet receipt, exact live project-management workbook resolution, workbook duplicate checks, statement-line allocation, final row placement, invoice or approved statement-line record insertion, workbook formula/format/selector/table/link preservation, totals and downstream-link validation, authorized upload back to Teams/SharePoint, and insertion logging.
 - `Project Management Spreadsheet Redesign`: worksheet design, worksheet-mode rules, template changes, and rollout across project workbooks.
 
 ## Current Status
 
 - Status: active direct-message handoff; backup heartbeat available. Invoice insertion procedure still has open design decisions.
 - First supported worksheet group: Vendor Tabs Mode.
+- Statement Mode status: Document Scan owns Lowes Statement Mode extraction and will send extracted statement data for this room to consume. Invoice Entry holds statement lines until allocation and insertion rules are tested and approved.
 - First workbook for proving the workflow: Outrigger, after Wes approves the Vendor Tabs Mode design.
 - Primary trigger: direct follow-up message to the dedicated Project Spreadsheet Invoice Entry chat with the packet path and summary.
 - Backup automation: project-room heartbeat every 60 minutes. The heartbeat inspects this project room for new or changed structured invoice/receipt packets only; it does not scan inboxes, inspect raw scan folders, copy files into Teams, or edit a live workbook unless Wes has clearly authorized the insertion or an approved automation rule exists for that exact insertion type.
@@ -63,6 +64,21 @@ Each handoff should include:
 - Confidence/status
 - Notes or uncertainty
 
+## Required Statement Mode Packet
+
+Document Scan sends extracted Statement Mode data for this room to consume. A Statement Mode handoff should include:
+
+- Statement vendor
+- Statement account or account suffix, if available
+- Statement date or period
+- Due date, if available
+- Statement total or balance, if available
+- Filed statement PDF path in Teams
+- Source scan path or source document reference
+- Extracted line items, with transaction date, description, amount, page/source reference, and extraction confidence when available
+- Statement-level confidence/status
+- Notes about missing pages, weak OCR, credits/payments, non-purchase rows, or unclear line items
+
 ## Folder Map
 
 - `sources\` - copied invoice packets, intake examples, source notes, and supporting references.
@@ -83,18 +99,19 @@ Each handoff should include:
 10. Upload the verified workbook back through the Teams/SharePoint connector only after it opens cleanly and has no unintended workbook links.
 11. After each workbook or workflow iteration, record, refine, or expand lessons learned in `working\iteration-lessons.md` before treating the iteration as complete.
 
-## Lowes Credit Card Statement Hold
+## Statement Mode Hold
 
-Lowes credit card statements may be routed to this project room to be treated as invoice-like source material, but they are not normal single-invoice packets.
+Statement Mode packets are extracted by Document Scan and routed to this project room to be treated as statement-line source material, but they are not normal single-invoice packets. Lowes Statement Mode is the first active statement source.
 
-If a Lowes credit card statement is received:
+If a Statement Mode packet is received:
 
 1. Do not insert statement items into any workbook yet.
 2. Do not treat the statement as a single invoice for one worksheet.
-3. Mark the packet as `Needs Review - Lowes Statement`.
-4. Hold processing until Wes approves a tested process for splitting statement items by project and then by worksheet/tab within each project.
+3. Mark the packet as `Needs Review - Statement Mode` unless the approved Statement Mode rules say otherwise.
+4. Use the extracted data as the starting point for allocation review, not as automatic approval for insertion.
+5. Hold insertion until Wes approves a tested process for allocating statement items by project and then by worksheet/table within each project.
 
-Reason: a common invoice usually maps to one project and one tab, but a Lowes statement can contain charges for multiple projects and multiple tabs inside each project.
+Reason: a common invoice usually maps to one project and one tab, but a statement can contain charges for multiple projects and multiple tabs inside each project.
 
 ## Vendor Tabs Mode Startup
 
@@ -134,7 +151,7 @@ If a duplicate is likely, stop and route the packet for review instead of insert
 - Exact row-insertion behavior for each Vendor Tab's yellow actual-invoice section.
 - Whether successful low-risk insertions can later run automatically.
 - Final STR worksheet design, because STR does not yet match the two-group vendor-tab layout.
-- Lowes credit card statement process for splitting charges by project and by worksheet/tab before insertion.
+- Statement Mode allocation process for splitting extracted statement charges by project and by worksheet/table before insertion.
 - Safe workbook-structure rollout pattern for Vendor Tabs Mode, including how to standardize table columns and formatting without corrupting table headers.
 
 ## Next Actions

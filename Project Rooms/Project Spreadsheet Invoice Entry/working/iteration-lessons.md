@@ -69,3 +69,13 @@ Lessons:
 - When a tab total appears wrong, inspect the table's component columns first; the total formula may already be correct while an input formula column is blank.
 - Keep narrow formula repairs limited to the affected table column when the total chain is already structurally correct.
 - Validate the changed column formula, invoice total, grand total, and Gantt-linked value after recalculation.
+
+## 2026-07-08 - Statement Mode Handoff Boundary
+
+Context: Document Scan now has Lowes Statement Mode and will send extracted statement data for Project Spreadsheet Invoice Entry to consume.
+
+Lessons:
+
+- Keep statement extraction in Document Scan and statement allocation in Project Spreadsheet Invoice Entry.
+- Treat extracted statement lines as source data, not approval for insertion.
+- Do not insert Statement Mode lines until the allocation rule for project, worksheet/table, duplicate check, audit trace, and totals validation has been designed, tested, and approved.

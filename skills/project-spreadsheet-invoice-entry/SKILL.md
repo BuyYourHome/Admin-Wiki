@@ -1,6 +1,6 @@
 ---
 name: project-spreadsheet-invoice-entry
-description: Use for Buy Your Home project-management spreadsheet invoice-entry work after Document Scan has prepared a structured invoice or receipt packet. Trigger when Codex needs to receive a structured packet, choose the correct active project workbook and worksheet, check for duplicate invoice records, insert a record into a Vendor Tab or other approved project-spreadsheet expense area, validate totals and workbook links, and report uncertain routing for Wes review.
+description: Use for Buy Your Home project-management spreadsheet invoice-entry work after Document Scan has prepared a structured invoice, receipt, or Statement Mode packet. Trigger when Codex needs to receive a structured packet, choose the correct active project workbook and worksheet, check for duplicate invoice or statement-line records, insert approved records into a Vendor Tab or other approved project-spreadsheet expense area, validate totals and workbook links, and report uncertain routing for Wes review.
 ---
 
 # Project Spreadsheet Invoice Entry
@@ -11,9 +11,9 @@ description: Use for Buy Your Home project-management spreadsheet invoice-entry 
 - Skill source: `C:\Codex\Wiki Files\skills\project-spreadsheet-invoice-entry\SKILL.md`
 - Spreadsheet redesign room: `C:\Codex\Wiki Files\Project Rooms\Project Management Spreadsheet Redesign`
 
-Use this skill for operational invoice insertion into project-management spreadsheets. For scanned invoice and receipt records, Document Scan is the normal intake workflow and should trigger this workflow by direct follow-up message after creating the packet. The project-room heartbeat is a backup monitor for missed packet handoffs. Do not use this skill for scan inspection/OCR, document splitting, invoice-file routing, or spreadsheet template redesign.
+Use this skill for operational invoice and approved statement-line insertion into project-management spreadsheets. For scanned invoice, receipt, and Statement Mode records, Document Scan is the normal intake workflow and should trigger this workflow by direct follow-up message after creating the packet. The project-room heartbeat is a backup monitor for missed packet handoffs. Do not use this skill for scan inspection/OCR, document splitting, statement extraction, invoice-file routing, or spreadsheet template redesign.
 
-Lowes credit card statements are a held special case. They may arrive as invoice-like source material, but do not process or insert them until Wes approves a tested workflow for splitting statement line items by project and by worksheet/tab.
+Document Scan owns Lowes Statement Mode extraction and will send extracted statement data for this skill to consume. This skill owns statement-line allocation, duplicate checks, final spreadsheet row placement, insertion, and validation after Wes approves the Statement Mode allocation rules.
 
 ## Required Startup
 
@@ -28,25 +28,27 @@ Lowes credit card statements are a held special case. They may arrive as invoice
 
 ## Ownership Boundary
 
-Document Scan normally owns scanned invoice and receipt intake, including:
+Document Scan normally owns scanned invoice, receipt, and Statement Mode intake, including:
 
 - scan inspection/OCR,
 - document splitting,
-- invoice/receipt identification,
+- invoice/receipt/statement identification,
 - project/property folder routing,
 - saving or copying the invoice file into Teams/project folders,
 - scan log entries,
-- creating the structured invoice packet.
+- Lowes Statement Mode extraction,
+- creating the structured packet.
 
 Other packet handoff sources are out of scope unless Wes separately approves and documents them.
 
 This skill owns:
 
-- receiving the structured invoice packet,
+- receiving the structured packet,
 - resolving the exact live project-management workbook,
 - checking workbook records for duplicates,
+- allocating extracted statement lines by project and worksheet/table when approved,
 - deciding final spreadsheet row placement,
-- inserting the invoice record into approved project-spreadsheet expense areas,
+- inserting invoice, receipt, or approved statement-line records into approved project-spreadsheet expense areas,
 - preserving workbook formulas, formatting, selectors, tables, and links,
 - validating totals and downstream links,
 - uploading the verified workbook back to Teams/SharePoint when authorized,
@@ -56,10 +58,11 @@ This skill does not own:
 
 - scan inspection/OCR,
 - document splitting,
-- invoice/receipt identification,
+- invoice/receipt/statement identification,
 - project/property folder routing,
 - saving or copying invoice files into Teams/project folders,
 - scan log entries,
+- statement-line extraction from PDFs,
 - template redesign or worksheet-mode rollout,
 - invoice approval, payment, accounting entries, vendor communication, or legal/financial decision-making.
 
@@ -82,7 +85,7 @@ Before editing a workbook, obtain or build an invoice packet with:
 
 If required fields are missing, ask Wes or route the packet for review unless the missing value can be safely derived from the filed invoice and approved packet.
 
-For Lowes credit card statement packets, set or treat `confidence/status` as `Needs Review - Lowes Statement` and stop before insertion. Do not treat the statement as a single invoice or route it to a single worksheet unless a later approved Lowes statement process explicitly allows that.
+For Statement Mode packets, set or treat `confidence/status` as `Needs Review - Statement Mode` and stop before insertion unless Wes has approved the exact Statement Mode allocation rule being applied. Do not treat the statement as a single invoice or route it to a single worksheet unless a later approved Statement Mode process explicitly allows that for the specific line item.
 
 ## Workbook Rules
 
@@ -107,16 +110,17 @@ For Vendor Tabs Mode:
 - Validate the affected tab total and the `Gnatt Chart` source cell after insertion.
 - Treat `STR` as a special case until Wes approves its final design.
 
-## Lowes Credit Card Statement Hold
+## Statement Mode Packet Handling
 
-If a Lowes credit card statement is received:
+If a Statement Mode packet is received:
 
 - hold processing before workbook insertion,
-- do not split charges across projects or tabs by guesswork,
+- consume the extracted statement data from Document Scan,
+- do not allocate charges across projects or tabs by guesswork,
 - do not insert it as one invoice into one tab,
-- report that the Lowes statement process still needs design and testing.
+- report that the Statement Mode allocation process still needs design and testing unless that exact allocation rule has been approved.
 
-This hold exists because a common invoice usually maps to one project and one tab, while a Lowes statement can contain line items for multiple projects and multiple tabs inside each project.
+This hold exists because a common invoice usually maps to one project and one tab, while a statement can contain line items for multiple projects and multiple tabs inside each project.
 
 ## Duplicate Checks
 
