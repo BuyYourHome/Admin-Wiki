@@ -92,3 +92,4 @@ Lessons:
 - A filled `Destination Worksheet` is a routing recommendation and does not mean the line has already been inserted into the destination vendor table.
 - Record the statement PDF path as source evidence for every inserted or review-routed statement line.
 - When writing Excel tables through automation, restore from rollback after any failed COM write attempt before retrying; partial unsaved attempts should not be carried forward.
+- If a Statement Mode rule changes after an upload, rebuild from the pre-statement rollback and reprocess the packet under the new rule instead of patching already-uploaded Review and vendor-table rows in place.

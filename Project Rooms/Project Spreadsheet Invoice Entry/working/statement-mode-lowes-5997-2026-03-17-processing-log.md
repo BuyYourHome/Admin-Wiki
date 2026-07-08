@@ -8,15 +8,21 @@
 - Work copy: `C:\Codex\Wiki Files\Project Rooms\Project Spreadsheet Invoice Entry\working\statement-mode\lowes-5997-2026-03-17\27_Project Management - 7001 Outrigger Dr.lowes-5997-2026-03-17.20260708-140429.xlsm`
 - Rollback copy: `C:\Codex\Wiki Files\Project Rooms\Project Spreadsheet Invoice Entry\working\backups\27_Project Management - 7001 Outrigger Dr.before-lowes-5997-2026-03-17-20260708-140429.xlsm`
 
+## Supersession
+
+The initial partial vendor-tab insertion was superseded on 2026-07-08 after Wes approved the Lowes Review-first rule. The live Teams/SharePoint workbook was reverted from the pre-Lowes rollback copy and reprocessed so that every extracted Lowes statement item is in `Review` first. No Lowes statement lines remain directly inserted in `Plumbing Fixtures`.
+
+Review-first work copy: `C:\Codex\Wiki Files\Project Rooms\Project Spreadsheet Invoice Entry\working\statement-mode\lowes-5997-2026-03-17-review-first\27_Project Management - 7001 Outrigger Dr.lowes-5997-review-first.20260708-142327.xlsm`
+
 ## Duplicate Check
 
 - Searched workbook for refs `83160`, `91816`, `74298`, `94293`, `76164`, `84314`, and `94895`.
 - No exact workbook matches were found for refs `83160`, `91816`, or `76164`.
 - Existing workbook has an unrelated `$6.99` Plumbing Fixtures row, so statement line `94895` was routed to Review with its PO conflict instead of inserted.
 
-## Inserted Lines
+## Superseded Initial Inserted Lines
 
-Inserted into `Plumbing Fixtures`, `tblPlumbingFixturesInvoices`, rows 29 through 31:
+The first pass inserted these lines into `Plumbing Fixtures`, `tblPlumbingFixturesInvoices`, rows 29 through 31. That insertion has been reverted in the live workbook:
 
 | Statement line | Date | Ref | Vendor | Description | Amount | Tax |
 | --- | --- | --- | --- | --- | ---: | ---: |
@@ -26,17 +32,20 @@ Inserted into `Plumbing Fixtures`, `tblPlumbingFixturesInvoices`, rows 29 throug
 
 Tax was left at `0` because statement transaction amounts are already statement totals, not untaxed item subtotals.
 
-## Routed To Review
+## Final Review-First Routing
 
-Added five rows to `Review`, leaving `Destination Worksheet` blank for Wes approval:
+After reprocessing, all eight extracted Lowes statement rows were added to `Review`. `Destination Worksheet` was filled only where the destination was confident:
 
-| Statement line | Ref | Amount | Status |
-| --- | --- | ---: | --- |
-| 3 | `74298` | 53.66 | Needs Review - Vendor Tab |
-| 4 | `94293` | 41.73 | Needs Review - Non-project/Home |
-| 6 | `84314` | -145.25 | Needs Review - Mixed Vendor Tabs / PO clarity |
-| 7 | `94895` | 6.99 | Needs Review - PO conflict |
-| 8 | Interest | 66.27 | Needs Review - Statement-level charge |
+| Statement line | Ref | Amount | Destination Worksheet | Status |
+| --- | --- | ---: | --- | --- |
+| 1 | `83160` | 69.18 | Plumbing Fixtures | Ready for review-copy to destination |
+| 2 | `91816` | 521.61 | Plumbing Fixtures | Ready for review-copy to destination |
+| 3 | `74298` | 53.66 |  | Needs Review - Vendor Tab |
+| 4 | `94293` | 41.73 |  | Needs Review - Non-project/Home |
+| 5 | `76164` | -13.49 | Plumbing Fixtures | Ready for review-copy to destination |
+| 6 | `84314` | -145.25 |  | Needs Review - Mixed Vendor Tabs / PO clarity |
+| 7 | `94895` | 6.99 |  | Needs Review - PO conflict |
+| 8 | Interest | 66.27 |  | Needs Review - Statement-level charge |
 
 ## Validation
 
@@ -47,3 +56,13 @@ Added five rows to `Review`, leaving `Destination Worksheet` blank for Wes appro
 - Workbook links: `0`
 - External link package parts: `0`
 - SharePoint upload completed: 2026-07-08 18:12 UTC, size `807506`
+
+## Review-First Reprocess Validation
+
+- `Review` table rows after update: `9`
+- `Plumbing Fixtures!L14`: `982.744975`
+- `Plumbing Fixtures!L16`: `982.744975`
+- `Gnatt Chart!G10`: `982.744975`
+- Workbook links: `0`
+- External link package parts: `0`
+- SharePoint upload completed: 2026-07-08 18:26 UTC, size `806074`
