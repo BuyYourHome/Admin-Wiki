@@ -11,7 +11,7 @@ The workflow starts after Document Scan has completed scanned invoice or receipt
 Included:
 
 - Receive structured invoice packets from Document Scan as the scanned-invoice intake source.
-- Do not treat Email Summary or OfficeAssist as invoice-entry intake sources. Other intake sources are out of scope unless Wes separately approves and documents them.
+- Other intake sources are out of scope unless Wes separately approves and documents them.
 - Resolve the correct active project-management workbook through Teams/SharePoint.
 - Route invoice records to the correct worksheet and expense area.
 - For Vendor Tabs Mode, insert records only into the yellow actual-invoice section of the correct vendor tab.
@@ -31,7 +31,6 @@ Excluded unless Wes explicitly expands scope:
 - `Document Scan`: scan inspection/OCR, document splitting, invoice/receipt identification, project/property folder routing, saving/copying invoice files into Teams/project folders, scan log entries, and structured invoice packet creation.
 - `Project Spreadsheet Invoice Entry`: structured packet receipt, exact live project-management workbook resolution, workbook duplicate checks, final row placement, invoice record insertion, workbook formula/format/selector/table/link preservation, totals and downstream-link validation, authorized upload back to Teams/SharePoint, and insertion logging.
 - `Project Management Spreadsheet Redesign`: worksheet design, worksheet-mode rules, template changes, and rollout across project workbooks.
-- `Email Summary / OfficeAssist`: not an invoice-entry intake source.
 
 ## Current Status
 

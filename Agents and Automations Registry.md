@@ -373,7 +373,7 @@ Defined in:
 Important rules:
 
 - Document Scan is the normal intake workflow for scanned invoice and receipt packets.
-- Other packet handoff sources are not part of this workflow unless Wes separately approves and documents them. Do not treat Email Summary or OfficeAssist as invoice-entry intake sources.
+- Other packet handoff sources are not part of this workflow unless Wes separately approves and documents them.
 - Do not scan inboxes, inspect raw scan folders, copy invoice files into Teams/project folders, approve or pay invoices, contact vendors, or redesign workbook templates from this workflow.
 - Do not edit a live workbook unless Wes clearly authorizes the insertion or an approved automation rule exists for that exact insertion type.
 - Quiet heartbeat checks with no new packets, failures, or decisions needed should not create routine visible messages.
@@ -619,7 +619,7 @@ Status: active.
 Purpose:
 
 - Receive structured invoice packets after Document Scan has completed the normal scanned invoice/receipt intake path: inspection/OCR, splitting when needed, invoice/receipt identification, project/property routing, Teams/project-folder save or copy, scan log entry, and packet creation.
-- Do not treat Email Summary or OfficeAssist as invoice-entry intake sources. Other intake sources are out of scope unless Wes separately approves and documents them.
+- Other intake sources are out of scope unless Wes separately approves and documents them.
 - Resolve the active Teams/SharePoint project-management workbook and target worksheet.
 - Check for duplicate invoice records.
 - Insert invoice records into approved project-spreadsheet expense areas, starting with Vendor Tabs Mode yellow actual-invoice sections.

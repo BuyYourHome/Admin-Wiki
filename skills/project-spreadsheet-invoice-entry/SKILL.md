@@ -36,7 +36,7 @@ Document Scan normally owns scanned invoice and receipt intake, including:
 - scan log entries,
 - creating the structured invoice packet.
 
-Do not treat Email Summary or OfficeAssist as invoice-entry intake sources. Other packet handoff sources are out of scope unless Wes separately approves and documents them.
+Other packet handoff sources are out of scope unless Wes separately approves and documents them.
 
 This skill owns:
 
