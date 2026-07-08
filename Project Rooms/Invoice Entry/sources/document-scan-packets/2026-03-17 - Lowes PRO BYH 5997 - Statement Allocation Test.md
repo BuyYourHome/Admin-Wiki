@@ -49,7 +49,7 @@
 
 ## Recommended Handoff
 
-- Send this packet to Project Spreadsheet Invoice Entry for test handling.
+- Send this packet to Invoice Entry for test handling.
 - Suggested handling by Invoice Entry:
   - perform workbook duplicate checks for each line item,
   - insert only rows that are approved by the current Vendor Tabs Mode rules,

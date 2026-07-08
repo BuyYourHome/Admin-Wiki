@@ -1,14 +1,14 @@
 ---
-name: project-spreadsheet-invoice-entry
+name: invoice-entry
 description: Use for Buy Your Home project-management spreadsheet invoice-entry work after Doc Scan has prepared a structured invoice, receipt, or Statement Mode packet. Trigger when Codex needs to receive a structured packet, choose the correct active project workbook and worksheet, check for duplicate invoice or statement-line records, insert approved records into a Vendor Tab or other approved project-spreadsheet expense area, validate totals and workbook links, and report uncertain routing for Wes review.
 ---
 
-# Project Spreadsheet Invoice Entry
+# Invoice Entry
 
 ## Source Of Truth
 
-- Project room: `C:\Codex\Wiki Files\Project Rooms\Project Spreadsheet Invoice Entry`
-- Skill source: `C:\Codex\Wiki Files\skills\project-spreadsheet-invoice-entry\SKILL.md`
+- Project room: `C:\Codex\Wiki Files\Project Rooms\Invoice Entry`
+- Skill source: `C:\Codex\Wiki Files\skills\invoice-entry\SKILL.md`
 - Spreadsheet redesign room: `C:\Codex\Wiki Files\Project Rooms\Project Management Spreadsheet Redesign`
 
 Use this skill for operational invoice and approved statement-line insertion into project-management spreadsheets. For scanned invoice, receipt, and Statement Mode records, Doc Scan is the normal intake workflow and should trigger this workflow by direct follow-up message after creating the packet. The project-room heartbeat is a backup monitor for missed packet handoffs. Do not use this skill for scan inspection/OCR, document splitting, statement extraction, invoice-file routing, or spreadsheet template redesign.
@@ -126,6 +126,9 @@ This hold exists because a common invoice usually maps to one project and one ta
 
 For Lowes Statement Mode packets:
 
+- expect item-level rows, not transaction-summary rows, when the Lowe's statement detail shows multiple purchased or returned items under one transaction/reference number,
+- preserve the shared transaction header on each item row, including statement date, transaction/posting dates, receipt/reference number, store number, PO/project clue, and source/filing paths,
+- treat rows marked `Needs Review - Amount Split` or `Needs Review - Allocation` as not ready for final vendor-tab copy until amount allocation is resolved,
 - route each extracted statement item by project/workbook first,
 - insert only statement items that belong to the target project into that project's workbook `Review` table,
 - keep Home/non-project, unclear-project, PO-conflicted, mixed-tab with unclear project, accounting-review, and other non-matched-project lines outside project workbooks until the project/accounting status is resolved,
@@ -163,7 +166,7 @@ Before marking an insertion complete:
 
 After each workbook or workflow iteration, record, refine, or expand reusable lessons in the project room before marking the work complete. Use:
 
-- `C:\Codex\Wiki Files\Project Rooms\Project Spreadsheet Invoice Entry\working\iteration-lessons.md`
+- `C:\Codex\Wiki Files\Project Rooms\Invoice Entry\working\iteration-lessons.md`
 
 Lessons should include failed attempts, workbook-specific hazards, safer next-step constraints, and validation checks that should be repeated in future iterations.
 

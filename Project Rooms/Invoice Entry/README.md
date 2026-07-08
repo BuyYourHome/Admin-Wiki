@@ -1,4 +1,4 @@
-# Project Spreadsheet Invoice Entry
+# Invoice Entry
 
 ## Purpose
 
@@ -30,7 +30,7 @@ Excluded unless Wes explicitly expands scope:
 ## Responsibility Boundary
 
 - `Doc Scan`: scan inspection/OCR, document splitting, invoice/receipt/statement identification, project/property folder routing when applicable, saving/copying filed PDFs into Teams/project folders, scan log entries, Statement Mode extraction, and structured packet creation.
-- `Project Spreadsheet Invoice Entry`: structured packet receipt, exact live project-management workbook resolution, workbook duplicate checks, statement-line allocation, final row placement, invoice or approved statement-line record insertion, workbook formula/format/selector/table/link preservation, totals and downstream-link validation, authorized upload back to Teams/SharePoint, and insertion logging.
+- `Invoice Entry`: structured packet receipt, exact live project-management workbook resolution, workbook duplicate checks, statement-line allocation, final row placement, invoice or approved statement-line record insertion, workbook formula/format/selector/table/link preservation, totals and downstream-link validation, authorized upload back to Teams/SharePoint, and insertion logging.
 - `Project Management Spreadsheet Redesign`: worksheet design, worksheet-mode rules, template changes, and rollout across project workbooks.
 
 ## Current Status
@@ -39,14 +39,14 @@ Excluded unless Wes explicitly expands scope:
 - First supported worksheet group: Vendor Tabs Mode.
 - Statement Mode status: Doc Scan owns Lowes Statement Mode extraction and will send extracted statement data for this room to consume. Invoice Entry holds statement lines until allocation and insertion rules are tested and approved.
 - First workbook for proving the workflow: Outrigger, after Wes approves the Vendor Tabs Mode design.
-- Primary trigger: direct follow-up message to the dedicated Project Spreadsheet Invoice Entry chat with the packet path and summary.
+- Primary trigger: direct follow-up message to the dedicated Invoice Entry chat with the packet path and summary.
 - Backup automation: project-room heartbeat every 60 minutes. The heartbeat inspects this project room for new or changed structured invoice/receipt packets only; it does not scan inboxes, inspect raw scan folders, copy files into Teams, or edit a live workbook unless Wes has clearly authorized the insertion or an approved automation rule exists for that exact insertion type.
 - Automation id: `invoice-entry-to-projects-backup-heartbeat`.
 - Dedicated chat/thread id: `019f3d56-b310-75c0-b084-616bfc1e9f59`.
 
 ## Matching Skill
 
-- Skill source: `C:\Codex\Wiki Files\skills\project-spreadsheet-invoice-entry\SKILL.md`
+- Skill source: `C:\Codex\Wiki Files\skills\invoice-entry\SKILL.md`
 
 ## Required Invoice Packet
 

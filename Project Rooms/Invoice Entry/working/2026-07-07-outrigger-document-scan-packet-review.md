@@ -55,7 +55,7 @@ Completed on 2026-07-07 against:
 
 Rollback copy:
 
-- `C:\Codex\Wiki Files\Project Rooms\Project Spreadsheet Invoice Entry\working\backups\27_Project Management - 7001 Outrigger Dr.before-invoice-entry-20260707-125449.xlsm`
+- `C:\Codex\Wiki Files\Project Rooms\Invoice Entry\working\backups\27_Project Management - 7001 Outrigger Dr.before-invoice-entry-20260707-125449.xlsm`
 
 Actions:
 

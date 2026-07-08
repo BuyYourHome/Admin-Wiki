@@ -72,11 +72,11 @@ Lessons:
 
 ## 2026-07-08 - Statement Mode Handoff Boundary
 
-Context: Doc Scan now has Lowes Statement Mode and will send extracted statement data for Project Spreadsheet Invoice Entry to consume.
+Context: Doc Scan now has Lowes Statement Mode and will send extracted statement data for Invoice Entry to consume.
 
 Lessons:
 
-- Keep statement extraction in Doc Scan and statement allocation in Project Spreadsheet Invoice Entry.
+- Keep statement extraction in Doc Scan and statement allocation in Invoice Entry.
 - Treat extracted statement lines as source data, not approval for insertion.
 - Do not insert Statement Mode lines until the allocation rule for project, worksheet/table, duplicate check, audit trace, and totals validation has been designed, tested, and approved.
 

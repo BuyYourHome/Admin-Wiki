@@ -4,7 +4,7 @@
 
 - Source workflow: Doc Scan - Lowe's Statement Allocation Mode
 - Packet purpose: revised project-first handoff after the prior Lowe's test packet was superseded
-- Prior packet: `C:\Codex\Wiki Files\Project Rooms\Project Spreadsheet Invoice Entry\sources\document-scan-packets\2026-03-17 - Lowes PRO BYH 5997 - Statement Allocation Test.md`
+- Prior packet: `C:\Codex\Wiki Files\Project Rooms\Invoice Entry\sources\document-scan-packets\2026-03-17 - Lowes PRO BYH 5997 - Statement Allocation Test.md`
 - Source statement path: `C:\Users\wesbr\Buy Your Home\Buy Your Home - Office Admin\2026\Credit Cards\Lowe's PRO BYH 5997\26-03-17 .pdf`
 - Filed statement path: `C:\Users\wesbr\Buy Your Home\Buy Your Home - Office Admin\2026\Credit Cards\Lowe's PRO BYH 5997\26-03-17 .pdf`
 - Statement holder: Buy Your Home LLC
@@ -26,9 +26,9 @@
 
 Do not send every Lowe's statement line to the Outrigger workbook just because some lines belong to Outrigger.
 
-Only lines with a high-confidence project/property match should recommend a project workbook. Lines marked Home/non-project, accounting-review, mixed-tab with unclear project, or PO-conflicted should not recommend a project-management workbook until Project Spreadsheet Invoice Entry or Wes resolves the project first.
+Only lines with a high-confidence project/property match should recommend a project workbook. Lines marked Home/non-project, accounting-review, mixed-tab with unclear project, or PO-conflicted should not recommend a project-management workbook until Invoice Entry or Wes resolves the project first.
 
-For high-confidence Outrigger rows, Project Spreadsheet Invoice Entry should place the row in the Outrigger workbook `Review` table first. A filled destination worksheet is only a recommendation for later review-copy into a vendor tab.
+For high-confidence Outrigger rows, Invoice Entry should place the row in the Outrigger workbook `Review` table first. A filled destination worksheet is only a recommendation for later review-copy into a vendor tab.
 
 Doc Scan did not edit any project-management workbook and did not check workbook duplicates.
 
@@ -78,7 +78,7 @@ These lines should not be placed into the Outrigger workbook merely because the 
 
 ## Recommended Handoff
 
-Project Spreadsheet Invoice Entry should consume this revised packet instead of the prior test packet.
+Invoice Entry should consume this revised packet instead of the prior test packet.
 
 Recommended handling:
 
