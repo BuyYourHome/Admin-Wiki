@@ -11,6 +11,7 @@
 | Invoice and Receipt Processing Notes | `C:\Codex\Wiki Files\Invoice and Receipt Processing Notes.md` | authoritative for invoice/receipt routing | Used when scans are invoices or receipts. |
 | Invoice Project List | `C:\Codex\Wiki Files\Invoice Project List.md` | authoritative for project invoice matching | Used to route project invoices to the correct property/project folder. |
 | Property/Credit Cards Sheet | `C:\Users\wesbr\Buy Your Home\Buy Your Home - Property\Credit Cards Sheet.xlsx` | authoritative for current property/mortgage context | Use worksheet `Mortgages` when matching insurance-related scanned documents to current properties. |
+| Document Scan Modes | `Project Rooms\Document Scan\working\document-scan-modes.md` | project-room operating index | Defines the project-room mode names used for scan-category development and cross-mode routing discussion. |
 | Insurance Document Rules | `Project Rooms\Document Scan\working\insurance-document-rules.md` | working rule context | Development notes for insurance-company and mortgage-company property insurance document handling. |
 | Workflow source note | `Project Rooms\Document Scan\sources\workflow-source-note.md` | background | Summary of controlling sources and runtime locations. |
 

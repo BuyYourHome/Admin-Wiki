@@ -14,6 +14,7 @@ This project room holds development notes, source inventory, and review artifact
 - Status: active.
 - Automation id: `document-scanning`.
 - Schedule: every 30 minutes from 10:00 AM through 4:30 PM Eastern.
+- Defined operating modes: `working\document-scan-modes.md`.
 - Canonical skill source: `C:\Codex\Wiki Files\skills\document-scanning\SKILL.md`.
 - Installed skill copy: `C:\Users\wesbr\.codex\skills\document-scanning\SKILL.md`.
 - Live automation config: `C:\Users\wesbr\.codex\automations\document-scanning\automation.toml`.
@@ -23,6 +24,10 @@ This project room holds development notes, source inventory, and review artifact
 - `sources\` - source notes for controlling SOPs, maps, skill source, automation config, and related workflow inputs.
 - `working\` - inventories, conflicts, open questions, route audits, and proposed changes.
 - `outputs\` - review-ready specs, runbooks, handoffs, or finalized drafts.
+
+## Operating Modes
+
+The project room's defined scan modes are maintained in [[document-scan-modes]]. Treat those modes as the project-room index for scan-category development, while the root SOP/spec/folder-map and canonical skill remain authoritative for the detailed routing rules.
 
 ## Authoritative Sources
 
