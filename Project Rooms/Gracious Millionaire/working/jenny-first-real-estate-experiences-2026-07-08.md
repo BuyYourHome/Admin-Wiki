@@ -53,3 +53,25 @@ Sent Items verification:
 Future decision:
 
 - Decide later whether to insert a Jenny-perspective chapter into the current manuscript now or wait for Jenny's promised continuation about marriage number two.
+
+
+## Manuscript Chapter Insertion
+
+Wes later directed Jean to create manuscript chapters from Jenny's input, insert them into the whole book while keeping Jenny's introduction and chapters whole and separate from Wes's, and send the outline to Jenny only.
+
+Outputs created:
+
+- `outputs/Jenny First Real Estate Experiences - Manuscript Chapters v1.md`
+- `outputs/Gracious Millionaire - Manuscript Draft v21 - Jenny First Real Estate Experiences.md`
+- `outputs/Jenny First Real Estate Experiences - Book Outline v2.md`
+- `outputs/Jenny First Real Estate Experiences - Clickable Book Outline v2.html`
+
+Placement: after `Always God Is There` and before `Failures in Real Estate`.
+
+Clickable outline send verification:
+
+- Subject: `Gracious Millionaire - Clickable Jenny First Real Estate Experiences Outline v2`
+- Sent/received timestamp shown by connector: 2026-07-08T19:30:27Z
+- Sent message id: `AQMkADZkMGMwNDI3LWU5ZjctNDgzMC1iMjdkLTY0NmRiN2IwNmIyZgBGAAADKGOvWJYjX0aEKaRpd0MYQQcAVSXargQY20aF7RLCkro4ggAAAgEJAAAAVSXargQY20aF7RLCkro4ggACbe9zQgAAAA==`
+- Recipients: Jenny only; no CC or BCC
+- Attachment present: yes
