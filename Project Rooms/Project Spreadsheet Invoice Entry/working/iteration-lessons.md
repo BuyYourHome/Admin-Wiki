@@ -87,8 +87,9 @@ Context: Processed the Lowes PRO BYH 5997 statement closing 2026-03-17 as the fi
 Lessons:
 
 - For credit-card statement line items, treat the statement amount as the transaction total unless the extracted packet separates pre-tax subtotal and tax. Do not apply the worksheet tax formula again to statement totals.
-- Lowes Statement Mode now uses a Review-first rule: insert every extracted Lowes statement line into `Review` before any vendor-tab copy.
-- Fill `Review[Destination Worksheet]` only when Invoice Entry has confidence in the destination tab. Leave it blank for Home/non-project, mixed-tab, PO-conflict, accounting-only, and other uncertain lines.
+- Lowes Statement Mode uses project-first routing, then Review-first handling inside the matched project workbook. Do not insert all lines from a multi-project statement into the current project's `Review` table.
+- Fill `Review[Destination Worksheet]` only when Invoice Entry has confidence in the destination tab for a line that already belongs to that project. Leave it blank for same-project vendor-tab uncertainty.
+- Keep Home/non-project, unclear-project, mixed-tab/project-unclear, PO-conflicted, accounting-only, and other non-matched-project lines outside project workbooks until the project/accounting status is resolved.
 - A filled `Destination Worksheet` is a routing recommendation and does not mean the line has already been inserted into the destination vendor table.
 - Record the statement PDF path as source evidence for every inserted or review-routed statement line.
 - When writing Excel tables through automation, restore from rollback after any failed COM write attempt before retrying; partial unsaved attempts should not be carried forward.

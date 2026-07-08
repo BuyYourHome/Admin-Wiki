@@ -122,14 +122,16 @@ If a Statement Mode packet is received:
 
 This hold exists because a common invoice usually maps to one project and one tab, while a statement can contain line items for multiple projects and multiple tabs inside each project.
 
-## Lowes Statement Mode Review-First Rule
+## Lowes Statement Mode Project-First Review Rule
 
 For Lowes Statement Mode packets:
 
-- insert every extracted statement item into the workbook `Review` table first,
+- route each extracted statement item by project/workbook first,
+- insert only statement items that belong to the target project into that project's workbook `Review` table,
+- keep Home/non-project, unclear-project, PO-conflicted, mixed-tab with unclear project, accounting-review, and other non-matched-project lines outside project workbooks until the project/accounting status is resolved,
 - do not insert Lowes statement items directly into vendor tabs during the initial packet-consumption pass,
-- fill `Review[Destination Worksheet]` only when the destination tab is clear,
-- leave `Review[Destination Worksheet]` blank when routing is unclear, non-project/Home, mixed-tab, PO-conflicted, accounting-only, or otherwise uncertain,
+- fill `Review[Destination Worksheet]` only when the destination tab is clear for a line already matched to that project,
+- leave `Review[Destination Worksheet]` blank when the line belongs to the project but the vendor tab is unclear,
 - use the review/status fields to explain what is needed before the line can be copied,
 - treat a filled `Destination Worksheet` as a routing recommendation, not proof that the row has already been inserted into the destination vendor table.
 

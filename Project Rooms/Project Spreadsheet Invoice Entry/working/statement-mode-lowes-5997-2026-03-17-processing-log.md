@@ -2,7 +2,8 @@
 
 ## Source
 
-- Packet: `C:\Codex\Wiki Files\Project Rooms\Project Spreadsheet Invoice Entry\sources\document-scan-packets\2026-03-17 - Lowes PRO BYH 5997 - Statement Allocation Test.md`
+- Superseded packet: `C:\Codex\Wiki Files\Project Rooms\Project Spreadsheet Invoice Entry\sources\document-scan-packets\2026-03-17 - Lowes PRO BYH 5997 - Statement Allocation Test.md`
+- Revised project-first packet: `C:\Codex\Wiki Files\Project Rooms\Project Spreadsheet Invoice Entry\sources\document-scan-packets\2026-03-17 - Lowes PRO BYH 5997 - Revised Project-First Packet.md`
 - Statement PDF: `C:\Users\wesbr\Buy Your Home\Buy Your Home - Office Admin\2026\Credit Cards\Lowe's PRO BYH 5997\26-03-17 .pdf`
 - Target workbook: `Property/27_Project Management - 7001 Outrigger Dr.xlsm`
 - Work copy: `C:\Codex\Wiki Files\Project Rooms\Project Spreadsheet Invoice Entry\working\statement-mode\lowes-5997-2026-03-17\27_Project Management - 7001 Outrigger Dr.lowes-5997-2026-03-17.20260708-140429.xlsm`
@@ -21,6 +22,30 @@ On 2026-07-08, Wes decided not to keep statement lines that do not belong to Out
 Current state: waiting for Doc Scan to provide revised line-item Statement Mode consumables that support project-first routing before Invoice Entry reprocesses this statement.
 
 Final revert source: `C:\Codex\Wiki Files\Project Rooms\Project Spreadsheet Invoice Entry\working\backups\27_Project Management - 7001 Outrigger Dr.before-lowes-5997-2026-03-17-20260708-140429.xlsm`
+
+## Revised Project-First Packet Processing
+
+On 2026-07-08, Doc Scan delivered a revised project-first packet. Invoice Entry consumed that revised packet and placed only the high-confidence Outrigger lines into the Outrigger workbook `Review` table. No Lowes statement line was inserted directly into a vendor tab.
+
+Work copy: `C:\Codex\Wiki Files\Project Rooms\Project Spreadsheet Invoice Entry\working\statement-mode\lowes-5997-2026-03-17-project-first\27_Project Management - 7001 Outrigger Dr.lowes-project-first.20260708-150140.xlsm`
+
+Rows added to `Review`:
+
+| Statement line | Ref | Amount | Destination Worksheet | Status |
+| --- | --- | ---: | --- | --- |
+| 1 | `83160` | 69.18 | Plumbing Fixtures | Ready for review-copy to destination |
+| 2 | `91816` | 521.61 | Plumbing Fixtures | Ready for review-copy to destination |
+| 3 | `74298` | 53.66 |  | Needs Review - Vendor Tab |
+| 5 | `76164` | -13.49 | Plumbing Fixtures | Ready for review-copy to destination |
+
+Rows intentionally left out of Outrigger:
+
+| Statement line | Ref | Amount | Reason |
+| --- | --- | ---: | --- |
+| 4 | `94293` | 41.73 | Home/non-project |
+| 6 | `84314` | -145.25 | Mixed-tab credit with unclear project proof |
+| 7 | `94895` | 6.99 | PO conflict; printed PO `na` with handwritten `7001` uncertainty |
+| 8 | Interest | 66.27 | Accounting review |
 
 ## Duplicate Check
 
@@ -83,3 +108,16 @@ After reprocessing, all eight extracted Lowes statement rows were added to `Revi
 - `Gnatt Chart!G10`: `982.744975`
 - Workbook links: `0`
 - SharePoint upload completed: 2026-07-08 18:48 UTC, size `805516`
+
+## Revised Project-First Validation
+
+- Duplicate check before write found no existing workbook hits for refs `83160`, `91816`, `74298`, `76164`, `94293`, `84314`, or `94895`.
+- After write, refs `83160`, `91816`, `74298`, and `76164` appeared only in `Review`.
+- Refs `94293`, `84314`, and `94895` were not found in the workbook.
+- `Review` table rows after update: `5`
+- `Plumbing Fixtures!L14`: `982.744975`
+- `Plumbing Fixtures!L16`: `982.744975`
+- `Gnatt Chart!G10`: `982.744975`
+- Workbook links: `0`
+- External link package parts: `0`
+- SharePoint upload completed: 2026-07-08 19:08 UTC, size `805387`
