@@ -219,27 +219,39 @@ When Boss asks for a credit card statement report, or when a scan run files cred
 
 When Credit Card Statement Mode identifies and files a Lowe's statement, preserve all normal Lowe's statement handling first: inspect/OCR, split if needed, file the statement in the approved Lowe's credit-card statement folder, log the routing, include it in the credit-card statement report, and flag normal statement review items.
 
-After normal statement filing, run Lowe's Statement Allocation Mode as an additive extraction workflow. Doc Scan extracts line-level source data for Project Spreadsheet Invoice Entry. Doc Scan must not edit any project-management workbook and must not decide final spreadsheet insertion.
+After normal statement filing, run Lowe's Statement Allocation Mode as an additive extraction workflow. Doc Scan extracts item-level source data for Invoice Entry. Doc Scan must not edit any project-management workbook and must not decide final spreadsheet insertion.
 
 Do not treat the entire Lowe's statement as one invoice for one project. A single Lowe's statement may contain charges, returns, credits, fees, or interest for multiple projects and non-project/Home items.
 
-For each eligible purchase, charge, return, or credit line, capture one packet row or record with:
+Do not treat each statement transaction or reference number as one invoice-entry row when the statement detail shows multiple purchased or returned items. A single Lowe's transaction/reference may produce multiple packet rows. Each packet row should represent one distinct purchasable item, returned item, delivery/shipping charge, fee, or credit component when the detail is visible.
+
+Preserve the shared transaction header on every item row:
 
 - Lowe's account label and account last 4.
 - Statement date and statement period.
 - Transaction date and posting date, when shown.
-- Transaction description.
 - Receipt number, invoice/order/reference number, or memo, when shown.
+- Store number, if shown.
 - PO value or other project/property clue shown on the statement.
-- Amount, including whether it is a charge, return, credit, fee, or interest.
 - Source scan path.
 - Filed statement PDF path.
+
+For each item row, capture:
+
+- Item description.
+- Item amount, if shown or reasonably separable.
+- Quantity, if shown.
+- Item number/SKU, if shown.
+- Charge/credit type.
 - Likely project/property, if the PO or other evidence supports it.
 - Recommended project-management workbook, if the project/property is high-confidence.
 - Recommended worksheet/vendor tab, if the item category is high-confidence.
 - Confidence/status.
-- Duplicate-risk notes, if any.
-- Missing or uncertain fields.
+- Notes explaining any split, uncertainty, duplicate risk, missing fields, or amount allocation issue.
+
+If the transaction total is visible but item-level amounts are not separable, still split visible items into separate packet rows when useful, but mark amount fields as `Needs Review - Amount Split` and explain that the transaction total must be allocated before Invoice Entry can insert final rows.
+
+Delivery/shipping should be its own row when it is separately shown or materially tied to a transaction. If delivery cannot be assigned to one item confidently, mark it `Needs Review - Allocation`.
 
 Use the PO value as a strong project/property clue when present, but do not guess if the PO is missing, ambiguous, conflicts with other line details, or appears to belong to another project. Evaluate project/property routing independently for each line item.
 
@@ -253,9 +265,9 @@ For mixed-tab credits or returns, mark the line `Needs Review - Mixed Tab` unles
 
 For fees, interest, finance charges, late fees, or payments, mark the line as accounting-review unless Wes has approved a specific project-spreadsheet handling rule. Do not recommend a vendor tab by default.
 
-The packet handed to Project Spreadsheet Invoice Entry should be line-item based. Each line item should carry the shared statement header data plus its own transaction data and routing confidence.
+The packet handed to Invoice Entry should be item-row based. Each item row should carry the shared statement and transaction header data plus its own item data and routing confidence.
 
-Project Spreadsheet Invoice Entry owns:
+Invoice Entry owns:
 
 - resolving the exact live project-management workbook,
 - deciding whether a line belongs in that workbook,
@@ -266,7 +278,7 @@ Project Spreadsheet Invoice Entry owns:
 - validating totals and workbook links,
 - uploading the verified workbook back to Teams/SharePoint when authorized.
 
-Default handoff trigger: send a direct follow-up message to the dedicated Project Spreadsheet Invoice Entry chat with the packet path and a short summary of line counts by status, including high-confidence project lines, unclear project lines, non-project/Home lines, mixed-tab lines, and accounting-review lines.
+Default handoff trigger: send a direct follow-up message to the dedicated Invoice Entry chat with the packet path and a short summary of line counts by status, including high-confidence project lines, unclear project lines, non-project/Home lines, mixed-tab lines, and accounting-review lines.
 
 ### Invoice And Receipt Reports
 
@@ -313,17 +325,17 @@ For each scanned invoice or receipt:
 
 Do not create new vendor folders or choose between similar vendor names unless Boss gives a later rule or specific approval.
 
-### Project Spreadsheet Invoice Entry Handoff
+### Invoice Entry Handoff
 
 When Doc Scan processes a project-specific invoice or receipt, finish the scan workflow first: inspect/OCR the scan, identify the document as an invoice or receipt, match it to the correct project/property when confidence is high, save or copy the invoice file into the correct Teams project folder, and write the scan routing log.
 
-Do not edit the project-management spreadsheet directly. After filing a high-confidence project invoice or receipt, create a structured invoice packet and hand it off to Project Spreadsheet Invoice Entry.
+Do not edit the project-management spreadsheet directly. After filing a high-confidence project invoice or receipt, create a structured invoice packet and hand it off to Invoice Entry.
 
-Default handoff trigger: send a direct follow-up message to the dedicated Project Spreadsheet Invoice Entry chat with the packet path and packet summary. The Project Spreadsheet Invoice Entry heartbeat is a backup monitor that periodically checks the packet folder for handoffs that were not delivered by direct message.
+Default handoff trigger: send a direct follow-up message to the dedicated Invoice Entry chat with the packet path and packet summary. The Invoice Entry heartbeat is a backup monitor that periodically checks the packet folder for handoffs that were not delivered by direct message.
 
-Project Spreadsheet Invoice Entry project room:
+Invoice Entry project room:
 
-`C:\Codex\Wiki Files\Project Rooms\Project Spreadsheet Invoice Entry`
+`C:\Codex\Wiki Files\Project Rooms\Invoice Entry`
 
 Dedicated chat/thread:
 
@@ -331,7 +343,7 @@ Dedicated chat/thread:
 
 Doc Scan owns scan inspection/OCR, document splitting, invoice/receipt identification, project/property folder routing, saving or copying the invoice file, scan log entries, and invoice packet creation.
 
-Project Spreadsheet Invoice Entry owns selecting the exact live project-management workbook, checking workbook records for duplicates, deciding final spreadsheet row placement, inserting the invoice record, preserving workbook formulas/formatting/selectors, validating totals and downstream links, and uploading the verified workbook back to Teams/SharePoint.
+Invoice Entry owns selecting the exact live project-management workbook, checking workbook records for duplicates, deciding final spreadsheet row placement, inserting the invoice record, preserving workbook formulas/formatting/selectors, validating totals and downstream links, and uploading the verified workbook back to Teams/SharePoint.
 
 Include these fields in each scanned-invoice handoff packet:
 
