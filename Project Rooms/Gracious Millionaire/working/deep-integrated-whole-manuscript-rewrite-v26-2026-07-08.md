@@ -60,6 +60,18 @@ Wes reported that the v26 HTML outline would not scroll down to chapter links be
 - Corrected Sent Items verified: 2026-07-08T21:38:07-04:00
 - Corrected sent message id: `AQMkADZkMGMwNDI3LWU5ZjctNDgzMC1iMjdkLTY0NmRiN2IwNmIyZgBGAAADKGOvWJYjX0aEKaRpd0MYQQcAVSXargQY20aF7RLCkro4ggAAAgEJAAAAVSXargQY20aF7RLCkro4ggACbe9zSQAAAA==`
 
+## Chrome Display Correction
+
+Wes clarified that the scrolling issue was occurring in Chrome on his computer. The v26 builder was updated again so the clickable outline uses normal page scrolling rather than a sticky inner-scroll panel. Regenerated the v26 clickable HTML output and current clickable packet; manuscript content was unchanged.
+
+- Chrome-friendly corrected sender: `OfficeAssist@BuyYourHomeLLC.com`
+- Chrome-friendly corrected recipient: `Jenny@BuyYourHomeLLC.com`
+- Chrome-friendly corrected CC: `WesWill@BuyYourHomeLLC.com`
+- Chrome-friendly corrected subject: `Chrome-friendly corrected Gracious Millionaire v26 packet - clickable outline`
+- Chrome-friendly corrected attachment: `outputs/Gracious Millionaire - Deep Integrated Whole Manuscript Rewrite v26 - Clickable GPT-5 Generated.html`
+- Chrome-friendly corrected Sent Items verified: 2026-07-08T21:44:41-04:00
+- Chrome-friendly corrected sent message id: `AQMkADZkMGMwNDI3LWU5ZjctNDgzMC1iMjdkLTY0NmRiN2IwNmIyZgBGAAADKGOvWJYjX0aEKaRpd0MYQQcAVSXargQY20aF7RLCkro4ggAAAgEJAAAAVSXargQY20aF7RLCkro4ggACbe9zSgAAAA==`
+
 ## Open Caveat
 
 This is an integrated manuscript rewrite package from the current project-room manuscript and notes. `working/missing-context.md` still records source gaps, including Jenny's future Marriage Number Two continuation and decisions about how much raw devotional style versus polished manuscript voice the final book should preserve.
