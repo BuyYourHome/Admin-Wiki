@@ -7,7 +7,7 @@
 | Doc Scan Folder Map | `C:\Codex\Wiki Files\Document Scanning Folder Map.md` | authoritative | Routing authority for scanned document destinations. |
 | Doc Scan skill source | `C:\Codex\Wiki Files\skills\doc-scan\SKILL.md` | authoritative | Canonical wiki-managed skill source. |
 | Installed Doc Scan skill copy | `C:\Users\wesbr\.codex\skills\doc-scan\SKILL.md` | installed copy | Runtime copy only; update from canonical skill source when ready. |
-| Live automation config | `C:\Users\wesbr\.codex\automations\document-scanning\automation.toml` | expected local config; not present in 2026-06-15 audit | Wiki and registry point to this path for live schedule, prompt, status, cwd, and execution details, but the file was not found during the automation audit. |
+| Live automation config | `C:\Users\wesbr\.codex\automations\doc-scan\automation.toml` | active local heartbeat config | Recreated on 2026-07-08 as app automation id `doc-scan`; runs every 15 minutes on weekdays from 10:00 AM through 4:45 PM Eastern. |
 | Invoice and Receipt Processing Notes | `C:\Codex\Wiki Files\Invoice and Receipt Processing Notes.md` | authoritative for invoice/receipt routing | Used when scans are invoices or receipts. |
 | Invoice Project List | `C:\Codex\Wiki Files\Invoice Project List.md` | authoritative for project invoice matching | Used to route project invoices to the correct property/project folder. |
 | Property/Credit Cards Sheet | `C:\Users\wesbr\Buy Your Home\Buy Your Home - Property\Credit Cards Sheet.xlsx` | authoritative for current property/mortgage context | Use worksheet `Mortgages` when matching insurance-related scanned documents to current properties. |
@@ -20,4 +20,4 @@
 - Keep raw source paths in this inventory.
 - Do not copy or edit the installed skill copy directly unless troubleshooting runtime behavior.
 - If scan routing rules change, update the folder map, skill spec, skill source, and registry in the same work group.
-- Before changing the `document-scanning` automation, verify where the app-managed automation is actually stored or recreate it intentionally.
+- Before changing the `doc-scan` automation, verify the app-managed automation and local `automation.toml` agree, then update the registry and project-room notes in the same change.

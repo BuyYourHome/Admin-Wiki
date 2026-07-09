@@ -12,12 +12,12 @@ This project room holds development notes, source inventory, and review artifact
 ## Current Status
 
 - Status: active.
-- Automation id: `document-scanning`.
-- Schedule: every 30 minutes from 10:00 AM through 4:30 PM Eastern.
+- Automation id: `doc-scan`.
+- Schedule: every 15 minutes on weekdays from 10:00 AM through 4:45 PM Eastern.
 - Defined operating modes: `working\doc-scan-modes.md`.
 - Canonical skill source: `C:\Codex\Wiki Files\skills\doc-scan\SKILL.md`.
 - Installed skill copy: `C:\Users\wesbr\.codex\skills\doc-scan\SKILL.md`.
-- Live automation config: `C:\Users\wesbr\.codex\automations\document-scanning\automation.toml`.
+- Live automation config: `C:\Users\wesbr\.codex\automations\doc-scan\automation.toml`.
 
 ## Room Layout
 
@@ -37,7 +37,7 @@ The project room's defined scan modes are maintained in [[doc-scan-modes]]. Trea
 - `C:\Codex\Wiki Files\skills\doc-scan\SKILL.md`
 - `C:\Codex\Wiki Files\Invoice and Receipt Processing Notes.md`
 - `C:\Codex\Wiki Files\Invoice Project List.md`
-- `C:\Users\wesbr\.codex\automations\document-scanning\automation.toml`
+- `C:\Users\wesbr\.codex\automations\doc-scan\automation.toml`
 
 ## Development Boundary
 

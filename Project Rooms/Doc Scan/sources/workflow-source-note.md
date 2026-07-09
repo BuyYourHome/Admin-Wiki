@@ -23,6 +23,6 @@ Installed runtime copy:
 
 Live automation config:
 
-- `C:\Users\wesbr\.codex\automations\document-scanning\automation.toml`
+- `C:\Users\wesbr\.codex\automations\doc-scan\automation.toml`
 
 Use the root wiki SOP/spec/map as the authoritative operating documents unless Wes later asks to physically move those files into this project room.

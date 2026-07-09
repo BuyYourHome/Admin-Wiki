@@ -10,7 +10,7 @@ Use this handoff when resuming Doc Scan development in a dedicated chat.
 - Skill spec: `C:\Codex\Wiki Files\Document Scanning Skill Spec.md`
 - Folder map: `C:\Codex\Wiki Files\Document Scanning Folder Map.md`
 - Skill source: `C:\Codex\Wiki Files\skills\doc-scan\SKILL.md`
-- Live automation config: `C:\Users\wesbr\.codex\automations\document-scanning\automation.toml`
+- Live automation config: `C:\Users\wesbr\.codex\automations\doc-scan\automation.toml`
 
 ## Preserve
 

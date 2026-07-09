@@ -28,4 +28,6 @@ Sources checked:
 
 ## Current Decision
 
-Do not edit or recreate the live automation yet. The next safe step is to verify the app-managed automation details, then update the registry/project-room notes if the actual config location differs from the wiki path.
+Historical 2026-06-15 decision: do not edit or recreate the live automation until the app-managed automation details are verified.
+
+Current 2026-07-08 status: Wes directed the old missing `document-scanning` automation to be replaced. The app reported `document-scanning` did not exist, and a new active heartbeat automation was created with id `doc-scan`, local config `C:\Users\wesbr\.codex\automations\doc-scan\automation.toml`, and schedule every 15 minutes on weekdays from 10:00 AM through 4:45 PM Eastern.

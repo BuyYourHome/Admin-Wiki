@@ -16,7 +16,7 @@ Use [[Agent Unit Standard]] for the standard package behind an agent-like operat
 | Gracious Millionaire Project Room Heartbeat | Project-room heartbeat automation | Active | Every 15 minutes from 8:00 AM-11:45 PM Eastern; project-room Markdown intake processing only | `Project Rooms\Gracious Millionaire\README.md`; `Project Rooms\Gracious Millionaire\working\intake-heartbeat-rules.md`; `C:\Users\wesbr\.codex\automations\gracious-millionaire-project-room-heartbeat\automation.toml` |
 | Email Summary | Wiki-managed skill plus heartbeat automation plus project room | Active | Runs every day; starts at 7:45 AM Eastern, then every 15 minutes through 11:00 PM Eastern; Boss and Jenny summaries run once daily at/after 8:00 AM, and instruction monitoring checks OfficeAssist email | `skills\email-summary\SKILL.md`; `Project Rooms\Email Summary\README.md`; `C:\Users\wesbr\.codex\automations\officeassist-morning-email-summary-and-instruction-monitor\automation.toml` |
 | Email Delivery | Wiki-managed support skill | Active | Called by email-capable Admin workflows | `skills\email-delivery\SKILL.md` |
-| Doc Scan | Wiki-managed skill plus heartbeat automation plus project room | Active | Every 30 minutes from 10:00 AM through 4:30 PM Eastern | `skills\doc-scan\SKILL.md`; `Project Rooms\Doc Scan\README.md`; `C:\Users\wesbr\.codex\skills\doc-scan\SKILL.md`; app automation id `document-scanning` |
+| Doc Scan | Wiki-managed skill plus heartbeat automation plus project room | Active | Every 15 minutes on weekdays from 10:00 AM through 4:45 PM Eastern | `skills\doc-scan\SKILL.md`; `Project Rooms\Doc Scan\README.md`; `C:\Users\wesbr\.codex\skills\doc-scan\SKILL.md`; app automation id `doc-scan` |
 | Invoice Entry | Wiki-managed skill plus project room plus backup heartbeat | Active | Hourly backup packet check; direct Doc Scan handoff remains primary trigger | `skills\invoice-entry\SKILL.md`; `Project Rooms\Invoice Entry\README.md`; `C:\Users\wesbr\.codex\automations\invoice-entry-to-projects-backup-heartbeat\automation.toml` |
 | Codex Skill Source Control | Wiki-managed skill system | Active | On demand after skill changes or wiki pulls | `Codex Skill Source Rule.md`; `tools\sync-codex-skills.ps1`; `skills\` |
 | Admin Request Wrapup | Wiki-managed skill | Active | At the end of Admin wiki requests | `skills\admin-request-wrapup\SKILL.md`; `AGENTS.md` |
@@ -299,11 +299,11 @@ Status: active.
 
 Automation id:
 
-- `document-scanning`
+- `doc-scan`
 
 Schedule:
 
-- Every 30 minutes from 10:00 AM through 4:30 PM Eastern.
+- Every 15 minutes on weekdays from 10:00 AM through 4:45 PM Eastern.
 
 Purpose:
 
@@ -320,7 +320,7 @@ Defined in:
 - Canonical skill source: `C:\Codex\Wiki Files\skills\doc-scan\SKILL.md`
 - Project room: `C:\Codex\Wiki Files\Project Rooms\Doc Scan\README.md`
 - Installed local skill copy: `C:\Users\wesbr\.codex\skills\doc-scan\SKILL.md`
-- Automation: `C:\Users\wesbr\.codex\automations\document-scanning\automation.toml`
+- Automation: `C:\Users\wesbr\.codex\automations\doc-scan\automation.toml`
 - Wiki support:
   - `Document Scanning SOP.md`
   - `Document Scanning Skill Spec.md`
@@ -727,7 +727,7 @@ C:\Users\wesbr\.codex\automations\
 Current automation folders:
 
 ```text
-document-scanning\
+doc-scan\
 gracious-millionaire-project-room-heartbeat\
 investigate-computer-daily-check\
 morning-weswill-email-summary\
