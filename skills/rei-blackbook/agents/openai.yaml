@@ -1,0 +1,4 @@
+interface:
+  display_name: "REI BlackBook"
+  short_description: "Develop REI BlackBook workflows"
+  default_prompt: "Use $rei-blackbook to plan, build, or update Buy Your Home REI BlackBook workflows."

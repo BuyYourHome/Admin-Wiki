@@ -4,7 +4,7 @@ Purpose: develop and maintain Buy Your Home workflows, notes, implementation pla
 
 Status: started 2026-07-09.
 
-Matching skill: `C:\Codex\Wiki Files\skills\rei-blackbook-website\SKILL.md`.
+Matching skill: `C:\Codex\Wiki Files\skills\rei-blackbook\SKILL.md`.
 
 Owner intent:
 

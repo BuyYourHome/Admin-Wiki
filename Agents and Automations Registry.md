@@ -37,7 +37,7 @@ Use [[Agent Unit Standard]] for the standard package behind an agent-like operat
 | Property Trade Evaluation | Wiki-managed skill plus project room | Active | On demand | `skills\property-trade-evaluation\SKILL.md`; `Project Rooms\Property Trade Evaluation\README.md` |
 | Wes's Voice | Wiki-managed skill plus project room | Planning | On demand | `skills\wes-voice\SKILL.md`; `Project Rooms\Wes's Voice\README.md` |
 | New Project | Wiki-managed skill plus project room | Draft | On demand | `skills\new-project\SKILL.md`; `Project Rooms\New Project\README.md` |
-| REI BlackBook Website | Wiki-managed skill plus project room | Draft | On demand | `skills\rei-blackbook-website\SKILL.md`; `Project Rooms\REI BlackBook Website\README.md` |
+| REI BlackBook | Wiki-managed skill plus project room | Draft | On demand | `skills\rei-blackbook\SKILL.md`; `Project Rooms\REI BlackBook\README.md` |
 | Investigate Computer | Wiki-managed skill plus project room plus heartbeat automation | Active | Daily at 6:00 AM Eastern; email Wes only when an issue is detected | `skills\investigate-computer\SKILL.md`; `Project Rooms\Investigate Computer\README.md`; app automation id `investigate-computer-daily-check` |
 | Jenny Daily Email Summary | Behavior inside Email Summary heartbeat | Active | Runs once daily at/after 8:00 AM Eastern with the Email Summary heartbeat; emails Jenny from OfficeAssist and verifies Sent Items | `skills\email-summary\SKILL.md`; `Email Summary` prompt notes |
 
@@ -611,7 +611,7 @@ Important rules:
 - If it is unclear whether a `Profit` sheet value is template-specific or reusable, record it for review instead of deleting it.
 - Do not use New Project when an existing specialized project room is the better fit.
 
-## REI BlackBook Website
+## REI BlackBook
 
 Type: wiki-managed skill plus project room.
 
@@ -625,8 +625,8 @@ Purpose:
 
 Defined in:
 
-- `C:\Codex\Wiki Files\skills\rei-blackbook-website\SKILL.md`
-- `C:\Codex\Wiki Files\Project Rooms\REI BlackBook Website\README.md`
+- `C:\Codex\Wiki Files\skills\rei-blackbook\SKILL.md`
+- `C:\Codex\Wiki Files\Project Rooms\REI BlackBook\README.md`
 
 Important rules:
 

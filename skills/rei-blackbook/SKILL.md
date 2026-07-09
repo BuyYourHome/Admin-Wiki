@@ -1,16 +1,16 @@
 ---
-name: rei-blackbook-website
+name: rei-blackbook
 description: Use for Buy Your Home REI BlackBook work, including website creation or updates inside REI BlackBook WebTools at https://my.reiblackbook.com/webtools/sites, project-room planning, site content inventory, page copy drafting, asset tracking, lead/contact or text-workflow notes, browser-based implementation, QA notes, and handoff of decisions needed before publishing or changing live REI BlackBook workflows.
 ---
 
-# REI BlackBook Website
+# REI BlackBook
 
 ## Source Of Truth
 
-- Project room: `C:\Codex\Wiki Files\Project Rooms\REI BlackBook Website`
-- Skill source: `C:\Codex\Wiki Files\skills\rei-blackbook-website\SKILL.md`
+- Project room: `C:\Codex\Wiki Files\Project Rooms\REI BlackBook`
+- Skill source: `C:\Codex\Wiki Files\skills\rei-blackbook\SKILL.md`
 - Current primary REI BlackBook URL: `https://my.reiblackbook.com/webtools/sites`
-- Output drafts and final handoffs: `C:\Codex\Wiki Files\Project Rooms\REI BlackBook Website\outputs`
+- Output drafts and final handoffs: `C:\Codex\Wiki Files\Project Rooms\REI BlackBook\outputs`
 
 ## Startup
 
