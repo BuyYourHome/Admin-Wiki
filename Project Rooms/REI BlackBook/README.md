@@ -38,7 +38,7 @@ GM Mode:
 GM scheduled iteration:
 
 - Automation name: `gm-mode-site-iteration`.
-- Cadence: weekly, Monday morning, plus manual on-demand GM Mode runs.
+- Cadence: every 2 hours, plus manual on-demand GM Mode runs.
 - Default behavior: audit and propose only. The automation may inspect the public site, refresh the local element map/backlog, draft suggested copy, record QA notes, and surface recommendations.
 - No live website edits, publishing, form/workflow activation, SMS/email campaign changes, personal-photo uploads, public street-address changes, domain/DNS changes, purchases, or Git pushes without Wes's explicit approval.
 - Routine quiet run: if no meaningful public-site changes or new recommendations are found, keep the run brief and record only a small project-room note if needed.

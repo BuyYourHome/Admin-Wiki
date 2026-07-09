@@ -38,7 +38,7 @@ Use [[Agent Unit Standard]] for the standard package behind an agent-like operat
 | Wes's Voice | Wiki-managed skill plus project room | Planning | On demand | `skills\wes-voice\SKILL.md`; `Project Rooms\Wes's Voice\README.md` |
 | New Project | Wiki-managed skill plus project room | Draft | On demand | `skills\new-project\SKILL.md`; `Project Rooms\New Project\README.md` |
 | REI BlackBook | Wiki-managed skill plus project room | Draft | On demand | `skills\rei-blackbook\SKILL.md`; `Project Rooms\REI BlackBook\README.md` |
-| GM Mode Site Iteration | GM Mode heartbeat automation plus REI BlackBook project room | Active | Weekly Monday morning; audit-and-propose only | `skills\rei-blackbook\SKILL.md`; `Project Rooms\REI BlackBook\README.md`; automation id `gm-mode-site-iteration` |
+| GM Mode Site Iteration | GM Mode heartbeat automation plus REI BlackBook project room | Active | Every 2 hours; audit-and-propose only | `skills\rei-blackbook\SKILL.md`; `Project Rooms\REI BlackBook\README.md`; automation id `gm-mode-site-iteration` |
 | Investigate Computer | Wiki-managed skill plus project room plus heartbeat automation | Active | Daily at 6:00 AM Eastern; email Wes only when an issue is detected | `skills\investigate-computer\SKILL.md`; `Project Rooms\Investigate Computer\README.md`; app automation id `investigate-computer-daily-check` |
 | Jenny Daily Email Summary | Behavior inside Email Summary heartbeat | Active | Runs once daily at/after 8:00 AM Eastern with the Email Summary heartbeat; emails Jenny from OfficeAssist and verifies Sent Items | `skills\email-summary\SKILL.md`; `Email Summary` prompt notes |
 
@@ -647,7 +647,7 @@ Automation id:
 
 Schedule:
 
-- Weekly Monday morning.
+- Every 2 hours.
 
 Purpose:
 

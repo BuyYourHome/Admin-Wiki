@@ -82,7 +82,7 @@ GM Mode rules:
 GM scheduled iteration:
 
 - Automation name: `gm-mode-site-iteration`.
-- Cadence: weekly, Monday morning, unless Wes changes the schedule.
+- Cadence: every 2 hours, unless Wes changes the schedule.
 - Default action is audit and propose only.
 - On each scheduled run, inspect the public Gracious Millionaire site, refresh or supersede the local element map, update the improvement backlog or recommendations, draft safe replacement copy when useful, and record QA findings.
 - Keep routine quiet runs short. Notify Wes when there are meaningful findings, blockers, broken pages, generic/off-topic content, public privacy risk, workflow/form risk, SSL/domain issues, or live-edit recommendations.
