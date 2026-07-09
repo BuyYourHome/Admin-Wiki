@@ -18,6 +18,10 @@ Folder map:
 - `working\` - source inventory, conflicts, missing context, implementation notes, browser-QA logs, workflow maps, and access notes that do not contain secrets.
 - `outputs\` - review-ready drafts, launch checklists, workflow handoffs, QA reports, and final deliverables.
 
+Key working notes:
+
+- `working\tool-map.md` - first-pass REI BlackBook navigation, WebTools Sites, existing site IDs, BYH control-panel map, and browser safety rules.
+
 Current scope:
 
 - Build the repeatable room and skill package for REI BlackBook work.

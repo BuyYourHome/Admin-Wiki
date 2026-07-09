@@ -55,6 +55,7 @@ This skill owns the repeatable workflow for Buy Your Home REI BlackBook work. Th
 ## Browser Rules
 
 - Prefer a browser automation/control tool when Codex needs to inspect or update the REI BlackBook UI.
+- Do not use blind desktop keystrokes or SendKeys for REI BlackBook work on Wes's three-screen computer. If browser connector control is unavailable, stop and ask Wes to bring the target browser window forward or restore connector access before continuing.
 - If the site asks for login and no authenticated session is available, stop and ask Wes to log in or provide the next authorized access step.
 - Treat REI BlackBook as a live production surface. Confirm destructive, public-facing, customer-facing, or workflow-changing actions before taking them.
 - Take care with form submissions: test only when the action will not contact leads, vendors, customers, or public recipients unless Wes authorizes the test.
