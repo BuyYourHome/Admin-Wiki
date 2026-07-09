@@ -8,6 +8,18 @@ Interview mode is based on Dialogue mode, but it adds Jean as an active intervie
 
 Use the speaker label `Jean`.
 
+## Wes's Interviewer Direction
+
+Use these rules whenever Interview mode is selected:
+
+- Jean should be active editorial, emotionally intelligent, and willing to press into the human meaning of the material. Her questions should not feel mechanical, procedural, or like a summary of files.
+- Do not refer to "the source," "the transcript," or "the material preserved in the source" inside the manuscript voice. Frame questions naturally, such as "in your book," "in the material you gave me," "in one of your videos," or by naming the life event directly.
+- There are no artificial limits on what Jean can ask. She may ask direct or uncomfortable questions about faith, money, marriage, leadership, caution, regret, motives, patience, risk, and unresolved outcomes. The guardrail is on answers and factual claims, not on honest questions.
+- Unanswered questions should remain visible as something Wes and Jenny are still struggling toward a better answer for. Do not force a tidy lesson where the source material leaves a live tension.
+- The manuscript should revolve around themes Jean presents. Property sequence still matters for clarity, but the sequence should serve the themes rather than control the book.
+- Jean may draw from approved project-room context that was not directly provided by Wes or Jenny when setting up questions, especially Buy Your Home teaching material, YouTube transcripts, video notes, and related project-room working notes. Use that outside context to sharpen the question, not to put words in Wes's or Jenny's mouth.
+- Build and maintain a source library for the Buy Your Home YouTube channel `@buyyourhome8397`: video title, URL, date when available, description, transcript when available, and any owned/authorized video or audio download location when the full recording is useful for tone, sequence, or visual context.
+
 ## Trigger
 
 Use this mode when Wes says `Interview mode`, asks for Jean to interview Wes and Jenny, or asks for a manuscript version where interview questions guide the conversation.
@@ -27,7 +39,7 @@ Before drafting, read and use:
 - `working/dialogue-mode.md`
 - all authoritative Wes source files needed for the current manuscript span
 - all authoritative Jenny source files needed for the current manuscript span
-- approved contextual project-room sources that can help Jean ask better questions, including contextual source sets, prior working notes, source inventories, video/source notes, and manuscript fact notes
+- approved contextual project-room sources that can help Jean ask better questions, including contextual source sets, prior working notes, source inventories, YouTube transcripts, video/source notes, teaching notes, and manuscript fact notes
 - the latest manuscript only as a reference, not as the interview base
 
 ## Required Steps
@@ -41,22 +53,25 @@ Before drafting, read and use:
    - Save the map in `working/` with a versioned name such as `interview-v1-source-to-role-map.md`.
 
 2. Create an interview chapter map.
+   - Decide which themes Jean will present and how those themes should shape the manuscript.
    - Decide which chapters should be Jean-led interviews.
    - Decide which chapters should contain mostly Wes/Jenny dialogue with only light Jean framing.
    - Decide which Jenny chapters should stay whole and separate, with Jean introducing, questioning, or inviting Wes to respond around them instead of absorbing them.
+   - Let property sequence support the theme order instead of automatically becoming the table of contents.
    - Identify chapters where Jean should not appear because the material works better as uninterrupted memoir or direct dialogue.
    - Save the map in `working/` with a versioned name such as `interview-v1-chapter-map.md`.
 
 3. Create a Jean question map.
    - Draft the questions Jean should ask in each chapter or section.
    - Tie each question to a Wes source, Jenny source, contextual project-room source, tension, correction, missing-context note, or book objective.
-   - Mark questions that are leading, speculative, repetitive, or unsupported so they can be revised or removed.
+   - Revise questions that make unsupported factual claims, force a conclusion, repeat prior ground, or sound like a file summary.
    - Save the map in `working/` with a versioned name such as `interview-v1-jean-question-map.md`.
 
 4. Define speaker boundaries.
    - Wes may answer from his memories, source material, interpretation, spiritual lessons, business lessons, and unfinished learning.
    - Jenny may answer from her memories, caution, safety concerns, emotional reality, practical questions, corrections, and her own source material.
    - Jean may ask, clarify, bridge, invite contrast, and point out tension.
+   - Jean may ask any relevant human, spiritual, business, emotional, or relational question. Do not impose artificial limits on what Jean can ask.
    - Jean may draw from approved contextual project-room sources not directly provided by Wes or Jenny when forming interview questions, transitions, and prompts.
    - Jean should not supply independent facts or conclusions not grounded in the project-room sources, and should not put contextual-source material into Wes's or Jenny's mouth unless their own source material supports it.
    - Save the boundaries in `working/` with a versioned name such as `interview-v1-speaker-boundaries.md`.
@@ -72,6 +87,7 @@ Before drafting, read and use:
    - Let Jean ask direct, source-grounded questions.
    - Let Wes and Jenny answer, clarify, correct, challenge, and occasionally speak directly to each other.
    - Keep the interview from becoming mechanical; vary question length, answer length, direct dialogue, and narration.
+   - Avoid manuscript language that exposes the file process. Jean should engage the book, lived events, teaching material, and approved context, not "the source."
    - Do not invent a transcript or imply the interview actually happened unless the source says it did.
    - Save the manuscript in `outputs/` with a versioned name such as `Gracious Millionaire - Interview Manuscript v1.md`.
 
@@ -109,6 +125,8 @@ Before drafting, read and use:
 - Do not let Jean turn contextual project-room material into a claimed memory, belief, or conclusion from Wes or Jenny unless Wes or Jenny source material supports that attribution.
 - Do not make Jean the main character.
 - Do not flatten tension between Wes and Jenny into easy agreement.
+- Do not limit Jean's questions artificially. Limit unsupported answers, unsupported factual assertions, and forced conclusions.
+- Do not use process-facing phrases such as "the source says," "the transcript preserved," or "the input states" in the reader-facing manuscript.
 - Where an answer is missing, have Jean ask the question and leave it unanswered, keep the passage as narration, or mark the need for more source material.
 
 ## Quality Gate
@@ -117,9 +135,12 @@ Before treating the Interview mode manuscript as review-ready, create a short `w
 
 - Which chapters were Jean-led interviews?
 - Which chapters remained mostly Wes/Jenny dialogue?
+- Which themes did Jean present, and how did property sequence serve those themes?
 - Which Jean questions came directly from source material?
 - Which Jean questions were informed by contextual project-room source material not directly provided by Wes or Jenny?
 - Which Jean questions were interviewer inferences?
+- Which questions remained unanswered as live tensions?
+- Was any YouTube or other contextual material used to sharpen questions without putting words in Wes's or Jenny's mouth?
 - Where did Jenny's source material directly shape the answers?
 - Where did Wes's source material directly shape the answers?
 - What additional Jenny or Wes source would make the interview stronger?
