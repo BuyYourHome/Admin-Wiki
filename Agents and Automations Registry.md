@@ -665,6 +665,7 @@ Defined in:
 
 Important limitations:
 
+- Use `Project Rooms\REI BlackBook\working\gm-mode-run-lock.md` to prevent overlapping GM Mode runs. If a fresh lock exists, do not inspect or edit the live site. If the lock is 3 hours old or older, record a stale-lock takeover, replace the lock, and proceed.
 - Safe low-risk live content fixes are authorized for generic/off-topic template copy, placeholder text, generic blog/sidebar/category labels, page titles, navigation labels, button text, obvious broken public links, and book-focused descriptive text that does not publish manuscript content or change workflows.
 - Do not activate form/SMS/email workflows, upload personal photos, expose or change public contact details, change DNS/domain settings, purchase anything, push Git changes, send messages, publish manuscript content, or make legal/financial/compliance claims from the automation unless Wes explicitly approves that specific action.
 - Keep routine quiet runs short. Notify Wes when live changes were made, meaningful findings remain, blockers occur, high-risk approval is needed, or QA finds broken pages, generic/off-topic content, public privacy risk, workflow/form risk, SSL/domain issues, or recommended next actions.

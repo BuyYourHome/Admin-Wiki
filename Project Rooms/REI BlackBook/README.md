@@ -39,11 +39,13 @@ GM scheduled iteration:
 
 - Automation name: `gm-mode-site-iteration`.
 - Cadence: every 2 hours, plus manual on-demand GM Mode runs.
+- Run lock: use `working\gm-mode-run-lock.md` to prevent overlapping GM Mode runs. If the lock exists and is less than 3 hours old, the later run should not inspect or edit the live site and should stop quietly unless user-visible notice is needed. If the lock is 3 hours old or older, record a stale-lock takeover, replace the lock, and proceed. Clear the lock at normal completion.
 - Default behavior: audit, implement safe low-risk website-content discoveries live, QA, refresh the local element map/backlog, draft or record suggested copy, and surface recommendations.
 - Safe live implementation includes generic/off-topic template copy, placeholder text, generic blog/sidebar/category labels, page titles, navigation labels, button text, obvious broken public links, and book-focused descriptive text that does not publish manuscript content or change workflows.
 - No form/workflow activation, SMS/email campaign changes, personal-photo uploads, public contact/address changes, domain/DNS changes, purchases, manuscript-content publication, legal/financial/compliance claims, Git pushes, or outbound messages without Wes's explicit approval.
 - Routine quiet run: if no meaningful public-site changes or new recommendations are found, keep the run brief and record only a small project-room note if needed.
 - Report to Wes when the run makes live changes, finds broken pages, leaves generic template content unresolved, finds off-topic posts, hits form/workflow risk, public privacy risk, SSL/domain problems, or needs approval for higher-risk actions.
+- Never make live website edits while another fresh GM Mode run lock appears active.
 
 Current scope:
 

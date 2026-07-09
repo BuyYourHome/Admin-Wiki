@@ -83,11 +83,13 @@ GM scheduled iteration:
 
 - Automation name: `gm-mode-site-iteration`.
 - Cadence: every 2 hours, unless Wes changes the schedule.
+- Run lock: use `C:\Codex\Wiki Files\Project Rooms\REI BlackBook\working\gm-mode-run-lock.md` to prevent overlapping GM Mode runs. At startup, if the lock exists and is less than 3 hours old, do not inspect or edit the live site; stop quietly unless user-visible notice is needed. If the lock is 3 hours old or older, treat it as stale, record the stale-lock takeover in the project room, replace the lock, and proceed. Clear the lock at normal completion. If the run crashes or cannot clear the lock, the next run uses the stale-lock rule.
 - Default action is audit, implement safe low-risk website-content discoveries live, QA, refresh the map, and record the result.
 - Safe live implementation includes generic/off-topic template copy, placeholder text, generic blog/sidebar/category labels, page titles, navigation labels, button text, obvious broken public links, and book-focused descriptive text that does not publish manuscript content or change workflows.
 - On each scheduled run, inspect the public Gracious Millionaire site, implement safe live content fixes through the authorized logged-in REI BlackBook/WordPress browser session when available, QA affected pages, refresh or supersede the local element map, update the improvement backlog or recommendations, and record QA findings.
 - Keep routine quiet runs short. Notify Wes when live changes were made, meaningful findings remain, blockers occur, high-risk approval is needed, or QA finds broken pages, generic/off-topic content, public privacy risk, workflow/form risk, SSL/domain issues, or recommended next actions.
 - Do not activate form/SMS/email workflows, upload personal photos, expose or change public contact details, change DNS/domain settings, purchase anything, push Git changes, send messages, publish manuscript content, or make legal/financial/compliance claims from the automation unless Wes explicitly approves that specific action.
+- Never make live website edits while another fresh GM Mode run lock appears active.
 
 ## Browser Rules
 
