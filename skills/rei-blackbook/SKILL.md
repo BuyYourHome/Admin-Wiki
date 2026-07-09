@@ -50,7 +50,9 @@ This skill owns the repeatable workflow for Buy Your Home REI BlackBook work. Th
 6. Use the REI BlackBook WebTools browser UI for implementation after confirming the browser is authenticated.
 7. Before publishing or replacing live content, report what will change and wait for explicit approval unless Wes already authorized the exact publish/change.
 8. After implementation, QA desktop and mobile views when practical, test links and forms as far as safely possible, and record results in the project room.
-9. Commit durable wiki/project-room changes locally. Push only when Wes says the work is finished, explicitly asks for a push, or the deliverable is final and ready to publish.
+9. After every live website update, refresh the current local element map for that site. For Gracious Millionaire, update or supersede `working\gracious-millionaire-element-map-001.md` so it reflects the latest page titles, navigation, visible copy, images, forms, links, sidebars, footer, generic-template remnants, and next replacement actions.
+10. Record lessons learned from each website update in this skill when they change the repeatable workflow, and in the project room when they are site-specific.
+11. Commit durable wiki/project-room changes locally. Push only when Wes says the work is finished, explicitly asks for a push, or the deliverable is final and ready to publish.
 
 ## Browser Rules
 
@@ -59,6 +61,14 @@ This skill owns the repeatable workflow for Buy Your Home REI BlackBook work. Th
 - If the site asks for login and no authenticated session is available, stop and ask Wes to log in or provide the next authorized access step.
 - Treat REI BlackBook as a live production surface. Confirm destructive, public-facing, customer-facing, or workflow-changing actions before taking them.
 - Take care with form submissions: test only when the action will not contact leads, vendors, customers, or public recipients unless Wes authorizes the test.
+
+## Lessons Learned
+
+- Generic REI BlackBook site templates can leave off-topic content in navigation, service pages, sidebars, blog posts, categories, footer text, stock images, profile placeholders, and thank-you pages even after the Home page is rewritten. Treat every visible page element as suspect until it is mapped.
+- For book sites such as Gracious Millionaire, every public element should describe the book, the authors, the outline, editing status, update requests, excerpt requests, or release information. Generic business language such as services, multi-service company, fast/friendly/flexible, placeholder Latin copy, internet-success posts, and generic categories should be replaced, hidden, or removed.
+- Keep a local element map before and after live edits. The map should separate current state from book-focused replacement direction so the next implementation pass can update the site without inventing copy inside the browser.
+- Chrome file uploads through the Codex extension may require `Allow access to file URLs` under the Codex extension details at `chrome://extensions`. If local photo upload fails with `Not allowed`, record the blocker and use web-sized local copies only after Wes has approved those photos for public use.
+- Do not commit personal Google Photos or other private image files to GitHub unless Wes explicitly approves committing those files. It is acceptable to commit a Markdown plan that references local-only photo filenames and privacy decisions.
 
 ## Output Standards
 
