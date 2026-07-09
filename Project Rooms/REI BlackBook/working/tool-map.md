@@ -44,6 +44,7 @@ Existing sites:
 | Providence Landing | Generic | `https://providence-landing.com/` | `43476` | `https://my.reiblackbook.com/webtools/sites/advanced/43476` | `https://u113450.h.reiblackbook.com/generic3/` |
 | Personal Brand | Generic | `https://mybrowning.net/` | `43808` | `https://my.reiblackbook.com/webtools/sites/advanced/43808` | `https://u113450.h.reiblackbook.com/generic4/` |
 | Landing Pages | Blank | `https://buyyourhomeraleigh.com/` | `46796` | `https://my.reiblackbook.com/webtools/sites/advanced/46796` | `https://u113450.h.reiblackbook.com/blank5/` |
+| Gracious Millionaire | Generic | `https://u113450.h.reiblackbook.com/generic6/` | `48842` | `https://my.reiblackbook.com/webtools/sites/advanced/48842` | `https://u113450.h.reiblackbook.com/generic6/` |
 
 ## BYH Site Control Panel
 
