@@ -11,4 +11,5 @@
 | Gracious Millionaire website iteration loop | `working\gracious-millionaire-iteration-loop.md` | working source | Repeatable process for live-site iterations, QA, and post-iteration suggestions. |
 | Gracious Millionaire website Iteration 001 | `working\gracious-millionaire-iteration-001.md` | working source | Records the first page/content pass: Home descriptive copy, Book Outline, shared chapter-status page, QA, and next suggestions. |
 | Gracious Millionaire photo selection 001 | `working\gracious-millionaire-photo-selection-001.md` | working source | Selected safe candidate photos from Wes-authorized Google Photos review, excluded private/rights-risk images, and recorded the Chrome upload-permission blocker. |
+| Gracious Millionaire element map 001 | `working\gracious-millionaire-element-map-001.md` | working source | Browser crawl of current pages, generic/off-topic elements, and book-focused replacement directions for the next live edit pass. |
 | Website goals, page list, brand assets, approved copy, compliance language | Not yet provided | missing | Needed before drafting public-facing site content. |

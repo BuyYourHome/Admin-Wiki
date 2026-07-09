@@ -43,6 +43,7 @@ Create a site called `Gracious Millionaire` for information related to the book 
 
 - Iteration loop: `working\gracious-millionaire-iteration-loop.md`.
 - Latest implementation report: `working\gracious-millionaire-iteration-001.md`.
+- Current full element cleanup map: `working\gracious-millionaire-element-map-001.md`.
 - Book Outline contains the 25 current working chapter titles and links all titles to the shared `Chapter Being Edited` page.
 - Chapter content is not published on the site.
 
@@ -59,6 +60,7 @@ Create a site called `Gracious Millionaire` for information related to the book 
 - Navigation/menu cleanup, including adding `Book Outline` and renaming/repurposing `Services`.
 - Cleanup decision for redundant individual chapter placeholder pages created before Wes clarified that all chapter links can point to the same shared landing page.
 - Photo replacement is waiting on Chrome Codex extension local-file upload permission. The selected photo set is local only and should not be committed or pushed without Wes's explicit approval.
+- Full element audit found generic template content still present on Services, About, Contact, Blog, Thank You, sidebars, categories, stock images, logo, and footer; see `working\gracious-millionaire-element-map-001.md`.
 
 ## Safety Notes
 
