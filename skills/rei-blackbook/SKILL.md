@@ -83,6 +83,7 @@ GM scheduled iteration:
 
 - Automation name: `gm-mode-site-iteration`.
 - Cadence: every 2 hours, unless Wes changes the schedule.
+- Current schedule anchor: first run after the 2026-07-09 update is 7:52 PM Eastern, then every 2 hours after that.
 - Run lock: use `C:\Codex\Wiki Files\Project Rooms\REI BlackBook\working\gm-mode-run-lock.md` to prevent overlapping GM Mode runs. At startup, if the lock exists and is less than 3 hours old, do not inspect or edit the live site; stop quietly unless user-visible notice is needed. If the lock is 3 hours old or older, treat it as stale, record the stale-lock takeover in the project room, replace the lock, and proceed. Clear the lock at normal completion. If the run crashes or cannot clear the lock, the next run uses the stale-lock rule.
 - Default action is audit, implement safe low-risk website-content discoveries live, QA, refresh the map, and record the result.
 - Safe live implementation includes generic/off-topic template copy, placeholder text, generic blog/sidebar/category labels, page titles, navigation labels, button text, obvious broken public links, and book-focused descriptive text that does not publish manuscript content or change workflows.

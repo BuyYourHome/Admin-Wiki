@@ -39,6 +39,7 @@ GM scheduled iteration:
 
 - Automation name: `gm-mode-site-iteration`.
 - Cadence: every 2 hours, plus manual on-demand GM Mode runs.
+- Current schedule anchor: first run after the 2026-07-09 update is 7:52 PM Eastern, then every 2 hours after that.
 - Run lock: use `working\gm-mode-run-lock.md` to prevent overlapping GM Mode runs. If the lock exists and is less than 3 hours old, the later run should not inspect or edit the live site and should stop quietly unless user-visible notice is needed. If the lock is 3 hours old or older, record a stale-lock takeover, replace the lock, and proceed. Clear the lock at normal completion.
 - Default behavior: audit, implement safe low-risk website-content discoveries live, QA, refresh the local element map/backlog, draft or record suggested copy, and surface recommendations.
 - Safe live implementation includes generic/off-topic template copy, placeholder text, generic blog/sidebar/category labels, page titles, navigation labels, button text, obvious broken public links, and book-focused descriptive text that does not publish manuscript content or change workflows.
