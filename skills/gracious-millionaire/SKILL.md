@@ -65,6 +65,25 @@ Before drafting in Dialogue mode, read `Project Rooms\Gracious Millionaire\worki
 
 Dialogue mode should read like a crafted book dialogue, not a fake transcript. Do not invent Jenny's side where source material does not support it, and do not put Wes's conclusions into Jenny's voice unless Jenny source material supports that conclusion. Where one side is missing, keep the passage as narration, have the other speaker ask an unanswered question, or mark the need for more source material.
 
+## Interview Mode
+
+Use Interview mode when Wes says `Interview mode`, asks for Jean to interview Wes and Jenny, or asks for a manuscript version where interview questions guide the conversation.
+
+Before drafting in Interview mode, read `Project Rooms\Gracious Millionaire\working\interview-mode.md` and follow it. The required Interview mode steps are:
+
+1. Build a source-to-role map.
+2. Create an interview chapter map.
+3. Create a Jean question map.
+4. Define speaker boundaries.
+5. Create chapter interview goals.
+6. Convert source material into interview scenes.
+7. Add source-confidence labels in working notes.
+8. Reduce repeated lessons and questions.
+9. Run a voice and fairness review.
+10. Produce the manuscript and review packet.
+
+Interview mode builds from Dialogue mode but adds Jean as a source-grounded interviewer. Jean is the AI office assistant mentioned in the book and employed by Wes and Jenny. Jean may ask, clarify, bridge, invite contrast, and point out tension, and may draw from approved contextual project-room sources not directly provided by Wes or Jenny when forming interview questions. Jean must not supply unsupported facts or conclusions, and must not put contextual-source material into Wes's or Jenny's mouth unless their own source material supports it. Some scenes may be direct Wes/Jenny dialogue; other scenes may be Jean asking a question that Wes or Jenny answers. Use the speaker label `Jean`.
+
 ## Boundaries
 
 - Do not call the workflow `Project LumenScale`.
