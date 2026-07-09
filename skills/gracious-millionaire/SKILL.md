@@ -47,6 +47,24 @@ Rewrite mode is not a polish pass. Do not simply start from the latest manuscrip
 
 If most chapters change only lightly, do not label the work a full Rewrite mode pass. Mark it as a polish, integration, or continuity pass instead.
 
+## Dialogue Mode
+
+Use Dialogue mode when Wes says `Dialogue mode`, asks for the manuscript to become a conversation between Wes and Jenny, or asks for a conversational version of chapters or the whole manuscript.
+
+Before drafting in Dialogue mode, read `Project Rooms\Gracious Millionaire\working\dialogue-mode.md` and follow it. The required Dialogue mode steps are:
+
+1. Build a source-to-speaker map.
+2. Create a conversation chapter map.
+3. Define the role of each speaker.
+4. Create chapter conversation goals.
+5. Convert source material into dialogue scenes.
+6. Add source-confidence labels in working notes.
+7. Reduce repeated lessons through conversation.
+8. Run a voice and fairness review.
+9. Produce the manuscript and review packet.
+
+Dialogue mode should read like a crafted book dialogue, not a fake transcript. Do not invent Jenny's side where source material does not support it, and do not put Wes's conclusions into Jenny's voice unless Jenny source material supports that conclusion. Where one side is missing, keep the passage as narration, have the other speaker ask an unanswered question, or mark the need for more source material.
+
 ## Boundaries
 
 - Do not call the workflow `Project LumenScale`.
