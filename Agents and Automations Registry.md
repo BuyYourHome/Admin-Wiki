@@ -38,7 +38,7 @@ Use [[Agent Unit Standard]] for the standard package behind an agent-like operat
 | Wes's Voice | Wiki-managed skill plus project room | Planning | On demand | `skills\wes-voice\SKILL.md`; `Project Rooms\Wes's Voice\README.md` |
 | New Project | Wiki-managed skill plus project room | Draft | On demand | `skills\new-project\SKILL.md`; `Project Rooms\New Project\README.md` |
 | REI BlackBook | Wiki-managed skill plus project room | Draft | On demand | `skills\rei-blackbook\SKILL.md`; `Project Rooms\REI BlackBook\README.md` |
-| GM Mode Site Iteration | GM Mode heartbeat automation plus REI BlackBook project room | Active | Every 2 hours; audit-and-propose only | `skills\rei-blackbook\SKILL.md`; `Project Rooms\REI BlackBook\README.md`; automation id `gm-mode-site-iteration` |
+| GM Mode Site Iteration | GM Mode heartbeat automation plus REI BlackBook project room | Active | Every 2 hours; safe live content fixes plus QA/map refresh | `skills\rei-blackbook\SKILL.md`; `Project Rooms\REI BlackBook\README.md`; automation id `gm-mode-site-iteration` |
 | Investigate Computer | Wiki-managed skill plus project room plus heartbeat automation | Active | Daily at 6:00 AM Eastern; email Wes only when an issue is detected | `skills\investigate-computer\SKILL.md`; `Project Rooms\Investigate Computer\README.md`; app automation id `investigate-computer-daily-check` |
 | Jenny Daily Email Summary | Behavior inside Email Summary heartbeat | Active | Runs once daily at/after 8:00 AM Eastern with the Email Summary heartbeat; emails Jenny from OfficeAssist and verifies Sent Items | `skills\email-summary\SKILL.md`; `Email Summary` prompt notes |
 
@@ -651,10 +651,10 @@ Schedule:
 
 Purpose:
 
-- Run the routine Gracious Millionaire website development loop in audit-and-propose mode.
+- Run the routine Gracious Millionaire website development loop by auditing, implementing safe low-risk website-content discoveries live, QAing the result, and refreshing the local map.
 - Inspect the public Gracious Millionaire site and refresh or supersede the local element map.
 - Update the improvement backlog or recommendations.
-- Draft safe replacement copy for mapped generic/off-topic elements when useful.
+- Draft or implement safe replacement copy for mapped generic/off-topic elements when useful.
 - Record QA findings for page titles, navigation, links, forms, images, sidebars, footer, generic-template remnants, public privacy risk, SSL/domain status, and next live-edit actions.
 
 Defined in:
@@ -665,9 +665,9 @@ Defined in:
 
 Important limitations:
 
-- Default behavior is audit and propose only.
-- Do not make live REI BlackBook edits, publish content, activate form/SMS/email workflows, upload personal photos, expose or change public contact details, change DNS/domain settings, purchase anything, push Git changes, or send messages from the automation unless Wes explicitly approves that specific action.
-- Keep routine quiet runs short. Notify Wes when meaningful findings, blockers, broken pages, generic/off-topic content, public privacy risk, workflow/form risk, SSL/domain issues, or live-edit recommendations are found.
+- Safe low-risk live content fixes are authorized for generic/off-topic template copy, placeholder text, generic blog/sidebar/category labels, page titles, navigation labels, button text, obvious broken public links, and book-focused descriptive text that does not publish manuscript content or change workflows.
+- Do not activate form/SMS/email workflows, upload personal photos, expose or change public contact details, change DNS/domain settings, purchase anything, push Git changes, send messages, publish manuscript content, or make legal/financial/compliance claims from the automation unless Wes explicitly approves that specific action.
+- Keep routine quiet runs short. Notify Wes when live changes were made, meaningful findings remain, blockers occur, high-risk approval is needed, or QA finds broken pages, generic/off-topic content, public privacy risk, workflow/form risk, SSL/domain issues, or recommended next actions.
 
 ## Invoice Entry
 
