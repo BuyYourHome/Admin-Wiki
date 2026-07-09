@@ -54,6 +54,31 @@ This skill owns the repeatable workflow for Buy Your Home REI BlackBook work. Th
 10. Record lessons learned from each website update in this skill when they change the repeatable workflow, and in the project room when they are site-specific.
 11. Commit durable wiki/project-room changes locally. Push only when Wes says the work is finished, explicitly asks for a push, or the deliverable is final and ready to publish.
 
+## GM Mode
+
+Use GM Mode when Wes says `GM`, `GM Mode`, or the request is clearly about the Gracious Millionaire REI BlackBook website.
+
+GM Mode target:
+
+- Site name: `Gracious Millionaire`
+- Site ID: `48842`
+- Builder URL: `https://u113450.h.reiblackbook.com/generic6/`
+- Control panel: `https://my.reiblackbook.com/webtools/sites/advanced/48842`
+- Public domain: `https://graciousmillionaire.com`
+- Current element map: `C:\Codex\Wiki Files\Project Rooms\REI BlackBook\working\gracious-millionaire-element-map-001.md`
+- Site record: `C:\Codex\Wiki Files\Project Rooms\REI BlackBook\working\gracious-millionaire-site.md`
+
+GM Mode rules:
+
+1. Every public-visible element should describe the book, the authors, the book outline, editing status, update requests, excerpt requests, release information, or approved Gracious Millionaire project context.
+2. Treat generated template content as off-topic until it is verified. This includes services, generic business copy, placeholder Latin text, generic blog posts, generic categories, generic sidebars, footer text, default logos, stock images, broken profile placeholders, and default thank-you wording.
+3. Before live edits, consult the current element map and decide which mapped items are in scope for the pass.
+4. After every live website update, refresh the Gracious Millionaire element map so it reflects the current live/preview site after the change. If the map version becomes stale or materially different, create the next numbered map and update `source-inventory.md` and `gracious-millionaire-site.md`.
+5. Record reusable GM Mode lessons in this skill. Record site-specific implementation notes, blockers, and decisions in the REI BlackBook project room.
+6. Do not publish manuscript chapter content unless Wes explicitly approves that content for public use. Chapter links may point to the shared editing-status page when content is not ready.
+7. Do not activate excerpt email, SMS, lead workflows, contact-form routing changes, or public street-address display changes without explicit approval for that workflow or public detail.
+8. Personal photos from Google Photos may be selected for planning only when Wes authorizes it. Do not upload them publicly until they have been selected for the site, and do not commit the image files to GitHub without explicit approval.
+
 ## Browser Rules
 
 - Prefer a browser automation/control tool when Codex needs to inspect or update the REI BlackBook UI.

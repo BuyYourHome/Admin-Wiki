@@ -28,6 +28,13 @@ Standing website-update rule:
 - After every REI BlackBook website update, refresh the relevant local element map so it reflects the latest public-visible page titles, navigation, copy, links, forms, images, sidebars, footer, generic-template remnants, and next replacement actions.
 - When a website update produces a reusable lesson, record it in `skills\rei-blackbook\SKILL.md`; when it is site-specific, record it in the project room.
 
+GM Mode:
+
+- `GM Mode` is the named operating mode for Gracious Millionaire REI BlackBook website work.
+- Use it whenever Wes says `GM`, `GM Mode`, or gives a Gracious Millionaire website request.
+- In GM Mode, every public-visible element should describe the book, the authors, the outline, editing status, update requests, excerpt requests, release information, or approved Gracious Millionaire project context.
+- After every GM Mode live website update, refresh the Gracious Millionaire element map and record site-specific notes in this project room.
+
 Current scope:
 
 - Build the repeatable room and skill package for REI BlackBook work.
