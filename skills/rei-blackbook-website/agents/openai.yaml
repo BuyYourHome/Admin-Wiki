@@ -1,0 +1,4 @@
+interface:
+  display_name: "REI BlackBook Website"
+  short_description: "Build websites through REI BlackBook WebTools"
+  default_prompt: "Use $rei-blackbook-website to plan, build, or update a website in REI BlackBook WebTools."

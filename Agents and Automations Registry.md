@@ -37,6 +37,7 @@ Use [[Agent Unit Standard]] for the standard package behind an agent-like operat
 | Property Trade Evaluation | Wiki-managed skill plus project room | Active | On demand | `skills\property-trade-evaluation\SKILL.md`; `Project Rooms\Property Trade Evaluation\README.md` |
 | Wes's Voice | Wiki-managed skill plus project room | Planning | On demand | `skills\wes-voice\SKILL.md`; `Project Rooms\Wes's Voice\README.md` |
 | New Project | Wiki-managed skill plus project room | Draft | On demand | `skills\new-project\SKILL.md`; `Project Rooms\New Project\README.md` |
+| REI BlackBook Website | Wiki-managed skill plus project room | Draft | On demand | `skills\rei-blackbook-website\SKILL.md`; `Project Rooms\REI BlackBook Website\README.md` |
 | Investigate Computer | Wiki-managed skill plus project room plus heartbeat automation | Active | Daily at 6:00 AM Eastern; email Wes only when an issue is detected | `skills\investigate-computer\SKILL.md`; `Project Rooms\Investigate Computer\README.md`; app automation id `investigate-computer-daily-check` |
 | Jenny Daily Email Summary | Behavior inside Email Summary heartbeat | Active | Runs once daily at/after 8:00 AM Eastern with the Email Summary heartbeat; emails Jenny from OfficeAssist and verifies Sent Items | `skills\email-summary\SKILL.md`; `Email Summary` prompt notes |
 
@@ -609,6 +610,29 @@ Important rules:
 - When creating the new project spreadsheet, review the `Profit` sheet and blank out prototype/template-specific values while preserving formulas, labels, structural formatting, and reusable assumptions.
 - If it is unclear whether a `Profit` sheet value is template-specific or reusable, record it for review instead of deleting it.
 - Do not use New Project when an existing specialized project room is the better fit.
+
+## REI BlackBook Website
+
+Type: wiki-managed skill plus project room.
+
+Status: draft.
+
+Purpose:
+
+- Plan, draft, build, QA, and document Buy Your Home website work in REI BlackBook WebTools.
+- Use `https://my.reiblackbook.com/webtools/sites` through an authorized logged-in browser session when implementation is needed.
+- Keep credentials out of the wiki, skill, project room, and git history.
+
+Defined in:
+
+- `C:\Codex\Wiki Files\skills\rei-blackbook-website\SKILL.md`
+- `C:\Codex\Wiki Files\Project Rooms\REI BlackBook Website\README.md`
+
+Important rules:
+
+- Do not buy domains, paid add-ons, ads, templates, or subscriptions without Wes's explicit approval for the specific purchase.
+- Do not publish a site, change DNS, change tracking pixels, or replace live content without Wes's explicit approval for that specific action.
+- Record missing website goals, brand assets, compliance language, and access blockers in the project room before drafting final public-facing copy.
 
 ## Invoice Entry
 
