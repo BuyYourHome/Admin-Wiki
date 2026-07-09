@@ -13,7 +13,8 @@ Create a site called `Gracious Millionaire` for information related to the book 
 | Site name / nickname | `Gracious Millionaire` |
 | REI site type | Generic |
 | Site ID | `48842` |
-| Current site URL | `https://u113450.h.reiblackbook.com/generic6/` |
+| Current site URL | `http://graciousmillionaire.com` |
+| Temporary REI builder URL | `https://u113450.h.reiblackbook.com/generic6/` |
 | Control panel | `https://my.reiblackbook.com/webtools/sites/advanced/48842` |
 | Site builder | `https://u113450.h.reiblackbook.com/generic6/` |
 | Tagline set in merge fields | `A book by Wes and Jenny Browning` |
@@ -29,10 +30,14 @@ Create a site called `Gracious Millionaire` for information related to the book 
 - Renamed the generated site from `Generic6` to `Gracious Millionaire`.
 - Saved merge-field data for site name, company/name field, tagline, market, contact name, and phone.
 - Verified the Websites page lists `Gracious Millionaire` as a Generic site.
+- Imported `graciousmillionaire.com` into REI BlackBook Domains.
+- Connected `graciousmillionaire.com` to REI BlackBook site ID `48842`.
+- Changed GoDaddy nameservers for `graciousmillionaire.com` from `ns68.domaincontrol.com` and `ns67.domaincontrol.com` to REI's required Cloudflare nameservers: `albert.ns.cloudflare.com` and `arya.ns.cloudflare.com`.
+- Re-checked the REI BlackBook nameserver status; REI reported `graciousmillionaire.com is active!`.
 
 ## Not Yet Configured
 
-- Public domain or custom DNS.
+- SSL/TLS readiness for public `https://graciousmillionaire.com`; immediately after nameserver update, DNS resolved to Cloudflare and HTTP redirected, but HTTPS was not completing the TLS handshake yet. REI says DNS/nameserver propagation can take up to 24 hours.
 - Actual page copy about the book.
 - Contact form fields and notification routing.
 - Excerpt request workflow.
@@ -43,5 +48,5 @@ Create a site called `Gracious Millionaire` for information related to the book 
 
 ## Safety Notes
 
-- Do not publish, connect a custom domain, send excerpt emails, activate broadcasts, or change generated workflows without Wes's explicit approval for that step.
+- Do not send excerpt emails, activate broadcasts, or change generated workflows without Wes's explicit approval for that step.
 - Before configuring excerpt delivery, identify which excerpts are approved to share and whether requests should be fulfilled by REI BlackBook email campaign, OfficeAssist, or another approved path.
