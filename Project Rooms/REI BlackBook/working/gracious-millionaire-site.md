@@ -37,6 +37,7 @@ Create a site called `Gracious Millionaire` for information related to the book 
 - Created `Book Outline` at `https://u113450.h.reiblackbook.com/generic6/book-outline/`.
 - Created shared chapter-status page `Chapter Being Edited` at `https://u113450.h.reiblackbook.com/generic6/chapter-being-edited/`.
 - Updated the Home page Beaver Builder text to describe the Gracious Millionaire book project and linked the hero button to the outline page.
+- Selected safe candidate replacement photos from Wes's logged-in Google Photos session and recorded the replacement map in `working\gracious-millionaire-photo-selection-001.md`.
 
 ## Current Content Notes
 
@@ -57,6 +58,7 @@ Create a site called `Gracious Millionaire` for information related to the book 
 - Published/mobile QA of the generated site.
 - Navigation/menu cleanup, including adding `Book Outline` and renaming/repurposing `Services`.
 - Cleanup decision for redundant individual chapter placeholder pages created before Wes clarified that all chapter links can point to the same shared landing page.
+- Photo replacement is waiting on Chrome Codex extension local-file upload permission. The selected photo set is local only and should not be committed or pushed without Wes's explicit approval.
 
 ## Safety Notes
 
