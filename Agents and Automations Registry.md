@@ -619,8 +619,8 @@ Status: draft.
 
 Purpose:
 
-- Plan, draft, build, QA, and document Buy Your Home website work in REI BlackBook WebTools.
-- Use `https://my.reiblackbook.com/webtools/sites` through an authorized logged-in browser session when implementation is needed.
+- Plan, draft, build, QA, and document Buy Your Home REI BlackBook work, including websites, WebTools Sites, lead/contact workflows, text or Profit Dial-related workflows, account-access notes, and future REI BlackBook modules Wes asks Codex to support.
+- Use `https://my.reiblackbook.com/webtools/sites` as the current primary work surface through an authorized logged-in browser session when implementation is needed.
 - Keep credentials out of the wiki, skill, project room, and git history.
 
 Defined in:
@@ -631,7 +631,7 @@ Defined in:
 Important rules:
 
 - Do not buy domains, paid add-ons, ads, templates, or subscriptions without Wes's explicit approval for the specific purchase.
-- Do not publish a site, change DNS, change tracking pixels, or replace live content without Wes's explicit approval for that specific action.
+- Do not publish a site, change DNS, change tracking pixels, replace live content, send texts, alter live lead workflows, or change account settings without Wes's explicit approval for that specific action.
 - Record missing website goals, brand assets, compliance language, and access blockers in the project room before drafting final public-facing copy.
 
 ## Invoice Entry

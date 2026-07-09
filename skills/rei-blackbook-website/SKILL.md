@@ -1,6 +1,6 @@
 ---
 name: rei-blackbook-website
-description: Use for Buy Your Home website creation or updates inside REI BlackBook WebTools at https://my.reiblackbook.com/webtools/sites, including project-room planning, site content inventory, page copy drafting, asset tracking, browser-based implementation, QA notes, and handoff of decisions needed before publishing.
+description: Use for Buy Your Home REI BlackBook work, including website creation or updates inside REI BlackBook WebTools at https://my.reiblackbook.com/webtools/sites, project-room planning, site content inventory, page copy drafting, asset tracking, lead/contact or text-workflow notes, browser-based implementation, QA notes, and handoff of decisions needed before publishing or changing live REI BlackBook workflows.
 ---
 
 # REI BlackBook Website
@@ -9,7 +9,7 @@ description: Use for Buy Your Home website creation or updates inside REI BlackB
 
 - Project room: `C:\Codex\Wiki Files\Project Rooms\REI BlackBook Website`
 - Skill source: `C:\Codex\Wiki Files\skills\rei-blackbook-website\SKILL.md`
-- REI BlackBook WebTools URL: `https://my.reiblackbook.com/webtools/sites`
+- Current primary REI BlackBook URL: `https://my.reiblackbook.com/webtools/sites`
 - Output drafts and final handoffs: `C:\Codex\Wiki Files\Project Rooms\REI BlackBook Website\outputs`
 
 ## Startup
@@ -22,19 +22,20 @@ description: Use for Buy Your Home website creation or updates inside REI BlackB
 
 ## Scope
 
-This skill owns the repeatable workflow for creating and maintaining Buy Your Home websites in REI BlackBook WebTools:
+This skill owns the repeatable workflow for Buy Your Home REI BlackBook work. The current primary module is WebTools Sites:
 
 - collect site goals, audience, calls to action, brand rules, and page list,
 - draft and revise website copy in the project room before entering it into REI BlackBook,
 - track images, logos, phone numbers, forms, domains, SEO titles, meta descriptions, and publishing decisions,
 - implement approved site content through the REI BlackBook browser UI when logged in,
 - QA published or preview pages for content, links, forms, mobile layout, and obvious accessibility issues,
+- record REI BlackBook workflow notes for lead/contact, text, Profit Dial, access, or other modules when Wes asks for those workflows,
 - record blockers and decisions needed from Wes before publishing.
 
 ## Boundaries
 
 - Do not buy domains, paid add-ons, ads, templates, or subscriptions unless Wes explicitly approves the specific purchase.
-- Do not publish a site, change DNS, change tracking pixels, or replace a live website unless Wes explicitly approves that specific action.
+- Do not publish a site, change DNS, change tracking pixels, replace a live website, send texts, alter live lead workflows, or change account settings unless Wes explicitly approves that specific action.
 - Do not invent legal, lending, investment, or real-estate compliance claims. Mark unsupported claims in drafts and ask Wes for the controlling language.
 - Do not use Teams as the working source of truth. Copy final files to Teams only if Wes asks.
 - Do not save REI BlackBook login credentials in the project room, skill, browser notes, scripts, or commits.
@@ -45,7 +46,7 @@ This skill owns the repeatable workflow for creating and maintaining Buy Your Ho
 2. Add source files or source summaries under `sources\`, then update `working\source-inventory.md`.
 3. Record duplicate, outdated, or conflicting source material in `working\duplicate-and-conflict-log.md`.
 4. Record missing business decisions, compliance language, assets, and account-access blockers in `working\missing-context.md`.
-5. Draft page copy and implementation notes in `outputs\` before making live-site changes unless Wes asks for a quick direct edit.
+5. Draft page copy, workflow notes, and implementation notes in `outputs\` before making live changes unless Wes asks for a quick direct edit.
 6. Use the REI BlackBook WebTools browser UI for implementation after confirming the browser is authenticated.
 7. Before publishing or replacing live content, report what will change and wait for explicit approval unless Wes already authorized the exact publish/change.
 8. After implementation, QA desktop and mobile views when practical, test links and forms as far as safely possible, and record results in the project room.
@@ -55,7 +56,7 @@ This skill owns the repeatable workflow for creating and maintaining Buy Your Ho
 
 - Prefer a browser automation/control tool when Codex needs to inspect or update the REI BlackBook UI.
 - If the site asks for login and no authenticated session is available, stop and ask Wes to log in or provide the next authorized access step.
-- Treat REI BlackBook as a live production surface. Confirm destructive or public-facing actions before taking them.
+- Treat REI BlackBook as a live production surface. Confirm destructive, public-facing, customer-facing, or workflow-changing actions before taking them.
 - Take care with form submissions: test only when the action will not contact leads, vendors, customers, or public recipients unless Wes authorizes the test.
 
 ## Output Standards
