@@ -178,7 +178,7 @@ main {{ display: grid; grid-template-columns: minmax(260px, 340px) minmax(0, 820
 h1 {{ margin: 0 0 12px; font-size: 32px; }}
 h2 {{ margin-top: 0; font-size: 26px; }}
 .summary {{ max-width: 900px; font-family: Arial, sans-serif; line-height: 1.45; }}
-nav {{ position: sticky; top: 0; align-self: start; background: #ffffff; border: 1px solid #d8ded6; padding: 16px; }}
+nav {{ position: static; align-self: start; background: #ffffff; border: 1px solid #d8ded6; padding: 16px; box-sizing: border-box; }}
 nav h2 {{ font-family: Arial, sans-serif; font-size: 17px; margin: 0 0 10px; }}
 ol {{ margin: 0; padding-left: 20px; }}
 li {{ margin: 0 0 8px; }}
@@ -189,7 +189,7 @@ section {{ background: #ffffff; border: 1px solid #d8ded6; padding: 28px; margin
 p {{ margin: 0 0 15px; }}
 @media (max-width: 860px) {{
   main {{ display: block; padding: 20px; }}
-  nav {{ position: static; margin-bottom: 22px; }}
+  nav {{ margin-bottom: 22px; }}
   header {{ padding: 24px 20px; }}
   section {{ padding: 20px; }}
 }}
@@ -224,7 +224,6 @@ def main() -> None:
     html_text = build_html(sections, md_text)
     OUT_MD.write_text(md_text, encoding="utf-8", newline="\n")
     OUT_HTML.write_text(html_text, encoding="utf-8", newline="\n")
-    CURRENT_HTML.write_text(html_text, encoding="utf-8", newline="\n")
     print(f"wrote {OUT_MD}")
     print(f"wrote {OUT_HTML}")
     print(f"sections={len(sections)} words={word_count(md_text)}")
