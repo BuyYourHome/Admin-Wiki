@@ -31,6 +31,22 @@ Use this skill for Gracious Millionaire project-room processing. OfficeAssist em
 6. Put review-ready drafts or final outputs in `outputs\`.
 7. Mark unsupported factual or autobiographical claims instead of smoothing them into narrative.
 
+## Rewrite Mode
+
+Use Rewrite mode when Wes says `Rewrite mode`, asks for a whole-manuscript rewrite where each chapter should materially affect the others, or expresses concern that a rewrite is not changing enough as the source base grows.
+
+Before drafting in Rewrite mode, read `Project Rooms\Gracious Millionaire\working\rewrite-mode.md` and follow it. The required Rewrite mode steps are:
+
+1. Create a source-to-chapter map.
+2. Create a whole-book thesis map.
+3. Create a redundancy and contradiction map.
+4. Create chapter job statements for every chapter or section.
+5. Write a true source-packet-based manuscript rewrite.
+
+Rewrite mode is not a polish pass. Do not simply start from the latest manuscript and smooth, bridge, or lightly rephrase it. Use the latest manuscript only as a reference; draft from authoritative source packets, the source maps, the whole-book thesis map, the redundancy/contradiction map, and the chapter job statements.
+
+If most chapters change only lightly, do not label the work a full Rewrite mode pass. Mark it as a polish, integration, or continuity pass instead.
+
 ## Boundaries
 
 - Do not call the workflow `Project LumenScale`.

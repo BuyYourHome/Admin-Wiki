@@ -16,6 +16,7 @@ The separate emails in `sources/email/` are early chapter starts, fragments, and
 - Use the emails as chapter seeds and thematic source material.
 - Preserve Wes's writing voice, especially the reflective, story-driven, faith-centered style documented in `working/writing-style-guide.md`.
 - Before rewriting manuscript sections, check `working/manuscript-edit-and-fact-notes.md` for current factual corrections, framing changes, perception notes, and open editorial direction.
+- Use [[rewrite-mode|Rewrite mode]] when Wes asks for a source-based whole-manuscript rewrite where the context of one chapter should materially influence all others. Rewrite mode requires source-to-chapter mapping, whole-book thesis mapping, redundancy/contradiction mapping, chapter job statements, and a true source-packet-based rewrite rather than a light polish of the latest manuscript.
 - New OfficeAssist instruction emails with a subject containing `gracious millionaire`, or otherwise clearly belonging to the Gracious Millionaire book/project-room workflow, should be routed into this room as source material by the OfficeAssist email monitor. The OfficeAssist monitor should not attach its mailbox-monitoring heartbeat to the Gracious Millionaire thread, create a new chat, or process the writing task unless Wes explicitly asks for processing there.
 - Preserve routed OfficeAssist emails as individual Markdown files under `sources/email/`, including available sender, recipients, sent/received time, subject, message id or web link, and body text.
 - When Wes authorizes any Codex role to check email and that check finds a Gracious Millionaire email, the role that performed the mailbox check must immediately preserve that email as an individual Markdown source file under `sources/email/`, update `working/officeassist-intake-log.md`, and send a direct follow-up message to the existing Gracious Millionaire project-room thread with the routed source path and a short summary. Do not wait for a separate routing instruction after the email is found.
@@ -48,4 +49,5 @@ Started. Initial email source files were created from the retrievable messages i
 
 - Decide whether each email is a chapter opening, a chapter section, an appendix note, or a discarded fragment.
 - Build a chapter map from the source themes.
+- Use Rewrite mode for the next full-manuscript rebuild if Wes expects source growth to materially change chapter structure, emphasis, or sequencing.
 - Monitor the active intake heartbeat and refine processing rules as new routed chapter sources arrive.
