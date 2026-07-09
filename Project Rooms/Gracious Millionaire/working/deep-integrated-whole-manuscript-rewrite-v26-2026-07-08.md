@@ -49,6 +49,17 @@ The builder also deduplicates exact repeated paragraphs within each section, rem
 - Sent Items verified: 2026-07-08T19:31:11-04:00
 - Sent message id: `AQMkADZkMGMwNDI3LWU5ZjctNDgzMC1iMjdkLTY0NmRiN2IwNmIyZgBGAAADKGOvWJYjX0aEKaRpd0MYQQcAVSXargQY20aF7RLCkro4ggAAAgEJAAAAVSXargQY20aF7RLCkro4ggACbe9zSAAAAA==`
 
+## Display Correction
+
+Wes reported that the v26 HTML outline would not scroll down to chapter links below the bottom of the screen. The v26 builder was updated so the sticky outline panel has its own viewport-limited scroll area. Regenerated the v26 clickable HTML output and current clickable packet; manuscript content was unchanged.
+
+- Corrected sender: `OfficeAssist@BuyYourHomeLLC.com`
+- Corrected recipients: `Jenny@BuyYourHomeLLC.com`; `WesWill@BuyYourHomeLLC.com`
+- Corrected subject: `Corrected Gracious Millionaire v26 packet - scrollable clickable outline`
+- Corrected attachment: `outputs/Gracious Millionaire - Deep Integrated Whole Manuscript Rewrite v26 - Clickable GPT-5 Generated.html`
+- Corrected Sent Items verified: 2026-07-08T21:38:07-04:00
+- Corrected sent message id: `AQMkADZkMGMwNDI3LWU5ZjctNDgzMC1iMjdkLTY0NmRiN2IwNmIyZgBGAAADKGOvWJYjX0aEKaRpd0MYQQcAVSXargQY20aF7RLCkro4ggAAAgEJAAAAVSXargQY20aF7RLCkro4ggACbe9zSQAAAA==`
+
 ## Open Caveat
 
 This is an integrated manuscript rewrite package from the current project-room manuscript and notes. `working/missing-context.md` still records source gaps, including Jenny's future Marriage Number Two continuation and decisions about how much raw devotional style versus polished manuscript voice the final book should preserve.
