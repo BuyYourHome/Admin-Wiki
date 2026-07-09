@@ -8,4 +8,6 @@
 | REI BlackBook WebTools site manager URL | `https://my.reiblackbook.com/webtools/sites` | authoritative | Live browser/account surface. Requires authorized logged-in session before implementation. |
 | REI BlackBook live read-only tool survey | `working\tool-map.md` | working source | First-pass map of top navigation, WebTools Sites, BYH control panel, existing site IDs, and safety constraints from a logged-in browser session. |
 | Gracious Millionaire REI BlackBook site record | `working\gracious-millionaire-site.md` | working source | Site ID, URLs, merge-field values, completed setup steps, and remaining configuration needs for the new book site. |
+| Gracious Millionaire website iteration loop | `working\gracious-millionaire-iteration-loop.md` | working source | Repeatable process for live-site iterations, QA, and post-iteration suggestions. |
+| Gracious Millionaire website Iteration 001 | `working\gracious-millionaire-iteration-001.md` | working source | Records the first page/content pass: Home descriptive copy, Book Outline, shared chapter-status page, QA, and next suggestions. |
 | Website goals, page list, brand assets, approved copy, compliance language | Not yet provided | missing | Needed before drafting public-facing site content. |

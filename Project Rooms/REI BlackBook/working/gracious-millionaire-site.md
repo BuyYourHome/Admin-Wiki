@@ -34,17 +34,29 @@ Create a site called `Gracious Millionaire` for information related to the book 
 - Connected `graciousmillionaire.com` to REI BlackBook site ID `48842`.
 - Changed GoDaddy nameservers for `graciousmillionaire.com` from `ns68.domaincontrol.com` and `ns67.domaincontrol.com` to REI's required Cloudflare nameservers: `albert.ns.cloudflare.com` and `arya.ns.cloudflare.com`.
 - Re-checked the REI BlackBook nameserver status; REI reported `graciousmillionaire.com is active!`.
+- Created `Book Outline` at `https://u113450.h.reiblackbook.com/generic6/book-outline/`.
+- Created shared chapter-status page `Chapter Being Edited` at `https://u113450.h.reiblackbook.com/generic6/chapter-being-edited/`.
+- Updated the Home page Beaver Builder text to describe the Gracious Millionaire book project and linked the hero button to the outline page.
+
+## Current Content Notes
+
+- Iteration loop: `working\gracious-millionaire-iteration-loop.md`.
+- Latest implementation report: `working\gracious-millionaire-iteration-001.md`.
+- Book Outline contains the 25 current working chapter titles and links all titles to the shared `Chapter Being Edited` page.
+- Chapter content is not published on the site.
 
 ## Not Yet Configured
 
 - SSL/TLS readiness for public `https://graciousmillionaire.com`; immediately after nameserver update, DNS resolved to Cloudflare and HTTP redirected, but HTTPS was not completing the TLS handshake yet. REI says DNS/nameserver propagation can take up to 24 hours.
-- Actual page copy about the book.
+- Remaining default page copy for About, Services/Updates, Contact, Blog, and Thank You.
 - Contact form fields and notification routing.
 - Excerpt request workflow.
 - Email campaign copy for excerpts.
 - Consent language for collecting contact information.
 - Review of generated Web Forms, Optin Popups, Action Sets, or Email Campaigns.
 - Published/mobile QA of the generated site.
+- Navigation/menu cleanup, including adding `Book Outline` and renaming/repurposing `Services`.
+- Cleanup decision for redundant individual chapter placeholder pages created before Wes clarified that all chapter links can point to the same shared landing page.
 
 ## Safety Notes
 
