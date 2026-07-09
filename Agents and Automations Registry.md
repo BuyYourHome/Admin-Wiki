@@ -38,6 +38,7 @@ Use [[Agent Unit Standard]] for the standard package behind an agent-like operat
 | Wes's Voice | Wiki-managed skill plus project room | Planning | On demand | `skills\wes-voice\SKILL.md`; `Project Rooms\Wes's Voice\README.md` |
 | New Project | Wiki-managed skill plus project room | Draft | On demand | `skills\new-project\SKILL.md`; `Project Rooms\New Project\README.md` |
 | REI BlackBook | Wiki-managed skill plus project room | Draft | On demand | `skills\rei-blackbook\SKILL.md`; `Project Rooms\REI BlackBook\README.md` |
+| GM Mode Site Iteration | GM Mode heartbeat automation plus REI BlackBook project room | Active | Weekly Monday morning; audit-and-propose only | `skills\rei-blackbook\SKILL.md`; `Project Rooms\REI BlackBook\README.md`; automation id `gm-mode-site-iteration` |
 | Investigate Computer | Wiki-managed skill plus project room plus heartbeat automation | Active | Daily at 6:00 AM Eastern; email Wes only when an issue is detected | `skills\investigate-computer\SKILL.md`; `Project Rooms\Investigate Computer\README.md`; app automation id `investigate-computer-daily-check` |
 | Jenny Daily Email Summary | Behavior inside Email Summary heartbeat | Active | Runs once daily at/after 8:00 AM Eastern with the Email Summary heartbeat; emails Jenny from OfficeAssist and verifies Sent Items | `skills\email-summary\SKILL.md`; `Email Summary` prompt notes |
 
@@ -633,6 +634,40 @@ Important rules:
 - Do not buy domains, paid add-ons, ads, templates, or subscriptions without Wes's explicit approval for the specific purchase.
 - Do not publish a site, change DNS, change tracking pixels, replace live content, send texts, alter live lead workflows, or change account settings without Wes's explicit approval for that specific action.
 - Record missing website goals, brand assets, compliance language, and access blockers in the project room before drafting final public-facing copy.
+
+## GM Mode Site Iteration
+
+Type: GM Mode heartbeat automation plus REI BlackBook project room.
+
+Status: active.
+
+Automation id:
+
+- `gm-mode-site-iteration`
+
+Schedule:
+
+- Weekly Monday morning.
+
+Purpose:
+
+- Run the routine Gracious Millionaire website development loop in audit-and-propose mode.
+- Inspect the public Gracious Millionaire site and refresh or supersede the local element map.
+- Update the improvement backlog or recommendations.
+- Draft safe replacement copy for mapped generic/off-topic elements when useful.
+- Record QA findings for page titles, navigation, links, forms, images, sidebars, footer, generic-template remnants, public privacy risk, SSL/domain status, and next live-edit actions.
+
+Defined in:
+
+- `C:\Codex\Wiki Files\skills\rei-blackbook\SKILL.md`
+- `C:\Codex\Wiki Files\Project Rooms\REI BlackBook\README.md`
+- App automation id `gm-mode-site-iteration`
+
+Important limitations:
+
+- Default behavior is audit and propose only.
+- Do not make live REI BlackBook edits, publish content, activate form/SMS/email workflows, upload personal photos, expose or change public contact details, change DNS/domain settings, purchase anything, push Git changes, or send messages from the automation unless Wes explicitly approves that specific action.
+- Keep routine quiet runs short. Notify Wes when meaningful findings, blockers, broken pages, generic/off-topic content, public privacy risk, workflow/form risk, SSL/domain issues, or live-edit recommendations are found.
 
 ## Invoice Entry
 
