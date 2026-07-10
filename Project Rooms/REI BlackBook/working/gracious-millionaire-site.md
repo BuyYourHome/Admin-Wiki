@@ -71,6 +71,7 @@ Create a site called `Gracious Millionaire` for information related to the book 
 - Scheduled GM Mode pass on 2026-07-10 changed the Request Updates page footer/sidebar About widget from generic multi-service-company copy to `About the Book` with a book-focused Wes/Jenny description. Public QA passed on the public and preview contact URLs. Other pages still need the same generic About-widget cleanup.
 - Manual GM Mode rerun on 2026-07-10 repeated the About-widget cleanup on Book Themes and About the Book. Public QA passed on both pages. Update Request Received and Editing Notes still need the same cleanup; the browser connector timed out while opening the next builder page.
 - Heartbeat GM Mode run on 2026-07-10 retried the remaining About-widget cleanup on Update Request Received, but the Chrome builder session timed out before any public change was confirmed. Public QA confirmed Update Request Received and Editing Notes still show the generic About-widget placeholder. Close stale GM builder tabs or restart the Chrome connector before retrying the remaining widget cleanup.
+- Heartbeat GM Mode read-only audit on 2026-07-10 confirmed all mapped public pages returned HTTP 200 and found that the visible header logo is correct, but the header still references the old generic REI BlackBook retina logo asset in `data-retina`. Fix the retina logo reference when the header/logo settings path is stable.
 
 ## Safety Notes
 

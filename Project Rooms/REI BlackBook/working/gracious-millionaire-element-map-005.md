@@ -68,13 +68,20 @@ Heartbeat GM Mode run, 2026-07-10 09:52 Eastern:
 - No live website change was confirmed in this run.
 - Recommended next implementation route: before another widget-edit attempt, close stale GM builder tabs in Chrome or restart the Chrome connector session, then open only one builder page at a time. If the builder still times out on `Update Request Received`, skip to a different low-risk improvement such as book-cover placement or footer copyright on a page that loads reliably.
 
+Heartbeat GM Mode read-only audit, 2026-07-10 10:52 Eastern:
+
+- Avoided the repeated Beaver Builder About-widget path because the current map records repeated Chrome/builder timeouts and no evidence of a stable reset was available.
+- Public status checks returned `200` for Home, Book Themes, About the Book, Request Updates, Update Request Received, Editing Notes, Book Outline, and Chapter Being Edited.
+- New finding: the visible header logo uses the Gracious Millionaire header image, but the header image markup still has a `data-retina` reference to the old generic REI BlackBook retina logo asset. This may affect high-DPI/retina displays and should be replaced with a Gracious Millionaire retina asset or removed when the header/logo settings path is stable.
+- Contact page public audit still shows `GET STARTED >>`; the form button remains a later form-presentation cleanup item.
+
 ## Current Global State
 
 | Element | Current state after live pass | Remaining action |
 | --- | --- | --- |
 | Main navigation on original template pages | `Home`, `Book Themes`, `About the Book`, `Request Updates`, `Editing Notes`. | Keep; verify after deeper builder/menu work. |
 | Main navigation on newer Book Outline and Chapter Being Edited pages | Still shows `Home`, `Services`, `About`, `Contact`, `Blog`. | Fix menu inheritance or menu assignment for newer pages. |
-| Site logo | Updated live on `https://graciousmillionaire.com/` to use the uploaded Gracious Millionaire header logo. Public HTML no longer references `generic_logo.png`. | Keep monitoring public pages for any secondary theme areas that still inherit an old logo. |
+| Site logo | Updated live on `https://graciousmillionaire.com/` to use the uploaded Gracious Millionaire header logo. Public HTML no longer references `generic_logo.png`, but the header image still has a `data-retina` reference to the old generic REI BlackBook retina logo asset. | Replace/remove the old generic retina-logo reference when the header/logo settings path is stable. |
 | Footer copyright | Still `Copyright 2015 . All rights reserved.` | Update when footer editing path is confirmed. |
 | Shared/sidebar About Us widget | Request Updates, Book Themes, and About the Book now use `About the Book` with book-focused copy. Update Request Received and Editing Notes still show the generic multi-service-company placeholder. | Repeat the proven Beaver Builder widget-settings edit on remaining pages when Chrome builder navigation is stable, or find a confirmed global/template edit path. |
 | Shared/sidebar Blog widget | Still shows generic internet-success/creative/goals posts. | Replace with book update links or hide until approved posts exist. |
@@ -258,6 +265,6 @@ Recommended order:
 
 1. Repeat the proven Text-widget settings edit path on `Update Request Received` and `Editing Notes` only after stale GM builder tabs are closed or Chrome connector navigation is stable, or identify a confirmed global/template edit path.
 2. Redesign the Request Updates/contact page around the `Contact Wes` structure Wes referenced, including better button wording and form presentation while avoiding outbound workflow activation or lead-recipient changes unless separately approved.
-3. Place the uploaded Gracious Millionaire book cover on a public page through Beaver Builder or WordPress Media, then QA desktop/mobile rendering.
-4. Fix menu inheritance/assignment so Book Outline and Chapter Being Edited show the updated navigation labels.
-5. Replace or hide generic Blog/Categories widgets and search blocks that do not support the book project, then fix footer copyright and any remaining generic footer/sidebar public contact blocks.
+3. Replace/remove the old generic `data-retina` logo reference in the header so high-DPI displays do not inherit generic REI BlackBook branding.
+4. Place the uploaded Gracious Millionaire book cover on a public page through Beaver Builder or WordPress Media, then QA desktop/mobile rendering.
+5. Fix menu inheritance/assignment so Book Outline and Chapter Being Edited show the updated navigation labels, then replace/hide generic Blog/Categories widgets and fix footer copyright.
