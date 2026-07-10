@@ -14,5 +14,6 @@
 | Gracious Millionaire element map 001 | `working\gracious-millionaire-element-map-001.md` | working source | Browser crawl of current pages, generic/off-topic elements, and book-focused replacement directions for the next live edit pass. |
 | Gracious Millionaire element map 002 | `working\gracious-millionaire-element-map-002.md` | working source | Refreshed after first scheduled GM Mode pass; records live page-title/navigation improvements and remaining generic template content. |
 | Gracious Millionaire element map 003 | `working\gracious-millionaire-element-map-003.md` | working source | Refreshed after manual GM Mode rerun; records live About page body/feature/CTA cleanup and remaining generic shared template content. |
+| Gracious Millionaire element map 004 | `working\gracious-millionaire-element-map-004.md` | working source | Refreshed after scheduled GM Mode pass; records live Book Themes heading/service-block/CTA cleanup and remaining generic shared template content. |
 | GM Mode run lock | `working\gm-mode-run-lock.md` | working control | Inactive template and coordination rule for preventing overlapping GM Mode site-iteration runs. |
 | Website goals, page list, brand assets, approved copy, compliance language | Not yet provided | missing | Needed before drafting public-facing site content. |

@@ -43,7 +43,7 @@ Create a site called `Gracious Millionaire` for information related to the book 
 
 - Iteration loop: `working\gracious-millionaire-iteration-loop.md`.
 - Latest implementation report: `working\gracious-millionaire-iteration-001.md`.
-- Current full element cleanup map: `working\gracious-millionaire-element-map-003.md`.
+- Current full element cleanup map: `working\gracious-millionaire-element-map-004.md`.
 - Book Outline contains the 25 current working chapter titles and links all titles to the shared `Chapter Being Edited` page.
 - Chapter content is not published on the site.
 
@@ -63,6 +63,7 @@ Create a site called `Gracious Millionaire` for information related to the book 
 - Full element audit found generic template content still present on Services, About, Contact, Blog, Thank You, sidebars, categories, stock images, logo, and footer; see `working\gracious-millionaire-element-map-001.md`.
 - First scheduled GM Mode pass changed safe page titles/navigation labels on original template pages: Services -> Book Themes, About -> About the Book, Contact -> Request Updates, Blog -> Editing Notes, and Thank You -> Update Request Received. Remaining generic content is tracked in `working\gracious-millionaire-element-map-002.md`.
 - Manual GM Mode rerun replaced the About page Lorem Ipsum, three generic feature headings, and generic CTA with book-focused text. Remaining generic shared/sidebar/footer content is tracked in `working\gracious-millionaire-element-map-003.md`.
+- Scheduled GM Mode pass replaced the Book Themes visible heading, six generic service blocks, and generic CTA with book-focused theme text. Remaining generic shared/sidebar/footer content is tracked in `working\gracious-millionaire-element-map-004.md`.
 
 ## Safety Notes
 
