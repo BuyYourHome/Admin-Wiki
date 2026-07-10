@@ -131,11 +131,12 @@ Improved:
 
 - Browser/page title is `Request Updates`.
 - Navigation label changed on the original template pages.
+- Main visible heading now says `Contact Wes and Jenny`.
+- Lead text now says `Fill out the form below and we'll follow up about the Gracious Millionaire book project.`
+- Public QA confirmed the form still shows Name, Email, Phone, SMS consent, and the existing submit button.
 
 Remaining:
 
-- Visible heading still says `Contact Us`.
-- Lead text still says `Fill out the form below and we'll contact you shortly!`.
 - Button still says `GET STARTED >>`.
 - Public street address and phone remain visible.
 - SMS consent remains visible.
