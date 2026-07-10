@@ -60,6 +60,14 @@ Manual GM Mode rerun, 2026-07-10 09:52 Eastern:
   - `Update Request Received` / `/thank-you/`
   - `Editing Notes` / `/blog/`
 
+Heartbeat GM Mode run, 2026-07-10 09:52 Eastern:
+
+- Retried the remaining About-widget cleanup on `Update Request Received` first.
+- The Chrome builder session timed out while running the single-page Beaver Builder edit path before any public change was confirmed.
+- Public QA after the timeout confirmed both `Update Request Received` and `Editing Notes` still show the generic `About Us` / `multi-service company` widget text.
+- No live website change was confirmed in this run.
+- Recommended next implementation route: before another widget-edit attempt, close stale GM builder tabs in Chrome or restart the Chrome connector session, then open only one builder page at a time. If the builder still times out on `Update Request Received`, skip to a different low-risk improvement such as book-cover placement or footer copyright on a page that loads reliably.
+
 ## Current Global State
 
 | Element | Current state after live pass | Remaining action |
@@ -248,7 +256,7 @@ Remaining:
 
 Recommended order:
 
-1. Repeat the proven Text-widget settings edit path on `Update Request Received` and `Editing Notes` when Chrome builder navigation is stable, or identify a confirmed global/template edit path.
+1. Repeat the proven Text-widget settings edit path on `Update Request Received` and `Editing Notes` only after stale GM builder tabs are closed or Chrome connector navigation is stable, or identify a confirmed global/template edit path.
 2. Redesign the Request Updates/contact page around the `Contact Wes` structure Wes referenced, including better button wording and form presentation while avoiding outbound workflow activation or lead-recipient changes unless separately approved.
 3. Place the uploaded Gracious Millionaire book cover on a public page through Beaver Builder or WordPress Media, then QA desktop/mobile rendering.
 4. Fix menu inheritance/assignment so Book Outline and Chapter Being Edited show the updated navigation labels.
