@@ -4,6 +4,7 @@
 
 - `gracious-millionaire-logo-concept-2026-07-09.png`
 - `gracious-millionaire-book-cover-concept-2026-07-09.png`
+- `gracious-millionaire-logo-header-2026-07-09.png`
 
 ## Use
 
@@ -18,6 +19,7 @@ Wes instruction, 2026-07-09:
 Website guidance:
 
 - Use the logo in website headers, footer brand areas, or Gracious Millionaire cross-promotion sections.
+- Use `gracious-millionaire-logo-header-2026-07-09.png` for the website header, because it is cropped from the approved logo concept sheet for web-logo use.
 - Use the book-cover concept only where a book/cover visual is appropriate, such as a landing page, card, or feature section.
 - Keep the Gracious Millionaire presentation restrained, literary, and faith-centered.
 - Do not style these assets as a luxury wealth brand. The Gracious Millionaire project guidance treats real-estate wealth as the context, not the subject.
@@ -26,3 +28,9 @@ Alt text:
 
 - Logo: `Gracious Millionaire logo`
 - Book cover: `Gracious Millionaire book cover concept`
+
+## 2026-07-09 Manual Upload Attempt
+
+The manual GM Mode run created `gracious-millionaire-logo-header-2026-07-09.png` from the approved logo concept and opened the WordPress Media Library upload page. The Chrome file chooser still failed with `Not allowed` when trying to upload the header logo and book-cover image.
+
+To enable file upload, go to `chrome://extensions` in Chrome, click Details under the Codex extension, and enable "Allow access to file URLs." See `https://developers.openai.com/codex/app/chrome-extension#upload-files` for details.
