@@ -78,6 +78,7 @@ GM Mode rules:
 6. Do not publish manuscript chapter content unless Wes explicitly approves that content for public use. Chapter links may point to the shared editing-status page when content is not ready.
 7. Do not activate excerpt email, SMS, lead workflows, contact-form routing changes, or public street-address display changes without explicit approval for that workflow or public detail.
 8. Personal photos from Google Photos may be selected for planning only when Wes authorizes it. Do not upload them publicly until they have been selected for the site, and do not commit the image files to GitHub without explicit approval.
+9. During GM Mode scheduled runs, retry approved Google Photos retrieval as part of the image-replacement backlog. Avoid any download/open path that launches Microsoft Photos or creates repeated Microsoft Photos windows; use the logged-in Chrome session and browser-controlled download/export/save paths only. If Chrome cannot save without opening Microsoft Photos, record the blocker and continue with text/content cleanup instead of trying repeated downloads.
 
 GM scheduled iteration:
 
@@ -107,6 +108,7 @@ GM scheduled iteration:
 - Keep a local element map before and after live edits. The map should separate current state from book-focused replacement direction so the next implementation pass can update the site without inventing copy inside the browser.
 - Chrome file uploads through the Codex extension may require `Allow access to file URLs` under the Codex extension details at `chrome://extensions`. If local photo upload fails with `Not allowed`, record the blocker and use web-sized local copies only after Wes has approved those photos for public use.
 - Do not commit personal Google Photos or other private image files to GitHub unless Wes explicitly approves committing those files. It is acceptable to commit a Markdown plan that references local-only photo filenames and privacy decisions.
+- Repeated Google Photos downloads can open separate Microsoft Photos windows on Wes's computer and interfere with browser control. For GM Mode photo retrieval, avoid OS photo-viewer launch paths and stop after the first such launch pattern is detected.
 
 ## Output Standards
 

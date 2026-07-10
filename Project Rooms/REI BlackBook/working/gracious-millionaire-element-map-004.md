@@ -41,7 +41,7 @@ Public QA:
 | Shared/sidebar Blog widget | Still shows generic internet-success/creative/goals posts. | Replace with book update links or hide until approved posts exist. |
 | Shared/sidebar Categories widget | Still `All`, `Best Tips Ever`, `Success Stories`. | Replace with book categories or hide. |
 | Search form | Still appears on many pages. | Keep only if Editing Notes/updates remain active; otherwise remove from public pages. |
-| Stock images/backgrounds | Still generic stock assets. | Replace after Chrome upload permission and public-photo approval. |
+| Stock images/backgrounds | Still generic stock assets. | Retry approved Google Photos retrieval using Chrome-controlled save/export/download paths only; stop and record a blocker if downloads launch Microsoft Photos windows. Replace after upload permission and public-photo approval. |
 
 ## Page Status
 
@@ -231,4 +231,4 @@ Recommended order:
 3. Fix menu inheritance/assignment so Book Outline and Chapter Being Edited show the updated navigation labels.
 4. Replace or hide generic shared/sidebar widgets.
 5. Fix footer copyright.
-6. Continue deferring image replacement until upload permission and public-photo approvals are complete.
+6. Retry Google Photos retrieval using a Chrome-controlled path that does not open Microsoft Photos. Continue deferring image replacement until upload permission and public-photo approvals are complete.
