@@ -8,6 +8,8 @@ Interview mode is based on Dialogue mode, but it adds Jean as an active intervie
 
 Use the speaker label `Jean`.
 
+When new substantive book/source material arrives, run Interview mode first. This creates the source-to-role map, interview scenes, speaker boundaries, and source-confidence audit before the material is passed into Rewrite mode for whole-manuscript integration.
+
 ## Wes's Interviewer Direction
 
 Use these rules whenever Interview mode is selected:
@@ -115,7 +117,9 @@ Before drafting, read and use:
 10. Produce the manuscript and review packet.
    - Save the Interview mode manuscript as a separate output version.
    - Create a clickable outline by chapter or interview scene.
-   - Include a note that the interview manuscript is generated from source material and is not a verbatim transcript.
+   - Include a note near the beginning that the interview manuscript is generated from source material and is not a verbatim transcript.
+   - Do not place repeated GPT, AI-generation, source-process, or model-explanation notes at the top of each chapter. The beginning of the manuscript is sufficient for attribution and provenance.
+   - Include the current Gracious Millionaire book cover at the top of the manuscript and clickable packet before the outline. Use `outputs/book-cover/gracious-millionaire-book-cover-wes-and-jenny-browning-2026-07-10-email.jpg` for review packets unless a newer cover is explicitly marked current.
 
 ## Guardrails
 
@@ -127,6 +131,7 @@ Before drafting, read and use:
 - Do not flatten tension between Wes and Jenny into easy agreement.
 - Do not limit Jean's questions artificially. Limit unsupported answers, unsupported factual assertions, and forced conclusions.
 - Do not use process-facing phrases such as "the source says," "the transcript preserved," or "the input states" in the reader-facing manuscript.
+- Do not repeat GPT/model explanation lines at chapter starts. Use one manuscript-level attribution/provenance note near the beginning.
 - Where an answer is missing, have Jean ask the question and leave it unanswered, keep the passage as narration, or mark the need for more source material.
 
 ## Quality Gate

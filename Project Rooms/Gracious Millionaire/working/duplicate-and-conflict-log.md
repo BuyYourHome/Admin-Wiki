@@ -7,6 +7,7 @@
 - `2025-04-10-gracious-millionaire-abundance-reply.md` quotes the earlier abundance email and adds a stewardship note.
 - `2026-06-21-143811-gracious-millionaire-new-chapter-outline.md` and `2026-06-21-152052-gracious-millionaire-new-chapter-outline-forward.md` are earlier/incomplete versions of the Tensity/Rose Place chapter outline. Use `2026-06-21-164026-gracious-millionaire-new-chapter-outline-forward-to-jean.md` as the controlling source.
 - `2026-06-22-212547-gracious-millionaire-database-systems-convergence.md` is an earlier version of the Convergence chapter seed. Use `2026-06-22-224534-gracious-millionaire-systems-convergence-expanded-forward.md` as the controlling source because it adds sign-business automation, the early Radio Shack computer story, AI/Jean, and spreadsheet-evolution material.
+- `2026-07-10-152418-gracious-millionaire-jenny-forward-add-to-manuscript.md` forwards and duplicates the body of `2026-07-10-141649-gracious-millionaire-jenny-marriage-number-two-coastal-surrender.md`, adding only the explicit instruction to add it to the manuscript from Jenny's story. Treat the earlier direct Jenny source as the controlling source body and the forward as a fulfilled clarifying instruction.
 
 ## Conflicts
 

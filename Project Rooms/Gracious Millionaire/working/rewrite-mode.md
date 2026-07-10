@@ -6,6 +6,8 @@ Use Rewrite mode when Wes asks for the Gracious Millionaire manuscript to be rew
 
 Rewrite mode is not a polish pass. It must not simply start from the latest manuscript and smooth, bridge, or lightly rephrase it. The prior manuscript may be used as a reference, but the controlling input is the project-room source set, source inventory, current factual notes, book objectives, style guide, and any current Wes/Jenny direction.
 
+When new substantive book/source material arrives, run Interview mode first and then Rewrite mode. The Interview mode pass should create source-grounded Jean/Wes/Jenny scenes and role boundaries. Rewrite mode then uses those results, along with the full source set, to revise the whole manuscript so the new material changes structure, emphasis, chapter sequence, redundancy, and theme development where appropriate.
+
 ## Trigger
 
 Use this mode when Wes says `Rewrite mode`, asks for a whole-manuscript rewrite that should materially change from source growth, or expresses concern that a rewrite is not changing enough.
@@ -24,6 +26,7 @@ Before drafting, read and use:
 - `working/manuscript-edit-and-fact-notes.md`
 - all authoritative source files needed for the current manuscript span
 - the latest manuscript only as a reference, not as the prose base
+- the latest Interview mode pass and its working notes when Rewrite mode is being run after new subject material
 
 ## Required Steps
 
@@ -56,6 +59,8 @@ Before drafting, read and use:
    - Do not merely revise the latest manuscript paragraph by paragraph.
    - Let whole-book context affect structure, sequence, selection, emphasis, and chapter endings.
    - Save the new manuscript in `outputs/` with a versioned name such as `Gracious Millionaire - Manuscript Rewrite v27.md`.
+   - Include one manuscript-level AI-generation/provenance note near the beginning, not repeated GPT/model notes at the top of each chapter.
+   - Include the current Gracious Millionaire book cover at the top of the manuscript and clickable packet before the outline. Use `outputs/book-cover/gracious-millionaire-book-cover-wes-and-jenny-browning-2026-07-10-email.jpg` for review packets unless a newer cover is explicitly marked current.
 
 ## Quality Gate
 

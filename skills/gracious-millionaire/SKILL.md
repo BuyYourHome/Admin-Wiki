@@ -31,9 +31,23 @@ Use this skill for Gracious Millionaire project-room processing. OfficeAssist em
 6. Put review-ready drafts or final outputs in `outputs\`.
 7. Mark unsupported factual or autobiographical claims instead of smoothing them into narrative.
 
+## New Subject Material Default
+
+When new substantive Gracious Millionaire book/source material arrives, run Interview mode first and then Rewrite mode unless Wes explicitly limits the task to intake, formatting, a typo fix, or another narrow action.
+
+Interview mode should first turn the new material into source-grounded Jean/Wes/Jenny interview or conversation scenes with role boundaries, question maps, source-confidence notes, and voice/fairness review. Rewrite mode should then integrate that interview-informed material into the whole manuscript so chapter context, themes, redundancy, sequencing, and chapter jobs are reconsidered across the book.
+
+## Manuscript Packaging
+
+Generated manuscripts and clickable review packets should include one AI-generation/provenance note near the beginning of the manuscript. Do not place repeated GPT, AI-generation, source-process, or model-explanation notes at the top of each chapter.
+
+Generated manuscripts and clickable review packets should include the current Gracious Millionaire book cover at the top before the outline. Use `outputs/book-cover/gracious-millionaire-book-cover-wes-and-jenny-browning-2026-07-10-email.jpg` for review packets and `outputs/book-cover/gracious-millionaire-book-cover-wes-and-jenny-browning-2026-07-10.png` for full-resolution use unless a newer cover is explicitly marked current.
+
 ## Rewrite Mode
 
 Use Rewrite mode when Wes says `Rewrite mode`, asks for a whole-manuscript rewrite where each chapter should materially affect the others, or expresses concern that a rewrite is not changing enough as the source base grows.
+
+Also use Rewrite mode after the required Interview mode pass for new substantive subject material.
 
 Before drafting in Rewrite mode, read `Project Rooms\Gracious Millionaire\working\rewrite-mode.md` and follow it. The required Rewrite mode steps are:
 
@@ -68,6 +82,8 @@ Dialogue mode should read like a crafted book dialogue, not a fake transcript. D
 ## Interview Mode
 
 Use Interview mode when Wes says `Interview mode`, asks for Jean to interview Wes and Jenny, or asks for a manuscript version where interview questions guide the conversation.
+
+Also use Interview mode first for new substantive subject material before any Rewrite mode integration pass.
 
 Before drafting in Interview mode, read `Project Rooms\Gracious Millionaire\working\interview-mode.md` and follow it. The required Interview mode steps are:
 
