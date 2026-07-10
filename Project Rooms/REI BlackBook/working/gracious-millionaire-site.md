@@ -68,6 +68,7 @@ Create a site called `Gracious Millionaire` for information related to the book 
 - Scheduled GM Mode pass successfully retried a Chrome-controlled Google Photos download without opening Microsoft Photos, then replaced the Update Request Received visible heading and generic confirmation copy with book-update confirmation language. Remaining generic shared/sidebar/footer content is tracked in `working\gracious-millionaire-element-map-005.md`.
 - Wes approved using `outputs\gracious-millionaire-assets\gracious-millionaire-logo-concept-2026-07-09.png` and `outputs\gracious-millionaire-assets\gracious-millionaire-book-cover-concept-2026-07-09.png` in the next GM Mode website run. Prioritize the logo replacement and an appropriate cover visual placement.
 - Manual GM Mode run created `outputs\gracious-millionaire-assets\gracious-millionaire-logo-header-2026-07-09.png` as a web-header crop from the approved logo concept, but WordPress upload is still blocked by Chrome Codex extension file access (`Not allowed`). Enable `Allow access to file URLs` under the Codex extension before the next upload attempt.
+- Scheduled GM Mode pass on 2026-07-10 changed the Request Updates page footer/sidebar About widget from generic multi-service-company copy to `About the Book` with a book-focused Wes/Jenny description. Public QA passed on the public and preview contact URLs. Other pages still need the same generic About-widget cleanup.
 
 ## Safety Notes
 

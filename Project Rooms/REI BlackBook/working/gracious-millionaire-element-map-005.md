@@ -39,6 +39,15 @@ Public QA:
 - Both public checks found the new heading and new confirmation copy.
 - Both public checks did not find the old `Thank You for Contacting Us!` heading or the old 24-48 hour callback copy.
 
+Scheduled GM Mode update, 2026-07-10 09:22 Eastern:
+
+- On the Request Updates page, opened the Beaver Builder settings for the footer/sidebar `About Us` Text widget and changed it to:
+  - Title: `About the Book`
+  - Body: `Gracious Millionaire is the working title of a book by Wes and Jenny Browning about faith, stewardship, generosity, and the lessons still being shaped through their story.`
+- Published the Beaver Builder change.
+- Public QA passed on both `https://graciousmillionaire.com/contact/` and `https://u113450.h.reiblackbook.com/generic6/contact/`: the old `multi-service company` placeholder text is gone from that page, and the new book-focused About text is visible.
+- Follow-up public checks show the same generic About widget text still remains on `Book Themes`, `About the Book`, `Update Request Received`, and `Editing Notes`, so this edit should be repeated page-by-page or replaced through a confirmed global/template edit path.
+
 ## Current Global State
 
 | Element | Current state after live pass | Remaining action |
@@ -47,7 +56,7 @@ Public QA:
 | Main navigation on newer Book Outline and Chapter Being Edited pages | Still shows `Home`, `Services`, `About`, `Contact`, `Blog`. | Fix menu inheritance or menu assignment for newer pages. |
 | Site logo | Updated live on `https://graciousmillionaire.com/` to use the uploaded Gracious Millionaire header logo. Public HTML no longer references `generic_logo.png`. | Keep monitoring public pages for any secondary theme areas that still inherit an old logo. |
 | Footer copyright | Still `Copyright 2015 . All rights reserved.` | Update when footer editing path is confirmed. |
-| Shared/sidebar About Us widget | Still says Gracious Millionaire is a multi-service company with `[list business services here]`. | Replace with book-project description or hide widget. |
+| Shared/sidebar About Us widget | Request Updates now uses `About the Book` with book-focused copy. Book Themes, About the Book, Update Request Received, and Editing Notes still show the generic multi-service-company placeholder. | Repeat the proven Beaver Builder widget-settings edit on remaining pages, or find a confirmed global/template edit path. |
 | Shared/sidebar Blog widget | Still shows generic internet-success/creative/goals posts. | Replace with book update links or hide until approved posts exist. |
 | Shared/sidebar Categories widget | Still `All`, `Best Tips Ever`, `Success Stories`. | Replace with book categories or hide. |
 | Search form | Still appears on many pages. | Keep only if Editing Notes/updates remain active; otherwise remove from public pages. |
@@ -139,6 +148,7 @@ Improved:
 - Navigation label changed on the original template pages.
 - Main visible heading now says `Contact Wes and Jenny`.
 - Lead text now says `Fill out the form below and we'll follow up about the Gracious Millionaire book project.`
+- Footer/sidebar About widget now says `About the Book` and uses book-focused Wes/Jenny project copy instead of generic multi-service-company copy.
 - Public QA confirmed the form still shows Name, Email, Phone, SMS consent, and the existing submit button.
 
 Remaining:
@@ -146,7 +156,7 @@ Remaining:
 - Button still says `GET STARTED >>`.
 - Public street address and phone remain visible.
 - SMS consent remains visible.
-- Sidebar widgets remain generic.
+- Blog, Categories, Contact Us, footer copyright, and form button remain generic or not yet redesigned.
 
 Boundary note:
 
@@ -226,8 +236,8 @@ Remaining:
 
 Recommended order:
 
-1. Redesign the Request Updates/contact page around the `Contact Wes` structure Wes referenced, including better heading, helper text, button wording, and form presentation while avoiding outbound workflow activation or lead-recipient changes unless separately approved.
-2. Place the uploaded Gracious Millionaire book cover on a public page through Beaver Builder or WordPress Media, then QA desktop/mobile rendering.
-3. Fix menu inheritance/assignment so Book Outline and Chapter Being Edited show the updated navigation labels.
-4. Replace or hide generic shared/sidebar widgets and search/categories that do not support the book project.
-5. Fix footer copyright and any remaining generic footer/sidebar public contact blocks.
+1. Repeat the proven Text-widget settings edit path on the remaining pages that still show the generic `multi-service company` About widget, or identify a confirmed global/template edit path.
+2. Redesign the Request Updates/contact page around the `Contact Wes` structure Wes referenced, including better button wording and form presentation while avoiding outbound workflow activation or lead-recipient changes unless separately approved.
+3. Place the uploaded Gracious Millionaire book cover on a public page through Beaver Builder or WordPress Media, then QA desktop/mobile rendering.
+4. Fix menu inheritance/assignment so Book Outline and Chapter Being Edited show the updated navigation labels.
+5. Replace or hide generic Blog/Categories widgets and search blocks that do not support the book project, then fix footer copyright and any remaining generic footer/sidebar public contact blocks.
