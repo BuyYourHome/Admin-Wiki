@@ -48,6 +48,18 @@ Scheduled GM Mode update, 2026-07-10 09:22 Eastern:
 - Public QA passed on both `https://graciousmillionaire.com/contact/` and `https://u113450.h.reiblackbook.com/generic6/contact/`: the old `multi-service company` placeholder text is gone from that page, and the new book-focused About text is visible.
 - Follow-up public checks show the same generic About widget text still remains on `Book Themes`, `About the Book`, `Update Request Received`, and `Editing Notes`, so this edit should be repeated page-by-page or replaced through a confirmed global/template edit path.
 
+Manual GM Mode rerun, 2026-07-10 09:52 Eastern:
+
+- Repeated the proven Beaver Builder Text-widget edit path on:
+  - `Book Themes` / `/services/`
+  - `About the Book` / `/about-2/`
+- Public QA passed with `curl.exe`: both pages now show the `About the Book` widget title and the book-focused Wes/Jenny description, and no longer show the `multi-service company` placeholder in that widget.
+- The batch browser edit timed out while moving into the next page. A recovery attempt to open `Update Request Received` with `?fl_builder` also timed out before the builder finished loading.
+- No further live edits were made in this run after the timeout.
+- Remaining generic About-widget pages confirmed by public QA:
+  - `Update Request Received` / `/thank-you/`
+  - `Editing Notes` / `/blog/`
+
 ## Current Global State
 
 | Element | Current state after live pass | Remaining action |
@@ -56,7 +68,7 @@ Scheduled GM Mode update, 2026-07-10 09:22 Eastern:
 | Main navigation on newer Book Outline and Chapter Being Edited pages | Still shows `Home`, `Services`, `About`, `Contact`, `Blog`. | Fix menu inheritance or menu assignment for newer pages. |
 | Site logo | Updated live on `https://graciousmillionaire.com/` to use the uploaded Gracious Millionaire header logo. Public HTML no longer references `generic_logo.png`. | Keep monitoring public pages for any secondary theme areas that still inherit an old logo. |
 | Footer copyright | Still `Copyright 2015 . All rights reserved.` | Update when footer editing path is confirmed. |
-| Shared/sidebar About Us widget | Request Updates now uses `About the Book` with book-focused copy. Book Themes, About the Book, Update Request Received, and Editing Notes still show the generic multi-service-company placeholder. | Repeat the proven Beaver Builder widget-settings edit on remaining pages, or find a confirmed global/template edit path. |
+| Shared/sidebar About Us widget | Request Updates, Book Themes, and About the Book now use `About the Book` with book-focused copy. Update Request Received and Editing Notes still show the generic multi-service-company placeholder. | Repeat the proven Beaver Builder widget-settings edit on remaining pages when Chrome builder navigation is stable, or find a confirmed global/template edit path. |
 | Shared/sidebar Blog widget | Still shows generic internet-success/creative/goals posts. | Replace with book update links or hide until approved posts exist. |
 | Shared/sidebar Categories widget | Still `All`, `Best Tips Ever`, `Success Stories`. | Replace with book categories or hide. |
 | Search form | Still appears on many pages. | Keep only if Editing Notes/updates remain active; otherwise remove from public pages. |
@@ -106,10 +118,10 @@ Improved:
 - Visible page heading says `Book Themes`.
 - Theme blocks describe `Stewardship`, `Faith and Calling`, `Work and Responsibility`, `Generosity`, `Jenny's Perspective`, and `Lessons Still Unfinished`.
 - CTA says `Explore the outline` and describes the chapter-outline/editing-status flow.
+- Footer/sidebar About widget now says `About the Book` and uses book-focused Wes/Jenny project copy instead of generic multi-service-company copy.
 
 Remaining:
 
-- Shared/sidebar About Us widget still contains generic multi-service-company language.
 - Shared/sidebar Blog and Categories widgets remain generic.
 - Public contact/address block remains visible in shared footer/sidebar area.
 - Footer copyright still says `Copyright 2015`.
@@ -127,10 +139,10 @@ Improved:
 - The page states the site is for updates, the chapter outline, editing status, and future excerpt requests.
 - Feature headings are `A Faith-Centered Story`, `Wes and Jenny's Reflections`, and `Stories Still Being Edited`.
 - CTA says `Follow the book's progress` and links to the book outline.
+- Footer/sidebar About widget now says `About the Book` and uses book-focused Wes/Jenny project copy instead of generic multi-service-company copy.
 
 Remaining:
 
-- Shared/sidebar About Us widget still contains generic multi-service-company language.
 - Shared/sidebar Blog and Categories widgets remain generic.
 - Public contact/address block remains visible in shared footer/sidebar area.
 - Footer copyright still says `Copyright 2015`.
@@ -236,7 +248,7 @@ Remaining:
 
 Recommended order:
 
-1. Repeat the proven Text-widget settings edit path on the remaining pages that still show the generic `multi-service company` About widget, or identify a confirmed global/template edit path.
+1. Repeat the proven Text-widget settings edit path on `Update Request Received` and `Editing Notes` when Chrome builder navigation is stable, or identify a confirmed global/template edit path.
 2. Redesign the Request Updates/contact page around the `Contact Wes` structure Wes referenced, including better button wording and form presentation while avoiding outbound workflow activation or lead-recipient changes unless separately approved.
 3. Place the uploaded Gracious Millionaire book cover on a public page through Beaver Builder or WordPress Media, then QA desktop/mobile rendering.
 4. Fix menu inheritance/assignment so Book Outline and Chapter Being Edited show the updated navigation labels.
