@@ -11,3 +11,4 @@
 - Any non-email drafts, notes, recordings, or outlines for *Gracious Millionaire*.
 - Any source documents for the Red Quartz, HOA foreclosure, and Providence Landing stories if factual precision matters.
 - Jenny's promised continuation about Marriage Number Two, if that material should become the next Jenny-authored real-estate section.
+- Context for `sources/images/IMG_50297292750663 (2).jpeg`: who is pictured, when and where it was taken, what story or property it belongs to, and whether it should be used in manuscript/review materials or kept only as archived source material.

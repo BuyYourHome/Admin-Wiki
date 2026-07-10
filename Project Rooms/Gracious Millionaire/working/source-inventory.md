@@ -2,6 +2,7 @@
 
 | Source | Type | Date | Folder | Status | Notes |
 | --- | --- | --- | --- | --- | --- |
+| `sources/images/IMG_50297292750663 (2).jpeg` | Image source | 2026-07-09 | Gracious Millionaire `sources/images/` | deferred/missing context | Uncaptioned project-room image source. It appears to show two people outdoors, but the project-room files do not identify who is pictured, the date, the property or story context, or whether it should be used in manuscript/review materials. Deferred pending Wes or Jenny context. |
 | [[2022-03-20-tribes]] | Email markdown | 2022-03-20 | Inbox/Gracious Millionaire/Tribes | authoritative | Short seed about meaningful work and tribes. |
 | [[2022-03-25-the-gracious-millionaire-blessing]] | Email markdown | 2022-03-25 | Inbox/Gracious Millionaire | authoritative | Red Quartz blessing/favor story. |
 | [[2022-03-30-the-gracious-millionaire-favor]] | Email markdown | 2022-03-30 | Inbox/Gracious Millionaire | authoritative | Favor chapter and HOA foreclosure strategy story. |
