@@ -39,13 +39,13 @@ Public QA:
 | --- | --- | --- |
 | Main navigation on original template pages | `Home`, `Book Themes`, `About the Book`, `Request Updates`, `Editing Notes`. | Keep; verify after deeper builder/menu work. |
 | Main navigation on newer Book Outline and Chapter Being Edited pages | Still shows `Home`, `Services`, `About`, `Contact`, `Blog`. | Fix menu inheritance or menu assignment for newer pages. |
-| Site logo | Still generic REI BlackBook `generic_logo.png`. | Replace with approved Gracious Millionaire wordmark/logo or text branding. |
+| Site logo | Still generic REI BlackBook `generic_logo.png`. | Next GM Mode run should use `outputs\gracious-millionaire-assets\gracious-millionaire-logo-concept-2026-07-09.png` per Wes's 2026-07-09 instruction. |
 | Footer copyright | Still `Copyright 2015 . All rights reserved.` | Update when footer editing path is confirmed. |
 | Shared/sidebar About Us widget | Still says Gracious Millionaire is a multi-service company with `[list business services here]`. | Replace with book-project description or hide widget. |
 | Shared/sidebar Blog widget | Still shows generic internet-success/creative/goals posts. | Replace with book update links or hide until approved posts exist. |
 | Shared/sidebar Categories widget | Still `All`, `Best Tips Ever`, `Success Stories`. | Replace with book categories or hide. |
 | Search form | Still appears on many pages. | Keep only if Editing Notes/updates remain active; otherwise remove from public pages. |
-| Stock images/backgrounds | Still generic stock assets. | Use the selected local photos only after Wes approves public photo use and upload path. |
+| Stock images/backgrounds | Still generic stock assets. | Next GM Mode run should add/use `outputs\gracious-millionaire-assets\gracious-millionaire-book-cover-concept-2026-07-09.png` where a cover visual is appropriate. Continue treating personal Google Photos as separate assets that need explicit public-photo approval. |
 
 ## Page Status
 
@@ -208,4 +208,4 @@ Recommended order:
 2. Fix menu inheritance/assignment so Book Outline and Chapter Being Edited show the updated navigation labels.
 3. Replace or hide generic shared/sidebar widgets.
 4. Fix footer copyright.
-5. Replace stock images only after Wes approves the selected photos for public use and the browser upload path is confirmed.
+5. Use the approved Gracious Millionaire logo and book-cover concept in the next run: replace the generic logo and place the cover concept where a cover visual fits. Keep personal Google Photos separate unless Wes explicitly approves those specific photos for public use.

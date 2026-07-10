@@ -9,6 +9,12 @@
 
 Use these assets when REI BlackBook needs to reference, promote, or link to the Gracious Millionaire book/project.
 
+Wes instruction, 2026-07-09:
+
+- Use these assets in the next GM Mode website run.
+- The next run should prioritize replacing the generic REI BlackBook logo with the logo concept and placing the book-cover concept where a cover visual is appropriate.
+- Keep normal GM Mode boundaries in place: no contact/workflow changes, no manuscript chapter content, no DNS/account changes, and no unrelated public contact-detail changes.
+
 Website guidance:
 
 - Use the logo in website headers, footer brand areas, or Gracious Millionaire cross-promotion sections.

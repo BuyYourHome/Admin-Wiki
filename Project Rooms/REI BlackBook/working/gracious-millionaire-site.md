@@ -66,6 +66,7 @@ Create a site called `Gracious Millionaire` for information related to the book 
 - Manual GM Mode rerun replaced the About page Lorem Ipsum, three generic feature headings, and generic CTA with book-focused text. Remaining generic shared/sidebar/footer content is tracked in `working\gracious-millionaire-element-map-003.md`.
 - Scheduled GM Mode pass replaced the Book Themes visible heading, six generic service blocks, and generic CTA with book-focused theme text. Remaining generic shared/sidebar/footer content is tracked in `working\gracious-millionaire-element-map-004.md`.
 - Scheduled GM Mode pass successfully retried a Chrome-controlled Google Photos download without opening Microsoft Photos, then replaced the Update Request Received visible heading and generic confirmation copy with book-update confirmation language. Remaining generic shared/sidebar/footer content is tracked in `working\gracious-millionaire-element-map-005.md`.
+- Wes approved using `outputs\gracious-millionaire-assets\gracious-millionaire-logo-concept-2026-07-09.png` and `outputs\gracious-millionaire-assets\gracious-millionaire-book-cover-concept-2026-07-09.png` in the next GM Mode website run. Prioritize the logo replacement and an appropriate cover visual placement.
 
 ## Safety Notes
 
