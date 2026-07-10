@@ -47,6 +47,21 @@ Public QA:
 | Search form | Still appears on many pages. | Keep only if Editing Notes/updates remain active; otherwise remove from public pages. |
 | Stock images/backgrounds | Homepage still has three generic stock thumbnail assets. | The approved book cover was uploaded to WordPress media as attachment `6319`; place it through a safe Beaver Builder module-edit path when available. Continue treating personal Google Photos as separate assets that need explicit public-photo approval. |
 
+Contact-structure implementation attempt, 2026-07-10:
+
+- BuyYourHomeLLC.com contact structure found:
+  - Contact menu parent.
+  - `Contact Form` at `https://www.buyyourhomellc.com/buyer/authority-contact/`.
+  - `Contact Wes` at `https://u113450.h.reiblackbook.com/generic4/contact_wes/`.
+- Gracious Millionaire already has the same basic lead-capture fields on `Request Updates`: Name, Email, Phone, SMS consent, and submit button.
+- Safe visible-copy target for the next successful edit path:
+  - Heading: `Contact Wes and Jenny`.
+  - Project identity: `Gracious Millionaire`.
+  - Helper copy: `Use this page to request updates, future excerpt notices, and release information for the Gracious Millionaire book project.`
+  - Form intro: `Fill out the form below and we'll follow up about the book project.`
+  - Button: `REQUEST UPDATES >>`.
+- No live contact-page change was made in this attempt. The old WordPress/Page Builder edit screen exposed the content field for reading but blocked reliable mutation through the Chrome connector; Text Editor/Page Builder click attempts hung the connector. XML-RPC returned 404/502 and REST endpoints returned 404/502, so there was no safe authenticated non-UI edit path.
+
 ## Page Status
 
 ### Home
