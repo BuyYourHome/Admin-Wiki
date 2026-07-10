@@ -19,6 +19,12 @@ Safe live content fixes completed:
 
 These were low-risk Beaver Builder text edits. No form routing, SMS/email workflows, contact details, DNS, images, personal photos, manuscript chapter content, legal/financial/compliance claims, or outbound messages were changed.
 
+Scope update, 2026-07-10:
+
+- Wes broadened GM Mode so future passes may make comprehensive live site-design and site-structure improvements, not just conservative visible-copy fixes.
+- Authorized live improvements now include design/layout cleanup, navigation/page-structure changes, sidebar/footer cleanup, approved logo/book-cover placement, visible-copy rewrites, button/field-label changes, and form presentation changes that keep the site focused on the Gracious Millionaire book project.
+- Continue to stop before actions with outside consequences unless Wes explicitly approves the specific action: outbound form/SMS/email/lead workflow activation, changing who receives submitted leads or messages, public upload of personal Google Photos, public contact/address changes, DNS/domain changes, purchases, Git pushes, outbound messages, manuscript chapter publication, or legal/financial/compliance claims.
+
 Photo retrieval retry:
 
 - The logged-in Chrome session had an open Google Photos photo page.
@@ -54,13 +60,13 @@ Contact-structure implementation attempt, 2026-07-10:
   - `Contact Form` at `https://www.buyyourhomellc.com/buyer/authority-contact/`.
   - `Contact Wes` at `https://u113450.h.reiblackbook.com/generic4/contact_wes/`.
 - Gracious Millionaire already has the same basic lead-capture fields on `Request Updates`: Name, Email, Phone, SMS consent, and submit button.
-- Safe visible-copy target for the next successful edit path:
+- Initial visible-copy target from the conservative pass:
   - Heading: `Contact Wes and Jenny`.
   - Project identity: `Gracious Millionaire`.
   - Helper copy: `Use this page to request updates, future excerpt notices, and release information for the Gracious Millionaire book project.`
   - Form intro: `Fill out the form below and we'll follow up about the book project.`
   - Button: `REQUEST UPDATES >>`.
-- No live contact-page change was made in this attempt. The old WordPress/Page Builder edit screen exposed the content field for reading but blocked reliable mutation through the Chrome connector; Text Editor/Page Builder click attempts hung the connector. XML-RPC returned 404/502 and REST endpoints returned 404/502, so there was no safe authenticated non-UI edit path.
+- Historical note: no live contact-page change was made in the first contact-structure attempt because the older WordPress/Page Builder edit screen blocked reliable mutation through the Chrome connector. A later Beaver Builder module-edit path succeeded for visible contact-page heading/helper text.
 
 ## Page Status
 
@@ -144,7 +150,7 @@ Remaining:
 
 Boundary note:
 
-- Do not change form routing, SMS workflow, public contact details, or address display without explicit Wes approval.
+- Under the broader 2026-07-10 GM Mode scope, form presentation, visible button/field labels, and page structure may be improved live. Still do not activate outbound SMS/email/lead workflows, change who receives submissions, or change public contact/address details without explicit Wes approval for that specific action.
 
 ### Editing Notes
 
@@ -220,8 +226,8 @@ Remaining:
 
 Recommended order:
 
-1. Replace Request Updates visible heading/helper/button wording without changing form routing or SMS consent.
-2. Fix menu inheritance/assignment so Book Outline and Chapter Being Edited show the updated navigation labels.
-3. Replace or hide generic shared/sidebar widgets.
-4. Fix footer copyright.
-5. Place the uploaded book cover on a public page when a safe Beaver Builder module-edit path is available. Keep personal Google Photos separate unless Wes explicitly approves those specific photos for public use.
+1. Redesign the Request Updates/contact page around the `Contact Wes` structure Wes referenced, including better heading, helper text, button wording, and form presentation while avoiding outbound workflow activation or lead-recipient changes unless separately approved.
+2. Place the uploaded Gracious Millionaire book cover on a public page through Beaver Builder or WordPress Media, then QA desktop/mobile rendering.
+3. Fix menu inheritance/assignment so Book Outline and Chapter Being Edited show the updated navigation labels.
+4. Replace or hide generic shared/sidebar widgets and search/categories that do not support the book project.
+5. Fix footer copyright and any remaining generic footer/sidebar public contact blocks.

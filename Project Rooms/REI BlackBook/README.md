@@ -33,6 +33,7 @@ GM Mode:
 - `GM Mode` is the named operating mode for Gracious Millionaire REI BlackBook website work.
 - Use it whenever Wes says `GM`, `GM Mode`, or gives a Gracious Millionaire website request.
 - In GM Mode, every public-visible element should describe the book, the authors, the outline, editing status, update requests, excerpt requests, release information, or approved Gracious Millionaire project context.
+- As of 2026-07-10, Wes authorized GM Mode to make comprehensive live website design, structure, navigation, layout, image-placement, page-copy, sidebar/footer, and form-presentation improvements for Gracious Millionaire. The loop is intended to keep improving the live site so Wes can guide subsequent iterations.
 - After every GM Mode live website update, refresh the Gracious Millionaire element map and record site-specific notes in this project room.
 
 GM scheduled iteration:
@@ -41,11 +42,11 @@ GM scheduled iteration:
 - Cadence: every 30 minutes, plus manual on-demand GM Mode runs.
 - Current schedule anchor: first run after the 2026-07-09 update is 7:52 PM Eastern, then every 30 minutes after that.
 - Run lock: use `working\gm-mode-run-lock.md` to prevent overlapping GM Mode runs. If the lock exists and is less than 3 hours old, the later run should not inspect or edit the live site and should stop quietly unless user-visible notice is needed. If the lock is 3 hours old or older, record a stale-lock takeover, replace the lock, and proceed. Clear the lock at normal completion.
-- Default behavior: audit, implement safe low-risk website-content discoveries live, QA, refresh the local element map/backlog, draft or record suggested copy, and surface recommendations.
-- Safe live implementation includes generic/off-topic template copy, placeholder text, generic blog/sidebar/category labels, page titles, navigation labels, button text, obvious broken public links, and book-focused descriptive text that does not publish manuscript content or change workflows.
+- Default behavior: audit, implement useful live website improvements, QA, refresh the local element map/backlog, draft or record suggested copy, and surface recommendations.
+- Authorized live implementation includes comprehensive Gracious Millionaire site improvements: generic/off-topic template replacement, page titles, navigation labels, layout/design cleanup, sidebar/footer cleanup, button text, broken public links, book-focused descriptive copy, page structure, image placement for approved assets, and form presentation or field-label changes.
 - Photo retrieval should be retried as part of the image-replacement backlog, but only through browser-controlled Google Photos save/export/download paths that do not open Microsoft Photos repeatedly. If downloads launch Microsoft Photos windows, stop photo retrieval for that pass, record the blocker, and continue with safer text/content cleanup.
 - Wes approved using the local Gracious Millionaire logo and book-cover concept in the next GM Mode website run on 2026-07-09. Prioritize replacing the generic REI BlackBook logo and placing the book-cover concept where a cover visual is appropriate.
-- No form/workflow activation, SMS/email campaign changes, personal-photo uploads, public contact/address changes, domain/DNS changes, purchases, manuscript-content publication, legal/financial/compliance claims, Git pushes, or outbound messages without Wes's explicit approval.
+- Do not activate outbound form/SMS/email/lead workflows, change who receives submitted leads or messages, upload personal Google Photos publicly, change public contact/address details, change domain/DNS settings, purchase anything, publish manuscript content, make legal/financial/compliance claims, push Git changes, or send outbound messages without Wes's explicit approval for that specific action.
 - Routine quiet run: if no meaningful public-site changes or new recommendations are found, keep the run brief and record only a small project-room note if needed.
 - Report to Wes when the run makes live changes, finds broken pages, leaves generic template content unresolved, finds off-topic posts, hits form/workflow risk, public privacy risk, SSL/domain problems, or needs approval for higher-risk actions.
 - Never make live website edits while another fresh GM Mode run lock appears active.
