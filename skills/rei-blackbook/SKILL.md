@@ -65,7 +65,7 @@ GM Mode target:
 - Builder URL: `https://u113450.h.reiblackbook.com/generic6/`
 - Control panel: `https://my.reiblackbook.com/webtools/sites/advanced/48842`
 - Public domain: `https://graciousmillionaire.com`
-- Current element map: `C:\Codex\Wiki Files\Project Rooms\REI BlackBook\working\gracious-millionaire-element-map-004.md`
+- Current element map: `C:\Codex\Wiki Files\Project Rooms\REI BlackBook\working\gracious-millionaire-element-map-005.md`
 - Site record: `C:\Codex\Wiki Files\Project Rooms\REI BlackBook\working\gracious-millionaire-site.md`
 
 GM Mode rules:

@@ -47,6 +47,12 @@ Go to `chrome://extensions`, click `Details` under the Codex extension, and enab
 
 Reference: `https://developers.openai.com/codex/app/chrome-extension#upload-files`
 
+## 2026-07-09 Download Retry
+
+During the scheduled GM Mode pass, Codex used the logged-in Chrome Google Photos tab and triggered a single Google Photos `Download` menu action. Chrome reported a download event, and a process check immediately afterward found no Microsoft Photos process. The earlier repeated-Microsoft-Photos-window behavior did not recur on this controlled retry.
+
+This confirms Chrome can retrieve a selected Google Photos image without launching Microsoft Photos after Wes's Chrome setting change. The public website still should not receive personal photo uploads until Wes explicitly approves the selected images for public use.
+
 ## Next Replacement Pass
 
 After Chrome file upload access is enabled:
