@@ -4,6 +4,7 @@
 
 - `gracious-millionaire-logo-concept-2026-07-09.png`
 - `gracious-millionaire-book-cover-concept-2026-07-09.png`
+- `gracious-millionaire-book-cover-wes-and-jenny-browning-2026-07-10.png`
 - `gracious-millionaire-logo-header-2026-07-09.png`
 
 ## Use
@@ -21,6 +22,7 @@ Website guidance:
 - Use the logo in website headers, footer brand areas, or Gracious Millionaire cross-promotion sections.
 - Use `gracious-millionaire-logo-header-2026-07-09.png` for the website header, because it is cropped from the approved logo concept sheet for web-logo use.
 - Use the book-cover concept only where a book/cover visual is appropriate, such as a landing page, card, or feature section.
+- Prefer the `wes-and-jenny-browning` cover version when showing the current Gracious Millionaire book cover because it lists both authors.
 - Keep the Gracious Millionaire presentation restrained, literary, and faith-centered.
 - Do not style these assets as a luxury wealth brand. The Gracious Millionaire project guidance treats real-estate wealth as the context, not the subject.
 
