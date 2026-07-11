@@ -1,0 +1,4 @@
+interface:
+  display_name: "Confidential"
+  short_description: "Confidential admin project workflow"
+  default_prompt: "Use $confidential to organize a confidential Admin wiki project room."

@@ -37,6 +37,7 @@ Use [[Agent Unit Standard]] for the standard package behind an agent-like operat
 | Property Trade Evaluation | Wiki-managed skill plus project room | Active | On demand | `skills\property-trade-evaluation\SKILL.md`; `Project Rooms\Property Trade Evaluation\README.md` |
 | Wes's Voice | Wiki-managed skill plus project room | Planning | On demand | `skills\wes-voice\SKILL.md`; `Project Rooms\Wes's Voice\README.md` |
 | New Project | Wiki-managed skill plus project room | Draft | On demand | `skills\new-project\SKILL.md`; `Project Rooms\New Project\README.md` |
+| Confidential | Wiki-managed skill plus project room plus dedicated chat | Draft | On demand | `skills\confidential\SKILL.md`; `Project Rooms\Confidential\README.md` |
 | REI BlackBook | Wiki-managed skill plus project room | Draft | On demand | `skills\rei-blackbook\SKILL.md`; `Project Rooms\REI BlackBook\README.md` |
 | GM Mode Site Iteration | GM Mode heartbeat automation plus REI BlackBook project room | Active | Every 30 minutes from 2026-07-09 7:52 PM Eastern; safe live content fixes plus QA/map refresh | `skills\rei-blackbook\SKILL.md`; `Project Rooms\REI BlackBook\README.md`; automation id `gm-mode-site-iteration` |
 | Investigate Computer | Wiki-managed skill plus project room plus heartbeat automation | Active | Daily at 6:00 AM Eastern; email Wes only when an issue is detected | `skills\investigate-computer\SKILL.md`; `Project Rooms\Investigate Computer\README.md`; app automation id `investigate-computer-daily-check` |
@@ -611,6 +612,34 @@ Important rules:
 - When creating the new project spreadsheet, review the `Profit` sheet and blank out prototype/template-specific values while preserving formulas, labels, structural formatting, and reusable assumptions.
 - If it is unclear whether a `Profit` sheet value is template-specific or reusable, record it for review instead of deleting it.
 - Do not use New Project when an existing specialized project room is the better fit.
+
+## Confidential
+
+Type: wiki-managed skill plus project room plus dedicated chat.
+
+Status: draft.
+
+Purpose:
+
+- Hold sensitive Buy Your Home Admin wiki work that Wes explicitly routes to Confidential.
+- Keep confidential source notes, working analysis, open questions, privacy notes, and review-ready outputs separated from other Admin wiki work.
+- Prevent accidental sharing of Confidential materials outside the Admin wiki unless Wes specifically authorizes the transfer or an existing workflow rule clearly requires it.
+
+Defined in:
+
+- `C:\Codex\Wiki Files\skills\confidential\SKILL.md`
+- `C:\Codex\Wiki Files\Project Rooms\Confidential\README.md`
+
+Dedicated chat:
+
+- Thread id: `019f47a8-b32a-73a0-9bc4-9e493f1b0c5e`
+
+Important rules:
+
+- Do not store passwords, authentication tokens, payment card numbers, bank login credentials, seed phrases, or other live secrets in the project room, skill, git history, or chat handoff notes.
+- Do not copy Confidential files to Teams, SharePoint, email, another project room, or an external service unless Wes explicitly asks for that specific transfer or an existing rule clearly requires it.
+- Use specialized project rooms instead when Wes names a specific workflow such as Doc Scan, Email Summary, Contract for Deed, Credit Worthiness Evaluator, or Gracious Millionaire.
+- No automation is currently attached.
 
 ## REI BlackBook
 
