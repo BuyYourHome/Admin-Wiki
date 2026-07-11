@@ -1,9 +1,16 @@
-﻿---
+---
 name: contract-for-deed
 description: Use when refreshing, regenerating, reviewing, or packaging contract-for-deed seller documents from a confirmed real estate project spreadsheet, including buyer-specific transaction folders, Credit Worthiness handoffs, closing document checklists, affidavits, and Buy Your Home seller document packages.
 ---
 
 # Contract For Deed
+
+## Branch And Push Mode
+
+- Project branch: `project/contract-for-deed`.
+- At startup for durable Project Room work, verify `C:\Codex\Wiki Files` and use the matching Project Room branch when it is safe to switch.
+- When Wes says `Push`, follow `C:\Codex\Wiki Files\Project Room Branch and Push Mode Rule.md`: commit and push only this room's intentional durable work, this skill source when changed, and directly related registry or rule updates.
+- Do not update GitHub `main` unless Wes explicitly says `Push to main` or `promote to main`.
 
 ## Source Of Truth
 

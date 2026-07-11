@@ -36,13 +36,27 @@ Pushing should be scoped the same way commits are scoped.
 
 ## Branch Naming
 
-Use a descriptive branch name with the `codex/` prefix unless Wes asks for another name.
+For durable Project Room work, use the Project Room branch pattern:
+
+```text
+project/<project-room-slug>
+```
 
 Examples:
 
-- `codex/operating-agreements`
-- `codex/estate-review`
-- `codex/document-scanning-sop`
+- `project/operating-agreements`
+- `project/doc-scan`
+- `project/gracious-millionaire`
+
+Use a descriptive `codex/<short-task-name>` branch only for one-off work that does not belong to a durable Project Room.
+
+See [[Project Room Branch and Push Mode Rule]].
+
+## Project Room Push Mode
+
+When Wes says `Push` in a Project Room chat, treat it as permission to commit and push only that Project Room's intentional durable work on its `project/<project-room-slug>` branch.
+
+`Push` does not update GitHub `main` unless Wes explicitly says `Push to main`, `promote to main`, or equivalent.
 
 ## Reporting Rule
 

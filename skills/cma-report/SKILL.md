@@ -5,6 +5,13 @@ description: Create, rerun, finalize, and file Buy Your Home CMA report and rela
 
 # CMA Report
 
+## Branch And Push Mode
+
+- Project branch: `project/cma-report`.
+- At startup for durable Project Room work, verify `C:\Codex\Wiki Files` and use the matching Project Room branch when it is safe to switch.
+- When Wes says `Push`, follow `C:\Codex\Wiki Files\Project Room Branch and Push Mode Rule.md`: commit and push only this room's intentional durable work, this skill source when changed, and directly related registry or rule updates.
+- Do not update GitHub `main` unless Wes explicitly says `Push to main` or `promote to main`.
+
 ## Rule
 
 When the owner asks for a report for a property, keep the working copy in the project room or wiki workspace, then put a copy of the completed report in the matching Teams-synced property folder under `Owning`.

@@ -1,5 +1,12 @@
 # Geico Insurance Claim Project Room
 
+## Branch And Push Mode
+
+- Project branch: `project/geico-insurance-claim`.
+- When this room starts or resumes durable file work, use `C:\Codex\Wiki Files` and switch to this branch when it is safe to do so.
+- When Wes says `Push` in this room, commit and push only this room's intentional durable work, its matching skill source, and directly related registry or rule updates under [[Project Room Branch and Push Mode Rule]].
+- `Push` does not update GitHub `main` unless Wes explicitly says `Push to main` or `promote to main`.
+
 ## Purpose
 
 Organize source documents, correspondence, notes, and review-ready outputs for the Geico insurance claim.

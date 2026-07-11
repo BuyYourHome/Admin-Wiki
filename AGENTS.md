@@ -19,6 +19,7 @@ Use this repo when formulating solutions for office-admin workflows, SOPs, autom
 - Use `Codex Python Runtime Rule.md` before running Python scripts for Admin wiki, project-room, document, spreadsheet, or skill-support work.
 - Use `LibreOffice Location Rule.md` before rendering or converting Word/PDF documents with LibreOffice.
 - Use `Project Room Workflow.md` before major work that depends on multiple source files, emails, scans, notes, spreadsheets, or prior drafts.
+- Use `Project Room Branch and Push Mode Rule.md` for Project Room branch discipline, `Push`, and `Push to main`.
 - Use `Project Rooms\SOPs\` for SOP source emails, extracted notes, SOP pages, SOP index, source map, and SOP review questions.
 - Use `Project Rooms\Email Summary\` for development work on the Email Summary workflow, including source inventory, automation notes, open questions, and review-ready handoffs.
 - Use `Project Rooms\Doc Scan\` for development work on scanned document processing, including scan routing, automation notes, source inventory, and review-ready handoffs.

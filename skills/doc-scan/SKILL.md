@@ -5,6 +5,13 @@ description: Process scanned financial/admin PDFs from Office Admin scan folders
 
 # Doc Scan
 
+## Branch And Push Mode
+
+- Project branch: `project/doc-scan`.
+- At startup for durable Project Room work, verify `C:\Codex\Wiki Files` and use the matching Project Room branch when it is safe to switch.
+- When Wes says `Push`, follow `C:\Codex\Wiki Files\Project Room Branch and Push Mode Rule.md`: commit and push only this room's intentional durable work, this skill source when changed, and directly related registry or rule updates.
+- Do not update GitHub `main` unless Wes explicitly says `Push to main` or `promote to main`.
+
 Development notes, source inventory, and open questions for this workflow live in `C:\Codex\Wiki Files\Project Rooms\Doc Scan\`.
 
 Process scanned Office Admin PDFs and JPG/JPEG image scans conservatively. Split combined scans into separate statement/account files when boundaries are clear, convert single-image scans to filed PDF outputs when appropriate, name them consistently, file them into the mapped Teams/SharePoint folders, and write a plain text log for every source scan.

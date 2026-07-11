@@ -1,5 +1,12 @@
 # Amortization Project Room
 
+## Branch And Push Mode
+
+- Project branch: `project/amortization`.
+- When this room starts or resumes durable file work, use `C:\Codex\Wiki Files` and switch to this branch when it is safe to do so.
+- When Wes says `Push` in this room, commit and push only this room's intentional durable work, its matching skill source, and directly related registry or rule updates under [[Project Room Branch and Push Mode Rule]].
+- `Push` does not update GitHub `main` unless Wes explicitly says `Push to main` or `promote to main`.
+
 ## Purpose
 
 Own the reusable Amortization generator that creates buyer-facing 12-month amortization chart PDFs from project spreadsheets for Contract for Deed and other seller-financing workflows.

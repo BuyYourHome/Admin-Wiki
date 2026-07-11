@@ -30,6 +30,7 @@ First, read:
 - C:\Codex\Wiki Files\AGENTS.md
 - C:\Codex\Wiki Files\Repository Location Rule.md
 - C:\Codex\Wiki Files\Project Room Workflow.md
+- C:\Codex\Wiki Files\Project Room Branch and Push Mode Rule.md
 - C:\Codex\Wiki Files\Agent Unit Standard.md
 - the Project Room README or PROJECT-ROOM.md for the room being used
 - the matching skill source under C:\Codex\Wiki Files\skills, when one exists
@@ -42,8 +43,17 @@ When creating a new Project Room chat:
 1. Name the chat after the Project Room unless Wes gives another name.
 2. Include the required startup text above.
 3. Include the Project Room path, matching skill path, and any automation id or thread id that belongs to the room.
-4. Do not point the chat to the Teams-synced wiki folder.
-5. Do not copy files to Teams merely because a chat was created. Teams receives final deliverables only when Wes explicitly asks or an established workflow says so.
+4. Include the Project Room branch name, using `project/<project-room-slug>` unless the room README states another branch.
+5. Do not point the chat to the Teams-synced wiki folder.
+6. Do not copy files to Teams merely because a chat was created. Teams receives final deliverables only when Wes explicitly asks or an established workflow says so.
+
+## Project Branch Rule
+
+Every durable Project Room chat should use the room branch defined in the room README or derive one as `project/<project-room-slug>`.
+
+When resuming a room, fetch GitHub state and switch to the room branch before durable file edits when it is safe to switch. If unrelated dirty files block switching, report the blocker instead of stashing, resetting, or moving files without Wes's explicit approval.
+
+When Wes says `Push`, use [[Project Room Branch and Push Mode Rule]].
 
 ## Relative Path Rule
 
