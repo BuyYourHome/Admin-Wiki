@@ -4,7 +4,7 @@ Use an AI Project Room for any task that depends on multiple source files, email
 
 The purpose is to prepare the source set before drafting, analyzing, rewriting, or making recommendations. Do not ask Codex to produce a final deliverable from a messy folder. Build the room first.
 
-For repeatable workflow roles that combine a Project Room, skill, registry entry, chat/thread, or automation, also follow [[Agent Unit Standard]]. When creating, moving, forking, or resuming a Project Room chat, follow [[Project Room Chat Startup Rule]]. For branch discipline and Project Room Push Mode, follow [[Project Room Branch and Push Mode Rule]].
+For repeatable workflow roles that combine a Project Room, skill, registry entry, chat/thread, or automation, also follow [[Agent Unit Standard]]. When creating, moving, forking, or resuming a Project Room chat, follow [[Project Room Chat Startup Rule]].
 
 ## When To Use
 
@@ -66,7 +66,7 @@ Every Project Room should contain:
 8. Cite source files or source notes for factual claims whenever the output is analytical, legal, financial, or procedural.
 9. Move review-ready deliverables to `outputs\`.
 10. Commit durable Project Room changes locally when the task calls for a durable update.
-11. When Wes says `Push`, use the room's `project/<project-room-slug>` branch and follow [[Project Room Branch and Push Mode Rule]].
+11. Push only when Wes explicitly asks or the applicable Admin wiki rules say the deliverable is ready to publish.
 
 ## Output Rule
 

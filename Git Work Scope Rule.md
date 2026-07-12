@@ -28,35 +28,10 @@ Do not bundle unrelated project rooms, unrelated files, prior local changes, or 
 
 Pushing should be scoped the same way commits are scoped.
 
-- Do not ask Wes to decide between pushing every unpushed local commit and pushing nothing when he is only working in one chat or one body of work.
-- If the current branch has unrelated unpushed commits, create or use a scoped branch for the current body of work.
-- Put only the relevant commits for that body of work on the scoped branch, using a clean branch from GitHub's current `main` and cherry-picking when needed.
-- Push that scoped branch only when Wes says that body of work is finished, explicitly asks for a push, or the task instructions define the scoped deliverable as final and ready to publish.
-- Leave unrelated local commits, unrelated modified files, and unrelated untracked files out of the push.
-
-## Branch Naming
-
-For durable Project Room work, use the Project Room branch pattern:
-
-```text
-project/<project-room-slug>
-```
-
-Examples:
-
-- `project/operating-agreements`
-- `project/doc-scan`
-- `project/gracious-millionaire`
-
-Use a descriptive `codex/<short-task-name>` branch only for one-off work that does not belong to a durable Project Room.
-
-See [[Project Room Branch and Push Mode Rule]].
-
-## Project Room Push Mode
-
-When Wes says `Push` in a Project Room chat, treat it as permission to commit and push only that Project Room's intentional durable work on its `project/<project-room-slug>` branch.
-
-`Push` does not update GitHub `main` unless Wes explicitly says `Push to main`, `promote to main`, or equivalent.
+- Push only when Wes says the current body of work is finished, explicitly asks for a push, or the task instructions define the scoped deliverable as final and ready to publish.
+- Before pushing, verify the push would include only the intended body of work.
+- If a push would include unrelated local work, stop and report the blocker instead of pushing.
+- Leave unrelated modified files and unrelated untracked files out of the push.
 
 ## Reporting Rule
 

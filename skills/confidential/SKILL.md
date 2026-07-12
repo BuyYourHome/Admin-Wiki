@@ -5,13 +5,6 @@ description: Use for Buy Your Home Confidential project-room work, including sen
 
 # Confidential
 
-## Branch And Push Mode
-
-- Project branch: `project/confidential`.
-- At startup for durable Project Room work, verify `C:\Codex\Wiki Files` and use the matching Project Room branch when it is safe to switch.
-- When Wes says `Push`, follow `C:\Codex\Wiki Files\Project Room Branch and Push Mode Rule.md`: commit and push only this room's intentional durable work, this skill source when changed, and directly related registry or rule updates.
-- Do not update GitHub `main` unless Wes explicitly says `Push to main` or `promote to main`.
-
 Use this skill to organize and maintain the `Confidential` project room.
 
 ## Required Context

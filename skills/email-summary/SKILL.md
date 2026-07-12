@@ -5,13 +5,6 @@ description: Create Wes's and Jenny's daily OfficeAssist morning mailbox summari
 
 # Email Summary
 
-## Branch And Push Mode
-
-- Project branch: `project/email-summary`.
-- At startup for durable Project Room work, verify `C:\Codex\Wiki Files` and use the matching Project Room branch when it is safe to switch.
-- When Wes says `Push`, follow `C:\Codex\Wiki Files\Project Room Branch and Push Mode Rule.md`: commit and push only this room's intentional durable work, this skill source when changed, and directly related registry or rule updates.
-- Do not update GitHub `main` unless Wes explicitly says `Push to main` or `promote to main`.
-
 ## Overview
 
 Create the daily Boss summary for `WesWill@BuyYourHomeLLC.com`, then hand off delivery to the shared `email-delivery` skill. Create the daily Jenny summary for `Jenny@BuyYourHomeLLC.com`, then hand off delivery to the shared `email-delivery` skill for sending to Jenny from OfficeAssist.

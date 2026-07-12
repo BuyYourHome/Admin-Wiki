@@ -5,13 +5,6 @@ description: Use for Buy Your Home Admin operating-agreement work, including cre
 
 # Operating Agreement
 
-## Branch And Push Mode
-
-- Project branch: `project/operating-agreements`.
-- At startup for durable Project Room work, verify `C:\Codex\Wiki Files` and use the matching Project Room branch when it is safe to switch.
-- When Wes says `Push`, follow `C:\Codex\Wiki Files\Project Room Branch and Push Mode Rule.md`: commit and push only this room's intentional durable work, this skill source when changed, and directly related registry or rule updates.
-- Do not update GitHub `main` unless Wes explicitly says `Push to main` or `promote to main`.
-
 ## Source Of Truth
 
 Use the Admin wiki and Operating Agreements project room as the source of truth.

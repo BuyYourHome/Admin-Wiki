@@ -1,12 +1,5 @@
 # CMA Report - 5512 Desert Willow Ln
 
-## Branch And Push Mode
-
-- Project branch: `project/cma-report-5512-desert-willow-ln`.
-- When this room starts or resumes durable file work, use `C:\Codex\Wiki Files` and switch to this branch when it is safe to do so.
-- When Wes says `Push` in this room, commit and push only this room's intentional durable work, its matching skill source, and directly related registry or rule updates under [[Project Room Branch and Push Mode Rule]].
-- `Push` does not update GitHub `main` unless Wes explicitly says `Push to main` or `promote to main`.
-
 ## Purpose
 
 Prepare a separate preliminary CMA report for 5512 Desert Willow Ln. Public web address references point to Knightdale, NC 27545; confirm if internal records use a different city or ZIP.

@@ -1,12 +1,5 @@
 # REI BlackBook Project Room
 
-## Branch And Push Mode
-
-- Project branch: `project/rei-blackbook`.
-- When this room starts or resumes durable file work, use `C:\Codex\Wiki Files` and switch to this branch when it is safe to do so.
-- When Wes says `Push` in this room, commit and push only this room's intentional durable work, its matching skill source, and directly related registry or rule updates under [[Project Room Branch and Push Mode Rule]].
-- `Push` does not update GitHub `main` unless Wes explicitly says `Push to main` or `promote to main`.
-
 Purpose: develop and maintain Buy Your Home workflows, notes, implementation plans, browser-QA records, and operating rules for REI BlackBook. The current primary work surface is REI BlackBook WebTools Sites at `https://my.reiblackbook.com/webtools/sites`.
 
 Status: started 2026-07-09.

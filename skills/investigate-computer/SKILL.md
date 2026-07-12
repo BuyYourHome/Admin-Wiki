@@ -5,13 +5,6 @@ description: Daily or on-demand Windows compromise diagnostics for Wes's compute
 
 # Investigate Computer
 
-## Branch And Push Mode
-
-- Project branch: `project/investigate-computer`.
-- At startup for durable Project Room work, verify `C:\Codex\Wiki Files` and use the matching Project Room branch when it is safe to switch.
-- When Wes says `Push`, follow `C:\Codex\Wiki Files\Project Room Branch and Push Mode Rule.md`: commit and push only this room's intentional durable work, this skill source when changed, and directly related registry or rule updates.
-- Do not update GitHub `main` unless Wes explicitly says `Push to main` or `promote to main`.
-
 ## Purpose
 
 Run a repeatable local diagnostic pass for remote-access compromise indicators, with special attention to the June 2026 ScreenConnect/RMM incident. Keep findings factual, preserve evidence before cleanup, and clearly separate active risk from historical artifacts.

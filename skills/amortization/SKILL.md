@@ -5,13 +5,6 @@ description: Use when Codex needs to create a formal 12-month amortization chart
 
 # Amortization
 
-## Branch And Push Mode
-
-- Project branch: `project/amortization`.
-- At startup for durable Project Room work, verify `C:\Codex\Wiki Files` and use the matching Project Room branch when it is safe to switch.
-- When Wes says `Push`, follow `C:\Codex\Wiki Files\Project Room Branch and Push Mode Rule.md`: commit and push only this room's intentional durable work, this skill source when changed, and directly related registry or rule updates.
-- Do not update GitHub `main` unless Wes explicitly says `Push to main` or `promote to main`.
-
 ## Source Of Truth
 
 - Canonical skill source: `C:\Codex\Wiki Files\skills\amortization\SKILL.md`
