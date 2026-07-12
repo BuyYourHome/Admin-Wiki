@@ -41,6 +41,8 @@ Project Rooms/*/working/**/*.jpg
 Project Rooms/*/working/**/*.jpeg
 Project Rooms/*/working/**/*.pdf
 Project Rooms/Project Management Spreadsheet Redesign/working/**/*.xls*
+Project Rooms/Project Management Spreadsheet Redesign/working/format-standardization-test/
+Project Rooms/Project Management Spreadsheet Redesign/working/worksheet-migration/
 Project Rooms/*/outputs/rendered-preview*/
 tmp/*.png
 output/pdf/
