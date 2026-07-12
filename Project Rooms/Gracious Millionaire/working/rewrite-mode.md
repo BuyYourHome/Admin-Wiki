@@ -6,7 +6,15 @@ Use Rewrite mode when Wes asks for the Gracious Millionaire manuscript to be rew
 
 Rewrite mode is not a polish pass. It must not simply start from the latest manuscript and smooth, bridge, or lightly rephrase it. The prior manuscript may be used as a reference, but the controlling input is the project-room source set, source inventory, current factual notes, book objectives, style guide, and any current Wes/Jenny direction.
 
-When new substantive book/source material arrives, run Interview mode first and then Rewrite mode. The Interview mode pass should create source-grounded Jean/Wes/Jenny scenes and role boundaries. Rewrite mode then uses those results, along with the full source set, to revise the whole manuscript so the new material changes structure, emphasis, chapter sequence, redundancy, and theme development where appropriate.
+When new substantive book/source material arrives, run Interview mode first and then Rewrite mode. The Interview mode pass should create its own source-grounded Jean/Wes/Jenny product with scenes and role boundaries. Rewrite mode then independently uses the original project-room source material, not the Interview manuscript, to revise the whole manuscript so the new material changes structure, emphasis, chapter sequence, redundancy, and theme development where appropriate.
+
+## Mode Independence
+
+Rewrite mode must produce an independent source-based product. Do not use Interview mode, Dialogue mode, earlier Rewrite mode manuscripts, clickable packets, or other mode-generated prose as source material for Rewrite mode.
+
+Allowed inputs are original routed sources, source inventories, duplicate/conflict logs, missing-context notes, factual correction notes, style guidance, book objectives, approved contextual source records, and current Wes/Jenny direction. Earlier mode outputs may be inspected only to check coverage or presentation history; they must not become the prose base, factual authority, source packet, or target length for the rewrite.
+
+Unless Wes explicitly asks for an abridged, summary, or condensed manuscript, a whole-manuscript Rewrite mode pass should preserve the substantive depth and scale of the source-backed manuscript while reducing true redundancy.
 
 ## Trigger
 
@@ -26,7 +34,7 @@ Before drafting, read and use:
 - `working/manuscript-edit-and-fact-notes.md`
 - all authoritative source files needed for the current manuscript span
 - the latest manuscript only as a reference, not as the prose base
-- the latest Interview mode pass and its working notes when Rewrite mode is being run after new subject material
+- earlier mode outputs only as coverage checks, not as source material, prose bases, factual authority, or compression targets
 
 ## Required Steps
 
@@ -57,6 +65,8 @@ Before drafting, read and use:
 5. Write a true source-packet-based manuscript rewrite.
    - Draft from source packets, source maps, thesis map, redundancy map, and chapter job statements.
    - Do not merely revise the latest manuscript paragraph by paragraph.
+   - Do not rewrite from an Interview mode, Dialogue mode, or prior Rewrite mode manuscript.
+   - Preserve the full substantive depth of the source-backed manuscript unless Wes explicitly asks for a shorter version.
    - Let whole-book context affect structure, sequence, selection, emphasis, and chapter endings.
    - Save the new manuscript in `outputs/` with a versioned name such as `Gracious Millionaire - Manuscript Rewrite v27.md`.
    - Include one manuscript-level AI-generation/provenance note near the beginning, not repeated GPT/model notes at the top of each chapter.

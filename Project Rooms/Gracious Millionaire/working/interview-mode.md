@@ -10,6 +10,8 @@ Use the speaker label `Jean`.
 
 When new substantive book/source material arrives, run Interview mode first. This creates the source-to-role map, interview scenes, speaker boundaries, and source-confidence audit before the material is passed into Rewrite mode for whole-manuscript integration.
 
+Interview mode output is an independent manuscript product. It must be built from the original project-room source material and approved contextual sources, not from a Dialogue mode or Rewrite mode manuscript. Later modes may check the Interview output for coverage, but the Interview manuscript must not become source material, factual authority, or the prose base for Rewrite mode.
+
 ## Wes's Interviewer Direction
 
 Use these rules whenever Interview mode is selected:
@@ -42,7 +44,8 @@ Before drafting, read and use:
 - all authoritative Wes source files needed for the current manuscript span
 - all authoritative Jenny source files needed for the current manuscript span
 - approved contextual project-room sources that can help Jean ask better questions, including contextual source sets, prior working notes, source inventories, YouTube transcripts, video/source notes, teaching notes, and manuscript fact notes
-- the latest manuscript only as a reference, not as the interview base
+- if a manuscript reference is needed, only the current Quick-mode manuscript may be used as that manuscript reference; if no Quick-mode manuscript exists, proceed from original source material without a manuscript reference or run Quick mode first if Wes directs it
+- other mode outputs only as coverage or presentation-history checks, not as source material, factual authority, or the interview prose base
 
 ## Required Steps
 
@@ -129,6 +132,7 @@ Before drafting, read and use:
 - Do not let Jean turn contextual project-room material into a claimed memory, belief, or conclusion from Wes or Jenny unless Wes or Jenny source material supports that attribution.
 - Do not make Jean the main character.
 - Do not flatten tension between Wes and Jenny into easy agreement.
+- Do not use a Rewrite, Dialogue, prior Interview, clickable packet, or non-Quick manuscript as the manuscript reference for Interview mode. The only manuscript reference allowed for Interview mode is the current Quick-mode manuscript.
 - Do not limit Jean's questions artificially. Limit unsupported answers, unsupported factual assertions, and forced conclusions.
 - Do not use process-facing phrases such as "the source says," "the transcript preserved," or "the input states" in the reader-facing manuscript.
 - Do not repeat GPT/model explanation lines at chapter starts. Use one manuscript-level attribution/provenance note near the beginning.

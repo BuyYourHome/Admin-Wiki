@@ -1,0 +1,52 @@
+# Quick Mode
+
+## Purpose
+
+Use Quick mode when Wes wants new Gracious Millionaire source material inserted into the proper manuscript context without a total rewrite.
+
+Quick mode is an integration mode, not a full-manuscript rebuild. It finds new or changed source material, identifies where it belongs, inserts or revises the affected chapter area, updates the clickable packet, and leaves unrelated chapters materially intact unless continuity requires a narrow bridge or correction.
+
+## Trigger
+
+Use this mode when Wes says `Quick mode`, asks to quickly add new material to the manuscript, or asks for a new source to be placed in its proper context without running Interview mode or Rewrite mode.
+
+If Wes asks for a whole-book rethink, chapter-context influence across the whole manuscript, major redundancy reduction, or each chapter to materially affect all others, use Rewrite mode instead.
+
+## Inputs
+
+Before drafting, read and use:
+
+- `working/source-inventory.md`
+- `working/duplicate-and-conflict-log.md`
+- `working/missing-context.md`
+- `working/writing-style-guide.md`
+- `working/book-objectives.md`
+- `working/manuscript-edit-and-fact-notes.md`
+- the new authoritative source file or files being integrated
+- the current Quick-mode manuscript, if one exists
+- if no Quick-mode manuscript exists, the latest source-backed non-mode manuscript selected from the project-room source inventory
+
+Original source files and current correction notes control over any manuscript text. Mode outputs from Interview, Dialogue, or Rewrite may be checked for coverage or presentation history, but they are not source material for Quick mode.
+
+## Required Steps
+
+1. Identify the new source material and whether it is new, duplicate, corrective, or superseding.
+2. Decide the exact manuscript placement by life sequence, property sequence, theme, and current editorial rules.
+3. Draft only the new or affected material needed to make the insertion read naturally.
+4. Apply narrow continuity edits around the insertion point when needed.
+5. Preserve unrelated chapters unless a factual correction or local continuity issue requires a scoped edit.
+6. Save the output as the current Quick-mode manuscript and clickable packet.
+7. Update `working/source-inventory.md`, `working/officeassist-intake-log.md`, and any relevant working notes.
+
+## Output Naming
+
+Use stable mode-based output names unless Wes directs otherwise:
+
+- `outputs/Gracious Millionaire - Quick Mode.md`
+- `outputs/Gracious Millionaire - Quick Mode.html`
+
+Put the version id in the top manuscript heading and clickable packet heading, not in the file name.
+
+## Relationship To Interview Mode
+
+The current Quick-mode manuscript is the only manuscript reference Interview mode may use. Interview mode still drafts from original source material and approved contextual source records; the Quick-mode manuscript is a manuscript reference for sequence and current included text, not the factual authority.
