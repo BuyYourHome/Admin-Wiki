@@ -28,19 +28,24 @@ Before Create PR file work:
 
 1. Confirm the requested Project Room name.
 2. Normalize the skill name to lower-case hyphen-case.
-3. Check whether the Project Room, skill, registry entry, or chat already exists.
-4. Create the Project Room folders under `Project Rooms\<Project Name>\`: `sources\`, `working\`, and `outputs\`.
-5. Create the room README with purpose, scope, folder map, status, matching skill, dedicated chat when any, branch rule, and next actions.
-6. Create the standard working files:
+3. Start from `main` before creating the new PR:
+   - Check `git status --short --branch`.
+   - If the repo is not on `main`, switch to `main` only when the worktree is clean or the dirty files are clearly part of the current scoped Create PR setup and can safely move with the branch.
+   - If unrelated dirty work, Git locks, or branch conflicts block switching to `main`, stop and report the blocker. Do not force, stash, reset, delete, or carry unrelated work into the new PR.
+   - Create the new project branch from `main`, using `project/<project-room-slug>` unless Wes gives another branch name.
+4. Check whether the Project Room, skill, registry entry, or chat already exists.
+5. Create the Project Room folders under `Project Rooms\<Project Name>\`: `sources\`, `working\`, and `outputs\`.
+6. Create the room README with purpose, scope, folder map, status, matching skill, dedicated chat when any, branch rule, and next actions.
+7. Create the standard working files:
    - `working\source-inventory.md`
    - `working\duplicate-and-conflict-log.md`
    - `working\missing-context.md`
-7. Create the matching skill under `skills\<skill-name>\SKILL.md` with source paths, required startup, workflow, boundaries, outputs, and Git rules.
-8. Add `skills\<skill-name>\agents\openai.yaml` when practical.
-9. Update `Agents and Automations Registry.md` when the room is repeatable, agent-like, has a dedicated chat, or may later have automation.
-10. Add `Admin Home.md` links when the room should be visible from the wiki start page.
-11. Create or hand off to a dedicated chat using `Project Room Chat Startup Rule.md`.
-12. Commit only the scoped Project Room, skill, registry, and index changes. Push only under the Admin wiki push rules.
+8. Create the matching skill under `skills\<skill-name>\SKILL.md` with source paths, required startup, workflow, boundaries, outputs, and Git rules.
+9. Add `skills\<skill-name>\agents\openai.yaml` when practical.
+10. Update `Agents and Automations Registry.md` when the room is repeatable, agent-like, has a dedicated chat, or may later have automation.
+11. Add `Admin Home.md` links when the room should be visible from the wiki start page.
+12. Create or hand off to a dedicated chat using `Project Room Chat Startup Rule.md`.
+13. Commit only the scoped Project Room, skill, registry, and index changes. Push only under the Admin wiki push rules.
 
 ## Chat Startup Prompt Requirements
 

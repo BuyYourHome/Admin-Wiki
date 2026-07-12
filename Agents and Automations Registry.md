@@ -455,6 +455,7 @@ Dedicated chat:
 Important rules:
 
 - Use the standard Project Room startup text from `Project Room Chat Startup Rule.md`.
+- Start new PR creation from `main`, then create the scoped `project/<project-room-slug>` branch from `main`.
 - Add branch guidance to each new Project Room README.
 - Do not create Teams folders, automations, or external deliverables unless Wes explicitly asks.
 - Commit only the scoped Project Room, skill, registry, and index files for the room being created.

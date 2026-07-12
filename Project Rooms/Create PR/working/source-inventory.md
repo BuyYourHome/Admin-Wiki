@@ -8,4 +8,5 @@
 | `Codex Skill Source Rule.md` | Wiki rule | authoritative | Defines canonical skill source and sync expectations. |
 | `Git Work Scope Rule.md` | Wiki rule | authoritative | Defines scoped commits and push behavior. |
 | `Agents and Automations Registry.md` | Registry | authoritative | Human-readable list of agent-like rooms, skills, chats, and automations. |
+| Wes instruction to create new PRs from `main` | User instruction | authoritative | Future Create PR work must start from `main`, then create the scoped project branch from `main`. |
 | Existing Project Rooms and skills | Examples | background | Used as patterns for README and SKILL structure. |
