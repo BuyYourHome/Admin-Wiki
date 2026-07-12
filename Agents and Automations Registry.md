@@ -468,6 +468,7 @@ Status: draft.
 Purpose:
 
 - Organize Buy Your Home Lowe's order source material, missing details, review checklists, and order handoffs.
+- Use Chrome with Wes's existing Lowe's session to add email-requested items to the Lowe's cart for review.
 - Prepare order drafts or summaries from authoritative source material.
 - Keep purchase submission gated behind Wes's explicit approval for the specific order action.
 
@@ -484,6 +485,7 @@ Dedicated chat:
 Important rules:
 
 - Do not place purchases, spend money, submit orders, change payment details, or approve substitutions unless Wes explicitly approves the specific order action.
+- Filling the cart is allowed from authoritative email instructions; checkout and payment remain approval-gated.
 - Use the Project Room source inventory before drafting review-ready order outputs.
 - Do not create Teams folders or automations unless Wes explicitly asks.
 
