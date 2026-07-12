@@ -20,6 +20,7 @@ Use [[Agent Unit Standard]] for the standard package behind an agent-like operat
 | Invoice Entry | Wiki-managed skill plus project room plus backup heartbeat | Active | Hourly backup packet check; direct Doc Scan handoff remains primary trigger | `skills\invoice-entry\SKILL.md`; `Project Rooms\Invoice Entry\README.md`; `C:\Users\wesbr\.codex\automations\invoice-entry-to-projects-backup-heartbeat\automation.toml` |
 | Codex Skill Source Control | Wiki-managed skill system | Active | On demand after skill changes or wiki pulls | `Codex Skill Source Rule.md`; `tools\sync-codex-skills.ps1`; `skills\` |
 | Admin Request Wrapup | Wiki-managed skill | Active | At the end of Admin wiki requests | `skills\admin-request-wrapup\SKILL.md`; `AGENTS.md` |
+| Create PR | Wiki-managed skill plus project room plus dedicated chat | Active | On demand | `skills\create-pr\SKILL.md`; `Project Rooms\Create PR\README.md` |
 | SOPs | Wiki-managed skill plus project room | Active | On demand | `skills\sops\SKILL.md`; `Project Rooms\SOPs\README.md`; `Project Rooms\SOPs\outputs\SOP Index.md` |
 | Credit Worthiness Evaluator | Wiki-managed skill plus project room | Active | On demand | `skills\credit-worthiness-evaluator\SKILL.md`; `Project Rooms\Credit Worthiness Evaluator\README.md` |
 | Contract for Deed | Wiki-managed skill plus project room | Active | On demand | `skills\contract-for-deed\SKILL.md`; `Project Rooms\Contract for Deed\PROJECT-ROOM.md` |
@@ -427,6 +428,35 @@ Important rules:
 - Include total request time in final responses.
 - Say whether a commit was made and whether it was pushed.
 - Do not report per-step timing unless Wes asks.
+
+## Create PR
+
+Type: wiki-managed skill plus project room plus dedicated chat.
+
+Status: active.
+
+Purpose:
+
+- Create and maintain the standard Buy Your Home Project Room package.
+- Set up new Project Room folders, README files, working ledgers, matching wiki-managed skills, registry entries, and dedicated startup chats.
+- Preserve the canonical Admin wiki location and leave unrelated dirty work alone.
+
+Defined in:
+
+- `C:\Codex\Wiki Files\skills\create-pr\SKILL.md`
+- `C:\Codex\Wiki Files\Project Rooms\Create PR\README.md`
+
+Dedicated chat:
+
+- Chat name: `Create PR`
+- Thread id: `019f583e-7f14-7ae2-aa24-4e991544e306`
+
+Important rules:
+
+- Use the standard Project Room startup text from `Project Room Chat Startup Rule.md`.
+- Add branch guidance to each new Project Room README.
+- Do not create Teams folders, automations, or external deliverables unless Wes explicitly asks.
+- Commit only the scoped Project Room, skill, registry, and index files for the room being created.
 
 ## Credit Worthiness Evaluator
 

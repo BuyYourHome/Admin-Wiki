@@ -1,0 +1,11 @@
+# Source Inventory
+
+| Source | Type | Status | Notes |
+| --- | --- | --- | --- |
+| `Project Room Workflow.md` | Wiki rule | authoritative | Defines required Project Room structure and workflow. |
+| `Project Room Chat Startup Rule.md` | Wiki rule | authoritative | Defines new-chat startup text and handoff requirements. |
+| `Agent Unit Standard.md` | Wiki rule | authoritative | Defines Project Room, skill, registry, chat, and automation package expectations. |
+| `Codex Skill Source Rule.md` | Wiki rule | authoritative | Defines canonical skill source and sync expectations. |
+| `Git Work Scope Rule.md` | Wiki rule | authoritative | Defines scoped commits and push behavior. |
+| `Agents and Automations Registry.md` | Registry | authoritative | Human-readable list of agent-like rooms, skills, chats, and automations. |
+| Existing Project Rooms and skills | Examples | background | Used as patterns for README and SKILL structure. |
