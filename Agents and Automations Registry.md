@@ -21,6 +21,7 @@ Use [[Agent Unit Standard]] for the standard package behind an agent-like operat
 | Codex Skill Source Control | Wiki-managed skill system | Active | On demand after skill changes or wiki pulls | `Codex Skill Source Rule.md`; `tools\sync-codex-skills.ps1`; `skills\` |
 | Admin Request Wrapup | Wiki-managed skill | Active | At the end of Admin wiki requests | `skills\admin-request-wrapup\SKILL.md`; `AGENTS.md` |
 | Create PR | Wiki-managed skill plus project room plus dedicated chat | Active | On demand | `skills\create-pr\SKILL.md`; `Project Rooms\Create PR\README.md` |
+| Lowes Order | Wiki-managed skill plus project room plus dedicated chat | Draft | On demand | `skills\lowes-order\SKILL.md`; `Project Rooms\Lowes Order\README.md` |
 | SOPs | Wiki-managed skill plus project room | Active | On demand | `skills\sops\SKILL.md`; `Project Rooms\SOPs\README.md`; `Project Rooms\SOPs\outputs\SOP Index.md` |
 | Credit Worthiness Evaluator | Wiki-managed skill plus project room | Active | On demand | `skills\credit-worthiness-evaluator\SKILL.md`; `Project Rooms\Credit Worthiness Evaluator\README.md` |
 | Contract for Deed | Wiki-managed skill plus project room | Active | On demand | `skills\contract-for-deed\SKILL.md`; `Project Rooms\Contract for Deed\PROJECT-ROOM.md` |
@@ -457,6 +458,34 @@ Important rules:
 - Add branch guidance to each new Project Room README.
 - Do not create Teams folders, automations, or external deliverables unless Wes explicitly asks.
 - Commit only the scoped Project Room, skill, registry, and index files for the room being created.
+
+## Lowes Order
+
+Type: wiki-managed skill plus project room plus dedicated chat.
+
+Status: draft.
+
+Purpose:
+
+- Organize Buy Your Home Lowe's order source material, missing details, review checklists, and order handoffs.
+- Prepare order drafts or summaries from authoritative source material.
+- Keep purchase submission gated behind Wes's explicit approval for the specific order action.
+
+Defined in:
+
+- `C:\Codex\Wiki Files\skills\lowes-order\SKILL.md`
+- `C:\Codex\Wiki Files\Project Rooms\Lowes Order\README.md`
+
+Dedicated chat:
+
+- Chat name: `Lowes Order`
+- Thread id: `019f5845-fb96-7370-baf2-b8f00fddffae`
+
+Important rules:
+
+- Do not place purchases, spend money, submit orders, change payment details, or approve substitutions unless Wes explicitly approves the specific order action.
+- Use the Project Room source inventory before drafting review-ready order outputs.
+- Do not create Teams folders or automations unless Wes explicitly asks.
 
 ## Credit Worthiness Evaluator
 

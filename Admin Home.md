@@ -13,6 +13,7 @@ This is the starting page for the Buy Your Home admin wiki.
 - [[Agent Unit Standard]]
 - [[Project Room Chat Startup Rule]]
 - [[Project Rooms/Create PR/README|Create PR Project Room]]
+- [[Project Rooms/Lowes Order/README|Lowes Order Project Room]]
 - [[Connector and Plugin Usage Rules]]
 - [[Project Rooms/SOPs/README|SOPs Project Room]]
 - [[Project Rooms/Email Summary/README|Email Summary Project Room]]
