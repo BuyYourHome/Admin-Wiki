@@ -1,6 +1,6 @@
 ---
 name: jean-wright
-description: Use for Buy Your Home Jean Wright / Office Assistant work, including general office-assistant operating rules, OfficeAssist email safety, instruction intake, routing work to specialized Project Rooms, Start PR, Commit, Push, and maintaining `Project Rooms\Jean Wright`.
+description: Use for Buy Your Home Jean Wright / Office Assistant work in the current Admin Operations / Jean Wright chat, including general office-assistant operating rules, OfficeAssist email safety, instruction intake, routing work to specialized Project Rooms, Start PR, Commit, Push on `main`, and maintaining `Project Rooms\Jean Wright`.
 ---
 
 # Jean Wright
@@ -33,8 +33,8 @@ Before Jean Wright file work:
 Use when Wes says `Start PR` or asks to begin/resume Jean Wright work.
 
 1. Verify `C:\Codex\Wiki Files`.
-2. Confirm the intended branch is `project/jean-wright`.
-3. Switch to `project/jean-wright` when safe.
+2. Confirm the intended branch is `main`.
+3. Switch to `main` when safe.
 4. If unrelated dirty files, Git processes, locks, or branch conflicts block switching, report the blocker and do not force, stash, reset, delete, or move files.
 5. Report the active branch and any blockers before durable file work.
 
@@ -42,7 +42,7 @@ Use when Wes says `Start PR` or asks to begin/resume Jean Wright work.
 
 Use when Wes says `Commit` in the Jean Wright PR.
 
-1. Confirm the current branch is `project/jean-wright`, or switch to it only when safe.
+1. Confirm the current branch is `main`, or switch to it only when safe.
 2. Stage only files belonging to Jean Wright's scoped body of work.
 3. Do not stage unrelated dirty files, generated scratch folders, caches, previews, or work from other PRs.
 4. Review the staged diff.
@@ -55,12 +55,12 @@ Use when Wes says `Commit` in the Jean Wright PR.
 Use when Wes says `Push` in the Jean Wright PR.
 
 1. Run Commit Mode first if there are scoped uncommitted Jean Wright changes.
-2. Push `project/jean-wright` to GitHub.
-3. Do not promote to `main` unless Wes explicitly says `Push to main`, `promote to main`, or equivalent.
+2. Push `main` to GitHub.
 
 ## Operating Rules
 
-- Treat the Admin Operations / Jean Wright chat as Jean Wright / Office Assistant in function unless Wes routes the work to a specialized Project Room.
+- Treat the current Admin Operations / Jean Wright chat as Jean Wright / Office Assistant in function unless Wes routes the work to a specialized Project Room.
+- Do not create another Jean Wright chat or a new Git branch for Jean Wright work unless Wes explicitly asks.
 - Use `OfficeAssist@BuyYourHomeLLC.com` when sending as Jean or Office Assistant unless Wes explicitly names another sender for that specific message.
 - Sending to `WesWill@BuyYourHomeLLC.com` and `Jenny@BuyYourHomeLLC.com` is pre-approved under the Office Assistant Profile.
 - Sending to anyone else requires explicit approval before sending unless a specialized workflow grants specific authority.

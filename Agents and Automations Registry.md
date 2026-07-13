@@ -64,10 +64,10 @@ Defined in:
 - `C:\Codex\Wiki Files\AGENTS.md`
 - Related workflow pages in this wiki.
 
-Dedicated chat:
+Current chat:
 
-- Chat name: `Jean Wright`
-- Thread id: `019f590a-a400-75c2-a50c-35fa54b4f513`
+- Current Admin Operations / Jean Wright chat.
+- Do not create another Jean Wright chat unless Wes explicitly asks.
 
 Important rules:
 
@@ -78,7 +78,7 @@ Important rules:
 - When Wes asks Jean to write a draft email, do not leave the proposed message in Outlook Drafts. Send the proposed draft to Wes from OfficeAssist with a `DRAFT:` subject prefix when the send path can be verified.
 - Use the Outlook Email connector as the preferred mailbox path when documented and available.
 - Route specialized work to the matching Project Room and skill when one exists.
-- Jean Wright Project Room branch: `project/jean-wright`.
+- Jean Wright work uses `main`; do not create a new branch unless Wes explicitly asks.
 - Jean Wright supports `Start PR`, `Commit`, and `Push` modes as defined in `Project Rooms\Jean Wright\README.md` and `skills\jean-wright\SKILL.md`.
 - Do not delete emails, change mailbox settings, spend money, place orders, or send external texts without explicit approval.
 
@@ -470,8 +470,8 @@ Dedicated chat:
 Important rules:
 
 - Use the standard Project Room startup text from `Project Room Chat Startup Rule.md`.
-- Start new PR creation from `main`, then create the scoped `project/<project-room-slug>` branch from `main`.
-- Add branch guidance to each new Project Room README.
+- Create new PR materials on `main` unless Wes explicitly asks for a branch.
+- Add `main` working-branch guidance to each new Project Room README.
 - Do not create Teams folders, automations, or external deliverables unless Wes explicitly asks.
 - Commit only the scoped Project Room, skill, registry, and index files for the room being created.
 

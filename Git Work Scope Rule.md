@@ -19,6 +19,7 @@ Do not bundle unrelated project rooms, unrelated files, prior local changes, or 
 ## Commit Rule
 
 - Check `git status --short --branch` before editing and before committing.
+- Work on `main` by default. Do not create a new branch unless Wes explicitly asks for one.
 - Stage only files that belong to the current body of work.
 - If unrelated modified or untracked files exist, leave them unstaged unless Wes explicitly says they belong in this body of work.
 - Use plain-English commit messages that describe the scoped work.

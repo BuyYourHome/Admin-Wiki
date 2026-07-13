@@ -47,15 +47,16 @@ Out of scope:
 
 ## Dedicated Chat
 
-- Chat name: `Jean Wright`
-- Thread id: `019f590a-a400-75c2-a50c-35fa54b4f513`
+- Chat name: current Admin Operations / Jean Wright chat.
 - Purpose: operate and improve Jean Wright / Office Assistant as a PR-backed role.
+- Do not create another Jean Wright chat unless Wes explicitly asks.
 
 ## Branch And Modes
 
-- Project branch: `project/jean-wright`
+- Working branch: `main`
 - Work only from `C:\Codex\Wiki Files`.
 - Leave unrelated dirty work alone.
+- Do not create a new Git branch for Jean Wright work unless Wes explicitly asks.
 
 ### Start PR Mode
 
@@ -64,8 +65,8 @@ Trigger: Wes says `Start PR` or asks to begin/resume Jean Wright work.
 1. Verify the default folder with `Get-Location`.
 2. Use `C:\Codex\Wiki Files` as the explicit workdir for shell commands.
 3. Read this README, `skills\jean-wright\SKILL.md`, `AGENTS.md`, `Admin Home.md`, `Repository Location Rule.md`, `Project Room Workflow.md`, `Agent Unit Standard.md`, and `Git Work Scope Rule.md`.
-4. Confirm the intended branch is `project/jean-wright`.
-5. Switch to `project/jean-wright` when safe.
+4. Confirm the intended branch is `main`.
+5. Switch to `main` when safe.
 6. If unrelated dirty files, Git processes, locks, or branch conflicts block switching, report the blocker and do not force, stash, reset, delete, or move files.
 7. Report the active branch, repo path, and any blockers before durable file work.
 
@@ -74,7 +75,7 @@ Trigger: Wes says `Start PR` or asks to begin/resume Jean Wright work.
 Trigger: Wes says `Commit` in the Jean Wright PR.
 
 1. Confirm the repo is `C:\Codex\Wiki Files`.
-2. Confirm the current branch is `project/jean-wright`, or switch to it only when safe.
+2. Confirm the current branch is `main`, or switch to it only when safe.
 3. Review `git status --short --branch`.
 4. Stage only files that belong to the Jean Wright scoped body of work.
 5. Do not stage unrelated dirty files, generated scratch folders, caches, previews, or work from other PRs.
@@ -88,14 +89,13 @@ Trigger: Wes says `Commit` in the Jean Wright PR.
 Trigger: Wes says `Push` in the Jean Wright PR.
 
 1. Run Commit Mode if there are scoped uncommitted Jean Wright changes.
-2. Push `project/jean-wright` to GitHub.
-3. Do not promote to `main` unless Wes explicitly says `Push to main`, `promote to main`, or equivalent.
-4. Report the branch, commit id, push status, and any unrelated work left alone.
+2. Push `main` to GitHub.
+3. Report the branch, commit id, push status, and any unrelated work left alone.
 
 ## Current Operating Rules
 
 - The current Admin Operations chat functions as Jean Wright / Office Assistant unless Wes moves work into a more specific Project Room.
-- Jean Wright is now backed by this dedicated Project Room, skill, branch, and chat.
+- Jean Wright is backed by this dedicated Project Room and skill, and this current Admin Operations / Jean Wright chat.
 - Use `OfficeAssist@BuyYourHomeLLC.com` when sending as Jean or Office Assistant unless Wes explicitly names another sender for that specific message.
 - Sending to `WesWill@BuyYourHomeLLC.com` and `Jenny@BuyYourHomeLLC.com` is pre-approved under the Office Assistant Profile.
 - Sending to anyone else requires explicit approval before sending unless a specialized workflow grants specific authority.

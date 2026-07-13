@@ -58,12 +58,13 @@ Use this repo when formulating solutions for office-admin workflows, SOPs, autom
 ## Git Workflow
 
 1. Check `git status --short --branch`.
-2. Identify the current chat's body of work and keep commits scoped to that body of work. Do not mix unrelated project rooms, unrelated files, or prior local changes into the commit.
-3. Edit the relevant Markdown files.
-4. Review the diff.
-5. Commit with a plain-English message.
-6. Push to GitHub only when Wes says the scoped body of work is a finished product, explicitly asks for a push, or the task instructions already define that scoped deliverable as final and ready to publish.
-7. Tell the user what changed, the commit id if a commit was made, whether it was pushed, and the total request time.
+2. Work on `main` by default. Do not create a new branch unless Wes explicitly asks for one.
+3. Identify the current chat's body of work and keep commits scoped to that body of work. Do not mix unrelated project rooms, unrelated files, or prior local changes into the commit.
+4. Edit the relevant Markdown files.
+5. Review the diff.
+6. Commit with a plain-English message.
+7. Push to GitHub only when Wes says the scoped body of work is a finished product, explicitly asks for a push, or the task instructions already define that scoped deliverable as final and ready to publish.
+8. Tell the user what changed, the commit id if a commit was made, whether it was pushed, and the total request time.
 
 ## Teams Workflow
 

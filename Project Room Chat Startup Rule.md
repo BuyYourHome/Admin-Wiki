@@ -39,6 +39,7 @@ First, read:
 
 When creating a new Project Room chat:
 
+0. Create a new chat only when Wes explicitly asks or when no existing chat should own the work.
 1. Name the chat after the Project Room unless Wes gives another name.
 2. Include the required startup text above.
 3. Include the Project Room path, matching skill path, and any automation id or thread id that belongs to the room.
@@ -57,3 +58,7 @@ Do not use relative paths from a non-canonical default folder.
 ## Handoff Rule
 
 When moving work into a new Project Room chat, include the current status, open decisions, relevant source paths, output paths, matching skill, and any connector or automation limitations. Do not assume the new chat will have remembered prior context unless the handoff states it directly.
+
+## Branch Rule
+
+Project Room work uses `main` by default. Do not create a new Git branch for a Project Room unless Wes explicitly asks for one.
