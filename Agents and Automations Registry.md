@@ -10,7 +10,7 @@ Use [[Agent Unit Standard]] for the standard package behind an agent-like operat
 
 | Name | Type | Status | Schedule | Primary Definition |
 |---|---|---|---|---|
-| Jean Wright / Office Assistant | Assistant profile and operating role | Active | On demand and through related automations | `C:\Codex\Office Assistant Profile.md`; `AGENTS.md` |
+| Jean Wright / Office Assistant | Wiki-managed skill plus project room plus assistant profile and operating role | Active | On demand and through related automations | `skills\jean-wright\SKILL.md`; `Project Rooms\Jean Wright\README.md`; `C:\Codex\Office Assistant Profile.md`; `AGENTS.md` |
 | REI Text Message Watcher | Heartbeat automation | Active | Every 15 minutes during 8:00 AM-9:00 PM Eastern; adaptive 1-minute checks during activity | `C:\Users\wesbr\.codex\automations\morning-weswill-email-summary\automation.toml` |
 | OfficeAssist Instruction Inbox Monitor | Behavior inside Email Summary heartbeat | Active | Runs every day; starts at 7:45 AM Eastern, then every 15 minutes through 11:00 PM Eastern; checks email and takes defined actions | `AGENTS.md`; `C:\Users\wesbr\.codex\automations\officeassist-morning-email-summary-and-instruction-monitor\automation.toml` |
 | Gracious Millionaire Project Room Heartbeat | Project-room heartbeat automation | Active | Every 15 minutes from 8:00 AM-11:45 PM Eastern; project-room Markdown intake processing only | `Project Rooms\Gracious Millionaire\README.md`; `Project Rooms\Gracious Millionaire\working\intake-heartbeat-rules.md`; `C:\Users\wesbr\.codex\automations\gracious-millionaire-project-room-heartbeat\automation.toml` |
@@ -58,19 +58,34 @@ Purpose:
 
 Defined in:
 
+- `C:\Codex\Wiki Files\skills\jean-wright\SKILL.md`
+- `C:\Codex\Wiki Files\Project Rooms\Jean Wright\README.md`
 - `C:\Codex\Office Assistant Profile.md`
 - `C:\Codex\Wiki Files\AGENTS.md`
 - Related workflow pages in this wiki.
 
+Dedicated chat:
+
+- Chat name: `Jean Wright`
+- Thread id: `019f590a-a400-75c2-a50c-35fa54b4f513`
+
 Important rules:
 
-- When sending directly as Jean/Office Assistant, use `OfficeAssist@BuyYourHomeLLC.com`.
-- State that Jean is sending on Wes's behalf when appropriate.
-- Copy `WesWill@BuyYourHomeLLC.com` on outbound emails sent on Wes's behalf unless Wes explicitly says not to for that specific message.
+- The Admin Operations / Jean Wright chat functions as Jean Wright / Office Assistant unless Wes routes work to a specialized Project Room.
+- Use `OfficeAssist@BuyYourHomeLLC.com` when sending as Jean or Office Assistant unless Wes explicitly names another sender for that specific message.
+- Sending to `WesWill@BuyYourHomeLLC.com` and `Jenny@BuyYourHomeLLC.com` is pre-approved under the Office Assistant Profile.
+- Sending to anyone else requires explicit approval before sending unless a specialized workflow grants specific authority.
+- When Wes asks Jean to write a draft email, do not leave the proposed message in Outlook Drafts. Send the proposed draft to Wes from OfficeAssist with a `DRAFT:` subject prefix when the send path can be verified.
+- Use the Outlook Email connector as the preferred mailbox path when documented and available.
+- Route specialized work to the matching Project Room and skill when one exists.
+- Jean Wright Project Room branch: `project/jean-wright`.
+- Jean Wright supports `Start PR`, `Commit`, and `Push` modes as defined in `Project Rooms\Jean Wright\README.md` and `skills\jean-wright\SKILL.md`.
 - Do not delete emails, change mailbox settings, spend money, place orders, or send external texts without explicit approval.
 
 Where to inspect:
 
+- Open `Project Rooms\Jean Wright\README.md` for the Jean Wright PR.
+- Open `skills\jean-wright\SKILL.md` for the Jean Wright workflow skill.
 - Open `AGENTS.md` for durable operating rules.
 - Open `C:\Codex\Office Assistant Profile.md` for the global persona/profile.
 
