@@ -64,6 +64,7 @@ In a PR-dedicated chat, interpret unqualified requests as scoped to the current 
 - If ownership is unclear and the action would create files, change rules, create chats, commit, push, send messages, or affect another PR, ask before acting.
 - Keep central rules lightweight. Do not create circular read chains; read the current PR README and skill, not every related room.
 - Follow `Project Room File Ownership And Git Coordination Rule.md` before editing files, committing, pulling, or pushing.
+- Broad cleanup, alignment, or standardization requests do not authorize moving, renaming, deleting, or editing existing Project Room folders or project-specific skill folders. Follow the explicit rename/move authorization rule before proposing or making those changes.
 
 ## Chat Creation Rule
 

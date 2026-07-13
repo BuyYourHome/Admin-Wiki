@@ -69,6 +69,29 @@ When performing a global governance update:
 - commit the governance update separately from ordinary Project Room work,
 - push only under the normal Git push rules.
 
+## Explicit Project Room Rename / Move Authorization Rule
+
+A broad instruction to create, rename, reorganize, consolidate, clean up, align, or standardize Project Rooms, skills, chats, automations, or workflow names is not authorization to move, rename, delete, or edit any existing Project Room or project-specific skill.
+
+Before changing any existing Project Room folder or project-specific skill folder, Codex must stop and ask Wes for explicit yes/no authorization for that exact change.
+
+For any proposed move or rename, Codex must state:
+
+- existing Project Room or skill name,
+- existing path,
+- proposed new name,
+- proposed new path,
+- owning chat or workflow, if known,
+- whether the change affects registry entries, automations, installed skills, or chat titles.
+
+Required confirmation wording:
+
+```text
+Do you authorize moving/renaming <old path> to <new path>?
+```
+
+No filesystem move, rename, delete, registry edit, skill edit, skill sync, commit, push, automation change, or chat rename may occur until Wes answers yes to that specific proposed change.
+
 ## Reading Versus Writing
 
 A Project Room chat may read another Project Room's files for context when needed, unless that other Project Room's rules prohibit reading.

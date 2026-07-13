@@ -19,7 +19,7 @@ In scope:
 Out of scope:
 
 - Creating Teams folders unless Wes explicitly asks for a final deliverable there.
-- Moving source files from another Project Room unless Wes explicitly authorizes the move.
+- Moving, renaming, deleting, or editing any existing Project Room folder or project-specific skill folder unless Wes answers yes to the exact proposed change under `Project Room File Ownership And Git Coordination Rule.md`.
 - Creating automations unless Wes explicitly asks for a scheduled or event-triggered runner.
 - Publishing or pushing unrelated dirty work.
 
@@ -90,6 +90,18 @@ When creating a new PR, work from `main`.
 14. Create a new Codex chat using the Project Room Chat Startup Rule startup text only when Wes explicitly asks or when no existing chat should own the work.
 15. Commit the scoped durable files locally.
 16. Push only when Wes explicitly asks, says the work is finished, or the applicable rule defines the deliverable as ready to publish.
+
+## Existing PR Rename Or Move Rule
+
+A broad request to clean up, standardize, align, consolidate, or reorganize Project Rooms is not enough to move, rename, delete, or edit an existing Project Room or project-specific skill.
+
+Before any existing PR or project-specific skill move/rename/delete/edit, state the exact old path, proposed new path, known owning chat/workflow, and whether registry entries, automations, installed skills, or chat titles are affected. Then ask:
+
+```text
+Do you authorize moving/renaming <old path> to <new path>?
+```
+
+Do not make the change until Wes answers yes to that specific proposal.
 
 ## New Chat Startup Requirements
 

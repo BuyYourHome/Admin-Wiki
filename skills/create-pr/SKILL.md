@@ -34,7 +34,7 @@ Before Create PR file work:
    - If the repo is not on `main`, switch to `main` only when the worktree is clean or the dirty files are clearly part of the current scoped Create PR setup and can safely move with the branch.
    - If unrelated dirty work, Git locks, or branch conflicts block switching to `main`, stop and report the blocker. Do not force, stash, reset, delete, or carry unrelated work into the new PR.
    - Do not create a new Git branch unless Wes explicitly asks for one.
-4. Check whether the Project Room, skill, registry entry, or chat already exists.
+4. Check whether the Project Room, skill, registry entry, or chat already exists. If an existing Project Room or project-specific skill would need to be moved, renamed, deleted, or edited, follow the explicit yes/no authorization rule in `Project Room File Ownership And Git Coordination Rule.md` before making any change.
 5. Create the Project Room folders under `Project Rooms\<Project Name>\`: `sources\`, `working\`, and `outputs\`.
 6. Create the room README with purpose, scope, folder map, status, matching skill, dedicated chat when any, Start PR pointer, branch rule, and next actions.
 7. Create the standard working files:
@@ -72,7 +72,8 @@ Interpret unqualified requests under the Current PR Scope Rule in that file. Wor
 ## Boundaries
 
 - Do not create Teams folders unless Wes explicitly asks.
-- Do not move source files from another Project Room unless Wes authorizes that move.
+- Do not move, rename, delete, or edit an existing Project Room folder or project-specific skill folder merely because Wes asks to create, clean up, align, consolidate, reorganize, standardize, or rename Project Rooms or workflows.
+- Before any existing PR or project-specific skill move/rename/delete/edit, state the exact old path, proposed new path, known owning chat/workflow, and whether registry entries, automations, installed skills, or chat titles are affected; then ask `Do you authorize moving/renaming <old path> to <new path>?` and wait for a yes to that specific proposal.
 - Do not create automations unless Wes asks for scheduled or event-triggered behavior.
 - Do not commit unrelated dirty work or generated scratch folders.
 - Do not push unless Wes asks, says the setup is finished, or the applicable Admin wiki rules make the deliverable ready to publish.
