@@ -1,4 +1,0 @@
-interface:
-  display_name: "Spreadsheet Redesign"
-  short_description: "Maintain Buy Your Home project spreadsheet redesign and rollout rules."
-  default_prompt: "Use the Project Management Spreadsheet Redesign skill for worksheet redesign, migration, validation, and rollout work."

@@ -17,7 +17,6 @@ Use [[Agent Unit Standard]] for the standard package behind an agent-like operat
 | Email Summary | Wiki-managed skill plus heartbeat automation plus project room | Active | Runs every day; starts at 7:45 AM Eastern, then every 15 minutes through 11:00 PM Eastern; Boss and Jenny summaries run once daily at/after 8:00 AM, and instruction monitoring checks OfficeAssist email | `skills\email-summary\SKILL.md`; `Project Rooms\Email Summary\README.md`; `C:\Users\wesbr\.codex\automations\officeassist-morning-email-summary-and-instruction-monitor\automation.toml` |
 | Email Delivery | Wiki-managed support skill | Active | Called by email-capable Admin workflows | `skills\email-delivery\SKILL.md` |
 | Doc Scan | Wiki-managed skill plus heartbeat automation plus project room | Active | Every 15 minutes on weekdays from 10:00 AM through 4:45 PM Eastern | `skills\doc-scan\SKILL.md`; `Project Rooms\Doc Scan\README.md`; `C:\Users\wesbr\.codex\skills\doc-scan\SKILL.md`; app automation id `doc-scan` |
-| Invoice Entry | Wiki-managed skill plus project room plus backup heartbeat | Active | Hourly backup packet check; direct Doc Scan handoff remains primary trigger | `skills\invoice-entry\SKILL.md`; `Project Rooms\Invoice Entry\README.md`; `C:\Users\wesbr\.codex\automations\invoice-entry-to-projects-backup-heartbeat\automation.toml` |
 | Codex Skill Source Control | Wiki-managed skill system | Active | On demand after skill changes or wiki pulls | `Codex Skill Source Rule.md`; `tools\sync-codex-skills.ps1`; `skills\` |
 | Admin Request Wrapup | Wiki-managed skill | Active | At the end of Admin wiki requests | `skills\admin-request-wrapup\SKILL.md`; `AGENTS.md` |
 | Create PR | Wiki-managed skill plus project room plus dedicated chat | Active | On demand | `skills\create-pr\SKILL.md`; `Project Rooms\Create PR\README.md` |
@@ -33,9 +32,9 @@ Use [[Agent Unit Standard]] for the standard package behind an agent-like operat
 | AIOS | Wiki-managed skill plus project room | Active/planning | On demand | `skills\aios\SKILL.md`; `Project Rooms\AIOS\README.md`; `AIOS\start-here.md` |
 | Entity Relationship | Wiki-managed skill plus project room | Active/planning | On demand | `skills\entity-relationship\SKILL.md`; `Project Rooms\Entity Relationship\README.md` |
 | Gracious Millionaire | Wiki-managed skill plus project room plus heartbeat automation | Active | Project-room heartbeat every 15 minutes during active window; on demand otherwise | `skills\gracious-millionaire\SKILL.md`; `Project Rooms\Gracious Millionaire\README.md`; `Project Rooms\Gracious Millionaire\working\intake-heartbeat-rules.md`; automation id `gracious-millionaire-project-room-heartbeat` |
-| Project Management Spreadsheet Redesign | Wiki-managed skill plus project room | Active | On demand | `skills\project-management-spreadsheet-redesign\SKILL.md`; `Project Rooms\Project Management Spreadsheet Redesign\README.md`; `Project Rooms\Project Management Spreadsheet Redesign\Project Spreadsheet Expense Placement Rules.md` |
+| Template to Project | Wiki-managed skill plus project room | Active | On demand | `skills\template-to-project\SKILL.md`; `Project Rooms\Template to Project\README.md`; `Project Rooms\Template to Project\Project Spreadsheet Expense Placement Rules.md` |
 | Invoice Entry | Wiki-managed skill plus project room plus backup heartbeat automation plus dedicated chat | Active | Direct message handoff is primary; backup heartbeat checks hourly for structured invoice/receipt packets that were not delivered by direct message | `skills\invoice-entry\SKILL.md`; `Project Rooms\Invoice Entry\README.md`; app automation id `invoice-entry-to-projects-backup-heartbeat` |
-| Project Management Spreadsheet Rewrite | Planning project room, now covered by Spreadsheet Redesign skill | Active/planning | On demand | `skills\project-management-spreadsheet-redesign\SKILL.md`; `Project Rooms\Project Management Spreadsheet Rewrite\README.md` |
+| Project Management Spreadsheet Rewrite | Planning/history project room now covered by Template to Project | Active/planning | On demand | `skills\template-to-project\SKILL.md`; `Project Rooms\Project Management Spreadsheet Rewrite\README.md` |
 | Property Trade Evaluation | Wiki-managed skill plus project room | Active | On demand | `skills\property-trade-evaluation\SKILL.md`; `Project Rooms\Property Trade Evaluation\README.md` |
 | Wes's Voice | Wiki-managed skill plus project room | Planning | On demand | `skills\wes-voice\SKILL.md`; `Project Rooms\Wes's Voice\README.md` |
 | New Project | Wiki-managed skill plus project room | Draft | On demand | `skills\new-project\SKILL.md`; `Project Rooms\New Project\README.md` |
@@ -357,47 +356,6 @@ Important rules:
 - Keep the automation attached to one dedicated status thread via `target_thread_id` so the user can review run history and adjust behavior in one place.
 - Use quiet-run behavior with `DONT_NOTIFY` when no new scans are found so routine empty checks do not create visible chat noise.
 
-## Invoice Entry
-
-Type: wiki-managed skill plus project room plus backup heartbeat automation.
-
-Status: active.
-
-Automation id:
-
-- `invoice-entry-to-projects-backup-heartbeat`
-
-Schedule:
-
-- Hourly.
-
-Purpose:
-
-- Receive structured invoice and receipt packets from Doc Scan.
-- Resolve the exact live project-management workbook.
-- Check workbook records for duplicate invoices.
-- Decide final spreadsheet row placement.
-- Insert approved invoice records while preserving workbook formulas, formatting, selectors, tables, and links.
-- Validate totals and downstream `Gnatt Chart` links.
-- Upload the verified workbook back to Teams/SharePoint when authorized.
-- Use the heartbeat only as a backup monitor for structured packets that may have missed direct handoff.
-
-Defined in:
-
-- Canonical skill source: `C:\Codex\Wiki Files\skills\invoice-entry\SKILL.md`
-- Project room: `C:\Codex\Wiki Files\Project Rooms\Invoice Entry\README.md`
-- Packet drop folder: `C:\Codex\Wiki Files\Project Rooms\Invoice Entry\sources\document-scan-packets`
-- Installed local skill copy: `C:\Users\wesbr\.codex\skills\invoice-entry\SKILL.md`
-- Automation: `C:\Users\wesbr\.codex\automations\invoice-entry-to-projects-backup-heartbeat\automation.toml`
-
-Important rules:
-
-- Doc Scan is the normal intake workflow for scanned invoice and receipt packets.
-- Other packet handoff sources are not part of this workflow unless Wes separately approves and documents them.
-- Do not scan inboxes, inspect raw scan folders, copy invoice files into Teams/project folders, approve or pay invoices, contact vendors, or redesign workbook templates from this workflow.
-- Do not edit a live workbook unless Wes clearly authorizes the insertion or an approved automation rule exists for that exact insertion type.
-- Quiet heartbeat checks with no new packets, failures, or decisions needed should not create routine visible messages.
-
 ## Codex Skill Source Control
 
 Type: wiki-managed skill system.
@@ -639,16 +597,41 @@ Use when:
 
 - A task depends on multiple source files, emails, scans, notes, spreadsheets, or prior drafts.
 
+## Template to Project
+
+Type: wiki-managed skill plus project room.
+
+Status: active.
+
+Purpose:
+
+- Migrate approved worksheet, workbook, and worksheet-mode designs from a prototype workbook into active Buy Your Home project-management spreadsheets.
+- Maintain worksheet-mode rules, rollout target lists, rollback procedures, validation logs, migration logs, and lessons learned.
+- Keep active project spreadsheet structures consistent across projects after Wes approves a design change.
+
+Defined in:
+
+- `C:\Codex\Wiki Files\skills\template-to-project\SKILL.md`
+- `C:\Codex\Wiki Files\Project Rooms\Template to Project\README.md`
+- `C:\Codex\Wiki Files\Project Rooms\Template to Project\Project Spreadsheet Expense Placement Rules.md`
+- `C:\Codex\Wiki Files\Project Rooms\Template to Project\Worksheet Modes`
+
+Important boundaries:
+
+- Does not insert individual invoice, receipt, or statement-line records into project spreadsheets; that belongs to Invoice Entry.
+- Does not inspect scans, split documents, OCR invoices, or route invoice files; that belongs to Doc Scan.
+- Does not edit another project room's files or skill source without exact Wes approval.
+
 ## Project Management Spreadsheet Rewrite
 
-Type: Project Room.
+Type: planning/history project room.
 
 Status: active/planning.
 
 Purpose:
 
-- Begin an extensive rewrite of the Project Management spreadsheet used for real estate projects.
-- The current workflow uses a new spreadsheet instance for each real estate project.
+- Preserve earlier planning for a broader project-management spreadsheet rewrite.
+- Use `Template to Project` for current template-to-active-project migration work unless Wes specifically asks to work in this planning room.
 
 Defined in:
 
@@ -814,7 +797,7 @@ Automation:
 Important limitations:
 
 - Does not scan inboxes or copy invoice attachments into Teams folders.
-- Does not design or roll out workbook templates; that belongs to Project Management Spreadsheet Redesign.
+- Does not design or roll out workbook templates; that belongs to Template to Project.
 - Does not approve invoices, pay invoices, contact vendors, or make accounting entries.
 - Uses Teams/SharePoint as the source of truth for active project-management workbooks.
 

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Template to Project"
+  short_description: "Migrate approved workbook template changes into active project spreadsheets."
+  default_prompt: "Use the Template to Project skill for approved worksheet-mode migration, workbook rollout, validation, rollback, and lessons-learned work."

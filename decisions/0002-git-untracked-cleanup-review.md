@@ -37,7 +37,7 @@ Recommended handling: do not hide automatically. These are likely process artifa
 ### Working Logs And Data
 
 - Doc Scan: closing acquisition audit CSV/TXT outputs.
-- Project Management Spreadsheet Redesign: worksheet migration and validation JSON/CSV/TXT logs.
+- Template to Project: worksheet migration and validation JSON/CSV/TXT logs.
 - Estate Documents: promissory-note text support file.
 
 Recommended handling: keep visible until the relevant workflow decides whether these are needed for auditability or can be ignored as generated run logs.

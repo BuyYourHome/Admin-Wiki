@@ -1,4 +1,4 @@
-﻿# Project Management Spreadsheet Rewrite
+# Project Management Spreadsheet Rewrite
 
 ## Purpose
 
@@ -36,7 +36,7 @@ Excluded for now:
 
 ## Matching Skill
 
-- Skill source: `C:\Codex\Wiki Files\skills\project-management-spreadsheet-redesign\SKILL.md`
+- Skill source: `C:\Codex\Wiki Files\skills\template-to-project\SKILL.md`
 - Use the Redesign skill for active spreadsheet redesign and rollout work. Treat this room as planning/history unless Wes specifically asks to work here.
 
 ## Working Templates

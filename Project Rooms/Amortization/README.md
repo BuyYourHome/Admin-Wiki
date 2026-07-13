@@ -1,4 +1,4 @@
-﻿# Amortization Project Room
+# Amortization Project Room
 
 ## Purpose
 
@@ -18,7 +18,7 @@ Own the reusable Amortization generator that creates buyer-facing 12-month amort
 
 This project room generates buyer-facing amortization outputs from the current project spreadsheet. It does not own project workbook redesign, replacement-sheet swaps, or rollout of a redesigned `Amortization` worksheet across active projects.
 
-When an Amortization task touches the structure of a project workbook's `Amortization` sheet, follow the Amortization rollout rules maintained in [[Project Spreadsheet Expense Placement Rules]] under the Project Management Spreadsheet Redesign project room. Those rules control Teams connector verification, rollback copies, reconnect-by-meaning validation, lesson capture, and project exceptions such as Cool Springs.
+When an Amortization task touches the structure of a project workbook's `Amortization` sheet, follow the Amortization rollout rules maintained in [[Project Spreadsheet Expense Placement Rules]] under the Template to Project project room. Those rules control Teams connector verification, rollback copies, reconnect-by-meaning validation, lesson capture, and project exceptions such as Cool Springs.
 
 ## Current Status
 

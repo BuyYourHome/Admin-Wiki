@@ -1,4 +1,4 @@
-﻿---
+---
 name: invoice-entry
 description: Use for Buy Your Home project-management spreadsheet invoice-entry work after Doc Scan has prepared a structured invoice, receipt, or Statement Mode packet. Trigger when Codex needs to receive a structured packet, choose the correct active project workbook and worksheet, check for duplicate invoice or statement-line records, insert approved records into a Vendor Tab or other approved project-spreadsheet expense area, validate totals and workbook links, and report uncertain routing for Wes review.
 ---
@@ -9,7 +9,7 @@ description: Use for Buy Your Home project-management spreadsheet invoice-entry 
 
 - Project room: `C:\Codex\Wiki Files\Project Rooms\Invoice Entry`
 - Skill source: `C:\Codex\Wiki Files\skills\invoice-entry\SKILL.md`
-- Spreadsheet redesign room: `C:\Codex\Wiki Files\Project Rooms\Project Management Spreadsheet Redesign`
+- Template-to-project migration room: `C:\Codex\Wiki Files\Project Rooms\Template to Project`
 
 Use this skill for operational invoice and approved statement-line insertion into project-management spreadsheets. For scanned invoice, receipt, and Statement Mode records, Doc Scan is the normal intake workflow and should trigger this workflow by direct follow-up message after creating the packet. The project-room heartbeat is a backup monitor for missed packet handoffs. Do not use this skill for scan inspection/OCR, document splitting, statement extraction, invoice-file routing, or spreadsheet template redesign.
 
@@ -22,8 +22,8 @@ Doc Scan owns Lowes Statement Mode extraction and will send extracted statement 
 3. Read the project-room `README.md`.
 4. Read `working\invoice-packet-schema.md`.
 5. If the insertion is for Vendor Tabs Mode, read:
-   - `C:\Codex\Wiki Files\Project Rooms\Project Management Spreadsheet Redesign\Worksheet Modes\Vendor Tabs Mode Rules.md`
-   - `C:\Codex\Wiki Files\Project Rooms\Project Management Spreadsheet Redesign\Project Spreadsheet Expense Placement Rules.md`
+   - `C:\Codex\Wiki Files\Project Rooms\Template to Project\Worksheet Modes\Vendor Tabs Mode Rules.md`
+   - `C:\Codex\Wiki Files\Project Rooms\Template to Project\Project Spreadsheet Expense Placement Rules.md`
 6. Use the SharePoint/Teams connector as the source-of-truth path for active project-management workbooks.
 
 ## Ownership Boundary

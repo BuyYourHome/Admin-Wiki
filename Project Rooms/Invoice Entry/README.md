@@ -1,4 +1,4 @@
-﻿# Invoice Entry
+# Invoice Entry
 
 ## Purpose
 
@@ -31,7 +31,7 @@ Excluded unless Wes explicitly expands scope:
 
 - `Doc Scan`: scan inspection/OCR, document splitting, invoice/receipt/statement identification, project/property folder routing when applicable, saving/copying filed PDFs into Teams/project folders, scan log entries, Statement Mode extraction, and structured packet creation.
 - `Invoice Entry`: structured packet receipt, exact live project-management workbook resolution, workbook duplicate checks, statement-line allocation, final row placement, invoice or approved statement-line record insertion, workbook formula/format/selector/table/link preservation, totals and downstream-link validation, authorized upload back to Teams/SharePoint, and insertion logging.
-- `Project Management Spreadsheet Redesign`: worksheet design, worksheet-mode rules, template changes, and rollout across project workbooks.
+- `Template to Project`: worksheet design, worksheet-mode rules, template changes, and rollout across project workbooks.
 
 ## Current Status
 
@@ -133,8 +133,8 @@ For Lowes Statement Mode packets:
 
 When inserting into Vendor Tabs Mode, read:
 
-- `C:\Codex\Wiki Files\Project Rooms\Project Management Spreadsheet Redesign\Worksheet Modes\Vendor Tabs Mode Rules.md`
-- `C:\Codex\Wiki Files\Project Rooms\Project Management Spreadsheet Redesign\Project Spreadsheet Expense Placement Rules.md`
+- `C:\Codex\Wiki Files\Project Rooms\Template to Project\Worksheet Modes\Vendor Tabs Mode Rules.md`
+- `C:\Codex\Wiki Files\Project Rooms\Template to Project\Project Spreadsheet Expense Placement Rules.md`
 
 Current Vendor Tabs Mode worksheets:
 
