@@ -144,3 +144,15 @@ Lessons:
 - The prior `Review!Q2` text selector is obsolete and must not be used.
 - Before processing Review rows, verify the defined name target through Excel. If it is relative or points anywhere other than `=Review!$B$1`, stop and report the workbook design mismatch.
 - Do not clear the request checkbox until eligible rows have been processed, excluded rows have been noted, the workbook has passed validation, and the updated workbook is ready to replace the Teams source.
+
+## 2026-07-13 - Outrigger Review Request Processing
+
+Context: Processed the first finalized Outrigger `tblInvoiceReview` request from the checkbox-trigger design and copied approved Review rows into `tblPlumbingFixturesInvoices`.
+
+Lessons:
+
+- Run Review-request processing in two phases: insert approved rows and save first, reopen and validate totals/links, then clear `invoiceEntryReviewRequest` and validate again before upload.
+- If an Excel automation write fails after touching a workbook, restore from the rollback copy before retrying. Do not continue from a partially written workbook copy.
+- Do not inspect the raw workbook ZIP/package while Excel still has the file open. Close Excel fully before checking for external-link package parts.
+- For current Outrigger Plumbing Fixtures rows, use the table's existing `Group` value pattern `PlumbingFixtures` when filling new actual-invoice rows.
+- When copying Lowe's Review rows into vendor tables, preserve clean item descriptions from `Review[Description]`, parse item number and quantity from the Review trace when available, and let the table's `Sub-Total` and `Tax` formulas calculate from quantity and cost/unit.
