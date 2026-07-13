@@ -53,6 +53,7 @@ This room was created to hold the standard Create PR process.
 - Before durable file work, confirm the repo is `C:\Codex\Wiki Files` and switch to `main` when safe.
 - Do not create a new Git branch for a new PR unless Wes explicitly asks for a branch.
 - If Git processes, lock files, or unrelated dirty files block switching to `main`, report the blocker instead of forcing, stashing, resetting, or deleting files.
+- Follow `Project Room File Ownership And Git Coordination Rule.md` for PR file ownership, shared Admin file edits, cross-PR edits, fetch/pull safety, and push safety.
 - When Wes says `Push` in this PR, commit only the Create PR room, matching skill, and directly related registry/index changes.
 
 ## Start PR Pointer
@@ -82,12 +83,13 @@ When creating a new PR, work from `main`.
 7. In the new README, include the short Start PR pointer from `Project Room Chat Startup Rule.md`, not the full central rule text.
 8. Create the matching wiki-managed skill under `skills\<skill-name>\SKILL.md`.
 9. In the new skill, include the same short Start PR pointer.
-10. Add an `agents\openai.yaml` file for the skill when practical.
-11. Update `Agents and Automations Registry.md` when the workflow is agent-like, repeatable, or expected to have a dedicated chat.
-12. Add an `Admin Home.md` link when the room should be easy to find from the wiki start page.
-13. Create a new Codex chat using the Project Room Chat Startup Rule startup text only when Wes explicitly asks or when no existing chat should own the work.
-14. Commit the scoped durable files locally.
-15. Push only when Wes explicitly asks, says the work is finished, or the applicable rule defines the deliverable as ready to publish.
+10. Include the new PR under the ownership and Git coordination rule; do not set up a new room so that it can edit other PR files by default.
+11. Add an `agents\openai.yaml` file for the skill when practical.
+12. Update `Agents and Automations Registry.md` when the workflow is agent-like, repeatable, or expected to have a dedicated chat.
+13. Add an `Admin Home.md` link when the room should be easy to find from the wiki start page.
+14. Create a new Codex chat using the Project Room Chat Startup Rule startup text only when Wes explicitly asks or when no existing chat should own the work.
+15. Commit the scoped durable files locally.
+16. Push only when Wes explicitly asks, says the work is finished, or the applicable rule defines the deliverable as ready to publish.
 
 ## New Chat Startup Requirements
 

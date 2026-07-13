@@ -19,6 +19,7 @@ Do not rename this folder. Do not move existing root folders as part of AIOS set
 | Starting map | `Admin Home.md` |
 | Repository and location policy | `Repository Location Rule.md` |
 | Git scope, commit, and push rules | `Git Work Scope Rule.md` |
+| Project Room file ownership and Git coordination | `Project Room File Ownership And Git Coordination Rule.md` |
 | Plugin and connector priority | `Connector and Plugin Usage Rules.md` |
 | Project-room workflow | `Project Room Workflow.md` |
 | Skill source-control policy | `Codex Skill Source Rule.md` |
@@ -52,6 +53,7 @@ Do not rename this folder. Do not move existing root folders as part of AIOS set
 | `Project Room Workflow.md` | Required workflow for substantial multi-source drafting, analysis, redesign, or automation work. |
 | `Repository Location Rule.md` | Confirms `C:\Codex\Wiki Files` as the working repo and warns against Teams as the wiki source. |
 | `Git Work Scope Rule.md` | Tells AI how to keep commits scoped and avoid unrelated local changes. |
+| `Project Room File Ownership And Git Coordination Rule.md` | Controls PR file ownership, cross-PR edits, shared Admin rule edits, fetch/pull safety, and push safety. |
 | `Codex Skill Source Rule.md` | Explains canonical skill source under `skills/` and installed copies under `%USERPROFILE%\.codex\skills`. |
 | `Document Scanning SOP.md` | Human-facing scanned-document workflow. |
 | `Document Scanning Skill Spec.md` | Detailed behavior for the document-scanning skill and automation. |

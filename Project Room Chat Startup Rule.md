@@ -31,6 +31,7 @@ First, read:
 - C:\Codex\Wiki Files\Repository Location Rule.md
 - C:\Codex\Wiki Files\Project Room Workflow.md
 - C:\Codex\Wiki Files\Project Room Chat Startup Rule.md
+- C:\Codex\Wiki Files\Project Room File Ownership And Git Coordination Rule.md
 - C:\Codex\Wiki Files\Agent Unit Standard.md
 - the Project Room README.md for the room being used
 - the matching skill source under C:\Codex\Wiki Files\skills, when one exists
@@ -47,7 +48,7 @@ Steps:
 1. Verify the default folder with `Get-Location`.
 2. Use `C:\Codex\Wiki Files` as the explicit workdir for shell commands and absolute file paths.
 3. Confirm the working branch is `main`; switch to `main` only when safe.
-4. Read only the central startup rule, the current PR README file, and the current PR's matching skill source when one exists.
+4. Read only the central startup rule, the Project Room file ownership and Git coordination rule, the current PR README file, and the current PR's matching skill source when one exists.
 5. Read root rules needed for the request: `AGENTS.md`, `Repository Location Rule.md`, `Project Room Workflow.md`, `Agent Unit Standard.md`, and `Git Work Scope Rule.md`.
 6. Do not read every Project Room, every skill, or unrelated workflow files merely because Start PR Mode was triggered.
 7. If unrelated dirty files, Git processes, lock files, or branch conflicts block switching to `main` or checking status, report the blocker and do not force, stash, reset, delete, or move files.
@@ -62,6 +63,7 @@ In a PR-dedicated chat, interpret unqualified requests as scoped to the current 
 - If the request clearly belongs to another existing PR or specialized skill, say that briefly and ask whether to route the work there unless an existing rule already authorizes the handoff.
 - If ownership is unclear and the action would create files, change rules, create chats, commit, push, send messages, or affect another PR, ask before acting.
 - Keep central rules lightweight. Do not create circular read chains; read the current PR README and skill, not every related room.
+- Follow `Project Room File Ownership And Git Coordination Rule.md` before editing files, committing, pulling, or pushing.
 
 ## Chat Creation Rule
 

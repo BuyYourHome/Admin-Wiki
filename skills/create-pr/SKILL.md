@@ -12,6 +12,7 @@ description: Use when Wes asks Codex to create, set up, standardize, or continue
 - Admin wiki source: `C:\Codex\Wiki Files`
 - Registry: `C:\Codex\Wiki Files\Agents and Automations Registry.md`
 - Chat startup rule: `C:\Codex\Wiki Files\Project Room Chat Startup Rule.md`
+- Ownership and Git coordination rule: `C:\Codex\Wiki Files\Project Room File Ownership And Git Coordination Rule.md`
 
 Use this skill for creating or maintaining the standard Buy Your Home Project Room package: Project Room, matching wiki-managed skill, registry entry when needed, and dedicated Codex chat.
 
@@ -20,7 +21,7 @@ Use this skill for creating or maintaining the standard Buy Your Home Project Ro
 Before Create PR file work:
 
 1. Confirm the working folder is `C:\Codex\Wiki Files`.
-2. Read `Admin Home.md`, `AGENTS.md`, `Project Room Workflow.md`, `Project Room Chat Startup Rule.md`, `Agent Unit Standard.md`, `Codex Skill Source Rule.md`, and `Git Work Scope Rule.md`.
+2. Read `Admin Home.md`, `AGENTS.md`, `Project Room Workflow.md`, `Project Room Chat Startup Rule.md`, `Project Room File Ownership And Git Coordination Rule.md`, `Agent Unit Standard.md`, `Codex Skill Source Rule.md`, and `Git Work Scope Rule.md`.
 3. Read `Project Rooms\Create PR\README.md`, `working\source-inventory.md`, `working\duplicate-and-conflict-log.md`, and `working\missing-context.md`.
 4. Check `git status --short --branch`.
 
@@ -42,11 +43,12 @@ Before Create PR file work:
    - `working\missing-context.md`
 8. Include this short pointer in the README and matching skill instead of copying the full central rule: `Start PR: Before durable work, follow Start PR Mode in C:\Codex\Wiki Files\Project Room Chat Startup Rule.md. Interpret unqualified requests under the Current PR Scope Rule in that file. Work on main unless Wes explicitly asks for a branch.`
 9. Create the matching skill under `skills\<skill-name>\SKILL.md` with source paths, required startup, workflow, boundaries, outputs, and Git rules.
-10. Add `skills\<skill-name>\agents\openai.yaml` when practical.
-11. Update `Agents and Automations Registry.md` when the room is repeatable, agent-like, has a dedicated chat, or may later have automation.
-12. Add `Admin Home.md` links when the room should be visible from the wiki start page.
-13. Create or hand off to a dedicated chat using `Project Room Chat Startup Rule.md` only when Wes explicitly asks or when no existing chat should own the work.
-14. Commit only the scoped Project Room, skill, registry, and index changes. Push only under the Admin wiki push rules.
+10. Make the new Project Room subject to `Project Room File Ownership And Git Coordination Rule.md`; do not set up a new room so it can edit other PR files by default.
+11. Add `skills\<skill-name>\agents\openai.yaml` when practical.
+12. Update `Agents and Automations Registry.md` when the room is repeatable, agent-like, has a dedicated chat, or may later have automation.
+13. Add `Admin Home.md` links when the room should be visible from the wiki start page.
+14. Create or hand off to a dedicated chat using `Project Room Chat Startup Rule.md` only when Wes explicitly asks or when no existing chat should own the work.
+15. Commit only the scoped Project Room, skill, registry, and index changes. Push only under the Admin wiki push rules.
 
 ## Chat Startup Prompt Requirements
 

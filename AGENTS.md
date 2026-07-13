@@ -19,6 +19,7 @@ Use this repo when formulating solutions for office-admin workflows, SOPs, autom
 - Use `Codex Python Runtime Rule.md` before running Python scripts for Admin wiki, project-room, document, spreadsheet, or skill-support work.
 - Use `LibreOffice Location Rule.md` before rendering or converting Word/PDF documents with LibreOffice.
 - Use `Project Room Workflow.md` before major work that depends on multiple source files, emails, scans, notes, spreadsheets, or prior drafts.
+- Use `Project Room File Ownership And Git Coordination Rule.md` before durable Project Room edits, cross-PR work, shared Admin rule edits, commits, pulls, or pushes.
 - Use `Project Rooms\SOPs\` for SOP source emails, extracted notes, SOP pages, SOP index, source map, and SOP review questions.
 - Use `Project Rooms\Email Summary\` for development work on the Email Summary workflow, including source inventory, automation notes, open questions, and review-ready handoffs.
 - Use `Project Rooms\Doc Scan\` for development work on scanned document processing, including scan routing, automation notes, source inventory, and review-ready handoffs.
@@ -59,12 +60,13 @@ Use this repo when formulating solutions for office-admin workflows, SOPs, autom
 
 1. Check `git status --short --branch`.
 2. Work on `main` by default. Do not create a new branch unless Wes explicitly asks for one.
-3. Identify the current chat's body of work and keep commits scoped to that body of work. Do not mix unrelated project rooms, unrelated files, or prior local changes into the commit.
-4. Edit the relevant Markdown files.
-5. Review the diff.
-6. Commit with a plain-English message.
-7. Push to GitHub only when Wes says the scoped body of work is a finished product, explicitly asks for a push, or the task instructions already define that scoped deliverable as final and ready to publish.
-8. Tell the user what changed, the commit id if a commit was made, whether it was pushed, and the total request time.
+3. Follow `Project Room File Ownership And Git Coordination Rule.md` for Project Room ownership, shared Admin files, cross-PR edits, fetch/pull safety, commit scope, and push safety.
+4. Identify the current chat's body of work and keep commits scoped to that body of work. Do not mix unrelated project rooms, unrelated files, or prior local changes into the commit.
+5. Edit the relevant Markdown files.
+6. Review the diff.
+7. Commit with a plain-English message.
+8. Push to GitHub only when Wes says the scoped body of work is a finished product, explicitly asks for a push, or the task instructions already define that scoped deliverable as final and ready to publish.
+9. Tell the user what changed, the commit id if a commit was made, whether it was pushed, and the total request time.
 
 ## Teams Workflow
 

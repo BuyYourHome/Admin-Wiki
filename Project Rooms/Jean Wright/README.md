@@ -57,6 +57,7 @@ Out of scope:
 - Work only from `C:\Codex\Wiki Files`.
 - Leave unrelated dirty work alone.
 - Do not create a new Git branch for Jean Wright work unless Wes explicitly asks.
+- Follow `Project Room File Ownership And Git Coordination Rule.md` for global governance updates, shared Admin files, cross-PR routing, commit scope, and push safety.
 
 ### Start PR Mode
 
@@ -73,20 +74,22 @@ Trigger: Wes says `Commit` in the Jean Wright PR.
 1. Confirm the repo is `C:\Codex\Wiki Files`.
 2. Confirm the current branch is `main`, or switch to it only when safe.
 3. Review `git status --short --branch`.
-4. Stage only files that belong to the Jean Wright scoped body of work.
-5. Do not stage unrelated dirty files, generated scratch folders, caches, previews, or work from other PRs.
-6. Review the staged diff.
-7. Commit locally with a plain-English message.
-8. Do not push unless Wes says `Push`, `Push to GitHub`, or the applicable Admin wiki rule defines the deliverable as final and ready to publish.
-9. Report the commit id, branch, included files, and anything intentionally left unstaged.
+4. Follow `Project Room File Ownership And Git Coordination Rule.md` before staging.
+5. Stage only files that belong to the Jean Wright scoped body of work or a Wes-authorized global governance update.
+6. Do not stage unrelated dirty files, generated scratch folders, caches, previews, or work from other PRs.
+7. Review the staged diff.
+8. Commit locally with a plain-English message.
+9. Do not push unless Wes says `Push`, `Push to GitHub`, or the applicable Admin wiki rule defines the deliverable as final and ready to publish.
+10. Report the commit id, branch, included files, and anything intentionally left unstaged.
 
 ### Push Mode
 
 Trigger: Wes says `Push` in the Jean Wright PR.
 
 1. Run Commit Mode if there are scoped uncommitted Jean Wright changes.
-2. Push `main` to GitHub.
-3. Report the branch, commit id, push status, and any unrelated work left alone.
+2. Fetch GitHub and confirm local `main` includes current `origin/main`.
+3. Push `main` to GitHub only when the push contains the intended scoped body of work.
+4. Report the branch, commit id, push status, and any unrelated work left alone.
 
 ## Current Operating Rules
 
@@ -99,6 +102,7 @@ Trigger: Wes says `Push` in the Jean Wright PR.
 - Use Outlook Email connector access when documented and available for mailbox work. Do not substitute another mailbox or connector when a required mailbox is unavailable.
 - If an email task fails, cannot be sent, or cannot be verified, notify Wes in the thread instead of staying quiet.
 - Treat specialized workflow requests as handoffs to the matching Project Room and skill when one exists.
+- Do not perform durable edits inside a specialized Project Room unless Wes explicitly authorizes that specific cross-PR edit or global governance update.
 - Do not use the Teams-synced wiki folder as the working repo.
 
 ## Next Actions

@@ -2,6 +2,8 @@
 
 Use this rule before committing or pushing Admin wiki work.
 
+For Project Room ownership, shared Admin files, cross-PR edits, fetch/pull safety, and push safety, also follow [[Project Room File Ownership And Git Coordination Rule]].
+
 ## Scope Unit
 
 The default Git scope unit is the current chat's body of work.
@@ -20,6 +22,7 @@ Do not bundle unrelated project rooms, unrelated files, prior local changes, or 
 
 - Check `git status --short --branch` before editing and before committing.
 - Work on `main` by default. Do not create a new branch unless Wes explicitly asks for one.
+- Follow the Project Room ownership and shared Admin file boundaries before staging.
 - Stage only files that belong to the current body of work.
 - If unrelated modified or untracked files exist, leave them unstaged unless Wes explicitly says they belong in this body of work.
 - Use plain-English commit messages that describe the scoped work.
@@ -30,8 +33,10 @@ Do not bundle unrelated project rooms, unrelated files, prior local changes, or 
 Pushing should be scoped the same way commits are scoped.
 
 - Push only when Wes says the current body of work is finished, explicitly asks for a push, or the task instructions define the scoped deliverable as final and ready to publish.
+- Fetch GitHub and confirm local `main` includes current `origin/main` before pushing.
 - Before pushing, verify the push would include only the intended body of work.
 - If a push would include unrelated local work, stop and report the blocker instead of pushing.
+- Never force-push `main`.
 - Leave unrelated modified files and unrelated untracked files out of the push.
 
 ## Reporting Rule

@@ -13,6 +13,7 @@ This is the starting page for the Buy Your Home admin wiki.
 - [[Agent Unit Standard]]
 - [[Project Rooms/Jean Wright/README|Jean Wright Project Room]]
 - [[Project Room Chat Startup Rule]]
+- [[Project Room File Ownership And Git Coordination Rule]]
 - [[Project Rooms/Create PR/README|Create PR Project Room]]
 - [[Project Rooms/Lowes Order/README|Lowes Order Project Room]]
 - [[Connector and Plugin Usage Rules]]
@@ -28,6 +29,7 @@ This is the starting page for the Buy Your Home admin wiki.
 - [[SOP Spreadsheet Maintenance Rule]]
 - [[Repository Location Rule]]
 - [[Git Work Scope Rule]]
+- [[Project Room File Ownership And Git Coordination Rule]]
 - [[Codex Skill Source Rule]]
 
 ## Grocery List

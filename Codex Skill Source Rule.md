@@ -34,6 +34,8 @@ Project rooms remain the working source/history for project-specific materials, 
 
 Skills should point to project rooms when they need project-specific context. Skills should not replace project rooms.
 
+When a skill is specific to a Project Room, that skill source belongs to the owning Project Room for file-ownership purposes. Do not edit another Project Room's matching skill source unless Wes explicitly authorizes that specific cross-PR or global governance edit. See [[Project Room File Ownership And Git Coordination Rule]].
+
 For contract-for-deed work, do not sync the installed `contract-for-deed` skill merely because project-room scripts, prototypes, or drafts changed. Keep those changes in the project room until the new prototypes/workflow are ready. Sync the skill after the prototypes are completed or when Wes explicitly asks to update the installed skill.
 
 ## Direct Local Edits

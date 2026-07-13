@@ -19,6 +19,7 @@ Use this when the request asks:
 | Admin starting map | `Admin Home.md` |
 | Repository location | `Repository Location Rule.md` |
 | Git workflow | `Git Work Scope Rule.md` |
+| Project Room ownership and Git coordination | `Project Room File Ownership And Git Coordination Rule.md` |
 | Connector/plugin usage | `Connector and Plugin Usage Rules.md` |
 | Project room workflow | `Project Room Workflow.md` |
 | Skill source control | `Codex Skill Source Rule.md` |

@@ -4,7 +4,7 @@ Use an AI Project Room for any task that depends on multiple source files, email
 
 The purpose is to prepare the source set before drafting, analyzing, rewriting, or making recommendations. Do not ask Codex to produce a final deliverable from a messy folder. Build the room first.
 
-For repeatable workflow roles that combine a Project Room, skill, registry entry, chat/thread, or automation, also follow [[Agent Unit Standard]]. When creating, moving, forking, or resuming a Project Room chat, follow [[Project Room Chat Startup Rule]].
+For repeatable workflow roles that combine a Project Room, skill, registry entry, chat/thread, or automation, also follow [[Agent Unit Standard]]. When creating, moving, forking, or resuming a Project Room chat, follow [[Project Room Chat Startup Rule]]. Before durable Project Room edits, commits, pulls, or pushes, follow [[Project Room File Ownership And Git Coordination Rule]].
 
 ## When To Use
 

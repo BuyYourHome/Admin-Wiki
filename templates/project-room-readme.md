@@ -36,3 +36,8 @@ Describe what is included and excluded.
 4. Build `working/missing-context.md`.
 5. Draft the output only after the source set is clean.
 
+## Start PR Pointer
+
+Before durable work, follow Start PR Mode in `C:\Codex\Wiki Files\Project Room Chat Startup Rule.md`.
+
+Interpret unqualified requests under the Current PR Scope Rule in that file. Work on `main` unless Wes explicitly asks for a branch.

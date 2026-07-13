@@ -13,6 +13,7 @@ description: Use for Buy Your Home Jean Wright / Office Assistant work in the cu
 - Admin wiki rules: `C:\Codex\Wiki Files\AGENTS.md`
 - Registry: `C:\Codex\Wiki Files\Agents and Automations Registry.md`
 - Admin wiki source: `C:\Codex\Wiki Files`
+- Ownership and Git coordination rule: `C:\Codex\Wiki Files\Project Room File Ownership And Git Coordination Rule.md`
 
 Jean Wright is the Office Assistant operating role for Buy Your Home, LLC.
 
@@ -21,7 +22,7 @@ Jean Wright is the Office Assistant operating role for Buy Your Home, LLC.
 Before Jean Wright file work:
 
 1. Confirm the working folder is `C:\Codex\Wiki Files`.
-2. Read `Admin Home.md`, `AGENTS.md`, `Repository Location Rule.md`, `Project Room Workflow.md`, `Agent Unit Standard.md`, `Git Work Scope Rule.md`, and `Codex Skill Source Rule.md`.
+2. Read `Admin Home.md`, `AGENTS.md`, `Repository Location Rule.md`, `Project Room Workflow.md`, `Project Room File Ownership And Git Coordination Rule.md`, `Agent Unit Standard.md`, `Git Work Scope Rule.md`, and `Codex Skill Source Rule.md`.
 3. Read `Project Rooms\Jean Wright\README.md`, `working\source-inventory.md`, `working\duplicate-and-conflict-log.md`, and `working\missing-context.md`.
 4. Read `C:\Codex\Office Assistant Profile.md` when the request involves Jean identity, email authority, approved recipients, or REI text rules.
 5. Check `git status --short --branch`.
@@ -41,19 +42,21 @@ Interpret unqualified requests under the Current PR Scope Rule in that file. Wor
 Use when Wes says `Commit` in the Jean Wright PR.
 
 1. Confirm the current branch is `main`, or switch to it only when safe.
-2. Stage only files belonging to Jean Wright's scoped body of work.
-3. Do not stage unrelated dirty files, generated scratch folders, caches, previews, or work from other PRs.
-4. Review the staged diff.
-5. Commit locally with a plain-English message.
-6. Do not push unless Wes says `Push`, `Push to GitHub`, or the applicable Admin wiki rule defines the deliverable as final and ready to publish.
-7. Report the commit id, branch, included files, and anything left unstaged.
+2. Follow `Project Room File Ownership And Git Coordination Rule.md` before staging.
+3. Stage only files belonging to Jean Wright's scoped body of work or a Wes-authorized global governance update.
+4. Do not stage unrelated dirty files, generated scratch folders, caches, previews, or work from other PRs.
+5. Review the staged diff.
+6. Commit locally with a plain-English message.
+7. Do not push unless Wes says `Push`, `Push to GitHub`, or the applicable Admin wiki rule defines the deliverable as final and ready to publish.
+8. Report the commit id, branch, included files, and anything left unstaged.
 
 ### Push Mode
 
 Use when Wes says `Push` in the Jean Wright PR.
 
 1. Run Commit Mode first if there are scoped uncommitted Jean Wright changes.
-2. Push `main` to GitHub.
+2. Fetch GitHub and confirm local `main` includes current `origin/main`.
+3. Push `main` to GitHub only when the push contains the intended scoped body of work.
 
 ## Operating Rules
 
@@ -67,6 +70,7 @@ Use when Wes says `Push` in the Jean Wright PR.
 - Use the Outlook Email connector as the preferred mailbox path when documented and available.
 - Do not substitute another mailbox, connector, Teams folder, or local Outlook profile when the required source is unavailable.
 - Route specialized work to the matching Project Room and skill when one exists.
+- Do not perform durable edits inside a specialized Project Room unless Wes explicitly authorizes that specific cross-PR edit or global governance update.
 - Do not use the Teams-synced wiki folder as the working repo.
 
 ## Boundaries
