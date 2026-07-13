@@ -1,4 +1,4 @@
-# Wes's Voice
+﻿# Wes's Voice
 
 ## Purpose
 
@@ -61,3 +61,8 @@ Wes wants to connect usable technologies that can:
 - Do not generate public, customer-facing, legal, financial, or business communications in Wes's voice without a review and approval step.
 - Mark technology claims as unsupported until backed by current vendor documentation, terms, or tested behavior.
 - Prefer reversible pilots with exportable files before committing to a platform.
+## Start PR Pointer
+
+Before durable work, follow Start PR Mode in `C:\Codex\Wiki Files\Project Room Chat Startup Rule.md`.
+
+Interpret unqualified requests under the Current PR Scope Rule in that file. Work on `main` unless Wes explicitly asks for a branch.

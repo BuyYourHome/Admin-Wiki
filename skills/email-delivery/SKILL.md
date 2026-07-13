@@ -1,4 +1,4 @@
----
+﻿---
 name: email-delivery
 description: Use when an Admin wiki workflow needs to send or prepare an email from OfficeAssist@BuyYourHomeLLC.com with Outlook connector preference, sender safety, attachment handling, sent-item verification, and failure reporting. Intended as a shared support skill for workflows such as Contract for Deed Email Package and Email Summary; it does not decide the workflow-specific email content.
 ---
@@ -71,3 +71,8 @@ If sender verification fails, the email cannot be sent, an attachment is missing
 - Do not send a partial or altered message unless the caller explicitly approves that fallback.
 - Notify Wes in the chat with the blocker and the proposed email body.
 - Do not send correction emails or retries without Wes's explicit instruction.
+## Start PR Pointer
+
+Before durable work, follow Start PR Mode in `C:\Codex\Wiki Files\Project Room Chat Startup Rule.md`.
+
+Interpret unqualified requests under the Current PR Scope Rule in that file. Work on `main` unless Wes explicitly asks for a branch.

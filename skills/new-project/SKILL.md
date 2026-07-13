@@ -1,4 +1,4 @@
----
+﻿---
 name: new-project
 description: Start and maintain the Buy Your Home New Project project room. Use when Wes asks to use, develop, scope, organize, inventory, or produce work from `Project Rooms\New Project`, or when a request explicitly refers to the New Project room or New Project skill.
 ---
@@ -43,3 +43,8 @@ Read these files first:
 - Do not treat New Project as a substitute for an existing specialized room when a better room already exists.
 - Do not create final deliverables from unclear or missing source context.
 - Preserve original source files.
+## Start PR Pointer
+
+Before durable work, follow Start PR Mode in `C:\Codex\Wiki Files\Project Room Chat Startup Rule.md`.
+
+Interpret unqualified requests under the Current PR Scope Rule in that file. Work on `main` unless Wes explicitly asks for a branch.

@@ -1,4 +1,4 @@
----
+﻿---
 name: invoice-entry
 description: Use for Buy Your Home project-management spreadsheet invoice-entry work after Doc Scan has prepared a structured invoice, receipt, or Statement Mode packet. Trigger when Codex needs to receive a structured packet, choose the correct active project workbook and worksheet, check for duplicate invoice or statement-line records, insert approved records into a Vendor Tab or other approved project-spreadsheet expense area, validate totals and workbook links, and report uncertain routing for Wes review.
 ---
@@ -181,3 +181,8 @@ Lessons should include failed attempts, workbook-specific hazards, safer next-st
 - Capture new reusable lessons in the project-room rules or a relevant mode rule before completion.
 - Commit durable wiki/skill changes when made.
 - Do not push Git changes unless Wes says the work is finished, explicitly asks for a push, or the task defines the deliverable as final.
+## Start PR Pointer
+
+Before durable work, follow Start PR Mode in `C:\Codex\Wiki Files\Project Room Chat Startup Rule.md`.
+
+Interpret unqualified requests under the Current PR Scope Rule in that file. Work on `main` unless Wes explicitly asks for a branch.

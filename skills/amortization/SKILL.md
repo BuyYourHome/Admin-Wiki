@@ -1,4 +1,4 @@
----
+﻿---
 name: amortization
 description: Use when Codex needs to create a formal 12-month amortization chart from a Buy Your Home project spreadsheet, especially when called by another workflow such as Contract for Deed. Trigger when a caller provides a project spreadsheet and project-room output folder, asks for an amortization chart, amortization schedule, seller-financing payment schedule, or Contract for Deed amortization output.
 ---
@@ -236,3 +236,8 @@ When changing this skill:
 3. Commit the Admin wiki changes locally.
 4. Do not sync the installed local skill unless Wes explicitly asks to sync, install, or make the updated skill active.
 5. Do not push unless Wes explicitly asks or says the update is finished and ready to publish.
+## Start PR Pointer
+
+Before durable work, follow Start PR Mode in `C:\Codex\Wiki Files\Project Room Chat Startup Rule.md`.
+
+Interpret unqualified requests under the Current PR Scope Rule in that file. Work on `main` unless Wes explicitly asks for a branch.

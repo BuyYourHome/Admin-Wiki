@@ -1,4 +1,4 @@
----
+﻿---
 name: lowes-order
 description: Use for Buy Your Home Lowe's order project-room work, including organizing order sources, filling a Lowe's cart from email instructions through Chrome, preparing order drafts or handoffs, tracking missing order details, and maintaining outputs under `Project Rooms\Lowes Order`.
 ---
@@ -66,3 +66,8 @@ Use this workflow when Wes asks Codex to add Lowe's items to a cart from an emai
 ## Outputs
 
 Use `C:\Codex\Wiki Files\Project Rooms\Lowes Order\outputs` for review-ready order drafts, cart-review summaries, item checklists, handoff notes, and final summaries.
+## Start PR Pointer
+
+Before durable work, follow Start PR Mode in `C:\Codex\Wiki Files\Project Room Chat Startup Rule.md`.
+
+Interpret unqualified requests under the Current PR Scope Rule in that file. Work on `main` unless Wes explicitly asks for a branch.

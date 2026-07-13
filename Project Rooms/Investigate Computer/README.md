@@ -1,4 +1,4 @@
-# Investigate Computer
+﻿# Investigate Computer
 
 ## Purpose
 
@@ -34,3 +34,8 @@ Draft project room created after the June 2026 remote-access incident. Initial d
 - Decide whether Wes wants a scheduled daily automation and what time it should run.
 - Decide whether daily diagnostic reports should be emailed every day or only when findings are non-clean.
 - Add future incident evidence summaries to `sources\` or `working\` before drafting new formal outputs.
+## Start PR Pointer
+
+Before durable work, follow Start PR Mode in `C:\Codex\Wiki Files\Project Room Chat Startup Rule.md`.
+
+Interpret unqualified requests under the Current PR Scope Rule in that file. Work on `main` unless Wes explicitly asks for a branch.

@@ -1,4 +1,4 @@
----
+﻿---
 name: operating-agreement
 description: Use for Buy Your Home Admin operating-agreement work, including creating, revising, comparing, redlining, or organizing OA drafts for SYH, BYH, Investment Services, BYH 401K, and Heritage Management; selecting the correct OA build mode; preserving SYH/Jeff Watson source lineage; and applying the Operating Agreements project-room rules.
 ---
@@ -97,3 +97,8 @@ This is a wiki-managed skill. Canonical source lives at:
 `C:\Codex\Wiki Files\skills\operating-agreement\SKILL.md`
 
 Installed runtime copies under `%USERPROFILE%\.codex\skills` are deployed copies, not the source of truth. Sync this skill only when Wes says it is ready to install or the update is intended to become active in future Codex sessions.
+## Start PR Pointer
+
+Before durable work, follow Start PR Mode in `C:\Codex\Wiki Files\Project Room Chat Startup Rule.md`.
+
+Interpret unqualified requests under the Current PR Scope Rule in that file. Work on `main` unless Wes explicitly asks for a branch.

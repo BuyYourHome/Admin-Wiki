@@ -1,4 +1,4 @@
----
+﻿---
 name: investigate-computer
 description: Daily or on-demand Windows compromise diagnostics for Wes's computer. Use when Wes asks to run Investigate Computer, check for ScreenConnect/RMM or other remote-access persistence, verify cleanup after reboot, document computer incident evidence, or prepare an OfficeAssist email report about security diagnostics.
 ---
@@ -83,3 +83,8 @@ Include:
 - Whether email was sent and verified, if requested.
 
 Avoid overclaiming identity. The `nsciotti` string in the installer name is an evidence identifier, not proof of a specific person by itself.
+## Start PR Pointer
+
+Before durable work, follow Start PR Mode in `C:\Codex\Wiki Files\Project Room Chat Startup Rule.md`.
+
+Interpret unqualified requests under the Current PR Scope Rule in that file. Work on `main` unless Wes explicitly asks for a branch.

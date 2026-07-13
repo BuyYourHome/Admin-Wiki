@@ -1,4 +1,4 @@
-# SOPs Project Room
+﻿# SOPs Project Room
 
 ## Purpose
 
@@ -47,3 +47,8 @@ The SOP corpus was moved into this Project Room on 2026-06-15 so future SOP work
 - Record duplicate, superseded, or conflicting source issues in `working\duplicate-and-conflict-log.md`.
 - Record missing decisions in `working\missing-context.md` or the detailed `working\Questions for Review.md`.
 - Keep final clean SOP pages in `outputs\SOPs\`.
+## Start PR Pointer
+
+Before durable work, follow Start PR Mode in `C:\Codex\Wiki Files\Project Room Chat Startup Rule.md`.
+
+Interpret unqualified requests under the Current PR Scope Rule in that file. Work on `main` unless Wes explicitly asks for a branch.

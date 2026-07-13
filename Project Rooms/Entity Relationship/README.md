@@ -1,4 +1,4 @@
-# Entity Relationship Project Room
+﻿# Entity Relationship Project Room
 
 ## Purpose
 
@@ -32,4 +32,8 @@ Initial chart outputs exist in `outputs\`. The room now has the standard Project
 2. Record each source in `working\source-inventory.md`.
 3. Record conflicts or unsupported relationship claims in `working\duplicate-and-conflict-log.md` or `working\missing-context.md`.
 4. Update charts only from supported or explicitly labeled assumptions.
+## Start PR Pointer
 
+Before durable work, follow Start PR Mode in `C:\Codex\Wiki Files\Project Room Chat Startup Rule.md`.
+
+Interpret unqualified requests under the Current PR Scope Rule in that file. Work on `main` unless Wes explicitly asks for a branch.

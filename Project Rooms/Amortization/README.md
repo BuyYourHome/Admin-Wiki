@@ -1,4 +1,4 @@
-# Amortization Project Room
+﻿# Amortization Project Room
 
 ## Purpose
 
@@ -37,3 +37,8 @@ Reusable generator implemented under `scripts\New-AmortizationChart.ps1`.
 1. Continue testing the generator against additional project spreadsheets.
 2. Add validation examples when known-good schedules are available.
 3. Keep the template workbook updated as Wes refines the buyer-facing layout.
+## Start PR Pointer
+
+Before durable work, follow Start PR Mode in `C:\Codex\Wiki Files\Project Room Chat Startup Rule.md`.
+
+Interpret unqualified requests under the Current PR Scope Rule in that file. Work on `main` unless Wes explicitly asks for a branch.

@@ -1,4 +1,4 @@
----
+﻿---
 name: wes-voice
 description: Use for Wes's Voice project-room work, including voice likeness governance, text-to-speech workflow planning, avatar/video research, consent rules, vendor evaluation, source inventory, and outputs under `Project Rooms\Wes's Voice`.
 ---
@@ -32,3 +32,8 @@ Use this skill for planning or maintaining workflows that use Wes's voice likene
 - Do not upload Wes's voice recordings, face images, likeness materials, or identity materials to an external service unless Wes explicitly approves the service and purpose.
 - Do not generate public, customer-facing, legal, financial, or business communications in Wes's voice without review and approval.
 - Mark technology claims as unsupported until backed by current vendor documentation, terms, or tested behavior.
+## Start PR Pointer
+
+Before durable work, follow Start PR Mode in `C:\Codex\Wiki Files\Project Room Chat Startup Rule.md`.
+
+Interpret unqualified requests under the Current PR Scope Rule in that file. Work on `main` unless Wes explicitly asks for a branch.

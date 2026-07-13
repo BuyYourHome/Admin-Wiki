@@ -1,4 +1,4 @@
-# New Project
+﻿# New Project
 
 This project room is a placeholder for a newly scoped effort.
 
@@ -32,3 +32,8 @@ This project room is a placeholder for a newly scoped effort.
 - Do not blend unsupported facts into final outputs.
 - Use authoritative sources only for factual claims.
 - Record missing context before drafting.
+## Start PR Pointer
+
+Before durable work, follow Start PR Mode in `C:\Codex\Wiki Files\Project Room Chat Startup Rule.md`.
+
+Interpret unqualified requests under the Current PR Scope Rule in that file. Work on `main` unless Wes explicitly asks for a branch.

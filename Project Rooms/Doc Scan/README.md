@@ -1,4 +1,4 @@
-# Doc Scan Project Room
+﻿# Doc Scan Project Room
 
 This project room holds development notes, source inventory, and review artifacts for the Buy Your Home Doc Scan workflow.
 
@@ -44,3 +44,8 @@ The project room's defined scan modes are maintained in [[doc-scan-modes]]. Trea
 Use this project room for development and design work. Do not change live scan routing, automation schedule, archive behavior, or skill behavior without updating the authoritative SOP/spec/map and the registry together.
 
 Preserve source scans. Never delete source scan files as part of this workflow.
+## Start PR Pointer
+
+Before durable work, follow Start PR Mode in `C:\Codex\Wiki Files\Project Room Chat Startup Rule.md`.
+
+Interpret unqualified requests under the Current PR Scope Rule in that file. Work on `main` unless Wes explicitly asks for a branch.

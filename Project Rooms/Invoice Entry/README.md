@@ -1,4 +1,4 @@
-# Invoice Entry
+﻿# Invoice Entry
 
 ## Purpose
 
@@ -177,3 +177,8 @@ If a duplicate is likely, stop and route the packet for review instead of insert
 2. Create the first Outrigger invoice-entry test packet.
 3. Prove duplicate detection, row placement, totals, and `Gnatt Chart` behavior on Outrigger.
 4. After Wes approves, define the repeatable insertion procedure for other active project workbooks.
+## Start PR Pointer
+
+Before durable work, follow Start PR Mode in `C:\Codex\Wiki Files\Project Room Chat Startup Rule.md`.
+
+Interpret unqualified requests under the Current PR Scope Rule in that file. Work on `main` unless Wes explicitly asks for a branch.

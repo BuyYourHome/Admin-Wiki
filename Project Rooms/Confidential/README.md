@@ -1,4 +1,4 @@
-# Confidential
+﻿# Confidential
 
 This project room holds sensitive Buy Your Home Admin wiki work that Wes has explicitly routed to Confidential.
 
@@ -39,3 +39,8 @@ This project room holds sensitive Buy Your Home Admin wiki work that Wes has exp
 - Add source materials or define the first Confidential work item.
 - Update the source inventory before drafting from any source.
 - Record any privacy or sharing decisions in `working\missing-context.md`.
+## Start PR Pointer
+
+Before durable work, follow Start PR Mode in `C:\Codex\Wiki Files\Project Room Chat Startup Rule.md`.
+
+Interpret unqualified requests under the Current PR Scope Rule in that file. Work on `main` unless Wes explicitly asks for a branch.

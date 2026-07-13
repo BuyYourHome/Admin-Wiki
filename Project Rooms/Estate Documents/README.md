@@ -1,4 +1,4 @@
-# Estate Documents
+﻿# Estate Documents
 
 ## Purpose
 
@@ -59,3 +59,8 @@ Excluded unless Wes specifically adds them:
 3. Record duplicates, outdated documents, and contradictions in `working/duplicate-and-conflict-log.md`.
 4. Record missing facts and questions in `working/missing-context.md`.
 5. Draft answers or summaries only after the relevant source set is inventoried.
+## Start PR Pointer
+
+Before durable work, follow Start PR Mode in `C:\Codex\Wiki Files\Project Room Chat Startup Rule.md`.
+
+Interpret unqualified requests under the Current PR Scope Rule in that file. Work on `main` unless Wes explicitly asks for a branch.

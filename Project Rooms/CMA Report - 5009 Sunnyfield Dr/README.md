@@ -1,4 +1,4 @@
-# CMA Report - 5009 Sunnyfield Dr
+﻿# CMA Report - 5009 Sunnyfield Dr
 
 ## Purpose
 
@@ -20,4 +20,8 @@ Draft report completed from owner-provided property facts and current public mar
 
 - Confirm year, size, bed/bath count, condition, title status, and monthly lot rent.
 - Pull MLS or COMPER closed-sale support for home-only / leased-lot manufactured homes before using as a final pricing recommendation.
+## Start PR Pointer
 
+Before durable work, follow Start PR Mode in `C:\Codex\Wiki Files\Project Room Chat Startup Rule.md`.
+
+Interpret unqualified requests under the Current PR Scope Rule in that file. Work on `main` unless Wes explicitly asks for a branch.

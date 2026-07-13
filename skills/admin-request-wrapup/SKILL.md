@@ -1,4 +1,4 @@
----
+﻿---
 name: admin-request-wrapup
 description: Use for Buy Your Home Admin wiki work when finishing any user request, especially tasks involving file edits, project rooms, documents, skills, commits, or GitHub. Ensures Codex reports total request elapsed time and does not push Git changes unless Wes says the work is a finished product, explicitly asks for a push, or the deliverable is clearly final and ready to publish.
 ---
@@ -46,3 +46,8 @@ Before final response, include only what matters:
 - Total request time.
 
 Do not mention generated scratch files, render images, temporary tools, or raw processing artifacts unless Wes asks or they affect the deliverable.
+## Start PR Pointer
+
+Before durable work, follow Start PR Mode in `C:\Codex\Wiki Files\Project Room Chat Startup Rule.md`.
+
+Interpret unqualified requests under the Current PR Scope Rule in that file. Work on `main` unless Wes explicitly asks for a branch.

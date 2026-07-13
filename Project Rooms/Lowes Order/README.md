@@ -1,4 +1,4 @@
-# Lowes Order Project Room
+﻿# Lowes Order Project Room
 
 ## Purpose
 
@@ -86,3 +86,8 @@ When Wes asks Lowes Order to fill a cart from an email:
 3. Record any missing item details, property/project assignment, budget, delivery/pickup details, or approval decisions in `working\missing-context.md`.
 4. Fill a Lowe's cart only from authoritative email or user-provided instructions, then stop at cart review unless Wes explicitly approves checkout.
 5. Draft review-ready order outputs in `outputs\` only from authoritative sources.
+## Start PR Pointer
+
+Before durable work, follow Start PR Mode in `C:\Codex\Wiki Files\Project Room Chat Startup Rule.md`.
+
+Interpret unqualified requests under the Current PR Scope Rule in that file. Work on `main` unless Wes explicitly asks for a branch.

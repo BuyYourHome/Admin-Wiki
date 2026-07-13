@@ -1,4 +1,4 @@
-# Property Trade Evaluation Project Room
+﻿# Property Trade Evaluation Project Room
 
 ## Purpose
 
@@ -32,4 +32,8 @@ Historical working materials and rendered outputs already exist. The room now ha
 2. Keep unsupported transaction facts in `working\missing-context.md`.
 3. Use `outputs\` only for review-ready deliverables.
 4. Avoid committing generated render folders or dependency folders unless explicitly needed as durable source.
+## Start PR Pointer
 
+Before durable work, follow Start PR Mode in `C:\Codex\Wiki Files\Project Room Chat Startup Rule.md`.
+
+Interpret unqualified requests under the Current PR Scope Rule in that file. Work on `main` unless Wes explicitly asks for a branch.

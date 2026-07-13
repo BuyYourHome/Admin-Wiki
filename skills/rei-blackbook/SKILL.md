@@ -1,4 +1,4 @@
----
+﻿---
 name: rei-blackbook
 description: Use for Buy Your Home REI BlackBook work, including website creation or updates inside REI BlackBook WebTools at https://my.reiblackbook.com/webtools/sites, project-room planning, site content inventory, page copy drafting, asset tracking, lead/contact or text-workflow notes, browser-based implementation, QA notes, and handoff of decisions needed before publishing or changing live REI BlackBook workflows.
 ---
@@ -119,3 +119,8 @@ GM scheduled iteration:
 - Separate page copy from implementation notes.
 - For each page, track title, slug or URL path, purpose, primary call to action, body sections, media needed, forms, links, and SEO notes when available.
 - Mark unsupported claims with `[UNSUPPORTED]` instead of smoothing them into final language.
+## Start PR Pointer
+
+Before durable work, follow Start PR Mode in `C:\Codex\Wiki Files\Project Room Chat Startup Rule.md`.
+
+Interpret unqualified requests under the Current PR Scope Rule in that file. Work on `main` unless Wes explicitly asks for a branch.

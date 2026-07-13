@@ -1,4 +1,4 @@
----
+﻿---
 name: project-management-spreadsheet-redesign
 description: Use for Buy Your Home project-management spreadsheet redesign, worksheet-mode rules, workbook migration planning, Profit/Amortization/Carrying tab rollout, validation notes, and work under `Project Rooms\Project Management Spreadsheet Redesign` or `Project Rooms\Project Management Spreadsheet Rewrite`.
 ---
@@ -39,3 +39,8 @@ Use the Redesign room for current worksheet rollout and migration work. Treat th
 - Do not overwrite source workbooks silently.
 - Do not move finished files back to Teams unless Wes asks or an established workflow explicitly requires that final delivery.
 - Do not commit generated backups or rendered checks unless they are intentionally durable evidence.
+## Start PR Pointer
+
+Before durable work, follow Start PR Mode in `C:\Codex\Wiki Files\Project Room Chat Startup Rule.md`.
+
+Interpret unqualified requests under the Current PR Scope Rule in that file. Work on `main` unless Wes explicitly asks for a branch.

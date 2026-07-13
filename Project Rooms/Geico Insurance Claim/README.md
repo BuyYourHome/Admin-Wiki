@@ -1,4 +1,4 @@
-# Geico Insurance Claim Project Room
+﻿# Geico Insurance Claim Project Room
 
 ## Purpose
 
@@ -33,3 +33,8 @@ Prepare a clear working file so claim facts, open questions, deadlines, and next
 3. Record any duplicated, outdated, unclear, or conflicting information in [[Project Rooms/Geico Insurance Claim/working/duplicate-and-conflict-log|duplicate-and-conflict-log]].
 4. Track missing claim facts and decisions in [[Project Rooms/Geico Insurance Claim/working/missing-context|missing-context]].
 5. Draft outputs only from authoritative sources.
+## Start PR Pointer
+
+Before durable work, follow Start PR Mode in `C:\Codex\Wiki Files\Project Room Chat Startup Rule.md`.
+
+Interpret unqualified requests under the Current PR Scope Rule in that file. Work on `main` unless Wes explicitly asks for a branch.

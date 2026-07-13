@@ -1,4 +1,4 @@
----
+﻿---
 name: cma-report
 description: Create, rerun, finalize, and file Buy Your Home CMA report and related real-estate property report deliverables. Use when Codex prepares or updates a CMA report, valuation report, lender report, property packet, creditworthiness report tied to a property, or other formal report for a Buy Your Home property, including copying the completed report into the Teams-synced property Owning folder.
 ---
@@ -70,3 +70,8 @@ powershell -NoProfile -ExecutionPolicy Bypass -File "C:\Codex\Wiki Files\skills\
 ```
 
 The script returns the destination path when the copy succeeds.
+## Start PR Pointer
+
+Before durable work, follow Start PR Mode in `C:\Codex\Wiki Files\Project Room Chat Startup Rule.md`.
+
+Interpret unqualified requests under the Current PR Scope Rule in that file. Work on `main` unless Wes explicitly asks for a branch.

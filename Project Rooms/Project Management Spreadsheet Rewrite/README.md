@@ -1,4 +1,4 @@
-# Project Management Spreadsheet Rewrite
+﻿# Project Management Spreadsheet Rewrite
 
 ## Purpose
 
@@ -70,3 +70,8 @@ Excluded for now:
 4. Build `working/duplicate-and-conflict-log.md`.
 5. Build `working/missing-context.md`.
 6. Draft the spreadsheet redesign spec only after the source set is clean.
+## Start PR Pointer
+
+Before durable work, follow Start PR Mode in `C:\Codex\Wiki Files\Project Room Chat Startup Rule.md`.
+
+Interpret unqualified requests under the Current PR Scope Rule in that file. Work on `main` unless Wes explicitly asks for a branch.

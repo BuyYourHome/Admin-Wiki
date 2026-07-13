@@ -1,4 +1,4 @@
----
+﻿---
 name: contract-for-deed
 description: Use when refreshing, regenerating, reviewing, or packaging contract-for-deed seller documents from a confirmed real estate project spreadsheet, including buyer-specific transaction folders, Credit Worthiness handoffs, closing document checklists, affidavits, and Buy Your Home seller document packages.
 ---
@@ -626,3 +626,8 @@ When changing this skill:
 3. Commit the Admin wiki changes locally when the durable rule update is complete.
 4. Do not sync the installed local skill merely because canonical source changed. Sync only when Wes explicitly asks to sync, install, or make the updated skill active.
 5. Do not push unless Wes explicitly asks to push or says the update is finished and ready to publish.
+## Start PR Pointer
+
+Before durable work, follow Start PR Mode in `C:\Codex\Wiki Files\Project Room Chat Startup Rule.md`.
+
+Interpret unqualified requests under the Current PR Scope Rule in that file. Work on `main` unless Wes explicitly asks for a branch.

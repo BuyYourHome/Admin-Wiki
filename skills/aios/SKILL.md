@@ -1,4 +1,4 @@
----
+﻿---
 name: aios
 description: Use for Buy Your Home AIOS work, including the Admin wiki AI operating-system overlay, startup files, vault maps, privacy/routing rules, AIOS Project Room materials, and new-chat smoke testing.
 ---
@@ -33,3 +33,8 @@ Use this skill for the AIOS overlay and its routing/privacy/startup materials.
 - Do not restructure the wiki or move major folders merely because an AIOS idea suggests it.
 - Do not start physical ACE folder migration unless Wes explicitly approves that project and timing.
 - Preserve existing Admin wiki rules as controlling unless Wes approves a replacement.
+## Start PR Pointer
+
+Before durable work, follow Start PR Mode in `C:\Codex\Wiki Files\Project Room Chat Startup Rule.md`.
+
+Interpret unqualified requests under the Current PR Scope Rule in that file. Work on `main` unless Wes explicitly asks for a branch.

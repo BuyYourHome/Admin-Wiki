@@ -1,4 +1,4 @@
-# Gracious Millionaire
+﻿# Gracious Millionaire
 
 ## Matching Skill
 
@@ -62,3 +62,8 @@ Started. Initial email source files were created from the retrievable messages i
 - Use Dialogue mode when Wes wants the same source material tested as a Wes/Jenny conversational manuscript.
 - Use Interview mode when Wes wants Jean to guide the same source material through interview questions with Wes and Jenny.
 - Monitor the active intake heartbeat and refine processing rules as new routed chapter sources arrive.
+## Start PR Pointer
+
+Before durable work, follow Start PR Mode in `C:\Codex\Wiki Files\Project Room Chat Startup Rule.md`.
+
+Interpret unqualified requests under the Current PR Scope Rule in that file. Work on `main` unless Wes explicitly asks for a branch.

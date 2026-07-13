@@ -1,4 +1,4 @@
-# Project Management Spreadsheet Redesign
+﻿# Project Management Spreadsheet Redesign
 
 ## Purpose
 
@@ -57,3 +57,8 @@ Project room created. Conversion has not started.
 2. Inspect source and template workbook structures.
 3. Draft a tab-by-tab migration map before editing.
 4. Convert one area at a time and verify totals before moving on.
+## Start PR Pointer
+
+Before durable work, follow Start PR Mode in `C:\Codex\Wiki Files\Project Room Chat Startup Rule.md`.
+
+Interpret unqualified requests under the Current PR Scope Rule in that file. Work on `main` unless Wes explicitly asks for a branch.

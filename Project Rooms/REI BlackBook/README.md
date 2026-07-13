@@ -1,4 +1,4 @@
-# REI BlackBook Project Room
+﻿# REI BlackBook Project Room
 
 Purpose: develop and maintain Buy Your Home workflows, notes, implementation plans, browser-QA records, and operating rules for REI BlackBook. The current primary work surface is REI BlackBook WebTools Sites at `https://my.reiblackbook.com/webtools/sites`.
 
@@ -66,3 +66,8 @@ Next actions:
 4. Implement approved content in REI BlackBook WebTools Sites when authorized.
 5. QA preview or published pages before any final handoff.
 6. Add separate working notes for other REI BlackBook modules as they become active.
+## Start PR Pointer
+
+Before durable work, follow Start PR Mode in `C:\Codex\Wiki Files\Project Room Chat Startup Rule.md`.
+
+Interpret unqualified requests under the Current PR Scope Rule in that file. Work on `main` unless Wes explicitly asks for a branch.

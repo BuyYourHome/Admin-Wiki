@@ -1,4 +1,4 @@
----
+﻿---
 name: confidential
 description: Use for Buy Your Home Confidential project-room work, including sensitive Admin wiki notes, source inventories, open questions, private planning, and review-ready outputs under `Project Rooms\Confidential`. Trigger when Wes asks to use the Confidential room, Confidential skill, or this chat for private or sensitive admin work.
 ---
@@ -51,3 +51,8 @@ Read these files first:
 - Do not create final deliverables from unclear or missing source context.
 - Do not delete, overwrite, publish, email, or push Confidential materials without the applicable Admin wiki approval rule.
 - Preserve original source files.
+## Start PR Pointer
+
+Before durable work, follow Start PR Mode in `C:\Codex\Wiki Files\Project Room Chat Startup Rule.md`.
+
+Interpret unqualified requests under the Current PR Scope Rule in that file. Work on `main` unless Wes explicitly asks for a branch.

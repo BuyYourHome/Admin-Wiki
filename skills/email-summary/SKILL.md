@@ -1,4 +1,4 @@
----
+﻿---
 name: email-summary
 description: Create Wes's and Jenny's daily OfficeAssist morning mailbox summaries for Buy Your Home. Use when Codex needs to scan `WesWill@BuyYourHomeLLC.com` or `Jenny@BuyYourHomeLLC.com`, apply the stored cutoff, select priority unread or newly received business messages across Inbox and rule-routed folders, draft the plain-text morning summary, and hand Wes's send step to `email-delivery`.
 ---
@@ -169,3 +169,8 @@ After a successful verified Jenny send, update the automation memory with:
 If the send fails or verification fails, record the blocker and the action taken.
 
 Use `C:\Users\wesbr\.codex\automations\officeassist-morning-email-summary-and-instruction-monitor\memory.md` as the persistent run memory unless Wes explicitly changes the live automation storage location.
+## Start PR Pointer
+
+Before durable work, follow Start PR Mode in `C:\Codex\Wiki Files\Project Room Chat Startup Rule.md`.
+
+Interpret unqualified requests under the Current PR Scope Rule in that file. Work on `main` unless Wes explicitly asks for a branch.

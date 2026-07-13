@@ -1,4 +1,4 @@
----
+﻿---
 name: sops
 description: Use for Buy Your Home Standard Operating Procedure work, including creating, reconciling, reviewing, updating, indexing, or routing SOP source emails, SOP workbook rows, SOP Markdown pages, SOP review questions, and SOP project-room materials under `Project Rooms\SOPs`.
 ---
@@ -41,3 +41,8 @@ Before SOP file work:
 - Do not blend conflicting SOP instructions. Mark conflicts and ask for a decision when the conflict changes the procedure.
 - Do not treat general Admin rules as SOP pages unless Wes asks to reconcile them into the SOP corpus.
 - Commit durable SOP updates locally. Push only under the Admin wiki push rules.
+## Start PR Pointer
+
+Before durable work, follow Start PR Mode in `C:\Codex\Wiki Files\Project Room Chat Startup Rule.md`.
+
+Interpret unqualified requests under the Current PR Scope Rule in that file. Work on `main` unless Wes explicitly asks for a branch.
