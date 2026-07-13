@@ -8,7 +8,7 @@ Interview mode is based on Dialogue mode, but it adds Jean as an active intervie
 
 Use the speaker label `Jean`.
 
-When new substantive book/source material arrives, run Interview mode first. This creates the source-to-role map, interview scenes, speaker boundaries, and source-confidence audit before the material is passed into Rewrite mode for whole-manuscript integration.
+New substantive book/source material does not automatically trigger Interview mode. By default, new project-room source material is processed in Quick mode only. Use Interview mode only when Wes directly requests Interview mode or asks for Jean to interview Wes and Jenny.
 
 Interview mode output is an independent manuscript product. It must be built from the original project-room source material and approved contextual sources, not from a Dialogue mode or Rewrite mode manuscript. Later modes may check the Interview output for coverage, but the Interview manuscript must not become source material, factual authority, or the prose base for Rewrite mode.
 

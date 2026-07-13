@@ -2,15 +2,15 @@
 
 ## Purpose
 
-Use Quick mode when Wes wants new Gracious Millionaire source material inserted into the proper manuscript context without a total rewrite.
+Use Quick mode when Wes wants new Gracious Millionaire source material inserted into the proper manuscript context without a total rewrite. Quick mode is also the default mode when the Gracious Millionaire project room receives new substantive book/source material.
 
 Quick mode is an integration mode, not a full-manuscript rebuild. It finds new or changed source material, identifies where it belongs, inserts or revises the affected chapter area, updates the clickable packet, and leaves unrelated chapters materially intact unless continuity requires a narrow bridge or correction.
 
 ## Trigger
 
-Use this mode when Wes says `Quick mode`, asks to quickly add new material to the manuscript, or asks for a new source to be placed in its proper context without running Interview mode or Rewrite mode.
+Use this mode when Wes says `Quick mode`, asks to quickly add new material to the manuscript, asks for a new source to be placed in its proper context, or when the project room receives new substantive book/source material and Wes has not directly requested another mode.
 
-If Wes asks for a whole-book rethink, chapter-context influence across the whole manuscript, major redundancy reduction, or each chapter to materially affect all others, use Rewrite mode instead.
+If Wes directly asks for a whole-book rethink, chapter-context influence across the whole manuscript, major redundancy reduction, or each chapter to materially affect all others, use Rewrite mode instead.
 
 ## Inputs
 

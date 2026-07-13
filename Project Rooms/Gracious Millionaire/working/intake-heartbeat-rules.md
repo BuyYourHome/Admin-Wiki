@@ -67,6 +67,7 @@ Do not process the same source file repeatedly. Use the intake ledger to identif
 - Before acting on a new intake item, read this project room README, `working/writing-style-guide.md`, the intake ledger, current manuscript outputs, and any relevant source inventory.
 - Decide whether the new source is a chapter seed, chapter section, revision instruction, source note, admin/routing note, or non-actionable item.
 - If the source contains a clear writing instruction from Wes, the heartbeat may process it according to the Gracious Millionaire project-room rules.
+- When the source is new substantive Gracious Millionaire book/source material, use Quick mode only by default. Do not automatically run Interview mode, Rewrite mode, or Dialogue mode after source intake unless Wes directly requests that mode.
 - If the source is ambiguous, conflicts with current manuscript direction, or requires a major structural decision, mark it `blocked` or `deferred` and notify Wes in the Gracious Millionaire thread.
 - If multiple new source files are present, process them oldest-first unless a newer item clearly supersedes an older one.
 - If a source file appears partial, malformed, duplicated, or missing metadata, log the issue and proceed only if the body content is clear enough to use.

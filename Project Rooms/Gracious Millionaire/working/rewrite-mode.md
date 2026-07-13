@@ -6,7 +6,7 @@ Use Rewrite mode when Wes asks for the Gracious Millionaire manuscript to be rew
 
 Rewrite mode is not a polish pass. It must not simply start from the latest manuscript and smooth, bridge, or lightly rephrase it. The prior manuscript may be used as a reference, but the controlling input is the project-room source set, source inventory, current factual notes, book objectives, style guide, and any current Wes/Jenny direction.
 
-When new substantive book/source material arrives, run Interview mode first and then Rewrite mode. The Interview mode pass should create its own source-grounded Jean/Wes/Jenny product with scenes and role boundaries. Rewrite mode then independently uses the original project-room source material, not the Interview manuscript, to revise the whole manuscript so the new material changes structure, emphasis, chapter sequence, redundancy, and theme development where appropriate.
+New substantive book/source material does not automatically trigger Rewrite mode. By default, new project-room source material is processed in Quick mode only. Use Rewrite mode only when Wes directly requests a whole-manuscript rewrite, a whole-book rethink, or a rewrite where each chapter should materially affect the others.
 
 ## Mode Independence
 

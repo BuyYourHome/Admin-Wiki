@@ -33,9 +33,9 @@ Use this skill for Gracious Millionaire project-room processing. OfficeAssist em
 
 ## New Subject Material Default
 
-When new substantive Gracious Millionaire book/source material arrives, run Interview mode first and then Rewrite mode unless Wes explicitly limits the task to intake, formatting, a typo fix, or another narrow action.
+When new substantive Gracious Millionaire book/source material arrives, use Quick mode only by default. Quick mode should place the new material into its proper manuscript context, apply only narrow continuity edits around the insertion point, and preserve unrelated chapters.
 
-Interview mode should first turn the new material into a source-grounded Jean/Wes/Jenny interview product with role boundaries, question maps, source-confidence notes, and voice/fairness review. Rewrite mode should then independently rewrite the whole manuscript from the original project-room source material and current editorial rules so chapter context, themes, redundancy, sequencing, and chapter jobs are reconsidered across the book.
+Use Interview mode, Rewrite mode, or Dialogue mode only when Wes directly requests that mode.
 
 ## Mode Independence Rule
 
@@ -44,7 +44,7 @@ Each manuscript mode must produce an independent product from the original proje
 - Original source material, source inventories, factual notes, correction notes, style guides, book objectives, and approved contextual source records are controlling inputs.
 - Mode outputs such as Interview manuscripts, Dialogue manuscripts, Rewrite manuscripts, clickable packets, and mode-specific prose are outputs, not source material for later modes.
 - A later mode may inspect an earlier mode output only as a coverage check or to understand a prior presentation decision. It must not use that output as the prose base, source packet, factual authority, or compression target.
-- Running Interview mode before Rewrite mode means both products are created from the same underlying source base in sequence; it does not mean Rewrite mode rewrites the Interview manuscript.
+- If Wes directly requests more than one mode in sequence, each requested mode must be created from the same underlying source base; it does not mean one mode rewrites another mode's manuscript.
 - Unless Wes explicitly asks for an abridged, summary, or condensed version, full-manuscript Rewrite mode should preserve the substantive depth and scale of the source-backed manuscript while reducing true redundancy.
 
 ## Manuscript Packaging
@@ -55,7 +55,7 @@ Generated manuscripts and clickable review packets should include the current Gr
 
 ## Quick Mode
 
-Use Quick mode when Wes says `Quick mode`, asks to quickly add new source material to the manuscript, or asks for new material to be inserted into its proper context without a total rewrite.
+Use Quick mode when Wes says `Quick mode`, asks to quickly add new source material to the manuscript, asks for new material to be inserted into its proper context without a total rewrite, or when the project room receives new substantive book/source material and Wes has not directly requested another mode.
 
 Before drafting in Quick mode, read `Project Rooms\Gracious Millionaire\working\quick-mode.md` and follow it. Quick mode is an integration mode: identify the new or changed source, decide placement, draft only the new or affected material, apply narrow continuity edits around the insertion point, preserve unrelated chapters, and save the current Quick-mode manuscript and clickable packet with stable mode-based file names.
 
@@ -64,8 +64,6 @@ The current Quick-mode manuscript is the only manuscript reference Interview mod
 ## Rewrite Mode
 
 Use Rewrite mode when Wes says `Rewrite mode`, asks for a whole-manuscript rewrite where each chapter should materially affect the others, or expresses concern that a rewrite is not changing enough as the source base grows.
-
-Also use Rewrite mode after the required Interview mode pass for new substantive subject material, but do not use the Interview mode manuscript as the Rewrite mode source.
 
 Before drafting in Rewrite mode, read `Project Rooms\Gracious Millionaire\working\rewrite-mode.md` and follow it. The required Rewrite mode steps are:
 
@@ -100,8 +98,6 @@ Dialogue mode should read like a crafted book dialogue, not a fake transcript. D
 ## Interview Mode
 
 Use Interview mode when Wes says `Interview mode`, asks for Jean to interview Wes and Jenny, or asks for a manuscript version where interview questions guide the conversation.
-
-Also use Interview mode first for new substantive subject material before any Rewrite mode integration pass, but treat the Interview manuscript as its own independent product rather than as the source for Rewrite mode.
 
 Before drafting in Interview mode, read `Project Rooms\Gracious Millionaire\working\interview-mode.md` and follow it. The required Interview mode steps are:
 
