@@ -34,9 +34,9 @@ The workbook contains:
 - Review data in `tblInvoiceReview`.
 - `Project/property` as a column inside the table.
 - A stable `Review Row ID` for each populated row.
-- A request marker labeled `Request Invoice Entry Review`.
-- Marker choices `Not Requested` and `Requested`.
-- Workbook name `invoiceEntryReviewRequest` pointing to the marker cell.
+- A native in-cell checkbox at `Review!B1` labeled `Needs Invoice Entry Review` in `Review!A1`.
+- An unchecked/`FALSE` value for no request and a checked/`TRUE` value when Invoice Entry review is needed.
+- Workbook name `invoiceEntryReviewRequest` pointing absolutely to `Review!B1`.
 
 The workbook does not contain:
 
@@ -50,10 +50,10 @@ The workbook does not contain:
 ## Request Workflow
 
 1. Wes completes `Destination Worksheet` and/or `Status` for the rows he has reviewed.
-2. Wes changes `invoiceEntryReviewRequest` from `Not Requested` to `Requested`.
+2. Wes checks the `Needs Invoice Entry Review` checkbox in `Review!B1`.
 3. Invoice Entry retrieves the current workbook from Teams and reads `tblInvoiceReview` by header name.
 4. Invoice Entry builds its request packet outside the workbook and performs its governed duplicate-check and insertion process.
-5. After successful processing, Invoice Entry records the row results and returns the request marker to `Not Requested` as part of its own approved workflow.
+5. After successful processing, Invoice Entry records the row results and clears the checkbox as part of its own approved workflow.
 
 Changing the marker alone does not currently send an automatic message or start a background process. Automatic notification would require a separately approved monitor or Power Automate handoff. That external handoff must remain lightweight and must not move Invoice Entry logic into the workbook.
 
@@ -96,9 +96,10 @@ Implemented on 2026-07-13:
 - Resized `tblInvoiceReview` from `B1:N16` to `A1:O16` so `Project/property` is part of the table.
 - Added `Review Row ID` in column O.
 - Assigned IDs `OUTRIGGER-REV-001` through `OUTRIGGER-REV-015` to the existing populated rows.
-- Added `Request Invoice Entry Review` at `Review!Q1`.
-- Added the `Not Requested` / `Requested` selector at `Review!Q2`.
-- Added workbook name `invoiceEntryReviewRequest` referring to `Review!Q2`.
+- Moved `tblInvoiceReview` down three rows to `A4:O19`.
+- Added `Needs Invoice Entry Review` at `Review!A1` and a native in-cell checkbox at `Review!B1`.
+- Preserved the prior `Requested` state by initially setting the checkbox to checked/`TRUE`.
+- Added workbook name `invoiceEntryReviewRequest` referring absolutely to `Review!B1`.
 - Added no formulas, macros, scripts, packet sheets, or external workbook links.
 
 Validation completed:
@@ -125,3 +126,5 @@ For each project:
 ## Reusable Lesson
 
 Keep the workbook as the request surface and source data only. Packet creation and Invoice Entry decisions belong in the Invoice Entry process, where rules can be changed without adding fragile workbook formulas or scripts to every project spreadsheet.
+
+When creating or repointing workbook names, use absolute references such as `=Review!$B$1`. A relative name such as `=Review!B1` can reopen at a different cell depending on Excel's active-cell context. Validate the name's `RefersTo` value after reopening the saved workbook through Excel; package-level inspection alone may show the intended text without detecting Excel's relative-reference interpretation.
