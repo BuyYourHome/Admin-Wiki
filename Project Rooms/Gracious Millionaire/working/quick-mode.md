@@ -6,6 +6,8 @@ Use Quick mode when Wes wants new Gracious Millionaire source material inserted 
 
 Quick mode is an integration mode, not a full-manuscript rebuild. It finds new or changed source material, identifies where it belongs, inserts or revises the affected chapter area, updates the clickable packet, and leaves unrelated chapters materially intact unless continuity requires a narrow bridge or correction.
 
+Quick mode should work from the modular manuscript state when it exists: `outputs/quick-mode/manifest.md` plus one Markdown file per chapter under `outputs/quick-mode/chapters/`.
+
 ## Trigger
 
 Use this mode when Wes says `Quick mode`, asks to quickly add new material to the manuscript, asks for a new source to be placed in its proper context, or when the project room receives new substantive book/source material and Wes has not directly requested another mode.
@@ -35,17 +37,29 @@ Original source files and current correction notes control over any manuscript t
 3. Draft only the new or affected material needed to make the insertion read naturally.
 4. Apply narrow continuity edits around the insertion point when needed.
 5. Preserve unrelated chapters unless a factual correction or local continuity issue requires a scoped edit.
-6. Save the output as the current Quick-mode manuscript and clickable packet.
+6. Save the output by editing the affected chapter Markdown file or adding a new chapter file under `outputs/quick-mode/chapters/`, then update `outputs/quick-mode/manifest.md` if order, title, or status changes.
 7. Update `working/source-inventory.md`, `working/officeassist-intake-log.md`, and any relevant working notes.
+8. Rebuild the clickable HTML packet from the manifest. Do not edit the compiled HTML directly.
 
 ## Output Naming
 
-Use stable mode-based output names unless Wes directs otherwise:
+Use this stable modular structure unless Wes directs otherwise:
 
-- `outputs/Gracious Millionaire - Quick Mode.md`
+- `outputs/quick-mode/manifest.md`
+- `outputs/quick-mode/chapters/*.md`
 - `outputs/Gracious Millionaire - Quick Mode.html`
 
 Put the version id in the top manuscript heading and clickable packet heading, not in the file name.
+
+The full single-file Markdown export `outputs/Gracious Millionaire - Quick Mode.md` is optional. Generate it only when Wes asks for a plain Markdown export, when another tool requires it, or when a specific delivery workflow needs it.
+
+## Build Command
+
+Use the Codex workspace Python runtime:
+
+```powershell
+& 'C:\Users\wesbr\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\python.exe' 'C:\Codex\Wiki Files\Project Rooms\Gracious Millionaire\tools\manuscript_modules.py' build --manifest 'C:\Codex\Wiki Files\Project Rooms\Gracious Millionaire\outputs\quick-mode\manifest.md'
+```
 
 ## Relationship To Interview Mode
 

@@ -53,11 +53,15 @@ Generated manuscripts and clickable review packets should include one AI-generat
 
 Generated manuscripts and clickable review packets should include the current Gracious Millionaire book cover at the top before the outline. Use `outputs/book-cover/gracious-millionaire-book-cover-wes-and-jenny-browning-2026-07-10-email.jpg` for review packets and `outputs/book-cover/gracious-millionaire-book-cover-wes-and-jenny-browning-2026-07-10.png` for full-resolution use unless a newer cover is explicitly marked current.
 
+For efficient compilation, use modular manuscript outputs when available: one Markdown file per chapter under `outputs\<mode-slug>\chapters\`, with `outputs\<mode-slug>\manifest.md` controlling order, version id, status, cover, and output path. The compiled clickable HTML is the normal review deliverable. A full single-file Markdown manuscript is optional and should be generated only when Wes asks for a plain Markdown export, another tool requires it, or a delivery workflow specifically needs it.
+
+Do not edit compiled HTML directly. Edit the relevant chapter Markdown file and/or manifest, then rebuild the HTML with the project-room build tool using the Codex workspace Python runtime. Modular chapter files are manuscript-state files for their mode, not factual source material; original project-room source files and current correction notes remain the source authority.
+
 ## Quick Mode
 
 Use Quick mode when Wes says `Quick mode`, asks to quickly add new source material to the manuscript, asks for new material to be inserted into its proper context without a total rewrite, or when the project room receives new substantive book/source material and Wes has not directly requested another mode.
 
-Before drafting in Quick mode, read `Project Rooms\Gracious Millionaire\working\quick-mode.md` and follow it. Quick mode is an integration mode: identify the new or changed source, decide placement, draft only the new or affected material, apply narrow continuity edits around the insertion point, preserve unrelated chapters, and save the current Quick-mode manuscript and clickable packet with stable mode-based file names.
+Before drafting in Quick mode, read `Project Rooms\Gracious Millionaire\working\quick-mode.md` and follow it. Quick mode is an integration mode: identify the new or changed source, decide placement, draft only the new or affected material, apply narrow continuity edits around the insertion point, preserve unrelated chapters, edit the affected chapter file or manifest under `outputs\quick-mode\`, and rebuild the compiled clickable HTML packet.
 
 The current Quick-mode manuscript is the only manuscript reference Interview mode may use. Original source material and approved contextual source records remain the factual authority.
 
