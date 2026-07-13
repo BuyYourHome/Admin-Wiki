@@ -39,6 +39,9 @@ Use this skill for Gracious Millionaire project-room processing. OfficeAssist em
 - Use `tools\gm-manuscript.cmd Quick refresh or tools\gm-manuscript.cmd Dialogue refresh` to build and validate modular packets with the approved Codex Python runtime.
 - Follow `working\publication-workflow.md` after content is editorially ready. Packaging corrections must not rerun a writing mode.
 - Publish manuscript review copies to Teams `SellYourHome / Documents / Marketing / Gracious Millionaire` with a version identifier in every filename. Keep local manifests and chapter files as working state.
+- Keep the local project room focused on active work: original sources, current assets, active modular chapter files and manifests, one current compiled HTML deliverable per mode, and the stable current Jenny review packet.
+- After a superseded manuscript, chapter draft, or packet has a verified versioned Teams copy, remove the superseded local generated copy. A stale generated working output not sent to Teams may be removed only after confirming it is recoverable from Git history and is not original source material or current manuscript state.
+- Do not retain duplicate full-manuscript Markdown exports unless Wes requests one or a delivery tool requires it. Track current local outputs in `working\output-register.md` and Teams history in `working\teams-manuscript-archive.md`.
 - For directly requested full-manuscript modes, create the controlling maps first, then allow parallel drafting only across disjoint chapter files from the same original-source snapshot. Complete one central continuity, redundancy, factual, voice, and fairness review before publication.
 
 ## New Subject Material Default

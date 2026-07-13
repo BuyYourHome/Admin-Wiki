@@ -8,7 +8,8 @@ Use this page for routine project-room startup. Read the larger registers only w
 - Quick review packet: `outputs/Gracious Millionaire - Quick Mode.html`
 - Dialogue mode: `outputs/dialogue-mode/manifest.md`
 - Dialogue review packet: `outputs/Gracious Millionaire - Dialogue Mode.html`
-- Rewrite mode: `outputs/Gracious Millionaire - Rewrite Mode.md` and `outputs/Gracious Millionaire - Rewrite Mode.html`
+- Interview review packet: `outputs/Gracious Millionaire - Interview Manuscript v3 - Jenny Coastal Surrender - Clickable.html`
+- Rewrite review packet: `outputs/Gracious Millionaire - Rewrite Mode.html`
 - Stable current review packet: `outputs/jenny-chapter-review-current/Gracious Millionaire - Jenny Clickable Chapter Review - CURRENT.html`
 - Current cover: `outputs/book-cover/gracious-millionaire-book-cover-wes-and-jenny-browning-2026-07-10-email.jpg`
 
@@ -41,5 +42,6 @@ Use this page for routine project-room startup. Read the larger registers only w
 - Teams destination: `SellYourHome / Documents / Marketing / Gracious Millionaire`.
 - Teams archive verified 2026-07-13: 70 versioned manuscript and chapter-draft files.
 - Teams review copies must include a version identifier in the filename.
-- Local chapter files and manifests remain the working manuscript state.
+- Local retention applied 2026-07-13: original sources, active modular chapter sets and manifests, one current HTML deliverable per mode, current assets, and the stable Jenny packet remain locally.
+- Superseded generated manuscripts, chapter versions, packets, outlines, and stale working outputs were removed from the active working tree after Teams or Git-history preservation was verified.
 - Use `working/publication-workflow.md` for build, validation, Teams, email, ledger, and Git steps.

@@ -24,6 +24,14 @@ Separate manuscript writing from packaging and delivery so a packaging correctio
 4. Update `working/current-state.md` and the applicable mode manifest.
 5. Commit the scoped project-room changes. Push only when the Admin wiki rules authorize it.
 
+## Phase 4: Retain Only Active Local Outputs
+
+1. Confirm the versioned Teams copy exists and record it in `working/teams-manuscript-archive.md` and `working/delivery-register.md`.
+2. Keep original sources, current assets, active modular chapter files and manifests, one current compiled HTML deliverable per mode, and the stable current Jenny review packet.
+3. Remove superseded local manuscripts, chapter drafts, review packets, and duplicate full-manuscript Markdown exports after their Teams copies are verified.
+4. Remove a stale generated working output that was not sent to Teams only after confirming it is recoverable from Git history and is neither original source material nor current manuscript state.
+5. Update `working/current-state.md` and `working/output-register.md` so no deleted file is presented as active local state.
+
 ## Versioned Teams Naming
 
 - Keep versions in Teams filenames even when the local working filename is stable.

@@ -64,6 +64,15 @@ The separate emails in `sources/email/` are early chapter starts, fragments, and
 - Teams manuscript copies belong in `SellYourHome / Documents / Marketing / Gracious Millionaire` and must include a version identifier in the filename.
 - Use `tools/gm-manuscript.cmd` for modular manuscript build, link validation, statistics, and optional current-packet refresh.
 
+## Local Output Retention
+
+- Keep all original source material locally. Never delete `sources\` files under this retention rule.
+- Keep current cover and logo assets, build tools, working registers, and the current modular chapter files and manifests for active modular modes.
+- Keep one current compiled HTML review deliverable for each manuscript mode and the stable current Jenny review packet. Do not keep a duplicate full-manuscript Markdown export unless Wes requests it or a delivery tool requires it.
+- Store superseded manuscripts, chapter drafts, and review packets in Teams `SellYourHome / Documents / Marketing / Gracious Millionaire` with versioned filenames. After the Teams copy is verified and recorded, remove the superseded local generated copy.
+- A stale generated working output that was not sent to Teams may be removed only after confirming it is recoverable from Git history and is not original source material or current manuscript state.
+- Record current local outputs in `working/output-register.md` and historical Teams filenames in `working/teams-manuscript-archive.md`. Do not restore historical files locally unless they are needed for active work.
+
 ## Current Status
 
 Started. Initial email source files were created from the retrievable messages in the `WesWill@BuyYourHomeLLC.com` Outlook folder before the mailbox boundary was tightened. Going forward, mailbox intake belongs to OfficeAssist or another approved intake process, not this project-room role.
