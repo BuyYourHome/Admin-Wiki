@@ -98,6 +98,40 @@ For Statement Mode packets, set or treat `confidence/status` as `Needs Review - 
 - Verify the workbook opens cleanly before upload.
 - Upload back through the Teams/SharePoint connector only after validation passes.
 
+## Review Request Processing
+
+For workbook Review requests:
+
+- use worksheet `Review`,
+- use Review table `tblInvoiceReview`,
+- read the request checkbox through the defined name `invoiceEntryReviewRequest`,
+- require `invoiceEntryReviewRequest` to reopen in Excel as `=Review!$B$1`,
+- treat `TRUE` as request pending,
+- treat `FALSE` or blank as no request pending,
+- do not use the obsolete `Review!Q2` text selector,
+- read Review rows by table name and column headers, not by visible row numbers, filters, hidden rows, or fixed cell ranges.
+
+When instructed to process a workbook request:
+
+1. Confirm the exact Teams workbook before editing.
+2. Retrieve a fresh copy using the SharePoint/Teams connector.
+3. Read `invoiceEntryReviewRequest` by defined name.
+4. If it is `FALSE` or blank, report that no Invoice Entry request is pending and do not process Review rows.
+5. If it is `TRUE`, read `tblInvoiceReview` by column header name.
+6. Build the request packet inside the Invoice Entry process. Do not add packet formulas, scripts, or duplicate-check logic to the workbook.
+7. Include the workbook identity, request timestamp, Review Row IDs, current row values, destinations, statuses, and source traceability.
+8. Treat rows as eligible when `Destination Worksheet` is filled, `Review Row ID` is present, status is blank, `Requested`, `Approved`, begins with `Ready`, or otherwise clearly indicates approval, and required vendor, date, amount, and source information is present.
+9. Exclude rows when status is `Moved`, status contains `Needs Review`, `Hold`, `Do Not Move`, `Duplicate Risk`, or `Missing Data`, `Destination Worksheet` is blank, or required traceability is insufficient.
+10. Perform duplicate checks before inserting anything.
+11. Insert approved records only into the yellow actual-invoice section of the correct destination worksheet; never write into orange template-estimate rows.
+12. Preserve formulas, formatting, tables, controls, selectors, names, and workbook links.
+13. After a successful insertion, retain the Review row, set `Status` to `Moved`, and record the destination worksheet/table and movement date in the existing review or notes field.
+14. Preserve excluded or uncertain rows and explain what still needs review.
+15. After the pending request has been fully handled and validation passes, clear the checkbox by setting `invoiceEntryReviewRequest` to `FALSE`.
+16. Do not clear the checkbox before the request has been processed and the workbook has passed validation.
+17. Create a rollback copy before editing.
+18. Save through Excel, reopen cleanly, validate destination totals and `Gnatt Chart` values, confirm zero unintended workbook links, and replace the same Teams workbook only after validation passes.
+
 ## Vendor Tabs Mode Insertion
 
 For Vendor Tabs Mode:

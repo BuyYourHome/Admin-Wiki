@@ -131,3 +131,16 @@ Lessons:
 - Use Lowe's product-page titles when the item number match is reliable.
 - Keep statement-derived text for delivery/shipping, payment/credit components, and rows where no reliable Lowe's product match is found.
 - Do not overwrite source traceability in the `Review` column; only improve the clean `Description` field.
+
+## 2026-07-13 - Review Request Checkbox Finalization
+
+Context: The first Outrigger Review request test exposed a mismatch between the intended marker cell and the defined name. The workbook had visible request text in `Review!Q2`, while `invoiceEntryReviewRequest` pointed elsewhere.
+
+Lessons:
+
+- Invoice Entry must read the Review request by the defined name `invoiceEntryReviewRequest`, not by a visible text selector or guessed cell address.
+- The finalized request design is a checkbox at `Review!B1` labeled `Needs Invoice Entry Review`, with `invoiceEntryReviewRequest` reopening in Excel as the absolute reference `=Review!$B$1`.
+- `TRUE` means process the pending Review request; `FALSE` or blank means no request is pending.
+- The prior `Review!Q2` text selector is obsolete and must not be used.
+- Before processing Review rows, verify the defined name target through Excel. If it is relative or points anywhere other than `=Review!$B$1`, stop and report the workbook design mismatch.
+- Do not clear the request checkbox until eligible rows have been processed, excluded rows have been noted, the workbook has passed validation, and the updated workbook is ready to replace the Teams source.

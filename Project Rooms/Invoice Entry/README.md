@@ -99,6 +99,43 @@ Doc Scan sends extracted Statement Mode data for this room to consume. A Stateme
 10. Upload the verified workbook back through the Teams/SharePoint connector only after it opens cleanly and has no unintended workbook links.
 11. After each workbook or workflow iteration, record, refine, or expand lessons learned in `working\iteration-lessons.md` before treating the iteration as complete.
 
+## Review Request Processing
+
+For project workbooks that use the Review request design:
+
+- Worksheet: `Review`.
+- Review table: `tblInvoiceReview`.
+- Request checkbox: `Review!B1`.
+- Checkbox label: `Needs Invoice Entry Review`.
+- Defined name: `invoiceEntryReviewRequest`.
+- Required defined-name reference: `=Review!$B$1`.
+- `TRUE` means Invoice Entry review is requested.
+- `FALSE` or blank means no request is pending.
+- The prior `Review!Q2` text selector is obsolete and must not be used.
+
+When processing a workbook Review request:
+
+1. Confirm the exact Teams workbook before editing.
+2. Retrieve a fresh copy using the SharePoint/Teams connector.
+3. Read `invoiceEntryReviewRequest` by defined name, not by guessing its cell location.
+4. Verify through Excel that `invoiceEntryReviewRequest` reopens as `=Review!$B$1`; do not create or rely on a relative reference such as `=Review!B1`.
+5. If the request value is `FALSE` or blank, report that no Invoice Entry request is pending and do not process Review rows.
+6. If the request value is `TRUE`, read `tblInvoiceReview` by table name and column headers.
+7. Do not depend on visible row numbers, filtering, hidden rows, or the table's current cell range.
+8. Build the structured request packet inside the Invoice Entry process. Do not add packet formulas, scripts, or duplicate-check logic to the workbook.
+9. Include the workbook identity, request timestamp, Review Row IDs, current row values, destinations, statuses, and source traceability.
+10. Treat rows as eligible only when `Destination Worksheet` is filled, `Review Row ID` is present, status is blank, `Requested`, `Approved`, begins with `Ready`, or otherwise clearly indicates approval, and required vendor, date, amount, and source information is present.
+11. Exclude rows when status is `Moved`, status contains `Needs Review`, `Hold`, `Do Not Move`, `Duplicate Risk`, or `Missing Data`, `Destination Worksheet` is blank, or required traceability is insufficient.
+12. Perform duplicate checks before inserting anything.
+13. Insert approved records only into the yellow actual-invoice section of the correct destination worksheet; never write into orange template-estimate rows.
+14. Preserve formulas, formatting, tables, controls, selectors, names, and workbook links.
+15. After a successful insertion, retain the Review row, set `Status` to `Moved`, and record the destination worksheet/table and movement date in the existing review or notes field.
+16. Preserve excluded or uncertain rows and explain what still needs review.
+17. After the pending request has been fully handled and validation passes, clear the checkbox by setting `invoiceEntryReviewRequest` to `FALSE`.
+18. Do not clear the checkbox before the request has been processed and the workbook has passed validation.
+19. Create a rollback copy before editing.
+20. Save through Excel, reopen cleanly, validate destination totals and `Gnatt Chart` values, confirm zero unintended workbook links, and replace the same Teams workbook only after validation passes.
+
 ## Statement Mode Hold
 
 Statement Mode packets are extracted by Doc Scan and routed to this project room to be treated as statement-line source material, but they are not normal single-invoice packets. Lowes Statement Mode is the first active statement source.
