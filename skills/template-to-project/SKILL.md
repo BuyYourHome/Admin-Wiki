@@ -28,14 +28,15 @@ Use this skill for current template-to-project worksheet rollout and migration w
 ## Workflow
 
 1. Confirm the prototype/template workbook, target project workbook, and worksheet mode.
-2. Verify the current workbook through SharePoint/Teams connector when the workbook is Teams/SharePoint-backed.
+2. Always get a fresh current workbook through the SharePoint/Teams connector when the workbook is Teams/SharePoint-backed. Do not continue from an older project-room working copy unless Wes explicitly approves that exact local copy for offline review.
 3. Make timestamped backups before structural workbook edits.
 4. Build a full project-specific value map for the worksheet or mode being migrated.
 5. Reconnect formulas by meaning, named ranges, table names, labels, and business purpose, not only by cell address.
 6. Preserve formulas, formatting, widths, tables, checkboxes/selectors, names, print settings, macros, and helper areas unless the approved mode design intentionally changes them.
-7. Reconcile source totals to output totals before declaring a workbook ready for review.
-8. Record reusable lessons in the relevant worksheet-mode rule file and the project-room working notes.
-9. Put review-ready workbook outputs or specs in `outputs\`.
+7. Delete superseded temporary workbook working copies after a newer Teams/SharePoint-fetched copy or verified replacement has replaced them, unless the file is a rollback copy, approved validation evidence, or a durable migration log.
+8. Reconcile source totals to output totals before declaring a workbook ready for review.
+9. Record reusable lessons in the relevant worksheet-mode rule file and the project-room working notes.
+10. Put review-ready workbook outputs or specs in `outputs\`.
 
 ## Boundaries
 

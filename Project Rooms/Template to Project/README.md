@@ -31,9 +31,11 @@ Excluded unless Wes explicitly expands scope:
 
 - Before workbook edits, confirm the exact target workbook and the active worksheet mode.
 - Use Teams/SharePoint as the source of truth for active project-management workbooks when the workbook is Teams-backed.
+- Always get a fresh current workbook from Teams/SharePoint before starting any workbook edit, comparison, migration, validation, or template update. Do not continue from an older project-room working copy merely because it exists.
 - Project-management spreadsheets live directly under the Teams/SharePoint `Property` drive root, not inside individual property folders.
 - Before each worksheet-specific redesign or rollout task, read the matching file under `Worksheet Modes\`.
 - Make timestamped rollback copies before structural workbook edits.
+- Treat project-room workbook copies as temporary working files. Once a newer Teams/SharePoint-fetched copy or verified replacement supersedes a working copy, delete the replaced working copy unless it is a rollback copy, approved validation evidence, or a durable migration log.
 - Reconnect formulas by meaning, named ranges, table names, labels, and expected business purpose, not by blind cell-position copying.
 - Migrate project-specific values with a full map for each project. Do not assume one project maps the same as another.
 - Preserve formulas, formatting, widths, tables, checkboxes/selectors, names, print settings, macros, and helper areas unless the approved mode design intentionally changes them.

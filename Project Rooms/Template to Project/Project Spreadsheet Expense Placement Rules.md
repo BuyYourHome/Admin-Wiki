@@ -44,6 +44,19 @@ Project management spreadsheets are stored directly under the SharePoint/Teams `
 
 Local Teams-synced paths, including `C:\Users\wesbr\Buy Your Home\Buy Your Home - Property\...`, are working conveniences only. Do not treat them as proof that a workbook is current. If the connector is unavailable, cannot identify the exact workbook item, or cannot safely write back the finished workbook, stop and report the blocker instead of silently using the synced folder.
 
+## Working File Lifecycle Rule
+
+Always fetch or verify the current workbook through Teams/SharePoint before starting workbook edits, workbook comparisons, migrations, validation passes, template updates, or rollout work. A project-room workbook copy is not current just because it is the newest local file or because it was used successfully in an earlier run.
+
+Treat downloaded project-management workbook copies in `working\` as temporary working files. Once a working copy has been replaced by a newer Teams/SharePoint-fetched copy or by a verified updated workbook, delete the replaced working copy unless one of these exceptions applies:
+
+- it is the timestamped rollback copy for a live workbook change,
+- it is approved validation evidence needed for Wes review,
+- it is a durable migration log or compact audit artifact,
+- Wes explicitly asks to preserve that specific file.
+
+Do not let old workbook copies accumulate as alternate sources of truth. Keep durable notes, logs, and source inventories in Markdown, CSV, or JSON where practical; keep workbook binaries only when they are needed as rollback, approved evidence, or the active working copy for the current task.
+
 ## Spreadsheet Color Conventions
 
 Use Wes's color conventions when designing or revising project spreadsheet inputs and protected formulas:
