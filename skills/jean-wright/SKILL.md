@@ -32,11 +32,9 @@ Before Jean Wright file work:
 
 Use when Wes says `Start PR` or asks to begin/resume Jean Wright work.
 
-1. Verify `C:\Codex\Wiki Files`.
-2. Confirm the intended branch is `main`.
-3. Switch to `main` when safe.
-4. If unrelated dirty files, Git processes, locks, or branch conflicts block switching, report the blocker and do not force, stash, reset, delete, or move files.
-5. Report the active branch and any blockers before durable file work.
+Before durable work, follow Start PR Mode in `C:\Codex\Wiki Files\Project Room Chat Startup Rule.md`.
+
+Interpret unqualified requests under the Current PR Scope Rule in that file. Work on `main` unless Wes explicitly asks for a branch.
 
 ### Commit Mode
 

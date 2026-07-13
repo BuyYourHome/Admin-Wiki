@@ -62,13 +62,9 @@ Out of scope:
 
 Trigger: Wes says `Start PR` or asks to begin/resume Jean Wright work.
 
-1. Verify the default folder with `Get-Location`.
-2. Use `C:\Codex\Wiki Files` as the explicit workdir for shell commands.
-3. Read this README, `skills\jean-wright\SKILL.md`, `AGENTS.md`, `Admin Home.md`, `Repository Location Rule.md`, `Project Room Workflow.md`, `Agent Unit Standard.md`, and `Git Work Scope Rule.md`.
-4. Confirm the intended branch is `main`.
-5. Switch to `main` when safe.
-6. If unrelated dirty files, Git processes, locks, or branch conflicts block switching, report the blocker and do not force, stash, reset, delete, or move files.
-7. Report the active branch, repo path, and any blockers before durable file work.
+Before durable work, follow Start PR Mode in `C:\Codex\Wiki Files\Project Room Chat Startup Rule.md`.
+
+Interpret unqualified requests under the Current PR Scope Rule in that file. Work on `main` unless Wes explicitly asks for a branch.
 
 ### Commit Mode
 

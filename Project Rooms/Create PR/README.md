@@ -55,6 +55,12 @@ This room was created to hold the standard Create PR process.
 - If Git processes, lock files, or unrelated dirty files block switching to `main`, report the blocker instead of forcing, stashing, resetting, or deleting files.
 - When Wes says `Push` in this PR, commit only the Create PR room, matching skill, and directly related registry/index changes.
 
+## Start PR Pointer
+
+Before durable work, follow Start PR Mode in `C:\Codex\Wiki Files\Project Room Chat Startup Rule.md`.
+
+Interpret unqualified requests under the Current PR Scope Rule in that file. Work on `main` unless Wes explicitly asks for a branch.
+
 ## Main Branch Rule
 
 When creating a new PR, work from `main`.
@@ -73,13 +79,15 @@ When creating a new PR, work from `main`.
 4. Check whether the Project Room, skill, registry entry, or chat already exists.
 5. Create the Project Room folders: `sources\`, `working\`, and `outputs\`.
 6. Create `README.md`, `working\source-inventory.md`, `working\duplicate-and-conflict-log.md`, and `working\missing-context.md`.
-7. Create the matching wiki-managed skill under `skills\<skill-name>\SKILL.md`.
-8. Add an `agents\openai.yaml` file for the skill when practical.
-9. Update `Agents and Automations Registry.md` when the workflow is agent-like, repeatable, or expected to have a dedicated chat.
-10. Add an `Admin Home.md` link when the room should be easy to find from the wiki start page.
-11. Create a new Codex chat using the Project Room Chat Startup Rule startup text only when Wes explicitly asks or when no existing chat should own the work.
-12. Commit the scoped durable files locally.
-13. Push only when Wes explicitly asks, says the work is finished, or the applicable rule defines the deliverable as ready to publish.
+7. In the new README, include the short Start PR pointer from `Project Room Chat Startup Rule.md`, not the full central rule text.
+8. Create the matching wiki-managed skill under `skills\<skill-name>\SKILL.md`.
+9. In the new skill, include the same short Start PR pointer.
+10. Add an `agents\openai.yaml` file for the skill when practical.
+11. Update `Agents and Automations Registry.md` when the workflow is agent-like, repeatable, or expected to have a dedicated chat.
+12. Add an `Admin Home.md` link when the room should be easy to find from the wiki start page.
+13. Create a new Codex chat using the Project Room Chat Startup Rule startup text only when Wes explicitly asks or when no existing chat should own the work.
+14. Commit the scoped durable files locally.
+15. Push only when Wes explicitly asks, says the work is finished, or the applicable rule defines the deliverable as ready to publish.
 
 ## New Chat Startup Requirements
 

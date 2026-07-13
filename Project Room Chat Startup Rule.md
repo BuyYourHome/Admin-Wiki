@@ -30,10 +30,38 @@ First, read:
 - C:\Codex\Wiki Files\AGENTS.md
 - C:\Codex\Wiki Files\Repository Location Rule.md
 - C:\Codex\Wiki Files\Project Room Workflow.md
+- C:\Codex\Wiki Files\Project Room Chat Startup Rule.md
 - C:\Codex\Wiki Files\Agent Unit Standard.md
 - the Project Room README or PROJECT-ROOM.md for the room being used
 - the matching skill source under C:\Codex\Wiki Files\skills, when one exists
 ```
+
+## Start PR Mode
+
+Use Start PR Mode when Wes says `Start PR`, asks to begin or resume work in a Project Room chat, or asks a PR-scoped question that depends on current room rules.
+
+Start PR Mode is the central refresh contract for PR chats. It should be referenced briefly by each PR README and matching skill instead of copied in full.
+
+Steps:
+
+1. Verify the default folder with `Get-Location`.
+2. Use `C:\Codex\Wiki Files` as the explicit workdir for shell commands and absolute file paths.
+3. Confirm the working branch is `main`; switch to `main` only when safe.
+4. Read only the central startup rule, the current PR README or PROJECT-ROOM file, and the current PR's matching skill source when one exists.
+5. Read root rules needed for the request: `AGENTS.md`, `Repository Location Rule.md`, `Project Room Workflow.md`, `Agent Unit Standard.md`, and `Git Work Scope Rule.md`.
+6. Do not read every Project Room, every skill, or unrelated workflow files merely because Start PR Mode was triggered.
+7. If unrelated dirty files, Git processes, lock files, or branch conflicts block switching to `main` or checking status, report the blocker and do not force, stash, reset, delete, or move files.
+8. Report the active repo path, active branch, current PR, and any blockers before durable file work.
+
+## Current PR Scope Rule
+
+In a PR-dedicated chat, interpret unqualified requests as scoped to the current PR.
+
+- If Wes asks about `modes`, `rules`, `files`, `status`, `open issues`, or similar without saying otherwise, answer for the current PR only.
+- Do not expand to all PRs, the whole wiki, or global rules unless Wes says `all`, `global`, `across PRs`, `anywhere`, `in the wiki`, or equivalent.
+- If the request clearly belongs to another existing PR or specialized skill, say that briefly and ask whether to route the work there unless an existing rule already authorizes the handoff.
+- If ownership is unclear and the action would create files, change rules, create chats, commit, push, send messages, or affect another PR, ask before acting.
+- Keep central rules lightweight. Do not create circular read chains; read the current PR README and skill, not every related room.
 
 ## Chat Creation Rule
 
@@ -62,3 +90,11 @@ When moving work into a new Project Room chat, include the current status, open 
 ## Branch Rule
 
 Project Room work uses `main` by default. Do not create a new Git branch for a Project Room unless Wes explicitly asks for one.
+
+## PR README And Skill Pointer
+
+Each PR README and matching workflow skill should include a short pointer rather than copying this full rule:
+
+```text
+Start PR: Before durable work, follow Start PR Mode in C:\Codex\Wiki Files\Project Room Chat Startup Rule.md. Interpret unqualified requests under the Current PR Scope Rule in that file. Work on main unless Wes explicitly asks for a branch.
+```
