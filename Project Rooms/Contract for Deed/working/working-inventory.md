@@ -8,7 +8,7 @@ Create the documents needed to sell 320 Rose in the same manner that Cool Spring
 
 ## Source Material Reviewed
 
-- Project instructions: `PROJECT-ROOM.md`
+- Project instructions: `README.md`
 - Rose spreadsheet: `source/320 Rose project spreadsheet/28_Project Management - 320 Rose Pl.xlsm`
 - Cool Springs reference folder: `reference/Cool Springs selling docs`
 

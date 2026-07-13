@@ -25,7 +25,7 @@ Do not author or version skills from the installed runtime copy. Edit the canoni
 | `admin-request-wrapup` | `skills/admin-request-wrapup/SKILL.md` | Finishing Admin wiki requests; reporting elapsed time; deciding commit/push reporting. | `Git Work Scope Rule.md`, `AGENTS.md` |
 | `doc-scan` | `skills/doc-scan/SKILL.md` | Processing scanned financial/admin PDFs or JPG/JPEG scans, splitting documents, naming, routing, and logging. | `Document Scanning SOP.md`, `Document Scanning Skill Spec.md`, `Document Scanning Folder Map.md`, `Invoice and Receipt Processing Notes.md` |
 | `credit-worthiness-evaluator` | `skills/credit-worthiness-evaluator/SKILL.md` | Evaluating tenant-buyer creditworthiness and ability to repay for seller-financed or Contract for Deed transactions. | `Project Rooms/Credit Worthiness Evaluator/README.md` |
-| `contract-for-deed` | `skills/contract-for-deed/SKILL.md` | Refreshing and regenerating contract-for-deed seller document packages from project spreadsheets. | `Project Rooms/Contract for Deed/PROJECT-ROOM.md` |
+| `contract-for-deed` | `skills/contract-for-deed/SKILL.md` | Refreshing and regenerating contract-for-deed seller document packages from project spreadsheets. | `Project Rooms/Contract for Deed/README.md` |
 | `cma-report` | `skills/cma-report/SKILL.md` | Creating CMA/property reports and copying completed reports to the matching Teams property `Owning` folder. | `Project Rooms/CMA Report/`, property folders under Teams sync |
 
 ## Agent-Like Roles And Automations

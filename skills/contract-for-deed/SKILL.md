@@ -1,4 +1,4 @@
-﻿---
+---
 name: contract-for-deed
 description: Use when refreshing, regenerating, reviewing, or packaging contract-for-deed seller documents from a confirmed real estate project spreadsheet, including buyer-specific transaction folders, Credit Worthiness handoffs, closing document checklists, affidavits, and Buy Your Home seller document packages.
 ---
@@ -11,7 +11,7 @@ Use the Admin wiki as the source of truth.
 
 - Wiki repository: `C:\Codex\Wiki Files`
 - Current project room: `C:\Codex\Wiki Files\Project Rooms\Contract for Deed`
-- Current project room instructions: `C:\Codex\Wiki Files\Project Rooms\Contract for Deed\PROJECT-ROOM.md`
+- Current project room instructions: `C:\Codex\Wiki Files\Project Rooms\Contract for Deed\README.md`
 
 This skill is a reusable workflow wrapper. It is not tied to one property or buyer. Project-specific source files, prototypes, generated outputs, and history stay in the confirmed project room. For buyer-specific Contract for Deed work, copy current deliverables to the matching Teams buyer folder as a delivery mirror; do not use Teams as the working source.
 
@@ -21,7 +21,7 @@ Before file work:
 
 1. Confirm the working folder with `Get-Location`.
 2. If it is not `C:\Codex\Wiki Files`, use `C:\Codex\Wiki Files` explicitly as the shell workdir and use absolute paths under `C:\Codex\Wiki Files`.
-3. Read `Admin Home.md`, `AGENTS.md`, `Repository Location Rule.md`, `Codex Skill Source Rule.md`, and the active project room `PROJECT-ROOM.md`.
+3. Read `Admin Home.md`, `AGENTS.md`, `Repository Location Rule.md`, `Codex Skill Source Rule.md`, and the active project room `README.md`.
 4. Before running Python project-room scripts, follow `Codex Python Runtime Rule.md`; use the Codex workspace Python executable instead of bare `python`.
 5. Check `git status --short --branch`.
 
@@ -109,7 +109,7 @@ Use the CFD closing-package email-body builder for the polished HTML body:
 
 The builder should produce both HTML and plain-text fallback body files in the Teams `Email Package` folder. If the builder is stale or missing a new package item, update the builder before sending the package email.
 
-For routine email-format maintenance, follow the `CFD Email Package Maintenance` section in `C:\Codex\Wiki Files\Project Rooms\Contract for Deed\PROJECT-ROOM.md` and avoid reworking the reference layout from scratch.
+For routine email-format maintenance, follow the `CFD Email Package Maintenance` section in `C:\Codex\Wiki Files\Project Rooms\Contract for Deed\README.md` and avoid reworking the reference layout from scratch.
 
 The helper reads the local OneDrive/Teams sync metadata and converts a local Teams-synced path, such as a file under `C:\Users\wesbr\Buy Your Home\Buy Your Home - Property\...`, into the matching SharePoint web URL. If the helper cannot map a file, do not invent a web link. In that case, list the exact filename and local Teams path, and report that link generation failed for that item.
 
@@ -626,6 +626,7 @@ When changing this skill:
 3. Commit the Admin wiki changes locally when the durable rule update is complete.
 4. Do not sync the installed local skill merely because canonical source changed. Sync only when Wes explicitly asks to sync, install, or make the updated skill active.
 5. Do not push unless Wes explicitly asks to push or says the update is finished and ready to publish.
+
 ## Start PR Pointer
 
 Before durable work, follow Start PR Mode in `C:\Codex\Wiki Files\Project Room Chat Startup Rule.md`.

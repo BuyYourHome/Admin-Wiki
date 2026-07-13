@@ -24,7 +24,7 @@ Use [[Agent Unit Standard]] for the standard package behind an agent-like operat
 | Lowes Order | Wiki-managed skill plus project room plus dedicated chat | Draft | On demand | `skills\lowes-order\SKILL.md`; `Project Rooms\Lowes Order\README.md` |
 | SOPs | Wiki-managed skill plus project room | Active | On demand | `skills\sops\SKILL.md`; `Project Rooms\SOPs\README.md`; `Project Rooms\SOPs\outputs\SOP Index.md` |
 | Credit Worthiness Evaluator | Wiki-managed skill plus project room | Active | On demand | `skills\credit-worthiness-evaluator\SKILL.md`; `Project Rooms\Credit Worthiness Evaluator\README.md` |
-| Contract for Deed | Wiki-managed skill plus project room | Active | On demand | `skills\contract-for-deed\SKILL.md`; `Project Rooms\Contract for Deed\PROJECT-ROOM.md` |
+| Contract for Deed | Wiki-managed skill plus project room | Active | On demand | `skills\contract-for-deed\SKILL.md`; `Project Rooms\Contract for Deed\README.md` |
 | Operating Agreement | Wiki-managed skill plus project room | Draft | On demand | `skills\operating-agreement\SKILL.md`; `Project Rooms\Operating Agreements\README.md` |
 | Amortization | Wiki-managed support skill plus project room | Draft | Called by Contract for Deed or other seller-financing workflows | `skills\amortization\SKILL.md`; `Project Rooms\Amortization\README.md` |
 | CMA Report | Wiki-managed skill | Active | On demand when a CMA or property report is created | `skills\cma-report\SKILL.md` |
@@ -543,7 +543,7 @@ Purpose:
 Defined in:
 
 - Skill source: `C:\Codex\Wiki Files\skills\contract-for-deed\SKILL.md`
-- Project room: `C:\Codex\Wiki Files\Project Rooms\Contract for Deed\PROJECT-ROOM.md`
+- Project room: `C:\Codex\Wiki Files\Project Rooms\Contract for Deed\README.md`
 
 Important rules:
 

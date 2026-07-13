@@ -1,4 +1,4 @@
-﻿# Credit Worthiness Evaluator
+# Credit Worthiness Evaluator
 
 ## Purpose
 
@@ -76,7 +76,7 @@ Project room created. Initial official-source notes and a first working process 
 ## Related Wiki Links
 
 - [[Project Room Workflow]]
-- [[Project Rooms/Contract for Deed/PROJECT-ROOM|Contract for Deed Project Room]]
+- [[Project Rooms/Contract for Deed/README|Contract for Deed Project Room]]
 - [[Agents and Automations Registry]]
 ## Start PR Pointer
 
