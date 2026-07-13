@@ -64,7 +64,7 @@ Do not process the same source file repeatedly. Use the intake ledger to identif
 - Preserve every source file unchanged.
 - Do not overwrite, rewrite, move, or delete the original source file.
 - Finding a new routed Markdown file or intake-log item is the start of processing, not a stopping point, when the source includes a clear Gracious Millionaire writing instruction from Wes.
-- Before acting on a new intake item, read this project room README, `working/writing-style-guide.md`, the intake ledger, current manuscript outputs, and any relevant source inventory.
+- Before acting on a new intake item, read `working/current-state.md`, `working/intake-queue.md`, `working/writing-style-guide.md`, the intake ledger, the current Quick-mode manifest when applicable, and only the relevant source-inventory entries.
 - Decide whether the new source is a chapter seed, chapter section, revision instruction, source note, admin/routing note, or non-actionable item.
 - If the source contains a clear writing instruction from Wes, the heartbeat may process it according to the Gracious Millionaire project-room rules.
 - When the source is new substantive Gracious Millionaire book/source material, use Quick mode only by default. Do not automatically run Interview mode, Rewrite mode, or Dialogue mode after source intake unless Wes directly requests that mode.
@@ -80,7 +80,7 @@ Do not process the same source file repeatedly. Use the intake ledger to identif
 - Preserve Wes's reflective, story-driven, faith-centered voice.
 - Avoid generic business prose unless Wes explicitly asks for it.
 - Keep manuscript changes traceable to the source file that triggered them.
-- After processing, update the intake ledger with status, action taken, output path, processing timestamp, and open questions.
+- After processing, update the OfficeAssist intake ledger with status, action taken, output path, processing timestamp, and open questions. Update `working/intake-queue.md` for substantive-source status, `working/output-register.md` for generated products, and `working/delivery-register.md` for Teams or email delivery. Do not add generated outputs or sent-copy records back to `working/source-inventory.md`.
 - If the change is significant, regenerate the stable current Jenny clickable chapter review packet and send it through the OfficeAssist email-delivery workflow. The email body must include the current manuscript word count, estimated page count, and a brief comparison to typical book lengths; use a formatted PDF/DOCX page count when available, otherwise estimate about 250 words per manuscript page and label it approximate.
 
 ## Notification Rules

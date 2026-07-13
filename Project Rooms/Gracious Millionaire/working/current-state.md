@@ -1,0 +1,45 @@
+# Gracious Millionaire Current State
+
+Use this page for routine project-room startup. Read the larger registers only when the current task needs their detail.
+
+## Current Manuscript State
+
+- Quick mode: `outputs/quick-mode/manifest.md`
+- Quick review packet: `outputs/Gracious Millionaire - Quick Mode.html`
+- Dialogue mode: `outputs/dialogue-mode/manifest.md`
+- Dialogue review packet: `outputs/Gracious Millionaire - Dialogue Mode.html`
+- Rewrite mode: `outputs/Gracious Millionaire - Rewrite Mode.md` and `outputs/Gracious Millionaire - Rewrite Mode.html`
+- Stable current review packet: `outputs/jenny-chapter-review-current/Gracious Millionaire - Jenny Clickable Chapter Review - CURRENT.html`
+- Current cover: `outputs/book-cover/gracious-millionaire-book-cover-wes-and-jenny-browning-2026-07-10-email.jpg`
+
+## Current Versions
+
+- Quick mode: `quick-baseline-v1-2026-07-13`
+- Dialogue mode: `dialogue-v1-2026-07-13`
+- Rewrite mode: `v28`
+- Latest full manuscript created: Dialogue mode v1
+
+## Intake State
+
+- Default for new substantive source material: Quick mode only.
+- Latest routed record processed: `2026-07-13-041343-gracious-millionaire-dialogue-mode-v1-sent-packet.md`
+- Pending source items: none recorded in `working/intake-queue.md`.
+- Original and contextual sources: `working/source-inventory.md`.
+- Generated manuscripts and chapter drafts: `working/output-register.md`.
+- Email and Teams delivery records: `working/delivery-register.md`.
+
+## Open Editorial Context
+
+- Preserve original sources as factual authority; mode products are never source material for another mode.
+- Interview mode may use only the current Quick-mode manuscript as a sequence and coverage reference.
+- Preserve unresolved questions when the source material does not support a complete answer.
+- Verify translation and quotation permissions before publishing long scripture, sermon, book, or video excerpts.
+- See `working/missing-context.md` and `working/manuscript-edit-and-fact-notes.md` before substantive drafting.
+
+## Publication State
+
+- Teams destination: `SellYourHome / Documents / Marketing / Gracious Millionaire`.
+- Teams archive verified 2026-07-13: 70 versioned manuscript and chapter-draft files.
+- Teams review copies must include a version identifier in the filename.
+- Local chapter files and manifests remain the working manuscript state.
+- Use `working/publication-workflow.md` for build, validation, Teams, email, ledger, and Git steps.

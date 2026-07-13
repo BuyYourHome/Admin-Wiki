@@ -16,6 +16,7 @@ from __future__ import annotations
 import argparse
 import base64
 import html
+import json
 import mimetypes
 import re
 import shutil
@@ -418,6 +419,92 @@ def build_command(args: argparse.Namespace) -> None:
         print(f"Wrote optional Markdown export: {markdown_output}")
 
 
+def output_path_for_manifest(manifest_path: Path, metadata: dict[str, str], override: str | None = None) -> Path:
+    if override:
+        return Path(override).resolve()
+    return resolve_relative(
+        manifest_path.parent,
+        metadata.get("html output", "../Gracious Millionaire - Quick Mode.html"),
+    )
+
+
+def validate_packet(manifest_path: Path, html_path: Path) -> dict[str, object]:
+    metadata, chapters = parse_manifest(manifest_path)
+    active = [chapter for chapter in chapters if chapter.status.lower() == "active"]
+    packet = html_path.read_text(encoding="utf-8")
+
+    missing_chapter_files = []
+    missing_section_ids = []
+    missing_outline_links = []
+    for chapter in active:
+        chapter_path = resolve_relative(manifest_path.parent, chapter.file)
+        if not chapter_path.exists():
+            missing_chapter_files.append(chapter.file)
+        section_id = f"section-{chapter.order:02d}"
+        if f'id="{section_id}"' not in packet:
+            missing_section_ids.append(section_id)
+        if f'href="#{section_id}"' not in packet:
+            missing_outline_links.append(section_id)
+
+    title = metadata.get("title", manifest_path.stem)
+    version = metadata.get("version", "")
+    problems = []
+    if title not in packet:
+        problems.append("manuscript title is missing from HTML")
+    if version and version not in packet:
+        problems.append("version identifier is missing from HTML")
+    if '<img class="cover"' not in packet:
+        problems.append("embedded cover is missing from HTML")
+    if missing_chapter_files:
+        problems.append(f"missing chapter files: {', '.join(missing_chapter_files)}")
+    if missing_section_ids:
+        problems.append(f"missing chapter sections: {', '.join(missing_section_ids)}")
+    if missing_outline_links:
+        problems.append(f"missing outline links: {', '.join(missing_outline_links)}")
+
+    if problems:
+        raise SystemExit("Packet validation failed: " + "; ".join(problems))
+
+    return {
+        "title": title,
+        "mode": metadata.get("mode", ""),
+        "version": version,
+        "active_chapters": len(active),
+        "html_output": str(html_path),
+        "validated": True,
+    }
+
+
+def validate_command(args: argparse.Namespace) -> None:
+    manifest_path = Path(args.manifest).resolve()
+    metadata, _chapters = parse_manifest(manifest_path)
+    html_path = output_path_for_manifest(manifest_path, metadata, args.html)
+    print(json.dumps(validate_packet(manifest_path, html_path), indent=2))
+
+
+def workflow_command(args: argparse.Namespace) -> None:
+    manifest_path = Path(args.manifest).resolve()
+    metadata, _chapters = parse_manifest(manifest_path)
+    html_path = output_path_for_manifest(manifest_path, metadata, args.html)
+
+    build_command(
+        argparse.Namespace(
+            manifest=str(manifest_path),
+            html=str(html_path),
+            markdown=args.markdown,
+        )
+    )
+    summary = validate_packet(manifest_path, html_path)
+
+    if args.current_packet:
+        current_packet = Path(args.current_packet).resolve()
+        current_packet.parent.mkdir(parents=True, exist_ok=True)
+        shutil.copy2(html_path, current_packet)
+        summary["current_packet"] = str(current_packet)
+
+    print(json.dumps(summary, indent=2))
+
+
 def main() -> None:
     parser = argparse.ArgumentParser(description="Split and build modular Gracious Millionaire manuscripts.")
     subparsers = parser.add_subparsers(dest="command", required=True)
@@ -438,6 +525,21 @@ def main() -> None:
     build.add_argument("--html")
     build.add_argument("--markdown", help="Optional full Markdown export path.")
     build.set_defaults(func=build_command)
+
+    validate = subparsers.add_parser("validate", help="Validate a compiled packet against its manifest.")
+    validate.add_argument("--manifest", required=True)
+    validate.add_argument("--html")
+    validate.set_defaults(func=validate_command)
+
+    workflow = subparsers.add_parser(
+        "workflow",
+        help="Build, validate, report statistics, and optionally refresh the stable current packet.",
+    )
+    workflow.add_argument("--manifest", required=True)
+    workflow.add_argument("--html")
+    workflow.add_argument("--markdown", help="Optional full Markdown export path.")
+    workflow.add_argument("--current-packet")
+    workflow.set_defaults(func=workflow_command)
 
     args = parser.parse_args()
     args.func(args)

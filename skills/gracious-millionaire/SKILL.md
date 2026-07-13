@@ -1,4 +1,4 @@
-﻿---
+---
 name: gracious-millionaire
 description: Use for Gracious Millionaire book and project-room work, including routed source-email intake, manuscript notes, chapter drafts, source ledgers, continuity review, heartbeat processing rules, and outputs under `Project Rooms\Gracious Millionaire`.
 ---
@@ -17,8 +17,8 @@ Use this skill for Gracious Millionaire project-room processing. OfficeAssist em
 ## Required Startup
 
 1. Confirm the working folder is `C:\Codex\Wiki Files`.
-2. Read `Admin Home.md`, `AGENTS.md`, `Project Room Workflow.md`, and `Project Rooms\Gracious Millionaire\README.md`.
-3. Read `working\intake-heartbeat-rules.md`, `working\source-inventory.md`, `working\duplicate-and-conflict-log.md`, and `working\missing-context.md`.
+2. Read `Admin Home.md`, `AGENTS.md`, `Project Room Workflow.md`, `Project Rooms\Gracious Millionaire\README.md`, and `working\current-state.md`.
+3. Read `working\intake-queue.md` for intake work. Read `working\source-inventory.md`, `working\duplicate-and-conflict-log.md`, `working\missing-context.md`, and mode-specific notes only when source selection or substantive manuscript work requires them. Use `working\output-register.md` and `working\delivery-register.md` for output or publication history.
 4. Check `git status --short --branch` before durable edits.
 
 ## Workflow
@@ -30,6 +30,16 @@ Use this skill for Gracious Millionaire project-room processing. OfficeAssist em
 5. Keep manuscript notes and drafting analysis in `working\`.
 6. Put review-ready drafts or final outputs in `outputs\`.
 7. Mark unsupported factual or autobiographical claims instead of smoothing them into narrative.
+
+## Efficient Project-Room Operation
+
+- Use `working\current-state.md` as the compact routine startup snapshot.
+- Keep authoritative and contextual sources in `working\source-inventory.md`, generated products in `working\output-register.md`, and email/Teams publication events in `working\delivery-register.md`.
+- Track only unprocessed substantive source changes in `working\intake-queue.md`.
+- Use `tools\gm-manuscript.cmd Quick refresh or tools\gm-manuscript.cmd Dialogue refresh` to build and validate modular packets with the approved Codex Python runtime.
+- Follow `working\publication-workflow.md` after content is editorially ready. Packaging corrections must not rerun a writing mode.
+- Publish manuscript review copies to Teams `SellYourHome / Documents / Marketing / Gracious Millionaire` with a version identifier in every filename. Keep local manifests and chapter files as working state.
+- For directly requested full-manuscript modes, create the controlling maps first, then allow parallel drafting only across disjoint chapter files from the same original-source snapshot. Complete one central continuity, redundancy, factual, voice, and fairness review before publication.
 
 ## New Subject Material Default
 

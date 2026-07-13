@@ -52,6 +52,18 @@ The separate emails in `sources/email/` are early chapter starts, fragments, and
 - The project-room heartbeat still must not query any mailbox directly, send unrelated email, approve invoices, move money, modify legal or financial documents, delete source files, create new chats, or take unrelated external actions.
 - If the Jenny review-packet email cannot be sent or verified safely through the OfficeAssist email-delivery workflow, notify Wes immediately in this Gracious Millionaire thread with the blocker and the intended attachment path.
 
+## Efficient Startup And Registers
+
+- Read `working/current-state.md` first for routine project-room work.
+- Read `working/intake-queue.md` to find new or changed substantive source material that still needs processing.
+- Use `working/source-inventory.md` for original and contextual sources only.
+- Use `working/output-register.md` for generated manuscripts, chapter drafts, and review outputs.
+- Use `working/delivery-register.md` for email, Teams, and packaging records.
+- Consult the full source inventory, duplicate/conflict log, and missing-context notes when source selection or substantive drafting requires them; do not reload every historical output for routine packaging or Git work.
+- Use `working/publication-workflow.md` to separate content work from build, validation, Teams, email, ledger, and Git delivery steps.
+- Teams manuscript copies belong in `SellYourHome / Documents / Marketing / Gracious Millionaire` and must include a version identifier in the filename.
+- Use `tools/gm-manuscript.cmd` for modular manuscript build, link validation, statistics, and optional current-packet refresh.
+
 ## Current Status
 
 Started. Initial email source files were created from the retrievable messages in the `WesWill@BuyYourHomeLLC.com` Outlook folder before the mailbox boundary was tightened. Going forward, mailbox intake belongs to OfficeAssist or another approved intake process, not this project-room role.
