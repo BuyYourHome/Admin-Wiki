@@ -140,3 +140,14 @@ The side-by-side Vendor Tabs and Review rollout was completed for `17_Project Ma
 - Preserve intentional non-taxed actual rows by clearing migrated `Tax` cells after rebuilding the table formula columns. Pinetree Flooring and Exterior totals reconcile without adding tax.
 - Visual QA must check for prototype labels and column alignment, not only values. Pinetree required removal of a stale `Plumbing` label from `Windows & Doors`, readable description widths, and correction of the Flooring square-foot formula and quantity number format.
 - Compare formula-error addresses and formulas to the fresh target baseline. Pinetree's `Docs!E39` `#REF!` and `Profit!L82` `#VALUE!` were identical before and after the Vendor Tabs migration and were not introduced by this mode.
+
+## 1426 Pleasant Garden Ln Lessons
+
+The side-by-side Vendor Tabs and Review rollout was completed for `18_Project Management - 1426 Pleasant Garden Ln.xlsm` on 2026-07-14.
+
+- A project's saved selected total may intentionally differ from its visible quantity-driven detail. Migrate the visible contributing rows, preserve the selected total with a clearly labeled reconciliation row, and flag the difference for Wes rather than silently choosing one interpretation. Pleasant Garden required this treatment for Demo & Trash Haul and Paint.
+- Saved vendor quotes may be the project's selected value even when the legacy detail calculates to zero. Preserve the named quote transparently and keep the adjacent old worksheet for review. Pleasant Garden Cabinets used a $4,165.00 AvilaCRI quote, and Flooring used $3,790.00 LVP plus $2,815.00 carpet quote components.
+- Do not blindly restore the prototype Tax calculated-column formula after clearing a copied table. If the target's legacy total excludes tax, or if the migrated row already contains the complete intended amount, leave Tax blank. Otherwise the replacement can add 7.25% to a previously reconciled value.
+- Do not assume every standard table copied from the prototype has the same Sub-Total formula. Pleasant Garden exposed a Flooring prototype formula that multiplied blank `Sq Ft` by cost and returned zero. Require the standard blank-square-foot fallback where appropriate: quantity times cost when `Sq Ft` is blank, otherwise square feet times quantity times cost.
+- Search the entire saved workbook for formulas that reference `<Worksheet> - Old`. Excel automatically follows a renamed source worksheet, so correcting only the first visible Gantt rows can miss shifted project-specific rows. Pleasant Garden also required repointing Landscape, Drainage/Exterior, and HVAC references.
+- Reconnect Gantt Chart by its project-specific row labels and business meaning, not by the Outrigger row numbers. Pleasant Garden's HVAC contractor row was lower than Outrigger's because the contractor section contains different rows.
