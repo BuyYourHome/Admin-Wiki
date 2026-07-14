@@ -124,3 +124,8 @@ The first side-by-side project rollout was completed for `07_Project Management 
 - Set the replacement selector explicitly from the target project's intended state. Banks replacements were set to `No` so Gantt Chart continued to read actual-invoice totals.
 - Adding `Review` is separate from the side-by-side vendor-sheet pattern. When the target has no `Review` worksheet, add the canonical sheet once, keep `Review!B1` unchecked, clear `tblInvoiceReview`, and set `invoiceEntryReviewRequest` to `=Review!$B$1`.
 - Compare formula errors to the fresh target baseline. Do not treat pre-existing errors elsewhere in the workbook as migration-created errors, but record them in the migration log.
+
+## Project Approval Gate
+
+- After completing and validating one project workbook, replace the approved target file in Teams, verify the new Teams version, and provide Wes a direct clickable Teams link to that workbook.
+- Stop after providing the link. Do not begin the next project until Wes has had the opportunity to inspect and approve the completed project.
