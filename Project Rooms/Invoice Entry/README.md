@@ -150,6 +150,29 @@ If a Statement Mode packet is received:
 
 Reason: a common invoice usually maps to one project and one tab, but a statement can contain charges for multiple projects and multiple tabs inside each project.
 
+## Lowes Statement Operation Modes
+
+Lowes statements have two supported operating modes:
+
+1. **Requested statement processing** - Wes asks Invoice Entry to go get and process one Lowes statement or a set of Lowes statements.
+2. **Doc Scan handoff processing** - Doc Scan receives a new Lowes statement, extracts the detail, and passes a structured Statement Mode packet to Invoice Entry.
+
+For either mode:
+
+- treat a statement as potentially multi-project,
+- never treat the full statement as belonging to one workbook just because one line belongs there,
+- route each retained line by project first, then worksheet/table,
+- import a line into a project workbook only when that workbook is ready to receive that class of line,
+- retain statement detail that applies to a project that is not yet ready for insertion,
+- keep enough traceability to import retained lines later, including statement account, statement closing date, row/ref number, transaction date, description, amount, project clue, confidence/status, and source statement path,
+- avoid duplicate Review or vendor-table rows when a held line is later imported.
+
+Current rollout status: Outrigger is the first project workbook set up for Lowe's Review/vendor-table processing. After Template to Project migrates the same structure to more active project workbooks, Requested statement processing may iterate through active projects and import only the rows that apply to each ready project. Until then, non-ready project rows remain held.
+
+Held statement detail lives in:
+
+`C:\Codex\Wiki Files\Project Rooms\Invoice Entry\working\lowes-statement-held-detail-register.md`
+
 ## Lowes Statement Mode Review-First Rule
 
 For Lowes Statement Mode packets:
@@ -165,6 +188,7 @@ For Lowes Statement Mode packets:
 9. If the destination is not clear, leave `Review[Destination Worksheet]` blank and explain the issue in the review/status fields.
 10. A filled `Destination Worksheet` means Invoice Entry has a confident routing recommendation; it does not by itself mean the row has already been copied into the destination vendor table.
 11. Moving or copying a reviewed Lowes statement row from `Review` into a vendor table happens only after the review/approval rule for that row is satisfied.
+12. Rows not inserted into a particular project workbook must still be retained in the held-detail register when they are Home/non-project, accounting-review, unclear-project, belong to a project whose workbook is not ready, or otherwise cannot yet be inserted into the appropriate project workbook.
 
 ## Vendor Tabs Mode Startup
 

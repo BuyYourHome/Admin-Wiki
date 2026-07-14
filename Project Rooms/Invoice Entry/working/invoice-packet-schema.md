@@ -44,6 +44,7 @@ If the packet is for a Lowes statement:
 - Use `Destination Worksheet` only when Invoice Entry has confidence in the final vendor tab.
 - Leave `Destination Worksheet` blank when the line is Home/non-project, mixed-tab, PO-conflicted, accounting-only, or otherwise uncertain.
 - Review-row status and notes should explain whether the line is ready for later copy, needs Wes review, or needs accounting direction.
+- For any line not inserted into a project workbook, preserve enough detail for later action in the Invoice Entry held-detail register. Retained fields should include statement account, statement closing date, packet row, transaction date, reference number, store, PO/project clue, SKU/item number when available, description, amount, line type, recommended project/workbook if any, confidence/status, source statement path, and current hold reason.
 
 ## Handoff Boundary
 
