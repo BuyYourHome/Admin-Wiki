@@ -150,6 +150,7 @@ Purpose:
 - Treat emails from `WesWill@BuyYourHomeLLC.com` and `Jenny@BuyYourHomeLLC.com` as OfficeAssist instruction intake.
 - Carry out safe, in-scope admin actions when the email instruction and applicable workflow rules allow it.
 - Route Gracious Millionaire email into the Gracious Millionaire project room as Markdown source files, update the intake/source ledger when required, and send a direct follow-up message to the Gracious Millionaire project-room thread with the routed source path and short summary. Do not process the manuscript from the OfficeAssist monitor thread.
+- Route Brynda Suit email into the Brynda Suit project room as Markdown source files, update the source inventory when needed, and send a direct follow-up message to the Brynda Suit task with the routed source path, short summary, and instruction to wake up and respond to the email. Do not process the Brynda Suit response from the OfficeAssist monitor thread.
 - Report blockers, ambiguous authority, mailbox failures, or decisions needed in the attached status thread.
 - Avoid repeated processing by tracking handled message ids in local monitor memory.
 - Keep routine no-new-instruction checks quiet with `DONT_NOTIFY`.
@@ -165,6 +166,13 @@ Special routing:
 - Do not attach an OfficeAssist mailbox-monitoring heartbeat to the Gracious Millionaire thread; the separate `gracious-millionaire-project-room-heartbeat` owns project-room Markdown/source processing in that thread and must not check email.
 - Do not create a new chat for Gracious Millionaire routing unless Wes explicitly asks for a new chat.
 - Do not draft, edit, or send the requested Gracious Millionaire book response from the OfficeAssist monitor thread unless Wes explicitly asks for processing there; the default action is source routing plus direct handoff only.
+- If an instruction email has a subject containing `brynda suit`, or otherwise clearly belongs to the Brynda Suit workflow, route it into `Project Rooms\Brynda Suit\` as source material from the OfficeAssist monitor.
+- Preserve each routed Brynda Suit email as its own Markdown file under `Project Rooms\Brynda Suit\sources\email\`, including available sender, recipient, timestamp, subject, message id or web link, and body text.
+- Update `Project Rooms\Brynda Suit\working\source-inventory.md` when the routed email becomes part of the durable source set.
+- Send a direct follow-up message to the existing Brynda Suit task with the routed source path, a short summary, and the instruction to wake up and respond to the email.
+- Current Brynda Suit task id: `019f61c3-d4c0-7a52-a5a0-e4066ea9b303`.
+- Do not create a new Brynda Suit task for routing unless Wes explicitly asks for one.
+- Do not draft, edit, or send the requested Brynda Suit response from the OfficeAssist monitor thread unless Wes explicitly asks for processing there; the default action is source routing plus direct handoff only.
 
 Defined in:
 

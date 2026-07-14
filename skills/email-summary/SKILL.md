@@ -114,6 +114,26 @@ Current Gracious Millionaire project-room thread id: `019eb9b0-6780-7fb3-a278-29
 
 Do not attach mailbox checking to the Gracious Millionaire heartbeat. Do not create a new Gracious Millionaire chat. Do not draft, edit, or send the requested book response from this Email Summary or OfficeAssist monitor thread unless Wes explicitly asks for processing here. The default action is source routing plus direct project-room handoff only.
 
+## Brynda Suit Routing
+
+When the Email Summary workflow or the OfficeAssist instruction monitor sees an instruction email from Wes or Jenny that belongs to Brynda Suit, route that email before ending the run.
+
+Treat an email as Brynda Suit source material when the subject contains `brynda suit` or the email otherwise clearly belongs to the Brynda Suit workflow.
+
+For each routed email:
+
+- preserve the email as its own Markdown source file under `C:\Codex\Wiki Files\Project Rooms\Brynda Suit\sources\email\`;
+- include sender, recipients, sent time when available, received time, subject, Outlook message id or web link when available, and body text;
+- use a stable, filesystem-safe filename that starts with the email date/time and a short subject slug;
+- update `C:\Codex\Wiki Files\Project Rooms\Brynda Suit\working\source-inventory.md` when the routed email becomes part of the durable source set;
+- record the routed Outlook message id in this workflow's monitor memory so the same email is not routed repeatedly.
+
+After saving the source file and source-inventory entry when needed, send a direct follow-up message to the existing Brynda Suit task with the routed source path, a short summary of the email, and the instruction to wake up and respond to the email.
+
+Current Brynda Suit task id: `019f61c3-d4c0-7a52-a5a0-e4066ea9b303`.
+
+Do not create a new Brynda Suit task for this routing unless Wes explicitly asks. Do not process the Brynda Suit response from this Email Summary or OfficeAssist monitor thread unless Wes explicitly asks for processing here. The default action is source routing plus direct project-room handoff only.
+
 ## Delivery Handoff
 
 For Boss's send step, call the shared `email-delivery` skill and pass:
