@@ -3,12 +3,52 @@
 | Source | Type | Status | Notes |
 | --- | --- | --- | --- |
 | Wes request to create `Brynda Suit` PR | User instruction | authoritative | Establishes this Project Room and matching skill. |
-| Wes instruction on 2026-07-14 to limit source scope to Discovery and Exhibits | User instruction | authoritative | Limits Brynda source scope to the SharePoint `Discovery` and `Exhibits` folders under `Property/20-HM-115 Rosebrooks Dr/Lawsuit`; excludes `Billing`, `BoA Statements BG & WB bank account`, and other top-level lawsuit files unless Wes later expands scope. |
+| Wes instruction on 2026-07-14 to source Discovery, Exhibits, and Lawsuit files | User instruction | authoritative | Limits Brynda source scope to the SharePoint `Discovery` and `Exhibits` folders plus direct files under `Property/20-HM-115 Rosebrooks Dr/Lawsuit`; excludes sibling folders such as `Billing` and `BoA Statements BG & WB bank account` unless Wes later expands scope. |
 | `Project Room Workflow.md` | Wiki rule | authoritative | Defines required Project Room structure and source-preparation workflow. |
 | `Project Room Chat Startup Rule.md` | Wiki rule | authoritative | Defines startup requirements and current PR scoping. |
 | `Project Room File Ownership And Git Coordination Rule.md` | Wiki rule | authoritative | Defines Project Room ownership, shared Admin file edits, commit scope, and push safety. |
 | `Agent Unit Standard.md` | Wiki rule | authoritative | Defines Project Room, skill, registry, chat, and automation package expectations. |
 | `Git Work Scope Rule.md` | Wiki rule | authoritative | Defines scoped commits and push behavior. |
+| SharePoint: `Property/20-HM-115 Rosebrooks Dr/Lawsuit` direct files | SharePoint source folder | authoritative | Source container for direct files in the Lawsuit folder only. Sibling subfolders are source only when separately listed, such as `Discovery` and `Exhibits`. |
+| `120 Keith Ct Profit.pdf` | Lawsuit direct file | authoritative | SharePoint path: `Property/20-HM-115 Rosebrooks Dr/Lawsuit`. |
+| `2024 Brynda Griffith's Handwritten Notes for Wes.pdf` | Lawsuit direct file | authoritative | SharePoint path: `Property/20-HM-115 Rosebrooks Dr/Lawsuit`. Potential duplicate of the handwritten-notes exhibit copy. |
+| `23-01-01 Brynda's Monthly_Payment_Tracker_2023_v4.pdf` | Lawsuit direct file | authoritative | SharePoint path: `Property/20-HM-115 Rosebrooks Dr/Lawsuit`. |
+| `23-08-30 Debt Collection Letter from Hutchens Law for BofA.pdf` | Lawsuit direct file | authoritative | SharePoint path: `Property/20-HM-115 Rosebrooks Dr/Lawsuit`. Potential duplicate of the Exhibits copy. |
+| `23-09-13 Notice of Foreclosure 115 Rosebrooks.pdf` | Lawsuit direct file | authoritative | SharePoint path: `Property/20-HM-115 Rosebrooks Dr/Lawsuit`. Potential duplicate of the Exhibits copy. |
+| `23-10-31 Brynda Griffith - Signing.mp4` | Lawsuit direct file | authoritative | SharePoint path: `Property/20-HM-115 Rosebrooks Dr/Lawsuit`. |
+| `23-11-01 Foreclosure Granted 115 Rosebrooks.pdf` | Lawsuit direct file | authoritative | SharePoint path: `Property/20-HM-115 Rosebrooks Dr/Lawsuit`. Potential duplicate of the Exhibits copy. |
+| `23-11-1 Wake Co Clerk Granted Foreclosure 115 Rosebrooks.pdf` | Lawsuit direct file | authoritative | SharePoint path: `Property/20-HM-115 Rosebrooks Dr/Lawsuit`. |
+| `23-11-15 Foreclosure Withdrawn.pdf` | Lawsuit direct file | authoritative | SharePoint path: `Property/20-HM-115 Rosebrooks Dr/Lawsuit`. Potential duplicate of the Exhibits copy. |
+| `24-01-10 Engagement for Legal Services.pdf` | Lawsuit direct file | authoritative | SharePoint path: `Property/20-HM-115 Rosebrooks Dr/Lawsuit`. |
+| `24-06-11 2nd Foreclosure Notice 115 Rosebrooks.pdf` | Lawsuit direct file | authoritative | SharePoint path: `Property/20-HM-115 Rosebrooks Dr/Lawsuit`. Potential duplicate of the Exhibits copy. |
+| `24-07-12 2nd Foreclosure Notice 115 Rosebrooks WITHDRAWN.pdf` | Lawsuit direct file | authoritative | SharePoint path: `Property/20-HM-115 Rosebrooks Dr/Lawsuit`. Potential duplicate of the Exhibits copy. |
+| `25-01-13 25-01-13 BYH - Summons & Complaint recd 20241202 usps.pdf` | Lawsuit direct file | authoritative | SharePoint path: `Property/20-HM-115 Rosebrooks Dr/Lawsuit`. |
+| `25-01-13 BYH - Aff of Svc of Process Def Buy Your Home 20241206.pdf` | Lawsuit direct file | authoritative | SharePoint path: `Property/20-HM-115 Rosebrooks Dr/Lawsuit`. |
+| `25-01-13 BYH - Doherty v Browning Case Summary 20250113 dl.pdf` | Lawsuit direct file | authoritative | SharePoint path: `Property/20-HM-115 Rosebrooks Dr/Lawsuit`. |
+| `25-01-13 BYH - Filed Defs MEOT 20241230.pdf` | Lawsuit direct file | authoritative | SharePoint path: `Property/20-HM-115 Rosebrooks Dr/Lawsuit`. |
+| `25-01-13 BYH - Filed Exhibits A-D to Complaint Wes' letters 20250110.pdf` | Lawsuit direct file | authoritative | SharePoint path: `Property/20-HM-115 Rosebrooks Dr/Lawsuit`. |
+| `25-01-27 Answer.docx` | Lawsuit direct file | authoritative | SharePoint path: `Property/20-HM-115 Rosebrooks Dr/Lawsuit`. |
+| `25-01-27 Motion to Vacate Order Appointing Guardian ad Litem.docx` | Lawsuit direct file | authoritative | SharePoint path: `Property/20-HM-115 Rosebrooks Dr/Lawsuit`. |
+| `25-03-04 - Notice of Deposition (Plaintiff).pdf` | Lawsuit direct file | authoritative | SharePoint path: `Property/20-HM-115 Rosebrooks Dr/Lawsuit`. |
+| `25-03-28 Brynda Griffith 032825_rough draft_cond_N.pdf` | Lawsuit direct file | authoritative | SharePoint path: `Property/20-HM-115 Rosebrooks Dr/Lawsuit`. |
+| `25-04-03 griffith suit discussion Summary.txt` | Lawsuit direct file | authoritative | SharePoint path: `Property/20-HM-115 Rosebrooks Dr/Lawsuit`. |
+| `25-04-03 griffith suit discussion Transcript.txt` | Lawsuit direct file | authoritative | SharePoint path: `Property/20-HM-115 Rosebrooks Dr/Lawsuit`. |
+| `25-05-06 Exhibit A to NC Subpoena.docx` | Lawsuit direct file | authoritative | SharePoint path: `Property/20-HM-115 Rosebrooks Dr/Lawsuit`. |
+| `25-05-21 Offer to settle.docx` | Lawsuit direct file | authoritative | SharePoint path: `Property/20-HM-115 Rosebrooks Dr/Lawsuit`. |
+| `25-05-30 Meditation_on_Psalm_37_with Legal Comparison 12X18.docx` | Lawsuit direct file | authoritative | SharePoint path: `Property/20-HM-115 Rosebrooks Dr/Lawsuit`. |
+| `25-05-30 Meditation_on_Psalm_37_with Legal Comparison.docx` | Lawsuit direct file | authoritative | SharePoint path: `Property/20-HM-115 Rosebrooks Dr/Lawsuit`. |
+| `25-06-10 DOHERTY, NATALIE - deposition.pdf` | Lawsuit direct file | authoritative | SharePoint path: `Property/20-HM-115 Rosebrooks Dr/Lawsuit`. |
+| `25-08-18 Huston deposition outline, Griffith v Browning.docx` | Lawsuit direct file | authoritative | SharePoint path: `Property/20-HM-115 Rosebrooks Dr/Lawsuit`. |
+| `25-09-15 Call with Duane Wilson.docx` | Lawsuit direct file | authoritative | SharePoint path: `Property/20-HM-115 Rosebrooks Dr/Lawsuit`. |
+| `25-09-17 320 Rose - Deed of Trust (Poyner) Draft.docx` | Lawsuit direct file | authoritative | SharePoint path: `Property/20-HM-115 Rosebrooks Dr/Lawsuit`. |
+| `25-09-17 320 Rose - Promissory Note (Poyner) Draft.docx` | Lawsuit direct file | authoritative | SharePoint path: `Property/20-HM-115 Rosebrooks Dr/Lawsuit`. |
+| `26-04-29 - Pl.'s Brief ISO MSJ.pdf` | Lawsuit direct file | authoritative | SharePoint path: `Property/20-HM-115 Rosebrooks Dr/Lawsuit`. |
+| `26-04-29 - Plaintiffs Brief - Browning markup.docx` | Lawsuit direct file | authoritative | SharePoint path: `Property/20-HM-115 Rosebrooks Dr/Lawsuit`. |
+| `26-04-30 - Brief ISO Defs. Cross-Motion for Summary Judgment.pdf` | Lawsuit direct file | authoritative | SharePoint path: `Property/20-HM-115 Rosebrooks Dr/Lawsuit`. |
+| `BYH - Filed Notice Limited Appearance KAS 20241230.pdf` | Lawsuit direct file | authoritative | SharePoint path: `Property/20-HM-115 Rosebrooks Dr/Lawsuit`. |
+| `Lawsuit Diary.xlsx` | Lawsuit direct file | authoritative | SharePoint path: `Property/20-HM-115 Rosebrooks Dr/Lawsuit`. |
+| `Letters #1-6.pdf` | Lawsuit direct file | authoritative | SharePoint path: `Property/20-HM-115 Rosebrooks Dr/Lawsuit`. |
+| `Mimecast Large File Send Instructions.msg` | Lawsuit direct file | authoritative | SharePoint path: `Property/20-HM-115 Rosebrooks Dr/Lawsuit`. |
 | SharePoint: `Property/20-HM-115 Rosebrooks Dr/Lawsuit/Discovery` | SharePoint source folder | authoritative | Source container for Brynda Suit PR. Contains `25-10-15`; all files under this Discovery tree are in source scope. |
 | SharePoint: `Property/20-HM-115 Rosebrooks Dr/Lawsuit/Discovery/25-10-15` | SharePoint source folder | authoritative | Source container with direct discovery PDFs plus nested folders: `Bank of America`, `Cricket`, `Google phone x9147 extracted texts and calls`, and `Google phone x9147 extracted texts and calls (1)`. Expand nested folders before drafting from their contents. |
 | `2025.10.15 Plaintiff's Supplemental Answers to Defs' First RFP (1).pdf` | Discovery file | authoritative | SharePoint path: `Property/20-HM-115 Rosebrooks Dr/Lawsuit/Discovery/25-10-15`. |
