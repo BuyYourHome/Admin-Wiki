@@ -151,3 +151,13 @@ The side-by-side Vendor Tabs and Review rollout was completed for `18_Project Ma
 - Do not assume every standard table copied from the prototype has the same Sub-Total formula. Pleasant Garden exposed a Flooring prototype formula that multiplied blank `Sq Ft` by cost and returned zero. Require the standard blank-square-foot fallback where appropriate: quantity times cost when `Sq Ft` is blank, otherwise square feet times quantity times cost.
 - Search the entire saved workbook for formulas that reference `<Worksheet> - Old`. Excel automatically follows a renamed source worksheet, so correcting only the first visible Gantt rows can miss shifted project-specific rows. Pleasant Garden also required repointing Landscape, Drainage/Exterior, and HVAC references.
 - Reconnect Gantt Chart by its project-specific row labels and business meaning, not by the Outrigger row numbers. Pleasant Garden's HVAC contractor row was lower than Outrigger's because the contractor section contains different rows.
+
+## 115 Rosebrooks Dr Lessons
+
+The side-by-side Vendor Tabs and Review rollout was completed for `20_Project Management - 115 Rosebrooks Dr.xlsm` on 2026-07-14.
+
+- Treat numeric zero as a real mapped value, not as blank. Migration helpers must write `0` into target inputs when the project source explicitly uses zero. Skipping zero can leave a prototype formula active and change the project's behavior.
+- Prototype option formulas can assume a model input that is blank for another project type. Rosebrooks is a Flip model, so Paint's square-foot source returned blank text. Outrigger quantity formulas that divided that value produced `#VALUE!` until Rosebrooks zero inputs were written explicitly.
+- When a low-activity project has many zero-quantity legacy candidates, move representative choices into the limited orange option area and leave the complete old worksheet adjacent for review. Do not overfill or resize the approved prototype option block merely to duplicate every dormant candidate.
+- A zero selected total can still conceal visible legacy detail. Rosebrooks Demo & Trash Haul contained a $1,200.00 removal row while the saved selected total was $0.00. Preserve both facts with an explicit reconciliation row and flag the difference for Wes.
+- Validate the actual selected table total at full precision even when the user-facing log rounds to cents. Rosebrooks Appliances reconciled at `$1,646.555625`.
