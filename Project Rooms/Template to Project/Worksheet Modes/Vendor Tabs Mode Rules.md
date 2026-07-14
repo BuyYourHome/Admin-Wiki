@@ -161,3 +161,12 @@ The side-by-side Vendor Tabs and Review rollout was completed for `20_Project Ma
 - When a low-activity project has many zero-quantity legacy candidates, move representative choices into the limited orange option area and leave the complete old worksheet adjacent for review. Do not overfill or resize the approved prototype option block merely to duplicate every dormant candidate.
 - A zero selected total can still conceal visible legacy detail. Rosebrooks Demo & Trash Haul contained a $1,200.00 removal row while the saved selected total was $0.00. Preserve both facts with an explicit reconciliation row and flag the difference for Wes.
 - Validate the actual selected table total at full precision even when the user-facing log rounds to cents. Rosebrooks Appliances reconciled at `$1,646.555625`.
+
+## Native Checkbox Repair Lesson
+
+Rosebrooks required a follow-up repair on 2026-07-14 after the copied Vendor Tab checkboxes did not behave reliably during direct user interaction.
+
+- A copied in-cell checkbox can still report `CellControl.Type = xlTypeCheckbox` and respond to automation while remaining unreliable for the user. Do not treat control-type inspection alone as proof that a copied checkbox works.
+- After copying a Vendor Tab into another workbook, rebuild the checkbox formatting in place with Excel's native `CellControl.SetCheckbox`, explicitly unlock the checkbox's full merged area, and restore the project's saved Boolean value.
+- Validate after save/reopen and again from the exact Teams-uploaded copy. Test both Boolean states and confirm the visible selector changes between `No` and `Yes`.
+- A working checkbox may not change the selected dollar total when both the template and actual branches are zero. Validate the selector text separately from the dollar result so a zero-dollar project does not produce a false failure or false success.

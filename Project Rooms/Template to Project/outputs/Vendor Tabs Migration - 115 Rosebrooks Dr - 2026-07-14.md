@@ -57,3 +57,15 @@
 - Review the Cleanup reconciliation. The old sheet contains a visible $1,200.00 removal charge while its selected total is $0.00.
 - Confirm the seven migrated Appliances rows and the $1,646.56 selected total.
 - Review the representative orange option choices before removing any adjacent old worksheet.
+
+## Vendor Checkbox Repair
+
+Wes reported that the replacement Vendor Tab checkboxes were not working after the initial migration. A fresh Teams version 52 was retrieved and repaired on 2026-07-14.
+
+- Rebuilt all 11 Vendor Tab selectors as native in-cell checkboxes in their existing cells.
+- Explicitly unlocked each checkbox's full merged area while preserving the saved state. Demo & Trash Haul and Appliances remained checked; the other nine selectors remained unchecked.
+- Preserved the existing selector formulas and `Profit!W6` gating logic.
+- Verified both states after save/reopen. Every selector changes from `No` when unchecked to `Yes` when checked.
+- Verified Appliances changes its selected/Gantt result from `$0.00` to `$962.0325`. The other Rosebrooks template totals are currently zero, so their dollar results remain zero in both states even though the selector text changes correctly.
+- Replaced the Teams workbook as version `53.0`, then downloaded and reopened that exact Teams copy for verification.
+- Server-copy validation: 11 native checkboxes, 11 unlocked checkbox areas, 0 external links, and all two-state selector tests passed.
