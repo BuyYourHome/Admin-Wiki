@@ -10,24 +10,34 @@ The first workbook for Vendor Tabs mode changes is the Outrigger project workboo
 
 ## Included Tabs
 
-The Vendor Tabs mode group starts with `Demo & Trash Haul` and includes the approved `Exterior` expansion.
+Vendor Tabs Mode includes the `Review` intake worksheet and the approved vendor expense worksheets. `Review` is part of the coordinated mode but is not itself a vendor expense tab.
 
 Current Vendor Tabs mode list:
 
-1. `Demo & Trash Haul`
-2. `Appliances`
-3. `Plumbing Fixtures`
-4. `Windows & Doors`
-5. `Cabinets`
-6. `Paint`
-7. `Flooring`
-8. `HVAC`
-9. `Electrical Fixtures`
-10. `STR`
+1. `Review`
+2. `Demo & Trash Haul`
+3. `Appliances`
+4. `Plumbing Fixtures`
+5. `Windows & Doors`
+6. `Cabinets`
+7. `Paint`
+8. `Flooring`
+9. `HVAC`
+10. `Electrical Fixtures`
 11. `Landscape`
 12. `Exterior`
 
-Do not include `Furnishing` or other tabs outside this list unless Wes explicitly expands the Vendor Tabs mode scope.
+`STR` is not a vendor tab and is outside Vendor Tabs Mode. Do not include `STR`, `Furnishing`, or other tabs outside this list unless Wes explicitly expands the scope.
+
+## Review Intake Worksheet
+
+- `Review` is the intake and exception queue for Vendor Tabs Mode.
+- Its table is `tblInvoiceReview`.
+- `Review!B1` contains the native `Needs Invoice Entry Review` checkbox.
+- Workbook name `invoiceEntryReviewRequest` must refer absolutely to `=Review!$B$1`.
+- Template to Project owns the Review layout, columns, validation, checkbox, table structure, formatting, and rollout.
+- Invoice Entry owns duplicate checks, movement of approved rows into destination tables, status updates, and clearing the request checkbox.
+- The checkbox requests processing; it must not move rows directly.
 
 ## Source Note
 
@@ -72,17 +82,15 @@ Converted Outrigger actual-invoice tables:
 | `HVAC` | `tblHVACInvoices` | `A11:G21` | Uses its existing no-tax actual layout. Downstream total is `HVAC!K5`, and `Gnatt Chart!G19` and `Gnatt Chart!G24` point to that cell. |
 | `Cabinets` | `tblCabinetsInvoices` | `A11:H43` | Uses one combined actual-invoice table with `Cabinet Group` as the first column. Preserve the intentionally blank tax cell on the marketplace row. The current Outrigger Cabinets downstream total is `Cabinets!K5`, and `Gnatt Chart!G12` points to that cell. |
 | `Exterior` | `tblExteriorInvoices` | `A22:J36` | Uses the standard `Group`, `Date`, `Vendor`, `Description`, `Sq Ft`, `Item #`, `Qty`, `Cost/Unit`, `Sub-Total`, and `Tax` columns. The downstream total is `Exterior!M24`, and `Gnatt Chart!G17` points to that cell. The selector is a native checkbox in `Exterior!N2`, with state in `M2`. |
+| `Appliances` | `tblAppliancesInvoices` | `A13:J33` | Preserves dated actual records and keeps undated candidate products out of the actual table. Downstream total is `Appliances!M15`, and `Gnatt Chart!G9` points to that cell. |
+| `Plumbing Fixtures` | `tblPlumbingFixturesInvoices` | `A14:J36` | Uses the standard ten-column invoice schema. Downstream total is `'Plumbing Fixtures'!L16`, and `Gnatt Chart!G10` points to that cell. |
+| `Paint` | `tblPaintInvoices` | `A11:J41` | Uses the standard ten-column invoice schema while retaining paint-specific Group values. Downstream total is `Paint!M13`, and `Gnatt Chart!G13` points to that cell. |
+| `Electrical Fixtures` | `tblElectricalFixturesInvoices` | `A10:J36` | Contains blank future-entry rows because Outrigger currently has no actual electrical-fixture invoices. Downstream total is `'Electrical Fixtures'!M12`, and `Gnatt Chart!G15` points to that cell. |
+| `Landscape` | `tblLandscapeInvoices` | `A22:J32` | Contains blank future-entry rows because Outrigger currently has no actual landscape invoices. Downstream total is `Landscape!M24`, and `Gnatt Chart!G18` points to that cell. |
 
 For upgraded Outrigger vendor tabs, align the actual-invoice table header at row 11 when the worksheet structure permits, align the orange template-estimate columns to the actual-invoice table where the worksheet schema allows, and freeze panes below the table header. `Exterior` is an approved layout exception: its 12-row template section requires the actual table header at row 22 and freeze panes at `A23`.
 
-Held for Wes/design review before table conversion:
-
-- `Appliances`: template and actual rows are blended with subtotals inside the yellow area.
-- `Plumbing Fixtures`: actual block is shifted right and has inconsistent date placement.
-- `Paint`: materially different column layout with color, square feet, item, quantity, and cost/unit.
-- `Electrical Fixtures`: current actual area lacks a date column.
-- `Landscape`: no clear Flooring-style actual-invoice yellow block is present yet.
-- `STR`: remains a special case until Wes approves its final design.
+As of 2026-07-14, the formerly held `Appliances`, `Plumbing Fixtures`, `Paint`, `Electrical Fixtures`, and `Landscape` layouts are resolved in the Outrigger prototype. `STR` was removed from this mode because it is not a vendor tab.
 
 ## Exterior Conversion Lessons
 
@@ -94,3 +102,11 @@ The Outrigger `Exterior` worksheet was converted on 2026-07-14 after Wes explici
 - A native in-cell checkbox must remain an editable `TRUE`/`FALSE` value, not a formula. Verify the checkbox control type and test both selector states after saving and after replacing the Teams file.
 - Keep helper inputs, such as the hourly rate, in the worksheet summary area when possible so the vendor worksheet remains a coherent one-page print layout.
 - Reconcile every downstream total before and after conversion. For Outrigger Exterior, the unchecked actual total and `Gnatt Chart!G17` both remained `$3,232.04`.
+
+## Iteration Lessons
+
+- Before reporting a duplicate checkbox, check the cell's full merged area. A single native checkbox in a merged range may appear through more than one cell address during automation inspection.
+- Keep undated zero-quantity product candidates out of actual-invoice tables. Preserve dated zero-dollar records when they document real reused materials or other actual activity.
+- Do not move structured-table records between workbooks with direct Excel copy operations. That can shift structured formulas or introduce an external workbook link. Transfer source values, then rebuild the destination table's structured formulas and reconcile the exact pre-change total.
+- When listing proposed worksheet changes for Wes, include a clickable link to the current local project workbook so he can inspect the worksheet before approval.
+- Preserve the selector state saved by Wes in the current working copy. Reconcile both the selected total and its `Gnatt Chart` result immediately before upload.
