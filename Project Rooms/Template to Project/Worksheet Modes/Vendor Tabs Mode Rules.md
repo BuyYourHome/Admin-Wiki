@@ -172,3 +172,15 @@ Rosebrooks required a follow-up repair on 2026-07-14 after the copied Vendor Tab
 - A working checkbox may not change the selected dollar total when both the template and actual branches are zero. Validate the selector text separately from the dollar result so a zero-dollar project does not produce a false failure or false success.
 - Do not call `Calculate`, `CalculateFull`, or `CalculateFullRebuild` between checkbox changes during the interaction test. A forced calculation can hide a workbook saved in Manual Calculation mode. Open the saved workbook in a fresh Excel instance, confirm calculation mode is Automatic, change the checkbox, and require the dependent selector to update immediately without `F9`.
 - Preserve iterative-calculation settings when changing the workbook from Manual to Automatic calculation. Verify the saved package and the Teams-downloaded copy both retain iteration while no longer declaring `calcMode="manual"`.
+
+## 2325 Cool Springs Rd Lessons
+
+The side-by-side Vendor Tabs and Review rollout was completed for `22_Project Management - 2325 Cool Springs Rd 4.xlsm` on 2026-07-14.
+
+- Protect project-critical worksheets outside the active mode with a before-and-after fingerprint of formulas, constants, used range, and table ranges. Cool Springs `Amortization` remained unchanged throughout this Vendor Tabs migration.
+- Reconcile both the selected downstream total and the visible orange template-option detail. A zero selected total does not prove that legacy option values were mapped; visual rendering exposed blank orange rows that numeric total checks could not detect.
+- Map compact legacy template rows by field meaning, not by same-column position. Cool Springs legacy tabs placed descriptions, item numbers, quantities, and costs in different columns on Demo, Appliances, Plumbing, Windows, Cabinets, Electrical, Landscape, and Exterior.
+- Distinguish item numbers from prices before migration. Cool Springs Exterior stored the Masking Tape and Drop Cloth item numbers in a column otherwise used for cost; those values belong in `Item #`, not `Cost/Unit`.
+- When using Excel automation to copy mixed text and numeric values, assign through an explicitly typed intermediate value. Direct chained COM assignments can reject numbers as strings or silently leave fields blank.
+- Perform one full rebuild before the final save when needed, then turn off `ForceFullCalculation` and save in Automatic mode. The Teams-downloaded copy must open normally and update selectors without `F9` or an automation calculation command.
+- Validate the exact Teams-downloaded replacement, not only the local output. For Cool Springs this included all 11 two-state selector tests, 12 Gantt totals, zero external links, zero canonical formulas pointing to `- Old`, zero migrated-range formula errors, and the unchanged Amortization fingerprint.
