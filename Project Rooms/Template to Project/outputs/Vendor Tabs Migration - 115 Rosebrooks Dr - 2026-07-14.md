@@ -69,3 +69,14 @@ Wes reported that the replacement Vendor Tab checkboxes were not working after t
 - Verified Appliances changes its selected/Gantt result from `$0.00` to `$962.0325`. The other Rosebrooks template totals are currently zero, so their dollar results remain zero in both states even though the selector text changes correctly.
 - Replaced the Teams workbook as version `53.0`, then downloaded and reopened that exact Teams copy for verification.
 - Server-copy validation: 11 native checkboxes, 11 unlocked checkbox areas, 0 external links, and all two-state selector tests passed.
+
+## Calculation Mode Repair
+
+The first checkbox validation forced a full recalculation after each state change. That masked the actual interactive defect: Rosebrooks was saved with `calcMode="manual"`, so the checkbox Boolean changed but dependent selector cells such as `Appliances!M4` did not update until `F9`.
+
+- Retrieved the fresh Teams version `54.0`, which included Wes's latest checkbox test state.
+- Changed the workbook calculation mode from Manual to Automatic while retaining iterative calculation.
+- Preserved all current checkbox states, formulas, worksheet structure, and Gantt connections.
+- Reopened the workbook in a fresh Excel instance and tested all 11 selectors without any calculation command. Every selector changed immediately from `No` to `Yes` and restored to its saved state.
+- Replaced the Teams workbook as version `55.0` and downloaded that exact copy for the same no-forced-calculation test.
+- Server-copy validation: Automatic calculation, iterative calculation retained, 11 immediate selector updates passed, and 0 external links.
