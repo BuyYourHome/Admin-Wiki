@@ -124,12 +124,12 @@ When processing a workbook Review request:
 7. Do not depend on visible row numbers, filtering, hidden rows, or the table's current cell range.
 8. Build the structured request packet inside the Invoice Entry process. Do not add packet formulas, scripts, or duplicate-check logic to the workbook.
 9. Include the workbook identity, request timestamp, Review Row IDs, current row values, destinations, statuses, and source traceability.
-10. Treat rows as eligible only when `Destination Worksheet` is filled, `Review Row ID` is present, status is blank, `Requested`, `Approved`, begins with `Ready`, or otherwise clearly indicates approval, and required vendor, date, amount, and source information is present.
-11. Exclude rows when status is `Moved`, status contains `Needs Review`, `Hold`, `Do Not Move`, `Duplicate Risk`, or `Missing Data`, `Destination Worksheet` is blank, or required traceability is insufficient.
+10. Treat rows as eligible when `Destination Worksheet` is filled, `Review Row ID` is present, required vendor, date, amount, and source information is present, and status is not an explicit stop. A filled `Destination Worksheet` supplied by Wes is approval to move the row even if an older status still says `Needs Review`.
+11. Exclude rows when status is `Moved`, `Hold`, `Do Not Move`, `Duplicate Risk`, or `Missing Data`, `Destination Worksheet` is blank, or required traceability is insufficient. Treat `Hold` as a hard stop until Wes changes it.
 12. Perform duplicate checks before inserting anything.
 13. Insert approved records only into the yellow actual-invoice section of the correct destination worksheet; never write into orange template-estimate rows.
 14. Preserve formulas, formatting, tables, controls, selectors, names, and workbook links.
-15. After a successful insertion, retain the Review row, set `Status` to `Moved`, and record the destination worksheet/table and movement date in the existing review or notes field.
+15. After a successful insertion, retain the Review row, correct `Status` to `Moved`, and record the destination worksheet/table and movement date in the existing review or notes field. Correct an older `Needs Review` status during the move unless Wes set the status to `Hold`.
 16. Preserve excluded or uncertain rows and explain what still needs review.
 17. After the pending request has been fully handled and validation passes, clear the checkbox by setting `invoiceEntryReviewRequest` to `FALSE`.
 18. Do not clear the checkbox before the request has been processed and the workbook has passed validation.

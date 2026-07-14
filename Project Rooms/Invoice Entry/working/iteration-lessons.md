@@ -156,3 +156,4 @@ Lessons:
 - Do not inspect the raw workbook ZIP/package while Excel still has the file open. Close Excel fully before checking for external-link package parts.
 - For current Outrigger Plumbing Fixtures rows, use the table's existing `Group` value pattern `PlumbingFixtures` when filling new actual-invoice rows.
 - When copying Lowe's Review rows into vendor tables, preserve clean item descriptions from `Review[Description]`, parse item number and quantity from the Review trace when available, and let the table's `Sub-Total` and `Tax` formulas calculate from quantity and cost/unit.
+- A Wes-filled `Destination Worksheet` is approval to move a Review row unless the status is an explicit stop such as `Hold`, `Do Not Move`, `Duplicate Risk`, or `Missing Data`. Do not let stale `Needs Review` wording block a row after Wes has supplied the destination; correct the status to `Moved` during the successful move.
