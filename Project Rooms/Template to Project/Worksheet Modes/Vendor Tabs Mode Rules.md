@@ -129,3 +129,14 @@ The first side-by-side project rollout was completed for `07_Project Management 
 
 - After completing and validating one project workbook, replace the approved target file in Teams, verify the new Teams version, and provide Wes a direct clickable Teams link to that workbook.
 - Stop after providing the link. Do not begin the next project until Wes has had the opportunity to inspect and approve the completed project.
+
+## 3413 Pinetree Ln Lessons
+
+The side-by-side Vendor Tabs and Review rollout was completed for `17_Project Management - 3413 Pinetree Ln.xlsm` on 2026-07-14.
+
+- A legacy tab may contain a saved total that does not equal the visible contributing detail. Do not silently change the project total. Preserve the approved total with an explicitly labeled reconciliation row, record the reason, and leave the old worksheet beside the replacement for Wes's review. Pinetree `Windows & Doors` retained `$235.81` by mapping the two visible contributing rows and a labeled `$15.43` legacy tax/total adjustment.
+- When a target has no dated or contributing rows for a vendor category, keep the actual-invoice table blank. Move only representative undated zero-quantity candidates into the limited orange option area; the adjacent old sheet remains the complete legacy reference until approval.
+- Treat misaligned legacy data by meaning, not position. Pinetree `Exterior` stored the mailbox-post item number in the old quantity column; it was mapped to `Item #`, with quantity `1` and cost `$32.98` in the replacement table.
+- Preserve intentional non-taxed actual rows by clearing migrated `Tax` cells after rebuilding the table formula columns. Pinetree Flooring and Exterior totals reconcile without adding tax.
+- Visual QA must check for prototype labels and column alignment, not only values. Pinetree required removal of a stale `Plumbing` label from `Windows & Doors`, readable description widths, and correction of the Flooring square-foot formula and quantity number format.
+- Compare formula-error addresses and formulas to the fresh target baseline. Pinetree's `Docs!E39` `#REF!` and `Profit!L82` `#VALUE!` were identical before and after the Vendor Tabs migration and were not introduced by this mode.
