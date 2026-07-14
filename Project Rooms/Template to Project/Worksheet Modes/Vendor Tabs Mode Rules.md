@@ -205,3 +205,15 @@ The side-by-side Vendor Tabs and Review rollout was completed for `25_Project Ma
 - Visual QA must check semantic column placement and number formats in addition to stale labels. Britton required removal of the prototype `Plumbing` label from `Windows & Doors`, placement of Paint product details in `Description` rather than `Vendor`, and a non-currency format for Flooring quantities.
 - Preserve dated zero-dollar rows when they document actual project activity. Britton retained dated Demo, Windows & Doors, Plumbing Fixtures, and HVAC history even where the selected total remained zero.
 - Validate the exact Teams replacement by roundtrip hash after upload. Britton SharePoint version `169.0` matched the validated local file at SHA-256 `34972F314D4AC94599479893DBA66FFDA6C6850566EDFBE23765D7D83B80C9B4`.
+
+## 908 Pond St Lessons
+
+The side-by-side Vendor Tabs and Review rollout was completed for `26_Project Management - 908 Pond St 3.xlsm` on 2026-07-14.
+
+- Preserve each project's mixed selector state. Pond uses actual invoice totals for nine Vendor Tabs and template totals for Flooring and HVAC; both the selected total and the corresponding Gantt result must reconcile for every tab.
+- A copied prototype formula can remain hidden until a target project has the right data shape to expose it. Pond Flooring had nonzero unit costs with zero quantities, revealing that the summary formula incorrectly summed `H:I` instead of the calculated `I:J` subtotal-and-tax columns. Validate formula meaning, not only copied structure.
+- Preserve hardcoded legacy subtotals transparently when visible quantity and unit cost do not reproduce the saved amount. Map them as quantity `1` at the approved subtotal, add a short legacy note, and retain the old worksheet for review.
+- A `#REF` entry returned by `LinkSources` can be introduced during cross-workbook sheet copying even when the fresh target had no external links. Compare against the fresh baseline, confirm no intended formula depends on it, and break only the generated `#REF` link before the final save.
+- Structured-reference defined names legitimately contain square brackets. Do not classify a name as external merely because its formula contains `[`. Require an external workbook extension such as `.xls`, a nonempty `LinkSources` result, or an external-link package part.
+- Visual QA must include calculated results large enough to test the summary layout. Pond HVAC's `$22,357.00` selected total displayed as `####` until the result column was widened; numeric reconciliation alone would not have caught it.
+- Validate the exact Teams replacement by roundtrip hash after upload. Pond SharePoint version `1695.0` matched the validated local file at SHA-256 `512F466299885284F41841377E82AE4E3B17A6D43116BEAB5CD132F90F786979`.
