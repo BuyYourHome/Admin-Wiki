@@ -4,6 +4,7 @@
 | --- | --- | --- | --- |
 | Wes request to create `Brynda Suit` PR | User instruction | authoritative | Establishes this Project Room and matching skill. |
 | Wes instruction on 2026-07-14 to source Discovery, Exhibits, and Lawsuit files | User instruction | authoritative | Limits Brynda source scope to the SharePoint `Discovery` and `Exhibits` folders plus direct files under `Property/20-HM-115 Rosebrooks Dr/Lawsuit`; excludes sibling folders such as `Billing` and `BoA Statements BG & WB bank account` unless Wes later expands scope. |
+| Wes instruction on 2026-07-14 for OfficeAssist routed Brynda Suit emails | User instruction | authoritative | Treat routed OfficeAssist Brynda Suit email handoffs as active requests to read the routed Markdown email source and prepare a ready-to-review response draft or blocker note in the existing Brynda Suit task. Do not send without explicit authorization. |
 | `Project Room Workflow.md` | Wiki rule | authoritative | Defines required Project Room structure and source-preparation workflow. |
 | `Project Room Chat Startup Rule.md` | Wiki rule | authoritative | Defines startup requirements and current PR scoping. |
 | `Project Room File Ownership And Git Coordination Rule.md` | Wiki rule | authoritative | Defines Project Room ownership, shared Admin file edits, commit scope, and push safety. |

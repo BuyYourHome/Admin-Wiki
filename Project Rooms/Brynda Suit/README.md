@@ -57,6 +57,21 @@ Before durable work, follow Start PR Mode in `C:\Codex\Wiki Files\Project Room C
 - Commit only scoped Brynda Suit room, matching skill, and directly related registry/index changes.
 - Push only when Wes explicitly asks, says the work is finished, or the applicable Admin wiki rules define the deliverable as final and ready to publish.
 
+## OfficeAssist Routed Email Response Mode
+
+When OfficeAssist routes a Brynda Suit email into this task, treat the handoff as an active request to review the routed source email and prepare a response.
+
+Use the routed Markdown email source as the authoritative source for the requested response. Read the full email, identify what response is being requested, preserve the source path in working notes or the draft, and produce either:
+
+- a ready-to-review email response draft, or
+- a blocker note explaining what information or authorization is needed before a response can be drafted.
+
+If the routed handoff says `wake up and respond to the email`, begin work promptly in this existing Brynda Suit task. Do not create a new task.
+
+Do not send the reply directly unless Wes explicitly authorizes sending. If the email requests a legal, financial, filing, settlement, admission, approval, or other high-impact action, draft the response for Wes review and clearly flag any decision or missing context needed before sending.
+
+Keep related routed email source notes, response drafts, and review questions under `C:\Codex\Wiki Files\Project Rooms\Brynda Suit`.
+
 ## Next Actions
 
 1. Add authoritative Brynda Suit source material to `sources\` when Wes provides it.

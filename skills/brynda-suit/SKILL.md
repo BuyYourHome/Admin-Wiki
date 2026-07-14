@@ -39,6 +39,20 @@ Before Brynda Suit file work:
 7. Mark unsupported assumptions as `[UNSUPPORTED]` instead of smoothing them into a final recommendation.
 8. Commit only scoped Brynda Suit room, matching skill, registry, and index changes.
 
+## OfficeAssist Routed Email Response Mode
+
+Use this mode when OfficeAssist routes a Brynda Suit email source into the existing Brynda Suit task or says to `wake up and respond to the email`.
+
+1. Treat the handoff as an active request to review the routed source email and prepare a response.
+2. Work in the existing Brynda Suit task. Do not create a new task.
+3. Use the routed Markdown email source as the authoritative source for the email request.
+4. Read the full routed email before drafting.
+5. Identify what response is being requested and preserve the routed source path in the notes or response draft.
+6. Keep related source notes, drafts, and review questions under `C:\Codex\Wiki Files\Project Rooms\Brynda Suit`.
+7. Produce either a ready-to-review email response draft or a blocker note explaining what information or authorization is needed before a response can be drafted.
+8. Do not send the reply directly unless Wes explicitly authorizes sending.
+9. If the email requests a legal, financial, filing, settlement, admission, approval, or other high-impact action, draft the response for Wes review and clearly flag any decision or missing context needed before sending.
+
 ## Boundaries
 
 - Do not edit another Project Room's files or matching skill unless Wes explicitly authorizes that specific cross-PR edit.
