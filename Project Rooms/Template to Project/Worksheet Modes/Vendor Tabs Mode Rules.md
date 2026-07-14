@@ -184,3 +184,14 @@ The side-by-side Vendor Tabs and Review rollout was completed for `22_Project Ma
 - When using Excel automation to copy mixed text and numeric values, assign through an explicitly typed intermediate value. Direct chained COM assignments can reject numbers as strings or silently leave fields blank.
 - Perform one full rebuild before the final save when needed, then turn off `ForceFullCalculation` and save in Automatic mode. The Teams-downloaded copy must open normally and update selectors without `F9` or an automation calculation command.
 - Validate the exact Teams-downloaded replacement, not only the local output. For Cool Springs this included all 11 two-state selector tests, 12 Gantt totals, zero external links, zero canonical formulas pointing to `- Old`, zero migrated-range formula errors, and the unchanged Amortization fingerprint.
+
+## 4121 Tensity Dr Lessons
+
+The side-by-side Vendor Tabs and Review rollout was completed for `24_Project Management - 4121 Tensity Dr 2.xlsm` on 2026-07-14.
+
+- A large workbook with iterative calculations can make `CalculateFullRebuild` impractically slow during a structural migration. Put Excel in Manual mode while copying and mapping sheets, calculate only the migrated Vendor Tabs and their confirmed Gantt dependents, restore Automatic mode before saving, and then validate the saved workbook and exact Teams-downloaded copy without a forced calculation command.
+- `LinkSources` returns `null` when a workbook has no external links. Do not wrap an unchecked `null` result in an array and treat it as one blank link; filter null or blank values before calling `BreakLink`.
+- A selector formula may be intentionally gated by a project model cell. Tensity has `Profit!W6 = FALSE`, so its visible selectors remain `No` during ordinary use. To validate native checkbox responsiveness without changing the project model, temporarily enable the gate only in an unsaved validation session, test `No` and `Yes` without `F9`, restore the original gate in memory, and close without saving.
+- Preserve hardcoded legacy totals transparently when the displayed subtotal does not equal quantity times unit cost. Tensity Exterior's paver row retained the legacy `$643.50` total as quantity `1` at `$643.50`, with the former quantity and unit cost documented in the description.
+- Mixed text and numeric COM writes may still fail when one dynamic assignment site is reused. Use separate typed assignment paths for strings, numbers, and Booleans, and identify the exact worksheet, cell, table row, and field when a write fails.
+- Record pre-existing errors outside the active mode instead of silently expanding scope. Tensity's existing Gantt `#REF!` cells and existing `Profit`, `Contract`, and Gantt errors were unchanged; the migrated Vendor Tabs and Review contain no formula errors.
