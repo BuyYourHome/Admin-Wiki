@@ -10,7 +10,7 @@ The first workbook for Vendor Tabs mode changes is the Outrigger project workboo
 
 ## Included Tabs
 
-The Vendor Tabs mode group starts with `Demo & Trash Haul` and continues to the right through `Landscape`.
+The Vendor Tabs mode group starts with `Demo & Trash Haul` and includes the approved `Exterior` expansion.
 
 Current Vendor Tabs mode list:
 
@@ -25,8 +25,9 @@ Current Vendor Tabs mode list:
 9. `Electrical Fixtures`
 10. `STR`
 11. `Landscape`
+12. `Exterior`
 
-Do not include tabs to the right of `Landscape`, such as `Exterior` or `Furnishing`, in this mode unless Wes explicitly expands the Vendor Tabs mode scope.
+Do not include `Furnishing` or other tabs outside this list unless Wes explicitly expands the Vendor Tabs mode scope.
 
 ## Source Note
 
@@ -70,8 +71,9 @@ Converted Outrigger actual-invoice tables:
 | `Demo & Trash Haul` | `tblDemoTrashHaulInvoices` | `A11:F26` | Uses its existing vendor/date/event/iterations/charge/subtotal layout. Downstream total is `'Demo & Trash Haul'!K5`, and `Gnatt Chart!G8` points to that cell. |
 | `HVAC` | `tblHVACInvoices` | `A11:G21` | Uses its existing no-tax actual layout. Downstream total is `HVAC!K5`, and `Gnatt Chart!G19` and `Gnatt Chart!G24` point to that cell. |
 | `Cabinets` | `tblCabinetsInvoices` | `A11:H43` | Uses one combined actual-invoice table with `Cabinet Group` as the first column. Preserve the intentionally blank tax cell on the marketplace row. The current Outrigger Cabinets downstream total is `Cabinets!K5`, and `Gnatt Chart!G12` points to that cell. |
+| `Exterior` | `tblExteriorInvoices` | `A22:J36` | Uses the standard `Group`, `Date`, `Vendor`, `Description`, `Sq Ft`, `Item #`, `Qty`, `Cost/Unit`, `Sub-Total`, and `Tax` columns. The downstream total is `Exterior!M24`, and `Gnatt Chart!G17` points to that cell. The selector is a native checkbox in `Exterior!N2`, with state in `M2`. |
 
-For upgraded Outrigger vendor tabs, align the actual-invoice table header at row 11, align the orange template-estimate columns to the actual-invoice table where the worksheet schema allows, and freeze panes at `A12` so row 11 remains visible while entering actual-invoice rows.
+For upgraded Outrigger vendor tabs, align the actual-invoice table header at row 11 when the worksheet structure permits, align the orange template-estimate columns to the actual-invoice table where the worksheet schema allows, and freeze panes below the table header. `Exterior` is an approved layout exception: its 12-row template section requires the actual table header at row 22 and freeze panes at `A23`.
 
 Held for Wes/design review before table conversion:
 
@@ -81,3 +83,14 @@ Held for Wes/design review before table conversion:
 - `Electrical Fixtures`: current actual area lacks a date column.
 - `Landscape`: no clear Flooring-style actual-invoice yellow block is present yet.
 - `STR`: remains a special case until Wes approves its final design.
+
+## Exterior Conversion Lessons
+
+The Outrigger `Exterior` worksheet was converted on 2026-07-14 after Wes explicitly expanded Vendor Tabs Mode to include it.
+
+- A legacy mixed worksheet may require classifying rows before conversion. In Outrigger Exterior, dated rows were existing actual expenses and undated rows were template estimates. Perform this classification independently for every project and validate it against the project values before migrating data.
+- Preserve intentionally blank migrated `Tax` cells when that is required to reconcile the converted actual total to the pre-conversion total.
+- Verify the selector's gating cell instead of preserving a stale reference. Outrigger Exterior formerly used blank `Profit!Q6`; the current Vendor Tabs selector standard uses `Profit!W6`.
+- A native in-cell checkbox must remain an editable `TRUE`/`FALSE` value, not a formula. Verify the checkbox control type and test both selector states after saving and after replacing the Teams file.
+- Keep helper inputs, such as the hourly rate, in the worksheet summary area when possible so the vendor worksheet remains a coherent one-page print layout.
+- Reconcile every downstream total before and after conversion. For Outrigger Exterior, the unchecked actual total and `Gnatt Chart!G17` both remained `$3,232.04`.
