@@ -217,3 +217,14 @@ The side-by-side Vendor Tabs and Review rollout was completed for `26_Project Ma
 - Structured-reference defined names legitimately contain square brackets. Do not classify a name as external merely because its formula contains `[`. Require an external workbook extension such as `.xls`, a nonempty `LinkSources` result, or an external-link package part.
 - Visual QA must include calculated results large enough to test the summary layout. Pond HVAC's `$22,357.00` selected total displayed as `####` until the result column was widened; numeric reconciliation alone would not have caught it.
 - Validate the exact Teams replacement by roundtrip hash after upload. Pond SharePoint version `1695.0` matched the validated local file at SHA-256 `512F466299885284F41841377E82AE4E3B17A6D43116BEAB5CD132F90F786979`.
+
+## 320 Rose Pl Lessons
+
+The side-by-side Vendor Tabs and Review rollout was completed for `28_Project Management - 320 Rose Pl.xlsm` on 2026-07-14.
+
+- Preserve legacy discounted subtotals transparently when quantity times list price would overstate the selected amount. Rose Cabinets was mapped as quantity `1` at each discounted subtotal with a short `legacy 10% discount` note; the adjacent old worksheet retains the original quantity and list-price detail.
+- Do not coerce a legacy field based only on the column's displayed format. Rose Windows & Doors contained invoice/reference identifiers in date-like positions; they were preserved as reference text in the mapped description rather than converted into dates.
+- Inspect inherited number formats after every structural remap. Visual QA caught Flooring quantity cells displayed as currency and a Paint template amount displayed without cents even though the underlying values and totals were correct.
+- Keep migration notes short enough to preserve worksheet usability. Widen and wrap mapped description columns where needed, but do not let provenance notes obscure the actual item description.
+- For larger workbooks, save before validation and use targeted formula-error searches plus bulk stable-sheet fingerprints. A cell-by-cell scan across every worksheet can exceed the automation window without providing better migration evidence.
+- Validate the exact Teams replacement by roundtrip hash after upload. Rose SharePoint version `385.0` matched the validated local file at SHA-256 `7898CAA52ACE733A13C425DE7027FA102F8E567889D1A899305B2E6D47F912B8`.
