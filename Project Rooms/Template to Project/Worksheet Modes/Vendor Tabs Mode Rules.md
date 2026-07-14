@@ -110,3 +110,17 @@ The Outrigger `Exterior` worksheet was converted on 2026-07-14 after Wes explici
 - Do not move structured-table records between workbooks with direct Excel copy operations. That can shift structured formulas or introduce an external workbook link. Transfer source values, then rebuild the destination table's structured formulas and reconcile the exact pre-change total.
 - When listing proposed worksheet changes for Wes, include a clickable link to the current local project workbook so he can inspect the worksheet before approval.
 - Preserve the selector state saved by Wes in the current working copy. Reconcile both the selected total and its `Gnatt Chart` result immediately before upload.
+
+## 3325 Banks Rd Pilot Lessons
+
+The first side-by-side project rollout was completed for `07_Project Management - 3325 Banks Rd.xlsm` on 2026-07-14.
+
+- For every vendor worksheet, keep the legacy worksheet immediately beside the replacement as `<Worksheet> - Old` until Wes approves removal. The replacement must assume the canonical worksheet name so downstream references can use the stable name.
+- Copying a worksheet from the prototype can copy sheet-scoped names that still refer to the prototype workbook. Localizing visible cell formulas is not enough. Inspect and localize workbook-scoped and sheet-scoped names, then require `LinkSources` to be empty before upload.
+- Map each legacy worksheet independently. Banks `Electrical Fixtures` used `Description`, `ITEM`, `Quantity`, and `Cost/Unit` in columns A:D, while Banks `Landscape` used a different eight-column layout. Never reuse a positional map from another vendor tab or project without confirming its headers and totals.
+- When the legacy total already includes accumulated tax as an expense line, preserve that line in the actual-invoice table and leave the table `Tax` field blank so the migrated total does not add tax twice.
+- Preserve unusual legacy accounting until Wes approves normalization. Banks `Paint` contains two `$97.13` tax-related lines; both were retained so the selected total remained `$1,332.94`, and the duplicate was labeled for review.
+- Clear prototype-specific option rows from the orange area after copying the design. A visual render is required because stale option rows, misplaced values, and clipped totals can remain even when the actual-invoice total reconciles.
+- Set the replacement selector explicitly from the target project's intended state. Banks replacements were set to `No` so Gantt Chart continued to read actual-invoice totals.
+- Adding `Review` is separate from the side-by-side vendor-sheet pattern. When the target has no `Review` worksheet, add the canonical sheet once, keep `Review!B1` unchecked, clear `tblInvoiceReview`, and set `invoiceEntryReviewRequest` to `=Review!$B$1`.
+- Compare formula errors to the fresh target baseline. Do not treat pre-existing errors elsewhere in the workbook as migration-created errors, but record them in the migration log.
