@@ -111,6 +111,8 @@ For workbook Review requests:
 - do not use the obsolete `Review!Q2` text selector,
 - read Review rows by table name and column headers, not by visible row numbers, filters, hidden rows, or fixed cell ranges.
 
+Review reconciliation trigger: any time Invoice Entry opens an active project workbook for an authorized workbook action, first check whether the workbook has worksheet `Review` and table `tblInvoiceReview`. If it does, run the existing Review Request Processing rules against that table before other workbook work. The checkbox remains a user-visible request marker, but it is not the only trigger for reconciliation; an authorized workbook-open action is also enough to invoke the existing Review processing rules.
+
 When instructed to process a workbook request:
 
 1. Confirm the exact Teams workbook before editing.

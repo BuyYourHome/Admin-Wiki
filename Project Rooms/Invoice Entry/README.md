@@ -113,6 +113,8 @@ For project workbooks that use the Review request design:
 - `FALSE` or blank means no request is pending.
 - The prior `Review!Q2` text selector is obsolete and must not be used.
 
+Review reconciliation trigger: any time Invoice Entry opens an active project workbook for an authorized workbook action, first check whether the workbook has worksheet `Review` and table `tblInvoiceReview`. If it does, run the existing Review Request Processing rules against that table before other workbook work. The checkbox remains a user-visible request marker, but it is not the only trigger for reconciliation; an authorized workbook-open action is also enough to invoke the existing Review processing rules.
+
 When processing a workbook Review request:
 
 1. Confirm the exact Teams workbook before editing.
