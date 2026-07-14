@@ -195,3 +195,13 @@ The side-by-side Vendor Tabs and Review rollout was completed for `24_Project Ma
 - Preserve hardcoded legacy totals transparently when the displayed subtotal does not equal quantity times unit cost. Tensity Exterior's paver row retained the legacy `$643.50` total as quantity `1` at `$643.50`, with the former quantity and unit cost documented in the description.
 - Mixed text and numeric COM writes may still fail when one dynamic assignment site is reused. Use separate typed assignment paths for strings, numbers, and Booleans, and identify the exact worksheet, cell, table row, and field when a write fails.
 - Record pre-existing errors outside the active mode instead of silently expanding scope. Tensity's existing Gantt `#REF!` cells and existing `Profit`, `Contract`, and Gantt errors were unchanged; the migrated Vendor Tabs and Review contain no formula errors.
+
+## 612 Britton Ct Lessons
+
+The side-by-side Vendor Tabs and Review rollout was completed for `25_Project Management - 612 Britton Ct.xlsm` on 2026-07-14.
+
+- A legacy actual-expense area can contain many named rows with zero quantities and no dates. Do not classify undated zero-quantity product candidates as invoice records merely because they sit below the legacy template section. Preserve dated history and contributing rows in the new actual table, map representative estimates into the orange option area, and retain the adjacent old sheet for the complete legacy reference.
+- A copied table can contain an intentional row-specific exception in a calculated column. Britton's first migrated Plumbing Fixtures row inherited a blank-tax exception from the prototype and initially understated the total by `$53.91825`. Explicitly restore the calculated-column formula on every mapped row that should use it, then reconcile the exact total rather than only the displayed rounded amount.
+- Visual QA must check semantic column placement and number formats in addition to stale labels. Britton required removal of the prototype `Plumbing` label from `Windows & Doors`, placement of Paint product details in `Description` rather than `Vendor`, and a non-currency format for Flooring quantities.
+- Preserve dated zero-dollar rows when they document actual project activity. Britton retained dated Demo, Windows & Doors, Plumbing Fixtures, and HVAC history even where the selected total remained zero.
+- Validate the exact Teams replacement by roundtrip hash after upload. Britton SharePoint version `169.0` matched the validated local file at SHA-256 `34972F314D4AC94599479893DBA66FFDA6C6850566EDFBE23765D7D83B80C9B4`.
