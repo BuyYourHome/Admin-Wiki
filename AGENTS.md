@@ -85,6 +85,10 @@ Use this repo when formulating solutions for office-admin workflows, SOPs, autom
 - Keep review folders separate when the user has specified separate workflows, such as statement review versus invoice review.
 - If a mailbox, folder, or external service is unavailable, do not substitute a similar one without explicit permission.
 
+## Codex Usage Analytics
+
+- When Wes asks to look at Codex usage, launch the Codex usage analytics page in an external browser: `https://chatgpt.com/codex/cloud/settings/analytics`.
+
 ## Python Runtime
 
 - Do not call bare `python` or `python3` for routine Codex work in this repository.
