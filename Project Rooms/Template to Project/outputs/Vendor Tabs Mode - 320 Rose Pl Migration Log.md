@@ -56,3 +56,13 @@
 ## Unresolved Issues
 
 - None within Vendor Tabs Mode. The pre-existing `Docs - Old 0704` reference is outside this mode and remains unchanged.
+
+## Exterior Checkbox Follow-Up
+
+- Completed: 2026-07-15
+- Teams source version: `389.0`
+- Teams repaired version: `390.0`
+- Issue: `Exterior!N2` retained its Boolean value and native checkbox type but the checkbox did not render visibly in desktop Excel.
+- Repair: added a visible checkbox control named `ExteriorSelector`, positioned over `N2:N3` and linked to `Exterior!$N$2`. The saved checked state and existing selector formulas were preserved.
+- Validation: the visible control changes the selector from `No` to `Yes` without `F9`; Automatic calculation and iteration remain enabled; Vendor Tabs Mode contains no formula errors; no external links exist.
+- Roundtrip SHA-256: `CE4AD5BA92507620280C1A301078426227359A907755A0CF0740CDC9CE09B09F`.
