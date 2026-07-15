@@ -137,6 +137,8 @@ Updated on 2026-07-15:
 
 Do not copy a formula-heavy request system into other project workbooks. Roll out only the approved table structure, stable row identifier, and request marker after Wes approves the Outrigger pilot.
 
+The controlled Status dropdown and Import Date design was rolled out to all approved active project workbooks on 2026-07-15. See [[Review Status Dropdown - Active Projects Rollout - 2026-07-15]] for workbook hashes, validation results, and Teams links.
+
 For each project:
 
 - Fetch the current workbook from Teams.

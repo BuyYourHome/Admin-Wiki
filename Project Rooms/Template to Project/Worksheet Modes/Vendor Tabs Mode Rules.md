@@ -46,6 +46,17 @@ Current Vendor Tabs mode list:
 - `Hold`, `Duplicate Risk`, `Missing Data`, and `Do Not Move` are stop states. Invoice Entry must not post those rows.
 - Apply and validate the dropdown by table column/header name, not by hardcoded worksheet coordinates, so sorting, filtering, hidden columns, and project-specific table length do not change the rule.
 
+### Review Status Rollout Lesson
+
+The controlled Review Status and Import Date design was completed across all approved active projects on 2026-07-15: Outrigger, Rose, Pond, Banks, Pinetree, Pleasant Garden, Rosebrooks, Cool Springs, Tensity, and Britton.
+
+- Fetch and map every project's current Teams workbook independently. Review table lengths and populated histories differ even when the approved headers match.
+- Leave historical Import Date cells blank unless the actual processing date is known. The template-rollout date is not the invoice-processing date.
+- Normalize only statuses whose meaning is clear. The rollout mapped `Moved` to `Posted` and mapped legacy `Needs Review - ...` variants to `Needs Review`. Stop for project-specific review instead of guessing if another unapproved status appears.
+- Preserve detailed legacy explanations in Review/reason fields when reducing Status to a controlled value.
+- Compare the complete formula-error address set before and after each local edit. A project can contain many pre-existing errors outside Review; an unchanged set passes this scoped migration and must be logged instead of silently expanding scope.
+- Validate the exact Teams-downloaded replacement after upload. Require adjacent Import Date/invoice-date columns, list validation on every Status data cell, only approved values, no legacy `Moved`, `invoiceEntryReviewRequest = Review!$B$1`, native checkbox type preserved, zero external links, Automatic calculation, and iteration preserved.
+
 ## Source Note
 
 This initial mode list came from the current local Outrigger working copy reviewed on 2026-07-07:
