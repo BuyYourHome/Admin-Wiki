@@ -160,12 +160,13 @@ This hold exists because a common invoice usually maps to one project and one ta
 
 ## Lowes Statement Operation Modes
 
-Lowes statements have two supported operating modes:
+Lowes statements have one supported intake path:
 
-1. Requested statement processing: Wes asks Invoice Entry to go get and process one Lowes statement or a set of Lowes statements.
-2. Doc Scan handoff processing: Doc Scan receives a new Lowes statement, extracts the detail, and passes a structured Statement Mode packet to Invoice Entry.
+- Doc Scan handoff processing: Doc Scan receives or is asked to process one or more Lowes statements, extracts the detail, and passes a structured Statement Mode packet to Invoice Entry.
 
-For either mode:
+Do not request statement processing directly in this Invoice Entry project room or skill. If Wes or another workflow wants one statement or a set of statements processed, route the request to Doc Scan first. Invoice Entry must wait for the Doc Scan Statement Mode packet and must not substitute its own OCR, statement extraction, or raw-PDF parsing.
+
+For Statement Mode handoffs:
 
 - treat each statement as potentially containing entries for multiple projects,
 - never process the whole statement as belonging to one workbook merely because one line belongs to that project,
@@ -176,7 +177,7 @@ For either mode:
 - do not drop, ignore, or overwrite retained statement detail merely because the current project workbook is not ready,
 - when the same statement is later processed across active projects, use the held-detail register and processing logs to avoid duplicate Review or vendor-table rows.
 
-Current rollout status: Outrigger is the first project workbook set up for Lowe's Review/vendor-table processing. After Template to Project migrates the same structure to more active project workbooks, Requested statement processing may iterate through active projects and import only the rows that apply to each ready project. Until then, non-ready project rows remain held.
+Current rollout status: active project workbooks are being prepared for Lowe's Review/vendor-table processing. When Doc Scan supplies a structured Statement Mode packet, Invoice Entry may iterate through ready active projects and import only the rows that apply to each ready project. Non-ready or unclear rows remain held.
 
 ## Lowes Statement Mode Project-First Review Rule
 

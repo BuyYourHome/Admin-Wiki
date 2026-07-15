@@ -66,7 +66,7 @@ Each handoff should include:
 
 ## Required Statement Mode Packet
 
-Doc Scan sends extracted Statement Mode data for this room to consume. A Statement Mode handoff should include:
+Statement processing must be routed through Doc Scan. Do not ask Invoice Entry directly to fetch, OCR, parse, or process raw statement PDFs. Doc Scan sends extracted Statement Mode data for this room to consume. A Statement Mode handoff should include:
 
 - Statement vendor
 - Statement account or account suffix, if available
@@ -154,12 +154,13 @@ Reason: a common invoice usually maps to one project and one tab, but a statemen
 
 ## Lowes Statement Operation Modes
 
-Lowes statements have two supported operating modes:
+Lowes statements have one supported intake path:
 
-1. **Requested statement processing** - Wes asks Invoice Entry to go get and process one Lowes statement or a set of Lowes statements.
-2. **Doc Scan handoff processing** - Doc Scan receives a new Lowes statement, extracts the detail, and passes a structured Statement Mode packet to Invoice Entry.
+- **Doc Scan handoff processing** - Doc Scan receives or is asked to process one or more Lowes statements, extracts the detail, and passes a structured Statement Mode packet to Invoice Entry.
 
-For either mode:
+Do not request statement processing directly in this Invoice Entry project room. If Wes or another workflow wants one statement or a set of statements processed, route the request to Doc Scan first. Invoice Entry must wait for the Doc Scan Statement Mode packet and must not substitute its own OCR, statement extraction, or raw-PDF parsing.
+
+For Statement Mode handoffs:
 
 - treat a statement as potentially multi-project,
 - never treat the full statement as belonging to one workbook just because one line belongs there,
@@ -169,7 +170,7 @@ For either mode:
 - keep enough traceability to import retained lines later, including statement account, statement closing date, row/ref number, transaction date, description, amount, project clue, confidence/status, and source statement path,
 - avoid duplicate Review or vendor-table rows when a held line is later imported.
 
-Current rollout status: Outrigger is the first project workbook set up for Lowe's Review/vendor-table processing. After Template to Project migrates the same structure to more active project workbooks, Requested statement processing may iterate through active projects and import only the rows that apply to each ready project. Until then, non-ready project rows remain held.
+Current rollout status: active project workbooks are being prepared for Lowe's Review/vendor-table processing. When Doc Scan supplies a structured Statement Mode packet, Invoice Entry may iterate through ready active projects and import only the rows that apply to each ready project. Non-ready or unclear rows remain held.
 
 Held statement detail lives in:
 
