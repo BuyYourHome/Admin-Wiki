@@ -19,4 +19,5 @@
 | Gracious Millionaire element map 006 | `working\gracious-millionaire-element-map-006.md` | working source | Refreshed after Wes requested a more visible GM Mode pass; records live homepage hero image replacement, local photo upload success, book-cover placement, homepage card-photo replacements, public QA, and remaining obstacles. |
 | Gracious Millionaire generated cover and logo assets | `outputs\gracious-millionaire-assets\` | approved next-run asset source | Wes approved using the local logo concept and book-cover concept in the next GM Mode website run on 2026-07-09. |
 | GM Mode run lock | `working\gm-mode-run-lock.md` | working control | Inactive template and coordination rule for preventing overlapping GM Mode site-iteration runs. |
+| GM Mode iteration ledger | `working\gm-mode-iteration-ledger.md` | working continuity source | Append-only design-run history, learned builder paths, QA evidence, unresolved defects, and the exact next objective for subsequent heartbeat runs. |
 | Website goals, page list, brand assets, approved copy, compliance language | Not yet provided | missing | Needed before drafting public-facing site content. |
