@@ -80,3 +80,12 @@ The following details were seen during the requested two-account sweep but were 
 | `6140` | 2026-05-02 | `C:\Users\wesbr\Buy Your Home\Buy Your Home - Office Admin\2026\Credit Cards\Lowe's Pro-SYH-6140\26-05-02 - Lowe's Pro.pdf` | `79632`, `75134`, `72473`, `83893`, `88825`, `73472`, returns/credits | mixed or OCR-unclear | May statement detail not confidently tied to one project or item-level allocation | 25.24 to 2449.68 | Charge/credit items | Needs Review | Needs Review - OCR / Project / Item split | Project and item allocation need review before workbook insertion. | Held for Doc Scan/item-level rework or manual review. |
 | `6140` | 2026-06-02 | `C:\Users\wesbr\Buy Your Home\Buy Your Home - Office Admin\2026\Credit Cards\Lowe's Pro-SYH-6140\26-06-02 - Lowe's Pro - 6140.pdf` | `93549`, `81286`, `30231`, `83130`, `99831`, `74807`, `78157`, `79804`, credits | mixed or OCR-unclear | June statement page 2 detail not confidently tied to project/item split | 9.53 to 310.87 | Charge/credit items | Needs Review | Needs Review - OCR / Project / Item split | Project and item allocation need review before workbook insertion. | Held for Doc Scan/item-level rework or manual review. |
 | `6140` | 2026-06-02 | `C:\Users\wesbr\Buy Your Home\Buy Your Home - Office Admin\2026\Credit Cards\Lowe's Pro-SYH-6140\26-06-02 - Lowe's Pro - 6140.pdf` | `77590` | Home | Home transaction detail | 42.25 | Charge item | Home / non-project | Non-project/Home | Home row; no project workbook destination. | Held outside project workbooks. |
+
+## 2026-07-15 - Doc Scan All-Accounts Review-Grade Packet
+
+- Packet root: `C:\Codex\Wiki Files\Project Rooms\Doc Scan\outputs\lowes-statement-all-accounts-2026-07-15`
+- Structured input: `C:\Codex\Wiki Files\Project Rooms\Doc Scan\outputs\lowes-statement-all-accounts-2026-07-15\lowes_statement_transaction_sections.csv`
+- Invoice Entry processing log: `C:\Codex\Wiki Files\Project Rooms\Invoice Entry\working\statement-mode\lowes-all-accounts-2026-07-15\processing-log.md`
+- Held detail CSV: `C:\Codex\Wiki Files\Project Rooms\Invoice Entry\working\statement-mode\lowes-all-accounts-2026-07-15\held-detail.csv`
+
+Status: all 58 OCR-derived transaction/reference sections were retained, and no workbook Review rows or vendor-tab rows were inserted. The packet is review-grade and not reliable enough for workbook import because it contains transaction sections rather than clean item-level rows, some amount candidates are tax/subtotal fragments, and some source PDFs appear incomplete compared with printed statement page counts.
