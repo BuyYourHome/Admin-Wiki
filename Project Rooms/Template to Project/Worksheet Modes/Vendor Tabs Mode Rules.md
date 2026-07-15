@@ -45,6 +45,18 @@ Current Vendor Tabs mode list:
 - `Ready` authorizes Invoice Entry to evaluate the row but is not sufficient by itself to post. Destination Worksheet and required traceability fields must also be present.
 - `Hold`, `Duplicate Risk`, `Missing Data`, and `Do Not Move` are stop states. Invoice Entry must not post those rows.
 - Apply and validate the dropdown by table column/header name, not by hardcoded worksheet coordinates, so sorting, filtering, hidden columns, and project-specific table length do not change the rule.
+- Keep the visible status legend in rows 1 through 3. Use the exact controlled status names and these meanings:
+  - `Needs Review`: Not ready for Invoice Entry action.
+  - `Ready`: Approved for evaluation; destination, duplicate, and required-data checks still apply.
+  - `Posted`: Copied to the destination vendor tab and complete; keep the Review row as the audit record.
+  - `Copied - Needs Owner Verification`: Provisionally copied; Wes verification is still required.
+  - `Hold`: Hard stop; do not copy or post.
+  - `Duplicate Risk`: Possible duplicate; resolve before copying or posting.
+  - `Missing Data`: Required data or traceability is missing.
+  - `Do Not Move`: Explicit stop; do not move.
+- Preserve the yellow user-input convention on the `Project/property` and `Status` table columns. Apply it by table header name so table length does not matter.
+- Preserve the approved Review column widths from Outrigger. Keep rows 1 through 3 at 15 points, the table header at 30 points, and auto-fit project-specific table rows at those widths with a 45-point minimum.
+- Freeze rows 1 through 4 so the first scrollable row is row 5.
 
 ### Review Status Rollout Lesson
 
@@ -56,6 +68,17 @@ The controlled Review Status and Import Date design was completed across all app
 - Preserve detailed legacy explanations in Review/reason fields when reducing Status to a controlled value.
 - Compare the complete formula-error address set before and after each local edit. A project can contain many pre-existing errors outside Review; an unchanged set passes this scoped migration and must be logged instead of silently expanding scope.
 - Validate the exact Teams-downloaded replacement after upload. Require adjacent Import Date/invoice-date columns, list validation on every Status data cell, only approved values, no legacy `Moved`, `invoiceEntryReviewRequest = Review!$B$1`, native checkbox type preserved, zero external links, Automatic calculation, and iteration preserved.
+
+### Review Formatting Rollout Lesson
+
+The approved Outrigger Review formatting was rolled out to all approved active projects on 2026-07-15: Outrigger, Rose, Pond, Banks, Pinetree, Pleasant Garden, Rosebrooks, Cool Springs, Tensity, and Britton.
+
+- Fetch the newly saved Outrigger workbook from Teams before treating user formatting as the template. Do not infer the template from an earlier local copy.
+- Copy layout rules by table header and business meaning. Do not copy Outrigger Review records into another project.
+- Preserve each project's Review table values and formulas with a before-and-after table fingerprint.
+- Excel can update cached values and shared-formula package serialization when saving. Formula validation must compare actual formula elements, not XML spans that accidentally include cached `<v>` values.
+- Auto-fit each project's data rows after applying the approved widths, with a 45-point minimum. Copying Outrigger's row-by-row heights would impose one project's text lengths on another project's records.
+- Validate the workbook formula fingerprint, worksheet/name counts, request checkbox value and name, controlled Status validation, approved status values, zero external links, freeze pane, yellow-column counts, and exact Teams roundtrip hash.
 
 ## Source Note
 
