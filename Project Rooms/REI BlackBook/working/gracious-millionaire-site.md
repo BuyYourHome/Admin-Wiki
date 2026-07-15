@@ -43,7 +43,7 @@ Create a site called `Gracious Millionaire` for information related to the book 
 
 - Iteration loop: `working\gracious-millionaire-iteration-loop.md`.
 - Latest implementation report: `working\gracious-millionaire-iteration-001.md`.
-- Current full element cleanup map: `working\gracious-millionaire-element-map-005.md`.
+- Current full element cleanup map: `working\gracious-millionaire-element-map-006.md`.
 - Book Outline contains the 25 current working chapter titles and links all titles to the shared `Chapter Being Edited` page.
 - Chapter content is not published on the site.
 
@@ -72,6 +72,7 @@ Create a site called `Gracious Millionaire` for information related to the book 
 - Manual GM Mode rerun on 2026-07-10 repeated the About-widget cleanup on Book Themes and About the Book. Public QA passed on both pages. Update Request Received and Editing Notes still need the same cleanup; the browser connector timed out while opening the next builder page.
 - Heartbeat GM Mode run on 2026-07-10 retried the remaining About-widget cleanup on Update Request Received, but the Chrome builder session timed out before any public change was confirmed. Public QA confirmed Update Request Received and Editing Notes still show the generic About-widget placeholder. Close stale GM builder tabs or restart the Chrome connector before retrying the remaining widget cleanup.
 - Heartbeat GM Mode read-only audit on 2026-07-10 confirmed all mapped public pages returned HTTP 200 and found that the visible header logo is correct, but the header still references the old generic REI BlackBook retina logo asset in `data-retina`. Fix the retina logo reference when the header/logo settings path is stable.
+- Manual GM Mode run on 2026-07-15 closed a stale builder tab, uploaded the staged web-sized Gracious Millionaire photo set, replaced the Home hero image, placed the uploaded book cover in the homepage card section, replaced two remaining homepage card images with `wes-jenny-building.jpg` and `faith-notes.jpg`, published the changes, and public-QA confirmed the new images on `https://www.graciousmillionaire.com/`. Remaining generic/shared items are tracked in `working\gracious-millionaire-element-map-006.md`.
 
 ## Safety Notes
 
