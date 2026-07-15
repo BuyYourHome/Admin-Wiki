@@ -171,7 +171,7 @@ Before durable Project Room work, Codex should:
 
 Fetching GitHub means checking what changed remotely before changing local files. It does not mean merging over local work.
 
-If the local worktree has unrelated dirty files, do not pull, stage, commit, or push them automatically. Report the blocker.
+If the local worktree has unrelated dirty files, do not pull over them, stage them, or commit them automatically. Untracked or unstaged files are not included in a Git push and do not by themselves block a validated push under the Shared Main Push Queue Rule below.
 
 If GitHub has newer changes and the local worktree is clean, update from GitHub before editing.
 
@@ -215,6 +215,25 @@ Before pushing to GitHub, Codex must:
 If GitHub moved ahead after the local commit, do not force-push and do not guess. Stop and report the blocker.
 
 Never force-push `main`.
+
+## Shared Main Push Queue Rule
+
+All Project Rooms use the shared `main` branch unless Wes explicitly authorizes another branch. Therefore, a normal push may include completed commits created by other Project Rooms or global Admin work.
+
+Before pushing, the current Project Room must:
+
+1. Fetch GitHub and confirm local `main` is not behind `origin/main`.
+2. List every local commit in `origin/main..main`.
+3. Confirm each queued commit appears complete, properly scoped, and already committed.
+4. Confirm no queued commit is known to be unfinished, disputed, unauthorized, or broken.
+5. Push the complete validated commit queue to `origin/main`.
+6. Report every commit included in the push.
+
+A completed commit from another Project Room does not block the push merely because it is unrelated to the current Project Room. Pushing an existing commit does not authorize the current Project Room to edit, amend, rebase, squash, revert, or otherwise change that commit or its files.
+
+Untracked and unstaged files are not included in a Git push and do not block a push unless they indicate that one of the queued commits is incomplete or unsafe.
+
+If any queued commit is questionable, the current Project Room must stop, identify the commit and its owning workflow, and ask Wes or the owning Project Room to resolve it. Do not force-push, rewrite shared history, or omit earlier commits from the shared `main` queue.
 
 ## Routing Rule
 
