@@ -154,7 +154,59 @@ I used to read that as a warning.
 
 Now I read it as part of the contract.
 
-The lesson of 115 Rosebrooks is not finished. The legal story may still have more pages. The financial result may still change. There may be things we learn that we do not yet know. But I know the chapter belongs in this book because it shows the part of graciousness that does not feel gracious.
+For a long time the legal story stayed unfinished. In mid May, both sides asked the judge for summary judgment. In plain English, both sides were asking the court to decide that the important issues were clear enough that they did not need to be tried by a jury.
+
+Then we waited.
+
+Ten weeks is a long time to wait when your name, your money, your reputation, and your peace are tied up in four sentences you have not yet read.
+
+On Monday of that week, the decision came.
+
+The plaintiff's motion for summary judgment was denied as to all claims. Our motion was granted as to all causes of action except the undue influence count. The judge found that a genuine issue of material fact remained on that one claim and asked our attorney to draft the order.
+
+That may sound like legal language, but to us it was packed with meaning.
+
+The Chapter 75 claim was gone, subject to any appeal. The exposure to treble damages and attorney fees under that law was gone. The court ruled there was no fiduciary relationship, no fiduciary duty, and no legal issue over mental competency. The claims that had carried some of the heaviest financial threat had been removed from the case.
+
+It was a great victory.
+
+It was not a complete victory.
+
+The remaining claim was undue influence. Our attorney had already told us that claim was the one most likely to survive summary judgment because it is fact-specific. He also said it was weak. Without settlement, that claim, and only that claim, would proceed to a jury trial.
+
+The next step would be mediation.
+
+Jenny and I read the email carefully. We knew immediately that God had answered prayer. This ruling had been part of our morning prayers for months. So the first thing we did was give praise to God.
+
+But praise did not remove the need for wisdom.
+
+We still had decisions in front of us. We made an appointment to speak with our attorney that Friday. We knew mediation was probably coming. We knew we would have to think through settlement, trial posture, expense, principle, risk, and peace.
+
+Jenny and I did not see it the same way immediately.
+
+Jenny was already willing to consider settlement if it would be cheaper than trial. She may be right. There is a wisdom in not spending more money to prove a point than the point is worth. There is also a wisdom in not letting fear dress itself up as prudence.
+
+My first reaction was different. What remained of the case looked weak to me. Any demand in mediation would mostly be posturing. I wanted the other side to know that we were willing to end it, but if they were not reasonable, we were prepared to go to trial. And if we won, I was already thinking about damages and counterclaims.
+
+That sounds strong.
+
+It may also be fear in another form.
+
+Sometimes fear wants to settle too soon.
+
+Sometimes fear wants to fight too hard.
+
+That is the part I had to sit with. Why would God give us such a large victory and still leave one weak count unsettled? Why not end it completely? Why leave enough uncertainty for another attorney call, another mediation, another decision, another round of pressure on Jenny and me?
+
+I do not know the full answer.
+
+But I suspect this is still a test.
+
+Not a test of whether God is faithful. He has already shown that. Not a test of whether the paperwork mattered. It did. Not a test of whether the lawsuit had become smaller. It had.
+
+The test is whether I will move from the victory in faith or from the remaining uncertainty in fear.
+
+That is why the lesson of Rosebrooks is still not finished. The legal story may still have more pages. The financial result may still change. Mediation may resolve it. Trial may be required. We may learn things in the next part of the process that we do not yet know. But I know the chapter belongs in this book because it shows the part of graciousness that does not feel gracious.
 
 It shows that favor is not a formula.
 

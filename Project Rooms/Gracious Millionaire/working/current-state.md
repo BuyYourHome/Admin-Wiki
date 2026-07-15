@@ -10,12 +10,12 @@ Use this page for routine project-room startup. Read the larger registers only w
 - Dialogue review packet: `outputs/Gracious Millionaire - Dialogue Mode.html`
 - Interview review packet: `outputs/Gracious Millionaire - Interview Manuscript v3 - Jenny Coastal Surrender - Clickable.html`
 - Rewrite review packet: `outputs/Gracious Millionaire - Rewrite Mode.html`
-- Stable current review packet: `outputs/jenny-chapter-review-current/Gracious Millionaire - Jenny Clickable Chapter Review - CURRENT.html`
+- Stable current review packet: `outputs/jenny-chapter-review-current/Gracious Millionaire - Jenny Clickable Chapter Review - CURRENT.html` (refreshed from Quick mode `quick-rosebrooks-summary-judgment-v2-2026-07-15`)
 - Current cover: `outputs/book-cover/gracious-millionaire-book-cover-wes-and-jenny-browning-2026-07-10-email.jpg`
 
 ## Current Versions
 
-- Quick mode: `quick-baseline-v1-2026-07-13`
+- Quick mode: `quick-rosebrooks-summary-judgment-v2-2026-07-15`
 - Dialogue mode: `dialogue-v1-2026-07-13`
 - Rewrite mode: `v28`
 - Latest full manuscript created: Dialogue mode v1
@@ -23,7 +23,7 @@ Use this page for routine project-room startup. Read the larger registers only w
 ## Intake State
 
 - Default for new substantive source material: Quick mode only.
-- Latest routed record processed: `2026-07-13-041343-gracious-millionaire-dialogue-mode-v1-sent-packet.md`
+- Latest routed record processed: `2026-07-15-150135-gracious-millionaire-rosebrooks-summary-judgment-update.md`
 - Pending source items: none recorded in `working/intake-queue.md`.
 - Original and contextual sources: `working/source-inventory.md`.
 - Generated manuscripts and chapter drafts: `working/output-register.md`.

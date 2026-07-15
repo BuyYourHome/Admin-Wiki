@@ -6,11 +6,11 @@ Generated manuscripts and chapter drafts are outputs, not factual source authori
 
 | Mode Or Purpose | Version | Active Local State | Notes |
 | --- | --- | --- | --- |
-| Quick | `quick-baseline-v1-2026-07-13` | `outputs/quick-mode/manifest.md`, `outputs/quick-mode/chapters/*.md`, `outputs/Gracious Millionaire - Quick Mode.html` | Default integration mode for new source material. |
+| Quick | `quick-rosebrooks-summary-judgment-v2-2026-07-15` | `outputs/quick-mode/manifest.md`, `outputs/quick-mode/chapters/*.md`, `outputs/Gracious Millionaire - Quick Mode.html` | Current Quick integration manuscript. Adds the Rosebrooks summary-judgment update to chapter 23; 32 linked sections and 45,571 words. |
 | Dialogue | `dialogue-v1-2026-07-13` | `outputs/dialogue-mode/manifest.md`, `outputs/dialogue-mode/chapters/*.md`, `outputs/Gracious Millionaire - Dialogue Mode.html` | Current modular Dialogue manuscript. |
 | Interview | `v3` | `outputs/Gracious Millionaire - Interview Manuscript v3 - Jenny Coastal Surrender - Clickable.html` | Current compiled Interview reference deliverable; no duplicate local Markdown export retained. |
 | Rewrite | `v28` | `outputs/Gracious Millionaire - Rewrite Mode.html` | Current compiled Rewrite reference deliverable; no duplicate local Markdown export retained. |
-| Jenny review | Dialogue Mode v1 | `outputs/jenny-chapter-review-current/Gracious Millionaire - Jenny Clickable Chapter Review - CURRENT.html` | Stable current review packet; regenerate when required after a significant manuscript change. |
+| Jenny review | Quick `quick-rosebrooks-summary-judgment-v2-2026-07-15` | `outputs/jenny-chapter-review-current/Gracious Millionaire - Jenny Clickable Chapter Review - CURRENT.html` | Stable current review packet refreshed from Quick mode after the Rosebrooks update; sent to Jenny with Wes copied on 2026-07-15. |
 
 ## Active Assets
 

@@ -2,7 +2,7 @@
 
 - Title: Gracious Millionaire - Quick Mode
 - Mode: Quick Mode
-- Version: quick-baseline-v1-2026-07-13
+- Version: quick-rosebrooks-summary-judgment-v2-2026-07-15
 - HTML Output: ../Gracious Millionaire - Quick Mode.html
 - Markdown Export: optional
 - Source Authority: Original project-room source files, source inventory, factual notes, correction notes, style guide, and current Wes/Jenny direction.
