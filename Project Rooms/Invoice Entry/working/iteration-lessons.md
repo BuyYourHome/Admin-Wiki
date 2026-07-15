@@ -160,3 +160,15 @@ Lessons:
 - A destination-filled Review row can still be excluded when the destination worksheet is outside the approved Vendor Tabs Mode scope. `Exterior` and tabs to the right of `Landscape` remain out of scope until Wes explicitly expands Vendor Tabs Mode.
 - For Lowe's statement modes, rows that are not inserted into a specific project workbook must still be retained. Use the held-detail register for Home/non-project, accounting-review, unclear-project, tax-only, or not-ready-project rows so a later active-project sweep can import them without rereading or guessing from the raw statement.
 - Avoid duplicating Review row movement rules. Use a trigger rule instead: when Invoice Entry opens an authorized active project workbook and finds `Review` / `tblInvoiceReview`, invoke the existing Review Request Processing rules before other workbook work.
+
+## 2026-07-15 - Requested Multi-Account Lowe's Sweep
+
+Context: Wes asked Invoice Entry to process the remaining 2026 Lowe's statements from both Lowe's accounts after all active projects were ready for Lowe's mode.
+
+Lessons:
+
+- For requested statement sweeps, scan every named account folder for the requested period, but do not treat a scanned/image statement as reliable item-level data merely because OCR produced text.
+- Project Review insertion requires enough confidence in project identity and the statement line/ref. If the OCR is dense, truncated, or cannot support item-level splitting, retain the row in the held-detail register instead of importing a fuzzy transaction summary.
+- Payment-only, interest-only, sales-tax-only, tax-credit-only, and Home/non-project details remain outside project workbooks even during all-project sweeps.
+- When all projects are ready for Lowe's mode, route confident rows to each matched project's own `Review` table. Do not use Outrigger or any other currently active workbook as a temporary holding workbook for other projects.
+- If Invoice Entry supplies a `Destination Worksheet` recommendation for a Lowe's Review row, keep the status in a review state unless Wes has separately approved movement; initial statement consumption is still Review-first, not vendor-tab insertion.
