@@ -86,6 +86,7 @@ The following details were seen during the requested two-account sweep but were 
 - Packet root: `C:\Codex\Wiki Files\Project Rooms\Doc Scan\outputs\lowes-statement-all-accounts-2026-07-15`
 - Structured input: `C:\Codex\Wiki Files\Project Rooms\Doc Scan\outputs\lowes-statement-all-accounts-2026-07-15\lowes_statement_transaction_sections.csv`
 - Invoice Entry processing log: `C:\Codex\Wiki Files\Project Rooms\Invoice Entry\working\statement-mode\lowes-all-accounts-2026-07-15\processing-log.md`
+- Review insert log: `C:\Codex\Wiki Files\Project Rooms\Invoice Entry\working\statement-mode\lowes-all-accounts-2026-07-15\review-insert-log.md`
 - Held detail CSV: `C:\Codex\Wiki Files\Project Rooms\Invoice Entry\working\statement-mode\lowes-all-accounts-2026-07-15\held-detail.csv`
 
-Status: all 58 OCR-derived transaction/reference sections were retained, and no workbook Review rows or vendor-tab rows were inserted. The packet is review-grade and not reliable enough for workbook import because it contains transaction sections rather than clean item-level rows, some amount candidates are tax/subtotal fragments, and some source PDFs appear incomplete compared with printed statement page counts.
+Status: all 58 OCR-derived transaction/reference sections were retained in the held-detail CSV. After Wes instructed Invoice Entry to add entries to project spreadsheets for workbook review, selected project-review rows were inserted into the Pond, Outrigger, and Rose Review tables. No vendor-tab rows were inserted.
