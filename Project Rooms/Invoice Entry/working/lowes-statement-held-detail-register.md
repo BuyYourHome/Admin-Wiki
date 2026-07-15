@@ -62,7 +62,10 @@ The following statement rows are not in this held-detail table because they are 
 ## 2026-07-15 - Requested Remaining 2026 Lowe's Statements
 
 - Processing log: `C:\Codex\Wiki Files\Project Rooms\Invoice Entry\working\2026-07-15-lowes-remaining-statements-processing-log.md`
+- Backout log: `C:\Codex\Wiki Files\Project Rooms\Invoice Entry\working\2026-07-15-lowes-sweep-backout-log.md`
 - Working extraction folder: `C:\Codex\Wiki Files\Project Rooms\Invoice Entry\working\lowes-statements-2026-requested-20260715`
+
+Status: superseded/backed out. The partial Review rows from this direct OCR sweep were removed from the project workbooks. The statements should be reprocessed through Doc Scan Lowes Statement Mode.
 
 The following details were seen during the requested two-account sweep but were not inserted into project workbooks. Rows with confident project placement were routed to the applicable project workbook `Review` table and are listed in the processing log.
 

@@ -1,5 +1,13 @@
 # 2026-07-15 - Lowe's Remaining 2026 Statements Processing Log
 
+## Backout Notice
+
+This direct Invoice Entry OCR sweep was backed out after Wes identified that the latest Lowe's `6140` statement contained substantial purchase/item detail that the sweep missed. Do not use this log as an active import source. See:
+
+`C:\Codex\Wiki Files\Project Rooms\Invoice Entry\working\2026-07-15-lowes-sweep-backout-log.md`
+
+The source statements should be reprocessed through Doc Scan Lowes Statement Mode.
+
 ## Request
 
 Wes asked Invoice Entry to process the remaining 2026 Lowe's statements from both Lowe's accounts now that all projects are ready for Lowe's mode.

@@ -172,3 +172,4 @@ Lessons:
 - Payment-only, interest-only, sales-tax-only, tax-credit-only, and Home/non-project details remain outside project workbooks even during all-project sweeps.
 - When all projects are ready for Lowe's mode, route confident rows to each matched project's own `Review` table. Do not use Outrigger or any other currently active workbook as a temporary holding workbook for other projects.
 - If Invoice Entry supplies a `Destination Worksheet` recommendation for a Lowe's Review row, keep the status in a review state unless Wes has separately approved movement; initial statement consumption is still Review-first, not vendor-tab insertion.
+- Direct Invoice Entry OCR is not an acceptable substitute for Doc Scan Lowes Statement Mode on dense scanned statements. If Wes points out missed statement detail, back out partial Review rows and wait for a Doc Scan item-level packet.
