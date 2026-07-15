@@ -366,6 +366,13 @@ Implementation note:
 - Calculation-mode validation must not force the result it is intended to test. Reopen the saved workbook in a fresh Excel instance, confirm `Application.Calculation` is Automatic and the saved package does not declare `calcMode="manual"`, then change at least one formula-driving input or control and require its dependent formula to update immediately without `F9`, `Calculate`, `CalculateFull`, or `CalculateFullRebuild`.
 - Repeat the same calculation-mode and immediate-update test on the exact workbook downloaded after the Teams/SharePoint replacement. A local pass alone is not sufficient. Stop and repair the workbook before release if the Teams copy opens in Manual Calculation mode or requires `F9` for controls and dependent formulas to respond.
 
+## Visible Desktop Application Rule
+
+- Use the Teams/SharePoint connector and background, non-visible Excel processes as the normal path for workbook retrieval, editing, rendering, validation, and replacement.
+- Do not launch, activate, or open visible desktop applications such as Excel, File Explorer, Teams, or a browser for workbook inspection or editing unless Wes explicitly approves that visible-app action before it occurs.
+- Prefer background workbook inspection and rendered previews for visual validation. If a behavior can only be confirmed in the actual application interface, stop, tell Wes why that interface is needed, and ask permission before opening it.
+- Computer Use, desktop automation, or an available signed-in session does not override this approval requirement.
+
 ## Completion Lesson Capture Rule
 
 At completion of every project workbook conversion, migration, sheet swap, or similar spreadsheet update, record any new reusable lesson in the appropriate durable rule file before treating the work as complete.

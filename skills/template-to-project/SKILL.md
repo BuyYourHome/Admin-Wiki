@@ -38,6 +38,13 @@ Use this skill for current template-to-project worksheet rollout and migration w
 9. Record reusable lessons in the relevant worksheet-mode rule file and the project-room working notes.
 10. Put review-ready workbook outputs or specs in `outputs\`.
 
+## Visible Desktop Application Rule
+
+- Perform workbook retrieval, editing, rendering, validation, and upload through the Teams/SharePoint connector and background, non-visible workbook processes by default.
+- Do not launch, activate, or open a visible desktop application such as Excel, File Explorer, Teams, or a browser for workbook inspection or editing unless Wes explicitly approves that visible-app action first.
+- Use background rendering or exported previews for visual validation when possible. If the actual application interface is necessary to confirm a behavior that background validation cannot prove, stop, explain why the visible application is needed, and ask Wes before opening it.
+- Availability of Computer Use or another desktop-control tool does not itself authorize opening or controlling a visible application.
+
 ## Boundaries
 
 - Do not edit live Teams/property workbooks unless Wes explicitly asks for that specific workbook change.
