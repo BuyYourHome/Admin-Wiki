@@ -41,7 +41,7 @@ Use [[Agent Unit Standard]] for the standard package behind an agent-like operat
 | New Project | Wiki-managed skill plus project room | Draft | On demand | `skills\new-project\SKILL.md`; `Project Rooms\New Project\README.md` |
 | Confidential | Wiki-managed skill plus project room plus dedicated chat | Draft | On demand | `skills\confidential\SKILL.md`; `Project Rooms\Confidential\README.md` |
 | REI BlackBook | Wiki-managed skill plus project room | Draft | On demand | `skills\rei-blackbook\SKILL.md`; `Project Rooms\REI BlackBook\README.md` |
-| GM Mode Site Iteration | GM Mode heartbeat automation plus REI BlackBook project room | Active | Every 30 minutes from 2026-07-09 7:52 PM Eastern; safe live content fixes plus QA/map refresh | `skills\rei-blackbook\SKILL.md`; `Project Rooms\REI BlackBook\README.md`; automation id `gm-mode-site-iteration` |
+| GM Mode Site Iteration | GM Mode heartbeat automation plus REI BlackBook project room | Active | Every 30 minutes; each acquired run performs a 45-90 minute coherent book-site design iteration, QA, map refresh, and append-only learning handoff | `skills\rei-blackbook\SKILL.md`; `Project Rooms\REI BlackBook\README.md`; automation id `gm-mode-site-iteration` |
 | Investigate Computer | Wiki-managed skill plus project room plus heartbeat automation | Active | Daily at 6:00 AM Eastern; email Wes only when an issue is detected | `skills\investigate-computer\SKILL.md`; `Project Rooms\Investigate Computer\README.md`; app automation id `investigate-computer-daily-check` |
 | Jenny Daily Email Summary | Behavior inside Email Summary heartbeat | Active | Runs once daily at/after 8:00 AM Eastern with the Email Summary heartbeat; emails Jenny from OfficeAssist and verifies Sent Items | `skills\email-summary\SKILL.md`; `Email Summary` prompt notes |
 
@@ -795,8 +795,9 @@ Important limitations:
 
 - Use `Project Rooms\REI BlackBook\working\gm-mode-run-lock.md` to prevent overlapping GM Mode runs. If a fresh lock exists, do not inspect or edit the live site. If the lock is 3 hours old or older, record a stale-lock takeover, replace the lock, and proceed.
 - Wes broadened GM Mode on 2026-07-10: live comprehensive design, site-structure, navigation, layout, sidebar/footer, approved image-placement, visible-copy, and form-presentation improvements are authorized for the Gracious Millionaire site.
+- Wes established the creative charter on 2026-07-15: treat Gracious Millionaire as a book-centered editorial experience, work in coherent 45-90 minute design iterations when useful backlog remains, preserve each run's learning in `working\gm-mode-iteration-ledger.md`, and resume from the exact prior continuation point instead of repeatedly auditing from zero.
 - Do not activate outbound form/SMS/email/lead workflows, change who receives submitted leads or messages, upload personal Google Photos publicly, expose or change public contact details, change DNS/domain settings, purchase anything, push Git changes, send messages, publish manuscript content, or make legal/financial/compliance claims from the automation unless Wes explicitly approves that specific action.
-- Keep routine quiet runs short. Notify Wes when live changes were made, meaningful findings remain, blockers occur, high-risk approval is needed, or QA finds broken pages, generic/off-topic content, public privacy risk, workflow/form risk, SSL/domain issues, or recommended next actions.
+- Use DONT_NOTIFY only when another fresh run owns the lock or no authorized useful design work remains. A failed builder path should cause the run to switch objectives, not end. Notify Wes when live changes were made, meaningful findings remain, new blockers occur, high-risk approval is needed, or QA finds broken pages, generic/off-topic content, public privacy risk, workflow/form risk, SSL/domain issues, or recommended next actions.
 
 ## Invoice Entry
 
