@@ -34,6 +34,8 @@ The workbook contains:
 - Review data in `tblInvoiceReview`.
 - `Project/property` as a column inside the table.
 - A stable `Review Row ID` for each populated row.
+- `Import Date` immediately before the invoice-date column. It is a fixed processing date written by Invoice Entry, not a volatile formula.
+- A controlled dropdown in the `Status` table column.
 - A native in-cell checkbox at `Review!B1` labeled `Needs Invoice Entry Review` in `Review!A1`.
 - An unchecked/`FALSE` value for no request and a checked/`TRUE` value when Invoice Entry review is needed.
 - Workbook name `invoiceEntryReviewRequest` pointing absolutely to `Review!B1`.
@@ -81,7 +83,18 @@ Invoice Entry builds the packet from the current Teams workbook. The packet shou
 - Current row values needed for traceability, duplicate checks, and insertion.
 - Requested action: duplicate-check and copy approved rows to destination tables.
 
-Rows with `Status = Moved` are ignored. Hidden columns, filters, and screen position do not control eligibility; Invoice Entry reads table values by header name.
+`Status` uses only:
+
+- `Needs Review`
+- `Ready`
+- `Posted`
+- `Copied - Needs Owner Verification`
+- `Hold`
+- `Duplicate Risk`
+- `Missing Data`
+- `Do Not Move`
+
+`Posted` is final and the Review row remains as the audit record. Legacy `Moved` values are treated as `Posted`. `Ready` alone is not enough to post; Destination Worksheet and required traceability fields must also be present. `Hold`, `Duplicate Risk`, `Missing Data`, and `Do Not Move` prevent posting. Hidden columns, filters, and screen position do not control eligibility; Invoice Entry reads table values by header name.
 
 ## Outrigger Pilot Implementation
 
@@ -109,6 +122,16 @@ Validation completed:
 - The worksheet list and existing Review values were unchanged.
 - All existing formulas were unchanged.
 - Workbook link count remained zero.
+
+Updated on 2026-07-15:
+
+- Inserted `Import Date` immediately before the existing `Invoice date` column without populating unsupported historical dates.
+- Applied the eight-value controlled Status dropdown to every `tblInvoiceReview` data row.
+- Converted 13 legacy `Moved` values to `Posted`.
+- Normalized three legacy `Needs Review - ...` values to `Needs Review`.
+- Preserved `invoiceEntryReviewRequest = Review!$B$1`, the visible native request checkbox, all 31,795 formulas, Automatic calculation with iteration enabled, and zero external links.
+- Replaced the exact Teams item and validated the downloaded replacement byte for byte at SHA-256 `A8217E759738416CE2E65381E9089E3CDF1A638AAF43320CF1649AFFF328CEC4`.
+- The same four pre-existing formula errors remained outside Review: `Profit!L82`, `Profit!L84`, `MOG!E16`, and `MOG!E26`.
 
 ## Rollout Rule
 

@@ -38,6 +38,13 @@ Current Vendor Tabs mode list:
 - Template to Project owns the Review layout, columns, validation, checkbox, table structure, formatting, and rollout.
 - Invoice Entry owns duplicate checks, movement of approved rows into destination tables, status updates, and clearing the request checkbox.
 - The checkbox requests processing; it must not move rows directly.
+- `Import Date` must be immediately before the existing invoice-date column. It stores the fixed date Invoice Entry processed the row into Review; do not use a volatile `TODAY()` formula and do not invent dates for historical rows.
+- The `Status` column must use an in-cell dropdown across the entire table data body with only these values: `Needs Review`, `Ready`, `Posted`, `Copied - Needs Owner Verification`, `Hold`, `Duplicate Risk`, `Missing Data`, and `Do Not Move`.
+- `Posted` is the final completed state. Preserve the Review row as an audit record after posting.
+- Treat legacy `Moved` as `Posted`. Normalize legacy free-text values beginning with `Needs Review` to `Needs Review`; retain the detailed reason in the Review/reason fields instead of the controlled Status field.
+- `Ready` authorizes Invoice Entry to evaluate the row but is not sufficient by itself to post. Destination Worksheet and required traceability fields must also be present.
+- `Hold`, `Duplicate Risk`, `Missing Data`, and `Do Not Move` are stop states. Invoice Entry must not post those rows.
+- Apply and validate the dropdown by table column/header name, not by hardcoded worksheet coordinates, so sorting, filtering, hidden columns, and project-specific table length do not change the rule.
 
 ## Source Note
 
