@@ -202,6 +202,8 @@ For Lowes Statement Mode packets:
 
 Moving or copying a reviewed Lowes statement row from `Review` into a vendor table happens only after the review/approval rule for that row is satisfied.
 
+Provisional vendor-tab copy exception: if Wes explicitly authorizes post-copy review for a Statement Mode batch, Invoice Entry may copy high-confidence Lowe's statement rows directly from `Review` into a vendor tab when project, amount, description, and destination worksheet are defensible from the packet and approved worksheet-mode rules. This is a copy-for-review, not final approval. Keep the source `Review` row, set or leave its status as `Copied - Needs Owner Verification` or another clear review status rather than `Moved`, and record the destination worksheet/table and copy date in the review or notes field. Do not use this exception for rows with unclear project, blank or guessed destination, tax-only amounts, missing/fragmented amount evidence, mixed destination items, incomplete-source-only summary rows, or an explicit stop status such as `Hold`.
+
 Rows not inserted into a particular project workbook must still be retained. Use `C:\Codex\Wiki Files\Project Rooms\Invoice Entry\working\lowes-statement-held-detail-register.md` for statement detail that is Home/non-project, accounting-review, unclear-project, belongs to a project whose workbook is not ready, or otherwise cannot yet be inserted into the appropriate project workbook.
 
 ## Duplicate Checks

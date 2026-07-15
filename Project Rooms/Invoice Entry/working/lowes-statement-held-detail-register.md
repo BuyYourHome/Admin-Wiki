@@ -67,6 +67,15 @@ The following statement rows are not in this held-detail table because they are 
 
 Status: superseded/backed out. The partial Review rows from this direct OCR sweep were removed from the project workbooks. The statements should be reprocessed through Doc Scan Lowes Statement Mode.
 
+## 2026-07-15 - Doc Scan Lowe's All-Accounts Packet
+
+- Packet root: `C:\Codex\Wiki Files\Project Rooms\Doc Scan\outputs\lowes-statement-all-accounts-2026-07-15`
+- CSV used: `C:\Codex\Wiki Files\Project Rooms\Doc Scan\outputs\lowes-statement-all-accounts-2026-07-15\lowes_statement_transaction_sections.csv`
+- Review insert log: `C:\Codex\Wiki Files\Project Rooms\Invoice Entry\working\statement-mode\lowes-all-accounts-2026-07-15\review-insert-log.md`
+- Provisional vendor-tab copy log: `C:\Codex\Wiki Files\Project Rooms\Invoice Entry\working\statement-mode\lowes-all-accounts-2026-07-15\provisional-vendor-copy-log.md`
+
+Status: Review rows were inserted into ready project workbooks for rows that could be reviewed from the spreadsheets. Two Outrigger rows were later copied to vendor tables under the provisional copy exception and remain marked for owner verification. Remaining unclear, mixed, tax-only, non-project, accounting, incomplete-source, or OCR-uncertain detail remains held until Doc Scan provides cleaner item-level detail or Wes resolves allocation/destination.
+
 The following details were seen during the requested two-account sweep but were not inserted into project workbooks. Rows with confident project placement were routed to the applicable project workbook `Review` table and are listed in the processing log.
 
 | Statement account | Statement closing date | Source statement path | Ref # / group | PO / project clue | Description | Amount | Line type | Recommended project/property | Confidence/status | Hold reason | Later action/status |

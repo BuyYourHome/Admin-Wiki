@@ -62,3 +62,16 @@ The validated workbooks were uploaded back to the same SharePoint targets.
 ## Limits
 
 Rows remain `Needs Review - Lowes Statement`. Many are incomplete-source review rows because Doc Scan reported image-only scans, OCR uncertainty, and possible missing statement detail pages. These rows are not approved for vendor-tab movement until Wes reviews and supplies or confirms destination worksheet decisions.
+
+## Follow-Up Provisional Vendor-Tab Copy
+
+After this Review-table insertion pass, Wes authorized a post-copy review rerun for rows with defensible project, amount, description, and destination evidence.
+
+Follow-up log: `C:\Codex\Wiki Files\Project Rooms\Invoice Entry\working\statement-mode\lowes-all-accounts-2026-07-15\provisional-vendor-copy-log.md`
+
+Copied for owner verification:
+
+- `OUTRIGGER-LOWES-6140-20260302-78928-DOCSCAN` to `Plumbing Fixtures!tblPlumbingFixturesInvoices`.
+- `OUTRIGGER-LOWES-6140-20260602-89689-DOCSCAN` to `Electrical Fixtures!tblElectricalFixturesInvoices`.
+
+These source Review rows were retained and marked `Copied - Needs Owner Verification`, not `Moved`.
