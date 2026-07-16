@@ -2,15 +2,25 @@
 
 ## Purpose
 
-Use this guide to reproduce Wes's writing voice for *Gracious Millionaire* while drafting from the email sources.
+Use this guide to reproduce the appropriate *Gracious Millionaire* manuscript voice while drafting from the email sources. The book is Wes and Jenny's shared book, not Wes's book with Jenny added as supporting material.
 
 Before drafting or revising manuscript sections, check [[manuscript-edit-and-fact-notes]] for current factual corrections, framing direction, and perception notes. Those notes control over this guide where they conflict.
 
-## Core Voice
+## Shared Authorship And Voice
 
-The voice is first-person, reflective, candid, and faith-centered. It reads like a personal testimony shaped into a business memoir. The narrator is not trying to sound like an expert standing above the reader. He is working through lessons in public, using real estate stories as evidence of spiritual principles.
+The voice is first-person, reflective, candid, and faith-centered. It reads like personal testimony shaped into a business memoir. The narrator or narrators are not trying to sound like experts standing above the reader. They are working through lessons in public, using real estate stories as evidence of spiritual principles.
 
 The dominant posture is humility: "I am learning this," not "I have mastered this." Success is acknowledged directly, but it is repeatedly subordinated to lordship, favor, gratitude, stewardship, and divine assignment.
+
+Treat *Gracious Millionaire* as a shared Wes-and-Jenny book. Earlier drafts leaned heavily on Wes's first-person voice because the available source material was mostly from Wes. As Jenny's source material grows, future drafts and mode outputs should not default to Wes as the primary first-person narrator with Jenny added as a secondary or quoted perspective. Jenny's voice, lived experience, caution, prayer life, emotional burden, and business judgment should be treated as co-equal where source material supports it.
+
+Chapter voice may vary by source and subject:
+
+- Some chapters may be Jenny first-person only.
+- Some chapters may be Wes first-person only.
+- Some chapters may need both Wes and Jenny sharing the same content, whether by alternating sections, braided narration, dialogue, interview, or another structure appropriate to the active mode.
+
+The controlling question is whose lived experience and source material support the chapter, not a fixed assumption that Wes narrates and Jenny is added afterward.
 
 ## Sentence Rhythm
 
@@ -78,6 +88,8 @@ Keep the business language practical and specific. The voice is comfortable disc
 - Tenant-occupied property
 
 Do not make the business sections slick or salesy. The real estate analysis should feel like Wes thinking through an opportunity and then recognizing a spiritual lesson inside it.
+
+Refer to properties by street name or project name rather than full street address in manuscript prose. For example, use "Rosebrooks," "Providence Landing," or "The Orphaned Property" instead of full property addresses. Full addresses should be avoided unless Wes explicitly asks for them or a specific legal, business, or private working-note context requires precision.
 
 ## Editing Rules For Reproduction
 
