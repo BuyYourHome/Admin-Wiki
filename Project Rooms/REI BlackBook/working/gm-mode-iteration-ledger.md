@@ -204,3 +204,34 @@ Remaining defects:
 - The homepage cover card still points to `/about/` rather than `/about-2/`.
 
 Exact next objective: correct the homepage book-cover card destination and CTA through the proven homepage builder path, rebalance the same card if stable, and QA both hosts at desktop and mobile sizes without retrying The Book or Journal deletion paths.
+
+### 2026-07-16 - Homepage book-card destination and CTA
+
+Objective: make the homepage book card lead clearly and reliably to the live book page.
+
+Live changes:
+
+- Changed the `About the Book` callout destination from `/about/` to `/about-2/`.
+- Replaced the generic `Read More` CTA with `Explore the Book`.
+- Kept the card image, heading, and CTA on the same corrected destination.
+
+QA evidence:
+
+- Both homepages and both `/about-2/` destinations returned HTTP 200.
+- Both homepage HTML responses contained `Explore the Book` and the corrected `/about-2/` destination; the old card destination was absent.
+- Mobile QA at 390 x 844 confirmed the card heading, CTA, destination, and no horizontal overflow on either host.
+
+Learned paths:
+
+- The homepage callout module remains stable in Beaver Builder.
+- Destination and CTA text are edited together in the callout module's `Call To Action` tab.
+- Module Save, Builder Done, and Publish Changes propagated immediately to both hosts.
+
+Remaining defects:
+
+- Book Outline and Request Updates homepage cards still use generic `Read More` labels.
+- The Book builder remains blank and its stock circle, broken profile placeholder, and missing in-page cover remain.
+- Journal public HTML remains stale behind the REI page cache.
+- Request Updates map/contact presentation remains approval-bound.
+
+Exact next objective: replace the remaining homepage `Read More` labels with specific reader-facing CTAs, verify each card destination, and QA the full card sequence on both hosts at desktop and mobile sizes without retrying The Book or Journal deletion paths.

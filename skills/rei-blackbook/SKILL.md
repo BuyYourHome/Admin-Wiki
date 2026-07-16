@@ -65,7 +65,7 @@ GM Mode target:
 - Builder URL: `https://u113450.h.reiblackbook.com/generic6/`
 - Control panel: `https://my.reiblackbook.com/webtools/sites/advanced/48842`
 - Public domain: `https://graciousmillionaire.com`
-- Current element map: `C:\Codex\Wiki Files\Project Rooms\REI BlackBook\working\gracious-millionaire-element-map-011.md`
+- Current element map: `C:\Codex\Wiki Files\Project Rooms\REI BlackBook\working\gracious-millionaire-element-map-012.md`
 - Site record: `C:\Codex\Wiki Files\Project Rooms\REI BlackBook\working\gracious-millionaire-site.md`
 - Iteration ledger: `C:\Codex\Wiki Files\Project Rooms\REI BlackBook\working\gm-mode-iteration-ledger.md`
 
@@ -125,6 +125,7 @@ GM scheduled iteration:
 - The 2026-07-15 homepage pass confirmed that staged web-sized images can be uploaded through the authenticated Beaver Builder flow after stale builder tabs are closed. The homepage hero, book cover, and two card photos were published successfully. Reuse that proven upload and media-selection path before treating image placement as blocked.
 - A scheduled design heartbeat should preserve momentum in an append-only iteration ledger. Re-auditing the same known defects without completing a coherent objective is not a meaningful iteration.
 - A WordPress Customizer `Saved` state is not public QA. REI managed-theme overrides can ignore the stored Customizer field, so verify the exact rendered text in public HTML before reporting a visible change. Trigger Customizer dirty state with keyboard input and blur when direct field replacement does not enable `Save & Publish`.
+- Homepage callout destinations and CTA labels can be updated reliably through the Beaver Builder callout module's `Call To Action` tab. Save the module, publish through Builder `Done` -> `Publish Changes`, and verify the exact label and href on both public hosts.
 
 ## Output Standards
 
