@@ -267,3 +267,32 @@ Remaining defects:
 - Request Updates map/contact presentation remains approval-bound.
 
 Exact next objective: replace the homepage lower `Contact Us` button with `Request Book Updates`, retain `/contact/`, and QA the complete homepage command hierarchy on both hosts at desktop and mobile sizes without retrying The Book or Journal deletion paths.
+
+### 2026-07-16 - Homepage lower CTA and confirmation propagation
+
+Objective: finish the homepage command hierarchy, then audit confirmation-page command language without entering form settings.
+
+Live changes:
+
+- Changed the homepage lower CTA from `Contact Us` to `Request Book Updates` while retaining `/contact/`.
+- Published the confirmation page's already-saved book-focused `About the Book` block, replacing stale public multi-service placeholder copy.
+
+QA evidence:
+
+- Both homepages returned HTTP 200 with `Request Book Updates`, the correct `/contact/` destination, and no lower `Contact Us` button.
+- Both confirmation pages returned HTTP 200 with the book-focused About block and without the placeholder multi-service language.
+- Mobile QA at 390 x 844 showed no horizontal overflow on any affected page.
+
+Learned paths:
+
+- Homepage CTA button text and destination are isolated in the CTA module's `Button` tab.
+- The confirmation builder contained the desired saved About state even while public output was stale.
+- Publishing the current page state can propagate a saved module change without re-editing it.
+
+Remaining defects:
+
+- The confirmation page still exposes the embedded `Categories` block and default `All` link.
+- Its contact module still exposes public address, phone, email, and a broken `[profile_image_url]` reference; those changes remain approval-bound.
+- The Book builder remains blocked and Journal public HTML remains stale.
+
+Exact next objective: remove the confirmation page's embedded Categories module through the stable builder path, leave the adjacent contact module untouched, and QA both hosts at desktop and mobile sizes without retrying The Book or Journal deletion paths.
