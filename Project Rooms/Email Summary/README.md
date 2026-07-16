@@ -31,6 +31,16 @@ This project room holds development notes, source inventory, and review artifact
 - `working\` - inventories, conflicts, missing context, development notes, and proposed changes.
 - `outputs\` - review-ready specs, handoffs, runbooks, or finalized drafts.
 
+## Modes
+
+### Gracious Millionaire Email Routing Mode
+
+Use this mode when the Email Summary workflow or OfficeAssist instruction monitor sees an email with a subject containing `gracious millionaire`, or an email that otherwise clearly belongs to the Gracious Millionaire book/project-room workflow.
+
+This mode routes the email into `C:\Codex\Wiki Files\Project Rooms\Gracious Millionaire\` as source material, preserves it as Markdown under `sources\email\`, updates Gracious Millionaire intake/source records when required by that room's rules, records the Outlook message id in Email Summary monitor memory, and sends a direct follow-up message to the existing Gracious Millionaire project-room thread with the routed source path and a short summary.
+
+This mode does not draft, edit, or send the requested Gracious Millionaire book response from the Email Summary or OfficeAssist monitor thread unless Wes explicitly asks for processing here. It also does not attach mailbox checking to the Gracious Millionaire heartbeat or create a new Gracious Millionaire chat.
+
 ## Authoritative Sources
 
 - `C:\Codex\Wiki Files\skills\email-summary\SKILL.md`
@@ -47,6 +57,7 @@ When the workflow changes, update the skill, this project room, and the registry
 
 ## Change Log
 
+- 2026-07-15: Defined Gracious Millionaire Email Routing Mode and moved the existing Gracious Millionaire routed-email handoff behavior under that mode in the Email Summary skill.
 - 2026-07-02: Wes changed Jenny's daily summary routing so the summary is emailed to `Jenny@BuyYourHomeLLC.com` from OfficeAssist with Sent Items verification.
 - 2026-06-29: Resumed Jenny's daily email summary after Wes explicitly requested it and the Outlook Email connector verified access to `Jenny@BuyYourHomeLLC.com`.
 - 2026-07-01: Extended the OfficeAssist Email Summary heartbeat schedule to run every 15 minutes through 11:00 PM Eastern.
