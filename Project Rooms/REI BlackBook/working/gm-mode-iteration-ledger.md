@@ -85,3 +85,32 @@ Failed paths and remaining defects:
 - Generic footer/sidebar/blog/category content and form presentation remain unfinished.
 
 Exact next objective: redesign `The Book` page around the approved book cover with a cover-led first viewport, book-focused copy and links, and desktop/mobile QA without publishing manuscript chapter text.
+
+### 2026-07-16 - The Book editing-path investigation and footer audit
+
+Objective: redesign The Book around the approved cover and remove its remaining generic imagery.
+
+Public findings:
+
+- Both hosts now serve the intended `Home`, `The Book`, `Themes`, `Journal`, `Updates` navigation; the earlier custom-domain cache lag has cleared.
+- The Book still contains the generic `WebStockGen1200054-300x200-circle.jpg` image and a broken `https://[profile_image_url]` placeholder, and it does not display the approved cover.
+- The active public footer is already `Copyright 2026 Gracious Millionaire. All rights reserved.`
+
+Attempted change and QA:
+
+- Advanced Theme Customizer saved `Gracious Millionaire | A book by Wes and Jenny Browning.` in Footer Layout, but neither public host rendered it. The managed theme is overriding that stored setting, so this was not counted as a public-visible redesign.
+
+Learned paths:
+
+- Keyboard input plus blur is required to trigger Customizer dirty state when direct field replacement leaves `Save & Publish` disabled.
+- Treat Customizer save confirmation and public output as separate checks.
+- The authenticated REI control panel and Advanced Theme Customizer can remain stable while content-editor routes fail.
+
+Failed paths and remaining defects:
+
+- Beaver Builder for `/about-2/?fl_builder` timed out after 30 seconds.
+- Direct WordPress post editor for page ID `1765` timed out after 30 seconds.
+- REI Manage Pages loaded without populating its page list.
+- The Book stock circle, broken profile placeholder, missing cover, generic retina asset, and generic Journal/sidebar content remain.
+
+Exact next objective: reset the Chrome editing environment, make one clean attempt to edit page ID `1765`, and complete the cover-led The Book redesign with attachment `6319`; if that clean attempt fails, switch to the stable retina-logo or Journal/sidebar objective instead of repeating the timeout.
