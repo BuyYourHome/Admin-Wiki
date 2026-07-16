@@ -114,3 +114,31 @@ Failed paths and remaining defects:
 - The Book stock circle, broken profile placeholder, missing cover, generic retina asset, and generic Journal/sidebar content remain.
 
 Exact next objective: reset the Chrome editing environment, make one clean attempt to edit page ID `1765`, and complete the cover-led The Book redesign with attachment `6319`; if that clean attempt fails, switch to the stable retina-logo or Journal/sidebar objective instead of repeating the timeout.
+
+### 2026-07-16 - Shared retina-logo correction
+
+Objective: make one clean The Book editor attempt, then complete a stable global correction if the editor remained unavailable.
+
+Live change:
+
+- Removed the obsolete REI generic retina-logo image from Advanced Theme Customizer > Header > Header Logo while retaining the approved regular Gracious Millionaire logo.
+
+QA evidence:
+
+- Both public hosts returned HTTP 200.
+- Both hosts rendered `gracious-millionaire-logo-header-2026-07-09.png` with `data-retina=""`.
+- `generic-logo-2-retina.png` was absent from both public HTML responses.
+
+Learned paths:
+
+- The Advanced Theme Customizer is a stable route for shared header settings even while Beaver Builder is unavailable.
+- Remove the second Header Logo `Remove` control, which belongs to the Retina field; do not remove the Regular image.
+- Verify shared asset changes against both hosts after `Save & Publish` reports `Saved`.
+
+Failed path and remaining defects:
+
+- A clean-tab retry of `/about-2/?fl_builder` still returned an empty editor, confirming the Book blocker persists beyond stale-tab cleanup.
+- The Book stock circle, broken profile placeholder, and missing cover remain.
+- Generic Journal posts, categories, and sidebar/About widgets remain.
+
+Exact next objective: clean the Journal/blog/sidebar experience through stable WordPress or theme-management routes, publish one coherent reader-facing pass, and QA both hosts without retrying The Book builder unless Chrome has been reset or editor stability is demonstrated.
