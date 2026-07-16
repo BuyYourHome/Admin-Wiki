@@ -65,7 +65,7 @@ GM Mode target:
 - Builder URL: `https://u113450.h.reiblackbook.com/generic6/`
 - Control panel: `https://my.reiblackbook.com/webtools/sites/advanced/48842`
 - Public domain: `https://graciousmillionaire.com`
-- Current element map: `C:\Codex\Wiki Files\Project Rooms\REI BlackBook\working\gracious-millionaire-element-map-014.md`
+- Current element map: `C:\Codex\Wiki Files\Project Rooms\REI BlackBook\working\gracious-millionaire-element-map-015.md`
 - Site record: `C:\Codex\Wiki Files\Project Rooms\REI BlackBook\working\gracious-millionaire-site.md`
 - Iteration ledger: `C:\Codex\Wiki Files\Project Rooms\REI BlackBook\working\gm-mode-iteration-ledger.md`
 
@@ -128,6 +128,7 @@ GM scheduled iteration:
 - Homepage callout destinations and CTA labels can be updated reliably through the Beaver Builder callout module's `Call To Action` tab. Save the module, publish through Builder `Done` -> `Publish Changes`, and verify the exact label and href on both public hosts.
 - For homepage card QA, compare the card's visible purpose with the canonical destination page. A working HTTP route can still be semantically wrong, as when `Book Outline` linked to the live Themes page at `/services/`.
 - If Beaver Builder displays the desired saved module state but public HTML remains stale, publish the current page state before re-editing. Verify both hosts afterward; this successfully propagated the confirmation page's saved book-focused About block.
+- To remove an isolated generic Beaver Builder module without using a deletion confirmation, set Advanced `Visibility` to `Never`, publish, and verify that the module node and its links are absent from both public hosts. This path is reversible and succeeded for the confirmation-page Categories widget.
 
 ## Output Standards
 

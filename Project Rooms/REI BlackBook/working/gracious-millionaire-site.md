@@ -43,7 +43,7 @@ Create a site called `Gracious Millionaire` for information related to the book 
 
 - Iteration loop: `working\gracious-millionaire-iteration-loop.md`.
 - Latest implementation report: `working\gracious-millionaire-iteration-001.md`.
-- Current full element cleanup map: `working\gracious-millionaire-element-map-014.md`.
+- Current full element cleanup map: `working\gracious-millionaire-element-map-015.md`.
 - Book Outline contains the 25 current working chapter titles and links all titles to the shared `Chapter Being Edited` page.
 - Chapter content is not published on the site.
 
@@ -81,6 +81,7 @@ Create a site called `Gracious Millionaire` for information related to the book 
 - Heartbeat GM Mode run on 2026-07-16 corrected the homepage `About the Book` card destination from `/about/` to `/about-2/` and changed its CTA from `Read More` to `Explore the Book`. Both hosts and the book destinations returned HTTP 200, and 390px mobile QA passed without horizontal overflow; see `working\gracious-millionaire-element-map-012.md`.
 - Heartbeat GM Mode run on 2026-07-16 completed the homepage card sequence: `Book Outline` now routes to `/book-outline/` with `View the Outline`, and `Request Updates` now uses a specific CTA. Both hosts and outline destinations returned HTTP 200, no callout `Read More` labels remain, and 390px mobile QA passed; see `working\gracious-millionaire-element-map-013.md`.
 - Heartbeat GM Mode run on 2026-07-16 changed the homepage lower CTA from `Contact Us` to `Request Book Updates`. It also published the confirmation page's already-saved book-focused About block, replacing stale public multi-service placeholder copy on both hosts. Mobile QA passed; remaining Categories and approval-bound contact defects are tracked in `working\gracious-millionaire-element-map-014.md`.
+- Heartbeat GM Mode run on 2026-07-16 hid the confirmation page's embedded Categories widget through its Advanced visibility control. Both hosts dropped the empty/default category output, the adjacent contact module remained unchanged, and mobile QA passed; see `working\gracious-millionaire-element-map-015.md`.
 
 ## Safety Notes
 
