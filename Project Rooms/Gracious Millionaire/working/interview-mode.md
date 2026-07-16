@@ -40,6 +40,7 @@ Before drafting, read and use:
 - `working/writing-style-guide.md`
 - `working/book-objectives.md`
 - `working/manuscript-edit-and-fact-notes.md`
+- `working/book-architecture.md`
 - `working/dialogue-mode.md`
 - all authoritative Wes source files needed for the current manuscript span
 - all authoritative Jenny source files needed for the current manuscript span
@@ -58,6 +59,7 @@ Before drafting, read and use:
    - Save the map in `working/` with a versioned name such as `interview-v1-source-to-role-map.md`.
 
 2. Create an interview chapter map.
+   - Use the current Book Architecture for thematic progression, story coverage, voice ownership, dependencies, and unresolved questions.
    - Decide which themes Jean will present and how those themes should shape the manuscript.
    - Decide which chapters should be Jean-led interviews.
    - Decide which chapters should contain mostly Wes/Jenny dialogue with only light Jean framing.
@@ -65,6 +67,7 @@ Before drafting, read and use:
    - Let property sequence support the theme order instead of automatically becoming the table of contents.
    - Identify chapters where Jean should not appear because the material works better as uninterrupted memoir or direct dialogue.
    - Save the map in `working/` with a versioned name such as `interview-v1-chapter-map.md`.
+   - Document any intentional departure from the current Book Architecture.
 
 3. Create a Jean question map.
    - Draft the questions Jean should ask in each chapter or section.

@@ -46,7 +46,7 @@ Use this skill for Gracious Millionaire project-room processing. OfficeAssist em
 
 ## New Subject Material Default
 
-When new substantive Gracious Millionaire book/source material arrives, use Quick mode only by default. Quick mode should place the new material into its proper manuscript context, apply only narrow continuity edits around the insertion point, and preserve unrelated chapters.
+When new substantive Gracious Millionaire book/source material arrives, use Quick mode only by default. Quick mode should update the affected Book Architecture and perform either a Simple Quick update or a Structural Quick update. Preserve chapters outside the affected structural group unless a factual correction or documented dependency requires a scoped change.
 
 Use Interview mode, Rewrite mode, or Dialogue mode only when Wes directly requests that mode.
 
@@ -59,6 +59,17 @@ Each manuscript mode must produce an independent product from the original proje
 - A later mode may inspect an earlier mode output only as a coverage check or to understand a prior presentation decision. It must not use that output as the prose base, source packet, factual authority, or compression target.
 - If Wes directly requests more than one mode in sequence, each requested mode must be created from the same underlying source base; it does not mean one mode rewrites another mode's manuscript.
 - Unless Wes explicitly asks for an abridged, summary, or condensed version, full-manuscript Rewrite mode should preserve the substantive depth and scale of the source-backed manuscript while reducing true redundancy.
+
+## Shared Book Architecture
+
+Use `Project Rooms\Gracious Millionaire\working\book-architecture.md` as the shared, source-derived structural map for all manuscript modes.
+
+- Rewrite mode is the primary architecture-discovery process. At the beginning of a requested Rewrite run, rebuild or refresh the architecture from the complete current original-source set before drafting prose.
+- The architecture records stable story units, source references, chronology, chapter assignments, chapter jobs, Wes/Jenny/shared/alternating voice ownership, themes, dependencies, unresolved questions, and recommended chapter moves, splits, joins, removals, and transitions.
+- The architecture is a working editorial map, not a manuscript. Rewrite prose and other mode outputs must not become architecture or source material for another mode.
+- Every architecture assignment must trace to original source material or be marked as an editorial proposal, unresolved question, or missing-context need.
+- All modes may use the approved architecture for sequence, coverage, chapter purpose, thematic relationships, voice ownership, and structural decisions while independently drafting from original sources.
+- Routine source-supported architecture changes may be adopted during an authorized mode run. Major thesis changes, substantial source-backed omissions, or reversals of prior Wes/Jenny direction must be presented as proposed decisions before adoption.
 
 ## Manuscript Packaging
 
@@ -74,7 +85,7 @@ Do not edit compiled HTML directly. Edit the relevant chapter Markdown file and/
 
 Use Quick mode when Wes says `Quick mode`, asks to quickly add new source material to the manuscript, asks for new material to be inserted into its proper context without a total rewrite, or when the project room receives new substantive book/source material and Wes has not directly requested another mode.
 
-Before drafting in Quick mode, read `Project Rooms\Gracious Millionaire\working\quick-mode.md` and follow it. Quick mode is an integration mode: identify the new or changed source, decide placement, draft only the new or affected material, apply narrow continuity edits around the insertion point, preserve unrelated chapters, edit the affected chapter file or manifest under `outputs\quick-mode\`, and rebuild the compiled clickable HTML packet.
+Before drafting in Quick mode, read `Project Rooms\Gracious Millionaire\working\quick-mode.md` and `Project Rooms\Gracious Millionaire\working\book-architecture.md` and follow them. Quick mode is an integration mode: update the affected architecture, classify the work as a Simple Quick update or Structural Quick update, revise the affected material, and rebuild the compiled clickable HTML packet. A Structural Quick update may move, split, join, resequence, or change voice ownership across the affected chapter group while preserving chapters outside that group unless a factual correction or documented dependency requires a scoped edit.
 
 The current Quick-mode manuscript is the only manuscript reference Interview mode may use. Original source material and approved contextual source records remain the factual authority.
 
@@ -84,11 +95,12 @@ Use Rewrite mode when Wes says `Rewrite mode`, asks for a whole-manuscript rewri
 
 Before drafting in Rewrite mode, read `Project Rooms\Gracious Millionaire\working\rewrite-mode.md` and follow it. The required Rewrite mode steps are:
 
-1. Create a source-to-chapter map.
-2. Create a whole-book thesis map.
-3. Create a redundancy and contradiction map.
-4. Create chapter job statements for every chapter or section.
-5. Write a true source-packet-based manuscript rewrite.
+1. Discover or refresh the shared Book Architecture from the complete original-source set.
+2. Create a source-to-chapter map.
+3. Create a whole-book thesis map.
+4. Create a redundancy and contradiction map.
+5. Create chapter job statements for every chapter or section.
+6. Write a true source-packet-based manuscript rewrite.
 
 Rewrite mode is not a polish pass. Do not simply start from the latest manuscript and smooth, bridge, or lightly rephrase it. Use the latest manuscript only as a reference; draft from authoritative source packets, the source maps, the whole-book thesis map, the redundancy/contradiction map, and the chapter job statements. Do not draft from an Interview mode, Dialogue mode, or earlier Rewrite mode output.
 
@@ -98,7 +110,7 @@ If most chapters change only lightly, do not label the work a full Rewrite mode 
 
 Use Dialogue mode when Wes says `Dialogue mode`, asks for the manuscript to become a conversation between Wes and Jenny, or asks for a conversational version of chapters or the whole manuscript.
 
-Before drafting in Dialogue mode, read `Project Rooms\Gracious Millionaire\working\dialogue-mode.md` and follow it. The required Dialogue mode steps are:
+Before drafting in Dialogue mode, read `Project Rooms\Gracious Millionaire\working\dialogue-mode.md` and `Project Rooms\Gracious Millionaire\working\book-architecture.md` and follow them. Use the architecture for sequence, story coverage, speaker ownership, themes, and unresolved questions while independently creating dialogue from original sources. The required Dialogue mode steps are:
 
 1. Build a source-to-speaker map.
 2. Create a conversation chapter map.
@@ -116,7 +128,7 @@ Dialogue mode should read like a crafted book dialogue, not a fake transcript. D
 
 Use Interview mode when Wes says `Interview mode`, asks for Jean to interview Wes and Jenny, or asks for a manuscript version where interview questions guide the conversation.
 
-Before drafting in Interview mode, read `Project Rooms\Gracious Millionaire\working\interview-mode.md` and follow it. The required Interview mode steps are:
+Before drafting in Interview mode, read `Project Rooms\Gracious Millionaire\working\interview-mode.md` and `Project Rooms\Gracious Millionaire\working\book-architecture.md` and follow them. Use the architecture for thematic progression, story coverage, speaker ownership, question opportunities, and unresolved questions while independently creating interview prose under the existing source and Quick-reference rules. The required Interview mode steps are:
 
 1. Build a source-to-role map.
 2. Create an interview chapter map.

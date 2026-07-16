@@ -32,6 +32,8 @@ Use this page for routine project-room startup. Read the larger registers only w
 ## Open Editorial Context
 
 - Preserve original sources as factual authority; mode products are never source material for another mode.
+- Shared structural authority: `working/book-architecture.md`. Rewrite mode is the primary architecture-discovery process; all modes may use the source-derived architecture while independently drafting their own prose.
+- Quick mode may perform a Structural Quick update across an affected chapter group when the architecture requires moves, splits, joins, resequencing, or voice changes.
 - Interview mode may use only the current Quick-mode manuscript as a sequence and coverage reference.
 - Preserve unresolved questions when the source material does not support a complete answer.
 - Verify translation and quotation permissions before publishing long scripture, sermon, book, or video excerpts.

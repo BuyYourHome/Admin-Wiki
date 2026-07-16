@@ -22,6 +22,7 @@ Before drafting, read and use:
 - `working/writing-style-guide.md`
 - `working/book-objectives.md`
 - `working/manuscript-edit-and-fact-notes.md`
+- `working/book-architecture.md`
 - all authoritative Wes source files needed for the current manuscript span
 - all authoritative Jenny source files needed for the current manuscript span
 - the latest manuscript only as a reference, not as the dialogue base
@@ -36,10 +37,12 @@ Before drafting, read and use:
    - Save the map in `working/` with a versioned name such as `dialogue-v1-source-to-speaker-map.md`.
 
 2. Create a conversation chapter map.
+   - Use the current Book Architecture for sequence, story coverage, voice ownership, themes, dependencies, and unresolved questions.
    - Decide which chapters can become true Wes/Jenny dialogue.
    - Decide which chapters should remain mostly Wes narration with Jenny questions or responses.
    - Decide which Jenny chapters should stay whole and separate, with Wes responding around them instead of absorbing them.
    - Save the map in `working/` with a versioned name such as `dialogue-v1-conversation-chapter-map.md`.
+   - Document any intentional departure from the current Book Architecture.
 
 3. Define the role of each speaker.
    - Wes may carry memory, interpretation, spiritual lesson, business lesson, and unfinished learning.

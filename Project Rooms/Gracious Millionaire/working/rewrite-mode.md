@@ -32,42 +32,50 @@ Before drafting, read and use:
 - `working/writing-style-guide.md`
 - `working/book-objectives.md`
 - `working/manuscript-edit-and-fact-notes.md`
+- `working/book-architecture.md`
 - all authoritative source files needed for the current manuscript span
 - the latest manuscript only as a reference, not as the prose base
 - earlier mode outputs only as coverage checks, not as source material, prose bases, factual authority, or compression targets
 
 ## Required Steps
 
-1. Create a source-to-chapter map.
+1. Discover or refresh the shared Book Architecture.
+   - Reconsider the whole-book structure from the complete current original-source set.
+   - Record stable story units, source references, chronology, chapter assignments, chapter jobs, voice ownership, themes, dependencies, unresolved questions, and proposed moves, splits, joins, or removals.
+   - Update `working/book-architecture.md` or its linked versioned architecture notes before drafting manuscript prose.
+   - Do not derive the architecture from a Rewrite manuscript or any other mode output.
+
+2. Create a source-to-chapter map.
    - Identify what each authoritative source contributes.
    - Mark which sources control each chapter or section.
    - Mark source material that is unused, duplicated, outdated, or waiting for more context.
    - Save the map in `working/` with a versioned name such as `rewrite-v27-source-to-chapter-map.md`.
 
-2. Create a whole-book thesis map.
+3. Create a whole-book thesis map.
    - State what the book is saying now, after the latest source growth.
    - Identify the major through-lines that should affect every chapter.
    - Identify which chapters should carry, complicate, or resolve each through-line.
    - Save the map in `working/` with a versioned name such as `rewrite-v27-whole-book-thesis-map.md`.
 
-3. Create a redundancy and contradiction map.
+4. Create a redundancy and contradiction map.
    - Identify repeated lessons, repeated story explanations, repeated attribution language, and repeated chapter conclusions.
    - Identify contradictions, tension points, and places where newer sources should change older framing.
    - Decide whether repeated material should be cut, moved, merged, or intentionally echoed.
    - Save the map in `working/` with a versioned name such as `rewrite-v27-redundancy-and-contradiction-map.md`.
 
-4. Create chapter job statements.
+5. Create chapter job statements.
    - For every chapter or section, state why it exists in the whole book.
    - State what it must accomplish, what it should not repeat, and how context from other chapters should change it.
    - Identify chapters that should merge, split, move, be shortened, or be rewritten from a different controlling idea.
    - Save the job statements in `working/` with a versioned name such as `rewrite-v27-chapter-job-statements.md`.
 
-5. Write a true source-packet-based manuscript rewrite.
+6. Write a true source-packet-based manuscript rewrite.
    - Draft from source packets, source maps, thesis map, redundancy map, and chapter job statements.
    - Do not merely revise the latest manuscript paragraph by paragraph.
    - Do not rewrite from an Interview mode, Dialogue mode, or prior Rewrite mode manuscript.
    - Preserve the full substantive depth of the source-backed manuscript unless Wes explicitly asks for a shorter version.
    - Let whole-book context affect structure, sequence, selection, emphasis, and chapter endings.
+   - Treat the Rewrite manuscript as one independent product of the Book Architecture, not as the architecture or as source material for another mode.
    - Save the new manuscript in `outputs/` with a versioned name such as `Gracious Millionaire - Manuscript Rewrite v27.md`.
    - Include one manuscript-level AI-generation/provenance note near the beginning, not repeated GPT/model notes at the top of each chapter.
    - Include the current Gracious Millionaire book cover at the top of the manuscript and clickable packet before the outline. Use `outputs/book-cover/gracious-millionaire-book-cover-wes-and-jenny-browning-smaller-the-2026-07-16-email.jpg` for review packets unless a newer cover is explicitly marked current.
@@ -81,6 +89,7 @@ Before treating the rewrite as review-ready, create a short `working/` note that
 - Which chapters were shortened, merged, split, moved, or cut?
 - Which chapters changed only lightly, and why?
 - What source material is still unused or waiting for more context?
+- What Book Architecture decisions changed, and which remain proposed or unresolved?
 
 If most chapters changed only lightly, do not represent the work as a full Rewrite mode pass. Mark it as a polish, integration, or continuity pass instead.
 
