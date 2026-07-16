@@ -43,7 +43,7 @@ Create a site called `Gracious Millionaire` for information related to the book 
 
 - Iteration loop: `working\gracious-millionaire-iteration-loop.md`.
 - Latest implementation report: `working\gracious-millionaire-iteration-001.md`.
-- Current full element cleanup map: `working\gracious-millionaire-element-map-010.md`.
+- Current full element cleanup map: `working\gracious-millionaire-element-map-011.md`.
 - Book Outline contains the 25 current working chapter titles and links all titles to the shared `Chapter Being Edited` page.
 - Chapter content is not published on the site.
 
@@ -77,6 +77,7 @@ Create a site called `Gracious Millionaire` for information related to the book 
 - Heartbeat GM Mode run on 2026-07-16 confirmed the navigation had propagated to both hosts, but Beaver Builder and the direct WordPress editor both timed out on The Book page ID `1765`. The Advanced Theme Customizer saved revised footer text, but public QA proved the managed theme continued to render its separate 2026 copyright value. Remaining Book-page stock/broken images and the clean-session continuation path are tracked in `working\gracious-millionaire-element-map-008.md`.
 - Heartbeat GM Mode run on 2026-07-16 removed the stale generic retina-logo override through the stable Advanced Theme Customizer path. Public and preview HTML now use the approved header logo with an empty retina override. One clean The Book builder retry still failed to load, so the next run moves to Journal/sidebar cleanup; see `working\gracious-millionaire-element-map-009.md`.
 - Heartbeat GM Mode run on 2026-07-16 made all six generic template posts private, deleted the two generic categories, and emptied the shared WordPress Primary Sidebar. Native WordPress confirmed the changes, but both public hosts still served old Journal HTML from the REI page cache. The embedded Journal contact block remains unchanged under the public-contact boundary; see `working\gracious-millionaire-element-map-010.md`.
+- Heartbeat GM Mode run on 2026-07-16 changed the Request Updates visible heading to `Request Book Updates` and clarified that name/email are required while phone is optional. Both hosts and 390px mobile QA passed without submitting the form or changing workflow settings. The mobile map gap and approval-bound public contact details remain; see `working\gracious-millionaire-element-map-011.md`.
 
 ## Safety Notes
 

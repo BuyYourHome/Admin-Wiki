@@ -173,3 +173,34 @@ Failed path and remaining defects:
 - Public contact/address removal or alteration requires Wes's specific approval under the heartbeat boundary.
 
 Exact next objective: verify Journal cache propagation read-only; if stale content remains, avoid the known hanging cache-clear and builder-delete paths and complete a Request Updates form-presentation pass that does not alter workflows, recipients, outbound behavior, or public contact details.
+
+### 2026-07-16 - Request Updates presentation
+
+Objective: clarify the Request Updates reader experience without altering form workflows or public contact details.
+
+Live changes:
+
+- Changed the page heading from `Contact Wes and Jenny` to `Request Book Updates`.
+- Replaced the generic follow-up sentence with `Request future Gracious Millionaire book updates. Name and email are required; phone is optional.`
+
+QA evidence:
+
+- Both public hosts returned HTTP 200 with the new heading and introduction.
+- The old `Contact Wes and Jenny` heading was absent.
+- Mobile QA at 390 x 844 showed no horizontal overflow and retained the expected fields.
+- No form was submitted.
+
+Learned paths:
+
+- Request Updates text modules are stable in Beaver Builder.
+- Surrounding text modules can be edited safely without entering the InsiteForms module or changing workflow behavior.
+- Module Save, Builder Done, and Publish Changes propagated immediately to both hosts.
+
+Remaining defects:
+
+- The embedded map creates a large blank mobile gap before the form column.
+- The page and its lower contact module expose public contact/address details; changing them requires Wes's specific approval.
+- Journal still serves stale cached template content.
+- The homepage cover card still points to `/about/` rather than `/about-2/`.
+
+Exact next objective: correct the homepage book-cover card destination and CTA through the proven homepage builder path, rebalance the same card if stable, and QA both hosts at desktop and mobile sizes without retrying The Book or Journal deletion paths.
