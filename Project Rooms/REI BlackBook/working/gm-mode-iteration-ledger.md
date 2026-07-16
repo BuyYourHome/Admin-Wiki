@@ -412,3 +412,38 @@ Remaining defects:
 - Form workflow, map/contact content, public details, and broken profile references remain approval-bound.
 
 Exact next objective: audit the Home cover alt text and the Book Themes, Request Updates, and confirmation top sections as one semantic-heading and spacing pass; leave forms, map/contact modules, public details, and profile references untouched, and do not retry The Book or Journal blocked paths without new evidence.
+
+### 2026-07-16 - Stable-page accessibility and heading hierarchy
+
+Objective: improve homepage cover quality/accessibility and establish a coherent heading hierarchy across the stable Themes, Updates, and confirmation pages.
+
+Live changes:
+
+- Changed the homepage Book Outline card from the 150-pixel thumbnail to the approved full-resolution 1024 by 1536 cover.
+- Added `Gracious Millionaire book cover by Wes and Jenny Browning` as the cover alternative text through the native media editor.
+- Changed `Book Themes`, `Request Book Updates`, and `Update Request Received` from H2 to the single H1 on their pages.
+- Changed the six Book Themes section titles from H6 to H2 while preserving their visible copy and icons.
+
+QA evidence:
+
+- Both hosts show the full-resolution homepage cover with descriptive alt text and one H1 on Home, Themes, Updates, and confirmation.
+- Both Themes hosts show all six core theme names as H2 and no H6 headings.
+- Categories output remains absent and desktop QA found no horizontal overflow.
+- Public mobile QA at 390 by 844 passed across all four pages; the cover rendered at 335 by 502.5 pixels without overflow.
+- Existing forms and maps remained present; no form submission or workflow/contact setting was opened.
+
+Learned paths:
+
+- Callout semantic headings are editable at `Style` -> `Heading Structure` -> `Heading Tag`.
+- Callout image resolution is editable at `Image` -> `Photo`; `Full Size` reused the approved asset without an upload.
+- Alternative text for the old media stack is reliable through the native attachment editor rather than the Beaver Builder media panel.
+- Large multi-page builder sequences can time out after partial success. Public-QA each page, then finish missing pages in separate focused builder sessions.
+
+Remaining defects:
+
+- The homepage still skips from H1 to H3; its major section headings should become H2 while card titles remain H3.
+- The Book builder remains blocked and Journal public HTML remains stale.
+- Form workflow, map/contact content, public details, and broken profile references remain approval-bound.
+- Chrome tab finalization timed out twice after QA; the next run should begin with a fresh browser session and close stale GM tabs.
+
+Exact next objective: start with a fresh Chrome session, correct the homepage H1-to-H3 heading gap and cover-card spacing through stable Callout controls, QA desktop/mobile on both hosts, and leave The Book, Journal, forms, maps, contact details, and workflow settings untouched.
