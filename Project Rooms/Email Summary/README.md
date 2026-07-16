@@ -33,6 +33,16 @@ This project room holds development notes, source inventory, and review artifact
 
 ## Modes
 
+### Daily Email Summary Mode
+
+Use this mode for the once-daily Boss and Jenny Outlook mailbox summaries.
+
+This mode scans `WesWill@BuyYourHomeLLC.com` for Boss and `Jenny@BuyYourHomeLLC.com` for Jenny, using the last verified send time in the OfficeAssist monitor memory as each mailbox cutoff. It scans each mailbox recursively, including rule-routed folders, and summarizes unread or newly received priority business messages: financial, legal, property-related, vendor/admin-related, time-sensitive, or action-oriented.
+
+This mode sends Boss's summary to `WesWill@BuyYourHomeLLC.com` and Jenny's summary to `Jenny@BuyYourHomeLLC.com` from `OfficeAssist@BuyYourHomeLLC.com`. The Email Summary workflow owns scanning, cutoff logic, priority selection, summary drafting, usage-section inclusion, attachment decisions, and state updates. The shared `email-delivery` skill owns the send step, OfficeAssist sender safety, and Sent Items verification.
+
+This mode runs only once per calendar day per recipient at the first eligible heartbeat at or after 8:00 AM Eastern. Later same-day heartbeat runs skip summaries that were already sent and verified.
+
 ### Gracious Millionaire Email Routing Mode
 
 Use this mode when the Email Summary workflow or OfficeAssist instruction monitor sees an email with a subject containing `gracious millionaire`, or an email that otherwise clearly belongs to the Gracious Millionaire book/project-room workflow.
@@ -57,6 +67,7 @@ When the workflow changes, update the skill, this project room, and the registry
 
 ## Change Log
 
+- 2026-07-15: Defined Daily Email Summary Mode for Boss and Jenny mailbox summaries, including mailbox scan, cutoff, summary drafting, OfficeAssist delivery handoff, Sent Items verification, and state update boundaries.
 - 2026-07-15: Defined Gracious Millionaire Email Routing Mode and moved the existing Gracious Millionaire routed-email handoff behavior under that mode in the Email Summary skill.
 - 2026-07-02: Wes changed Jenny's daily summary routing so the summary is emailed to `Jenny@BuyYourHomeLLC.com` from OfficeAssist with Sent Items verification.
 - 2026-06-29: Resumed Jenny's daily email summary after Wes explicitly requested it and the Outlook Email connector verified access to `Jenny@BuyYourHomeLLC.com`.

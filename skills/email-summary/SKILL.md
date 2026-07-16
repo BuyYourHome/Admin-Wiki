@@ -40,6 +40,62 @@ Before using this skill, have:
 
 ## Modes
 
+### Daily Email Summary Mode
+
+Use Daily Email Summary Mode for the once-daily Boss and Jenny Outlook mailbox summaries.
+
+This mode owns mailbox scanning, cutoff selection, priority selection, summary drafting, usage-summary inclusion, attachment decision, and summary-run state updates for:
+
+- Boss summary mailbox: `WesWill@BuyYourHomeLLC.com`;
+- Boss summary recipient: `WesWill@BuyYourHomeLLC.com`;
+- Jenny summary mailbox: `Jenny@BuyYourHomeLLC.com`;
+- Jenny summary recipient: `Jenny@BuyYourHomeLLC.com`;
+- sender for both summaries: `OfficeAssist@BuyYourHomeLLC.com`.
+
+Activation:
+
+- run once per calendar day at the 8:00 AM Eastern heartbeat run, or the first run after 8:00 AM Eastern if the 8:00 AM run was missed;
+- skip a same-day summary when that recipient's summary has already been sent and verified for the calendar day;
+- later same-day heartbeat runs use instruction-email monitoring and routing modes only unless a summary send or verification failure still needs attention.
+
+Cutoff and mailbox scan:
+
+- read `C:\Users\wesbr\.codex\automations\officeassist-morning-email-summary-and-instruction-monitor\memory.md`;
+- use the last verified Boss summary send time as the Boss cutoff unless a newer verified Boss summary is already present in `OfficeAssist@BuyYourHomeLLC.com` Sent Items for the same day;
+- use the last verified Jenny summary send time as Jenny's cutoff unless a newer Jenny summary is already recorded in memory for the same day;
+- if no prior Jenny summary record exists, use the 2026-06-29 resume timestamp as Jenny's initial new-mail cutoff;
+- scan only the intended mailbox for the current summary;
+- review the entire mailbox recursively, including Inbox and rule-routed subfolders;
+- focus on unread messages and newly received messages after the cutoff;
+- include older unread messages only when they are still priority business items, and do not treat Jenny's historic unread backlog as new.
+
+Priority selection:
+
+- keep financial, legal, property-related, vendor/admin-related, time-sensitive, or action-oriented messages;
+- prefer same-day deadlines, fraud or banking actions, invoices, insurance issues, title or closing items, property operations, direct human follow-ups, and vendor/admin items with due dates, money movement, or approvals needed;
+- exclude routine promotional, automated, and newsletter traffic unless it is time-sensitive, financial, legal, property-related, or requires action.
+
+Summary body:
+
+- include the mailbox scanned, cutoff used, priority items, low-priority exclusions when applicable, and a clear note if no priority messages were found;
+- include the Codex usage section from `C:\Codex\Wiki Files\tools\get-codex-token-summary.ps1` when reliable totals are available;
+- use the same day and week wall-clock total-time and token totals in both Boss and Jenny summaries;
+- sign as `Jean Wright` / `Office Assistant`;
+- do not say the email is on Wes's behalf unless the actual sending identity requires that wording.
+
+Delivery handoff:
+
+- hand the send step to `C:\Codex\Wiki Files\skills\email-delivery\SKILL.md`;
+- pass sender, recipient, subject, plain-text body, attachment paths if any, and the rule that send or verification failure must be reported in the OfficeAssist thread;
+- let `email-delivery` handle Outlook connector preference, sender safety, attachment input format, Sent Items verification, local Outlook fallback, and failure reporting;
+- if the summary cannot be sent or verified, notify Wes immediately in the OfficeAssist thread and use the available text/SMS fallback when one is available.
+
+State update:
+
+- after a successful verified send, update the automation memory with the summary date or subject, cutoff used, topics sent, verified send timestamp from OfficeAssist Sent Items, and any unusual routing, blocker, or verification-draft note;
+- if mailbox access, token-summary generation, send, or verification fails, record the blocker and action taken;
+- do not treat a failed summary run as quiet.
+
 ### Gracious Millionaire Email Routing Mode
 
 Use Gracious Millionaire Email Routing Mode when the Email Summary workflow or OfficeAssist instruction monitor sees an email that belongs to Gracious Millionaire.

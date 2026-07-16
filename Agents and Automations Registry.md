@@ -296,6 +296,7 @@ Workflow boundary:
 
 - The morning-summary automation keeps responsibility for mailbox scanning, cutoff selection, message prioritization, summary drafting, and attachment decisions.
 - The shared `email-delivery` skill handles the send step only: Outlook connector preference, sender safety, attachment input shape, Sent Items verification, local Outlook fallback, and failure reporting.
+- Defined mode: Daily Email Summary Mode scans Boss's and Jenny's Outlook mailboxes once daily, drafts priority summaries with usage totals, hands delivery to `email-delivery`, verifies OfficeAssist Sent Items, and updates summary state.
 - Defined mode: Gracious Millionaire Email Routing Mode routes Gracious Millionaire emails into the Gracious Millionaire project room as Markdown source files, records the Outlook message id in Email Summary monitor memory, and sends a direct project-room thread handoff without drafting the book response in this Email Summary thread.
 - Development work, source inventory, open questions, and review-ready handoffs for this workflow live in `C:\Codex\Wiki Files\Project Rooms\Email Summary\`.
 
