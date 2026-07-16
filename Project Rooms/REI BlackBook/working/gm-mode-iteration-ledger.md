@@ -142,3 +142,34 @@ Failed path and remaining defects:
 - Generic Journal posts, categories, and sidebar/About widgets remain.
 
 Exact next objective: clean the Journal/blog/sidebar experience through stable WordPress or theme-management routes, publish one coherent reader-facing pass, and QA both hosts without retrying The Book builder unless Chrome has been reset or editor stability is demonstrated.
+
+### 2026-07-16 - Journal publishing and shared-sidebar cleanup
+
+Objective: remove the off-topic Journal publishing surface through stable WordPress and theme-management routes.
+
+Live backend changes:
+
+- Changed all six generic template posts from published to private while preserving them in WordPress.
+- Deleted `Best Tips Ever` and `Success Stories`, leaving the default `All` category.
+- Removed the shared Primary Sidebar's `Recent Posts` and `Categories` widgets.
+
+QA evidence:
+
+- Native WordPress Posts reported `All (6)` and `Private (6)`.
+- Native WordPress Categories reported one remaining category.
+- Native WordPress Widgets reported no active widgets in `blog-sidebar`.
+- Both public Journal hosts returned HTTP 200 but continued to serve old content with `X-Pj-Cache-Status: hit`.
+
+Learned paths:
+
+- REI Manage Blog toggles plus native WordPress Posts provide a reliable reversible unpublish workflow.
+- Native Categories and Widgets routes are stable even when Beaver Builder is unreliable.
+- The four lower Journal blocks are embedded Beaver Builder widget modules, not the shared Primary Sidebar.
+
+Failed path and remaining defects:
+
+- Journal Beaver Builder loaded, but confirming deletion of the stock post-grid module stalled Chrome control. No builder publish occurred.
+- Public cache still exposes the six template posts, generic lower modules, a broken profile placeholder, and public contact/address details.
+- Public contact/address removal or alteration requires Wes's specific approval under the heartbeat boundary.
+
+Exact next objective: verify Journal cache propagation read-only; if stale content remains, avoid the known hanging cache-clear and builder-delete paths and complete a Request Updates form-presentation pass that does not alter workflows, recipients, outbound behavior, or public contact details.
