@@ -21,7 +21,7 @@ Use this repo when formulating solutions for office-admin workflows, SOPs, autom
 - Use `Project Room Workflow.md` before major work that depends on multiple source files, emails, scans, notes, spreadsheets, or prior drafts.
 - Use `Project Room File Ownership And Git Coordination Rule.md` before durable Project Room edits, cross-PR work, shared Admin rule edits, commits, pulls, or pushes.
 - Use `Project Rooms\SOPs\` for SOP source emails, extracted notes, SOP pages, SOP index, source map, and SOP review questions.
-- Use `Project Rooms\Email Summary\` for development work on the Email Summary workflow, including source inventory, automation notes, open questions, and review-ready handoffs.
+- Use `Project Rooms\Email Monitor\` for development work on the Email Monitor workflow, including source inventory, automation notes, open questions, and review-ready handoffs.
 - Use `Project Rooms\Doc Scan\` for development work on scanned document processing, including scan routing, automation notes, source inventory, and review-ready handoffs.
 - Use `Repository Location Rule.md` for repo/location policy.
 - Use `Git Work Scope Rule.md` before committing or pushing Admin wiki work.
@@ -144,7 +144,7 @@ Use this repo when formulating solutions for office-admin workflows, SOPs, autom
 - Do not use the name `Project LumenScale` for Gracious Millionaire work. Use plain labels such as `Gracious Millionaire project-room process`, `Gracious Millionaire project-room heartbeat`, or `Gracious Millionaire project room`.
 - If an OfficeAssist instruction email from Wes or Jenny has a subject containing `brynda suit`, or otherwise clearly belongs to the Brynda Suit workflow, route it to the existing Brynda Suit project-room task. Preserve the email as its own Markdown source file under `Project Rooms\Brynda Suit\sources\email\`, including sender, recipients, sent/received time, subject, message id or web link when available, and body text. Update the Brynda Suit source inventory when the routed source becomes part of the durable source set. Then send a direct follow-up message to the existing Brynda Suit task with the routed source path, a short summary, and the instruction to wake up and respond to the email. Current Brynda Suit task id: `019f61c3-d4c0-7a52-a5a0-e4066ea9b303`. Do not create a new Brynda Suit task for this routing unless Wes explicitly asks.
 
-## Email Summary Scope
+## Email Monitor Scope
 
 - Morning email summaries for Wes must scan the entire `WesWill@BuyYourHomeLLC.com` Outlook mailbox store, including all subfolders where Outlook rules may move messages.
 - Morning email summaries for Jenny are resumed as of 2026-06-29. Scan the entire `Jenny@BuyYourHomeLLC.com` Outlook mailbox store, including all subfolders where Outlook rules may move messages.
@@ -154,10 +154,10 @@ Use this repo when formulating solutions for office-admin workflows, SOPs, autom
 - Exclude routine promotional, automated, or newsletter messages unless they are time-sensitive, financial, legal, property-related, or require action.
 - When the OfficeAssist heartbeat runs every 15 minutes for email monitoring, run each morning summary only once per calendar day: the first eligible run at or after 8:00 AM Eastern sends Boss's summary if it has not already been sent and verified, and sends Jenny's summary to `Jenny@BuyYourHomeLLC.com` from `OfficeAssist@BuyYourHomeLLC.com` if it has not already been sent and verified. Later same-day heartbeat runs perform instruction-email monitoring only.
 - Record the summary cutoff time used so the next summary can avoid both missed rule-routed messages and duplicate reporting.
-- The email-summary workflow owns the mailbox scan, cutoff logic, priority selection, summary body, and attachment decision for Wes and Jenny.
+- The email-monitor workflow owns the mailbox scan, cutoff logic, priority selection, summary body, and attachment decision for Wes and Jenny.
 - For the send step only, use the shared `skills\email-delivery\SKILL.md` workflow by passing sender, recipient, subject, plain-text body, attachment paths if any, and the rule that send or verification failure must be reported in the OfficeAssist thread.
 - If the morning summary cannot be sent by email, notify Wes immediately and use the available text/SMS fallback when one is available. A failed send or unverified send is not a quiet/no-news run.
-- Jenny's summary is emailed to `Jenny@BuyYourHomeLLC.com` from `OfficeAssist@BuyYourHomeLLC.com` under the current global profile. Verify the sent copy in OfficeAssist Sent Items and report any send or verification failure in the Email Summary thread.
+- Jenny's summary is emailed to `Jenny@BuyYourHomeLLC.com` from `OfficeAssist@BuyYourHomeLLC.com` under the current global profile. Verify the sent copy in OfficeAssist Sent Items and report any send or verification failure in the Email Monitor thread.
 
 ## Calendar Scheduling
 

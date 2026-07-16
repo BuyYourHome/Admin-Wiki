@@ -35,7 +35,7 @@ Use `Agents and Automations Registry.md` as the controlling registry. Current im
 | Name | Type | Use |
 | --- | --- | --- |
 | Jean Wright / Office Assistant | Assistant profile and operating role | Office assistant work, email drafting/sending under safety rules, grocery updates, and admin coordination. |
-| Email Summary | Heartbeat automation plus wiki-managed skill | Daily Wes email summary from the full mailbox store, including rule-routed folders, plus OfficeAssist instruction-email monitoring. |
+| Email Monitor | Heartbeat automation plus wiki-managed skill | Daily Wes email summary from the full mailbox store, including rule-routed folders, plus OfficeAssist instruction-email monitoring. |
 | Doc Scan | Wiki-managed skill plus cron automation | Scheduled scan intake processing and routing. |
 | REI Text Message Watcher | Heartbeat automation | Watch approved Boss/Jenny texts in REI BlackBook / Profit Dial. |
 | Grocery List Handler | Wiki rule and data workflow | Maintain current grocery list, request log, staples, and purchase history. |

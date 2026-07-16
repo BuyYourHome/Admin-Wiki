@@ -2,9 +2,9 @@
 
 Source path:
 
-`C:\Codex\Wiki Files\skills\email-summary\SKILL.md`
+`C:\Codex\Wiki Files\skills\email-monitor\SKILL.md`
 
-Status: authoritative for the reusable Email Summary workflow.
+Status: authoritative for the reusable Email Monitor workflow.
 
 The skill owns:
 

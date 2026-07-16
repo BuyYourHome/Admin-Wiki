@@ -1,9 +1,9 @@
-﻿---
-name: email-summary
+---
+name: email-monitor
 description: Create Wes's and Jenny's daily OfficeAssist morning mailbox summaries for Buy Your Home. Use when Codex needs to scan `WesWill@BuyYourHomeLLC.com` or `Jenny@BuyYourHomeLLC.com`, apply the stored cutoff, select priority unread or newly received business messages across Inbox and rule-routed folders, draft the plain-text morning summary, and hand Wes's send step to `email-delivery`.
 ---
 
-# Email Summary
+# Email Monitor
 
 ## Overview
 
@@ -11,7 +11,7 @@ Create the daily Boss summary for `WesWill@BuyYourHomeLLC.com`, then hand off de
 
 This skill owns mailbox scanning, cutoff selection, message prioritization, summary drafting, usage-summary inclusion, and summary-run state updates. It does not own sender safety or send verification.
 
-Development notes, source inventory, and open questions for this workflow live in `C:\Codex\Wiki Files\Project Rooms\Email Summary\`.
+Development notes, source inventory, and open questions for this workflow live in `C:\Codex\Wiki Files\Project Rooms\Email Monitor\`.
 
 ## Inputs
 
@@ -98,7 +98,7 @@ State update:
 
 ### Gracious Millionaire Email Routing Mode
 
-Use Gracious Millionaire Email Routing Mode when the Email Summary workflow or OfficeAssist instruction monitor sees an email that belongs to Gracious Millionaire.
+Use Gracious Millionaire Email Routing Mode when the Email Monitor workflow or OfficeAssist instruction monitor sees an email that belongs to Gracious Millionaire.
 
 This mode owns source routing and direct project-room handoff only. It does not own Gracious Millionaire manuscript processing, book-response drafting, external email sending, or mailbox monitoring from the Gracious Millionaire project-room heartbeat.
 
@@ -121,11 +121,11 @@ Direct message handoff is the primary trigger for Gracious Millionaire project-r
 
 Current Gracious Millionaire project-room thread id: `019eb9b0-6780-7fb3-a278-29a18d17998c`.
 
-Do not attach mailbox checking to the Gracious Millionaire heartbeat. Do not create a new Gracious Millionaire chat. Do not draft, edit, or send the requested book response from this Email Summary or OfficeAssist monitor thread unless Wes explicitly asks for processing here. The default action is source routing plus direct project-room handoff only.
+Do not attach mailbox checking to the Gracious Millionaire heartbeat. Do not create a new Gracious Millionaire chat. Do not draft, edit, or send the requested book response from this Email Monitor or OfficeAssist monitor thread unless Wes explicitly asks for processing here. The default action is source routing plus direct project-room handoff only.
 
 ### Brynda Suit Email Routing Mode
 
-Use Brynda Suit Email Routing Mode when the Email Summary workflow or OfficeAssist instruction monitor sees an instruction email from Wes or Jenny that belongs to Brynda Suit.
+Use Brynda Suit Email Routing Mode when the Email Monitor workflow or OfficeAssist instruction monitor sees an instruction email from Wes or Jenny that belongs to Brynda Suit.
 
 This mode owns source routing and direct Brynda Suit task handoff only. It does not own Brynda Suit response drafting, external email sending, or creating a new Brynda Suit task.
 
@@ -145,7 +145,7 @@ For each routed email:
 
 Current Brynda Suit task id: `019f61c3-d4c0-7a52-a5a0-e4066ea9b303`.
 
-Do not create a new Brynda Suit task for this routing unless Wes explicitly asks. Do not process the Brynda Suit response from this Email Summary or OfficeAssist monitor thread unless Wes explicitly asks for processing here. The default action is source routing plus direct project-room handoff only.
+Do not create a new Brynda Suit task for this routing unless Wes explicitly asks. Do not process the Brynda Suit response from this Email Monitor or OfficeAssist monitor thread unless Wes explicitly asks for processing here. The default action is source routing plus direct project-room handoff only.
 
 ## Priority Selection
 

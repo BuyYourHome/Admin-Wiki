@@ -1,6 +1,6 @@
-﻿---
+---
 name: email-delivery
-description: Use when an Admin wiki workflow needs to send or prepare an email from OfficeAssist@BuyYourHomeLLC.com with Outlook connector preference, sender safety, attachment handling, sent-item verification, and failure reporting. Intended as a shared support skill for workflows such as Contract for Deed Email Package and Email Summary; it does not decide the workflow-specific email content.
+description: Use when an Admin wiki workflow needs to send or prepare an email from OfficeAssist@BuyYourHomeLLC.com with Outlook connector preference, sender safety, attachment handling, sent-item verification, and failure reporting. Intended as a shared support skill for workflows such as Contract for Deed Email Package and Email Monitor; it does not decide the workflow-specific email content.
 ---
 
 # Email Delivery

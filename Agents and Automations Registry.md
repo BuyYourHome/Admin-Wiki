@@ -12,9 +12,9 @@ Use [[Agent Unit Standard]] for the standard package behind an agent-like operat
 |---|---|---|---|---|
 | Jean Wright / Office Assistant | Wiki-managed skill plus project room plus assistant profile and operating role | Active | On demand and through related automations | `skills\jean-wright\SKILL.md`; `Project Rooms\Jean Wright\README.md`; `C:\Codex\Office Assistant Profile.md`; `AGENTS.md` |
 | REI Text Message Watcher | Heartbeat automation | Active | Every 15 minutes during 8:00 AM-9:00 PM Eastern; adaptive 1-minute checks during activity | `C:\Users\wesbr\.codex\automations\morning-weswill-email-summary\automation.toml` |
-| OfficeAssist Instruction Inbox Monitor | Behavior inside Email Summary heartbeat | Active | Runs every day; starts at 7:45 AM Eastern, then every 15 minutes through 11:00 PM Eastern; checks email and takes defined actions | `AGENTS.md`; `C:\Users\wesbr\.codex\automations\officeassist-morning-email-summary-and-instruction-monitor\automation.toml` |
+| OfficeAssist Instruction Inbox Monitor | Behavior inside Email Monitor heartbeat | Active | Runs every day; starts at 7:45 AM Eastern, then every 15 minutes through 11:00 PM Eastern; checks email and takes defined actions | `AGENTS.md`; `C:\Users\wesbr\.codex\automations\officeassist-morning-email-summary-and-instruction-monitor\automation.toml` |
 | Gracious Millionaire Project Room Heartbeat | Project-room heartbeat automation | Active | Every 15 minutes from 8:00 AM-11:45 PM Eastern; project-room Markdown intake processing only | `Project Rooms\Gracious Millionaire\README.md`; `Project Rooms\Gracious Millionaire\working\intake-heartbeat-rules.md`; `C:\Users\wesbr\.codex\automations\gracious-millionaire-project-room-heartbeat\automation.toml` |
-| Email Summary | Wiki-managed skill plus heartbeat automation plus project room | Active | Runs every day; starts at 7:45 AM Eastern, then every 15 minutes through 11:00 PM Eastern; Boss and Jenny summaries run once daily at/after 8:00 AM, and instruction monitoring checks OfficeAssist email | `skills\email-summary\SKILL.md`; `Project Rooms\Email Summary\README.md`; `C:\Users\wesbr\.codex\automations\officeassist-morning-email-summary-and-instruction-monitor\automation.toml` |
+| Email Monitor | Wiki-managed skill plus heartbeat automation plus project room | Active | Runs every day; starts at 7:45 AM Eastern, then every 15 minutes through 11:00 PM Eastern; Boss and Jenny summaries run once daily at/after 8:00 AM, and instruction monitoring checks OfficeAssist email | `skills\email-monitor\SKILL.md`; `Project Rooms\Email Monitor\README.md`; `C:\Users\wesbr\.codex\automations\officeassist-morning-email-summary-and-instruction-monitor\automation.toml` |
 | Email Delivery | Wiki-managed support skill | Active | Called by email-capable Admin workflows | `skills\email-delivery\SKILL.md` |
 | Doc Scan | Wiki-managed skill plus heartbeat automation plus project room | Active | Every 15 minutes on weekdays from 10:00 AM through 4:45 PM Eastern | `skills\doc-scan\SKILL.md`; `Project Rooms\Doc Scan\README.md`; `C:\Users\wesbr\.codex\skills\doc-scan\SKILL.md`; app automation id `doc-scan` |
 | Codex Skill Source Control | Wiki-managed skill system | Active | On demand after skill changes or wiki pulls | `Codex Skill Source Rule.md`; `tools\sync-codex-skills.ps1`; `skills\` |
@@ -43,7 +43,7 @@ Use [[Agent Unit Standard]] for the standard package behind an agent-like operat
 | REI BlackBook | Wiki-managed skill plus project room | Draft | On demand | `skills\rei-blackbook\SKILL.md`; `Project Rooms\REI BlackBook\README.md` |
 | GM Mode Site Iteration | GM Mode heartbeat automation plus REI BlackBook project room | Paused - activation pending | Every 30 minutes when active; each acquired run performs a 45-90 minute coherent book-site design iteration, QA, map refresh, and append-only learning handoff | `skills\rei-blackbook\SKILL.md`; `Project Rooms\REI BlackBook\README.md`; automation id `gm-mode-site-iteration` |
 | Investigate Computer | Wiki-managed skill plus project room plus heartbeat automation | Active | Daily at 6:00 AM Eastern; email Wes only when an issue is detected | `skills\investigate-computer\SKILL.md`; `Project Rooms\Investigate Computer\README.md`; app automation id `investigate-computer-daily-check` |
-| Jenny Daily Email Summary | Behavior inside Email Summary heartbeat | Active | Runs once daily at/after 8:00 AM Eastern with the Email Summary heartbeat; emails Jenny from OfficeAssist and verifies Sent Items | `skills\email-summary\SKILL.md`; `Email Summary` prompt notes |
+| Jenny Daily Email Summary | Behavior inside Email Monitor heartbeat | Active | Runs once daily at/after 8:00 AM Eastern with the Email Monitor heartbeat; emails Jenny from OfficeAssist and verifies Sent Items | `skills\email-monitor\SKILL.md`; `Email Monitor` prompt notes |
 
 ## Jean Wright / Office Assistant
 
@@ -133,7 +133,7 @@ Current notification behavior:
 
 Type: behavior inside the `officeassist-morning-email-summary-and-instruction-monitor` heartbeat automation.
 
-Status: active as behavior inside the Email Summary heartbeat.
+Status: active as behavior inside the Email Monitor heartbeat.
 
 Automation id:
 
@@ -181,7 +181,7 @@ Defined in:
 
 Activation note:
 
-- The former `gracious-millionaire-officeassist-email-intake` heartbeat was deleted on 2026-06-18 at Wes's request. All OfficeAssist email monitoring now belongs to the Email Summary heartbeat.
+- The former `gracious-millionaire-officeassist-email-intake` heartbeat was deleted on 2026-06-18 at Wes's request. All OfficeAssist email monitoring now belongs to the Email Monitor heartbeat.
 
 Tools/services used:
 
@@ -235,7 +235,7 @@ Tools/services used:
 - Admin wiki project-room workflow rules.
 - Git for scoped local commits when durable project-room changes are made.
 
-## Email Summary
+## Email Monitor
 
 Type: wiki-managed skill plus heartbeat automation.
 
@@ -250,7 +250,7 @@ Schedule:
 - Runs every day.
 - Starts at 7:45 AM Eastern.
 - Then runs every 15 minutes from 8:00 AM through 11:00 PM Eastern.
-- Runs in the dedicated `Email Summary` Codex thread instead of creating a new standalone run chat each morning.
+- Runs in the dedicated `Email Monitor` Codex thread instead of creating a new standalone run chat each morning.
 
 Purpose:
 
@@ -258,6 +258,7 @@ Purpose:
 - Recursively review the full `Jenny@BuyYourHomeLLC.com` Outlook mailbox, including rule-routed subfolders.
 - Summarize unread or newly received financial, legal, property, vendor/admin, time-sensitive, or action-oriented messages.
 - Monitor the OfficeAssist mailbox for instruction emails and take defined actions when the email instruction and safety rules allow it.
+- Route Gracious Millionaire and Brynda Suit instruction emails into their owning project rooms as source material and hand them off to their existing threads/tasks.
 - Send Wes a concise priority summary from `OfficeAssist@BuyYourHomeLLC.com`.
 - Email Jenny's concise priority summary to `Jenny@BuyYourHomeLLC.com` from `OfficeAssist@BuyYourHomeLLC.com` under the current global profile, and verify the sent copy in OfficeAssist Sent Items.
 - Include a short token-usage section for yesterday and the current week to date when reliable token totals are available; if not available, say so rather than estimating.
@@ -266,8 +267,8 @@ Purpose:
 
 Defined in:
 
-- `C:\Codex\Wiki Files\skills\email-summary\SKILL.md`
-- `C:\Codex\Wiki Files\Project Rooms\Email Summary\README.md`
+- `C:\Codex\Wiki Files\skills\email-monitor\SKILL.md`
+- `C:\Codex\Wiki Files\Project Rooms\Email Monitor\README.md`
 - `C:\Users\wesbr\.codex\automations\officeassist-morning-email-summary-and-instruction-monitor\automation.toml`
 - Email safety rules in `AGENTS.md`.
 
@@ -297,8 +298,9 @@ Workflow boundary:
 - The morning-summary automation keeps responsibility for mailbox scanning, cutoff selection, message prioritization, summary drafting, and attachment decisions.
 - The shared `email-delivery` skill handles the send step only: Outlook connector preference, sender safety, attachment input shape, Sent Items verification, local Outlook fallback, and failure reporting.
 - Defined mode: Daily Email Summary Mode scans Boss's and Jenny's Outlook mailboxes once daily, drafts priority summaries with usage totals, hands delivery to `email-delivery`, verifies OfficeAssist Sent Items, and updates summary state.
-- Defined mode: Gracious Millionaire Email Routing Mode routes Gracious Millionaire emails into the Gracious Millionaire project room as Markdown source files, records the Outlook message id in Email Summary monitor memory, and sends a direct project-room thread handoff without drafting the book response in this Email Summary thread.
-- Development work, source inventory, open questions, and review-ready handoffs for this workflow live in `C:\Codex\Wiki Files\Project Rooms\Email Summary\`.
+- Defined mode: Gracious Millionaire Email Routing Mode routes Gracious Millionaire emails into the Gracious Millionaire project room as Markdown source files, records the Outlook message id in Email Monitor memory, and sends a direct project-room thread handoff without drafting the book response in this Email Monitor thread.
+- Defined mode: Brynda Suit Email Routing Mode routes Brynda Suit emails into the Brynda Suit project room as Markdown source files, records the Outlook message id in Email Monitor memory, and sends a direct task handoff without drafting the Brynda Suit response in this Email Monitor thread.
+- Development work, source inventory, open questions, and review-ready handoffs for this workflow live in `C:\Codex\Wiki Files\Project Rooms\Email Monitor\`.
 
 ## Email Delivery
 
@@ -738,7 +740,7 @@ Important rules:
 
 - Do not store passwords, authentication tokens, payment card numbers, bank login credentials, seed phrases, or other live secrets in the project room, skill, git history, or chat handoff notes.
 - Do not copy Confidential files to Teams, SharePoint, email, another project room, or an external service unless Wes explicitly asks for that specific transfer or an existing rule clearly requires it.
-- Use specialized project rooms instead when Wes names a specific workflow such as Doc Scan, Email Summary, Contract for Deed, Credit Worthiness Evaluator, or Gracious Millionaire.
+- Use specialized project rooms instead when Wes names a specific workflow such as Doc Scan, Email Monitor, Contract for Deed, Credit Worthiness Evaluator, or Gracious Millionaire.
 - No automation is currently attached.
 
 ## REI BlackBook
@@ -883,13 +885,13 @@ Important rules:
 
 ## Jenny Daily Email Summary
 
-Type: behavior inside the Email Summary heartbeat.
+Type: behavior inside the Email Monitor heartbeat.
 
 Status: active as of 2026-06-29.
 
 Purpose:
 
-- Produce a daily summary of Jenny's new email at the same first eligible Email Summary heartbeat run used for Wes's morning summary.
+- Produce a daily summary of Jenny's new email at the same first eligible Email Monitor heartbeat run used for Wes's morning summary.
 - Email Jenny's summary to `Jenny@BuyYourHomeLLC.com` from `OfficeAssist@BuyYourHomeLLC.com` unless Wes explicitly changes the routing.
 
 Activation note:
@@ -901,12 +903,12 @@ Activation note:
 Defined in:
 
 - `C:\Users\wesbr\.codex\automations\officeassist-morning-email-summary-and-instruction-monitor\automation.toml`
-- `C:\Codex\Wiki Files\skills\email-summary\SKILL.md`
+- `C:\Codex\Wiki Files\skills\email-monitor\SKILL.md`
 
 Operating rule:
 
-- Run once per calendar day at the first eligible Email Summary heartbeat at or after 8:00 AM Eastern if Jenny's daily summary has not already been sent and verified.
-- Email Jenny's summary to Jenny under the current global profile, verify the OfficeAssist Sent Items copy, and report any send or verification failure in the Email Summary thread.
+- Run once per calendar day at the first eligible Email Monitor heartbeat at or after 8:00 AM Eastern if Jenny's daily summary has not already been sent and verified.
+- Email Jenny's summary to Jenny under the current global profile, verify the OfficeAssist Sent Items copy, and report any send or verification failure in the Email Monitor thread.
 
 ## How To Inspect Actual Automations
 
