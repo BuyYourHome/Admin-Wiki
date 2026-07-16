@@ -12,11 +12,11 @@ Sometimes the assignment continues after the blessing becomes complicated.
 
 Sometimes it continues when the person you helped later becomes the person whose name is on the other side of the lawsuit.
 
-That is part of what 115 Rosebrooks became for us.
+That is part of what Rosebrooks became for us.
 
 This is also where the leadership chapter begins to press on the property story.
 
-It is one thing to lead when everyone agrees that you helped. It is another thing to lead your own heart when your motives are questioned, your paperwork is challenged, your wife is hurt, your name is attached to a complaint, and your first instinct is to defend yourself with every argument available.
+It is one thing to lead when everyone agrees that you helped. It is another thing to lead your own heart when your motives are questioned, your paperwork is challenged, Jenny is hurt, your name is attached to a complaint, and your first instinct is to defend yourself with every argument available.
 
 In that kind of pressure, leadership is not mainly about directing other people.
 
@@ -78,7 +78,7 @@ After I met with Brynda, Jenny and I talked through the situation together. Bryn
 
 That sentence matters because it was not a slogan for a chapter. It was how the business felt to us at the time. We wanted Buy Your Home to be a business of service: service to sellers, buyers, contractors, realtors, and tenants. Jenny has carried that responsibility with a seriousness that is easy to miss if the story is reduced to documents and claims. She thanks God for trusting the business to us, and she does not want us to jeopardize that trust.
 
-For the next year, Brynda continued living in the home. We did more than own the house. Jenny and I visited. I drove Brynda to medical appointments. I helped with groceries. I helped with technology. We checked on her. I believed we were doing what we had said we would do. I believed we had made a business decision that also carried mercy inside of it.
+For the next year, Brynda continued living in the home. We did more than own the house. Jenny and I visited. I drove Brynda to medical appointments. We helped with groceries. I helped with technology. We checked on her. We believed we were doing what we had said we would do. We believed we had made a business decision that also carried mercy inside of it.
 
 Jenny saw the mercy, but she also saw the strain. Brynda called often for help, especially with transportation to medical appointments because she did not drive. Jenny noticed that food was an issue, so we brought hot meals several times and then set up online ordering options through places like Walmart and Amazon so Brynda could choose what she needed. Jenny is honest enough to say Brynda seemed demanding to her. But Jenny also saw a woman with real needs and apparently no one else stepping in.
 
@@ -112,7 +112,7 @@ I am not writing this as a legal argument. Lawyers can do that better than I can
 
 I had to ask myself what graciousness looks like when it is accused.
 
-It is easy to be gracious when the other person is thankful. It is easy to talk about favor when the deal works and everybody smiles. It is much harder when the story is retold in a way that makes your help sound predatory. It is much harder when the person who received the benefit is now the plaintiff. It is much harder when your wife is hurt because she knows the groceries, the rides, the visits, and the care that do not show up neatly in a complaint.
+It is easy to be gracious when the other person is thankful. It is easy to talk about favor when the deal works and everybody smiles. It is much harder when the story is retold in a way that makes your help sound predatory. It is much harder when the person who received the benefit is now the plaintiff. It is much harder when Jenny is hurt because she knows the groceries, the rides, the visits, and the care that do not show up neatly in a complaint.
 
 Jenny said, in substance, that we had helped this woman in a big way. But the lawsuit did not merely challenge the transaction. It challenged the meaning of what Jenny believed we had been doing.
 
@@ -164,7 +164,7 @@ I wish I could say I have done that perfectly.
 
 I have not.
 
-But I can say that 115 Rosebrooks has forced the question deeper into me. Do I want to be vindicated more than I want to be obedient? Do I want to be right more than I want to be clean? Do I want the property, the profit, the reputation, or the peace of knowing that I stayed under the hand of God?
+But I can say that Rosebrooks has forced the question deeper into me. Do I want to be vindicated more than I want to be obedient? Do I want to be right more than I want to be clean? Do I want the property, the profit, the reputation, or the peace of knowing that I stayed under the hand of God?
 
 The answer is supposed to be obvious.
 
@@ -222,7 +222,7 @@ Sometimes fear wants to settle too soon.
 
 Sometimes fear wants to fight too hard.
 
-That is the part I had to sit with. Why would God give us such a large victory and still leave one weak count unsettled? Why not end it completely? Why leave enough uncertainty for another attorney call, another mediation, another decision, another round of pressure on Jenny and me?
+That is the part we had to sit with. Why would God give us such a large victory and still leave one weak count unsettled? Why not end it completely? Why leave enough uncertainty for another attorney call, another mediation, another decision, another round of pressure on Jenny and me?
 
 I do not know the full answer.
 
@@ -244,7 +244,7 @@ It shows that profit is not proof of guilt and kindness is not proof of wisdom.
 
 It shows that when the enemy comes in like a flood, the Spirit of the Lord lifts up a standard. Sometimes that standard is not a dramatic victory. Sometimes it is a quiet refusal to complain. Sometimes it is continuing to trust God with your name, your money, your reputation, and your unfinished story.
 
-I still believe we were assigned to 115 Rosebrooks.
+I still believe we were assigned to Rosebrooks.
 
 I also believe the assignment was not only to buy a house.
 

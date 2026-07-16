@@ -10,12 +10,12 @@ Use this page for routine project-room startup. Read the larger registers only w
 - Dialogue review packet: `outputs/Gracious Millionaire - Dialogue Mode.html`
 - Interview review packet: `outputs/Gracious Millionaire - Interview Manuscript v3 - Jenny Coastal Surrender - Clickable.html`
 - Rewrite review packet: `outputs/Gracious Millionaire - Rewrite Mode.html`
-- Stable current review packet: `outputs/jenny-chapter-review-current/Gracious Millionaire - Jenny Clickable Chapter Review - CURRENT.html` (refreshed from Quick mode `quick-jenny-rosebrooks-and-ai-photo-reality-2026-07-16`)
+- Stable current review packet: `outputs/jenny-chapter-review-current/Gracious Millionaire - Jenny Clickable Chapter Review - CURRENT.html` (refreshed from Quick mode `quick-global-editorial-rules-pass-2026-07-16`)
 - Current cover: `outputs/book-cover/gracious-millionaire-book-cover-wes-and-jenny-browning-2026-07-10-email.jpg`
 
 ## Current Versions
 
-- Quick mode: `quick-jenny-rosebrooks-and-ai-photo-reality-2026-07-16`
+- Quick mode: `quick-global-editorial-rules-pass-2026-07-16`
 - Dialogue mode: `dialogue-v1-2026-07-13`
 - Rewrite mode: `v28`
 - Latest full manuscript created: Dialogue mode v1

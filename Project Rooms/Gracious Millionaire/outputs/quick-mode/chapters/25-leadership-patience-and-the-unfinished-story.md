@@ -290,7 +290,7 @@ The gracious millionaire cannot only be gracious when the deal closes.
 
 He has to become gracious while the deal is unresolved.
 
-He has to become gracious when his wife sees something differently.
+He has to become gracious when Jenny sees something differently.
 
 He has to become gracious when the book is not yet the collaboration he hoped it would be.
 

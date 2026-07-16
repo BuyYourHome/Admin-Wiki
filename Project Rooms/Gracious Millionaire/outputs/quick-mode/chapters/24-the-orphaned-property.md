@@ -150,7 +150,7 @@ I tend to want to consider anything that gives us out-of-the-box thinking and hi
 
 That difference between us is not a small thing.
 
-It is one thing to say that a husband and wife should walk in unity. It is another thing to sit with a live opportunity, a cash need, a set of assets you have not inspected yet, a spreadsheet you know you have to redesign, and a wife who is not looking favorably on the trade.
+It is one thing to say that a husband and wife should walk in unity. It is another thing to sit with a live opportunity, a cash need, a set of assets you have not inspected yet, a spreadsheet you know you have to redesign, and Jenny not yet looking favorably on the trade.
 
 About a month before this, Jenny and I had begun to meet on the couch first thing every morning for devotions and prayer. We pray about everything we are involved in or concerned with. We consider what God wants us to pay attention to.
 
@@ -170,7 +170,7 @@ That is often where lordship becomes measurable.
 
 Not in the part where I say I trust God.
 
-In the part where I have an idea I like, my wife has concerns, the business has pressure, and the opportunity may disappear if we move too slowly.
+In the part where I have an idea I like, Jenny has concerns, the business has pressure, and the opportunity may disappear if we move too slowly.
 
 What do I do then?
 

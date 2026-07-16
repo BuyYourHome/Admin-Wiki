@@ -34,11 +34,11 @@ After listening to him teach on increasing expectation, I hear another question 
 
 That does not make this a book about getting God to make us rich. It makes it a book about whether we can believe the Father is good, steward what He has trusted to us, and let Him decide what increase should look like.
 
-It is our story of our adventures with real estate investment and the lessons we have learned, or are learning. When Jenny and I got married, our net worth was about negative $200,000. At the point of this writing, God has increased our net worth to about $4 million. That is a real number, and I do not want to pretend it is unimportant. But the number is not the point. The point is what happened to our hearts while the number was being formed.
+It is our story of our adventures with real estate investment and the lessons we have learned, or are learning. When Jenny and I got married, our net worth was about negative $200,000. At the point of this writing, God has increased our net worth to about $4 million. That is a real number, and we do not want to pretend it is unimportant. But the number is not the point. The point is what happened to our hearts while the number was being formed.
 
 The bulk of this book is made of stories. Real transactions. Real sellers. Real houses. Real phone calls. Real pressure. Real fear. Real favor. Some of the stories are profitable. Some are painful. Some are unfinished. Some still make me ask whether I understood what God was doing as clearly as I thought I did at the time.
 
-That is one of the dangers in writing a book like this. Every author has the temptation to present himself in the best possible light. I think that temptation may become even stronger when artificial intelligence is helping shape the manuscript. AI can smooth the rough edges. It can make the sentences sound better. It can make the story feel cleaner than the life that produced it.
+That is one of the dangers in writing a book like this. Every author has the temptation to present the story in the best possible light. I think that temptation may become even stronger when artificial intelligence is helping shape the manuscript. AI can smooth the rough edges. It can make the sentences sound better. It can make the story feel cleaner than the life that produced it.
 
 I saw a small picture of that danger while we were working on the cover. I gave Jean a photo to use as a reference. The first enhanced versions looked good at a glance. The clothing felt familiar. The posture felt familiar. The scene even carried the feeling I wanted. But when I looked closely at the faces, the people were not Jenny and me. They were nice-looking people. They just were not us.
 

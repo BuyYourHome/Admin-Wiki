@@ -6,11 +6,11 @@ Generated manuscripts and chapter drafts are outputs, not factual source authori
 
 | Mode Or Purpose | Version | Active Local State | Notes |
 | --- | --- | --- | --- |
-| Quick | `quick-jenny-rosebrooks-and-ai-photo-reality-2026-07-16` | `outputs/quick-mode/manifest.md`, `outputs/quick-mode/chapters/*.md`, `outputs/Gracious Millionaire - Quick Mode.html` | Current Quick integration manuscript. Adds Wes's introduction truthfulness/AI-photo reality material and Jenny's first-person Rosebrooks reflections; 32 linked sections and 46,789 words. |
+| Quick | `quick-global-editorial-rules-pass-2026-07-16` | `outputs/quick-mode/manifest.md`, `outputs/quick-mode/chapters/*.md`, `outputs/Gracious Millionaire - Quick Mode.html` | Current Quick integration manuscript after a targeted global editorial pass for shared authorship, chapter-voice balance, and street/project-name property references; 32 linked sections and 46,780 words. |
 | Dialogue | `dialogue-v1-2026-07-13` | `outputs/dialogue-mode/manifest.md`, `outputs/dialogue-mode/chapters/*.md`, `outputs/Gracious Millionaire - Dialogue Mode.html` | Current modular Dialogue manuscript. |
 | Interview | `v3` | `outputs/Gracious Millionaire - Interview Manuscript v3 - Jenny Coastal Surrender - Clickable.html` | Current compiled Interview reference deliverable; no duplicate local Markdown export retained. |
 | Rewrite | `v28` | `outputs/Gracious Millionaire - Rewrite Mode.html` | Current compiled Rewrite reference deliverable; no duplicate local Markdown export retained. |
-| Jenny review | Quick `quick-jenny-rosebrooks-and-ai-photo-reality-2026-07-16` | `outputs/jenny-chapter-review-current/Gracious Millionaire - Jenny Clickable Chapter Review - CURRENT.html` | Stable current review packet refreshed from Quick mode after the July 16 introduction and Jenny Rosebrooks updates; sent to Jenny with Wes copied on 2026-07-16. |
+| Jenny review | Quick `quick-global-editorial-rules-pass-2026-07-16` | `outputs/jenny-chapter-review-current/Gracious Millionaire - Jenny Clickable Chapter Review - CURRENT.html` | Stable current review packet refreshed from Quick mode after the July 16 global editorial rules pass; sent to Jenny with Wes copied on 2026-07-16. |
 
 ## Active Assets
 

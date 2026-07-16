@@ -106,7 +106,7 @@ That does not prove the market would have converted.
 
 But it does prove the aviation thesis was not invented from thin air. Wes was trying to identify a reachable audience: people who already owned airplanes, belonged to aviation communities, or had reason to care about backcountry and recreational airstrips.
 
-That is important for the reader because it keeps Providence Landing from becoming a caricature of one man's imagination. The better reading is more complicated. There was imagination, but there was also work. There was a dream, but there was also data. There was risk, but there was also an attempt to understand the market.
+That is important for the reader because it keeps Providence Landing from becoming a caricature of one person's imagination. The better reading is more complicated. There was imagination, but there was also work. There was a dream, but there was also data. There was risk, but there was also an attempt to understand the market.
 
 The pilot survey is especially important because it gives both encouragement and warning.
 

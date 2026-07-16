@@ -14,7 +14,7 @@ That is not the way I would choose to begin the chapter if I were trying to make
 
 But the newer chapters have made me less interested in looking good and more interested in telling the truth.
 
-Providence Landing did not begin with a clean strategic retreat. It began with frustration, poor relational leadership, and a man trying to get away from pressure instead of staying submitted to God and loving his wife well in the middle of it.
+Providence Landing did not begin with a clean strategic retreat. It began with frustration, poor relational leadership, and a man trying to get away from pressure instead of staying submitted to God and loving Jenny well in the middle of it.
 
 That matters because the name of the project is Providence Landing.
 
@@ -50,7 +50,7 @@ Sometimes God protects us not only from accidents, but from the wrong opportunit
 
 That is harder to recognize because the wrong opportunity can still look interesting.
 
-Driving around aimlessly in fierce storms, I decided to find a hotel in South Boston, Virginia. I got some groceries and went to the hotel to get out of my wet clothes, take a shower, and relax. My attitude was horrible. My disposition was depressed. My energy level was low. I had not treated my wife well, and there was really nothing about my response that I was proud of.
+Driving around aimlessly in fierce storms, I decided to find a hotel in South Boston, Virginia. I got some groceries and went to the hotel to get out of my wet clothes, take a shower, and relax. My attitude was horrible. My disposition was depressed. My energy level was low. I had not treated Jenny well, and there was really nothing about my response that I was proud of.
 
 I was just going through the motions of what I knew to do.
 

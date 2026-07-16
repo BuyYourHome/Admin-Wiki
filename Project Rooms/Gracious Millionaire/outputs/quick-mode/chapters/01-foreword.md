@@ -18,11 +18,11 @@ It is a story about lordship.
 
 That is what makes it worth reading.
 
-Wes writes as a man who has learned enough to know that learning is not finished. He does not come to the reader as someone standing safely above the story. He writes from inside it. He writes from the pressure of the decision, the call with the seller, the tension with Jenny, the spreadsheet that looks profitable but cannot measure peace, the opportunity that may be favor or may be a test, and the memory of earlier seasons when real estate did not produce blessing but loss.
+Wes and Jenny write as people who have learned enough to know that learning is not finished. They do not come to the reader as people standing safely above the story. They write from inside it: from the pressure of the decision, the call with the seller, the tension between possibility and caution, the spreadsheet that looks profitable but cannot measure peace, the opportunity that may be favor or may be a test, and the memory of earlier seasons when real estate did not produce blessing but loss.
 
 That honesty matters.
 
-There is a kind of success writing that only wants to tell the reader what worked. It edits out the failures, softens the confessions, polishes the motives, and turns every outcome into proof that the author always knew what he was doing.
+There is a kind of success writing that only wants to tell the reader what worked. It edits out the failures, softens the confessions, polishes the motives, and turns every outcome into proof that the authors always knew what they were doing.
 
 This is not that kind of book.
 
@@ -82,7 +82,7 @@ It belongs to their marriage.
 
 It belongs to the reader too.
 
-Jenny's presence in the manuscript is important because this is not only a story about one man's drive, creativity, or willingness to consider unusual transactions. It is also a story about shared discernment. Jenny brings relational memory, practical caution, prayer, and the weight of unity. Her hesitation is not treated as an obstacle to success. At its best, the manuscript treats it as part of the process by which lordship becomes measurable.
+Jenny's presence in the manuscript is important because this is not only a story about Wes's drive, creativity, or willingness to consider unusual transactions. It is also a story about shared discernment. Jenny brings relational memory, practical caution, prayer, and the weight of unity. Her hesitation is not treated as an obstacle to success. At its best, the manuscript treats it as part of the process by which lordship becomes measurable.
 
 That may be one of the most important lessons in the book.
 
@@ -96,7 +96,7 @@ It becomes real when a tenant may need to move.
 
 It becomes real when helping someone creates pain later.
 
-It becomes real when a husband has an idea and a wife has concerns.
+It becomes real when Wes has an idea and Jenny has concerns.
 
 It becomes real when the number on the spreadsheet is large enough to make pressure sound like wisdom.
 
@@ -106,7 +106,7 @@ That is not a weakness.
 
 It is part of the truthfulness of the book.
 
-There is a humility in admitting that God is still working on the narrator while the story is being told. There is also an invitation in it. The reader is not being asked to admire a finished monument. The reader is being invited to walk through a living testimony and ask the same questions in his or her own life.
+There is a humility in admitting that God is still working on the people telling the story while the story is being told. There is also an invitation in it. The reader is not being asked to admire a finished monument. The reader is being invited to walk through a living testimony and ask the same questions in his or her own life.
 
 What has money become to me?
 

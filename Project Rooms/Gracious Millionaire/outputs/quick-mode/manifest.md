@@ -2,7 +2,7 @@
 
 - Title: Gracious Millionaire - Quick Mode
 - Mode: Quick Mode
-- Version: quick-jenny-rosebrooks-and-ai-photo-reality-2026-07-16
+- Version: quick-global-editorial-rules-pass-2026-07-16
 - HTML Output: ../Gracious Millionaire - Quick Mode.html
 - Markdown Export: optional
 - Source Authority: Original project-room source files, source inventory, factual notes, correction notes, style guide, and current Wes/Jenny direction.
