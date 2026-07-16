@@ -70,7 +70,19 @@ That sentence should have felt like the end of the story.
 
 It was not.
 
+Jenny remembers that season with a detail I could not have supplied by myself. Before I went to meet Brynda, Jenny had already checked the CRM and the spreadsheet records. Brynda had received six pre-foreclosure letters over about six weeks and had not responded until the foreclosure was close enough to feel urgent. On paper, it looked like a familiar estate situation: an heir had inherited a townhouse after her sister died. But this was not the simpler kind of estate purchase where an heir lives somewhere else and treats the proceeds as a windfall. Brynda was living in the house.
+
+That changed the weight of the assignment for Jenny.
+
+After I met with Brynda, Jenny and I talked through the situation together. Brynda wanted to stay. She did not have the funds to bring the mortgage current. She said she had no place to go and no one to help her. We had already made similar arrangements with two other elderly owners, where we owned the home and they leased it back for as long as they wanted to stay. Those situations had gone smoothly. The people had been appreciative. Jenny can still hear herself saying, half joking and half serious, "This isn't just a business, it's a ministry."
+
+That sentence matters because it was not a slogan for a chapter. It was how the business felt to us at the time. We wanted Buy Your Home to be a business of service: service to sellers, buyers, contractors, realtors, and tenants. Jenny has carried that responsibility with a seriousness that is easy to miss if the story is reduced to documents and claims. She thanks God for trusting the business to us, and she does not want us to jeopardize that trust.
+
 For the next year, Brynda continued living in the home. We did more than own the house. Jenny and I visited. I drove Brynda to medical appointments. I helped with groceries. I helped with technology. We checked on her. I believed we were doing what we had said we would do. I believed we had made a business decision that also carried mercy inside of it.
+
+Jenny saw the mercy, but she also saw the strain. Brynda called often for help, especially with transportation to medical appointments because she did not drive. Jenny noticed that food was an issue, so we brought hot meals several times and then set up online ordering options through places like Walmart and Amazon so Brynda could choose what she needed. Jenny is honest enough to say Brynda seemed demanding to her. But Jenny also saw a woman with real needs and apparently no one else stepping in.
+
+That honesty is important. We were not helping a simple person in a simple story. Brynda could handle her own medications, finances, bills, and appointments. She wrote complete sentences with correct grammar and punctuation. At times her texts were amusing, full of ordinary comments about sports, holidays, and whatever had caught her attention. She was capable in many ways and still needy in others. She seemed somewhat appreciative, though not in a warm or effusive way. That is closer to the truth than either a heroic ministry story or a predatory business story.
 
 This is one of the tensions of being a gracious millionaire.
 
@@ -90,6 +102,10 @@ That question became much harder when the lawsuit came.
 
 In September of 2024, Brynda's daughter came to North Carolina. Shortly after that, Brynda was taken to Maryland. The next communication was not gratitude or a question or a conversation. It was a summons and complaint.
 
+Jenny's memory of the daughter's visit is sharper than mine in some ways. Brynda's daughter had not visited in years. We met for lunch, and Jenny felt something was wrong. Brynda was quiet. The meeting was awkward. In the weeks that followed, Brynda's texts changed. The complete sentences and punctuation disappeared and were replaced by short, casual text language that did not sound like her. When we went to the house, no one answered. The blinds were closed. The house was locked up tight. Later we learned she had been taken to Maryland without a word to us.
+
+Jenny said it hurt that we did not get to say goodbye.
+
 The lawsuit tried to unwind the transaction. It claimed fraud, breach of fiduciary duty, unfair and deceptive trade practices, undue influence, and lack of mental capacity. At first, the daughter had herself appointed guardian ad litem. That order was later set aside. Brynda then proceeded on her own behalf.
 
 I am not writing this as a legal argument. Lawyers can do that better than I can. The legal record has its own language and its own rules. I am writing this because the spiritual pressure of the moment matters to the story of this book.
@@ -98,9 +114,15 @@ I had to ask myself what graciousness looks like when it is accused.
 
 It is easy to be gracious when the other person is thankful. It is easy to talk about favor when the deal works and everybody smiles. It is much harder when the story is retold in a way that makes your help sound predatory. It is much harder when the person who received the benefit is now the plaintiff. It is much harder when your wife is hurt because she knows the groceries, the rides, the visits, and the care that do not show up neatly in a complaint.
 
-Jenny said, in substance, that we had helped this woman in a big way.
+Jenny said, in substance, that we had helped this woman in a big way. But the lawsuit did not merely challenge the transaction. It challenged the meaning of what Jenny believed we had been doing.
 
 That was how it felt to us.
+
+For Jenny, the lawsuit landed first as shock. She was numb. She was insulted. She wanted Brynda to look us in the face and explain why. Then another thought sat underneath the anger: maybe this was not really Brynda's doing. Maybe Brynda had been caught in the crosshairs of an estranged daughter who arrived after the house was gone.
+
+The case then became part of Jenny's daily life in a way she never wanted. We hired a respected law firm. There were Zoom calls, due diligence, depositions, motions, briefs, and hearings. Jenny learned a legal language she had never wanted to learn. She read, researched, gathered, organized, and found facts that helped our attorneys. They told her she would make a good paralegal. She felt more like a private investigator.
+
+The legal fees were enormous. Jenny eventually had to stop looking at the monthly statements and trust that God would provide. She held on to promises like Joel 2:25, that God can restore the years the locusts have eaten, and Genesis 50:20, that what was meant for evil God can mean for good. That was not decorative Bible language for her. It was how she kept breathing while the case kept costing money.
 
 But feelings are not enough either. Being hurt does not make us right. Being accused does not make us innocent. Being generous does not mean we never need correction. I have tried to keep my heart open to that. I have invited my Father to correct me before, and I have to keep inviting Him when the correction would be expensive or embarrassing.
 
@@ -160,6 +182,10 @@ Then we waited.
 
 Ten weeks is a long time to wait when your name, your money, your reputation, and your peace are tied up in four sentences you have not yet read.
 
+Jenny did not experience the hearing as theater or strategy. She was a stranger to courtrooms and disliked everything about being there. It felt to her almost unreal, as if she were watching someone else's show instead of living her own life. She heard Brynda's attorney say things she believed were untrue and twist what had been a good thing into something she no longer recognized. She had not expected people to speak so boldly that way in court.
+
+Then the hearing ended, and all we could do was wait.
+
 On Monday of that week, the decision came.
 
 The plaintiff's motion for summary judgment was denied as to all claims. Our motion was granted as to all causes of action except the undue influence count. The judge found that a genuine issue of material fact remained on that one claim and asked our attorney to draft the order.
@@ -184,7 +210,7 @@ We still had decisions in front of us. We made an appointment to speak with our 
 
 Jenny and I did not see it the same way immediately.
 
-Jenny was already willing to consider settlement if it would be cheaper than trial. She may be right. There is a wisdom in not spending more money to prove a point than the point is worth. There is also a wisdom in not letting fear dress itself up as prudence.
+Jenny was already willing to consider settlement if it would be cheaper than trial. She wanted it ended as soon as it could be ended. She was asking herself whether that was fear or wisdom. The thought of a jury trial almost paralyzed her. She may be right. There is a wisdom in not spending more money to prove a point than the point is worth. There is also a wisdom in not letting fear dress itself up as prudence.
 
 My first reaction was different. What remained of the case looked weak to me. Any demand in mediation would mostly be posturing. I wanted the other side to know that we were willing to end it, but if they were not reasonable, we were prepared to go to trial. And if we won, I was already thinking about damages and counterclaims.
 

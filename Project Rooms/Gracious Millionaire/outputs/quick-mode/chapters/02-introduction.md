@@ -38,6 +38,16 @@ It is our story of our adventures with real estate investment and the lessons we
 
 The bulk of this book is made of stories. Real transactions. Real sellers. Real houses. Real phone calls. Real pressure. Real fear. Real favor. Some of the stories are profitable. Some are painful. Some are unfinished. Some still make me ask whether I understood what God was doing as clearly as I thought I did at the time.
 
+That is one of the dangers in writing a book like this. Every author has the temptation to present himself in the best possible light. I think that temptation may become even stronger when artificial intelligence is helping shape the manuscript. AI can smooth the rough edges. It can make the sentences sound better. It can make the story feel cleaner than the life that produced it.
+
+I saw a small picture of that danger while we were working on the cover. I gave Jean a photo to use as a reference. The first enhanced versions looked good at a glance. The clothing felt familiar. The posture felt familiar. The scene even carried the feeling I wanted. But when I looked closely at the faces, the people were not Jenny and me. They were nice-looking people. They just were not us.
+
+That is not good enough for a cover, and it is not good enough for this book.
+
+It would be easy to tell a nice story that seems true until you look closely at the details. It would be easy to gloss over the parts that make us look less wise, less spiritual, less patient, or less certain. But if the faces are wrong, the picture is wrong. If the details are polished until they no longer resemble reality, the testimony has lost something important.
+
+So I have to keep going back to the drawing board with the manuscript the same way I had to keep going back to the drawing board with the cover. The goal is not to make Jenny and me look good. The goal is to tell the truth closely enough that the reader can see what God has actually been doing.
+
 That is part of why I am writing.
 
 At the time I am writing this, I am still building the framework. The framework is a set of Biblical principles that I want to hang stories upon. I do not have all of the stories identified. I do not have all of the lessons learned. But while I am writing, I am praying that God will give the examples needed to reveal the truths.
