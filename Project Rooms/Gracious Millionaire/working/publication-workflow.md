@@ -11,7 +11,7 @@ Separate manuscript writing from packaging and delivery so a packaging correctio
 
 ## Phase 2: Build And Validate
 
-1. Run `tools/gm-manuscript.cmd Quick refresh or tools/gm-manuscript.cmd Dialogue refresh` for a modular mode.
+1. Run `tools/gm-manuscript.cmd Quick refresh`, `tools/gm-manuscript.cmd Dialogue refresh`, or `tools/gm-manuscript.cmd Rewrite refresh` for the applicable modular mode.
 2. Confirm the cover is embedded, every manifest chapter appears, every outline link resolves, the version is visible, and word/page statistics are present.
 3. For a non-modular legacy manuscript, validate the existing review packet without rewriting manuscript prose.
 4. Treat cover, anchor, filename, and attachment corrections as packaging changes. Rebuild or resend the packet only; do not rerun the writing mode.

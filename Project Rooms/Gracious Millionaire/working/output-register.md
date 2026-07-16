@@ -9,8 +9,8 @@ Generated manuscripts and chapter drafts are outputs, not factual source authori
 | Quick | `quick-global-editorial-rules-pass-2026-07-16` | `outputs/quick-mode/manifest.md`, `outputs/quick-mode/chapters/*.md`, `outputs/Gracious Millionaire - Quick Mode.html` | Current Quick integration manuscript after a targeted global editorial pass for shared authorship, chapter-voice balance, and street/project-name property references; 32 linked sections and 46,780 words. |
 | Dialogue | `dialogue-v1-2026-07-13` | `outputs/dialogue-mode/manifest.md`, `outputs/dialogue-mode/chapters/*.md`, `outputs/Gracious Millionaire - Dialogue Mode.html` | Current modular Dialogue manuscript. |
 | Interview | `v3` | `outputs/Gracious Millionaire - Interview Manuscript v3 - Jenny Coastal Surrender - Clickable.html` | Current compiled Interview reference deliverable; no duplicate local Markdown export retained. |
-| Rewrite | `v28` | `outputs/Gracious Millionaire - Rewrite Mode.html` | Current compiled Rewrite reference deliverable; no duplicate local Markdown export retained. |
-| Jenny review | Quick `quick-global-editorial-rules-pass-2026-07-16` | `outputs/jenny-chapter-review-current/Gracious Millionaire - Jenny Clickable Chapter Review - CURRENT.html` | Stable current review packet refreshed from Quick mode after the July 16 global editorial rules pass; sent to Jenny with Wes copied on 2026-07-16. |
+| Rewrite | `rewrite-v29-2026-07-16` | `outputs/rewrite-mode/manifest.md`, `outputs/rewrite-mode/chapters/*.md`, `outputs/Gracious Millionaire - Rewrite Mode.html` | Independent source-derived whole-book rewrite with 27 linked chapters, 36,161 words, and about 145 estimated manuscript pages. |
+| Jenny review | Rewrite `rewrite-v29-2026-07-16` | `outputs/jenny-chapter-review-current/Gracious Millionaire - Jenny Clickable Chapter Review - CURRENT.html` | Stable current review packet refreshed from Rewrite v29 and sent to Jenny with Wes copied on 2026-07-16. |
 
 ## Active Assets
 

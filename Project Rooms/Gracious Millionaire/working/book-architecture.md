@@ -34,6 +34,49 @@ Maintain the following information in this file or in linked, versioned architec
 
 Use stable story-unit identifiers so material can move between chapters without losing its source trail.
 
+## Current Approved Architecture
+
+Version: `rewrite-v29-2026-07-16`
+
+The current architecture organizes the book as a shared memoir by Wes and Jenny. It uses first-person Wes, first-person Jenny, shared `we`, or clearly alternating first-person passages according to source ownership. One spouse should not routinely introduce the other spouse's memories as supporting evidence.
+
+| Part | Order | Story unit | Chapter | Voice | Structural decision |
+| --- | ---: | --- | --- | --- | --- |
+| I. The Story We Are Actually Telling | 01 | GM-FRAME-01 | Foreword | Shared | Frame the book as testimony and formation, not a success manual. |
+| I | 02 | GM-FRAME-02 | The Faces In The Picture | Shared | Use the AI-cover incident to establish truthfulness, shared authorship, and the danger of flattering fiction. |
+| I | 03 | GM-PROTECT-01 | Always God Is There | Wes with shared reflection | Establish protection and grace before business success. |
+| II. Jenny's Road To Risk And Trust | 04 | GM-JENNY-01 | The Safe Way | Jenny | Merge the conventional home purchase, sports-car trade, and early safety orientation into one substantial opening chapter. |
+| II | 05 | GM-JENNY-02 | A House Full Of Responsibility | Jenny | Join the employment-to-motherhood transition, three babies, mortgage pressure, and family responsibility. |
+| II | 06 | GM-JENNY-03 | Equity And Loss | Jenny | Carry the first marriage ending and home-sale proceeds without rushing pain into a lesson. |
+| II | 07 | GM-JENNY-04 | The Beach Condo | Jenny | Join purchase, HOA/assessment pressure, 2008 collapse, waiting, and the buyer found through the building. |
+| II | 08 | GM-JENNY-05 | Coastal Surrender | Jenny | Preserve Marriage Number Two, Linda's intervention, Pawleys Island, and the unresolved transition in Jenny's voice. |
+| III. Wes's Road To Order And Assignment | 09 | GM-WES-FAIL-01 | Failures In Real Estate | Wes | Let failure remain formation rather than a quick setup for favor. |
+| III | 10 | GM-SYSTEMS-01 | Convergence | Wes | Explain the systems history, database thinking, and why real estate became the classroom. |
+| III | 11 | GM-SYSTEMS-02 | Technology On Top Of Order | Wes with shared reflection | Place Jean and AI on top of established processes; keep technology from becoming the hero. |
+| III | 12 | GM-PROPERTY-01 | Early Properties | Wes | Preserve corrected property sequence and source-bounded lessons using street names only. |
+| III | 13 | GM-MONEY-01 | Private Money And Investor Relationships | Wes | Treat capital as relationship, trust, and stewardship rather than technique alone. |
+| III | 14 | GM-LEAD-01 | Leadership Or The Lack Of It | Wes with Jenny represented only from Jenny sources | Keep leadership unfinished and distinguish vision from manipulation. |
+| III | 15 | GM-FAVOR-01 | Favor | Wes | Define favor as assignment-related provision rather than personal superiority. |
+| III | 16 | GM-BLESS-01 | Blessing | Wes | Show blessing as received and stewarded without reducing it to profit. |
+| IV. Projects That Tested Us | 17 | GM-PROV-01 | Providence Landing: The Vision | Wes and shared | Join discovery, airfield appeal, and development vision into one opening movement. |
+| IV | 18 | GM-ASSIGN-01 | Assignment | Shared | Test opportunity against lordship, marriage, and peace. |
+| IV | 19 | GM-ROSE-01 | Rosebrooks: Service Before The Deal | Alternating Wes/Jenny | Center the original contact, letters, foreclosure urgency, desire to help Brynda remain, and Jenny's records work. |
+| IV | 20 | GM-ROSE-02 | Rosebrooks: What The Lawsuit Exposed | Alternating Wes/Jenny | Carry the daughter's involvement, legal expense, summary judgment, remaining undue-influence count, and settlement/trial tension without predicting outcome. |
+| IV | 21 | GM-ORPHAN-01 | The Orphaned Property | Wes and shared | Preserve the unresolved trade and waiting without inventing a conclusion. |
+| IV | 22 | GM-LEAD-02 | Leadership, Patience, And The Unfinished Story | Shared | Reconsider leadership through Jenny's caution, patience, and unresolved outcomes. |
+| IV | 23 | GM-PROV-02 | Providence Landing: Letting Go | Shared | Consolidate business review, investor pressure, family cost, and surrender; remove the separate editor chapter. |
+| V. What We Think We Learned | 24 | GM-ABUND-01 | Abundance | Shared | Move from accumulation to stewardship and lordship. |
+| V | 25 | GM-GRAT-01 | Gratitude | Shared | Present gratitude as practice rather than slogan. |
+| V | 26 | GM-COMPLAIN-01 | Complaining | Shared | Name complaint as distortion without turning the chapter into a sermon detached from the stories. |
+| V | 27 | GM-TRIBE-01 | Tribes | Shared | End with meaningful work, belonging, calling, and lessons still being lived. |
+
+## Deferred Story Units
+
+- `GM-DOORKNOCK-01`: the Eric door-knocking account remains source material, but the three-property framing is deferred until the other two stories are supplied or Wes directs use of Eric alone.
+- `GM-ABRAHAM-01`: Romans 4:17-18 remains preserved source material for a possible faith-and-impossibility chapter. It is not included automatically because Wes said he may want to build a chapter around it later.
+- `GM-JENNY-NEXT-01`: the connection from Pawleys Island to meeting Wes and the later Buy Your Home story remains missing context.
+- `GM-IMAGE-01`: the uncaptained image remains deferred pending identity, date, place, and story context.
+
 ## Rewrite Mode Responsibility
 
 At the beginning of a requested Rewrite mode run:

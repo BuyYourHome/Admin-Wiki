@@ -9,6 +9,8 @@ if /I "%MODE%"=="Quick" (
     set "MODE_SLUG=quick-mode"
 ) else if /I "%MODE%"=="Dialogue" (
     set "MODE_SLUG=dialogue-mode"
+) else if /I "%MODE%"=="Rewrite" (
+    set "MODE_SLUG=rewrite-mode"
 ) else (
     goto usage
 )
@@ -31,4 +33,5 @@ exit /b 0
 :usage
 echo Usage: gm-manuscript.cmd Quick [refresh]
 echo        gm-manuscript.cmd Dialogue [refresh]
+echo        gm-manuscript.cmd Rewrite [refresh]
 exit /b 2

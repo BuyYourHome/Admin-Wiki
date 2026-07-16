@@ -36,7 +36,7 @@ Use this skill for Gracious Millionaire project-room processing. OfficeAssist em
 - Use `working\current-state.md` as the compact routine startup snapshot.
 - Keep authoritative and contextual sources in `working\source-inventory.md`, generated products in `working\output-register.md`, and email/Teams publication events in `working\delivery-register.md`.
 - Track only unprocessed substantive source changes in `working\intake-queue.md`.
-- Use `tools\gm-manuscript.cmd Quick refresh or tools\gm-manuscript.cmd Dialogue refresh` to build and validate modular packets with the approved Codex Python runtime.
+- Use `tools\gm-manuscript.cmd Quick refresh`, `tools\gm-manuscript.cmd Dialogue refresh`, or `tools\gm-manuscript.cmd Rewrite refresh` to build and validate the applicable modular packet with the approved Codex Python runtime.
 - Follow `working\publication-workflow.md` after content is editorially ready. Packaging corrections must not rerun a writing mode.
 - Publish manuscript review copies to Teams `SellYourHome / Documents / Marketing / Gracious Millionaire` with a version identifier in every filename. Keep local manifests and chapter files as working state.
 - Keep the local project room focused on active work: original sources, current assets, active modular chapter files and manifests, one current compiled HTML deliverable per mode, and the stable current Jenny review packet.

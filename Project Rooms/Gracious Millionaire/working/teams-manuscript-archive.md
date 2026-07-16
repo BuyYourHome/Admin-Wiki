@@ -1,15 +1,17 @@
 # Gracious Millionaire Teams Manuscript Archive
 
 - Destination: [Marketing / Gracious Millionaire](https://lifeisanadventure.sharepoint.com/sites/SellYourHome/Shared%20Documents/Marketing/Gracious%20Millionaire)
-- Verified: 2026-07-13
-- Versioned manuscript and chapter-draft files: 70
+- Verified: 2026-07-16
+- Versioned manuscript and chapter-draft files: 71
 - Local retention applied: 2026-07-13
 - Original source files remain in the project room. Teams is the historical archive for the 70 versioned generated files listed below.
 - Sixty-five superseded Teams-archived local copies were removed. The current Quick, Dialogue, Interview, and Rewrite HTML deliverables plus the stable Jenny packet remain locally.
 - Working notes, lesson stubs, source-synthesis notes, and outline-only files were not copied as manuscripts.
+- Rewrite v29 was added on 2026-07-16 as `Gracious Millionaire - Rewrite Mode v29.html`; SharePoint verification returned item id `01ZGFUBDPBECSRXBNXVRGI6JTJZ5LEJVLE` and size 795,103 bytes.
 
 | Teams Filename | Original Local Project-Room Path |
 | --- | --- |
+| [Gracious Millionaire - Rewrite Mode v29.html](https://lifeisanadventure.sharepoint.com/sites/SellYourHome/Shared%20Documents/Marketing/Gracious%20Millionaire/Gracious%20Millionaire%20-%20Rewrite%20Mode%20v29.html) | `outputs\Gracious Millionaire - Rewrite Mode.html` |
 | 115 Rosebrooks - Narrative Draft v1.md | `outputs\115 Rosebrooks - Narrative Draft v1.md` |
 | Always God Is There - Narrative Draft v1.md | `outputs\Always God Is There - Narrative Draft v1.md` |
 | Convergence - Narrative Draft v1.md | `outputs\Convergence - Narrative Draft v1.md` |
