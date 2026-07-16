@@ -55,3 +55,33 @@ Remaining defects:
 - Navigation labels, shared footer/sidebar, journal/blog/category surfaces, forms, and responsive presentation remain incomplete.
 
 Exact next objective: redesign the shared header and navigation as the site's editorial frame, including public labels, destinations, active logo/retina logo assets, desktop spacing, and mobile-menu QA.
+
+### 2026-07-15/16 - Shared editorial navigation
+
+Objective: replace production-style navigation labels with a concise reader-facing sequence and verify responsive behavior.
+
+Live changes:
+
+- Renamed and reordered the shared WordPress menu to `Home`, `The Book`, `Themes`, `Journal`, `Updates`.
+- Preserved the existing destinations and assignments to Top Bar, Header, and Footer.
+
+QA evidence:
+
+- REI preview served all five labels in the intended order.
+- Desktop preview at 1280px had no horizontal overflow.
+- Mobile preview at 390x844 displayed the menu toggle, collapsed the navigation, and had no horizontal overflow.
+- Public custom domain continued to serve the prior menu from cache.
+
+Learned paths:
+
+- Use the direct WordPress menu editor for shared labels, ordering, destinations, and location assignments; do not use Beaver Builder for this work.
+- Treat REI preview and custom-domain cache as separate QA targets after shared changes.
+- The visible header logo and the retina-logo reference are separate theme settings.
+
+Failed paths and remaining defects:
+
+- REI `Clear Website Cache` opened a confirmation that hung the Chrome control session, so public propagation was not completed.
+- The basic theme editor did not expose the stale `data-retina` asset; the advanced header customizer remains necessary.
+- Generic footer/sidebar/blog/category content and form presentation remain unfinished.
+
+Exact next objective: redesign `The Book` page around the approved book cover with a cover-led first viewport, book-focused copy and links, and desktop/mobile QA without publishing manuscript chapter text.
