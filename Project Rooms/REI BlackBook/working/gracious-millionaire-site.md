@@ -43,7 +43,7 @@ Create a site called `Gracious Millionaire` for information related to the book 
 
 - Iteration loop: `working\gracious-millionaire-iteration-loop.md`.
 - Latest implementation report: `working\gracious-millionaire-iteration-001.md`.
-- Current full element cleanup map: `working\gracious-millionaire-element-map-012.md`.
+- Current full element cleanup map: `working\gracious-millionaire-element-map-013.md`.
 - Book Outline contains the 25 current working chapter titles and links all titles to the shared `Chapter Being Edited` page.
 - Chapter content is not published on the site.
 
@@ -79,6 +79,7 @@ Create a site called `Gracious Millionaire` for information related to the book 
 - Heartbeat GM Mode run on 2026-07-16 made all six generic template posts private, deleted the two generic categories, and emptied the shared WordPress Primary Sidebar. Native WordPress confirmed the changes, but both public hosts still served old Journal HTML from the REI page cache. The embedded Journal contact block remains unchanged under the public-contact boundary; see `working\gracious-millionaire-element-map-010.md`.
 - Heartbeat GM Mode run on 2026-07-16 changed the Request Updates visible heading to `Request Book Updates` and clarified that name/email are required while phone is optional. Both hosts and 390px mobile QA passed without submitting the form or changing workflow settings. The mobile map gap and approval-bound public contact details remain; see `working\gracious-millionaire-element-map-011.md`.
 - Heartbeat GM Mode run on 2026-07-16 corrected the homepage `About the Book` card destination from `/about/` to `/about-2/` and changed its CTA from `Read More` to `Explore the Book`. Both hosts and the book destinations returned HTTP 200, and 390px mobile QA passed without horizontal overflow; see `working\gracious-millionaire-element-map-012.md`.
+- Heartbeat GM Mode run on 2026-07-16 completed the homepage card sequence: `Book Outline` now routes to `/book-outline/` with `View the Outline`, and `Request Updates` now uses a specific CTA. Both hosts and outline destinations returned HTTP 200, no callout `Read More` labels remain, and 390px mobile QA passed; see `working\gracious-millionaire-element-map-013.md`.
 
 ## Safety Notes
 

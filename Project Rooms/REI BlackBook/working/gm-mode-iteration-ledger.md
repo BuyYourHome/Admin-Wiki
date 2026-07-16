@@ -235,3 +235,35 @@ Remaining defects:
 - Request Updates map/contact presentation remains approval-bound.
 
 Exact next objective: replace the remaining homepage `Read More` labels with specific reader-facing CTAs, verify each card destination, and QA the full card sequence on both hosts at desktop and mobile sizes without retrying The Book or Journal deletion paths.
+
+### 2026-07-16 - Homepage card sequence
+
+Objective: replace the remaining generic homepage card actions and verify each card's semantic destination.
+
+Live changes:
+
+- Changed the `Book Outline` CTA from `Read More` to `View the Outline`.
+- Corrected the Book Outline image, title, and CTA destination from `/services/` to `/book-outline/`.
+- Changed the `Request Updates` CTA from `Read More` to `Request Updates` while retaining `/contact/`.
+
+QA evidence:
+
+- Both homepages and both `/book-outline/` destinations returned HTTP 200.
+- Both homepage responses contained the three reader-facing callout labels and no generic callout `Read More` label.
+- The obsolete Book Outline card destination to `/services/` was absent.
+- Mobile QA at 390 x 844 confirmed all three labels and destinations with no horizontal overflow on either host.
+
+Learned paths:
+
+- The three homepage callout modules remain stable in Beaver Builder.
+- A live destination can still be semantically wrong; compare every card purpose with the canonical page path during QA.
+- Module Save, Builder Done, and Publish Changes propagated immediately to both hosts.
+
+Remaining defects:
+
+- The homepage lower invitation still uses the generic `Contact Us` button label, though its `/contact/` destination is correct.
+- The Book builder remains blank and its stock circle, broken profile placeholder, and missing in-page cover remain.
+- Journal public HTML remains stale behind the REI page cache.
+- Request Updates map/contact presentation remains approval-bound.
+
+Exact next objective: replace the homepage lower `Contact Us` button with `Request Book Updates`, retain `/contact/`, and QA the complete homepage command hierarchy on both hosts at desktop and mobile sizes without retrying The Book or Journal deletion paths.
