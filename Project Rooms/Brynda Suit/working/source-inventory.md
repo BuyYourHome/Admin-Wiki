@@ -98,3 +98,4 @@
 | `Misc BoA docs CY2020 (2).pdf` | Exhibit file | authoritative | SharePoint path: `Property/20-HM-115 Rosebrooks Dr/Lawsuit/Exhibits`. |
 | `misc BoA docs re HELOC x0499 (1).pdf` | Exhibit file | authoritative | SharePoint path: `Property/20-HM-115 Rosebrooks Dr/Lawsuit/Exhibits`. |
 | `Subpoena - Huston (002).pdf` | Exhibit file | authoritative | SharePoint path: `Property/20-HM-115 Rosebrooks Dr/Lawsuit/Exhibits`. |
+| `sources/email/2026-07-16-181902-brynda-suit-notary-aware-cheerful.md` | Routed email markdown | authoritative | Jenny says a notary was present when Brynda signed the Purchase and Sale Agreement; after the lawsuit was filed, the notary spoke with the attorney and with Wes/Jenny, recalled Brynda as cheerful and aware, and said she would not have notarized if Brynda had been compromised. Requested action: update defense strategy. |
