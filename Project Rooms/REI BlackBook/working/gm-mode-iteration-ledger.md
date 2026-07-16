@@ -380,3 +380,35 @@ Remaining defects:
 - The remaining stable pages need a cohesive site-wide generic-module and visual-spacing audit.
 
 Exact next objective: audit the stable Home, Book Outline, Chapter status, Book Themes, Request Updates, and confirmation surfaces as one reader journey; remove any remaining non-contact generic modules and complete a cohesive typography/spacing refinement on the highest-impact stable page without retrying The Book or Journal blocked paths.
+
+### 2026-07-16 - Book Outline and chapter-status reader journey
+
+Objective: make the stable outline/status path feel intentionally book-centered while preserving the working chapter structure and keeping manuscript content private.
+
+Live changes:
+
+- Placed the approved full-resolution book cover at the top of the Book Outline at 320 by 480 pixels with descriptive alt text.
+- Removed the duplicate body H1 from the Book Outline and added a `Working chapter list` H2.
+- Preserved all 25 working chapter links and the update-request link.
+- Removed the duplicate body H1 from the shared chapter-status page and strengthened the visual emphasis of its status and return link.
+
+QA evidence:
+
+- Both outline hosts show exactly one H1, the cover, the `Working chapter list` H2, and all 25 chapter links.
+- Both chapter-status hosts show exactly one H1 and a working return link to the outline.
+- The cover loads from the approved full-resolution 1024 by 1536 asset, renders at 320 by 480, and has descriptive alt text.
+- Categories output remains absent and desktop QA found no horizontal overflow.
+
+Learned paths:
+
+- Standard WordPress pages can be edited reliably at `wp-admin/post.php?post=<id>&action=edit` through the classic editor Text mode, followed by `Update` and public QA.
+- Preserve the existing body/list before replacing only the intended lead section.
+- REI/WordPress stripped the first flex/image inline-sizing declarations. A screenshot exposed the oversized cover, and native `width`/`height` attributes with `aligncenter` corrected it.
+
+Remaining defects:
+
+- Homepage cover alt text and stable top-section heading semantics still need a focused pass.
+- The Book builder remains blocked and Journal public HTML remains stale.
+- Form workflow, map/contact content, public details, and broken profile references remain approval-bound.
+
+Exact next objective: audit the Home cover alt text and the Book Themes, Request Updates, and confirmation top sections as one semantic-heading and spacing pass; leave forms, map/contact modules, public details, and profile references untouched, and do not retry The Book or Journal blocked paths without new evidence.

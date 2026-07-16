@@ -43,7 +43,7 @@ Create a site called `Gracious Millionaire` for information related to the book 
 
 - Iteration loop: `working\gracious-millionaire-iteration-loop.md`.
 - Latest implementation report: `working\gracious-millionaire-iteration-001.md`.
-- Current full element cleanup map: `working\gracious-millionaire-element-map-017.md`.
+- Current full element cleanup map: `working\gracious-millionaire-element-map-018.md`.
 - Book Outline contains the 25 current working chapter titles and links all titles to the shared `Chapter Being Edited` page.
 - Chapter content is not published on the site.
 
@@ -84,6 +84,7 @@ Create a site called `Gracious Millionaire` for information related to the book 
 - Heartbeat GM Mode run on 2026-07-16 hid the confirmation page's embedded Categories widget through its Advanced visibility control. Both hosts dropped the empty/default category output, the adjacent contact module remained unchanged, and mobile QA passed; see `working\gracious-millionaire-element-map-015.md`.
 - Heartbeat GM Mode run on 2026-07-16 applied the same reversible visibility cleanup to Book Themes. Both hosts dropped Categories/default-All output, the book-focused About and adjacent contact modules remained unchanged, and mobile QA passed; see `working\gracious-millionaire-element-map-016.md`.
 - Heartbeat GM Mode run on 2026-07-16 hid the Request Updates page's embedded Categories module through the same reversible visibility control. Both hosts dropped Categories/default-All output while the book-focused About block, form, map, and contact module remained unchanged; mobile QA passed with no horizontal overflow. See `working\gracious-millionaire-element-map-017.md`.
+- Heartbeat GM Mode run on 2026-07-16 placed the approved full-resolution book cover on the Book Outline, removed duplicate body H1s from the outline and shared chapter-status page, added a clear chapter-list subheading, and preserved all 25 chapter links and the return path. Both hosts passed public QA with one H1 per page and no horizontal overflow. See `working\gracious-millionaire-element-map-018.md`.
 
 ## Safety Notes
 
