@@ -7,7 +7,7 @@
 - Markdown Export: optional
 - Source Authority: Original project-room source files, source inventory, factual notes, correction notes, style guide, and current Wes/Jenny direction.
 - Baseline Note: Mechanical Quick-mode modular baseline seeded from the current GPT-5-generated Rewrite Mode v28 manuscript on 2026-07-13 so future Quick mode edits can work chapter-by-chapter. This baseline is manuscript state, not factual source authority; original project-room sources and correction notes remain controlling.
-- Cover: ../book-cover/gracious-millionaire-book-cover-wes-and-jenny-browning-2026-07-10-email.jpg
+- Cover: ../book-cover/gracious-millionaire-book-cover-wes-and-jenny-browning-smaller-the-2026-07-16-email.jpg
 
 | Order | Title | File | Status |
 | --- | --- | --- | --- |

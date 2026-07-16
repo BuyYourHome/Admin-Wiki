@@ -2,7 +2,13 @@
 
 ## Current Cover Concept
 
+- Full-resolution PNG: `gracious-millionaire-book-cover-wes-and-jenny-browning-smaller-the-2026-07-16.png`
+- Review/email JPG: `gracious-millionaire-book-cover-wes-and-jenny-browning-smaller-the-2026-07-16-email.jpg`
+
+The July 10 Wes-and-Jenny author-line cover remains preserved in this folder for comparison:
+
 - `gracious-millionaire-book-cover-wes-and-jenny-browning-2026-07-10.png`
+- `gracious-millionaire-book-cover-wes-and-jenny-browning-2026-07-10-email.jpg`
 
 ## Cover Text
 
@@ -12,7 +18,7 @@
 
 ## Use
 
-Use this version when a Gracious Millionaire book-cover image is needed for review, website placement, or cross-promotion.
+Use the smaller-`The` 2026-07-16 version when a Gracious Millionaire book-cover image is needed for review, manuscript packets, website placement, or cross-promotion.
 
 Design intent:
 

@@ -14,8 +14,9 @@ Generated manuscripts and chapter drafts are outputs, not factual source authori
 
 ## Active Assets
 
-- Current review cover: `outputs/book-cover/gracious-millionaire-book-cover-wes-and-jenny-browning-2026-07-10-email.jpg`
-- Current full-resolution cover: `outputs/book-cover/gracious-millionaire-book-cover-wes-and-jenny-browning-2026-07-10.png`
+- Current review cover: `outputs/book-cover/gracious-millionaire-book-cover-wes-and-jenny-browning-smaller-the-2026-07-16-email.jpg`
+- Current full-resolution cover: `outputs/book-cover/gracious-millionaire-book-cover-wes-and-jenny-browning-smaller-the-2026-07-16.png`
+- Preserved comparison cover: `outputs/book-cover/gracious-millionaire-book-cover-wes-and-jenny-browning-2026-07-10.png`
 - Website logo assets: `outputs/website-logo/`
 
 ## Historical Output Retention

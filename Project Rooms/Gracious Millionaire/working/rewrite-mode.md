@@ -70,7 +70,7 @@ Before drafting, read and use:
    - Let whole-book context affect structure, sequence, selection, emphasis, and chapter endings.
    - Save the new manuscript in `outputs/` with a versioned name such as `Gracious Millionaire - Manuscript Rewrite v27.md`.
    - Include one manuscript-level AI-generation/provenance note near the beginning, not repeated GPT/model notes at the top of each chapter.
-   - Include the current Gracious Millionaire book cover at the top of the manuscript and clickable packet before the outline. Use `outputs/book-cover/gracious-millionaire-book-cover-wes-and-jenny-browning-2026-07-10-email.jpg` for review packets unless a newer cover is explicitly marked current.
+   - Include the current Gracious Millionaire book cover at the top of the manuscript and clickable packet before the outline. Use `outputs/book-cover/gracious-millionaire-book-cover-wes-and-jenny-browning-smaller-the-2026-07-16-email.jpg` for review packets unless a newer cover is explicitly marked current.
 
 ## Quality Gate
 

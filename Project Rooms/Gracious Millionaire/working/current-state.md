@@ -11,7 +11,7 @@ Use this page for routine project-room startup. Read the larger registers only w
 - Interview review packet: `outputs/Gracious Millionaire - Interview Manuscript v3 - Jenny Coastal Surrender - Clickable.html`
 - Rewrite review packet: `outputs/Gracious Millionaire - Rewrite Mode.html`
 - Stable current review packet: `outputs/jenny-chapter-review-current/Gracious Millionaire - Jenny Clickable Chapter Review - CURRENT.html` (refreshed from Quick mode `quick-global-editorial-rules-pass-2026-07-16`)
-- Current cover: `outputs/book-cover/gracious-millionaire-book-cover-wes-and-jenny-browning-2026-07-10-email.jpg`
+- Current cover: `outputs/book-cover/gracious-millionaire-book-cover-wes-and-jenny-browning-smaller-the-2026-07-16-email.jpg`
 
 ## Current Versions
 

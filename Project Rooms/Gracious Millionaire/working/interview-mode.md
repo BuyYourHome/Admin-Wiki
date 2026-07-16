@@ -122,7 +122,7 @@ Before drafting, read and use:
    - Create a clickable outline by chapter or interview scene.
    - Include a note near the beginning that the interview manuscript is generated from source material and is not a verbatim transcript.
    - Do not place repeated GPT, AI-generation, source-process, or model-explanation notes at the top of each chapter. The beginning of the manuscript is sufficient for attribution and provenance.
-   - Include the current Gracious Millionaire book cover at the top of the manuscript and clickable packet before the outline. Use `outputs/book-cover/gracious-millionaire-book-cover-wes-and-jenny-browning-2026-07-10-email.jpg` for review packets unless a newer cover is explicitly marked current.
+   - Include the current Gracious Millionaire book cover at the top of the manuscript and clickable packet before the outline. Use `outputs/book-cover/gracious-millionaire-book-cover-wes-and-jenny-browning-smaller-the-2026-07-16-email.jpg` for review packets unless a newer cover is explicitly marked current.
 
 ## Guardrails
 

@@ -64,7 +64,7 @@ Each manuscript mode must produce an independent product from the original proje
 
 Generated manuscripts and clickable review packets should include one AI-generation/provenance note near the beginning of the manuscript. Do not place repeated GPT, AI-generation, source-process, or model-explanation notes at the top of each chapter.
 
-Generated manuscripts and clickable review packets should include the current Gracious Millionaire book cover at the top before the outline. Use `outputs/book-cover/gracious-millionaire-book-cover-wes-and-jenny-browning-2026-07-10-email.jpg` for review packets and `outputs/book-cover/gracious-millionaire-book-cover-wes-and-jenny-browning-2026-07-10.png` for full-resolution use unless a newer cover is explicitly marked current.
+Generated manuscripts and clickable review packets should include the current Gracious Millionaire book cover at the top before the outline. Use `outputs/book-cover/gracious-millionaire-book-cover-wes-and-jenny-browning-smaller-the-2026-07-16-email.jpg` for review packets and `outputs/book-cover/gracious-millionaire-book-cover-wes-and-jenny-browning-smaller-the-2026-07-16.png` for full-resolution use unless a newer cover is explicitly marked current.
 
 For efficient compilation, use modular manuscript outputs when available: one Markdown file per chapter under `outputs\<mode-slug>\chapters\`, with `outputs\<mode-slug>\manifest.md` controlling order, version id, status, cover, and output path. The compiled clickable HTML is the normal review deliverable. A full single-file Markdown manuscript is optional and should be generated only when Wes asks for a plain Markdown export, another tool requires it, or a delivery workflow specifically needs it.
 

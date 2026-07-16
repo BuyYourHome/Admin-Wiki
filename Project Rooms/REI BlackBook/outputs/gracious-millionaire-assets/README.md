@@ -5,11 +5,19 @@
 - `gracious-millionaire-logo-concept-2026-07-09.png`
 - `gracious-millionaire-book-cover-concept-2026-07-09.png`
 - `gracious-millionaire-book-cover-wes-and-jenny-browning-2026-07-10.png`
+- `gracious-millionaire-book-cover-current-smaller-the-2026-07-16.png`
+- `gracious-millionaire-book-cover-current-smaller-the-2026-07-16-email.jpg`
 - `gracious-millionaire-logo-header-2026-07-09.png`
 
 ## Use
 
 Use these assets when REI BlackBook needs to reference, promote, or link to the Gracious Millionaire book/project.
+
+Current website cover, 2026-07-16:
+
+- Use `gracious-millionaire-book-cover-current-smaller-the-2026-07-16.png` as the current full-resolution Gracious Millionaire book cover for REI BlackBook website placement.
+- Use `gracious-millionaire-book-cover-current-smaller-the-2026-07-16-email.jpg` where a smaller web/email-sized cover is needed.
+- The July 10 `wes-and-jenny-browning` cover remains preserved for comparison.
 
 Wes instruction, 2026-07-09:
 
@@ -22,7 +30,7 @@ Website guidance:
 - Use the logo in website headers, footer brand areas, or Gracious Millionaire cross-promotion sections.
 - Use `gracious-millionaire-logo-header-2026-07-09.png` for the website header, because it is cropped from the approved logo concept sheet for web-logo use.
 - Use the book-cover concept only where a book/cover visual is appropriate, such as a landing page, card, or feature section.
-- Prefer the `wes-and-jenny-browning` cover version when showing the current Gracious Millionaire book cover because it lists both authors.
+- Prefer the `current-smaller-the-2026-07-16` cover version when showing the current Gracious Millionaire book cover because Wes selected it as the current smaller-`The` manuscript and website cover.
 - Keep the Gracious Millionaire presentation restrained, literary, and faith-centered.
 - Do not style these assets as a luxury wealth brand. The Gracious Millionaire project guidance treats real-estate wealth as the context, not the subject.
 
