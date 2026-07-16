@@ -447,3 +447,29 @@ Remaining defects:
 - Chrome tab finalization timed out twice after QA; the next run should begin with a fresh browser session and close stale GM tabs.
 
 Exact next objective: start with a fresh Chrome session, correct the homepage H1-to-H3 heading gap and cover-card spacing through stable Callout controls, QA desktop/mobile on both hosts, and leave The Book, Journal, forms, maps, contact details, and workflow settings untouched.
+
+### 2026-07-16 - Fresh-session Chrome blocker escalation
+
+Objective: recover from the prior tab-finalization timeout, close stale GM tabs, and continue the homepage hierarchy pass.
+
+Live changes:
+
+- None. The live site was not inspected or edited after browser control failed.
+
+Evidence:
+
+- A fresh Chrome control session initialized successfully.
+- The combined controlled-tab and user-tab discovery request timed out before returning any tab state.
+- Without authoritative tab state, no live builder page was opened.
+
+Learned path:
+
+- A fresh control-session binding alone does not recover this failure. Require a Chrome or Codex Chrome-extension reset and successful tab discovery before resuming builder work.
+
+Remaining defects:
+
+- Homepage H1-to-H3 hierarchy and cover-card spacing remain the next safe visual objective.
+- The Book builder and Journal cache paths remain blocked.
+- Form workflow, map/contact content, public details, and profile references remain approval-bound.
+
+Exact next objective: after Chrome/Codex extension reset, verify tab discovery, close stale GM tabs, and complete the homepage heading/spacing pass; do not retry the same builder path while tab discovery is unavailable.
