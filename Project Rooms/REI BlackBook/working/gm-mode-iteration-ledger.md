@@ -325,3 +325,31 @@ Remaining defects:
 - Public contact details and profile-reference changes remain approval-bound.
 
 Exact next objective: hide only the Book Themes Categories module through its stable builder path, leave the adjacent contact module untouched, and QA both hosts at desktop and mobile sizes without retrying The Book or Journal deletion paths.
+
+### 2026-07-16 - Book Themes Categories cleanup
+
+Objective: remove the Book Themes empty/default Categories output without touching its adjacent contact module.
+
+Live change:
+
+- Set the Book Themes Categories widget module's Advanced visibility to `Never` and published the page.
+
+QA evidence:
+
+- Both Book Themes hosts returned HTTP 200 with no Categories heading, default category link, or Categories module node.
+- The book-focused About block remained live.
+- The adjacent contact module remained present and unchanged.
+- Mobile QA at 390 x 844 showed no Categories output and no horizontal overflow on either host.
+
+Learned paths:
+
+- The reversible visibility path works consistently across separate Beaver Builder pages.
+- Checking the adjacent module node provides a narrow verification that out-of-scope contact content was preserved.
+
+Remaining defects:
+
+- Request Updates still exposes the same Categories/default-All block.
+- Its map, contact content, broken profile reference, and form workflow remain approval-bound.
+- The Book builder remains blocked and Journal public HTML remains stale.
+
+Exact next objective: hide only the Request Updates Categories module through its stable builder path, leave the form, map, and contact module untouched, and QA both hosts at desktop and mobile sizes without retrying The Book or Journal deletion paths.
