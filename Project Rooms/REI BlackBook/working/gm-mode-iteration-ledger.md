@@ -353,3 +353,30 @@ Remaining defects:
 - The Book builder remains blocked and Journal public HTML remains stale.
 
 Exact next objective: hide only the Request Updates Categories module through its stable builder path, leave the form, map, and contact module untouched, and QA both hosts at desktop and mobile sizes without retrying The Book or Journal deletion paths.
+
+### 2026-07-16 - Request Updates Categories cleanup
+
+Objective: remove the Request Updates empty/default Categories output without touching its form, map, or adjacent contact module.
+
+Live change:
+
+- Set the Request Updates Categories widget module's Advanced visibility to `Never` and published the page.
+
+QA evidence:
+
+- Both Request Updates hosts returned HTTP 200 with no Categories heading, default category link, or Categories module node.
+- The book-focused About block, InsiteForm, embedded map, and adjacent contact module remained present and unchanged.
+- Mobile QA at 375 px showed no Categories output and no horizontal overflow on either host.
+
+Learned paths:
+
+- The reversible visibility path works consistently across three separate Beaver Builder pages.
+- Checking the form, map, and contact nodes provides a narrow verification that out-of-scope functionality and public details were preserved.
+
+Remaining defects:
+
+- Request Updates still contains an embedded map, public contact content, and a broken profile reference; those changes remain approval-bound.
+- The Book builder remains blocked and Journal public HTML remains stale.
+- The remaining stable pages need a cohesive site-wide generic-module and visual-spacing audit.
+
+Exact next objective: audit the stable Home, Book Outline, Chapter status, Book Themes, Request Updates, and confirmation surfaces as one reader journey; remove any remaining non-contact generic modules and complete a cohesive typography/spacing refinement on the highest-impact stable page without retrying The Book or Journal blocked paths.
