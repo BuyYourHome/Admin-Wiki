@@ -1,16 +1,16 @@
-# LD. Evans Project Room
+# LD Evans Project Room
 
 ## Purpose
 
-This Project Room holds source material, working notes, open questions, and review-ready outputs for the LD. Evans workflow.
+This Project Room holds source material, working notes, open questions, and review-ready outputs for the LD Evans workflow.
 
-Use this room when Wes asks Codex to organize, analyze, draft, or maintain materials specifically tied to LD. Evans.
+Use this room when Wes asks Codex to organize, analyze, draft, or maintain materials specifically tied to LD Evans.
 
 ## Scope
 
 In scope:
 
-- LD. Evans source notes, documents, emails, screenshots, and source summaries.
+- LD Evans source notes, documents, emails, screenshots, and source summaries.
 - Working inventories, missing-context notes, duplicate/conflict tracking, and review questions.
 - Review-ready outputs under `outputs\`.
 - Matching wiki-managed skill instructions under `C:\Codex\Wiki Files\skills\ld-evans\SKILL.md`.
@@ -34,7 +34,7 @@ Out of scope:
 
 Status: draft.
 
-This room was created as the standard workspace for LD. Evans. No project-specific sources have been added yet.
+This room was created as the standard workspace for LD Evans. No project-specific sources have been added yet.
 
 ## Matching Skill
 
@@ -42,7 +42,7 @@ This room was created as the standard workspace for LD. Evans. No project-specif
 
 ## Dedicated Chat
 
-- Chat name: `LD. Evans`
+- Chat name: `LD Evans`
 - Thread id: `019f6ffe-d7b7-71f0-87d7-17b8e453f59e`
 
 ## Start PR
@@ -54,12 +54,12 @@ Before durable work, follow Start PR Mode in `C:\Codex\Wiki Files\Project Room C
 - Working branch: `main`
 - Before durable file work, confirm the repo is `C:\Codex\Wiki Files` and the current branch is `main`.
 - Follow `Project Room File Ownership And Git Coordination Rule.md` for Project Room ownership, shared Admin files, cross-PR edits, fetch/pull safety, commit scope, and push safety.
-- Commit only scoped LD. Evans room, matching skill, and directly related registry/index changes.
+- Commit only scoped LD Evans room, matching skill, and directly related registry/index changes.
 - Push only when Wes explicitly asks, says the work is finished, or the applicable Admin wiki rules define the deliverable as final and ready to publish.
 
 ## Next Actions
 
-1. Add authoritative LD. Evans source material to `sources\` when Wes provides it.
+1. Add authoritative LD Evans source material to `sources\` when Wes provides it.
 2. Update the source inventory before drafting outputs.
 3. Record missing facts, source documents, deadlines, decision points, or authority questions in `working\missing-context.md`.
 4. Draft review-ready outputs in `outputs\` only from authoritative sources.
