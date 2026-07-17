@@ -42,7 +42,7 @@ Use [[Agent Unit Standard]] for the standard package behind an agent-like operat
 | Wes's Voice | Wiki-managed skill plus project room | Planning | On demand | `skills\wes-voice\SKILL.md`; `Project Rooms\Wes's Voice\README.md` |
 | New Project | Wiki-managed skill plus project room | Draft | On demand | `skills\new-project\SKILL.md`; `Project Rooms\New Project\README.md` |
 | Confidential | Wiki-managed skill plus project room plus dedicated chat | Draft | On demand | `skills\confidential\SKILL.md`; `Project Rooms\Confidential\README.md` |
-| REI BlackBook | Wiki-managed skill plus project room | Draft | On demand | `skills\rei-blackbook\SKILL.md`; `Project Rooms\REI BlackBook\README.md` |
+| REI BlackBook | Wiki-managed skill plus project room plus dedicated chat | Draft | On demand | `skills\rei-blackbook\SKILL.md`; `Project Rooms\REI BlackBook\README.md`; thread id `019f4691-5466-7f72-9683-ab5d3b750c25` |
 | GM Mode Site Iteration | GM Mode heartbeat automation plus REI BlackBook project room | Paused - activation pending | Every 30 minutes when active; each acquired run performs a 45-90 minute coherent book-site design iteration, QA, map refresh, and append-only learning handoff | `skills\rei-blackbook\SKILL.md`; `Project Rooms\REI BlackBook\README.md`; automation id `gm-mode-site-iteration` |
 | Investigate Computer | Wiki-managed skill plus project room plus heartbeat automation | Active | Daily at 6:00 AM Eastern; email Wes only when an issue is detected | `skills\investigate-computer\SKILL.md`; `Project Rooms\Investigate Computer\README.md`; app automation id `investigate-computer-daily-check` |
 | Jenny Daily Email Summary | Behavior inside Email Monitor heartbeat | Active | Runs once daily at/after 8:00 AM Eastern with the Email Monitor heartbeat; emails Jenny from OfficeAssist and verifies Sent Items | `skills\email-monitor\SKILL.md`; `Email Monitor` prompt notes |
@@ -153,6 +153,7 @@ Purpose:
 - Carry out safe, in-scope admin actions when the email instruction and applicable workflow rules allow it.
 - Route Gracious Millionaire email into the Gracious Millionaire project room as Markdown source files, update the intake/source ledger when required, and send a direct follow-up message to the Gracious Millionaire project-room thread with the routed source path and short summary. Do not process the manuscript from the OfficeAssist monitor thread.
 - Route Brynda Suit email into the Brynda Suit project room as Markdown source files, update the source inventory when needed, and send a direct follow-up message to the Brynda Suit task with the routed source path, short summary, and instruction to wake up and respond to the email. Do not process the Brynda Suit response from the OfficeAssist monitor thread.
+- Route `GM Site` / REI BlackBook website instruction emails into the REI BlackBook project room as Markdown source files, update the source inventory when needed, and send a direct follow-up message to the REI Blackbook project-room thread with the routed source path, short summary, and instruction to process the website request. Do not process the website request from the OfficeAssist monitor thread.
 - Report blockers, ambiguous authority, mailbox failures, or decisions needed in the attached status thread.
 - Avoid repeated processing by tracking handled message ids in local monitor memory.
 - Keep routine no-new-instruction checks quiet with `DONT_NOTIFY`.
@@ -175,6 +176,13 @@ Special routing:
 - Current Brynda Suit task id: `019f61c3-d4c0-7a52-a5a0-e4066ea9b303`.
 - Do not create a new Brynda Suit task for routing unless Wes explicitly asks for one.
 - Do not draft, edit, or send the requested Brynda Suit response from the OfficeAssist monitor thread unless Wes explicitly asks for processing there; the default action is source routing plus direct handoff only.
+- If an instruction email has a subject containing `GM Site`, or otherwise clearly belongs to the REI BlackBook WebTools Sites / Gracious Millionaire website workflow, route it into `Project Rooms\REI BlackBook\` as source material from the OfficeAssist monitor.
+- Preserve each routed REI BlackBook website email as its own Markdown file under `Project Rooms\REI BlackBook\sources\email\`, including available sender, recipient, timestamp, subject, message id or web link, and body text.
+- Update `Project Rooms\REI BlackBook\working\source-inventory.md` when the routed email becomes part of the durable source set.
+- Send a direct follow-up message to the existing REI Blackbook project-room thread with the routed source path, a short summary, and the instruction to process the website request.
+- Current REI Blackbook project-room thread id: `019f4691-5466-7f72-9683-ab5d3b750c25`.
+- Do not create a new REI Blackbook chat for routing unless Wes explicitly asks for one.
+- Do not draft, edit, publish, or send the requested REI BlackBook website response from the OfficeAssist monitor thread unless Wes explicitly asks for processing there; the default action is source routing plus direct handoff only.
 
 Defined in:
 
@@ -302,6 +310,7 @@ Workflow boundary:
 - Defined mode: Daily Email Summary Mode scans Boss's and Jenny's Outlook mailboxes once daily, drafts priority summaries with usage totals, hands delivery to `email-delivery`, verifies OfficeAssist Sent Items, and updates summary state.
 - Defined mode: Gracious Millionaire Email Routing Mode routes Gracious Millionaire emails into the Gracious Millionaire project room as Markdown source files, records the Outlook message id in Email Monitor memory, and sends a direct project-room thread handoff without drafting the book response in this Email Monitor thread.
 - Defined mode: Brynda Suit Email Routing Mode routes Brynda Suit emails into the Brynda Suit project room as Markdown source files, records the Outlook message id in Email Monitor memory, and sends a direct task handoff without drafting the Brynda Suit response in this Email Monitor thread.
+- Defined mode: Web Site Email Routing Mode routes `GM Site` / REI BlackBook website emails into the REI BlackBook project room as Markdown source files, records the Outlook message id in Email Monitor memory, and sends a direct REI Blackbook thread handoff without editing or publishing the website in this Email Monitor thread.
 - Development work, source inventory, open questions, and review-ready handoffs for this workflow live in `C:\Codex\Wiki Files\Project Rooms\Email Monitor\`.
 
 ## Email Delivery
@@ -820,6 +829,7 @@ Defined in:
 
 - `C:\Codex\Wiki Files\skills\rei-blackbook\SKILL.md`
 - `C:\Codex\Wiki Files\Project Rooms\REI BlackBook\README.md`
+- Current REI Blackbook project-room thread id: `019f4691-5466-7f72-9683-ab5d3b750c25`
 
 Important rules:
 

@@ -123,6 +123,30 @@ Current Gracious Millionaire project-room thread id: `019eb9b0-6780-7fb3-a278-29
 
 Do not attach mailbox checking to the Gracious Millionaire heartbeat. Do not create a new Gracious Millionaire chat. Do not draft, edit, or send the requested book response from this Email Monitor or OfficeAssist monitor thread unless Wes explicitly asks for processing here. The default action is source routing plus direct project-room handoff only.
 
+### Web Site Email Routing Mode
+
+Use Web Site Email Routing Mode when the Email Monitor workflow or OfficeAssist instruction monitor sees an instruction email from Wes or Jenny that belongs to REI BlackBook website work.
+
+This mode owns source routing and direct REI BlackBook project-room handoff only. It does not own live REI BlackBook website editing, browser automation, public-site publishing, external email sending, or creating a new REI BlackBook chat.
+
+Activation:
+
+- the email subject contains `GM Site`; or
+- the email otherwise clearly belongs to REI BlackBook WebTools Sites or Gracious Millionaire website workflow.
+
+For each routed email:
+
+- preserve the email as its own Markdown source file under `C:\Codex\Wiki Files\Project Rooms\REI BlackBook\sources\email\`;
+- include sender, recipients, sent time when available, received time, subject, Outlook message id or web link when available, and body text;
+- use a stable, filesystem-safe filename that starts with the email date/time and a short subject slug;
+- update `C:\Codex\Wiki Files\Project Rooms\REI BlackBook\working\source-inventory.md` when the routed email becomes part of the durable source set;
+- record the routed Outlook message id in this workflow's monitor memory so the same email is not routed repeatedly;
+- send a direct follow-up message to the existing REI Blackbook project-room thread with the routed source path, a short summary of the email, and the instruction to process the website request.
+
+Current REI Blackbook project-room thread id: `019f4691-5466-7f72-9683-ab5d3b750c25`.
+
+Do not create a new REI Blackbook chat for this routing unless Wes explicitly asks. Do not process the REI BlackBook website request from this Email Monitor or OfficeAssist monitor thread unless Wes explicitly asks for processing here. The default action is source routing plus direct project-room handoff only.
+
 ### Brynda Suit Email Routing Mode
 
 Use Brynda Suit Email Routing Mode when the Email Monitor workflow or OfficeAssist instruction monitor sees an instruction email from Wes or Jenny that belongs to Brynda Suit.
