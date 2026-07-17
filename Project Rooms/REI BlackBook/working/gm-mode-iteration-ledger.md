@@ -806,3 +806,26 @@ What worked:
 - Reusing the three-column feature row created a clear multi-manuscript presentation without row or column edits.
 
 Exact next objective: replace the inherited generic clock/award/puzzle icons through the stable callout path or complete genuine mobile QA when a confirmed narrow viewport is available.
+
+### 2026-07-17 - Books manuscript icon cleanup
+
+Objective: replace inherited generic feature icons with symbols that support the three manuscript entries.
+
+Live changes:
+
+- `Gracious Millionaire`: clock -> book icon.
+- `Gracious Millionaire - Drawn by Grace`: award -> open-heart icon.
+- `The L.D. Evans Story`: puzzle -> manuscript/document icon.
+
+QA:
+
+- Both public hosts return HTTPS HTTP 200 and contain the intended `fa-book`, `fa-heart-o`, and `fa-file-text-o` classes.
+- The H1 and three manuscript H2 headings remain unchanged.
+- Desktop screenshots show consistent icon sizing, clean title wrapping, and no overlap or horizontal overflow at the verified 1905-pixel viewport.
+- No chapter content, page structure, form, routing, recipient, notification, or delivery setting changed.
+
+What worked:
+
+- Callout `Image` -> `Replace`, followed by icon-library search and module Save, is a stable presentation-only path for replacing inherited template icons.
+
+Exact next objective: complete genuine mobile QA when a confirmed narrow viewport is available, or continue with another stable non-structural public-page improvement.
