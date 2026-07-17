@@ -4,13 +4,14 @@
 
 This project room owns the operational workflow for inserting invoice and approved statement-line records into Buy Your Home project-management spreadsheets.
 
-The workflow starts after Doc Scan has completed scanned invoice, receipt, or Statement Mode intake and prepared a structured packet. This room receives that packet, decides where the record or statement line belongs in the project-management spreadsheet, checks for duplicates, inserts approved records into the correct worksheet area, validates totals, and reports uncertainty for Wes review.
+The workflow usually starts after Doc Scan has completed scanned invoice, receipt, or Statement Mode intake and prepared a structured packet. It can also start when Email Monitor or OfficeAssist routes a contractor/vendor invoice email into Create Vendor Invoice Mode. This room receives or creates the packet, decides where the record or statement line belongs in the project-management spreadsheet, checks for duplicates, inserts approved records into the correct worksheet area, validates totals, and reports uncertainty for Wes review.
 
 ## Scope
 
 Included:
 
 - Receive structured invoice, receipt, and Statement Mode packets from Doc Scan as the scanned-document intake source.
+- Receive routed contractor/vendor invoice emails from Email Monitor or OfficeAssist under Create Vendor Invoice Mode.
 - Other intake sources are out of scope unless Wes separately approves and documents them.
 - Consume Lowes Statement Mode packets extracted by Doc Scan; Doc Scan owns extraction, and Invoice Entry owns allocation and later spreadsheet insertion when approved.
 - Resolve the correct active project-management workbook through Teams/SharePoint.
@@ -22,7 +23,7 @@ Included:
 
 Excluded unless Wes explicitly expands scope:
 
-- Scan inspection/OCR, document splitting, invoice/receipt identification, scan log entries, or saving/copying invoice files into Teams/project folders.
+- Scan inspection/OCR, document splitting, invoice/receipt identification, scan log entries, or saving/copying scanned invoice files into Teams/project folders.
 - Designing or rolling out project-management spreadsheet templates.
 - Replacing worksheet structures across all project workbooks.
 - Paying invoices, approving invoices, contacting vendors, or changing accounting systems.
@@ -30,7 +31,8 @@ Excluded unless Wes explicitly expands scope:
 ## Responsibility Boundary
 
 - `Doc Scan`: scan inspection/OCR, document splitting, invoice/receipt/statement identification, project/property folder routing when applicable, saving/copying filed PDFs into Teams/project folders, scan log entries, Statement Mode extraction, and structured packet creation.
-- `Invoice Entry`: structured packet receipt, exact live project-management workbook resolution, workbook duplicate checks, statement-line allocation, final row placement, invoice or approved statement-line record insertion, workbook formula/format/selector/table/link preservation, totals and downstream-link validation, authorized upload back to Teams/SharePoint, and insertion logging.
+- `Email Monitor` / `OfficeAssist`: mailbox monitoring, routed vendor-invoice email preservation, direct handoff messages, and source traceability for email-origin invoice intake.
+- `Invoice Entry`: structured packet receipt, structured packet creation from routed vendor-invoice emails, exact live project-management workbook resolution, workbook duplicate checks, statement-line allocation, final row placement, invoice or approved statement-line record insertion, workbook formula/format/selector/table/link preservation, totals and downstream-link validation, authorized upload back to Teams/SharePoint, and insertion logging.
 - `Template to Project`: worksheet design, worksheet-mode rules, template changes, and rollout across project workbooks.
 
 ## Current Status
@@ -40,7 +42,7 @@ Excluded unless Wes explicitly expands scope:
 - Statement Mode status: Doc Scan owns Lowes Statement Mode extraction and will send extracted statement data for this room to consume. Invoice Entry holds statement lines until allocation and insertion rules are tested and approved.
 - First workbook for proving the workflow: Outrigger, after Wes approves the Vendor Tabs Mode design.
 - Primary trigger: direct follow-up message to the dedicated Invoice Entry chat with the packet path and summary.
-- Backup automation: project-room heartbeat every 60 minutes. The heartbeat inspects this project room for new or changed structured invoice/receipt packets only; it does not scan inboxes, inspect raw scan folders, copy files into Teams, or edit a live workbook unless Wes has clearly authorized the insertion or an approved automation rule exists for that exact insertion type.
+- Backup automation: project-room heartbeat at noon and 4:00 PM Eastern. The heartbeat inspects this project room for new or changed structured invoice/receipt packets only; it does not scan inboxes, inspect raw scan folders, copy files into Teams, or edit a live workbook unless Wes has clearly authorized the insertion or an approved automation rule exists for that exact insertion type.
 - Automation id: `invoice-entry-to-projects-backup-heartbeat`.
 - Dedicated chat/thread id: `019f3d56-b310-75c0-b084-616bfc1e9f59`.
 
@@ -63,6 +65,43 @@ Each handoff should include:
 - Recommended worksheet
 - Confidence/status
 - Notes or uncertainty
+
+## Create Vendor Invoice Mode
+
+Use Create Vendor Invoice Mode when Email Monitor or OfficeAssist routes a contractor/vendor invoice email to Invoice Entry.
+
+Trigger:
+
+- A direct handoff message from Email Monitor or OfficeAssist says to process a routed vendor invoice.
+- The routed source is an email saved under `Project Rooms\Invoice Entry\sources\email\`.
+- The handoff may include invoice attachment paths, an Outlook message link, attachment-access blockers, vendor clues, project clues, and a short summary.
+
+Invoice Entry responsibilities:
+
+- Read the routed email source and any saved invoice attachments.
+- Identify the vendor, project/property, invoice date, invoice number if available, amount, work category, and source traceability.
+- Create a structured invoice packet from the routed email and attachments.
+- Choose the correct active project-management workbook and worksheet under existing Invoice Entry and Vendor Tabs Mode rules.
+- Check for duplicate invoice risk before insertion.
+- Make the correct project-spreadsheet entries only when the packet has enough confidence and existing Invoice Entry rules authorize insertion.
+- Move or copy the invoice file to the correct Teams/SharePoint project folder when that action is within Invoice Entry's authorized workflow and the source file is available.
+- Record routing decisions, workbook edits, duplicate checks, validation results, and unresolved questions in this project room.
+
+Safety limits:
+
+- Do not approve invoices.
+- Do not pay invoices.
+- Do not contact vendors.
+- Do not guess the project, vendor, amount, invoice number, or destination worksheet when evidence is unclear.
+- If the routed email lacks required fields or the attachment cannot be accessed, preserve the source link and report the blocker.
+- If duplicate risk is found, stop before insertion and report the risk.
+- If the invoice appears to be a statement with multiple project lines, handle it under Statement Mode rules instead of treating it as one vendor invoice.
+
+Completion:
+
+- Preserve the routed email source and any invoice attachments as durable source material.
+- Keep enough traceability to link the workbook entry back to the email, attachment, and handoff.
+- Report completed entries, held items, duplicate risks, filing results, and any open review questions.
 
 ## Required Statement Mode Packet
 

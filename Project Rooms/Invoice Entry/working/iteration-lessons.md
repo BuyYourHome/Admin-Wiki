@@ -177,3 +177,14 @@ Lessons:
 - A Doc Scan Statement Mode packet can still be review-grade rather than workbook-ready. Do not import transaction-section rows to project Review tables when the packet cannot provide reliable project, date, amount, item split, and source-completeness signals; retain them in held detail instead.
 - If Wes explicitly wants review-grade statement rows placed into project spreadsheets for manual review, insert them into `tblInvoiceReview` only, keep `Destination Worksheet` blank unless Wes has approved it, and leave status as `Needs Review - Lowes Statement`.
 - If Wes explicitly authorizes post-copy review, high-confidence Statement Mode rows may be copied to vendor tabs provisionally, but the Review row must remain open as `Copied - Needs Owner Verification`; do not mark it `Moved` until Wes accepts it.
+
+## 2026-07-17 - Create Vendor Invoice Mode
+
+Context: Wes defined Create Vendor Invoice Mode for contractor/vendor invoice emails routed by Email Monitor or OfficeAssist.
+
+Lessons:
+
+- Email Monitor and OfficeAssist own mailbox monitoring and routed source-email preservation; Invoice Entry starts after a direct handoff and a saved email source under `sources\email\`.
+- In this mode, Invoice Entry may create the structured invoice packet from routed email and attachments instead of receiving a Doc Scan packet.
+- Do not treat routed email intake as authority to approve, pay, contact vendors, guess missing fields, or treat multi-project statements as single invoices.
+- Keep source traceability back to the routed email, attachments, Outlook link when available, and handoff summary.

@@ -1,6 +1,6 @@
 ---
 name: invoice-entry
-description: Use for Buy Your Home project-management spreadsheet invoice-entry work after Doc Scan has prepared a structured invoice, receipt, or Statement Mode packet. Trigger when Codex needs to receive a structured packet, choose the correct active project workbook and worksheet, check for duplicate invoice or statement-line records, insert approved records into a Vendor Tab or other approved project-spreadsheet expense area, validate totals and workbook links, and report uncertain routing for Wes review.
+description: Use for Buy Your Home project-management spreadsheet invoice-entry work after Doc Scan has prepared a structured invoice, receipt, or Statement Mode packet, or when Email Monitor or OfficeAssist routes a contractor/vendor invoice email into Invoice Entry. Trigger when Codex needs to receive or create a structured packet, choose the correct active project workbook and worksheet, check for duplicate invoice or statement-line records, insert approved records into a Vendor Tab or other approved project-spreadsheet expense area, validate totals and workbook links, and report uncertain routing for Wes review.
 ---
 
 # Invoice Entry
@@ -11,7 +11,7 @@ description: Use for Buy Your Home project-management spreadsheet invoice-entry 
 - Skill source: `C:\Codex\Wiki Files\skills\invoice-entry\SKILL.md`
 - Template-to-project migration room: `C:\Codex\Wiki Files\Project Rooms\Template to Project`
 
-Use this skill for operational invoice and approved statement-line insertion into project-management spreadsheets. For scanned invoice, receipt, and Statement Mode records, Doc Scan is the normal intake workflow and should trigger this workflow by direct follow-up message after creating the packet. The project-room heartbeat is a backup monitor for missed packet handoffs. Do not use this skill for scan inspection/OCR, document splitting, statement extraction, invoice-file routing, or spreadsheet template redesign.
+Use this skill for operational invoice and approved statement-line insertion into project-management spreadsheets. For scanned invoice, receipt, and Statement Mode records, Doc Scan is the normal intake workflow and should trigger this workflow by direct follow-up message after creating the packet. For routed contractor/vendor invoice emails, Email Monitor or OfficeAssist may hand off a saved email source and attachments under Create Vendor Invoice Mode. The project-room heartbeat is a backup monitor for missed packet handoffs. Do not use this skill for scan inspection/OCR, document splitting, statement extraction, invoice-file routing, or spreadsheet template redesign.
 
 Doc Scan owns Lowes Statement Mode extraction and will send extracted statement data for this skill to consume. This skill owns statement-line allocation, duplicate checks, final spreadsheet row placement, insertion, and validation after Wes approves the Statement Mode allocation rules.
 
@@ -41,9 +41,12 @@ Doc Scan normally owns scanned invoice, receipt, and Statement Mode intake, incl
 
 Other packet handoff sources are out of scope unless Wes separately approves and documents them.
 
+Email Monitor or OfficeAssist may route contractor/vendor invoice emails under Create Vendor Invoice Mode. In that mode, the routing workflow owns mailbox monitoring and source-email preservation, while Invoice Entry owns reading the routed source material, creating the structured invoice packet, and performing authorized invoice-entry work.
+
 This skill owns:
 
 - receiving the structured packet,
+- creating a structured invoice packet from routed vendor invoice email source material when Create Vendor Invoice Mode applies,
 - resolving the exact live project-management workbook,
 - checking workbook records for duplicates,
 - allocating extracted statement lines by project and worksheet/table when approved,
@@ -65,6 +68,43 @@ This skill does not own:
 - statement-line extraction from PDFs,
 - template redesign or worksheet-mode rollout,
 - invoice approval, payment, accounting entries, vendor communication, or legal/financial decision-making.
+
+## Create Vendor Invoice Mode
+
+Use Create Vendor Invoice Mode when Email Monitor or OfficeAssist routes a contractor/vendor invoice email to Invoice Entry.
+
+Trigger:
+
+- A direct handoff message from Email Monitor or OfficeAssist says to process a routed vendor invoice.
+- The routed source is an email saved under `C:\Codex\Wiki Files\Project Rooms\Invoice Entry\sources\email\`.
+- The handoff may include invoice attachment paths, an Outlook message link, attachment-access blockers, vendor clues, project clues, and a short summary.
+
+Invoice Entry responsibilities:
+
+- Read the routed email source and any saved invoice attachments.
+- Identify the vendor, project/property, invoice date, invoice number if available, amount, work category, and source traceability.
+- Create a structured invoice packet from the routed email and attachments.
+- Choose the correct active project-management workbook and worksheet under existing Invoice Entry and Vendor Tabs Mode rules.
+- Check for duplicate invoice risk before insertion.
+- Make the correct project-spreadsheet entries only when the packet has enough confidence and the existing Invoice Entry rules authorize insertion.
+- Move or copy the invoice file to the correct Teams/SharePoint project folder when that action is within Invoice Entry's authorized workflow and the source file is available.
+- Record routing decisions, workbook edits, duplicate checks, validation results, and unresolved questions in the Invoice Entry project room.
+
+Safety limits:
+
+- Do not approve invoices.
+- Do not pay invoices.
+- Do not contact vendors.
+- Do not guess the project, vendor, amount, invoice number, or destination worksheet when evidence is unclear.
+- If the routed email lacks required fields or the attachment cannot be accessed, preserve the source link and report the blocker.
+- If duplicate risk is found, stop before insertion and report the risk.
+- If the invoice appears to be a statement with multiple project lines, handle it under Statement Mode rules instead of treating it as one vendor invoice.
+
+Completion:
+
+- Preserve the routed email source and any invoice attachments as durable source material.
+- Keep enough traceability to link the workbook entry back to the email, attachment, and handoff.
+- Report completed entries, held items, duplicate risks, filing results, and any open review questions.
 
 ## Required Inputs
 
