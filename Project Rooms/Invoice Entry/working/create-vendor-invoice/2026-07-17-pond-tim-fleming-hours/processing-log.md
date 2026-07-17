@@ -25,3 +25,8 @@
 - Rendered the PDF to PNG for visual inspection and confirmed the page is legible with no visible clipping or overlap.
 - Sent revised draft-review email with the polished PDF attached to `WesWill@BuyYourHomeLLC.com` from `OfficeAssist@BuyYourHomeLLC.com`.
 - Verified the sent copy in OfficeAssist Sent Items. Nothing was sent to Tim Fleming.
+- Wes confirmed the polished invoice draft "looks good."
+- Saved the polished PDF layout as the reusable Create Vendor Invoice Mode template.
+- Generated the vendor-facing Tim Fleming verification email draft with the polished PDF as the attachment. The vendor email is not sent and requires Wes's explicit send approval.
+- Sent the Tim-facing email package to Wes only for review, with the polished PDF attached.
+- Verified the review email in OfficeAssist Sent Items. Nothing was sent to Tim Fleming.
