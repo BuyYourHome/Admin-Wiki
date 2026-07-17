@@ -737,3 +737,23 @@ Result:
 - Contact-detail removal remains approval-bound and was not performed.
 
 Exact next objective: use a stable text-only path to remove approved working-title language after Chrome stability is restored, and obtain explicit approval before removing public Contact Us blocks from Books, Themes, or Journal.
+
+### 2026-07-17 - Approved public contact and generic-content cleanup
+
+Objective: apply Wes's approval to remove the public Contact Us blocks from Books, Themes, and Journal and complete related approved cleanup.
+
+Live changes:
+
+- Books: removed both working-title references, added both related manuscript names, and hid the Contact Us module.
+- Themes: removed the remaining working-title reference, added both related manuscript names, and hid the Contact Us module.
+- Journal: changed Blog to Editing Notes; hid the private stock-post grid, category selector, newsletter button, generic multi-service About block, Categories, and Contact Us; replaced the orphaned newsletter copy with a neutral Notes in Progress status message.
+
+QA:
+
+- Both public hosts returned HTTPS HTTP 200 for Books, Themes, and Journal.
+- Books and Themes contain neither working-title nor street-address text and include both related manuscript names.
+- Journal contains the intentional editing-status copy and omits stock posts, categories, newsletter prompts, multi-service copy, address, phone, and contact output.
+- Desktop screenshots showed clean layouts with no overlap or broken content.
+- No form submission or workflow/routing change occurred.
+
+Exact next objective: improve the Updates submit label through a stable presentation-only path, preserve all routing, and leave the blocked structural-delete path alone until builder stability is demonstrated.

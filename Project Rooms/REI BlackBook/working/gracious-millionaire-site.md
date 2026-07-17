@@ -43,7 +43,7 @@ Create a site called `Gracious Millionaire` for information related to the book 
 
 - Iteration loop: `working\gracious-millionaire-iteration-loop.md`.
 - Latest implementation report: `working\gracious-millionaire-iteration-001.md`.
-- Current full element cleanup map: `working\gracious-millionaire-element-map-029.md`.
+- Current full element cleanup map: `working\gracious-millionaire-element-map-030.md`.
 - Book Outline contains the 25 current working chapter titles and links all titles to the shared `Chapter Being Edited` page.
 - Chapter content is not published on the site.
 
@@ -96,6 +96,7 @@ Create a site called `Gracious Millionaire` for information related to the book 
 - Clean-Chrome retry on 2026-07-17 published the Updates cleanup and related-manuscript copy, replaced the homepage faith-notes image with `reader-notebook`, uploaded and placed the approved July 16 moving-forward cover, and verified both hosts. Desktop QA passed; true 390-pixel QA remains blocked because Chrome ignored the viewport override. See `working\gracious-millionaire-element-map-027.md`.
 - A later Updates structural retry reached the expected delete confirmation but timed out while applying it and again during recovery. Nothing was published and public output stayed at the map 027 state. Avoid that exact structural path until Beaver Builder proves it can complete and publish structural actions; see `working\gracious-millionaire-element-map-028.md`.
 - A subsequent read-only audit confirmed that Books and Themes still use working-title language and Journal still exposes generic newsletter/multi-service/category content plus the public address, phone, and email. No contact detail was changed because removal remains approval-bound; see `working\gracious-millionaire-element-map-029.md`.
+- After Wes approved removal, Books and Themes dropped their working-title and Contact Us output while adding both related manuscript references. Journal now presents an intentional editing-status message and omits the stock posts, category/newsletter output, multi-service placeholder, and public contact block. Both hosts passed desktop QA; see `working\gracious-millionaire-element-map-030.md`.
 
 ## Safety Notes
 
