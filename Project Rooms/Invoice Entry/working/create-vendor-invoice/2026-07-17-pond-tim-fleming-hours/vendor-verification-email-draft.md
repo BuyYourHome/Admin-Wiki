@@ -8,7 +8,7 @@ Status: `Held - waiting for Wes review before sending`
 - To: `Tim Fleming <tflem04@gmail.com>`
 - CC: `WesWill@BuyYourHomeLLC.com`; `Jenny@BuyYourHomeLLC.com`
 - Subject: `Please verify Pond hours invoice draft for 7/6-7/17`
-- Attachment/source to include after Wes approval: `generated-invoice-draft.md` or a generated PDF version if needed before sending.
+- Attachment/source to include after Wes approval: `tim-fleming-pond-hours-invoice-draft.pdf`.
 
 ## Draft Body
 

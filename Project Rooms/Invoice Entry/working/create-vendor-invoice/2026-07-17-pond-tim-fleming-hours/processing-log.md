@@ -18,6 +18,10 @@
 - Missing values after rate update: invoice number, final worksheet, and vendor verification.
 - Preliminary project-room duplicate search found no prior Tim Fleming/Pond hours packet or log entry beyond the routed source email; no prior project-room hits for `$1,375.00`, `1375`, `$62.50`, or `62.5` tied to this item.
 - Created held packet, generated invoice draft, and vendor verification email draft.
-- No email sent.
+- No vendor email sent.
 - No Teams filing performed.
 - No workbook edited.
+- Rebuilt the generated invoice as a polished PDF: `tim-fleming-pond-hours-invoice-draft.pdf`.
+- Rendered the PDF to PNG for visual inspection and confirmed the page is legible with no visible clipping or overlap.
+- Sent revised draft-review email with the polished PDF attached to `WesWill@BuyYourHomeLLC.com` from `OfficeAssist@BuyYourHomeLLC.com`.
+- Verified the sent copy in OfficeAssist Sent Items. Nothing was sent to Tim Fleming.

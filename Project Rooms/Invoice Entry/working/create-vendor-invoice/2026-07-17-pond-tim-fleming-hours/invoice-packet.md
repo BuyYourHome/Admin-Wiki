@@ -23,7 +23,7 @@
 | `source_email_subject` | `FW: Pond hours week of 7/6-7/17` |
 | `source_email_received_at` | `2026-07-17T19:44:46Z` |
 | `source_email_id_or_link` | `AQMkADZkMGMwNDI3LWU5ZjctNDgzMC1iMjdkLTY0NmRiN2IwNmIyZgBGAAADKGOvWJYjX0aEKaRpd0MYQQcAVSXargQY20aF7RLCkro4ggAAAgEMAAAAVSXargQY20aF7RLCkro4ggACdOJ36gAAAA==` / https://outlook.office365.com/owa/?ItemID=AQMkADZkMGMwNDI3LWU5ZjctNDgzMC1iMjdkLTY0NmRiN2IwNmIyZgBGAAADKGOvWJYjX0aEKaRpd0MYQQcAVSXargQY20aF7RLCkro4ggAAAgEMAAAAVSXargQY20aF7RLCkro4ggACdOJ36gAAAA%3D%3D&exvsurl=1&viewmodel=ReadMessageItem |
-| `saved_invoice_file_path` | `C:\Codex\Wiki Files\Project Rooms\Invoice Entry\working\create-vendor-invoice\2026-07-17-pond-tim-fleming-hours\generated-invoice-draft.md` pending vendor verification |
+| `saved_invoice_file_path` | `C:\Codex\Wiki Files\Project Rooms\Invoice Entry\working\create-vendor-invoice\2026-07-17-pond-tim-fleming-hours\tim-fleming-pond-hours-invoice-draft.pdf` pending vendor verification |
 | `recommended_workbook` | `Property/26_Project Management - 908 Pond St 3.xlsm` |
 | `recommended_worksheet` | `Needs Review` |
 | `confidence_status` | `Needs Review - vendor verification required` |
@@ -64,4 +64,4 @@ Reasons:
 - destination worksheet is not confirmed,
 - generated invoice has not been reviewed by Wes or verified by Tim Fleming.
 
-Next action: show Wes the verification email draft. If Wes approves the exact recipient list and text, send the generated invoice draft to Tim Fleming for accuracy verification with Wes and Jenny copied.
+Next action: show Wes the verification email draft. If Wes approves the exact recipient list and text, send the polished generated invoice PDF to Tim Fleming for accuracy verification with Wes and Jenny copied.
