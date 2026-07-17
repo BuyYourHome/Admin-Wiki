@@ -34,3 +34,10 @@
 - Wes clarified that the routed/free-text source email should not be sent to the vendor. Only the polished invoice PDF and clean verification email should be sent.
 - Sent Tim Fleming the clean vendor verification email from `OfficeAssist@BuyYourHomeLLC.com` with Wes and Jenny copied and the polished invoice PDF attached. The routed/free-text source email was not forwarded or attached.
 - Verified the sent copy in OfficeAssist Sent Items. Current status: pending Tim Fleming confirmation.
+- Received routed vendor confirmation source: `C:\Codex\Wiki Files\Project Rooms\Invoice Entry\sources\email\2026-07-17-201803-tim-fleming-pond-hours-verification.md`.
+- Tim Fleming replied `Correct`, confirming the generated invoice values: 2026-07-06 through 2026-07-17, 22 total hours, $62.50/hour, and $1,375.00 total. Tim did not provide an invoice number.
+- Regenerated a vendor-confirmed invoice PDF: `tim-fleming-pond-hours-invoice-confirmed.pdf`.
+- Rendered and visually checked the confirmed invoice PDF; no visible clipping or overlap.
+- Filed the vendor-confirmed PDF to `C:\Users\wesbr\Buy Your Home\Buy Your Home - Property\26-BYH -908 Pond St\Owning\Tim Flemming\26-07-17 Tim Fleming Pond Hours.pdf`.
+- Read-only workbook duplicate scan found existing Tim Flemming contract/payment rows on the old `Tim` sheet but no matching Tim Fleming Pond hours invoice in `Review` or obvious duplicate entry for this confirmed invoice.
+- Workbook insertion remains held because the destination worksheet is not confirmed.

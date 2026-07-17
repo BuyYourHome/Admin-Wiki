@@ -15,21 +15,33 @@ from reportlab.platypus import (
 
 BASE = Path(__file__).resolve().parent
 PDF_PATH = BASE / "tim-fleming-pond-hours-invoice-draft.pdf"
+CONFIRMED_PDF_PATH = BASE / "tim-fleming-pond-hours-invoice-confirmed.pdf"
 
 
 def money(value):
     return f"${value:,.2f}"
 
 
-def build_invoice():
+def build_invoice(
+    pdf_path=PDF_PATH,
+    title="Tim Fleming Pond Hours Invoice Draft",
+    status_heading="INVOICE DRAFT",
+    status_subheading="For vendor verification",
+    status_line="Held pending Tim Fleming verification",
+    verification_note=(
+        "This invoice draft was generated from Tim Fleming's email reporting 22 total hours. "
+        "It should be sent to Tim for confirmation before it is treated as a final invoice, filed to Teams, "
+        "posted to a project spreadsheet, approved, or paid."
+    ),
+):
     doc = SimpleDocTemplate(
-        str(PDF_PATH),
+        str(pdf_path),
         pagesize=letter,
         rightMargin=0.62 * inch,
         leftMargin=0.62 * inch,
         topMargin=0.58 * inch,
         bottomMargin=0.55 * inch,
-        title="Tim Fleming Pond Hours Invoice Draft",
+        title=title,
         author="Buy Your Home",
     )
 
@@ -90,7 +102,7 @@ def build_invoice():
             [
                 Paragraph("Buy Your Home", styles["TitleLeft"]),
                 Paragraph(
-                    "<b>INVOICE DRAFT</b><br/>For vendor verification<br/>Not approved for payment",
+                    f"<b>{status_heading}</b><br/>{status_subheading}<br/>Not approved for payment",
                     ParagraphStyle(
                         "HeaderRight",
                         parent=styles["Normal"],
@@ -119,7 +131,7 @@ def build_invoice():
     status = Table(
         [
             [
-                Paragraph("<b>Status:</b> Held pending Tim Fleming verification", styles["Body"]),
+                Paragraph(f"<b>Status:</b> {status_line}", styles["Body"]),
                 Paragraph("<b>Draft Date:</b> July 17, 2026", styles["Body"]),
             ]
         ],
@@ -229,8 +241,7 @@ def build_invoice():
         [
             [
                 Paragraph(
-                    "<b>Verification note</b><br/>This invoice draft was generated from Tim Fleming's email reporting 22 total hours. "
-                    "It should be sent to Tim for confirmation before it is treated as a final invoice, filed to Teams, posted to a project spreadsheet, approved, or paid.",
+                    f"<b>Verification note</b><br/>{verification_note}",
                     styles["Body"],
                 )
             ]
@@ -264,4 +275,16 @@ def build_invoice():
 
 if __name__ == "__main__":
     build_invoice()
+    build_invoice(
+        pdf_path=CONFIRMED_PDF_PATH,
+        title="Tim Fleming Pond Hours Invoice",
+        status_heading="INVOICE",
+        status_subheading="Vendor confirmed",
+        status_line="Vendor confirmed by email on July 17, 2026",
+        verification_note=(
+            "Tim Fleming confirmed this invoice by email reply on July 17, 2026. "
+            "This document is ready for internal filing and spreadsheet placement review, but it is not approved for payment."
+        ),
+    )
     print(PDF_PATH)
+    print(CONFIRMED_PDF_PATH)
