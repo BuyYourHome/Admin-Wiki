@@ -12,7 +12,7 @@
 
 ## Context-Selected Candidates
 
-The candidates below were selected only after the full album was visually reviewed and their themes were mapped to the current *Gracious Millionaire* architecture. After that context map was established, the 18 selected originals were downloaded to `sources/images/bible-album/` and renamed with their stable JD identifiers.
+The candidates below were selected only after the full album was visually reviewed and their themes were mapped to the current *Gracious Millionaire* architecture. The 18 selected originals use stable JD filenames and are stored only in the Teams Marketing folder `Gracious Millionaire - Drawn by Grace`. The repository retains this metadata, not local image copies.
 
 | ID | Artwork text | Scripture / drawing date | Google capture | Technical metadata | Google Photos filename |
 | --- | --- | --- | --- | --- | --- |

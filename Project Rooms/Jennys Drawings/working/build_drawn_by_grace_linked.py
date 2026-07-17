@@ -19,12 +19,6 @@ COVER = (
     / "gracious-millionaire-cover-drawing"
     / "drawn-by-grace-cover-jenny-style-v2-email.jpg"
 )
-TEAMS_FOLDER_URL = (
-    "https://lifeisanadventure.sharepoint.com/sites/SellYourHome/Shared%20Documents/"
-    "Marketing/Gracious%20Millionaire%20-%20Drawn%20by%20Grace"
-)
-
-
 def add_external_link(paragraph, text, url, *, bold=False, size=11):
     relationship_id = paragraph.part.relate_to(url, RT.HYPERLINK, is_external=True)
     hyperlink = OxmlElement("w:hyperlink")
@@ -154,12 +148,12 @@ def add_contents(doc, sections):
 
 
 def add_art_link(doc, plate_id):
-    filename, title, meta = base.PLATES[plate_id]
+    _filename, title, meta, view_url = base.PLATES[plate_id]
     p = doc.add_paragraph()
     p.paragraph_format.space_before = Pt(12)
     p.paragraph_format.space_after = Pt(3)
     base.set_run_font(p.add_run("DRAWING  |  "), size=10, color=base.GOLD, bold=True)
-    add_external_link(p, title, f"{TEAMS_FOLDER_URL}/{filename}", bold=True, size=11)
+    add_external_link(p, title, view_url, bold=True, size=11)
     meta_p = doc.add_paragraph(meta)
     meta_p.paragraph_format.space_before = Pt(0)
     meta_p.paragraph_format.space_after = Pt(4)
@@ -168,7 +162,7 @@ def add_art_link(doc, plate_id):
     open_p = doc.add_paragraph()
     open_p.paragraph_format.space_before = Pt(0)
     open_p.paragraph_format.space_after = Pt(0)
-    add_external_link(open_p, "Open the full-resolution drawing in Teams", f"{TEAMS_FOLDER_URL}/{filename}", size=10.5)
+    add_external_link(open_p, "Open the full-resolution drawing in Teams", view_url, size=10.5)
 
 
 def build():

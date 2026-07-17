@@ -31,13 +31,22 @@ Before Jennys Drawings file work:
 ## Workflow
 
 1. Identify the Jennys Drawings task, intended output, and any privacy, sharing, usage, deadline, or external-action limit.
-2. Put source material, images, exports, notes, screenshots, or source summaries in `sources\`.
+2. Keep Jenny's original drawing files in the Teams Marketing folder `Gracious Millionaire - Drawn by Grace`. Do not copy them into the repository.
 3. Update `working\source-inventory.md` before drafting outputs.
 4. Record duplicate, outdated, conflicting, or unclear source material in `working\duplicate-and-conflict-log.md`.
 5. Record missing source files, drawing context, intended audience, usage permissions, deadlines, and decision points in `working\missing-context.md`.
 6. Draft outputs in `outputs\` using authoritative sources only.
 7. Mark unsupported assumptions as `[UNSUPPORTED]` instead of smoothing them into a final recommendation.
 8. Commit only scoped Jennys Drawings room, matching skill, registry, and index changes.
+
+## Teams-Only Drawing Storage
+
+- Teams is the authoritative storage location for Jenny's original drawing files.
+- Do not save drawing copies under `sources\`, `working\`, `outputs\`, or any other path in `C:\Codex\Wiki Files`.
+- Use the stable filenames, organization-only view links, and metadata recorded in the Project Room inventories.
+- When direct visual inspection is required, retrieve only the needed drawing to a temporary location outside the repository, then delete the temporary copy when the task is complete.
+- Current manuscripts should display or link to the Teams-hosted drawings. Do not create repository outputs that embed the original drawings.
+- Keep working files and versions to the minimum needed to regenerate the current deliverables. Update current files in place instead of creating version-suffixed copies.
 
 ## Boundaries
 
@@ -48,6 +57,8 @@ Before Jennys Drawings file work:
 - Do not publish, share, send, or externally post drawings unless Wes explicitly authorizes that specific action and the applicable Admin wiki rules allow it.
 - Do not commit unrelated dirty work or generated scratch folders.
 - Do not push unless Wes asks, says the setup is finished, or the applicable Admin wiki rules make the deliverable ready to publish.
+
+- Do not retain a downloaded Jenny drawing after the immediate task is complete.
 
 ## Outputs
 

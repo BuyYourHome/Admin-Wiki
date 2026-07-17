@@ -10,10 +10,12 @@
 - Upload verified: July 17, 2026
 - Renamed: July 17, 2026 from `Jennys Drawings - Gracious Millionaire Companion` at Wes's direction.
 - Word manuscript refreshed after rename: 18 drawing links point to the renamed folder; no links retain the former folder path.
+- Organization-only view links created July 17, 2026 after drawing access failed on Jenny's computer. Current Word and HTML outputs use those links as the direct-open fallback.
+- Teams-only storage policy applied July 17, 2026: all 18 local repository drawing copies and the obsolete embedded-image manuscript were removed after the Teams originals were reverified.
 
 ## Linked Files
 
-The folder contains the complete context-selected source set, `JD-001` through `JD-018`. The Word review manuscript uses direct Teams/SharePoint file URLs. The HTML edition uses authenticated Teams image references to the stable filenames recorded in `drawing-metadata-inventory.md`, allowing each drawing to display in full when the reader is signed into Buy Your Home Microsoft 365.
+The folder contains the complete context-selected source set, `JD-001` through `JD-018`, and is the only durable storage location for Jenny's original drawings. The Word review manuscript uses organization-only Teams view links. The HTML edition attempts inline display from the Teams file address and provides an organization-only `Open full-resolution drawing in Teams` fallback on every plate.
 
 ## Delivery
 

@@ -10,7 +10,7 @@ Use this room when Wes asks Codex to organize, review, describe, prepare, or mai
 
 In scope:
 
-- Jennys Drawings source images, notes, documents, emails, screenshots, and source summaries.
+- Jenny's drawing metadata, Teams references, notes, documents, emails, screenshots, and source summaries. Original drawing files remain in Teams and are not stored in this repository.
 - Working inventories, missing-context notes, duplicate/conflict tracking, and review questions.
 - Review-ready outputs under `outputs\`.
 - Matching wiki-managed skill instructions under `C:\Codex\Wiki Files\skills\jennys-drawings\SKILL.md`.
@@ -24,7 +24,7 @@ Out of scope:
 
 ## Folder Map
 
-- `sources\` - raw source images, exported messages, notes, screenshots, documents, or source summaries.
+- `sources\` - source notes and summaries only; do not store Jenny's original drawing files locally.
 - `working\source-inventory.md` - inventory of source material and authority status.
 - `working\duplicate-and-conflict-log.md` - duplicate, outdated, conflicting, or unclear source notes.
 - `working\missing-context.md` - facts, decisions, or source material still needed.
@@ -34,7 +34,15 @@ Out of scope:
 
 Status: active review draft.
 
-The Google Photos `Bible` album has been surveyed in place. Eighteen context-selected original-quality drawing files, their metadata inventory, and their placement map are now in this room. A 41-page print-review manuscript, *Drawn by Grace: A Visual Companion to The Gracious Millionaire*, is available under `outputs\` with each drawing presented as a framed full-page plate. The linked Word review manuscript includes the *Drawn by Grace* cover, outline navigation, and secure links to the full-resolution drawings in the Marketing channel. A lightweight HTML edition is also available locally and in the Marketing channel; it keeps the clickable outline and displays all 18 full-resolution drawings in place from authenticated Teams image references, including when the HTML file is delivered by email.
+The Google Photos `Bible` album has been surveyed in place. The 18 context-selected originals are stored only in the Marketing channel folder `Gracious Millionaire - Drawn by Grace`; this repository retains metadata and placement records, not local drawing copies. The current deliverables are the linked Word manuscript and illustrated HTML manuscript. Both use Teams-hosted drawings, and both provide organization-only view links as a fallback when an inline image cannot load. Obsolete embedded-image and cover-version files were removed to keep the room minimal.
+
+## Drawing Storage Rule
+
+- Store Jenny's original drawings only in the Teams Marketing folder documented in `working\teams-link-inventory.md`.
+- Do not save drawing copies in this repository, Project Room sources, outputs, or working folders.
+- Retrieve a drawing only when a task requires inspecting or transforming it. Use a temporary location outside the repository and delete the temporary copy after the task.
+- Keep only the current linked Word manuscript, current HTML manuscript, canonical manuscript text, current cover asset, required builders, and durable inventories.
+- Do not create version-suffixed working files when the current file can be updated in place.
 
 ## Matching Skill
 

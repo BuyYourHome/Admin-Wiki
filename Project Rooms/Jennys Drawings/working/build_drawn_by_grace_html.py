@@ -61,14 +61,14 @@ def build() -> None:
 
         plate_id = section["plate"]
         if plate_id:
-            filename, title, meta = base.PLATES[plate_id]
+            filename, title, meta, view_url = base.PLATES[plate_id]
             image_url = f"{TEAMS_FOLDER_URL}/{filename}"
             manuscript.append(
                 f'''<figure class="plate-page" id="plate-{plate_id.lower()}">
   <div class="frame">
     <img src="{html.escape(image_url, quote=True)}" alt="{html.escape(title, quote=True)} — original drawing by Jenny Browning" loading="eager">
   </div>
-  <figcaption><strong>{html.escape(title)}</strong><span>{html.escape(meta)}</span></figcaption>
+  <figcaption><strong>{html.escape(title)}</strong><span>{html.escape(meta)}</span><a class="open-drawing" href="{html.escape(view_url, quote=True)}" target="_blank" rel="noopener">Open full-resolution drawing in Teams</a></figcaption>
 </figure>'''
             )
 
@@ -168,6 +168,7 @@ def build() -> None:
   }}
   figcaption strong, figcaption span {{ display: block; }}
   figcaption span {{ color: var(--muted); font-size: .78rem; margin-top: .03in; }}
+  .open-drawing {{ display: inline-block; margin-top: .08in; font-size: .78rem; }}
   @media (max-width: 650px) {{
     body {{ font-size: 16px; }}
     .cover, .outline, .chapter {{ padding: .45in .32in; }}
@@ -203,6 +204,7 @@ def build() -> None:
     .frame {{ box-shadow: none; }}
     .frame img {{ max-height: 8.9in; }}
     .return {{ display: none; }}
+    .open-drawing {{ display: none; }}
     a {{ color: inherit; text-decoration: none; }}
   }}
 </style>
