@@ -4,10 +4,12 @@
 
 - Team: `Buy Your Home`
 - Channel: `Marketing`
-- Folder: `Jennys Drawings - Gracious Millionaire Companion`
-- Folder URL: `https://lifeisanadventure.sharepoint.com/sites/SellYourHome/Shared%20Documents/Marketing/Jennys%20Drawings%20-%20Gracious%20Millionaire%20Companion`
+- Folder: `Gracious Millionaire - Drawn by Grace`
+- Folder URL: `https://lifeisanadventure.sharepoint.com/sites/SellYourHome/Shared%20Documents/Marketing/Gracious%20Millionaire%20-%20Drawn%20by%20Grace`
 - Access model: inherited from the standard Marketing channel; links require an authorized Buy Your Home Microsoft 365 sign-in.
 - Upload verified: July 17, 2026
+- Renamed: July 17, 2026 from `Jennys Drawings - Gracious Millionaire Companion` at Wes's direction.
+- Manuscript refreshed after rename: 18 drawing links point to the renamed folder; no links retain the former folder path.
 
 ## Linked Files
 

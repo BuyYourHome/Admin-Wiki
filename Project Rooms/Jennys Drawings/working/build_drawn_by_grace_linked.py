@@ -21,7 +21,7 @@ COVER = (
 )
 TEAMS_FOLDER_URL = (
     "https://lifeisanadventure.sharepoint.com/sites/SellYourHome/Shared%20Documents/"
-    "Marketing/Jennys%20Drawings%20-%20Gracious%20Millionaire%20Companion"
+    "Marketing/Gracious%20Millionaire%20-%20Drawn%20by%20Grace"
 )
 
 
