@@ -526,7 +526,7 @@ Defined in:
 Dedicated chat:
 
 - Chat name: `Jennys Drawings`
-- Thread id: pending until the dedicated chat is created.
+- Thread id: `019f700e-419a-7280-ba62-c01fe032b5b7`
 
 Important rules:
 

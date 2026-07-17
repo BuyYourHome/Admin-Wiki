@@ -43,7 +43,7 @@ This room was created as the standard workspace for Jennys Drawings. No project-
 ## Dedicated Chat
 
 - Chat name: `Jennys Drawings`
-- Thread id: pending until the dedicated chat is created.
+- Thread id: `019f700e-419a-7280-ba62-c01fe032b5b7`
 
 ## Start PR
 
