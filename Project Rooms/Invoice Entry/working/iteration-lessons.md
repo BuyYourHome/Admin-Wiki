@@ -191,3 +191,14 @@ Lessons:
 - If a routed vendor email includes an attached invoice, treat the attachment as the invoice and proceed under normal Invoice Entry rules; do not generate a replacement invoice or send it back for verification merely because it came by email.
 - If a routed vendor email is free text with no attached invoice, generate a formal invoice from the source email and send it back to the proper vendor for accuracy verification, copying Wes and Jenny. Hold final filing and spreadsheet insertion until the vendor confirms it.
 - The only vendor contact authorized by this mode is the free-text invoice accuracy-verification request. Do not send it unless vendor identity, vendor email address, and free-text source evidence are clear, and never word it as approval, payment, or acceptance.
+
+## 2026-07-17 - Lowe's SYH 6140 Review-First Packet
+
+Context: Processed the Doc Scan item-level Lowe's Pro SYH 6140 statement packet closing 2026-07-02 for PO `7001`.
+
+Lessons:
+
+- For Doc Scan Statement Mode packets, insert confident project item rows into the matched project `Review` table only; do not copy them into vendor tabs during initial packet consumption.
+- Keep imported Lowe's statement rows in a review status such as `Needs Review - Statement Mode` even when `Destination Worksheet` contains a recommendation. Wes can change status to `Ready` or another approval status when the row should be posted.
+- Keep payment, interest, and other accounting-review rows out of project workbooks and retain them in the held-detail register with source traceability.
+- If Excel COM reports successful validation but times out during cleanup, independently read back the workbook, then terminate only the hidden automation Excel process created by the run.

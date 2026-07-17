@@ -99,3 +99,19 @@ The following details were seen during the requested two-account sweep but were 
 - Held detail CSV: `C:\Codex\Wiki Files\Project Rooms\Invoice Entry\working\statement-mode\lowes-all-accounts-2026-07-15\held-detail.csv`
 
 Status: all 58 OCR-derived transaction/reference sections were retained in the held-detail CSV. After Wes instructed Invoice Entry to add entries to project spreadsheets for workbook review, selected project-review rows were inserted into the Pond, Outrigger, and Rose Review tables. No vendor-tab rows were inserted.
+
+## 2026-07-02 - Lowe's Pro SYH 6140 Statement
+
+- Source packet: `C:\Codex\Wiki Files\Project Rooms\Invoice Entry\sources\doc-scan-packets\2026-07-02 - Lowes Pro SYH 6140 - Statement Allocation Packet.json`
+- Source statement: `C:\Users\wesbr\Buy Your Home\Buy Your Home - Office Admin\2026\Credit Cards\Lowe's Pro-SYH-6140\26-07-02 - Lowe's Pro-SYH-6140.pdf`
+- Archived scan: `C:\Users\wesbr\Buy Your Home\Buy Your Home - Office Admin\Scanned Files\Archived\Handwritten_2026-07-17_164634.pdf`
+- Statement account suffix: `6140`
+- Statement closing date: 2026-07-02
+- Processing log: `C:\Codex\Wiki Files\Project Rooms\Invoice Entry\working\statement-mode\lowes-6140-2026-07-02\processing-log.md`
+
+Status: three PO `7001` item rows were inserted into the Outrigger workbook `Review` table for owner review. The following payment and interest rows were held outside project workbooks because they are accounting-review rows, not project vendor-tab expenses.
+
+| Packet row | Tran date | Ref # | Store | PO / project clue | SKU | Description | Amount | Type | Recommended project/property | Recommended workbook | Confidence/status | Hold reason | Later action/status |
+| --- | --- | --- | --- | --- | --- | --- | ---: | --- | --- | --- | --- | --- | --- |
+| `lowes-2026-07-02-payment-0612` | 2026-06-12 | `PAYMENT` | blank | blank | blank | Payment - Thank You | -349.40 | Payment | Accounting review | blank | Accounting Review | Payment row is not a project purchase item and has no approved project-spreadsheet handling. | Held outside project workbooks. |
+| `lowes-2026-07-02-interest` | 2026-07-02 | `INTEREST` | blank | blank | blank | Interest Charge | 194.02 | Interest | Accounting review | blank | Accounting Review | Finance charge is not a project purchase item without accounting direction. | Held outside project workbooks. |
