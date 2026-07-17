@@ -944,3 +944,29 @@ What worked:
 - A Callout module link applies to both its icon and heading while CTA Type remains `None`, so the existing visual design did not require a new button or structural edit.
 
 Exact next objective: select and approve the exact personal homepage hero image for public upload, or define Journal signup/contact-form delivery specifications before activation.
+
+### 2026-07-17 - Expanded source-faithful theme passages
+
+Objective: expand each approved theme quote with surrounding manuscript context while retaining the one-line passage as the visual headline.
+
+Live changes:
+
+- Kept each approved one-line excerpt as the prominent blockquote headline.
+- Added a `From the Manuscript` H2 to every theme page.
+- Replaced the short public introduction with two to four contiguous manuscript paragraphs selected from the exact source chapter.
+- Retained the manuscript-in-development note and navigation back to Themes and Books.
+
+QA:
+
+- All six pages on both hosts contain the approved headline, `From the Manuscript`, and every selected source paragraph.
+- Source comparison passed after normalizing WordPress display-only curly apostrophes.
+- No page exposes inherited address or phone output.
+- The longest page passed desktop visual QA at 1920 pixels and true 390 x 844 QA without horizontal overflow.
+- No form, workflow, recipient, notification, contact detail, DNS setting, or personal photo changed.
+
+What worked:
+
+- Native WordPress Text-mode updates preserve exact multi-paragraph manuscript passages while letting the theme supply a consistent editorial layout.
+- A separate blockquote headline plus H2/body hierarchy creates the requested short-to-full reading progression without repeating internal chapter labels.
+
+Exact next objective: select and approve the exact personal homepage hero image for public upload, or define Journal signup/contact-form delivery specifications before activation.

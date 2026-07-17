@@ -59,3 +59,14 @@ Resolved for the initial publication:
 1. All six candidates approved by Wes on 2026-07-17.
 2. Excerpts are presented without internal source-chapter labels.
 3. The initial pages focus on `Gracious Millionaire` and return readers to the plural Books page for the broader manuscript set.
+
+## Expanded Publication
+
+On 2026-07-17, Wes authorized publishing a couple of surrounding manuscript paragraphs for each approved one-line excerpt without another approval pass. The one-line excerpt remains the prominent headline, followed by `From the Manuscript` and the following source-faithful selections:
+
+- Stewardship: paragraphs around lines 77-83 in `17-private-money-and-investor-relationships.md`.
+- Faith and Calling: paragraphs around lines 121-127 in `03-always-god-is-there.md`.
+- Work and Responsibility: paragraphs around lines 13-17 in `15-technology-on-top-of-order.md`.
+- Generosity: paragraphs around lines 93-99 in `23-rosebrooks.md`.
+- Jenny's Perspective: paragraphs around lines 25-27 in `12-jenny-coastal-surrender.md`.
+- Lessons Still Unfinished: opening paragraphs around lines 3-13 in `25-leadership-patience-and-the-unfinished-story.md`.
