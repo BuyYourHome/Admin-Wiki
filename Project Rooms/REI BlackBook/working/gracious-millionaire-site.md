@@ -43,7 +43,7 @@ Create a site called `Gracious Millionaire` for information related to the book 
 
 - Iteration loop: `working\gracious-millionaire-iteration-loop.md`.
 - Latest implementation report: `working\gracious-millionaire-iteration-001.md`.
-- Current full element cleanup map: `working\gracious-millionaire-element-map-024.md`.
+- Current full element cleanup map: `working\gracious-millionaire-element-map-025.md`.
 - Book Outline contains the 25 current working chapter titles and links all titles to the shared `Chapter Being Edited` page.
 - Chapter content is not published on the site.
 
@@ -91,6 +91,7 @@ Create a site called `Gracious Millionaire` for information related to the book 
 - Heartbeat GM Mode run on 2026-07-16 corrected the two homepage section headings from H3 to H2 while retaining the three card titles as H3. Both hosts passed hierarchy and desktop-overflow QA; the custom domain also passed 390-pixel mobile QA. See `working\gracious-millionaire-element-map-022.md`.
 - Heartbeat GM Mode run on 2026-07-16 balanced the homepage card composition by placing the full-resolution portrait cover beside its copy on desktop and cropping the updates image to landscape. The cover returns to a full-width portrait on mobile; both hosts passed hierarchy, asset, destination, and overflow QA. See `working\gracious-millionaire-element-map-023.md`.
 - Heartbeat GM Mode audit on 2026-07-16 found the About page still uses an H2 page title, three H3 feature headings, a generic circle stock image with empty alt text, and a visible Categories block. No live change published because the About settings panel and fresh Chrome control session timed out. The next run must avoid About, Book, and Journal builder paths until Chrome is reset or stability is demonstrated. See `working\gracious-millionaire-element-map-024.md`.
+- Manual GM Mode retry on 2026-07-17 recovered the About builder, changed the page title to H1 and the three feature headings to H2, replaced the generic stock circle with the approved Wes-and-Jenny landscape image, added descriptive alt text, and hid the Categories widget. Both hosts passed desktop hierarchy, asset, category-removal, and overflow QA. Chrome disconnected before 390-pixel mobile QA; see `working\gracious-millionaire-element-map-025.md`.
 
 ## Safety Notes
 

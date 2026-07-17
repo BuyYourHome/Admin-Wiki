@@ -592,3 +592,42 @@ What changed in the operating map:
 - About joins Book and Journal as a builder path that should not be retried on the next heartbeat without a Chrome reset, stale-tab cleanup, or direct evidence that settings access is stable.
 
 Exact next objective: use a stable native WordPress or theme surface for a useful design improvement, perform read-only public QA, or stop quietly if no stable improvement remains. Do not retry About, Book, or Journal Beaver Builder paths until browser stability changes.
+
+### 2026-07-17 - About-page design and accessibility recovery
+
+Objective: complete the About-page hierarchy, generic-image replacement, and Categories cleanup after Wes requested another retry.
+
+Pages/components touched:
+
+- About-page primary Callout and three feature Callouts.
+- About-page Photo module.
+- About-page Categories widget.
+- WordPress media attachment `6344`.
+
+Live changes:
+
+- Changed the page title from H2 to H1.
+- Changed the three parallel feature headings from H3 to H2.
+- Replaced the generic circular stock image with the approved `wes-jenny-building.jpg` landscape rendition.
+- Added descriptive alternative text and republished the image module so it propagated to both hosts.
+- Hid the Categories/default-All widget through Advanced visibility `Never`.
+
+QA evidence:
+
+- Both public hosts render one H1, the three feature H2s, the approved landscape image with descriptive alt text, no Categories output, and no desktop horizontal overflow.
+- Contact details, profile placeholder, forms, maps, and workflow settings were not opened or changed.
+- Chrome disconnected as the 390 by 844 viewport was applied, so mobile QA remains unverified.
+
+What worked:
+
+- A fresh builder tab recovered the previously unstable About path.
+- Stable Beaver Builder module `data-node` values plus exact visible text reliably opened settings.
+- The existing WordPress attachment was selectable by media ID `6344`; reselecting after the native attachment-alt update refreshed cached markup on both hosts.
+
+Remaining defects:
+
+- Run read-only 390-pixel About QA.
+- Decide whether `Follow the book's progress` should remain H3 after mobile visual review.
+- Book and Journal remain blocked/stale; public contact and workflow details remain approval-bound.
+
+Exact next objective: run read-only mobile About QA first, then choose a stable native WordPress or theme objective that does not touch blocked Book/Journal or approval-bound contact/workflow settings.
