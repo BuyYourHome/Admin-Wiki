@@ -757,3 +757,27 @@ QA:
 - No form submission or workflow/routing change occurred.
 
 Exact next objective: improve the Updates submit label through a stable presentation-only path, preserve all routing, and leave the blocked structural-delete path alone until builder stability is demonstrated.
+
+### 2026-07-17 - Updates submit-label presentation pass
+
+Objective: replace the generic Updates submit label without changing form routing, recipients, notifications, or delivery behavior.
+
+Live changes:
+
+- Updated the REI form submit-button record to `REQUEST BOOK UPDATES`.
+- Confirmed Beaver Builder continued serving stale embedded `GET STARTED >>` markup after the form-record publish.
+- Added page-scoped CSS that visually renders `REQUEST BOOK UPDATES` on the existing submit button while preserving the submit element, action, fields, and loading indicator.
+
+QA:
+
+- Both public hosts return HTTPS HTTP 200.
+- Computed-style checks on both hosts confirm the new generated label and hidden stale text.
+- Public desktop visual QA shows the new label centered with no clipping or overlap.
+- No form was submitted and no Form Details, Run Workflow, thank-you, recipient, notification, SMS, or email setting was changed.
+
+Lesson:
+
+- The REI form record and Beaver Builder's embedded module markup can remain out of sync after both are published.
+- A page-scoped CSS label is the stable presentation-only fallback for this legacy form module when workflow behavior must remain untouched.
+
+Exact next objective: improve the plural Books destination through a stable non-structural path or complete genuine mobile QA after confirming the actual browser width. Continue to avoid the Updates structural-delete path.
