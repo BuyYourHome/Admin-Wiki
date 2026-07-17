@@ -1,0 +1,7 @@
+# Preserve large downloaded media locally without adding it to Git history.
+audio/
+video/*.mp4
+video/*.jpg
+video/*.info.json
+video/*.description
+metadata/

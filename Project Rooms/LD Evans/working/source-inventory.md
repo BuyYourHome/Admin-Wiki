@@ -8,4 +8,10 @@
 | `Project Room File Ownership And Git Coordination Rule.md` | Wiki rule | authoritative | Defines Project Room ownership, shared Admin file edits, commit scope, and push safety. |
 | `Agent Unit Standard.md` | Wiki rule | authoritative | Defines Project Room, skill, registry, chat, and automation package expectations. |
 | `Git Work Scope Rule.md` | Wiki rule | authoritative | Defines scoped commits and push behavior. |
-| LD Evans source documents | Project source | missing | Add documents, emails, notes, screenshots, or source summaries when provided. |
+| `sources/video/leaving-home/video/Leaving Home - Chapter 4, Going West - Part A.wmv [naFkzkKLB_8].mp4` | YouTube video / oral history | authoritative | Primary recording from Wes Browning's channel; uploaded 2010-05-10; 5:29. |
+| `sources/video/leaving-home/video/Leaving Home - Chapter 4, Going West - Part B [V8zksL_d2gQ].mp4` | YouTube video / oral history | authoritative | Primary recording from Wes Browning's channel; uploaded 2010-05-10; 7:15. |
+| `sources/video/leaving-home/video/Leaving Home - Chapter 5, Shepard Part A [KR9sumLcOc4].mp4` | YouTube video / oral history | authoritative | Primary recording from Wes Browning's channel; uploaded 2010-05-11; 7:08. |
+| `sources/video/leaving-home/video/Leaving Home - Chapter 5, Shepard Part B [0jlZB05lXfE].mp4` | YouTube video / oral history | authoritative | Primary recording from Wes Browning's channel; uploaded 2010-05-18; 9:49. |
+| `sources/video/leaving-home/audio/` | Audio derivatives | background | Audio-only copies preserve narration for content review and narrative-voice analysis; verify against video where presentation context matters. |
+| `sources/video/leaving-home/video/*.en-orig.vtt` | YouTube automatic captions | unclear | Useful as a searchable working transcript; verify all quotations, names, dates, and unclear wording against the recordings. |
+| Additional LD Evans documents, photographs, and testimony | Project sources | missing | Needed to corroborate and expand the four recorded chapters. |

@@ -32,9 +32,9 @@ Out of scope:
 
 ## Current Status
 
-Status: draft.
+Status: active source intake for book development.
 
-This room was created as the standard workspace for LD Evans. No project-specific sources have been added yet.
+Wes intends to write a book about his grandfather, L.D. Evans. Four `Leaving Home` videos from Wes Browning's YouTube channel have been archived under `sources\video\leaving-home\` with separate audio copies, source metadata, and available captions for later content and narrative-voice analysis.
 
 ## Matching Skill
 
@@ -59,7 +59,8 @@ Before durable work, follow Start PR Mode in `C:\Codex\Wiki Files\Project Room C
 
 ## Next Actions
 
-1. Add authoritative LD Evans source material to `sources\` when Wes provides it.
-2. Update the source inventory before drafting outputs.
-3. Record missing facts, source documents, deadlines, decision points, or authority questions in `working\missing-context.md`.
-4. Draft review-ready outputs in `outputs\` only from authoritative sources.
+1. Review and correct the automatic captions against the recordings before quoting them.
+2. Extract a chronology, people, places, themes, scenes, and unresolved factual claims from the four recordings.
+3. Gather corroborating documents, photographs, and family testimony for the book.
+4. Confirm the intended audience, book scope, narrative point of view, and first writing deliverable.
+5. Draft review-ready outputs in `outputs\` only from authoritative sources.
