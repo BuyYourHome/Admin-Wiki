@@ -2,6 +2,7 @@
 
 - Original output: `outputs/gracious-millionaire-cover-drawing/gracious-millionaire-cover-jenny-style-v1.png`
 - Retitled output: `outputs/gracious-millionaire-cover-drawing/drawn-by-grace-cover-jenny-style-v2.png`
+- Email-optimized derivative: `outputs/gracious-millionaire-cover-drawing/drawn-by-grace-cover-jenny-style-v2-email.jpg`
 - Created: July 17, 2026
 - Generation path: built-in image generation
 - Subject reference: current July 16, 2026 *The Gracious Millionaire* cover
@@ -14,6 +15,8 @@ Create a portrait book-cover interpretation of *The Gracious Millionaire* using 
 ## Title Revision
 
 Version 2 changes only the large cover title to *Drawn by Grace*, the working name of the companion book. The forest composition, subtitle line, author credit, and drawing treatment remain unchanged.
+
+The email-optimized JPEG is a visually equivalent delivery derivative used to keep the linked Word manuscript below Outlook's direct-attachment limit. The full-resolution PNG remains the cover master.
 
 ## Review Status
 

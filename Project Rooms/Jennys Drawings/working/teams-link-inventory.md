@@ -21,3 +21,6 @@ The folder contains the complete context-selected source set, `JD-001` through `
 - Updated email: sent July 17, 2026 from `OfficeAssist@BuyYourHomeLLC.com` to `WesWill@BuyYourHomeLLC.com` with subject `Drawn by Grace - Updated Linked Manuscript`.
 - Delivery mode: link only; no attachment.
 - Verification: matching message confirmed in the OfficeAssist Sent Items folder with the correct sender, recipient, subject, link, and no attachment.
+- Attachment delivery: sent July 17, 2026 from `OfficeAssist@BuyYourHomeLLC.com` to `WesWill@BuyYourHomeLLC.com` with subject `Drawn by Grace - Latest Manuscript Attached`.
+- Attachment: `Drawn by Grace - Linked Review Manuscript.docx`, email-optimized to approximately 572 KB while preserving the cover, clickable outline, internal navigation, and drawing links.
+- Attachment verification: matching message confirmed in the OfficeAssist Sent Items folder with the correct sender, recipient, subject, and `has_attachments: true`.

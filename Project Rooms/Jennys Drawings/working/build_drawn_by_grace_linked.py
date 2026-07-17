@@ -17,7 +17,7 @@ COVER = (
     ROOT
     / "outputs"
     / "gracious-millionaire-cover-drawing"
-    / "drawn-by-grace-cover-jenny-style-v2.png"
+    / "drawn-by-grace-cover-jenny-style-v2-email.jpg"
 )
 TEAMS_FOLDER_URL = (
     "https://lifeisanadventure.sharepoint.com/sites/SellYourHome/Shared%20Documents/"
@@ -85,22 +85,6 @@ def slug(index):
     return f"section_{index:02d}"
 
 
-def add_page_number(paragraph):
-    run = paragraph.add_run()
-    begin = OxmlElement("w:fldChar")
-    begin.set(qn("w:fldCharType"), "begin")
-    instruction = OxmlElement("w:instrText")
-    instruction.set(qn("xml:space"), "preserve")
-    instruction.text = " PAGE "
-    separate = OxmlElement("w:fldChar")
-    separate.set(qn("w:fldCharType"), "separate")
-    text = OxmlElement("w:t")
-    text.text = "1"
-    end = OxmlElement("w:fldChar")
-    end.set(qn("w:fldCharType"), "end")
-    run._r.extend([begin, instruction, separate, text, end])
-
-
 def set_styles(doc):
     doc.settings.odd_and_even_pages_header_footer = False
     section = doc.sections[0]
@@ -141,15 +125,8 @@ def set_styles(doc):
         style.paragraph_format.space_after = Pt(after)
         style.paragraph_format.keep_with_next = True
 
-    header = section.header.paragraphs[0]
-    header.alignment = WD_ALIGN_PARAGRAPH.CENTER
-    run = header.add_run("DRAWN BY GRACE  |  LINKED REVIEW MANUSCRIPT")
-    base.set_run_font(run, size=8.5, color=base.MUTED, bold=True)
-    footer = section.footer.paragraphs[0]
-    footer.alignment = WD_ALIGN_PARAGRAPH.RIGHT
-    run = footer.add_run("DRAWN BY GRACE  |  ")
-    base.set_run_font(run, size=8.5, color=base.MUTED)
-    add_page_number(footer)
+    section.header.paragraphs[0].clear()
+    section.footer.paragraphs[0].clear()
 
 
 def add_cover(doc):
