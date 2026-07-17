@@ -43,7 +43,7 @@ This room was created as the standard workspace for LD. Evans. No project-specif
 ## Dedicated Chat
 
 - Chat name: `LD. Evans`
-- Thread id: pending until the dedicated chat is created.
+- Thread id: `019f6ffe-d7b7-71f0-87d7-17b8e453f59e`
 
 ## Start PR
 
