@@ -16,6 +16,10 @@ COVER = (
     / "gracious-millionaire-cover-drawing"
     / "drawn-by-grace-cover-jenny-style-v2-email.jpg"
 )
+TEAMS_FOLDER_URL = (
+    "https://lifeisanadventure.sharepoint.com/sites/SellYourHome/Shared%20Documents/"
+    "Marketing/Gracious%20Millionaire%20-%20Drawn%20by%20Grace"
+)
 
 
 def inline_markup(value: str) -> str:
@@ -58,10 +62,11 @@ def build() -> None:
         plate_id = section["plate"]
         if plate_id:
             filename, title, meta = base.PLATES[plate_id]
+            image_url = f"{TEAMS_FOLDER_URL}/{filename}"
             manuscript.append(
                 f'''<figure class="plate-page" id="plate-{plate_id.lower()}">
   <div class="frame">
-    <img src="./{html.escape(filename, quote=True)}" alt="{html.escape(title, quote=True)} — original drawing by Jenny Browning" loading="eager">
+    <img src="{html.escape(image_url, quote=True)}" alt="{html.escape(title, quote=True)} — original drawing by Jenny Browning" loading="eager">
   </div>
   <figcaption><strong>{html.escape(title)}</strong><span>{html.escape(meta)}</span></figcaption>
 </figure>'''

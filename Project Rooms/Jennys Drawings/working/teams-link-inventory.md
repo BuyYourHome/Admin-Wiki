@@ -13,14 +13,16 @@
 
 ## Linked Files
 
-The folder contains the complete context-selected source set, `JD-001` through `JD-018`. The Word review manuscript uses direct Teams/SharePoint file URLs. The HTML edition uses relative image references to the stable filenames recorded in `drawing-metadata-inventory.md`, allowing each drawing to display in full when the HTML file and drawings remain together.
+The folder contains the complete context-selected source set, `JD-001` through `JD-018`. The Word review manuscript uses direct Teams/SharePoint file URLs. The HTML edition uses authenticated Teams image references to the stable filenames recorded in `drawing-metadata-inventory.md`, allowing each drawing to display in full when the reader is signed into Buy Your Home Microsoft 365.
 
 ## Delivery
 
 - Illustrated HTML manuscript: `outputs/Drawn by Grace - Illustrated Manuscript.html`
 - HTML manuscript URL: `https://lifeisanadventure.sharepoint.com/sites/SellYourHome/Shared%20Documents/Marketing/Gracious%20Millionaire%20-%20Drawn%20by%20Grace/Drawn%20by%20Grace%20-%20Illustrated%20Manuscript.html`
 - HTML behavior: embedded cover, clickable internal outline, 18 framed full-size drawing displays, and Letter-size print rules producing a verified 41-page layout.
-- HTML dependency: keep the HTML file in the same folder as `JD-001` through `JD-018`; moving it away from those files will break the relative drawing references.
+- HTML dependency: the drawing displays require network access and an authorized Buy Your Home Microsoft 365 sign-in.
+- HTML email delivery: sent July 17, 2026 from `OfficeAssist@BuyYourHomeLLC.com` to `WesWill@BuyYourHomeLLC.com` with subject `Drawn by Grace - Illustrated HTML Manuscript`.
+- HTML attachment verification: matching message confirmed in OfficeAssist Sent Items with attachment `Drawn by Grace - Illustrated Manuscript.html`, content type `text/html`, and size 752,119 bytes.
 - Lightweight linked manuscript: `outputs/Drawn by Grace - Linked Review Manuscript.docx`
 - Manuscript URL: `https://lifeisanadventure.sharepoint.com/sites/SellYourHome/_layouts/15/Doc.aspx?sourcedoc=%7BF685378C-8813-4BF2-BDA5-C28C9BDD9013%7D&file=Drawn%20by%20Grace%20-%20Linked%20Review%20Manuscript.docx&action=default&mobileredirect=true`
 - Purpose: preserve the new *Drawn by Grace* cover, Word Navigation-pane headings, and a clickable internal outline while keeping the full-resolution drawings outside the manuscript.
