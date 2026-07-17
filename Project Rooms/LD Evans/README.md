@@ -32,9 +32,9 @@ Out of scope:
 
 ## Current Status
 
-Status: active source intake for book development.
+Status: active manuscript development.
 
-Wes intends to write a book about his grandfather, L.D. Evans. Four `Leaving Home` videos from Wes Browning's YouTube channel have been archived under `sources\video\leaving-home\` with separate audio copies, source metadata, and available captions for later content and narrative-voice analysis.
+Wes intends to write a book about his grandfather, L.D. Evans. Four `Leaving Home` videos from Wes Browning's YouTube channel have been archived under `sources\video\leaving-home\` with separate audio copies, source metadata, and available captions. Clean working transcripts, a manuscript source map, and a first draft of Chapters 4 and 5 have now been prepared from those recordings.
 
 ## Matching Skill
 
@@ -59,8 +59,8 @@ Before durable work, follow Start PR Mode in `C:\Codex\Wiki Files\Project Room C
 
 ## Next Actions
 
-1. Review and correct the automatic captions against the recordings before quoting them.
-2. Extract a chronology, people, places, themes, scenes, and unresolved factual claims from the four recordings.
-3. Gather corroborating documents, photographs, and family testimony for the book.
-4. Confirm the intended audience, book scope, narrative point of view, and first writing deliverable.
-5. Draft review-ready outputs in `outputs\` only from authoritative sources.
+1. Confirm that the recording narrator is L.D. Evans and verify uncertain names, locations, dates, and dialogue against the audio.
+2. Review the working manuscript draft of Chapters 4 and 5 with Wes.
+3. Gather source material for Chapters 1 through 3 and later portions of the book.
+4. Gather corroborating documents, photographs, and family testimony.
+5. Confirm the intended audience, full-book scope, and final narrative point of view.
