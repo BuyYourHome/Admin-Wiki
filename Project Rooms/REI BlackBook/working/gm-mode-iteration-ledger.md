@@ -894,3 +894,27 @@ Live status:
 - No personal photo, form, workflow, contact detail, or manuscript content was published.
 
 Exact next objective: after logo approval, replace the live header branding and QA both hosts at desktop/mobile sizes; otherwise resume with approved theme-page copy when excerpt decisions arrive.
+
+### 2026-07-17 - Approved logo publication
+
+Objective: publish Wes-approved revised logo concept 002 and verify responsive header behavior on both public hosts.
+
+Live changes:
+
+- Uploaded the 1840 x 390 horizontal logo lockup to WordPress.
+- Set the media attachment alternative text to `Gracious Millionaire logo`.
+- Replaced both regular and retina header-logo settings with the approved asset and published the Customizer.
+
+QA:
+
+- Both `graciousmillionaire.com` and the REI preview host serve the new logo asset.
+- Desktop headers show clean wordmark/navigation alignment without overlap.
+- True 390 x 844 checks on both hosts show the full wordmark above the collapsed Menu control with no clipping or horizontal overflow.
+- No form, workflow, recipient, notification, contact detail, DNS setting, manuscript content, or personal photo changed.
+
+What worked:
+
+- The controlled-browser file-chooser event plus `chooser.setFiles()` is the reliable WordPress media-upload path; filling the file input or waiting for a native picker is not.
+- Reusing the same high-resolution horizontal lockup for regular and retina fields preserves clarity while the theme scales it correctly at desktop and mobile sizes.
+
+Exact next objective: obtain decisions on the six theme excerpt candidates, then create and link the six theme pages using approved copy only.

@@ -8,9 +8,9 @@
 - `gracious-millionaire-book-cover-current-smaller-the-2026-07-16.png`
 - `gracious-millionaire-book-cover-current-smaller-the-2026-07-16-email.jpg`
 - `gracious-millionaire-logo-header-2026-07-09.png`
-- `gracious-millionaire-logo-concept-002-2026-07-17.png` - review-only revised concept
-- `gracious-millionaire-logo-header-002-2026-07-17.png` - review-only horizontal header lockup
-- `gracious-millionaire-logo-mark-002-2026-07-17.png` - review-only compact/mobile mark
+- `gracious-millionaire-logo-concept-002-2026-07-17.png` - Wes-approved revised concept
+- `gracious-millionaire-logo-header-002-2026-07-17.png` - approved live horizontal header lockup
+- `gracious-millionaire-logo-mark-002-2026-07-17.png` - approved compact/mobile mark retained for future use
 
 ## Use
 
@@ -31,16 +31,16 @@ Wes instruction, 2026-07-09:
 Website guidance:
 
 - Use the logo in website headers, footer brand areas, or Gracious Millionaire cross-promotion sections.
-- Use `gracious-millionaire-logo-header-2026-07-09.png` for the website header, because it is cropped from the approved logo concept sheet for web-logo use.
+- Use `gracious-millionaire-logo-header-002-2026-07-17.png` for the website header. It is live as both the regular and retina logo and passed desktop and 390 x 844 QA on both public hosts.
 - Use the book-cover concept only where a book/cover visual is appropriate, such as a landing page, card, or feature section.
 - Prefer the `current-smaller-the-2026-07-16` cover version when showing the current Gracious Millionaire book cover because Wes selected it as the current smaller-`The` manuscript and website cover.
 - Keep the Gracious Millionaire presentation restrained, literary, and faith-centered.
 - Do not style these assets as a luxury wealth brand. The Gracious Millionaire project guidance treats real-estate wealth as the context, not the subject.
 
-Revised logo review, 2026-07-17:
+Revised logo approval and publication, 2026-07-17:
 
 - Concept 002 simplifies the original mark for reliable small-header use and removes leaves, decorative captions, flourishes, gradients, shadows, and luxury cues.
-- The full concept, horizontal header crop, and compact mark are review assets only. Do not upload or replace the live logo until Wes approves this direction.
+- Wes approved concept 002. The horizontal header crop is live in the regular and retina logo slots; the compact mark is retained for a future favicon or dedicated compact placement.
 - The built-in image-generation prompt used the original July 9 logo as the edit reference and required the exact text `GRACIOUS MILLIONAIRE`, a flat editorial treatment, and no extra text.
 
 Alt text:

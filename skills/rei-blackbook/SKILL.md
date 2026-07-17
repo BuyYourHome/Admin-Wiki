@@ -78,7 +78,7 @@ GM Mode target:
 - Builder URL: `https://u113450.h.reiblackbook.com/generic6/`
 - Control panel: `https://my.reiblackbook.com/webtools/sites/advanced/48842`
 - Public domain: `https://graciousmillionaire.com`
-- Current element map: `C:\Codex\Wiki Files\Project Rooms\REI BlackBook\working\gracious-millionaire-element-map-035.md`
+- Current element map: `C:\Codex\Wiki Files\Project Rooms\REI BlackBook\working\gracious-millionaire-element-map-036.md`
 - Site record: `C:\Codex\Wiki Files\Project Rooms\REI BlackBook\working\gracious-millionaire-site.md`
 - Iteration ledger: `C:\Codex\Wiki Files\Project Rooms\REI BlackBook\working\gm-mode-iteration-ledger.md`
 
@@ -147,6 +147,7 @@ GM scheduled iteration:
 - If Chrome, the ChatGPT Chrome Extension, and the native-host checks all pass but tab discovery repeatedly hangs, ask Wes for permission to open a fresh selected-profile Chrome window. The 2026-07-16 recovery confirmed that this can restore controlled-tab discovery without reinstalling the extension.
 - For responsive QA, confirm the page-reported viewport width after applying the Chrome viewport capability. A requested narrow viewport is not evidence of mobile QA until the rendered page reports the expected width and is checked for overflow.
 - Before editing WordPress attachment metadata for a Beaver Builder image, identify the attachment id actually referenced by the live module. After changing alternative text, reopen and republish the module so Beaver Builder's cached image derivative inherits the metadata; verify the final `alt` value on both public hosts.
+- For WordPress media uploads through controlled Chrome, use the browser file-chooser flow: start `tab.playwright.waitForEvent("filechooser")`, click the actual `input[type="file"]`, await the chooser, then call `chooser.setFiles()` with an absolute local path. Do not try to fill the file input or rely on a native Windows picker. After selection, set attachment metadata, choose the image, publish the owning Customizer or builder surface, and verify the exact public asset URL on both hosts.
 
 ## Output Standards
 

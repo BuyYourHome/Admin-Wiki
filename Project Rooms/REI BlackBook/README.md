@@ -21,7 +21,7 @@ Folder map:
 Key working notes:
 
 - `working\tool-map.md` - first-pass REI BlackBook navigation, WebTools Sites, existing site IDs, BYH control-panel map, and browser safety rules.
-- `working\gracious-millionaire-element-map-035.md` - current local map of the review-only revised logo set, unchanged live-site status, approval gates, and the exact next objective.
+- `working\gracious-millionaire-element-map-036.md` - current local map of the approved live logo, desktop/mobile QA, remaining approval gates, and the exact next objective.
 
 Standing website-update rule:
 
