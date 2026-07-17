@@ -15,4 +15,5 @@ Required behavior:
 - include a verification note that the draft is not final until vendor confirmed,
 - preserve source email traceability,
 - render the PDF to PNG and visually inspect before use,
-- do not send the vendor email until Wes approves the exact email and recipient list.
+- send the vendor email when vendor identity, vendor email address, and source evidence are clear; copy Wes and Jenny and sign as `Jean Wright`.
+- do not forward or attach the routed free-text source email to the vendor.

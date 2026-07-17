@@ -90,8 +90,9 @@ Invoice Entry responsibilities:
 - For free-text invoice emails, create a formal invoice document from the email body and preserved source details.
 - Use the polished Create Vendor Invoice PDF template for generated free-text invoices unless Wes requests a different invoice style. Template: `C:\Codex\Wiki Files\skills\invoice-entry\templates\create-vendor-invoice-polished-invoice-template.md`.
 - Render and visually inspect the generated invoice PDF before attaching it to a review or vendor-verification email.
-- Prepare the vendor verification email for Wes review before sending. Do not send the generated formal invoice to the vendor until Wes has seen and approved the exact email text and recipient list for that invoice.
-- After Wes approves the draft, email the generated formal invoice back to the proper vendor with a request to verify the invoice's accuracy when vendor identity, vendor email address, and source evidence are clear. Copy `WesWill@BuyYourHomeLLC.com` and `Jenny@BuyYourHomeLLC.com` on that verification email. Use the Admin wiki email-delivery rules for sender safety and sent-item verification.
+- Email the generated formal invoice PDF back to the proper vendor with a request to verify the invoice's accuracy when vendor identity, vendor email address, and source evidence are clear. This Create Vendor Invoice Mode verification email has standing approval and does not require a separate Wes review step before sending. Copy `WesWill@BuyYourHomeLLC.com` and `Jenny@BuyYourHomeLLC.com` on that verification email. Use the Admin wiki email-delivery rules for sender safety and sent-item verification.
+- Do not forward or attach the routed free-text source email to the vendor. Preserve the source email in the project room for traceability, but send the vendor only the polished generated invoice and the verification request.
+- Sign Create Vendor Invoice Mode vendor verification emails as `Jean Wright`.
 - Do not file a free-text generated invoice as a final invoice, insert it into a project spreadsheet, or mark it ready for posting until the vendor has returned or confirmed it as accurate.
 - Record routing decisions, workbook edits, duplicate checks, validation results, and unresolved questions in the Invoice Entry project room.
 
@@ -101,7 +102,6 @@ Safety limits:
 - Do not pay invoices.
 - Do not contact vendors except for the Create Vendor Invoice Mode free-text invoice-accuracy verification request described above.
 - Do not send a vendor verification request for an email that already includes an attached invoice.
-- Do not send a vendor verification request before Wes reviews and approves the exact outgoing email.
 - Do not send a vendor verification request if the proper vendor email address is unclear, the free-text source evidence is insufficient, the invoice appears misrouted, or the message would imply approval, payment, or acceptance of the invoice.
 - Do not guess the project, vendor, amount, invoice number, or destination worksheet when evidence is unclear.
 - If the routed email lacks required fields or the attachment cannot be accessed, preserve the source link and report the blocker.

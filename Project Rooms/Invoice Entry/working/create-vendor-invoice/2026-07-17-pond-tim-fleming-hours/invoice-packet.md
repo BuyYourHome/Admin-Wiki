@@ -2,7 +2,7 @@
 
 ## Packet Status
 
-- Status: `Held - Vendor verification draft pending Wes approval`
+- Status: `Vendor verification sent - pending vendor confirmation`
 - Mode: `Create Vendor Invoice`
 - Created: 2026-07-17
 - Source type: Routed free-text vendor invoice email; no invoice attachment.
@@ -64,4 +64,4 @@ Reasons:
 - destination worksheet is not confirmed,
 - generated invoice has not been reviewed by Wes or verified by Tim Fleming.
 
-Next action: show Wes the verification email draft. If Wes approves the exact recipient list and text, send the polished generated invoice PDF to Tim Fleming for accuracy verification with Wes and Jenny copied.
+Next action: wait for Tim Fleming's confirmation. Do not file the generated invoice as final, insert it into the project spreadsheet, or mark it ready for posting until Tim confirms the invoice is accurate.

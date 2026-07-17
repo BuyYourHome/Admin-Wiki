@@ -60,7 +60,8 @@ Use the Tim Fleming 2026-07-17 invoice draft as the approved visual model:
 - Render the PDF to PNG and visually inspect it before using it.
 - Confirm no clipped text, overlapping elements, unreadable glyphs, or broken table layout.
 - Preserve the generation script or enough template data to regenerate the PDF later.
-- Do not send the PDF to the vendor until Wes approves the exact outgoing email and recipient list.
+- Send the PDF to the vendor for verification when vendor identity, vendor email address, and source evidence are clear. Copy `WesWill@BuyYourHomeLLC.com` and `Jenny@BuyYourHomeLLC.com`, and sign the email as `Jean Wright`.
+- Do not forward or attach the routed free-text source email to the vendor. The free-text source stays in the project room for traceability.
 
 ## Current Reference Implementation
 

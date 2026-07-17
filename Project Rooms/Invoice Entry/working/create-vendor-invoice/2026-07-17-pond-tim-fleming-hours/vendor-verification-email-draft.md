@@ -1,6 +1,6 @@
 # Vendor Verification Email Draft
 
-Status: `Held - waiting for Wes review before sending`
+Status: `Sent - pending vendor confirmation`
 
 ## Envelope
 
@@ -9,6 +9,7 @@ Status: `Held - waiting for Wes review before sending`
 - CC: `WesWill@BuyYourHomeLLC.com`; `Jenny@BuyYourHomeLLC.com`
 - Subject: `Please verify Pond hours invoice draft for 7/6-7/17`
 - Attachment/source to include after Wes approval: `tim-fleming-pond-hours-invoice-draft.pdf`.
+- Source email attachment: not included.
 
 ## Draft Body
 
@@ -28,6 +29,6 @@ Please reply to confirm whether the hours, hourly rate, and total amount are cor
 
 Thank you,
 
-Jean  
+Jean Wright  
 Office Assistant  
 Buy Your Home

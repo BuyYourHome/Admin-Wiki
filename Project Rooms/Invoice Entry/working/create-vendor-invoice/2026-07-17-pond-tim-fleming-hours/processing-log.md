@@ -30,3 +30,7 @@
 - Generated the vendor-facing Tim Fleming verification email draft with the polished PDF as the attachment. The vendor email is not sent and requires Wes's explicit send approval.
 - Sent the Tim-facing email package to Wes only for review, with the polished PDF attached.
 - Verified the review email in OfficeAssist Sent Items. Nothing was sent to Tim Fleming.
+- Wes gave standing approval for Create Vendor Invoice Mode to send vendor verification emails without further approval when the vendor identity, vendor email, and source evidence are clear; the email must copy Wes and Jenny and be signed `Jean Wright`.
+- Wes clarified that the routed/free-text source email should not be sent to the vendor. Only the polished invoice PDF and clean verification email should be sent.
+- Sent Tim Fleming the clean vendor verification email from `OfficeAssist@BuyYourHomeLLC.com` with Wes and Jenny copied and the polished invoice PDF attached. The routed/free-text source email was not forwarded or attached.
+- Verified the sent copy in OfficeAssist Sent Items. Current status: pending Tim Fleming confirmation.

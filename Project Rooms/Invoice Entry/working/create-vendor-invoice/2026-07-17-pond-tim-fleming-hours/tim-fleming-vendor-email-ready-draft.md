@@ -1,8 +1,10 @@
 # Tim Fleming Vendor Verification Email - Ready Draft
 
-Status: `Generated - not sent`
+Status: `Sent - pending vendor confirmation`
 
-This is the vendor-facing email to send only after Wes explicitly approves sending it.
+This is the vendor-facing email for Tim Fleming.
+
+Sent from `OfficeAssist@BuyYourHomeLLC.com` on 2026-07-17. Sent copy verified in OfficeAssist Sent Items.
 
 ## Envelope
 
@@ -11,6 +13,7 @@ This is the vendor-facing email to send only after Wes explicitly approves sendi
 - CC: `WesWill@BuyYourHomeLLC.com`; `Jenny@BuyYourHomeLLC.com`
 - Subject: `Please verify Pond hours invoice draft for 7/6-7/17`
 - Attachment: `C:\Codex\Wiki Files\Project Rooms\Invoice Entry\working\create-vendor-invoice\2026-07-17-pond-tim-fleming-hours\tim-fleming-pond-hours-invoice-draft.pdf`
+- Source email attachment: not included
 
 ## Body
 
@@ -30,6 +33,6 @@ Please reply to confirm whether the hours, hourly rate, and total amount are cor
 
 Thank you,
 
-Jean  
+Jean Wright  
 Office Assistant  
 Buy Your Home
