@@ -631,3 +631,30 @@ Remaining defects:
 - Book and Journal remain blocked/stale; public contact and workflow details remain approval-bound.
 
 Exact next objective: run read-only mobile About QA first, then choose a stable native WordPress or theme objective that does not touch blocked Book/Journal or approval-bound contact/workflow settings.
+
+### 2026-07-17 - Routed GM Site instruction intake and partial implementation
+
+Objective: process Wes's routed GM Site email covering title status, newer cover, Books navigation, related manuscripts, Request Updates imagery, and removal of map/address content.
+
+Live changes:
+
+- Changed and saved the shared WordPress menu label from `The Book` to `Books`.
+
+Staged but unpublished changes:
+
+- Set the Updates-page map, address/phone rich text, Categories, and Contact Us widgets to Advanced visibility `Never`.
+- Replaced the working-title sentence with book copy referencing `Gracious Millionaire - Drawn by Grace` and `The L.D. Evans story`.
+
+QA evidence:
+
+- Preview homepage and both Updates-page hosts render `Books`.
+- Custom homepage still renders cached `The Book`.
+- Both public Updates hosts still render the old working-title copy, map, address, and contact block because the builder changes were not published.
+
+Asset decisions and blockers:
+
+- Approved July 16 moving-forward cover identified; WordPress upload timed out before file selection.
+- Existing media attachment `6325` (`reader-notebook.jpg`) selected as a stronger Request Updates image candidate.
+- Chrome control failed while recovering the staged builder tab. Windows Computer Use can publish it, but public website editing requires action-time confirmation.
+
+Exact next objective: after confirmation, publish and QA the staged Updates changes, replace the Request Updates card image with attachment `6325`, upload/place the approved July 16 cover through a stable file-chooser path, and verify both hosts plus mobile layout.

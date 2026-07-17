@@ -43,7 +43,7 @@ Create a site called `Gracious Millionaire` for information related to the book 
 
 - Iteration loop: `working\gracious-millionaire-iteration-loop.md`.
 - Latest implementation report: `working\gracious-millionaire-iteration-001.md`.
-- Current full element cleanup map: `working\gracious-millionaire-element-map-025.md`.
+- Current full element cleanup map: `working\gracious-millionaire-element-map-026.md`.
 - Book Outline contains the 25 current working chapter titles and links all titles to the shared `Chapter Being Edited` page.
 - Chapter content is not published on the site.
 
@@ -92,6 +92,7 @@ Create a site called `Gracious Millionaire` for information related to the book 
 - Heartbeat GM Mode run on 2026-07-16 balanced the homepage card composition by placing the full-resolution portrait cover beside its copy on desktop and cropping the updates image to landscape. The cover returns to a full-width portrait on mobile; both hosts passed hierarchy, asset, destination, and overflow QA. See `working\gracious-millionaire-element-map-023.md`.
 - Heartbeat GM Mode audit on 2026-07-16 found the About page still uses an H2 page title, three H3 feature headings, a generic circle stock image with empty alt text, and a visible Categories block. No live change published because the About settings panel and fresh Chrome control session timed out. The next run must avoid About, Book, and Journal builder paths until Chrome is reset or stability is demonstrated. See `working\gracious-millionaire-element-map-024.md`.
 - Manual GM Mode retry on 2026-07-17 recovered the About builder, changed the page title to H1 and the three feature headings to H2, replaced the generic stock circle with the approved Wes-and-Jenny landscape image, added descriptive alt text, and hid the Categories widget. Both hosts passed desktop hierarchy, asset, category-removal, and overflow QA. Chrome disconnected before 390-pixel mobile QA; see `working\gracious-millionaire-element-map-025.md`.
+- OfficeAssist-routed GM Site work on 2026-07-17 changed the shared menu label to `Books`. The Updates builder contains staged hidden map/address/contact/category modules and revised multi-manuscript copy, but those changes were not published after Chrome control failed and Windows Computer Use reached an action-time confirmation boundary. The newer July 16 cover upload and the selected `reader-notebook.jpg` Request Updates replacement remain pending; see `working\gracious-millionaire-element-map-026.md`.
 
 ## Safety Notes
 
