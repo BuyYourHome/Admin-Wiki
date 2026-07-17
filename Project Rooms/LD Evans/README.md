@@ -57,6 +57,12 @@ Before durable work, follow Start PR Mode in `C:\Codex\Wiki Files\Project Room C
 - Commit only scoped LD Evans room, matching skill, and directly related registry/index changes.
 - Push only when Wes explicitly asks, says the work is finished, or the applicable Admin wiki rules define the deliverable as final and ready to publish.
 
+## Manuscript Delivery
+
+- Whenever the manuscript or another review-ready file under `outputs\` is created or materially changed, email the updated file to `WesWill@BuyYourHomeLLC.com` from `OfficeAssist@BuyYourHomeLLC.com` using the shared `email-delivery` skill.
+- Verify the message in OfficeAssist Sent Items. The deliverable change is not complete until delivery and verification succeed.
+- Working-note, transcript, source-inventory, and administrative-only changes do not trigger email unless they also change a review-ready output. This prevents recursive delivery caused by logging or housekeeping changes.
+
 ## Next Actions
 
 1. Confirm that the recording narrator is L.D. Evans and verify uncertain names, locations, dates, and dialogue against the audio.

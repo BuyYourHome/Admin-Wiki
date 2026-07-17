@@ -52,3 +52,17 @@ Before LD Evans file work:
 ## Outputs
 
 Use `C:\Codex\Wiki Files\Project Rooms\LD Evans\outputs` for review-ready drafts, summaries, checklists, handoff notes, and final deliverables.
+
+## Manuscript And Deliverable Email Rule
+
+Whenever the LD Evans manuscript or another review-ready file under `outputs\` is created or materially changed:
+
+1. Finish and verify the changed deliverable.
+2. Commit the scoped LD Evans change when the Admin wiki rules call for a durable commit.
+3. Use `C:\Codex\Wiki Files\skills\email-delivery\SKILL.md` to email the updated deliverable to `WesWill@BuyYourHomeLLC.com` from `OfficeAssist@BuyYourHomeLLC.com`.
+4. Use a plain subject that identifies the LD Evans deliverable and that it was updated. Do not use the `DRAFT:` prefix merely because a manuscript is a working draft; the email is delivering a file for Wes's review, not proposing an outbound email message.
+5. Attach the changed deliverable. Do not silently send without the attachment if attachment delivery fails.
+6. Verify the sent copy in `OfficeAssist@BuyYourHomeLLC.com` Sent Items.
+7. Treat the manuscript or deliverable update as incomplete until the email send and Sent Items verification succeed. Report any send or verification failure immediately in the LD Evans thread.
+
+Working-note, transcript, source-inventory, and administrative-only changes do not trigger an email unless they also create or materially change a review-ready file under `outputs\`. This boundary prevents delivery-log or housekeeping changes from creating a recursive email loop.
