@@ -72,6 +72,18 @@ When creating a new PR, work from `main`.
 4. Create the Project Room, skill, registry, and index files on `main`.
 5. Create a new chat only when Wes explicitly asks or when there is no existing chat that should own the work.
 
+## Dedicated Chat Connector Rule
+
+When creating a new PR requires a dedicated Codex task:
+
+1. Create and commit the Project Room files, matching skill, registry entry, and Admin Home link first.
+2. Try the Codex app task-creation connector once.
+3. If the connector does not return promptly or does not return a usable thread id, stop waiting on the connector.
+4. Leave the README and registry `Thread id` as `pending until the dedicated chat is created`.
+5. Report that the local PR package is complete and the dedicated task creation is pending because the connector did not return.
+6. Do not let task creation block the whole PR setup, and do not retry indefinitely in the same turn.
+7. When the connector later succeeds, record the returned thread id in the PR README and registry, then commit that small metadata update separately.
+
 ## Standard Create PR Workflow
 
 1. Confirm the requested PR name and normalize the matching skill name to lower-case hyphen-case.
@@ -87,9 +99,10 @@ When creating a new PR, work from `main`.
 11. Add an `agents\openai.yaml` file for the skill when practical.
 12. Update `Agents and Automations Registry.md` when the workflow is agent-like, repeatable, or expected to have a dedicated chat.
 13. Add an `Admin Home.md` link when the room should be easy to find from the wiki start page.
-14. Create a new Codex chat using the Project Room Chat Startup Rule startup text only when Wes explicitly asks or when no existing chat should own the work.
-15. Commit the scoped durable files locally.
-16. Push only when Wes explicitly asks, says the work is finished, or the applicable rule defines the deliverable as ready to publish.
+14. Create and commit the scoped durable files locally before attempting a dedicated Codex task.
+15. Create a new Codex chat using the Project Room Chat Startup Rule startup text only when Wes explicitly asks or when no existing chat should own the work; follow the Dedicated Chat Connector Rule so connector delays do not block setup.
+16. If a dedicated chat is created, record the returned thread id in the README and registry and commit that metadata update separately.
+17. Push only when Wes explicitly asks, says the work is finished, or the applicable rule defines the deliverable as ready to publish.
 
 ## Existing PR Rename Or Move Rule
 

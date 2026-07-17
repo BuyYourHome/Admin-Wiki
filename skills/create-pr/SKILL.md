@@ -47,8 +47,21 @@ Before Create PR file work:
 11. Add `skills\<skill-name>\agents\openai.yaml` when practical.
 12. Update `Agents and Automations Registry.md` when the room is repeatable, agent-like, has a dedicated chat, or may later have automation.
 13. Add `Admin Home.md` links when the room should be visible from the wiki start page.
-14. Create or hand off to a dedicated chat using `Project Room Chat Startup Rule.md` only when Wes explicitly asks or when no existing chat should own the work.
-15. Commit only the scoped Project Room, skill, registry, and index changes. Push only under the Admin wiki push rules.
+14. Commit the scoped Project Room, skill, registry, and index changes before attempting dedicated task creation.
+15. Create or hand off to a dedicated chat using `Project Room Chat Startup Rule.md` only when Wes explicitly asks or when no existing chat should own the work; follow the Dedicated Chat Connector Rule below.
+16. If a dedicated chat is created, record the returned thread id in the README and registry and commit that metadata update separately.
+17. Push only under the Admin wiki push rules.
+
+## Dedicated Chat Connector Rule
+
+When creating a new PR requires a dedicated Codex task:
+
+1. Complete and commit the local PR package first.
+2. Try the Codex app task-creation connector once.
+3. If the connector does not return promptly or does not return a usable thread id, stop waiting on it and leave the README and registry `Thread id` as `pending until the dedicated chat is created`.
+4. Report the local PR package as complete and the dedicated task as pending because the connector did not return.
+5. Do not let task creation block the whole PR setup, and do not retry indefinitely in the same turn.
+6. When the connector later succeeds, record the returned thread id in the PR README and registry, then commit that metadata update separately.
 
 ## Chat Startup Prompt Requirements
 
