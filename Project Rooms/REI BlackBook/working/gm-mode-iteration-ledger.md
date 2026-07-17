@@ -970,3 +970,27 @@ What worked:
 - A separate blockquote headline plus H2/body hierarchy creates the requested short-to-full reading progression without repeating internal chapter labels.
 
 Exact next objective: select and approve the exact personal homepage hero image for public upload, or define Journal signup/contact-form delivery specifications before activation.
+
+### 2026-07-17 - Larger theme excerpt paragraphs
+
+Objective: make the fuller manuscript paragraphs slightly larger without changing the approved headline, source wording, or supporting-note hierarchy.
+
+Live changes:
+
+- Increased only the manuscript body paragraphs on all six theme pages to 17px with 1.65 line height.
+- Retained each blockquote headline, `From the Manuscript` H2, 14px manuscript-development note, and return navigation without copy or size changes.
+
+QA:
+
+- Both the public domain and REI preview host render every expected excerpt paragraph at a computed 17px font size and 28.05px line height.
+- Paragraph counts, approved headlines, source wording, and return links remain present.
+- Desktop checks at 1920 pixels passed without horizontal overflow.
+- The longest work/responsibility page passed true 390 x 844 visual QA without clipping, overlap, or horizontal overflow.
+- No form, workflow, recipient, notification, contact detail, DNS setting, image, or other public content changed.
+
+What worked:
+
+- Rebuilding the small classic-editor HTML body from the already traced theme-page source set made the typography change deterministic while preserving the content hierarchy.
+- Scoped inline paragraph typography survived WordPress publication consistently on both hosts.
+
+Exact next objective: select and approve the exact personal homepage hero image for public upload, or define Journal signup/contact-form delivery specifications before activation.

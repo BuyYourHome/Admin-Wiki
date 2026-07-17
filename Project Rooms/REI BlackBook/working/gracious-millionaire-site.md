@@ -43,7 +43,7 @@ Create a site called `Gracious Millionaire` for information related to the book 
 
 - Iteration loop: `working\gracious-millionaire-iteration-loop.md`.
 - Latest implementation report: `working\gracious-millionaire-iteration-001.md`.
-- Current full element cleanup map: `working\gracious-millionaire-element-map-038.md`.
+- Current full element cleanup map: `working\gracious-millionaire-element-map-039.md`.
 - Book Outline contains the 25 current working chapter titles and links all titles to the shared `Chapter Being Edited` page.
 - Chapter content is not published on the site.
 
@@ -102,6 +102,7 @@ Create a site called `Gracious Millionaire` for information related to the book 
 - The three Books-page manuscript entries now use a book, open-heart, and manuscript/document icon instead of the inherited clock, award, and puzzle symbols. Both hosts passed desktop icon, hierarchy, and overflow QA; see `working\gracious-millionaire-element-map-033.md`.
 - Wes approved all six theme excerpt candidates on 2026-07-17. Six child pages were published beneath Book Themes, and every existing theme icon/title now links to its matching page. Both hosts passed exact-excerpt and return-link QA; the Themes index and longest excerpt page also passed true 390 x 844 QA. See `working\gracious-millionaire-element-map-037.md`.
 - Wes then authorized fuller surrounding manuscript context without another approval pass. Each theme page now retains its one-line excerpt as a prominent headline and places two to four contiguous source paragraphs beneath a `From the Manuscript` heading. Both hosts passed source-text checks, and the longest page passed desktop and true 390 x 844 visual QA. See `working\gracious-millionaire-element-map-038.md`.
+- Wes requested slightly larger excerpt body text. All fuller manuscript paragraphs now render at 17px with 1.65 line height while the headline, manuscript note, and navigation retain their prior hierarchy. Both hosts and true 390 x 844 mobile QA passed. See `working\gracious-millionaire-element-map-039.md`.
 
 ## Safety Notes
 
