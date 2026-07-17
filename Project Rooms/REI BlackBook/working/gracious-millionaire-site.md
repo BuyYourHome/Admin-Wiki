@@ -43,7 +43,7 @@ Create a site called `Gracious Millionaire` for information related to the book 
 
 - Iteration loop: `working\gracious-millionaire-iteration-loop.md`.
 - Latest implementation report: `working\gracious-millionaire-iteration-001.md`.
-- Current full element cleanup map: `working\gracious-millionaire-element-map-033.md`.
+- Current full element cleanup map: `working\gracious-millionaire-element-map-037.md`.
 - Book Outline contains the 25 current working chapter titles and links all titles to the shared `Chapter Being Edited` page.
 - Chapter content is not published on the site.
 
@@ -100,6 +100,7 @@ Create a site called `Gracious Millionaire` for information related to the book 
 - The Updates submit button now visibly reads `REQUEST BOOK UPDATES` on both hosts through page-scoped presentation CSS after the REI form record and Beaver Builder embedded markup remained out of sync. Form routing and delivery settings were not opened or changed, and the form was not submitted. See `working\gracious-millionaire-element-map-031.md`.
 - The Books page now uses `Books by Wes and Jenny Browning` as its H1 and presents `Gracious Millionaire`, `Gracious Millionaire - Drawn by Grace`, and `The L.D. Evans Story` as three prominent H2 entries in the main content area. Both hosts passed desktop hierarchy and overflow QA; see `working\gracious-millionaire-element-map-032.md`.
 - The three Books-page manuscript entries now use a book, open-heart, and manuscript/document icon instead of the inherited clock, award, and puzzle symbols. Both hosts passed desktop icon, hierarchy, and overflow QA; see `working\gracious-millionaire-element-map-033.md`.
+- Wes approved all six theme excerpt candidates on 2026-07-17. Six child pages were published beneath Book Themes, and every existing theme icon/title now links to its matching page. Both hosts passed exact-excerpt and return-link QA; the Themes index and longest excerpt page also passed true 390 x 844 QA. See `working\gracious-millionaire-element-map-037.md`.
 
 ## Safety Notes
 

@@ -918,3 +918,29 @@ What worked:
 - Reusing the same high-resolution horizontal lockup for regular and retina fields preserves clarity while the theme scales it correctly at desktop and mobile sizes.
 
 Exact next objective: obtain decisions on the six theme excerpt candidates, then create and link the six theme pages using approved copy only.
+
+### 2026-07-17 - Approved linked theme pages
+
+Objective: publish the six approved theme excerpts on dedicated pages and connect the existing Themes callouts.
+
+Live changes:
+
+- Created six published child pages beneath Book Themes for Stewardship, Faith and Calling, Work and Responsibility, Generosity, Jenny's Perspective, and Lessons Still Unfinished.
+- Published the exact approved excerpt on each page without internal chapter labels, architecture codes, or production notes.
+- Added public navigation back to Themes and Books.
+- Linked each existing Themes icon and title to its matching child page through the callout Link field.
+
+QA:
+
+- The public Themes index exposes six matching icon/title links.
+- All six pages load on both hosts with one H1, the exact approved blockquote, and working navigation links.
+- No theme page exposes the inherited address or phone output.
+- True 390 x 844 QA passed for the Themes index and Jenny's Perspective with no horizontal overflow.
+- No form, workflow, recipient, notification, contact detail, DNS setting, personal photo, or unapproved manuscript text changed.
+
+What worked:
+
+- Assigning Book Themes as Parent before native WordPress publication produced stable nested `/services/<theme>/` routes.
+- A Callout module link applies to both its icon and heading while CTA Type remains `None`, so the existing visual design did not require a new button or structural edit.
+
+Exact next objective: select and approve the exact personal homepage hero image for public upload, or define Journal signup/contact-form delivery specifications before activation.

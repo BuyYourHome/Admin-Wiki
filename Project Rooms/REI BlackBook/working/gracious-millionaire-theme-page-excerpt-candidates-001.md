@@ -1,8 +1,8 @@
 # Gracious Millionaire Theme Page Excerpt Candidates 001
 
-Status: **NOT APPROVED FOR PUBLICATION**
+Status: **APPROVED AND PUBLISHED 2026-07-17**
 
-Prepared 2026-07-17 from the current Quick-mode manuscript and the source-derived Book Architecture in response to `sources\email\2026-07-17-210050-gb-site.md`. These are short review candidates only. No excerpt has been placed on the public website.
+Prepared 2026-07-17 from the current Quick-mode manuscript and the source-derived Book Architecture in response to `sources\email\2026-07-17-210050-gb-site.md`. Wes approved all six candidates in the REI BlackBook project-room thread on 2026-07-17. They were published on six child pages beneath Book Themes without chapter labels, architecture codes, or production notes.
 
 ## Stewardship
 
@@ -54,6 +54,8 @@ Context: `outputs\quick-mode\chapters\25-leadership-patience-and-the-unfinished-
 
 ## Approval Questions
 
-1. Approve, reject, or revise each candidate before any public use.
-2. Confirm whether theme pages should identify the source chapter by name or present the excerpt without a chapter label.
-3. Confirm whether the theme pages should initially cover only `Gracious Millionaire` or also cross-link the two related manuscript projects.
+Resolved for the initial publication:
+
+1. All six candidates approved by Wes on 2026-07-17.
+2. Excerpts are presented without internal source-chapter labels.
+3. The initial pages focus on `Gracious Millionaire` and return readers to the plural Books page for the broader manuscript set.
