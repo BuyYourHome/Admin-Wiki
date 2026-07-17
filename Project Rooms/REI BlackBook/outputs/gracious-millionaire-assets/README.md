@@ -8,6 +8,9 @@
 - `gracious-millionaire-book-cover-current-smaller-the-2026-07-16.png`
 - `gracious-millionaire-book-cover-current-smaller-the-2026-07-16-email.jpg`
 - `gracious-millionaire-logo-header-2026-07-09.png`
+- `gracious-millionaire-logo-concept-002-2026-07-17.png` - review-only revised concept
+- `gracious-millionaire-logo-header-002-2026-07-17.png` - review-only horizontal header lockup
+- `gracious-millionaire-logo-mark-002-2026-07-17.png` - review-only compact/mobile mark
 
 ## Use
 
@@ -33,6 +36,12 @@ Website guidance:
 - Prefer the `current-smaller-the-2026-07-16` cover version when showing the current Gracious Millionaire book cover because Wes selected it as the current smaller-`The` manuscript and website cover.
 - Keep the Gracious Millionaire presentation restrained, literary, and faith-centered.
 - Do not style these assets as a luxury wealth brand. The Gracious Millionaire project guidance treats real-estate wealth as the context, not the subject.
+
+Revised logo review, 2026-07-17:
+
+- Concept 002 simplifies the original mark for reliable small-header use and removes leaves, decorative captions, flourishes, gradients, shadows, and luxury cues.
+- The full concept, horizontal header crop, and compact mark are review assets only. Do not upload or replace the live logo until Wes approves this direction.
+- The built-in image-generation prompt used the original July 9 logo as the edit reference and required the exact text `GRACIOUS MILLIONAIRE`, a flat editorial treatment, and no extra text.
 
 Alt text:
 

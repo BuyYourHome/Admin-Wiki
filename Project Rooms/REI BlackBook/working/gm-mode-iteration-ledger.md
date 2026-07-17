@@ -866,3 +866,31 @@ What remains:
 - Updates structural whitespace and hidden address residue remain blocked on the repeated structural-delete path.
 
 Exact next objective: obtain excerpt decisions and build the six linked theme pages from approved copy; do not activate weekly-email/contact delivery or publish a personal photo without the required specific approvals.
+
+### 2026-07-17 - Revised logo review set
+
+Objective: respond to Wes's request to revisit the logo while preserving approval control over public branding.
+
+Review assets created:
+
+- Full revised logo concept 002.
+- Cropped horizontal header lockup at 1840 x 390.
+- Compact GM monogram at 390 x 390 for narrow/mobile placement.
+
+Design change:
+
+- Simplified the original concept by removing the plant, ornamental dividers, comparison-sheet labels, and competing flourishes.
+- Retained a compact GM monogram, open doorway, forward path, editorial serif wordmark, charcoal, evergreen, and restrained brass.
+
+QA:
+
+- Exact text reads `GRACIOUS MILLIONAIRE`.
+- The horizontal crop has sufficient padding and a header-oriented aspect ratio.
+- The compact mark remains legible as a standalone square asset.
+
+Live status:
+
+- No website change or public upload occurred. The current live logo remains unchanged pending approval.
+- No personal photo, form, workflow, contact detail, or manuscript content was published.
+
+Exact next objective: after logo approval, replace the live header branding and QA both hosts at desktop/mobile sizes; otherwise resume with approved theme-page copy when excerpt decisions arrive.
