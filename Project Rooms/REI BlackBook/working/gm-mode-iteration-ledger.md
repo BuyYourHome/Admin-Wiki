@@ -529,3 +529,39 @@ Remaining defects:
 - The Book and Journal remain blocked/stale; form, contact, workflow, manuscript, and personal-photo boundaries remain unchanged.
 
 Exact next objective: balance the homepage cover-card spacing through a stable Callout or column-spacing control, then QA the three-card composition at desktop and mobile.
+
+### 2026-07-16 - Homepage card composition
+
+Objective: balance the portrait book-cover card against the two photographic cards without degrading the cover or mobile layout.
+
+Pages/components touched:
+
+- Homepage `Book Outline` Callout image position.
+- Homepage `Request Updates` Callout image crop.
+
+Live changes:
+
+- Positioned the uncropped, full-resolution book cover left of its heading and copy on desktop.
+- Applied a landscape crop to the updates photograph so its card is closer in proportion to the middle photographic card.
+- Preserved all copy, links, headings, forms, contact data, and workflow settings.
+
+QA evidence:
+
+- Both public hosts render the revised desktop composition with zero horizontal overflow.
+- At 390 x 844, Beaver Builder automatically restores the cover to a 335 x 503 portrait above its copy; mobile overflow remains zero.
+- The approved cover remains 1024 x 1536 with descriptive alternative text.
+- Heading order remains H1, H2, three H3 card titles, then H2; destinations remain outline, About, and Updates.
+
+What worked:
+
+- Callout image layout is stable at `Image` -> `Position`; `Left of Text and Heading` preserves the portrait asset on desktop and automatically stacks it on mobile.
+- Callout image shape is stable at `Image` -> `Crop`; `Landscape` improves photographic-card balance without replacing the source image.
+- Clicking the exact Callout module opens its settings directly when hover controls are unavailable.
+
+Remaining defects:
+
+- The Book builder and Journal cache paths remain blocked/stale.
+- Stable secondary pages still need a cohesive typography-and-spacing pass.
+- Forms, maps, contact details, workflows, manuscript content, and personal-photo uploads remain approval-bound.
+
+Exact next objective: standardize section rhythm and image presentation across the stable About, Themes, Request Updates, and confirmation pages; do not retry Book or Journal unless browser evidence changes.
