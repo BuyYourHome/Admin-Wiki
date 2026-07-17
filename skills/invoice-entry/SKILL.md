@@ -52,7 +52,7 @@ This skill owns:
 - allocating extracted statement lines by project and worksheet/table when approved,
 - deciding final spreadsheet row placement,
 - inserting invoice, receipt, or approved statement-line records into approved project-spreadsheet expense areas,
-- sending or preparing the Create Vendor Invoice Mode verification request back to the proper vendor when vendor identity and email address are clear,
+- creating and sending a free-text invoice verification request back to the proper vendor under Create Vendor Invoice Mode when vendor identity and email address are clear,
 - preserving workbook formulas, formatting, selectors, tables, and links,
 - validating totals and downstream links,
 - uploading the verified workbook back to Teams/SharePoint when authorized,
@@ -68,7 +68,7 @@ This skill does not own:
 - scan log entries,
 - statement-line extraction from PDFs,
 - template redesign or worksheet-mode rollout,
-- invoice approval, payment, accounting entries, vendor communication outside the Create Vendor Invoice Mode verification request, or legal/financial decision-making.
+- invoice approval, payment, accounting entries, vendor communication outside the Create Vendor Invoice Mode free-text invoice verification request, or legal/financial decision-making.
 
 ## Create Vendor Invoice Mode
 
@@ -83,21 +83,22 @@ Trigger:
 Invoice Entry responsibilities:
 
 - Read the routed email source and any saved invoice attachments.
-- Identify the vendor, project/property, invoice date, invoice number if available, amount, work category, and source traceability.
-- Create a structured invoice packet from the routed email and attachments.
-- Choose the correct active project-management workbook and worksheet under existing Invoice Entry and Vendor Tabs Mode rules.
-- Check for duplicate invoice risk before insertion.
-- Make the correct project-spreadsheet entries only when the packet has enough confidence and the existing Invoice Entry rules authorize insertion.
-- Move or copy the invoice file to the correct Teams/SharePoint project folder when that action is within Invoice Entry's authorized workflow and the source file is available.
-- Email the invoice back to the proper vendor with a request to verify the invoice's accuracy when the vendor identity, vendor email address, and invoice attachment/source file are clear. Use the Admin wiki email-delivery rules for sender safety and sent-item verification.
+- If the routed email has an attached invoice, treat the attachment as the source invoice. Do not create a new invoice and do not send it back to the vendor for verification merely because it arrived by email.
+- For attached-invoice emails, identify the vendor, project/property, invoice date, invoice number if available, amount, work category, and source traceability, then continue under the normal Invoice Entry rules.
+- For attached-invoice emails, choose the correct active project-management workbook and worksheet, check duplicate risk, move or copy the invoice file to the correct Teams/SharePoint project folder when authorized, insert only when confidence and rules allow, validate the workbook, and record the result.
+- If the routed email has no attached invoice and the invoice information exists only as free text, treat the email body as invoice source material, not as a finished invoice.
+- For free-text invoice emails, create a formal invoice document from the email body and preserved source details.
+- Email the generated formal invoice back to the proper vendor with a request to verify the invoice's accuracy when vendor identity, vendor email address, and source evidence are clear. Copy `WesWill@BuyYourHomeLLC.com` and `Jenny@BuyYourHomeLLC.com` on that verification email. Use the Admin wiki email-delivery rules for sender safety and sent-item verification.
+- Do not file a free-text generated invoice as a final invoice, insert it into a project spreadsheet, or mark it ready for posting until the vendor has returned or confirmed it as accurate.
 - Record routing decisions, workbook edits, duplicate checks, validation results, and unresolved questions in the Invoice Entry project room.
 
 Safety limits:
 
 - Do not approve invoices.
 - Do not pay invoices.
-- Do not contact vendors except for the Create Vendor Invoice Mode invoice-accuracy verification request described above.
-- Do not send a vendor verification request if the proper vendor email address is unclear, the attachment/source invoice is unavailable, the invoice appears misrouted, or the message would imply approval, payment, or acceptance of the invoice.
+- Do not contact vendors except for the Create Vendor Invoice Mode free-text invoice-accuracy verification request described above.
+- Do not send a vendor verification request for an email that already includes an attached invoice.
+- Do not send a vendor verification request if the proper vendor email address is unclear, the free-text source evidence is insufficient, the invoice appears misrouted, or the message would imply approval, payment, or acceptance of the invoice.
 - Do not guess the project, vendor, amount, invoice number, or destination worksheet when evidence is unclear.
 - If the routed email lacks required fields or the attachment cannot be accessed, preserve the source link and report the blocker.
 - If duplicate risk is found, stop before insertion and report the risk.
@@ -106,8 +107,9 @@ Safety limits:
 Completion:
 
 - Preserve the routed email source and any invoice attachments as durable source material.
-- Keep enough traceability to link the workbook entry back to the email, attachment, and handoff.
-- Record the vendor verification email result, including whether it was sent, held, blocked, or needs Wes review.
+- For attached-invoice emails, keep enough traceability to link the workbook entry back to the email, attachment, and handoff.
+- For free-text invoice emails, preserve the routed email, generated invoice, verification email, copied recipients, and vendor response before final filing or spreadsheet insertion.
+- Record the vendor verification email result for free-text invoices, including whether it was sent, held, blocked, or needs Wes review.
 - Report completed entries, held items, duplicate risks, filing results, and any open review questions.
 
 ## Required Inputs

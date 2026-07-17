@@ -188,4 +188,6 @@ Lessons:
 - In this mode, Invoice Entry may create the structured invoice packet from routed email and attachments instead of receiving a Doc Scan packet.
 - Do not treat routed email intake as authority to approve, pay, contact vendors, guess missing fields, or treat multi-project statements as single invoices.
 - Keep source traceability back to the routed email, attachments, Outlook link when available, and handoff summary.
-- The only vendor contact authorized by this mode is an invoice-accuracy verification request back to the proper vendor. Do not send it unless vendor identity, vendor email address, and invoice attachment/source file are clear, and never word it as approval, payment, or acceptance.
+- If a routed vendor email includes an attached invoice, treat the attachment as the invoice and proceed under normal Invoice Entry rules; do not generate a replacement invoice or send it back for verification merely because it came by email.
+- If a routed vendor email is free text with no attached invoice, generate a formal invoice from the source email and send it back to the proper vendor for accuracy verification, copying Wes and Jenny. Hold final filing and spreadsheet insertion until the vendor confirms it.
+- The only vendor contact authorized by this mode is the free-text invoice accuracy-verification request. Do not send it unless vendor identity, vendor email address, and free-text source evidence are clear, and never word it as approval, payment, or acceptance.
