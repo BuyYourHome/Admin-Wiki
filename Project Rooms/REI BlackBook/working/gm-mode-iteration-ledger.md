@@ -658,3 +658,44 @@ Asset decisions and blockers:
 - Chrome control failed while recovering the staged builder tab. Windows Computer Use can publish it, but public website editing requires action-time confirmation.
 
 Exact next objective: after confirmation, publish and QA the staged Updates changes, replace the Request Updates card image with attachment `6325`, upload/place the approved July 16 cover through a stable file-chooser path, and verify both hosts plus mobile layout.
+
+### 2026-07-17 - Clean-Chrome GM Site completion pass
+
+Objective: complete the routed GM Site request after Wes closed stale tabs, restarted Chrome, and confirmed the ChatGPT extension setup.
+
+Pages/components touched:
+
+- Shared navigation host propagation.
+- Updates page Beaver Builder state.
+- Homepage Book Outline and Request Updates callout images.
+- WordPress media library and cover attachment metadata.
+
+Live changes:
+
+- Published the staged Updates-page visibility changes, removing the visible map, address/phone block, Categories widget, and Contact Us widget.
+- Published the revised About the Book copy referencing `Gracious Millionaire - Drawn by Grace` and `The L.D. Evans story` without calling the project a working title.
+- Replaced the homepage Request Updates `faith-notes` image with `reader-notebook` attachment `6349` using the existing landscape crop.
+- Uploaded and placed the approved July 16 moving-forward cover with descriptive alt text.
+- Confirmed `Books` now renders on both homepage hosts; the earlier custom-domain cache mismatch is resolved.
+
+QA evidence:
+
+- Both homepage hosts return HTTP 200 and render `Books`, `reader-notebook`, the new cover asset, and the cover alt text; neither host references the July 10 cover or faith-notes image.
+- Both Updates hosts return HTTP 200, include both related manuscript names, and omit working-title language and the visible map.
+- Desktop screenshots show a coherent three-card homepage with portrait cover and landscape Request Updates image.
+- Chrome ignored the requested 390 by 844 override and continued reporting a 1920-pixel viewport, so mobile QA remains unverified.
+
+What worked:
+
+- Closing stale tabs and restarting Chrome restored reliable builder navigation, snapshots, settings edits, publishing, uploads, and public QA.
+- Publishing the completed Request Updates image before reloading preserved that change while refreshing Beaver Builder for the cover pass.
+- Beaver Builder's own uploader made the cover selectable after the native WordPress upload did not appear in its media index.
+
+What failed or remains:
+
+- Native attachment `6350` is an unused duplicate because Beaver Builder did not index it; leave it in place unless deletion is explicitly approved.
+- The Updates page has excessive whitespace because hidden left-column modules did not collapse the row structure.
+- Public HTML still contains one hidden `Haig Point` string despite no visible address.
+- Mobile viewport QA remains blocked by an ineffective Chrome viewport override.
+
+Exact next objective: rebuild the Updates row into a balanced full-width layout, change `GET STARTED >>` to book-specific submit text without touching routing or sending the form, remove the hidden address residue, and rerun genuine mobile QA after confirming the actual browser width.
