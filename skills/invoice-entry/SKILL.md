@@ -52,6 +52,7 @@ This skill owns:
 - allocating extracted statement lines by project and worksheet/table when approved,
 - deciding final spreadsheet row placement,
 - inserting invoice, receipt, or approved statement-line records into approved project-spreadsheet expense areas,
+- sending or preparing the Create Vendor Invoice Mode verification request back to the proper vendor when vendor identity and email address are clear,
 - preserving workbook formulas, formatting, selectors, tables, and links,
 - validating totals and downstream links,
 - uploading the verified workbook back to Teams/SharePoint when authorized,
@@ -67,7 +68,7 @@ This skill does not own:
 - scan log entries,
 - statement-line extraction from PDFs,
 - template redesign or worksheet-mode rollout,
-- invoice approval, payment, accounting entries, vendor communication, or legal/financial decision-making.
+- invoice approval, payment, accounting entries, vendor communication outside the Create Vendor Invoice Mode verification request, or legal/financial decision-making.
 
 ## Create Vendor Invoice Mode
 
@@ -88,13 +89,15 @@ Invoice Entry responsibilities:
 - Check for duplicate invoice risk before insertion.
 - Make the correct project-spreadsheet entries only when the packet has enough confidence and the existing Invoice Entry rules authorize insertion.
 - Move or copy the invoice file to the correct Teams/SharePoint project folder when that action is within Invoice Entry's authorized workflow and the source file is available.
+- Email the invoice back to the proper vendor with a request to verify the invoice's accuracy when the vendor identity, vendor email address, and invoice attachment/source file are clear. Use the Admin wiki email-delivery rules for sender safety and sent-item verification.
 - Record routing decisions, workbook edits, duplicate checks, validation results, and unresolved questions in the Invoice Entry project room.
 
 Safety limits:
 
 - Do not approve invoices.
 - Do not pay invoices.
-- Do not contact vendors.
+- Do not contact vendors except for the Create Vendor Invoice Mode invoice-accuracy verification request described above.
+- Do not send a vendor verification request if the proper vendor email address is unclear, the attachment/source invoice is unavailable, the invoice appears misrouted, or the message would imply approval, payment, or acceptance of the invoice.
 - Do not guess the project, vendor, amount, invoice number, or destination worksheet when evidence is unclear.
 - If the routed email lacks required fields or the attachment cannot be accessed, preserve the source link and report the blocker.
 - If duplicate risk is found, stop before insertion and report the risk.
@@ -104,6 +107,7 @@ Completion:
 
 - Preserve the routed email source and any invoice attachments as durable source material.
 - Keep enough traceability to link the workbook entry back to the email, attachment, and handoff.
+- Record the vendor verification email result, including whether it was sent, held, blocked, or needs Wes review.
 - Report completed entries, held items, duplicate risks, filing results, and any open review questions.
 
 ## Required Inputs

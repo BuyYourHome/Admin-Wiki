@@ -32,7 +32,7 @@ Excluded unless Wes explicitly expands scope:
 
 - `Doc Scan`: scan inspection/OCR, document splitting, invoice/receipt/statement identification, project/property folder routing when applicable, saving/copying filed PDFs into Teams/project folders, scan log entries, Statement Mode extraction, and structured packet creation.
 - `Email Monitor` / `OfficeAssist`: mailbox monitoring, routed vendor-invoice email preservation, direct handoff messages, and source traceability for email-origin invoice intake.
-- `Invoice Entry`: structured packet receipt, structured packet creation from routed vendor-invoice emails, exact live project-management workbook resolution, workbook duplicate checks, statement-line allocation, final row placement, invoice or approved statement-line record insertion, workbook formula/format/selector/table/link preservation, totals and downstream-link validation, authorized upload back to Teams/SharePoint, and insertion logging.
+- `Invoice Entry`: structured packet receipt, structured packet creation from routed vendor-invoice emails, exact live project-management workbook resolution, workbook duplicate checks, statement-line allocation, final row placement, invoice or approved statement-line record insertion, Create Vendor Invoice Mode verification requests back to the proper vendor when vendor identity and email address are clear, workbook formula/format/selector/table/link preservation, totals and downstream-link validation, authorized upload back to Teams/SharePoint, and insertion logging.
 - `Template to Project`: worksheet design, worksheet-mode rules, template changes, and rollout across project workbooks.
 
 ## Current Status
@@ -85,13 +85,15 @@ Invoice Entry responsibilities:
 - Check for duplicate invoice risk before insertion.
 - Make the correct project-spreadsheet entries only when the packet has enough confidence and existing Invoice Entry rules authorize insertion.
 - Move or copy the invoice file to the correct Teams/SharePoint project folder when that action is within Invoice Entry's authorized workflow and the source file is available.
+- Email the invoice back to the proper vendor with a request to verify the invoice's accuracy when the vendor identity, vendor email address, and invoice attachment/source file are clear. Use the Admin wiki email-delivery rules for sender safety and sent-item verification.
 - Record routing decisions, workbook edits, duplicate checks, validation results, and unresolved questions in this project room.
 
 Safety limits:
 
 - Do not approve invoices.
 - Do not pay invoices.
-- Do not contact vendors.
+- Do not contact vendors except for the Create Vendor Invoice Mode invoice-accuracy verification request described above.
+- Do not send a vendor verification request if the proper vendor email address is unclear, the attachment/source invoice is unavailable, the invoice appears misrouted, or the message would imply approval, payment, or acceptance of the invoice.
 - Do not guess the project, vendor, amount, invoice number, or destination worksheet when evidence is unclear.
 - If the routed email lacks required fields or the attachment cannot be accessed, preserve the source link and report the blocker.
 - If duplicate risk is found, stop before insertion and report the risk.
@@ -101,6 +103,7 @@ Completion:
 
 - Preserve the routed email source and any invoice attachments as durable source material.
 - Keep enough traceability to link the workbook entry back to the email, attachment, and handoff.
+- Record the vendor verification email result, including whether it was sent, held, blocked, or needs Wes review.
 - Report completed entries, held items, duplicate risks, filing results, and any open review questions.
 
 ## Required Statement Mode Packet
