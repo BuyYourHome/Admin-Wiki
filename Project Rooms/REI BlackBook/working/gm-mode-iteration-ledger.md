@@ -718,3 +718,22 @@ Lesson:
 - Stop after the repeated timeout instead of retrying the same structural path in the same or next heartbeat.
 
 Exact next objective: avoid the Updates structural path and use a stable non-structural or native WordPress path to audit or improve Themes, Journal, or the plural Books destination.
+
+### 2026-07-17 - Books, Themes, and Journal public audit
+
+Objective: avoid the timed-out Updates structure and identify a stable, useful next improvement.
+
+Findings:
+
+- Books and Themes still publish working-title language on both hosts, contrary to Wes's routed GM Site instruction.
+- The Books destination remains a single-project About page rather than a plural multi-manuscript presentation.
+- Journal still publishes generic Blog/category/newsletter output, the multi-service-company placeholder, and the full street-address, phone, and email block.
+- Books and Themes also retain the public Contact Us block.
+- All audited URLs returned HTTPS HTTP 200.
+
+Result:
+
+- No live changes. Known hanging structural paths were not retried.
+- Contact-detail removal remains approval-bound and was not performed.
+
+Exact next objective: use a stable text-only path to remove approved working-title language after Chrome stability is restored, and obtain explicit approval before removing public Contact Us blocks from Books, Themes, or Journal.
