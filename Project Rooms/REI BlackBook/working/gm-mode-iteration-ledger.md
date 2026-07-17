@@ -565,3 +565,30 @@ Remaining defects:
 - Forms, maps, contact details, workflows, manuscript content, and personal-photo uploads remain approval-bound.
 
 Exact next objective: standardize section rhythm and image presentation across the stable About, Themes, Request Updates, and confirmation pages; do not retry Book or Journal unless browser evidence changes.
+
+### 2026-07-16 - Stable secondary-page audit
+
+Objective: standardize typography and image presentation across stable secondary pages.
+
+Pages/components inspected:
+
+- About the Book.
+- Book Themes.
+- Request Book Updates.
+- Update Request Received.
+
+Live changes:
+
+- None. The About builder opened, but the settings panel timed out during the first heading-control inspection. A fresh Chrome control session also timed out during tab recovery and cleanup.
+
+Audit evidence:
+
+- About still has an H2 page title, three H3 feature titles, a generic circular stock image with empty alternative text, and a visible Categories/All block.
+- Themes, Updates, and confirmation retain their corrected H1/H2 structure and hidden Categories blocks without horizontal overflow.
+- The already uploaded `wes-jenny-building.jpg` is the approved replacement candidate for the About stock image; no new personal image upload is needed.
+
+What changed in the operating map:
+
+- About joins Book and Journal as a builder path that should not be retried on the next heartbeat without a Chrome reset, stale-tab cleanup, or direct evidence that settings access is stable.
+
+Exact next objective: use a stable native WordPress or theme surface for a useful design improvement, perform read-only public QA, or stop quietly if no stable improvement remains. Do not retry About, Book, or Journal Beaver Builder paths until browser stability changes.
