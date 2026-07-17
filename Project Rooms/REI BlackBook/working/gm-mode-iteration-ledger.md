@@ -1027,3 +1027,31 @@ Privacy boundary:
 - The L.D. Evans frame is live under Wes's public-use instruction, but its local Google Photos-derived file is not committed.
 
 Exact next objective: select and place the approved personal homepage image, or define Journal signup/contact-form delivery specifications before activation.
+
+### 2026-07-17 - Approved Foreword publication
+
+Objective: publish the user-approved Foreword and make approved chapters visibly accessible through the clickable Book Outline.
+
+Live changes:
+
+- Published the exact current Quick Mode Foreword as WordPress page 6396 at `/foreword/`.
+- Added a visible approved-chapter notice and readable 18px body typography with 20px question callouts.
+- Added a Book Outline explanation describing how approved chapters are marked.
+- Changed only the Foreword entry to a prominent 20px evergreen link with a gold `Available to read` label.
+- Preserved the other 24 links to the shared editing-status page.
+
+QA:
+
+- Both hosts contain the exact authoritative source opening and ending, one H1, the approved notice, and a working return link.
+- Both outline hosts expose exactly one approved Foreword link and 24 editing-status links.
+- Production exposes no inherited address or phone output.
+- True 390 x 844 Foreword and outline QA passed without clipping or horizontal overflow.
+- No form, workflow, recipient, notification, contact detail, DNS setting, image, or other chapter changed.
+
+What worked:
+
+- The native WordPress classic Text editor reliably published the full source-controlled chapter.
+- Omitting the Markdown H1 prevented a duplicate heading while preserving all source paragraphs.
+- Public link-count checks proved that only the approved Foreword left the shared status destination.
+
+Exact next objective: wait for the next explicit chapter approval, or select the personal homepage image.

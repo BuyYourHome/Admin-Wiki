@@ -78,7 +78,7 @@ GM Mode target:
 - Builder URL: `https://u113450.h.reiblackbook.com/generic6/`
 - Control panel: `https://my.reiblackbook.com/webtools/sites/advanced/48842`
 - Public domain: `https://graciousmillionaire.com`
-- Current element map: `C:\Codex\Wiki Files\Project Rooms\REI BlackBook\working\gracious-millionaire-element-map-040.md`
+- Current element map: `C:\Codex\Wiki Files\Project Rooms\REI BlackBook\working\gracious-millionaire-element-map-041.md`
 - Site record: `C:\Codex\Wiki Files\Project Rooms\REI BlackBook\working\gracious-millionaire-site.md`
 - Iteration ledger: `C:\Codex\Wiki Files\Project Rooms\REI BlackBook\working\gm-mode-iteration-ledger.md`
 
@@ -152,6 +152,7 @@ GM scheduled iteration:
 - When Wes authorizes fuller manuscript context for a public excerpt, keep the approved one-line quote visually prominent, place contiguous source paragraphs beneath a clear heading, and preserve source wording instead of paraphrasing. Trace every published selection to its chapter file and compare both public hosts after normalizing display-only smart punctuation that WordPress may introduce.
 - For narrow classic-editor typography changes, apply inline font size and line height only to the intended body paragraphs, leaving headlines, notes, and navigation untouched. Verify the computed style and paragraph count on both public hosts, then confirm the longest page at a true mobile viewport for wrapping and horizontal overflow.
 - For a Books-page image selector that the inherited Callout modules cannot express cleanly, a page-scoped Beaver Builder HTML module can provide a responsive grid, fixed `aspect-ratio: 2/3`, `object-fit: cover`, and full-width title links. Before saving, verify the HTML field contains exactly one selector; after publishing, count the selector, cards, and buttons on the clean public host because builder editing events can duplicate the entire source block. Keep Google Photos-derived local files out of Git even when Wes has approved the selected image for public use.
+- When Wes approves a specific chapter for public reading, publish only that chapter from the current authoritative chapter file. Create a dedicated native WordPress page, omit the source Markdown H1 when the theme supplies the page H1, preserve paragraph order and wording, and change only the matching outline destination. Add a visible availability explanation and marker, then verify the approved-link count and unchanged editing-status-link count on both hosts and at a true mobile viewport.
 
 ## Output Standards
 
