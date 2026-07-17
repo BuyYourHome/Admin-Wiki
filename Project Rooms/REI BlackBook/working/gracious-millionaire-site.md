@@ -43,7 +43,7 @@ Create a site called `Gracious Millionaire` for information related to the book 
 
 - Iteration loop: `working\gracious-millionaire-iteration-loop.md`.
 - Latest implementation report: `working\gracious-millionaire-iteration-001.md`.
-- Current full element cleanup map: `working\gracious-millionaire-element-map-031.md`.
+- Current full element cleanup map: `working\gracious-millionaire-element-map-032.md`.
 - Book Outline contains the 25 current working chapter titles and links all titles to the shared `Chapter Being Edited` page.
 - Chapter content is not published on the site.
 
@@ -98,6 +98,7 @@ Create a site called `Gracious Millionaire` for information related to the book 
 - A subsequent read-only audit confirmed that Books and Themes still use working-title language and Journal still exposes generic newsletter/multi-service/category content plus the public address, phone, and email. No contact detail was changed because removal remains approval-bound; see `working\gracious-millionaire-element-map-029.md`.
 - After Wes approved removal, Books and Themes dropped their working-title and Contact Us output while adding both related manuscript references. Journal now presents an intentional editing-status message and omits the stock posts, category/newsletter output, multi-service placeholder, and public contact block. Both hosts passed desktop QA; see `working\gracious-millionaire-element-map-030.md`.
 - The Updates submit button now visibly reads `REQUEST BOOK UPDATES` on both hosts through page-scoped presentation CSS after the REI form record and Beaver Builder embedded markup remained out of sync. Form routing and delivery settings were not opened or changed, and the form was not submitted. See `working\gracious-millionaire-element-map-031.md`.
+- The Books page now uses `Books by Wes and Jenny Browning` as its H1 and presents `Gracious Millionaire`, `Gracious Millionaire - Drawn by Grace`, and `The L.D. Evans Story` as three prominent H2 entries in the main content area. Both hosts passed desktop hierarchy and overflow QA; see `working\gracious-millionaire-element-map-032.md`.
 
 ## Safety Notes
 

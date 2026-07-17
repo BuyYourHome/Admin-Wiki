@@ -781,3 +781,28 @@ Lesson:
 - A page-scoped CSS label is the stable presentation-only fallback for this legacy form module when workflow behavior must remain untouched.
 
 Exact next objective: improve the plural Books destination through a stable non-structural path or complete genuine mobile QA after confirming the actual browser width. Continue to avoid the Updates structural-delete path.
+
+### 2026-07-17 - Prominent plural Books presentation
+
+Objective: make the three manuscript projects visibly distinct instead of leaving the related titles buried in paragraph copy.
+
+Live changes:
+
+- Changed the Books-page H1 to `Books by Wes and Jenny Browning`.
+- Reused the three existing callout headings for `Gracious Millionaire`, `Gracious Millionaire - Drawn by Grace`, and `The L.D. Evans Story`.
+- Rewrote the introduction to state directly that three manuscript projects are in development while keeping unfinished chapter content private.
+
+QA:
+
+- Both public hosts return HTTPS HTTP 200 and render one H1 plus all three manuscript names as H2 headings.
+- Desktop screenshots show the three titles in the first main content viewport with clean wrapping and no overlap.
+- No horizontal overflow was present at the verified 1905-pixel viewport.
+- The Books page contains no working-title or street-address text.
+- No chapter content, form, routing, recipient, notification, or delivery setting was changed.
+
+What worked:
+
+- The existing callout title fields remain a stable non-structural Beaver Builder path for prominent content changes.
+- Reusing the three-column feature row created a clear multi-manuscript presentation without row or column edits.
+
+Exact next objective: replace the inherited generic clock/award/puzzle icons through the stable callout path or complete genuine mobile QA when a confirmed narrow viewport is available.
