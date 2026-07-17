@@ -21,6 +21,7 @@ Use [[Agent Unit Standard]] for the standard package behind an agent-like operat
 | Admin Request Wrapup | Wiki-managed skill | Active | At the end of Admin wiki requests | `skills\admin-request-wrapup\SKILL.md`; `AGENTS.md` |
 | Create PR | Wiki-managed skill plus project room plus dedicated chat | Active | On demand | `skills\create-pr\SKILL.md`; `Project Rooms\Create PR\README.md` |
 | Brynda Suit | Wiki-managed skill plus project room plus dedicated chat | Draft | On demand | `skills\brynda-suit\SKILL.md`; `Project Rooms\Brynda Suit\README.md` |
+| LD. Evans | Wiki-managed skill plus project room plus dedicated chat | Draft | On demand | `skills\ld-evans\SKILL.md`; `Project Rooms\LD. Evans\README.md` |
 | Lowes Order | Wiki-managed skill plus project room plus dedicated chat | Draft | On demand | `skills\lowes-order\SKILL.md`; `Project Rooms\Lowes Order\README.md` |
 | SOPs | Wiki-managed skill plus project room | Active | On demand | `skills\sops\SKILL.md`; `Project Rooms\SOPs\README.md`; `Project Rooms\SOPs\outputs\SOP Index.md` |
 | Credit Worthiness Evaluator | Wiki-managed skill plus project room | Active | On demand | `skills\credit-worthiness-evaluator\SKILL.md`; `Project Rooms\Credit Worthiness Evaluator\README.md` |
@@ -467,6 +468,35 @@ Dedicated chat:
 
 - Chat name: `Brynda Suit`
 - Thread id: `019f61c3-d4c0-7a52-a5a0-e4066ea9b303`
+
+Important rules:
+
+- Work on `main` unless Wes explicitly asks for a branch.
+- Do not edit another Project Room's files or matching skill unless Wes explicitly authorizes that specific cross-PR edit.
+- Use the Project Room source inventory before drafting review-ready outputs.
+- Do not create Teams folders or automations unless Wes explicitly asks.
+
+## LD. Evans
+
+Type: wiki-managed skill plus project room plus dedicated chat.
+
+Status: draft.
+
+Purpose:
+
+- Organize LD. Evans source material, missing details, review questions, and outputs.
+- Prepare review-ready drafts, summaries, checklists, or handoffs from authoritative source material.
+- Keep external actions, email sending, filing, and legal or financial decisions gated behind explicit Wes approval and applicable workflow rules.
+
+Defined in:
+
+- `C:\Codex\Wiki Files\skills\ld-evans\SKILL.md`
+- `C:\Codex\Wiki Files\Project Rooms\LD. Evans\README.md`
+
+Dedicated chat:
+
+- Chat name: `LD. Evans`
+- Thread id: pending until the dedicated chat is created.
 
 Important rules:
 
