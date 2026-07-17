@@ -473,3 +473,24 @@ Remaining defects:
 - Form workflow, map/contact content, public details, and profile references remain approval-bound.
 
 Exact next objective: after Chrome/Codex extension reset, verify tab discovery, close stale GM tabs, and complete the homepage heading/spacing pass; do not retry the same builder path while tab discovery is unavailable.
+
+### 2026-07-16 - Chrome tab-discovery recovery
+
+Objective: open the Gracious Millionaire REI BlackBook control panel in Chrome and verify recovery from the tab-discovery blocker.
+
+Live changes:
+
+- None. No website content or settings changed.
+
+Evidence:
+
+- Wes explicitly authorized opening REI BlackBook in Chrome.
+- A fresh Chrome window opened in the selected Default profile.
+- Controlled-tab discovery returned normally.
+- The REI BlackBook control panel for site `48842` loaded and was left open.
+
+Learned path:
+
+- When extension, native-host, and Chrome diagnostics pass but tab discovery hangs, opening a fresh selected-profile Chrome window can restore control without reinstalling the extension.
+
+Exact next objective: resume the homepage H2/H3 hierarchy and cover-card spacing pass, then publish and QA both hosts at desktop and mobile.

@@ -43,7 +43,7 @@ Create a site called `Gracious Millionaire` for information related to the book 
 
 - Iteration loop: `working\gracious-millionaire-iteration-loop.md`.
 - Latest implementation report: `working\gracious-millionaire-iteration-001.md`.
-- Current full element cleanup map: `working\gracious-millionaire-element-map-020.md`.
+- Current full element cleanup map: `working\gracious-millionaire-element-map-021.md`.
 - Book Outline contains the 25 current working chapter titles and links all titles to the shared `Chapter Being Edited` page.
 - Chapter content is not published on the site.
 
@@ -87,6 +87,7 @@ Create a site called `Gracious Millionaire` for information related to the book 
 - Heartbeat GM Mode run on 2026-07-16 placed the approved full-resolution book cover on the Book Outline, removed duplicate body H1s from the outline and shared chapter-status page, added a clear chapter-list subheading, and preserved all 25 chapter links and the return path. Both hosts passed public QA with one H1 per page and no horizontal overflow. See `working\gracious-millionaire-element-map-018.md`.
 - Heartbeat GM Mode run on 2026-07-16 upgraded the homepage cover card from the 150-pixel thumbnail to the approved full-resolution cover, added descriptive alt text, changed the visible Themes/Updates/confirmation titles to H1, and corrected all six theme sections from H6 to H2. Both hosts and 390-pixel mobile QA passed. See `working\gracious-millionaire-element-map-019.md`.
 - Heartbeat GM Mode recovery run on 2026-07-16 made no live changes because a fresh Chrome control session timed out before returning either controlled or user tab state. This escalates the prior cleanup timeout and requires a Chrome/Codex extension reset before more builder work. See `working\gracious-millionaire-element-map-020.md`.
+- Manual Chrome recovery on 2026-07-16 opened a fresh Default-profile window, restored tab discovery, and opened the Gracious Millionaire REI BlackBook control panel for site `48842`. No live content changed. See `working\gracious-millionaire-element-map-021.md`.
 
 ## Safety Notes
 

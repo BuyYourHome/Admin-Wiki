@@ -21,7 +21,7 @@ Folder map:
 Key working notes:
 
 - `working\tool-map.md` - first-pass REI BlackBook navigation, WebTools Sites, existing site IDs, BYH control-panel map, and browser safety rules.
-- `working\gracious-millionaire-element-map-020.md` - current local map of the last verified full-resolution cover/heading state and the escalated Chrome tab-discovery blocker.
+- `working\gracious-millionaire-element-map-021.md` - current local map of the restored Chrome connection, last verified public state, and next homepage design objective.
 
 Standing website-update rule:
 
