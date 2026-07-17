@@ -494,3 +494,38 @@ Learned path:
 - When extension, native-host, and Chrome diagnostics pass but tab discovery hangs, opening a fresh selected-profile Chrome window can restore control without reinstalling the extension.
 
 Exact next objective: resume the homepage H2/H3 hierarchy and cover-card spacing pass, then publish and QA both hosts at desktop and mobile.
+
+### 2026-07-16 - Homepage semantic hierarchy
+
+Objective: correct the homepage H1-to-H3 gap while preserving card-title semantics and the approved cover.
+
+Pages/components touched:
+
+- Homepage standalone Heading module.
+- Homepage final Call to Action module.
+
+Live changes:
+
+- Promoted `Follow the Gracious Millionaire Book Project` from H3 to H2.
+- Promoted `Want updates as the book develops?` from H3 to H2.
+- Retained the H1, three H3 card titles, copy, destinations, images, and workflow boundaries.
+
+QA evidence:
+
+- Both public hosts render one H1, two section H2s, and three card H3s in the intended order.
+- The approved cover remains 1024 x 1536 with descriptive alternative text.
+- Both hosts passed desktop horizontal-overflow checks.
+- The custom domain passed 390-pixel mobile heading-width and horizontal-overflow checks.
+
+What worked:
+
+- Standalone Heading: `Style` -> `Structure` -> `HTML Tag`.
+- Call to Action: `Style` -> `Heading Structure` -> `Heading Tag`.
+- Fresh-window Chrome recovery remained stable through publish, QA, viewport reset, and tab finalization.
+
+Remaining defects:
+
+- The portrait cover card still needs visual spacing refinement against the landscape cards.
+- The Book and Journal remain blocked/stale; form, contact, workflow, manuscript, and personal-photo boundaries remain unchanged.
+
+Exact next objective: balance the homepage cover-card spacing through a stable Callout or column-spacing control, then QA the three-card composition at desktop and mobile.
