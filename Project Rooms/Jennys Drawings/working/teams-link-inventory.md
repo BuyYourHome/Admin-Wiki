@@ -16,6 +16,8 @@ The folder contains the complete context-selected source set, `JD-001` through `
 ## Delivery
 
 - Lightweight linked manuscript: `outputs/Drawn by Grace - Linked Review Manuscript.docx`
-- Purpose: preserve Word Navigation-pane headings and a clickable internal outline while keeping the full-resolution drawings outside the email attachment.
-- Email: sent July 17, 2026 from `OfficeAssist@BuyYourHomeLLC.com` to `WesWill@BuyYourHomeLLC.com` with subject `Jenny's Drawings Companion - Linked Review Manuscript`.
-- Verification: matching message with attachment confirmed in the OfficeAssist Sent Items folder.
+- Manuscript URL: `https://lifeisanadventure.sharepoint.com/sites/SellYourHome/_layouts/15/Doc.aspx?sourcedoc=%7BF685378C-8813-4BF2-BDA5-C28C9BDD9013%7D&file=Drawn%20by%20Grace%20-%20Linked%20Review%20Manuscript.docx&action=default&mobileredirect=true`
+- Purpose: preserve the new *Drawn by Grace* cover, Word Navigation-pane headings, and a clickable internal outline while keeping the full-resolution drawings outside the manuscript.
+- Updated email: sent July 17, 2026 from `OfficeAssist@BuyYourHomeLLC.com` to `WesWill@BuyYourHomeLLC.com` with subject `Drawn by Grace - Updated Linked Manuscript`.
+- Delivery mode: link only; no attachment.
+- Verification: matching message confirmed in the OfficeAssist Sent Items folder with the correct sender, recipient, subject, link, and no attachment.

@@ -34,7 +34,7 @@ Out of scope:
 
 Status: active review draft.
 
-The Google Photos `Bible` album has been surveyed in place. Eighteen context-selected original-quality drawing files, their metadata inventory, and their placement map are now in this room. A 41-page print-review manuscript, *Drawn by Grace: A Visual Companion to The Gracious Millionaire*, is available under `outputs\` with each drawing presented as a framed full-page plate. A 49 KB linked review manuscript uses Word outline navigation and secure links to the same drawings in the Marketing channel.
+The Google Photos `Bible` album has been surveyed in place. Eighteen context-selected original-quality drawing files, their metadata inventory, and their placement map are now in this room. A 41-page print-review manuscript, *Drawn by Grace: A Visual Companion to The Gracious Millionaire*, is available under `outputs\` with each drawing presented as a framed full-page plate. The linked review manuscript now includes the *Drawn by Grace* cover, Word outline navigation, and secure links to the full-resolution drawings in the Marketing channel. The manuscript itself is also stored in that channel for small link-only email delivery.
 
 ## Matching Skill
 

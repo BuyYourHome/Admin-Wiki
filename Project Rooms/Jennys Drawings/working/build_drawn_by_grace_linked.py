@@ -13,6 +13,12 @@ import build_drawn_by_grace as base
 
 ROOT = Path(r"C:\Codex\Wiki Files\Project Rooms\Jennys Drawings")
 OUTPUT = ROOT / "outputs" / "Drawn by Grace - Linked Review Manuscript.docx"
+COVER = (
+    ROOT
+    / "outputs"
+    / "gracious-millionaire-cover-drawing"
+    / "drawn-by-grace-cover-jenny-style-v2.png"
+)
 TEAMS_FOLDER_URL = (
     "https://lifeisanadventure.sharepoint.com/sites/SellYourHome/Shared%20Documents/"
     "Marketing/Jennys%20Drawings%20-%20Gracious%20Millionaire%20Companion"
@@ -96,6 +102,7 @@ def add_page_number(paragraph):
 
 
 def set_styles(doc):
+    doc.settings.odd_and_even_pages_header_footer = False
     section = doc.sections[0]
     section.page_width = Inches(8.5)
     section.page_height = Inches(11)
@@ -146,37 +153,12 @@ def set_styles(doc):
 
 
 def add_cover(doc):
-    for _ in range(5):
-        spacer = doc.add_paragraph()
-        spacer.paragraph_format.space_after = Pt(8)
-    kicker = doc.add_paragraph()
-    kicker.alignment = WD_ALIGN_PARAGRAPH.CENTER
-    base.set_run_font(kicker.add_run("A LIGHTWEIGHT VISUAL COMPANION"), size=10.5, color=base.GOLD, bold=True)
-    kicker.paragraph_format.space_after = Pt(16)
-    title = doc.add_paragraph()
-    title.alignment = WD_ALIGN_PARAGRAPH.CENTER
-    base.set_run_font(title.add_run("Drawn by Grace"), size=30, color=base.NAVY, bold=True)
-    title.paragraph_format.space_after = Pt(9)
-    subtitle = doc.add_paragraph()
-    subtitle.alignment = WD_ALIGN_PARAGRAPH.CENTER
-    base.set_run_font(
-        subtitle.add_run("A Visual Companion to The Gracious Millionaire"),
-        size=15,
-        color=base.DARK_BLUE,
-        italic=True,
-    )
-    subtitle.paragraph_format.space_after = Pt(30)
-    artist = doc.add_paragraph()
-    artist.alignment = WD_ALIGN_PARAGRAPH.CENTER
-    base.set_run_font(artist.add_run("Featuring drawings by Jenny Browning"), size=11.5, color=base.NAVY, bold=True)
-    note = doc.add_paragraph()
-    note.alignment = WD_ALIGN_PARAGRAPH.CENTER
-    note.paragraph_format.space_before = Pt(16)
-    add_external_link(note, "Open the complete drawing folder in Teams", TEAMS_FOLDER_URL, bold=True, size=11)
-    review = doc.add_paragraph()
-    review.alignment = WD_ALIGN_PARAGRAPH.CENTER
-    review.paragraph_format.space_before = Pt(18)
-    base.set_run_font(review.add_run("LINKED REVIEW MANUSCRIPT  |  JULY 2026"), size=9.5, color=base.MUTED)
+    cover = doc.add_paragraph()
+    cover.alignment = WD_ALIGN_PARAGRAPH.CENTER
+    cover.paragraph_format.space_before = Pt(0)
+    cover.paragraph_format.space_after = Pt(0)
+    cover.paragraph_format.line_spacing = 1
+    cover.add_run().add_picture(str(COVER), width=Inches(5.7))
 
 
 def add_contents(doc, sections):
