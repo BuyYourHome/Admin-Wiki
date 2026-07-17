@@ -171,6 +171,33 @@ Current Brynda Suit task id: `019f61c3-d4c0-7a52-a5a0-e4066ea9b303`.
 
 Do not create a new Brynda Suit task for this routing unless Wes explicitly asks. Do not process the Brynda Suit response from this Email Monitor or OfficeAssist monitor thread unless Wes explicitly asks for processing here. The default action is source routing plus direct project-room handoff only.
 
+### Invoices Email Routing Mode
+
+Use Invoices Email Routing Mode when the Email Monitor workflow or OfficeAssist instruction monitor sees a contractor or vendor email that appears to contain or request processing of an invoice, bill, receipt, payment request, statement, pay application, draw request, or project-cost document.
+
+This mode owns source routing and direct Invoice Entry task handoff only. It does not own invoice approval, payment, vendor contact, final accounting judgment, live project-spreadsheet entry, Teams filing, or creating a new Invoice Entry chat.
+
+Activation:
+
+- the email is from a contractor, subcontractor, vendor, supplier, utility, service provider, or property/project cost sender and the subject, body, attachment name, or message context contains `invoice`, `bill`, `receipt`, `statement`, `pay app`, `payment request`, `draw`, or another clear invoice-entry signal;
+- the email is from Wes or Jenny and forwards, attaches, or explicitly routes a contractor/vendor invoice or project-cost email for processing;
+- the email otherwise clearly belongs to the Invoice Entry workflow.
+
+For each routed email:
+
+- preserve the email as its own Markdown source file under `C:\Codex\Wiki Files\Project Rooms\Invoice Entry\sources\email\`;
+- include sender, recipients, sent time when available, received time, subject, Outlook message id or web link when available, body text, and available attachment names/metadata;
+- when the connector or local mailbox path can safely retrieve attachments, save invoice attachments beside the routed email source in a stable folder and reference those files from the Markdown source;
+- if an apparent invoice attachment cannot be retrieved, preserve the Outlook message link and report the attachment-access blocker in the handoff;
+- use a stable, filesystem-safe filename that starts with the email date/time and a short sender/subject slug;
+- update `C:\Codex\Wiki Files\Project Rooms\Invoice Entry\working\source-inventory.md` or the current Invoice Entry intake ledger when the routed email becomes part of the durable source set;
+- record the routed Outlook message id in this workflow's monitor memory so the same email is not routed repeatedly;
+- send a direct follow-up message to the existing Invoice Entry task with the routed source path, attachment paths or attachment blocker, a short summary of the vendor/project clues, and the instruction to process the invoice under Invoice Entry rules.
+
+Current Invoice Entry task id: `019f3d56-b310-75c0-b084-616bfc1e9f59`.
+
+Do not create a new Invoice Entry task for this routing unless Wes explicitly asks. Do not approve, pay, reply to the contractor/vendor, make live spreadsheet entries, or move files into Teams from this Email Monitor or OfficeAssist monitor thread unless Wes explicitly asks for processing here and the Invoice Entry rules allow it. The default action is source routing plus direct Invoice Entry handoff only.
+
 ## Priority Selection
 
 Prefer these message classes in the summary:
