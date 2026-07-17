@@ -8,4 +8,7 @@
 | `Project Room File Ownership And Git Coordination Rule.md` | Wiki rule | authoritative | Defines Project Room ownership, shared Admin file edits, commit scope, and push safety. |
 | `Agent Unit Standard.md` | Wiki rule | authoritative | Defines Project Room, skill, registry, chat, and automation package expectations. |
 | `Git Work Scope Rule.md` | Wiki rule | authoritative | Defines scoped commits and push behavior. |
-| Jennys Drawings source material | Project source | missing | Add drawings, images, documents, emails, notes, screenshots, or source summaries when provided. |
+| Eighteen context-selected Jenny drawings | Original-quality image files | authoritative for selected artwork | Stored under `sources/images/bible-album/` after the album-wide context review. |
+| Google Photos `Bible` album | External image collection | authoritative for drawing images and image metadata | Album contains 161 items; reviewed in place before downloading. See `drawing-metadata-inventory.md`. |
+| `Project Rooms/Gracious Millionaire/working/book-architecture.md` | Read-only cross-Project-Room context | authoritative structural context | Used to map drawing themes to the current source-derived Gracious Millionaire structure without editing Gracious Millionaire files. |
+| Current Gracious Millionaire manuscript outputs | Read-only presentation reference | background | May be checked for coverage and presentation history but are not factual authority for the companion manuscript. |

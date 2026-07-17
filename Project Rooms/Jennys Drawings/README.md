@@ -32,9 +32,9 @@ Out of scope:
 
 ## Current Status
 
-Status: draft.
+Status: active review draft.
 
-This room was created as the standard workspace for Jennys Drawings. No project-specific sources have been added yet.
+The Google Photos `Bible` album has been surveyed in place. Eighteen context-selected original-quality drawing files, their metadata inventory, and their placement map are now in this room. A 41-page review manuscript, *Drawn by Grace: A Visual Companion to The Gracious Millionaire*, is available under `outputs\` with each drawing presented as a framed full-page plate.
 
 ## Matching Skill
 
@@ -59,7 +59,7 @@ Before durable work, follow Start PR Mode in `C:\Codex\Wiki Files\Project Room C
 
 ## Next Actions
 
-1. Add authoritative Jennys Drawings source material to `sources\` when Wes provides it.
-2. Update the source inventory before drafting outputs.
-3. Record missing source files, drawing context, intended audience, usage permissions, deadlines, or decision points in `working\missing-context.md`.
-4. Draft review-ready outputs in `outputs\` only from authoritative sources.
+1. Review the companion manuscript's title, author/credit line, essay sequence, and drawing selections.
+2. Confirm publication permission for Jenny's drawings before any external release.
+3. Resolve the unclear handwritten date on JD-004 if a closer source becomes available.
+4. Revise the review manuscript only from authoritative sources and approved editorial decisions.
