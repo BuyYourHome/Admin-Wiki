@@ -56,6 +56,16 @@ GM scheduled iteration:
 - Report to Wes when the run makes live changes, finds broken pages, leaves generic template content unresolved, finds off-topic posts, hits form/workflow risk, public privacy risk, SSL/domain problems, or needs approval for higher-risk actions.
 - Never make live website edits while another fresh GM Mode run lock appears active.
 
+OfficeAssist GM Site email intake:
+
+- OfficeAssist routes website-request emails into `sources\email\` and wakes this project-room thread with the routed Markdown source path.
+- Treat a direct handoff as an intake trigger when the original subject contains `GM Site` or the handoff otherwise identifies REI BlackBook WebTools Sites / Gracious Millionaire website work.
+- Open the routed Markdown file, read its full preserved metadata and body, and treat it as project-room source material. Do not ask OfficeAssist to resend the email unless the routed file is missing or unreadable.
+- Add a source to `working\source-inventory.md` when it is not already listed.
+- Before processing, compare the Outlook message id and routed source path with prior inventory and processing records. If either was already handled, record the source as duplicate or already handled and do not process the request again.
+- After intake, process the website request in this REI BlackBook project room under the normal REI BlackBook / WebTools Sites workflow. OfficeAssist owns routing and wake-up only; it does not edit, publish, or respond to the website request unless Wes explicitly directs that work in the OfficeAssist thread.
+- Current routing mailbox: `OfficeAssist@BuyYourHomeLLC.com`. Current REI BlackBook project-room thread id: `019f4691-5466-7f72-9683-ab5d3b750c25`.
+
 Current scope:
 
 - Build the repeatable room and skill package for REI BlackBook work.

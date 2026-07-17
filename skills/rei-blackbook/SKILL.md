@@ -54,6 +54,19 @@ This skill owns the repeatable workflow for Buy Your Home REI BlackBook work. Th
 10. Record lessons learned from each website update in this skill when they change the repeatable workflow, and in the project room when they are site-specific.
 11. Commit durable wiki/project-room changes locally. Push only when Wes says the work is finished, explicitly asks for a push, or the deliverable is final and ready to publish.
 
+## OfficeAssist GM Site Email Intake
+
+Use this intake path when OfficeAssist sends a direct handoff containing a routed Markdown source path under `C:\Codex\Wiki Files\Project Rooms\REI BlackBook\sources\email\` and the original subject contains `GM Site`, or the handoff otherwise identifies REI BlackBook WebTools Sites / Gracious Millionaire website work.
+
+1. Open the exact routed Markdown source file from the handoff.
+2. Read the complete preserved email metadata and body, and treat the file as source material for this project room.
+3. Check `working\source-inventory.md` for the routed source path and Outlook message id. Add the source when it is not already listed.
+4. Check prior processing records for the same Outlook message id or routed source path. If either was already processed, record it as duplicate or already handled and do not process the website request again.
+5. Do not ask OfficeAssist to resend the email unless the routed source file is missing or unreadable.
+6. Process a new website request inside this REI BlackBook project room using the normal REI BlackBook / WebTools Sites workflow and all applicable approval boundaries.
+
+OfficeAssist owns email routing and the direct wake-up handoff only. It does not edit, publish, or respond to the website request unless Wes explicitly asks OfficeAssist to do that in the OfficeAssist thread. The current routing mailbox is `OfficeAssist@BuyYourHomeLLC.com`, and the current REI BlackBook project-room thread id is `019f4691-5466-7f72-9683-ab5d3b750c25`.
+
 ## GM Mode
 
 Use GM Mode when Wes says `GM`, `GM Mode`, or the request is clearly about the Gracious Millionaire REI BlackBook website.
