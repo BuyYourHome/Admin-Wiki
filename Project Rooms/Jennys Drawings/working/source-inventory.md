@@ -14,3 +14,4 @@
 | Current Gracious Millionaire manuscript outputs | Read-only presentation reference | background | May be checked for coverage and presentation history but are not factual authority for the companion manuscript. |
 | Marketing channel drawing folder | Teams/SharePoint delivery source | authoritative linked copies | Contains the verified 18-file selected drawing set. See `teams-link-inventory.md`. |
 | Jenny-style Gracious Millionaire cover concept v1 | AI-assisted generated output | review concept | Built from the current cover as subject reference and JD-008, JD-010, and JD-018 as drawing-language references. See `generated-cover-notes.md`. |
+| *Drawn by Grace* cover concept v2 | AI-assisted generated output | review concept | Retitles the existing cover concept with the companion-book name while preserving its composition and visual treatment. See `generated-cover-notes.md`. |
