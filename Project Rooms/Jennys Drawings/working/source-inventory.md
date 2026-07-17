@@ -12,3 +12,4 @@
 | Google Photos `Bible` album | External image collection | authoritative for drawing images and image metadata | Album contains 161 items; reviewed in place before downloading. See `drawing-metadata-inventory.md`. |
 | `Project Rooms/Gracious Millionaire/working/book-architecture.md` | Read-only cross-Project-Room context | authoritative structural context | Used to map drawing themes to the current source-derived Gracious Millionaire structure without editing Gracious Millionaire files. |
 | Current Gracious Millionaire manuscript outputs | Read-only presentation reference | background | May be checked for coverage and presentation history but are not factual authority for the companion manuscript. |
+| Marketing channel drawing folder | Teams/SharePoint delivery source | authoritative linked copies | Contains the verified 18-file selected drawing set. See `teams-link-inventory.md`. |
