@@ -43,7 +43,7 @@ Create a site called `Gracious Millionaire` for information related to the book 
 
 - Iteration loop: `working\gracious-millionaire-iteration-loop.md`.
 - Latest implementation report: `working\gracious-millionaire-iteration-001.md`.
-- Current full element cleanup map: `working\gracious-millionaire-element-map-027.md`.
+- Current full element cleanup map: `working\gracious-millionaire-element-map-028.md`.
 - Book Outline contains the 25 current working chapter titles and links all titles to the shared `Chapter Being Edited` page.
 - Chapter content is not published on the site.
 
@@ -94,6 +94,7 @@ Create a site called `Gracious Millionaire` for information related to the book 
 - Manual GM Mode retry on 2026-07-17 recovered the About builder, changed the page title to H1 and the three feature headings to H2, replaced the generic stock circle with the approved Wes-and-Jenny landscape image, added descriptive alt text, and hid the Categories widget. Both hosts passed desktop hierarchy, asset, category-removal, and overflow QA. Chrome disconnected before 390-pixel mobile QA; see `working\gracious-millionaire-element-map-025.md`.
 - OfficeAssist-routed GM Site work on 2026-07-17 changed the shared menu label to `Books`. The Updates builder contains staged hidden map/address/contact/category modules and revised multi-manuscript copy, but those changes were not published after Chrome control failed and Windows Computer Use reached an action-time confirmation boundary. The newer July 16 cover upload and the selected `reader-notebook.jpg` Request Updates replacement remain pending; see `working\gracious-millionaire-element-map-026.md`.
 - Clean-Chrome retry on 2026-07-17 published the Updates cleanup and related-manuscript copy, replaced the homepage faith-notes image with `reader-notebook`, uploaded and placed the approved July 16 moving-forward cover, and verified both hosts. Desktop QA passed; true 390-pixel QA remains blocked because Chrome ignored the viewport override. See `working\gracious-millionaire-element-map-027.md`.
+- A later Updates structural retry reached the expected delete confirmation but timed out while applying it and again during recovery. Nothing was published and public output stayed at the map 027 state. Avoid that exact structural path until Beaver Builder proves it can complete and publish structural actions; see `working\gracious-millionaire-element-map-028.md`.
 
 ## Safety Notes
 

@@ -699,3 +699,22 @@ What failed or remains:
 - Mobile viewport QA remains blocked by an ineffective Chrome viewport override.
 
 Exact next objective: rebuild the Updates row into a balanced full-width layout, change `GET STARTED >>` to book-specific submit text without touching routing or sending the form, remove the hidden address residue, and rerun genuine mobile QA after confirming the actual browser width.
+
+### 2026-07-17 - Updates structural retry stopped after repeated timeout
+
+Objective: collapse the hidden map column, improve the Updates layout, and replace generic submit text without touching form routing.
+
+Result:
+
+- Chrome initially connected and rendered the Beaver Builder page normally after the clean restart.
+- The hidden map column and its delete control were identified.
+- Beaver Builder displayed its expected confirmation dialog, but Chrome timed out while accepting/applying the deletion and timed out again when the builder tab was reclaimed.
+- No publish action completed and public QA showed no live-state change from map 027.
+
+Lesson:
+
+- A clean Chrome restart can restore inspection and simple editing but does not prove Beaver Builder can complete structural deletes or row reconstruction.
+- Treat structural-action completion and successful publish as the stability test; do not infer stability from page load alone.
+- Stop after the repeated timeout instead of retrying the same structural path in the same or next heartbeat.
+
+Exact next objective: avoid the Updates structural path and use a stable non-structural or native WordPress path to audit or improve Themes, Journal, or the plural Books destination.
