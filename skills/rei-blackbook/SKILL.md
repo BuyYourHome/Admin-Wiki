@@ -78,7 +78,7 @@ GM Mode target:
 - Builder URL: `https://u113450.h.reiblackbook.com/generic6/`
 - Control panel: `https://my.reiblackbook.com/webtools/sites/advanced/48842`
 - Public domain: `https://graciousmillionaire.com`
-- Current element map: `C:\Codex\Wiki Files\Project Rooms\REI BlackBook\working\gracious-millionaire-element-map-039.md`
+- Current element map: `C:\Codex\Wiki Files\Project Rooms\REI BlackBook\working\gracious-millionaire-element-map-040.md`
 - Site record: `C:\Codex\Wiki Files\Project Rooms\REI BlackBook\working\gracious-millionaire-site.md`
 - Iteration ledger: `C:\Codex\Wiki Files\Project Rooms\REI BlackBook\working\gm-mode-iteration-ledger.md`
 
@@ -151,6 +151,7 @@ GM scheduled iteration:
 - For a linked topic-page set, create each page through native WordPress, assign the existing hub page as Parent before publishing, and use canonical public-domain URLs in body navigation. In Beaver Builder Callout modules, the `Call To Action` tab's `Link` field makes both the icon and heading clickable even when the CTA type remains `None`. Save each module, publish the page once after the set is complete, then verify every exact href and child-page excerpt on both hosts.
 - When Wes authorizes fuller manuscript context for a public excerpt, keep the approved one-line quote visually prominent, place contiguous source paragraphs beneath a clear heading, and preserve source wording instead of paraphrasing. Trace every published selection to its chapter file and compare both public hosts after normalizing display-only smart punctuation that WordPress may introduce.
 - For narrow classic-editor typography changes, apply inline font size and line height only to the intended body paragraphs, leaving headlines, notes, and navigation untouched. Verify the computed style and paragraph count on both public hosts, then confirm the longest page at a true mobile viewport for wrapping and horizontal overflow.
+- For a Books-page image selector that the inherited Callout modules cannot express cleanly, a page-scoped Beaver Builder HTML module can provide a responsive grid, fixed `aspect-ratio: 2/3`, `object-fit: cover`, and full-width title links. Before saving, verify the HTML field contains exactly one selector; after publishing, count the selector, cards, and buttons on the clean public host because builder editing events can duplicate the entire source block. Keep Google Photos-derived local files out of Git even when Wes has approved the selected image for public use.
 
 ## Output Standards
 

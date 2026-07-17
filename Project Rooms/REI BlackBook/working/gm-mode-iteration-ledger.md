@@ -994,3 +994,36 @@ What worked:
 - Scoped inline paragraph typography survived WordPress publication consistently on both hosts.
 
 Exact next objective: select and approve the exact personal homepage hero image for public upload, or define Journal signup/contact-form delivery specifications before activation.
+
+### 2026-07-17 - Books image-button selector
+
+Objective: turn the three manuscript titles into prominent image-backed buttons and crop the selected imagery consistently for the Books page.
+
+Live changes:
+
+- Added one `Explore the Books` selector with three 2:3 image cards and full-width title buttons.
+- Routed Gracious Millionaire to the existing Book Outline.
+- Created and linked dedicated manuscript-status pages for Gracious Millionaire - Drawn by Grace and The L.D. Evans Story.
+- Uploaded the Drawn by Grace cover and a Wes-authorized historical shepherd frame from the L.D. Evans Google Photos video source.
+- Hid the old icon-only title strip while retaining a reversible Beaver Builder structure.
+
+QA:
+
+- Production contains exactly one selector, three cards, three buttons, and the expected canonical destinations.
+- The three desktop images render at a common 327 x 492 size with `object-fit: cover`.
+- At a true 390 x 844 viewport, the selector is one column, every title fits, and there is no horizontal overflow.
+- Both new title pages contain the expected H1, image alternative text, status copy, and Return to Books link.
+- No inherited address or phone output appears on the affected pages.
+- No form, workflow, recipient, notification, public contact detail, DNS setting, or manuscript chapter changed.
+
+What worked:
+
+- A page-scoped HTML/CSS selector provides predictable card sizing when the inherited Callout modules cannot create the desired image-button layout.
+- Public cardinality QA caught a duplicated selector left by the first module replacement. Clearing the HTML field before filling the exact source once corrected the saved module.
+- The Chrome viewport capability provided real 390 x 844 responsive validation and was reset after QA.
+
+Privacy boundary:
+
+- The L.D. Evans frame is live under Wes's public-use instruction, but its local Google Photos-derived file is not committed.
+
+Exact next objective: select and place the approved personal homepage image, or define Journal signup/contact-form delivery specifications before activation.
