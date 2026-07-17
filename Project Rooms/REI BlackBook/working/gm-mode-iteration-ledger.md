@@ -829,3 +829,40 @@ What worked:
 - Callout `Image` -> `Replace`, followed by icon-library search and module Save, is a stable presentation-only path for replacing inherited template icons.
 
 Exact next objective: complete genuine mobile QA when a confirmed narrow viewport is available, or continue with another stable non-structural public-page improvement.
+
+### 2026-07-17 - Responsive QA, semantic cleanup, image alignment, and GB Site intake
+
+Objective: complete genuine narrow-viewport QA, correct stable public defects, and process Wes's routed `GB Site` instruction without crossing manuscript-publication or outbound-workflow boundaries.
+
+Live changes:
+
+- Confirmation: replaced the remaining working-title statement with current book-focused copy.
+- Journal: promoted `Editing Notes` to H1 and `Notes in Progress` to H2.
+- Homepage: corrected the actual live Request Updates media attachment alt text and republished the callout.
+- Homepage: changed the Request Updates image crop from Landscape to Panorama to align it more closely with the `About the Book` image height.
+
+QA:
+
+- Completed genuine 390 x 844 reader-journey checks across Home, Books, Themes, Journal, Updates, Outline, and Confirmation with no horizontal overflow found.
+- Verified the confirmation copy and Journal heading hierarchy on both public hosts.
+- Verified both hosts serve `reader-notebook-panorama.jpg` with descriptive alt text.
+- No form submission or outbound workflow/routing change occurred.
+
+New intake and review work:
+
+- Processed `sources\email\2026-07-17-210050-gb-site.md`; the source inventory already contained the routed file and Outlook message id, so no duplicate source row was added.
+- Prepared `gracious-millionaire-theme-page-excerpt-candidates-001.md` with six short candidates marked not approved for publication.
+
+What worked:
+
+- True responsive QA requires confirming the reported inner width after applying the viewport capability.
+- For Beaver Builder images, identify the attachment id actually referenced by the live module before editing metadata, then republish the module so cached derivatives inherit the new alt text.
+- Full Size plus Panorama crop is a stable non-structural path for correcting callout image proportions.
+
+What remains:
+
+- Theme excerpt approval, six linked theme pages, form/workflow specifications, approved logo and personal hero asset.
+- Confirmation Contact Us/address/broken profile output remains an approval-needed privacy defect.
+- Updates structural whitespace and hidden address residue remain blocked on the repeated structural-delete path.
+
+Exact next objective: obtain excerpt decisions and build the six linked theme pages from approved copy; do not activate weekly-email/contact delivery or publish a personal photo without the required specific approvals.

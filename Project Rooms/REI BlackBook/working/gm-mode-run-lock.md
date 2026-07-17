@@ -16,4 +16,4 @@ When a GM Mode run starts, it should replace this file with an active lock that 
 
 If this file shows an active lock less than 3 hours old, a later GM Mode run must not inspect or edit the live site. It should stop quietly unless a user-visible notice is needed.
 
-If the active lock is 3 hours old or older, the later run may treat it as stale, record a stale-lock takeover in the project room, replace the lock, and proceed.
+If the active lock is 3 hours old or older, the later run may treat it as stale, record the stale-lock takeover in the project room, replace the lock, and proceed.

@@ -78,7 +78,7 @@ GM Mode target:
 - Builder URL: `https://u113450.h.reiblackbook.com/generic6/`
 - Control panel: `https://my.reiblackbook.com/webtools/sites/advanced/48842`
 - Public domain: `https://graciousmillionaire.com`
-- Current element map: `C:\Codex\Wiki Files\Project Rooms\REI BlackBook\working\gracious-millionaire-element-map-025.md`
+- Current element map: `C:\Codex\Wiki Files\Project Rooms\REI BlackBook\working\gracious-millionaire-element-map-034.md`
 - Site record: `C:\Codex\Wiki Files\Project Rooms\REI BlackBook\working\gracious-millionaire-site.md`
 - Iteration ledger: `C:\Codex\Wiki Files\Project Rooms\REI BlackBook\working\gm-mode-iteration-ledger.md`
 
@@ -145,6 +145,8 @@ GM scheduled iteration:
 - For standard WordPress pages that are not built with Beaver Builder, use `wp-admin/post.php?post=<id>&action=edit`, switch to the classic editor Text mode, preserve the existing body/list, make the narrow HTML change, click `Update`, and QA both public hosts. REI/WordPress may strip modern flex and image sizing styles; use native image `width` and `height` attributes plus a theme-supported alignment class, then confirm rendered dimensions with public DOM inspection and a screenshot.
 - Beaver Builder Callout modules expose semantic title control at `Style` -> `Heading Structure` -> `Heading Tag`, and image resolution at `Image` -> `Photo`. Use these controls to correct heading order and replace thumbnail output with an already-approved full-size media asset without changing copy or uploading a new file. When the old media panel omits alternative text, edit the attachment through native WordPress `Edit Media`, fill `Alternative Text`, click `Update`, and verify the rendered public `alt` value on both hosts.
 - If Chrome, the ChatGPT Chrome Extension, and the native-host checks all pass but tab discovery repeatedly hangs, ask Wes for permission to open a fresh selected-profile Chrome window. The 2026-07-16 recovery confirmed that this can restore controlled-tab discovery without reinstalling the extension.
+- For responsive QA, confirm the page-reported viewport width after applying the Chrome viewport capability. A requested narrow viewport is not evidence of mobile QA until the rendered page reports the expected width and is checked for overflow.
+- Before editing WordPress attachment metadata for a Beaver Builder image, identify the attachment id actually referenced by the live module. After changing alternative text, reopen and republish the module so Beaver Builder's cached image derivative inherits the metadata; verify the final `alt` value on both public hosts.
 
 ## Output Standards
 
