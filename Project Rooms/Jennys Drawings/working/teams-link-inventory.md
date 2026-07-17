@@ -25,6 +25,8 @@ The folder contains the complete context-selected source set, `JD-001` through `
 - HTML dependency: the drawing displays require network access and an authorized Buy Your Home Microsoft 365 sign-in.
 - HTML email delivery: sent July 17, 2026 from `OfficeAssist@BuyYourHomeLLC.com` to `WesWill@BuyYourHomeLLC.com` with subject `Drawn by Grace - Illustrated HTML Manuscript`.
 - HTML attachment verification: matching message confirmed in OfficeAssist Sent Items with attachment `Drawn by Grace - Illustrated Manuscript.html`, content type `text/html`, and size 752,119 bytes.
+- Accessible-version delivery: sent July 17, 2026 from `OfficeAssist@BuyYourHomeLLC.com` to both `Jenny@BuyYourHomeLLC.com` and `WesWill@BuyYourHomeLLC.com` with subject `Drawn by Grace - Updated Accessible HTML Manuscript`.
+- Accessible-version attachment verification: matching OfficeAssist Sent Items message confirmed with both recipients and attachment `Drawn by Grace - Illustrated Manuscript.html`, content type `text/html`, and size 756,035 bytes.
 - Lightweight linked manuscript: `outputs/Drawn by Grace - Linked Review Manuscript.docx`
 - Manuscript URL: `https://lifeisanadventure.sharepoint.com/sites/SellYourHome/_layouts/15/Doc.aspx?sourcedoc=%7BF685378C-8813-4BF2-BDA5-C28C9BDD9013%7D&file=Drawn%20by%20Grace%20-%20Linked%20Review%20Manuscript.docx&action=default&mobileredirect=true`
 - Purpose: preserve the new *Drawn by Grace* cover, Word Navigation-pane headings, and a clickable internal outline while keeping the full-resolution drawings outside the manuscript.

@@ -44,6 +44,14 @@ The Google Photos `Bible` album has been surveyed in place. The 18 context-selec
 - Keep only the current linked Word manuscript, current HTML manuscript, canonical manuscript text, current cover asset, required builders, and durable inventories.
 - Do not create version-suffixed working files when the current file can be updated in place.
 
+## Significant Change Email Rule
+
+- After a significant change is completed and verified, send a new email from `OfficeAssist@BuyYourHomeLLC.com` to both `Jenny@BuyYourHomeLLC.com` and `WesWill@BuyYourHomeLLC.com`.
+- Significant changes include manuscript content or section order, cover, drawing selection or placement, navigation, drawing-access links, file format, or delivery behavior.
+- Attach the current HTML manuscript unless Wes directs another delivery format, and include the Teams folder link plus any access instructions.
+- Verify the sent message in OfficeAssist Sent Items, including both recipients and the expected attachment.
+- Do not send a new email for internal notes, inventories, metadata-only corrections, or code refactoring that does not alter a delivered artifact.
+
 ## Matching Skill
 
 - Skill source: `C:\Codex\Wiki Files\skills\jennys-drawings\SKILL.md`

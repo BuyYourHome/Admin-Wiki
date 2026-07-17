@@ -3,6 +3,7 @@
 | Source | Type | Status | Notes |
 | --- | --- | --- | --- |
 | Wes request to create `Jennys Drawings` PR | User instruction | authoritative | Establishes this Project Room and matching skill. |
+| Wes significant-change email instruction | User instruction | authoritative | After significant delivered-artifact changes, send the current HTML manuscript from OfficeAssist to both Jenny and Wes and verify Sent Items. |
 | `Project Room Workflow.md` | Wiki rule | authoritative | Defines required Project Room structure and source-preparation workflow. |
 | `Project Room Chat Startup Rule.md` | Wiki rule | authoritative | Defines startup requirements and current PR scoping. |
 | `Project Room File Ownership And Git Coordination Rule.md` | Wiki rule | authoritative | Defines Project Room ownership, shared Admin file edits, commit scope, and push safety. |

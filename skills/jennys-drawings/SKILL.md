@@ -48,6 +48,15 @@ Before Jennys Drawings file work:
 - Current manuscripts should display or link to the Teams-hosted drawings. Do not create repository outputs that embed the original drawings.
 - Keep working files and versions to the minimum needed to regenerate the current deliverables. Update current files in place instead of creating version-suffixed copies.
 
+## Significant Change Email Delivery
+
+- After completing and verifying a significant change, send a fresh email from `OfficeAssist@BuyYourHomeLLC.com` to both `Jenny@BuyYourHomeLLC.com` and `WesWill@BuyYourHomeLLC.com`.
+- Significant changes include manuscript content or section order, cover, drawing selection or placement, navigation, drawing-access links, file format, or delivery behavior.
+- Attach the current HTML manuscript unless Wes directs another format. Include the Teams folder link and concise access instructions.
+- Use `C:\Codex\Wiki Files\skills\email-delivery\SKILL.md` for sender safety, attachment handling, and OfficeAssist Sent Items verification.
+- Verify both recipients, the subject, and the expected attachment before reporting delivery complete.
+- Do not trigger an email for internal working notes, inventory maintenance, metadata-only corrections, or code refactoring that does not alter a delivered artifact.
+
 ## Boundaries
 
 - Do not edit another Project Room's files or matching skill unless Wes explicitly authorizes that specific cross-PR edit.
@@ -57,7 +66,6 @@ Before Jennys Drawings file work:
 - Do not publish, share, send, or externally post drawings unless Wes explicitly authorizes that specific action and the applicable Admin wiki rules allow it.
 - Do not commit unrelated dirty work or generated scratch folders.
 - Do not push unless Wes asks, says the setup is finished, or the applicable Admin wiki rules make the deliverable ready to publish.
-
 - Do not retain a downloaded Jenny drawing after the immediate task is complete.
 
 ## Outputs
