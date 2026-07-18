@@ -43,7 +43,7 @@ Create a site called `Gracious Millionaire` for information related to the book 
 
 - Iteration loop: `working\gracious-millionaire-iteration-loop.md`.
 - Latest implementation report: `working\gracious-millionaire-iteration-001.md`.
-- Current full element cleanup map: `working\gracious-millionaire-element-map-046.md`.
+- Current full element cleanup map: `working\gracious-millionaire-element-map-047.md`.
 - Book Outline contains 25 current working chapter titles. Foreword and Introduction link to their approved public reading pages; the other 23 titles link to the shared `Chapter Being Edited` page.
 - The explicitly approved Foreword and Introduction are published. No other chapter content is public.
 
@@ -110,6 +110,7 @@ Create a site called `Gracious Millionaire` for information related to the book 
 - Wes approved the GM Journal/contact starting configuration: contact-database capture, `GM` tagging, Journal sends from `WesWill@BuyYourHomeLLC.com`, no Wes contact notifications, no SMS, and no contact autoresponder. The authenticated REI Web Forms editor timed out twice before its inventory could be inspected, so no live workflow or public form change was made. See `working\gracious-millionaire-element-map-044.md`.
 - The routed 2026-07-18 GM Site request asked for L.D. Evans full chapter pages with YouTube links and an unlinked shareable Drawn by Grace index. Drawn by Grace index page 6405 is saved as an unpublished WordPress draft with all 20 titles; its Publish action timed out twice. L.D. Evans publication is held because the owning manuscript source map still requires identity, names, chronology, location, and dialogue verification. See `working\gracious-millionaire-element-map-045.md` and `working\gm-manuscript-index-publication-readiness-001.md`.
 - In the stable after-hours Chrome session, page 6405 was published at `/drawn-by-grace-chapter-index/` and verified on both hosts with all 20 status entries. It remains absent from the main navigation and Books page. REI workflow `GM - Tag Contact` (320804) and contact tag `GM` (1163029) were created, and the workflow was attached to form 545547. The form still retains its pre-existing Wes email-report recipient because that notification setting reverts after save. See `working\gracious-millionaire-element-map-046.md`.
+- A supported form-editor/modal path resolved the notification persistence defect. Forms 545547 and 545548 both run `GM - Tag Contact`, update contacts, and keep submission-report notifications disabled. The Journal page now has a visible `Join the Journal` signup with clear email-frequency and unsubscribe language plus an on-page confirmation. No form was submitted and no SMS, autoresponder, campaign, or customer message was activated. See `working\gracious-millionaire-element-map-047.md`.
 
 ## Safety Notes
 

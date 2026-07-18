@@ -1189,3 +1189,37 @@ Unresolved workflow risk:
 - No form was submitted and no SMS, autoresponder, campaign, or customer message was activated.
 
 Exact next objective: correct the form 545547 Wes-notification persistence defect through a verified supported path before creating or embedding the separate Journal form; then add approved fields, consent language, and on-page confirmation.
+
+### 2026-07-18 - Verified GM form routing and live Journal signup
+
+Objective: complete the approved GM contact capture configuration, remove Wes submission notifications, and publish a separate Journal signup without activating SMS, autoresponders, or customer messages.
+
+Live changes:
+
+- Corrected form 545547 through its supported editor/modal path so `GM - Tag Contact` remains attached, update-contact handling remains selected, and submission-report email notifications remain disabled after reopen.
+- Configured the existing site-specific `Website - Subscribe` popup (form 545548; opt-in 545722) to run `GM - Tag Contact`, update existing contacts, and keep submission-report email notifications disabled.
+- Replaced the Journal placeholder with `Join the Journal`, clear frequency and unsubscribe language, and a visible `Join the Journal` button.
+- Published the existing Name-and-Email popup on the Journal page with an on-page GM Journal confirmation and pass-name/email disabled.
+- Created form 545720 while validating the supported form path, then left it inactive and unembedded after confirming 545548 was the existing site-specific popup.
+
+QA:
+
+- Public Journal page and popup render at `https://graciousmillionaire.com/blog/`.
+- The popup exposes Name and Email only; no phone or SMS field is present.
+- Reopening both configured forms confirms `GM - Tag Contact`, update-contact handling, and disabled submission-report notifications.
+- Journal and Updates passed desktop visual QA without clipping or overlap.
+- No form was submitted; no lead, SMS, autoresponder, campaign, or customer message was created.
+
+What worked:
+
+- Opening the Action Set from the form editor and saving inside its supported modal persisted workflow and notification settings; direct action-setting URLs did not persist changes reliably.
+- The REI custom checkbox must be toggled through its visible label, not by clicking its off-screen input.
+- Reusing the existing site-specific opt-in record preserved the page/form relationship and avoided embedding an unrecognized draft record.
+
+Remaining defects and boundaries:
+
+- Inactive form 545720 is a documented unused draft and needs a deliberate later retention/deletion decision.
+- L.D. Evans and Drawn by Grace full text remain withheld under their manuscript approval boundaries.
+- Personal homepage photography still requires selection of the exact approved image.
+
+Exact next objective: select the approved personal homepage image, or process the next explicit manuscript publication approval.
