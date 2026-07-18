@@ -1055,3 +1055,22 @@ What worked:
 - Public link-count checks proved that only the approved Foreword left the shared status destination.
 
 Exact next objective: wait for the next explicit chapter approval, or select the personal homepage image.
+
+### 2026-07-17 - Subtle approved-chapter treatment
+
+Objective: rename the outline section to `Chapters` and make the approved-chapter indicator more subtle.
+
+Live changes:
+
+- Changed `Working chapter list` to `Chapters`.
+- Replaced the large evergreen Foreword button with a normal 18px evergreen underlined chapter link.
+- Reduced `Available to read` to a muted 13px italic label beside the linked title.
+- Preserved the Foreword destination, availability explanation, and all 24 editing-status destinations.
+
+QA:
+
+- Both hosts show `Chapters`, one subtle Foreword availability indicator, and 24 editing-status links.
+- Both desktop hosts and true 390 x 844 QA passed without horizontal overflow.
+- No manuscript text or workflow-related setting changed.
+
+Exact next objective: wait for the next explicit chapter approval, or select the personal homepage image.
