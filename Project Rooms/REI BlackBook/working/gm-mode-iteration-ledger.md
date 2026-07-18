@@ -1074,3 +1074,30 @@ QA:
 - No manuscript text or workflow-related setting changed.
 
 Exact next objective: wait for the next explicit chapter approval, or select the personal homepage image.
+
+### 2026-07-17 - Approved Introduction publication
+
+Objective: publish the user-approved Chapter 2 as `Introduction` and expose it through the clickable Book Outline.
+
+Live changes:
+
+- Published the exact current Quick Mode Introduction as WordPress page 6402 at `/introduction/`.
+- Added a reader notice, readable 18px body typography, restrained 20px question callouts, and a return link to the Book Outline.
+- Replaced the outdated second outline title with `Introduction` and linked it to the new page.
+- Applied the same subtle 18px linked-title and muted 13px `Available to read` treatment used for the Foreword.
+- Preserved the other 23 links to the shared editing-status page.
+
+QA:
+
+- Both hosts contain the exact authoritative source opening and ending, one H1, the approved notice, and a working return link.
+- Both outline hosts expose exactly two approved chapter links, two availability labels, and 23 editing-status links across 25 entries.
+- Production exposes no inherited address or phone output on the Introduction page.
+- Desktop and true 390 x 844 Introduction and outline QA passed without clipping or horizontal overflow.
+- No form, workflow, recipient, notification, contact detail, DNS setting, image, or unapproved chapter changed.
+
+What worked:
+
+- The proven native WordPress classic Text editor path published the full source-controlled chapter without Beaver Builder instability.
+- Reusing the Foreword's subtle outline treatment kept approved chapters discoverable without making the status label dominant.
+
+Exact next objective: wait for the next explicit chapter approval, or select the personal homepage image.
