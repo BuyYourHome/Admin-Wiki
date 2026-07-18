@@ -1129,3 +1129,34 @@ Safety decision:
 - Stopped before creating duplicate forms or editing a guessed workflow. The approved capture, tagging, consent, and notification behavior must be applied to verified records as one coherent configuration.
 
 Exact next objective: retry the existing Web Forms inventory in a stable authenticated Chrome session, identify the current GM form records, and edit only those verified records.
+
+### 2026-07-17 - Routed manuscript indexes and publication boundary
+
+Objective: process the routed request for L.D. Evans full chapter pages with YouTube links and a direct-only Drawn by Grace chapter index.
+
+Source intake:
+
+- Read the full routed email at `sources\email\2026-07-18-015104-gm-site.md`.
+- Confirmed it was already listed in the source inventory and marked it processed without duplicating the request.
+
+Work completed:
+
+- Mapped the L.D. Evans working manuscript to Chapter 4 `Going West` and Chapter 5 `Shepherd`.
+- Recorded the four exact YouTube source URLs for Chapters 4 and 5.
+- Confirmed Chapters 1 through 3 have no supplied source text.
+- Identified explicit pre-publication verification requirements in the L.D. Evans source map and withheld the unsupported draft text.
+- Built WordPress draft 6405 for `Drawn by Grace - Chapter Index` with Introduction, 18 numbered chapters, and Closing Note.
+- Kept the draft disconnected from navigation and the Books page and exposed no manuscript body text.
+
+Browser result:
+
+- The first native WordPress editor load timed out, but a clean reconnection recovered the exact draft tab.
+- The draft auto-saved with the intended slug `/drawn-by-grace-chapter-index/`.
+- The Publish control timed out twice, so the page remains an unpublished draft and the exact tab was preserved as a handoff.
+
+Safety decision:
+
+- Did not publish the L.D. Evans manuscript while its own source map says key claims and dialogue require verification.
+- Did not publish Drawn by Grace body text while the owning project identifies it as an active review draft and no chapter is separately marked publication-ready.
+
+Exact next objective: obtain manuscript-level publication clearance for the L.D. Evans draft and identify approved Drawn by Grace sections, then resume from WordPress draft 6405.

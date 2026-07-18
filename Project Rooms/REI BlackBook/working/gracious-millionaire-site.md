@@ -43,7 +43,7 @@ Create a site called `Gracious Millionaire` for information related to the book 
 
 - Iteration loop: `working\gracious-millionaire-iteration-loop.md`.
 - Latest implementation report: `working\gracious-millionaire-iteration-001.md`.
-- Current full element cleanup map: `working\gracious-millionaire-element-map-044.md`.
+- Current full element cleanup map: `working\gracious-millionaire-element-map-045.md`.
 - Book Outline contains 25 current working chapter titles. Foreword and Introduction link to their approved public reading pages; the other 23 titles link to the shared `Chapter Being Edited` page.
 - The explicitly approved Foreword and Introduction are published. No other chapter content is public.
 
@@ -108,6 +108,7 @@ Create a site called `Gracious Millionaire` for information related to the book 
 - The Book Outline section heading now reads `Chapters`. The approved Foreword indicator was softened from a large evergreen button to a normal 18px linked title with a muted 13px `Available to read` label. Both hosts and true 390 x 844 QA passed; the other 24 destinations remain unchanged. See `working\gracious-millionaire-element-map-042.md`.
 - Wes explicitly approved Chapter 2, `Introduction`, for public publication. The exact current Quick Mode source is live as WordPress page 6402 at `/introduction/`, and the second Book Outline entry now uses the same subtle `Available to read` treatment as the Foreword. Both hosts and true 390 x 844 QA passed; the other 23 destinations remain unchanged. See `working\gracious-millionaire-element-map-043.md`.
 - Wes approved the GM Journal/contact starting configuration: contact-database capture, `GM` tagging, Journal sends from `WesWill@BuyYourHomeLLC.com`, no Wes contact notifications, no SMS, and no contact autoresponder. The authenticated REI Web Forms editor timed out twice before its inventory could be inspected, so no live workflow or public form change was made. See `working\gracious-millionaire-element-map-044.md`.
+- The routed 2026-07-18 GM Site request asked for L.D. Evans full chapter pages with YouTube links and an unlinked shareable Drawn by Grace index. Drawn by Grace index page 6405 is saved as an unpublished WordPress draft with all 20 titles; its Publish action timed out twice. L.D. Evans publication is held because the owning manuscript source map still requires identity, names, chronology, location, and dialogue verification. See `working\gracious-millionaire-element-map-045.md` and `working\gm-manuscript-index-publication-readiness-001.md`.
 
 ## Safety Notes
 

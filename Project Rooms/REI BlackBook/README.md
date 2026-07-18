@@ -21,7 +21,7 @@ Folder map:
 Key working notes:
 
 - `working\tool-map.md` - first-pass REI BlackBook navigation, WebTools Sites, existing site IDs, BYH control-panel map, and browser safety rules.
-- `working\gracious-millionaire-element-map-044.md` - current local map of the approved GM form/workflow specification, repeated Web Forms editor timeout, zero-change safety decision, and exact retry objective.
+- `working\gracious-millionaire-element-map-045.md` - current local map of the routed manuscript-index request, Drawn by Grace index draft 6405, L.D. Evans verification boundary, recorded YouTube links, and exact continuation point.
 
 Standing website-update rule:
 
