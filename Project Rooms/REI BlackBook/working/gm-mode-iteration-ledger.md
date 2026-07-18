@@ -1101,3 +1101,31 @@ What worked:
 - Reusing the Foreword's subtle outline treatment kept approved chapters discoverable without making the status label dominant.
 
 Exact next objective: wait for the next explicit chapter approval, or select the personal homepage image.
+
+### 2026-07-17 - Approved form workflow blocked before inspection
+
+Objective: implement the approved Journal signup and contact-form contact capture, `GM` tagging, sender, and no-notification behavior.
+
+Approved configuration:
+
+- Create or update contacts in REI BlackBook and apply the `GM` tag.
+- Use the `GM` tag as the Journal audience.
+- Send Journal posts from `WesWill@BuyYourHomeLLC.com`.
+- Do not notify Wes of contact submissions.
+- Do not send SMS or a contact-form autoresponder.
+- Keep Journal signup consent separate from contact inquiries.
+
+Attempt and result:
+
+- Opened the authenticated REI Web Forms inventory at `/forms/details`.
+- The forms page timed out before the controlled DOM could be inspected.
+- Reconnected to Chrome, found the existing REI forms tab, and claimed that exact tab.
+- The claimed tab timed out again before any form or workflow record could be identified.
+- Finalized the unstable agent-created forms tab.
+- No live form, tag, Action Set, campaign, notification, sender, recipient, SMS, autoresponder, or public page setting changed.
+
+Safety decision:
+
+- Stopped before creating duplicate forms or editing a guessed workflow. The approved capture, tagging, consent, and notification behavior must be applied to verified records as one coherent configuration.
+
+Exact next objective: retry the existing Web Forms inventory in a stable authenticated Chrome session, identify the current GM form records, and edit only those verified records.
