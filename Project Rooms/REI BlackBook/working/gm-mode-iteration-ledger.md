@@ -1160,3 +1160,32 @@ Safety decision:
 - Did not publish Drawn by Grace body text while the owning project identifies it as an active review draft and no chapter is separately marked publication-ready.
 
 Exact next objective: obtain manuscript-level publication clearance for the L.D. Evans draft and identify approved Drawn by Grace sections, then resume from WordPress draft 6405.
+
+### 2026-07-18 - Direct index publication and GM tagging workflow
+
+Objective: use the stable after-hours Chrome window to publish the approved direct-only Drawn by Grace index and resume the approved GM contact-tagging configuration.
+
+Live changes:
+
+- Published WordPress page 6405 at `/drawn-by-grace-chapter-index/` with the 20 approved section titles and `Review page pending final text approval` status labels only.
+- Kept the page absent from the main navigation and Books page; no manuscript body text was published.
+- Created contact tag `GM` (record 1163029).
+- Created contact workflow `GM - Tag Contact` (record 320804) containing only a step that applies the `GM` tag.
+- Attached `GM - Tag Contact` to the existing Gracious Millionaire form `Website - Contact` (545547), while preserving update-contact duplicate handling.
+
+QA:
+
+- Both public hosts serve the Drawn by Grace index with all 20 status labels.
+- The public header and Books page do not link to the direct-only index.
+- The form inventory still shows zero submissions; the preview view count increased from 17 to 18 during read-only QA.
+- The workflow attachment persists after returning through the forms inventory.
+- The `GM` tag is visible in Manage Tags and the workflow is visible in Workflows.
+
+Unresolved workflow risk:
+
+- Form 545547 still has `Check to receive email reports of each submission` enabled for `WesWill@BuyYourHomeLLC.com`.
+- Unchecking the option, clearing the recipient, and saving through the inventory route returns normally but the old notification setting reappears when reopened.
+- The thank-you popup text and pass-data setting behave the same way and revert after reopen.
+- No form was submitted and no SMS, autoresponder, campaign, or customer message was activated.
+
+Exact next objective: correct the form 545547 Wes-notification persistence defect through a verified supported path before creating or embedding the separate Journal form; then add approved fields, consent language, and on-page confirmation.

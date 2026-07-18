@@ -46,7 +46,7 @@ Authoritative review manuscript: `..\Jennys Drawings\outputs\Drawn by Grace - Re
 - The review manuscript includes unresolved `[[PLATE:JD-001]]` through `[[PLATE:JD-018]]` placement markers.
 - No chapter is separately marked publication-ready.
 
-WordPress draft `6405` now contains the complete 20-title direct review index at the intended slug `/drawn-by-grace-chapter-index/`. It is not published and is not linked from navigation or the Books page. Each entry is marked `Review page pending final text approval`; no draft manuscript body text is exposed.
+WordPress page `6405` now publishes the complete 20-title direct review index at `/drawn-by-grace-chapter-index/`. It is reachable only by direct URL and is not linked from navigation or the Books page. Each entry is marked `Review page pending final text approval`; no draft manuscript body text is exposed.
 
 ## Exact Continuation
 
@@ -54,4 +54,4 @@ WordPress draft `6405` now contains the complete 20-title direct review index at
 2. After clearance, publish Chapter 4 and Chapter 5 pages with the two matching YouTube links at the top and the exact approved complete text below.
 3. Replace the current L.D. Evans status page with a clickable outline linking only to cleared chapters.
 4. Identify which Drawn by Grace sections are complete and approved for direct-link sharing.
-5. Publish those individual review pages, replace their index status labels with links, then publish draft `6405` without adding it to menus, the Books page, or other public navigation.
+5. Publish those individual review pages and replace their index status labels with direct links without adding page `6405` to menus, the Books page, or other public navigation.
