@@ -2,6 +2,16 @@
 
 Use this file to record, refine, or expand lessons learned after each workbook or workflow iteration. Each entry should state what changed or failed, the practical lesson, and how the next iteration should be constrained or validated.
 
+## 2026-07-20 - Routed Timesheet vs Time Card
+
+Context: Email Monitor routed a Josh Kennedy `Timesheet` email to Invoice Entry as a contractor/project-cost source, but the current Time Card trigger requires a subject containing `Time Card`.
+
+Lessons:
+
+- Do not silently treat a routed `Timesheet` subject as Time Card. Process it under Create Vendor Invoice only when required invoice fields are supported.
+- A known worker rate in Invoice Entry rules does not override a handoff instruction that says not to infer rate, amount, project allocation, or approval beyond the routed source. Hold the packet and ask Wes to confirm the application of the known rate when the handoff adds that constraint.
+- For free-text labor routed as invoice source, capture held fields explicitly: worked date, rate/amount authority, project allocation, destination worksheet, and whether vendor verification is authorized.
+
 ## 2026-07-08 - Outrigger Table Layout Rollout Attempt
 
 Context: Attempted to apply the `Appliances` label/total placement, repair the `Appliances` toggle, standardize table columns, and match table formatting across upgraded Outrigger vendor tabs.
