@@ -131,6 +131,11 @@ Weekly accumulation:
 - Regenerate the weekly invoice using the established polished invoice template after each new Time Card handoff.
 - Preserve every routed Time Card email as source evidence and retain traceability from each invoice line back to the source email.
 
+Known Time Card rates:
+
+- Josh: calculate Time Card labor at `$31.25` per hour.
+- If a routed Time Card source conflicts with a known rate, hold the affected line for Wes review instead of silently using the conflicting rate.
+
 Project handling:
 
 - Split the weekly time by project when the Time Card source identifies multiple projects.
