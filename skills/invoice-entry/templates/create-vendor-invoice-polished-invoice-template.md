@@ -1,6 +1,6 @@
 # Create Vendor Invoice Polished Invoice Template
 
-Use this template for Create Vendor Invoice Mode when a routed vendor email has no attached invoice and Invoice Entry needs to generate a formal invoice draft for vendor verification.
+Use this template for Create Vendor Invoice when a routed vendor email has no attached invoice and Invoice Entry needs to generate a formal invoice draft for vendor verification.
 
 ## Purpose
 

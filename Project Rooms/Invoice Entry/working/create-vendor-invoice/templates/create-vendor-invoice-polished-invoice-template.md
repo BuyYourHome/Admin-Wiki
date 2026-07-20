@@ -4,7 +4,7 @@ Canonical skill template:
 
 `C:\Codex\Wiki Files\skills\invoice-entry\templates\create-vendor-invoice-polished-invoice-template.md`
 
-Use this template for Create Vendor Invoice Mode free-text vendor invoices. The Tim Fleming Pond hours invoice draft generated on 2026-07-17 is the first approved visual model for this mode.
+Use this template for Create Vendor Invoice free-text vendor invoices. The Tim Fleming Pond hours invoice draft generated on 2026-07-17 is the first approved visual model for this workflow.
 
 Required behavior:
 

@@ -4,19 +4,19 @@
 
 This project room owns the operational workflow for inserting invoice and approved statement-line records into Buy Your Home project-management spreadsheets.
 
-The workflow usually starts after Doc Scan has completed scanned invoice, receipt, or Statement Mode intake and prepared a structured packet. It can also start when Email Monitor or OfficeAssist routes a contractor/vendor invoice email into Create Vendor Invoice Mode. This room receives or creates the packet, decides where the record or statement line belongs in the project-management spreadsheet, checks for duplicates, inserts approved records into the correct worksheet area, validates totals, and reports uncertainty for Wes review.
+The workflow usually starts after Doc Scan has completed scanned invoice, receipt, or Statement intake and prepared a structured packet. It can also start when Email Monitor or OfficeAssist routes a contractor/vendor invoice email into Create Vendor Invoice. This room receives or creates the packet, decides where the record or statement line belongs in the project-management spreadsheet, checks for duplicates, inserts approved records into the correct worksheet area, validates totals, and reports uncertainty for Wes review.
 
 ## Scope
 
 Included:
 
-- Receive structured invoice, receipt, and Statement Mode packets from Doc Scan as the scanned-document intake source.
-- Receive routed contractor/vendor invoice emails from Email Monitor or OfficeAssist under Create Vendor Invoice Mode.
+- Receive structured invoice, receipt, and Statement packets from Doc Scan as the scanned-document intake source.
+- Receive routed contractor/vendor invoice emails from Email Monitor or OfficeAssist under Create Vendor Invoice.
 - Other intake sources are out of scope unless Wes separately approves and documents them.
-- Consume Lowes Statement Mode packets extracted by Doc Scan; Doc Scan owns extraction, and Invoice Entry owns allocation and later spreadsheet insertion when approved.
+- Consume Lowes Statement packets extracted by Doc Scan; Doc Scan owns extraction, and Invoice Entry owns allocation and later spreadsheet insertion when approved.
 - Resolve the correct active project-management workbook through Teams/SharePoint.
 - Route invoice records to the correct worksheet and expense area.
-- For Vendor Tabs Mode, insert records only into the yellow actual-invoice section of the correct vendor tab.
+- For Vendor Tabs, insert records only into the yellow actual-invoice section of the correct vendor tab.
 - Preserve template-estimate rows, formulas, checkboxes/selectors, named ranges, tables, formatting, and workbook structure.
 - Validate affected totals and downstream links such as `Gnatt Chart`.
 - Keep rollback copies and record insertion decisions.
@@ -30,17 +30,17 @@ Excluded unless Wes explicitly expands scope:
 
 ## Responsibility Boundary
 
-- `Doc Scan`: scan inspection/OCR, document splitting, invoice/receipt/statement identification, project/property folder routing when applicable, saving/copying filed PDFs into Teams/project folders, scan log entries, Statement Mode extraction, and structured packet creation.
+- `Doc Scan`: scan inspection/OCR, document splitting, invoice/receipt/statement identification, project/property folder routing when applicable, saving/copying filed PDFs into Teams/project folders, scan log entries, Statement extraction, and structured packet creation.
 - `Email Monitor` / `OfficeAssist`: mailbox monitoring, routed vendor-invoice email preservation, direct handoff messages, and source traceability for email-origin invoice intake.
-- `Invoice Entry`: structured packet receipt, structured packet creation from routed free-text vendor-invoice emails, exact live project-management workbook resolution, workbook duplicate checks, statement-line allocation, final row placement, invoice or approved statement-line record insertion, Create Vendor Invoice Mode verification requests for generated free-text invoices when vendor identity and email address are clear, workbook formula/format/selector/table/link preservation, totals and downstream-link validation, authorized upload back to Teams/SharePoint, and insertion logging.
+- `Invoice Entry`: structured packet receipt, structured packet creation from routed free-text vendor-invoice emails, exact live project-management workbook resolution, workbook duplicate checks, statement-line allocation, final row placement, invoice or approved statement-line record insertion, Create Vendor Invoice verification requests for generated free-text invoices when vendor identity and email address are clear, workbook formula/format/selector/table/link preservation, totals and downstream-link validation, authorized upload back to Teams/SharePoint, and insertion logging.
 - `Template to Project`: worksheet design, worksheet-mode rules, template changes, and rollout across project workbooks.
 
 ## Current Status
 
 - Status: active direct-message handoff; backup heartbeat available. Invoice insertion procedure still has open design decisions.
-- First supported worksheet group: Vendor Tabs Mode.
-- Statement Mode status: Doc Scan owns Lowes Statement Mode extraction and will send extracted statement data for this room to consume. Invoice Entry holds statement lines until allocation and insertion rules are tested and approved.
-- First workbook for proving the workflow: Outrigger, after Wes approves the Vendor Tabs Mode design.
+- First supported worksheet group: Vendor Tabs.
+- Statement status: Doc Scan owns Lowes Statement extraction and will send extracted statement data for this room to consume. Invoice Entry holds statement lines until allocation and insertion rules are tested and approved.
+- First workbook for proving the workflow: Outrigger, after Wes approves the Vendor Tabs design.
 - Primary trigger: direct follow-up message to the dedicated Invoice Entry chat with the packet path and summary.
 - Backup automation: project-room heartbeat at noon and 4:00 PM Eastern. The heartbeat inspects this project room for new or changed structured invoice/receipt packets only; it does not scan inboxes, inspect raw scan folders, copy files into Teams, or edit a live workbook unless Wes has clearly authorized the insertion or an approved automation rule exists for that exact insertion type.
 - Automation id: `invoice-entry-to-projects-backup-heartbeat`.
@@ -66,9 +66,9 @@ Each handoff should include:
 - Confidence/status
 - Notes or uncertainty
 
-## Create Vendor Invoice Mode
+## Create Vendor Invoice
 
-Use Create Vendor Invoice Mode when Email Monitor or OfficeAssist routes a contractor/vendor invoice email to Invoice Entry.
+Use Create Vendor Invoice when Email Monitor or OfficeAssist routes a contractor/vendor invoice email to Invoice Entry.
 
 Trigger:
 
@@ -86,9 +86,9 @@ Invoice Entry responsibilities:
 - For free-text invoice emails, create a formal invoice document from the email body and preserved source details.
 - Use the polished Create Vendor Invoice PDF template for generated free-text invoices unless Wes requests a different invoice style. Template: `C:\Codex\Wiki Files\skills\invoice-entry\templates\create-vendor-invoice-polished-invoice-template.md`.
 - Render and visually inspect the generated invoice PDF before attaching it to a review or vendor-verification email.
-- Email the generated formal invoice PDF back to the proper vendor with a request to verify the invoice's accuracy when vendor identity, vendor email address, and source evidence are clear. This Create Vendor Invoice Mode verification email has standing approval and does not require a separate Wes review step before sending. Copy `WesWill@BuyYourHomeLLC.com` and `Jenny@BuyYourHomeLLC.com` on that verification email. Use the Admin wiki email-delivery rules for sender safety and sent-item verification.
+- Email the generated formal invoice PDF back to the proper vendor with a request to verify the invoice's accuracy when vendor identity, vendor email address, and source evidence are clear. This Create Vendor Invoice verification email has standing approval and does not require a separate Wes review step before sending. Copy `WesWill@BuyYourHomeLLC.com` and `Jenny@BuyYourHomeLLC.com` on that verification email. Use the Admin wiki email-delivery rules for sender safety and sent-item verification.
 - Do not forward or attach the routed free-text source email to the vendor. Preserve the source email in the project room for traceability, but send the vendor only the polished generated invoice and the verification request.
-- Sign Create Vendor Invoice Mode vendor verification emails as `Jean Wright`.
+- Sign Create Vendor Invoice vendor verification emails as `Jean Wright`.
 - Do not file a free-text generated invoice as a final invoice, insert it into a project spreadsheet, or mark it ready for posting until the vendor has returned or confirmed it as accurate.
 - Record routing decisions, workbook edits, duplicate checks, validation results, and unresolved questions in this project room.
 
@@ -96,13 +96,13 @@ Safety limits:
 
 - Do not approve invoices.
 - Do not pay invoices.
-- Do not contact vendors except for the Create Vendor Invoice Mode free-text invoice-accuracy verification request described above.
+- Do not contact vendors except for the Create Vendor Invoice free-text invoice-accuracy verification request described above.
 - Do not send a vendor verification request for an email that already includes an attached invoice.
 - Do not send a vendor verification request if the proper vendor email address is unclear, the free-text source evidence is insufficient, the invoice appears misrouted, or the message would imply approval, payment, or acceptance of the invoice.
 - Do not guess the project, vendor, amount, invoice number, or destination worksheet when evidence is unclear.
 - If the routed email lacks required fields or the attachment cannot be accessed, preserve the source link and report the blocker.
 - If duplicate risk is found, stop before insertion and report the risk.
-- If the invoice appears to be a statement with multiple project lines, handle it under Statement Mode rules instead of treating it as one vendor invoice.
+- If the invoice appears to be a statement with multiple project lines, handle it under Statement rules instead of treating it as one vendor invoice.
 
 Completion:
 
@@ -112,16 +112,16 @@ Completion:
 - Record the vendor verification email result for free-text invoices, including whether it was sent, held, blocked, or needs Wes review.
 - Report completed entries, held items, duplicate risks, filing results, and any open review questions.
 
-## Time Card Mode
+## Time Card
 
-Use Time Card Mode only when Email Monitor sends a direct handoff message to Invoice Entry for an email with subject containing `Time Card`.
+Use Time Card only when Email Monitor sends a direct handoff message to Invoice Entry for an email with subject containing `Time Card`.
 
 Trigger:
 
 - Email Monitor detects and routes the Time Card email.
 - The routed source email is preserved under `Project Rooms\Invoice Entry\sources\email\`.
 - The handoff includes the routed source path, sender, received time, subject, attachment paths or attachment blockers, and any project/vendor/person clues.
-- Invoice Entry must not scan inboxes, search for Time Card emails, or start this mode from raw mailbox access on its own.
+- Invoice Entry must not scan inboxes, search for Time Card emails, or start this workflow from raw mailbox access on its own.
 
 Weekly accumulation:
 
@@ -155,13 +155,13 @@ Teams filing:
 Safety limits:
 
 - Do not approve or pay the invoice.
-- Do not contact the worker/vendor merely because a Time Card email arrived unless another approved Invoice Entry mode separately authorizes that contact.
+- Do not contact the worker/vendor merely because a Time Card email arrived unless another approved Invoice Entry workflow separately authorizes that contact.
 - Do not create workbook entries without enough project, date, hours, rate, and source traceability.
 - Preserve unresolved lines in the project room and report what Wes must review.
 
-## Required Statement Mode Packet
+## Required Statement Packet
 
-Statement processing must be routed through Doc Scan. Do not ask Invoice Entry directly to fetch, OCR, parse, or process raw statement PDFs. Doc Scan sends extracted Statement Mode data for this room to consume. A Statement Mode handoff should include:
+Statement processing must be routed through Doc Scan. Do not ask Invoice Entry directly to fetch, OCR, parse, or process raw statement PDFs. Doc Scan sends extracted Statement data for this room to consume. A Statement handoff should include:
 
 - Statement vendor
 - Statement account or account suffix, if available
@@ -188,7 +188,7 @@ Statement processing must be routed through Doc Scan. Do not ask Invoice Entry d
 4. Do not use individual property subfolders as the source for the project-management spreadsheet.
 5. Make a rollback copy before editing a workbook.
 6. Insert invoice rows only into the destination area approved for that worksheet mode.
-7. For Vendor Tabs Mode, use the yellow actual-invoice section; never write imports into the orange template-estimate rows.
+7. For Vendor Tabs, use the yellow actual-invoice section; never write imports into the orange template-estimate rows.
 8. Check for duplicates before insertion.
 9. Validate affected totals after insertion.
 10. Upload the verified workbook back through the Teams/SharePoint connector only after it opens cleanly and has no unintended workbook links.
@@ -233,29 +233,29 @@ When processing a workbook Review request:
 19. Create a rollback copy before editing.
 20. Save through Excel, reopen cleanly, validate destination totals and `Gnatt Chart` values, confirm zero unintended workbook links, and replace the same Teams workbook only after validation passes.
 
-## Statement Mode Hold
+## Statement Hold
 
-Statement Mode packets are extracted by Doc Scan and routed to this project room to be treated as statement-line source material, but they are not normal single-invoice packets. Lowes Statement Mode is the first active statement source.
+Statement packets are extracted by Doc Scan and routed to this project room to be treated as statement-line source material, but they are not normal single-invoice packets. Lowes Statement is the first active statement source.
 
-If a Statement Mode packet is received:
+If a Statement packet is received:
 
 1. Do not insert statement items into any workbook yet.
 2. Do not treat the statement as a single invoice for one worksheet.
-3. Mark the packet as `Needs Review - Statement Mode` unless the approved Statement Mode rules say otherwise.
+3. Mark the packet as `Needs Review - Statement` unless the approved Statement rules say otherwise.
 4. Use the extracted data as the starting point for allocation review, not as automatic approval for insertion.
 5. Hold insertion until Wes approves a tested process for allocating statement items by project and then by worksheet/table within each project.
 
 Reason: a common invoice usually maps to one project and one tab, but a statement can contain charges for multiple projects and multiple tabs inside each project.
 
-## Lowes Statement Operation Modes
+## Lowes Statement Operations
 
 Lowes statements have one supported intake path:
 
-- **Doc Scan handoff processing** - Doc Scan receives or is asked to process one or more Lowes statements, extracts the detail, and passes a structured Statement Mode packet to Invoice Entry.
+- **Doc Scan handoff processing** - Doc Scan receives or is asked to process one or more Lowes statements, extracts the detail, and passes a structured Statement packet to Invoice Entry.
 
-Do not request statement processing directly in this Invoice Entry project room. If Wes or another workflow wants one statement or a set of statements processed, route the request to Doc Scan first. Invoice Entry must wait for the Doc Scan Statement Mode packet and must not substitute its own OCR, statement extraction, or raw-PDF parsing.
+Do not request statement processing directly in this Invoice Entry project room. If Wes or another workflow wants one statement or a set of statements processed, route the request to Doc Scan first. Invoice Entry must wait for the Doc Scan Statement packet and must not substitute its own OCR, statement extraction, or raw-PDF parsing.
 
-For Statement Mode handoffs:
+For Statement handoffs:
 
 - treat a statement as potentially multi-project,
 - never treat the full statement as belonging to one workbook just because one line belongs there,
@@ -265,15 +265,15 @@ For Statement Mode handoffs:
 - keep enough traceability to import retained lines later, including statement account, statement closing date, row/ref number, transaction date, description, amount, project clue, confidence/status, and source statement path,
 - avoid duplicate Review or vendor-table rows when a held line is later imported.
 
-Current rollout status: active project workbooks are being prepared for Lowe's Review/vendor-table processing. When Doc Scan supplies a structured Statement Mode packet, Invoice Entry may iterate through ready active projects and import only the rows that apply to each ready project. Non-ready or unclear rows remain held.
+Current rollout status: active project workbooks are being prepared for Lowe's Review/vendor-table processing. When Doc Scan supplies a structured Statement packet, Invoice Entry may iterate through ready active projects and import only the rows that apply to each ready project. Non-ready or unclear rows remain held.
 
 Held statement detail lives in:
 
 `C:\Codex\Wiki Files\Project Rooms\Invoice Entry\working\lowes-statement-held-detail-register.md`
 
-## Lowes Statement Mode Review-First Rule
+## Lowes Statement Review-First Rule
 
-For Lowes Statement Mode packets:
+For Lowes Statement packets:
 
 1. Exclude rows that clearly do not belong to the target project.
 2. Exclude sales-tax-only and tax-credit-only rows; tax will be calculated or allocated later by an approved spreadsheet tax method.
@@ -290,7 +290,7 @@ For Lowes Statement Mode packets:
 
 ### Provisional Vendor-Tab Copy Exception
 
-If Wes explicitly authorizes post-copy review for a Statement Mode batch, Invoice Entry may copy high-confidence Lowe's statement rows directly from `Review` into a vendor tab when project, amount, description, and destination worksheet are defensible from the packet and approved worksheet-mode rules.
+If Wes explicitly authorizes post-copy review for a Statement batch, Invoice Entry may copy high-confidence Lowe's statement rows directly from `Review` into a vendor tab when project, amount, description, and destination worksheet are defensible from the packet and approved worksheet-mode rules.
 
 This is a copy-for-review, not final approval:
 
@@ -299,14 +299,14 @@ This is a copy-for-review, not final approval:
 - record the destination worksheet/table and copy date in the review or notes field,
 - do not use this exception for unclear project, blank or guessed destination, tax-only amounts, missing/fragmented amount evidence, mixed destination items, incomplete-source-only summary rows, or explicit stop statuses such as `Hold`.
 
-## Vendor Tabs Mode Startup
+## Vendor Tabs Startup
 
-When inserting into Vendor Tabs Mode, read:
+When inserting into Vendor Tabs, read:
 
 - `C:\Codex\Wiki Files\Project Rooms\Template to Project\Worksheet Modes\Vendor Tabs Mode Rules.md`
 - `C:\Codex\Wiki Files\Project Rooms\Template to Project\Project Spreadsheet Expense Placement Rules.md`
 
-Current Vendor Tabs Mode worksheets:
+Current Vendor Tabs worksheets:
 
 1. `Demo & Trash Haul`
 2. `Appliances`
@@ -320,7 +320,7 @@ Current Vendor Tabs Mode worksheets:
 10. `STR`
 11. `Landscape`
 
-Do not route invoices to tabs right of `Landscape`, such as `Exterior` or `Furnishing`, unless Wes explicitly expands Vendor Tabs Mode.
+Do not route invoices to tabs right of `Landscape`, such as `Exterior` or `Furnishing`, unless Wes explicitly expands Vendor Tabs.
 
 ## Duplicate Check
 
@@ -337,18 +337,18 @@ If a duplicate is likely, stop and route the packet for review instead of insert
 - Exact row-insertion behavior for each Vendor Tab's yellow actual-invoice section.
 - Whether successful low-risk insertions can later run automatically.
 - Final STR worksheet design, because STR does not yet match the two-group vendor-tab layout.
-- Statement Mode allocation process for splitting extracted statement charges by project and by worksheet/table before insertion.
-- Lowes Statement Mode follow-up process for moving approved Review rows into vendor tables after Wes supplies or accepts the destination worksheet.
-- Safe workbook-structure rollout pattern for Vendor Tabs Mode, including how to standardize table columns and formatting without corrupting table headers.
+- Statement allocation process for splitting extracted statement charges by project and by worksheet/table before insertion.
+- Lowes Statement follow-up process for moving approved Review rows into vendor tables after Wes supplies or accepts the destination worksheet.
+- Safe workbook-structure rollout pattern for Vendor Tabs, including how to standardize table columns and formatting without corrupting table headers.
 
 ## Next Actions
 
-1. Finish and approve the Outrigger Vendor Tabs Mode design.
+1. Finish and approve the Outrigger Vendor Tabs design.
 2. Create the first Outrigger invoice-entry test packet.
 3. Prove duplicate detection, row placement, totals, and `Gnatt Chart` behavior on Outrigger.
 4. After Wes approves, define the repeatable insertion procedure for other active project workbooks.
 ## Start PR Pointer
 
-Before durable work, follow Start PR Mode in `C:\Codex\Wiki Files\Project Room Chat Startup Rule.md`.
+Before durable work, follow the Start PR workflow in `C:\Codex\Wiki Files\Project Room Chat Startup Rule.md`.
 
 Interpret unqualified requests under the Current PR Scope Rule in that file. Work on `main` unless Wes explicitly asks for a branch.

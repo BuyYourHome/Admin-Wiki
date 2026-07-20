@@ -57,7 +57,7 @@ When a held row is later imported, update its status and reference the processin
 The following statement rows are not in this held-detail table because they are retained in the Outrigger workbook `Review` table or have been moved from Review into vendor tables:
 
 - Rows moved to vendor tables: packet rows 1, 4, 5, 6, 8, 9, 11, 17, 18, 19, 20, and 23.
-- Row retained in Outrigger `Review`: packet row 2, currently destination `Exterior`, excluded from movement because `Exterior` is outside approved Vendor Tabs Mode scope.
+- Row retained in Outrigger `Review`: packet row 2, currently destination `Exterior`, excluded from movement because `Exterior` is outside approved Vendor Tabs scope.
 
 ## 2026-07-15 - Requested Remaining 2026 Lowe's Statements
 
@@ -65,7 +65,7 @@ The following statement rows are not in this held-detail table because they are 
 - Backout log: `C:\Codex\Wiki Files\Project Rooms\Invoice Entry\working\2026-07-15-lowes-sweep-backout-log.md`
 - Working extraction folder: `C:\Codex\Wiki Files\Project Rooms\Invoice Entry\working\lowes-statements-2026-requested-20260715`
 
-Status: superseded/backed out. The partial Review rows from this direct OCR sweep were removed from the project workbooks. The statements should be reprocessed through Doc Scan Lowes Statement Mode.
+Status: superseded/backed out. The partial Review rows from this direct OCR sweep were removed from the project workbooks. The statements should be reprocessed through Doc Scan Lowes Statement.
 
 ## 2026-07-15 - Doc Scan Lowe's All-Accounts Packet
 

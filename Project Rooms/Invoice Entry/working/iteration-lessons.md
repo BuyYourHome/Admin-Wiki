@@ -70,36 +70,36 @@ Lessons:
 - Keep narrow formula repairs limited to the affected table column when the total chain is already structurally correct.
 - Validate the changed column formula, invoice total, grand total, and Gantt-linked value after recalculation.
 
-## 2026-07-08 - Statement Mode Handoff Boundary
+## 2026-07-08 - Statement Handoff Boundary
 
-Context: Doc Scan now has Lowes Statement Mode and will send extracted statement data for Invoice Entry to consume.
+Context: Doc Scan now has Lowes Statement and will send extracted statement data for Invoice Entry to consume.
 
 Lessons:
 
 - Keep statement extraction in Doc Scan and statement allocation in Invoice Entry.
 - Treat extracted statement lines as source data, not approval for insertion.
-- Do not insert Statement Mode lines until the allocation rule for project, worksheet/table, duplicate check, audit trace, and totals validation has been designed, tested, and approved.
+- Do not insert Statement lines until the allocation rule for project, worksheet/table, duplicate check, audit trace, and totals validation has been designed, tested, and approved.
 
 ## 2026-07-08 - Lowes Statement Allocation Pilot
 
-Context: Processed the Lowes PRO BYH 5997 statement closing 2026-03-17 as the first Statement Mode handoff test for Outrigger.
+Context: Processed the Lowes PRO BYH 5997 statement closing 2026-03-17 as the first Statement handoff test for Outrigger.
 
 Lessons:
 
 - For credit-card statement line items, treat the statement amount as the transaction total unless the extracted packet separates pre-tax subtotal and tax. Do not apply the worksheet tax formula again to statement totals.
-- Lowes Statement Mode uses project-first routing, then Review-first handling inside the matched project workbook. Do not insert all lines from a multi-project statement into the current project's `Review` table.
+- Lowes Statement uses project-first routing, then Review-first handling inside the matched project workbook. Do not insert all lines from a multi-project statement into the current project's `Review` table.
 - Fill `Review[Destination Worksheet]` only when Invoice Entry has confidence in the destination tab for a line that already belongs to that project. Leave it blank for same-project vendor-tab uncertainty.
 - Keep Home/non-project, unclear-project, mixed-tab/project-unclear, PO-conflicted, accounting-only, and other non-matched-project lines outside project workbooks until the project/accounting status is resolved.
 - A filled `Destination Worksheet` is a routing recommendation and does not mean the line has already been inserted into the destination vendor table.
 - Record the statement PDF path as source evidence for every inserted or review-routed statement line.
 - When writing Excel tables through automation, restore from rollback after any failed COM write attempt before retrying; partial unsaved attempts should not be carried forward.
-- If a Statement Mode rule changes after an upload, rebuild from the pre-statement rollback and reprocess the packet under the new rule instead of patching already-uploaded Review and vendor-table rows in place.
+- If a Statement rule changes after an upload, rebuild from the pre-statement rollback and reprocess the packet under the new rule instead of patching already-uploaded Review and vendor-table rows in place.
 - For multi-project statements, do not use the currently open project workbook as the holding place for every line. Route by project/workbook first; only lines belonging to that project should enter that project's `Review` table, and non-project or unclear-project lines should stay outside project workbooks until resolved.
 - For Lowes statement packets, Doc Scan should preserve visible receipt-item detail. A single statement transaction/ref can become multiple Invoice Entry rows when it contains multiple items, delivery/shipping, or separable credits; do not consume broad transaction-summary rows when item-level rows are needed for later vendor-tab placement.
 
 ## 2026-07-08 - Lowes Statement Inclusion Rule Amendment
 
-Context: Wes amended the Lowes Statement Mode rule after reviewing rows 13-25 in the item-level packet. The prior project-first rule was too strict for rows that might belong to Outrigger but had PO, project, destination, mixed-tab, or allocation uncertainty.
+Context: Wes amended the Lowes Statement rule after reviewing rows 13-25 in the item-level packet. The prior project-first rule was too strict for rows that might belong to Outrigger but had PO, project, destination, mixed-tab, or allocation uncertainty.
 
 Lessons:
 
@@ -108,7 +108,7 @@ Lessons:
 - Also include rows that may belong to the target project but need review before final destination or allocation is known.
 - Exclude sales-tax-only and tax-credit-only rows from Review and vendor tabs during initial statement consumption; tax will be calculated or allocated later by an approved spreadsheet tax method.
 - For possible-project rows, leave `Destination Worksheet` blank unless the destination is clear and explain the uncertainty in the review/status fields.
-- If a Statement Mode inclusion rule changes after upload, rebuild from the clean pre-statement workbook copy and reprocess the packet rather than patching already-uploaded Review rows in place.
+- If a Statement inclusion rule changes after upload, rebuild from the clean pre-statement workbook copy and reprocess the packet rather than patching already-uploaded Review rows in place.
 
 ## 2026-07-08 - Review Description Column
 
@@ -118,7 +118,7 @@ Lessons:
 
 - Keep `Review[Description]` as a separate clean item-description field after `Invoice #` and before `Amount`.
 - Do not rely on the narrative `Review` column as the future vendor-table description source.
-- For Statement Mode rows, preserve source traceability in `Review`, but put only the item description itself in `Description`.
+- For Statement rows, preserve source traceability in `Review`, but put only the item description itself in `Description`.
 - Validate the Review header order before upload: `Invoice #`, `Description`, then `Amount`.
 
 ## 2026-07-08 - Lowes Item Description Lookup
@@ -157,40 +157,40 @@ Lessons:
 - For current Outrigger Plumbing Fixtures rows, use the table's existing `Group` value pattern `PlumbingFixtures` when filling new actual-invoice rows.
 - When copying Lowe's Review rows into vendor tables, preserve clean item descriptions from `Review[Description]`, parse item number and quantity from the Review trace when available, and let the table's `Sub-Total` and `Tax` formulas calculate from quantity and cost/unit.
 - A Wes-filled `Destination Worksheet` is approval to move a Review row unless the status is an explicit stop such as `Hold`, `Do Not Move`, `Duplicate Risk`, or `Missing Data`. Do not let stale `Needs Review` wording block a row after Wes has supplied the destination; correct the status to `Moved` during the successful move.
-- A destination-filled Review row can still be excluded when the destination worksheet is outside the approved Vendor Tabs Mode scope. `Exterior` and tabs to the right of `Landscape` remain out of scope until Wes explicitly expands Vendor Tabs Mode.
+- A destination-filled Review row can still be excluded when the destination worksheet is outside the approved Vendor Tabs scope. `Exterior` and tabs to the right of `Landscape` remain out of scope until Wes explicitly expands Vendor Tabs.
 - For Lowe's statement modes, rows that are not inserted into a specific project workbook must still be retained. Use the held-detail register for Home/non-project, accounting-review, unclear-project, tax-only, or not-ready-project rows so a later active-project sweep can import them without rereading or guessing from the raw statement.
 - Avoid duplicating Review row movement rules. Use a trigger rule instead: when Invoice Entry opens an authorized active project workbook and finds `Review` / `tblInvoiceReview`, invoke the existing Review Request Processing rules before other workbook work.
 
 ## 2026-07-15 - Requested Multi-Account Lowe's Sweep
 
-Context: Wes asked Invoice Entry to process the remaining 2026 Lowe's statements from both Lowe's accounts after all active projects were ready for Lowe's mode.
+Context: Wes asked Invoice Entry to process the remaining 2026 Lowe's statements from both Lowe's accounts after all active projects were ready for Lowe's workflow.
 
 Lessons:
 
 - For requested statement sweeps, scan every named account folder for the requested period, but do not treat a scanned/image statement as reliable item-level data merely because OCR produced text.
 - Project Review insertion requires enough confidence in project identity and the statement line/ref. If the OCR is dense, truncated, or cannot support item-level splitting, retain the row in the held-detail register instead of importing a fuzzy transaction summary.
 - Payment-only, interest-only, sales-tax-only, tax-credit-only, and Home/non-project details remain outside project workbooks even during all-project sweeps.
-- When all projects are ready for Lowe's mode, route confident rows to each matched project's own `Review` table. Do not use Outrigger or any other currently active workbook as a temporary holding workbook for other projects.
+- When all projects are ready for Lowe's workflow, route confident rows to each matched project's own `Review` table. Do not use Outrigger or any other currently active workbook as a temporary holding workbook for other projects.
 - If Invoice Entry supplies a `Destination Worksheet` recommendation for a Lowe's Review row, keep the status in a review state unless Wes has separately approved movement; initial statement consumption is still Review-first, not vendor-tab insertion.
-- Direct Invoice Entry OCR is not an acceptable substitute for Doc Scan Lowes Statement Mode on dense scanned statements. If Wes points out missed statement detail, back out partial Review rows and wait for a Doc Scan item-level packet.
-- Do not accept direct requests in Invoice Entry to process raw statements. Statement requests belong in Doc Scan first; Invoice Entry starts only after Doc Scan provides a structured Statement Mode packet.
-- A Doc Scan Statement Mode packet can still be review-grade rather than workbook-ready. Do not import transaction-section rows to project Review tables when the packet cannot provide reliable project, date, amount, item split, and source-completeness signals; retain them in held detail instead.
+- Direct Invoice Entry OCR is not an acceptable substitute for Doc Scan Lowes Statement on dense scanned statements. If Wes points out missed statement detail, back out partial Review rows and wait for a Doc Scan item-level packet.
+- Do not accept direct requests in Invoice Entry to process raw statements. Statement requests belong in Doc Scan first; Invoice Entry starts only after Doc Scan provides a structured Statement packet.
+- A Doc Scan Statement packet can still be review-grade rather than workbook-ready. Do not import transaction-section rows to project Review tables when the packet cannot provide reliable project, date, amount, item split, and source-completeness signals; retain them in held detail instead.
 - If Wes explicitly wants review-grade statement rows placed into project spreadsheets for manual review, insert them into `tblInvoiceReview` only, keep `Destination Worksheet` blank unless Wes has approved it, and leave status as `Needs Review - Lowes Statement`.
-- If Wes explicitly authorizes post-copy review, high-confidence Statement Mode rows may be copied to vendor tabs provisionally, but the Review row must remain open as `Copied - Needs Owner Verification`; do not mark it `Moved` until Wes accepts it.
+- If Wes explicitly authorizes post-copy review, high-confidence Statement rows may be copied to vendor tabs provisionally, but the Review row must remain open as `Copied - Needs Owner Verification`; do not mark it `Moved` until Wes accepts it.
 
-## 2026-07-17 - Create Vendor Invoice Mode
+## 2026-07-17 - Create Vendor Invoice
 
-Context: Wes defined Create Vendor Invoice Mode for contractor/vendor invoice emails routed by Email Monitor or OfficeAssist.
+Context: Wes defined Create Vendor Invoice for contractor/vendor invoice emails routed by Email Monitor or OfficeAssist.
 
 Lessons:
 
 - Email Monitor and OfficeAssist own mailbox monitoring and routed source-email preservation; Invoice Entry starts after a direct handoff and a saved email source under `sources\email\`.
-- In this mode, Invoice Entry may create the structured invoice packet from routed email and attachments instead of receiving a Doc Scan packet.
+- In this workflow, Invoice Entry may create the structured invoice packet from routed email and attachments instead of receiving a Doc Scan packet.
 - Do not treat routed email intake as authority to approve, pay, contact vendors, guess missing fields, or treat multi-project statements as single invoices.
 - Keep source traceability back to the routed email, attachments, Outlook link when available, and handoff summary.
 - If a routed vendor email includes an attached invoice, treat the attachment as the invoice and proceed under normal Invoice Entry rules; do not generate a replacement invoice or send it back for verification merely because it came by email.
 - If a routed vendor email is free text with no attached invoice, generate a formal invoice from the source email and send it back to the proper vendor for accuracy verification, copying Wes and Jenny. Hold final filing and spreadsheet insertion until the vendor confirms it.
-- The only vendor contact authorized by this mode is the free-text invoice accuracy-verification request. Do not send it unless vendor identity, vendor email address, and free-text source evidence are clear, and never word it as approval, payment, or acceptance.
+- The only vendor contact authorized by this workflow is the free-text invoice accuracy-verification request. Do not send it unless vendor identity, vendor email address, and free-text source evidence are clear, and never word it as approval, payment, or acceptance.
 
 ## 2026-07-17 - Lowe's SYH 6140 Review-First Packet
 
@@ -198,7 +198,7 @@ Context: Processed the Doc Scan item-level Lowe's Pro SYH 6140 statement packet 
 
 Lessons:
 
-- For Doc Scan Statement Mode packets, insert confident project item rows into the matched project `Review` table only; do not copy them into vendor tabs during initial packet consumption.
-- Keep imported Lowe's statement rows in a review status such as `Needs Review - Statement Mode` even when `Destination Worksheet` contains a recommendation. Wes can change status to `Ready` or another approval status when the row should be posted.
+- For Doc Scan Statement packets, insert confident project item rows into the matched project `Review` table only; do not copy them into vendor tabs during initial packet consumption.
+- Keep imported Lowe's statement rows in a review status such as `Needs Review - Statement` even when `Destination Worksheet` contains a recommendation. Wes can change status to `Ready` or another approval status when the row should be posted.
 - Keep payment, interest, and other accounting-review rows out of project workbooks and retain them in the held-detail register with source traceability.
 - If Excel COM reports successful validation but times out during cleanup, independently read back the workbook, then terminate only the hidden automation Excel process created by the run.
