@@ -112,6 +112,48 @@ Completion:
 - Record the vendor verification email result for free-text invoices, including whether it was sent, held, blocked, or needs Wes review.
 - Report completed entries, held items, duplicate risks, filing results, and any open review questions.
 
+## Time Card Mode
+
+Use Time Card Mode only when Email Monitor sends a direct handoff message to Invoice Entry for an email with subject containing `Time Card`.
+
+Trigger:
+
+- Email Monitor detects and routes the Time Card email.
+- The routed source email is preserved under `Project Rooms\Invoice Entry\sources\email\`.
+- The handoff includes the routed source path, sender, received time, subject, attachment paths or attachment blockers, and any project/vendor/person clues.
+- Invoice Entry must not scan inboxes, search for Time Card emails, or start this mode from raw mailbox access on its own.
+
+Weekly accumulation:
+
+- Accumulate Time Card emails by worker/vendor and work week.
+- Maintain one weekly invoice per worker/vendor for that week.
+- When another Time Card email arrives for the same worker/vendor/week, add its new time lines to the existing weekly invoice source record rather than creating a separate invoice.
+- Regenerate the weekly invoice using the established polished invoice template after each new Time Card handoff.
+- Preserve every routed Time Card email as source evidence and retain traceability from each invoice line back to the source email.
+
+Project handling:
+
+- Split the weekly time by project when the Time Card source identifies multiple projects.
+- Insert each project's time into that project's correct project-management spreadsheet under existing Invoice Entry insertion rules.
+- Do not put all time into one project unless the source clearly applies only to that project.
+- If project, date, worker/vendor, hours, rate, or destination worksheet is unclear, hold the affected line for review rather than guessing.
+- Before inserting, check for existing entries for the same worker/vendor, week, project, date, and source Time Card line so repeated weekly updates do not duplicate prior additions.
+- When a weekly Time Card invoice is updated after a prior insertion, reconcile against existing project spreadsheet rows and update or add only the delta allowed by the current workbook rules.
+
+Teams filing:
+
+- Save a copy of the current weekly invoice PDF in each affected Teams project `Invoices` folder.
+- If a weekly invoice file already exists for the same worker/vendor/week/project, replace that Teams file with the updated invoice copy.
+- Use a stable weekly filename so updates overwrite the same file instead of creating duplicates.
+- Standard file naming pattern: `YY-MM-DD - <Worker or Vendor> - Time Card - Week Ending YYYY-MM-DD.pdf`, where the leading `YY-MM-DD` is the week-ending date.
+
+Safety limits:
+
+- Do not approve or pay the invoice.
+- Do not contact the worker/vendor merely because a Time Card email arrived unless another approved Invoice Entry mode separately authorizes that contact.
+- Do not create workbook entries without enough project, date, hours, rate, and source traceability.
+- Preserve unresolved lines in the project room and report what Wes must review.
+
 ## Required Statement Mode Packet
 
 Statement processing must be routed through Doc Scan. Do not ask Invoice Entry directly to fetch, OCR, parse, or process raw statement PDFs. Doc Scan sends extracted Statement Mode data for this room to consume. A Statement Mode handoff should include:

@@ -1,6 +1,6 @@
 ---
 name: invoice-entry
-description: Use for Buy Your Home project-management spreadsheet invoice-entry work after Doc Scan has prepared a structured invoice, receipt, or Statement Mode packet, or when Email Monitor or OfficeAssist routes a contractor/vendor invoice email into Invoice Entry. Trigger when Codex needs to receive or create a structured packet, choose the correct active project workbook and worksheet, check for duplicate invoice or statement-line records, insert approved records into a Vendor Tab or other approved project-spreadsheet expense area, validate totals and workbook links, and report uncertain routing for Wes review.
+description: Use for Buy Your Home project-management spreadsheet invoice-entry work after Doc Scan has prepared a structured invoice, receipt, or Statement Mode packet, when Email Monitor or OfficeAssist routes a contractor/vendor invoice email into Invoice Entry, or when Email Monitor routes a Time Card email. Trigger when Codex needs to receive or create a structured packet, choose the correct active project workbook and worksheet, check for duplicate invoice, time-card, or statement-line records, insert approved records into a Vendor Tab or other approved project-spreadsheet expense area, validate totals and workbook links, and report uncertain routing for Wes review.
 ---
 
 # Invoice Entry
@@ -11,7 +11,7 @@ description: Use for Buy Your Home project-management spreadsheet invoice-entry 
 - Skill source: `C:\Codex\Wiki Files\skills\invoice-entry\SKILL.md`
 - Template-to-project migration room: `C:\Codex\Wiki Files\Project Rooms\Template to Project`
 
-Use this skill for operational invoice and approved statement-line insertion into project-management spreadsheets. For scanned invoice, receipt, and Statement Mode records, Doc Scan is the normal intake workflow and should trigger this workflow by direct follow-up message after creating the packet. For routed contractor/vendor invoice emails, Email Monitor or OfficeAssist may hand off a saved email source and attachments under Create Vendor Invoice Mode. The project-room heartbeat is a backup monitor for missed packet handoffs. Do not use this skill for scan inspection/OCR, document splitting, statement extraction, invoice-file routing, or spreadsheet template redesign.
+Use this skill for operational invoice, Time Card, and approved statement-line insertion into project-management spreadsheets. For scanned invoice, receipt, and Statement Mode records, Doc Scan is the normal intake workflow and should trigger this workflow by direct follow-up message after creating the packet. For routed contractor/vendor invoice emails, Email Monitor or OfficeAssist may hand off a saved email source and attachments under Create Vendor Invoice Mode. For Time Card emails, Email Monitor is the only supported trigger and must hand off the preserved source email. The project-room heartbeat is a backup monitor for missed packet handoffs. Do not use this skill for scan inspection/OCR, document splitting, statement extraction, invoice-file routing, mailbox monitoring, or spreadsheet template redesign.
 
 Doc Scan owns Lowes Statement Mode extraction and will send extracted statement data for this skill to consume. This skill owns statement-line allocation, duplicate checks, final spreadsheet row placement, insertion, and validation after Wes approves the Statement Mode allocation rules.
 
@@ -47,6 +47,7 @@ This skill owns:
 
 - receiving the structured packet,
 - creating a structured invoice packet from routed vendor invoice email source material when Create Vendor Invoice Mode applies,
+- processing Time Card handoffs from Email Monitor under Time Card Mode,
 - resolving the exact live project-management workbook,
 - checking workbook records for duplicates,
 - allocating extracted statement lines by project and worksheet/table when approved,
@@ -67,6 +68,7 @@ This skill does not own:
 - saving or copying invoice files into Teams/project folders,
 - scan log entries,
 - statement-line extraction from PDFs,
+- mailbox scanning or Time Card email detection,
 - template redesign or worksheet-mode rollout,
 - invoice approval, payment, accounting entries, vendor communication outside the Create Vendor Invoice Mode free-text invoice verification request, or legal/financial decision-making.
 
@@ -115,6 +117,48 @@ Completion:
 - For free-text invoice emails, preserve the routed email, generated invoice, verification email, copied recipients, and vendor response before final filing or spreadsheet insertion.
 - Record the vendor verification email result for free-text invoices, including whether it was sent, held, blocked, or needs Wes review.
 - Report completed entries, held items, duplicate risks, filing results, and any open review questions.
+
+## Time Card Mode
+
+Use Time Card Mode only when Email Monitor sends a direct handoff message to Invoice Entry for an email with subject containing `Time Card`.
+
+Trigger:
+
+- Email Monitor detects and routes the Time Card email.
+- The routed source email is preserved under `C:\Codex\Wiki Files\Project Rooms\Invoice Entry\sources\email\`.
+- The handoff includes the routed source path, sender, received time, subject, attachment paths or attachment blockers, and any project/vendor/person clues.
+- Invoice Entry must not scan inboxes, search for Time Card emails, or start this mode from raw mailbox access on its own.
+
+Weekly accumulation:
+
+- Accumulate Time Card emails by worker/vendor and work week.
+- Maintain one weekly invoice per worker/vendor for that week.
+- When another Time Card email arrives for the same worker/vendor/week, add its new time lines to the existing weekly invoice source record rather than creating a separate invoice.
+- Regenerate the weekly invoice using the established polished invoice template after each new Time Card handoff.
+- Preserve every routed Time Card email as source evidence and retain traceability from each invoice line back to the source email.
+
+Project handling:
+
+- Split the weekly time by project when the Time Card source identifies multiple projects.
+- Insert each project's time into that project's correct project-management spreadsheet under existing Invoice Entry insertion rules.
+- Do not put all time into one project unless the source clearly applies only to that project.
+- If project, date, worker/vendor, hours, rate, or destination worksheet is unclear, hold the affected line for review rather than guessing.
+- Before inserting, check for existing entries for the same worker/vendor, week, project, date, and source Time Card line so repeated weekly updates do not duplicate prior additions.
+- When a weekly Time Card invoice is updated after a prior insertion, reconcile against existing project spreadsheet rows and update or add only the delta allowed by the current workbook rules.
+
+Teams filing:
+
+- Save a copy of the current weekly invoice PDF in each affected Teams project `Invoices` folder.
+- If a weekly invoice file already exists for the same worker/vendor/week/project, replace that Teams file with the updated invoice copy.
+- Use a stable weekly filename so updates overwrite the same file instead of creating duplicates.
+- Standard file naming pattern: `YY-MM-DD - <Worker or Vendor> - Time Card - Week Ending YYYY-MM-DD.pdf`, where the leading `YY-MM-DD` is the week-ending date.
+
+Safety limits:
+
+- Do not approve or pay the invoice.
+- Do not contact the worker/vendor merely because a Time Card email arrived unless another approved Invoice Entry mode separately authorizes that contact.
+- Do not create workbook entries without enough project, date, hours, rate, and source traceability.
+- Preserve unresolved lines in the project room and report what Wes must review.
 
 ## Required Inputs
 
