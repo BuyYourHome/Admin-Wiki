@@ -128,7 +128,8 @@ Weekly accumulation:
 - Accumulate Time Card emails by worker/vendor and work week.
 - Maintain one weekly invoice per worker/vendor for that week.
 - When another Time Card email arrives for the same worker/vendor/week, add its new time lines to the existing weekly invoice source record rather than creating a separate invoice.
-- Regenerate the weekly invoice using the established polished invoice template after each new Time Card handoff.
+- Call Create Vendor Invoice to create or regenerate the weekly invoice document from the accumulated Time Card source lines after each new Time Card handoff.
+- Time Card owns accumulation, project/time splitting, known-rate application, and spreadsheet/Teams placement; Create Vendor Invoice owns the formal invoice document generation using the established polished invoice template.
 - Preserve every routed Time Card email as source evidence and retain traceability from each invoice line back to the source email.
 
 Known Time Card rates:
