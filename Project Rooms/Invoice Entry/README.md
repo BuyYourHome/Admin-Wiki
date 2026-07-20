@@ -130,6 +130,7 @@ Weekly accumulation:
 - When another Time Card email arrives for the same worker/vendor/week, add its new time lines to the existing weekly invoice source record rather than creating a separate invoice.
 - Call Create Vendor Invoice to create or regenerate the weekly invoice document from the accumulated Time Card source lines after each new Time Card handoff.
 - Time Card owns accumulation, project/time splitting, known-rate application, and spreadsheet/Teams placement; Create Vendor Invoice owns the formal invoice document generation using the established polished invoice template.
+- When the Friday `Time Card` email for a worker/vendor arrives, send the generated weekly invoice PDF back to that email sender for accuracy verification using the Create Vendor Invoice verification email rules. Copy `WesWill@BuyYourHomeLLC.com` and `Jenny@BuyYourHomeLLC.com`, sign as `Jean Wright`, and preserve the sent email and verification response as source evidence.
 - Preserve every routed Time Card email as source evidence and retain traceability from each invoice line back to the source email.
 
 Known Time Card rates:
@@ -156,7 +157,8 @@ Teams filing:
 Safety limits:
 
 - Do not approve or pay the invoice.
-- Do not contact the worker/vendor merely because a Time Card email arrived unless another approved Invoice Entry workflow separately authorizes that contact.
+- Do not contact the worker/vendor merely because a non-Friday Time Card email arrived unless another approved Invoice Entry workflow separately authorizes that contact.
+- Do not send a Friday Time Card verification email if the sender identity is unclear, the generated invoice cannot be verified visually, or the message would imply approval, payment, or acceptance of the invoice.
 - Do not create workbook entries without enough project, date, hours, rate, and source traceability.
 - Preserve unresolved lines in the project room and report what Wes must review.
 
