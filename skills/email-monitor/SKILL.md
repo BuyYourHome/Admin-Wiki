@@ -179,6 +179,7 @@ This mode owns source routing and direct Invoice Entry task handoff only. It doe
 
 Activation:
 
+- the sender display name is `Josh Kennedy` and the subject is exactly `Time Card`, matched case-insensitively;
 - the email is from a contractor, subcontractor, vendor, supplier, utility, service provider, or property/project cost sender and the subject, body, attachment name, or message context contains `invoice`, `bill`, `receipt`, `statement`, `pay app`, `payment request`, `draw`, or another clear invoice-entry signal;
 - the email is from Wes or Jenny and forwards, attaches, or explicitly routes a contractor/vendor invoice or project-cost email for processing;
 - the email otherwise clearly belongs to the Invoice Entry workflow.
