@@ -63,7 +63,7 @@ When creating a new PR requires a dedicated Codex task:
 5. Do not let task creation block the whole PR setup, and do not retry indefinitely in the same turn.
 6. When the connector later succeeds, record the returned thread id in the PR README and registry, then commit that metadata update separately.
 
-## Project Room Relationship Diagram Mode
+## PR Diagram
 
 Use this mode when Wes asks Create PR to make, refresh, or maintain a relationship diagram of Buy Your Home Project Rooms.
 
