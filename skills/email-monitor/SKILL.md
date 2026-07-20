@@ -40,9 +40,9 @@ Before using this skill, have:
 
 ## Modes
 
-### Daily Email Summary Mode
+### Daily Email Summary
 
-Use Daily Email Summary Mode for the once-daily Boss and Jenny Outlook mailbox summaries.
+Use Daily Email Summary for the once-daily Boss and Jenny Outlook mailbox summaries.
 
 This mode owns mailbox scanning, cutoff selection, priority selection, summary drafting, usage-summary inclusion, attachment decision, and summary-run state updates for:
 
@@ -96,9 +96,9 @@ State update:
 - if mailbox access, token-summary generation, send, or verification fails, record the blocker and action taken;
 - do not treat a failed summary run as quiet.
 
-### Gracious Millionaire Email Routing Mode
+### Gracious Millionaire Email Routing
 
-Use Gracious Millionaire Email Routing Mode when the Email Monitor workflow or OfficeAssist instruction monitor sees an email that belongs to Gracious Millionaire.
+Use Gracious Millionaire Email Routing when the Email Monitor workflow or OfficeAssist instruction monitor sees an email that belongs to Gracious Millionaire.
 
 This mode owns source routing and direct project-room handoff only. It does not own Gracious Millionaire manuscript processing, book-response drafting, external email sending, or mailbox monitoring from the Gracious Millionaire project-room heartbeat.
 
@@ -123,9 +123,9 @@ Current Gracious Millionaire project-room thread id: `019eb9b0-6780-7fb3-a278-29
 
 Do not attach mailbox checking to the Gracious Millionaire heartbeat. Do not create a new Gracious Millionaire chat. Do not draft, edit, or send the requested book response from this Email Monitor or OfficeAssist monitor thread unless Wes explicitly asks for processing here. The default action is source routing plus direct project-room handoff only.
 
-### Web Site Email Routing Mode
+### Web Site Email Routing
 
-Use Web Site Email Routing Mode when the Email Monitor workflow or OfficeAssist instruction monitor sees an instruction email from Wes or Jenny that belongs to REI BlackBook website work.
+Use Web Site Email Routing when the Email Monitor workflow or OfficeAssist instruction monitor sees an instruction email from Wes or Jenny that belongs to REI BlackBook website work.
 
 This mode owns source routing and direct REI BlackBook project-room handoff only. It does not own live REI BlackBook website editing, browser automation, public-site publishing, external email sending, or creating a new REI BlackBook chat.
 
@@ -147,9 +147,9 @@ Current REI Blackbook project-room thread id: `019f4691-5466-7f72-9683-ab5d3b750
 
 Do not create a new REI Blackbook chat for this routing unless Wes explicitly asks. Do not process the REI BlackBook website request from this Email Monitor or OfficeAssist monitor thread unless Wes explicitly asks for processing here. The default action is source routing plus direct project-room handoff only.
 
-### Brynda Suit Email Routing Mode
+### Brynda Suit Email Routing
 
-Use Brynda Suit Email Routing Mode when the Email Monitor workflow or OfficeAssist instruction monitor sees an instruction email from Wes or Jenny that belongs to Brynda Suit.
+Use Brynda Suit Email Routing when the Email Monitor workflow or OfficeAssist instruction monitor sees an instruction email from Wes or Jenny that belongs to Brynda Suit.
 
 This mode owns source routing and direct Brynda Suit task handoff only. It does not own Brynda Suit response drafting, external email sending, or creating a new Brynda Suit task.
 
@@ -171,9 +171,9 @@ Current Brynda Suit task id: `019f61c3-d4c0-7a52-a5a0-e4066ea9b303`.
 
 Do not create a new Brynda Suit task for this routing unless Wes explicitly asks. Do not process the Brynda Suit response from this Email Monitor or OfficeAssist monitor thread unless Wes explicitly asks for processing here. The default action is source routing plus direct project-room handoff only.
 
-### Route Vendor Invoice Mode
+### Route Vendor Invoice
 
-Use Route Vendor Invoice Mode when the Email Monitor workflow or OfficeAssist instruction monitor sees a contractor or vendor email that appears to contain or request processing of an invoice, bill, receipt, payment request, statement, pay application, draw request, or project-cost document.
+Use Route Vendor Invoice when the Email Monitor workflow or OfficeAssist instruction monitor sees a contractor or vendor email that appears to contain or request processing of an invoice, bill, receipt, payment request, statement, pay application, draw request, or project-cost document.
 
 This mode owns source routing and direct Invoice Entry task handoff only. It does not own invoice approval, payment, vendor contact, final accounting judgment, live project-spreadsheet entry, Teams filing, or creating a new Invoice Entry chat.
 

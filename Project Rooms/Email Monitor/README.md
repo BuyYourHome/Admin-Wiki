@@ -33,7 +33,7 @@ This project room holds development notes, source inventory, and review artifact
 
 ## Modes
 
-### Daily Email Summary Mode
+### Daily Email Summary
 
 Use this mode for the once-daily Boss and Jenny Outlook mailbox summaries.
 
@@ -43,7 +43,7 @@ This mode sends Boss's summary to `WesWill@BuyYourHomeLLC.com` and Jenny's summa
 
 This mode runs only once per calendar day per recipient at the first eligible heartbeat at or after 8:00 AM Eastern. Later same-day heartbeat runs skip summaries that were already sent and verified.
 
-### Gracious Millionaire Email Routing Mode
+### Gracious Millionaire Email Routing
 
 Use this mode when the Email Monitor workflow or OfficeAssist instruction monitor sees an email with a subject containing `gracious millionaire`, or an email that otherwise clearly belongs to the Gracious Millionaire book/project-room workflow.
 
@@ -51,7 +51,7 @@ This mode routes the email into `C:\Codex\Wiki Files\Project Rooms\Gracious Mill
 
 This mode does not draft, edit, or send the requested Gracious Millionaire book response from the Email Monitor or OfficeAssist monitor thread unless Wes explicitly asks for processing here. It also does not attach mailbox checking to the Gracious Millionaire heartbeat or create a new Gracious Millionaire chat.
 
-### Brynda Suit Email Routing Mode
+### Brynda Suit Email Routing
 
 Use this mode when the Email Monitor workflow or OfficeAssist instruction monitor sees an email from Wes or Jenny with a subject containing `brynda suit`, or an email that otherwise clearly belongs to the Brynda Suit workflow.
 
@@ -76,9 +76,9 @@ When the workflow changes, update the skill, this project room, and the registry
 ## Change Log
 
 - 2026-07-16: Renamed the project room, chat, and skill from `Email Summary` / `email-summary` to `Email Monitor` / `email-monitor`; the live automation id remains `officeassist-morning-email-summary-and-instruction-monitor`.
-- 2026-07-16: Defined Brynda Suit Email Routing Mode for routed-source preservation and direct handoff to the existing Brynda Suit task.
-- 2026-07-15: Defined Daily Email Summary Mode for Boss and Jenny mailbox summaries, including mailbox scan, cutoff, summary drafting, OfficeAssist delivery handoff, Sent Items verification, and state update boundaries.
-- 2026-07-15: Defined Gracious Millionaire Email Routing Mode and moved the existing Gracious Millionaire routed-email handoff behavior under that mode in the Email Monitor skill.
+- 2026-07-16: Defined Brynda Suit Email Routing for routed-source preservation and direct handoff to the existing Brynda Suit task.
+- 2026-07-15: Defined Daily Email Summary for Boss and Jenny mailbox summaries, including mailbox scan, cutoff, summary drafting, OfficeAssist delivery handoff, Sent Items verification, and state update boundaries.
+- 2026-07-15: Defined Gracious Millionaire Email Routing and moved the existing Gracious Millionaire routed-email handoff behavior under that mode in the Email Monitor skill.
 - 2026-07-02: Wes changed Jenny's daily summary routing so the summary is emailed to `Jenny@BuyYourHomeLLC.com` from OfficeAssist with Sent Items verification.
 - 2026-06-29: Resumed Jenny's daily email summary after Wes explicitly requested it and the Outlook Email connector verified access to `Jenny@BuyYourHomeLLC.com`.
 - 2026-07-01: Extended the OfficeAssist Email Monitor heartbeat schedule to run every 15 minutes through 11:00 PM Eastern.
