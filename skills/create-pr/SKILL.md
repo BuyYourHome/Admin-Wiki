@@ -63,6 +63,60 @@ When creating a new PR requires a dedicated Codex task:
 5. Do not let task creation block the whole PR setup, and do not retry indefinitely in the same turn.
 6. When the connector later succeeds, record the returned thread id in the PR README and registry, then commit that metadata update separately.
 
+## Project Room Relationship Diagram Mode
+
+Use this mode when Wes asks Create PR to make, refresh, or maintain a relationship diagram of Buy Your Home Project Rooms.
+
+Purpose:
+
+- Produce a readable graphic showing how Project Rooms, skills, automations, and major handoffs relate.
+- Keep the diagram grouped enough to fit on one page or screen.
+- Prefer a polished SVG output unless Wes asks for another format.
+
+Required sources:
+
+1. `C:\Codex\Wiki Files\Agents and Automations Registry.md`
+2. `C:\Codex\Wiki Files\Admin Home.md`
+3. `C:\Codex\Wiki Files\Project Room Workflow.md`
+4. `C:\Codex\Wiki Files\Project Room File Ownership And Git Coordination Rule.md`
+5. Current `README.md` files under `C:\Codex\Wiki Files\Project Rooms\*\README.md` when needed for relationship details.
+
+Workflow:
+
+1. Confirm work is being done from `C:\Codex\Wiki Files`.
+2. Read the required sources.
+3. Identify all active, draft, planning, and support Project Rooms.
+4. Group the rooms by practical function:
+   - Intake / Coordination
+   - Document Intake
+   - Accounting / Project Data
+   - Real Estate Transaction Work
+   - Legal / Entity Work
+   - Publishing / Public Work
+   - System Maintenance
+5. Show Jean Wright / Admin Operations as the coordination hub.
+6. Show Email Monitor as the email intake and routing hub.
+7. Show Doc Scan, Invoice Entry, and Template to Project as the document-to-accounting/project-data chain.
+8. Show Contract for Deed relationships to Credit Worthiness Evaluator, Amortization, and Template to Project.
+9. Show Gracious Millionaire and REI BlackBook as related book/public-website work.
+10. Show Entity Relationship and Operating Agreements as related legal/entity-governance work.
+11. Keep cross-links limited to the most important handoffs so the diagram remains readable.
+12. Mark inferred relationships as inferred if they are not directly supported by the registry or README files.
+13. Save the output under `C:\Codex\Wiki Files\Project Rooms\Create PR\outputs\`.
+14. Use a filename such as `Project Room Relationship Diagram.svg`.
+15. If the diagram is also useful globally, copy or link it from an Admin wiki index only after Wes approves that placement.
+16. Review the SVG for readability before reporting completion.
+17. Commit only the diagram and directly related Create PR notes unless Wes authorizes broader wiki updates.
+18. Push only under normal Admin wiki push rules.
+
+Output standards:
+
+- Use one-page grouped layout.
+- Use readable labels, not tiny text.
+- Avoid showing every minor edge if it makes the diagram unreadable.
+- Prefer solid arrows for primary handoffs and dashed arrows for support/feedback relationships.
+- Include a generated date and short source note in the diagram footer.
+
 ## Chat Startup Prompt Requirements
 
 When creating a new PR chat, include:
