@@ -1,0 +1,70 @@
+﻿{
+    "packet type":  "Doc Scan project invoice handoff",
+    "created at":  "2026-07-21T10:08:57",
+    "created by":  "Doc Scan heartbeat doc-scan 2026-07-21T14:04:29.009Z",
+    "record count":  2,
+    "summary":  "Two Sherwin-Williams project invoice scans filed and ready for Invoice Entry review/insertion. Both recommend Paint vendor tab; one Outrigger record has duplicate risk.",
+    "records":  [
+                    {
+                        "project/property":  "28-SYH-320 Rose Pl",
+                        "vendor name":  "Sherwin-Williams",
+                        "invoice date":  "2026-05-11",
+                        "invoice number":  "1780-6",
+                        "invoice amount":  43.83,
+                        "work category":  "Paint",
+                        "source scan path":  "C:\\Users\\wesbr\\Buy Your Home\\Buy Your Home - Office Admin\\Scanned Files\\Archived\\Account_700987688.pdf",
+                        "filed invoice path in Teams/project folder":  "C:\\Users\\wesbr\\Buy Your Home\\Buy Your Home - Property\\28-SYH-320 Rose Pl\\Owning\\26-05-11 - Sherwin-Williams - 1780-6.pdf",
+                        "recommended project-management workbook":  "C:\\Users\\wesbr\\Buy Your Home\\Buy Your Home - Property\\28-SYH-320 Rose Pl\\30 Year Investment.xlsx",
+                        "recommended worksheet/vendor tab":  "Paint",
+                        "confidence/status":  "High Confidence - Ready for Invoice Entry duplicate check",
+                        "duplicate-risk notes":  "No same-date Sherwin-Williams PDF was found in the target Owning folder during this run; Invoice Entry still owns workbook duplicate checking.",
+                        "missing or uncertain fields":  [
+                                                            "Exact final workbook/row placement must be confirmed by Invoice Entry."
+                                                        ],
+                        "source details":  {
+                                               "account":  "7009-8768-8",
+                                               "po/project clue":  "PO# 320",
+                                               "order":  "OE0355086A702564",
+                                               "store":  "702564 Knightdale NC",
+                                               "terms/due clue":  "Net payment due June 20th",
+                                               "items":  [
+                                                             {
+                                                                 "description":  "Emerald UTE SA HHW custom white cabinet match; discount shown",
+                                                                 "quantity":  1,
+                                                                 "line/detail amount":  "Product 54.49; discount -13.62; subtotal before tax 40.87; tax 2.96; charge 43.83"
+                                                             }
+                                                         ]
+                                           }
+                    },
+                    {
+                        "project/property":  "27-HM- 7001 Outrigger Dr",
+                        "vendor name":  "Sherwin-Williams",
+                        "invoice date":  "2026-01-27",
+                        "invoice number":  "5830-5",
+                        "invoice amount":  38.48,
+                        "work category":  "Paint",
+                        "source scan path":  "C:\\Users\\wesbr\\Buy Your Home\\Buy Your Home - Office Admin\\Scanned Files\\Archived\\Account_700987688 (1).pdf",
+                        "filed invoice path in Teams/project folder":  "C:\\Users\\wesbr\\Buy Your Home\\Buy Your Home - Property\\27-HM- 7001 Outrigger Dr\\Owning\\26-01-27 - Sherwin-Williams - 5830-5.pdf",
+                        "recommended project-management workbook":  "C:\\Users\\wesbr\\Buy Your Home\\Buy Your Home - Property\\27-HM- 7001 Outrigger Dr\\30 Year Investment.xlsx",
+                        "recommended worksheet/vendor tab":  "Paint",
+                        "confidence/status":  "High Confidence - Duplicate Risk Review",
+                        "duplicate-risk notes":  "Target Owning folder already contained C:\\Users\\wesbr\\Buy Your Home\\Buy Your Home - Property\\27-HM- 7001 Outrigger Dr\\Owning\\26-01-27 Sherwin Williams.pdf before filing this scan. Filed with invoice number to avoid overwrite; Invoice Entry should verify whether invoice 5830-5 is already represented.",
+                        "missing or uncertain fields":  [
+                                                            "Exact final workbook/row placement and duplicate status must be confirmed by Invoice Entry."
+                                                        ],
+                        "source details":  {
+                                               "account":  "7009-8768-8",
+                                               "po/project clue":  "PO# OUTRIGGER HOUSE",
+                                               "store":  "702564 Knightdale NC",
+                                               "terms/due clue":  "Net payment due Feb. 20th",
+                                               "items":  [
+                                                             {
+                                                                 "description":  "1050QD SIL ACRY LAT, 11 oz",
+                                                                 "quantity":  1,
+                                                                 "line/detail amount":  "Product 35.88; tax 2.60; charge 38.48"
+                                                             }
+                                                         ]
+                                           }
+                    }
+                ]
+}

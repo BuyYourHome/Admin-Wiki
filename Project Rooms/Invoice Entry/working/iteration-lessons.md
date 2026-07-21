@@ -216,3 +216,13 @@ Lessons:
 - Keep imported Lowe's statement rows in a review status such as `Needs Review - Statement` even when `Destination Worksheet` contains a recommendation. Wes can change status to `Ready` or another approval status when the row should be posted.
 - Keep payment, interest, and other accounting-review rows out of project workbooks and retain them in the held-detail register with source traceability.
 - If Excel COM reports successful validation but times out during cleanup, independently read back the workbook, then terminate only the hidden automation Excel process created by the run.
+
+## 2026-07-21 - Sherwin-Williams Doc Scan Packet
+
+Context: Processed a Doc Scan packet for Sherwin-Williams invoices filed to 320 Rose and Outrigger.
+
+Lessons:
+
+- Treat packet-recommended workbook paths inside a property folder as routing clues, not final workbook authority. Active project-management workbooks must still be resolved from the Teams/SharePoint `Property` root before editing.
+- A same-invoice source duplicate can have a different PDF hash because of scan/export differences. Extract or compare invoice text before deciding whether two same-date PDFs are materially the same invoice.
+- When a vendor table lacks a dedicated invoice-number column, include the invoice number in the clean description or another existing trace field and record the full source path in the project-room processing log for future duplicate checks.
