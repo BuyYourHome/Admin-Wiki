@@ -36,9 +36,9 @@ Out of scope:
 
 ## Current Status
 
-Status: baseline inventoried; application classification pending.
+Status: baseline inventoried; Step 2 Core Group approved.
 
-WesStudio's non-secret hardware, Windows, Codex, repo, runtime, application, skill, plugin, and remote-access baseline was inventoried on 2026-07-21. See `outputs\WesStudio Baseline Inventory.md`. The next step is to classify which baseline components are required, optional, supplied by Codex or Windows, or separately approval-gated before target-computer installation.
+WesStudio's non-secret hardware, Windows, Codex, repo, runtime, application, skill, plugin, and remote-access baseline was inventoried on 2026-07-21. See `outputs\WesStudio Baseline Inventory.md`. Wes approved the Step 2 Core Group on 2026-07-21. Business applications, optional tools, and approval-gated remote/system components remain to be classified in `working\application-classification.md`.
 
 ## Remote Access And Install Safety
 
@@ -86,6 +86,6 @@ Before durable work, follow Start PR Mode in `C:\Codex\Wiki Files\Project Room C
 
 ## Next Actions
 
-1. Review and approve the Step 2 application classification.
+1. Review and approve the remaining Step 2 business, optional, and approval-gated groups.
 2. Convert the approved application list into a target-computer setup checklist and verification report template.
 3. Confirm the first target computer, remote access path, and which apps may be installed.
