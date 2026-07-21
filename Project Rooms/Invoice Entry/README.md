@@ -114,11 +114,11 @@ Completion:
 
 ## Time Card
 
-Use Time Card only when Email Monitor sends a direct handoff message to Invoice Entry for an email with subject containing `Time Card`.
+Use Time Card only when Email Monitor sends a direct handoff message to Invoice Entry for an email with subject or body wording that resembles `Time Card`, `time sheet`, `timesheet`, or similar time-reporting language.
 
 Trigger:
 
-- Email Monitor detects and routes the Time Card email.
+- Email Monitor detects and routes the Time Card or timesheet email.
 - The routed source email is preserved under `Project Rooms\Invoice Entry\sources\email\`.
 - The handoff includes the routed source path, sender, received time, subject, attachment paths or attachment blockers, and any project/vendor/person clues.
 - Invoice Entry must not scan inboxes, search for Time Card emails, or start this workflow from raw mailbox access on its own.
@@ -130,8 +130,11 @@ Weekly accumulation:
 - When another Time Card email arrives for the same worker/vendor/week, add its new time lines to the existing weekly invoice source record rather than creating a separate invoice.
 - Call Create Vendor Invoice to create or regenerate the weekly invoice document from the accumulated Time Card source lines after each new Time Card handoff.
 - Time Card owns accumulation, project/time splitting, known-rate application, and spreadsheet/Teams placement; Create Vendor Invoice owns the formal invoice document generation using the established polished invoice template.
-- When the Friday `Time Card` email for a worker/vendor arrives, send the generated weekly invoice PDF back to that email sender for accuracy verification using the Create Vendor Invoice verification email rules. Copy `WesWill@BuyYourHomeLLC.com` and `Jenny@BuyYourHomeLLC.com`, sign as `Jean Wright`, and preserve the sent email and verification response as source evidence.
+- Every time a Time Card email is processed, amend the current weekly project/BackOffice invoice drafts and email the amended invoice PDFs back to the sender for accuracy verification using the Create Vendor Invoice verification email rules. Copy `WesWill@BuyYourHomeLLC.com` and `Jenny@BuyYourHomeLLC.com`, sign as `Jean Wright`, and preserve the sent email and verification response as source evidence.
+- Treat the Friday or otherwise final end-of-week Time Card email as the point when the verified weekly invoices may be copied to Teams/project folders, subject to the rest of the filing and validation rules.
 - Preserve every routed Time Card email as source evidence and retain traceability from each invoice line back to the source email.
+- If the source does not state the worked date, use the email received date as the worked date and record that assumption in the packet.
+- The worker/vendor does not need to supply an invoice number for Time Card. Invoice Entry creates the invoice number using the standard Time Card invoice numbering and file naming pattern.
 
 Known Time Card rates:
 
@@ -141,6 +144,7 @@ Known Time Card rates:
 Project handling:
 
 - Split the weekly time by project when the Time Card source identifies multiple projects.
+- Create one invoice per project and one separate invoice for BackOffice time when BackOffice time is present.
 - Insert each project's time into that project's correct project-management spreadsheet under existing Invoice Entry insertion rules.
 - Do not put all time into one project unless the source clearly applies only to that project.
 - If project, date, worker/vendor, hours, rate, or destination worksheet is unclear, hold the affected line for review rather than guessing.
@@ -149,16 +153,16 @@ Project handling:
 
 Teams filing:
 
-- Save a copy of the current weekly invoice PDF in each affected Teams project `Invoices` folder.
-- If a weekly invoice file already exists for the same worker/vendor/week/project, replace that Teams file with the updated invoice copy.
+- Do not copy Time Card invoice PDFs to Teams/project folders until the final email for the end of the week has been received and processed.
+- After the final end-of-week Time Card email is processed, save a copy of the current weekly invoice PDF in each affected Teams project `Invoices` folder.
+- If a weekly invoice file already exists for the same worker/vendor/week/project after final processing, replace that Teams file with the updated invoice copy.
 - Use a stable weekly filename so updates overwrite the same file instead of creating duplicates.
 - Standard file naming pattern: `YY-MM-DD - <Worker or Vendor> - Time Card - Week Ending YYYY-MM-DD.pdf`, where the leading `YY-MM-DD` is the week-ending date.
 
 Safety limits:
 
 - Do not approve or pay the invoice.
-- Do not contact the worker/vendor merely because a non-Friday Time Card email arrived unless another approved Invoice Entry workflow separately authorizes that contact.
-- Do not send a Friday Time Card verification email if the sender identity is unclear, the generated invoice cannot be verified visually, or the message would imply approval, payment, or acceptance of the invoice.
+- Do not send a Time Card verification email if the sender identity is unclear, the generated invoice cannot be verified visually, or the message would imply approval, payment, or acceptance of the invoice.
 - Do not create workbook entries without enough project, date, hours, rate, and source traceability.
 - Preserve unresolved lines in the project room and report what Wes must review.
 

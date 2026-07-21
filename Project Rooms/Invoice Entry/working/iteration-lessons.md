@@ -8,9 +8,13 @@ Context: Email Monitor routed a Josh Kennedy `Timesheet` email to Invoice Entry 
 
 Lessons:
 
-- Do not silently treat a routed `Timesheet` subject as Time Card. Process it under Create Vendor Invoice only when required invoice fields are supported.
-- A known worker rate in Invoice Entry rules does not override a handoff instruction that says not to infer rate, amount, project allocation, or approval beyond the routed source. Hold the packet and ask Wes to confirm the application of the known rate when the handoff adds that constraint.
-- For free-text labor routed as invoice source, capture held fields explicitly: worked date, rate/amount authority, project allocation, destination worksheet, and whether vendor verification is authorized.
+- Wes expanded Time Card so `Timesheet`, `time sheet`, and similar wording are Time Card-relevant when Email Monitor routes the source.
+- If the source omits the worked date, use the email received date and record the assumption in the packet.
+- Invoice Entry creates the Time Card invoice number; do not require the worker/vendor to provide one.
+- For Josh Kennedy, use the established `$31.25/hour` rate unless the source conflicts with it.
+- Split Time Card drafts into one invoice per project and one invoice for BackOffice when both are present.
+- Do not copy Time Card invoices to Teams until the final end-of-week email is received and processed.
+- After every Time Card email, amend the current weekly invoice drafts and email them to the sender for verification with Wes and Jenny copied.
 
 ## 2026-07-08 - Outrigger Table Layout Rollout Attempt
 

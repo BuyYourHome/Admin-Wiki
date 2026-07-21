@@ -1,44 +1,47 @@
-# Create Vendor Invoice Packet - Josh Kennedy Timesheet
+# Time Card Packet - Josh Kennedy Timesheet
 
 ## Packet Status
 
-- Status: `Held - missing invoice fields and placement`
-- Workflow: `Create Vendor Invoice`
+- Status: `Draft invoices created - verification email sent - Teams filing and spreadsheet posting held`
+- Workflow: `Time Card`, calling `Create Vendor Invoice` for invoice document creation
 - Created: 2026-07-20
-- Source type: Routed free-text contractor/project-cost email; no invoice attachment.
-- Processing rule: Do not create a final invoice, send a verification email, file to Teams, or insert into a workbook until the held fields below are resolved.
-
-## Required Fields
-
-| Field | Value |
-| --- | --- |
-| `project_property` | `24-HM - 4121 Tensity Dr` is a likely project clue from the source text, but allocation is not final. |
-| `vendor_name` | `Josh Kennedy` |
-| `vendor_email` | `IRAManager@SellYourHomeRaleigh.com` |
-| `invoice_date` | Missing; source email received `2026-07-20T20:43:07Z`, but the worked date is not stated in the body. |
-| `invoice_number` | Not provided |
-| `invoice_amount` | Missing; the source reports time but does not state rate or total amount. |
-| `work_category` | `Needs Review - labor / onboarding / project management` |
-| `source_email_sender` | `Josh Kennedy <IRAManager@SellYourHomeRaleigh.com>` |
-| `source_email_subject` | `Timesheet` |
-| `source_email_received_at` | `2026-07-20T20:43:07Z` |
-| `source_email_id_or_link` | `AQMkADZkMGMwNDI3LWU5ZjctNDgzMC1iMjdkLTY0NmRiN2IwNmIyZgBGAAADKGOvWJYjX0aEKaRpd0MYQQcAVSXargQY20aF7RLCkro4ggAAAgEMAAAAVSXargQY20aF7RLCkro4ggACecWiBgAAAA==` / https://outlook.office365.com/owa/?ItemID=AQMkADZkMGMwNDI3LWU5ZjctNDgzMC1iMjdkLTY0NmRiN2IwNmIyZgBGAAADKGOvWJYjX0aEKaRpd0MYQQcAVSXargQY20aF7RLCkro4ggAAAgEMAAAAVSXargQY20aF7RLCkro4ggACecWiBgAAAA%3D%3D&exvsurl=1&viewmodel=ReadMessageItem |
-| `saved_invoice_file_path` | Not created or filed |
-| `recommended_workbook` | `Property/24_Project Management - 4121 Tensity Dr 2.xlsm` is the likely workbook if Wes confirms the project allocation. |
-| `recommended_worksheet` | `Needs Review` |
-| `confidence_status` | `Missing Data - held before invoice creation and insertion` |
-| `notes` | Source supports sender, total elapsed time of 6 hours 45 minutes, and a 4121 Tensity Dr project clue. Source does not state work date, invoice number, rate, amount, final project allocation, or destination worksheet. The direct handoff also instructed Invoice Entry not to infer hourly rate, amount, project allocation, or approval beyond the source. |
+- Source type: Routed free-text timesheet email; no invoice attachment.
+- Processing rule: Treat `Timesheet` as Time Card-relevant under Wes's 2026-07-20 rule update. Email amended invoice drafts to the sender after each Time Card email, with Wes and Jenny copied. Do not copy invoices to Teams until the final end-of-week email is received.
 
 ## Source Details
 
 - Routed source: `C:\Codex\Wiki Files\Project Rooms\Invoice Entry\sources\email\2026-07-20-204307-josh-kennedy-timesheet.md`
-- Has attachments: no
-- Body reports:
-  - `10A.M to 4:45P.M.`
-  - back-office onboarding, account setup, rules and procedures,
-  - `10A.M. to 2P.M. 4121 Tensity Dr`,
-  - `2P.M. to 4:45 P.M.` property walkthrough and review of planned changes/responsibilities.
-- Calculated elapsed time from the stated span: 6 hours 45 minutes.
+- Sender: `Josh Kennedy <IRAManager@SellYourHomeRaleigh.com>`
+- Subject: `Timesheet`
+- Received: `2026-07-20T20:43:07Z` / `2026-07-20 4:43:07 PM Eastern`
+- Attachments: none
+- Outlook message id: `AQMkADZkMGMwNDI3LWU5ZjctNDgzMC1iMjdkLTY0NmRiN2IwNmIyZgBGAAADKGOvWJYjX0aEKaRpd0MYQQcAVSXargQY20aF7RLCkro4ggAAAgEMAAAAVSXargQY20aF7RLCkro4ggACecWiBgAAAA==`
+- Outlook web link: https://outlook.office365.com/owa/?ItemID=AQMkADZkMGMwNDI3LWU5ZjctNDgzMC1iMjdkLTY0NmRiN2IwNmIyZgBGAAADKGOvWJYjX0aEKaRpd0MYQQcAVSXargQY20aF7RLCkro4ggAAAgEMAAAAVSXargQY20aF7RLCkro4ggACecWiBgAAAA%3D%3D&exvsurl=1&viewmodel=ReadMessageItem
+
+## Time Card Assumptions Applied
+
+- Work date: `2026-07-20`, inferred from the email received date because the body did not state a separate work date.
+- Worker/vendor: `Josh Kennedy`.
+- Hourly rate: `$31.25/hour`, from the established Invoice Entry Time Card rule for Josh.
+- Invoice numbers: created by Invoice Entry because the sender did not provide invoice numbers.
+- Week ending date: `2026-07-24`.
+- Split rule: create one invoice per project and one separate invoice for BackOffice when BackOffice time is present.
+
+## Parsed Lines
+
+| Invoice # | Project / bucket | Work date | Description | Hours | Rate | Amount | Status |
+| --- | --- | --- | --- | ---: | ---: | ---: | --- |
+| `TC-JK-20260724-BACKOFFICE-001` | `BackOffice` | `2026-07-20` | Back-office onboarding, account setup, and rules/procedures review. | 4.00 | `$31.25` | `$125.00` | Draft invoice created; spreadsheet posting not applicable until BackOffice accounting path is approved. |
+| `TC-JK-20260724-TENSITY-001` | `24-HM - 4121 Tensity Dr` | `2026-07-20` | 4121 Tensity Dr property walkthrough and review of planned changes/responsibilities. | 2.75 | `$31.25` | `$85.94` | Draft invoice created; workbook insertion held for destination worksheet/expense placement. |
+
+Total parsed time: 6.75 hours. Total draft amount: `$210.94`.
+
+## Generated Drafts
+
+| Draft | Path |
+| --- | --- |
+| BackOffice invoice PDF | `C:\Codex\Wiki Files\Project Rooms\Invoice Entry\working\create-vendor-invoice\2026-07-20-josh-kennedy-timesheet\26-07-24 - Josh Kennedy - Time Card - BackOffice - Week Ending 2026-07-24.pdf` |
+| Tensity invoice PDF | `C:\Codex\Wiki Files\Project Rooms\Invoice Entry\working\create-vendor-invoice\2026-07-20-josh-kennedy-timesheet\26-07-24 - Josh Kennedy - Time Card - 4121 Tensity Dr - Week Ending 2026-07-24.pdf` |
 
 ## Duplicate Check
 
@@ -48,19 +51,14 @@ Preliminary project-room duplicate search found no prior Josh Kennedy packet or 
 - `working\source-inventory.md`,
 - this packet.
 
-No workbook duplicate check was performed because the packet is held before workbook insertion.
+No workbook duplicate check was performed because destination worksheet/expense placement is not approved.
 
 ## Processing Decision
 
-Do not create a final invoice, send it to Josh for verification, file it to Teams, or insert it into the Tensity workbook yet.
-
-Reasons:
-
-- source subject is `Timesheet`, not the currently supported `Time Card` trigger,
-- worked date is not stated,
-- rate and total amount are not in the source and the handoff explicitly says not to infer them,
-- the Tensity project clue is present but the final allocation is not confirmed,
-- destination worksheet/expense area is not confirmed,
-- no invoice number was provided.
-
-Next action: Wes should confirm whether this source should be handled as Time Card despite the `Timesheet` subject, confirm the worked date, confirm whether the known Josh rate may be applied to this item, confirm project allocation to Tensity, and identify the destination worksheet or approved placement path.
+- Draft invoices were generated from the Time Card source by calling the Create Vendor Invoice document pattern.
+- Draft invoices were emailed to Josh Kennedy for accuracy verification with Wes and Jenny copied.
+- No invoice was filed into a Teams project folder because this was not identified as the final end-of-week Time Card email.
+- No workbook was edited.
+- Tensity workbook candidate: `Property/24_Project Management - 4121 Tensity Dr 2.xlsm`.
+- Tensity spreadsheet insertion remains held until Wes confirms the destination worksheet or approved placement path.
+- BackOffice accounting/spreadsheet path remains held until Wes confirms where BackOffice Time Card invoices should be recorded.
