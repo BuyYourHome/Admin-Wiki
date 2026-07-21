@@ -1,10 +1,10 @@
 # Application Classification Decisions
 
-Status: Step 2 in progress.
+Status: Step 2 complete.
 
 ## Approval Scope
 
-Wes approved the Core, Business, and Optional Groups on 2026-07-21 for the standard Codex/Admin wiki target baseline.
+Wes approved the Core, Business, Optional, and Safety Groups on 2026-07-21 for the standard Codex/Admin wiki target baseline.
 
 This approval classifies the items below as standard requirements. It does not authorize connecting to a target computer, purchasing or activating paid software, starting a paid trial, changing security settings, or installing anything on a specific target. Those actions remain subject to the target-specific authorization and safety rules.
 
@@ -46,6 +46,19 @@ This approval classifies the items below as standard requirements. It does not a
 | Microsoft Edge | supplied by Windows | No separate installation is required. |
 | Global Python, Node.js, and npm | do not install for routine Codex work | Use the Codex bundled workspace runtime unless an approved non-Codex application has a separate requirement. |
 
-## Pending Groups
+## Approved Safety Group
 
-- Approval-gated remote and system items: Quick Assist, Remote Desktop hosting, VPNs, remote-control tools, browser extensions, credential managers, system-level agents, and security-setting changes.
+| Component or action | Classification | Requirement |
+| --- | --- | --- |
+| Quick Assist | target- and session-specific approval required | Use only for a specifically authorized computer and session, with the authorized user initiating or supervising access. |
+| Windows Remote Desktop | target- and session-specific approval required | Use only for a specifically authorized computer and session over a LAN, VPN, or another approved private path. Never expose Remote Desktop directly to the public internet. |
+| Remote Desktop hosting and firewall changes | exact approval required | Confirm a supported Windows host edition. Obtain target-specific approval before enabling Remote Desktop or changing its firewall rule. |
+| Other remote-control tools and VPNs | do not install by default | Install only after Wes approves the exact product, target computer, and setup session. |
+| Browser extensions | do not install by default | Install only after Wes approves the exact extension and target computer. |
+| Credential managers and system-level agents | do not install by default | Install only after Wes approves the exact item and target computer. |
+| Antivirus, firewall, BitLocker, endpoint protection, and Windows security | preserve by default | Do not disable, weaken, or reconfigure these protections without Wes's exact approval for the target and change. |
+| Passwords, MFA codes, license keys, tokens, and recovery codes | user-entered secrets | Wes or the authorized user must enter them directly. Do not store them in the wiki, project room, scripts, git history, or handoff notes. |
+
+## Step 2 Completion
+
+The standard application and safety classification is complete. Every target setup still requires confirmation of the specific computer, authorized user, remote-access method, existing licenses, approved installs, and any exact approval-gated items before changes begin.
