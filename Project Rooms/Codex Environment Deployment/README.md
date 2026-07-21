@@ -36,9 +36,9 @@ Out of scope:
 
 ## Current Status
 
-Status: Steps 1-4 complete; `Wes-VideoEditor` is authorized and awaiting Step 5 connection and initial inspection.
+Status: Steps 1-5 complete; `Wes-VideoEditor` is inventoried but not ready for installation because `C:` has only 4.8 GB free.
 
-WesStudio's non-secret hardware, Windows, Codex, repo, runtime, application, skill, plugin, and remote-access baseline was inventoried on 2026-07-21. Wes approved the Step 2 Core, Business, Optional, and Safety Groups on 2026-07-21. Step 3 converted those decisions into `outputs\Target Computer Setup Checklist.md` and `outputs\Target Computer Verification Report Template.md`. Step 4 confirmed `Wes-VideoEditor`, the authorized user, private-LAN Remote Desktop access, local administrator rights, the existing Microsoft 365 license, and the exact required-item scope in `working\wes-videoeditor-authorized-setup-scope.md`.
+WesStudio's non-secret hardware, Windows, Codex, repo, runtime, application, skill, plugin, and remote-access baseline was inventoried on 2026-07-21. Wes approved the Step 2 Core, Business, Optional, and Safety Groups on 2026-07-21. Step 3 created the setup/verification package, and Step 4 authorized the exact `Wes-VideoEditor` scope. Step 5 connected over the private LAN, verified the session identity, and completed a read-only inventory in `outputs\Wes-VideoEditor Initial Inventory.md`. No target changes were made. Installation is blocked pending storage analysis and an approved exact cleanup or expansion action.
 
 ## Remote Access And Install Safety
 
@@ -86,5 +86,6 @@ Before durable work, follow Start PR Mode in `C:\Codex\Wiki Files\Project Room C
 
 ## Next Actions
 
-1. Start Step 5 to connect to `Wes-VideoEditor` by the authorized private-LAN Remote Desktop path and confirm the session identity.
-2. Perform the checklist's read-only initial target inventory before installing or changing anything.
+1. Perform a read-only storage-use analysis on `Wes-VideoEditor`.
+2. Ask Wes to approve exact cleanup or storage-expansion actions before making space.
+3. Recheck free space before installing any missing required component.
