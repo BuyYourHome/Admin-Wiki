@@ -3,7 +3,7 @@
 | Source | Type | Status | Notes |
 | --- | --- | --- | --- |
 | Wes instruction to create Codex environment deployment PR | User instruction | authoritative | Creates a Project Room whose job is to remote into other authorized computers and install apps needed to replicate the Codex environment from WesStudio. |
-| WesStudio baseline inventory | Local machine inspection | missing | Needed before target-computer setup can be standardized. |
+| `outputs/WesStudio Baseline Inventory.md` | Local machine inspection | authoritative | Non-secret WesStudio hardware, Windows, Codex, repo, runtime, application, skill, plugin, and remote-access baseline recorded on 2026-07-21. |
 | `Project Room Workflow.md` | Wiki rule | authoritative | Defines required Project Room structure and workflow. |
 | `Project Room Chat Startup Rule.md` | Wiki rule | authoritative | Defines Start PR and chat startup requirements. |
 | `Project Room File Ownership And Git Coordination Rule.md` | Wiki rule | authoritative | Defines file ownership, commit scope, and push safety. |

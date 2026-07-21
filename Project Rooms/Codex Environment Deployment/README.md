@@ -36,9 +36,9 @@ Out of scope:
 
 ## Current Status
 
-Status: draft.
+Status: baseline inventoried; application classification pending.
 
-Wes requested a Project Room whose job is to remote into other computers and install all apps needed to replicate the Codex environment from WesStudio. The baseline still needs to be inventoried from WesStudio before target-computer runs can be standardized.
+WesStudio's non-secret hardware, Windows, Codex, repo, runtime, application, skill, plugin, and remote-access baseline was inventoried on 2026-07-21. See `outputs\WesStudio Baseline Inventory.md`. The next step is to classify which baseline components are required, optional, supplied by Codex or Windows, or separately approval-gated before target-computer installation.
 
 ## Remote Access And Install Safety
 
@@ -86,6 +86,6 @@ Before durable work, follow Start PR Mode in `C:\Codex\Wiki Files\Project Room C
 
 ## Next Actions
 
-1. Build the WesStudio baseline inventory.
-2. Create a target-computer setup checklist and verification report template.
+1. Review and approve the Step 2 application classification.
+2. Convert the approved application list into a target-computer setup checklist and verification report template.
 3. Confirm the first target computer, remote access path, and which apps may be installed.
