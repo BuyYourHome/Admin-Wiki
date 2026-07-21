@@ -19,6 +19,7 @@ This is the starting page for the Buy Your Home admin wiki.
 - [[Project Rooms/LD Evans/README|LD Evans Project Room]]
 - [[Project Rooms/Jennys Drawings/README|Jennys Drawings Project Room]]
 - [[Project Rooms/Lowes Order/README|Lowes Order Project Room]]
+- [[Project Rooms/Manager/README|Manager Project Room]]
 - [[Connector and Plugin Usage Rules]]
 - [[Project Rooms/SOPs/README|SOPs Project Room]]
 - [[Project Rooms/Email Monitor/README|Email Monitor Project Room]]

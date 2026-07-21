@@ -24,6 +24,7 @@ Use [[Agent Unit Standard]] for the standard package behind an agent-like operat
 | LD Evans | Wiki-managed skill plus project room plus dedicated chat | Draft | On demand | `skills\ld-evans\SKILL.md`; `Project Rooms\LD Evans\README.md` |
 | Jennys Drawings | Wiki-managed skill plus project room plus dedicated chat | Draft | On demand | `skills\jennys-drawings\SKILL.md`; `Project Rooms\Jennys Drawings\README.md` |
 | Lowes Order | Wiki-managed skill plus project room plus dedicated chat | Draft | On demand | `skills\lowes-order\SKILL.md`; `Project Rooms\Lowes Order\README.md` |
+| Manager | Wiki-managed skill plus project room plus dedicated chat | Draft | On demand | `skills\manager\SKILL.md`; `Project Rooms\Manager\README.md` |
 | SOPs | Wiki-managed skill plus project room | Active | On demand | `skills\sops\SKILL.md`; `Project Rooms\SOPs\README.md`; `Project Rooms\SOPs\outputs\SOP Index.md` |
 | Credit Worthiness Evaluator | Wiki-managed skill plus project room | Active | On demand | `skills\credit-worthiness-evaluator\SKILL.md`; `Project Rooms\Credit Worthiness Evaluator\README.md` |
 | Contract for Deed | Wiki-managed skill plus project room | Active | On demand | `skills\contract-for-deed\SKILL.md`; `Project Rooms\Contract for Deed\README.md` |
@@ -586,6 +587,36 @@ Important rules:
 - Do not place purchases, spend money, submit orders, change payment details, or approve substitutions unless Wes explicitly approves the specific order action.
 - Filling the cart is allowed from authoritative email instructions; checkout and payment remain approval-gated.
 - Use the Project Room source inventory before drafting review-ready order outputs.
+- Do not create Teams folders or automations unless Wes explicitly asks.
+
+## Manager
+
+Type: wiki-managed skill plus project room plus dedicated chat.
+
+Status: draft.
+
+Purpose:
+
+- Hold Manager source material, missing details, review questions, and outputs.
+- Define the recurring Manager workflow once Wes provides the controlling purpose, source locations, triggers, and expected outputs.
+- Prepare review-ready drafts, summaries, checklists, or handoffs from authoritative source material.
+
+Defined in:
+
+- `C:\Codex\Wiki Files\skills\manager\SKILL.md`
+- `C:\Codex\Wiki Files\Project Rooms\Manager\README.md`
+
+Dedicated chat:
+
+- Chat name: `Manager`
+- Thread id: `pending until the dedicated chat is created`
+
+Important rules:
+
+- Work on `main` unless Wes explicitly asks for a branch.
+- Do not edit another Project Room's files or matching skill unless Wes explicitly authorizes that specific cross-PR edit.
+- Use the Project Room source inventory before drafting review-ready outputs.
+- Do not send email, external messages, make purchases, change legal/financial documents, or perform live operational actions unless Wes explicitly authorizes the specific action.
 - Do not create Teams folders or automations unless Wes explicitly asks.
 
 ## Credit Worthiness Evaluator
