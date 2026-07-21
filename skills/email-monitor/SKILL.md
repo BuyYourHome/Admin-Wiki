@@ -40,9 +40,9 @@ Before using this skill, have:
 
 ## Modes
 
-### Daily Email Summary
+### Email Summary
 
-Use Daily Email Summary for the once-daily Boss and Jenny Outlook mailbox summaries.
+Use Email Summary for the once-daily Boss and Jenny Outlook mailbox summaries.
 
 This mode owns mailbox scanning, cutoff selection, priority selection, summary drafting, usage-summary inclusion, attachment decision, and summary-run state updates for:
 

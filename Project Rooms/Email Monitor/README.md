@@ -33,7 +33,7 @@ This project room holds development notes, source inventory, and review artifact
 
 ## Modes
 
-### Daily Email Summary
+### Email Summary
 
 Use this mode for the once-daily Boss and Jenny Outlook mailbox summaries.
 
@@ -85,10 +85,11 @@ When the workflow changes, update the skill, this project room, and the registry
 
 ## Change Log
 
+- 2026-07-20: Renamed Daily Email Summary to Email Summary without changing its existing Wes/Jenny mailbox-summary behavior.
 - 2026-07-20: Defined Email Delivery as an Email Monitor project-room mode connected directly to the shared `email-delivery` skill and added the Outlook shared-mailbox send, attachment retry, Sent Items verification, and delivery-log contract.
 - 2026-07-16: Renamed the project room, chat, and skill from `Email Summary` / `email-summary` to `Email Monitor` / `email-monitor`; the live automation id remains `officeassist-morning-email-summary-and-instruction-monitor`.
 - 2026-07-16: Defined Brynda Suit Email Routing for routed-source preservation and direct handoff to the existing Brynda Suit task.
-- 2026-07-15: Defined Daily Email Summary for Boss and Jenny mailbox summaries, including mailbox scan, cutoff, summary drafting, OfficeAssist delivery handoff, Sent Items verification, and state update boundaries.
+- 2026-07-15: Defined the mode now named Email Summary for Boss and Jenny mailbox summaries, including mailbox scan, cutoff, summary drafting, OfficeAssist delivery handoff, Sent Items verification, and state update boundaries.
 - 2026-07-15: Defined Gracious Millionaire Email Routing and moved the existing Gracious Millionaire routed-email handoff behavior under that mode in the Email Monitor skill.
 - 2026-07-02: Wes changed Jenny's daily summary routing so the summary is emailed to `Jenny@BuyYourHomeLLC.com` from OfficeAssist with Sent Items verification.
 - 2026-06-29: Resumed Jenny's daily email summary after Wes explicitly requested it and the Outlook Email connector verified access to `Jenny@BuyYourHomeLLC.com`.
