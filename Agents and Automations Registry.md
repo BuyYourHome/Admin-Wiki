@@ -610,7 +610,7 @@ Defined in:
 Dedicated chat:
 
 - Chat name: `Manager`
-- Thread id: `pending until the dedicated chat is created`
+- Thread id: `019f8274-5b7e-7170-a051-f7944954de82`
 
 Important rules:
 
