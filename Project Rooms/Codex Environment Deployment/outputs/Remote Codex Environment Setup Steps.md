@@ -2,6 +2,8 @@
 
 Generated: 2026-07-21
 
+Status: superseded by `Target Computer Setup Checklist.md` and `Target Computer Verification Report Template.md` after Wes approved the Step 2 classification. Preserve this file as the initial planning draft.
+
 ## Purpose
 
 Use this checklist when Wes authorizes Codex to remote into another Windows computer and install the apps, repo, skills, and account prerequisites needed to replicate the WesStudio Codex/Admin wiki environment.
