@@ -25,6 +25,7 @@ Use [[Agent Unit Standard]] for the standard package behind an agent-like operat
 | Jennys Drawings | Wiki-managed skill plus project room plus dedicated chat | Draft | On demand | `skills\jennys-drawings\SKILL.md`; `Project Rooms\Jennys Drawings\README.md` |
 | Lowes Order | Wiki-managed skill plus project room plus dedicated chat | Draft | On demand | `skills\lowes-order\SKILL.md`; `Project Rooms\Lowes Order\README.md` |
 | Manager | Wiki-managed skill plus project room plus dedicated chat | Draft | On demand | `skills\manager\SKILL.md`; `Project Rooms\Manager\README.md` |
+| Codex Environment Deployment | Wiki-managed skill plus project room plus dedicated chat | Draft | On demand | `skills\codex-environment-deployment\SKILL.md`; `Project Rooms\Codex Environment Deployment\README.md` |
 | SOPs | Wiki-managed skill plus project room | Active | On demand | `skills\sops\SKILL.md`; `Project Rooms\SOPs\README.md`; `Project Rooms\SOPs\outputs\SOP Index.md` |
 | Credit Worthiness Evaluator | Wiki-managed skill plus project room | Active | On demand | `skills\credit-worthiness-evaluator\SKILL.md`; `Project Rooms\Credit Worthiness Evaluator\README.md` |
 | Contract for Deed | Wiki-managed skill plus project room | Active | On demand | `skills\contract-for-deed\SKILL.md`; `Project Rooms\Contract for Deed\README.md` |
@@ -624,6 +625,38 @@ Important rules:
 - Use the Admin wiki Email Delivery workflow used by Email Monitor for any authorized Manager email send.
 - Do not send email, external messages, make purchases, change legal/financial documents, or perform live operational actions unless Wes explicitly authorizes the specific action.
 - Do not create Teams folders or automations unless Wes explicitly asks.
+
+## Codex Environment Deployment
+
+Type: wiki-managed skill plus project room plus dedicated chat.
+
+Status: draft.
+
+Purpose:
+
+- Inventory the WesStudio Codex/Admin wiki working environment as the baseline.
+- Remote into other computers only when Wes authorizes the specific target computer and setup session.
+- Install and configure approved apps, runtimes, repository paths, Codex skills, connectors, and verification checks needed to replicate the WesStudio Codex environment.
+- Preserve target-computer setup notes, missing prerequisites, blockers, and verification results.
+
+Defined in:
+
+- `C:\Codex\Wiki Files\skills\codex-environment-deployment\SKILL.md`
+- `C:\Codex\Wiki Files\Project Rooms\Codex Environment Deployment\README.md`
+
+Dedicated chat:
+
+- Chat name: `Codex Environment Deployment`
+- Thread id: `pending until the dedicated chat is created`
+
+Important rules:
+
+- Work on `main` unless Wes explicitly asks for a branch.
+- Do not remote into any computer unless Wes authorizes that target computer and setup session.
+- Do not store passwords, tokens, recovery codes, license keys, or live secrets in the wiki, Project Room, skill, git history, scripts, or chat handoff notes.
+- Do not install paid apps, remote-control tools, VPNs, credential managers, browser extensions, system-level agents, or make security-setting changes unless Wes explicitly approves the exact item.
+- Use `C:\Codex\Wiki Files` as the Admin wiki working repo path on target computers; do not treat Teams-synced wiki folders as the working repo.
+- Use the Project Room target-computer register and verification outputs before marking a computer ready.
 
 ## Credit Worthiness Evaluator
 

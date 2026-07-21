@@ -1,0 +1,3 @@
+display_name: Codex Environment Deployment
+short_description: Replicate the WesStudio Codex/Admin wiki environment on authorized computers.
+default_prompt: Work from the Codex Environment Deployment Project Room to inventory WesStudio, prepare authorized target computers, install approved apps, configure the Admin wiki/Codex environment, and verify readiness while following remote-access safety and Project Room Git rules.
