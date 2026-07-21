@@ -28,6 +28,7 @@ Out of scope:
 - `working\source-inventory.md` - inventory of source material and authority status.
 - `working\duplicate-and-conflict-log.md` - duplicate, outdated, conflicting, or unclear source notes.
 - `working\missing-context.md` - facts, decisions, or source material still needed.
+- `working\task-register.md` - durable Task mode register with task ids, priorities, statuses, and delivery records.
 - `outputs\` - review-ready drafts, summaries, handoffs, or final deliverables.
 
 ## Current Status
@@ -35,6 +36,22 @@ Out of scope:
 Status: active draft.
 
 The room has been created as a standard Project Room shell. Wes has provided initial Manager attributes for Josh Kennedy. The controlling MoU source still needs to be retrieved from the Sell Your Home channel before contract-specific details are treated as source-verified.
+
+## Modes
+
+### Task
+
+Use Task mode to keep the status of tasks added by any user and, when delivery is requested, deliver the task and its priority to the Manager.
+
+- Record every accepted task in `working\task-register.md` with a stable task id, requester, task, priority, status, dates, and delivery details.
+- Use priorities `Critical`, `High`, `Normal`, and `Low`. Default to `Normal` when no priority is supplied.
+- Use statuses `New`, `Delivered`, `Acknowledged`, `In Progress`, `Waiting`, `Completed`, and `Cancelled`.
+- A task request does not by itself authorize purchases, payments, legal or financial changes, deletion, external communications beyond the authorized Manager delivery, or work owned by another Project Room.
+- When delivery is requested, send the task to Josh Kennedy at `IRAManager@SellYourHomeRaleigh.com` with the task id and priority in the subject. Use the Email Delivery workflow, normally send from `OfficeAssist@BuyYourHomeLLC.com`, and copy `WesWill@BuyYourHomeLLC.com` unless Wes explicitly says not to copy himself for that message.
+- Mark a task `Delivered` only after the sent copy is verified in the approved sender mailbox's Sent Items. Record the sent message id and timestamp when available. A failed or unverified delivery must remain visible in the register and be reported to Wes.
+- Josh may update a task by replying from `IRAManager@SellYourHomeRaleigh.com` with the task id and a status. Preserve the email or a source note, update the register, and record the update time and source reference.
+- Do not treat an email from another sender as a Manager status update without confirmation.
+- Email updates are processed when the message is provided or routed to the Manager Project Room. Continuous mailbox monitoring requires a separately authorized automation.
 
 ## Manager Attributes
 
@@ -80,4 +97,4 @@ Before durable work, follow Start PR Mode in `C:\Codex\Wiki Files\Project Room C
 
 1. Retrieve or preserve the MoU from the Sell Your Home channel as a controlling source.
 2. Confirm the exact legal name behind "Investment Services" when legal-document signature wording matters.
-3. Decide whether Manager needs a dedicated chat, automation, or only an on-demand Project Room.
+3. Decide whether Task mode should remain on-demand or receive a separately authorized mailbox-monitoring automation.

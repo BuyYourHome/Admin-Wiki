@@ -1,6 +1,6 @@
 ---
 name: manager
-description: Use for Buy Your Home Manager project-room work, including defining scope, organizing sources, tracking missing context, drafting review-ready outputs, and maintaining materials under `Project Rooms\Manager`.
+description: Use for Buy Your Home Manager project-room work, including Task mode, source organization, status tracking, review-ready outputs, and maintaining materials under `Project Rooms\Manager`.
 ---
 
 # Manager
@@ -26,6 +26,42 @@ User-reported facts from Wes:
 - A MoU in the Sell Your Home channel gives the specifics of Josh's contract.
 
 Treat the MoU as the controlling source for contract-specific details after it is retrieved or preserved in the Project Room.
+
+## Modes
+
+### Task Mode
+
+Use Task mode when any user adds a task for the Manager, asks for the task list or a task status, requests delivery of a task to the Manager, or provides a Manager status-update email.
+
+Task register: `C:\Codex\Wiki Files\Project Rooms\Manager\working\task-register.md`
+
+#### Add A Task
+
+1. Assign a stable id in the form `MGR-YYYYMMDD-NNN`, using the next available sequence for that date.
+2. Record the requester, received date and time, task description, priority, status, due date when supplied, and source reference when available.
+3. Use priorities `Critical`, `High`, `Normal`, and `Low`; default to `Normal` when the requester does not specify one.
+4. Set the initial status to `New`.
+5. Record the task even when delivery is not requested. Do not silently treat task creation as authorization for a high-impact action or work owned by another Project Room.
+
+#### Deliver A Task
+
+Deliver only when the requester asks to send or deliver the task, or another applicable Admin wiki rule grants that delivery authority.
+
+1. Send to Josh Kennedy at `IRAManager@SellYourHomeRaleigh.com`.
+2. Use subject `[Manager Task][<Priority>][<Task ID>] <short title>`.
+3. Include the task id, priority, requester, task, due date when any, and the instruction to reply with the task id and new status.
+4. Follow `C:\Codex\Wiki Files\skills\email-delivery\SKILL.md`. Normally send from `OfficeAssist@BuyYourHomeLLC.com` and copy `WesWill@BuyYourHomeLLC.com` unless Wes explicitly says not to copy himself for that message.
+5. Set status to `Delivered` only after verifying the sent copy in the approved sender mailbox's Sent Items. Record the sent message id and sent timestamp when available.
+6. If send or Sent Items verification fails, keep the task visible as `New` or its prior status, record the failure in Delivery/Update Notes, and report the blocker immediately.
+
+#### Process A Manager Email Update
+
+1. Accept a Manager status update when the email is from `IRAManager@SellYourHomeRaleigh.com` and identifies an existing task id. If either check fails, request confirmation instead of changing the register.
+2. Preserve the email under `sources\email\` or preserve a durable source note with sender, recipients, timestamp, subject, message id or link when available, and body text.
+3. Map the stated update to one of: `Acknowledged`, `In Progress`, `Waiting`, `Completed`, or `Cancelled`. If the wording is ambiguous, preserve it and ask for clarification.
+4. Update the task status, last-updated time, and source reference without overwriting the earlier delivery record.
+5. An email status change does not authorize a purchase, payment, legal or financial change, deletion, or other high-impact action.
+6. Process email updates when they are supplied or routed to this Project Room. Do not create or assume continuous mailbox monitoring unless Wes separately authorizes an automation.
 
 ## Start PR
 
