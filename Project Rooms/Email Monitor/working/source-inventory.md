@@ -4,6 +4,8 @@
 |---|---|---|---|
 | Email Monitor skill | `C:\Codex\Wiki Files\skills\email-monitor\SKILL.md` | authoritative | Primary workflow definition for mailbox scan, cutoff, prioritization, summary body, and state update. |
 | Email Delivery skill | `C:\Codex\Wiki Files\skills\email-delivery\SKILL.md` | authoritative | Governs the Email Delivery mode: OfficeAssist sender safety, shared/delegated connector sends, attachment-path validation and schema-correct retry, Sent Items verification, delivery logging, fallback, and failure reporting. |
+| Manager skill | `C:\Codex\Wiki Files\skills\manager\SKILL.md` | authoritative read-only dependency | Defines Task mode statuses, priorities, and task-list interpretation used in Josh's summary. Email Monitor does not edit this skill. |
+| Manager task register | `C:\Codex\Wiki Files\Project Rooms\Manager\working\task-register.md` | authoritative read-only dependency | Supplies the current task list included in Josh's summary. Email Monitor does not update task status or add tasks here. |
 | Admin rules | `C:\Codex\Wiki Files\AGENTS.md` | authoritative | Email sender safety and Email Monitor scope rules. |
 | Agents and Automations Registry | `C:\Codex\Wiki Files\Agents and Automations Registry.md` | authoritative | Human-readable registry entry for the automation and skill. |
 | Live automation config | `C:\Users\wesbr\.codex\automations\officeassist-morning-email-summary-and-instruction-monitor\automation.toml` | authoritative local config | Defines live automation id, kind, schedule, prompt, status, and target thread. |

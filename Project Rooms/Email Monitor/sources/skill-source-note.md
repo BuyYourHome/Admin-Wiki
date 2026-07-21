@@ -28,8 +28,9 @@ Those send-step responsibilities are owned by:
 
 Current boundaries to preserve:
 
-- Scan only `WesWill@BuyYourHomeLLC.com` for Boss's summary and `Jenny@BuyYourHomeLLC.com` for Jenny's summary unless Wes changes the scope.
+- Scan only `WesWill@BuyYourHomeLLC.com` for Boss's summary, `Jenny@BuyYourHomeLLC.com` for Jenny's summary, and `IRAManager@SellYourHomeRaleigh.com` for Josh's summary unless Wes changes the scope.
 - Review the full mailbox recursively, including rule-routed folders.
 - Focus on unread or newly received priority business messages.
 - Jenny summary is active as of 2026-06-29 and is emailed to `Jenny@BuyYourHomeLLC.com` from OfficeAssist under the current global profile.
+- Josh summary is active as of 2026-07-21 and is emailed to `IRAManager@SellYourHomeRaleigh.com` from OfficeAssist with Wes copied. It includes a read-only Manager Task mode list from the Manager task register.
 - Do not treat a failed or unverified summary as quiet.
