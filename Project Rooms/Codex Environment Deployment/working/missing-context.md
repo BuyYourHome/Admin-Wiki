@@ -6,5 +6,5 @@
 | What remote-control tool should be used? | needed | Confirm the authorized remote access path for each target computer. |
 | Which target computer is first? | needed | Record machine name, user, access path, and approval before remoting in. |
 | Which apps are approved for install? | needed | Paid apps, trials, browser extensions, remote agents, VPNs, and system security changes require explicit approval. |
-| Which WesStudio applications must be installed on every target? | partially resolved for Step 2 | Wes approved the Core Group on 2026-07-21. Business applications, optional tools, and approval-gated remote/system items remain pending. See `working/application-classification.md`. |
+| Which WesStudio applications must be installed on every target? | partially resolved for Step 2 | Wes approved the Core and Business Groups on 2026-07-21. Optional tools and approval-gated remote/system items remain pending. See `working/application-classification.md`. |
 | What final verification proves readiness? | partially defined | The remote setup output contains an initial checklist. Step 2 should turn the approved application classification into repeatable pass/fail checks for repo, Codex, skills, runtime, LibreOffice, browser, email, Teams/SharePoint, and document/PDF workflows. |
