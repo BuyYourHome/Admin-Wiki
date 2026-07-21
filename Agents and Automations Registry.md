@@ -283,7 +283,7 @@ Purpose:
 - Route Gracious Millionaire and Brynda Suit instruction emails into their owning project rooms as source material and hand them off to their existing threads/tasks.
 - Send Wes a concise priority summary from `OfficeAssist@BuyYourHomeLLC.com`.
 - Email Jenny's concise priority summary to `Jenny@BuyYourHomeLLC.com` from `OfficeAssist@BuyYourHomeLLC.com` under the current global profile, and verify the sent copy in OfficeAssist Sent Items.
-- Email Josh's concise priority summary to `IRAManager@SellYourHomeRaleigh.com` from `OfficeAssist@BuyYourHomeLLC.com`, copy `WesWill@BuyYourHomeLLC.com`, and verify the sent copy in OfficeAssist Sent Items.
+- Email Josh's concise priority summary to `IRAManager@SellYourHomeRaleigh.com` from `OfficeAssist@BuyYourHomeLLC.com`, copy `WesWill@BuyYourHomeLLC.com` and `Jenny@BuyYourHomeLLC.com`, and verify the sent copy in OfficeAssist Sent Items.
 - Include a Manager Task mode section in Josh's summary by reading `Project Rooms\Manager\working\task-register.md`; group by Manager status and order within each group by `Critical`, `High`, `Normal`, then `Low`. Email Monitor must not edit the Manager task register.
 - Include a short token-usage section for yesterday and the current week to date when reliable token totals are available; if not available, say so rather than estimating.
 - Jean is responsible for confirming the summary is actually delivered. If the summary cannot be sent, if sender verification fails, or if delivery cannot be confirmed, do not stay quiet. Notify Wes immediately in the thread and, when a reliable text/SMS path is available, text Wes that the email summary failed.

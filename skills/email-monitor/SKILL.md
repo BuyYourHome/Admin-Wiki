@@ -315,13 +315,13 @@ For Josh's send step, call the shared `email-delivery` skill and pass:
 
 - sender: `OfficeAssist@BuyYourHomeLLC.com`,
 - recipient: `IRAManager@SellYourHomeRaleigh.com`,
-- CC: `WesWill@BuyYourHomeLLC.com`,
+- CC: `WesWill@BuyYourHomeLLC.com` and `Jenny@BuyYourHomeLLC.com`,
 - subject,
 - plain-text body,
 - attachment paths if any,
 - the rule that send or verification failure must be reported in the OfficeAssist thread.
 
-Josh's summary is emailed to Josh with Wes copied under the current global profile unless Wes explicitly changes the routing.
+Josh's summary is emailed to Josh with Wes and Jenny copied under the current global profile unless Wes explicitly changes the routing.
 
 ## Failure Handling
 
