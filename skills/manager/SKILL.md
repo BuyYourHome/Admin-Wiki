@@ -14,6 +14,19 @@ description: Use for Buy Your Home Manager project-room work, including defining
 
 Use this skill when Wes asks Codex to work on Manager source organization, scope definition, review, drafting, documentation, or project-room maintenance for Buy Your Home.
 
+## Manager Attributes
+
+User-reported facts from Wes:
+
+- Josh Kennedy is the Manager of Sell Your Home, LLC and Investment Services.
+- Josh signs on behalf of legal documents through his Investment Services role.
+- Josh's annual salary is `$65,000`.
+- Josh's email address is `IRAManager@SellYourHomeRaleigh.com`.
+- Josh's phone number is `919-961-5574`.
+- A MoU in the Sell Your Home channel gives the specifics of Josh's contract.
+
+Treat the MoU as the controlling source for contract-specific details after it is retrieved or preserved in the Project Room.
+
 ## Start PR
 
 Before durable work, follow Start PR Mode in `C:\Codex\Wiki Files\Project Room Chat Startup Rule.md`. Interpret unqualified requests under the Current PR Scope Rule in that file. Work on `main` unless Wes explicitly asks for a branch.
@@ -31,7 +44,7 @@ Before Manager file work:
 ## Workflow
 
 1. Identify the Manager task, intended output, controlling sources, and any privacy, sharing, deadline, or external-action limit.
-2. If the substantive Manager role is not yet defined, record the missing scope in `working\missing-context.md` before drafting outputs.
+2. If contract-specific Manager details are needed, retrieve or use the MoU from the Sell Your Home channel before treating those details as source-verified.
 3. Preserve source notes, exported messages, references, or source summaries in `sources\` when they are part of the durable source set.
 4. Update `working\source-inventory.md` before drafting outputs.
 5. Record duplicate, outdated, conflicting, or unclear source material in `working\duplicate-and-conflict-log.md`.
@@ -46,6 +59,7 @@ Before Manager file work:
 - Do not create Teams folders unless Wes explicitly asks.
 - Do not create automations unless Wes asks for scheduled or event-triggered behavior.
 - Do not send email, external messages, make purchases, change legal/financial documents, or perform live operational actions unless Wes explicitly authorizes the specific action and the applicable Admin wiki rules allow it.
+- If Manager work requires sending email, use the Admin wiki Email Delivery workflow used by Email Monitor by following `C:\Codex\Wiki Files\skills\email-delivery\SKILL.md` for sender safety, attachment handling, Sent Items verification, local Outlook fallback rules, and failure reporting.
 - Do not commit unrelated dirty work or generated scratch folders.
 - Do not push unless Wes asks, says the setup is finished, or the applicable Admin wiki rules make the deliverable ready to publish.
 

@@ -32,9 +32,28 @@ Out of scope:
 
 ## Current Status
 
-Status: draft.
+Status: active draft.
 
-The room has been created as a standard Project Room shell. The controlling purpose, recurring workflows, source locations, and expected outputs still need Wes's direction before substantive Manager work begins.
+The room has been created as a standard Project Room shell. Wes has provided initial Manager attributes for Josh Kennedy. The controlling MoU source still needs to be retrieved from the Sell Your Home channel before contract-specific details are treated as source-verified.
+
+## Manager Attributes
+
+User-reported facts from Wes:
+
+- Josh Kennedy is the Manager of Sell Your Home, LLC and Investment Services.
+- Josh signs on behalf of legal documents through his Investment Services role.
+- Josh's annual salary is `$65,000`.
+- Josh's email address is `IRAManager@SellYourHomeRaleigh.com`.
+- Josh's phone number is `919-961-5574`.
+- A MoU in the Sell Your Home channel gives the specifics of Josh's contract.
+
+## Email Delivery Rule
+
+If Manager work requires sending email, use the Admin wiki Email Delivery workflow used by Email Monitor:
+
+- Follow `C:\Codex\Wiki Files\skills\email-delivery\SKILL.md` for sender safety, approved recipients, attachment handling, Outlook connector preference, Sent Items verification, local Outlook fallback rules, and failure reporting.
+- Do not send email from Manager work unless Wes explicitly authorizes the specific email action or an applicable Admin wiki rule already grants that authority.
+- If the MoU or another source changes email authority, record the source and update this rule before relying on it.
 
 ## Matching Skill
 
@@ -59,6 +78,6 @@ Before durable work, follow Start PR Mode in `C:\Codex\Wiki Files\Project Room C
 
 ## Next Actions
 
-1. Confirm the intended Manager role, recurring triggers, and expected outputs.
-2. Identify controlling sources and where they should be preserved.
+1. Retrieve or preserve the MoU from the Sell Your Home channel as a controlling source.
+2. Confirm the exact legal name behind "Investment Services" when legal-document signature wording matters.
 3. Decide whether Manager needs a dedicated chat, automation, or only an on-demand Project Room.

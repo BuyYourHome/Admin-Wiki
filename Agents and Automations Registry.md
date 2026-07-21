@@ -598,7 +598,8 @@ Status: draft.
 Purpose:
 
 - Hold Manager source material, missing details, review questions, and outputs.
-- Define the recurring Manager workflow once Wes provides the controlling purpose, source locations, triggers, and expected outputs.
+- Maintain user-reported Manager attributes for Josh Kennedy and preserve the controlling MoU source once retrieved from the Sell Your Home channel.
+- Define the recurring Manager workflow once Wes provides the remaining triggers and expected outputs.
 - Prepare review-ready drafts, summaries, checklists, or handoffs from authoritative source material.
 
 Defined in:
@@ -616,6 +617,7 @@ Important rules:
 - Work on `main` unless Wes explicitly asks for a branch.
 - Do not edit another Project Room's files or matching skill unless Wes explicitly authorizes that specific cross-PR edit.
 - Use the Project Room source inventory before drafting review-ready outputs.
+- Use the Admin wiki Email Delivery workflow used by Email Monitor for any authorized Manager email send.
 - Do not send email, external messages, make purchases, change legal/financial documents, or perform live operational actions unless Wes explicitly authorizes the specific action.
 - Do not create Teams folders or automations unless Wes explicitly asks.
 
