@@ -4,7 +4,7 @@ Status: Step 2 in progress.
 
 ## Approval Scope
 
-Wes approved the Core Group and Business Group on 2026-07-21 for the standard Codex/Admin wiki target baseline.
+Wes approved the Core, Business, and Optional Groups on 2026-07-21 for the standard Codex/Admin wiki target baseline.
 
 This approval classifies the items below as standard requirements. It does not authorize connecting to a target computer, purchasing or activating paid software, starting a paid trial, changing security settings, or installing anything on a specific target. Those actions remain subject to the target-specific authorization and safety rules.
 
@@ -34,7 +34,18 @@ This approval classifies the items below as standard requirements. It does not a
 | Teams, GitHub, and Chrome/browser access | required Codex configuration | Enable the applicable Codex capabilities and verify function on the target instead of relying on package presence alone. |
 | Outlook for Windows | optional | The newer Outlook app is not required when classic Outlook and the Outlook connectors work correctly. |
 
+## Approved Optional Group
+
+| Component | Classification | Requirement |
+| --- | --- | --- |
+| GitHub Desktop | optional | Install only when the target user wants a graphical Git interface. Git for Windows remains the required Git installation. |
+| GitHub CLI | optional | Install only when an approved workflow specifically needs command-line GitHub operations. It is not part of the inspected WesStudio baseline. |
+| Visual Studio Code | do not install by default | It is not part of the inspected WesStudio baseline and is not required for routine Admin wiki work. |
+| Git LFS | do not install by default | The Admin Wiki currently has no Git LFS configuration. Add it only if a future approved repository requirement needs it. |
+| Outlook for Windows | optional | Retain or install it only when useful; classic Outlook and verified Outlook connectors satisfy the standard requirement. |
+| Microsoft Edge | supplied by Windows | No separate installation is required. |
+| Global Python, Node.js, and npm | do not install for routine Codex work | Use the Codex bundled workspace runtime unless an approved non-Codex application has a separate requirement. |
+
 ## Pending Groups
 
-- Optional tools: GitHub Desktop, GitHub CLI, Visual Studio Code, Git LFS, and other nonessential utilities.
 - Approval-gated remote and system items: Quick Assist, Remote Desktop hosting, VPNs, remote-control tools, browser extensions, credential managers, system-level agents, and security-setting changes.
