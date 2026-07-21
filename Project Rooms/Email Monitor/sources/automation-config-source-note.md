@@ -12,7 +12,7 @@ Related run memory:
 
 Status: authoritative for persistent run state, including verified send history, cutoff decisions, summary topics, blockers, and Jenny pause notes.
 
-Current observed values as of 2026-07-01:
+Current observed values as of 2026-07-20:
 
 | Field | Value |
 |---|---|
@@ -29,6 +29,8 @@ The automation prompt points to:
 - `C:\Codex\Office Assistant Profile.md`
 - `C:\Codex\Wiki Files\AGENTS.md`
 - `C:\Codex\Wiki Files\skills\email-monitor\SKILL.md`
+
+The prompt defines Email Delivery as an Email Monitor mode connected to `C:\Codex\Wiki Files\skills\email-delivery\SKILL.md`. It requires the OfficeAssist shared/delegated connector send path, absolute attachment-path lists, one clearly directed schema-correct retry, OfficeAssist Sent Items verification, delivery logging, and immediate failure reporting.
 
 Important notes:
 

@@ -44,10 +44,40 @@ When the connector exposes a draft-first shared-mailbox path, create or verify t
 
 If the connector can send from the exact OfficeAssist shared mailbox and verify the OfficeAssist Sent Items record, that satisfies the sender verification requirement even when no draft-first shared-mailbox tool is available.
 
+## Outlook Connector Send Logistics
+
+When sending from `OfficeAssist@BuyYourHomeLLC.com`, prefer the Outlook Email connector shared/delegated mailbox send action.
+
+Use these values when the action supports them:
+
+- mailbox or user principal name: `OfficeAssist@BuyYourHomeLLC.com`;
+- save to sent items: `true`;
+- `to`, `cc`, and `bcc`: structured recipient objects with `email` and optional `name`;
+- subject: a plain subject string;
+- body: plain text;
+- attachments: an array or list of absolute local file paths, even when the connector schema appears to describe the field as a string.
+
+For attachments:
+
+1. Verify every attachment path exists and is readable before sending.
+2. Prefer one combined PDF when the calling workflow produces several related attachments for the same email.
+3. If the connector rejects `attachment_files` as a string, retry with `attachment_files` as a list of absolute paths.
+4. If the connector rejects a list, retry only when the tool error clearly identifies the expected shape.
+5. Do not send without required attachments unless the calling workflow explicitly allows a no-attachment fallback.
+
+After sending:
+
+1. Query `OfficeAssist@BuyYourHomeLLC.com` Sent Items through the shared-mailbox connector.
+2. Verify that a sent message exists with the expected subject, recipients, CC recipients, sender, and attachment flag.
+3. Record the sent message id, sent timestamp, and verification result in the calling workflow's log.
+4. If Sent Items verification fails, report the blocker immediately and do not assume delivery succeeded.
+
+If the first connector send attempt fails because of parameter shape, attachment handling, or mailbox-send semantics, make one schema-correct retry only when the error clearly explains the correction. If that retry fails, stop and report the proposed email body, recipients, sender, and attachment paths.
+
 ## Attachments
 
 - Verify each caller-provided attachment path exists and is readable before sending.
-- For connector send tools, pass attachment paths in the input shape the connector currently requires. If the connector rejects a plain path string and reports that it expects an array, retry with an attachment-path array.
+- For connector send tools, follow the `Outlook Connector Send Logistics` attachment-shape and retry rules above.
 - Do not use newline-separated attachment paths unless the specific connector tool documents and accepts that format in the current session.
 - If an attachment cannot be uploaded, do not silently omit it. Stop, report the failed attachment, and provide the proposed email body in the chat unless the caller explicitly allows a no-attachment send.
 

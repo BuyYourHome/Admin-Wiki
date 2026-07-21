@@ -199,6 +199,25 @@ Current Invoice Entry task id: `019f3d56-b310-75c0-b084-616bfc1e9f59`.
 
 Do not create a new Invoice Entry task for this routing unless Wes explicitly asks. Do not approve, pay, reply to the contractor/vendor, make live spreadsheet entries, or move files into Teams from this Email Monitor or OfficeAssist monitor thread unless Wes explicitly asks for processing here and the Invoice Entry rules allow it. The default action is source routing plus direct Invoice Entry handoff only.
 
+### Email Delivery
+
+Use Email Delivery when this project room has an authorized email ready to send or when another Email Monitor mode reaches its send step.
+
+This mode is connected directly to `C:\Codex\Wiki Files\skills\email-delivery\SKILL.md`. The calling Email Monitor workflow retains responsibility for the approved recipients, subject, plain-text body, required attachments, and any stricter workflow limits. Email Delivery owns only the delivery operation: OfficeAssist sender safety, shared/delegated Outlook connector use, attachment-path validation and parameter-shape handling, Sent Items verification, delivery logging, fallback, and failure reporting.
+
+For each send:
+
+- use `OfficeAssist@BuyYourHomeLLC.com` unless Wes explicitly authorizes another sender for that specific message;
+- require clear authorization before an external or otherwise high-impact send;
+- prefer the Outlook Email connector shared/delegated mailbox send action with Sent Items saving enabled;
+- pass structured recipient objects and plain-text subject/body values;
+- pass attachments as a list of absolute local paths and follow the shared skill's one-retry rule when a connector error clearly identifies a schema correction;
+- query OfficeAssist Sent Items after sending and verify the expected subject, recipients, CC recipients, sender, and attachment flag;
+- record the sent message id, sent timestamp, and verification result in the calling workflow's log;
+- report send or verification failure immediately and do not assume delivery succeeded.
+
+Do not let this mode invent recipients, content, attachments, or authorization. Do not send without required attachments unless the calling workflow explicitly permits that fallback.
+
 ## Priority Selection
 
 Prefer these message classes in the summary:

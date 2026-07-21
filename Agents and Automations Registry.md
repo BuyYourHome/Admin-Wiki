@@ -321,6 +321,7 @@ Workflow boundary:
 - Defined mode: Gracious Millionaire Email Routing routes Gracious Millionaire emails into the Gracious Millionaire project room as Markdown source files, records the Outlook message id in Email Monitor memory, and sends a direct project-room thread handoff without drafting the book response in this Email Monitor thread.
 - Defined mode: Brynda Suit Email Routing routes Brynda Suit emails into the Brynda Suit project room as Markdown source files, records the Outlook message id in Email Monitor memory, and sends a direct task handoff without drafting the Brynda Suit response in this Email Monitor thread.
 - Defined mode: Web Site Email Routing routes `GM Site` / REI BlackBook website emails into the REI BlackBook project room as Markdown source files, records the Outlook message id in Email Monitor memory, and sends a direct REI Blackbook thread handoff without editing or publishing the website in this Email Monitor thread.
+- Defined mode: Email Delivery handles authorized Email Monitor sends through the shared `email-delivery` skill, including OfficeAssist shared-mailbox connector use, absolute attachment-path validation, one schema-correct retry when clearly directed by the connector error, Sent Items verification, delivery logging, fallback, and immediate failure reporting. The calling workflow retains ownership of recipients, content, required attachments, and authorization.
 - Development work, source inventory, open questions, and review-ready handoffs for this workflow live in `C:\Codex\Wiki Files\Project Rooms\Email Monitor\`.
 
 ## Email Delivery
@@ -341,7 +342,9 @@ Defined in:
 Important rules:
 
 - The calling workflow supplies recipients, subject, body, attachments, and any stricter recipient/package limits.
-- Prefer the Outlook/email connector and verify the sent copy in OfficeAssist Sent Items.
+- Prefer the Outlook Email connector shared/delegated mailbox send action, enable Sent Items saving, use structured recipient objects, and pass attachments as a list of absolute local paths.
+- Verify the expected subject, recipients, CC recipients, sender, and attachment flag in OfficeAssist Sent Items; record the sent message id, timestamp, and verification result in the calling workflow's log.
+- Make one schema-correct retry only when the first connector error clearly identifies the correction; otherwise stop and report the proposed message details and attachment paths.
 - Use local Outlook only as fallback when connector send or verification is unavailable.
 
 ## Doc Scan

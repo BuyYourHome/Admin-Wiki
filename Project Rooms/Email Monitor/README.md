@@ -43,6 +43,16 @@ This mode sends Boss's summary to `WesWill@BuyYourHomeLLC.com` and Jenny's summa
 
 This mode runs only once per calendar day per recipient at the first eligible heartbeat at or after 8:00 AM Eastern. Later same-day heartbeat runs skip summaries that were already sent and verified.
 
+### Email Delivery
+
+Use this mode when this project room has an authorized email ready to send or when another Email Monitor mode reaches its send step.
+
+This mode is connected directly to `C:\Codex\Wiki Files\skills\email-delivery\SKILL.md`. The calling Email Monitor workflow owns the approved recipients, subject, plain-text body, required attachments, and workflow-specific restrictions. The Email Delivery mode owns OfficeAssist sender safety, the Outlook connector shared/delegated mailbox send action, attachment-path validation and connector parameter-shape handling, Sent Items verification, delivery logging, local Outlook fallback, and failure reporting.
+
+For a connector send, use `OfficeAssist@BuyYourHomeLLC.com`, enable Sent Items saving, pass structured recipient objects, and pass attachments as a list of absolute local paths. After sending, verify the expected subject, recipients, CC recipients, sender, and attachment flag in OfficeAssist Sent Items, then record the sent message id, sent timestamp, and verification result in the calling workflow's log. Make only one schema-correct retry when the first error clearly identifies the correction. A failed send or unverified send must be reported immediately.
+
+This mode does not invent recipients, message content, attachment requirements, or authorization. It does not send without required attachments unless the calling workflow explicitly allows that fallback.
+
 ### Gracious Millionaire Email Routing
 
 Use this mode when the Email Monitor workflow or OfficeAssist instruction monitor sees an email with a subject containing `gracious millionaire`, or an email that otherwise clearly belongs to the Gracious Millionaire book/project-room workflow.
@@ -75,6 +85,7 @@ When the workflow changes, update the skill, this project room, and the registry
 
 ## Change Log
 
+- 2026-07-20: Defined Email Delivery as an Email Monitor project-room mode connected directly to the shared `email-delivery` skill and added the Outlook shared-mailbox send, attachment retry, Sent Items verification, and delivery-log contract.
 - 2026-07-16: Renamed the project room, chat, and skill from `Email Summary` / `email-summary` to `Email Monitor` / `email-monitor`; the live automation id remains `officeassist-morning-email-summary-and-instruction-monitor`.
 - 2026-07-16: Defined Brynda Suit Email Routing for routed-source preservation and direct handoff to the existing Brynda Suit task.
 - 2026-07-15: Defined Daily Email Summary for Boss and Jenny mailbox summaries, including mailbox scan, cutoff, summary drafting, OfficeAssist delivery handoff, Sent Items verification, and state update boundaries.

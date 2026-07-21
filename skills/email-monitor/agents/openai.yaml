@@ -1,4 +1,4 @@
 interface:
   display_name: "Email Monitor"
-  short_description: "Monitor OfficeAssist email, run daily summaries, and route project emails"
-  default_prompt: "Use $email-monitor to scan WesWill@BuyYourHomeLLC.com, draft the Boss summary, and hand delivery to email-delivery."
+  short_description: "Monitor, summarize, route, and safely deliver OfficeAssist email"
+  default_prompt: "Use $email-monitor to monitor OfficeAssist mail, run the applicable routing or summary mode, and use Email Delivery for authorized sends."
