@@ -36,9 +36,9 @@ Out of scope:
 
 ## Current Status
 
-Status: Steps 1-5 complete; `Wes-VideoEditor` is inventoried but not ready for installation because `C:` has only 4.8 GB free.
+Status: `Wes-VideoEditor` core Admin wiki environment installed and verified on 2026-07-22; Codex Desktop, connector sign-ins, plugin cache, and live workflow execution remain unverified.
 
-WesStudio's non-secret hardware, Windows, Codex, repo, runtime, application, skill, plugin, and remote-access baseline was inventoried on 2026-07-21. Wes approved the Step 2 Core, Business, Optional, and Safety Groups on 2026-07-21. Step 3 created the setup/verification package, and Step 4 authorized the exact `Wes-VideoEditor` scope. Step 5 connected over the private LAN, verified the session identity, and completed a read-only inventory in `outputs\Wes-VideoEditor Initial Inventory.md`. No target changes were made. Installation is blocked pending storage analysis and an approved exact cleanup or expansion action.
+WesStudio's non-secret hardware, Windows, Codex, repo, runtime, application, skill, plugin, and remote-access baseline was inventoried on 2026-07-21. Wes approved the Step 2 Core, Business, Optional, and Safety Groups on 2026-07-21. Step 3 created the setup/verification package, and Step 4 authorized the exact `Wes-VideoEditor` scope. Step 5 connected over the private LAN, verified the session identity, and completed a read-only inventory in `outputs\Wes-VideoEditor Initial Inventory.md`. Storage initially blocked installation because `C:` had 4.8 GB free. After cleanup, Git, the canonical Admin wiki repo, LibreOffice, Obsidian, and wiki-managed skills were installed and verified. Final core verification is recorded in `outputs\Wes-VideoEditor Core Environment Verification.md`.
 
 ## Remote Access And Install Safety
 
@@ -86,6 +86,9 @@ Before durable work, follow Start PR Mode in `C:\Codex\Wiki Files\Project Room C
 
 ## Next Actions
 
-1. Perform a read-only storage-use analysis on `Wes-VideoEditor`.
-2. Ask Wes to approve exact cleanup or storage-expansion actions before making space.
-3. Recheck free space before installing any missing required component.
+1. Verify or install Codex Desktop on `Wes-VideoEditor`.
+2. Verify Codex/GitHub sign-in directly on the target computer without recording secrets.
+3. Verify needed Outlook, Teams, SharePoint, Chrome/browser, and GitHub connector/plugin sign-ins.
+4. Confirm plugin cache after Codex Desktop/plugin setup.
+5. Run one low-risk Admin wiki workflow from the target computer to confirm end-to-end operation.
+6. Free more `C:` drive space if practical; 20 GB or more is preferred for stable ongoing use.
