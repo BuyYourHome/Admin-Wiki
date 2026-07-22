@@ -1,0 +1,4 @@
+interface:
+  display_name: "Voices"
+  short_description: "Plan and govern Wes voice/avatar workflows."
+  default_prompt: "Use the Voices skill to evaluate tools, protect likeness rights, and prepare review-ready voice workflow outputs."

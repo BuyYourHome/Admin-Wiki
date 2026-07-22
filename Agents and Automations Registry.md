@@ -41,7 +41,7 @@ Use [[Agent Unit Standard]] for the standard package behind an agent-like operat
 | Invoice Entry | Wiki-managed skill plus project room plus backup heartbeat automation plus dedicated chat | Active | Direct message handoff is primary; backup heartbeat checks hourly for structured invoice/receipt packets that were not delivered by direct message | `skills\invoice-entry\SKILL.md`; `Project Rooms\Invoice Entry\README.md`; app automation id `invoice-entry-to-projects-backup-heartbeat` |
 | Project Management Spreadsheet Rewrite | Planning/history project room now covered by Template to Project | Active/planning | On demand | `skills\template-to-project\SKILL.md`; `Project Rooms\Project Management Spreadsheet Rewrite\README.md` |
 | Property Trade Evaluation | Wiki-managed skill plus project room | Active | On demand | `skills\property-trade-evaluation\SKILL.md`; `Project Rooms\Property Trade Evaluation\README.md` |
-| Wes's Voice | Wiki-managed skill plus project room | Planning | On demand | `skills\wes-voice\SKILL.md`; `Project Rooms\Wes's Voice\README.md` |
+| Voices | Wiki-managed skill plus project room | Planning | On demand | `skills\voices\SKILL.md`; `Project Rooms\Voices\README.md` |
 | New Project | Wiki-managed skill plus project room | Draft | On demand | `skills\new-project\SKILL.md`; `Project Rooms\New Project\README.md` |
 | Confidential | Wiki-managed skill plus project room plus dedicated chat | Draft | On demand | `skills\confidential\SKILL.md`; `Project Rooms\Confidential\README.md` |
 | REI BlackBook | Wiki-managed skill plus project room plus dedicated chat | Draft | On demand | `skills\rei-blackbook\SKILL.md`; `Project Rooms\REI BlackBook\README.md`; thread id `019f4691-5466-7f72-9683-ab5d3b750c25` |

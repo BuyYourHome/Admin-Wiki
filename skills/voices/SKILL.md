@@ -1,13 +1,13 @@
-﻿---
-name: wes-voice
-description: Use for Wes's Voice project-room work, including voice likeness governance, text-to-speech workflow planning, avatar/video research, consent rules, vendor evaluation, source inventory, and outputs under `Project Rooms\Wes's Voice`.
+---
+name: voices
+description: Use for Voices project-room work, including voice likeness governance, text-to-speech workflow planning, avatar/video research, consent rules, vendor evaluation, source inventory, and outputs under `Project Rooms\Voices`.
 ---
 
-# Wes's Voice
+# Voices
 
 ## Source Of Truth
 
-- Project room: `C:\Codex\Wiki Files\Project Rooms\Wes's Voice`
+- Project room: `C:\Codex\Wiki Files\Project Rooms\Voices`
 - Admin wiki source: `C:\Codex\Wiki Files`
 
 Use this skill for planning or maintaining workflows that use Wes's voice likeness or related avatar/video tools.
@@ -15,7 +15,7 @@ Use this skill for planning or maintaining workflows that use Wes's voice likene
 ## Required Startup
 
 1. Confirm the working folder is `C:\Codex\Wiki Files`.
-2. Read `Admin Home.md`, `AGENTS.md`, `Project Room Workflow.md`, and `Project Rooms\Wes's Voice\README.md`.
+2. Read `Admin Home.md`, `AGENTS.md`, `Project Room Workflow.md`, and `Project Rooms\Voices\README.md`.
 3. Read `working\source-inventory.md`, `working\duplicate-and-conflict-log.md`, and `working\missing-context.md` when present.
 4. Check `git status --short --branch`.
 

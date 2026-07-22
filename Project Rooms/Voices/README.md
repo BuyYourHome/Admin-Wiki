@@ -1,4 +1,4 @@
-﻿# Wes's Voice
+# Voices
 
 ## Purpose
 
@@ -22,7 +22,7 @@ Wes wants to connect usable technologies that can:
 
 ## Matching Skill
 
-- Skill source: `C:\Codex\Wiki Files\skills\wes-voice\SKILL.md`
+- Skill source: `C:\Codex\Wiki Files\skills\voices\SKILL.md`
 
 ## Initial Workstreams
 
