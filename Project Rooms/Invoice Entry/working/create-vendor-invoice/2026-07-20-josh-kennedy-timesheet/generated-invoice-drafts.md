@@ -1,8 +1,10 @@
 # Josh Kennedy Time Card Invoice Drafts
 
-Generated from routed Time Card-relevant source:
+Generated from routed Time Card-relevant sources:
 
 `C:\Codex\Wiki Files\Project Rooms\Invoice Entry\sources\email\2026-07-20-204307-josh-kennedy-timesheet.md`
+
+`C:\Codex\Wiki Files\Project Rooms\Invoice Entry\sources\email\2026-07-21-213901-josh-kennedy-timesheet-2026-07-21.md`
 
 These drafts are not approved for payment and are not posted to any project spreadsheet.
 
@@ -12,12 +14,12 @@ These drafts are not approved for payment and are not posted to any project spre
 | --- | --- |
 | Invoice # | `TC-JK-20260724-BACKOFFICE-001` |
 | Vendor | Josh Kennedy |
-| Work date | 2026-07-20 |
+| Work dates | 2026-07-20; 2026-07-21 |
 | Project / bucket | BackOffice |
-| Description | Back-office onboarding, account setup, and rules/procedures review. |
-| Hours | 4.00 |
+| Description | 2026-07-20: Back-office onboarding, account setup, and rules/procedures review. 2026-07-21: BackOffice work from 1:00 P.M. to 4:45 P.M. |
+| Hours | 7.75 |
 | Rate | $31.25 |
-| Amount | $125.00 |
+| Amount | $242.19 |
 
 ## Tensity Draft
 
@@ -25,9 +27,9 @@ These drafts are not approved for payment and are not posted to any project spre
 | --- | --- |
 | Invoice # | `TC-JK-20260724-TENSITY-001` |
 | Vendor | Josh Kennedy |
-| Work date | 2026-07-20 |
+| Work dates | 2026-07-20; 2026-07-21 |
 | Project / bucket | 24-HM - 4121 Tensity Dr |
-| Description | 4121 Tensity Dr property walkthrough and review of planned changes/responsibilities. |
-| Hours | 2.75 |
+| Description | 2026-07-20: 4121 Tensity Dr property walkthrough and review of planned changes/responsibilities. 2026-07-21: 4121 Tensity Dr work from 7:50 A.M. to 1:00 P.M. |
+| Hours | 7.92 displayed |
 | Rate | $31.25 |
-| Amount | $85.94 |
+| Amount | $247.40 |

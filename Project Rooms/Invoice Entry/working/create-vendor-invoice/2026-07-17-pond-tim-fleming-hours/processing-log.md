@@ -41,3 +41,12 @@
 - Filed the vendor-confirmed PDF to `C:\Users\wesbr\Buy Your Home\Buy Your Home - Property\26-BYH -908 Pond St\Owning\Tim Flemming\26-07-17 Tim Fleming Pond Hours.pdf`.
 - Read-only workbook duplicate scan found existing Tim Flemming contract/payment rows on the old `Tim` sheet but no matching Tim Fleming Pond hours invoice in `Review` or obvious duplicate entry for this confirmed invoice.
 - Workbook insertion remains held because the destination worksheet is not confirmed.
+
+## 2026-07-22
+
+- Received routed additional confirmation source: `C:\Codex\Wiki Files\Project Rooms\Invoice Entry\sources\email\2026-07-22-121356-tim-fleming-pond-hours-confirmation.md`.
+- Tim Fleming replied `This is correct and confirmed` to the existing verification thread for the same Pond hours invoice values: 2026-07-06 through 2026-07-17, 22 total hours, `$62.50/hour`, and `$1,375.00` total.
+- Reconciled the message as supporting vendor confirmation evidence, not a new invoice.
+- No duplicate invoice was created.
+- No Teams filing was repeated; the confirmed invoice remains filed at `C:\Users\wesbr\Buy Your Home\Buy Your Home - Property\26-BYH -908 Pond St\Owning\Tim Flemming\26-07-17 Tim Fleming Pond Hours.pdf`.
+- No workbook insertion was performed because destination worksheet remains unresolved.

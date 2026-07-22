@@ -100,7 +100,7 @@ def build_invoice(data):
         [
             [
                 Paragraph("<b>Status:</b> Draft generated from routed timesheet", styles["Body"]),
-                Paragraph("<b>Draft Date:</b> July 20, 2026", styles["Body"]),
+                Paragraph("<b>Draft Date:</b> July 22, 2026", styles["Body"]),
             ]
         ],
         colWidths=[4.3 * inch, 2.65 * inch],
@@ -146,25 +146,48 @@ def build_invoice(data):
     story.append(details)
     story.append(Spacer(1, 0.28 * inch))
 
-    item_rows = [
-        ["Field", "Value"],
-        ["Invoice #", data["invoice_no"]],
-        ["Work Date", "2026-07-20"],
-        ["Description", Paragraph(data["description"], styles["Body"])],
-        ["Hours", f"{data['hours']:.2f}"],
-        ["Rate", money(31.25)],
-        ["Amount", money(data["amount"])],
-    ]
-    items = Table(item_rows, colWidths=[1.35 * inch, 5.55 * inch])
+    invoice_meta = Table(
+        [["Invoice #", data["invoice_no"]]],
+        colWidths=[1.35 * inch, 5.55 * inch],
+    )
+    invoice_meta.setStyle(
+        TableStyle(
+            [
+                ("BACKGROUND", (0, 0), (-1, 0), deep),
+                ("TEXTCOLOR", (0, 0), (-1, 0), colors.white),
+                ("FONTNAME", (0, 0), (-1, 0), "Helvetica-Bold"),
+                ("FONTSIZE", (0, 0), (-1, -1), 9.2),
+                ("GRID", (0, 0), (-1, -1), 0.35, line),
+                ("LEFTPADDING", (0, 0), (-1, -1), 6),
+                ("RIGHTPADDING", (0, 0), (-1, -1), 6),
+                ("TOPPADDING", (0, 0), (-1, -1), 8),
+                ("BOTTOMPADDING", (0, 0), (-1, -1), 8),
+            ]
+        )
+    )
+    story.append(invoice_meta)
+    story.append(Spacer(1, 0.12 * inch))
+
+    item_rows = [["Work Date", "Description", "Hours", "Rate", "Amount"]]
+    for line_item in data["lines"]:
+        item_rows.append(
+            [
+                line_item["date"],
+                Paragraph(line_item["description"], styles["Body"]),
+                f"{line_item['hours']:.2f}",
+                money(31.25),
+                money(line_item["amount"]),
+            ]
+        )
+    items = Table(item_rows, colWidths=[0.85 * inch, 3.3 * inch, 0.72 * inch, 0.88 * inch, 1.15 * inch])
     items.setStyle(
         TableStyle(
             [
                 ("BACKGROUND", (0, 0), (-1, 0), deep),
                 ("TEXTCOLOR", (0, 0), (-1, 0), colors.white),
                 ("FONTNAME", (0, 0), (-1, 0), "Helvetica-Bold"),
-                ("FONTNAME", (0, 1), (0, -1), "Helvetica-Bold"),
                 ("FONTSIZE", (0, 0), (-1, -1), 9.2),
-                ("ALIGN", (1, 4), (1, -1), "RIGHT"),
+                ("ALIGN", (2, 1), (-1, -1), "RIGHT"),
                 ("VALIGN", (0, 0), (-1, -1), "TOP"),
                 ("GRID", (0, 0), (-1, -1), 0.35, line),
                 ("LEFTPADDING", (0, 0), (-1, -1), 6),
@@ -210,7 +233,8 @@ def build_invoice(data):
             ],
             [
                 Paragraph(
-                    "Source: C:\\Codex\\Wiki Files\\Project Rooms\\Invoice Entry\\sources\\email\\2026-07-20-204307-josh-kennedy-timesheet.md",
+                    "Sources: C:\\Codex\\Wiki Files\\Project Rooms\\Invoice Entry\\sources\\email\\2026-07-20-204307-josh-kennedy-timesheet.md; "
+                    "C:\\Codex\\Wiki Files\\Project Rooms\\Invoice Entry\\sources\\email\\2026-07-21-213901-josh-kennedy-timesheet-2026-07-21.md",
                     styles["Muted"],
                 )
             ],
@@ -242,19 +266,43 @@ invoices = [
         "invoice_no": "TC-JK-20260724-BACKOFFICE-001",
         "project": "BackOffice",
         "subtitle": "Onboarding and procedures",
-        "description": "Back-office onboarding, account setup, and rules/procedures review.",
-        "hours": 4.0,
-        "amount": 125.00,
+        "lines": [
+            {
+                "date": "2026-07-20",
+                "description": "Back-office onboarding, account setup, and rules/procedures review.",
+                "hours": 4.0,
+                "amount": 125.00,
+            },
+            {
+                "date": "2026-07-21",
+                "description": "BackOffice work from 1:00 P.M. to 4:45 P.M.",
+                "hours": 3.75,
+                "amount": 117.19,
+            },
+        ],
+        "amount": 242.19,
     },
     {
         "file_name": "26-07-24 - Josh Kennedy - Time Card - 4121 Tensity Dr - Week Ending 2026-07-24.pdf",
         "title": "Josh Kennedy Tensity Time Card Invoice Draft",
         "invoice_no": "TC-JK-20260724-TENSITY-001",
         "project": "24-HM - 4121 Tensity Dr",
-        "subtitle": "Property walkthrough",
-        "description": "4121 Tensity Dr property walkthrough and review of planned changes/responsibilities.",
-        "hours": 2.75,
-        "amount": 85.94,
+        "subtitle": "Property work",
+        "lines": [
+            {
+                "date": "2026-07-20",
+                "description": "4121 Tensity Dr property walkthrough and review of planned changes/responsibilities.",
+                "hours": 2.75,
+                "amount": 85.94,
+            },
+            {
+                "date": "2026-07-21",
+                "description": "4121 Tensity Dr work from 7:50 A.M. to 1:00 P.M.",
+                "hours": 5.1667,
+                "amount": 161.46,
+            },
+        ],
+        "amount": 247.40,
     },
 ]
 

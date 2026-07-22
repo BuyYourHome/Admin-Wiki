@@ -2,21 +2,26 @@
 
 ## Packet Status
 
-- Status: `Draft invoices created - verification email sent - Teams filing and spreadsheet posting held`
+- Status: `Amended draft invoices created - verification email sent - Teams filing and spreadsheet posting held`
 - Workflow: `Time Card`, calling `Create Vendor Invoice` for invoice document creation
 - Created: 2026-07-20
-- Source type: Routed free-text timesheet email; no invoice attachment.
+- Source type: Routed free-text timesheet emails; no invoice attachments.
 - Processing rule: Treat `Timesheet` as Time Card-relevant under Wes's 2026-07-20 rule update. Email amended invoice drafts to the sender after each Time Card email, with Wes and Jenny copied. Do not copy invoices to Teams until the final end-of-week email is received.
 
 ## Source Details
 
-- Routed source: `C:\Codex\Wiki Files\Project Rooms\Invoice Entry\sources\email\2026-07-20-204307-josh-kennedy-timesheet.md`
+- Routed source 1: `C:\Codex\Wiki Files\Project Rooms\Invoice Entry\sources\email\2026-07-20-204307-josh-kennedy-timesheet.md`
+- Routed source 2: `C:\Codex\Wiki Files\Project Rooms\Invoice Entry\sources\email\2026-07-21-213901-josh-kennedy-timesheet-2026-07-21.md`
 - Sender: `Josh Kennedy <IRAManager@SellYourHomeRaleigh.com>`
-- Subject: `Timesheet`
-- Received: `2026-07-20T20:43:07Z` / `2026-07-20 4:43:07 PM Eastern`
+- Subject 1: `Timesheet`
+- Received 1: `2026-07-20T20:43:07Z` / `2026-07-20 4:43:07 PM Eastern`
+- Subject 2: `Re: Timesheet 7/21/2026`
+- Received 2: `2026-07-21T21:39:01Z` / `2026-07-21 5:39:01 PM Eastern`
 - Attachments: none
-- Outlook message id: `AQMkADZkMGMwNDI3LWU5ZjctNDgzMC1iMjdkLTY0NmRiN2IwNmIyZgBGAAADKGOvWJYjX0aEKaRpd0MYQQcAVSXargQY20aF7RLCkro4ggAAAgEMAAAAVSXargQY20aF7RLCkro4ggACecWiBgAAAA==`
-- Outlook web link: https://outlook.office365.com/owa/?ItemID=AQMkADZkMGMwNDI3LWU5ZjctNDgzMC1iMjdkLTY0NmRiN2IwNmIyZgBGAAADKGOvWJYjX0aEKaRpd0MYQQcAVSXargQY20aF7RLCkro4ggAAAgEMAAAAVSXargQY20aF7RLCkro4ggACecWiBgAAAA%3D%3D&exvsurl=1&viewmodel=ReadMessageItem
+- Outlook message id 1: `AQMkADZkMGMwNDI3LWU5ZjctNDgzMC1iMjdkLTY0NmRiN2IwNmIyZgBGAAADKGOvWJYjX0aEKaRpd0MYQQcAVSXargQY20aF7RLCkro4ggAAAgEMAAAAVSXargQY20aF7RLCkro4ggACecWiBgAAAA==`
+- Outlook message id 2: `AQMkADZkMGMwNDI3LWU5ZjctNDgzMC1iMjdkLTY0NmRiN2IwNmIyZgBGAAADKGOvWJYjX0aEKaRpd0MYQQcAVSXargQY20aF7RLCkro4ggAAAgEMAAAAVSXargQY20aF7RLCkro4ggACecWiCQAAAA==`
+- Outlook web link 1: https://outlook.office365.com/owa/?ItemID=AQMkADZkMGMwNDI3LWU5ZjctNDgzMC1iMjdkLTY0NmRiN2IwNmIyZgBGAAADKGOvWJYjX0aEKaRpd0MYQQcAVSXargQY20aF7RLCkro4ggAAAgEMAAAAVSXargQY20aF7RLCkro4ggACecWiBgAAAA%3D%3D&exvsurl=1&viewmodel=ReadMessageItem
+- Outlook web link 2: https://outlook.office365.com/owa/?ItemID=AQMkADZkMGMwNDI3LWU5ZjctNDgzMC1iMjdkLTY0NmRiN2IwNmIyZgBGAAADKGOvWJYjX0aEKaRpd0MYQQcAVSXargQY20aF7RLCkro4ggAAAgEMAAAAVSXargQY20aF7RLCkro4ggACecWiCQAAAA%3D%3D&exvsurl=1&viewmodel=ReadMessageItem
 
 ## Time Card Assumptions Applied
 
@@ -31,10 +36,17 @@
 
 | Invoice # | Project / bucket | Work date | Description | Hours | Rate | Amount | Status |
 | --- | --- | --- | --- | ---: | ---: | ---: | --- |
-| `TC-JK-20260724-BACKOFFICE-001` | `BackOffice` | `2026-07-20` | Back-office onboarding, account setup, and rules/procedures review. | 4.00 | `$31.25` | `$125.00` | Draft invoice created; spreadsheet posting not applicable until BackOffice accounting path is approved. |
-| `TC-JK-20260724-TENSITY-001` | `24-HM - 4121 Tensity Dr` | `2026-07-20` | 4121 Tensity Dr property walkthrough and review of planned changes/responsibilities. | 2.75 | `$31.25` | `$85.94` | Draft invoice created; workbook insertion held for destination worksheet/expense placement. |
+| `TC-JK-20260724-BACKOFFICE-001` | `BackOffice` | `2026-07-20` | Back-office onboarding, account setup, and rules/procedures review. | 4.00 | `$31.25` | `$125.00` | Draft invoice amended; spreadsheet posting not applicable until BackOffice accounting path is approved. |
+| `TC-JK-20260724-TENSITY-001` | `24-HM - 4121 Tensity Dr` | `2026-07-20` | 4121 Tensity Dr property walkthrough and review of planned changes/responsibilities. | 2.75 | `$31.25` | `$85.94` | Draft invoice amended; workbook insertion held for destination worksheet/expense placement. |
+| `TC-JK-20260724-TENSITY-001` | `24-HM - 4121 Tensity Dr` | `2026-07-21` | 4121 Tensity Dr work from 7:50 A.M. to 1:00 P.M. | 5.17 | `$31.25` | `$161.46` | Draft invoice amended; workbook insertion held for destination worksheet/expense placement. |
+| `TC-JK-20260724-BACKOFFICE-001` | `BackOffice` | `2026-07-21` | BackOffice work from 1:00 P.M. to 4:45 P.M. | 3.75 | `$31.25` | `$117.19` | Draft invoice amended; spreadsheet posting not applicable until BackOffice accounting path is approved. |
 
-Total parsed time: 6.75 hours. Total draft amount: `$210.94`.
+Total parsed time: 15.67 hours. Total draft amount: `$489.59` from rounded invoice lines.
+
+Current invoice totals:
+
+- BackOffice: 7.75 hours, `$242.19`.
+- 4121 Tensity Dr: 7.92 displayed hours, `$247.40`.
 
 ## Generated Drafts
 
@@ -55,8 +67,8 @@ No workbook duplicate check was performed because destination worksheet/expense 
 
 ## Processing Decision
 
-- Draft invoices were generated from the Time Card source by calling the Create Vendor Invoice document pattern.
-- Draft invoices were emailed to Josh Kennedy for accuracy verification with Wes and Jenny copied.
+- Draft invoices were generated and amended from the Time Card sources by calling the Create Vendor Invoice document pattern.
+- Amended draft invoices were emailed to Josh Kennedy for accuracy verification with Wes and Jenny copied on 2026-07-22.
 - No invoice was filed into a Teams project folder because this was not identified as the final end-of-week Time Card email.
 - No workbook was edited.
 - Tensity workbook candidate: `Property/24_Project Management - 4121 Tensity Dr 2.xlsm`.

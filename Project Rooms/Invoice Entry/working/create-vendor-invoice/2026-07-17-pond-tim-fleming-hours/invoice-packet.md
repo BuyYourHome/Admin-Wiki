@@ -27,12 +27,13 @@
 | `recommended_workbook` | `Property/26_Project Management - 908 Pond St 3.xlsm` |
 | `recommended_worksheet` | `Needs Review` |
 | `confidence_status` | `Needs Review - worksheet placement` |
-| `notes` | Source supports vendor, project clue, date range, total hours, rate, and total amount. Tim Fleming confirmed the generated invoice by replying "Correct" on 2026-07-17. The packet still lacks invoice number and destination worksheet. |
+| `notes` | Source supports vendor, project clue, date range, total hours, rate, and total amount. Tim Fleming confirmed the generated invoice by replying "Correct" on 2026-07-17 and again "This is correct and confirmed" on 2026-07-22. The packet still lacks invoice number and destination worksheet. |
 
 ## Source Details
 
 - Routed source: `C:\Codex\Wiki Files\Project Rooms\Invoice Entry\sources\email\2026-07-17-194446-pond-hours-week-of-7-6-7-17.md`
 - Vendor confirmation source: `C:\Codex\Wiki Files\Project Rooms\Invoice Entry\sources\email\2026-07-17-201803-tim-fleming-pond-hours-verification.md`
+- Additional vendor confirmation source: `C:\Codex\Wiki Files\Project Rooms\Invoice Entry\sources\email\2026-07-22-121356-tim-fleming-pond-hours-confirmation.md`
 - Has attachments: no
 - Forwarded original sender: `Tim Fleming <tflem04@gmail.com>`
 - Forwarded original sent time: 2026-07-17 3:12 PM

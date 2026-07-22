@@ -28,3 +28,24 @@
 - No workbook was edited.
 - Tensity workbook insertion is held pending destination worksheet or approved placement path.
 - BackOffice posting is held pending the approved BackOffice accounting or spreadsheet path.
+
+## 2026-07-22
+
+- Received Time Card handoff from Email Monitor for routed source `C:\Codex\Wiki Files\Project Rooms\Invoice Entry\sources\email\2026-07-21-213901-josh-kennedy-timesheet-2026-07-21.md`.
+- Read the routed source. No attachments were supplied.
+- Treated the source as another Time Card email in Josh Kennedy's week ending 2026-07-24 packet.
+- Parsed 2026-07-21 Tensity time as 7:50 A.M. to 1:00 P.M. = 5 hours 10 minutes, displayed as 5.17 hours, at `$31.25/hour`, totaling `$161.46`.
+- Parsed 2026-07-21 BackOffice time as 1:00 P.M. to 4:45 P.M. = 3.75 hours at `$31.25/hour`, totaling `$117.19`.
+- Duplicate check found no existing `2026-07-21` Josh Kennedy Time Card line in the packet before amendment.
+- Amended the existing weekly invoice numbers rather than creating new invoice numbers:
+  - `TC-JK-20260724-BACKOFFICE-001`: now 7.75 hours, `$242.19`.
+  - `TC-JK-20260724-TENSITY-001`: now 7.92 displayed hours, `$247.40`.
+- Regenerated the BackOffice and Tensity invoice draft PDFs and rebuilt the combined attachment `26-07-24 - Josh Kennedy - Time Card Invoice Drafts - Week Ending 2026-07-24.pdf`.
+- PDF text/package validation passed: combined attachment has 2 pages, July 22 draft date, both existing invoice numbers, the 2026-07-21 line items, and the amended totals.
+- Visual render validation could not be completed because `fitz` was not installed, `pdf2image` could not find Poppler, and `pypdfium2` crashed the Python process during rendering. The PDF package and extracted text validated.
+- Sent the amended draft invoice packet to Josh Kennedy for accuracy verification from `OfficeAssist@BuyYourHomeLLC.com`, with Wes and Jenny copied.
+- Verified the sent copy in OfficeAssist Sent Items. Sent item id: `AQMkADZkMGMwNDI3LWU5ZjctNDgzMC1iMjdkLTY0NmRiN2IwNmIyZgBGAAADKGOvWJYjX0aEKaRpd0MYQQcAVSXargQY20aF7RLCkro4ggAAAgEJAAAAVSXargQY20aF7RLCkro4ggACe13aqAAAAA==`.
+- No Teams filing was performed because this was not identified as the final end-of-week Time Card email.
+- No workbook was edited.
+- Tensity workbook insertion remains held pending destination worksheet or approved placement path.
+- BackOffice posting remains held pending the approved BackOffice accounting or spreadsheet path.
