@@ -226,3 +226,18 @@ Lessons:
 - Treat packet-recommended workbook paths inside a property folder as routing clues, not final workbook authority. Active project-management workbooks must still be resolved from the Teams/SharePoint `Property` root before editing.
 - A same-invoice source duplicate can have a different PDF hash because of scan/export differences. Extract or compare invoice text before deciding whether two same-date PDFs are materially the same invoice.
 - When a vendor table lacks a dedicated invoice-number column, include the invoice number in the clean description or another existing trace field and record the full source path in the project-room processing log for future duplicate checks.
+
+## 2026-07-22 - Create Vendor Invoice Approval Preflight
+
+Context: Tim Fleming's free-text Pond-hours invoice exposed several workflow bottlenecks after vendor verification and Wes approval. The packet still said no invoice number, the PDF generator had hardcoded stage/status wording, the first Outlook connector send used the wrong attachment shape, and filing/spreadsheet insertion needed to stay separate because the destination worksheet was unresolved.
+
+Lessons:
+
+- Before sending any generated free-text invoice for vendor verification, Wes approval, or post-approval status, verify that the packet and generated PDF both show an invoice date and invoice number.
+- If the vendor did not provide an invoice number, assign the Invoice Entry-generated number before generating the approval package, not after the email is drafted.
+- Inspect the PDF generator/template for hardcoded date, invoice-number, total-label, and status text before regenerating a later-stage PDF. Do not reuse a vendor-verification or "not approved" PDF after Wes approval.
+- Treat vendor verification, Wes approval, project-folder filing, project-spreadsheet insertion, payment handling, and updated-status email as separate gates. Passing one gate does not automatically complete the others.
+- When Wes approves a generated invoice but the destination worksheet remains unresolved, file/send the approved invoice as allowed, but keep workbook insertion explicitly held and state the blocker in the updated-status email.
+- Before replacing a project-folder PDF, confirm the replacement PDF is the current generated stage, then record the local project-folder path in the packet and processing log.
+- For Outlook connector sends with attachments, pass `attachment_files` as a list of absolute paths on the first attempt. If a schema retry is needed, make only the allowed schema-correct retry and record the send/verification result.
+- After any sent Create Vendor Invoice email, verify the OfficeAssist Sent Items copy for sender, recipients, copied recipients, subject, attachment flag, and timestamp before marking the email step complete.
