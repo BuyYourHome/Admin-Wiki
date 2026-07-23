@@ -142,6 +142,16 @@ Completion:
 
 ## Time Card
 
+### Weekly invoice regeneration
+
+- Treat the accumulated, source-traceable weekly time-card records as the source of truth. Treat every generated PDF as a replaceable output, not as the editable record.
+- For every accepted Time Card email, update the applicable worker/week/project records, recalculate hours and amounts, and regenerate the complete invoice PDF from the approved template.
+- Replace the current weekly draft PDF with the regenerated output. Never edit text or amounts directly inside the prior PDF.
+- Preserve the worker, week-ending date, project allocation, invoice date, invoice number, hourly rate, source-email traceability, and duplicate decisions supporting each revision.
+- Route each regenerated invoice through Email Monitor's Email Delivery workflow to the original sender for approval, with Wes and Jenny copied. Invoice Entry does not send email directly.
+- Do not copy a draft invoice to Teams or insert it into a project workbook during the week.
+- At week end, after approval, copy each project-specific invoice to the appropriate Teams project folder and insert it into the appropriate project workbook using the normal duplicate-check, traceability, and validation rules.
+
 Use Time Card only when Email Monitor sends a direct handoff message to Invoice Entry for an email with subject or body wording that resembles `Time Card`, `time sheet`, `timesheet`, or similar time-reporting language.
 
 Trigger:
