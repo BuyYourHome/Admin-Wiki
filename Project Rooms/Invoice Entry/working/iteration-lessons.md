@@ -2,6 +2,17 @@
 
 Use this file to record, refine, or expand lessons learned after each workbook or workflow iteration. Each entry should state what changed or failed, the practical lesson, and how the next iteration should be constrained or validated.
 
+## 2026-07-22 - Outbound Email Ownership
+
+Context: Invoice Entry prepared an amended Josh Kennedy Time Card package but could not verify an OfficeAssist send from its own task.
+
+Lessons:
+
+- Invoice Entry owns email content, attachments, recipient decisions allowed by its workflow, and the authorization basis; it does not own the delivery operation.
+- Route every authorized Invoice Entry email to Email Monitor's Email Delivery mode at status task `019ecba7-f1cc-7ac1-aaf7-d89a3f21b582`.
+- Do not call Outlook, local Outlook, or Outlook Web from Invoice Entry and do not substitute another mailbox when OfficeAssist is unavailable.
+- Mark an email sent only after Email Monitor returns verified OfficeAssist Sent Items evidence with the sent message id and timestamp.
+
 ## 2026-07-20 - Routed Timesheet vs Time Card
 
 Context: Email Monitor routed a Josh Kennedy `Timesheet` email to Invoice Entry as a contractor/project-cost source, but the current Time Card trigger requires a subject containing `Time Card`.
