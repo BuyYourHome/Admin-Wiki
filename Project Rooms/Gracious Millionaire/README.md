@@ -63,6 +63,7 @@ The separate emails in `sources/email/` are early chapter starts, fragments, and
 - Consult the full source inventory, duplicate/conflict log, and missing-context notes when source selection or substantive drafting requires them; do not reload every historical output for routine packaging or Git work.
 - Use `working/publication-workflow.md` to separate content work from build, validation, Teams, email, ledger, and Git delivery steps.
 - Teams manuscript copies belong in `SellYourHome / Documents / Marketing / Gracious Millionaire` and must include a version identifier in the filename.
+- Superseded Markdown manuscript and chapter-draft archive copies belong in the Teams `Archive` subfolder, not the Teams root. Name archive Markdown files with the zero-padded version first, using `v## - Title.md`, so Teams sorting groups historical drafts by version. Keep current HTML review packets and ZIP package copies in the Teams root unless Wes asks for a different folder.
 - Use `tools/gm-manuscript.cmd` for modular manuscript build, link validation, statistics, and optional current-packet refresh.
 
 ## Local Output Retention
