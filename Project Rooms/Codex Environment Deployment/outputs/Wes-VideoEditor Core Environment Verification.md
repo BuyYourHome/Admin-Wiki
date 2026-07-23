@@ -2,7 +2,7 @@
 
 Verification date: 2026-07-22
 
-Status: Core Admin wiki environment installed and verified. Codex Desktop, connector sign-ins, plugin cache, and live workflow execution are not yet verified.
+Status: Core Admin wiki environment and Codex Desktop project connection installed and verified. Connector sign-ins, plugin cache, and live workflow execution are not yet verified.
 
 ## Target
 
@@ -26,6 +26,8 @@ No Windows product key, password, token, recovery code, or live secret was recor
 | Target clone state | `2c24498 Rename Wes Voice project to Voices` from `origin/main` |
 | LibreOffice | Present at `C:\Program Files\LibreOffice\program\soffice.exe` |
 | Obsidian | Installed, version 1.12.7 |
+| Codex Desktop | Installed as `OpenAI.Codex` 26.715.10079.0 |
+| Codex project | `Admin Wiki`, source folder `C:\Codex\Wiki Files` |
 | Wiki-managed installed skills | Present at `%USERPROFILE%\.codex\skills`; 29 folders |
 | Chrome | Present at `C:\Program Files (x86)\Google\Chrome\Application\chrome.exe` |
 | Word | Present |
@@ -51,11 +53,14 @@ Final observed `C:` free space after Git, LibreOffice, Obsidian, repo clone, and
 6. Installed Obsidian.
 7. Synced wiki-managed skills from `C:\Codex\Wiki Files\skills` into `%USERPROFILE%\.codex\skills`.
 8. Ran final core verification for repo, apps, skills, Office apps, Chrome, admin session, and storage.
+9. Installed Codex Desktop through the Microsoft Store package path.
+10. Completed Codex onboarding using `Operations`.
+11. Created the `Admin Wiki` Codex project pointed at `C:\Codex\Wiki Files`.
+12. Verified Codex could read `AGENTS.md` and `Admin Home.md`, report branch `main`, and confirm a clean repo tracking `origin/main`.
 
 ## Remaining Before Fully Workflow-Ready
 
-- Verify or install Codex Desktop on `WES-VIDEOEDITOR`.
-- Sign in to Codex/GitHub as needed directly on the target computer; do not record secrets.
+- Verify GitHub authorization from Codex/Git when a private fetch, push, or PR operation is needed; do not record secrets.
 - Verify Outlook, Teams, SharePoint, Chrome/browser, and GitHub connector/plugin sign-ins where needed.
 - Verify Codex plugin cache after Codex Desktop/plugin setup.
 - Run one low-risk Admin wiki workflow from the target computer to confirm end-to-end operation.

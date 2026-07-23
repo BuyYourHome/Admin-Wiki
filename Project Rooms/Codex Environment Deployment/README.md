@@ -36,9 +36,9 @@ Out of scope:
 
 ## Current Status
 
-Status: `Wes-VideoEditor` core Admin wiki environment installed and verified on 2026-07-22; Codex Desktop, connector sign-ins, plugin cache, and live workflow execution remain unverified.
+Status: `Wes-VideoEditor` core Admin wiki environment and Codex Desktop project connection installed and verified on 2026-07-22; connector sign-ins, plugin cache, and live workflow execution remain unverified.
 
-WesStudio's non-secret hardware, Windows, Codex, repo, runtime, application, skill, plugin, and remote-access baseline was inventoried on 2026-07-21. Wes approved the Step 2 Core, Business, Optional, and Safety Groups on 2026-07-21. Step 3 created the setup/verification package, and Step 4 authorized the exact `Wes-VideoEditor` scope. Step 5 connected over the private LAN, verified the session identity, and completed a read-only inventory in `outputs\Wes-VideoEditor Initial Inventory.md`. Storage initially blocked installation because `C:` had 4.8 GB free. After cleanup, Git, the canonical Admin wiki repo, LibreOffice, Obsidian, and wiki-managed skills were installed and verified. Final core verification is recorded in `outputs\Wes-VideoEditor Core Environment Verification.md`.
+WesStudio's non-secret hardware, Windows, Codex, repo, runtime, application, skill, plugin, and remote-access baseline was inventoried on 2026-07-21. Wes approved the Step 2 Core, Business, Optional, and Safety Groups on 2026-07-21. Step 3 created the setup/verification package, and Step 4 authorized the exact `Wes-VideoEditor` scope. Step 5 connected over the private LAN, verified the session identity, and completed a read-only inventory in `outputs\Wes-VideoEditor Initial Inventory.md`. Storage initially blocked installation because `C:` had 4.8 GB free. After cleanup, Git, the canonical Admin wiki repo, LibreOffice, Obsidian, wiki-managed skills, and Codex Desktop were installed and verified. The `Admin Wiki` Codex project was created against `C:\Codex\Wiki Files` and passed a read-only repo check. Final core verification is recorded in `outputs\Wes-VideoEditor Core Environment Verification.md`. Durable migration lessons are recorded in `working\migration-lessons-learned.md`.
 
 ## Remote Access And Install Safety
 
@@ -86,9 +86,8 @@ Before durable work, follow Start PR Mode in `C:\Codex\Wiki Files\Project Room C
 
 ## Next Actions
 
-1. Verify or install Codex Desktop on `Wes-VideoEditor`.
-2. Verify Codex/GitHub sign-in directly on the target computer without recording secrets.
-3. Verify needed Outlook, Teams, SharePoint, Chrome/browser, and GitHub connector/plugin sign-ins.
-4. Confirm plugin cache after Codex Desktop/plugin setup.
-5. Run one low-risk Admin wiki workflow from the target computer to confirm end-to-end operation.
-6. Free more `C:` drive space if practical; 20 GB or more is preferred for stable ongoing use.
+1. Verify Codex/GitHub authorization when a private fetch, push, or PR operation is needed.
+2. Verify needed Outlook, Teams, SharePoint, Chrome/browser, and GitHub connector/plugin sign-ins.
+3. Confirm plugin cache after connector/plugin setup.
+4. Run one low-risk Admin wiki workflow from `Wes-VideoEditor` to confirm end-to-end operation.
+5. Free more `C:` drive space if practical; 20 GB or more is preferred for stable ongoing use.
