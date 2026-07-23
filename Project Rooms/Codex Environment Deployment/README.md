@@ -34,6 +34,10 @@ Out of scope:
 - `working\target-computer-register.md` - durable status table for computers being prepared.
 - `outputs\` - review-ready setup checklists, run summaries, verification reports, and handoffs.
 
+## Modes
+
+- Update Codex Environment Mode: use `outputs\Update Codex Environment Mode.md` when Wes asks to keep an already prepared target computer current with changes from WesStudio. This mode pulls the target repo, syncs wiki-managed skills, restarts or refreshes Codex, and verifies repo/skill state without installing apps or changing accounts.
+
 ## Current Status
 
 Status: `Wes-VideoEditor` core Admin wiki environment and Codex Desktop project connection installed and verified on 2026-07-22; connector sign-ins, plugin cache, and live workflow execution remain unverified.

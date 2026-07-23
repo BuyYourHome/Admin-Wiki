@@ -7,6 +7,7 @@
 | `working/application-classification.md` | Wes approval record | authoritative | Records the Step 2 Core, Business, Optional, and Safety Groups approved on 2026-07-21. |
 | `outputs/Target Computer Setup Checklist.md` | Deployment checklist | authoritative | Canonical ordered checklist derived from the approved application and safety classification. |
 | `outputs/Target Computer Verification Report Template.md` | Verification template | authoritative | Canonical pass/fail report template for each authorized target-computer setup. |
+| `outputs/Update Codex Environment Mode.md` | Update checklist | authoritative | Mode for keeping an already prepared target computer current with GitHub Admin wiki changes and wiki-managed skill sync. |
 | `working/wes-videoeditor-authorized-setup-scope.md` | Target-specific authorization record | authoritative | Records the Step 4 target identity, private-LAN Remote Desktop method, administrator and license confirmations, approved required items, exclusions, and stop conditions. |
 | `outputs/Wes-VideoEditor Initial Inventory.md` | Target-computer inspection | authoritative | Step 5 read-only inventory of identity, Windows, disk space, required apps, repo/skill state, and observed security state. |
 | `outputs/Wes-VideoEditor Core Environment Verification.md` | Target-computer verification | authoritative | Records the Git, Admin wiki, LibreOffice, Obsidian, skill sync, Codex Desktop, and Codex project verification work completed on `WES-VIDEOEDITOR`. |

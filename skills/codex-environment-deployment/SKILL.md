@@ -42,6 +42,24 @@ Before Codex Environment Deployment file work:
 10. Preserve run notes, blockers, and verification outputs under the Project Room.
 11. Commit only scoped Codex Environment Deployment room, matching skill, registry, and index changes.
 
+## Modes
+
+### Update Codex Environment Mode
+
+Use this mode when Wes asks to keep an already prepared target computer current with changes made on WesStudio.
+
+Follow `C:\Codex\Wiki Files\Project Rooms\Codex Environment Deployment\outputs\Update Codex Environment Mode.md`.
+
+This mode is limited to:
+
+- verifying the authorized target computer and canonical repo path,
+- pulling `BuyYourHome/Admin-Wiki` at `C:\Codex\Wiki Files` with `git pull --ff-only`,
+- syncing wiki-managed skills with `C:\Codex\Wiki Files\tools\sync-codex-skills.ps1`,
+- restarting or refreshing Codex so updated skills and rules load,
+- verifying repo status, latest commit, skill counts, and free space.
+
+This mode does not authorize app installs, paid software, account sign-ins, connector approvals, security-setting changes, deleting files, force-pulls, pushes to GitHub, or use of a Teams-synced wiki folder as the working repo.
+
 ## Safety Boundaries
 
 - Remote into only the specific computer Wes authorizes for the setup run.

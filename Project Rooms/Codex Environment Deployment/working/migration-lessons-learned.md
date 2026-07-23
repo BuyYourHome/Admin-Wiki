@@ -44,3 +44,9 @@ These lessons came from the `WES-VIDEOEDITOR` setup and should be reused before 
 ## Remaining Verification Pattern
 
 - Core setup is not the same as full workflow readiness. Full readiness still requires connector/plugin sign-in checks and one low-risk live Admin wiki workflow from the target computer.
+
+## Ongoing Updates
+
+- Keeping target computers current should be its own mode, not mixed into first-time setup.
+- Update mode should pull `C:\Codex\Wiki Files` with `git pull --ff-only`, run `tools\sync-codex-skills.ps1`, then start a fresh Codex task or restart Codex Desktop.
+- A target update does not include pushing WesStudio changes to GitHub. WesStudio changes must be committed and pushed first under the Admin wiki push rules.
