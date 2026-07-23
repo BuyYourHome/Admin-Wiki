@@ -1,0 +1,27 @@
+# Teams Working Archive Map
+
+This map records Doc Scan working files and generated outputs that were removed from the Admin wiki Git working tree and preserved in Teams.
+
+## Teams Root
+
+`C:\Users\wesbr\Buy Your Home\Buy Your Home - Office Admin\Scanned Files\Doc Scan Working Archive`
+
+Use this Teams folder as the retained location for Doc Scan generated output packets, OCR/text working files, and scan-run logs that should not live in Git.
+
+## Cleanup Recorded 2026-07-23
+
+The following untracked local Doc Scan files were copied to Teams, verified by file count and byte total, and then removed from `C:\Codex\Wiki Files`.
+
+| Local source under `Project Rooms\Doc Scan` | Teams destination under `Doc Scan Working Archive` | Files | Bytes | Category |
+| --- | --- | ---: | ---: | --- |
+| `outputs\lowes-statement-all-accounts-2026-07-15` | `Outputs\lowes-statement-all-accounts-2026-07-15` | 67 | 76,998,251 | generated output / review packet |
+| `working\logs` | `Logs` | 2 | 2,310 | scan-run logs |
+| `working\lowes-all-statements-2026-07-15` and `working\scan-*` folders | `OCR Working Files\<same folder structure>` | 91 | 189,935 | OCR/text working files |
+
+Total moved in this cleanup: 160 files, 77,190,496 bytes.
+
+## Use Rule
+
+When Doc Scan needs older OCR text, scan-run logs, or generated Lowe's statement output packets from the July 2026 cleanup, look in the Teams destinations above before assuming the files were deleted.
+
+Do not copy archived Teams files back into Git unless Wes explicitly identifies a specific file as durable source material. If an archived file is needed for comparison or audit, copy that specific file into a short-lived local working folder, use it for the task, and remove it when finished unless Wes approves preserving it.

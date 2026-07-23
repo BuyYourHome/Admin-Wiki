@@ -14,6 +14,8 @@ Process scanned Office Admin PDFs and JPG/JPEG image scans conservatively. Split
 - Scan intake: `C:\Users\wesbr\Buy Your Home\Buy Your Home - Office Admin\Scanned Files`
 - Logs: `C:\Users\wesbr\Buy Your Home\Buy Your Home - Office Admin\Scanned Files\Logs`
 - Archive: `C:\Users\wesbr\Buy Your Home\Buy Your Home - Office Admin\Scanned Files\Archived`
+- Working archive map: `C:\Codex\Wiki Files\Project Rooms\Doc Scan\working\teams-working-archive-map.md`
+- Teams working archive: `C:\Users\wesbr\Buy Your Home\Buy Your Home - Office Admin\Scanned Files\Doc Scan Working Archive`
 - Destination root: `C:\Users\wesbr\Buy Your Home\Buy Your Home - Office Admin\2026`
 - Property root for mortgage, property insurance, and property closing documents: `C:\Users\wesbr\Buy Your Home\Buy Your Home - Property`
 - Operating Agreements project room for signed operating-agreement source matching: `C:\Codex\Wiki Files\Project Rooms\Operating Agreements`
@@ -22,6 +24,8 @@ Process scanned Office Admin PDFs and JPG/JPEG image scans conservatively. Split
 Use the SharePoint/Teams connector as the default discovery path for locating scan files and matching destination folders when connector access is available. Use local synced folders as the scanner drop-zone, working-copy path, PDF processing path, archive/log path, and fallback path.
 
 Read `references/folder-map.md` before routing files. Read `references/routing-rules.md` before deciding uncertain matches.
+
+If older OCR text, scan-run logs, generated review packets, or Lowe's statement output packets may matter, read the working archive map before assuming those files are unavailable locally.
 
 ## Workflow
 
@@ -434,6 +438,7 @@ If an insurance worksheet does not exist yet, do not substitute another workshee
 
 - Never delete source scans.
 - Never overwrite existing filed PDFs.
+- Do not copy Teams-archived Doc Scan working history back into Git unless Wes explicitly identifies a specific file as durable source material.
 - Never pay invoices, submit forms, move money, contact vendors, or spend money.
 - Do not file external lead/customer documents unless the destination is clear and approved.
 - If a scan contains verification codes, passwords, security codes, or scam-looking messages, flag for review and do not share the code.

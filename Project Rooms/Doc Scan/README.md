@@ -24,6 +24,7 @@ This project room holds development notes, source inventory, and review artifact
 - `sources\` - source notes for controlling SOPs, maps, skill source, automation config, and related workflow inputs.
 - `working\` - inventories, conflicts, open questions, route audits, and proposed changes.
 - `outputs\` - review-ready specs, runbooks, handoffs, or finalized drafts.
+- Large generated output packets, OCR working files, and scan-run logs removed from Git are mapped in `working\teams-working-archive-map.md`.
 
 ## Operating Modes
 
@@ -35,6 +36,7 @@ The project room's defined scan modes are maintained in [[doc-scan-modes]]. Trea
 - `C:\Codex\Wiki Files\Document Scanning Skill Spec.md`
 - `C:\Codex\Wiki Files\Document Scanning Folder Map.md`
 - `C:\Codex\Wiki Files\skills\doc-scan\SKILL.md`
+- `C:\Codex\Wiki Files\Project Rooms\Doc Scan\working\teams-working-archive-map.md`
 - `C:\Codex\Wiki Files\Invoice and Receipt Processing Notes.md`
 - `C:\Codex\Wiki Files\Invoice Project List.md`
 - `C:\Users\wesbr\.codex\automations\doc-scan\automation.toml`
