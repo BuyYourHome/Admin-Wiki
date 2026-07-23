@@ -1,0 +1,141 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1050" viewBox="0 0 1600 1050" role="img" aria-labelledby="title desc">
+  <title id="title">Buy Your Home Project Room Relationship Diagram</title>
+  <desc id="desc">A grouped relationship diagram showing Jean Wright and Admin Operations as the coordination hub, with connected project room clusters for document intake, accounting and project data, real estate transactions, legal and entity work, publishing and public work, and system maintenance.</desc>
+  <defs>
+    <style>
+      .bg { fill: #f7f8fa; }
+      .title { font: 700 38px Arial, sans-serif; fill: #1f2933; }
+      .subtitle { font: 400 17px Arial, sans-serif; fill: #53606c; }
+      .hub { fill: #23395d; stroke: #15243b; stroke-width: 2; }
+      .hubText { font: 700 24px Arial, sans-serif; fill: #ffffff; }
+      .hubSub { font: 400 15px Arial, sans-serif; fill: #dbe5f3; }
+      .groupTitle { font: 700 20px Arial, sans-serif; fill: #1f2933; }
+      .item { font: 400 15px Arial, sans-serif; fill: #2f3a45; }
+      .note { font: 400 14px Arial, sans-serif; fill: #5e6b76; }
+      .box { stroke-width: 2; rx: 8; ry: 8; }
+      .boxBlue { fill: #e7f0fb; stroke: #5a8fcb; }
+      .boxGreen { fill: #e8f4ec; stroke: #5c9f74; }
+      .boxGold { fill: #fff4db; stroke: #c99a2e; }
+      .boxRed { fill: #fdebea; stroke: #c96d65; }
+      .boxPurple { fill: #f0ebfa; stroke: #8b72c9; }
+      .boxGray { fill: #eef1f4; stroke: #7d8994; }
+      .arrow { fill: none; stroke: #687684; stroke-width: 2.3; marker-end: url(#arrowhead); }
+      .arrowSoft { fill: none; stroke: #9aa5af; stroke-width: 1.8; stroke-dasharray: 6 7; marker-end: url(#arrowheadSoft); }
+      .label { font: 600 13px Arial, sans-serif; fill: #4b5661; }
+    </style>
+    <marker id="arrowhead" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#687684"/>
+    </marker>
+    <marker id="arrowheadSoft" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#9aa5af"/>
+    </marker>
+  </defs>
+
+  <rect class="bg" x="0" y="0" width="1600" height="1050"/>
+  <text class="title" x="80" y="72">Buy Your Home Project Room Relationship Map</text>
+  <text class="subtitle" x="82" y="105">Grouped view of project rooms, intake routes, handoffs, and shared support workflows.</text>
+
+  <rect class="hub" x="625" y="410" width="350" height="150" rx="18" ry="18"/>
+  <text class="hubText" x="800" y="465" text-anchor="middle">Jean Wright</text>
+  <text class="hubText" x="800" y="497" text-anchor="middle">Admin Operations</text>
+  <text class="hubSub" x="800" y="530" text-anchor="middle">coordination, routing, rules, safe office actions</text>
+
+  <rect class="box boxBlue" x="80" y="170" width="340" height="190"/>
+  <text class="groupTitle" x="110" y="215">Intake And Coordination</text>
+  <text class="item" x="112" y="252">Email Monitor</text>
+  <text class="item" x="112" y="280">Create PR</text>
+  <text class="item" x="112" y="308">Admin Wiki Maintenance</text>
+  <text class="item" x="112" y="336">OfficeAssist Instruction Inbox</text>
+
+  <rect class="box boxGreen" x="80" y="430" width="340" height="205"/>
+  <text class="groupTitle" x="110" y="475">Document Intake</text>
+  <text class="item" x="112" y="512">Doc Scan</text>
+  <text class="item" x="112" y="540">SOPs</text>
+  <text class="item" x="112" y="568">Estate Documents</text>
+  <text class="item" x="112" y="596">Invoice and receipt routing notes</text>
+
+  <rect class="box boxGold" x="80" y="705" width="340" height="190"/>
+  <text class="groupTitle" x="110" y="750">Accounting And Project Data</text>
+  <text class="item" x="112" y="787">Invoice Entry</text>
+  <text class="item" x="112" y="815">Template to Project</text>
+  <text class="item" x="112" y="843">Project Management Spreadsheet Rewrite</text>
+  <text class="item" x="112" y="871">Worksheet modes and rollout rules</text>
+
+  <rect class="box boxGreen" x="630" y="720" width="340" height="205"/>
+  <text class="groupTitle" x="660" y="765">Real Estate Transactions</text>
+  <text class="item" x="662" y="802">New Project</text>
+  <text class="item" x="662" y="830">Contract for Deed</text>
+  <text class="item" x="662" y="858">Credit Worthiness Evaluator</text>
+  <text class="item" x="662" y="886">Amortization</text>
+  <text class="item" x="662" y="914">Property Trade Evaluation</text>
+
+  <rect class="box boxRed" x="1180" y="705" width="340" height="215"/>
+  <text class="groupTitle" x="1210" y="750">Legal And Entity Work</text>
+  <text class="item" x="1212" y="787">Brynda Suit</text>
+  <text class="item" x="1212" y="815">LD Evans</text>
+  <text class="item" x="1212" y="843">Operating Agreements</text>
+  <text class="item" x="1212" y="871">Entity Relationship</text>
+  <text class="item" x="1212" y="899">Confidential</text>
+
+  <rect class="box boxPurple" x="1180" y="430" width="340" height="205"/>
+  <text class="groupTitle" x="1210" y="475">Publishing And Public Work</text>
+  <text class="item" x="1212" y="512">Gracious Millionaire</text>
+  <text class="item" x="1212" y="540">REI BlackBook</text>
+  <text class="item" x="1212" y="568">Wes's Voice</text>
+  <text class="item" x="1212" y="596">Jennys Drawings</text>
+
+  <rect class="box boxGray" x="1180" y="170" width="340" height="190"/>
+  <text class="groupTitle" x="1210" y="215">System Maintenance</text>
+  <text class="item" x="1212" y="252">AIOS</text>
+  <text class="item" x="1212" y="280">Investigate Computer</text>
+  <text class="item" x="1212" y="308">Email Delivery</text>
+  <text class="item" x="1212" y="336">Codex Skill Source Control</text>
+
+  <path class="arrow" d="M 625 450 C 545 405, 505 295, 420 265"/>
+  <text class="label" x="445" y="332">routes and standards</text>
+
+  <path class="arrow" d="M 625 495 C 520 500, 500 525, 420 530"/>
+  <text class="label" x="453" y="490">scan intake</text>
+
+  <path class="arrow" d="M 645 560 C 520 640, 500 765, 420 800"/>
+  <text class="label" x="470" y="670">packets and data</text>
+
+  <path class="arrow" d="M 790 560 C 790 625, 795 670, 800 720"/>
+  <text class="label" x="818" y="648">project work</text>
+
+  <path class="arrow" d="M 975 520 C 1048 525, 1100 530, 1180 532"/>
+  <text class="label" x="1032" y="505">site and public assets</text>
+
+  <path class="arrow" d="M 955 560 C 1045 640, 1100 760, 1180 810"/>
+  <text class="label" x="1030" y="676">legal/entity support</text>
+
+  <path class="arrow" d="M 975 450 C 1065 405, 1105 295, 1180 265"/>
+  <text class="label" x="1038" y="335">shared tooling</text>
+
+  <path class="arrow" d="M 250 360 C 250 392, 250 400, 250 430"/>
+  <text class="label" x="272" y="398">email/file intake</text>
+
+  <path class="arrow" d="M 250 635 C 250 665, 250 678, 250 705"/>
+  <text class="label" x="272" y="675">invoice packets</text>
+
+  <path class="arrow" d="M 420 800 C 505 808, 560 815, 630 822"/>
+  <text class="label" x="470" y="792">project spreadsheet structure</text>
+
+  <path class="arrow" d="M 970 822 C 1045 822, 1105 817, 1180 812"/>
+  <text class="label" x="1035" y="846">contracts, entities, disputes</text>
+
+  <path class="arrowSoft" d="M 1350 635 C 1350 660, 1350 680, 1350 705"/>
+  <text class="label" x="1370" y="674">identity and rights</text>
+
+  <path class="arrowSoft" d="M 1180 525 C 1090 495, 1060 480, 975 472"/>
+  <text class="label" x="1032" y="455">website requests</text>
+
+  <path class="arrowSoft" d="M 1180 270 C 1095 300, 1045 352, 965 420"/>
+  <text class="label" x="1040" y="300">send, sync, verify</text>
+
+  <path class="arrowSoft" d="M 800 720 C 760 660, 710 608, 650 560"/>
+  <text class="label" x="680" y="647">transaction handoffs</text>
+
+  <text class="note" x="82" y="980">Solid arrows show primary workflow handoffs. Dashed arrows show shared support or recurring feedback. Diagram is intentionally grouped to stay readable.</text>
+  <text class="note" x="82" y="1008">Generated from Admin wiki registry/project-room relationship notes on 2026-07-19.</text>
+</svg>
