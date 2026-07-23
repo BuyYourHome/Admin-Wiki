@@ -9,6 +9,8 @@
 - Working notes, lesson stubs, source-synthesis notes, and outline-only files were not copied as manuscripts.
 - Rewrite v29 was added on 2026-07-16 as `Gracious Millionaire - Rewrite Mode v29.html`; SharePoint verification returned item id `01ZGFUBDPBECSRXBNXVRGI6JTJZ5LEJVLE` and size 795,103 bytes.
 - On 2026-07-23, 56 Markdown archive copies were moved from the Teams folder root into `Archive` and renamed with zero-padded version prefixes such as `v01 - ...` so Teams sorting groups them by version; HTML review packets and ZIP package copies remained in the root.
+- On 2026-07-23, superseded HTML review packets and the ZIP package were moved from the Teams folder root into archive subfolders by mode or packet type. The root now keeps only the current active mode packets: Dialogue v1, Interview v3, Quick v1, and Rewrite v29.
+- On 2026-07-23, untracked local cover-reference media was moved out of the repo after verified Teams copies: Google Photos reference images went to `Source Materials\Cover Reference Photos\2013-12-13` and `Source Materials\Cover Reference Photos\2013-12-14`; generated cover comparison outputs went to `Archive\Book Cover Comparisons\comparison-baseline` and `Archive\Book Cover Comparisons\comparison-real-photo`.
 
 | Teams Filename | Original Local Project-Room Path |
 | --- | --- |
@@ -22,21 +24,21 @@
 | Archive/v03 - Early Properties - Narrative Draft - Deed Execution Order.md | `outputs\Early Properties - Narrative Draft v3 - Deed Execution Order.md` |
 | Archive/v01 - Failures in Real Estate - Narrative Draft.md | `outputs\Failures in Real Estate - Narrative Draft v1.md` |
 | Archive/v01 - Foreword - Draft.md | `outputs\Foreword - Draft v1.md` |
-| Gracious Millionaire - Deep Integrated Whole Manuscript Rewrite v26 - Clickable GPT-5 Generated.html | `outputs\Gracious Millionaire - Deep Integrated Whole Manuscript Rewrite v26 - Clickable GPT-5 Generated.html` |
+| Archive/Rewrite Mode/Gracious Millionaire - Deep Integrated Whole Manuscript Rewrite v26 - Clickable GPT-5 Generated.html | `outputs\Gracious Millionaire - Deep Integrated Whole Manuscript Rewrite v26 - Clickable GPT-5 Generated.html` |
 | Archive/v26 - Gracious Millionaire - Deep Integrated Whole Manuscript Rewrite - GPT-5 Generated.md | `outputs\Gracious Millionaire - Deep Integrated Whole Manuscript Rewrite v26 - GPT-5 Generated.md` |
 | Gracious Millionaire - Dialogue Mode v1.html | `outputs\Gracious Millionaire - Dialogue Mode.html` |
-| Gracious Millionaire - Integrated Whole Manuscript Rewrite v25 - Clickable GPT-5 Generated.html | `outputs\Gracious Millionaire - Integrated Whole Manuscript Rewrite v25 - Clickable GPT-5 Generated.html` |
+| Archive/Rewrite Mode/Gracious Millionaire - Integrated Whole Manuscript Rewrite v25 - Clickable GPT-5 Generated.html | `outputs\Gracious Millionaire - Integrated Whole Manuscript Rewrite v25 - Clickable GPT-5 Generated.html` |
 | Archive/v25 - Gracious Millionaire - Integrated Whole Manuscript Rewrite - GPT-5 Generated.md | `outputs\Gracious Millionaire - Integrated Whole Manuscript Rewrite v25 - GPT-5 Generated.md` |
-| Gracious Millionaire - Interview Manuscript v1 - Clickable.html | `outputs\Gracious Millionaire - Interview Manuscript v1 - Clickable.html` |
+| Archive/Interview Mode/Gracious Millionaire - Interview Manuscript v1 - Clickable.html | `outputs\Gracious Millionaire - Interview Manuscript v1 - Clickable.html` |
 | Archive/v01 - Gracious Millionaire - Interview Manuscript.md | `outputs\Gracious Millionaire - Interview Manuscript v1.md` |
-| Gracious Millionaire - Interview Manuscript v2 - AI Business Systems - Clickable.html | `outputs\Gracious Millionaire - Interview Manuscript v2 - AI Business Systems - Clickable.html` |
+| Archive/Interview Mode/Gracious Millionaire - Interview Manuscript v2 - AI Business Systems - Clickable.html | `outputs\Gracious Millionaire - Interview Manuscript v2 - AI Business Systems - Clickable.html` |
 | Archive/v02 - Gracious Millionaire - Interview Manuscript - AI Business Systems.md | `outputs\Gracious Millionaire - Interview Manuscript v2 - AI Business Systems.md` |
-| Gracious Millionaire - Interview Manuscript v2 - Clickable.html | `outputs\Gracious Millionaire - Interview Manuscript v2 - Clickable.html` |
+| Archive/Interview Mode/Gracious Millionaire - Interview Manuscript v2 - Clickable.html | `outputs\Gracious Millionaire - Interview Manuscript v2 - Clickable.html` |
 | Archive/v02 - Gracious Millionaire - Interview Manuscript.md | `outputs\Gracious Millionaire - Interview Manuscript v2.md` |
 | Gracious Millionaire - Interview Manuscript v3 - Jenny Coastal Surrender - Clickable.html | `outputs\Gracious Millionaire - Interview Manuscript v3 - Jenny Coastal Surrender - Clickable.html` |
 | Archive/v03 - Gracious Millionaire - Interview Manuscript - Jenny Coastal Surrender.md | `outputs\Gracious Millionaire - Interview Manuscript v3 - Jenny Coastal Surrender.md` |
-| Gracious Millionaire - Jenny Clickable Chapter Review - Dialogue Mode v1.html | `outputs/jenny-chapter-review-current/Gracious Millionaire - Jenny Clickable Chapter Review - CURRENT.html` |
-| Gracious Millionaire - Jenny Clickable Chapter Review v1.html | `outputs/jenny-chapter-review-v1/Gracious Millionaire - Jenny Clickable Chapter Review.html` |
+| Archive/Jenny Review Packets/Gracious Millionaire - Jenny Clickable Chapter Review - Dialogue Mode v1.html | `outputs/jenny-chapter-review-current/Gracious Millionaire - Jenny Clickable Chapter Review - CURRENT.html` |
+| Archive/Jenny Review Packets/Gracious Millionaire - Jenny Clickable Chapter Review v1.html | `outputs/jenny-chapter-review-v1/Gracious Millionaire - Jenny Clickable Chapter Review.html` |
 | Archive/v01 - Gracious Millionaire - Manuscript Draft.md | `outputs\Gracious Millionaire - Manuscript Draft v1.md` |
 | Archive/v10 - Gracious Millionaire - Manuscript Draft - Leadership Reference.md | `outputs\Gracious Millionaire - Manuscript Draft v10 - Leadership Reference.md` |
 | Archive/v11 - Gracious Millionaire - Manuscript Draft - Private Money.md | `outputs\Gracious Millionaire - Manuscript Draft v11 - Private Money.md` |
@@ -61,13 +63,13 @@
 | Archive/v08 - Gracious Millionaire - Manuscript Draft - Leadership Or The Lack Of.md | `outputs\Gracious Millionaire - Manuscript Draft v8 - Leadership Or The Lack Of.md` |
 | Archive/v09 - Gracious Millionaire - Manuscript Draft - Continuity Rewrite.md | `outputs\Gracious Millionaire - Manuscript Draft v9 - Continuity Rewrite.md` |
 | Gracious Millionaire - Quick Mode v1.html | `outputs\Gracious Millionaire - Quick Mode.html` |
-| Gracious Millionaire - Rewrite Mode v27 - Interview-Informed Whole Manuscript - Clickable.html | `outputs\Gracious Millionaire - Rewrite Mode v27 - Interview-Informed Whole Manuscript - Clickable.html` |
+| Archive/Rewrite Mode/Gracious Millionaire - Rewrite Mode v27 - Interview-Informed Whole Manuscript - Clickable.html | `outputs\Gracious Millionaire - Rewrite Mode v27 - Interview-Informed Whole Manuscript - Clickable.html` |
 | Archive/v27 - Gracious Millionaire - Rewrite Mode - Interview-Informed Whole Manuscript.md | `outputs\Gracious Millionaire - Rewrite Mode v27 - Interview-Informed Whole Manuscript.md` |
-| Gracious Millionaire - Rewrite Mode v28.html | `outputs\Gracious Millionaire - Rewrite Mode.html` |
+| Archive/Rewrite Mode/Gracious Millionaire - Rewrite Mode v28.html | `outputs\Gracious Millionaire - Rewrite Mode.html` |
 | Archive/v28 - Gracious Millionaire - Rewrite Mode.md | `outputs\Gracious Millionaire - Rewrite Mode.md` |
-| Gracious Millionaire - Whole Manuscript Rewrite v24 - Clickable GPT-5 Generated.html | `outputs\Gracious Millionaire - Whole Manuscript Rewrite v24 - Clickable GPT-5 Generated.html` |
+| Archive/Rewrite Mode/Gracious Millionaire - Whole Manuscript Rewrite v24 - Clickable GPT-5 Generated.html | `outputs\Gracious Millionaire - Whole Manuscript Rewrite v24 - Clickable GPT-5 Generated.html` |
 | Archive/v24 - Gracious Millionaire - Whole Manuscript Rewrite - GPT-5 Generated.md | `outputs\Gracious Millionaire - Whole Manuscript Rewrite v24 - GPT-5 Generated.md` |
-| Gracious Millionaire Draft Package v1.zip | `outputs\Gracious Millionaire Draft Package v1.zip` |
+| Archive/Packages/Gracious Millionaire Draft Package v1.zip | `outputs\Gracious Millionaire Draft Package v1.zip` |
 | Archive/v01 - Jenny First Real Estate Experiences - Manuscript Chapters.md | `outputs\Jenny First Real Estate Experiences - Manuscript Chapters v1.md` |
 | Archive/v02 - Jenny First Real Estate Experiences - Manuscript Chapters.md | `outputs\Jenny First Real Estate Experiences - Manuscript Chapters v2.md` |
 | Archive/v03 - Jenny First Real Estate Experiences - Manuscript Chapters - Chapter 9 Correction.md | `outputs\Jenny First Real Estate Experiences - Manuscript Chapters v3 - Chapter 9 Correction.md` |

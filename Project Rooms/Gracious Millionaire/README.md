@@ -63,12 +63,15 @@ The separate emails in `sources/email/` are early chapter starts, fragments, and
 - Consult the full source inventory, duplicate/conflict log, and missing-context notes when source selection or substantive drafting requires them; do not reload every historical output for routine packaging or Git work.
 - Use `working/publication-workflow.md` to separate content work from build, validation, Teams, email, ledger, and Git delivery steps.
 - Teams manuscript copies belong in `SellYourHome / Documents / Marketing / Gracious Millionaire` and must include a version identifier in the filename.
-- Superseded Markdown manuscript and chapter-draft archive copies belong in the Teams `Archive` subfolder, not the Teams root. Name archive Markdown files with the zero-padded version first, using `v## - Title.md`, so Teams sorting groups historical drafts by version. Keep current HTML review packets and ZIP package copies in the Teams root unless Wes asks for a different folder.
+- Keep the Teams folder root as the active/current delivery shelf. Leave only the most current active deliverable for each manuscript mode or review purpose in the Teams root unless Wes asks to keep another file handy there.
+- Superseded Markdown manuscript and chapter-draft archive copies belong in the Teams `Archive` subfolder, not the Teams root. Name archive Markdown files with the zero-padded version first, using `v## - Title.md`, so Teams sorting groups historical drafts by version.
+- Superseded HTML review packets and ZIP packages belong in mode-specific or packet-specific subfolders under Teams `Archive`, such as `Archive\Rewrite Mode`, `Archive\Interview Mode`, `Archive\Dialogue Mode`, `Archive\Quick Mode`, `Archive\Jenny Review Packets`, and `Archive\Packages`.
+- Do not put original or reference source assets in `Archive` merely because they are untracked locally. Preserve bulky source/reference media, such as Google Photos cover references, in a Teams source-materials area such as `Source Materials\Cover Reference Photos\<date>`. Generated comparison images and output experiments belong under an archive/output area such as `Archive\Book Cover Comparisons\<comparison-set>`.
 - Use `tools/gm-manuscript.cmd` for modular manuscript build, link validation, statistics, and optional current-packet refresh.
 
 ## Local Output Retention
 
-- Keep all original source material locally. Never delete `sources\` files under this retention rule.
+- Keep original routed text/email source material locally. Bulky source/reference media may be preserved in Teams source-materials folders and removed from local untracked storage after the Teams copy is verified and the location is recorded; do not treat those Teams source-materials folders as manuscript-output archives.
 - Keep current cover and logo assets, build tools, working registers, and the current modular chapter files and manifests for active modular modes.
 - Keep one current compiled HTML review deliverable for each manuscript mode and the stable current Jenny review packet. Do not keep a duplicate full-manuscript Markdown export unless Wes requests it or a delivery tool requires it.
 - Store superseded manuscripts, chapter drafts, and review packets in Teams `SellYourHome / Documents / Marketing / Gracious Millionaire` with versioned filenames. After the Teams copy is verified and recorded, remove the superseded local generated copy.
