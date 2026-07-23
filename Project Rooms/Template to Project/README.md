@@ -31,6 +31,7 @@ Excluded unless Wes explicitly expands scope:
 
 - Before workbook edits, confirm the exact target workbook and the active worksheet mode.
 - Use Teams/SharePoint as the source of truth for active project-management workbooks when the workbook is Teams-backed.
+- Large generated workbook working history removed from Git is mapped in `working\teams-working-archive-map.md`; check that file before assuming older Template to Project working files are unavailable.
 - Always get a fresh current workbook from Teams/SharePoint before starting any workbook edit, comparison, migration, validation, or template update. Do not continue from an older project-room working copy merely because it exists.
 - Project-management spreadsheets live directly under the Teams/SharePoint `Property` drive root, not inside individual property folders.
 - Before each worksheet-specific redesign or rollout task, read the matching file under `Worksheet Modes\`.
@@ -50,6 +51,7 @@ Active. `Template to Project` is the canonical name for this project room and ma
 ## Matching Skill
 
 - Skill source: `C:\Codex\Wiki Files\skills\template-to-project\SKILL.md`
+- Teams archive map: `C:\Codex\Wiki Files\Project Rooms\Template to Project\working\teams-working-archive-map.md`
 
 ## Next Actions
 

@@ -11,6 +11,7 @@ description: Use for Buy Your Home Template to Project work: migrating approved 
 - Skill source: `C:\Codex\Wiki Files\skills\template-to-project\SKILL.md`
 - Worksheet-mode rules: `C:\Codex\Wiki Files\Project Rooms\Template to Project\Worksheet Modes`
 - Authoritative project spreadsheet rules: `C:\Codex\Wiki Files\Project Rooms\Template to Project\Project Spreadsheet Expense Placement Rules.md`
+- Teams working archive map: `C:\Codex\Wiki Files\Project Rooms\Template to Project\working\teams-working-archive-map.md`
 - Earlier rewrite room for planning/history only: `C:\Codex\Wiki Files\Project Rooms\Project Management Spreadsheet Rewrite`
 - Admin wiki source: `C:\Codex\Wiki Files`
 
@@ -21,9 +22,10 @@ Use this skill for current template-to-project worksheet rollout and migration w
 1. Confirm the working folder is `C:\Codex\Wiki Files`.
 2. Read `Admin Home.md`, `AGENTS.md`, `Project Room Workflow.md`, and `Codex Skill Source Rule.md`.
 3. Read the active room README and `Project Spreadsheet Expense Placement Rules.md`.
-4. Identify the active worksheet mode and read the matching file under `Worksheet Modes\` before worksheet-specific work.
-5. Before editing spreadsheets, use the spreadsheet skill/runtime and confirm the exact target workbook is closed when required.
-6. Check `git status --short --branch`.
+4. If prior workbook working history, migration batches, rollback/current workbook copies, validation evidence, or experiment outputs may matter, read `working\teams-working-archive-map.md` before assuming those files are unavailable locally.
+5. Identify the active worksheet mode and read the matching file under `Worksheet Modes\` before worksheet-specific work.
+6. Before editing spreadsheets, use the spreadsheet skill/runtime and confirm the exact target workbook is closed when required.
+7. Check `git status --short --branch`.
 
 ## Workflow
 
@@ -50,6 +52,7 @@ Use this skill for current template-to-project worksheet rollout and migration w
 - Do not edit live Teams/property workbooks unless Wes explicitly asks for that specific workbook change.
 - Do not overwrite source workbooks silently.
 - Do not move finished files back to Teams unless Wes asks or an established workflow explicitly requires that final delivery.
+- Do not copy Teams-archived Template to Project working history back into Git unless Wes explicitly identifies a specific file as durable source material.
 - Do not commit generated backups or rendered checks unless they are intentionally durable evidence.
 - Do not insert individual invoice, receipt, or statement-line records into project spreadsheets; that belongs to `Invoice Entry`.
 - Do not scan invoices, split documents, OCR scans, or route invoice files; that belongs to `Doc Scan`.
