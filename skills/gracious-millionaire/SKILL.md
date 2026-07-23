@@ -55,6 +55,14 @@ When new substantive Gracious Millionaire book/source material arrives, use Quic
 
 Use Interview mode, Rewrite mode, or Dialogue mode only when Wes directly requests that mode.
 
+## Journal Mode
+
+Use Journal mode when Wes asks for a Gracious Millionaire journal conversation, asks to journal, or says the conversation is not ready to become book source material.
+
+Before working in Journal mode, read `Project Rooms\Gracious Millionaire\working\journal-mode.md` and follow it. Journal mode is an interactive conversation mode, not a manuscript mode and not source material unless Wes explicitly asks to compile or promote the journal conversation for book use.
+
+Always identify responses as `Journal mode` while working in this mode. Keep Journal mode content segregated from manuscript modes, source intake, source inventory, book architecture, chapter files, manifests, review packets, and email-delivery workflows unless Wes explicitly asks to compile or promote specific journal material. Do not email Journal mode activity to anyone except Wes, and do not include it in manuscript versions unless Wes explicitly asks.
+
 ## Mode Independence Rule
 
 Each manuscript mode must produce an independent product from the original project-room source material, not from another mode's manuscript output.
