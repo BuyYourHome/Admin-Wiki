@@ -1,15 +1,15 @@
 ---
 name: email-monitor
-description: Create Wes's, Jenny's, and Josh's daily OfficeAssist morning mailbox summaries for Buy Your Home. Use when Codex needs to scan their delegated Outlook mailboxes, apply stored cutoffs, select priority business messages across Inbox and rule-routed folders, prepare Josh's Manager Task mode list, draft plain-text summaries, and hand sends to `email-delivery`.
+description: Create Wes's, Jenny's, and Josh's daily OfficeAssist mailbox summaries, monitor OfficeAssist instruction email, route defined project email, and execute direct authorized outbound-email delivery handoffs from other Project Rooms, including Invoice Entry. Use for mailbox scanning and summary preparation, routed-email intake, or an immediate structured delivery request that must be sent through `email-delivery`, verified in Sent Items, logged against a request ID, and reported back to the originating task.
 ---
 
 # Email Monitor
 
 ## Overview
 
-Create daily summaries for Boss at `WesWill@BuyYourHomeLLC.com`, Jenny at `Jenny@BuyYourHomeLLC.com`, and Josh at `IRAManager@SellYourHomeRaleigh.com`, then hand off delivery to the shared `email-delivery` skill. Josh's summary also includes the current Manager Task mode list.
+Create daily summaries for Boss at `WesWill@BuyYourHomeLLC.com`, Jenny at `Jenny@BuyYourHomeLLC.com`, and Josh at `IRAManager@SellYourHomeRaleigh.com`, then hand off delivery to the shared `email-delivery` skill. Josh's summary also includes the current Manager Task mode list. Email Monitor also receives complete, authorized outbound-email delivery packages directly from other Project Rooms and executes them immediately through Email Delivery.
 
-This skill owns mailbox scanning, cutoff selection, message prioritization, summary drafting, usage-summary inclusion, and summary-run state updates. It does not own sender safety or send verification.
+For summaries and routing, this skill owns mailbox scanning, cutoff selection, message prioritization, summary drafting, usage-summary inclusion, and summary-run state updates. For direct delivery handoffs, the requesting Project Room owns the message purpose, authorization, recipients, subject, body, attachments, and workflow-specific restrictions. Email Monitor owns package validation, duplicate prevention, delivery coordination through `email-delivery`, durable delivery-request state, callback reporting, and escalation. The shared `email-delivery` skill owns sender safety, connector handling, Sent Items verification, and delivery failure mechanics.
 
 Development notes, source inventory, and open questions for this workflow live in `C:\Codex\Wiki Files\Project Rooms\Email Monitor\`.
 
@@ -209,26 +209,115 @@ For each routed email:
 
 Current Invoice Entry task id: `019f3d56-b310-75c0-b084-616bfc1e9f59`.
 
-Do not create a new Invoice Entry task for this routing unless Wes explicitly asks. Do not approve, pay, reply to the contractor/vendor, make live spreadsheet entries, or move files into Teams from this Email Monitor or OfficeAssist monitor thread unless Wes explicitly asks for processing here and the Invoice Entry rules allow it. The default action is source routing plus direct Invoice Entry handoff only.
+Do not create a new Invoice Entry task for this routing unless Wes explicitly asks. During intake routing, do not approve, pay, reply to the contractor/vendor, make live spreadsheet entries, or move files into Teams from this Email Monitor or OfficeAssist monitor thread unless Wes explicitly asks for processing here and the Invoice Entry rules allow it. This intake-stage prohibition on contractor/vendor contact does not block a later Email Delivery request when Invoice Entry's saved rules and the delivery package explicitly authorize that specific message. The default intake action remains source routing plus direct Invoice Entry handoff only.
 
 ### Email Delivery
 
-Use Email Delivery when this project room has an authorized email ready to send or when another Email Monitor mode reaches its send step.
+Use Email Delivery when this project room has an authorized email ready to send, another Email Monitor mode reaches its send step, or another authorized Project Room sends Email Monitor a complete direct delivery handoff. Invoice Entry is an authorized requesting Project Room when its package is supported by Invoice Entry's saved rules and includes a specific authorization basis.
 
-This mode is connected directly to `C:\Codex\Wiki Files\skills\email-delivery\SKILL.md`. The calling Email Monitor workflow retains responsibility for the approved recipients, subject, plain-text body, required attachments, and any stricter workflow limits. Email Delivery owns only the delivery operation: OfficeAssist sender safety, shared/delegated Outlook connector use, attachment-path validation and parameter-shape handling, Sent Items verification, delivery logging, fallback, and failure reporting.
+A direct delivery handoff is an immediate trigger. Process it without scanning a mailbox, finding an instruction email, waiting for the Email Monitor heartbeat, or rerunning the originating workflow.
 
-For each send:
+#### Ownership Boundary
 
-- use `OfficeAssist@BuyYourHomeLLC.com` unless Wes explicitly authorizes another sender for that specific message;
-- require clear authorization before an external or otherwise high-impact send;
+The requesting Project Room owns:
+
+- message purpose and authorization;
+- sender requested, To, CC, and BCC recipients;
+- subject and exact plain-text body;
+- attachment selection and whether each attachment is required;
+- workflow-specific restrictions.
+
+Email Monitor owns:
+
+- validating the delivery package and request ID;
+- checking durable delivery records before sending;
+- invoking `C:\Codex\Wiki Files\skills\email-delivery\SKILL.md`;
+- recording the delivery result;
+- immediately returning the result to the callback task/thread;
+- reporting unresolved failures to Wes.
+
+Email Delivery owns OfficeAssist sender safety, shared/delegated Outlook connector use, attachment-path validation and connector parameter-shape handling, Sent Items verification, the documented retry, and failure reporting. Email Monitor must not reinterpret or alter caller-owned fields.
+
+#### Required Delivery Package
+
+Require every direct delivery handoff to contain all of these fields:
+
+- `delivery_request_id`: stable, unique request ID;
+- `originating_project_room`: requesting Project Room name;
+- `originating_task_thread_id`: task/thread that owns the request;
+- `authorization_basis`: the exact saved rule or specific Wes authorization allowing this delivery;
+- `sender_mailbox`;
+- `to_recipients`;
+- `cc_recipients`, explicitly `none` or an empty list when unused;
+- `bcc_recipients`, explicitly `none` or an empty list when unused;
+- `subject`;
+- `plain_text_body`;
+- `absolute_attachment_paths`, explicitly an empty list when there are no attachments;
+- `attachment_required_status`, identifying whether attachments are required and which paths are mandatory;
+- `workflow_specific_restrictions`;
+- `callback_task_thread_id` for the result.
+
+Reject or hold an incomplete or internally conflicting package. Return the missing or conflicting fields to the callback task/thread and record the request as unresolved. Do not invent, infer, remove, add, or change recipients, content, attachments, authorization, or workflow restrictions.
+
+#### Duplicate Prevention And Durable State
+
+Before any send attempt, search the Email Monitor delivery records and automation memory for `delivery_request_id`.
+
+- If that request is already `Sent and Verified`, do not send it again; return the existing verified result to the callback task/thread.
+- If it is `Sending`, `Held`, `Failed - Unresolved`, or otherwise unresolved, do not create a second send attempt until the existing record is reconciled under the shared Email Delivery retry rules.
+- If it is new and complete, create a durable request record before invoking the connector, then update that same record with the final result.
+
+Use `C:\Users\wesbr\.codex\automations\officeassist-morning-email-summary-and-instruction-monitor\memory.md` as the default durable delivery-request record unless the Project Room establishes a dedicated Email Monitor delivery ledger. Record the request ID, origin and callback IDs, authorization basis, immutable delivery fields or a precise reference to them, status, timestamps, sent message ID when available, verification details, and blocker notes.
+
+#### Invoice Entry Requests
+
+A properly authorized Invoice Entry delivery handoff may request:
+
+- vendor invoice-accuracy verification;
+- Time Card invoice verification;
+- Wes approval/payment review;
+- a post-Wes-approval status notice.
+
+The Invoice Entry package still controls the exact recipient set, content, attachments, required-attachment status, and restrictions. Authorization for one category or message does not authorize a different recipient, purpose, or follow-up.
+
+#### Send And Verification
+
+For each accepted package:
+
+- use `OfficeAssist@BuyYourHomeLLC.com` unless the package contains specific Wes authorization for another sender;
 - prefer the Outlook Email connector shared/delegated mailbox send action with Sent Items saving enabled;
-- pass structured recipient objects and plain-text subject/body values;
-- pass attachments as a list of absolute local paths and follow the shared skill's one-retry rule when a connector error clearly identifies a schema correction;
-- query OfficeAssist Sent Items after sending and verify the expected subject, recipients, CC recipients, sender, and attachment flag;
-- record the sent message id, sent timestamp, and verification result in the calling workflow's log;
-- report send or verification failure immediately and do not assume delivery succeeded.
+- pass To, CC, and BCC as structured recipient objects;
+- pass the caller's subject and body as plain-text values without rewriting them;
+- validate every attachment path and pass attachments as a list of absolute local paths;
+- never silently omit a required attachment;
+- make only the schema-correct retry documented in `email-delivery`, and only when the first connector error clearly explains the correction;
+- after sending, query OfficeAssist Sent Items and verify sender, To, CC, BCC, subject, and required attachment presence;
+- do not send through another mailbox after a send or verification failure.
 
-Do not let this mode invent recipients, content, attachments, or authorization. Do not send without required attachments unless the calling workflow explicitly permits that fallback.
+If specific Wes authorization names a sender other than OfficeAssist, preserve that sender in the request but hold the request unless the shared Email Delivery rules and available connector can safely use that exact sender and still satisfy the required Sent Items verification. Do not silently fall back to another mailbox.
+
+#### Callback Contract
+
+After successful delivery, immediately return this result to `callback_task_thread_id`:
+
+- `delivery_request_id`;
+- `status: Sent and Verified`;
+- sent message ID;
+- sent timestamp;
+- verified sender;
+- verified To recipients;
+- verified CC and BCC recipients;
+- subject;
+- attachment verification, including verified attachment names or the verified no-attachment state;
+- delivery notes, including any documented schema-correct retry.
+
+If sending or verification fails:
+
+- do not report success;
+- do not send through another mailbox;
+- keep the durable request status unresolved;
+- immediately report the blocker to Wes;
+- return a failure result to `callback_task_thread_id` with the request ID, failure stage, connector or verification result, unresolved status, and required next decision.
 
 ## Priority Selection
 

@@ -14,7 +14,7 @@ Use [[Agent Unit Standard]] for the standard package behind an agent-like operat
 | REI Text Message Watcher | Heartbeat automation | Active | Every 15 minutes during 8:00 AM-9:00 PM Eastern; adaptive 1-minute checks during activity | `C:\Users\wesbr\.codex\automations\morning-weswill-email-summary\automation.toml` |
 | OfficeAssist Instruction Inbox Monitor | Behavior inside Email Monitor heartbeat | Active | Runs every day; starts at 7:45 AM Eastern, then every 15 minutes through 11:00 PM Eastern; checks email and takes defined actions | `AGENTS.md`; `C:\Users\wesbr\.codex\automations\officeassist-morning-email-summary-and-instruction-monitor\automation.toml` |
 | Gracious Millionaire Project Room Heartbeat | Project-room heartbeat automation | Active | Every 15 minutes from 8:00 AM-11:45 PM Eastern; project-room Markdown intake processing only | `Project Rooms\Gracious Millionaire\README.md`; `Project Rooms\Gracious Millionaire\working\intake-heartbeat-rules.md`; `C:\Users\wesbr\.codex\automations\gracious-millionaire-project-room-heartbeat\automation.toml` |
-| Email Monitor | Wiki-managed skill plus heartbeat automation plus project room | Active | Runs every day; starts at 7:45 AM Eastern, then every 15 minutes through 11:00 PM Eastern; Boss, Jenny, and Josh summaries run once daily at/after 8:00 AM, and instruction monitoring checks OfficeAssist email | `skills\email-monitor\SKILL.md`; `Project Rooms\Email Monitor\README.md`; `C:\Users\wesbr\.codex\automations\officeassist-morning-email-summary-and-instruction-monitor\automation.toml` |
+| Email Monitor | Wiki-managed skill plus heartbeat automation, project room, and direct Email Delivery endpoint | Active | Heartbeat runs every day from 7:45 AM through 11:00 PM Eastern; direct authorized Project Room delivery handoffs trigger immediately and do not wait for the heartbeat | `skills\email-monitor\SKILL.md`; `Project Rooms\Email Monitor\README.md`; `C:\Users\wesbr\.codex\automations\officeassist-morning-email-summary-and-instruction-monitor\automation.toml` |
 | Email Delivery | Wiki-managed support skill | Active | Called by email-capable Admin workflows | `skills\email-delivery\SKILL.md` |
 | Doc Scan | Wiki-managed skill plus heartbeat automation plus project room | Active | Every 15 minutes on weekdays from 10:00 AM through 4:45 PM Eastern | `skills\doc-scan\SKILL.md`; `Project Rooms\Doc Scan\README.md`; `C:\Users\wesbr\.codex\skills\doc-scan\SKILL.md`; app automation id `doc-scan` |
 | Codex Skill Source Control | Wiki-managed skill system | Active | On demand after skill changes or wiki pulls | `Codex Skill Source Rule.md`; `tools\sync-codex-skills.ps1`; `skills\` |
@@ -259,7 +259,7 @@ Tools/services used:
 
 ## Email Monitor
 
-Type: wiki-managed skill plus heartbeat automation.
+Type: wiki-managed skill plus heartbeat automation and direct Email Delivery endpoint.
 
 Status: active for Wes, Jenny, and Josh.
 
@@ -281,6 +281,7 @@ Purpose:
 - Recursively review the full `IRAManager@SellYourHomeRaleigh.com` Outlook mailbox, including rule-routed subfolders.
 - Summarize unread or newly received financial, legal, property, vendor/admin, time-sensitive, or action-oriented messages.
 - Monitor the OfficeAssist mailbox for instruction emails and take defined actions when the email instruction and safety rules allow it.
+- Receive complete, authorized outbound-email delivery packages directly from other Project Rooms, including Invoice Entry, and execute them immediately through the shared Email Delivery skill without mailbox scanning or heartbeat delay.
 - Route Gracious Millionaire and Brynda Suit instruction emails into their owning project rooms as source material and hand them off to their existing threads/tasks.
 - Send Wes a concise priority summary from `OfficeAssist@BuyYourHomeLLC.com`.
 - Email Jenny's concise priority summary to `Jenny@BuyYourHomeLLC.com` from `OfficeAssist@BuyYourHomeLLC.com` under the current global profile, and verify the sent copy in OfficeAssist Sent Items.
@@ -323,11 +324,13 @@ Workflow boundary:
 
 - The morning-summary automation keeps responsibility for mailbox scanning, cutoff selection, message prioritization, summary drafting, and attachment decisions.
 - The shared `email-delivery` skill handles the send step only: Outlook connector preference, sender safety, attachment input shape, Sent Items verification, local Outlook fallback, and failure reporting.
+- For direct Project Room handoffs, the requester owns purpose, authorization, sender request, To/CC/BCC, subject, exact plain-text body, attachments and required status, and workflow restrictions. Email Monitor owns package completeness checks, request-ID duplicate prevention, durable delivery state, delivery coordination, callback reporting, and escalation to Wes.
 - Defined mode: Email Summary scans Boss's, Jenny's, and Josh's Outlook mailboxes once daily, drafts priority summaries with usage totals, adds the read-only Manager Task mode list to Josh's summary, hands delivery to `email-delivery`, verifies OfficeAssist Sent Items, and updates summary state.
 - Defined mode: Gracious Millionaire Email Routing routes Gracious Millionaire emails into the Gracious Millionaire project room as Markdown source files, records the Outlook message id in Email Monitor memory, and sends a direct project-room thread handoff without drafting the book response in this Email Monitor thread.
 - Defined mode: Brynda Suit Email Routing routes Brynda Suit emails into the Brynda Suit project room as Markdown source files, records the Outlook message id in Email Monitor memory, and sends a direct task handoff without drafting the Brynda Suit response in this Email Monitor thread.
 - Defined mode: Web Site Email Routing routes `GM Site` / REI BlackBook website emails into the REI BlackBook project room as Markdown source files, records the Outlook message id in Email Monitor memory, and sends a direct REI Blackbook thread handoff without editing or publishing the website in this Email Monitor thread.
-- Defined mode: Email Delivery handles authorized Email Monitor sends through the shared `email-delivery` skill, including OfficeAssist shared-mailbox connector use, absolute attachment-path validation, one schema-correct retry when clearly directed by the connector error, Sent Items verification, delivery logging, fallback, and immediate failure reporting. The calling workflow retains ownership of recipients, content, required attachments, and authorization.
+- Defined mode: Email Delivery handles authorized Email Monitor sends and immediate direct handoffs from other Project Rooms through the shared `email-delivery` skill. Each direct package must include a unique request ID, origin Project Room and task/thread ID, authorization basis, sender, To/CC/BCC, subject, exact plain-text body, absolute attachment paths, attachment-required status, workflow restrictions, and callback task/thread ID. Email Monitor rejects incomplete packages, checks durable request records before sending, prevents duplicate sends, verifies sender/recipients/subject/attachments in OfficeAssist Sent Items, and returns a fixed success or unresolved-failure result to the callback task.
+- Invoice Entry may submit properly authorized delivery packages for vendor invoice-accuracy verification, Time Card invoice verification, Wes approval/payment review, or post-Wes-approval status notices. Route Vendor Invoice's no-vendor-contact rule applies during intake routing and does not override a later delivery specifically authorized under Invoice Entry's saved rules.
 - Development work, source inventory, open questions, and review-ready handoffs for this workflow live in `C:\Codex\Wiki Files\Project Rooms\Email Monitor\`.
 
 ## Email Delivery
@@ -339,6 +342,7 @@ Status: active.
 Purpose:
 
 - Provide shared OfficeAssist email sender-safety, Outlook connector preference, attachment input handling, sent-item verification, and failure reporting for Admin workflows that send from `OfficeAssist@BuyYourHomeLLC.com`.
+- Execute Email Monitor delivery packages received directly from authorized Project Rooms while the requesting workflow retains all message and authorization decisions.
 - Keep workflow-specific email content and package rules in the calling workflow.
 
 Defined in:
@@ -349,7 +353,7 @@ Important rules:
 
 - The calling workflow supplies recipients, subject, body, attachments, and any stricter recipient/package limits.
 - Prefer the Outlook Email connector shared/delegated mailbox send action, enable Sent Items saving, use structured recipient objects, and pass attachments as a list of absolute local paths.
-- Verify the expected subject, recipients, CC recipients, sender, and attachment flag in OfficeAssist Sent Items; record the sent message id, timestamp, and verification result in the calling workflow's log.
+- Verify the expected subject, To/CC/BCC recipients, sender, and required attachment presence in OfficeAssist Sent Items; record the sent message id, timestamp, and verification result in the calling workflow's log.
 - Make one schema-correct retry only when the first connector error clearly identifies the correction; otherwise stop and report the proposed message details and attachment paths.
 - Use local Outlook only as fallback when connector send or verification is unavailable.
 

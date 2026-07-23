@@ -23,7 +23,7 @@ This project room holds development notes, source inventory, and review artifact
 - Preferred mailbox/send path: Outlook Email connector, with OfficeAssist sent-item verification.
 - Fallback: local Outlook only when connector send or verification cannot complete safely.
 - Automation type: heartbeat, attached to the dedicated `Email Monitor` thread.
-- Responsibility boundary: this heartbeat checks email and takes defined actions. It may route Gracious Millionaire email into that project room as Markdown, but it does not process the Gracious Millionaire manuscript.
+- Responsibility boundary: the heartbeat checks email and takes defined actions. Separately, direct authorized Email Delivery handoffs from other Project Rooms trigger immediately without waiting for the heartbeat or scanning a mailbox. Email Monitor coordinates delivery but does not take ownership of the requesting workflow's purpose, content, authorization, recipients, attachments, or restrictions.
 - Status thread id: `019ecba7-f1cc-7ac1-aaf7-d89a3f21b582`.
 
 ## Room Layout
@@ -46,13 +46,30 @@ This mode runs only once per calendar day per recipient at the first eligible he
 
 ### Email Delivery
 
-Use this mode when this project room has an authorized email ready to send or when another Email Monitor mode reaches its send step.
+Use this mode when this project room has an authorized email ready to send, another Email Monitor mode reaches its send step, or an authorized Project Room, including Invoice Entry, sends a complete direct delivery handoff. A direct handoff triggers immediately. It does not require mailbox scanning, an instruction email, the Email Monitor heartbeat, or a rerun of the originating workflow.
 
-This mode is connected directly to `C:\Codex\Wiki Files\skills\email-delivery\SKILL.md`. The calling Email Monitor workflow owns the approved recipients, subject, plain-text body, required attachments, and workflow-specific restrictions. The Email Delivery mode owns OfficeAssist sender safety, the Outlook connector shared/delegated mailbox send action, attachment-path validation and connector parameter-shape handling, Sent Items verification, delivery logging, local Outlook fallback, and failure reporting.
+This mode is connected directly to `C:\Codex\Wiki Files\skills\email-delivery\SKILL.md`. The requesting Project Room owns the message purpose, authorization, sender request, To/CC/BCC recipients, subject, exact plain-text body, attachment paths and required status, and workflow-specific restrictions. Email Monitor owns package validation, request-ID duplicate prevention, delivery coordination, durable delivery-request state, failure escalation, and callback reporting. The shared Email Delivery skill owns OfficeAssist sender safety, connector handling, attachment-path validation and parameter shape, Sent Items verification, its documented retry, and delivery failure mechanics.
 
-For a connector send, use `OfficeAssist@BuyYourHomeLLC.com`, enable Sent Items saving, pass structured recipient objects, and pass attachments as a list of absolute local paths. After sending, verify the expected subject, recipients, CC recipients, sender, and attachment flag in OfficeAssist Sent Items, then record the sent message id, sent timestamp, and verification result in the calling workflow's log. Make only one schema-correct retry when the first error clearly identifies the correction. A failed send or unverified send must be reported immediately.
+Every direct package must provide:
 
-This mode does not invent recipients, message content, attachment requirements, or authorization. It does not send without required attachments unless the calling workflow explicitly allows that fallback.
+- delivery request ID;
+- originating Project Room and task/thread ID;
+- authorization basis;
+- sender mailbox;
+- To, CC, and BCC recipients, with unused recipient classes explicitly empty;
+- subject and exact plain-text body;
+- absolute attachment paths, including an explicit empty list when unused;
+- attachment-required status;
+- workflow-specific restrictions;
+- callback task/thread ID.
+
+Reject or hold incomplete or conflicting packages. Do not invent or change any caller-owned field. Before sending, search durable Email Monitor delivery records and automation memory for the request ID. A request already marked `Sent and Verified` must not be sent again; return its existing result. A request already unresolved must not start a parallel send. Record a new accepted request before invoking the connector and update that record with the result. The default durable record is `C:\Users\wesbr\.codex\automations\officeassist-morning-email-summary-and-instruction-monitor\memory.md` unless Email Monitor establishes a dedicated delivery ledger.
+
+A properly authorized Invoice Entry package may request vendor invoice-accuracy verification, Time Card invoice verification, Wes approval/payment review, or a post-Wes-approval status notice. Route Vendor Invoice's prohibition on contacting a vendor applies to intake routing; it does not block a later, specifically authorized Email Delivery package under Invoice Entry's saved rules.
+
+For an accepted connector send, use `OfficeAssist@BuyYourHomeLLC.com` unless the package contains specific Wes authorization for another sender. Prefer the Outlook connector, enable Sent Items saving, pass structured recipient objects, preserve the exact plain-text subject/body, and pass attachments as a list of absolute paths. Never omit a required attachment. Make only the documented schema-correct retry when the first connector error clearly explains it. Do not fall back to another mailbox after failure.
+
+After sending, verify the OfficeAssist Sent Items copy for sender, To, CC, BCC, subject, and attachment presence. On success, immediately return to the callback task/thread: request ID, `Sent and Verified`, sent message ID, sent timestamp, verified sender and recipients, subject, attachment verification, and delivery notes. On send or verification failure, preserve the unresolved request, report the blocker to Wes immediately, and return the failure stage and required decision to the callback task/thread without claiming success.
 
 ### Gracious Millionaire Email Routing
 
@@ -85,6 +102,8 @@ Use this room for development and design work. Do not change the live automation
 When the workflow changes, update the skill, this project room, and the registry together.
 
 ## Change Log
+
+- 2026-07-22: Expanded Email Delivery to accept immediate authorized handoffs from other Project Rooms, including Invoice Entry; added the complete delivery-package schema, request-ID duplicate prevention, durable request state, fixed success/failure callbacks, and the intake-routing versus later-authorized-delivery distinction.
 
 - 2026-07-21: Added Jenny as a required CC on Josh's recurring Email Summary while preserving Wes as CC.
 
