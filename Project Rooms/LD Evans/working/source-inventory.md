@@ -16,4 +16,5 @@
 | `sources/video/leaving-home/video/*.en-orig.vtt` | YouTube automatic captions | unclear | Useful as a searchable working transcript; verify all quotations, names, dates, and unclear wording against the recordings. |
 | `working/transcripts/*.md` | Reconstructed working transcripts | background | Caption repetition removed and content grouped by minute for source tracing; still machine-generated and requires audio verification. |
 | `working/manuscript-source-map.md` | Source analysis | background | Maps supported events, voice characteristics, and verification needs for Chapters 4 and 5. |
+| `working/build-manuscript-html.py` | Working tool | reference | Converts `outputs\LD Evans Manuscript - Working Draft.md` into an HTML review copy; reusable tooling, not a source for manuscript facts. |
 | Additional LD Evans documents, photographs, and testimony | Project sources | missing | Needed to corroborate and expand the four recorded chapters. |
