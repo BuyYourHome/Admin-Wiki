@@ -49,3 +49,17 @@
 - No workbook was edited.
 - Tensity workbook insertion remains held pending destination worksheet or approved placement path.
 - BackOffice posting remains held pending the approved BackOffice accounting or spreadsheet path.
+
+## 2026-07-22 - Later Time Card Update
+
+- Received a new Time Card handoff for `C:\Codex\Wiki Files\Project Rooms\Invoice Entry\sources\email\2026-07-22-214447-josh-kennedy-time-card-update.md`.
+- Preserved `C:\Codex\Wiki Files\Project Rooms\Invoice Entry\sources\email\2026-07-22-214452-wes-forward-josh-time-card-update.md` as duplicate transport evidence. It arrived five seconds after Josh's message and was not added as another time-card line.
+- Parsed Josh's 2026-07-22 Tensity time as 9 hours 5 minutes: 6:45 A.M.-3:30 P.M. at 4121 Tensity Dr plus 3:30 P.M.-3:50 P.M. picking up project supplies at Lowe's in Cary.
+- Applied the established `$31.25/hour` rate. The new rounded line amount is `$283.85`.
+- Duplicate check found no existing 2026-07-22 source line in the weekly packet before amendment.
+- Kept invoice `TC-JK-20260724-TENSITY-001` and amended it to 17.00 hours and `$531.25`. BackOffice invoice `TC-JK-20260724-BACKOFFICE-001` remains 7.75 hours and `$242.19`.
+- Regenerated the two invoice PDFs and combined attachment `26-07-24 - Josh Kennedy - Time Card Invoice Drafts - Week Ending 2026-07-24.pdf`.
+- Rendered and visually inspected both combined PDF pages. The existing invoice numbers, July 22 line, totals, layout, and source traceability are legible with no clipping or overlap.
+- The Outlook connector is not available in this session. The local Outlook fallback has stores for Josh, Wes, and Jenny but not `OfficeAssist@BuyYourHomeLLC.com`, so Email Delivery sender verification cannot pass. The new amendment was not sent from another mailbox.
+- No Teams filing was performed because this was not identified as the final end-of-week Time Card email.
+- No workbook was edited. Tensity placement and BackOffice posting remain held under the existing rules.

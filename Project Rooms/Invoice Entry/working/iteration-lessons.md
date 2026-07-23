@@ -15,6 +15,8 @@ Lessons:
 - Split Time Card drafts into one invoice per project and one invoice for BackOffice when both are present.
 - Do not copy Time Card invoices to Teams until the final end-of-week email is received and processed.
 - After every Time Card email, amend the current weekly invoice drafts and email them to the sender for verification with Wes and Jenny copied.
+- When Wes forwards the worker's Time Card immediately after the original arrives, preserve the forward as transport evidence but key the line to the original worker message so the same hours are not accumulated twice.
+- Preserve the existing weekly invoice number across amendments; add only the new dated line and recalculate the existing project invoice.
 
 ## 2026-07-08 - Outrigger Table Layout Rollout Attempt
 

@@ -234,7 +234,8 @@ def build_invoice(data):
             [
                 Paragraph(
                     "Sources: C:\\Codex\\Wiki Files\\Project Rooms\\Invoice Entry\\sources\\email\\2026-07-20-204307-josh-kennedy-timesheet.md; "
-                    "C:\\Codex\\Wiki Files\\Project Rooms\\Invoice Entry\\sources\\email\\2026-07-21-213901-josh-kennedy-timesheet-2026-07-21.md",
+                    "C:\\Codex\\Wiki Files\\Project Rooms\\Invoice Entry\\sources\\email\\2026-07-21-213901-josh-kennedy-timesheet-2026-07-21.md; "
+                    "C:\\Codex\\Wiki Files\\Project Rooms\\Invoice Entry\\sources\\email\\2026-07-22-214447-josh-kennedy-time-card-update.md",
                     styles["Muted"],
                 )
             ],
@@ -301,8 +302,14 @@ invoices = [
                 "hours": 5.1667,
                 "amount": 161.46,
             },
+            {
+                "date": "2026-07-22",
+                "description": "4121 Tensity Dr work from 6:45 A.M. to 3:30 P.M., followed by a Lowe's supply pickup in Cary from 3:30 P.M. to 3:50 P.M.",
+                "hours": 9.0833,
+                "amount": 283.85,
+            },
         ],
-        "amount": 247.40,
+        "amount": 531.25,
     },
 ]
 
