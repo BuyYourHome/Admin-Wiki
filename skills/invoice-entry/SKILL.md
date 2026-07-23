@@ -9,6 +9,8 @@ description: Use for Buy Your Home project-management spreadsheet invoice-entry 
 
 - Project room: `C:\Codex\Wiki Files\Project Rooms\Invoice Entry`
 - Skill source: `C:\Codex\Wiki Files\skills\invoice-entry\SKILL.md`
+- Teams working archive map: `C:\Codex\Wiki Files\Project Rooms\Invoice Entry\working\teams-working-archive-map.md`
+- Scanned document action log: `C:\Codex\Wiki Files\Project Rooms\Invoice Entry\working\scanned-document-action-log.md`
 - Template-to-project migration room: `C:\Codex\Wiki Files\Project Rooms\Template to Project`
 
 Use this skill for operational invoice, Time Card, and approved statement-line insertion into project-management spreadsheets. For scanned invoice, receipt, and Statement records, Doc Scan is the normal intake workflow and should trigger this workflow by direct follow-up message after creating the packet. For routed contractor/vendor invoice emails, Email Monitor or OfficeAssist may hand off a saved email source and attachments under Create Vendor Invoice. For Time Card emails, Email Monitor is the only supported trigger and must hand off the preserved source email. The project-room heartbeat is a backup monitor for missed packet handoffs. Do not use this skill for scan inspection/OCR, document splitting, statement extraction, invoice-file routing, mailbox monitoring, or spreadsheet template redesign.
@@ -21,10 +23,12 @@ Doc Scan owns Lowes Statement extraction and will send extracted statement data 
 2. Read `AGENTS.md`, `Admin Home.md`, `Project Room Workflow.md`, `Codex Skill Source Rule.md`, and `Git Work Scope Rule.md`.
 3. Read the project-room `README.md`.
 4. Read `working\invoice-packet-schema.md`.
-5. If the insertion is for Vendor Tabs, read:
+5. If older machine handoff packets, statement working files, review workbook evidence, or temporary workbook copies may matter, read `working\teams-working-archive-map.md` before assuming those files are unavailable locally.
+6. For scanned-document-derived invoice work, read or update `working\scanned-document-action-log.md` to track what happened to the document and related spreadsheet action.
+7. If the insertion is for Vendor Tabs, read:
    - `C:\Codex\Wiki Files\Project Rooms\Template to Project\Worksheet Modes\Vendor Tabs Mode Rules.md`
    - `C:\Codex\Wiki Files\Project Rooms\Template to Project\Project Spreadsheet Expense Placement Rules.md`
-6. Use the SharePoint/Teams connector as the source-of-truth path for active project-management workbooks.
+8. Use the SharePoint/Teams connector as the source-of-truth path for active project-management workbooks.
 
 ## Ownership Boundary
 
@@ -300,6 +304,8 @@ Lowes statements have one supported intake path:
 - Doc Scan handoff processing: Doc Scan receives or is asked to process one or more Lowes statements, extracts the detail, and passes a structured Statement packet to Invoice Entry.
 
 Do not request statement processing directly in this Invoice Entry project room or skill. If Wes or another workflow wants one statement or a set of statements processed, route the request to Doc Scan first. Invoice Entry must wait for the Doc Scan Statement packet and must not substitute its own OCR, statement extraction, or raw-PDF parsing.
+
+Do not commit machine handoff packets, OCR scratch files, generated statement working files, review workbook copies, or temporary workbook copies merely because they supported an invoice-entry action. Preserve the original scan and final filed document in Teams/SharePoint, archive working artifacts in the Teams working archive when useful, and record the durable outcome in `working\scanned-document-action-log.md`.
 
 For Statement handoffs:
 

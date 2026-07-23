@@ -61,6 +61,8 @@ When an Invoice Entry rule authorizes an email:
 ## Matching Skill
 
 - Skill source: `C:\Codex\Wiki Files\skills\invoice-entry\SKILL.md`
+- Teams archive map: `C:\Codex\Wiki Files\Project Rooms\Invoice Entry\working\teams-working-archive-map.md`
+- Scanned document action log: `C:\Codex\Wiki Files\Project Rooms\Invoice Entry\working\scanned-document-action-log.md`
 
 ## Required Invoice Packet
 
@@ -214,6 +216,8 @@ Statement processing must be routed through Doc Scan. Do not ask Invoice Entry d
 - `sources\` - copied invoice packets, intake examples, source notes, and supporting references.
 - `working\` - routing decisions, duplicate checks, insertion logs, rollback references, validation notes, and iteration lessons.
 - `outputs\` - review-ready reports or handoff summaries for Wes.
+- Machine handoff packets, generated statement working files, review workbook copies, and temporary workbook copies removed from Git are mapped in `working\teams-working-archive-map.md`.
+- Durable scanned-document outcomes are recorded in `working\scanned-document-action-log.md`; record what happened to the document and spreadsheet action instead of preserving every intermediate packet or scratch artifact in Git.
 
 ## Operating Rules
 
@@ -228,6 +232,7 @@ Statement processing must be routed through Doc Scan. Do not ask Invoice Entry d
 9. Validate affected totals after insertion.
 10. Upload the verified workbook back through the Teams/SharePoint connector only after it opens cleanly and has no unintended workbook links.
 11. After each workbook or workflow iteration, record, refine, or expand lessons learned in `working\iteration-lessons.md` before treating the iteration as complete.
+12. For scanned-document-derived invoice work, preserve the original scan and filed document in Teams/SharePoint, then record the durable outcome in `working\scanned-document-action-log.md`. Do not commit machine packets, OCR scratch files, or temporary workbook copies merely to show how the work was performed.
 
 ## Review Request Processing
 
