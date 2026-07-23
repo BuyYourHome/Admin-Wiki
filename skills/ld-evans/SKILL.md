@@ -59,10 +59,11 @@ Whenever the LD Evans manuscript or another review-ready file under `outputs\` i
 
 1. Finish and verify the changed deliverable.
 2. Commit the scoped LD Evans change when the Admin wiki rules call for a durable commit.
-3. Use `C:\Codex\Wiki Files\skills\email-delivery\SKILL.md` to email the updated deliverable to `WesWill@BuyYourHomeLLC.com` from `OfficeAssist@BuyYourHomeLLC.com`.
+3. Prepare the final delivery package to `WesWill@BuyYourHomeLLC.com` from `OfficeAssist@BuyYourHomeLLC.com`.
 4. Use a plain subject that identifies the LD Evans deliverable and that it was updated. Do not use the `DRAFT:` prefix merely because a manuscript is a working draft; the email is delivering a file for Wes's review, not proposing an outbound email message.
-5. Attach the changed deliverable. Do not silently send without the attachment if attachment delivery fails.
-6. Verify the sent copy in `OfficeAssist@BuyYourHomeLLC.com` Sent Items.
-7. Treat the manuscript or deliverable update as incomplete until the email send and Sent Items verification succeed. Report any send or verification failure immediately in the LD Evans thread.
+5. Attach the changed deliverable. Do not silently request delivery without the attachment.
+6. Send a direct handoff to the existing Email Monitor status task `019ecba7-f1cc-7ac1-aaf7-d89a3f21b582`, explicitly requesting Email Delivery mode. Include sender, To, CC/BCC, subject, plain-text body, absolute attachment paths, authorization basis, and any stricter LD Evans restrictions.
+7. Email Monitor's Email Delivery mode must use `C:\Codex\Wiki Files\skills\email-delivery\SKILL.md` for OfficeAssist sender safety, connector/local-Outlook handling, attachment validation, Sent Items verification, delivery logging, and failure reporting.
+8. Treat the manuscript or deliverable update as incomplete until Email Monitor returns a verified OfficeAssist Sent Items result with the sent message id and timestamp. Report any send or verification failure immediately in the LD Evans thread.
 
 Working-note, transcript, source-inventory, and administrative-only changes do not trigger an email unless they also create or materially change a review-ready file under `outputs\`. This boundary prevents delivery-log or housekeeping changes from creating a recursive email loop.

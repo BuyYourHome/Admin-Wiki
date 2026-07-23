@@ -47,12 +47,13 @@ Task register: `C:\Codex\Wiki Files\Project Rooms\Manager\working\task-register.
 
 Deliver only when the requester asks to send or deliver the task, or another applicable Admin wiki rule grants that delivery authority.
 
-1. Send to Josh Kennedy at `IRAManager@SellYourHomeRaleigh.com`.
+1. Prepare the delivery package to Josh Kennedy at `IRAManager@SellYourHomeRaleigh.com`.
 2. Use subject `[Manager Task][<Priority>][<Task ID>] <short title>`.
 3. Include the task id, priority, requester, task, due date when any, and the instruction to reply with the task id and new status.
-4. Follow `C:\Codex\Wiki Files\skills\email-delivery\SKILL.md`. Normally send from `OfficeAssist@BuyYourHomeLLC.com` and copy `WesWill@BuyYourHomeLLC.com` unless Wes explicitly says not to copy himself for that message.
-5. Set status to `Delivered` only after verifying the sent copy in the approved sender mailbox's Sent Items. Record the sent message id and sent timestamp when available.
-6. If send or Sent Items verification fails, keep the task visible as `New` or its prior status, record the failure in Delivery/Update Notes, and report the blocker immediately.
+4. Normally set sender to `OfficeAssist@BuyYourHomeLLC.com` and copy `WesWill@BuyYourHomeLLC.com` unless Wes explicitly says not to copy himself for that message.
+5. Send a direct handoff to the existing Email Monitor status task `019ecba7-f1cc-7ac1-aaf7-d89a3f21b582`, explicitly requesting Email Delivery mode. Include sender, To, CC/BCC, subject, plain-text body, attachment paths if any, authorization basis, and any stricter Manager restrictions.
+6. Set status to `Delivered` only after Email Monitor returns a verified sent copy in the approved sender mailbox's Sent Items. Record the sent message id and sent timestamp when available.
+7. If send or Sent Items verification fails, keep the task visible as `New` or its prior status, record the failure in Delivery/Update Notes, and report the blocker immediately.
 
 #### Process A Manager Email Update
 
@@ -95,7 +96,7 @@ Before Manager file work:
 - Do not create Teams folders unless Wes explicitly asks.
 - Do not create automations unless Wes asks for scheduled or event-triggered behavior.
 - Do not send email, external messages, make purchases, change legal/financial documents, or perform live operational actions unless Wes explicitly authorizes the specific action and the applicable Admin wiki rules allow it.
-- If Manager work requires sending email, use the Admin wiki Email Delivery workflow used by Email Monitor by following `C:\Codex\Wiki Files\skills\email-delivery\SKILL.md` for sender safety, attachment handling, Sent Items verification, local Outlook fallback rules, and failure reporting.
+- If Manager work requires sending email, Manager prepares the final delivery package and hands it to the existing Email Monitor status task `019ecba7-f1cc-7ac1-aaf7-d89a3f21b582` requesting Email Delivery mode. Email Monitor's Email Delivery mode uses `C:\Codex\Wiki Files\skills\email-delivery\SKILL.md` for sender safety, attachment handling, Sent Items verification, local Outlook fallback rules, and failure reporting.
 - Do not commit unrelated dirty work or generated scratch folders.
 - Do not push unless Wes asks, says the setup is finished, or the applicable Admin wiki rules make the deliverable ready to publish.
 

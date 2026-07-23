@@ -46,10 +46,10 @@ The Google Photos `Bible` album has been surveyed in place. The 18 context-selec
 
 ## Significant Change Email Rule
 
-- After a significant change is completed and verified, send a new email from `OfficeAssist@BuyYourHomeLLC.com` to both `Jenny@BuyYourHomeLLC.com` and `WesWill@BuyYourHomeLLC.com`.
+- After a significant change is completed and verified, prepare a new delivery package from `OfficeAssist@BuyYourHomeLLC.com` to both `Jenny@BuyYourHomeLLC.com` and `WesWill@BuyYourHomeLLC.com`, then send a direct handoff to the existing Email Monitor status task `019ecba7-f1cc-7ac1-aaf7-d89a3f21b582` requesting Email Delivery mode.
 - Significant changes include manuscript content or section order, cover, drawing selection or placement, navigation, drawing-access links, file format, or delivery behavior.
 - Attach the current HTML manuscript unless Wes directs another delivery format, and include the Teams folder link plus any access instructions.
-- Verify the sent message in OfficeAssist Sent Items, including both recipients and the expected attachment.
+- Email Monitor's Email Delivery mode must use `C:\Codex\Wiki Files\skills\email-delivery\SKILL.md` for sender safety, attachment handling, delivery, OfficeAssist Sent Items verification, and failure reporting. Do not report delivery complete until Email Monitor returns verified Sent Items evidence including both recipients and the expected attachment.
 - Do not send a new email for internal notes, inventories, metadata-only corrections, or code refactoring that does not alter a delivered artifact.
 
 ## Matching Skill

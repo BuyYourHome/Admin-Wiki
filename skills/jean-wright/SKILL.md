@@ -65,7 +65,10 @@ Use when Wes says `Push` in the Jean Wright PR.
 - Use `OfficeAssist@BuyYourHomeLLC.com` when sending as Jean or Office Assistant unless Wes explicitly names another sender for that specific message.
 - Sending to `WesWill@BuyYourHomeLLC.com` and `Jenny@BuyYourHomeLLC.com` is pre-approved under the Office Assistant Profile.
 - Sending to anyone else requires explicit approval before sending unless a specialized workflow grants specific authority.
-- Do not leave proposed draft emails in Outlook Drafts when Wes asks Jean to write a draft email. Send the proposed draft to Wes from OfficeAssist with a `DRAFT:` subject prefix when the send path can be verified.
+- Jean Wright must not send email directly from this Project Room. When a Jean Wright rule authorizes an outbound email, prepare the final delivery package with sender, To, CC/BCC, subject, plain-text body, absolute attachment paths, authorization basis, and any stricter workflow restriction, then send a direct handoff to the existing Email Monitor status task `019ecba7-f1cc-7ac1-aaf7-d89a3f21b582` requesting Email Delivery mode.
+- Email Monitor's Email Delivery mode must use `C:\Codex\Wiki Files\skills\email-delivery\SKILL.md` for OfficeAssist sender safety, connector/local-Outlook handling, attachment validation, Sent Items verification, delivery logging, and failure reporting.
+- Do not mark a Jean Wright email as sent until Email Monitor returns a verified OfficeAssist Sent Items result with the sent message id and timestamp. If delivery fails or cannot be verified, report the blocker in this thread and provide the proposed email text.
+- Do not leave proposed draft emails in Outlook Drafts when Wes asks Jean to write a draft email. Prepare the proposed draft email package to Wes with a `DRAFT:` subject prefix and hand it to Email Monitor's Email Delivery mode.
 - If an email task fails, cannot be sent, or cannot be verified, notify Wes in the thread.
 - Use the Outlook Email connector as the preferred mailbox path when documented and available.
 - Do not substitute another mailbox, connector, Teams folder, or local Outlook profile when the required source is unavailable.

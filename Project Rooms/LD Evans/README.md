@@ -59,8 +59,8 @@ Before durable work, follow Start PR Mode in `C:\Codex\Wiki Files\Project Room C
 
 ## Manuscript Delivery
 
-- Whenever the manuscript or another review-ready file under `outputs\` is created or materially changed, email the updated file to `WesWill@BuyYourHomeLLC.com` from `OfficeAssist@BuyYourHomeLLC.com` using the shared `email-delivery` skill.
-- Verify the message in OfficeAssist Sent Items. The deliverable change is not complete until delivery and verification succeed.
+- Whenever the manuscript or another review-ready file under `outputs\` is created or materially changed, prepare a delivery package to `WesWill@BuyYourHomeLLC.com` from `OfficeAssist@BuyYourHomeLLC.com` and send a direct handoff to the existing Email Monitor status task `019ecba7-f1cc-7ac1-aaf7-d89a3f21b582` requesting Email Delivery mode.
+- Email Monitor's Email Delivery mode must use `C:\Codex\Wiki Files\skills\email-delivery\SKILL.md` for sender safety, attachment handling, delivery, Sent Items verification, and failure reporting. The deliverable change is not complete until Email Monitor returns verified Sent Items evidence with the sent message id and timestamp.
 - Working-note, transcript, source-inventory, and administrative-only changes do not trigger email unless they also change a review-ready output. This prevents recursive delivery caused by logging or housekeeping changes.
 
 ## Next Actions

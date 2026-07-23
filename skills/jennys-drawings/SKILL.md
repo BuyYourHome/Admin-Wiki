@@ -50,11 +50,12 @@ Before Jennys Drawings file work:
 
 ## Significant Change Email Delivery
 
-- After completing and verifying a significant change, send a fresh email from `OfficeAssist@BuyYourHomeLLC.com` to both `Jenny@BuyYourHomeLLC.com` and `WesWill@BuyYourHomeLLC.com`.
+- After completing and verifying a significant change, prepare a fresh delivery package from `OfficeAssist@BuyYourHomeLLC.com` to both `Jenny@BuyYourHomeLLC.com` and `WesWill@BuyYourHomeLLC.com`.
 - Significant changes include manuscript content or section order, cover, drawing selection or placement, navigation, drawing-access links, file format, or delivery behavior.
 - Attach the current HTML manuscript unless Wes directs another format. Include the Teams folder link and concise access instructions.
-- Use `C:\Codex\Wiki Files\skills\email-delivery\SKILL.md` for sender safety, attachment handling, and OfficeAssist Sent Items verification.
-- Verify both recipients, the subject, and the expected attachment before reporting delivery complete.
+- Send a direct handoff to the existing Email Monitor status task `019ecba7-f1cc-7ac1-aaf7-d89a3f21b582`, explicitly requesting Email Delivery mode. Include sender, To, CC/BCC, subject, plain-text body, absolute attachment paths, authorization basis, and any stricter Jennys Drawings restrictions.
+- Email Monitor's Email Delivery mode must use `C:\Codex\Wiki Files\skills\email-delivery\SKILL.md` for sender safety, attachment handling, delivery, OfficeAssist Sent Items verification, and failure reporting.
+- Do not report delivery complete until Email Monitor returns verified Sent Items evidence for both recipients, the subject, and the expected attachment.
 - Do not trigger an email for internal working notes, inventory maintenance, metadata-only corrections, or code refactoring that does not alter a delivered artifact.
 
 ## Boundaries

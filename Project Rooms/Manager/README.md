@@ -47,8 +47,8 @@ Use Task mode to keep the status of tasks added by any user and, when delivery i
 - Use priorities `Critical`, `High`, `Normal`, and `Low`. Default to `Normal` when no priority is supplied.
 - Use statuses `New`, `Delivered`, `Acknowledged`, `In Progress`, `Waiting`, `Completed`, and `Cancelled`.
 - A task request does not by itself authorize purchases, payments, legal or financial changes, deletion, external communications beyond the authorized Manager delivery, or work owned by another Project Room.
-- When delivery is requested, send the task to Josh Kennedy at `IRAManager@SellYourHomeRaleigh.com` with the task id and priority in the subject. Use the Email Delivery workflow, normally send from `OfficeAssist@BuyYourHomeLLC.com`, and copy `WesWill@BuyYourHomeLLC.com` unless Wes explicitly says not to copy himself for that message.
-- Mark a task `Delivered` only after the sent copy is verified in the approved sender mailbox's Sent Items. Record the sent message id and timestamp when available. A failed or unverified delivery must remain visible in the register and be reported to Wes.
+- When delivery is requested, prepare a task-delivery package to Josh Kennedy at `IRAManager@SellYourHomeRaleigh.com` with the task id and priority in the subject. Normally use sender `OfficeAssist@BuyYourHomeLLC.com` and copy `WesWill@BuyYourHomeLLC.com` unless Wes explicitly says not to copy himself for that message. Send a direct handoff to the existing Email Monitor status task `019ecba7-f1cc-7ac1-aaf7-d89a3f21b582` requesting Email Delivery mode.
+- Mark a task `Delivered` only after Email Monitor returns verified Sent Items evidence from the approved sender mailbox. Record the sent message id and timestamp when available. A failed or unverified delivery must remain visible in the register and be reported to Wes.
 - Josh may update a task by replying from `IRAManager@SellYourHomeRaleigh.com` with the task id and a status. Preserve the email or a source note, update the register, and record the update time and source reference.
 - Do not treat an email from another sender as a Manager status update without confirmation.
 - Email updates are processed when the message is provided or routed to the Manager Project Room. Continuous mailbox monitoring requires a separately authorized automation.
@@ -66,9 +66,12 @@ User-reported facts from Wes:
 
 ## Email Delivery Rule
 
-If Manager work requires sending email, use the Admin wiki Email Delivery workflow used by Email Monitor:
+If Manager work requires sending email, use Email Monitor's Email Delivery mode:
 
-- Follow `C:\Codex\Wiki Files\skills\email-delivery\SKILL.md` for sender safety, approved recipients, attachment handling, Outlook connector preference, Sent Items verification, local Outlook fallback rules, and failure reporting.
+- Prepare the final delivery package inside Manager, including sender, To, CC/BCC, subject, plain-text body, attachment paths if any, authorization basis, and any stricter Manager restrictions.
+- Send a direct handoff to the existing Email Monitor status task `019ecba7-f1cc-7ac1-aaf7-d89a3f21b582`, explicitly requesting Email Delivery mode.
+- Email Monitor's Email Delivery mode must use `C:\Codex\Wiki Files\skills\email-delivery\SKILL.md` for sender safety, approved recipients, attachment handling, Outlook connector preference, Sent Items verification, local Outlook fallback rules, and failure reporting.
+- Do not mark the email sent or the task delivered until Email Monitor returns verified Sent Items evidence with the sent message id and timestamp.
 - Do not send email from Manager work unless Wes explicitly authorizes the specific email action or an applicable Admin wiki rule already grants that authority.
 - If the MoU or another source changes email authority, record the source and update this rule before relying on it.
 
