@@ -95,6 +95,15 @@ Summary body:
 - sign as `Jean Wright` / `Office Assistant`;
 - do not say the email is on Wes's behalf unless the actual sending identity requires that wording.
 
+Subject stability:
+
+- treat each Monday-through-Sunday period in Eastern Time as one summary week;
+- maintain a separate weekly subject for Boss, Jenny, and Josh;
+- use the subject from that recipient's first verified summary of the week for every later summary and retry to that recipient during the same week;
+- do not change the subject midweek because of the summary date, mailbox contents, priority items, Manager tasks, missed runs, or a send retry;
+- when a new week starts, establish the new weekly subject from that recipient's first summary and record it in monitor memory before delivery;
+- if the current week's subject is missing from memory, recover it from that recipient's first verified OfficeAssist Sent Items summary for the week when available; otherwise establish and record one subject before sending.
+
 Delivery handoff:
 
 - hand the send step to `C:\Codex\Wiki Files\skills\email-delivery\SKILL.md`;
@@ -104,7 +113,7 @@ Delivery handoff:
 
 State update:
 
-- after a successful verified send, update the automation memory with the summary date or subject, cutoff used, topics sent, verified send timestamp from OfficeAssist Sent Items, and any unusual routing, blocker, or verification-draft note;
+- after a successful verified send, update the automation memory with the summary date, weekly subject and Monday-through-Sunday week identifier, cutoff used, topics sent, verified send timestamp from OfficeAssist Sent Items, and any unusual routing, blocker, or verification-draft note;
 - if mailbox access, token-summary generation, send, or verification fails, record the blocker and action taken;
 - do not treat a failed summary run as quiet.
 

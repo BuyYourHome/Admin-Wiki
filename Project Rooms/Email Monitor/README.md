@@ -44,6 +44,8 @@ This mode sends Boss's summary to `WesWill@BuyYourHomeLLC.com`, Jenny's summary 
 
 This mode runs only once per calendar day per recipient at the first eligible heartbeat at or after 8:00 AM Eastern. Later same-day heartbeat runs skip summaries that were already sent and verified.
 
+For each recipient, keep the Email Summary subject unchanged throughout the Monday-through-Sunday week in Eastern Time. Use the subject from that recipient's first verified summary of the week for all later daily summaries and retries during that week. Do not change it because of the date, mailbox contents, priority items, Manager tasks, a missed run, or a retry. Record each recipient's weekly subject and week identifier in monitor memory; if that state is missing, recover the subject from the first verified OfficeAssist Sent Items summary for the week when available, or establish one subject before sending.
+
 ### Email Delivery
 
 Use this mode when this project room has an authorized email ready to send, another Email Monitor mode reaches its send step, or an authorized Project Room, including Invoice Entry, sends a complete direct delivery handoff. A direct handoff triggers immediately. It does not require mailbox scanning, an instruction email, the Email Monitor heartbeat, or a rerun of the originating workflow.
@@ -102,6 +104,8 @@ Use this room for development and design work. Do not change the live automation
 When the workflow changes, update the skill, this project room, and the registry together.
 
 ## Change Log
+
+- 2026-07-24: Required a separate stable Email Summary subject for Boss, Jenny, and Josh throughout each Monday-through-Sunday Eastern Time week, with monitor-memory tracking and Sent Items recovery.
 
 - 2026-07-22: Expanded Email Delivery to accept immediate authorized handoffs from other Project Rooms, including Invoice Entry; added the complete delivery-package schema, request-ID duplicate prevention, durable request state, fixed success/failure callbacks, and the intake-routing versus later-authorized-delivery distinction.
 
