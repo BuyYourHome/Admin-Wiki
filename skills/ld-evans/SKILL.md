@@ -42,7 +42,7 @@ Before LD Evans file work:
 ## Boundaries
 
 - Do not edit another Project Room's files or matching skill unless Wes explicitly authorizes that specific cross-PR edit.
-- Do not create Teams folders unless Wes explicitly asks.
+- Do not create Teams folders for unrelated deliverables or non-LD Evans material. For authorized LD Evans cleanup or source-preservation work, Codex may create appropriate Teams `Source Materials` subfolders and record the location in `Project Rooms\LD Evans\working\teams-source-materials-map.md`.
 - Do not move source files from another Project Room unless Wes authorizes that move.
 - Do not create automations unless Wes asks for scheduled or event-triggered behavior.
 - Do not send emails, file external documents, approve legal or financial decisions, or take external workflow action unless Wes explicitly authorizes that specific action and the applicable Admin wiki rules allow it.

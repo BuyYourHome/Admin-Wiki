@@ -18,7 +18,7 @@ In scope:
 Out of scope:
 
 - Editing another Project Room's files or matching skill unless Wes explicitly authorizes that specific cross-PR edit.
-- Creating Teams folders unless Wes explicitly asks for a final deliverable there.
+- Creating Teams folders for unrelated deliverables or non-LD Evans material. For authorized LD Evans cleanup or source-preservation work, Codex may create appropriate Teams `Source Materials` subfolders and record the location in `working\teams-source-materials-map.md`.
 - Creating automations unless Wes explicitly asks for scheduled or event-triggered behavior.
 - Sending emails, filing external documents, approving legal/financial decisions, or taking external action unless Wes explicitly authorizes the specific action and the applicable workflow rules allow it.
 
@@ -29,12 +29,13 @@ Out of scope:
 - `working\duplicate-and-conflict-log.md` - duplicate, outdated, conflicting, or unclear source notes.
 - `working\missing-context.md` - facts, decisions, or source material still needed.
 - `outputs\` - review-ready drafts, summaries, handoffs, or final deliverables.
+- `working\teams-source-materials-map.md` - Teams locations for bulky source/reference media kept out of Git.
 
 ## Current Status
 
 Status: active manuscript development.
 
-Wes intends to write a book about his grandfather, L.D. Evans. Four `Leaving Home` videos from Wes Browning's YouTube channel have been archived under `sources\video\leaving-home\` with separate audio copies, source metadata, and available captions. Clean working transcripts, a manuscript source map, and a first draft of Chapters 4 and 5 have now been prepared from those recordings.
+Wes intends to write a book about his grandfather, L.D. Evans. Four `Leaving Home` videos from Wes Browning's YouTube channel have been archived as source material. Bulky video/audio copies are preserved in Teams under `Buy Your Home - Marketing\LD Evans\Source Materials\Video\Leaving Home`; local source-controlled files keep the source README, caption files, transcript working notes, integrity hashes, and source inventory. Clean working transcripts, a manuscript source map, and a first draft of Chapters 4 and 5 have now been prepared from those recordings.
 
 ## Matching Skill
 

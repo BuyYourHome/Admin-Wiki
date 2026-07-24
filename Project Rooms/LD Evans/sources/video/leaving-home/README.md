@@ -2,7 +2,7 @@
 
 ## Purpose
 
-These four videos from Wes Browning's YouTube channel are primary source material for a planned book about his grandfather, L.D. Evans. The local archive preserves the original presentation, narration, available captions, and source metadata for later content and narrative-voice analysis.
+These four videos from Wes Browning's YouTube channel are primary source material for a planned book about his grandfather, L.D. Evans. The source archive preserves the original presentation, narration, available captions, and source metadata for later content and narrative-voice analysis.
 
 Channel: [Wes Browning](https://www.youtube.com/@wesbrowning)
 
@@ -17,11 +17,12 @@ Channel: [Wes Browning](https://www.youtube.com/@wesbrowning)
 
 Total recorded duration: 29:41.
 
-## Local Archive
+## Source Archive
 
-- `video\` contains the four downloaded MP4 files, thumbnails, raw YouTube metadata, descriptions, and one canonical English WebVTT caption file per recording.
-- `audio\` contains one M4A audio-only copy per recording for narration and voice analysis.
-- Large media and raw generated metadata are preserved locally and intentionally excluded from Git history by this folder's `.gitignore`.
+- Teams `Buy Your Home - Marketing\LD Evans\Source Materials\Video\Leaving Home\video\` contains the four downloaded MP4 files.
+- Teams `Buy Your Home - Marketing\LD Evans\Source Materials\Video\Leaving Home\audio\` contains one M4A audio-only copy per recording for narration and voice analysis.
+- Local `video\` contains one canonical English WebVTT caption file per recording.
+- Large media and raw generated metadata are intentionally excluded from Git history by this folder's `.gitignore`.
 - This README and the canonical WebVTT caption files are the durable, source-controlled index and text-access layer.
 
 ## Source Authority
