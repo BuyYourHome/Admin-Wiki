@@ -46,6 +46,7 @@ Use this page for routine project-room startup. Read the larger registers only w
 - Teams archive verified 2026-07-13: 70 versioned manuscript and chapter-draft files.
 - Teams root reorganized 2026-07-23: root keeps current active mode packets only; superseded HTML review packets and ZIP package copies were moved into `Archive` subfolders by mode or packet type.
 - Bulky cover-reference media moved 2026-07-23: Google Photos reference images are in Teams `Source Materials\Cover Reference Photos`; generated cover comparison outputs are in Teams `Archive\Book Cover Comparisons`.
+- Bulky Bill Johnson source media moved 2026-07-24: audio/video copies are in Teams `Source Materials\Video\Bill Johnson\2026-06-24 Increase Your Expectation`; transcript, source Markdown, and metadata remain local. See `working\teams-source-materials-map.md`.
 - Teams review copies must include a version identifier in the filename.
 - Local retention applied 2026-07-13: original sources, active modular chapter sets and manifests, one current HTML deliverable per mode, current assets, and the stable Jenny packet remain locally.
 - Superseded generated manuscripts, chapter versions, packets, outlines, and stale working outputs were removed from the active working tree after Teams or Git-history preservation was verified.
