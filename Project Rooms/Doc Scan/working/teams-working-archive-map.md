@@ -40,6 +40,14 @@ The following ignored local Doc Scan output files were copied to Teams, verified
 | --- | --- | ---: | ---: | --- |
 | Ignored files under `outputs\`, preserving the same relative folder structure | `Ignored Output Files\2026-07-24 output cleanup\<same folder structure>` | 11 | 2,073,915 | ignored generated output previews and scan-run report |
 
+## Source Document Archive Recorded 2026-07-24
+
+The following tracked Doc Scan source documents were copied to Teams, verified by file count and byte total, and then removed from Git under the Source Document Retention Rule. These are retained source documents, not generated scratch.
+
+| Local source under `Project Rooms\Doc Scan` | Teams destination under `Doc Scan Working Archive` | Files | Bytes | Category |
+| --- | --- | ---: | ---: | --- |
+| Binary source documents under `sources\`, preserving the same relative folder structure | `Source Documents\2026-07-24 source cleanup\<same folder structure>` | 269 | 71,192,214 | retained source scans and email attachment source documents |
+
 ## Use Rule
 
 When Doc Scan needs older OCR text, scan-run logs, or generated Lowe's statement output packets from the July 2026 cleanup, look in the Teams destinations above before assuming the files were deleted.

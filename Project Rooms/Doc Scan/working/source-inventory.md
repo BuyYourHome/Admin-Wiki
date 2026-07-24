@@ -16,6 +16,13 @@
 | Teams Working Archive Map | `Project Rooms\Doc Scan\working\teams-working-archive-map.md` | authoritative archive map | Records where generated output packets, OCR working files, and scan-run logs were moved in Teams instead of Git. |
 | Insurance Document Rules | `Project Rooms\Doc Scan\working\insurance-document-rules.md` | working rule context | Development notes for insurance-company and mortgage-company property insurance document handling. |
 | Workflow source note | `Project Rooms\Doc Scan\sources\workflow-source-note.md` | background | Summary of controlling sources and runtime locations. |
+| Email insurance attachment index | `Project Rooms\Doc Scan\sources\email-insurance-2026-06-15\attachment-index.csv` | retained source inventory | Text index kept in Git for the email-insurance source-document cleanup. |
+
+## Source Document Cleanup Log
+
+| Cleanup date | Local repo source path removed | Teams destination | Files | Bytes | Category/source group | Notes |
+| --- | --- | --- | ---: | ---: | --- | --- |
+| 2026-07-24 | `Project Rooms\Doc Scan\sources\*.pdf`, `Project Rooms\Doc Scan\sources\email-insurance-2026-06-15\**\*.pdf`, `*.jpg`, `*.png`, and `*.xlsx` source binaries | `C:\Users\wesbr\Buy Your Home\Buy Your Home - Office Admin\Scanned Files\Doc Scan Working Archive\Source Documents\2026-07-24 source cleanup` | 269 | 71,192,214 | Doc Scan retained source documents; scanned PDFs and email-insurance attachments | Source documents retained in Teams, not generated scratch. Relative folder structure from `Project Rooms\Doc Scan\sources` was preserved. `workflow-source-note.md` and `email-insurance-2026-06-15\attachment-index.csv` remain in Git as text/source inventory files. |
 
 ## Inventory Notes
 
