@@ -22,7 +22,7 @@
 
 | Cleanup date | Local repo source path removed | Teams destination | Files | Bytes | Category/source group | Notes |
 | --- | --- | --- | ---: | ---: | --- | --- |
-| 2026-07-24 | `Project Rooms\Doc Scan\sources\*.pdf`, `Project Rooms\Doc Scan\sources\email-insurance-2026-06-15\**\*.pdf`, `*.jpg`, `*.png`, and `*.xlsx` source binaries | `C:\Users\wesbr\Buy Your Home\Buy Your Home - Office Admin\Scanned Files\Doc Scan Working Archive\Source Documents\2026-07-24 source cleanup` | 269 | 71,192,214 | Doc Scan retained source documents; scanned PDFs and email-insurance attachments | Source documents retained in Teams, not generated scratch. Relative folder structure from `Project Rooms\Doc Scan\sources` was preserved. `workflow-source-note.md` and `email-insurance-2026-06-15\attachment-index.csv` remain in Git as text/source inventory files. |
+| 2026-07-24 | `Project Rooms\Doc Scan\sources\*.pdf`, `Project Rooms\Doc Scan\sources\email-insurance-2026-06-15\**\*.pdf`, `*.jpg`, `*.png`, and `*.xlsx` source binaries | `C:\Users\wesbr\Buy Your Home\Buy Your Home - Office Admin\Scanned Files\Doc Scan Working Archive\Source Documents\2026-07-24 source cleanup` | 269 | 71,607,325 | Doc Scan retained source documents; scanned PDFs and email-insurance attachments | Source documents retained in Teams, not generated scratch. Relative folder structure from `Project Rooms\Doc Scan\sources` was preserved. `workflow-source-note.md` and `email-insurance-2026-06-15\attachment-index.csv` remain in Git as text/source inventory files. |
 
 ## Inventory Notes
 

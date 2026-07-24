@@ -46,7 +46,7 @@ The following tracked Doc Scan source documents were copied to Teams, verified b
 
 | Local source under `Project Rooms\Doc Scan` | Teams destination under `Doc Scan Working Archive` | Files | Bytes | Category |
 | --- | --- | ---: | ---: | --- |
-| Binary source documents under `sources\`, preserving the same relative folder structure | `Source Documents\2026-07-24 source cleanup\<same folder structure>` | 269 | 71,192,214 | retained source scans and email attachment source documents |
+| Binary source documents under `sources\`, preserving the same relative folder structure | `Source Documents\2026-07-24 source cleanup\<same folder structure>` | 269 | 71,607,325 | retained source scans and email attachment source documents |
 
 ## Use Rule
 
