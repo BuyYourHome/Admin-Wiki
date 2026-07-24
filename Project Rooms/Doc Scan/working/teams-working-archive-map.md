@@ -34,6 +34,12 @@ The following ignored local Doc Scan working files were copied to Teams, verifie
 | --- | --- | ---: | ---: | --- |
 | Ignored files under `working\`, preserving the same relative folder structure | `Ignored Working Files\2026-07-24 working cleanup\<same folder structure>` | 320 | 212,088,590 | ignored generated working files, render/page previews, contact sheets, OCR/test output, and scan-run working folders |
 
+The following ignored local Doc Scan output files were copied to Teams, verified by file count and byte total, and then removed from `C:\Codex\Wiki Files`. These were generated output previews and a scan-run report retained temporarily for review and may be deleted from Teams later after Wes approves final retention cleanup.
+
+| Local source under `Project Rooms\Doc Scan` | Teams destination under `Doc Scan Working Archive` | Files | Bytes | Category |
+| --- | --- | ---: | ---: | --- |
+| Ignored files under `outputs\`, preserving the same relative folder structure | `Ignored Output Files\2026-07-24 output cleanup\<same folder structure>` | 11 | 2,073,915 | ignored generated output previews and scan-run report |
+
 ## Use Rule
 
 When Doc Scan needs older OCR text, scan-run logs, or generated Lowe's statement output packets from the July 2026 cleanup, look in the Teams destinations above before assuming the files were deleted.
