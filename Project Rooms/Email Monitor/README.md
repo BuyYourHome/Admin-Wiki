@@ -52,7 +52,7 @@ Use this mode to hold the Email Monitor health specification, maintain machine-l
 
 Email Monitor writes `Started`, `Completed`, or `Failed` state to its local `health.json`. Windows Task Scheduler runs the watchdog every 10 minutes on assigned machine `WESSTUDIO`. During the 7:45 AM through 11:00 PM Eastern active window, it warns after 35 minutes without a completed heartbeat, escalates at 60 minutes, and issues one recovery notice when service resumes.
 
-The watchdog writes a durable log, alert state, current-alert file, and attempts a Windows toast plus Application event-log entry. It does not use the Outlook connector and does not provide remote SMS or email until an independent delivery channel is configured.
+The watchdog runs PowerShell hidden, writes a durable log, alert state, current-alert file, and attempts a Windows toast plus Application event-log entry. It does not use the Outlook connector and does not provide remote SMS or email until an independent delivery channel is configured.
 
 Wes can manage this mode in plain language, including asking “Health Check, what are my options?” The mode can show status, enable or disable the watchdog, change intervals, thresholds, or the active window, run a quiet diagnostic, and send a visible test alert. Configuration changes require current healthy state by default. Machine reassignment remains guided and requires destination verification before the old watchdog is disabled.
 

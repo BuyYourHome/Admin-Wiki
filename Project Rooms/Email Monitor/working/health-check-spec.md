@@ -50,6 +50,7 @@ Machine reassignment is guided rather than a one-step local edit. Verify the des
 ## Watchdog Rules
 
 - Run every 10 minutes through Windows Task Scheduler.
+- Launch the scheduled PowerShell watchdog with `-WindowStyle Hidden`; routine watchdog checks must not open a visible console window.
 - Evaluate only during the configured 7:45 AM through 11:00 PM Eastern active window.
 - Healthy: last completed heartbeat is no more than 35 minutes old.
 - Warning: no completed heartbeat for more than 35 minutes.

@@ -12,7 +12,7 @@ if ($env:COMPUTERNAME -ne $config.assigned_machine) {
 }
 
 $watchdogPath = Join-Path $PSScriptRoot "Invoke-CodexWorkflowWatchdog.ps1"
-$arguments = "-NoProfile -NonInteractive -ExecutionPolicy Bypass -File `"$watchdogPath`" -ConfigPath `"$ConfigPath`""
+$arguments = "-NoProfile -NonInteractive -WindowStyle Hidden -ExecutionPolicy Bypass -File `"$watchdogPath`" -ConfigPath `"$ConfigPath`""
 $action = New-ScheduledTaskAction -Execute "powershell.exe" -Argument $arguments
 $trigger = New-ScheduledTaskTrigger `
     -Once `
