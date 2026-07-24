@@ -3,6 +3,7 @@
   "workflow_id": "officeassist-morning-email-summary-and-instruction-monitor",
   "display_name": "Email Monitor",
   "assigned_machine": "WESSTUDIO",
+  "watchdog_enabled": true,
   "time_zone": "America/New_York",
   "active_window_start": "07:45",
   "active_window_end": "23:00",

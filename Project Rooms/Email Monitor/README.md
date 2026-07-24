@@ -54,7 +54,9 @@ Email Monitor writes `Started`, `Completed`, or `Failed` state to its local `hea
 
 The watchdog writes a durable log, alert state, current-alert file, and attempts a Windows toast plus Application event-log entry. It does not use the Outlook connector and does not provide remote SMS or email until an independent delivery channel is configured.
 
-Specification: `working\health-check-spec.md`. Reusable tools: `tools\Update-CodexWorkflowHealth.ps1`, `tools\Invoke-CodexWorkflowWatchdog.ps1`, and `tools\Install-CodexWorkflowWatchdog.ps1`. Email Monitor configuration: `config\email-monitor-health.json`.
+Wes can manage this mode in plain language, including asking “Health Check, what are my options?” The mode can show status, enable or disable the watchdog, change intervals, thresholds, or the active window, run a quiet diagnostic, and send a visible test alert. Configuration changes require current healthy state by default. Machine reassignment remains guided and requires destination verification before the old watchdog is disabled.
+
+Specification: `working\health-check-spec.md`. Control surface: `tools\Manage-CodexWorkflowHealth.ps1`. Reusable tools: `tools\Update-CodexWorkflowHealth.ps1`, `tools\Invoke-CodexWorkflowWatchdog.ps1`, and `tools\Install-CodexWorkflowWatchdog.ps1`. Email Monitor configuration: `config\email-monitor-health.json`.
 
 ### Email Routing
 
@@ -128,6 +130,8 @@ Use this room for development and design work. Do not change the live automation
 When the workflow changes, update the skill, this project room, and the registry together.
 
 ## Change Log
+
+- 2026-07-24: Added conversational Health Check management for option discovery, status, enable/disable, configuration, diagnostics, and test alerts, with healthy-state and machine-migration safeguards.
 
 - 2026-07-24: Added Health Check mode with reusable health-state, watchdog, installer, machine-assignment config, local alerts, diagnostics, and Windows Task Scheduler pattern.
 

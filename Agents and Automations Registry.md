@@ -290,6 +290,7 @@ Purpose:
 - Include a short token-usage section for yesterday and the current week to date when reliable token totals are available; if not available, say so rather than estimating.
 - Jean is responsible for confirming the summary is actually delivered. If the summary cannot be sent, if sender verification fails, or if delivery cannot be confirmed, do not stay quiet. Notify Wes immediately in the thread and, when a reliable text/SMS path is available, text Wes that the email summary failed.
 - Resume one dedicated Codex status chat for failures, blockers, and notable summary-task visibility instead of creating separate standalone run chats.
+- Maintain a workflow-specific Health Check mode with plain-language option discovery, status, enable/disable, configuration, diagnostic testing, and visible test alerts through `Project Rooms\Email Monitor\tools\Manage-CodexWorkflowHealth.ps1`.
 
 Defined in:
 
@@ -326,6 +327,7 @@ Workflow boundary:
 - The shared `email-delivery` skill handles the send step only: Outlook connector preference, sender safety, attachment input shape, Sent Items verification, local Outlook fallback, and failure reporting.
 - For direct Project Room handoffs, the requester owns purpose, authorization, sender request, To/CC/BCC, subject, exact plain-text body, attachments and required status, and workflow restrictions. Email Monitor owns package completeness checks, request-ID duplicate prevention, durable delivery state, delivery coordination, callback reporting, and escalation to Wes.
 - Defined mode: Email Summary scans Boss's, Jenny's, and Josh's Outlook mailboxes once daily, drafts priority summaries with usage totals, adds the read-only Manager Task mode list to Josh's summary, hands delivery to `email-delivery`, verifies OfficeAssist Sent Items, and updates summary state.
+- Defined mode: Health Check writes heartbeat lifecycle state, runs an independent machine-local Windows watchdog, and lets Wes request options, status, enable/disable, interval or threshold changes, active-window changes, diagnostics, and test alerts in plain language. Configuration changes require healthy state by default, and machine reassignment requires destination verification.
 - Defined mode: Gracious Millionaire Email Routing routes Gracious Millionaire emails into the Gracious Millionaire project room as Markdown source files, records the Outlook message id in Email Monitor memory, and sends a direct project-room thread handoff without drafting the book response in this Email Monitor thread.
 - Defined mode: Brynda Suit Email Routing routes Brynda Suit emails into the Brynda Suit project room as Markdown source files, records the Outlook message id in Email Monitor memory, and sends a direct task handoff without drafting the Brynda Suit response in this Email Monitor thread.
 - Defined mode: Web Site Email Routing routes `GM Site` / REI BlackBook website emails into the REI BlackBook project room as Markdown source files, records the Outlook message id in Email Monitor memory, and sends a direct REI Blackbook thread handoff without editing or publishing the website in this Email Monitor thread.

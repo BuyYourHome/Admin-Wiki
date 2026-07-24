@@ -127,6 +127,10 @@ Use Health Check to maintain Email Monitor's workflow-specific liveness state an
 
 At heartbeat start, call the health updater with `Started` and the intended mode. Before returning, call it with `Completed`; on failure call it with `Failed`, a stage, and a concise message. The scheduled watchdog on the assigned machine owns stale-run evaluation, deduplicated warning/critical/recovery alerts, diagnostics, and wrong-machine refusal. It must not depend on the Outlook connector it supervises.
 
+When Wes addresses Health Check in plain language, use `C:\Codex\Wiki Files\Project Rooms\Email Monitor\tools\Manage-CodexWorkflowHealth.ps1` as the control surface. Map the request to exactly one of `Options`, `Status`, `Enable`, `Disable`, `Configure`, `Test`, or `TestAlert`, execute it, and report the resulting effective settings. When Wes asks what the mode can do, asks for available commands, or says “Health Check, what are my options?”, run `Options`; do not rely on memory to enumerate the choices.
+
+For `Configure`, pass only values Wes requested. Ask a clarifying question when “interval” or “run every” could mean either the Email Monitor heartbeat schedule or the watchdog polling interval. Configuration changes require healthy state by default. Use `AllowUnhealthy` only when Wes explicitly authorizes changing Health Check while unhealthy. Disabling the watchdog stops independent alerts but does not stop heartbeat health-state writes. Treat machine reassignment as a guided migration: verify the destination machine and its scheduled task before disabling the current machine or changing the canonical assignment.
+
 ### Email Routing
 
 Use Email Routing as the OfficeAssist mailbox intake funnel during the configured active window.

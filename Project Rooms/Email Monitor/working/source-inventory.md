@@ -12,7 +12,7 @@
 | Automation run memory | `C:\Users\wesbr\.codex\automations\officeassist-morning-email-summary-and-instruction-monitor\memory.md` | authoritative local state | Stores verified send history, cutoff decisions, summary topics, blockers, and notes for future cutoff selection. |
 | Health Check specification | `Project Rooms\Email Monitor\working\health-check-spec.md` | authoritative | Defines workflow-specific health state, watchdog thresholds, alerts, machine assignment, and reuse rules. |
 | Health Check config | `Project Rooms\Email Monitor\config\email-monitor-health.json` | authoritative | Assigns Email Monitor to `WESSTUDIO` and configures its runtime paths, active window, thresholds, and scheduled task. |
-| Health Check tools | `Project Rooms\Email Monitor\tools\*.ps1` | authoritative mechanism | Update health state, evaluate and alert on stale state, and install the Windows scheduled watchdog. |
+| Health Check tools | `Project Rooms\Email Monitor\tools\*.ps1` | authoritative mechanism | Manage conversational options and configuration, update health state, evaluate and alert on stale state, and install the Windows scheduled watchdog. |
 | Automation config source note | `Project Rooms\Email Monitor\sources\automation-config-source-note.md` | background | Snapshot summary of the live local automation config. |
 | Skill source note | `Project Rooms\Email Monitor\sources\skill-source-note.md` | background | Summary of skill ownership and boundaries. |
 

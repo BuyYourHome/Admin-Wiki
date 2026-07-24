@@ -11,6 +11,7 @@ Health Check detects when the Email Monitor heartbeat stops completing even thou
 | Health updater | `tools\Update-CodexWorkflowHealth.ps1` | Atomically records run start, completion, failure, mode, machine, and consecutive failures. |
 | Watchdog | `tools\Invoke-CodexWorkflowWatchdog.ps1` | Independently evaluates health age, writes diagnostics, deduplicates alerts, and sends local Windows notifications. |
 | Installer | `tools\Install-CodexWorkflowWatchdog.ps1` | Creates or updates the Windows scheduled task from a workflow config. |
+| Manager | `tools\Manage-CodexWorkflowHealth.ps1` | Provides the deterministic control surface for options, status, enable/disable, configuration, diagnostics, and test alerts. |
 | Email Monitor config | `config\email-monitor-health.json` | Assigns the workflow to `WESSTUDIO` and defines paths, active window, thresholds, and scheduled-task identity. |
 | Runtime health | `C:\Users\wesbr\.codex\automations\officeassist-morning-email-summary-and-instruction-monitor\health.json` | Machine-local current health state. |
 | Watchdog state | `C:\Users\wesbr\.codex\automations\officeassist-morning-email-summary-and-instruction-monitor\watchdog-state.json` | Machine-local alert transition and recovery state. |
@@ -21,6 +22,30 @@ Health Check detects when the Email Monitor heartbeat stops completing even thou
 At the beginning of every heartbeat, before mailbox or Project Room work, call the updater with `Started` and the intended mode. Before the heartbeat returns, call it with `Completed`. If the run fails or cannot finish normally, call it with `Failed`, including a concise failure stage and message.
 
 Health updates do not replace Email Monitor memory, send verification, failure reporting, or routing ledgers.
+
+## Conversational Control
+
+Wes may manage Health Check by addressing the mode in plain language. Translate the request to one manager action and report the effective result. When Wes asks what Health Check can do, run `Options` and show the available operations with current settings.
+
+Supported actions:
+
+- `Options`: show the available requests, examples, safeguards, and current configuration.
+- `Status`: show workflow health, watchdog state, task state, machine assignment, active window, and thresholds.
+- `Enable`: install or refresh and enable the Windows watchdog task.
+- `Disable`: disable independent watchdog execution while leaving heartbeat health-state writes active.
+- `Configure`: change the expected heartbeat interval, watchdog polling interval, warning threshold, critical threshold, or active window.
+- `Test`: run a non-notifying watchdog evaluation.
+- `TestAlert`: issue a visible test alert without changing workflow health.
+
+Example:
+
+```powershell
+powershell -NoProfile -ExecutionPolicy Bypass -File "C:\Codex\Wiki Files\Project Rooms\Email Monitor\tools\Manage-CodexWorkflowHealth.ps1" -ConfigPath "C:\Codex\Wiki Files\Project Rooms\Email Monitor\config\email-monitor-health.json" -Action Options
+```
+
+Configuration changes require a healthy workflow by default. Use the manager's `AllowUnhealthy` override only after Wes explicitly authorizes changing configuration while unhealthy. If a request such as "run every 5 minutes" could refer to the Email Monitor heartbeat or the watchdog polling interval, ask which schedule Wes means before changing either one.
+
+Machine reassignment is guided rather than a one-step local edit. Verify the destination machine, install and test its scheduled task, and only then disable the old machine's task and update the canonical assignment. Do not leave the workflow without a verified watchdog.
 
 ## Watchdog Rules
 
@@ -42,6 +67,8 @@ The watchdog always writes its diagnostic log and current alert state. On warnin
 3. a durable `current-alert.txt` file beside the runtime health file.
 
 Email and SMS are intentionally excluded until an independent, verified delivery path is configured. The watchdog must not depend on the same Codex Outlook connector it is supervising.
+
+`TestAlert` may exercise the local toast and event-log paths, but it must not edit `health.json`, change the watchdog health state, or leave a current-alert file behind.
 
 ## Reuse Pattern
 

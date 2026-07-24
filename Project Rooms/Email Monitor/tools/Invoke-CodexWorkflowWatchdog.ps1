@@ -3,7 +3,8 @@ param(
     [Parameter(Mandatory = $true)]
     [string]$ConfigPath,
 
-    [switch]$TestOnly
+    [switch]$TestOnly,
+    [switch]$TestAlert
 )
 
 $ErrorActionPreference = "Stop"
@@ -100,6 +101,20 @@ if ($null -eq $config) {
 
 if ($env:COMPUTERNAME -ne $config.assigned_machine) {
     Write-WatchdogLog -Config $config -Message "Skipped: assigned to $($config.assigned_machine), running on $env:COMPUTERNAME."
+    exit 0
+}
+
+if ($TestAlert) {
+    Publish-Alert -Config $config -Level "TEST" -Message "This is a Health Check test alert. Workflow health was not changed."
+    if (Test-Path -LiteralPath $config.current_alert_file) {
+        Remove-Item -LiteralPath $config.current_alert_file -Force
+    }
+    [ordered]@{
+        workflow_id = [string]$config.workflow_id
+        level = "TEST"
+        health_changed = $false
+        evaluated_at_utc = [DateTime]::UtcNow.ToString("o")
+    } | ConvertTo-Json
     exit 0
 }
 

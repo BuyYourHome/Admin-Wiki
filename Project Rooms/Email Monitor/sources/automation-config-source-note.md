@@ -12,7 +12,7 @@ Related run memory:
 
 Status: authoritative for persistent run state, including verified send history, cutoff decisions, summary topics, blockers, and Jenny pause notes.
 
-Current observed values as of 2026-07-21:
+Current observed values as of 2026-07-24:
 
 | Field | Value |
 |---|---|
@@ -32,9 +32,9 @@ The automation prompt points to:
 
 The prompt defines Email Delivery as an Email Monitor mode connected to `C:\Codex\Wiki Files\skills\email-delivery\SKILL.md`. It requires the OfficeAssist shared/delegated connector send path, absolute attachment-path lists, one clearly directed schema-correct retry, OfficeAssist Sent Items verification, delivery logging, and immediate failure reporting.
 
-The prompt also defines Health Check lifecycle updates. Each heartbeat records `Started` before operational work and records `Completed` or `Failed` before returning. The independent Windows watchdog and its machine assignment are defined by the Project Room Health Check specification and JSON config.
+The prompt also defines Health Check lifecycle updates. Each heartbeat records `Started` before operational work and records `Completed` or `Failed` before returning. The independent Windows watchdog and its machine assignment are defined by the Project Room Health Check specification and JSON config. Health Check management requests use `tools\Manage-CodexWorkflowHealth.ps1`, including option discovery, status, enable/disable, configuration, diagnostics, and test alerts.
 
-The prompt also defines recurring daily summaries for Wes, Jenny, and Josh. Josh's summary scans `IRAManager@SellYourHomeRaleigh.com`, uses the prior verified Josh send as its cutoff, includes a read-only Manager Task mode list from `Project Rooms\Manager\working\task-register.md`, sends to Josh with Wes and Jenny copied, and requires OfficeAssist Sent Items verification.
+The prompt also defines recurring daily summaries for Wes, Jenny, and Josh. Josh's summary scans `IRAManager@SellYourHomeRaleigh.com`, uses the prior verified Josh send as its cutoff, obtains its Manager Tasks section directly from the Manager task, sends to Josh with Wes and Jenny copied, and requires OfficeAssist Sent Items verification.
 
 Important notes:
 

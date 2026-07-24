@@ -39,5 +39,9 @@ Register-ScheduledTask `
     -Description "Monitors the $($config.display_name) Codex workflow health state on $($config.assigned_machine)." `
     -Force | Out-Null
 
+if ($null -ne $config.watchdog_enabled -and -not [bool]$config.watchdog_enabled) {
+    Disable-ScheduledTask -TaskName ([string]$config.scheduled_task_name) | Out-Null
+}
+
 Get-ScheduledTask -TaskName ([string]$config.scheduled_task_name) |
     Select-Object TaskName, State, Author, Description
