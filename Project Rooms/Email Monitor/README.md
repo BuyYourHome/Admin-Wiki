@@ -32,6 +32,7 @@ This project room holds development notes, source inventory, and review artifact
 - `working\` - inventories, conflicts, missing context, development notes, and proposed changes.
 - `outputs\` - review-ready specs, handoffs, runbooks, or finalized drafts.
 - Durable routing and delivery outcomes are recorded in `working\routing-action-log.md`; record what happened to the email or delivery request instead of preserving connector scratch output in Git.
+- Routed emails and attachments should not be saved as routine source files in the Admin wiki Git repo. Preserve Outlook message ids or web links, short summaries, statuses, and external Teams paths in Git logs and inventories. If a routed source must be materialized, store it outside Git in the owning Project Room's Teams source/reference, working, or archive location under that room's rules.
 
 ## Modes
 
@@ -69,7 +70,7 @@ Email Routing contains General Instruction Handling, Gracious Millionaire Email 
 
 Use this branch when Email Routing sees an email with a subject containing `gracious millionaire`, or an email that otherwise clearly belongs to the Gracious Millionaire book/project-room workflow.
 
-This mode routes the email into `C:\Codex\Wiki Files\Project Rooms\Gracious Millionaire\` as source material, preserves it as Markdown under `sources\email\`, updates Gracious Millionaire intake/source records when required by that room's rules, records the Outlook message id in Email Monitor memory, and sends a direct follow-up message to the existing Gracious Millionaire project-room thread with the routed source path and a short summary.
+This mode routes the email to Gracious Millionaire by preserving the Outlook message id or web link, sender, recipients, subject, received time, short summary, and any external Teams source path in Email Monitor memory and the Gracious Millionaire handoff. It updates Gracious Millionaire intake/source records when required by that room's rules and sends a direct follow-up message to the existing Gracious Millionaire project-room thread.
 
 This mode does not draft, edit, or send the requested Gracious Millionaire book response from the Email Monitor task unless Wes explicitly asks for processing here. It also does not attach mailbox checking to the Gracious Millionaire heartbeat or create a new Gracious Millionaire chat.
 
@@ -77,7 +78,7 @@ This mode does not draft, edit, or send the requested Gracious Millionaire book 
 
 Use this branch when Email Routing sees an email from Wes or Jenny with a subject containing `brynda suit`, or an email that otherwise clearly belongs to the Brynda Suit workflow.
 
-This mode routes the email into `C:\Codex\Wiki Files\Project Rooms\Brynda Suit\` as source material, preserves it as Markdown under `sources\email\`, updates the Brynda Suit source inventory when the routed email becomes part of the durable source set, records the Outlook message id in Email Monitor memory, and sends a direct follow-up message to the existing Brynda Suit task with the routed source path, a short summary, and the instruction to wake up and respond.
+This mode routes the email to Brynda Suit by preserving the Outlook message id or web link, sender, recipients, subject, received time, short summary, and any external Teams source path in Email Monitor memory and the Brynda Suit handoff. It updates the Brynda Suit source inventory with references and external paths when the routed email becomes part of the durable source set, and sends a direct follow-up message to the existing Brynda Suit task with the instruction to wake up and respond.
 
 This mode does not draft, edit, or send the requested Brynda Suit response from the Email Monitor task unless Wes explicitly asks for processing here. It also does not create a new Brynda Suit task.
 
@@ -85,7 +86,7 @@ This mode does not draft, edit, or send the requested Brynda Suit response from 
 
 Use this branch when Email Routing sees an email whose subject contains `Manager Task`, matched case-insensitively, including the established bracketed Manager subject format and normal reply or forward prefixes.
 
-This mode preserves the email as Markdown under `C:\Codex\Wiki Files\Project Rooms\Manager\sources\email\`, saves safely retrievable attachments beside it, records the Outlook message id in Email Monitor memory, and sends a direct follow-up message to the existing Manager task `019f8274-5b7e-7170-a051-f7944954de82`. The handoff includes the routed source path, attachment paths or blocker, sender, a short summary, and an instruction to process the email under Manager Tasks mode.
+This mode preserves the Outlook message id or web link, sender, summary, and attachment metadata in Email Monitor memory. Safely retrievable attachments are saved outside Git in Manager's Teams source/reference or working location according to Manager rules. It sends a direct follow-up message to the existing Manager task `019f8274-5b7e-7170-a051-f7944954de82`; the handoff includes the Outlook reference, external attachment paths or blocker, sender, a short summary, and an instruction to process the email under Manager Tasks mode.
 
 Email Monitor does not create or edit Manager tasks, infer task status changes, or perform the requested business action. Manager owns sender and task-id validation, task classification, status interpretation, authorization checks, and task-register updates.
 
@@ -136,6 +137,8 @@ When the workflow changes, update the skill, this project room, and the registry
 ## Change Log
 
 - 2026-07-24: Added the large-required-attachment delivery rule: unresolved required attachments may not be silently replaced with links, reduced files, split packages, another sender, or no-attachment emails without explicit authorization.
+
+- 2026-07-24: Changed Email Routing source retention so routed emails and attachments are preserved by Outlook reference and external Teams paths instead of routine Git `sources\email` files.
 
 - 2026-07-24: Added `working\routing-action-log.md` as the durable outcome log for routed emails and Email Delivery requests.
 
