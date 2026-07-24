@@ -28,6 +28,12 @@ The following tracked Doc Scan generated working artifacts were copied to Teams,
 | --- | --- | ---: | ---: | --- | --- |
 | `working\closing-2026-06-18-093957`, `working\heartbeat-2026-06-16-*`, `working\heartbeat-2026-06-17-1432`, `working\oa-2026-06-18-095324`, and `working\scan-now-2026-06-30` tracked image/PDF artifacts | `Tracked Working Artifacts\2026-07-24 tracked working image cleanup\<same folder structure>` | 108 | 39,717,411 | generated page renders, contact crops, and one report preview | `working\tracked-working-image-audit-2026-07-24.md` |
 
+The following ignored local Doc Scan working files were copied to Teams, verified by file count and byte total, and then removed from `C:\Codex\Wiki Files`. These were generated working artifacts retained temporarily for review and may be deleted from Teams later after Wes approves final retention cleanup.
+
+| Local source under `Project Rooms\Doc Scan` | Teams destination under `Doc Scan Working Archive` | Files | Bytes | Category |
+| --- | --- | ---: | ---: | --- |
+| Ignored files under `working\`, preserving the same relative folder structure | `Ignored Working Files\2026-07-24 working cleanup\<same folder structure>` | 320 | 212,088,590 | ignored generated working files, render/page previews, contact sheets, OCR/test output, and scan-run working folders |
+
 ## Use Rule
 
 When Doc Scan needs older OCR text, scan-run logs, or generated Lowe's statement output packets from the July 2026 cleanup, look in the Teams destinations above before assuming the files were deleted.
