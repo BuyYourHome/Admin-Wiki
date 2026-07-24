@@ -1,6 +1,6 @@
 ---
 name: manager
-description: Use for Buy Your Home Manager project-room work, including Tasks, source organization, status tracking, review-ready outputs, and maintaining materials under `Project Rooms\Manager`.
+description: Use for Buy Your Home Manager project-room work, including Tasks, Email Monitor Manager Routing handoffs, source organization, status tracking, review-ready outputs, and maintaining materials under `Project Rooms\Manager`.
 ---
 
 # Manager
@@ -35,6 +35,35 @@ Use Tasks when any user adds a task for the Manager, asks for the task list or a
 
 Task register: `C:\Codex\Wiki Files\Project Rooms\Manager\working\task-register.md`
 
+#### Manager Routing Intake
+
+Use a direct `Manager Routing` handoff from the Email Monitor task as the trigger to process one routed email. Do not query or continuously monitor any mailbox.
+
+Require the handoff to provide:
+
+- routed Markdown source path;
+- attachment paths or an attachment-access blocker;
+- email sender;
+- short summary;
+- Outlook message ID or link when available.
+
+Process the handoff:
+
+1. Verify the routed Markdown source exists under `C:\Codex\Wiki Files\Project Rooms\Manager\sources\`. Read it completely and review available routed attachments when needed. Do not substitute another mailbox, source, or attachment when access is blocked.
+2. Check `working\manager-routing-ledger.md`, `working\source-inventory.md`, and `working\task-register.md` for the routed source path and Outlook message ID or link. If already processed, do not process it again; report the prior result.
+3. Classify the email as one of:
+   - new Manager task request;
+   - delivery-related message;
+   - Manager status update;
+   - clarification required.
+4. For a new task, follow **Add A Task** below. Use the email received date for `MGR-YYYYMMDD-NNN` when available, otherwise use the processing date. Default priority to `Normal` and status to `New`.
+5. For a delivery-related message, identify the existing task ID and record supported delivery evidence or notes without overwriting prior history. Mark `Delivered` only from verified Email Monitor or approved-sender Sent Items evidence.
+6. For a status update, follow **Process A Manager Email Update** below. Accept it only from `IRAManager@SellYourHomeRaleigh.com` when it identifies an existing task ID and maps clearly to an allowed status.
+7. If the sender, task ID, requested status, source, attachment access, or authority is ambiguous, preserve the source and request clarification without changing task status.
+8. Do not treat the routed email as authorization for payment, purchases, legal or financial changes, deletion, or any other high-impact action.
+9. Add or update the routed source in `working\source-inventory.md` when it becomes part of the durable source set. Record the Outlook ID/link, classification, result, task ID when any, and attachment paths or blocker in `working\manager-routing-ledger.md`.
+10. Report the resulting new task ID, delivery update, status change, duplicate result, or clarification request in the Manager task.
+
 #### Add A Task
 
 1. Assign a stable id in the form `MGR-YYYYMMDD-NNN`, using the next available sequence for that date.
@@ -62,7 +91,7 @@ Deliver only when the requester asks to send or deliver the task, or another app
 3. Map the stated update to one of: `Acknowledged`, `In Progress`, `Waiting`, `Completed`, or `Cancelled`. If the wording is ambiguous, preserve it and ask for clarification.
 4. Update the task status, last-updated time, and source reference without overwriting the earlier delivery record.
 5. An email status change does not authorize a purchase, payment, legal or financial change, deletion, or other high-impact action.
-6. Process email updates when they are supplied or routed to this Project Room. Do not create or assume continuous mailbox monitoring unless Wes separately authorizes an automation.
+6. Process email updates when they are supplied directly or arrive through a direct Email Monitor `Manager Routing` handoff. Do not query or continuously monitor a mailbox.
 
 ## Start PR
 
