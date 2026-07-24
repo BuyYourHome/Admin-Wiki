@@ -1,6 +1,6 @@
 ---
 name: email-monitor
-description: Create Wes's, Jenny's, and Josh's daily OfficeAssist mailbox summaries, run Email Routing for OfficeAssist messages, and execute direct authorized outbound-email delivery handoffs from other Project Rooms, including Invoice Entry. Use for mailbox scanning and summary preparation, routed-email intake, or an immediate structured delivery request that must be sent through `email-delivery`, verified in Sent Items, logged against a request ID, and reported back to the originating task.
+description: Create Wes's, Jenny's, and Josh's daily OfficeAssist mailbox summaries, run Email Routing, execute authorized Email Delivery handoffs, and maintain the Email Monitor Health Check watchdog pattern. Use for mailbox summaries, routed-email intake, direct delivery requests, health-state diagnostics, or workflow-specific watchdog configuration.
 ---
 
 # Email Monitor
@@ -120,6 +120,12 @@ State update:
 - after a successful verified send, update the automation memory with the summary date, weekly subject and Monday-through-Sunday week identifier, cutoff used, topics sent, verified send timestamp from OfficeAssist Sent Items, and any unusual routing, blocker, or verification-draft note;
 - if mailbox access, Wes token-summary generation, Manager response, send, or verification fails, record the blocker and action taken;
 - do not treat a failed summary run as quiet.
+
+### Health Check
+
+Use Health Check to maintain Email Monitor's workflow-specific liveness state and independent Windows watchdog. Follow `C:\Codex\Wiki Files\Project Rooms\Email Monitor\working\health-check-spec.md` and its JSON config and PowerShell tools.
+
+At heartbeat start, call the health updater with `Started` and the intended mode. Before returning, call it with `Completed`; on failure call it with `Failed`, a stage, and a concise message. The scheduled watchdog on the assigned machine owns stale-run evaluation, deduplicated warning/critical/recovery alerts, diagnostics, and wrong-machine refusal. It must not depend on the Outlook connector it supervises.
 
 ### Email Routing
 
@@ -378,14 +384,7 @@ Before finalizing the summary body, run:
 
 `powershell -ExecutionPolicy Bypass -File "C:\Codex\Wiki Files\tools\get-codex-token-summary.ps1"`
 
-Use the helper's JSON output to include a usage section only in Wes's daily summary:
-
-- yesterday total wall-clock process time from `yesterday.elapsed.human`,
-- week-to-date total wall-clock process time from `week_to_date.elapsed.human`,
-- yesterday total tokens,
-- week-to-date total tokens,
-- rate-limit remaining percentages,
-- weekly token budget remaining only when `configured` is true.
+Use the helper's JSON output to include only in Wes's daily summary: yesterday and week-to-date wall-clock process time, yesterday and week-to-date tokens, rate-limit remaining percentages, and weekly token budget remaining when configured.
 
 Lead this section with total wall-clock time. Tokens and rate-limit details are secondary.
 

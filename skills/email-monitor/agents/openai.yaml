@@ -1,4 +1,4 @@
 interface:
   display_name: "Email Monitor"
-  short_description: "Monitor, summarize, route, and safely deliver OfficeAssist email"
-  default_prompt: "Use $email-monitor to monitor OfficeAssist mail, run the applicable routing or summary mode, and use Email Delivery for authorized sends."
+  short_description: "Monitor, summarize, route, deliver, and health-check OfficeAssist email"
+  default_prompt: "Use $email-monitor to run the applicable Email Summary, Email Routing, Email Delivery, or Health Check mode."

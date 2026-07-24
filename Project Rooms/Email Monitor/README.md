@@ -46,6 +46,16 @@ This mode runs only once per calendar day per recipient at the first eligible he
 
 For each recipient, keep the Email Summary subject unchanged throughout the Monday-through-Sunday week in Eastern Time. Calculate the `Week of` date as that week's Monday and use `MM-DD-YY` format. The exact subject patterns are `Wes Email Summary Week of MM-DD-YY`, `Jenny Email Summary Week of MM-DD-YY`, and `Josh Email Summary Week of MM-DD-YY`. Use the resulting subject for all daily summaries and retries during that week, and record it with the Monday week-start date in monitor memory before delivery.
 
+### Health Check
+
+Use this mode to hold the Email Monitor health specification, maintain machine-local run state, configure the independent Windows watchdog, and provide a reusable pattern for other Project Rooms.
+
+Email Monitor writes `Started`, `Completed`, or `Failed` state to its local `health.json`. Windows Task Scheduler runs the watchdog every 10 minutes on assigned machine `WESSTUDIO`. During the 7:45 AM through 11:00 PM Eastern active window, it warns after 35 minutes without a completed heartbeat, escalates at 60 minutes, and issues one recovery notice when service resumes.
+
+The watchdog writes a durable log, alert state, current-alert file, and attempts a Windows toast plus Application event-log entry. It does not use the Outlook connector and does not provide remote SMS or email until an independent delivery channel is configured.
+
+Specification: `working\health-check-spec.md`. Reusable tools: `tools\Update-CodexWorkflowHealth.ps1`, `tools\Invoke-CodexWorkflowWatchdog.ps1`, and `tools\Install-CodexWorkflowWatchdog.ps1`. Email Monitor configuration: `config\email-monitor-health.json`.
+
 ### Email Routing
 
 Use Email Routing as the OfficeAssist mailbox intake funnel. It checks Inbox, Task Instructions, and Accts Payable during the active window, prevents duplicate processing by Outlook message id, handles safe authorized instructions from Wes or Jenny, and applies the appropriate specialized routing branch. It reports incomplete authority or high-impact decisions and returns quietly when no message requires action.
@@ -118,6 +128,8 @@ Use this room for development and design work. Do not change the live automation
 When the workflow changes, update the skill, this project room, and the registry together.
 
 ## Change Log
+
+- 2026-07-24: Added Health Check mode with reusable health-state, watchdog, installer, machine-assignment config, local alerts, diagnostics, and Windows Task Scheduler pattern.
 
 - 2026-07-24: Changed Josh's `Manager Tasks` source to a direct Manager-task response and removed Codex Usage from Jenny's and Josh's summaries; Wes's usage section remains active.
 

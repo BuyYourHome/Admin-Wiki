@@ -1,0 +1,20 @@
+{
+  "schema_version": 1,
+  "workflow_id": "officeassist-morning-email-summary-and-instruction-monitor",
+  "display_name": "Email Monitor",
+  "assigned_machine": "WESSTUDIO",
+  "time_zone": "America/New_York",
+  "active_window_start": "07:45",
+  "active_window_end": "23:00",
+  "expected_interval_minutes": 15,
+  "warning_after_minutes": 35,
+  "critical_after_minutes": 60,
+  "watchdog_interval_minutes": 10,
+  "runtime_directory": "C:\\Users\\wesbr\\.codex\\automations\\officeassist-morning-email-summary-and-instruction-monitor",
+  "health_file": "C:\\Users\\wesbr\\.codex\\automations\\officeassist-morning-email-summary-and-instruction-monitor\\health.json",
+  "watchdog_state_file": "C:\\Users\\wesbr\\.codex\\automations\\officeassist-morning-email-summary-and-instruction-monitor\\watchdog-state.json",
+  "watchdog_log_file": "C:\\Users\\wesbr\\.codex\\automations\\officeassist-morning-email-summary-and-instruction-monitor\\watchdog.log",
+  "current_alert_file": "C:\\Users\\wesbr\\.codex\\automations\\officeassist-morning-email-summary-and-instruction-monitor\\current-alert.txt",
+  "scheduled_task_name": "Codex - Email Monitor Health Check",
+  "toast_app_id": "Windows.SystemToast.PowerShell"
+}
