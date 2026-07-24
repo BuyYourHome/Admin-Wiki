@@ -2,7 +2,7 @@
 
 | Item | Status | Notes |
 | --- | --- | --- |
-| Project Room name | no conflict identified | No existing `Project Rooms\Codex Environment Deployment` folder or `skills\codex-environment-deployment` folder was found before creation. |
+| Project Room name | no conflict identified | No existing `Project Rooms\Codex Environment` folder or `skills\codex-environment` folder was found before creation. |
 | Remote setup authority | approval gated | Remote access and installation actions require Wes authorization for the specific target computer and setup session. |
 | Baseline app list | resolved for Step 1 | WesStudio was inspected on 2026-07-21 and the non-secret baseline is recorded in `outputs/WesStudio Baseline Inventory.md`. Step 2 must classify which present applications are required on targets. |
 | Historical Teams-synced Codex project entry | do not replicate | WesStudio's Codex configuration includes a historical project entry for the Teams-synced wiki folder. The canonical target repo remains `C:\Codex\Wiki Files`. |

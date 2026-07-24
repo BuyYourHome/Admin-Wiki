@@ -95,7 +95,7 @@ Before marking the target ready, verify:
 Record the setup run in:
 
 ```text
-C:\Codex\Wiki Files\Project Rooms\Codex Environment Deployment\working\target-computer-register.md
+C:\Codex\Wiki Files\Project Rooms\Codex Environment\working\target-computer-register.md
 ```
 
 Include:

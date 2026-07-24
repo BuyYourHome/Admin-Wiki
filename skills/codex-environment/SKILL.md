@@ -1,14 +1,14 @@
 ---
-name: codex-environment-deployment
-description: Use for Buy Your Home Codex Environment Deployment project-room work, including WesStudio baseline inventory, authorized remote setup of other computers, required app installation tracking, Codex/Admin wiki environment replication, and verification under `Project Rooms\Codex Environment Deployment`.
+name: codex-environment
+description: Use for Buy Your Home Codex Environment project-room work, including WesStudio baseline inventory, authorized remote setup of other computers, required app installation tracking, Codex/Admin wiki environment replication, and verification under `Project Rooms\Codex Environment`.
 ---
 
-# Codex Environment Deployment
+# Codex Environment
 
 ## Source Of Truth
 
-- Project room: `C:\Codex\Wiki Files\Project Rooms\Codex Environment Deployment`
-- Skill source: `C:\Codex\Wiki Files\skills\codex-environment-deployment\SKILL.md`
+- Project room: `C:\Codex\Wiki Files\Project Rooms\Codex Environment`
+- Skill source: `C:\Codex\Wiki Files\skills\codex-environment\SKILL.md`
 - Admin wiki source: `C:\Codex\Wiki Files`
 - Registry: `C:\Codex\Wiki Files\Agents and Automations Registry.md`
 
@@ -20,11 +20,11 @@ Before durable work, follow Start PR Mode in `C:\Codex\Wiki Files\Project Room C
 
 ## Required Startup
 
-Before Codex Environment Deployment file work:
+Before Codex Environment file work:
 
 1. Confirm the working folder is `C:\Codex\Wiki Files`.
 2. Confirm the current branch is `main`.
-3. Read `Project Room Chat Startup Rule.md`, `Project Room File Ownership And Git Coordination Rule.md`, `Project Rooms\Codex Environment Deployment\README.md`, and this skill source.
+3. Read `Project Room Chat Startup Rule.md`, `Project Room File Ownership And Git Coordination Rule.md`, `Project Rooms\Codex Environment\README.md`, and this skill source.
 4. Read root rules needed for the request, including `AGENTS.md`, `Repository Location Rule.md`, `Project Room Workflow.md`, `Agent Unit Standard.md`, `Git Work Scope Rule.md`, `Codex Skill Source Rule.md`, `Codex Python Runtime Rule.md`, and `LibreOffice Location Rule.md`.
 5. Check `git status --short --branch`.
 
@@ -40,7 +40,7 @@ Before Codex Environment Deployment file work:
 8. Sync wiki-managed skills only after the target Admin wiki repo is current and the updated skills are ready to install.
 9. Verify the target computer with a repeatable checklist before marking it ready.
 10. Preserve run notes, blockers, and verification outputs under the Project Room.
-11. Commit only scoped Codex Environment Deployment room, matching skill, registry, and index changes.
+11. Commit only scoped Codex Environment room, matching skill, registry, and index changes.
 
 ## Modes
 
@@ -48,7 +48,7 @@ Before Codex Environment Deployment file work:
 
 Use this mode when Wes asks to keep an already prepared target computer current with changes made on WesStudio.
 
-Follow `C:\Codex\Wiki Files\Project Rooms\Codex Environment Deployment\outputs\Update Codex Environment Mode.md`.
+Follow `C:\Codex\Wiki Files\Project Rooms\Codex Environment\outputs\Update Codex Environment Mode.md`.
 
 This mode is limited to:
 
@@ -76,4 +76,4 @@ This mode does not authorize app installs, paid software, account sign-ins, conn
 
 ## Outputs
 
-Use `C:\Codex\Wiki Files\Project Rooms\Codex Environment Deployment\outputs` for setup checklists, baseline reports, target-computer run reports, verification summaries, and handoffs.
+Use `C:\Codex\Wiki Files\Project Rooms\Codex Environment\outputs` for setup checklists, baseline reports, target-computer run reports, verification summaries, and handoffs.

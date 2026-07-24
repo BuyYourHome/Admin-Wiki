@@ -1,4 +1,4 @@
-# Codex Environment Deployment Project Room
+# Codex Environment Project Room
 
 ## Purpose
 
@@ -69,11 +69,11 @@ Before declaring another computer ready, identify and document the WesStudio bas
 
 ## Matching Skill
 
-- Skill source: `C:\Codex\Wiki Files\skills\codex-environment-deployment\SKILL.md`
+- Skill source: `C:\Codex\Wiki Files\skills\codex-environment\SKILL.md`
 
 ## Dedicated Chat
 
-- Chat name: `Codex Environment Deployment`
+- Chat name: `Codex Environment`
 - Thread id: `019f84d0-78d4-7013-8c07-42c01f961be1`
 
 ## Start PR
@@ -85,7 +85,7 @@ Before durable work, follow Start PR Mode in `C:\Codex\Wiki Files\Project Room C
 - Working branch: `main`.
 - Before durable file work, confirm the repo is `C:\Codex\Wiki Files` and the current branch is `main`.
 - Follow `Project Room File Ownership And Git Coordination Rule.md` for Project Room ownership, shared Admin files, cross-PR edits, fetch/pull safety, commit scope, and push safety.
-- Commit only scoped Codex Environment Deployment room, matching skill, and directly related registry/index changes.
+- Commit only scoped Codex Environment room, matching skill, and directly related registry/index changes.
 - Push only when Wes explicitly asks, says the work is finished, or the applicable Admin wiki rules define the deliverable as final and ready to publish.
 
 ## Next Actions

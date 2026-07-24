@@ -97,7 +97,7 @@ The installed wiki-managed skills match the canonical Admin wiki source as of th
 
 Installed workflow skills:
 
-`admin-request-wrapup`, `aios`, `amortization`, `brynda-suit`, `cma-report`, `codex-environment-deployment`, `confidential`, `contract-for-deed`, `create-pr`, `credit-worthiness-evaluator`, `doc-scan`, `email-delivery`, `email-monitor`, `entity-relationship`, `gracious-millionaire`, `investigate-computer`, `invoice-entry`, `jean-wright`, `jennys-drawings`, `ld-evans`, `lowes-order`, `manager`, `new-project`, `operating-agreement`, `property-trade-evaluation`, `rei-blackbook`, `sops`, `template-to-project`, and `wes-voice`.
+`admin-request-wrapup`, `aios`, `amortization`, `brynda-suit`, `cma-report`, `codex-environment`, `confidential`, `contract-for-deed`, `create-pr`, `credit-worthiness-evaluator`, `doc-scan`, `email-delivery`, `email-monitor`, `entity-relationship`, `gracious-millionaire`, `investigate-computer`, `invoice-entry`, `jean-wright`, `jennys-drawings`, `ld-evans`, `lowes-order`, `manager`, `new-project`, `operating-agreement`, `property-trade-evaluation`, `rei-blackbook`, `sops`, `template-to-project`, and `wes-voice`.
 
 ## Enabled Codex Plugins
 

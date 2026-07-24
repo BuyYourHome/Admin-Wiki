@@ -25,7 +25,7 @@ Use [[Agent Unit Standard]] for the standard package behind an agent-like operat
 | Jennys Drawings | Wiki-managed skill plus project room plus dedicated chat | Draft | On demand | `skills\jennys-drawings\SKILL.md`; `Project Rooms\Jennys Drawings\README.md` |
 | Lowes Order | Wiki-managed skill plus project room plus dedicated chat | Draft | On demand | `skills\lowes-order\SKILL.md`; `Project Rooms\Lowes Order\README.md` |
 | Manager | Wiki-managed skill plus project room plus dedicated chat | Draft | On demand | `skills\manager\SKILL.md`; `Project Rooms\Manager\README.md` |
-| Codex Environment Deployment | Wiki-managed skill plus project room plus dedicated chat | Draft | On demand | `skills\codex-environment-deployment\SKILL.md`; `Project Rooms\Codex Environment Deployment\README.md` |
+| Codex Environment | Wiki-managed skill plus project room plus dedicated chat | Draft | On demand | `skills\codex-environment\SKILL.md`; `Project Rooms\Codex Environment\README.md` |
 | SOPs | Wiki-managed skill plus project room | Active | On demand | `skills\sops\SKILL.md`; `Project Rooms\SOPs\README.md`; `Project Rooms\SOPs\outputs\SOP Index.md` |
 | Credit Worthiness Evaluator | Wiki-managed skill plus project room | Active | On demand | `skills\credit-worthiness-evaluator\SKILL.md`; `Project Rooms\Credit Worthiness Evaluator\README.md` |
 | Contract for Deed | Wiki-managed skill plus project room | Active | On demand | `skills\contract-for-deed\SKILL.md`; `Project Rooms\Contract for Deed\README.md` |
@@ -636,7 +636,7 @@ Important rules:
 - Do not send email, external messages, make purchases, change legal/financial documents, or perform live operational actions unless Wes explicitly authorizes the specific action.
 - Do not create Teams folders or automations unless Wes explicitly asks.
 
-## Codex Environment Deployment
+## Codex Environment
 
 Type: wiki-managed skill plus project room plus dedicated chat.
 
@@ -651,12 +651,12 @@ Purpose:
 
 Defined in:
 
-- `C:\Codex\Wiki Files\skills\codex-environment-deployment\SKILL.md`
-- `C:\Codex\Wiki Files\Project Rooms\Codex Environment Deployment\README.md`
+- `C:\Codex\Wiki Files\skills\codex-environment\SKILL.md`
+- `C:\Codex\Wiki Files\Project Rooms\Codex Environment\README.md`
 
 Dedicated chat:
 
-- Chat name: `Codex Environment Deployment`
+- Chat name: `Codex Environment`
 - Thread id: `019f84d0-78d4-7013-8c07-42c01f961be1`
 
 Important rules:
