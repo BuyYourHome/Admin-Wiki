@@ -452,6 +452,25 @@ Required end-of-run steps:
 
 A Doc Scan job is not complete until its generated working files have either been removed, moved to the Teams Working Archive and mapped, or explicitly recorded as needing human review.
 
+## Source Document Retention Rule
+
+Doc Scan source documents are not durable Admin wiki repo content.
+
+The Admin wiki repo should keep rules, SOPs, folder maps, source inventories, action logs, archive maps, review notes, and handoff records. It should not keep original scanned PDFs/JPGs, email attachment PDFs/XLSX/images, or final filed project/property documents.
+
+Source documents should live in Teams, SharePoint, the scanner intake/archive folders, property folders, Office Admin folders, or another approved Teams source/archive location.
+
+Doc Scan may temporarily copy source documents into a local working area only when needed for processing, OCR, splitting, visual inspection, or source review. After processing, the source document must either:
+
+1. remain preserved in its original Teams/SharePoint/scanner archive location,
+2. be filed into the correct Teams/property/Admin destination,
+3. be moved to an approved Teams source archive with count/byte verification and map logging, or
+4. be recorded as needing human review.
+
+Do not leave source PDFs, JPGs, JPEGs, PNGs, XLSX files, or other attachment/source binaries in `C:\Codex\Wiki Files\Project Rooms\Doc Scan\sources` unless Wes explicitly approves a specific file as durable repo source material.
+
+When source documents are removed from the Admin wiki repo, preserve a pointer or inventory entry showing where they were moved or where the authoritative source remains.
+
 ## Scanned Document Register Alerts
 
 When updating the scanned document register, use one row per account and compare new statement data to the existing row before overwriting it.

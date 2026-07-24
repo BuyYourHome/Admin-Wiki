@@ -22,6 +22,25 @@ Connector preference:
 - Use the SharePoint/Teams connector as the default discovery path for locating scan files and matching destination folders when connector access is available.
 - Use the local synced paths as the scanner drop-zone, working-copy, PDF processing, logging, archive, and fallback paths.
 
+## Source Document Retention Rule
+
+Doc Scan source documents are not durable Admin wiki repo content.
+
+The Admin wiki repo should keep rules, SOPs, folder maps, source inventories, action logs, archive maps, review notes, and handoff records. It should not keep original scanned PDFs/JPGs, email attachment PDFs/XLSX/images, or final filed project/property documents.
+
+Source documents should live in Teams, SharePoint, the scanner intake/archive folders, property folders, Office Admin folders, or another approved Teams source/archive location.
+
+Doc Scan may temporarily copy source documents into a local working area only when needed for processing, OCR, splitting, visual inspection, or source review. After processing, the source document must either:
+
+1. remain preserved in its original Teams/SharePoint/scanner archive location,
+2. be filed into the correct Teams/property/Admin destination,
+3. be moved to an approved Teams source archive with count/byte verification and map logging, or
+4. be recorded as needing human review.
+
+Do not leave source PDFs, JPGs, JPEGs, PNGs, XLSX files, or other attachment/source binaries in `C:\Codex\Wiki Files\Project Rooms\Doc Scan\sources` unless Wes explicitly approves a specific file as durable repo source material.
+
+When source documents are removed from the Admin wiki repo, preserve a pointer or inventory entry showing where they were moved or where the authoritative source remains.
+
 ## Skill Trigger
 
 Use this skill when asked to process scanned mortgage statements, credit card statements, bank statements, invoices, receipts, tax documents, CPA forms, medical bills, donation records, or similar Office Admin documents.
