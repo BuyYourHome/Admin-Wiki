@@ -296,6 +296,7 @@ Defined in:
 
 - `C:\Codex\Wiki Files\skills\email-monitor\SKILL.md`
 - `C:\Codex\Wiki Files\Project Rooms\Email Monitor\README.md`
+- `C:\Codex\Wiki Files\Project Rooms\Email Monitor\working\routing-action-log.md`
 - `C:\Users\wesbr\.codex\automations\officeassist-morning-email-summary-and-instruction-monitor\automation.toml`
 - Email safety rules in `AGENTS.md`.
 
@@ -333,6 +334,7 @@ Workflow boundary:
 - Defined mode: Web Site Email Routing routes `GM Site` / REI BlackBook website emails into the REI BlackBook project room as Markdown source files, records the Outlook message id in Email Monitor memory, and sends a direct REI Blackbook thread handoff without editing or publishing the website in this Email Monitor thread.
 - Defined mode: Email Delivery handles authorized Email Monitor sends and immediate direct handoffs from other Project Rooms through the shared `email-delivery` skill. Each direct package must include a unique request ID, origin Project Room and task/thread ID, authorization basis, sender, To/CC/BCC, subject, exact plain-text body, absolute attachment paths, attachment-required status, workflow restrictions, and callback task/thread ID. Email Monitor rejects incomplete packages, checks durable request records before sending, prevents duplicate sends, verifies sender/recipients/subject/attachments in OfficeAssist Sent Items, and returns a fixed success or unresolved-failure result to the callback task.
 - Invoice Entry may submit properly authorized delivery packages for vendor invoice-accuracy verification, Time Card invoice verification, Wes approval/payment review, or post-Wes-approval status notices. Route Vendor Invoice's no-vendor-contact rule applies during intake routing and does not override a later delivery specifically authorized under Invoice Entry's saved rules.
+- Durable routing and delivery outcomes that matter for audit, debugging, or follow-up are recorded in `Project Rooms\Email Monitor\working\routing-action-log.md`.
 - Development work, source inventory, open questions, and review-ready handoffs for this workflow live in `C:\Codex\Wiki Files\Project Rooms\Email Monitor\`.
 
 ## Email Delivery
@@ -387,6 +389,7 @@ Defined in:
 
 - Canonical skill source: `C:\Codex\Wiki Files\skills\doc-scan\SKILL.md`
 - Project room: `C:\Codex\Wiki Files\Project Rooms\Doc Scan\README.md`
+- Outcome log: `C:\Codex\Wiki Files\Project Rooms\Doc Scan\working\scanned-document-action-log.md`
 - Installed local skill copy: `C:\Users\wesbr\.codex\skills\doc-scan\SKILL.md`
 - Automation: `C:\Users\wesbr\.codex\automations\doc-scan\automation.toml`
 - Wiki support:
@@ -401,6 +404,7 @@ Important rules:
 - Never delete source scans.
 - Never overwrite filed PDFs.
 - Never pay invoices or contact vendors.
+- Durable scan outcomes are recorded in `Project Rooms\Doc Scan\working\scanned-document-action-log.md`; generated OCR, render, packet, and split-working artifacts stay out of Git unless Wes explicitly identifies one as durable source material.
 - If routing confidence is low, route to review and log why.
 - Keep the automation attached to one dedicated status thread via `target_thread_id` so the user can review run history and adjust behavior in one place.
 - Use quiet-run behavior with `DONT_NOTIFY` when no new scans are found so routine empty checks do not create visible chat noise.

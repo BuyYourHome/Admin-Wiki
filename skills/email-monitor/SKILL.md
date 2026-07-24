@@ -24,6 +24,7 @@ Before using this skill, have:
 - access to `Jenny@BuyYourHomeLLC.com` mailbox contents when running Jenny's summary,
 - access to `IRAManager@SellYourHomeRaleigh.com` mailbox contents when running Josh's summary,
 - direct task messaging access to Manager task `019f8274-5b7e-7170-a051-f7944954de82`,
+- the routing action log at `C:\Codex\Wiki Files\Project Rooms\Email Monitor\working\routing-action-log.md` when routing or delivery outcomes need durable tracking,
 - access to `C:\Codex\Wiki Files\tools\get-codex-token-summary.ps1` when Wes's usage totals are needed.
 
 ## Workflow
@@ -257,6 +258,7 @@ For each routed email:
 - update `C:\Codex\Wiki Files\Project Rooms\Invoice Entry\working\source-inventory.md` or the current Invoice Entry intake ledger when the routed email becomes part of the durable source set;
 - record the routed Outlook message id in this workflow's monitor memory so the same email is not routed repeatedly;
 - send a direct follow-up message to the existing Invoice Entry task with the routed source path, attachment paths or attachment blocker, a short summary of the vendor/project clues, and the instruction to process the invoice under Invoice Entry rules.
+- update `C:\Codex\Wiki Files\Project Rooms\Email Monitor\working\routing-action-log.md` when the routing result matters for audit, debugging, or follow-up, recording the source message, route branch, preserved source path, handoff target, status, and blocker or duplicate note.
 
 Current Invoice Entry task id: `019f3d56-b310-75c0-b084-616bfc1e9f59`.
 
@@ -495,6 +497,8 @@ After a successful verified Josh send, update the automation memory with:
 If the send fails or verification fails, record the blocker and the action taken.
 
 Use `C:\Users\wesbr\.codex\automations\officeassist-morning-email-summary-and-instruction-monitor\memory.md` as the persistent run memory unless Wes explicitly changes the live automation storage location.
+
+For routed emails and direct Email Delivery requests that matter for audit, debugging, or follow-up, also update `C:\Codex\Wiki Files\Project Rooms\Email Monitor\working\routing-action-log.md` with the durable outcome: Outlook message or delivery request, mode or branch, preserved source or delivery record, handoff/recipient, status, and notes. Do not commit connector search scratch output, temporary drafts, or duplicate fetched message bodies merely to show how the routing decision was made.
 ## Start PR Pointer
 
 Before durable work, follow Start PR Mode in `C:\Codex\Wiki Files\Project Room Chat Startup Rule.md`.

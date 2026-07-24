@@ -12,6 +12,8 @@
 | Invoice Project List | `C:\Codex\Wiki Files\Invoice Project List.md` | authoritative for project invoice matching | Used to route project invoices to the correct property/project folder. |
 | Property/Credit Cards Sheet | `C:\Users\wesbr\Buy Your Home\Buy Your Home - Property\Credit Cards Sheet.xlsx` | authoritative for current property/mortgage context | Use worksheet `Mortgages` when matching insurance-related scanned documents to current properties. |
 | Doc Scan Modes | `Project Rooms\Doc Scan\working\doc-scan-modes.md` | project-room operating index | Defines the project-room mode names used for scan-category development and cross-mode routing discussion. |
+| Scanned Document Action Log | `Project Rooms\Doc Scan\working\scanned-document-action-log.md` | authoritative outcome log | Durable Admin wiki summary of what happened to source scans, filed/review documents, register alerts, and Project Room handoffs. |
+| Teams Working Archive Map | `Project Rooms\Doc Scan\working\teams-working-archive-map.md` | authoritative archive map | Records where generated output packets, OCR working files, and scan-run logs were moved in Teams instead of Git. |
 | Insurance Document Rules | `Project Rooms\Doc Scan\working\insurance-document-rules.md` | working rule context | Development notes for insurance-company and mortgage-company property insurance document handling. |
 | Workflow source note | `Project Rooms\Doc Scan\sources\workflow-source-note.md` | background | Summary of controlling sources and runtime locations. |
 

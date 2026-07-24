@@ -31,6 +31,7 @@ This project room holds development notes, source inventory, and review artifact
 - `sources\` - source notes for controlling rules, skill source, automation config, connector behavior, and related files.
 - `working\` - inventories, conflicts, missing context, development notes, and proposed changes.
 - `outputs\` - review-ready specs, handoffs, runbooks, or finalized drafts.
+- Durable routing and delivery outcomes are recorded in `working\routing-action-log.md`; record what happened to the email or delivery request instead of preserving connector scratch output in Git.
 
 ## Modes
 
@@ -119,6 +120,7 @@ After sending, verify the OfficeAssist Sent Items copy for sender, To, CC, BCC, 
 
 - `C:\Codex\Wiki Files\skills\email-monitor\SKILL.md`
 - `C:\Codex\Wiki Files\skills\email-delivery\SKILL.md`
+- `C:\Codex\Wiki Files\Project Rooms\Email Monitor\working\routing-action-log.md`
 - `C:\Codex\Wiki Files\AGENTS.md`
 - `C:\Codex\Wiki Files\Agents and Automations Registry.md`
 - `C:\Users\wesbr\.codex\automations\officeassist-morning-email-summary-and-instruction-monitor\automation.toml`
@@ -130,6 +132,8 @@ Use this room for development and design work. Do not change the live automation
 When the workflow changes, update the skill, this project room, and the registry together.
 
 ## Change Log
+
+- 2026-07-24: Added `working\routing-action-log.md` as the durable outcome log for routed emails and Email Delivery requests.
 
 - 2026-07-24: Added conversational Health Check management for option discovery, status, enable/disable, configuration, diagnostics, and test alerts, with healthy-state and machine-migration safeguards.
 

@@ -15,6 +15,7 @@ Process scanned Office Admin PDFs and JPG/JPEG image scans conservatively. Split
 - Logs: `C:\Users\wesbr\Buy Your Home\Buy Your Home - Office Admin\Scanned Files\Logs`
 - Archive: `C:\Users\wesbr\Buy Your Home\Buy Your Home - Office Admin\Scanned Files\Archived`
 - Working archive map: `C:\Codex\Wiki Files\Project Rooms\Doc Scan\working\teams-working-archive-map.md`
+- Scanned document action log: `C:\Codex\Wiki Files\Project Rooms\Doc Scan\working\scanned-document-action-log.md`
 - Teams working archive: `C:\Users\wesbr\Buy Your Home\Buy Your Home - Office Admin\Scanned Files\Doc Scan Working Archive`
 - Destination root: `C:\Users\wesbr\Buy Your Home\Buy Your Home - Office Admin\2026`
 - Property root for mortgage, property insurance, and property closing documents: `C:\Users\wesbr\Buy Your Home\Buy Your Home - Property`
@@ -408,6 +409,8 @@ Write one text log per source scan in the Logs folder. Include:
 - Destination folder and output file path.
 - Confidence notes and any review items.
 - Archive path for the original source scan, if archived.
+
+Also update `C:\Codex\Wiki Files\Project Rooms\Doc Scan\working\scanned-document-action-log.md` when a scan produces a durable outcome such as a filed document, review routing, register alert, or handoff to Invoice Entry or another Project Room. Record what happened to the source scan and filed/review document, including source scan, identified document, filed or review destination, project/account/vendor, handoff/register action, status, and notes. Do not commit OCR scratch folders, temporary render folders, split experiments, or generated packet files merely to show how the scan was processed.
 
 ## Scanned Document Register Alerts
 

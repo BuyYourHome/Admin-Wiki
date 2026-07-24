@@ -13,6 +13,7 @@
 | Health Check specification | `Project Rooms\Email Monitor\working\health-check-spec.md` | authoritative | Defines workflow-specific health state, watchdog thresholds, alerts, machine assignment, and reuse rules. |
 | Health Check config | `Project Rooms\Email Monitor\config\email-monitor-health.json` | authoritative | Assigns Email Monitor to `WESSTUDIO` and configures its runtime paths, active window, thresholds, and scheduled task. |
 | Health Check tools | `Project Rooms\Email Monitor\tools\*.ps1` | authoritative mechanism | Manage conversational options and configuration, update health state, evaluate and alert on stale state, and install the Windows scheduled watchdog. |
+| Routing Action Log | `Project Rooms\Email Monitor\working\routing-action-log.md` | authoritative outcome log | Durable Admin wiki summary of important routed-email and Email Delivery outcomes, including preserved source path, handoff target, status, and blockers. |
 | Automation config source note | `Project Rooms\Email Monitor\sources\automation-config-source-note.md` | background | Snapshot summary of the live local automation config. |
 | Skill source note | `Project Rooms\Email Monitor\sources\skill-source-note.md` | background | Summary of skill ownership and boundaries. |
 
