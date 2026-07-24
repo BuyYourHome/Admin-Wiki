@@ -131,7 +131,7 @@ For each new message:
 - recognize instructions from `WesWill@BuyYourHomeLLC.com` and `Jenny@BuyYourHomeLLC.com`;
 - perform a safe, in-scope admin action or start the applicable workflow when current Admin wiki rules authorize it;
 - hold and report a decision needed when authorization, routing, or high-impact action authority is incomplete;
-- apply the specialized routing branch when the message matches Gracious Millionaire, Web Site, Brynda Suit, or Route Vendor Invoice rules;
+- apply the specialized routing branch when the message matches Gracious Millionaire, Web Site, Brynda Suit, Manager Routing, or Route Vendor Invoice rules;
 - return quietly when no new actionable or routable message is found.
 
 Email Routing is not the trigger for the scheduled Email Summary mode or a direct Project Room Email Delivery handoff.
@@ -214,6 +214,14 @@ For each routed email:
 Current Brynda Suit task id: `019f61c3-d4c0-7a52-a5a0-e4066ea9b303`.
 
 Do not create a new Brynda Suit task for this routing unless Wes explicitly asks. Do not process the Brynda Suit response from this Email Monitor task unless Wes explicitly asks for processing here. The default action is source routing plus direct project-room handoff only.
+
+#### Manager Routing
+
+Use Manager Routing when Email Routing sees an email whose subject contains `Manager Task`, matched case-insensitively. This includes the established `[Manager Task][<Priority>][<Task ID>] <short title>` format and normal reply or forward prefixes.
+
+Preserve it as Markdown under `C:\Codex\Wiki Files\Project Rooms\Manager\sources\email\` with message and attachment metadata. Save safely retrievable attachments beside the source; otherwise preserve the Outlook link and report the blocker. Update the Manager source inventory when applicable, record the Outlook message id in Email Monitor memory, and send Manager task `019f8274-5b7e-7170-a051-f7944954de82` a direct handoff with the source path, attachment paths or blocker, sender, summary, and instruction to process it under Manager Tasks mode.
+
+Manager must determine whether the email is a new task request, delivery-related message, or status update and apply its existing sender, task-id, status, authorization, and task-register rules. Email Monitor must not infer a status change, create or edit a Manager task, or perform the requested business action from this routing branch.
 
 #### Route Vendor Invoice
 

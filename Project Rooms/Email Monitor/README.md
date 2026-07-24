@@ -50,7 +50,7 @@ For each recipient, keep the Email Summary subject unchanged throughout the Mond
 
 Use Email Routing as the OfficeAssist mailbox intake funnel. It checks Inbox, Task Instructions, and Accts Payable during the active window, prevents duplicate processing by Outlook message id, handles safe authorized instructions from Wes or Jenny, and applies the appropriate specialized routing branch. It reports incomplete authority or high-impact decisions and returns quietly when no message requires action.
 
-Email Routing contains General Instruction Handling, Gracious Millionaire Email Routing, Web Site Email Routing, Brynda Suit Email Routing, and Route Vendor Invoice. It does not trigger the scheduled Email Summary mode or direct Project Room Email Delivery handoffs.
+Email Routing contains General Instruction Handling, Gracious Millionaire Email Routing, Web Site Email Routing, Brynda Suit Email Routing, Manager Routing, and Route Vendor Invoice. It does not trigger the scheduled Email Summary mode or direct Project Room Email Delivery handoffs.
 
 #### Gracious Millionaire Email Routing
 
@@ -67,6 +67,14 @@ Use this branch when Email Routing sees an email from Wes or Jenny with a subjec
 This mode routes the email into `C:\Codex\Wiki Files\Project Rooms\Brynda Suit\` as source material, preserves it as Markdown under `sources\email\`, updates the Brynda Suit source inventory when the routed email becomes part of the durable source set, records the Outlook message id in Email Monitor memory, and sends a direct follow-up message to the existing Brynda Suit task with the routed source path, a short summary, and the instruction to wake up and respond.
 
 This mode does not draft, edit, or send the requested Brynda Suit response from the Email Monitor task unless Wes explicitly asks for processing here. It also does not create a new Brynda Suit task.
+
+#### Manager Routing
+
+Use this branch when Email Routing sees an email whose subject contains `Manager Task`, matched case-insensitively, including the established bracketed Manager subject format and normal reply or forward prefixes.
+
+This mode preserves the email as Markdown under `C:\Codex\Wiki Files\Project Rooms\Manager\sources\email\`, saves safely retrievable attachments beside it, records the Outlook message id in Email Monitor memory, and sends a direct follow-up message to the existing Manager task `019f8274-5b7e-7170-a051-f7944954de82`. The handoff includes the routed source path, attachment paths or blocker, sender, a short summary, and an instruction to process the email under Manager Tasks mode.
+
+Email Monitor does not create or edit Manager tasks, infer task status changes, or perform the requested business action. Manager owns sender and task-id validation, task classification, status interpretation, authorization checks, and task-register updates.
 
 ### Email Delivery
 
@@ -110,6 +118,8 @@ Use this room for development and design work. Do not change the live automation
 When the workflow changes, update the skill, this project room, and the registry together.
 
 ## Change Log
+
+- 2026-07-24: Added Manager Routing for email subjects containing `Manager Task`, with durable Manager source preservation, duplicate prevention, attachment handling, and direct handoff to the existing Manager task.
 
 - 2026-07-24: Renamed Instruction Email Monitoring to Email Routing and made the specialized project routes explicit branches under that intake mode; behavior and automation identity remain unchanged.
 
