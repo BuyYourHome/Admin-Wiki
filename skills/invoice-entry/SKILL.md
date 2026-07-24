@@ -399,6 +399,18 @@ Required end-of-run steps:
 
 An Invoice Entry job is not complete until its generated working files have either been removed, moved to the Teams Working Archive and mapped, or explicitly recorded as needing human review.
 
+## Source Packet And Email Retention Rule
+
+Invoice Entry source material is not durable Admin wiki repo content.
+
+The Admin wiki repo should keep rules, SOP pointers, packet schemas, source inventories, action logs, archive maps, held-detail registers, review notes, and handoff records. It should not keep routed email source files, operational packet JSON/Markdown files, source attachments, generated invoice drafts, machine handoff files, or final filed project documents.
+
+Source material should live in Teams, SharePoint, routed mailbox evidence, property folders, Office Admin folders, or the Invoice Entry Teams Working Archive.
+
+Invoice Entry may temporarily use local copies only when needed for processing, duplicate review, workbook insertion, or traceability. After the durable outcome is logged, the source material must either remain preserved at its authoritative Teams/SharePoint/mailbox location, be filed into the correct Teams/property/Admin destination, be moved to the Invoice Entry Teams Working Archive with count/byte verification and map logging, or be recorded as needing human review.
+
+Do not leave source packets, routed emails, attachments, generated PDFs, workbook copies, or other operational source artifacts under `Project Rooms\Invoice Entry\sources` unless Wes explicitly approves a specific file as durable repo source material.
+
 ## Completion
 
 - Record insertion decisions, duplicate findings, and unresolved questions in the project room.

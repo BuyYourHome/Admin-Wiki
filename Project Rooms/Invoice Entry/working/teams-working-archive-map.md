@@ -29,6 +29,12 @@ The following ignored local Invoice Entry working files were copied to Teams wit
 | --- | --- | ---: | ---: | --- |
 | Ignored files under `working\`, preserving the same relative folder structure | `Ignored Working Files\2026-07-24 working cleanup\<same folder structure>` | 122 | 126,866,724 | ignored workbook backups, statement working files, generated invoice PDFs/render previews, and temporary workbook downloads |
 
+The following tracked Invoice Entry operational source files were copied to Teams, verified by file count and byte total, and then removed from Git under the Source Packet And Email Retention Rule. These are retained source packets and routed email source records, not durable wiki rules.
+
+| Local source under `Project Rooms\Invoice Entry` | Teams destination under `Invoice Entry Working Archive` | Files | Bytes | Category |
+| --- | --- | ---: | ---: | --- |
+| Operational files under `sources\`, excluding root `sources\README.md`, preserving the same relative folder structure | `Source Documents\2026-07-24 source cleanup\<same folder structure>` | 19 | 60,335 | retained packet, routed email, and source-folder instruction files |
+
 ## Use Rule
 
 When Invoice Entry needs older machine handoff packets, Lowe's statement working files, review-request evidence, or temporary workbook copies from the July 2026 cleanup, look in the Teams destinations above before assuming the files were deleted.
