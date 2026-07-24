@@ -20,6 +20,14 @@ The following untracked local Doc Scan files were copied to Teams, verified by f
 
 Total moved in this cleanup: 160 files, 77,190,496 bytes.
 
+## Cleanup Recorded 2026-07-24
+
+The following tracked Doc Scan generated working artifacts were copied to Teams, verified by file count and byte total, and then removed from Git. These were not original scans and should not be reprocessed as new scanned documents.
+
+| Local source under `Project Rooms\Doc Scan` | Teams destination under `Doc Scan Working Archive` | Files | Bytes | Category | Audit |
+| --- | --- | ---: | ---: | --- | --- |
+| `working\closing-2026-06-18-093957`, `working\heartbeat-2026-06-16-*`, `working\heartbeat-2026-06-17-1432`, `working\oa-2026-06-18-095324`, and `working\scan-now-2026-06-30` tracked image/PDF artifacts | `Tracked Working Artifacts\2026-07-24 tracked working image cleanup\<same folder structure>` | 108 | 39,717,411 | generated page renders, contact crops, and one report preview | `working\tracked-working-image-audit-2026-07-24.md` |
+
 ## Use Rule
 
 When Doc Scan needs older OCR text, scan-run logs, or generated Lowe's statement output packets from the July 2026 cleanup, look in the Teams destinations above before assuming the files were deleted.
