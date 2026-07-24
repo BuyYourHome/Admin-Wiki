@@ -37,6 +37,7 @@ Excluded unless Wes explicitly expands scope:
 - Before each worksheet-specific redesign or rollout task, read the matching file under `Worksheet Modes\`.
 - Make timestamped rollback copies before structural workbook edits.
 - Treat project-room workbook copies as temporary working files. Once a newer Teams/SharePoint-fetched copy or verified replacement supersedes a working copy, delete the replaced working copy unless it is a rollback copy, approved validation evidence, or a durable migration log.
+- Do not keep workbook source files, fetched project workbooks, rollback copies, validation workbooks, generated comparison workbooks, rendered workbook checks, or spreadsheet experiment outputs in the Admin wiki Git repo after they are processed. Store those files under the Teams `Project Template` source, validation, rollback, or working archive folders and keep only rules, maps, logs, summaries, and pointers in Git.
 - Reconnect formulas by meaning, named ranges, table names, labels, and expected business purpose, not by blind cell-position copying.
 - Migrate project-specific values with a full map for each project. Do not assume one project maps the same as another.
 - Preserve formulas, formatting, widths, tables, checkboxes/selectors, names, print settings, macros, and helper areas unless the approved mode design intentionally changes them.

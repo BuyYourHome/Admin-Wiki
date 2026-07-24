@@ -54,6 +54,7 @@ Use this skill for current template-to-project worksheet rollout and migration w
 - Do not move finished files back to Teams unless Wes asks or an established workflow explicitly requires that final delivery.
 - Do not copy Teams-archived Template to Project working history back into Git unless Wes explicitly identifies a specific file as durable source material.
 - Do not commit generated backups or rendered checks unless they are intentionally durable evidence.
+- Do not keep workbook source files, fetched project workbooks, rollback copies, validation workbooks, generated comparison workbooks, rendered workbook checks, or spreadsheet experiment outputs in the Admin wiki Git repo after the task is processed. Store those files under the Teams `Project Template` source, validation, rollback, or working archive folders, and keep only rules, maps, logs, summaries, and pointers in Git.
 - Do not insert individual invoice, receipt, or statement-line records into project spreadsheets; that belongs to `Invoice Entry`.
 - Do not scan invoices, split documents, OCR scans, or route invoice files; that belongs to `Doc Scan`.
 - Do not edit another project room's files or skill source without exact Wes approval.

@@ -24,8 +24,25 @@ The following untracked local working files were copied to Teams, verified by fi
 
 Total moved in this cleanup: 526 files, 348,208,264 bytes.
 
+## Cleanup Recorded 2026-07-24
+
+The following ignored local workbook source, verification, and working files were copied to Teams, verified by file count and byte total, and then removed from `C:\Codex\Wiki Files`.
+
+| Local source under `Project Rooms` | Teams destination under `Project Template` | Files | Bytes | Category |
+| --- | --- | ---: | ---: | --- |
+| `Template to Project\sources` | `Source Materials\2026-07-24 repo cleanup\Template to Project\sources` | 1 | 303,300 | source/reference workbook |
+| `Project Management Spreadsheet Rewrite\sources` | `Source Materials\Project Management Spreadsheet Rewrite Legacy\2026-07-24 repo cleanup\sources` | 9 | 9,275,551 | legacy source/reference workbooks |
+| `Project Management Spreadsheet Rewrite\Need Verification` | `Validation Evidence\Need Verification\2026-07-24 repo cleanup\Project Management Spreadsheet Rewrite\Need Verification` | 2 | 1,462,614 | legacy verification workbooks |
+| `Template to Project\Need Verification` | `Validation Evidence\Need Verification\2026-07-24 repo cleanup\Template to Project\Need Verification` | 30 | 25,433,636 | verification workbooks |
+| `Template to Project\working` | `Working Archive\2026-07-24 repo cleanup\Template to Project\working` | 41 | 35,819,091 | generated workbook working history |
+| `Project Management Spreadsheet Rewrite\working` | `Working Archive\Project Management Spreadsheet Rewrite Legacy\2026-07-24 repo cleanup\working` | 131 | 96,427,590 | legacy generated workbook working history |
+
+Total moved in this cleanup: 214 files, 168,721,782 bytes.
+
 ## Use Rule
 
 When Template to Project needs older workbook working history from the July 2026 cleanup, look in the Teams destinations above before assuming the files were deleted.
 
 Do not copy these archived Teams files back into Git unless Wes explicitly identifies a specific file as durable source material. If a prior workbook copy is needed for comparison, copy that specific file into a short-lived local working folder, use it for the task, and remove it when finished unless Wes approves preserving it.
+
+For current work, do not leave processed workbook source files, fetched project workbooks, rollback copies, validation workbooks, generated comparison workbooks, rendered workbook checks, or spreadsheet experiment outputs in Git. Move them to the matching Teams `Project Template` source, validation, rollback, or working archive folder after verification, and keep only maps, summaries, logs, and pointers in Git.

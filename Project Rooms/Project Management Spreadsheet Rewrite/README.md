@@ -33,6 +33,7 @@ Excluded for now:
 - Room sources: `sources\`
 - Working notes: `working\`
 - Outputs: `outputs\`
+- Large ignored workbook source, verification, and working-history files from this legacy room were archived under the Teams `Project Template` folder during the 2026-07-24 repo cleanup. See `C:\Codex\Wiki Files\Project Rooms\Template to Project\working\teams-working-archive-map.md`.
 
 ## Matching Skill
 
