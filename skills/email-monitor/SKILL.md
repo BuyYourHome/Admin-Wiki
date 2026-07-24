@@ -98,11 +98,14 @@ Summary body:
 Subject stability:
 
 - treat each Monday-through-Sunday period in Eastern Time as one summary week;
-- maintain a separate weekly subject for Boss, Jenny, and Josh;
-- use the subject from that recipient's first verified summary of the week for every later summary and retry to that recipient during the same week;
+- calculate the `Week of` date as the Monday that begins the current Eastern Time summary week;
+- use these exact subject formats, substituting that Monday in `MM-DD-YY` format:
+  - `Wes Email Summary Week of MM-DD-YY`;
+  - `Jenny Email Summary Week of MM-DD-YY`;
+  - `Josh Email Summary Week of MM-DD-YY`;
+- use the resulting subject for every summary and retry to that recipient during the same week;
 - do not change the subject midweek because of the summary date, mailbox contents, priority items, Manager tasks, missed runs, or a send retry;
-- when a new week starts, establish the new weekly subject from that recipient's first summary and record it in monitor memory before delivery;
-- if the current week's subject is missing from memory, recover it from that recipient's first verified OfficeAssist Sent Items summary for the week when available; otherwise establish and record one subject before sending.
+- record each recipient's calculated weekly subject and Monday week-start date in monitor memory before delivery.
 
 Delivery handoff:
 
