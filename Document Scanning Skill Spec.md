@@ -431,6 +431,8 @@ Doc Search may search:
 
 Doc Search outputs should be evidence notes only. Record relevant matches in the scan log, review note, or Invoice Entry packet with file path or SharePoint URL, date, document type, and why the document appears related.
 
+For explicit Boss-requested Doc Search work that is not tied to an active scan, record the completed search in the scanned document action log or another appropriate durable activity log. Include the request, searched locations, found documents, confidence, and outcome. Treat one-off Markdown search notes in `Project Rooms\Doc Scan\working` as temporary scratch; delete them when the search has been reported or handed off unless Boss explicitly asks to keep the research trail or the note is part of a larger unresolved review packet.
+
 Doc Search must not:
 
 - Move, rename, file, archive, or delete documents found by the search.

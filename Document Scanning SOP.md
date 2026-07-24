@@ -509,6 +509,8 @@ Search may include Teams/SharePoint project folders, Admin wiki records, project
 
 Record relevant matches as evidence notes in the scan log, review note, or Invoice Entry packet with file path or SharePoint URL, date, document type, and why the document appears related.
 
+For explicit Boss-requested Doc Search work that is not tied to an active scan, record the completed search in the scanned document action log or another appropriate durable activity log. Include the request, searched locations, found documents, confidence, and outcome. Treat one-off Markdown search notes in `Project Rooms\Doc Scan\working` as temporary scratch; delete them when the search has been reported or handed off unless Boss explicitly asks to keep the research trail or the note is part of a larger unresolved review packet.
+
 Do not use Doc Search to move, rename, file, archive, or delete found documents. Do not edit project-management workbooks, decide final spreadsheet placement, or override Invoice Entry duplicate checks and insertion decisions.
 
 If the search improves context but does not resolve confidence, keep the affected document or packet row in the appropriate review status and include the search findings as context.

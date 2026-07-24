@@ -10,3 +10,4 @@ The detailed per-scan `.log.txt` file in the Teams Scanned Files Logs folder rem
 
 | Date | Source scan | Document identified | Filed or review destination | Project/account/vendor | Handoff or register action | Status | Notes |
 | --- | --- | --- | --- | --- | --- | --- | --- |
+| 2026-07-24 | N/A - explicit Doc Search request | Tensity HOA-related project documents | No filing change; source documents remain in `Property/24-HM - 4121 Tensity Dr/Owning` | `24-HM - 4121 Tensity Dr`; Ashley Place HOA | Reported search findings in Doc Scan task; Email Monitor delivery attempt separately logged | Completed | Found `25-02-05 Ashley Place HOA PAID.pdf` and `25-02-05 Jordan Price HOA Letter.pdf` as direct HOA documents, plus QCD/term-sheet context. Temporary working note deleted after durable activity logging. |

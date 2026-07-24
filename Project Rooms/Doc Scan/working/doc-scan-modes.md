@@ -34,5 +34,6 @@ These are the defined operating modes for the Doc Scan project room. A scan run 
 - Invoice-like project documents use invoice review and invoice handoff rules, not statement review.
 - Lowe's Statement Allocation Mode is called by Credit Card Statement Mode only after normal Lowe's statement filing and reporting are preserved.
 - Doc Search is a support/search mode, not a filing mode. Use it only when a scanned document, packet row, review item, or explicit Wes request needs project-related context from documents outside the active scan intake.
+- For explicit Wes-requested Doc Search work that is not tied to an active scan, record the completed search in the scanned document action log or another appropriate durable activity log. Treat one-off Markdown search notes in `Project Rooms\Doc Scan\working` as temporary scratch and delete them after the result is reported or handed off unless Wes explicitly asks to keep the research trail or the note is part of a larger unresolved review packet.
 - Property-related modes take precedence over generic Office Admin folders when the document can be confidently tied to a property and the SOP says it is a property document.
 - A report mode is not a separate filing mode. Reports summarize one of the defined modes after routing or review.
