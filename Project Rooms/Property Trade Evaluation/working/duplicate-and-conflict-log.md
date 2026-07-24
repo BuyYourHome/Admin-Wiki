@@ -3,5 +3,4 @@
 | Item | Source(s) | Issue Type | Resolution / Needed Decision |
 | --- | --- | --- | --- |
 | Historical rendered folders | `working\rendered-*` | generated duplicates | Do not treat rendered previews as independent source facts. Use them only for visual QA of their parent deliverable. |
-| Local dependency folder | `working\node_modules` | generated/dependency files | Do not commit as durable source unless Wes explicitly approves a reproducible tool bundle. |
-
+| Local dependency folder | `working\node_modules` | generated/dependency files | Removed from local working tree on 2026-07-24 after confirming Git tracked 0 files under the path. Do not commit as durable source unless Wes explicitly approves a reproducible tool bundle. |

@@ -16,6 +16,8 @@ Status: active.
 
 Historical working materials and rendered outputs already exist. The room now has a standard README, source inventory, conflict log, missing-context file, and `sources\` folder for future source-controlled intake.
 
+Local cleanup note: ignored generated dependency cache `working\node_modules\` was removed on 2026-07-24 to reduce local repo scan weight. Recreate dependencies only when a future tool run requires them; do not commit dependency folders as durable source.
+
 ## Matching Skill
 
 - Skill source: `C:\Codex\Wiki Files\skills\property-trade-evaluation\SKILL.md`
@@ -25,6 +27,7 @@ Historical working materials and rendered outputs already exist. The room now ha
 - `sources\` - raw source documents, source notes, emails, spreadsheet references, inspection notes, and user-provided facts.
 - `working\` - analyses, drafts, run notes, rendered checks, source inventory, and open questions.
 - `outputs\` - review-ready term sheets, reports, translated drafts, or final deliverables.
+- `working\local-cleanup-log.md` - record of local generated/dependency cleanup.
 
 ## Next Actions
 
