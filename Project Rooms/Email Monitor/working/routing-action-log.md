@@ -10,3 +10,4 @@ Do not preserve mailbox search scratch output, duplicate connector results, temp
 
 | Date | Outlook message or request | Mode / branch | Preserved source or delivery record | Handoff / recipient | Status | Notes |
 | --- | --- | --- | --- | --- | --- | --- |
+| 2026-07-24 | `doc-search-tensity-hoa-to-wes-20260724-001` | Email Delivery | Automation memory delivery record | `WesWill@BuyYourHomeLLC.com` | Failed - Unresolved | Both required PDFs exceed the connector's 3 MB direct-attachment limit. OfficeAssist is not mounted as a local Outlook store, so the required OfficeAssist Drafts/Sent Items fallback could not be verified. Nothing was sent. |
