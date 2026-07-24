@@ -9,7 +9,7 @@ description: Create Wes's, Jenny's, and Josh's daily OfficeAssist mailbox summar
 
 Create daily summaries for Boss at `WesWill@BuyYourHomeLLC.com`, Jenny at `Jenny@BuyYourHomeLLC.com`, and Josh at `IRAManager@SellYourHomeRaleigh.com`, then hand off delivery to the shared `email-delivery` skill. Josh's summary also includes the current Manager Task mode list. Email Monitor also receives complete, authorized outbound-email delivery packages directly from other Project Rooms and executes them immediately through Email Delivery.
 
-For summaries and routing, this skill owns mailbox scanning, cutoff selection, message prioritization, summary drafting, usage-summary inclusion, and summary-run state updates. For direct delivery handoffs, the requesting Project Room owns the message purpose, authorization, recipients, subject, body, attachments, and workflow-specific restrictions. Email Monitor owns package validation, duplicate prevention, delivery coordination through `email-delivery`, durable delivery-request state, callback reporting, and escalation. The shared `email-delivery` skill owns sender safety, connector handling, Sent Items verification, and delivery failure mechanics.
+For summaries and routing, this skill owns mailbox scanning, cutoff selection, message prioritization, summary drafting, Wes's usage-summary inclusion, and summary-run state updates. For direct delivery handoffs, the requesting Project Room owns the message purpose, authorization, recipients, subject, body, attachments, and workflow-specific restrictions. Email Monitor owns package validation, duplicate prevention, delivery coordination through `email-delivery`, durable delivery-request state, callback reporting, and escalation. The shared `email-delivery` skill owns sender safety, connector handling, Sent Items verification, and delivery failure mechanics.
 
 Development notes, source inventory, and open questions for this workflow live in `C:\Codex\Wiki Files\Project Rooms\Email Monitor\`.
 
@@ -23,8 +23,8 @@ Before using this skill, have:
 - access to `WesWill@BuyYourHomeLLC.com` mailbox contents,
 - access to `Jenny@BuyYourHomeLLC.com` mailbox contents when running Jenny's summary,
 - access to `IRAManager@SellYourHomeRaleigh.com` mailbox contents when running Josh's summary,
-- read access to `C:\Codex\Wiki Files\Project Rooms\Manager\working\task-register.md` and the Manager Task mode rules in `C:\Codex\Wiki Files\skills\manager\SKILL.md`,
-- access to `C:\Codex\Wiki Files\tools\get-codex-token-summary.ps1` when usage totals are needed.
+- direct task messaging access to Manager task `019f8274-5b7e-7170-a051-f7944954de82`,
+- access to `C:\Codex\Wiki Files\tools\get-codex-token-summary.ps1` when Wes's usage totals are needed.
 
 ## Workflow
 
@@ -40,7 +40,7 @@ Before using this skill, have:
 8. Keep only messages that are financial, legal, property-related, vendor/admin-related, time-sensitive, or action-oriented.
 9. Exclude routine promotional, automated, and newsletter traffic unless it is time-sensitive, financial, legal, property-related, or requires action.
 10. Keep older unread items in scope when they are still priority business items. Do not treat a historic unread backlog as new.
-11. For Josh, read the Manager task register and include its current tasks grouped by status and ordered by Manager Task mode priority. Do not change the Manager register from Email Monitor.
+11. For Josh, request the current formatted `Manager Tasks` section from the Manager task and use its response without reading or changing the Manager register from Email Monitor.
 
 ## Modes
 
@@ -48,7 +48,7 @@ Before using this skill, have:
 
 Use Email Summary for the once-daily Boss, Jenny, and Josh Outlook mailbox summaries.
 
-This mode owns mailbox scanning, cutoff selection, priority selection, summary drafting, usage-summary inclusion, attachment decision, and summary-run state updates for:
+This mode owns mailbox scanning, cutoff selection, priority selection, summary drafting, Wes's usage-summary inclusion, attachment decision, and summary-run state updates for:
 
 - Boss summary mailbox: `WesWill@BuyYourHomeLLC.com`;
 - Boss summary recipient: `WesWill@BuyYourHomeLLC.com`;
@@ -56,7 +56,7 @@ This mode owns mailbox scanning, cutoff selection, priority selection, summary d
 - Jenny summary recipient: `Jenny@BuyYourHomeLLC.com`;
 - Josh summary mailbox: `IRAManager@SellYourHomeRaleigh.com`;
 - Josh summary recipient: `IRAManager@SellYourHomeRaleigh.com`;
-- Manager task source for Josh: `C:\Codex\Wiki Files\Project Rooms\Manager\working\task-register.md`;
+- Manager task source for Josh: direct request to Manager task `019f8274-5b7e-7170-a051-f7944954de82`;
 - sender for all summaries: `OfficeAssist@BuyYourHomeLLC.com`.
 
 Activation:
@@ -86,12 +86,13 @@ Priority selection:
 Summary body:
 
 - include the mailbox scanned, cutoff used, priority items, low-priority exclusions when applicable, and a clear note if no priority messages were found;
-- include the Codex usage section from `C:\Codex\Wiki Files\tools\get-codex-token-summary.ps1` when reliable totals are available;
-- use the same day and week wall-clock total-time and token totals in all three summaries;
-- for Josh, add a `Manager Tasks` section sourced from the Manager task register; group tasks by status in the order `New`, `Delivered`, `Acknowledged`, `In Progress`, `Waiting`, `Completed`, and `Cancelled`, and within each status order tasks `Critical`, `High`, `Normal`, then `Low`;
-- show task id, priority, task description, and due date when present; state clearly when no Manager tasks are registered;
+- include the Codex usage section only in Wes's summary, using `C:\Codex\Wiki Files\tools\get-codex-token-summary.ps1` when reliable totals are available;
+- do not include Codex usage or token information in Jenny's or Josh's summary;
+- for Josh, send Manager task `019f8274-5b7e-7170-a051-f7944954de82` a direct request for the current formatted `Manager Tasks` section, then wait for and use Manager's response;
+- ask Manager to group tasks as `New`, `Delivered`, `Acknowledged`, `In Progress`, `Waiting`, `Completed`, and `Cancelled`, ordering each group `Critical`, `High`, `Normal`, then `Low`, and showing task id, priority, task, and due date when present;
+- state when Manager reports no tasks; if Manager cannot respond, state that the section is unavailable, report the blocker to Wes, and do not read the register as a fallback;
 - keep mailbox-derived action items in the mailbox-summary section unless they already correspond to a registered Manager task;
-- use Manager Task mode labels exactly and do not infer a status change, create a task, or edit the Manager task register from Email Monitor;
+- use Manager's returned task labels exactly and do not infer a status change, create a task, or edit or read the Manager task register from Email Monitor;
 - sign as `Jean Wright` / `Office Assistant`;
 - do not say the email is on Wes's behalf unless the actual sending identity requires that wording.
 
@@ -117,7 +118,7 @@ Delivery handoff:
 State update:
 
 - after a successful verified send, update the automation memory with the summary date, weekly subject and Monday-through-Sunday week identifier, cutoff used, topics sent, verified send timestamp from OfficeAssist Sent Items, and any unusual routing, blocker, or verification-draft note;
-- if mailbox access, token-summary generation, send, or verification fails, record the blocker and action taken;
+- if mailbox access, Wes token-summary generation, Manager response, send, or verification fails, record the blocker and action taken;
 - do not treat a failed summary run as quiet.
 
 ### Email Routing
@@ -377,7 +378,7 @@ Before finalizing the summary body, run:
 
 `powershell -ExecutionPolicy Bypass -File "C:\Codex\Wiki Files\tools\get-codex-token-summary.ps1"`
 
-Use the helper's JSON output to include a usage section in every daily summary email for Boss, Jenny, and Josh:
+Use the helper's JSON output to include a usage section only in Wes's daily summary:
 
 - yesterday total wall-clock process time from `yesterday.elapsed.human`,
 - week-to-date total wall-clock process time from `week_to_date.elapsed.human`,
@@ -408,7 +409,7 @@ For Jenny's summary, write a concise plain-text email to Jenny. Include the mail
 
 For Josh's summary, write a concise plain-text email to Josh. Include the mailbox scanned, cutoff used, priority items, low-priority exclusions when applicable, a clear note if no priority messages were found, and the Manager Tasks section defined above.
 
-Use the same day and week wall-clock total-time and token totals in all three summaries.
+Do not include Codex usage, token totals, rate-limit information, or process-time totals in Jenny's or Josh's summary.
 
 ## Attachment Decision
 
@@ -454,7 +455,7 @@ Josh's summary is emailed to Josh with Wes and Jenny copied under the current gl
 
 ## Failure Handling
 
-If mailbox access, token-summary generation, or message selection is blocked before handoff, notify Wes in the OfficeAssist thread with:
+If mailbox access, Wes token-summary generation, Manager response, or message selection is blocked before handoff, notify Wes in the OfficeAssist thread with:
 
 - what failed,
 - the summary draft if one was generated,
@@ -486,7 +487,7 @@ After a successful verified Josh send, update the automation memory with:
 - the cutoff used,
 - the mailbox topics and Manager task statuses sent,
 - the verified send timestamp and message id from OfficeAssist Sent Items,
-- any mailbox-access, Manager-register, send, or verification blocker.
+- any mailbox-access, Manager-response, send, or verification blocker.
 
 If the send fails or verification fails, record the blocker and the action taken.
 

@@ -17,7 +17,7 @@ This project room holds development notes, source inventory, and review artifact
 - Active automation id: `officeassist-morning-email-summary-and-instruction-monitor`.
 - Schedule: starts at 7:45 AM Eastern, then every 15 minutes from 8:00 AM through 11:00 PM Eastern.
 - Jenny summary: active as of 2026-06-29; scan `Jenny@BuyYourHomeLLC.com` and email the summary to `Jenny@BuyYourHomeLLC.com` from OfficeAssist with Sent Items verification.
-- Josh summary: active as of 2026-07-21; scan `IRAManager@SellYourHomeRaleigh.com`, include the Manager Task mode list from `Project Rooms\Manager\working\task-register.md`, and email the summary to Josh from OfficeAssist with Wes and Jenny copied and Sent Items verification.
+- Josh summary: active as of 2026-07-21; scan `IRAManager@SellYourHomeRaleigh.com`, obtain the Manager Tasks section directly from the Manager task, and email the summary to Josh from OfficeAssist with Wes and Jenny copied and Sent Items verification.
 - Send identity: `OfficeAssist@BuyYourHomeLLC.com`.
 - Recipient for Wes summary: `WesWill@BuyYourHomeLLC.com`.
 - Preferred mailbox/send path: Outlook Email connector, with OfficeAssist sent-item verification.
@@ -40,7 +40,7 @@ Use this mode for the once-daily Boss, Jenny, and Josh Outlook mailbox summaries
 
 This mode scans `WesWill@BuyYourHomeLLC.com` for Boss, `Jenny@BuyYourHomeLLC.com` for Jenny, and `IRAManager@SellYourHomeRaleigh.com` for Josh, using the last verified send time in OfficeAssist monitor memory as each mailbox cutoff. Josh's initial cutoff is the verified manual summary send at `2026-07-21T12:24:17Z`. It scans each mailbox recursively, including rule-routed folders, and summarizes unread or newly received priority business messages: financial, legal, property-related, vendor/admin-related, time-sensitive, or action-oriented.
 
-This mode sends Boss's summary to `WesWill@BuyYourHomeLLC.com`, Jenny's summary to `Jenny@BuyYourHomeLLC.com`, and Josh's summary to `IRAManager@SellYourHomeRaleigh.com` with Wes and Jenny copied, from `OfficeAssist@BuyYourHomeLLC.com`. Josh's summary includes a `Manager Tasks` section read from the Manager task register. It groups tasks by Manager status and orders each group by `Critical`, `High`, `Normal`, then `Low`; Email Monitor does not edit that register. The Email Monitor workflow owns scanning, cutoff logic, priority selection, summary drafting, usage-section inclusion, attachment decisions, and state updates. The shared `email-delivery` skill owns the send step, OfficeAssist sender safety, and Sent Items verification.
+This mode sends Boss's summary to `WesWill@BuyYourHomeLLC.com`, Jenny's summary to `Jenny@BuyYourHomeLLC.com`, and Josh's summary to `IRAManager@SellYourHomeRaleigh.com` with Wes and Jenny copied, from `OfficeAssist@BuyYourHomeLLC.com`. Josh's summary obtains its `Manager Tasks` section directly from Manager task `019f8274-5b7e-7170-a051-f7944954de82`; Email Monitor does not read or edit the Manager register. Codex Usage appears only in Wes's summary and is omitted from Jenny's and Josh's summaries. The shared `email-delivery` skill owns the send step, OfficeAssist sender safety, and Sent Items verification.
 
 This mode runs only once per calendar day per recipient at the first eligible heartbeat at or after 8:00 AM Eastern. Later same-day heartbeat runs skip summaries that were already sent and verified.
 
@@ -118,6 +118,8 @@ Use this room for development and design work. Do not change the live automation
 When the workflow changes, update the skill, this project room, and the registry together.
 
 ## Change Log
+
+- 2026-07-24: Changed Josh's `Manager Tasks` source to a direct Manager-task response and removed Codex Usage from Jenny's and Josh's summaries; Wes's usage section remains active.
 
 - 2026-07-24: Added Manager Routing for email subjects containing `Manager Task`, with durable Manager source preservation, duplicate prevention, attachment handling, and direct handoff to the existing Manager task.
 
