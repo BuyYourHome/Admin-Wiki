@@ -46,6 +46,28 @@ This mode runs only once per calendar day per recipient at the first eligible he
 
 For each recipient, keep the Email Summary subject unchanged throughout the Monday-through-Sunday week in Eastern Time. Calculate the `Week of` date as that week's Monday and use `MM-DD-YY` format. The exact subject patterns are `Wes Email Summary Week of MM-DD-YY`, `Jenny Email Summary Week of MM-DD-YY`, and `Josh Email Summary Week of MM-DD-YY`. Use the resulting subject for all daily summaries and retries during that week, and record it with the Monday week-start date in monitor memory before delivery.
 
+### Email Routing
+
+Use Email Routing as the OfficeAssist mailbox intake funnel. It checks Inbox, Task Instructions, and Accts Payable during the active window, prevents duplicate processing by Outlook message id, handles safe authorized instructions from Wes or Jenny, and applies the appropriate specialized routing branch. It reports incomplete authority or high-impact decisions and returns quietly when no message requires action.
+
+Email Routing contains General Instruction Handling, Gracious Millionaire Email Routing, Web Site Email Routing, Brynda Suit Email Routing, and Route Vendor Invoice. It does not trigger the scheduled Email Summary mode or direct Project Room Email Delivery handoffs.
+
+#### Gracious Millionaire Email Routing
+
+Use this branch when Email Routing sees an email with a subject containing `gracious millionaire`, or an email that otherwise clearly belongs to the Gracious Millionaire book/project-room workflow.
+
+This mode routes the email into `C:\Codex\Wiki Files\Project Rooms\Gracious Millionaire\` as source material, preserves it as Markdown under `sources\email\`, updates Gracious Millionaire intake/source records when required by that room's rules, records the Outlook message id in Email Monitor memory, and sends a direct follow-up message to the existing Gracious Millionaire project-room thread with the routed source path and a short summary.
+
+This mode does not draft, edit, or send the requested Gracious Millionaire book response from the Email Monitor task unless Wes explicitly asks for processing here. It also does not attach mailbox checking to the Gracious Millionaire heartbeat or create a new Gracious Millionaire chat.
+
+#### Brynda Suit Email Routing
+
+Use this branch when Email Routing sees an email from Wes or Jenny with a subject containing `brynda suit`, or an email that otherwise clearly belongs to the Brynda Suit workflow.
+
+This mode routes the email into `C:\Codex\Wiki Files\Project Rooms\Brynda Suit\` as source material, preserves it as Markdown under `sources\email\`, updates the Brynda Suit source inventory when the routed email becomes part of the durable source set, records the Outlook message id in Email Monitor memory, and sends a direct follow-up message to the existing Brynda Suit task with the routed source path, a short summary, and the instruction to wake up and respond.
+
+This mode does not draft, edit, or send the requested Brynda Suit response from the Email Monitor task unless Wes explicitly asks for processing here. It also does not create a new Brynda Suit task.
+
 ### Email Delivery
 
 Use this mode when this project room has an authorized email ready to send, another Email Monitor mode reaches its send step, or an authorized Project Room, including Invoice Entry, sends a complete direct delivery handoff. A direct handoff triggers immediately. It does not require mailbox scanning, an instruction email, the Email Monitor heartbeat, or a rerun of the originating workflow.
@@ -73,22 +95,6 @@ For an accepted connector send, use `OfficeAssist@BuyYourHomeLLC.com` unless the
 
 After sending, verify the OfficeAssist Sent Items copy for sender, To, CC, BCC, subject, and attachment presence. On success, immediately return to the callback task/thread: request ID, `Sent and Verified`, sent message ID, sent timestamp, verified sender and recipients, subject, attachment verification, and delivery notes. On send or verification failure, preserve the unresolved request, report the blocker to Wes immediately, and return the failure stage and required decision to the callback task/thread without claiming success.
 
-### Gracious Millionaire Email Routing
-
-Use this mode when the Email Monitor workflow or OfficeAssist instruction monitor sees an email with a subject containing `gracious millionaire`, or an email that otherwise clearly belongs to the Gracious Millionaire book/project-room workflow.
-
-This mode routes the email into `C:\Codex\Wiki Files\Project Rooms\Gracious Millionaire\` as source material, preserves it as Markdown under `sources\email\`, updates Gracious Millionaire intake/source records when required by that room's rules, records the Outlook message id in Email Monitor memory, and sends a direct follow-up message to the existing Gracious Millionaire project-room thread with the routed source path and a short summary.
-
-This mode does not draft, edit, or send the requested Gracious Millionaire book response from the Email Monitor or OfficeAssist monitor thread unless Wes explicitly asks for processing here. It also does not attach mailbox checking to the Gracious Millionaire heartbeat or create a new Gracious Millionaire chat.
-
-### Brynda Suit Email Routing
-
-Use this mode when the Email Monitor workflow or OfficeAssist instruction monitor sees an email from Wes or Jenny with a subject containing `brynda suit`, or an email that otherwise clearly belongs to the Brynda Suit workflow.
-
-This mode routes the email into `C:\Codex\Wiki Files\Project Rooms\Brynda Suit\` as source material, preserves it as Markdown under `sources\email\`, updates the Brynda Suit source inventory when the routed email becomes part of the durable source set, records the Outlook message id in Email Monitor memory, and sends a direct follow-up message to the existing Brynda Suit task with the routed source path, a short summary, and the instruction to wake up and respond.
-
-This mode does not draft, edit, or send the requested Brynda Suit response from the Email Monitor or OfficeAssist monitor thread unless Wes explicitly asks for processing here. It also does not create a new Brynda Suit task.
-
 ## Authoritative Sources
 
 - `C:\Codex\Wiki Files\skills\email-monitor\SKILL.md`
@@ -104,6 +110,8 @@ Use this room for development and design work. Do not change the live automation
 When the workflow changes, update the skill, this project room, and the registry together.
 
 ## Change Log
+
+- 2026-07-24: Renamed Instruction Email Monitoring to Email Routing and made the specialized project routes explicit branches under that intake mode; behavior and automation identity remain unchanged.
 
 - 2026-07-24: Standardized weekly subjects as `[Wes/Jenny/Josh] Email Summary Week of MM-DD-YY`, using the Monday that begins the Eastern Time summary week.
 

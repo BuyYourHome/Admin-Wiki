@@ -1,6 +1,6 @@
 ---
 name: email-monitor
-description: Create Wes's, Jenny's, and Josh's daily OfficeAssist mailbox summaries, monitor OfficeAssist instruction email, route defined project email, and execute direct authorized outbound-email delivery handoffs from other Project Rooms, including Invoice Entry. Use for mailbox scanning and summary preparation, routed-email intake, or an immediate structured delivery request that must be sent through `email-delivery`, verified in Sent Items, logged against a request ID, and reported back to the originating task.
+description: Create Wes's, Jenny's, and Josh's daily OfficeAssist mailbox summaries, run Email Routing for OfficeAssist messages, and execute direct authorized outbound-email delivery handoffs from other Project Rooms, including Invoice Entry. Use for mailbox scanning and summary preparation, routed-email intake, or an immediate structured delivery request that must be sent through `email-delivery`, verified in Sent Items, logged against a request ID, and reported back to the originating task.
 ---
 
 # Email Monitor
@@ -63,7 +63,7 @@ Activation:
 
 - run once per calendar day at the 8:00 AM Eastern heartbeat run, or the first run after 8:00 AM Eastern if the 8:00 AM run was missed;
 - skip a same-day summary when that recipient's summary has already been sent and verified for the calendar day;
-- later same-day heartbeat runs use instruction-email monitoring and routing modes only unless a summary send or verification failure still needs attention.
+- later same-day heartbeat runs use Email Routing only unless a summary send or verification failure still needs attention.
 
 Cutoff and mailbox scan:
 
@@ -120,9 +120,29 @@ State update:
 - if mailbox access, token-summary generation, send, or verification fails, record the blocker and action taken;
 - do not treat a failed summary run as quiet.
 
-### Gracious Millionaire Email Routing
+### Email Routing
 
-Use Gracious Millionaire Email Routing when the Email Monitor workflow or OfficeAssist instruction monitor sees an email that belongs to Gracious Millionaire.
+Use Email Routing as the OfficeAssist mailbox intake funnel during the configured active window.
+
+For each new message:
+
+- check `OfficeAssist@BuyYourHomeLLC.com` Inbox, Task Instructions, and Accts Payable;
+- use monitor memory so the same Outlook message id is not processed repeatedly;
+- recognize instructions from `WesWill@BuyYourHomeLLC.com` and `Jenny@BuyYourHomeLLC.com`;
+- perform a safe, in-scope admin action or start the applicable workflow when current Admin wiki rules authorize it;
+- hold and report a decision needed when authorization, routing, or high-impact action authority is incomplete;
+- apply the specialized routing branch when the message matches Gracious Millionaire, Web Site, Brynda Suit, or Route Vendor Invoice rules;
+- return quietly when no new actionable or routable message is found.
+
+Email Routing is not the trigger for the scheduled Email Summary mode or a direct Project Room Email Delivery handoff.
+
+#### General Instruction Handling
+
+Use General Instruction Handling for an authorized Wes or Jenny instruction that does not match a specialized routing branch. Determine the applicable Admin wiki rule or workflow, complete safe authorized work, or route it to the owning workflow. Do not invent authority or bypass a specialized Project Room's ownership boundary.
+
+#### Gracious Millionaire Email Routing
+
+Use Gracious Millionaire Email Routing when Email Routing sees an email that belongs to Gracious Millionaire.
 
 This mode owns source routing and direct project-room handoff only. It does not own Gracious Millionaire manuscript processing, book-response drafting, external email sending, or mailbox monitoring from the Gracious Millionaire project-room heartbeat.
 
@@ -145,11 +165,11 @@ Direct message handoff is the primary trigger for Gracious Millionaire project-r
 
 Current Gracious Millionaire project-room thread id: `019eb9b0-6780-7fb3-a278-29a18d17998c`.
 
-Do not attach mailbox checking to the Gracious Millionaire heartbeat. Do not create a new Gracious Millionaire chat. Do not draft, edit, or send the requested book response from this Email Monitor or OfficeAssist monitor thread unless Wes explicitly asks for processing here. The default action is source routing plus direct project-room handoff only.
+Do not attach mailbox checking to the Gracious Millionaire heartbeat. Do not create a new Gracious Millionaire chat. Do not draft, edit, or send the requested book response from this Email Monitor task unless Wes explicitly asks for processing here. The default action is source routing plus direct project-room handoff only.
 
-### Web Site Email Routing
+#### Web Site Email Routing
 
-Use Web Site Email Routing when the Email Monitor workflow or OfficeAssist instruction monitor sees an instruction email from Wes or Jenny that belongs to REI BlackBook website work.
+Use Web Site Email Routing when Email Routing sees an instruction email from Wes or Jenny that belongs to REI BlackBook website work.
 
 This mode owns source routing and direct REI BlackBook project-room handoff only. It does not own live REI BlackBook website editing, browser automation, public-site publishing, external email sending, or creating a new REI BlackBook chat.
 
@@ -169,11 +189,11 @@ For each routed email:
 
 Current REI Blackbook project-room thread id: `019f4691-5466-7f72-9683-ab5d3b750c25`.
 
-Do not create a new REI Blackbook chat for this routing unless Wes explicitly asks. Do not process the REI BlackBook website request from this Email Monitor or OfficeAssist monitor thread unless Wes explicitly asks for processing here. The default action is source routing plus direct project-room handoff only.
+Do not create a new REI Blackbook chat for this routing unless Wes explicitly asks. Do not process the REI BlackBook website request from this Email Monitor task unless Wes explicitly asks for processing here. The default action is source routing plus direct project-room handoff only.
 
-### Brynda Suit Email Routing
+#### Brynda Suit Email Routing
 
-Use Brynda Suit Email Routing when the Email Monitor workflow or OfficeAssist instruction monitor sees an instruction email from Wes or Jenny that belongs to Brynda Suit.
+Use Brynda Suit Email Routing when Email Routing sees an instruction email from Wes or Jenny that belongs to Brynda Suit.
 
 This mode owns source routing and direct Brynda Suit task handoff only. It does not own Brynda Suit response drafting, external email sending, or creating a new Brynda Suit task.
 
@@ -193,11 +213,11 @@ For each routed email:
 
 Current Brynda Suit task id: `019f61c3-d4c0-7a52-a5a0-e4066ea9b303`.
 
-Do not create a new Brynda Suit task for this routing unless Wes explicitly asks. Do not process the Brynda Suit response from this Email Monitor or OfficeAssist monitor thread unless Wes explicitly asks for processing here. The default action is source routing plus direct project-room handoff only.
+Do not create a new Brynda Suit task for this routing unless Wes explicitly asks. Do not process the Brynda Suit response from this Email Monitor task unless Wes explicitly asks for processing here. The default action is source routing plus direct project-room handoff only.
 
-### Route Vendor Invoice
+#### Route Vendor Invoice
 
-Use Route Vendor Invoice when the Email Monitor workflow or OfficeAssist instruction monitor sees a contractor or vendor email that appears to contain or request processing of an invoice, bill, receipt, payment request, statement, pay application, draw request, or project-cost document.
+Use Route Vendor Invoice when Email Routing sees a contractor or vendor email that appears to contain or request processing of an invoice, bill, receipt, payment request, statement, pay application, draw request, or project-cost document.
 
 This mode owns source routing and direct Invoice Entry task handoff only. It does not own invoice approval, payment, vendor contact, final accounting judgment, live project-spreadsheet entry, Teams filing, or creating a new Invoice Entry chat.
 
@@ -221,7 +241,7 @@ For each routed email:
 
 Current Invoice Entry task id: `019f3d56-b310-75c0-b084-616bfc1e9f59`.
 
-Do not create a new Invoice Entry task for this routing unless Wes explicitly asks. During intake routing, do not approve, pay, reply to the contractor/vendor, make live spreadsheet entries, or move files into Teams from this Email Monitor or OfficeAssist monitor thread unless Wes explicitly asks for processing here and the Invoice Entry rules allow it. This intake-stage prohibition on contractor/vendor contact does not block a later Email Delivery request when Invoice Entry's saved rules and the delivery package explicitly authorize that specific message. The default intake action remains source routing plus direct Invoice Entry handoff only.
+Do not create a new Invoice Entry task for this routing unless Wes explicitly asks. During intake routing, do not approve, pay, reply to the contractor/vendor, make live spreadsheet entries, or move files into Teams from this Email Monitor task unless Wes explicitly asks for processing here and the Invoice Entry rules allow it. This intake-stage prohibition on contractor/vendor contact does not block a later Email Delivery request when Invoice Entry's saved rules and the delivery package explicitly authorize that specific message. The default intake action remains source routing plus direct Invoice Entry handoff only.
 
 ### Email Delivery
 
