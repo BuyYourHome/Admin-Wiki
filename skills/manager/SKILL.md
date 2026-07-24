@@ -1,6 +1,6 @@
 ---
 name: manager
-description: Use for Buy Your Home Manager project-room work, including Task mode, source organization, status tracking, review-ready outputs, and maintaining materials under `Project Rooms\Manager`.
+description: Use for Buy Your Home Manager project-room work, including Tasks, source organization, status tracking, review-ready outputs, and maintaining materials under `Project Rooms\Manager`.
 ---
 
 # Manager
@@ -29,9 +29,9 @@ Treat the MoU as the controlling source for contract-specific details after it i
 
 ## Modes
 
-### Task Mode
+### Tasks
 
-Use Task mode when any user adds a task for the Manager, asks for the task list or a task status, requests delivery of a task to the Manager, or provides a Manager status-update email.
+Use Tasks when any user adds a task for the Manager, asks for the task list or a task status, requests delivery of a task to the Manager, or provides a Manager status-update email.
 
 Task register: `C:\Codex\Wiki Files\Project Rooms\Manager\working\task-register.md`
 

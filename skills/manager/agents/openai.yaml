@@ -1,3 +1,3 @@
 display_name: Manager
 short_description: Track and deliver Manager tasks and maintain Manager project-room work.
-default_prompt: Work from the Manager Project Room. Use Task mode to record tasks from any user, track priority and status, deliver authorized tasks to the Manager, and process routed Manager email updates while following email-delivery, Project Room ownership, and Git coordination rules.
+default_prompt: Work from the Manager Project Room. Use Tasks to record tasks from any user, track priority and status, deliver authorized tasks to the Manager, and process routed Manager email updates while following email-delivery, Project Room ownership, and Git coordination rules.

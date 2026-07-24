@@ -28,7 +28,7 @@ Out of scope:
 - `working\source-inventory.md` - inventory of source material and authority status.
 - `working\duplicate-and-conflict-log.md` - duplicate, outdated, conflicting, or unclear source notes.
 - `working\missing-context.md` - facts, decisions, or source material still needed.
-- `working\task-register.md` - durable Task mode register with task ids, priorities, statuses, and delivery records.
+- `working\task-register.md` - durable Tasks register with task ids, priorities, statuses, and delivery records.
 - `outputs\` - review-ready drafts, summaries, handoffs, or final deliverables.
 
 ## Current Status
@@ -39,9 +39,9 @@ The room has been created as a standard Project Room shell. Wes has provided ini
 
 ## Modes
 
-### Task
+### Tasks
 
-Use Task mode to keep the status of tasks added by any user and, when delivery is requested, deliver the task and its priority to the Manager.
+Use Tasks to keep the status of tasks added by any user and, when delivery is requested, deliver the task and its priority to the Manager.
 
 - Record every accepted task in `working\task-register.md` with a stable task id, requester, task, priority, status, dates, and delivery details.
 - Use priorities `Critical`, `High`, `Normal`, and `Low`. Default to `Normal` when no priority is supplied.
@@ -100,4 +100,4 @@ Before durable work, follow Start PR Mode in `C:\Codex\Wiki Files\Project Room C
 
 1. Retrieve or preserve the MoU from the Sell Your Home channel as a controlling source.
 2. Confirm the exact legal name behind "Investment Services" when legal-document signature wording matters.
-3. Decide whether Task mode should remain on-demand or receive a separately authorized mailbox-monitoring automation.
+3. Decide whether Tasks should remain on-demand or receive a separately authorized mailbox-monitoring automation.

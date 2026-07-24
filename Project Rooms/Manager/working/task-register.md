@@ -1,6 +1,6 @@
 # Manager Task Register
 
-Use this register as the durable status record for Manager Task mode.
+Use this register as the durable status record for Manager Tasks.
 
 ## Allowed Values
 
