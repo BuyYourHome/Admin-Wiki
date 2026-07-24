@@ -114,6 +114,8 @@ A properly authorized Invoice Entry package may request vendor invoice-accuracy 
 
 For an accepted connector send, use `OfficeAssist@BuyYourHomeLLC.com` unless the package contains specific Wes authorization for another sender. Prefer the Outlook connector, enable Sent Items saving, pass structured recipient objects, preserve the exact plain-text subject/body, and pass attachments as a list of absolute paths. Never omit a required attachment. Make only the documented schema-correct retry when the first connector error clearly explains it. Do not fall back to another mailbox after failure.
 
+If required attachments exceed connector limits or otherwise cannot be uploaded, Email Monitor must preserve the delivery request as unresolved unless `email-delivery` can use a verified OfficeAssist-capable alternate path. It must not substitute SharePoint links, compressed/reduced files, split packages, another sender, or a no-attachment email unless the requesting workflow or Wes explicitly authorizes that alternate package.
+
 After sending, verify the OfficeAssist Sent Items copy for sender, To, CC, BCC, subject, and attachment presence. On success, immediately return to the callback task/thread: request ID, `Sent and Verified`, sent message ID, sent timestamp, verified sender and recipients, subject, attachment verification, and delivery notes. On send or verification failure, preserve the unresolved request, report the blocker to Wes immediately, and return the failure stage and required decision to the callback task/thread without claiming success.
 
 ## Authoritative Sources
@@ -132,6 +134,8 @@ Use this room for development and design work. Do not change the live automation
 When the workflow changes, update the skill, this project room, and the registry together.
 
 ## Change Log
+
+- 2026-07-24: Added the large-required-attachment delivery rule: unresolved required attachments may not be silently replaced with links, reduced files, split packages, another sender, or no-attachment emails without explicit authorization.
 
 - 2026-07-24: Added `working\routing-action-log.md` as the durable outcome log for routed emails and Email Delivery requests.
 

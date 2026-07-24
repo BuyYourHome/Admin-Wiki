@@ -64,6 +64,7 @@ For attachments:
 3. If the connector rejects `attachment_files` as a string, retry with `attachment_files` as a list of absolute paths.
 4. If the connector rejects a list, retry only when the tool error clearly identifies the expected shape.
 5. Do not send without required attachments unless the calling workflow explicitly allows a no-attachment fallback.
+6. If required attachments exceed the current connector's direct-attachment size limit, do not silently substitute SharePoint links, compressed/reduced files, split packages, or a no-attachment email. Use a verified OfficeAssist-capable alternate path if one exists; otherwise stop and report the unresolved blocker with the proposed email body, recipients, and attachment paths.
 
 After sending:
 
@@ -90,6 +91,7 @@ Before sending through local Outlook:
 - Create or save the draft under the `OfficeAssist@BuyYourHomeLLC.com` Drafts folder.
 - Verify the saved draft is physically stored in the OfficeAssist Drafts folder.
 - Verify the visible sender/from identity is `OfficeAssist@BuyYourHomeLLC.com`.
+- If `OfficeAssist@BuyYourHomeLLC.com` is not mounted as a local Outlook mailbox store, local Outlook is not a safe fallback for OfficeAssist delivery. Do not send or leave a draft from another mailbox; report that a verified OfficeAssist-capable send path or explicit alternate-package authorization is required.
 
 Outlook may leave `SendUsingAccount` blank after save/reopen. A blank value is acceptable only when the draft is in the OfficeAssist Drafts folder and the visible sender/from identity is OfficeAssist. If Outlook shows a non-blank sending account other than `OfficeAssist@BuyYourHomeLLC.com`, or if the draft is stored in any other mailbox, do not send automatically.
 

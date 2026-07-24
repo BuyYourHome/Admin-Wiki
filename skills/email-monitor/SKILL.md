@@ -343,6 +343,7 @@ For each accepted package:
 - pass the caller's subject and body as plain-text values without rewriting them;
 - validate every attachment path and pass attachments as a list of absolute local paths;
 - never silently omit a required attachment;
+- when required attachments cannot be sent through the connector because of size or transport limits, preserve the package as unresolved unless the shared `email-delivery` skill can use a verified OfficeAssist-capable fallback; do not replace required attachments with links, reduced files, split emails, or a no-attachment message without explicit authorization from the requesting workflow or Wes;
 - make only the schema-correct retry documented in `email-delivery`, and only when the first connector error clearly explains the correction;
 - after sending, query OfficeAssist Sent Items and verify sender, To, CC, BCC, subject, and required attachment presence;
 - do not send through another mailbox after a send or verification failure.
