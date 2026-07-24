@@ -81,3 +81,22 @@
 - OfficeAssist Sent Items verification confirmed the sender, To and CC recipients, subject, attachment flag, and attached PDF metadata.
 - Email Delivery's first connector call failed because the attachment was passed as a string. Its single schema-correct retry used a one-item absolute-path list and succeeded.
 - No Teams filing or workbook insertion was performed because this is an in-week draft and end-of-week approval has not occurred.
+
+## 2026-07-24
+
+- Received Email Monitor Time Card handoff for Outlook message `AQMkADZkMGMwNDI3LWU5ZjctNDgzMC1iMjdkLTY0NmRiN2IwNmIyZgBGAAADKGOvWJYjX0aEKaRpd0MYQQcAVSXargQY20aF7RLCkro4ggAAAgEMAAAAVSXargQY20aF7RLCkro4ggACfHtzpwAAAA==`.
+- Preserved the authoritative Outlook message reference and summary in the packet and source inventory. The full email was not stored in Git under the current Email Monitor routing rule.
+- Parsed Josh's 2026-07-24 Tensity time as 10 hours 20 minutes from 6:45 A.M. to 5:05 P.M. at 4121 Tensity Dr.
+- Applied the established `$31.25/hour` rate. The new rounded line amount is `$322.92`.
+- Duplicate check found no existing 2026-07-24 source line in the weekly packet before amendment.
+- Kept invoice `TC-JK-20260724-TENSITY-001` and amended it to 37.42 displayed hours and `$1,169.27`. BackOffice invoice `TC-JK-20260724-BACKOFFICE-001` remains 7.75 hours and `$242.19`.
+- Treated this Friday update as the final weekly draft, but not as approval of the revised invoice.
+- Regenerated the project and BackOffice PDFs from the accumulated weekly source data. Teams filing and workbook insertion remain held until Josh approves the final revised package.
+- Rebuilt the combined attachment `26-07-24 - Josh Kennedy - Time Card Invoice Drafts - Week Ending 2026-07-24.pdf`.
+- The first render showed the Tensity source-traceability note extending below the page. Reduced line-item table padding, regenerated the PDFs, and rerendered both pages.
+- Final package validation passed: two pages, both existing invoice numbers, July 24 draft date, the 2026-07-24 line, and amended totals are present.
+- Final visual inspection passed with all line items, totals, and source traceability legible and no clipping or overlap.
+- Sent Email Monitor delivery request `IE-EMAIL-20260724-JOSH-TIMECARD-FINAL-001` for OfficeAssist delivery to Josh Kennedy, with Wes and Jenny copied. The request preserved the exact weekly subject used for the prior daily invoice email.
+- Email Monitor returned `Sent and Verified`: OfficeAssist sent the final package at `2026-07-24T23:23:40Z`. Sent message id: `AQMkADZkMGMwNDI3LWU5ZjctNDgzMC1iMjdkLTY0NmRiN2IwNmIyZgBGAAADKGOvWJYjX0aEKaRpd0MYQQcAVSXargQY20aF7RLCkro4ggAAAgEJAAAAVSXargQY20aF7RLCkro4ggACfHr4XwAAAA==`.
+- Sent Items verification confirmed OfficeAssist as sender, Josh as recipient, Wes and Jenny as CC recipients, the unchanged weekly subject, and the required combined PDF (`application/pdf`, 6,325 bytes, not inline).
+- Teams filing and project workbook insertion remain held until Josh approves the final package.

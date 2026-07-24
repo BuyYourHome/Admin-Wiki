@@ -100,7 +100,7 @@ def build_invoice(data):
         [
             [
                 Paragraph("<b>Status:</b> Draft generated from routed timesheet", styles["Body"]),
-                Paragraph("<b>Draft Date:</b> July 23, 2026", styles["Body"]),
+                Paragraph("<b>Draft Date:</b> July 24, 2026", styles["Body"]),
             ]
         ],
         colWidths=[4.3 * inch, 2.65 * inch],
@@ -192,8 +192,8 @@ def build_invoice(data):
                 ("GRID", (0, 0), (-1, -1), 0.35, line),
                 ("LEFTPADDING", (0, 0), (-1, -1), 6),
                 ("RIGHTPADDING", (0, 0), (-1, -1), 6),
-                ("TOPPADDING", (0, 0), (-1, -1), 8),
-                ("BOTTOMPADDING", (0, 0), (-1, -1), 8),
+                ("TOPPADDING", (0, 0), (-1, -1), 5),
+                ("BOTTOMPADDING", (0, 0), (-1, -1), 5),
             ]
         )
     )
@@ -236,7 +236,8 @@ def build_invoice(data):
                     "Sources: C:\\Codex\\Wiki Files\\Project Rooms\\Invoice Entry\\sources\\email\\2026-07-20-204307-josh-kennedy-timesheet.md; "
                     "C:\\Codex\\Wiki Files\\Project Rooms\\Invoice Entry\\sources\\email\\2026-07-21-213901-josh-kennedy-timesheet-2026-07-21.md; "
                     "C:\\Codex\\Wiki Files\\Project Rooms\\Invoice Entry\\sources\\email\\2026-07-22-214447-josh-kennedy-time-card-update.md; "
-                    "C:\\Codex\\Wiki Files\\Project Rooms\\Invoice Entry\\sources\\email\\2026-07-23-210720-josh-kennedy-time-card-update.md",
+                    "C:\\Codex\\Wiki Files\\Project Rooms\\Invoice Entry\\sources\\email\\2026-07-23-210720-josh-kennedy-time-card-update.md; "
+                    "2026-07-24 Email Monitor handoff, Outlook message id ending CfHtzpwAAAA==",
                     styles["Muted"],
                 )
             ],
@@ -315,8 +316,14 @@ invoices = [
                 "hours": 10.0833,
                 "amount": 315.10,
             },
+            {
+                "date": "2026-07-24",
+                "description": "4121 Tensity Dr work from 6:45 A.M. to 5:05 P.M.",
+                "hours": 10.3333,
+                "amount": 322.92,
+            },
         ],
-        "amount": 846.35,
+        "amount": 1169.27,
     },
 ]
 

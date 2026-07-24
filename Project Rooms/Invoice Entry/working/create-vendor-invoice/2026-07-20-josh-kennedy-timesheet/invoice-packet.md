@@ -2,7 +2,7 @@
 
 ## Packet Status
 
-- Status: `July 23 Time Card line added - amended verification package sent and verified - awaiting end-of-week approval - Teams filing and spreadsheet posting held`
+- Status: `July 24 final Time Card package sent and verified - Josh approval pending - Teams filing and spreadsheet posting held`
 - Workflow: `Time Card`, calling `Create Vendor Invoice` for invoice document creation
 - Created: 2026-07-20
 - Source type: Routed free-text timesheet emails; no invoice attachments.
@@ -14,6 +14,7 @@
 - Routed source 2: `C:\Codex\Wiki Files\Project Rooms\Invoice Entry\sources\email\2026-07-21-213901-josh-kennedy-timesheet-2026-07-21.md`
 - Routed source 3: `C:\Codex\Wiki Files\Project Rooms\Invoice Entry\sources\email\2026-07-22-214447-josh-kennedy-time-card-update.md`
 - Routed source 4: `C:\Codex\Wiki Files\Project Rooms\Invoice Entry\sources\email\2026-07-23-210720-josh-kennedy-time-card-update.md`
+- Routed source 5: Email Monitor handoff for Outlook message `AQMkADZkMGMwNDI3LWU5ZjctNDgzMC1iMjdkLTY0NmRiN2IwNmIyZgBGAAADKGOvWJYjX0aEKaRpd0MYQQcAVSXargQY20aF7RLCkro4ggAAAgEMAAAAVSXargQY20aF7RLCkro4ggACfHtzpwAAAA==`
 - Duplicate transport evidence 1: `C:\Codex\Wiki Files\Project Rooms\Invoice Entry\sources\email\2026-07-22-214452-wes-forward-josh-time-card-update.md`
 - Duplicate transport evidence 2: `C:\Codex\Wiki Files\Project Rooms\Invoice Entry\sources\email\2026-07-23-210725-wes-forward-josh-time-card-update.md`
 - Sender: `Josh Kennedy <IRAManager@SellYourHomeRaleigh.com>`
@@ -25,15 +26,19 @@
 - Received 3: `2026-07-22T21:44:47Z` / `2026-07-22 5:44:47 PM Eastern`
 - Subject 4: `Re: Josh Kennedy time card invoice drafts - week ending 2026-07-24`
 - Received 4: `2026-07-23T21:07:20Z` / `2026-07-23 5:07:20 PM Eastern`
+- Subject 5: `Re: 4121 Tensity Dr - Josh Kennedy time card invoice drafts - week ending 2026-07-24`
+- Received 5: `2026-07-24T23:04:05Z` / `2026-07-24 7:04:05 PM Eastern`
 - Attachments: none
 - Outlook message id 1: `AQMkADZkMGMwNDI3LWU5ZjctNDgzMC1iMjdkLTY0NmRiN2IwNmIyZgBGAAADKGOvWJYjX0aEKaRpd0MYQQcAVSXargQY20aF7RLCkro4ggAAAgEMAAAAVSXargQY20aF7RLCkro4ggACecWiBgAAAA==`
 - Outlook message id 2: `AQMkADZkMGMwNDI3LWU5ZjctNDgzMC1iMjdkLTY0NmRiN2IwNmIyZgBGAAADKGOvWJYjX0aEKaRpd0MYQQcAVSXargQY20aF7RLCkro4ggAAAgEMAAAAVSXargQY20aF7RLCkro4ggACecWiCQAAAA==`
 - Outlook message id 3: `AQMkADZkMGMwNDI3LWU5ZjctNDgzMC1iMjdkLTY0NmRiN2IwNmIyZgBGAAADKGOvWJYjX0aEKaRpd0MYQQcAVSXargQY20aF7RLCkro4ggAAAgEMAAAAVSXargQY20aF7RLCkro4ggACe12f9gAAAA==`
 - Outlook message id 4: `AQMkADZkMGMwNDI3LWU5ZjctNDgzMC1iMjdkLTY0NmRiN2IwNmIyZgBGAAADKGOvWJYjX0aEKaRpd0MYQQcAVSXargQY20aF7RLCkro4ggAAAgEMAAAAVSXargQY20aF7RLCkro4ggACe-Xc_gAAAA==`
+- Outlook message id 5: `AQMkADZkMGMwNDI3LWU5ZjctNDgzMC1iMjdkLTY0NmRiN2IwNmIyZgBGAAADKGOvWJYjX0aEKaRpd0MYQQcAVSXargQY20aF7RLCkro4ggAAAgEMAAAAVSXargQY20aF7RLCkro4ggACfHtzpwAAAA==`
 - Outlook web link 1: https://outlook.office365.com/owa/?ItemID=AQMkADZkMGMwNDI3LWU5ZjctNDgzMC1iMjdkLTY0NmRiN2IwNmIyZgBGAAADKGOvWJYjX0aEKaRpd0MYQQcAVSXargQY20aF7RLCkro4ggAAAgEMAAAAVSXargQY20aF7RLCkro4ggACecWiBgAAAA%3D%3D&exvsurl=1&viewmodel=ReadMessageItem
 - Outlook web link 2: https://outlook.office365.com/owa/?ItemID=AQMkADZkMGMwNDI3LWU5ZjctNDgzMC1iMjdkLTY0NmRiN2IwNmIyZgBGAAADKGOvWJYjX0aEKaRpd0MYQQcAVSXargQY20aF7RLCkro4ggAAAgEMAAAAVSXargQY20aF7RLCkro4ggACecWiCQAAAA%3D%3D&exvsurl=1&viewmodel=ReadMessageItem
 - Outlook web link 3: https://outlook.office365.com/owa/?ItemID=AQMkADZkMGMwNDI3LWU5ZjctNDgzMC1iMjdkLTY0NmRiN2IwNmIyZgBGAAADKGOvWJYjX0aEKaRpd0MYQQcAVSXargQY20aF7RLCkro4ggAAAgEMAAAAVSXargQY20aF7RLCkro4ggACe12f9gAAAA%3D%3D&exvsurl=1&viewmodel=ReadMessageItem
 - Outlook web link 4: https://outlook.office365.com/owa/?ItemID=AQMkADZkMGMwNDI3LWU5ZjctNDgzMC1iMjdkLTY0NmRiN2IwNmIyZgBGAAADKGOvWJYjX0aEKaRpd0MYQQcAVSXargQY20aF7RLCkro4ggAAAgEMAAAAVSXargQY20aF7RLCkro4ggACe%2FXc%2BgAAAA%3D%3D&exvsurl=1&viewmodel=ReadMessageItem
+- Outlook web link 5: https://outlook.office365.com/owa/?ItemID=AQMkADZkMGMwNDI3LWU5ZjctNDgzMC1iMjdkLTY0NmRiN2IwNmIyZgBGAAADKGOvWJYjX0aEKaRpd0MYQQcAVSXargQY20aF7RLCkro4ggAAAgEMAAAAVSXargQY20aF7RLCkro4ggACfHtzpwAAAA%3D%3D&exvsurl=1&viewmodel=ReadMessageItem
 
 ## Time Card Assumptions Applied
 
@@ -54,13 +59,14 @@
 | `TC-JK-20260724-BACKOFFICE-001` | `BackOffice` | `2026-07-21` | BackOffice work from 1:00 P.M. to 4:45 P.M. | 3.75 | `$31.25` | `$117.19` | Draft invoice amended; spreadsheet posting not applicable until BackOffice accounting path is approved. |
 | `TC-JK-20260724-TENSITY-001` | `24-HM - 4121 Tensity Dr` | `2026-07-22` | 4121 Tensity Dr work from 6:45 A.M. to 3:30 P.M., followed by a Lowe's supply pickup in Cary from 3:30 P.M. to 3:50 P.M. | 9.08 | `$31.25` | `$283.85` | Draft invoice amended; workbook insertion held for destination worksheet/expense placement. |
 | `TC-JK-20260724-TENSITY-001` | `24-HM - 4121 Tensity Dr` | `2026-07-23` | 4121 Tensity Dr work from 6:50 A.M. to 4:55 P.M. | 10.08 | `$31.25` | `$315.10` | Draft invoice amended; workbook insertion held for destination worksheet/expense placement. |
+| `TC-JK-20260724-TENSITY-001` | `24-HM - 4121 Tensity Dr` | `2026-07-24` | 4121 Tensity Dr work from 6:45 A.M. to 5:05 P.M. | 10.33 | `$31.25` | `$322.92` | Final weekly draft amended; workbook insertion held until approval and approved placement. |
 
-Total parsed time: 34.83 hours. Total draft amount: `$1,088.54` from rounded invoice lines.
+Total parsed time: 45.17 hours. Total draft amount: `$1,411.46` from rounded invoice lines.
 
 Current invoice totals:
 
 - BackOffice: 7.75 hours, `$242.19`.
-- 4121 Tensity Dr: 27.08 hours, `$846.35`.
+- 4121 Tensity Dr: 37.42 hours, `$1,169.27`.
 
 ## Generated Drafts
 
@@ -88,8 +94,9 @@ No workbook duplicate check was performed because destination worksheet/expense 
 - Draft invoices were generated and amended from the Time Card sources by calling the Create Vendor Invoice document pattern.
 - The prior amended draft invoices were emailed to Josh Kennedy for accuracy verification with Wes and Jenny copied on 2026-07-22.
 - The July 23 amendment was sent and verified through Email Monitor's Email Delivery workflow on `2026-07-24T01:22:41Z`. Sent message id: `AQMkADZkMGMwNDI3LWU5ZjctNDgzMC1iMjdkLTY0NmRiN2IwNmIyZgBGAAADKGOvWJYjX0aEKaRpd0MYQQcAVSXargQY20aF7RLCkro4ggAAAgEJAAAAVSXargQY20aF7RLCkro4ggACfHr4WAAAAA==`. OfficeAssist sender, Josh recipient, Wes and Jenny CCs, subject, and PDF attachment were verified in Sent Items.
-- No invoice was filed into a Teams project folder because this was not identified as the final end-of-week Time Card email.
-- No workbook was edited.
+- The July 24 Friday amendment is the final weekly draft. Email Monitor sent and verified it at `2026-07-24T23:23:40Z` using the unchanged weekly subject. Sent message id: `AQMkADZkMGMwNDI3LWU5ZjctNDgzMC1iMjdkLTY0NmRiN2IwNmIyZgBGAAADKGOvWJYjX0aEKaRpd0MYQQcAVSXargQY20aF7RLCkro4ggAAAgEJAAAAVSXargQY20aF7RLCkro4ggACfHr4XwAAAA==`.
+- OfficeAssist Sent Items verification confirmed Josh as recipient, Wes and Jenny as CC recipients, and the combined PDF attachment as `application/pdf`, 6,325 bytes, not inline.
+- No invoice was filed into a Teams project folder and no workbook was edited because Josh has not yet approved the final revised package.
 - Tensity workbook candidate: `Property/24_Project Management - 4121 Tensity Dr 2.xlsm`.
 - Tensity spreadsheet insertion remains held until Wes confirms the destination worksheet or approved placement path.
 - BackOffice accounting/spreadsheet path remains held until Wes confirms where BackOffice Time Card invoices should be recorded.
