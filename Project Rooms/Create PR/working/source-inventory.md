@@ -12,4 +12,5 @@
 | Wes instruction to create new PRs from `main` | User instruction | authoritative | Future Create PR work must use `main` by default and must not create a new branch unless Wes explicitly asks for one. |
 | Wes instruction after LD. Evans connector delay | User instruction | authoritative | Future Create PR work must complete and commit local PR setup before trying task creation, try the connector once, then mark thread id pending if the connector does not return promptly. |
 | Wes instruction for PR Diagram | User instruction | authoritative | Defines Create PR mode for producing a grouped one-page SVG relationship diagram of Project Rooms, skills, automations, and major handoffs. |
+| Wes instruction for Durable Outcome Log Pattern | User instruction | authoritative | When creating or updating a Project Room, decide whether repeatable intake/routing/processing/delivery/filing/document/email/spreadsheet/handoff workflows need a durable outcome log under `working\`; commit durable Markdown logs and rules, not scratch artifacts. |
 | Existing Project Rooms and skills | Examples | background | Used as patterns for README and SKILL structure. |

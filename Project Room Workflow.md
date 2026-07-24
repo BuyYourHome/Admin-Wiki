@@ -45,6 +45,44 @@ Every Project Room should contain:
 - `working/missing-context.md` - facts, decisions, or data still needed.
 - `outputs/` - final deliverables or drafts once source preparation is complete.
 
+## Durable Outcome Log Pattern
+
+When creating or updating a Project Room, decide whether the room needs a durable outcome log.
+
+Create an outcome log when the Project Room handles repeatable intake, routing, processing, delivery, filing, document movement, scan handling, email handling, spreadsheet insertion, or external workflow handoffs.
+
+The log should live under:
+
+```text
+C:\Codex\Wiki Files\Project Rooms\<Project Name>\working\
+```
+
+Use a name that matches the workflow, such as:
+
+- `scanned-document-action-log.md`
+- `routing-action-log.md`
+- `delivery-action-log.md`
+- `document-action-log.md`
+- `spreadsheet-action-log.md`
+
+The outcome log should record what happened, not every intermediate step used to do it.
+
+Typical fields:
+
+- date/time
+- source item
+- item type
+- destination or filed path
+- owning project/property/account/vendor
+- handoff target or recipient
+- action status
+- blocker/review note
+- final outcome
+
+Do not commit scratch artifacts merely to prove how work was done. Generated OCR folders, render folders, connector scratch output, temporary packets, workbook copies, draft PDFs, and review packets should normally be moved to Teams archive, ignored, or deleted only with approval.
+
+Commit durable Markdown logs, source inventories, rules, and small reusable scripts. Use Teams for large generated working history unless Wes explicitly identifies a specific file as durable source material.
+
 ## Source Status Terms
 
 - `authoritative` - use this as a source of truth.
