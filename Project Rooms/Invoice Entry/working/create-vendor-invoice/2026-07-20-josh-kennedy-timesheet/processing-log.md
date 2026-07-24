@@ -63,3 +63,21 @@
 - The Outlook connector is not available in this session. The local Outlook fallback has stores for Josh, Wes, and Jenny but not `OfficeAssist@BuyYourHomeLLC.com`, so Email Delivery sender verification cannot pass. The new amendment was not sent from another mailbox.
 - No Teams filing was performed because this was not identified as the final end-of-week Time Card email.
 - No workbook was edited. Tensity placement and BackOffice posting remain held under the existing rules.
+
+## 2026-07-23
+
+- Received a new Time Card handoff for `C:\Codex\Wiki Files\Project Rooms\Invoice Entry\sources\email\2026-07-23-210720-josh-kennedy-time-card-update.md`.
+- Preserved `C:\Codex\Wiki Files\Project Rooms\Invoice Entry\sources\email\2026-07-23-210725-wes-forward-josh-time-card-update.md` as duplicate transport evidence. It arrived five seconds after Josh's direct message and was not added as another time-card line.
+- Parsed Josh's 2026-07-23 Tensity time as 10 hours 5 minutes from 6:50 A.M. to 4:55 P.M. at 4121 Tensity Dr.
+- Applied the established `$31.25/hour` rate. The new rounded line amount is `$315.10`.
+- Duplicate check found no existing 2026-07-23 source line in the weekly packet before amendment.
+- Kept invoice `TC-JK-20260724-TENSITY-001` and amended it to 27.08 displayed hours and `$846.35`. BackOffice invoice `TC-JK-20260724-BACKOFFICE-001` remains 7.75 hours and `$242.19`.
+- Regenerated the project and BackOffice PDFs from the accumulated weekly source data rather than editing the prior PDFs.
+- Rebuilt the combined attachment `26-07-24 - Josh Kennedy - Time Card Invoice Drafts - Week Ending 2026-07-24.pdf`.
+- Package validation passed: two pages, both existing invoice numbers, July 23 draft date, the 2026-07-23 line, and the amended totals are present.
+- Rendered and visually inspected both pages. The invoice numbers, line items, totals, source traceability, and layout are legible with no clipping or overlap.
+- Sent Email Monitor delivery request `IE-EMAIL-20260723-JOSH-TIMECARD-APPROVAL-001` for OfficeAssist delivery to Josh Kennedy, with Wes and Jenny copied. Sent Items verification is pending.
+- Email Monitor returned `Sent and Verified`: OfficeAssist sent the message at `2026-07-24T01:22:41Z` to Josh Kennedy with Wes and Jenny copied. Sent message id: `AQMkADZkMGMwNDI3LWU5ZjctNDgzMC1iMjdkLTY0NmRiN2IwNmIyZgBGAAADKGOvWJYjX0aEKaRpd0MYQQcAVSXargQY20aF7RLCkro4ggAAAgEJAAAAVSXargQY20aF7RLCkro4ggACfHr4WAAAAA==`.
+- OfficeAssist Sent Items verification confirmed the sender, To and CC recipients, subject, attachment flag, and attached PDF metadata.
+- Email Delivery's first connector call failed because the attachment was passed as a string. Its single schema-correct retry used a one-item absolute-path list and succeeded.
+- No Teams filing or workbook insertion was performed because this is an in-week draft and end-of-week approval has not occurred.
