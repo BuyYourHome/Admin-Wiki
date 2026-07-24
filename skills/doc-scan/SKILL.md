@@ -428,6 +428,30 @@ Write one text log per source scan in the Logs folder. Include:
 
 Also update `C:\Codex\Wiki Files\Project Rooms\Doc Scan\working\scanned-document-action-log.md` when a scan produces a durable outcome such as a filed document, review routing, register alert, or handoff to Invoice Entry or another Project Room. Record what happened to the source scan and filed/review document, including source scan, identified document, filed or review destination, project/account/vendor, handoff/register action, status, and notes. Do not commit OCR scratch folders, temporary render folders, split experiments, or generated packet files merely to show how the scan was processed.
 
+## End-Of-Run Working File Cleanup Rule
+
+Treat `Project Rooms\Doc Scan\working\` as temporary workspace, not durable storage.
+
+At the end of every Doc Scan run, Doc Scan must clean up the working files created by that run before considering the job complete.
+
+Required end-of-run steps:
+
+1. Preserve the original source scan. Never delete the original scan file.
+2. Preserve the final filed document, review document, handoff packet, or report in the correct Teams, property, Office Admin, or Project Room destination.
+3. Record the durable outcome in:
+   `C:\Codex\Wiki Files\Project Rooms\Doc Scan\working\scanned-document-action-log.md`
+4. Do not keep generated page renders, OCR text, contact sheets, temporary PDFs, preview images, split-test files, extraction scratch files, or run folders in the Admin wiki Git repo.
+5. If generated working artifacts need temporary retention, move them to:
+   `C:\Users\wesbr\Buy Your Home\Buy Your Home - Office Admin\Scanned Files\Doc Scan Working Archive`
+6. Preserve the same relative folder structure when moving generated working artifacts to the Teams archive.
+7. Verify the Teams copy by file count and byte total before removing the local working copy.
+8. Record the Teams archive location in:
+   `C:\Codex\Wiki Files\Project Rooms\Doc Scan\working\teams-working-archive-map.md`
+9. After successful verification and mapping, remove the local generated working files from `Project Rooms\Doc Scan\working\`.
+10. If the run cannot safely determine whether a file is source material, generated output, or needed evidence, leave it in place and record the decision needed instead of deleting it.
+
+A Doc Scan job is not complete until its generated working files have either been removed, moved to the Teams Working Archive and mapped, or explicitly recorded as needing human review.
+
 ## Scanned Document Register Alerts
 
 When updating the scanned document register, use one row per account and compare new statement data to the existing row before overwriting it.
