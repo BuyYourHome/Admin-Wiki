@@ -417,6 +417,29 @@ Invoice Entry owns:
 
 Default handoff trigger: send a direct follow-up message to the dedicated Invoice Entry chat with the packet path and a short summary of line counts by status, including high-confidence project lines, unclear project lines, non-project/Home lines, mixed-tab lines, and accounting-review lines.
 
+### Doc Search
+
+Use Doc Search when a scanned invoice, receipt, statement line, Lowe's allocation row, review item, or explicit Boss request needs supporting project-related document context that may not have come through the Doc Scan intake.
+
+Doc Search is a support/search mode, not a filing mode and not a routine heartbeat task. Do not run it on every scan heartbeat. Trigger it only when context is needed to improve routing confidence, explain uncertainty, or provide supporting evidence for an Invoice Entry packet or review item.
+
+Doc Search may search:
+
+- Teams/SharePoint project and property folders.
+- Admin wiki records and project-room source/working files.
+- Existing filed invoices, receipts, statements, orders, POs, packet files, review notes, and scan logs.
+
+Doc Search outputs should be evidence notes only. Record relevant matches in the scan log, review note, or Invoice Entry packet with file path or SharePoint URL, date, document type, and why the document appears related.
+
+Doc Search must not:
+
+- Move, rename, file, archive, or delete documents found by the search.
+- Edit project-management workbooks or decide final spreadsheet insertion.
+- Treat a search hit as conclusive if the project, PO, vendor, amount, date, or duplicate status is still unclear.
+- Override Invoice Entry's responsibility for duplicate checks, final workbook selection, worksheet placement, insertion, totals validation, or workbook upload.
+
+When Doc Search improves but does not resolve confidence, keep the affected document or packet row in the appropriate review status and include the search findings as context.
+
 ### Invoice And Receipt Reports
 
 When Boss asks for an invoice/receipt report, or when a scan run files invoices or receipts and a report is appropriate:

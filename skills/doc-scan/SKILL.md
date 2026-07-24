@@ -43,6 +43,20 @@ If older OCR text, scan-run logs, generated review packets, or Lowe's statement 
 11. Write or append a `.log.txt` file in the Logs folder with the summary, destinations, confidence notes, and review items.
 12. When processing is complete and intent is clear, move the original scan to Archived. Never delete it.
 
+## Doc Search
+
+Use Doc Search when a scanned invoice, receipt, statement line, Lowe's allocation row, review item, or explicit Boss request needs supporting project-related document context that may not have come through the Doc Scan intake.
+
+Doc Search is a support/search mode, not a filing mode and not a routine heartbeat task. Trigger it only when context is needed to improve routing confidence, explain uncertainty, or provide supporting evidence for an Invoice Entry packet or review item.
+
+Doc Search may inspect Teams/SharePoint project and property folders, Admin wiki records, project-room files, existing filed invoices, receipts, statements, orders, POs, packet files, review notes, and scan logs.
+
+Record relevant matches as evidence notes in the scan log, review note, or Invoice Entry packet with file path or SharePoint URL, date, document type, and why the document appears related.
+
+Do not use Doc Search to move, rename, file, archive, or delete found documents. Do not edit project-management workbooks, decide final spreadsheet placement, or override Invoice Entry duplicate checks and insertion decisions.
+
+If Doc Search improves context but does not resolve confidence, keep the affected document or packet row in the appropriate review status and include the search findings as context.
+
 ## Naming
 
 Use this format unless Boss gives a different instruction:
