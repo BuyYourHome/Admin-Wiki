@@ -18,6 +18,8 @@ Historical working materials and rendered outputs already exist. The room now ha
 
 Local cleanup note: ignored generated dependency cache `working\node_modules\` was removed on 2026-07-24 to reduce local repo scan weight. Recreate dependencies only when a future tool run requires them; do not commit dependency folders as durable source.
 
+Generated render folders, Python caches, migration logs, workbook backups, and other processed working artifacts should not accumulate in the Admin wiki Git repo. Move them to the separate Teams `Codex Working Archive` recorded in `working\local-cleanup-log.md`; do not mix cleanup artifacts into active deal folders or review-ready `outputs`.
+
 ## Matching Skill
 
 - Skill source: `C:\Codex\Wiki Files\skills\property-trade-evaluation\SKILL.md`

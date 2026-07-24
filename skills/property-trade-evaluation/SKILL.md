@@ -34,6 +34,7 @@ Use this skill to keep trade proposal work separated from general property files
 - Do not treat prior trade-term examples as current terms for a new property.
 - Do not infer legal, tax, financing, or ownership facts without source support.
 - Do not commit `node_modules`, render folders, or generated previews unless Wes explicitly asks to preserve them as durable source.
+- Do not leave generated render folders, Python caches, migration logs, workbook backups, or other processed working artifacts in the Admin wiki Git repo after they are processed. Move cleanup artifacts to the separate Teams `Codex Working Archive` recorded in `C:\Codex\Wiki Files\Project Rooms\Property Trade Evaluation\working\local-cleanup-log.md`; do not mix cleanup artifacts into active deal folders or review-ready `outputs`.
 - If the request becomes a property report/CMA, use the `cma-report` skill instead.
 ## Start PR Pointer
 
