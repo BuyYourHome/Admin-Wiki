@@ -234,6 +234,26 @@ Statement processing must be routed through Doc Scan. Do not ask Invoice Entry d
 11. After each workbook or workflow iteration, record, refine, or expand lessons learned in `working\iteration-lessons.md` before treating the iteration as complete.
 12. For scanned-document-derived invoice work, preserve the original scan and filed document in Teams/SharePoint, then record the durable outcome in `working\scanned-document-action-log.md`. Do not commit machine packets, OCR scratch files, or temporary workbook copies merely to show how the work was performed.
 
+## End-Of-Run Working File Cleanup Rule
+
+Treat `Project Rooms\Invoice Entry\working\` as temporary workspace, not durable storage.
+
+At the end of every Invoice Entry run, clean up the generated working files created by that run before considering the job complete.
+
+Required end-of-run steps:
+
+1. Preserve the authoritative source material in Teams, SharePoint, the routed email source, the filed project document, or the active project workbook as applicable.
+2. Preserve durable process records in Markdown logs, packet summaries, source inventories, held-detail registers, and action logs.
+3. Do not keep generated workbook backups, temporary workbook downloads, rendered page previews, generated invoice PDFs, PDF render images, machine handoff packets, packet experiments, or statement working folders in the Admin wiki Git repo merely to show how work was performed.
+4. If generated working artifacts need temporary retention, move them to `C:\Users\wesbr\Buy Your Home\Buy Your Home - Office Admin\Scanned Files\Invoice Entry Working Archive`.
+5. Preserve the same relative folder structure when moving generated working artifacts to the Teams archive.
+6. Verify the Teams copy by file count and byte total before removing the local working copy.
+7. Record the Teams archive location in `Project Rooms\Invoice Entry\working\teams-working-archive-map.md`.
+8. After successful verification and mapping, remove the local generated working files from `Project Rooms\Invoice Entry\working\`.
+9. If the run cannot safely determine whether a file is durable source material, generated output, or needed evidence, leave it in place and record the decision needed instead of deleting it.
+
+An Invoice Entry job is not complete until its generated working files have either been removed, moved to the Teams Working Archive and mapped, or explicitly recorded as needing human review.
+
 ## Review Request Processing
 
 For project workbooks that use the Review request design:
