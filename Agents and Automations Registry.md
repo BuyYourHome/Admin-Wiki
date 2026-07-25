@@ -688,7 +688,7 @@ Defined in:
 
 Dedicated chat:
 
-- Thread id: `pending until the dedicated chat is created`
+- Thread id: `019f96e9-c663-7550-bf20-5829f6cb6c88`
 
 Important rules:
 

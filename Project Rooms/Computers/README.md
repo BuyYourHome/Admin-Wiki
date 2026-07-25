@@ -47,7 +47,7 @@ Wes asked for a Project Room whose job is to keep track of the computers in the 
 ## Dedicated Chat
 
 - Chat name: `Computers`
-- Thread id: `pending until the dedicated chat is created`
+- Thread id: `019f96e9-c663-7550-bf20-5829f6cb6c88`
 
 ## Start PR
 
