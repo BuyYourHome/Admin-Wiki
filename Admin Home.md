@@ -21,6 +21,7 @@ This is the starting page for the Buy Your Home admin wiki.
 - [[Project Rooms/Lowes Order/README|Lowes Order Project Room]]
 - [[Project Rooms/Manager/README|Manager Project Room]]
 - [[Project Rooms/Codex Environment/README|Codex Environment Project Room]]
+- [[Project Rooms/Computers/README|Computers Project Room]]
 - [[Connector and Plugin Usage Rules]]
 - [[Project Rooms/SOPs/README|SOPs Project Room]]
 - [[Project Rooms/Email Monitor/README|Email Monitor Project Room]]

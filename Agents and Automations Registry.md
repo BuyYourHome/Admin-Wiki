@@ -26,6 +26,7 @@ Use [[Agent Unit Standard]] for the standard package behind an agent-like operat
 | Lowes Order | Wiki-managed skill plus project room plus dedicated chat | Draft | On demand | `skills\lowes-order\SKILL.md`; `Project Rooms\Lowes Order\README.md` |
 | Manager | Wiki-managed skill plus project room plus dedicated chat | Draft | On demand | `skills\manager\SKILL.md`; `Project Rooms\Manager\README.md` |
 | Codex Environment | Wiki-managed skill plus project room plus dedicated chat | Draft | On demand | `skills\codex-environment\SKILL.md`; `Project Rooms\Codex Environment\README.md` |
+| Computers | Wiki-managed skill plus project room plus dedicated chat | Draft | On demand | `skills\computers\SKILL.md`; `Project Rooms\Computers\README.md` |
 | SOPs | Wiki-managed skill plus project room | Active | On demand | `skills\sops\SKILL.md`; `Project Rooms\SOPs\README.md`; `Project Rooms\SOPs\outputs\SOP Index.md` |
 | Credit Worthiness Evaluator | Wiki-managed skill plus project room | Active | On demand | `skills\credit-worthiness-evaluator\SKILL.md`; `Project Rooms\Credit Worthiness Evaluator\README.md` |
 | Contract for Deed | Wiki-managed skill plus project room | Active | On demand | `skills\contract-for-deed\SKILL.md`; `Project Rooms\Contract for Deed\README.md` |
@@ -667,6 +668,36 @@ Important rules:
 - Do not install paid apps, remote-control tools, VPNs, credential managers, browser extensions, system-level agents, or make security-setting changes unless Wes explicitly approves the exact item.
 - Use `C:\Codex\Wiki Files` as the Admin wiki working repo path on target computers; do not treat Teams-synced wiki folders as the working repo.
 - Use the Project Room target-computer register and verification outputs before marking a computer ready.
+
+## Computers
+
+Type: wiki-managed skill plus project room plus dedicated chat.
+
+Status: draft.
+
+Purpose:
+
+- Track Buy Your Home business computers, including specs, configuration, user/owner, location, apps, remote-access status, security posture, and Codex/Admin wiki readiness.
+- Maintain a durable computer register and inventory action log.
+- Receive setup-result handoffs from Codex Environment and security-result handoffs from Investigate Computer when those workflows change a computer's known state.
+
+Defined in:
+
+- `C:\Codex\Wiki Files\skills\computers\SKILL.md`
+- `C:\Codex\Wiki Files\Project Rooms\Computers\README.md`
+
+Dedicated chat:
+
+- Thread id: `pending until the dedicated chat is created`
+
+Important rules:
+
+- Do not store passwords, tokens, recovery codes, license keys, payment details, MFA secrets, or other live secrets.
+- Route remote setup and Codex environment replication to Codex Environment by default unless Wes explicitly assigns the setup run to Computers.
+- Route suspected compromise or active remote-control concerns to Investigate Computer.
+- Record verified computer facts in `Project Rooms\Computers\working\computer-register.md`.
+- Record final inventory/configuration outcomes in `Project Rooms\Computers\working\computer-inventory-action-log.md`.
+- No automation is currently attached.
 
 ## Credit Worthiness Evaluator
 
