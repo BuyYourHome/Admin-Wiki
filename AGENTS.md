@@ -19,6 +19,7 @@ Use this repo when formulating solutions for office-admin workflows, SOPs, autom
 - Use `Codex Python Runtime Rule.md` before running Python scripts for Admin wiki, project-room, document, spreadsheet, or skill-support work.
 - Use `LibreOffice Location Rule.md` before rendering or converting Word/PDF documents with LibreOffice.
 - Use `Project Room Workflow.md` before major work that depends on multiple source files, emails, scans, notes, spreadsheets, or prior drafts.
+- Use `Project Room Chat Startup Rule.md` for Start PR, Jean Dispatcher, PR-scoped interpretation, chat creation, and dispatcher intake/return rules.
 - Use `Project Room File Ownership And Git Coordination Rule.md` before durable Project Room edits, cross-PR work, shared Admin rule edits, commits, pulls, or pushes.
 - Use `Project Rooms\SOPs\` for SOP source emails, extracted notes, SOP pages, SOP index, source map, and SOP review questions.
 - Use `Project Rooms\Email Monitor\` for development work on the Email Monitor workflow, including source inventory, automation notes, open questions, and review-ready handoffs.

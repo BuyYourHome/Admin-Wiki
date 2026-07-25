@@ -14,6 +14,8 @@ description: Use for Buy Your Home Jean Wright / Office Assistant work in the cu
 - Registry: `C:\Codex\Wiki Files\Agents and Automations Registry.md`
 - Admin wiki source: `C:\Codex\Wiki Files`
 - Ownership and Git coordination rule: `C:\Codex\Wiki Files\Project Room File Ownership And Git Coordination Rule.md`
+- Dispatcher routing map: `C:\Codex\Wiki Files\Project Rooms\Jean Wright\working\dispatcher-routing-map.md`
+- Dispatcher action log: `C:\Codex\Wiki Files\Project Rooms\Jean Wright\working\dispatcher-action-log.md`
 
 Jean Wright is the Office Assistant operating role for Buy Your Home, LLC.
 
@@ -58,6 +60,19 @@ Use when Wes says `Push` in the Jean Wright PR.
 2. Fetch GitHub and confirm local `main` includes current `origin/main`.
 3. Push `main` to GitHub only when the push contains the intended scoped body of work.
 
+### Dispatcher Mode
+
+Use when Wes gives Jean a request that belongs to a specialized Project Room, asks Jean to coordinate across PRs, or asks Jean to delegate work.
+
+1. Follow the Jean Dispatcher Rule in `C:\Codex\Wiki Files\Project Room Chat Startup Rule.md`.
+2. Read `C:\Codex\Wiki Files\Project Rooms\Jean Wright\working\dispatcher-routing-map.md`.
+3. Assign a stable `dispatch_id` before handoff.
+4. Default to `route-and-return`: send or prepare the handoff and tell Wes which PR owns the work.
+5. Use `route-and-monitor` only when Wes asks Jean to monitor, when Email Monitor delivery verification is required, or when the workflow rule requires a return verification.
+6. If no task/thread id is known, report the owning PR and blocker instead of creating a new task unless Wes explicitly asks.
+7. Record durable dispatches in `C:\Codex\Wiki Files\Project Rooms\Jean Wright\working\dispatcher-action-log.md`.
+8. Do not edit another PR's files, skill, automation, registry entry, or chat title unless Wes explicitly authorizes that exact cross-PR or global governance change.
+
 ## Operating Rules
 
 - Treat the current Admin Operations / Jean Wright chat as Jean Wright / Office Assistant in function unless Wes routes the work to a specialized Project Room.
@@ -74,6 +89,8 @@ Use when Wes says `Push` in the Jean Wright PR.
 - Do not substitute another mailbox, connector, Teams folder, or local Outlook profile when the required source is unavailable.
 - Route specialized work to the matching Project Room and skill when one exists.
 - Do not perform durable edits inside a specialized Project Room unless Wes explicitly authorizes that specific cross-PR edit or global governance update.
+- When routing specialized work, use Dispatcher Mode rather than absorbing the specialized work into Jean Wright.
+- A routed PR must return `accepted`, `done`, `blocked`, `needs Wes`, `rejected as wrong room`, or `routed onward with approval` under the central Dispatcher Intake And Return Rule.
 - Do not use the Teams-synced wiki folder as the working repo.
 
 ## Boundaries

@@ -148,16 +148,18 @@ Output standards:
 6. Create `README.md`, `working\source-inventory.md`, `working\duplicate-and-conflict-log.md`, and `working\missing-context.md`.
 7. Apply the Durable Outcome Log Pattern from `Project Room Workflow.md`: decide whether the room needs a durable outcome log, and create a workflow-named Markdown log under `working\` when the room handles repeatable intake, routing, processing, delivery, filing, document movement, scan handling, email handling, spreadsheet insertion, or external workflow handoffs.
 8. In the new README, include the short Start PR pointer from `Project Room Chat Startup Rule.md`, not the full central rule text.
-9. Create the matching wiki-managed skill under `skills\<skill-name>\SKILL.md`.
-10. In the new skill, include the same short Start PR pointer.
-11. Include the new PR under the ownership and Git coordination rule; do not set up a new room so that it can edit other PR files by default.
-12. Add an `agents\openai.yaml` file for the skill when practical.
-13. Update `Agents and Automations Registry.md` when the workflow is agent-like, repeatable, or expected to have a dedicated chat.
-14. Add an `Admin Home.md` link when the room should be easy to find from the wiki start page.
-15. Create and commit the scoped durable files locally before attempting a dedicated Codex task.
-16. Create a new Codex chat using the Project Room Chat Startup Rule startup text only when Wes explicitly asks or when no existing chat should own the work; follow the Dedicated Chat Connector Rule so connector delays do not block setup.
-17. If a dedicated chat is created, record the returned thread id in the README and registry and commit that metadata update separately.
-18. Push only when Wes explicitly asks, says the work is finished, or the applicable rule defines the deliverable as ready to publish.
+9. Make the new room dispatcher-ready by relying on the central Dispatcher Intake And Return Rule in `Project Room Chat Startup Rule.md`; do not copy the full dispatcher rule into the PR unless Wes explicitly asks for a local exception.
+10. If the new room has a dedicated task/thread id, record it in the README, matching skill when useful, registry entry, and Jean routing map.
+11. Create the matching wiki-managed skill under `skills\<skill-name>\SKILL.md`.
+12. In the new skill, include the same short Start PR pointer.
+13. Include the new PR under the ownership and Git coordination rule; do not set up a new room so that it can edit other PR files by default.
+14. Add an `agents\openai.yaml` file for the skill when practical.
+15. Update `Agents and Automations Registry.md` when the workflow is agent-like, repeatable, or expected to have a dedicated chat.
+16. Add an `Admin Home.md` link when the room should be easy to find from the wiki start page.
+17. Create and commit the scoped durable files locally before attempting a dedicated Codex task.
+18. Create a new Codex chat using the Project Room Chat Startup Rule startup text only when Wes explicitly asks or when no existing chat should own the work; follow the Dedicated Chat Connector Rule so connector delays do not block setup.
+19. If a dedicated chat is created, record the returned thread id in the README, registry, and Jean routing map, then commit that metadata update separately.
+20. Push only when Wes explicitly asks, says the work is finished, or the applicable rule defines the deliverable as ready to publish.
 
 ## Existing PR Rename Or Move Rule
 
@@ -183,3 +185,14 @@ Every new PR chat created by this workflow should include:
 - working branch, normally `main`,
 - current status and open decisions,
 - instruction to leave unrelated dirty work alone.
+- dispatcher return expectation: respond with `accepted`, `done`, `blocked`, `needs Wes`, `rejected as wrong room`, or `routed onward with approval` when receiving a Jean handoff.
+
+## Dispatcher-Ready PR Standard
+
+Every new PR should be able to receive a Jean Dispatcher handoff without adding room-specific dispatcher text. The standard is:
+
+- README and skill include the Start PR pointer to `C:\Codex\Wiki Files\Project Room Chat Startup Rule.md`.
+- The central Dispatcher Intake And Return Rule governs incoming Jean handoffs.
+- The registry entry identifies the Project Room, matching skill, status, schedule, and primary definition.
+- Jean's routing map records the PR, skill, task/thread id or `pending`, and routing notes.
+- If the room receives substantial routed work, create or update `working\work-status.md`; do not create work-status files for trivial questions or quiet checks.

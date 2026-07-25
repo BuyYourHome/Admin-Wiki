@@ -11,6 +11,7 @@ Use [[Agent Unit Standard]] for the standard package behind an agent-like operat
 | Name | Type | Status | Schedule | Primary Definition |
 |---|---|---|---|---|
 | Jean Wright / Office Assistant | Wiki-managed skill plus project room plus assistant profile and operating role | Active | On demand and through related automations | `skills\jean-wright\SKILL.md`; `Project Rooms\Jean Wright\README.md`; `C:\Codex\Office Assistant Profile.md`; `AGENTS.md` |
+| Jean Dispatcher | Jean Wright mode plus central Project Room routing rule | Active | On demand when Wes asks Jean to delegate, coordinate, or route specialized work | `Project Room Chat Startup Rule.md`; `Project Rooms\Jean Wright\working\dispatcher-routing-map.md`; `Project Rooms\Jean Wright\working\dispatcher-action-log.md`; `skills\jean-wright\SKILL.md` |
 | REI Text Message Watcher | Heartbeat automation | Active | Every 15 minutes during 8:00 AM-9:00 PM Eastern; adaptive 1-minute checks during activity | `C:\Users\wesbr\.codex\automations\morning-weswill-email-summary\automation.toml` |
 | OfficeAssist Instruction Inbox Monitor | Behavior inside Email Monitor heartbeat | Active | Runs every day; starts at 7:45 AM Eastern, then every 15 minutes through 11:00 PM Eastern; checks email and takes defined actions | `AGENTS.md`; `C:\Users\wesbr\.codex\automations\officeassist-morning-email-summary-and-instruction-monitor\automation.toml` |
 | Gracious Millionaire Project Room Heartbeat | Project-room heartbeat automation | Active | Every 15 minutes from 8:00 AM-11:45 PM Eastern; project-room Markdown intake processing only | `Project Rooms\Gracious Millionaire\README.md`; `Project Rooms\Gracious Millionaire\working\intake-heartbeat-rules.md`; `C:\Users\wesbr\.codex\automations\gracious-millionaire-project-room-heartbeat\automation.toml` |
@@ -93,6 +94,39 @@ Where to inspect:
 - Open `skills\jean-wright\SKILL.md` for the Jean Wright workflow skill.
 - Open `AGENTS.md` for durable operating rules.
 - Open `C:\Codex\Office Assistant Profile.md` for the global persona/profile.
+
+## Jean Dispatcher
+
+Type: Jean Wright mode and central Project Room routing rule.
+
+Status: active.
+
+Schedule:
+
+- On demand when Wes asks Jean to delegate, coordinate, route work, or manage a request that belongs to a specialized Project Room.
+
+Purpose:
+
+- Let Wes speak to Jean as the front desk without requiring Jean to perform every specialized workflow directly.
+- Preserve Project Room ownership by routing specialized work to the owning PR and matching skill.
+- Prevent mixed commits, cross-PR edits, stale context, and unintended chat creation.
+
+Defined in:
+
+- `C:\Codex\Wiki Files\Project Room Chat Startup Rule.md`
+- `C:\Codex\Wiki Files\Project Rooms\Jean Wright\README.md`
+- `C:\Codex\Wiki Files\skills\jean-wright\SKILL.md`
+- `C:\Codex\Wiki Files\Project Rooms\Jean Wright\working\dispatcher-routing-map.md`
+- `C:\Codex\Wiki Files\Project Rooms\Jean Wright\working\dispatcher-action-log.md`
+
+Current behavior:
+
+- Jean uses `Dispatcher Mode` when a request belongs to another PR or requires cross-PR coordination.
+- Jean assigns a stable `dispatch_id` before handoff.
+- Jean defaults to `route-and-return`; Jean monitors only when Wes asks or when a workflow requires delivery/verification return.
+- Destination PRs accept or reject handoffs under the central Dispatcher Intake And Return Rule.
+- Destination PRs return `accepted`, `done`, `blocked`, `needs Wes`, `rejected as wrong room`, or `routed onward with approval`.
+- If a destination task/thread id is unknown, Jean reports the destination and blocker instead of creating a new task unless Wes explicitly asks.
 
 ## REI Text Message Watcher
 

@@ -43,6 +43,8 @@ Out of scope:
 - `working\source-inventory.md` - source inventory for Jean's role rules.
 - `working\duplicate-and-conflict-log.md` - conflicting or superseded instructions.
 - `working\missing-context.md` - open decisions about Jean's authority, routing, connectors, or automations.
+- `working\dispatcher-routing-map.md` - Project Room routing map used by Jean Dispatcher mode.
+- `working\dispatcher-action-log.md` - durable log of cross-PR handoffs, monitored dispatches, and delivery-related dispatches.
 - `outputs\` - review-ready role summaries, checklists, or handoff drafts.
 
 ## Dedicated Chat
@@ -91,6 +93,19 @@ Trigger: Wes says `Push` in the Jean Wright PR.
 3. Push `main` to GitHub only when the push contains the intended scoped body of work.
 4. Report the branch, commit id, push status, and any unrelated work left alone.
 
+### Dispatcher Mode
+
+Trigger: Wes gives Jean a request that belongs to a specialized Project Room, asks Jean to coordinate across PRs, or asks Jean to delegate work.
+
+1. Follow the Jean Dispatcher Rule in `C:\Codex\Wiki Files\Project Room Chat Startup Rule.md`.
+2. Use `working\dispatcher-routing-map.md` to identify the owning PR, matching skill, and known task/thread id.
+3. Assign a stable `dispatch_id` before handoff.
+4. Default to `route-and-return`: send the handoff and tell Wes which PR owns the work.
+5. Use `route-and-monitor` only when Wes asks Jean to monitor, when Email Monitor delivery verification is required, or when the workflow rule requires a return verification.
+6. If no task/thread id is known, report the owning PR and blocker instead of creating a new chat unless Wes explicitly asks.
+7. Record durable dispatches in `working\dispatcher-action-log.md`.
+8. Do not edit another PR's files, skill, automation, registry entry, or chat title unless Wes explicitly authorizes that exact cross-PR or global governance change.
+
 ## Current Operating Rules
 
 - The current Admin Operations chat functions as Jean Wright / Office Assistant unless Wes moves work into a more specific Project Room.
@@ -106,6 +121,8 @@ Trigger: Wes says `Push` in the Jean Wright PR.
 - If an email task fails, cannot be sent, or cannot be verified, notify Wes in the thread instead of staying quiet.
 - Treat specialized workflow requests as handoffs to the matching Project Room and skill when one exists.
 - Do not perform durable edits inside a specialized Project Room unless Wes explicitly authorizes that specific cross-PR edit or global governance update.
+- When routing specialized work, Jean should use Dispatcher Mode rather than absorbing the specialized work into this chat.
+- A routed PR must return `accepted`, `done`, `blocked`, `needs Wes`, `rejected as wrong room`, or `routed onward with approval` under the central Dispatcher Intake And Return Rule.
 - Do not use the Teams-synced wiki folder as the working repo.
 
 ## Next Actions
