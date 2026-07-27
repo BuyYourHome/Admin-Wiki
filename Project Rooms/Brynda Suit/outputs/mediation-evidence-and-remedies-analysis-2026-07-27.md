@@ -8,11 +8,13 @@ Case: *Griffith v. Browning*, Wake County Superior Court, 24CV037077-910
 
 The strongest defensible mediation points are not that Natalie Doherty committed perjury or knowingly filed a false lawsuit. The record reviewed does not establish either proposition. The strongest points are narrower:
 
-1. Natalie verified and helped initiate a complaint containing material characterizations for which she later admitted she had no firsthand knowledge or could not identify independent factual support.
-2. Before suit, Natalie did not read important lease terms, investigate the alleged loan terms, ask Wes to reconsider the transaction, or give him an opportunity to address the dispute.
-3. Natalie had little contact with Brynda from 2019 until summer 2024, despite Kevin Huston's recollection that he contacted Natalie in September 2023 and came away believing she was willing to help Brynda financially.
-4. The original guardian-ad-litem procedure was set aside after defendants challenged the lack of notice, hearing, and incompetency finding. That is a procedural concern, not proof that Natalie or counsel acted with an improper purpose.
-5. The proposed summary-judgment order would dispose of every claim except undue influence. That materially narrows the case, but the surviving claim and Kevin Huston's diminished-capacity testimony prevent a responsible assertion that the entire action lacked any factual basis.
+1. Natalie testified that she did not learn of the foreclosure until summer 2024. Huston contacted her immediately after his September 2023 meeting with Brynda concerning the foreclosure and Duane Wilson's purchase proposal, documented that Natalie was willing to help financially, and testified that her claimed lack of knowledge surprised him. Huston could not, however, recall whether he expressly used the word "foreclosure" during the call.
+2. Natalie verified and helped initiate a complaint containing material characterizations for which she later admitted she had no firsthand knowledge or could not identify independent factual support.
+3. Before suit, Natalie did not read important lease terms, investigate the alleged loan terms, ask Wes to reconsider the transaction, or give him an opportunity to address the dispute.
+4. Natalie had little contact with Brynda from 2019 until summer 2024 and no documented financial intervention appears in the reviewed record after Huston's September 2023 call.
+5. The original guardian-ad-litem procedure was set aside after defendants challenged the lack of notice, hearing, and incompetency finding. That is a procedural concern, not proof that Natalie or counsel acted with an improper purpose.
+6. The proposed summary-judgment order would dispose of every claim except undue influence. That materially narrows the case, but the surviving claim and Kevin Huston's diminished-capacity testimony prevent a responsible assertion that the entire action lacked any factual basis.
+7. A separate weakness in plaintiff's theory is Brynda's consideration of Duane Wilson's competing purchase proposal. She took Wilson to her own attorney, understood that he wanted to purchase the property and that a sale could avoid foreclosure, and did not accept his approximately $140,000 proposal while prioritizing her ability to remain in the home. This is not a contradiction in Natalie's testimony, but it supports defendants' argument that Brynda understood the difference between selling and retaining possession.
 
 The lawful mediation framing is therefore: defendants have preserved potential statutory fee and sanction requests; defendants have documented defense costs and other losses; and defendants will ask counsel to pursue any remedy supported by the final record. Do not frame this as a personal threat against Natalie.
 
@@ -27,7 +29,19 @@ The lawful mediation framing is therefore: defendants have preserved potential s
 
 ## Strongest Discrepancies And Unsupported Positions
 
-### 1. "Harsh" solicitation language versus Brynda's description
+### 1. Natalie's claimed lack of foreclosure knowledge versus Huston's September 2023 contact
+
+**Natalie's testimony:** Natalie testified that she had no information about the foreclosure when the September 2023 notice was issued and first learned about the proceeding in summer 2024 from Frances. She also testified that, while the foreclosure was proceeding in fall 2023, she knew nothing about it.
+
+**Huston's testimony and contemporaneous record:** Huston met with Brynda on or about September 25, 2023 concerning the foreclosure and Duane Wilson's effort to purchase the property. He contacted Natalie that day or shortly afterward. His takeaway was that Natalie was willing to help Brynda financially, and he recorded that conclusion in a contemporaneous email to Beth Donner that also described the foreclosure proceedings and attached foreclosure documents. When confronted with Natalie's testimony that she did not know about the foreclosure until 2024, Huston said that surprised him because he thought it would have come up in their call.
+
+**Sources:** Natalie deposition 54:12-24, 59:9-24, 60:1-9; Huston vol. I 33:5-24, 34:10-24; Huston continued deposition, `26-02-10 - Huston Depo Transcript COND_VOL. II.pdf`, 132:9-25, 133:1-24, 134:16-24, 135:1-16; `25-09-12 EMail from Huston to Beth Donner Exhibit 15 Huston, Kevin Job# 303627.pdf`.
+
+**Why it matters:** This is a central credibility and delayed-intervention issue. The subject and timing of Huston's call, his contemporaneous conclusion that Natalie would provide financial help, and his surprise at her claimed ignorance support a strong inference that Natalie received meaningful information about Brynda's financial emergency in September 2023.
+
+**Confidence / limit:** Medium-high as an inconsistency and inference, not conclusive proof. Huston expressly testified that he could not remember whether he specifically stated that foreclosure was pending, whether he discussed the mortgage, or the words either participant used. His email was sent to Beth Donner, not Natalie, and proves Huston's contemporaneous understanding rather than the exact contents of the call. The accurate mediation formulation is that Natalie's claimed lack of knowledge is difficult to reconcile with the call and contemporaneous record, not that Huston definitively proved he told her the foreclosure details.
+
+### 2. "Harsh" solicitation language versus Brynda's description
 
 **Complaint position:** Complaint paragraph 13 characterized Wes's letters as using "harsh language" about the default.
 **Competing evidence:** Brynda described Wes's letter as "very pleasant" and said it was the one that attracted her attention. Natalie was asked for the factual basis for "harsh language" and answered, "I don't know."
@@ -35,7 +49,7 @@ The lawful mediation framing is therefore: defendants have preserved potential s
 **Why it matters:** This is a clean mismatch between a pleaded characterization and the plaintiff's own description of the letter. It supports an argument that the original pleading used advocacy language that Natalie could not substantiate.
 **Confidence / limit:** High as to the inconsistency. It does not prove counsel lacked another basis for the wording.
 
-### 2. "Coerced" versus Natalie's admitted understanding of the word
+### 3. "Coerced" versus Natalie's admitted understanding of the word
 
 **Complaint position:** Complaint paragraphs 15 and 17 alleged Brynda was coerced into signing transaction documents.
 **Natalie's testimony:** Natalie said "coerced" meant "misled" in her mind. After seeing a definition involving force, threat, restraint, or domination, she acknowledged it "seem[ed] different." She did not know the time frame of the alleged yelling or domination and was not present for the transaction. When asked for supporting facts, she answered that she had none other than what Brynda told her and her interpretation of Brynda's deposition.
@@ -44,7 +58,7 @@ The lawful mediation framing is therefore: defendants have preserved potential s
 **Why it matters:** The verified pleading used a legally and factually stronger word than Natalie's stated understanding and firsthand knowledge supported.
 **Confidence / limit:** High that Natalie's basis was limited and partly semantic. Brynda's inability to recall is not affirmative proof that coercion did not occur, and Natalie's report of what Brynda told her remains potential evidence subject to admissibility and credibility issues.
 
-### 3. Intentional "guise" or trick versus no identified contemporaneous representation
+### 4. Intentional "guise" or trick versus no identified contemporaneous representation
 
 **Complaint position:** The complaint alleged defendants acted under a guise or pretense and that Brynda believed the transaction was a loan.
 **Natalie's testimony:** Natalie had seen nothing in writing indicating a loan; agreed the signed documents were inconsistent with a mere loan; did not recall Brynda using the exact alleged-loan words; said "we assumed" that was what Brynda meant; did not ask about a payment, interest rate, security, or note; and did not sit down with Brynda to review the documents during the six or seven weeks before suit. She ultimately acknowledged Brynda was wrong when Brynda said no sale occurred.
@@ -53,14 +67,14 @@ The lawful mediation framing is therefore: defendants have preserved potential s
 **Why it matters:** This is the strongest challenge to an intentional-deception theory. It separates Brynda's later confusion from proof of Wes's intent at signing.
 **Confidence / limit:** High that the investigation was incomplete and that Huston's testimony undercuts a categorical "loan only" account. It does not resolve whether Brynda understood the nature and effect of the specific Wes transaction in October 2023.
 
-### 4. Natalie's claim of a factual basis despite no firsthand transaction knowledge
+### 5. Natalie's claim of a factual basis despite no firsthand transaction knowledge
 
 **Natalie's testimony:** She did not know what happened between Wes's letters and execution, was not part of those events, and had no firsthand information about Wes's discussions with Brynda. Her opinion that Wes knew Brynda was mentally incapable was not based on being present, and she did not know when Wes learned of Brynda's reported phone-tapping concern.
 **Sources:** Natalie deposition 104:24-25, 105:1-15, 133:4-18.
 **Why it matters:** It limits Natalie's ability to establish Wes's state of mind or signing conduct from personal knowledge.
 **Confidence / limit:** High. Other witnesses, the signing video, documents, or circumstantial evidence may supply facts Natalie lacked.
 
-### 5. "Disinterested" guardian-ad-litem verification versus family benefit
+### 6. "Disinterested" guardian-ad-litem verification versus family benefit
 
 **Verified position:** Natalie's GAL petition stated under oath that she was a disinterested person fit to represent Brynda.
 **Competing evidence:** Natalie testified that the requested return of the property would benefit her two daughters under Brynda's will. She remained comfortable calling herself disinterested and had not considered an unrelated GAL.
@@ -68,7 +82,7 @@ The lawful mediation framing is therefore: defendants have preserved potential s
 **Why it matters:** This is a facial conflict worth attorney review concerning what "disinterested" meant in the petition and whether the familial testamentary benefit required disclosure or a different representative.
 **Confidence / limit:** Medium. "Disinterested" is a legal term; indirect family benefit does not automatically establish legal disqualification or dishonesty.
 
-### 6. Brynda allegedly made the litigation decision versus her limited understanding
+### 7. Brynda allegedly made the litigation decision versus her limited understanding
 
 **Natalie's position:** Natalie testified that Brynda made the decision to file the lawsuit.
 **Brynda's testimony:** Brynda did not remember reviewing the complaint, did not know why she sued Wes, did not understand the suit exactly, did not know that Buy Your Home was a defendant, and did not understand the coercion allegation. She said Natalie did "everything" for her in the lawsuit and that she stayed out of Natalie's way.
@@ -76,7 +90,7 @@ The lawful mediation framing is therefore: defendants have preserved potential s
 **Why it matters:** It supports careful examination of who authorized particular allegations and the continued prosecution of the case.
 **Confidence / limit:** High that the testimony is in tension. Brynda's deposition occurred later and shows substantial memory difficulty, so it does not prove she lacked understanding or authorization when the case was filed.
 
-### 7. Fear narrative versus contemporaneous cordial and assistance-related communications
+### 8. Fear narrative versus contemporaneous cordial and assistance-related communications
 
 **Natalie's testimony:** Natalie said Brynda was scared of Wes and did not want to be around him. Natalie admitted she personally observed nothing in Wes's communications or demeanor indicating that concern was legitimate.
 **Competing evidence:** In August and early September 2024, Brynda told Natalie that Wes was coming to paint, that Wes would take her to a medical appointment, and sent a cheerful "Good morning Wes and Jenny" message. Brynda also testified that Wes was her emergency contact and "just about the only person" she saw, ordered groceries, took her to the bank and doctors, and responded to a late-night plumbing issue.
@@ -84,13 +98,29 @@ The lawful mediation framing is therefore: defendants have preserved potential s
 **Why it matters:** It supplies contemporaneous evidence inconsistent with a simple, continuous fear-and-control narrative.
 **Confidence / limit:** Medium. A person can accept help while also feeling afraid, and the texts include later complaints that Wes had not checked on Brynda and got an appointment time wrong. This point should be used as credibility context, not as proof that fear was impossible.
 
+## Separate Evidentiary Weakness: Brynda's Prior Investor Meeting And Rejected Offer
+
+This point is not a discrepancy in Natalie's testimony. It is independently important because it bears on Brynda's understanding of a property sale and her reason for preferring a transaction that allowed her to remain in the home.
+
+**What occurred:** After receiving the September 2023 foreclosure notice, Brynda went to Kevin Huston's office with prospective investor Duane Wilson. Wilson explained that he wanted to purchase the property. Huston removed Wilson from the room so he could speak privately with Brynda. Huston testified that Brynda did not commit to Wilson's proposal. In the follow-up call, Wilson told Huston the purchase price was approximately $140,000.
+
+**Brynda's objective:** Huston testified that Brynda wanted to continue living in the property after a sale. Wilson discussed allowing her to remain for some undefined transition period. Huston later clarified that this was probably a few months while Brynda organized a move, not a concrete right to remain indefinitely. By comparison, the Wes transaction provided a five-year lease renewable at Brynda's discretion and rent based on the property-insurance cost.
+
+**Evidence of understanding:** Huston testified that Brynda understood Wilson was trying to purchase the house, understood that a sale would alleviate the foreclosure, and declined to commit to Wilson's proposal. This supports the defense argument that, shortly before contacting Wes, Brynda understood that an investor could buy the property while separately negotiating her continued possession. It also provides a rational explanation for choosing materially less cash in exchange for a substantially stronger right to remain in the home.
+
+**Sources:** Huston vol. I, 33:5-24, 34:1-24, 35:13-24, 36:1-25, 41:1-24, 42:1-21; Huston continued deposition, `26-02-10 - Huston Depo Transcript COND_VOL. II.pdf`, 138:16-25, 139:1-19, 143:20-25, 144:1-19, 153:1-25, 154:1-24, 155:1-10, 156:3-25, 157:1-16, 158:13-25, 159:1-17.
+
+**Why it matters:** Plaintiff's remaining undue-influence theory must account for Brynda independently consulting her attorney about a competing investor sale, understanding that selling would solve the foreclosure, and focusing on whether she could stay in the property. That sequence weakens a theory that the concepts of sale and continued possession were wholly foreign to her when she later dealt with Wes.
+
+**Confidence / limit:** High that the meeting occurred, Wilson was proposing a purchase, the later stated price was approximately $140,000, and Brynda wanted to remain in the home. Medium as to why she rejected or did not accept the offer. Huston did not testify that Brynda expressly said, "I reject $140,000 because I want to stay." He testified that she did not commit, wanted to remain for a while, and understood the sale concept. He also believed she had diminished capacity, noted that she may have thought Wilson's offer was $200,000, and did not know the full terms of Wilson's proposal. The safe formulation is that the evidence supports the inference that continued possession materially influenced her decision, not that her precise reason for rejection is conclusively established.
+
 ## Delayed Or Failed Intervention Timeline
 
 | Date / period | What Natalie knew or should be investigated | Action or inaction | Source | Assessment |
 | --- | --- | --- | --- | --- |
 | Late 2019 to Sept. 2024 | Brynda lived alone in North Carolina. | Natalie made no visit during this period; Brynda also did not visit Natalie. | Natalie dep. 40:5-24, 41:1-10; 12:16-23. | Strong evidence of distance, not legal neglect. |
 | Nov. 2022 to filing | Phone records requested for the relevant period reflected very limited calls; Natalie produced no letters, emails, birthday, Mother's Day, or holiday cards. | Contact was limited, though texts existed and the exact call count should be proven through Exhibits 9A/9B. | Natalie dep. 10:10-25, 11:1-18, 42:1-18, 43:1-24, 44:1-22. | Useful credibility context. Avoid saying "only two calls" until the actual phone exhibits are tabulated. |
-| Sept. 25, 2023 | Huston met Brynda about foreclosure and Duane Wilson's offer, then contacted Natalie. His contemporaneous email said Natalie was willing to help financially. | No documented follow-up financial intervention appears in the reviewed record. | Huston vol. I 33:5-24, 34:10-24; Huston vol. II 132:9-25, 133:1-24; `25-09-12 EMail from Huston to Beth Donner Exhibit 15...pdf`. | Strong but qualified: Huston cannot specifically recall saying "foreclosure" or mortgage, and does not know whether Natalie later provided help. |
+| Sept. 25, 2023 | Huston met Brynda about foreclosure and Duane Wilson's offer, then contacted Natalie. His contemporaneous email said Natalie was willing to help financially and described the foreclosure proceedings. | No documented follow-up financial intervention appears in the reviewed record. Natalie later testified that she first learned of the foreclosure in summer 2024. | Natalie dep. 54:12-24, 59:9-24; Huston vol. I 33:5-24, 34:10-24; Huston vol. II 132:9-25, 133:1-24, 134:16-24, 135:1-16; `25-09-12 EMail from Huston to Beth Donner Exhibit 15...pdf`. | Central credibility discrepancy, but qualified: Huston cannot specifically recall saying "foreclosure" or mortgage, and does not know whether Natalie later provided help. |
 | Oct.-Nov. 2023 | Foreclosure proceeded and the sale/leaseback was signed. | Natalie says she knew nothing about the foreclosure then and cannot recall her last prior conversation with Brynda. | Natalie dep. 54:12-24, 59:9-24, 60:1-9. | Supports delayed awareness; does not prove a duty to investigate. |
 | Late July/Aug. 2024 | Frances contacted Natalie about Brynda's living conditions and the sale/foreclosure situation. | Natalie began communicating more and offered to pay Dayton to help a few days per week. | Natalie dep. 54:18-25, 55:1-24, 56:1-14; Exhibit 21, PDF pp. 3-4. | Shows intervention began after third-party notice; include the offered help to avoid one-sided presentation. |
 | Sept. 14-30, 2024 | Natalie made two visits, saw the house, and located transaction documents. | Natalie initiated Brynda's move to Maryland. During the last visit, she texted Wes from Brynda's phone so he would not know Brynda was away. | Natalie dep. 12:16-25, 13:1-3, 82:18-25, 83:1-17, 84:1-24. | Supports a rapid transition from discovery to relocation, not necessarily wrongful concealment. |
@@ -216,4 +246,4 @@ Avoid:
 
 ## Bottom Line
 
-The mediation record supports substantial pressure through precise, counsel-reviewed facts: weak pre-suit investigation of several allegations, Natalie's lack of firsthand knowledge, conflicts between complaint language and deposition testimony, delayed family involvement, and dismissal of most claims. It does not yet support a safe assertion of perjury, fraud, malicious prosecution, abuse of process, or guaranteed fee recovery. The strongest immediate leverage is a documented request for final peace that expressly preserves statutory fee and sanction remedies while avoiding personal accusations or threats.
+The mediation record supports substantial pressure through precise, counsel-reviewed facts: Natalie's claimed lack of foreclosure knowledge is difficult to reconcile with Huston's September 2023 contact and contemporaneous record; Brynda independently consulted her attorney about another investor's approximately $140,000 purchase proposal, understood that selling could resolve the foreclosure, and prioritized remaining in the property; several allegations received weak pre-suit investigation; Natalie lacked firsthand transaction knowledge; complaint language conflicts with deposition testimony; family intervention was delayed; and most claims were dismissed in the proposed order. It does not yet support a safe assertion of perjury, fraud, malicious prosecution, abuse of process, or guaranteed fee recovery. The strongest immediate leverage is a documented request for final peace that expressly preserves statutory fee and sanction remedies while avoiding personal accusations or threats.
