@@ -48,7 +48,7 @@ Do not copy archived Teams files back into Git unless Wes explicitly identifies 
 | `sources\email\2026-07-27-*` | `Source Documents\2026-07-28 Josh Kennedy Time Card\email` | 3 | 5,887 | routed Time Card sources |
 | Generated July 31 draft PDF and render preview | `Generated\2026-07-28-JK` | 2 | 155,290 | generated invoice working files |
 | Regenerated week-ending July 24 worker-verified PDFs and render previews | `Generated\2026-07-28-JK-Week24-Final` | 4 | 470,429 | generated final-status invoice working files |
-| Atlantic Discount Flooring invoice `001521` routed sources | `Source Documents\2026-07-28 Atlantic Discount Flooring 001521\email` | 3 | 4,988 | routed invoice and payment-confirmation sources |
+| Atlantic Discount Flooring invoice `001521` routed sources | `Source Documents\2026-07-28 Atlantic Discount Flooring 001521\email` | 5 | 8,224 | routed duplicate invoice and payment-confirmation sources |
 | Atlantic Discount Flooring invoice `001521` PDF | `Source Documents\2026-07-28 Atlantic Discount Flooring 001521\invoice` | 1 | 51,959 | authoritative downloaded Square invoice |
 
 The files were copied, verified by file count and byte total, and removed from the Admin wiki working tree.
