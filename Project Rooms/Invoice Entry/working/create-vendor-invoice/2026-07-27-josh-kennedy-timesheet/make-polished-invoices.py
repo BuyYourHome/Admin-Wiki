@@ -70,7 +70,7 @@ def build_invoice(data):
             [
                 Paragraph("Buy Your Home", styles["TitleLeft"]),
                 Paragraph(
-                    "<b>INVOICE</b><br/>Worker verified<br/>Not approved for payment",
+                    "<b>INVOICE DRAFT</b><br/>For Time Card processing<br/>Not approved for payment",
                     ParagraphStyle(
                         "HeaderRight",
                         parent=styles["Normal"],
@@ -99,8 +99,8 @@ def build_invoice(data):
     status = Table(
         [
             [
-                Paragraph("<b>Status:</b> Worker Verified - Awaiting Payment Approval", styles["Body"]),
-                Paragraph("<b>Invoice Date:</b> July 24, 2026", styles["Body"]),
+                Paragraph("<b>Status:</b> Draft generated from routed timesheet", styles["Body"]),
+                Paragraph("<b>Draft Date:</b> July 27, 2026", styles["Body"]),
             ]
         ],
         colWidths=[4.3 * inch, 2.65 * inch],
@@ -201,7 +201,7 @@ def build_invoice(data):
     story.append(Spacer(1, 0.18 * inch))
 
     totals = Table(
-        [["Subtotal", money(data["amount"])], ["Tax", money(0.00)], ["Invoice Total", money(data["amount"])]],
+        [["Subtotal", money(data["amount"])], ["Tax", money(0.00)], ["Draft Total", money(data["amount"])]],
         colWidths=[1.45 * inch, 1.2 * inch],
         hAlign="RIGHT",
     )
@@ -226,18 +226,17 @@ def build_invoice(data):
         [
             [
                 Paragraph(
-                    "This invoice was generated from routed timesheet emails and verified by Josh Kennedy on "
-                    "July 27, 2026. It is not approved for payment and is not posted to any project spreadsheet.",
+                    "This draft was generated from a routed timesheet email. It is not approved for payment, "
+                    "not vendor-verified, and not posted to any project spreadsheet.",
                     styles["Body"],
                 )
             ],
             [
                 Paragraph(
-                    "Sources: C:\\Codex\\Wiki Files\\Project Rooms\\Invoice Entry\\sources\\email\\2026-07-20-204307-josh-kennedy-timesheet.md; "
-                    "C:\\Codex\\Wiki Files\\Project Rooms\\Invoice Entry\\sources\\email\\2026-07-21-213901-josh-kennedy-timesheet-2026-07-21.md; "
-                    "C:\\Codex\\Wiki Files\\Project Rooms\\Invoice Entry\\sources\\email\\2026-07-22-214447-josh-kennedy-time-card-update.md; "
-                    "C:\\Codex\\Wiki Files\\Project Rooms\\Invoice Entry\\sources\\email\\2026-07-23-210720-josh-kennedy-time-card-update.md; "
-                    "2026-07-24 Email Monitor handoff, Outlook message id ending CfHtzpwAAAA==",
+                    "Source archive: Invoice Entry Working Archive\\Source Documents\\"
+                    "2026-07-28 Josh Kennedy Time Card\\email\\"
+                    "2026-07-27-182415-josh-kennedy-time-card-update.md; "
+                    "Outlook message id ending CfptscgAAAA==",
                     styles["Muted"],
                 )
             ],
@@ -264,66 +263,20 @@ def build_invoice(data):
 
 invoices = [
     {
-        "file_name": "26-07-24 - Josh Kennedy - Time Card - BackOffice - Week Ending 2026-07-24.pdf",
-        "title": "Josh Kennedy BackOffice Time Card Invoice Draft",
-        "invoice_no": "TC-JK-20260724-BACKOFFICE-001",
-        "project": "BackOffice",
-        "subtitle": "Onboarding and procedures",
-        "lines": [
-            {
-                "date": "2026-07-20",
-                "description": "Back-office onboarding, account setup, and rules/procedures review.",
-                "hours": 4.0,
-                "amount": 125.00,
-            },
-            {
-                "date": "2026-07-21",
-                "description": "BackOffice work from 1:00 P.M. to 4:45 P.M.",
-                "hours": 3.75,
-                "amount": 117.19,
-            },
-        ],
-        "amount": 242.19,
-    },
-    {
-        "file_name": "26-07-24 - Josh Kennedy - Time Card - 4121 Tensity Dr - Week Ending 2026-07-24.pdf",
+        "file_name": "26-07-31 - Josh Kennedy - Time Card - Week Ending 2026-07-31.pdf",
         "title": "Josh Kennedy Tensity Time Card Invoice Draft",
-        "invoice_no": "TC-JK-20260724-TENSITY-001",
+        "invoice_no": "TC-JK-20260731-TENSITY-001",
         "project": "24-HM - 4121 Tensity Dr",
         "subtitle": "Property work",
         "lines": [
             {
-                "date": "2026-07-20",
-                "description": "4121 Tensity Dr property walkthrough and review of planned changes/responsibilities.",
-                "hours": 2.75,
-                "amount": 85.94,
-            },
-            {
-                "date": "2026-07-21",
-                "description": "4121 Tensity Dr work from 7:50 A.M. to 1:00 P.M.",
-                "hours": 5.1667,
-                "amount": 161.46,
-            },
-            {
-                "date": "2026-07-22",
-                "description": "4121 Tensity Dr work from 6:45 A.M. to 3:30 P.M., followed by a Lowe's supply pickup in Cary from 3:30 P.M. to 3:50 P.M.",
-                "hours": 9.0833,
-                "amount": 283.85,
-            },
-            {
-                "date": "2026-07-23",
-                "description": "4121 Tensity Dr work from 6:50 A.M. to 4:55 P.M.",
-                "hours": 10.0833,
-                "amount": 315.10,
-            },
-            {
-                "date": "2026-07-24",
-                "description": "4121 Tensity Dr work from 6:45 A.M. to 5:05 P.M.",
-                "hours": 10.3333,
-                "amount": 322.92,
+                "date": "2026-07-27",
+                "description": "Project supply pickup at Lowe's from 6:30 A.M. to approximately 6:45 A.M., followed by work at 4121 Tensity Dr until 5:30 P.M.",
+                "hours": 11.0,
+                "amount": 343.75,
             },
         ],
-        "amount": 1169.27,
+        "amount": 343.75,
     },
 ]
 

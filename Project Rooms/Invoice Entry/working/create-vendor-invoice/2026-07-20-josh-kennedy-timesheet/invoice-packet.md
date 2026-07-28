@@ -2,7 +2,7 @@
 
 ## Packet Status
 
-- Status: `July 24 final Time Card package sent and verified - Josh approval pending - Teams filing and spreadsheet posting held`
+- Status: `Josh verified the July 24 times as correct - Tensity PDF filed - payment approval and spreadsheet placement remain pending`
 - Workflow: `Time Card`, calling `Create Vendor Invoice` for invoice document creation
 - Created: 2026-07-20
 - Source type: Routed free-text timesheet emails; no invoice attachments.
@@ -72,8 +72,8 @@ Current invoice totals:
 
 | Draft | Path |
 | --- | --- |
-| BackOffice invoice PDF | `C:\Codex\Wiki Files\Project Rooms\Invoice Entry\working\create-vendor-invoice\2026-07-20-josh-kennedy-timesheet\26-07-24 - Josh Kennedy - Time Card - BackOffice - Week Ending 2026-07-24.pdf` |
-| Tensity invoice PDF | `C:\Codex\Wiki Files\Project Rooms\Invoice Entry\working\create-vendor-invoice\2026-07-20-josh-kennedy-timesheet\26-07-24 - Josh Kennedy - Time Card - 4121 Tensity Dr - Week Ending 2026-07-24.pdf` |
+| BackOffice invoice PDF archive | `C:\Users\wesbr\Buy Your Home\Buy Your Home - Office Admin\Scanned Files\Invoice Entry Working Archive\Generated\2026-07-28-JK-Week24-Final\26-07-24 - Josh Kennedy - Time Card - BackOffice - Week Ending 2026-07-24.pdf` |
+| Tensity invoice PDF archive | `C:\Users\wesbr\Buy Your Home\Buy Your Home - Office Admin\Scanned Files\Invoice Entry Working Archive\Generated\2026-07-28-JK-Week24-Final\26-07-24 - Josh Kennedy - Time Card - 4121 Tensity Dr - Week Ending 2026-07-24.pdf` |
 
 ## Duplicate Check
 
@@ -96,7 +96,10 @@ No workbook duplicate check was performed because destination worksheet/expense 
 - The July 23 amendment was sent and verified through Email Monitor's Email Delivery workflow on `2026-07-24T01:22:41Z`. Sent message id: `AQMkADZkMGMwNDI3LWU5ZjctNDgzMC1iMjdkLTY0NmRiN2IwNmIyZgBGAAADKGOvWJYjX0aEKaRpd0MYQQcAVSXargQY20aF7RLCkro4ggAAAgEJAAAAVSXargQY20aF7RLCkro4ggACfHr4WAAAAA==`. OfficeAssist sender, Josh recipient, Wes and Jenny CCs, subject, and PDF attachment were verified in Sent Items.
 - The July 24 Friday amendment is the final weekly draft. Email Monitor sent and verified it at `2026-07-24T23:23:40Z` using the unchanged weekly subject. Sent message id: `AQMkADZkMGMwNDI3LWU5ZjctNDgzMC1iMjdkLTY0NmRiN2IwNmIyZgBGAAADKGOvWJYjX0aEKaRpd0MYQQcAVSXargQY20aF7RLCkro4ggAAAgEJAAAAVSXargQY20aF7RLCkro4ggACfHr4XwAAAA==`.
 - OfficeAssist Sent Items verification confirmed Josh as recipient, Wes and Jenny as CC recipients, and the combined PDF attachment as `application/pdf`, 6,325 bytes, not inline.
-- No invoice was filed into a Teams project folder and no workbook was edited because Josh has not yet approved the final revised package.
+- Josh confirmed `The times are correct` on `2026-07-27T22:26:13Z`. This is worker accuracy verification, not payment approval.
+- Regenerated both invoices with status `Worker Verified - Awaiting Payment Approval` and visually validated both pages.
+- Filed the project-specific Tensity invoice as `Property/24-HM - 4121 Tensity Dr/Owning/Invoices/26-07-24 - Josh Kennedy - Time Card - Week Ending 2026-07-24.pdf`. SharePoint item id: `01ZGFUBDP3ODEAUCMMWFELFLKE57BPISFX`; verified size: 3,703 bytes.
+- No workbook was edited because destination placement remains unresolved. Payment approval was not inferred from Josh's verification.
 - Tensity workbook candidate: `Property/24_Project Management - 4121 Tensity Dr 2.xlsm`.
 - Tensity spreadsheet insertion remains held until Wes confirms the destination worksheet or approved placement path.
 - BackOffice accounting/spreadsheet path remains held until Wes confirms where BackOffice Time Card invoices should be recorded.

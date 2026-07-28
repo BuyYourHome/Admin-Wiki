@@ -100,3 +100,16 @@
 - Email Monitor returned `Sent and Verified`: OfficeAssist sent the final package at `2026-07-24T23:23:40Z`. Sent message id: `AQMkADZkMGMwNDI3LWU5ZjctNDgzMC1iMjdkLTY0NmRiN2IwNmIyZgBGAAADKGOvWJYjX0aEKaRpd0MYQQcAVSXargQY20aF7RLCkro4ggAAAgEJAAAAVSXargQY20aF7RLCkro4ggACfHr4XwAAAA==`.
 - Sent Items verification confirmed OfficeAssist as sender, Josh as recipient, Wes and Jenny as CC recipients, the unchanged weekly subject, and the required combined PDF (`application/pdf`, 6,325 bytes, not inline).
 - Teams filing and project workbook insertion remain held until Josh approves the final package.
+
+## 2026-07-27 - Prior Week Verification
+
+- Received Josh Kennedy's response `The times are correct` in routed source `2026-07-27-182613-josh-kennedy-time-card-approval.md`.
+- Applied the response only to the week-ending 2026-07-24 package.
+- Recorded the package as worker-verified for accuracy.
+- Did not treat the response as approval to pay.
+- The blank reply `2026-07-27-182435-josh-kennedy-blank-time-card-reply.md` contains no new content and was preserved as traceability only.
+- Duplicate-checked `Property/24-HM - 4121 Tensity Dr/Owning/Invoices`; no matching Josh week-ending 2026-07-24 invoice existed.
+- Regenerated both invoices with the accurate stage label `Worker Verified - Awaiting Payment Approval`, then rendered and visually inspected both pages.
+- Filed the Tensity invoice to `Property/24-HM - 4121 Tensity Dr/Owning/Invoices/26-07-24 - Josh Kennedy - Time Card - Week Ending 2026-07-24.pdf` and verified the resulting 3,703-byte SharePoint item.
+- Archived the regenerated PDFs and render previews under `Invoice Entry Working Archive\Generated\2026-07-28-JK-Week24-Final` after verifying 4 files totaling 470,429 bytes.
+- Spreadsheet insertion remains held because the destination worksheet or approved expense-placement path is unresolved.

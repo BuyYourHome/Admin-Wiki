@@ -254,3 +254,16 @@ Lessons:
 - Before replacing a project-folder PDF, confirm the replacement PDF is the current generated stage, then record the local project-folder path in the packet and processing log.
 - For Outlook connector sends with attachments, pass `attachment_files` as a list of absolute paths on the first attempt. If a schema retry is needed, make only the allowed schema-correct retry and record the send/verification result.
 - After any sent Create Vendor Invoice email, verify the OfficeAssist Sent Items copy for sender, recipients, copied recipients, subject, attachment flag, and timestamp before marking the email step complete.
+
+## 2026-07-28 - Time Card Week Rollover And Verification
+
+Context: Josh Kennedy sent a new Monday time line, a blank reply, and a separate accuracy confirmation for the prior week's invoice thread.
+
+Lessons:
+
+- Separate new-week time from prior-week verification even when both arrive in replies to the prior week's email subject. Use the worked date and week-ending date, not the reply-thread subject alone.
+- A blank reply with only quoted history is traceability evidence, not a new time line or approval.
+- Worker wording such as `The times are correct` verifies invoice accuracy but does not authorize payment.
+- After worker verification of the final weekly package, file only the project-specific invoice whose Teams folder is known. Keep BackOffice filing and workbook insertion held when their approved destinations are unresolved.
+- For Time Card email delivery, pass `attachment_files` as a one-item absolute-path list on the first Email Monitor connector attempt; a plain string repeats a known argument-binding failure.
+- After each daily Time Card delivery, archive routed source copies and generated PDF/render files only after file-count and byte-total verification, while retaining the structured packet and processing log needed for weekly accumulation.

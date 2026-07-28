@@ -1,4 +1,4 @@
-# Josh Kennedy Time Card Invoice Drafts
+# Josh Kennedy Time Card Invoices - Week Ending 2026-07-24
 
 Generated from routed Time Card-relevant sources:
 
@@ -12,9 +12,9 @@ Generated from routed Time Card-relevant sources:
 
 Email Monitor handoff for Outlook message `AQMkADZkMGMwNDI3LWU5ZjctNDgzMC1iMjdkLTY0NmRiN2IwNmIyZgBGAAADKGOvWJYjX0aEKaRpd0MYQQcAVSXargQY20aF7RLCkro4ggAAAgEMAAAAVSXargQY20aF7RLCkro4ggACfHtzpwAAAA==`
 
-These drafts are not approved for payment and are not posted to any project spreadsheet.
+Josh Kennedy verified the times as correct on 2026-07-27. These invoices are not approved for payment and are not posted to any project spreadsheet. The Tensity PDF is filed in the project's Teams `Owning\Invoices` folder; BackOffice filing remains held.
 
-## BackOffice Draft
+## BackOffice Invoice
 
 | Field | Value |
 | --- | --- |
@@ -26,8 +26,9 @@ These drafts are not approved for payment and are not posted to any project spre
 | Hours | 7.75 |
 | Rate | $31.25 |
 | Amount | $242.19 |
+| Status | Worker Verified - Awaiting Payment Approval; filing destination unresolved |
 
-## Tensity Draft
+## Tensity Invoice
 
 | Field | Value |
 | --- | --- |
@@ -39,3 +40,4 @@ These drafts are not approved for payment and are not posted to any project spre
 | Hours | 37.42 |
 | Rate | $31.25 |
 | Amount | $1,169.27 |
+| Status | Worker Verified - Awaiting Payment Approval; filed to Teams; spreadsheet placement unresolved |
