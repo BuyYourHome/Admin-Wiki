@@ -267,3 +267,13 @@ Lessons:
 - After worker verification of the final weekly package, file only the project-specific invoice whose Teams folder is known. Keep BackOffice filing and workbook insertion held when their approved destinations are unresolved.
 - For Time Card email delivery, pass `attachment_files` as a one-item absolute-path list on the first Email Monitor connector attempt; a plain string repeats a known argument-binding failure.
 - After each daily Time Card delivery, archive routed source copies and generated PDF/render files only after file-count and byte-total verification, while retaining the structured packet and processing log needed for weekly accumulation.
+
+## 2026-07-28 - Square Invoice Link Without Attachment
+
+Context: Email Monitor routed duplicate Square invoice notices and a paid confirmation that reported no Outlook attachments.
+
+Lessons:
+
+- A Square invoice email can contain a usable invoice-PDF download link even when Outlook reports no attachment. Retrieve and validate that PDF from the preserved direct message before treating the invoice document as unavailable.
+- Consolidate repeated invoice notices and later payment confirmations by vendor plus invoice number. The payment confirmation updates the one invoice record and must not create another invoice row.
+- Product category and a vendor's prior project history do not establish the current project. If the invoice and routed messages omit the property, PO, and job name, hold filing and workbook insertion for project assignment.
