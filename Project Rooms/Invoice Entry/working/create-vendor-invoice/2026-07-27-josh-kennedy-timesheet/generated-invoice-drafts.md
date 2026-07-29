@@ -12,6 +12,13 @@
 - Amount: `$343.75`
 - Status: Draft for worker verification; not approved for payment and not posted.
 
+Pending source not yet included:
+
+- Work date: `2026-07-28`
+- Project: `24-HM - 4121 Tensity Dr`
+- Known detail: started at `6:00 A.M.`
+- Hold reason: end time or total hours is missing.
+
 Source:
 
 `C:\Users\wesbr\Buy Your Home\Buy Your Home - Office Admin\Scanned Files\Invoice Entry Working Archive\Source Documents\2026-07-28 Josh Kennedy Time Card\email\2026-07-27-182415-josh-kennedy-time-card-update.md`

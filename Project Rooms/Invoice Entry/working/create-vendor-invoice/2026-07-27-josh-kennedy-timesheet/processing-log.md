@@ -17,3 +17,13 @@
 - Sent Items verification confirmed the exact weekly subject and the 3,296-byte PDF attachment.
 - Archived the three routed source messages and this run's generated PDF/render under the Invoice Entry Working Archive after file-count and byte-total verification.
 - Teams filing and workbook insertion remain held because this is an in-week draft.
+
+## 2026-07-28
+
+- Received Email Monitor handoff for Outlook message id ending `CfptsegAAAA==`.
+- Fetched the referenced message and confirmed the complete body reports only a 6:00 A.M. start at 4121 Tensity Rd.
+- Used the email received date as the work date, 2026-07-28.
+- Held the line because the message gives no end time or total hours.
+- Did not infer hours, calculate an amount, regenerate the PDF, or send an inaccurate replacement invoice.
+- Preserved the Outlook message id and link through the source inventory and weekly packet.
+- The current invoice remains 11.00 hours and `$343.75`, pending the missing July 28 duration.
