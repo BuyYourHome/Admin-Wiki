@@ -52,3 +52,12 @@ Do not copy archived Teams files back into Git unless Wes explicitly identifies 
 | Atlantic Discount Flooring invoice `001521` PDF | `Source Documents\2026-07-28 Atlantic Discount Flooring 001521\invoice` | 1 | 51,959 | authoritative downloaded Square invoice |
 
 The files were copied, verified by file count and byte total, and removed from the Admin wiki working tree.
+
+## Cleanup Recorded 2026-07-29
+
+| Local source under `Project Rooms\Invoice Entry` | Teams destination under `Invoice Entry Working Archive` | Files | Bytes | Category |
+| --- | --- | ---: | ---: | --- |
+| `working\create-vendor-invoice\2026-07-20-josh-kennedy-timesheet\approval-2026-07-29` | `Generated\2026-07-29-JK-Week24-Approval` | 12 | 3,938,996 | approved PDFs, workbook rollback/validation copies, render evidence, and run scripts |
+| `sources\email\2026-07-29-135616-wes-approval-josh-time-card-week-ending-2026-07-24.md` | `Source Documents\2026-07-29 Josh Kennedy Time Card Approval\email` | 1 | 1,903 | routed Wes approval source |
+
+The files were moved after destination, file-count, and byte-total verification. The authoritative Outlook message id and durable processing outcome remain in the packet and source inventory.

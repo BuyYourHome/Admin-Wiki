@@ -113,3 +113,18 @@
 - Filed the Tensity invoice to `Property/24-HM - 4121 Tensity Dr/Owning/Invoices/26-07-24 - Josh Kennedy - Time Card - Week Ending 2026-07-24.pdf` and verified the resulting 3,703-byte SharePoint item.
 - Archived the regenerated PDFs and render previews under `Invoice Entry Working Archive\Generated\2026-07-28-JK-Week24-Final` after verifying 4 files totaling 470,429 bytes.
 - Spreadsheet insertion remains held because the destination worksheet or approved expense-placement path is unresolved.
+
+## 2026-07-29 - Wes Approval And Final Processing
+
+- Received Wes's approval source for the week-ending 2026-07-24 Josh Kennedy package. Validated the worker, week, invoice numbers, BackOffice `7.75` hours / `$242.19`, and Tensity `37.42` hours / `$1,169.27`.
+- Treated Josh's accuracy verification and Wes's approval as separate completed gates. Did not mark either invoice paid.
+- Regenerated both PDFs from the accumulated time-card data with status `Worker verified / Approved by Wes` and `Approved by Wes - Ready for Payment`; rendered and visually validated both pages.
+- Created the authorized SharePoint folder `Office Admin/Invoices & Receipts` because it did not yet exist, then filed the BackOffice PDF there.
+- Replaced the Tensity PDF in `Property/24-HM - 4121 Tensity Dr/Owning/Invoices` with the approved-status version.
+- Retrieved a fresh copy of `Property/24_Project Management - 4121 Tensity Dr 2.xlsm` and created a rollback copy before editing.
+- Duplicate check found no invoice-number match for `TC-JK-20260724-TENSITY-001`.
+- Added Review Row ID `IE-20260729-JOSH-TC-JK-20260724-TENSITY-001` to `tblInvoiceReview`. Left `Destination Worksheet` blank and set `Status` to `Needs Review` because Labor has no approved Vendor Tabs destination.
+- Saved through Excel and reopened cleanly. The Review table remained `A4:P19`; `invoiceEntryReviewRequest` remained `=Review!$B$1`; all 30,564 formula cells and 19 pre-existing formula-error cells matched their pre-edit fingerprints; no workbook links or external-link parts were introduced.
+- Replaced the same SharePoint workbook and verified the round-trip SHA-256 matched the edited local file: `789295CF22FF5D1A53B1736310C2F8389BBFD6F523B3D3FB399820D0595DDCC9`.
+- Email Monitor completed delivery request `IE-EMAIL-20260729-JOSH-TIMECARD-APPROVED-001` at `2026-07-29T20:27:10Z`. OfficeAssist Sent Items verified Josh as recipient, Wes and Jenny as CC recipients, the unchanged weekly subject, and both approved PDFs.
+- Archived 12 approval-run files totaling 3,938,996 bytes and the 1,903-byte routed approval source under the Invoice Entry Working Archive after verification.

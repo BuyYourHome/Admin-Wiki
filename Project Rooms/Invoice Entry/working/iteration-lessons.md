@@ -290,3 +290,7 @@ Lessons:
 - File project-specific invoices in the applicable Teams project `Invoices` folder. File the BackOffice invoice in Teams `Office Admin/Invoices & Receipts`.
 - Maintain a project-spreadsheet register as a lookup aid, but verify the current workbook at the SharePoint `Property` root before every edit.
 - Keep Invoice Entry responsible for the register until Wes explicitly transfers ownership to a named Project PR or workflow.
+- After Wes approval, regenerate final PDFs from accumulated source data so the documents show the current approval stage; do not reuse a worker-verification PDF.
+- If an approved project cost has no approved Vendor Tabs destination, add it to the project's Review table with a stable Review Row ID, blank `Destination Worksheet`, and `Needs Review`. Do not guess a tab.
+- For large macro-enabled workbooks, use Excel's native `Find` for targeted duplicate checks and package-level formula/error fingerprints for integrity validation. A cell-by-cell COM scan can time out without adding confidence.
+- If the authorized BackOffice filing folder does not exist, verify the exact SharePoint parent and create only `Office Admin/Invoices & Receipts`.

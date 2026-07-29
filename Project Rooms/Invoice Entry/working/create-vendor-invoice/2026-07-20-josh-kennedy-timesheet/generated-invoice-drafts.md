@@ -12,7 +12,7 @@ Generated from routed Time Card-relevant sources:
 
 Email Monitor handoff for Outlook message `AQMkADZkMGMwNDI3LWU5ZjctNDgzMC1iMjdkLTY0NmRiN2IwNmIyZgBGAAADKGOvWJYjX0aEKaRpd0MYQQcAVSXargQY20aF7RLCkro4ggAAAgEMAAAAVSXargQY20aF7RLCkro4ggACfHtzpwAAAA==`
 
-Josh Kennedy verified the times as correct on 2026-07-27. These invoices are not approved for payment and are not posted to any project spreadsheet. The Tensity PDF is filed in the project's Teams `Owning\Invoices` folder; BackOffice filing remains held.
+Josh Kennedy verified the times as correct on 2026-07-27. Wes approved the exact package on 2026-07-29. Both approved-status PDFs are filed, but approval does not indicate payment. The Tensity invoice is in the project workbook Review table pending selection of an approved Labor destination worksheet.
 
 ## BackOffice Invoice
 
@@ -26,7 +26,7 @@ Josh Kennedy verified the times as correct on 2026-07-27. These invoices are not
 | Hours | 7.75 |
 | Rate | $31.25 |
 | Amount | $242.19 |
-| Status | Worker Verified - Awaiting Payment Approval; filing destination unresolved |
+| Status | Approved by Wes - Ready for Payment; filed in `Office Admin/Invoices & Receipts` |
 
 ## Tensity Invoice
 
@@ -40,4 +40,4 @@ Josh Kennedy verified the times as correct on 2026-07-27. These invoices are not
 | Hours | 37.42 |
 | Rate | $31.25 |
 | Amount | $1,169.27 |
-| Status | Worker Verified - Awaiting Payment Approval; filed to Teams; spreadsheet placement unresolved |
+| Status | Approved by Wes - Ready for Payment; filed to Teams; routed to project Review with status `Needs Review` |
