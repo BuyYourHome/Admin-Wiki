@@ -277,3 +277,16 @@ Lessons:
 - A Square invoice email can contain a usable invoice-PDF download link even when Outlook reports no attachment. Retrieve and validate that PDF from the preserved direct message before treating the invoice document as unavailable.
 - Consolidate repeated invoice notices and later payment confirmations by vendor plus invoice number. The payment confirmation updates the one invoice record and must not create another invoice row.
 - Product category and a vendor's prior project history do not establish the current project. If the invoice and routed messages omit the property, PO, and job name, hold filing and workbook insertion for project assignment.
+
+## 2026-07-29 - Time Card Final Approval And Workbook Routing
+
+Context: Josh's weekly Time Card process needed a clear boundary between his accuracy verification and Wes's authorization to file and post the invoices.
+
+Lessons:
+
+- Treat worker accuracy verification and Wes approval as separate gates. Worker verification changes the package to `Worker Verified - Awaiting Wes Approval`; it does not authorize Teams filing or project-spreadsheet insertion.
+- After worker verification, route the complete weekly package to Wes for approval and copy Jenny through Email Monitor's Email Delivery workflow.
+- Only Wes approval authorizes final filing and spreadsheet processing.
+- File project-specific invoices in the applicable Teams project `Invoices` folder. File the BackOffice invoice in Teams `Office Admin/Invoices & Receipts`.
+- Maintain a project-spreadsheet register as a lookup aid, but verify the current workbook at the SharePoint `Property` root before every edit.
+- Keep Invoice Entry responsible for the register until Wes explicitly transfers ownership to a named Project PR or workflow.

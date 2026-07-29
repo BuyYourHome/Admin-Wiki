@@ -162,7 +162,8 @@ Weekly accumulation:
 3. After each regeneration, route the replacement invoice through Email Monitor's Email Delivery workflow to the original sender for approval, copying `WesWill@BuyYourHomeLLC.com` and `Jenny@BuyYourHomeLLC.com`. Invoice Entry does not send email directly.
 4. Continue replacing the current weekly draft as additional accepted time arrives. Preserve the worker, week-ending date, project allocation, invoice date, invoice number, hourly rate, source-email traceability, duplicate decisions, delivery evidence, and approval response for every revision.
 5. During the week, do not copy draft invoices to Teams or insert them into project workbooks.
-6. At the end of the week, after the final Time Card email has been processed and the invoices have been approved, copy each project-specific invoice to the appropriate Teams project folder and insert it into the appropriate project workbook under the normal duplicate-check, traceability, and validation rules.
+6. At the end of the week, after the final Time Card email has been processed, obtain the worker's accuracy approval and then Wes's separate final approval. Do not file or post the invoices until both gates are complete.
+7. After Wes approves, copy each project-specific invoice to the appropriate Teams project folder and insert it into the appropriate project workbook under the normal duplicate-check, traceability, and validation rules.
 
 - Accumulate Time Card emails by worker/vendor and work week.
 - Maintain one weekly invoice per worker/vendor for that week.
@@ -170,7 +171,10 @@ Weekly accumulation:
 - Call Create Vendor Invoice to create or regenerate the weekly invoice document from the accumulated Time Card source lines after each new Time Card handoff.
 - Time Card owns accumulation, project/time splitting, known-rate application, and spreadsheet/Teams placement; Create Vendor Invoice owns the formal invoice document generation using the established polished invoice template.
 - Every time a Time Card email is processed, amend the current weekly project/BackOffice invoice drafts and prepare the accuracy-verification email package using the Create Vendor Invoice rules. Set To to the Time Card sender, copy `WesWill@BuyYourHomeLLC.com` and `Jenny@BuyYourHomeLLC.com`, sign as `Jean Wright`, attach the amended invoice PDFs, and hand the package to Email Monitor's Email Delivery mode. Preserve the handoff, verified sent-email evidence, and verification response as source evidence.
-- Treat the Friday or otherwise final end-of-week Time Card email as the point when final approval may complete the weekly invoices. Receipt of the final email alone does not authorize Teams filing or workbook insertion.
+- Treat the Friday or otherwise final end-of-week Time Card email as the point when worker accuracy approval may complete the weekly invoice draft.
+- After Josh approves the final weekly invoice as accurate, set the package status to `Worker Verified - Awaiting Wes Approval`. Worker approval is not Wes approval and does not authorize Teams filing or workbook insertion.
+- After worker approval, prepare the complete weekly invoice package for Wes's approval, copy Jenny, and hand it to Email Monitor's Email Delivery workflow.
+- Only Wes's approval authorizes final Teams filing and project-spreadsheet processing.
 - Preserve every routed Time Card email as source evidence and retain traceability from each invoice line back to the source email.
 - If the source does not state the worked date, use the email received date as the worked date and record that assumption in the packet.
 - The worker/vendor does not need to supply an invoice number for Time Card. Invoice Entry creates the invoice number using the standard Time Card invoice numbering and file naming pattern.
@@ -184,7 +188,10 @@ Project handling:
 
 - Split the weekly time by project when the Time Card source identifies multiple projects.
 - Create one invoice per project and one separate invoice for BackOffice time when BackOffice time is present.
-- After end-of-week approval, insert each project's time into that project's correct project-management spreadsheet under existing Invoice Entry insertion rules.
+- Maintain the current project-spreadsheet lookup list in `C:\Codex\Wiki Files\Project Rooms\Invoice Entry\working\project-spreadsheet-register.md`.
+- Use the register to identify the proposed workbook, then verify the exact current workbook at the SharePoint `Property` root before every edit. The register is a lookup aid, not authority to use a stale file.
+- Invoice Entry owns this register until Wes explicitly transfers that duty to a Project PR or another named workflow.
+- After Josh verifies the final invoice and Wes separately approves it, insert each project's time into that project's correct project-management spreadsheet under existing Invoice Entry insertion rules.
 - Do not put all time into one project unless the source clearly applies only to that project.
 - If project, date, worker/vendor, hours, rate, or destination worksheet is unclear, hold the affected line for review rather than guessing.
 - Before inserting, check for existing entries for the same worker/vendor, week, project, date, and source Time Card line so repeated weekly updates do not duplicate prior additions.
@@ -192,8 +199,9 @@ Project handling:
 
 Teams filing:
 
-- Do not copy Time Card invoice PDFs to Teams/project folders until the final email for the end of the week has been received and processed.
-- After the final end-of-week Time Card email is processed and the invoice is approved, save a copy of the current weekly invoice PDF in each affected Teams project `Invoices` folder.
+- Do not copy Time Card invoice PDFs to Teams/project folders until the final email for the end of the week has been received, Josh has approved the final invoice as accurate, and Wes has separately approved final processing.
+- After both approvals, save a copy of each project-specific weekly invoice PDF in the affected Teams project `Invoices` folder.
+- After both approvals, save the BackOffice weekly invoice PDF in the Teams `Office Admin/Invoices & Receipts` folder.
 - If a weekly invoice file already exists for the same worker/vendor/week/project after final processing, replace that Teams file with the updated invoice copy.
 - Use a stable weekly filename so updates overwrite the same file instead of creating duplicates.
 - Standard file naming pattern: `YY-MM-DD - <Worker or Vendor> - Time Card - Week Ending YYYY-MM-DD.pdf`, where the leading `YY-MM-DD` is the week-ending date.
