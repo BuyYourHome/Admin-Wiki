@@ -1,0 +1,21 @@
+{
+  "issuer_name": "Tim Fleming",
+  "issuer_email": "tflem04@gmail.com",
+  "customer_name": "Buy Your Home",
+  "customer_detail": "Office Admin",
+  "project": "26-BYH - 908 Pond St",
+  "project_detail": "Project labor",
+  "invoice_no": "IE-TF-20260729-POND-001",
+  "invoice_date": "July 29, 2026",
+  "status": "Approved by Wes - Not Paid",
+  "header_lines": ["INVOICE", "Vendor verified", "Approved by Wes - Not paid"],
+  "lines": [
+    {"date": "2026-07-23", "description": "Project labor at 908 Pond St.", "quantity": 3, "rate": 62.5, "amount": 187.5},
+    {"date": "2026-07-24", "description": "Project labor at 908 Pond St.", "quantity": 3, "rate": 62.5, "amount": 187.5},
+    {"date": "2026-07-27", "description": "Project labor at 908 Pond St.", "quantity": 4, "rate": 62.5, "amount": 250}
+  ],
+  "total": 625,
+  "total_label": "Invoice Total",
+  "note": "Tim Fleming verified this invoice on July 30, 2026. Wes approved it on July 30, 2026. Approval does not record payment.",
+  "traceability": "Source: Tim Fleming hours report dated July 29, 2026; vendor confirmation Outlook message ending ACgMfttgAAAA==; Wes approval Outlook message ending ACgMftuAAAAA==."
+}
