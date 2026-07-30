@@ -1,13 +1,13 @@
 ---
 name: email-monitor
-description: Create Wes's, Jenny's, and Josh's daily OfficeAssist mailbox summaries, run Email Routing, execute authorized Email Delivery handoffs, and maintain the Email Monitor Health Check watchdog pattern. Use for mailbox summaries, routed-email intake, direct delivery requests, health-state diagnostics, or workflow-specific watchdog configuration.
+description: Create Wes's, Jenny's, and Josh's daily OfficeAssist mailbox summaries, run Email Routing and Wes mailbox organization, execute authorized Email Delivery handoffs, and maintain the Email Monitor Health Check watchdog pattern. Use for mailbox summaries, routed-email intake, direct delivery requests, Jean Wright folder organization, health-state diagnostics, or workflow-specific watchdog configuration.
 ---
 
 # Email Monitor
 
 ## Overview
 
-Create daily summaries for Boss at `WesWill@BuyYourHomeLLC.com`, Jenny at `Jenny@BuyYourHomeLLC.com`, and Josh at `IRAManager@SellYourHomeRaleigh.com`, then hand off delivery to the shared `email-delivery` skill. Josh's summary also includes the current Manager Task mode list. Email Monitor also receives complete, authorized outbound-email delivery packages directly from other Project Rooms and executes them immediately through Email Delivery.
+Create daily summaries for Boss at `WesWill@BuyYourHomeLLC.com`, Jenny at `Jenny@BuyYourHomeLLC.com`, and Josh at `IRAManager@SellYourHomeRaleigh.com`, then hand off delivery to the shared `email-delivery` skill. Josh's summary also includes the current Manager Task mode list. Email Monitor also receives complete, authorized outbound-email delivery packages directly from other Project Rooms, executes them immediately through Email Delivery, and organizes Jean's messages in Wes's mailbox after verified deliveries to Wes.
 
 For summaries and routing, this skill owns mailbox scanning, cutoff selection, message prioritization, summary drafting, Wes's usage-summary inclusion, and summary-run state updates. For direct delivery handoffs, the requesting Project Room owns the message purpose, authorization, recipients, subject, body, attachments, and workflow-specific restrictions. Email Monitor owns package validation, duplicate prevention, delivery coordination through `email-delivery`, durable delivery-request state, callback reporting, and escalation. The shared `email-delivery` skill owns sender safety, connector handling, Sent Items verification, and delivery failure mechanics.
 
@@ -265,6 +265,53 @@ Current Invoice Entry task id: `019f3d56-b310-75c0-b084-616bfc1e9f59`.
 
 Do not create a new Invoice Entry task for this routing unless Wes explicitly asks. During intake routing, do not approve, pay, reply to the contractor/vendor, make live spreadsheet entries, or move files into Teams from this Email Monitor task unless Wes explicitly asks for processing here and the Invoice Entry rules allow it. This intake-stage prohibition on contractor/vendor contact does not block a later Email Delivery request when Invoice Entry's saved rules and the delivery package explicitly authorize that specific message. The default intake action remains source routing plus direct Invoice Entry handoff only.
 
+### Organize
+
+Use Organize to file messages that Wes's Outlook rule has already moved into `Inbox/Venders/Jean Wright` in `WesWill@BuyYourHomeLLC.com`.
+
+Activation:
+
+- run after every successful, Sent Items-verified Email Delivery when `WesWill@BuyYourHomeLLC.com` appears in To or CC;
+- do not run merely because a send was attempted or remains unverified;
+- process all messages sitting directly in `Inbox/Venders/Jean Wright` so the mode is idempotent and also clears any prior backlog;
+- do not organize Jenny's mailbox unless Wes separately activates and proves that scope.
+
+Folder set:
+
+- `Daily Summaries`
+- `Invoice Entry`
+- `Manager Tasks`
+- `Project Rooms`
+- `Drafts for Review`
+- `Approvals Needed`
+- `Sent Confirmations`
+- `Health and Failures`
+- `Other`
+
+Create any missing folder beneath `Inbox/Venders/Jean Wright`. Leave existing folders, including `Fraud`, `Invoices`, and `Time Cards`, intact.
+
+Classification precedence:
+
+1. `Health and Failures`: failures, failed checks, health alerts, fraud alerts, or rollback instructions.
+2. `Drafts for Review`: subjects identifying a draft, revised draft, or draft attachment.
+3. `Approvals Needed`: subjects requesting approval, asking Wes to approve, or stating that Wes approval is needed.
+4. `Daily Summaries`: Wes, Boss, Morning, OfficeAssist, Jenny, or Josh email/mailbox summaries.
+5. `Manager Tasks`: subjects containing `Manager Task`, matched case-insensitively.
+6. `Sent Confirmations`: approved-status notices, sent-and-verified notices, delivery verification, completed/run-complete notices, sender tests, or display-name verification.
+7. `Invoice Entry`: invoices, Time Cards, cost-allocation reports, hours or vendor verification, and related payment-report messages not already classified as approval or confirmation.
+8. `Project Rooms`: Gracious Millionaire, GM Site, Brynda Suit, mediation, manuscript, Codex/dispatcher/computer setup, document-scan, closing-document, MOU, insurance-report, or other identifiable Project Room work.
+9. `Other`: anything that does not match a class above.
+
+Execution rules:
+
+- prefer the Outlook Email connector for delegated Wes mailbox folder discovery, message listing, and moves;
+- use the mounted local Outlook profile only when the connector cannot create the required delegated-mailbox folders or cannot complete the move safely;
+- never hardcode folder IDs; resolve the exact mailbox path each run;
+- move only messages directly inside `Inbox/Venders/Jean Wright`; do not reclassify messages already in a child folder;
+- preserve read/unread state, flags, categories, attachments, conversation state, and message content;
+- if Outlook rule processing has not yet placed the newly sent message in `Jean Wright`, retry the folder check briefly, then leave it for the next Organize run rather than moving a message from another folder;
+- record and report a folder-access, creation, or move failure; routine successful organization does not require a user notification.
+
 ### Email Delivery
 
 Use Email Delivery when this project room has an authorized email ready to send, another Email Monitor mode reaches its send step, or another authorized Project Room sends Email Monitor a complete direct delivery handoff. Invoice Entry is an authorized requesting Project Room when its package is supported by Invoice Entry's saved rules and includes a specific authorization basis.
@@ -347,6 +394,7 @@ For each accepted package:
 - when required attachments cannot be sent through the connector because of size or transport limits, preserve the package as unresolved unless the shared `email-delivery` skill can use a verified OfficeAssist-capable fallback; do not replace required attachments with links, reduced files, split emails, or a no-attachment message without explicit authorization from the requesting workflow or Wes;
 - make only the schema-correct retry documented in `email-delivery`, and only when the first connector error clearly explains the correction;
 - after sending, query OfficeAssist Sent Items and verify sender, To, CC, BCC, subject, and required attachment presence;
+- after a successful verified send, run Organize when Wes appears in To or CC;
 - do not send through another mailbox after a send or verification failure.
 
 If specific Wes authorization names a sender other than OfficeAssist, preserve that sender in the request but hold the request unless the shared Email Delivery rules and available connector can safely use that exact sender and still satisfy the required Sent Items verification. Do not silently fall back to another mailbox.

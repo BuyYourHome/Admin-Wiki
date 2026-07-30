@@ -15,7 +15,7 @@ Use [[Agent Unit Standard]] for the standard package behind an agent-like operat
 | REI Text Message Watcher | Heartbeat automation | Active | Every 15 minutes during 8:00 AM-9:00 PM Eastern; adaptive 1-minute checks during activity | `C:\Users\wesbr\.codex\automations\morning-weswill-email-summary\automation.toml` |
 | OfficeAssist Instruction Inbox Monitor | Behavior inside Email Monitor heartbeat | Active | Runs every day; starts at 7:45 AM Eastern, then every 15 minutes through 11:00 PM Eastern; checks email and takes defined actions | `AGENTS.md`; `C:\Users\wesbr\.codex\automations\officeassist-morning-email-summary-and-instruction-monitor\automation.toml` |
 | Gracious Millionaire Project Room Heartbeat | Project-room heartbeat automation | Active | Every 15 minutes from 8:00 AM-11:45 PM Eastern; project-room Markdown intake processing only | `Project Rooms\Gracious Millionaire\README.md`; `Project Rooms\Gracious Millionaire\working\intake-heartbeat-rules.md`; `C:\Users\wesbr\.codex\automations\gracious-millionaire-project-room-heartbeat\automation.toml` |
-| Email Monitor | Wiki-managed skill plus heartbeat automation, project room, and direct Email Delivery endpoint | Active | Heartbeat runs every day from 7:45 AM through 11:00 PM Eastern; direct authorized Project Room delivery handoffs trigger immediately and do not wait for the heartbeat | `skills\email-monitor\SKILL.md`; `Project Rooms\Email Monitor\README.md`; `C:\Users\wesbr\.codex\automations\officeassist-morning-email-summary-and-instruction-monitor\automation.toml` |
+| Email Monitor | Wiki-managed skill plus heartbeat automation, project room, direct Email Delivery endpoint, and Organize mode | Active | Heartbeat runs every day from 7:45 AM through 11:00 PM Eastern; direct authorized Project Room delivery handoffs trigger immediately; verified deliveries to Wes trigger Organize for `Inbox/Venders/Jean Wright` | `skills\email-monitor\SKILL.md`; `Project Rooms\Email Monitor\README.md`; `C:\Users\wesbr\.codex\automations\officeassist-morning-email-summary-and-instruction-monitor\automation.toml` |
 | Email Delivery | Wiki-managed support skill | Active | Called by email-capable Admin workflows | `skills\email-delivery\SKILL.md` |
 | Doc Scan | Wiki-managed skill plus heartbeat automation plus project room | Active | Every 15 minutes on weekdays from 10:00 AM through 4:45 PM Eastern | `skills\doc-scan\SKILL.md`; `Project Rooms\Doc Scan\README.md`; `C:\Users\wesbr\.codex\skills\doc-scan\SKILL.md`; app automation id `doc-scan` |
 | Codex Skill Source Control | Wiki-managed skill system | Active | On demand after skill changes or wiki pulls | `Codex Skill Source Rule.md`; `tools\sync-codex-skills.ps1`; `skills\` |
@@ -317,6 +317,7 @@ Purpose:
 - Summarize unread or newly received financial, legal, property, vendor/admin, time-sensitive, or action-oriented messages.
 - Monitor the OfficeAssist mailbox for instruction emails and take defined actions when the email instruction and safety rules allow it.
 - Receive complete, authorized outbound-email delivery packages directly from other Project Rooms, including Invoice Entry, and execute them immediately through the shared Email Delivery skill without mailbox scanning or heartbeat delay.
+- Run Organize after every Sent Items-verified delivery where Wes is a To or CC recipient, filing messages directly inside Wes's `Inbox/Venders/Jean Wright` into the documented Email Monitor subfolders.
 - Route Gracious Millionaire and Brynda Suit instruction emails into their owning project rooms as source material and hand them off to their existing threads/tasks.
 - Send Wes a concise priority summary from `OfficeAssist@BuyYourHomeLLC.com`.
 - Email Jenny's concise priority summary to `Jenny@BuyYourHomeLLC.com` from `OfficeAssist@BuyYourHomeLLC.com` under the current global profile, and verify the sent copy in OfficeAssist Sent Items.
@@ -340,6 +341,7 @@ Important limitations:
 - Jenny's summary is active as of 2026-06-29 because Wes explicitly asked to resume it and the Outlook Email connector can read `Jenny@BuyYourHomeLLC.com`.
 - Josh's summary is active as of 2026-07-21 because Wes explicitly requested it and delegated Outlook connector access to `IRAManager@SellYourHomeRaleigh.com` was verified.
 - Do not substitute another mailbox for Jenny.
+- Organize currently applies only to Wes's mailbox. Jenny's mailbox remains unchanged until Wes separately activates that scope.
 - Keep the automation attached to one dedicated status thread via `target_thread_id` so failure notifications and follow-up stay in one chat.
 - Current status thread id: `019ecba7-f1cc-7ac1-aaf7-d89a3f21b582`.
 
