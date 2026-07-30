@@ -42,3 +42,15 @@
 - The first Email Delivery attempt was throttled before delivery with HTTP 429 and a 62-second retry-after value. Email Delivery waited and resent the same unchanged package.
 - Email Monitor returned `Sent and Verified`: OfficeAssist sent the amended draft at `2026-07-30T13:26:46Z` to Josh with Wes and Jenny copied. Sent Items verified the exact recipients, subject, body, and 3,829-byte PDF attachment.
 - Archived the generated PDF and render preview under `Invoice Entry Working Archive\Generated\2026-07-30-JK-Week31-Update` after verifying 2 files totaling 186,689 bytes.
+
+## 2026-07-30 - July 28 Completion And Allocation Conversion
+
+- Received Josh's completion source for July 28 and matched it to the earlier incomplete source by worker, date, project, and 6:00 A.M. start time.
+- Accepted `6:00 A.M.` through `3:30 P.M.` as 9 hours 30 minutes at 4121 Tensity Dr. The completion supplements the existing held line and does not create a duplicate.
+- Recalculated the accepted week-ending July 31 time to 30 hours 35 minutes: July 27, 11 hours; July 28, 9 hours 30 minutes; July 29, 10 hours 5 minutes.
+- Applied the finalized Josh compensation separation: Time Card output is a non-payable Project Cost Allocation Report, while the separate biweekly service-payment invoice is the sole payable document.
+- Allocated the `$1,250.00` weekly service cost across the accepted time. Because all accepted time is currently Tensity time, the entire `$1,250.00` is assigned to 4121 Tensity Dr.
+- Generated and visually verified report `PCA-JK-20260731-TENSITY-001`. The report explicitly states that it is not an invoice and not payable.
+- Superseded the prior invoice-style week-ending July 31 PDF. No Teams filing or workbook posting was performed.
+- Submitted Email Delivery request `IE-EMAIL-20260730-JOSH-ALLOCATION-UPDATE-001` using the unchanged weekly subject.
+- Email Delivery returned `Sent and Verified` at `2026-07-30T14:39:01Z`. OfficeAssist Sent Items verified Josh as recipient, Wes and Jenny copied, the unchanged weekly subject, and the required non-inline allocation-report PDF. Sent message id: `AQMkADZkMGMwNDI3LWU5ZjctNDgzMC1iMjdkLTY0NmRiN2IwNmIyZgBGAAADKGOvWJYjX0aEKaRpd0MYQQcAVSXargQY20aF7RLCkro4ggAAAgEJAAAAVSXargQY20aF7RLCkro4ggACgMgFNgAAAA==`.

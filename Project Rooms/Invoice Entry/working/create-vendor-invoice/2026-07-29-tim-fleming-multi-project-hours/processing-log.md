@@ -26,3 +26,13 @@
 - Sent Email Delivery request `IE-EMAIL-20260730-TIM-MULTIPROJECT-VERIFY-001` to Tim Fleming, with Wes and Jenny copied, requesting verification of the three drafts.
 - Email Delivery returned `Sent and Verified` at `2026-07-30T13:48:56Z`. OfficeAssist Sent Items confirmed Tim as recipient, Wes and Jenny as CC recipients, the exact multi-project subject and body, and all three non-inline PDF attachments. Sent message id: `AQMkADZkMGMwNDI3LWU5ZjctNDgzMC1iMjdkLTY0NmRiN2IwNmIyZgBGAAADKGOvWJYjX0aEKaRpd0MYQQcAVSXargQY20aF7RLCkro4ggAAAgEJAAAAVSXargQY20aF7RLCkro4ggACgMgFMgAAAA==`.
 - Kept Teams filing and all project-workbook edits on hold pending Tim's verification and Wes's later approval.
+
+## 2026-07-30 - Vendor Verification And Wes Approval Request
+
+- Received Tim's reply `Yes, they are correct` and matched it to the exact three-invoice verification thread.
+- Treated Tim's response as vendor fact verification only, not approval to pay, file, or post.
+- Regenerated all three project invoices with status `Vendor Verified - Awaiting Wes Approval`.
+- Rendered and visually inspected the Outrigger, Pond, and Tensity PDFs. All invoice facts, status text, and totals were legible with no clipping or overlap.
+- Submitted Email Delivery request `IE-EMAIL-20260730-TIM-MULTIPROJECT-WES-APPROVAL-001` to Wes with Jenny copied.
+- Email Delivery returned `Sent and Verified` at `2026-07-30T14:38:29Z`. OfficeAssist Sent Items verified the exact recipient list, subject, body, and all three non-inline attachments. Sent message id: `AQMkADZkMGMwNDI3LWU5ZjctNDgzMC1iMjdkLTY0NmRiN2IwNmIyZgBGAAADKGOvWJYjX0aEKaRpd0MYQQcAVSXargQY20aF7RLCkro4ggAAAgEJAAAAVSXargQY20aF7RLCkro4ggACgMgFNQAAAA==`.
+- Kept Teams filing and all workbook edits on hold pending Wes's approval.

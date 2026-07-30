@@ -86,3 +86,14 @@ The template artifacts were file-count and byte-total verified. The Tim source w
 | Josh replacement PDFs, Tim verification drafts, structured generator inputs, and render previews | `Generated\2026-07-30-Canonical-Template-Replacements` | 15 | 660,075 | canonical-format invoice generation and visual-QA evidence |
 
 The files were copied, verified by file count and byte total, and removed from the Admin wiki working tree. Josh's two authoritative SharePoint PDFs were replaced at their existing paths. Tim's three PDFs remain verification drafts pending his response and Wes's later approval.
+
+## Payment And Verification Archive Recorded 2026-07-30
+
+| Local source under `Project Rooms\Invoice Entry` | Teams destination under `Invoice Entry Working Archive` | Files | Bytes | Category |
+| --- | --- | ---: | ---: | --- |
+| Josh biweekly service-payment invoice, week-ending July 24 allocation reports, structured inputs, and render previews | `Generated\2026-07-30-Josh-Biweekly-And-Allocation` | 9 | 529,989 | payable draft plus non-payable allocation working artifacts |
+| Tim Fleming vendor-verified invoices, structured inputs, and render previews | `Generated\2026-07-30-Tim-MultiProject-Wes-Approval` | 9 | 418,250 | Wes approval package working artifacts |
+| Josh week-ending July 31 allocation report, structured input, and render preview | `Generated\2026-07-30-JK-Week31-Allocation` | 3 | 193,414 | non-payable Time Card allocation working artifacts |
+| Tim vendor-verification and Josh July 28 completion source records | `Source Documents\2026-07-30 Tim Verification And Josh Time Completion\email` | 2 | 2,372 | routed source evidence |
+
+Each file was hash-verified at the archive destination before its working copy was removed. Durable packet, delivery, and status records remain in the Invoice Entry project room.

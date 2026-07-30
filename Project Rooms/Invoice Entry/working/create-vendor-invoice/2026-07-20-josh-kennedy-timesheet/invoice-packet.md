@@ -2,7 +2,7 @@
 
 ## Packet Status
 
-- Status: `Josh verified the July 24 times; Wes approved the package; both PDFs filed; Tensity invoice routed to Review pending Labor worksheet selection`
+- Status: `Time verified; former project invoices superseded as payable documents by non-payable Project Cost Allocation Reports`
 - Workflow: `Time Card`, calling `Create Vendor Invoice` for invoice document creation
 - Created: 2026-07-20
 - Source type: Routed free-text timesheet emails; no invoice attachments.
@@ -75,6 +75,8 @@ Current invoice totals:
 | --- | --- |
 | BackOffice | `Office Admin/Invoices & Receipts/26-07-24 - Josh Kennedy - Time Card - BackOffice - Week Ending 2026-07-24.pdf` |
 | 4121 Tensity Dr | `Property/24-HM - 4121 Tensity Dr/Owning/Invoices/26-07-24 - Josh Kennedy - Time Card - Week Ending 2026-07-24.pdf` |
+
+These filed PDFs are historical approved artifacts. Wes changed the payment design on 2026-07-30: Josh is paid through a separate biweekly service payment invoice, and project/BackOffice Time Card documents are Project Cost Allocation Reports that are explicitly not payable. See `working\create-vendor-invoice\2026-07-31-josh-biweekly-service-payment\invoice-packet.md`.
 
 ## Duplicate Check
 

@@ -306,3 +306,16 @@ Lessons:
 - Generate the PDF from structured invoice data with the canonical generator so the invoice can be reproduced without editing an older PDF.
 - Replacing an approved stored PDF to correct presentation does not require a workbook edit when the invoice number, date, lines, amount, approval state, and payment state are unchanged.
 - Sent email records are historical evidence and cannot be replaced. Do not send a duplicate message solely because the stored PDF format was corrected.
+
+## 2026-07-30 - Separate Josh Payment From Project Allocation
+
+Context: Josh's compensation changed to a fixed biweekly service-payment invoice while Time Card records remain necessary for internal project-cost allocation.
+
+Lessons:
+
+- Maintain one payable document for Josh's compensation: the biweekly service-payment invoice for two weeks at `$1,250.00` per week.
+- Generate Time Card outputs as Project Cost Allocation Reports, not invoices. Mark them `Not an invoice` and `Not payable`.
+- Recalculate reports from accepted weekly time records rather than editing prior PDFs.
+- Allocate the fixed weekly `$1,250.00` cost proportionally across accepted project and BackOffice hours so the allocation reports reconcile to the weekly service cost without creating a second payment obligation.
+- When later source evidence completes a held time line, match it to the existing worker/date/project/start-time record and amend that line once. Do not create a duplicate time record.
+- Keep the payable invoice approval trail separate from worker verification of time and project allocation.

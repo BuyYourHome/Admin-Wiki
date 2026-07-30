@@ -2,11 +2,12 @@
 
 ## Packet Status
 
-- Status: `Three project-specific drafts generated and sent for Tim verification`
+- Status: `Vendor verified - awaiting Wes approval`
 - Workflow: `Create Vendor Invoice`
 - Created: 2026-07-30
 - Source type: Routed free-text contractor-hours email; no invoice attachment.
-- Vendor verification: requested and sent on 2026-07-30 through Email Delivery request `IE-EMAIL-20260730-TIM-MULTIPROJECT-VERIFY-001`; awaiting Tim's response.
+- Vendor verification: Tim replied `Yes, they are correct` on 2026-07-30, confirming all three project invoices and the combined `$1,750.00` total.
+- Wes approval request: sent and verified on 2026-07-30 through Email Delivery request `IE-EMAIL-20260730-TIM-MULTIPROJECT-WES-APPROVAL-001`.
 - Teams filing and spreadsheet insertion: not authorized before vendor verification and Wes approval.
 
 ## Source
@@ -79,6 +80,15 @@ Email Delivery sent and verified the package at `2026-07-30T13:48:56Z`:
 - Sent message id: `AQMkADZkMGMwNDI3LWU5ZjctNDgzMC1iMjdkLTY0NmRiN2IwNmIyZgBGAAADKGOvWJYjX0aEKaRpd0MYQQcAVSXargQY20aF7RLCkro4ggAAAgEJAAAAVSXargQY20aF7RLCkro4ggACgMgFMgAAAA==`
 - Verification: exact sender, recipients, subject, body, and all three non-inline PDF attachments passed OfficeAssist Sent Items verification.
 
+## Vendor Verification And Approval Request
+
+- Authoritative verification source archive: `C:\Users\wesbr\Buy Your Home\Buy Your Home - Office Admin\Scanned Files\Invoice Entry Working Archive\Source Documents\2026-07-30 Tim Verification And Josh Time Completion\email\2026-07-30-141901-tim-fleming-multiproject-invoice-verification.md`.
+- Tim confirmed all three invoices by replying `Yes, they are correct`.
+- Regenerated all three PDFs with status `Vendor Verified - Awaiting Wes Approval` and visually verified them.
+- Email Delivery sent the approval package to Wes with Jenny copied at `2026-07-30T14:38:29Z`.
+- Sent message id: `AQMkADZkMGMwNDI3LWU5ZjctNDgzMC1iMjdkLTY0NmRiN2IwNmIyZgBGAAADKGOvWJYjX0aEKaRpd0MYQQcAVSXargQY20aF7RLCkro4ggAAAgEJAAAAVSXargQY20aF7RLCkro4ggACgMgFNQAAAA==`.
+- OfficeAssist Sent Items verified the exact sender, To, CC, subject, body, and all three non-inline PDF attachments.
+
 ## Current Hold
 
-Wait for Tim to verify the dates, project assignments, hours, rate, and amounts. Tim's verification will not constitute approval or payment authorization. After Tim verifies the package, route it to Wes for separate approval. Do not file the drafts to project folders or insert them into project workbooks before that approval.
+Wait for Wes's separate approval. Tim's verification does not authorize payment, Teams filing, or project-workbook insertion. Do not file or post these invoices before Wes approves.
