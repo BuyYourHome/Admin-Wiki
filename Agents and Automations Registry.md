@@ -185,12 +185,13 @@ Schedule:
 
 Purpose:
 
-- Monitor `OfficeAssist@BuyYourHomeLLC.com` for instruction emails from Wes or Jenny.
-- Treat emails from `WesWill@BuyYourHomeLLC.com` and `Jenny@BuyYourHomeLLC.com` as OfficeAssist instruction intake.
+- Monitor `OfficeAssist@BuyYourHomeLLC.com` for instruction emails from Wes, Jenny, or Josh Kennedy.
+- Treat emails from `WesWill@BuyYourHomeLLC.com`, `Jenny@BuyYourHomeLLC.com`, and Josh Kennedy at `IRAManager@SellYourHomeRaleigh.com` as OfficeAssist instruction intake. Josh may start safe workflows but may not authorize Wes-gated purchases, payments, approvals, or account changes.
 - Carry out safe, in-scope admin actions when the email instruction and applicable workflow rules allow it.
 - Route Gracious Millionaire email to the Gracious Millionaire project room by Outlook reference, Teams source path when materialized, summary, and direct handoff. Do not process the manuscript from the OfficeAssist monitor thread.
 - Route Brynda Suit email to the Brynda Suit project room by Outlook reference, Teams source path when materialized, summary, and direct handoff. Do not process the Brynda Suit response from the OfficeAssist monitor thread.
 - Route `GM Site` / REI BlackBook website instruction emails to the REI BlackBook project room by Outlook reference, Teams source path when materialized, summary, and direct handoff. Do not process the website request from the OfficeAssist monitor thread.
+- Route Lowe's product and cart requests to the existing Lowes Order task by Outlook reference and extracted order details. Lowes Order owns browser/cart work, sender confirmation, Wes cart-approval notification, and uncertainty-question emails.
 - Use `Route Vendor Invoice` mode to route contractor/vendor invoice emails to the Invoice Entry project room by Outlook reference, external Teams attachment/source paths when materialized, vendor/project summary, and direct handoff. Do not approve, pay, contact vendors, make live spreadsheet entries, or move files into Teams from the OfficeAssist monitor thread.
 - Report blockers, ambiguous authority, mailbox failures, or decisions needed in the attached status thread.
 - Avoid repeated processing by tracking handled message ids in local monitor memory.
@@ -638,6 +639,9 @@ Important rules:
 
 - Do not place purchases, spend money, submit orders, change payment details, or approve substitutions unless Wes explicitly approves the specific order action.
 - Filling the cart is allowed from authoritative email instructions; checkout and payment remain approval-gated.
+- Josh Kennedy is an authorized instruction sender for safe Lowe's cart preparation.
+- When the cart is filled to the extent safely possible, confirm to the sender and separately notify Wes to approve it on the Lowe's website. If uncertainties remain, email the sender with Wes copied.
+- Prefix Lowes Order follow-up subjects with `[Lowes Order]` and state that future source emails should identify the mode in the subject.
 - Use the Project Room source inventory before drafting review-ready order outputs.
 - Do not create Teams folders or automations unless Wes explicitly asks.
 

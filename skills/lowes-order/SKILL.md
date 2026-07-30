@@ -12,7 +12,7 @@ description: Use for Buy Your Home Lowe's order project-room work, including org
 - Admin wiki source: `C:\Codex\Wiki Files`
 - Registry: `C:\Codex\Wiki Files\Agents and Automations Registry.md`
 
-Use this skill when Wes asks Codex to work on Lowe's order planning, organization, review, cart-filling, or documentation for Buy Your Home.
+Use this skill when Wes asks Codex to work on Lowe's order planning, organization, review, cart-filling, or documentation for Buy Your Home, or when Email Monitor routes an authorized Lowe's instruction from Wes, Jenny, or Josh Kennedy.
 
 ## Required Startup
 
@@ -49,10 +49,15 @@ Use this workflow when Wes asks Codex to add Lowe's items to a cart from an emai
 8. Add only confirmed matches and requested quantities to the Lowe's cart.
 9. If several plausible products match or the requested item is unavailable, do not guess silently. Either skip the item and report it, or add the clearly supported closest match only when the email details justify it.
 10. Stop at cart review and report matched items, skipped items, uncertain matches, price/availability issues, delivery/pickup questions, and checkout decisions needed.
+11. When the cart has been filled to the extent safely possible, send a confirmation from `OfficeAssist@BuyYourHomeLLC.com` to the instruction sender and send a separate notification to `WesWill@BuyYourHomeLLC.com` asking him to review and approve the cart on the Lowe's website. If Wes is the instruction sender, one approval notification to Wes may serve both purposes.
+12. If missing quantities, product ambiguity, project/property context, pickup or delivery method, availability, or another uncertainty prevents or limits cart preparation, send one question email from OfficeAssist to the instruction sender with Wes copied. Do not guess silently.
+13. Prefix every confirmation, question, and approval-notification subject with `[Lowes Order]`. In the body, state that the request was processed in Lowes Order mode and that future source emails should identify `Lowes Order` in the subject.
+14. Use `C:\Codex\Wiki Files\skills\email-delivery\SKILL.md` for every notification, save to OfficeAssist Sent Items, and verify sender, recipients, subject, and attachment status before reporting delivery.
 
 ## Boundaries
 
 - Do not place purchases, spend money, submit orders, change payment details, or approve substitutions unless Wes explicitly approves the specific order action.
+- Josh Kennedy at `IRAManager@SellYourHomeRaleigh.com` is an authorized OfficeAssist instruction sender for safe Lowe's cart preparation, but Josh cannot authorize checkout, payment, substitutions, paid services, account changes, or another Wes-gated action.
 - Do not check out, submit payment, schedule delivery, accept substitutions, buy protection plans, use financing, or accept paid-service terms unless Wes explicitly approves that specific final action.
 - Do not ask Wes for, store, or record Lowe's passwords. Use Wes's existing Chrome session or allow Wes to complete login/MFA directly.
 - Do not bypass authentication, CAPTCHA, multi-factor prompts, or Lowe's account protections.

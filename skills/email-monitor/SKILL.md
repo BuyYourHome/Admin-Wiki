@@ -140,10 +140,10 @@ For each new message:
 
 - check `OfficeAssist@BuyYourHomeLLC.com` Inbox, Task Instructions, and Accts Payable;
 - use monitor memory so the same Outlook message id is not processed repeatedly;
-- recognize instructions from `WesWill@BuyYourHomeLLC.com` and `Jenny@BuyYourHomeLLC.com`;
+- recognize instructions from `WesWill@BuyYourHomeLLC.com`, `Jenny@BuyYourHomeLLC.com`, and Josh Kennedy at `IRAManager@SellYourHomeRaleigh.com`;
 - perform a safe, in-scope admin action or start the applicable workflow when current Admin wiki rules authorize it;
 - hold and report a decision needed when authorization, routing, or high-impact action authority is incomplete;
-- apply the specialized routing branch when the message matches Gracious Millionaire, Web Site, Brynda Suit, Manager Routing, or Route Vendor Invoice rules;
+- apply the specialized routing branch when the message matches Lowes Order, Gracious Millionaire, Web Site, Brynda Suit, Manager Routing, or Route Vendor Invoice rules;
 - return quietly when no new actionable or routable message is found.
 
 Email Routing is not the trigger for the scheduled Email Summary mode or a direct Project Room Email Delivery handoff.
@@ -156,7 +156,28 @@ If a routed email or attachment must be materialized as a file, save it outside 
 
 #### General Instruction Handling
 
-Use General Instruction Handling for an authorized Wes or Jenny instruction that does not match a specialized routing branch. Determine the applicable Admin wiki rule or workflow, complete safe authorized work, or route it to the owning workflow. Do not invent authority or bypass a specialized Project Room's ownership boundary.
+Use General Instruction Handling for an authorized Wes, Jenny, or Josh instruction that does not match a specialized routing branch. Determine the applicable Admin wiki rule or workflow, complete safe authorized work, or route it to the owning workflow. Josh's authorization permits safe instruction intake and workflow routing; it does not authorize purchases, payments, approvals, legal or financial changes, or another high-impact action that remains reserved to Wes or separately gated by the owning workflow. Do not invent authority or bypass a specialized Project Room's ownership boundary.
+
+#### Lowes Order Email Routing
+
+Use Lowes Order Email Routing when an authorized instruction email clearly requests Lowe's product research, cart preparation, cart changes, or order review.
+
+Activation:
+
+- the subject contains `Lowes Order`, `Lowe's Order`, or a normal reply or forward of that subject; or
+- the subject or body otherwise clearly requests adding Lowe's item numbers or products to a Lowe's cart.
+
+For each routed email:
+
+- preserve the Outlook message id or web link, sender, recipients, sent time when available, received time, subject, body summary, item numbers, quantities when stated, project/property clues, pickup or delivery instructions, and attachment metadata in the handoff and monitor memory;
+- record missing quantities, project/property context, pickup or delivery method, timing, budget, or product ambiguity in the handoff without guessing;
+- record the routed Outlook message id in monitor memory so the message is not routed repeatedly;
+- send a direct follow-up message to the existing Lowes Order task with the Outlook reference, sender, extracted order details, missing details, and the instruction to process the request under Lowes Order Cart Fill Workflow;
+- mark the source email read only after the durable handoff is accepted.
+
+Current Lowes Order task id: `019f5845-fb96-7370-baf2-b8f00fddffae`.
+
+The Lowes Order task owns Lowe's website work and the required follow-up emails. When the cart is filled to the extent safely supported by the source, it sends the sender a confirmation and sends Wes a separate approval notification. If uncertainties prevent or limit cart preparation, it sends the questions to both the sender and Wes. These messages must use an `[Lowes Order]` subject prefix and state that future source emails should identify `Lowes Order` mode in the subject. Email Monitor does not check out, place the order, spend money, choose paid services, or approve substitutions.
 
 #### Gracious Millionaire Email Routing
 

@@ -62,9 +62,15 @@ Specification: `working\health-check-spec.md`. Control surface: `tools\Manage-Co
 
 ### Email Routing
 
-Use Email Routing as the OfficeAssist mailbox intake funnel. It checks Inbox, Task Instructions, and Accts Payable during the active window, prevents duplicate processing by Outlook message id, handles safe authorized instructions from Wes or Jenny, and applies the appropriate specialized routing branch. It reports incomplete authority or high-impact decisions and returns quietly when no message requires action.
+Use Email Routing as the OfficeAssist mailbox intake funnel. It checks Inbox, Task Instructions, and Accts Payable during the active window, prevents duplicate processing by Outlook message id, handles safe authorized instructions from Wes, Jenny, or Josh Kennedy, and applies the appropriate specialized routing branch. Josh may initiate safe workflows but may not authorize purchases, payments, approvals, or another Wes-gated action. It reports incomplete authority or high-impact decisions and returns quietly when no message requires action.
 
-Email Routing contains General Instruction Handling, Gracious Millionaire Email Routing, Web Site Email Routing, Brynda Suit Email Routing, Manager Routing, and Route Vendor Invoice. It does not trigger the scheduled Email Summary mode or direct Project Room Email Delivery handoffs.
+Email Routing contains General Instruction Handling, Lowes Order Email Routing, Gracious Millionaire Email Routing, Web Site Email Routing, Brynda Suit Email Routing, Manager Routing, and Route Vendor Invoice. It does not trigger the scheduled Email Summary mode or direct Project Room Email Delivery handoffs.
+
+#### Lowes Order Email Routing
+
+Use this branch when an authorized sender requests Lowe's product research, cart preparation, cart changes, or order review, including messages containing Lowe's item numbers. Preserve the Outlook reference and extracted order details, record missing quantities or other ambiguities without guessing, and send a direct handoff to Lowes Order task `019f5845-fb96-7370-baf2-b8f00fddffae`.
+
+Lowes Order owns browser and cart work. When the cart is filled to the extent safely possible, it confirms completion to the sender and separately asks Wes to review and approve the cart on the Lowe's website. When uncertainties prevent or limit cart preparation, it emails the sender with Wes copied. Every follow-up subject uses `[Lowes Order]`, and the body states that future source emails should identify Lowes Order mode in the subject. Checkout, payment, substitutions, paid services, and account changes remain gated by Wes's specific approval.
 
 #### Gracious Millionaire Email Routing
 
@@ -135,6 +141,8 @@ Use this room for development and design work. Do not change the live automation
 When the workflow changes, update the skill, this project room, and the registry together.
 
 ## Change Log
+
+- 2026-07-30: Authorized Josh Kennedy for safe OfficeAssist instructions and added Lowes Order Email Routing with sender confirmation, Wes cart-approval notification, uncertainty questions, `[Lowes Order]` subject guidance, and continued checkout/payment safeguards.
 
 - 2026-07-24: Added the large-required-attachment delivery rule: unresolved required attachments may not be silently replaced with links, reduced files, split packages, another sender, or no-attachment emails without explicit authorization.
 

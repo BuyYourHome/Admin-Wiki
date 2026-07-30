@@ -71,6 +71,9 @@ When Wes asks Lowes Order to fill a cart from an email:
 10. Add confirmed matches and quantities to the Lowe's cart.
 11. Stop at cart review. Do not check out, place the order, submit payment, approve substitutions, schedule delivery, or change pickup/delivery details unless Wes explicitly approves that specific final action.
 12. Report the cart status, matched items, missing items, substitutions or uncertainties, price/availability issues, pickup/delivery questions, and the exact approval needed before checkout.
+13. When the cart is filled to the extent safely possible, email the instruction sender a confirmation and email Wes a separate request to review and approve the cart on the Lowe's website. If Wes sent the instruction, one approval email to Wes may serve both purposes.
+14. When uncertainties prevent or limit cart preparation, email the questions to the instruction sender with Wes copied instead of guessing.
+15. Send all confirmations, questions, and approval notifications from OfficeAssist through Email Delivery with Sent Items verification. Prefix the subject with `[Lowes Order]`, state that Lowes Order mode handled the request, and remind the sender to identify `Lowes Order` in future source-email subjects.
 
 ## Safety Rules For Website Use
 
@@ -78,6 +81,7 @@ When Wes asks Lowes Order to fill a cart from an email:
 - Do not bypass authentication, CAPTCHA, multi-factor prompts, or Lowe's account protections.
 - Do not save payment details, change saved cards, change addresses, enroll in paid services, or accept terms for a paid service unless Wes explicitly authorizes that specific action.
 - If the Lowe's site presents a higher-impact prompt, price change, unavailable item, substitution, delivery fee, warranty, protection plan, financing offer, or account setting change, stop and report the decision needed.
+- Josh Kennedy at `IRAManager@SellYourHomeRaleigh.com` may instruct safe cart preparation. Checkout, payment, substitutions, paid services, and account changes remain subject to Wes's specific approval.
 
 ## Next Actions
 
