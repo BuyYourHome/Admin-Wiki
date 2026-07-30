@@ -62,18 +62,19 @@ When Wes asks Lowes Order to fill a cart from an email:
 1. Get the source email through an approved path, preferably the Outlook connector when available, or from email text Wes provides in the chat.
 2. Save or summarize the email source in `sources\` when the order will become a durable project-room record.
 3. Extract item names, quantities, model numbers, dimensions, colors, brand requirements, delivery/pickup notes, project/property context, and stated urgency.
-4. Record missing or ambiguous item details in `working\missing-context.md` before guessing.
-5. Use Chrome with Wes's existing signed-in Lowe's session when browser interaction is needed.
-6. Open the Lowe's website, verify the session appears to be the intended account, and avoid changing account, payment, address, or profile settings.
-7. Search for each requested item on the Lowe's website and choose matches based on the email details.
-8. Prefer exact item numbers or model numbers when the email provides them.
-9. If multiple plausible matches exist, choose the closest match only when the source details clearly support it; otherwise leave the item out of the cart and report the decision needed.
-10. Add confirmed matches and quantities to the Lowe's cart.
-11. Stop at cart review. Do not check out, place the order, submit payment, approve substitutions, schedule delivery, or change pickup/delivery details unless Wes explicitly approves that specific final action.
-12. Report the cart status, matched items, missing items, substitutions or uncertainties, price/availability issues, pickup/delivery questions, and the exact approval needed before checkout.
-13. When the cart is filled to the extent safely possible, email the instruction sender a confirmation and email Wes a separate request to review and approve the cart on the Lowe's website. If Wes sent the instruction, one approval email to Wes may serve both purposes.
-14. When uncertainties prevent or limit cart preparation, email the questions to the instruction sender with Wes copied instead of guessing.
-15. Send all confirmations, questions, and approval notifications from OfficeAssist through Email Delivery with Sent Items verification. Prefix the subject with `[Lowes Order]`, state that Lowes Order mode handled the request, and remind the sender to identify `Lowes Order` in future source-email subjects.
+4. If a confirmed item has no stated quantity, assume quantity `1`, add that quantity to the cart, and record the assumption in the cart summary so Wes can adjust the quantity in the cart if needed.
+5. Record missing or ambiguous item details in `working\missing-context.md` before guessing. Missing quantity alone does not block cart fill when the product match is confirmed.
+6. Use Chrome with Wes's existing signed-in Lowe's session when browser interaction is needed.
+7. Open the Lowe's website, verify the session appears to be the intended account, and avoid changing account, payment, address, or profile settings.
+8. Search for each requested item on the Lowe's website and choose matches based on the email details.
+9. Prefer exact item numbers or model numbers when the email provides them.
+10. If multiple plausible matches exist, choose the closest match only when the source details clearly support it; otherwise leave the item out of the cart and report the decision needed.
+11. Add confirmed matches and requested or defaulted quantities to the Lowe's cart.
+12. Stop at cart review. Do not check out, place the order, submit payment, approve substitutions, schedule delivery, or change pickup/delivery details unless Wes explicitly approves that specific final action.
+13. Report the cart status, matched items, missing items, substitutions or uncertainties, price/availability issues, pickup/delivery questions, defaulted quantities, and the exact approval needed before checkout.
+14. When the cart is filled to the extent safely possible, email the instruction sender a confirmation and email Wes a separate request to review and approve the cart on the Lowe's website. If Wes sent the instruction, one approval email to Wes may serve both purposes.
+15. When uncertainties prevent or limit cart preparation, email the questions to the instruction sender with Wes copied instead of guessing, except for the approved default quantity `1` rule.
+16. Send all confirmations, questions, and approval notifications from OfficeAssist through Email Delivery with Sent Items verification. Prefix the subject with `[Lowes Order]` and state that Lowes Order mode handled the request. If the source email subject did not identify `Lowes Order` mode, tell the sender to identify `Lowes Order` in the subject next time.
 
 ## Safety Rules For Website Use
 

@@ -9,3 +9,4 @@
 | `Git Work Scope Rule.md` | Wiki rule | authoritative | Defines scoped commits and push behavior. |
 | Wes instruction to fill a Lowe's cart from email through Chrome | User instruction | authoritative | Expands the workflow to retrieve order items from email, use Chrome with the existing Lowe's session, add confirmed items to the cart, and stop before checkout unless specifically approved. |
 | `sources\2026-07-27-josh-kennedy-lowes-order-summary.md` | Email source summary | authoritative | Josh Kennedy's 2026-07-27 OfficeAssist Lowe's order email with item numbers but missing quantities. |
+| Wes instruction to default missing Lowe's quantities to `1` | User instruction | authoritative | When a confirmed item has no stated quantity, add quantity `1` to the cart and record that Wes can adjust quantities in the cart. If a source email did not identify Lowes Order mode in the subject, tell the sender to correct it next time. |
