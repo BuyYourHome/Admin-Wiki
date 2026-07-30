@@ -9,3 +9,4 @@
 | Pickup, delivery, or shipping? | missing | Needed before any order-ready handoff. |
 | Budget or approval limit? | missing | Needed before recommending substitutions or finalizing order drafts. |
 | Quantities for Josh Kennedy 2026-07-27 item-number order | superseded by default rule | Item numbers `4847122`, `7480956`, `259930`, and `102634` matched, but quantities were not stated. Question email was sent to Josh with Wes copied on 2026-07-30 before Wes instructed Lowes Order to assume quantity `1` when no quantity is given. |
+| Checkout approval for Josh Kennedy 2026-07-27 cart | missing | Cart was filled with one each of the four confirmed items on 2026-07-30. Wes must approve checkout, payment, pickup/delivery changes, substitutions, or final order action. |
