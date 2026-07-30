@@ -100,7 +100,7 @@ def build_invoice(data):
         [
             [
                 Paragraph("<b>Status:</b> Draft generated from routed timesheet", styles["Body"]),
-                Paragraph("<b>Draft Date:</b> July 27, 2026", styles["Body"]),
+                Paragraph("<b>Draft Date:</b> July 30, 2026", styles["Body"]),
             ]
         ],
         colWidths=[4.3 * inch, 2.65 * inch],
@@ -236,7 +236,8 @@ def build_invoice(data):
                     "Source archive: Invoice Entry Working Archive\\Source Documents\\"
                     "2026-07-28 Josh Kennedy Time Card\\email\\"
                     "2026-07-27-182415-josh-kennedy-time-card-update.md; "
-                    "Outlook message id ending CfptscgAAAA==",
+                    "Outlook message ids ending CfptscgAAAA== and Cf-9XCwAAAA==. "
+                    "The incomplete July 28 line is held and not billed.",
                     styles["Muted"],
                 )
             ],
@@ -275,8 +276,14 @@ invoices = [
                 "hours": 11.0,
                 "amount": 343.75,
             },
+            {
+                "date": "2026-07-29",
+                "description": "Work at 4121 Tensity Dr from 6:55 A.M. to 5:00 P.M.",
+                "hours": 10.08,
+                "amount": 315.10,
+            },
         ],
-        "amount": 343.75,
+        "amount": 658.85,
     },
 ]
 

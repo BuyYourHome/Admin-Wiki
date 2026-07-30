@@ -61,3 +61,11 @@ The files were copied, verified by file count and byte total, and removed from t
 | `sources\email\2026-07-29-135616-wes-approval-josh-time-card-week-ending-2026-07-24.md` | `Source Documents\2026-07-29 Josh Kennedy Time Card Approval\email` | 1 | 1,903 | routed Wes approval source |
 
 The files were moved after destination, file-count, and byte-total verification. The authoritative Outlook message id and durable processing outcome remain in the packet and source inventory.
+
+## Cleanup Recorded 2026-07-30
+
+| Local source under `Project Rooms\Invoice Entry` | Teams destination under `Invoice Entry Working Archive` | Files | Bytes | Category |
+| --- | --- | ---: | ---: | --- |
+| July 29 update PDF and render preview for Josh Kennedy week ending 2026-07-31 | `Generated\2026-07-30-JK-Week31-Update` | 2 | 186,689 | generated Time Card invoice and visual-QA evidence |
+
+The files were moved after destination, file-count, and byte-total verification. The weekly structured packet and delivery evidence remain in the Invoice Entry working records.

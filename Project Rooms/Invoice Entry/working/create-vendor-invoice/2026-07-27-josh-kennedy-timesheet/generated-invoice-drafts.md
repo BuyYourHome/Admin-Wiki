@@ -5,11 +5,11 @@
 - Invoice #: `TC-JK-20260731-TENSITY-001`
 - Vendor: Josh Kennedy
 - Project: `24-HM - 4121 Tensity Dr`
-- Work date: `2026-07-27`
-- Description: Project supply pickup at Lowe's from 6:30 A.M. to approximately 6:45 A.M., followed by work at 4121 Tensity Dr until 5:30 P.M.
-- Hours: 11.00
+- Work dates: `2026-07-27`; `2026-07-29`
+- Description: July 27 project supply pickup and Tensity work; July 29 Tensity work from 6:55 A.M. to 5:00 P.M.
+- Hours: 21.08 displayed hours
 - Rate: `$31.25`
-- Amount: `$343.75`
+- Amount: `$658.85`
 - Status: Draft for worker verification; not approved for payment and not posted.
 
 Pending source not yet included:
@@ -22,3 +22,5 @@ Pending source not yet included:
 Source:
 
 `C:\Users\wesbr\Buy Your Home\Buy Your Home - Office Admin\Scanned Files\Invoice Entry Working Archive\Source Documents\2026-07-28 Josh Kennedy Time Card\email\2026-07-27-182415-josh-kennedy-time-card-update.md`
+
+Outlook message id ending `Cf-9XCwAAAA==` for the included July 29 line.

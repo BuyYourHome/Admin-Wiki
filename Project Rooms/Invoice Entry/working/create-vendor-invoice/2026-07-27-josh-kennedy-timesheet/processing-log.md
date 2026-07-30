@@ -27,3 +27,18 @@
 - Did not infer hours, calculate an amount, regenerate the PDF, or send an inaccurate replacement invoice.
 - Preserved the Outlook message id and link through the source inventory and weekly packet.
 - The current invoice remains 11.00 hours and `$343.75`, pending the missing July 28 duration.
+
+## 2026-07-30 - July 29 Update
+
+- Received Email Monitor handoff for Outlook message id ending `Cf-9XCwAAAA==`.
+- Used the stated work date, 2026-07-29, and parsed 6:55 A.M. through 5:00 P.M. as 10 hours 5 minutes at 4121 Tensity Dr.
+- Applied Josh Kennedy's established `$31.25/hour` rate. The new rounded line amount is `$315.10`.
+- Duplicate check found no existing July 29 line in the weekly packet.
+- Kept the incomplete July 28 line on `Hold - Missing Hours`; it remains excluded from the invoice.
+- Amended invoice `TC-JK-20260731-TENSITY-001` to 21.08 displayed hours and `$658.85`.
+- Regenerated the complete weekly invoice PDF from the accumulated source record. Teams filing and workbook insertion remain held during the week.
+- Rendered and visually inspected the regenerated page. Invoice number, July 27 and July 29 lines, amount, status, and source traceability were legible with no clipping or overlap.
+- Sent Email Monitor delivery request `IE-EMAIL-20260730-JOSH-TIMECARD-001` with the unchanged week-ending July 31 subject.
+- The first Email Delivery attempt was throttled before delivery with HTTP 429 and a 62-second retry-after value. Email Delivery waited and resent the same unchanged package.
+- Email Monitor returned `Sent and Verified`: OfficeAssist sent the amended draft at `2026-07-30T13:26:46Z` to Josh with Wes and Jenny copied. Sent Items verified the exact recipients, subject, body, and 3,829-byte PDF attachment.
+- Archived the generated PDF and render preview under `Invoice Entry Working Archive\Generated\2026-07-30-JK-Week31-Update` after verifying 2 files totaling 186,689 bytes.
