@@ -28,6 +28,7 @@ Use [[Agent Unit Standard]] for the standard package behind an agent-like operat
 | Manager | Wiki-managed skill plus project room plus dedicated chat | Draft | On demand | `skills\manager\SKILL.md`; `Project Rooms\Manager\README.md` |
 | Codex Environment | Wiki-managed skill plus project room plus dedicated chat | Draft | On demand | `skills\codex-environment\SKILL.md`; `Project Rooms\Codex Environment\README.md` |
 | Computers | Wiki-managed skill plus project room plus dedicated chat | Draft | On demand | `skills\computers\SKILL.md`; `Project Rooms\Computers\README.md` |
+| Marketplace | Wiki-managed skill plus project room plus dedicated chat | Draft | On demand | `skills\marketplace\SKILL.md`; `Project Rooms\Marketplace\README.md` |
 | SOPs | Wiki-managed skill plus project room | Active | On demand | `skills\sops\SKILL.md`; `Project Rooms\SOPs\README.md`; `Project Rooms\SOPs\outputs\SOP Index.md` |
 | Credit Worthiness Evaluator | Wiki-managed skill plus project room | Active | On demand | `skills\credit-worthiness-evaluator\SKILL.md`; `Project Rooms\Credit Worthiness Evaluator\README.md` |
 | Contract for Deed | Wiki-managed skill plus project room | Active | On demand | `skills\contract-for-deed\SKILL.md`; `Project Rooms\Contract for Deed\README.md` |
@@ -737,6 +738,37 @@ Important rules:
 - Route suspected compromise or active remote-control concerns to Investigate Computer.
 - Record verified computer facts in `Project Rooms\Computers\working\computer-register.md`.
 - Record final inventory/configuration outcomes in `Project Rooms\Computers\working\computer-inventory-action-log.md`.
+- No automation is currently attached.
+
+## Marketplace
+
+Type: wiki-managed skill plus project room plus dedicated chat.
+
+Status: draft.
+
+Purpose:
+
+- Pursue Facebook Marketplace tool opportunities for profitable resale.
+- Evaluate listing price against likely resale value, condition, brand/model, fees, travel/pickup cost, repair risk, and target profit.
+- Use authorized Facebook Messenger sessions to make offers and engage sellers within approved offer limits.
+- Email Wes when a seller accepts an offer or a conversation reaches a likely agreement.
+
+Defined in:
+
+- `C:\Codex\Wiki Files\skills\marketplace\SKILL.md`
+- `C:\Codex\Wiki Files\Project Rooms\Marketplace\README.md`
+
+Dedicated chat:
+
+- Thread id: `pending until the dedicated chat is created`
+
+Important rules:
+
+- Do not store Facebook credentials, MFA codes, payment details, seller private contact details beyond deal necessity, or other live secrets.
+- Do not send a Messenger offer unless the listing is clearly identified, the maximum offer is calculated and recorded, and the message stays at or below an approved maximum.
+- If no approved max-offer rule exists for the listing/search, ask Wes before sending the offer.
+- Do not agree to buy, pay, place a deposit, reserve, schedule pickup, exchange addresses, exchange phone numbers, ship, or otherwise make a binding commitment without Wes's specific approval for the exact deal.
+- Use Email Monitor's Email Delivery mode or `skills\email-delivery\SKILL.md` for seller-agreement email notifications to Wes.
 - No automation is currently attached.
 
 ## Credit Worthiness Evaluator

@@ -32,6 +32,7 @@ Use this map when Jean Wright routes work to a specialized Project Room. If a ta
 | Jennys Drawings | `jennys-drawings` | `019f700e-419a-7280-ba62-c01fe032b5b7` | Route Jenny's drawing/source organization and review packets here. | Uses Email Monitor for delivery. |
 | LD Evans | `ld-evans` | `019f6ffe-d7b7-71f0-87d7-17b8e453f59e` | Route LD Evans manuscript/source work here. | Uses Email Monitor for delivery. |
 | Lowes Order | `lowes-order` | `019f5845-fb96-7370-baf2-b8f00fddffae` | Route Lowes order workflow work here if still active. | Determine active/archive status when next used. |
+| Marketplace | `marketplace` | pending | Route Facebook Marketplace tool sourcing, resale-profit evaluation, Messenger offer/conversation work, and seller-agreement reporting here. | Requires authorized Facebook/Messenger browser session; email notifications use Email Delivery rules. |
 | Manager | `manager` | `019f8274-5b7e-7170-a051-f7944954de82` | Route Josh/manager task-register work here. | Email Monitor obtains Manager Tasks from this task. |
 | New Project | `new-project` | pending | Route new real-estate project setup workflow here. | Create PR owns PR creation; New Project owns property project creation workflow. |
 | Operating Agreements | `operating-agreement` | pending | Route operating-agreement drafting and source work here. | Skill folder name is singular. Rename only with explicit authorization. |
