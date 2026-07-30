@@ -69,3 +69,12 @@ The files were moved after destination, file-count, and byte-total verification.
 | July 29 update PDF and render preview for Josh Kennedy week ending 2026-07-31 | `Generated\2026-07-30-JK-Week31-Update` | 2 | 186,689 | generated Time Card invoice and visual-QA evidence |
 
 The files were moved after destination, file-count, and byte-total verification. The weekly structured packet and delivery evidence remain in the Invoice Entry working records.
+
+## Additional Cleanup Recorded 2026-07-30
+
+| Local source under `Project Rooms\Invoice Entry` | Teams destination under `Invoice Entry Working Archive` | Files | Bytes | Category |
+| --- | --- | ---: | ---: | --- |
+| Outside-person internal invoice template PDF and render preview | `Generated\2026-07-30-Outside-Person-Invoice-Template-Draft` | 2 | 163,563 | template-review PDF and visual-QA evidence |
+| `sources\email\2026-07-30-132551-wes-forward-tim-fleming-hours-week-2026-07-29.md` | `Source Documents\2026-07-30 Tim Fleming Multi-Project Hours\email` | 1 | 1,120 | routed Tim Fleming hours source |
+
+The template artifacts were file-count and byte-total verified. The Tim source was moved to the recorded archive destination and its destination byte count was verified. The proposed template generator remains in the project room for Wes-requested review revisions.
