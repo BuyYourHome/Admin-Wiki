@@ -78,3 +78,11 @@ The files were moved after destination, file-count, and byte-total verification.
 | `sources\email\2026-07-30-132551-wes-forward-tim-fleming-hours-week-2026-07-29.md` | `Source Documents\2026-07-30 Tim Fleming Multi-Project Hours\email` | 1 | 1,120 | routed Tim Fleming hours source |
 
 The template artifacts were file-count and byte-total verified. The Tim source was moved to the recorded archive destination and its destination byte count was verified. The proposed template generator remains in the project room for Wes-requested review revisions.
+
+## Canonical Template Replacement Archive Recorded 2026-07-30
+
+| Local source under `Project Rooms\Invoice Entry` | Teams destination under `Invoice Entry Working Archive` | Files | Bytes | Category |
+| --- | --- | ---: | ---: | --- |
+| Josh replacement PDFs, Tim verification drafts, structured generator inputs, and render previews | `Generated\2026-07-30-Canonical-Template-Replacements` | 15 | 660,075 | canonical-format invoice generation and visual-QA evidence |
+
+The files were copied, verified by file count and byte total, and removed from the Admin wiki working tree. Josh's two authoritative SharePoint PDFs were replaced at their existing paths. Tim's three PDFs remain verification drafts pending his response and Wes's later approval.

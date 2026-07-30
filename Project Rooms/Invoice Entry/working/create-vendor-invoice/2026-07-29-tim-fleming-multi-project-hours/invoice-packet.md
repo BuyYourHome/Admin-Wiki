@@ -2,11 +2,11 @@
 
 ## Packet Status
 
-- Status: `Structured and duplicate-checked - invoice generation held pending Wes approval of the outside-person invoice template`
+- Status: `Three project-specific drafts generated and sent for Tim verification`
 - Workflow: `Create Vendor Invoice`
 - Created: 2026-07-30
 - Source type: Routed free-text contractor-hours email; no invoice attachment.
-- Vendor verification: not requested yet.
+- Vendor verification: requested and sent on 2026-07-30 through Email Delivery request `IE-EMAIL-20260730-TIM-MULTIPROJECT-VERIFY-001`; awaiting Tim's response.
 - Teams filing and spreadsheet insertion: not authorized before vendor verification and Wes approval.
 
 ## Source
@@ -61,8 +61,24 @@ Project totals:
 
 The project-spreadsheet register is only a lookup aid. Each workbook must be freshly verified from the SharePoint `Property` root before any future edit.
 
-## Hold Decision
+## Generated Drafts
 
-Do not generate or send the three vendor-verification invoices yet.
+The approved outside-person invoice template was used to generate:
 
-Wes requested a corrected outside-person invoice format and is reviewing the proposed template. Generating these invoices with the existing template would repeat the issuer/customer error, while using the proposed template before approval would prematurely adopt it. Resume document generation after Wes approves or revises the template.
+- `26-07-29 - Tim Fleming - 7001 Outrigger Dr - Invoice Draft.pdf`
+- `26-07-29 - Tim Fleming - 908 Pond St - Invoice Draft.pdf`
+- `26-07-29 - Tim Fleming - 4121 Tensity Dr - Invoice Draft.pdf`
+
+Each draft identifies Tim Fleming as the invoice issuer and Buy Your Home as the customer. Visual validation passed for all three PDFs.
+
+Email Delivery sent and verified the package at `2026-07-30T13:48:56Z`:
+
+- Sender: `OfficeAssist@BuyYourHomeLLC.com`
+- To: `Tim Fleming <tflem04@gmail.com>`
+- CC: `WesWill@BuyYourHomeLLC.com`; `Jenny@BuyYourHomeLLC.com`
+- Sent message id: `AQMkADZkMGMwNDI3LWU5ZjctNDgzMC1iMjdkLTY0NmRiN2IwNmIyZgBGAAADKGOvWJYjX0aEKaRpd0MYQQcAVSXargQY20aF7RLCkro4ggAAAgEJAAAAVSXargQY20aF7RLCkro4ggACgMgFMgAAAA==`
+- Verification: exact sender, recipients, subject, body, and all three non-inline PDF attachments passed OfficeAssist Sent Items verification.
+
+## Current Hold
+
+Wait for Tim to verify the dates, project assignments, hours, rate, and amounts. Tim's verification will not constitute approval or payment authorization. After Tim verifies the package, route it to Wes for separate approval. Do not file the drafts to project folders or insert them into project workbooks before that approval.

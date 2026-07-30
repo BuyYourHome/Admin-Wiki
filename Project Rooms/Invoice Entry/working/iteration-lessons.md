@@ -294,3 +294,15 @@ Lessons:
 - If an approved project cost has no approved Vendor Tabs destination, add it to the project's Review table with a stable Review Row ID, blank `Destination Worksheet`, and `Needs Review`. Do not guess a tab.
 - For large macro-enabled workbooks, use Excel's native `Find` for targeted duplicate checks and package-level formula/error fingerprints for integrity validation. A cell-by-cell COM scan can time out without adding confidence.
 - If the authorized BackOffice filing folder does not exist, verify the exact SharePoint parent and create only `Office Admin/Invoices & Receipts`.
+
+## 2026-07-30 - Outside-Person Invoice Identity
+
+Context: A Josh Kennedy reference invoice visually appeared to come from Buy Your Home even though Josh was the outside person billing the company.
+
+Lessons:
+
+- When Invoice Entry creates an invoice for an outside person or vendor, show that outside party as the invoice issuer and primary identity.
+- Show Buy Your Home as the customer. Do not present Buy Your Home as the issuer of an invoice payable to the outside party.
+- Generate the PDF from structured invoice data with the canonical generator so the invoice can be reproduced without editing an older PDF.
+- Replacing an approved stored PDF to correct presentation does not require a workbook edit when the invoice number, date, lines, amount, approval state, and payment state are unchanged.
+- Sent email records are historical evidence and cannot be replaced. Do not send a duplicate message solely because the stored PDF format was corrected.

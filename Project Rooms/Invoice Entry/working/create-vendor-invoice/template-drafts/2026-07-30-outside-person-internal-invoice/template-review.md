@@ -1,17 +1,19 @@
-# Outside Person Internal Invoice Template Draft
+# Outside Person Internal Invoice Template Review
 
 ## Status
 
-- Draft created for Wes review.
-- Not yet approved as the canonical Create Vendor Invoice template.
+- Approved by Wes on 2026-07-30.
+- Adopted as the canonical Create Vendor Invoice format for invoices Invoice Entry creates for outside people or vendors.
 - Reference invoice: `TC-JK-20260724-BACKOFFICE-001`.
 
-## Proposed Change
+## Approved Format
 
 - The outside person or vendor is the invoice issuer and primary visual identity.
 - Buy Your Home is shown as the customer.
 - Project or internal bucket remains visible as routing information.
-- The document remains clearly marked as a template draft until Wes approves it.
+- Draft or approval wording must reflect the invoice's current workflow stage.
+- The canonical source is `C:\Codex\Wiki Files\skills\invoice-entry\templates\create-vendor-invoice-polished-invoice-template.md`.
+- The reusable generator is `C:\Codex\Wiki Files\skills\invoice-entry\scripts\create-outside-person-invoice.py`.
 
 ## Review Delivery
 
@@ -26,4 +28,4 @@
 - Sent message id: `AQMkADZkMGMwNDI3LWU5ZjctNDgzMC1iMjdkLTY0NmRiN2IwNmIyZgBGAAADKGOvWJYjX0aEKaRpd0MYQQcAVSXargQY20aF7RLCkro4ggAAAgEJAAAAVSXargQY20aF7RLCkro4ggACgMgFMQAAAA==`
 - Verification: OfficeAssist Sent Items confirmed Wes as the only recipient, no CC/BCC recipients, the exact subject, and the required PDF attachment.
 - Archived PDF and render: `C:\Users\wesbr\Buy Your Home\Buy Your Home - Office Admin\Scanned Files\Invoice Entry Working Archive\Generated\2026-07-30-Outside-Person-Invoice-Template-Draft`
-- Draft generator remains in the project room because Wes may request revisions before approving the canonical template.
+- Wes approved the format by instructing Invoice Entry to make it the template and use it to replace the prior Josh and Tim documents.

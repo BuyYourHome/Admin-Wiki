@@ -128,3 +128,13 @@
 - Replaced the same SharePoint workbook and verified the round-trip SHA-256 matched the edited local file: `789295CF22FF5D1A53B1736310C2F8389BBFD6F523B3D3FB399820D0595DDCC9`.
 - Email Monitor completed delivery request `IE-EMAIL-20260729-JOSH-TIMECARD-APPROVED-001` at `2026-07-29T20:27:10Z`. OfficeAssist Sent Items verified Josh as recipient, Wes and Jenny as CC recipients, the unchanged weekly subject, and both approved PDFs.
 - Archived 12 approval-run files totaling 3,938,996 bytes and the 1,903-byte routed approval source under the Invoice Entry Working Archive after verification.
+
+## 2026-07-30 - Canonical Format Replacement
+
+- Regenerated the approved BackOffice and Tensity invoices from the accumulated weekly source data using the approved outside-person invoice template.
+- Preserved invoice numbers, invoice date, line items, hours, rate, totals, worker verification, Wes approval, and payment status.
+- Corrected the document identity so Josh Kennedy is the invoice issuer and Buy Your Home is the customer.
+- Rendered and visually inspected both PDFs with no clipping, overlap, or missing financial data.
+- Replaced the existing BackOffice PDF in `Office Admin/Invoices & Receipts` and the existing Tensity PDF in `Property/24-HM - 4121 Tensity Dr/Owning/Invoices`.
+- Did not edit the project workbook because the replacement changed presentation only and did not change any approved invoice fact or amount.
+- Did not send a duplicate status email; prior sent messages remain historical delivery evidence and cannot be replaced.

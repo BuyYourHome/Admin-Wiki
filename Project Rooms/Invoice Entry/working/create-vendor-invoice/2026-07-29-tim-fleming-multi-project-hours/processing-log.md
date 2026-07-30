@@ -16,3 +16,13 @@
 - Found no existing Invoice Entry records for the three proposed invoice numbers.
 - Held PDF generation and vendor verification because Wes is reviewing a corrected outside-person invoice template. No unapproved template was adopted.
 - Did not contact Tim, file documents in Teams, or edit project workbooks.
+
+## 2026-07-30 - Template Approval And Vendor Verification
+
+- Wes approved the outside-person invoice format as the canonical template.
+- Generated three project-specific drafts from the structured packet using the canonical generator.
+- Verified that Tim Fleming is shown as the invoice issuer and Buy Your Home as the customer.
+- Rendered and visually inspected all three PDFs. Invoice numbers, dates, project identities, lines, rates, and totals are legible with no clipping or overlap.
+- Sent Email Delivery request `IE-EMAIL-20260730-TIM-MULTIPROJECT-VERIFY-001` to Tim Fleming, with Wes and Jenny copied, requesting verification of the three drafts.
+- Email Delivery returned `Sent and Verified` at `2026-07-30T13:48:56Z`. OfficeAssist Sent Items confirmed Tim as recipient, Wes and Jenny as CC recipients, the exact multi-project subject and body, and all three non-inline PDF attachments. Sent message id: `AQMkADZkMGMwNDI3LWU5ZjctNDgzMC1iMjdkLTY0NmRiN2IwNmIyZgBGAAADKGOvWJYjX0aEKaRpd0MYQQcAVSXargQY20aF7RLCkro4ggAAAgEJAAAAVSXargQY20aF7RLCkro4ggACgMgFMgAAAA==`.
+- Kept Teams filing and all project-workbook edits on hold pending Tim's verification and Wes's later approval.
