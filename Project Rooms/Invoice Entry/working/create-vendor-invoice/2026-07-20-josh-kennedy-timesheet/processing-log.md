@@ -138,3 +138,10 @@
 - Replaced the existing BackOffice PDF in `Office Admin/Invoices & Receipts` and the existing Tensity PDF in `Property/24-HM - 4121 Tensity Dr/Owning/Invoices`.
 - Did not edit the project workbook because the replacement changed presentation only and did not change any approved invoice fact or amount.
 - Did not send a duplicate status email; prior sent messages remain historical delivery evidence and cannot be replaced.
+
+## 2026-07-30 - Wes-Only Corrected Invoice Resend
+
+- At Wes's request, handed the two corrected week-ending 2026-07-24 PDFs to Email Delivery for a Wes-only resend.
+- Email Delivery request `IE-EMAIL-20260730-JOSH-CORRECTED-WES-ONLY-001` returned `Sent and Verified`.
+- OfficeAssist Sent Items verified the message at `2026-07-30T14:00:48Z` with `WesWill@BuyYourHomeLLC.com` as the only recipient, no CC or BCC, the exact subject and body, and both corrected non-inline PDF attachments.
+- Sent message id: `AQMkADZkMGMwNDI3LWU5ZjctNDgzMC1iMjdkLTY0NmRiN2IwNmIyZgBGAAADKGOvWJYjX0aEKaRpd0MYQQcAVSXargQY20aF7RLCkro4ggAAAgEJAAAAVSXargQY20aF7RLCkro4ggACgMgFMwAAAA==`.
