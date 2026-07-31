@@ -38,7 +38,7 @@ Out of scope:
 
 Status: active.
 
-The dedicated Marketplace chat is active and ready to receive Marketplace requests. This Project Room pursues Facebook Marketplace tools, evaluates profitable resale pricing, uses Messenger to make offers and engage sellers within approved authority, and emails Wes if an agreement is reached.
+The dedicated Marketplace chat is active and ready to receive Marketplace requests. This Project Room pursues Facebook Marketplace tools, evaluates profitable resale pricing, uses Messenger to make offers and engage sellers within approved authority, and emails Wes if an agreement is reached. An active heartbeat checks tracked seller conversations that are awaiting responses.
 
 ## Matching Skill
 
@@ -48,6 +48,19 @@ The dedicated Marketplace chat is active and ready to receive Marketplace reques
 
 - Chat name: `Marketplace`
 - Thread id: `019fb5b0-6c29-7b32-822b-aa13b5920c29`
+
+## Seller Response Heartbeat
+
+- Automation id: `marketplace-seller-response-monitor`.
+- Status: active.
+- Schedule: every 15 minutes from 8:00 AM through 9:45 PM Eastern, daily.
+- Target: this Marketplace chat.
+- Check only tracked seller conversations whose register status indicates that a response is pending.
+- Stay quiet and make no file or Git changes when no new response exists.
+- Record new responses without processing the same message twice.
+- Continue only concise, non-binding negotiation at or below the listing's recorded maximum safe offer.
+- If the seller accepts, appears ready to agree, or offers a profitable counter within the recorded maximum, stop and notify Wes through Email Delivery before any commitment.
+- Payment, deposits, reservations, pickup scheduling, shipping, addresses, phone numbers, and other commitments remain gated to Wes.
 
 ## Start PR
 
