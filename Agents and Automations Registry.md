@@ -28,7 +28,7 @@ Use [[Agent Unit Standard]] for the standard package behind an agent-like operat
 | Manager | Wiki-managed skill plus project room plus dedicated chat | Draft | On demand | `skills\manager\SKILL.md`; `Project Rooms\Manager\README.md` |
 | Codex Environment | Wiki-managed skill plus project room plus dedicated chat | Draft | On demand | `skills\codex-environment\SKILL.md`; `Project Rooms\Codex Environment\README.md` |
 | Computers | Wiki-managed skill plus project room plus dedicated chat | Draft | On demand | `skills\computers\SKILL.md`; `Project Rooms\Computers\README.md` |
-| Marketplace | Wiki-managed skill plus project room plus dedicated chat | Draft | On demand | `skills\marketplace\SKILL.md`; `Project Rooms\Marketplace\README.md` |
+| Marketplace | Wiki-managed skill plus project room plus dedicated chat | Active | On demand | `skills\marketplace\SKILL.md`; `Project Rooms\Marketplace\README.md` |
 | SOPs | Wiki-managed skill plus project room | Active | On demand | `skills\sops\SKILL.md`; `Project Rooms\SOPs\README.md`; `Project Rooms\SOPs\outputs\SOP Index.md` |
 | Credit Worthiness Evaluator | Wiki-managed skill plus project room | Active | On demand | `skills\credit-worthiness-evaluator\SKILL.md`; `Project Rooms\Credit Worthiness Evaluator\README.md` |
 | Contract for Deed | Wiki-managed skill plus project room | Active | On demand | `skills\contract-for-deed\SKILL.md`; `Project Rooms\Contract for Deed\README.md` |
@@ -744,7 +744,7 @@ Important rules:
 
 Type: wiki-managed skill plus project room plus dedicated chat.
 
-Status: draft.
+Status: active.
 
 Purpose:
 
@@ -760,7 +760,7 @@ Defined in:
 
 Dedicated chat:
 
-- Thread id: `pending until the dedicated chat is created`
+- Thread id: `019fb5b0-6c29-7b32-822b-aa13b5920c29`
 
 Important rules:
 
