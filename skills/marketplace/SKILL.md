@@ -56,6 +56,10 @@ Before Marketplace file work:
 - Do not send an offer above the recorded maximum safe offer.
 - Do not agree to buy, pay, place a deposit, reserve, schedule pickup, exchange addresses, exchange phone numbers, ship, or otherwise make a binding commitment without Wes's specific approval for the exact deal.
 - If a seller asks for payment method, deposit, off-platform contact, delivery, shipping, address, or pickup timing, stop and ask Wes unless he already approved that exact next step.
+- After Wes specifically approves proceeding with an exact deal and pickup, Marketplace has standing authority to ask the seller for a local callable phone number. Wes must receive that number before he leaves to pick up or buy the listing.
+- Do not mark a deal ready for pickup, tell Wes to depart, or treat pickup logistics as complete until the seller has provided a local phone number that Wes can call.
+- Do not send Wes's phone number or another Buy Your Home phone number to the seller without separate specific approval.
+- Keep the actual seller phone number out of Git-tracked files. Record only whether the local number was received and whether any apparent problem remains; leave the number in Messenger or another approved private channel needed for the deal.
 - Do not buy restricted, illegal, recalled, unsafe, counterfeit, stolen, or suspicious goods.
 
 ## Evaluation Fields

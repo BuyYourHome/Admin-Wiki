@@ -61,6 +61,7 @@ The dedicated Marketplace chat is active and ready to receive Marketplace reques
 - Continue only concise, non-binding negotiation at or below the listing's recorded maximum safe offer.
 - If the seller accepts, appears ready to agree, or offers a profitable counter within the recorded maximum, stop and notify Wes through Email Delivery before any commitment.
 - Payment, deposits, reservations, pickup scheduling, shipping, addresses, phone numbers, and other commitments remain gated to Wes.
+- Once Wes specifically approves an exact deal and pickup, the heartbeat may ask the seller for a local callable phone number. Do not tell Wes to leave for pickup until that number has been received.
 
 ## Start PR
 
@@ -86,6 +87,9 @@ This room is dispatcher-ready under `C:\Codex\Wiki Files\Project Room Chat Start
 - Offers should be non-deceptive and concise, such as asking whether the seller would accept the offered amount.
 - Do not agree to buy, pay, meet, pick up, ship, send a deposit, provide an address, exchange phone numbers, or make a binding commitment without Wes's specific approval for that exact deal.
 - If the seller accepts or proposes a counteroffer that appears profitable, stop before commitment and send Wes an email notification through Email Monitor's Email Delivery mode or `skills\email-delivery\SKILL.md`.
+- For every approved pickup or purchase, obtain a local callable phone number from the seller before Wes leaves. This is a mandatory pre-departure requirement, not an optional seller-detail question.
+- After Wes approves the exact deal and pickup, Marketplace has standing authority to request the seller's local number. Do not send Wes's number to the seller without separate approval.
+- Do not store the actual seller phone number in Git. Record only that the number was received and whether it appears usable; retain the number only in Messenger or another approved private deal channel.
 
 ## Evaluation Standard
 

@@ -14,6 +14,14 @@
 - Marketplace has standing authority to send a concise, non-binding lower bid on a close deal only after the listing, resale estimate, expected costs, exact maximum safe offer, and recommended offer are recorded.
 - An initial offer must not exceed the recorded maximum safe offer. Seller acceptance does not authorize purchase, payment, pickup scheduling, address or phone exchange, or any other commitment; stop and notify Wes under the Marketplace agreement workflow.
 
+## Mandatory Pickup Phone Rule
+
+- Before Wes leaves to pick up tools or buy any Marketplace listing, the seller must provide a local phone number that Wes can call.
+- Once Wes has specifically approved the exact deal and pickup, Marketplace may ask the seller for that local number without requesting another approval.
+- A pickup is not ready and Wes should not be told to depart until the local number has been received.
+- Do not provide Wes's phone number to a seller without separate specific approval.
+- Do not place the seller's actual phone number in Git-tracked records. Record only whether the required local number was received and whether an apparent usability problem remains.
+
 ## Still Unresolved
 
 - Minimum profit in dollars per deal.
