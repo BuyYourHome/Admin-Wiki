@@ -36,9 +36,9 @@ Out of scope:
 
 ## Current Status
 
-Status: draft.
+Status: active.
 
-Wes requested a Project Room named Marketplace to pursue Facebook Marketplace tools, evaluate profitable resale pricing, use Messenger to make offers and engage sellers, and email Wes if an agreement is reached.
+The dedicated Marketplace chat is active and ready to receive Marketplace requests. This Project Room pursues Facebook Marketplace tools, evaluates profitable resale pricing, uses Messenger to make offers and engage sellers within approved authority, and emails Wes if an agreement is reached.
 
 ## Matching Skill
 
@@ -47,7 +47,7 @@ Wes requested a Project Room named Marketplace to pursue Facebook Marketplace to
 ## Dedicated Chat
 
 - Chat name: `Marketplace`
-- Thread id: `pending until the dedicated chat is created`
+- Thread id: `019fb5b0-6c29-7b32-822b-aa13b5920c29`
 
 ## Start PR
 
