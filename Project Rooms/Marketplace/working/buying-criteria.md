@@ -22,6 +22,15 @@
 - Do not provide Wes's phone number to a seller without separate specific approval.
 - Do not place the seller's actual phone number in Git-tracked records. Record only whether the required local number was received and whether an apparent usability problem remains.
 
+## Purchased-Listing Invoice Rule
+
+- When Wes confirms that he purchased a Marketplace listing, create one separate purchase-invoice request for that listing and route it to the existing Invoice Entry task.
+- Mark the purchase invoice `Paid - Cash` unless Wes identifies another payment method.
+- Treat the Marketplace seller as the invoice issuer and Buy Your Home as the customer. Include the purchase date, seller display name, listing title and URL, item description, and actual purchase amount.
+- Use `Marketplace resale inventory` as the project/property or cost destination unless Wes identifies a property or another business destination. Do not guess a project workbook or worksheet.
+- Keep seller phone numbers, pickup addresses, and other unnecessary personal contact details out of the invoice and Git records.
+- Create separate invoices for purchases from different sellers or separate listings, even when Wes reports them together.
+
 ## Still Unresolved
 
 - Minimum profit in dollars per deal.

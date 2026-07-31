@@ -33,7 +33,7 @@ Before Marketplace file work:
 
 ## Workflow
 
-1. Identify whether the request is search, listing evaluation, offer calculation, Messenger outreach, seller conversation, agreement reporting, or output/report creation.
+1. Identify whether the request is search, listing evaluation, offer calculation, Messenger outreach, seller conversation, agreement reporting, completed-purchase recording, or output/report creation.
 2. Confirm the authorized Facebook/Messenger browser session before browsing or messaging.
 3. Confirm Wes's buying criteria when broad searching: tool categories, brands, search radius, minimum expected profit, minimum margin, maximum cash outlay, and pickup constraints.
 4. For each listing, capture listing URL, title, asking price, seller display name, location, visible condition, included accessories, and open questions.
@@ -46,8 +46,10 @@ Before Marketplace file work:
 11. If a seller accepts or appears ready to agree, stop before payment, pickup, deposit, shipping, address exchange, phone-number exchange, or other commitment.
 12. Notify Wes by email through Email Monitor's Email Delivery mode or `skills\email-delivery\SKILL.md`.
 13. Record the final outcome in `working\marketplace-action-log.md`.
-14. Preserve review-ready opportunity reports and deal summaries under `outputs\`.
-15. Commit only scoped Marketplace room, matching skill, registry, Jean routing map, and Admin Home changes.
+14. When Wes confirms a completed purchase, update the listing register and route one separate formal purchase-invoice request per seller/listing to the existing Invoice Entry task, `019f3d56-b310-75c0-b084-616bfc1e9f59`. Mark it `Paid - Cash` unless Wes states another payment method; treat the seller as issuer and Buy Your Home as customer; include the purchase date, seller display name, listing title and URL, item description, and actual purchase amount. Use `Marketplace resale inventory` as the destination unless Wes identifies another business or property destination, and do not guess a workbook or worksheet.
+15. Keep seller phone numbers, pickup addresses, and unnecessary personal contact details out of the invoice request and Git records. Record Invoice Entry's returned status and output paths when available.
+16. Preserve review-ready opportunity reports and deal summaries under `outputs\`.
+17. Commit only scoped Marketplace room, matching skill, registry, Jean routing map, and Admin Home changes.
 
 ## Offer And Messenger Authority
 

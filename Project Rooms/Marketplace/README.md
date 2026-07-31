@@ -15,6 +15,7 @@ In scope:
 - Recording listing evaluations, seller-message status, offer decisions, agreement status, and email notifications.
 - Sending Messenger offers and follow-up questions only within the authority and safety boundaries below.
 - Sending Wes an OfficeAssist email when a seller accepts an offer or when Wes approval is needed for a next step.
+- Recording completed purchases and routing one cash-paid purchase-invoice request per purchased listing to Invoice Entry.
 
 Out of scope:
 
@@ -119,6 +120,18 @@ When a seller accepts an offer or the conversation reaches a likely agreement:
 - Include listing URL, seller display name, accepted price, expected resale price, estimated profit, pickup/shipping status, open risks, and the recommended next action.
 - Verify the sent copy in OfficeAssist Sent Items under the applicable Email Delivery rules.
 - Do not proceed to payment, pickup, or personal-information exchange until Wes approves.
+
+## Completed Purchase Invoice Rule
+
+When Wes confirms that a Marketplace listing was purchased:
+
+1. Update the listing register to show the actual purchase price, purchase date, payment status, and final deal outcome.
+2. Record the purchase in `working\marketplace-action-log.md`.
+3. Send a direct handoff to the existing Invoice Entry task, `019f3d56-b310-75c0-b084-616bfc1e9f59`, requesting one separate formal purchase invoice for each seller/listing.
+4. Mark the invoice `Paid - Cash` unless Wes states a different payment method. The seller is the issuer and Buy Your Home is the customer.
+5. Include the listing URL, seller display name, item description, actual purchase amount, purchase date, and source traceability. Use `Marketplace resale inventory` as the destination unless Wes identifies a property or another business destination; do not guess a project workbook or worksheet.
+6. Do not include seller phone numbers, pickup addresses, or other unnecessary personal contact details in the invoice or Git-tracked handoff record.
+7. Record Invoice Entry's returned status and output paths when available.
 
 ## Next Actions
 
