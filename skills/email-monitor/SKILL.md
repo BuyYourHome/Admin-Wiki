@@ -281,13 +281,23 @@ Activation:
 
 For each routed email:
 
-- preserve the Outlook message id or web link, sender, recipients, sent time when available, received time, subject, short body summary, and available attachment names/metadata in the handoff and monitor memory;
+- preserve the exact mailbox identity, Outlook message id and web link when available, attachment names/metadata, sender/recipient metadata, subject, timestamps, and routing evidence in Email Monitor compact state or `C:\Codex\Wiki Files\Project Rooms\Email Monitor\working\routing-action-log.md` when needed for duplicate prevention, audit, debugging, or follow-up;
 - when the connector or local mailbox path can safely retrieve attachments, save invoice attachments outside Git in the Invoice Entry Teams source/working archive location required by Invoice Entry's current rules and reference those external paths;
-- if an apparent invoice attachment cannot be retrieved, preserve the Outlook message link and report the attachment-access blocker in the handoff;
+- if an apparent invoice attachment cannot be retrieved, preserve the Outlook link and exact attachment-access blocker;
 - update `C:\Codex\Wiki Files\Project Rooms\Invoice Entry\working\source-inventory.md` or the current Invoice Entry intake ledger only with the Outlook reference, external path if any, summary, and status when the routed email becomes part of the durable source set;
-- record the routed Outlook message id in this workflow's monitor memory so the same email is not routed repeatedly;
-- send a direct follow-up message to the existing Invoice Entry task with the Outlook reference, external attachment paths or attachment blocker, a short summary of the vendor/project clues, and the instruction to process the invoice under Invoice Entry rules.
-- update `C:\Codex\Wiki Files\Project Rooms\Email Monitor\working\routing-action-log.md` when the routing result matters for audit, debugging, or follow-up, recording the source message, route branch, preserved Outlook reference or external source path, handoff target, status, and blocker or duplicate note.
+- record the routed Outlook message id in Email Monitor compact state so the same source is not routed repeatedly;
+- send the existing Invoice Entry task one concise handoff in this exact field order:
+  - `mailbox`: exact mailbox identity;
+  - `outlook_message_id`: exact Outlook message id;
+  - `outlook_link`: direct Outlook link when available, otherwise `unavailable`;
+  - `attachments`: absolute saved paths, `none`, or `blocked: <exact blocker>`;
+  - `summary`: short factual source summary;
+  - `requested_operation`: the specific operation requested by the source;
+  - `unique_warning`: only a warning specific to this source, such as a duplicate, amount conflict, missing quantity, ambiguous project, or authority limit; otherwise `none`.
+
+Do not reproduce Invoice Entry's standing rules, the full email body, quoted thread text, or prior processing history in the task handoff. Keep detailed routing evidence in Email Monitor's own state and logs. Use the same concise field format for Time Card, approval, correction, and paid-receipt routing.
+
+After submitting the handoff, do not send it again merely because Invoice Entry responds slowly or a task-message call times out. Reconcile the original handoff first by checking the original task result or status and waiting for the existing request when appropriate. Retry only after establishing that the original handoff was not accepted; preserve the same Outlook reference and note the reconciliation outcome in Email Monitor's routing log.
 
 Current Invoice Entry task id: `019f3d56-b310-75c0-b084-616bfc1e9f59`.
 
@@ -435,14 +445,13 @@ After successful delivery, immediately return this result to `callback_task_thre
 
 - `delivery_request_id`;
 - `status: Sent and Verified`;
-- sent message ID;
-- sent timestamp;
-- verified sender;
-- verified To recipients;
-- verified CC and BCC recipients;
-- subject;
-- attachment verification, including verified attachment names or the verified no-attachment state;
-- delivery notes, including any documented schema-correct retry.
+- `sent_message_id`;
+- `sent_timestamp`;
+- `recipients`, listing verified To, CC, and BCC values;
+- `subject`;
+- `attachment_verification`, listing verified attachment names or the verified no-attachment state.
+
+Keep the callback to those fields. Preserve sender verification, connector retry details, and other evidence in Email Monitor's own delivery records unless a mismatch or blocker must be reported.
 
 If sending or verification fails:
 
@@ -450,7 +459,7 @@ If sending or verification fails:
 - do not send through another mailbox;
 - keep the durable request status unresolved;
 - immediately report the blocker to Wes;
-- return a failure result to `callback_task_thread_id` with the request ID, failure stage, connector or verification result, unresolved status, and required next decision.
+- return a compact failure result to `callback_task_thread_id` with the request ID, unresolved status, failure stage, exact blocker, whether a send might have occurred, and required next decision.
 
 ## Priority Selection
 

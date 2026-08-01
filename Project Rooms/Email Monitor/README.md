@@ -100,6 +100,16 @@ This mode preserves the Outlook message id or web link, sender, summary, and att
 
 Email Monitor does not create or edit Manager tasks, infer task status changes, or perform the requested business action. Manager owns sender and task-id validation, task classification, status interpretation, authorization checks, and task-register updates.
 
+#### Route Vendor Invoice
+
+Use this branch for invoice, bill, receipt, statement, pay-application, payment-request, project-cost, and exact-subject `Time Card` sources that belong to Invoice Entry.
+
+Send Invoice Entry one concise handoff with these fields in order: exact `mailbox`, `outlook_message_id`, `outlook_link`, attachment paths or exact blocker, short factual `summary`, `requested_operation`, and `unique_warning`. Use `none` when there is no attachment or source-specific warning. Apply the same format to Time Card, approval, correction, and paid-receipt routing.
+
+Do not put Invoice Entry's standing rules, the full email body, quoted thread text, or prior processing history in the task message. Preserve detailed sender/recipient metadata, timestamps, attachment metadata, routing evidence, duplicate notes, and reconciliation history in Email Monitor compact state and `working\routing-action-log.md` as appropriate.
+
+Do not resend a handoff merely because Invoice Entry responds slowly or the task-message call times out. Reconcile the original handoff first by checking the existing task result or status and waiting when appropriate. Retry only after establishing that the original handoff was not accepted, preserving the same Outlook reference and recording the reconciliation outcome.
+
 ### Email Delivery
 
 Use this mode when this project room has an authorized email ready to send, another Email Monitor mode reaches its send step, or an authorized Project Room, including Invoice Entry, sends a complete direct delivery handoff. A direct handoff triggers immediately. It does not require mailbox scanning, an instruction email, the Email Monitor heartbeat, or a rerun of the originating workflow.
@@ -129,7 +139,7 @@ On this computer, OfficeAssist has no local Outlook mailbox. If the connector is
 
 If required attachments exceed connector limits or otherwise cannot be uploaded, Email Monitor must preserve the delivery request as unresolved unless `email-delivery` can use a verified OfficeAssist-capable alternate path. It must not substitute SharePoint links, compressed/reduced files, split packages, another sender, or a no-attachment email unless the requesting workflow or Wes explicitly authorizes that alternate package.
 
-After sending, verify the OfficeAssist Sent Items copy for sender, To, CC, BCC, subject, and attachment presence. On success, immediately return to the callback task/thread: request ID, `Sent and Verified`, sent message ID, sent timestamp, verified sender and recipients, subject, attachment verification, and delivery notes. On send or verification failure, preserve the unresolved request, report the blocker to Wes immediately, and return the failure stage and required decision to the callback task/thread without claiming success.
+After sending, verify the OfficeAssist Sent Items copy for sender, To, CC, BCC, subject, and attachment presence. On success, immediately return only the compact delivery result: request ID, `Sent and Verified`, sent message ID, sent timestamp, verified To/CC/BCC recipients, subject, and attachment verification. Preserve sender verification, connector retries, and other detailed evidence in Email Monitor's own records unless a mismatch or blocker must be reported. On send or verification failure, preserve the unresolved request, report the blocker to Wes immediately, and return a compact failure result with the request ID, unresolved status, failure stage, exact blocker, whether a send might have occurred, and required decision.
 
 ## Authoritative Sources
 
@@ -147,6 +157,8 @@ Use this room for development and design work. Do not change the live automation
 When the workflow changes, update the skill, this project room, and the registry together.
 
 ## Change Log
+
+- 2026-08-01: Standardized concise Invoice Entry routing handoffs for invoices, Time Cards, approvals, corrections, and paid receipts; moved detailed evidence to Email Monitor records; required reconciliation before any slow-response resend; and reduced successful delivery callbacks to verified result fields only.
 
 - 2026-08-01: Kept one stable Email Monitor chat, converted active memory to compact current state, added a single seven-day Teams rolling log at `Office Admin/Codex Logs/Email Monitor`, limited visible chat activity to meaningful events, and authorized `WesWill@BuyYourHomeLLC.com` as the temporary sender only when the OfficeAssist connector is definitively unavailable before send.
 
