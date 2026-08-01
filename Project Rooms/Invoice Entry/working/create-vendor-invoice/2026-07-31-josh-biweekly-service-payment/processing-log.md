@@ -15,3 +15,10 @@
 - OfficeAssist Sent Items confirmed Wes as the only recipient, no CC/BCC, the exact subject and body, and all three non-inline PDF attachments.
 - Created automation `josh-biweekly-service-payment-invoice` for every other Friday at 4:00 PM Eastern with cycle and invoice-number duplicate prevention.
 - Did not file the new documents to Teams, edit a workbook, approve the invoice, or initiate payment.
+
+## 2026-08-01 - Wes Denial
+
+- Wes denied invoice `SP-JK-20260731-001`.
+- Marked the invoice `Denied by Wes - Retired - Do Not Pay`.
+- The draft remains retained as historical evidence only and must not be approved, filed, posted, paid, or reused.
+- No email was sent, no workbook was edited, no Teams file was changed, and no payment action was taken.

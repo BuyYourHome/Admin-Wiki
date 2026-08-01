@@ -2,7 +2,7 @@
 
 ## Status
 
-- Payment invoice: `Draft - Awaiting Wes Approval`
+- Payment invoice: `Denied by Wes - Retired - Do Not Pay`
 - Allocation reports: `Internal - Not Payable`
 - Email Delivery: `Sent and Verified` to Wes only
 - Teams filing, workbook changes, and payment: not performed
@@ -20,7 +20,7 @@
 | Invoice total | `$2,500.00` |
 | Payment status | Not paid |
 
-This is the sole payable document for Josh for this cycle. The service period and invoice date establish the first recurring cycle requested by Wes on 2026-07-30.
+This draft was denied by Wes on 2026-08-01 and retired after the Time Card payment design changed. It is retained only as historical evidence. Do not approve, file, post, pay, or use invoice `SP-JK-20260731-001` as the basis for a future payment.
 
 ## Project Cost Allocation Reports
 
@@ -57,6 +57,8 @@ The reports replace `TC-JK-20260724-BACKOFFICE-001` and `TC-JK-20260724-TENSITY-
 
 ## Recurrence
 
+The recurrence information below is historical. The separate biweekly-invoice design has been retired and does not authorize another payable invoice:
+
 - Automation: `josh-biweekly-service-payment-invoice`
 - Schedule: every other Friday at 4:00 PM Eastern
 - First scheduled check: 2026-07-31
@@ -64,5 +66,6 @@ The reports replace `TC-JK-20260724-BACKOFFICE-001` and `TC-JK-20260724-TENSITY-
 
 ## Outstanding Decisions
 
-- Wes approval is still required before treating `SP-JK-20260731-001` as approved for payment.
+- No approval decision remains for `SP-JK-20260731-001`; Wes denied it on 2026-08-01.
+- Do not file, post, pay, or revive this invoice.
 - Existing Teams PDFs and the Tensity Review row still reflect the former invoice presentation and amount. Reconcile them only after Wes approves the allocation-report replacement and authorizes workbook processing.
