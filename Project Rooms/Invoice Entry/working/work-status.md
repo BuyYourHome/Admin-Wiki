@@ -54,12 +54,12 @@ This is the authoritative current-state register for Invoice Entry. Read it befo
 | GTI Stone Design Square receipt `1UXR`, 4121 Tensity Dr | Paid receipt filed once | Source gives no work category. Confirm destination worksheet or authorize Review placement without a destination. |
 | Lowe's held statement detail | Retained in `lowes-statement-held-detail-register.md` | Continue holding unclear, mixed, tax-only, non-project, accounting, incomplete-source, and OCR-uncertain rows until source or allocation decisions resolve them. |
 
-## Known Record Corrections Still Needed
+## Record Reconciliation
 
-- `source-inventory.md` incorrectly describes Josh's email received 2026-07-31 at `21:11:39Z` as a correction to July 30. The authoritative Outlook thread supports July 30 as 6:00 AM-5:00 PM and July 31 as 6:00 AM-4:20 PM under the email-date rule.
-- `missing-context.md` still carries a stale week-ending 2026-07-31 Josh summary from before July 30-31 were added.
-- Older Josh packet and email-package sections describe Project Cost Allocation Reports as non-payable. Those statements are historical and were superseded by the 2026-08-01 Time Card rule making each destination report the payable invoice.
-- Detailed record cleanup must preserve the historical sequence while labeling superseded rules. Until that cleanup is complete, use this file and the latest packet status rather than an older narrative paragraph.
+- Josh's July 30 and July 31 Outlook sources are reconciled as separate shifts under the email-date rule.
+- The week-ending 2026-07-31 queue and packet now reflect 51 hours 55 minutes and the `$1,250.00` payable Project Cost Allocation Report/invoice.
+- Older non-payable language remains only as labeled historical chronology and is superseded by the 2026-08-01 Time Card rule.
+- Active JSON and email-delivery evidence remains intentionally untracked until finalization; the packet records its retention and disposition rule.
 
 ## Safety Holds
 

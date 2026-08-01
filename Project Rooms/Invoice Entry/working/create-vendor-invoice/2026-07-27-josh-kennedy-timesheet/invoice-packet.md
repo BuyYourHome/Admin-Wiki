@@ -2,8 +2,8 @@
 
 ## Packet Status
 
-- Status: `Final weekly allocation report sent for worker verification - response pending`
-- Workflow: `Time Card`, generating a non-payable Project Cost Allocation Report
+- Status: `Payable Project Cost Allocation Report sent to Wes - approval pending`
+- Workflow: `Time Card`, generating a payable Project Cost Allocation Report and invoice
 - Created: 2026-07-27
 - Source type: Routed free-text Time Card email; no attachment
 
@@ -55,15 +55,15 @@ Final-week source additions:
 
 | Report # | Project | Work date | Hours | Allocated cost | Status |
 | --- | --- | --- | ---: | ---: | --- |
-| `PCA-JK-20260731-TENSITY-001` | `24-HM - 4121 Tensity Dr` | `2026-07-27` | 11.00 | `$264.85` | Draft for worker time verification |
-| `PCA-JK-20260731-TENSITY-001` | `24-HM - 4121 Tensity Dr` | `2026-07-28` | 9.50 | `$228.73` | Draft for worker time verification |
-| `PCA-JK-20260731-TENSITY-001` | `24-HM - 4121 Tensity Dr` | `2026-07-29` | 10.08 | `$242.78` | Draft for worker time verification |
-| `PCA-JK-20260731-TENSITY-001` | `24-HM - 4121 Tensity Dr` | `2026-07-30` | 11.00 | `$264.85` | Draft for worker time verification |
-| `PCA-JK-20260731-TENSITY-001` | `24-HM - 4121 Tensity Dr` | `2026-07-31` | 10.33 | `$248.79` | Draft for worker time verification |
+| `PCA-JK-20260731-TENSITY-001` | `24-HM - 4121 Tensity Dr` | `2026-07-27` | 11.00 | `$264.85` | Draft - Awaiting Wes Approval |
+| `PCA-JK-20260731-TENSITY-001` | `24-HM - 4121 Tensity Dr` | `2026-07-28` | 9.50 | `$228.73` | Draft - Awaiting Wes Approval |
+| `PCA-JK-20260731-TENSITY-001` | `24-HM - 4121 Tensity Dr` | `2026-07-29` | 10.08 | `$242.78` | Draft - Awaiting Wes Approval |
+| `PCA-JK-20260731-TENSITY-001` | `24-HM - 4121 Tensity Dr` | `2026-07-30` | 11.00 | `$264.85` | Draft - Awaiting Wes Approval |
+| `PCA-JK-20260731-TENSITY-001` | `24-HM - 4121 Tensity Dr` | `2026-07-31` | 10.33 | `$248.79` | Draft - Awaiting Wes Approval |
 
 Current accepted time: 51 hours 55 minutes. Current weekly project-cost allocation: `$1,250.00`.
 
-This report is an internal allocation record. It is not an invoice, is not payable, and does not determine Josh's biweekly service payment.
+Current rule: this Project Cost Allocation Report also serves as the payable invoice. The separate Josh biweekly service-payment invoice is retired and must not create another payment obligation.
 
 Generated PDF:
 
@@ -81,6 +81,8 @@ Generated PDF:
 - No workbook duplicate check was performed because this is an in-week draft and spreadsheet posting is held.
 
 ## Processing Decision
+
+The entries through the final correction-by-exception delivery preserve the decisions and rules in effect when each action occurred. References below to a non-payable allocation report or a separate biweekly invoice are historical and were superseded by the 2026-08-01 payable-report rule.
 
 - Created a new week-ending 2026-07-31 packet instead of amending the verified week-ending 2026-07-24 package.
 - Superseded the in-week invoice draft with a non-payable Project Cost Allocation Report under the finalized Time Card rules.
@@ -100,3 +102,15 @@ Generated PDF:
 - Email Monitor sent and verified the final regenerated report under delivery request `IE-EMAIL-20260801-JOSH-TIMECARD-FINAL-VERIFY-001` at `2026-08-01T14:06:42Z`.
 - Sent message id: `AQMkADZkMGMwNDI3LWU5ZjctNDgzMC1iMjdkLTY0NmRiN2IwNmIyZgBGAAADKGOvWJYjX0aEKaRpd0MYQQcAVSXargQY20aF7RLCkro4ggAAAgEJAAAAVSXargQY20aF7RLCkro4ggACgUDabgAAAA==`.
 - OfficeAssist Sent Items verified Josh as recipient, Wes and Jenny copied, the unchanged week-ending subject, and the required non-inline PDF attachment. The first scalar attachment attempt failed before delivery; the single schema-correct list retry succeeded, and no duplicate email was sent.
+- The Time Card rules changed on 2026-08-01 so each Project Cost Allocation Report also serves as the payable invoice; the separate biweekly service-payment invoice was retired.
+- Regenerated report/invoice `PCA-JK-20260731-TENSITY-001` with invoice date July 31, 2026, issuer Josh Kennedy, customer Buy Your Home, status `Draft - Awaiting Wes Approval`, and amount due `$1,250.00`. Visual validation passed.
+- Email Monitor sent the regenerated payable report/invoice to Wes only under delivery request `IE-EMAIL-20260801-JOSH-TIMECARD-WES-APPROVAL-001` and subject `Invoice Approval - Josh Kennedy`.
+- OfficeAssist Sent Items verification passed at `2026-08-01T17:56:29Z`; message id `AQMkADZkMGMwNDI3LWU5ZjctNDgzMC1iMjdkLTY0NmRiN2IwNmIyZgBGAAADKGOvWJYjX0aEKaRpd0MYQQcAVSXargQY20aF7RLCkro4ggAAAgEJAAAAVSXargQY20aF7RLCkro4ggACgUDacAAAAA==`. The required 4,190-byte PDF was attached, with no CC or BCC.
+- Teams filing, project-workbook posting, and payment remain incomplete while Wes approval is pending. If Wes does not approve, correct, or deny by the first Invoice Entry processing check on Monday, apply the current automatic-finalization rule.
+
+## Active Working Artifact Retention
+
+- `allocation-report.json` is the structured generation input for the current payable report/invoice.
+- `time-card-verification-email-2026-08-01.md` and `time-card-approval-email-2026-08-01.md` preserve the exact delivery handoffs and returned verification evidence.
+- Retain these active working artifacts outside Git until the week-ending package is finalized and its filing and workbook reconciliation are complete. Do not stage them as durable wiki records.
+- After finalization, keep the authoritative outcome in this packet, `processing-log.md`, and `work-status.md`, then archive or remove the temporary artifacts under the established Invoice Entry working-file retention rule.

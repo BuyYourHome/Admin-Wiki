@@ -1,5 +1,7 @@
 # Processing Log - Josh Kennedy - Week Ending 2026-07-31
 
+Historical entries record the rules in effect when each action occurred. The 2026-08-01 payable-report section supersedes earlier statements that the Project Cost Allocation Report was non-payable or that a separate biweekly service-payment invoice controlled payment.
+
 ## 2026-07-27
 
 - Received Email Monitor Time Card handoff for `2026-07-27-182415-josh-kennedy-time-card-update.md`.
@@ -72,3 +74,13 @@
 - Email Monitor returned `Sent and Verified` at `2026-08-01T14:06:42Z`. OfficeAssist Sent Items verified Josh as recipient, Wes and Jenny copied, and the required 4,145-byte non-inline PDF attachment.
 - The first connector call rejected the scalar attachment shape before delivery. The one permitted schema-correct list retry succeeded, and Email Monitor verified that no duplicate message was sent.
 - Final Teams filing and project-workbook processing remain held pending Josh's reply and Wes's separate approval.
+
+## 2026-08-01 - Payable Report Regeneration And Wes Approval Delivery
+
+- Applied the revised Time Card rule: each destination Project Cost Allocation Report is also the payable invoice, and no separate biweekly service-payment invoice is created.
+- Regenerated `PCA-JK-20260731-TENSITY-001` with invoice date July 31, 2026, status `Draft - Awaiting Wes Approval`, 51 hours 55 minutes, and amount due `$1,250.00`.
+- Visually inspected the regenerated PDF; invoice identity, dates, hours, destination, status, and amount were legible with no clipping or overlap.
+- Submitted Email Delivery request `IE-EMAIL-20260801-JOSH-TIMECARD-WES-APPROVAL-001` to Wes only, with no CC or BCC, under subject `Invoice Approval - Josh Kennedy`.
+- Email Monitor returned `Sent and Verified` at `2026-08-01T17:56:29Z`. OfficeAssist Sent Items verified the exact sender, recipient, empty CC/BCC, subject, body, and required 4,190-byte PDF attachment.
+- Sent message id: `AQMkADZkMGMwNDI3LWU5ZjctNDgzMC1iMjdkLTY0NmRiN2IwNmIyZgBGAAADKGOvWJYjX0aEKaRpd0MYQQcAVSXargQY20aF7RLCkro4ggAAAgEJAAAAVSXargQY20aF7RLCkro4ggACgUDacAAAAA==`.
+- No Teams filing, project-spreadsheet posting, payment, or paid-status update was performed.
