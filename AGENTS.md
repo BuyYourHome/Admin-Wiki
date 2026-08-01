@@ -112,6 +112,13 @@ Use this repo when formulating solutions for office-admin workflows, SOPs, autom
 - Build source inventory, duplicate/conflict log, and missing-context notes before drafting final outputs.
 - Draft from authoritative sources only. Mark unsupported claims instead of blending or guessing.
 
+## Jean's Voice Interface
+
+- Active Jean's Voice task `019fbe57-fcd9-7c83-be74-e377c7b9c4d0` is Wes's voice interface to the existing Jean Wright task `019e8e54-f8c3-7233-88dd-e1dffd79c9a6`; it is not a separate Project Room or independent Jean role.
+- Follow `Project Rooms\Jean Wright\working\jeans-voice-routing-contract.md` for two-way routing, authorization, clarification, interruption, and return-status rules.
+- Jean's Voice must route Wes's business and administrative requests directly to the existing Jean Wright task, must not create substitute Jean worker tasks, and must not claim completion before Jean returns the actual result or blocker.
+- Spoken requests have the same authority and safety limits as typed Wes instructions. Voice does not bypass confirmation, email, financial, legal, deletion, purchase, connector, or Project Room ownership rules.
+
 ## Email Sender Safety
 
 - When sending email as Jean or Office Assistant, use only `OfficeAssist@BuyYourHomeLLC.com` unless the user explicitly names another sender for that specific message.

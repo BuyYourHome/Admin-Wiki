@@ -45,6 +45,7 @@ Out of scope:
 - `working\missing-context.md` - open decisions about Jean's authority, routing, connectors, or automations.
 - `working\dispatcher-routing-map.md` - Project Room routing map used by Jean Dispatcher mode.
 - `working\dispatcher-action-log.md` - durable log of cross-PR handoffs, monitored dispatches, and delivery-related dispatches.
+- `working\jeans-voice-routing-contract.md` - two-way routing contract between the active Jean's Voice task and this Jean Wright task.
 - `outputs\` - review-ready role summaries, checklists, or handoff drafts.
 
 ## Dedicated Chat
@@ -52,6 +53,7 @@ Out of scope:
 - Chat name: current Admin Operations / Jean Wright chat.
 - Purpose: operate and improve Jean Wright / Office Assistant as a PR-backed role.
 - Do not create another Jean Wright chat unless Wes explicitly asks.
+- Active Jean's Voice task: `019fbe57-fcd9-7c83-be74-e377c7b9c4d0`. It is a voice interface to this chat, not another Jean Wright chat or Project Room.
 
 ## Branch And Modes
 
@@ -106,6 +108,17 @@ Trigger: Wes gives Jean a request that belongs to a specialized Project Room, as
 7. Record durable dispatches in `working\dispatcher-action-log.md`.
 8. Do not edit another PR's files, skill, automation, registry entry, or chat title unless Wes explicitly authorizes that exact cross-PR or global governance change.
 
+### Jean's Voice Intake Mode
+
+Trigger: the active Jean's Voice task sends a handoff from Wes.
+
+1. Follow `working\jeans-voice-routing-contract.md`.
+2. Treat the routed transcript as a direct Wes instruction with the same authority and safety rules as typed input.
+3. Confirm the voice handoff id and preserve attachments, links, and source references.
+4. Handle the request in Jean Wright or use Dispatcher Mode for specialized PR work.
+5. Return `accepted`, `done`, `blocked`, or `needs Wes` to the active Jean's Voice task with the same handoff id and a concise response suitable for speech.
+6. Do not require Jean's Voice to create a new worker task, and do not report completion until the governing workflow has actually completed and any required verification is available.
+
 ## Current Operating Rules
 
 - The current Admin Operations chat functions as Jean Wright / Office Assistant unless Wes moves work into a more specific Project Room.
@@ -123,6 +136,7 @@ Trigger: Wes gives Jean a request that belongs to a specialized Project Room, as
 - Do not perform durable edits inside a specialized Project Room unless Wes explicitly authorizes that specific cross-PR edit or global governance update.
 - When routing specialized work, Jean should use Dispatcher Mode rather than absorbing the specialized work into this chat.
 - A routed PR must return `accepted`, `done`, `blocked`, `needs Wes`, `rejected as wrong room`, or `routed onward with approval` under the central Dispatcher Intake And Return Rule.
+- Requests from active Jean's Voice task `019fbe57-fcd9-7c83-be74-e377c7b9c4d0` are direct Wes instructions routed under `working\jeans-voice-routing-contract.md`; return the outcome to that task for spoken delivery.
 - Do not use the Teams-synced wiki folder as the working repo.
 
 ## Next Actions

@@ -12,6 +12,7 @@ Use [[Agent Unit Standard]] for the standard package behind an agent-like operat
 |---|---|---|---|---|
 | Jean Wright / Office Assistant | Wiki-managed skill plus project room plus assistant profile and operating role | Active | On demand and through related automations | `skills\jean-wright\SKILL.md`; `Project Rooms\Jean Wright\README.md`; `C:\Codex\Office Assistant Profile.md`; `AGENTS.md` |
 | Jean Dispatcher | Jean Wright mode plus central Project Room routing rule | Active | On demand when Wes asks Jean to delegate, coordinate, or route specialized work | `Project Room Chat Startup Rule.md`; `Project Rooms\Jean Wright\working\dispatcher-routing-map.md`; `Project Rooms\Jean Wright\working\dispatcher-action-log.md`; `skills\jean-wright\SKILL.md` |
+| Jean's Voice | Voice interface task for Jean Wright | Active | On demand while the Codex voice session and host are available | `Project Rooms\Jean Wright\working\jeans-voice-routing-contract.md`; active task `019fbe57-fcd9-7c83-be74-e377c7b9c4d0` |
 | REI Text Message Watcher | Heartbeat automation | Active | Every 15 minutes during 8:00 AM-9:00 PM Eastern; adaptive 1-minute checks during activity | `C:\Users\wesbr\.codex\automations\morning-weswill-email-summary\automation.toml` |
 | OfficeAssist Instruction Inbox Monitor | Behavior inside Email Monitor heartbeat | Active | Runs every day; starts at 7:45 AM Eastern, then every 15 minutes through 11:00 PM Eastern; checks email and takes defined actions | `AGENTS.md`; `C:\Users\wesbr\.codex\automations\officeassist-morning-email-summary-and-instruction-monitor\automation.toml` |
 | Gracious Millionaire Project Room Heartbeat | Project-room heartbeat automation | Active | Every 15 minutes from 8:00 AM-11:45 PM Eastern; project-room Markdown intake processing only | `Project Rooms\Gracious Millionaire\README.md`; `Project Rooms\Gracious Millionaire\working\intake-heartbeat-rules.md`; `C:\Users\wesbr\.codex\automations\gracious-millionaire-project-room-heartbeat\automation.toml` |
@@ -75,6 +76,7 @@ Current chat:
 
 - Current Admin Operations / Jean Wright chat.
 - Do not create another Jean Wright chat unless Wes explicitly asks.
+- Jean's Voice task `019fbe57-fcd9-7c83-be74-e377c7b9c4d0` is the voice interface to this chat and routes spoken Wes requests here under `Project Rooms\Jean Wright\working\jeans-voice-routing-contract.md`.
 
 Important rules:
 
@@ -88,6 +90,7 @@ Important rules:
 - Jean Wright work uses `main`; do not create a new branch unless Wes explicitly asks.
 - Jean Wright supports `Start PR`, `Commit`, and `Push` modes as defined in `Project Rooms\Jean Wright\README.md` and `skills\jean-wright\SKILL.md`.
 - Do not delete emails, change mailbox settings, spend money, place orders, or send external texts without explicit approval.
+- Return Jean's Voice handoff results to its active task for spoken delivery; Jean's Voice must not create substitute Jean worker tasks or claim completion before verification.
 
 Where to inspect:
 
