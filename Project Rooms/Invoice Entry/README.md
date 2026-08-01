@@ -93,7 +93,7 @@ The current operational queue, verified deliveries, holds, and known stale recor
 
 Dedicated task: `019f3d56-b310-75c0-b084-616bfc1e9f59`.
 
-Backup automation: `invoice-entry-to-projects-backup-heartbeat`, scheduled for noon and 4:00 PM Eastern. Direct handoffs remain the primary trigger.
+Backup automation: standalone local cron job `invoice-entry-to-projects-backup-heartbeat`, displayed as `Invoice Entry Backup Monitor`, scheduled for noon and 4:00 PM Eastern. It reads durable Project Room state and does not target or wake the operational task. Direct handoffs remain the primary trigger.
 
 ## Source And Working-File Retention
 

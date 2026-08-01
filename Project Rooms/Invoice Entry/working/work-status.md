@@ -11,6 +11,7 @@ This is the authoritative current-state register for Invoice Entry. Read it befo
 - Current task: `019f3d56-b310-75c0-b084-616bfc1e9f59`.
 - Canonical skill: `C:\Codex\Wiki Files\skills\invoice-entry\SKILL.md`.
 - Canonical skill and installed local `invoice-entry` skill were synchronized and hash-verified after concise-handoff commit `7368b3b` on 2026-08-01.
+- Backup automation `invoice-entry-to-projects-backup-heartbeat` is a standalone local cron job at noon and 4:00 PM Eastern. It has no target task and must not add quiet-check turns to this operational task.
 - No external action from the prior unfinished turn requires retry.
 - Do not resend an email, repeat a workbook upload, or recreate a packet solely because an older task response was delayed or missing.
 
