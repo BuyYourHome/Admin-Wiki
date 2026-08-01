@@ -2,7 +2,7 @@
 
 ## Packet Status
 
-- Status: `Current allocation report amended through July 29 - worker verification pending`
+- Status: `Final weekly allocation report sent for worker verification - response pending`
 - Workflow: `Time Card`, generating a non-payable Project Cost Allocation Report
 - Created: 2026-07-27
 - Source type: Routed free-text Time Card email; no attachment
@@ -35,6 +35,13 @@ Additional included source:
 - Total time: 10 hours 5 minutes.
 - Attachments: none
 
+Final-week source additions:
+
+- July 30 source message ending `ACgTnksgAAAA==`: Josh reported 6:00 A.M. through 5:00 P.M. at 4121 Tensity Dr.
+- Date clarification message ending `ACgTnkswAAAA==`: Josh confirmed that the 6:00 A.M. through 5:00 P.M. shift was Thursday, 2026-07-30.
+- July 31 source message ending `ACgUD9lwAAAA==`: Josh reported 6:00 A.M. through 4:20 P.M. at 4121 Tensity Dr.
+- No attachment was supplied with any of these messages.
+
 ## Time Card Interpretation
 
 - Work date: `2026-07-27`, supported by the email received date and "today" wording.
@@ -48,17 +55,19 @@ Additional included source:
 
 | Report # | Project | Work date | Hours | Allocated cost | Status |
 | --- | --- | --- | ---: | ---: | --- |
-| `PCA-JK-20260731-TENSITY-001` | `24-HM - 4121 Tensity Dr` | `2026-07-27` | 11.00 | `$449.59` | Draft for worker time verification |
-| `PCA-JK-20260731-TENSITY-001` | `24-HM - 4121 Tensity Dr` | `2026-07-28` | 9.50 | `$388.28` | Draft for worker time verification |
-| `PCA-JK-20260731-TENSITY-001` | `24-HM - 4121 Tensity Dr` | `2026-07-29` | 10.08 | `$412.13` | Draft for worker time verification |
+| `PCA-JK-20260731-TENSITY-001` | `24-HM - 4121 Tensity Dr` | `2026-07-27` | 11.00 | `$264.85` | Draft for worker time verification |
+| `PCA-JK-20260731-TENSITY-001` | `24-HM - 4121 Tensity Dr` | `2026-07-28` | 9.50 | `$228.73` | Draft for worker time verification |
+| `PCA-JK-20260731-TENSITY-001` | `24-HM - 4121 Tensity Dr` | `2026-07-29` | 10.08 | `$242.78` | Draft for worker time verification |
+| `PCA-JK-20260731-TENSITY-001` | `24-HM - 4121 Tensity Dr` | `2026-07-30` | 11.00 | `$264.85` | Draft for worker time verification |
+| `PCA-JK-20260731-TENSITY-001` | `24-HM - 4121 Tensity Dr` | `2026-07-31` | 10.33 | `$248.79` | Draft for worker time verification |
 
-Current accepted time: 30 hours 35 minutes. Current weekly project-cost allocation: `$1,250.00`.
+Current accepted time: 51 hours 55 minutes. Current weekly project-cost allocation: `$1,250.00`.
 
 This report is an internal allocation record. It is not an invoice, is not payable, and does not determine Josh's biweekly service payment.
 
 Generated PDF:
 
-`C:\Users\wesbr\Buy Your Home\Buy Your Home - Office Admin\Scanned Files\Invoice Entry Working Archive\Generated\2026-07-30-JK-Week31-Allocation\26-07-31 - Josh Kennedy - Project Cost Allocation Report - 4121 Tensity Dr.pdf`
+`C:\Codex\Wiki Files\Project Rooms\Invoice Entry\working\create-vendor-invoice\2026-07-27-josh-kennedy-timesheet\26-07-31 - Josh Kennedy - Project Cost Allocation Report - 4121 Tensity Dr.pdf`
 
 ## Duplicate Check
 
@@ -67,6 +76,8 @@ Generated PDF:
 - The July 24 accuracy confirmation applies only to the week-ending 2026-07-24 package and was not treated as approval of this new invoice.
 - The July 28 completion source supplements the earlier incomplete July 28 source and does not create a second time line.
 - The July 29 source is complete and does not duplicate the July 27 or held July 28 records.
+- The July 30 source and its date clarification form one accepted shift, not two records.
+- The July 31 source is a separate shift. July 29 was not added again during this retry.
 - No workbook duplicate check was performed because this is an in-week draft and spreadsheet posting is held.
 
 ## Processing Decision
@@ -82,3 +93,10 @@ Generated PDF:
 - The earlier `TC-JK-20260731-TENSITY-001` invoice-style PDF is superseded and must not be treated as payable.
 - Email Monitor sent and verified the amended draft at `2026-07-30T13:26:46Z` under delivery request `IE-EMAIL-20260730-JOSH-TIMECARD-001`. OfficeAssist Sent Items confirmed Josh as recipient, Wes and Jenny as CC recipients, the unchanged weekly subject, and the required PDF.
 - Teams filing and project workbook insertion remain held during the week.
+- The final-week retry adds July 30 and July 31 once each, bringing accepted time to 51 hours 55 minutes.
+- No breaks were inferred or deducted.
+- The fixed weekly cost remains `$1,250.00`; line allocations were recalculated proportionally and reconcile exactly to that amount.
+- Final Teams filing and project-workbook processing remain held until Josh verifies the final report and Wes separately approves it.
+- Email Monitor sent and verified the final regenerated report under delivery request `IE-EMAIL-20260801-JOSH-TIMECARD-FINAL-VERIFY-001` at `2026-08-01T14:06:42Z`.
+- Sent message id: `AQMkADZkMGMwNDI3LWU5ZjctNDgzMC1iMjdkLTY0NmRiN2IwNmIyZgBGAAADKGOvWJYjX0aEKaRpd0MYQQcAVSXargQY20aF7RLCkro4ggAAAgEJAAAAVSXargQY20aF7RLCkro4ggACgUDabgAAAA==`.
+- OfficeAssist Sent Items verified Josh as recipient, Wes and Jenny copied, the unchanged week-ending subject, and the required non-inline PDF attachment. The first scalar attachment attempt failed before delivery; the single schema-correct list retry succeeded, and no duplicate email was sent.

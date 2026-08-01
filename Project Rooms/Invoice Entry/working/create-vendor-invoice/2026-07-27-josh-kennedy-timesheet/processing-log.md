@@ -54,3 +54,21 @@
 - Superseded the prior invoice-style week-ending July 31 PDF. No Teams filing or workbook posting was performed.
 - Submitted Email Delivery request `IE-EMAIL-20260730-JOSH-ALLOCATION-UPDATE-001` using the unchanged weekly subject.
 - Email Delivery returned `Sent and Verified` at `2026-07-30T14:39:01Z`. OfficeAssist Sent Items verified Josh as recipient, Wes and Jenny copied, the unchanged weekly subject, and the required non-inline allocation-report PDF. Sent message id: `AQMkADZkMGMwNDI3LWU5ZjctNDgzMC1iMjdkLTY0NmRiN2IwNmIyZgBGAAADKGOvWJYjX0aEKaRpd0MYQQcAVSXargQY20aF7RLCkro4ggAAAgEJAAAAVSXargQY20aF7RLCkro4ggACgMgFNgAAAA==`.
+
+## 2026-08-01 - Final-Week Time Card Retry
+
+- Received Email Monitor's verified retry for the previously timed-out July 30 handoff and the separate July 31 shift.
+- Fetched all three exact OfficeAssist source messages by Outlook message ID.
+- Accepted July 30 as 6:00 A.M. through 5:00 P.M., 11 hours, using the paired time and date-clarification messages.
+- Accepted July 31 as 6:00 A.M. through 4:20 P.M., 10 hours 20 minutes, using Email Monitor's complete-thread handoff and the final source message.
+- Did not infer or deduct breaks.
+- Duplicate control preserved the already accepted July 27, July 28, and July 29 lines and did not add July 29 again.
+- Reconciled final accepted time to 51 hours 55 minutes.
+- Recalculated the fixed `$1,250.00` weekly service cost proportionally across all five lines: `$264.85`, `$228.73`, `$242.78`, `$264.85`, and `$248.79`.
+- Allocation lines reconcile exactly to `$1,250.00`.
+- Regenerated report `PCA-JK-20260731-TENSITY-001` from structured JSON source data.
+- Kept Teams filing and project-workbook processing held pending Josh's final accuracy verification and Wes's separate approval.
+- Submitted Email Delivery request `IE-EMAIL-20260801-JOSH-TIMECARD-FINAL-VERIFY-001` with the unchanged weekly subject and the final regenerated allocation report.
+- Email Monitor returned `Sent and Verified` at `2026-08-01T14:06:42Z`. OfficeAssist Sent Items verified Josh as recipient, Wes and Jenny copied, and the required 4,145-byte non-inline PDF attachment.
+- The first connector call rejected the scalar attachment shape before delivery. The one permitted schema-correct list retry succeeded, and Email Monitor verified that no duplicate message was sent.
+- Final Teams filing and project-workbook processing remain held pending Josh's reply and Wes's separate approval.
