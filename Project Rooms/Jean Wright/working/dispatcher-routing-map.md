@@ -27,7 +27,7 @@ Use this map when Jean Wright routes work to a specialized Project Room. If a ta
 | Geico Insurance Claim | pending | pending | Route only if Wes identifies insurance-claim work or creates a skill. | Source/manual room at rollout. |
 | Gracious Millionaire | `gracious-millionaire` | `019eb9b0-6780-7fb3-a278-29a18d17998c` | Route book manuscript and GM source work here. | Website work may belong to REI BlackBook. |
 | Investigate Computer | `investigate-computer` | pending | Route computer-health investigation automation work here. | Uses Email Monitor when outbound email is required. |
-| Invoice Entry | `invoice-entry` | `019f3d56-b310-75c0-b084-616bfc1e9f59` | Route invoice, receipt, statement, and time-card processing here. | Keep source documents outside Git under current rules. |
+| Invoice Entry | `invoice-entry` | `019fbf4f-c629-7dd1-a3f6-0de33de0ed8f` | Route invoice, receipt, statement, and time-card processing here. | Keep source documents outside Git under current rules. |
 | Jean Wright | `jean-wright` | current Admin Operations chat | Owns dispatcher, general admin instructions, OfficeAssist coordination, and cross-PR routing. | Do not create another Jean Wright chat unless Wes asks. |
 | Jean's Voice | shared `jean-wright` | `019fbe57-fcd9-7c83-be74-e377c7b9c4d0` | Route every Wes business/admin request directly to Jean Wright task `019e8e54-f8c3-7233-88dd-e1dffd79c9a6`. | Voice interface only; do not create worker tasks or perform specialized work locally. |
 | Jennys Drawings | `jennys-drawings` | `019f700e-419a-7280-ba62-c01fe032b5b7` | Route Jenny's drawing/source organization and review packets here. | Uses Email Monitor for delivery. |

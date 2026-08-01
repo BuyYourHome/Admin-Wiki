@@ -328,7 +328,7 @@ Do not reproduce Invoice Entry's standing rules, the full email body, quoted thr
 
 After submitting the handoff, do not send it again merely because Invoice Entry responds slowly or a task-message call times out. Reconcile the original handoff first by checking the original task result or status and waiting for the existing request when appropriate. Retry only after establishing that the original handoff was not accepted; preserve the same Outlook reference and note the reconciliation outcome in Email Monitor's routing log.
 
-Current Invoice Entry task id: `019f3d56-b310-75c0-b084-616bfc1e9f59`.
+Current Invoice Entry task id: `019fbf4f-c629-7dd1-a3f6-0de33de0ed8f`.
 
 Do not create a new Invoice Entry task for this routing unless Wes explicitly asks. During intake routing, do not approve, pay, reply to the contractor/vendor, make live spreadsheet entries, or move files into Teams from this Email Monitor task unless Wes explicitly asks for processing here and the Invoice Entry rules allow it. This intake-stage prohibition on contractor/vendor contact does not block a later Email Delivery request when Invoice Entry's saved rules and the delivery package explicitly authorize that specific message. The default intake action remains source routing plus direct Invoice Entry handoff only.
 

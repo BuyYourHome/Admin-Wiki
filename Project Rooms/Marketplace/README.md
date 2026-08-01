@@ -127,7 +127,7 @@ When Wes confirms that a Marketplace listing was purchased:
 
 1. Update the listing register to show the actual purchase price, purchase date, payment status, and final deal outcome.
 2. Record the purchase in `working\marketplace-action-log.md`.
-3. Send a direct handoff to the existing Invoice Entry task, `019f3d56-b310-75c0-b084-616bfc1e9f59`, requesting one separate formal purchase invoice for each seller/listing.
+3. Send a direct handoff to the existing Invoice Entry task, `019fbf4f-c629-7dd1-a3f6-0de33de0ed8f`, requesting one separate formal purchase invoice for each seller/listing.
 4. Mark the invoice `Paid - Cash` unless Wes states a different payment method. The seller is the issuer and Buy Your Home is the customer.
 5. Include the listing URL, seller display name, item description, actual purchase amount, purchase date, and source traceability. Use `Marketplace resale inventory` as the destination unless Wes identifies a property or another business destination; do not guess a project workbook or worksheet.
 6. Do not include seller phone numbers, pickup addresses, or other unnecessary personal contact details in the invoice or Git-tracked handoff record.

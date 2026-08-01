@@ -91,7 +91,7 @@ Invoice Entry may read one exact Outlook message when the handoff supplies its e
 
 The current operational queue, verified deliveries, holds, and known stale records live only in `working\work-status.md`. Update that file after every substantive run. Do not place an active queue in this README.
 
-Dedicated task: `019f3d56-b310-75c0-b084-616bfc1e9f59`.
+Dedicated task: `019fbf4f-c629-7dd1-a3f6-0de33de0ed8f`.
 
 Backup automation: standalone local cron job `invoice-entry-to-projects-backup-heartbeat`, displayed as `Invoice Entry Backup Monitor`, scheduled for noon and 4:00 PM Eastern. It reads durable Project Room state and does not target or wake the operational task. Direct handoffs remain the primary trigger.
 

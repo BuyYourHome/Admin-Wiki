@@ -232,7 +232,7 @@ Special routing:
 - Save safely retrievable invoice attachments outside Git in the Invoice Entry Teams source/working archive location required by Invoice Entry's current rules. If an apparent invoice attachment cannot be retrieved, preserve the Outlook message link and report the blocker in the Invoice Entry handoff.
 - Update `Project Rooms\Invoice Entry\working\source-inventory.md` or the current Invoice Entry intake ledger with references and external paths when the routed source becomes part of the durable source set.
 - Send a direct follow-up message to the existing Invoice Entry task with the Outlook reference, external attachment paths or blocker, a short vendor/project summary, and the instruction to process the invoice under Invoice Entry rules.
-- Current Invoice Entry task id: `019f3d56-b310-75c0-b084-616bfc1e9f59`.
+- Current Invoice Entry task id: `019fbf4f-c629-7dd1-a3f6-0de33de0ed8f`.
 - Do not create a new Invoice Entry task for routing unless Wes explicitly asks for one.
 - Do not approve invoices, pay invoices, contact vendors, make live project-spreadsheet entries, or move invoice files into Teams from the OfficeAssist monitor thread unless Wes explicitly asks for processing there and the Invoice Entry rules allow it; the default action is source routing plus direct handoff only.
 
@@ -1108,7 +1108,7 @@ Defined in:
 
 Dedicated chat:
 
-- Thread id: `019f3d56-b310-75c0-b084-616bfc1e9f59`
+- Thread id: `019fbf4f-c629-7dd1-a3f6-0de33de0ed8f`
 
 Automation:
 
