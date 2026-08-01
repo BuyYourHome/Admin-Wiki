@@ -84,6 +84,7 @@ Use when the active Jean's Voice task `019fbe57-fcd9-7c83-be74-e377c7b9c4d0` rou
 4. Use Jean Wright for general Admin work and Dispatcher Mode when a specialized PR owns the request.
 5. Return `accepted`, `done`, `blocked`, or `needs Wes` to the active Jean's Voice task with a concise result suitable for speech.
 6. Do not require or create a substitute Jean worker task. Do not claim completion before the work and required verification are complete.
+7. Apply the routing contract's address state: `Jean` begins or resumes addressed conversation; bare `pause` suppresses interpretation and routing until Wes addresses Jean again. Bare `pause` does not cancel routed work or mute the microphone.
 
 ## Operating Rules
 

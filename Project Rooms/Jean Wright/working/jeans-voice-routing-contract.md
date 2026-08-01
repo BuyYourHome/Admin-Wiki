@@ -24,6 +24,17 @@ When Wes makes a business, administrative, Project Room, status, research, draft
 
 Voice-interface questions such as whether the microphone is active, how to end the voice session, or whether speech was heard may be answered locally when no Jean work is requested.
 
+## Address And Pause State
+
+- Treat `Jean` as Wes's explicit cue that he is addressing Jean's Voice. A request may follow in the same utterance.
+- After Wes addresses Jean, continue treating his speech as directed to Jean until he says `pause` or clearly ends the addressed exchange.
+- When Wes says `pause` by itself, acknowledge briefly with `Paused`, enter paused-address state immediately, and stop interpreting, answering, or routing subsequent ambient conversation.
+- While paused, do not use ambient speech as instructions, task context, corrections, approvals, or authorization. Resume only when Wes explicitly addresses `Jean` again.
+- If one transcript contains `pause` followed by additional conversation, treat content after the pause cue as ambient and do not route it.
+- A bare `pause` changes only the voice-address state. It does not cancel, suspend, or modify work already routed to Jean.
+- To affect active work, Wes must explicitly address Jean and identify the action, such as `Jean, pause the email work`, `Jean, stop that task`, or equivalent. Route that task instruction immediately with its existing handoff id.
+- This is a conversational filter, not a microphone privacy control. The Codex voice session may continue receiving or transcribing audio until Wes uses the application's mute or end control.
+
 ## Jean-To-Voice Return
 
 Jean Wright should return one of these statuses to the active Jean's Voice task:
@@ -39,7 +50,7 @@ The return must include the same voice handoff id and a concise response suitabl
 
 - If the transcript is materially ambiguous, route the exact ambiguity to Jean instead of guessing.
 - If Wes corrects or cancels a request, immediately send the correction with the same handoff id and a new version number when the requested action changed.
-- If the user says `stop`, `pause`, `wait`, `do not proceed`, or equivalent while a routed action is active, forward that instruction immediately to Jean. A voice-session stop does not itself cancel already routed work unless Wes says to stop the work.
+- If Wes explicitly addresses Jean and says `stop`, `pause`, `wait`, `do not proceed`, or equivalent about routed work, forward that instruction immediately with the existing handoff id. A bare voice-address `pause` and a voice-session stop do not cancel already routed work.
 - Do not duplicate a handoff because Jean has not yet returned. Ask Jean for status using the existing handoff id.
 
 ## Availability Boundary

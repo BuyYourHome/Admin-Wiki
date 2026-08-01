@@ -118,6 +118,7 @@ Trigger: the active Jean's Voice task sends a handoff from Wes.
 4. Handle the request in Jean Wright or use Dispatcher Mode for specialized PR work.
 5. Return `accepted`, `done`, `blocked`, or `needs Wes` to the active Jean's Voice task with the same handoff id and a concise response suitable for speech.
 6. Do not require Jean's Voice to create a new worker task, and do not report completion until the governing workflow has actually completed and any required verification is available.
+7. In the voice interface, `Jean` begins or resumes addressed conversation and bare `pause` suppresses interpretation and routing of ambient speech until Wes addresses Jean again. Bare `pause` does not cancel already routed work and does not mute the microphone.
 
 ## Current Operating Rules
 
