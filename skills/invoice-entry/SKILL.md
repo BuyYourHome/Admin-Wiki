@@ -9,6 +9,7 @@ description: Use for Buy Your Home project-management spreadsheet invoice-entry 
 
 - Project room: `C:\Codex\Wiki Files\Project Rooms\Invoice Entry`
 - Skill source: `C:\Codex\Wiki Files\skills\invoice-entry\SKILL.md`
+- Authoritative current work: `C:\Codex\Wiki Files\Project Rooms\Invoice Entry\working\work-status.md`
 - Teams working archive map: `C:\Codex\Wiki Files\Project Rooms\Invoice Entry\working\teams-working-archive-map.md`
 - Scanned document action log: `C:\Codex\Wiki Files\Project Rooms\Invoice Entry\working\scanned-document-action-log.md`
 - Template-to-project migration room: `C:\Codex\Wiki Files\Project Rooms\Template to Project`
@@ -22,13 +23,15 @@ Doc Scan owns Lowes Statement extraction and will send extracted statement data 
 1. Confirm the working folder is `C:\Codex\Wiki Files`.
 2. Read `AGENTS.md`, `Admin Home.md`, `Project Room Workflow.md`, `Codex Skill Source Rule.md`, and `Git Work Scope Rule.md`.
 3. Read the project-room `README.md`.
-4. Read `working\invoice-packet-schema.md`.
-5. If older machine handoff packets, statement working files, review workbook evidence, or temporary workbook copies may matter, read `working\teams-working-archive-map.md` before assuming those files are unavailable locally.
-6. For scanned-document-derived invoice work, read or update `working\scanned-document-action-log.md` to track what happened to the document and related spreadsheet action.
-7. If the insertion is for Vendor Tabs, read:
+4. Read `working\work-status.md` before processing a handoff or opening a workbook. Treat it as the authority for active work, pending decisions, verified actions that must not be repeated, and current blockers.
+5. Read `working\invoice-packet-schema.md` and the packet and processing log for the specific item.
+6. If an older summary conflicts with `working\work-status.md` or the latest packet status, reconcile the authoritative source before repeating an email, workbook edit, upload, filing action, or generated-document action.
+7. If older machine handoff packets, statement working files, review workbook evidence, or temporary workbook copies may matter, read `working\teams-working-archive-map.md` before assuming those files are unavailable locally.
+8. For scanned-document-derived invoice work, read or update `working\scanned-document-action-log.md` to track what happened to the document and related spreadsheet action.
+9. If the insertion is for Vendor Tabs, read:
    - `C:\Codex\Wiki Files\Project Rooms\Template to Project\Worksheet Modes\Vendor Tabs Mode Rules.md`
    - `C:\Codex\Wiki Files\Project Rooms\Template to Project\Project Spreadsheet Expense Placement Rules.md`
-8. Use the SharePoint/Teams connector as the source-of-truth path for active project-management workbooks.
+10. Use the SharePoint/Teams connector as the source-of-truth path for active project-management workbooks.
 
 ## Ownership Boundary
 
@@ -419,6 +422,7 @@ Do not leave source packets, routed emails, attachments, generated PDFs, workboo
 ## Completion
 
 - Record insertion decisions, duplicate findings, and unresolved questions in the project room.
+- Update `working\work-status.md` after every substantive run. Keep only current work, pending decisions, verified non-repeatable actions, blockers, and next permitted actions there; leave detailed chronology in packet and processing logs.
 - Capture new reusable lessons in the project-room rules or a relevant workflow rule before completion.
 - Commit durable wiki/skill changes when made.
 - Do not push Git changes unless Wes says the work is finished, explicitly asks for a push, or the task defines the deliverable as final.

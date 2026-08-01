@@ -2,423 +2,107 @@
 
 ## Purpose
 
-This project room owns the operational workflow for inserting invoice and approved statement-line records into Buy Your Home project-management spreadsheets.
-
-The workflow usually starts after Doc Scan has completed scanned invoice, receipt, or Statement intake and prepared a structured packet. It can also start when Email Monitor or OfficeAssist routes a contractor/vendor invoice email into Create Vendor Invoice. This room receives or creates the packet, decides where the record or statement line belongs in the project-management spreadsheet, checks for duplicates, inserts approved records into the correct worksheet area, validates totals, and reports uncertainty for Wes review.
-
-## Scope
-
-Included:
-
-- Receive structured invoice, receipt, and Statement packets from Doc Scan as the scanned-document intake source.
-- Receive routed contractor/vendor invoice emails from Email Monitor or OfficeAssist under Create Vendor Invoice.
-- Other intake sources are out of scope unless Wes separately approves and documents them.
-- Consume Lowes Statement packets extracted by Doc Scan; Doc Scan owns extraction, and Invoice Entry owns allocation and later spreadsheet insertion when approved.
-- Resolve the correct active project-management workbook through Teams/SharePoint.
-- Route invoice records to the correct worksheet and expense area.
-- For Vendor Tabs, insert records only into the yellow actual-invoice section of the correct vendor tab.
-- Preserve template-estimate rows, formulas, checkboxes/selectors, named ranges, tables, formatting, and workbook structure.
-- Validate affected totals and downstream links such as `Gnatt Chart`.
-- Keep rollback copies and record insertion decisions.
-
-Excluded unless Wes explicitly expands scope:
-
-- Scan inspection/OCR, document splitting, invoice/receipt identification, scan log entries, or saving/copying scanned invoice files into Teams/project folders.
-- Designing or rolling out project-management spreadsheet templates.
-- Replacing worksheet structures across all project workbooks.
-- Paying invoices, approving invoices, contacting vendors, or changing accounting systems.
-
-## Responsibility Boundary
-
-- `Doc Scan`: scan inspection/OCR, document splitting, invoice/receipt/statement identification, project/property folder routing when applicable, saving/copying filed PDFs into Teams/project folders, scan log entries, Statement extraction, and structured packet creation.
-- `Email Monitor` / `OfficeAssist`: mailbox monitoring, routed vendor-invoice email preservation, direct intake handoffs, source traceability for email-origin invoice intake, and all outbound email delivery through Email Monitor's Email Delivery mode.
-- `Invoice Entry`: structured packet receipt, structured packet creation from routed free-text vendor-invoice emails, exact live project-management workbook resolution, workbook duplicate checks, statement-line allocation, final row placement, invoice or approved statement-line record insertion, preparation of complete outbound email packages for Email Monitor delivery, workbook formula/format/selector/table/link preservation, totals and downstream-link validation, authorized upload back to Teams/SharePoint, and insertion logging.
-- `Template to Project`: worksheet design, worksheet-mode rules, template changes, and rollout across project workbooks.
-
-## Outbound Email Boundary
-
-Invoice Entry must not send email directly. It must not call an Outlook connector, use local Outlook, operate Outlook Web, or substitute another mailbox for delivery.
-
-When an Invoice Entry rule authorizes an email:
-
-1. Invoice Entry prepares the complete package: sender, To, CC/BCC, subject, plain-text body, absolute attachment paths, authorization basis, and workflow restrictions.
-2. Invoice Entry sends a direct handoff to the existing Email Monitor status task, `019ecba7-f1cc-7ac1-aaf7-d89a3f21b582`, requesting Email Delivery mode.
-3. Email Monitor's Email Delivery mode applies `C:\Codex\Wiki Files\skills\email-delivery\SKILL.md`, performs the send, and verifies OfficeAssist Sent Items.
-4. Invoice Entry does not mark the email sent until Email Monitor returns the verified sent message id and timestamp.
-5. Invoice Entry records the handoff and returned result. A failed or unverified send remains held and must be reported.
-
-## Current Status
-
-- Status: active direct-message handoff; backup heartbeat available. Invoice insertion procedure still has open design decisions.
-- First supported worksheet group: Vendor Tabs.
-- Statement status: Doc Scan owns Lowes Statement extraction and will send extracted statement data for this room to consume. Invoice Entry holds statement lines until allocation and insertion rules are tested and approved.
-- First workbook for proving the workflow: Outrigger, after Wes approves the Vendor Tabs design.
-- Primary trigger: direct follow-up message to the dedicated Invoice Entry chat with the packet path and summary.
-- Backup automation: project-room heartbeat at noon and 4:00 PM Eastern. The heartbeat inspects this project room for new or changed structured invoice/receipt packets only; it does not scan inboxes, inspect raw scan folders, copy files into Teams, or edit a live workbook unless Wes has clearly authorized the insertion or an approved automation rule exists for that exact insertion type.
-- Automation id: `invoice-entry-to-projects-backup-heartbeat`.
-- Dedicated chat/thread id: `019f3d56-b310-75c0-b084-616bfc1e9f59`.
-
-## Matching Skill
-
-- Skill source: `C:\Codex\Wiki Files\skills\invoice-entry\SKILL.md`
-- Teams archive map: `C:\Codex\Wiki Files\Project Rooms\Invoice Entry\working\teams-working-archive-map.md`
-- Scanned document action log: `C:\Codex\Wiki Files\Project Rooms\Invoice Entry\working\scanned-document-action-log.md`
-
-## Required Invoice Packet
-
-Each handoff should include:
-
-- Project/property
-- Vendor name
-- Invoice date
-- Invoice number, if available
-- Invoice amount
-- Work category
-- Saved invoice file path in Teams/project folder
-- Recommended project workbook
-- Recommended worksheet
-- Confidence/status
-- Notes or uncertainty
-
-## Create Vendor Invoice
-
-Use Create Vendor Invoice when Email Monitor or OfficeAssist routes a contractor/vendor invoice email to Invoice Entry.
-
-Trigger:
-
-- A direct handoff message from Email Monitor or OfficeAssist says to process a routed vendor invoice.
-- The routed source is an email saved under `Project Rooms\Invoice Entry\sources\email\`.
-- The handoff may include invoice attachment paths, an Outlook message link, attachment-access blockers, vendor clues, project clues, and a short summary.
-
-Invoice Entry responsibilities:
-
-- Read the routed email source and any saved invoice attachments.
-- If the routed email has an attached invoice, treat the attachment as the source invoice. Do not create a new invoice and do not send it back to the vendor for verification merely because it arrived by email.
-- For attached-invoice emails, identify the vendor, project/property, invoice date, invoice number if available, amount, work category, and source traceability, then continue under the normal Invoice Entry rules.
-- For attached-invoice emails, choose the correct active project-management workbook and worksheet, check duplicate risk, move or copy the invoice file to the correct Teams/SharePoint project folder when authorized, insert only when confidence and rules allow, validate the workbook, and record the result.
-- If the routed email has no attached invoice and the invoice information exists only as free text, treat the email body as invoice source material, not as a finished invoice.
-- For free-text invoice emails, create a formal invoice document from the email body and preserved source details.
-- Every generated free-text invoice must have an invoice date and invoice number. If the source does not provide an invoice date, use the date Invoice Entry generates the draft and record that basis. If the source does not provide an invoice number, Invoice Entry must create one using the approved invoice-number pattern and record that it was generated by Invoice Entry.
-- Use the polished Create Vendor Invoice PDF template for generated free-text invoices unless Wes requests a different invoice style. Template: `C:\Codex\Wiki Files\skills\invoice-entry\templates\create-vendor-invoice-polished-invoice-template.md`.
-- Render and visually inspect the generated invoice PDF before attaching it to a review or vendor-verification email.
-- Before handing off, filing, or replacing any generated free-text invoice PDF, run a Create Vendor Invoice preflight check: verify the PDF and packet show the current invoice date, invoice number, project/property, vendor, service period if applicable, amount, and status wording for the current stage. If the generator/template has hardcoded invoice number, date, or status text, update the generator/template first and regenerate the PDF before continuing.
-- Prepare the generated formal invoice PDF and verification-request email package for the proper vendor when vendor identity, vendor email address, project/property, and source evidence are clear. This verification request has standing approval and does not require separate Wes review before the Email Monitor handoff. Set To to the vendor and CC `WesWill@BuyYourHomeLLC.com` and `Jenny@BuyYourHomeLLC.com`, then hand the package to Email Monitor's Email Delivery mode.
-- Every project-related Create Vendor Invoice email subject must include the property address. Vendor-verification subjects should also identify the vendor and invoice purpose or service period, such as `908 Pond St - Tim Fleming Pond Hours Invoice - Verification Requested`.
-- Do not include or forward the routed free-text source email in the vendor delivery package. Preserve it in the project room for traceability; the Email Monitor handoff may include only the polished generated invoice and the verification request.
-- Sign Create Vendor Invoice vendor verification emails as `Jean Wright`.
-- Treat vendor verification as confirmation that the generated invoice facts are accurate, not approval to pay, approval to file, or approval to insert into a project spreadsheet.
-- After the vendor verifies a generated free-text invoice, prepare the verified invoice package for Wes's approval/payment review with Jenny copied and hand it to Email Monitor's Email Delivery mode. Include the property address, vendor, invoice date, invoice number, service period if applicable, amount, generated invoice PDF, vendor confirmation evidence, and any unresolved spreadsheet-placement issue.
-- Use the exact subject pattern `Invoice Approval - <Vendor Name>` for every invoice package sent to Wes for approval. This approval-stage pattern is the exception to the property-address subject rule. Do not add property addresses, `Wes Approval Requested`, project names, amounts, service periods, or other variable suffixes. Example: `Invoice Approval - Tim Fleming`.
-- Do not copy a verified free-text invoice to Teams/project folders, insert it into a project spreadsheet, mark it posted, or treat it as complete until Wes approves it by email.
-- Until Wes approves by email, keep the generated and vendor-verified invoice in the Invoice Entry working files with status `Verified - Awaiting Wes Approval`.
-- After Wes approves a verified free-text invoice by email, prepare an updated-status email package for the vendor, Wes, and Jenny unless Wes gives a different recipient list for that invoice, then hand it to Email Monitor's Email Delivery mode. The subject must include the property address and the body must identify the status as approved by Wes, the vendor, invoice date, invoice number, service period if applicable, amount, Teams/project-folder filing path once filed, spreadsheet insertion status, and any insertion blocker.
-- Record routing decisions, workbook edits, duplicate checks, validation results, and unresolved questions in this project room.
-
-Safety limits:
-
-- Do not approve invoices.
-- Do not pay invoices.
-- Do not contact vendors or send email directly. Invoice Entry may prepare only the authorized Create Vendor Invoice and Time Card email packages described here and must route every send through Email Monitor's Email Delivery mode.
-- Do not request delivery of a vendor verification email when the routed email already includes an attached invoice.
-- Do not request delivery when the proper vendor email address is unclear, the free-text source evidence is insufficient, the invoice appears misrouted, or the message would imply approval, payment, or acceptance of the invoice.
-- Do not guess the project, vendor, amount, invoice number, or destination worksheet when evidence is unclear.
-- If the routed email lacks required fields or the attachment cannot be accessed, preserve the source link and report the blocker.
-- If duplicate risk is found, stop before insertion and report the risk.
-- If the invoice appears to be a statement with multiple project lines, handle it under Statement rules instead of treating it as one vendor invoice.
-
-Completion:
-
-- Preserve the routed email source and any invoice attachments as durable source material.
-- For attached-invoice emails, keep enough traceability to link the workbook entry back to the email, attachment, and handoff.
-- For free-text invoice emails, preserve the routed email, generated invoice, Email Monitor delivery handoff, verified sent-email evidence, copied recipients, and vendor response before final filing or spreadsheet insertion.
-- For free-text invoice emails, preserve Wes's approval email before final Teams filing or spreadsheet insertion.
-- For free-text invoice emails, record vendor verification, Wes approval, payment-review notice, Teams filing, spreadsheet insertion, and updated-status email as separate logged events.
-- Record the vendor verification email result for free-text invoices, including whether it was sent, held, blocked, or needs Wes review.
-- Report completed entries, held items, duplicate risks, filing results, and any open review questions.
-
-## Time Card
-
-Use Time Card only when Email Monitor sends a direct handoff message to Invoice Entry for an email with subject or body wording that resembles `Time Card`, `time sheet`, `timesheet`, or similar time-reporting language.
-
-Trigger:
-
-- Email Monitor detects and routes the Time Card or timesheet email.
-- The routed source email is preserved under `Project Rooms\Invoice Entry\sources\email\`.
-- The handoff includes the routed source path, sender, received time, subject, attachment paths or attachment blockers, and any project/vendor/person clues.
-- Invoice Entry must not scan inboxes, search for Time Card emails, or start this workflow from raw mailbox access on its own.
-
-Weekly accumulation:
-
-1. Each accepted Time Card email updates the accumulated, source-traceable weekly time records. Those records are the source of truth; a generated PDF is a replaceable output, not the editable source.
-2. Split actual time by project and BackOffice destination.
-3. Regenerate one `Project Cost Allocation Report` per destination. Each report is also the payable invoice for that destination and must identify Josh Kennedy as issuer, Buy Your Home as customer, the report/invoice number, invoice date, service period, project or BackOffice destination, hours, allocation method, and amount due.
-4. Allocate Josh's fixed `$1,250.00` weekly service cost proportionally across all accepted time for that week. The destination report/invoice amounts must reconcile exactly to `$1,250.00`; do not create a separate service-payment invoice for the same week.
-5. Route regenerated daily and final reports through Email Monitor to the Time Card sender, copying Wes and Jenny. State that no reply is needed when the time, project allocation, and totals are correct; the sender should reply only when a correction is needed.
-6. During the week, do not file or post the reports. After the final week-end report is sent, allow Wes through Sunday to approve, correct, or deny it. If Wes has not approved, corrected, or denied it by the first Invoice Entry processing check on Monday, and no sender correction is pending, make the report final automatically.
-
-- Accumulate Time Card emails by worker/vendor and work week.
-- Add new lines to the existing weekly source record and regenerate only the affected allocation reports.
-- Generate reports with `C:\Codex\Wiki Files\skills\invoice-entry\scripts\create-project-cost-allocation-report.py`.
-- Use the report/invoice number pattern `PCA-JK-<YYYYMMDD>-<PROJECT>-001` and the week-ending Friday as the invoice date.
-- Daily and final Project Cost Allocation Reports use correction-by-exception review. Silence from the sender means no correction was reported; it is not a separate affirmative verification requirement.
-- Use the exact subject pattern `Time Card Approval - <Worker Name>` when sending a final Time Card report/invoice to Wes for approval. Do not use the Create Vendor Invoice subject `Invoice Approval - <Vendor Name>` for Time Card approval packages.
-- If Wes approves the final week-end report, finalize it immediately. If Wes corrects or denies it, do not auto-finalize the unchanged report; process the correction or hold the package as directed.
-- On the first Invoice Entry processing check on Monday, set an unchanged final week-end report to `Final - No Corrections Received` when Wes has not approved, corrected, or denied it and no sender correction is pending. This status authorizes normal filing and project-spreadsheet processing and makes the report/invoice eligible for the normal payment process. Invoice Entry does not make the payment.
-- Preserve every routed Time Card email as source evidence and retain traceability from each invoice line back to the source email.
-- If the source does not state the worked date, use the email received date as the worked date and record that assumption in the packet.
-
-Project handling:
-
-- Split the weekly time by project when the Time Card source identifies multiple projects.
-- Create one payable allocation report/invoice per project and one for BackOffice when applicable. Together they represent Josh's complete weekly amount due and must not create duplicate payment obligations.
-- Maintain the current project-spreadsheet lookup list in `C:\Codex\Wiki Files\Project Rooms\Invoice Entry\working\project-spreadsheet-register.md`.
-- Use the register to identify the proposed workbook, then verify the exact current workbook at the SharePoint `Property` root before every edit. The register is a lookup aid, not authority to use a stale file.
-- Invoice Entry owns this register until Wes explicitly transfers that duty to a Project PR or another named workflow.
-- After the final report is approved by Wes or becomes `Final - No Corrections Received` on Monday, insert each project's allocated cost into the correct project-management spreadsheet.
-- Do not put all time into one project unless the source clearly applies only to that project.
-- If project, date, worker/vendor, hours, weekly cost, allocation method, or destination worksheet is unclear, hold the affected line for review rather than guessing.
-- Before inserting, check for existing entries for the same worker/vendor, week, project, date, and source Time Card line so repeated weekly updates do not duplicate prior additions.
-- When a weekly allocation report changes after insertion, reconcile the existing rows and update only the allowed delta.
-
-Teams filing:
-
-- Do not copy allocation reports to Teams until the final week-end report is approved by Wes or becomes `Final - No Corrections Received` on Monday.
-- After finalization, save project reports in the applicable project `Invoices` folders and the BackOffice report in `Office Admin/Invoices & Receipts`.
-- Replace an existing report for the same worker/week/destination rather than creating a duplicate.
-- Use a stable weekly filename so updates overwrite the same file instead of creating duplicates.
-- Standard filename: `YY-MM-DD - <Worker> - Project Cost Allocation Report - <Project or BackOffice>.pdf`.
-
-Safety limits:
-
-- Do not treat a draft allocation report/invoice as final, paid, or proof of payment. Only Wes approval or Monday finalization makes it eligible for the normal payment process; Invoice Entry does not make payment.
-- Do not create workbook entries without enough project, date, hours, weekly-cost, allocation-method, and source traceability.
-- Preserve unresolved lines in the project room and report what Wes must review.
-
-## Required Statement Packet
-
-Statement processing must be routed through Doc Scan. Do not ask Invoice Entry directly to fetch, OCR, parse, or process raw statement PDFs. Doc Scan sends extracted Statement data for this room to consume. A Statement handoff should include:
-
-- Statement vendor
-- Statement account or account suffix, if available
-- Statement date or period
-- Due date, if available
-- Statement total or balance, if available
-- Filed statement PDF path in Teams
-- Source scan path or source document reference
-- Extracted line items, with transaction date, description, amount, page/source reference, and extraction confidence when available
-- Statement-level confidence/status
-- Notes about missing pages, weak OCR, credits/payments, non-purchase rows, or unclear line items
-
-## Folder Map
-
-- `sources\` - pointer location only. Operational source packets, routed email source files, source attachments, and machine handoff files belong in Teams/SharePoint or the Invoice Entry Teams Working Archive, not in Git.
-- `working\` - routing decisions, duplicate checks, insertion logs, rollback references, validation notes, and iteration lessons.
-- `outputs\` - review-ready reports or handoff summaries for Wes.
-- Machine handoff packets, generated statement working files, review workbook copies, and temporary workbook copies removed from Git are mapped in `working\teams-working-archive-map.md`.
-- Durable scanned-document outcomes are recorded in `working\scanned-document-action-log.md`; record what happened to the document and spreadsheet action instead of preserving every intermediate packet or scratch artifact in Git.
-
-## Operating Rules
-
-1. Do not edit a live project workbook until Wes has clearly authorized the insertion or the workflow has an approved automation rule for that exact kind of insertion.
-2. Use Teams/SharePoint as the source of truth for active project-management workbooks.
-3. Project-management spreadsheets live directly under the Teams/SharePoint `Property` drive root, such as `Property/27_Project Management - 7001 Outrigger Dr.xlsm`.
-4. Do not use individual property subfolders as the source for the project-management spreadsheet.
-5. Make a rollback copy before editing a workbook.
-6. Insert invoice rows only into the destination area approved for that worksheet mode.
-7. For Vendor Tabs, use the yellow actual-invoice section; never write imports into the orange template-estimate rows.
-8. Check for duplicates before insertion.
-9. Validate affected totals after insertion.
-10. Upload the verified workbook back through the Teams/SharePoint connector only after it opens cleanly and has no unintended workbook links.
-11. After each workbook or workflow iteration, record, refine, or expand lessons learned in `working\iteration-lessons.md` before treating the iteration as complete.
-12. For scanned-document-derived invoice work, preserve the original scan and filed document in Teams/SharePoint, then record the durable outcome in `working\scanned-document-action-log.md`. Do not commit machine packets, OCR scratch files, or temporary workbook copies merely to show how the work was performed.
-
-## End-Of-Run Working File Cleanup Rule
-
-Treat `Project Rooms\Invoice Entry\working\` as temporary workspace, not durable storage.
-
-At the end of every Invoice Entry run, clean up the generated working files created by that run before considering the job complete.
-
-Required end-of-run steps:
-
-1. Preserve the authoritative source material in Teams, SharePoint, the routed email source, the filed project document, or the active project workbook as applicable.
-2. Preserve durable process records in Markdown logs, packet summaries, source inventories, held-detail registers, and action logs.
-3. Do not keep generated workbook backups, temporary workbook downloads, rendered page previews, generated invoice PDFs, PDF render images, machine handoff packets, packet experiments, or statement working folders in the Admin wiki Git repo merely to show how work was performed.
-4. If generated working artifacts need temporary retention, move them to `C:\Users\wesbr\Buy Your Home\Buy Your Home - Office Admin\Scanned Files\Invoice Entry Working Archive`.
-5. Preserve the same relative folder structure when moving generated working artifacts to the Teams archive.
-6. Verify the Teams copy by file count and byte total before removing the local working copy.
-7. Record the Teams archive location in `Project Rooms\Invoice Entry\working\teams-working-archive-map.md`.
-8. After successful verification and mapping, remove the local generated working files from `Project Rooms\Invoice Entry\working\`.
-9. If the run cannot safely determine whether a file is durable source material, generated output, or needed evidence, leave it in place and record the decision needed instead of deleting it.
-
-An Invoice Entry job is not complete until its generated working files have either been removed, moved to the Teams Working Archive and mapped, or explicitly recorded as needing human review.
-
-## Source Packet And Email Retention Rule
-
-Invoice Entry source material is not durable Admin wiki repo content.
-
-The Admin wiki repo should keep rules, SOP pointers, packet schemas, source inventories, action logs, archive maps, held-detail registers, review notes, and handoff records. It should not keep routed email source files, operational packet JSON/Markdown files, source attachments, generated invoice drafts, machine handoff files, or final filed project documents.
-
-Source material should live in Teams, SharePoint, routed mailbox evidence, property folders, Office Admin folders, or the Invoice Entry Teams Working Archive.
-
-Invoice Entry may temporarily use local copies only when needed for processing, duplicate review, workbook insertion, or traceability. After the durable outcome is logged, the source material must either remain preserved at its authoritative Teams/SharePoint/mailbox location, be filed into the correct Teams/property/Admin destination, be moved to the Invoice Entry Teams Working Archive with count/byte verification and map logging, or be recorded as needing human review.
-
-Do not leave source packets, routed emails, attachments, generated PDFs, workbook copies, or other operational source artifacts under `Project Rooms\Invoice Entry\sources` unless Wes explicitly approves a specific file as durable repo source material.
-
-## Review Request Processing
-
-For project workbooks that use the Review request design:
-
-- Worksheet: `Review`.
-- Review table: `tblInvoiceReview`.
-- Request checkbox: `Review!B1`.
-- Checkbox label: `Needs Invoice Entry Review`.
-- Defined name: `invoiceEntryReviewRequest`.
-- Required defined-name reference: `=Review!$B$1`.
-- `TRUE` means Invoice Entry review is requested.
-- `FALSE` or blank means no request is pending.
-- The prior `Review!Q2` text selector is obsolete and must not be used.
-
-Review reconciliation trigger: any time Invoice Entry opens an active project workbook for an authorized workbook action, first check whether the workbook has worksheet `Review` and table `tblInvoiceReview`. If it does, run the existing Review Request Processing rules against that table before other workbook work. The checkbox remains a user-visible request marker, but it is not the only trigger for reconciliation; an authorized workbook-open action is also enough to invoke the existing Review processing rules.
-
-When processing a workbook Review request:
-
-1. Confirm the exact Teams workbook before editing.
-2. Retrieve a fresh copy using the SharePoint/Teams connector.
-3. Read `invoiceEntryReviewRequest` by defined name, not by guessing its cell location.
-4. Verify through Excel that `invoiceEntryReviewRequest` reopens as `=Review!$B$1`; do not create or rely on a relative reference such as `=Review!B1`.
-5. If the request value is `FALSE` or blank, report that no Invoice Entry request is pending and do not process Review rows.
-6. If the request value is `TRUE`, read `tblInvoiceReview` by table name and column headers.
-7. Do not depend on visible row numbers, filtering, hidden rows, or the table's current cell range.
-8. Build the structured request packet inside the Invoice Entry process. Do not add packet formulas, scripts, or duplicate-check logic to the workbook.
-9. Include the workbook identity, request timestamp, Review Row IDs, current row values, destinations, statuses, and source traceability.
-10. Treat rows as eligible when `Destination Worksheet` is filled, `Review Row ID` is present, required vendor, date, amount, and source information is present, and status is not an explicit stop. A filled `Destination Worksheet` supplied by Wes is approval to move the row even if an older status still says `Needs Review`.
-11. Exclude rows when status is `Moved`, `Hold`, `Do Not Move`, `Duplicate Risk`, or `Missing Data`, `Destination Worksheet` is blank, or required traceability is insufficient. Treat `Hold` as a hard stop until Wes changes it.
-12. Perform duplicate checks before inserting anything.
-13. Insert approved records only into the yellow actual-invoice section of the correct destination worksheet; never write into orange template-estimate rows.
-14. Preserve formulas, formatting, tables, controls, selectors, names, and workbook links.
-15. After a successful insertion, retain the Review row, correct `Status` to `Moved`, and record the destination worksheet/table and movement date in the existing review or notes field. Correct an older `Needs Review` status during the move unless Wes set the status to `Hold`.
-16. Preserve excluded or uncertain rows and explain what still needs review.
-17. After the pending request has been fully handled and validation passes, clear the checkbox by setting `invoiceEntryReviewRequest` to `FALSE`.
-18. Do not clear the checkbox before the request has been processed and the workbook has passed validation.
-19. Create a rollback copy before editing.
-20. Save through Excel, reopen cleanly, validate destination totals and `Gnatt Chart` values, confirm zero unintended workbook links, and replace the same Teams workbook only after validation passes.
-
-## Statement Hold
-
-Statement packets are extracted by Doc Scan and routed to this project room to be treated as statement-line source material, but they are not normal single-invoice packets. Lowes Statement is the first active statement source.
-
-If a Statement packet is received:
-
-1. Do not insert statement items into any workbook yet.
-2. Do not treat the statement as a single invoice for one worksheet.
-3. Mark the packet as `Needs Review - Statement` unless the approved Statement rules say otherwise.
-4. Use the extracted data as the starting point for allocation review, not as automatic approval for insertion.
-5. Hold insertion until Wes approves a tested process for allocating statement items by project and then by worksheet/table within each project.
-
-Reason: a common invoice usually maps to one project and one tab, but a statement can contain charges for multiple projects and multiple tabs inside each project.
-
-## Lowes Statement Operations
-
-Lowes statements have one supported intake path:
-
-- **Doc Scan handoff processing** - Doc Scan receives or is asked to process one or more Lowes statements, extracts the detail, and passes a structured Statement packet to Invoice Entry.
-
-Do not request statement processing directly in this Invoice Entry project room. If Wes or another workflow wants one statement or a set of statements processed, route the request to Doc Scan first. Invoice Entry must wait for the Doc Scan Statement packet and must not substitute its own OCR, statement extraction, or raw-PDF parsing.
-
-For Statement handoffs:
-
-- treat a statement as potentially multi-project,
-- never treat the full statement as belonging to one workbook just because one line belongs there,
-- route each retained line by project first, then worksheet/table,
-- import a line into a project workbook only when that workbook is ready to receive that class of line,
-- retain statement detail that applies to a project that is not yet ready for insertion,
-- keep enough traceability to import retained lines later, including statement account, statement closing date, row/ref number, transaction date, description, amount, project clue, confidence/status, and source statement path,
-- avoid duplicate Review or vendor-table rows when a held line is later imported.
-
-Current rollout status: active project workbooks are being prepared for Lowe's Review/vendor-table processing. When Doc Scan supplies a structured Statement packet, Invoice Entry may iterate through ready active projects and import only the rows that apply to each ready project. Non-ready or unclear rows remain held.
-
-Held statement detail lives in:
-
-`C:\Codex\Wiki Files\Project Rooms\Invoice Entry\working\lowes-statement-held-detail-register.md`
-
-## Lowes Statement Review-First Rule
-
-For Lowes Statement packets:
-
-1. Exclude rows that clearly do not belong to the target project.
-2. Exclude sales-tax-only and tax-credit-only rows; tax will be calculated or allocated later by an approved spreadsheet tax method.
-3. Insert rows that certainly belong to the target project into that project's workbook `Review` table first.
-4. Also insert rows that may belong to the target project but have project, PO, destination, mixed-tab, or allocation uncertainty into that project's workbook `Review` table first.
-5. Populate `Review[Description]` with the clean item description that will later map into the vendor-table description field.
-6. When Lowe's item numbers are available, use reliable Lowe's product-page matches to improve `Review[Description]`; keep statement-derived text when no reliable product match is found.
-7. Do not insert Lowes statement items directly into vendor tabs during the initial packet-consumption pass.
-8. If the destination tab is clear, fill `Review[Destination Worksheet]` with that worksheet name.
-9. If the destination is not clear, leave `Review[Destination Worksheet]` blank and explain the issue in the review/status fields.
-10. A filled `Destination Worksheet` means Invoice Entry has a confident routing recommendation; it does not by itself mean the row has already been copied into the destination vendor table.
-11. Moving or copying a reviewed Lowes statement row from `Review` into a vendor table happens only after the review/approval rule for that row is satisfied.
-12. Rows not inserted into a particular project workbook must still be retained in the held-detail register when they are Home/non-project, accounting-review, unclear-project, belong to a project whose workbook is not ready, or otherwise cannot yet be inserted into the appropriate project workbook.
-
-### Provisional Vendor-Tab Copy Exception
-
-If Wes explicitly authorizes post-copy review for a Statement batch, Invoice Entry may copy high-confidence Lowe's statement rows directly from `Review` into a vendor tab when project, amount, description, and destination worksheet are defensible from the packet and approved worksheet-mode rules.
-
-This is a copy-for-review, not final approval:
-
-- keep the source `Review` row,
-- set or leave its status as `Copied - Needs Owner Verification` or another clear review status rather than `Moved`,
-- record the destination worksheet/table and copy date in the review or notes field,
-- do not use this exception for unclear project, blank or guessed destination, tax-only amounts, missing/fragmented amount evidence, mixed destination items, incomplete-source-only summary rows, or explicit stop statuses such as `Hold`.
-
-## Vendor Tabs Startup
-
-When inserting into Vendor Tabs, read:
-
-- `C:\Codex\Wiki Files\Project Rooms\Template to Project\Worksheet Modes\Vendor Tabs Mode Rules.md`
-- `C:\Codex\Wiki Files\Project Rooms\Template to Project\Project Spreadsheet Expense Placement Rules.md`
-
-Current Vendor Tabs worksheets:
-
-1. `Demo & Trash Haul`
-2. `Appliances`
-3. `Plumbing Fixtures`
-4. `Windows & Doors`
-5. `Cabinets`
-6. `Paint`
-7. `Flooring`
-8. `HVAC`
-9. `Electrical Fixtures`
-10. `STR`
-11. `Landscape`
-
-Do not route invoices to tabs right of `Landscape`, such as `Exterior` or `Furnishing`, unless Wes explicitly expands Vendor Tabs.
-
-## Duplicate Check
-
-Use these duplicate indicators before inserting:
-
-- Strongest key: project + vendor + invoice number.
-- If no invoice number: project + vendor + invoice date + amount.
-- Also compare source filename and Doc Scan packet/source identifier when available.
-
-If a duplicate is likely, stop and route the packet for review instead of inserting another row.
-
-## Open Decisions
-
-- Exact row-insertion behavior for each Vendor Tab's yellow actual-invoice section.
-- Whether successful low-risk insertions can later run automatically.
-- Final STR worksheet design, because STR does not yet match the two-group vendor-tab layout.
-- Statement allocation process for splitting extracted statement charges by project and by worksheet/table before insertion.
-- Lowes Statement follow-up process for moving approved Review rows into vendor tables after Wes supplies or accepts the destination worksheet.
-- Safe workbook-structure rollout pattern for Vendor Tabs, including how to standardize table columns and formatting without corrupting table headers.
-
-## Next Actions
-
-1. Finish and approve the Outrigger Vendor Tabs design.
-2. Create the first Outrigger invoice-entry test packet.
-3. Prove duplicate detection, row placement, totals, and `Gnatt Chart` behavior on Outrigger.
-4. After Wes approves, define the repeatable insertion procedure for other active project workbooks.
+Invoice Entry owns operational processing after a structured invoice, receipt, statement-line, routed vendor-invoice, or routed Time Card source reaches this Project Room. It resolves the correct active project-management workbook, checks duplicates, determines approved row placement, performs authorized insertion, validates the workbook, and records the outcome.
+
+Invoice Entry does not redesign workbook templates, approve or pay invoices, monitor mailboxes, perform scan OCR, or make unsupported accounting decisions.
+
+## Canonical Operating Sources
+
+- Detailed workflow rules: `C:\Codex\Wiki Files\skills\invoice-entry\SKILL.md`
+- Authoritative current work: `working\work-status.md`
+- Packet structure: `working\invoice-packet-schema.md`
+- Active workbook lookup: `working\project-spreadsheet-register.md`
+- Current blockers and decisions: `working\missing-context.md`
+- Source references and retention outcomes: `working\source-inventory.md`
+- Duplicate decisions: `working\duplicate-and-conflict-log.md`
+- Lowe's retained detail: `working\lowes-statement-held-detail-register.md`
+- Scanned-document outcomes: `working\scanned-document-action-log.md`
+- Working archive locations: `working\teams-working-archive-map.md`
+- Reusable lessons: `working\iteration-lessons.md`
+
+Do not duplicate the full skill rules in this README. The skill controls workflow behavior; `work-status.md` controls what is currently open. Historical packet and processing logs preserve evidence but do not override a later governing rule or current status.
+
+## Required Startup
+
+1. Confirm the working folder is exactly `C:\Codex\Wiki Files`.
+2. Read the installed Invoice Entry skill and this README.
+3. Read `working\work-status.md` before processing a handoff or opening a workbook.
+4. Read the packet, source references, and detailed processing log for the specific item.
+5. If records conflict, stop and reconcile the authoritative source before repeating an external action.
+6. Use SharePoint/Teams as the source of truth for active project-management workbooks.
+
+## Ownership Boundary
+
+- `Doc Scan` owns scan inspection, OCR, splitting, document identification, scanned-file routing, scan logs, statement extraction, and creation of structured scanned-document packets.
+- `Email Monitor` owns mailbox monitoring, routed-email preservation, direct handoff, and all outbound email delivery through Email Delivery.
+- `Invoice Entry` owns packet consumption or authorized packet creation, duplicate checks, workbook resolution, approved insertion, validation, upload, and durable processing status.
+- `Template to Project` owns worksheet design, worksheet-mode rules, template changes, and rollout across active workbooks.
+
+Invoice Entry may read Template to Project rules while inserting into an established worksheet mode. It must not edit Template to Project files or redesign a workbook mode without Wes's exact authorization.
+
+## Supported Modes
+
+### Standard Packet Processing
+
+Consume structured invoice or receipt packets from Doc Scan, resolve the active workbook and approved destination, check duplicates, insert only when authorized, validate, and log the result.
+
+### Create Vendor Invoice
+
+Consume vendor-invoice email handoffs from Email Monitor or OfficeAssist. Use an attached invoice as the source document. When the source is free text only, create the formal invoice, obtain vendor fact verification when required, obtain Wes approval before final filing or posting, and route every email package through Email Monitor.
+
+### Time Card
+
+Run only from an Email Monitor handoff. Accumulate accepted time by worker and week, split time by project or BackOffice destination, and regenerate one Project Cost Allocation Report per destination. Under the current rule, each destination report is also the payable invoice; together the reports must reconcile to Josh Kennedy's fixed `$1,250.00` weekly amount. Do not create a separate biweekly service-payment invoice.
+
+### Statement Processing
+
+Consume statement detail extracted and packaged by Doc Scan. Treat statements as potentially multi-project and multi-category. Allocate by project first, retain unsupported detail, and do not treat an entire statement as one invoice.
+
+### Review Request Processing
+
+For authorized workbook work, reconcile `Review!tblInvoiceReview` by table and column names, independent of filters or hidden rows. Use the defined name `invoiceEntryReviewRequest`, preserve held rows, run duplicate checks, and post only rows that meet the current Review and worksheet-mode rules.
+
+### Vendor Tabs
+
+Insert only into the yellow actual-invoice area of an approved Vendor Tab. Never write imported records into orange template-estimate rows. Read the current Template to Project Vendor Tabs rules before insertion.
+
+## Email Boundary
+
+Invoice Entry never sends email directly. It prepares the exact package and hands it to Email Monitor's Email Delivery workflow. A send is complete only after Email Monitor returns verified OfficeAssist Sent Items evidence. Do not retry a verified or ambiguous delivery without reconciliation.
+
+## Workbook Safety
+
+- Confirm the exact live workbook at the SharePoint `Property` root before every edit.
+- Use `working\project-spreadsheet-register.md` as a lookup aid, not as proof that a cached filename is still current.
+- Create a rollback copy before editing.
+- Check duplicates before insertion.
+- Preserve formulas, formatting, tables, controls, selectors, names, macros, and links.
+- Save through Excel when required, reopen cleanly, validate affected totals and `Gnatt Chart`, and confirm zero unintended links.
+- Replace the same SharePoint workbook only after validation passes.
+- Do not retry an upload already recorded as verified unless evidence shows that it failed.
+
+## Current State
+
+The current operational queue, verified deliveries, holds, and known stale records live only in `working\work-status.md`. Update that file after every substantive run. Do not place an active queue in this README.
+
+Dedicated task: `019f3d56-b310-75c0-b084-616bfc1e9f59`.
+
+Backup automation: `invoice-entry-to-projects-backup-heartbeat`, scheduled for noon and 4:00 PM Eastern. Direct handoffs remain the primary trigger.
+
+## Source And Working-File Retention
+
+The Git repository retains rules, status, schemas, compact packet summaries, references, decisions, and logs. Operational source emails, attachments, generated PDFs, workbook copies, render previews, OCR files, and machine handoff artifacts belong in their authoritative mailbox, SharePoint/Teams location, project folder, or mapped Invoice Entry Working Archive.
+
+At the end of a run, preserve durable evidence, archive or remove generated working artifacts under the detailed skill rules, and update the archive map. Do not delete uncertain evidence.
+
+## Git And Skill Sync
+
+- Invoice Entry owns this Project Room and `skills\invoice-entry`.
+- Do not edit another Project Room or skill without Wes's exact authorization.
+- Commit only the scoped Invoice Entry body of work.
+- Push only when Wes explicitly asks or the deliverable is already defined as final.
+- The wiki-managed skill is the source of truth. Sync it to `%USERPROFILE%\.codex\skills\invoice-entry` only after the source is correct and ready for use.
+
 ## Start PR Pointer
 
-Before durable work, follow the Start PR workflow in `C:\Codex\Wiki Files\Project Room Chat Startup Rule.md`.
-
-Interpret unqualified requests under the Current PR Scope Rule in that file. Work on `main` unless Wes explicitly asks for a branch.
+Before durable work, follow `C:\Codex\Wiki Files\Project Room Chat Startup Rule.md`. Work on `main` unless Wes explicitly asks for another branch.
