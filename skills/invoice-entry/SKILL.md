@@ -162,32 +162,32 @@ Weekly accumulation:
 
 1. Each accepted Time Card email updates the accumulated, source-traceable weekly time records. Those records are the source of truth; a generated PDF is a replaceable output, not the editable source.
 2. Split actual time by project and BackOffice destination.
-3. Regenerate one `Project Cost Allocation Report` per project or BackOffice destination. These reports are internal records, not invoices, and must be marked `INTERNAL ALLOCATION ONLY`, `NOT AN INVOICE`, and `NOT PAYABLE`.
-4. Allocate Josh's fixed `$1,250.00` weekly service cost proportionally across all accepted time for that week. The project and BackOffice report totals must reconcile exactly to `$1,250.00`.
-5. After each regeneration, route the replacement allocation reports through Email Monitor's Email Delivery workflow to the Time Card sender for accuracy verification, copying `WesWill@BuyYourHomeLLC.com` and `Jenny@BuyYourHomeLLC.com`.
+3. Regenerate one `Project Cost Allocation Report` per project or BackOffice destination. Each report is also the payable invoice for that destination and must identify Josh Kennedy as issuer, Buy Your Home as customer, the report/invoice number, invoice date, service period, project or BackOffice destination, hours, allocation method, and amount due.
+4. Allocate Josh's fixed `$1,250.00` weekly service cost proportionally across all accepted time for that week. The destination report/invoice amounts must reconcile exactly to `$1,250.00`; do not create a separate service-payment invoice for the same week.
+5. After each regeneration, route the replacement daily or final allocation reports through Email Monitor's Email Delivery workflow to the Time Card sender, copying `WesWill@BuyYourHomeLLC.com` and `Jenny@BuyYourHomeLLC.com`. State that no reply is needed when the time, project allocation, and totals are correct; the sender should reply only when a correction is needed.
 6. During the week, do not copy allocation reports to Teams or insert them into project workbooks.
-7. At the end of the week, obtain Josh's accuracy verification and then Wes's separate approval before final filing or project-spreadsheet allocation.
+7. After sending the final week-end report, allow Wes through Sunday to approve, correct, or deny it. If Wes has not approved, corrected, or denied it by the first Invoice Entry processing check on Monday, and no sender correction is pending, make the report final automatically.
 
 - Accumulate Time Card emails by worker/vendor and work week.
 - When another Time Card email arrives for the same worker/week, add its new lines to the existing weekly source record and regenerate the affected allocation reports.
 - Generate allocation reports with `C:\Codex\Wiki Files\skills\invoice-entry\scripts\create-project-cost-allocation-report.py`.
 - Preserve work dates, descriptions, hours, project allocation, weekly cost, allocation method, source traceability, duplicate decisions, delivery evidence, and approval responses.
-- Treat the Friday or otherwise final end-of-week Time Card email as the point when worker accuracy verification may complete the weekly allocation package.
-- After Josh verifies the final allocation reports, set the package status to `Worker Verified - Awaiting Wes Approval`.
-- Only Wes's approval authorizes final Teams filing and project-spreadsheet processing.
+- Daily and final Project Cost Allocation Reports use correction-by-exception review. Silence from the sender means no correction was reported; it is not a separate affirmative verification requirement.
+- If Wes approves the final week-end report, finalize it immediately. If Wes corrects or denies it, do not auto-finalize the unchanged report; process the correction or hold the package as directed.
+- On the first Invoice Entry processing check on Monday, set an unchanged final week-end report to `Final - No Corrections Received` when Wes has not approved, corrected, or denied it and no sender correction is pending. This status authorizes normal filing and project-spreadsheet processing and makes the report/invoice eligible for the normal payment process. Invoice Entry does not make the payment.
 - Preserve every routed Time Card email as source evidence and retain traceability from each invoice line back to the source email.
 - If the source does not state the worked date, use the email received date as the worked date and record that assumption in the packet.
-- Use report numbers in the pattern `PCA-JK-<YYYYMMDD>-<PROJECT>-001`. Do not assign invoice numbers to allocation reports.
+- Use the report/invoice number pattern `PCA-JK-<YYYYMMDD>-<PROJECT>-001` and the week-ending Friday as the invoice date.
 - If no accepted hours exist for the week, or project allocation is unclear, hold the affected report rather than inventing an allocation.
 
 Project handling:
 
 - Split the weekly time by project when the Time Card source identifies multiple projects.
-- Create one non-payable allocation report per project and a separate non-payable allocation report for BackOffice time.
+- Create one payable allocation report/invoice per project and a separate payable allocation report/invoice for BackOffice time. Together they represent Josh's complete weekly amount due and must not create duplicate payment obligations.
 - Maintain the current project-spreadsheet lookup list in `C:\Codex\Wiki Files\Project Rooms\Invoice Entry\working\project-spreadsheet-register.md`.
 - Use the register to identify the proposed workbook, then verify the exact current workbook at the SharePoint `Property` root before every edit. The register is a lookup aid, not authority to use a stale file.
 - Invoice Entry owns this register until Wes explicitly transfers that duty to a Project PR or another named workflow.
-- After Josh verifies the final allocation reports and Wes separately approves them, insert each project's allocated cost into that project's correct project-management spreadsheet under existing Invoice Entry insertion rules.
+- After the final report is approved by Wes or becomes `Final - No Corrections Received` on Monday, insert each project's allocated cost into that project's correct project-management spreadsheet under existing Invoice Entry insertion rules.
 - Do not put all time into one project unless the source clearly applies only to that project.
 - If project, date, worker/vendor, hours, weekly cost, or destination worksheet is unclear, hold the affected line for review rather than guessing.
 - Before inserting, check for existing entries for the same worker/vendor, week, project, date, and source Time Card line so repeated weekly updates do not duplicate prior additions.
@@ -195,32 +195,19 @@ Project handling:
 
 Teams filing:
 
-- Do not copy Time Card allocation reports to Teams/project folders until the final email for the week has been received, Josh has verified the final reports, and Wes has separately approved final processing.
-- After both approvals, save each project allocation report in the affected Teams project `Invoices` folder.
-- After both approvals, save the BackOffice allocation report in Teams `Office Admin/Invoices & Receipts`.
+- Do not copy Time Card allocation reports to Teams/project folders until the final week-end report is approved by Wes or becomes `Final - No Corrections Received` on Monday.
+- After finalization, save each project allocation report in the affected Teams project `Invoices` folder.
+- After finalization, save the BackOffice allocation report in Teams `Office Admin/Invoices & Receipts`.
 - If a report already exists for the same worker/week/project after final processing, replace it with the updated report.
 - Use a stable weekly filename so updates overwrite the same file instead of creating duplicates.
 - Standard filename: `YY-MM-DD - <Worker> - Project Cost Allocation Report - <Project or BackOffice>.pdf`.
 
 Safety limits:
 
-- Do not treat an allocation report as an invoice, payable, approval to pay, or proof of payment.
-- Do not request delivery if the sender identity is unclear, the reports cannot be verified visually, or the message would imply a separate amount payable.
+- Do not treat a draft allocation report/invoice as final, paid, or proof of payment. Only Wes approval or Monday finalization makes it eligible for the normal payment process; Invoice Entry does not make payment.
+- Do not request delivery if the sender identity is unclear, the reports cannot be verified visually, or the combined destination amounts do not reconcile to the weekly amount due.
 - Do not create workbook entries without enough project, date, hours, weekly-cost, allocation-method, and source traceability.
 - Preserve unresolved lines in the project room and report what Wes must review.
-
-## Josh Biweekly Service Payment
-
-- Create one payable invoice every two weeks for Josh Kennedy at `$1,250.00` per week, totaling `$2,500.00`.
-- The biweekly invoice is the sole payable document for Josh for that cycle. Time Card Project Cost Allocation Reports must not create additional payables.
-- Show Josh Kennedy as issuer and Buy Your Home as customer.
-- Use invoice number `SP-JK-<cycle-ending YYYYMMDD>-001`.
-- Use the cycle-ending Friday as the invoice date and identify the two-week service period.
-- Mark the generated invoice `Draft - Awaiting Wes Approval`; approval does not mean payment was completed.
-- Generate and visually validate the PDF using the canonical outside-person invoice generator.
-- Send the invoice through Email Monitor's Email Delivery mode to `WesWill@BuyYourHomeLLC.com` only, with no CC or BCC.
-- Do not send the payment invoice to Josh, file it to Teams, edit a project workbook, mark it paid, or initiate payment without separate authority.
-- Automation `josh-biweekly-service-payment-invoice` runs every other Friday at 4:00 PM Eastern. It must perform an invoice-number and cycle duplicate check before generating or sending.
 
 ## Required Inputs
 

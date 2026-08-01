@@ -41,7 +41,7 @@ Use [[Agent Unit Standard]] for the standard package behind an agent-like operat
 | Entity Relationship | Wiki-managed skill plus project room | Active/planning | On demand | `skills\entity-relationship\SKILL.md`; `Project Rooms\Entity Relationship\README.md` |
 | Gracious Millionaire | Wiki-managed skill plus project room plus heartbeat automation | Active | Project-room heartbeat every 15 minutes during active window; on demand otherwise | `skills\gracious-millionaire\SKILL.md`; `Project Rooms\Gracious Millionaire\README.md`; `Project Rooms\Gracious Millionaire\working\intake-heartbeat-rules.md`; automation id `gracious-millionaire-project-room-heartbeat` |
 | Template to Project | Wiki-managed skill plus project room | Active | On demand | `skills\template-to-project\SKILL.md`; `Project Rooms\Template to Project\README.md`; `Project Rooms\Template to Project\Project Spreadsheet Expense Placement Rules.md` |
-| Invoice Entry | Wiki-managed skill plus project room plus backup heartbeat, Josh biweekly invoice automation, and dedicated chat | Active | Direct handoff is primary; backup heartbeat runs at noon and 4:00 PM Eastern; Josh payment invoice runs every other Friday at 4:00 PM Eastern | `skills\invoice-entry\SKILL.md`; `Project Rooms\Invoice Entry\README.md`; app automation ids `invoice-entry-to-projects-backup-heartbeat` and `josh-biweekly-service-payment-invoice` |
+| Invoice Entry | Wiki-managed skill plus project room, backup heartbeat, and dedicated chat | Active | Direct handoff is primary; backup heartbeat runs at noon and 4:00 PM Eastern | `skills\invoice-entry\SKILL.md`; `Project Rooms\Invoice Entry\README.md`; app automation id `invoice-entry-to-projects-backup-heartbeat` |
 | Project Management Spreadsheet Rewrite | Planning/history project room now covered by Template to Project | Active/planning | On demand | `skills\template-to-project\SKILL.md`; `Project Rooms\Project Management Spreadsheet Rewrite\README.md` |
 | Property Trade Evaluation | Wiki-managed skill plus project room | Active | On demand | `skills\property-trade-evaluation\SKILL.md`; `Project Rooms\Property Trade Evaluation\README.md` |
 | Voices | Wiki-managed skill plus project room | Planning | On demand | `skills\voices\SKILL.md`; `Project Rooms\Voices\README.md` |
@@ -1114,15 +1114,6 @@ Automation:
 - Primary trigger: Doc Scan sends a direct follow-up message to the dedicated Invoice Entry chat with the packet path and summary.
 - Backup scope: inspect the Invoice Entry project room for new or changed structured invoice/receipt packets that were not delivered by direct message. Do not scan inboxes, inspect raw scan folders, copy files into Teams, approve or pay invoices, contact vendors, redesign workbook templates, or create new chats.
 - Live workbook edits remain gated by clear Wes authorization or an approved automation rule for the exact insertion type.
-
-Josh biweekly payment automation:
-
-- Automation id: `josh-biweekly-service-payment-invoice`.
-- Schedule: every other Friday at 4:00 PM Eastern.
-- Creates one `$2,500.00` payable invoice for two weeks at `$1,250.00` per week.
-- Sends the validated draft through Email Monitor's Email Delivery mode to Wes only.
-- Performs cycle and invoice-number duplicate checks.
-- Does not pay, file, post, mark paid, or edit a project workbook.
 
 Important limitations:
 

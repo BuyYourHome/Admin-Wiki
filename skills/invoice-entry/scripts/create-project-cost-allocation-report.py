@@ -26,6 +26,7 @@ def build_report(data, output_path):
     report_no = required(data, "report_no")
     report_date = required(data, "report_date")
     period = required(data, "period")
+    status_text = data.get("status", "Draft - Correction Review")
     lines = required(data, "lines")
     expected_total = round(float(required(data, "allocated_total")), 2)
     line_total = round(sum(float(line["allocated_cost"]) for line in lines), 2)
@@ -40,8 +41,8 @@ def build_report(data, output_path):
         leftMargin=0.62 * inch,
         topMargin=0.52 * inch,
         bottomMargin=0.52 * inch,
-        title=f"{worker} Project Cost Allocation Report",
-        author="Buy Your Home",
+        title=f"{worker} Project Cost Allocation Report and Invoice",
+        author=worker,
     )
     styles = getSampleStyleSheet()
     body = ParagraphStyle(
@@ -77,9 +78,9 @@ def build_report(data, output_path):
     story = []
     header = Table(
         [[
-            Paragraph(f"PROJECT COST<br/>ALLOCATION REPORT<br/><font size='9'>Buy Your Home</font>", title),
+            Paragraph("PROJECT COST<br/>ALLOCATION REPORT<br/><font size='9'>PAYABLE INVOICE</font>", title),
             Paragraph(
-                "<b>INTERNAL ALLOCATION ONLY</b><br/>NOT AN INVOICE<br/>NOT PAYABLE",
+                f"<b>{status_text}</b><br/>Issuer: {worker}<br/>Customer: Buy Your Home",
                 ParagraphStyle("Right", parent=body, alignment=2, leading=14, textColor=deep),
             ),
         ]],
@@ -94,8 +95,8 @@ def build_report(data, output_path):
 
     status = Table(
         [[
-            Paragraph("<b>Status:</b> Internal cost allocation - not payable", body),
-            Paragraph(f"<b>Report Date:</b> {report_date}", body),
+            Paragraph(f"<b>Status:</b> {status_text}", body),
+            Paragraph(f"<b>Invoice Date:</b> {report_date}", body),
         ]],
         colWidths=[4.3 * inch, 2.65 * inch],
     )
@@ -111,11 +112,12 @@ def build_report(data, output_path):
 
     details = Table(
         [[
-            Paragraph(f"<b>Worker</b><br/>{worker}", body),
+            Paragraph(f"<b>Issuer</b><br/>{worker}", body),
+            Paragraph("<b>Customer</b><br/>Buy Your Home", body),
             Paragraph(f"<b>Allocation Destination</b><br/>{project}", body),
-            Paragraph(f"<b>Time Period</b><br/>{period}", body),
+            Paragraph(f"<b>Service Period</b><br/>{period}", body),
         ]],
-        colWidths=[2.28 * inch, 2.28 * inch, 2.28 * inch],
+        colWidths=[1.7 * inch, 1.7 * inch, 1.8 * inch, 1.65 * inch],
     )
     details.setStyle(TableStyle([
         ("VALIGN", (0, 0), (-1, -1), "TOP"),
@@ -128,7 +130,7 @@ def build_report(data, output_path):
     ]))
     story.extend([details, Spacer(1, 0.24 * inch)])
 
-    meta = Table([["Report #", report_no]], colWidths=[1.35 * inch, 5.55 * inch])
+    meta = Table([["Report / Invoice #", report_no]], colWidths=[1.6 * inch, 5.3 * inch])
     meta.setStyle(TableStyle([
         ("BACKGROUND", (0, 0), (-1, -1), deep),
         ("TEXTCOLOR", (0, 0), (-1, -1), colors.white),
@@ -166,7 +168,7 @@ def build_report(data, output_path):
     story.extend([items, Spacer(1, 0.18 * inch)])
 
     total = Table(
-        [["Allocated Project Cost", money(expected_total)]],
+        [["Amount Due", money(expected_total)]],
         colWidths=[1.8 * inch, 1.2 * inch],
         hAlign="RIGHT",
     )
@@ -183,7 +185,7 @@ def build_report(data, output_path):
 
     note = Table(
         [[Paragraph(
-            "<b>NON-PAYABLE RECORD:</b> This report allocates a portion of Josh Kennedy's fixed weekly service cost to the destination shown above. It does not authorize or request a separate payment.",
+            "<b>PAYABLE ALLOCATION:</b> This report is the invoice for the portion of Josh Kennedy's fixed weekly service cost allocated to the destination shown above. All reports for the week must be reviewed together to prevent duplicate payment.",
             body,
         )], [Paragraph(required(data, "method_note"), body)], [Paragraph(required(data, "traceability"), muted)]],
         colWidths=[6.95 * inch],
