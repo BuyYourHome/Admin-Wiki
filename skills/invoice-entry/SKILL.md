@@ -50,6 +50,8 @@ Other packet handoff sources are out of scope unless Wes separately approves and
 
 Email Monitor or OfficeAssist may route contractor/vendor invoice emails under Create Vendor Invoice. In that workflow, the routing workflow owns mailbox monitoring and source-email preservation, while Invoice Entry owns reading the routed source material, creating the structured invoice packet, and performing authorized invoice-entry work. Email Monitor's Email Delivery mode owns every outbound email send.
 
+Invoice Entry may fetch one exact Outlook message for source reading only when the handoff supplies that message's exact ID and mailbox identity. It must not search, scan, triage, monitor, move, mark, draft, reply to, or send mailbox messages.
+
 This skill owns:
 
 - receiving the structured packet,
@@ -82,7 +84,7 @@ This skill does not own:
 
 ## Outbound Email Boundary
 
-Invoice Entry must not send email directly. Do not call an Outlook connector, use local Outlook, operate Outlook Web, or substitute another mailbox from this Project Room.
+Invoice Entry must not send email directly. Do not use an Outlook connector, local Outlook, or Outlook Web to draft, reply, forward, send, move, mark, or otherwise alter email from this Project Room. The exact-message source-reading exception in the ownership boundary does not authorize delivery or mailbox monitoring.
 
 When an Invoice Entry rule authorizes an email:
 
@@ -91,6 +93,22 @@ When an Invoice Entry rule authorizes an email:
 3. Email Monitor's Email Delivery mode must use `C:\Codex\Wiki Files\skills\email-delivery\SKILL.md` for OfficeAssist sender safety, connector/local-Outlook handling, attachment validation, Sent Items verification, delivery logging, and failure reporting.
 4. Do not mark the email sent until Email Monitor returns a verified OfficeAssist Sent Items result with the sent message id and timestamp.
 5. Record the handoff and returned delivery result in the Invoice Entry packet or processing log. If delivery fails or cannot be verified, keep the Invoice Entry item held and report the blocker.
+
+## Concise Handoff Contract
+
+Direct handoff messages are activation pointers, not durable processing histories. A normal Doc Scan or Email Monitor handoff should contain only:
+
+- one packet path, exact Outlook message ID/link, or authoritative Teams/SharePoint source path;
+- external attachment paths or a concise attachment-access blocker when applicable;
+- a short vendor, project, statement, or Time Card summary;
+- the requested Invoice Entry operation; and
+- any source-specific warning that is not already governed by the Invoice Entry skill.
+
+Do not repeat the full Invoice Entry standing rules, safety limits, mode instructions, full email body, complete prior-thread history, or completed-delivery narrative in a routine handoff. Invoice Entry must read its canonical skill, `working\work-status.md`, and the referenced packet or source record instead.
+
+When the handoff supplies only an Outlook reference, fetch only that exact message when its full body is required. Do not broaden the operation into a mailbox search. Preserve the exact message ID/link and concise extracted facts in the packet or source inventory; do not copy the full body into repeated task messages.
+
+If a concise handoff lacks enough information to identify or access the authoritative source, report the missing pointer or blocker. Do not ask the routing workflow to resend all standing instructions.
 
 ## Create Vendor Invoice
 

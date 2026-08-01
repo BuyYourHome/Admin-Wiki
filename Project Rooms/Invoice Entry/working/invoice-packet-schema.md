@@ -4,6 +4,20 @@ Use this schema when Doc Scan hands a scanned invoice, receipt, or Statement pac
 
 Doc Scan owns Lowes Statement extraction and will send extracted statement data for Invoice Entry to consume. Statement packets should not be inserted until Wes approves a tested process for allocating statement line items by project and by worksheet/table.
 
+## Handoff Message Versus Packet
+
+Keep the direct task handoff concise. The handoff activates Invoice Entry and points to the durable source; it does not reproduce this schema or the standing workflow rules.
+
+A normal handoff needs only:
+
+- the packet path, exact Outlook message ID/link, or authoritative Teams/SharePoint source path;
+- external attachment paths or an attachment-access blocker when applicable;
+- a short source summary;
+- the requested Invoice Entry operation; and
+- a warning unique to that source when needed.
+
+Store the complete structured fields below in the referenced packet or build them inside Invoice Entry from the exact routed source. Do not paste full email bodies, prior-thread history, or repeated safety instructions into routine handoff messages.
+
 ## Required Fields
 
 | Field | Required | Notes |

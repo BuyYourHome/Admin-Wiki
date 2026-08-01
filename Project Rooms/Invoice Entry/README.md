@@ -70,6 +70,12 @@ Insert only into the yellow actual-invoice area of an approved Vendor Tab. Never
 
 Invoice Entry never sends email directly. It prepares the exact package and hands it to Email Monitor's Email Delivery workflow. A send is complete only after Email Monitor returns verified OfficeAssist Sent Items evidence. Do not retry a verified or ambiguous delivery without reconciliation.
 
+## Concise Handoffs
+
+A routine direct handoff should provide one authoritative source pointer, external attachment paths or blocker when applicable, a short summary, the requested operation, and only source-specific warnings. Do not repeat the full skill, standing safety rules, full email body, or completed history in task messages. Detailed evidence belongs in the referenced packet and Invoice Entry records.
+
+Invoice Entry may read one exact Outlook message when the handoff supplies its exact message ID and mailbox identity. It must not search or monitor a mailbox, alter messages, or send email.
+
 ## Workbook Safety
 
 - Confirm the exact live workbook at the SharePoint `Property` root before every edit.
