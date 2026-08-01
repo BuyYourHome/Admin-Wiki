@@ -86,12 +86,27 @@ If the first connector send attempt fails because of parameter shape, attachment
 
 Use local Outlook only when the Outlook/email connector cannot perform the needed send or verification step.
 
+### Temporary Email Monitor WesWill Fallback
+
+For Email Monitor on the current computer, `OfficeAssist@BuyYourHomeLLC.com` is never mounted in local Outlook. Wes has authorized this narrower temporary fallback:
+
+- use it only when the connector is definitively unavailable before sending and the workflow can prove no connector send occurred;
+- use only the locally mounted `WesWill@BuyYourHomeLLC.com` mailbox; never use `Wes@myBrowning.net`;
+- preserve the caller-authorized To, CC, BCC, subject, body, attachments, and restrictions;
+- sign as `Jean Wright` / `Office Assistant`;
+- add a plain disclosure that the message was sent by Jean Wright using Wes Browning's mailbox because OfficeAssist was unavailable;
+- save to and verify the result in `WesWill@BuyYourHomeLLC.com` Sent Items;
+- report the requested OfficeAssist sender and the actual verified WesWill fallback sender in the delivery result;
+- record the substitution and reason in Email Monitor compact state and the seven-day rolling log.
+
+Do not use this fallback after a connector send attempt might have succeeded, after ambiguous connector output, or after connector Sent Items verification fails. Those states remain unresolved until reconciled because a second send could create a duplicate. This authorization is temporary and should be removed after Jean's dedicated computer provides verified direct local OfficeAssist access.
+
 Before sending through local Outlook:
 
 - Create or save the draft under the `OfficeAssist@BuyYourHomeLLC.com` Drafts folder.
 - Verify the saved draft is physically stored in the OfficeAssist Drafts folder.
 - Verify the visible sender/from identity is `OfficeAssist@BuyYourHomeLLC.com`.
-- If `OfficeAssist@BuyYourHomeLLC.com` is not mounted as a local Outlook mailbox store, local Outlook is not a safe fallback for OfficeAssist delivery. Do not send or leave a draft from another mailbox; report that a verified OfficeAssist-capable send path or explicit alternate-package authorization is required.
+- Except for the temporary Email Monitor WesWill fallback above, if `OfficeAssist@BuyYourHomeLLC.com` is not mounted as a local Outlook mailbox store, local Outlook is not a safe fallback for OfficeAssist delivery. Do not send or leave a draft from another mailbox; report that a verified OfficeAssist-capable send path or explicit alternate-package authorization is required.
 
 Outlook may leave `SendUsingAccount` blank after save/reopen. A blank value is acceptable only when the draft is in the OfficeAssist Drafts folder and the visible sender/from identity is OfficeAssist. If Outlook shows a non-blank sending account other than `OfficeAssist@BuyYourHomeLLC.com`, or if the draft is stored in any other mailbox, do not send automatically.
 

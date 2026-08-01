@@ -16,6 +16,7 @@
   "watchdog_state_file": "C:\\Users\\wesbr\\.codex\\automations\\officeassist-morning-email-summary-and-instruction-monitor\\watchdog-state.json",
   "watchdog_log_file": "C:\\Users\\wesbr\\.codex\\automations\\officeassist-morning-email-summary-and-instruction-monitor\\watchdog.log",
   "current_alert_file": "C:\\Users\\wesbr\\.codex\\automations\\officeassist-morning-email-summary-and-instruction-monitor\\current-alert.txt",
+  "rolling_log_config": "C:\\Codex\\Wiki Files\\Project Rooms\\Email Monitor\\config\\email-monitor-log.json",
   "scheduled_task_name": "Codex - Email Monitor Health Check",
   "toast_app_id": "Windows.SystemToast.PowerShell"
 }

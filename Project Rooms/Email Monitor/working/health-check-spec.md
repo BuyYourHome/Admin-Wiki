@@ -16,12 +16,15 @@ Health Check detects when the Email Monitor heartbeat stops completing even thou
 | Runtime health | `C:\Users\wesbr\.codex\automations\officeassist-morning-email-summary-and-instruction-monitor\health.json` | Machine-local current health state. |
 | Watchdog state | `C:\Users\wesbr\.codex\automations\officeassist-morning-email-summary-and-instruction-monitor\watchdog-state.json` | Machine-local alert transition and recovery state. |
 | Diagnostic log | `C:\Users\wesbr\.codex\automations\officeassist-morning-email-summary-and-instruction-monitor\watchdog.log` | Append-only watchdog evaluations and alert outcomes. |
+| Rolling Teams log | `Office Admin/Codex Logs/Email Monitor/Email Monitor - Rolling 7 Days.md` | Meaningful Email Monitor history for the most recent seven days; routine no-activity checks are excluded. |
 
 ## Email Monitor Contract
 
 At the beginning of every heartbeat, before mailbox or Project Room work, call the updater with `Started` and the intended mode. Before the heartbeat returns, call it with `Completed`. If the run fails or cannot finish normally, call it with `Failed`, including a concise failure stage and message.
 
 Health updates do not replace Email Monitor memory, send verification, failure reporting, or routing ledgers.
+
+The runtime `memory.md` is current state only and follows `working\memory-state-spec.md`. Meaningful failures, critical escalations, recoveries, routing actions, deliveries, and decisions are written through `tools\Update-EmailMonitorRollingLog.ps1`. Do not append routine heartbeat narratives to memory.
 
 ## Conversational Control
 
@@ -68,6 +71,8 @@ The watchdog always writes its diagnostic log and current alert state. On warnin
 3. a durable `current-alert.txt` file beside the runtime health file.
 
 Email and SMS are intentionally excluded until an independent, verified delivery path is configured. The watchdog must not depend on the same Codex Outlook connector it is supervising.
+
+Google Voice on the current computer is signed in as the same `(213) 293-7539` number that would receive Wes's alerts, so it cannot provide a useful self-text notification. Do not claim that Google Voice SMS fallback is active until a separate sending number is configured and verified.
 
 `TestAlert` may exercise the local toast and event-log paths, but it must not edit `health.json`, change the watchdog health state, or leave a current-alert file behind.
 

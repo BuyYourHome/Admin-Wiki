@@ -20,12 +20,16 @@ Before using this skill, have:
 - the global profile at `C:\Codex\Office Assistant Profile.md`,
 - the admin rules in `C:\Codex\Wiki Files\AGENTS.md`,
 - the automation memory file for this workflow at `C:\Users\wesbr\.codex\automations\officeassist-morning-email-summary-and-instruction-monitor\memory.md`,
+- the compact-state specification at `C:\Codex\Wiki Files\Project Rooms\Email Monitor\working\memory-state-spec.md`,
+- the seven-day rolling-log config at `C:\Codex\Wiki Files\Project Rooms\Email Monitor\config\email-monitor-log.json`,
 - access to `WesWill@BuyYourHomeLLC.com` mailbox contents,
 - access to `Jenny@BuyYourHomeLLC.com` mailbox contents when running Jenny's summary,
 - access to `IRAManager@SellYourHomeRaleigh.com` mailbox contents when running Josh's summary,
 - direct task messaging access to Manager task `019f8274-5b7e-7170-a051-f7944954de82`,
 - the routing action log at `C:\Codex\Wiki Files\Project Rooms\Email Monitor\working\routing-action-log.md` when routing or delivery outcomes need durable tracking,
 - access to `C:\Codex\Wiki Files\tools\get-codex-token-summary.ps1` when Wes's usage totals are needed.
+
+The automation path above is the only Email Monitor runtime memory file. Do not create or update `Project Rooms\Email Monitor\working\memory.md`.
 
 ## Workflow
 
@@ -118,8 +122,9 @@ Delivery handoff:
 
 State update:
 
-- after a successful verified send, update the automation memory with the summary date, weekly subject and Monday-through-Sunday week identifier, cutoff used, topics sent, verified send timestamp from OfficeAssist Sent Items, and any unusual routing, blocker, or verification-draft note;
-- if mailbox access, Wes token-summary generation, Manager response, send, or verification fails, record the blocker and action taken;
+- after a successful verified send, rewrite compact automation memory with the summary date, weekly subject and Monday-through-Sunday week identifier, cutoff used, verified send timestamp, and any unresolved blocker;
+- if mailbox access, Wes token-summary generation, Manager response, send, or verification fails, keep only the current unresolved blocker in compact memory;
+- record meaningful delivery, failure, or recovery history through `Update-EmailMonitorRollingLog.ps1` rather than appending a heartbeat narrative to memory;
 - do not treat a failed summary run as quiet.
 
 ### Health Check
@@ -127,6 +132,8 @@ State update:
 Use Health Check to maintain Email Monitor's workflow-specific liveness state and independent Windows watchdog. Follow `C:\Codex\Wiki Files\Project Rooms\Email Monitor\working\health-check-spec.md` and its JSON config and PowerShell tools.
 
 At heartbeat start, call the health updater with `Started` and the intended mode. Before returning, call it with `Completed`; on failure call it with `Failed`, a stage, and a concise message. The scheduled watchdog on the assigned machine owns stale-run evaluation, deduplicated warning/critical/recovery alerts, diagnostics, and wrong-machine refusal. It must not depend on the Outlook connector it supervises.
+
+Keep the existing Email Monitor chat. Do not create or rotate chats for ordinary context growth. Routine checks remain silent. Create a visible chat update only for initial failure, critical escalation, recovery, significant routing action, verified delivery, unresolved delivery, or a decision needed from Wes. Write those same meaningful events to the single seven-day Teams rolling log. Do not log routine no-activity checks.
 
 When Wes addresses Health Check in plain language, use `C:\Codex\Wiki Files\Project Rooms\Email Monitor\tools\Manage-CodexWorkflowHealth.ps1` as the control surface. Map the request to exactly one of `Options`, `Status`, `Enable`, `Disable`, `Configure`, `Test`, or `TestAlert`, execute it, and report the resulting effective settings. When Wes asks what the mode can do, asks for available commands, or says “Health Check, what are my options?”, run `Options`; do not rely on memory to enumerate the choices.
 
@@ -383,13 +390,13 @@ Reject or hold an incomplete or internally conflicting package. Return the missi
 
 #### Duplicate Prevention And Durable State
 
-Before any send attempt, search the Email Monitor delivery records and automation memory for `delivery_request_id`.
+Before any send attempt, search compact Email Monitor state, the seven-day rolling log, and the durable routing action log for `delivery_request_id`.
 
 - If that request is already `Sent and Verified`, do not send it again; return the existing verified result to the callback task/thread.
 - If it is `Sending`, `Held`, `Failed - Unresolved`, or otherwise unresolved, do not create a second send attempt until the existing record is reconciled under the shared Email Delivery retry rules.
 - If it is new and complete, create a durable request record before invoking the connector, then update that same record with the final result.
 
-Use `C:\Users\wesbr\.codex\automations\officeassist-morning-email-summary-and-instruction-monitor\memory.md` as the default durable delivery-request record unless the Project Room establishes a dedicated Email Monitor delivery ledger. Record the request ID, origin and callback IDs, authorization basis, immutable delivery fields or a precise reference to them, status, timestamps, sent message ID when available, verification details, and blocker notes.
+Keep unresolved delivery requests and requests completed within the last seven days in compact state. Record meaningful outcomes in the seven-day Teams rolling log and use `working\routing-action-log.md` for durable audit entries when needed. Do not append full completed delivery narratives indefinitely to `memory.md`.
 
 #### Invoice Entry Requests
 
@@ -414,11 +421,13 @@ For each accepted package:
 - never silently omit a required attachment;
 - when required attachments cannot be sent through the connector because of size or transport limits, preserve the package as unresolved unless the shared `email-delivery` skill can use a verified OfficeAssist-capable fallback; do not replace required attachments with links, reduced files, split emails, or a no-attachment message without explicit authorization from the requesting workflow or Wes;
 - make only the schema-correct retry documented in `email-delivery`, and only when the first connector error clearly explains the correction;
-- after sending, query OfficeAssist Sent Items and verify sender, To, CC, BCC, subject, and required attachment presence;
+- after sending through the connector, query OfficeAssist Sent Items and verify sender, To, CC, BCC, subject, and required attachment presence;
 - after a successful verified send, run Organize when Wes appears in To or CC;
-- do not send through another mailbox after a send or verification failure.
+- if the connector is definitively unavailable before a send attempt and no message was sent, the temporary current-computer fallback may use only `WesWill@BuyYourHomeLLC.com` through local Outlook under the shared Email Delivery rules;
+- do not use `Wes@myBrowning.net`;
+- do not use the fallback after an ambiguous connector result, a connector send attempt that might have succeeded, or a Sent Items verification failure.
 
-If specific Wes authorization names a sender other than OfficeAssist, preserve that sender in the request but hold the request unless the shared Email Delivery rules and available connector can safely use that exact sender and still satisfy the required Sent Items verification. Do not silently fall back to another mailbox.
+The temporary WesWill fallback is standing Wes authorization for Email Monitor delivery continuity only under the exact pre-send connector-unavailable conditions above. It does not change caller-owned recipients, content, attachments, authorization, or restrictions. Preserve the requested OfficeAssist sender in the delivery record and report the actual verified fallback sender.
 
 #### Callback Contract
 
@@ -567,7 +576,9 @@ After a successful verified Josh send, update the automation memory with:
 
 If the send fails or verification fails, record the blocker and the action taken.
 
-Use `C:\Users\wesbr\.codex\automations\officeassist-morning-email-summary-and-instruction-monitor\memory.md` as the persistent run memory unless Wes explicitly changes the live automation storage location.
+Use `C:\Users\wesbr\.codex\automations\officeassist-morning-email-summary-and-instruction-monitor\memory.md` only as compact current state under `working\memory-state-spec.md`. Rewrite it instead of appending heartbeat history.
+
+Use `C:\Codex\Wiki Files\Project Rooms\Email Monitor\tools\Update-EmailMonitorRollingLog.ps1` with `config\email-monitor-log.json` for meaningful operational history. Retain seven days in the single Teams file at `Office Admin/Codex Logs/Email Monitor/Email Monitor - Rolling 7 Days.md`. Exclude routine no-activity checks. If Teams is unavailable, use the one capped pending file defined by the config and merge it on the next successful log write.
 
 For routed emails and direct Email Delivery requests that matter for audit, debugging, or follow-up, also update `C:\Codex\Wiki Files\Project Rooms\Email Monitor\working\routing-action-log.md` with the durable outcome: Outlook message or delivery request, mode or branch, preserved Outlook reference, external source path if any, delivery record, handoff/recipient, status, and notes. Do not commit connector search scratch output, temporary drafts, duplicate fetched message bodies, routed email body files, or routed attachments merely to show how the routing decision was made.
 ## Start PR Pointer

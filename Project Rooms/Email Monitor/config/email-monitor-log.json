@@ -1,0 +1,8 @@
+{
+  "schema_version": 1,
+  "workflow_id": "officeassist-morning-email-summary-and-instruction-monitor",
+  "retention_days": 7,
+  "teams_log_path": "C:\\Users\\wesbr\\Buy Your Home\\Buy Your Home - Office Admin\\Codex Logs\\Email Monitor\\Email Monitor - Rolling 7 Days.md",
+  "pending_log_path": "C:\\Users\\wesbr\\.codex\\automations\\officeassist-morning-email-summary-and-instruction-monitor\\rolling-log-pending.md",
+  "max_pending_bytes": 262144
+}

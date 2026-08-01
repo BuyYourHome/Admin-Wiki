@@ -8,7 +8,8 @@ This project room holds development notes, source inventory, and review artifact
 - Preserve the active automation id: `officeassist-morning-email-summary-and-instruction-monitor`.
 - Keep the canonical workflow source in `C:\Codex\Wiki Files\skills\email-monitor\SKILL.md`.
 - Track the active OfficeAssist heartbeat config at `C:\Users\wesbr\.codex\automations\officeassist-morning-email-summary-and-instruction-monitor\automation.toml`.
-- Keep OfficeAssist instruction-email monitor memory in `C:\Users\wesbr\.codex\automations\officeassist-morning-email-summary-and-instruction-monitor\memory.md`.
+- Keep compact current state in `C:\Users\wesbr\.codex\automations\officeassist-morning-email-summary-and-instruction-monitor\memory.md`; it is not a heartbeat-history file.
+- Keep one seven-day rolling operational log in Teams at `Office Admin/Codex Logs/Email Monitor/Email Monitor - Rolling 7 Days.md`.
 - Record open decisions before changing mailbox scope, cutoff behavior, delivery behavior, or automation thread targeting.
 
 ## Current Status
@@ -21,10 +22,11 @@ This project room holds development notes, source inventory, and review artifact
 - Send identity: `OfficeAssist@BuyYourHomeLLC.com`.
 - Recipient for Wes summary: `WesWill@BuyYourHomeLLC.com`.
 - Preferred mailbox/send path: Outlook Email connector, with OfficeAssist sent-item verification.
-- Fallback: local Outlook only when connector send or verification cannot complete safely.
+- Current-computer fallback: when the connector is definitively unavailable and no send occurred, use only the locally mounted `WesWill@BuyYourHomeLLC.com` mailbox under the temporary Jean fallback rules. OfficeAssist is never mounted locally on this computer.
 - Automation type: heartbeat, attached to the dedicated `Email Monitor` thread.
 - Responsibility boundary: the heartbeat checks email and takes defined actions. Separately, direct authorized Email Delivery handoffs from other Project Rooms trigger immediately without waiting for the heartbeat or scanning a mailbox. Email Monitor coordinates delivery but does not take ownership of the requesting workflow's purpose, content, authorization, recipients, attachments, or restrictions.
 - Status thread id: `019ecba7-f1cc-7ac1-aaf7-d89a3f21b582`.
+- Chat lifecycle: keep this dedicated chat; do not rotate or replace it for ordinary context growth. Keep routine heartbeat history outside chat context and use replacement only as an emergency recovery measure.
 
 ## Room Layout
 
@@ -55,6 +57,8 @@ Use this mode to hold the Email Monitor health specification, maintain machine-l
 Email Monitor writes `Started`, `Completed`, or `Failed` state to its local `health.json`. Windows Task Scheduler runs the watchdog every 10 minutes on assigned machine `WESSTUDIO`. During the 7:45 AM through 11:00 PM Eastern active window, it warns after 35 minutes without a completed heartbeat, escalates at 60 minutes, and issues one recovery notice when service resumes.
 
 The watchdog runs PowerShell hidden, writes a durable log, alert state, current-alert file, and attempts a Windows toast plus Application event-log entry. It does not use the Outlook connector and does not provide remote SMS or email until an independent delivery channel is configured.
+
+Meaningful Email Monitor history is written to the central Teams rolling log through `tools\Update-EmailMonitorRollingLog.ps1`. The file retains seven days and excludes routine no-activity checks. Active `memory.md` follows `working\memory-state-spec.md` and remains compact.
 
 Wes can manage this mode in plain language, including asking “Health Check, what are my options?” The mode can show status, enable or disable the watchdog, change intervals, thresholds, or the active window, run a quiet diagnostic, and send a visible test alert. Configuration changes require current healthy state by default. Machine reassignment remains guided and requires destination verification before the old watchdog is disabled.
 
@@ -119,7 +123,9 @@ Reject or hold incomplete or conflicting packages. Do not invent or change any c
 
 A properly authorized Invoice Entry package may request vendor invoice-accuracy verification, Time Card invoice verification, Wes approval/payment review, or a post-Wes-approval status notice. Route Vendor Invoice's prohibition on contacting a vendor applies to intake routing; it does not block a later, specifically authorized Email Delivery package under Invoice Entry's saved rules.
 
-For an accepted connector send, use `OfficeAssist@BuyYourHomeLLC.com` unless the package contains specific Wes authorization for another sender. Prefer the Outlook connector, enable Sent Items saving, pass structured recipient objects, preserve the exact plain-text subject/body, and pass attachments as a list of absolute paths. Never omit a required attachment. Make only the documented schema-correct retry when the first connector error clearly explains it. Do not fall back to another mailbox after failure.
+For an accepted connector send, use `OfficeAssist@BuyYourHomeLLC.com` unless the package contains specific Wes authorization for another sender. Prefer the Outlook connector, enable Sent Items saving, pass structured recipient objects, preserve the exact plain-text subject/body, and pass attachments as a list of absolute paths. Never omit a required attachment. Make only the documented schema-correct retry when the first connector error clearly explains it.
+
+On this computer, OfficeAssist has no local Outlook mailbox. If the connector is definitively unavailable before sending and Email Monitor can prove that no send occurred, use `WesWill@BuyYourHomeLLC.com` as the temporary local Outlook fallback. Preserve the authorized recipients, subject, body, and attachments; sign as Jean Wright / Office Assistant; disclose that Wes's mailbox was used because OfficeAssist was unavailable; and verify the result in WesWill Sent Items. If connector delivery is ambiguous or verification failed after a send attempt, do not use the fallback because duplicate delivery is possible. Do not use `Wes@myBrowning.net`.
 
 If required attachments exceed connector limits or otherwise cannot be uploaded, Email Monitor must preserve the delivery request as unresolved unless `email-delivery` can use a verified OfficeAssist-capable alternate path. It must not substitute SharePoint links, compressed/reduced files, split packages, another sender, or a no-attachment email unless the requesting workflow or Wes explicitly authorizes that alternate package.
 
@@ -141,6 +147,8 @@ Use this room for development and design work. Do not change the live automation
 When the workflow changes, update the skill, this project room, and the registry together.
 
 ## Change Log
+
+- 2026-08-01: Kept one stable Email Monitor chat, converted active memory to compact current state, added a single seven-day Teams rolling log at `Office Admin/Codex Logs/Email Monitor`, limited visible chat activity to meaningful events, and authorized `WesWill@BuyYourHomeLLC.com` as the temporary sender only when the OfficeAssist connector is definitively unavailable before send.
 
 - 2026-07-30: Authorized Josh Kennedy for safe OfficeAssist instructions and added Lowes Order Email Routing with sender confirmation, Wes cart-approval notification, uncertainty questions, `[Lowes Order]` subject guidance, and continued checkout/payment safeguards.
 
