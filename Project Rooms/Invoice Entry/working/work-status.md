@@ -15,6 +15,32 @@ This is the authoritative current-state register for Invoice Entry. Read it befo
 - No external action from the prior unfinished turn requires retry.
 - Do not resend an email, repeat a workbook upload, or recreate a packet solely because an older task response was delayed or missing.
 
+## Task Health Status
+
+- Operation in flight: no
+- Operation started at UTC: none
+- Current work durably recorded: yes
+- External delivery evidence recorded: yes
+- Open packets and blockers current: yes
+- Git and working-file state classified: yes
+- Recent task timeouts: 0
+- Recent stalled final responses: 1
+- Recent duplicate external-action attempts: 0
+- Health follow-up required: no
+- Task turns observed: 562
+- Context compactions observed: 30
+- Metrics observed at UTC: 2026-08-01T20:18:00Z
+- Metric source: Codex task history inspection from Jean Wright; the independent Windows supervisor cannot query Codex task history directly.
+- Rollover authority: review only; no replacement or archive action is authorized.
+
+The observable turn and compaction counts exceed review thresholds and the task recently stalled after file changes. This supports a controlled-rollover review, but no rollover may occur until Wes separately approves it and the readiness checks in this file still pass.
+
+Classified untracked working files:
+
+- `working\create-vendor-invoice\2026-07-27-josh-kennedy-timesheet\allocation-report.json` - active generated allocation data retained through Time Card finalization.
+- `working\create-vendor-invoice\2026-07-27-josh-kennedy-timesheet\time-card-approval-email-2026-08-01.md` - delivery working record for the verified Wes approval package.
+- `working\create-vendor-invoice\2026-07-27-josh-kennedy-timesheet\time-card-verification-email-2026-08-01.md` - delivery working record for the verified Josh correction-by-exception package.
+
 ## Immediate Action Queue
 
 | Priority | Item | Current state | Next permitted action |

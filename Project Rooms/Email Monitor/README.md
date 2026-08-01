@@ -26,7 +26,7 @@ This project room holds development notes, source inventory, and review artifact
 - Automation type: heartbeat, attached to the dedicated `Email Monitor` thread.
 - Responsibility boundary: the heartbeat checks email and takes defined actions. Separately, direct authorized Email Delivery handoffs from other Project Rooms trigger immediately without waiting for the heartbeat or scanning a mailbox. Email Monitor coordinates delivery but does not take ownership of the requesting workflow's purpose, content, authorization, recipients, attachments, or restrictions.
 - Status thread id: `019ecba7-f1cc-7ac1-aaf7-d89a3f21b582`.
-- Chat lifecycle: keep this dedicated chat; do not rotate or replace it for ordinary context growth. Keep routine heartbeat history outside chat context and use replacement only as an emergency recovery measure.
+- Task lifecycle: keep one dedicated active task and keep routine heartbeat history outside task context. Do not replace it for ordinary compaction; use the controlled, Wes-approved rollover procedure only when multiple measured health signals justify it.
 
 ## Room Layout
 
@@ -52,17 +52,19 @@ For each recipient, keep the Email Summary subject unchanged throughout the Mond
 
 ### Health Check
 
-Use this mode to hold the Email Monitor health specification, maintain machine-local run state, configure the independent Windows watchdog, and provide a reusable pattern for other Project Rooms.
+Use this mode to own one independent Windows workflow-health supervisor for multiple registered workflows. The shared registry enrolls Email Monitor and Invoice Entry while keeping separate configurations, health snapshots, alert transitions, current-alert files, and diagnostic logs.
 
-Email Monitor writes `Started`, `Completed`, or `Failed` state to its local `health.json`. Windows Task Scheduler runs the watchdog every 10 minutes on assigned machine `WESSTUDIO`. During the 7:45 AM through 11:00 PM Eastern active window, it warns after 35 minutes without a completed heartbeat, escalates at 60 minutes, and issues one recovery notice when service resumes.
+The Windows task `Codex - Workflow Health Supervisor` runs every 10 minutes on `WESSTUDIO`. Email Monitor keeps its heartbeat lifecycle, 7:45 AM through 11:00 PM active window, 35-minute warning, and 60-minute critical threshold. Invoice Entry receives a daily substantive Project Room/task-health review; intervening supervisor runs perform only a due check unless warning, critical, or active-operation follow-up is required.
 
-The watchdog runs PowerShell hidden, writes a durable log, alert state, current-alert file, and attempts a Windows toast plus Application event-log entry. It does not use the Outlook connector and does not provide remote SMS or email until an independent delivery channel is configured.
+Routine healthy and unchanged-state checks are diagnostic-only. Visible warning, critical, and recovery alerts occur only on state transitions. The supervisor uses a named mutex for overlap protection, isolates malformed workflow configurations, refuses the wrong machine, and does not depend on Outlook or another supervised connector.
 
 Meaningful Email Monitor history is written to the central Teams rolling log through `tools\Update-EmailMonitorRollingLog.ps1`. The file retains seven days and excludes routine no-activity checks. Active `memory.md` follows `working\memory-state-spec.md` and remains compact.
 
 Wes can manage this mode in plain language, including asking “Health Check, what are my options?” The mode can show status, enable or disable the watchdog, change intervals, thresholds, or the active window, run a quiet diagnostic, and send a visible test alert. Configuration changes require current healthy state by default. Machine reassignment remains guided and requires destination verification before the old watchdog is disabled.
 
-Specification: `working\health-check-spec.md`. Control surface: `tools\Manage-CodexWorkflowHealth.ps1`. Reusable tools: `tools\Update-CodexWorkflowHealth.ps1`, `tools\Invoke-CodexWorkflowWatchdog.ps1`, and `tools\Install-CodexWorkflowWatchdog.ps1`. Email Monitor configuration: `config\email-monitor-health.json`.
+Invoice Entry task-growth thresholds trigger review only. The supervisor may recommend controlled rollover but cannot create or archive a task; Wes must approve rollover separately.
+
+Specification: `working\health-check-spec.md`. Registry: `config\workflow-health-registry.json`. Control surface: `tools\Manage-CodexWorkflowHealth.ps1`. Supervisor: `tools\Invoke-CodexWorkflowHealthSupervisor.ps1`.
 
 ### Email Routing
 

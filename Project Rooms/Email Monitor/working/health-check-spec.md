@@ -1,98 +1,144 @@
-# Email Monitor Health Check Specification
+# Shared Workflow Health Supervisor Specification
 
 ## Purpose
 
-Health Check detects when the Email Monitor heartbeat stops completing even though other Codex tasks may still work. It also provides a reusable watchdog pattern for other Project Rooms without treating one workflow's failure as a global Codex outage.
+One independent Windows supervisor evaluates multiple Codex workflows without depending on Outlook or another connector it monitors. Email Monitor owns the shared implementation. Each enrolled workflow keeps separate configuration, health, alert state, current-alert file, and diagnostic log.
 
-## Components
+The supervisor detects failures and performance degradation. It does not perform business work, retry external actions, create replacement tasks, archive tasks, or change Git state.
+
+## Architecture
 
 | Component | Location | Responsibility |
 | --- | --- | --- |
-| Health updater | `tools\Update-CodexWorkflowHealth.ps1` | Atomically records run start, completion, failure, mode, machine, and consecutive failures. |
-| Watchdog | `tools\Invoke-CodexWorkflowWatchdog.ps1` | Independently evaluates health age, writes diagnostics, deduplicates alerts, and sends local Windows notifications. |
-| Installer | `tools\Install-CodexWorkflowWatchdog.ps1` | Creates or updates the Windows scheduled task from a workflow config. |
-| Manager | `tools\Manage-CodexWorkflowHealth.ps1` | Provides the deterministic control surface for options, status, enable/disable, configuration, diagnostics, and test alerts. |
-| Email Monitor config | `config\email-monitor-health.json` | Assigns the workflow to `WESSTUDIO` and defines paths, active window, thresholds, and scheduled-task identity. |
-| Runtime health | `C:\Users\wesbr\.codex\automations\officeassist-morning-email-summary-and-instruction-monitor\health.json` | Machine-local current health state. |
-| Watchdog state | `C:\Users\wesbr\.codex\automations\officeassist-morning-email-summary-and-instruction-monitor\watchdog-state.json` | Machine-local alert transition and recovery state. |
-| Diagnostic log | `C:\Users\wesbr\.codex\automations\officeassist-morning-email-summary-and-instruction-monitor\watchdog.log` | Append-only watchdog evaluations and alert outcomes. |
-| Rolling Teams log | `Office Admin/Codex Logs/Email Monitor/Email Monitor - Rolling 7 Days.md` | Meaningful Email Monitor history for the most recent seven days; routine no-activity checks are excluded. |
+| Registry | `config\workflow-health-registry.json` | Defines the assigned machine, shared task, polling interval, mutex, runtime paths, and enabled workflows. |
+| Supervisor | `tools\Invoke-CodexWorkflowHealthSupervisor.ps1` | Acquires the registry mutex, evaluates enabled workflows independently, isolates malformed configurations, and writes shared state and diagnostics. |
+| Workflow evaluator | `tools\Invoke-CodexWorkflowWatchdog.ps1` | Evaluates heartbeat liveness or Project Room/task health and manages per-workflow alert transitions. |
+| Heartbeat updater | `tools\Update-CodexWorkflowHealth.ps1` | Preserves Email Monitor `Started`, `Completed`, and `Failed` lifecycle writes. |
+| Installer | `tools\Install-CodexWorkflowWatchdog.ps1` | Installs or refreshes the one shared Windows scheduled task. A legacy workflow config path resolves to the shared registry. |
+| Manager | `tools\Manage-CodexWorkflowHealth.ps1` | Provides Options, Status, Enable, Disable, Configure, Test, and TestAlert for one workflow or supported all-workflow scope. |
 
-## Email Monitor Contract
+## Shared Runtime
 
-At the beginning of every heartbeat, before mailbox or Project Room work, call the updater with `Started` and the intended mode. Before the heartbeat returns, call it with `Completed`. If the run fails or cannot finish normally, call it with `Failed`, including a concise failure stage and message.
+- Assigned machine: `WESSTUDIO`.
+- Scheduled task: `Codex - Workflow Health Supervisor`.
+- Polling interval: 10 minutes.
+- Mutex: `Global\CodexWorkflowHealthSupervisor`.
+- Registry: `C:\Codex\Wiki Files\Project Rooms\Email Monitor\config\workflow-health-registry.json`.
+- Supervisor state: `C:\Users\wesbr\.codex\workflow-health-supervisor\supervisor-state.json`.
+- Supervisor diagnostics: `C:\Users\wesbr\.codex\workflow-health-supervisor\supervisor.log`.
 
-Health updates do not replace Email Monitor memory, send verification, failure reporting, or routing ledgers.
+The supervisor refuses to run on the wrong machine. A second overlapping invocation exits after recording that the registry lock is held. A missing or malformed workflow configuration returns an error for that workflow and does not stop evaluation of the others.
 
-The runtime `memory.md` is current state only and follows `working\memory-state-spec.md`. Meaningful failures, critical escalations, recoveries, routing actions, deliveries, and decisions are written through `tools\Update-EmailMonitorRollingLog.ps1`. Do not append routine heartbeat narratives to memory.
+## Alert Contract
 
-## Conversational Control
+Each workflow preserves its own previous level. Alerts are emitted only for transitions:
 
-Wes may manage Health Check by addressing the mode in plain language. Translate the request to one manager action and report the effective result. When Wes asks what Health Check can do, run `Options` and show the available operations with current settings.
+- one warning when entering `WARNING`;
+- one critical alert when entering `CRITICAL`;
+- one recovery when returning to `HEALTHY` from warning or critical;
+- no repeated visible alert while the level is unchanged;
+- no visible notification for routine healthy checks.
 
-Supported actions:
+Every evaluation may write diagnostics. Repeated diagnostic lines are not repeated visible alerts. The current-alert file represents an active warning or critical condition and is removed after recovery.
 
-- `Options`: show the available requests, examples, safeguards, and current configuration.
-- `Status`: show workflow health, watchdog state, task state, machine assignment, active window, and thresholds.
-- `Enable`: install or refresh and enable the Windows watchdog task.
-- `Disable`: disable independent watchdog execution while leaving heartbeat health-state writes active.
-- `Configure`: change the expected heartbeat interval, watchdog polling interval, warning threshold, critical threshold, or active window.
-- `Test`: run a non-notifying watchdog evaluation.
-- `TestAlert`: issue a visible test alert without changing workflow health.
+Alerts attempt a Windows toast and an Application event-log entry. Email and SMS are excluded until an independent delivery path is configured and verified.
 
-Example:
+## Email Monitor Enrollment
+
+- Workflow id: `officeassist-morning-email-summary-and-instruction-monitor`.
+- Config: `config\email-monitor-health.json`.
+- Check type: `heartbeat_liveness`.
+- Active window: 7:45 AM through 11:00 PM Eastern.
+- Expected heartbeat: 15 minutes.
+- Warning: 35 minutes.
+- Critical: 60 minutes.
+- Health: `C:\Users\wesbr\.codex\automations\officeassist-morning-email-summary-and-instruction-monitor\health.json`.
+- State: `C:\Users\wesbr\.codex\automations\officeassist-morning-email-summary-and-instruction-monitor\watchdog-state.json`.
+- Alert: `C:\Users\wesbr\.codex\automations\officeassist-morning-email-summary-and-instruction-monitor\current-alert.txt`.
+- Diagnostics: `C:\Users\wesbr\.codex\automations\officeassist-morning-email-summary-and-instruction-monitor\watchdog.log`.
+
+Email Monitor continues calling the updater at heartbeat start and completion or failure. Migration must preserve its machine-local history where practical.
+
+## Invoice Entry Enrollment
+
+- Workflow id: `invoice-entry`.
+- Config: `config\invoice-entry-health.json`.
+- Check type: `project_room_task_health`.
+- Project Room: `C:\Codex\Wiki Files\Project Rooms\Invoice Entry`.
+- Task id: `019f3d56-b310-75c0-b084-616bfc1e9f59`.
+- Canonical status: `C:\Codex\Wiki Files\Project Rooms\Invoice Entry\working\work-status.md`.
+- Substantive evaluation interval: 1,440 minutes.
+- Status warning age: 2,880 minutes.
+- Status critical age: 10,080 minutes.
+- In-flight warning: 120 minutes.
+- In-flight critical: 240 minutes.
+- Runtime: `C:\Users\wesbr\.codex\workflow-health-supervisor\invoice-entry`.
+
+The 10-minute supervisor run checks whether Invoice Entry evaluation is due. It skips substantive inspection until due unless the previous level requires follow-up. The separate noon and 4:00 PM Invoice Entry packet-backup cron remains unchanged.
+
+Invoice Entry health uses only observable evidence:
+
+- missing or stale `work-status.md`;
+- an explicitly recorded in-flight operation that has exceeded its threshold;
+- recorded recent task timeouts, stalled final responses, or duplicate external-action attempts;
+- Project Room Git paths that are uncommitted and not classified in current status;
+- observable turn and compaction counts recorded with their source and observation time;
+- rollover-readiness fields for durable work, delivery evidence, packets/blockers, and Git classification.
+
+An independent Windows process cannot directly query Codex task history. If turn or compaction counts have not been recorded by an authorized Codex inspection, they remain unavailable. The evaluator does not invent them.
+
+## Context Prevention
+
+- Keep detailed processing history in packet files, logs, or approved Teams locations instead of operational-task messages.
+- Use concise handoffs containing source identifiers, external references and paths, a short summary, the requested operation, and source-specific warnings.
+- Update each enrolled PR's `working\work-status.md` after meaningful state changes and before substantial work ends.
+- Do not route quiet health or backup checks into the operational PR task.
+- Notify an operational task only for actionable work, a health transition, a failure, or a decision.
+- Treat 150 observable turns and five observable context compactions as review triggers, not rollover commands.
+
+## Controlled Rollover
+
+The supervisor may recommend a controlled rollover only when multiple measured signals support review. It must report whether:
+
+- no operation is in flight;
+- current work is durably recorded;
+- external delivery evidence is recorded;
+- open packets and blockers are current;
+- Git and working-file state are classified.
+
+Actual rollover requires Wes's separate approval. It keeps the same Project Room and skill, creates one replacement operational task from a concise durable handoff, verifies the replacement, and archives the predecessor only after verification. Maintain exactly one active operational task. Do not create a Project Room or Git branch for rollover.
+
+## Management Commands
+
+Default registry command:
 
 ```powershell
-powershell -NoProfile -ExecutionPolicy Bypass -File "C:\Codex\Wiki Files\Project Rooms\Email Monitor\tools\Manage-CodexWorkflowHealth.ps1" -ConfigPath "C:\Codex\Wiki Files\Project Rooms\Email Monitor\config\email-monitor-health.json" -Action Options
+powershell -NoProfile -ExecutionPolicy Bypass -File "C:\Codex\Wiki Files\Project Rooms\Email Monitor\tools\Manage-CodexWorkflowHealth.ps1" -Action Status -WorkflowId All
 ```
 
-Configuration changes require a healthy workflow by default. Use the manager's `AllowUnhealthy` override only after Wes explicitly authorizes changing configuration while unhealthy. If a request such as "run every 5 minutes" could refer to the Email Monitor heartbeat or the watchdog polling interval, ask which schedule Wes means before changing either one.
+The prior Email Monitor command using `-ConfigPath ...\email-monitor-health.json` remains valid and targets Email Monitor through the shared registry.
 
-Machine reassignment is guided rather than a one-step local edit. Verify the destination machine, install and test its scheduled task, and only then disable the old machine's task and update the canonical assignment. Do not leave the workflow without a verified watchdog.
+- `Options`: show commands and safeguards.
+- `Status`: report one workflow or all registered workflows.
+- `Enable`: enable one or all registry entries and ensure the shared task is installed.
+- `Disable`: disable one or all entries; the shared task remains active while any workflow is enabled.
+- `Configure`: target one workflow and change only requested values.
+- `Test`: run a non-notifying forced diagnostic for one or all workflows.
+- `TestAlert`: target one workflow and issue a visible test alert without changing workflow health.
 
-## Watchdog Rules
+## Migration And Rollback
 
-- Run every 10 minutes through Windows Task Scheduler.
-- Launch the scheduled PowerShell watchdog with `-WindowStyle Hidden`; routine watchdog checks must not open a visible console window.
-- Evaluate only during the configured 7:45 AM through 11:00 PM Eastern active window.
-- Healthy: last completed heartbeat is no more than 35 minutes old.
-- Warning: no completed heartbeat for more than 35 minutes.
-- Critical: no completed heartbeat for more than 60 minutes, or a run remains `running` beyond 60 minutes.
-- Recovery: emit one recovery notice after a warning or critical condition returns to healthy.
-- Deduplicate alerts by state transition; do not notify every 10 minutes for the same unchanged condition.
-- Refuse to supervise the workflow when the current computer does not match `assigned_machine`.
+Install and test `Codex - Workflow Health Supervisor` while the prior `Codex - Email Monitor Health Check` task remains available. After shared evaluation passes, disable the prior task so both tasks cannot evaluate Email Monitor simultaneously. Retain the disabled prior task temporarily as the quickest machine-local rollback path.
 
-## Alerts
+For immediate machine-local rollback, disable `Codex - Workflow Health Supervisor` and re-enable `Codex - Email Monitor Health Check`. Durable rollback is a normal focused Git revert. Do not use `git reset --hard` or force-push.
 
-The watchdog always writes its diagnostic log and current alert state. On warning, critical, and recovery transitions, it attempts:
+## Required Verification
 
-1. a Windows toast notification for the signed-in user;
-2. an Application event-log entry using the existing `Windows PowerShell` source;
-3. a durable `current-alert.txt` file beside the runtime health file.
-
-Email and SMS are intentionally excluded until an independent, verified delivery path is configured. The watchdog must not depend on the same Codex Outlook connector it is supervising.
-
-Google Voice on the current computer is signed in as the same `(213) 293-7539` number that would receive Wes's alerts, so it cannot provide a useful self-text notification. Do not claim that Google Voice SMS fallback is active until a separate sending number is configured and verified.
-
-`TestAlert` may exercise the local toast and event-log paths, but it must not edit `health.json`, change the watchdog health state, or leave a current-alert file behind.
-
-## Reuse Pattern
-
-To use this pattern for another Project Room:
-
-1. Copy `config\email-monitor-health.json` to a new workflow-specific config.
-2. Give it a unique `workflow_id`, scheduled-task name, runtime directory, and assigned machine.
-3. Set the expected interval, active window, warning, and critical thresholds.
-4. Add updater calls to that workflow's automation.
-5. Run the installer with the new config.
-6. Test healthy, warning, critical, recovery, wrong-machine, and missing-state behavior.
-
-Each workflow keeps independent health, watchdog, and alert state. A future central supervisor may consume those states, but this mode does not create a cross-machine supervisor.
-
-## Installed Instance
-
-- Machine: `WESSTUDIO`
-- Windows scheduled task: `Codex - Email Monitor Health Check`
-- Repetition interval: `PT10M`
-- First verified task result: `0` on 2026-07-24
-- Isolated tests passed: healthy, warning at 40 minutes, critical at 70 minutes, recovery from critical, one-failure warning, three-failure critical, and wrong-machine refusal
+1. Parse all PowerShell files and JSON configurations.
+2. Run a quiet all-workflow diagnostic and confirm healthy checks do not notify.
+3. Exercise warning, unchanged warning, and recovery transitions in isolated runtime paths.
+4. Confirm a malformed test workflow does not stop valid workflow checks.
+5. Run Invoice Entry evaluation without changing its operational task, queue, or automations.
+6. Confirm the shared task runs every 10 minutes with the hidden PowerShell action.
+7. Confirm only the shared supervisor task remains active after migration.
+8. Record exact paths, thresholds, and test results in the implementation report.

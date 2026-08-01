@@ -129,15 +129,23 @@ State update:
 
 ### Health Check
 
-Use Health Check to maintain Email Monitor's workflow-specific liveness state and independent Windows watchdog. Follow `C:\Codex\Wiki Files\Project Rooms\Email Monitor\working\health-check-spec.md` and its JSON config and PowerShell tools.
+Use Health Check to maintain the shared independent Windows workflow-health supervisor. Follow `C:\Codex\Wiki Files\Project Rooms\Email Monitor\working\health-check-spec.md`, the registry at `config\workflow-health-registry.json`, and the workflow-specific JSON configurations.
 
-At heartbeat start, call the health updater with `Started` and the intended mode. Before returning, call it with `Completed`; on failure call it with `Failed`, a stage, and a concise message. The scheduled watchdog on the assigned machine owns stale-run evaluation, deduplicated warning/critical/recovery alerts, diagnostics, and wrong-machine refusal. It must not depend on the Outlook connector it supervises.
+At Email Monitor heartbeat start, call the health updater with `Started` and the intended mode. Before returning, call it with `Completed`; on failure call it with `Failed`, a stage, and a concise message. Preserve the existing Email Monitor health file and its 7:45 AM through 11:00 PM active window, 35-minute warning, and 60-minute critical threshold.
 
-Keep the existing Email Monitor chat. Do not create or rotate chats for ordinary context growth. Routine checks remain silent. Create a visible chat update only for initial failure, critical escalation, recovery, significant routing action, verified delivery, unresolved delivery, or a decision needed from Wes. Write those same meaningful events to the single seven-day Teams rolling log. Do not log routine no-activity checks.
+The shared scheduled supervisor runs every 10 minutes on `WESSTUDIO`. It evaluates each enabled registry entry independently, uses a named mutex to prevent overlap, isolates malformed configurations, refuses the wrong machine, and does not depend on Outlook or another connector it supervises. Email Monitor receives heartbeat-liveness checks. Invoice Entry receives lightweight due checks and no more than one substantive task-health evaluation daily unless warning, critical, or active-operation follow-up is required.
+
+Alerts are transition-based and deduplicated: one warning when entering warning, one critical alert when entering critical, and one recovery after returning healthy. Unchanged warning or critical states and routine healthy checks write diagnostics but do not create visible notifications or operational-task messages.
+
+Keep detailed processing history in durable Project Room files or approved Teams logs. Use concise reference-based handoffs. Keep each enrolled PR's `working\work-status.md` current after meaningful changes. Task growth beyond 150 observable turns or five observable compactions triggers review only. The supervisor may recommend rollover only when multiple measured signals support it; it must never create or archive a task. Wes must separately approve a controlled rollover, which keeps one active operational task and verifies the replacement before archiving the predecessor.
+
+Keep the existing Email Monitor task. Routine checks remain silent. Create a visible task update only for initial failure, critical escalation, recovery, significant routing action, verified delivery, unresolved delivery, or a decision needed from Wes. Write those same meaningful events to the single seven-day Teams rolling log. Do not log routine no-activity checks.
 
 When Wes addresses Health Check in plain language, use `C:\Codex\Wiki Files\Project Rooms\Email Monitor\tools\Manage-CodexWorkflowHealth.ps1` as the control surface. Map the request to exactly one of `Options`, `Status`, `Enable`, `Disable`, `Configure`, `Test`, or `TestAlert`, execute it, and report the resulting effective settings. When Wes asks what the mode can do, asks for available commands, or says “Health Check, what are my options?”, run `Options`; do not rely on memory to enumerate the choices.
 
 For `Configure`, pass only values Wes requested. Ask a clarifying question when “interval” or “run every” could mean either the Email Monitor heartbeat schedule or the watchdog polling interval. Configuration changes require healthy state by default. Use `AllowUnhealthy` only when Wes explicitly authorizes changing Health Check while unhealthy. Disabling the watchdog stops independent alerts but does not stop heartbeat health-state writes. Treat machine reassignment as a guided migration: verify the destination machine and its scheduled task before disabling the current machine or changing the canonical assignment.
+
+`Status` and `Test` may target one workflow or all workflows. `Configure` must target one workflow and distinguish heartbeat interval, supervisor polling, and substantive evaluation interval. Disabling one workflow leaves the shared supervisor active for other enabled workflows. Machine reassignment remains guided and requires destination verification before the current supervisor is disabled.
 
 ### Email Routing
 

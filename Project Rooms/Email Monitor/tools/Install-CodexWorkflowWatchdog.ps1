@@ -1,23 +1,35 @@
 [CmdletBinding()]
 param(
     [Parameter(Mandatory = $true)]
-    [string]$ConfigPath
+    [Alias("ConfigPath")]
+    [string]$RegistryPath
 )
 
 $ErrorActionPreference = "Stop"
 
-$config = Get-Content -Raw -LiteralPath $ConfigPath | ConvertFrom-Json
-if ($env:COMPUTERNAME -ne $config.assigned_machine) {
-    throw "Workflow '$($config.workflow_id)' is assigned to '$($config.assigned_machine)', not '$env:COMPUTERNAME'."
+$inputPath = (Resolve-Path -LiteralPath $RegistryPath).Path
+$inputObject = Get-Content -Raw -LiteralPath $inputPath | ConvertFrom-Json
+if ($null -eq $inputObject.workflows) {
+    $RegistryPath = Join-Path (Split-Path -Parent $inputPath) "workflow-health-registry.json"
+    if (-not (Test-Path -LiteralPath $RegistryPath)) {
+        throw "Shared workflow health registry was not found beside legacy config: $RegistryPath"
+    }
+} else {
+    $RegistryPath = $inputPath
 }
 
-$watchdogPath = Join-Path $PSScriptRoot "Invoke-CodexWorkflowWatchdog.ps1"
-$arguments = "-NoProfile -NonInteractive -WindowStyle Hidden -ExecutionPolicy Bypass -File `"$watchdogPath`" -ConfigPath `"$ConfigPath`""
+$registry = Get-Content -Raw -LiteralPath $RegistryPath | ConvertFrom-Json
+if ($env:COMPUTERNAME -ne $registry.assigned_machine) {
+    throw "Supervisor is assigned to '$($registry.assigned_machine)', not '$env:COMPUTERNAME'."
+}
+
+$supervisorPath = [string]$registry.supervisor_script
+$arguments = "-NoProfile -NonInteractive -WindowStyle Hidden -ExecutionPolicy Bypass -File `"$supervisorPath`" -RegistryPath `"$RegistryPath`""
 $action = New-ScheduledTaskAction -Execute "powershell.exe" -Argument $arguments
 $trigger = New-ScheduledTaskTrigger `
     -Once `
     -At ((Get-Date).AddMinutes(1)) `
-    -RepetitionInterval (New-TimeSpan -Minutes ([int]$config.watchdog_interval_minutes)) `
+    -RepetitionInterval (New-TimeSpan -Minutes ([int]$registry.polling_interval_minutes)) `
     -RepetitionDuration (New-TimeSpan -Days 3650)
 $settings = New-ScheduledTaskSettingsSet `
     -AllowStartIfOnBatteries `
@@ -31,17 +43,17 @@ $principal = New-ScheduledTaskPrincipal `
     -RunLevel Limited
 
 Register-ScheduledTask `
-    -TaskName ([string]$config.scheduled_task_name) `
+    -TaskName ([string]$registry.scheduled_task_name) `
     -Action $action `
     -Trigger $trigger `
     -Settings $settings `
     -Principal $principal `
-    -Description "Monitors the $($config.display_name) Codex workflow health state on $($config.assigned_machine)." `
+    -Description "Runs the shared Codex workflow-health supervisor on $($registry.assigned_machine)." `
     -Force | Out-Null
 
-if ($null -ne $config.watchdog_enabled -and -not [bool]$config.watchdog_enabled) {
-    Disable-ScheduledTask -TaskName ([string]$config.scheduled_task_name) | Out-Null
+if (-not [bool]$registry.enabled -or @($registry.workflows | Where-Object { [bool]$_.enabled }).Count -eq 0) {
+    Disable-ScheduledTask -TaskName ([string]$registry.scheduled_task_name) | Out-Null
 }
 
-Get-ScheduledTask -TaskName ([string]$config.scheduled_task_name) |
+Get-ScheduledTask -TaskName ([string]$registry.scheduled_task_name) |
     Select-Object TaskName, State, Author, Description

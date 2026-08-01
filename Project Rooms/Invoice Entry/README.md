@@ -95,6 +95,18 @@ Dedicated task: `019f3d56-b310-75c0-b084-616bfc1e9f59`.
 
 Backup automation: standalone local cron job `invoice-entry-to-projects-backup-heartbeat`, displayed as `Invoice Entry Backup Monitor`, scheduled for noon and 4:00 PM Eastern. It reads durable Project Room state and does not target or wake the operational task. Direct handoffs remain the primary trigger.
 
+## Task Context And Rollover
+
+- Keep detailed processing history in packet files, logs, or approved Teams locations instead of repeating it in task messages.
+- Keep `working\work-status.md` current after meaningful state changes and before a substantial run ends. It must identify the operation state, queue, blockers, delivery evidence, classified working files, and observable task-health metrics.
+- Quiet backup and health checks must not add turns to the operational Invoice Entry task. Notify it only for actionable work, a health transition, a failure, or a decision.
+- More than 150 observable turns or five observable context compactions triggers review; neither threshold causes automatic rollover.
+- The shared Windows supervisor may recommend controlled rollover only when multiple measured signals support it. It may not create or archive a task.
+- Actual rollover requires Wes's separate approval. Preserve durable state, confirm no ambiguous external action remains in flight, create one replacement task for this same Project Room, verify its startup state, and only then archive the predecessor.
+- Maintain exactly one active Invoice Entry operational task. Do not create another Project Room, skill, or Git branch for rollover.
+
+Shared supervisor configuration is owned by Email Monitor at `Project Rooms\Email Monitor\config\workflow-health-registry.json`. Invoice Entry keeps only its current status and concise enrollment documentation here.
+
 ## Source And Working-File Retention
 
 The Git repository retains rules, status, schemas, compact packet summaries, references, decisions, and logs. Operational source emails, attachments, generated PDFs, workbook copies, render previews, OCR files, and machine handoff artifacts belong in their authoritative mailbox, SharePoint/Teams location, project folder, or mapped Invoice Entry Working Archive.

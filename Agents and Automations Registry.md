@@ -42,7 +42,7 @@ Use [[Agent Unit Standard]] for the standard package behind an agent-like operat
 | Entity Relationship | Wiki-managed skill plus project room | Active/planning | On demand | `skills\entity-relationship\SKILL.md`; `Project Rooms\Entity Relationship\README.md` |
 | Gracious Millionaire | Wiki-managed skill plus project room plus heartbeat automation | Active | Project-room heartbeat every 15 minutes during active window; on demand otherwise | `skills\gracious-millionaire\SKILL.md`; `Project Rooms\Gracious Millionaire\README.md`; `Project Rooms\Gracious Millionaire\working\intake-heartbeat-rules.md`; automation id `gracious-millionaire-project-room-heartbeat` |
 | Template to Project | Wiki-managed skill plus project room | Active | On demand | `skills\template-to-project\SKILL.md`; `Project Rooms\Template to Project\README.md`; `Project Rooms\Template to Project\Project Spreadsheet Expense Placement Rules.md` |
-| Invoice Entry | Wiki-managed skill plus project room, standalone backup cron monitor, and dedicated chat | Active | Direct handoff is primary; standalone backup monitor runs at noon and 4:00 PM Eastern without targeting the operational chat | `skills\invoice-entry\SKILL.md`; `Project Rooms\Invoice Entry\README.md`; app automation id `invoice-entry-to-projects-backup-heartbeat` |
+| Invoice Entry | Wiki-managed skill plus project room, standalone backup cron monitor, shared Windows health-supervisor enrollment, and dedicated task | Active | Direct handoff is primary; backup monitor runs at noon and 4:00 PM without targeting the operational task; shared health supervisor performs a daily substantive review | `skills\invoice-entry\SKILL.md`; `Project Rooms\Invoice Entry\README.md`; app automation id `invoice-entry-to-projects-backup-heartbeat`; workflow-health id `invoice-entry` |
 | Project Management Spreadsheet Rewrite | Planning/history project room now covered by Template to Project | Active/planning | On demand | `skills\template-to-project\SKILL.md`; `Project Rooms\Project Management Spreadsheet Rewrite\README.md` |
 | Property Trade Evaluation | Wiki-managed skill plus project room | Active | On demand | `skills\property-trade-evaluation\SKILL.md`; `Project Rooms\Property Trade Evaluation\README.md` |
 | Voices | Wiki-managed skill plus project room | Planning | On demand | `skills\voices\SKILL.md`; `Project Rooms\Voices\README.md` |
@@ -370,7 +370,7 @@ Workflow boundary:
 - The shared `email-delivery` skill handles the send step only: Outlook connector preference, sender safety, attachment input shape, Sent Items verification, local Outlook fallback, and failure reporting.
 - For direct Project Room handoffs, the requester owns purpose, authorization, sender request, To/CC/BCC, subject, exact plain-text body, attachments and required status, and workflow restrictions. Email Monitor owns package completeness checks, request-ID duplicate prevention, durable delivery state, delivery coordination, callback reporting, and escalation to Wes.
 - Defined mode: Email Summary scans Boss's, Jenny's, and Josh's Outlook mailboxes once daily, drafts priority summaries with usage totals, adds the read-only Manager Task mode list to Josh's summary, hands delivery to `email-delivery`, verifies OfficeAssist Sent Items, and updates summary state.
-- Defined mode: Health Check writes heartbeat lifecycle state, runs an independent machine-local Windows watchdog, and lets Wes request options, status, enable/disable, interval or threshold changes, active-window changes, diagnostics, and test alerts in plain language. Configuration changes require healthy state by default, and machine reassignment requires destination verification.
+- Defined mode: Health Check owns one mutex-protected Windows workflow-health supervisor on `WESSTUDIO`. The supervisor runs every 10 minutes from `Project Rooms\Email Monitor\config\workflow-health-registry.json`, preserves separate workflow state, isolates malformed configurations, and emits warning, critical, and recovery notifications only on transitions. Email Monitor retains its heartbeat lifecycle and thresholds; Invoice Entry receives a daily substantive health review without waking its operational task for routine checks. Options, Status, Enable, Disable, Configure, Test, and TestAlert remain the control surface.
 - Defined mode: Gracious Millionaire Email Routing routes Gracious Millionaire emails by Outlook reference and external Teams source path when materialized, records the Outlook message id in Email Monitor memory, and sends a direct project-room thread handoff without drafting the book response in this Email Monitor thread.
 - Defined mode: Brynda Suit Email Routing routes Brynda Suit emails by Outlook reference and external Teams source path when materialized, records the Outlook message id in Email Monitor memory, and sends a direct task handoff without drafting the Brynda Suit response in this Email Monitor thread.
 - Defined mode: Web Site Email Routing routes `GM Site` / REI BlackBook website emails by Outlook reference and external Teams source path when materialized, records the Outlook message id in Email Monitor memory, and sends a direct REI Blackbook thread handoff without editing or publishing the website in this Email Monitor thread.
@@ -1118,6 +1118,14 @@ Automation:
 - Primary trigger: Doc Scan sends a direct follow-up message to the dedicated Invoice Entry chat with the packet path and summary.
 - Backup scope: inspect the Invoice Entry project room for new or changed structured invoice/receipt packets that were not delivered by direct message. Do not scan inboxes, inspect raw scan folders, copy files into Teams, approve or pay invoices, contact vendors, redesign workbook templates, or create new chats.
 - Live workbook edits remain gated by clear Wes authorization or an approved automation rule for the exact insertion type.
+
+Shared Windows health supervisor:
+
+- Workflow id: `invoice-entry`.
+- Windows task: `Codex - Workflow Health Supervisor`, every 10 minutes on `WESSTUDIO`.
+- Substantive Invoice Entry health evaluation: no more than daily unless warning, critical, or active-operation follow-up is required.
+- Canonical status source: `Project Rooms\Invoice Entry\working\work-status.md`.
+- Task-growth thresholds of 150 turns and five context compactions are review triggers only. The supervisor cannot create or archive tasks; controlled rollover requires Wes's separate approval.
 
 Important limitations:
 

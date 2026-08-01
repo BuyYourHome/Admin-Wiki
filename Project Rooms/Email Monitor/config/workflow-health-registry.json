@@ -1,0 +1,29 @@
+{
+  "schema_version": 1,
+  "supervisor_id": "codex-workflow-health-supervisor",
+  "display_name": "Codex Workflow Health Supervisor",
+  "assigned_machine": "WESSTUDIO",
+  "enabled": true,
+  "polling_interval_minutes": 10,
+  "scheduled_task_name": "Codex - Workflow Health Supervisor",
+  "mutex_name": "Global\\CodexWorkflowHealthSupervisor",
+  "supervisor_script": "C:\\Codex\\Wiki Files\\Project Rooms\\Email Monitor\\tools\\Invoke-CodexWorkflowHealthSupervisor.ps1",
+  "workflow_evaluator_script": "C:\\Codex\\Wiki Files\\Project Rooms\\Email Monitor\\tools\\Invoke-CodexWorkflowWatchdog.ps1",
+  "supervisor_runtime_directory": "C:\\Users\\wesbr\\.codex\\workflow-health-supervisor",
+  "supervisor_state_file": "C:\\Users\\wesbr\\.codex\\workflow-health-supervisor\\supervisor-state.json",
+  "supervisor_log_file": "C:\\Users\\wesbr\\.codex\\workflow-health-supervisor\\supervisor.log",
+  "workflows": [
+    {
+      "workflow_id": "officeassist-morning-email-summary-and-instruction-monitor",
+      "display_name": "Email Monitor",
+      "enabled": true,
+      "config_path": "C:\\Codex\\Wiki Files\\Project Rooms\\Email Monitor\\config\\email-monitor-health.json"
+    },
+    {
+      "workflow_id": "invoice-entry",
+      "display_name": "Invoice Entry",
+      "enabled": true,
+      "config_path": "C:\\Codex\\Wiki Files\\Project Rooms\\Email Monitor\\config\\invoice-entry-health.json"
+    }
+  ]
+}
