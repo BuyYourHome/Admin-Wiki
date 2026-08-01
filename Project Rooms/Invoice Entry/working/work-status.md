@@ -8,7 +8,7 @@ This is the authoritative current-state register for Invoice Entry. Read it befo
 
 - Status: `Active - No Operation In Flight`
 - Primary intake: direct Doc Scan or Email Monitor handoff.
-- Current task: `019f3d56-b310-75c0-b084-616bfc1e9f59`.
+- Current task: `019fbf4f-c629-7dd1-a3f6-0de33de0ed8f`.
 - Canonical skill: `C:\Codex\Wiki Files\skills\invoice-entry\SKILL.md`.
 - Canonical skill and installed local `invoice-entry` skill were synchronized and hash-verified after standalone-monitor commit `3ddf901` on 2026-08-01.
 - Backup automation `invoice-entry-to-projects-backup-heartbeat` is a standalone local cron job at noon and 4:00 PM Eastern. It has no target task and must not add quiet-check turns to this operational task.
@@ -27,13 +27,15 @@ This is the authoritative current-state register for Invoice Entry. Read it befo
 - Recent stalled final responses: 1
 - Recent duplicate external-action attempts: 0
 - Health follow-up required: no
-- Task turns observed: 562
-- Context compactions observed: 30
-- Metrics observed at UTC: 2026-08-01T20:18:00Z
-- Metric source: Codex task history inspection from Jean Wright; the independent Windows supervisor cannot query Codex task history directly.
-- Rollover authority: review only; no replacement or archive action is authorized.
+- Task turns observed: replacement baseline started; measure at the next Health Review
+- Context compactions observed: 0 since replacement creation
+- Metrics observed at UTC: 2026-08-01 rollover cutover
+- Metric source: Approved Rollover completion record; the independent Windows supervisor cannot query Codex task history directly.
+- Rollover status: complete; approved by Wes on 2026-08-01.
+- Predecessor task: `019f3d56-b310-75c0-b084-616bfc1e9f59`.
+- Replacement task: `019fbf4f-c629-7dd1-a3f6-0de33de0ed8f`; startup verification and active-routing verification passed.
 
-The observable turn and compaction counts exceed review thresholds and the task recently stalled after file changes. This supports a controlled-rollover review, but no rollover may occur until Wes separately approves it and the readiness checks in this file still pass.
+The predecessor exceeded review thresholds and recently stalled after file changes. The controlled rollover completed after the replacement verified its startup state and authorized active routing references were updated. The predecessor may now be archived and must not resume operational work.
 
 Classified untracked working files:
 
