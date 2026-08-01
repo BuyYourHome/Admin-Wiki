@@ -66,6 +66,12 @@ Invoice Entry task-growth thresholds trigger review only. The supervisor may rec
 
 Specification: `working\health-check-spec.md`. Registry: `config\workflow-health-registry.json`. Control surface: `tools\Manage-CodexWorkflowHealth.ps1`. Supervisor: `tools\Invoke-CodexWorkflowHealthSupervisor.ps1`.
 
+### Task Health Mode
+
+Task Health Mode reviews Email Monitor's operational Codex task rather than heartbeat liveness. Activate it from a Wes request, an authorized context-health transition handoff, or observable task degradation. Read `working\work-status.md`, current delivery state, unresolved requests, routing evidence, heartbeat state, and Git classification; measure turns, compactions, stalls, timeouts, and duplicate external actions only when observable.
+
+The review reports readiness and stops for Wes's approval. An approved rollover keeps one active Email Monitor task, verifies one replacement from durable state, inventories all task-ID and callback dependencies, retargets the existing heartbeat and authorized routing references without duplication, and archives the predecessor only after no delivery remains ambiguous or in flight. Task Health does not create another Project Room, skill, Git branch, heartbeat, or delivery endpoint.
+
 ### Email Routing
 
 Use Email Routing as the OfficeAssist mailbox intake funnel. It checks Inbox, Task Instructions, and Accts Payable during the active window, prevents duplicate processing by Outlook message id, handles safe authorized instructions from Wes, Jenny, or Josh Kennedy, and applies the appropriate specialized routing branch. Josh may initiate safe workflows but may not authorize purchases, payments, approvals, or another Wes-gated action. It reports incomplete authority or high-impact decisions and returns quietly when no message requires action.

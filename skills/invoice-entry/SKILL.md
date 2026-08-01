@@ -110,9 +110,13 @@ When the handoff supplies only an Outlook reference, fetch only that exact messa
 
 If a concise handoff lacks enough information to identify or access the authoritative source, report the missing pointer or blocker. Do not ask the routing workflow to resend all standing instructions.
 
-## Task Health And Controlled Rollover
+## Task Health Mode
 
 Invoice Entry is enrolled in the shared Windows workflow-health supervisor owned by Email Monitor. Follow `C:\Codex\Wiki Files\Project Rooms\Invoice Entry\README.md` for Invoice Entry context controls, `working\work-status.md` for current health fields, and `C:\Codex\Wiki Files\Project Rooms\Email Monitor\working\health-check-spec.md` for the shared supervisor contract. Do not copy the full supervisor implementation into this skill.
+
+Activate Task Health Mode when Wes requests it, when an authorized handoff reports an Invoice Entry context-health transition, or when observable performance degradation requires review. A Windows alert file alone does not invoke Codex; do not claim the mode ran unless the Invoice Entry task or an authorized coordinating task actually performed the review.
+
+### Health Review Stage
 
 - Keep detailed processing history in packet files, processing logs, or approved Teams locations instead of task messages.
 - Keep exactly one active Invoice Entry operational task. Quiet health and backup checks must not add turns to it.
@@ -120,7 +124,14 @@ Invoice Entry is enrolled in the shared Windows workflow-health supervisor owned
 - Treat more than 150 observable task turns or five observable context compactions as review triggers only. If exact counts are unavailable, record them as unavailable; do not invent metrics.
 - The supervisor may recommend controlled rollover only when multiple measured signals support review. It must not create or archive a task, repeat an external action, move Git state, or change the operational queue.
 - Actual rollover requires Wes's separate approval. Before rollover, confirm no ambiguous external operation is in flight and that current work, delivery evidence, open packets, blockers, and Git classification are durable and current.
-- After approval, keep this Project Room and skill, create one concise replacement-task handoff from durable state, verify the replacement can read the canonical sources and authorization boundaries, and archive the predecessor only after verification. Do not create another Project Room, skill, or Git branch.
+
+### Approved Rollover Stage
+
+- After approval, keep this Project Room and skill, create one concise replacement-task handoff from durable state, and verify the replacement can read the canonical sources and authorization boundaries.
+- Inventory every hardcoded Invoice Entry task ID, direct-routing destination, callback dependency, and automation target. State the exact cross-PR or shared-file edits required and obtain explicit authorization where Project Room ownership rules require it.
+- Update the authorized routing references to the verified replacement. Do not create a duplicate backup automation; the existing detached noon/4:00 PM backup cron remains separate.
+- Archive the predecessor only after replacement verification and authorized routing updates. Record predecessor and replacement task IDs and reset task-health review counters for the replacement.
+- Do not create another Project Room, skill, or Git branch. Maintain exactly one active Invoice Entry operational task.
 
 ## Create Vendor Invoice
 

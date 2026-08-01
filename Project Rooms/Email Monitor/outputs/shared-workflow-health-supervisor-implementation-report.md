@@ -10,6 +10,7 @@ Machine: `WESSTUDIO`
 - Prior task `Codex - Email Monitor Health Check`: disabled and retained for rollback.
 - Active scheduled supervisors: one.
 - Invoice Entry's canonical skill contains the concise task-health, status-maintenance, and Wes-approved rollover contract; shared supervisor implementation details remain owned by Email Monitor.
+- Task Health Mode is defined for both Email Monitor and Invoice Entry, with separate Health Review and Approved Rollover stages and dependency-retargeting safeguards.
 - Nothing was pushed during implementation.
 
 ## Enrolled Workflows

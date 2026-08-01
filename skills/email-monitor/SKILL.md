@@ -147,6 +147,27 @@ For `Configure`, pass only values Wes requested. Ask a clarifying question when 
 
 `Status` and `Test` may target one workflow or all workflows. `Configure` must target one workflow and distinguish heartbeat interval, supervisor polling, and substantive evaluation interval. Disabling one workflow leaves the shared supervisor active for other enabled workflows. Machine reassignment remains guided and requires destination verification before the current supervisor is disabled.
 
+### Task Health Mode
+
+Use Task Health Mode for Email Monitor task-context review and Wes-approved controlled rollover. This is distinct from Health Check: Health Check evaluates workflow and heartbeat liveness; Task Health evaluates the size, durability, and reliability of the operational Codex task. A Windows alert file alone does not invoke Codex. Activate this mode only from a Wes request, an authorized context-health alert handoff, or observable performance degradation.
+
+#### Health Review Stage
+
+- Read `C:\Codex\Wiki Files\Project Rooms\Email Monitor\working\work-status.md`, current delivery state, unresolved delivery requests, routing records, heartbeat state, and Git status.
+- Inspect task turns, context compactions, stalled responses, timeouts, and duplicate external-action attempts when those metrics are observable. Record unavailable metrics as unavailable and never invent them.
+- Confirm whether an operation or delivery is in flight, current work is durable, delivery evidence is recorded, open routing/delivery blockers are current, and Git/working files are classified.
+- Keep detailed history in durable files or the approved rolling Teams log. Do not reproduce full email bodies, delivery packages, standing rules, or task history in the operational task.
+- Present the measured signals, readiness findings, and recommendation to Wes. Do not create or archive a task during review.
+
+#### Approved Rollover Stage
+
+- Proceed only after Wes explicitly approves Email Monitor rollover and the exact dependency changes required.
+- Preserve the same Project Room and skill and maintain exactly one active Email Monitor operational task.
+- Create one replacement from a concise durable handoff and verify that it can read the skill, Project Room state, unresolved delivery requests, duplicate-prevention records, heartbeat contract, and authorization boundaries.
+- Inventory every Email Monitor task-ID reference, direct-delivery destination, callback dependency, registry entry, and heartbeat target. Update the existing heartbeat target and specifically authorized routing references; do not create duplicate automations or delivery endpoints.
+- Do not archive the predecessor while any send or delivery verification is ambiguous or in flight. Archive only after replacement verification, dependency retargeting, and durable recording of predecessor/replacement task IDs.
+- Reset task-health review counters for the replacement. Do not create another Project Room, skill, or Git branch.
+
 ### Email Routing
 
 Use Email Routing as the OfficeAssist mailbox intake funnel during the configured active window.
