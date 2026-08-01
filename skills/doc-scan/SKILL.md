@@ -299,7 +299,7 @@ Invoice Entry owns:
 - validating totals and workbook links,
 - uploading the verified workbook back to Teams/SharePoint when authorized.
 
-Default handoff trigger: send a direct follow-up message to the dedicated Invoice Entry chat with the packet path and a short summary of line counts by status, including high-confidence project lines, unclear project lines, non-project/Home lines, mixed-tab lines, and accounting-review lines.
+Default handoff trigger: send a direct follow-up message to the dedicated Invoice Entry chat using the concise direct handoff contract in Invoice Entry Handoff. Include the packet path, filed statement path, short vendor/project/statement summary, record count and confidence summary, requested Invoice Entry operation, and only unique blockers such as missing pages, weak OCR, or duplicate risk.
 
 ### Invoice And Receipt Reports
 
@@ -365,6 +365,21 @@ Dedicated chat/thread:
 Doc Scan owns scan inspection/OCR, document splitting, invoice/receipt identification, project/property folder routing, saving or copying the invoice file, scan log entries, and invoice packet creation.
 
 Invoice Entry owns selecting the exact live project-management workbook, checking workbook records for duplicates, deciding final spreadsheet row placement, inserting the invoice record, preserving workbook formulas/formatting/selectors, validating totals and downstream links, and uploading the verified workbook back to Teams/SharePoint.
+
+Use this same concise direct handoff contract for invoices, receipts, Lowe's statements, and other statement packets that Doc Scan prepares for Invoice Entry:
+
+- Structured packet path.
+- Filed document path.
+- Short vendor/project/statement summary.
+- Record count and confidence summary.
+- Requested Invoice Entry operation.
+- Only unique blockers such as missing pages, weak OCR, or duplicate risk.
+
+Keep item-level rows, OCR snippets, source-page references, and detailed extraction evidence inside the structured packet. Do not paste the full packet into the task message.
+
+Do not repeat Invoice Entry's standing rules in the direct task message. Preserve detailed scan and routing history in Doc Scan's own logs.
+
+Do not resend a direct Invoice Entry handoff after a timeout until the original handoff is reconciled.
 
 Include these fields in each scanned-invoice handoff packet:
 
