@@ -20,8 +20,9 @@ This is the authoritative current-state register for Invoice Entry. Read it befo
 | Priority | Item | Current state | Next permitted action |
 | --- | --- | --- | --- |
 | 1 | Josh Kennedy Time Card, week ending 2026-07-31 | Payable report/invoice `PCA-JK-20260731-TENSITY-001`, 51 hours 55 minutes, `$1,250.00`; sent and verified to Wes; approval pending | Wait through Sunday for Wes to approve, correct, or deny. If no Wes decision and no sender correction exists at the first Invoice Entry check on Monday, apply `Final - No Corrections Received`, then follow normal filing and spreadsheet rules. |
-| 2 | Trenchant Build invoice `422`, 4121 Tensity Dr | Paid once for `$5,185.71`; one Review row exists as `IE-20260801-TRENCHANT-422`; workbook upload and validation passed | Wait for Wes to choose one approved destination worksheet or approve a supported split for mixed work and the card-processing fee. Do not create another row. |
-| 3 | QuickBooks Line of Credit statements `2a46fea` and `a46f130`, July 2026 | Two distinct statements, each held as `Needs Review - Statement - Accounting Allocation` | Wait for accounting direction outside property workbooks. Do not create invoices, approve payment, or insert either statement into a project workbook. |
+| 2 | Construction Loan Services loan `77278`, July 2026, 908 Pond St V3 | `$1,658.75` due 2026-08-10; current balance `$181,141.75`; maturity 2026-09-24; no statement attachment or component breakdown | Obtain the detailed statement through Doc Scan if allocation is required and obtain accounting direction. Do not insert, approve, schedule, or pay from the email notice. |
+| 3 | Trenchant Build invoice `422`, 4121 Tensity Dr | Paid once for `$5,185.71`; one Review row exists as `IE-20260801-TRENCHANT-422`; workbook upload and validation passed | Wait for Wes to choose one approved destination worksheet or approve a supported split for mixed work and the card-processing fee. Do not create another row. |
+| 4 | QuickBooks Line of Credit statements `2a46fea` and `a46f130`, July 2026 | Two distinct statements, each held as `Needs Review - Statement - Accounting Allocation` | Wait for accounting direction outside property workbooks. Do not create invoices, approve payment, or insert either statement into a project workbook. |
 
 ## Verified Delivery Evidence
 
