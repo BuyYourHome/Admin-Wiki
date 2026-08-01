@@ -173,6 +173,7 @@ Weekly accumulation:
 - Generate allocation reports with `C:\Codex\Wiki Files\skills\invoice-entry\scripts\create-project-cost-allocation-report.py`.
 - Preserve work dates, descriptions, hours, project allocation, weekly cost, allocation method, source traceability, duplicate decisions, delivery evidence, and approval responses.
 - Daily and final Project Cost Allocation Reports use correction-by-exception review. Silence from the sender means no correction was reported; it is not a separate affirmative verification requirement.
+- Use the exact subject pattern `Time Card Approval - <Worker Name>` when sending a final Time Card report/invoice to Wes for approval. Do not use the Create Vendor Invoice subject `Invoice Approval - <Vendor Name>` for Time Card approval packages.
 - If Wes approves the final week-end report, finalize it immediately. If Wes corrects or denies it, do not auto-finalize the unchanged report; process the correction or hold the package as directed.
 - On the first Invoice Entry processing check on Monday, set an unchanged final week-end report to `Final - No Corrections Received` when Wes has not approved, corrected, or denied it and no sender correction is pending. This status authorizes normal filing and project-spreadsheet processing and makes the report/invoice eligible for the normal payment process. Invoice Entry does not make the payment.
 - Preserve every routed Time Card email as source evidence and retain traceability from each invoice line back to the source email.
