@@ -110,6 +110,18 @@ When the handoff supplies only an Outlook reference, fetch only that exact messa
 
 If a concise handoff lacks enough information to identify or access the authoritative source, report the missing pointer or blocker. Do not ask the routing workflow to resend all standing instructions.
 
+## Task Health And Controlled Rollover
+
+Invoice Entry is enrolled in the shared Windows workflow-health supervisor owned by Email Monitor. Follow `C:\Codex\Wiki Files\Project Rooms\Invoice Entry\README.md` for Invoice Entry context controls, `working\work-status.md` for current health fields, and `C:\Codex\Wiki Files\Project Rooms\Email Monitor\working\health-check-spec.md` for the shared supervisor contract. Do not copy the full supervisor implementation into this skill.
+
+- Keep detailed processing history in packet files, processing logs, or approved Teams locations instead of task messages.
+- Keep exactly one active Invoice Entry operational task. Quiet health and backup checks must not add turns to it.
+- Update `working\work-status.md` after meaningful state changes and before a substantial run ends. Maintain the operation state and start time, current-work durability, delivery evidence, open packets and blockers, Git/working-file classification, recent timeout/stall/duplicate-action counts, explicit health-follow-up status, and any observable task-turn or context-compaction measurements with source and observation time.
+- Treat more than 150 observable task turns or five observable context compactions as review triggers only. If exact counts are unavailable, record them as unavailable; do not invent metrics.
+- The supervisor may recommend controlled rollover only when multiple measured signals support review. It must not create or archive a task, repeat an external action, move Git state, or change the operational queue.
+- Actual rollover requires Wes's separate approval. Before rollover, confirm no ambiguous external operation is in flight and that current work, delivery evidence, open packets, blockers, and Git classification are durable and current.
+- After approval, keep this Project Room and skill, create one concise replacement-task handoff from durable state, verify the replacement can read the canonical sources and authorization boundaries, and archive the predecessor only after verification. Do not create another Project Room, skill, or Git branch.
+
 ## Create Vendor Invoice
 
 Use Create Vendor Invoice when Email Monitor or OfficeAssist routes a contractor/vendor invoice email to Invoice Entry.

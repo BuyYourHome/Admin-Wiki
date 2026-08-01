@@ -9,6 +9,7 @@ Machine: `WESSTUDIO`
 - Shared polling interval: 10 minutes (`PT10M`).
 - Prior task `Codex - Email Monitor Health Check`: disabled and retained for rollback.
 - Active scheduled supervisors: one.
+- Invoice Entry's canonical skill contains the concise task-health, status-maintenance, and Wes-approved rollover contract; shared supervisor implementation details remain owned by Email Monitor.
 - Nothing was pushed during implementation.
 
 ## Enrolled Workflows
