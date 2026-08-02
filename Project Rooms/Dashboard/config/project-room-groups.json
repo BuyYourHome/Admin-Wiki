@@ -1,0 +1,75 @@
+{
+  "groups": [
+    {
+      "name": "Intake & Coordination",
+      "basis": "Receives requests, routes work, creates Project Rooms, or provides an operating overview across workflows."
+    },
+    {
+      "name": "Document Intake",
+      "basis": "Receives, identifies, organizes, or maintains source documents and operating procedures before downstream processing."
+    },
+    {
+      "name": "Accounting & Project Data",
+      "basis": "Maintains financial calculations, invoice processing, project workbooks, templates, or structured project data."
+    },
+    {
+      "name": "Real Estate Transactions",
+      "basis": "Supports property acquisition, valuation, buyer qualification, seller financing, transaction packaging, or project setup."
+    },
+    {
+      "name": "Legal & Entity",
+      "basis": "Maintains litigation, confidential legal material, entity governance, ownership relationships, estate, or claim work."
+    },
+    {
+      "name": "Publishing & Public Work",
+      "basis": "Develops books, drawings, voice/media assets, websites, or other public-facing content."
+    },
+    {
+      "name": "Systems & Maintenance",
+      "basis": "Maintains computers, Codex operations, management support, purchasing tools, marketplace work, or system health."
+    },
+    {
+      "name": "Other",
+      "basis": "Used when a Project Room does not yet have a supported assignment to one of the defined functional groups."
+    }
+  ],
+  "assignments": {
+    "Admin Wiki Maintenance": "Other",
+    "AIOS": "Systems & Maintenance",
+    "Amortization": "Accounting & Project Data",
+    "Brynda Suit": "Legal & Entity",
+    "CMA Report": "Real Estate Transactions",
+    "CMA Report - 5009 Sunnyfield Dr": "Other",
+    "CMA Report - 5021 Sunnyfield Dr": "Other",
+    "CMA Report - 5512 Desert Willow Ln": "Other",
+    "Codex Environment": "Systems & Maintenance",
+    "Computers": "Systems & Maintenance",
+    "Confidential": "Legal & Entity",
+    "Contract for Deed": "Real Estate Transactions",
+    "Create PR": "Intake & Coordination",
+    "Credit Worthiness Evaluator": "Real Estate Transactions",
+    "Dashboard": "Intake & Coordination",
+    "Doc Scan": "Document Intake",
+    "Email Monitor": "Intake & Coordination",
+    "Entity Relationship": "Legal & Entity",
+    "Estate Documents": "Legal & Entity",
+    "Geico Insurance Claim": "Legal & Entity",
+    "Gracious Millionaire": "Publishing & Public Work",
+    "Investigate Computer": "Systems & Maintenance",
+    "Invoice Entry": "Accounting & Project Data",
+    "Jean Wright": "Intake & Coordination",
+    "Jennys Drawings": "Publishing & Public Work",
+    "LD Evans": "Publishing & Public Work",
+    "Lowes Order": "Systems & Maintenance",
+    "Manager": "Systems & Maintenance",
+    "Marketplace": "Systems & Maintenance",
+    "New Project": "Real Estate Transactions",
+    "Operating Agreements": "Legal & Entity",
+    "Project Management Spreadsheet Rewrite": "Accounting & Project Data",
+    "Property Trade Evaluation": "Real Estate Transactions",
+    "REI BlackBook": "Publishing & Public Work",
+    "SOPs": "Document Intake",
+    "Template to Project": "Accounting & Project Data",
+    "Voices": "Publishing & Public Work"
+  }
+}

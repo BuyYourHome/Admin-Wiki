@@ -11,6 +11,7 @@ description: Use for the Buy Your Home Dashboard Project Room, including refresh
 - Local site: `C:\Codex\Wiki Files\Project Rooms\Dashboard\site`
 - Refresh tool: `C:\Codex\Wiki Files\Project Rooms\Dashboard\tools\Refresh-DashboardData.ps1`
 - Launch tool: `C:\Codex\Wiki Files\Project Rooms\Dashboard\tools\Start-Dashboard.ps1`
+- Group configuration: `C:\Codex\Wiki Files\Project Rooms\Dashboard\config\project-room-groups.json`
 - Canonical Project Room definitions: `C:\Codex\Wiki Files\Project Rooms\*\README.md`
 
 ## Required Startup
@@ -26,9 +27,13 @@ description: Use for the Buy Your Home Dashboard Project Room, including refresh
 2. Run the refresh tool after Project Rooms are created, explicitly renamed, or materially repurposed.
 3. Review generated `site\project-rooms.js` for missing rooms and neutral fallbacks.
 4. Maintain search, filters, status/skill visibility, and canonical README navigation.
-5. Add side-panel quick actions only when the action has one clear canonical local target. Verify the target exists before linking it and record stale or conflicting references without silently choosing a misleading path.
-6. Keep the interface local-only unless Wes explicitly authorizes publication.
-7. Record substantive refresh or design outcomes in `working\dashboard-action-log.md`.
+5. Give every selected Project Room a truthful default Quick action that opens its canonical README. Append room-specific Quick actions only when each action has one clear canonical local target.
+6. Keep the action list compatible with several future buttons. Never label a control as launching, routing, deleting, or changing something unless it actually performs that function.
+7. A deletion control may only prepare an owner-review request after exact-name confirmation. It must not delete, archive, rename, move, edit a registry, change a skill or task, or claim final authorization. The owning workflow must identify every affected path/system and obtain Wes's exact explicit authorization before action.
+8. Populate the side-panel Mode selector only from headings or numbered mode names documented in the room's canonical README and matching skill. A selection is interface-only unless a separate safe action is explicitly implemented.
+9. Treat `config\project-room-groups.json` as the Dashboard source for group names, their basis, and current default assignments. Display Group as a selected-room property. A different selection may preview its basis but must not reclassify or rewrite the room until Wes explicitly selects and authorizes an implemented save workflow.
+10. Keep the interface local-only unless Wes explicitly authorizes publication.
+11. Record requested improvements in `working\dashboard-change-list.md` and substantive outcomes in `working\dashboard-action-log.md`.
 
 ## Boundaries
 

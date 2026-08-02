@@ -26,7 +26,9 @@ Out of scope:
 - `working\source-inventory.md` - dashboard source inventory.
 - `working\duplicate-and-conflict-log.md` - duplicate or unclear room metadata.
 - `working\missing-context.md` - decisions needed from Wes.
+- `working\dashboard-change-list.md` - requested Dashboard improvements and implementation status.
 - `working\dashboard-action-log.md` - durable refresh and design outcomes.
+- `config\project-room-groups.json` - explicit group definitions, basis, and current default assignments.
 - `outputs\` - review-ready dashboard reports or exports.
 - `site\` - local dashboard interface and generated Project Room index.
 - `tools\` - local refresh and launch scripts.
@@ -35,7 +37,7 @@ Out of scope:
 
 Status: active initial design.
 
-The initial local dashboard provides search, functional-group filters, status counts, Project Room summaries, skill visibility, canonical README links, and context-specific side-panel quick actions. The first quick action opens the canonical Entity Relationship SVG diagram. Wes will review the design and decide what to alter.
+The local dashboard provides search, codified functional-group filters, status counts, Project Room summaries, skill visibility, documented-mode selection, and extensible side-panel Quick actions. Every card has a truthful default action that opens its canonical README; the Entity Relationship card also opens its SVG diagram. A safeguarded interface-only deletion control previews the future confirmation flow without deleting or routing anything. Group is a displayed side-panel property whose selector previews, but does not save, a future group change. Wes will review the design and decide what to alter.
 
 ## Matching Skill
 

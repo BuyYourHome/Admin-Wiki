@@ -3,15 +3,12 @@ param([string]$RepositoryRoot = 'C:\Codex\Wiki Files')
 $ErrorActionPreference = 'Stop'
 $projectRoomsRoot = Join-Path $RepositoryRoot 'Project Rooms'
 $outputPath = Join-Path $projectRoomsRoot 'Dashboard\site\project-rooms.js'
-$groups = @{
-    'Jean Wright'='Intake & Coordination'; 'Email Monitor'='Intake & Coordination'; 'Create PR'='Intake & Coordination'; 'Dashboard'='Intake & Coordination'
-    'Doc Scan'='Document Intake'; 'SOPs'='Document Intake'
-    'Invoice Entry'='Accounting & Project Data'; 'Template to Project'='Accounting & Project Data'; 'Project Management Spreadsheet Rewrite'='Accounting & Project Data'; 'Amortization'='Accounting & Project Data'
-    'New Project'='Real Estate Transactions'; 'Contract for Deed'='Real Estate Transactions'; 'Credit Worthiness Evaluator'='Real Estate Transactions'; 'CMA Report'='Real Estate Transactions'; 'Property Trade Evaluation'='Real Estate Transactions'
-    'Operating Agreements'='Legal & Entity'; 'Entity Relationship'='Legal & Entity'; 'Brynda Suit'='Legal & Entity'; 'Confidential'='Legal & Entity'; 'Estate Documents'='Legal & Entity'; 'Geico Insurance Claim'='Legal & Entity'
-    'Gracious Millionaire'='Publishing & Public Work'; 'REI BlackBook'='Publishing & Public Work'; 'LD Evans'='Publishing & Public Work'; 'Jennys Drawings'='Publishing & Public Work'; 'Voices'='Publishing & Public Work'
-    'AIOS'='Systems & Maintenance'; 'Codex Environment'='Systems & Maintenance'; 'Computers'='Systems & Maintenance'; 'Investigate Computer'='Systems & Maintenance'; 'Marketplace'='Systems & Maintenance'; 'Lowes Order'='Systems & Maintenance'; 'Manager'='Systems & Maintenance'
-}
+$groupConfigPath = Join-Path $projectRoomsRoot 'Dashboard\config\project-room-groups.json'
+$groupConfig = Get-Content -LiteralPath $groupConfigPath -Raw | ConvertFrom-Json
+$groupDefinitions = @($groupConfig.groups)
+$groupNames = @($groupDefinitions | ForEach-Object { $_.name })
+$groupAssignments = @{}
+$groupConfig.assignments.PSObject.Properties | ForEach-Object { $groupAssignments[$_.Name] = $_.Value }
 
 function Get-SectionText {
     param([string]$Text, [string]$Heading)
@@ -22,6 +19,34 @@ function Get-SectionText {
     return ((($lines | Select-Object -First 3) -join ' ') -replace '^[-*]\s*', '' -replace '`', '').Trim()
 }
 
+function Get-DocumentedModes {
+    param([string[]]$Documents)
+    $modes = [System.Collections.Generic.List[string]]::new()
+    foreach ($document in $Documents) {
+        if (-not $document) { continue }
+        $lines = $document -split '\r?\n'
+        $inModeSection = $false
+        foreach ($line in $lines) {
+            if ($line -match '^##\s+(.+?)\s*$') {
+                $heading = $Matches[1].Trim()
+                $inModeSection = $heading -in @('Modes', 'Supported Modes', 'Operating Modes')
+                if ($heading -match '\bMode$' -and -not $modes.Contains($heading)) { $modes.Add($heading) }
+                continue
+            }
+            if ($line -match '^###\s+(.+?)\s*$') {
+                $heading = $Matches[1].Trim()
+                if (($inModeSection -or $heading -match '\bMode$') -and -not $modes.Contains($heading)) { $modes.Add($heading) }
+                continue
+            }
+            if ($inModeSection -and $line -match '^\d+\.\s+\*\*(.+?)\*\*') {
+                $mode = $Matches[1].Trim()
+                if (-not $modes.Contains($mode)) { $modes.Add($mode) }
+            }
+        }
+    }
+    return @($modes)
+}
+
 $rooms = foreach ($directory in Get-ChildItem -LiteralPath $projectRoomsRoot -Directory | Sort-Object Name) {
     $readme = Join-Path $directory.FullName 'README.md'
     if (-not (Test-Path -LiteralPath $readme)) { continue }
@@ -30,6 +55,15 @@ $rooms = foreach ($directory in Get-ChildItem -LiteralPath $projectRoomsRoot -Di
     if (-not $purpose) { $purpose = 'Canonical Project Room; open its README for current responsibilities.' }
     $statusMatch = [regex]::Match($text, '(?im)^Status:\s*([^\r\n.]+)')
     $skillMatch = [regex]::Match($text, 'skills\\([^\\`\r\n]+)\\SKILL\.md')
+    $skillName = if ($skillMatch.Success) { $skillMatch.Groups[1].Value } else { '' }
+    $skillText = ''
+    if ($skillName) {
+        $skillPath = Join-Path $RepositoryRoot "skills\$skillName\SKILL.md"
+        if (Test-Path -LiteralPath $skillPath) { $skillText = Get-Content -LiteralPath $skillPath -Raw }
+    }
+    $modes = Get-DocumentedModes -Documents @($text, $skillText)
+    $group = if ($groupAssignments.ContainsKey($directory.Name) -and $groupNames -contains $groupAssignments[$directory.Name]) { $groupAssignments[$directory.Name] } else { 'Other' }
+    $groupDefinition = $groupDefinitions | Where-Object { $_.name -eq $group } | Select-Object -First 1
     $quickActions = @()
     if ($directory.Name -eq 'Entity Relationship') {
         $quickActions += [ordered]@{
@@ -41,15 +75,19 @@ $rooms = foreach ($directory in Get-ChildItem -LiteralPath $projectRoomsRoot -Di
         name = $directory.Name
         purpose = $purpose
         status = if ($statusMatch.Success) { $statusMatch.Groups[1].Value.Trim() } else { 'Status not recorded' }
-        skill = if ($skillMatch.Success) { $skillMatch.Groups[1].Value } else { '' }
-        group = if ($groups.ContainsKey($directory.Name)) { $groups[$directory.Name] } else { 'Other' }
+        skill = $skillName
+        group = $group
+        groupBasis = $groupDefinition.basis
+        modes = @($modes)
         readmeUrl = "../../$([uri]::EscapeDataString($directory.Name))/README.md"
-        quickActions = $quickActions
+        quickActions = @($quickActions)
     }
 }
 
-$json = $rooms | ConvertTo-Json -Depth 5
-$bytes = [System.Text.UTF8Encoding]::new($false).GetBytes($json)
+$json = $rooms | ConvertTo-Json -Depth 6
+$groupsJson = $groupDefinitions | ConvertTo-Json -Depth 4
+$indexData = "$groupsJson`n$json"
+$bytes = [System.Text.UTF8Encoding]::new($false).GetBytes($indexData)
 $hasher = [System.Security.Cryptography.SHA256]::Create()
 try { $contentHash = ([System.BitConverter]::ToString($hasher.ComputeHash($bytes))).Replace('-', '') } finally { $hasher.Dispose() }
 if (Test-Path -LiteralPath $outputPath) {
@@ -61,6 +99,6 @@ if (Test-Path -LiteralPath $outputPath) {
     }
 }
 $stamp = Get-Date -Format 'yyyy-MM-dd HH:mm'
-$content = "window.PROJECT_ROOMS_UPDATED = '$stamp';`r`nwindow.PROJECT_ROOMS_HASH = '$contentHash';`r`nwindow.PROJECT_ROOMS = $json;`r`n"
+$content = "window.PROJECT_ROOMS_UPDATED = '$stamp';`r`nwindow.PROJECT_ROOMS_HASH = '$contentHash';`r`nwindow.PROJECT_ROOM_GROUPS = $groupsJson;`r`nwindow.PROJECT_ROOMS = $json;`r`n"
 [System.IO.File]::WriteAllText($outputPath, $content, [System.Text.UTF8Encoding]::new($false))
 Write-Output "Dashboard index refreshed: $($rooms.Count) Project Rooms -> $outputPath"

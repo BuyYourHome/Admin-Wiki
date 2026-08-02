@@ -40,19 +40,60 @@
           <h2 id="detailName">Choose a room</h2>
           <p id="detailPurpose">Select a Project Room to see its responsibility, status, skill, and canonical path.</p>
           <dl>
-            <div><dt>Functional group</dt><dd id="detailGroup">-</dd></div>
+            <div class="property-control">
+              <dt><label for="detailGroupSelect">Group</label></dt>
+              <dd>
+                <select id="detailGroupSelect"></select>
+                <span class="property-note" id="detailGroupBasis">-</span>
+                <span class="property-state" id="detailGroupState">Current documented assignment. Changes are preview only.</span>
+              </dd>
+            </div>
             <div><dt>Status</dt><dd id="detailStatus">-</dd></div>
             <div><dt>Skill</dt><dd id="detailSkill">-</dd></div>
+            <div class="property-control">
+              <dt><label for="detailModeSelect">Mode</label></dt>
+              <dd>
+                <select id="detailModeSelect"></select>
+                <span class="property-state" id="detailModeState">Selection does not activate a mode.</span>
+              </dd>
+            </div>
           </dl>
-          <section class="quick-actions" id="detailActions" hidden>
+          <section class="quick-actions" id="detailActions">
             <h3>Quick actions</h3>
             <div id="detailActionList"></div>
           </section>
-          <a class="readme-link" id="detailLink" href="#" hidden>Open canonical README</a>
+          <section class="danger-zone">
+            <h3>Project Room controls</h3>
+            <button class="danger-button" id="requestDeleteButton" type="button">Request deletion</button>
+            <p>Prepares a deletion request for owner review. It does not delete files.</p>
+          </section>
         </aside>
       </div>
     </main>
   </div>
+  <dialog class="delete-dialog" id="deleteDialog">
+    <form method="dialog">
+      <p class="dialog-kicker">Destructive action safeguard</p>
+      <h2>Request Project Room deletion</h2>
+      <p>No Project Room will be deleted from this dashboard. This step prepares a request for the owning workflow to review under the exact authorization rule.</p>
+      <div class="delete-target"><span>Selected Project Room</span><strong id="deleteRoomName"></strong></div>
+      <label class="confirmation-field">
+        <span>Type the exact Project Room name to prepare the request:</span>
+        <code id="deleteConfirmationName"></code>
+        <input id="deleteConfirmationInput" type="text" autocomplete="off">
+      </label>
+      <div class="prepared-request" id="preparedRequest" hidden>
+        <label for="deleteRequestText">Prepared request</label>
+        <textarea id="deleteRequestText" readonly></textarea>
+        <p>This must still be routed to the appropriate owner. The owner must identify all affected paths and ask Wes for final explicit authorization before any deletion.</p>
+      </div>
+      <div class="dialog-actions">
+        <button class="secondary-button" value="cancel">Cancel</button>
+        <button class="danger-button" id="prepareDeleteButton" type="button" disabled>Prepare request</button>
+        <button class="primary-button" id="copyDeleteRequestButton" type="button" hidden>Copy request</button>
+      </div>
+    </form>
+  </dialog>
   <script src="project-rooms.js"></script>
   <script src="app.js"></script>
 </body>

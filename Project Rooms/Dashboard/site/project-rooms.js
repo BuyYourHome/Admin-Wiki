@@ -1,5 +1,39 @@
-window.PROJECT_ROOMS_UPDATED = '2026-08-02 11:17';
-window.PROJECT_ROOMS_HASH = '98A50FFD397E89C17BB96F675D3073279C89B3D83538B15C81E80F34CFA18B9B';
+window.PROJECT_ROOMS_UPDATED = '2026-08-02 14:58';
+window.PROJECT_ROOMS_HASH = 'C7460B47FD369A3EFA953F4B094BC3F0C5F87074DBF173C48F9F6105E58C5A6F';
+window.PROJECT_ROOM_GROUPS = [
+    {
+        "name":  "Intake \u0026 Coordination",
+        "basis":  "Receives requests, routes work, creates Project Rooms, or provides an operating overview across workflows."
+    },
+    {
+        "name":  "Document Intake",
+        "basis":  "Receives, identifies, organizes, or maintains source documents and operating procedures before downstream processing."
+    },
+    {
+        "name":  "Accounting \u0026 Project Data",
+        "basis":  "Maintains financial calculations, invoice processing, project workbooks, templates, or structured project data."
+    },
+    {
+        "name":  "Real Estate Transactions",
+        "basis":  "Supports property acquisition, valuation, buyer qualification, seller financing, transaction packaging, or project setup."
+    },
+    {
+        "name":  "Legal \u0026 Entity",
+        "basis":  "Maintains litigation, confidential legal material, entity governance, ownership relationships, estate, or claim work."
+    },
+    {
+        "name":  "Publishing \u0026 Public Work",
+        "basis":  "Develops books, drawings, voice/media assets, websites, or other public-facing content."
+    },
+    {
+        "name":  "Systems \u0026 Maintenance",
+        "basis":  "Maintains computers, Codex operations, management support, purchasing tools, marketplace work, or system health."
+    },
+    {
+        "name":  "Other",
+        "basis":  "Used when a Project Room does not yet have a supported assignment to one of the defined functional groups."
+    }
+];
 window.PROJECT_ROOMS = [
     {
         "name":  "Admin Wiki Maintenance",
@@ -7,6 +41,10 @@ window.PROJECT_ROOMS = [
         "status":  "Status not recorded",
         "skill":  "",
         "group":  "Other",
+        "groupBasis":  "Used when a Project Room does not yet have a supported assignment to one of the defined functional groups.",
+        "modes":  [
+
+                  ],
         "readmeUrl":  "../../Admin%20Wiki%20Maintenance/README.md",
         "quickActions":  [
 
@@ -18,6 +56,10 @@ window.PROJECT_ROOMS = [
         "status":  "Status not recorded",
         "skill":  "aios",
         "group":  "Systems \u0026 Maintenance",
+        "groupBasis":  "Maintains computers, Codex operations, management support, purchasing tools, marketplace work, or system health.",
+        "modes":  [
+
+                  ],
         "readmeUrl":  "../../AIOS/README.md",
         "quickActions":  [
 
@@ -29,6 +71,10 @@ window.PROJECT_ROOMS = [
         "status":  "Status not recorded",
         "skill":  "",
         "group":  "Accounting \u0026 Project Data",
+        "groupBasis":  "Maintains financial calculations, invoice processing, project workbooks, templates, or structured project data.",
+        "modes":  [
+
+                  ],
         "readmeUrl":  "../../Amortization/README.md",
         "quickActions":  [
 
@@ -40,6 +86,11 @@ window.PROJECT_ROOMS = [
         "status":  "draft",
         "skill":  "brynda-suit",
         "group":  "Legal \u0026 Entity",
+        "groupBasis":  "Maintains litigation, confidential legal material, entity governance, ownership relationships, estate, or claim work.",
+        "modes":  [
+                      "Ownership And Git Mode",
+                      "OfficeAssist Routed Email Response Mode"
+                  ],
         "readmeUrl":  "../../Brynda%20Suit/README.md",
         "quickActions":  [
 
@@ -51,6 +102,10 @@ window.PROJECT_ROOMS = [
         "status":  "Status not recorded",
         "skill":  "",
         "group":  "Real Estate Transactions",
+        "groupBasis":  "Supports property acquisition, valuation, buyer qualification, seller financing, transaction packaging, or project setup.",
+        "modes":  [
+
+                  ],
         "readmeUrl":  "../../CMA%20Report/README.md",
         "quickActions":  [
 
@@ -62,6 +117,10 @@ window.PROJECT_ROOMS = [
         "status":  "Status not recorded",
         "skill":  "",
         "group":  "Other",
+        "groupBasis":  "Used when a Project Room does not yet have a supported assignment to one of the defined functional groups.",
+        "modes":  [
+
+                  ],
         "readmeUrl":  "../../CMA%20Report%20-%205009%20Sunnyfield%20Dr/README.md",
         "quickActions":  [
 
@@ -73,6 +132,10 @@ window.PROJECT_ROOMS = [
         "status":  "Status not recorded",
         "skill":  "",
         "group":  "Other",
+        "groupBasis":  "Used when a Project Room does not yet have a supported assignment to one of the defined functional groups.",
+        "modes":  [
+
+                  ],
         "readmeUrl":  "../../CMA%20Report%20-%205021%20Sunnyfield%20Dr/README.md",
         "quickActions":  [
 
@@ -84,6 +147,10 @@ window.PROJECT_ROOMS = [
         "status":  "Status not recorded",
         "skill":  "",
         "group":  "Other",
+        "groupBasis":  "Used when a Project Room does not yet have a supported assignment to one of the defined functional groups.",
+        "modes":  [
+
+                  ],
         "readmeUrl":  "../../CMA%20Report%20-%205512%20Desert%20Willow%20Ln/README.md",
         "quickActions":  [
 
@@ -95,6 +162,11 @@ window.PROJECT_ROOMS = [
         "status":  "`Wes-VideoEditor` core Admin wiki environment and Codex Desktop project connection installed and verified on 2026-07-22; connector sign-ins, plugin cache, and live workflow execution remain unverified",
         "skill":  "codex-environment",
         "group":  "Systems \u0026 Maintenance",
+        "groupBasis":  "Maintains computers, Codex operations, management support, purchasing tools, marketplace work, or system health.",
+        "modes":  [
+                      "Ownership And Git Mode",
+                      "Update Codex Environment Mode"
+                  ],
         "readmeUrl":  "../../Codex%20Environment/README.md",
         "quickActions":  [
 
@@ -106,6 +178,10 @@ window.PROJECT_ROOMS = [
         "status":  "draft",
         "skill":  "computers",
         "group":  "Systems \u0026 Maintenance",
+        "groupBasis":  "Maintains computers, Codex operations, management support, purchasing tools, marketplace work, or system health.",
+        "modes":  [
+                      "Ownership And Git Mode"
+                  ],
         "readmeUrl":  "../../Computers/README.md",
         "quickActions":  [
 
@@ -117,6 +193,10 @@ window.PROJECT_ROOMS = [
         "status":  "Status not recorded",
         "skill":  "confidential",
         "group":  "Legal \u0026 Entity",
+        "groupBasis":  "Maintains litigation, confidential legal material, entity governance, ownership relationships, estate, or claim work.",
+        "modes":  [
+
+                  ],
         "readmeUrl":  "../../Confidential/README.md",
         "quickActions":  [
 
@@ -128,6 +208,10 @@ window.PROJECT_ROOMS = [
         "status":  "Status not recorded",
         "skill":  "",
         "group":  "Real Estate Transactions",
+        "groupBasis":  "Supports property acquisition, valuation, buyer qualification, seller financing, transaction packaging, or project setup.",
+        "modes":  [
+
+                  ],
         "readmeUrl":  "../../Contract%20for%20Deed/README.md",
         "quickActions":  [
 
@@ -139,6 +223,10 @@ window.PROJECT_ROOMS = [
         "status":  "active",
         "skill":  "create-pr",
         "group":  "Intake \u0026 Coordination",
+        "groupBasis":  "Receives requests, routes work, creates Project Rooms, or provides an operating overview across workflows.",
+        "modes":  [
+                      "Main And Push Mode"
+                  ],
         "readmeUrl":  "../../Create%20PR/README.md",
         "quickActions":  [
 
@@ -150,6 +238,10 @@ window.PROJECT_ROOMS = [
         "status":  "Status not recorded",
         "skill":  "",
         "group":  "Real Estate Transactions",
+        "groupBasis":  "Supports property acquisition, valuation, buyer qualification, seller financing, transaction packaging, or project setup.",
+        "modes":  [
+
+                  ],
         "readmeUrl":  "../../Credit%20Worthiness%20Evaluator/README.md",
         "quickActions":  [
 
@@ -161,6 +253,10 @@ window.PROJECT_ROOMS = [
         "status":  "active initial design",
         "skill":  "dashboard",
         "group":  "Intake \u0026 Coordination",
+        "groupBasis":  "Receives requests, routes work, creates Project Rooms, or provides an operating overview across workflows.",
+        "modes":  [
+
+                  ],
         "readmeUrl":  "../../Dashboard/README.md",
         "quickActions":  [
 
@@ -172,6 +268,10 @@ window.PROJECT_ROOMS = [
         "status":  "Status not recorded",
         "skill":  "doc-scan",
         "group":  "Document Intake",
+        "groupBasis":  "Receives, identifies, organizes, or maintains source documents and operating procedures before downstream processing.",
+        "modes":  [
+                      "Lowe\u0027s Statement Allocation Mode"
+                  ],
         "readmeUrl":  "../../Doc%20Scan/README.md",
         "quickActions":  [
 
@@ -183,6 +283,15 @@ window.PROJECT_ROOMS = [
         "status":  "Status not recorded",
         "skill":  "email-monitor",
         "group":  "Intake \u0026 Coordination",
+        "groupBasis":  "Receives requests, routes work, creates Project Rooms, or provides an operating overview across workflows.",
+        "modes":  [
+                      "Email Summary",
+                      "Health Check",
+                      "Task Health Mode",
+                      "Email Routing",
+                      "Email Delivery",
+                      "Organize"
+                  ],
         "readmeUrl":  "../../Email%20Monitor/README.md",
         "quickActions":  [
 
@@ -194,6 +303,10 @@ window.PROJECT_ROOMS = [
         "status":  "active planning",
         "skill":  "entity-relationship",
         "group":  "Legal \u0026 Entity",
+        "groupBasis":  "Maintains litigation, confidential legal material, entity governance, ownership relationships, estate, or claim work.",
+        "modes":  [
+
+                  ],
         "readmeUrl":  "../../Entity%20Relationship/README.md",
         "quickActions":  [
                              {
@@ -208,6 +321,10 @@ window.PROJECT_ROOMS = [
         "status":  "Status not recorded",
         "skill":  "",
         "group":  "Legal \u0026 Entity",
+        "groupBasis":  "Maintains litigation, confidential legal material, entity governance, ownership relationships, estate, or claim work.",
+        "modes":  [
+
+                  ],
         "readmeUrl":  "../../Estate%20Documents/README.md",
         "quickActions":  [
 
@@ -219,6 +336,10 @@ window.PROJECT_ROOMS = [
         "status":  "Status not recorded",
         "skill":  "",
         "group":  "Legal \u0026 Entity",
+        "groupBasis":  "Maintains litigation, confidential legal material, entity governance, ownership relationships, estate, or claim work.",
+        "modes":  [
+
+                  ],
         "readmeUrl":  "../../Geico%20Insurance%20Claim/README.md",
         "quickActions":  [
 
@@ -230,6 +351,14 @@ window.PROJECT_ROOMS = [
         "status":  "Status not recorded",
         "skill":  "gracious-millionaire",
         "group":  "Publishing \u0026 Public Work",
+        "groupBasis":  "Develops books, drawings, voice/media assets, websites, or other public-facing content.",
+        "modes":  [
+                      "Journal Mode",
+                      "Quick Mode",
+                      "Rewrite Mode",
+                      "Dialogue Mode",
+                      "Interview Mode"
+                  ],
         "readmeUrl":  "../../Gracious%20Millionaire/README.md",
         "quickActions":  [
 
@@ -241,6 +370,10 @@ window.PROJECT_ROOMS = [
         "status":  "Status not recorded",
         "skill":  "investigate-computer",
         "group":  "Systems \u0026 Maintenance",
+        "groupBasis":  "Maintains computers, Codex operations, management support, purchasing tools, marketplace work, or system health.",
+        "modes":  [
+
+                  ],
         "readmeUrl":  "../../Investigate%20Computer/README.md",
         "quickActions":  [
 
@@ -252,6 +385,16 @@ window.PROJECT_ROOMS = [
         "status":  "Status not recorded",
         "skill":  "invoice-entry",
         "group":  "Accounting \u0026 Project Data",
+        "groupBasis":  "Maintains financial calculations, invoice processing, project workbooks, templates, or structured project data.",
+        "modes":  [
+                      "Standard Packet Processing",
+                      "Create Vendor Invoice",
+                      "Time Card",
+                      "Statement Processing",
+                      "Review Request Processing",
+                      "Vendor Tabs",
+                      "Task Health Mode"
+                  ],
         "readmeUrl":  "../../Invoice%20Entry/README.md",
         "quickActions":  [
 
@@ -263,6 +406,14 @@ window.PROJECT_ROOMS = [
         "status":  "Status not recorded",
         "skill":  "jean-wright",
         "group":  "Intake \u0026 Coordination",
+        "groupBasis":  "Receives requests, routes work, creates Project Rooms, or provides an operating overview across workflows.",
+        "modes":  [
+                      "Start PR Mode",
+                      "Commit Mode",
+                      "Push Mode",
+                      "Dispatcher Mode",
+                      "Jean\u0027s Voice Intake Mode"
+                  ],
         "readmeUrl":  "../../Jean%20Wright/README.md",
         "quickActions":  [
 
@@ -274,6 +425,10 @@ window.PROJECT_ROOMS = [
         "status":  "active review draft",
         "skill":  "jennys-drawings",
         "group":  "Publishing \u0026 Public Work",
+        "groupBasis":  "Develops books, drawings, voice/media assets, websites, or other public-facing content.",
+        "modes":  [
+                      "Ownership And Git Mode"
+                  ],
         "readmeUrl":  "../../Jennys%20Drawings/README.md",
         "quickActions":  [
 
@@ -285,6 +440,10 @@ window.PROJECT_ROOMS = [
         "status":  "active manuscript development",
         "skill":  "ld-evans",
         "group":  "Publishing \u0026 Public Work",
+        "groupBasis":  "Develops books, drawings, voice/media assets, websites, or other public-facing content.",
+        "modes":  [
+                      "Ownership And Git Mode"
+                  ],
         "readmeUrl":  "../../LD%20Evans/README.md",
         "quickActions":  [
 
@@ -296,6 +455,10 @@ window.PROJECT_ROOMS = [
         "status":  "draft",
         "skill":  "lowes-order",
         "group":  "Systems \u0026 Maintenance",
+        "groupBasis":  "Maintains computers, Codex operations, management support, purchasing tools, marketplace work, or system health.",
+        "modes":  [
+                      "Branch And Push Mode"
+                  ],
         "readmeUrl":  "../../Lowes%20Order/README.md",
         "quickActions":  [
 
@@ -307,6 +470,11 @@ window.PROJECT_ROOMS = [
         "status":  "active draft",
         "skill":  "manager",
         "group":  "Systems \u0026 Maintenance",
+        "groupBasis":  "Maintains computers, Codex operations, management support, purchasing tools, marketplace work, or system health.",
+        "modes":  [
+                      "Tasks",
+                      "Ownership And Git Mode"
+                  ],
         "readmeUrl":  "../../Manager/README.md",
         "quickActions":  [
 
@@ -318,6 +486,10 @@ window.PROJECT_ROOMS = [
         "status":  "active",
         "skill":  "marketplace",
         "group":  "Systems \u0026 Maintenance",
+        "groupBasis":  "Maintains computers, Codex operations, management support, purchasing tools, marketplace work, or system health.",
+        "modes":  [
+                      "Ownership And Git Mode"
+                  ],
         "readmeUrl":  "../../Marketplace/README.md",
         "quickActions":  [
 
@@ -329,6 +501,10 @@ window.PROJECT_ROOMS = [
         "status":  "Status not recorded",
         "skill":  "new-project",
         "group":  "Real Estate Transactions",
+        "groupBasis":  "Supports property acquisition, valuation, buyer qualification, seller financing, transaction packaging, or project setup.",
+        "modes":  [
+
+                  ],
         "readmeUrl":  "../../New%20Project/README.md",
         "quickActions":  [
 
@@ -340,6 +516,10 @@ window.PROJECT_ROOMS = [
         "status":  "Status not recorded",
         "skill":  "",
         "group":  "Legal \u0026 Entity",
+        "groupBasis":  "Maintains litigation, confidential legal material, entity governance, ownership relationships, estate, or claim work.",
+        "modes":  [
+
+                  ],
         "readmeUrl":  "../../Operating%20Agreements/README.md",
         "quickActions":  [
 
@@ -351,6 +531,10 @@ window.PROJECT_ROOMS = [
         "status":  "Status not recorded",
         "skill":  "template-to-project",
         "group":  "Accounting \u0026 Project Data",
+        "groupBasis":  "Maintains financial calculations, invoice processing, project workbooks, templates, or structured project data.",
+        "modes":  [
+
+                  ],
         "readmeUrl":  "../../Project%20Management%20Spreadsheet%20Rewrite/README.md",
         "quickActions":  [
 
@@ -362,6 +546,10 @@ window.PROJECT_ROOMS = [
         "status":  "active",
         "skill":  "property-trade-evaluation",
         "group":  "Real Estate Transactions",
+        "groupBasis":  "Supports property acquisition, valuation, buyer qualification, seller financing, transaction packaging, or project setup.",
+        "modes":  [
+
+                  ],
         "readmeUrl":  "../../Property%20Trade%20Evaluation/README.md",
         "quickActions":  [
 
@@ -373,6 +561,10 @@ window.PROJECT_ROOMS = [
         "status":  "started 2026-07-09",
         "skill":  "rei-blackbook",
         "group":  "Publishing \u0026 Public Work",
+        "groupBasis":  "Develops books, drawings, voice/media assets, websites, or other public-facing content.",
+        "modes":  [
+                      "GM Mode"
+                  ],
         "readmeUrl":  "../../REI%20BlackBook/README.md",
         "quickActions":  [
 
@@ -384,6 +576,10 @@ window.PROJECT_ROOMS = [
         "status":  "active",
         "skill":  "sops",
         "group":  "Document Intake",
+        "groupBasis":  "Receives, identifies, organizes, or maintains source documents and operating procedures before downstream processing.",
+        "modes":  [
+
+                  ],
         "readmeUrl":  "../../SOPs/README.md",
         "quickActions":  [
 
@@ -395,6 +591,10 @@ window.PROJECT_ROOMS = [
         "status":  "Status not recorded",
         "skill":  "template-to-project",
         "group":  "Accounting \u0026 Project Data",
+        "groupBasis":  "Maintains financial calculations, invoice processing, project workbooks, templates, or structured project data.",
+        "modes":  [
+
+                  ],
         "readmeUrl":  "../../Template%20to%20Project/README.md",
         "quickActions":  [
 
@@ -406,6 +606,10 @@ window.PROJECT_ROOMS = [
         "status":  "Status not recorded",
         "skill":  "voices",
         "group":  "Publishing \u0026 Public Work",
+        "groupBasis":  "Develops books, drawings, voice/media assets, websites, or other public-facing content.",
+        "modes":  [
+
+                  ],
         "readmeUrl":  "../../Voices/README.md",
         "quickActions":  [
 
