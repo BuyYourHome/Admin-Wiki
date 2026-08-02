@@ -64,8 +64,8 @@
           </section>
           <section class="danger-zone">
             <h3>Project Room controls</h3>
-            <button class="danger-button" id="requestDeleteButton" type="button">Request deletion</button>
-            <p>Prepares a deletion request for owner review. It does not delete files.</p>
+            <button class="danger-button" id="requestDeleteButton" type="button">Review deletion</button>
+            <p>Shows the exact deletion scope and asks for one explicit confirmation. This local interface does not delete anything yet.</p>
           </section>
         </aside>
       </div>
@@ -74,23 +74,22 @@
   <dialog class="delete-dialog" id="deleteDialog">
     <form method="dialog">
       <p class="dialog-kicker">Destructive action safeguard</p>
-      <h2>Request Project Room deletion</h2>
-      <p>No Project Room will be deleted from this dashboard. This step prepares a request for the owning workflow to review under the exact authorization rule.</p>
+      <h2>Delete this Project Room?</h2>
+      <p>This is a workflow preview only. Confirming creates a deletion plan for review; this version of Dashboard does not delete files, skills, tasks, or chats.</p>
       <div class="delete-target"><span>Selected Project Room</span><strong id="deleteRoomName"></strong></div>
-      <label class="confirmation-field">
-        <span>Type the exact Project Room name to prepare the request:</span>
-        <code id="deleteConfirmationName"></code>
-        <input id="deleteConfirmationInput" type="text" autocomplete="off">
-      </label>
+      <section class="deletion-scope" aria-label="Deletion scope">
+        <h3>Resources in scope</h3>
+        <ul id="deleteScopeList"></ul>
+      </section>
       <div class="prepared-request" id="preparedRequest" hidden>
-        <label for="deleteRequestText">Prepared request</label>
+        <label for="deleteRequestText">Prepared deletion plan</label>
         <textarea id="deleteRequestText" readonly></textarea>
-        <p>This must still be routed to the appropriate owner. The owner must identify all affected paths and ask Wes for final explicit authorization before any deletion.</p>
+        <p id="deletePlanState"></p>
       </div>
       <div class="dialog-actions">
         <button class="secondary-button" value="cancel">Cancel</button>
-        <button class="danger-button" id="prepareDeleteButton" type="button" disabled>Prepare request</button>
-        <button class="primary-button" id="copyDeleteRequestButton" type="button" hidden>Copy request</button>
+        <button class="danger-button" id="prepareDeleteButton" type="button">Confirm deletion plan</button>
+        <button class="primary-button" id="downloadDeleteRecordButton" type="button" hidden>Download audit record</button>
       </div>
     </form>
   </dialog>

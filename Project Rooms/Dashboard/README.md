@@ -29,6 +29,7 @@ Out of scope:
 - `working\dashboard-change-list.md` - requested Dashboard improvements and implementation status.
 - `working\dashboard-change-list-2.md` - pending future Dashboard design items awaiting Wes authorization.
 - `working\dashboard-action-log.md` - durable refresh and design outcomes.
+- `working\project-room-deletion-workflow.md` - future deletion execution gate and audit requirements.
 - `config\project-room-groups.json` - explicit group definitions, basis, and current default assignments.
 - `outputs\` - review-ready dashboard reports or exports.
 - `site\` - local dashboard interface and generated Project Room index.
@@ -38,7 +39,7 @@ Out of scope:
 
 Status: active initial design.
 
-The local dashboard provides search, codified functional-group filters, status counts, Project Room summaries, skill visibility, documented-mode selection, and extensible side-panel Quick actions. Every card has a truthful default action that opens its canonical README; the Entity Relationship card also opens its SVG diagram. A safeguarded interface-only deletion control previews the future confirmation flow without deleting or routing anything. Group is a displayed side-panel property whose selector previews, but does not save, a future group change. Wes will review the design and decide what to alter.
+The local dashboard provides search, codified functional-group filters, status counts, Project Room summaries, skill visibility, documented-mode selection, and extensible side-panel Quick actions. Every card has a README action and, when it has fewer than two actions, an unassigned future-action slot. The Entity Relationship card also opens its SVG diagram, and Gracious Millionaire opens its website. Dashboard action links use the browser's normal separate-tab/window behavior. The deletion control presents a one-confirmation, exact-resource workflow preview and can download an audit-plan record, but does not delete or alter anything. Group is a displayed side-panel property whose selector previews, but does not save, a future group change. Wes will review the design and decide what to alter.
 
 ## Matching Skill
 

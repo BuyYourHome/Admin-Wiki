@@ -57,13 +57,25 @@
       { label: "Open Project Room README", href: room.readmeUrl },
       ...(Array.isArray(room.quickActions) ? room.quickActions : [])
     ];
-    el("detailActionList").replaceChildren(...actions.map(action => {
+    const actionElements = actions.map(action => {
       const link = document.createElement("a");
       link.className = "quick-action-link";
       link.href = action.href;
+      link.target = "_blank";
+      link.rel = "noopener";
       link.textContent = action.label;
       return link;
-    }));
+    });
+    if (actions.length < 2) {
+      const slot = document.createElement("button");
+      slot.type = "button";
+      slot.className = "quick-action-slot";
+      slot.disabled = true;
+      slot.textContent = "Future action available";
+      slot.title = "No action has been assigned to this slot.";
+      actionElements.push(slot);
+    }
+    el("detailActionList").replaceChildren(...actionElements);
     renderCards();
   }
 
@@ -71,43 +83,73 @@
     const room = state.selectedRoom;
     if (!room) return;
     el("deleteRoomName").textContent = room.name;
-    el("deleteConfirmationName").textContent = room.name;
-    el("deleteConfirmationInput").value = "";
-    el("prepareDeleteButton").disabled = true;
+    const scope = [
+      { label: "Project Room folder", value: `C:\\Codex\\Wiki Files\\Project Rooms\\${room.name}`, state: "included" },
+      { label: "Dashboard card", value: "Removed automatically after the Project Room folder is removed and Dashboard is refreshed.", state: "derived" },
+      room.skill
+        ? { label: "Matching skill", value: room.skillState === "available" ? room.skillPath : `${room.skillPath || room.skill} (source not available)`, state: room.skillState === "available" ? "included" : "unresolved" }
+        : { label: "Matching skill", value: "No matching skill is documented. No skill deletion is proposed.", state: "not-applicable" },
+      room.taskId
+        ? { label: "Associated task/chat", value: `${room.taskId} (task deletion capability is not currently available)`, state: "unresolved" }
+        : { label: "Associated task/chat", value: "No task/chat id is documented. No task deletion is proposed.", state: "not-applicable" }
+    ];
+    el("deleteScopeList").replaceChildren(...scope.map(item => {
+      const entry = document.createElement("li");
+      entry.className = `scope-${item.state}`;
+      const label = document.createElement("strong");
+      label.textContent = item.label;
+      const value = document.createElement("span");
+      value.textContent = item.value;
+      entry.append(label, value);
+      return entry;
+    }));
     el("preparedRequest").hidden = true;
-    el("copyDeleteRequestButton").hidden = true;
-    el("copyDeleteRequestButton").textContent = "Copy request";
+    el("downloadDeleteRecordButton").hidden = true;
     el("deleteDialog").showModal();
-    el("deleteConfirmationInput").focus();
+    el("prepareDeleteButton").focus();
   }
 
   function prepareDeleteRequest() {
     const room = state.selectedRoom;
-    if (!room || el("deleteConfirmationInput").value !== room.name) return;
-    const skill = room.skill ? `C:\\Codex\\Wiki Files\\skills\\${room.skill}` : "No matching skill recorded";
-    el("deleteRequestText").value = [
-      "Request to consider deleting an existing Project Room.",
-      "",
-      `Existing Project Room: ${room.name}`,
-      `Existing path: C:\\Codex\\Wiki Files\\Project Rooms\\${room.name}`,
-      `Matching skill path: ${skill}`,
-      "",
-      "Do not delete, archive, rename, move, edit registry entries, alter automations, or change a task yet.",
-      "Route this request to the appropriate owning workflow. Identify every affected Project Room path, skill, registry entry, automation, installed skill, and task title. Then ask Wes the exact required authorization question before taking action."
-    ].join("\n");
+    if (!room) return;
+    const taskState = room.taskId
+      ? "BLOCKED: A task/chat is documented, but Codex currently exposes archiving rather than task deletion. Do not substitute archive for deletion without Wes's separate authorization."
+      : "No task/chat id is documented, so no task deletion is included in the proposed scope.";
+    const skillState = room.skill
+      ? (room.skillState === "available" ? `Matching skill included: ${room.skillPath}` : `BLOCKED: Matching skill ${room.skillPath || room.skill} is not available for verified deletion.`)
+      : "No matching skill is documented, so no skill deletion is included in the proposed scope.";
+    const plan = {
+      record_type: "dashboard-project-room-deletion-plan",
+      created_at: new Date().toISOString(),
+      confirmation: `One explicit Dashboard confirmation for ${room.name}; no deletion was executed by this interface.`,
+      project_room: { name: room.name, path: `C:\\Codex\\Wiki Files\\Project Rooms\\${room.name}` },
+      dashboard_entry: "Derived from the Project Room folder and removed by the next Dashboard refresh only after authorized folder deletion.",
+      matching_skill: room.skill ? { name: room.skill, path: room.skillPath || null, state: room.skillState } : null,
+      associated_task: room.taskId ? { id: room.taskId, state: "unavailable: no task-delete capability exposed" } : null,
+      limits: [
+        "Do not delete, archive, hide, rename, move, edit a registry, alter an automation, or change an installed skill from this interface.",
+        "Do not extend the scope beyond the selected Project Room, its documented matching skill, and its documented task/chat.",
+        "Before any future execution, append this plan and final results to C:\\Codex\\Wiki Files\\Project Rooms\\Dashboard\\working\\project-room-deletion-log.md outside the selected Project Room.",
+        "If any included resource is unresolved or unavailable, stop without partial deletion and report the blocker to Wes."
+      ],
+      execution_state: "planned only; no deletion executed"
+    };
+    state.deletionPlan = plan;
+    el("deleteRequestText").value = JSON.stringify(plan, null, 2);
+    el("deletePlanState").textContent = `${taskState} ${skillState} This plan is an auditable preview only; no resource was altered.`;
     el("preparedRequest").hidden = false;
-    el("copyDeleteRequestButton").hidden = false;
+    el("downloadDeleteRecordButton").hidden = false;
   }
 
-  async function copyDeleteRequest() {
-    const text = el("deleteRequestText").value;
-    try {
-      await navigator.clipboard.writeText(text);
-      el("copyDeleteRequestButton").textContent = "Copied";
-    } catch {
-      el("deleteRequestText").select();
-      el("copyDeleteRequestButton").textContent = "Select and copy";
-    }
+  function downloadDeleteRecord() {
+    if (!state.deletionPlan) return;
+    const content = `${JSON.stringify(state.deletionPlan, null, 2)}\n`;
+    const href = URL.createObjectURL(new Blob([content], { type: "application/json" }));
+    const link = document.createElement("a");
+    link.href = href;
+    link.download = `dashboard-deletion-plan-${state.deletionPlan.project_room.name.replace(/[^a-z0-9]+/gi, "-").replace(/^-|-$/g, "").toLowerCase()}.json`;
+    link.click();
+    URL.revokeObjectURL(href);
   }
   function renderCards() {
     const visible = filteredRooms();
@@ -137,11 +179,8 @@
   el("updatedAt").textContent = window.PROJECT_ROOMS_UPDATED ? `Index refreshed ${window.PROJECT_ROOMS_UPDATED}` : "Local index";
   el("searchInput").addEventListener("input", event => { state.query = event.target.value; renderCards(); });
   el("requestDeleteButton").addEventListener("click", openDeleteRequest);
-  el("deleteConfirmationInput").addEventListener("input", event => {
-    el("prepareDeleteButton").disabled = !state.selectedRoom || event.target.value !== state.selectedRoom.name;
-  });
   el("prepareDeleteButton").addEventListener("click", prepareDeleteRequest);
-  el("copyDeleteRequestButton").addEventListener("click", copyDeleteRequest);
+  el("downloadDeleteRecordButton").addEventListener("click", downloadDeleteRecord);
   el("detailModeSelect").addEventListener("change", event => {
     el("detailModeState").textContent = event.target.value ? `Selected for interface review: ${event.target.value}. No mode was activated.` : "Selection does not activate a mode.";
   });

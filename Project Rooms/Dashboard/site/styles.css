@@ -61,6 +61,8 @@ main { padding: 22px clamp(18px, 4vw, 52px) 48px; }
 .quick-action-link { display: flex; min-height: 42px; align-items: center; justify-content: space-between; padding: 0 12px; border: 1px solid var(--green); border-radius: 4px; color: var(--green); background: var(--green-soft); text-decoration: none; font-size: 13px; font-weight: 700; }
 .quick-action-link::after { content: "Open"; color: var(--muted); font-size: 11px; font-weight: 600; }
 .quick-action-link:hover { background: #dcebe2; }
+.quick-action-slot { min-height: 42px; padding: 0 12px; border: 1px dashed #aeb8b2; border-radius: 4px; color: var(--muted); background: var(--paper); text-align: left; font-size: 13px; font-weight: 700; cursor: not-allowed; }
+.quick-action-slot::after { content: "Unassigned"; float: right; color: var(--muted); font-size: 11px; font-weight: 600; }
 .danger-zone { margin-top: 22px; padding-top: 16px; border-top: 1px solid var(--line); }
 .danger-zone h3 { margin: 0 0 8px; color: var(--muted); font-size: 11px; text-transform: uppercase; }
 .danger-zone p { margin: 8px 0 0; color: var(--muted); font-size: 11px; line-height: 1.4; }
@@ -77,11 +79,16 @@ main { padding: 22px clamp(18px, 4vw, 52px) 48px; }
 .delete-dialog > form > p { color: var(--muted); line-height: 1.5; }
 .dialog-kicker { margin: 0 0 6px; color: #9c463f !important; font-size: 11px; font-weight: 800; text-transform: uppercase; }
 .delete-target { margin: 18px 0; padding: 12px; border-left: 4px solid #9c463f; background: #f9e9e7; display: grid; gap: 4px; }
-.delete-target span, .confirmation-field > span { color: var(--muted); font-size: 11px; font-weight: 700; text-transform: uppercase; }
-.confirmation-field { display: grid; gap: 7px; }
-.confirmation-field code { overflow-wrap: anywhere; }
-.confirmation-field input { min-height: 42px; padding: 0 10px; border: 1px solid #aeb8b2; border-radius: 4px; }
-.confirmation-field input:focus { border-color: #9c463f; outline: 3px solid rgba(156, 70, 63, .13); }
+.delete-target span { color: var(--muted); font-size: 11px; font-weight: 700; text-transform: uppercase; }
+.deletion-scope { margin-top: 18px; border-top: 1px solid var(--line); }
+.deletion-scope h3 { margin: 14px 0 8px; color: var(--muted); font-size: 11px; text-transform: uppercase; }
+.deletion-scope ul { margin: 0; padding: 0; list-style: none; display: grid; gap: 8px; }
+.deletion-scope li { padding: 9px 10px; border-left: 3px solid var(--line); background: var(--paper); display: grid; gap: 3px; font-size: 12px; overflow-wrap: anywhere; }
+.deletion-scope li strong { font-size: 11px; text-transform: uppercase; }
+.deletion-scope .scope-included { border-left-color: var(--green); }
+.deletion-scope .scope-derived { border-left-color: var(--blue); }
+.deletion-scope .scope-unresolved { border-left-color: #9c463f; background: #f9e9e7; }
+.deletion-scope .scope-not-applicable { border-left-color: #aeb8b2; }
 .prepared-request { margin-top: 16px; }
 .prepared-request label { display: block; margin-bottom: 6px; color: var(--muted); font-size: 11px; font-weight: 700; text-transform: uppercase; }
 .prepared-request textarea { width: 100%; min-height: 190px; padding: 10px; resize: vertical; border: 1px solid var(--line); border-radius: 4px; color: var(--ink); background: var(--paper); font: 12px Consolas, monospace; }

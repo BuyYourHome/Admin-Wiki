@@ -57,10 +57,19 @@ $rooms = foreach ($directory in Get-ChildItem -LiteralPath $projectRoomsRoot -Di
     $skillMatch = [regex]::Match($text, 'skills\\([^\\`\r\n]+)\\SKILL\.md')
     $skillName = if ($skillMatch.Success) { $skillMatch.Groups[1].Value } else { '' }
     $skillText = ''
+    $skillPath = ''
+    $skillState = 'not-applicable'
     if ($skillName) {
         $skillPath = Join-Path $RepositoryRoot "skills\$skillName\SKILL.md"
-        if (Test-Path -LiteralPath $skillPath) { $skillText = Get-Content -LiteralPath $skillPath -Raw }
+        if (Test-Path -LiteralPath $skillPath) {
+            $skillText = Get-Content -LiteralPath $skillPath -Raw
+            $skillState = 'available'
+        } else {
+            $skillState = 'missing'
+        }
     }
+    $taskMatch = [regex]::Match($text, '(?i)(?:task|thread)\s+id[^0-9a-f]*([0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12})')
+    $taskId = if ($taskMatch.Success) { $taskMatch.Groups[1].Value } else { '' }
     $modes = Get-DocumentedModes -Documents @($text, $skillText)
     $group = if ($groupAssignments.ContainsKey($directory.Name) -and $groupNames -contains $groupAssignments[$directory.Name]) { $groupAssignments[$directory.Name] } else { 'Other' }
     $groupDefinition = $groupDefinitions | Where-Object { $_.name -eq $group } | Select-Object -First 1
@@ -71,11 +80,20 @@ $rooms = foreach ($directory in Get-ChildItem -LiteralPath $projectRoomsRoot -Di
             href = '../../Entity%20Relationship/outputs/entity-relationship-chart.svg'
         }
     }
+    if ($directory.Name -eq 'Gracious Millionaire') {
+        $quickActions += [ordered]@{
+            label = 'Open GraciousMillionaire.com'
+            href = 'https://graciousmillionaire.com'
+        }
+    }
     [ordered]@{
         name = $directory.Name
         purpose = $purpose
         status = if ($statusMatch.Success) { $statusMatch.Groups[1].Value.Trim() } else { 'Status not recorded' }
         skill = $skillName
+        skillPath = $skillPath
+        skillState = $skillState
+        taskId = $taskId
         group = $group
         groupBasis = $groupDefinition.basis
         modes = @($modes)
