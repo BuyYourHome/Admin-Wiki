@@ -27,6 +27,7 @@ Out of scope:
 - `working\duplicate-and-conflict-log.md` - duplicate or unclear room metadata.
 - `working\missing-context.md` - decisions needed from Wes.
 - `working\dashboard-change-list.md` - requested Dashboard improvements and implementation status.
+- `working\dashboard-change-list-2.md` - pending future Dashboard design items awaiting Wes authorization.
 - `working\dashboard-action-log.md` - durable refresh and design outcomes.
 - `config\project-room-groups.json` - explicit group definitions, basis, and current default assignments.
 - `outputs\` - review-ready dashboard reports or exports.
