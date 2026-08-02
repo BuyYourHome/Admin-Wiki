@@ -1,5 +1,5 @@
-window.PROJECT_ROOMS_UPDATED = '2026-08-02 15:36';
-window.PROJECT_ROOMS_HASH = '625961AE6EC1C4D1E3F57DB7DF36BDACDB4EDF0BF73672BD03E4A900D45E5F87';
+window.PROJECT_ROOMS_UPDATED = '2026-08-02 16:06';
+window.PROJECT_ROOMS_HASH = '52C8A9D16F6DAE8DE599997FE92AD729B2F27362B712CCBA38919C197C54D9B6';
 window.PROJECT_ROOM_GROUPS = [
     {
         "name":  "Intake \u0026 Coordination",
@@ -158,24 +158,6 @@ window.PROJECT_ROOMS = [
 
                   ],
         "readmeUrl":  "../../CMA%20Report%20-%205021%20Sunnyfield%20Dr/README.md",
-        "quickActions":  [
-
-                         ]
-    },
-    {
-        "name":  "CMA Report - 5512 Desert Willow Ln",
-        "purpose":  "Prepare a separate preliminary CMA report for 5512 Desert Willow Ln. Public web address references point to Knightdale, NC 27545; confirm if internal records use a different city or ZIP.",
-        "status":  "Status not recorded",
-        "skill":  "",
-        "skillPath":  "",
-        "skillState":  "not-applicable",
-        "taskId":  "",
-        "group":  "Other",
-        "groupBasis":  "Used when a Project Room does not yet have a supported assignment to one of the defined functional groups.",
-        "modes":  [
-
-                  ],
-        "readmeUrl":  "../../CMA%20Report%20-%205512%20Desert%20Willow%20Ln/README.md",
         "quickActions":  [
 
                          ]
