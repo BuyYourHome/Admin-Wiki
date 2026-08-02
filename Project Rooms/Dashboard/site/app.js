@@ -31,12 +31,6 @@
       button.disabled = false;
     }
   }
-  function openJeanVoice() {
-    const jeanVoice = dashboardActions.jeansVoice;
-    el("jeanVoiceName").textContent = jeanVoice?.displayName || "Jean's Voice";
-    el("jeanVoiceTaskId").textContent = jeanVoice?.taskId || "not configured";
-    el("jeanVoiceDialog").showModal();
-  }
   function renderFilters() {
     const groups = groupOrder.filter(group => rooms.some(room => room.group === group));
     el("filters").replaceChildren(...["All", ...groups].map(group => {
@@ -225,7 +219,7 @@
     sessionStorage.removeItem("dashboardRefreshStatus");
   }
   el("searchInput").addEventListener("input", event => { state.query = event.target.value; renderCards(); });
-  el("askJeanButton").addEventListener("click", openJeanVoice);
+  el("askJeanButton").href = dashboardActions.jeansVoice?.href || "#";
   el("refreshDashboardButton").addEventListener("click", refreshDashboard);
   el("requestDeleteButton").addEventListener("click", openDeleteRequest);
   el("prepareDeleteButton").addEventListener("click", prepareDeleteRequest);

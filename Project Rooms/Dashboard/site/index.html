@@ -14,7 +14,7 @@
       <div><p class="eyebrow">Buy Your Home Admin</p><h1>Jean Wright Dashboard</h1></div>
       <div class="topbar-actions">
         <div class="top-buttons">
-          <button class="ask-jean-button" id="askJeanButton" type="button">Ask Jean</button>
+          <a class="ask-jean-button" id="askJeanButton" href="codex://threads/019fbe57-fcd9-7c83-be74-e377c7b9c4d0">Ask Jean</a>
           <button class="refresh-button" id="refreshDashboardButton" type="button">Refresh Dashboard</button>
         </div>
         <div class="updated" id="updatedAt">Local index</div>
@@ -99,18 +99,6 @@
         <button class="secondary-button" value="cancel">Close dialog</button>
         <button class="danger-button" id="prepareDeleteButton" type="button">Confirm deletion plan</button>
         <button class="primary-button" id="downloadDeleteRecordButton" type="button" hidden>Download audit record</button>
-      </div>
-    </form>
-  </dialog>
-  <dialog class="jean-dialog" id="jeanVoiceDialog">
-    <form method="dialog">
-      <button class="dialog-close" type="submit" value="cancel" aria-label="Close dialog" title="Close dialog">X</button>
-      <p class="dialog-kicker">Jean's Voice</p>
-      <h2>Open Jean's Voice in Codex</h2>
-      <p>This local Dashboard cannot safely deep-link into a Codex task. In Codex, open the task named <strong id="jeanVoiceName"></strong>.</p>
-      <p class="task-reference">Active task id: <code id="jeanVoiceTaskId"></code></p>
-      <div class="dialog-actions">
-        <button class="secondary-button" value="cancel">Close dialog</button>
       </div>
     </form>
   </dialog>

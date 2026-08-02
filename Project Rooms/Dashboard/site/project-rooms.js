@@ -1,5 +1,5 @@
-window.PROJECT_ROOMS_UPDATED = '2026-08-02 16:17';
-window.PROJECT_ROOMS_HASH = '646562BD9035202D2FC6E70A6604CF82DB6DA99938A7211C2DAC020649C22C99';
+window.PROJECT_ROOMS_UPDATED = '2026-08-02 16:23';
+window.PROJECT_ROOMS_HASH = '713C14B372232D7A620D740B1D360F4717175336198059CE927814834E9F6B39';
 window.PROJECT_ROOM_GROUPS = [
     {
         "name":  "Intake \u0026 Coordination",
@@ -37,7 +37,8 @@ window.PROJECT_ROOM_GROUPS = [
 window.DASHBOARD_ACTIONS = {
     "jeansVoice":  {
                        "displayName":  "Jean\u0027s Voice",
-                       "taskId":  "019fbe57-fcd9-7c83-be74-e377c7b9c4d0"
+                       "taskId":  "019fbe57-fcd9-7c83-be74-e377c7b9c4d0",
+                       "href":  "codex://threads/019fbe57-fcd9-7c83-be74-e377c7b9c4d0"
                    }
 };
 window.PROJECT_ROOMS = [

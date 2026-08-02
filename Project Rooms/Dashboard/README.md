@@ -49,7 +49,7 @@ The Dashboard shows a card badge only when `config\project-room-attention.json` 
 
 ## Ask Jean
 
-The top-level `Ask Jean` control identifies the active Jean's Voice task from `config\dashboard-actions.json`. A localhost Dashboard does not use an invented deep-link into Codex; it opens an honest dialog that identifies the task to open in Codex.
+The top-level `Ask Jean` control reads the active Jean's Voice task from `config\dashboard-actions.json` and opens the documented Codex deep link `codex://threads/<thread-id>`. It opens the existing task only; it does not claim to begin a voice session automatically.
 
 ## Matching Skill
 
