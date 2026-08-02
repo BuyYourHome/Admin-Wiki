@@ -2,7 +2,7 @@
 
 ## Packet Status
 
-- Status: `Payable Project Cost Allocation Report sent to Wes - approval pending`
+- Status: `Josh confirmed final times - payable Project Cost Allocation Report awaiting Wes approval`
 - Workflow: `Time Card`, generating a payable Project Cost Allocation Report and invoice
 - Created: 2026-07-27
 - Source type: Routed free-text Time Card email; no attachment
@@ -41,6 +41,16 @@ Final-week source additions:
 - Date clarification message ending `ACgTnkswAAAA==`: Josh confirmed that the 6:00 A.M. through 5:00 P.M. shift was Thursday, 2026-07-30.
 - July 31 source message ending `ACgUD9lwAAAA==`: Josh reported 6:00 A.M. through 4:20 P.M. at 4121 Tensity Dr.
 - No attachment was supplied with any of these messages.
+
+Final accuracy confirmation:
+
+- Outlook message id: `AQMkADZkMGMwNDI3LWU5ZjctNDgzMC1iMjdkLTY0NmRiN2IwNmIyZgBGAAADKGOvWJYjX0aEKaRpd0MYQQcAVSXargQY20aF7RLCkro4ggAAAgEMAAAAVSXargQY20aF7RLCkro4ggACgUD9oQAAAA==`
+- Received: `2026-08-02T18:46:29Z`
+- Subject: `Re: 4121 Tensity Dr - Josh Kennedy time card invoice drafts - week ending 2026-07-31`
+- Josh replied: `The above times are correct.`
+- Attachments: none
+- This confirms the final dates, times, and Tensity project assignment. It is not Wes approval, payment authorization, or a reason to create another invoice.
+- The quoted delivery email contains historical non-payable wording that was superseded by the 2026-08-01 rule making this Project Cost Allocation Report the payable invoice.
 
 ## Time Card Interpretation
 
@@ -98,7 +108,7 @@ The entries through the final correction-by-exception delivery preserve the deci
 - The final-week retry adds July 30 and July 31 once each, bringing accepted time to 51 hours 55 minutes.
 - No breaks were inferred or deducted.
 - The fixed weekly cost remains `$1,250.00`; line allocations were recalculated proportionally and reconcile exactly to that amount.
-- Final Teams filing and project-workbook processing remain held until Josh verifies the final report and Wes separately approves it.
+- Josh confirmed the final report's dates, times, and project assignment on 2026-08-02. Final Teams filing and project-workbook processing remain held until Wes approves or the Monday automatic-finalization rule applies.
 - Email Monitor sent and verified the final regenerated report under delivery request `IE-EMAIL-20260801-JOSH-TIMECARD-FINAL-VERIFY-001` at `2026-08-01T14:06:42Z`.
 - Sent message id: `AQMkADZkMGMwNDI3LWU5ZjctNDgzMC1iMjdkLTY0NmRiN2IwNmIyZgBGAAADKGOvWJYjX0aEKaRpd0MYQQcAVSXargQY20aF7RLCkro4ggAAAgEJAAAAVSXargQY20aF7RLCkro4ggACgUDabgAAAA==`.
 - OfficeAssist Sent Items verified Josh as recipient, Wes and Jenny copied, the unchanged week-ending subject, and the required non-inline PDF attachment. The first scalar attachment attempt failed before delivery; the single schema-correct list retry succeeded, and no duplicate email was sent.
@@ -106,7 +116,7 @@ The entries through the final correction-by-exception delivery preserve the deci
 - Regenerated report/invoice `PCA-JK-20260731-TENSITY-001` with invoice date July 31, 2026, issuer Josh Kennedy, customer Buy Your Home, status `Draft - Awaiting Wes Approval`, and amount due `$1,250.00`. Visual validation passed.
 - Email Monitor sent the regenerated payable report/invoice to Wes only under delivery request `IE-EMAIL-20260801-JOSH-TIMECARD-WES-APPROVAL-001` and subject `Invoice Approval - Josh Kennedy`.
 - OfficeAssist Sent Items verification passed at `2026-08-01T17:56:29Z`; message id `AQMkADZkMGMwNDI3LWU5ZjctNDgzMC1iMjdkLTY0NmRiN2IwNmIyZgBGAAADKGOvWJYjX0aEKaRpd0MYQQcAVSXargQY20aF7RLCkro4ggAAAgEJAAAAVSXargQY20aF7RLCkro4ggACgUDacAAAAA==`. The required 4,190-byte PDF was attached, with no CC or BCC.
-- Teams filing, project-workbook posting, and payment remain incomplete while Wes approval is pending. If Wes does not approve, correct, or deny by the first Invoice Entry processing check on Monday, apply the current automatic-finalization rule.
+- Josh's final accuracy confirmation was received on 2026-08-02 with no correction requested. Teams filing, project-workbook posting, and payment remain incomplete while Wes approval is pending. If Wes does not approve, correct, or deny by the first Invoice Entry processing check on Monday, apply the current automatic-finalization rule.
 
 ## Active Working Artifact Retention
 

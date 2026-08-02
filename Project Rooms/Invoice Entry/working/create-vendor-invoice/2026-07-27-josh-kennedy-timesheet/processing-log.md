@@ -84,3 +84,14 @@ Historical entries record the rules in effect when each action occurred. The 202
 - Email Monitor returned `Sent and Verified` at `2026-08-01T17:56:29Z`. OfficeAssist Sent Items verified the exact sender, recipient, empty CC/BCC, subject, body, and required 4,190-byte PDF attachment.
 - Sent message id: `AQMkADZkMGMwNDI3LWU5ZjctNDgzMC1iMjdkLTY0NmRiN2IwNmIyZgBGAAADKGOvWJYjX0aEKaRpd0MYQQcAVSXargQY20aF7RLCkro4ggAAAgEJAAAAVSXargQY20aF7RLCkro4ggACgUDacAAAAA==`.
 - No Teams filing, project-spreadsheet posting, payment, or paid-status update was performed.
+
+## 2026-08-02 - Josh Final Accuracy Confirmation
+
+- Received an Email Monitor handoff with the exact OfficeAssist mailbox and Outlook message ID for Josh's reply.
+- Fetched only the supplied message; no mailbox search, message mutation, or outbound email action was performed.
+- Josh replied, `The above times are correct`, confirming the final week-ending 2026-07-31 dates, times, and 4121 Tensity Dr assignment.
+- Recorded the confirmation as accuracy evidence only. It is not Wes approval, payment authorization, paid status, or authorization to create another invoice.
+- The quoted delivery email's older non-payable wording is historical and does not override the current rule that `PCA-JK-20260731-TENSITY-001` is the payable report/invoice.
+- No sender correction is pending as of `2026-08-02T18:46:29Z`.
+- Did not regenerate or resend the PDF, file it to Teams, edit a project workbook, approve payment, or mark the report final.
+- Continue waiting through Sunday for Wes to approve, correct, or deny. If no Wes decision exists at the first Invoice Entry processing check on Monday, apply `Final - No Corrections Received` and continue under the normal filing and spreadsheet rules.
