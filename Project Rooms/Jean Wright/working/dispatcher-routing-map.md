@@ -20,6 +20,7 @@ Use this map when Jean Wright routes work to a specialized Project Room. If a ta
 | Contract for Deed | `contract-for-deed` | pending | Route seller-financing and CFD package work here. | Uses Email Monitor for delivery. |
 | Create PR | `create-pr` | `019f583e-7f14-7ae2-aa24-4e991544e306` | Route PR creation, standardization, and relationship-diagram mode here. | New PRs should be dispatcher-ready. |
 | Credit Worthiness Evaluator | `credit-worthiness-evaluator` | pending | Route buyer credit-worthiness evaluation work here. | Coordinate with Contract for Deed only under scoped handoff. |
+| Dashboard | `dashboard` | pending | Route local Project Room functionality dashboard refresh and design work here. | Local-only unless Wes explicitly authorizes publication. |
 | Doc Scan | `doc-scan` | pending | Route scanned-document process design and active scan-processing questions here. | Invoice handoffs route to Invoice Entry. |
 | Email Monitor | `email-monitor` | `019ecba7-f1cc-7ac1-aaf7-d89a3f21b582` | Route mailbox summaries, email intake routing, and Email Delivery mode here. | Email delivery authority for OfficeAssist sends. |
 | Entity Relationship | `entity-relationship` | pending | Route entity relationship diagrams and entity-mapping work here. | Planning/diagram PR. |

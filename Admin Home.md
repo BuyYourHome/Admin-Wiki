@@ -16,6 +16,7 @@ This is the starting page for the Buy Your Home admin wiki.
 - [[Project Room Chat Startup Rule]]
 - [[Project Room File Ownership And Git Coordination Rule]]
 - [[Project Rooms/Create PR/README|Create PR Project Room]]
+- [[Project Rooms/Dashboard/README|Dashboard Project Room]]
 - [[Project Rooms/Brynda Suit/README|Brynda Suit Project Room]]
 - [[Project Rooms/LD Evans/README|LD Evans Project Room]]
 - [[Project Rooms/Jennys Drawings/README|Jennys Drawings Project Room]]

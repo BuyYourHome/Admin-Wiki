@@ -1,0 +1,4 @@
+interface:
+  display_name: Dashboard
+  short_description: Maintain the local Project Room functionality dashboard.
+  default_prompt: Refresh or improve the Buy Your Home Project Room Dashboard from canonical README files without publishing it externally.

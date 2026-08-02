@@ -1085,6 +1085,37 @@ Important limitations:
 - Do not activate outbound form/SMS/email/lead workflows, change who receives submitted leads or messages, upload personal Google Photos publicly, expose or change public contact details, change DNS/domain settings, purchase anything, push Git changes, send messages, publish manuscript content, or make legal/financial/compliance claims from the automation unless Wes explicitly approves that specific action.
 - Use DONT_NOTIFY only when another fresh run owns the lock or no authorized useful design work remains. A failed builder path should cause the run to switch objectives, not end. Notify Wes when live changes were made, meaningful findings remain, new blockers occur, high-risk approval is needed, or QA finds broken pages, generic/off-topic content, public privacy risk, workflow/form risk, SSL/domain issues, or recommended next actions.
 
+## Dashboard
+
+Type: wiki-managed skill plus project room and local dashboard.
+
+Status: active initial design.
+
+Purpose:
+
+- Provide a locally hosted, searchable directory of all Project Rooms and their recorded functionality.
+- Show functional grouping, current status, matching skill, and canonical README navigation.
+- Refresh dashboard data from canonical Project Room README files without changing those source rooms.
+
+Defined in:
+
+- `C:\Codex\Wiki Files\skills\dashboard\SKILL.md`
+- `C:\Codex\Wiki Files\Project Rooms\Dashboard\README.md`
+
+Dedicated task:
+
+- Thread id: pending until Wes explicitly requests a dedicated Dashboard task.
+
+Automation:
+
+- None. Refresh and launch are local, on-demand actions.
+
+Important limitations:
+
+- Local-only; no external publication is authorized.
+- Dashboard grouping is navigation metadata and does not change Project Room ownership or routing.
+- Dashboard does not edit another Project Room to improve its displayed information.
+
 ## Invoice Entry
 
 Type: wiki-managed skill plus project room plus backup heartbeat automation, Josh biweekly payment-invoice automation, and dedicated chat.

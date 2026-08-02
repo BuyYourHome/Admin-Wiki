@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light">
+  <title>Buy Your Home Project Rooms</title>
+  <meta name="description" content="Local directory of Buy Your Home Project Room functionality.">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="app-shell">
+    <header class="topbar">
+      <div><p class="eyebrow">Buy Your Home Admin</p><h1>Project Room Dashboard</h1></div>
+      <div class="updated" id="updatedAt">Local index</div>
+    </header>
+    <main>
+      <section class="summary" aria-label="Project Room summary">
+        <div class="metric"><strong id="roomCount">0</strong><span>Project Rooms</span></div>
+        <div class="metric"><strong id="activeCount">0</strong><span>Active</span></div>
+        <div class="metric"><strong id="skillCount">0</strong><span>With Skills</span></div>
+        <div class="metric"><strong id="groupCount">0</strong><span>Functional Groups</span></div>
+      </section>
+      <section class="controls" aria-label="Dashboard controls">
+        <label class="search-field"><span>Search</span><input id="searchInput" type="search" placeholder="Room, function, skill, or status" autocomplete="off"></label>
+        <div class="view-control" role="group" aria-label="View mode">
+          <button class="view-button active" data-view="grid" type="button">Grid</button>
+          <button class="view-button" data-view="list" type="button">List</button>
+        </div>
+      </section>
+      <nav class="filters" id="filters" aria-label="Functional groups"></nav>
+      <div class="workspace">
+        <section>
+          <div class="results-header"><h2 id="resultsTitle">All Project Rooms</h2><span id="resultCount">0 rooms</span></div>
+          <div class="room-grid" id="roomGrid"></div>
+          <p class="empty-state" id="emptyState" hidden>No Project Rooms match this view.</p>
+        </section>
+        <aside class="detail-panel" id="detailPanel" aria-live="polite">
+          <p class="detail-kicker">Selected Project Room</p>
+          <h2 id="detailName">Choose a room</h2>
+          <p id="detailPurpose">Select a Project Room to see its responsibility, status, skill, and canonical path.</p>
+          <dl>
+            <div><dt>Functional group</dt><dd id="detailGroup">-</dd></div>
+            <div><dt>Status</dt><dd id="detailStatus">-</dd></div>
+            <div><dt>Skill</dt><dd id="detailSkill">-</dd></div>
+          </dl>
+          <a class="readme-link" id="detailLink" href="#" hidden>Open canonical README</a>
+        </aside>
+      </div>
+    </main>
+  </div>
+  <script src="project-rooms.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
