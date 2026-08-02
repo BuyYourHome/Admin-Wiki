@@ -71,6 +71,26 @@
     }));
     el("detailModeSelect").disabled = modes.length === 0;
     el("detailModeState").textContent = modes.length ? "Selection is for interface review only; it does not activate a mode." : "No canonical documented modes were found in this room's README or matching skill.";
+    const sopEntries = Array.isArray(room.sopEntries) ? room.sopEntries : [];
+    const sopViewer = el("detailSopViewer");
+    sopViewer.hidden = room.name !== "SOPs";
+    if (room.name === "SOPs") {
+      const prompt = document.createElement("option");
+      prompt.value = "";
+      prompt.textContent = sopEntries.length ? "Select an SOP from the canonical index" : "No SOP index entries found";
+      prompt.selected = true;
+      el("detailSopSelect").replaceChildren(prompt, ...sopEntries.map((entry, index) => {
+        const option = document.createElement("option");
+        option.value = String(index);
+        option.textContent = entry.label;
+        return option;
+      }));
+      el("detailSopSelect").disabled = sopEntries.length === 0;
+      el("detailSopOpen").removeAttribute("href");
+      el("detailSopOpen").classList.add("disabled");
+      el("detailSopOpen").setAttribute("aria-disabled", "true");
+      el("detailSopState").textContent = sopEntries.length ? "Only entries with a canonical clean SOP page can be opened." : "The authoritative SOP index did not provide any selectable entries.";
+    }
     const actions = [
       { label: "Open Project Room README", href: room.readmeUrl },
       ...(Array.isArray(room.quickActions) ? room.quickActions : [])
@@ -226,6 +246,21 @@
   el("downloadDeleteRecordButton").addEventListener("click", downloadDeleteRecord);
   el("detailModeSelect").addEventListener("change", event => {
     el("detailModeState").textContent = event.target.value ? `Selected for interface review: ${event.target.value}. No mode was activated.` : "Selection does not activate a mode.";
+  });
+  el("detailSopSelect").addEventListener("change", event => {
+    const entry = state.selectedRoom?.sopEntries?.[Number(event.target.value)];
+    const viewer = el("detailSopOpen");
+    if (entry?.available && entry.href) {
+      viewer.href = entry.href;
+      viewer.classList.remove("disabled");
+      viewer.setAttribute("aria-disabled", "false");
+      el("detailSopState").textContent = "Opens the canonical clean SOP page in a separate browser tab or window.";
+    } else if (entry) {
+      viewer.removeAttribute("href");
+      viewer.classList.add("disabled");
+      viewer.setAttribute("aria-disabled", "true");
+      el("detailSopState").textContent = "This index entry has no matching clean SOP page yet, so there is nothing safe to open.";
+    }
   });
   el("detailGroupSelect").addEventListener("change", event => {
     const preview = groupDefinitions.find(group => group.name === event.target.value);

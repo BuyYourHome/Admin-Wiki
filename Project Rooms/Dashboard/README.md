@@ -33,6 +33,7 @@ Out of scope:
 - `config\project-room-groups.json` - explicit group definitions, basis, and current default assignments.
 - `config\project-room-attention.json` - explicit, Dashboard-owned pending confirmation/approval states for card badges.
 - `config\dashboard-actions.json` - local Dashboard action targets, including the active Jean's Voice task reference.
+- `Project Rooms\SOPs\outputs\SOP Index.md` - authoritative SOP list used by the SOPs side-panel selector; the Dashboard only opens matching clean pages in `outputs\SOPs\`.
 - `outputs\` - review-ready dashboard reports or exports.
 - `site\` - local dashboard interface and generated Project Room index.
 - `tools\` - local refresh, localhost-server, and launch scripts.
@@ -42,6 +43,8 @@ Out of scope:
 Status: active initial design.
 
 The local dashboard provides search, codified functional-group filters, status counts, Project Room summaries, skill visibility, documented-mode selection, and extensible side-panel Quick actions. Every card has a README action and, when it has fewer than two actions, an unassigned future-action slot. The Entity Relationship card also opens its SVG diagram, and Gracious Millionaire opens its website. Dashboard action links use the browser's normal separate-tab/window behavior. The deletion control presents a one-confirmation, exact-resource workflow preview and can download an audit-plan record, but does not delete or alter anything. Group is a displayed side-panel property whose selector previews, but does not save, a future group change. Wes will review the design and decide what to alter.
+
+For the SOPs Project Room, the side panel reads the authoritative `outputs\SOP Index.md` during Dashboard refresh. It lists the index entries without changing them and enables `View selected SOP` only when a corresponding clean Markdown page exists. The viewer opens that canonical page using normal separate-tab/window behavior.
 
 ## Attention Badges
 
@@ -61,7 +64,7 @@ The top-level `Ask Jean` control reads the active Jean's Voice task from `config
 
 ## Local Access
 
-Run `C:\Codex\Wiki Files\Project Rooms\Dashboard\tools\Start-Dashboard.ps1` to start the local-only Dashboard server and open the dashboard. The prominent top-level `Refresh Dashboard` control runs the same local rescan process and provides success or failure feedback.
+Run `C:\Codex\Wiki Files\Project Rooms\Dashboard\tools\Start-Dashboard.ps1` to start one local-only Dashboard server and open the dashboard. The prominent top-level `Refresh Dashboard` control runs the same local rescan process and provides success or failure feedback. The local server resolves the Dashboard site directory to its `index.html` page.
 
 The launch tool prefers `http://127.0.0.1:8765/Project%20Rooms/Dashboard/site/`. If that port is occupied by a different local process, it selects an available localhost port through `8775` and prints the URL it opened.
 

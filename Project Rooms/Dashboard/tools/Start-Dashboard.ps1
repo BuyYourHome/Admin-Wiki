@@ -29,11 +29,14 @@ if (-not (Test-DashboardServer -CandidatePort $selectedPort)) {
         } catch {} finally { $client.Dispose() }
         $serverArguments = "-NoProfile -ExecutionPolicy Bypass -File `"$server`" -Port $candidate -RepositoryRoot `"$repo`""
         Start-Process -FilePath 'C:\WINDOWS\System32\WindowsPowerShell\v1.0\powershell.exe' -ArgumentList $serverArguments -WindowStyle Hidden
-        Start-Sleep -Milliseconds 500
-        if (Test-DashboardServer -CandidatePort $candidate) {
-            $selectedPort = $candidate
-            break
+        foreach ($attempt in 1..10) {
+            Start-Sleep -Milliseconds 250
+            if (Test-DashboardServer -CandidatePort $candidate) {
+                $selectedPort = $candidate
+                break
+            }
         }
+        if ($selectedPort -eq $candidate) { break }
     }
 }
 $url = "http://127.0.0.1:$selectedPort/Project%20Rooms/Dashboard/site/"

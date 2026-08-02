@@ -73,9 +73,14 @@ main { padding: 22px clamp(18px, 4vw, 52px) 48px; }
 .quick-actions { margin: 18px 0; }
 .quick-actions h3 { margin: 0 0 8px; color: var(--muted); font-size: 11px; text-transform: uppercase; }
 .quick-actions #detailActionList { display: grid; gap: 8px; }
+.sop-viewer { margin: 18px 0; display: grid; gap: 8px; }
+.sop-viewer h3, .sop-viewer label { margin: 0; color: var(--muted); font-size: 11px; font-weight: 700; text-transform: uppercase; }
+.sop-viewer select { width: 100%; min-height: 38px; padding: 0 8px; border: 1px solid #aeb8b2; border-radius: 4px; color: var(--ink); background: #fff; }
+.sop-viewer select:focus { border-color: var(--green); outline: 3px solid rgba(31, 96, 71, .13); }
 .quick-action-link { display: flex; min-height: 42px; align-items: center; justify-content: space-between; padding: 0 12px; border: 1px solid var(--green); border-radius: 4px; color: var(--green); background: var(--green-soft); text-decoration: none; font-size: 13px; font-weight: 700; }
 .quick-action-link::after { content: "Open"; color: var(--muted); font-size: 11px; font-weight: 600; }
 .quick-action-link:hover { background: #dcebe2; }
+.quick-action-link.disabled { border-color: #aeb8b2; color: var(--muted); background: var(--paper); pointer-events: none; }
 .quick-action-slot { min-height: 42px; padding: 0 12px; border: 1px dashed #aeb8b2; border-radius: 4px; color: var(--muted); background: var(--paper); text-align: left; font-size: 13px; font-weight: 700; cursor: not-allowed; }
 .quick-action-slot::after { content: "Unassigned"; float: right; color: var(--muted); font-size: 11px; font-weight: 600; }
 .danger-zone { margin-top: 22px; padding-top: 16px; border-top: 1px solid var(--line); }

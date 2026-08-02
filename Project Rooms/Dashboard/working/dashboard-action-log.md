@@ -18,3 +18,13 @@
 | 2026-08-02 | Wes voice request | Added clear deletion-dialog dismissal controls | X close control and `Close dialog` action use the dialog cancel path | Completed | Closing does not create a plan or alter any Project Room. |
 | 2026-08-02 | Wes voice request | Added top-level Ask Jean control | Opens the documented `codex://threads/<thread-id>` link for the active Jean's Voice task | Completed | Opens the task only; it does not claim to start a voice session automatically. |
 | 2026-08-02 | Wes voice request | Made selected-room sidebar independently scrollable | Desktop sidebar now scrolls within its viewport-bound sticky panel while the card section remains on page scroll | Completed | Mobile retains the stacked single-scroll layout. |
+# Dashboard Action Log
+
+## 2026-08-02 - SOPs Viewer Selector
+
+- Added a Dashboard-only SOP selector for the SOPs Project Room.
+- Source: `C:\Codex\Wiki Files\Project Rooms\SOPs\outputs\SOP Index.md`.
+- The refresh tool derives 110 valid index entries and identifies matching clean pages under `Project Rooms\SOPs\outputs\SOPs\`.
+- The viewer does not alter SOP material and enables opening only for a matching canonical clean page, in a separate browser tab/window context.
+- Corrected the local server's directory handling so the documented Dashboard launch URL serves the site `index.html` page.
+- Corrected launch readiness polling so one Dashboard launch does not leave duplicate local server processes while waiting for the selected port to respond.

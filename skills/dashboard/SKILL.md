@@ -37,6 +37,7 @@ description: Use for the Buy Your Home Dashboard Project Room, including refresh
 12. The `Ask Jean` control may open the documented `codex://threads/<thread-id>` deep link configured for the active Jean's Voice task in `config\dashboard-actions.json`. It must not claim to start voice automatically, create an embedded voice interface, or substitute a Jean worker.
 13. On desktop, keep the selected Project Room sidebar independently scrollable from the card section; preserve a normal stacked single-scroll layout on mobile.
 14. Record requested improvements in `working\dashboard-change-list.md` and substantive outcomes in `working\dashboard-action-log.md`.
+15. For the SOPs side-panel viewer, use only `Project Rooms\SOPs\outputs\SOP Index.md` as the authoritative list. Show every valid index entry, but enable opening only when a corresponding clean Markdown page exists under `Project Rooms\SOPs\outputs\SOPs\`. Do not edit, synthesize, or infer SOP entries from Dashboard.
 
 ## Boundaries
 

@@ -6,6 +6,8 @@ $outputPath = Join-Path $projectRoomsRoot 'Dashboard\site\project-rooms.js'
 $groupConfigPath = Join-Path $projectRoomsRoot 'Dashboard\config\project-room-groups.json'
 $attentionConfigPath = Join-Path $projectRoomsRoot 'Dashboard\config\project-room-attention.json'
 $actionsConfigPath = Join-Path $projectRoomsRoot 'Dashboard\config\dashboard-actions.json'
+$sopIndexPath = Join-Path $projectRoomsRoot 'SOPs\outputs\SOP Index.md'
+$sopPagesPath = Join-Path $projectRoomsRoot 'SOPs\outputs\SOPs'
 $groupConfig = Get-Content -LiteralPath $groupConfigPath -Raw | ConvertFrom-Json
 $attentionConfig = Get-Content -LiteralPath $attentionConfigPath -Raw | ConvertFrom-Json
 $actionsConfig = Get-Content -LiteralPath $actionsConfigPath -Raw | ConvertFrom-Json
@@ -62,6 +64,41 @@ function Get-DocumentedModes {
     return @($modes)
 }
 
+function Get-SopViewerEntries {
+    param([string]$IndexPath, [string]$PagesPath)
+
+    if (-not (Test-Path -LiteralPath $IndexPath) -or -not (Test-Path -LiteralPath $PagesPath)) { return @() }
+    $pagesByKey = @{}
+    Get-ChildItem -LiteralPath $PagesPath -Filter '*.md' -File | ForEach-Object {
+        if ($_.BaseName -match '^SOP - Item\s+(?<item>\d+)\s+-\s+(?<task>.+)$') {
+            $key = "{0}|{1}" -f ([int]$Matches.item), $Matches.task.Trim().ToLowerInvariant()
+            $pagesByKey[$key] = $_
+        }
+    }
+
+    $indexText = Get-Content -LiteralPath $IndexPath -Raw
+    $sopSection = [regex]::Match($indexText, '(?ms)^##\s+SOPs\s*\r?\n(.*?)(?=^##\s+Maintenance Queue)')
+    $entries = [System.Collections.Generic.List[object]]::new()
+    if ($sopSection.Success) {
+        foreach ($line in ($sopSection.Groups[1].Value -split '\r?\n')) {
+            if ($line -notmatch '^\|\s*(?<item>\d+)\s*\|\s*(?<category>[^|]*)\|\s*(?<task>[^|]*)\|') { continue }
+            $item = [int]$Matches.item
+            $task = $Matches.task.Trim()
+            if (-not $task -or $task -eq 'N/A') { continue }
+            $key = "{0}|{1}" -f $item, $task.ToLowerInvariant()
+            $page = $pagesByKey[$key]
+            $entries.Add([ordered]@{
+                label = ('Item {0:D3} - {1}' -f $item, $task)
+                available = [bool]$page
+                href = if ($page) { '../../SOPs/outputs/SOPs/' + [uri]::EscapeDataString($page.Name) } else { $null }
+            })
+        }
+    }
+    return @($entries)
+}
+
+$sopViewerEntries = Get-SopViewerEntries -IndexPath $sopIndexPath -PagesPath $sopPagesPath
+
 $rooms = foreach ($directory in Get-ChildItem -LiteralPath $projectRoomsRoot -Directory | Sort-Object Name) {
     $readme = Join-Path $directory.FullName 'README.md'
     if (-not (Test-Path -LiteralPath $readme)) { continue }
@@ -101,7 +138,7 @@ $rooms = foreach ($directory in Get-ChildItem -LiteralPath $projectRoomsRoot -Di
             href = 'https://graciousmillionaire.com'
         }
     }
-    [ordered]@{
+    $room = [ordered]@{
         name = $directory.Name
         purpose = $purpose
         status = if ($statusMatch.Success) { $statusMatch.Groups[1].Value.Trim() } else { 'Status not recorded' }
@@ -116,6 +153,8 @@ $rooms = foreach ($directory in Get-ChildItem -LiteralPath $projectRoomsRoot -Di
         readmeUrl = "../../$([uri]::EscapeDataString($directory.Name))/README.md"
         quickActions = @($quickActions)
     }
+    if ($directory.Name -eq 'SOPs') { $room.sopEntries = @($sopViewerEntries) }
+    $room
 }
 
 $json = $rooms | ConvertTo-Json -Depth 6
