@@ -4,11 +4,26 @@ $ErrorActionPreference = 'Stop'
 $projectRoomsRoot = Join-Path $RepositoryRoot 'Project Rooms'
 $outputPath = Join-Path $projectRoomsRoot 'Dashboard\site\project-rooms.js'
 $groupConfigPath = Join-Path $projectRoomsRoot 'Dashboard\config\project-room-groups.json'
+$attentionConfigPath = Join-Path $projectRoomsRoot 'Dashboard\config\project-room-attention.json'
+$actionsConfigPath = Join-Path $projectRoomsRoot 'Dashboard\config\dashboard-actions.json'
 $groupConfig = Get-Content -LiteralPath $groupConfigPath -Raw | ConvertFrom-Json
+$attentionConfig = Get-Content -LiteralPath $attentionConfigPath -Raw | ConvertFrom-Json
+$actionsConfig = Get-Content -LiteralPath $actionsConfigPath -Raw | ConvertFrom-Json
 $groupDefinitions = @($groupConfig.groups)
 $groupNames = @($groupDefinitions | ForEach-Object { $_.name })
 $groupAssignments = @{}
 $groupConfig.assignments.PSObject.Properties | ForEach-Object { $groupAssignments[$_.Name] = $_.Value }
+$attentionByRoom = @{}
+foreach ($item in @($attentionConfig.items)) {
+    if ($item.room -and $item.type -in @('confirmation-needed', 'approval-needed') -and $item.reason -and $item.source) {
+        $attentionByRoom[$item.room] = [ordered]@{
+            type = $item.type
+            reason = $item.reason
+            source = $item.source
+            updatedAt = $item.updatedAt
+        }
+    }
+}
 
 function Get-SectionText {
     param([string]$Text, [string]$Heading)
@@ -94,6 +109,7 @@ $rooms = foreach ($directory in Get-ChildItem -LiteralPath $projectRoomsRoot -Di
         skillPath = $skillPath
         skillState = $skillState
         taskId = $taskId
+        attention = if ($attentionByRoom.ContainsKey($directory.Name)) { $attentionByRoom[$directory.Name] } else { $null }
         group = $group
         groupBasis = $groupDefinition.basis
         modes = @($modes)
@@ -104,7 +120,8 @@ $rooms = foreach ($directory in Get-ChildItem -LiteralPath $projectRoomsRoot -Di
 
 $json = $rooms | ConvertTo-Json -Depth 6
 $groupsJson = $groupDefinitions | ConvertTo-Json -Depth 4
-$indexData = "$groupsJson`n$json"
+$actionsJson = $actionsConfig | ConvertTo-Json -Depth 4
+$indexData = "$groupsJson`n$actionsJson`n$json"
 $bytes = [System.Text.UTF8Encoding]::new($false).GetBytes($indexData)
 $hasher = [System.Security.Cryptography.SHA256]::Create()
 try { $contentHash = ([System.BitConverter]::ToString($hasher.ComputeHash($bytes))).Replace('-', '') } finally { $hasher.Dispose() }
@@ -117,6 +134,6 @@ if (Test-Path -LiteralPath $outputPath) {
     }
 }
 $stamp = Get-Date -Format 'yyyy-MM-dd HH:mm'
-$content = "window.PROJECT_ROOMS_UPDATED = '$stamp';`r`nwindow.PROJECT_ROOMS_HASH = '$contentHash';`r`nwindow.PROJECT_ROOM_GROUPS = $groupsJson;`r`nwindow.PROJECT_ROOMS = $json;`r`n"
+$content = "window.PROJECT_ROOMS_UPDATED = '$stamp';`r`nwindow.PROJECT_ROOMS_HASH = '$contentHash';`r`nwindow.PROJECT_ROOM_GROUPS = $groupsJson;`r`nwindow.DASHBOARD_ACTIONS = $actionsJson;`r`nwindow.PROJECT_ROOMS = $json;`r`n"
 [System.IO.File]::WriteAllText($outputPath, $content, [System.Text.UTF8Encoding]::new($false))
 Write-Output "Dashboard index refreshed: $($rooms.Count) Project Rooms -> $outputPath"

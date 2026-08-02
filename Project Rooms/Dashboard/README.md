@@ -31,6 +31,8 @@ Out of scope:
 - `working\dashboard-action-log.md` - durable refresh and design outcomes.
 - `working\project-room-deletion-workflow.md` - future deletion execution gate and audit requirements.
 - `config\project-room-groups.json` - explicit group definitions, basis, and current default assignments.
+- `config\project-room-attention.json` - explicit, Dashboard-owned pending confirmation/approval states for card badges.
+- `config\dashboard-actions.json` - local Dashboard action targets, including the active Jean's Voice task reference.
 - `outputs\` - review-ready dashboard reports or exports.
 - `site\` - local dashboard interface and generated Project Room index.
 - `tools\` - local refresh, localhost-server, and launch scripts.
@@ -40,6 +42,14 @@ Out of scope:
 Status: active initial design.
 
 The local dashboard provides search, codified functional-group filters, status counts, Project Room summaries, skill visibility, documented-mode selection, and extensible side-panel Quick actions. Every card has a README action and, when it has fewer than two actions, an unassigned future-action slot. The Entity Relationship card also opens its SVG diagram, and Gracious Millionaire opens its website. Dashboard action links use the browser's normal separate-tab/window behavior. The deletion control presents a one-confirmation, exact-resource workflow preview and can download an audit-plan record, but does not delete or alter anything. Group is a displayed side-panel property whose selector previews, but does not save, a future group change. Wes will review the design and decide what to alter.
+
+## Attention Badges
+
+The Dashboard shows a card badge only when `config\project-room-attention.json` contains a valid explicit state for that exact room. Valid types are `confirmation-needed` and `approval-needed`; each state must include a reason and source. Empty or invalid entries create no alert. The Dashboard does not infer approvals or confirmations from ordinary Project Room text, status, or chat activity.
+
+## Ask Jean
+
+The top-level `Ask Jean` control identifies the active Jean's Voice task from `config\dashboard-actions.json`. A localhost Dashboard does not use an invented deep-link into Codex; it opens an honest dialog that identifies the task to open in Codex.
 
 ## Matching Skill
 

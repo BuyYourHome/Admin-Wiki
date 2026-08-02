@@ -13,7 +13,10 @@
     <header class="topbar">
       <div><p class="eyebrow">Buy Your Home Admin</p><h1>Jean Wright Dashboard</h1></div>
       <div class="topbar-actions">
-        <button class="refresh-button" id="refreshDashboardButton" type="button">Refresh Dashboard</button>
+        <div class="top-buttons">
+          <button class="ask-jean-button" id="askJeanButton" type="button">Ask Jean</button>
+          <button class="refresh-button" id="refreshDashboardButton" type="button">Refresh Dashboard</button>
+        </div>
         <div class="updated" id="updatedAt">Local index</div>
         <div class="refresh-status" id="refreshStatus" role="status"></div>
       </div>
@@ -43,6 +46,7 @@
           <p class="detail-kicker">Selected Project Room</p>
           <h2 id="detailName">Choose a room</h2>
           <p id="detailPurpose">Select a Project Room to see its responsibility, status, skill, and canonical path.</p>
+          <p class="detail-attention" id="detailAttention" hidden></p>
           <dl>
             <div class="property-control">
               <dt><label for="detailGroupSelect">Group</label></dt>
@@ -77,6 +81,7 @@
   </div>
   <dialog class="delete-dialog" id="deleteDialog">
     <form method="dialog">
+      <button class="dialog-close" type="submit" value="cancel" aria-label="Close dialog" title="Close dialog">X</button>
       <p class="dialog-kicker">Destructive action safeguard</p>
       <h2>Delete this Project Room?</h2>
       <p>This is a workflow preview only. Confirming creates a deletion plan for review; this version of Dashboard does not delete files, skills, tasks, or chats.</p>
@@ -91,9 +96,21 @@
         <p id="deletePlanState"></p>
       </div>
       <div class="dialog-actions">
-        <button class="secondary-button" value="cancel">Cancel</button>
+        <button class="secondary-button" value="cancel">Close dialog</button>
         <button class="danger-button" id="prepareDeleteButton" type="button">Confirm deletion plan</button>
         <button class="primary-button" id="downloadDeleteRecordButton" type="button" hidden>Download audit record</button>
+      </div>
+    </form>
+  </dialog>
+  <dialog class="jean-dialog" id="jeanVoiceDialog">
+    <form method="dialog">
+      <button class="dialog-close" type="submit" value="cancel" aria-label="Close dialog" title="Close dialog">X</button>
+      <p class="dialog-kicker">Jean's Voice</p>
+      <h2>Open Jean's Voice in Codex</h2>
+      <p>This local Dashboard cannot safely deep-link into a Codex task. In Codex, open the task named <strong id="jeanVoiceName"></strong>.</p>
+      <p class="task-reference">Active task id: <code id="jeanVoiceTaskId"></code></p>
+      <div class="dialog-actions">
+        <button class="secondary-button" value="cancel">Close dialog</button>
       </div>
     </form>
   </dialog>

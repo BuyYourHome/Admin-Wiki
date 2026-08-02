@@ -33,7 +33,10 @@ description: Use for the Buy Your Home Dashboard Project Room, including refresh
 8. Populate the side-panel Mode selector only from headings or numbered mode names documented in the room's canonical README and matching skill. A selection is interface-only unless a separate safe action is explicitly implemented.
 9. Treat `config\project-room-groups.json` as the Dashboard source for group names, their basis, and current default assignments. Display Group as a selected-room property. A different selection may preview its basis but must not reclassify or rewrite the room until Wes explicitly selects and authorizes an implemented save workflow.
 10. Keep the interface local-only unless Wes explicitly authorizes publication.
-11. Record requested improvements in `working\dashboard-change-list.md` and substantive outcomes in `working\dashboard-action-log.md`.
+11. Show an attention badge only when `config\project-room-attention.json` has a valid explicit state for that exact room. Use only `confirmation-needed` or `approval-needed`, with a reason and source; never infer or invent alert state from a room's content or chat activity.
+12. The `Ask Jean` control may identify the active Jean's Voice task from `config\dashboard-actions.json`, but must not invent a deep link, microphone, embedded voice interface, or substitute Jean worker.
+13. On desktop, keep the selected Project Room sidebar independently scrollable from the card section; preserve a normal stacked single-scroll layout on mobile.
+14. Record requested improvements in `working\dashboard-change-list.md` and substantive outcomes in `working\dashboard-action-log.md`.
 
 ## Boundaries
 

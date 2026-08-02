@@ -1,10 +1,12 @@
 (() => {
   const rooms = Array.isArray(window.PROJECT_ROOMS) ? window.PROJECT_ROOMS : [];
   const groupDefinitions = Array.isArray(window.PROJECT_ROOM_GROUPS) ? window.PROJECT_ROOM_GROUPS : [];
+  const dashboardActions = window.DASHBOARD_ACTIONS || {};
   const groupOrder = groupDefinitions.map(group => group.name);
   const state = { group: "All", query: "", view: "grid", selected: null, selectedRoom: null };
   const el = id => document.getElementById(id);
   const initials = name => name.split(/\s+/).filter(Boolean).slice(0, 2).map(word => word[0]).join("").toUpperCase();
+  const attentionLabel = attention => attention?.type === "approval-needed" ? "Approval needed" : "Confirmation needed";
   const filteredRooms = () => {
     const query = state.query.trim().toLowerCase();
     return rooms.filter(room => {
@@ -28,6 +30,12 @@
       status.textContent = `Refresh unavailable: ${error.message}. Start Dashboard with its local launch tool, then try again.`;
       button.disabled = false;
     }
+  }
+  function openJeanVoice() {
+    const jeanVoice = dashboardActions.jeansVoice;
+    el("jeanVoiceName").textContent = jeanVoice?.displayName || "Jean's Voice";
+    el("jeanVoiceTaskId").textContent = jeanVoice?.taskId || "not configured";
+    el("jeanVoiceDialog").showModal();
   }
   function renderFilters() {
     const groups = groupOrder.filter(group => rooms.some(room => room.group === group));
@@ -92,6 +100,17 @@
       actionElements.push(slot);
     }
     el("detailActionList").replaceChildren(...actionElements);
+    const attention = room.attention;
+    const existingAttention = document.getElementById("detailAttention");
+    if (attention) {
+      existingAttention.hidden = false;
+      existingAttention.className = `detail-attention ${attention.type}`;
+      existingAttention.textContent = `${attentionLabel(attention)}: ${attention.reason}`;
+      existingAttention.title = `Source: ${attention.source}${attention.updatedAt ? `; updated ${attention.updatedAt}` : ""}`;
+    } else {
+      existingAttention.hidden = true;
+      existingAttention.textContent = "";
+    }
     renderCards();
   }
 
@@ -175,8 +194,15 @@
       const card = document.createElement("button");
       card.type = "button";
       card.className = `room-card${state.selected === room.name ? " selected" : ""}`;
-      card.innerHTML = `<div class="card-top"><span class="room-mark">${initials(room.name)}</span><h3></h3></div><p></p><div class="card-meta"><span class="status-dot"></span><span></span></div>`;
+      card.innerHTML = `<div class="card-top"><span class="room-mark">${initials(room.name)}</span><div class="card-heading"><h3></h3></div></div><p></p><div class="card-meta"><span class="status-dot"></span><span></span></div>`;
       card.querySelector("h3").textContent = room.name;
+      if (room.attention) {
+        const badge = document.createElement("span");
+        badge.className = `attention-badge ${room.attention.type}`;
+        badge.textContent = attentionLabel(room.attention);
+        badge.title = `${room.attention.reason} Source: ${room.attention.source}${room.attention.updatedAt ? `; updated ${room.attention.updatedAt}` : ""}`;
+        card.querySelector(".card-heading").prepend(badge);
+      }
       card.querySelector("p").textContent = room.purpose;
       card.querySelector(".status-dot").textContent = room.status;
       card.querySelector(".card-meta span:last-child").textContent = room.skill || "No skill";
@@ -199,6 +225,7 @@
     sessionStorage.removeItem("dashboardRefreshStatus");
   }
   el("searchInput").addEventListener("input", event => { state.query = event.target.value; renderCards(); });
+  el("askJeanButton").addEventListener("click", openJeanVoice);
   el("refreshDashboardButton").addEventListener("click", refreshDashboard);
   el("requestDeleteButton").addEventListener("click", openDeleteRequest);
   el("prepareDeleteButton").addEventListener("click", prepareDeleteRequest);

@@ -1,5 +1,5 @@
-window.PROJECT_ROOMS_UPDATED = '2026-08-02 16:06';
-window.PROJECT_ROOMS_HASH = '52C8A9D16F6DAE8DE599997FE92AD729B2F27362B712CCBA38919C197C54D9B6';
+window.PROJECT_ROOMS_UPDATED = '2026-08-02 16:17';
+window.PROJECT_ROOMS_HASH = '646562BD9035202D2FC6E70A6604CF82DB6DA99938A7211C2DAC020649C22C99';
 window.PROJECT_ROOM_GROUPS = [
     {
         "name":  "Intake \u0026 Coordination",
@@ -34,6 +34,12 @@ window.PROJECT_ROOM_GROUPS = [
         "basis":  "Used when a Project Room does not yet have a supported assignment to one of the defined functional groups."
     }
 ];
+window.DASHBOARD_ACTIONS = {
+    "jeansVoice":  {
+                       "displayName":  "Jean\u0027s Voice",
+                       "taskId":  "019fbe57-fcd9-7c83-be74-e377c7b9c4d0"
+                   }
+};
 window.PROJECT_ROOMS = [
     {
         "name":  "Admin Wiki Maintenance",
@@ -43,6 +49,7 @@ window.PROJECT_ROOMS = [
         "skillPath":  "",
         "skillState":  "not-applicable",
         "taskId":  "",
+        "attention":  null,
         "group":  "Other",
         "groupBasis":  "Used when a Project Room does not yet have a supported assignment to one of the defined functional groups.",
         "modes":  [
@@ -61,6 +68,7 @@ window.PROJECT_ROOMS = [
         "skillPath":  "C:\\Codex\\Wiki Files\\skills\\aios\\SKILL.md",
         "skillState":  "available",
         "taskId":  "",
+        "attention":  null,
         "group":  "Systems \u0026 Maintenance",
         "groupBasis":  "Maintains computers, Codex operations, management support, purchasing tools, marketplace work, or system health.",
         "modes":  [
@@ -79,6 +87,7 @@ window.PROJECT_ROOMS = [
         "skillPath":  "",
         "skillState":  "not-applicable",
         "taskId":  "",
+        "attention":  null,
         "group":  "Accounting \u0026 Project Data",
         "groupBasis":  "Maintains financial calculations, invoice processing, project workbooks, templates, or structured project data.",
         "modes":  [
@@ -97,6 +106,7 @@ window.PROJECT_ROOMS = [
         "skillPath":  "C:\\Codex\\Wiki Files\\skills\\brynda-suit\\SKILL.md",
         "skillState":  "available",
         "taskId":  "019f61c3-d4c0-7a52-a5a0-e4066ea9b303",
+        "attention":  null,
         "group":  "Legal \u0026 Entity",
         "groupBasis":  "Maintains litigation, confidential legal material, entity governance, ownership relationships, estate, or claim work.",
         "modes":  [
@@ -116,6 +126,7 @@ window.PROJECT_ROOMS = [
         "skillPath":  "",
         "skillState":  "not-applicable",
         "taskId":  "",
+        "attention":  null,
         "group":  "Real Estate Transactions",
         "groupBasis":  "Supports property acquisition, valuation, buyer qualification, seller financing, transaction packaging, or project setup.",
         "modes":  [
@@ -134,6 +145,7 @@ window.PROJECT_ROOMS = [
         "skillPath":  "",
         "skillState":  "not-applicable",
         "taskId":  "",
+        "attention":  null,
         "group":  "Other",
         "groupBasis":  "Used when a Project Room does not yet have a supported assignment to one of the defined functional groups.",
         "modes":  [
@@ -152,6 +164,7 @@ window.PROJECT_ROOMS = [
         "skillPath":  "",
         "skillState":  "not-applicable",
         "taskId":  "",
+        "attention":  null,
         "group":  "Other",
         "groupBasis":  "Used when a Project Room does not yet have a supported assignment to one of the defined functional groups.",
         "modes":  [
@@ -170,6 +183,7 @@ window.PROJECT_ROOMS = [
         "skillPath":  "C:\\Codex\\Wiki Files\\skills\\codex-environment\\SKILL.md",
         "skillState":  "available",
         "taskId":  "019f84d0-78d4-7013-8c07-42c01f961be1",
+        "attention":  null,
         "group":  "Systems \u0026 Maintenance",
         "groupBasis":  "Maintains computers, Codex operations, management support, purchasing tools, marketplace work, or system health.",
         "modes":  [
@@ -189,6 +203,7 @@ window.PROJECT_ROOMS = [
         "skillPath":  "C:\\Codex\\Wiki Files\\skills\\computers\\SKILL.md",
         "skillState":  "available",
         "taskId":  "019f96e9-c663-7550-bf20-5829f6cb6c88",
+        "attention":  null,
         "group":  "Systems \u0026 Maintenance",
         "groupBasis":  "Maintains computers, Codex operations, management support, purchasing tools, marketplace work, or system health.",
         "modes":  [
@@ -207,6 +222,7 @@ window.PROJECT_ROOMS = [
         "skillPath":  "C:\\Codex\\Wiki Files\\skills\\confidential\\SKILL.md",
         "skillState":  "available",
         "taskId":  "019f47a8-b32a-73a0-9bc4-9e493f1b0c5e",
+        "attention":  null,
         "group":  "Legal \u0026 Entity",
         "groupBasis":  "Maintains litigation, confidential legal material, entity governance, ownership relationships, estate, or claim work.",
         "modes":  [
@@ -225,6 +241,7 @@ window.PROJECT_ROOMS = [
         "skillPath":  "",
         "skillState":  "not-applicable",
         "taskId":  "",
+        "attention":  null,
         "group":  "Real Estate Transactions",
         "groupBasis":  "Supports property acquisition, valuation, buyer qualification, seller financing, transaction packaging, or project setup.",
         "modes":  [
@@ -243,6 +260,7 @@ window.PROJECT_ROOMS = [
         "skillPath":  "C:\\Codex\\Wiki Files\\skills\\create-pr\\SKILL.md",
         "skillState":  "available",
         "taskId":  "019f583e-7f14-7ae2-aa24-4e991544e306",
+        "attention":  null,
         "group":  "Intake \u0026 Coordination",
         "groupBasis":  "Receives requests, routes work, creates Project Rooms, or provides an operating overview across workflows.",
         "modes":  [
@@ -261,6 +279,7 @@ window.PROJECT_ROOMS = [
         "skillPath":  "",
         "skillState":  "not-applicable",
         "taskId":  "",
+        "attention":  null,
         "group":  "Real Estate Transactions",
         "groupBasis":  "Supports property acquisition, valuation, buyer qualification, seller financing, transaction packaging, or project setup.",
         "modes":  [
@@ -279,6 +298,7 @@ window.PROJECT_ROOMS = [
         "skillPath":  "C:\\Codex\\Wiki Files\\skills\\dashboard\\SKILL.md",
         "skillState":  "available",
         "taskId":  "",
+        "attention":  null,
         "group":  "Intake \u0026 Coordination",
         "groupBasis":  "Receives requests, routes work, creates Project Rooms, or provides an operating overview across workflows.",
         "modes":  [
@@ -297,6 +317,7 @@ window.PROJECT_ROOMS = [
         "skillPath":  "C:\\Codex\\Wiki Files\\skills\\doc-scan\\SKILL.md",
         "skillState":  "available",
         "taskId":  "",
+        "attention":  null,
         "group":  "Document Intake",
         "groupBasis":  "Receives, identifies, organizes, or maintains source documents and operating procedures before downstream processing.",
         "modes":  [
@@ -315,6 +336,7 @@ window.PROJECT_ROOMS = [
         "skillPath":  "C:\\Codex\\Wiki Files\\skills\\email-monitor\\SKILL.md",
         "skillState":  "available",
         "taskId":  "019ecba7-f1cc-7ac1-aaf7-d89a3f21b582",
+        "attention":  null,
         "group":  "Intake \u0026 Coordination",
         "groupBasis":  "Receives requests, routes work, creates Project Rooms, or provides an operating overview across workflows.",
         "modes":  [
@@ -338,6 +360,7 @@ window.PROJECT_ROOMS = [
         "skillPath":  "C:\\Codex\\Wiki Files\\skills\\entity-relationship\\SKILL.md",
         "skillState":  "available",
         "taskId":  "",
+        "attention":  null,
         "group":  "Legal \u0026 Entity",
         "groupBasis":  "Maintains litigation, confidential legal material, entity governance, ownership relationships, estate, or claim work.",
         "modes":  [
@@ -359,6 +382,7 @@ window.PROJECT_ROOMS = [
         "skillPath":  "",
         "skillState":  "not-applicable",
         "taskId":  "",
+        "attention":  null,
         "group":  "Legal \u0026 Entity",
         "groupBasis":  "Maintains litigation, confidential legal material, entity governance, ownership relationships, estate, or claim work.",
         "modes":  [
@@ -377,6 +401,7 @@ window.PROJECT_ROOMS = [
         "skillPath":  "",
         "skillState":  "not-applicable",
         "taskId":  "",
+        "attention":  null,
         "group":  "Legal \u0026 Entity",
         "groupBasis":  "Maintains litigation, confidential legal material, entity governance, ownership relationships, estate, or claim work.",
         "modes":  [
@@ -395,6 +420,7 @@ window.PROJECT_ROOMS = [
         "skillPath":  "C:\\Codex\\Wiki Files\\skills\\gracious-millionaire\\SKILL.md",
         "skillState":  "available",
         "taskId":  "",
+        "attention":  null,
         "group":  "Publishing \u0026 Public Work",
         "groupBasis":  "Develops books, drawings, voice/media assets, websites, or other public-facing content.",
         "modes":  [
@@ -420,6 +446,7 @@ window.PROJECT_ROOMS = [
         "skillPath":  "C:\\Codex\\Wiki Files\\skills\\investigate-computer\\SKILL.md",
         "skillState":  "available",
         "taskId":  "",
+        "attention":  null,
         "group":  "Systems \u0026 Maintenance",
         "groupBasis":  "Maintains computers, Codex operations, management support, purchasing tools, marketplace work, or system health.",
         "modes":  [
@@ -438,6 +465,7 @@ window.PROJECT_ROOMS = [
         "skillPath":  "C:\\Codex\\Wiki Files\\skills\\invoice-entry\\SKILL.md",
         "skillState":  "available",
         "taskId":  "",
+        "attention":  null,
         "group":  "Accounting \u0026 Project Data",
         "groupBasis":  "Maintains financial calculations, invoice processing, project workbooks, templates, or structured project data.",
         "modes":  [
@@ -462,6 +490,7 @@ window.PROJECT_ROOMS = [
         "skillPath":  "C:\\Codex\\Wiki Files\\skills\\jean-wright\\SKILL.md",
         "skillState":  "available",
         "taskId":  "",
+        "attention":  null,
         "group":  "Intake \u0026 Coordination",
         "groupBasis":  "Receives requests, routes work, creates Project Rooms, or provides an operating overview across workflows.",
         "modes":  [
@@ -484,6 +513,7 @@ window.PROJECT_ROOMS = [
         "skillPath":  "C:\\Codex\\Wiki Files\\skills\\jennys-drawings\\SKILL.md",
         "skillState":  "available",
         "taskId":  "019f700e-419a-7280-ba62-c01fe032b5b7",
+        "attention":  null,
         "group":  "Publishing \u0026 Public Work",
         "groupBasis":  "Develops books, drawings, voice/media assets, websites, or other public-facing content.",
         "modes":  [
@@ -502,6 +532,7 @@ window.PROJECT_ROOMS = [
         "skillPath":  "C:\\Codex\\Wiki Files\\skills\\ld-evans\\SKILL.md",
         "skillState":  "available",
         "taskId":  "019f6ffe-d7b7-71f0-87d7-17b8e453f59e",
+        "attention":  null,
         "group":  "Publishing \u0026 Public Work",
         "groupBasis":  "Develops books, drawings, voice/media assets, websites, or other public-facing content.",
         "modes":  [
@@ -520,6 +551,7 @@ window.PROJECT_ROOMS = [
         "skillPath":  "C:\\Codex\\Wiki Files\\skills\\lowes-order\\SKILL.md",
         "skillState":  "available",
         "taskId":  "019f5845-fb96-7370-baf2-b8f00fddffae",
+        "attention":  null,
         "group":  "Systems \u0026 Maintenance",
         "groupBasis":  "Maintains computers, Codex operations, management support, purchasing tools, marketplace work, or system health.",
         "modes":  [
@@ -538,6 +570,7 @@ window.PROJECT_ROOMS = [
         "skillPath":  "C:\\Codex\\Wiki Files\\skills\\manager\\SKILL.md",
         "skillState":  "available",
         "taskId":  "019f8274-5b7e-7170-a051-f7944954de82",
+        "attention":  null,
         "group":  "Systems \u0026 Maintenance",
         "groupBasis":  "Maintains computers, Codex operations, management support, purchasing tools, marketplace work, or system health.",
         "modes":  [
@@ -557,6 +590,7 @@ window.PROJECT_ROOMS = [
         "skillPath":  "C:\\Codex\\Wiki Files\\skills\\marketplace\\SKILL.md",
         "skillState":  "available",
         "taskId":  "019fb5b0-6c29-7b32-822b-aa13b5920c29",
+        "attention":  null,
         "group":  "Systems \u0026 Maintenance",
         "groupBasis":  "Maintains computers, Codex operations, management support, purchasing tools, marketplace work, or system health.",
         "modes":  [
@@ -575,6 +609,7 @@ window.PROJECT_ROOMS = [
         "skillPath":  "C:\\Codex\\Wiki Files\\skills\\new-project\\SKILL.md",
         "skillState":  "available",
         "taskId":  "",
+        "attention":  null,
         "group":  "Real Estate Transactions",
         "groupBasis":  "Supports property acquisition, valuation, buyer qualification, seller financing, transaction packaging, or project setup.",
         "modes":  [
@@ -593,6 +628,7 @@ window.PROJECT_ROOMS = [
         "skillPath":  "",
         "skillState":  "not-applicable",
         "taskId":  "",
+        "attention":  null,
         "group":  "Legal \u0026 Entity",
         "groupBasis":  "Maintains litigation, confidential legal material, entity governance, ownership relationships, estate, or claim work.",
         "modes":  [
@@ -611,6 +647,7 @@ window.PROJECT_ROOMS = [
         "skillPath":  "C:\\Codex\\Wiki Files\\skills\\template-to-project\\SKILL.md",
         "skillState":  "available",
         "taskId":  "",
+        "attention":  null,
         "group":  "Accounting \u0026 Project Data",
         "groupBasis":  "Maintains financial calculations, invoice processing, project workbooks, templates, or structured project data.",
         "modes":  [
@@ -629,6 +666,7 @@ window.PROJECT_ROOMS = [
         "skillPath":  "C:\\Codex\\Wiki Files\\skills\\property-trade-evaluation\\SKILL.md",
         "skillState":  "available",
         "taskId":  "",
+        "attention":  null,
         "group":  "Real Estate Transactions",
         "groupBasis":  "Supports property acquisition, valuation, buyer qualification, seller financing, transaction packaging, or project setup.",
         "modes":  [
@@ -647,6 +685,7 @@ window.PROJECT_ROOMS = [
         "skillPath":  "C:\\Codex\\Wiki Files\\skills\\rei-blackbook\\SKILL.md",
         "skillState":  "available",
         "taskId":  "019f4691-5466-7f72-9683-ab5d3b750c25",
+        "attention":  null,
         "group":  "Publishing \u0026 Public Work",
         "groupBasis":  "Develops books, drawings, voice/media assets, websites, or other public-facing content.",
         "modes":  [
@@ -665,6 +704,7 @@ window.PROJECT_ROOMS = [
         "skillPath":  "C:\\Codex\\Wiki Files\\skills\\sops\\SKILL.md",
         "skillState":  "available",
         "taskId":  "",
+        "attention":  null,
         "group":  "Document Intake",
         "groupBasis":  "Receives, identifies, organizes, or maintains source documents and operating procedures before downstream processing.",
         "modes":  [
@@ -683,6 +723,7 @@ window.PROJECT_ROOMS = [
         "skillPath":  "C:\\Codex\\Wiki Files\\skills\\template-to-project\\SKILL.md",
         "skillState":  "available",
         "taskId":  "",
+        "attention":  null,
         "group":  "Accounting \u0026 Project Data",
         "groupBasis":  "Maintains financial calculations, invoice processing, project workbooks, templates, or structured project data.",
         "modes":  [
@@ -701,6 +742,7 @@ window.PROJECT_ROOMS = [
         "skillPath":  "C:\\Codex\\Wiki Files\\skills\\voices\\SKILL.md",
         "skillState":  "available",
         "taskId":  "",
+        "attention":  null,
         "group":  "Publishing \u0026 Public Work",
         "groupBasis":  "Develops books, drawings, voice/media assets, websites, or other public-facing content.",
         "modes":  [
