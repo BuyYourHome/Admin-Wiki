@@ -24,7 +24,7 @@ description: Use for the Buy Your Home Dashboard Project Room, including refresh
 ## Workflow
 
 1. Treat each Project Room's canonical README as the source for functionality and status.
-2. Run the refresh tool after Project Rooms are created, explicitly renamed, or materially repurposed.
+2. Run the refresh tool after Project Rooms are created, explicitly renamed, or materially repurposed. The Dashboard's top-level refresh control may invoke the same refresh only through the local `127.0.0.1` Dashboard server and must report actual success or failure.
 3. Review generated `site\project-rooms.js` for missing rooms and neutral fallbacks.
 4. Maintain search, filters, status/skill visibility, and canonical README navigation.
 5. Give every selected Project Room a truthful default Quick action that opens its canonical README in the browser's normal separate tab/window context. Append room-specific Quick actions only when each action has one clear canonical local target. When the room has fewer than two actions, show one disabled `Future action available` slot; do not add a third slot to rooms that already have two actions.

@@ -13,6 +13,22 @@
       return groupMatch && (!query || haystack.includes(query));
     });
   };
+  async function refreshDashboard() {
+    const button = el("refreshDashboardButton");
+    const status = el("refreshStatus");
+    button.disabled = true;
+    status.textContent = "Refreshing local Project Room data...";
+    try {
+      const response = await fetch("__dashboard-refresh", { method: "POST", headers: { Accept: "application/json" } });
+      const result = await response.json().catch(() => ({}));
+      if (!response.ok || result.ok !== true) throw new Error(result.message || `Local refresh failed (${response.status}).`);
+      sessionStorage.setItem("dashboardRefreshStatus", result.message || "Local Project Room data refreshed.");
+      window.location.reload();
+    } catch (error) {
+      status.textContent = `Refresh unavailable: ${error.message}. Start Dashboard with its local launch tool, then try again.`;
+      button.disabled = false;
+    }
+  }
   function renderFilters() {
     const groups = groupOrder.filter(group => rooms.some(room => room.group === group));
     el("filters").replaceChildren(...["All", ...groups].map(group => {
@@ -177,7 +193,13 @@
   el("skillCount").textContent = rooms.filter(room => room.skill).length;
   el("groupCount").textContent = new Set(rooms.map(room => room.group)).size;
   el("updatedAt").textContent = window.PROJECT_ROOMS_UPDATED ? `Index refreshed ${window.PROJECT_ROOMS_UPDATED}` : "Local index";
+  const priorRefreshStatus = sessionStorage.getItem("dashboardRefreshStatus");
+  if (priorRefreshStatus) {
+    el("refreshStatus").textContent = priorRefreshStatus;
+    sessionStorage.removeItem("dashboardRefreshStatus");
+  }
   el("searchInput").addEventListener("input", event => { state.query = event.target.value; renderCards(); });
+  el("refreshDashboardButton").addEventListener("click", refreshDashboard);
   el("requestDeleteButton").addEventListener("click", openDeleteRequest);
   el("prepareDeleteButton").addEventListener("click", prepareDeleteRequest);
   el("downloadDeleteRecordButton").addEventListener("click", downloadDeleteRecord);

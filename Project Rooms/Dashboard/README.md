@@ -33,7 +33,7 @@ Out of scope:
 - `config\project-room-groups.json` - explicit group definitions, basis, and current default assignments.
 - `outputs\` - review-ready dashboard reports or exports.
 - `site\` - local dashboard interface and generated Project Room index.
-- `tools\` - local refresh and launch scripts.
+- `tools\` - local refresh, localhost-server, and launch scripts.
 
 ## Current Status
 
@@ -51,9 +51,9 @@ The local dashboard provides search, codified functional-group filters, status c
 
 ## Local Access
 
-Run `C:\Codex\Wiki Files\Project Rooms\Dashboard\tools\Start-Dashboard.ps1` to refresh the Project Room index, start the local-only server, and open the dashboard.
+Run `C:\Codex\Wiki Files\Project Rooms\Dashboard\tools\Start-Dashboard.ps1` to start the local-only Dashboard server and open the dashboard. The prominent top-level `Refresh Dashboard` control runs the same local rescan process and provides success or failure feedback.
 
-The local URL defaults to `http://127.0.0.1:8765/Project%20Rooms/Dashboard/site/`.
+The launch tool prefers `http://127.0.0.1:8765/Project%20Rooms/Dashboard/site/`. If that port is occupied by a different local process, it selects an available localhost port through `8775` and prints the URL it opened.
 
 ## Start PR Pointer
 
