@@ -30,6 +30,13 @@ $rooms = foreach ($directory in Get-ChildItem -LiteralPath $projectRoomsRoot -Di
     if (-not $purpose) { $purpose = 'Canonical Project Room; open its README for current responsibilities.' }
     $statusMatch = [regex]::Match($text, '(?im)^Status:\s*([^\r\n.]+)')
     $skillMatch = [regex]::Match($text, 'skills\\([^\\`\r\n]+)\\SKILL\.md')
+    $quickActions = @()
+    if ($directory.Name -eq 'Entity Relationship') {
+        $quickActions += [ordered]@{
+            label = 'Open relationship diagram'
+            href = '../../Entity%20Relationship/outputs/entity-relationship-chart.svg'
+        }
+    }
     [ordered]@{
         name = $directory.Name
         purpose = $purpose
@@ -37,6 +44,7 @@ $rooms = foreach ($directory in Get-ChildItem -LiteralPath $projectRoomsRoot -Di
         skill = if ($skillMatch.Success) { $skillMatch.Groups[1].Value } else { '' }
         group = if ($groups.ContainsKey($directory.Name)) { $groups[$directory.Name] } else { 'Other' }
         readmeUrl = "../../$([uri]::EscapeDataString($directory.Name))/README.md"
+        quickActions = $quickActions
     }
 }
 

@@ -35,7 +35,7 @@ Out of scope:
 
 Status: active initial design.
 
-The initial local dashboard provides search, functional-group filters, status counts, Project Room summaries, skill visibility, and canonical README links. Wes will review the design and decide what to alter.
+The initial local dashboard provides search, functional-group filters, status counts, Project Room summaries, skill visibility, canonical README links, and context-specific side-panel quick actions. The first quick action opens the canonical Entity Relationship SVG diagram. Wes will review the design and decide what to alter.
 
 ## Matching Skill
 

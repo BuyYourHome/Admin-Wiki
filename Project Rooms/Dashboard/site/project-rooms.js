@@ -1,5 +1,5 @@
-window.PROJECT_ROOMS_UPDATED = '2026-08-02 10:52';
-window.PROJECT_ROOMS_HASH = 'D5562C910E56136DA0B63FB72C81325B5D953EF735447322F22D70C991EB68C6';
+window.PROJECT_ROOMS_UPDATED = '2026-08-02 11:17';
+window.PROJECT_ROOMS_HASH = '98A50FFD397E89C17BB96F675D3073279C89B3D83538B15C81E80F34CFA18B9B';
 window.PROJECT_ROOMS = [
     {
         "name":  "Admin Wiki Maintenance",
@@ -7,7 +7,10 @@ window.PROJECT_ROOMS = [
         "status":  "Status not recorded",
         "skill":  "",
         "group":  "Other",
-        "readmeUrl":  "../../Admin%20Wiki%20Maintenance/README.md"
+        "readmeUrl":  "../../Admin%20Wiki%20Maintenance/README.md",
+        "quickActions":  [
+
+                         ]
     },
     {
         "name":  "AIOS",
@@ -15,7 +18,10 @@ window.PROJECT_ROOMS = [
         "status":  "Status not recorded",
         "skill":  "aios",
         "group":  "Systems \u0026 Maintenance",
-        "readmeUrl":  "../../AIOS/README.md"
+        "readmeUrl":  "../../AIOS/README.md",
+        "quickActions":  [
+
+                         ]
     },
     {
         "name":  "Amortization",
@@ -23,7 +29,10 @@ window.PROJECT_ROOMS = [
         "status":  "Status not recorded",
         "skill":  "",
         "group":  "Accounting \u0026 Project Data",
-        "readmeUrl":  "../../Amortization/README.md"
+        "readmeUrl":  "../../Amortization/README.md",
+        "quickActions":  [
+
+                         ]
     },
     {
         "name":  "Brynda Suit",
@@ -31,7 +40,10 @@ window.PROJECT_ROOMS = [
         "status":  "draft",
         "skill":  "brynda-suit",
         "group":  "Legal \u0026 Entity",
-        "readmeUrl":  "../../Brynda%20Suit/README.md"
+        "readmeUrl":  "../../Brynda%20Suit/README.md",
+        "quickActions":  [
+
+                         ]
     },
     {
         "name":  "CMA Report",
@@ -39,7 +51,10 @@ window.PROJECT_ROOMS = [
         "status":  "Status not recorded",
         "skill":  "",
         "group":  "Real Estate Transactions",
-        "readmeUrl":  "../../CMA%20Report/README.md"
+        "readmeUrl":  "../../CMA%20Report/README.md",
+        "quickActions":  [
+
+                         ]
     },
     {
         "name":  "CMA Report - 5009 Sunnyfield Dr",
@@ -47,7 +62,10 @@ window.PROJECT_ROOMS = [
         "status":  "Status not recorded",
         "skill":  "",
         "group":  "Other",
-        "readmeUrl":  "../../CMA%20Report%20-%205009%20Sunnyfield%20Dr/README.md"
+        "readmeUrl":  "../../CMA%20Report%20-%205009%20Sunnyfield%20Dr/README.md",
+        "quickActions":  [
+
+                         ]
     },
     {
         "name":  "CMA Report - 5021 Sunnyfield Dr",
@@ -55,7 +73,10 @@ window.PROJECT_ROOMS = [
         "status":  "Status not recorded",
         "skill":  "",
         "group":  "Other",
-        "readmeUrl":  "../../CMA%20Report%20-%205021%20Sunnyfield%20Dr/README.md"
+        "readmeUrl":  "../../CMA%20Report%20-%205021%20Sunnyfield%20Dr/README.md",
+        "quickActions":  [
+
+                         ]
     },
     {
         "name":  "CMA Report - 5512 Desert Willow Ln",
@@ -63,7 +84,10 @@ window.PROJECT_ROOMS = [
         "status":  "Status not recorded",
         "skill":  "",
         "group":  "Other",
-        "readmeUrl":  "../../CMA%20Report%20-%205512%20Desert%20Willow%20Ln/README.md"
+        "readmeUrl":  "../../CMA%20Report%20-%205512%20Desert%20Willow%20Ln/README.md",
+        "quickActions":  [
+
+                         ]
     },
     {
         "name":  "Codex Environment",
@@ -71,7 +95,10 @@ window.PROJECT_ROOMS = [
         "status":  "`Wes-VideoEditor` core Admin wiki environment and Codex Desktop project connection installed and verified on 2026-07-22; connector sign-ins, plugin cache, and live workflow execution remain unverified",
         "skill":  "codex-environment",
         "group":  "Systems \u0026 Maintenance",
-        "readmeUrl":  "../../Codex%20Environment/README.md"
+        "readmeUrl":  "../../Codex%20Environment/README.md",
+        "quickActions":  [
+
+                         ]
     },
     {
         "name":  "Computers",
@@ -79,7 +106,10 @@ window.PROJECT_ROOMS = [
         "status":  "draft",
         "skill":  "computers",
         "group":  "Systems \u0026 Maintenance",
-        "readmeUrl":  "../../Computers/README.md"
+        "readmeUrl":  "../../Computers/README.md",
+        "quickActions":  [
+
+                         ]
     },
     {
         "name":  "Confidential",
@@ -87,7 +117,10 @@ window.PROJECT_ROOMS = [
         "status":  "Status not recorded",
         "skill":  "confidential",
         "group":  "Legal \u0026 Entity",
-        "readmeUrl":  "../../Confidential/README.md"
+        "readmeUrl":  "../../Confidential/README.md",
+        "quickActions":  [
+
+                         ]
     },
     {
         "name":  "Contract for Deed",
@@ -95,7 +128,10 @@ window.PROJECT_ROOMS = [
         "status":  "Status not recorded",
         "skill":  "",
         "group":  "Real Estate Transactions",
-        "readmeUrl":  "../../Contract%20for%20Deed/README.md"
+        "readmeUrl":  "../../Contract%20for%20Deed/README.md",
+        "quickActions":  [
+
+                         ]
     },
     {
         "name":  "Create PR",
@@ -103,7 +139,10 @@ window.PROJECT_ROOMS = [
         "status":  "active",
         "skill":  "create-pr",
         "group":  "Intake \u0026 Coordination",
-        "readmeUrl":  "../../Create%20PR/README.md"
+        "readmeUrl":  "../../Create%20PR/README.md",
+        "quickActions":  [
+
+                         ]
     },
     {
         "name":  "Credit Worthiness Evaluator",
@@ -111,7 +150,10 @@ window.PROJECT_ROOMS = [
         "status":  "Status not recorded",
         "skill":  "",
         "group":  "Real Estate Transactions",
-        "readmeUrl":  "../../Credit%20Worthiness%20Evaluator/README.md"
+        "readmeUrl":  "../../Credit%20Worthiness%20Evaluator/README.md",
+        "quickActions":  [
+
+                         ]
     },
     {
         "name":  "Dashboard",
@@ -119,7 +161,10 @@ window.PROJECT_ROOMS = [
         "status":  "active initial design",
         "skill":  "dashboard",
         "group":  "Intake \u0026 Coordination",
-        "readmeUrl":  "../../Dashboard/README.md"
+        "readmeUrl":  "../../Dashboard/README.md",
+        "quickActions":  [
+
+                         ]
     },
     {
         "name":  "Doc Scan",
@@ -127,7 +172,10 @@ window.PROJECT_ROOMS = [
         "status":  "Status not recorded",
         "skill":  "doc-scan",
         "group":  "Document Intake",
-        "readmeUrl":  "../../Doc%20Scan/README.md"
+        "readmeUrl":  "../../Doc%20Scan/README.md",
+        "quickActions":  [
+
+                         ]
     },
     {
         "name":  "Email Monitor",
@@ -135,7 +183,10 @@ window.PROJECT_ROOMS = [
         "status":  "Status not recorded",
         "skill":  "email-monitor",
         "group":  "Intake \u0026 Coordination",
-        "readmeUrl":  "../../Email%20Monitor/README.md"
+        "readmeUrl":  "../../Email%20Monitor/README.md",
+        "quickActions":  [
+
+                         ]
     },
     {
         "name":  "Entity Relationship",
@@ -143,7 +194,13 @@ window.PROJECT_ROOMS = [
         "status":  "active planning",
         "skill":  "entity-relationship",
         "group":  "Legal \u0026 Entity",
-        "readmeUrl":  "../../Entity%20Relationship/README.md"
+        "readmeUrl":  "../../Entity%20Relationship/README.md",
+        "quickActions":  [
+                             {
+                                 "label":  "Open relationship diagram",
+                                 "href":  "../../Entity%20Relationship/outputs/entity-relationship-chart.svg"
+                             }
+                         ]
     },
     {
         "name":  "Estate Documents",
@@ -151,7 +208,10 @@ window.PROJECT_ROOMS = [
         "status":  "Status not recorded",
         "skill":  "",
         "group":  "Legal \u0026 Entity",
-        "readmeUrl":  "../../Estate%20Documents/README.md"
+        "readmeUrl":  "../../Estate%20Documents/README.md",
+        "quickActions":  [
+
+                         ]
     },
     {
         "name":  "Geico Insurance Claim",
@@ -159,7 +219,10 @@ window.PROJECT_ROOMS = [
         "status":  "Status not recorded",
         "skill":  "",
         "group":  "Legal \u0026 Entity",
-        "readmeUrl":  "../../Geico%20Insurance%20Claim/README.md"
+        "readmeUrl":  "../../Geico%20Insurance%20Claim/README.md",
+        "quickActions":  [
+
+                         ]
     },
     {
         "name":  "Gracious Millionaire",
@@ -167,7 +230,10 @@ window.PROJECT_ROOMS = [
         "status":  "Status not recorded",
         "skill":  "gracious-millionaire",
         "group":  "Publishing \u0026 Public Work",
-        "readmeUrl":  "../../Gracious%20Millionaire/README.md"
+        "readmeUrl":  "../../Gracious%20Millionaire/README.md",
+        "quickActions":  [
+
+                         ]
     },
     {
         "name":  "Investigate Computer",
@@ -175,7 +241,10 @@ window.PROJECT_ROOMS = [
         "status":  "Status not recorded",
         "skill":  "investigate-computer",
         "group":  "Systems \u0026 Maintenance",
-        "readmeUrl":  "../../Investigate%20Computer/README.md"
+        "readmeUrl":  "../../Investigate%20Computer/README.md",
+        "quickActions":  [
+
+                         ]
     },
     {
         "name":  "Invoice Entry",
@@ -183,7 +252,10 @@ window.PROJECT_ROOMS = [
         "status":  "Status not recorded",
         "skill":  "invoice-entry",
         "group":  "Accounting \u0026 Project Data",
-        "readmeUrl":  "../../Invoice%20Entry/README.md"
+        "readmeUrl":  "../../Invoice%20Entry/README.md",
+        "quickActions":  [
+
+                         ]
     },
     {
         "name":  "Jean Wright",
@@ -191,7 +263,10 @@ window.PROJECT_ROOMS = [
         "status":  "Status not recorded",
         "skill":  "jean-wright",
         "group":  "Intake \u0026 Coordination",
-        "readmeUrl":  "../../Jean%20Wright/README.md"
+        "readmeUrl":  "../../Jean%20Wright/README.md",
+        "quickActions":  [
+
+                         ]
     },
     {
         "name":  "Jennys Drawings",
@@ -199,7 +274,10 @@ window.PROJECT_ROOMS = [
         "status":  "active review draft",
         "skill":  "jennys-drawings",
         "group":  "Publishing \u0026 Public Work",
-        "readmeUrl":  "../../Jennys%20Drawings/README.md"
+        "readmeUrl":  "../../Jennys%20Drawings/README.md",
+        "quickActions":  [
+
+                         ]
     },
     {
         "name":  "LD Evans",
@@ -207,7 +285,10 @@ window.PROJECT_ROOMS = [
         "status":  "active manuscript development",
         "skill":  "ld-evans",
         "group":  "Publishing \u0026 Public Work",
-        "readmeUrl":  "../../LD%20Evans/README.md"
+        "readmeUrl":  "../../LD%20Evans/README.md",
+        "quickActions":  [
+
+                         ]
     },
     {
         "name":  "Lowes Order",
@@ -215,7 +296,10 @@ window.PROJECT_ROOMS = [
         "status":  "draft",
         "skill":  "lowes-order",
         "group":  "Systems \u0026 Maintenance",
-        "readmeUrl":  "../../Lowes%20Order/README.md"
+        "readmeUrl":  "../../Lowes%20Order/README.md",
+        "quickActions":  [
+
+                         ]
     },
     {
         "name":  "Manager",
@@ -223,7 +307,10 @@ window.PROJECT_ROOMS = [
         "status":  "active draft",
         "skill":  "manager",
         "group":  "Systems \u0026 Maintenance",
-        "readmeUrl":  "../../Manager/README.md"
+        "readmeUrl":  "../../Manager/README.md",
+        "quickActions":  [
+
+                         ]
     },
     {
         "name":  "Marketplace",
@@ -231,7 +318,10 @@ window.PROJECT_ROOMS = [
         "status":  "active",
         "skill":  "marketplace",
         "group":  "Systems \u0026 Maintenance",
-        "readmeUrl":  "../../Marketplace/README.md"
+        "readmeUrl":  "../../Marketplace/README.md",
+        "quickActions":  [
+
+                         ]
     },
     {
         "name":  "New Project",
@@ -239,7 +329,10 @@ window.PROJECT_ROOMS = [
         "status":  "Status not recorded",
         "skill":  "new-project",
         "group":  "Real Estate Transactions",
-        "readmeUrl":  "../../New%20Project/README.md"
+        "readmeUrl":  "../../New%20Project/README.md",
+        "quickActions":  [
+
+                         ]
     },
     {
         "name":  "Operating Agreements",
@@ -247,7 +340,10 @@ window.PROJECT_ROOMS = [
         "status":  "Status not recorded",
         "skill":  "",
         "group":  "Legal \u0026 Entity",
-        "readmeUrl":  "../../Operating%20Agreements/README.md"
+        "readmeUrl":  "../../Operating%20Agreements/README.md",
+        "quickActions":  [
+
+                         ]
     },
     {
         "name":  "Project Management Spreadsheet Rewrite",
@@ -255,7 +351,10 @@ window.PROJECT_ROOMS = [
         "status":  "Status not recorded",
         "skill":  "template-to-project",
         "group":  "Accounting \u0026 Project Data",
-        "readmeUrl":  "../../Project%20Management%20Spreadsheet%20Rewrite/README.md"
+        "readmeUrl":  "../../Project%20Management%20Spreadsheet%20Rewrite/README.md",
+        "quickActions":  [
+
+                         ]
     },
     {
         "name":  "Property Trade Evaluation",
@@ -263,7 +362,10 @@ window.PROJECT_ROOMS = [
         "status":  "active",
         "skill":  "property-trade-evaluation",
         "group":  "Real Estate Transactions",
-        "readmeUrl":  "../../Property%20Trade%20Evaluation/README.md"
+        "readmeUrl":  "../../Property%20Trade%20Evaluation/README.md",
+        "quickActions":  [
+
+                         ]
     },
     {
         "name":  "REI BlackBook",
@@ -271,7 +373,10 @@ window.PROJECT_ROOMS = [
         "status":  "started 2026-07-09",
         "skill":  "rei-blackbook",
         "group":  "Publishing \u0026 Public Work",
-        "readmeUrl":  "../../REI%20BlackBook/README.md"
+        "readmeUrl":  "../../REI%20BlackBook/README.md",
+        "quickActions":  [
+
+                         ]
     },
     {
         "name":  "SOPs",
@@ -279,7 +384,10 @@ window.PROJECT_ROOMS = [
         "status":  "active",
         "skill":  "sops",
         "group":  "Document Intake",
-        "readmeUrl":  "../../SOPs/README.md"
+        "readmeUrl":  "../../SOPs/README.md",
+        "quickActions":  [
+
+                         ]
     },
     {
         "name":  "Template to Project",
@@ -287,7 +395,10 @@ window.PROJECT_ROOMS = [
         "status":  "Status not recorded",
         "skill":  "template-to-project",
         "group":  "Accounting \u0026 Project Data",
-        "readmeUrl":  "../../Template%20to%20Project/README.md"
+        "readmeUrl":  "../../Template%20to%20Project/README.md",
+        "quickActions":  [
+
+                         ]
     },
     {
         "name":  "Voices",
@@ -295,6 +406,9 @@ window.PROJECT_ROOMS = [
         "status":  "Status not recorded",
         "skill":  "voices",
         "group":  "Publishing \u0026 Public Work",
-        "readmeUrl":  "../../Voices/README.md"
+        "readmeUrl":  "../../Voices/README.md",
+        "quickActions":  [
+
+                         ]
     }
 ];

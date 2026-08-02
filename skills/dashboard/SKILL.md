@@ -26,8 +26,9 @@ description: Use for the Buy Your Home Dashboard Project Room, including refresh
 2. Run the refresh tool after Project Rooms are created, explicitly renamed, or materially repurposed.
 3. Review generated `site\project-rooms.js` for missing rooms and neutral fallbacks.
 4. Maintain search, filters, status/skill visibility, and canonical README navigation.
-5. Keep the interface local-only unless Wes explicitly authorizes publication.
-6. Record substantive refresh or design outcomes in `working\dashboard-action-log.md`.
+5. Add side-panel quick actions only when the action has one clear canonical local target. Verify the target exists before linking it and record stale or conflicting references without silently choosing a misleading path.
+6. Keep the interface local-only unless Wes explicitly authorizes publication.
+7. Record substantive refresh or design outcomes in `working\dashboard-action-log.md`.
 
 ## Boundaries
 

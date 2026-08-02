@@ -30,6 +30,15 @@
     el("detailGroup").textContent = room.group;
     el("detailStatus").textContent = room.status;
     el("detailSkill").textContent = room.skill || "No matching skill recorded";
+    const actions = Array.isArray(room.quickActions) ? room.quickActions : [];
+    el("detailActionList").replaceChildren(...actions.map(action => {
+      const link = document.createElement("a");
+      link.className = "quick-action-link";
+      link.href = action.href;
+      link.textContent = action.label;
+      return link;
+    }));
+    el("detailActions").hidden = actions.length === 0;
     el("detailLink").href = room.readmeUrl;
     el("detailLink").hidden = false;
     renderCards();
