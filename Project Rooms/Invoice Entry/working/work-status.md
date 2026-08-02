@@ -52,6 +52,7 @@ Classified untracked working files:
 | 3 | Trenchant Build invoice `422`, 4121 Tensity Dr | Paid once for `$5,185.71`; one Review row exists as `IE-20260801-TRENCHANT-422`; workbook upload and validation passed | Wait for Wes to choose one approved destination worksheet or approve a supported split for mixed work and the card-processing fee. Do not create another row. |
 | 4 | QuickBooks Line of Credit statements `2a46fea` and `a46f130`, July 2026 | Two distinct statements, each held as `Needs Review - Statement - Accounting Allocation` | Wait for accounting direction outside property workbooks. Do not create invoices, approve payment, or insert either statement into a project workbook. |
 | 5 | First Bank online statement notice, account ending `3613` | Notice verified; no statement attachment or financial details; actual statement not retrieved | Retrieve through an authorized First Bank session and route the downloaded statement through Doc Scan. Do not infer an amount, due date, project, account type, or payment obligation. |
+| 6 | Truist digital statement notice, checking accounts ending `1141` and `1254` | Notice verified; no attachments or statement contents; available browser sessions reached the Truist login page | Wes must sign in through an authorized Truist session or supply the downloaded statements. Route each statement through Doc Scan before Invoice Entry processes it. Do not infer balances, transactions, payment obligations, projects, or accounting treatment. |
 
 ## Verified Delivery Evidence
 
