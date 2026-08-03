@@ -2,11 +2,19 @@
   const rooms = Array.isArray(window.PROJECT_ROOMS) ? window.PROJECT_ROOMS : [];
   const groupDefinitions = Array.isArray(window.PROJECT_ROOM_GROUPS) ? window.PROJECT_ROOM_GROUPS : [];
   const dashboardActions = window.DASHBOARD_ACTIONS || {};
+  const dashboardContext = window.DASHBOARD_CONTEXT || {
+    hostMode: "local-full",
+    clientAccess: "local",
+    readOnly: false,
+    allowAskJean: true,
+    allowHostActions: true
+  };
   const groupOrder = groupDefinitions.map(group => group.name);
-  const state = { group: "All", query: "", view: "grid", selected: null, selectedRoom: null };
+  const state = { group: "All", query: "", view: "grid", selected: null, selectedRoom: null, sopGroup: "All", visibleSopEntries: [] };
   const el = id => document.getElementById(id);
   const initials = name => name.split(/\s+/).filter(Boolean).slice(0, 2).map(word => word[0]).join("").toUpperCase();
   const attentionLabel = attention => attention?.type === "approval-needed" ? "Approval needed" : "Confirmation needed";
+  const isExternalHref = href => /^[a-z][a-z0-9+.-]*:/i.test(href || "");
   const filteredRooms = () => {
     const query = state.query.trim().toLowerCase();
     return rooms.filter(room => {
@@ -16,6 +24,10 @@
     });
   };
   async function refreshDashboard() {
+    if (!dashboardContext.allowHostActions) {
+      el("refreshStatus").textContent = "Refresh is disabled in this read-only Dashboard host view.";
+      return;
+    }
     const button = el("refreshDashboardButton");
     const status = el("refreshStatus");
     button.disabled = true;
@@ -42,6 +54,55 @@
       return button;
     }));
   }
+  function getVisibleSopEntries(room) {
+    const entries = Array.isArray(room?.sopEntries) ? room.sopEntries : [];
+    return entries.filter(entry => state.sopGroup === "All" || entry.category === state.sopGroup);
+  }
+
+  function renderSopViewer(room) {
+    const sopEntries = Array.isArray(room?.sopEntries) ? room.sopEntries : [];
+    const sopViewer = el("detailSopViewer");
+    sopViewer.hidden = room?.name !== "SOPs";
+    if (room?.name !== "SOPs") {
+      state.visibleSopEntries = [];
+      return;
+    }
+
+    const categories = [...new Set(sopEntries.map(entry => entry.category).filter(Boolean))];
+    const groupSelect = el("detailSopGroupSelect");
+    groupSelect.replaceChildren(...["All", ...categories].map(group => {
+      const option = document.createElement("option");
+      option.value = group;
+      option.textContent = group;
+      return option;
+    }));
+    if (!["All", ...categories].includes(state.sopGroup)) {
+      state.sopGroup = "All";
+    }
+    groupSelect.value = state.sopGroup;
+    groupSelect.disabled = sopEntries.length === 0;
+
+    const visibleEntries = getVisibleSopEntries(room);
+    state.visibleSopEntries = visibleEntries;
+    const prompt = document.createElement("option");
+    prompt.value = "";
+    prompt.textContent = visibleEntries.length ? "Select a documented SOP page" : "No documented SOP pages match this group";
+    prompt.selected = true;
+    el("detailSopSelect").replaceChildren(prompt, ...visibleEntries.map((entry, index) => {
+      const option = document.createElement("option");
+      option.value = String(index);
+      option.textContent = entry.label;
+      return option;
+    }));
+    el("detailSopSelect").disabled = visibleEntries.length === 0;
+    el("detailSopOpen").removeAttribute("href");
+    el("detailSopOpen").classList.add("disabled");
+    el("detailSopOpen").setAttribute("aria-disabled", "true");
+    el("detailSopState").textContent = visibleEntries.length
+      ? "Only canonical clean SOP pages are shown. Choose a group to narrow the list."
+      : "No documented SOP Markdown pages are available for the selected group.";
+  }
+
   function selectRoom(room) {
     state.selected = room.name;
     state.selectedRoom = room;
@@ -71,30 +132,12 @@
     }));
     el("detailModeSelect").disabled = modes.length === 0;
     el("detailModeState").textContent = modes.length ? "Selection is for interface review only; it does not activate a mode." : "No canonical documented modes were found in this room's README or matching skill.";
-    const sopEntries = Array.isArray(room.sopEntries) ? room.sopEntries : [];
-    const sopViewer = el("detailSopViewer");
-    sopViewer.hidden = room.name !== "SOPs";
-    if (room.name === "SOPs") {
-      const prompt = document.createElement("option");
-      prompt.value = "";
-      prompt.textContent = sopEntries.length ? "Select an SOP from the canonical index" : "No SOP index entries found";
-      prompt.selected = true;
-      el("detailSopSelect").replaceChildren(prompt, ...sopEntries.map((entry, index) => {
-        const option = document.createElement("option");
-        option.value = String(index);
-        option.textContent = entry.label;
-        return option;
-      }));
-      el("detailSopSelect").disabled = sopEntries.length === 0;
-      el("detailSopOpen").removeAttribute("href");
-      el("detailSopOpen").classList.add("disabled");
-      el("detailSopOpen").setAttribute("aria-disabled", "true");
-      el("detailSopState").textContent = sopEntries.length ? "Only entries with a canonical clean SOP page can be opened." : "The authoritative SOP index did not provide any selectable entries.";
-    }
+    state.sopGroup = "All";
+    renderSopViewer(room);
     const actions = [
       { label: "Open Project Room README", href: room.readmeUrl },
       ...(Array.isArray(room.quickActions) ? room.quickActions : [])
-    ];
+    ].filter(action => !dashboardContext.readOnly || !isExternalHref(action.href));
     const actionElements = actions.map(action => {
       const link = document.createElement("a");
       link.className = "quick-action-link";
@@ -121,11 +164,42 @@
       existingAttention.className = `detail-attention ${attention.type}`;
       existingAttention.textContent = `${attentionLabel(attention)}: ${attention.reason}`;
       existingAttention.title = `Source: ${attention.source}${attention.updatedAt ? `; updated ${attention.updatedAt}` : ""}`;
+    } else if (dashboardContext.readOnly) {
+      existingAttention.hidden = false;
+      existingAttention.className = "detail-attention read-only-note";
+      existingAttention.textContent = dashboardContext.clientAccess === "remote"
+        ? "Read-only LAN view: host-only actions are disabled for remote clients."
+        : "LAN host mode: read-only document view. Use WesStudio local Dashboard tools for refresh or host changes.";
+      existingAttention.title = "This Dashboard host serves read-only LAN access only.";
     } else {
       existingAttention.hidden = true;
       existingAttention.textContent = "";
     }
     renderCards();
+  }
+
+  function applyDashboardContext() {
+    const askJean = el("askJeanButton");
+    if (!dashboardContext.allowAskJean) {
+      askJean.removeAttribute("href");
+      askJean.classList.add("disabled");
+      askJean.setAttribute("aria-disabled", "true");
+      askJean.title = "Ask Jean is available only on the host machine.";
+    }
+
+    if (!dashboardContext.allowHostActions) {
+      const refreshButton = el("refreshDashboardButton");
+      refreshButton.disabled = true;
+      refreshButton.title = "Refresh is disabled in the LAN read-only host view.";
+      const deleteButton = el("requestDeleteButton");
+      deleteButton.disabled = true;
+      deleteButton.title = "Deletion workflow preview is disabled in the LAN read-only host view.";
+      if (!el("refreshStatus").textContent) {
+        el("refreshStatus").textContent = dashboardContext.clientAccess === "remote"
+          ? "Read-only LAN view. Refresh, deletion review, and host-only links are disabled."
+          : "LAN host mode is running. Use the local Dashboard launch tools on WesStudio for refresh and host changes.";
+      }
+    }
   }
 
   function openDeleteRequest() {
@@ -238,6 +312,7 @@
     el("refreshStatus").textContent = priorRefreshStatus;
     sessionStorage.removeItem("dashboardRefreshStatus");
   }
+  applyDashboardContext();
   el("searchInput").addEventListener("input", event => { state.query = event.target.value; renderCards(); });
   el("askJeanButton").href = dashboardActions.jeansVoice?.href || "#";
   el("refreshDashboardButton").addEventListener("click", refreshDashboard);
@@ -248,9 +323,9 @@
     el("detailModeState").textContent = event.target.value ? `Selected for interface review: ${event.target.value}. No mode was activated.` : "Selection does not activate a mode.";
   });
   el("detailSopSelect").addEventListener("change", event => {
-    const entry = state.selectedRoom?.sopEntries?.[Number(event.target.value)];
+    const entry = state.visibleSopEntries?.[Number(event.target.value)];
     const viewer = el("detailSopOpen");
-    if (entry?.available && entry.href) {
+    if (entry?.href) {
       viewer.href = entry.href;
       viewer.classList.remove("disabled");
       viewer.setAttribute("aria-disabled", "false");
@@ -260,6 +335,12 @@
       viewer.classList.add("disabled");
       viewer.setAttribute("aria-disabled", "true");
       el("detailSopState").textContent = "This index entry has no matching clean SOP page yet, so there is nothing safe to open.";
+    }
+  });
+  el("detailSopGroupSelect").addEventListener("change", event => {
+    state.sopGroup = event.target.value || "All";
+    if (state.selectedRoom?.name === "SOPs") {
+      renderSopViewer(state.selectedRoom);
     }
   });
   el("detailGroupSelect").addEventListener("change", event => {

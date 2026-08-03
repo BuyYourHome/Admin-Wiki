@@ -1,5 +1,5 @@
-window.PROJECT_ROOMS_UPDATED = '2026-08-02 16:47';
-window.PROJECT_ROOMS_HASH = '9130769F3EA8C1ACD56648C47396CD92AC0307019450E855D206A612B0E6494E';
+window.PROJECT_ROOMS_UPDATED = '2026-08-03 09:40';
+window.PROJECT_ROOMS_HASH = '8849844269848506E194F02DFEB8630B9CD9133EA5E93E04906B6472B46AC459';
 window.PROJECT_ROOM_GROUPS = [
     {
         "name":  "Intake \u0026 Coordination",
@@ -298,7 +298,7 @@ window.PROJECT_ROOMS = [
         "skill":  "dashboard",
         "skillPath":  "C:\\Codex\\Wiki Files\\skills\\dashboard\\SKILL.md",
         "skillState":  "available",
-        "taskId":  "",
+        "taskId":  "019fc52f-858a-72e1-926b-a0f6fbf0fd89",
         "attention":  null,
         "group":  "Intake \u0026 Coordination",
         "groupBasis":  "Receives requests, routes work, creates Project Rooms, or provides an operating overview across workflows.",
@@ -499,7 +499,8 @@ window.PROJECT_ROOMS = [
                       "Commit Mode",
                       "Push Mode",
                       "Dispatcher Mode",
-                      "Jean\u0027s Voice Intake Mode"
+                      "Jean\u0027s Voice Intake Mode",
+                      "General Delegation Default"
                   ],
         "readmeUrl":  "../../Jean%20Wright/README.md",
         "quickActions":  [
@@ -718,553 +719,113 @@ window.PROJECT_ROOMS = [
         "sopEntries":  [
                            {
                                "label":  "Item 001 - Pay Bills - Truist",
-                               "available":  true,
+                               "category":  "Accounting",
                                "href":  "../../SOPs/outputs/SOPs/SOP%20-%20Item%20001%20-%20Pay%20Bills%20-%20Truist.md"
                            },
                            {
-                               "label":  "Item 002 - Zoom Session with Accountant",
-                               "available":  false,
-                               "href":  null
-                           },
-                           {
-                               "label":  "Item 003 - Reports Status of all aquisitions and loans to bookkeeper",
-                               "available":  false,
-                               "href":  null
-                           },
-                           {
-                               "label":  "Item 004 - Scan Receipts -Cash, Amazon",
-                               "available":  false,
-                               "href":  null
-                           },
-                           {
-                               "label":  "Item 005 - Scan Credit Card/ Bank statements",
-                               "available":  false,
-                               "href":  null
-                           },
-                           {
-                               "label":  "Item 006 - Evaluate Foreclosure List  for Door Knocking",
-                               "available":  false,
-                               "href":  null
-                           },
-                           {
-                               "label":  "Item 007 - Door Knock",
-                               "available":  false,
-                               "href":  null
-                           },
-                           {
-                               "label":  "Item 008 - Call Potential Sellers",
-                               "available":  false,
-                               "href":  null
-                           },
-                           {
-                               "label":  "Item 009 - Teams Property Setup (was item 95)",
-                               "available":  false,
-                               "href":  null
-                           },
-                           {
                                "label":  "Item 009 - Assemble Teams folder for Property",
-                               "available":  true,
+                               "category":  "Acquisition",
                                "href":  "../../SOPs/outputs/SOPs/SOP%20-%20Item%20009%20-%20Assemble%20Teams%20folder%20for%20Property.md"
                            },
                            {
-                               "label":  "Item 010 - Purchase \u0026 Sale Agreement",
-                               "available":  false,
-                               "href":  null
-                           },
-                           {
-                               "label":  "Item 011 - Communicate with attorney about purchase Docs",
-                               "available":  false,
-                               "href":  null
-                           },
-                           {
-                               "label":  "Item 012 - Letter of Authorization from seller",
-                               "available":  false,
-                               "href":  null
-                           },
-                           {
-                               "label":  "Item 013 - Send Authorization  to Bank",
-                               "available":  false,
-                               "href":  null
-                           },
-                           {
-                               "label":  "Item 014 - Bank Acknowledgement",
-                               "available":  false,
-                               "href":  null
-                           },
-                           {
-                               "label":  "Item 015 - Reinstatement Quote - attorney",
-                               "available":  false,
-                               "href":  null
-                           },
-                           {
-                               "label":  "Item 016 - On-Line Bank Access",
-                               "available":  false,
-                               "href":  null
-                           },
-                           {
-                               "label":  "Item 017 - Change Mail",
-                               "available":  false,
-                               "href":  null
-                           },
-                           {
-                               "label":  "Item 018 - Bank Attorney letter of dismissal",
-                               "available":  false,
-                               "href":  null
-                           },
-                           {
-                               "label":  "Item 019 - Sign as Trustee/Manager for Purchase and Sales",
-                               "available":  false,
-                               "href":  null
-                           },
-                           {
-                               "label":  "Item 020 - Schedule Notary",
-                               "available":  false,
-                               "href":  null
-                           },
-                           {
                                "label":  "Item 021 - VCAP to ForeclosureList",
-                               "available":  true,
+                               "category":  "Lead Sourcing",
                                "href":  "../../SOPs/outputs/SOPs/SOP%20-%20Item%20021%20-%20VCAP%20to%20ForeclosureList.md"
                            },
                            {
                                "label":  "Item 022 - Import ForeclosureList to REI",
-                               "available":  true,
+                               "category":  "Lead Sourcing",
                                "href":  "../../SOPs/outputs/SOPs/SOP%20-%20Item%20022%20-%20Import%20ForeclosureList%20to%20REI.md"
                            },
                            {
                                "label":  "Item 023 - Skip Trace new REI Contacts (Discontinued, see Task 93)",
-                               "available":  true,
+                               "category":  "Lead Sourcing",
                                "href":  "../../SOPs/outputs/SOPs/SOP%20-%20Item%20023%20-%20Skip%20Trace%20new%20REI%20Contacts%20(Discontinued%2C%20see%20Task%2093).md"
                            },
                            {
                                "label":  "Item 024 - Validate Test Text Campaign",
-                               "available":  true,
+                               "category":  "Lead Sourcing",
                                "href":  "../../SOPs/outputs/SOPs/SOP%20-%20Item%20024%20-%20Validate%20Test%20Text%20Campaign.md"
                            },
                            {
                                "label":  "Item 025 - Respond to remove request in REI",
-                               "available":  true,
+                               "category":  "Lead Sourcing",
                                "href":  "../../SOPs/outputs/SOPs/SOP%20-%20Item%20025%20-%20Respond%20to%20remove%20request%20in%20REI.md"
                            },
                            {
                                "label":  "Item 026 - Exporting Closed Contacts from REI to ForeclosureList",
-                               "available":  true,
+                               "category":  "Marketing",
                                "href":  "../../SOPs/outputs/SOPs/SOP%20-%20Item%20026%20-%20Exporting%20Closed%20Contacts%20from%20REI%20to%20ForeclosureList.md"
                            },
                            {
                                "label":  "Item 027 - Prepping ForeclosureList for Mailing Letters",
-                               "available":  true,
+                               "category":  "Marketing",
                                "href":  "../../SOPs/outputs/SOPs/SOP%20-%20Item%20027%20-%20Prepping%20ForeclosureList%20for%20Mailing%20Letters.md"
                            },
                            {
                                "label":  "Item 028 - Printing Letters",
-                               "available":  true,
+                               "category":  "Marketing",
                                "href":  "../../SOPs/outputs/SOPs/SOP%20-%20Item%20028%20-%20Printing%20Letters.md"
                            },
                            {
-                               "label":  "Item 029 - Processing  Mail after Printing",
-                               "available":  false,
-                               "href":  null
-                           },
-                           {
-                               "label":  "Item 030 - Assembly Letter Package",
-                               "available":  false,
-                               "href":  null
-                           },
-                           {
-                               "label":  "Item 031 - Letters to Lynn",
-                               "available":  false,
-                               "href":  null
-                           },
-                           {
                                "label":  "Item 032 - Purge Foreclosure List base on age(Discontinue)",
-                               "available":  true,
+                               "category":  "Marketing",
                                "href":  "../../SOPs/outputs/SOPs/SOP%20-%20Item%20032%20-%20Purge%20Foreclosure%20List%20base%20on%20age(Discontinue).md"
                            },
                            {
-                               "label":  "Item 034 - Order Postage/supplies",
-                               "available":  false,
-                               "href":  null
-                           },
-                           {
-                               "label":  "Item 035 - Update REI/Foreclosure List from Returned Mail",
-                               "available":  false,
-                               "href":  null
-                           },
-                           {
-                               "label":  "Item 036 - BNI - Update Metrics",
-                               "available":  false,
-                               "href":  null
-                           },
-                           {
-                               "label":  "Item 039 - Send Seller Documents to listing realtor",
-                               "available":  false,
-                               "href":  null
-                           },
-                           {
-                               "label":  "Item 040 - Alert Private Lenders",
-                               "available":  false,
-                               "href":  null
-                           },
-                           {
-                               "label":  "Item 041 - Send Realto CD/Alta signed by all",
-                               "available":  false,
-                               "href":  null
-                           },
-                           {
-                               "label":  "Item 042 - Turn off utilities",
-                               "available":  false,
-                               "href":  null
-                           },
-                           {
-                               "label":  "Item 043 - Drop Insurance",
-                               "available":  false,
-                               "href":  null
-                           },
-                           {
-                               "label":  "Item 044 - Reserve Venue",
-                               "available":  false,
-                               "href":  null
-                           },
-                           {
-                               "label":  "Item 045 - Compose Invitation REI List",
-                               "available":  false,
-                               "href":  null
-                           },
-                           {
-                               "label":  "Item 046 - Design and Email Invitation",
-                               "available":  false,
-                               "href":  null
-                           },
-                           {
-                               "label":  "Item 047 - Create/Implement Campaign",
-                               "available":  false,
-                               "href":  null
-                           },
-                           {
-                               "label":  "Item 048 - Assemble Marketing",
-                               "available":  false,
-                               "href":  null
-                           },
-                           {
-                               "label":  "Item 049 - Photo Boards",
-                               "available":  false,
-                               "href":  null
-                           },
-                           {
-                               "label":  "Item 050 - Update Power Point",
-                               "available":  false,
-                               "href":  null
-                           },
-                           {
-                               "label":  "Item 051 - Set up Venue",
-                               "available":  false,
-                               "href":  null
-                           },
-                           {
-                               "label":  "Item 052 - Send Thank you Notes",
-                               "available":  false,
-                               "href":  null
-                           },
-                           {
-                               "label":  "Item 053 - Prepare Lender Docs",
-                               "available":  false,
-                               "href":  null
-                           },
-                           {
-                               "label":  "Item 054 - Add Lender to Property Insurance",
-                               "available":  false,
-                               "href":  null
-                           },
-                           {
-                               "label":  "Item 055 - Add Lender to Title Insurance",
-                               "available":  false,
-                               "href":  null
-                           },
-                           {
-                               "label":  "Item 056 - Request CMA for Lender",
-                               "available":  false,
-                               "href":  null
-                           },
-                           {
-                               "label":  "Item 057 - Setup PL Payments",
-                               "available":  false,
-                               "href":  null
-                           },
-                           {
-                               "label":  "Item 058 - Payoff Loans in advance of Sales",
-                               "available":  false,
-                               "href":  null
-                           },
-                           {
-                               "label":  "Item 059 - Email Campaign to Private Lenders",
-                               "available":  false,
-                               "href":  null
-                           },
-                           {
-                               "label":  "Item 060 - Tour new Property with GC",
-                               "available":  false,
-                               "href":  null
-                           },
-                           {
-                               "label":  "Item 061 - Insurance Claim for Roof",
-                               "available":  false,
-                               "href":  null
-                           },
-                           {
-                               "label":  "Item 062 - Locks Changed",
-                               "available":  false,
-                               "href":  null
-                           },
-                           {
-                               "label":  "Item 063 - Develop Rehab Plans",
-                               "available":  false,
-                               "href":  null
-                           },
-                           {
-                               "label":  "Item 064 - Start Utilities",
-                               "available":  false,
-                               "href":  null
-                           },
-                           {
-                               "label":  "Item 065 - Attend Weekly Scrum with GC",
-                               "available":  false,
-                               "href":  null
-                           },
-                           {
                                "label":  "Item 066 - Add Insurance",
-                               "available":  true,
+                               "category":  "Property Rehab",
                                "href":  "../../SOPs/outputs/SOPs/SOP%20-%20Item%20066%20-%20Add%20Insurance.md"
                            },
                            {
                                "label":  "Item 067 - Start Electrical, Water \u0026 Gas Service",
-                               "available":  true,
+                               "category":  "Property Rehab",
                                "href":  "../../SOPs/outputs/SOPs/SOP%20-%20Item%20067%20-%20Start%20Electrical%2C%20Water%20%26%20Gas%20Service.md"
                            },
                            {
-                               "label":  "Item 068 - Rehab bids(subs)",
-                               "available":  false,
-                               "href":  null
-                           },
-                           {
-                               "label":  "Item 069 - Order Dumpster",
-                               "available":  false,
-                               "href":  null
-                           },
-                           {
-                               "label":  "Item 070 - Select/Order/Pickup Rehab Materials",
-                               "available":  false,
-                               "href":  null
-                           },
-                           {
-                               "label":  "Item 071 - A/C service",
-                               "available":  false,
-                               "href":  null
-                           },
-                           {
-                               "label":  "Item 072 - Establish Mortgage payment",
-                               "available":  false,
-                               "href":  null
-                           },
-                           {
-                               "label":  "Item 073 - Remove PMI",
-                               "available":  false,
-                               "href":  null
-                           },
-                           {
-                               "label":  "Item 074 - Claim Property on Zillow",
-                               "available":  false,
-                               "href":  null
-                           },
-                           {
                                "label":  "Item 075 - Add property to Our Website",
-                               "available":  true,
+                               "category":  "Property Rehab",
                                "href":  "../../SOPs/outputs/SOPs/SOP%20-%20Item%20075%20-%20Add%20property%20to%20Our%20Website.md"
                            },
                            {
-                               "label":  "Item 076 - Make sure deed and agreement are recorded and scanned",
-                               "available":  false,
-                               "href":  null
-                           },
-                           {
-                               "label":  "Item 077 - Monitor Property Insurance payments in QuickBooks",
-                               "available":  false,
-                               "href":  null
-                           },
-                           {
-                               "label":  "Item 078 - Start/Finish Probate letters - Notice to Creditors",
-                               "available":  false,
-                               "href":  null
-                           },
-                           {
-                               "label":  "Item 079 - Start Probate",
-                               "available":  false,
-                               "href":  null
-                           },
-                           {
-                               "label":  "Item 080 - Send Realtor Sales Contract",
-                               "available":  false,
-                               "href":  null
-                           },
-                           {
-                               "label":  "Item 081 - Get Payoff Letter from Mortgage",
-                               "available":  false,
-                               "href":  null
-                           },
-                           {
-                               "label":  "Item 082 - Respond to Closing Attorney",
-                               "available":  false,
-                               "href":  null
-                           },
-                           {
-                               "label":  "Item 083 - Alert Private Lenders",
-                               "available":  false,
-                               "href":  null
-                           },
-                           {
-                               "label":  "Item 084 - Establish Direct Deposit/Payment",
-                               "available":  false,
-                               "href":  null
-                           },
-                           {
                                "label":  "Item 085 - REI Help Desk",
-                               "available":  true,
+                               "category":  "Technical",
                                "href":  "../../SOPs/outputs/SOPs/SOP%20-%20Item%20085%20-%20REI%20Help%20Desk.md"
                            },
                            {
-                               "label":  "Item 086 - Maintain all software systems",
-                               "available":  false,
-                               "href":  null
-                           },
-                           {
-                               "label":  "Item 087 - Develop Systems",
-                               "available":  false,
-                               "href":  null
-                           },
-                           {
-                               "label":  "Item 088 - Document Systems",
-                               "available":  false,
-                               "href":  null
-                           },
-                           {
-                               "label":  "Item 089 - Flagging  Returned Mail in REI(Replaced by 90)",
-                               "available":  false,
-                               "href":  null
-                           },
-                           {
-                               "label":  "Item 090 - Respond to Hearing Date/Sale Date Tags",
-                               "available":  false,
-                               "href":  null
-                           },
-                           {
                                "label":  "Item 091 - Potential Property Visit Binder",
-                               "available":  true,
+                               "category":  "Lead Sourcing",
                                "href":  "../../SOPs/outputs/SOPs/SOP%20-%20Item%20091%20-%20Potential%20Property%20Visit%20Binder.md"
                            },
                            {
                                "label":  "Item 092 - Import to Direct Skip",
-                               "available":  true,
+                               "category":  "Lead Sourcing",
                                "href":  "../../SOPs/outputs/SOPs/SOP%20-%20Item%20092%20-%20Import%20to%20Direct%20Skip.md"
                            },
                            {
                                "label":  "Item 093 - Direct Skip to REI",
-                               "available":  true,
+                               "category":  "Lead Sourcing",
                                "href":  "../../SOPs/outputs/SOPs/SOP%20-%20Item%20093%20-%20Direct%20Skip%20to%20REI.md"
                            },
                            {
                                "label":  "Item 094 - Graphic \u0026 Web Design",
-                               "available":  true,
+                               "category":  "Marketing",
                                "href":  "../../SOPs/outputs/SOPs/SOP%20-%20Item%20094%20-%20Graphic%20%26%20Web%20Design.md"
                            },
                            {
                                "label":  "Item 097 - Tracking Project Management Worksheet",
-                               "available":  true,
+                               "category":  "Rehab",
                                "href":  "../../SOPs/outputs/SOPs/SOP%20-%20Item%20097%20-%20Tracking%20Project%20Management%20Worksheet.md"
                            },
                            {
                                "label":  "Item 098 - Reconnect Quickbook Connections",
-                               "available":  true,
+                               "category":  "Accounting",
                                "href":  "../../SOPs/outputs/SOPs/SOP%20-%20Item%20098%20-%20Reconnect%20Quickbook%20Connections.md"
                            },
                            {
-                               "label":  "Item 099 - Enter Quickbook Transactions",
-                               "available":  false,
-                               "href":  null
-                           },
-                           {
-                               "label":  "Item 100 - Reconcile Statements",
-                               "available":  false,
-                               "href":  null
-                           },
-                           {
-                               "label":  "Item 101 - Project QuickBooks Balance Sheets",
-                               "available":  false,
-                               "href":  null
-                           },
-                           {
-                               "label":  "Item 102 - Project Spreadsheet Transactions",
-                               "available":  false,
-                               "href":  null
-                           },
-                           {
-                               "label":  "Item 103 - Review Credit Card Statements",
-                               "available":  false,
-                               "href":  null
-                           },
-                           {
                                "label":  "Item 104 - Update Transactions into QuickBooks from Receipts",
-                               "available":  true,
+                               "category":  "Accounting",
                                "href":  "../../SOPs/outputs/SOPs/SOP%20-%20Item%20104%20-%20Update%20Transactions%20into%20QuickBooks%20from%20Receipts.md"
-                           },
-                           {
-                               "label":  "Item 105 - Review Accts Payable",
-                               "available":  false,
-                               "href":  null
-                           },
-                           {
-                               "label":  "Item 106 - Scan Mortgage Statements",
-                               "available":  false,
-                               "href":  null
-                           },
-                           {
-                               "label":  "Item 107 - Gather Year End Docs - Insurance",
-                               "available":  false,
-                               "href":  null
-                           },
-                           {
-                               "label":  "Item 108 - Gather Year End Docs - 1098 - 1099",
-                               "available":  false,
-                               "href":  null
-                           },
-                           {
-                               "label":  "Item 109 - Gather Year End Docs - W9",
-                               "available":  false,
-                               "href":  null
-                           },
-                           {
-                               "label":  "Item 110 - Send out FMV forms (Fair Market Evaluation)",
-                               "available":  false,
-                               "href":  null
-                           },
-                           {
-                               "label":  "Item 111 - Deliver Letters to Lynn",
-                               "available":  false,
-                               "href":  null
-                           },
-                           {
-                               "label":  "Item 111 - File Quarterly NCSuits",
-                               "available":  false,
-                               "href":  null
-                           },
-                           {
-                               "label":  "Item 112 - File year end W-2s",
-                               "available":  false,
-                               "href":  null
-                           },
-                           {
-                               "label":  "Item 112 - Record Invoice for Timesheet",
-                               "available":  false,
-                               "href":  null
                            }
                        ]
     },

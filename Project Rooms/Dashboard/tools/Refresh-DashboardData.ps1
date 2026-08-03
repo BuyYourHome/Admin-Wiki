@@ -83,14 +83,16 @@ function Get-SopViewerEntries {
         foreach ($line in ($sopSection.Groups[1].Value -split '\r?\n')) {
             if ($line -notmatch '^\|\s*(?<item>\d+)\s*\|\s*(?<category>[^|]*)\|\s*(?<task>[^|]*)\|') { continue }
             $item = [int]$Matches.item
+            $category = $Matches.category.Trim()
             $task = $Matches.task.Trim()
             if (-not $task -or $task -eq 'N/A') { continue }
             $key = "{0}|{1}" -f $item, $task.ToLowerInvariant()
             $page = $pagesByKey[$key]
+            if (-not $page) { continue }
             $entries.Add([ordered]@{
                 label = ('Item {0:D3} - {1}' -f $item, $task)
-                available = [bool]$page
-                href = if ($page) { '../../SOPs/outputs/SOPs/' + [uri]::EscapeDataString($page.Name) } else { $null }
+                category = if ($category) { $category } else { 'Other' }
+                href = '../../SOPs/outputs/SOPs/' + [uri]::EscapeDataString($page.Name)
             })
         }
     }

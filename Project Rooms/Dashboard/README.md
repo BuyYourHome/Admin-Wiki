@@ -70,6 +70,21 @@ Run `C:\Codex\Wiki Files\Project Rooms\Dashboard\tools\Start-Dashboard.ps1` to s
 
 The launch tool prefers `http://127.0.0.1:8765/Project%20Rooms/Dashboard/site/`. If that port is occupied by a different local process, it selects an available localhost port through `8775` and prints the URL it opened.
 
+## LAN Host
+
+WesStudio may also host a LAN read-only Dashboard at `http://10.0.0.105:8765/` for private-network access on `10.0.0.0/24`.
+
+- Host listener: `C:\Codex\Wiki Files\Project Rooms\Dashboard\tools\Dashboard-LanServer.ps1`
+- Hidden startup wrapper: `C:\Codex\Wiki Files\Project Rooms\Dashboard\tools\Start-DashboardLanHostHidden.vbs`
+- Install/start script: `C:\Codex\Wiki Files\Project Rooms\Dashboard\tools\Register-DashboardLanHost.ps1`
+- Rollback script: `C:\Codex\Wiki Files\Project Rooms\Dashboard\tools\Remove-DashboardLanHost.ps1`
+- Firewall scope: Private profile only, TCP `8765`, remote address `10.0.0.0/24`
+- Startup method: Windows Task Scheduler task `BYH Dashboard LAN Host`
+
+When the firewall rule already matches the approved scope and only the startup action needs to be refreshed, rerun `C:\Codex\Wiki Files\Project Rooms\Dashboard\tools\Register-DashboardLanHost.ps1 -SkipFirewallUpdate`.
+
+The LAN host is read-only. It serves the Dashboard site plus approved read-only document views only, rejects refresh writes, and disables host-only actions for remote clients. See `working\dashboard-lan-hosting.md` for architecture, validation, and rollback.
+
 ## Start PR Pointer
 
 Start PR: Before durable work, follow Start PR Mode in `C:\Codex\Wiki Files\Project Room Chat Startup Rule.md`. Interpret unqualified requests under the Current PR Scope Rule in that file. Work on main unless Wes explicitly asks for a branch.

@@ -31,6 +31,7 @@ function Get-ContentType {
         '.js' { 'application/javascript; charset=utf-8' }
         '.json' { 'application/json; charset=utf-8' }
         '.html' { 'text/html; charset=utf-8' }
+        '.md' { 'text/markdown; charset=utf-8' }
         '.svg' { 'image/svg+xml' }
         '.png' { 'image/png' }
         '.jpg' { 'image/jpeg' }
@@ -38,6 +39,17 @@ function Get-ContentType {
         '.pdf' { 'application/pdf' }
         default { 'application/octet-stream' }
     }
+}
+
+function Get-ContextScript {
+    $payload = @{
+        hostMode = 'local-full'
+        clientAccess = 'local'
+        readOnly = $false
+        allowAskJean = $true
+        allowHostActions = $true
+    } | ConvertTo-Json -Compress
+    return "window.DASHBOARD_CONTEXT = $payload;"
 }
 
 $listener.Start()
@@ -49,6 +61,11 @@ try {
             if ($context.Request.HttpMethod -eq 'GET' -and $path -eq '__dashboard-health') {
                 $body = [Text.Encoding]::UTF8.GetBytes('{"ok":true,"service":"dashboard-local"}')
                 Send-Response -Response $context.Response -StatusCode 200 -Body $body -ContentType 'application/json; charset=utf-8'
+                continue
+            }
+            if ($context.Request.HttpMethod -eq 'GET' -and $path -eq 'Project Rooms/Dashboard/site/__dashboard-context.js') {
+                $body = [Text.Encoding]::UTF8.GetBytes((Get-ContextScript))
+                Send-Response -Response $context.Response -StatusCode 200 -Body $body -ContentType 'application/javascript; charset=utf-8'
                 continue
             }
             if ($context.Request.HttpMethod -eq 'POST' -and $path -eq 'Project Rooms/Dashboard/site/__dashboard-refresh') {

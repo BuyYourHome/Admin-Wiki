@@ -11,7 +11,10 @@
 <body>
   <div class="app-shell">
     <header class="topbar">
-      <div><p class="eyebrow">Buy Your Home Admin</p><h1>Jean Wright Dashboard</h1></div>
+      <div class="topbar-brand">
+        <img class="topbar-portrait" src="assets/jean-wright-topbar.png" alt="Jean Wright portrait">
+        <div class="topbar-copy"><p class="eyebrow">Buy Your Home Admin</p><h1>Jean Wright Dashboard</h1></div>
+      </div>
       <div class="topbar-actions">
         <div class="top-buttons">
           <a class="ask-jean-button" id="askJeanButton" href="codex://threads/019fbe57-fcd9-7c83-be74-e377c7b9c4d0">Ask Jean</a>
@@ -23,10 +26,10 @@
     </header>
     <main>
       <section class="summary" aria-label="Project Room summary">
-        <div class="metric"><strong id="roomCount">0</strong><span>Project Rooms</span></div>
-        <div class="metric"><strong id="activeCount">0</strong><span>Active</span></div>
-        <div class="metric"><strong id="skillCount">0</strong><span>With Skills</span></div>
-        <div class="metric"><strong id="groupCount">0</strong><span>Functional Groups</span></div>
+        <div class="metric"><span>Project Rooms</span><strong id="roomCount">0</strong></div>
+        <div class="metric"><span>Active</span><strong id="activeCount">0</strong></div>
+        <div class="metric"><span>With Skills</span><strong id="skillCount">0</strong></div>
+        <div class="metric"><span>Functional Groups</span><strong id="groupCount">0</strong></div>
       </section>
       <section class="controls" aria-label="Dashboard controls">
         <label class="search-field"><span>Search</span><input id="searchInput" type="search" placeholder="Room, function, skill, or status" autocomplete="off"></label>
@@ -47,27 +50,18 @@
           <h2 id="detailName">Choose a room</h2>
           <p id="detailPurpose">Select a Project Room to see its responsibility, status, skill, and canonical path.</p>
           <p class="detail-attention" id="detailAttention" hidden></p>
-          <dl>
+          <section class="detail-section">
+            <h3>Mode</h3>
             <div class="property-control">
-              <dt><label for="detailGroupSelect">Group</label></dt>
-              <dd>
-                <select id="detailGroupSelect"></select>
-                <span class="property-note" id="detailGroupBasis">-</span>
-                <span class="property-state" id="detailGroupState">Current documented assignment. Changes are preview only.</span>
-              </dd>
+              <label for="detailModeSelect">Documented mode</label>
+              <select id="detailModeSelect"></select>
+              <span class="property-state" id="detailModeState">Selection does not activate a mode.</span>
             </div>
-            <div><dt>Status</dt><dd id="detailStatus">-</dd></div>
-            <div><dt>Skill</dt><dd id="detailSkill">-</dd></div>
-            <div class="property-control">
-              <dt><label for="detailModeSelect">Mode</label></dt>
-              <dd>
-                <select id="detailModeSelect"></select>
-                <span class="property-state" id="detailModeState">Selection does not activate a mode.</span>
-              </dd>
-            </div>
-          </dl>
+          </section>
           <section class="sop-viewer" id="detailSopViewer" hidden>
             <h3>View SOP</h3>
+            <label for="detailSopGroupSelect">SOP group</label>
+            <select id="detailSopGroupSelect"></select>
             <label for="detailSopSelect">SOP</label>
             <select id="detailSopSelect"></select>
             <a class="quick-action-link disabled" id="detailSopOpen" target="_blank" rel="noopener" aria-disabled="true">View selected SOP</a>
@@ -81,6 +75,21 @@
             <h3>Project Room controls</h3>
             <button class="danger-button" id="requestDeleteButton" type="button">Review deletion</button>
             <p>Shows the exact deletion scope and asks for one explicit confirmation. This local interface does not delete anything yet.</p>
+          </section>
+          <section class="detail-section detail-metadata">
+            <h3>Room metadata</h3>
+            <dl>
+              <div class="property-control">
+                <dt><label for="detailGroupSelect">Group</label></dt>
+                <dd>
+                  <select id="detailGroupSelect"></select>
+                  <span class="property-note" id="detailGroupBasis">-</span>
+                  <span class="property-state" id="detailGroupState">Current documented assignment. Changes are preview only.</span>
+                </dd>
+              </div>
+              <div><dt>Status</dt><dd id="detailStatus">-</dd></div>
+              <div><dt>Skill</dt><dd id="detailSkill">-</dd></div>
+            </dl>
           </section>
         </aside>
       </div>
@@ -110,6 +119,7 @@
     </form>
   </dialog>
   <script src="project-rooms.js"></script>
+  <script src="__dashboard-context.js"></script>
   <script src="app.js"></script>
 </body>
 </html>

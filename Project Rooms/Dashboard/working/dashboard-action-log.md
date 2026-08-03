@@ -28,3 +28,36 @@
 - The viewer does not alter SOP material and enables opening only for a matching canonical clean page, in a separate browser tab/window context.
 - Corrected the local server's directory handling so the documented Dashboard launch URL serves the site `index.html` page.
 - Corrected launch readiness polling so one Dashboard launch does not leave duplicate local server processes while waiting for the selected port to respond.
+
+## 2026-08-03 - Jean Portrait In Topbar
+
+- Added the provided Jean portrait image to `Project Rooms\Dashboard\site\assets\jean-wright-topbar.png`.
+- Updated the Dashboard topbar so the portrait appears to the left of the `Buy Your Home Admin` eyebrow and `Jean Wright Dashboard` title.
+- Styled the portrait as a circular topbar image with responsive sizing so the header still fits on mobile.
+
+## 2026-08-03 - Compressed Summary Strip And Reordered Side Panel
+
+- Reduced the summary count strip height by tightening metric padding and count typography.
+- Reordered the selected-room panel so functional controls appear first: documented mode, SOP viewer when applicable, quick actions, and Project Room controls.
+- Moved Group, Status, and Skill into a bottom metadata section so reference fields no longer interrupt the action flow.
+
+## 2026-08-03 - Inline Metrics And SOP Group Filter
+
+- Reduced the summary strip again by placing each metric count to the right of its label.
+- Changed the SOP refresh data so the Dashboard includes only SOP entries that have a canonical clean Markdown page under `Project Rooms\SOPs\outputs\SOPs\`.
+- Added an SOP group selector above the SOP selector so Wes can narrow the displayed documented SOP pages by the canonical SOP Index category column.
+
+## 2026-08-03 - LAN Read-Only Host
+
+- Added a dedicated LAN host listener at `Project Rooms\Dashboard\tools\Dashboard-LanServer.ps1`.
+- Restricted the LAN host to approved Dashboard site assets, Project Room README views, SOP Markdown pages, and the Entity Relationship SVG document view.
+- Added `Register-DashboardLanHost.ps1` and `Remove-DashboardLanHost.ps1` for scheduled-task and firewall-rule management on WesStudio.
+- Added host-context handling in the Dashboard UI so LAN read-only mode disables refresh, deletion review, and remote Codex deep links truthfully.
+- Documented architecture, validation, and rollback in `working\dashboard-lan-hosting.md` and the Dashboard README.
+
+## 2026-08-03 - Hidden LAN Host Startup
+
+- Confirmed the active listener remained available while investigating the visible blank PowerShell window report.
+- Updated the normal startup design so the scheduled task launches the LAN host through `Start-DashboardLanHostHidden.vbs` instead of attaching the host directly to a visible PowerShell console.
+- Documented the hidden-launch wrapper in the Dashboard README and LAN hosting notes.
+- Confirmed after the reboot that the live `http://10.0.0.105:8765/` listener remained healthy, but replacing the already registered scheduled task action still required an elevated Windows session; documented the exact `-SkipFirewallUpdate` rerun command for that admin follow-up.
