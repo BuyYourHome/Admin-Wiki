@@ -339,3 +339,13 @@ Context: Wes approved Josh Kennedy LLC invoice `INV-JKLLC-20260731-001` but requ
 - Keep approval across format-only revisions when the invoice number, period, accepted time, allocations, and amount remain unchanged.
 - Re-render every revised PDF and visually check the whole document. This revision reduced the invoice from two pages to one without dropping any time or allocation rows.
 - Treat approval, filing/posting, payment, and paid status as separate states. An approved revision does not authorize or prove the later states.
+
+## 2026-08-03 - Duplicate General-Invoice Email Intake
+
+Context: NCAOC Remote Public Access invoice `41247668` arrived in two Outlook copies one second apart, and its bill-to address could be mistaken for a project assignment.
+
+- Treat repeated Outlook copies with the same vendor, invoice number, amount, and attachment hash as duplicate transport evidence for one obligation.
+- A bill-to or customer mailing address does not establish that a general service charge belongs to that property project.
+- When no project designation exists and the approved vendor folder is absent, file one copy to the general-invoice `_Needs Review` folder rather than create a vendor folder or guess a project.
+- Keep email-only late-fee context separate from PDF line-item facts when the attached invoice does not display that fee.
+- Do not open a project workbook, approve payment, or schedule payment while general accounting or project allocation remains unresolved.
