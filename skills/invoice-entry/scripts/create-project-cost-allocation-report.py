@@ -1,5 +1,6 @@
 import argparse
 import json
+from collections import defaultdict
 from pathlib import Path
 
 from reportlab.lib import colors
@@ -20,53 +21,74 @@ def required(data, key):
     return value
 
 
-def build_report(data, output_path):
-    worker = required(data, "worker")
-    project = required(data, "project")
-    report_no = required(data, "report_no")
-    report_date = required(data, "report_date")
+def build_invoice(data, output_path):
+    issuer = required(data, "issuer")
+    contact_email = required(data, "contact_email")
+    customer = data.get("customer", "Buy Your Home")
+    invoice_no = required(data, "invoice_no")
+    invoice_date = required(data, "invoice_date")
     period = required(data, "period")
-    status_text = data.get("status", "Draft - Correction Review")
+    status_text = data.get("status", "Draft - Awaiting Wes Approval")
     lines = required(data, "lines")
-    expected_total = round(float(required(data, "allocated_total")), 2)
+    expected_total = round(float(required(data, "invoice_total")), 2)
     line_total = round(sum(float(line["allocated_cost"]) for line in lines), 2)
     if line_total != expected_total:
-        raise ValueError(f"Line total {line_total:.2f} does not match allocated total {expected_total:.2f}")
+        raise ValueError(
+            f"Line total {line_total:.2f} does not match invoice total {expected_total:.2f}"
+        )
+
+    calculated_allocations = defaultdict(float)
+    calculated_hours = defaultdict(float)
+    for line in lines:
+        project = required(line, "project")
+        calculated_allocations[project] += float(required(line, "allocated_cost"))
+        calculated_hours[project] += float(required(line, "hours"))
+
+    allocation_summary = required(data, "allocation_summary")
+    summary_total = round(sum(float(row["allocated_cost"]) for row in allocation_summary), 2)
+    if summary_total != expected_total:
+        raise ValueError(
+            f"Allocation summary {summary_total:.2f} does not match invoice total {expected_total:.2f}"
+        )
+    for row in allocation_summary:
+        project = required(row, "project")
+        if round(calculated_allocations[project], 2) != round(float(row["allocated_cost"]), 2):
+            raise ValueError(f"Allocation mismatch for {project}")
 
     output_path.parent.mkdir(parents=True, exist_ok=True)
     doc = SimpleDocTemplate(
         str(output_path),
         pagesize=letter,
-        rightMargin=0.62 * inch,
-        leftMargin=0.62 * inch,
-        topMargin=0.52 * inch,
-        bottomMargin=0.52 * inch,
-        title=f"{worker} Project Cost Allocation Report and Invoice",
-        author=worker,
+        rightMargin=0.55 * inch,
+        leftMargin=0.55 * inch,
+        topMargin=0.48 * inch,
+        bottomMargin=0.48 * inch,
+        title=f"{issuer} Time Card Invoice {invoice_no}",
+        author=issuer,
     )
     styles = getSampleStyleSheet()
     body = ParagraphStyle(
         "Body",
         parent=styles["Normal"],
         fontName="Helvetica",
-        fontSize=9.6,
-        leading=12.5,
+        fontSize=8.8,
+        leading=11,
         textColor=colors.HexColor("#111827"),
     )
     muted = ParagraphStyle(
         "Muted",
         parent=body,
-        fontSize=8.5,
-        leading=10.5,
+        fontSize=7.8,
+        leading=9.5,
         textColor=colors.HexColor("#6B7280"),
     )
     title = ParagraphStyle(
-        "ReportTitle",
+        "InvoiceTitle",
         parent=styles["Title"],
         alignment=0,
         fontName="Helvetica-Bold",
-        fontSize=20,
-        leading=23,
+        fontSize=25,
+        leading=28,
         textColor=colors.HexColor("#1F2937"),
     )
     deep = colors.HexColor("#124E57")
@@ -78,94 +100,94 @@ def build_report(data, output_path):
     story = []
     header = Table(
         [[
-            Paragraph("PROJECT COST<br/>ALLOCATION REPORT<br/><font size='9'>PAYABLE INVOICE</font>", title),
+            Paragraph("INVOICE", title),
             Paragraph(
-                f"<b>{status_text}</b><br/>Issuer: {worker}<br/>Customer: Buy Your Home",
-                ParagraphStyle("Right", parent=body, alignment=2, leading=14, textColor=deep),
+                f"<b>{status_text}</b><br/><b>{issuer}</b><br/>{contact_email}",
+                ParagraphStyle("Right", parent=body, alignment=2, leading=13, textColor=deep),
             ),
         ]],
-        colWidths=[4.7 * inch, 2.25 * inch],
+        colWidths=[4.45 * inch, 2.45 * inch],
     )
     header.setStyle(TableStyle([
         ("VALIGN", (0, 0), (-1, -1), "TOP"),
         ("LINEBELOW", (0, 0), (-1, -1), 1.2, accent),
-        ("BOTTOMPADDING", (0, 0), (-1, -1), 12),
+        ("BOTTOMPADDING", (0, 0), (-1, -1), 10),
     ]))
-    story.extend([header, Spacer(1, 0.18 * inch)])
-
-    status = Table(
-        [[
-            Paragraph(f"<b>Status:</b> {status_text}", body),
-            Paragraph(f"<b>Invoice Date:</b> {report_date}", body),
-        ]],
-        colWidths=[4.3 * inch, 2.65 * inch],
-    )
-    status.setStyle(TableStyle([
-        ("BACKGROUND", (0, 0), (-1, -1), pale),
-        ("BOX", (0, 0), (-1, -1), 0.6, colors.HexColor("#B7DDE1")),
-        ("LEFTPADDING", (0, 0), (-1, -1), 10),
-        ("RIGHTPADDING", (0, 0), (-1, -1), 10),
-        ("TOPPADDING", (0, 0), (-1, -1), 8),
-        ("BOTTOMPADDING", (0, 0), (-1, -1), 8),
-    ]))
-    story.extend([status, Spacer(1, 0.22 * inch)])
+    story.extend([header, Spacer(1, 0.14 * inch)])
 
     details = Table(
         [[
-            Paragraph(f"<b>Issuer</b><br/>{worker}", body),
-            Paragraph("<b>Customer</b><br/>Buy Your Home", body),
-            Paragraph(f"<b>Allocation Destination</b><br/>{project}", body),
+            Paragraph(f"<b>Invoice #</b><br/>{invoice_no}", body),
+            Paragraph(f"<b>Invoice Date</b><br/>{invoice_date}", body),
             Paragraph(f"<b>Service Period</b><br/>{period}", body),
+            Paragraph(f"<b>Customer</b><br/>{customer}", body),
         ]],
-        colWidths=[1.7 * inch, 1.7 * inch, 1.8 * inch, 1.65 * inch],
+        colWidths=[1.85 * inch, 1.35 * inch, 1.95 * inch, 1.75 * inch],
     )
     details.setStyle(TableStyle([
         ("VALIGN", (0, 0), (-1, -1), "TOP"),
-        ("BOX", (0, 0), (-1, -1), 0.4, line_color),
-        ("INNERGRID", (0, 0), (-1, -1), 0.4, line_color),
-        ("LEFTPADDING", (0, 0), (-1, -1), 10),
-        ("RIGHTPADDING", (0, 0), (-1, -1), 10),
-        ("TOPPADDING", (0, 0), (-1, -1), 10),
-        ("BOTTOMPADDING", (0, 0), (-1, -1), 10),
-    ]))
-    story.extend([details, Spacer(1, 0.24 * inch)])
-
-    meta = Table([["Report / Invoice #", report_no]], colWidths=[1.6 * inch, 5.3 * inch])
-    meta.setStyle(TableStyle([
-        ("BACKGROUND", (0, 0), (-1, -1), deep),
-        ("TEXTCOLOR", (0, 0), (-1, -1), colors.white),
-        ("FONTNAME", (0, 0), (-1, -1), "Helvetica-Bold"),
-        ("FONTSIZE", (0, 0), (-1, -1), 9.2),
-        ("LEFTPADDING", (0, 0), (-1, -1), 7),
-        ("RIGHTPADDING", (0, 0), (-1, -1), 7),
+        ("BACKGROUND", (0, 0), (-1, -1), pale),
+        ("BOX", (0, 0), (-1, -1), 0.5, colors.HexColor("#B7DDE1")),
+        ("INNERGRID", (0, 0), (-1, -1), 0.4, colors.HexColor("#B7DDE1")),
+        ("LEFTPADDING", (0, 0), (-1, -1), 8),
+        ("RIGHTPADDING", (0, 0), (-1, -1), 8),
         ("TOPPADDING", (0, 0), (-1, -1), 8),
         ("BOTTOMPADDING", (0, 0), (-1, -1), 8),
     ]))
-    story.extend([meta, Spacer(1, 0.12 * inch)])
+    story.extend([details, Spacer(1, 0.17 * inch)])
 
-    rows = [["Work Date", "Description", "Hours", "Allocated Cost"]]
+    summary_rows = [["Project / Destination", "Hours", "Allocated Cost"]]
+    for row in allocation_summary:
+        summary_rows.append([
+            required(row, "project"),
+            row.get("hours_display", f"{float(required(row, 'hours')):.2f}"),
+            money(required(row, "allocated_cost")),
+        ])
+    summary_rows.append(["TOTAL", data.get("total_hours_display", f"{sum(calculated_hours.values()):.2f}"), money(expected_total)])
+    summary = Table(summary_rows, colWidths=[4.85 * inch, 0.95 * inch, 1.1 * inch])
+    summary.setStyle(TableStyle([
+        ("BACKGROUND", (0, 0), (-1, 0), deep),
+        ("TEXTCOLOR", (0, 0), (-1, 0), colors.white),
+        ("FONTNAME", (0, 0), (-1, 0), "Helvetica-Bold"),
+        ("FONTNAME", (0, -1), (-1, -1), "Helvetica-Bold"),
+        ("FONTSIZE", (0, 0), (-1, -1), 8.8),
+        ("ALIGN", (1, 1), (-1, -1), "RIGHT"),
+        ("GRID", (0, 0), (-1, -1), 0.35, line_color),
+        ("LEFTPADDING", (0, 0), (-1, -1), 6),
+        ("RIGHTPADDING", (0, 0), (-1, -1), 6),
+        ("TOPPADDING", (0, 0), (-1, -1), 5),
+        ("BOTTOMPADDING", (0, 0), (-1, -1), 5),
+    ]))
+    story.extend([Paragraph("<b>Project Allocation Summary</b>", body), Spacer(1, 0.05 * inch), summary, Spacer(1, 0.17 * inch)])
+
+    rows = [["Work Date", "Project / Destination", "Description", "Hours", "Allocated Cost"]]
     for line in lines:
         rows.append([
             required(line, "date"),
+            Paragraph(required(line, "project"), body),
             Paragraph(required(line, "description"), body),
-            f"{float(required(line, 'hours')):.2f}",
+            line.get("hours_display", f"{float(required(line, 'hours')):.2f}"),
             money(required(line, "allocated_cost")),
         ])
-    items = Table(rows, colWidths=[0.95 * inch, 4.15 * inch, 0.8 * inch, 1.0 * inch])
+    items = Table(
+        rows,
+        colWidths=[0.72 * inch, 1.25 * inch, 3.5 * inch, 0.58 * inch, 0.85 * inch],
+        repeatRows=1,
+    )
     items.setStyle(TableStyle([
         ("BACKGROUND", (0, 0), (-1, 0), deep),
         ("TEXTCOLOR", (0, 0), (-1, 0), colors.white),
         ("FONTNAME", (0, 0), (-1, 0), "Helvetica-Bold"),
-        ("FONTSIZE", (0, 0), (-1, -1), 9.2),
-        ("ALIGN", (2, 1), (-1, -1), "RIGHT"),
+        ("FONTSIZE", (0, 0), (-1, -1), 8.2),
+        ("ALIGN", (3, 1), (-1, -1), "RIGHT"),
         ("VALIGN", (0, 0), (-1, -1), "TOP"),
         ("GRID", (0, 0), (-1, -1), 0.35, line_color),
-        ("LEFTPADDING", (0, 0), (-1, -1), 6),
-        ("RIGHTPADDING", (0, 0), (-1, -1), 6),
-        ("TOPPADDING", (0, 0), (-1, -1), 6),
-        ("BOTTOMPADDING", (0, 0), (-1, -1), 6),
+        ("LEFTPADDING", (0, 0), (-1, -1), 4),
+        ("RIGHTPADDING", (0, 0), (-1, -1), 4),
+        ("TOPPADDING", (0, 0), (-1, -1), 4),
+        ("BOTTOMPADDING", (0, 0), (-1, -1), 4),
     ]))
-    story.extend([items, Spacer(1, 0.18 * inch)])
+    story.extend([Paragraph("<b>Time and Allocation Detail</b>", body), Spacer(1, 0.05 * inch), items, Spacer(1, 0.14 * inch)])
 
     total = Table(
         [["Amount Due", money(expected_total)]],
@@ -174,30 +196,30 @@ def build_report(data, output_path):
     )
     total.setStyle(TableStyle([
         ("FONTNAME", (0, 0), (-1, -1), "Helvetica-Bold"),
-        ("FONTSIZE", (0, 0), (-1, -1), 10),
+        ("FONTSIZE", (0, 0), (-1, -1), 11),
         ("ALIGN", (1, 0), (1, 0), "RIGHT"),
         ("TEXTCOLOR", (0, 0), (-1, -1), deep),
         ("LINEABOVE", (0, 0), (-1, 0), 1, accent),
         ("TOPPADDING", (0, 0), (-1, -1), 7),
         ("BOTTOMPADDING", (0, 0), (-1, -1), 7),
     ]))
-    story.extend([total, Spacer(1, 0.25 * inch)])
+    story.extend([total, Spacer(1, 0.18 * inch)])
 
     note = Table(
         [[Paragraph(
-            "<b>PAYABLE ALLOCATION:</b> This report is the invoice for the portion of Josh Kennedy's fixed weekly service cost allocated to the destination shown above. All reports for the week must be reviewed together to prevent duplicate payment.",
+            "<b>PAYABLE INVOICE WITH PROJECT ALLOCATION:</b> This is one invoice for the complete semimonthly period. The allocation summary divides the cost among supported projects and BackOffice without creating separate payment obligations.",
             body,
         )], [Paragraph(required(data, "method_note"), body)], [Paragraph(required(data, "traceability"), muted)]],
-        colWidths=[6.95 * inch],
+        colWidths=[6.9 * inch],
     )
     note.setStyle(TableStyle([
         ("BACKGROUND", (0, 0), (-1, 0), warning),
         ("BACKGROUND", (0, 1), (-1, -1), colors.HexColor("#F9FAFB")),
         ("BOX", (0, 0), (-1, -1), 0.5, line_color),
-        ("LEFTPADDING", (0, 0), (-1, -1), 10),
-        ("RIGHTPADDING", (0, 0), (-1, -1), 10),
-        ("TOPPADDING", (0, 0), (-1, -1), 8),
-        ("BOTTOMPADDING", (0, 0), (-1, -1), 8),
+        ("LEFTPADDING", (0, 0), (-1, -1), 9),
+        ("RIGHTPADDING", (0, 0), (-1, -1), 9),
+        ("TOPPADDING", (0, 0), (-1, -1), 7),
+        ("BOTTOMPADDING", (0, 0), (-1, -1), 7),
     ]))
     story.append(note)
     doc.build(story)
@@ -208,7 +230,7 @@ def main():
     parser.add_argument("--input", required=True, type=Path)
     parser.add_argument("--output", required=True, type=Path)
     args = parser.parse_args()
-    build_report(json.loads(args.input.read_text(encoding="utf-8")), args.output)
+    build_invoice(json.loads(args.input.read_text(encoding="utf-8")), args.output)
     print(args.output.resolve())
 
 

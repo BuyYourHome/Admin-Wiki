@@ -2,8 +2,8 @@
 
 ## Packet Status
 
-- Status: `Josh confirmed final times - payable Project Cost Allocation Report awaiting Wes approval`
-- Workflow: `Time Card`, generating a payable Project Cost Allocation Report and invoice
+- Status: `Historical source package - consolidated into semimonthly invoice INV-JKLLC-20260731-001`
+- Workflow: `Historical weekly Time Card source`; current payable presentation is the semimonthly invoice `INV-JKLLC-20260731-001`
 - Created: 2026-07-27
 - Source type: Routed free-text Time Card email; no attachment
 
@@ -116,7 +116,7 @@ The entries through the final correction-by-exception delivery preserve the deci
 - Regenerated report/invoice `PCA-JK-20260731-TENSITY-001` with invoice date July 31, 2026, issuer Josh Kennedy, customer Buy Your Home, status `Draft - Awaiting Wes Approval`, and amount due `$1,250.00`. Visual validation passed.
 - Email Monitor sent the regenerated payable report/invoice to Wes only under delivery request `IE-EMAIL-20260801-JOSH-TIMECARD-WES-APPROVAL-001` and subject `Invoice Approval - Josh Kennedy`.
 - OfficeAssist Sent Items verification passed at `2026-08-01T17:56:29Z`; message id `AQMkADZkMGMwNDI3LWU5ZjctNDgzMC1iMjdkLTY0NmRiN2IwNmIyZgBGAAADKGOvWJYjX0aEKaRpd0MYQQcAVSXargQY20aF7RLCkro4ggAAAgEJAAAAVSXargQY20aF7RLCkro4ggACgUDacAAAAA==`. The required 4,190-byte PDF was attached, with no CC or BCC.
-- Josh's final accuracy confirmation was received on 2026-08-02 with no correction requested. Teams filing, project-workbook posting, and payment remain incomplete while Wes approval is pending. If Wes does not approve, correct, or deny by the first Invoice Entry processing check on Monday, apply the current automatic-finalization rule.
+- Josh's final accuracy confirmation was received on 2026-08-02 with no correction requested. Wes replaced the weekly payable presentation on 2026-08-03 with one semimonthly invoice for July 16-31. This weekly report is historical and must not be finalized, filed, posted, or paid as a separate obligation.
 
 ## Active Working Artifact Retention
 

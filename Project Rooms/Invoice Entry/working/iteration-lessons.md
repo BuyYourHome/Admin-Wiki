@@ -319,3 +319,13 @@ Lessons:
 - Allocate the fixed weekly `$1,250.00` cost proportionally across accepted project and BackOffice hours so the allocation reports reconcile to the weekly service cost without creating a second payment obligation.
 - When later source evidence completes a held time line, match it to the existing worker/date/project/start-time record and amend that line once. Do not create a duplicate time record.
 - Keep the payable invoice approval trail separate from worker verification of time and project allocation.
+
+## 2026-08-03 - Semimonthly Time Card Invoice Consolidation
+
+Context: Wes replaced per-destination Project Cost Allocation Reports with one semimonthly payable invoice that also carries the project allocation detail.
+
+- Use periods 1st-15th and 16th-last calendar day; do not finalize before the period closes.
+- For Josh, show `Josh Kennedy LLC` as issuer and `profcyber0077@gmail.com` as invoice contact regardless of the mailbox used to submit time.
+- Keep one payable invoice per period and show project/BackOffice allocations inside it. Do not create separate destination payables.
+- When converting older weekly packets, preserve their source and delivery evidence but explicitly supersede their payable identity and reconcile any filed PDFs or workbook rows before new posting.
+- Display exact accumulated time as hours and minutes on the invoice; keep decimal hours only as structured calculation data.

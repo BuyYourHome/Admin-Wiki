@@ -52,7 +52,7 @@ Consume vendor-invoice email handoffs from Email Monitor or OfficeAssist. Use an
 
 ### Time Card
 
-Run only from an Email Monitor handoff. Accumulate accepted time by worker and week, split time by project or BackOffice destination, and regenerate one Project Cost Allocation Report per destination. Under the current rule, each destination report is also the payable invoice; together the reports must reconcile to Josh Kennedy's fixed `$1,250.00` weekly amount. Do not create a separate biweekly service-payment invoice.
+Run only from an Email Monitor handoff. Accumulate accepted time by worker for semimonthly periods: the 1st-15th and the 16th-last calendar day. Generate one payable invoice for the complete period, with project and BackOffice allocation detail inside that invoice. For Josh, the issuer is `Josh Kennedy LLC`, the invoice contact is `profcyber0077@gmail.com`, and Buy Your Home is the customer even when time arrives from the IRA Manager mailbox. The invoice cannot become final before the period closes and requires Wes approval before filing, posting, or payment eligibility.
 
 ### Statement Processing
 

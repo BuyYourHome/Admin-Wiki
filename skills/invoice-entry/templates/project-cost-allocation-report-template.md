@@ -1,39 +1,40 @@
-# Project Cost Allocation Report Template
+# Semimonthly Time Card Invoice Template
 
-Use this template for Josh Kennedy Time Card allocations.
+Use this template for Josh Kennedy LLC Time Card invoices.
 
 ## Purpose
 
-Distribute Josh's fixed weekly service cost among projects and BackOffice according to accepted Time Card hours without creating additional invoices or payables.
+Create one payable invoice for the semimonthly period while distributing its total among projects and BackOffice according to accepted Time Card hours.
 
 ## Required Labels
 
-- `PROJECT COST ALLOCATION REPORT`
-- `INTERNAL ALLOCATION ONLY`
-- `NOT AN INVOICE`
-- `NOT PAYABLE`
+- `INVOICE`
+- `DRAFT` until the period closes and Wes approves it
+- `Josh Kennedy LLC`
+- `profcyber0077@gmail.com`
+- `Buy Your Home`
 
 ## Required Content
 
-- worker,
-- report number,
-- report date,
-- week-ending date,
-- project or BackOffice destination,
+- issuer and contact email,
+- invoice number,
+- invoice date,
+- semimonthly period,
+- project and BackOffice allocation summary,
 - work dates, descriptions, and hours,
 - allocated cost by line,
-- allocated destination total,
-- weekly cost and proportional-allocation method,
+- total amount due,
+- period cost and proportional-allocation method,
 - source traceability,
 - statement that the report does not authorize or request payment.
 
 ## Allocation Rule
 
-For Josh, distribute the fixed `$1,250.00` weekly service cost proportionally:
+For Josh, total the fixed `$1,250.00` weekly service amounts included in the semimonthly period, then distribute the invoice total proportionally:
 
-`destination allocation = weekly cost x destination hours / total accepted weekly hours`
+`destination allocation = invoice total x destination hours / total accepted period hours`
 
-Round line allocations to cents and adjust the final line only when needed so all destination reports reconcile exactly to `$1,250.00`.
+Round line allocations to cents and adjust the final line only when needed so every line and destination reconciles exactly to the single invoice total.
 
 ## Generator
 

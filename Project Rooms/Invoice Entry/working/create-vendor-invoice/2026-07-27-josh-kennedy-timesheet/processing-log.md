@@ -95,3 +95,9 @@ Historical entries record the rules in effect when each action occurred. The 202
 - No sender correction is pending as of `2026-08-02T18:46:29Z`.
 - Did not regenerate or resend the PDF, file it to Teams, edit a project workbook, approve payment, or mark the report final.
 - Continue waiting through Sunday for Wes to approve, correct, or deny. If no Wes decision exists at the first Invoice Entry processing check on Monday, apply `Final - No Corrections Received` and continue under the normal filing and spreadsheet rules.
+
+## 2026-08-03 - Superseded By Semimonthly Invoice
+
+- Wes replaced the weekly payable-report design and Monday automatic-finalization rule with one payable invoice for each 1st-15th or 16th-last-day semimonthly period.
+- The accepted and Josh-confirmed July 27-31 time is now source detail inside draft invoice `INV-JKLLC-20260731-001` for the July 16-31 period.
+- Do not finalize, file, post, or pay `PCA-JK-20260731-TENSITY-001` as a separate obligation. Its earlier delivery remains historical evidence only.

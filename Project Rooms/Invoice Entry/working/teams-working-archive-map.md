@@ -97,3 +97,12 @@ The files were copied, verified by file count and byte total, and removed from t
 | Tim vendor-verification and Josh July 28 completion source records | `Source Documents\2026-07-30 Tim Verification And Josh Time Completion\email` | 2 | 2,372 | routed source evidence |
 
 Each file was hash-verified at the archive destination before its working copy was removed. Durable packet, delivery, and status records remain in the Invoice Entry project room.
+
+## Semimonthly Time Card Draft Cleanup Recorded 2026-08-03
+
+| Local source under `Project Rooms\Invoice Entry` | Teams destination under `Invoice Entry Working Archive` | Files | Bytes | Category |
+| --- | --- | ---: | ---: | --- |
+| July 16-31 Josh Kennedy LLC invoice PDF, structured input, and two visual-QA renders | `Generated\2026-08-03-Josh-Semimonthly-Draft` | 4 | 348,155 | semimonthly Time Card invoice draft and QA evidence |
+| Superseded week-ending July 31 allocation JSON and two delivery working records | `Generated\2026-08-03-JK-Week31-Superseded-Working-Records` | 3 | 5,768 | superseded weekly generated and delivery working artifacts |
+
+Both archive destinations were verified by file count and byte total before the generated local copies were removed. The OfficeAssist Sent Items copy remains the authoritative delivered draft; the durable Invoice Entry packet and delivery receipt remain in the project room.
