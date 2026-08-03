@@ -60,7 +60,9 @@ The top-level `Ask Jean` control reads the active Jean's Voice task from `config
 
 ## Dedicated Task
 
-- Task/thread id: pending until Wes explicitly requests a dedicated Dashboard task.
+- Task/thread id: `019fc52f-858a-72e1-926b-a0f6fbf0fd89`
+- Task title: `Start the Buy Your Home Dashboard Project Room.`
+- This is the canonical Dashboard task. It owns only the local Dashboard source, configuration, refresh tools, and Dashboard documentation.
 
 ## Local Access
 
