@@ -1,4 +1,4 @@
-﻿---
+---
 name: property-trade-evaluation
 description: Use for Buy Your Home property trade evaluations, trade/equity term sheets, transaction-structure comparisons, inspection or financing notes tied to a trade proposal, and English/Spanish review outputs under `Project Rooms\Property Trade Evaluation`.
 ---
@@ -41,3 +41,6 @@ Use this skill to keep trade proposal work separated from general property files
 Before durable work, follow Start PR Mode in `C:\Codex\Wiki Files\Project Room Chat Startup Rule.md`.
 
 Interpret unqualified requests under the Current PR Scope Rule in that file. Work on `main` unless Wes explicitly asks for a branch.
+## Delegation Contract
+
+Delegation Contract: Follow `C:\Codex\Wiki Files\Project Room Delegation Contract.md`. Jean may delegate this PR's work only to its registered task in `Project Rooms\Jean Wright\working\dispatcher-routing-map.md`; accept and return the same `dispatch_id` under the central contract.

@@ -84,3 +84,6 @@ When inventorying a computer, collect as available:
 ## Outputs
 
 Use `C:\Codex\Wiki Files\Project Rooms\Computers\outputs` for review-ready computer inventory reports, comparison tables, setup-state summaries, and handoffs.
+## Delegation Contract
+
+Delegation Contract: Follow `C:\Codex\Wiki Files\Project Room Delegation Contract.md`. Jean may delegate this PR's work only to its registered task in `Project Rooms\Jean Wright\working\dispatcher-routing-map.md`; accept and return the same `dispatch_id` under the central contract.

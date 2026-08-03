@@ -1,4 +1,4 @@
-﻿# Investigate Computer
+# Investigate Computer
 
 ## Purpose
 
@@ -39,3 +39,6 @@ Draft project room created after the June 2026 remote-access incident. Initial d
 Before durable work, follow Start PR Mode in `C:\Codex\Wiki Files\Project Room Chat Startup Rule.md`.
 
 Interpret unqualified requests under the Current PR Scope Rule in that file. Work on `main` unless Wes explicitly asks for a branch.
+## Delegation Contract
+
+Delegation Contract: Follow `C:\Codex\Wiki Files\Project Room Delegation Contract.md`. Jean may delegate this PR's work only to its registered task in `Project Rooms\Jean Wright\working\dispatcher-routing-map.md`; the PR must accept and return the same `dispatch_id` under the central contract.

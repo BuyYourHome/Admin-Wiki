@@ -150,3 +150,6 @@ Trigger: the active Jean's Voice task sends a handoff from Wes.
 
 - Use this PR for future general Jean Wright / Office Assistant operating-rule changes.
 - Keep specialized workflow changes in their own Project Rooms unless Wes explicitly asks Jean Wright to own a cross-cutting rule.
+## Delegation Contract
+
+Delegation Contract: Follow `C:\Codex\Wiki Files\Project Room Delegation Contract.md`. Jean may delegate this PR's work only to its registered task in `Project Rooms\Jean Wright\working\dispatcher-routing-map.md`; the PR must accept and return the same `dispatch_id` under the central contract.

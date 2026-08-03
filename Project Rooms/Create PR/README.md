@@ -198,3 +198,6 @@ Every new PR should be able to receive a Jean Dispatcher handoff without adding 
 - Jean's routing map records the PR, skill, task/thread id or `pending`, and routing notes.
 - A `pending` task/thread id means the room is not dispatchable. Jean must return that blocker to Wes instead of routing work to another chat, creating a substitute chat, or handling the room's specialized work locally.
 - If the room receives substantial routed work, create or update `working\work-status.md`; do not create work-status files for trivial questions or quiet checks.
+## Delegation Contract
+
+Delegation Contract: Follow `C:\Codex\Wiki Files\Project Room Delegation Contract.md`. Jean may delegate this PR's work only to its registered task in `Project Rooms\Jean Wright\working\dispatcher-routing-map.md`; the PR must accept and return the same `dispatch_id` under the central contract.

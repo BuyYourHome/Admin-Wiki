@@ -95,3 +95,6 @@ Before durable work, follow Start PR Mode in `C:\Codex\Wiki Files\Project Room C
 3. Confirm plugin cache after connector/plugin setup.
 4. Run one low-risk Admin wiki workflow from `Wes-VideoEditor` to confirm end-to-end operation.
 5. Free more `C:` drive space if practical; 20 GB or more is preferred for stable ongoing use.
+## Delegation Contract
+
+Delegation Contract: Follow `C:\Codex\Wiki Files\Project Room Delegation Contract.md`. Jean may delegate this PR's work only to its registered task in `Project Rooms\Jean Wright\working\dispatcher-routing-map.md`; the PR must accept and return the same `dispatch_id` under the central contract.

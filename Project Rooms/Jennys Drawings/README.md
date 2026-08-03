@@ -79,3 +79,6 @@ Before durable work, follow Start PR Mode in `C:\Codex\Wiki Files\Project Room C
 2. Confirm publication permission for Jenny's drawings before any external release.
 3. Resolve the unclear handwritten date on JD-004 if a closer source becomes available.
 4. Revise the review manuscript only from authoritative sources and approved editorial decisions.
+## Delegation Contract
+
+Delegation Contract: Follow `C:\Codex\Wiki Files\Project Room Delegation Contract.md`. Jean may delegate this PR's work only to its registered task in `Project Rooms\Jean Wright\working\dispatcher-routing-map.md`; the PR must accept and return the same `dispatch_id` under the central contract.

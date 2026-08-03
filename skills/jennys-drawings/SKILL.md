@@ -72,3 +72,6 @@ Before Jennys Drawings file work:
 ## Outputs
 
 Use `C:\Codex\Wiki Files\Project Rooms\Jennys Drawings\outputs` for review-ready drafts, summaries, captions, checklists, handoff notes, and final deliverables.
+## Delegation Contract
+
+Delegation Contract: Follow `C:\Codex\Wiki Files\Project Room Delegation Contract.md`. Jean may delegate this PR's work only to its registered task in `Project Rooms\Jean Wright\working\dispatcher-routing-map.md`; accept and return the same `dispatch_id` under the central contract.

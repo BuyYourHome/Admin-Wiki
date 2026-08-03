@@ -71,3 +71,6 @@ Before durable work, follow Start PR Mode in `C:\Codex\Wiki Files\Project Room C
 3. Gather source material for Chapters 1 through 3 and later portions of the book.
 4. Gather corroborating documents, photographs, and family testimony.
 5. Confirm the intended audience, full-book scope, and final narrative point of view.
+## Delegation Contract
+
+Delegation Contract: Follow `C:\Codex\Wiki Files\Project Room Delegation Contract.md`. Jean may delegate this PR's work only to its registered task in `Project Rooms\Jean Wright\working\dispatcher-routing-map.md`; the PR must accept and return the same `dispatch_id` under the central contract.

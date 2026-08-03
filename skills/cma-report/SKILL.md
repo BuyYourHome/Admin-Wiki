@@ -1,4 +1,4 @@
-﻿---
+---
 name: cma-report
 description: Create, rerun, finalize, and file Buy Your Home CMA report and related real-estate property report deliverables. Use when Codex prepares or updates a CMA report, valuation report, lender report, property packet, creditworthiness report tied to a property, or other formal report for a Buy Your Home property, including copying the completed report into the Teams-synced property Owning folder.
 ---
@@ -75,3 +75,6 @@ The script returns the destination path when the copy succeeds.
 Before durable work, follow Start PR Mode in `C:\Codex\Wiki Files\Project Room Chat Startup Rule.md`.
 
 Interpret unqualified requests under the Current PR Scope Rule in that file. Work on `main` unless Wes explicitly asks for a branch.
+## Delegation Contract
+
+Delegation Contract: Follow `C:\Codex\Wiki Files\Project Room Delegation Contract.md`. Jean may delegate this PR's work only to its registered task in `Project Rooms\Jean Wright\working\dispatcher-routing-map.md`; accept and return the same `dispatch_id` under the central contract.

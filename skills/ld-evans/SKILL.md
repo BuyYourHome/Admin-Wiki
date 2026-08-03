@@ -67,3 +67,6 @@ Whenever the LD Evans manuscript or another review-ready file under `outputs\` i
 8. Treat the manuscript or deliverable update as incomplete until Email Monitor returns a verified OfficeAssist Sent Items result with the sent message id and timestamp. Report any send or verification failure immediately in the LD Evans thread.
 
 Working-note, transcript, source-inventory, and administrative-only changes do not trigger an email unless they also create or materially change a review-ready file under `outputs\`. This boundary prevents delivery-log or housekeeping changes from creating a recursive email loop.
+## Delegation Contract
+
+Delegation Contract: Follow `C:\Codex\Wiki Files\Project Room Delegation Contract.md`. Jean may delegate this PR's work only to its registered task in `Project Rooms\Jean Wright\working\dispatcher-routing-map.md`; accept and return the same `dispatch_id` under the central contract.

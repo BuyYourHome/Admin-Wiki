@@ -125,3 +125,6 @@ At the end of a run, preserve durable evidence, archive or remove generated work
 ## Start PR Pointer
 
 Before durable work, follow `C:\Codex\Wiki Files\Project Room Chat Startup Rule.md`. Work on `main` unless Wes explicitly asks for another branch.
+## Delegation Contract
+
+Delegation Contract: Follow `C:\Codex\Wiki Files\Project Room Delegation Contract.md`. Jean may delegate this PR's work only to its registered task in `Project Rooms\Jean Wright\working\dispatcher-routing-map.md`; the PR must accept and return the same `dispatch_id` under the central contract.

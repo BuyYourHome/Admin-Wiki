@@ -66,3 +66,6 @@ Use this mode when OfficeAssist routes a Brynda Suit email source into the exist
 ## Outputs
 
 Use `C:\Codex\Wiki Files\Project Rooms\Brynda Suit\outputs` for review-ready drafts, summaries, checklists, handoff notes, and final deliverables.
+## Delegation Contract
+
+Delegation Contract: Follow `C:\Codex\Wiki Files\Project Room Delegation Contract.md`. Jean may delegate this PR's work only to its registered task in `Project Rooms\Jean Wright\working\dispatcher-routing-map.md`; accept and return the same `dispatch_id` under the central contract.

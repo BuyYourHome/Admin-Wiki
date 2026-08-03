@@ -70,6 +70,8 @@ In a PR-dedicated chat, interpret unqualified requests as scoped to the current 
 
 Use this rule when Wes gives Jean Wright / Office Assistant a request that belongs to a specialized Project Room, or when Wes asks Jean to coordinate work across Project Rooms.
 
+Every Project Room is also subject to [[Project Room Delegation Contract]]. The contract is the common Jean-to-PR agreement; this rule provides the dispatch mechanics.
+
 Jean is the dispatcher, not the owner of specialized PR work. Jean may classify the request, identify the likely owning Project Room, prepare a handoff, and send or queue that handoff through available Codex task tools when a dedicated task id is known. Jean must not perform durable edits inside another PR's files unless Wes explicitly authorizes that cross-PR edit or the work is a Wes-authorized global governance update.
 
 Before routing:

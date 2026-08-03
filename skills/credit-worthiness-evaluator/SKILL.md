@@ -1,4 +1,4 @@
-﻿---
+---
 name: credit-worthiness-evaluator
 description: Use for Buy Your Home tenant-buyer creditworthiness and ability-to-repay reviews, especially buyer-specific Contract for Deed or seller-financed evaluations using the Credit Worthiness Evaluator project room. Trigger when Wes asks to refresh buyer documents, rerun the evaluator, evaluate a buyer, update a buyer credit report, produce an Investment Services, LLC buyer creditworthiness report, or create a Credit Worthiness handoff for Contract for Deed closing documents.
 ---
@@ -317,3 +317,6 @@ Summarize:
 Before durable work, follow Start PR Mode in `C:\Codex\Wiki Files\Project Room Chat Startup Rule.md`.
 
 Interpret unqualified requests under the Current PR Scope Rule in that file. Work on `main` unless Wes explicitly asks for a branch.
+## Delegation Contract
+
+Delegation Contract: Follow `C:\Codex\Wiki Files\Project Room Delegation Contract.md`. Jean may delegate this PR's work only to its registered task in `Project Rooms\Jean Wright\working\dispatcher-routing-map.md`; accept and return the same `dispatch_id` under the central contract.

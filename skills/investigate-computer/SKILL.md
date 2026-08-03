@@ -1,4 +1,4 @@
-﻿---
+---
 name: investigate-computer
 description: Daily or on-demand Windows compromise diagnostics for Wes's computer. Use when Wes asks to run Investigate Computer, check for ScreenConnect/RMM or other remote-access persistence, verify cleanup after reboot, document computer incident evidence, or prepare an OfficeAssist email report about security diagnostics.
 ---
@@ -89,3 +89,6 @@ Avoid overclaiming identity. The `nsciotti` string in the installer name is an e
 Before durable work, follow Start PR Mode in `C:\Codex\Wiki Files\Project Room Chat Startup Rule.md`.
 
 Interpret unqualified requests under the Current PR Scope Rule in that file. Work on `main` unless Wes explicitly asks for a branch.
+## Delegation Contract
+
+Delegation Contract: Follow `C:\Codex\Wiki Files\Project Room Delegation Contract.md`. Jean may delegate this PR's work only to its registered task in `Project Rooms\Jean Wright\working\dispatcher-routing-map.md`; accept and return the same `dispatch_id` under the central contract.

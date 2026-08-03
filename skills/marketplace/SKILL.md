@@ -113,3 +113,6 @@ When receiving a Jean handoff, confirm the `dispatch_id`, source listing or mess
 ## Outputs
 
 Use `C:\Codex\Wiki Files\Project Rooms\Marketplace\outputs` for review-ready opportunity summaries, offer recommendations, seller-agreement reports, and handoffs.
+## Delegation Contract
+
+Delegation Contract: Follow `C:\Codex\Wiki Files\Project Room Delegation Contract.md`. Jean may delegate this PR's work only to its registered task in `Project Rooms\Jean Wright\working\dispatcher-routing-map.md`; accept and return the same `dispatch_id` under the central contract.

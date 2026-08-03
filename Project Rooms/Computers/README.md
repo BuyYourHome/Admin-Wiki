@@ -75,3 +75,6 @@ Before durable work, follow Start PR Mode in `C:\Codex\Wiki Files\Project Room C
 1. Seed `working\computer-register.md` with known business computers.
 2. Define the minimum inventory fields to collect during each computer inspection.
 3. Receive handoffs from Codex Environment setup runs when a target computer's configuration changes.
+## Delegation Contract
+
+Delegation Contract: Follow `C:\Codex\Wiki Files\Project Room Delegation Contract.md`. Jean may delegate this PR's work only to its registered task in `Project Rooms\Jean Wright\working\dispatcher-routing-map.md`; the PR must accept and return the same `dispatch_id` under the central contract.

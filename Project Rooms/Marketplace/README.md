@@ -138,3 +138,6 @@ When Wes confirms that a Marketplace listing was purchased:
 1. Confirm Wes's buying criteria: tool categories, brands, search radius, minimum expected profit, minimum margin, maximum cash outlay, and preferred pickup areas.
 2. Confirm the authorized Facebook/Messenger browser session.
 3. Start the first Marketplace search and record listing evaluations in `working\listing-evaluation-register.md`.
+## Delegation Contract
+
+Delegation Contract: Follow `C:\Codex\Wiki Files\Project Room Delegation Contract.md`. Jean may delegate this PR's work only to its registered task in `Project Rooms\Jean Wright\working\dispatcher-routing-map.md`; the PR must accept and return the same `dispatch_id` under the central contract.

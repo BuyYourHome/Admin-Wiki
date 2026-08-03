@@ -1,8 +1,10 @@
 # Jean Dispatcher Routing Map
 
-Updated: 2026-07-24
+Updated: 2026-08-03
 
 Use this map when Jean Wright routes work to a specialized Project Room. A task/thread id of `pending` is a visible routing blocker: Jean must not create a substitute task, perform the specialized work locally, or send the work to another PR. Create PR must record a usable dedicated task/thread id before the room becomes dispatchable.
+
+This is the live task registry for the universal [[Project Room Delegation Contract]]. Every listed Project Room is subject to that contract, whether its task is registered, pending, parent-routed, or otherwise explicitly blocked.
 
 | Project Room | Matching Skill | Known Task/Thread Id | Dispatcher Route | Notes |
 | --- | --- | --- | --- | --- |

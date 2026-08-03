@@ -79,3 +79,6 @@ Start PR: Before durable work, follow Start PR Mode in `C:\Codex\Wiki Files\Proj
 1. Review the initial layout and functional grouping with Wes.
 2. Record requested changes in `working\missing-context.md` or the action log.
 3. Keep dashboard data derived from canonical Project Room READMEs.
+## Delegation Contract
+
+Delegation Contract: Follow `C:\Codex\Wiki Files\Project Room Delegation Contract.md`. Jean may delegate this PR's work only to its registered task in `Project Rooms\Jean Wright\working\dispatcher-routing-map.md`; the PR must accept and return the same `dispatch_id` under the central contract.

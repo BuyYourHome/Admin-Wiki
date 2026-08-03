@@ -1,4 +1,4 @@
-﻿---
+---
 name: new-project
 description: Start and maintain the Buy Your Home New Project project room. Use when Wes asks to use, develop, scope, organize, inventory, or produce work from `Project Rooms\New Project`, or when a request explicitly refers to the New Project room or New Project skill.
 ---
@@ -48,3 +48,6 @@ Read these files first:
 Before durable work, follow Start PR Mode in `C:\Codex\Wiki Files\Project Room Chat Startup Rule.md`.
 
 Interpret unqualified requests under the Current PR Scope Rule in that file. Work on `main` unless Wes explicitly asks for a branch.
+## Delegation Contract
+
+Delegation Contract: Follow `C:\Codex\Wiki Files\Project Room Delegation Contract.md`. Jean may delegate this PR's work only to its registered task in `Project Rooms\Jean Wright\working\dispatcher-routing-map.md`; accept and return the same `dispatch_id` under the central contract.

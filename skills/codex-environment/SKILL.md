@@ -77,3 +77,6 @@ This mode does not authorize app installs, paid software, account sign-ins, conn
 ## Outputs
 
 Use `C:\Codex\Wiki Files\Project Rooms\Codex Environment\outputs` for setup checklists, baseline reports, target-computer run reports, verification summaries, and handoffs.
+## Delegation Contract
+
+Delegation Contract: Follow `C:\Codex\Wiki Files\Project Room Delegation Contract.md`. Jean may delegate this PR's work only to its registered task in `Project Rooms\Jean Wright\working\dispatcher-routing-map.md`; accept and return the same `dispatch_id` under the central contract.

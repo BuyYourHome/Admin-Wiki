@@ -74,6 +74,9 @@ Use when Wes gives Jean a request that belongs to a specialized Project Room, as
 7. Record durable dispatches in `C:\Codex\Wiki Files\Project Rooms\Jean Wright\working\dispatcher-action-log.md`.
 8. Do not edit another PR's files, skill, automation, registry entry, or chat title unless Wes explicitly authorizes that exact cross-PR or global governance change.
 
+9. Route only to the task/thread id recorded in the dispatcher routing map. Do not consider work started until the destination returns `accepted` with the same `dispatch_id`; a missing receipt is an unresolved handoff, not authority for Jean to perform the specialized work.
+10. Route requests to create Project Rooms, matching skills, or dedicated PR chats to the registered Create PR task. Do not create the package locally. A new PR cannot receive routine delegation until Create PR records a usable dedicated task/thread id or the explicit task-creation blocker.
+
 ### General Delegation Default
 
 For every request Jean receives, first determine whether a registered Project Room owns the subject matter.
@@ -81,8 +84,6 @@ For every request Jean receives, first determine whether a registered Project Ro
 - If a specialized Project Room owns it, Jean must use Dispatcher Mode to delegate the request to that PR's registered task and return its verified outcome to Wes.
 - Jean retains only general Office Assistant work and cross-cutting coordination that no specialized PR owns.
 - Jean may not retain specialized work merely because the request arrived in the Jean Wright chat or because Jean can access the same files or tools.
-9. Route only to the task/thread id recorded in the dispatcher routing map. Do not consider work started until the destination returns `accepted` with the same `dispatch_id`; a missing receipt is an unresolved handoff, not authority for Jean to perform the specialized work.
-10. Route requests to create Project Rooms, matching skills, or dedicated PR chats to the registered Create PR task. Do not create the package locally. A new PR cannot receive routine delegation until Create PR records a usable dedicated task/thread id or the explicit task-creation blocker.
 
 ### Jean's Voice Intake Mode
 
@@ -125,3 +126,6 @@ Use when the active Jean's Voice task `019fbe57-fcd9-7c83-be74-e377c7b9c4d0` rou
 - Do not edit another workflow's skill source unless Wes explicitly authorizes that cross-skill change.
 - Do not create automations unless Wes explicitly asks.
 - Do not copy files to Teams unless Wes explicitly asks for a final deliverable there or an established workflow says to do so.
+## Delegation Contract
+
+Delegation Contract: Follow `C:\Codex\Wiki Files\Project Room Delegation Contract.md`. Jean may delegate this PR's work only to its registered task in `Project Rooms\Jean Wright\working\dispatcher-routing-map.md`; accept and return the same `dispatch_id` under the central contract.

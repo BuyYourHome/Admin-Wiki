@@ -78,3 +78,6 @@ Keep related routed email source notes, response drafts, and review questions un
 2. Update the source inventory before drafting outputs.
 3. Record missing facts, source documents, deadlines, decision points, or authority questions in `working\missing-context.md`.
 4. Draft review-ready outputs in `outputs\` only from authoritative sources.
+## Delegation Contract
+
+Delegation Contract: Follow `C:\Codex\Wiki Files\Project Room Delegation Contract.md`. Jean may delegate this PR's work only to its registered task in `Project Rooms\Jean Wright\working\dispatcher-routing-map.md`; the PR must accept and return the same `dispatch_id` under the central contract.

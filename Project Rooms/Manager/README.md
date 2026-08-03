@@ -117,3 +117,6 @@ Before durable work, follow Start PR Mode in `C:\Codex\Wiki Files\Project Room C
 1. Retrieve or preserve the MoU from the Sell Your Home channel as a controlling source.
 2. Confirm the exact legal name behind "Investment Services" when legal-document signature wording matters.
 3. Decide whether Tasks should remain on-demand or receive a separately authorized mailbox-monitoring automation.
+## Delegation Contract
+
+Delegation Contract: Follow `C:\Codex\Wiki Files\Project Room Delegation Contract.md`. Jean may delegate this PR's work only to its registered task in `Project Rooms\Jean Wright\working\dispatcher-routing-map.md`; the PR must accept and return the same `dispatch_id` under the central contract.
