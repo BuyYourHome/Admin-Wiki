@@ -61,14 +61,25 @@ function Get-ContextScript {
     return "window.DASHBOARD_CONTEXT = $payload;"
 }
 
+function Get-RootDashboardHtml {
+    $indexPath = Join-Path $dashboardSiteRoot 'index.html'
+    $html = [System.IO.File]::ReadAllText($indexPath, [Text.Encoding]::UTF8)
+    $baseTag = '<base href="/Project%20Rooms/Dashboard/site/">'
+    if ($html -match '<base\s+') {
+        return $html
+    }
+    return $html -replace '<head>', "<head>`r`n  $baseTag"
+}
+
 function Resolve-AllowedTarget {
     param([string]$RelativePath)
 
     if (-not $RelativePath) {
-        return Join-Path $dashboardSiteRoot 'index.html'
+        return '__dashboard_root__'
     }
 
     $normalized = $RelativePath -replace '\\', '/'
+    if ($normalized -eq 'index.html') { return '__dashboard_root__' }
     if ($normalized -eq 'Project Rooms/Dashboard/site/__dashboard-context.js') { return '__dashboard_context__' }
     if ($normalized -eq 'Project Rooms/Dashboard/site/__dashboard-refresh') { return '__dashboard_refresh__' }
 
@@ -126,6 +137,11 @@ try {
             }
 
             $target = Resolve-AllowedTarget -RelativePath $path
+            if ($target -eq '__dashboard_root__') {
+                $body = [Text.Encoding]::UTF8.GetBytes((Get-RootDashboardHtml))
+                Send-Response -Response $context.Response -StatusCode 200 -Body $body -ContentType 'text/html; charset=utf-8'
+                continue
+            }
             if ($target -eq '__dashboard_context__') {
                 $body = [Text.Encoding]::UTF8.GetBytes((Get-ContextScript -Request $context.Request))
                 Send-Response -Response $context.Response -StatusCode 200 -Body $body -ContentType 'application/javascript; charset=utf-8'
