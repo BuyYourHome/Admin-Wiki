@@ -83,7 +83,7 @@ WesStudio may also host a LAN read-only Dashboard at `http://10.0.0.105:8765/` f
 
 When the firewall rule already matches the approved scope and only the startup action needs to be refreshed, rerun `C:\Codex\Wiki Files\Project Rooms\Dashboard\tools\Register-DashboardLanHost.ps1 -SkipFirewallUpdate`.
 
-The LAN host is read-only. It serves the Dashboard site plus approved read-only document views only, rejects refresh writes, and disables host-only actions for remote clients. See `working\dashboard-lan-hosting.md` for architecture, validation, and rollback.
+The LAN host is read-only. It serves the Dashboard site plus approved read-only document views only, rejects refresh writes, and disables host-only actions for remote clients. On WesStudio itself, the LAN-host view may still open the deletion-preview workflow because that preview does not execute deletion. See `working\dashboard-lan-hosting.md` for architecture, validation, and rollback.
 
 ## Start PR Pointer
 

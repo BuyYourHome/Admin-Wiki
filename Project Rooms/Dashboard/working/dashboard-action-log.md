@@ -61,3 +61,8 @@
 - Updated the normal startup design so the scheduled task launches the LAN host through `Start-DashboardLanHostHidden.vbs` instead of attaching the host directly to a visible PowerShell console.
 - Documented the hidden-launch wrapper in the Dashboard README and LAN hosting notes.
 - Confirmed after the reboot that the live `http://10.0.0.105:8765/` listener remained healthy, but replacing the already registered scheduled task action still required an elevated Windows session; documented the exact `-SkipFirewallUpdate` rerun command for that admin follow-up.
+
+## 2026-08-03 - Local LAN Delete Preview
+
+- Updated the Dashboard UI so the LAN-host view keeps the deletion workflow preview enabled on WesStudio local access while leaving refresh disabled.
+- Remote LAN clients still have deletion review disabled, preserving the read-only remote restrictions.

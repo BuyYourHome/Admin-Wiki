@@ -15,6 +15,7 @@
   const initials = name => name.split(/\s+/).filter(Boolean).slice(0, 2).map(word => word[0]).join("").toUpperCase();
   const attentionLabel = attention => attention?.type === "approval-needed" ? "Approval needed" : "Confirmation needed";
   const isExternalHref = href => /^[a-z][a-z0-9+.-]*:/i.test(href || "");
+  const deletionPreviewAllowed = () => !dashboardContext.readOnly || dashboardContext.clientAccess === "local";
   const filteredRooms = () => {
     const query = state.query.trim().toLowerCase();
     return rooms.filter(room => {
@@ -192,12 +193,14 @@
       refreshButton.disabled = true;
       refreshButton.title = "Refresh is disabled in the LAN read-only host view.";
       const deleteButton = el("requestDeleteButton");
-      deleteButton.disabled = true;
-      deleteButton.title = "Deletion workflow preview is disabled in the LAN read-only host view.";
+      deleteButton.disabled = !deletionPreviewAllowed();
+      deleteButton.title = deletionPreviewAllowed()
+        ? "Deletion workflow preview remains available on the host machine. No deletion is executed here."
+        : "Deletion workflow preview is disabled in the LAN read-only host view.";
       if (!el("refreshStatus").textContent) {
         el("refreshStatus").textContent = dashboardContext.clientAccess === "remote"
           ? "Read-only LAN view. Refresh, deletion review, and host-only links are disabled."
-          : "LAN host mode is running. Use the local Dashboard launch tools on WesStudio for refresh and host changes.";
+          : "LAN host mode is running. Refresh stays disabled here, but local deletion preview remains available on WesStudio.";
       }
     }
   }

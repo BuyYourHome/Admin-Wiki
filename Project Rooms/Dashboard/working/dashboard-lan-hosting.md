@@ -32,6 +32,7 @@ The LAN host rejects write or host-management behavior:
 - `__dashboard-refresh` returns a read-only refusal.
 - Remote clients do not receive active Codex deep links.
 - Remote clients cannot use Dashboard refresh or deletion workflow controls.
+- Local WesStudio access through the LAN-host view may still use the deletion workflow preview because it prepares an audit plan only and does not delete anything.
 
 Local Dashboard management remains available through the existing local-only Dashboard launch tools on WesStudio.
 
