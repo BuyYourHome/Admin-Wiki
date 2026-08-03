@@ -329,3 +329,13 @@ Context: Wes replaced per-destination Project Cost Allocation Reports with one s
 - Keep one payable invoice per period and show project/BackOffice allocations inside it. Do not create separate destination payables.
 - When converting older weekly packets, preserve their source and delivery evidence but explicitly supersede their payable identity and reconcile any filed PDFs or workbook rows before new posting.
 - Display exact accumulated time as hours and minutes on the invoice; keep decimal hours only as structured calculation data.
+
+## 2026-08-03 - Approved Invoice Format Revision
+
+Context: Wes approved Josh Kennedy LLC invoice `INV-JKLLC-20260731-001` but requested a cleaner presentation after reviewing the initial two-page draft.
+
+- Place the vendor name and contact above `INVOICE` on the upper left so issuer identity is immediately clear.
+- Omit explanatory allocation, method, and traceability panels from the invoice; preserve that evidence in the durable packet instead.
+- Keep approval across format-only revisions when the invoice number, period, accepted time, allocations, and amount remain unchanged.
+- Re-render every revised PDF and visually check the whole document. This revision reduced the invoice from two pages to one without dropping any time or allocation rows.
+- Treat approval, filing/posting, payment, and paid status as separate states. An approved revision does not authorize or prove the later states.

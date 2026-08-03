@@ -75,12 +75,12 @@ def build_invoice(data, output_path):
         leading=11,
         textColor=colors.HexColor("#111827"),
     )
-    muted = ParagraphStyle(
-        "Muted",
+    vendor = ParagraphStyle(
+        "Vendor",
         parent=body,
-        fontSize=7.8,
-        leading=9.5,
-        textColor=colors.HexColor("#6B7280"),
+        fontSize=10,
+        leading=13,
+        textColor=colors.HexColor("#124E57"),
     )
     title = ParagraphStyle(
         "InvoiceTitle",
@@ -94,15 +94,18 @@ def build_invoice(data, output_path):
     deep = colors.HexColor("#124E57")
     accent = colors.HexColor("#1F6F78")
     pale = colors.HexColor("#E9F5F6")
-    warning = colors.HexColor("#FFF4E5")
     line_color = colors.HexColor("#D1D5DB")
 
     story = []
+    story.extend([
+        Paragraph(f"<b>{issuer}</b><br/>{contact_email}", vendor),
+        Spacer(1, 0.09 * inch),
+    ])
     header = Table(
         [[
             Paragraph("INVOICE", title),
             Paragraph(
-                f"<b>{status_text}</b><br/><b>{issuer}</b><br/>{contact_email}",
+                f"<b>{status_text}</b>",
                 ParagraphStyle("Right", parent=body, alignment=2, leading=13, textColor=deep),
             ),
         ]],
@@ -203,25 +206,7 @@ def build_invoice(data, output_path):
         ("TOPPADDING", (0, 0), (-1, -1), 7),
         ("BOTTOMPADDING", (0, 0), (-1, -1), 7),
     ]))
-    story.extend([total, Spacer(1, 0.18 * inch)])
-
-    note = Table(
-        [[Paragraph(
-            "<b>PAYABLE INVOICE WITH PROJECT ALLOCATION:</b> This is one invoice for the complete semimonthly period. The allocation summary divides the cost among supported projects and BackOffice without creating separate payment obligations.",
-            body,
-        )], [Paragraph(required(data, "method_note"), body)], [Paragraph(required(data, "traceability"), muted)]],
-        colWidths=[6.9 * inch],
-    )
-    note.setStyle(TableStyle([
-        ("BACKGROUND", (0, 0), (-1, 0), warning),
-        ("BACKGROUND", (0, 1), (-1, -1), colors.HexColor("#F9FAFB")),
-        ("BOX", (0, 0), (-1, -1), 0.5, line_color),
-        ("LEFTPADDING", (0, 0), (-1, -1), 9),
-        ("RIGHTPADDING", (0, 0), (-1, -1), 9),
-        ("TOPPADDING", (0, 0), (-1, -1), 7),
-        ("BOTTOMPADDING", (0, 0), (-1, -1), 7),
-    ]))
-    story.append(note)
+    story.append(total)
     doc.build(story)
 
 
@@ -229,8 +214,12 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--input", required=True, type=Path)
     parser.add_argument("--output", required=True, type=Path)
+    parser.add_argument("--status")
     args = parser.parse_args()
-    build_invoice(json.loads(args.input.read_text(encoding="utf-8")), args.output)
+    data = json.loads(args.input.read_text(encoding="utf-8"))
+    if args.status:
+        data["status"] = args.status
+    build_invoice(data, args.output)
     print(args.output.resolve())
 
 

@@ -9,7 +9,7 @@ Create one payable invoice for the semimonthly period while distributing its tot
 ## Required Labels
 
 - `INVOICE`
-- `DRAFT` until the period closes and Wes approves it
+- `DRAFT` until the period closes and Wes approves it; use `APPROVED BY WES` after approval
 - `Josh Kennedy LLC`
 - `profcyber0077@gmail.com`
 - `Buy Your Home`
@@ -25,8 +25,15 @@ Create one payable invoice for the semimonthly period while distributing its tot
 - allocated cost by line,
 - total amount due,
 - period cost and proportional-allocation method,
-- source traceability,
-- statement that the report does not authorize or request payment.
+- source traceability in the durable Invoice Entry packet rather than an explanatory panel on the invoice.
+
+## Layout Rule
+
+- Place the vendor name and contact email above `INVOICE` on the upper left.
+- Keep the approval status aligned on the right of the `INVOICE` heading.
+- Show the project allocation summary and time detail tables.
+- Do not add allocation explanations, traceability notes, method notes, or other explanatory panels at the bottom of the invoice.
+- Preserve exact hours-and-minutes display, the stable invoice number, period, customer, project totals, and amount due across format-only revisions.
 
 ## Allocation Rule
 

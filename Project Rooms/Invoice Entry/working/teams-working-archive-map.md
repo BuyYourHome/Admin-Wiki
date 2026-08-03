@@ -106,3 +106,11 @@ Each file was hash-verified at the archive destination before its working copy w
 | Superseded week-ending July 31 allocation JSON and two delivery working records | `Generated\2026-08-03-JK-Week31-Superseded-Working-Records` | 3 | 5,768 | superseded weekly generated and delivery working artifacts |
 
 Both archive destinations were verified by file count and byte total before the generated local copies were removed. The OfficeAssist Sent Items copy remains the authoritative delivered draft; the durable Invoice Entry packet and delivery receipt remain in the project room.
+
+## Approved Semimonthly Invoice Format Archive Recorded 2026-08-03
+
+| Local source under `Project Rooms\Invoice Entry` | Teams destination under `Invoice Entry Working Archive` | Files | Bytes | Category |
+| --- | --- | ---: | ---: | --- |
+| Approved July 16-31 Josh Kennedy LLC invoice PDF and one-page visual-QA render | `Generated\2026-08-03-Josh-Semimonthly-Approved-Format` | 2 | 250,796 | approved semimonthly Time Card invoice revision and QA evidence |
+
+Both archived files were SHA-256 verified against the generated working copies. The revised OfficeAssist Sent Items attachment remains the authoritative delivered copy; filing, workbook posting, payment, and paid-status action were not performed.
