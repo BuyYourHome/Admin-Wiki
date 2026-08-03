@@ -2,7 +2,7 @@
 
 Updated: 2026-07-24
 
-Use this map when Jean Wright routes work to a specialized Project Room. If a task/thread id is `pending`, Jean may prepare the handoff but should not create a new task unless Wes explicitly asks.
+Use this map when Jean Wright routes work to a specialized Project Room. A task/thread id of `pending` is a visible routing blocker: Jean must not create a substitute task, perform the specialized work locally, or send the work to another PR. Create PR must record a usable dedicated task/thread id before the room becomes dispatchable.
 
 | Project Room | Matching Skill | Known Task/Thread Id | Dispatcher Route | Notes |
 | --- | --- | --- | --- | --- |
@@ -20,7 +20,7 @@ Use this map when Jean Wright routes work to a specialized Project Room. If a ta
 | Contract for Deed | `contract-for-deed` | pending | Route seller-financing and CFD package work here. | Uses Email Monitor for delivery. |
 | Create PR | `create-pr` | `019f583e-7f14-7ae2-aa24-4e991544e306` | Route PR creation, standardization, and relationship-diagram mode here. | New PRs should be dispatcher-ready. |
 | Credit Worthiness Evaluator | `credit-worthiness-evaluator` | pending | Route buyer credit-worthiness evaluation work here. | Coordinate with Contract for Deed only under scoped handoff. |
-| Dashboard | `dashboard` | pending | Route local Project Room functionality dashboard refresh and design work here. | Local-only unless Wes explicitly authorizes publication. |
+| Dashboard | `dashboard` | pending | Do not route until Create PR records a dedicated Dashboard task/thread id. | Existing room and skill are present, but the required dedicated chat was not created. Local-only unless Wes explicitly authorizes publication. |
 | Doc Scan | `doc-scan` | pending | Route scanned-document process design and active scan-processing questions here. | Invoice handoffs route to Invoice Entry. |
 | Email Monitor | `email-monitor` | `019ecba7-f1cc-7ac1-aaf7-d89a3f21b582` | Route mailbox summaries, email intake routing, and Email Delivery mode here. | Email delivery authority for OfficeAssist sends. |
 | Entity Relationship | `entity-relationship` | pending | Route entity relationship diagrams and entity-mapping work here. | Planning/diagram PR. |
@@ -50,4 +50,4 @@ Use this map when Jean Wright routes work to a specialized Project Room. If a ta
 - Default mode: `route-and-return`.
 - Use `route-and-monitor` only when Wes asks Jean to monitor or when the handoff is an email/delivery safety workflow that must report verification.
 - Use `multi-pr-bundle` only when the destination scopes are distinct and each handoff can be made independently.
-- If no task/thread id is known, Jean reports the destination and blocker instead of creating a new task unless Wes explicitly asks.
+- If no task/thread id is known or it is `pending`, Jean reports the destination and blocker instead of creating a new task, performing the work locally, or substituting another PR.

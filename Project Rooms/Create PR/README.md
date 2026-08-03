@@ -157,9 +157,10 @@ Output standards:
 15. Update `Agents and Automations Registry.md` when the workflow is agent-like, repeatable, or expected to have a dedicated chat.
 16. Add an `Admin Home.md` link when the room should be easy to find from the wiki start page.
 17. Create and commit the scoped durable files locally before attempting a dedicated Codex task.
-18. Create a new Codex chat using the Project Room Chat Startup Rule startup text only when Wes explicitly asks or when no existing chat should own the work; follow the Dedicated Chat Connector Rule so connector delays do not block setup.
-19. If a dedicated chat is created, record the returned thread id in the README, registry, and Jean routing map, then commit that metadata update separately.
-20. Push only when Wes explicitly asks, says the work is finished, or the applicable rule defines the deliverable as ready to publish.
+18. A Project Room is `pending setup`, not dispatchable, until it has a dedicated task/thread id recorded in its README, registry entry, and Jean routing map. Do not route specialized work to a pending room.
+19. Create a new Codex chat using the Project Room Chat Startup Rule startup text only when Wes explicitly asks; if chat creation has not been authorized or does not return a usable id, record the explicit blocker and report that the PR package is not dispatchable.
+20. If a dedicated chat is created, record the returned thread id in the README, registry, and Jean routing map, then commit that metadata update separately.
+21. Push only when Wes explicitly asks, says the work is finished, or the applicable rule defines the deliverable as ready to publish.
 
 ## Existing PR Rename Or Move Rule
 
@@ -195,4 +196,5 @@ Every new PR should be able to receive a Jean Dispatcher handoff without adding 
 - The central Dispatcher Intake And Return Rule governs incoming Jean handoffs.
 - The registry entry identifies the Project Room, matching skill, status, schedule, and primary definition.
 - Jean's routing map records the PR, skill, task/thread id or `pending`, and routing notes.
+- A `pending` task/thread id means the room is not dispatchable. Jean must return that blocker to Wes instead of routing work to another chat, creating a substitute chat, or handling the room's specialized work locally.
 - If the room receives substantial routed work, create or update `working\work-status.md`; do not create work-status files for trivial questions or quiet checks.

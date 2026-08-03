@@ -128,9 +128,11 @@ Current behavior:
 - Jean uses `Dispatcher Mode` when a request belongs to another PR or requires cross-PR coordination.
 - Jean assigns a stable `dispatch_id` before handoff.
 - Jean defaults to `route-and-return`; Jean monitors only when Wes asks or when a workflow requires delivery/verification return.
-- Destination PRs accept or reject handoffs under the central Dispatcher Intake And Return Rule.
+- Jean routes only to the owning task/thread id in the dispatcher routing map; a missing or `pending` id is a visible blocker, not authority to create a substitute chat or perform the specialized work in Jean.
+- Destination PRs must return `accepted` with the same `dispatch_id` before substantive work, then return a final status under the central Dispatcher Intake And Return Rule.
 - Destination PRs return `accepted`, `done`, `blocked`, `needs Wes`, `rejected as wrong room`, or `routed onward with approval`.
 - If a destination task/thread id is unknown, Jean reports the destination and blocker instead of creating a new task unless Wes explicitly asks.
+- Create PR exclusively owns new Project Room package setup. A new room remains `pending setup` and non-dispatchable until Create PR records its dedicated task/thread id or the explicit task-creation blocker.
 
 ## REI Text Message Watcher
 

@@ -112,6 +112,13 @@ Use this repo when formulating solutions for office-admin workflows, SOPs, autom
 - Build source inventory, duplicate/conflict log, and missing-context notes before drafting final outputs.
 - Draft from authoritative sources only. Mark unsupported claims instead of blending or guessing.
 
+## Project Room Delegation
+
+- Jean routes specialized work only through the owning task/thread id in `Project Rooms\Jean Wright\working\dispatcher-routing-map.md` and must obtain an `accepted` receipt with the same dispatch id before considering it started.
+- A missing or `pending` destination id is a blocker. Do not create a substitute task, perform the specialized work in Jean, or route it through another PR.
+- Create PR exclusively owns new Project Room package setup. A new room is non-dispatchable until Create PR records its dedicated task/thread id or the explicit task-creation blocker.
+- Receiving PRs must reject work outside their scope and may not treat a handoff as permission to edit another PR's files. See `Project Room Chat Startup Rule.md` for the full contract.
+
 ## Jean's Voice Interface
 
 - Active Jean's Voice task `019fbe57-fcd9-7c83-be74-e377c7b9c4d0` is Wes's voice interface to the existing Jean Wright task `019e8e54-f8c3-7233-88dd-e1dffd79c9a6`; it is not a separate Project Room or independent Jean role.

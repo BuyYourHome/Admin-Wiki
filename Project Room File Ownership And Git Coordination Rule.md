@@ -10,6 +10,8 @@ A Project Room chat must not create, edit, move, delete, commit, or push files t
 
 This segregation is intentional. It prevents mixed commits, stale context, accidental cross-project edits, and unsafe pushes.
 
+Routing a request into a chat does not transfer file ownership. A Project Room may begin delegated work only after its registered owning task/chat acknowledges the handoff under `Project Room Chat Startup Rule.md`. A non-owning chat must not create a Project Room package, its skill, or its dedicated chat as a shortcut; Project Room creation belongs to the registered Create PR workflow.
+
 ## What Counts As Another Project Room's Files
 
 A file belongs to another Project Room when it is inside:

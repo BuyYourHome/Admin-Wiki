@@ -73,6 +73,8 @@ Use when Wes gives Jean a request that belongs to a specialized Project Room, as
 6. If no task/thread id is known, report the owning PR and blocker instead of creating a new task unless Wes explicitly asks.
 7. Record durable dispatches in `C:\Codex\Wiki Files\Project Rooms\Jean Wright\working\dispatcher-action-log.md`.
 8. Do not edit another PR's files, skill, automation, registry entry, or chat title unless Wes explicitly authorizes that exact cross-PR or global governance change.
+9. Route only to the task/thread id recorded in the dispatcher routing map. Do not consider work started until the destination returns `accepted` with the same `dispatch_id`; a missing receipt is an unresolved handoff, not authority for Jean to perform the specialized work.
+10. Route requests to create Project Rooms, matching skills, or dedicated PR chats to the registered Create PR task. Do not create the package locally. A new PR cannot receive routine delegation until Create PR records a usable dedicated task/thread id or the explicit task-creation blocker.
 
 ### Jean's Voice Intake Mode
 
@@ -104,6 +106,7 @@ Use when the active Jean's Voice task `019fbe57-fcd9-7c83-be74-e377c7b9c4d0` rou
 - Do not perform durable edits inside a specialized Project Room unless Wes explicitly authorizes that specific cross-PR edit or global governance update.
 - When routing specialized work, use Dispatcher Mode rather than absorbing the specialized work into Jean Wright.
 - A routed PR must return `accepted`, `done`, `blocked`, `needs Wes`, `rejected as wrong room`, or `routed onward with approval` under the central Dispatcher Intake And Return Rule.
+- Treat a destination's missing `accepted` receipt as unresolved. Reconcile the original task-message delivery before retrying; otherwise report the missing receipt to Wes.
 - Accept routed instructions from active Jean's Voice task `019fbe57-fcd9-7c83-be74-e377c7b9c4d0` under the canonical Jean's Voice routing contract and return results to that task for spoken delivery.
 - Do not use the Teams-synced wiki folder as the working repo.
 

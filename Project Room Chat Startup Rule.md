@@ -101,15 +101,27 @@ Return instruction:
 
 Jean should record sent handoffs in `C:\Codex\Wiki Files\Project Rooms\Jean Wright\working\dispatcher-action-log.md` when the handoff is durable, cross-PR, involves email/delivery, changes files, or may need follow-up.
 
+## Delegation Enforcement Rule
+
+The routing map at `C:\Codex\Wiki Files\Project Rooms\Jean Wright\working\dispatcher-routing-map.md` is the canonical live destination registry for Jean-dispatched Project Room work. A specialized request must not be worked in Jean Wright, Dashboard, Create PR, or another non-owning PR merely because that chat can see the request.
+
+1. Jean must route a specialized request only to the registered owning PR task/thread id. A `pending` or missing id is a blocker, not permission to create a substitute task or do the work locally.
+2. A destination PR must send `accepted` before it creates files, edits durable rules, sends a handoff onward, starts an external action, or treats the request as queued work. `accepted` must repeat the `dispatch_id` and confirm that the work is within the PR's scope.
+3. Jean must treat a missing acknowledgment as unaccepted. Jean may retry only after checking that the original task-message delivery failed; otherwise Jean reports the unresolved handoff to Wes instead of assuming the work started.
+4. A destination that does not own the request must return `rejected as wrong room` with the registered likely owner. It may not forward the request itself unless Wes specifically authorized that onward route.
+5. A direct request from Wes inside the actual owning PR chat remains direct work for that PR. This rule governs delegation and does not require Jean to sit between Wes and the owner.
+6. Requests to create a new Project Room, matching skill, or dedicated PR chat belong to `Create PR`. Jean must hand them to the registered Create PR task rather than create the package locally. A new PR is not dispatchable until Create PR records either its usable dedicated task/thread id or the explicit blocker that prevents one.
+7. Dashboard may display registry-derived status and offer a request interface, but it must not create, assign, reroute, or activate a Project Room by itself.
+
 ## Dispatcher Intake And Return Rule
 
 Every PR that receives a Jean handoff must treat the handoff as scoped intake, not as permission to edit other PRs.
 
-On intake, the destination PR should:
+On intake, the destination PR must:
 
 1. Read its own README, matching skill, and this startup rule.
 2. Confirm the `dispatch_id`, requested action, source paths or message ids, and any explicit Wes authorization.
-3. Accept the handoff only if it belongs to that PR's scope.
+3. Return `accepted` with the same `dispatch_id` only if it belongs to that PR's scope, before performing substantive work.
 4. Reject or return the handoff if it belongs to another PR or would require unauthorized cross-PR edits.
 5. Use Email Monitor's Email Delivery mode for outbound email when its rules require centralized OfficeAssist delivery.
 6. Keep work on `main` unless Wes explicitly asks for a branch.
@@ -124,7 +136,7 @@ Return one of these statuses to Jean or Wes:
 - `rejected as wrong room`: the work belongs elsewhere; name the likely owning PR when known.
 - `routed onward with approval`: Wes explicitly authorized routing to another PR or system.
 
-If a PR uses `working\work-status.md`, update it for substantial routed work. Do not create or update work-status files merely for quiet checks or trivial questions.
+If a PR uses `working\work-status.md`, update it for substantial routed work. Do not create or update work-status files merely for quiet checks or trivial questions. Jean's dispatcher action log remains the authoritative record of whether a handoff was sent, acknowledged, completed, blocked, or awaiting Wes; a destination work-status file never grants ownership to another chat.
 
 ## Chat Creation Rule
 

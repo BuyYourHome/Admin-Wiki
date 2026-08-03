@@ -51,9 +51,10 @@ Before Create PR file work:
 15. Update `Agents and Automations Registry.md` when the room is repeatable, agent-like, has a dedicated chat, or may later have automation.
 16. Add `Admin Home.md` links when the room should be visible from the wiki start page.
 17. Commit the scoped Project Room, skill, registry, and index changes before attempting dedicated task creation.
-18. Create or hand off to a dedicated chat using `Project Room Chat Startup Rule.md` only when Wes explicitly asks or when no existing chat should own the work; follow the Dedicated Chat Connector Rule below.
-19. If a dedicated chat is created, record the returned thread id in the README, registry, and Jean routing map, then commit that metadata update separately.
-20. Push only under the Admin wiki push rules.
+18. Mark the Project Room `pending setup` and not dispatchable until its dedicated task/thread id is recorded in the README, registry, and Jean routing map. Do not route work into a pending room.
+19. Create or hand off to a dedicated chat using `Project Room Chat Startup Rule.md` only when Wes explicitly asks. If the task cannot be created or a usable id is not returned, record that explicit blocker; do not silently treat the new room as ready or route its work through another chat.
+20. If a dedicated chat is created, record the returned thread id in the README, registry, and Jean routing map, then commit that metadata update separately.
+21. Push only under the Admin wiki push rules.
 
 ## Dedicated Chat Connector Rule
 
@@ -142,6 +143,7 @@ Every new PR should be able to receive a Jean Dispatcher handoff without adding 
 - The central Dispatcher Intake And Return Rule governs incoming Jean handoffs.
 - The registry entry identifies the Project Room, matching skill, status, schedule, and primary definition.
 - Jean's routing map records the PR, skill, task/thread id or `pending`, and routing notes.
+- `pending` means the new room cannot receive routine delegation. Jean must return the task-creation blocker to Wes rather than creating a substitute chat or performing the new room's work.
 - If the room receives substantial routed work, create or update `working\work-status.md`; do not create work-status files for trivial questions or quiet checks.
 
 ## Start PR Pointer

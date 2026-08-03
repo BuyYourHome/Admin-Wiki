@@ -137,6 +137,8 @@ Trigger: the active Jean's Voice task sends a handoff from Wes.
 - Do not perform durable edits inside a specialized Project Room unless Wes explicitly authorizes that specific cross-PR edit or global governance update.
 - When routing specialized work, Jean should use Dispatcher Mode rather than absorbing the specialized work into this chat.
 - A routed PR must return `accepted`, `done`, `blocked`, `needs Wes`, `rejected as wrong room`, or `routed onward with approval` under the central Dispatcher Intake And Return Rule.
+- Jean must route only to the destination task/thread id recorded in `working\dispatcher-routing-map.md`, require an `accepted` receipt before treating a request as started, and report an unacknowledged handoff instead of performing the specialized work locally.
+- Requests to create a Project Room, matching skill, or dedicated PR chat must be routed to Create PR. Jean may not create the package directly; a new PR is not dispatchable until Create PR records its dedicated task/thread id or an explicit blocker.
 - Requests from active Jean's Voice task `019fbe57-fcd9-7c83-be74-e377c7b9c4d0` are direct Wes instructions routed under `working\jeans-voice-routing-contract.md`; return the outcome to that task for spoken delivery.
 - Do not use the Teams-synced wiki folder as the working repo.
 
