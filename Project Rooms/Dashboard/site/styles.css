@@ -88,9 +88,19 @@ main { padding: 22px clamp(18px, 4vw, 52px) 48px; }
 .mode-panel-card { display: grid; gap: 6px; padding: 10px; border-left: 3px solid var(--green); background: #fff; }
 .mode-panel-card strong { font-size: 11px; text-transform: uppercase; color: var(--muted); }
 .mode-panel-card p { margin: 0; color: var(--ink); font-size: 12px; line-height: 1.5; }
+.mode-panel-card.disabled { border-left-color: #aeb8b2; background: var(--paper); }
 .mode-panel-template { margin: 0; padding: 10px; border: 1px solid var(--line); background: var(--paper); color: var(--ink); white-space: pre-wrap; font: 11px Consolas, monospace; line-height: 1.45; }
 .mode-panel-link.disabled { border-color: #aeb8b2; color: var(--muted); background: var(--paper); pointer-events: none; }
 .mode-panel-link.disabled::after { content: "Host only"; }
+.manager-task-list { display: grid; gap: 8px; }
+.manager-task-item { width: 100%; display: grid; gap: 4px; padding: 10px; text-align: left; border: 1px solid var(--line); border-radius: 4px; background: var(--surface); color: var(--ink); cursor: pointer; }
+.manager-task-item.selected, .manager-task-item:hover { border-color: var(--green); background: var(--green-soft); }
+.manager-task-title { font-size: 12px; font-weight: 700; line-height: 1.4; }
+.manager-task-meta { color: var(--muted); font-size: 11px; line-height: 1.4; }
+.manager-task-empty, .manager-task-summary { color: var(--ink); font-size: 12px; line-height: 1.5; }
+.manager-task-editor { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 8px; align-items: center; }
+.manager-task-editor select { width: 100%; min-height: 38px; padding: 0 8px; border: 1px solid #aeb8b2; border-radius: 4px; color: var(--ink); background: #fff; }
+.manager-task-editor select:focus { border-color: var(--green); outline: 3px solid rgba(31, 96, 71, .13); }
 .quick-actions { margin: 18px 0; }
 .quick-actions h3 { margin: 0 0 8px; color: var(--muted); font-size: 11px; text-transform: uppercase; }
 .quick-actions #detailActionList { display: grid; gap: 8px; }
@@ -146,5 +156,6 @@ main { padding: 22px clamp(18px, 4vw, 52px) 48px; }
 .room-grid.list .card-meta { margin: 0; min-width: 130px; flex-direction: column; align-items: end; }
 @media (max-width: 1050px) { .room-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 @media (max-width: 780px) { .topbar { align-items: start; flex-direction: column; } .topbar-brand { align-items: flex-start; } .topbar-actions { justify-items: start; } .top-buttons { justify-content: start; } .refresh-status { text-align: left; } .summary { grid-template-columns: repeat(2, 1fr); } .metric:nth-child(2) { border-right: 0; } .metric:nth-child(-n+2) { border-bottom: 1px solid var(--line); } .workspace { grid-template-columns: 1fr; } .detail-panel { position: static; order: -1; } }
+@media (max-width: 560px) { .manager-task-editor { grid-template-columns: 1fr; } }
 @media (max-width: 560px) { .topbar-brand { gap: 12px; } .topbar-portrait { width: 60px; height: 60px; flex-basis: 60px; } }
 @media (max-width: 560px) { .controls { align-items: stretch; flex-direction: column; } .search-field { max-width: none; } .view-control { align-self: start; } .room-grid { grid-template-columns: 1fr; } .room-grid.list .room-card { display: flex; min-height: 154px; } .room-grid.list .room-card p { margin: 11px 0 14px; } .room-grid.list .card-meta { align-items: start; flex-direction: row; } }

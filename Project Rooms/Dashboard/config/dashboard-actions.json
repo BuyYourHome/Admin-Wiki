@@ -49,6 +49,27 @@
           }
         ]
       }
+    },
+    "Manager": {
+      "Tasks": {
+        "title": "Manager Tasks",
+        "intro": "Open Manager tasks are sourced from the canonical Manager task register. Status edits stay limited to the full local Dashboard on WesStudio.",
+        "stateText": "Manager Tasks loaded. Open tasks are shown from the canonical Manager register.",
+        "controls": [
+          {
+            "type": "task-list",
+            "label": "Open Manager tasks",
+            "availability": "lan-readonly",
+            "emptyText": "No open Manager tasks are currently recorded."
+          },
+          {
+            "type": "task-status-editor",
+            "label": "Update selected task status",
+            "availability": "local-only",
+            "description": "Status changes write back to the canonical Manager task register from the full local Dashboard only."
+          }
+        ]
+      }
     }
   }
 }

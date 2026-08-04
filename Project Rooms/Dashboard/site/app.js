@@ -12,7 +12,7 @@
     allowHostActions: true
   };
   const groupOrder = groupDefinitions.map(group => group.name);
-  const state = { group: "All", query: "", view: "grid", selected: null, selectedRoom: null, sopGroup: "All", visibleSopEntries: [] };
+  const state = { group: "All", query: "", view: "grid", selected: null, selectedRoom: null, selectedMode: "", selectedManagerTaskId: "", managerTaskUpdatePending: false, sopGroup: "All", visibleSopEntries: [] };
   const el = id => document.getElementById(id);
   const initials = name => name.split(/\s+/).filter(Boolean).slice(0, 2).map(word => word[0]).join("").toUpperCase();
   const attentionLabel = attention => attention?.type === "approval-needed" ? "Approval needed" : "Confirmation needed";
@@ -20,7 +20,15 @@
   const getModeAction = (roomName, modeName) => modeActions?.[roomName]?.[modeName] || null;
   const getModePanel = (roomName, modeName) => modePanels?.[roomName]?.[modeName] || null;
   const controlAvailable = availability => availability !== "local-only" || dashboardContext.clientAccess === "local";
+  const canEditManagerTasks = () => dashboardContext.hostMode === "local-full" && dashboardContext.clientAccess === "local" && !dashboardContext.readOnly;
+  const managerPriorityRank = { Critical: 0, High: 1, Normal: 2, Low: 3 };
+  const managerStatuses = ["New", "Delivered", "Acknowledged", "In Progress", "Waiting", "Completed", "Cancelled"];
+  const managerOpenStatuses = new Set(managerStatuses.filter(status => !["Completed", "Cancelled"].includes(status)));
   const deletionPreviewAllowed = () => !dashboardContext.readOnly || dashboardContext.clientAccess === "local";
+  const parseTime = value => {
+    const timestamp = Date.parse(value || "");
+    return Number.isNaN(timestamp) ? null : timestamp;
+  };
   const filteredRooms = () => {
     const query = state.query.trim().toLowerCase();
     return rooms.filter(room => {
@@ -29,6 +37,67 @@
       return groupMatch && (!query || haystack.includes(query));
     });
   };
+  const getManagerTasks = room => Array.isArray(room?.managerTasks) ? room.managerTasks.slice() : [];
+  const getOpenManagerTasks = room => getManagerTasks(room)
+    .filter(task => managerOpenStatuses.has(task.status))
+    .sort((left, right) => {
+      const priorityDelta = (managerPriorityRank[left.priority] ?? 99) - (managerPriorityRank[right.priority] ?? 99);
+      if (priorityDelta !== 0) return priorityDelta;
+      const leftDue = parseTime(left.due);
+      const rightDue = parseTime(right.due);
+      if (leftDue !== rightDue) {
+        if (leftDue === null) return 1;
+        if (rightDue === null) return -1;
+        return leftDue - rightDue;
+      }
+      const leftUpdated = parseTime(left.lastUpdated) ?? 0;
+      const rightUpdated = parseTime(right.lastUpdated) ?? 0;
+      return rightUpdated - leftUpdated;
+    });
+  const findRoom = roomName => rooms.find(room => room.name === roomName) || null;
+  function syncSelectedManagerTask(room) {
+    const openTasks = getOpenManagerTasks(room);
+    if (!openTasks.length) {
+      state.selectedManagerTaskId = "";
+      return null;
+    }
+    if (!openTasks.some(task => task.taskId === state.selectedManagerTaskId)) {
+      state.selectedManagerTaskId = openTasks[0].taskId;
+    }
+    return openTasks.find(task => task.taskId === state.selectedManagerTaskId) || openTasks[0];
+  }
+  async function updateManagerTaskStatus(taskId, status) {
+    if (!canEditManagerTasks()) {
+      el("detailModeState").textContent = "Manager task status changes are available only from the full local Dashboard.";
+      return;
+    }
+    state.managerTaskUpdatePending = true;
+    renderModePanel(state.selectedRoom, getModePanel(state.selectedRoom?.name, state.selectedMode));
+    try {
+      const response = await fetch("__dashboard-manager-task-status", {
+        method: "POST",
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
+        body: JSON.stringify({ taskId, status })
+      });
+      const result = await response.json().catch(() => ({}));
+      if (!response.ok || result.ok !== true) throw new Error(result.message || `Manager task update failed (${response.status}).`);
+      const applyUpdate = room => {
+        if (!room || !Array.isArray(room.managerTasks)) return;
+        room.managerTasks = room.managerTasks.map(task => task.taskId === taskId
+          ? { ...task, status: result.status, lastUpdated: result.lastUpdated }
+          : task);
+      };
+      applyUpdate(findRoom("Manager"));
+      applyUpdate(state.selectedRoom);
+      el("refreshStatus").textContent = result.message || `Manager task ${taskId} updated.`;
+      el("detailModeState").textContent = `Manager task ${taskId} updated to ${result.status}.`;
+    } catch (error) {
+      el("detailModeState").textContent = `Manager task update failed: ${error.message}`;
+    } finally {
+      state.managerTaskUpdatePending = false;
+      renderModePanel(state.selectedRoom, getModePanel(state.selectedRoom?.name, state.selectedMode));
+    }
+  }
   async function refreshDashboard() {
     if (!dashboardContext.allowHostActions) {
       el("refreshStatus").textContent = "Refresh is disabled in this read-only Dashboard host view.";
@@ -113,6 +182,7 @@
     state.selected = null;
     state.selectedRoom = null;
     state.selectedMode = "";
+    state.selectedManagerTaskId = "";
     state.sopGroup = "All";
     state.visibleSopEntries = [];
     el("detailPanel").hidden = true;
@@ -143,6 +213,7 @@
     state.selected = room.name;
     state.selectedRoom = room;
     state.selectedMode = "";
+    state.selectedManagerTaskId = "";
     el("detailPanel").hidden = false;
     el("detailName").textContent = room.name;
     el("detailPurpose").textContent = room.purpose;
@@ -172,7 +243,7 @@
     el("detailModeState").textContent = modes.length
       ? "Selecting a documented mode can either load a mode-specific helper panel or run its keyed Dashboard action."
       : "No canonical documented modes were found in this room's README or matching skill.";
-    renderModePanel(null);
+    renderModePanel(null, null);
     state.sopGroup = "All";
     renderSopViewer(room);
     const actions = [
@@ -323,7 +394,7 @@
     URL.revokeObjectURL(href);
   }
 
-  function renderModePanel(panel) {
+  function renderModePanel(room, panel) {
     const section = el("detailModePanel");
     if (!panel) {
       section.hidden = true;
@@ -336,8 +407,94 @@
     section.hidden = false;
     el("detailModePanelTitle").textContent = panel.title || "Mode panel";
     el("detailModePanelIntro").textContent = panel.intro || "";
+    const selectedManagerTask = room?.name === "Manager" ? syncSelectedManagerTask(room) : null;
 
     const controlElements = (Array.isArray(panel.controls) ? panel.controls : []).map(control => {
+      if (control.type === "task-list") {
+        const card = document.createElement("div");
+        card.className = "mode-panel-card task-list-card";
+        const label = document.createElement("strong");
+        label.textContent = control.label || "Tasks";
+        const helper = document.createElement("p");
+        const openTasks = getOpenManagerTasks(room);
+        helper.textContent = openTasks.length
+          ? `${openTasks.length} open Manager ${openTasks.length === 1 ? "task is" : "tasks are"} currently recorded.`
+          : (control.emptyText || "No open tasks are currently recorded.");
+        const list = document.createElement("div");
+        list.className = "manager-task-list";
+        if (!openTasks.length) {
+          const empty = document.createElement("p");
+          empty.className = "manager-task-empty";
+          empty.textContent = control.emptyText || "No open tasks are currently recorded.";
+          list.append(empty);
+        } else {
+          openTasks.forEach(task => {
+            const button = document.createElement("button");
+            button.type = "button";
+            button.className = `manager-task-item${task.taskId === state.selectedManagerTaskId ? " selected" : ""}`;
+            button.addEventListener("click", () => {
+              state.selectedManagerTaskId = task.taskId;
+              renderModePanel(room, panel);
+            });
+            const title = document.createElement("span");
+            title.className = "manager-task-title";
+            title.textContent = `${task.taskId} - ${task.task}`;
+            const meta = document.createElement("span");
+            meta.className = "manager-task-meta";
+            const dueText = task.due ? `Due ${task.due}` : "No due date";
+            meta.textContent = `${task.priority} | ${task.status} | ${dueText}`;
+            button.append(title, meta);
+            list.append(button);
+          });
+        }
+        card.append(label, helper, list);
+        return card;
+      }
+
+      if (control.type === "task-status-editor") {
+        const card = document.createElement("div");
+        card.className = "mode-panel-card task-editor-card";
+        const label = document.createElement("strong");
+        label.textContent = control.label || "Update task";
+        const note = document.createElement("p");
+        const available = canEditManagerTasks();
+        note.textContent = available
+          ? (selectedManagerTask ? `Selected task: ${selectedManagerTask.taskId}` : "Select an open Manager task to change its status.")
+          : (control.description || "This control is available only from the full local Dashboard.");
+        card.append(label, note);
+        if (!available) {
+          card.classList.add("disabled");
+          return card;
+        }
+        if (!selectedManagerTask) {
+          return card;
+        }
+        const summary = document.createElement("p");
+        summary.className = "manager-task-summary";
+        summary.textContent = selectedManagerTask.task;
+        const editor = document.createElement("div");
+        editor.className = "manager-task-editor";
+        const select = document.createElement("select");
+        select.id = "managerTaskStatusSelect";
+        managerStatuses.forEach(status => {
+          const option = document.createElement("option");
+          option.value = status;
+          option.textContent = status;
+          option.selected = selectedManagerTask.status === status;
+          select.append(option);
+        });
+        select.disabled = state.managerTaskUpdatePending;
+        const button = document.createElement("button");
+        button.type = "button";
+        button.className = "primary-button";
+        button.textContent = state.managerTaskUpdatePending ? "Saving..." : "Save status";
+        button.disabled = state.managerTaskUpdatePending;
+        button.addEventListener("click", () => updateManagerTaskStatus(selectedManagerTask.taskId, select.value));
+        editor.append(select, button);
+        card.append(summary, editor);
+        return card;
+      }
+
       if (control.type === "open-url") {
         const link = document.createElement("a");
         const available = controlAvailable(control.availability || "local-only");
@@ -466,7 +623,7 @@
     const selectedMode = event.target.value;
     if (!selectedMode) {
       state.selectedMode = "";
-      renderModePanel(null);
+      renderModePanel(null, null);
       el("detailModeState").textContent = state.selectedRoom
         ? "Selecting a documented mode can either load a mode-specific helper panel or run its keyed Dashboard action."
         : "Choose a Project Room first.";
@@ -475,11 +632,11 @@
     state.selectedMode = selectedMode;
     const panel = getModePanel(state.selectedRoom?.name, selectedMode);
     if (panel) {
-      renderModePanel(panel);
+      renderModePanel(state.selectedRoom, panel);
       el("detailModeState").textContent = panel.stateText || `${selectedMode} helper panel loaded.`;
       return;
     }
-    renderModePanel(null);
+    renderModePanel(null, null);
     invokeModeAction(state.selectedRoom, selectedMode);
     state.selectedMode = "";
     event.target.value = "";

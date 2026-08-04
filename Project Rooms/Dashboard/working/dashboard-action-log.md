@@ -105,3 +105,11 @@
 - Extended the side-panel mode system so a mode can load a helper panel with several Dashboard-owned controls instead of only triggering one immediate action.
 - Seeded the first helper panel for `Dashboard` -> `Mode Map`, including the canonical single-action and multi-control mapping patterns for plain-English requests.
 - Updated the Mode Map normalization rule so plain-English mapping requests default to `lan-readonly` availability unless Wes explicitly keeps a control host-only.
+
+## 2026-08-04 - Manager Tasks Mode Panel
+
+- Added a keyed `modePanels` entry for `Manager` -> `Tasks`.
+- Dashboard refresh now parses `Project Rooms\Manager\working\task-register.md` and publishes the canonical task rows into the generated Dashboard data.
+- The `Tasks` side panel now shows open Manager tasks with their visible priority and current status.
+- The full local Dashboard can update the selected task's status through a Dashboard-local write endpoint that updates the canonical Manager task register and refreshes Dashboard data.
+- LAN-host views keep the task list visible but leave the status editor unavailable so the hosted Dashboard remains read-only.

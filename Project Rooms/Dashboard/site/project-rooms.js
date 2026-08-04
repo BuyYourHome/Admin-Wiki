@@ -1,5 +1,5 @@
-window.PROJECT_ROOMS_UPDATED = '2026-08-04 08:50';
-window.PROJECT_ROOMS_HASH = 'F911EC2FEAA083AED73710C314FE52F3A698359845AB2081BFE21A5CE0E84E63';
+window.PROJECT_ROOMS_UPDATED = '2026-08-04 09:34';
+window.PROJECT_ROOMS_HASH = 'B78DD0347CAFA7EB517AFAF054BC87F237D497290629290780036D1B704AA4A5';
 window.PROJECT_ROOM_GROUPS = [
     {
         "name":  "Intake \u0026 Coordination",
@@ -74,7 +74,7 @@ window.DASHBOARD_ACTIONS = {
                                                                            {
                                                                                "type":  "message",
                                                                                "label":  "Normalization rules",
-                                                                               "text":  "Use the exact Project Room name and exact documented mode name from the Dashboard. Default to local-only unless Wes clearly says the control should work from the LAN read-only view, such as Chrome on his phone."
+                                                                               "text":  "Use the exact Project Room name and exact documented mode name from the Dashboard. Default availability to lan-readonly unless Wes clearly wants the control to stay local-only on the host machine."
                                                                            },
                                                                            {
                                                                                "type":  "open-url",
@@ -85,7 +85,28 @@ window.DASHBOARD_ACTIONS = {
                                                                            }
                                                                        ]
                                                       }
-                                     }
+                                     },
+                       "Manager":  {
+                                       "Tasks":  {
+                                                     "title":  "Manager Tasks",
+                                                     "intro":  "Open Manager tasks are sourced from the canonical Manager task register. Status edits stay limited to the full local Dashboard on WesStudio.",
+                                                     "stateText":  "Manager Tasks loaded. Open tasks are shown from the canonical Manager register.",
+                                                     "controls":  [
+                                                                      {
+                                                                          "type":  "task-list",
+                                                                          "label":  "Open Manager tasks",
+                                                                          "availability":  "lan-readonly",
+                                                                          "emptyText":  "No open Manager tasks are currently recorded."
+                                                                      },
+                                                                      {
+                                                                          "type":  "task-status-editor",
+                                                                          "label":  "Update selected task status",
+                                                                          "availability":  "local-only",
+                                                                          "description":  "Status changes write back to the canonical Manager task register from the full local Dashboard only."
+                                                                      }
+                                                                  ]
+                                                 }
+                                   }
                    }
 };
 window.PROJECT_ROOMS = [
@@ -621,6 +642,68 @@ window.PROJECT_ROOMS = [
         "readmeUrl":  "../../Manager/README.md",
         "quickActions":  [
 
+                         ],
+        "managerTasks":  [
+                             {
+                                 "taskId":  "MGR-20260724-001",
+                                 "received":  "2026-07-24T13:49:47Z",
+                                 "requester":  "Wes Will Buy Your Home \u003cWesWill@BuyYourHomeLLC.com\u003e",
+                                 "task":  "Review the active project spreadsheets for proper automated entries of invoices and Lowes statement items.",
+                                 "priority":  "Normal",
+                                 "status":  "New",
+                                 "due":  "",
+                                 "delivered":  "",
+                                 "lastUpdated":  "2026-07-24T14:02:19Z",
+                                 "notes":  "Source: `sources\\email\\2026-07-24-094947-manager-task.md`; Outlook message ID recorded in `manager-routing-ledger.md`; no delivery requested."
+                             },
+                             {
+                                 "taskId":  "MGR-20260724-002",
+                                 "received":  "2026-07-24T13:49:47Z",
+                                 "requester":  "Wes Will Buy Your Home \u003cWesWill@BuyYourHomeLLC.com\u003e",
+                                 "task":  "Prepare the next computer for Codex installation.",
+                                 "priority":  "Normal",
+                                 "status":  "New",
+                                 "due":  "",
+                                 "delivered":  "",
+                                 "lastUpdated":  "2026-07-24T14:02:19Z",
+                                 "notes":  "Source: `sources\\email\\2026-07-24-094947-manager-task.md`; Outlook message ID recorded in `manager-routing-ledger.md`; no delivery requested."
+                             },
+                             {
+                                 "taskId":  "MGR-20260724-003",
+                                 "received":  "2026-07-24T13:49:47Z",
+                                 "requester":  "Wes Will Buy Your Home \u003cWesWill@BuyYourHomeLLC.com\u003e",
+                                 "task":  "Finish the Tensity project.",
+                                 "priority":  "Normal",
+                                 "status":  "New",
+                                 "due":  "",
+                                 "delivered":  "",
+                                 "lastUpdated":  "2026-07-24T14:02:19Z",
+                                 "notes":  "Source: `sources\\email\\2026-07-24-094947-manager-task.md`; Outlook message ID recorded in `manager-routing-ledger.md`; no delivery requested."
+                             },
+                             {
+                                 "taskId":  "MGR-20260724-004",
+                                 "received":  "2026-07-24T13:49:47Z",
+                                 "requester":  "Wes Will Buy Your Home \u003cWesWill@BuyYourHomeLLC.com\u003e",
+                                 "task":  "Spend time working closely with Tim Flemming on the Pond project.",
+                                 "priority":  "Normal",
+                                 "status":  "New",
+                                 "due":  "",
+                                 "delivered":  "",
+                                 "lastUpdated":  "2026-07-24T14:02:19Z",
+                                 "notes":  "Source: `sources\\email\\2026-07-24-094947-manager-task.md`; Outlook message ID recorded in `manager-routing-ledger.md`; no delivery requested."
+                             },
+                             {
+                                 "taskId":  "MGR-20260724-005",
+                                 "received":  "2026-07-24T13:49:47Z",
+                                 "requester":  "Wes Will Buy Your Home \u003cWesWill@BuyYourHomeLLC.com\u003e",
+                                 "task":  "See Jenny about anything that needs scanning.",
+                                 "priority":  "Normal",
+                                 "status":  "New",
+                                 "due":  "",
+                                 "delivered":  "",
+                                 "lastUpdated":  "2026-07-24T14:02:19Z",
+                                 "notes":  "Source: `sources\\email\\2026-07-24-094947-manager-task.md`; Outlook message ID recorded in `manager-routing-ledger.md`; no delivery requested."
+                             }
                          ]
     },
     {

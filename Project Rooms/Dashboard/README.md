@@ -48,6 +48,8 @@ When a documented mode has a Dashboard-keyed action in `config\dashboard-actions
 
 For the SOPs Project Room, the side panel reads the authoritative `outputs\SOP Index.md` during Dashboard refresh. It lists the index entries without changing them and enables `View selected SOP` only when a corresponding clean Markdown page exists. The viewer opens that canonical page using normal separate-tab/window behavior.
 
+For the Manager Project Room, the `Tasks` mode now loads a Dashboard-owned helper panel. It shows open tasks parsed from `Project Rooms\Manager\working\task-register.md`, including each task's priority and current status. The full local Dashboard on WesStudio can change the selected task's status and write that update back to the canonical Manager register; LAN-host views remain read-only and show the editor as unavailable.
+
 ## Attention Badges
 
 The Dashboard shows a card badge only when `config\project-room-attention.json` contains a valid explicit state for that exact room. Valid types are `confirmation-needed` and `approval-needed`; each state must include a reason and source. Empty or invalid entries create no alert. The Dashboard does not infer approvals or confirmations from ordinary Project Room text, status, or chat activity.

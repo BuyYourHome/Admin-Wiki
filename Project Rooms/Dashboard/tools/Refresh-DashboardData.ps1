@@ -6,6 +6,7 @@ $outputPath = Join-Path $projectRoomsRoot 'Dashboard\site\project-rooms.js'
 $groupConfigPath = Join-Path $projectRoomsRoot 'Dashboard\config\project-room-groups.json'
 $attentionConfigPath = Join-Path $projectRoomsRoot 'Dashboard\config\project-room-attention.json'
 $actionsConfigPath = Join-Path $projectRoomsRoot 'Dashboard\config\dashboard-actions.json'
+$managerTaskRegisterPath = Join-Path $projectRoomsRoot 'Manager\working\task-register.md'
 $sopIndexPath = Join-Path $projectRoomsRoot 'SOPs\outputs\SOP Index.md'
 $sopPagesPath = Join-Path $projectRoomsRoot 'SOPs\outputs\SOPs'
 $groupConfig = Get-Content -LiteralPath $groupConfigPath -Raw | ConvertFrom-Json
@@ -120,7 +121,38 @@ function Get-SopViewerEntries {
     return @($entries)
 }
 
+function Get-ManagerTaskEntries {
+    param([string]$TaskRegisterPath)
+
+    if (-not (Test-Path -LiteralPath $TaskRegisterPath)) { return @() }
+
+    $entries = [System.Collections.Generic.List[object]]::new()
+    foreach ($line in (Get-Content -LiteralPath $TaskRegisterPath)) {
+        $trimmed = $line.Trim()
+        if ($trimmed -notmatch '^\|') { continue }
+        $parts = @($trimmed.Split('|'))
+        if ($parts.Count -lt 12) { continue }
+        $values = @($parts[1..($parts.Count - 2)] | ForEach-Object { $_.Trim() })
+        if ($values.Count -lt 10 -or $values[0] -eq 'Task ID' -or $values[0] -eq '---') { continue }
+        $entries.Add([ordered]@{
+            taskId = $values[0]
+            received = $values[1]
+            requester = $values[2]
+            task = $values[3]
+            priority = $values[4]
+            status = $values[5]
+            due = $values[6]
+            delivered = $values[7]
+            lastUpdated = $values[8]
+            notes = $values[9]
+        })
+    }
+
+    return @($entries)
+}
+
 $sopViewerEntries = Get-SopViewerEntries -IndexPath $sopIndexPath -PagesPath $sopPagesPath
+$managerTaskEntries = Get-ManagerTaskEntries -TaskRegisterPath $managerTaskRegisterPath
 
 $rooms = foreach ($directory in Get-ChildItem -LiteralPath $projectRoomsRoot -Directory | Sort-Object Name) {
     $readme = Join-Path $directory.FullName 'README.md'
@@ -177,6 +209,7 @@ $rooms = foreach ($directory in Get-ChildItem -LiteralPath $projectRoomsRoot -Di
         quickActions = @($quickActions)
     }
     if ($directory.Name -eq 'SOPs') { $room.sopEntries = @($sopViewerEntries) }
+    if ($directory.Name -eq 'Manager') { $room.managerTasks = @($managerTaskEntries) }
     $room
 }
 
