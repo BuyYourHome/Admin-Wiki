@@ -1,6 +1,6 @@
 ---
 name: invoice-entry
-description: Use for Buy Your Home project-management spreadsheet invoice-entry work after Doc Scan has prepared a structured invoice, receipt, or Statement packet, when Email Monitor or OfficeAssist routes a contractor/vendor invoice email into Invoice Entry, or when Email Monitor routes a Time Card email. Trigger when Codex needs to receive or create a structured packet, choose the correct active project workbook and worksheet, check for duplicate invoice, time-card, or statement-line records, insert approved records into a Vendor Tab or other approved project-spreadsheet expense area, validate totals and workbook links, and report uncertain routing for Wes review.
+description: Use for Buy Your Home project-management spreadsheet invoice-entry work after Doc Scan has prepared a structured invoice, receipt, or Statement packet, when Email Monitor or OfficeAssist routes a contractor/vendor invoice email into Invoice Entry, when Email Monitor routes a Time Card email, or when Wes invokes Reconcile for an existing project workbook. Trigger when Codex needs to receive or create a structured packet, choose the correct active project workbook and worksheet, check for duplicate invoice, time-card, or statement-line records, insert approved records into a Vendor Tab or other approved project-spreadsheet expense area, reconcile eligible Review rows, validate totals and workbook links, and report uncertain routing for Wes review.
 ---
 
 # Invoice Entry
@@ -285,41 +285,50 @@ For Statement packets, set or treat `confidence/status` as `Needs Review - State
 - Verify the workbook opens cleanly before upload.
 - Upload back through the Teams/SharePoint connector only after validation passes.
 
-## Review Request Processing
+## Reconcile
 
-For workbook Review requests:
+Use Reconcile as the user-callable mode for acting on existing workbook Review rows after their intended Vendor Tab has been specified.
+
+Authorized triggers:
+
+- Wes directly requests `Reconcile` and identifies the exact project/property.
+- An implemented Dashboard action sends an authorized handoff naming Invoice Entry mode `Reconcile`, the exact project/property, and Wes as the requester. A mode selection, preview, log entry, or button that does not actually deliver the handoff is not a trigger.
+- Invoice Entry opens an active project workbook for another authorized workbook action. In that case, run Reconcile before the other workbook work.
+
+Reconcile requires an exact project/property identity. A supplied workbook name or path is only a lookup hint; resolve the fresh authoritative workbook from the SharePoint `Property` root. If the project is missing or ambiguous, stop and report the blocker. Reconcile processes rows already present in `Review`; it does not import new packet items unless a separately authorized intake mode is also part of the request.
+
+For Reconcile:
 
 - use worksheet `Review`,
 - use Review table `tblInvoiceReview`,
 - read the request checkbox through the defined name `invoiceEntryReviewRequest`,
 - require `invoiceEntryReviewRequest` to reopen in Excel as `=Review!$B$1`,
-- treat `TRUE` as request pending,
-- treat `FALSE` or blank as no request pending,
+- treat `TRUE` as a visible workbook request pending,
+- treat `FALSE` or blank as no checkbox request pending, but do not let that block an explicit Reconcile invocation or the authorized workbook-open trigger,
 - do not use the obsolete `Review!Q2` text selector,
 - read Review rows by table name and column headers, not by visible row numbers, filters, hidden rows, or fixed cell ranges.
 
-Review reconciliation trigger: any time Invoice Entry opens an active project workbook for an authorized workbook action, first check whether the workbook has worksheet `Review` and table `tblInvoiceReview`. If it does, run the existing Review Request Processing rules against that table before other workbook work. The checkbox remains a user-visible request marker, but it is not the only trigger for reconciliation; an authorized workbook-open action is also enough to invoke the existing Review processing rules.
-
-When instructed to process a workbook request:
+When Reconcile is triggered:
 
 1. Confirm the exact Teams workbook before editing.
 2. Retrieve a fresh copy using the SharePoint/Teams connector.
-3. Read `invoiceEntryReviewRequest` by defined name.
-4. If it is `FALSE` or blank, report that no Invoice Entry request is pending and do not process Review rows.
-5. If it is `TRUE`, read `tblInvoiceReview` by column header name.
+3. Confirm the workbook has worksheet `Review`, table `tblInvoiceReview`, and defined name `invoiceEntryReviewRequest` pointing to `=Review!$B$1`. If any are missing or invalid, report that the workbook is not Reconcile-ready and make no workbook change.
+4. Read `invoiceEntryReviewRequest` by defined name.
+5. Read `tblInvoiceReview` by column header name regardless of the checkbox value because the authorized Reconcile trigger is sufficient.
 6. Build the request packet inside the Invoice Entry process. Do not add packet formulas, scripts, or duplicate-check logic to the workbook.
 7. Include the workbook identity, request timestamp, Review Row IDs, current row values, destinations, statuses, and source traceability.
-8. Treat rows as eligible when `Destination Worksheet` is filled, `Review Row ID` is present, required vendor, date, amount, and source information is present, and status is not an explicit stop. A filled `Destination Worksheet` supplied by Wes is approval to move the row even if an older status still says `Needs Review`.
+8. Treat rows as eligible when `Destination Worksheet` is filled, `Review Row ID` is present, required vendor, date, amount, and source information is present, and status is not an explicit stop. When Wes invokes Reconcile, a filled `Destination Worksheet` is approval to move the row even if an older status still says `Needs Review`.
 9. Exclude rows when status is `Moved`, `Hold`, `Do Not Move`, `Duplicate Risk`, or `Missing Data`, `Destination Worksheet` is blank, or required traceability is insufficient. Treat `Hold` as a hard stop until Wes changes it.
 10. Perform duplicate checks before inserting anything.
 11. Insert approved records only into the yellow actual-invoice section of the correct destination worksheet; never write into orange template-estimate rows.
 12. Preserve formulas, formatting, tables, controls, selectors, names, and workbook links.
 13. After a successful insertion, retain the Review row, correct `Status` to `Moved`, and record the destination worksheet/table and movement date in the existing review or notes field. Correct an older `Needs Review` status during the move unless Wes set the status to `Hold`.
 14. Preserve excluded or uncertain rows and explain what still needs review.
-15. After the pending request has been fully handled and validation passes, clear the checkbox by setting `invoiceEntryReviewRequest` to `FALSE`.
-16. Do not clear the checkbox before the request has been processed and the workbook has passed validation.
+15. If `invoiceEntryReviewRequest` was `TRUE`, clear it to `FALSE` only after the request has been fully handled and validation passes. If it was already `FALSE` or blank, do not change it merely because Reconcile was invoked.
+16. Do not clear a `TRUE` checkbox before the request has been processed and the workbook has passed validation.
 17. Create a rollback copy before editing.
 18. Save through Excel, reopen cleanly, validate destination totals and `Gnatt Chart` values, confirm zero unintended workbook links, and replace the same Teams workbook only after validation passes.
+19. Report the project/workbook identity and counts for moved, held, duplicate-risk, missing-data, already-moved, and failed rows. Report whether the checkbox was cleared and whether the verified workbook replaced the authoritative SharePoint copy.
 
 ## Vendor Tabs Insertion
 

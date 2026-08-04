@@ -14,6 +14,7 @@ This is the authoritative current-state register for Invoice Entry. Read it befo
 - Backup automation `invoice-entry-to-projects-backup-heartbeat` is a standalone local cron job at noon and 4:00 PM Eastern. It has no target task and must not add quiet-check turns to this operational task.
 - No external action from the prior unfinished turn requires retry.
 - Do not resend an email, repeat a workbook upload, or recreate a packet solely because an older task response was delayed or missing.
+- `Reconcile` is a user-callable Invoice Entry mode as of 2026-08-04. A direct Wes request or implemented Dashboard handoff may invoke it for one exact project/property independently of the workbook checkbox. Dashboard implementation remains separately owned and is not part of this Invoice Entry change.
 
 ## Task Health Status
 

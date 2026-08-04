@@ -58,9 +58,9 @@ Run only from an Email Monitor handoff. Accumulate accepted time by worker for s
 
 Consume statement detail extracted and packaged by Doc Scan. Treat statements as potentially multi-project and multi-category. Allocate by project first, retain unsupported detail, and do not treat an entire statement as one invoice.
 
-### Review Request Processing
+### Reconcile
 
-For authorized workbook work, reconcile `Review!tblInvoiceReview` by table and column names, independent of filters or hidden rows. Use the defined name `invoiceEntryReviewRequest`, preserve held rows, run duplicate checks, and post only rows that meet the current Review and worksheet-mode rules.
+Run Reconcile as a user-callable mode when Wes directly requests it or an authorized Dashboard handoff identifies Invoice Entry mode `Reconcile` and the exact project/property. The Dashboard invocation is authorization to evaluate existing `Review!tblInvoiceReview` rows even when `invoiceEntryReviewRequest` is `FALSE` or blank; the checkbox remains a separate visible request marker. Invoice Entry resolves the fresh authoritative workbook, preserves held or incomplete rows, checks duplicates, moves only eligible rows with an approved `Destination Worksheet`, validates the workbook, and reports moved, held, duplicate-risk, and failed rows. Reconcile processes existing Review rows only; adding new packet items requires the applicable intake mode.
 
 ### Vendor Tabs
 

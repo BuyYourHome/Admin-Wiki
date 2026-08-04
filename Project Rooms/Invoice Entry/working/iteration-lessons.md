@@ -366,3 +366,9 @@ Context: First Bank sent another account-ending-3613 statement-availability noti
 - Repeated notices for the same account and unresolved statement should update the existing packet rather than create another statement record.
 - A new notice does not prove a new statement, balance, amount due, payment obligation, or project assignment when it supplies none of those facts.
 - A public online-banking login page is not an authorized statement source. Do not enter credentials or initiate MFA; keep retrieval held until an authenticated user session or supplied statement is available.
+
+## 2026-08-04 - Reconcile Mode
+
+- Workbook reconciliation must be a documented user-callable mode, not only an internal insertion preflight.
+- Keep one workbook writer: Dashboard may invoke `Reconcile`, but Invoice Entry resolves, edits, validates, and uploads the authoritative workbook.
+- An explicit Wes invocation is sufficient authorization to evaluate existing Review rows even when the visible request checkbox is false or blank; checkbox state still controls whether it needs to be cleared after successful validation.
