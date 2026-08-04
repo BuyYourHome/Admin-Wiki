@@ -38,7 +38,7 @@
           {
             "type": "message",
             "label": "Normalization rules",
-            "text": "Use the exact Project Room name and exact documented mode name from the Dashboard. Default to local-only unless Wes clearly says the control should work from the LAN read-only view, such as Chrome on his phone."
+            "text": "Use the exact Project Room name and exact documented mode name from the Dashboard. Default availability to lan-readonly unless Wes clearly wants the control to stay local-only on the host machine."
           },
           {
             "type": "open-url",

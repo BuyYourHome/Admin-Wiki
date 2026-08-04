@@ -100,7 +100,7 @@ Interpretation rules for plain-English requests in this mode:
 1. If Wes describes one target to open for a mode, normalize the request into a keyed `modeActions` entry.
 2. If Wes describes several buttons, helper notes, or other side-panel controls for one mode, normalize the request into a keyed `modePanels` entry.
 3. Use the exact Project Room name and exact documented mode name as shown in Dashboard.
-4. Default availability to `local-only` unless Wes clearly says the control should work in the LAN read-only view.
+4. Default availability to `lan-readonly` unless Wes clearly wants the control to stay `local-only` on the host machine.
 5. Keep room-level Quick actions separate from mode-specific helper controls.
 
 The current Dashboard mode helper is driven from `config\dashboard-actions.json` under `modePanels`.

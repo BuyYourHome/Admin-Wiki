@@ -46,7 +46,7 @@ Use this mode when Wes wants Dashboard mode mappings defined or revised in plain
 - If the request describes one target to open for a mode, translate it into a keyed `modeActions` entry.
 - If the request describes several buttons, helper notes, or side-panel controls for one mode, translate it into a keyed `modePanels` entry.
 - Use the exact Project Room name and exact documented mode name shown in Dashboard.
-- Default availability to `local-only` unless Wes clearly says the control should work from the LAN read-only view.
+- Default availability to `lan-readonly` unless Wes clearly wants the control to stay `local-only` on the host machine.
 - Keep room-level Quick actions separate from mode-specific helper controls.
 
 ## Boundaries

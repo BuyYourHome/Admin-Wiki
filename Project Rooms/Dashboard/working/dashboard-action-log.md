@@ -104,3 +104,4 @@
 - Added a documented `Mode Map` mode to the Dashboard Project Room rules.
 - Extended the side-panel mode system so a mode can load a helper panel with several Dashboard-owned controls instead of only triggering one immediate action.
 - Seeded the first helper panel for `Dashboard` -> `Mode Map`, including the canonical single-action and multi-control mapping patterns for plain-English requests.
+- Updated the Mode Map normalization rule so plain-English mapping requests default to `lan-readonly` availability unless Wes explicitly keeps a control host-only.
