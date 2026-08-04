@@ -93,7 +93,7 @@ The current operational queue, verified deliveries, holds, and known stale recor
 
 Dedicated task: `019fbf4f-c629-7dd1-a3f6-0de33de0ed8f`.
 
-Backup automation: standalone local cron job `invoice-entry-to-projects-backup-heartbeat`, displayed as `Invoice Entry Backup Monitor`, scheduled for noon and 4:00 PM Eastern. It reads durable Project Room state and does not target or wake the operational task. Direct handoffs remain the primary trigger.
+Backup automation: standalone local cron job `invoice-entry-to-projects-backup-heartbeat`, displayed as `Invoice Entry Backup Monitor`, scheduled for noon and 4:00 PM Eastern. It reads durable Project Room state and does not target or wake the operational task. Direct handoffs remain the primary trigger. After recording its outcome, a clean run with no new packet, failure, blocker, or decision archives only its own cron execution task. A run that finds a packet or needs attention remains visible.
 
 ## Task Health
 
