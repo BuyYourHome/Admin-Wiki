@@ -37,11 +37,11 @@ First, read:
 - the matching skill source under C:\Codex\Wiki Files\skills, when one exists
 ```
 
-## Start PR Mode
+## Start PR
 
-Use Start PR Mode when Wes says `Start PR`, asks to begin or resume work in a Project Room chat, or asks a PR-scoped question that depends on current room rules.
+Use Start PR when Wes says `Start PR`, asks to begin or resume work in a Project Room chat, or asks a PR-scoped question that depends on current room rules.
 
-Start PR Mode is the central refresh contract for PR chats. It should be referenced briefly by each PR README and matching skill instead of copied in full.
+Start PR is the central refresh contract for PR chats. It should be referenced briefly by each PR README and matching skill instead of copied in full.
 
 Steps:
 
@@ -50,7 +50,7 @@ Steps:
 3. Confirm the working branch is `main`; switch to `main` only when safe.
 4. Read only the central startup rule, the Project Room file ownership and Git coordination rule, the current PR README file, and the current PR's matching skill source when one exists.
 5. Read root rules needed for the request: `AGENTS.md`, `Repository Location Rule.md`, `Project Room Workflow.md`, `Agent Unit Standard.md`, and `Git Work Scope Rule.md`.
-6. Do not read every Project Room, every skill, or unrelated workflow files merely because Start PR Mode was triggered.
+6. Do not read every Project Room, every skill, or unrelated workflow files merely because Start PR was triggered.
 7. If unrelated dirty files, Git processes, lock files, or branch conflicts block switching to `main` or checking status, report the blocker and do not force, stash, reset, delete, or move files.
 8. Report the active repo path, active branch, current PR, and any blockers before durable file work.
 
@@ -173,5 +173,5 @@ Project Room work uses `main` by default. Do not create a new Git branch for a P
 Each PR README and matching workflow skill should include a short pointer rather than copying this full rule:
 
 ```text
-Start PR: Before durable work, follow Start PR Mode in C:\Codex\Wiki Files\Project Room Chat Startup Rule.md. Interpret unqualified requests under the Current PR Scope Rule in that file. Work on main unless Wes explicitly asks for a branch.
+Start PR: Before durable work, follow Start PR in C:\Codex\Wiki Files\Project Room Chat Startup Rule.md. Interpret unqualified requests under the Current PR Scope Rule in that file. Work on main unless Wes explicitly asks for a branch.
 ```

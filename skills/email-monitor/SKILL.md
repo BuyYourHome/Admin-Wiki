@@ -147,9 +147,9 @@ For `Configure`, pass only values Wes requested. Ask a clarifying question when 
 
 `Status` and `Test` may target one workflow or all workflows. `Configure` must target one workflow and distinguish heartbeat interval, supervisor polling, and substantive evaluation interval. Disabling one workflow leaves the shared supervisor active for other enabled workflows. Machine reassignment remains guided and requires destination verification before the current supervisor is disabled.
 
-### Task Health Mode
+### Task Health
 
-Use Task Health Mode for Email Monitor task-context review and Wes-approved controlled rollover. This is distinct from Health Check: Health Check evaluates workflow and heartbeat liveness; Task Health evaluates the size, durability, and reliability of the operational Codex task. A Windows alert file alone does not invoke Codex. Activate this mode only from a Wes request, an authorized context-health alert handoff, or observable performance degradation.
+Use Task Health for Email Monitor task-context review and Wes-approved controlled rollover. This is distinct from Health Check: Health Check evaluates workflow and heartbeat liveness; Task Health evaluates the size, durability, and reliability of the operational Codex task. A Windows alert file alone does not invoke Codex. Activate this mode only from a Wes request, an authorized context-health alert handoff, or observable performance degradation.
 
 #### Health Review Stage
 
@@ -621,7 +621,7 @@ Use `C:\Codex\Wiki Files\Project Rooms\Email Monitor\tools\Update-EmailMonitorRo
 For routed emails and direct Email Delivery requests that matter for audit, debugging, or follow-up, also update `C:\Codex\Wiki Files\Project Rooms\Email Monitor\working\routing-action-log.md` with the durable outcome: Outlook message or delivery request, mode or branch, preserved Outlook reference, external source path if any, delivery record, handoff/recipient, status, and notes. Do not commit connector search scratch output, temporary drafts, duplicate fetched message bodies, routed email body files, or routed attachments merely to show how the routing decision was made.
 ## Start PR Pointer
 
-Before durable work, follow Start PR Mode in `C:\Codex\Wiki Files\Project Room Chat Startup Rule.md`.
+Before durable work, follow Start PR in `C:\Codex\Wiki Files\Project Room Chat Startup Rule.md`.
 
 Interpret unqualified requests under the Current PR Scope Rule in that file. Work on `main` unless Wes explicitly asks for a branch.
 ## Delegation Contract

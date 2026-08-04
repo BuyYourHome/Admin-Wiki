@@ -110,11 +110,11 @@ When the handoff supplies only an Outlook reference, fetch only that exact messa
 
 If a concise handoff lacks enough information to identify or access the authoritative source, report the missing pointer or blocker. Do not ask the routing workflow to resend all standing instructions.
 
-## Task Health Mode
+## Task Health
 
 Invoice Entry is enrolled in the shared Windows workflow-health supervisor owned by Email Monitor. Follow `C:\Codex\Wiki Files\Project Rooms\Invoice Entry\README.md` for Invoice Entry context controls, `working\work-status.md` for current health fields, and `C:\Codex\Wiki Files\Project Rooms\Email Monitor\working\health-check-spec.md` for the shared supervisor contract. Do not copy the full supervisor implementation into this skill.
 
-Activate Task Health Mode when Wes requests it, when an authorized handoff reports an Invoice Entry context-health transition, or when observable performance degradation requires review. A Windows alert file alone does not invoke Codex; do not claim the mode ran unless the Invoice Entry task or an authorized coordinating task actually performed the review.
+Activate Task Health when Wes requests it, when an authorized handoff reports an Invoice Entry context-health transition, or when observable performance degradation requires review. A Windows alert file alone does not invoke Codex; do not claim the mode ran unless the Invoice Entry task or an authorized coordinating task actually performed the review.
 
 ### Health Review Stage
 

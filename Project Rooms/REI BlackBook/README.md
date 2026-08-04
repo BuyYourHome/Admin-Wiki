@@ -28,21 +28,21 @@ Standing website-update rule:
 - After every REI BlackBook website update, refresh the relevant local element map so it reflects the latest public-visible page titles, navigation, copy, links, forms, images, sidebars, footer, generic-template remnants, and next replacement actions.
 - When a website update produces a reusable lesson, record it in `skills\rei-blackbook\SKILL.md`; when it is site-specific, record it in the project room.
 
-GM Mode:
+GM:
 
-- `GM Mode` is the named operating mode for Gracious Millionaire REI BlackBook website work.
-- Use it whenever Wes says `GM`, `GM Mode`, or gives a Gracious Millionaire website request.
-- In GM Mode, every public-visible element should describe the book, the authors, the outline, editing status, update requests, excerpt requests, release information, or approved Gracious Millionaire project context.
-- As of 2026-07-10, Wes authorized GM Mode to make comprehensive live website design, structure, navigation, layout, image-placement, page-copy, sidebar/footer, and form-presentation improvements for Gracious Millionaire. The loop is intended to keep improving the live site so Wes can guide subsequent iterations.
-- After every GM Mode live website update, refresh the Gracious Millionaire element map and record site-specific notes in this project room.
+- `GM` is the named operating mode for Gracious Millionaire REI BlackBook website work.
+- Use it whenever Wes says `GM` or gives a Gracious Millionaire website request.
+- In GM, every public-visible element should describe the book, the authors, the outline, editing status, update requests, excerpt requests, release information, or approved Gracious Millionaire project context.
+- As of 2026-07-10, Wes authorized GM to make comprehensive live website design, structure, navigation, layout, image-placement, page-copy, sidebar/footer, and form-presentation improvements for Gracious Millionaire. The loop is intended to keep improving the live site so Wes can guide subsequent iterations.
+- After every GM live website update, refresh the Gracious Millionaire element map and record site-specific notes in this project room.
 - Creative charter: redesign Gracious Millionaire as a book-centered editorial experience, not a modified real-estate template. Make the book cover, Wes and Jenny, authentic photography, the book's themes, and a clear reader journey the dominant signals. The intended tone is generous, reflective, grounded, and personal.
 
 GM scheduled iteration:
 
 - Automation name: `gm-mode-site-iteration`.
-- Cadence: every 30 minutes, plus manual on-demand GM Mode runs.
+- Cadence: every 30 minutes, plus manual on-demand GM runs.
 - Current schedule anchor: first run after the 2026-07-09 update is 7:52 PM Eastern, then every 30 minutes after that.
-- Run lock: use `working\gm-mode-run-lock.md` to prevent overlapping GM Mode runs. If the lock exists and is less than 3 hours old, the later run should not inspect or edit the live site and should stop quietly unless user-visible notice is needed. If the lock is 3 hours old or older, record a stale-lock takeover, replace the lock, and proceed. Clear the lock at normal completion.
+- Run lock: use `working\gm-mode-run-lock.md` to prevent overlapping GM runs. If the lock exists and is less than 3 hours old, the later run should not inspect or edit the live site and should stop quietly unless user-visible notice is needed. If the lock is 3 hours old or older, record a stale-lock takeover, replace the lock, and proceed. Clear the lock at normal completion.
 - Active-run duration: use the 30-minute cadence as a wake-up schedule. Once a run acquires the lock and useful backlog remains, work for approximately 45-90 minutes on one coherent design objective, or until that objective is implemented and QA'd. Later scheduled invocations yield to the fresh lock.
 - Chained iteration rule: after completing and QAing one objective, refresh the map/ledger and immediately continue with the next highest-priority unblocked objective in the same invocation. End the active run only when approximately 45-90 minutes of coherent work is complete, no useful authorized backlog remains, a required approval or external dependency blocks further work, or browser instability makes continued live work unsafe. Do not clear the lock and return a final response after each small iteration.
 - Default behavior: resume the highest-priority unfinished objective from the current element map and `working\gm-mode-iteration-ledger.md`, implement it across every affected page/shared component, QA desktop and mobile where practical, refresh the map/backlog, and preserve the learned implementation path.
@@ -51,12 +51,12 @@ GM scheduled iteration:
 - Append every substantive run to `working\gm-mode-iteration-ledger.md`; preserve prior entries and record the objective, touched surfaces, live changes, QA, successful paths, failed paths, remaining defects, and exact next objective.
 - Authorized live implementation includes comprehensive Gracious Millionaire site improvements: generic/off-topic template replacement, page titles, navigation labels, layout/design cleanup, sidebar/footer cleanup, button text, broken public links, book-focused descriptive copy, page structure, image placement for approved assets, and form presentation or field-label changes.
 - Photo retrieval should be retried as part of the image-replacement backlog, but only through browser-controlled Google Photos save/export/download paths that do not open Microsoft Photos repeatedly. If downloads launch Microsoft Photos windows, stop photo retrieval for that pass, record the blocker, and continue with safer text/content cleanup.
-- Wes approved using the local Gracious Millionaire logo and book-cover concept in the next GM Mode website run on 2026-07-09. Prioritize replacing the generic REI BlackBook logo and placing the book-cover concept where a cover visual is appropriate.
+- Wes approved using the local Gracious Millionaire logo and book-cover concept in the next GM website run on 2026-07-09. Prioritize replacing the generic REI BlackBook logo and placing the book-cover concept where a cover visual is appropriate.
 - Do not activate outbound form/SMS/email/lead workflows, change who receives submitted leads or messages, upload personal Google Photos publicly, change public contact/address details, change domain/DNS settings, purchase anything, publish manuscript content, make legal/financial/compliance claims, push Git changes, or send outbound messages without Wes's explicit approval for that specific action.
 - Use DONT_NOTIFY only when another fresh run owns the lock or no authorized useful design work remains. A failed builder path is not grounds to stop when another mapped objective can be completed.
 - Report to Wes when the run makes live changes, finds broken pages, leaves generic template content unresolved, finds off-topic posts, hits form/workflow risk, public privacy risk, SSL/domain problems, or needs approval for higher-risk actions.
 - Completion-backlog email: Wes authorized on 2026-07-17 one email after every substantive GM run. Prepare a delivery package from `OfficeAssist@BuyYourHomeLLC.com` to `WesWill@BuyYourHomeLLC.com` with subject `GM Site Run Complete - Remaining Backlog`. Include completed live changes, QA status, the remaining backlog in priority order, blockers or approvals needed, the recommended next objective, and whether the run lock was cleared. Send a direct handoff to the existing Email Monitor status task `019ecba7-f1cc-7ac1-aaf7-d89a3f21b582` requesting Email Delivery mode; Email Monitor's Email Delivery mode must use `C:\Codex\Wiki Files\skills\email-delivery\SKILL.md` for sender safety, delivery, Sent Items verification, and failure reporting. Do not mark the completion-backlog email sent until Email Monitor returns verified Sent Items evidence with the sent message id and timestamp. Do not email for a fresh-lock overlap exit, a no-op heartbeat check, or a run that did not begin substantive work. A send or verification failure requires a visible thread report. This authorization applies only to the GM completion-backlog email and does not authorize customer, lead, form, SMS, autoresponder, or other outbound messaging changes.
-- Never make live website edits while another fresh GM Mode run lock appears active.
+- Never make live website edits while another fresh GM run lock appears active.
 
 OfficeAssist GM Site email intake:
 
@@ -85,7 +85,7 @@ Next actions:
 6. Add separate working notes for other REI BlackBook modules as they become active.
 ## Start PR Pointer
 
-Before durable work, follow Start PR Mode in `C:\Codex\Wiki Files\Project Room Chat Startup Rule.md`.
+Before durable work, follow Start PR in `C:\Codex\Wiki Files\Project Room Chat Startup Rule.md`.
 
 Interpret unqualified requests under the Current PR Scope Rule in that file. Work on `main` unless Wes explicitly asks for a branch.
 ## Delegation Contract

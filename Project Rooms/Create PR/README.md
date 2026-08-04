@@ -47,7 +47,7 @@ This room was created to hold the standard Create PR process.
 - Thread id: `019f583e-7f14-7ae2-aa24-4e991544e306`
 - Purpose: continue developing and using this Project Room creation workflow.
 
-## Main And Push Mode
+## Main And Push
 
 - Working branch: `main`
 - Before durable file work, confirm the repo is `C:\Codex\Wiki Files` and switch to `main` when safe.
@@ -58,7 +58,7 @@ This room was created to hold the standard Create PR process.
 
 ## Start PR Pointer
 
-Before durable work, follow Start PR Mode in `C:\Codex\Wiki Files\Project Room Chat Startup Rule.md`.
+Before durable work, follow Start PR in `C:\Codex\Wiki Files\Project Room Chat Startup Rule.md`.
 
 Interpret unqualified requests under the Current PR Scope Rule in that file. Work on `main` unless Wes explicitly asks for a branch.
 
@@ -83,6 +83,16 @@ When creating a new PR requires a dedicated Codex task:
 5. Report that the local PR package is complete and the dedicated task creation is pending because the connector did not return.
 6. Do not let task creation block the whole PR setup, and do not retry indefinitely in the same turn.
 7. When the connector later succeeds, record the returned thread id in the PR README and registry, then commit that small metadata update separately.
+
+## Mode Documentation Standard
+
+Use this standard when documenting Project Room modes in READMEs, matching skills, and Create PR templates:
+
+- Use `## Modes` as the container section when a room has more than one mode.
+- Use the invocation name only as the mode heading; do not append `Mode` to the heading.
+- In prose, write "Use this mode..." or "this mode..." when explanation needs the generic noun.
+- Preserve existing filenames, folder names, automation ids, task names, historical logs, and external references unless Wes separately authorizes those exact renames.
+- New Project Room packages should follow this standard from creation.
 
 ## Diagram
 

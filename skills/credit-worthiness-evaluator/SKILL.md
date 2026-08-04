@@ -196,7 +196,7 @@ For example, if the live buyer folder is `[Project]\Selling\[Buyer]`, create or 
 - Keep the tone and formatting formal, plain, and businesslike.
 - When a report is not yet ready for closing execution, preserve this internal report format while using the readiness statuses above; do not shorten the report or move the Executive Recommendation only into later sections.
 
-## Optional Approval-Assumption Mode
+## Optional Approval-Assumption
 
 Default mode is evidence mode. In evidence mode, do not assume missing facts that would make a buyer approvable.
 
@@ -276,7 +276,7 @@ Do not copy generated text extracts, render images, scratch logs, source-invento
 - If the report body includes a report date, revision date, version label, or source cutoff date, update it to match the rerun.
 - In the final response, identify the current version and both saved locations.
 
-## Optional Spanish Append Mode
+## Optional Spanish Append
 
 Default mode is English-only.
 
@@ -314,7 +314,7 @@ Summarize:
 - total request time.
 ## Start PR Pointer
 
-Before durable work, follow Start PR Mode in `C:\Codex\Wiki Files\Project Room Chat Startup Rule.md`.
+Before durable work, follow Start PR in `C:\Codex\Wiki Files\Project Room Chat Startup Rule.md`.
 
 Interpret unqualified requests under the Current PR Scope Rule in that file. Work on `main` unless Wes explicitly asks for a branch.
 ## Delegation Contract

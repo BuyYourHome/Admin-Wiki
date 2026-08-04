@@ -42,7 +42,7 @@ Before Create PR file work:
    - `working\duplicate-and-conflict-log.md`
    - `working\missing-context.md`
 8. Apply the Durable Outcome Log Pattern from `Project Room Workflow.md`: decide whether the room needs a durable outcome log, and create a workflow-named Markdown log under `working\` when the room handles repeatable intake, routing, processing, delivery, filing, document movement, scan handling, email handling, spreadsheet insertion, or external workflow handoffs.
-9. Include this short pointer in the README and matching skill instead of copying the full central rule: `Start PR: Before durable work, follow Start PR Mode in C:\Codex\Wiki Files\Project Room Chat Startup Rule.md. Interpret unqualified requests under the Current PR Scope Rule in that file. Work on main unless Wes explicitly asks for a branch.`
+9. Include this short pointer in the README and matching skill instead of copying the full central rule: `Start PR: Before durable work, follow Start PR in C:\Codex\Wiki Files\Project Room Chat Startup Rule.md. Interpret unqualified requests under the Current PR Scope Rule in that file. Work on main unless Wes explicitly asks for a branch.`
 10. Include this short delegation-contract pointer in the README and matching skill: `Delegation Contract: Follow C:\Codex\Wiki Files\Project Room Delegation Contract.md. Jean may delegate this PR's work only to its registered task; accept and return the same dispatch id under the central contract.`
 10. Make the new room dispatcher-ready by relying on the central Dispatcher Intake And Return Rule in `Project Room Chat Startup Rule.md`; do not copy the full dispatcher rule into the PR unless Wes explicitly asks for a local exception.
 11. If the new room has a dedicated task/thread id, record it in the README, matching skill when useful, registry entry, and Jean routing map.
@@ -67,6 +67,16 @@ When creating a new PR requires a dedicated Codex task:
 4. Report the local PR package as complete and the dedicated task as pending because the connector did not return.
 5. Do not let task creation block the whole PR setup, and do not retry indefinitely in the same turn.
 6. When the connector later succeeds, record the returned thread id in the PR README and registry, then commit that metadata update separately.
+
+## Mode Documentation Standard
+
+Use this standard when documenting Project Room modes in READMEs, matching skills, and Create PR templates:
+
+- Use `## Modes` as the container section when a room has more than one mode.
+- Use the invocation name only as the mode heading; do not append `Mode` to the heading.
+- In prose, write "Use this mode..." or "this mode..." when explanation needs the generic noun.
+- Preserve existing filenames, folder names, automation ids, task names, historical logs, and external references unless Wes separately authorizes those exact renames.
+- New Project Room packages should follow this standard from creation.
 
 ## Diagram
 
@@ -150,7 +160,7 @@ Every new PR should be able to receive a Jean Dispatcher handoff without adding 
 
 ## Start PR Pointer
 
-Before durable work, follow Start PR Mode in `C:\Codex\Wiki Files\Project Room Chat Startup Rule.md`.
+Before durable work, follow Start PR in `C:\Codex\Wiki Files\Project Room Chat Startup Rule.md`.
 
 Interpret unqualified requests under the Current PR Scope Rule in that file. Work on `main` unless Wes explicitly asks for a branch.
 

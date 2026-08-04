@@ -29,7 +29,7 @@ The separate emails in `sources/email/` are early chapter starts, fragments, and
 - In generated manuscripts and clickable packets, place the AI-generation/provenance explanation once near the beginning of the manuscript. Do not put repeated GPT or AI-explanation notes at the top of each chapter.
 - Include the current Gracious Millionaire book cover at the top of generated manuscripts and clickable packets. The current cover asset is `outputs/book-cover/gracious-millionaire-book-cover-wes-and-jenny-browning-2026-07-10-email.jpg` for review packets and `outputs/book-cover/gracious-millionaire-book-cover-wes-and-jenny-browning-2026-07-10.png` for full-resolution use.
 - Use modular manuscript outputs for efficient compilation. Each mode may keep one Markdown file per chapter under `outputs/<mode-slug>/chapters/` with `outputs/<mode-slug>/manifest.md` controlling order, title, status, cover, version id, and compiled output path.
-- For Quick mode, the current modular manuscript state is `outputs/quick-mode/manifest.md` plus `outputs/quick-mode/chapters/*.md`. The normal review deliverable is the compiled clickable HTML at `outputs/Gracious Millionaire - Quick Mode.html`.
+- For Quick, the current modular manuscript state is `outputs/quick-mode/manifest.md` plus `outputs/quick-mode/chapters/*.md`. The normal review deliverable is the compiled clickable HTML at `outputs/Gracious Millionaire - Quick Mode.html`.
 - Do not edit compiled HTML directly. Edit the relevant chapter Markdown file and/or manifest, then rebuild the HTML with `tools/manuscript_modules.py build --manifest outputs/quick-mode/manifest.md` using the Codex workspace Python runtime.
 - A full single-file Markdown manuscript is optional. Generate it only when Wes asks for a plain Markdown export, a tool requires it, or a delivery workflow specifically needs it. The chapter files plus manifest are the working manuscript state.
 - Modular chapter files are manuscript-state files for their mode, not factual source material. Original project-room source files, inventories, factual notes, correction notes, style guides, book objectives, and current Wes/Jenny direction remain the source authority.
@@ -96,7 +96,7 @@ Started. Initial email source files were created from the retrievable messages i
 - Monitor the active intake heartbeat and refine processing rules as new routed chapter sources arrive.
 ## Start PR Pointer
 
-Before durable work, follow Start PR Mode in `C:\Codex\Wiki Files\Project Room Chat Startup Rule.md`.
+Before durable work, follow Start PR in `C:\Codex\Wiki Files\Project Room Chat Startup Rule.md`.
 
 Interpret unqualified requests under the Current PR Scope Rule in that file. Work on `main` unless Wes explicitly asks for a branch.
 ## Delegation Contract

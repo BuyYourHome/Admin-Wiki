@@ -36,7 +36,7 @@ Out of scope:
 
 ## Modes
 
-- Update Codex Environment Mode: use `outputs\Update Codex Environment Mode.md` when Wes asks to keep an already prepared target computer current with changes from WesStudio. This mode pulls the target repo, syncs wiki-managed skills, restarts or refreshes Codex, and verifies repo/skill state without installing apps or changing accounts.
+- Update Codex Environment: use `outputs\Update Codex Environment Mode.md` when Wes asks to keep an already prepared target computer current with changes from WesStudio. This mode pulls the target repo, syncs wiki-managed skills, restarts or refreshes Codex, and verifies repo/skill state without installing apps or changing accounts.
 
 ## Current Status
 
@@ -78,9 +78,9 @@ Before declaring another computer ready, identify and document the WesStudio bas
 
 ## Start PR
 
-Before durable work, follow Start PR Mode in `C:\Codex\Wiki Files\Project Room Chat Startup Rule.md`. Interpret unqualified requests under the Current PR Scope Rule in that file. Work on `main` unless Wes explicitly asks for a branch.
+Before durable work, follow Start PR in `C:\Codex\Wiki Files\Project Room Chat Startup Rule.md`. Interpret unqualified requests under the Current PR Scope Rule in that file. Work on `main` unless Wes explicitly asks for a branch.
 
-## Ownership And Git Mode
+## Ownership And Git
 
 - Working branch: `main`.
 - Before durable file work, confirm the repo is `C:\Codex\Wiki Files` and the current branch is `main`.

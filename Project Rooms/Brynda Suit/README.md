@@ -47,9 +47,9 @@ This room was created as the standard workspace for Brynda Suit. No project-spec
 
 ## Start PR
 
-Before durable work, follow Start PR Mode in `C:\Codex\Wiki Files\Project Room Chat Startup Rule.md`. Interpret unqualified requests under the Current PR Scope Rule in that file. Work on `main` unless Wes explicitly asks for a branch.
+Before durable work, follow Start PR in `C:\Codex\Wiki Files\Project Room Chat Startup Rule.md`. Interpret unqualified requests under the Current PR Scope Rule in that file. Work on `main` unless Wes explicitly asks for a branch.
 
-## Ownership And Git Mode
+## Ownership And Git
 
 - Working branch: `main`
 - Before durable file work, confirm the repo is `C:\Codex\Wiki Files` and the current branch is `main`.
@@ -57,7 +57,7 @@ Before durable work, follow Start PR Mode in `C:\Codex\Wiki Files\Project Room C
 - Commit only scoped Brynda Suit room, matching skill, and directly related registry/index changes.
 - Push only when Wes explicitly asks, says the work is finished, or the applicable Admin wiki rules define the deliverable as final and ready to publish.
 
-## OfficeAssist Routed Email Response Mode
+## OfficeAssist Routed Email Response
 
 When OfficeAssist routes a Brynda Suit email into this task, treat the handoff as an active request to review the routed source email and prepare a response.
 

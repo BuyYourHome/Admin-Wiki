@@ -38,7 +38,7 @@ Use this skill to keep trade proposal work separated from general property files
 - If the request becomes a property report/CMA, use the `cma-report` skill instead.
 ## Start PR Pointer
 
-Before durable work, follow Start PR Mode in `C:\Codex\Wiki Files\Project Room Chat Startup Rule.md`.
+Before durable work, follow Start PR in `C:\Codex\Wiki Files\Project Room Chat Startup Rule.md`.
 
 Interpret unqualified requests under the Current PR Scope Rule in that file. Work on `main` unless Wes explicitly asks for a branch.
 ## Delegation Contract

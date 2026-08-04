@@ -66,9 +66,9 @@ Invoice Entry task-growth thresholds trigger review only. The supervisor may rec
 
 Specification: `working\health-check-spec.md`. Registry: `config\workflow-health-registry.json`. Control surface: `tools\Manage-CodexWorkflowHealth.ps1`. Supervisor: `tools\Invoke-CodexWorkflowHealthSupervisor.ps1`.
 
-### Task Health Mode
+### Task Health
 
-Task Health Mode reviews Email Monitor's operational Codex task rather than heartbeat liveness. Activate it from a Wes request, an authorized context-health transition handoff, or observable task degradation. Read `working\work-status.md`, current delivery state, unresolved requests, routing evidence, heartbeat state, and Git classification; measure turns, compactions, stalls, timeouts, and duplicate external actions only when observable.
+Task Health reviews Email Monitor's operational Codex task rather than heartbeat liveness. Activate it from a Wes request, an authorized context-health transition handoff, or observable task degradation. Read `working\work-status.md`, current delivery state, unresolved requests, routing evidence, heartbeat state, and Git classification; measure turns, compactions, stalls, timeouts, and duplicate external actions only when observable.
 
 The review reports readiness and stops for Wes's approval. An approved rollover keeps one active Email Monitor task, verifies one replacement from durable state, inventories all task-ID and callback dependencies, retargets the existing heartbeat and authorized routing references without duplication, and archives the predecessor only after no delivery remains ambiguous or in flight. Task Health does not create another Project Room, skill, Git branch, heartbeat, or delivery endpoint.
 
@@ -215,7 +215,7 @@ When the workflow changes, update the skill, this project room, and the registry
 - 2026-06-15: With Wes's approval, converted `officeassist-morning-email-summary` from a standalone cron automation to a heartbeat automation attached to the dedicated `Email Monitor` thread so daily runs stop creating new chats.
 ## Start PR Pointer
 
-Before durable work, follow Start PR Mode in `C:\Codex\Wiki Files\Project Room Chat Startup Rule.md`.
+Before durable work, follow Start PR in `C:\Codex\Wiki Files\Project Room Chat Startup Rule.md`.
 
 Interpret unqualified requests under the Current PR Scope Rule in that file. Work on `main` unless Wes explicitly asks for a branch.
 ## Delegation Contract

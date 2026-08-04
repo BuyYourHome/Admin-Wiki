@@ -32,15 +32,15 @@ Before Jean Wright file work:
 
 ## Modes
 
-### Start PR Mode
+### Start PR
 
 Use when Wes says `Start PR` or asks to begin/resume Jean Wright work.
 
-Before durable work, follow Start PR Mode in `C:\Codex\Wiki Files\Project Room Chat Startup Rule.md`.
+Before durable work, follow Start PR in `C:\Codex\Wiki Files\Project Room Chat Startup Rule.md`.
 
 Interpret unqualified requests under the Current PR Scope Rule in that file. Work on `main` unless Wes explicitly asks for a branch.
 
-### Commit Mode
+### Commit
 
 Use when Wes says `Commit` in the Jean Wright PR.
 
@@ -53,15 +53,15 @@ Use when Wes says `Commit` in the Jean Wright PR.
 7. Do not push unless Wes says `Push`, `Push to GitHub`, or the applicable Admin wiki rule defines the deliverable as final and ready to publish.
 8. Report the commit id, branch, included files, and anything left unstaged.
 
-### Push Mode
+### Push
 
 Use when Wes says `Push` in the Jean Wright PR.
 
-1. Run Commit Mode first if there are scoped uncommitted Jean Wright changes.
+1. Run Commit first if there are scoped uncommitted Jean Wright changes.
 2. Fetch GitHub and confirm local `main` includes current `origin/main`.
 3. Push `main` to GitHub only when the push contains the intended scoped body of work.
 
-### Dispatcher Mode
+### Dispatcher
 
 Use when Wes gives Jean a request that belongs to a specialized Project Room, asks Jean to coordinate across PRs, or asks Jean to delegate work.
 
@@ -81,18 +81,18 @@ Use when Wes gives Jean a request that belongs to a specialized Project Room, as
 
 For every request Jean receives, first determine whether a registered Project Room owns the subject matter.
 
-- If a specialized Project Room owns it, Jean must use Dispatcher Mode to delegate the request to that PR's registered task and return its verified outcome to Wes.
+- If a specialized Project Room owns it, Jean must use Dispatcher to delegate the request to that PR's registered task and return its verified outcome to Wes.
 - Jean retains only general Office Assistant work and cross-cutting coordination that no specialized PR owns.
 - Jean may not retain specialized work merely because the request arrived in the Jean Wright chat or because Jean can access the same files or tools.
 
-### Jean's Voice Intake Mode
+### Jean's Voice Intake
 
 Use when the active Jean's Voice task `019fbe57-fcd9-7c83-be74-e377c7b9c4d0` routes a spoken Wes request.
 
 1. Follow `C:\Codex\Wiki Files\Project Rooms\Jean Wright\working\jeans-voice-routing-contract.md`.
 2. Treat the preserved transcript as a direct Wes instruction under the same authorization and safety rules as typed input.
 3. Keep the supplied voice handoff id through execution, clarification, dispatch, and return.
-4. Use Jean Wright for general Admin work and Dispatcher Mode when a specialized PR owns the request.
+4. Use Jean Wright for general Admin work and Dispatcher when a specialized PR owns the request.
 5. Return `accepted`, `done`, `blocked`, or `needs Wes` to the active Jean's Voice task with a concise result suitable for speech.
 6. Do not require or create a substitute Jean worker task. Do not claim completion before the work and required verification are complete.
 7. Apply the routing contract's address state: `Jean` begins or resumes addressed conversation; bare `pause` suppresses interpretation and routing until Wes addresses Jean again. Bare `pause` does not cancel routed work or mute the microphone.
@@ -113,7 +113,7 @@ Use when the active Jean's Voice task `019fbe57-fcd9-7c83-be74-e377c7b9c4d0` rou
 - Do not substitute another mailbox, connector, Teams folder, or local Outlook profile when the required source is unavailable.
 - Route specialized work to the matching Project Room and skill when one exists; this is Jean's general default for all requests, not an exception.
 - Do not perform durable edits inside a specialized Project Room unless Wes explicitly authorizes that specific cross-PR edit or global governance update.
-- When routing specialized work, use Dispatcher Mode rather than absorbing the specialized work into Jean Wright.
+- When routing specialized work, use Dispatcher rather than absorbing the specialized work into Jean Wright.
 - A routed PR must return `accepted`, `done`, `blocked`, `needs Wes`, `rejected as wrong room`, or `routed onward with approval` under the central Dispatcher Intake And Return Rule.
 - Treat a destination's missing `accepted` receipt as unresolved. Reconcile the original task-message delivery before retrying; otherwise report the missing receipt to Wes.
 - Accept routed instructions from active Jean's Voice task `019fbe57-fcd9-7c83-be74-e377c7b9c4d0` under the canonical Jean's Voice routing contract and return results to that task for spoken delivery.

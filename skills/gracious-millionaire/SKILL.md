@@ -51,17 +51,17 @@ Use this skill for Gracious Millionaire project-room processing. OfficeAssist em
 
 ## New Subject Material Default
 
-When new substantive Gracious Millionaire book/source material arrives, use Quick mode only by default. Quick mode should update the affected Book Architecture and perform either a Simple Quick update or a Structural Quick update. Preserve chapters outside the affected structural group unless a factual correction or documented dependency requires a scoped change.
+When new substantive Gracious Millionaire book/source material arrives, use Quick only by default. Quick should update the affected Book Architecture and perform either a Simple Quick update or a Structural Quick update. Preserve chapters outside the affected structural group unless a factual correction or documented dependency requires a scoped change.
 
-Use Interview mode, Rewrite mode, or Dialogue mode only when Wes directly requests that mode.
+Use Interview, Rewrite, or Dialogue only when Wes directly requests that mode.
 
-## Journal Mode
+## Journal
 
-Use Journal mode when Wes asks for a Gracious Millionaire journal conversation, asks to journal, or says the conversation is not ready to become book source material.
+Use Journal when Wes asks for a Gracious Millionaire journal conversation, asks to journal, or says the conversation is not ready to become book source material.
 
-Before working in Journal mode, read `Project Rooms\Gracious Millionaire\working\journal-mode.md` and follow it. Journal mode is an interactive conversation mode, not a manuscript mode and not source material unless Wes explicitly asks to compile or promote the journal conversation for book use.
+Before working in Journal, read `Project Rooms\Gracious Millionaire\working\journal-mode.md` and follow it. Journal is an interactive conversation mode, not a manuscript mode and not source material unless Wes explicitly asks to compile or promote the journal conversation for book use.
 
-Always identify responses as `Journal mode` while working in this mode. Keep Journal mode content segregated from manuscript modes, source intake, source inventory, book architecture, chapter files, manifests, review packets, and email-delivery workflows unless Wes explicitly asks to compile or promote specific journal material. Do not email Journal mode activity to anyone except Wes, and do not include it in manuscript versions unless Wes explicitly asks.
+Always identify responses as `Journal` while working in this mode. Keep Journal content segregated from manuscript modes, source intake, source inventory, book architecture, chapter files, manifests, review packets, and email-delivery workflows unless Wes explicitly asks to compile or promote specific journal material. Do not email Journal activity to anyone except Wes, and do not include it in manuscript versions unless Wes explicitly asks.
 
 ## Mode Independence Rule
 
@@ -71,13 +71,13 @@ Each manuscript mode must produce an independent product from the original proje
 - Mode outputs such as Interview manuscripts, Dialogue manuscripts, Rewrite manuscripts, clickable packets, and mode-specific prose are outputs, not source material for later modes.
 - A later mode may inspect an earlier mode output only as a coverage check or to understand a prior presentation decision. It must not use that output as the prose base, source packet, factual authority, or compression target.
 - If Wes directly requests more than one mode in sequence, each requested mode must be created from the same underlying source base; it does not mean one mode rewrites another mode's manuscript.
-- Unless Wes explicitly asks for an abridged, summary, or condensed version, full-manuscript Rewrite mode should preserve the substantive depth and scale of the source-backed manuscript while reducing true redundancy.
+- Unless Wes explicitly asks for an abridged, summary, or condensed version, full-manuscript Rewrite should preserve the substantive depth and scale of the source-backed manuscript while reducing true redundancy.
 
 ## Shared Book Architecture
 
 Use `Project Rooms\Gracious Millionaire\working\book-architecture.md` as the shared, source-derived structural map for all manuscript modes.
 
-- Rewrite mode is the primary architecture-discovery process. At the beginning of a requested Rewrite run, rebuild or refresh the architecture from the complete current original-source set before drafting prose.
+- Rewrite is the primary architecture-discovery process. At the beginning of a requested Rewrite run, rebuild or refresh the architecture from the complete current original-source set before drafting prose.
 - The architecture records stable story units, source references, chronology, chapter assignments, chapter jobs, Wes/Jenny/shared/alternating voice ownership, themes, dependencies, unresolved questions, and recommended chapter moves, splits, joins, removals, and transitions.
 - The architecture is a working editorial map, not a manuscript. Rewrite prose and other mode outputs must not become architecture or source material for another mode.
 - Every architecture assignment must trace to original source material or be marked as an editorial proposal, unresolved question, or missing-context need.
@@ -94,19 +94,19 @@ For efficient compilation, use modular manuscript outputs when available: one Ma
 
 Do not edit compiled HTML directly. Edit the relevant chapter Markdown file and/or manifest, then rebuild the HTML with the project-room build tool using the Codex workspace Python runtime. Modular chapter files are manuscript-state files for their mode, not factual source material; original project-room source files and current correction notes remain the source authority.
 
-## Quick Mode
+## Quick
 
-Use Quick mode when Wes says `Quick mode`, asks to quickly add new source material to the manuscript, asks for new material to be inserted into its proper context without a total rewrite, or when the project room receives new substantive book/source material and Wes has not directly requested another mode.
+Use Quick when Wes says `Quick`, asks to quickly add new source material to the manuscript, asks for new material to be inserted into its proper context without a total rewrite, or when the project room receives new substantive book/source material and Wes has not directly requested another mode.
 
-Before drafting in Quick mode, read `Project Rooms\Gracious Millionaire\working\quick-mode.md` and `Project Rooms\Gracious Millionaire\working\book-architecture.md` and follow them. Quick mode is an integration mode: update the affected architecture, classify the work as a Simple Quick update or Structural Quick update, revise the affected material, and rebuild the compiled clickable HTML packet. A Structural Quick update may move, split, join, resequence, or change voice ownership across the affected chapter group while preserving chapters outside that group unless a factual correction or documented dependency requires a scoped edit.
+Before drafting in Quick, read `Project Rooms\Gracious Millionaire\working\quick-mode.md` and `Project Rooms\Gracious Millionaire\working\book-architecture.md` and follow them. Quick is an integration mode: update the affected architecture, classify the work as a Simple Quick update or Structural Quick update, revise the affected material, and rebuild the compiled clickable HTML packet. A Structural Quick update may move, split, join, resequence, or change voice ownership across the affected chapter group while preserving chapters outside that group unless a factual correction or documented dependency requires a scoped edit.
 
-The current Quick-mode manuscript is the only manuscript reference Interview mode may use. Original source material and approved contextual source records remain the factual authority.
+The current Quick-mode manuscript is the only manuscript reference Interview may use. Original source material and approved contextual source records remain the factual authority.
 
-## Rewrite Mode
+## Rewrite
 
-Use Rewrite mode when Wes says `Rewrite mode`, asks for a whole-manuscript rewrite where each chapter should materially affect the others, or expresses concern that a rewrite is not changing enough as the source base grows.
+Use Rewrite when Wes says `Rewrite`, asks for a whole-manuscript rewrite where each chapter should materially affect the others, or expresses concern that a rewrite is not changing enough as the source base grows.
 
-Before drafting in Rewrite mode, read `Project Rooms\Gracious Millionaire\working\rewrite-mode.md` and follow it. The required Rewrite mode steps are:
+Before drafting in Rewrite, read `Project Rooms\Gracious Millionaire\working\rewrite-mode.md` and follow it. The required Rewrite steps are:
 
 1. Discover or refresh the shared Book Architecture from the complete original-source set.
 2. Create a source-to-chapter map.
@@ -115,15 +115,15 @@ Before drafting in Rewrite mode, read `Project Rooms\Gracious Millionaire\workin
 5. Create chapter job statements for every chapter or section.
 6. Write a true source-packet-based manuscript rewrite.
 
-Rewrite mode is not a polish pass. Do not simply start from the latest manuscript and smooth, bridge, or lightly rephrase it. Use the latest manuscript only as a reference; draft from authoritative source packets, the source maps, the whole-book thesis map, the redundancy/contradiction map, and the chapter job statements. Do not draft from an Interview mode, Dialogue mode, or earlier Rewrite mode output.
+Rewrite is not a polish pass. Do not simply start from the latest manuscript and smooth, bridge, or lightly rephrase it. Use the latest manuscript only as a reference; draft from authoritative source packets, the source maps, the whole-book thesis map, the redundancy/contradiction map, and the chapter job statements. Do not draft from an Interview, Dialogue, or earlier Rewrite output.
 
-If most chapters change only lightly, do not label the work a full Rewrite mode pass. Mark it as a polish, integration, or continuity pass instead.
+If most chapters change only lightly, do not label the work a full Rewrite pass. Mark it as a polish, integration, or continuity pass instead.
 
-## Dialogue Mode
+## Dialogue
 
-Use Dialogue mode when Wes says `Dialogue mode`, asks for the manuscript to become a conversation between Wes and Jenny, or asks for a conversational version of chapters or the whole manuscript.
+Use Dialogue when Wes says `Dialogue`, asks for the manuscript to become a conversation between Wes and Jenny, or asks for a conversational version of chapters or the whole manuscript.
 
-Before drafting in Dialogue mode, read `Project Rooms\Gracious Millionaire\working\dialogue-mode.md` and `Project Rooms\Gracious Millionaire\working\book-architecture.md` and follow them. Use the architecture for sequence, story coverage, speaker ownership, themes, and unresolved questions while independently creating dialogue from original sources. The required Dialogue mode steps are:
+Before drafting in Dialogue, read `Project Rooms\Gracious Millionaire\working\dialogue-mode.md` and `Project Rooms\Gracious Millionaire\working\book-architecture.md` and follow them. Use the architecture for sequence, story coverage, speaker ownership, themes, and unresolved questions while independently creating dialogue from original sources. The required Dialogue steps are:
 
 1. Build a source-to-speaker map.
 2. Create a conversation chapter map.
@@ -135,13 +135,13 @@ Before drafting in Dialogue mode, read `Project Rooms\Gracious Millionaire\worki
 8. Run a voice and fairness review.
 9. Produce the manuscript and review packet.
 
-Dialogue mode should read like a crafted book dialogue, not a fake transcript. Do not invent Jenny's side where source material does not support it, and do not put Wes's conclusions into Jenny's voice unless Jenny source material supports that conclusion. Where one side is missing, keep the passage as narration, have the other speaker ask an unanswered question, or mark the need for more source material.
+Dialogue should read like a crafted book dialogue, not a fake transcript. Do not invent Jenny's side where source material does not support it, and do not put Wes's conclusions into Jenny's voice unless Jenny source material supports that conclusion. Where one side is missing, keep the passage as narration, have the other speaker ask an unanswered question, or mark the need for more source material.
 
-## Interview Mode
+## Interview
 
-Use Interview mode when Wes says `Interview mode`, asks for Jean to interview Wes and Jenny, or asks for a manuscript version where interview questions guide the conversation.
+Use Interview when Wes says `Interview`, asks for Jean to interview Wes and Jenny, or asks for a manuscript version where interview questions guide the conversation.
 
-Before drafting in Interview mode, read `Project Rooms\Gracious Millionaire\working\interview-mode.md` and `Project Rooms\Gracious Millionaire\working\book-architecture.md` and follow them. Use the architecture for thematic progression, story coverage, speaker ownership, question opportunities, and unresolved questions while independently creating interview prose under the existing source and Quick-reference rules. The required Interview mode steps are:
+Before drafting in Interview, read `Project Rooms\Gracious Millionaire\working\interview-mode.md` and `Project Rooms\Gracious Millionaire\working\book-architecture.md` and follow them. Use the architecture for thematic progression, story coverage, speaker ownership, question opportunities, and unresolved questions while independently creating interview prose under the existing source and Quick-reference rules. The required Interview steps are:
 
 1. Build a source-to-role map.
 2. Create an interview chapter map.
@@ -154,13 +154,13 @@ Before drafting in Interview mode, read `Project Rooms\Gracious Millionaire\work
 9. Run a voice and fairness review.
 10. Produce the manuscript and review packet.
 
-Interview mode builds from Dialogue mode but adds Jean as a source-grounded interviewer. Jean is the AI office assistant mentioned in the book and employed by Wes and Jenny. Jean should be active editorial, emotionally intelligent, and willing to press into the human meaning of the material rather than sounding mechanical or procedural. Jean may ask, clarify, bridge, invite contrast, and point out tension, and may draw from approved contextual project-room sources not directly provided by Wes or Jenny when forming interview questions. There are no artificial limits on what Jean can ask; she may ask direct questions about faith, money, marriage, leadership, caution, regret, motives, patience, risk, and unresolved outcomes. The guardrail is on unsupported answers, unsupported factual assertions, and forced conclusions, not on honest questions.
+Interview builds from Dialogue but adds Jean as a source-grounded interviewer. Jean is the AI office assistant mentioned in the book and employed by Wes and Jenny. Jean should be active editorial, emotionally intelligent, and willing to press into the human meaning of the material rather than sounding mechanical or procedural. Jean may ask, clarify, bridge, invite contrast, and point out tension, and may draw from approved contextual project-room sources not directly provided by Wes or Jenny when forming interview questions. There are no artificial limits on what Jean can ask; she may ask direct questions about faith, money, marriage, leadership, caution, regret, motives, patience, risk, and unresolved outcomes. The guardrail is on unsupported answers, unsupported factual assertions, and forced conclusions, not on honest questions.
 
-If Interview mode needs a manuscript reference for sequence, coverage, or current included text, use only the current Quick-mode manuscript. Do not use Rewrite manuscripts, Dialogue manuscripts, prior Interview manuscripts, clickable packets, or other non-Quick manuscript outputs as the Interview manuscript reference. If no Quick-mode manuscript exists, build the Interview product directly from original source material and approved contextual source records, or run Quick mode first if Wes directs it.
+If Interview needs a manuscript reference for sequence, coverage, or current included text, use only the current Quick-mode manuscript. Do not use Rewrite manuscripts, Dialogue manuscripts, prior Interview manuscripts, clickable packets, or other non-Quick manuscript outputs as the Interview manuscript reference. If no Quick-mode manuscript exists, build the Interview product directly from original source material and approved contextual source records, or run Quick first if Wes directs it.
 
-Interview mode manuscripts should revolve around themes Jean presents, with property sequence supporting those themes rather than controlling the whole manuscript. Unanswered questions should remain visible as live struggles when the source material has not resolved them. Jean must not supply unsupported facts or conclusions, and must not put contextual-source material into Wes's or Jenny's mouth unless their own source material supports it. Avoid reader-facing process language such as "the source says," "the transcript preserved," or "the input states"; frame questions naturally as "in your book," "in the material you gave me," "in one of your videos," or by naming the lived event directly. Some scenes may be direct Wes/Jenny dialogue; other scenes may be Jean asking a question that Wes or Jenny answers. Use the speaker label `Jean`.
+Interview manuscripts should revolve around themes Jean presents, with property sequence supporting those themes rather than controlling the whole manuscript. Unanswered questions should remain visible as live struggles when the source material has not resolved them. Jean must not supply unsupported facts or conclusions, and must not put contextual-source material into Wes's or Jenny's mouth unless their own source material supports it. Avoid reader-facing process language such as "the source says," "the transcript preserved," or "the input states"; frame questions naturally as "in your book," "in the material you gave me," "in one of your videos," or by naming the lived event directly. Some scenes may be direct Wes/Jenny dialogue; other scenes may be Jean asking a question that Wes or Jenny answers. Use the speaker label `Jean`.
 
-For Interview mode, Jean may draw from approved YouTube transcripts, teaching notes, video/source notes, and related working notes to sharpen questions. Build and maintain a source library for the Buy Your Home YouTube channel `@buyyourhome8397` with video title, URL, date when available, description, transcript when available, and any owned/authorized video or audio download location when the full recording is useful for tone, sequence, or visual context.
+For Interview, Jean may draw from approved YouTube transcripts, teaching notes, video/source notes, and related working notes to sharpen questions. Build and maintain a source library for the Buy Your Home YouTube channel `@buyyourhome8397` with video title, URL, date when available, description, transcript when available, and any owned/authorized video or audio download location when the full recording is useful for tone, sequence, or visual context.
 
 ## Boundaries
 
@@ -171,7 +171,7 @@ For Interview mode, Jean may draw from approved YouTube transcripts, teaching no
 - When Gracious Millionaire rules authorize a Jenny review-packet email after a significant manuscript change, this skill may prepare only the final delivery package and must hand it to the existing Email Monitor status task `019ecba7-f1cc-7ac1-aaf7-d89a3f21b582` requesting Email Delivery mode. Do not send directly from this Project Room. Do not mark the email sent until Email Monitor returns verified Sent Items evidence with the sent message id and timestamp.
 ## Start PR Pointer
 
-Before durable work, follow Start PR Mode in `C:\Codex\Wiki Files\Project Room Chat Startup Rule.md`.
+Before durable work, follow Start PR in `C:\Codex\Wiki Files\Project Room Chat Startup Rule.md`.
 
 Interpret unqualified requests under the Current PR Scope Rule in that file. Work on `main` unless Wes explicitly asks for a branch.
 ## Delegation Contract

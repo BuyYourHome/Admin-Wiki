@@ -371,11 +371,11 @@ When Boss asks for a credit card statement report, or when a scan run files cred
 4. Email the friendly report PDF to both `WesWill@BuyYourHomeLLC.com` and `Jenny@BuyYourHomeLLC.com`.
 5. In the email body, note anything that needs attention, including minimum-payment increases or notable decreases, late fees, unusual balance jumps, missing account matches, duplicate-looking statements, or any statement routed to review.
 
-### Lowe's Statement Allocation Mode
+### Lowe's Statement Allocation
 
 When Credit Card Statement Mode identifies and files a Lowe's statement, preserve all normal Lowe's statement handling first: inspect/OCR, split if needed, file the statement in the approved Lowe's credit-card statement folder, log the routing, include it in the credit-card statement report, and flag normal statement review items.
 
-After normal statement filing, run Lowe's Statement Allocation Mode as an additive extraction workflow. Doc Scan extracts item-level source data for Invoice Entry. Doc Scan must not edit any project-management workbook and must not decide final spreadsheet insertion.
+After normal statement filing, run Lowe's Statement Allocation as an additive extraction workflow. Doc Scan extracts item-level source data for Invoice Entry. Doc Scan must not edit any project-management workbook and must not decide final spreadsheet insertion.
 
 Do not treat the entire Lowe's statement as one invoice for one project. A single Lowe's statement may contain charges, returns, credits, fees, or interest for multiple projects and non-project/Home items.
 

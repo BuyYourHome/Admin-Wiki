@@ -49,7 +49,7 @@ Use [[Agent Unit Standard]] for the standard package behind an agent-like operat
 | New Project | Wiki-managed skill plus project room | Draft | On demand | `skills\new-project\SKILL.md`; `Project Rooms\New Project\README.md` |
 | Confidential | Wiki-managed skill plus project room plus dedicated chat | Draft | On demand | `skills\confidential\SKILL.md`; `Project Rooms\Confidential\README.md` |
 | REI BlackBook | Wiki-managed skill plus project room plus dedicated chat | Draft | On demand | `skills\rei-blackbook\SKILL.md`; `Project Rooms\REI BlackBook\README.md`; thread id `019f4691-5466-7f72-9683-ab5d3b750c25` |
-| GM Mode Site Iteration | GM Mode heartbeat automation plus REI BlackBook project room | Active | Every 30 minutes; each acquired run chains coherent book-site iterations for approximately 45-90 minutes, then emails Wes the remaining backlog from OfficeAssist | `skills\rei-blackbook\SKILL.md`; `Project Rooms\REI BlackBook\README.md`; automation id `gm-mode-site-iteration` |
+| GM Site Iteration | GM heartbeat automation plus REI BlackBook project room | Active | Every 30 minutes; each acquired run chains coherent book-site iterations for approximately 45-90 minutes, then emails Wes the remaining backlog from OfficeAssist | `skills\rei-blackbook\SKILL.md`; `Project Rooms\REI BlackBook\README.md`; automation id `gm-mode-site-iteration` |
 | Investigate Computer | Wiki-managed skill plus project room plus heartbeat automation | Active | Daily at 6:00 AM Eastern; email Wes only when an issue is detected | `skills\investigate-computer\SKILL.md`; `Project Rooms\Investigate Computer\README.md`; app automation id `investigate-computer-daily-check` |
 | Jenny Email Summary | Behavior inside Email Monitor heartbeat | Active | Runs once daily at/after 8:00 AM Eastern with the Email Monitor heartbeat; emails Jenny from OfficeAssist and verifies Sent Items | `skills\email-monitor\SKILL.md`; `Email Monitor` prompt notes |
 
@@ -125,7 +125,7 @@ Defined in:
 
 Current behavior:
 
-- Jean uses `Dispatcher Mode` when a request belongs to another PR or requires cross-PR coordination.
+- Jean uses `Dispatcher` when a request belongs to another PR or requires cross-PR coordination.
 - Jean assigns a stable `dispatch_id` before handoff.
 - Jean defaults to `route-and-return`; Jean monitors only when Wes asks or when a workflow requires delivery/verification return.
 - Jean routes only to the owning task/thread id in the dispatcher routing map; a missing or `pending` id is a visible blocker, not authority to create a substitute chat or perform the specialized work in Jean.
@@ -1048,9 +1048,9 @@ Important rules:
 - Do not publish a site, change DNS, change tracking pixels, replace live content, send texts, alter live lead workflows, or change account settings without Wes's explicit approval for that specific action.
 - Record missing website goals, brand assets, compliance language, and access blockers in the project room before drafting final public-facing copy.
 
-## GM Mode Site Iteration
+## GM Site Iteration
 
-Type: GM Mode heartbeat automation plus REI BlackBook project room.
+Type: GM heartbeat automation plus REI BlackBook project room.
 
 Status: active.
 
@@ -1079,8 +1079,8 @@ Defined in:
 
 Important limitations:
 
-- Use `Project Rooms\REI BlackBook\working\gm-mode-run-lock.md` to prevent overlapping GM Mode runs. If a fresh lock exists, do not inspect or edit the live site. If the lock is 3 hours old or older, record a stale-lock takeover, replace the lock, and proceed.
-- Wes broadened GM Mode on 2026-07-10: live comprehensive design, site-structure, navigation, layout, sidebar/footer, approved image-placement, visible-copy, and form-presentation improvements are authorized for the Gracious Millionaire site.
+- Use `Project Rooms\REI BlackBook\working\gm-mode-run-lock.md` to prevent overlapping GM runs. If a fresh lock exists, do not inspect or edit the live site. If the lock is 3 hours old or older, record a stale-lock takeover, replace the lock, and proceed.
+- Wes broadened GM on 2026-07-10: live comprehensive design, site-structure, navigation, layout, sidebar/footer, approved image-placement, visible-copy, and form-presentation improvements are authorized for the Gracious Millionaire site.
 - Wes established the creative charter on 2026-07-15: treat Gracious Millionaire as a book-centered editorial experience, work in coherent 45-90 minute design iterations when useful backlog remains, preserve each run's learning in `working\gm-mode-iteration-ledger.md`, and resume from the exact prior continuation point instead of repeatedly auditing from zero.
 - Current activation state: `ACTIVE`. The 30-minute cadence is a wake-up schedule, not a run-duration limit. After acquiring the lock, one invocation should complete and QA successive unblocked objectives for approximately 45-90 minutes, or until the backlog is exhausted, a required approval or external dependency blocks progress, or browser instability makes continued live work unsafe. Do not clear the lock and end merely because one small iteration finished.
 - Wes authorized a standing GM completion-backlog email on 2026-07-17. At the end of every substantive GM run, send one concise email from `OfficeAssist@BuyYourHomeLLC.com` to `WesWill@BuyYourHomeLLC.com` listing completed live changes, QA status, remaining backlog in priority order, blockers or approvals needed, the recommended next objective, and lock-clear status. Follow `skills\email-delivery\SKILL.md` and verify the sent copy in OfficeAssist Sent Items. Do not send this email for fresh-lock overlap exits, no-op heartbeat checks, or runs that never began substantive work. Report send or verification failures visibly in the project-room thread.

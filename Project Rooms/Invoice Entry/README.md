@@ -95,7 +95,7 @@ Dedicated task: `019fbf4f-c629-7dd1-a3f6-0de33de0ed8f`.
 
 Backup automation: standalone local cron job `invoice-entry-to-projects-backup-heartbeat`, displayed as `Invoice Entry Backup Monitor`, scheduled for noon and 4:00 PM Eastern. It reads durable Project Room state and does not target or wake the operational task. Direct handoffs remain the primary trigger.
 
-## Task Health Mode
+## Task Health
 
 - Keep detailed processing history in packet files, logs, or approved Teams locations instead of repeating it in task messages.
 - Keep `working\work-status.md` current after meaningful state changes and before a substantial run ends. It must identify the operation state, queue, blockers, delivery evidence, classified working files, and observable task-health metrics.

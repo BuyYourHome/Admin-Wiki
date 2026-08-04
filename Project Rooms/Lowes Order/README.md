@@ -47,7 +47,7 @@ This room was created as the standard workspace for Lowe's order workflow work. 
 - Chat name: `Lowes Order`
 - Thread id: `019f5845-fb96-7370-baf2-b8f00fddffae`
 
-## Branch And Push Mode
+## Branch And Push
 
 - Project branch: `project/lowes-order`
 - Before durable file work, confirm the repo is `C:\Codex\Wiki Files` and switch to this branch when safe.
@@ -93,7 +93,7 @@ When Wes asks Lowes Order to fill a cart from an email:
 5. Draft review-ready order outputs in `outputs\` only from authoritative sources.
 ## Start PR Pointer
 
-Before durable work, follow Start PR Mode in `C:\Codex\Wiki Files\Project Room Chat Startup Rule.md`.
+Before durable work, follow Start PR in `C:\Codex\Wiki Files\Project Room Chat Startup Rule.md`.
 
 Interpret unqualified requests under the Current PR Scope Rule in that file. Work on `main` unless Wes explicitly asks for a branch.
 ## Delegation Contract

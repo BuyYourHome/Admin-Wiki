@@ -48,9 +48,9 @@ Wes intends to write a book about his grandfather, L.D. Evans. Four `Leaving Hom
 
 ## Start PR
 
-Before durable work, follow Start PR Mode in `C:\Codex\Wiki Files\Project Room Chat Startup Rule.md`. Interpret unqualified requests under the Current PR Scope Rule in that file. Work on `main` unless Wes explicitly asks for a branch.
+Before durable work, follow Start PR in `C:\Codex\Wiki Files\Project Room Chat Startup Rule.md`. Interpret unqualified requests under the Current PR Scope Rule in that file. Work on `main` unless Wes explicitly asks for a branch.
 
-## Ownership And Git Mode
+## Ownership And Git
 
 - Working branch: `main`
 - Before durable file work, confirm the repo is `C:\Codex\Wiki Files` and the current branch is `main`.

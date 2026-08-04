@@ -16,7 +16,7 @@ Use this skill when Wes asks Codex to work on Brynda Suit source organization, a
 
 ## Start PR
 
-Before durable work, follow Start PR Mode in `C:\Codex\Wiki Files\Project Room Chat Startup Rule.md`. Interpret unqualified requests under the Current PR Scope Rule in that file. Work on `main` unless Wes explicitly asks for a branch.
+Before durable work, follow Start PR in `C:\Codex\Wiki Files\Project Room Chat Startup Rule.md`. Interpret unqualified requests under the Current PR Scope Rule in that file. Work on `main` unless Wes explicitly asks for a branch.
 
 ## Required Startup
 
@@ -39,7 +39,7 @@ Before Brynda Suit file work:
 7. Mark unsupported assumptions as `[UNSUPPORTED]` instead of smoothing them into a final recommendation.
 8. Commit only scoped Brynda Suit room, matching skill, registry, and index changes.
 
-## OfficeAssist Routed Email Response Mode
+## OfficeAssist Routed Email Response
 
 Use this mode when OfficeAssist routes a Brynda Suit email source into the existing Brynda Suit task or says to `wake up and respond to the email`.
 

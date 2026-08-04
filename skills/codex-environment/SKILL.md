@@ -16,7 +16,7 @@ Use this skill when Wes asks Codex to prepare another authorized computer to rep
 
 ## Start PR
 
-Before durable work, follow Start PR Mode in `C:\Codex\Wiki Files\Project Room Chat Startup Rule.md`. Interpret unqualified requests under the Current PR Scope Rule in that file. Work on `main` unless Wes explicitly asks for a branch.
+Before durable work, follow Start PR in `C:\Codex\Wiki Files\Project Room Chat Startup Rule.md`. Interpret unqualified requests under the Current PR Scope Rule in that file. Work on `main` unless Wes explicitly asks for a branch.
 
 ## Required Startup
 
@@ -44,7 +44,7 @@ Before Codex Environment file work:
 
 ## Modes
 
-### Update Codex Environment Mode
+### Update Codex Environment
 
 Use this mode when Wes asks to keep an already prepared target computer current with changes made on WesStudio.
 

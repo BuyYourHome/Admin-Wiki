@@ -67,11 +67,11 @@ Use this intake path when OfficeAssist sends a direct handoff containing a route
 
 OfficeAssist owns email routing and the direct wake-up handoff only. It does not edit, publish, or respond to the website request unless Wes explicitly asks OfficeAssist to do that in the OfficeAssist thread. The current routing mailbox is `OfficeAssist@BuyYourHomeLLC.com`, and the current REI BlackBook project-room thread id is `019f4691-5466-7f72-9683-ab5d3b750c25`.
 
-## GM Mode
+## GM
 
-Use GM Mode when Wes says `GM`, `GM Mode`, or the request is clearly about the Gracious Millionaire REI BlackBook website.
+Use GM when Wes says `GM` or the request is clearly about the Gracious Millionaire REI BlackBook website.
 
-GM Mode target:
+GM target:
 
 - Site name: `Gracious Millionaire`
 - Site ID: `48842`
@@ -82,24 +82,24 @@ GM Mode target:
 - Site record: `C:\Codex\Wiki Files\Project Rooms\REI BlackBook\working\gracious-millionaire-site.md`
 - Iteration ledger: `C:\Codex\Wiki Files\Project Rooms\REI BlackBook\working\gm-mode-iteration-ledger.md`
 
-GM Mode rules:
+GM rules:
 
 1. Every public-visible element should describe the book, the authors, the book outline, editing status, update requests, excerpt requests, release information, or approved Gracious Millionaire project context.
 2. Treat generated template content as off-topic until it is verified. This includes services, generic business copy, placeholder Latin text, generic blog posts, generic categories, generic sidebars, footer text, default logos, stock images, broken profile placeholders, and default thank-you wording.
 3. Before live edits, consult the current element map and decide which mapped items are in scope for the pass.
 4. After every live website update, refresh the Gracious Millionaire element map so it reflects the current live/preview site after the change. If the map version becomes stale or materially different, create the next numbered map and update `source-inventory.md` and `gracious-millionaire-site.md`.
-5. Record reusable GM Mode lessons in this skill. Record site-specific implementation notes, blockers, and decisions in the REI BlackBook project room.
+5. Record reusable GM lessons in this skill. Record site-specific implementation notes, blockers, and decisions in the REI BlackBook project room.
 6. Do not publish manuscript chapter content unless Wes explicitly approves that content for public use. Chapter links may point to the shared editing-status page when content is not ready.
-7. As of 2026-07-10, Wes authorized GM Mode to make comprehensive live website design, structure, navigation, layout, image-placement, page-copy, sidebar/footer, and form-presentation improvements for Gracious Millionaire without limiting each pass to low-risk visible-copy fixes. Use judgment and QA after each live change.
+7. As of 2026-07-10, Wes authorized GM to make comprehensive live website design, structure, navigation, layout, image-placement, page-copy, sidebar/footer, and form-presentation improvements for Gracious Millionaire without limiting each pass to low-risk visible-copy fixes. Use judgment and QA after each live change.
 8. Personal photos from Google Photos may be selected for planning only when Wes authorizes it. Do not upload them publicly until they have been selected for the site, and do not commit the image files to GitHub without explicit approval.
-9. During GM Mode scheduled runs, retry approved Google Photos retrieval as part of the image-replacement backlog. Avoid any download/open path that launches Microsoft Photos or creates repeated Microsoft Photos windows; use the logged-in Chrome session and browser-controlled download/export/save paths only. If Chrome cannot save without opening Microsoft Photos, record the blocker and continue with text/content cleanup instead of trying repeated downloads.
+9. During GM scheduled runs, retry approved Google Photos retrieval as part of the image-replacement backlog. Avoid any download/open path that launches Microsoft Photos or creates repeated Microsoft Photos windows; use the logged-in Chrome session and browser-controlled download/export/save paths only. If Chrome cannot save without opening Microsoft Photos, record the blocker and continue with text/content cleanup instead of trying repeated downloads.
 
 GM scheduled iteration:
 
 - Automation name: `gm-mode-site-iteration`.
 - Cadence: every 30 minutes, unless Wes changes the schedule.
 - Current schedule anchor: first run after the 2026-07-09 update is 7:52 PM Eastern, then every 30 minutes after that.
-- Run lock: use `C:\Codex\Wiki Files\Project Rooms\REI BlackBook\working\gm-mode-run-lock.md` to prevent overlapping GM Mode runs. At startup, if the lock exists and is less than 3 hours old, do not inspect or edit the live site; stop quietly unless user-visible notice is needed. If the lock is 3 hours old or older, treat it as stale, record the stale-lock takeover in the project room, replace the lock, and proceed. Clear the lock at normal completion. If the run crashes or cannot clear the lock, the next run uses the stale-lock rule.
+- Run lock: use `C:\Codex\Wiki Files\Project Rooms\REI BlackBook\working\gm-mode-run-lock.md` to prevent overlapping GM runs. At startup, if the lock exists and is less than 3 hours old, do not inspect or edit the live site; stop quietly unless user-visible notice is needed. If the lock is 3 hours old or older, treat it as stale, record the stale-lock takeover in the project room, replace the lock, and proceed. Clear the lock at normal completion. If the run crashes or cannot clear the lock, the next run uses the stale-lock rule.
 - Design charter: turn the site into a book-centered editorial experience that feels generous, reflective, grounded, and personal. The book cover, Wes and Jenny, authentic photography, the book's themes, and the reader journey should be the dominant visual and structural signals. Do not preserve a generic REI/real-estate template pattern merely because it already exists.
 - Visual direction: use deep charcoal, warm white, restrained evergreen, and limited brass/gold accents; favor a characterful editorial serif for major headings and a clean sans-serif for supporting text where the builder permits; use large purposeful photography; avoid interchangeable stock-template cards and decorative clutter.
 - Information architecture direction: organize the public experience around `The Book`, `The Story`, and `The Practice`, with clear public navigation such as Home, The Book, Our Story, Journal, Updates, and Contact. Do not expose internal production labels such as `Chapter Being Edited` in public navigation.
@@ -112,11 +112,11 @@ GM scheduled iteration:
 - At the end of every substantive iteration, append a ledger entry with date/time, objective, pages/components touched, live changes, QA evidence, what worked, what failed, reusable builder path learned, remaining defects, and the exact next recommended objective. Never overwrite prior lessons.
 - Authorized live implementation includes comprehensive Gracious Millionaire site improvements: generic/off-topic template replacement, page titles, navigation labels, layout/design cleanup, sidebar/footer cleanup, button text, broken public links, book-focused descriptive copy, page structure, image placement for approved assets, and form presentation or field-label changes that keep the site focused on book updates and excerpt requests.
 - On each scheduled run, inspect the public Gracious Millionaire site, implement live improvements through the authorized logged-in REI BlackBook/WordPress browser session when available, QA affected pages, refresh or supersede the local element map, update the improvement backlog or recommendations, and record QA findings.
-- As of the 2026-07-10 manual GM Mode rerun, Chrome uploads work after enabling Codex extension file access, the Gracious Millionaire header logo is live, and the approved book cover is uploaded to WordPress media as attachment `6319`. Future GM Mode runs should focus on placing the uploaded cover where appropriate and replacing remaining generic stock images through a safe Beaver Builder edit path.
+- As of the 2026-07-10 manual GM rerun, Chrome uploads work after enabling Codex extension file access, the Gracious Millionaire header logo is live, and the approved book cover is uploaded to WordPress media as attachment `6319`. Future GM runs should focus on placing the uploaded cover where appropriate and replacing remaining generic stock images through a safe Beaver Builder edit path.
 - Use DONT_NOTIFY only when another fresh run owns the lock or when the map and ledger show no authorized useful design work remains. Do not use DONT_NOTIFY merely because one builder path failed; switch to another objective and continue. Notify Wes when live changes were made, meaningful findings remain, a new blocker occurs, high-risk approval is needed, or QA finds broken pages, generic/off-topic content, public privacy risk, workflow/form risk, SSL/domain issues, or recommended next actions.
 - Still stop for actions with outside consequences unless Wes explicitly approves that specific action: activating outbound excerpt email, SMS, lead-notification, or autoresponder workflows; changing who receives submitted leads or messages; uploading personal Google Photos to the public site; exposing or changing public contact details; changing DNS/domain settings; purchasing anything; pushing Git changes; sending messages; publishing manuscript chapter content; or making legal/financial/compliance claims.
 - When REI BlackBook rules authorize a completion-backlog email after a substantive GM run, prepare only the final delivery package and hand it to the existing Email Monitor status task `019ecba7-f1cc-7ac1-aaf7-d89a3f21b582` requesting Email Delivery mode. Do not send directly from this Project Room. Do not mark the email sent until Email Monitor returns verified Sent Items evidence with the sent message id and timestamp.
-- Never make live website edits while another fresh GM Mode run lock appears active.
+- Never make live website edits while another fresh GM run lock appears active.
 
 ## Browser Rules
 
@@ -134,8 +134,8 @@ GM scheduled iteration:
 - Chrome file uploads through the Codex extension may require `Allow access to file URLs` under the Codex extension details at `chrome://extensions`. If local photo upload fails with `Not allowed`, record the blocker and use web-sized local copies only after Wes has approved those photos for public use.
 - For Beaver Builder text-module edits in Chrome, a reliable path is to open the page with `?fl_builder`, move the pointer over the target module until the overlay appears, click the module wrench, edit only the visible text/title field, click the module `Save`, then use builder `Done` -> `Publish Changes` and public-QA the page. Do not edit InsiteForms workflow/settings panels unless Wes explicitly approves routing/workflow changes.
 - Do not commit personal Google Photos or other private image files to GitHub unless Wes explicitly approves committing those files. It is acceptable to commit a Markdown plan that references local-only photo filenames and privacy decisions.
-- Repeated Google Photos downloads can open separate Microsoft Photos windows on Wes's computer and interfere with browser control. For GM Mode photo retrieval, avoid OS photo-viewer launch paths and stop after the first such launch pattern is detected.
-- Wes broadened GM Mode on 2026-07-10 so the iteration loop can make comprehensive live site-design and site-structure improvements. Future passes should be proactive about improving the site, then use the element map, QA notes, and concise recommendations so Wes can guide the next iteration.
+- Repeated Google Photos downloads can open separate Microsoft Photos windows on Wes's computer and interfere with browser control. For GM photo retrieval, avoid OS photo-viewer launch paths and stop after the first such launch pattern is detected.
+- Wes broadened GM on 2026-07-10 so the iteration loop can make comprehensive live site-design and site-structure improvements. Future passes should be proactive about improving the site, then use the element map, QA notes, and concise recommendations so Wes can guide the next iteration.
 - The 2026-07-15 homepage pass confirmed that staged web-sized images can be uploaded through the authenticated Beaver Builder flow after stale builder tabs are closed. The homepage hero, book cover, and two card photos were published successfully. Reuse that proven upload and media-selection path before treating image placement as blocked.
 - A scheduled design heartbeat should preserve momentum in an append-only iteration ledger. Re-auditing the same known defects without completing a coherent objective is not a meaningful iteration.
 - A WordPress Customizer `Saved` state is not public QA. REI managed-theme overrides can ignore the stored Customizer field, so verify the exact rendered text in public HTML before reporting a visible change. Trigger Customizer dirty state with keyboard input and blur when direct field replacement does not enable `Save & Publish`.
@@ -163,7 +163,7 @@ GM scheduled iteration:
 - Mark unsupported claims with `[UNSUPPORTED]` instead of smoothing them into final language.
 ## Start PR Pointer
 
-Before durable work, follow Start PR Mode in `C:\Codex\Wiki Files\Project Room Chat Startup Rule.md`.
+Before durable work, follow Start PR in `C:\Codex\Wiki Files\Project Room Chat Startup Rule.md`.
 
 Interpret unqualified requests under the Current PR Scope Rule in that file. Work on `main` unless Wes explicitly asks for a branch.
 ## Delegation Contract
