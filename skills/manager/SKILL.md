@@ -35,6 +35,13 @@ Use Tasks when any user adds a task for the Manager, asks for the task list or a
 
 Task register: `C:\Codex\Wiki Files\Project Rooms\Manager\working\task-register.md`
 
+#### Task ID Display
+
+- Keep the full canonical id in the form `MGR-YYYYMMDD-NNN` in the task register, routing ledger, source notes, and other internal records.
+- Display only the final three digits (`NNN`) in task lists, daily-summary sections, chat status reports, and Manager task-delivery or status-update emails. For example, display `MGR-20260724-001` as `001`.
+- The three-digit display number must be unique across the entire Manager task register. Assign the next unused three-digit number without resetting the sequence on a new date, and never reuse a number from a completed, cancelled, deleted, or otherwise historical task.
+- Accept either the three-digit display number or the full canonical id when a user or authorized email references a task. Resolve the display number to the full internal id; ask for clarification if it does not identify exactly one task.
+
 #### Manager Routing Intake
 
 Use a direct `Manager Routing` handoff from the Email Monitor task as the trigger to process one routed email. Do not query or continuously monitor any mailbox.
@@ -66,7 +73,7 @@ Process the handoff:
 
 #### Add A Task
 
-1. Assign a stable id in the form `MGR-YYYYMMDD-NNN`, using the next available sequence for that date.
+1. Assign a stable id in the form `MGR-YYYYMMDD-NNN`. Use the received or processing date for `YYYYMMDD` and the next unused three-digit display number across the entire register for `NNN`; do not reset or reuse the suffix by date.
 2. Record the requester, received date and time, task description, priority, status, due date when supplied, and source reference when available.
 3. Use priorities `Critical`, `High`, `Normal`, and `Low`; default to `Normal` when the requester does not specify one.
 4. Set the initial status to `New`.
@@ -77,8 +84,8 @@ Process the handoff:
 Deliver only when the requester asks to send or deliver the task, or another applicable Admin wiki rule grants that delivery authority.
 
 1. Prepare the delivery package to Josh Kennedy at `IRAManager@SellYourHomeRaleigh.com`.
-2. Use subject `[Manager Task][<Priority>][<Task ID>] <short title>`.
-3. Include the task id, priority, requester, task, due date when any, and the instruction to reply with the task id and new status.
+2. Use subject `[Manager Task][<Priority>][<three-digit display number>] <short title>`.
+3. Include the three-digit display number, priority, requester, task, due date when any, and the instruction to reply with that display number and the new status.
 4. Normally set sender to `OfficeAssist@BuyYourHomeLLC.com` and copy `WesWill@BuyYourHomeLLC.com` unless Wes explicitly says not to copy himself for that message.
 5. Send a direct handoff to the existing Email Monitor status task `019ecba7-f1cc-7ac1-aaf7-d89a3f21b582`, explicitly requesting Email Delivery mode. Include sender, To, CC/BCC, subject, plain-text body, attachment paths if any, authorization basis, and any stricter Manager restrictions.
 6. Set status to `Delivered` only after Email Monitor returns a verified sent copy in the approved sender mailbox's Sent Items. Record the sent message id and sent timestamp when available.

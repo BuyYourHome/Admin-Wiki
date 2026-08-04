@@ -2,6 +2,12 @@
 
 Use this register as the durable status record for Manager Tasks.
 
+## Task ID Display
+
+- Store the full canonical id as `MGR-YYYYMMDD-NNN` in this register and internal records.
+- Show only the final three digits (`NNN`) in user-facing task lists, summaries, status reports, and task emails.
+- Keep each three-digit display number unique across the entire register. Do not reset the suffix on a new date or reuse a historical number.
+
 ## Allowed Values
 
 - Priority: `Critical`, `High`, `Normal`, `Low`

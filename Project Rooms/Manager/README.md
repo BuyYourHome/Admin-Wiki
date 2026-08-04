@@ -45,6 +45,9 @@ The room has been created as a standard Project Room shell. Wes has provided ini
 Use Tasks to keep the status of tasks added by any user and, when delivery is requested, deliver the task and its priority to the Manager.
 
 - Record every accepted task in `working\task-register.md` with a stable task id, requester, task, priority, status, dates, and delivery details.
+- Keep the full `MGR-YYYYMMDD-NNN` id in the register and internal records, but display only its final three digits to users. For example, display `MGR-20260724-001` as `001`.
+- Treat the three-digit display number as unique across the entire Manager register. Assign the next unused number without resetting it on a new date, and never reuse a number from an earlier, completed, cancelled, or removed task.
+- Use only the three-digit display number in task lists, daily-summary sections, chat status reports, and Manager task-delivery or status-update emails. Accept either the display number or the full canonical id as an incoming reference; ask for clarification if a short reference cannot be resolved uniquely.
 - Use priorities `Critical`, `High`, `Normal`, and `Low`. Default to `Normal` when no priority is supplied.
 - Use statuses `New`, `Delivered`, `Acknowledged`, `In Progress`, `Waiting`, `Completed`, and `Cancelled`.
 - A task request does not by itself authorize purchases, payments, legal or financial changes, deletion, external communications beyond the authorized Manager delivery, or work owned by another Project Room.
