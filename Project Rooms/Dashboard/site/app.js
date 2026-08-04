@@ -12,7 +12,7 @@
     allowHostActions: true
   };
   const groupOrder = groupDefinitions.map(group => group.name);
-  const state = { group: "All", query: "", view: "grid", selected: null, selectedRoom: null, selectedMode: "", selectedManagerTaskId: "", managerTaskUpdatePending: false, sopGroup: "All", visibleSopEntries: [] };
+  const state = { group: "All", query: "", view: "grid", selected: null, selectedRoom: null, selectedMode: "", selectedManagerTaskId: "", selectedInvoiceEntryProject: "", managerTaskUpdatePending: false, sopGroup: "All", visibleSopEntries: [] };
   const el = id => document.getElementById(id);
   const initials = name => name.split(/\s+/).filter(Boolean).slice(0, 2).map(word => word[0]).join("").toUpperCase();
   const attentionLabel = attention => attention?.type === "approval-needed" ? "Approval needed" : "Confirmation needed";
@@ -38,10 +38,22 @@
     });
   };
   const getManagerTasks = room => Array.isArray(room?.managerTasks) ? room.managerTasks.slice() : [];
+  const getInvoiceEntryProjects = room => Array.isArray(room?.invoiceEntryProjects) ? room.invoiceEntryProjects.slice() : [];
   const getManagerTaskDisplayId = taskId => {
     const match = String(taskId || "").match(/-(\d{3})$/);
     return match ? match[1] : String(taskId || "");
   };
+  function syncSelectedInvoiceEntryProject(room) {
+    const projects = getInvoiceEntryProjects(room);
+    if (!projects.length) {
+      state.selectedInvoiceEntryProject = "";
+      return null;
+    }
+    if (!projects.some(project => project.project === state.selectedInvoiceEntryProject)) {
+      state.selectedInvoiceEntryProject = projects[0].project;
+    }
+    return projects.find(project => project.project === state.selectedInvoiceEntryProject) || projects[0];
+  }
   const getOpenManagerTasks = room => getManagerTasks(room)
     .filter(task => managerOpenStatuses.has(task.status))
     .sort((left, right) => {
@@ -101,6 +113,50 @@
       state.managerTaskUpdatePending = false;
       renderModePanel(state.selectedRoom, getModePanel(state.selectedRoom?.name, state.selectedMode));
     }
+  }
+  async function openInvoiceEntryReconcileRequest(room, project) {
+    if (!room?.taskId) {
+      el("detailModeState").textContent = "Invoice Entry does not have a documented task id, so Dashboard cannot open its request interface.";
+      return;
+    }
+    if (!project?.project) {
+      el("detailModeState").textContent = "Select an active project before preparing an Invoice Entry Reconcile request.";
+      return;
+    }
+    const requestText = [
+      "Invoice Entry mode: Reconcile",
+      "Requester: Wes",
+      `Project/property: ${project.project}`,
+      `Workbook hint: ${project.workbookPath}`,
+      "Requested action: Run Reconcile for this exact project/property. This Dashboard request is the authorization to evaluate existing Review!tblInvoiceReview rows even when invoiceEntryReviewRequest is FALSE or blank.",
+      "Source: Dashboard mode panel Invoice Entry -> Reconcile"
+    ].join("\n");
+    let copied = false;
+    if (window.isSecureContext && navigator.clipboard?.writeText) {
+      try {
+        await navigator.clipboard.writeText(requestText);
+        copied = true;
+      } catch {
+        copied = false;
+      }
+    }
+    const openedWindow = window.open(`codex://threads/${room.taskId}`, "_blank", "noopener");
+    if (openedWindow) {
+      openedWindow.opener = null;
+    }
+    if (copied && openedWindow) {
+      el("detailModeState").textContent = `Copied the Reconcile request for ${project.project} and opened Invoice Entry. Paste the request there to activate Reconcile.`;
+      return;
+    }
+    if (copied) {
+      el("detailModeState").textContent = `Copied the Reconcile request for ${project.project}. Open the Invoice Entry task and paste it there to activate Reconcile.`;
+      return;
+    }
+    if (openedWindow) {
+      el("detailModeState").textContent = `Opened Invoice Entry for ${project.project}, but the browser did not allow Dashboard to copy the request automatically. Paste the request shown in this panel there to activate Reconcile.`;
+      return;
+    }
+    el("detailModeState").textContent = `Could not open Invoice Entry automatically. The browser blocked the task window for ${project.project}.`;
   }
   async function refreshDashboard() {
     if (!dashboardContext.allowHostActions) {
@@ -187,6 +243,7 @@
     state.selectedRoom = null;
     state.selectedMode = "";
     state.selectedManagerTaskId = "";
+    state.selectedInvoiceEntryProject = "";
     state.sopGroup = "All";
     state.visibleSopEntries = [];
     el("detailPanel").hidden = true;
@@ -218,6 +275,7 @@
     state.selectedRoom = room;
     state.selectedMode = "";
     state.selectedManagerTaskId = "";
+    state.selectedInvoiceEntryProject = "";
     el("detailPanel").hidden = false;
     el("detailName").textContent = room.name;
     el("detailPurpose").textContent = room.purpose;
@@ -411,9 +469,44 @@
     section.hidden = false;
     el("detailModePanelTitle").textContent = panel.title || "Mode panel";
     el("detailModePanelIntro").textContent = panel.intro || "";
+    const selectedInvoiceEntryProject = room?.name === "Invoice Entry" ? syncSelectedInvoiceEntryProject(room) : null;
     const selectedManagerTask = room?.name === "Manager" ? syncSelectedManagerTask(room) : null;
 
     const controlElements = (Array.isArray(panel.controls) ? panel.controls : []).map(control => {
+      if (control.type === "project-select") {
+        const card = document.createElement("div");
+        card.className = "mode-panel-card";
+        const label = document.createElement("strong");
+        label.textContent = control.label || "Project";
+        const note = document.createElement("p");
+        const projects = getInvoiceEntryProjects(room);
+        note.textContent = projects.length
+          ? "Active projects come from Invoice Entry's canonical workbook register."
+          : (control.emptyText || "No current active projects were found.");
+        const select = document.createElement("select");
+        select.className = "mode-panel-select";
+        select.disabled = !projects.length;
+        select.replaceChildren(...projects.map(project => {
+          const option = document.createElement("option");
+          option.value = project.project;
+          option.textContent = project.project;
+          option.selected = project.project === state.selectedInvoiceEntryProject;
+          return option;
+        }));
+        select.addEventListener("change", event => {
+          state.selectedInvoiceEntryProject = event.target.value || "";
+          renderModePanel(room, panel);
+        });
+        card.append(label, note, select);
+        if (selectedInvoiceEntryProject?.workbookPath) {
+          const pathNote = document.createElement("p");
+          pathNote.className = "manager-task-meta";
+          pathNote.textContent = `Workbook hint: ${selectedInvoiceEntryProject.workbookPath}`;
+          card.append(pathNote);
+        }
+        return card;
+      }
+
       if (control.type === "task-list") {
         const card = document.createElement("div");
         card.className = "mode-panel-card task-list-card";
@@ -496,6 +589,44 @@
         button.addEventListener("click", () => updateManagerTaskStatus(selectedManagerTask.taskId, select.value));
         editor.append(select, button);
         card.append(summary, editor);
+        return card;
+      }
+
+      if (control.type === "invoice-entry-reconcile-request") {
+        const card = document.createElement("div");
+        card.className = "mode-panel-card";
+        const label = document.createElement("strong");
+        label.textContent = control.label || "Reconcile";
+        const note = document.createElement("p");
+        const available = controlAvailable(control.availability || "local-only");
+        note.textContent = available
+          ? (selectedInvoiceEntryProject
+            ? `Prepare the exact Reconcile request for ${selectedInvoiceEntryProject.project}, copy it locally, and open Invoice Entry for paste-in activation.`
+            : "Select an active project before preparing the Reconcile request.")
+          : (control.description || "This control is available only on the host machine.");
+        card.append(label, note);
+        if (!available) {
+          card.classList.add("disabled");
+          return card;
+        }
+        const requestText = selectedInvoiceEntryProject ? [
+          "Invoice Entry mode: Reconcile",
+          "Requester: Wes",
+          `Project/property: ${selectedInvoiceEntryProject.project}`,
+          `Workbook hint: ${selectedInvoiceEntryProject.workbookPath}`,
+          "Requested action: Run Reconcile for this exact project/property. This Dashboard request is the authorization to evaluate existing Review!tblInvoiceReview rows even when invoiceEntryReviewRequest is FALSE or blank.",
+          "Source: Dashboard mode panel Invoice Entry -> Reconcile"
+        ].join("\n") : "";
+        const requestPreview = document.createElement("pre");
+        requestPreview.className = "mode-panel-template";
+        requestPreview.textContent = requestText || "Select an active project to prepare the Invoice Entry Reconcile request.";
+        const button = document.createElement("button");
+        button.type = "button";
+        button.className = "primary-button";
+        button.textContent = control.label || "Reconcile";
+        button.disabled = !selectedInvoiceEntryProject;
+        button.addEventListener("click", () => openInvoiceEntryReconcileRequest(room, selectedInvoiceEntryProject));
+        card.append(requestPreview, button);
         return card;
       }
 

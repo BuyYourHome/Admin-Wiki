@@ -70,6 +70,27 @@
           }
         ]
       }
+    },
+    "Invoice Entry": {
+      "Reconcile": {
+        "title": "Invoice Entry Reconcile",
+        "intro": "Select one active project from Invoice Entry's canonical workbook register, then prepare the exact Reconcile request for Invoice Entry.",
+        "stateText": "Invoice Entry Reconcile loaded. Select an active project, then use the local request button to open Invoice Entry with the prepared handoff copied for paste.",
+        "controls": [
+          {
+            "type": "project-select",
+            "label": "Active project",
+            "availability": "lan-readonly",
+            "emptyText": "No current active projects were found in the Invoice Entry workbook register."
+          },
+          {
+            "type": "invoice-entry-reconcile-request",
+            "label": "Reconcile",
+            "availability": "local-only",
+            "description": "Copies the exact Invoice Entry Reconcile request for the selected project and opens the Invoice Entry task on WesStudio."
+          }
+        ]
+      }
     }
   }
 }

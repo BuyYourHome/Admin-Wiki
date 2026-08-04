@@ -1,5 +1,5 @@
-window.PROJECT_ROOMS_UPDATED = '2026-08-04 09:34';
-window.PROJECT_ROOMS_HASH = 'B78DD0347CAFA7EB517AFAF054BC87F237D497290629290780036D1B704AA4A5';
+window.PROJECT_ROOMS_UPDATED = '2026-08-04 11:01';
+window.PROJECT_ROOMS_HASH = 'AA1D9EAFA3F7D89606A91A45EAD57A227BF0F721BA0EA7EDFDCC68DCB8FD22AA';
 window.PROJECT_ROOM_GROUPS = [
     {
         "name":  "Intake \u0026 Coordination",
@@ -106,7 +106,28 @@ window.DASHBOARD_ACTIONS = {
                                                                       }
                                                                   ]
                                                  }
-                                   }
+                                   },
+                       "Invoice Entry":  {
+                                             "Reconcile":  {
+                                                               "title":  "Invoice Entry Reconcile",
+                                                               "intro":  "Select one active project from Invoice Entry\u0027s canonical workbook register, then prepare the exact Reconcile request for Invoice Entry.",
+                                                               "stateText":  "Invoice Entry Reconcile loaded. Select an active project, then use the local request button to open Invoice Entry with the prepared handoff copied for paste.",
+                                                               "controls":  [
+                                                                                {
+                                                                                    "type":  "project-select",
+                                                                                    "label":  "Active project",
+                                                                                    "availability":  "lan-readonly",
+                                                                                    "emptyText":  "No current active projects were found in the Invoice Entry workbook register."
+                                                                                },
+                                                                                {
+                                                                                    "type":  "invoice-entry-reconcile-request",
+                                                                                    "label":  "Reconcile",
+                                                                                    "availability":  "local-only",
+                                                                                    "description":  "Copies the exact Invoice Entry Reconcile request for the selected project and opens the Invoice Entry task on WesStudio."
+                                                                                }
+                                                                            ]
+                                                           }
+                                         }
                    }
 };
 window.PROJECT_ROOMS = [
@@ -536,13 +557,100 @@ window.PROJECT_ROOMS = [
                       "Create Vendor Invoice",
                       "Time Card",
                       "Statement Processing",
-                      "Review Request Processing",
+                      "Reconcile",
                       "Vendor Tabs"
                   ],
         "readmeUrl":  "../../Invoice%20Entry/README.md",
         "quickActions":  [
 
-                         ]
+                         ],
+        "invoiceEntryProjects":  [
+                                     {
+                                         "project":  "07-BYH - 3325 Banks Rd",
+                                         "workbookPath":  "Property/07_Project Management - 3325 Banks Rd.xlsm",
+                                         "status":  "Current"
+                                     },
+                                     {
+                                         "project":  "13-SYH - 5008 Larchmont Dr",
+                                         "workbookPath":  "Property/13_Project Management - 5008 Larchmont Dr.xlsx",
+                                         "status":  "Current"
+                                     },
+                                     {
+                                         "project":  "15-BYH - 6004 Sandy Run",
+                                         "workbookPath":  "Property/15_Project Management - 6004 Sandy Run.xlsx",
+                                         "status":  "Current"
+                                     },
+                                     {
+                                         "project":  "16-BYH - 3021 Pearces Rd",
+                                         "workbookPath":  "Property/16_Project Management - 3021 Pearces Rd.xlsx",
+                                         "status":  "Current"
+                                     },
+                                     {
+                                         "project":  "17-SYH - 3413 Pinetree Ln",
+                                         "workbookPath":  "Property/17_Project Management - 3413 Pinetree Ln.xlsm",
+                                         "status":  "Current"
+                                     },
+                                     {
+                                         "project":  "18-HM - 1426 Pleasant Garden Ln",
+                                         "workbookPath":  "Property/18_Project Management - 1426 Pleasant Garden Ln.xlsm",
+                                         "status":  "Current"
+                                     },
+                                     {
+                                         "project":  "19-BYH - 8225 Burgwyn Ln",
+                                         "workbookPath":  "Property/19_Project Management - 8225 Burgwyn Ln.xlsx",
+                                         "status":  "Current"
+                                     },
+                                     {
+                                         "project":  "20-HM - 115 Rosebrooks Dr",
+                                         "workbookPath":  "Property/20_Project Management - 115 Rosebrooks Dr.xlsm",
+                                         "status":  "Current"
+                                     },
+                                     {
+                                         "project":  "21-SYH - 1343 Old Buckhorn Rd",
+                                         "workbookPath":  "Property/21_Project Management - 1343 Old Buckhorn Rd.xlsm",
+                                         "status":  "Current"
+                                     },
+                                     {
+                                         "project":  "22-HM - 2325 Cool Springs Rd",
+                                         "workbookPath":  "Property/22_Project Management - 2325 Cool Springs Rd 4.xlsm",
+                                         "status":  "Current"
+                                     },
+                                     {
+                                         "project":  "23-SYH - 6316 Willowdell Dr",
+                                         "workbookPath":  "Property/23_Project Management - 6316 Willowdell Dr 4.xlsm",
+                                         "status":  "Current"
+                                     },
+                                     {
+                                         "project":  "24-HM - 4121 Tensity Dr",
+                                         "workbookPath":  "Property/24_Project Management - 4121 Tensity Dr 2.xlsm",
+                                         "status":  "Current"
+                                     },
+                                     {
+                                         "project":  "25-401K - 612 Britton Ct",
+                                         "workbookPath":  "Property/25_Project Management - 612 Britton Ct.xlsm",
+                                         "status":  "Current"
+                                     },
+                                     {
+                                         "project":  "26-BYH - 908 Pond St",
+                                         "workbookPath":  "Property/26_Project Management - 908 Pond St 3.xlsm",
+                                         "status":  "Current"
+                                     },
+                                     {
+                                         "project":  "27-HM - 7001 Outrigger Dr",
+                                         "workbookPath":  "Property/27_Project Management - 7001 Outrigger Dr.xlsm",
+                                         "status":  "Current"
+                                     },
+                                     {
+                                         "project":  "28-SYH - 320 Rose Pl",
+                                         "workbookPath":  "Property/28_Project Management - 320 Rose Pl.xlsm",
+                                         "status":  "Current"
+                                     },
+                                     {
+                                         "project":  "Mom - 18804 Hwy 41 Lutz",
+                                         "workbookPath":  "Property/Mom_Project Management - 18804 Hwy 41 Lutz, 33549 US.xlsm",
+                                         "status":  "Current"
+                                     }
+                                 ]
     },
     {
         "name":  "Jean Wright",

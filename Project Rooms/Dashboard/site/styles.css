@@ -89,6 +89,9 @@ main { padding: 22px clamp(18px, 4vw, 52px) 48px; }
 .mode-panel-card strong { font-size: 11px; text-transform: uppercase; color: var(--muted); }
 .mode-panel-card p { margin: 0; color: var(--ink); font-size: 12px; line-height: 1.5; }
 .mode-panel-card.disabled { border-left-color: #aeb8b2; background: var(--paper); }
+.mode-panel-select { width: 100%; min-height: 38px; padding: 0 8px; border: 1px solid #aeb8b2; border-radius: 4px; color: var(--ink); background: #fff; }
+.mode-panel-select:focus { border-color: var(--green); outline: 3px solid rgba(31, 96, 71, .13); }
+.mode-panel-select:disabled { color: var(--muted); background: var(--paper); }
 .mode-panel-template { margin: 0; padding: 10px; border: 1px solid var(--line); background: var(--paper); color: var(--ink); white-space: pre-wrap; font: 11px Consolas, monospace; line-height: 1.45; }
 .mode-panel-link.disabled { border-color: #aeb8b2; color: var(--muted); background: var(--paper); pointer-events: none; }
 .mode-panel-link.disabled::after { content: "Host only"; }

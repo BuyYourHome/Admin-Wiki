@@ -50,6 +50,8 @@ For the SOPs Project Room, the side panel reads the authoritative `outputs\SOP I
 
 For the Manager Project Room, the `Tasks` mode now loads a Dashboard-owned helper panel. It shows open tasks parsed from `Project Rooms\Manager\working\task-register.md`, including each task's priority and current status. The full local Dashboard on WesStudio can change the selected task's status and write that update back to the canonical Manager register; LAN-host views remain read-only and show the editor as unavailable.
 
+For the Invoice Entry Project Room, the `Reconcile` mode now loads a Dashboard-owned request panel. It shows active projects parsed from `Project Rooms\Invoice Entry\working\project-spreadsheet-register.md`. Because Dashboard must remain a request interface rather than directly activating another Project Room, the local WesStudio button copies the exact Reconcile request for the selected project and opens the Invoice Entry task for paste-in activation; LAN-host views show the project list but leave the request button unavailable.
+
 ## Attention Badges
 
 The Dashboard shows a card badge only when `config\project-room-attention.json` contains a valid explicit state for that exact room. Valid types are `confirmation-needed` and `approval-needed`; each state must include a reason and source. Empty or invalid entries create no alert. The Dashboard does not infer approvals or confirmations from ordinary Project Room text, status, or chat activity.

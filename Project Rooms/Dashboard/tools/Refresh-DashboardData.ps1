@@ -6,6 +6,7 @@ $outputPath = Join-Path $projectRoomsRoot 'Dashboard\site\project-rooms.js'
 $groupConfigPath = Join-Path $projectRoomsRoot 'Dashboard\config\project-room-groups.json'
 $attentionConfigPath = Join-Path $projectRoomsRoot 'Dashboard\config\project-room-attention.json'
 $actionsConfigPath = Join-Path $projectRoomsRoot 'Dashboard\config\dashboard-actions.json'
+$invoiceEntryProjectRegisterPath = Join-Path $projectRoomsRoot 'Invoice Entry\working\project-spreadsheet-register.md'
 $managerTaskRegisterPath = Join-Path $projectRoomsRoot 'Manager\working\task-register.md'
 $sopIndexPath = Join-Path $projectRoomsRoot 'SOPs\outputs\SOP Index.md'
 $sopPagesPath = Join-Path $projectRoomsRoot 'SOPs\outputs\SOPs'
@@ -151,7 +152,39 @@ function Get-ManagerTaskEntries {
     return @($entries)
 }
 
+function Get-InvoiceEntryProjectEntries {
+    param([string]$ProjectRegisterPath)
+
+    if (-not (Test-Path -LiteralPath $ProjectRegisterPath)) { return @() }
+
+    $section = $false
+    $entries = [System.Collections.Generic.List[object]]::new()
+    foreach ($line in (Get-Content -LiteralPath $ProjectRegisterPath)) {
+        if ($line -match '^##\s+Current SharePoint Workbooks\s*$') {
+            $section = $true
+            continue
+        }
+        if ($section -and $line -match '^##\s+') { break }
+        if (-not $section) { continue }
+        $trimmed = $line.Trim()
+        if ($trimmed -notmatch '^\|') { continue }
+        $parts = @($trimmed.Split('|'))
+        if ($parts.Count -lt 5) { continue }
+        $values = @($parts[1..($parts.Count - 2)] | ForEach-Object { $_.Trim() })
+        if ($values.Count -lt 3 -or $values[0] -eq 'Project/property' -or $values[0] -eq '---') { continue }
+        if ($values[2] -ne 'Current') { continue }
+        $entries.Add([ordered]@{
+            project = $values[0]
+            workbookPath = ($values[1] -replace '^`|`$', '')
+            status = $values[2]
+        })
+    }
+
+    return @($entries)
+}
+
 $sopViewerEntries = Get-SopViewerEntries -IndexPath $sopIndexPath -PagesPath $sopPagesPath
+$invoiceEntryProjectEntries = Get-InvoiceEntryProjectEntries -ProjectRegisterPath $invoiceEntryProjectRegisterPath
 $managerTaskEntries = Get-ManagerTaskEntries -TaskRegisterPath $managerTaskRegisterPath
 
 $rooms = foreach ($directory in Get-ChildItem -LiteralPath $projectRoomsRoot -Directory | Sort-Object Name) {
@@ -209,6 +242,7 @@ $rooms = foreach ($directory in Get-ChildItem -LiteralPath $projectRoomsRoot -Di
         quickActions = @($quickActions)
     }
     if ($directory.Name -eq 'SOPs') { $room.sopEntries = @($sopViewerEntries) }
+    if ($directory.Name -eq 'Invoice Entry') { $room.invoiceEntryProjects = @($invoiceEntryProjectEntries) }
     if ($directory.Name -eq 'Manager') { $room.managerTasks = @($managerTaskEntries) }
     $room
 }

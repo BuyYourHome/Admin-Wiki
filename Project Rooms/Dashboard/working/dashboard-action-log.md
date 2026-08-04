@@ -118,3 +118,11 @@
 
 - Updated the Manager task panel to show the user-facing three-digit task display number instead of the full canonical `MGR-YYYYMMDD-NNN` id.
 - The Dashboard still preserves the full canonical id internally for status updates to the Manager register.
+
+## 2026-08-04 - Invoice Entry Reconcile Request Panel
+
+- Added a keyed `modePanels` entry for `Invoice Entry` -> `Reconcile`.
+- Dashboard refresh now parses active projects from `Project Rooms\Invoice Entry\working\project-spreadsheet-register.md`.
+- The Reconcile panel shows a project selector from the canonical active workbook register and the exact Reconcile request text for the selected project.
+- The local WesStudio button copies that request and opens the Invoice Entry task for paste-in activation.
+- LAN-host views keep the active-project list visible but leave the request button unavailable so Dashboard remains a request interface rather than directly activating another Project Room.
