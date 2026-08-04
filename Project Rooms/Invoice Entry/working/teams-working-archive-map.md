@@ -121,4 +121,4 @@ Both archived files were SHA-256 verified against the generated working copies. 
 | --- | --- | ---: | ---: | --- |
 | Validated edited Tensity workbook and pre-edit rollback copy | `Generated\2026-08-04-2025-Lowes-Tensity-Upload-Hold` | 2 | 1,480,982 | SharePoint `423 resourceLocked` upload hold |
 
-The archived files were verified by file count, byte total, and SHA-256. Validated edited workbook hash: `C57EB95396F5185BB885F61428FF62AFB19EF9E5B8FFC575909D57FAF75D2552`. Rollback hash: `E875FA56C14C0EA70ECF292DECEF5D2714D183FFE3B1C061A9180301DB98FD60`. Before retry, re-check the authoritative SharePoint workbook's modified time and do not overwrite a newer version with the held copy.
+The archived files were verified by file count, byte total, and SHA-256. Validated edited workbook hash: `C57EB95396F5185BB885F61428FF62AFB19EF9E5B8FFC575909D57FAF75D2552`. Rollback hash: `E875FA56C14C0EA70ECF292DECEF5D2714D183FFE3B1C061A9180301DB98FD60`. The freshness-safe retry succeeded on 2026-08-04; the re-fetched authoritative workbook matched the validated hash exactly. Retain both files as upload and rollback evidence; do not upload the held copy again.

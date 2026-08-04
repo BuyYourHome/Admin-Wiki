@@ -6,14 +6,14 @@ This is the authoritative current-state register for Invoice Entry. Read it befo
 
 ## Operating State
 
-- Status: `Active - Needs Wes - Tensity Workbook Locked`
+- Status: `Active - Tensity Lowe's Rows Pending Review`
 - Primary intake: direct Doc Scan or Email Monitor handoff.
 - Current task: `019fbf4f-c629-7dd1-a3f6-0de33de0ed8f`.
 - Canonical skill: `C:\Codex\Wiki Files\skills\invoice-entry\SKILL.md`.
 - Canonical skill and installed local `invoice-entry` skill were synchronized and SHA-256 hash-verified on 2026-08-04 after the user-callable Reconcile mode was added.
 - Backup automation `invoice-entry-to-projects-backup-heartbeat` is a standalone local cron job at noon and 4:00 PM Eastern. It has no target task and must not add quiet-check turns to this operational task. Clean no-action runs archive their own execution task after recording memory; runs with a new packet, failure, blocker, or decision remain visible. The five completed no-action run tasks from 2026-08-01 through 2026-08-03 were archived on 2026-08-04.
 - No external action from the prior unfinished turn requires retry.
-- Doc Scan returned corrected item-level packets for eight visually verified PO-4121 Lowe's rows. A duplicate-safe Tensity workbook update was validated locally, but SharePoint rejected the exact replacement with HTTP `423 resourceLocked`; the authoritative workbook remains unchanged.
+- Doc Scan returned corrected item-level packets for eight visually verified PO-4121 Lowe's rows. After the initial lock cleared, a freshness-safe retry uploaded the validated workbook and the re-fetched authoritative copy passed hash and Excel read-back verification.
 - Do not resend an email, repeat a workbook upload, or recreate a packet solely because an older task response was delayed or missing.
 - `Reconcile` is a user-callable Invoice Entry mode as of 2026-08-04. A direct Wes request or implemented Dashboard handoff may invoke it for one exact project/property independently of the workbook checkbox. Dashboard implementation remains separately owned and is not part of this Invoice Entry change.
 
@@ -47,14 +47,14 @@ Classified working files:
 - NCAOC Remote Public Access invoice `41247668` is represented by one durable packet and processing log. Its duplicate Outlook source copy is classified as transport evidence, and one hash-verified invoice copy is filed in the 2026 general-invoice `_Needs Review` folder.
 - Josh's August 3 raw Time Card values are classified in the August 1-15 accumulated packet as a held source line with no accepted duration; no PDF or other generated artifact exists.
 - The 2026-08-04 First Bank account-ending-3613 repeat notice is reconciled into the existing statement packet; it did not create another statement record or downloaded file.
-- The 2025 Lowe's source PDFs remain unchanged at their authoritative SharePoint links. Doc Scan packet files remain under the Doc Scan Project Room. The validated Tensity workbook and rollback copy are classified in `Invoice Entry Working Archive\Generated\2026-08-04-2025-Lowes-Tensity-Upload-Hold`; no authoritative workbook change occurred.
+- The 2025 Lowe's source PDFs remain unchanged at their authoritative SharePoint links. Doc Scan packet files remain under the Doc Scan Project Room. The validated Tensity workbook and rollback copy remain classified in `Invoice Entry Working Archive\Generated\2026-08-04-2025-Lowes-Tensity-Upload-Hold` as upload/rollback evidence; the authoritative workbook was uploaded and verified at `2026-08-04T18:59:07Z`.
 - No generated Invoice Entry working artifact from this run remains unclassified in the Git working tree.
 
 ## Immediate Action Queue
 
 | Priority | Item | Current state | Next permitted action |
 | --- | --- | --- | --- |
-| 1 | 2025 Lowe's statements, BYH 5997 and SYH 6140 | 18 authoritative SharePoint PDFs inventoried; no duplicate periods; BYH gaps January-April and SYH gaps January-February. Eight PO-4121 items totaling `$426.32` from two BYH statements are validated in a held Tensity workbook, but the authoritative upload failed with `423 resourceLocked`. | Wes should close/release `Property/24_Project Management - 4121 Tensity Dr 2.xlsm`. Then re-check SharePoint freshness: upload the held copy only if the live modified time is still `2026-08-04T14:31:36Z`; otherwise re-fetch and reapply. Continue other project routing only from supported packet evidence. |
+| 1 | 2025 Lowe's statements, BYH 5997 and SYH 6140 | 18 authoritative SharePoint PDFs inventoried; no duplicate periods; BYH gaps January-April and SYH gaps January-February. Eight PO-4121 items totaling `$426.32` from two BYH statements are now in the authoritative Tensity Review table with blank destinations and `Needs Review` status. | Wes should review and specify or approve final Vendor Tabs for the eight Tensity rows. Continue other project routing only from supported packet evidence. |
 | 2 | Josh Kennedy LLC semimonthly Time Card invoice, 2026-07-16 through 2026-07-31 | Approved by Wes with format revisions permitted; `INV-JKLLC-20260731-001`, 97 hours 5 minutes, `$2,500.00`; allocation is `$199.57` BackOffice and `$2,300.43` Tensity; revised one-page PDF sent and verified | Make only Wes-directed format changes without changing the approved invoice facts. Filing and project posting remain held until the historical weekly PDFs and existing Tensity Review row are reconciled. Approval is not payment or paid status. |
 | 3 | Josh Kennedy Time Card, 2026-08-03, 4121 Tensity Dr | Raw arrival `615` and departure `415`; AM/PM not stated; no duration accepted and no August 1-15 invoice generated | Obtain authorized AM/PM clarification. Amend the existing pending line; do not infer ten hours, allocate cost, generate a PDF, send a draft, file, post, or pay. |
 | 4 | Construction Loan Services loan `77278`, July 2026, 908 Pond St V3 | `$1,658.75` due 2026-08-10; current balance `$181,141.75`; maturity 2026-09-24; no statement attachment or component breakdown | Obtain the detailed statement through Doc Scan if allocation is required and obtain accounting direction. Do not insert, approve, schedule, or pay from the email notice. |
@@ -115,12 +115,12 @@ Classified working files:
 | Tim Fleming Pond invoice `IE-TF-20260717-POND-001` | Vendor confirmed, Wes approved, PDF filed | Destination worksheet remains unresolved for `Property/26_Project Management - 908 Pond St 3.xlsm`. |
 | Tim Fleming multi-project package, 2026-07-21 through 2026-07-28 | Vendor verified, Wes approved, three PDFs filed, not marked paid | Workbook posting remains held. Reconfirm the exact Outrigger, Pond, and Tensity workbook paths from SharePoint before processing. |
 | Sullivan Surveying invoice `2395`, 908 Pond St | Duplicate check completed; not inserted | Surveying/property due diligence has no approved destination worksheet. |
-| Amazon order `111-5051554-5651422`, 4121 Tensity Dr | The authoritative Review row already specifies `Electrical Fixtures`. Reconcile posted it once in the validated held workbook, but the authoritative workbook remains unchanged because the upload is locked. | Resolve the same Tensity workbook lock. Apply the held result only after the freshness check; do not create another Review or vendor-tab row. |
+| Amazon order `111-5051554-5651422`, 4121 Tensity Dr | Reconcile posted the existing Review row once to `Electrical Fixtures`; the authoritative workbook upload and read-back passed. | Complete. Do not create another Review or vendor-tab row. |
 | Atlantic Discount Flooring invoice `001521` | Paid invoice consolidated once; Flooring category supported | Project/property is missing. Do not file or post until Wes identifies the project. |
 | QPay transaction `12365790090`, order `10651` | Paid USA Flooring receipt filed for 2156 Haig Point Way | No active root-level project workbook is confirmed. Do not substitute another workbook. |
 | GTI Stone Design Square receipt `1UXR`, 4121 Tensity Dr | Paid receipt filed once | Source gives no work category. Confirm destination worksheet or authorize Review placement without a destination. |
 | Lowe's held statement detail | Retained in `lowes-statement-held-detail-register.md` | Continue holding unclear, mixed, tax-only, non-project, accounting, incomplete-source, and OCR-uncertain rows until source or allocation decisions resolve them. |
-| 2025 Lowe's Tensity upload hold | Eight rows / `$426.32` plus the eligible Amazon reconciliation validated locally; authoritative workbook unchanged | Close/release the SharePoint workbook lock, then use the recorded freshness rule. Do not blindly retry or overwrite a newer workbook. |
+| 2025 Lowe's Tensity upload | Eight rows / `$426.32` inserted in authoritative Review; eligible Amazon row posted once to Electrical Fixtures | Upload and post-upload verification complete. Await Wes's final Vendor Tab decisions for the eight Lowe's rows; do not repeat the upload. |
 | NCAOC Remote Public Access invoice `41247668` | `Needs Review - General Invoice / Accounting Allocation`; one duplicate-safe filed copy | Determine general-accounting or named-project destination. Bill-to address `2156 Haig Point Way` is not sufficient project evidence. No payment authority was granted. |
 | First Bank statement notice, account ending `3613` | `Held - Statement Not Retrieved`; repeat notice consolidated | Actual statement remains unavailable. The current browser reached only the public login screen; obtain an authenticated statement and route it through Doc Scan. |
 

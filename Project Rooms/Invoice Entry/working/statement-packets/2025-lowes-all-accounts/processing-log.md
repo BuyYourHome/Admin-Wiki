@@ -28,3 +28,15 @@ Outcome: `Needs Wes - Doc Scan structured Statement packets required`.
 - Doc Scan completed the final packet-quality correction: all eight rows now include source-verified `store` and `item_number_sku` values; the eight amounts, PO 4121 evidence, source-page references, and handwritten/corrected PO note for invoice `74794` are unchanged.
 
 Current outcome: `Blocked - Authoritative Tensity workbook locked`. After the lock clears, re-check SharePoint freshness. If the source changed after `2026-08-04T14:31:36Z`, re-fetch and reapply against the new version instead of overwriting it with the held copy.
+
+## 2026-08-04 - Freshness-safe upload retry completed
+
+- Wes instructed Invoice Entry to continue.
+- Re-listed the authoritative workbook before retry. Its modified time was still exactly `2026-08-04T14:31:36Z` and its size was still `739,985` bytes, so the recorded freshness gate passed.
+- Reverified the archived validated workbook at `740,997` bytes with SHA-256 `C57EB95396F5185BB885F61428FF62AFB19EF9E5B8FFC575909D57FAF75D2552`.
+- Exact-target SharePoint replacement succeeded for item `01ZGFUBDNQEWEPX3YGHZFYAFNBA3XOUXD4`. SharePoint returned modified time `2026-08-04T18:59:07Z` and size `740,997` bytes.
+- Re-fetched the authoritative SharePoint workbook after upload. Its SHA-256 was exactly `C57EB95396F5185BB885F61428FF62AFB19EF9E5B8FFC575909D57FAF75D2552`, proving the uploaded file is byte-identical to the validated workbook.
+- Read-only Excel verification of the re-fetched authoritative copy found exactly eight Lowe's packet rows plus the existing Amazon Review record. The eight Lowe's rows remain `Needs Review` with blank `Destination Worksheet`; Amazon is `Posted` and appears once in `tblElectricalFixturesInvoices` for `$34.31`.
+- `Electrical Fixtures!M12` and `Gnatt Chart!G15` both read `$195.388775`; `invoiceEntryReviewRequest` remains `FALSE`; Automatic calculation and iteration remain enabled.
+
+Current outcome: `Complete - authoritative workbook uploaded and verified; eight Lowe's rows pending final Vendor Tab review`.
