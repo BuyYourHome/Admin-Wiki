@@ -14,10 +14,12 @@ This project room holds development notes, source inventory, and review artifact
 - Status: active.
 - Automation id: `doc-scan`.
 - Schedule: every 15 minutes on weekdays from 10:00 AM through 4:45 PM Eastern.
+- Dedicated task/thread id: `019ecc0d-02b4-73a3-9c20-dacda5d811d0`.
 - Defined operating modes: `working\doc-scan-modes.md`.
 - Canonical skill source: `C:\Codex\Wiki Files\skills\doc-scan\SKILL.md`.
 - Installed skill copy: `C:\Users\wesbr\.codex\skills\doc-scan\SKILL.md`.
 - Live automation config: `C:\Users\wesbr\.codex\automations\doc-scan\automation.toml`.
+- Dispatcher route: Jean routes scanned-statement intake to the dedicated Doc Scan task first; Doc Scan prepares filed statements and structured packets before handing qualifying invoice/statement packets to Invoice Entry task `019fbf4f-c629-7dd1-a3f6-0de33de0ed8f`.
 
 ## Room Layout
 

@@ -408,13 +408,17 @@ Important rules:
 
 ## Doc Scan
 
-Type: wiki-managed skill plus heartbeat automation.
+Type: wiki-managed skill plus heartbeat automation plus dedicated task.
 
 Status: active.
 
 Automation id:
 
 - `doc-scan`
+
+Dedicated task/thread id:
+
+- `019ecc0d-02b4-73a3-9c20-dacda5d811d0`
 
 Schedule:
 
@@ -423,6 +427,7 @@ Schedule:
 Purpose:
 
 - Check scanned PDFs in the Office Admin scan intake folder.
+- Receive Jean Dispatcher scanned-statement intake in the dedicated Doc Scan task before any Invoice Entry handoff.
 - Use the SharePoint/Teams connector as the default discovery path for scans and destination-folder matching when available, with local synced folders as the scanner drop-zone, processing workspace, archive/log path, and fallback.
 - Split combined scans into separate financial/admin documents, including property closing packages and signed operating-agreement packages.
 - Name outputs using approved conventions.
