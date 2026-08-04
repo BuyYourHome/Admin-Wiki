@@ -76,3 +76,18 @@
 
 - Restored the general `Documented mode` and `Group` selectors for every Project Room.
 - Kept only the SOP group and SOP page selectors scoped to the SOPs Project Room side panel.
+
+## 2026-08-04 - Flexible Mode Detection
+
+- Updated the Dashboard refresh parser so a heading can count as a documented mode when its section explicitly begins with `Use this mode ...`, even if the heading itself does not end with `Mode`.
+- This allows rooms such as Create PR to expose `Diagram` in the `Documented mode` selector without renaming the section to `Diagram Mode`.
+
+## 2026-08-04 - Mobile Search Events
+
+- Expanded the Dashboard search box listeners beyond `input` so the Project Room filter reacts to mobile-browser search behaviors, including Android Chrome event patterns.
+
+## 2026-08-04 - Hide Detail Panel Until Selection
+
+- Removed the automatic first-card selection when the Dashboard loads.
+- The selected-room side panel now stays hidden until Wes actually chooses a Project Room.
+- If search or group filtering removes the selected room from the visible card set, the side panel clears and hides again.

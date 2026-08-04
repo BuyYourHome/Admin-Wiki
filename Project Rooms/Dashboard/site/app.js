@@ -104,9 +104,35 @@
       : "No documented SOP Markdown pages are available for the selected group.";
   }
 
+  function clearSelection() {
+    state.selected = null;
+    state.selectedRoom = null;
+    state.sopGroup = "All";
+    state.visibleSopEntries = [];
+    el("detailPanel").hidden = true;
+    el("detailName").textContent = "Choose a room";
+    el("detailPurpose").textContent = "Select a Project Room to see its responsibility, status, skill, and canonical path.";
+    el("detailAttention").hidden = true;
+    el("detailAttention").textContent = "";
+    el("detailModeSelect").replaceChildren();
+    el("detailModeSelect").disabled = true;
+    el("detailModeState").textContent = "Selection does not activate a mode.";
+    el("detailActionList").replaceChildren();
+    el("detailGroupSelect").replaceChildren();
+    el("detailGroupSelect").disabled = true;
+    el("detailGroupBasis").textContent = "-";
+    el("detailGroupState").textContent = "Current documented assignment. Changes are preview only.";
+    el("detailStatus").textContent = "-";
+    el("detailSkill").textContent = "-";
+    el("requestDeleteButton").disabled = true;
+    el("requestDeleteButton").title = "Select a Project Room first.";
+    renderSopViewer(null);
+  }
+
   function selectRoom(room) {
     state.selected = room.name;
     state.selectedRoom = room;
+    el("detailPanel").hidden = false;
     el("detailName").textContent = room.name;
     el("detailPurpose").textContent = room.purpose;
     el("detailGroupSelect").replaceChildren(...groupDefinitions.map(group => {
@@ -158,6 +184,11 @@
       actionElements.push(slot);
     }
     el("detailActionList").replaceChildren(...actionElements);
+    el("detailGroupSelect").disabled = false;
+    el("requestDeleteButton").disabled = !deletionPreviewAllowed();
+    el("requestDeleteButton").title = deletionPreviewAllowed()
+      ? "Shows the exact deletion scope and asks for one explicit confirmation. This local interface does not delete anything yet."
+      : "Deletion workflow preview is disabled in the LAN read-only host view.";
     const attention = room.attention;
     const existingAttention = document.getElementById("detailAttention");
     if (attention) {
@@ -279,6 +310,9 @@
   }
   function renderCards() {
     const visible = filteredRooms();
+    if (state.selected && !visible.some(room => room.name === state.selected)) {
+      clearSelection();
+    }
     const grid = el("roomGrid");
     grid.className = `room-grid${state.view === "list" ? " list" : ""}`;
     grid.replaceChildren(...visible.map(room => {
@@ -315,8 +349,14 @@
     el("refreshStatus").textContent = priorRefreshStatus;
     sessionStorage.removeItem("dashboardRefreshStatus");
   }
+  function syncSearchQuery(event) {
+    state.query = event.target.value;
+    renderCards();
+  }
   applyDashboardContext();
-  el("searchInput").addEventListener("input", event => { state.query = event.target.value; renderCards(); });
+  ["input", "search", "change", "keyup"].forEach(eventName => {
+    el("searchInput").addEventListener(eventName, syncSearchQuery);
+  });
   el("askJeanButton").href = dashboardActions.jeansVoice?.href || "#";
   el("refreshDashboardButton").addEventListener("click", refreshDashboard);
   el("requestDeleteButton").addEventListener("click", openDeleteRequest);
@@ -356,6 +396,6 @@
     document.querySelectorAll(".view-button").forEach(item => item.classList.toggle("active", item === button));
     renderCards();
   }));
+  clearSelection();
   render();
-  if (rooms.length) selectRoom(rooms[0]);
 })();
