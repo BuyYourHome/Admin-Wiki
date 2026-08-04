@@ -3,5 +3,14 @@
     "displayName": "Jean's Voice",
     "taskId": "019fbe57-fcd9-7c83-be74-e377c7b9c4d0",
     "href": "codex://threads/019fbe57-fcd9-7c83-be74-e377c7b9c4d0"
+  },
+  "modeActions": {
+    "Create PR": {
+      "Diagram": {
+        "type": "open-url",
+        "label": "Open Project Room Relationship Diagram",
+        "href": "../../Create%20PR/outputs/Project%20Room%20Relationship%20Diagram.svg"
+      }
+    }
   }
 }

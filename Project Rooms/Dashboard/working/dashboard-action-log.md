@@ -91,3 +91,10 @@
 - Removed the automatic first-card selection when the Dashboard loads.
 - The selected-room side panel now stays hidden until Wes actually chooses a Project Room.
 - If search or group filtering removes the selected room from the visible card set, the side panel clears and hides again.
+
+## 2026-08-04 - Keyed Mode Actions
+
+- Added Dashboard-owned `modeActions` configuration to `config\dashboard-actions.json`, keyed by exact Project Room name and exact documented mode name.
+- Selecting a documented mode now immediately invokes its configured safe action when one exists; otherwise the Dashboard says no action is keyed.
+- Seeded the first action for `Create PR` -> `Diagram`, which opens the canonical Project Room relationship diagram SVG.
+- Extended the LAN read-only host allowlist so explicitly configured internal mode-action files can be opened remotely without exposing arbitrary repo paths.

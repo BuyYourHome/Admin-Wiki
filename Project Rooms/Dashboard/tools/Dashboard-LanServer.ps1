@@ -9,6 +9,12 @@ $root = [System.IO.Path]::GetFullPath($RepositoryRoot)
 $projectRoomsRoot = Join-Path $root 'Project Rooms'
 $dashboardSiteRoot = Join-Path $projectRoomsRoot 'Dashboard\site'
 $refreshScript = Join-Path $root 'Project Rooms\Dashboard\tools\Refresh-DashboardData.ps1'
+$actionsConfigPath = Join-Path $root 'Project Rooms\Dashboard\config\dashboard-actions.json'
+$actionsConfig = if (Test-Path -LiteralPath $actionsConfigPath) {
+    Get-Content -LiteralPath $actionsConfigPath -Raw | ConvertFrom-Json
+} else {
+    $null
+}
 
 & 'C:\WINDOWS\System32\WindowsPowerShell\v1.0\powershell.exe' -NoProfile -ExecutionPolicy Bypass -File $refreshScript -RepositoryRoot $root | Out-Null
 
@@ -71,6 +77,40 @@ function Get-RootDashboardHtml {
     return $html -replace '<head>', "<head>`r`n  $baseTag"
 }
 
+function Get-AllowedModeActionRequestPaths {
+    param($ActionsConfig)
+
+    $allowed = [System.Collections.Generic.HashSet[string]]::new([System.StringComparer]::OrdinalIgnoreCase)
+    if (-not $ActionsConfig -or -not $ActionsConfig.modeActions) { return $allowed }
+
+    $dashboardBase = [System.Uri]::new('http://dashboard.local/Project%20Rooms/Dashboard/site/')
+    $allowedExtensions = @('.md', '.svg', '.html', '.png', '.jpg', '.jpeg', '.pdf')
+
+    foreach ($roomProperty in $ActionsConfig.modeActions.PSObject.Properties) {
+        foreach ($modeProperty in $roomProperty.Value.PSObject.Properties) {
+            $action = $modeProperty.Value
+            $type = if ($action.type) { [string]$action.type } else { 'open-url' }
+            if ($type -ne 'open-url' -or -not $action.href) { continue }
+            if ([string]$action.href -match '^[a-z][a-z0-9+.-]*:') { continue }
+
+            $requestPath = [System.Uri]::new($dashboardBase, [string]$action.href).AbsolutePath.TrimStart('/')
+            $normalizedRequestPath = [System.Uri]::UnescapeDataString($requestPath)
+            $targetPath = [System.IO.Path]::GetFullPath((Join-Path $root $normalizedRequestPath))
+            $extension = [System.IO.Path]::GetExtension($targetPath).ToLowerInvariant()
+
+            if ($targetPath.StartsWith($root, [System.StringComparison]::OrdinalIgnoreCase) -and
+                $allowedExtensions -contains $extension -and
+                (Test-Path -LiteralPath $targetPath -PathType Leaf)) {
+                [void]$allowed.Add(($normalizedRequestPath -replace '\\', '/'))
+            }
+        }
+    }
+
+    return $allowed
+}
+
+$allowedModeActionRequestPaths = Get-AllowedModeActionRequestPaths -ActionsConfig $actionsConfig
+
 function Resolve-AllowedTarget {
     param([string]$RelativePath)
 
@@ -111,6 +151,13 @@ function Resolve-AllowedTarget {
     if ($normalized -eq 'Project Rooms/Entity Relationship/outputs/entity-relationship-chart.svg') {
         $target = [System.IO.Path]::GetFullPath((Join-Path $root $RelativePath))
         if (Test-Path -LiteralPath $target -PathType Leaf) {
+            return $target
+        }
+    }
+
+    if ($allowedModeActionRequestPaths.Contains($normalized)) {
+        $target = [System.IO.Path]::GetFullPath((Join-Path $root $normalized))
+        if ($target.StartsWith($root, [System.StringComparison]::OrdinalIgnoreCase) -and (Test-Path -LiteralPath $target -PathType Leaf)) {
             return $target
         }
     }

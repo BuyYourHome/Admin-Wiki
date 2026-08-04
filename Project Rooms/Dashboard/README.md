@@ -42,7 +42,9 @@ Out of scope:
 
 Status: active initial design.
 
-The local dashboard provides search, codified functional-group filters, status counts, Project Room summaries, skill visibility, documented-mode selection, and extensible side-panel Quick actions. Every card has a README action and, when it has fewer than two actions, an unassigned future-action slot. The Entity Relationship card also opens its SVG diagram, and Gracious Millionaire opens its website. Dashboard action links use the browser's normal separate-tab/window behavior. The deletion control presents a one-confirmation, exact-resource workflow preview and can download an audit-plan record, but does not delete or alter anything. Group remains a displayed side-panel property with a preview-only selector. The two SOP viewer combo boxes remain scoped to the SOPs Project Room only. Wes will review the design and decide what to alter.
+The local dashboard provides search, codified functional-group filters, status counts, Project Room summaries, skill visibility, documented-mode selection, and extensible side-panel Quick actions. Every card has a README action and, when it has fewer than two actions, an unassigned future-action slot. The Entity Relationship card also opens its SVG diagram, and Gracious Millionaire opens its website. Dashboard action links use the browser's normal separate-tab/window behavior. The deletion control presents a one-confirmation, exact-resource workflow preview and can download an audit-plan record, but does not delete or alter anything. Group remains a displayed side-panel property with a preview-only selector. The two SOP viewer combo boxes remain scoped to the SOPs Project Room only. A section heading can count as a documented mode either by using a recognized `Modes` section or by beginning that section with `Use this mode ...`; the mode name itself does not need to end with `Mode`. Wes will review the design and decide what to alter.
+
+When a documented mode has a Dashboard-keyed action in `config\dashboard-actions.json`, selecting that mode now invokes the configured safe action immediately. The current seeded example is `Create PR` -> `Diagram`, which opens the canonical `outputs\Project Room Relationship Diagram.svg`. Modes without a keyed action remain review-only and say so truthfully.
 
 For the SOPs Project Room, the side panel reads the authoritative `outputs\SOP Index.md` during Dashboard refresh. It lists the index entries without changing them and enables `View selected SOP` only when a corresponding clean Markdown page exists. The viewer opens that canonical page using normal separate-tab/window behavior.
 
@@ -53,6 +55,36 @@ The Dashboard shows a card badge only when `config\project-room-attention.json` 
 ## Ask Jean
 
 The top-level `Ask Jean` control reads the active Jean's Voice task from `config\dashboard-actions.json` and opens the documented Codex deep link `codex://threads/<thread-id>`. It opens the existing task only; it does not claim to begin a voice session automatically.
+
+## Mode Actions
+
+Dashboard-owned mode actions live in `config\dashboard-actions.json` under `modeActions`, keyed first by exact Project Room name and then by exact documented mode name.
+
+Current supported action type:
+
+- `open-url` - opens a safe target URL when the mode is selected.
+
+Example:
+
+```json
+"modeActions": {
+  "Create PR": {
+    "Diagram": {
+      "type": "open-url",
+      "label": "Open Project Room Relationship Diagram",
+      "href": "../../Create%20PR/outputs/Project%20Room%20Relationship%20Diagram.svg"
+    }
+  }
+}
+```
+
+When Wes wants to key a new mode action, the request should state:
+
+1. Project Room name.
+2. Exact mode name.
+3. Action type.
+4. Exact target path or URL.
+5. Whether it should remain available in the LAN read-only view or stay local-only.
 
 ## Matching Skill
 

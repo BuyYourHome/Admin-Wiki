@@ -2,6 +2,7 @@
   const rooms = Array.isArray(window.PROJECT_ROOMS) ? window.PROJECT_ROOMS : [];
   const groupDefinitions = Array.isArray(window.PROJECT_ROOM_GROUPS) ? window.PROJECT_ROOM_GROUPS : [];
   const dashboardActions = window.DASHBOARD_ACTIONS || {};
+  const modeActions = dashboardActions.modeActions || {};
   const dashboardContext = window.DASHBOARD_CONTEXT || {
     hostMode: "local-full",
     clientAccess: "local",
@@ -15,6 +16,7 @@
   const initials = name => name.split(/\s+/).filter(Boolean).slice(0, 2).map(word => word[0]).join("").toUpperCase();
   const attentionLabel = attention => attention?.type === "approval-needed" ? "Approval needed" : "Confirmation needed";
   const isExternalHref = href => /^[a-z][a-z0-9+.-]*:/i.test(href || "");
+  const getModeAction = (roomName, modeName) => modeActions?.[roomName]?.[modeName] || null;
   const deletionPreviewAllowed = () => !dashboardContext.readOnly || dashboardContext.clientAccess === "local";
   const filteredRooms = () => {
     const query = state.query.trim().toLowerCase();
@@ -116,7 +118,7 @@
     el("detailAttention").textContent = "";
     el("detailModeSelect").replaceChildren();
     el("detailModeSelect").disabled = true;
-    el("detailModeState").textContent = "Selection does not activate a mode.";
+    el("detailModeState").textContent = "Choose a Project Room first.";
     el("detailActionList").replaceChildren();
     el("detailGroupSelect").replaceChildren();
     el("detailGroupSelect").disabled = true;
@@ -158,7 +160,9 @@
       return option;
     }));
     el("detailModeSelect").disabled = modes.length === 0;
-    el("detailModeState").textContent = modes.length ? "Selection is for interface review only; it does not activate a mode." : "No canonical documented modes were found in this room's README or matching skill.";
+    el("detailModeState").textContent = modes.length
+      ? "Selecting a documented mode runs its keyed Dashboard action when one is configured; otherwise the selection remains review only."
+      : "No canonical documented modes were found in this room's README or matching skill.";
     state.sopGroup = "All";
     renderSopViewer(room);
     const actions = [
@@ -308,6 +312,34 @@
     link.click();
     URL.revokeObjectURL(href);
   }
+
+  function invokeModeAction(room, modeName) {
+    const action = getModeAction(room?.name, modeName);
+    if (!action) {
+      el("detailModeState").textContent = `No Dashboard action is keyed for ${modeName}.`;
+      return;
+    }
+    if ((action.type || "open-url") !== "open-url") {
+      el("detailModeState").textContent = `Mode action ${action.type} is not supported by this Dashboard yet.`;
+      return;
+    }
+    if (!action.href) {
+      el("detailModeState").textContent = `Mode action for ${modeName} is missing its target.`;
+      return;
+    }
+    if (dashboardContext.readOnly && isExternalHref(action.href)) {
+      el("detailModeState").textContent = `Mode action for ${modeName} is disabled in the read-only LAN view because it targets an external location.`;
+      return;
+    }
+    const openedWindow = window.open(action.href, action.target || "_blank", "noopener");
+    if (openedWindow) {
+      openedWindow.opener = null;
+      el("detailModeState").textContent = action.label || `Opened ${modeName}.`;
+      return;
+    }
+    el("detailModeState").textContent = `${action.label || modeName} was triggered, but the browser blocked the new tab or window.`;
+  }
+
   function renderCards() {
     const visible = filteredRooms();
     if (state.selected && !visible.some(room => room.name === state.selected)) {
@@ -363,7 +395,15 @@
   el("prepareDeleteButton").addEventListener("click", prepareDeleteRequest);
   el("downloadDeleteRecordButton").addEventListener("click", downloadDeleteRecord);
   el("detailModeSelect").addEventListener("change", event => {
-    el("detailModeState").textContent = event.target.value ? `Selected for interface review: ${event.target.value}. No mode was activated.` : "Selection does not activate a mode.";
+    const selectedMode = event.target.value;
+    if (!selectedMode) {
+      el("detailModeState").textContent = state.selectedRoom
+        ? "Selecting a documented mode runs its keyed Dashboard action when one is configured; otherwise the selection remains review only."
+        : "Choose a Project Room first.";
+      return;
+    }
+    invokeModeAction(state.selectedRoom, selectedMode);
+    event.target.value = "";
   });
   el("detailSopSelect").addEventListener("change", event => {
     const entry = state.visibleSopEntries?.[Number(event.target.value)];

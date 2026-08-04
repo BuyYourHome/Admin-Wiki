@@ -1,5 +1,5 @@
-window.PROJECT_ROOMS_UPDATED = '2026-08-03 09:40';
-window.PROJECT_ROOMS_HASH = '8849844269848506E194F02DFEB8630B9CD9133EA5E93E04906B6472B46AC459';
+window.PROJECT_ROOMS_UPDATED = '2026-08-03 22:31';
+window.PROJECT_ROOMS_HASH = 'E860D7FE393FDBA0E6C3AB7420AABF62901814E08AC9C12A1FC957F1F5878CEF';
 window.PROJECT_ROOM_GROUPS = [
     {
         "name":  "Intake \u0026 Coordination",
@@ -39,7 +39,16 @@ window.DASHBOARD_ACTIONS = {
                        "displayName":  "Jean\u0027s Voice",
                        "taskId":  "019fbe57-fcd9-7c83-be74-e377c7b9c4d0",
                        "href":  "codex://threads/019fbe57-fcd9-7c83-be74-e377c7b9c4d0"
-                   }
+                   },
+    "modeActions":  {
+                        "Create PR":  {
+                                          "Diagram":  {
+                                                          "type":  "open-url",
+                                                          "label":  "Open Project Room Relationship Diagram",
+                                                          "href":  "../../Create%20PR/outputs/Project%20Room%20Relationship%20Diagram.svg"
+                                                      }
+                                      }
+                    }
 };
 window.PROJECT_ROOMS = [
     {
@@ -111,8 +120,7 @@ window.PROJECT_ROOMS = [
         "group":  "Legal \u0026 Entity",
         "groupBasis":  "Maintains litigation, confidential legal material, entity governance, ownership relationships, estate, or claim work.",
         "modes":  [
-                      "Ownership And Git Mode",
-                      "OfficeAssist Routed Email Response Mode"
+                      "OfficeAssist Routed Email Response"
                   ],
         "readmeUrl":  "../../Brynda%20Suit/README.md",
         "quickActions":  [
@@ -188,8 +196,7 @@ window.PROJECT_ROOMS = [
         "group":  "Systems \u0026 Maintenance",
         "groupBasis":  "Maintains computers, Codex operations, management support, purchasing tools, marketplace work, or system health.",
         "modes":  [
-                      "Ownership And Git Mode",
-                      "Update Codex Environment Mode"
+                      "Update Codex Environment"
                   ],
         "readmeUrl":  "../../Codex%20Environment/README.md",
         "quickActions":  [
@@ -208,7 +215,7 @@ window.PROJECT_ROOMS = [
         "group":  "Systems \u0026 Maintenance",
         "groupBasis":  "Maintains computers, Codex operations, management support, purchasing tools, marketplace work, or system health.",
         "modes":  [
-                      "Ownership And Git Mode"
+
                   ],
         "readmeUrl":  "../../Computers/README.md",
         "quickActions":  [
@@ -265,7 +272,7 @@ window.PROJECT_ROOMS = [
         "group":  "Intake \u0026 Coordination",
         "groupBasis":  "Receives requests, routes work, creates Project Rooms, or provides an operating overview across workflows.",
         "modes":  [
-                      "Main And Push Mode"
+                      "Diagram"
                   ],
         "readmeUrl":  "../../Create%20PR/README.md",
         "quickActions":  [
@@ -322,7 +329,7 @@ window.PROJECT_ROOMS = [
         "group":  "Document Intake",
         "groupBasis":  "Receives, identifies, organizes, or maintains source documents and operating procedures before downstream processing.",
         "modes":  [
-                      "Lowe\u0027s Statement Allocation Mode"
+
                   ],
         "readmeUrl":  "../../Doc%20Scan/README.md",
         "quickActions":  [
@@ -343,7 +350,7 @@ window.PROJECT_ROOMS = [
         "modes":  [
                       "Email Summary",
                       "Health Check",
-                      "Task Health Mode",
+                      "Task Health",
                       "Email Routing",
                       "Email Delivery",
                       "Organize"
@@ -425,11 +432,7 @@ window.PROJECT_ROOMS = [
         "group":  "Publishing \u0026 Public Work",
         "groupBasis":  "Develops books, drawings, voice/media assets, websites, or other public-facing content.",
         "modes":  [
-                      "Journal Mode",
-                      "Quick Mode",
-                      "Rewrite Mode",
-                      "Dialogue Mode",
-                      "Interview Mode"
+
                   ],
         "readmeUrl":  "../../Gracious%20Millionaire/README.md",
         "quickActions":  [
@@ -475,8 +478,7 @@ window.PROJECT_ROOMS = [
                       "Time Card",
                       "Statement Processing",
                       "Review Request Processing",
-                      "Vendor Tabs",
-                      "Task Health Mode"
+                      "Vendor Tabs"
                   ],
         "readmeUrl":  "../../Invoice%20Entry/README.md",
         "quickActions":  [
@@ -495,12 +497,12 @@ window.PROJECT_ROOMS = [
         "group":  "Intake \u0026 Coordination",
         "groupBasis":  "Receives requests, routes work, creates Project Rooms, or provides an operating overview across workflows.",
         "modes":  [
-                      "Start PR Mode",
-                      "Commit Mode",
-                      "Push Mode",
-                      "Dispatcher Mode",
-                      "Jean\u0027s Voice Intake Mode",
-                      "General Delegation Default"
+                      "Start PR",
+                      "Commit",
+                      "Push",
+                      "Dispatcher",
+                      "General Delegation Default",
+                      "Jean\u0027s Voice Intake"
                   ],
         "readmeUrl":  "../../Jean%20Wright/README.md",
         "quickActions":  [
@@ -519,7 +521,7 @@ window.PROJECT_ROOMS = [
         "group":  "Publishing \u0026 Public Work",
         "groupBasis":  "Develops books, drawings, voice/media assets, websites, or other public-facing content.",
         "modes":  [
-                      "Ownership And Git Mode"
+
                   ],
         "readmeUrl":  "../../Jennys%20Drawings/README.md",
         "quickActions":  [
@@ -538,7 +540,7 @@ window.PROJECT_ROOMS = [
         "group":  "Publishing \u0026 Public Work",
         "groupBasis":  "Develops books, drawings, voice/media assets, websites, or other public-facing content.",
         "modes":  [
-                      "Ownership And Git Mode"
+
                   ],
         "readmeUrl":  "../../LD%20Evans/README.md",
         "quickActions":  [
@@ -557,7 +559,7 @@ window.PROJECT_ROOMS = [
         "group":  "Systems \u0026 Maintenance",
         "groupBasis":  "Maintains computers, Codex operations, management support, purchasing tools, marketplace work, or system health.",
         "modes":  [
-                      "Branch And Push Mode"
+
                   ],
         "readmeUrl":  "../../Lowes%20Order/README.md",
         "quickActions":  [
@@ -576,8 +578,7 @@ window.PROJECT_ROOMS = [
         "group":  "Systems \u0026 Maintenance",
         "groupBasis":  "Maintains computers, Codex operations, management support, purchasing tools, marketplace work, or system health.",
         "modes":  [
-                      "Tasks",
-                      "Ownership And Git Mode"
+                      "Tasks"
                   ],
         "readmeUrl":  "../../Manager/README.md",
         "quickActions":  [
@@ -596,7 +597,7 @@ window.PROJECT_ROOMS = [
         "group":  "Systems \u0026 Maintenance",
         "groupBasis":  "Maintains computers, Codex operations, management support, purchasing tools, marketplace work, or system health.",
         "modes":  [
-                      "Ownership And Git Mode"
+
                   ],
         "readmeUrl":  "../../Marketplace/README.md",
         "quickActions":  [
@@ -691,7 +692,7 @@ window.PROJECT_ROOMS = [
         "group":  "Publishing \u0026 Public Work",
         "groupBasis":  "Develops books, drawings, voice/media assets, websites, or other public-facing content.",
         "modes":  [
-                      "GM Mode"
+
                   ],
         "readmeUrl":  "../../REI%20BlackBook/README.md",
         "quickActions":  [
