@@ -126,3 +126,9 @@
 - The Reconcile panel shows a project selector from the canonical active workbook register and the exact Reconcile request text for the selected project.
 - The local WesStudio button copies that request and opens the Invoice Entry task for paste-in activation.
 - LAN-host views keep the active-project list visible but leave the request button unavailable so Dashboard remains a request interface rather than directly activating another Project Room.
+
+## 2026-08-04 - Topbar Title Swap
+
+- Swapped the two header lines in the Dashboard top panel.
+- The small first line now reads `Jean Wright, Admin`.
+- The large second line now reads `Buy Your Home Dashboard`.
