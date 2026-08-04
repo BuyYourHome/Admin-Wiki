@@ -53,11 +53,8 @@
           <p class="detail-attention" id="detailAttention" hidden></p>
           <section class="detail-section">
             <h3>Mode</h3>
-            <div class="property-control">
-              <label for="detailModeSelect">Documented mode</label>
-              <select id="detailModeSelect"></select>
-              <span class="property-state" id="detailModeState">Selection does not activate a mode.</span>
-            </div>
+            <p class="property-note" id="detailModeValue">No documented modes found</p>
+            <span class="property-state" id="detailModeState">Documented modes are shown as reference only.</span>
           </section>
           <section class="sop-viewer" id="detailSopViewer" hidden>
             <h3>View SOP</h3>
@@ -80,13 +77,11 @@
           <section class="detail-section detail-metadata">
             <h3>Room metadata</h3>
             <dl>
-              <div class="property-control">
-                <dt><label for="detailGroupSelect">Group</label></dt>
-                <dd>
-                  <select id="detailGroupSelect"></select>
-                  <span class="property-note" id="detailGroupBasis">-</span>
-                  <span class="property-state" id="detailGroupState">Current documented assignment. Changes are preview only.</span>
-                </dd>
+              <div>
+                <dt>Group</dt>
+                <dd id="detailGroupName">-</dd>
+                <span class="property-note" id="detailGroupBasis">-</span>
+                <span class="property-state" id="detailGroupState">Current documented assignment.</span>
               </div>
               <div><dt>Status</dt><dd id="detailStatus">-</dd></div>
               <div><dt>Skill</dt><dd id="detailSkill">-</dd></div>

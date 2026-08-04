@@ -66,3 +66,8 @@
 
 - Updated the Dashboard UI so the LAN-host view keeps the deletion workflow preview enabled on WesStudio local access while leaving refresh disabled.
 - Remote LAN clients still have deletion review disabled, preserving the read-only remote restrictions.
+
+## 2026-08-04 - Scoped SOP Combo Boxes
+
+- Removed the general Project Room combo-box treatment for documented mode and group metadata.
+- Kept the two selector controls only in the SOPs Project Room side panel so the SOP group and SOP page can be chosen there without adding the same UI pattern to other rooms.
