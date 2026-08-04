@@ -30,16 +30,21 @@
 - Outlook link: `https://outlook.office365.com/owa/?ItemID=AQMkADZkMGMwNDI3LWU5ZjctNDgzMC1iMjdkLTY0NmRiN2IwNmIyZgBGAAADKGOvWJYjX0aEKaRpd0MYQQcAVSXargQY20aF7RLCkro4ggAAAgEMAAAAVSXargQY20aF7RLCkro4ggACgUD9nwAAAA%3D%3D&exvsurl=1&viewmodel=ReadMessageItem`
 - Attachments: none
 - Statement access named by the notice: First Bank online banking at `https://LocalFirstBank.com`, then `eStatements`
+- Reconciled repeat notice handoff on 2026-08-04:
+  - Dispatch id: `email-monitor-route-vendor-invoice-20260804-firstbank-3613-001`
+  - Outlook message id: `AQMkADZkMGMwNDI3LWU5ZjctNDgzMC1iMjdkLTY0NmRiN2IwNmIyZgBGAAADKGOvWJYjX0aEKaRpd0MYQQcAVSXargQY20aF7RLCkro4ggAAAgEMAAAAVSXargQY20aF7RLCkro4ggACgUD9pwAAAA==`
+  - Attachments: none
+  - This is supporting notice evidence for the same account-ending-3613 held item, not a statement or separate payment obligation.
 
 ## Duplicate Check
 
-- No prior Invoice Entry record was found for a First Bank statement notice or statement associated with account ending `3613`.
-- This packet records one notice only and must not be treated as a statement transaction or payment obligation.
+- The 2026-08-04 handoff reconciles to this existing packet rather than creating another account-3613 record.
+- The two notice message ids are supporting transport/source evidence for the same unresolved statement retrieval need and must not be treated as statement transactions or payment obligations.
 
 ## Retrieval Decision
 
 - The exact Outlook message was retrieved and verified.
-- No authenticated First Bank online-banking session or bank connector is available to this task.
+- A fresh read-only browser check on 2026-08-04 reached only First Bank's public login page with a User ID field; no authenticated First Bank online-banking session or bank connector is available to this task.
 - Do not attempt credential entry, MFA, account selection, or an unauthenticated statement download.
 - Obtain the statement through an authorized First Bank session, then route the downloaded statement through Doc Scan for extraction and a structured Invoice Entry handoff.
 - Until the statement is supplied, do not infer an amount, due date, project, account classification, payment obligation, or accounting treatment.

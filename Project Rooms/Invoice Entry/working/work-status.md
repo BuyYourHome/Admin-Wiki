@@ -1,6 +1,6 @@
 # Invoice Entry Current Work Status
 
-Last updated: 2026-08-03
+Last updated: 2026-08-04
 
 This is the authoritative current-state register for Invoice Entry. Read it before processing a handoff or opening a workbook. Packet files and processing logs remain the detailed evidence; when an older summary conflicts with this file, stop and reconcile the source before acting.
 
@@ -43,6 +43,8 @@ Classified working files:
 - The approved one-page July 16-31 invoice PDF and visual-QA render were archived to `Generated\2026-08-03-Josh-Semimonthly-Approved-Format` after 2-file / 250,796-byte and SHA-256 verification.
 - The three superseded week-ending July 31 working records were archived to `Generated\2026-08-03-JK-Week31-Superseded-Working-Records` after 3-file / 5,768-byte verification.
 - NCAOC Remote Public Access invoice `41247668` is represented by one durable packet and processing log. Its duplicate Outlook source copy is classified as transport evidence, and one hash-verified invoice copy is filed in the 2026 general-invoice `_Needs Review` folder.
+- Josh's August 3 raw Time Card values are classified in the August 1-15 accumulated packet as a held source line with no accepted duration; no PDF or other generated artifact exists.
+- The 2026-08-04 First Bank account-ending-3613 repeat notice is reconciled into the existing statement packet; it did not create another statement record or downloaded file.
 - No generated Invoice Entry working artifact from this run remains unclassified in the Git working tree.
 
 ## Immediate Action Queue
@@ -50,12 +52,13 @@ Classified working files:
 | Priority | Item | Current state | Next permitted action |
 | --- | --- | --- | --- |
 | 1 | Josh Kennedy LLC semimonthly Time Card invoice, 2026-07-16 through 2026-07-31 | Approved by Wes with format revisions permitted; `INV-JKLLC-20260731-001`, 97 hours 5 minutes, `$2,500.00`; allocation is `$199.57` BackOffice and `$2,300.43` Tensity; revised one-page PDF sent and verified | Make only Wes-directed format changes without changing the approved invoice facts. Filing and project posting remain held until the historical weekly PDFs and existing Tensity Review row are reconciled. Approval is not payment or paid status. |
-| 2 | Construction Loan Services loan `77278`, July 2026, 908 Pond St V3 | `$1,658.75` due 2026-08-10; current balance `$181,141.75`; maturity 2026-09-24; no statement attachment or component breakdown | Obtain the detailed statement through Doc Scan if allocation is required and obtain accounting direction. Do not insert, approve, schedule, or pay from the email notice. |
-| 3 | Trenchant Build invoice `422`, 4121 Tensity Dr | Paid once for `$5,185.71`; one Review row exists as `IE-20260801-TRENCHANT-422`; workbook upload and validation passed | Wait for Wes to choose one approved destination worksheet or approve a supported split for mixed work and the card-processing fee. Do not create another row. |
-| 4 | QuickBooks Line of Credit statements `2a46fea` and `a46f130`, July 2026 | Two distinct statements, each held as `Needs Review - Statement - Accounting Allocation` | Wait for accounting direction outside property workbooks. Do not create invoices, approve payment, or insert either statement into a project workbook. |
-| 5 | First Bank online statement notice, account ending `3613` | Notice verified; no statement attachment or financial details; actual statement not retrieved | Retrieve through an authorized First Bank session and route the downloaded statement through Doc Scan. Do not infer an amount, due date, project, account type, or payment obligation. |
-| 6 | Truist digital statement notice, checking accounts ending `1141` and `1254` | Notice verified; no attachments or statement contents; available browser sessions reached the Truist login page | Wes must sign in through an authorized Truist session or supply the downloaded statements. Route each statement through Doc Scan before Invoice Entry processes it. Do not infer balances, transactions, payment obligations, projects, or accounting treatment. |
-| 7 | NCAOC Remote Public Access invoice `41247668` | `$31.98`, dated 2026-08-02, due 2026-09-01; duplicate Outlook copies consolidated; one PDF filed to general-invoice `_Needs Review`; not approved, posted, or paid | Wes should classify it as a general BackOffice/legal-research expense or assign a named project and destination. Do not create another filing or entry, and do not pay or schedule payment. |
+| 2 | Josh Kennedy Time Card, 2026-08-03, 4121 Tensity Dr | Raw arrival `615` and departure `415`; AM/PM not stated; no duration accepted and no August 1-15 invoice generated | Obtain authorized AM/PM clarification. Amend the existing pending line; do not infer ten hours, allocate cost, generate a PDF, send a draft, file, post, or pay. |
+| 3 | Construction Loan Services loan `77278`, July 2026, 908 Pond St V3 | `$1,658.75` due 2026-08-10; current balance `$181,141.75`; maturity 2026-09-24; no statement attachment or component breakdown | Obtain the detailed statement through Doc Scan if allocation is required and obtain accounting direction. Do not insert, approve, schedule, or pay from the email notice. |
+| 4 | Trenchant Build invoice `422`, 4121 Tensity Dr | Paid once for `$5,185.71`; one Review row exists as `IE-20260801-TRENCHANT-422`; workbook upload and validation passed | Wait for Wes to choose one approved destination worksheet or approve a supported split for mixed work and the card-processing fee. Do not create another row. |
+| 5 | QuickBooks Line of Credit statements `2a46fea` and `a46f130`, July 2026 | Two distinct statements, each held as `Needs Review - Statement - Accounting Allocation` | Wait for accounting direction outside property workbooks. Do not create invoices, approve payment, or insert either statement into a project workbook. |
+| 6 | First Bank online statement notice, account ending `3613` | Original and repeat notices reconciled; neither has a statement or financial detail; 2026-08-04 browser check reached only the public login page | Wes must sign in through an authorized First Bank session or supply the downloaded statement, then route it through Doc Scan. Do not infer an amount, due date, project, account type, or payment obligation. |
+| 7 | Truist digital statement notice, checking accounts ending `1141` and `1254` | Notice verified; no attachments or statement contents; available browser sessions reached the Truist login page | Wes must sign in through an authorized Truist session or supply the downloaded statements. Route each statement through Doc Scan before Invoice Entry processes it. Do not infer balances, transactions, payment obligations, projects, or accounting treatment. |
+| 8 | NCAOC Remote Public Access invoice `41247668` | `$31.98`, dated 2026-08-02, due 2026-09-01; duplicate Outlook copies consolidated; one PDF filed to general-invoice `_Needs Review`; not approved, posted, or paid | Wes should classify it as a general BackOffice/legal-research expense or assign a named project and destination. Do not create another filing or entry, and do not pay or schedule payment. |
 
 ## Verified Delivery Evidence
 
@@ -103,6 +106,7 @@ Classified working files:
 | --- | --- | --- |
 | Josh Kennedy separate biweekly invoice `SP-JK-20260731-001` | `Denied by Wes - Retired - Do Not Pay` | None. Retain as history only. Do not approve, file, post, pay, revive, or reuse it. The referenced recurrence automation is not installed at its recorded local path. |
 | Josh Kennedy LLC semimonthly invoice `INV-JKLLC-20260731-001` | `Approved by Wes - Format Revisions Permitted`; revised PDF sent and verified | Filing and project posting remain held pending duplicate-safe reconciliation of the historical weekly PDFs and existing Tensity Review row. Approval is not payment or paid status. |
+| Josh Kennedy LLC August 1-15 Time Card invoice | `Held - Ambiguous AM/PM - No Accepted Hours Yet`; proposed number `INV-JKLLC-20260815-001` not generated | Clarify whether raw `615` and `415` are AM or PM. Do not calculate duration or generate, send, file, post, approve, or pay an invoice from the unsupported line. |
 | Josh Kennedy Time Card, week ending 2026-07-24 | Historical source records consolidated into the semimonthly invoice | Do not create a second payment obligation. Reconcile the filed PDFs and Tensity Review row under exact duplicate checks before semimonthly posting. |
 | Tim Fleming Pond invoice `IE-TF-20260717-POND-001` | Vendor confirmed, Wes approved, PDF filed | Destination worksheet remains unresolved for `Property/26_Project Management - 908 Pond St 3.xlsm`. |
 | Tim Fleming multi-project package, 2026-07-21 through 2026-07-28 | Vendor verified, Wes approved, three PDFs filed, not marked paid | Workbook posting remains held. Reconfirm the exact Outrigger, Pond, and Tensity workbook paths from SharePoint before processing. |
@@ -113,6 +117,7 @@ Classified working files:
 | GTI Stone Design Square receipt `1UXR`, 4121 Tensity Dr | Paid receipt filed once | Source gives no work category. Confirm destination worksheet or authorize Review placement without a destination. |
 | Lowe's held statement detail | Retained in `lowes-statement-held-detail-register.md` | Continue holding unclear, mixed, tax-only, non-project, accounting, incomplete-source, and OCR-uncertain rows until source or allocation decisions resolve them. |
 | NCAOC Remote Public Access invoice `41247668` | `Needs Review - General Invoice / Accounting Allocation`; one duplicate-safe filed copy | Determine general-accounting or named-project destination. Bill-to address `2156 Haig Point Way` is not sufficient project evidence. No payment authority was granted. |
+| First Bank statement notice, account ending `3613` | `Held - Statement Not Retrieved`; repeat notice consolidated | Actual statement remains unavailable. The current browser reached only the public login screen; obtain an authenticated statement and route it through Doc Scan. |
 
 ## Record Reconciliation
 
@@ -122,6 +127,8 @@ Classified working files:
 - Wes approved `INV-JKLLC-20260731-001` on 2026-08-03. The approved one-page revision changed presentation only; the invoice number, period, accepted time, allocations, and amount remained unchanged.
 - Earlier weekly PDFs, emails, and workbook rows remain historical evidence and require duplicate-safe reconciliation before any new posting.
 - NCAOC Outlook messages ending `ACgUD9pgAAAA==` and `ACgUD9pQAAAA==` represent one invoice `41247668`, not two obligations. One hash-verified review-folder copy exists; do not repeat filing or create a second entry.
+- Josh Outlook message ending `ACgUD9qAAAAA==` creates one pending August 3 source line with raw `615` to `415` values and no accepted duration. A later clarification must amend that line rather than add another.
+- First Bank Outlook messages ending `ACgUD9nwAAAA==` and `ACgUD9pwAAAA==` reconcile to one account-ending-3613 retrieval hold; neither is the statement or a payment obligation.
 
 ## Safety Holds
 

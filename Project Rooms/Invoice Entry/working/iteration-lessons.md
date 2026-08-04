@@ -349,3 +349,20 @@ Context: NCAOC Remote Public Access invoice `41247668` arrived in two Outlook co
 - When no project designation exists and the approved vendor folder is absent, file one copy to the general-invoice `_Needs Review` folder rather than create a vendor folder or guess a project.
 - Keep email-only late-fee context separate from PDF line-item facts when the attached invoice does not display that fee.
 - Do not open a project workbook, approve payment, or schedule payment while general accounting or project allocation remains unresolved.
+
+## 2026-08-04 - Time Card Meridiem Hold
+
+Context: Josh reported an arrival of `615` and departure of `415` for August 3 without AM/PM markers.
+
+- Preserve raw clock values exactly and hold the line when AM/PM is missing.
+- Do not use an apparently likely daytime interpretation to calculate duration or allocate a fixed service amount.
+- Open the semimonthly accumulated packet with the source pointer and pending line, but do not generate an invoice when no supported accepted hours exist.
+- When clarification arrives, amend the existing pending line rather than creating another worker/date/project record.
+
+## 2026-08-04 - Repeated Statement Notice Reconciliation
+
+Context: First Bank sent another account-ending-3613 statement-availability notice while the actual statement remained inaccessible.
+
+- Repeated notices for the same account and unresolved statement should update the existing packet rather than create another statement record.
+- A new notice does not prove a new statement, balance, amount due, payment obligation, or project assignment when it supplies none of those facts.
+- A public online-banking login page is not an authorized statement source. Do not enter credentials or initiate MFA; keep retrieval held until an authenticated user session or supplied statement is available.
