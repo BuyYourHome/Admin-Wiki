@@ -1,141 +1,173 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1050" viewBox="0 0 1600 1050" role="img" aria-labelledby="title desc">
+<svg xmlns="http://www.w3.org/2000/svg" width="1700" height="1100" viewBox="0 0 1700 1100" role="img" aria-labelledby="title desc">
   <title id="title">Buy Your Home Project Room Relationship Diagram</title>
-  <desc id="desc">A grouped relationship diagram showing Jean Wright and Admin Operations as the coordination hub, with connected project room clusters for document intake, accounting and project data, real estate transactions, legal and entity work, publishing and public work, and system maintenance.</desc>
+  <desc id="desc">A grouped relationship diagram showing Jean Wright and Admin Operations as the coordination hub, Email Monitor as the email intake and routing hub, and the principal handoffs among Buy Your Home Project Rooms, skills, automations, and support workflows.</desc>
   <defs>
     <style>
-      .bg { fill: #f7f8fa; }
-      .title { font: 700 38px Arial, sans-serif; fill: #1f2933; }
-      .subtitle { font: 400 17px Arial, sans-serif; fill: #53606c; }
-      .hub { fill: #23395d; stroke: #15243b; stroke-width: 2; }
+      .bg { fill: #f6f7f9; }
+      .title { font: 700 38px Arial, sans-serif; fill: #1d2733; }
+      .subtitle { font: 400 17px Arial, sans-serif; fill: #586675; }
+      .hub { fill: #22405f; stroke: #13283d; stroke-width: 2; }
       .hubText { font: 700 24px Arial, sans-serif; fill: #ffffff; }
-      .hubSub { font: 400 15px Arial, sans-serif; fill: #dbe5f3; }
-      .groupTitle { font: 700 20px Arial, sans-serif; fill: #1f2933; }
-      .item { font: 400 15px Arial, sans-serif; fill: #2f3a45; }
-      .note { font: 400 14px Arial, sans-serif; fill: #5e6b76; }
+      .hubSub { font: 400 15px Arial, sans-serif; fill: #d7e5f3; }
       .box { stroke-width: 2; rx: 8; ry: 8; }
-      .boxBlue { fill: #e7f0fb; stroke: #5a8fcb; }
-      .boxGreen { fill: #e8f4ec; stroke: #5c9f74; }
-      .boxGold { fill: #fff4db; stroke: #c99a2e; }
-      .boxRed { fill: #fdebea; stroke: #c96d65; }
-      .boxPurple { fill: #f0ebfa; stroke: #8b72c9; }
-      .boxGray { fill: #eef1f4; stroke: #7d8994; }
-      .arrow { fill: none; stroke: #687684; stroke-width: 2.3; marker-end: url(#arrowhead); }
-      .arrowSoft { fill: none; stroke: #9aa5af; stroke-width: 1.8; stroke-dasharray: 6 7; marker-end: url(#arrowheadSoft); }
-      .label { font: 600 13px Arial, sans-serif; fill: #4b5661; }
+      .boxBlue { fill: #e8f1fb; stroke: #5e91c5; }
+      .boxGreen { fill: #e8f4ee; stroke: #57936e; }
+      .boxGold { fill: #fff3d7; stroke: #bf8d28; }
+      .boxRose { fill: #fdecec; stroke: #be6b67; }
+      .boxTeal { fill: #e2f2f1; stroke: #4f918d; }
+      .boxViolet { fill: #f0ecfa; stroke: #836dc0; }
+      .boxGray { fill: #edf1f4; stroke: #788692; }
+      .groupTitle { font: 700 19px Arial, sans-serif; fill: #1d2733; }
+      .status { font: 600 12px Arial, sans-serif; fill: #697684; }
+      .item { font: 400 14px Arial, sans-serif; fill: #2f3b46; }
+      .small { font: 400 12px Arial, sans-serif; fill: #596775; }
+      .edge { fill: none; stroke: #5f6f7c; stroke-width: 2.25; marker-end: url(#arrow); }
+      .edgeSoft { fill: none; stroke: #929da8; stroke-width: 1.8; stroke-dasharray: 6 7; marker-end: url(#arrowSoft); }
+      .edgeLabel { font: 600 12px Arial, sans-serif; fill: #46535f; }
+      .footer { font: 400 13px Arial, sans-serif; fill: #637180; }
     </style>
-    <marker id="arrowhead" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
-      <path d="M 0 0 L 10 5 L 0 10 z" fill="#687684"/>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#5f6f7c"/>
     </marker>
-    <marker id="arrowheadSoft" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
-      <path d="M 0 0 L 10 5 L 0 10 z" fill="#9aa5af"/>
+    <marker id="arrowSoft" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#929da8"/>
     </marker>
   </defs>
 
-  <rect class="bg" x="0" y="0" width="1600" height="1050"/>
-  <text class="title" x="80" y="72">Buy Your Home Project Room Relationship Map</text>
-  <text class="subtitle" x="82" y="105">Grouped view of project rooms, intake routes, handoffs, and shared support workflows.</text>
+  <rect class="bg" x="0" y="0" width="1700" height="1100"/>
+  <text class="title" x="70" y="68">Buy Your Home Project Room Relationship Diagram</text>
+  <text class="subtitle" x="72" y="100">One-page grouped view of Project Rooms, durable skills, automations, and the main handoffs Create PR maintains.</text>
 
-  <rect class="hub" x="625" y="410" width="350" height="150" rx="18" ry="18"/>
-  <text class="hubText" x="800" y="465" text-anchor="middle">Jean Wright</text>
-  <text class="hubText" x="800" y="497" text-anchor="middle">Admin Operations</text>
-  <text class="hubSub" x="800" y="530" text-anchor="middle">coordination, routing, rules, safe office actions</text>
+  <rect class="hub" x="650" y="395" width="400" height="155" rx="18" ry="18"/>
+  <text class="hubText" x="850" y="453" text-anchor="middle">Jean Wright</text>
+  <text class="hubText" x="850" y="485" text-anchor="middle">Admin Operations</text>
+  <text class="hubSub" x="850" y="518" text-anchor="middle">Coordination hub and dispatcher</text>
 
-  <rect class="box boxBlue" x="80" y="170" width="340" height="190"/>
-  <text class="groupTitle" x="110" y="215">Intake And Coordination</text>
-  <text class="item" x="112" y="252">Email Monitor</text>
-  <text class="item" x="112" y="280">Create PR</text>
-  <text class="item" x="112" y="308">Admin Wiki Maintenance</text>
-  <text class="item" x="112" y="336">OfficeAssist Instruction Inbox</text>
+  <rect class="box boxBlue" x="60" y="155" width="400" height="245"/>
+  <text class="groupTitle" x="88" y="198">Intake / Coordination</text>
+  <text class="status" x="88" y="223">active, draft, and support rooms</text>
+  <text class="item" x="92" y="254">Email Monitor - mailbox intake and routing</text>
+  <text class="item" x="92" y="279">Create PR - room, skill, and chat setup</text>
+  <text class="item" x="92" y="304">Dashboard - PR directory and visibility</text>
+  <text class="item" x="92" y="329">Manager - Josh Kennedy tasks and attributes</text>
+  <text class="item" x="92" y="354">Lowes Order - Lowe's cart preparation</text>
+  <text class="item" x="92" y="379">Marketplace - tool resale sourcing</text>
 
-  <rect class="box boxGreen" x="80" y="430" width="340" height="205"/>
-  <text class="groupTitle" x="110" y="475">Document Intake</text>
-  <text class="item" x="112" y="512">Doc Scan</text>
-  <text class="item" x="112" y="540">SOPs</text>
-  <text class="item" x="112" y="568">Estate Documents</text>
-  <text class="item" x="112" y="596">Invoice and receipt routing notes</text>
+  <rect class="box boxGreen" x="60" y="455" width="400" height="220"/>
+  <text class="groupTitle" x="88" y="498">Document Intake</text>
+  <text class="status" x="88" y="523">source capture and routing</text>
+  <text class="item" x="92" y="554">Doc Scan - scan/OCR/split/route packets</text>
+  <text class="item" x="92" y="579">SOPs - SOP source map and outputs</text>
+  <text class="item" x="92" y="604">Admin Wiki Maintenance - shared wiki upkeep</text>
+  <text class="item" x="92" y="629">Email Delivery - send/verify support endpoint</text>
 
-  <rect class="box boxGold" x="80" y="705" width="340" height="190"/>
-  <text class="groupTitle" x="110" y="750">Accounting And Project Data</text>
-  <text class="item" x="112" y="787">Invoice Entry</text>
-  <text class="item" x="112" y="815">Template to Project</text>
-  <text class="item" x="112" y="843">Project Management Spreadsheet Rewrite</text>
-  <text class="item" x="112" y="871">Worksheet modes and rollout rules</text>
+  <rect class="box boxGold" x="60" y="730" width="400" height="245"/>
+  <text class="groupTitle" x="88" y="773">Accounting / Project Data</text>
+  <text class="status" x="88" y="798">spreadsheet and money-flow support</text>
+  <text class="item" x="92" y="829">Invoice Entry - invoice packet processing</text>
+  <text class="item" x="92" y="854">Template to Project - workbook migration</text>
+  <text class="item" x="92" y="879">Amortization - seller-financing schedules</text>
+  <text class="item" x="92" y="904">Project Management Spreadsheet Rewrite</text>
+  <text class="item" x="92" y="929">New Project - project setup support</text>
 
-  <rect class="box boxGreen" x="630" y="720" width="340" height="205"/>
-  <text class="groupTitle" x="660" y="765">Real Estate Transactions</text>
-  <text class="item" x="662" y="802">New Project</text>
-  <text class="item" x="662" y="830">Contract for Deed</text>
-  <text class="item" x="662" y="858">Credit Worthiness Evaluator</text>
-  <text class="item" x="662" y="886">Amortization</text>
-  <text class="item" x="662" y="914">Property Trade Evaluation</text>
+  <rect class="box boxRose" x="650" y="705" width="400" height="270"/>
+  <text class="groupTitle" x="678" y="748">Real Estate Transaction Work</text>
+  <text class="status" x="678" y="773">property, buyer, and transaction deliverables</text>
+  <text class="item" x="682" y="804">Contract for Deed - seller-financed packets</text>
+  <text class="item" x="682" y="829">Credit Worthiness Evaluator - buyer review</text>
+  <text class="item" x="682" y="854">Property Trade Evaluation - deal structure</text>
+  <text class="item" x="682" y="879">CMA Report - property market reporting</text>
+  <text class="item" x="682" y="904">CMA Report - 5009 Sunnyfield Dr</text>
+  <text class="item" x="682" y="929">CMA Report - 5021 Sunnyfield Dr</text>
+  <text class="item" x="682" y="954">Estate Documents / Geico Insurance Claim</text>
 
-  <rect class="box boxRed" x="1180" y="705" width="340" height="215"/>
-  <text class="groupTitle" x="1210" y="750">Legal And Entity Work</text>
-  <text class="item" x="1212" y="787">Brynda Suit</text>
-  <text class="item" x="1212" y="815">LD Evans</text>
-  <text class="item" x="1212" y="843">Operating Agreements</text>
-  <text class="item" x="1212" y="871">Entity Relationship</text>
-  <text class="item" x="1212" y="899">Confidential</text>
+  <rect class="box boxTeal" x="1240" y="720" width="400" height="255"/>
+  <text class="groupTitle" x="1268" y="763">Legal / Entity Work</text>
+  <text class="status" x="1268" y="788">governance, relationships, sensitive notes</text>
+  <text class="item" x="1272" y="819">Entity Relationship - entity maps and notes</text>
+  <text class="item" x="1272" y="844">Operating Agreement - OA drafting support</text>
+  <text class="item" x="1272" y="869">Confidential - sensitive source planning</text>
+  <text class="item" x="1272" y="894">Manager legal-signing context</text>
+  <text class="small" x="1272" y="928">Dashed legal links include inferred governance support.</text>
 
-  <rect class="box boxPurple" x="1180" y="430" width="340" height="205"/>
-  <text class="groupTitle" x="1210" y="475">Publishing And Public Work</text>
-  <text class="item" x="1212" y="512">Gracious Millionaire</text>
-  <text class="item" x="1212" y="540">REI BlackBook</text>
-  <text class="item" x="1212" y="568">Wes's Voice</text>
-  <text class="item" x="1212" y="596">Jennys Drawings</text>
+  <rect class="box boxViolet" x="1240" y="445" width="400" height="220"/>
+  <text class="groupTitle" x="1268" y="488">Publishing / Public Work</text>
+  <text class="status" x="1268" y="513">book, public website, media, and drawings</text>
+  <text class="item" x="1272" y="544">Gracious Millionaire - book workflow</text>
+  <text class="item" x="1272" y="569">REI BlackBook - public WebTools sites</text>
+  <text class="item" x="1272" y="594">Brynda Suit / LD Evans</text>
+  <text class="item" x="1272" y="619">Jennys Drawings / Voices</text>
 
-  <rect class="box boxGray" x="1180" y="170" width="340" height="190"/>
-  <text class="groupTitle" x="1210" y="215">System Maintenance</text>
-  <text class="item" x="1212" y="252">AIOS</text>
-  <text class="item" x="1212" y="280">Investigate Computer</text>
-  <text class="item" x="1212" y="308">Email Delivery</text>
-  <text class="item" x="1212" y="336">Codex Skill Source Control</text>
+  <rect class="box boxGray" x="1240" y="155" width="400" height="230"/>
+  <text class="groupTitle" x="1268" y="198">System Maintenance</text>
+  <text class="status" x="1268" y="223">computer, platform, and skill operations</text>
+  <text class="item" x="1272" y="254">AIOS - operating-system overlay planning</text>
+  <text class="item" x="1272" y="279">Codex Environment - replicate WesStudio</text>
+  <text class="item" x="1272" y="304">Computers - hardware/software inventory</text>
+  <text class="item" x="1272" y="329">Investigate Computer - diagnostics</text>
+  <text class="item" x="1272" y="354">Codex Skill Source Control</text>
 
-  <path class="arrow" d="M 625 450 C 545 405, 505 295, 420 265"/>
-  <text class="label" x="445" y="332">routes and standards</text>
+  <path class="edge" d="M 650 436 C 565 380, 525 280, 460 265"/>
+  <text class="edgeLabel" x="494" y="345">routes work</text>
 
-  <path class="arrow" d="M 625 495 C 520 500, 500 525, 420 530"/>
-  <text class="label" x="453" y="490">scan intake</text>
+  <path class="edge" d="M 650 492 C 555 500, 515 535, 460 556"/>
+  <text class="edgeLabel" x="500" y="510">email and scan intake</text>
 
-  <path class="arrow" d="M 645 560 C 520 640, 500 765, 420 800"/>
-  <text class="label" x="470" y="670">packets and data</text>
+  <path class="edge" d="M 690 550 C 585 650, 525 780, 460 842"/>
+  <text class="edgeLabel" x="505" y="682">packets and project data</text>
 
-  <path class="arrow" d="M 790 560 C 790 625, 795 670, 800 720"/>
-  <text class="label" x="818" y="648">project work</text>
+  <path class="edge" d="M 850 550 C 850 620, 850 660, 850 705"/>
+  <text class="edgeLabel" x="872" y="642">transaction requests</text>
 
-  <path class="arrow" d="M 975 520 C 1048 525, 1100 530, 1180 532"/>
-  <text class="label" x="1032" y="505">site and public assets</text>
+  <path class="edge" d="M 1010 520 C 1115 545, 1175 552, 1240 555"/>
+  <text class="edgeLabel" x="1090" y="529">book and site requests</text>
 
-  <path class="arrow" d="M 955 560 C 1045 640, 1100 760, 1180 810"/>
-  <text class="label" x="1030" y="676">legal/entity support</text>
+  <path class="edge" d="M 1015 550 C 1120 645, 1188 754, 1240 825"/>
+  <text class="edgeLabel" x="1088" y="692">legal/entity support</text>
 
-  <path class="arrow" d="M 975 450 C 1065 405, 1105 295, 1180 265"/>
-  <text class="label" x="1038" y="335">shared tooling</text>
+  <path class="edge" d="M 1050 442 C 1138 380, 1190 295, 1240 270"/>
+  <text class="edgeLabel" x="1115" y="351">platform support</text>
 
-  <path class="arrow" d="M 250 360 C 250 392, 250 400, 250 430"/>
-  <text class="label" x="272" y="398">email/file intake</text>
+  <path class="edge" d="M 260 400 C 260 426, 260 430, 260 455"/>
+  <text class="edgeLabel" x="282" y="432">routing hub</text>
 
-  <path class="arrow" d="M 250 635 C 250 665, 250 678, 250 705"/>
-  <text class="label" x="272" y="675">invoice packets</text>
+  <path class="edge" d="M 260 675 C 260 698, 260 708, 260 730"/>
+  <text class="edgeLabel" x="282" y="710">Doc Scan -> Invoice Entry</text>
 
-  <path class="arrow" d="M 420 800 C 505 808, 560 815, 630 822"/>
-  <text class="label" x="470" y="792">project spreadsheet structure</text>
+  <path class="edge" d="M 460 852 C 535 852, 585 843, 650 826"/>
+  <text class="edgeLabel" x="505" y="834">Template to Project</text>
 
-  <path class="arrow" d="M 970 822 C 1045 822, 1105 817, 1180 812"/>
-  <text class="label" x="1035" y="846">contracts, entities, disputes</text>
+  <path class="edge" d="M 650 808 C 575 798, 525 816, 460 858"/>
+  <text class="edgeLabel" x="503" y="786">Contract for Deed needs amortization</text>
 
-  <path class="arrowSoft" d="M 1350 635 C 1350 660, 1350 680, 1350 705"/>
-  <text class="label" x="1370" y="674">identity and rights</text>
+  <path class="edge" d="M 650 828 C 590 808, 530 802, 460 850"/>
+  <text class="edgeLabel" x="525" y="879">seller-finance data</text>
 
-  <path class="arrowSoft" d="M 1180 525 C 1090 495, 1060 480, 975 472"/>
-  <text class="label" x="1032" y="455">website requests</text>
+  <path class="edgeSoft" d="M 1050 812 C 1125 812, 1178 812, 1240 812"/>
+  <text class="edgeLabel" x="1102" y="797">entity and contract facts</text>
 
-  <path class="arrowSoft" d="M 1180 270 C 1095 300, 1045 352, 965 420"/>
-  <text class="label" x="1040" y="300">send, sync, verify</text>
+  <path class="edgeSoft" d="M 1440 665 C 1440 690, 1440 700, 1440 720"/>
+  <text class="edgeLabel" x="1462" y="696">rights and identity context</text>
 
-  <path class="arrowSoft" d="M 800 720 C 760 660, 710 608, 650 560"/>
-  <text class="label" x="680" y="647">transaction handoffs</text>
+  <path class="edgeSoft" d="M 1240 566 C 1150 550, 1098 515, 1050 485"/>
+  <text class="edgeLabel" x="1100" y="574">GM Site email routing</text>
 
-  <text class="note" x="82" y="980">Solid arrows show primary workflow handoffs. Dashed arrows show shared support or recurring feedback. Diagram is intentionally grouped to stay readable.</text>
-  <text class="note" x="82" y="1008">Generated from Admin wiki registry/project-room relationship notes on 2026-07-19.</text>
+  <path class="edgeSoft" d="M 1440 385 C 1340 420, 1265 455, 1165 515"/>
+  <text class="edgeLabel" x="1300" y="432">skills, send, verify</text>
+
+  <path class="edgeSoft" d="M 1440 304 C 1380 330, 1340 370, 1305 445"/>
+  <text class="edgeLabel" x="1370" y="392">website infrastructure</text>
+
+  <path class="edgeSoft" d="M 1255 304 C 1185 332, 1115 384, 1040 435"/>
+  <text class="edgeLabel" x="1118" y="323">computer status handoffs</text>
+
+  <rect x="650" y="155" width="400" height="150" rx="8" ry="8" fill="#ffffff" stroke="#b5bec7" stroke-width="1.5"/>
+  <text class="groupTitle" x="678" y="196">Legend</text>
+  <path class="edge" d="M 682 232 L 780 232"/>
+  <text class="item" x="805" y="237">Primary supported handoff</text>
+  <path class="edgeSoft" d="M 682 270 L 780 270"/>
+  <text class="item" x="805" y="275">Support, feedback, or inferred relationship</text>
+
+  <text class="footer" x="72" y="1038">Generated 2026-08-04. Sources: Agents and Automations Registry, Admin Home, Project Room Workflow, Project Room File Ownership And Git Coordination Rule, and current Project Room README folders.</text>
+  <text class="footer" x="72" y="1064">This diagram intentionally limits cross-links to the most important handoffs so the Project Room system remains readable on one page.</text>
 </svg>
