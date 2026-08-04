@@ -71,3 +71,8 @@
 
 - Removed the general Project Room combo-box treatment for documented mode and group metadata.
 - Kept the two selector controls only in the SOPs Project Room side panel so the SOP group and SOP page can be chosen there without adding the same UI pattern to other rooms.
+
+## 2026-08-04 - Restore General Mode And Group Selectors
+
+- Restored the general `Documented mode` and `Group` selectors for every Project Room.
+- Kept only the SOP group and SOP page selectors scoped to the SOPs Project Room side panel.

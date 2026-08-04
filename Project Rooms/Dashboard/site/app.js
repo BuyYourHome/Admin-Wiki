@@ -109,14 +109,30 @@
     state.selectedRoom = room;
     el("detailName").textContent = room.name;
     el("detailPurpose").textContent = room.purpose;
-    el("detailGroupName").textContent = room.group || "No group recorded";
+    el("detailGroupSelect").replaceChildren(...groupDefinitions.map(group => {
+      const option = document.createElement("option");
+      option.value = group.name;
+      option.textContent = group.name;
+      return option;
+    }));
+    el("detailGroupSelect").value = room.group;
     el("detailGroupBasis").textContent = room.groupBasis || "No group basis recorded.";
-    el("detailGroupState").textContent = "Current documented assignment.";
+    el("detailGroupState").textContent = "Current documented assignment. Changes are preview only and are not saved.";
     el("detailStatus").textContent = room.status;
     el("detailSkill").textContent = room.skill || "No matching skill recorded";
     const modes = Array.isArray(room.modes) ? room.modes : [];
-    el("detailModeValue").textContent = modes.length ? modes.join(" | ") : "No documented modes found";
-    el("detailModeState").textContent = modes.length ? "Documented modes are shown as reference only." : "No canonical documented modes were found in this room's README or matching skill.";
+    const modePrompt = document.createElement("option");
+    modePrompt.value = "";
+    modePrompt.textContent = modes.length ? "Select a documented mode" : "No documented modes found";
+    modePrompt.selected = true;
+    el("detailModeSelect").replaceChildren(modePrompt, ...modes.map(mode => {
+      const option = document.createElement("option");
+      option.value = mode;
+      option.textContent = mode;
+      return option;
+    }));
+    el("detailModeSelect").disabled = modes.length === 0;
+    el("detailModeState").textContent = modes.length ? "Selection is for interface review only; it does not activate a mode." : "No canonical documented modes were found in this room's README or matching skill.";
     state.sopGroup = "All";
     renderSopViewer(room);
     const actions = [
@@ -306,6 +322,9 @@
   el("requestDeleteButton").addEventListener("click", openDeleteRequest);
   el("prepareDeleteButton").addEventListener("click", prepareDeleteRequest);
   el("downloadDeleteRecordButton").addEventListener("click", downloadDeleteRecord);
+  el("detailModeSelect").addEventListener("change", event => {
+    el("detailModeState").textContent = event.target.value ? `Selected for interface review: ${event.target.value}. No mode was activated.` : "Selection does not activate a mode.";
+  });
   el("detailSopSelect").addEventListener("change", event => {
     const entry = state.visibleSopEntries?.[Number(event.target.value)];
     const viewer = el("detailSopOpen");
@@ -326,6 +345,11 @@
     if (state.selectedRoom?.name === "SOPs") {
       renderSopViewer(state.selectedRoom);
     }
+  });
+  el("detailGroupSelect").addEventListener("change", event => {
+    const preview = groupDefinitions.find(group => group.name === event.target.value);
+    el("detailGroupBasis").textContent = preview?.basis || "No group basis recorded.";
+    el("detailGroupState").textContent = `Preview only. ${state.selectedRoom?.name || "This room"} remains assigned to ${state.selectedRoom?.group || "its documented group"}.`;
   });
   document.querySelectorAll(".view-button").forEach(button => button.addEventListener("click", () => {
     state.view = button.dataset.view;
