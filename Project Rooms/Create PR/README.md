@@ -84,9 +84,9 @@ When creating a new PR requires a dedicated Codex task:
 6. Do not let task creation block the whole PR setup, and do not retry indefinitely in the same turn.
 7. When the connector later succeeds, record the returned thread id in the PR README and registry, then commit that small metadata update separately.
 
-## PR Diagram
+## Diagram
 
-Use this mode when Wes asks Create PR to make, refresh, or maintain a relationship diagram of Buy Your Home Project Rooms.
+Use this mode when Wes runs `Diagram` or asks Create PR to make, refresh, display, or maintain a relationship diagram of Buy Your Home Project Rooms.
 
 Purpose:
 
@@ -127,8 +127,9 @@ Workflow:
 14. Use a filename such as `Project Room Relationship Diagram.svg`.
 15. If the diagram is also useful globally, copy or link it from an Admin wiki index only after Wes approves that placement.
 16. Review the SVG for readability before reporting completion.
-17. Commit only the diagram and directly related Create PR notes unless Wes authorizes broader wiki updates.
-18. Push only under normal Admin wiki push rules.
+17. Display or report the saved diagram path so Wes can open the current relationship view.
+18. Commit only the diagram and directly related Create PR notes unless Wes authorizes broader wiki updates.
+19. Push only under normal Admin wiki push rules.
 
 Output standards:
 
