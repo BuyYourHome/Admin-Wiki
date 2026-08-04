@@ -113,3 +113,8 @@
 - The `Tasks` side panel now shows open Manager tasks with their visible priority and current status.
 - The full local Dashboard can update the selected task's status through a Dashboard-local write endpoint that updates the canonical Manager task register and refreshes Dashboard data.
 - LAN-host views keep the task list visible but leave the status editor unavailable so the hosted Dashboard remains read-only.
+
+## 2026-08-04 - Manager Task Display Numbers
+
+- Updated the Manager task panel to show the user-facing three-digit task display number instead of the full canonical `MGR-YYYYMMDD-NNN` id.
+- The Dashboard still preserves the full canonical id internally for status updates to the Manager register.

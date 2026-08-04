@@ -38,6 +38,10 @@
     });
   };
   const getManagerTasks = room => Array.isArray(room?.managerTasks) ? room.managerTasks.slice() : [];
+  const getManagerTaskDisplayId = taskId => {
+    const match = String(taskId || "").match(/-(\d{3})$/);
+    return match ? match[1] : String(taskId || "");
+  };
   const getOpenManagerTasks = room => getManagerTasks(room)
     .filter(task => managerOpenStatuses.has(task.status))
     .sort((left, right) => {
@@ -438,7 +442,7 @@
             });
             const title = document.createElement("span");
             title.className = "manager-task-title";
-            title.textContent = `${task.taskId} - ${task.task}`;
+            title.textContent = `${getManagerTaskDisplayId(task.taskId)} - ${task.task}`;
             const meta = document.createElement("span");
             meta.className = "manager-task-meta";
             const dueText = task.due ? `Due ${task.due}` : "No due date";
@@ -459,7 +463,7 @@
         const note = document.createElement("p");
         const available = canEditManagerTasks();
         note.textContent = available
-          ? (selectedManagerTask ? `Selected task: ${selectedManagerTask.taskId}` : "Select an open Manager task to change its status.")
+          ? (selectedManagerTask ? `Selected task: ${getManagerTaskDisplayId(selectedManagerTask.taskId)}` : "Select an open Manager task to change its status.")
           : (control.description || "This control is available only from the full local Dashboard.");
         card.append(label, note);
         if (!available) {
