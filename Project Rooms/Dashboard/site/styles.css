@@ -80,6 +80,17 @@ main { padding: 22px clamp(18px, 4vw, 52px) 48px; }
 .property-control select:disabled { color: var(--muted); background: var(--paper); }
 .property-note { color: var(--muted); font-size: 11px; line-height: 1.4; }
 .property-state { color: var(--blue); font-size: 11px; line-height: 1.4; }
+.mode-panel { margin: 18px 0; display: grid; gap: 10px; padding: 14px; border: 1px solid var(--line); background: #fbfcfa; }
+.mode-panel[hidden] { display: none !important; }
+.mode-panel h3 { margin: 0; color: var(--muted); font-size: 11px; text-transform: uppercase; }
+.mode-panel-intro { margin: 0; color: var(--muted); font-size: 12px; line-height: 1.5; }
+.mode-panel-controls { display: grid; gap: 10px; }
+.mode-panel-card { display: grid; gap: 6px; padding: 10px; border-left: 3px solid var(--green); background: #fff; }
+.mode-panel-card strong { font-size: 11px; text-transform: uppercase; color: var(--muted); }
+.mode-panel-card p { margin: 0; color: var(--ink); font-size: 12px; line-height: 1.5; }
+.mode-panel-template { margin: 0; padding: 10px; border: 1px solid var(--line); background: var(--paper); color: var(--ink); white-space: pre-wrap; font: 11px Consolas, monospace; line-height: 1.45; }
+.mode-panel-link.disabled { border-color: #aeb8b2; color: var(--muted); background: var(--paper); pointer-events: none; }
+.mode-panel-link.disabled::after { content: "Host only"; }
 .quick-actions { margin: 18px 0; }
 .quick-actions h3 { margin: 0 0 8px; color: var(--muted); font-size: 11px; text-transform: uppercase; }
 .quick-actions #detailActionList { display: grid; gap: 8px; }

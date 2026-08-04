@@ -43,16 +43,37 @@ function Get-DocumentedModes {
         if (-not $document) { continue }
         $lines = $document -split '\r?\n'
         $inModeSection = $false
-        foreach ($line in $lines) {
+        for ($i = 0; $i -lt $lines.Count; $i++) {
+            $line = $lines[$i]
             if ($line -match '^##\s+(.+?)\s*$') {
                 $heading = $Matches[1].Trim()
                 $inModeSection = $heading -in @('Modes', 'Supported Modes', 'Operating Modes')
                 if ($heading -match '\bMode$' -and -not $modes.Contains($heading)) { $modes.Add($heading) }
+                elseif (-not $inModeSection) {
+                    $sectionLines = for ($j = $i + 1; $j -lt $lines.Count; $j++) {
+                        if ($lines[$j] -match '^##\s+') { break }
+                        $lines[$j]
+                    }
+                    $sectionText = ($sectionLines -join "`n").Trim()
+                    if ($sectionText -match '(?im)^\s*Use this mode when\b' -and -not $modes.Contains($heading)) {
+                        $modes.Add($heading)
+                    }
+                }
                 continue
             }
             if ($line -match '^###\s+(.+?)\s*$') {
                 $heading = $Matches[1].Trim()
                 if (($inModeSection -or $heading -match '\bMode$') -and -not $modes.Contains($heading)) { $modes.Add($heading) }
+                elseif (-not $inModeSection) {
+                    $sectionLines = for ($j = $i + 1; $j -lt $lines.Count; $j++) {
+                        if ($lines[$j] -match '^##\s+' -or $lines[$j] -match '^###\s+') { break }
+                        $lines[$j]
+                    }
+                    $sectionText = ($sectionLines -join "`n").Trim()
+                    if ($sectionText -match '(?im)^\s*Use this mode when\b' -and -not $modes.Contains($heading)) {
+                        $modes.Add($heading)
+                    }
+                }
                 continue
             }
             if ($inModeSection -and $line -match '^\d+\.\s+\*\*(.+?)\*\*') {
@@ -161,7 +182,7 @@ $rooms = foreach ($directory in Get-ChildItem -LiteralPath $projectRoomsRoot -Di
 
 $json = $rooms | ConvertTo-Json -Depth 6
 $groupsJson = $groupDefinitions | ConvertTo-Json -Depth 4
-$actionsJson = $actionsConfig | ConvertTo-Json -Depth 4
+$actionsJson = $actionsConfig | ConvertTo-Json -Depth 8
 $indexData = "$groupsJson`n$actionsJson`n$json"
 $bytes = [System.Text.UTF8Encoding]::new($false).GetBytes($indexData)
 $hasher = [System.Security.Cryptography.SHA256]::Create()

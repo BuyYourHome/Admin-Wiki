@@ -98,3 +98,9 @@
 - Selecting a documented mode now immediately invokes its configured safe action when one exists; otherwise the Dashboard says no action is keyed.
 - Seeded the first action for `Create PR` -> `Diagram`, which opens the canonical Project Room relationship diagram SVG.
 - Extended the LAN read-only host allowlist so explicitly configured internal mode-action files can be opened remotely without exposing arbitrary repo paths.
+
+## 2026-08-04 - Dashboard Mode Map Helper
+
+- Added a documented `Mode Map` mode to the Dashboard Project Room rules.
+- Extended the side-panel mode system so a mode can load a helper panel with several Dashboard-owned controls instead of only triggering one immediate action.
+- Seeded the first helper panel for `Dashboard` -> `Mode Map`, including the canonical single-action and multi-control mapping patterns for plain-English requests.

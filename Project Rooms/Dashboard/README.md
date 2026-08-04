@@ -86,6 +86,42 @@ When Wes wants to key a new mode action, the request should state:
 4. Exact target path or URL.
 5. Whether it should remain available in the LAN read-only view or stay local-only.
 
+## Mode Map
+
+Use this mode when Wes wants Dashboard mode mappings defined or revised in plain English.
+
+When the selected Project Room is `Dashboard` and the selected mode is `Mode Map`, the side panel loads a Dashboard-owned helper panel instead of pretending the mode is only one immediate link. That helper shows the canonical request structures for:
+
+- one keyed mode action, and
+- one keyed mode panel containing several side-panel controls.
+
+Interpretation rules for plain-English requests in this mode:
+
+1. If Wes describes one target to open for a mode, normalize the request into a keyed `modeActions` entry.
+2. If Wes describes several buttons, helper notes, or other side-panel controls for one mode, normalize the request into a keyed `modePanels` entry.
+3. Use the exact Project Room name and exact documented mode name as shown in Dashboard.
+4. Default availability to `local-only` unless Wes clearly says the control should work in the LAN read-only view.
+5. Keep room-level Quick actions separate from mode-specific helper controls.
+
+The current Dashboard mode helper is driven from `config\dashboard-actions.json` under `modePanels`.
+
+Example keyed mode panel request:
+
+```text
+Key mode panel
+Project Room: Dashboard
+Mode: Mode Map
+Controls:
+- Type: open-url
+  Label: Open Dashboard README
+  Target: C:\Codex\Wiki Files\Project Rooms\Dashboard\README.md
+  Availability: lan-readonly
+- Type: message
+  Label: Notes
+  Text: Explain how plain-English requests become mode mappings.
+  Availability: lan-readonly
+```
+
 ## Matching Skill
 
 - Skill source: `C:\Codex\Wiki Files\skills\dashboard\SKILL.md`

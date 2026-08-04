@@ -1,5 +1,5 @@
-window.PROJECT_ROOMS_UPDATED = '2026-08-03 22:31';
-window.PROJECT_ROOMS_HASH = 'E860D7FE393FDBA0E6C3AB7420AABF62901814E08AC9C12A1FC957F1F5878CEF';
+window.PROJECT_ROOMS_UPDATED = '2026-08-04 08:50';
+window.PROJECT_ROOMS_HASH = 'F911EC2FEAA083AED73710C314FE52F3A698359845AB2081BFE21A5CE0E84E63';
 window.PROJECT_ROOM_GROUPS = [
     {
         "name":  "Intake \u0026 Coordination",
@@ -48,7 +48,45 @@ window.DASHBOARD_ACTIONS = {
                                                           "href":  "../../Create%20PR/outputs/Project%20Room%20Relationship%20Diagram.svg"
                                                       }
                                       }
-                    }
+                    },
+    "modePanels":  {
+                       "Dashboard":  {
+                                         "Mode Map":  {
+                                                          "title":  "Mode Map",
+                                                          "intro":  "Use this helper when Wes wants a Dashboard mode mapping in plain English. The blocks below are the canonical structures Dashboard should derive from the request.",
+                                                          "stateText":  "Mode Map helper loaded. Use the patterns below to define a single mode action or a full multi-control mode panel.",
+                                                          "controls":  [
+                                                                           {
+                                                                               "type":  "message",
+                                                                               "label":  "Plain-English interpretation rule",
+                                                                               "text":  "If Wes describes one target to open, treat it as a keyed mode action. If Wes describes several buttons, helper notes, or side-panel controls for one mode, treat it as a keyed mode panel."
+                                                                           },
+                                                                           {
+                                                                               "type":  "template",
+                                                                               "label":  "Single mode action pattern",
+                                                                               "text":  "Key mode action\nProject Room: \u003cexact room name\u003e\nMode: \u003cexact mode name\u003e\nType: open-url\nTarget: \u003cfull local path or exact URL\u003e\nAvailability: \u003clan-readonly | local-only\u003e\nLabel: \u003coptional label\u003e"
+                                                                           },
+                                                                           {
+                                                                               "type":  "template",
+                                                                               "label":  "Mode panel pattern",
+                                                                               "text":  "Key mode panel\nProject Room: \u003cexact room name\u003e\nMode: \u003cexact mode name\u003e\nControls:\n- Type: open-url\n  Label: \u003cbutton label\u003e\n  Target: \u003cfull local path or exact URL\u003e\n  Availability: \u003clan-readonly | local-only\u003e\n- Type: message\n  Label: \u003csection label\u003e\n  Text: \u003chelper text\u003e\n  Availability: \u003clan-readonly | local-only\u003e"
+                                                                           },
+                                                                           {
+                                                                               "type":  "message",
+                                                                               "label":  "Normalization rules",
+                                                                               "text":  "Use the exact Project Room name and exact documented mode name from the Dashboard. Default to local-only unless Wes clearly says the control should work from the LAN read-only view, such as Chrome on his phone."
+                                                                           },
+                                                                           {
+                                                                               "type":  "open-url",
+                                                                               "label":  "Open Dashboard README",
+                                                                               "href":  "../../Dashboard/README.md",
+                                                                               "availability":  "lan-readonly",
+                                                                               "description":  "Open the Dashboard README, which now includes the canonical Mode Map rules."
+                                                                           }
+                                                                       ]
+                                                      }
+                                     }
+                   }
 };
 window.PROJECT_ROOMS = [
     {
@@ -310,7 +348,7 @@ window.PROJECT_ROOMS = [
         "group":  "Intake \u0026 Coordination",
         "groupBasis":  "Receives requests, routes work, creates Project Rooms, or provides an operating overview across workflows.",
         "modes":  [
-
+                      "Mode Map"
                   ],
         "readmeUrl":  "../../Dashboard/README.md",
         "quickActions":  [

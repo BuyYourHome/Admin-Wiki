@@ -39,6 +39,16 @@ description: Use for the Buy Your Home Dashboard Project Room, including refresh
 14. Record requested improvements in `working\dashboard-change-list.md` and substantive outcomes in `working\dashboard-action-log.md`.
 15. For the SOPs side-panel viewer, use only `Project Rooms\SOPs\outputs\SOP Index.md` as the authoritative list. Show every valid index entry, but enable opening only when a corresponding clean Markdown page exists under `Project Rooms\SOPs\outputs\SOPs\`. Do not edit, synthesize, or infer SOP entries from Dashboard.
 
+## Mode Map
+
+Use this mode when Wes wants Dashboard mode mappings defined or revised in plain English.
+
+- If the request describes one target to open for a mode, translate it into a keyed `modeActions` entry.
+- If the request describes several buttons, helper notes, or side-panel controls for one mode, translate it into a keyed `modePanels` entry.
+- Use the exact Project Room name and exact documented mode name shown in Dashboard.
+- Default availability to `local-only` unless Wes clearly says the control should work from the LAN read-only view.
+- Keep room-level Quick actions separate from mode-specific helper controls.
+
 ## Boundaries
 
 - Do not edit another Project Room or its matching skill to improve dashboard data.

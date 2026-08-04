@@ -12,5 +12,43 @@
         "href": "../../Create%20PR/outputs/Project%20Room%20Relationship%20Diagram.svg"
       }
     }
+  },
+  "modePanels": {
+    "Dashboard": {
+      "Mode Map": {
+        "title": "Mode Map",
+        "intro": "Use this helper when Wes wants a Dashboard mode mapping in plain English. The blocks below are the canonical structures Dashboard should derive from the request.",
+        "stateText": "Mode Map helper loaded. Use the patterns below to define a single mode action or a full multi-control mode panel.",
+        "controls": [
+          {
+            "type": "message",
+            "label": "Plain-English interpretation rule",
+            "text": "If Wes describes one target to open, treat it as a keyed mode action. If Wes describes several buttons, helper notes, or side-panel controls for one mode, treat it as a keyed mode panel."
+          },
+          {
+            "type": "template",
+            "label": "Single mode action pattern",
+            "text": "Key mode action\nProject Room: <exact room name>\nMode: <exact mode name>\nType: open-url\nTarget: <full local path or exact URL>\nAvailability: <lan-readonly | local-only>\nLabel: <optional label>"
+          },
+          {
+            "type": "template",
+            "label": "Mode panel pattern",
+            "text": "Key mode panel\nProject Room: <exact room name>\nMode: <exact mode name>\nControls:\n- Type: open-url\n  Label: <button label>\n  Target: <full local path or exact URL>\n  Availability: <lan-readonly | local-only>\n- Type: message\n  Label: <section label>\n  Text: <helper text>\n  Availability: <lan-readonly | local-only>"
+          },
+          {
+            "type": "message",
+            "label": "Normalization rules",
+            "text": "Use the exact Project Room name and exact documented mode name from the Dashboard. Default to local-only unless Wes clearly says the control should work from the LAN read-only view, such as Chrome on his phone."
+          },
+          {
+            "type": "open-url",
+            "label": "Open Dashboard README",
+            "href": "../../Dashboard/README.md",
+            "availability": "lan-readonly",
+            "description": "Open the Dashboard README, which now includes the canonical Mode Map rules."
+          }
+        ]
+      }
+    }
   }
 }

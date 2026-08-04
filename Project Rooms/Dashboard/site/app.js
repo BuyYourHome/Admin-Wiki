@@ -3,6 +3,7 @@
   const groupDefinitions = Array.isArray(window.PROJECT_ROOM_GROUPS) ? window.PROJECT_ROOM_GROUPS : [];
   const dashboardActions = window.DASHBOARD_ACTIONS || {};
   const modeActions = dashboardActions.modeActions || {};
+  const modePanels = dashboardActions.modePanels || {};
   const dashboardContext = window.DASHBOARD_CONTEXT || {
     hostMode: "local-full",
     clientAccess: "local",
@@ -17,6 +18,8 @@
   const attentionLabel = attention => attention?.type === "approval-needed" ? "Approval needed" : "Confirmation needed";
   const isExternalHref = href => /^[a-z][a-z0-9+.-]*:/i.test(href || "");
   const getModeAction = (roomName, modeName) => modeActions?.[roomName]?.[modeName] || null;
+  const getModePanel = (roomName, modeName) => modePanels?.[roomName]?.[modeName] || null;
+  const controlAvailable = availability => availability !== "local-only" || dashboardContext.clientAccess === "local";
   const deletionPreviewAllowed = () => !dashboardContext.readOnly || dashboardContext.clientAccess === "local";
   const filteredRooms = () => {
     const query = state.query.trim().toLowerCase();
@@ -109,6 +112,7 @@
   function clearSelection() {
     state.selected = null;
     state.selectedRoom = null;
+    state.selectedMode = "";
     state.sopGroup = "All";
     state.visibleSopEntries = [];
     el("detailPanel").hidden = true;
@@ -119,6 +123,10 @@
     el("detailModeSelect").replaceChildren();
     el("detailModeSelect").disabled = true;
     el("detailModeState").textContent = "Choose a Project Room first.";
+    el("detailModePanel").hidden = true;
+    el("detailModePanelTitle").textContent = "Mode panel";
+    el("detailModePanelIntro").textContent = "";
+    el("detailModePanelControls").replaceChildren();
     el("detailActionList").replaceChildren();
     el("detailGroupSelect").replaceChildren();
     el("detailGroupSelect").disabled = true;
@@ -134,6 +142,7 @@
   function selectRoom(room) {
     state.selected = room.name;
     state.selectedRoom = room;
+    state.selectedMode = "";
     el("detailPanel").hidden = false;
     el("detailName").textContent = room.name;
     el("detailPurpose").textContent = room.purpose;
@@ -161,8 +170,9 @@
     }));
     el("detailModeSelect").disabled = modes.length === 0;
     el("detailModeState").textContent = modes.length
-      ? "Selecting a documented mode runs its keyed Dashboard action when one is configured; otherwise the selection remains review only."
+      ? "Selecting a documented mode can either load a mode-specific helper panel or run its keyed Dashboard action."
       : "No canonical documented modes were found in this room's README or matching skill.";
+    renderModePanel(null);
     state.sopGroup = "All";
     renderSopViewer(room);
     const actions = [
@@ -313,6 +323,64 @@
     URL.revokeObjectURL(href);
   }
 
+  function renderModePanel(panel) {
+    const section = el("detailModePanel");
+    if (!panel) {
+      section.hidden = true;
+      el("detailModePanelTitle").textContent = "Mode panel";
+      el("detailModePanelIntro").textContent = "";
+      el("detailModePanelControls").replaceChildren();
+      return;
+    }
+
+    section.hidden = false;
+    el("detailModePanelTitle").textContent = panel.title || "Mode panel";
+    el("detailModePanelIntro").textContent = panel.intro || "";
+
+    const controlElements = (Array.isArray(panel.controls) ? panel.controls : []).map(control => {
+      if (control.type === "open-url") {
+        const link = document.createElement("a");
+        const available = controlAvailable(control.availability || "local-only");
+        link.className = `quick-action-link mode-panel-link${available ? "" : " disabled"}`;
+        link.textContent = control.label || "Open";
+        if (available && control.href) {
+          link.href = control.href;
+          link.target = "_blank";
+          link.rel = "noopener";
+          link.title = control.description || "";
+        } else {
+          link.removeAttribute("href");
+          link.setAttribute("aria-disabled", "true");
+          link.title = control.description || "This control is available only on the host machine.";
+        }
+        return link;
+      }
+
+      if (control.type === "template") {
+        const card = document.createElement("div");
+        card.className = "mode-panel-card";
+        const label = document.createElement("strong");
+        label.textContent = control.label || "Template";
+        const template = document.createElement("pre");
+        template.className = "mode-panel-template";
+        template.textContent = control.text || "";
+        card.append(label, template);
+        return card;
+      }
+
+      const card = document.createElement("div");
+      card.className = "mode-panel-card";
+      const label = document.createElement("strong");
+      label.textContent = control.label || "Note";
+      const text = document.createElement("p");
+      text.textContent = control.text || "";
+      card.append(label, text);
+      return card;
+    });
+
+    el("detailModePanelControls").replaceChildren(...controlElements);
+  }
+
   function invokeModeAction(room, modeName) {
     const action = getModeAction(room?.name, modeName);
     if (!action) {
@@ -397,12 +465,23 @@
   el("detailModeSelect").addEventListener("change", event => {
     const selectedMode = event.target.value;
     if (!selectedMode) {
+      state.selectedMode = "";
+      renderModePanel(null);
       el("detailModeState").textContent = state.selectedRoom
-        ? "Selecting a documented mode runs its keyed Dashboard action when one is configured; otherwise the selection remains review only."
+        ? "Selecting a documented mode can either load a mode-specific helper panel or run its keyed Dashboard action."
         : "Choose a Project Room first.";
       return;
     }
+    state.selectedMode = selectedMode;
+    const panel = getModePanel(state.selectedRoom?.name, selectedMode);
+    if (panel) {
+      renderModePanel(panel);
+      el("detailModeState").textContent = panel.stateText || `${selectedMode} helper panel loaded.`;
+      return;
+    }
+    renderModePanel(null);
     invokeModeAction(state.selectedRoom, selectedMode);
+    state.selectedMode = "";
     event.target.value = "";
   });
   el("detailSopSelect").addEventListener("change", event => {
