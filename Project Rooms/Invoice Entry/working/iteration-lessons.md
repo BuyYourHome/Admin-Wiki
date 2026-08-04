@@ -372,3 +372,11 @@ Context: First Bank sent another account-ending-3613 statement-availability noti
 - Workbook reconciliation must be a documented user-callable mode, not only an internal insertion preflight.
 - Keep one workbook writer: Dashboard may invoke `Reconcile`, but Invoice Entry resolves, edits, validates, and uploads the authoritative workbook.
 - An explicit Wes invocation is sufficient authorization to evaluate existing Review rows even when the visible request checkbox is false or blank; checkbox state still controls whether it needs to be cleared after successful validation.
+
+## 2026-08-04 - Packet Metadata And Locked Workbook Retry
+
+Context: Corrected 2025 Lowe's packets had accurate item amounts but initially omitted visible store and SKU metadata; the validated Tensity upload then failed because SharePoint reported the workbook locked.
+
+- Revalidate transaction-header metadata after a packet correction, not only row counts and amounts. Preserve visible store, PO, SKU/item number, invoice, date, and page evidence before treating the packet as complete.
+- A SharePoint `423 resourceLocked` response is a definitive failed replacement. Record that the authoritative workbook is unchanged and do not repeat the upload automatically.
+- Preserve the validated edited workbook and rollback copy outside Git. Before retry, compare the live workbook modified time with the recorded source version; if it changed, re-fetch and reapply instead of overwriting newer work.
