@@ -29,7 +29,7 @@ Use [[Agent Unit Standard]] for the standard package behind an agent-like operat
 | Manager | Wiki-managed skill plus project room plus dedicated chat | Draft | On demand | `skills\manager\SKILL.md`; `Project Rooms\Manager\README.md` |
 | Codex Environment | Wiki-managed skill plus project room plus dedicated chat | Draft | On demand | `skills\codex-environment\SKILL.md`; `Project Rooms\Codex Environment\README.md` |
 | Computers | Wiki-managed skill plus project room plus dedicated chat | Draft | On demand | `skills\computers\SKILL.md`; `Project Rooms\Computers\README.md` |
-| Marketplace | Wiki-managed skill plus project room plus dedicated chat plus heartbeat automation | Active | Seller-response heartbeat every 15 minutes from 8:00 AM through 9:45 PM Eastern; on demand otherwise | `skills\marketplace\SKILL.md`; `Project Rooms\Marketplace\README.md`; app automation id `marketplace-seller-response-monitor` |
+| Marketplace | Wiki-managed skill plus project room plus dedicated chat plus heartbeat automation | Paused | No recurring or on-demand Marketplace activity until Wes explicitly resumes it | `skills\marketplace\SKILL.md`; `Project Rooms\Marketplace\README.md`; app automation id `marketplace-seller-response-monitor` |
 | SOPs | Wiki-managed skill plus project room | Active | On demand | `skills\sops\SKILL.md`; `Project Rooms\SOPs\README.md`; `Project Rooms\SOPs\outputs\SOP Index.md` |
 | Credit Worthiness Evaluator | Wiki-managed skill plus project room | Active | On demand | `skills\credit-worthiness-evaluator\SKILL.md`; `Project Rooms\Credit Worthiness Evaluator\README.md` |
 | Contract for Deed | Wiki-managed skill plus project room | Active | On demand | `skills\contract-for-deed\SKILL.md`; `Project Rooms\Contract for Deed\README.md` |
@@ -755,7 +755,7 @@ Important rules:
 
 Type: wiki-managed skill plus project room plus dedicated chat plus heartbeat automation.
 
-Status: active.
+Status: paused by Wes as of 2026-08-05.
 
 Purpose:
 
@@ -776,8 +776,8 @@ Dedicated chat:
 Automation:
 
 - Heartbeat id: `marketplace-seller-response-monitor`.
-- Status: active.
-- Schedule: every 15 minutes from 8:00 AM through 9:45 PM Eastern, daily.
+- Status: paused.
+- Configured schedule when active: every 15 minutes from 8:00 AM through 9:45 PM Eastern, daily.
 - Target: Marketplace thread `019fb5b0-6c29-7b32-822b-aa13b5920c29`.
 - Storage: `C:\Users\wesbr\.codex\automations\marketplace-seller-response-monitor\automation.toml`.
 - Scope: check only tracked Marketplace seller conversations awaiting responses, remain quiet when nothing changed, avoid duplicate processing, record new seller messages, negotiate only at or below the recorded safe maximum, and stop before commitments.
@@ -785,6 +785,8 @@ Automation:
 
 Important rules:
 
+- Marketplace activity and its seller-response heartbeat remain paused until Wes explicitly resumes Marketplace.
+- While paused, do not search listings, evaluate new opportunities, message sellers, monitor conversations, negotiate, or send Marketplace notifications.
 - Do not store Facebook credentials, MFA codes, payment details, seller private contact details beyond deal necessity, or other live secrets.
 - Do not send a Messenger offer unless the listing is clearly identified, the maximum offer is calculated and recorded, and the message stays at or below an approved maximum.
 - If no approved max-offer rule exists for the listing/search, ask Wes before sending the offer.
