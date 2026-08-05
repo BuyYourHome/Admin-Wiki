@@ -14,7 +14,7 @@ Manager preserves the source time ledger and sends structured, versioned time pa
 
 Send a packet only when Wes requests draft/final processing or otherwise authorizes Invoice Entry processing. Do not create an automation or schedule from this contract.
 
-Invoice Entry's current Time Card trigger accepts only Email Monitor-routed Time Card emails. Until Invoice Entry explicitly accepts and documents Manager-source packets, a Manager handoff is a receiver-development/acceptance request and must remain held.
+Invoice Entry accepts authorized, versioned Manager Time Card packets under its receiver rules committed as `0bf157b7`, in addition to Email Monitor-routed Time Card emails. Each operational packet must still receive its own `accepted` or other explicit return with the same dispatch id.
 
 ## Packet Fields
 

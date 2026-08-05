@@ -136,7 +136,7 @@ Handoff log: `C:\Codex\Wiki Files\Project Rooms\Manager\working\time-card-handof
 4. Assign and preserve a dispatch id in the form `manager-dispatch-YYYYMMDD-time-card-vN`. Include the worker, semimonthly period, packet version, canonical entry ids, work dates, exact durations, task descriptions, destinations, source references, corrections, unresolved items, requested Invoice Entry operation, and authorizing Wes instruction.
 5. Deduplicate by dispatch id, packet version, and canonical entry id. Do not resend an unchanged packet after an ambiguous or missing result.
 6. Keep entries `Handed Off` until Invoice Entry returns `accepted` with the same dispatch id. Apply `Accepted by Invoice Entry`, `Drafted`, `Finalized`, or `Held` only from that task's explicit return; preserve its artifact paths and notes in the handoff log.
-7. Invoice Entry's current Time Card trigger accepts only Email Monitor email handoffs. Until Invoice Entry explicitly accepts and documents Manager-source packets, keep the packet held, report the receiver-side blocker, and do not claim a draft or final invoice exists.
+7. Invoice Entry accepts authorized, versioned Manager-source packets under its receiver rules committed as `0bf157b7`. A packet must satisfy the contract fields, cite Wes's processing authorization, and pass Invoice Entry's duplicate, correction-version, active-total, and cross-channel checks. Hold an incomplete or ambiguous packet instead of claiming a draft or final invoice exists.
 8. An Invoice Entry handoff does not authorize payment, invoice approval, filing, spreadsheet insertion, or external email beyond what Invoice Entry's own rules and Wes's approvals permit.
 
 ## Start PR
