@@ -334,13 +334,13 @@ Do not create a new Invoice Entry task for this routing unless Wes explicitly as
 
 ### Organize
 
-Use Organize to file messages that Wes's Outlook rule has already moved into `Inbox/Venders/Jean Wright` in `WesWill@BuyYourHomeLLC.com`.
+Use Organize to file messages that Wes's Outlook rule has already moved into `Inbox/Jean Wright` in `WesWill@BuyYourHomeLLC.com`.
 
 Activation:
 
 - run after every successful, Sent Items-verified Email Delivery when `WesWill@BuyYourHomeLLC.com` appears in To or CC;
 - do not run merely because a send was attempted or remains unverified;
-- process all messages sitting directly in `Inbox/Venders/Jean Wright` so the mode is idempotent and also clears any prior backlog;
+- process all messages sitting directly in `Inbox/Jean Wright` so the mode is idempotent and also clears any prior backlog;
 - do not organize Jenny's mailbox unless Wes separately activates and proves that scope.
 
 Folder set:
@@ -355,7 +355,7 @@ Folder set:
 - `Health and Failures`
 - `Other`
 
-Create any missing folder beneath `Inbox/Venders/Jean Wright`. Leave existing folders, including `Fraud`, `Invoices`, and `Time Cards`, intact.
+Create any missing folder beneath `Inbox/Jean Wright`. Leave existing folders, including `Fraud`, `Invoices`, and `Time Cards`, intact.
 
 Classification precedence:
 
@@ -374,7 +374,7 @@ Execution rules:
 - prefer the Outlook Email connector for delegated Wes mailbox folder discovery, message listing, and moves;
 - use the mounted local Outlook profile only when the connector cannot create the required delegated-mailbox folders or cannot complete the move safely;
 - never hardcode folder IDs; resolve the exact mailbox path each run;
-- move only messages directly inside `Inbox/Venders/Jean Wright`; do not reclassify messages already in a child folder;
+- move only messages directly inside `Inbox/Jean Wright`; do not reclassify messages already in a child folder;
 - preserve read/unread state, flags, categories, attachments, conversation state, and message content;
 - if Outlook rule processing has not yet placed the newly sent message in `Jean Wright`, retry the folder check briefly, then leave it for the next Organize run rather than moving a message from another folder;
 - record and report a folder-access, creation, or move failure; routine successful organization does not require a user notification.
