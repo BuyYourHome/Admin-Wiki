@@ -1,6 +1,6 @@
 # Invoice Packet Schema
 
-Use this schema when Doc Scan hands a scanned invoice, receipt, or Statement packet to Invoice Entry. Other intake sources are out of scope unless Wes separately approves and documents them.
+Use this schema when Doc Scan hands a scanned invoice, receipt, or Statement packet to Invoice Entry or Manager sends an authorized structured Time Card packet under the special-source rules below. Other intake sources are out of scope unless Wes separately approves and documents them.
 
 Doc Scan owns Lowes Statement extraction and will send extracted statement data for Invoice Entry to consume. Statement packets should not be inserted until Wes approves a tested process for allocating statement line items by project and by worksheet/table.
 
@@ -36,6 +36,35 @@ Store the complete structured fields below in the referenced packet or build the
 | `notes` | no | Uncertainty, duplicate hints, or routing explanation. |
 
 ## Special Source Types
+
+### Manager Time Card Packets
+
+Manager may send a versioned Time Card packet only after Wes requests draft/final processing or otherwise authorizes Invoice Entry processing. The packet must contain:
+
+- `dispatch_id` using `manager-dispatch-YYYYMMDD-time-card-vN`;
+- `packet_version` and `created_timestamp`;
+- the authorizing Wes instruction;
+- worker identity;
+- semimonthly period start and end;
+- requested operation: `create/update draft`, `process correction`, or `prepare closed-period final review`;
+- canonical Manager entry ids and display ids;
+- for each entry: work date, exact hours/minutes, start/end/break evidence when supplied, task description, project/property or `BackOffice`, source reference, and source received timestamp;
+- superseded/cancelled relationships and correction history;
+- period total computed from active lines only;
+- missing or disputed fields; and
+- the canonical Manager register path.
+
+Receiver rules:
+
+- Deduplicate using dispatch id, packet version, canonical Manager entry id, and semimonthly period together. Repeated delivery of an unchanged packet is not a new intake.
+- A correction must arrive as a higher packet version. Preserve the prior version, apply explicit superseded/cancelled relationships, and exclude `Superseded` and `Cancelled` lines from active totals.
+- Recalculate active-line hours and compare them with Manager's stated period total before changing the semimonthly record.
+- Reconcile canonical Manager entry ids against existing Email Monitor-derived lines and prior Manager packets. If the same work may exist under two source channels and identity cannot be proved, hold it instead of double counting.
+- Preserve the canonical Manager entry id and packet version on the Invoice Entry time record and in correction history.
+- Do not retry after an ambiguous, missing, or possibly successful result until durable Invoice Entry status is reconciled.
+- Return the same dispatch id with `accepted`, then `done`, `blocked`, `needs Wes`, or `rejected as wrong room`.
+
+Manager packets may not set or authorize rates, amounts, invoice numbers, approval state, filing directions, spreadsheet insertion directions, email delivery, payment, or any other external action unless Invoice Entry previously returned the value or Wes separately authorized it under Invoice Entry rules. Manager owns its source ledger and packet production; Invoice Entry owns semimonthly accumulation, rates/amounts, invoice generation, correction review, Wes approval, filing, allocation, and workbook insertion.
 
 ### Statement Packets
 

@@ -1,6 +1,6 @@
 ---
 name: invoice-entry
-description: Use for Buy Your Home project-management spreadsheet invoice-entry work after Doc Scan has prepared a structured invoice, receipt, or Statement packet, when Email Monitor or OfficeAssist routes a contractor/vendor invoice email into Invoice Entry, when Email Monitor routes a Time Card email, or when Wes invokes Reconcile for an existing project workbook. Trigger when Codex needs to receive or create a structured packet, choose the correct active project workbook and worksheet, check for duplicate invoice, time-card, or statement-line records, insert approved records into a Vendor Tab or other approved project-spreadsheet expense area, reconcile eligible Review rows, validate totals and workbook links, and report uncertain routing for Wes review.
+description: Use for Buy Your Home project-management spreadsheet invoice-entry work after Doc Scan has prepared a structured invoice, receipt, or Statement packet, when Email Monitor or OfficeAssist routes a contractor/vendor invoice or Time Card email, when Manager sends an authorized versioned Time Card packet, or when Wes invokes Reconcile for an existing project workbook. Trigger when Codex needs to receive or create a structured packet, accumulate semimonthly time, choose the correct active project workbook and worksheet, check for duplicate invoice, time-card, or statement-line records, insert approved records into a Vendor Tab or other approved project-spreadsheet expense area, reconcile eligible Review rows, validate totals and workbook links, and report uncertain routing for Wes review.
 ---
 
 # Invoice Entry
@@ -14,7 +14,7 @@ description: Use for Buy Your Home project-management spreadsheet invoice-entry 
 - Scanned document action log: `C:\Codex\Wiki Files\Project Rooms\Invoice Entry\working\scanned-document-action-log.md`
 - Template-to-project migration room: `C:\Codex\Wiki Files\Project Rooms\Template to Project`
 
-Use this skill for operational invoice, Time Card, and approved statement-line insertion into project-management spreadsheets. For scanned invoice, receipt, and Statement records, Doc Scan is the normal intake workflow and should trigger this workflow by direct follow-up message after creating the packet. For routed contractor/vendor invoice emails, Email Monitor or OfficeAssist may hand off a saved email source and attachments under Create Vendor Invoice. For Time Card emails, Email Monitor is the only supported trigger and must hand off the preserved source email. A standalone backup cron monitor checks durable Project Room state for missed packet handoffs without waking the operational Invoice Entry task. Do not use this skill for scan inspection/OCR, document splitting, statement extraction, invoice-file routing, mailbox monitoring, or spreadsheet template redesign.
+Use this skill for operational invoice, Time Card, and approved statement-line insertion into project-management spreadsheets. For scanned invoice, receipt, and Statement records, Doc Scan is the normal intake workflow and should trigger this workflow by direct follow-up message after creating the packet. For routed contractor/vendor invoice and Time Card emails, Email Monitor or OfficeAssist must hand off the preserved email source. Manager may separately hand off an authorized, versioned structured Time Card packet under the receiver rules below; this does not give Manager mailbox, invoice, rate, approval, filing, or workbook authority. A standalone backup cron monitor checks durable Project Room state for missed packet handoffs without waking the operational Invoice Entry task. Do not use this skill for scan inspection/OCR, document splitting, statement extraction, invoice-file routing, mailbox monitoring, or spreadsheet template redesign.
 
 Doc Scan owns Lowes Statement extraction and will send extracted statement data for this skill to consume. This skill owns statement-line allocation, duplicate checks, final spreadsheet row placement, insertion, and validation after Wes approves the Statement allocation rules.
 
@@ -193,18 +193,35 @@ Completion:
 
 ## Time Card
 
-Use Time Card only when Email Monitor sends a direct handoff message to Invoice Entry for an email with subject or body wording that resembles `Time Card`, `time sheet`, `timesheet`, or similar time-reporting language.
+Use Time Card when either:
+
+- Email Monitor sends a direct handoff for an email with subject or body wording that resembles `Time Card`, `time sheet`, `timesheet`, or similar time-reporting language; or
+- Manager sends a versioned structured Time Card packet after Wes requests draft/final processing or otherwise authorizes Invoice Entry processing.
+
+Email Monitor remains the only supported email/mailbox intake and outbound-delivery path. Manager packets are structured ledger handoffs, not email handoffs and not authority for Invoice Entry to inspect a mailbox.
 
 Trigger:
 
 - Email Monitor detects and routes the Time Card or timesheet email.
 - The routed source email is preserved under `C:\Codex\Wiki Files\Project Rooms\Invoice Entry\sources\email\`.
 - The handoff includes the routed source path, sender, received time, subject, attachment paths or attachment blockers, and any project/vendor/person clues.
+- Or Manager sends a direct handoff containing a packet that satisfies `working\invoice-packet-schema.md#manager-time-card-packets` and cites the authorizing Wes instruction.
 - Invoice Entry must not scan inboxes, search for Time Card emails, or start this workflow from raw mailbox access on its own.
+
+Manager packet receiver:
+
+1. Return `accepted` with the same dispatch id before substantive processing when the request is within Invoice Entry scope. Finish with `done`, `blocked`, `needs Wes`, or `rejected as wrong room`, preserving that dispatch id.
+2. Validate the dispatch id, positive packet version, worker, semimonthly period, requested operation, canonical Manager entry ids, active-line details, period total, source references, correction relationships, and missing/disputed fields against `working\invoice-packet-schema.md`.
+3. Deduplicate on the combined identity of dispatch id, packet version, canonical Manager entry id, and semimonthly period. An unchanged packet is one intake, even if the handoff is repeated.
+4. Treat a higher packet version as a correction candidate, preserve the prior version as history, apply explicit superseded/cancelled relationships, and recalculate the active-line total. Do not count `Superseded` or `Cancelled` lines.
+5. Compare Manager's stated period total with the sum of active accepted lines. Hold the affected packet if the totals disagree, a canonical entry identity is missing, correction lineage is ambiguous, or the packet would overlap an existing Email Monitor-derived line without source-supported reconciliation.
+6. Preserve Manager canonical entry ids in Invoice Entry's semimonthly source record so later corrections update the same line rather than create a new payable obligation.
+7. Manager owns the source time ledger, source traceability, clarification, display, correction history, active-line totals, and packet production. Invoice Entry owns semimonthly accumulation, rates and amounts, invoice numbering, draft/final invoice generation, correction review, Wes approval, filing, allocation, and spreadsheet insertion.
+8. A Manager packet never authorizes a rate, amount, invoice number, approval, filing destination, workbook entry, email, payment, or external action unless Invoice Entry previously returned that value or Wes separately authorized the action under Invoice Entry rules. No supplied packet means no invoice-generation action.
 
 Semimonthly accumulation:
 
-1. Each accepted Time Card email updates the accumulated, source-traceable semimonthly time record. The two periods are the 1st through the 15th and the 16th through the last calendar day of the month. The accumulated record is the source of truth; a generated PDF is a replaceable output, not the editable source.
+1. Each accepted Time Card email or validated Manager packet updates the accumulated, source-traceable semimonthly time record. The two periods are the 1st through the 15th and the 16th through the last calendar day of the month. The accumulated record is the source of truth; a generated PDF is a replaceable output, not the editable source.
 2. Split actual time by project and BackOffice destination inside one invoice for the period.
 3. Generate one payable `INVOICE` for the complete semimonthly period. The invoice both requests payment and shows the proportional project/BackOffice allocation; do not generate separate payable invoices per destination.
 4. For Josh Kennedy, identify the issuer as `Josh Kennedy LLC`, show `profcyber0077@gmail.com` as the invoice contact, and show Buy Your Home as the customer even when Time Card source emails arrive from `IRAManager@SellYourHomeRaleigh.com`.
@@ -212,7 +229,7 @@ Semimonthly accumulation:
 6. After each meaningful time update, regenerate the draft invoice and route it through Email Monitor's Email Delivery workflow to the Time Card sender when correction review is required, copying `WesWill@BuyYourHomeLLC.com` and `Jenny@BuyYourHomeLLC.com`. State that no reply is needed when the time, project allocation, and totals are correct; the sender should reply only when a correction is needed.
 7. A semimonthly invoice cannot become final before its period closes on the 15th or the last calendar day of the month. After the close, send the draft to Wes for approval. Do not file, post, or treat it as eligible for payment until Wes approves it.
 
-- When another Time Card email arrives for the same worker and semimonthly period, add its new lines to the existing period record and regenerate the same invoice number.
+- When another Time Card email or validated Manager packet arrives for the same worker and semimonthly period, reconcile it against the existing period record, add only new active lines, update explicit corrections in place, and retain the same invoice number.
 - Generate Time Card invoices with `C:\Codex\Wiki Files\skills\invoice-entry\scripts\create-project-cost-allocation-report.py`; despite the retained compatibility filename, its output is an invoice and must not use `Project Cost Allocation Report` as a document title or payable identity.
 - For Josh's invoice layout, place `Josh Kennedy LLC` and `profcyber0077@gmail.com` above `INVOICE` on the upper left, keep the approval status aligned with the invoice heading, and omit explanatory allocation, method, and traceability panels from the bottom. Preserve the allocation summary, time-detail table, exact hours-and-minutes display, stable invoice number, period, customer, project totals, and amount due.
 - After Wes approves an invoice, show `APPROVED BY WES`. Later format-only revisions keep that approval when the invoice number, service period, accepted time, allocations, and amount remain unchanged; regenerate and reverify the PDF without creating a new obligation.
@@ -220,7 +237,7 @@ Semimonthly accumulation:
 - Draft Time Card invoices use correction-by-exception review. Silence from the sender means no correction was reported; it is not a separate affirmative verification requirement.
 - Use the exact subject pattern `Time Card Approval - <Worker Name>` when sending a final Time Card report/invoice to Wes for approval. Do not use the Create Vendor Invoice subject `Invoice Approval - <Vendor Name>` for Time Card approval packages.
 - If Wes approves the closed-period invoice, finalize it immediately. If Wes corrects or denies it, process the correction or hold the package as directed. Do not use the former Monday automatic-finalization rule.
-- Preserve every routed Time Card email as source evidence and retain traceability from each invoice line back to the source email.
+- Preserve every routed Time Card email and accepted Manager packet version as source evidence and retain traceability from each invoice line back to its source email or canonical Manager entry id.
 - If the source does not state the worked date, use the email received date as the worked date and record that assumption in the packet.
 - Use the invoice number pattern `INV-JKLLC-<YYYYMMDD>-001`, where the date is the semimonthly period end. Use the period-end date as the invoice date.
 - If no accepted hours exist for the period, the fixed service amount is unclear, or project allocation is unclear, hold the invoice rather than inventing an allocation.

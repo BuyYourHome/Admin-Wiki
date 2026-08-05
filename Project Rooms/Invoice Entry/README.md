@@ -34,7 +34,8 @@ Do not duplicate the full skill rules in this README. The skill controls workflo
 ## Ownership Boundary
 
 - `Doc Scan` owns scan inspection, OCR, splitting, document identification, scanned-file routing, scan logs, statement extraction, and creation of structured scanned-document packets.
-- `Email Monitor` owns mailbox monitoring, routed-email preservation, direct handoff, and all outbound email delivery through Email Delivery.
+- `Email Monitor` owns mailbox monitoring, routed-email preservation, direct email handoff, and all outbound email delivery through Email Delivery.
+- `Manager` owns its Time Card source ledger, source traceability, clarification, display, correction history, active-line totals, and versioned structured packet production.
 - `Invoice Entry` owns packet consumption or authorized packet creation, duplicate checks, workbook resolution, approved insertion, validation, upload, and durable processing status.
 - `Template to Project` owns worksheet design, worksheet-mode rules, template changes, and rollout across active workbooks.
 
@@ -52,7 +53,7 @@ Consume vendor-invoice email handoffs from Email Monitor or OfficeAssist. Use an
 
 ### Time Card
 
-Run only from an Email Monitor handoff. Accumulate accepted time by worker for semimonthly periods: the 1st-15th and the 16th-last calendar day. Generate one payable invoice for the complete period, with project and BackOffice allocation detail inside that invoice. For Josh, the issuer is `Josh Kennedy LLC`, the invoice contact is `profcyber0077@gmail.com`, and Buy Your Home is the customer even when time arrives from the IRA Manager mailbox. The invoice cannot become final before the period closes and requires Wes approval before filing, posting, or payment eligibility.
+Run from either an Email Monitor Time Card email handoff or an authorized, versioned structured Manager Time Card packet. Manager packets must cite Wes's processing instruction and are deduplicated by dispatch id, packet version, canonical Manager entry id, and semimonthly period; corrections preserve prior versions and update the same source lines. Accumulate accepted time by worker for semimonthly periods: the 1st-15th and the 16th-last calendar day. Generate one payable invoice for the complete period, with project and BackOffice allocation detail inside that invoice. For Josh, the issuer is `Josh Kennedy LLC`, the invoice contact is `profcyber0077@gmail.com`, and Buy Your Home is the customer even when time arrives from the IRA Manager mailbox. Invoice Entry retains ownership of rates, amounts, invoice generation, approval, filing, allocation, and spreadsheet insertion. A Manager packet does not authorize any of those actions by itself. The invoice cannot become final before the period closes and requires Wes approval before filing, posting, or payment eligibility.
 
 ### Statement Processing
 
