@@ -64,6 +64,12 @@ The dedicated Marketplace chat is active and ready to receive Marketplace reques
 - Payment, deposits, reservations, pickup scheduling, shipping, addresses, phone numbers, and other commitments remain gated to Wes.
 - Once Wes specifically approves an exact deal and pickup, the heartbeat may ask the seller for a local callable phone number. Do not tell Wes to leave for pickup until that number has been received.
 
+### Seller Messaging Pause
+
+- Seller messaging is paused by Wes as of 2026-08-04.
+- Continue monitoring and recording new seller responses, but do not send replies, offers, follow-ups, phone-number requests, or any other seller messages until Wes explicitly resumes seller messaging.
+- Continue notifying Wes when a response needs his decision under the normal agreement and gated-action rules.
+
 ## Start PR
 
 Before durable work, follow Start PR in `C:\Codex\Wiki Files\Project Room Chat Startup Rule.md`. Interpret unqualified requests under the Current PR Scope Rule in that file. Work on `main` unless Wes explicitly asks for a branch.
