@@ -1,12 +1,12 @@
 # Invoice Entry Current Work Status
 
-Last updated: 2026-08-04
+Last updated: 2026-08-05
 
 This is the authoritative current-state register for Invoice Entry. Read it before processing a handoff or opening a workbook. Packet files and processing logs remain the detailed evidence; when an older summary conflicts with this file, stop and reconcile the source before acting.
 
 ## Operating State
 
-- Status: `Active - Tensity Lowe's Rows Pending Review`
+- Status: `Active - Josh August 1-15 Time Card Accumulating`
 - Primary intake: direct Doc Scan or Email Monitor handoff.
 - Current task: `019fbf4f-c629-7dd1-a3f6-0de33de0ed8f`.
 - Canonical skill: `C:\Codex\Wiki Files\skills\invoice-entry\SKILL.md`.
@@ -45,7 +45,7 @@ Classified working files:
 - The approved one-page July 16-31 invoice PDF and visual-QA render were archived to `Generated\2026-08-03-Josh-Semimonthly-Approved-Format` after 2-file / 250,796-byte and SHA-256 verification.
 - The three superseded week-ending July 31 working records were archived to `Generated\2026-08-03-JK-Week31-Superseded-Working-Records` after 3-file / 5,768-byte verification.
 - NCAOC Remote Public Access invoice `41247668` is represented by one durable packet and processing log. Its duplicate Outlook source copy is classified as transport evidence, and one hash-verified invoice copy is filed in the 2026 general-invoice `_Needs Review` folder.
-- Josh's August 3 raw Time Card values are classified in the August 1-15 accumulated packet as a held source line with no accepted duration; no PDF or other generated artifact exists.
+- Josh's August 3 Time Card line was clarified in place as 6:15 AM-4:15 PM at Tensity. August 4 adds 4 hours BackOffice and 3 hours 45 minutes Tensity. The August 1-15 packet now has 17 hours 45 minutes accepted; no PDF or other generated artifact exists.
 - The 2026-08-04 First Bank account-ending-3613 repeat notice is reconciled into the existing statement packet; it did not create another statement record or downloaded file.
 - The 2025 Lowe's source PDFs remain unchanged at their authoritative SharePoint links. Doc Scan packet files remain under the Doc Scan Project Room. The validated Tensity workbook and rollback copy remain classified in `Invoice Entry Working Archive\Generated\2026-08-04-2025-Lowes-Tensity-Upload-Hold` as upload/rollback evidence; the authoritative workbook was uploaded and verified at `2026-08-04T18:59:07Z`.
 - No generated Invoice Entry working artifact from this run remains unclassified in the Git working tree.
@@ -56,7 +56,7 @@ Classified working files:
 | --- | --- | --- | --- |
 | 1 | 2025 Lowe's statements, BYH 5997 and SYH 6140 | 18 authoritative SharePoint PDFs inventoried; no duplicate periods; BYH gaps January-April and SYH gaps January-February. Eight PO-4121 items totaling `$426.32` from two BYH statements are now in the authoritative Tensity Review table with blank destinations and `Needs Review` status. | Wes should review and specify or approve final Vendor Tabs for the eight Tensity rows. Continue other project routing only from supported packet evidence. |
 | 2 | Josh Kennedy LLC semimonthly Time Card invoice, 2026-07-16 through 2026-07-31 | Approved by Wes with format revisions permitted; `INV-JKLLC-20260731-001`, 97 hours 5 minutes, `$2,500.00`; allocation is `$199.57` BackOffice and `$2,300.43` Tensity; revised one-page PDF sent and verified | Make only Wes-directed format changes without changing the approved invoice facts. Filing and project posting remain held until the historical weekly PDFs and existing Tensity Review row are reconciled. Approval is not payment or paid status. |
-| 3 | Josh Kennedy Time Card, 2026-08-03, 4121 Tensity Dr | Raw arrival `615` and departure `415`; AM/PM not stated; no duration accepted and no August 1-15 invoice generated | Obtain authorized AM/PM clarification. Amend the existing pending line; do not infer ten hours, allocate cost, generate a PDF, send a draft, file, post, or pay. |
+| 3 | Josh Kennedy LLC Time Card, 2026-08-01 through 2026-08-15 | August 3 corrected to 10 hours Tensity; August 4 adds 4 hours BackOffice and 3 hours 45 minutes Tensity. Accumulated accepted time is 17 hours 45 minutes. | Continue accumulating source-supported time through August 15. Do not finalize, file, post, approve, or treat the invoice as payable before the period closes and Wes approves it. |
 | 4 | Construction Loan Services loan `77278`, July 2026, 908 Pond St V3 | `$1,658.75` due 2026-08-10; current balance `$181,141.75`; maturity 2026-09-24; no statement attachment or component breakdown | Obtain the detailed statement through Doc Scan if allocation is required and obtain accounting direction. Do not insert, approve, schedule, or pay from the email notice. |
 | 5 | Trenchant Build invoice `422`, 4121 Tensity Dr | Paid once for `$5,185.71`; one Review row exists as `IE-20260801-TRENCHANT-422`; workbook upload and validation passed | Wait for Wes to choose one approved destination worksheet or approve a supported split for mixed work and the card-processing fee. Do not create another row. |
 | 6 | QuickBooks Line of Credit statements `2a46fea` and `a46f130`, July 2026 | Two distinct statements, each held as `Needs Review - Statement - Accounting Allocation` | Wait for accounting direction outside property workbooks. Do not create invoices, approve payment, or insert either statement into a project workbook. |
@@ -110,7 +110,7 @@ Classified working files:
 | --- | --- | --- |
 | Josh Kennedy separate biweekly invoice `SP-JK-20260731-001` | `Denied by Wes - Retired - Do Not Pay` | None. Retain as history only. Do not approve, file, post, pay, revive, or reuse it. The referenced recurrence automation is not installed at its recorded local path. |
 | Josh Kennedy LLC semimonthly invoice `INV-JKLLC-20260731-001` | `Approved by Wes - Format Revisions Permitted`; revised PDF sent and verified | Filing and project posting remain held pending duplicate-safe reconciliation of the historical weekly PDFs and existing Tensity Review row. Approval is not payment or paid status. |
-| Josh Kennedy LLC August 1-15 Time Card invoice | `Held - Ambiguous AM/PM - No Accepted Hours Yet`; proposed number `INV-JKLLC-20260815-001` not generated | Clarify whether raw `615` and `415` are AM or PM. Do not calculate duration or generate, send, file, post, approve, or pay an invoice from the unsupported line. |
+| Josh Kennedy LLC August 1-15 Time Card invoice | `Accumulating - Period Open`; stable number `INV-JKLLC-20260815-001`; 17 hours 45 minutes accepted through August 4; no PDF generated | Continue source-supported accumulation. Period closes August 15; no finalization, filing, posting, approval, payment, or paid status before close and Wes approval. |
 | Josh Kennedy Time Card, week ending 2026-07-24 | Historical source records consolidated into the semimonthly invoice | Do not create a second payment obligation. Reconcile the filed PDFs and Tensity Review row under exact duplicate checks before semimonthly posting. |
 | Tim Fleming Pond invoice `IE-TF-20260717-POND-001` | Vendor confirmed, Wes approved, PDF filed | Destination worksheet remains unresolved for `Property/26_Project Management - 908 Pond St 3.xlsm`. |
 | Tim Fleming multi-project package, 2026-07-21 through 2026-07-28 | Vendor verified, Wes approved, three PDFs filed, not marked paid | Workbook posting remains held. Reconfirm the exact Outrigger, Pond, and Tensity workbook paths from SharePoint before processing. |
@@ -132,7 +132,7 @@ Classified working files:
 - Wes approved `INV-JKLLC-20260731-001` on 2026-08-03. The approved one-page revision changed presentation only; the invoice number, period, accepted time, allocations, and amount remained unchanged.
 - Earlier weekly PDFs, emails, and workbook rows remain historical evidence and require duplicate-safe reconciliation before any new posting.
 - NCAOC Outlook messages ending `ACgUD9pgAAAA==` and `ACgUD9pQAAAA==` represent one invoice `41247668`, not two obligations. One hash-verified review-folder copy exists; do not repeat filing or create a second entry.
-- Josh Outlook message ending `ACgUD9qAAAAA==` creates one pending August 3 source line with raw `615` to `415` values and no accepted duration. A later clarification must amend that line rather than add another.
+- Josh Outlook message ending `ACgUD9qAAAAA==` created one August 3 source line. Messages ending `ACgUD9qgAAAA==` and `ACgUD9qwAAAA==` clarify that same line to 6:15 AM-4:15 PM and add August 4 once; they do not create duplicate time sets.
 - First Bank Outlook messages ending `ACgUD9nwAAAA==` and `ACgUD9pwAAAA==` reconcile to one account-ending-3613 retrieval hold; neither is the statement or a payment obligation.
 
 ## Safety Holds
