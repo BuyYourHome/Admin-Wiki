@@ -158,11 +158,11 @@ Output standards:
 5. Create the Project Room folders: `sources\`, `working\`, and `outputs\`.
 6. Create `README.md`, `working\source-inventory.md`, `working\duplicate-and-conflict-log.md`, and `working\missing-context.md`.
 7. Apply the Durable Outcome Log Pattern from `Project Room Workflow.md`: decide whether the room needs a durable outcome log, and create a workflow-named Markdown log under `working\` when the room handles repeatable intake, routing, processing, delivery, filing, document movement, scan handling, email handling, spreadsheet insertion, or external workflow handoffs.
-8. In the new README, include the short Start PR pointer from `Project Room Chat Startup Rule.md`, not the full central rule text.
+8. In the new README, include the short Start PR pointer from `Project Room Chat Startup Rule.md` and the standardized Action Ownership pointer from `Project Room Delegation Contract.md`, not the full central rule text.
 9. Make the new room dispatcher-ready by relying on the central Dispatcher Intake And Return Rule in `Project Room Chat Startup Rule.md`; do not copy the full dispatcher rule into the PR unless Wes explicitly asks for a local exception.
 10. If the new room has a dedicated task/thread id, record it in the README, matching skill when useful, registry entry, and Jean routing map.
 11. Create the matching wiki-managed skill under `skills\<skill-name>\SKILL.md`.
-12. In the new skill, include the same short Start PR pointer.
+12. In the new skill, include the same short Start PR pointer and standardized Action Ownership pointer.
 13. Include the new PR under the ownership and Git coordination rule; do not set up a new room so that it can edit other PR files by default.
 14. Add an `agents\openai.yaml` file for the skill when practical.
 15. Update `Agents and Automations Registry.md` when the workflow is agent-like, repeatable, or expected to have a dedicated chat.
@@ -212,3 +212,7 @@ Every new PR should be able to receive a Jean Dispatcher handoff without adding 
 ## Delegation Contract
 
 Delegation Contract: Follow `C:\Codex\Wiki Files\Project Room Delegation Contract.md`. Jean may delegate this PR's work only to its registered task in `Project Rooms\Jean Wright\working\dispatcher-routing-map.md`; the PR must accept and return the same `dispatch_id` under the central contract.
+
+## Action Ownership
+
+Action Ownership: Follow `C:\Codex\Wiki Files\Project Room Delegation Contract.md`. Perform only this PR's documented actions. Delegate another PR's action to its registered task; a missing task/thread id is a blocker, never permission to perform it locally. Return `accepted`, `done`, `blocked`, `needs Wes`, or `rejected as wrong room`.

@@ -2,6 +2,21 @@
 
 This is the universal delegation contract between Jean Wright / Office Assistant and every Buy Your Home Project Room (PR).
 
+## Action Ownership And Delegation Rule
+
+This rule applies to every existing and future PR, whether a request arrives from Wes, Jean, Dashboard, another PR, an automation, or another intake surface.
+
+1. Each PR owns only its documented files, actions, and workflow responsibilities.
+2. When a requested action belongs to the current PR, that PR may perform it under its own documented rules.
+3. When a requested action belongs to another PR, the current PR must not perform it locally. It must delegate the action to the owning PR's registered task/thread.
+4. A missing, pending, or unavailable owning task/thread id is a blocker. It never permits local substitution, a new substitute task, or an undocumented cross-PR execution exception.
+5. Dashboard and other non-owning PRs may gather requests, prepare manifests, display status, or identify the owning workflow. They may not execute an action owned by another PR.
+6. The receiving PR may reject a handoff that is outside its documented scope. It must not treat the handoff as permission to execute another PR's work.
+
+## Standard Return States
+
+For delegated action work, valid return states remain `accepted`, `done`, `blocked`, `needs Wes`, and `rejected as wrong room`. Preserve the same `dispatch_id` throughout the handoff and return.
+
 ## Parties And Registry
 
 - Jean Wright is the dispatcher for requests received in the Jean Wright chat that belong to a specialized PR.
@@ -23,7 +38,7 @@ A direct request from Wes inside the actual owning PR task remains direct work f
 
 ## Future PRs
 
-Create PR must add this contract pointer to every new PR README and matching skill. A new PR is not dispatchable until its dedicated task/thread id, or an explicit task-creation blocker, is recorded in the routing map.
+Create PR must add the standardized Action Ownership pointer and this contract pointer to every new PR README and matching skill. A new PR is not dispatchable until its dedicated task/thread id, or an explicit task-creation blocker, is recorded in the routing map.
 
 ## Reversal
 
