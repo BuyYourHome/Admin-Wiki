@@ -17,6 +17,13 @@ description: Use for Buy Your Home Marketplace project-room work, including Face
 
 Use this skill when Wes asks Codex to search Facebook Marketplace for tools, evaluate a listing for resale profit, calculate an offer, send or draft a Messenger offer, continue a seller conversation, or notify Wes that a seller accepted an offer.
 
+## Marketplace Pause
+
+- Marketplace is paused by Wes as of 2026-08-05.
+- While paused, do not search or browse for listings, evaluate new opportunities, contact or reply to sellers, monitor seller conversations, negotiate, send Marketplace notifications, or take another Marketplace workflow action.
+- Preserve existing records and pending statuses without processing them as active work.
+- Resume Marketplace activity only after Wes explicitly says to resume Marketplace.
+
 ## Start PR
 
 Before durable work, follow Start PR in `C:\Codex\Wiki Files\Project Room Chat Startup Rule.md`. Interpret unqualified requests under the Current PR Scope Rule in that file. Work on `main` unless Wes explicitly asks for a branch.
@@ -33,6 +40,7 @@ Before Marketplace file work:
 
 ## Workflow
 
+0. Confirm Marketplace is not paused before starting any workflow action.
 1. Identify whether the request is search, listing evaluation, offer calculation, Messenger outreach, seller conversation, agreement reporting, completed-purchase recording, or output/report creation.
 2. Confirm the authorized Facebook/Messenger browser session before browsing or messaging.
 3. Confirm Wes's buying criteria when broad searching: tool categories, brands, search radius, minimum expected profit, minimum margin, maximum cash outlay, and pickup constraints.

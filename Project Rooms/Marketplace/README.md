@@ -37,9 +37,9 @@ Out of scope:
 
 ## Current Status
 
-Status: active.
+Status: paused by Wes as of 2026-08-05.
 
-The dedicated Marketplace chat is active and ready to receive Marketplace requests. This Project Room pursues Facebook Marketplace tools, evaluates profitable resale pricing, uses Messenger to make offers and engage sellers within approved authority, and emails Wes if an agreement is reached. An active heartbeat checks tracked seller conversations that are awaiting responses.
+The dedicated Marketplace chat and durable records remain available, but Marketplace work is paused. Do not search for listings, evaluate new opportunities, contact sellers, monitor seller conversations, or send Marketplace notifications until Wes explicitly resumes Marketplace.
 
 ## Matching Skill
 
@@ -53,8 +53,8 @@ The dedicated Marketplace chat is active and ready to receive Marketplace reques
 ## Seller Response Heartbeat
 
 - Automation id: `marketplace-seller-response-monitor`.
-- Status: active.
-- Schedule: every 15 minutes from 8:00 AM through 9:45 PM Eastern, daily.
+- Status: paused by Wes as of 2026-08-05.
+- Configured schedule when active: every 15 minutes from 8:00 AM through 9:45 PM Eastern, daily.
 - Target: this Marketplace chat.
 - Check only tracked seller conversations whose register status indicates that a response is pending.
 - Stay quiet and make no file or Git changes when no new response exists.
@@ -69,6 +69,13 @@ The dedicated Marketplace chat is active and ready to receive Marketplace reques
 - Seller messaging is paused by Wes as of 2026-08-04.
 - Continue monitoring and recording new seller responses, but do not send replies, offers, follow-ups, phone-number requests, or any other seller messages until Wes explicitly resumes seller messaging.
 - Continue notifying Wes when a response needs his decision under the normal agreement and gated-action rules.
+
+### Marketplace Pause
+
+- Marketplace as a whole is paused by Wes as of 2026-08-05.
+- The seller-response heartbeat is paused, and seller conversations are not being monitored while this pause remains in effect.
+- Do not perform sourcing, new listing evaluation, seller messaging, follow-up, negotiation, Marketplace email notification, or other Marketplace activity until Wes explicitly resumes Marketplace.
+- Preserve the existing listing register, action log, deal records, and pending statuses without treating them as active work.
 
 ## Start PR
 
