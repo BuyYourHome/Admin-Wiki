@@ -1,6 +1,6 @@
 ---
 name: manager
-description: Use for Buy Your Home Manager project-room work, including Tasks, Email Monitor Manager Routing handoffs, source organization, status tracking, review-ready outputs, and maintaining materials under `Project Rooms\Manager`.
+description: Use for Buy Your Home Manager project-room work, including Tasks, Time Card tracking and Invoice Entry handoffs, Email Monitor Manager Routing handoffs, source organization, status tracking, review-ready outputs, and maintaining materials under `Project Rooms\Manager`.
 ---
 
 # Manager
@@ -99,6 +99,45 @@ Deliver only when the requester asks to send or deliver the task, or another app
 4. Update the task status, last-updated time, and source reference without overwriting the earlier delivery record.
 5. An email status change does not authorize a purchase, payment, legal or financial change, deletion, or other high-impact action.
 6. Process email updates when they are supplied directly or arrive through a direct Email Monitor `Manager Routing` handoff. Do not query or continuously monitor a mailbox.
+
+### Time Card
+
+Use Time Card when Wes asks to record, correct, display, total, or hand off time worked by the Manager and the tasks performed.
+
+Time register: `C:\Codex\Wiki Files\Project Rooms\Manager\working\time-card-register.md`
+
+Invoice Entry contract: `C:\Codex\Wiki Files\Project Rooms\Manager\working\time-card-invoice-entry-handoff-contract.md`
+
+Handoff log: `C:\Codex\Wiki Files\Project Rooms\Manager\working\time-card-handoff-log.md`
+
+#### Record Time
+
+1. Accept a time line when Wes supplies it directly, Josh Kennedy supplies it through a source with verified identity, or an authorized handoff supplies sufficient source evidence. A third party may propose a line, but keep it `Needs Clarification` until Wes or Josh confirms it.
+2. Require the work date, task description, exact duration or supported start/end times, and the project/property or `BackOffice` destination. Record the source reference and received timestamp when available.
+3. If start and end times are supplied, calculate exact elapsed time. Subtract breaks only when the source states them. If only duration is supplied, preserve it as exact hours and minutes.
+4. Do not infer time from Tasks status, calendars, email activity, message timestamps, or the time between task creation and completion.
+5. Assign the canonical id `MTC-YYYYMMDD-NNN`, using the work date for `YYYYMMDD` and the next unused three-digit suffix across the full Time Card register. Display it as `TC-NNN`; never reset or reuse the suffix.
+6. Use statuses `Recorded`, `Needs Clarification`, `Ready for Invoice Entry`, `Handed Off`, `Accepted by Invoice Entry`, `Drafted`, `Finalized`, `Held`, `Superseded`, and `Cancelled`.
+7. Group entries into semimonthly periods: the 1st through the 15th and the 16th through the last calendar day. Display exact hours and minutes for each line and period total.
+8. Preserve corrections. Add the corrected line as a new record, mark the prior line `Superseded`, and cross-reference both ids. Do not delete historical time lines.
+
+#### Display Time
+
+- Show display id, work date, exact time, task, project/property or `BackOffice`, and status.
+- Group by semimonthly period unless the requester asks for another view.
+- Exclude `Superseded` and `Cancelled` lines from active totals, but retain them in history and show them when requested.
+- Do not show invoice amounts unless Invoice Entry has returned a source-backed draft or final result for that period.
+
+#### Hand Off To Invoice Entry
+
+1. Manager owns time intake, the source ledger, clarification, display, period totals, and the structured handoff packet. It does not create or finalize an invoice, determine rates or amounts, approve payment, file documents, or edit project spreadsheets.
+2. Invoice Entry owns semimonthly accumulation, rate and amount handling, destination allocation, draft/final invoice generation, correction review, Wes approval, filing, and project-spreadsheet insertion under its own skill.
+3. Send a handoff only when Wes requests draft/final processing or otherwise authorizes Invoice Entry processing. Use the registered Invoice Entry task `019fbf4f-c629-7dd1-a3f6-0de33de0ed8f` and the packet fields in `working\time-card-invoice-entry-handoff-contract.md`.
+4. Assign and preserve a dispatch id in the form `manager-dispatch-YYYYMMDD-time-card-vN`. Include the worker, semimonthly period, packet version, canonical entry ids, work dates, exact durations, task descriptions, destinations, source references, corrections, unresolved items, requested Invoice Entry operation, and authorizing Wes instruction.
+5. Deduplicate by dispatch id, packet version, and canonical entry id. Do not resend an unchanged packet after an ambiguous or missing result.
+6. Keep entries `Handed Off` until Invoice Entry returns `accepted` with the same dispatch id. Apply `Accepted by Invoice Entry`, `Drafted`, `Finalized`, or `Held` only from that task's explicit return; preserve its artifact paths and notes in the handoff log.
+7. Invoice Entry's current Time Card trigger accepts only Email Monitor email handoffs. Until Invoice Entry explicitly accepts and documents Manager-source packets, keep the packet held, report the receiver-side blocker, and do not claim a draft or final invoice exists.
+8. An Invoice Entry handoff does not authorize payment, invoice approval, filing, spreadsheet insertion, or external email beyond what Invoice Entry's own rules and Wes's approvals permit.
 
 ## Start PR
 

@@ -29,6 +29,9 @@ Out of scope:
 - `working\duplicate-and-conflict-log.md` - duplicate, outdated, conflicting, or unclear source notes.
 - `working\missing-context.md` - facts, decisions, or source material still needed.
 - `working\task-register.md` - durable Tasks register with task ids, priorities, statuses, and delivery records.
+- `working\time-card-register.md` - durable source ledger for Manager work dates, time, task descriptions, destinations, and handoff status.
+- `working\time-card-invoice-entry-handoff-contract.md` - Manager-to-Invoice Entry packet and return contract.
+- `working\time-card-handoff-log.md` - durable outcome log for Time Card packets sent to Invoice Entry.
 - `working\manager-routing-ledger.md` - deduplication and result ledger for Email Monitor Manager Routing handoffs.
 - `outputs\` - review-ready drafts, summaries, handoffs, or final deliverables.
 
@@ -71,6 +74,20 @@ A direct `Manager Routing` handoff from the Email Monitor task triggers Manager 
 - Ask for clarification when the sender, task ID, requested status, source, attachment access, or authority is ambiguous.
 - Never treat a routed email as authorization for payment, purchases, legal or financial changes, deletion, or other high-impact action.
 - Update the source inventory, task register, and routing ledger when their existing rules require it. Report the resulting task ID, delivery update, status change, duplicate result, or clarification request in the Manager task.
+
+### Time Card
+
+Use Time Card to record, correct, and display time worked by the Manager together with the task performed and its project or `BackOffice` destination.
+
+- Keep the source-of-truth time lines in `working\time-card-register.md`. Do not infer worked time from Tasks status, calendars, email volume, or elapsed clock time.
+- Require a work date, task description, duration or supported start/end times, and project/property or `BackOffice` destination. Preserve unclear entries as `Needs Clarification` instead of guessing.
+- Assign each accepted line a canonical `MTC-YYYYMMDD-NNN` id and display it as `TC-NNN`. Keep the three-digit suffix unique across the full Time Card register and never reuse it.
+- Display time as exact hours and minutes, grouped by semimonthly period when useful. The periods are the 1st through the 15th and the 16th through the last calendar day.
+- Preserve corrections as history. Mark replaced lines `Superseded` and identify the replacement; mark withdrawn lines `Cancelled` rather than deleting them.
+- Manager owns the time ledger, source traceability, clarification, display, period totals, and structured Invoice Entry packet. Manager does not calculate pay, create or finalize invoices, approve payment, file invoices, or edit project spreadsheets.
+- Invoice Entry owns invoice rates and amounts, semimonthly accumulation, draft/final invoice generation, correction review, Wes approval, filing, allocation, and project-spreadsheet insertion under its own rules.
+- When Wes requests a draft/final-processing handoff or otherwise authorizes Invoice Entry processing, follow `working\time-card-invoice-entry-handoff-contract.md` and send the versioned packet to the registered Invoice Entry task `019fbf4f-c629-7dd1-a3f6-0de33de0ed8f`.
+- Do not claim that Invoice Entry accepted, drafted, or finalized anything until that task returns the corresponding result with the same dispatch id. Invoice Entry's current rules accept Time Card intake only through Email Monitor, so Manager-source intake remains held until Invoice Entry explicitly accepts and documents this new source type.
 
 ## Manager Attributes
 
