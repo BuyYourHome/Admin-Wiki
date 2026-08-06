@@ -17,6 +17,34 @@ This rule applies to every existing and future PR, whether a request arrives fro
 
 For delegated action work, valid return states remain `accepted`, `done`, `blocked`, `needs Wes`, and `rejected as wrong room`. Preserve the same `dispatch_id` throughout the handoff and return.
 
+## Delegated Authorization Classes
+
+Some delegated requests may carry Wes authorization for one exact action class when that class is documented centrally and by the owning workflow. This is not a general delegation exception.
+
+Current approved delegated authorization class:
+
+- `Dashboard` exact-scope Project Room deletion request to `Create PR`
+
+For a delegated request to count as Wes authorization, every condition below must be true:
+
+1. The request comes from a documented intake surface that is allowed to collect one explicit confirmation from Wes for that action class.
+2. The request type and owning PR match a documented delegated authorization class.
+3. The request identifies the exact scope and exact resources to be changed.
+4. The request record states that Dashboard or the other approved surface already captured Wes's explicit confirmation for that exact scoped action.
+5. The receiving PR can execute the request without guessing, broadening scope, substituting a different action, or pulling in undocumented resources.
+
+When every condition is true, the receiving PR may treat that delegated request as Wes authorization for that exact scoped action and does not need to stop merely to ask Wes the same confirmation again.
+
+This exception does not permit:
+
+- broader workflow changes,
+- undocumented cross-PR execution,
+- partial deletion when one included resource is unresolved,
+- substituting archive for delete or delete for archive without that exact authorization,
+- ignoring any other blocker unrelated to the repeated-confirmation question.
+
+If any condition fails, the receiving PR must return `blocked` or `needs Wes` truthfully.
+
 ## Parties And Registry
 
 - Jean Wright is the dispatcher for requests received in the Jean Wright chat that belong to a specialized PR.

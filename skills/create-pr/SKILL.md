@@ -58,6 +58,20 @@ Before Create PR file work:
 22. If a dedicated chat is created, record the returned thread id in the README, registry, and Jean routing map, then commit that metadata update separately.
 23. Push only under the Admin wiki push rules.
 
+## Delegated Dashboard Deletion Authorization
+
+`Create PR` may treat a Dashboard delegated deletion request as Wes authorization for one exact deletion action class when the request satisfies the central delegated authorization rule in `C:\Codex\Wiki Files\Project Room Delegation Contract.md`.
+
+Required conditions:
+
+1. The request source is `Dashboard`.
+2. The request type is the Dashboard exact-scope Project Room deletion class.
+3. The request identifies the exact Project Room path and any exact matching skill or documented task/chat in scope.
+4. The request states that Dashboard already captured Wes's explicit confirmation for that exact scoped deletion action.
+5. `Create PR` can execute the request without guessing, broadening scope, substituting archive for delete, or performing partial deletion.
+
+When every condition is true, `Create PR` should not stop merely to ask Wes the same confirmation again. It should either proceed under the owning workflow rules or return a different truthful blocker if one remains.
+
 ## Dedicated Chat Connector Rule
 
 When creating a new PR requires a dedicated Codex task:

@@ -84,6 +84,20 @@ When creating a new PR requires a dedicated Codex task:
 6. Do not let task creation block the whole PR setup, and do not retry indefinitely in the same turn.
 7. When the connector later succeeds, record the returned thread id in the PR README and registry, then commit that small metadata update separately.
 
+## Delegated Dashboard Deletion Authorization
+
+`Create PR` may treat a Dashboard delegated deletion request as Wes authorization for one exact deletion action class when the request satisfies the central delegated authorization rule in `C:\Codex\Wiki Files\Project Room Delegation Contract.md`.
+
+Required conditions:
+
+1. The request source is `Dashboard`.
+2. The request type is the Dashboard exact-scope Project Room deletion class.
+3. The request identifies the exact Project Room path and any exact matching skill or documented task/chat in scope.
+4. The request states that Dashboard already captured Wes's explicit confirmation for that exact scoped deletion action.
+5. `Create PR` can execute the request without guessing, broadening scope, substituting archive for delete, or performing partial deletion.
+
+When every condition is true, `Create PR` should not stop merely to ask Wes the same confirmation again. It should either proceed under the owning workflow rules or return a different truthful blocker if one remains.
+
 ## Mode Documentation Standard
 
 Use this standard when documenting Project Room modes in READMEs, matching skills, and Create PR templates:

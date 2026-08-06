@@ -94,6 +94,23 @@ Do you authorize moving/renaming <old path> to <new path>?
 
 No filesystem move, rename, delete, registry edit, skill edit, skill sync, commit, push, automation change, or chat rename may occur until Wes answers yes to that specific proposed change.
 
+### Delegated Authorization Exception
+
+The explicit yes/no rule above remains the default for existing Project Room delete, move, rename, or edit work.
+
+Narrow exception:
+
+- `Create PR` may rely on a `Dashboard` exact-scope Project Room deletion request as Wes authorization when that request satisfies the documented delegated authorization class in `C:\Codex\Wiki Files\Project Room Delegation Contract.md`.
+
+For this exception to apply, all of the following must be true:
+
+1. The request came through the documented Dashboard delegated-action path.
+2. The request identifies the exact Project Room path and any exact matching skill or documented task/chat in scope.
+3. The request states that Dashboard already captured Wes's explicit confirmation for that exact scoped deletion action.
+4. `Create PR` does not need to guess, broaden scope, substitute archive for delete, or proceed with partial deletion.
+
+If any of those conditions is false, the default explicit yes/no rule still applies.
+
 ## Reading Versus Writing
 
 A Project Room chat may read another Project Room's files for context when needed, unless that other Project Room's rules prohibit reading.
