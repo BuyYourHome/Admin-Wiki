@@ -21,3 +21,15 @@
 - The August 1-15 period remains open. No invoice PDF, email, workbook entry, filing, approval, payment, or paid-status action was performed.
 
 Outcome: `Done - accumulated record corrected and updated; period remains open`.
+
+## 2026-08-06 - August 5 intake
+
+- Accepted dispatch `email-monitor-route-vendor-invoice-20260806-josh-timecard-aug5-001` from Email Monitor.
+- Preserved the exact Outlook message id ending `AChS2okAAAAA==` and confirmed the handoff reports no attachment.
+- Duplicate checking found no prior August 5 Josh line and no matching Outlook message or dispatch id in the accumulated packet.
+- Added August 5 once: `6:00 AM` to `2:40 PM` at 4121 Tensity Dr (`8 hours 40 minutes`).
+- Accumulated accepted time through August 5 is `26 hours 25 minutes`: Tensity `22 hours 25 minutes`; BackOffice `4 hours 0 minutes`.
+- The source is clear, so no correction-review draft was required. The August 1-15 period remains open.
+- No invoice PDF, email, workbook entry, filing, approval, payment, or paid-status action was performed.
+
+Outcome: `Done - August 5 recorded once; period remains open`.
