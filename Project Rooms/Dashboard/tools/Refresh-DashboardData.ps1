@@ -3,9 +3,11 @@ param([string]$RepositoryRoot = 'C:\Codex\Wiki Files')
 $ErrorActionPreference = 'Stop'
 $projectRoomsRoot = Join-Path $RepositoryRoot 'Project Rooms'
 $outputPath = Join-Path $projectRoomsRoot 'Dashboard\site\project-rooms.js'
+$indexHtmlPath = Join-Path $projectRoomsRoot 'Dashboard\site\index.html'
 $groupConfigPath = Join-Path $projectRoomsRoot 'Dashboard\config\project-room-groups.json'
 $attentionConfigPath = Join-Path $projectRoomsRoot 'Dashboard\config\project-room-attention.json'
 $actionsConfigPath = Join-Path $projectRoomsRoot 'Dashboard\config\dashboard-actions.json'
+$dispatcherRoutingMapPath = Join-Path $projectRoomsRoot 'Jean Wright\working\dispatcher-routing-map.md'
 $invoiceEntryProjectRegisterPath = Join-Path $projectRoomsRoot 'Invoice Entry\working\project-spreadsheet-register.md'
 $managerTaskRegisterPath = Join-Path $projectRoomsRoot 'Manager\working\task-register.md'
 $sopIndexPath = Join-Path $projectRoomsRoot 'SOPs\outputs\SOP Index.md'
@@ -27,6 +29,19 @@ foreach ($item in @($attentionConfig.items)) {
             updatedAt = $item.updatedAt
         }
     }
+}
+function Get-DispatcherTaskId {
+    param(
+        [string]$RoutingMapPath,
+        [string]$ProjectRoomName
+    )
+
+    if (-not $ProjectRoomName -or -not (Test-Path -LiteralPath $RoutingMapPath)) { return '' }
+    $routingText = Get-Content -LiteralPath $RoutingMapPath -Raw
+    $pattern = "(?im)^\|\s*$([regex]::Escape($ProjectRoomName))\s*\|[^|]*\|\s*`?([0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12})`?\s*\|"
+    $match = [regex]::Match($routingText, $pattern)
+    if ($match.Success) { return $match.Groups[1].Value }
+    return ''
 }
 
 function Get-SectionText {
@@ -183,6 +198,20 @@ function Get-InvoiceEntryProjectEntries {
     return @($entries)
 }
 
+function Update-ProjectRoomsScriptVersion {
+    param(
+        [string]$IndexPath,
+        [string]$Version
+    )
+
+    if (-not $Version -or -not (Test-Path -LiteralPath $IndexPath)) { return $false }
+    $html = Get-Content -LiteralPath $IndexPath -Raw
+    $updated = $html -replace 'project-rooms\.js\?v=[^"]+', ("project-rooms.js?v={0}" -f $Version)
+    if ($updated -eq $html) { return $false }
+    [System.IO.File]::WriteAllText($IndexPath, $updated, [System.Text.UTF8Encoding]::new($false))
+    return $true
+}
+
 $sopViewerEntries = Get-SopViewerEntries -IndexPath $sopIndexPath -PagesPath $sopPagesPath
 $invoiceEntryProjectEntries = Get-InvoiceEntryProjectEntries -ProjectRegisterPath $invoiceEntryProjectRegisterPath
 $managerTaskEntries = Get-ManagerTaskEntries -TaskRegisterPath $managerTaskRegisterPath
@@ -208,8 +237,9 @@ $rooms = foreach ($directory in Get-ChildItem -LiteralPath $projectRoomsRoot -Di
             $skillState = 'missing'
         }
     }
-    $taskMatch = [regex]::Match($text, '(?i)(?:task|thread)\s+id[^0-9a-f]*([0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12})')
-    $taskId = if ($taskMatch.Success) { $taskMatch.Groups[1].Value } else { '' }
+    $taskMatch = [regex]::Match($text, '(?i)(?:dedicated\s+task|dedicated\s+task/thread\s+id|task|thread)\s*:?\s*`?([0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12})`?')
+    $dispatcherTaskId = Get-DispatcherTaskId -RoutingMapPath $dispatcherRoutingMapPath -ProjectRoomName $directory.Name
+    $taskId = if ($taskMatch.Success) { $taskMatch.Groups[1].Value } elseif ($dispatcherTaskId) { $dispatcherTaskId } else { '' }
     $modes = Get-DocumentedModes -Documents @($text, $skillText)
     $group = if ($groupAssignments.ContainsKey($directory.Name) -and $groupNames -contains $groupAssignments[$directory.Name]) { $groupAssignments[$directory.Name] } else { 'Other' }
     $groupDefinition = $groupDefinitions | Where-Object { $_.name -eq $group } | Select-Object -First 1
@@ -254,15 +284,22 @@ $indexData = "$groupsJson`n$actionsJson`n$json"
 $bytes = [System.Text.UTF8Encoding]::new($false).GetBytes($indexData)
 $hasher = [System.Security.Cryptography.SHA256]::Create()
 try { $contentHash = ([System.BitConverter]::ToString($hasher.ComputeHash($bytes))).Replace('-', '') } finally { $hasher.Dispose() }
+$assetVersion = $contentHash.Substring(0, [Math]::Min(12, $contentHash.Length))
 if (Test-Path -LiteralPath $outputPath) {
     $existing = Get-Content -LiteralPath $outputPath -Raw
     $existingHash = [regex]::Match($existing, "(?m)^window\.PROJECT_ROOMS_HASH = '([A-F0-9]+)';\r?$")
     if ($existingHash.Success -and $existingHash.Groups[1].Value -eq $contentHash) {
-        Write-Output "Dashboard index unchanged: $($rooms.Count) Project Rooms"
+        $indexHtmlUpdated = Update-ProjectRoomsScriptVersion -IndexPath $indexHtmlPath -Version $assetVersion
+        if ($indexHtmlUpdated) {
+            Write-Output "Dashboard index unchanged: $($rooms.Count) Project Rooms; refreshed project-rooms.js asset version in index.html"
+        } else {
+            Write-Output "Dashboard index unchanged: $($rooms.Count) Project Rooms"
+        }
         return
     }
 }
 $stamp = Get-Date -Format 'yyyy-MM-dd HH:mm'
 $content = "window.PROJECT_ROOMS_UPDATED = '$stamp';`r`nwindow.PROJECT_ROOMS_HASH = '$contentHash';`r`nwindow.PROJECT_ROOM_GROUPS = $groupsJson;`r`nwindow.DASHBOARD_ACTIONS = $actionsJson;`r`nwindow.PROJECT_ROOMS = $json;`r`n"
 [System.IO.File]::WriteAllText($outputPath, $content, [System.Text.UTF8Encoding]::new($false))
+$null = Update-ProjectRoomsScriptVersion -IndexPath $indexHtmlPath -Version $assetVersion
 Write-Output "Dashboard index refreshed: $($rooms.Count) Project Rooms -> $outputPath"

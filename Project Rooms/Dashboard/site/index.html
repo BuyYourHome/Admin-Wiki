@@ -7,7 +7,7 @@
   <base href="/Project%20Rooms/Dashboard/site/">
   <title>Buy Your Home Project Rooms</title>
   <meta name="description" content="Local directory of Buy Your Home Project Room functionality.">
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="styles.css?v=20260806a">
 </head>
 <body>
   <div class="app-shell">
@@ -80,7 +80,8 @@
           <section class="danger-zone">
             <h3>Project Room controls</h3>
             <button class="danger-button" id="requestDeleteButton" type="button">Review deletion</button>
-            <p>Shows the exact deletion scope and asks for one explicit confirmation. This local interface does not delete anything yet.</p>
+            <p id="deleteActionSummary">Shows the exact deletion scope and can record a Create PR deletion request. Dashboard itself does not delete anything.</p>
+            <p class="property-state" id="deleteRequestStatusSummary">No deletion request recorded for this room.</p>
           </section>
           <section class="detail-section detail-metadata">
             <h3>Room metadata</h3>
@@ -104,28 +105,55 @@
   <dialog class="delete-dialog" id="deleteDialog">
     <form method="dialog">
       <button class="dialog-close" type="submit" value="cancel" aria-label="Close dialog" title="Close dialog">X</button>
-      <p class="dialog-kicker">Destructive action safeguard</p>
+      <p class="dialog-kicker">Delegated deletion request</p>
       <h2>Delete this Project Room?</h2>
-      <p>This is a workflow preview only. Confirming creates a deletion plan for review; this version of Dashboard does not delete files, skills, tasks, or chats.</p>
+      <p>This dialog does not delete files, skills, tasks, or chats. It records a structured deletion request for Create PR and shows the current returned status.</p>
       <div class="delete-target"><span>Selected Project Room</span><strong id="deleteRoomName"></strong></div>
       <section class="deletion-scope" aria-label="Deletion scope">
         <h3>Resources in scope</h3>
         <ul id="deleteScopeList"></ul>
       </section>
+      <div class="prepared-request" id="deleteRequestStatusBox" hidden>
+        <label for="deleteRequestStatusText">Current deletion request status</label>
+        <textarea id="deleteRequestStatusText" readonly></textarea>
+        <p id="deleteRequestStatusNote"></p>
+      </div>
       <div class="prepared-request" id="preparedRequest" hidden>
-        <label for="deleteRequestText">Prepared deletion plan</label>
+        <label for="deleteRequestText">Deletion request record</label>
         <textarea id="deleteRequestText" readonly></textarea>
         <p id="deletePlanState"></p>
       </div>
       <div class="dialog-actions">
         <button class="secondary-button" value="cancel">Close dialog</button>
-        <button class="danger-button" id="prepareDeleteButton" type="button">Confirm deletion plan</button>
-        <button class="primary-button" id="downloadDeleteRecordButton" type="button" hidden>Download audit record</button>
+        <button class="danger-button" id="prepareDeleteButton" type="button">Create deletion request</button>
+        <button class="secondary-button" id="refreshDeleteRequestButton" type="button">Refresh request status</button>
       </div>
     </form>
   </dialog>
-  <script src="project-rooms.js"></script>
-  <script src="__dashboard-context.js"></script>
-  <script src="app.js"></script>
+  <dialog class="reconcile-dialog" id="reconcileDialog">
+    <form method="dialog">
+      <button class="dialog-close" type="submit" value="cancel" aria-label="Close dialog" title="Close dialog">X</button>
+      <p class="dialog-kicker">Invoice Entry Reconcile</p>
+      <h2>Prepared request</h2>
+      <p id="reconcileDialogSummary">Dashboard will prepare the request, then help you copy or open the Invoice Entry task.</p>
+      <div class="delete-target">
+        <span>Selected project</span>
+        <strong id="reconcileDialogProject">-</strong>
+      </div>
+      <div class="prepared-request">
+        <label for="reconcileRequestText">Paste this into the Invoice Entry Codex task</label>
+        <textarea id="reconcileRequestText" readonly></textarea>
+        <p id="reconcileDialogState"></p>
+      </div>
+      <div class="dialog-actions">
+        <button class="secondary-button" value="cancel">Close dialog</button>
+        <button class="secondary-button" id="reconcileCopyButton" type="button">Copy request text</button>
+        <button class="primary-button" id="reconcileOpenTaskButton" type="button">Open Invoice Entry task</button>
+      </div>
+    </form>
+  </dialog>
+  <script src="project-rooms.js?v=75B694FAA484"></script>
+  <script src="__dashboard-context.js?v=20260806a"></script>
+  <script src="app.js?v=20260806a"></script>
 </body>
 </html>
