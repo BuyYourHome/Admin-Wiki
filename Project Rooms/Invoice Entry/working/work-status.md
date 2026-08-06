@@ -48,6 +48,7 @@ Classified working files:
 - NCAOC Remote Public Access invoice `41247668` is represented by one durable packet and processing log. Its duplicate Outlook source copy is classified as transport evidence, and one hash-verified invoice copy is filed in the 2026 general-invoice `_Needs Review` folder.
 - Josh's August 3 Time Card line was clarified in place as 6:15 AM-4:15 PM at Tensity. August 4 adds 4 hours BackOffice and 3 hours 45 minutes Tensity. August 5 adds 8 hours 40 minutes Tensity. The August 1-15 packet now has 26 hours 25 minutes accepted; no PDF or other generated artifact exists.
 - The 2026-08-04 First Bank account-ending-3613 repeat notice is reconciled into the existing statement packet; it did not create another statement record or downloaded file.
+- The 2026-08-06 Truist credit-card notice for account ending 4528 is represented by one held statement packet. It is distinct from the 1141/1254 checking notices and contains no attachment or transaction detail.
 - The 2025 Lowe's source PDFs remain unchanged at their authoritative SharePoint links. Doc Scan packet files remain under the Doc Scan Project Room. The validated Tensity workbook and rollback copy remain classified in `Invoice Entry Working Archive\Generated\2026-08-04-2025-Lowes-Tensity-Upload-Hold` as upload/rollback evidence; the authoritative workbook was uploaded and verified at `2026-08-04T18:59:07Z`.
 - No generated Invoice Entry working artifact from this run remains unclassified in the Git working tree.
 
@@ -62,8 +63,9 @@ Classified working files:
 | 5 | Trenchant Build invoice `422`, 4121 Tensity Dr | Paid once for `$5,185.71`; one Review row exists as `IE-20260801-TRENCHANT-422`; workbook upload and validation passed | Wait for Wes to choose one approved destination worksheet or approve a supported split for mixed work and the card-processing fee. Do not create another row. |
 | 6 | QuickBooks Line of Credit statements `2a46fea` and `a46f130`, July 2026 | Two distinct statements, each held as `Needs Review - Statement - Accounting Allocation` | Wait for accounting direction outside property workbooks. Do not create invoices, approve payment, or insert either statement into a project workbook. |
 | 7 | First Bank online statement notice, account ending `3613` | Original and repeat notices reconciled; neither has a statement or financial detail; 2026-08-04 browser check reached only the public login page | Wes must sign in through an authorized First Bank session or supply the downloaded statement, then route it through Doc Scan. Do not infer an amount, due date, project, account type, or payment obligation. |
-| 8 | Truist digital statement notice, checking accounts ending `1141` and `1254` | Notice verified; no attachments or statement contents; available browser sessions reached the Truist login page | Wes must sign in through an authorized Truist session or supply the downloaded statements. Route each statement through Doc Scan before Invoice Entry processes it. Do not infer balances, transactions, payment obligations, projects, or accounting treatment. |
-| 9 | NCAOC Remote Public Access invoice `41247668` | `$31.98`, dated 2026-08-02, due 2026-09-01; duplicate Outlook copies consolidated; one PDF filed to general-invoice `_Needs Review`; not approved, posted, or paid | Wes should classify it as a general BackOffice/legal-research expense or assign a named project and destination. Do not create another filing or entry, and do not pay or schedule payment. |
+| 8 | Truist credit-card statement notice, account ending `4528` | Statement date 2026-08-05; `$3,946.94` balance; `$76.00` minimum due 2026-09-02; no attachment or transaction detail | Wes must sign in through an authorized Truist session or supply the downloaded statement. Route it through Doc Scan before allocation. Do not approve, schedule, or pay from the notice. |
+| 9 | Truist digital statement notice, checking accounts ending `1141` and `1254` | Notice verified; no attachments or statement contents; available browser sessions reached the Truist login page | Wes must sign in through an authorized Truist session or supply the downloaded statements. Route each statement through Doc Scan before Invoice Entry processes it. Do not infer balances, transactions, payment obligations, projects, or accounting treatment. |
+| 10 | NCAOC Remote Public Access invoice `41247668` | `$31.98`, dated 2026-08-02, due 2026-09-01; duplicate Outlook copies consolidated; one PDF filed to general-invoice `_Needs Review`; not approved, posted, or paid | Wes should classify it as a general BackOffice/legal-research expense or assign a named project and destination. Do not create another filing or entry, and do not pay or schedule payment. |
 
 ## Verified Delivery Evidence
 
@@ -124,6 +126,7 @@ Classified working files:
 | 2025 Lowe's Tensity upload | Eight rows / `$426.32` inserted in authoritative Review; eligible Amazon row posted once to Electrical Fixtures | Upload and post-upload verification complete. Await Wes's final Vendor Tab decisions for the eight Lowe's rows; do not repeat the upload. |
 | NCAOC Remote Public Access invoice `41247668` | `Needs Review - General Invoice / Accounting Allocation`; one duplicate-safe filed copy | Determine general-accounting or named-project destination. Bill-to address `2156 Haig Point Way` is not sufficient project evidence. No payment authority was granted. |
 | First Bank statement notice, account ending `3613` | `Held - Statement Not Retrieved`; repeat notice consolidated | Actual statement remains unavailable. The current browser reached only the public login screen; obtain an authenticated statement and route it through Doc Scan. |
+| Truist credit-card statement, account ending `4528`, statement date `2026-08-05` | `Held - Statement Not Retrieved`; notice facts preserved; no duplicate found | Actual statement remains unavailable. Obtain it through an authorized Truist session and route it through Doc Scan. Notice facts do not authorize payment, filing, or workbook/accounting entry. |
 
 ## Record Reconciliation
 
@@ -136,6 +139,7 @@ Classified working files:
 - Josh Outlook message ending `ACgUD9qAAAAA==` created one August 3 source line. Messages ending `ACgUD9qgAAAA==` and `ACgUD9qwAAAA==` clarify that same line to 6:15 AM-4:15 PM and add August 4 once; they do not create duplicate time sets.
 - Josh Outlook message ending `AChS2okAAAAA==` adds one August 5 Tensity line from 6:00 AM to 2:40 PM. Dispatch `email-monitor-route-vendor-invoice-20260806-josh-timecard-aug5-001` is consumed; do not add it again if rerouted.
 - First Bank Outlook messages ending `ACgUD9nwAAAA==` and `ACgUD9pwAAAA==` reconcile to one account-ending-3613 retrieval hold; neither is the statement or a payment obligation.
+- Truist Outlook message ending `AChS2okQAAAA==` creates one distinct credit-card statement retrieval hold for account ending `4528`, statement date `2026-08-05`. It does not overlap the checking-account packet for `1141` and `1254` and is not payment authority.
 
 ## Safety Holds
 
