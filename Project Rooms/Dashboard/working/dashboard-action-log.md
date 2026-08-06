@@ -77,6 +77,13 @@
 - Restored the general `Documented mode` and `Group` selectors for every Project Room.
 - Kept only the SOP group and SOP page selectors scoped to the SOPs Project Room side panel.
 
+## 2026-08-04 - Reconcile Paste Guidance
+
+- Kept the existing `Invoice Entry` -> `Reconcile` manual paste-in design rather than converting it into direct submission.
+- Added a visible `Latest Reconcile action` card that records whether Dashboard copied the request text and whether it opened the Invoice Entry task.
+- Added explicit `Next step` guidance, plus `Copy request text` and `Open Invoice Entry task` retry buttons inside the mode panel.
+- Clarified in the panel that the displayed request text is the exact text Wes pastes into the Invoice Entry Codex task.
+
 ## 2026-08-04 - Flexible Mode Detection
 
 - Updated the Dashboard refresh parser so a heading can count as a documented mode when its section explicitly begins with `Use this mode ...`, even if the heading itself does not end with `Mode`.
@@ -132,3 +139,91 @@
 - Swapped the two header lines in the Dashboard top panel.
 - The small first line now reads `Jean Wright, Admin`.
 - The large second line now reads `Buy Your Home Dashboard`.
+
+## 2026-08-04 - Search Auto-Open And Reconcile Panel Cleanup
+
+- Updated Dashboard search behavior so when the typed search narrows the visible Project Rooms to exactly one result, Dashboard selects that room and opens the side panel automatically.
+- Simplified `Invoice Entry` -> `Reconcile` intro copy to `Choose a property, then prepare the Reconcile request for Invoice Entry.`
+- Renamed the project selector label to `What Property`.
+- Removed the extra `Invoice Entry task link`, the browser/task-id fallback note, and the inline `Button result` status line from the Reconcile mode panel.
+
+## 2026-08-04 - Larger Jean Portrait
+
+- Doubled the Dashboard topbar portrait size in the site CSS.
+- Increased the small-screen portrait size proportionally so Jean's image remains visibly larger on mobile as well.
+
+## 2026-08-04 - Single-Click Group Selection Fix
+
+- Removed the extra card-grid rerender from `selectRoom()`.
+- Added an in-place selected-card highlight sync so the selected room still gets the visual active state without rebuilding the grid during the click.
+- This is intended to make a room open its sidebar on the first click after a group filter is chosen.
+
+## 2026-08-04 - Hidden Reconcile Request Text
+
+- Restored a primary `Reconcile` button in the `Invoice Entry` -> `Reconcile` panel.
+- Kept the generated request text hidden by default so the side panel stays visually quiet.
+- Added a `Show request text` / `Hide request text` toggle for voluntary inspection.
+- When automatic copy fails, the panel now reveals the exact request text as the manual fallback instead of showing it all the time.
+- Bumped the Dashboard asset cache-buster query strings so a normal browser refresh pulls the new UI code.
+
+## 2026-08-04 - First Search Click Fix
+
+- Identified that the search field's blur/change path could fire after typing and rebuild the Project Room cards even when the query text had not changed.
+- Updated the search handler to ignore duplicate query values, so the first click on a filtered Project Room is not lost to a redundant rerender.
+
+## 2026-08-04 - LAN Copy Fallback
+
+- Identified that the LAN-hosted Dashboard was running on HTTP, so the secure clipboard API path returned `false` before trying any fallback copy behavior.
+- Added a temporary-textarea fallback that uses `document.execCommand('copy')` when the secure clipboard API is unavailable or fails.
+- Bumped the Dashboard asset cache-buster query strings again so a normal browser refresh loads the copy fix.
+
+## 2026-08-04 - Deletion Plan Copy Action
+
+- Replaced the deletion-preview dialog action label `Download audit record` with `Copy Code`.
+- Changed the action to copy the prepared deletion plan JSON for Codex instead of downloading a file.
+- Left the prepared deletion plan visible in the dialog as the manual fallback when copy does not complete automatically.
+
+## 2026-08-04 - Deletion Plan Textarea Copy
+
+- Updated `Copy Code` to copy directly from the visible deletion-plan textarea instead of relying only on a generated-string clipboard path.
+- If automatic copy still fails, the deletion plan now remains selected in the textarea so Wes can copy it manually immediately.
+- Bumped the Dashboard asset cache-buster query strings again so a normal refresh loads the updated copy behavior.
+
+## 2026-08-05 - Bridge-First Spec
+
+- Added `working\dashboard-bridge-test-spec.md` as the gate for delegated Dashboard actions.
+- The spec limits the first test to a transport proof from `Dashboard` to `Create PR` using the canonical `Create PR` task/thread id `019f583e-7f14-7ae2-aa24-4e991544e306`.
+- It requires a structured request id, exact targeting, one truthful returned status, and no browser popup or manual paste dependency.
+- It explicitly blocks queue-wide or deletion-specific implementation until the bridge test passes end-to-end.
+
+## 2026-08-05 - Bridge Test Panel
+
+- Added a Dashboard-owned `Bridge Test` mode panel for the `Dashboard` Project Room.
+- The full local Dashboard host can now record or reuse the canonical bridge-test request in `working\tmp\dashboard-bridge-test-state.json`.
+- Both the local host and the LAN read-only host can read and display the current bridge-test status from that same runtime state record.
+- The panel states the current transport truthfully: Codex task-message delivery is performed by the active Dashboard Codex task, not by browser deep links or manual paste.
+
+## 2026-08-05 - Delegated Deletion Request
+
+- Replaced the deletion dialog's copy-only outcome with a Dashboard-owned delegated deletion-request record targeted to `Create PR`.
+- Added local host endpoints to create and update deletion request state and LAN-host read access to the same request state.
+- The selected-room side panel now shows the latest deletion request status for that room, and the dialog can refresh that status explicitly.
+- The deletion flow remains truthful: Dashboard records and displays the request, but the active Dashboard Codex task performs the actual task-message send and writes the returned status back.
+
+## 2026-08-06 - Local LAN Deletion Request Creation
+
+- Updated the LAN host context so WesStudio local access through `http://10.0.0.105:8765/` can create and update delegated deletion requests without changing the remote LAN read-only posture.
+- Added local-only LAN-host `POST` handlers for deletion-request create and status update paths while continuing to refuse those writes for remote clients.
+- Updated the Dashboard UI copy so remote clients are told truthfully that they can review existing deletion requests but cannot create them.
+
+## 2026-08-06 - Generic Dashboard Bridge Store
+
+- Replaced the split bridge-test/deletion transport design with one shared Dashboard action-request store at `working\tmp\dashboard-action-requests.json`.
+- Updated both the localhost server and the LAN host so Dashboard-owned actions can read one shared queue and update one shared returned-status path.
+- Kept the legacy bridge-test and deletion JSON files mirrored from the shared store so the current UI and existing status surfaces remain compatible during the transition.
+
+## 2026-08-06 - Delegated Deletion Authorization Policy
+
+- Added a narrow central delegated-authorization rule so a documented Dashboard exact-scope deletion request can carry Wes's already-captured authorization to `Create PR`.
+- Updated the shared ownership rule, `Create PR` documentation, the canonical `create-pr` skill, and the Dashboard deletion workflow so the same policy is described consistently.
+- Kept the exception narrow: it applies only when scope is exact, the request class is documented, and no archive/delete substitution, scope broadening, or partial deletion is required.

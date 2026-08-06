@@ -1,5 +1,5 @@
-window.PROJECT_ROOMS_UPDATED = '2026-08-04 11:01';
-window.PROJECT_ROOMS_HASH = 'AA1D9EAFA3F7D89606A91A45EAD57A227BF0F721BA0EA7EDFDCC68DCB8FD22AA';
+window.PROJECT_ROOMS_UPDATED = '2026-08-06 08:42';
+window.PROJECT_ROOMS_HASH = '75B694FAA484AE18CBB37A014258DD1A9D64D1E8C58589E1D515404212516375';
 window.PROJECT_ROOM_GROUPS = [
     {
         "name":  "Intake \u0026 Coordination",
@@ -51,6 +51,19 @@ window.DASHBOARD_ACTIONS = {
                     },
     "modePanels":  {
                        "Dashboard":  {
+                                         "Bridge Test":  {
+                                                             "title":  "Dashboard Bridge Test",
+                                                             "intro":  "Use this helper to prove the Dashboard-to-Create-PR bridge path without browser popups, manual paste, or any delegated Project Room work.",
+                                                             "stateText":  "Bridge Test loaded. Record one local request, then review the returned status here.",
+                                                             "controls":  [
+                                                                              {
+                                                                                  "type":  "dashboard-bridge-test",
+                                                                                  "label":  "Prepare bridge test request",
+                                                                                  "availability":  "local-only",
+                                                                                  "description":  "The full local Dashboard host can record one bridge-test request for Create PR. LAN views can only review the current state."
+                                                                              }
+                                                                          ]
+                                                         },
                                          "Mode Map":  {
                                                           "title":  "Mode Map",
                                                           "intro":  "Use this helper when Wes wants a Dashboard mode mapping in plain English. The blocks below are the canonical structures Dashboard should derive from the request.",
@@ -110,12 +123,12 @@ window.DASHBOARD_ACTIONS = {
                        "Invoice Entry":  {
                                              "Reconcile":  {
                                                                "title":  "Invoice Entry Reconcile",
-                                                               "intro":  "Select one active project from Invoice Entry\u0027s canonical workbook register, then prepare the exact Reconcile request for Invoice Entry.",
-                                                               "stateText":  "Invoice Entry Reconcile loaded. Select an active project, then use the local request button to open Invoice Entry with the prepared handoff copied for paste.",
+                                                               "intro":  "Choose a property, then prepare the Reconcile request for Invoice Entry.",
+                                                               "stateText":  "Invoice Entry Reconcile loaded. Select an active project, then prepare the paste-ready request and follow the visible next-step card.",
                                                                "controls":  [
                                                                                 {
                                                                                     "type":  "project-select",
-                                                                                    "label":  "Active project",
+                                                                                    "label":  "What Property",
                                                                                     "availability":  "lan-readonly",
                                                                                     "emptyText":  "No current active projects were found in the Invoice Entry workbook register."
                                                                                 },
@@ -123,7 +136,7 @@ window.DASHBOARD_ACTIONS = {
                                                                                     "type":  "invoice-entry-reconcile-request",
                                                                                     "label":  "Reconcile",
                                                                                     "availability":  "local-only",
-                                                                                    "description":  "Copies the exact Invoice Entry Reconcile request for the selected project and opens the Invoice Entry task on WesStudio."
+                                                                                    "description":  "Prepares the exact Invoice Entry Reconcile request, tries to copy it, and tries to open the Invoice Entry task on WesStudio for paste-in activation."
                                                                                 }
                                                                             ]
                                                            }
@@ -195,7 +208,7 @@ window.PROJECT_ROOMS = [
         "skill":  "brynda-suit",
         "skillPath":  "C:\\Codex\\Wiki Files\\skills\\brynda-suit\\SKILL.md",
         "skillState":  "available",
-        "taskId":  "019f61c3-d4c0-7a52-a5a0-e4066ea9b303",
+        "taskId":  "",
         "attention":  null,
         "group":  "Legal \u0026 Entity",
         "groupBasis":  "Maintains litigation, confidential legal material, entity governance, ownership relationships, estate, or claim work.",
@@ -227,25 +240,6 @@ window.PROJECT_ROOMS = [
                          ]
     },
     {
-        "name":  "CMA Report - 5009 Sunnyfield Dr",
-        "purpose":  "Prepare a separate preliminary CMA report for 5009 Sunnyfield Dr, Raleigh, NC 27610.",
-        "status":  "Status not recorded",
-        "skill":  "",
-        "skillPath":  "",
-        "skillState":  "not-applicable",
-        "taskId":  "",
-        "attention":  null,
-        "group":  "Other",
-        "groupBasis":  "Used when a Project Room does not yet have a supported assignment to one of the defined functional groups.",
-        "modes":  [
-
-                  ],
-        "readmeUrl":  "../../CMA%20Report%20-%205009%20Sunnyfield%20Dr/README.md",
-        "quickActions":  [
-
-                         ]
-    },
-    {
         "name":  "CMA Report - 5021 Sunnyfield Dr",
         "purpose":  "Prepare a preliminary CMA for the manufactured home at 5021 Sunnyfield Dr, Raleigh, NC 27610.",
         "status":  "Status not recorded",
@@ -271,7 +265,7 @@ window.PROJECT_ROOMS = [
         "skill":  "codex-environment",
         "skillPath":  "C:\\Codex\\Wiki Files\\skills\\codex-environment\\SKILL.md",
         "skillState":  "available",
-        "taskId":  "019f84d0-78d4-7013-8c07-42c01f961be1",
+        "taskId":  "",
         "attention":  null,
         "group":  "Systems \u0026 Maintenance",
         "groupBasis":  "Maintains computers, Codex operations, management support, purchasing tools, marketplace work, or system health.",
@@ -290,7 +284,7 @@ window.PROJECT_ROOMS = [
         "skill":  "computers",
         "skillPath":  "C:\\Codex\\Wiki Files\\skills\\computers\\SKILL.md",
         "skillState":  "available",
-        "taskId":  "019f96e9-c663-7550-bf20-5829f6cb6c88",
+        "taskId":  "",
         "attention":  null,
         "group":  "Systems \u0026 Maintenance",
         "groupBasis":  "Maintains computers, Codex operations, management support, purchasing tools, marketplace work, or system health.",
@@ -309,7 +303,7 @@ window.PROJECT_ROOMS = [
         "skill":  "confidential",
         "skillPath":  "C:\\Codex\\Wiki Files\\skills\\confidential\\SKILL.md",
         "skillState":  "available",
-        "taskId":  "019f47a8-b32a-73a0-9bc4-9e493f1b0c5e",
+        "taskId":  "",
         "attention":  null,
         "group":  "Legal \u0026 Entity",
         "groupBasis":  "Maintains litigation, confidential legal material, entity governance, ownership relationships, estate, or claim work.",
@@ -328,7 +322,7 @@ window.PROJECT_ROOMS = [
         "skill":  "",
         "skillPath":  "",
         "skillState":  "not-applicable",
-        "taskId":  "",
+        "taskId":  "019ecba7-f1cc-7ac1-aaf7-d89a3f21b582",
         "attention":  null,
         "group":  "Real Estate Transactions",
         "groupBasis":  "Supports property acquisition, valuation, buyer qualification, seller financing, transaction packaging, or project setup.",
@@ -347,7 +341,7 @@ window.PROJECT_ROOMS = [
         "skill":  "create-pr",
         "skillPath":  "C:\\Codex\\Wiki Files\\skills\\create-pr\\SKILL.md",
         "skillState":  "available",
-        "taskId":  "019f583e-7f14-7ae2-aa24-4e991544e306",
+        "taskId":  "",
         "attention":  null,
         "group":  "Intake \u0026 Coordination",
         "groupBasis":  "Receives requests, routes work, creates Project Rooms, or provides an operating overview across workflows.",
@@ -385,12 +379,13 @@ window.PROJECT_ROOMS = [
         "skill":  "dashboard",
         "skillPath":  "C:\\Codex\\Wiki Files\\skills\\dashboard\\SKILL.md",
         "skillState":  "available",
-        "taskId":  "019fc52f-858a-72e1-926b-a0f6fbf0fd89",
+        "taskId":  "",
         "attention":  null,
         "group":  "Intake \u0026 Coordination",
         "groupBasis":  "Receives requests, routes work, creates Project Rooms, or provides an operating overview across workflows.",
         "modes":  [
-                      "Mode Map"
+                      "Mode Map",
+                      "Bridge Test"
                   ],
         "readmeUrl":  "../../Dashboard/README.md",
         "quickActions":  [
@@ -404,7 +399,7 @@ window.PROJECT_ROOMS = [
         "skill":  "doc-scan",
         "skillPath":  "C:\\Codex\\Wiki Files\\skills\\doc-scan\\SKILL.md",
         "skillState":  "available",
-        "taskId":  "",
+        "taskId":  "019ecc0d-02b4-73a3-9c20-dacda5d811d0",
         "attention":  null,
         "group":  "Document Intake",
         "groupBasis":  "Receives, identifies, organizes, or maintains source documents and operating procedures before downstream processing.",
@@ -423,7 +418,7 @@ window.PROJECT_ROOMS = [
         "skill":  "email-monitor",
         "skillPath":  "C:\\Codex\\Wiki Files\\skills\\email-monitor\\SKILL.md",
         "skillState":  "available",
-        "taskId":  "019ecba7-f1cc-7ac1-aaf7-d89a3f21b582",
+        "taskId":  "019f8274-5b7e-7170-a051-f7944954de82",
         "attention":  null,
         "group":  "Intake \u0026 Coordination",
         "groupBasis":  "Receives requests, routes work, creates Project Rooms, or provides an operating overview across workflows.",
@@ -507,7 +502,7 @@ window.PROJECT_ROOMS = [
         "skill":  "gracious-millionaire",
         "skillPath":  "C:\\Codex\\Wiki Files\\skills\\gracious-millionaire\\SKILL.md",
         "skillState":  "available",
-        "taskId":  "",
+        "taskId":  "019ecba7-f1cc-7ac1-aaf7-d89a3f21b582",
         "attention":  null,
         "group":  "Publishing \u0026 Public Work",
         "groupBasis":  "Develops books, drawings, voice/media assets, websites, or other public-facing content.",
@@ -548,7 +543,7 @@ window.PROJECT_ROOMS = [
         "skill":  "invoice-entry",
         "skillPath":  "C:\\Codex\\Wiki Files\\skills\\invoice-entry\\SKILL.md",
         "skillState":  "available",
-        "taskId":  "",
+        "taskId":  "019fbf4f-c629-7dd1-a3f6-0de33de0ed8f",
         "attention":  null,
         "group":  "Accounting \u0026 Project Data",
         "groupBasis":  "Maintains financial calculations, invoice processing, project workbooks, templates, or structured project data.",
@@ -659,7 +654,7 @@ window.PROJECT_ROOMS = [
         "skill":  "jean-wright",
         "skillPath":  "C:\\Codex\\Wiki Files\\skills\\jean-wright\\SKILL.md",
         "skillState":  "available",
-        "taskId":  "",
+        "taskId":  "019fbe57-fcd9-7c83-be74-e377c7b9c4d0",
         "attention":  null,
         "group":  "Intake \u0026 Coordination",
         "groupBasis":  "Receives requests, routes work, creates Project Rooms, or provides an operating overview across workflows.",
@@ -683,7 +678,7 @@ window.PROJECT_ROOMS = [
         "skill":  "jennys-drawings",
         "skillPath":  "C:\\Codex\\Wiki Files\\skills\\jennys-drawings\\SKILL.md",
         "skillState":  "available",
-        "taskId":  "019f700e-419a-7280-ba62-c01fe032b5b7",
+        "taskId":  "019ecba7-f1cc-7ac1-aaf7-d89a3f21b582",
         "attention":  null,
         "group":  "Publishing \u0026 Public Work",
         "groupBasis":  "Develops books, drawings, voice/media assets, websites, or other public-facing content.",
@@ -702,7 +697,7 @@ window.PROJECT_ROOMS = [
         "skill":  "ld-evans",
         "skillPath":  "C:\\Codex\\Wiki Files\\skills\\ld-evans\\SKILL.md",
         "skillState":  "available",
-        "taskId":  "019f6ffe-d7b7-71f0-87d7-17b8e453f59e",
+        "taskId":  "019ecba7-f1cc-7ac1-aaf7-d89a3f21b582",
         "attention":  null,
         "group":  "Publishing \u0026 Public Work",
         "groupBasis":  "Develops books, drawings, voice/media assets, websites, or other public-facing content.",
@@ -721,7 +716,7 @@ window.PROJECT_ROOMS = [
         "skill":  "lowes-order",
         "skillPath":  "C:\\Codex\\Wiki Files\\skills\\lowes-order\\SKILL.md",
         "skillState":  "available",
-        "taskId":  "019f5845-fb96-7370-baf2-b8f00fddffae",
+        "taskId":  "",
         "attention":  null,
         "group":  "Systems \u0026 Maintenance",
         "groupBasis":  "Maintains computers, Codex operations, management support, purchasing tools, marketplace work, or system health.",
@@ -740,12 +735,13 @@ window.PROJECT_ROOMS = [
         "skill":  "manager",
         "skillPath":  "C:\\Codex\\Wiki Files\\skills\\manager\\SKILL.md",
         "skillState":  "available",
-        "taskId":  "019f8274-5b7e-7170-a051-f7944954de82",
+        "taskId":  "019ecba7-f1cc-7ac1-aaf7-d89a3f21b582",
         "attention":  null,
         "group":  "Systems \u0026 Maintenance",
         "groupBasis":  "Maintains computers, Codex operations, management support, purchasing tools, marketplace work, or system health.",
         "modes":  [
-                      "Tasks"
+                      "Tasks",
+                      "Time Card"
                   ],
         "readmeUrl":  "../../Manager/README.md",
         "quickActions":  [
@@ -817,11 +813,11 @@ window.PROJECT_ROOMS = [
     {
         "name":  "Marketplace",
         "purpose":  "This Project Room owns the Facebook Marketplace tools workflow: finding tool listings, evaluating buy price versus likely resale value, calculating a safe offer, using Facebook Messenger to make and negotiate that offer when authorized, and notifying Wes by email when a seller reaches an agreement. Use this room when Wes asks Codex to search Facebook Marketplace for tools, evaluate a listing for resale profit, prepare or send an offer through Messenger, continue a seller conversation, or report Marketplace opportunities.",
-        "status":  "active",
+        "status":  "paused by Wes as of 2026-08-05",
         "skill":  "marketplace",
         "skillPath":  "C:\\Codex\\Wiki Files\\skills\\marketplace\\SKILL.md",
         "skillState":  "available",
-        "taskId":  "019fb5b0-6c29-7b32-822b-aa13b5920c29",
+        "taskId":  "",
         "attention":  null,
         "group":  "Systems \u0026 Maintenance",
         "groupBasis":  "Maintains computers, Codex operations, management support, purchasing tools, marketplace work, or system health.",
@@ -916,7 +912,7 @@ window.PROJECT_ROOMS = [
         "skill":  "rei-blackbook",
         "skillPath":  "C:\\Codex\\Wiki Files\\skills\\rei-blackbook\\SKILL.md",
         "skillState":  "available",
-        "taskId":  "019f4691-5466-7f72-9683-ab5d3b750c25",
+        "taskId":  "019ecba7-f1cc-7ac1-aaf7-d89a3f21b582",
         "attention":  null,
         "group":  "Publishing \u0026 Public Work",
         "groupBasis":  "Develops books, drawings, voice/media assets, websites, or other public-facing content.",

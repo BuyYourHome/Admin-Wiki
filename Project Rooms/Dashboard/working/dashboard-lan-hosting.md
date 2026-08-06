@@ -26,13 +26,13 @@ The LAN host serves only these approved read-only paths:
 
 The LAN host does not expose arbitrary files under `C:\Codex\Wiki Files`.
 
-The LAN host rejects write or host-management behavior:
+The LAN host rejects write or host-management behavior from remote clients:
 
-- `POST` requests are not allowed.
+- Remote clients cannot use `POST` request paths.
 - `__dashboard-refresh` returns a read-only refusal.
 - Remote clients do not receive active Codex deep links.
 - Remote clients cannot use Dashboard refresh or deletion workflow controls.
-- Local WesStudio access through the LAN-host view may still use the deletion workflow preview because it prepares an audit plan only and does not delete anything.
+- Local WesStudio access through the LAN-host view may record a delegated deletion request, but it still cannot use refresh or other host-management actions through the LAN URL.
 
 Local Dashboard management remains available through the existing local-only Dashboard launch tools on WesStudio.
 
@@ -55,9 +55,10 @@ Validate from WesStudio:
 1. Open `http://127.0.0.1:8765/`
 2. Open `http://10.0.0.105:8765/`
 3. Confirm the Dashboard renders.
-4. Confirm the SOPs panel shows only documented Markdown-backed SOP pages.
-5. Confirm `http://10.0.0.105:8765/skills/dashboard/SKILL.md` returns `Not found`.
-6. Confirm refresh is refused in LAN host mode.
+4. Confirm the local LAN-host view can record a deletion request from `Review deletion`.
+5. Confirm the SOPs panel shows only documented Markdown-backed SOP pages.
+6. Confirm `http://10.0.0.105:8765/skills/dashboard/SKILL.md` returns `Not found`.
+7. Confirm refresh is refused in LAN host mode.
 
 ## Remote Validation
 
@@ -66,7 +67,7 @@ From another device on `10.0.0.0/24` while the network profile remains Private:
 1. Open `http://10.0.0.105:8765/`
 2. Confirm the Dashboard loads.
 3. Confirm the page shows a read-only LAN notice.
-4. Confirm `Ask Jean`, refresh, and deletion-review controls are unavailable.
+4. Confirm `Ask Jean`, refresh, and deletion-request creation remain unavailable.
 5. Open one Project Room README and one SOP page to confirm approved read-only document views work.
 6. Confirm `http://10.0.0.105:8765/skills/dashboard/SKILL.md` does not load.
 

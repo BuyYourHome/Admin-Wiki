@@ -1,0 +1,276 @@
+{
+  "dispatch_id": "jean-dispatch-20260804-lowes-statements-2025-v1-docscan-intake",
+  "packet_root": "C:\\Codex\\Wiki Files\\Project Rooms\\Doc Scan\\outputs\\statement-packets\\2025-lowes-all-accounts",
+  "source_coverage": [
+    {
+      "account": "BYH-5997",
+      "statement_period": "2025-05-17",
+      "source_path": "C:\\Users\\wesbr\\Buy Your Home\\Buy Your Home - Office Admin\\2025\\Credit Cards\\Lowe's PRO BYH 5997\\25-05-17 .pdf",
+      "page_count": 3,
+      "row_count": 6
+    },
+    {
+      "account": "BYH-5997",
+      "statement_period": "2025-06-17",
+      "source_path": "C:\\Users\\wesbr\\Buy Your Home\\Buy Your Home - Office Admin\\2025\\Credit Cards\\Lowe's PRO BYH 5997\\25-06-17 .pdf",
+      "page_count": 5,
+      "row_count": 6
+    },
+    {
+      "account": "BYH-5997",
+      "statement_period": "2025-07-17",
+      "source_path": "C:\\Users\\wesbr\\Buy Your Home\\Buy Your Home - Office Admin\\2025\\Credit Cards\\Lowe's PRO BYH 5997\\25-07-17 .pdf",
+      "page_count": 3,
+      "row_count": 2
+    },
+    {
+      "account": "BYH-5997",
+      "statement_period": "2025-08-17",
+      "source_path": "C:\\Users\\wesbr\\Buy Your Home\\Buy Your Home - Office Admin\\2025\\Credit Cards\\Lowe's PRO BYH 5997\\25-08-17  .pdf",
+      "page_count": 2,
+      "row_count": 0
+    },
+    {
+      "account": "BYH-5997",
+      "statement_period": "2025-09-17",
+      "source_path": "C:\\Users\\wesbr\\Buy Your Home\\Buy Your Home - Office Admin\\2025\\Credit Cards\\Lowe's PRO BYH 5997\\25-09-17 .pdf",
+      "page_count": 1,
+      "row_count": 0
+    },
+    {
+      "account": "BYH-5997",
+      "statement_period": "2025-10-17",
+      "source_path": "C:\\Users\\wesbr\\Buy Your Home\\Buy Your Home - Office Admin\\2025\\Credit Cards\\Lowe's PRO BYH 5997\\25-10-17 .pdf",
+      "page_count": 1,
+      "row_count": 0
+    },
+    {
+      "account": "BYH-5997",
+      "statement_period": "2025-11-17",
+      "source_path": "C:\\Users\\wesbr\\Buy Your Home\\Buy Your Home - Office Admin\\2025\\Credit Cards\\Lowe's PRO BYH 5997\\25-11-17 .pdf",
+      "page_count": 2,
+      "row_count": 4
+    },
+    {
+      "account": "BYH-5997",
+      "statement_period": "2025-12-17",
+      "source_path": "C:\\Users\\wesbr\\Buy Your Home\\Buy Your Home - Office Admin\\2025\\Credit Cards\\Lowe's PRO BYH 5997\\25-12-17 .pdf",
+      "page_count": 3,
+      "row_count": 7
+    },
+    {
+      "account": "SYH-6140",
+      "statement_period": "2025-03-02",
+      "source_path": "C:\\Users\\wesbr\\Buy Your Home\\Buy Your Home - Office Admin\\2025\\Credit Cards\\Lowe's Pro-SYH-6140\\25-03-02 .pdf",
+      "page_count": 2,
+      "row_count": 1
+    },
+    {
+      "account": "SYH-6140",
+      "statement_period": "2025-04-02",
+      "source_path": "C:\\Users\\wesbr\\Buy Your Home\\Buy Your Home - Office Admin\\2025\\Credit Cards\\Lowe's Pro-SYH-6140\\25-04-02.pdf",
+      "page_count": 3,
+      "row_count": 1
+    },
+    {
+      "account": "SYH-6140",
+      "statement_period": "2025-05-02",
+      "source_path": "C:\\Users\\wesbr\\Buy Your Home\\Buy Your Home - Office Admin\\2025\\Credit Cards\\Lowe's Pro-SYH-6140\\25-05-02.pdf",
+      "page_count": 3,
+      "row_count": 1
+    },
+    {
+      "account": "SYH-6140",
+      "statement_period": "2025-06-02",
+      "source_path": "C:\\Users\\wesbr\\Buy Your Home\\Buy Your Home - Office Admin\\2025\\Credit Cards\\Lowe's Pro-SYH-6140\\25-06-02.pdf",
+      "page_count": 3,
+      "row_count": 2
+    },
+    {
+      "account": "SYH-6140",
+      "statement_period": "2025-07-02",
+      "source_path": "C:\\Users\\wesbr\\Buy Your Home\\Buy Your Home - Office Admin\\2025\\Credit Cards\\Lowe's Pro-SYH-6140\\25-07-02.pdf",
+      "page_count": 1,
+      "row_count": 0
+    },
+    {
+      "account": "SYH-6140",
+      "statement_period": "2025-08-02",
+      "source_path": "C:\\Users\\wesbr\\Buy Your Home\\Buy Your Home - Office Admin\\2025\\Credit Cards\\Lowe's Pro-SYH-6140\\25-08-02.pdf",
+      "page_count": 8,
+      "row_count": 14
+    },
+    {
+      "account": "SYH-6140",
+      "statement_period": "2025-09-02",
+      "source_path": "C:\\Users\\wesbr\\Buy Your Home\\Buy Your Home - Office Admin\\2025\\Credit Cards\\Lowe's Pro-SYH-6140\\25-09-02  .pdf",
+      "page_count": 8,
+      "row_count": 28
+    },
+    {
+      "account": "SYH-6140",
+      "statement_period": "2025-10-02",
+      "source_path": "C:\\Users\\wesbr\\Buy Your Home\\Buy Your Home - Office Admin\\2025\\Credit Cards\\Lowe's Pro-SYH-6140\\25-10-02.pdf",
+      "page_count": 6,
+      "row_count": 10
+    },
+    {
+      "account": "SYH-6140",
+      "statement_period": "2025-11-02",
+      "source_path": "C:\\Users\\wesbr\\Buy Your Home\\Buy Your Home - Office Admin\\2025\\Credit Cards\\Lowe's Pro-SYH-6140\\25-11-02.pdf",
+      "page_count": 2,
+      "row_count": 2
+    },
+    {
+      "account": "SYH-6140",
+      "statement_period": "2025-12-02",
+      "source_path": "C:\\Users\\wesbr\\Buy Your Home\\Buy Your Home - Office Admin\\2025\\Credit Cards\\Lowe's Pro-SYH-6140\\25-12-02 .pdf",
+      "page_count": 2,
+      "row_count": 2
+    }
+  ],
+  "statement_packets": [
+    {
+      "account": "BYH-5997",
+      "statement_period": "2025-05-17",
+      "packet_path": "C:\\Codex\\Wiki Files\\Project Rooms\\Doc Scan\\outputs\\statement-packets\\2025-lowes-all-accounts\\BYH-5997-2025-05-17-packet.json",
+      "row_count": 6,
+      "tensity_row_count": 6
+    },
+    {
+      "account": "BYH-5997",
+      "statement_period": "2025-06-17",
+      "packet_path": "C:\\Codex\\Wiki Files\\Project Rooms\\Doc Scan\\outputs\\statement-packets\\2025-lowes-all-accounts\\BYH-5997-2025-06-17-packet.json",
+      "row_count": 6,
+      "tensity_row_count": 0
+    },
+    {
+      "account": "BYH-5997",
+      "statement_period": "2025-07-17",
+      "packet_path": "C:\\Codex\\Wiki Files\\Project Rooms\\Doc Scan\\outputs\\statement-packets\\2025-lowes-all-accounts\\BYH-5997-2025-07-17-packet.json",
+      "row_count": 2,
+      "tensity_row_count": 2
+    },
+    {
+      "account": "BYH-5997",
+      "statement_period": "2025-08-17",
+      "packet_path": "C:\\Codex\\Wiki Files\\Project Rooms\\Doc Scan\\outputs\\statement-packets\\2025-lowes-all-accounts\\BYH-5997-2025-08-17-packet.json",
+      "row_count": 0,
+      "tensity_row_count": 0
+    },
+    {
+      "account": "BYH-5997",
+      "statement_period": "2025-09-17",
+      "packet_path": "C:\\Codex\\Wiki Files\\Project Rooms\\Doc Scan\\outputs\\statement-packets\\2025-lowes-all-accounts\\BYH-5997-2025-09-17-packet.json",
+      "row_count": 0,
+      "tensity_row_count": 0
+    },
+    {
+      "account": "BYH-5997",
+      "statement_period": "2025-10-17",
+      "packet_path": "C:\\Codex\\Wiki Files\\Project Rooms\\Doc Scan\\outputs\\statement-packets\\2025-lowes-all-accounts\\BYH-5997-2025-10-17-packet.json",
+      "row_count": 0,
+      "tensity_row_count": 0
+    },
+    {
+      "account": "BYH-5997",
+      "statement_period": "2025-11-17",
+      "packet_path": "C:\\Codex\\Wiki Files\\Project Rooms\\Doc Scan\\outputs\\statement-packets\\2025-lowes-all-accounts\\BYH-5997-2025-11-17-packet.json",
+      "row_count": 4,
+      "tensity_row_count": 0
+    },
+    {
+      "account": "BYH-5997",
+      "statement_period": "2025-12-17",
+      "packet_path": "C:\\Codex\\Wiki Files\\Project Rooms\\Doc Scan\\outputs\\statement-packets\\2025-lowes-all-accounts\\BYH-5997-2025-12-17-packet.json",
+      "row_count": 7,
+      "tensity_row_count": 0
+    },
+    {
+      "account": "SYH-6140",
+      "statement_period": "2025-03-02",
+      "packet_path": "C:\\Codex\\Wiki Files\\Project Rooms\\Doc Scan\\outputs\\statement-packets\\2025-lowes-all-accounts\\SYH-6140-2025-03-02-packet.json",
+      "row_count": 1,
+      "tensity_row_count": 0
+    },
+    {
+      "account": "SYH-6140",
+      "statement_period": "2025-04-02",
+      "packet_path": "C:\\Codex\\Wiki Files\\Project Rooms\\Doc Scan\\outputs\\statement-packets\\2025-lowes-all-accounts\\SYH-6140-2025-04-02-packet.json",
+      "row_count": 1,
+      "tensity_row_count": 0
+    },
+    {
+      "account": "SYH-6140",
+      "statement_period": "2025-05-02",
+      "packet_path": "C:\\Codex\\Wiki Files\\Project Rooms\\Doc Scan\\outputs\\statement-packets\\2025-lowes-all-accounts\\SYH-6140-2025-05-02-packet.json",
+      "row_count": 1,
+      "tensity_row_count": 0
+    },
+    {
+      "account": "SYH-6140",
+      "statement_period": "2025-06-02",
+      "packet_path": "C:\\Codex\\Wiki Files\\Project Rooms\\Doc Scan\\outputs\\statement-packets\\2025-lowes-all-accounts\\SYH-6140-2025-06-02-packet.json",
+      "row_count": 2,
+      "tensity_row_count": 0
+    },
+    {
+      "account": "SYH-6140",
+      "statement_period": "2025-07-02",
+      "packet_path": "C:\\Codex\\Wiki Files\\Project Rooms\\Doc Scan\\outputs\\statement-packets\\2025-lowes-all-accounts\\SYH-6140-2025-07-02-packet.json",
+      "row_count": 0,
+      "tensity_row_count": 0
+    },
+    {
+      "account": "SYH-6140",
+      "statement_period": "2025-08-02",
+      "packet_path": "C:\\Codex\\Wiki Files\\Project Rooms\\Doc Scan\\outputs\\statement-packets\\2025-lowes-all-accounts\\SYH-6140-2025-08-02-packet.json",
+      "row_count": 14,
+      "tensity_row_count": 0
+    },
+    {
+      "account": "SYH-6140",
+      "statement_period": "2025-09-02",
+      "packet_path": "C:\\Codex\\Wiki Files\\Project Rooms\\Doc Scan\\outputs\\statement-packets\\2025-lowes-all-accounts\\SYH-6140-2025-09-02-packet.json",
+      "row_count": 28,
+      "tensity_row_count": 0
+    },
+    {
+      "account": "SYH-6140",
+      "statement_period": "2025-10-02",
+      "packet_path": "C:\\Codex\\Wiki Files\\Project Rooms\\Doc Scan\\outputs\\statement-packets\\2025-lowes-all-accounts\\SYH-6140-2025-10-02-packet.json",
+      "row_count": 10,
+      "tensity_row_count": 0
+    },
+    {
+      "account": "SYH-6140",
+      "statement_period": "2025-11-02",
+      "packet_path": "C:\\Codex\\Wiki Files\\Project Rooms\\Doc Scan\\outputs\\statement-packets\\2025-lowes-all-accounts\\SYH-6140-2025-11-02-packet.json",
+      "row_count": 2,
+      "tensity_row_count": 0
+    },
+    {
+      "account": "SYH-6140",
+      "statement_period": "2025-12-02",
+      "packet_path": "C:\\Codex\\Wiki Files\\Project Rooms\\Doc Scan\\outputs\\statement-packets\\2025-lowes-all-accounts\\SYH-6140-2025-12-02-packet.json",
+      "row_count": 2,
+      "tensity_row_count": 0
+    }
+  ],
+  "total_rows": 86,
+  "tensity_rows": 8,
+  "blockers": [
+    "BYH-5997 2025-08-17: no invoice blocks extracted from OCR",
+    "BYH-5997 2025-09-17: no invoice blocks extracted from OCR",
+    "BYH-5997 2025-10-17: no invoice blocks extracted from OCR",
+    "SYH-6140 2025-07-02: no invoice blocks extracted from OCR"
+  ],
+  "coverage_notes": [
+    "BYH 5997: 8 statements found for May-Dec 2025; Jan-Apr 2025 missing from authoritative folder inventory.",
+    "SYH 6140: 10 statements found for Mar-Dec 2025; Jan-Feb 2025 missing from authoritative folder inventory.",
+    "No duplicate statement periods identified in the provided inventory.",
+    "Tensity allocation is limited to rows with visible PO 4121 evidence. Similar-sounding Tennessee project names were not used.",
+    "2026-08-04 correction: Invoice Entry visually verified BYH-5997 2025-05-17 page 3 and 2025-07-17 page 3. Corrected five PO-4121 invoice blocks into eight nonzero item-level rows and excluded tax-only amounts from item rows.",
+    "2026-08-04 metadata correction: Added visible store numbers and item_number_sku values to the eight corrected PO-4121 rows without changing item amounts or PO evidence."
+  ]
+}

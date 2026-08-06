@@ -15,6 +15,19 @@
   },
   "modePanels": {
     "Dashboard": {
+      "Bridge Test": {
+        "title": "Dashboard Bridge Test",
+        "intro": "Use this helper to prove the Dashboard-to-Create-PR bridge path without browser popups, manual paste, or any delegated Project Room work.",
+        "stateText": "Bridge Test loaded. Record one local request, then review the returned status here.",
+        "controls": [
+          {
+            "type": "dashboard-bridge-test",
+            "label": "Prepare bridge test request",
+            "availability": "local-only",
+            "description": "The full local Dashboard host can record one bridge-test request for Create PR. LAN views can only review the current state."
+          }
+        ]
+      },
       "Mode Map": {
         "title": "Mode Map",
         "intro": "Use this helper when Wes wants a Dashboard mode mapping in plain English. The blocks below are the canonical structures Dashboard should derive from the request.",
@@ -74,12 +87,12 @@
     "Invoice Entry": {
       "Reconcile": {
         "title": "Invoice Entry Reconcile",
-        "intro": "Select one active project from Invoice Entry's canonical workbook register, then prepare the exact Reconcile request for Invoice Entry.",
-        "stateText": "Invoice Entry Reconcile loaded. Select an active project, then use the local request button to open Invoice Entry with the prepared handoff copied for paste.",
+        "intro": "Choose a property, then prepare the Reconcile request for Invoice Entry.",
+        "stateText": "Invoice Entry Reconcile loaded. Select an active project, then prepare the paste-ready request and follow the visible next-step card.",
         "controls": [
           {
             "type": "project-select",
-            "label": "Active project",
+            "label": "What Property",
             "availability": "lan-readonly",
             "emptyText": "No current active projects were found in the Invoice Entry workbook register."
           },
@@ -87,7 +100,7 @@
             "type": "invoice-entry-reconcile-request",
             "label": "Reconcile",
             "availability": "local-only",
-            "description": "Copies the exact Invoice Entry Reconcile request for the selected project and opens the Invoice Entry task on WesStudio."
+            "description": "Prepares the exact Invoice Entry Reconcile request, tries to copy it, and tries to open the Invoice Entry task on WesStudio for paste-in activation."
           }
         ]
       }

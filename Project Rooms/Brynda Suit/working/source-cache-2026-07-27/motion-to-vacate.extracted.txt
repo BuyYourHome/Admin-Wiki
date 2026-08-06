@@ -1,0 +1,63 @@
+[P2] 	Defendants Wesley Dale Browning, individually, and as Trustee of the 115 Rosebrooks Revocable Trust, and Buy Your Home, LLC (collectively, the “Defendants”), pursuant to Rule 54(b) of the North Carolina Rules of Civil Procedure, respectfully move the Court to set aside the Clerk’s November 19, 2024 Order Appointing Guardian ad Litem as void. In support of the Motion, Defendants show the Court the following:
+[P3] Background
+[P4] This action arises out of a challenge to the disposition of real property.  
+[P5] According to her Complaint in this action, on November 7, 2019, Brynda Griffith took title from her deceased sister to property located at 115 Rosebrooks Drive, Cary, North Carolina (the “Property”). Compl. ¶¶ 9–10.
+[P6] In doing so, Ms. Griffith assumed responsibility for payments on the pre-existing home equity line of credit (HELOC), which the Property secured. Id.¶ 11.  
+[P7] Unfortunately, Ms. Griffith struggled to make the HELOC payments and ultimately defaulted on the note. Id. ¶ 12.  
+[P8] As a result, the note holder filed notice of its intent to commence foreclosure on the note and deed of trust secured by the property in September 2023.  A copy of the Notice of Hearing Prior to Foreclosure is attached as Exhibit 1.
+[P9] On November 1, 2023, the Wake County Clerk of Court entered an order allowing the substitute trustee to conduct a foreclosure sale of the Property (the “Foreclosure Order”).  A copy of the Foreclosure Order is attached as Exhibit 2. 
+[P10] Before the Property could be sold at auction, however, Ms. Griffith sold the Property to Defendant for a purchase price equal to the debt on the Property. Defendant Buy Your Home, LLC (“BYH”).  BYH is a small family business owned and operated by Defendant Wes Browning and his wife.
+[P11] In conjunction with that sale, and as part of the consideration, the parties also entered into a lease agreement by which BYH leased the property to Ms. Griffith, with the term starting immediately (the “Lease”).  A complete copy of the Lease is attached as Exhibit 3.  
+[P12] Under the Lease—renewable for five-year terms at Ms. Griffith’s discretion—Ms. Griffith’s annual rent payments are an amount equal to only the annual cost of property insurance. Exhibit 3 at Ex. A (Lease Rider).  Thus, the Lease allows Ms. Griffith to live and remain in possession of the Property for as long as she chooses, even until her death, for only the cost of the property insurance. See id.
+[P13] As a consequence, Ms. Griffith was able to avoid foreclosure and remain in the Property. 
+[P14] Procedural History
+[P15] Almost a year after Ms. Griffith sold the Property and leased it back, her daughter Natalie Doherty filed this action to set aside the sale, purportedly on her mother’s behalf. See Compl. at Caption; see also id. ¶ 1 (alleging that “Natalie Doherty has been appointed the Guardian Ad Litem for her mother, Brynda Griffith.”).
+[P16] After filing the Complaint, Ms. Doherty filed a Petition for Appointment of Guardian ad Litem, requesting that the Clerk of Court appoint her as her mother’s guardian ad litem pursuant to Rule 17 of the North Carolina Rules of Civil Procedure (the “Petition”). 
+[P17] The Petition alleges that because Ms. Doherty had already filed the complaint as her mother’s purported guardian ad litem, “Brynda Griffith now requires an Order from the Court” to make it official. Petition ¶ b.  
+[P18] The Petition, however, is devoid of any allegation that Ms. Griffith is incompetent or otherwise lacks capacity to prosecute this action on her own behalf. See generally Petition.
+[P19] On November 19, 2024, the Clerk—without a finding of Ms. Griffith’s incompetency—entered an order appointing Ms. Doherty guardian ad litem (the “GAL Order”).  A copy of the GAL Order is attached as Exhibit 4.
+[P20] Governing Standard
+[P21] A trial court’s interlocutory order is “subject to revision at any time before the entry of judgment adjudicating all the claims and the rights and liabilities of all the parties.”  N.C. R. Civ. P. 54(b).  
+[P22] Furthermore, a “void order[],” like the GAL Order here, “may be attacked at any time.” Thrush v. Jones, 227 N.C. App. 228, 741 S.E.2d 927 (2013).
+[P23] Rule 17’s Hearing Requirements
+[P24] Rule 17 authorizes a court to appoint a guardian ad litem for an “incompetent adult.” N.C. Gen. Stat. §1A-1, Rule 17.  An “incompetent adult” is an adult “who lacks sufficient capacity to manage the adult’s own affairs or to make or communicate important decisions concerning the adult’s person, family, or property whether the lack of capacity is due to mental illness, intellectual disability, epilepsy, cerebral palsy, autism, inebriety, senility, disease, injury, or similar cause or condition.” Matter of J.A.J., 381 N.C. 761, 767–68, 874 S.E.2d 563, 569 (2022) (quoting In re N.K., 375 N.C. 805, 809–10, 851 S.E.2d 321 (2020)).
+[P25] In deciding whether to appoint a guardian ad litem, “the court must conduct a hearing in accordance with the procedures required under Rule 17 in order to determine whether there is a reasonable basis for believing that [the adult] is incompetent or has diminished capacity and cannot adequately act in his or her own interest.” In re A.Y., 225 N.C. App. 29, 38, 737 S.E.2d 160, 165 (2013) (emphasis added).
+[P26] The appointment of a guardian ad litem “without notice” and “without a judicial determination that she [is incompetent] . . . deprive[s] a person of her property without due process at law.” Hagins v. Redevelopment Comm’n of Greensboro, 275 N.C. 90, 97, 165 S.E.2d 490, 494 (1969); see also Ives v. House, 9 N.C. App. 441, 442, 176 S.E.2d 345, 346 (1970) (“[W]hen a party[] . . . has not previously been adjudicated incompetent to manage his affairs—he is entitled to notice and an opportunity to be heard before the judge can appoint either a next friend or a guardian Ad litem for him.”).
+[P27] Such an order is therefore “void” and must be set aside. Hagins, 275 N.C. at 103, 165 S.E.2d at 498; see also Rivenbark v. Southmark Corp., 93 N.C. App. 414, 419, 378 S.E.2d 196, 200 (1989) (“[A] void order binds no one.”).
+[P28] The Void GAL Order 
+[P29] As discussed above, the GAL Order was entered absent a finding of Ms. Griffith’s incompetency. See Petition; Exhibit 4 (GAL Order); see also eCourts Portal Case Summary (reflecting no hearings).
+[P30] The Complaint itself reflects the absence of a finding of Ms. Griffith’s incompetence.  Indeed, Plaintiff alleges in the alternative that Ms. Griffith lacked the requisite degree of mental/capacity to sell the Property. Compl. p. 8 (“In the Alternative – Mental Incompetency/Incapacity”).
+[P31] Furthermore, Plaintiff’s counsel admitted in a January 8, 2025 email to the undersigned that Brynda Griffith “has not previously been adjudicated incompetent to manage [her] affairs.” Ives, 9 N.C. App. at 442, 176 S.E.2d at 346.  A copy of the email correspondence is attached as Exhibit 5.
+[P32] In sum, it is undisputed that Natalie Doherty was appointed as Ms. Griffith’s guardian ad litem “without notice” and “without a judicial determination that [Ms. Griffith] [is incompetent].” Hagins, 275 N.C. at 103, 165 S.E.2d at 498.  
+[P33] The Clerk’s Order is therefore void and must be set aside. Id.
+[P34] WHEREFORE, the Defendants respectfully move the Court for an order setting aside the Clerk’s November 19, 2024 Order Appointing Guardian ad Litem and requiring that Plaintiff amend the Complaint to identify Ms. Griffith as the plaintiff (with no reference to the void appointment of a guardian ad litem), and for any other appropriate relief.  
+[P35] Respectfully submitted this ___ day of January, 2025.
+[P38] CERTIFICATE OF SERVICE
+[P39] 	The undersigned certifies that in accordance with Rule 5(b)(1), a copy of the foregoing document was served by email before 5:00 p.m. ET on the following:
+[P40] HOWARD STALLINGS LAW FIRM
+[P41] 	Douglas D. Noreen
+[P42] 	dnoreen@howardstallings.com 
+[P43] 	Carter B. Cole
+[P44] 	ccole@howardstallings.com 
+[P45] 	Attorneys for Plaintiff
+[P47] 	This, the _____ day of January, 2025.
+[P49] /s/ Stephanie L. Gumm	  
+[P50] Stephanie L. Gumm
+
+[TABLE 1]
+[R1] NORTH CAROLINA | NORTH CAROLINA | GENERAL COURT OF JUSTICE | GENERAL COURT OF JUSTICE | GENERAL COURT OF JUSTICE
+[R2]  |  | SUPERIOR COURT DIVISION | SUPERIOR COURT DIVISION | SUPERIOR COURT DIVISION
+[R3] WAKE COUNTY | WAKE COUNTY | 24CV037077-910 /  | 24CV037077-910 /  | 24CV037077-910 / 
+[R4]  |  |  |  | 
+[R5] NATALIE DOHERTY, Guardian Ad Litem for BRYNDA GRIFFITH, |  |  | DEFENDANTS’ MOTION  / TO SET ASIDE ORDER APPOINTING GUARDIAN  / AD LITEM  / 
+[R6]  |  |  | DEFENDANTS’ MOTION  / TO SET ASIDE ORDER APPOINTING GUARDIAN  / AD LITEM  / 
+[R7] Plaintiff, |  |  | DEFENDANTS’ MOTION  / TO SET ASIDE ORDER APPOINTING GUARDIAN  / AD LITEM  / 
+[R8]  |  |  | DEFENDANTS’ MOTION  / TO SET ASIDE ORDER APPOINTING GUARDIAN  / AD LITEM  / 
+[R9] v. |  |  | DEFENDANTS’ MOTION  / TO SET ASIDE ORDER APPOINTING GUARDIAN  / AD LITEM  / 
+[R10]  |  |  | DEFENDANTS’ MOTION  / TO SET ASIDE ORDER APPOINTING GUARDIAN  / AD LITEM  / 
+[R11] WESLEY DALE BROWNING, individually, and as Trustee of the 115 ROSEBROOKS REVOCABLE TRUST, and BUY YOUR HOME, LLC, |  |  | DEFENDANTS’ MOTION  / TO SET ASIDE ORDER APPOINTING GUARDIAN  / AD LITEM  / 
+[R12]  |  |  | DEFENDANTS’ MOTION  / TO SET ASIDE ORDER APPOINTING GUARDIAN  / AD LITEM  / 
+[R13] Defendants. /  |  |  | DEFENDANTS’ MOTION  / TO SET ASIDE ORDER APPOINTING GUARDIAN  / AD LITEM  / 
+
+[TABLE 2]
+[R1]  | POYNER SPRUILL LLP / /s/ Stephanie L. Gumm	 / Keith H. Johnson  / N.C. State Bar No. 17885 / kjohnson@poynerspruill.com  / Stephanie L. Gumm / N.C. State Bar No. 53485 / sgumm@poynerspruill.com / P.O. Box 1801 / Raleigh, NC 27602-1801 / Telephone: 919.783.1013 / Facsimile: 919.783.1075 /  / Counsel for Defendants

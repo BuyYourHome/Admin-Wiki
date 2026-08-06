@@ -1,0 +1,19 @@
+[P2] 	This action came before this Court for a hearing on the parties’ cross-motions for summary judgment on May 5, 2016, the undersigned judge presiding.   Upon consideration of the parties’ pleadings, briefs and exhibits, and oral arguments, the Court rules as follows:
+[P3] 1.	The plaintiff’s motion for summary judgment is DENIED.  
+[P4] 2.	The defendants’ motion for summary judgment is GRANTED as to all claims as asserted in the plaintiff’s Amended Complaint, except for Count 8 – the claim of undue influence.  As to that claim, the defendants’ motion for summary judgment is DENIED, the Court finding one of more genuine issues of material fact exist with respect to that claim.
+[P5] SO ORDERED.
+
+[TABLE 1]
+[R1] NORTH CAROLINA | NORTH CAROLINA | GENERAL COURT OF JUSTICE | GENERAL COURT OF JUSTICE | GENERAL COURT OF JUSTICE
+[R2]  |  | SUPERIOR COURT DIVISION | SUPERIOR COURT DIVISION | SUPERIOR COURT DIVISION
+[R3] WAKE COUNTY | WAKE COUNTY | 24CV037077-910 /  | 24CV037077-910 /  | 24CV037077-910 / 
+[R4]  |  |  |  | 
+[R5] BRYNDA GRIFFITH, |  |  | ORDER
+[R6]  |  |  | ORDER
+[R7] Plaintiff, |  |  | ORDER
+[R8]  |  |  | ORDER
+[R9] v. |  |  | ORDER
+[R10]  |  |  | ORDER
+[R11] WESLEY DALE BROWNING, individually, and as Trustee of the 115 ROSEBROOKS REVOCABLE TRUST, and BUY YOUR HOME, LLC, |  |  | ORDER
+[R12]  |  |  | ORDER
+[R13] Defendants. /  |  |  | ORDER

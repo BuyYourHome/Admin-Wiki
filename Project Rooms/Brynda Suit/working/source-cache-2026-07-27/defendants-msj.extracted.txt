@@ -1,0 +1,2079 @@
+
+===== PDF PAGE 1 =====
+NORTH CAROLINA          GENERAL COURT OF JUSTICE            SUPERIOR COURT DIVISION WAKE COUNTY                         24CV037077-910 BRYNDA GRIFFITH,                                         Plaintiff,               v.  
+   BRIEF IN SUPPORT OF DEFENDANTS’ CROSS-MOTION FOR SUMMARY JUDGMENT WESLEY DALE BROWNING, individually, and as Trustee of the 115 ROSEBROOKS REVOCABLE TRUST, and BUY YOUR HOME, LLC,                                                                                Defendants.  
+ 
+   INTRODUCTION This lawsuit is an attempt to unwind the sale-and-leaseback transaction that Plaintiff Brynda Griffith knowingly pursued and executed to stop the foreclosure of her home. Seeking recission, Plaintiff recites claims of fraud, breach of fiduciary duty, unfair and deceptive trade practices, and alternative claims of undue influence and lack of mental capacity. None can survive summary judgment. The undisputed evidence shows that Plaintiff understood the foreclosure, evaluated alternatives, contacted the Defendants, negotiated the deal that allowed her to stay in her home, and executed the documents herself. There is no evidence of deception, control, misuse of a power of attorney, or lack of capacity—nor could there be, given that Plaintiff is prosecuting this action on her own behalf.  Because there is no genuine dispute of any material fact, Defendants are entitled to judgment as a matter of law on all claims. 
+===== PDF PAGE 2 =====
+ 2 
+STATEMENT OF UNDISPUTED FACTS Plaintiff moves to NC alone In late 2019, at age 79, Plaintiff Brynda Griffith moved to North Carolina to be near her sister in hospice care, while her daughter and family remained in Maryland. Exhibit A (Deposition of Natalie Doherty (Excerpts))1 at 27:22-25; 32:16-19; 36:3-9. Ms. Doherty did not support her mother’s decision to move. Id. at 37:22–38:1-25. In November 2019, Plaintiff’s sister passed away, leaving Plaintiff her home located at 115 Rosebrooks Drive in Cary, North Carolina (the “Property”). Exhibit B (Deposition of Plaintiff (Excerpts))2 at 30:7-11; 33:16-22; 44:2-6. Plaintiff moved into the Property shortly after her sister’s death. Id. at 30:7-10. After her sister died, Plaintiff’s closest family member was her only living child, daughter Natalie Doherty. Ex. A (Doherty Dep.) at 24:13–25:13; 33:13-14. Plaintiff’s relationship with Ms. Doherty was “distant.” Ex. B (Pl. Dep.) at 23:10-12. The two spoke infrequently, and Ms. Doherty did not visit Plaintiff during the first five years after Plaintiff moved to North Carolina. Id. at 28:22–29:1-4; 40:5–41:1-4; 45:24–46:6; Ex. B (Pl. Dep.) at 23:21-24.  Plaintiff faces foreclosure Plaintiff took title to the Property subject to an existing home equity line of credit, which was secured by a deed of trust. Ex. B (Pl. Dep.) at 33:16-22; see also 
+ 1  Cited herein as “Ex. A (Doherty Dep.).”  2  Cited herein as “Ex. B (Pl. Dep.).” 
+===== PDF PAGE 3 =====
+ 3 
+Affidavit of Wesley Browning3 ¶ 6. Plaintiff made payments on the line of credit but eventually fell behind. Ex. B (Pl. Dep.) at 36:5-10. On September 13, 2023, Bank of America initiated foreclosure proceedings against the Property. Browning Aff. ¶ 6. Plaintiff was notified of the pending foreclosure and understood that she could lose her home if the foreclosure proceeded. Ex. B (Pl. Dep) at 38:16-18; 42:18-25; 48:20-24; 50:1-9; 51:6-8; 52:6-17; Exhibit C (Deposition of Kevin Huston (Excerpts))4 at 25:1-3. Plaintiff’s attorney, Kevin Huston, whom Plaintiff had retained to assist with her sister’s estate, was also notified of the pending foreclosure. Ex. C (Huston Dep.) at 11:5-7; 30:4-19. Plaintiff considers selling to avoid foreclosure Plaintiff declined to seek her daughter’s assistance during the foreclosure. Ex. A (Doherty Dep.) at 35:12-15; 58:15–59:2. Instead, on September 25, 2023, Plaintiff took prospective purchaser, Duane Wilson, to her attorney’s office to discuss selling the Property to “alleviate the problem of foreclosure.” Ex. C (Huston Dep.) at 33:19–34:3. Mr. Wilson made an offer to purchase the Property, with a potential option of allowing Plaintiff to briefly remain in the home while she found somewhere to live. Id. at 156:19-22. Plaintiff did not accept Mr. Wilson’s offer and continued to consider options, which included purchase offers from “a number of others.” Id. at 36:24-25; Exhibit D (K. Huston email, dated Sep. 25, 2023). 
+ 3  Defendant Browning’s Affidavit is Exhibit A to Defendants’ Cross Motion for Summary Judgment and is cited herein as “Browning Aff.”   4  Cited herein as “Ex. C (Huston Dep.).”  
+===== PDF PAGE 4 =====
+ 4 
+Shortly after he met with Plaintiff and Mr. Wilson, Mr. Huston contacted Plaintiff’s daughter, Natalie Doherty, to discuss Plaintiff’s financial situation. Id. at 54:1-4; 132:9-13. Following the call, Mr. Huston believed that Ms. Doherty was willing to assist her mother financially. Id. at 132:14–133:6. Ms. Doherty, however, provided no financial assistance and did not intervene to stop the foreclosure. Ex. A (Doherty Dep.) at 35:12-15. At no point did Ms. Doherty or Plaintiff contact the other regarding Plaintiff’s financial situation or the pending foreclosure. Id. at 54:7-20; Ex. B (Pl. Dep.) at 40:21-23. In mid- to late-September 2023, Defendant Wesley Browning—the owner of residential property-holding company Buy Your Home, LLC—learned that the Property was in foreclosure. Browning Aff. ¶¶ 2, 6. Interested in possibly purchasing the Property, Buy Your Home mailed five letters to Plaintiff between September 26, 2023, and October 24, 2023, offering to discuss purchasing the Property. Id. ¶¶ 7–8. Plaintiff received similar letters from multiple other individuals and companies around the same time. Ex. B (Pl. Dep.) at 41:16-17; 46:14-24. On October 28, 2023, after deciding that Mr. Browning’s letters were the “most professional,” Plaintiff called Mr. Browning to address the problem of “losing the house.” Id. at 42:21; 50:16–51:5; 54:3; Browning Aff. ¶ 9. This was the first contact between Mr. Browning and Plaintiff outside of the five letters. Browning Aff. ¶ 10. 
+===== PDF PAGE 5 =====
+ 5 
+Mr. Browning and Plaintiff spoke for approximately five minutes and arranged an in-person meeting for the following day to discuss a potential sale of the Property. Id. ¶¶ 11–12. After the call, Mr. Browning prepared a draft purchase and sale agreement for Plaintiff’s consideration. Id. In addition, Mr. Browning prepared a draft leaseback agreement in the event Plaintiff desired to remain in the home after the sale, as had other elderly sellers with whom Buy Your Home had worked. Id. ¶¶ 3, 12. Later that day, Mr. Browning texted Plaintiff to ask where she wanted to meet, and she gave the address of the Property. Id. ¶ 13. The next day, on October 29, 2023, Mr. Browning texted Plaintiff to say he was headed to meet her, and she responded that she was waiting at the front door. Id. ¶ 14. When Mr. Browning arrived, Plaintiff asked that the two go somewhere else to talk to avoid attention from neighbors. Ex. B (Pl. Dep.) at 52:24–53:7. Mr. Browning drove Plaintiff to a nearby location, where the two talked for approximately 45 minutes. Browning Aff. ¶ 15.  Plaintiff and Mr. Browning discussed the foreclosure and Plaintiff’s options regarding the Property. Ex. B (Pl. Dep.) at 77:16-23. Mr. Browning asked, as he did all potential sellers, what Plaintiff needed from him (e.g., whether she wanted to sell, move, or something else). Browning Aff. ¶ 16. Mr. Browning asked because, in some acquisitions, Buy Your Home would allow the seller to lease the home back for a modest amount of rent, most often in the case of elderly sellers who preferred to remain in the home rather than to purchase or rent a new home or move in with family. Id. ¶ 3. In response, Plaintiff stated that she did not have the money to pay 
+===== PDF PAGE 6 =====
+ 6 
+the bank and stop the foreclosure and that she did not have anyone to help her or anywhere to go if the Property were sold. Id. ¶ 16.  Plaintiff sells the home and immediately rents it back  During the October 29 meeting, Mr. Browning, on behalf of Buy Your Home, offered to purchase the Property for the amount owed on the Bank of America note and—at the same time—lease the Property back to Plaintiff for a cost equal to the annual property insurance premium. Id. ¶¶ 18–19. Plaintiff agreed to the proposal and also agreed to meet the next day to sign the documents in the presence of a notary. Id. ¶ 19. Mr. Browning then drove Plaintiff back to the Property and left the draft purchase and sale agreement and proposed leaseback documents with Plaintiff for further review. Id. ¶ 20. The next day, on October 30, 2023, Mr. Browning texted Plaintiff that he was arranging for a notary and asked if she could meet on October 31 at 5:00 p.m. Id. ¶ 21. Mr. Browning also texted that he would arrive early to explain the documents and answer Plaintiff’s questions before signing. Id. ¶ 22. Plaintiff responded in the affirmative. Id.  On October 31, 2023, Mr. Browning texted Plaintiff that he planned to arrive at 4:00 p.m. and that the notary would arrive after 5:00 p.m. Id. ¶ 23. When Mr. Browning arrived, he and Plaintiff reviewed the transaction documents together line-by-line, including the Seller’s Acknowledgements, and Plaintiff was given the opportunity to ask questions. Id. ¶ 24. Plaintiff signed the purchase and sale agreement in front of a notary, conveying the Property to Buy Your Home in 
+===== PDF PAGE 7 =====
+ 7 
+exchange for $22,257.08, which included $100 in cash for earnest money. Id. ¶ 25. Plaintiff also signed a limited power of attorney allowing Mr. Browning to communicate with Bank of America if necessary to stop the foreclosure. Id. ¶ 26.  At the same time Plaintiff executed the purchase agreement, she executed a lease agreement, leasing the Property back from Buy Your Home, LLC at an annual rent equal to the cost of the Property’s annual insurance premium. Id. ¶¶ 19, 28. The lease, which began October 31, 2023, had an initial five-year term, and was renewable in perpetuity at Plaintiff’s sole election. Id. ¶ 28. Thus, the sale-leaseback transaction allowed Plaintiff, who said she had nowhere else to go, to remain in the home for as long as she desired, for only the price of the annual insurance premium. Id. Approximately a month later, Mr. Browning realized that the deed signature had been overlooked. Id. ¶ 33. On November 28, 2023, Mr. Browning texted Plaintiff explaining that a signature was missing and asked to come by to obtain it. Id. ¶ 34. Plaintiff agreed. The same day, Plaintiff executed a North Carolina General Warranty Deed conveying the Property to the 115 Rosebrooks Revocable Trust dated November 30, 2023, which Buy Your Home had established to hold title to the Property. Id. ¶ 35; Ex. B (Pl. Dep.) at 76:20-22 (confirming her signature on the deed).  Plaintiff’s decision to sell stops the foreclosure On November 1, 2023, the Clerk of Superior Court for Wake County entered an order authorizing the foreclosure sale. Browning Aff. ¶ 29. On November 15, 
+===== PDF PAGE 8 =====
+ 8 
+2023, Mr. Browning paid Bank of America $6,266.78 to cure the arrears. Id. ¶ 30. He did so without having to use the power of attorney from Ms. Griffith. Id. ¶ 27. On November 16, 2023, Bank of America filed notice that the foreclosure would not proceed. Id. ¶ 31.  Plaintiff continues to live in the home Plaintiff continued to live in the home for the next year, developing a personal relationship with Mr. Browning and his wife. Browning Aff. ¶ 36. The couple visited Plaintiff, who had moderate physical limitations, and checked on her regularly. Id. ¶ 37. In addition, Mr. Browning drove Plaintiff to medical appointments, assisted with grocery orders, and helped her with technology-related tasks. Id. ¶¶ 38–40; Ex. B (Pl. Dep.) at 64:12-24; 65:18-25; 67:1-6. Throughout this time, Plaintiff managed all her own finances and medical care and made all her own decisions. Browning Aff. ¶ 42.  In September 2024, Ms. Doherty came to North Carolina for the first time since 2019 when her mother had moved from Maryland. During the visit, Mr. Browning and his wife met with Ms. Doherty, who stated that she had not known that Plaintiff had sold the Property. Id. ¶¶ 48–49. Shortly thereafter, Mr. Browning learned that Ms. Doherty had taken Plaintiff to Maryland indefinitely. Id. ¶¶ 51–53. The next communication Mr. Browning received was service of the summons and complaint filed by Ms. Doherty. Id. ¶ 54. Prior to Ms. Doherty’s involvement, Mr. Browning had no reason to believe Plaintiff was anything but satisfied that she had avoided foreclosure and remained in the home. Id. ¶ 55. 
+===== PDF PAGE 9 =====
+ 9 
+RELEVANT PROCEDURAL HISTORY On November 18, 2024, Natalie Doherty initiated this action seeking recission of the sale of the Property, purportedly on her mother’s behalf. See generally Compl. At the same time, Ms. Doherty petitioned for and received an order appointing herself as Plaintiff’s guardian ad litem. See Pet. for Guardian ad Litem Order; Order Appointing Guardian ad Litem, dated Nov. 19, 2024 (the “GAL Order”). On January 29, 2025, Defendants moved to vacate the GAL Order as void on the grounds that it was entered without notice, without a hearing, and without any judicial finding that Plaintiff was incompetent or otherwise lacked capacity to prosecute the action on her own behalf. See Defs.’ Mot. to Set Aside GAL Order. Plaintiff ultimately consented to the motion, and the Court set aside the GAL Order on March 18, 2025. On April 7, 2025, Plaintiff filed an amended complaint, proceeding on her own behalf. The amended complaint is otherwise verbatim the one initially filed by Ms. Doherty. Compare Compl., with Am. Compl. GOVERNING STANDARD Summary judgment is properly granted if the pleadings, depositions, answers to interrogatories, admissions, and affidavits show the movant is entitled to judgment as a matter of law. N.C. Gen. Stat. § 1A-1, Rule 56(c). A defendant is entitled to summary judgment when discovery shows that a plaintiff cannot produce evidence to support an essential element of their claim. Draughon v. Harnett Cnty. Bd. of Educ., 158 N.C. App. 208, 212, 580 S.E.2d 732, 735 (2003), aff’d, 358 N.C. 131, 591 S.E.2d 521 (2004). 
+===== PDF PAGE 10 =====
+ 10 
+ARGUMENT I. Summary judgment is warranted on the four claims premised on breach of fiduciary duty because Plaintiff conveyed the property herself, outside any fiduciary relationship. Plaintiff’s claims for breach of fiduciary duty (Count 1), constructive fraud (Count 3), civil conspiracy (Count 4), and declaratory judgment (Count 10) all rest on the same erroneous premise: that Mr. Browning breached a fiduciary duty by using a power of attorney given by Plaintiff to convey the Property on Plaintiff’s behalf to his own trust. Specifically, Plaintiff alleges that Mr. Browning “exercised his fiduciary authority to facilitate the conveyance of the Property on behalf of Plaintiff, selling the Property for well below fair market value,” thus “benefitting himself.” Am. Compl. ¶ 25 (emphasis added); see also id. ¶ 26 (alleging that “[b]y using his authority to facilitate this transaction, Mr. Browning used his position as a fiduciary for his personal benefit”); id. ¶¶ 37–42 (same) (constructive fraud); id. ¶¶ 47–48 (same) (civil conspiracy); id. ¶ 72 (same) (declaratory judgment).  It is axiomatic that “[f]or a breach of fiduciary duty to exist, there must first be a fiduciary relationship between the parties.” Duffy v. Camp, 287 N.C. App. 46, 60, 882 S.E.2d 675, 689–90 (2022) (quoting Dalton v. Camp, 353 N.C. 647, 651, 548 S.E.2d 704, 707 (2001)). Notably here, the only fiduciary relationship Plaintiff alleges is the one arising out of the power of attorney. Thus, for there to be grounds for Plaintiff to allege a breach of fiduciary duty—one arising out of the sale of real property—the agent must have acted on behalf of their principal in the sale. In other words, no breach of fiduciary duty claim lies unless Mr. Browning exercised his authority as Plaintiff’s attorney-in-fact to convey the Property on Plaintiff’s 
+===== PDF PAGE 11 =====
+ 11 
+behalf. As explained more fully below, the undisputed evidence establishes that that is not the case. Instead, Plaintiff conveyed the Property on her own behalf. On their face, all the documents related to the sale of the property including the Seller’s Acknowledgment, the Purchase and Sales Agreement, and the Deed, plainly contradict Plaintiff’s core allegation that Mr. Browning conveyed the Property on Plaintiff’s behalf. Mr. Browning signed the documents for the buyer. He did not, however, sign any of those documents on behalf of Plaintiff, the seller. Rather, Plaintiff signed each document on her own behalf. See Browning Aff., Exs. 3, 4, 8; see also Ex. C (Huston Dep.) at 63:13–65:19 (testifying that Plaintiff “signed [the purchase and sales agreement and the deed] herself” and “conclud[ing] that there is no agent who has signed for Brynda Griffith”). Plaintiff likewise entered into the leaseback agreement on her own behalf. Id., Ex. 5. In addition, all Plaintiff’s signatures were notarized.  The simple, indisputable fact that she executed the sale herself is fatal to all of four of Plaintiff’s claims predicated on an alleged breach of a fiduciary duty.  Plaintiff’s attempts to plead around her own execution of the sales documents are futile. Specifically, Plaintiff alleges that Mr. Browning “facilitated” the sale-and-leaseback transaction. However, the fact that Mr. Browning may have facilitated the transaction by, among other things, preparing the documents, hiring a notary, and recording a deed does not implicate a fiduciary duty and cannot establish breach. Indeed, this transaction was no different in that respect from any other 
+===== PDF PAGE 12 =====
+ 12 
+residential real estate transaction or consumer commercial transaction in which one party takes the lead on handling certain aspects of the transaction.   Further, Plaintiff cannot prove that Mr. Browning used his position as attorney-in-fact to “influence” Plaintiff to sell the Property at an allegedly discounted price. See Am. Compl. ¶ 40. The power of attorney did not preexist the negotiations or Plaintiff’s execution of the sales agreement. Rather, the power of attorney was signed in conjunction with the sale of the Property, in case Mr. Browning needed it to communicate with the bank to pay the debt and halt the foreclosure. See Browning Aff. ¶¶ 26–27. The fact that Plaintiff gave that power of attorney in conjunction with the sale cannot give rise to a breach of fiduciary duty claim arising out of the sale.5 Moreover, there is no evidence in the record that Mr. Browning ever actually exercised the power of attorney—much less to convey the property or lease it back to Plaintiff.6 To the contrary, the only evidence in the record is that Mr. Browning never used the power of attorney at all. Id. ¶ 27; Ex. C (Huston Dep.) at 65:23–66:2 (testifying that he had no reason to believe that Mr. Browning had ever used the power of attorney).  
+ 5  The fact that Plaintiff gave the power-of-attorney in conjunction with the sale does not morph her undue influence claim (Count 8) into one for breach of fiduciary duty.  6  Plaintiff’s attorney, Kevin Huston, testified that the signature pages of the purchase and sale agreement and the deed indicated that Plaintiff had signed on her own behalf and not, as the amended complaint alleges, through an agent. See Ex. C (Huston Dep.) at 63:2–65:19. 
+===== PDF PAGE 13 =====
+ 13 
+Because the undisputed evidence shows that Plaintiff personally conveyed the property on her own behalf, there is no genuine issue of material fact for Plaintiff’s claims for breach of fiduciary duty, constructive fraud, civil conspiracy, or declaratory relief. Defendants are therefore entitled to summary judgment on Counts 1, 3, 4, and 10. 
+II. Summary judgment is appropriate on Plaintiff’s claims of fraud and unfair and deceptive trade practices because the record contains no evidence of deception or misrepresentation. Plaintiff’s claims for fraud (Count 2) and unfair and deceptive trade practices (Count 9) both rest on the core allegation that Mr. Browning concealed material information from Plaintiff to induce her to enter the sale-and-leaseback transaction. In a key allegation, Plaintiff alleges that Mr. Browning committed fraud by concealing material facts and coercing her to sign documents under the “guise that [Defendants] were helping Plaintiff get up to date on the obligations of the Property.” See, e.g., Am. Compl. ¶ 31. While Plaintiff fails to specifically allege what, if any, material facts were concealed from her, she alleges that she believed Mr. Browning was (merely) loaning her the money to pay off the equity line debt. Id. ¶ 18. She further alleges that the Defendants’ conduct constitutes unfair or deceptive trade practices. Id. ¶¶ 66–69.  Allegations of fraud and deception require more particularity than what is set forth in Plaintiff’s amended complaint, but at the summary judgment stage, even well-pleaded allegations are not enough. These claims require evidentiary support to create an issue of material fact.  
+===== PDF PAGE 14 =====
+ 14 
+“The essential elements of fraud are: (1) [f]alse representation or concealment of a . . . material fact, (2) reasonably calculated to deceive, (3) made with intent to deceive, (4) which does in fact deceive, (5) resulting in damage to the injured party.” See, e.g., Hardin v. KCS Int’l, Inc., 199 N.C. App. 687, 696, 682 S.E.2d 726, 733 (2009) (quoting Phelps–Dickson Builders, L.L.C. v. Amerimann Partners, 172 N.C. App. 427, 437, 617 S.E.2d 664, 670 (2005)). Plaintiff must produce evidence of each of these elements in order to survive summary judgment. Similarly, a voluntarily negotiated transaction, like the one here, requires evidence of deceptive or coercive conduct to avoid summary judgment on an unfair or deceptive trade practice claim. Bumpers v. Cmty. Bank of N. Va., 367 N.C. 81, 91–92, 747 S.E.2d 220, 228 (2013). As discussed more fully below, no genuine issue of material fact exists. As an initial matter, Plaintiff is unable to identify any statement by Mr. Browning mischaracterizing the transaction as a loan to her. To the contrary, Plaintiff acknowledged with her initials and signature that the agreement was “for the outright sale of The Property and is not intended to be a loan of any kind:” 
+ Browning Aff., Ex. 3, ¶ 8 (Seller’s Acknowledgments). This would explain, of course, why Plaintiff never made any payments on a “loan,” and, instead, received money from Mr. Browning in the transaction. See id. ¶ 25.  Moreover, the record reflects Plaintiff’s deliberate decision to pursue a sale of the Property to avoid foreclosure, coupled with a leaseback that would allow her to remain in the home. Plaintiff’s own attorney testified that Plaintiff understood that 
+
+===== PDF PAGE 15 =====
+ 15 
+she might lose her house if the foreclosure proceeded, and that “selling the house would . . . alleviate the problem of foreclosure.” Ex. C (Huston Dep.) at 139:16-19; 138:19-21 (testifying that Plaintiff “did understand she was facing foreclosure”); 139:3-6 (testifying that Plaintiff “understood” that “she may lose her house in a foreclosure sale”). Consistent with that understanding, Plaintiff explored at least two offers to purchase the Property. In September 2023—approximately a month before meeting Mr. Browning—Plaintiff met with a prospective purchaser, Duane Wilson, together with her attorney, Mr. Huston. Ex. C (Huston Dep.) at 33:14–34:3. Mr. Wilson made an offer to purchase the Property, which Plaintiff discussed with counsel and ultimately declined. Id. at 41:18–42:18. Plaintiff continued exploring her options. During this same period, Plaintiff received multiple unsolicited letters from other potential buyers like Mr. Wilson, including from Mr. Browning. Ex. B (Pl. Dep.) at 41:16-17. Plaintiff recognized that these communications were generated by her foreclosure status and understood that she was at risk of losing her home. Id. (“I was getting a lot of those things in the mail, where people want to buy your house.”).  After declining Mr. Wilson’s offer, Plaintiff, preferring to deal with someone local and believing his letters to be the “most professional,” initiated contact with Mr. Browning to set up a meeting. Id. at 50:25–51:5; 54:1-6. When Mr. Browning arrived as scheduled, Plaintiff requested the meeting take place privately, away from her neighbors. Id. at 53:2-7. Two days after the meeting, Plaintiff reviewed the 
+===== PDF PAGE 16 =====
+ 16 
+sale-and-leaseback documents line by line and executed them in the presence of a notary. Browning Aff. ¶¶ 15, 18–25. Those documents unambiguously reflect a sale of the property intended to cure the foreclosure default, followed by a leaseback that allowed Plaintiff to remain in the home at rent equal to the cost of homeowners’ insurance. See id., Ex. 4 (Purchase and Sales Agreement); id., Ex. 5 (Lease Agreement).  In sum, nothing in the record—testimony or otherwise—supports any claim that Mr. Browning represented the transaction as a loan or otherwise concealed material facts about the sale-and-leaseback transaction. Summary judgment is therefore warranted on Counts 2 and 9. A. Plaintiff’s argument that this is a “foreclosure rescue transaction” fails as a matter of law.  In support of her motion for summary judgment, Plaintiff contends that the sale-and-leaseback constitutes a “foreclosure rescue transaction” under N.C. Gen. Stat. § 75-120(3), subjecting Defendants to the safe-harbor requirements of § 75-121. See Pl. Supp. Br. pp. 7–8. But the transaction does not meet the statutory definition. A “foreclosure rescue transaction” requires, among other elements, that “[t]he transferor retains a tenancy interest, an interest under a lease with option to purchase agreement, or an option to reacquire the property.” N.C. Gen. Stat. § 75-120(3)(d). The operative word is “retains.” Under well-established North Carolina law, to “retain” an interest in property is to hold back or reserve something from the conveyance—to except it from the transfer so that it never passes to the grantee in 
+===== PDF PAGE 17 =====
+ 17 
+the first place. See, e.g., Sparks v. Choate, 22 N.C. App. 62, 63, 205 S.E.2d 624, 625 (1974); Vance v. Pritchard, 213 N.C. 552, 197 S.E. 182 (1938); see also Retain, Black’s Law Dictionary (12th ed. 2024) (“To hold in possession or under control; to keep and not lose, part with, or dismiss.”). In other words, a retained interest is one that remains with the grantor because the instrument of conveyance did not include it. See Sparks, 22 N.C. App. at 63, 205 S.E.2d at 625. Sparks is instructive. There, the plaintiff and other co-tenants conveyed a tract of land by “general warranty deed, without exception.” Id. at 62–63, 205 S.E.2d at 625. The plaintiff warranted “that the land was free and clear of all encumbrances, and that plaintiff would defend title to the tract against the claim of all persons whomsoever.” Id. at 63, 205 S.E.2d at 625. The plaintiff later attempted to claim an easement of right of way across the conveyed property, relying on a reservation in an 1898 deed from an independent source. Id. The Court of Appeals held that the plaintiff was estopped from “seeking to retain an interest in property which he had heretofore conveyed with full warranty.” Id. The principle is straightforward: once a grantor conveys property by full warranty without reserving a particular interest, the grantor has parted with the entire estate and cannot later claim to have retained that interest. That principle controls here, albeit in a different posture. Plaintiff conveyed the Property by general warranty deed, covenanting that the Property was “free and clear of all encumbrances” and warranting that she would “defend the title 
+===== PDF PAGE 18 =====
+ 18 
+against the lawful claims of all persons whomsoever, other than the following exceptions: easements, covenants, and restrictions of record.”  
+ Browning Aff., Ex. 8 (Deed).  To be sure, the deed here is not entirely “without exception” as in Sparks—it contains the standard title exception for recorded encumbrances. But that exception is not a reservation of a tenancy interest, a possessory right, or any other interest that Plaintiff held back for herself. It is a conventional qualifier acknowledging preexisting encumbrances that run with the land—nothing more. The deed contains no language reserving a life estate, a term of years, a right of reentry, or any other “tenancy interest” in favor of the grantor. Plaintiff conveyed the full fee simple estate and retained nothing. Only after the conveyance was complete did Plaintiff enter into a separate lease agreement under which Defendants—as the new owners of the fee—granted Plaintiff a tenancy interest in the Property. See Browning Aff., Ex. 5 (Lease Agreement). That tenancy interest was not carved out of Plaintiff's original estate and held back; it was a new interest, independently created by the Defendants and conferred upon Plaintiff by a separate instrument. In sum, Plaintiff did not “retain” a tenancy interest within the meaning of § 75-120(3)(d). She relinquished all of her 
+
+===== PDF PAGE 19 =====
+ 19 
+property interests and then received a new and independent possessory interest from the Defendants. Furthermore, the General Assembly’s use of the word “retains” was deliberate. The legislature knew how to describe a possessory interest that arises after a transfer—indeed, subsection (3)(d) itself separately identifies “an interest under a lease with option to purchase agreement,” recognizing a distinct category of post-transfer arrangement. Had the General Assembly intended subsection (3)(d) to reach any arrangement in which a transferor continues to occupy the property after a conveyance, regardless of how that occupancy interest arose, it could have said so. It could have written “the transferor continues to occupy the property,” or “the transferor obtains a tenancy interest,” or “the transferor possesses a tenancy interest following the transfer.” It did none of these things. Instead, it chose a term with established meaning in property law—“retains”—and this Court should give that term its ordinary legal significance. See State v. Dye, 139 N.C. App. 148, 152, 532 S.E.2d 574, 577 (2000) (“In interpreting statutory language, it is presumed the General Assembly intended the words it used to have the meaning they have in ordinary speech, and when the plain meaning is unambiguous, a court should go no further in interpreting the statute than its ordinary meaning.”) (quotations and citations omitted). Moreover, Plaintiff’s reading violates the rule against surplusage. If “tenancy interest” encompassed all leases, the second prong of subsection (3)(d)—“an interest under a lease with option to purchase agreement”—would be entirely superfluous 
+===== PDF PAGE 20 =====
+ 20 
+because a lease-option is itself a lease. See State v. Morgan, 372 N.C. 609, 614, 831 S.E.2d 254, 258 (2019) (explaining “that a statute may not be interpreted in a manner which would render any of its words superfluous”). The only reading of subsection (3)(d) that gives each prong independent meaning is if “tenancy interest” refers to a possessory interest retained by the transferor in the conveyance itself, while “an interest under a lease with option to purchase agreement” refers to a distinct contractual arrangement.  Accordingly, the Court should reject Plaintiff’s attempt to reframe this transaction as a “foreclosure rescue.” 
+III. Summary judgment is appropriate on Plaintiff’s alternative mental-incapacity claims because Plaintiff is estopped from asserting them and offers no supporting evidence. Plaintiff’s claim in the alternative for mental incompetency or incapacity (Count 7) fails as a matter of law for two independent reasons. First, Plaintiff is estopped under North Carolina law from challenging the validity of those documents on incapacity grounds while prosecuting this action on her own behalf. But even if her claim was not estopped, it would fail for a second, independent reason: Plaintiff has produced no evidence that she lacked the mental capacity to execute the deed conveying the Property or enter the sale-and-leaseback transaction.  A. Plaintiff is estopped from asserting lack of capacity or incompetency. Plaintiff’s incapacity claim fails because she is estopped from asserting it. North Carolina courts have long held that a party who prosecutes an action in her 
+===== PDF PAGE 21 =====
+ 21 
+own name is estopped from contending that she lacked mental capacity to execute a prior conveyance. See Davis v. Davis, 223 N.C. 36, 38, 25 S.E.2d 181, 183 (1943). As the Supreme Court of North Carolina explained in Davis, a litigant who “is mentally competent to assert h[er] rights and protect h[er] interest at the present time . . . is estopped from challenging the validity of [the deed in question].” Id. Here, Plaintiff is prosecuting this action on her own behalf, with counsel, seeking affirmative relief. See Am. Compl. Having done so, she cannot repudiate the legal capacity required to execute the sale-and-leaseback transaction at issue. Plaintiff’s claim for mental incompetency or incapacity therefore fails as a matter of law. See Davis, 223 N.C. at 38, 25 S.E.2d at 183. B. There is no evidence that Plaintiff lacked capacity or was incompetent. Even if Plaintiff were not estopped from challenging the transaction for lack of capacity, her claims would still fail. Under North Carolina law, the capacity to execute a deed requires that the grantor: “(1) comprehend[ ] the natural objects of his bounty, (2) understand[ ] the kind, nature and extent of his property, (3) know[ ] the manner in which he desires his act to take effect, and (4) realize[ ] the effect his act will have upon his estate.” Jones v. Corn, 293 N.C. App. 596, 604, 902 S.E.2d 17, 24 (2024). The burden of proving lack of mental capacity rests with the party asserting it. Ridings v. Ridings, 55 N.C. App. 630, 633, 286 S.E.2d 614, 616 (1982), disc. rev. denied, 305 N.C. 586, 292 S.E.2d 571 (1982). Plaintiff has failed to meet that burden. The undisputed record shows that Plaintiff understood her home was in foreclosure, appreciated that she could lose 
+===== PDF PAGE 22 =====
+ 22 
+the property if the foreclosure proceeded, discussed available options, reviewed written transaction documents, and executed those documents herself in the presence of a notary. Nothing in the record—medical or otherwise—suggests that Plaintiff failed to comprehend the nature, purpose, or effect of the deed or related agreements at the time she signed them. See Jones, 293 N.C. App. at 604, 902 S.E.2d at 24 (stating that a lack-of-capacity claim requires “evidence concerning the grantor’s capacity when the grantor executed the deed”). Plaintiff’s incapacity claim is further undermined by undisputed evidence of her legal functioning both before and after the challenged transaction. In 2019, Plaintiff, as executor of her sister’s estate, retained attorney Kevin Huston to represent the estate. Ex. C (Huston Dep.) at 10:25–11:7. While Mr. Huston had concerns over the years that certain estate tasks were “difficult” for Plaintiff, Mr. Huston never identified a conflict between Plaintiff as executor and the beneficiaries of the estate. Id. at 27:6-19; 28:5-24.  In short, Mr. Huston made the repeated determination that Plaintiff was able to fulfill her fiduciary duties to the estate beneficiaries. Accordingly, he took no action to remove Plaintiff as executor. Id. at 27:6-19 (explaining that he would have consulted a fellow attorney if he had suspected that Plaintiff was unable to continue to serve as executor); see also N.C. Gen. Stat. § 28A-9-1 (providing the grounds and means to remove the executor of an estate). And Plaintiff—with the estate’s attorney’s continued approval—proceeded to administer the estate between her 
+===== PDF PAGE 23 =====
+ 23 
+appointment as executor in 2019 through the execution of the sale-and-leaseback transaction in October 2023. Ex. C (Huston Dep.) at 10:25–11:7; 27:6-19–28:25. In addition, in September 2024—almost a year after executing the deed and sale-and-leaseback agreements—Plaintiff executed a will in the presence of Mr. Huston, who determined that Plaintiff possessed testamentary capacity. Ex. C (Huston Dep.) at 69:5–71:22.  Although testamentary capacity is a lower standard than the capacity required to execute a deed or contract, Plaintiff’s later execution of a will is nevertheless relevant.7 It confirms that Plaintiff continued to function independently in legally significant decision-making and undermines the allegation that she was broadly mentally incompetent at the time of the sale-and-leaseback transaction. See Jones, 293 N.C. App. at 604, 902 S.E.2d at 24–25 (“General statements about a grantor’s deteriorating health, alone, are insufficient to show a lack of capacity.”). This is the same independent functioning and decision-making that Mr. Browning witnessed in the year following the transaction. Browning Aff. ¶¶ 36–43. Plaintiff has offered no evidence of any intervening recovery, treatment, or change in condition between October 2023 and September 2024 that would reconcile her incapacity claim with her subsequent execution of estate-planning documents. 
+ 7  Under North Carolina law, testamentary capacity requires a person to understand the nature of making a will, the extent of her property, and the disposition she intends to make. In re Will of Sechrest, 140 N.C. App. 464, 473, 537 S.E.2d 511, 517 (2000). 
+===== PDF PAGE 24 =====
+ 24 
+The record instead reflects continuity of cognitive functioning, not incapacity. For either reason, Defendants are entitled to summary judgment on Count 7. 
+IV. Summary judgment is appropriate on Plaintiff’s alternative claim of undue influence because the record contains no evidence that the sale and leaseback transaction was the result of “fear or force.” The record also forecloses Plaintiff’s alternative undue influence claim (Count 8). Undue influence is “the exercise of an improper influence over the mind and will of another to such an extent that his professed act is not that of a free agent, but in reality is the act of the third person who procured the result.” Yurek v. Shaffer, 198 N.C. App. 67, 80, 678 S.E.2d 738, 746–47 (2009) (quoting Stephenson v. Warren, 136 N.C. App. 768, 772, 525 S.E.2d 809, 812 (2000)). To establish undue influence, a plaintiff must show “(1) a person who is subject to influence; (2) an opportunity to exert influence; (3) a disposition to exert influence; and (4) a result indicating undue influence.” In re Will of Dunn, 129 N.C. App. 321, 328, 500 S.E.2d 99, 104 (1998). To survive summary judgment, a plaintiff must “present sufficient evidence to demonstrate [defendant] had exerted influence on [the grantor] to the extent that ‘the end reached is tantamount to the effect produced by the use of fear or force.’” In re Estate of Blue, No. COA23-505, 2024 WL 158257, at *6 (N.C. Ct. App. Jan. 16, 2024) (unpublished) (quoting In re Will of Jones, 362 N.C. 569, 574, 669 S.E.2d 572, 577 (2008)). Where, like here, “there is no confidential or fiduciary relationship, the burden of proof remains upon the party alleging undue influence.” Curl v. Key, 64 N.C. App. 139, 143, 306 S.E.2d 818, 821 (1983), rev’d on other grounds, 311 N.C. 
+===== PDF PAGE 25 =====
+ 25 
+259, 316 S.E.2d 272 (1984). As described more fully below, Plaintiff has not carried that burden.  A.  Plaintiff has not shown she was subject to influence. North Carolina law presumes that every individual has the capacity to transact business “in the absence of evidence to the contrary.” See Davis, 223 N.C. at 38 25 S.E.2d at183. Plaintiff here offers no evidence to the contrary. Specifically, Plaintiff has identified no evidence of cognitive impairment, mental illness, physical infirmity, or diminished capacity affecting her at the time of the transaction.  Moreover, the evidence shows that at the time of the transaction, Plaintiff understood the precarious situation she faced in foreclosure and proactively sought out offers to buy the Property. See supra at pp 3–4. After considering at least one other offer, Plaintiff executed the transaction documents in the presence of a notary and raised no concern that she was acting under pressure or against her will. See Herrin v. Herrin, No. COA10-1367, 2011 WL 2848847, at *3 (N.C. Ct. App. July 19, 2011) (unpublished) (giving weight to the fact that plaintiff did not indicate to the notary that she was not exercising her own free will).  Plaintiff’s age alone, without more, cannot create a triable issue. See Curl, 64 N.C. App. at 143, 306 S.E.2d at 821 (finding that grantors were not susceptible to undue influence where there was no showing that they were “physically or mentally disabled in any way”).    
+===== PDF PAGE 26 =====
+ 26 
+B.  Plaintiff has not shown Mr. Browning had the opportunity to exert influence.  The record is devoid of any evidence that Mr. Browning had the type of relationship with Plaintiff that would have provided the access, proximity, or position of trust necessary to overpower her free will. See Andrews, 299 N.C. at 55, 261 S.E.2d at 200 (identifying as relevant factors whether the grantor was “in the home of the beneficiary and subject to [the beneficiary’s] constant association and supervision” and whether “others ha[d] little or no opportunity to see” the grantor). Mr. Browning did not live with Plaintiff, manage her affairs, control her access to family or advisors, or occupy any position of special trust or responsibility. Cf. Curl, 64 N.C. App. at 143, 306 S.E.2d at 821 (finding no confidential relationship where the defendant “was not a blood relative,” and “occupied no position of special trust or responsibility as to the plaintiffs”).  Instead, Mr. Browning’s acquaintance with Plaintiff was brief, recent, and purely transactional—spanning only 3 days. Browning Aff. ¶¶ 9–10, 20, 25. In total, Mr. Browning spent no more than an hour and forty-five minutes with Plaintiff before she executed the sale and leaseback documents. Id. ¶¶ 20–24. Such limited, arm’s-length contact is insufficient to establish that Mr. Browning substituted his will for Plaintiff’s or controlled her decision-making process.  C.  Plaintiff has not shown a disposition to exert influence. Plaintiff asks the Court to infer wrongful intent from the mere fact that a transaction occurred, but the law does not permit such an inference. Dunn, 129 N.C. 
+===== PDF PAGE 27 =====
+ 27 
+App. 321 at 328, 500 S.E.2d at 104 (requiring affirmative evidence of opportunity, disposition, and actual exercise of influence over the grantor’s free will). There is nothing in the record suggesting that Mr. Browning sought to manipulate Plaintiff, discouraged her from obtaining independent advice, made misrepresentations about the Property’s value or Plaintiff’s alternatives, or otherwise engaged in conduct aimed at overcoming her free agency.  D.  The sale-and-leaseback, under the threat of foreclosure for Plaintiff who had nowhere else to go, does not reflect a result indicating undue influence.  Finally, the sale price does not give rise to a “result indicating undue influence” when considered in context—that Plaintiff faced foreclosure, had nowhere else to go, and wanted to stay in her home. Dunn, 129 N.C. App. 321 at 328, 500 S.E.2d at 104. A property owner facing foreclosure has an obvious and independent reason to accept a below-market price: to salvage whatever equity remains before the lender forecloses and the owner receives nothing or faces a deficiency. In other words, a discounted sale price is not evidence of an overborne will; it is the predictable consequence of a distressed sale. Cf. Curl, 64 N.C. App. at 142–44, 306 S.E.2d at 820–21 (considering whether independent consideration existed for the transaction and whether the circumstances otherwise explained the transfer).   The additional context here is that Plaintiff wanted to stay in her home, and Mr. Browning provided her a way to do that, as he had other elderly sellers. See Browning Aff. ¶¶ 3, 12. The discounted price must be considered alongside the 
+===== PDF PAGE 28 =====
+ 28 
+generous terms of rent for life Mr. Browning gave Plaintiff, for the rest of her life if she desired. In sum, Plaintiff’s evidence amounts to an elderly person selling her home at a discount while facing foreclosure—a distressed sale, not undue influence. Plaintiff has failed to forecast evidence that Mr. Browning exerted any influence over her, let alone influence “tantamount to the effect produced by the use of fear or force.” Blue, 2024 WL 158257, at *6. While the circumstances of facing foreclosure and no alternative living arrangements certainly could cause some fear for Plaintiff, Mr. Browning was not the cause. To the contrary, he offered her a way out—avoid foreclosure and stay for life if desired at minimal rent. Summary judgment is therefore appropriate on Count 8. 
+V. Summary judgment is appropriate on the remaining claims for quiet title, punitive damages, and declaratory judgment because Plaintiff’s underlying claims fail as a matter of law. Plaintiff’s remaining claims—for quiet title (Count 5), punitive damages (Count 6), and declaratory judgment (Count 10)—are not independent causes of action. Each is expressly dependent on the existence of underlying unlawful conduct. Under North Carolina law, when the substantive claims fail, derivative claims seeking to undo a transaction, punish defendants, or obtain declaratory relief necessarily fail as well. See, e.g., Bryant v. Wake Forest Univ. Baptist Med. Ctr., 281 N.C. App. 630, 645, 870 S.E.2d 269, 279 (2022) (“[P]unitive damages do not and cannot exist as an independent cause of action, but are mere incidents of the cause of action.”); Abitol v. Clark, 296 N.C. App. 557, 561, 910 S.E.2d 10, 13 (2024) 
+===== PDF PAGE 29 =====
+ 29 
+(stating that a “controversy must exist between the interested parties both at the time of filing and at the time of hearing at which the matter comes before the trial court”). Summary judgment is appropriate on Counts 5, 6, and 10. A.  Quiet Title. Under N.C. Gen. Stat. § 41-10, any person claiming an interest in real property may bring an action to determine adverse claims and quiet title. See N.C. Gen. Stat. § 41-10. Where the challenged conveyance is valid and no underlying wrongdoing is shown, there is no basis to disturb legal title. See Walter v. Walter, 275 N.C. App. 956, 966, 853 S.E.2d 318, 325 (2020) (explaining that a quiet title action requires an “underlying theory of relief”). Here, Plaintiff’s quiet title claim depends entirely on her allegations of breach of fiduciary duty, fraud, undue influence, and incapacity. As shown above, those claims fail as a matter of law. The undisputed evidence likewise establishes that Plaintiff executed the deed herself, in her own name and on her own behalf. In the absence of any invalidity in the conveyance, Plaintiff cannot quiet title against Defendants, and summary judgment is appropriate on Count 5. B.  Punitive Damages. Punitive damages are not a standalone cause of action under North Carolina law. Rather, they are available only upon proof of an underlying tort accompanied by aggravating factors such as fraud, malice, or willful or wanton conduct. See N.C. Gen. Stat. § 1D-15(a); see also Iadanza v. Harper, 169 N.C. App. 776, 783, 611 
+===== PDF PAGE 30 =====
+ 30 
+S.E.2d 217, 223 (2005) (“If the injured party has no cause of action independent of a supposed right to recover punitive damages, then he has no cause of action at all.”). Because Plaintiff cannot establish any underlying tort, her claim for punitive damages necessarily fails, and Count 6 must be dismissed as a matter of law. C.  Declaratory Judgment. The North Carolina Declaratory Judgment Act, N.C. Gen. Stat. § 1-253 et seq., does not create substantive rights; it provides a procedural vehicle for resolving actual controversies where legal rights are genuinely in dispute. Abitol, 296 N.C. App. at 561, 910 S.E.2d at 13. Where a declaratory claim merely restates failed substantive theories, no actual controversy remains for resolution, and summary judgment is appropriate. See id. Here, Plaintiff’s declaratory judgment claim seeks a declaration invalidating the same transaction she challenges through her substantive causes of action. Because those claims fail on the undisputed facts, no actual controversy remains for declaratory relief. Summary judgment is therefore warranted on Count 10.          
+===== PDF PAGE 31 =====
+ 31 
+ This, the 30th day of April, 2026.  POYNER SPRUILL LLP By:     /s/ Keith H. Johnson  Keith H. Johnson N.C. State Bar No. 17885 kjohnson@poynerspruill.com Stephanie L. Gumm N.C. State Bar No. 53485 sgumm@poynerspruill.com P.O. Box 1801 Raleigh, NC 27602-1801 Telephone: 919.783.1013 Facsimile: 919.783.1075  Counsel for Defendants   
+===== PDF PAGE 32 =====
+ 32 
+CERTIFICATE OF SERVICE The undersigned hereby certifies that in accordance with Rule 5(b)(1), a copy of the foregoing Defendants’ Brief in Support Motion for Summary Judgment was served by Odyssey and by email before 5:00 p.m. ET on the following individuals:  Douglas D. Noreen Carter B. Cole HOWARD STALLINGS LAW FIRM dnoreen@howardstallings.com  ccole@howardstallings.com   Counsel for the Plaintiff  This, the 30th day of April, 2026.            /s/ Keith H. Johnson         Keith H. Johnson   
+===== PDF PAGE 33 =====
+1
+NORTH CAROLINA                GENERAL COURT OF JUSTICE
+WAKE COUNTY                   SUPERIOR COURT DIVISION
+                              Case:  24CV037077-910
+BRYNDA GRIFFITH
+          Plaintiff
+          v.
+WESLEY DALE BROWNING, Individually
+and as Trustee of the 115
+ROSEBROOKS REVOCABLE TRUST
+and BUY YOUR HOME, LLC
+          Defendants.
+          Pursuant to Notice, the deposition of
+NATALIE DOHERTY was taken remotely on Tuesday, June
+10, 2025, commencing at 10:10 a.m. ET, via Zoom
+videoconference before Jacqueline Kimball, a
+Registered Professional Reporter and Notary Public.
+Job:  303473
+===== PDF PAGE 34 =====
+NATALIE DOHERTY June 10, 2025
+DISCOVERY COURT REPORTERS    www.discoverydepo.com 1-919-424-8242
+24
+1      Q.   Do you have children?
+2      A.   Yes.
+3      Q.   How old are they?
+4      A.   Twenty-three and 19.
+5      Q.   Boys or girls?
+6      A.   Two girls.
+7      Q.   Your father, is he deceased?
+8      A.   Yes.
+9      Q.   When did he pass away?
+10      A.   2011, I believe.  I should know that.
+11      Q.   Around 2011?
+12      A.   Yes.  I'm sorry, 2011 or 2012, I'm not sure.
+13      Q.   Were your parents married at the time that
+14 he was deceased?
+15      A.   No.
+16      Q.   When did they divorce?
+17      A.   I was nine or 10, so 1980-ish.
+18      Q.   Did your mother ever remarry?
+19      A.   Yes.
+20      Q.   When did she remarry?
+21      A.   Probably '84 or '85 or '86, around then, I'm
+22 not sure.
+23      Q.   Her second husband, is he still living?
+24      A.   My father was her second husband.  Her third
+25 husband is not living, no.
+===== PDF PAGE 35 =====
+NATALIE DOHERTY June 10, 2025
+DISCOVERY COURT REPORTERS    www.discoverydepo.com 1-919-424-8242
+25
+1      Q.   So when did her third husband pass away?
+2      A.   I don't know exactly, they were already
+3 divorced.
+4      Q.   What I'm trying to get a sense of is how
+5 long has she lived on or around without a spouse?
+6      A.   I was in college in the '90s and she was
+7 already single then.
+8      Q.   And she hasn't been remarried since then?
+9      A.   No.
+10      Q.   So she's been living as a single woman since
+11 sometime in the 1990?
+12      A.   Yes, as far as I can remember, yes.  I'm not
+13 a hundred percent sure when they divorced.  I believe
+14 it was in the '90s.
+15      Q.   We're talking about the third husband?
+16      A.   Yes.
+17      Q.   How many times was she divorced?
+18      A.   Three.
+19      Q.   Did your mother ever work?
+20      A.   Yes.
+21      Q.   What did she do?
+22      A.   She was a legal secretary for many years
+23 when I was young.  And then after the divorce from my
+24 dad she was -- she worked for the United States post
+25 office.
+===== PDF PAGE 36 =====
+NATALIE DOHERTY June 10, 2025
+DISCOVERY COURT REPORTERS    www.discoverydepo.com 1-919-424-8242
+27
+1 over the last several years has that been typical in
+2 your adult life?
+3      A.   Yes.
+4      Q.   How would you describe your mother in terms
+5 of good qualities, bad qualities, how would you
+6 describe her?
+7      A.   She's a sweet, honest, southern woman.  She
+8 has southern values.  She was raised in the church.
+9 She's a good person.
+10      Q.   Is she pretty independent?
+11      A.   Yes.
+12      Q.   Would you say has she always been that way?
+13      A.   Yes.
+14      Q.   What about in terms of sort of her -- would
+15 you say at times she's hard to satisfy?
+16      A.   No.
+17      Q.   So where has your mother lived?  She moved,
+18 I think we're going to establish -- do you recall when
+19 she moved to Cary to the Rosebrooks Drive property?
+20      A.   It would have been, it was late 2019 when my
+21 aunt died.
+22      Q.   When did your mother move -- did she move in
+23 with your aunt?
+24      A.   My aunt was in hospice, so I'm not sure
+25 where she lived during that time.
+===== PDF PAGE 37 =====
+NATALIE DOHERTY June 10, 2025
+DISCOVERY COURT REPORTERS    www.discoverydepo.com 1-919-424-8242
+28
+1      Q.   Do you know when your mother first moved
+2 into the property on Rosebrooks Drive?
+3      A.   I don't know exactly, no.
+4      Q.   When was the first time you were ever there
+5 at that residence?
+6      A.   In my life or?
+7      Q.   Um-hmm, yeah.
+8      A.   In my life?
+9      Q.   Yeah.
+10      A.   When my aunt bought it in the '70s.
+11      Q.   How many times have you been there?
+12      A.   I don't know.  A lot.
+13      Q.   A lot did you say?
+14      A.   Yes, I went to NC State so I visited my aunt
+15 a lot.
+16      Q.   Okay, that makes sense.  You graduated from
+17 NC State when?
+18      A.   1993, December, 1993.
+19      Q.   And you came there to visit your mother in
+20 September of 2024, right?
+21      A.   Yes.
+22      Q.   Were you ever there between when your mother
+23 moved in or moved down here in late 2019 until she
+24 moved out in 2024?
+25      A.   Did I visit?
+===== PDF PAGE 38 =====
+NATALIE DOHERTY June 10, 2025
+DISCOVERY COURT REPORTERS    www.discoverydepo.com 1-919-424-8242
+29
+1      Q.   Yeah.
+2      A.   No.
+3      Q.   Why not?
+4      A.   I was busy.
+5      Q.   So before your mother moved to Cary, did she
+6 live in an apartment somewhere in Maryland?
+7      A.   Yes.
+8      Q.   Where was that?
+9      A.   In Odenton.
+10      Q.   How far is that from where you live?
+11      A.   About 10 minutes.
+12      Q.   How often -- how long did your mother live
+13 there?
+14      A.   In that particular apartment I'm not sure,
+15 two or three years maybe.
+16      Q.   Did she live in that community longer than
+17 that?
+18      A.   No, she lived in a different apartment
+19 before that, that wasn't a senior housing apartment.
+20      Q.   But I mean in the same town?
+21      A.   The first one was in Annapolis.
+22      Q.   How far is that from where you live?
+23      A.   Thirty minutes.
+24      Q.   So all told, before she moved to Cary your
+25 mother lived in Maryland for how long?
+===== PDF PAGE 39 =====
+NATALIE DOHERTY June 10, 2025
+DISCOVERY COURT REPORTERS    www.discoverydepo.com 1-919-424-8242
+32
+1      A.   Correct.
+2      Q.   Did you help her with either of the leases
+3 for those apartments?
+4      A.   Help her how?
+5      Q.   Did you see the leases, go over them with
+6 her, or is that something she handled herself to your
+7 knowledge?
+8      A.   I believe for the first apartment since she
+9 was moving from our house, I did help her find that
+10 one.  But I didn't -- I don't recall, maybe I printed
+11 it out for her.  But other than that, no.
+12      Q.   You didn't go over it with her?
+13      A.   No.
+14      Q.   What about the other one?
+15      A.   No, huh-uh.
+16      Q.   So when your mother moved to Cary in 2019,
+17 how was her health if you recall?
+18      A.   I mean she was already 79, 78 or 79 at the
+19 time.  So I mean she had some health issues but it
+20 wasn't, she wasn't bedridden or anything.
+21      Q.   She was handling her own affairs at the
+22 time?
+23      A.   As far as I knew, yes.
+24      Q.   What about her mental state at that time, do
+25 you recall any observations about how sharp she was or
+===== PDF PAGE 40 =====
+NATALIE DOHERTY June 10, 2025
+DISCOVERY COURT REPORTERS    www.discoverydepo.com 1-919-424-8242
+33
+1 unsharp as a 79-year-old lady?
+2      A.   I tell you in 2015 when her son, my brother,
+3 died in a car accident she kind of went downhill, so
+4 she was not the same.
+5      Q.   How so, what were the signs of that?
+6 Certainly understandable, what were the signs of it?
+7      A.   I mean I could just tell she was a little
+8 more feeble.
+9      Q.   Did she lose another child?
+10      A.   Yes.
+11      Q.   Tell me about that.
+12      A.   He committed suicide in 1997.
+13      Q.   And you're the remaining, sole child?
+14      A.   Yes.
+15      Q.   Just to be sure I've got this, during the
+16 period of time 2011 to 2012 until 2019 while she was
+17 living in Maryland and after she moved out of your
+18 house, she rented apartments at two different
+19 locations?
+20      A.   Yes, to my knowledge.  That's what I
+21 remember, yes.
+22      Q.   And you didn't review either of those leases
+23 with her, but you may have printed the first one out
+24 for her; is that right?
+25      A.   I don't remember anything like that, no.
+===== PDF PAGE 41 =====
+NATALIE DOHERTY June 10, 2025
+DISCOVERY COURT REPORTERS    www.discoverydepo.com 1-919-424-8242
+35
+1 sure.  It goes up every year.
+2      Q.   Was she able and did she have any retirement
+3 accounts?
+4      A.   No.
+5      Q.   Do you know -- you had access to her bank
+6 records?
+7      A.   I never looked at anything like that.
+8      Q.   Okay.  Do you know if she was meeting her
+9 living needs and her rent based on her Social
+10 Security?
+11      A.   Yes, as far as I knew, um-hmm.
+12      Q.   She never asked you all for any financial
+13 assistance during that period?
+14      A.   No.  Anything we gave her were gifts just
+15 from us, she didn't ask for it.
+16      Q.   Now, do you know if she had -- when she
+17 moved to Cary in 2019, do you know if she had to get
+18 out of the lease in Odenton?
+19      A.   I don't know what the conditions were.
+20      Q.   You don't know where she was in the term of
+21 that lease when she moved to Cary?
+22      A.   No.
+23      Q.   You didn't help her with anything she had to
+24 do to terminate that lease?
+25      A.   No.
+===== PDF PAGE 42 =====
+NATALIE DOHERTY June 10, 2025
+DISCOVERY COURT REPORTERS    www.discoverydepo.com 1-919-424-8242
+36
+1      Q.   You said she moved to Cary in 2019.  Do you
+2 recall what month or what time of year?
+3      A.   I know my -- I think my aunt was in hospice
+4 in November, she died in December.  So there in that
+5 time period.
+6      Q.   Late part of 2019 then?
+7      A.   Yes, late 2019.  And I'm not sure if she
+8 moved -- I'm not sure at what point she moved all of
+9 her belongings, I don't recall.
+10      Q.   Did you all help her with that move in any
+11 way?
+12      A.   We actually didn't.  She arranged the movers
+13 and everything.
+14      Q.   What precipitated her move to Cary?  Did it
+15 have to do with her sister's condition?
+16      A.   Initially, yes, yes.
+17      Q.   Tell me about that.
+18      A.   About what, her condition?
+19      Q.   No, no, why did your mother move to Cary?
+20      A.   I'm really not sure honestly.  I'm not sure
+21 at what point she found out she would inherit the
+22 townhome.
+23      Q.   Let's stick just for now on the move itself
+24 to Cary.  At some point did your mother tell you --
+25 did your mother tell you in advance she was going to
+===== PDF PAGE 43 =====
+NATALIE DOHERTY June 10, 2025
+DISCOVERY COURT REPORTERS    www.discoverydepo.com 1-919-424-8242
+37
+1 do it, she was going to make that move?
+2      A.   Yes.
+3      Q.   Did she tell you why?
+4      A.   I don't recall, I don't recall the exact
+5 conversation.
+6      Q.   You were about to tell me I think about your
+7 aunt's condition.  You said she was in hospice when
+8 your mother moved down here?
+9      A.   Yes.
+10      Q.   Do you know if your mother had made some
+11 visits to her sister before she moved down here?
+12      A.   Yes, and -- yes.
+13      Q.   Did you say at some point your mother
+14 learned that she would inherit the townhome in Cary
+15 from her sister?
+16      A.   I'm sorry, would you repeat that?
+17      Q.   I think you said at some point your mother
+18 learned that she would inherit the townhome from her
+19 sister?
+20      A.   I said I'm not sure at what point she
+21 learned that.
+22      Q.   Did you -- when your mom called and said I'm
+23 moving to Cary, did you support the move?
+24      A.   No.
+25      Q.   Why not?
+===== PDF PAGE 44 =====
+NATALIE DOHERTY June 10, 2025
+DISCOVERY COURT REPORTERS    www.discoverydepo.com 1-919-424-8242
+38
+1      A.   Just didn't seem like a good idea.
+2      Q.   Why?
+3      A.   I mean she's only getting older.  It didn't
+4 make sense for her to move away from us.
+5      Q.   Did you tell her that?
+6      A.   I don't remember, maybe.  I try not to
+7 interfere, but yeah.
+8      Q.   But you don't recall any discussion with her
+9 about the pros and cons?
+10      A.   I don't recall, no.
+11      Q.   So at the point where she calls you and says
+12 I'm moving down to Cary, did she say I'm moving down
+13 there, I'm going to move in with my sister?
+14      A.   I don't recall what the original living
+15 arrangements were, no.
+16      Q.   So when your mother called and said I'm
+17 moving, I want you to know I'm moving to Cary, how
+18 would you describe the state of your relationship with
+19 your mother at that point?
+20      A.   I mean we were fine, we were good.
+21      Q.   You just didn't talk very much?
+22      A.   No, she knows -- yeah, she knows I'm busy
+23 with the kids and work.  She would check in, we would
+24 check in with her.  If she needed us we could help
+25 her.
+===== PDF PAGE 45 =====
+NATALIE DOHERTY June 10, 2025
+DISCOVERY COURT REPORTERS    www.discoverydepo.com 1-919-424-8242
+40
+1      Q.   Were you close with your aunt?
+2      A.   At one time, yes.
+3      Q.   When you were in school?
+4      A.   More then, yes.
+5      Q.   Okay.  I want to be sure I have this
+6 correct.  From the point that your mother moved into
+7 the townhouse sometime late 2019 until you came in
+8 mid-September 2024, you did not visit your mother,
+9 correct?
+10      A.   Correct.
+11      Q.   Was that five years, so did you see your
+12 mother at all during that five-year period?
+13      A.   No.
+14      Q.   So before you laid eyes on her in September
+15 of 2024, when was the previous time you saw her in
+16 person?
+17      A.   2019.
+18      Q.   It's your testimony during this period of
+19 time you had a good relationship with your mother?
+20      A.   The same as it's always been.
+21      Q.   Since when?  How far back does that go?
+22      A.   Probably since I was in college and even in
+23 high school.  I didn't see her much then, I didn't see
+24 her much my whole adult life.  She would visit us and
+25 stay with us and that's when I would see her.
+===== PDF PAGE 46 =====
+NATALIE DOHERTY June 10, 2025
+DISCOVERY COURT REPORTERS    www.discoverydepo.com 1-919-424-8242
+41
+1      Q.   But from 2019 to 2024 September until you
+2 came down, she did not visit during that period,
+3 correct?
+4      A.   No.
+5      Q.   Let's talk about communications during that
+6 period.  And again, I'm going to go by what we
+7 requested which was your phone records of -- phone
+8 discussions with your mother -- phone calls with your
+9 mother, from November 1, 2022, through November of
+10 2024 when this lawsuit was filed.  So doesn't quite
+11 match up with complete period of time after she moved
+12 down here.
+13           (Exhibit No. 9A marked.)
+14           (Exhibit No. 9B marked.)
+15 BY MR. JOHNSON:
+16      Q.   Pull up 9A.  We're going to screen share and
+17 show you the phone records that you produced for us,
+18 start with that.  I'm just noting, starting from the
+19 records, Exhibit 9A is the set of phone records that
+20 you produced for us.  Now let's go to Exhibit 9B.  Can
+21 you see that or do we need to make it larger?
+22      A.   No, I can see it.
+23      Q.   Let me tell you what it is.  We took your
+24 phone records that you produced, Exhibit 9A, and we
+25 extracted out or made a list of the calls with your
+===== PDF PAGE 47 =====
+NATALIE DOHERTY June 10, 2025
+DISCOVERY COURT REPORTERS    www.discoverydepo.com 1-919-424-8242
+45
+1 still in middle school.  Ages, I have to do the math,
+2 let's see, Meredith was 13 or 14.  Caitlin was 17
+3 or -- probably 17 at the time.
+4      Q.   Until she moved back in September of 2024,
+5 after she moved here in 2019, did your girls see their
+6 grandmother?
+7      A.   Yes.
+8      Q.   When?
+9      A.   It would vary.  The older they got the less
+10 they would see her probably.
+11      Q.   I thought I heard your testimony is that
+12 during that period of time from when she moved down
+13 here in Cary late 2019 until you came here in
+14 mid-September 2024, you did not see her?
+15      A.   I'm sorry, then I misunderstood the
+16 question.  Can you repeat the question about my girls?
+17      Q.   Let me make sure I understand about you
+18 first.  Is that correct during that period of time you
+19 did not see her?
+20      A.   You're talking about the relevant period
+21 before September 2024?
+22      Q.   Let's, let me --
+23      A.   I'm sorry, we're jumping around time frames.
+24      Q.   I know, I know.  From when your mother moved
+25 down here in late 2019 until you came in
+===== PDF PAGE 48 =====
+NATALIE DOHERTY June 10, 2025
+DISCOVERY COURT REPORTERS    www.discoverydepo.com 1-919-424-8242
+46
+1 mid-September of 2024, did you and your mother lay
+2 eyes on one another at any point?
+3      A.   No.
+4      Q.   During that same period of time did she see
+5 her grandchildren?
+6      A.   Not in person, no.
+7      Q.   Do you know if during that period of time
+8 your children were communicating with her?
+9      A.   Yes.
+10      Q.   Do you know how?
+11      A.   Excuse me?
+12      Q.   Do you know how, were they texting --
+13      A.   Yes, they had their own phones.
+14      Q.   Okay.  Let's stay focused on the same period
+15 from when your mother moved down here in late 2019.
+16 You described before that you had access to some bank
+17 account that she had?
+18      A.   Sorry?
+19      Q.   Did you still have that access to her bank
+20 account?
+21      A.   My name was on the account.  I've never
+22 accessed the account or written a check from the
+23 account or seen the account, seen bank statements or
+24 anything.
+25      Q.   That would include after your mother moved
+===== PDF PAGE 49 =====
+NATALIE DOHERTY June 10, 2025
+DISCOVERY COURT REPORTERS    www.discoverydepo.com 1-919-424-8242
+54
+1 correct?
+2      A.   Yes.
+3      Q.   The original amount of 25,000, dated
+4 December 16, 2011.  You can see it's addressed to your
+5 mother in two capacities, as an administrator of the
+6 estate, your aunt's estate, and then as an heir.  Then
+7 it also went to Mr. Huston as a registered agent.  You
+8 can see at the bottom of the page that it was filed
+9 November 13, 2023, see that?  Have you seen this
+10 document before?
+11      A.   No.
+12      Q.   Okay.  Did you have any information about
+13 this foreclosure proceeding at the time that this
+14 notice was issued?
+15      A.   No.
+16      Q.   Your mother didn't tell you about it?
+17      A.   I don't think so.
+18      Q.   When did you first learn about this
+19 proceeding?
+20      A.   In the summer of 2024.
+21      Q.   Summer of 2024?
+22      A.   Yes.
+23      Q.   How did you learn about it?
+24      A.   From a high school friend that had been
+25 visiting her.
+===== PDF PAGE 50 =====
+NATALIE DOHERTY June 10, 2025
+DISCOVERY COURT REPORTERS    www.discoverydepo.com 1-919-424-8242
+58
+1      A.   I don't know.
+2      Q.   This is from your aunt?
+3      A.   Yes.
+4      Q.   Okay.  Have you talked to your mother about
+5 this since then and asked her why she didn't contact
+6 you?
+7      A.   Yes.
+8      Q.   What did she say?
+9      A.   She didn't know.
+10      Q.   She didn't know what?
+11      A.   She didn't know that she was losing the
+12 property.
+13      Q.   She had your phone number, right?
+14      A.   Yes.
+15      Q.   So why didn't she call you -- have you asked
+16 her, Mom, when you got this notice why didn't you call
+17 me?  Have you asked her that?
+18      A.   Yes.
+19      Q.   What did she say?
+20      A.   I asked her what happened.
+21      Q.   Did you ask her, Mom, why didn't you call
+22 me?
+23      A.   I don't recall exactly if I said those
+24 words.
+25      Q.   But in any event clearly it was your
+===== PDF PAGE 51 =====
+NATALIE DOHERTY June 10, 2025
+DISCOVERY COURT REPORTERS    www.discoverydepo.com 1-919-424-8242
+59
+1 mother's choice not to contact you at that time?
+2      A.   Yes.
+3      Q.   Let's look at Exhibit 11.
+4           (Exhibit No. 11 marked.)
+5 BY MR. JOHNSON:
+6      Q.   We'll blow this up so you can see it better.
+7 Can you see that okay?
+8      A.   Yes.
+9      Q.   This is an order that's entered on
+10 November -- if we scroll down, November, you can see
+11 at the bottom -- November 1, 2023, and that
+12 foreclosure proceeding, basically authorizing that the
+13 substitute trustee can proceed to foreclosure.  Have
+14 you seen this document before?
+15      A.   No.  What's the substitute trustee?
+16      Q.   Well, it's not really the format for
+17 answering those questions, but for purposes of your
+18 testimony, you can assume it's the trustee who has the
+19 authority to proceed with execution on this order to
+20 hold a, to hold a sale of the property.  So basically
+21 at the time that this foreclosure proceeding is
+22 proceeding in the fall of 2023, you don't know
+23 anything about it, right?
+24      A.   No.
+25      Q.   So when this proceeding was going forward --
+===== PDF PAGE 52 =====
+STATE OF NORTH CAROLINA IN THE GENERAL COURT OF JUSTICE
+· · · ·COUNTY OF WAKE· · ·SUPERIOR COURT DIVISION
+· · ·_______________________________________________
+· · · · · · · · · · · · · · · · · · ·)
+· · ·NATALIE DOHERTY, Guardian Ad· · )
+· · ·Litem for BRYNDA GRIFFITH,· · · )
+· · · · · · · · · · · · · · · · · · ·)
+· · · · · · · · · · Plaintiff,· · · ·)
+· · · · · · · · · · · · · · · · · · ·)
+· · ·V.· · · · · · · · · · · · · · · ) 24CV037077-910
+· · · · · · · · · · · · · · · · · · ·)
+· · ·WESLEY DALE BROWNING,· · · · · ·)
+· · ·individually, and as Trustee of )
+· · ·the 115 ROSEBROOKS REVOCABLE· · )
+· · ·TRUST, and BUY YOUR HOME, LLC,· )
+· · · · · · · · · · · · · · · · · · ·)
+· · · · · · · · · · Defendants.· · · )
+· · · · · · · · · · · · · · · · · · ·)
+· · ·_______________________________________________
+· · · · · · ·Deposition of BRYNDA GRIFFITH
+· · ·_______________________________________________
+· · · · · · · ·Held at the Law Offices of
+· · · · · · · ·Howard Stallings Law Firm
+· · · · · · · · Raleigh, North Carolina
+· · ·_______________________________________________
+· · · · · · · · ·Friday, March 28, 2025
+· · · · · · · · · · · ·2:20 P.M.
+· · ·_______________________________________________
+· · · · · · · · · · · · Volume 1
+· · · · · · · · · ·Pages 1 through 97
+===== PDF PAGE 53 =====
+·1· ·already -- most anybody that knows me knows it
+·2· ·happened.
+·3· · · · Q· · I understand.· So now it’s just you and
+·4· ·Natalie?
+·5· · · · A· · Yes.
+·6· · · · Q· · Okay, before you moved with John and -- or
+·7· ·I’ll call her -- I’m sorry if I switch between Natalie
+·8· ·and Nicky; what do you prefer?
+·9· · · · A· · Nick.
+10· · · · Q· · Nick; before you moved with John and Nick to
+11· ·Maryland, what was your relationship with Nick like?
+12· · · · A· · Distant.
+13· · · · Q· · Distant; how so?
+14· · · · A· · I didn’t hear much from her and it -- other
+15· ·people might have the same situation and that might
+16· ·seem like a rejection to them.· I’m going blank.· She
+17· ·did not know about my medical, all my medical things as
+18· ·they happened.· She’s just -- always seemed to her like
+19· ·whatever was wrong that I could fix it or have it or
+20· ·whatever.
+21· · · · Q· · How frequently were you talking on the phone
+22· ·to Nick?
+23· · · · A· · Very -- not very often, but we text each
+24· ·other.
+25· · · · Q· · Okay.
+===== PDF PAGE 54 =====
+·1· ·and stayed a certain amount of time.· Then I had to go
+·2· ·back and take care of personal stuff and get my key and
+·3· ·get out.
+·4· · · · Q· · Do you recall whether Ms. Powell ever came
+·5· ·back to the house after you moved in, or had she
+·6· ·already passed away?
+·7· · · · A· · No, I did not move into her house permanently
+·8· ·until the 13th of November.
+·9· · · · Q· · Of what year?
+10· · · · A· · Whatever year she died.
+11· · · · Q· · Okay.
+12· · · · A· · I -- I have a certain ability with numbers
+13· ·that I don’t have with some other stuff.· That’s the
+14· ·reason I can -- I can remember that -- that was the day
+15· ·I flew in and stayed a few days.· Then I had to go back
+16· ·again and she died on the 7th of November, the 7th
+17· ·being her birthday.
+18· · · · Q· · Sorry for your loss there.
+19· · · · A· · And -- and the nice young ladies that were
+20· ·social service people and technical people were calling
+21· ·me and being very kind, because they knew I could not
+22· ·be there exactly, you know, at the moment.
+23· · · · Q· · Did you ever have any conversations with your
+24· ·sister about what would happen to her house when she
+25· ·passed away?
+===== PDF PAGE 55 =====
+·1· ·some general understanding of it?
+·2· · · · A· · There’s another word for it, because I had to
+·3· ·deal with it.
+·4· · · · Q· · Now there’s the home equity loan and then
+·5· ·there’s also another --
+·6· · · · A· · Yeah.
+·7· · · · Q· · -- product called a home equity line of
+·8· ·credit or a HELOC.
+·9· · · · A· · That -- I think I know what you’re talking
+10· ·about.· I can’t come up with the words right now, but
+11· ·it has two payments to it.
+12· · · · Q· · Okay.
+13· · · · A· · Yeah, well, I had to see that because -- you
+14· ·know, I was getting her papers and all like that and
+15· ·the attorney, you know, was involved, too.
+16· · · · Q· · So after she passed away and you were
+17· ·inheriting the house or becoming the owner of the
+18· ·house, you became aware of the fact that there was a
+19· ·home equity line of credit --
+20· · · · A· · Yes, --
+21· · · · Q· · -- on it?
+22· · · · A· · -- and I kept it paid.
+23· · · · Q· · Okay, and can you remember what the balance
+24· ·was when you became the owner?
+25· · · · A· · I -- I think it was probably close to the
+===== PDF PAGE 56 =====
+·1· ·home equity line of credit became more than you could
+·2· ·pay or are you referring to something else?
+·3· · · · A· · Along about that time, I don’t know which was
+·4· ·which.
+·5· · · · Q· · Do you -- you said that you kept it paid, but
+·6· ·it sounds like there was a point where you weren’t able
+·7· ·to keep it --
+·8· · · · A· · Yes.
+·9· · · · Q· · -- paid any longer?
+10· · · · A· · Yes, right, the insurance was the same way.
+11· ·I dealt with the company.· I said, this is too much.  I
+12· ·cannot pay this once every six months.· Can we break it
+13· ·down so that I’m paying you something every month, so
+14· ·that when the time comes for a big payment, like
+15· ·$600.00 or something like that, that at -- at least
+16· ·I’ll -- I’ll have some money in there.
+17· · · · Q· · Do you remember how much the insurance
+18· ·benefits were, the policy that Ms. Powell had for you,
+19· ·how much you took from her insurance policy?
+20· · · · A· · I think the one that she left me was
+21· ·fourteen.
+22· · · · Q· · $14,000?
+23· · · · A· · Yes.
+24· · · · Q· · Okay, so you realized at some point, after
+25· ·keeping everything paid, that the money is sort of
+===== PDF PAGE 57 =====
+·1· ·behind on making those payments?· The --
+·2· · · · A· · I don’t know when I did.
+·3· · · · Q· · Okay, and that’s -- do you recall falling
+·4· ·behind on those payments, though?
+·5· · · · A· · Not exactly, no.
+·6· · · · Q· · Do you recall getting a notice of foreclosure
+·7· ·on the home or on the note, rather?
+·8· · · · A· · I didn’t see it, but I was told that there
+·9· ·was one.
+10· · · · Q· · Who told you?
+11· · · · A· · I don’t remember.
+12· · · · Q· · Okay, did you understand what foreclosure was
+13· ·at that time when you got a -- or when you learned of a
+14· ·notice of foreclosure?· Did you have an understanding
+15· ·of what that meant?
+16· · · · A· · I understand what foreclosure is.
+17· · · · Q· · You do?
+18· · · · A· · Yes.
+19· · · · Q· · Can you explain to me your understanding at
+20· ·that time, what would happen to your house?
+21· · · · A· · Well, that doesn’t require a book.  I
+22· ·would’ve known what foreclosure meant, but I didn’t see
+23· ·any articles or -- or the things that came out of
+24· ·clerk’s office or anything like that.
+25· · · · Q· · I understand.· When someone told you that
+===== PDF PAGE 58 =====
+·1· ·foreclosure sale?
+·2· · · · A· · I do not recall trying to work out that
+·3· ·dilemma on my own.· I don’t know what I did.
+·4· · · · Q· · I understand, but that’s not exactly the
+·5· ·question I asked.
+·6· · · · A· · Oh.
+·7· · · · Q· · Did you understand, when you got a notice of
+·8· ·the notice of foreclosure, that you could have your
+·9· ·house sold at a foreclosure sale?
+10· · · · A· · I didn’t know how it worked.
+11· · · · Q· · Did you --
+12· · · · A· · I needed more information.
+13· · · · Q· · Okay, did you get that additional
+14· ·information?
+15· · · · A· · I don’t -- I don’t know.· I -- I -- somebody
+16· ·was putting bank numbers on the door, telephone numbers
+17· ·for the bank, and I just held onto them hoping to talk
+18· ·to somebody about it.
+19· · · · Q· · Who did you talk to about it?
+20· · · · A· · I don’t remember.
+21· · · · Q· · Okay, did you call Nick and tell her that the
+22· ·house was in foreclosure?
+23· · · · A· · No, I did not.
+24· · · · Q· · Why not?
+25· · · · A· · Didn’t occur to me to call her.
+===== PDF PAGE 59 =====
+·1· · · · Q· · Okay, did you reach out to maybe a
+·2· ·professional financial advisor for help?
+·3· · · · A· · No.
+·4· · · · Q· · Did you --
+·5· · · · A· · I -- I -- I didn’t go that route.· I just --
+·6· ·I do not recall what I did in response to that news.  I
+·7· ·didn’t see it.· I didn’t know what the -- what it said
+·8· ·in the court, whatever.
+·9· · · · Q· · You did realize that there was a risk you
+10· ·could lose the house, though, right?
+11· · · · A· · I -- I don’t know what I was thinking.
+12· · · · Q· · You don’t know what you were thinking?
+13· · · · A· · Uh-uh.
+14· · · · Q· · But did you know that you could lose the
+15· ·house if you didn’t pay the bank the money it was owed?
+16· · · · A· · I knew I was getting a lot of those things in
+17· ·the mail, where people want to buy your house.
+18· · · · Q· · I understand, but my question was -- it was a
+19· ·little bit more specific than that.· Did you realize
+20· ·you could lose your house if you didn’t pay the bank
+21· ·the money that it was owed?
+22· · · · A· · I do not know.
+23· · · · Q· · You don’t know whether you thought that, or
+24· ·you don’t remember whether you thought that?
+25· · · · A· · I don’t remember.· I don’t remember what I
+===== PDF PAGE 60 =====
+·1· ·thought.· I don’t remember what I did.
+·2· · · · Q· · Okay, you do remember getting some letters in
+·3· ·the mail I think you just said, is that right?
+·4· · · · A· · No, I -- I think I said a man put a notice on
+·5· ·the front door with the bank’s telephone number on it.
+·6· · · · Q· · Okay.
+·7· · · · A· · And --
+·8· · · · Q· · Do you remember getting some letters in the
+·9· ·mail, not from the bank, not notices from the bank, but
+10· ·from other companies who were interested in purchasing
+11· ·your house?
+12· · · · A· · Yes.
+13· · · · Q· · Okay, tell me about those letters?
+14· · · · A· · I don’t -- there’s a lot of different ones
+15· ·from everywhere; Washington, D.C.· I just looked at
+16· ·them and put them down.· I -- I couldn’t act on it.
+17· · · · Q· · What do you mean you couldn’t act on them?
+18· · · · A· · I don’t know if I was trying to create a
+19· ·solution.
+20· · · · Q· · A solution to what problem?
+21· · · · A· · To losing the house.
+22· · · · Q· · So you were aware that you were going to lose
+23· ·the house?
+24· · · · A· · I -- I’m not -- I didn’t say that.· I -- I
+25· ·feel sure that I knew it could happen.
+===== PDF PAGE 61 =====
+·1· ·over here.
+·2· · · · Q· · So on the bottom portion of this paper, this
+·3· ·Exhibit A that I’ve handed you, is that your address
+·4· ·down there, Brynda Griffith, 115 Rosebrooks Drive at
+·5· ·that time?
+·6· · · · A· · Yes.
+·7· · · · Q· · Okay, and does that look like an envelope
+·8· ·that you would’ve received in the mail, that -- this
+·9· ·bottom portion of it, the bottom third?· You see that
+10· ·stamp there on the right, this portion here?· This is a
+11· ·-- again, I’ll represent to you, Ms. Griffith, that
+12· ·this is a piece of mail that we believe you received.
+13· ·This is the envelope and this is the contents of the
+14· ·envelope that were put -- copied and put onto one piece
+15· ·of paper for your convenience.
+16· · · · A· · My -- yeah, I -- I don’t remember, especially
+17· ·except that his mail was ripped.
+18· · · · Q· · Okay, and I’ll tell you, these -- this, along
+19· ·with other similar copies of envelopes and their
+20· ·contents were attached to your complaint in this
+21· ·lawsuit, so they were exhibits to your complaint.· So I
+22· ·would presume that at some point they were in your --
+23· ·these were in your possession and you provided them to
+24· ·your attorney.· Does that sound familiar?
+25· · · · A· · I -- I do not know.
+===== PDF PAGE 62 =====
+·1· ·changed his license number.
+·2· · · · Q· · Who changed his license number?
+·3· · · · A· · Mr. Wes did.· It -- it used to be a little
+·4· ·bit different from that.
+·5· · · · Q· · When you say license number, what are you
+·6· ·referring to?
+·7· · · · A· · The one that begins with by secure house
+·8· ·something.
+·9· · · · Q· · Oh, okay, he might’ve changed the name of his
+10· ·LLC?
+11· · · · A· · Uh-huh --
+12· · · · Q· · Is that what you mean?
+13· · · · A· · Yes.
+14· · · · Q· · Okay, all right, when you were getting these
+15· ·letters from all these different companies around the
+16· ·country, you said they were coming from different
+17· ·states.· Were you reading them?
+18· · · · A· · I recall reading some of them, part of them.
+19· ·And his was not -- best I can recall, his was very
+20· ·pleasant.· It was red, good printing job.· And I was
+21· ·attracted to that one and it really wasn’t a whole lot
+22· ·to read I don’t recall, but I think I recall that one.
+23· ·And then -- some of them were just big as your -- your
+24· ·computer, but it just depend on who was sending it.
+25· · · · Q· · So you said you were sort of drawn to the red
+===== PDF PAGE 63 =====
+·1· · · · A· · Apparently, yes.
+·2· · · · Q· · Okay.
+·3· · · · A· · If that’s mine; it -- it just looks like my -
+·4· ·- my handwriting.
+·5· · · · Q· · Okay, so this is a piece of mail that you
+·6· ·received.· And it’s from Wes and Jenny Browning, is
+·7· ·that right?· At the top, that’s what the letter says --
+·8· · · · A· · The letterhead?
+·9· · · · Q· · Yes, the letterhead.
+10· · · · A· · Okay, excuse me for interrupting.
+11· · · · Q· · No, you’re fine.· This is a letter from Wes
+12· ·and Jenny Browning, is that right?
+13· · · · A· · Well, he would’ve put that on any of his
+14· ·official mail.· I do not recall him expressing his
+15· ·company like he has expressed it here, but I feel like
+16· ·that anything that he sent me I would’ve been attracted
+17· ·to look at it.
+18· · · · Q· · Because of the colors on the envelope?
+19· · · · A· · Yeah.
+20· · · · Q· · You were going to say something about the
+21· ·last sentence in the first paragraph and I cut you off.
+22· ·What were you going to say?
+23· · · · A· · That it’s very clear explanation of -- of
+24· ·what a foreclosure would do.
+25· · · · Q· · Okay, so if you’ll follow along with me, I’ll
+===== PDF PAGE 64 =====
+·1· ·might lose your home.· And if it goes into a
+·2· ·foreclosure -- foreclosure sale, you will lose your
+·3· ·home.· Is that fair to say?
+·4· · · · A· · I’m sorry.· My mind wandered.
+·5· · · · Q· · Well, it was a long, wordy question.· When
+·6· ·you got these letters, at least this one from Wes, it
+·7· ·told you you were about to lose your home in a
+·8· ·foreclosure sale, is that right?
+·9· · · · A· · From -- based on that first paragraph, yes.
+10· · · · Q· · Okay, and what did you do?
+11· · · · A· · I don’t know.
+12· · · · Q· · Did you reach out to Mr. Browning?
+13· · · · A· · I doubt if I reached out then, because I was
+14· ·receiving so many, you know, and didn’t really know
+15· ·what the next move was.
+16· · · · Q· · Was there a point that you did reach out to
+17· ·Mr. Browning?
+18· · · · A· · Yes.
+19· · · · Q· · Why did you do that?
+20· · · · A· · To ask him to explain it to me.
+21· · · · Q· · To explain what, exactly, to you?
+22· · · · A· · What this situation is like.
+23· · · · Q· · Including what he could do to help find a
+24· ·solution for you?
+25· · · · A· · I don’t know that I said that exactly, but I
+===== PDF PAGE 65 =====
+·1· ·did reach out to him because I -- from the people that
+·2· ·I received the notices from, the other ones, the
+·3· ·impressive one was actually from Washington, D.C.  I
+·4· ·just felt like I wouldn’t be dealing with anybody that
+·5· ·far away, so I asked him to tell me.
+·6· · · · Q· · Were you scared to lose the house?
+·7· · · · A· · Well, I didn’t have an alternative.· I -- I
+·8· ·don’t know what I thought in those days.
+·9· · · · Q· · Did you have anywhere to go if you lost the
+10· ·house?
+11· · · · A· · I just said I had no alternative.
+12· · · · Q· · You also said that you didn’t know what you
+13· ·thought in those days, so I’m just trying to see what
+14· ·you remember and what you did.
+15· · · · A· · I -- I -- I don’t know what I would’ve been
+16· ·thinking.· I suddenly received nothing -- you know, 15
+17· ·of these.· I don’t know --
+18· · · · Q· · So you --
+19· · · · A· · -- what my mind was doing.
+20· · · · Q· · So you don’t know if you were worried when
+21· ·you were getting these?
+22· · · · A· · I don’t know that -- I do not know how I felt
+23· ·at that moment in time.· There were a lot of loose ends
+24· ·based on her friends and the will, and the -- the fact
+25· ·that it was going to be in the paper and --
+===== PDF PAGE 66 =====
+·1· · · · Q· · So it bothered -- oh, I’m sorry.· Go ahead.
+·2· · · · A· · It just seemed like that it was a general
+·3· ·thing and that everybody was reading the same thing,
+·4· ·but I didn’t have any access to the paper, which
+·5· ·might’ve helped me a lot.
+·6· · · · Q· · So it bothered you that people were reading
+·7· ·about your business and your finances in the newspaper?
+·8· · · · A· · Not necessarily, but that the -- the
+·9· ·procedures they follow when they’re announcing a
+10· ·foreclosure, you needed to know more about it.
+11· · · · Q· · Did you have an attorney that you consulted
+12· ·about the foreclosure?
+13· · · · A· · I don’t know what I did at that moment, but I
+14· ·had an attorney.
+15· · · · Q· · You’re just not sure if you talked to that
+16· ·attorney about the foreclosure?
+17· · · · A· · Yes.
+18· · · · Q· · Okay, so you did finally reach out, or at
+19· ·some point after getting these letters from Wes, you
+20· ·did reach out to Wes, is that right?
+21· · · · A· · Yes.
+22· · · · Q· · Okay, tell me about that conversation?
+23· · · · A· · I don’t remember.
+24· · · · Q· · Okay, did you -- let me -- strike that.· You
+25· ·set up an appointment for Wes to come to your house, is
+===== PDF PAGE 67 =====
+·1· ·that right?
+·2· · · · A· · He did, but I asked him if we could go to a
+·3· ·different parking area.· I just thought, you know, the
+·4· ·neighbors probably all know my business.· Maybe we
+·5· ·could go somewhere else and talk about it without the
+·6· ·-- you know, so much of an audience, and -- and he
+·7· ·complied.
+·8· · · · Q· · Where did you meet?
+·9· · · · A· · I -- I don’t know.· He came to my house and
+10· ·then I asked him, let’s go somewhere else.
+11· · · · Q· · Where did you go?
+12· · · · A· · I don’t know.· I don’t know where it was.
+13· · · · Q· · Did you go somewhere else?
+14· · · · A· · Yeah.
+15· · · · Q· · Did you walk there?
+16· · · · A· · No.
+17· · · · Q· · Drove there?
+18· · · · A· · Yes.
+19· · · · Q· · Okay.
+20· · · · A· · I didn’t drive.· He drove.
+21· · · · Q· · But you don’t know where you drove to?
+22· · · · A· · Uh-uh -- excuse me; no, ma’am.
+23· · · · Q· · So you call Wes and talk to him about the
+24· ·foreclosure and possibly -- and what, doing what with
+25· ·Wes?· What do you talk to him about?
+===== PDF PAGE 68 =====
+·1· · · · A· · To the extent of what I had read and been
+·2· ·exposed to before, it seemed to me like he was the most
+·3· ·professional one.
+·4· · · · Q· · The most professional one to do what?
+·5· · · · A· · That was sending that mail then and knew what
+·6· ·the steps were, and because I -- I felt lost.
+·7· · · · Q· · I want to direct your attention back to
+·8· ·what’s been marked Defendant’s Exhibit 2 and I’m --
+·9· ·there’s a middle of the page.· This is the document
+10· ·that I’m talking about, Ms. Griffith.· I want to direct
+11· ·your attention to the middle of the page under this
+12· ·heading that says, I have the solution for you.· Do you
+13· ·see that?
+14· · · · A· · I -- I don’t recall ever reading that before.
+15· · · · Q· · And that’s not what I’m asking, Ms. Griffith.
+16· ·I’m asking specifically if you see where I’m looking on
+17· ·the paper so we are both --
+18· · · · A· · I think so; right here?
+19· · · · Q· · Yes, ma’am; yes, ma’am.
+20· · · · A· · I see where you are looking.
+21· · · · Q· · Okay, I’m going to read this short paragraph
+22· ·out loud.· You follow along with me, okay?· Why not
+23· ·take advantage of an absolutely free, no obligation
+24· ·telephone consultation with me so we can discuss your
+25· ·options.· I may be able to tell you how you can keep
+===== PDF PAGE 69 =====
+·1· · · · A· · I don’t think so.· I think -- I think he
+·2· ·ordered them.
+·3· · · · Q· · So he placed the orders for your groceries
+·4· ·for you?
+·5· · · · A· · Yes.
+·6· · · · Q· · Did he help you get set up with your health
+·7· ·insurance?
+·8· · · · A· · No.
+·9· · · · Q· · Did he and Jenny visit you on Christmas Day?
+10· · · · A· · No.
+11· · · · Q· · They never came over?
+12· · · · A· · They never came over on Christmas Day.· They
+13· ·came over on Mother’s Day.
+14· · · · Q· · You remember --
+15· · · · A· · On Christmas Day I had my first grand mal
+16· ·seizure and I was alone and she was not there.
+17· · · · Q· · Okay, did Wes take you to the bank when you
+18· ·needed to go to the bank?
+19· · · · A· · Once that I can recall and I -- he -- the
+20· ·bank changed a lot of its procedures and everything
+21· ·after the pandemic.· And when I go in, I can’t stand
+22· ·very long, so I sit down and the teller comes to me.
+23· ·And he -- he took me there and waited for me to
+24· ·complete my business.
+25· · · · Q· · Wes pay your phone bill --
+===== PDF PAGE 70 =====
+·1· · · · A· · No.
+·2· · · · Q· · -- when you got behind?
+·3· · · · A· · I’ve never been behind.
+·4· · · · Q· · Did Wes help you set up accounts to order
+·5· ·food to have delivered?
+·6· · · · A· · He -- I -- I do not know how that was set up
+·7· ·and we -- we were -- I do not -- I -- I never could
+·8· ·deal with it like he wanted me to.· He had a nice idea,
+·9· ·but I just couldn’t seem to match up with it.
+10· · · · Q· · Wes help you set up your internet?
+11· · · · A· · Probably, because he went and bought the
+12· ·screen and then a man came to the house; that’s about
+13· ·all I ever knew how to do.
+14· · · · Q· · You’d reach out to Wes when you had a problem
+15· ·at the house?
+16· · · · A· · Once that I know of.
+17· · · · Q· · What was that for?
+18· · · · A· · It was a household issue that I called him
+19· ·late on Sunday night and he came right over.
+20· · · · Q· · Do you remember what the issue was about?
+21· · · · A· · Yes, yes.
+22· · · · Q· · What was that?
+23· · · · A· · I’d rather not discuss it.
+24· · · · Q· · You can -- you’re going to -- I’m going to
+25· ·ask you if you could just tell me what the issue was
+===== PDF PAGE 71 =====
+·1· · · · Q· · Okay, and what kind of account or -- or what
+·2· ·was that for, was he an emergency contact for?
+·3· · · · A· · I didn’t have anyone else in my life.· He was
+·4· ·just about the only person I ever saw that wasn’t a --
+·5· ·a county person or a mailman, so he -- he did serve as
+·6· ·-- as my contact.
+·7· · · · Q· · So generally, Wes helped you with some
+·8· ·groceries, helped you with, at least, getting your TV
+·9· ·set up, getting your internet set up, taking you to the
+10· ·bank, taking you to the doctor’s appointment, is that
+11· ·right?
+12· · · · A· · He took me there, but yes, the -- the doctor
+13· ·was supposed to be dealing with me and he ended up
+14· ·dealing with Wes.
+15· · · · Q· · Ms. Griffith, I’m going to have the court
+16· ·reporter hand you a packet that we’re going mark
+17· ·Defendant’s Exhibit 3.· And I want you to take a minute
+18· ·or actually, probably take a couple minutes, Ms.
+19· ·Griffith.· And, you know, flip through this pack and
+20· ·kind of familiarize yourself with what’s in it, and
+21· ·then I -- I have some questions for you when you’re
+22· ·done, okay?
+23· · · · · · ·(Defendant’s Exhibit Number 3 marked for
+24· ·identification.)
+25· · · · · · ·By Ms. Gumm:
+===== PDF PAGE 72 =====
+·1· · · · A· · Excuse me.· What -- what was your question?
+·2· · · · Q· · You had a chance to look at the document in
+·3· ·front of you, Plaintiff’s Exhibit 4 -- I’m sorry,
+·4· ·Defendant’s Exhibit 4?
+·5· · · · A· · I do not recall never looking at it.
+·6· · · · Q· · Okay, so you’re not aware that this is
+·7· ·attached to your complaint in the lawsuit?
+·8· · · · A· · I don’t --
+·9· · · · Q· · I will represent to you that stamp at the top
+10· ·that says, Exhibit D, is part of your complaint, is
+11· ·Exhibit D to your complaint in this lawsuit.
+12· · · · A· · D?
+13· · · · Q· · In the middle, center of the page; Ms.
+14· ·Griffith, let’s look at the second page of Plaintiff’s
+15· ·-- sorry; Defendant’s Exhibit 4.· Do you see that
+16· ·second page there that has a signature on it, two
+17· ·signatures actually; do you see that?· We’re looking at
+18· ·the second page.
+19· · · · A· · The second page --
+20· · · · Q· · Yes, is that your signature there on the
+21· ·second page, Ms. Griffith?
+22· · · · A· · It looks like it.
+23· · · · Q· · You recall signing this document on November
+24· ·28th, 2023?
+25· · · · A· · ’23?
+===== PDF PAGE 73 =====
+·1· · · · Q· · 2023?
+·2· · · · A· · Do I remember it?· No, I do not.
+·3· · · · Q· · Okay, are you aware that this document
+·4· ·conveyed your interest in 115 Rosebrooks Drive to a
+·5· ·trust?
+·6· · · · A· · No.
+·7· · · · Q· · Okay, but that’s the -- the crux of your
+·8· ·complaint, Ms. Griffith, is that you sold your house.
+·9· ·Are you saying that you don’t remember selling your
+10· ·house?
+11· · · · A· · I am remembering that I don’t think I’ve ever
+12· ·seen this paper before.
+13· · · · Q· · Okay, at the same time -- well, let me
+14· ·rephrase.· I’ll take that.
+15· · · · A· · Whose copy is it?
+16· · · · Q· · The court reporter’s; so Mr. Browning came
+17· ·out to your house the first time.· You two got in the
+18· ·car or vehicle, and drove somewhere else to talk about
+19· ·the things that he had put in the letter to you, is
+20· ·that right?
+21· · · · A· · I asked him to explain the stuff that’s come
+22· ·in that written paper and yes, he did go to another
+23· ·place at my request.
+24· · · · Q· · Why did you need to talk to Wes?
+25· · · · A· · Like I said before, that based on the type of
+===== PDF PAGE 74 =====
+1
+NORTH CAROLINA    IN THE GENERAL COURT OF JUSTICE                     SUPERIOR COURT DIVISIONCOUNTY OF WAKE           24 CV 037077-910
+                           )BRYNDA GRIFFITH,           )                           )           Plaintiff,      )v.                         )                           )WESLEY DALE BROWNING,      )et al.,                    )                           )           Defendant.      )                           )
+                     DEPOSITION                        OF                   KEVIN HUSTON
+           On Friday, September 12, 2025, commencing
+at 10:05 a.m., the deposition of KEVIN HUSTON, was
+taken on behalf of the Defendants at the Law
+Offices of Poyner Spruill, LLP, 301 Fayetteville
+Street, Suite 1900, Raleigh, North Carolina,
+pursuant to the North Carolina Rules of Civil
+Procedure, before Cynthia S. Boyd, RPR, and Notary
+Public in and for the State of North Carolina.
+===== PDF PAGE 75 =====
+KEVIN HUSTON, ESQ. September 12, 2025
+DISCOVERY COURT REPORTERS    www.discoverydepo.com 1-919-424-8242
+10
+1      Q.   Okay.  Just two different websites?
+2      A.   Correct.
+3      Q.   Okay.  And then I think you mentioned
+4 elder law; is that right?
+5      A.   That's true.
+6      Q.   Can you explain to me what that is for
+7 you?
+8      A.   Yeah.  I deal -- mostly what I'm doing on
+9 the elder law side is dealing with helping seniors
+10 obtain assistance with funding either in-home care,
+11 facility care of some kind such as Medicaid or
+12 special assistance or VA benefits to help them --
+13 you know, providing resources to help them pay for
+14 their care.
+15      Q.   And have you been doing that about 20
+16 years, too?
+17      A.   Probably about -- let me say 18, 19 years,
+18 yeah.
+19      Q.   Do you know a Cheryl Powell?
+20      A.   I didn't know her personally.  Yes.  I'm
+21 the attorney for her estate, yes.
+22      Q.   So you never spoke or worked with
+23 Ms. Powell before she passed away?
+24      A.   True.  I didn't know her.
+25      Q.   And so you said the estate of Cheryl
+===== PDF PAGE 76 =====
+KEVIN HUSTON, ESQ. September 12, 2025
+DISCOVERY COURT REPORTERS    www.discoverydepo.com 1-919-424-8242
+11
+1 Powell was a client of yours; is that right?
+2      A.   True.
+3      Q.   And who was the executor of that estate?
+4      A.   Brynda Griffith.
+5      Q.   And do you recall when you were retained
+6 by Ms. Griffith to represent the estate?
+7      A.   Sometime in 2019.
+8      Q.   And do you recall how Ms. Griffith got in
+9 contact with you or initiated that representation?
+10      A.   All I remember is she called me on the
+11 phone.  I picked up the call.  I don't remember how
+12 she found my firm, though.
+13      Q.   Okay.  And as part of your representation
+14 of the estate, did you meet with Ms. Griffith in
+15 person?
+16      A.   Yes.
+17      Q.   Was that at your office?
+18      A.   I met with her -- well, I met with her
+19 mostly at her house, actually, for the estate,
+20 yeah.
+21      Q.   Do you recall whether your first meeting
+22 with Ms. Griffith was at her house?
+23      A.   It was.
+24      Q.   I'm looking at when some of the estate
+25 documents were filed.  And I'll represent to you
+===== PDF PAGE 77 =====
+KEVIN HUSTON, ESQ. September 12, 2025
+DISCOVERY COURT REPORTERS    www.discoverydepo.com 1-919-424-8242
+27
+1 there something that might trigger that duty to the
+2 estate, maybe malfeasance on the part of the
+3 administrator or executor that would require you to
+4 take action?
+5      A.   Yes.
+6      Q.   What kind of actions would you be required
+7 to take if the estate was in jeopardy based on the
+8 administrator's or executor's actions?
+9      A.   That is a good question.  I think that's a
+10 debated question.  So I don't fully know the
+11 answer.  I can only say what I've heard from other
+12 attorneys, what they have done.  Personally I would
+13 seek counsel if there were a situation like that
+14 where I felt like there was some conflict there
+15 where I had to make -- where I needed to take some
+16 remedial action in that situation.
+17      Q.   Did you do that in this case with
+18 Ms. Griffith?
+19      A.   No.
+20      Q.   Did you have any reason to believe
+21 throughout your representation of the estate that
+22 Ms. Griffith was not able to perform her duties as
+23 the executor?
+24      A.   I did have -- I did have concerns, yes,
+25 that she might have a hard time completing the task
+===== PDF PAGE 78 =====
+KEVIN HUSTON, ESQ. September 12, 2025
+DISCOVERY COURT REPORTERS    www.discoverydepo.com 1-919-424-8242
+28
+1 required.  Yes.
+2      Q.   When did those concerns arise?
+3      A.   I would say probably around -- yeah.
+4 Probably around 2021, 2022.
+5      Q.   And you said concerns regarding completing
+6 tasks.  Can you explain to me what those tasks
+7 might be that you had concerns about having her
+8 being able to complete?
+9      A.   Being able to gather financial records
+10 needed to complete an accounting, for example.
+11 Also being able to distribute all the tangible
+12 personal items to the appropriate people and get
+13 the appropriate receipts for those distributions.
+14      Q.   And were those concerns resolved at some
+15 point?
+16      A.   Not really.  Not fully, no.
+17      Q.   And you said you didn't seek counsel about
+18 Ms. Griffith's ability to perform her duties as the
+19 executor; is that right?
+20      A.   That's right, yeah.
+21      Q.   Did you take any other actions regarding
+22 your concerns about Ms. Griffith's ability to
+23 distribute the tangible items, to do the
+24 accounting?
+25      A.   With her only.  I would say with her only.
+===== PDF PAGE 79 =====
+KEVIN HUSTON, ESQ. September 12, 2025
+DISCOVERY COURT REPORTERS    www.discoverydepo.com 1-919-424-8242
+30
+1 Exhibit 7, Mr. Huston?
+2      A.   Yes, I do.
+3      Q.   What do you recognize it as?
+4      A.   It's a notice of hearing prior to
+5 foreclosure of deed of trust.
+6      Q.   And this is for Ms. Griffith's property
+7 that she had inherited from Ms. Powell; is that
+8 right?
+9      A.   That's correct.
+10      Q.   And you received this in your capacity as
+11 the attorney for the estate of Ms. Powell; is that
+12 right?
+13      A.   I know that I received a copy, yes, either
+14 from the party in this action or if not from Brynda
+15 herself, yes.
+16      Q.   Up on the two line at the top of the page
+17 under that box, it says, "Kevin Huston, Resident
+18 Process Agent for the Estate."
+19      A.   Right.
+20      Q.   What's a resident process agent for the
+21 estate?
+22      A.   So a resident process agent is someone who
+23 is appointed to handle receiving notices for an
+24 estate matter.
+25      Q.   And is that sort of automatic; if you
+===== PDF PAGE 80 =====
+KEVIN HUSTON, ESQ. September 12, 2025
+DISCOVERY COURT REPORTERS    www.discoverydepo.com 1-919-424-8242
+33
+1     there's an heir who's received a property,
+2     yes.  It wouldn't be out of the ordinary for
+3     me to touch base with the owners.
+4 BY MS. GUMM:
+5      Q.   I think your attorney raised a good point.
+6 You said you did speak with Ms. Griffith after you
+7 received this notice; is that correct?
+8      A.   Right.
+9      Q.   Do you recall who initiated that contact?
+10      A.   I don't, no.
+11      Q.   Do you recall whether you met with
+12 Ms. Griffith in person after you received this
+13 notice?
+14      A.   I do recall that, yes.  I did meet her in
+15 person after receiving this.
+16      Q.   Okay.  And where was that meeting?
+17      A.   At my office.
+18      Q.   Do you recall how she got to your office?
+19      A.   Yes.  She was brought by a gentleman.  He
+20 assisted her in getting to my office.
+21      Q.   Okay.  Do you know who that was?
+22      A.   Yes.  His name is Duane.  Duane is his
+23 first name.  I believe his last name is Wilson.
+24      Q.   And do you have an understanding of what
+25 Mr. Wilson's relationship was to Ms. Griffith?
+===== PDF PAGE 81 =====
+KEVIN HUSTON, ESQ. September 12, 2025
+DISCOVERY COURT REPORTERS    www.discoverydepo.com 1-919-424-8242
+34
+1      A.   Yes.  He became involved.  He started
+2 communicating with her in an attempt to actually
+3 buy her property.
+4      Q.   Was Mr. Wilson in the discussion -- in the
+5 meeting with Ms. Griffith that you had after
+6 receiving this notice?
+7      A.   The first part of the discussion, he was.
+8 I then had him leave the room so I could talk with
+9 my client privately.
+10      Q.   Okay.  And this notice is dated September
+11 13 or it was filed September 13, 2023.  Do you see
+12 that on the bottom of the page?
+13      A.   Yes, I do.
+14      Q.   Okay.  Do you recall when this September
+15 2023 meeting with Ms. Griffith at your office took
+16 place?
+17      A.   To the best of my recollection, I think it
+18 was September 25th.
+19      Q.   Okay.  September 25th, 2023?
+20      A.   Correct.
+21      Q.   And what makes you think that was the
+22 date?
+23      A.   Just looking back through some notes and
+24 going through, you know, when I got the subpoena.
+25 Just going back through my notes, I believe that's
+===== PDF PAGE 82 =====
+KEVIN HUSTON, ESQ. September 12, 2025
+DISCOVERY COURT REPORTERS    www.discoverydepo.com 1-919-424-8242
+36
+1 communications with Ms. Griffith?
+2      A.   I would not say so because -- no.  These
+3 were communications with him, giving him a chance
+4 to tell me what he wanted to do.
+5      Q.   Okay.  Tell me about that conversation.
+6      A.   Yeah.  So I would say it was more or less
+7 a sales pitch where he was trying to make his case
+8 for buying the property.
+9      Q.   And do you recall any substance of that
+10 sales pitch?
+11      A.   Yeah.  We did not discuss the price at
+12 that moment but basically the gist of his pitch, if
+13 you will, was that he would be flexible.  Well,
+14 one, he was trying to convince us that the property
+15 needed some work; that, you know, it needed some
+16 maintenance just based on the condition.  And he
+17 was trying to convince her that he would be
+18 flexible in terms of allowing her to stay there for
+19 some, I think, some indefinite period of time.  She
+20 wanted to still live in the property for a while
+21 after signing the contract or whatever.
+22      Q.   What was Ms. Griffith's response to the
+23 sales pitch?
+24      A.   She didn't really -- she certainly didn't
+25 commit one way or the other.  I don't think she
+===== PDF PAGE 83 =====
+KEVIN HUSTON, ESQ. September 12, 2025
+DISCOVERY COURT REPORTERS    www.discoverydepo.com 1-919-424-8242
+41
+1      Q.   In person?
+2      A.   On the phone.
+3      Q.   When was that?
+4      A.   It was not long after.  I would say I
+5 believe, yeah, that would have been within, say,
+6 two weeks.  Sometime within the next two weeks.
+7      Q.   The next two weeks after, we think,
+8 September 25th?
+9      A.   Correct, yes.
+10      Q.   And what was the nature of that
+11 conversation?
+12      A.   It was fairly short.  I just wanted to
+13 hear him out on what he had in mind as far as his
+14 proposal.
+15      Q.   Had he called you or you called him?
+16      A.   I don't recall that for sure.
+17      Q.   And tell me about that conversation.
+18      A.   Yeah.  So the main thing I wanted to know
+19 was what was his actual price.  And the price he
+20 told me, to the best of my recollection, was
+21 140,000 that he was willing to pay her.
+22      Q.   Did you also discuss the leaseback with
+23 Mr. Wilson?
+24      A.   I don't believe we got into the
+25 particulars as far as that goes.
+===== PDF PAGE 84 =====
+KEVIN HUSTON, ESQ. September 12, 2025
+DISCOVERY COURT REPORTERS    www.discoverydepo.com 1-919-424-8242
+42
+1      Q.   When Mr. Wilson told you the sales price
+2 best of your recollection was 140,000, did he also
+3 say and she can still stay there or express to you
+4 some confirmation that it wouldn't be a sale or it
+5 would be a sale plus a leaseback?
+6      A.   That was still my understanding.  I can't
+7 say for sure that that was brought up in that call,
+8 though.
+9      Q.   Okay.  Did you talk to Mr. Wilson again
+10 after that call?
+11      A.   I don't believe I did.
+12      Q.   And did Mr. Wilson send you any documents
+13 to review?
+14      A.   He did not.
+15      Q.   And what was your response to Mr. Wilson
+16 after he told you the sales price?
+17      A.   I did not say one way or the other.  I
+18 wanted to confer with my client once again on that.
+19      Q.   So at this point, did you represent
+20 Ms. Griffith in the sale of the property?
+21      A.   No.
+22      Q.   Explain to me, then, sort of the nature of
+23 your representation when Ms. Griffith comes to you
+24 with Mr. Wilson.
+25      A.   So my -- I was trying to give her options
+===== PDF PAGE 85 =====
+KEVIN HUSTON, ESQ. September 12, 2025
+DISCOVERY COURT REPORTERS    www.discoverydepo.com 1-919-424-8242
+54
+1      Q.   No.  So can you describe for me the scope
+2 of this agency and the nature of the representation
+3 of Ms. Griffith and that extension of agency?  What
+4 is the nature of this representation that we're
+5 talking about?
+6      A.   It would be assisting Brynda financially.
+7      Q.   All right.  After you had the initial
+8 phone call to Ms. Doherty -- and that's the first
+9 time you had spoken to her, right, right after the
+10 meeting with Ms. Wilson was the first time you
+11 talked to Ms. Doherty?
+12      A.   I had talked to her previously, I'm pretty
+13 sure.
+14      Q.   And what was that in regards to?
+15      A.   It was in regards to some health concerns.
+16      Q.   Do you recall when that or those
+17 conversations took place?
+18      A.   My belief is it would have been probably
+19 in 2021, 2022.
+20      Q.   And these are concerns of Ms. Griffith's
+21 physical health?
+22           MR. NOREEN:  I'm going to object to the
+23     extent I don't know at this point whether
+24     she's an agent and whether those
+25     conversations would be attorney-client
+===== PDF PAGE 86 =====
+KEVIN HUSTON, ESQ. September 12, 2025
+DISCOVERY COURT REPORTERS    www.discoverydepo.com 1-919-424-8242
+63
+1 Your House LLC, (Buyer)."  Let me ask this a
+2 different way.  Do you see that Ms. Griffith, here
+3 on the standard purchase and sales agreement, is
+4 the seller of the property?
+5      A.   Yes.  That's what it says.
+6      Q.   Okay.  Which is listed as 115 Rosebrooks
+7 Drive?
+8      A.   Correct.
+9      Q.   Okay.  And then I want you to turn to page
+10 3, which is the signature page.  Do you see that,
+11 Mr. Huston?
+12      A.   I do.
+13      Q.   Okay.  Do you see where Ms. Griffith
+14 signed that as the seller?
+15      A.   I do, yeah.  It looks like her signature
+16 is there twice on the page.
+17      Q.   Okay.  Does it appear to you from this
+18 document that Ms. Griffith was acting through an
+19 agent or an attorney in fact?
+20           MR. NOREEN:  I'll object to the extent
+21     that he's indicated he never reviewed this
+22     document prior to this litigation and,
+23     therefore, would have no independent
+24     knowledge of anything on here.  You're asking
+25     him as, I guess, an expert of some sort to
+===== PDF PAGE 87 =====
+KEVIN HUSTON, ESQ. September 12, 2025
+DISCOVERY COURT REPORTERS    www.discoverydepo.com 1-919-424-8242
+64
+1     analyze the language of the document?
+2           MS. GUMM:  Well, that's going to be an
+3     admissibility objection.
+4           MR. NOREEN:  I was going to say he can
+5     answer.
+6            MS. GUMM:  Sure.  And you can just
+7     object without instructing too much.
+8           THE WITNESS:  It doesn't say that
+9     there's an agent involved.  Assuming this is
+10     her signature, she signed this herself.
+11 BY MS. GUMM:
+12      Q.   Okay.  If an agent or an attorney in fact
+13 had executed this document or a document on behalf
+14 of Ms. Griffith, would you have expected the
+15 document -- the signature to look different?  I
+16 mean would it be a different person's name?
+17      A.   Yes.  The normal -- yeah.  I would have
+18 expected the agent to sign for both the principal
+19 and the agent, yes.  But the agency would be
+20 specifically clear, yes.
+21      Q.   Okay.  I'll take that one from you and
+22 I'll give you back Exhibit 11, which is the deed,
+23 Mr. Huston, and I understand you didn't review
+24 these outside of the context of this lawsuit.  But
+25 I have the same questions for you regarding the
+===== PDF PAGE 88 =====
+KEVIN HUSTON, ESQ. September 12, 2025
+DISCOVERY COURT REPORTERS    www.discoverydepo.com 1-919-424-8242
+65
+1 deed.  Do you see on the deed that Ms. Griffith is
+2 listed on the first page as the grantor?
+3      A.   It does say Brynda Griffith.  I do note
+4 that her name is misspelled, but yes.
+5      Q.   Fair.  And then on the second page, do you
+6 see Ms. Griffith's signature?
+7      A.   The name Brynda Griffith is signed there.
+8 Again, her name is misspelled, however.
+9      Q.   Okay.  Does it appear to you that
+10 Ms. Griffith was acting through an agent in
+11 executing this deed?
+12           MR. NOREEN:  Again, objection, but he
+13     can answer.
+14           MR. JONES:  You may answer.
+15           THE WITNESS:  It contains a signature
+16     purporting to be Brynda Griffith's.  It says
+17     nothing about agency.  I would conclude that
+18     there is no agent who has signed for Brynda
+19     Griffith.
+20 BY MS. GUMM:
+21      Q.   I'm going to show you again what we
+22 previously marked as Exhibit 12, and that's the
+23 power of attorney, Mr. Huston.  Are you aware of
+24 any instance in which Mr. Browning used that power
+25 of attorney?
+===== PDF PAGE 89 =====
+KEVIN HUSTON, ESQ. September 12, 2025
+DISCOVERY COURT REPORTERS    www.discoverydepo.com 1-919-424-8242
+66
+1      A.   I have no knowledge, no, of anything like
+2 that.
+3      Q.   Okay.  And I think you mentioned earlier
+4 that you drafted Ms. Griffith's will; is that
+5 correct?
+6      A.   That is correct.
+7      Q.   And when was that?
+8      A.   It was in 2024.  I believe it was
+9 September of 2024.
+10      Q.   Do you recall who initiated the
+11 appointment for that will drafting?
+12      A.   I believe it was her daughter, Natalie.
+13      Q.   Okay and was that an in-person meeting?
+14      A.   It was, yes.
+15      Q.   Was it at your office?
+16      A.   Yes.
+17      Q.   Remind me the last time you visited Ms.
+18 Griffith's house in person.
+19      A.   Sorry.  When was it?
+20      Q.   Yeah.
+21      A.   All I can really say with some certainty
+22 is I don't think I met with her at her house in the
+23 last two years.
+24      Q.   Okay, that's fine.
+25      A.   Yeah.
+===== PDF PAGE 90 =====
+KEVIN HUSTON, ESQ. September 12, 2025
+DISCOVERY COURT REPORTERS    www.discoverydepo.com 1-919-424-8242
+69
+1      A.   Yes.
+2      Q.   And you're familiar with the term and the
+3 concept of testamentary capacity?
+4      A.   Correct.
+5      Q.   Could you describe to me some of things
+6 you look for to establish testamentary capacity?
+7      A.   Yes.  I'm trying to see if the testator,
+8 or a client who could be a testator, whether that
+9 person is knowledgeable about who their closest
+10 family members are, what property they have, and if
+11 they can engage in a discussion with me on, you
+12 know, a basic level; do they understand how the
+13 will would impact their estate.
+14      Q.   And you screen every client or potential
+15 testator in sort of the same way for the same
+16 things?
+17      A.   Not necessarily the same way, no.  I might
+18 take more caution with some if I feel like there
+19 might be an issue with testamentary -- well, lack
+20 of capacity.
+21      Q.   Did you describe Ms. Griffith for
+22 testamentary capacity?
+23      A.   I did ask relevant questions along those
+24 lines, yes.
+25      Q.   Did you need to do more for Ms. Griffith
+===== PDF PAGE 91 =====
+KEVIN HUSTON, ESQ. September 12, 2025
+DISCOVERY COURT REPORTERS    www.discoverydepo.com 1-919-424-8242
+70
+1 than -- did you have concerns?  I think you said
+2 that in some cases you might do a little bit more
+3 screening, a different way to do it.
+4      A.   Right.  No, I believe it was fairly
+5 straight forward with the questions to her, right.
+6      Q.   Okay.  And if you -- in your practice, if
+7 you do this screening and try to figure out if they
+8 understand their assets and the people who are
+9 going to take under the will and their family
+10 members, if you find that they don't have
+11 testamentary capacity, what do you do?
+12      A.   Well, I will not be able to have them
+13 execute the will in that case.
+14      Q.   Has there ever been any occasion where you
+15 have found that a potential testator lacked
+16 capacity and you weren't able to draft their will?
+17      A.   Sure.
+18      Q.   But that was not the case here because you
+19 did prepare and have Ms. Griffith execute her will;
+20 is that correct?
+21      A.   True.  She did end up executing the will.
+22      Q.   You hesitated a little bit.
+23      A.   Correct.
+24      Q.   Can you tell me why?
+25      A.   Well, the why would be based on my
+===== PDF PAGE 92 =====
+KEVIN HUSTON, ESQ. September 12, 2025
+DISCOVERY COURT REPORTERS    www.discoverydepo.com 1-919-424-8242
+71
+1 interactions with her.  If there's no objection,
+2 yeah, I can share that with you.
+3           Okay.  So clearly she was lacking.  I mean
+4 clearly she had not lack of capacity but diminished
+5 capacity, let's say.  And although she was able to
+6 answer questions -- and her situation is easy.  One
+7 daughter.  So who is your family?  One daughter.
+8 What assets do you have?  It's a very simple
+9 situation, right?  But in terms of signing the
+10 will, she clearly knew that she -- well, she had no
+11 ability to read through the will and she requested
+12 that I summarize the will.  So it took some -- it
+13 did take some assistance.  I don't believe that she
+14 could have on her own reviewed the will or the
+15 other documents and had the appropriate capacity.
+16 She needed it to be explained to her.
+17      Q.   Is that something you've experienced
+18 before with an elderly person?
+19      A.   Sure.
+20      Q.   Where it's diminished capacity but still
+21 capacity enough to execute the will?
+22      A.   Sure, yes.
+23      Q.   When you explained the will and how
+24 Ms. Griffith had chosen to leave her estate, was
+25 either John or Natalie present in those
+===== PDF PAGE 93 =====
+·1· ·NORTH CAROLINA· · · · · · · · · GENERAL COURT OF JUSTICE
+· · ·WAKE COUNTY· · · · · · · · · · · SUPERIOR COURT DIVISION
+·2· · · · · · · · · · · · · · · · · · · · ·24CV037077-910
+·3· ·NATALIE DOHERTY, Guardian
+· · ·Ad Litem for BRYNDA GRIFFITH,
+·4
+· · · · · · · · · · Plaintiff
+·5
+· · ·vs.
+·6
+· · ·WESLEY DALE BROWNING,
+·7· ·individually, and as Trustee of
+· · ·The 115 ROSEBROOKS REVOCABLE TRUST,
+·8· ·and BUY YOUR HOME, LLC,
+·9· · · · · · · · · Defendants.
+· · ·_______________________________/
+10
+11
+12
+13
+14
+15
+16
+17
+18· · · · · · · · · · · · · VOLUME II
+19
+20· · · · · · · · · ·CONTINUED DEPOSITION OF
+· · · · · · · · · · · · ·KEVIN L. HUSTON
+21
+22· · · · · ·Taken before Mark Rabinowitz, RPR, Notary Public
+23· · · · · in and for the State of North Carolina, pursuant
+24· · · · · to notice, via Zoom on Tuesday, February 10th,
+25· · · · · 2026, commencing 9:30 a.m.
+===== PDF PAGE 94 =====
+·1· ·and may have shared that with me then.
+·2· · · · · · So in September 2024 I may have had an
+·3· ·opportunity to look at some of the those real estate
+·4· ·documents, but not prior to that.· That would have been
+·5· ·the first time I had seen those documents in September
+·6· ·2024, I believe is the date when I met with Natalie.
+·7· · · · Q.· One question that I asked you in the first
+·8· ·deposition or part 1 was -- well, let me back up.
+·9· · · · · · You testified after Ms. Griffith came to meet
+10· ·with you, in September of 2023, that either that day,
+11· ·or shortly afterward, you reached out to Ms. Doherty
+12· ·or Natalie; is that right?
+13· · · · A.· That's right.· Yes.
+14· · · · Q.· I asked you to tell me about the conversation
+15· ·you had with Ms. Doherty on that day, or right after
+16· ·your meeting with Ms. Griffith.· And Mr. Noreen had
+17· ·originally asserted a privilege objection, and that has
+18· ·now been withdrawn.
+19· · · · · · So I want to re-ask you to tell me about that
+20· ·conversation that you had with Ms. Doherty.· And the
+21· ·specific conversation I'm talking about is the first
+22· ·time you talked to Ms. Doherty after Ms. Griffith comes
+23· ·to you regarding the foreclosure and Mr. Wilson.
+24· · · · A.· Yes.· So my takeaway -- from what I recall
+25· ·from that meeting -- is that Natalie was willing to help
+===== PDF PAGE 95 =====
+·1· ·her mother financially with her situation.· I don't
+·2· ·remember the specifics very well at all beyond that.
+·3· ·I don't remember.· But the takeaway was:· Hey, she's
+·4· ·willing to help financially.· And I took that as, hey,
+·5· ·that's a potential resource to help with her financial
+·6· ·hardship.
+·7· · · · Q.· And do you recall whether -- during that
+·8· ·conversation with Ms. Doherty -- you informed
+·9· ·Ms. Doherty of the foreclosure?
+10· · · · A.· I can't say that I specifically recall that
+11· ·being stated.· I just don't remember well enough the
+12· ·details of the discussion.
+13· · · · Q.· Do you have any notes regarding that call?
+14· · · · A.· I don't believe I do, no.
+15· · · · Q.· You said your takeaway was that Natalie was
+16· ·willing to help her more financially.· Do you have any
+17· ·recollection of how you came to that conclusion, any
+18· ·specific thing you might have said, or Ms. Doherty might
+19· ·have said, during that phone call?
+20· · · · A.· I don't, no.· I remember saying those words.
+21· ·And then I ended up e-mailing Beth Donner that same
+22· ·thought that Natalie is willing to help her mother
+23· ·financially.· But I don't remember the discussion that
+24· ·led up to that, or how much we discussed about the
+25· ·financial situation.
+===== PDF PAGE 96 =====
+·1· ·that between the September 2023 and September 2024
+·2· ·meetings or discussions.
+·3· · · · Q.· Were you aware of whether Ms. Doherty did --
+·4· ·between the September 2023 call and the September 2024
+·5· ·meeting, were you aware of whether Ms. Doherty provided
+·6· ·any financial assistance to Ms. Griffith?
+·7· · · · A.· I don't know.· I don't know the answer to
+·8· ·that.· I don't know if she did or not.
+·9· · · · Q.· I want to switch gears and talk a little bit
+10· ·about your assessment of Ms. Griffith's capacity.· Okay,
+11· ·Mr. Huston?
+12· · · · A.· Okay.
+13· · · · Q.· You testified briefly, or in part, about
+14· ·that in September.· I want to ask you some different
+15· ·questions.
+16· · · · · · When you met with Ms. Griffith in September of
+17· ·2023, was it your understanding that -- or can you tell
+18· ·me whether you believe Ms. Griffith understood that she
+19· ·was facing the foreclosure?
+20· · · · A.· She did understand she was facing foreclosure,
+21· ·yes.
+22· · · · Q.· And sort of what led you to that conclusion?
+23· · · · A.· We discussed it in the meeting.· We did
+24· ·discuss it.· I felt like she understood.· I felt like
+25· ·she understood, yes, because that was one of the things
+===== PDF PAGE 97 =====
+·1· ·we were discussing.
+·2· · · · Q.· You say you felt like she understood.· Did you
+·3· ·feel like she understood if nothing was done, that she
+·4· ·may lose her house in a foreclosure sale?
+·5· · · · A.· Yes.· I think that -- I believe she understood
+·6· ·that.· I believe she understood that.
+·7· · · · Q.· When you met with Mr. Duane Wilson and
+·8· ·Ms. Griffith together, was it your sense Ms. Griffith
+·9· ·understood that Mr. Wilson was trying to purchase the
+10· ·house?
+11· · · · A.· She did understand he was trying to purchase
+12· ·the house.· Yes.
+13· · · · Q.· And do you know, or could you form an opinion,
+14· ·whether Ms. Griffith understood that Mr. Wilson was
+15· ·trying to purchase the house, and that would enable
+16· ·Ms. Griffith to avoid the foreclosure?
+17· · · · A.· I think she understood that.· Yes.· That
+18· ·selling the house would, yeah, alleviate the problem
+19· ·of foreclosure.· Yes.
+20· · · · Q.· I think your earlier testimony was that you
+21· ·weren't exactly sure how Ms. Griffith did ultimately
+22· ·come to avoid the foreclosure; is that right?
+23· · · · A.· Yeah; at the time, right, I did not know how
+24· ·the foreclosure was avoided.· That's true.· So in
+25· ·September -- let's just clarify.· In 2023, when I got
+===== PDF PAGE 98 =====
+·1· · · · A.· I'm pretty sure I reached out to her.
+·2· · · · Q.· In your first deposition you testified that
+·3· ·you didn't know whether Mr. Wilson offered a leaseback
+·4· ·of the property.· It sounds like what you just told
+·5· ·Mr. Noreen is that it came with an indefinite leaseback.
+·6· ·Can you tell me about this lease with Mr. Wilson?
+·7· · · · A.· No.· In my deposition earlier I do believe I
+·8· ·mentioned that.· That Duane Wilson was willing to let
+·9· ·her stay there for some indefinite period of time.· It
+10· ·wasn't clearly -- I don't think he stated the exact
+11· ·amount of time.· I believe it was just an indefinite
+12· ·amount of time.
+13· · · · Q.· When you say "an indefinite amount of time,"
+14· ·do you mean you have no idea how long she could stay
+15· ·there, whether it was a day or whether it was ten years,
+16· ·or maybe indefinite as in perpetuity?
+17· · · · A.· Probably not in perpetuity.· Again, this
+18· ·wasn't concrete.· It wasn't a concrete period of time.
+19· ·It was something like he would buy the property, pay off
+20· ·the mortgage, let her live there, you know, more like as
+21· ·long as she needs to to find a new place, to get moved
+22· ·in somewhere else.
+23· · · · · · So, I guess, I mean, I presumed it would
+24· ·probably be something like, you know, a few months or
+25· ·so maybe.· But I don't believe a specific amount of time
+===== PDF PAGE 99 =====
+9/6/25,12:16 PM Gmail - Brynda Griffith
+Kevin Huston <kevin.huston@gmail.com>
+Brynda Griffith
+3 messages
+Kevin Huston <kevin@hustonlawfirm.com> Men, Sep 25, 2023 at 6:36 PM
+To: Kevin Huston <kevinhuston@gmail.com>
+HI Beth.
+The client we were talking about today is Brynda Griffith. Her number is 919-857-8510. Her address is 115 Rosebrooks
+Drive, Gary.
+The real estate guy who Is trying to buy her house for $200k is Duane Wilson. His numbers are 919-346-3426 office and
+919-750-2543 cell.
+Brynda's daughter is Natalie Doherty. She goes by Nikki. Her number is 240-644-9304.
+There are a number of issues going on. Foreclosure proceedings on her home. An offer to buy her home from Duane
+and a number of others she has said. Also, she has no estate plan in place. Powers of attorney would be important to
+obtain. Perhaps you can serve as her health care agent. I may consider serving as Executor or Agent for her durable
+POA.
+Natalie is willing to help financially. I mentioned your name to Natalie as well when I talked to her today.
+Attached are foreclosure documents. I can contact Natalie or Hutchens Law Firm if that helps. Let me know your
+thoughts if you get a chance to talk to Brynda.
+Kevin Huston
+Huston Law Firm, PLLC
+Carolina Estate Counsel
+919-741-6565
+Fax 888-400-2155
+www.carolinaestatecounsel.com
+Raleigh Office and mailino address:
+5540 Centerview Drive, Suite 200
+Raleigh, NC 27606
+Durham Office:
+2530 Meridian Pkwy, Suite 300
+Durham, NC 27713
+Everyone you meet is fighting a battle you know nothing about. Be kind. Always.
+EXHIBIT
+15^
+Foreclosure documents.pdf
+907K
+Kevin Huston <kevin.huston@gmail.com> Sat, Get 7, 2023 at 4:08 PM
+To: Beth Donner <beth@diversifiedplanning.com>
+Hi Beth.
+Here is the information that I meant to email to you before. I don't think it made it there though. You haven't had any
+contact with any of these folks, have you? I found out that Duane is trying to buy for much less than that, I think it was
+maybe $140k. What a deal.
+https://mail.google,com/mail/u/0/?ik=60a44caaac&view=pt&search=a![&permthid=thread-a:r-8363473084439953914&.dsqt=l&simpl=msg-a:r-74696858357556574... 1/5
+===== PDF PAGE 100 =====
+9/6/25, 12:16 PM Gmail - Brynda Griffith
+Let me know if you want to run with the ball, or if you want me to continue on. I'm wondering if Natalie can pay the
+mortgage to catch it up.
+Hi Beth.
+The client we were talking about today is Brynda Griffith. Her number is 919-857-8510. Her address is 115 Rosebrooks
+Drive, Gary.
+The real estate guy who is trying to buy her house for $200k is Duane Wilson. His numbers are 919-346-3426 office and
+919-750-2543 cell.
+Brynda's daughter is Natalie Doherty. She goes by Nikki. Her number is 240-644-9304.
+There are a number of issues going on. Foreclosure proceedings on her home. An offer to buy her home from Duane
+and a number of others she has said. Also, she has no estate plan in place. Powers of attorney would be important to
+obtain. Perhaps you can serve as her health care agent. I may consider serving as Executor or Agent for her durable
+POA.
+Natalie is willing to help financially. I mentioned your name to Natalie as well when I talked to her today.
+Attached are foreclosure documents. I can contact Natalie or Hutchens Law Firm if that helps. Let me know your
+thoughts if you get a chance to talk to Brynda.
+Kevin Huston
+Huston Law Firm, PLLC
+Carolina Estate Counsel
+919-741-6565
+Fax 888-400-2155
+www.carolinaestatecounsel.com
+Raleigh Office and mailing address:
+5540 Centerview Drive, Suite 200
+Raleigh, NC 27606
+Durham Office:
+2530 Meridian Pkwy, Suite 300
+Durham. NC 27713
+Everyone you meet is fighting a battle you know nothing about. Be kind. Always.
+^ Foreclosure documents.pdf
+^ 907K
+Beth Donner <beth@diversifiedplanning.com>
+To: Kevin Huston <kevin.huston@gmail.com>
+Thu, Oct 12, 2023 at 7:48 PM
+I'm sorry Kevin- I've had no time this week to work on this!
+I think there was a deadline on something ?? but I'm not clear what.???
+Is there an update this week?
+https://mail.google.com/mail/u/0/?ilc=60a44caaac&view=pt&search=a!l&permthid=thread-a:r-8363473084439953914&dsqt=l&simpl=msg-a:r-74696858357556574... 2/5
+===== PDF PAGE 101 =====
+9/6/25,12:16 PM
+Please note my new physical & mailing address below—
+Gmail - Brynda Griffith
+kind regards,
+Beth Donner
+Elizabeth C. Donner, CRPC™
+Chartered Retirement Planning Counselor
+Diversified Planning, Ltd.
+- Healthcare / Planning for Retirement / Life & Disability Insurance
+- Social Security / Medicare / Long Term Care Planning
+4509 Creedmoor Rd, Suite 201 Raleigh, NC 27612
+Mobile (919) 601-0501
+Beth@DIversifiedPlanning.com www.OiversifiedPlanning.com
+Beth Donner, CRPc"^^ I Linkedin
+*Beth Donner named to 2022 Financial Ser\'ices Institute Advocacy Circle of Excellence
+FSI "Value ofIndependence" video: https://vvww.voutube.com/watch?v=kmVZQX 5Cvo&feature=voutu.be
+This e-mail, including attachments, may include confidential and/or proprietary infomiation, and may be used only by the person or entity to which it is addressed. If the
+reader of this e-mail is not the intended recipient or his or her authorized agent, the reader is hereby notified that any dissemination, distribution or copying of this e-mail is
+prohibited. If you have received this e-mail in error, please notify the sender by replying to this message and delete this e-mail immediately.
+-- ■ • Individuals who hold the CRPC designation have completed a course of study encompassing pre-and post-retirement needs, estate planning and the entire
+retirement planning process using models and techniques from real client situations. Additionally, individuals must pass an end-of-course examination that tests their ability to
+synthesize complex concepts and apply theoretical concepts to real-life situations. All designees have agreed to adhere to Standards of Professional Conduct and are subject to
+a disciplinary process.
+From: Kevin Huston [mailto:kevin.huston(ggmail.com]
+Sent: Saturday, October 7, 2023 4:09 PM
+To: Beth Donner
+Subject: Fwd: Brynda Griffith
+HI Beth.
+https;//mail,google.cotn/mail/u/0/?ik=60a44caaac&view=pt&search=alI&permthid=thread-a:r-8363473084439953914&dsqt=l&simpl=msg-a:r-74696858357556574.
+===== PDF PAGE 102 =====
+9/6/25, 12:16 PM Gmail - Brynda Griffith
+Here is the information that I meant to email to you before. I don't think it made it there though. You haven't had any
+contact with any of these folks, have you? I found out that Duane is trying to buy for much less than that, I think it was
+maybe $140k. What a deal.
+Let me know if you want to run with the ball, or if you want me to continue on. I'm wondering if Natalie can pay the
+mortgage to catch it up.
+Hi Beth.
+The client we were talking about today is Brynda Griffith. Her number is 919-857-8510. Her address is 115 Rosebrooks
+Drive, Gary.
+The real estate guy who is trying to buy her house for $200k is Duane Wilson. His numbers are 919-346-3426 office and
+919-750-2543 cell.
+Brynda's daughter is Natalie Doherty. She goes by Nikki. Her number is 240-644-9304.
+There are a number of issues going on. Foreclosure proceedings on her home. An offer to buy her home from Duane
+and a number of others she has said. Also, she has no estate plan in place. Powers of attorney would be important to
+obtain. Perhaps you can serve as her health care agent. I may consider serving as Executor or Agent for her durable
+POA.
+Natalie is willing to help financially. I mentioned your name to Natalie as well when I talked to her today.
+Attached are foreclosure documents. I can contact Natalie or Hutchens Law Firm if that helps. Let me know your
+thoughts if you get a chance to talk to Brynda.
+Kevin Huston
+Huston Law Firm, PLLC
+Carolina Estate Counsel
+919-741-6565
+Fax 888-400-2155
+www.carolinaestatecounsel.com
+Raleigh Office and mailing address:
+5540 Centerview Drive, Suite 200
+Raleigh. NC 27606
+https://mail.google.com/mail/u/0/?ik=60a44caaac&view=pt&search=all&permthld=thread-a:r-8363473084439953914&dsqt=l&simpl=msg-a:r-74696858357556574... 4/5
+===== PDF PAGE 103 =====
+<•
+9/6/25,12:16 PM Gmail - Brynda Griffith
+Durham Office:
+2530 Meridian Pkwy, Suite 300
+Durham, NC 27713
+Everyone you meet is fighting a battie you know nothing about. Be kind. Always.
+https://mail.google.com/mail/u/0/?ik=60a44caaac&view=pt&search=all&pennthid=thread-a:r-8363473084439953914&dsqt=l&simpl=msg-a:r-74696858357556574... 5/5

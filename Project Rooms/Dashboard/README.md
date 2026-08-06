@@ -42,7 +42,7 @@ Out of scope:
 
 Status: active initial design.
 
-The local dashboard provides search, codified functional-group filters, status counts, Project Room summaries, skill visibility, documented-mode selection, and extensible side-panel Quick actions. Every card has a README action and, when it has fewer than two actions, an unassigned future-action slot. The Entity Relationship card also opens its SVG diagram, and Gracious Millionaire opens its website. Dashboard action links use the browser's normal separate-tab/window behavior. The deletion control presents a one-confirmation, exact-resource workflow preview and can download an audit-plan record, but does not delete or alter anything. Group remains a displayed side-panel property with a preview-only selector. The two SOP viewer combo boxes remain scoped to the SOPs Project Room only. A section heading can count as a documented mode either by using a recognized `Modes` section or by beginning that section with `Use this mode ...`; the mode name itself does not need to end with `Mode`. Wes will review the design and decide what to alter.
+The local dashboard provides search, codified functional-group filters, status counts, Project Room summaries, skill visibility, documented-mode selection, and extensible side-panel Quick actions. Every card has a README action and, when it has fewer than two actions, an unassigned future-action slot. The Entity Relationship card also opens its SVG diagram, and Gracious Millionaire opens its website. Dashboard action links use the browser's normal separate-tab/window behavior. The deletion control presents a one-confirmation, exact-resource workflow preview and can record a structured deletion request for `Create PR`, but Dashboard still does not delete, archive, rename, or alter anything itself. Group remains a displayed side-panel property with a preview-only selector. The two SOP viewer combo boxes remain scoped to the SOPs Project Room only. A section heading can count as a documented mode either by using a recognized `Modes` section or by beginning that section with `Use this mode ...`; the mode name itself does not need to end with `Mode`. Wes will review the design and decide what to alter.
 
 When a documented mode has a Dashboard-keyed action in `config\dashboard-actions.json`, selecting that mode now invokes the configured safe action immediately. The current seeded example is `Create PR` -> `Diagram`, which opens the canonical `outputs\Project Room Relationship Diagram.svg`. Modes without a keyed action remain review-only and say so truthfully.
 
@@ -50,7 +50,11 @@ For the SOPs Project Room, the side panel reads the authoritative `outputs\SOP I
 
 For the Manager Project Room, the `Tasks` mode now loads a Dashboard-owned helper panel. It shows open tasks parsed from `Project Rooms\Manager\working\task-register.md`, including each task's priority and current status. The full local Dashboard on WesStudio can change the selected task's status and write that update back to the canonical Manager register; LAN-host views remain read-only and show the editor as unavailable.
 
-For the Invoice Entry Project Room, the `Reconcile` mode now loads a Dashboard-owned request panel. It shows active projects parsed from `Project Rooms\Invoice Entry\working\project-spreadsheet-register.md`. Because Dashboard must remain a request interface rather than directly activating another Project Room, the local WesStudio button copies the exact Reconcile request for the selected project and opens the Invoice Entry task for paste-in activation; LAN-host views show the project list but leave the request button unavailable.
+For the Invoice Entry Project Room, the `Reconcile` mode now loads a Dashboard-owned request panel. It shows active projects parsed from `Project Rooms\Invoice Entry\working\project-spreadsheet-register.md`. Because Dashboard must remain a request interface rather than directly activating another Project Room, the local WesStudio button prepares the exact Reconcile request, tries to copy it, and tries to open the Invoice Entry task for paste-in activation. The mode panel now keeps a visible `Latest Reconcile action` card plus the exact request text so Wes can see whether copy/open succeeded and what to paste next. LAN-host views show the project list but leave the request button unavailable.
+
+For the Dashboard Project Room itself, the `Bridge Test` mode now records one local bridge-test request aimed at `Create PR` and shows the current returned status from the shared Dashboard action-request store. The full local Dashboard host can create or reuse that request record; LAN-host views remain read-only and can only inspect the current state. The actual task-message delivery still happens through the active Dashboard Codex task, which writes the returned status back to that shared action-request record.
+
+For every Project Room card, `Review deletion` now uses the same delegated-transport pattern. The full local Dashboard host can record a structured deletion request for `Create PR` and show the latest returned status for that exact Project Room in both the side panel and the dialog. The WesStudio machine may also record that same deletion request while using the LAN URL locally, but remote LAN clients may only inspect the existing request record and status. Dashboard still performs no deletion itself; the active Dashboard Codex task performs the actual task-message send and writes the returned status back to the shared action-request store.
 
 ## Attention Badges
 
@@ -126,6 +130,32 @@ Controls:
   Availability: lan-readonly
 ```
 
+## Bridge Test
+
+Use this mode when Wes wants to verify the Dashboard-to-Project-Room delivery path before building delegated Dashboard actions such as deletion.
+
+When the selected Project Room is `Dashboard` and the selected mode is `Bridge Test`, the side panel loads a Dashboard-owned helper panel that reads and, on the full local host only, records the canonical bridge-test request state.
+
+Current bridge-test rules:
+
+1. The request is recorded in the shared Dashboard action-request store `Project Rooms\Dashboard\working\tmp\dashboard-action-requests.json`.
+2. The request is always targeted to the canonical `Create PR` task/thread id `019f583e-7f14-7ae2-aa24-4e991544e306`.
+3. The LAN host may show the recorded state, but it may not create or alter it.
+4. The active Dashboard Codex task performs the actual `send_message_to_thread` delivery and writes the returned status back to that same shared record.
+5. The legacy bridge-test and deletion JSON files remain mirrored from the shared store so existing views stay compatible while Dashboard actions move onto the single bridge path.
+
+## Generic Bridge
+
+Dashboard now has one shared delegated-action transport store at `Project Rooms\Dashboard\working\tmp\dashboard-action-requests.json`.
+
+Rules:
+
+1. Every delegated Dashboard action records one structured request in that shared store with a target Project Room and target task/thread id.
+2. The local host exposes generic request-read, request-create, and request-status-update endpoints for Dashboard-owned actions.
+3. The LAN host exposes the same read surface to all clients, but only WesStudio itself may create or update requests while using the LAN URL.
+4. The active Dashboard Codex task is the bridge processor. It reads prepared requests from the shared store, sends the task message to the target PR, and writes the returned status back to the same request record.
+5. Action-specific interfaces such as `Bridge Test` and `Review deletion` are now thin views over this one shared bridge instead of owning separate transport files.
+
 ## Matching Skill
 
 - Skill source: `C:\Codex\Wiki Files\skills\dashboard\SKILL.md`
@@ -155,7 +185,7 @@ WesStudio may also host a LAN read-only Dashboard at `http://10.0.0.105:8765/` f
 
 When the firewall rule already matches the approved scope and only the startup action needs to be refreshed, rerun `C:\Codex\Wiki Files\Project Rooms\Dashboard\tools\Register-DashboardLanHost.ps1 -SkipFirewallUpdate`.
 
-The LAN host is read-only. It serves the Dashboard site plus approved read-only document views only, rejects refresh writes, and disables host-only actions for remote clients. On WesStudio itself, the LAN-host view may still open the deletion-preview workflow because that preview does not execute deletion. See `working\dashboard-lan-hosting.md` for architecture, validation, and rollback.
+The LAN host is read-only for remote clients. It serves the Dashboard site plus approved read-only document views only, rejects refresh writes, and disables host-only actions for remote clients. On WesStudio itself, the LAN-host view may still open the deletion workflow and record a delegated deletion request because that request does not execute deletion. See `working\dashboard-lan-hosting.md` for architecture, validation, and rollback.
 
 ## Start PR Pointer
 

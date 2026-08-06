@@ -1,0 +1,38 @@
+{
+  "dispatch_id": "jean-dispatch-20260804-lowes-statements-2025-v1-docscan-intake",
+  "packet_type": "lowes_statement_allocation",
+  "account": "SYH-6140",
+  "statement_period": "2025-04-02",
+  "source_path": "C:\\Users\\wesbr\\Buy Your Home\\Buy Your Home - Office Admin\\2025\\Credit Cards\\Lowe's Pro-SYH-6140\\25-04-02.pdf",
+  "source_url": "https://lifeisanadventure.sharepoint.com/sites/SellYourHome/Shared%20Documents/Office%20Admin/2025/Credit%20Cards/Lowe%27s%20Pro-SYH-6140/25-04-02.pdf",
+  "source_preservation": "Original SharePoint/Teams source PDF left in place; no duplicate source copy created.",
+  "visible_page_labels": [],
+  "actual_page_count": 3,
+  "rows": [
+    {
+      "row_id": "SYH-6140-2025-04-02-77886-1",
+      "account": "SYH-6140",
+      "statement_period": "2025-04-02",
+      "source_path": "C:\\Users\\wesbr\\Buy Your Home\\Buy Your Home - Office Admin\\2025\\Credit Cards\\Lowe's Pro-SYH-6140\\25-04-02.pdf",
+      "source_url": "https://lifeisanadventure.sharepoint.com/sites/SellYourHome/Shared%20Documents/Office%20Admin/2025/Credit%20Cards/Lowe%27s%20Pro-SYH-6140/25-04-02.pdf",
+      "source_page": 3,
+      "invoice_number": "77886",
+      "transaction_date": "2025-03-17",
+      "po": "",
+      "store": "",
+      "item_description": "OCR invoice block present; item description not separable",
+      "item_amount": "$66.48",
+      "invoice_total_or_balance_due": "$71.30",
+      "charge_credit_type": "Charge",
+      "recommended_vendor_tab": "Needs Review",
+      "confidence_status": "Needs Review - OCR extracted; verify against source page before workbook entry",
+      "duplicate_risk": "Invoice number and statement period must be checked by Invoice Entry",
+      "notes": "Doc Scan extracted from image-only OCR. Item boundaries and amounts may require verification.",
+      "likely_project": "",
+      "recommended_workbook": "",
+      "project_confidence": "Needs Review - no reliable project PO visible"
+    }
+  ],
+  "statement_confidence": "Needs Review - source PDFs are image-only and OCR-derived",
+  "handoff_instruction": "Invoice Entry should verify OCR rows against source pages before duplicate checks or workbook entry."
+}
