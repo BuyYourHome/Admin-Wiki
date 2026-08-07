@@ -29,6 +29,14 @@ The workflow must not infer or add registry entries, automations, installed skil
 7. When every included resource is resolvable and Wes has authorized the executable scope, delete only the selected Project Room, documented matching skill, and documented task/chat. Refresh the Dashboard so the derived card disappears.
 8. Append final results to the audit log outside the deleted Project Room. Commit the scoped deletion record and Dashboard refresh update separately from unrelated work; push only under the Admin wiki rules.
 
+## Lessons Learned
+
+- A delegated deletion is not visually complete in Dashboard until the generated site data is refreshed. Folder deletion alone does not remove the card from `site\project-rooms.js`.
+- `config\project-room-groups.json` does not auto-prune deleted room assignments. Remove stale room keys when a Project Room is deleted so Dashboard-owned metadata stays clean.
+- The Dashboard bridge depends on a healthy target PR task. If the canonical destination task is unhealthy, reroute every canonical thread-id reference together before treating the bridge as repaired.
+- The returned request status in Dashboard's shared action-request store is operational state, not optional polish. If `Create PR` returns `done`, mirror that terminal status back into the Dashboard runtime store so the side panel and deletion dialog stay truthful.
+- On this machine, direct script invocation can fail under the local PowerShell execution policy. The documented `powershell.exe -ExecutionPolicy Bypass -File ...` path is the reliable refresh path when a normal shell invocation is blocked.
+
 ## Dashboard Self-Protection
 
 Dashboard must not delete itself from its own interface. Its deletion would remove the local interface and its audit log. A separate explicitly authorized Admin workflow is required for any future Dashboard removal.

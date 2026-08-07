@@ -227,3 +227,10 @@
 - Added a narrow central delegated-authorization rule so a documented Dashboard exact-scope deletion request can carry Wes's already-captured authorization to `Create PR`.
 - Updated the shared ownership rule, `Create PR` documentation, the canonical `create-pr` skill, and the Dashboard deletion workflow so the same policy is described consistently.
 - Kept the exception narrow: it applies only when scope is exact, the request class is documented, and no archive/delete substitution, scope broadening, or partial deletion is required.
+
+## 2026-08-07 - Delegated Deletion Follow-Through Lessons
+
+- Verified that `CMA Report - 5021 Sunnyfield Dr` was actually deleted by `Create PR`, but the Dashboard card persisted until `Refresh-DashboardData.ps1` regenerated `site\project-rooms.js`.
+- Confirmed that Dashboard-owned stale metadata can survive deletion outside the generated card index; removed obsolete deleted-room assignments from `config\project-room-groups.json`.
+- Confirmed that the generic bridge path was healthy only after every canonical `Create PR` thread-id reference was rerouted to the replacement task `019fdc5e-a1da-7e10-b388-a3be3830ac89`.
+- Recorded that the local PowerShell execution policy may block direct script invocation from an ordinary shell; the documented `powershell.exe -ExecutionPolicy Bypass -File ...` refresh path remains the reliable fallback on WesStudio.

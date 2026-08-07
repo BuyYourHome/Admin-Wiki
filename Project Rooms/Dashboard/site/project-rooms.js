@@ -1,5 +1,5 @@
-window.PROJECT_ROOMS_UPDATED = '2026-08-06 08:42';
-window.PROJECT_ROOMS_HASH = '75B694FAA484AE18CBB37A014258DD1A9D64D1E8C58589E1D515404212516375';
+window.PROJECT_ROOMS_UPDATED = '2026-08-07 09:42';
+window.PROJECT_ROOMS_HASH = '0B9BA84632933C2AD17C0111082D5A48CA99D1AAE76D6C87C03754989C27DD96';
 window.PROJECT_ROOM_GROUPS = [
     {
         "name":  "Intake \u0026 Coordination",
@@ -54,7 +54,7 @@ window.DASHBOARD_ACTIONS = {
                                          "Bridge Test":  {
                                                              "title":  "Dashboard Bridge Test",
                                                              "intro":  "Use this helper to prove the Dashboard-to-Create-PR bridge path without browser popups, manual paste, or any delegated Project Room work.",
-                                                             "stateText":  "Bridge Test loaded. Record one local request, then have the active Dashboard Codex task deliver it and review the returned status here.",
+                                                             "stateText":  "Bridge Test loaded. Record one local request, then review the returned status here.",
                                                              "controls":  [
                                                                               {
                                                                                   "type":  "dashboard-bridge-test",
@@ -235,25 +235,6 @@ window.PROJECT_ROOMS = [
 
                   ],
         "readmeUrl":  "../../CMA%20Report/README.md",
-        "quickActions":  [
-
-                         ]
-    },
-    {
-        "name":  "CMA Report - 5021 Sunnyfield Dr",
-        "purpose":  "Prepare a preliminary CMA for the manufactured home at 5021 Sunnyfield Dr, Raleigh, NC 27610.",
-        "status":  "Status not recorded",
-        "skill":  "",
-        "skillPath":  "",
-        "skillState":  "not-applicable",
-        "taskId":  "",
-        "attention":  null,
-        "group":  "Other",
-        "groupBasis":  "Used when a Project Room does not yet have a supported assignment to one of the defined functional groups.",
-        "modes":  [
-
-                  ],
-        "readmeUrl":  "../../CMA%20Report%20-%205021%20Sunnyfield%20Dr/README.md",
         "quickActions":  [
 
                          ]
