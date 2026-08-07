@@ -52,9 +52,9 @@ For the Manager Project Room, the `Tasks` mode now loads a Dashboard-owned helpe
 
 For the Invoice Entry Project Room, the `Reconcile` mode now loads a Dashboard-owned request panel. It shows active projects parsed from `Project Rooms\Invoice Entry\working\project-spreadsheet-register.md`. Because Dashboard must remain a request interface rather than directly activating another Project Room, the local WesStudio button prepares the exact Reconcile request, tries to copy it, and tries to open the Invoice Entry task for paste-in activation. The mode panel now keeps a visible `Latest Reconcile action` card plus the exact request text so Wes can see whether copy/open succeeded and what to paste next. LAN-host views show the project list but leave the request button unavailable.
 
-For the Dashboard Project Room itself, the `Bridge Test` mode now records one local bridge-test request aimed at `Create PR` and shows the current returned status from the shared Dashboard action-request store. The full local Dashboard host can create or reuse that request record; LAN-host views remain read-only and can only inspect the current state. The actual task-message delivery still happens through the active Dashboard Codex task, which writes the returned status back to that shared action-request record.
+For the Dashboard Project Room itself, the `Bridge Test` mode now records one local bridge-test request aimed at `Create PR` and shows the current returned status from the shared Dashboard action-request store. The full local Dashboard host can create or reuse that request record; LAN-host views remain read-only and can only inspect the current state. The actual task-message delivery still happens through the active Dashboard Codex task, which writes the returned status back to that shared action-request record. A `prepared` bridge-test state means the request is only queued locally and has not yet been delivered.
 
-For every Project Room card, `Review deletion` now uses the same delegated-transport pattern. The full local Dashboard host can record a structured deletion request for `Create PR` and show the latest returned status for that exact Project Room in both the side panel and the dialog. The WesStudio machine may also record that same deletion request while using the LAN URL locally, but remote LAN clients may only inspect the existing request record and status. Dashboard still performs no deletion itself; the active Dashboard Codex task performs the actual task-message send and writes the returned status back to the shared action-request store.
+For every Project Room card, `Review deletion` now uses the same delegated-transport pattern. The full local Dashboard host can record a structured deletion request for `Create PR` and show the latest returned status for that exact Project Room in both the side panel and the dialog. The WesStudio machine may also record that same deletion request while using the LAN URL locally, but remote LAN clients may only inspect the existing request record and status. Dashboard still performs no deletion itself; the active Dashboard Codex task performs the actual task-message send and writes the returned status back to the shared action-request store. A `prepared` deletion state means the request is only queued locally on Dashboard and still awaits delivery by the Dashboard task; `sent` means delivery was attempted and Dashboard is waiting on the target PR to return a status.
 
 ## Attention Badges
 
@@ -155,6 +155,12 @@ Rules:
 3. The LAN host exposes the same read surface to all clients, but only WesStudio itself may create or update requests while using the LAN URL.
 4. The active Dashboard Codex task is the bridge processor. It reads prepared requests from the shared store, sends the task message to the target PR, and writes the returned status back to the same request record.
 5. Action-specific interfaces such as `Bridge Test` and `Review deletion` are now thin views over this one shared bridge instead of owning separate transport files.
+
+Status interpretation:
+
+- `prepared` - queued locally on Dashboard; not yet delivered to the target PR.
+- `sent` - delivered by the Dashboard task; waiting for the target PR to return a status.
+- `accepted`, `done`, `blocked`, `needs Wes`, `rejected as wrong room` - returned by the target PR and written back by the Dashboard task.
 
 ## Matching Skill
 

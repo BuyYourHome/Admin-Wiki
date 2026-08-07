@@ -298,6 +298,42 @@
       summaryText: `${taskState} ${skillState} Dashboard created no deletion and no archive.`
     };
   }
+  function getDeletionRequestSummaryText(request) {
+    if (!request) {
+      return "No deletion request recorded for this room.";
+    }
+    if (request.status === "prepared") {
+      return `Latest deletion request: queued locally and waiting for the Dashboard bridge processor. Request id ${request.requestId}.`;
+    }
+    if (request.status === "sent") {
+      return `Latest deletion request: sent to ${request.targetPr || "the target Project Room"} and waiting for a returned status. Request id ${request.requestId}.`;
+    }
+    return `Latest deletion request: ${request.status}. Request id ${request.requestId}.`;
+  }
+  function getDeletionRequestPlanStateText(request) {
+    if (!request) {
+      return "";
+    }
+    if (request.status === "prepared") {
+      return "Queued locally on Dashboard. The active Dashboard Codex task still needs to deliver this request to Create PR and write the returned status back here.";
+    }
+    if (request.status === "sent") {
+      return "Dashboard delivered this request to Create PR and is waiting for the returned status.";
+    }
+    return request.message || `Current deletion request status: ${request.status}.`;
+  }
+  function getDeletionRequestStatusNoteText(request) {
+    if (!request) {
+      return "";
+    }
+    if (request.status === "prepared") {
+      return "Transport note: this request is only queued in the shared Dashboard action-request store so far. The active Dashboard Codex task still needs to send it to Create PR.";
+    }
+    if (request.status === "sent") {
+      return "Transport note: the active Dashboard Codex task sent this request to Create PR and is waiting for a returned status to be written back here.";
+    }
+    return "Transport note: Dashboard records the request in the shared action-request store. The active Dashboard Codex task performs the actual task-message send and writes the returned status back here.";
+  }
   function renderDeletionRequestSummary(room) {
     const summary = el("deleteRequestStatusSummary");
     if (!summary) {
@@ -318,7 +354,7 @@
         : "No deletion request recorded for this room. Remote LAN views can review existing requests only.";
       return;
     }
-    summary.textContent = `Latest deletion request: ${request.status}. Request id ${request.requestId}.`;
+    summary.textContent = getDeletionRequestSummaryText(request);
   }
   function renderDeleteDialogStatus(room) {
     const request = getDeletionRequestResult(room);
@@ -362,7 +398,7 @@
       }, null, 2);
       requestBox.hidden = false;
       if (!isDashboardRoom && canPrepareDeletionRequest()) {
-        el("deletePlanState").textContent = `${plan.summaryText} Create deletion request to record the handoff for Create PR.`;
+        el("deletePlanState").textContent = `${plan.summaryText} Queue a deletion request for Create PR. The active Dashboard Codex task will deliver it and write the returned status back here.`;
       }
       return;
     }
@@ -379,9 +415,9 @@
       `RETURNED: ${request.returnedAt || "-"}`,
       `MESSAGE: ${request.message || "-"}`
     ].join("\n");
-    el("deleteRequestStatusNote").textContent = "Transport note: Dashboard records the request in the shared action-request store. The active Dashboard Codex task performs the actual task-message send and writes the returned status back here.";
+    el("deleteRequestStatusNote").textContent = getDeletionRequestStatusNoteText(request);
     el("deleteRequestText").value = JSON.stringify(request, null, 2);
-    el("deletePlanState").textContent = request.message || `Current deletion request status: ${request.status}.`;
+    el("deletePlanState").textContent = getDeletionRequestPlanStateText(request);
   }
   async function loadDeletionRequestState(room, { force = false } = {}) {
     if (!room?.name) {
@@ -448,7 +484,7 @@
       }
       state.deletionRequestState = result.state || null;
       state.deletionRequestLoadedRoomName = room.name;
-      el("deletePlanState").textContent = result.message || `Dashboard deletion request created for ${room.name}.`;
+      el("deletePlanState").textContent = getDeletionRequestPlanStateText(state.deletionRequestState) || result.message || `Dashboard deletion request created for ${room.name}.`;
       renderDeletionRequestSummary(room);
     } catch (error) {
       el("deletePlanState").textContent = `Deletion request creation failed: ${error.message}`;

@@ -333,7 +333,7 @@ function New-DeletionRequestRecord {
         deliveryAttemptedAt = $null
         deliveredAt = $null
         returnedAt = $null
-        message = 'Deletion request recorded on the local WesStudio LAN host view. The active Dashboard Codex task performs the actual task-message send and writes the returned status back here.'
+        message = 'Deletion request queued locally on the WesStudio LAN host view. The active Dashboard Codex task still needs to deliver it to Create PR and write the returned status back here.'
     }
 }
 
@@ -476,7 +476,7 @@ try {
                     $body = [Text.Encoding]::UTF8.GetBytes((@{
                         ok = $true
                         state = $record
-                        message = "Dashboard deletion request $($record.requestId) is recorded for $($record.projectRoom.name)."
+                        message = "Dashboard deletion request $($record.requestId) is queued locally for $($record.projectRoom.name). The active Dashboard Codex task still needs to deliver it to Create PR."
                     } | ConvertTo-Json -Depth 8 -Compress))
                     Send-Response -Response $context.Response -StatusCode 200 -Body $body -ContentType 'application/json; charset=utf-8'
                 } catch {
@@ -503,7 +503,7 @@ try {
                     $body = [Text.Encoding]::UTF8.GetBytes((@{
                         ok = $true
                         state = $state
-                        message = "Dashboard action request $($state.requestId) is recorded."
+                        message = "Dashboard action request $($state.requestId) is queued locally for the Dashboard bridge processor."
                     } | ConvertTo-Json -Depth 8 -Compress))
                     Send-Response -Response $context.Response -StatusCode 200 -Body $body -ContentType 'application/json; charset=utf-8'
                 } catch {

@@ -54,7 +54,7 @@ window.DASHBOARD_ACTIONS = {
                                          "Bridge Test":  {
                                                              "title":  "Dashboard Bridge Test",
                                                              "intro":  "Use this helper to prove the Dashboard-to-Create-PR bridge path without browser popups, manual paste, or any delegated Project Room work.",
-                                                             "stateText":  "Bridge Test loaded. Record one local request, then review the returned status here.",
+                                                             "stateText":  "Bridge Test loaded. Record one local request, then have the active Dashboard Codex task deliver it and review the returned status here.",
                                                              "controls":  [
                                                                               {
                                                                                   "type":  "dashboard-bridge-test",
