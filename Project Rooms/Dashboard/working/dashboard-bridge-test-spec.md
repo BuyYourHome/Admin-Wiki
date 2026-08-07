@@ -18,7 +18,7 @@ Source PR:
 Target PR:
 
 - `Create PR`
-- Task/thread id: `019f583e-7f14-7ae2-aa24-4e991544e306`
+- Task/thread id: `019fdc5e-a1da-7e10-b388-a3be3830ac89`
 
 Test action type:
 
@@ -72,7 +72,7 @@ Use this exact semantic payload shape, even if the final wire format differs:
   "source_pr": "Dashboard",
   "source_thread_id": "019fc52f-858a-72e1-926b-a0f6fbf0fd89",
   "target_pr": "Create PR",
-  "target_thread_id": "019f583e-7f14-7ae2-aa24-4e991544e306",
+  "target_thread_id": "019fdc5e-a1da-7e10-b388-a3be3830ac89",
   "requested_by": "Wes",
   "requested_action": "Acknowledge this bridge test and return accepted or done without performing any PR creation or deletion.",
   "notes": "Transport proof only. No filesystem or governance action is authorized by this test."

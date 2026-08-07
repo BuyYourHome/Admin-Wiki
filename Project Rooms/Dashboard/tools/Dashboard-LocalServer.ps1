@@ -12,7 +12,7 @@ $bridgeTestStatePath = Join-Path $root 'Project Rooms\Dashboard\working\tmp\dash
 $deletionRequestStatePath = Join-Path $root 'Project Rooms\Dashboard\working\tmp\dashboard-deletion-requests.json'
 $serverErrorLogPath = Join-Path $root 'Project Rooms\Dashboard\working\tmp\dashboard-server-errors.log'
 $bridgeTestSourceThreadId = '019fc52f-858a-72e1-926b-a0f6fbf0fd89'
-$createPrTargetThreadId = '019f583e-7f14-7ae2-aa24-4e991544e306'
+$createPrTargetThreadId = '019fdc5e-a1da-7e10-b388-a3be3830ac89'
 $bridgeTestTargetThreadId = $createPrTargetThreadId
 $listener = [System.Net.HttpListener]::new()
 $listener.Prefixes.Add("http://127.0.0.1:$Port/")

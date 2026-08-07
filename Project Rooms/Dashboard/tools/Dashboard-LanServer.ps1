@@ -317,7 +317,7 @@ function New-DeletionRequestRecord {
         sourcePr = 'Dashboard'
         sourceThreadId = '019fc52f-858a-72e1-926b-a0f6fbf0fd89'
         targetPr = 'Create PR'
-        targetThreadId = '019f583e-7f14-7ae2-aa24-4e991544e306'
+        targetThreadId = '019fdc5e-a1da-7e10-b388-a3be3830ac89'
         requestedBy = 'Wes'
         requestedAction = if ($Payload.requestedAction) { [string]$Payload.requestedAction } else { 'Review this Project Room deletion request and return accepted, done, blocked, needs Wes, or rejected as wrong room. Do not delete, archive, or rename anything unless separately authorized.' }
         confirmation = if ($Payload.confirmation) { [string]$Payload.confirmation } else { "One explicit Dashboard confirmation for $($Payload.roomName); Dashboard executed no deletion." }

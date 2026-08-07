@@ -139,7 +139,7 @@ When the selected Project Room is `Dashboard` and the selected mode is `Bridge T
 Current bridge-test rules:
 
 1. The request is recorded in the shared Dashboard action-request store `Project Rooms\Dashboard\working\tmp\dashboard-action-requests.json`.
-2. The request is always targeted to the canonical `Create PR` task/thread id `019f583e-7f14-7ae2-aa24-4e991544e306`.
+2. The request is always targeted to the canonical `Create PR` task/thread id `019fdc5e-a1da-7e10-b388-a3be3830ac89`.
 3. The LAN host may show the recorded state, but it may not create or alter it.
 4. The active Dashboard Codex task performs the actual `send_message_to_thread` delivery and writes the returned status back to that same shared record.
 5. The legacy bridge-test and deletion JSON files remain mirrored from the shared store so existing views stay compatible while Dashboard actions move onto the single bridge path.

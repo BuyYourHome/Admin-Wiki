@@ -20,7 +20,7 @@ This is the live task registry for the universal [[Project Room Delegation Contr
 | Computers | `computers` | `019f96e9-c663-7550-bf20-5829f6cb6c88` | Route computer inventory, specs, and device-readiness work here. | Distinct from Codex app behavior. |
 | Confidential | `confidential` | `019f47a8-b32a-73a0-9bc4-9e493f1b0c5e` | Route confidential sensitive-source organization here. | Keep handoffs minimal and avoid unnecessary source copying. |
 | Contract for Deed | `contract-for-deed` | pending | Route seller-financing and CFD package work here. | Uses Email Monitor for delivery. |
-| Create PR | `create-pr` | `019f583e-7f14-7ae2-aa24-4e991544e306` | Route PR creation, standardization, and relationship-diagram mode here. | New PRs should be dispatcher-ready. |
+| Create PR | `create-pr` | `019fdc5e-a1da-7e10-b388-a3be3830ac89` | Route PR creation, standardization, and relationship-diagram mode here. | New PRs should be dispatcher-ready. |
 | Credit Worthiness Evaluator | `credit-worthiness-evaluator` | pending | Route buyer credit-worthiness evaluation work here. | Coordinate with Contract for Deed only under scoped handoff. |
 | Dashboard | `dashboard` | `019fc52f-858a-72e1-926b-a0f6fbf0fd89` | Route local Dashboard source, configuration, refresh-tool, and Dashboard-documentation work here only. | Dedicated Dashboard task verified. Local-only unless Wes explicitly authorizes publication. |
 | Doc Scan | `doc-scan` | `019ecc0d-02b4-73a3-9c20-dacda5d811d0` | Route scanned-document process design, active scan-processing questions, and scanned-statement intake here before Invoice Entry. | Existing dedicated Doc Scan task verified 2026-08-04; Invoice Entry handoffs route onward only after Doc Scan prepares structured packets. |

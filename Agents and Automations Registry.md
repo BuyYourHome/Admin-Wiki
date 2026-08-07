@@ -526,7 +526,7 @@ Defined in:
 Dedicated chat:
 
 - Chat name: `Create PR`
-- Thread id: `019f583e-7f14-7ae2-aa24-4e991544e306`
+- Thread id: `019fdc5e-a1da-7e10-b388-a3be3830ac89`
 
 Important rules:
 
