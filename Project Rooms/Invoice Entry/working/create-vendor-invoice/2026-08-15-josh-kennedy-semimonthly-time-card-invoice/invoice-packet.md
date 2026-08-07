@@ -42,6 +42,13 @@ August 6 dispatch: `email-monitor-route-vendor-invoice-20260807-josh-timecard-au
 - Source fact: Josh reported August 6 time at `4121 Tensity Dr` from `6:00 AM` to `3:30 PM`.
 - The original task-message attempt did not appear in the destination history. The reconciled retry used the same dispatch id and Outlook reference and does not represent a second source line.
 
+Duplicate August 6 source dispatch: `email-monitor-route-vendor-invoice-20260807-josh-timecard-aug6-duplicate-002`
+
+- Outlook message id: `AQMkADZkMGMwNDI3LWU5ZjctNDgzMC1iMjdkLTY0NmRiN2IwNmIyZgBGAAADKGOvWJYjX0aEKaRpd0MYQQcAVSXargQY20aF7RLCkro4ggAAAgEMAAAAVSXargQY20aF7RLCkro4ggAChS2okwAAAA==`.
+- Sender: `IRAManager@SellYourHomeRaleigh.com`; received `2026-08-07T13:15:42Z`; subject `Time card`; attachments: none.
+- The message repeats the already accepted August 6 facts exactly: `4121 Tensity Dr`, `6:00 AM` to `3:30 PM`.
+- Receipt status: `rejected as duplicate`. Preserve as supporting source evidence only; it does not create another accepted line.
+
 ## Accepted Time Lines
 
 | Work date | Destination | Start | End | Accepted time | Source/status |
@@ -60,6 +67,7 @@ Accumulated accepted time through August 6: `35 hours 55 minutes` (`31 hours 55 
 - The Josh correction and Wes forward are two source records supporting one correction/new-time update, not two sets of hours.
 - The August 5 message id, dispatch id, work date, project, and time range did not match any prior packet line. It was added once and must reconcile to this line if routed again.
 - The August 6 reconciled retry found no prior durable line or matching source identity. The same dispatch id and Outlook message now reconcile to one accepted 9-hour-30-minute line and must not be added again.
+- The later Outlook message ending `AChS2okwAAAA==` repeats the accepted August 6 worker/date/project/time exactly. It is supporting duplicate evidence and does not change the `35 hours 55 minutes` period total.
 - This belongs to the August 1-15 semimonthly period and must not alter the approved July 16-31 invoice.
 - Do not finalize, file, post, approve, or treat invoice `INV-JKLLC-20260815-001` as payable before the period closes on August 15 and Wes approves it.
 

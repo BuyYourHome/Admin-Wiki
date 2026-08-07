@@ -45,3 +45,14 @@ Outcome: `Done - August 5 recorded once; period remains open`.
 - No invoice PDF, email, workbook entry, filing, approval, payment, or paid-status action was performed.
 
 Outcome: `Done - reconciled retry recorded August 6 once; period remains open`.
+
+## 2026-08-07 - Duplicate August 6 source reconciliation
+
+- Returned `rejected as duplicate` for dispatch `email-monitor-route-vendor-invoice-20260807-josh-timecard-aug6-duplicate-002` before durable processing.
+- Preserved Outlook message id ending `AChS2okwAAAA==`, sender `IRAManager@SellYourHomeRaleigh.com`, received timestamp `2026-08-07T13:15:42Z`, subject `Time card`, and no-attachment status.
+- Compared the source with the completed August 6 line from dispatch `email-monitor-route-vendor-invoice-20260807-josh-timecard-aug6-001`. Worker, work date, property, start time, end time, and duration match exactly.
+- Classified the later message as corroborating duplicate evidence. No second August 6 line was added.
+- Accumulated accepted time remains `35 hours 55 minutes`: Tensity `31 hours 55 minutes`; BackOffice `4 hours 0 minutes`.
+- No invoice PDF, email, workbook entry, filing, approval, payment, vendor contact, or paid-status action was performed.
+
+Outcome: `Done - duplicate source reconciled; totals unchanged`.
