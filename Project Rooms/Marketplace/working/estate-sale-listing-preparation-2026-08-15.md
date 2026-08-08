@@ -36,6 +36,8 @@ Add one row per item or proposed bundle.
 
 ## Photo Set Standard
 
+Early photos may be used for identification, pricing, grouping, and a private preliminary approval packet. Mark them `preliminary`. Replace them with stronger later photos before publication when available, then recheck the listing if the later images reveal a different condition, included part, defect, or model detail.
+
 Use the strongest available images in this order:
 
 1. Clear full-item cover photo with a clean background.
@@ -47,6 +49,8 @@ Use the strongest available images in this order:
 7. Scale or measurements for furniture, appliances, tools, and items where fit matters.
 
 Do not improve photos in a way that hides defects or changes the apparent condition.
+
+Permitted cleanup includes cropping, straightening, reasonable lighting and color correction, noise reduction, removal of ordinary background clutter, and a clean neutral background when the item remains accurate. Retain the original for comparison. Do not remove defects, change the item's color or shape, invent labels or accessories, or imply that an untested item works.
 
 ## Pricing Method
 
@@ -120,12 +124,13 @@ Description rules:
 
 ## Drafting And Posting Strategy
 
-1. Prepare every item as an offline listing packet first.
-2. If Facebook later clearly offers a safe unpublished-draft path, drafts may be created only after the item packet is complete and under the existing authorization to prepare unpublished posts.
-3. Verify that saving does not publish, message anyone, change settings, or disclose private information before using that path.
-4. If safe drafts are not clearly supported, keep all content in this project room and stage one coordinated posting session.
-5. Publication remains a separate gated action. Obtain Wes authorization before pressing any publish/list button.
-6. Buyer replies, holds, negotiations, pickup scheduling, payment discussions, and address or phone exchange remain outside this preparation lane.
+1. Prepare every item as a private offline approval packet first. Include the complete proposed public post and final photo order, with internal pricing evidence and private notes clearly separated.
+2. Mark the packet `preliminary`, `ready for Wes review`, `approved for publication`, `changes requested`, or `published`.
+3. If Facebook later clearly offers a safe unpublished-draft path, drafts may be created only after the item packet is complete and under the existing authorization to prepare unpublished posts.
+4. Verify that saving does not publish, message anyone, change settings, or disclose private information before using that path.
+5. If safe drafts are not clearly supported, keep all content in this project room and stage one coordinated posting session.
+6. Content approval and publication authority are separate gates. Obtain Wes's explicit publication instruction before pressing any publish/list button.
+7. Buyer replies, holds, negotiations, pickup scheduling, payment discussions, and address or phone exchange remain outside this preparation lane.
 
 ## Target-Date Checklist
 

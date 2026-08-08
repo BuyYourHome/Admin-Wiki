@@ -17,6 +17,32 @@ Estate Sale Mode is a repeatable Marketplace workflow for preparing and managing
 - A general estate-sale announcement post may supplement the item listings when separately authorized, but it does not replace accurate item posts.
 - Prepare each listing offline first with item id, title, category, condition, photos, description, asking price, expected sale range, private price notes, and open questions.
 
+## Preliminary And Final Photos
+
+- Early photos may be used to identify items, research prices, decide grouping, and prepare private listing packets.
+- Mark early photos and any listing packet that uses them as `preliminary`.
+- Better photos supplied later may replace preliminary photos before publication without rebuilding the written listing when the item identity and condition remain unchanged.
+- Recheck the description, included parts, defects, and price whenever later photos reveal new facts.
+- Keep the original photo available for accuracy review when a cleaned version is created.
+- The final publication review must confirm the selected image order and that no preliminary image remains unintentionally.
+
+Permitted image cleanup:
+
+- crop, rotate, straighten, resize, and improve framing;
+- correct reasonable exposure, white balance, contrast, and lighting;
+- reduce ordinary image noise or distracting background clutter; and
+- use a clean neutral background when the item itself remains accurate.
+
+Image cleanup may not:
+
+- remove or hide damage, wear, stains, rust, cracks, repairs, missing pieces, or other material condition facts;
+- change the item's color, shape, brand, model, quantity, apparent size, or included accessories;
+- invent readable text, labels, serial details, features, or working condition that the original does not support;
+- make an untested item appear demonstrated or powered on; or
+- otherwise create a materially misleading impression.
+
+If an edit could affect a buyer's understanding of condition, use the original or obtain Wes's review before using the edited version.
+
 ## Pricing
 
 - Support prices with the best available item identity, condition facts, current retail context, sold comparables when available, and relevant local asking prices.
@@ -82,6 +108,18 @@ Thanks for the offer. The listed price is firm until [price-protection date]. Th
 - Wes must separately authorize publishing the listings for each sale or posting session.
 - Review every photo for faces, mail, paperwork, exact addresses, license plates, keys, access codes, prescription labels, or other private details before publication.
 - Do not expose a private minimum price, internal pricing notes, exact home address, or contact number in Git or public listing content.
+
+## Private Approval Packets And Unpublished Drafts
+
+- Prepare a private offline approval packet for each listing or bundle before publication.
+- The packet must show the proposed public title, category, condition, price, description, included items, known defects, testing status, showing wording, and final photo order.
+- Keep internal comparable sources, expected range, quick-sale recommendation, private minimum, confidence, and open questions in a clearly separated private section that will not be copied into the public post.
+- Record approval status as `preliminary`, `ready for Wes review`, `approved for publication`, `changes requested`, or `published`.
+- Wes's approval of content does not by itself authorize pressing Facebook's publish or list control. Publication requires an explicit instruction for that listing or posting session.
+- An offline approval packet is the default private review method and is never public.
+- A Facebook unpublished draft may be used only after verifying that the platform provides a save-without-publishing path, that the draft can be reopened, and that saving will not message anyone, disclose private information, or change account settings.
+- If safe unpublished behavior is unclear, do not create the Facebook draft. Keep the packet offline.
+- If a listing is already public, verify Facebook's current editing behavior before attempting to replace photos. Do not delete, relist, or risk losing a live listing without Wes's approval.
 
 ## Records
 
