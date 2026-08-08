@@ -53,9 +53,9 @@ Do not infer consent, ownership, identity, location, or sensitive facts from pho
 
 ## Current Status
 
-Status: pending setup.
+Status: active and dispatchable.
 
-No Google Photos or Facebook action has been performed. The room is not dispatchable until its dedicated task/thread id is recorded here, in the registry, and in Jean's routing map.
+The dedicated Facebook Engagement task is registered. No Google Photos or Facebook action has been performed.
 
 ## Matching Skill
 
@@ -64,9 +64,8 @@ No Google Photos or Facebook action has been performed. The room is not dispatch
 ## Dedicated Chat
 
 - Chat name: `Facebook Engagement`
-- Thread id: `pending until the dedicated chat is created`
+- Thread id: `019fe20a-db88-7602-a4a7-544d1be0ceee`
 - Purpose: review authorized photo sources and prepare Page post drafts under this room's approval boundaries.
-- Creation blocker: on 2026-08-08, the Codex app task-creation call returned `No handler registered for tool: create_thread`; no usable task id was returned.
 
 ## Automation
 
@@ -93,5 +92,4 @@ Action Ownership: Follow `C:\Codex\Wiki Files\Project Room Delegation Contract.m
 
 ## Next Actions
 
-1. Create and register the dedicated task.
-2. Wait for Wes to make a specific photo source available and request a draft run.
+1. Wait for Wes to make a specific photo source available and request a draft run.
