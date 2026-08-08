@@ -3,7 +3,7 @@
 ## Status And Authority
 
 - Target date: Saturday, 2026-08-15.
-- Status: preparation lane ready; awaiting Google Photos references.
+- Status: preparation lane active; first Google Photos source set received and verified.
 - Authorizing source: Wes estate-sale preparation email received 2026-08-07 4:19 PM Eastern.
 - Dispatch id: `email-monitor-marketplace-estate-sale-20260808-001`.
 - Price-protection date: 2026-08-15. Do not reduce or signal flexibility below the listed price until after this date.
@@ -16,6 +16,8 @@
 - This instance remains in preparation status. Buyer replies become actionable only after Wes separately authorizes publication; the public showing window is now recorded.
 
 ## Source Intake
+
+Verified source folder: [Source Photos - 2026-08-08](https://lifeisanadventure.sharepoint.com/sites/SellYourHome/Shared%20Documents/Office%20Admin/Marketplace/Estate%20Sale%20-%202026-08-15/Source%20Photos%20-%202026-08-08) (`Documents/Office Admin/Marketplace/Estate Sale - 2026-08-15/Source Photos - 2026-08-08`). The folder contains 60 unique JPEG originals dated 2026-08-08, covering 9:20:10 AM through 9:42:39 AM Eastern.
 
 When a Google Photos reference arrives:
 
@@ -159,7 +161,7 @@ Description rules:
 
 ## Current Blockers
 
-- Google Photos references have not yet been supplied.
+- The first Google Photos source set has been received; item-level inventory and duplicate-angle grouping have not yet been performed.
 - Item identities, quantities, condition, testing status, accessories, and defects are unknown.
 - General pickup city or area is not yet recorded.
 - Post-noon individual appointment times are not preapproved. Coordinate them with Wes instead of inventing availability.
