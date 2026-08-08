@@ -4,3 +4,4 @@
 | --- | --- | --- | --- | --- | --- | --- |
 | 2026-08-08 | Initial setup instructions | Room and skill package | setup | Setup authorized | None | No Google Photos or Facebook action performed. |
 | 2026-08-08 | Wes confirmation in task `019fe20a-db88-7602-a4a7-544d1be0ceee` | Dedicated task registration | registered | Dedicated task confirmed | None | Room made dispatchable; task registration does not authorize Google Photos access or an external Facebook action. |
+| 2026-08-08 | Dispatch `jeans-voice-20260808-lunch-facebook-post-draft-v2` | `outputs/2026-08-08-florida-investor-lunch-facebook-draft.md` | needs Wes | Authorized source check, preservation, edit, and approval-only draft | None | No qualifying four-person lunch photo was visible in Google Photos. No photo was selected, downloaded, edited, modified, shared, or posted. Caption draft completed; rerun after the source photo finishes backing up. |
