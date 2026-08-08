@@ -5,7 +5,7 @@
 - Source: 60 verified Google Photos originals in the SharePoint estate-sale source folder.
 - Sale date: 2026-08-15.
 - Status: preliminary item identification and grouping complete; no listing is public.
-- Grouping result: 41 proposed listings or bundles. Forty have preliminary prices; `ES-20260815-036` is held pending identification.
+- Grouping result: 41 proposed listings or bundles, all assigned best-estimate identities and preliminary asking prices without requiring further intake from Wes.
 - Photo references below use the final six digits of each source filename's capture timestamp. The two `133555160` long-exposure files are alternate views of the same tool lot.
 
 ## Item Register
@@ -47,7 +47,7 @@
 | ES-20260815-033 | 133650527 | Fur-look cape or coat | Fur/faux-fur garment; material and maker unconfirmed | Used | Separate | Preliminary | Label, size, lining, closure, shedding/stains/odor; do not claim real fur |
 | ES-20260815-034 | 133716364 | Cubby display shelf with figurines | Wall-mounted wood cubby shelf with small decorative figures | Used | Bundle unless figures prove collectible | Preliminary | Shelf dimensions/mounts; close-ups and base labels for figures |
 | ES-20260815-035 | 133725818 | Desk with hutch | Oak-finish desk and hutch | Used | Separate | Preliminary | Overall dimensions, drawers/shelves, damage, separates for transport |
-| ES-20260815-036 | 133740960 | Unidentified folding metal frame | Folded metal frame with mattress/pad-like component | Identity unsupported | Hold | Not priced | Unfolded photos, maker label, dimensions and intended use; do not list until identified |
+| ES-20260815-036 | 133740960 | Folding rollaway bed | White tubular-metal folding rollaway bed with folded mattress | Used; operation and mattress condition not verified | Separate | Preliminary | Best visual identification; disclose sold as-is and approximate size unless a label is later visible |
 | ES-20260815-037 | 133802018; 133833961; 133843354; 134204825 | Figurine lot | Mixed decorative figurines, including religious, cowboy and mother-and-child figures | Used | Bundle unless labels show standalone value | Preliminary | Base/maker photos, heights, chips or repairs |
 | ES-20260815-038 | 133812902 | Carved mantel clock | Ornate carved wood-tone clock with Roman numerals and animal/elephant motif | Used; running/chime status unknown | Separate | Preliminary | Maker/movement label, dimensions, key/pendulum, running/chime test; replace reflection photo |
 | ES-20260815-039 | 133906872 | Children's record/book lot | Mixed children's vinyl records/books; Disney titles visible | Used; contents not played | Bundle | Preliminary | Title/count photo, record surfaces, sleeves, playback sample |
@@ -56,7 +56,7 @@
 
 ## Photo QA And Replacement Queue
 
-1. Replace or crop `133812902` before publication because a person is reflected in the clock face. Check `132116657` for a photographer reflection as well.
+1. A cleaned cover for `ES-20260815-038` removes the photographer and mirror reflection. Use it instead of `133812902` as the public cover. Check `132116657` for photographer reflection before use.
 2. Reshoot every powered item after testing, including model labels, cords, controls and an honest working-state view when safe.
 3. Photograph appliance interiors, model plates and dimensions. Physically clean ordinary dust first; do not digitally hide wear or damage.
 4. Photograph furniture straight-on in an uncluttered area with width, depth and height recorded.

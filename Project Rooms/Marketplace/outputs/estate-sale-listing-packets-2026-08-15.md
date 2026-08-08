@@ -2,9 +2,9 @@
 
 ## Review Status
 
-- Packet status: `preliminary - ready for Wes review`.
+- Packet status: `best-estimate draft - ready for Wes adjustment`.
 - Publication status: not authorized; no Facebook post or unpublished Facebook draft has been created.
-- Public showing wording used below: `Available to view during the estate-sale showing window Saturday, August 15, from 9:00 AM to noon. General pickup area will be added after Wes confirms it.`
+- Public showing wording used below: `Available to view in Cary, NC, during the estate-sale showing window Saturday, August 15, from 9:00 AM to noon.` The exact street address was supplied privately by Wes and is intentionally excluded from this Git-tracked packet.
 - Prices are firm through 2026-08-15. Expected ranges and quick-sale figures are private and must not be copied into public posts.
 - Every item is used. Descriptions deliberately say `untested` or avoid a working claim unless the current photos support one.
 
@@ -43,11 +43,11 @@ These are decision aids, not guarantees. Low-confidence prices should be revisit
 
 **Private:** Expected $35-$45; quick-sale $25; confidence medium. Photo 132104850. Add dimensions and caster condition.
 
-### ES-20260815-004 - GE Countertop Microwave - $45
+### ES-20260815-004 - GE Countertop Microwave - $30
 
-**Public draft:** GE stainless-and-black countertop microwave. Display powers on; heating performance has not yet been verified. Used condition. Model, wattage and interior photos will be added before publication. Estate-sale showing Saturday, August 15, 9:00 AM-noon.
+**Public draft:** GE stainless-and-black countertop microwave. Display powers on, but heating performance is untested. Used and sold as-is. Estate-sale showing in Cary, NC, Saturday, August 15, 9:00 AM-noon.
 
-**Private:** Expected $30-$40; quick-sale $25 if heating test passes; use $25 ask if left untested. Confidence medium-low. Photo 132116657.
+**Private:** Expected $20-$30; quick-sale $15. Confidence medium-low. Photo 132116657.
 
 ### ES-20260815-005 - Oak-Finish Microwave Cabinet or Stand - $45
 
@@ -61,17 +61,17 @@ These are decision aids, not guarantees. Low-confidence prices should be revisit
 
 **Private:** Expected $15-$20; quick-sale $10; confidence medium. Photos 132221236 and 132845832.
 
-### ES-20260815-007 - Maytag Washer and Whirlpool Dryer Pair - $250
+### ES-20260815-007 - Maytag Washer and Whirlpool Dryer Pair - $200
 
-**Public draft:** Used Maytag heavy-duty top-load washer and Whirlpool dryer sold as a mixed-brand pair. Mechanical controls. Full-cycle testing, model numbers, included hoses/cord and dimensions will be confirmed before publication. Estate-sale showing Saturday, August 15, 9:00 AM-noon; buyer handles removal.
+**Public draft:** Used Maytag heavy-duty top-load washer and Whirlpool dryer sold as a mixed-brand pair. Mechanical controls. Untested and sold as-is; only the pieces shown are included. Estate-sale showing in Cary, NC, Saturday, August 15, 9:00 AM-noon; buyer handles removal.
 
-**Private:** Ask $250 only after both pass full-cycle tests; expected $180-$225; quick-sale $150. If untested, reprice as-is. Confidence medium. Photo 132234418.
+**Private:** Expected $150-$200; quick-sale $125; confidence medium-low because both are untested. Use cleaned cover `estate-sale-2026-08-15-images/ES-20260815-007-washer-dryer-cover.png` followed by original 132234418.
 
-### ES-20260815-008 - Frigidaire Top-Freezer Refrigerator - $175
+### ES-20260815-008 - Frigidaire Top-Freezer Refrigerator - $125
 
-**Public draft:** White Frigidaire top-freezer refrigerator in used condition. Cooling test, model number, dimensions and interior condition will be confirmed before publication. Estate-sale showing Saturday, August 15, 9:00 AM-noon; buyer handles removal.
+**Public draft:** White Frigidaire top-freezer refrigerator in used condition. Cooling is untested and interior condition is not shown; sold as-is. Estate-sale showing in Cary, NC, Saturday, August 15, 9:00 AM-noon; buyer handles removal.
 
-**Private:** Ask $175 after cold test/cleaning; expected $125-$160; quick-sale $100. If untested/as-is, ask $75-$100. Confidence medium. Photo 132322574.
+**Private:** Expected $75-$125; quick-sale $60; confidence medium-low because cooling is untested. Use cleaned cover `estate-sale-2026-08-15-images/ES-20260815-008-refrigerator-cover.png` followed by original 132322574.
 
 ### ES-20260815-009 - Wood Folding TV Tray Table - $15
 
@@ -137,13 +137,13 @@ These are decision aids, not guarantees. Low-confidence prices should be revisit
 
 **Public draft:** Red Nova 4215RD rollator walker with padded seat and under-seat storage. Label states 400-lb weight capacity. Used condition; brakes, wheels, folding action and frame will be checked before publication. Estate-sale showing Saturday, August 15, 9:00 AM-noon.
 
-**Private:** Expected $60-$75; quick-sale $50; confidence medium-high on identity, medium on price. Photos 133053280, 133105690 and 133108223.
+**Private:** Expected $60-$75; quick-sale $50; confidence medium-high on identity, medium on price. Use cleaned cover `estate-sale-2026-08-15-images/ES-20260815-019-rollator-cover.png`, followed by originals 133053280, 133105690 and 133108223.
 
 ### ES-20260815-020 - Sony CCD-F35 Video8 Camcorder Kit - $75
 
 **Public draft:** Vintage Sony CCD-F35 Video8 Handycam kit in fitted case with manual, charger/power supply, batteries, tapes and the visible accessories pictured. Untested; battery condition and recording/playback are unknown. Sold as pictured. Estate-sale showing Saturday, August 15, 9:00 AM-noon.
 
-**Private:** Untested ask $75; expected $45-$65; quick-sale $35. If fully tested and working, reconsider $100-$125. Confidence medium-low. Photos 133150053 and 133157978.
+**Private:** Untested ask $75; expected $45-$65; quick-sale $35. Confidence medium-low. Use cleaned cover `estate-sale-2026-08-15-images/ES-20260815-020-sony-video8-cover.png`, followed by originals 133150053 and 133157978.
 
 ### ES-20260815-021 - Folding Walker with Front Wheels - $20
 
@@ -235,11 +235,11 @@ These are decision aids, not guarantees. Low-confidence prices should be revisit
 
 **Private:** Expected $70-$90; quick-sale $50; confidence medium. Photo 133725818.
 
-### ES-20260815-036 - Unidentified Folding Metal Frame - HOLD
+### ES-20260815-036 - Folding Rollaway Bed with Mattress - $50
 
-**Public draft:** None. The current photo does not support a reliable item identity.
+**Public draft:** White tubular-metal folding rollaway guest bed with folding mattress. Used, untested and sold as-is. Mattress shows ordinary age/use; please inspect in person. Estate-sale showing in Cary, NC, Saturday, August 15, 9:00 AM-noon.
 
-**Private:** Do not list or price. Photo 133740960. Obtain unfolded front/side views, maker label, dimensions and intended use.
+**Private:** Expected $30-$45; quick-sale $20; confidence medium on visual identity and low on size/operation. Use cleaned cover `estate-sale-2026-08-15-images/ES-20260815-036-rollaway-bed-cover.png`, followed by original 133740960.
 
 ### ES-20260815-037 - Mixed Decorative Figurine Lot - $45
 
@@ -251,7 +251,7 @@ These are decision aids, not guarantees. Low-confidence prices should be revisit
 
 **Public draft:** Ornate carved wood-tone mantel clock with Roman numerals and animal/elephant-style detail. Used condition. Maker, movement, dimensions, key/pendulum and running/chime status are not yet confirmed. Estate-sale showing Saturday, August 15, 9:00 AM-noon.
 
-**Private:** Ask $65 only if running and complete; expected $40-$55; quick-sale $30. If untested, ask about $35 pending maker. Confidence low. Photo 133812902 must be replaced or cropped because a person is reflected in the clock face.
+**Private:** Ask $65 untested because the carved case has strong decorative value; expected $35-$55; quick-sale $25. Confidence low pending maker and operation. Use cleaned cover `estate-sale-2026-08-15-images/ES-20260815-038-carved-clock-cover.png`; do not use original 133812902 publicly because it contains a person and camera reflection.
 
 ### ES-20260815-039 - Children's Vinyl Record and Book Lot - $30
 
@@ -263,7 +263,7 @@ These are decision aids, not guarantees. Low-confidence prices should be revisit
 
 **Public draft:** Detecto physician balance-beam scale with height rod; scale face shows a 350-lb capacity. Used condition. Zero, calibration and height-rod operation will be checked before publication. Estate-sale showing Saturday, August 15, 9:00 AM-noon.
 
-**Private:** Expected $60-$80; quick-sale $45; confidence medium-high. Photo 133948988. Price is supported by a $42 recent auction sale and current $50-$125 asks, adjusted upward from auction for local direct sale while remaining below higher asks.
+**Private:** Expected $60-$80; quick-sale $45; confidence medium-high. Use cleaned cover `estate-sale-2026-08-15-images/ES-20260815-040-detecto-scale-cover.png`, followed by original 133948988. Price is supported by a $42 recent auction sale and current $50-$125 asks, adjusted upward from auction for local direct sale while remaining below higher asks.
 
 ### ES-20260815-041 - Wall-Mounted Toilet-Paper Storage Cabinet - $20
 
@@ -271,11 +271,11 @@ These are decision aids, not guarantees. Low-confidence prices should be revisit
 
 **Private:** Expected $12-$18; quick-sale $10; confidence medium. Photo 134239070. Add dimensions and mounting-hardware details.
 
-## Wes Decisions Needed Before Publication
+## Best-Estimate Assumptions Used
 
-1. Confirm the general pickup city or area for public wording; do not provide the exact address yet.
-2. Confirm whether appliances and powered items will be tested, and provide the results.
-3. Supply measurements and label photos from the inventory checklist, especially for appliances, furniture, the clock, sewing machine and unidentified folding frame.
-4. Confirm whether `ES-20260815-011` is frame-only and whether contents shown with furniture or storage items are included.
-5. Review the 40 preliminary asking prices and approve or revise them. Prices remain firm through 2026-08-15; no automatic reduction follows.
-6. Provide separate publication authorization after the packets and final photos are approved.
+1. Cary, NC is used as the public location; the exact address is held only for the private posting session.
+2. Items without affirmative evidence of operation are described and priced as untested/as-is.
+3. Furniture and storage contents are excluded unless the listing specifically identifies them as part of a bundle.
+4. The bed-frame listing is frame-only; the folding rollaway bed includes the photographed mattress.
+5. All 41 listings now have best-estimate asking prices. Prices remain firm through 2026-08-15; no automatic reduction follows.
+6. Wes may adjust any identity, grouping, description or price after reviewing the draft. Publication still requires a separate explicit instruction.

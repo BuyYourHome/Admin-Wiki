@@ -30,7 +30,7 @@ When a Google Photos reference arrives:
 
 ## Per-Item Intake Register
 
-The 60-photo item register and duplicate-angle reconciliation are complete in [[estate-sale-photo-inventory-2026-08-08]]. It contains 41 proposed listings or bundles: 40 provisionally priced and one held pending identification. The corresponding private public-copy drafts and internal price notes are in [[estate-sale-listing-packets-2026-08-15]].
+The 60-photo item register and duplicate-angle reconciliation are complete in [[estate-sale-photo-inventory-2026-08-08]]. It contains 41 proposed listings or bundles, all with best-estimate identities, preliminary asking prices, public-copy drafts and internal price notes in [[estate-sale-listing-packets-2026-08-15]].
 
 ## Photo Set Standard
 
@@ -157,9 +157,9 @@ Description rules:
 
 ## Current Blockers
 
-- Forty proposed listings have preliminary prices and descriptions; one folded metal-frame item remains unidentified and must not be listed yet.
+- All 41 proposed listings have best-estimate identities, preliminary asking prices and public-copy drafts. The former unidentified frame is treated as a folding rollaway bed with mattress based on the visible tubular frame and folded mattress.
 - Testing status, model labels, measurements and complete defect views remain missing for several appliances, electronics, furniture and collectibles. Use the per-item inventory checklist rather than guessing.
-- General pickup city or area is not yet recorded.
+- General public pickup area is Cary, NC. Wes supplied the exact street address privately; keep it out of Git and add it only during the authorized posting session.
 - Post-noon individual appointment times are not preapproved. Coordinate them with Wes instead of inventing availability.
 - Private price floors or must-sell priorities are unknown.
 - Safe Facebook unpublished-draft behavior has not been verified; no browser action is authorized or needed at this preparation stage.
