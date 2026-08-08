@@ -74,7 +74,9 @@ Email Monitor continues calling the updater at heartbeat start and completion or
 - In-flight critical: 240 minutes.
 - Runtime: `C:\Users\wesbr\.codex\workflow-health-supervisor\invoice-entry`.
 
-The 10-minute supervisor run checks whether Invoice Entry evaluation is due. It skips substantive inspection until due unless the previous level requires follow-up. The separate noon and 4:00 PM Invoice Entry packet-backup cron remains unchanged.
+The 10-minute supervisor run checks whether Invoice Entry evaluation is due. It skips substantive inspection until due unless the previous level requires follow-up. The separate noon and 4:00 PM Invoice Entry packet-backup automation remains a detached cron job, so each scheduled run creates a separate execution task rather than adding a turn to the active Invoice Entry operational task.
+
+For the packet-backup cron, a clean completed run records any required automation-memory outcome, emits no routine inbox item or final user-facing status, obtains its actual current execution task id from runtime metadata, and archives only that task with `set_thread_archived({ threadId: currentExecutionThreadId, archived: true })`. The archive call requires the explicit id. Never omit it, infer it from title or timing, or use the Invoice Entry operational task id. If runtime metadata does not expose an unambiguous current execution id, do not guess or archive another task; report the limitation and leave the execution visible. Interrupted runs and runs with a new packet, unresolved blocker, decision, or meaningful failure remain visible. One-time cleanup may archive only individually reviewed clean completed cron tasks.
 
 Invoice Entry health uses only observable evidence:
 
