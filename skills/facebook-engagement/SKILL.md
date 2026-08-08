@@ -12,6 +12,12 @@ description: Prepare Facebook Page post drafts from photos or photo references t
 - Registry: `C:\Codex\Wiki Files\Agents and Automations Registry.md`
 - Routing map: `C:\Codex\Wiki Files\Project Rooms\Jean Wright\working\dispatcher-routing-map.md`
 
+## Dedicated Task
+
+- Task name: `Facebook Engagement`
+- Thread id: `019fe20a-db88-7602-a4a7-544d1be0ceee`
+- Accept Jean-routed Facebook Engagement work only through this registered task under the central delegation contract.
+
 ## Required Startup
 
 1. Confirm the working folder is `C:\Codex\Wiki Files`.
