@@ -30,11 +30,7 @@ When a Google Photos reference arrives:
 
 ## Per-Item Intake Register
 
-Add one row per item or proposed bundle.
-
-| Item id | Photo reference | Working item name | Brand/model | Quantity | Visible condition | Tested status | Included parts | Visible defects | Measurements needed | Grouping decision | Pricing status | Draft status | Open question |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| pending | pending | pending | pending | pending | pending | pending | pending | pending | pending | pending | pending | pending | Awaiting photos. |
+The 60-photo item register and duplicate-angle reconciliation are complete in [[estate-sale-photo-inventory-2026-08-08]]. It contains 41 proposed listings or bundles: 40 provisionally priced and one held pending identification. The corresponding private public-copy drafts and internal price notes are in [[estate-sale-listing-packets-2026-08-15]].
 
 ## Photo Set Standard
 
@@ -161,8 +157,8 @@ Description rules:
 
 ## Current Blockers
 
-- The first Google Photos source set has been received; item-level inventory and duplicate-angle grouping have not yet been performed.
-- Item identities, quantities, condition, testing status, accessories, and defects are unknown.
+- Forty proposed listings have preliminary prices and descriptions; one folded metal-frame item remains unidentified and must not be listed yet.
+- Testing status, model labels, measurements and complete defect views remain missing for several appliances, electronics, furniture and collectibles. Use the per-item inventory checklist rather than guessing.
 - General pickup city or area is not yet recorded.
 - Post-noon individual appointment times are not preapproved. Coordinate them with Wes instead of inventing availability.
 - Private price floors or must-sell priorities are unknown.

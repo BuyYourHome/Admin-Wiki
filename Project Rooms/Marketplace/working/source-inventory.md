@@ -15,5 +15,5 @@
 | `Codex Skill Source Rule.md` | Wiki rule | authoritative | Defines canonical skill source and sync expectations. |
 | `Git Work Scope Rule.md` | Wiki rule | authoritative | Defines scoped commits and push behavior. |
 | Facebook Marketplace listing pages | External source | pending | Use only through an authorized logged-in browser session. Record listing URL, title, asking price, seller display name, and visible listing facts. |
-| Resale comparable sources | External source | pending | Use current comparable resale data when available; record source and confidence. |
+| Estate-sale resale comparable set, accessed 2026-08-08 | External sources | used for preliminary pricing | Local/current asking-price context and recent sold references are cited in `outputs\estate-sale-listing-packets-2026-08-15.md`. Key sources cover Raleigh furniture, microwaves, washer/dryer pairs and refrigerators, plus model-specific Nova, RCA and Detecto evidence. Prices remain preliminary because testing, dimensions, labels and exact condition are incomplete for several items. |
 | Messenger conversations | External source | pending | Record concise outcome references and deal-relevant facts; do not store unnecessary personal details or credentials. |
