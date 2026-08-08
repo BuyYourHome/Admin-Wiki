@@ -4,15 +4,15 @@ Status: approval-only text draft; image selection and edit are blocked because t
 
 ## Supplied Facts
 
-- Participants: Wes, Jenny, Sharon, and Jane
-- Sharon and Jane are real-estate investor friends visiting from Florida
+- Participants: Wes, Jenny, Sharron, and Jane
+- Sharron and Jane are fellow real-estate investors and friends
 - Occasion: lunch
 
 ## Proposed Caption
 
-Jenny and I enjoyed a wonderful lunch today with our friends Sharon and Jane, fellow real-estate investors visiting from Florida. It is always a pleasure to spend time with good friends, exchange ideas, and share the experiences that make real estate - and life - so interesting.
+Jenny and I enjoyed a wonderful lunch today with our friends Sharron and Jane, fellow real-estate investors. It is always a pleasure to spend time with good friends, exchange ideas, and share the experiences that make real estate - and life - so interesting.
 
-Great conversation, great company, and a truly enjoyable afternoon. Sharon and Jane, we're glad you made time to visit!
+Great conversation, great company, and a truly enjoyable afternoon. Sharron and Jane, we're glad we could spend this time together!
 
 ## Optional Hashtags
 
@@ -20,7 +20,7 @@ Great conversation, great company, and a truly enjoyable afternoon. Sharon and J
 
 ## Photo And Approval State
 
-- Proposed photo: pending; the qualifying four-person lunch image has not synced to Google Photos
+- Proposed photo: the next newly synced shot; it had not appeared in Google Photos by the follow-up check
 - Edited image: pending; no image edit was attempted without the correct source
 - Intended Facebook Page/profile: not supplied; confirm before any Facebook composer or publishing action
 - Publication authorization: not granted
