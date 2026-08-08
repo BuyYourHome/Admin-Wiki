@@ -180,7 +180,8 @@ For each new message:
 
 - check `OfficeAssist@BuyYourHomeLLC.com` Inbox, Task Instructions, and Accts Payable;
 - use monitor memory so the same Outlook message id is not processed repeatedly;
-- recognize instructions from `WesWill@BuyYourHomeLLC.com`, `Jenny@BuyYourHomeLLC.com`, and Josh Kennedy at `IRAManager@SellYourHomeRaleigh.com`;
+- recognize instructions from Wes at `WesWill@BuyYourHomeLLC.com` or `Wes@myBrowning.net`, Jenny at `Jenny@BuyYourHomeLLC.com`, and Josh Kennedy at `IRAManager@SellYourHomeRaleigh.com`;
+- treat both Wes addresses as the same authorized instruction identity, subject to the same workflow-specific safety gates; when a reply is required, address it to the Wes address that originated the instruction and copy `WesWill@BuyYourHomeLLC.com` unless Wes directs otherwise;
 - perform a safe, in-scope admin action or start the applicable workflow when current Admin wiki rules authorize it;
 - hold and report a decision needed when authorization, routing, or high-impact action authority is incomplete;
 - apply the specialized routing branch when the message matches Lowes Order, Gracious Millionaire, Web Site, Brynda Suit, Manager Routing, or Route Vendor Invoice rules;
@@ -467,7 +468,7 @@ For each accepted package:
 - after sending through the connector, query OfficeAssist Sent Items and verify sender, To, CC, BCC, subject, and required attachment presence;
 - after a successful verified send, run Organize when Wes appears in To or CC;
 - if the connector is definitively unavailable before a send attempt and no message was sent, the temporary current-computer fallback may use only `WesWill@BuyYourHomeLLC.com` through local Outlook under the shared Email Delivery rules;
-- do not use `Wes@myBrowning.net`;
+- do not use `Wes@myBrowning.net` as a sending-account fallback; it remains authorized only as Wes's instruction identity and as the reply destination for messages originating there;
 - do not use the fallback after an ambiguous connector result, a connector send attempt that might have succeeded, or a Sent Items verification failure.
 
 The temporary WesWill fallback is standing Wes authorization for Email Monitor delivery continuity only under the exact pre-send connector-unavailable conditions above. It does not change caller-owned recipients, content, attachments, authorization, or restrictions. Preserve the requested OfficeAssist sender in the delivery record and report the actual verified fallback sender.

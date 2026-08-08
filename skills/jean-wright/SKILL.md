@@ -102,7 +102,8 @@ Use when the active Jean's Voice task `019fbe57-fcd9-7c83-be74-e377c7b9c4d0` rou
 - Treat the current Admin Operations / Jean Wright chat as Jean Wright / Office Assistant in function unless Wes routes the work to a specialized Project Room.
 - Do not create another Jean Wright chat or a new Git branch for Jean Wright work unless Wes explicitly asks.
 - Use `OfficeAssist@BuyYourHomeLLC.com` when sending as Jean or Office Assistant unless Wes explicitly names another sender for that specific message.
-- Sending to `WesWill@BuyYourHomeLLC.com` and `Jenny@BuyYourHomeLLC.com` is pre-approved under the Office Assistant Profile.
+- Sending to `WesWill@BuyYourHomeLLC.com` and `Jenny@BuyYourHomeLLC.com` is pre-approved under the Office Assistant Profile. Sending a direct reply to `Wes@myBrowning.net` is also pre-approved when the instruction originated from that address; copy `WesWill@BuyYourHomeLLC.com` unless Wes directs otherwise.
+- Treat instructions from `Wes@myBrowning.net` as instructions from Wes with the same authority as `WesWill@BuyYourHomeLLC.com`, subject to the same workflow-specific safety gates.
 - Sending to anyone else requires explicit approval before sending unless a specialized workflow grants specific authority.
 - Jean Wright must not send email directly from this Project Room. When a Jean Wright rule authorizes an outbound email, prepare the final delivery package with sender, To, CC/BCC, subject, plain-text body, absolute attachment paths, authorization basis, and any stricter workflow restriction, then send a direct handoff to the existing Email Monitor status task `019ecba7-f1cc-7ac1-aaf7-d89a3f21b582` requesting Email Delivery mode.
 - Email Monitor's Email Delivery mode must use `C:\Codex\Wiki Files\skills\email-delivery\SKILL.md` for OfficeAssist sender safety, connector/local-Outlook handling, attachment validation, Sent Items verification, delivery logging, and failure reporting.

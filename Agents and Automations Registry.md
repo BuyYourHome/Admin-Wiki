@@ -192,7 +192,7 @@ Schedule:
 Purpose:
 
 - Monitor `OfficeAssist@BuyYourHomeLLC.com` for instruction emails from Wes, Jenny, or Josh Kennedy.
-- Treat emails from `WesWill@BuyYourHomeLLC.com`, `Jenny@BuyYourHomeLLC.com`, and Josh Kennedy at `IRAManager@SellYourHomeRaleigh.com` as OfficeAssist instruction intake. Josh may start safe workflows but may not authorize Wes-gated purchases, payments, approvals, or account changes.
+- Treat emails from Wes at `WesWill@BuyYourHomeLLC.com` or `Wes@myBrowning.net`, Jenny at `Jenny@BuyYourHomeLLC.com`, and Josh Kennedy at `IRAManager@SellYourHomeRaleigh.com` as OfficeAssist instruction intake. Both Wes addresses have the same instruction authority; replies go to the originating Wes address with `WesWill@BuyYourHomeLLC.com` copied unless Wes directs otherwise. Josh may start safe workflows but may not authorize Wes-gated purchases, payments, approvals, or account changes.
 - Carry out safe, in-scope admin actions when the email instruction and applicable workflow rules allow it.
 - Route Gracious Millionaire email to the Gracious Millionaire project room by Outlook reference, Teams source path when materialized, summary, and direct handoff. Do not process the manuscript from the OfficeAssist monitor thread.
 - Route Brynda Suit email to the Brynda Suit project room by Outlook reference, Teams source path when materialized, summary, and direct handoff. Do not process the Brynda Suit response from the OfficeAssist monitor thread.
