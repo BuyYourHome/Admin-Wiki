@@ -1,6 +1,6 @@
 # Invoice Entry Current Work Status
 
-Last updated: 2026-08-07
+Last updated: 2026-08-08
 
 This is the authoritative current-state register for Invoice Entry. Read it before processing a handoff or opening a workbook. Packet files and processing logs remain the detailed evidence; when an older summary conflicts with this file, stop and reconcile the source before acting.
 
@@ -50,6 +50,7 @@ Classified working files:
 - The 2026-08-04 First Bank account-ending-3613 repeat notice is reconciled into the existing statement packet; it did not create another statement record or downloaded file.
 - The 2026-08-06 Truist credit-card notice for account ending 4528 is represented by one held statement packet. It is distinct from the 1141/1254 checking notices and contains no attachment or transaction detail.
 - The 2026-08-07 Shellpoint mortgage notice for account ending 7767 is represented by one held statement packet. It contains no attachment, amount, due date, or property address; borrower and account-suffix facts are not project evidence.
+- The 2026-08-08 Rushmore printed-statement mail notice is represented by one held packet. It provides no account, borrower, property, balance, amount due, due date, or statement; it cannot be merged with another mortgage record by inference.
 - The 2025 Lowe's source PDFs remain unchanged at their authoritative SharePoint links. Doc Scan packet files remain under the Doc Scan Project Room. The validated Tensity workbook and rollback copy remain classified in `Invoice Entry Working Archive\Generated\2026-08-04-2025-Lowes-Tensity-Upload-Hold` as upload/rollback evidence; the authoritative workbook was uploaded and verified at `2026-08-04T18:59:07Z`.
 - No generated Invoice Entry working artifact from this run remains unclassified in the Git working tree.
 
@@ -66,8 +67,9 @@ Classified working files:
 | 7 | First Bank online statement notice, account ending `3613` | Original and repeat notices reconciled; neither has a statement or financial detail; 2026-08-04 browser check reached only the public login page | Wes must sign in through an authorized First Bank session or supply the downloaded statement, then route it through Doc Scan. Do not infer an amount, due date, project, account type, or payment obligation. |
 | 8 | Truist credit-card statement notice, account ending `4528` | Statement date 2026-08-05; `$3,946.94` balance; `$76.00` minimum due 2026-09-02; no attachment or transaction detail | Wes must sign in through an authorized Truist session or supply the downloaded statement. Route it through Doc Scan before allocation. Do not approve, schedule, or pay from the notice. |
 | 9 | Shellpoint mortgage billing statement notice, account ending `7767` | Current monthly statement reported available online; no attachment, amount, due date, property address, or statement detail | Wes must supply the statement or retrieve it through an authorized Shellpoint session, then route it through Doc Scan. Do not infer the property from Henry Bladimir Ramos's name or the account suffix. |
-| 10 | Truist digital statement notice, checking accounts ending `1141` and `1254` | Notice verified; no attachments or statement contents; available browser sessions reached the Truist login page | Wes must sign in through an authorized Truist session or supply the downloaded statements. Route each statement through Doc Scan before Invoice Entry processes it. Do not infer balances, transactions, payment obligations, projects, or accounting treatment. |
-| 11 | NCAOC Remote Public Access invoice `41247668` | `$31.98`, dated 2026-08-02, due 2026-09-01; duplicate Outlook copies consolidated; one PDF filed to general-invoice `_Needs Review`; not approved, posted, or paid | Wes should classify it as a general BackOffice/legal-research expense or assign a named project and destination. Do not create another filing or entry, and do not pay or schedule payment. |
+| 10 | Rushmore printed mortgage statement mail notice | Statement reported in the mail with a five-to-seven-day delivery estimate; no account, borrower, property, amount, due date, or statement data | Wait for the printed statement or a copy supplied by Wes, then route it through Doc Scan. Do not access account links or infer an account or property. |
+| 11 | Truist digital statement notice, checking accounts ending `1141` and `1254` | Notice verified; no attachments or statement contents; available browser sessions reached the Truist login page | Wes must sign in through an authorized Truist session or supply the downloaded statements. Route each statement through Doc Scan before Invoice Entry processes it. Do not infer balances, transactions, payment obligations, projects, or accounting treatment. |
+| 12 | NCAOC Remote Public Access invoice `41247668` | `$31.98`, dated 2026-08-02, due 2026-09-01; duplicate Outlook copies consolidated; one PDF filed to general-invoice `_Needs Review`; not approved, posted, or paid | Wes should classify it as a general BackOffice/legal-research expense or assign a named project and destination. Do not create another filing or entry, and do not pay or schedule payment. |
 
 ## Verified Delivery Evidence
 
@@ -130,6 +132,7 @@ Classified working files:
 | First Bank statement notice, account ending `3613` | `Held - Statement Not Retrieved`; repeat notice consolidated | Actual statement remains unavailable. The current browser reached only the public login screen; obtain an authenticated statement and route it through Doc Scan. |
 | Truist credit-card statement, account ending `4528`, statement date `2026-08-05` | `Held - Statement Not Retrieved`; notice facts preserved; no duplicate found | Actual statement remains unavailable. Obtain it through an authorized Truist session and route it through Doc Scan. Notice facts do not authorize payment, filing, or workbook/accounting entry. |
 | Shellpoint mortgage billing statement, account ending `7767` | `Held - Statement Not Retrieved`; notice facts preserved; no duplicate found | Actual statement remains unavailable. Wes must supply it or retrieve it through an authorized Shellpoint session and route it through Doc Scan. Borrower and account-suffix facts do not establish a property. |
+| Rushmore mortgage printed-statement mail notice | `Held - Statement Expected By Mail`; notice facts preserved; no duplicate found | Wait for the printed statement or a copy supplied by Wes, then route it through Doc Scan. Missing identifiers prevent account or property assignment. |
 
 ## Record Reconciliation
 
@@ -147,6 +150,7 @@ Classified working files:
 - First Bank Outlook messages ending `ACgUD9nwAAAA==` and `ACgUD9pwAAAA==` reconcile to one account-ending-3613 retrieval hold; neither is the statement or a payment obligation.
 - Truist Outlook message ending `AChS2okQAAAA==` creates one distinct credit-card statement retrieval hold for account ending `4528`, statement date `2026-08-05`. It does not overlap the checking-account packet for `1141` and `1254` and is not payment authority.
 - Shellpoint Outlook message ending `AChS2olAAAAA==` creates one distinct mortgage billing-statement retrieval hold for account ending `7767`. It supplies no statement, property address, amount, or due date and is not payment authority.
+- Rushmore Outlook message ending `AChS2olwAAAA==` creates one distinct printed-statement mail hold. It supplies no account, borrower, property, balance, amount due, due date, or statement and is not payment authority.
 
 ## Safety Holds
 
