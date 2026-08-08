@@ -86,6 +86,14 @@ The dedicated Marketplace chat and durable records remain available, but Marketp
 - Publication and any buyer interaction require separate Wes authorization.
 - Working plan: `working\estate-sale-listing-preparation-2026-08-15.md`.
 
+### Estate Sale Mode
+
+- Repeatable operating rules are in `Estate Sale Mode.md`.
+- Wes must explicitly activate the mode for each sale and supply the sale date, price-protection date, and approved showing windows before buyer scheduling information may be sent.
+- When the applicable listing is published with separate authorization, Marketplace may answer supported availability questions and share Wes's approved showing windows.
+- The mode does not authorize early price reductions, holds, sales, payments, deposits, private-address or phone disclosure, or other commitments.
+- The broader Marketplace pause and seller-response heartbeat remain unchanged unless Wes separately resumes them.
+
 ## Start PR
 
 Before durable work, follow Start PR in `C:\Codex\Wiki Files\Project Room Chat Startup Rule.md`. Interpret unqualified requests under the Current PR Scope Rule in that file. Work on `main` unless Wes explicitly asks for a branch.

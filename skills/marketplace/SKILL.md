@@ -23,6 +23,21 @@ Use this skill when Wes asks Codex to search Facebook Marketplace for tools, eva
 - While paused, do not search or browse for listings, evaluate new opportunities, contact or reply to sellers, monitor seller conversations, negotiate, send Marketplace notifications, or take another Marketplace workflow action.
 - Preserve existing records and pending statuses without processing them as active work.
 - Resume Marketplace activity only after Wes explicitly says to resume Marketplace.
+- Narrow exception: Wes may explicitly activate Estate Sale Mode for one named sale without resuming general Marketplace activity. Follow `C:\Codex\Wiki Files\Project Rooms\Marketplace\Estate Sale Mode.md` and keep the general heartbeat, seller sourcing, and unrelated conversations paused.
+
+## Estate Sale Mode
+
+Use `C:\Codex\Wiki Files\Project Rooms\Marketplace\Estate Sale Mode.md` when Wes starts a repeatable estate-sale workflow.
+
+- Activate the mode separately for each sale. Record the sale name, target date, price-protection date, approved showing windows, general pickup area, and publication authority.
+- Prepare separate posts for searchable higher-value items and logical bundles for related low-value items or sets. Do not rely on one listing containing all unrelated items.
+- Publication requires separate authorization for the applicable sale or posting session.
+- After publication, Marketplace may answer whether an item is still available only from the current item record, answer supported factual questions, and share the showing dates and windows Wes supplied.
+- Marketplace may ask which approved window works for the buyer, but may not invent availability or promise an appointment outside it.
+- Do not reduce or signal flexibility below the listed price before the recorded price-protection date. On or after that date, ask Wes or follow a separately recorded reduction schedule; do not reduce automatically.
+- Do not accept an offer, reserve or hold an item, accept payment or a deposit, mark an item sold, disclose an exact address or private phone number, arrange delivery or shipping, or make another commitment without the required specific authority.
+- Keep buyer replies concise, factual, non-deceptive, and free of unsupported condition or performance claims.
+- Pause or close the mode immediately when Wes directs. Closing one sale does not alter another Marketplace workflow.
 
 ## Start PR
 
