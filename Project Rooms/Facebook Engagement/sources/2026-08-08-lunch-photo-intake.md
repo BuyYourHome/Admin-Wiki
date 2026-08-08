@@ -18,14 +18,24 @@
 - Shared collection check: the visible `Jenny's photos` partner collection contained historical items and no August 8, 2026 lunch photo
 - Follow-up instruction: Wes directed this task to use the next shot and supplied the corrected spelling `Sharron`
 - Follow-up check: shortly after 12:44 PM Eastern, two live refreshes still showed the 11:51:26 AM selfie as the newest item
+- Ready confirmation: Wes said the photo was ready; Google Photos then showed a new four-frame landscape sequence captured at 2:34:02-2:34:06 PM Eastern
 
 ## Selection Outcome
 
-- Selected photo: none
-- Reason: no image visible in the authorized library plausibly showed Wes, Jenny, Sharron, and Jane at lunch
-- Original preserved locally: no; no qualifying source was selected or downloaded
+- Selected photo: frame captured August 8, 2026 at 2:34:04 PM Eastern
+- Selection reason: the four people are clearly visible with natural expressions; this was stronger than the adjacent 2:34:06 PM frame, in which one person appeared to be blinking
+- Google Photos photo URL: `https://photos.google.com/photo/AF1QipPcg6BOSlSM8MZW03bL-B6LwALJQYXCvuhiDb-h`
+- Filename: `PXL_20260808_183404436.MP.jpg`
+- Camera: Google Pixel 8 Pro
+- Image: 9.1 MP, 4032 x 2268 pixels, Ultra HDR
+- Backup: original quality, 6.7 MB, uploaded from Android
+- Location metadata retained at city level: Raleigh
+- Preserved private copy: `sources/private-media/2026-08-08-lunch/PXL_20260808_183404436.MP.jpg`
+- Preserved file size: 6,712,862 bytes
+- SHA-256: `3F8032666C85383276BDB5C4A2CA75470D4B0EB7EFCEA5FC4CF6E49580FACC44`
+- Integrity verification: the downloaded file and preserved private copy have identical SHA-256 hashes and byte counts
 - Google Photos original changed: no
-- Edited image: not created because the qualifying source photo was unavailable
-- Next required event: allow the lunch photo to finish backing up to Google Photos, then rerun this dispatch or provide the exact photo directly
+- Edited image: none requested in Wes's latest direct instruction; no edit performed
+- Next required decision: confirm the exact Facebook Page/profile and authorize the desired composer or publishing action
 
-The Google account identifier and unrelated photo URLs were not copied into the Project Room because they were unnecessary for the blocker record.
+The Google account identifier, precise map coordinates, and unrelated photo URLs were not copied into the Project Room because they were unnecessary for the post package.

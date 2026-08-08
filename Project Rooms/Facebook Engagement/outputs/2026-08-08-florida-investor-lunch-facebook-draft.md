@@ -1,6 +1,6 @@
 # Florida Investor Friends Lunch - Facebook Draft
 
-Status: approval-only text draft; image selection and edit are blocked because the qualifying lunch photo has not appeared in Google Photos.
+Status: approval-ready photo-and-caption package; the intended Facebook Page/profile and any external posting action remain unconfirmed.
 
 ## Supplied Facts
 
@@ -20,8 +20,10 @@ Great conversation, great company, and a truly enjoyable afternoon. Sharron and 
 
 ## Photo And Approval State
 
-- Proposed photo: the next newly synced shot; it had not appeared in Google Photos by the follow-up check
-- Edited image: pending; no image edit was attempted without the correct source
+- Selected photo: `sources/private-media/2026-08-08-lunch/PXL_20260808_183404436.MP.jpg`
+- Selection: landscape frame captured August 8, 2026 at 2:34:04 PM Eastern; all four people are clearly visible with natural expressions
+- Source status: Google Photos original-quality file preserved unchanged; SHA-256 `3F8032666C85383276BDB5C4A2CA75470D4B0EB7EFCEA5FC4CF6E49580FACC44`
+- Edited image: none requested in Wes's latest direct instruction; the selected original remains unchanged
 - Intended Facebook Page/profile: not supplied; confirm before any Facebook composer or publishing action
 - Publication authorization: not granted
 - Facebook action taken: none
