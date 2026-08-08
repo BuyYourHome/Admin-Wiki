@@ -77,6 +77,15 @@ The dedicated Marketplace chat and durable records remain available, but Marketp
 - Do not perform sourcing, new listing evaluation, seller messaging, follow-up, negotiation, Marketplace email notification, or other Marketplace activity until Wes explicitly resumes Marketplace.
 - Preserve the existing listing register, action log, deal records, and pending statuses without treating them as active work.
 
+### Estate-Sale Preparation Exception
+
+- On 2026-08-08, Wes authorized one narrow exception for estate-sale preparation targeting Saturday, 2026-08-15.
+- Marketplace may receive the supplied Google Photos references, inventory the pictured items, research supported prices, choose separate listings versus logical bundles, write accurate descriptions, and prepare unpublished listing-content packets.
+- Prefer Facebook unpublished drafts only if the platform clearly supports saving and reopening them without publication and only after the item content is complete. Until that is verified, keep the prepared listings in the Marketplace project room for one coordinated posting session.
+- This exception does not resume general Marketplace sourcing, seller-response monitoring, the heartbeat, seller or buyer messaging, publication, commitments, spending, private-contact disclosure, or account-setting changes.
+- Publication and any buyer interaction require separate Wes authorization.
+- Working plan: `working\estate-sale-listing-preparation-2026-08-15.md`.
+
 ## Start PR
 
 Before durable work, follow Start PR in `C:\Codex\Wiki Files\Project Room Chat Startup Rule.md`. Interpret unqualified requests under the Current PR Scope Rule in that file. Work on `main` unless Wes explicitly asks for a branch.
