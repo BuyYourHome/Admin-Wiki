@@ -49,17 +49,26 @@ Duplicate August 6 source dispatch: `email-monitor-route-vendor-invoice-20260807
 - The message repeats the already accepted August 6 facts exactly: `4121 Tensity Dr`, `6:00 AM` to `3:30 PM`.
 - Receipt status: `rejected as duplicate`. Preserve as supporting source evidence only; it does not create another accepted line.
 
+August 2 dispatch: `email-monitor-route-vendor-invoice-20260808-josh-timecard-aug2-001`
+
+- Mailbox: `OfficeAssist@BuyYourHomeLLC.com`.
+- Outlook message id: `AQMkADZkMGMwNDI3LWU5ZjctNDgzMC1iMjdkLTY0NmRiN2IwNmIyZgBGAAADKGOvWJYjX0aEKaRpd0MYQQcAVSXargQY20aF7RLCkro4ggAAAgEMAAAAVSXargQY20aF7RLCkro4ggAChS2olgAAAA==`.
+- Outlook link: `https://outlook.office365.com/owa/?ItemID=AQMkADZkMGMwNDI3LWU5ZjctNDgzMC1iMjdkLTY0NmRiN2IwNmIyZgBGAAADKGOvWJYjX0aEKaRpd0MYQQcAVSXargQY20aF7RLCkro4ggAAAgEMAAAAVSXargQY20aF7RLCkro4ggAChS2olgAAAA%3D%3D&exvsurl=1&viewmodel=ReadMessageItem`.
+- Sender: `IRAManager@SellYourHomeRaleigh.com`; received `2026-08-08T12:10:58Z`; subject `Time card`; attachments: none.
+- Source fact: Josh reported August 2 time at `4121 Tensity Dr` from `6:00 AM` to `4:15 PM`.
+
 ## Accepted Time Lines
 
 | Work date | Destination | Start | End | Accepted time | Source/status |
 | --- | --- | --- | --- | --- | --- |
+| 2026-08-02 | 4121 Tensity Dr | 6:00 AM | 4:15 PM | 10 hours 15 minutes | New accepted line from dispatch `email-monitor-route-vendor-invoice-20260808-josh-timecard-aug2-001`; no prior August 2 line or matching source identity was found. |
 | 2026-08-03 | 4121 Tensity Dr | 6:15 AM | 4:15 PM | 10 hours 0 minutes | Existing held line amended in place from Josh's authorized clarification; no duplicate line created. |
 | 2026-08-04 | BackOffice | 8:00 AM | 12:00 PM | 4 hours 0 minutes | New accepted line from the correction/new-detail dispatch. |
 | 2026-08-04 | 4121 Tensity Dr | 12:00 PM | 3:45 PM | 3 hours 45 minutes | New accepted line from the correction/new-detail dispatch. |
 | 2026-08-05 | 4121 Tensity Dr | 6:00 AM | 2:40 PM | 8 hours 40 minutes | New accepted line from dispatch `email-monitor-route-vendor-invoice-20260806-josh-timecard-aug5-001`; no prior August 5 line or matching message id was found. |
 | 2026-08-06 | 4121 Tensity Dr | 6:00 AM | 3:30 PM | 9 hours 30 minutes | Added once from the reconciled retry of dispatch `email-monitor-route-vendor-invoice-20260807-josh-timecard-aug6-001`; no prior durable August 6 line or matching source identity was found. |
 
-Accumulated accepted time through August 6: `35 hours 55 minutes` (`31 hours 55 minutes` Tensity; `4 hours 0 minutes` BackOffice).
+Accumulated accepted time through August 6: `46 hours 10 minutes` (`42 hours 10 minutes` Tensity; `4 hours 0 minutes` BackOffice).
 
 ## Duplicate And Period Control
 
@@ -67,10 +76,11 @@ Accumulated accepted time through August 6: `35 hours 55 minutes` (`31 hours 55 
 - The Josh correction and Wes forward are two source records supporting one correction/new-time update, not two sets of hours.
 - The August 5 message id, dispatch id, work date, project, and time range did not match any prior packet line. It was added once and must reconcile to this line if routed again.
 - The August 6 reconciled retry found no prior durable line or matching source identity. The same dispatch id and Outlook message now reconcile to one accepted 9-hour-30-minute line and must not be added again.
-- The later Outlook message ending `AChS2okwAAAA==` repeats the accepted August 6 worker/date/project/time exactly. It is supporting duplicate evidence and does not change the `35 hours 55 minutes` period total.
+- The later Outlook message ending `AChS2okwAAAA==` repeats the accepted August 6 worker/date/project/time exactly. It is supporting duplicate evidence and did not change the then-current period total.
+- The August 2 message id, dispatch id, work date, project, and time range did not match any prior packet line. It was added once and must reconcile to this line if routed again.
 - This belongs to the August 1-15 semimonthly period and must not alter the approved July 16-31 invoice.
 - Do not finalize, file, post, approve, or treat invoice `INV-JKLLC-20260815-001` as payable before the period closes on August 15 and Wes approves it.
 
 ## Current Hold
 
-No source ambiguity remains for the August 3 through August 6 lines. The period is still open and the complete semimonthly fixed-service amount/allocation is not yet final. No correction review is required for the clear August 6 source. No PDF was generated, no email was requested, no workbook was edited, and no filing, approval, payment, or paid-status action occurred.
+No source ambiguity remains for the accepted August 2 through August 6 lines. The period is still open and the complete semimonthly fixed-service amount/allocation is not yet final. No correction review is required for the clear August 2 source. No PDF was generated, no email was requested, no workbook was edited, and no filing, approval, payment, or paid-status action occurred.
