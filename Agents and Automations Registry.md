@@ -29,6 +29,7 @@ Use [[Agent Unit Standard]] for the standard package behind an agent-like operat
 | Manager | Wiki-managed skill plus project room plus dedicated chat | Draft | On demand | `skills\manager\SKILL.md`; `Project Rooms\Manager\README.md` |
 | Codex Environment | Wiki-managed skill plus project room plus dedicated chat | Draft | On demand | `skills\codex-environment\SKILL.md`; `Project Rooms\Codex Environment\README.md` |
 | Computers | Wiki-managed skill plus project room plus dedicated chat | Draft | On demand | `skills\computers\SKILL.md`; `Project Rooms\Computers\README.md` |
+| Facebook Engagement | Wiki-managed skill plus project room; dedicated chat pending | Pending setup | On demand after dedicated task registration | `skills\facebook-engagement\SKILL.md`; `Project Rooms\Facebook Engagement\README.md` |
 | Marketplace | Wiki-managed skill plus project room plus dedicated chat plus heartbeat automation | Paused | No recurring or on-demand Marketplace activity until Wes explicitly resumes it | `skills\marketplace\SKILL.md`; `Project Rooms\Marketplace\README.md`; app automation id `marketplace-seller-response-monitor` |
 | SOPs | Wiki-managed skill plus project room | Active | On demand | `skills\sops\SKILL.md`; `Project Rooms\SOPs\README.md`; `Project Rooms\SOPs\outputs\SOP Index.md` |
 | Credit Worthiness Evaluator | Wiki-managed skill plus project room | Active | On demand | `skills\credit-worthiness-evaluator\SKILL.md`; `Project Rooms\Credit Worthiness Evaluator\README.md` |
@@ -750,6 +751,34 @@ Important rules:
 - Record verified computer facts in `Project Rooms\Computers\working\computer-register.md`.
 - Record final inventory/configuration outcomes in `Project Rooms\Computers\working\computer-inventory-action-log.md`.
 - No automation is currently attached.
+
+## Facebook Engagement
+
+Type: wiki-managed skill plus project room; dedicated chat pending.
+
+Status: pending setup and not dispatchable until a usable task/thread id is recorded.
+
+Purpose:
+
+- Review photos or references Wes explicitly makes available, including future authorized Google Photos sources.
+- Prepare engaging Facebook Page post drafts, photo order, captions, optional calls to action, hashtags, and accessibility notes.
+- Preserve draft outcomes and approval state without external Google/Facebook action during setup.
+
+Defined in:
+
+- `C:\Codex\Wiki Files\skills\facebook-engagement\SKILL.md`
+- `C:\Codex\Wiki Files\Project Rooms\Facebook Engagement\README.md`
+
+Dedicated chat:
+
+- Thread id: `pending until the dedicated chat is created`
+
+Important rules:
+
+- Do not access Google Photos or publish, schedule, react, comment, message, contact anyone, or take another external Google/Facebook action during setup.
+- Each external Facebook post requires Wes's specific final authorization unless a later documented workflow explicitly grants it.
+- Marketplace seller and sourcing work remains owned by Marketplace.
+- No automation is attached.
 
 ## Marketplace
 

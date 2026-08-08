@@ -1,0 +1,4 @@
+interface:
+  display_name: "Facebook Engagement"
+  short_description: "Draft Facebook posts from approved photo sources"
+  default_prompt: "Use $facebook-engagement to review approved photo references and prepare a Facebook Page post draft."

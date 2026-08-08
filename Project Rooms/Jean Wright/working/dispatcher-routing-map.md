@@ -26,6 +26,7 @@ This is the live task registry for the universal [[Project Room Delegation Contr
 | Doc Scan | `doc-scan` | `019ecc0d-02b4-73a3-9c20-dacda5d811d0` | Route scanned-document process design, active scan-processing questions, and scanned-statement intake here before Invoice Entry. | Existing dedicated Doc Scan task verified 2026-08-04; Invoice Entry handoffs route onward only after Doc Scan prepares structured packets. |
 | Email Monitor | `email-monitor` | `019ecba7-f1cc-7ac1-aaf7-d89a3f21b582` | Route mailbox summaries, email intake routing, and Email Delivery mode here. | Email delivery authority for OfficeAssist sends. |
 | Entity Relationship | `entity-relationship` | pending | Route entity relationship diagrams and entity-mapping work here. | Planning/diagram PR. |
+| Facebook Engagement | `facebook-engagement` | pending | Route authorized photo review and Facebook Page post-draft work here after task registration. | Pending setup; no Google Photos access or external Facebook action is authorized. |
 | Estate Documents | pending | pending | Route only if Wes identifies estate-document organization or creates a skill. | Source/manual room at rollout. |
 | Geico Insurance Claim | pending | pending | Route only if Wes identifies insurance-claim work or creates a skill. | Source/manual room at rollout. |
 | Gracious Millionaire | `gracious-millionaire` | `019eb9b0-6780-7fb3-a278-29a18d17998c` | Route book manuscript and GM source work here. | Website work may belong to REI BlackBook. |
