@@ -1,6 +1,6 @@
 # Florida Investor Friends Lunch - Facebook Draft
 
-Status: approval-ready photo-and-caption package; the intended Facebook Page/profile and any external posting action remain unconfirmed.
+Status: published to Wes Browning's personal Facebook profile on August 8, 2026.
 
 ## Supplied Facts
 
@@ -14,7 +14,7 @@ Jenny and I enjoyed a wonderful lunch today with our friends Sharron and Jane, f
 
 Great conversation, great company, and a truly enjoyable afternoon. Sharron and Jane, we're glad we could spend this time together!
 
-## Optional Hashtags
+## Published Hashtags
 
 `#RealEstate #Friends #GreatConversation`
 
@@ -23,7 +23,9 @@ Great conversation, great company, and a truly enjoyable afternoon. Sharron and 
 - Selected photo: `sources/private-media/2026-08-08-lunch/PXL_20260808_183404436.MP.jpg`
 - Selection: landscape frame captured August 8, 2026 at 2:34:04 PM Eastern; all four people are clearly visible with natural expressions
 - Source status: Google Photos original-quality file preserved unchanged; SHA-256 `3F8032666C85383276BDB5C4A2CA75470D4B0EB7EFCEA5FC4CF6E49580FACC44`
-- Edited image: none requested in Wes's latest direct instruction; the selected original remains unchanged
-- Intended Facebook Page/profile: not supplied; confirm before any Facebook composer or publishing action
-- Publication authorization: not granted
-- Facebook action taken: none
+- Edit: Facebook's native crop tool was used to tighten the framing around all four people and the service dog; the preserved source file remains unchanged
+- Facebook destination: Wes Browning's personal profile (`https://www.facebook.com/WesBrowning`)
+- Audience and timing: Public; published immediately
+- Publication authorization: granted by Wes's direct instruction, `crop the pic better and send it to my personal page`
+- Facebook action taken: published and verified on Wes Browning's profile at 3:34 PM Eastern on August 8, 2026
+- Verified photo/post URL: `https://www.facebook.com/photo/?fbid=10244862058112266&set=a.4215892961613`

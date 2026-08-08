@@ -35,7 +35,9 @@
 - SHA-256: `3F8032666C85383276BDB5C4A2CA75470D4B0EB7EFCEA5FC4CF6E49580FACC44`
 - Integrity verification: the downloaded file and preserved private copy have identical SHA-256 hashes and byte counts
 - Google Photos original changed: no
-- Edited image: none requested in Wes's latest direct instruction; no edit performed
-- Next required decision: confirm the exact Facebook Page/profile and authorize the desired composer or publishing action
+- Crop outcome: two AI crop attempts were rejected because they changed faces and scene details; neither was used or posted
+- Final edit: Facebook's native crop tool tightened the framing around all four people and the service dog while leaving the preserved source file unchanged
+- Publication outcome: Wes specifically authorized publication to his personal page; the approved caption, hashtags, and native crop were published Public to Wes Browning's personal profile at 3:34 PM Eastern on August 8, 2026
+- Verified post: `https://www.facebook.com/photo/?fbid=10244862058112266&set=a.4215892961613`
 
 The Google account identifier, precise map coordinates, and unrelated photo URLs were not copied into the Project Room because they were unnecessary for the post package.
