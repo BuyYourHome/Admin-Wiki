@@ -122,3 +122,11 @@ Both archived files were SHA-256 verified against the generated working copies. 
 | Validated edited Tensity workbook and pre-edit rollback copy | `Generated\2026-08-04-2025-Lowes-Tensity-Upload-Hold` | 2 | 1,480,982 | SharePoint `423 resourceLocked` upload hold |
 
 The archived files were verified by file count, byte total, and SHA-256. Validated edited workbook hash: `C57EB95396F5185BB885F61428FF62AFB19EF9E5B8FFC575909D57FAF75D2552`. Rollback hash: `E875FA56C14C0EA70ECF292DECEF5D2714D183FFE3B1C061A9180301DB98FD60`. The freshness-safe retry succeeded on 2026-08-04; the re-fetched authoritative workbook matched the validated hash exactly. Retain both files as upload and rollback evidence; do not upload the held copy again.
+
+## Sullivan Surveying Invoice 2475 Source Recorded 2026-08-08
+
+| Source | Teams destination under `Invoice Entry Working Archive` | Files | Bytes | Category |
+| --- | --- | ---: | ---: | --- |
+| Primary Outlook attachment for Sullivan Surveying invoice `2475` | `Source Documents\2026-08-08 Sullivan Surveying 2475\invoice` | 1 | 107,785 | authoritative routed invoice attachment; duplicate Outlook transport copy not downloaded |
+
+The retained PDF hash is `C35B6EBCEE79CA9EAC304B6415C35FD9A8369A8CF4EECF0431B011F934A728E2`. It remains a held source document, not a project-folder filing, approval, payment record, or paid-status artifact.
