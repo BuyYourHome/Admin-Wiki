@@ -66,6 +66,7 @@ No Google Photos or Facebook action has been performed. The room is not dispatch
 - Chat name: `Facebook Engagement`
 - Thread id: `pending until the dedicated chat is created`
 - Purpose: review authorized photo sources and prepare Page post drafts under this room's approval boundaries.
+- Creation blocker: on 2026-08-08, the Codex app task-creation call returned `No handler registered for tool: create_thread`; no usable task id was returned.
 
 ## Automation
 

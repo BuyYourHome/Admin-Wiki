@@ -772,6 +772,7 @@ Defined in:
 Dedicated chat:
 
 - Thread id: `pending until the dedicated chat is created`
+- Creation blocker: the 2026-08-08 Codex app task-creation attempt returned `No handler registered for tool: create_thread`; no usable task id was returned.
 
 Important rules:
 
