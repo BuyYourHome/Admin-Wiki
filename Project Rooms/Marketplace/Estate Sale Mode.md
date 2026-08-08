@@ -48,6 +48,15 @@ Marketplace may not:
 - arrange delivery, shipping, pickup, or another commitment outside the approved showing instructions; or
 - claim an item is available, working, complete, authentic, safe, or defect-free when the record does not support that statement.
 
+## Showing Window And Individual Follow-Up
+
+- Record a defined public showing window for each sale when Wes supplies one.
+- During that window, replies may direct buyers to the approved date and time range without promising priority, a hold, or a completed sale.
+- When the public showing window ends, handle remaining buyer threads individually rather than continuing to advertise the expired window.
+- Individual follow-up may confirm current availability, answer supported item questions, and tell the buyer that a later showing time must be coordinated.
+- Do not invent or confirm a post-window appointment time unless Wes has supplied or approved that time.
+- The end of the showing window does not end the price-protection date, authorize a discount, or change any payment, address, hold, or commitment gate.
+
 ## Availability Replies
 
 - If the item record says `available`, Marketplace may say it is currently available.
@@ -82,6 +91,7 @@ Maintain one item record per listing or bundle with:
 - availability status;
 - public asking price and protected-through date;
 - approved showing window and general area;
+- current phase: public showing window or individual follow-up;
 - factual condition, testing, measurements, included parts, and defects;
 - buyer-question status and last supported reply;
 - Wes decision needed; and

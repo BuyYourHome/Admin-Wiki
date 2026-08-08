@@ -7,11 +7,13 @@
 - Authorizing source: Wes estate-sale preparation email received 2026-08-07 4:19 PM Eastern.
 - Dispatch id: `email-monitor-marketplace-estate-sale-20260808-001`.
 - Price-protection date: 2026-08-15. Do not reduce or signal flexibility below the listed price until after this date.
+- Approved public showing window: Saturday, 2026-08-15, 9:00 AM through 12:00 PM Eastern.
+- After 12:00 PM on 2026-08-15, switch remaining buyer conversations to individual follow-up. Continue answering supported availability and item questions, but do not invent or confirm a later showing time without Wes's approval.
 - The broader Marketplace pause and the paused seller-response heartbeat remain in force.
 - Authorized now: receive photo references, inventory items, identify likely products, research supported prices, choose separate listings versus bundles, draft accurate descriptions, order photos, and prepare unpublished listing-content packets.
 - Not authorized: publish listings, message buyers or sellers, make commitments, spend money, disclose private contact details, change account settings, or resume the heartbeat.
 - Repeatable governing mode: `..\Estate Sale Mode.md`.
-- This instance remains in preparation status. Buyer replies become authorized only after Wes separately authorizes publication and records his approved showing dates and time windows for this sale.
+- This instance remains in preparation status. Buyer replies become actionable only after Wes separately authorizes publication; the public showing window is now recorded.
 
 ## Source Intake
 
@@ -155,6 +157,6 @@ Description rules:
 - Google Photos references have not yet been supplied.
 - Item identities, quantities, condition, testing status, accessories, and defects are unknown.
 - General pickup city or area is not yet recorded.
-- Wes's approved showing dates and time windows are not yet recorded; do not invent or send showing availability.
+- Post-noon individual appointment times are not preapproved. Coordinate them with Wes instead of inventing availability.
 - Private price floors or must-sell priorities are unknown.
 - Safe Facebook unpublished-draft behavior has not been verified; no browser action is authorized or needed at this preparation stage.
