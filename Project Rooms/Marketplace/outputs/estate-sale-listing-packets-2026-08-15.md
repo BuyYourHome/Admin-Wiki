@@ -239,7 +239,7 @@ These are decision aids, not guarantees. Low-confidence prices should be revisit
 
 **Public draft:** White tubular-metal folding rollaway guest bed with folding mattress. Used, untested and sold as-is. Mattress shows ordinary age/use; please inspect in person. Estate-sale showing in Cary, NC, Saturday, August 15, 9:00 AM-noon.
 
-**Private:** Expected $30-$45; quick-sale $20; confidence medium on visual identity and low on size/operation. Wes requested a clockwise presentation change. Review `estate-sale-2026-08-15-images/ES-20260815-036-rollaway-bed-cover-rotated-clockwise.png` before using it; retain cleaned cover `estate-sale-2026-08-15-images/ES-20260815-036-rollaway-bed-cover.png` and original 133740960 for condition comparison.
+**Private:** Expected $30-$45; quick-sale $20; confidence medium on visual identity and low on size/operation. Wes requested a clockwise presentation change. The corrected cover `estate-sale-2026-08-15-images/ES-20260815-036-rollaway-bed-cover-rotated-clockwise.png` is saved as photo 1 in unpublished Facebook draft `1763003444715493`; original 133740960 remains photo 2 for condition comparison. Retain cleaned cover `estate-sale-2026-08-15-images/ES-20260815-036-rollaway-bed-cover.png` as a fallback asset.
 
 ### ES-20260815-037 - Mixed Decorative Figurine Lot - $45
 
