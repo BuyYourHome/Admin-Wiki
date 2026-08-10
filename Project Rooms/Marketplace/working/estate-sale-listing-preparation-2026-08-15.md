@@ -3,7 +3,7 @@
 ## Status And Authority
 
 - Target date: Saturday, 2026-08-15.
-- Status: preparation lane active; first Google Photos source set received and verified.
+- Status: preparation lane active; the 2026-08-08 source set and 34-photo 2026-08-10 follow-up set have been received and prepared.
 - Authorizing source: Wes estate-sale preparation email received 2026-08-07 4:19 PM Eastern.
 - Dispatch id: `email-monitor-marketplace-estate-sale-20260808-001`.
 - Price-protection date: 2026-08-15. Do not reduce or signal flexibility below the listed price until after this date.
@@ -19,6 +19,8 @@
 
 Verified source folder: [Source Photos - 2026-08-08](https://lifeisanadventure.sharepoint.com/sites/SellYourHome/Shared%20Documents/Office%20Admin/Marketplace/Estate%20Sale%20-%202026-08-15/Source%20Photos%20-%202026-08-08) (`Documents/Office Admin/Marketplace/Estate Sale - 2026-08-15/Source Photos - 2026-08-08`). The folder contains 60 unique JPEG originals dated 2026-08-08, covering 9:20:10 AM through 9:42:39 AM Eastern.
 
+The 2026-08-10 follow-up intake contains 34 unique images covering 1:22:47 PM through 2:28:26 PM Eastern. Twelve downloaded originals and 22 high-resolution rendered copies are preserved in the local Git-ignored manual-upload package. The batch produced five replacement-photo edits and 14 new listings with a combined new ask of $517. See [[estate-sale-photo-inventory-2026-08-10]] and `outputs\estate-sale-manual-upload-packet-2026-08-10.md`. Facebook was not opened or changed during this pass because Wes's account received an automated-activity warning; execution is manual-only unless Wes later establishes a different safe method.
+
 When a Google Photos reference arrives:
 
 1. Record the source reference and received date in `working\source-inventory.md` without copying private Google account data into Git.
@@ -31,6 +33,8 @@ When a Google Photos reference arrives:
 ## Per-Item Intake Register
 
 The 60-photo item register and duplicate-angle reconciliation are complete in [[estate-sale-photo-inventory-2026-08-08]]. It contains 41 proposed listings or bundles, all with best-estimate identities, preliminary asking prices, public-copy drafts and internal price notes in [[estate-sale-listing-packets-2026-08-15]].
+
+The 34-photo follow-up register is complete in [[estate-sale-photo-inventory-2026-08-10]]. It adds 14 proposed listings and replaces or supplements photos for five existing listings. Manual entry copy and exact photo order are in `outputs\estate-sale-manual-upload-packet-2026-08-10.md`.
 
 ## Photo Set Standard
 

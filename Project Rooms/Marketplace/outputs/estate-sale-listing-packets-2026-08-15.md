@@ -2,8 +2,9 @@
 
 ## Review Status
 
-- Packet status: `best-estimate draft - entered in Facebook for Wes review`.
+- Packet status: `2026-08-08 set entered in Facebook for Wes review; 2026-08-10 follow-up prepared offline for manual entry`.
 - Publication status: not authorized; 41 individual Facebook Marketplace drafts were saved unpublished on 2026-08-08. No listing was published.
+- Follow-up status: 34 photos dated 2026-08-10 produced five replacement-photo edits and 14 new proposed listings totaling $517. They are prepared in `estate-sale-manual-upload-packet-2026-08-10.md` but have not been entered in Facebook. Following Facebook's automated-activity warning, further Facebook work is manual-only.
 - Public showing wording used below: `Available to view in Cary, NC, during the estate-sale showing window Saturday, August 15, from 9:00 AM to noon.` The exact street address was supplied privately by Wes and is intentionally excluded from this Git-tracked packet.
 - Prices are firm through 2026-08-15. Expected ranges and quick-sale figures are private and must not be copied into public posts.
 - Every item is used. Descriptions deliberately say `untested` or avoid a working claim unless the current photos support one.
