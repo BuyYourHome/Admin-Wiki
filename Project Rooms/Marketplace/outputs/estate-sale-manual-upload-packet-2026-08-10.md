@@ -20,7 +20,7 @@
 
 1. **Folding Rollaway Bed with Mattress - $50**
 
-   Replace the cover with `ES-20260815-20260810-134247-enhanced.jpg`. This is the truthful upright replacement and supersedes the earlier awkward rotated presentation.
+   Completed in Facebook on 2026-08-10: added `ES-20260815-20260810-134247-enhanced.jpg` as photo 2 in the existing active listing and retained the existing condition photo. Facebook verified two photos, the unchanged $50 price and Active status.
 2. **Tall Media Storage Cabinet - $40**
 
    Keep the existing closed view and add `ES-20260815-20260810-142120-enhanced.jpg` as the second photo showing the cabinet open.
