@@ -80,3 +80,15 @@ Outcome: `Done - August 2 recorded once; period remains open`.
 - No invoice PDF, email, workbook entry, filing, approval, payment, vendor contact, or paid-status action was performed.
 
 Outcome: `Done - reconciled retry recorded August 7 once; period remains open`.
+
+## 2026-08-11 - August 10 intake
+
+- Returned the required compact `accepted` receipt for dispatch `email-monitor-route-vendor-invoice-20260811-josh-timecard-aug10-001` before durable processing.
+- Preserved Outlook message id ending `ACh9Ye9QAAAA==`, link, sender `IRAManager@SellYourHomeRaleigh.com`, received timestamp `2026-08-11T10:30:27Z`, subject `Time card`, and no-attachment status.
+- Duplicate checking found no prior August 10 Josh line and no matching Outlook message or dispatch id in the accumulated packet.
+- Added August 10 once: `6:00 AM` to `6:15 PM` at 4121 Tensity Dr (`12 hours 15 minutes`). No undocumented break was deducted.
+- Accumulated accepted time through August 10 is `68 hours 40 minutes`: Tensity `64 hours 40 minutes`; BackOffice `4 hours 0 minutes`.
+- The source is clear, so no correction-review draft was required. The August 1-15 period remains open.
+- No invoice PDF, email, workbook entry, filing, approval, payment, vendor contact, or paid-status action was performed.
+
+Outcome: `Done - August 10 recorded once; period remains open`.
