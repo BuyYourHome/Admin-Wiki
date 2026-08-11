@@ -52,6 +52,7 @@ Classified working files:
 - The 2026-08-07 Shellpoint mortgage notice for account ending 7767 is represented by one held statement packet. It contains no attachment, amount, due date, or property address; borrower and account-suffix facts are not project evidence.
 - The 2026-08-08 Rushmore printed-statement mail notice is represented by one held packet. It provides no account, borrower, property, balance, amount due, due date, or statement; it cannot be merged with another mortgage record by inference.
 - Sullivan Surveying invoice `2475` for 908 Pond St is represented by one durable packet and one retained source PDF. Two same-time Outlook copies were consolidated. The printed `$387.00` total is held because the first line is `$0.50` below the exact `1.25 x $150.00` extension, and surveying/property due diligence still has no approved worksheet destination.
+- The American Express August 2026 notice for Wesley Browning's account ending `61000` is represented by one held statement packet. Two five-seconds-apart Outlook copies were consolidated. Payment is due 2026-09-04, but no statement attachment, balance, minimum payment, transaction detail, entity, or project evidence was supplied.
 - The 2025 Lowe's source PDFs remain unchanged at their authoritative SharePoint links. Doc Scan packet files remain under the Doc Scan Project Room. The validated Tensity workbook and rollback copy remain classified in `Invoice Entry Working Archive\Generated\2026-08-04-2025-Lowes-Tensity-Upload-Hold` as upload/rollback evidence; the authoritative workbook was uploaded and verified at `2026-08-04T18:59:07Z`.
 - No generated Invoice Entry working artifact from this run remains unclassified in the Git working tree.
 
@@ -72,6 +73,7 @@ Classified working files:
 | 11 | Truist digital statement notice, checking accounts ending `1141` and `1254` | Notice verified; no attachments or statement contents; available browser sessions reached the Truist login page | Wes must sign in through an authorized Truist session or supply the downloaded statements. Route each statement through Doc Scan before Invoice Entry processes it. Do not infer balances, transactions, payment obligations, projects, or accounting treatment. |
 | 12 | NCAOC Remote Public Access invoice `41247668` | `$31.98`, dated 2026-08-02, due 2026-09-01; duplicate Outlook copies consolidated; one PDF filed to general-invoice `_Needs Review`; not approved, posted, or paid | Wes should classify it as a general BackOffice/legal-research expense or assign a named project and destination. Do not create another filing or entry, and do not pay or schedule payment. |
 | 13 | Sullivan Surveying invoice `2475`, 908 Pond St | Two duplicate Outlook copies consolidated; source PDF retained; printed total `$387.00`; first line is `$0.50` below its exact quantity-times-rate extension; not filed, posted, approved, or paid | Wes should decide whether a corrected invoice is required or the printed total remains the review amount, then choose an approved surveying/property-due-diligence worksheet or Review placement. |
+| 14 | American Express August 2026 statement notice, account ending `61000` | Duplicate notices consolidated; payment due 2026-09-04; no statement attachment, balance, minimum payment, transactions, fees, entity, or project detail | Wes must retrieve the statement through an authorized American Express session or supply the PDF, then route it through Doc Scan. Do not approve, schedule, or pay from the notice. |
 
 ## Verified Delivery Evidence
 
@@ -136,6 +138,7 @@ Classified working files:
 | Shellpoint mortgage billing statement, account ending `7767` | `Held - Statement Not Retrieved`; notice facts preserved; no duplicate found | Actual statement remains unavailable. Wes must supply it or retrieve it through an authorized Shellpoint session and route it through Doc Scan. Borrower and account-suffix facts do not establish a property. |
 | Rushmore mortgage printed-statement mail notice | `Held - Statement Expected By Mail`; notice facts preserved; no duplicate found | Wait for the printed statement or a copy supplied by Wes, then route it through Doc Scan. Missing identifiers prevent account or property assignment. |
 | Sullivan Surveying invoice `2475`, 908 Pond St | `Needs Wes - Vendor Math And Worksheet Placement`; one retained PDF; duplicate transport consolidated | Decide whether Sullivan should correct the `$0.50` line-extension mismatch or the printed `$387.00` remains the review amount, and choose the approved destination in `Property/26_Project Management - 908 Pond St 3.xlsm`. |
+| American Express August 2026 statement, account ending `61000` | `Held - Statement Not Retrieved`; duplicate transport consolidated; due date preserved | Wes must retrieve the PDF through an authorized American Express session or supply it, then route the actual statement through Doc Scan. The notice is not the statement or payment authority. |
 
 ## Record Reconciliation
 
@@ -157,6 +160,7 @@ Classified working files:
 - Shellpoint Outlook message ending `AChS2olAAAAA==` creates one distinct mortgage billing-statement retrieval hold for account ending `7767`. It supplies no statement, property address, amount, or due date and is not payment authority.
 - Rushmore Outlook message ending `AChS2olwAAAA==` creates one distinct printed-statement mail hold. It supplies no account, borrower, property, balance, amount due, due date, or statement and is not payment authority.
 - Sullivan Outlook messages ending `AChS2omgAAAA==` and `AChS2omwAAAA==` are duplicate transport copies of one invoice `2475`, not two obligations. The invoice is distinct from Sullivan invoice `2395`; the retained source and packet must be reconciled rather than recreated if rerouted.
+- American Express Outlook messages ending `ACiLEHqgAAAA==` and `ACiLEHqwAAAA==` are duplicate transport copies of one August 2026 statement-availability event for account ending `61000`, not two obligations. Repeated routing must reconcile to the existing held packet; the notices do not supply the statement or payment authority.
 
 ## Safety Holds
 

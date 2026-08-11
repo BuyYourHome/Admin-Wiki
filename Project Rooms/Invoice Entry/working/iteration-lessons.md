@@ -369,6 +369,7 @@ Context: First Bank sent another account-ending-3613 statement-availability noti
 - Repeated notices for the same account and unresolved statement should update the existing packet rather than create another statement record.
 - A new notice does not prove a new statement, balance, amount due, payment obligation, or project assignment when it supplies none of those facts.
 - A public online-banking login page is not an authorized statement source. Do not enter credentials or initiate MFA; keep retrieval held until an authenticated user session or supplied statement is available.
+- Two near-simultaneous forwarded copies of the same statement-ready notice for the same account and month are duplicate transport evidence. Preserve both message identities but create one retrieval hold, even when a due date is present and the balance is absent.
 
 ## 2026-08-04 - Reconcile Mode
 
