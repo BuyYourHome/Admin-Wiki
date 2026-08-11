@@ -130,3 +130,11 @@ The archived files were verified by file count, byte total, and SHA-256. Validat
 | Primary Outlook attachment for Sullivan Surveying invoice `2475` | `Source Documents\2026-08-08 Sullivan Surveying 2475\invoice` | 1 | 107,785 | authoritative routed invoice attachment; duplicate Outlook transport copy not downloaded |
 
 The retained PDF hash is `C35B6EBCEE79CA9EAC304B6415C35FD9A8369A8CF4EECF0431B011F934A728E2`. It remains a held source document, not a project-folder filing, approval, payment record, or paid-status artifact.
+
+## Josh August 1-15 Daily Draft Archive Recorded 2026-08-11
+
+| Local working files | Teams destination under `Invoice Entry Working Archive` | Files | Bytes | Category |
+| --- | --- | ---: | ---: | --- |
+| August 1-15 Josh Kennedy LLC daily draft PDF, structured input, and one-page visual-QA render | `Generated\2026-08-11-Josh-Semimonthly-Daily-Draft` | 3 | 187,477 | open-period semimonthly Time Card draft and QA evidence |
+
+The archive destination was verified by file count and byte total before removal of the generated local copies. The OfficeAssist Sent Items attachment is the authoritative delivered copy. The period remains open; the draft is not final, approved, filed, posted, paid, or proof of payment.

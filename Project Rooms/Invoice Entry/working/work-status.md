@@ -62,7 +62,7 @@ Classified working files:
 | --- | --- | --- | --- |
 | 1 | 2025 Lowe's statements, BYH 5997 and SYH 6140 | 18 authoritative SharePoint PDFs inventoried; no duplicate periods; BYH gaps January-April and SYH gaps January-February. Eight PO-4121 items totaling `$426.32` from two BYH statements are now in the authoritative Tensity Review table with blank destinations and `Needs Review` status. | Wes should review and specify or approve final Vendor Tabs for the eight Tensity rows. Continue other project routing only from supported packet evidence. |
 | 2 | Josh Kennedy LLC semimonthly Time Card invoice, 2026-07-16 through 2026-07-31 | Approved by Wes with format revisions permitted; `INV-JKLLC-20260731-001`, 97 hours 5 minutes, `$2,500.00`; allocation is `$199.57` BackOffice and `$2,300.43` Tensity; revised one-page PDF sent and verified | Make only Wes-directed format changes without changing the approved invoice facts. Filing and project posting remain held until the historical weekly PDFs and existing Tensity Review row are reconciled. Approval is not payment or paid status. |
-| 3 | Josh Kennedy LLC Time Card, 2026-08-01 through 2026-08-15 | August 2 adds 10 hours 15 minutes Tensity; August 3 corrected to 10 hours Tensity; August 4 adds 4 hours BackOffice and 3 hours 45 minutes Tensity; August 5 adds 8 hours 40 minutes Tensity; August 6 adds 9 hours 30 minutes Tensity once from the reconciled retry; August 7 adds 10 hours 15 minutes Tensity once from the reconciled retry; August 10 adds 12 hours 15 minutes Tensity once. Accumulated accepted time is 68 hours 40 minutes: 64 hours 40 minutes Tensity and 4 hours BackOffice. | Continue accumulating source-supported time through August 15. Do not finalize, file, post, approve, or treat the invoice as payable before the period closes and Wes approves it. |
+| 3 | Josh Kennedy LLC Time Card, 2026-08-01 through 2026-08-15 | Accepted time through August 10 is 68 hours 40 minutes: 64 hours 40 minutes Tensity and 4 hours BackOffice. The current `$2,500.00` draft was sent to Josh with Wes and Jenny copied and verified in OfficeAssist Sent Items on 2026-08-11. | Continue accumulating source-supported time through August 15. Regenerate and send the updated correction-by-exception draft after each meaningful daily update. Do not finalize, file, post, approve, or treat the invoice as payable before the period closes and Wes approves it. |
 | 4 | Construction Loan Services loan `77278`, July 2026, 908 Pond St V3 | `$1,658.75` due 2026-08-10; current balance `$181,141.75`; maturity 2026-09-24; no statement attachment or component breakdown | Obtain the detailed statement through Doc Scan if allocation is required and obtain accounting direction. Do not insert, approve, schedule, or pay from the email notice. |
 | 5 | Trenchant Build invoice `422`, 4121 Tensity Dr | Paid once for `$5,185.71`; one Review row exists as `IE-20260801-TRENCHANT-422`; workbook upload and validation passed | Wait for Wes to choose one approved destination worksheet or approve a supported split for mixed work and the card-processing fee. Do not create another row. |
 | 6 | QuickBooks Line of Credit statements `2a46fea` and `a46f130`, July 2026 | Two distinct statements, each held as `Needs Review - Statement - Accounting Allocation` | Wait for accounting direction outside property workbooks. Do not create invoices, approve payment, or insert either statement into a project workbook. |
@@ -86,6 +86,16 @@ Classified working files:
 - Subject: `REVISED: Josh Kennedy LLC Time Card Invoice - July 16-31, 2026`
 - Verified attachment: `26-07-31 - Josh Kennedy LLC - Time Card Invoice - 2026-07-16 to 2026-07-31.pdf`, non-inline `application/pdf`, 4,261 transmitted bytes; 3,805-byte source PDF.
 - Approved by Wes; format-only revisions remain permitted. Not filed, posted, paid, or proof of payment.
+
+### Josh Kennedy LLC August 1-15 Daily Draft Through August 10
+
+- Request: `IE-EMAIL-20260811-JOSH-SEMIMONTHLY-DAILY-DRAFT-001`
+- Sent and verified: `2026-08-11T21:51:43Z`
+- Message id ending: `ACiLFEUQAAAA==`
+- From OfficeAssist to `IRAManager@SellYourHomeRaleigh.com`; Wes and Jenny copied; BCC empty.
+- Subject: `DRAFT: Josh Kennedy LLC Time Card Invoice - August 1-15, 2026 (Through August 10)`
+- Verified attachment: `26-08-15 - Josh Kennedy LLC - Time Card Invoice - 2026-08-01 to 2026-08-15.pdf`, non-inline `application/pdf`, 3,761 transmitted bytes; 3,305-byte source PDF.
+- Draft only; period remains open. Not final, filed, posted, approved, paid, or proof of payment.
 
 ### Josh Kennedy LLC July 16-31 Semimonthly Draft
 
@@ -121,7 +131,7 @@ Classified working files:
 | --- | --- | --- |
 | Josh Kennedy separate biweekly invoice `SP-JK-20260731-001` | `Denied by Wes - Retired - Do Not Pay` | None. Retain as history only. Do not approve, file, post, pay, revive, or reuse it. The referenced recurrence automation is not installed at its recorded local path. |
 | Josh Kennedy LLC semimonthly invoice `INV-JKLLC-20260731-001` | `Approved by Wes - Format Revisions Permitted`; revised PDF sent and verified | Filing and project posting remain held pending duplicate-safe reconciliation of the historical weekly PDFs and existing Tensity Review row. Approval is not payment or paid status. |
-| Josh Kennedy LLC August 1-15 Time Card invoice | `Accumulating - Period Open`; stable number `INV-JKLLC-20260815-001`; 68 hours 40 minutes accepted through August 10; no PDF generated | Continue source-supported accumulation. Period closes August 15; no finalization, filing, posting, approval, payment, or paid status before close and Wes approval. |
+| Josh Kennedy LLC August 1-15 Time Card invoice | `Accumulating - Period Open - Daily Draft Sent`; stable number `INV-JKLLC-20260815-001`; 68 hours 40 minutes accepted through August 10; current draft sent and verified on August 11 | Continue source-supported accumulation and correction-by-exception daily draft delivery. Period closes August 15; no finalization, filing, posting, approval, payment, or paid status before close and Wes approval. |
 | Josh Kennedy Time Card, week ending 2026-07-24 | Historical source records consolidated into the semimonthly invoice | Do not create a second payment obligation. Reconcile the filed PDFs and Tensity Review row under exact duplicate checks before semimonthly posting. |
 | Tim Fleming Pond invoice `IE-TF-20260717-POND-001` | Vendor confirmed, Wes approved, PDF filed | Destination worksheet remains unresolved for `Property/26_Project Management - 908 Pond St 3.xlsm`. |
 | Tim Fleming multi-project package, 2026-07-21 through 2026-07-28 | Vendor verified, Wes approved, three PDFs filed, not marked paid | Workbook posting remains held. Reconfirm the exact Outrigger, Pond, and Tensity workbook paths from SharePoint before processing. |

@@ -2,14 +2,14 @@
 
 ## Status
 
-- State: `Accumulating - Period Open - Accepted Time Recorded`
+- State: `Accumulating - Period Open - Daily Draft Sent and Verified`
 - Stable invoice number: `INV-JKLLC-20260815-001`
 - Semimonthly period: `2026-08-01 through 2026-08-15`
 - Issuer: `Josh Kennedy LLC`
 - Invoice contact: `profcyber0077@gmail.com`
 - Customer: `Buy Your Home`
-- Draft PDF: not generated
-- Delivery, filing, workbook posting, approval, payment, and paid-status action: not performed
+- Draft PDF: generated, visually verified, sent to Josh, and verified in OfficeAssist Sent Items
+- Filing, workbook posting, approval, payment, and paid-status action: not performed
 
 ## Routed Sources
 
@@ -101,6 +101,18 @@ Accumulated accepted time through August 10: `68 hours 40 minutes` (`64 hours 40
 - This belongs to the August 1-15 semimonthly period and must not alter the approved July 16-31 invoice.
 - Do not finalize, file, post, approve, or treat invoice `INV-JKLLC-20260815-001` as payable before the period closes on August 15 and Wes approves it.
 
+## Daily Draft Delivery
+
+- Request id: `IE-EMAIL-20260811-JOSH-SEMIMONTHLY-DAILY-DRAFT-001`
+- Recipient: `IRAManager@SellYourHomeRaleigh.com`
+- CC: `WesWill@BuyYourHomeLLC.com`; `Jenny@BuyYourHomeLLC.com`
+- Subject: `DRAFT: Josh Kennedy LLC Time Card Invoice - August 1-15, 2026 (Through August 10)`
+- Sent and verified: `2026-08-11T21:51:43Z`
+- Sent message id: `AQMkADZkMGMwNDI3LWU5ZjctNDgzMC1iMjdkLTY0NmRiN2IwNmIyZgBGAAADKGOvWJYjX0aEKaRpd0MYQQcAVSXargQY20aF7RLCkro4ggAAAgEJAAAAVSXargQY20aF7RLCkro4ggACiLFEUQAAAA==`
+- Verified attachment: `26-08-15 - Josh Kennedy LLC - Time Card Invoice - 2026-08-01 to 2026-08-15.pdf`; non-inline `application/pdf`; 3,761 transmitted bytes; 3,305 source bytes.
+- Delivery was exactly once. The connector rejected the first call during pre-send schema validation, so no send occurred; the permitted corrected call succeeded and Sent Items contained one matching copy.
+- Generated PDF, structured input, and visual-QA render archived at `C:\Users\wesbr\Buy Your Home\Buy Your Home - Office Admin\Scanned Files\Invoice Entry Working Archive\Generated\2026-08-11-Josh-Semimonthly-Daily-Draft`; 3 files totaling 187,477 bytes verified.
+
 ## Current Hold
 
-No source ambiguity remains for the accepted August 2 through August 10 lines. The period is still open and the complete semimonthly fixed-service amount/allocation is not yet final. No correction review is required for the clear August 10 source. No PDF was generated, no email was requested, no workbook was edited, and no filing, approval, payment, or paid-status action occurred.
+No source ambiguity remains for the accepted August 2 through August 10 lines. The period is still open and the semimonthly invoice is not final. Continue accumulating source-supported time and send updated correction-by-exception drafts after meaningful daily updates. No workbook edit, filing, approval, payment, or paid-status action occurred.

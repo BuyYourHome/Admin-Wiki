@@ -92,3 +92,17 @@ Outcome: `Done - reconciled retry recorded August 7 once; period remains open`.
 - No invoice PDF, email, workbook entry, filing, approval, payment, vendor contact, or paid-status action was performed.
 
 Outcome: `Done - August 10 recorded once; period remains open`.
+
+## 2026-08-11 - Current Daily Draft Delivery
+
+- Wes directly instructed Invoice Entry to send the latest draft to Josh.
+- Generated the open-period draft for invoice `INV-JKLLC-20260815-001` from the accumulated record through August 10.
+- The draft shows 68 hours 40 minutes and `$2,500.00`: 64 hours 40 minutes / `$2,354.37` for 4121 Tensity Dr and 4 hours / `$145.63` for BackOffice.
+- Verified the one-page PDF by extracted text and full-page rendering. The invoice is marked `DRAFT - PERIOD OPEN` and contains no explanatory bottom panels.
+- Sent Email Delivery request `IE-EMAIL-20260811-JOSH-SEMIMONTHLY-DAILY-DRAFT-001` to Email Monitor for delivery from OfficeAssist to Josh's Time Card sender address, with Wes and Jenny copied.
+- Email Monitor returned `sent_and_verified` at `2026-08-11T21:51:43Z`. Sent Items verified sender, To, CC, empty BCC, exact subject, and one non-inline PDF attachment of 3,761 transmitted bytes.
+- Sent message id: `AQMkADZkMGMwNDI3LWU5ZjctNDgzMC1iMjdkLTY0NmRiN2IwNmIyZgBGAAADKGOvWJYjX0aEKaRpd0MYQQcAVSXargQY20aF7RLCkro4ggAAAgEJAAAAVSXargQY20aF7RLCkro4ggACiLFEUQAAAA==`.
+- The connector's first call failed pre-send schema validation; no message was sent. One corrected call succeeded, and reconciliation confirmed exactly one sent copy.
+- This delivery is correction-by-exception review only. It does not finalize, approve, file, post, pay, or create paid status.
+
+Outcome: `Done - current daily draft sent once and verified; period remains open`.
