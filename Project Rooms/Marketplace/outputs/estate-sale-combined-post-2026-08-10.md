@@ -2,6 +2,7 @@
 
 ## Status
 
+- Superseding review option added 2026-08-11: fourteen separate unpublished item drafts were created and recorded in `estate-sale-individual-drafts-2026-08-11.md`. The grouped drafts below remain unchanged until Wes decides which structure to publish.
 - Facebook action: corrected on 2026-08-10; four unpublished Marketplace drafts saved for Wes review with full-size individual photos.
 - Publication: not authorized by this instruction.
 - Verification: Facebook's draft list showed all four exact titles and prices. Each draft was saved with the supported full-size enhanced photos, not the former four-photo collage boards.
