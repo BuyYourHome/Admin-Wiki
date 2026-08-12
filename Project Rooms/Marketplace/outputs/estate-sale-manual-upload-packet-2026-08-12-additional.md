@@ -6,7 +6,7 @@
 - Nothing in this packet is published.
 - A fifth image is a replacement view for the existing Sony Walkman D-E350 listing and is not a new item.
 - Sale showing: Saturday, August 15, 2026, 9:00 AM-noon Eastern.
-- Public location wording: Cary, NC. Exact address will be provided Friday evening.
+- The four private Facebook draft descriptions now contain the exact sale address under Wes's direct 2026-08-12 instruction. The address is intentionally omitted from this Git-tracked packet.
 - Prices are firm through August 15. No holds, early pickup or separate appointments are offered.
 
 ## Listings
@@ -29,7 +29,7 @@
 
 - Facebook draft: `1983848178967283`.
 - Category/condition: Arts & Crafts; Used - Fair.
-- Photo: `prepared\ES-20260815-045-tianse-comb-binding-machine.jpg`
+- Photos: `prepared\ES-20260815-045-tianse-comb-binding-machine.jpg`, then `prepared\ES-20260815-045-tianse-comb-binding-machine-angle2.jpg`.
 - Description: Manual TIANSE 21-hole comb-binding machine with visible A4, letter and A5 paper guides. No binding combs, manual or other accessories are shown. Testing status is not confirmed, so it is sold as-is. Available to view at the Cary estate sale Saturday, August 15, from 9:00 AM to noon. Exact address will be provided Friday evening. Price firm through August 15; no holds or early pickup.
 
 ### ES-20260815-046 - First Alert Locking Fire/Water Document Chest with Keys - $35
