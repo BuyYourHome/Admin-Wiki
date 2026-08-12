@@ -75,6 +75,7 @@ Classified working files:
 | 13 | Sullivan Surveying invoice `2475`, 908 Pond St | Two duplicate Outlook copies consolidated; source PDF retained; printed total `$387.00`; first line is `$0.50` below its exact quantity-times-rate extension; not filed, posted, approved, or paid | Wes should decide whether a corrected invoice is required or the printed total remains the review amount, then choose an approved surveying/property-due-diligence worksheet or Review placement. |
 | 14 | American Express August 2026 statement notice, account ending `61000` | Duplicate notices consolidated; payment due 2026-09-04; no statement attachment, balance, minimum payment, transactions, fees, entity, or project detail | Wes must retrieve the statement through an authorized American Express session or supply the PDF, then route it through Doc Scan. Do not approve, schedule, or pay from the notice. |
 | 15 | Mathews Flooring LLC invoice `936569`, 4121 Tensity Dr | Approved by Wes; final `$200.00` house-cleaning invoice replaced the draft in the authoritative Tensity `Owning/Invoices` folder and was sent once to Wes from OfficeAssist; both actions verified; not posted or paid | Approval and delivery are complete. Do not repeat them. Workbook entry, payment, and paid status require separate authority. |
+| 16 | Capital One Quicksilver statement notice, account ending `6426` | One notice held; Jeanette Hollinger named; balance `$376.48`; minimum `$25.00`; due `2026-09-05`; no statement PDF or transaction detail | Wes must retrieve the statement through an authorized Capital One session or supply it, then route it through Doc Scan. Do not infer entity/project allocation, approve, schedule, or pay from the notice. |
 
 ## Verified Delivery Evidence
 
@@ -171,6 +172,7 @@ Classified working files:
 | Sullivan Surveying invoice `2475`, 908 Pond St | `Needs Wes - Vendor Math And Worksheet Placement`; one retained PDF; duplicate transport consolidated | Decide whether Sullivan should correct the `$0.50` line-extension mismatch or the printed `$387.00` remains the review amount, and choose the approved destination in `Property/26_Project Management - 908 Pond St 3.xlsm`. |
 | American Express August 2026 statement, account ending `61000` | `Held - Statement Not Retrieved`; duplicate transport consolidated; due date preserved | Wes must retrieve the PDF through an authorized American Express session or supply it, then route the actual statement through Doc Scan. The notice is not the statement or payment authority. |
 | Mathews Flooring LLC invoice `936569`, 4121 Tensity Dr | `Approved By Wes - Final Filed And Sent`; `$200.00` house cleaning dated 2026-08-07 | Approval, final property replacement, and final Wes delivery are complete and must not be repeated. Workbook entry, payment, and paid status remain unperformed. |
+| Capital One Quicksilver statement, account ending `6426` | `Held - Statement Not Retrieved`; notice facts preserved; no duplicate found | Actual statement remains unavailable. Wes must retrieve it through an authorized Capital One session or supply it and route it through Doc Scan. Matching `$376.48`/`6426` facts in a historical receipt are only a reconciliation clue, not sufficient entity or project evidence. |
 
 ## Record Reconciliation
 
@@ -196,6 +198,7 @@ Classified working files:
 - American Express Outlook messages ending `ACiLEHqgAAAA==` and `ACiLEHqwAAAA==` are duplicate transport copies of one August 2026 statement-availability event for account ending `61000`, not two obligations. Repeated routing must reconcile to the existing held packet; the notices do not supply the statement or payment authority.
 - Wes's Outlook message ending `ACiLEHrwAAAA==`, inline image reference `936569`, and the generated Mathews Flooring LLC draft represent one `$200.00` 4121 Tensity Dr house-cleaning invoice intake. Dispatch `email-monitor-route-vendor-invoice-20260811-mathews-flooring-maria-001` is consumed; do not recreate the draft or treat the image and generated PDF as separate obligations.
 - Wes approved invoice `936569` on 2026-08-12. The final replaced the draft at the same property-folder path and was sent once under request `IE-EMAIL-20260812-MATHEWS-936569-FINAL-001`. Do not repeat the replacement or delivery. Approval is not payment or paid status.
+- Capital One Outlook message ending `ACiSKPKwAAAA==` creates one statement-retrieval hold for Jeanette Hollinger's Quicksilver account ending `6426`. The notice balance matches a historical QPay/USA Flooring receipt amount and the suffix matches its recorded card ending, but the statement itself is absent; do not infer transaction inclusion, entity, or full-project allocation from that coincidence.
 
 ## Safety Holds
 
