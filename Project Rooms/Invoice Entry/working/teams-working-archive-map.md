@@ -157,3 +157,11 @@ The archive destination was verified by file count and byte total before removal
 The source image SHA-256 is `6CF41EC84DF7F46F0C216C5A18CCC4070A9AD8BDA06C03C3A497B0D1C34A886D`. Both archive destinations were verified by file count and byte total before generated working copies were removed.
 
 On 2026-08-12, Wes directed that the PDF be sent to him and moved into the property folder. After the SharePoint copy and OfficeAssist Sent Items attachment were verified, the PDF was removed from `Generated\2026-08-11-Mathews-Flooring-936569-Draft`. That archive folder now retains 2 files totaling 160,186 bytes: the structured generation input and QA render. The filed PDF is authoritative at `Property/24-HM - 4121 Tensity Dr/Owning/Invoices/26-08-07 - Mathews Flooring LLC - Invoice 936569 - 4121 Tensity Dr.pdf`. Filing and review delivery do not establish approval, payment, paid status, or workbook posting.
+
+## Mathews Flooring Invoice 936569 Final Archive Recorded 2026-08-12
+
+| Local working files | Teams destination under `Invoice Entry Working Archive` | Files | Bytes | Category |
+| --- | --- | ---: | ---: | --- |
+| Final approved structured input and one-page visual-QA render | `Generated\2026-08-12-Mathews-Flooring-936569-Final` | 2 | 154,438 | approved final generation and QA evidence |
+
+The final PDF itself remains authoritative in the Tensity property `Owning/Invoices` folder and in OfficeAssist Sent Items. The archive destination was verified by file count and byte total before the temporary local files were removed. Approval does not establish payment, paid status, or workbook posting.

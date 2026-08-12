@@ -28,3 +28,17 @@ Outcome: `Needs Wes - review-ready draft created; no delivery or downstream acti
 - No vendor contact, workbook entry, approval, payment, or paid-status action occurred.
 
 Outcome: `Done - filed in the Tensity property folder and sent once to Wes; awaiting review`.
+
+## 2026-08-12 - Wes Approval And Final Delivery
+
+- Wes directly approved invoice `936569` and instructed Invoice Entry to send a final copy to him.
+- Regenerated the PDF with `INVOICE`, `APPROVED BY WES`, status `Approved by Wes`, and `Invoice Total`, without changing any invoice facts.
+- Verified the one-page final PDF by extracted text and full-page rendering.
+- Replaced the existing SharePoint draft at the exact item id and read the final file back successfully. The final property copy is 3,170 bytes and retains the same stable filename and URL.
+- Sent Email Delivery request `IE-EMAIL-20260812-MATHEWS-936569-FINAL-001` to Email Monitor for OfficeAssist delivery to Wes only.
+- Email Monitor returned `sent_and_verified` at `2026-08-12T09:19:30Z`. Sent Items verified sender, recipient, empty CC/BCC, exact subject, and one non-inline PDF attachment of 3,594 transmitted bytes.
+- Sent message id: `AQMkADZkMGMwNDI3LWU5ZjctNDgzMC1iMjdkLTY0NmRiN2IwNmIyZgBGAAADKGOvWJYjX0aEKaRpd0MYQQcAVSXargQY20aF7RLCkro4ggAAAgEJAAAAVSXargQY20aF7RLCkro4ggACiSJqAgAAAA==`.
+- Archived the final structured input and QA render after 2-file / 154,438-byte verification.
+- No vendor contact, workbook entry, payment, or paid-status action occurred. Approval is not proof of payment.
+
+Outcome: `Done - approved final replaced in property folder and sent once to Wes`.
