@@ -123,3 +123,17 @@ Outcome: `Done - current daily draft sent once and verified; period remains open
 - No workbook entry, filing, approval, payment, paid status, or other external action occurred.
 
 Outcome: `Done - August 11 recorded once under the received-date rule; updated draft sent and verified; period remains open`.
+
+## 2026-08-12 - Semimonthly Pay Correction And Final-Style Draft
+
+- Wes clarified that Josh is now paid on `24` semimonthly periods per year and that the prior `$2,500.00` period amount must not be reused.
+- Reconciled the established `$1,250.00` weekly amount to `$65,000.00` annual compensation and calculated the corrected semimonthly amount as `$2,708.33`.
+- Recalculated the current through-August-11 allocation to `$2,447.64` Tensity, `$139.04` BackOffice, and `$121.65` Rosebrooks.
+- Prepared a final-style invoice presentation with no approval or draft status language inside the PDF. The service period remains open, so the email package identifies it as a presentation draft and states that more work will be added before the invoice is final.
+- Corrected the invoice-detail column widths after the first QA render showed crowded Hours and Allocated Cost text, then regenerated and visually verified a clean one-page PDF.
+- Email Delivery request `IE-EMAIL-20260812-JOSH-SEMIMONTHLY-FINAL-STYLE-DRAFT-001` was sent exactly once and verified in OfficeAssist Sent Items at `2026-08-12T10:54:01Z`.
+- Sent message id ends `ACiSJqAwAAAA==`; OfficeAssist sent to Wes only with empty CC/BCC and one verified non-inline PDF attachment of 3,915 transmitted bytes.
+- Archived the PDF, structured input, and one-page QA render at `Generated\2026-08-12-Josh-Semimonthly-Final-Style-Draft`; verified 3 files totaling 191,160 bytes.
+- The period remains open. No filing, workbook posting, approval, payment, or paid-status action occurred.
+
+Outcome: `Done - corrected final-style presentation draft sent once to Wes and verified; period remains open`.

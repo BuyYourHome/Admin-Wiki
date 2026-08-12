@@ -165,3 +165,11 @@ On 2026-08-12, Wes directed that the PDF be sent to him and moved into the prope
 | Final approved structured input and one-page visual-QA render | `Generated\2026-08-12-Mathews-Flooring-936569-Final` | 2 | 154,438 | approved final generation and QA evidence |
 
 The final PDF itself remains authoritative in the Tensity property `Owning/Invoices` folder and in OfficeAssist Sent Items. The archive destination was verified by file count and byte total before the temporary local files were removed. Approval does not establish payment, paid status, or workbook posting.
+
+## Josh August 1-15 Final-Style Presentation Draft Archive Recorded 2026-08-12
+
+| Local working files | Teams destination under `Invoice Entry Working Archive` | Files | Bytes | Category |
+| --- | --- | ---: | ---: | --- |
+| Corrected August 1-15 Josh Kennedy LLC final-style presentation PDF through August 11, structured input, and one-page visual-QA render | `Generated\2026-08-12-Josh-Semimonthly-Final-Style-Draft` | 3 | 191,160 | open-period final-style Time Card presentation and QA evidence |
+
+The archive destination was verified by file count and byte total before removal of the generated local copies. The OfficeAssist Sent Items attachment is the authoritative delivered copy. The PDF intentionally omits approval and draft wording for appearance review, but the email identifies it as a presentation draft; the period remains open and no finalization, filing, posting, approval, payment, or paid status occurred.

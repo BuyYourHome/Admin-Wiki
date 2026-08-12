@@ -174,7 +174,7 @@ def build_invoice(data, output_path):
         ])
     items = Table(
         rows,
-        colWidths=[0.72 * inch, 1.25 * inch, 3.5 * inch, 0.58 * inch, 0.85 * inch],
+        colWidths=[0.72 * inch, 1.25 * inch, 3.08 * inch, 0.85 * inch, 1.0 * inch],
         repeatRows=1,
     )
     items.setStyle(TableStyle([

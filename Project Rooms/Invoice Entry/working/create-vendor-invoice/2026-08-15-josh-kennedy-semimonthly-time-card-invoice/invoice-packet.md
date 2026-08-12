@@ -2,7 +2,7 @@
 
 ## Status
 
-- State: `Accumulating - Period Open - Daily Draft Sent and Verified`
+- State: `Accumulating - Period Open - Final-Style Draft Sent And Verified`
 - Stable invoice number: `INV-JKLLC-20260815-001`
 - Semimonthly period: `2026-08-01 through 2026-08-15`
 - Issuer: `Josh Kennedy LLC`
@@ -138,3 +138,22 @@ Updated through-August-11 delivery:
 ## Current Hold
 
 The August 11 work date is a documented received-date assumption pending correction-by-exception review; the projects, activities, time ranges, and total interval are source-supported. The period is still open and the semimonthly invoice is not final. Continue accumulating source-supported time and send updated correction-by-exception drafts after meaningful daily updates. No workbook edit, filing, approval, payment, or paid-status action occurred.
+
+## 2026-08-12 Compensation Basis Correction
+
+- Wes changed the pay schedule from biweekly/weekly accumulation to `24` semimonthly periods per year.
+- The established `$1,250.00` weekly amount implies authorized annual compensation of `$65,000.00` (`$1,250.00 x 52`).
+- The August 1-15 invoice amount is therefore `$65,000.00 / 24 = $2,708.33`, superseding the previously presented `$2,500.00` draft amount.
+- At the current `77 hours 55 minutes`, the corrected proportional destination allocation is `$2,447.64` to 4121 Tensity Dr, `$139.04` to BackOffice, and `$121.65` to 115 Rosebrooks Dr.
+- Wes requested a final-style presentation draft sent only to him. The invoice itself omits draft and approval wording, while the delivery email must clearly say the period remains open and the attachment is not the final payable invoice.
+
+Final-style presentation delivery:
+
+- Request id: `IE-EMAIL-20260812-JOSH-SEMIMONTHLY-FINAL-STYLE-DRAFT-001`.
+- Sent exactly once from OfficeAssist to Wes only; CC and BCC empty.
+- Subject: `PRESENTATION DRAFT: Josh Kennedy LLC Time Card Invoice - August 1-15, 2026 (Through August 11)`.
+- Sent and verified: `2026-08-12T10:54:01Z`.
+- Sent message id ending: `ACiSJqAwAAAA==`.
+- Verified attachment: stable invoice filename; non-inline `application/pdf`; 3,915 transmitted bytes.
+- Generated PDF, structured input, and one-page QA render were archived at `Generated\2026-08-12-Josh-Semimonthly-Final-Style-Draft`; 3 files totaling 191,160 bytes verified.
+- This presentation delivery does not close the service period or establish finalization, approval, filing, posting, payment, or paid status.
