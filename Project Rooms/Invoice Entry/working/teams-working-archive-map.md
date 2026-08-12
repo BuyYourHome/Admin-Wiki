@@ -138,3 +138,11 @@ The retained PDF hash is `C35B6EBCEE79CA9EAC304B6415C35FD9A8369A8CF4EECF0431B011
 | August 1-15 Josh Kennedy LLC daily draft PDF, structured input, and one-page visual-QA render | `Generated\2026-08-11-Josh-Semimonthly-Daily-Draft` | 3 | 187,477 | open-period semimonthly Time Card draft and QA evidence |
 
 The archive destination was verified by file count and byte total before removal of the generated local copies. The OfficeAssist Sent Items attachment is the authoritative delivered copy. The period remains open; the draft is not final, approved, filed, posted, paid, or proof of payment.
+
+## Josh August 1-15 Updated Daily Draft Archive Recorded 2026-08-11
+
+| Local working files | Teams destination under `Invoice Entry Working Archive` | Files | Bytes | Category |
+| --- | --- | ---: | ---: | --- |
+| August 1-15 Josh Kennedy LLC draft updated through August 11, structured input, and one-page visual-QA render | `Generated\2026-08-11-Josh-Semimonthly-Daily-Draft-Through-Aug11` | 3 | 220,530 | open-period semimonthly Time Card draft and QA evidence |
+
+The archive destination was verified by file count and byte total before removal of the generated local copies. The OfficeAssist Sent Items attachment is the authoritative delivered copy. The August 11 work date remains a documented received-date assumption subject to correction-by-exception review; no finalization, filing, posting, approval, payment, or paid status occurred.

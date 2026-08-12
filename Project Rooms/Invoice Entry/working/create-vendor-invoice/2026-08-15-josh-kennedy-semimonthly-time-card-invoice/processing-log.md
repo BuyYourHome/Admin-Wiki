@@ -106,3 +106,20 @@ Outcome: `Done - August 10 recorded once; period remains open`.
 - This delivery is correction-by-exception review only. It does not finalize, approve, file, post, pay, or create paid status.
 
 Outcome: `Done - current daily draft sent once and verified; period remains open`.
+
+## 2026-08-11 - August 11 Intake And Updated Daily Draft
+
+- Returned the required `accepted` receipt for dispatch `email-monitor-route-vendor-invoice-20260811-josh-timecard-aug11-001` before durable processing.
+- Preserved Outlook message id ending `ACiLEHrgAAAA==`, sender, received timestamp, subject, and no-attachment status.
+- The source omitted the work date. Applied the canonical received-date rule using `2026-08-11`, the Eastern received date, and preserved the assumption for correction-by-exception review.
+- Duplicate checking found no matching Outlook message, dispatch, or accepted intervals.
+- Added August 11 once: 115 Rosebrooks Dr cleaning, `6:00 AM` to `9:30 AM` (`3 hours 30 minutes`), and 4121 Tensity Dr deck staining/staging, `9:30 AM` to `3:15 PM` (`5 hours 45 minutes`).
+- Updated accepted time is `77 hours 55 minutes`: Tensity `70 hours 25 minutes`; BackOffice `4 hours`; Rosebrooks `3 hours 30 minutes`.
+- Regenerated invoice `INV-JKLLC-20260815-001` for `$2,500.00`, with allocations of `$2,259.36` Tensity, `$128.34` BackOffice, and `$112.30` Rosebrooks.
+- The first render exposed description text encroaching on the Hours column. Shortened only the presentation wording, regenerated, and verified the corrected one-page layout and extracted text.
+- Email Delivery request `IE-EMAIL-20260811-JOSH-SEMIMONTHLY-DAILY-DRAFT-002` was sent exactly once and verified in OfficeAssist Sent Items at `2026-08-12T00:19:45Z`.
+- Sent message id: `AQMkADZkMGMwNDI3LWU5ZjctNDgzMC1iMjdkLTY0NmRiN2IwNmIyZgBGAAADKGOvWJYjX0aEKaRpd0MYQQcAVSXargQY20aF7RLCkro4ggAAAgEJAAAAVSXargQY20aF7RLCkro4ggACiLFEUgAAAA==`.
+- The delivery body explicitly identifies the received-date assumption and asks Josh to reply only if the date or other invoice facts need correction.
+- No workbook entry, filing, approval, payment, paid status, or other external action occurred.
+
+Outcome: `Done - August 11 recorded once under the received-date rule; updated draft sent and verified; period remains open`.

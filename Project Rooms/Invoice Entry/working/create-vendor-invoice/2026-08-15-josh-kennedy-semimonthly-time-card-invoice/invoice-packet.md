@@ -73,6 +73,14 @@ August 10 dispatch: `email-monitor-route-vendor-invoice-20260811-josh-timecard-a
 - Sender: `IRAManager@SellYourHomeRaleigh.com`; received `2026-08-11T10:30:27Z`; subject `Time card`; attachments: none.
 - Source fact: Josh reported August 10 time at `4121 Tensity Dr` from `6:00 AM` to `6:15 PM`, totaling `12 hours 15 minutes` before any undocumented break treatment.
 
+August 11 dispatch: `email-monitor-route-vendor-invoice-20260811-josh-timecard-aug11-001`
+
+- Mailbox: `OfficeAssist@BuyYourHomeLLC.com`.
+- Outlook message id: `AQMkADZkMGMwNDI3LWU5ZjctNDgzMC1iMjdkLTY0NmRiN2IwNmIyZgBGAAADKGOvWJYjX0aEKaRpd0MYQQcAVSXargQY20aF7RLCkro4ggAAAgEMAAAAVSXargQY20aF7RLCkro4ggACiLEHrgAAAA==`.
+- Sender: `IRAManager@SellYourHomeRaleigh.com`; received `2026-08-12T00:03:53Z` / `2026-08-11 8:03:53 PM Eastern`; subject `Time card`; attachments: none.
+- The source does not explicitly state the work date. Under the Invoice Entry Time Card rule, the Eastern received date `2026-08-11` is used and the assumption is preserved for correction-by-exception review.
+- Source facts: `115 Rosebrooks Dr`, cleaning, `6:00 AM` to `9:30 AM` (`3 hours 30 minutes`); `4121 Tensity Dr`, staining the deck and helping stage the house, `9:30 AM` to `3:15 PM` (`5 hours 45 minutes`).
+
 ## Accepted Time Lines
 
 | Work date | Destination | Start | End | Accepted time | Source/status |
@@ -85,8 +93,10 @@ August 10 dispatch: `email-monitor-route-vendor-invoice-20260811-josh-timecard-a
 | 2026-08-06 | 4121 Tensity Dr | 6:00 AM | 3:30 PM | 9 hours 30 minutes | Added once from the reconciled retry of dispatch `email-monitor-route-vendor-invoice-20260807-josh-timecard-aug6-001`; no prior durable August 6 line or matching source identity was found. |
 | 2026-08-07 | 4121 Tensity Dr | 6:00 AM | 4:15 PM | 10 hours 15 minutes | Added once from the reconciled retry of dispatch `email-monitor-route-vendor-invoice-20260808-josh-timecard-aug7-001`; no prior durable August 7 line or matching source identity was found. |
 | 2026-08-10 | 4121 Tensity Dr | 6:00 AM | 6:15 PM | 12 hours 15 minutes | New accepted line from dispatch `email-monitor-route-vendor-invoice-20260811-josh-timecard-aug10-001`; no prior August 10 line or matching source identity was found. |
+| 2026-08-11 | 115 Rosebrooks Dr | 6:00 AM | 9:30 AM | 3 hours 30 minutes | New accepted line from dispatch `email-monitor-route-vendor-invoice-20260811-josh-timecard-aug11-001`; work date uses the Eastern received date because the source omitted it. |
+| 2026-08-11 | 4121 Tensity Dr | 9:30 AM | 3:15 PM | 5 hours 45 minutes | New accepted line from the same dispatch; work date uses the Eastern received date because the source omitted it. |
 
-Accumulated accepted time through August 10: `68 hours 40 minutes` (`64 hours 40 minutes` Tensity; `4 hours 0 minutes` BackOffice).
+Accumulated accepted time through August 11: `77 hours 55 minutes` (`70 hours 25 minutes` Tensity; `4 hours 0 minutes` BackOffice; `3 hours 30 minutes` Rosebrooks).
 
 ## Duplicate And Period Control
 
@@ -98,6 +108,7 @@ Accumulated accepted time through August 10: `68 hours 40 minutes` (`64 hours 40
 - The August 2 message id, dispatch id, work date, project, and time range did not match any prior packet line. It was added once and must reconcile to this line if routed again.
 - The August 7 reconciled retry found no prior durable line or matching source identity. The same dispatch id and Outlook message now reconcile to one accepted 10-hour-15-minute line and must not be added again.
 - The August 10 message id, dispatch id, work date, project, and time range did not match any prior packet line. It was added once and must reconcile to this line if routed again.
+- The August 11 message and dispatch identities did not match prior source evidence. Its two non-overlapping intervals were added once. The work date is a documented received-date assumption, not an independently stated source fact.
 - This belongs to the August 1-15 semimonthly period and must not alter the approved July 16-31 invoice.
 - Do not finalize, file, post, approve, or treat invoice `INV-JKLLC-20260815-001` as payable before the period closes on August 15 and Wes approves it.
 
@@ -113,6 +124,17 @@ Accumulated accepted time through August 10: `68 hours 40 minutes` (`64 hours 40
 - Delivery was exactly once. The connector rejected the first call during pre-send schema validation, so no send occurred; the permitted corrected call succeeded and Sent Items contained one matching copy.
 - Generated PDF, structured input, and visual-QA render archived at `C:\Users\wesbr\Buy Your Home\Buy Your Home - Office Admin\Scanned Files\Invoice Entry Working Archive\Generated\2026-08-11-Josh-Semimonthly-Daily-Draft`; 3 files totaling 187,477 bytes verified.
 
+Updated through-August-11 delivery:
+
+- Request id: `IE-EMAIL-20260811-JOSH-SEMIMONTHLY-DAILY-DRAFT-002`
+- Recipient: `IRAManager@SellYourHomeRaleigh.com`; Wes and Jenny copied; BCC empty.
+- Subject: `UPDATED DRAFT: Josh Kennedy LLC Time Card Invoice - August 1-15, 2026 (Through August 11)`
+- Sent and verified: `2026-08-12T00:19:45Z`
+- Sent message id: `AQMkADZkMGMwNDI3LWU5ZjctNDgzMC1iMjdkLTY0NmRiN2IwNmIyZgBGAAADKGOvWJYjX0aEKaRpd0MYQQcAVSXargQY20aF7RLCkro4ggAAAgEJAAAAVSXargQY20aF7RLCkro4ggACiLFEUgAAAA==`
+- Verified attachment: same stable filename; non-inline `application/pdf`; 3,970 transmitted bytes; 3,514 source bytes.
+- The body identifies the August 11 received-date assumption and asks Josh to reply if the work occurred on another date. The message was sent exactly once.
+- Generated PDF, structured input, and visual-QA render archived at `C:\Users\wesbr\Buy Your Home\Buy Your Home - Office Admin\Scanned Files\Invoice Entry Working Archive\Generated\2026-08-11-Josh-Semimonthly-Daily-Draft-Through-Aug11`; 3 files totaling 220,530 bytes verified.
+
 ## Current Hold
 
-No source ambiguity remains for the accepted August 2 through August 10 lines. The period is still open and the semimonthly invoice is not final. Continue accumulating source-supported time and send updated correction-by-exception drafts after meaningful daily updates. No workbook edit, filing, approval, payment, or paid-status action occurred.
+The August 11 work date is a documented received-date assumption pending correction-by-exception review; the projects, activities, time ranges, and total interval are source-supported. The period is still open and the semimonthly invoice is not final. Continue accumulating source-supported time and send updated correction-by-exception drafts after meaningful daily updates. No workbook edit, filing, approval, payment, or paid-status action occurred.
