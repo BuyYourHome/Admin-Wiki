@@ -146,3 +146,12 @@ The archive destination was verified by file count and byte total before removal
 | August 1-15 Josh Kennedy LLC draft updated through August 11, structured input, and one-page visual-QA render | `Generated\2026-08-11-Josh-Semimonthly-Daily-Draft-Through-Aug11` | 3 | 220,530 | open-period semimonthly Time Card draft and QA evidence |
 
 The archive destination was verified by file count and byte total before removal of the generated local copies. The OfficeAssist Sent Items attachment is the authoritative delivered copy. The August 11 work date remains a documented received-date assumption subject to correction-by-exception review; no finalization, filing, posting, approval, payment, or paid status occurred.
+
+## Mathews Flooring Invoice 936569 Archive Recorded 2026-08-11
+
+| Local/source files | Teams destination under `Invoice Entry Working Archive` | Files | Bytes | Category |
+| --- | --- | ---: | ---: | --- |
+| Outlook inline image `image0.jpeg` for Mathews Flooring invoice 936569 | `Source Documents\2026-08-11 Mathews Flooring 936569\image` | 1 | 2,348,369 | authoritative routed source image |
+| Generated Mathews Flooring draft PDF, structured input, and one-page QA render | `Generated\2026-08-11-Mathews-Flooring-936569-Draft` | 3 | 163,433 | review-ready generated invoice and QA evidence |
+
+The source image SHA-256 is `6CF41EC84DF7F46F0C216C5A18CCC4070A9AD8BDA06C03C3A497B0D1C34A886D`. Both archive destinations were verified by file count and byte total before generated working copies were removed. The draft has not been delivered, filed, posted, approved, paid, or marked paid.

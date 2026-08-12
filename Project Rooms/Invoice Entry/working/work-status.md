@@ -74,6 +74,7 @@ Classified working files:
 | 12 | NCAOC Remote Public Access invoice `41247668` | `$31.98`, dated 2026-08-02, due 2026-09-01; duplicate Outlook copies consolidated; one PDF filed to general-invoice `_Needs Review`; not approved, posted, or paid | Wes should classify it as a general BackOffice/legal-research expense or assign a named project and destination. Do not create another filing or entry, and do not pay or schedule payment. |
 | 13 | Sullivan Surveying invoice `2475`, 908 Pond St | Two duplicate Outlook copies consolidated; source PDF retained; printed total `$387.00`; first line is `$0.50` below its exact quantity-times-rate extension; not filed, posted, approved, or paid | Wes should decide whether a corrected invoice is required or the printed total remains the review amount, then choose an approved surveying/property-due-diligence worksheet or Review placement. |
 | 14 | American Express August 2026 statement notice, account ending `61000` | Duplicate notices consolidated; payment due 2026-09-04; no statement attachment, balance, minimum payment, transactions, fees, entity, or project detail | Wes must retrieve the statement through an authorized American Express session or supply the PDF, then route it through Doc Scan. Do not approve, schedule, or pay from the notice. |
+| 15 | Mathews Flooring LLC invoice `936569`, 4121 Tensity Dr | Wes-directed draft created from Maria Sarmiento's source image: dated 2026-08-07, house cleaning, `$200.00`; source and generated artifacts archived; not delivered, filed, posted, approved, or paid | Wes should review the generated draft. No vendor contact, delivery, filing, workbook entry, approval, payment, or paid-status action is authorized by the intake handoff. |
 
 ## Verified Delivery Evidence
 
@@ -149,6 +150,7 @@ Classified working files:
 | Rushmore mortgage printed-statement mail notice | `Held - Statement Expected By Mail`; notice facts preserved; no duplicate found | Wait for the printed statement or a copy supplied by Wes, then route it through Doc Scan. Missing identifiers prevent account or property assignment. |
 | Sullivan Surveying invoice `2475`, 908 Pond St | `Needs Wes - Vendor Math And Worksheet Placement`; one retained PDF; duplicate transport consolidated | Decide whether Sullivan should correct the `$0.50` line-extension mismatch or the printed `$387.00` remains the review amount, and choose the approved destination in `Property/26_Project Management - 908 Pond St 3.xlsm`. |
 | American Express August 2026 statement, account ending `61000` | `Held - Statement Not Retrieved`; duplicate transport consolidated; due date preserved | Wes must retrieve the PDF through an authorized American Express session or supply it, then route the actual statement through Doc Scan. The notice is not the statement or payment authority. |
+| Mathews Flooring LLC invoice `936569`, 4121 Tensity Dr | `Draft Generated - Awaiting Wes Review`; `$200.00` house cleaning dated 2026-08-07 | Review the generated draft. Delivery, vendor verification, filing, workbook entry, approval, and payment remain unperformed and unauthorized by the current handoff. |
 
 ## Record Reconciliation
 
@@ -172,6 +174,7 @@ Classified working files:
 - Rushmore Outlook message ending `AChS2olwAAAA==` creates one distinct printed-statement mail hold. It supplies no account, borrower, property, balance, amount due, due date, or statement and is not payment authority.
 - Sullivan Outlook messages ending `AChS2omgAAAA==` and `AChS2omwAAAA==` are duplicate transport copies of one invoice `2475`, not two obligations. The invoice is distinct from Sullivan invoice `2395`; the retained source and packet must be reconciled rather than recreated if rerouted.
 - American Express Outlook messages ending `ACiLEHqgAAAA==` and `ACiLEHqwAAAA==` are duplicate transport copies of one August 2026 statement-availability event for account ending `61000`, not two obligations. Repeated routing must reconcile to the existing held packet; the notices do not supply the statement or payment authority.
+- Wes's Outlook message ending `ACiLEHrwAAAA==`, inline image reference `936569`, and the generated Mathews Flooring LLC draft represent one `$200.00` 4121 Tensity Dr house-cleaning invoice intake. Dispatch `email-monitor-route-vendor-invoice-20260811-mathews-flooring-maria-001` is consumed; do not recreate the draft or treat the image and generated PDF as separate obligations.
 
 ## Safety Holds
 
