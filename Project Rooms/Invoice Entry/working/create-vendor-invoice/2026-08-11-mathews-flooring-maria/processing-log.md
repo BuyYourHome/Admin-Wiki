@@ -14,3 +14,17 @@
 - No delivery, vendor contact, filing, workbook entry, approval, payment, or paid-status action occurred.
 
 Outcome: `Needs Wes - review-ready draft created; no delivery or downstream action authorized`.
+
+## 2026-08-12 - Property Filing And Wes Delivery
+
+- Wes directly instructed Invoice Entry to send the draft to him and move it to the property folder.
+- Confirmed the exact SharePoint destination `Property/24-HM - 4121 Tensity Dr/Owning/Invoices` and found no existing Mathews Flooring invoice `936569` there.
+- Uploaded the PDF with conflict behavior `fail`; SharePoint created item `01ZGFUBDLVUVQAKZZULJAY7BEHGGY6WO75`.
+- Read the uploaded PDF back from SharePoint and verified the issuer, invoice number, date, project, description, `$200.00` total, and draft status.
+- Sent Email Delivery request `IE-EMAIL-20260812-MATHEWS-936569-WES-REVIEW-001` to Email Monitor for OfficeAssist delivery to Wes only.
+- Email Monitor returned `sent_and_verified` at `2026-08-12T09:12:21Z`. OfficeAssist Sent Items verified the exact sender, recipient, empty CC/BCC, subject, and one non-inline PDF attachment of 3,671 transmitted bytes.
+- Sent message id: `AQMkADZkMGMwNDI3LWU5ZjctNDgzMC1iMjdkLTY0NmRiN2IwNmIyZgBGAAADKGOvWJYjX0aEKaRpd0MYQQcAVSXargQY20aF7RLCkro4ggAAAgEJAAAAVSXargQY20aF7RLCkro4ggACiSJqAQAAAA==`.
+- After both filing and delivery were verified, removed only the former Working Archive PDF to complete the move. Structured input and QA evidence remain archived; the PDF remains recoverable from SharePoint and OfficeAssist Sent Items.
+- No vendor contact, workbook entry, approval, payment, or paid-status action occurred.
+
+Outcome: `Done - filed in the Tensity property folder and sent once to Wes; awaiting review`.

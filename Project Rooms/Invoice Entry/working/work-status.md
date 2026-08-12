@@ -74,9 +74,19 @@ Classified working files:
 | 12 | NCAOC Remote Public Access invoice `41247668` | `$31.98`, dated 2026-08-02, due 2026-09-01; duplicate Outlook copies consolidated; one PDF filed to general-invoice `_Needs Review`; not approved, posted, or paid | Wes should classify it as a general BackOffice/legal-research expense or assign a named project and destination. Do not create another filing or entry, and do not pay or schedule payment. |
 | 13 | Sullivan Surveying invoice `2475`, 908 Pond St | Two duplicate Outlook copies consolidated; source PDF retained; printed total `$387.00`; first line is `$0.50` below its exact quantity-times-rate extension; not filed, posted, approved, or paid | Wes should decide whether a corrected invoice is required or the printed total remains the review amount, then choose an approved surveying/property-due-diligence worksheet or Review placement. |
 | 14 | American Express August 2026 statement notice, account ending `61000` | Duplicate notices consolidated; payment due 2026-09-04; no statement attachment, balance, minimum payment, transactions, fees, entity, or project detail | Wes must retrieve the statement through an authorized American Express session or supply the PDF, then route it through Doc Scan. Do not approve, schedule, or pay from the notice. |
-| 15 | Mathews Flooring LLC invoice `936569`, 4121 Tensity Dr | Wes-directed draft created from Maria Sarmiento's source image: dated 2026-08-07, house cleaning, `$200.00`; source and generated artifacts archived; not delivered, filed, posted, approved, or paid | Wes should review the generated draft. No vendor contact, delivery, filing, workbook entry, approval, payment, or paid-status action is authorized by the intake handoff. |
+| 15 | Mathews Flooring LLC invoice `936569`, 4121 Tensity Dr | `$200.00` house-cleaning draft filed in the authoritative Tensity `Owning/Invoices` folder and sent once to Wes from OfficeAssist; both actions verified; not posted, approved, or paid | Await Wes review. Do not contact the vendor, insert into a workbook, approve, pay, or create paid status without separate authority. |
 
 ## Verified Delivery Evidence
+
+### Mathews Flooring LLC Invoice 936569 Draft
+
+- Request: `IE-EMAIL-20260812-MATHEWS-936569-WES-REVIEW-001`
+- Sent and verified: `2026-08-12T09:12:21Z`
+- Message id ending: `ACiSJqAQAAAA==`
+- From OfficeAssist to Wes only; CC and BCC empty.
+- Subject: `DRAFT: Mathews Flooring LLC Invoice 936569 - 4121 Tensity Dr`
+- Verified attachment: `26-08-07 - Mathews Flooring LLC - Invoice 936569 - 4121 Tensity Dr.pdf`, non-inline `application/pdf`, 3,671 transmitted bytes.
+- Filed and read-back verified at `Property/24-HM - 4121 Tensity Dr/Owning/Invoices` before delivery completion. Draft only; not posted, approved, paid, or proof of payment.
 
 ### Josh Kennedy LLC July 16-31 Approved Revision
 
@@ -150,7 +160,7 @@ Classified working files:
 | Rushmore mortgage printed-statement mail notice | `Held - Statement Expected By Mail`; notice facts preserved; no duplicate found | Wait for the printed statement or a copy supplied by Wes, then route it through Doc Scan. Missing identifiers prevent account or property assignment. |
 | Sullivan Surveying invoice `2475`, 908 Pond St | `Needs Wes - Vendor Math And Worksheet Placement`; one retained PDF; duplicate transport consolidated | Decide whether Sullivan should correct the `$0.50` line-extension mismatch or the printed `$387.00` remains the review amount, and choose the approved destination in `Property/26_Project Management - 908 Pond St 3.xlsm`. |
 | American Express August 2026 statement, account ending `61000` | `Held - Statement Not Retrieved`; duplicate transport consolidated; due date preserved | Wes must retrieve the PDF through an authorized American Express session or supply it, then route the actual statement through Doc Scan. The notice is not the statement or payment authority. |
-| Mathews Flooring LLC invoice `936569`, 4121 Tensity Dr | `Draft Generated - Awaiting Wes Review`; `$200.00` house cleaning dated 2026-08-07 | Review the generated draft. Delivery, vendor verification, filing, workbook entry, approval, and payment remain unperformed and unauthorized by the current handoff. |
+| Mathews Flooring LLC invoice `936569`, 4121 Tensity Dr | `Draft Filed And Sent - Awaiting Wes Review`; `$200.00` house cleaning dated 2026-08-07 | Await Wes review. Property filing and delivery are complete and must not be repeated. Vendor verification, workbook entry, approval, payment, and paid status remain unperformed. |
 
 ## Record Reconciliation
 

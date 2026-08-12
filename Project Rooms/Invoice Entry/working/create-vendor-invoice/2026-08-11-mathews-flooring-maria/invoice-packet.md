@@ -2,7 +2,7 @@
 
 ## Status
 
-- State: `Draft Generated - Awaiting Wes Review`
+- State: `Draft Filed And Sent - Awaiting Wes Review`
 - Issuer: `Mathews Flooring LLC`
 - Source contact: `Maria G. Sarmiento`, `mgeraldine08@icloud.com`
 - Customer: `Buy Your Home`
@@ -11,8 +11,8 @@
 - Invoice number/source reference: `936569`
 - Description: `House cleaning`
 - Total: `$200.00`
-- Delivery, vendor contact, filing, workbook entry, approval, payment, and paid-status action: not performed
-- Review-ready PDF and generation evidence archived at `C:\Users\wesbr\Buy Your Home\Buy Your Home - Office Admin\Scanned Files\Invoice Entry Working Archive\Generated\2026-08-11-Mathews-Flooring-936569-Draft`; 3 files totaling 163,433 bytes.
+- Draft emailed to Wes and filed in the 4121 Tensity Dr property folder; vendor contact, workbook entry, approval, payment, and paid-status action: not performed
+- Structured generation input and visual-QA evidence remain archived at `C:\Users\wesbr\Buy Your Home\Buy Your Home - Office Admin\Scanned Files\Invoice Entry Working Archive\Generated\2026-08-11-Mathews-Flooring-936569-Draft`; 2 files totaling 160,186 bytes. The PDF was removed from this Working Archive after the property-folder copy and email delivery were verified.
 - Authoritative source image archived at `C:\Users\wesbr\Buy Your Home\Buy Your Home - Office Admin\Scanned Files\Invoice Entry Working Archive\Source Documents\2026-08-11 Mathews Flooring 936569\image\image0.jpeg`; 2,348,369 bytes; SHA-256 `6CF41EC84DF7F46F0C216C5A18CCC4070A9AD8BDA06C03C3A497B0D1C34A886D`.
 
 ## Authorization And Source
@@ -46,4 +46,21 @@ Wes's direct instruction is the authority for changing the invoice issuer to `Ma
 
 ## Next Permitted Action
 
-Wes may review the generated draft. No delivery, vendor verification, filing, workbook entry, approval, or payment action is authorized by the current handoff.
+Wes may review the filed draft. Vendor verification, workbook entry, approval, payment, and paid-status action remain unperformed.
+
+## Property Filing And Wes Delivery
+
+- Wes directly instructed Invoice Entry to send the invoice to him and move it to the property folder.
+- Property folder: `Property/24-HM - 4121 Tensity Dr/Owning/Invoices`
+- Filed filename: `26-08-07 - Mathews Flooring LLC - Invoice 936569 - 4121 Tensity Dr.pdf`
+- SharePoint item id: `01ZGFUBDLVUVQAKZZULJAY7BEHGGY6WO75`
+- Filed URL: `https://lifeisanadventure.sharepoint.com/sites/SellYourHome/Shared%20Documents/Property/24-HM%20-%204121%20Tensity%20Dr/Owning/Invoices/26-08-07%20-%20Mathews%20Flooring%20LLC%20-%20Invoice%20936569%20-%204121%20Tensity%20Dr.pdf`
+- SharePoint read-back verified the issuer, invoice number, date, project, description, `$200.00` total, and draft status.
+- Email request: `IE-EMAIL-20260812-MATHEWS-936569-WES-REVIEW-001`
+- Sent and verified: `2026-08-12T09:12:21Z`
+- From: `OfficeAssist@BuyYourHomeLLC.com`
+- To: `WesWill@BuyYourHomeLLC.com`; CC/BCC empty
+- Subject: `DRAFT: Mathews Flooring LLC Invoice 936569 - 4121 Tensity Dr`
+- Sent message id: `AQMkADZkMGMwNDI3LWU5ZjctNDgzMC1iMjdkLTY0NmRiN2IwNmIyZgBGAAADKGOvWJYjX0aEKaRpd0MYQQcAVSXargQY20aF7RLCkro4ggAAAgEJAAAAVSXargQY20aF7RLCkro4ggACiSJqAQAAAA==`
+- Sent Items verified one non-inline `application/pdf` attachment of 3,671 transmitted bytes.
+- Email Monitor moved Wes's received copy from `Inbox/Jean Wright` to `Inbox/Jean Wright/Drafts for Review` under its Organize rules.
