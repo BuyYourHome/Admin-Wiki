@@ -33,6 +33,8 @@ Use `C:\Codex\Wiki Files\Project Rooms\Marketplace\Estate Sale Mode.md` when Wes
 - Prepare separate posts for searchable higher-value items and logical bundles for related low-value items or sets. Do not rely on one listing containing all unrelated items.
 - Publication requires separate authorization for the applicable sale or posting session.
 - After publication, Marketplace may answer whether an item is still available only from the current item record, answer supported factual questions, and share the showing dates and windows Wes supplied.
+- When a sale record includes a future address-release period, applicable buyer replies must use the approved wording about when the exact address will be provided. Do not disclose it early or infer a clock time from a phrase such as `Friday evening`.
+- Once the recorded release period begins, provide the exact address only in relevant private buyer conversations under the sale-specific authority; never add it to a public listing or Git record. Address release does not authorize a hold, priority, appointment, phone-number disclosure, access instruction, payment arrangement, or sale commitment.
 - Marketplace may ask which approved window works for the buyer, but may not invent availability or promise an appointment outside it.
 - Do not reduce or signal flexibility below the listed price before the recorded price-protection date. On or after that date, ask Wes or follow a separately recorded reduction schedule; do not reduce automatically.
 - Do not accept an offer, reserve or hold an item, accept payment or a deposit, mark an item sold, disclose an exact address or private phone number, arrange delivery or shipping, or make another commitment without the required specific authority.

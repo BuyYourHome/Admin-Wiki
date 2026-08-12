@@ -74,6 +74,14 @@ Marketplace may not:
 - arrange delivery, shipping, pickup, or another commitment outside the approved showing instructions; or
 - claim an item is available, working, complete, authentic, safe, or defect-free when the record does not support that statement.
 
+## Delayed Address Release
+
+- When Wes records a future address-release period for a sale, applicable buyer replies before that period must tell the buyer when the exact address will be provided.
+- Use the approved sale-specific wording and do not disclose the exact address before the recorded release period.
+- Do not infer a clock time from a phrase such as `Friday evening`. If a timed action requires an exact hour, ask Wes.
+- Once the recorded release period begins, the exact address may be provided only in relevant private buyer conversations under the sale-specific authority. Do not add it to a public listing or announcement.
+- Address release does not authorize a hold, priority, private appointment, phone-number disclosure, access instruction, payment arrangement, or sale commitment.
+
 ## Showing Window And Individual Follow-Up
 
 - Record a defined public showing window for each sale when Wes supplies one.
@@ -129,6 +137,7 @@ Maintain one item record per listing or bundle with:
 - availability status;
 - public asking price and protected-through date;
 - approved showing window and general area;
+- approved address-release wording and release period, when applicable;
 - current phase: public showing window or individual follow-up;
 - factual condition, testing, measurements, included parts, and defects;
 - buyer-question status and last supported reply;

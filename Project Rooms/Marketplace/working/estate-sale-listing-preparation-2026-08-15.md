@@ -8,6 +8,9 @@
 - Dispatch id: `email-monitor-marketplace-estate-sale-20260808-001`.
 - Price-protection date: 2026-08-15. Do not reduce or signal flexibility below the listed price until after this date.
 - Approved public showing window: Saturday, 2026-08-15, 9:00 AM through 12:00 PM Eastern.
+- Buyer address-release wording: before the release period, tell each relevant buyer, `The exact address will be provided Friday evening.`
+- Address-release period: Friday evening, 2026-08-14. Do not infer a specific clock time or disclose the exact address before then.
+- Once Friday evening begins, the exact address may be provided privately in relevant buyer conversations. Do not add it to a public listing or announcement, and do not treat address release as authority for a hold, priority, appointment, phone-number disclosure, access instruction, payment arrangement, or sale commitment.
 - After 12:00 PM on 2026-08-15, switch remaining buyer conversations to individual follow-up. Continue answering supported availability and item questions, but do not invent or confirm a later showing time without Wes's approval.
 - The broader Marketplace pause and the paused seller-response heartbeat remain in force.
 - Authorized now: receive photo references, inventory items, identify likely products, research supported prices, choose separate listings versus bundles, draft accurate descriptions, order photos, and prepare unpublished listing-content packets.
@@ -163,7 +166,8 @@ Description rules:
 
 - All 41 proposed listings have best-estimate identities, preliminary asking prices and public-copy drafts. The former unidentified frame is treated as a folding rollaway bed with mattress based on the visible tubular frame and folded mattress.
 - Testing status, model labels, measurements and complete defect views remain missing for several appliances, electronics, furniture and collectibles. Use the per-item inventory checklist rather than guessing.
-- General public pickup area is Cary, NC. Wes supplied the exact street address privately; keep it out of Git and add it only during the authorized posting session.
+- General public pickup area is Cary, NC. Wes supplied the exact street address privately; keep it out of Git and public listing content, and release it only in relevant private buyer conversations during the recorded Friday-evening release period.
+- Relevant buyer replies before Friday evening, 2026-08-14, must say that the exact address will be provided Friday evening. The street address itself remains excluded from Git and public listing content.
 - Post-noon individual appointment times are not preapproved. Coordinate them with Wes instead of inventing availability.
 - Private price floors or must-sell priorities are unknown.
 - Safe Facebook unpublished-draft behavior has not been verified; no browser action is authorized or needed at this preparation stage.
