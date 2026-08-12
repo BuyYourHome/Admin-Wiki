@@ -51,3 +51,31 @@ Vintage gold-tone flatware set with an ornate rose and floral handle pattern, st
 - Preserved source captures: `outputs\estate-sale-2026-08-15-manual-upload-2026-08-12\source-captures`
 - New prepared images: `outputs\estate-sale-2026-08-15-manual-upload-2026-08-12\prepared`
 - Additional unpublished Facebook drafts: `1762652778095577`, `1943536789645156`, `1983848178967283`, `1060253656701899`.
+
+## Late grouped intake - 2026-08-12
+
+- Thirteen additional actual-item photos were copied from Google Photos and preserved under `outputs\estate-sale-2026-08-15-manual-upload-2026-08-12\prepared\grouped-new-items`.
+- They were organized into two logical unpublished Facebook Marketplace drafts rather than one unrelated catch-all listing.
+- The exact sale address is present in the private Facebook draft descriptions under Wes's direct instruction and is intentionally omitted from Git.
+
+| ID | Proposed title | Ask | Expected sale | Quick-sale price after August 15 | Photos | Identification and condition notes | Confidence | Open verification |
+| --- | --- | ---: | ---: | ---: | ---: | --- | --- | --- |
+| ES-20260815-047 | Ceramic Vanity/Decor Lot | $15 | $10 | $5 | 1 | Two white-and-pink ceramic decorative pieces sold together as pictured. Maker, age, dimensions and intended use are unverified. | Medium-low | Check for chips, cracks, repairs and maker marks. |
+| ES-20260815-048 | Kidde Fire-Extinguisher Advertising Sign | $20 | $12-$15 | $10 | 1 | Kidde-branded fire-extinguisher advertising/display sign. Age and exact material are unverified. | Medium-low | Inspect edges, mounting points, fading and surface wear; confirm dimensions. |
+| ES-20260815-049 | Mixed Hand-Tool Lot | $45 | $30-$35 | $25 | 1 | Mixed lot with visible hammers, pliers, cutters, wrench, screwdrivers, scissors and miscellaneous hand tools. Sold together as pictured. | Medium | Count tools and check for rust, damage and missing handles. |
+| ES-20260815-050 | Blue Adjustable Desk Lamp | $15 | $10-$12 | $8 | 1 | Small blue adjustable task lamp with metal-tone base. Power and bulb operation are unverified. | Medium | Test the lamp; inspect cord, switch, shade and base stability. |
+| ES-20260815-051 | Chrome-Tone Barware/Mixing Lot | $25 | $15-$20 | $12 | 1 | Mixed barware/mixing pieces including visible chrome-tone and glass accessories. Maker and completeness are unverified. | Medium-low | Inventory pieces and check for chips, corrosion, dents and markings. |
+| ES-20260815-052 | First Alert Lockbox/Cash Box | $25 | $15-$20 | $12 | 1 | Black First Alert box shown open. Lock operation, key inclusion and exact model are unverified. | Medium | Confirm keys, latch/lock operation, dimensions and interior condition. |
+| ES-20260815-053 | Microwave Steamer Set | $10 | $5-$8 | $5 | 1 | Teal-and-purple lidded microwave steamer/colander set. Maker and microwave specifications are unverified. | Medium | Check for cracks, staining, warping and complete lid fit. |
+| ES-20260815-054 | Oval Ceramic Baking/Serving Dish | $10 | $5-$8 | $5 | 1 | Oval ceramic dish with white interior, green rim and red plaid exterior. Oven/microwave suitability is unverified. | Medium | Check underside markings, chips, cracks and glaze wear. |
+| ES-20260815-055 | Decorative Metal Basket Lot | $25 | $15-$20 | $10 | 3 | Silver-tone and gold-tone decorative wire baskets grouped as one lot. Three actual-item views are included. | Medium | Confirm basket count, dimensions, finish wear and bent wires. |
+| ES-20260815-056 | Pair of Black Candle Lanterns | $20 | $12-$15 | $10 | 1 | Pair of black metal lanterns with white pillar candles as pictured. Candle use and lantern dimensions are unverified. | Medium | Check doors, glass/panels, latches, rust and candle condition. |
+| ES-20260815-057 | Painted Floral Serving Tray | $20 | $12-$15 | $10 | 1 | Dark green painted tray with floral decoration and cutout handles. Maker, age and food-contact suitability are unverified. | Medium | Check finish wear, warping, cracks and underside markings. |
+
+### Late-intake draft placement
+
+- `Estate Sale Tools & Useful Household Items` - Facebook draft `1072148935367200`; items ES-20260815-048 through ES-20260815-053; combined ask **$140**.
+- `Estate Sale Decor & Kitchen Pieces` - Facebook draft `1517965490079912`; items ES-20260815-047 and ES-20260815-054 through ES-20260815-057; combined ask **$90**.
+- Combined asking value: **$230**.
+- Expected combined sale range: **$141-$178**.
+- Combined quick-sale target after August 15: **$117**.
