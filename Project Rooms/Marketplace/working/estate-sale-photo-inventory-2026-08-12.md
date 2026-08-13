@@ -79,3 +79,40 @@ Vintage gold-tone flatware set with an ornate rose and floral handle pattern, st
 - Combined asking value: **$230**.
 - Expected combined sale range: **$141-$178**.
 - Combined quick-sale target after August 15: **$117**.
+
+## Earlier-photo recheck - 2026-08-12
+
+- A complete date search found 67 August 12 photos rather than only the newest 14-photo block.
+- Forty-nine earlier photos from 2:01-2:30 PM were preserved and prepared as 19 logical item groups.
+- The four morning photos and the 14 newest photos were already handled separately; they are not duplicated in this intake.
+
+| ID | Item group | Ask | Expected sale | Quick-sale price after August 15 | Photos | Identification and condition notes | Confidence |
+| --- | --- | ---: | ---: | ---: | ---: | --- | --- |
+| ES-20260815-058 | Ceramic Serving and Decor Pieces | $35 | $20-$25 | $15 | 3 | White ceramic serving piece, watermelon-themed pieces and angel-themed decor grouped together. Makers, dimensions and food-use suitability unverified. | Medium-low |
+| ES-20260815-059 | Bella Ceramics Fruit Dinnerware | $35 | $20-$30 | $15 | 2 | Fruit-themed ceramic dinnerware with visible Bella Ceramics mark. Exact piece count and pattern unverified. | Medium |
+| ES-20260815-060 | Blue-and-White Ceramic Set | $35 | $20-$25 | $15 | 4 | Coordinating blue-and-white floral ceramic pieces sold together as pictured. Maker and completeness unverified. | Medium |
+| ES-20260815-061 | Three-Mug Set | $15 | $8-$10 | $5 | 1 | Two black mugs and one blue-check mug with matching spoon rest/accessory as pictured. | Medium |
+| ES-20260815-062 | Crystal and Glassware Collection | $60 | $35-$45 | $25 | 10 | Assorted clear glass and crystal-look serving and drinking pieces. Maker, crystal composition and completeness unverified. | Medium-low |
+| ES-20260815-063 | Stainless Cookware Set | $45 | $25-$35 | $20 | 1 | Stainless-tone pots and pans with lids sold as pictured. Brand, exact count and cooking-surface condition unverified. | Medium |
+| ES-20260815-064 | Purple Enamel Cookware Set | $30 | $18-$22 | $15 | 1 | Purple cookware group with white lids/interiors sold as pictured. Brand and exact condition unverified. | Medium |
+| ES-20260815-065 | FineLife Compact Food Chopper | $20 | $10-$15 | $8 | 1 | Boxed FineLife compact food chopper. Contents, completeness and operation unverified. | Medium |
+| ES-20260815-066 | Hamilton Beach 51101B Single-Serve Blender | $20 | $10-$15 | $8 | 1 | Boxed Hamilton Beach single-serve blender with travel lid. Contents and operation unverified. | Medium-high |
+| ES-20260815-067 | Bushnell PowerView 12x50 Binoculars | $40 | $25-$30 | $20 | 1 | Boxed Bushnell PowerView 12x50 wide-angle binoculars. Optical condition and accessories unverified. | Medium-high |
+| ES-20260815-068 | Poppytrail by Metlox Yellow Floral Dinnerware | $75 | $45-$60 | $35 | 3 | Yellow floral dinnerware with visible Poppytrail by Metlox California mark. Piece count, pattern and glaze condition unverified. | Medium-high |
+| ES-20260815-069 | Orioles Decorative Baseball | $15 | $8-$10 | $5 | 1 | Orioles-logo decorative baseball. No player signature or authentication claim. | Medium |
+| ES-20260815-070 | Small Framed Print Lot | $20 | $10-$15 | $8 | 1 | Three small framed prints sold together as pictured. Artist, age and dimensions unverified. | Medium-low |
+| ES-20260815-071 | Large Rustic Wood-Framed Wall Mirror | $45 | $30-$35 | $20 | 1 | Large rectangular mirror with substantial rustic wood frame and decorative top edge. Dimensions and mounting method unverified. | Medium |
+| ES-20260815-072 | Tony Little Gazelle Edge Exercise Glider | $50 | $30-$40 | $25 | 1 | Gazelle Edge folding exercise glider. Motion, cables, display and safe working condition unverified. | Medium-high |
+| ES-20260815-073 | Western Figurine Pair | $25 | $15-$20 | $10 | 2 | Two western-themed decorative figurines sold together. Makers and materials unverified. | Medium |
+| ES-20260815-074 | Decorative Oil Lamp Pair | $40 | $25-$30 | $18 | 2 | Two decorative oil lamps with glass chimneys. Burners, fuel compatibility and operation unverified. | Medium |
+| ES-20260815-075 | Nurse and Medical-Themed Collectible Lot | $45 | $25-$35 | $20 | 5 | Mixed nurse/medical-themed figures and display pieces sold together. Makers and operation unverified. | Medium |
+| ES-20260815-076 | Decorative Figurine and Music Box Collection | $60 | $35-$45 | $25 | 8 | Mixed decorative figurines and music-box-style pieces; includes a visibly marked 2003 DEMDACO `Mama Says` sisters sculpture. Operation and other makers unverified. | Medium |
+
+### Earlier-photo value summary
+
+- Combined asking value: **$710**.
+- Expected combined sale range: **$414-$542**.
+- Combined quick-sale target after August 15: **$312**.
+- Facebook progress: all 11 unpublished drafts were saved and verified. Draft IDs are recorded in `outputs\estate-sale-earlier-photo-drafts-2026-08-12.md`.
+- Crop correction: 49 Facebook-safe 1600-by-1600 revisions were prepared from the preserved source captures with the complete source image contained inside a neutral canvas and a protected outer margin. SharePoint verification on 2026-08-13 confirmed [49 full-frame revisions totaling 9,058,382 bytes](https://lifeisanadventure.sharepoint.com/sites/SellYourHome/Shared%20Documents/Office%20Admin/Marketplace/Estate%20Sale%20-%202026-08-15/Prepared%20Photos%20-%202026-08-12%20-%20Full%20Frame), [49 prepared images totaling 8,628,517 bytes](https://lifeisanadventure.sharepoint.com/sites/SellYourHome/Shared%20Documents/Office%20Admin/Marketplace/Estate%20Sale%20-%202026-08-15/Prepared%20Photos%20-%202026-08-12), and [51 source captures totaling 7,694,783 bytes](https://lifeisanadventure.sharepoint.com/sites/SellYourHome/Shared%20Documents/Office%20Admin/Marketplace/Estate%20Sale%20-%202026-08-15/Source%20Captures%20-%202026-08-12), including both original flatware PNGs. Image binaries are maintained in Teams/SharePoint rather than Git.
+- Replacement status: 48 of the 49 full-frame revisions were uploaded and verified on Facebook across ten listings on 2026-08-13. Titles, prices, descriptions, photo counts and existing draft/active status were preserved. ES-20260815-071 remains unresolved because recorded draft `1371761544393730` no longer opens and the rustic-mirror listing was not found under its recorded title; the separate ES-20260815-044 dresser-mirror draft must not be used as a substitute.
