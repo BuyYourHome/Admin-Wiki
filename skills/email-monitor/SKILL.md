@@ -350,6 +350,7 @@ Activation:
 
 Folder set:
 
+- `Brynda Law Suit`
 - `Daily Summaries`
 - `Invoice Entry`
 - `Manager Tasks`
@@ -365,14 +366,15 @@ Create any missing folder beneath `Inbox/Jean Wright`. Leave existing folders, i
 Classification precedence:
 
 1. `Health and Failures`: failures, failed checks, health alerts, fraud alerts, or rollback instructions.
-2. `Drafts for Review`: subjects identifying a draft, revised draft, or draft attachment.
-3. `Approvals Needed`: subjects requesting approval, asking Wes to approve, or stating that Wes approval is needed.
-4. `Daily Summaries`: Wes, Boss, Morning, OfficeAssist, Jenny, or Josh email/mailbox summaries.
-5. `Manager Tasks`: subjects containing `Manager Task`, matched case-insensitively.
-6. `Sent Confirmations`: approved-status notices, sent-and-verified notices, delivery verification, completed/run-complete notices, sender tests, or display-name verification.
-7. `Invoice Entry`: invoices, Time Cards, cost-allocation reports, hours or vendor verification, and related payment-report messages not already classified as approval or confirmation.
-8. `Project Rooms`: Gracious Millionaire, GM Site, Brynda Suit, mediation, manuscript, Codex/dispatcher/computer setup, document-scan, closing-document, MOU, insurance-report, or other identifiable Project Room work.
-9. `Other`: anything that does not match a class above.
+2. `Brynda Law Suit`: subjects identifying Brynda Suit or the associated mediation, possession, counterclaim, witness, settlement-position, or settlement-proposal work.
+3. `Drafts for Review`: subjects identifying a draft, revised draft, or draft attachment.
+4. `Approvals Needed`: subjects requesting approval, asking Wes to approve, or stating that Wes approval is needed.
+5. `Daily Summaries`: Wes, Boss, Morning, OfficeAssist, Jenny, or Josh email/mailbox summaries.
+6. `Manager Tasks`: subjects containing `Manager Task`, matched case-insensitively.
+7. `Sent Confirmations`: approved-status notices, sent-and-verified notices, delivery verification, completed/run-complete notices, sender tests, or display-name verification.
+8. `Invoice Entry`: invoices, Time Cards, cost-allocation reports, hours or vendor verification, and related payment-report messages not already classified as approval or confirmation.
+9. `Project Rooms`: Gracious Millionaire, GM Site, manuscript, Codex/dispatcher/computer setup, document-scan, closing-document, MOU, insurance-report, or other identifiable Project Room work.
+10. `Other`: anything that does not match a class above.
 
 Execution rules:
 
