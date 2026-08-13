@@ -124,7 +124,7 @@
 
 - Source captures: [Source Captures - 2026-08-12](https://lifeisanadventure.sharepoint.com/sites/SellYourHome/Shared%20Documents/Office%20Admin/Marketplace/Estate%20Sale%20-%202026-08-15/Source%20Captures%20-%202026-08-12) — 51 unique files (49 JPEGs and two original flatware PNGs), 7,694,783 bytes, verified 2026-08-13.
 - Prepared images: [Prepared Photos - 2026-08-12](https://lifeisanadventure.sharepoint.com/sites/SellYourHome/Shared%20Documents/Office%20Admin/Marketplace/Estate%20Sale%20-%202026-08-15/Prepared%20Photos%20-%202026-08-12) — 49 unique JPEGs, 8,628,517 bytes, verified 2026-08-13.
-- Full-frame Facebook-safe revisions: [Prepared Photos - 2026-08-12 - Full Frame](https://lifeisanadventure.sharepoint.com/sites/SellYourHome/Shared%20Documents/Office%20Admin/Marketplace/Estate%20Sale%20-%202026-08-15/Prepared%20Photos%20-%202026-08-12%20-%20Full%20Frame) — 49 unique JPEGs, 9,058,382 bytes, verified 2026-08-13.
+- Full-frame Facebook-safe revisions: [Prepared Photos - 2026-08-12 - Full Frame](https://lifeisanadventure.sharepoint.com/sites/SellYourHome/Shared%20Documents/Office%20Admin/Marketplace/Estate%20Sale%20-%202026-08-15/Prepared%20Photos%20-%202026-08-12%20-%20Full%20Frame) — 50 unique JPEGs, 9,147,749 bytes, including the orientation-only upright Metlox maker-mark revision, verified 2026-08-13.
 - Teams/SharePoint is the durable repository for these image binaries. Git retains only the inventory, filenames, links and workflow status.
 - Preparation was limited to orientation handling, modest lighting correction and sharpening. No damage, quantity, label, color or accessory was concealed or invented.
 - The 49 full-frame revisions preserve the complete captured source inside a 1600-by-1600 neutral canvas with a 10% protected margin. No generative expansion or object replacement was used.
@@ -135,6 +135,7 @@
 - Facebook replacement is complete and verified for 48 of the 49 revisions across ten listings. Eight listings remain saved as drafts; the nurse/medical collectible and decorative figurine/music-box listings were already active and were updated without changing their publication status.
 - The ceramic, crystal, cookware, binoculars, Metlox dinnerware, Orioles/prints, Gazelle, western/oil-lamp, nurse/medical and decorative-figurine listings retain their recorded titles, prices and descriptions with the corrected full-frame photo counts.
 - The single unresolved image is ES-20260815-071, `Estate Sale Large Rustic Wood-Framed Wall Mirror`. Its recorded draft ID `1371761544393730` now opens the Marketplace create-listing page, and the listing was not found under its recorded title in the current selling list. Do not substitute or edit the separate `Large Wood-Framed Dresser Mirror with Side Shelves` draft.
+- The ES-20260815-068 Metlox maker-mark image was rotated exactly 90 degrees counterclockwise from the actual full-frame photograph and replaced as photo 2 of 2 on listing `978683671911638`. The stamp is upright and visually verified; Facebook accepted the update for standard review.
 
 ## Review gate
 
