@@ -40,3 +40,25 @@ Current outcome: `Blocked - Authoritative Tensity workbook locked`. After the lo
 - `Electrical Fixtures!M12` and `Gnatt Chart!G15` both read `$195.388775`; `invoiceEntryReviewRequest` remains `FALSE`; Automatic calculation and iteration remain enabled.
 
 Current outcome: `Complete - authoritative workbook uploaded and verified; eight Lowe's rows pending final Vendor Tab review`.
+
+## 2026-08-13 - Corrected all-project packet continuation
+
+- Wes corrected the requested year to 2025 and instructed Invoice Entry to process both BYH and SYH Lowe's statements into supported projects.
+- Doc Scan returned corrected packet metadata totaling 94 OCR-derived rows. Source-supported visible PO groups now include 8 rows for PO `4121`, 3 for PO `6316`, 9 for PO `1343`, 1 for PO `612`, and 5 for PO `908`.
+- The original 18 SharePoint statement PDFs were preserved. Coverage remains BYH May-December with January-April missing and SYH March-December with January-February missing. No duplicate statement periods were found.
+- Project resolution from authoritative project/workbook names:
+  - PO `4121` -> `24-HM - 4121 Tensity Dr`.
+  - PO `6316` -> `23-SYH - 6316 Willowdell Dr`.
+  - PO `1343` -> `21-SYH - 1343 Old Buckhorn Rd`.
+  - PO `612` -> `25-401K - 612 Britton Ct`.
+  - PO `908` -> `26-BYH - 908 Pond St`.
+- Fresh workbook duplicate checks found no prior invoice/row/SKU-description match for the new PO `612` and PO `908` rows.
+- `Property/25_Project Management - 612 Britton Ct.xlsm` received one source-verified Review row for invoice `95791`, `$122.55`, status `Needs Review`, blank destination.
+- `Property/26_Project Management - 908 Pond St 3.xlsm` received five source-verified Review rows for invoices `87130` and `71820`, totaling `$118.24`, each status `Needs Review`, blank destination.
+- Both workbooks reopened cleanly with zero external links. Artifact-tool table inspection and visual rendering passed. Freshness gates passed immediately before upload. Exact SharePoint replacement succeeded and post-upload downloads were byte-identical to the validated files:
+  - Britton SHA-256 `DF0D5FB4CB8CF1C6E1ED76AF08CC0858BBC3C98C39CF4E005C4FFD2ADF70144C`.
+  - Pond SHA-256 `2DFF8C6C592EA9B836E38520DD6863ABB9B7C3B3ADE4FAEE8BC2622865E83D29`.
+- Willowdell and Old Buckhorn do not contain `Review!tblInvoiceReview`. Their 12 source-verified rows totaling `$988.99` were retained in `lowes-statement-held-detail-register.md`; no direct Vendor Tab insertion was made.
+- All other packet rows remain unrouted because they lack source-supported project allocation or require further source review. Tax-only amounts were excluded from item rows.
+
+Current outcome: `Partially complete - 14 source-supported rows across Tensity, Britton, and Pond are in authoritative Review tables; 12 source-supported Willowdell/Old Buckhorn rows are held until those workbooks are Review-ready; remaining rows have no supported project route`.
