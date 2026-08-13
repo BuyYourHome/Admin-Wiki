@@ -137,3 +137,19 @@ Outcome: `Done - August 11 recorded once under the received-date rule; updated d
 - The period remains open. No filing, workbook posting, approval, payment, or paid-status action occurred.
 
 Outcome: `Done - corrected final-style presentation draft sent once to Wes and verified; period remains open`.
+
+## 2026-08-13 - August 12 Reconciled Retry Intake
+
+- Returned `accepted` for dispatch `email-monitor-route-vendor-invoice-20260813-josh-time-card-001` before durable processing.
+- Preserved Outlook message ending `ACifK_bAAAAA==`, sender, received timestamp, subject, and no-attachment status.
+- Duplicate checking found no matching dispatch, message, or August 12 Josh line.
+- Added August 12 once: cleaning at 115 Rosebrooks Dr, `7:30 AM` to `4:00 PM`, with source-supported elapsed time of `8 hours 30 minutes`. No undocumented break was deducted.
+- Updated accepted time is `86 hours 25 minutes`: Tensity `70 hours 25 minutes`; BackOffice `4 hours`; Rosebrooks `12 hours`.
+- Retained the fixed semimonthly invoice amount of `$2,708.33` and recalculated the current proportional allocation to `$2,206.89` Tensity, `$125.36` BackOffice, and `$376.08` Rosebrooks.
+- The period remains open. No approval, payment, paid status, filing, or workbook entry occurred.
+- Generated and visually verified the updated one-page draft with `86 hours 25 minutes` and allocations totaling `$2,708.33`.
+- Email Delivery request `IE-EMAIL-20260813-JOSH-SEMIMONTHLY-DAILY-DRAFT-003` was sent exactly once and verified in OfficeAssist Sent Items at `2026-08-13T13:12:46Z`.
+- Sent message id ends `ACifLSAQAAAA==`; the non-inline PDF attachment transmitted at 4,023 bytes.
+- Archived the PDF, structured input, and one-page QA render at `Generated\2026-08-13-Josh-Semimonthly-Daily-Draft-Through-Aug12`; verified 3 files totaling 205,150 bytes.
+
+Outcome: `Done - August 12 recorded once and updated open-period draft sent and verified`.

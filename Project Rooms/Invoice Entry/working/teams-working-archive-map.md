@@ -173,3 +173,11 @@ The final PDF itself remains authoritative in the Tensity property `Owning/Invoi
 | Corrected August 1-15 Josh Kennedy LLC final-style presentation PDF through August 11, structured input, and one-page visual-QA render | `Generated\2026-08-12-Josh-Semimonthly-Final-Style-Draft` | 3 | 191,160 | open-period final-style Time Card presentation and QA evidence |
 
 The archive destination was verified by file count and byte total before removal of the generated local copies. The OfficeAssist Sent Items attachment is the authoritative delivered copy. The PDF intentionally omits approval and draft wording for appearance review, but the email identifies it as a presentation draft; the period remains open and no finalization, filing, posting, approval, payment, or paid status occurred.
+
+## Josh August 1-15 Updated Daily Draft Through August 12 Recorded 2026-08-13
+
+| Local working files | Teams destination under `Invoice Entry Working Archive` | Files | Bytes | Category |
+| --- | --- | ---: | ---: | --- |
+| Josh Kennedy LLC open-period draft PDF through August 12, structured input, and one-page visual-QA render | `Generated\2026-08-13-Josh-Semimonthly-Daily-Draft-Through-Aug12` | 3 | 205,150 | open-period semimonthly Time Card draft and QA evidence |
+
+The archive destination was verified by file count and byte total before the generated local copies were removed. The OfficeAssist Sent Items attachment is the authoritative delivered copy. The period remains open; no finalization, filing, posting, approval, payment, or paid status occurred.

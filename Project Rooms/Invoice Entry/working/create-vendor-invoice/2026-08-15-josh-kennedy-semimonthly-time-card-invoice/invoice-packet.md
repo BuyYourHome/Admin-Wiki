@@ -98,6 +98,28 @@ August 11 dispatch: `email-monitor-route-vendor-invoice-20260811-josh-timecard-a
 
 Accumulated accepted time through August 11: `77 hours 55 minutes` (`70 hours 25 minutes` Tensity; `4 hours 0 minutes` BackOffice; `3 hours 30 minutes` Rosebrooks).
 
+August 12 dispatch: `email-monitor-route-vendor-invoice-20260813-josh-time-card-001`
+
+- Outlook message id: `AQMkADZkMGMwNDI3LWU5ZjctNDgzMC1iMjdkLTY0NmRiN2IwNmIyZgBGAAADKGOvWJYjX0aEKaRpd0MYQQcAVSXargQY20aF7RLCkro4ggAAAgEMAAAAVSXargQY20aF7RLCkro4ggACifK_bAAAAA==`.
+- Sender: `IRAManager@SellYourHomeRaleigh.com`; received `2026-08-13T12:10:26Z`; subject `Time card`; attachments: none.
+- Source fact: Wednesday, August 12, 2026, cleaning at `115 Rosebrooks Dr` from `7:30 AM` to `4:00 PM`.
+- No break was stated, so no break was deducted. The source-supported elapsed interval is `8 hours 30 minutes`.
+
+| 2026-08-12 | 115 Rosebrooks Dr | 7:30 AM | 4:00 PM | 8 hours 30 minutes | New accepted line from reconciled retry dispatch `email-monitor-route-vendor-invoice-20260813-josh-time-card-001`; no matching dispatch, Outlook source, or August 12 line was found. |
+
+Updated accumulated accepted time through August 12: `86 hours 25 minutes` (`70 hours 25 minutes` Tensity; `4 hours 0 minutes` BackOffice; `12 hours 0 minutes` Rosebrooks).
+
+Updated through-August-12 delivery:
+
+- Request id: `IE-EMAIL-20260813-JOSH-SEMIMONTHLY-DAILY-DRAFT-003`.
+- Sent exactly once from OfficeAssist to Josh; Wes and Jenny copied; BCC empty.
+- Subject: `UPDATED DRAFT: Josh Kennedy LLC Time Card Invoice - August 1-15, 2026 (Through August 12)`.
+- Sent and verified: `2026-08-13T13:12:46Z`.
+- Sent message id ending: `ACifLSAQAAAA==`.
+- Verified attachment: stable invoice filename; non-inline `application/pdf`; 4,023 transmitted bytes.
+- Generated PDF, structured input, and one-page QA render were archived at `Generated\2026-08-13-Josh-Semimonthly-Daily-Draft-Through-Aug12`; 3 files totaling 205,150 bytes verified.
+- This delivery is correction-by-exception review only. The period remains open and no finalization, approval, filing, posting, payment, or paid status occurred.
+
 ## Duplicate And Period Control
 
 - The August 3 clarification amended the existing line from dispatch `email-monitor-route-vendor-invoice-20260804-josh-timecard-001`; it did not add another worker/date/project line.
@@ -109,6 +131,7 @@ Accumulated accepted time through August 11: `77 hours 55 minutes` (`70 hours 25
 - The August 7 reconciled retry found no prior durable line or matching source identity. The same dispatch id and Outlook message now reconcile to one accepted 10-hour-15-minute line and must not be added again.
 - The August 10 message id, dispatch id, work date, project, and time range did not match any prior packet line. It was added once and must reconcile to this line if routed again.
 - The August 11 message and dispatch identities did not match prior source evidence. Its two non-overlapping intervals were added once. The work date is a documented received-date assumption, not an independently stated source fact.
+- The August 12 retry message and dispatch identities did not match prior source evidence. Its 7:30 AM-4:00 PM Rosebrooks cleaning interval was added once without an undocumented break deduction and must not be added again if rerouted.
 - This belongs to the August 1-15 semimonthly period and must not alter the approved July 16-31 invoice.
 - Do not finalize, file, post, approve, or treat invoice `INV-JKLLC-20260815-001` as payable before the period closes on August 15 and Wes approves it.
 
