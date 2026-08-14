@@ -199,7 +199,7 @@ Purpose:
 - Route Brynda Suit email to the Brynda Suit project room by Outlook reference, Teams source path when materialized, summary, and direct handoff. Do not process the Brynda Suit response from the OfficeAssist monitor thread.
 - Route `GM Site` / REI BlackBook website instruction emails to the REI BlackBook project room by Outlook reference, Teams source path when materialized, summary, and direct handoff. Do not process the website request from the OfficeAssist monitor thread.
 - Route Lowe's product and cart requests to the existing Lowes Order task by Outlook reference and extracted order details. Lowes Order owns browser/cart work, sender confirmation, Wes cart-approval notification, and uncertainty-question emails.
-- Use `Route Vendor Invoice` mode to route contractor/vendor invoice emails to the Invoice Entry project room by Outlook reference, external Teams attachment/source paths when materialized, vendor/project summary, and direct handoff. Do not approve, pay, contact vendors, make live spreadsheet entries, or move files into Teams from the OfficeAssist monitor thread.
+- Use the formal `Route Vendor Invoice` mode to route contractor/vendor invoice emails to Invoice Entry through the durable dispatch queue before task notification. Require the same dispatch ID in the durable accepted receipt, bounded same-ID retries after reconciliation, and one verified OfficeAssist email to Wes when acknowledgment is missing. Do not approve, pay, contact vendors, make live spreadsheet entries, or move files into Teams from the OfficeAssist monitor thread.
 - Report blockers, ambiguous authority, mailbox failures, or decisions needed in the attached status thread.
 - Avoid repeated processing by tracking handled message ids in local monitor memory.
 - Keep routine no-new-instruction checks quiet with `DONT_NOTIFY`.
@@ -236,6 +236,8 @@ Special routing:
 - Update `Project Rooms\Invoice Entry\working\source-inventory.md` or the current Invoice Entry intake ledger with references and external paths when the routed source becomes part of the durable source set.
 - Send a direct follow-up message to the existing Invoice Entry task with the Outlook reference, external attachment paths or blocker, a short vendor/project summary, and the instruction to process the invoice under Invoice Entry rules.
 - Current Invoice Entry task id: `019fbf4f-c629-7dd1-a3f6-0de33de0ed8f`.
+- Durable dispatch queue: `C:\Users\wesbr\.codex\automations\officeassist-morning-email-summary-and-instruction-monitor\dispatch-queue\records`; canonical tool: `Project Rooms\Email Monitor\tools\Manage-EmailMonitorDispatch.ps1`. The queue record is authoritative and the task message is a wake-up signal.
+- Before each notification attempt, establish that Invoice Entry is idle. Require Invoice Entry to write `accepted` with the exact dispatch ID before substantive work. Reconcile ambiguous calls before a maximum of three same-ID attempts and email Wes once through verified OfficeAssist delivery when acceptance is missing.
 - Do not create a new Invoice Entry task for routing unless Wes explicitly asks for one.
 - Do not approve invoices, pay invoices, contact vendors, make live project-spreadsheet entries, or move invoice files into Teams from the OfficeAssist monitor thread unless Wes explicitly asks for processing there and the Invoice Entry rules allow it; the default action is source routing plus direct handoff only.
 
@@ -1186,7 +1188,8 @@ Automation:
 - Storage: app automation id `invoice-entry-to-projects-backup-heartbeat`.
 - Execution: local `C:\Codex\Wiki Files` project job with no target task or `target_thread_id`; quiet checks do not wake the operational Invoice Entry task.
 - Primary trigger: Doc Scan sends a direct follow-up message to the dedicated Invoice Entry chat with the packet path and summary.
-- Backup scope: inspect the Invoice Entry project room for new or changed structured invoice/receipt packets that were not delivered by direct message. Do not scan inboxes, inspect raw scan folders, copy files into Teams, approve or pay invoices, contact vendors, redesign workbook templates, or create new chats.
+- Primary routed-email trigger: Email Monitor creates a durable dispatch record, then sends the dedicated Invoice Entry task a best-effort wake-up message.
+- Backup scope: inspect the Invoice Entry project room for new or changed structured invoice/receipt packets and inspect unresolved durable queue records addressed to Invoice Entry. Deduplicate by dispatch ID and payload hash, write the durable accepted receipt before substantive work, and update processing/final state. Do not scan inboxes, inspect raw scan folders, copy files into Teams, approve or pay invoices, contact vendors, redesign workbook templates, or create new chats.
 - Live workbook edits remain gated by clear Wes authorization or an approved automation rule for the exact insertion type.
 
 Shared Windows health supervisor:
@@ -1209,7 +1212,7 @@ Current status:
 
 - First supported worksheet group is Vendor Tabs Mode.
 - First workbook for proving the workflow is Outrigger after Wes approves the Vendor Tabs Mode design.
-- Direct-message handoff is the primary trigger for packet intake. Backup heartbeat automation checks at noon and 4:00 PM Eastern for missed project-room packet handoffs.
+- Durable records are authoritative for cross-PR dispatches; direct messages are wake-up signals. The backup automation checks at noon and 4:00 PM Eastern for missed project-room packet handoffs and unresolved Invoice Entry queue records.
 
 ## Investigate Computer
 

@@ -49,6 +49,8 @@ The automation path above is the only Email Monitor runtime memory file. Do not 
 
 ## Modes
 
+Formal modes are `Email Summary`, `Health Check`, `Task Health`, `Email Routing`, `Route Vendor Invoice`, `Organize`, and `Email Delivery`. Email Routing may invoke a specialized routing mode, but the invoked mode keeps its own acceptance, state, retry, and escalation rules.
+
 ### Email Summary
 
 Use Email Summary for the once-daily Boss, Jenny, and Josh Outlook mailbox summaries.
@@ -300,11 +302,11 @@ Preserve the Outlook message id or web link, sender, summary, and attachment met
 
 Manager must determine whether the email is a new task request, delivery-related message, or status update and apply its existing sender, task-id, status, authorization, and task-register rules. Email Monitor must not infer a status change, create or edit a Manager task, or perform the requested business action from this routing branch.
 
-#### Route Vendor Invoice
+### Route Vendor Invoice
 
 Use Route Vendor Invoice when Email Routing sees a contractor or vendor email that appears to contain or request processing of an invoice, bill, receipt, payment request, statement, pay application, draw request, or project-cost document.
 
-This mode owns source routing and direct Invoice Entry task handoff only. It does not own invoice approval, payment, vendor contact, final accounting judgment, live project-spreadsheet entry, Teams filing, or creating a new Invoice Entry chat.
+This is a formal Email Monitor mode, not an informal Email Routing label. It owns source routing, durable dispatch creation, Invoice Entry notification, acceptance verification, bounded retry, and missing-acknowledgment escalation. It does not own invoice approval, payment, vendor contact, final accounting judgment, live project-spreadsheet entry, Teams filing, or creating a new Invoice Entry chat.
 
 Activation:
 
@@ -320,7 +322,9 @@ For each routed email:
 - if an apparent invoice attachment cannot be retrieved, preserve the Outlook link and exact attachment-access blocker;
 - update `C:\Codex\Wiki Files\Project Rooms\Invoice Entry\working\source-inventory.md` or the current Invoice Entry intake ledger only with the Outlook reference, external path if any, summary, and status when the routed email becomes part of the durable source set;
 - record the routed Outlook message id in Email Monitor compact state so the same source is not routed repeatedly;
-- send the existing Invoice Entry task one concise handoff in this exact field order:
+- create the durable dispatch before any task-message call by using `C:\Codex\Wiki Files\Project Rooms\Email Monitor\tools\Manage-EmailMonitorDispatch.ps1 -Action Create`; use the runtime queue and state contract in `working\dispatch-queue-spec.md`;
+- use one stable dispatch ID and immutable payload; idempotent creation with the same payload is safe, but the same ID with different content is a blocker;
+- store the source and concise handoff fields in the queue record, then send the existing Invoice Entry task one wake-up message containing the dispatch ID, queue-record path, and these fields in this exact order:
   - `mailbox`: exact mailbox identity;
   - `outlook_message_id`: exact Outlook message id;
   - `outlook_link`: direct Outlook link when available, otherwise `unavailable`;
@@ -329,9 +333,21 @@ For each routed email:
   - `requested_operation`: the specific operation requested by the source;
   - `unique_warning`: only a warning specific to this source, such as a duplicate, amount conflict, missing quantity, ambiguous project, or authority limit; otherwise `none`.
 
+Dispatch lifecycle:
+
+1. Treat the durable queue record as the authoritative handoff and task messaging as a best-effort wake-up signal.
+2. Establish that Invoice Entry is idle before `StartAttempt`. If status is unavailable or busy, leave the record `Queued`; do not start a blocking task-message call.
+3. Mark `StartAttempt`, send the wake-up message, and request `accepted: <dispatch_id>` before substantive work.
+4. Verify acceptance independently in both the durable queue record and Invoice Entry history. Tool completion alone is not proof.
+5. If the call times out or ends without proof, mark `Delivery Ambiguous`. Reconcile before retrying.
+6. Retry only when Invoice Entry is idle, the exact dispatch ID is absent from its history, the durable record is not accepted, and fewer than three attempts have occurred. Reuse the same dispatch ID and payload.
+7. If no accepted receipt exists before the routing run ends, send Wes one OfficeAssist email with subject `[Email Monitor] Invoice Entry dispatch not acknowledged - <short source>` and verify it in OfficeAssist Sent Items. Record the verified message ID with `MarkAlertSent`. This first alert is required even when Health Check is already warning or critical; later unchanged checks do not resend it.
+8. Continue queue reconciliation on later Email Monitor runs. On acceptance, record recovery in the routing log and compact state. Do not repeat the failure email unless the incident materially changes or Wes directs another notice.
+9. Mark the source email read only after the durable dispatch is `Accepted`.
+
 Do not reproduce Invoice Entry's standing rules, the full email body, quoted thread text, or prior processing history in the task handoff. Keep detailed routing evidence in Email Monitor's own state and logs. Use the same concise field format for Time Card, approval, correction, and paid-receipt routing.
 
-After submitting the handoff, do not send it again merely because Invoice Entry responds slowly or a task-message call times out. Reconcile the original handoff first by checking the original task result or status and waiting for the existing request when appropriate. Retry only after establishing that the original handoff was not accepted; preserve the same Outlook reference and note the reconciliation outcome in Email Monitor's routing log.
+On each heartbeat, reconcile every unresolved `Route Vendor Invoice` queue record before treating the run as a quiet no-mail check. A queued or ambiguous record is meaningful unresolved work, not `DONT_NOTIFY`; suppress only duplicate visible/chat and email alerts after the first verified alert.
 
 Current Invoice Entry task id: `019fbf4f-c629-7dd1-a3f6-0de33de0ed8f`.
 

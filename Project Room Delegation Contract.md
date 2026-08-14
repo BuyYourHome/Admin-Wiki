@@ -55,10 +55,20 @@ If any condition fails, the receiving PR must return `blocked` or `needs Wes` tr
 ## Dispatch Contract
 
 1. Jean first identifies whether a specialized PR owns a request. Jean retains only general Office Assistant work and unowned cross-PR coordination.
-2. For specialized work, Jean assigns a stable `dispatch_id` and sends the scoped handoff only to the destination task recorded in the routing map.
-3. The receiving PR must return `accepted` with the same `dispatch_id` before durable edits, external actions, or onward handoffs.
-4. The receiving PR works only within its documented scope and returns `done`, `blocked`, `needs Wes`, `rejected as wrong room`, or `routed onward with approval` using the same `dispatch_id`.
-5. Jean reports the returned result to Wes. A missing receipt is unresolved; Jean must not assume the work started or complete it locally.
+2. For specialized work, Jean assigns a stable `dispatch_id` and writes an immutable durable dispatch record before task notification. Use the shared Email Monitor queue unless an owning workflow documents an equivalent durable queue.
+3. Jean sends the scoped handoff only to the destination task recorded in the routing map. Task messaging is a best-effort wake-up signal, not the authoritative copy.
+4. The receiving PR must write `accepted` with the same `dispatch_id` to the durable record before durable edits, external actions, or onward handoffs. It should also return `accepted: <dispatch_id>` in the task when available.
+5. The receiving PR deduplicates by dispatch ID and payload hash, works only within its documented scope, and writes `Processing`, then `Completed` or `Failed`, while returning the applicable standard status with the same dispatch ID.
+6. A send timeout or busy destination is `Delivery Ambiguous`, not proof of delivery. Reconcile the durable record and destination history before retrying. Retry the same immutable dispatch only when the destination is idle, the ID is absent, and the bounded attempt limit permits it.
+7. Jean reports the returned result to Wes. A missing receipt is unresolved; Jean must not assume the work started or complete it locally. When the owning workflow requires email escalation, send and verify that notice independently of task-message delivery.
+
+## Durable Queue Standard
+
+- Shared queue: `C:\Users\wesbr\.codex\automations\officeassist-morning-email-summary-and-instruction-monitor\dispatch-queue\records`.
+- Shared tool: `C:\Codex\Wiki Files\Project Rooms\Email Monitor\tools\Manage-EmailMonitorDispatch.ps1`.
+- Standard states: `Queued`, `Send Attempted`, `Delivery Ambiguous`, `Accepted`, `Processing`, `Completed`, and `Failed`.
+- A duplicate dispatch ID with identical content is idempotent. The same ID with different content is a blocker.
+- Operational queue records remain outside Git. Canonical tools and rules remain in the Admin wiki.
 
 ## Direct Work
 

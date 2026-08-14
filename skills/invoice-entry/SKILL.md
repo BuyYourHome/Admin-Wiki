@@ -110,6 +110,25 @@ When the handoff supplies only an Outlook reference, fetch only that exact messa
 
 If a concise handoff lacks enough information to identify or access the authoritative source, report the missing pointer or blocker. Do not ask the routing workflow to resend all standing instructions.
 
+## Durable Dispatch Intake
+
+For Email Monitor and Jean cross-Project-Room dispatches, the durable queue record is the authoritative handoff and a task message is only a wake-up signal.
+
+- Queue location: `C:\Users\wesbr\.codex\automations\officeassist-morning-email-summary-and-instruction-monitor\dispatch-queue\records`.
+- Queue tool: `C:\Codex\Wiki Files\Project Rooms\Email Monitor\tools\Manage-EmailMonitorDispatch.ps1`.
+- Protocol: `C:\Codex\Wiki Files\Project Rooms\Email Monitor\working\dispatch-queue-spec.md`.
+
+At every Invoice Entry startup and backup-monitor run:
+
+1. Inspect unresolved queue records whose destination task ID is `019fbf4f-c629-7dd1-a3f6-0de33de0ed8f`.
+2. Deduplicate by dispatch ID and payload hash. Never process the same dispatch twice.
+3. Confirm the request belongs to Invoice Entry and that its exact source pointer is accessible.
+4. Before substantive work, run `Accept` with the registered Invoice Entry task ID. This writes the durable receipt. Return `accepted: <dispatch_id>` in the task when the channel is available.
+5. Run `StartProcessing` before durable processing and `Complete` or `Fail` when the outcome is known.
+6. If the same accepted or completed dispatch is received again, return its existing status without repeating work or external actions.
+
+Queue presence authorizes intake only. It does not authorize approval, payment, filing, workbook posting, vendor contact, email delivery, or another gated action. A malformed, conflicting, inaccessible, or wrong-room record must be failed or rejected with the same dispatch ID and a concise reason.
+
 ## Task Health
 
 Invoice Entry is enrolled in the shared Windows workflow-health supervisor owned by Email Monitor. Follow `C:\Codex\Wiki Files\Project Rooms\Invoice Entry\README.md` for Invoice Entry context controls, `working\work-status.md` for current health fields, and `C:\Codex\Wiki Files\Project Rooms\Email Monitor\working\health-check-spec.md` for the shared supervisor contract. Do not copy the full supervisor implementation into this skill.

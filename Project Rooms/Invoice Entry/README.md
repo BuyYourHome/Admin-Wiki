@@ -83,6 +83,10 @@ A routine direct handoff should provide one authoritative source pointer, extern
 
 Invoice Entry may read one exact Outlook message when the handoff supplies its exact message ID and mailbox identity. It must not search or monitor a mailbox, alter messages, or send email.
 
+## Durable Dispatch Intake
+
+Email Monitor and Jean dispatches are authoritative in `C:\Users\wesbr\.codex\automations\officeassist-morning-email-summary-and-instruction-monitor\dispatch-queue\records`; task messages are wake-up signals. On every startup and backup-monitor run, inspect unresolved records addressed to the registered Invoice Entry task, deduplicate by dispatch ID and payload hash, write the durable `accepted` receipt before substantive work, then record `Processing`, `Completed`, or `Failed` through `Project Rooms\Email Monitor\tools\Manage-EmailMonitorDispatch.ps1`. Queue presence grants intake authority only and does not bypass Invoice Entry's approval, payment, filing, workbook, vendor-contact, or email-delivery gates.
+
 ## Workbook Safety
 
 - Confirm the exact live workbook at the SharePoint `Property` root before every edit.

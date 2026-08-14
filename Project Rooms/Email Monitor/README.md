@@ -27,6 +27,7 @@ This project room holds development notes, source inventory, and review artifact
 - Responsibility boundary: the heartbeat checks email and takes defined actions. Separately, direct authorized Email Delivery handoffs from other Project Rooms trigger immediately without waiting for the heartbeat or scanning a mailbox. Email Monitor coordinates delivery but does not take ownership of the requesting workflow's purpose, content, authorization, recipients, attachments, or restrictions.
 - Status thread id: `019ecba7-f1cc-7ac1-aaf7-d89a3f21b582`.
 - Task lifecycle: keep one dedicated active task and keep routine heartbeat history outside task context. Do not replace it for ordinary compaction; use the controlled, Wes-approved rollover procedure only when multiple measured health signals justify it.
+- Durable dispatch queue: `C:\Users\wesbr\.codex\automations\officeassist-morning-email-summary-and-instruction-monitor\dispatch-queue\records`. Queue records are runtime state outside Git; source-controlled tools and protocol live in this Project Room.
 
 ## Room Layout
 
@@ -37,6 +38,8 @@ This project room holds development notes, source inventory, and review artifact
 - Routed emails and attachments should not be saved as routine source files in the Admin wiki Git repo. Preserve Outlook message ids or web links, short summaries, statuses, and external Teams paths in Git logs and inventories. If a routed source must be materialized, store it outside Git in the owning Project Room's Teams source/reference, working, or archive location under that room's rules.
 
 ## Modes
+
+Formal modes are Email Summary, Health Check, Task Health, Email Routing, Route Vendor Invoice, Organize, and Email Delivery.
 
 ### Email Summary
 
@@ -108,15 +111,17 @@ This mode preserves the Outlook message id or web link, sender, summary, and att
 
 Email Monitor does not create or edit Manager tasks, infer task status changes, or perform the requested business action. Manager owns sender and task-id validation, task classification, status interpretation, authorization checks, and task-register updates.
 
-#### Route Vendor Invoice
+### Route Vendor Invoice
 
 Use this branch for invoice, bill, receipt, statement, pay-application, payment-request, project-cost, and exact-subject `Time Card` sources that belong to Invoice Entry.
+
+This mode creates the durable queue record before task notification, verifies the destination is idle before attempting a wake-up message, requires the exact dispatch ID in a durable `accepted` receipt, retries the same immutable dispatch only after reconciliation, and emails Wes once through verified OfficeAssist delivery if acknowledgment is missing before the routing run ends. See `working\dispatch-queue-spec.md` and `tools\Manage-EmailMonitorDispatch.ps1`.
 
 Send Invoice Entry one concise handoff with these fields in order: exact `mailbox`, `outlook_message_id`, `outlook_link`, attachment paths or exact blocker, short factual `summary`, `requested_operation`, and `unique_warning`. Use `none` when there is no attachment or source-specific warning. Apply the same format to Time Card, approval, correction, and paid-receipt routing.
 
 Do not put Invoice Entry's standing rules, the full email body, quoted thread text, or prior processing history in the task message. Preserve detailed sender/recipient metadata, timestamps, attachment metadata, routing evidence, duplicate notes, and reconciliation history in Email Monitor compact state and `working\routing-action-log.md` as appropriate.
 
-Do not resend a handoff merely because Invoice Entry responds slowly or the task-message call times out. Reconcile the original handoff first by checking the existing task result or status and waiting when appropriate. Retry only after establishing that the original handoff was not accepted, preserving the same Outlook reference and recording the reconciliation outcome.
+The durable queue record is authoritative; a task message is a best-effort wake-up signal. Do not treat a completed tool call as acceptance, and do not lose or duplicate a dispatch when the destination is busy.
 
 ### Email Delivery
 
@@ -165,6 +170,8 @@ Use this room for development and design work. Do not change the live automation
 When the workflow changes, update the skill, this project room, and the registry together.
 
 ## Change Log
+
+- 2026-08-14: Made Route Vendor Invoice a formal mode and added a durable runtime dispatch queue, payload hashing, idempotent receipts, explicit lifecycle states, idle-only bounded notification attempts, independent acceptance verification, and verified OfficeAssist escalation for missing acknowledgments.
 
 - 2026-08-01: Standardized concise Invoice Entry routing handoffs for invoices, Time Cards, approvals, corrections, and paid receipts; moved detailed evidence to Email Monitor records; required reconciliation before any slow-response resend; and reduced successful delivery callbacks to verified result fields only.
 

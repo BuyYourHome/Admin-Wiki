@@ -14,6 +14,7 @@ Keep only:
 - current Boss, Jenny, and Josh weekly subjects and verified summary cutoffs;
 - current Email Routing cutoff;
 - unresolved delivery requests, blockers, and pending callbacks;
+- unresolved durable dispatch IDs, current queue states, verified alert IDs, and next reconciliation action; keep the full immutable payload only in the dispatch queue record;
 - processed Outlook message ids still needed for seven-day duplicate prevention;
 - direct-delivery request ids still needed because they are unresolved or were completed within the last seven days;
 - current recovery or decision-needed note.
