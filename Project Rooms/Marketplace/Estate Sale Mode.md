@@ -54,6 +54,7 @@ If an edit could affect a buyer's understanding of condition, use the original o
 
 ## Printed Price Labels
 
+- Use Avery 18660 as the standard template for estate-sale price labels, decals, and item tags unless Wes explicitly selects a different template for a particular print run.
 - Whenever Wes asks to print price labels, price decals, or item tags for an estate sale, include a stable item reference number on every label.
 - Use the item's existing sale-scoped item id when one is already recorded. If an item has no id, assign a unique sequential sale-scoped id before generating the labels.
 - The printed reference number must match the item register, pricing spreadsheet, listing packet, and any later sale-outcome or receipt record for that item.
