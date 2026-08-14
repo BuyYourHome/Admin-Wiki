@@ -10,7 +10,7 @@ This is the authoritative current-state register for Invoice Entry. Read it befo
 - Primary intake: direct Doc Scan or Email Monitor handoff; authorized versioned Manager Time Card packets are also supported for Time Card intake.
 - Current task: `019fbf4f-c629-7dd1-a3f6-0de33de0ed8f`.
 - Canonical skill: `C:\Codex\Wiki Files\skills\invoice-entry\SKILL.md`.
-- Canonical skill and installed local `invoice-entry` skill were synchronized and recursive SHA-256 hash-verified on 2026-08-14 after Receipt mode and its generator were added.
+- Canonical skill and installed local `invoice-entry` skill were synchronized and recursive SHA-256 hash-verified on 2026-08-14 after Receipt mode, its generator, the spoken item-number shorthand, and the Marketplace sold-status dispatch were added.
 - Backup automation `invoice-entry-to-projects-backup-heartbeat` is a standalone local cron job at noon and 4:00 PM Eastern. It has no target task and must not add quiet-check turns to this operational task. Clean no-action runs archive their own execution task after recording memory; runs with a new packet, failure, blocker, or decision remain visible. The five completed no-action run tasks from 2026-08-01 through 2026-08-03 were archived on 2026-08-04.
 - No external action from the prior unfinished turn requires retry.
 - Doc Scan returned corrected item-level packets for eight visually verified PO-4121 Lowe's rows. After the initial lock cleared, a freshness-safe retry uploaded the validated workbook and the re-fetched authoritative copy passed hash and Excel read-back verification.
