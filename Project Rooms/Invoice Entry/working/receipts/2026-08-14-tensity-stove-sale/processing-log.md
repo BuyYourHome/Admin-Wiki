@@ -35,5 +35,8 @@
 - The one-page Letter PDF passed text extraction, arithmetic reconciliation, and visual QA.
 - The SharePoint upload used conflict-fail protection and was read back successfully.
 - The synchronized property-folder copy matched the generated PDF byte-for-byte by SHA-256.
-- No workbook row was created. Receipt/project-credit worksheet placement remains `Needs Review - Project Credit Placement` because the Tensity workbook has no approved receipt-credit mode.
+- On Wes's 2026-08-14 instruction to insert receipts into projects, a fresh authoritative `Property/24_Project Management - 4121 Tensity Dr 2.xlsm` was duplicate-checked and one opposite-signed row was inserted into `Appliances / tblAppliancesInvoices`.
+- The row records receipt `RCPT-20260814-4121-001` as quantity `1`, cost per unit `-$250.00`, subtotal `-$250.00`, and tax `$0.00`. The Appliances invoice total and grand total both calculate to `-$250.00`.
+- Fresh-instance Excel reopen validation found exactly one matching receipt row. Exact-target SharePoint replacement completed at `2026-08-14T18:18:12Z`; the downloaded authoritative read-back matched SHA-256 `F417613E9F53CC395D326B23199C73E2246C07BCD7691FAF4B454083C2B535BD` across `742,700` bytes.
+- The pre-edit rollback workbook and validation manifest are retained in `Invoice Entry Working Archive/Generated/2026-08-14-Receipt-Opposite-Sign-Workbook-Posting`.
 - No email, payment, deposit, Marketplace update, approval, or paid-status action occurred.

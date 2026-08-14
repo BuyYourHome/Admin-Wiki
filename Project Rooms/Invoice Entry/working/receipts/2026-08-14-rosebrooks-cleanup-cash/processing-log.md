@@ -34,5 +34,8 @@
 - The one-page Letter PDF passed text extraction, arithmetic reconciliation, and visual QA.
 - The archive copy was verified as one file totaling 3,080 bytes and matched the generated PDF by SHA-256.
 - Property filing remains held because no current authoritative Rosebrooks receipt destination exists. Do not create a folder or use the stale `19-HM` folder without Wes's direction.
-- No workbook row was created. Receipt/project-credit worksheet placement remains `Needs Review - Project Credit Placement` because there is no approved receipt-credit mode.
+- On Wes's 2026-08-14 instruction to insert receipts into projects, a fresh authoritative `Property/20_Project Management - 115 Rosebrooks Dr.xlsm` was duplicate-checked and one opposite-signed row was inserted into `Review / tblInvoiceReview`.
+- The row records receipt `RCPT-20260814-115-001` at `-$300.00`, status `Needs Review`, and an intentionally blank `Destination Worksheet` because no expense category is supported.
+- Fresh-instance Excel reopen validation found exactly one matching receipt row. Exact-target SharePoint replacement completed at `2026-08-14T18:18:26Z`; the downloaded authoritative read-back matched SHA-256 `2FEE630DA2762745DCED877AB33679F8C6A260DB9CE8B170693B44F054AC6770` across `716,285` bytes.
+- The pre-edit rollback workbook and validation manifest are retained in `Invoice Entry Working Archive/Generated/2026-08-14-Receipt-Opposite-Sign-Workbook-Posting`.
 - No email, deposit, Marketplace update, payment, approval, or paid-status action occurred.

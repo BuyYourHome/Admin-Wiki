@@ -188,4 +188,12 @@ The archive destination was verified by file count and byte total before the gen
 | --- | --- | ---: | ---: | --- |
 | Verified Rosebrooks cleanup-cash receipt PDF | `Generated\2026-08-14-Rosebrooks-Cleanup-Cash-Receipt-Hold` | 1 | 3,080 | completed receipt held pending authoritative property destination |
 
-The archive copy matches SHA-256 `840577A7E20AD829BDAA207772D2DD8DD6BE0C0F6B8921735B4CD59C1FB58243`. Property filing is held because the current `20-HM` Rosebrooks `Owning` folder has no established receipt destination; the stale `19-HM` centralized invoice folder was not used. No workbook insertion, deposit record, Marketplace action, email, payment, approval, or paid status occurred.
+The archive copy matches SHA-256 `840577A7E20AD829BDAA207772D2DD8DD6BE0C0F6B8921735B4CD59C1FB58243`. Property filing is held because the current `20-HM` Rosebrooks `Owning` folder has no established receipt destination; the stale `19-HM` centralized invoice folder was not used. At the receipt-hold step, no workbook insertion, deposit record, Marketplace action, email, payment, approval, or paid status occurred; the later authorized workbook posting is recorded below.
+
+## Receipt Opposite-Sign Workbook Posting Archive Recorded 2026-08-14
+
+| Local working files | Teams destination under `Invoice Entry Working Archive` | Files | Bytes | Category |
+| --- | --- | ---: | ---: | --- |
+| Tensity and Rosebrooks pre-edit rollback workbooks plus validation manifest | `Generated\2026-08-14-Receipt-Opposite-Sign-Workbook-Posting` | 3 | 1,451,032 | rollback and authoritative read-back evidence for two receipt postings |
+
+The Tensity rollback hash is `1692670AFB1ADE6098E34E0388823E45DED30888ECAC6F37F1BDF9EF29357480`; the Rosebrooks rollback hash is `212141F3DDC36F5E0C3ABFCAE89F80A50C6182E1FDFB61A4774DE2E0BB8AE351`. Authoritative uploaded/read-back hashes are `F417613E9F53CC395D326B23199C73E2246C07BCD7691FAF4B454083C2B535BD` for Tensity and `2FEE630DA2762745DCED877AB33679F8C6A260DB9CE8B170693B44F054AC6770` for Rosebrooks. Both postings were duplicate-checked, reopened in Excel, visually sampled, uploaded by exact target, and downloaded byte-for-byte. No email, payment, deposit, Marketplace, approval, or paid-status action occurred.
