@@ -108,6 +108,33 @@ Marketplace may not:
 - If the record is uncertain or may be stale, say availability is being checked and route the question to Wes.
 - Mark an item `sold` or `unavailable` only after Wes confirms the outcome or another authorized source conclusively establishes it.
 
+## Invoice Entry Receipt-To-Sold Handoff
+
+For the current Rosebrooks Estate Sale, Wes's direct Invoice Entry command `Receipt item #<item number>` is standing authority for one narrow sold-status workflow. It confirms the exact item sold and cash was collected at the item's current established price unless Wes states a different price or payment method.
+
+Invoice Entry sends the registered Marketplace task one handoff using dispatch id `invoice-entry-marketplace-sold-<YYYYMMDD>-<item-number>-v1`. The handoff must include:
+
+- the stable sale-scoped item number;
+- exact listing URL or Facebook listing identifier;
+- sale date;
+- established or overridden sale amount;
+- payment method;
+- generated receipt number;
+- assigned property; and
+- the direct Wes command as authorization evidence.
+
+Marketplace must:
+
+1. Return the same dispatch id with `accepted` before attempting the Facebook change.
+2. Match the stable item number to exactly one current sale record and exactly one Facebook listing.
+3. Confirm the supplied price matches the current established price unless Wes supplied an explicit override.
+4. Check whether the item and Facebook listing are already marked sold before changing anything.
+5. If the exact match is supported and the listing is not already sold, mark only that Facebook listing `Sold` through the authorized Facebook session.
+6. Verify the resulting Facebook status, update the sale item record and Marketplace action log, and return `confirmed` with the same dispatch id and verification evidence.
+7. Return `blocked` or `needs Wes` without changing Facebook when the item is missing, duplicated, ambiguous, mapped to no listing or multiple listings, price-conflicted, or the authorized session cannot verify the result.
+
+This is a narrow Estate Sale exception to the broader Marketplace pause. It does not resume sourcing, publication, buyer messaging, negotiation, holds, payment activity, address disclosure, or unrelated listing work. Marketplace must not contact the buyer. A repeated dispatch or an already-sold listing is reconciliation work, not authority for a second external action. After an ambiguous result that might have changed Facebook, reconcile the exact listing before retrying.
+
 Suggested reply when supported:
 
 ```text

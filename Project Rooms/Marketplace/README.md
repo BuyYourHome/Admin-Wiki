@@ -93,6 +93,7 @@ The dedicated Marketplace chat and durable records remain available, but Marketp
 - When the applicable listing is published with separate authorization, Marketplace may answer supported availability questions and share Wes's approved showing windows.
 - The mode does not authorize early price reductions, holds, sales, payments, deposits, private-address or phone disclosure, or other commitments.
 - The broader Marketplace pause and seller-response heartbeat remain unchanged unless Wes separately resumes them.
+- Narrow Receipt exception: for the current Rosebrooks Estate Sale, an exact Invoice Entry sold-status handoff based on Wes's `Receipt item #<item number>` command authorizes Marketplace to verify that one item/listing and mark only that Facebook listing `Sold`. Follow `Estate Sale Mode.md`; do not contact the buyer or resume any other Marketplace activity.
 
 ## Start PR
 
@@ -162,6 +163,19 @@ When Wes confirms that a Marketplace listing was purchased:
 5. Include the listing URL, seller display name, item description, actual purchase amount, purchase date, and source traceability. Use `Marketplace resale inventory` as the destination unless Wes identifies a property or another business destination; do not guess a project workbook or worksheet.
 6. Do not include seller phone numbers, pickup addresses, or other unnecessary personal contact details in the invoice or Git-tracked handoff record.
 7. Record Invoice Entry's returned status and output paths when available.
+
+## Collected-Money Receipt Sold-Status Rule
+
+When Invoice Entry sends a Rosebrooks Estate Sale sold-status handoff based on Wes's direct receipt command:
+
+1. Return `accepted` with the same dispatch id before action.
+2. Resolve the stable item number to exactly one current item record and one Facebook listing.
+3. Verify the established price or Wes's explicit override and check whether the listing is already sold.
+4. Mark only the exact Facebook listing `Sold`, verify the resulting status, update the item record and action log, and return `confirmed` with the same dispatch id.
+5. Return `blocked` or `needs Wes` without changing Facebook when identity, price, listing, session, or outcome is uncertain.
+6. Do not repeat a verified or ambiguous external action; reconcile first.
+
+This rule is a narrow Estate Sale exception to the Marketplace pause. It does not authorize buyer contact, other listing edits, publication, sourcing, negotiation, payment handling, or unrelated Marketplace activity.
 
 ## Next Actions
 

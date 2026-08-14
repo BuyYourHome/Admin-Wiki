@@ -1,6 +1,6 @@
 ---
 name: marketplace
-description: Use for Buy Your Home Marketplace project-room work, including Facebook Marketplace tool sourcing, resale-profit evaluation, offer calculation, authorized Messenger conversations, seller-agreement tracking, and Wes email notifications under `Project Rooms\Marketplace`.
+description: Use for Buy Your Home Marketplace project-room work, including Facebook Marketplace sourcing, resale-profit evaluation, authorized Messenger conversations, estate-sale listing management, Invoice Entry receipt-to-sold handoffs, seller-agreement tracking, and Wes email notifications under `Project Rooms\Marketplace`.
 ---
 
 # Marketplace
@@ -24,6 +24,7 @@ Use this skill when Wes asks Codex to search Facebook Marketplace for tools, eva
 - Preserve existing records and pending statuses without processing them as active work.
 - Resume Marketplace activity only after Wes explicitly says to resume Marketplace.
 - Narrow exception: Wes may explicitly activate Estate Sale Mode for one named sale without resuming general Marketplace activity. Follow `C:\Codex\Wiki Files\Project Rooms\Marketplace\Estate Sale Mode.md` and keep the general heartbeat, seller sourcing, and unrelated conversations paused.
+- The Rosebrooks Receipt-to-Sold receiver below is one such narrow exception. It authorizes only the exact Facebook `Sold` update supported by an accepted Invoice Entry handoff.
 
 ## Estate Sale Mode
 
@@ -40,6 +41,23 @@ Use `C:\Codex\Wiki Files\Project Rooms\Marketplace\Estate Sale Mode.md` when Wes
 - Do not accept an offer, reserve or hold an item, accept payment or a deposit, mark an item sold, disclose an exact address or private phone number, arrange delivery or shipping, or make another commitment without the required specific authority.
 - Keep buyer replies concise, factual, non-deceptive, and free of unsupported condition or performance claims.
 - Pause or close the mode immediately when Wes directs. Closing one sale does not alter another Marketplace workflow.
+- Narrow receipt-to-sold exception: during the current Rosebrooks Estate Sale, accept an exact Invoice Entry handoff based on Wes's `Receipt item #<item number>` command and mark only the verified corresponding Facebook listing `Sold` under the receiver rules below. This does not resume other Marketplace activity.
+
+### Receipt-To-Sold Receiver
+
+Invoice Entry task `019fbf4f-c629-7dd1-a3f6-0de33de0ed8f` may send dispatch id `invoice-entry-marketplace-sold-<YYYYMMDD>-<item-number>-v1` after Wes invokes Receipt mode for a Rosebrooks Estate Sale item. The handoff must provide the stable item number, exact listing URL or identifier, sale date, established or overridden amount, payment method, receipt number, property, and Wes command reference.
+
+For that handoff:
+
+1. Return `accepted` with the same dispatch id before attempting an external action.
+2. Match the stable item number to exactly one current sale record and exactly one Facebook listing. Verify the supplied amount against the current established public sale price unless Wes explicitly overrode it.
+3. If the item or listing is missing, duplicated, ambiguous, price-conflicted, or already carries an uncertain status, return `blocked` or `needs Wes` without changing Facebook.
+4. If the exact match is supported, check whether Facebook already shows the listing sold. If it does, reconcile the existing result without repeating the change.
+5. Otherwise mark only that exact Facebook listing `Sold` through the authorized session, verify the resulting status, update the sale item record and `working\marketplace-action-log.md`, and return `confirmed` with the same dispatch id and verification evidence.
+6. Do not contact the buyer, edit any other listing field, publish a listing, accept payment, negotiate, disclose private information, or perform unrelated Marketplace work.
+7. Never retry after an ambiguous result that might have changed Facebook until the exact listing status is reconciled.
+
+Wes's Receipt-mode shorthand is standing authority only for this exact sold-status action during the named sale. It does not lift the broader Marketplace pause.
 
 ## Start PR
 
@@ -57,7 +75,7 @@ Before Marketplace file work:
 
 ## Workflow
 
-0. Confirm Marketplace is not paused before starting any workflow action.
+0. Confirm Marketplace is not paused before starting any workflow action, unless the request exactly satisfies the documented Rosebrooks Receipt-to-Sold exception.
 1. Identify whether the request is search, listing evaluation, offer calculation, Messenger outreach, seller conversation, agreement reporting, completed-purchase recording, or output/report creation.
 2. Confirm the authorized Facebook/Messenger browser session before browsing or messaging.
 3. Confirm Wes's buying criteria when broad searching: tool categories, brands, search radius, minimum expected profit, minimum margin, maximum cash outlay, and pickup constraints.
