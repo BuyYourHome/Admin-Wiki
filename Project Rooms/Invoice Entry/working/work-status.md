@@ -1,6 +1,6 @@
 # Invoice Entry Current Work Status
 
-Last updated: 2026-08-13
+Last updated: 2026-08-14
 
 This is the authoritative current-state register for Invoice Entry. Read it before processing a handoff or opening a workbook. Packet files and processing logs remain the detailed evidence; when an older summary conflicts with this file, stop and reconcile the source before acting.
 
@@ -10,13 +10,14 @@ This is the authoritative current-state register for Invoice Entry. Read it befo
 - Primary intake: direct Doc Scan or Email Monitor handoff; authorized versioned Manager Time Card packets are also supported for Time Card intake.
 - Current task: `019fbf4f-c629-7dd1-a3f6-0de33de0ed8f`.
 - Canonical skill: `C:\Codex\Wiki Files\skills\invoice-entry\SKILL.md`.
-- Canonical skill and installed local `invoice-entry` skill were synchronized and SHA-256 hash-verified on 2026-08-12 after the semimonthly compensation calculation and invoice-column layout were corrected.
+- Canonical skill and installed local `invoice-entry` skill were synchronized and recursive SHA-256 hash-verified on 2026-08-14 after Receipt mode and its generator were added.
 - Backup automation `invoice-entry-to-projects-backup-heartbeat` is a standalone local cron job at noon and 4:00 PM Eastern. It has no target task and must not add quiet-check turns to this operational task. Clean no-action runs archive their own execution task after recording memory; runs with a new packet, failure, blocker, or decision remain visible. The five completed no-action run tasks from 2026-08-01 through 2026-08-03 were archived on 2026-08-04.
 - No external action from the prior unfinished turn requires retry.
 - Doc Scan returned corrected item-level packets for eight visually verified PO-4121 Lowe's rows. After the initial lock cleared, a freshness-safe retry uploaded the validated workbook and the re-fetched authoritative copy passed hash and Excel read-back verification.
 - Do not resend an email, repeat a workbook upload, or recreate a packet solely because an older task response was delayed or missing.
 - `Reconcile` is a user-callable Invoice Entry mode as of 2026-08-04. A direct Wes request or implemented Dashboard handoff may invoke it for one exact project/property independently of the workbook checkbox. Dashboard implementation remains separately owned and is not part of this Invoice Entry change.
 - Manager Time Card packet intake is enabled as of 2026-08-05. Invoice Entry accepts versioned, Wes-authorized structured packets, deduplicates by dispatch/version/canonical entry/period, and retains ownership of semimonthly invoice processing and every financial or external action. No Manager time-entry packet was supplied by the integration dispatch, so it created no invoice or time-line change.
+- `Receipt` is a user-callable Invoice Entry mode as of 2026-08-14. It documents money actually collected, may preserve Marketplace item references, and requires one exact property. The current Estate Sale property is `20-HM - 115 Rosebrooks Dr`; workbook posting remains held until an approved receipts/project-credit worksheet placement exists.
 
 ## Task Health Status
 
@@ -79,6 +80,7 @@ Classified working files:
 | 15 | Mathews Flooring LLC invoice `936569`, 4121 Tensity Dr | Approved by Wes; final `$200.00` house-cleaning invoice replaced the draft in the authoritative Tensity `Owning/Invoices` folder and was sent once to Wes from OfficeAssist; both actions verified; not posted or paid | Approval and delivery are complete. Do not repeat them. Workbook entry, payment, and paid status require separate authority. |
 | 16 | Capital One Quicksilver statement notice, account ending `6426` | One notice held; Jeanette Hollinger named; balance `$376.48`; minimum `$25.00`; due `2026-09-05`; no statement PDF or transaction detail | Wes must retrieve the statement through an authorized Capital One session or supply it, then route it through Doc Scan. Do not infer entity/project allocation, approve, schedule, or pay from the notice. |
 | 17 | Barnes Restoration invoice `4121 Tensity`, 4121 Tensity Dr | One `$4,964.04` invoice filed and one authoritative Tensity Review row exists; status `Needs Review`; no approval or payment | Wes should choose an approved Vendor Tab or authorize the required worksheet-mode change for Roofing/Exterior. Do not create another row, approve, pay, contact the vendor, or mark paid. |
+| 18 | Receipt mode - 115 Rosebrooks Dr Estate Sale | Mode configured for `20-HM - 115 Rosebrooks Dr`; Marketplace references may identify items, but no specific sold item, actual amount collected, receipt date, collector, buyer-name treatment, or completed-sale evidence was supplied in the current request | When Wes supplies or identifies the completed-sale facts, generate one duplicate-checked Receipt and assign it as `Estate Sale Proceeds / Project Credit`. Do not change Marketplace records or insert a negative expense. Hold workbook posting as `Needs Review - Project Credit Placement`. |
 
 ## Verified Delivery Evidence
 

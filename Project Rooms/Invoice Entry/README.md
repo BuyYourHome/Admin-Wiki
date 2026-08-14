@@ -36,7 +36,7 @@ Do not duplicate the full skill rules in this README. The skill controls workflo
 - `Doc Scan` owns scan inspection, OCR, splitting, document identification, scanned-file routing, scan logs, statement extraction, and creation of structured scanned-document packets.
 - `Email Monitor` owns mailbox monitoring, routed-email preservation, direct email handoff, and all outbound email delivery through Email Delivery.
 - `Manager` owns its Time Card source ledger, source traceability, clarification, display, correction history, active-line totals, and versioned structured packet production.
-- `Invoice Entry` owns packet consumption or authorized packet creation, duplicate checks, workbook resolution, approved insertion, validation, upload, and durable processing status.
+- `Invoice Entry` owns packet consumption or authorized packet creation, duplicate checks, Receipt document generation from confirmed collection facts, property assignment, workbook resolution, approved insertion, validation, upload, and durable processing status.
 - `Template to Project` owns worksheet design, worksheet-mode rules, template changes, and rollout across active workbooks.
 
 Invoice Entry may read Template to Project rules while inserting into an established worksheet mode. It must not edit Template to Project files or redesign a workbook mode without Wes's exact authorization.
@@ -54,6 +54,12 @@ Consume vendor-invoice email handoffs from Email Monitor or OfficeAssist. Use an
 ### Time Card
 
 Run from either an Email Monitor Time Card email handoff or an authorized, versioned structured Manager Time Card packet. Manager packets must cite Wes's processing instruction and are deduplicated by dispatch id, packet version, canonical Manager entry id, and semimonthly period; corrections preserve prior versions and update the same source lines. Accumulate accepted time by worker for semimonthly periods: the 1st-15th and the 16th-last calendar day. Generate one payable invoice for the complete period, with project and BackOffice allocation detail inside that invoice. For Josh, the issuer is `Josh Kennedy LLC`, the invoice contact is `profcyber0077@gmail.com`, and Buy Your Home is the customer even when time arrives from the IRA Manager mailbox. Invoice Entry retains ownership of rates, amounts, invoice generation, approval, filing, allocation, and spreadsheet insertion. A Manager packet does not authorize any of those actions by itself. The invoice cannot become final before the period closes and requires Wes approval before filing, posting, or payment eligibility.
+
+### Receipt
+
+Use Receipt as the user-callable mode for money the business has actually collected. It creates a formal `RECEIPT`, preserves the collection evidence, and assigns the proceeds to one exact property. A Marketplace item ID, listing title, listing URL, or Estate Sale inventory record may identify the sold item, but an asking price or active listing is not proof of a sale or the amount collected.
+
+For the current Estate Sale workflow, assign supported receipts to `20-HM - 115 Rosebrooks Dr` and classify them as `Estate Sale Proceeds / Project Credit`. Do not mark Marketplace items sold, contact a buyer, accept money, or edit Marketplace records from Invoice Entry. Do not enter sale proceeds as a negative vendor expense or reduce the historical purchase cost. Until an approved receipts/project-credit worksheet mode exists, generate and file the receipt but hold project-workbook posting as `Needs Review - Project Credit Placement`.
 
 ### Statement Processing
 

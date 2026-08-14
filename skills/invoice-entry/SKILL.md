@@ -1,6 +1,6 @@
 ---
 name: invoice-entry
-description: Use for Buy Your Home project-management spreadsheet invoice-entry work after Doc Scan has prepared a structured invoice, receipt, or Statement packet, when Email Monitor or OfficeAssist routes a contractor/vendor invoice or Time Card email, when Manager sends an authorized versioned Time Card packet, or when Wes invokes Reconcile for an existing project workbook. Trigger when Codex needs to receive or create a structured packet, accumulate semimonthly time, choose the correct active project workbook and worksheet, check for duplicate invoice, time-card, or statement-line records, insert approved records into a Vendor Tab or other approved project-spreadsheet expense area, reconcile eligible Review rows, validate totals and workbook links, and report uncertain routing for Wes review.
+description: Use for Buy Your Home invoice-entry work after Doc Scan prepares a structured invoice, vendor receipt, or Statement packet; when Email Monitor or OfficeAssist routes a vendor invoice or Time Card; when Manager sends an authorized Time Card packet; when Wes invokes Reconcile; or when Wes invokes Receipt mode to document money collected and assign it to a property, including Marketplace estate-sale proceeds. Trigger for structured packets, collected-money receipts, semimonthly time, workbook routing, duplicate checks, approved insertion, Review reconciliation, validation, and uncertain routing.
 ---
 
 # Invoice Entry
@@ -14,7 +14,7 @@ description: Use for Buy Your Home project-management spreadsheet invoice-entry 
 - Scanned document action log: `C:\Codex\Wiki Files\Project Rooms\Invoice Entry\working\scanned-document-action-log.md`
 - Template-to-project migration room: `C:\Codex\Wiki Files\Project Rooms\Template to Project`
 
-Use this skill for operational invoice, Time Card, and approved statement-line insertion into project-management spreadsheets. For scanned invoice, receipt, and Statement records, Doc Scan is the normal intake workflow and should trigger this workflow by direct follow-up message after creating the packet. For routed contractor/vendor invoice and Time Card emails, Email Monitor or OfficeAssist must hand off the preserved email source. Manager may separately hand off an authorized, versioned structured Time Card packet under the receiver rules below; this does not give Manager mailbox, invoice, rate, approval, filing, or workbook authority. A standalone backup cron monitor checks durable Project Room state for missed packet handoffs without waking the operational Invoice Entry task. Do not use this skill for scan inspection/OCR, document splitting, statement extraction, invoice-file routing, mailbox monitoring, or spreadsheet template redesign.
+Use this skill for operational invoices, collected-money Receipts, Time Cards, and approved statement-line insertion into project-management spreadsheets. `Invoice` records money the business pays or owes; Receipt mode records money the business actually collects. For scanned vendor receipts and Statement records, Doc Scan is the normal intake workflow and should trigger this workflow by direct follow-up message after creating the packet. For routed contractor/vendor invoice and Time Card emails, Email Monitor or OfficeAssist must hand off the preserved email source. Manager may separately hand off an authorized, versioned structured Time Card packet under the receiver rules below; this does not give Manager mailbox, invoice, rate, approval, filing, or workbook authority. A standalone backup cron monitor checks durable Project Room state for missed packet handoffs without waking the operational Invoice Entry task. Do not use this skill for scan inspection/OCR, document splitting, statement extraction, invoice-file routing, mailbox monitoring, Marketplace listing changes, or spreadsheet template redesign.
 
 Doc Scan owns Lowes Statement extraction and will send extracted statement data for this skill to consume. This skill owns statement-line allocation, duplicate checks, final spreadsheet row placement, insertion, and validation after Wes approves the Statement allocation rules.
 
@@ -269,6 +269,54 @@ Safety limits:
 - Do not request delivery if the sender identity is unclear, the invoice cannot be verified visually, or the destination allocations do not reconcile to the invoice total.
 - Do not create workbook entries without enough project, date, hours, period-cost, allocation-method, and source traceability.
 - Preserve unresolved lines in the project room and report what Wes must review.
+
+## Receipt
+
+Receipt is a user-callable mode for documenting money the business has actually collected. It produces a formal document titled `RECEIPT` and assigns the proceeds to one exact property. A vendor receipt showing money the business paid remains an Invoice/Doc Scan intake source; it is not this mode.
+
+Authorized triggers:
+
+- Wes directly requests `Receipt` or asks Invoice Entry to document collected money and identifies the property.
+- An authorized Dashboard handoff names Invoice Entry mode `Receipt`, the exact property, the requester, and the collected-money facts.
+- An authorized Marketplace handoff supplies item identity and completed-sale evidence. Marketplace source material can support the receipt but does not transfer Marketplace ownership to Invoice Entry.
+
+Required receipt facts:
+
+- exact property/project identity;
+- receipt date and collision-checked receipt number;
+- receiving entity;
+- buyer or payer name, or an explicit statement that the cash buyer's name was not recorded;
+- who collected the money;
+- payment method;
+- authoritative confirmation that the sale occurred and the money was collected;
+- each item description, quantity, and actual amount collected;
+- application of funds, such as `Estate Sale Proceeds / Project Credit`;
+- separate collection and deposit statuses; and
+- durable source references.
+
+Marketplace reference rules:
+
+- Receipt mode may read a Marketplace Estate Sale item ID, inventory row, listing title, listing URL, draft/listing ID, or Marketplace source path to identify the item.
+- An asking price, draft, active listing, buyer inquiry, offer, or appointment is not proof of a completed sale or the amount collected.
+- Do not substitute the asking price for the actual amount received.
+- Do not mark an item sold, edit a listing or Marketplace record, contact a buyer, negotiate, accept money, or perform another Marketplace action from Invoice Entry.
+- Preserve the Marketplace identifier and source reference on the receipt packet so Marketplace and Invoice Entry records can later be reconciled without duplicating the sale.
+
+Generation and accounting rules:
+
+1. Use `C:\Codex\Wiki Files\skills\invoice-entry\scripts\create-cash-receipt.py` with a validated JSON input packet. Use `templates\cash-receipt-template.md` as the field and layout reference.
+2. Use receipt number pattern `RCPT-<YYYYMMDD>-<property-number>-<sequence>`, and check existing receipt evidence before choosing the sequence.
+3. Prefer one receipt per sold estate-sale item. If multiple items were sold in one cash transaction, use one itemized receipt whose line total equals the actual total collected.
+4. Run visual PDF QA before filing or delivery. Do not leave placeholders, clipped text, unsupported facts, or approval language.
+5. `Cash Received` proves collection only. It does not prove that the money was deposited. Use deposit status `Not Recorded`, `Pending Deposit`, or `Deposited` only as separately supported.
+6. Deduplicate first by project plus receipt number. Use Marketplace item ID plus sale date plus actual amount as the fallback transaction key.
+7. Assign supported Estate Sale proceeds in the current workflow to `20-HM - 115 Rosebrooks Dr` with application `Estate Sale Proceeds / Project Credit`.
+8. Preserve the historical cost of the sold item. Do not post sale proceeds as a negative vendor invoice, refund, or deletion of the original project expense unless authoritative evidence specifically establishes that accounting treatment.
+9. There is no approved receipts/project-credit worksheet mode yet. Generate and file a supported receipt, but hold project-workbook insertion as `Needs Review - Project Credit Placement`; never insert it into a Vendor Tab or expense area merely to make project totals net.
+10. File the finished receipt only in the freshly resolved authoritative property location under the established receipt destination. If no receipt destination exists or its ownership is unclear, report the filing blocker instead of inventing or using a similar folder.
+11. Invoice Entry never sends the receipt directly. If Wes requests delivery, prepare the exact package and hand it to Email Monitor's Email Delivery workflow; require verified OfficeAssist Sent Items evidence.
+
+For `20-HM - 115 Rosebrooks Dr`, Marketplace is currently only a source reference. No receipt may be generated until the specific item, actual amount collected, receipt date, receiving entity, collector, payment method, buyer-name treatment, and completed-sale evidence are supplied or resolved from an authorized source.
 
 ## Required Inputs
 

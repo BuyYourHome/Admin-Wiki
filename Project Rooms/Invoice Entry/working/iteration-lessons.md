@@ -384,3 +384,9 @@ Context: Corrected 2025 Lowe's packets had accurate item amounts but initially o
 - Revalidate transaction-header metadata after a packet correction, not only row counts and amounts. Preserve visible store, PO, SKU/item number, invoice, date, and page evidence before treating the packet as complete.
 - A SharePoint `423 resourceLocked` response is a definitive failed replacement. Record that the authoritative workbook is unchanged and do not repeat the upload automatically.
 - Preserve the validated edited workbook and rollback copy outside Git. Before retry, compare the live workbook modified time with the recorded source version; if it changed, re-fetch and reapply instead of overwriting newer work.
+
+# Receipt Mode Lessons
+
+- A collected-money Receipt is not a vendor purchase receipt: preserve the original project cost and classify sale proceeds separately as project credit.
+- Marketplace listing facts identify an item, but only supported completed-sale and collection evidence can establish the receipt date and actual amount collected.
+- Collection and deposit are separate states. A cash receipt must not imply that the cash was deposited.

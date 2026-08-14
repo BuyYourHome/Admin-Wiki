@@ -1,4 +1,4 @@
 interface:
   display_name: "Invoice Entry"
-  short_description: "Process invoices, Time Cards, and project expense records."
-  default_prompt: "Use the Invoice Entry workflow to process a structured invoice, statement, or Time Card packet, validate source and routing, prevent duplicates, and perform only authorized invoice or project-spreadsheet actions."
+  short_description: "Process invoices, collected-money receipts, Time Cards, and project records."
+  default_prompt: "Use the Invoice Entry workflow to process a structured invoice, collected-money Receipt, statement, or Time Card packet, validate source and routing, prevent duplicates, and perform only authorized document or project-spreadsheet actions."

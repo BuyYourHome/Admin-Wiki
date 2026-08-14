@@ -37,6 +37,34 @@ Store the complete structured fields below in the referenced packet or build the
 
 ## Special Source Types
 
+### Cash Collection Receipt Packets
+
+Use a Receipt packet only for money the business has actually collected. It is distinct from a vendor receipt documenting money the business paid.
+
+Required fields:
+
+- `document_type`: `Receipt`;
+- `receipt_number`, `receipt_date`, and `receiving_entity`;
+- exact `project_property` and project identity;
+- `received_from`, or an explicit note that the cash buyer's name was not recorded;
+- `collected_by`, `payment_method`, and `collection_status`;
+- item description, quantity, and actual amount collected for each line;
+- `total_collected`, which must equal the line-item sum;
+- `application`, normally `Estate Sale Proceeds / Project Credit` for an estate-sale item assigned to a property;
+- `deposit_status`, kept separate from collection status;
+- authoritative source confirming the completed sale and collected amount; and
+- Marketplace item ID, listing title/URL, draft ID, or source path when Marketplace supplied the item identity.
+
+Receiver rules:
+
+- Marketplace listing price is not sale evidence and must not be substituted for the actual amount collected.
+- Treat an active listing, draft, or Marketplace inventory row as item-identification evidence only unless an authorized source separately confirms the completed sale.
+- Deduplicate first by property plus receipt number, then by Marketplace item ID plus sale date plus actual amount.
+- Do not mark a Marketplace listing sold, contact a buyer, accept payment, or edit Marketplace records from Invoice Entry.
+- `Cash Received` does not mean `Deposited`. Use `Not Recorded`, `Pending Deposit`, or `Deposited` only as supported by separate evidence.
+- Preserve the original project expense. Do not enter sale proceeds as a negative invoice, refund, or expense reduction unless the source specifically establishes that accounting treatment.
+- Until an approved receipts/project-credit worksheet mode exists, set workbook status to `Needs Review - Project Credit Placement` and do not insert the receipt into a Vendor Tab or expense area.
+
 ### Manager Time Card Packets
 
 Manager may send a versioned Time Card packet only after Wes requests draft/final processing or otherwise authorizes Invoice Entry processing. The packet must contain:
