@@ -66,6 +66,13 @@ Use this mode when OfficeAssist routes a Brynda Suit email source into the exist
 ## Outputs
 
 Use `C:\Codex\Wiki Files\Project Rooms\Brynda Suit\outputs` for review-ready drafts, summaries, checklists, handoff notes, and final deliverables.
+
+## Draft Delivery
+
+- Wes authorizes automatic internal delivery of every new or revised Brynda Suit draft created by this workflow to `WesWill@BuyYourHomeLLC.com`.
+- Send the current draft as an attachment from `OfficeAssist@BuyYourHomeLLC.com`, use a subject beginning with `DRAFT:`, verify the sent copy in OfficeAssist Sent Items, and record the delivery in `working\email-delivery-log.md`.
+- Do not copy Jenny or send the draft to Keith, Natalie, opposing counsel, or another recipient unless Wes separately authorizes those recipients for that delivery.
+
 ## Delegation Contract
 
 Delegation Contract: Follow `C:\Codex\Wiki Files\Project Room Delegation Contract.md`. Jean may delegate this PR's work only to its registered task in `Project Rooms\Jean Wright\working\dispatcher-routing-map.md`; accept and return the same `dispatch_id` under the central contract.
