@@ -38,7 +38,9 @@ Use with `scripts\create-cash-receipt.py`. This template documents money collect
 - `total_collected` must equal the item-line sum.
 - State an unknown buyer name explicitly; do not silently invent one.
 - Marketplace asking/listing price is not the amount collected.
+- Rosebrooks Estate Sale exception: a direct Wes command `Receipt item #<item number>` confirms sale and cash collection at the item's current established Marketplace price unless Wes states a different amount or payment method.
 - Keep `collection_status` and `deposit_status` separate.
 - Run duplicate checks and PDF visual QA before filing or delivery.
 - Use application `Estate Sale Proceeds / Project Credit` for the current Rosebrooks estate-sale workflow.
 - Hold workbook posting as `Needs Review - Project Credit Placement` until an approved receipts/project-credit worksheet exists.
+- After durable receipt recording, send the exact item/listing to Marketplace for the separately owned Facebook `Sold` update and preserve its returned status.

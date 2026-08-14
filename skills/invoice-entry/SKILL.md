@@ -297,10 +297,11 @@ Required receipt facts:
 Marketplace reference rules:
 
 - Receipt mode may read a Marketplace Estate Sale item ID, inventory row, listing title, listing URL, draft/listing ID, or Marketplace source path to identify the item.
-- An asking price, draft, active listing, buyer inquiry, offer, or appointment is not proof of a completed sale or the amount collected.
-- Do not substitute the asking price for the actual amount received.
+- During the current Rosebrooks Estate Sale, Wes may invoke the complete shorthand `Receipt item #<item number>`. That direct command confirms that the exact item sold and cash was collected, defaults the receipt amount to the current established price in the sale-scoped Marketplace item record, and uses the request date as the receipt date. If Wes states another price or payment method, use the stated exception.
+- `Established price` means the one current public sale price associated with that stable item number. Do not use an old price, private minimum, expected range, comparable value, or price belonging to another item. If the current record has no single price or conflicts with the listing, hold the request and ask Wes.
+- Outside Wes's complete shorthand or another authoritative completed-sale source, an asking price, draft, active listing, buyer inquiry, offer, or appointment is not proof of a completed sale or the amount collected.
 - Do not mark an item sold, edit a listing or Marketplace record, contact a buyer, negotiate, accept money, or perform another Marketplace action from Invoice Entry.
-- Preserve the Marketplace identifier and source reference on the receipt packet so Marketplace and Invoice Entry records can later be reconciled without duplicating the sale.
+- Preserve the Marketplace identifier and source reference on the receipt packet so Marketplace and Invoice Entry records can later be reconciled without duplicating the sale. When the buyer and physical collector are not stated in the shorthand, record them explicitly as not recorded rather than inventing names.
 
 Generation and accounting rules:
 
@@ -315,8 +316,12 @@ Generation and accounting rules:
 9. There is no approved receipts/project-credit worksheet mode yet. Generate and file a supported receipt, but hold project-workbook insertion as `Needs Review - Project Credit Placement`; never insert it into a Vendor Tab or expense area merely to make project totals net.
 10. File the finished receipt only in the freshly resolved authoritative property location under the established receipt destination. If no receipt destination exists or its ownership is unclear, report the filing blocker instead of inventing or using a similar folder.
 11. Invoice Entry never sends the receipt directly. If Wes requests delivery, prepare the exact package and hand it to Email Monitor's Email Delivery workflow; require verified OfficeAssist Sent Items evidence.
+12. After the exact item, current established or overridden price, and confirmed cash collection are durably recorded, send one direct sold-status handoff to the registered Marketplace task `019fb5b0-6c29-7b32-822b-aa13b5920c29`. Use dispatch id `invoice-entry-marketplace-sold-<YYYYMMDD>-<item-number>-v1` and include the stable item number, exact listing URL or listing identifier, sale date, amount, payment method, receipt number, property, and the direct Wes command as authorization evidence.
+13. Marketplace owns the Facebook action. Require it to return the same dispatch id with `accepted` before action and then `confirmed`, `blocked`, or `needs Wes`. Record the result with the receipt. Do not claim or infer that Facebook was updated before Marketplace returns verification.
+14. If the item number is missing, duplicated, does not map to exactly one current item/listing, or conflicts with the supplied price or listing, hold both receipt generation and the sold-status handoff. Do not guess or mark a nearby item sold.
+15. Do not repeat a Marketplace handoff after a verified `confirmed` result or an ambiguous result that might have changed Facebook. Reconcile the existing dispatch and listing status first.
 
-For `20-HM - 115 Rosebrooks Dr`, Marketplace is currently only a source reference. No receipt may be generated until the specific item, actual amount collected, receipt date, receiving entity, collector, payment method, buyer-name treatment, and completed-sale evidence are supplied or resolved from an authorized source.
+For `20-HM - 115 Rosebrooks Dr`, the shorthand itself supplies completed-sale evidence, cash as payment method, current established price as the amount, request date as receipt date, and explicit not-recorded treatment for buyer and collector when omitted. Resolve the receiving entity and exact item/listing from the authoritative current sale record. Any unresolved required fact remains a blocker.
 
 ## Required Inputs
 

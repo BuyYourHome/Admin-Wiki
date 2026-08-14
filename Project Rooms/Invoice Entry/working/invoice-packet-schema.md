@@ -58,9 +58,11 @@ Required fields:
 Receiver rules:
 
 - Marketplace listing price is not sale evidence and must not be substituted for the actual amount collected.
+- Narrow Rosebrooks Estate Sale exception: Wes's direct command `Receipt item #<item number>` is confirmation that the exact item sold for its current established Marketplace price and cash was collected. Use a different price or payment method only when Wes states it in the command. This exception does not let a listing price establish a sale without Wes's receipt command.
 - Treat an active listing, draft, or Marketplace inventory row as item-identification evidence only unless an authorized source separately confirms the completed sale.
 - Deduplicate first by property plus receipt number, then by Marketplace item ID plus sale date plus actual amount.
 - Do not mark a Marketplace listing sold, contact a buyer, accept payment, or edit Marketplace records from Invoice Entry.
+- After the Rosebrooks receipt facts are durably recorded, send one sold-status handoff to the registered Marketplace task with the item number, exact listing reference, sale date, established or overridden amount, payment method, receipt number, and source command. Record Marketplace's returned `confirmed`, `blocked`, or `needs Wes` result; never repeat an ambiguous or verified Facebook action.
 - `Cash Received` does not mean `Deposited`. Use `Not Recorded`, `Pending Deposit`, or `Deposited` only as supported by separate evidence.
 - Preserve the original project expense. Do not enter sale proceeds as a negative invoice, refund, or expense reduction unless the source specifically establishes that accounting treatment.
 - Until an approved receipts/project-credit worksheet mode exists, set workbook status to `Needs Review - Project Credit Placement` and do not insert the receipt into a Vendor Tab or expense area.
