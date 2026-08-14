@@ -64,6 +64,12 @@
 | `Invoice Entry Working Archive\Source Documents\2026-08-08 Sullivan Surveying 2475\invoice\Lot 18 Burtrose Subdivision (908 Pond Street) - Invoice No. 2475.pdf` | authoritative invoice attachment - held | Valid one-page PDF, 107,785 retrieved bytes, SHA-256 `C35B6EBCEE79CA9EAC304B6415C35FD9A8369A8CF4EECF0431B011F934A728E2`. Printed total `$387.00`; first line has a `$0.50` extension discrepancy. Packet: `working\create-vendor-invoice\2026-08-08-sullivan-surveying-2475\invoice-packet.md`. |
 | Outlook messages ending `ACiLEHqgAAAA==` and `ACiLEHqwAAAA==`, received `2026-08-11T14:01:39Z` and `2026-08-11T14:01:44Z` | authoritative American Express statement notice plus duplicate transport copy - held | One August 2026 statement-availability event for Wesley Browning's account ending `61000`; payment due 2026-09-04. No attachment or balance. Packet: `working\statement-packets\2026-08-11-american-express-61000\statement-packet.md`. Hold until the statement is retrieved through an authorized American Express session and routed through Doc Scan. |
 
+## Tensity Stove Sale Receipt - 2026-08-14
+
+| Source | Classification | Durable outcome |
+| --- | --- | --- |
+| Wes's direct Invoice Entry instruction on 2026-08-14 | authoritative receipt and project-assignment instruction - processed | One `$250.00` cash receipt for the sale of one stove was assigned to `24-HM - 4121 Tensity Dr` as `Stove Sale Proceeds / Project Credit`. Receipt `RCPT-20260814-4121-001` was generated, visually verified, filed once in `Property/24-HM - 4121 Tensity Dr/Owning/Invoices`, and read back with matching SHA-256. No Marketplace item number was supplied, so no sold-status handoff occurred. No workbook entry, deposit record, email, approval, payment, or paid status followed. Detailed log: `working\receipts\2026-08-14-tensity-stove-sale\processing-log.md`. |
+
 ## Source Cleanup Log
 
 | Cleanup date | Local repo source path removed | Teams destination | Files | Bytes | Category/source group | Notes |
