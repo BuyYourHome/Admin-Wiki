@@ -93,7 +93,7 @@ The dedicated Marketplace chat and durable records remain available, but Marketp
 - When the applicable listing is published with separate authorization, Marketplace may answer supported availability questions and share Wes's approved showing windows.
 - The mode does not authorize early price reductions, holds, sales, payments, deposits, private-address or phone disclosure, or other commitments.
 - The broader Marketplace pause and seller-response heartbeat remain unchanged unless Wes separately resumes them.
-- Narrow Receipt exception: for the current Rosebrooks Estate Sale, an exact Invoice Entry sold-status handoff based on Wes's `Receipt item #<item number>` command authorizes Marketplace to verify that one item/listing and mark only that Facebook listing `Sold`. Follow `Estate Sale Mode.md`; do not contact the buyer or resume any other Marketplace activity.
+- Narrow Receipt exception: for the current Rosebrooks Estate Sale, an exact Invoice Entry sold-status handoff based on Wes's `Receipt item #<item number>` command authorizes Marketplace to verify that one item/listing and mark only that Facebook listing `Sold`. Wes may use `Zelle item #<item number>` as the equivalent shorthand when he personally confirms that Zelle funds were received; it uses payment method `Zelle` and the item's current established price unless Wes states another collected amount. Follow `Estate Sale Mode.md`; do not request or verify payment, disclose payment details, contact the buyer, or resume any other Marketplace activity.
 
 ## Start PR
 

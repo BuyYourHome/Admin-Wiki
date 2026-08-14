@@ -108,9 +108,24 @@ Marketplace may not:
 - If the record is uncertain or may be stale, say availability is being checked and route the question to Wes.
 - Mark an item `sold` or `unavailable` only after Wes confirms the outcome or another authorized source conclusively establishes it.
 
+## Zelle Receipt Mode
+
+For an activated estate sale, Wes may use `Zelle item #<item number>` as a complete shorthand confirming that Zelle funds were actually received for that exact numbered item. Wes may state an amount, for example `Zelle item #004 for $25`; otherwise use the item's one current established public price. Treat the shorthand as `Receipt item #<item number>` with payment method `Zelle` and route it to the existing Invoice Entry Receipt workflow.
+
+Zelle Receipt Mode must:
+
+1. Resolve the stable item number to exactly one current sale item and one current Marketplace listing.
+2. Treat only Wes's direct confirmation as proof that funds were received. A buyer's message, promise, screenshot, pending notice, or claimed transfer is not proof.
+3. Use the current established public price unless Wes expressly confirms a different collected amount.
+4. Send Invoice Entry the exact item identity, listing reference, collected amount, payment method `Zelle`, sale date, property, and Wes's direct command.
+5. Wait for Invoice Entry to create and return the exact receipt-to-sold handoff before Marketplace marks the matched Facebook listing `Sold`.
+6. Stop without creating a receipt or changing Facebook if the item, listing, price, received-funds confirmation, or returned handoff is missing, duplicated, conflicted, or ambiguous.
+
+Zelle Receipt Mode does not authorize Marketplace to request or initiate a payment, open or verify a bank or Zelle account, accept a buyer's claim as payment evidence, issue a refund, reduce a price, reserve or hold an item, or share any email address, phone number, Zelle handle, account identifier, confirmation code, screenshot, or other payment detail. Git records may contain only the payment method `Zelle`, the amount, sale/listing/item references, and receipt or handoff references needed for reconciliation.
+
 ## Invoice Entry Receipt-To-Sold Handoff
 
-For the current Rosebrooks Estate Sale, Wes's direct Invoice Entry command `Receipt item #<item number>` is standing authority for one narrow sold-status workflow. It confirms the exact item sold and cash was collected at the item's current established price unless Wes states a different price or payment method.
+For the current Rosebrooks Estate Sale, Wes's direct Invoice Entry command `Receipt item #<item number>` is standing authority for one narrow sold-status workflow. It confirms the exact item sold and cash was collected at the item's current established price unless Wes states a different price or payment method. The Marketplace shorthand `Zelle item #<item number>` invokes the same workflow with payment method `Zelle` under the stricter confirmation and privacy rules above.
 
 Invoice Entry sends the registered Marketplace task one handoff using dispatch id `invoice-entry-marketplace-sold-<YYYYMMDD>-<item-number>-v1`. The handoff must include:
 
