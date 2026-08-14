@@ -390,3 +390,12 @@ Context: Corrected 2025 Lowe's packets had accurate item amounts but initially o
 - A collected-money Receipt is not a vendor purchase receipt: preserve the original project cost and classify sale proceeds separately as project credit.
 - Marketplace listing facts identify an item, but only supported completed-sale and collection evidence can establish the receipt date and actual amount collected.
 - Collection and deposit are separate states. A cash receipt must not imply that the cash was deposited.
+
+## 2026-08-14 - Worker Versus Invoice Payee
+
+Context: Tim Fleming reported his own hours and Jeff's hours in one source, and Wes clarified that Jeff's labor is billed through Tim.
+
+- Do not assume every named worker is a separate invoice issuer or payee.
+- When labor is billed through a contractor, keep that contractor as issuer/payee and identify the actual worker on the applicable invoice lines.
+- Route the correction-review draft to the issuer/payee; a separate worker email is unnecessary unless the source says the worker bills independently.
+- A corrected package may supersede a verified draft delivery, but preserve the earlier Sent Items evidence and explicitly prevent either package from becoming a duplicate obligation.

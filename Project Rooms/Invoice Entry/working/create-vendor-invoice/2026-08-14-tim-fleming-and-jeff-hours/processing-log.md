@@ -29,3 +29,23 @@ Outcome: `Superseded handling - Wes clarified that correctable ambiguity should 
 - No approval, finalization, filing, workbook posting, payment, or paid status occurred.
 
 Outcome: `Needs Wes - Tim drafts sent for correction review; supply Jeff's full invoice name and email for his draft`.
+
+## 2026-08-14 - Wes Correction: Jeff Labor Billed Through Tim
+
+- Wes clarified that his statement was an instruction: Jeff's time is billed to Tim.
+- Superseded the prior payee interpretation without deleting or altering the verified first delivery evidence.
+- Kept Tim Fleming as issuer/payee and identified Jeff only as the worker on the applicable labor lines.
+- Regenerated three correction-review drafts: Pond `$812.50`; Tensity `$337.50` (`$250.00` Tim plus `$87.50` Jeff labor); Rosebrooks `$75.00` Jeff labor; combined `$1,225.00`.
+- All three PDFs passed extracted-text, arithmetic, and full-page visual QA.
+- Archived three PDFs, three structured inputs, and three QA renders under `Generated\2026-08-14-Tim-Jeff-Hours-Drafts-Revised-Billed-Through-Tim`; verified 9 files totaling 395,426 bytes.
+- Routed Email Delivery request `IE-EMAIL-20260814-TIM-MULTIPROJECT-DRAFT-002` to Tim with Wes and Jenny copied. Verification is pending.
+
+## 2026-08-14 - Revised Tim Package Delivery Verified
+
+- Email Delivery request `IE-EMAIL-20260814-TIM-MULTIPROJECT-DRAFT-002` was sent exactly once and verified in OfficeAssist Sent Items at `2026-08-14T19:48:08Z`.
+- OfficeAssist sent to Tim Fleming with Wes and Jenny copied; BCC was empty. Exact body and exactly three non-inline PDF attachments were verified.
+- Sent message id ends `ACiq4ucwAAAA==`; transmitted attachment sizes were Pond 3,470 bytes, Tensity 3,618 bytes, and Rosebrooks 3,496 bytes.
+- The earlier two-draft Sent Items evidence remains preserved unchanged and is superseded for correction review by this package.
+- No approval, finalization, filing, workbook posting, payment, or paid status occurred.
+
+Outcome: `Done - corrected Tim-issued three-project draft package sent and verified; awaiting correction by exception`.
