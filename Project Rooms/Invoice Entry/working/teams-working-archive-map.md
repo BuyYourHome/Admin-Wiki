@@ -181,3 +181,11 @@ The archive destination was verified by file count and byte total before removal
 | Josh Kennedy LLC open-period draft PDF through August 12, structured input, and one-page visual-QA render | `Generated\2026-08-13-Josh-Semimonthly-Daily-Draft-Through-Aug12` | 3 | 205,150 | open-period semimonthly Time Card draft and QA evidence |
 
 The archive destination was verified by file count and byte total before the generated local copies were removed. The OfficeAssist Sent Items attachment is the authoritative delivered copy. The period remains open; no finalization, filing, posting, approval, payment, or paid status occurred.
+
+## Rosebrooks Cleanup Cash Receipt Hold Recorded 2026-08-14
+
+| Local working files | Teams destination under `Invoice Entry Working Archive` | Files | Bytes | Category |
+| --- | --- | ---: | ---: | --- |
+| Verified Rosebrooks cleanup-cash receipt PDF | `Generated\2026-08-14-Rosebrooks-Cleanup-Cash-Receipt-Hold` | 1 | 3,080 | completed receipt held pending authoritative property destination |
+
+The archive copy matches SHA-256 `840577A7E20AD829BDAA207772D2DD8DD6BE0C0F6B8921735B4CD59C1FB58243`. Property filing is held because the current `20-HM` Rosebrooks `Owning` folder has no established receipt destination; the stale `19-HM` centralized invoice folder was not used. No workbook insertion, deposit record, Marketplace action, email, payment, approval, or paid status occurred.

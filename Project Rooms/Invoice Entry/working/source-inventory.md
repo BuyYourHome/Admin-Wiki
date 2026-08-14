@@ -70,6 +70,12 @@
 | --- | --- | --- |
 | Wes's direct Invoice Entry instruction on 2026-08-14 | authoritative receipt and project-assignment instruction - processed | One `$250.00` cash receipt for the sale of one stove was assigned to `24-HM - 4121 Tensity Dr` as `Stove Sale Proceeds / Project Credit`. Receipt `RCPT-20260814-4121-001` was generated, visually verified, filed once in `Property/24-HM - 4121 Tensity Dr/Owning/Invoices`, and read back with matching SHA-256. No Marketplace item number was supplied, so no sold-status handoff occurred. No workbook entry, deposit record, email, approval, payment, or paid status followed. Detailed log: `working\receipts\2026-08-14-tensity-stove-sale\processing-log.md`. |
 
+## Rosebrooks Cleanup Cash Receipt - 2026-08-14
+
+| Source | Classification | Durable outcome |
+| --- | --- | --- |
+| Wes's direct Invoice Entry instruction on 2026-08-14 | authoritative collection and project-assignment instruction - receipt generated; property filing held | One `$300.00` cash receipt for money found during cleanup was assigned to `20-HM - 115 Rosebrooks Dr` as `Cleanup Cash / Project Credit`. Receipt `RCPT-20260814-115-001` passed visual and arithmetic QA and is retained in the Invoice Entry working archive. The current authoritative property `Owning` folder has no established receipt destination, and the stale `19-HM` centralized invoice folder was not used. No Marketplace handoff, workbook entry, deposit record, email, approval, payment, or paid status followed. Detailed log: `working\receipts\2026-08-14-rosebrooks-cleanup-cash\processing-log.md`. |
+
 ## Source Cleanup Log
 
 | Cleanup date | Local repo source path removed | Teams destination | Files | Bytes | Category/source group | Notes |
