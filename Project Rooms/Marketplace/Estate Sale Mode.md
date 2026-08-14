@@ -52,6 +52,15 @@ If an edit could affect a buyer's understanding of condition, use the original o
 - On or after the price-protection date, do not reduce automatically. Ask Wes or follow a separately recorded reduction schedule.
 - Never accept an offer, mark an item sold, or make a price commitment unless Wes has authorized that exact result or an explicit mode rule covers it.
 
+## Printed Price Labels
+
+- Whenever Wes asks to print price labels, price decals, or item tags for an estate sale, include a stable item reference number on every label.
+- Use the item's existing sale-scoped item id when one is already recorded. If an item has no id, assign a unique sequential sale-scoped id before generating the labels.
+- The printed reference number must match the item register, pricing spreadsheet, listing packet, and any later sale-outcome or receipt record for that item.
+- Show the reference number clearly with the item title and listed price so Wes can identify the corresponding record during and after the sale.
+- Use one reference number per listing or bundle. Assign separate numbers only when components are individually priced and tracked as separate sale items.
+- Do not reuse or renumber an item after labels have been produced. If a label is reprinted or the price changes, preserve the same reference number.
+
 ## Buyer Conversation Authority
 
 Once Wes has separately authorized publication and a buyer responds to an active estate-sale listing, Marketplace may:
