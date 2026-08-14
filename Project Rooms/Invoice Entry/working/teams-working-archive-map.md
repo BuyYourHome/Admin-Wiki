@@ -197,3 +197,12 @@ The archive copy matches SHA-256 `840577A7E20AD829BDAA207772D2DD8DD6BE0C0F6B8921
 | Tensity and Rosebrooks pre-edit rollback workbooks plus validation manifest | `Generated\2026-08-14-Receipt-Opposite-Sign-Workbook-Posting` | 3 | 1,451,032 | rollback and authoritative read-back evidence for two receipt postings |
 
 The Tensity rollback hash is `1692670AFB1ADE6098E34E0388823E45DED30888ECAC6F37F1BDF9EF29357480`; the Rosebrooks rollback hash is `212141F3DDC36F5E0C3ABFCAE89F80A50C6182E1FDFB61A4774DE2E0BB8AE351`. Authoritative uploaded/read-back hashes are `F417613E9F53CC395D326B23199C73E2246C07BCD7691FAF4B454083C2B535BD` for Tensity and `2FEE630DA2762745DCED877AB33679F8C6A260DB9CE8B170693B44F054AC6770` for Rosebrooks. Both postings were duplicate-checked, reopened in Excel, visually sampled, uploaded by exact target, and downloaded byte-for-byte. No email, payment, deposit, Marketplace, approval, or paid-status action occurred.
+
+## Rosebrooks Estate Sale Item ES-20260815-003 Receipt And Workbook Evidence Recorded 2026-08-14
+
+| Local working files | Teams destination under `Invoice Entry Working Archive` | Files | Bytes | Category |
+| --- | --- | ---: | ---: | --- |
+| Formal receipt PDF, structured JSON, and one-page QA render | `Generated\2026-08-14-Rosebrooks-ES-003-Receipt-Hold` | 3 | 143,644 | completed receipt held pending authoritative property receipt destination |
+| Rosebrooks pre-edit rollback workbook and validation manifest | `Generated\2026-08-14-Rosebrooks-ES-003-Workbook-Posting` | 2 | 717,650 | rollback and authoritative read-back evidence |
+
+The receipt PDF matches SHA-256 `ADC476AB842B4D6AC29AF87A5F8C877D8D365E8537FD20479E5DBDD8F68C14A3`. The rollback workbook matches `2FEE630DA2762745DCED877AB33679F8C6A260DB9CE8B170693B44F054AC6770`; the authoritative uploaded/read-back workbook matches `D2090DBCB53976461D306A2988383FE09C133B968308EB3E3AF0FEB30BB93EA0`. Filing remains held because the current Rosebrooks property folder has no established receipt destination. No email, payment, approval, paid status, deposit record, or direct Facebook action occurred.
