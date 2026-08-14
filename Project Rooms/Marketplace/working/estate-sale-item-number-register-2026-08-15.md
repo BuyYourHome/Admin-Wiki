@@ -11,7 +11,7 @@ This register controls the stable reference numbers printed on the Avery 18660 p
 | --- | --- | --- | ---: | --- |
 | ES-20260815-001 | Decorative Doll and Angel Lot | Decor, Collectibles & Books | $45 | Active |
 | ES-20260815-002 | Stained-Glass-Style Hanging Pendant Light | Decor, Collectibles & Books | $75 | Active |
-| ES-20260815-003 | Wood Rolling Kitchen Cart | Furniture, Storage & Lighting | $50 | Active |
+| ES-20260815-003 | Wood Rolling Kitchen Cart | Furniture, Storage & Lighting | $50 | Sold (2026-08-14) |
 | ES-20260815-004 | GE Countertop Microwave | Appliances | $30 | Active |
 | ES-20260815-005 | Oak-Finish Microwave Cabinet or Stand | Furniture, Storage & Lighting | $45 | Active |
 | ES-20260815-006 | Folding Drying-Rack Pair | Tools, Office & Household | $25 | Active |
