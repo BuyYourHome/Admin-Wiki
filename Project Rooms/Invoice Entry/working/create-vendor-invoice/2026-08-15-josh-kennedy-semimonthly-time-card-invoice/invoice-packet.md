@@ -109,6 +109,30 @@ August 12 dispatch: `email-monitor-route-vendor-invoice-20260813-josh-time-card-
 
 Updated accumulated accepted time through August 12: `86 hours 25 minutes` (`70 hours 25 minutes` Tensity; `4 hours 0 minutes` BackOffice; `12 hours 0 minutes` Rosebrooks).
 
+August 13 dispatch: `email-monitor-route-vendor-invoice-20260814-josh-time-card-aug13-001`
+
+- Outlook message id: `AQMkADZkMGMwNDI3LWU5ZjctNDgzMC1iMjdkLTY0NmRiN2IwNmIyZgBGAAADKGOvWJYjX0aEKaRpd0MYQQcAVSXargQY20aF7RLCkro4ggAAAgEMAAAAVSXargQY20aF7RLCkro4ggACiq4RFgAAAA==`.
+- Sender: `IRAManager@SellYourHomeRaleigh.com`; received `2026-08-14T13:44:52Z`; subject `Time card`; attachments: none.
+- Source fact: Thursday, August 13, 2026, BackOffice from `8:00 AM` to `1:00 PM` and again from `10:00 PM` to `11:00 PM`.
+- No break was stated, so no break was deducted. The two source-supported intervals total `6 hours 0 minutes`.
+
+| 2026-08-13 | BackOffice | 8:00 AM / 10:00 PM | 1:00 PM / 11:00 PM | 6 hours 0 minutes | New accepted line from durable dispatch `email-monitor-route-vendor-invoice-20260814-josh-time-card-aug13-001`; no matching dispatch, Outlook source, or August 13 line was found. |
+
+Updated accumulated accepted time through August 13: `92 hours 25 minutes` (`70 hours 25 minutes` Tensity; `10 hours 0 minutes` BackOffice; `12 hours 0 minutes` Rosebrooks).
+
+The fixed semimonthly amount remains `$2,708.33`. The through-August-13 proportional allocation is `$2,063.60` Tensity, `$293.06` BackOffice, and `$351.67` Rosebrooks.
+
+Updated through-August-13 delivery:
+
+- Request id: `IE-EMAIL-20260814-JOSH-SEMIMONTHLY-DAILY-DRAFT-004`.
+- Sent exactly once from OfficeAssist to Josh; Wes and Jenny copied; BCC empty.
+- Subject: `UPDATED DRAFT: Josh Kennedy LLC Time Card Invoice - August 1-15, 2026 (Through August 13)`.
+- Sent and verified: `2026-08-14T19:30:35Z`.
+- Sent message id ending: `ACiq4ucQAAAA==`.
+- Verified attachment: stable invoice filename; non-inline `application/pdf`; 4,066 transmitted bytes.
+- PDF, structured input, and one-page QA render are archived at `Generated\2026-08-14-Josh-Semimonthly-Daily-Draft-Through-Aug13`; 3 files totaling 215,962 bytes verified.
+- This delivery is correction-by-exception review only. The period remains open and no finalization, approval, filing, posting, payment, or paid status occurred.
+
 Updated through-August-12 delivery:
 
 - Request id: `IE-EMAIL-20260813-JOSH-SEMIMONTHLY-DAILY-DRAFT-003`.
@@ -132,6 +156,7 @@ Updated through-August-12 delivery:
 - The August 10 message id, dispatch id, work date, project, and time range did not match any prior packet line. It was added once and must reconcile to this line if routed again.
 - The August 11 message and dispatch identities did not match prior source evidence. Its two non-overlapping intervals were added once. The work date is a documented received-date assumption, not an independently stated source fact.
 - The August 12 retry message and dispatch identities did not match prior source evidence. Its 7:30 AM-4:00 PM Rosebrooks cleaning interval was added once without an undocumented break deduction and must not be added again if rerouted.
+- The August 13 durable dispatch and Outlook identity did not match prior source evidence. Its two BackOffice intervals were added once as a combined six-hour line and must not be added again if rerouted.
 - This belongs to the August 1-15 semimonthly period and must not alter the approved July 16-31 invoice.
 - Do not finalize, file, post, approve, or treat invoice `INV-JKLLC-20260815-001` as payable before the period closes on August 15 and Wes approves it.
 

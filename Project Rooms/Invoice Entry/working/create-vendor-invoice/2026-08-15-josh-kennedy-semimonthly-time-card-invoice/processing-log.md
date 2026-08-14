@@ -153,3 +153,23 @@ Outcome: `Done - corrected final-style presentation draft sent once to Wes and v
 - Archived the PDF, structured input, and one-page QA render at `Generated\2026-08-13-Josh-Semimonthly-Daily-Draft-Through-Aug12`; verified 3 files totaling 205,150 bytes.
 
 Outcome: `Done - August 12 recorded once and updated open-period draft sent and verified`.
+
+## 2026-08-14 - August 13 Durable Queue Intake
+
+- Accepted durable dispatch `email-monitor-route-vendor-invoice-20260814-josh-time-card-aug13-001` before substantive work and moved it to `Processing`.
+- Read the exact OfficeAssist Outlook source by message id ending `ACiq4RFgAAAA==`; no mailbox search or alternate source was used.
+- Duplicate checking found no matching dispatch, message, or August 13 Josh line.
+- Added August 13 once: BackOffice from `8:00 AM` to `1:00 PM` and `10:00 PM` to `11:00 PM`, totaling `6 hours 0 minutes`. No undocumented break was deducted.
+- Updated accepted time is `92 hours 25 minutes`: Tensity `70 hours 25 minutes`; BackOffice `10 hours`; Rosebrooks `12 hours`.
+- Retained the fixed semimonthly invoice amount of `$2,708.33` and recalculated the current proportional allocation to `$2,063.60` Tensity, `$293.06` BackOffice, and `$351.67` Rosebrooks.
+- Generated and visually verified the updated one-page draft. The period remains open; no approval, filing, workbook posting, payment, or paid status occurred.
+
+## 2026-08-14 - August 13 Daily Draft Delivery
+
+- Email Delivery request `IE-EMAIL-20260814-JOSH-SEMIMONTHLY-DAILY-DRAFT-004` was sent exactly once and verified in OfficeAssist Sent Items at `2026-08-14T19:30:35Z`.
+- OfficeAssist sent to Josh with Wes and Jenny copied; BCC was empty. Exact subject, body, and one non-inline PDF attachment were verified.
+- Sent message id ends `ACiq4ucQAAAA==`; the attachment transmitted at 4,066 bytes.
+- Archived the PDF, structured input, and one-page QA render under `Generated\2026-08-14-Josh-Semimonthly-Daily-Draft-Through-Aug13`; verified 3 files totaling 215,962 bytes.
+- The period remains open. No finalization, approval, filing, workbook posting, payment, or paid status occurred.
+
+Outcome: `Done - August 13 recorded once and updated open-period draft sent and verified`.
