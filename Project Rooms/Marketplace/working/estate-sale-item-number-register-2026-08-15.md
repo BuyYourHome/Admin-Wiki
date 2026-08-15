@@ -87,3 +87,4 @@ This register controls the stable reference numbers printed on the Avery 18660 p
 | ES-20260815-101 | Vintage GE Clock Cassette Recorder | Electronics & Media | $20 | Active |
 | ES-20260815-102 | Wood Slat-Back Rocking Chair | Furniture, Storage & Lighting | $45 | Active |
 | ES-20260815-103 | Assorted Music CDs - $1 Each | Electronics & Media | $1 each | Active; Facebook review pending |
+| ES-20260815-104 | Vintage Walnut Cedar Hope Chest with Drawer | Furniture, Storage & Lighting | $100 | Unpublished Facebook draft; needs maker/latch review before publication |

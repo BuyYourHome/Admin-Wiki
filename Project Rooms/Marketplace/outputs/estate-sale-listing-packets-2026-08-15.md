@@ -272,6 +272,12 @@ These are decision aids, not guarantees. Low-confidence prices should be revisit
 
 **Private:** Expected $12-$18; quick-sale $10; confidence medium. Photo 134239070. Add dimensions and mounting-hardware details.
 
+### ES-20260815-104 - Vintage Walnut Cedar Hope Chest with Drawer - $100
+
+**Public draft:** Vintage cedar/hope chest with decorative walnut-tone veneer, front lock/key as shown, tapered legs and a lower storage drawer. Useful for blankets, linens or keepsakes. Vintage condition with visible finish wear, scuffs and scratches on the lid and trim; please review the photo. Maker, dimensions, interior condition and lock operation have not been verified. Sold as-is. Safety: maker/date and latch status are unverified. Do not use as a toy chest; inspect and disable any automatic latch before use. Local pickup in Cary.
+
+**Private:** Unpublished Facebook draft `1423713586280732`; category Furniture; condition Used - Fair; internal SKU `ES-20260815-104`. Asking price $100. Current comparable asks observed on 2026-08-15 ranged from about $40 for an unknown-maker mid-century chest with a lower drawer, to $100 for a used chest with surface scratches, to $150 for a Lane chest with a lower drawer. Confidence medium-low until the maker label, interior, dimensions and latch operation are photographed. CPSC warns that certain pre-1987 Lane/Virginia Maid chests and other storage chests with automatic latches pose an entrapment hazard; do not publish without reviewing the maker and latch. Use the [prepared photo](https://lifeisanadventure.sharepoint.com/sites/SellYourHome/Shared%20Documents/Office%20Admin/Marketplace/Estate%20Sale%20-%202026-08-15/Prepared%20Photos%20-%202026-08-12%20-%20Other/ES-20260815-104-cedar-hope-chest-prepared.png), with the [source photo](https://lifeisanadventure.sharepoint.com/sites/SellYourHome/Shared%20Documents/Office%20Admin/Marketplace/Estate%20Sale%20-%202026-08-15/Source%20Captures%20-%202026-08-12/ES-20260815-104-cedar-hope-chest-source.jpg) retained for accuracy review.
+
 ## Best-Estimate Assumptions Used
 
 1. Cary, NC is used as the public location; the exact address is held only for the private posting session.
