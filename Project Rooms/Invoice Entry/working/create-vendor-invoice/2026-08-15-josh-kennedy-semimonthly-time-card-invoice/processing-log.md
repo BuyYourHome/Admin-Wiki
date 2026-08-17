@@ -196,3 +196,19 @@ Outcome: `Done - August 13 recorded once and updated open-period draft sent and 
 - No finalization, approval, filing, workbook posting, payment, or paid status occurred.
 
 Outcome: `Done - August 14 recorded once and period-closed correction-review draft sent and verified`.
+
+## 2026-08-17 - August 15 Period Closeout And Approval Routing
+
+- Wrote the exact same-id durable `accepted` receipt for dispatch `email-monitor-route-vendor-invoice-20260817-josh-time-card-aug15-001` before substantive work and moved it to `Processing`.
+- Preserved Outlook message id ending `ACi7Vd0AAAAA==`, sender, received timestamp, subject, and no-attachment status.
+- Duplicate checking found no matching dispatch, Outlook source, or August 15 line.
+- Added August 15 once: `115 Rosebrooks Dr`, `8:00 AM` to `11:00 AM`, totaling `3 hours 0 minutes`. No task description or break was stated or inferred.
+- Closed-period accepted time is `100 hours 25 minutes`: Tensity `70 hours 25 minutes`; BackOffice `11 hours 30 minutes`; Rosebrooks `15 hours`; Pond `3 hours 30 minutes`.
+- Retained the fixed semimonthly amount of `$2,708.33` and reconciled allocations to `$1,899.20` Tensity, `$310.17` BackOffice, `$404.56` Rosebrooks, and `$94.40` Pond.
+- Generated and visually verified one one-page PDF marked `DRAFT - PERIOD CLOSED - NOT FINALIZED`; extracted text, hours, and both allocation totals passed verification.
+- Archived the PDF, structured input, and QA render at `Generated\2026-08-17-Josh-Semimonthly-Closed-Draft-Through-Aug15`; verified 3 files totaling 271,603 bytes.
+- Correction-review delivery `IE-EMAIL-20260817-JOSH-SEMIMONTHLY-CLOSED-DRAFT-006` was sent exactly once and verified at `2026-08-17T12:00:22Z` to Josh with Wes and Jenny copied. Message id ends `ACi7Uw2QAAAA==`; attachment transmitted at 4,450 bytes.
+- Approval request `IE-EMAIL-20260817-JOSH-SEMIMONTHLY-WES-APPROVAL-001` was sent exactly once and verified at `2026-08-17T12:02:37Z` to Wes with Jenny copied. Subject was `Time Card Approval - Josh Kennedy`; message id ends `ACi7Uw2gAAAA==`; attachment transmitted at 4,450 bytes.
+- No finalization, filing, workbook posting, payment, or paid status occurred.
+
+Outcome: `Needs Wes - full-period correction-review draft delivered and exact invoice sent for approval`.

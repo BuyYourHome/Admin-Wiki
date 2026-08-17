@@ -222,3 +222,11 @@ All three PDFs passed visual, extracted-text, status, invoice-number, and arithm
 | Period-closed correction-review PDF, structured input, and one-page QA render | `Generated\2026-08-16-Josh-Semimonthly-Daily-Draft-Through-Aug14` | 3 | 254,854 | semimonthly Time Card draft and QA evidence; not finalized |
 
 The one-page PDF passed visual, extracted-text, hours, and arithmetic checks. Both detail and project allocation totals equal `$2,708.33`. No filing, workbook posting, approval, payment, or paid status occurred.
+
+## Josh Kennedy August 1-15 Closed Draft Through August 15 Recorded 2026-08-17
+
+| Local working files | Teams destination under `Invoice Entry Working Archive` | Files | Bytes | Category |
+| --- | --- | ---: | ---: | --- |
+| Full-period correction-review PDF, structured input, and one-page QA render | `Generated\2026-08-17-Josh-Semimonthly-Closed-Draft-Through-Aug15` | 3 | 271,603 | semimonthly Time Card draft and QA evidence; awaiting Wes approval |
+
+The one-page PDF passed visual, extracted-text, hours, and arithmetic checks. Accepted time is `100 hours 25 minutes`, and both detail and project allocation totals equal `$2,708.33`. Correction-review delivery to Josh and the separate approval request to Wes were both sent exactly once and verified. No finalization, property filing, workbook posting, payment, or paid status occurred.

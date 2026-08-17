@@ -6,7 +6,7 @@ This is the authoritative current-state register for Invoice Entry. Read it befo
 
 ## Operating State
 
-- Status: `Active - Josh August 1-15 Time Card Period Closed; Correction Review Pending`
+- Status: `Active - Josh August 1-15 Time Card Awaiting Wes Approval`
 - Primary intake: direct Doc Scan or Email Monitor handoff; authorized versioned Manager Time Card packets are also supported for Time Card intake.
 - Current task: `019fbf4f-c629-7dd1-a3f6-0de33de0ed8f`.
 - Canonical skill: `C:\Codex\Wiki Files\skills\invoice-entry\SKILL.md`.
@@ -24,7 +24,7 @@ This is the authoritative current-state register for Invoice Entry. Read it befo
 - Operation in flight: no
 - Operation started at UTC: none
 - Current work durably recorded: yes
-- External delivery evidence recorded: yes; latest Josh correction-review draft verified `2026-08-17T02:23:51Z`; latest Tim approved-status package verified `2026-08-17T02:08:42Z`
+- External delivery evidence recorded: yes; Josh full-period correction-review draft verified `2026-08-17T12:00:22Z` and Wes approval request verified `2026-08-17T12:02:37Z`; latest Tim approved-status package verified `2026-08-17T02:08:42Z`
 - Open packets and blockers current: yes
 - Git and working-file state classified: yes
 - Recent task timeouts: 0
@@ -47,7 +47,7 @@ Classified working files:
 - The approved one-page July 16-31 invoice PDF and visual-QA render were archived to `Generated\2026-08-03-Josh-Semimonthly-Approved-Format` after 2-file / 250,796-byte and SHA-256 verification.
 - The three superseded week-ending July 31 working records were archived to `Generated\2026-08-03-JK-Week31-Superseded-Working-Records` after 3-file / 5,768-byte verification.
 - NCAOC Remote Public Access invoice `41247668` is represented by one durable packet and processing log. Its duplicate Outlook source copy is classified as transport evidence, and one hash-verified invoice copy is filed in the 2026 general-invoice `_Needs Review` folder.
-- Josh's August 1-15 packet has `97 hours 25 minutes` accepted through August 14: `70 hours 25 minutes` Tensity, `11 hours 30 minutes` BackOffice, `12 hours` Rosebrooks, and `3 hours 30 minutes` Pond. The fixed semimonthly amount remains `$2,708.33`; the current allocation is `$1,957.69` Tensity, `$319.72` BackOffice, `$333.62` Rosebrooks, and `$97.30` Pond. The period-closed through-August-14 correction-review draft was sent once and verified at `2026-08-17T02:23:51Z`. It is not finalized or approved.
+- Josh's August 1-15 packet has `100 hours 25 minutes` accepted through August 15: `70 hours 25 minutes` Tensity, `11 hours 30 minutes` BackOffice, `15 hours` Rosebrooks, and `3 hours 30 minutes` Pond. The fixed semimonthly amount remains `$2,708.33`; the full-period allocation is `$1,899.20` Tensity, `$310.17` BackOffice, `$404.56` Rosebrooks, and `$94.40` Pond. The full-period correction-review draft was sent to Josh and verified at `2026-08-17T12:00:22Z`; the exact approval request was sent to Wes and verified at `2026-08-17T12:02:37Z`. It is awaiting Wes approval and is not finalized, filed, posted, or paid.
 - Tim Fleming and Jeff's August 3-14 source is represented by one durable packet. Wes clarified that Jeff's labor is billed through Tim, so Tim is issuer/payee for all three invoices: Pond `$812.50`, Tensity `$337.50`, and Rosebrooks `$75.00`, combined `$1,225.00`. Tim verified the displayed package and four-total-hours Tensity interpretation; Wes approved that exact package. A later 2026-08-17 `I approve` reply was reconciled as corroborating duplicate approval evidence and caused no repeated action. Final approved-not-paid PDFs passed QA. Pond and Tensity were filed once and read-back verified; Rosebrooks filing is held because no established invoice folder exists. The approved-status email to Tim with Wes and Jenny copied was sent exactly once and verified at `2026-08-17T02:08:42Z`. No workbook posting or payment occurred.
 - The 2026-08-04 First Bank account-ending-3613 repeat notice is reconciled into the existing statement packet; it did not create another statement record or downloaded file.
 - The 2026-08-06 Truist credit-card notice for account ending 4528 is represented by one held statement packet. It is distinct from the 1141/1254 checking notices and contains no attachment or transaction detail.
@@ -69,7 +69,7 @@ Classified working files:
 | --- | --- | --- | --- |
 | 1 | 2025 Lowe's statements, BYH 5997 and SYH 6140 | 18 authoritative SharePoint PDFs; no duplicate periods; BYH gaps January-April and SYH gaps January-February. Fourteen supported rows are now in authoritative Review tables: Tensity 8 / `$426.32`, Britton 1 / `$122.55`, Pond 5 / `$118.24`. Willowdell 3 / `$152.55` and Old Buckhorn 9 / `$836.44` are held because those workbooks have no Review table. | Wes should review final Vendor Tabs for inserted rows. Template to Project must make Willowdell and Old Buckhorn Review-ready before the 12 held rows can be inserted; do not insert them directly into Vendor Tabs. Remaining packet rows lack supported project routing. |
 | 2 | Josh Kennedy LLC semimonthly Time Card invoice, 2026-07-16 through 2026-07-31 | Approved by Wes with format revisions permitted; `INV-JKLLC-20260731-001`, 97 hours 5 minutes, `$2,500.00`; allocation is `$199.57` BackOffice and `$2,300.43` Tensity; revised one-page PDF sent and verified | Make only Wes-directed format changes without changing the approved invoice facts. Filing and project posting remain held until the historical weekly PDFs and existing Tensity Review row are reconciled. Approval is not payment or paid status. |
-| 3 | Josh Kennedy LLC Time Card, 2026-08-01 through 2026-08-15 | Period closed. Accepted time through August 14 is 97 hours 25 minutes: 70 hours 25 minutes Tensity, 11 hours 30 minutes BackOffice, 12 hours Rosebrooks, and 3 hours 30 minutes Pond. Amount remains `$2,708.33`; allocation is `$1,957.69`, `$319.72`, `$333.62`, and `$97.30`, respectively. Correction-review draft sent once and verified. | Reconcile any correction or late source in place. If none arrives, prepare the exact invoice for Wes approval. Do not finalize, file, post, pay, or mark paid without the applicable separate authority. |
+| 3 | Josh Kennedy LLC Time Card, 2026-08-01 through 2026-08-15 | Period closed. Accepted time is 100 hours 25 minutes: 70 hours 25 minutes Tensity, 11 hours 30 minutes BackOffice, 15 hours Rosebrooks, and 3 hours 30 minutes Pond. Amount remains `$2,708.33`; allocation is `$1,899.20`, `$310.17`, `$404.56`, and `$94.40`, respectively. Full-period correction-review delivery and Wes approval request were both sent once and verified. | Await Wes approval or correction. Reconcile any correction in place. Do not finalize, file, post, pay, or mark paid without the applicable separate authority. |
 | 3A | Tim Fleming and Jeff hours, 2026-08-03 through 2026-08-14 | Vendor verified and approved by Wes; not paid. Final invoices: Pond `$812.50`; Tensity `$337.50`; Rosebrooks `$75.00`; combined `$1,225.00`. A later same-package approval reply was consolidated as duplicate evidence. Pond and Tensity filed and read-back verified. Rosebrooks held for an established invoice destination. Approved-status email sent and verified. | Do not repeat generation, Pond/Tensity filing, or email delivery. Wes should identify or authorize an established Rosebrooks invoice destination. Workbook posting and payment require separate authority; do not mark paid. |
 | 4 | Construction Loan Services loan `77278`, July 2026, 908 Pond St V3 | `$1,658.75` due 2026-08-10; current balance `$181,141.75`; maturity 2026-09-24; no statement attachment or component breakdown | Obtain the detailed statement through Doc Scan if allocation is required and obtain accounting direction. Do not insert, approve, schedule, or pay from the email notice. |
 | 5 | Trenchant Build invoice `422`, 4121 Tensity Dr | Paid once for `$5,185.71`; one Review row exists as `IE-20260801-TRENCHANT-422`; workbook upload and validation passed | Wait for Wes to choose one approved destination worksheet or approve a supported split for mixed work and the card-processing fee. Do not create another row. |
@@ -179,13 +179,19 @@ Classified working files:
   - Verified attachment: `26-07-31 - Josh Kennedy - Project Cost Allocation Report - 4121 Tensity Dr.pdf`, 4,190 bytes
   - Actual subject was `Invoice Approval - Josh Kennedy`. Future Time Card approval packages must use `Time Card Approval - <Worker Name>`. Do not resend this package only to correct the subject.
 
+### Josh Kennedy LLC August 1-15 Full-Period Draft And Approval Request
+
+- Correction-review request: `IE-EMAIL-20260817-JOSH-SEMIMONTHLY-CLOSED-DRAFT-006`; sent and verified `2026-08-17T12:00:22Z`; message id ending `ACi7Uw2QAAAA==`; OfficeAssist to Josh with Wes and Jenny copied.
+- Wes approval request: `IE-EMAIL-20260817-JOSH-SEMIMONTHLY-WES-APPROVAL-001`; sent and verified `2026-08-17T12:02:37Z`; message id ending `ACi7Uw2gAAAA==`; OfficeAssist to Wes with Jenny copied.
+- Both deliveries carried the same non-inline PDF at 4,450 transmitted bytes. The invoice remains a draft awaiting Wes approval; no filing, posting, payment, or paid status occurred.
+
 ## Open Packets And Decisions
 
 | Packet or record | Current state | Blocker or required decision |
 | --- | --- | --- |
 | Josh Kennedy separate biweekly invoice `SP-JK-20260731-001` | `Denied by Wes - Retired - Do Not Pay` | None. Retain as history only. Do not approve, file, post, pay, revive, or reuse it. The referenced recurrence automation is not installed at its recorded local path. |
 | Josh Kennedy LLC semimonthly invoice `INV-JKLLC-20260731-001` | `Approved by Wes - Format Revisions Permitted`; revised PDF sent and verified | Filing and project posting remain held pending duplicate-safe reconciliation of the historical weekly PDFs and existing Tensity Review row. Approval is not payment or paid status. |
-| Josh Kennedy LLC August 1-15 Time Card invoice | `Period Closed - Correction-Review Draft Through August 14 Sent And Verified - Not Finalized`; stable number `INV-JKLLC-20260815-001`; 97 hours 25 minutes; amount `$2,708.33` | Reconcile corrections or late source in place. If none arrives, prepare the exact invoice for Wes approval. Approval, filing, posting, payment, and paid status remain separate gated actions. |
+| Josh Kennedy LLC August 1-15 Time Card invoice | `Period Closed - Full-Period Correction Review Sent - Awaiting Wes Approval`; stable number `INV-JKLLC-20260815-001`; 100 hours 25 minutes; amount `$2,708.33` | Await Wes approval or correction and reconcile any correction in place. Finalization, filing, posting, payment, and paid status remain separate gated actions. |
 | Josh Kennedy Time Card, week ending 2026-07-24 | Historical source records consolidated into the semimonthly invoice | Do not create a second payment obligation. Reconcile the filed PDFs and Tensity Review row under exact duplicate checks before semimonthly posting. |
 | Tim Fleming Pond invoice `IE-TF-20260717-POND-001` | Vendor confirmed, Wes approved, PDF filed | Destination worksheet remains unresolved for `Property/26_Project Management - 908 Pond St 3.xlsm`. |
 | Tim Fleming multi-project package, 2026-07-21 through 2026-07-28 | Vendor verified, Wes approved, three PDFs filed, not marked paid | Workbook posting remains held. Reconfirm the exact Outrigger, Pond, and Tensity workbook paths from SharePoint before processing. |
@@ -233,6 +239,7 @@ Classified working files:
 - Wes approved invoice `936569` on 2026-08-12. The final replaced the draft at the same property-folder path and was sent once under request `IE-EMAIL-20260812-MATHEWS-936569-FINAL-001`. Do not repeat the replacement or delivery. Approval is not payment or paid status.
 - Capital One Outlook message ending `ACiSKPKwAAAA==` creates one statement-retrieval hold for Jeanette Hollinger's Quicksilver account ending `6426`. The notice balance matches a historical QPay/USA Flooring receipt amount and the suffix matches its recorded card ending, but the statement itself is absent; do not infer transaction inclusion, entity, or full-project allocation from that coincidence.
 - Josh Outlook message ending `ACifK_bAAAAA==` adds one August 12 Rosebrooks cleaning line from 7:30 AM to 4:00 PM. Dispatch `email-monitor-route-vendor-invoice-20260813-josh-time-card-001` is consumed; do not add it again if rerouted, and do not deduct a break unless a source correction states one.
+- Josh Outlook message ending `ACi7Vd0AAAAA==` adds one August 15 Rosebrooks line from 8:00 AM to 11:00 AM. Dispatch `email-monitor-route-vendor-invoice-20260817-josh-time-card-aug15-001` is consumed; do not add it again if rerouted. No task description or break was inferred.
 
 ## Safety Holds
 

@@ -2,7 +2,7 @@
 
 ## Status
 
-- State: `Period Closed - Correction-Review Draft Through August 14 Sent And Verified - Not Finalized`
+- State: `Period Closed - Full-Period Correction Review Sent - Awaiting Wes Approval`
 - Stable invoice number: `INV-JKLLC-20260815-001`
 - Semimonthly period: `2026-08-01 through 2026-08-15`
 - Issuer: `Josh Kennedy LLC`
@@ -10,6 +10,39 @@
 - Customer: `Buy Your Home`
 - Draft PDF: generated, visually verified, sent to Josh, and verified in OfficeAssist Sent Items
 - Filing, workbook posting, approval, payment, and paid-status action: not performed
+
+## August 15 Closeout
+
+- Dispatch id: `email-monitor-route-vendor-invoice-20260817-josh-time-card-aug15-001`.
+- Outlook message id: `AQMkADZkMGMwNDI3LWU5ZjctNDgzMC1iMjdkLTY0NmRiN2IwNmIyZgBGAAADKGOvWJYjX0aEKaRpd0MYQQcAVSXargQY20aF7RLCkro4ggAAAgEMAAAAVSXargQY20aF7RLCkro4ggACi7Vd0AAAAA==`.
+- Sender: `IRAManager@SellYourHomeRaleigh.com`; received `2026-08-17T09:57:42Z`; subject `Re: UPDATED DRAFT: Josh Kennedy LLC Time Card Invoice - August 1-15, 2026 (Through August 14)`; attachments: none.
+- Source fact: Saturday, August 15, 2026, at `115 Rosebrooks Dr` from `8:00 AM` to `11:00 AM`, totaling `3 hours 0 minutes`.
+- No task description or break was stated. No task or break was inferred; the omission is disclosed for correction review.
+- Duplicate checking found no matching dispatch, Outlook source, or August 15 line. The interval was added once.
+
+| Work date | Destination | Start | End | Accepted time | Source/status |
+| --- | --- | --- | --- | --- | --- |
+| 2026-08-15 | 115 Rosebrooks Dr | 8:00 AM | 11:00 AM | 3 hours 0 minutes | Added once from dispatch `email-monitor-route-vendor-invoice-20260817-josh-time-card-aug15-001`; no task description or break was stated. |
+
+Final accumulated accepted time for the August 1-15 period is `100 hours 25 minutes`: `70 hours 25 minutes` Tensity, `11 hours 30 minutes` BackOffice, `15 hours 0 minutes` Rosebrooks, and `3 hours 30 minutes` Pond.
+
+The fixed semimonthly amount remains `$2,708.33`. Final draft allocations are `$1,899.20` Tensity, `$310.17` BackOffice, `$404.56` Rosebrooks, and `$94.40` Pond. Detail and project allocations each reconcile exactly to `$2,708.33`.
+
+Full-period correction-review delivery:
+
+- Request id: `IE-EMAIL-20260817-JOSH-SEMIMONTHLY-CLOSED-DRAFT-006`.
+- Sent and verified: `2026-08-17T12:00:22Z` from OfficeAssist to Josh; Wes and Jenny copied; BCC empty.
+- Sent message id ends `ACi7Uw2QAAAA==`; verified non-inline PDF transmitted at 4,450 bytes.
+
+Wes approval request:
+
+- Request id: `IE-EMAIL-20260817-JOSH-SEMIMONTHLY-WES-APPROVAL-001`.
+- Sent and verified: `2026-08-17T12:02:37Z` from OfficeAssist to Wes; Jenny copied; BCC empty.
+- Subject: `Time Card Approval - Josh Kennedy`.
+- Sent message id ends `ACi7Uw2gAAAA==`; verified non-inline PDF transmitted at 4,450 bytes.
+- Awaiting Wes's approval or correction. No finalization, filing, workbook posting, payment, or paid status occurred.
+
+The PDF, structured input, and one-page QA render are archived at `Generated\2026-08-17-Josh-Semimonthly-Closed-Draft-Through-Aug15`; 3 files totaling 271,603 bytes verified.
 
 ## Routed Sources
 
