@@ -33,6 +33,9 @@
 - Dispatch id: `email-monitor-route-vendor-invoice-20260808-sullivan-2475-001`.
 - Primary Outlook message id: `AQMkADZkMGMwNDI3LWU5ZjctNDgzMC1iMjdkLTY0NmRiN2IwNmIyZgBGAAADKGOvWJYjX0aEKaRpd0MYQQcAVSXargQY20aF7RLCkro4ggAAAgEMAAAAVSXargQY20aF7RLCkro4ggAChS2omgAAAA==`.
 - Duplicate/corroborating Outlook message id: `AQMkADZkMGMwNDI3LWU5ZjctNDgzMC1iMjdkLTY0NmRiN2IwNmIyZgBGAAADKGOvWJYjX0aEKaRpd0MYQQcAVSXargQY20aF7RLCkro4ggAAAgEMAAAAVSXargQY20aF7RLCkro4ggAChS2omwAAAA==`.
+- Supplemental payment-link dispatch: `email-monitor-route-vendor-invoice-20260815-sullivan-payment-link-001`.
+- Supplemental Outlook message id: `AQMkADZkMGMwNDI3LWU5ZjctNDgzMC1iMjdkLTY0NmRiN2IwNmIyZgBGAAADKGOvWJYjX0aEKaRpd0MYQQcAVSXargQY20aF7RLCkro4ggAAAgEMAAAAVSXargQY20aF7RLCkro4ggACizIZoQAAAA==`, received `2026-08-15T22:33:35Z` from Wes with subject `FW: July Invoice`.
+- Square payment-link reference: `https://app.squareup.com/pay-invoice/invtmp:c6da2c8b-1782-4007-8527-2f7f544db9ee`. The link was preserved as supplied and was not opened.
 - Both messages were received `2026-08-08T20:30:08Z`, had subject `FW: July Invoice`, and exposed the same attachment filename, MIME type, metadata size, and content ID.
 - Original sender: `Daniel Smith <Daniel@sullivansurvey.com>`.
 - Source attachment: `C:\Users\wesbr\Buy Your Home\Buy Your Home - Office Admin\Scanned Files\Invoice Entry Working Archive\Source Documents\2026-08-08 Sullivan Surveying 2475\invoice\Lot 18 Burtrose Subdivision (908 Pond Street) - Invoice No. 2475.pdf`.
@@ -59,6 +62,7 @@ The first line does not extend exactly: `1.25 x $150.00 = $187.50`, while the in
 - The exact project is supported by the attachment's project/address and the recognized Invoice Entry project list.
 - Invoice `2475` is distinct from prior Sullivan Surveying invoice `2395` by invoice number, date, services, and amount.
 - The two Outlook messages are duplicate transport copies of invoice `2475`, not separate obligations. One attachment copy was retrieved and retained.
+- The later Square payment-link message is supplemental source evidence for the same invoice `2475`, not a new invoice, approval, payment, or paid-status event.
 - The readable attached invoice falls within direct Email Monitor/Create Vendor Invoice intake; raw scan/OCR extraction was not required from Doc Scan.
 - Prior 908 Pond review established that surveying/property due diligence has no approved destination worksheet in `Property/26_Project Management - 908 Pond St 3.xlsm`.
 - No workbook was opened or edited. No project-folder filing, invoice approval, payment, payment-link access, vendor contact, mailbox change, or paid-status action occurred.
@@ -67,3 +71,4 @@ The first line does not extend exactly: `1.25 x $150.00 = $187.50`, while the in
 
 1. Confirm whether the vendor should issue a corrected invoice for the `$0.50` line-extension difference or whether the printed `$387.00` total should remain the review amount.
 2. Choose an approved workbook destination for this and the earlier Sullivan Surveying invoice, such as an existing worksheet/category, Review placement, or another approved surveying/property-due-diligence destination.
+3. If payment is later intended, authorize that action separately after the amount discrepancy is resolved. The preserved Square link does not itself authorize payment.

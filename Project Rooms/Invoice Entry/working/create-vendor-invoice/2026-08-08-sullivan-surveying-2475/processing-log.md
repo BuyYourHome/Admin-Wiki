@@ -12,3 +12,11 @@
 - Reused the existing 908 Pond placement hold because surveying/property due diligence has no approved destination worksheet.
 - Did not open or edit the workbook and did not file the invoice to the project folder.
 - No invoice approval, payment, payment-link access, vendor contact, mailbox change, paid-status action, email, or automation action occurred.
+
+## 2026-08-16 - Supplemental Payment-Link Reconciliation
+
+- Accepted durable dispatch `email-monitor-route-vendor-invoice-20260815-sullivan-payment-link-001` with payload hash `1d578202d41303320ee61ab37b2fc5bb605af69dca805b26f39352fe05c69e35` before processing.
+- Reconciled Wes's Outlook message ending `ACizIZoQAAAA==` and the supplied Square payment link to existing Sullivan Surveying invoice `2475`; no second invoice obligation or packet was created.
+- Preserved the exact Outlook reference and supplied payment-link reference without opening the link.
+- Kept the packet at `Needs Wes - Vendor Math And Worksheet Placement` because the printed `$387.00` total remains `$0.50` below the exact line extension and the 908 Pond surveying/property-due-diligence worksheet destination remains unapproved.
+- No workbook was opened or edited. No filing, approval, posting, payment, paid status, vendor contact, mailbox change, email, or external action occurred.
