@@ -48,6 +48,7 @@ The revised Tim correction-review package totals `$1,225.00`: Pond `$812.50`; Te
 - Prior Tim Fleming packets end on 2026-07-28 and do not overlap this source period.
 - No prior Jeff invoice/time record was found in the Invoice Entry working records.
 - Repeated delivery of this dispatch or exact Outlook source must reconcile to this packet and must not create new hours or invoice artifacts.
+- Later dispatch `email-monitor-route-vendor-invoice-20260817-tim-wes-approval-repeat-001` and Outlook message ending `ACi7Vd0QAAAA==` repeat Wes's approval of the exact same three-project `$1,225.00` package. They are corroborating approval evidence only and do not authorize or repeat finalization, filing, status email, workbook posting, payment, or paid status.
 
 ## Resolved Correction Review
 
@@ -122,3 +123,12 @@ Tim's `Ok to pay` reply accepted the revised package without correction, resolvi
 - Sent and verified: `2026-08-17T02:08:42Z`; message id ending `ACi7Uw1wAAAA==`.
 - Verified non-inline approved PDFs: Pond 3,386 transmitted bytes; Tensity 3,492 transmitted bytes; Rosebrooks 3,429 transmitted bytes.
 - The delivery reported the two completed filings, the Rosebrooks filing hold, no workbook posting, and `Not Paid` status. Do not repeat it.
+
+## Later Wes Approval Reply Reconciled - 2026-08-17
+
+- Dispatch: `email-monitor-route-vendor-invoice-20260817-tim-wes-approval-repeat-001`.
+- Payload hash: `68d88269f0a1d372949514cb529055533bb275e4473b42ad80985271e8452ece`.
+- Outlook message id: `AQMkADZkMGMwNDI3LWU5ZjctNDgzMC1iMjdkLTY0NmRiN2IwNmIyZgBGAAADKGOvWJYjX0aEKaRpd0MYQQcAVSXargQY20aF7RLCkro4ggAAAgEMAAAAVSXargQY20aF7RLCkro4ggACi7Vd0QAAAA==`.
+- Wes again replied `I approve` to the OfficeAssist approval request for the exact package already approved under the earlier source: Pond `$812.50`, Tensity `$337.50`, and Rosebrooks `$75.00`; combined `$1,225.00`.
+- Classified as corroborating duplicate approval evidence. The package remains `Approved By Wes - Partially Filed - Not Paid`.
+- No invoice regeneration or finalization, filing, email, workbook posting, payment, or paid-status action was repeated.

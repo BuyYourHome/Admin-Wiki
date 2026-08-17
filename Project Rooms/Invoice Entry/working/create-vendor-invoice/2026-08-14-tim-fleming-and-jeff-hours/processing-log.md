@@ -86,3 +86,13 @@ Outcome: `Needs Wes - vendor-verified three-project package delivered for separa
 - The email reported Pond and Tensity filing, the Rosebrooks filing hold, no workbook posting, and not-paid status.
 
 Outcome: `Done with filing hold - approved-not-paid package finalized; Pond and Tensity filed; Rosebrooks filing needs an established destination; no workbook posting or payment`.
+
+## 2026-08-17 - Later Wes Approval Reply Reconciled As Duplicate Evidence
+
+- Wrote the exact same-id durable `accepted` receipt for dispatch `email-monitor-route-vendor-invoice-20260817-tim-wes-approval-repeat-001` before substantive work and moved it to `Processing`.
+- Reconciled Outlook message ending `ACi7Vd0QAAAA==`, Wes's later `I approve` reply, to the exact already-approved package: Pond `$812.50`, Tensity `$337.50`, and Rosebrooks `$75.00`; combined `$1,225.00`.
+- The project set, amounts, approval wording, and approval-request context match the package already finalized as `Approved By Wes - Not Paid` under dispatch `email-monitor-route-vendor-invoice-20260814-tim-wes-approval-001`.
+- Classified the later message as corroborating duplicate approval evidence, not a new obligation or payment instruction.
+- Did not regenerate PDFs, repeat Pond or Tensity filing, create a Rosebrooks folder, resend the approved-status email, open or edit a workbook, initiate payment, or mark any invoice paid.
+
+Outcome: `Done - later approval reply reconciled as duplicate evidence; approved-not-paid package unchanged`.
