@@ -214,3 +214,11 @@ The receipt PDF matches SHA-256 `ADC476AB842B4D6AC29AF87A5F8C877D8D365E8537FD204
 | Three approved-not-paid PDFs, three structured inputs, and three one-page QA renders | `Generated\2026-08-16-Tim-Jeff-Hours-Approved` | 9 | 291,863 | final approved package and visual-QA evidence; Rosebrooks filing hold copy retained |
 
 All three PDFs passed visual, extracted-text, status, invoice-number, and arithmetic checks. Pond and Tensity were filed once to their established SharePoint `Owning/Invoices` folders and read-back verified. Rosebrooks remains retained here because its current property folder has no established `Invoices` destination. The approved-status email was sent and verified. No workbook posting, payment, or paid status occurred.
+
+## Josh Kennedy August 1-15 Draft Through August 14 Recorded 2026-08-16
+
+| Local working files | Teams destination under `Invoice Entry Working Archive` | Files | Bytes | Category |
+| --- | --- | ---: | ---: | --- |
+| Period-closed correction-review PDF, structured input, and one-page QA render | `Generated\2026-08-16-Josh-Semimonthly-Daily-Draft-Through-Aug14` | 3 | 254,854 | semimonthly Time Card draft and QA evidence; not finalized |
+
+The one-page PDF passed visual, extracted-text, hours, and arithmetic checks. Both detail and project allocation totals equal `$2,708.33`. No filing, workbook posting, approval, payment, or paid status occurred.

@@ -2,7 +2,7 @@
 
 ## Status
 
-- State: `Accumulating - Period Open - Final-Style Draft Sent And Verified`
+- State: `Period Closed - Correction-Review Draft Through August 14 Sent And Verified - Not Finalized`
 - Stable invoice number: `INV-JKLLC-20260815-001`
 - Semimonthly period: `2026-08-01 through 2026-08-15`
 - Issuer: `Josh Kennedy LLC`
@@ -133,6 +133,33 @@ Updated through-August-13 delivery:
 - PDF, structured input, and one-page QA render are archived at `Generated\2026-08-14-Josh-Semimonthly-Daily-Draft-Through-Aug13`; 3 files totaling 215,962 bytes verified.
 - This delivery is correction-by-exception review only. The period remains open and no finalization, approval, filing, posting, payment, or paid status occurred.
 
+August 14 dispatch: `email-monitor-route-vendor-invoice-20260815-josh-time-card-aug14-001`
+
+- Outlook message id: `AQMkADZkMGMwNDI3LWU5ZjctNDgzMC1iMjdkLTY0NmRiN2IwNmIyZgBGAAADKGOvWJYjX0aEKaRpd0MYQQcAVSXargQY20aF7RLCkro4ggAAAgEMAAAAVSXargQY20aF7RLCkro4ggACizIZoAAAAA==`.
+- Sender: `IRAManager@SellYourHomeRaleigh.com`; received `2026-08-15T13:41:21Z`; subject `Time card`; attachments: none.
+- Source facts: August 14 BackOffice work from `7:00 AM` to `8:30 AM`, followed by work with Tim framing at source-stated `908 Pond Dr` from `8:30 AM` to `12:00 PM`.
+- The canonical project destination is `908 Pond St`; the source wording `908 Pond Dr` remains preserved in the invoice description.
+- No break was stated, so no break was deducted. The two source-supported intervals total `5 hours 0 minutes`.
+
+| 2026-08-14 | BackOffice | 7:00 AM | 8:30 AM | 1 hour 30 minutes | New accepted line from durable dispatch `email-monitor-route-vendor-invoice-20260815-josh-time-card-aug14-001`; no matching dispatch, Outlook source, or August 14 line was found. |
+| 2026-08-14 | 908 Pond St | 8:30 AM | 12:00 PM | 3 hours 30 minutes | New accepted line from the same dispatch; source-stated `908 Pond Dr` is preserved without changing the established project destination. |
+
+Updated accumulated accepted time through August 14: `97 hours 25 minutes` (`70 hours 25 minutes` Tensity; `11 hours 30 minutes` BackOffice; `12 hours 0 minutes` Rosebrooks; `3 hours 30 minutes` Pond).
+
+The fixed semimonthly amount remains `$2,708.33`. The through-August-14 proportional allocation is `$1,957.69` Tensity, `$319.72` BackOffice, `$333.62` Rosebrooks, and `$97.30` Pond. Largest-remainder cent reconciliation was used so the project and line allocations each sum exactly to the invoice amount.
+
+The PDF, structured input, and one-page QA render are archived at `Generated\2026-08-16-Josh-Semimonthly-Daily-Draft-Through-Aug14`; 3 files totaling 254,854 bytes verified. The invoice is marked `DRAFT - PERIOD CLOSED - NOT FINALIZED`. No finalization, approval, filing, workbook posting, payment, or paid status occurred.
+
+Updated through-August-14 delivery:
+
+- Request id: `IE-EMAIL-20260816-JOSH-SEMIMONTHLY-DAILY-DRAFT-005`.
+- Sent exactly once from OfficeAssist to Josh; Wes and Jenny copied; BCC empty.
+- Subject: `UPDATED DRAFT: Josh Kennedy LLC Time Card Invoice - August 1-15, 2026 (Through August 14)`.
+- Sent and verified: `2026-08-17T02:23:51Z`.
+- Sent message id ending: `ACi7Uw2AAAAA==`.
+- Verified attachment: stable invoice filename; non-inline `application/pdf`; 4,376 transmitted bytes.
+- This delivery is correction-by-exception review only. No finalization, approval, filing, posting, payment, or paid status occurred.
+
 Updated through-August-12 delivery:
 
 - Request id: `IE-EMAIL-20260813-JOSH-SEMIMONTHLY-DAILY-DRAFT-003`.
@@ -157,8 +184,9 @@ Updated through-August-12 delivery:
 - The August 11 message and dispatch identities did not match prior source evidence. Its two non-overlapping intervals were added once. The work date is a documented received-date assumption, not an independently stated source fact.
 - The August 12 retry message and dispatch identities did not match prior source evidence. Its 7:30 AM-4:00 PM Rosebrooks cleaning interval was added once without an undocumented break deduction and must not be added again if rerouted.
 - The August 13 durable dispatch and Outlook identity did not match prior source evidence. Its two BackOffice intervals were added once as a combined six-hour line and must not be added again if rerouted.
+- The August 14 durable dispatch and Outlook identity did not match prior source evidence. Its BackOffice and Pond intervals were added once, without a break deduction, and must not be added again if rerouted.
 - This belongs to the August 1-15 semimonthly period and must not alter the approved July 16-31 invoice.
-- Do not finalize, file, post, approve, or treat invoice `INV-JKLLC-20260815-001` as payable before the period closes on August 15 and Wes approves it.
+- The period has closed. Do not finalize, file, post, approve, or treat invoice `INV-JKLLC-20260815-001` as payable until source review is complete and Wes approves the exact invoice.
 
 ## Daily Draft Delivery
 
@@ -185,7 +213,7 @@ Updated through-August-11 delivery:
 
 ## Current Hold
 
-The August 11 work date is a documented received-date assumption pending correction-by-exception review; the projects, activities, time ranges, and total interval are source-supported. The period is still open and the semimonthly invoice is not final. Continue accumulating source-supported time and send updated correction-by-exception drafts after meaningful daily updates. No workbook edit, filing, approval, payment, or paid-status action occurred.
+The August 11 work date is a documented received-date assumption pending correction-by-exception review; the projects, activities, time ranges, and total interval are source-supported. The semimonthly period has closed, but the invoice is not final. Reconcile any correction or late source in place before seeking Wes's approval. No workbook edit, filing, approval, payment, or paid-status action occurred.
 
 ## 2026-08-12 Compensation Basis Correction
 

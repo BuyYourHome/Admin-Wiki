@@ -173,3 +173,26 @@ Outcome: `Done - August 12 recorded once and updated open-period draft sent and 
 - The period remains open. No finalization, approval, filing, workbook posting, payment, or paid status occurred.
 
 Outcome: `Done - August 13 recorded once and updated open-period draft sent and verified`.
+
+## 2026-08-16 - August 14 Durable Queue Intake And Draft Generation
+
+- Wrote the exact same-id durable `accepted` receipt for dispatch `email-monitor-route-vendor-invoice-20260815-josh-time-card-aug14-001` before substantive work and moved it to `Processing`.
+- Preserved Outlook message id ending `ACizIZoAAAAA==`, sender `IRAManager@SellYourHomeRaleigh.com`, received timestamp `2026-08-15T13:41:21Z`, subject `Time card`, and no-attachment status.
+- Duplicate checking found no matching dispatch, message, or August 14 Josh line.
+- Added August 14 once: BackOffice from `7:00 AM` to `8:30 AM` (`1 hour 30 minutes`) and work with Tim framing at source-stated `908 Pond Dr` from `8:30 AM` to `12:00 PM` (`3 hours 30 minutes`). The invoice uses established project destination `908 Pond St` while preserving the source wording in the description.
+- No break was stated or deducted. The source order did not alter the exact time intervals.
+- Updated accepted time is `97 hours 25 minutes`: Tensity `70 hours 25 minutes`; BackOffice `11 hours 30 minutes`; Rosebrooks `12 hours`; Pond `3 hours 30 minutes`.
+- Retained the fixed semimonthly invoice amount of `$2,708.33` and reconciled the project allocation to `$1,957.69` Tensity, `$319.72` BackOffice, `$333.62` Rosebrooks, and `$97.30` Pond.
+- Generated and visually verified one one-page PDF marked `DRAFT - PERIOD CLOSED - NOT FINALIZED`; line and project allocations each sum exactly to `$2,708.33`.
+- Archived the PDF, structured input, and one-page QA render at `Generated\2026-08-16-Josh-Semimonthly-Daily-Draft-Through-Aug14`; verified 3 files totaling 254,854 bytes.
+- No finalization, approval, filing, workbook posting, payment, vendor contact, or paid status occurred.
+
+## 2026-08-16 - August 14 Correction-Review Draft Delivery
+
+- Email Delivery request `IE-EMAIL-20260816-JOSH-SEMIMONTHLY-DAILY-DRAFT-005` was sent exactly once and verified in OfficeAssist Sent Items at `2026-08-17T02:23:51Z`.
+- OfficeAssist sent to Josh with Wes and Jenny copied; BCC was empty. Exact subject and one required non-inline PDF attachment were verified.
+- Sent message id ends `ACi7Uw2AAAAA==`; the attachment transmitted at 4,376 bytes.
+- The email and attachment identify a period-closed correction-review draft, not a final or approved invoice.
+- No finalization, approval, filing, workbook posting, payment, or paid status occurred.
+
+Outcome: `Done - August 14 recorded once and period-closed correction-review draft sent and verified`.
