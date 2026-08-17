@@ -67,3 +67,22 @@ Outcome: `Done - corrected Tim-issued three-project draft package sent and verif
 - No finalization, filing, workbook posting, payment, or paid status occurred.
 
 Outcome: `Needs Wes - vendor-verified three-project package delivered for separate Wes approval`.
+
+## 2026-08-16 - Wes Approval Processed
+
+- Accepted durable dispatch `email-monitor-route-vendor-invoice-20260814-tim-wes-approval-001` with payload hash `f978988911b029328026083903556096f57b344a387991ebfd82278fc248498a` before processing.
+- Reconciled Wes's Outlook message ending `ACiq4RGQAAAA==`, `I approve`, to the exact vendor-verified Pond, Tensity, and Rosebrooks package totaling `$1,225.00`.
+- Preserved the approved facts and regenerated all three invoices with `APPROVED BY WES` and `NOT PAID`; each one-page PDF passed visual and text/arithmetic QA.
+- Archived three final PDFs, three structured inputs, and three QA renders under `Generated\2026-08-16-Tim-Jeff-Hours-Approved`; verified 9 files totaling 291,863 bytes.
+- Duplicate-checked the established Pond and Tensity `Owning/Invoices` folders, uploaded one approved PDF to each with conflict behavior `fail`, and verified the SharePoint read-back text, invoice number, status, and amount.
+- Held the Rosebrooks filing because the authoritative `Property/20-HM-115 Rosebrooks Dr/Owning` folder has no established `Invoices` folder. No new folder or substitute destination was created.
+- Did not open or edit any workbook and did not initiate payment or mark any invoice paid.
+
+## 2026-08-16 - Approved-Status Delivery Verified
+
+- Email Delivery request `IE-EMAIL-20260816-TIM-MULTIPROJECT-APPROVED-STATUS-001` was sent exactly once and verified in OfficeAssist Sent Items at `2026-08-17T02:08:42Z`.
+- OfficeAssist sent to Tim with Wes and Jenny copied; BCC was empty. Exact multi-property subject and all three non-inline approved PDFs were verified.
+- Sent message id ends `ACi7Uw1wAAAA==`; transmitted attachment sizes were Pond 3,386 bytes, Tensity 3,492 bytes, and Rosebrooks 3,429 bytes.
+- The email reported Pond and Tensity filing, the Rosebrooks filing hold, no workbook posting, and not-paid status.
+
+Outcome: `Done with filing hold - approved-not-paid package finalized; Pond and Tensity filed; Rosebrooks filing needs an established destination; no workbook posting or payment`.

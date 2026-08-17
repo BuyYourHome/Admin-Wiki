@@ -206,3 +206,11 @@ The Tensity rollback hash is `1692670AFB1ADE6098E34E0388823E45DED30888ECAC6F37F1
 | Rosebrooks pre-edit rollback workbook and validation manifest | `Generated\2026-08-14-Rosebrooks-ES-003-Workbook-Posting` | 2 | 717,650 | rollback and authoritative read-back evidence |
 
 The receipt PDF matches SHA-256 `ADC476AB842B4D6AC29AF87A5F8C877D8D365E8537FD20479E5DBDD8F68C14A3`. The rollback workbook matches `2FEE630DA2762745DCED877AB33679F8C6A260DB9CE8B170693B44F054AC6770`; the authoritative uploaded/read-back workbook matches `D2090DBCB53976461D306A2988383FE09C133B968308EB3E3AF0FEB30BB93EA0`. Filing remains held because the current Rosebrooks property folder has no established receipt destination. No email, payment, approval, paid status, deposit record, or direct Facebook action occurred.
+
+## Tim Fleming Three-Project Approved Package Recorded 2026-08-16
+
+| Local working files | Teams destination under `Invoice Entry Working Archive` | Files | Bytes | Category |
+| --- | --- | ---: | ---: | --- |
+| Three approved-not-paid PDFs, three structured inputs, and three one-page QA renders | `Generated\2026-08-16-Tim-Jeff-Hours-Approved` | 9 | 291,863 | final approved package and visual-QA evidence; Rosebrooks filing hold copy retained |
+
+All three PDFs passed visual, extracted-text, status, invoice-number, and arithmetic checks. Pond and Tensity were filed once to their established SharePoint `Owning/Invoices` folders and read-back verified. Rosebrooks remains retained here because its current property folder has no established `Invoices` destination. The approved-status email was sent and verified. No workbook posting, payment, or paid status occurred.
