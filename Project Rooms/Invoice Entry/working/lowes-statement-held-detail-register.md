@@ -153,3 +153,18 @@ Status: three PO `7001` item rows were inserted into the Outrigger workbook `Rev
 | --- | --- | --- | --- | --- | --- | --- | ---: | --- | --- | --- | --- | --- | --- |
 | `lowes-2026-07-02-payment-0612` | 2026-06-12 | `PAYMENT` | blank | blank | blank | Payment - Thank You | -349.40 | Payment | Accounting review | blank | Accounting Review | Payment row is not a project purchase item and has no approved project-spreadsheet handling. | Held outside project workbooks. |
 | `lowes-2026-07-02-interest` | 2026-07-02 | `INTEREST` | blank | blank | blank | Interest Charge | 194.02 | Interest | Accounting review | blank | Accounting Review | Finance charge is not a project purchase item without accounting direction. | Held outside project workbooks. |
+
+## 2026-08-02 - Lowe's Pro SYH 6140 - Invoice 74830 Project Conflict
+
+- Dispatch id: `doc-scan-heartbeat-20260817-195112-lowes-statement-allocation`.
+- Packet: `C:\Codex\Wiki Files\Project Rooms\Doc Scan\outputs\statement-packets\2026-lowes-scan-20260817\SYH-6140-2026-08-02-scanned-packet.json`.
+- Source scan: `C:\Users\wesbr\Buy Your Home\Buy Your Home - Office Admin\Scanned Files\Archived\Receipt_2026-08-17_154629.pdf`, scan page 8.
+- Current status: four source-supported non-tax rows totaling `$111.79` are held because handwritten `908 Pond` conflicts with printed P.O. `4121`. Tax `$8.10` is preserved in notes and excluded from the rows. No target workbook or destination worksheet was selected.
+- Statement completeness: Lowe's pages 1 of 3 and 2 of 3 are present; page 3 of 3 is missing.
+
+| Account | Statement close | Source statement | Packet row | Transaction date | Ref # | Store | PO/project clue | SKU/item number | Description | Amount | Line type | Recommended project/property | Recommended workbook | Confidence/status | Hold reason | Later action/status |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | ---: | --- | --- | --- | --- | --- | --- |
+| `6140` | 2026-08-02 | `Receipt_2026-08-17_154629.pdf`, scan page 8 | `SYH-6140-2026-08-02-74830-1` | 2026-07-31 | `74830` | `907` | Printed `4121`; handwritten `908 Pond` | `000000004847122` | BR 60 CFM 3 SONE RPLCMMT | 57.58 | Charge item | `908 Pond St` or `4121 Tensity Dr` - unresolved | blank | Needs Wes - Project Conflict | Two source-supported project clues conflict; no safe target workbook. | Held; no workbook action. |
+| `6140` | 2026-08-02 | `Receipt_2026-08-17_154629.pdf`, scan page 8 | `SYH-6140-2026-08-02-74830-2` | 2026-07-31 | `74830` | `907` | Printed `4121`; handwritten `908 Pond` | `00000000102634` | KW SC COMBO DBL TYLO | 34.76 | Charge item | `908 Pond St` or `4121 Tensity Dr` - unresolved | blank | Needs Wes - Project Conflict | Two source-supported project clues conflict; no safe target workbook. | Held; no workbook action. |
+| `6140` | 2026-08-02 | `Receipt_2026-08-17_154629.pdf`, scan page 8 | `SYH-6140-2026-08-02-74830-3` | 2026-07-31 | `74830` | `907` | Printed `4121`; handwritten `908 Pond` | `000000007480956` | UT LED 60W A15 E26 DL 5.0 | 14.38 | Charge item | `908 Pond St` or `4121 Tensity Dr` - unresolved | blank | Needs Wes - Project Conflict | Two source-supported project clues conflict; no safe target workbook. | Held; no workbook action. |
+| `6140` | 2026-08-02 | `Receipt_2026-08-17_154629.pdf`, scan page 8 | `SYH-6140-2026-08-02-74830-4` | 2026-07-31 | `74830` | `907` | Printed `4121`; handwritten `908 Pond` | `000000000259930` | 20-20 NESTED FLAT PNL 2-C | 5.07 | Charge item | `908 Pond St` or `4121 Tensity Dr` - unresolved | blank | Needs Wes - Project Conflict | Two source-supported project clues conflict; no safe target workbook. | Held; no workbook action. |
