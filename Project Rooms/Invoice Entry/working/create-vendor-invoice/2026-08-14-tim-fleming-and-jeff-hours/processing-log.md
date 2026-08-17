@@ -49,3 +49,21 @@ Outcome: `Needs Wes - Tim drafts sent for correction review; supply Jeff's full 
 - No approval, finalization, filing, workbook posting, payment, or paid status occurred.
 
 Outcome: `Done - corrected Tim-issued three-project draft package sent and verified; awaiting correction by exception`.
+
+## 2026-08-16 - Tim Vendor Verification Reconciled
+
+- Accepted durable dispatch `email-monitor-route-vendor-invoice-20260814-tim-ok-to-pay-001` with payload hash `9d7640a83edbd585915f335a16769ba2a57b50464177da6e0bf1fd33ff1e80b4` before processing.
+- Reconciled Tim's Outlook reply ending `ACiq4RGAAAAA==`, `Ok to pay`, to the exact revised three-project package totaling `$1,225.00`.
+- Treated the reply as correction-review accuracy confirmation, including acceptance of the displayed four-total-hours Tensity interpretation. It was not treated as Wes approval or payment authority.
+- Advanced the packet to `Vendor Verified - Awaiting Wes Approval` and prepared the separate Wes approval-review package with Jenny copied.
+- No invoice was approved, finalized, filed, posted, paid, or marked paid. No workbook or payment link was opened.
+
+## 2026-08-16 - Wes Approval-Review Delivery Verified
+
+- Email Delivery request `IE-EMAIL-20260816-TIM-MULTIPROJECT-WES-APPROVAL-001` was sent exactly once and verified in OfficeAssist Sent Items at `2026-08-17T01:51:33Z`.
+- OfficeAssist sent to Wes with Jenny copied; BCC was empty. Exact subject `Invoice Approval - Tim Fleming` and all three non-inline PDF attachments were verified.
+- Sent message id ends `ACi7Uw1gAAAA==`; transmitted attachment sizes were Pond 3,470 bytes, Tensity 3,618 bytes, and Rosebrooks 3,496 bytes.
+- The approval-review email expressly distinguished Tim's vendor verification from Wes approval and payment authority.
+- No finalization, filing, workbook posting, payment, or paid status occurred.
+
+Outcome: `Needs Wes - vendor-verified three-project package delivered for separate Wes approval`.

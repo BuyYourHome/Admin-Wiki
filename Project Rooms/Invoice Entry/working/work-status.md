@@ -24,7 +24,7 @@ This is the authoritative current-state register for Invoice Entry. Read it befo
 - Operation in flight: no
 - Operation started at UTC: none
 - Current work durably recorded: yes
-- External delivery evidence recorded: yes; latest corrected Tim package verified `2026-08-14T19:48:08Z`; latest Josh daily draft verified `2026-08-14T19:30:35Z`
+- External delivery evidence recorded: yes; latest Tim approval-review package verified `2026-08-17T01:51:33Z`; latest Josh daily draft verified `2026-08-14T19:30:35Z`
 - Open packets and blockers current: yes
 - Git and working-file state classified: yes
 - Recent task timeouts: 0
@@ -48,7 +48,7 @@ Classified working files:
 - The three superseded week-ending July 31 working records were archived to `Generated\2026-08-03-JK-Week31-Superseded-Working-Records` after 3-file / 5,768-byte verification.
 - NCAOC Remote Public Access invoice `41247668` is represented by one durable packet and processing log. Its duplicate Outlook source copy is classified as transport evidence, and one hash-verified invoice copy is filed in the 2026 general-invoice `_Needs Review` folder.
 - Josh's August 1-15 packet has `92 hours 25 minutes` accepted through August 13: `70 hours 25 minutes` Tensity, `10 hours` BackOffice, and `12 hours` Rosebrooks. The open-period amount remains `$2,708.33`; the current allocation is `$2,063.60` Tensity, `$293.06` BackOffice, and `$351.67` Rosebrooks. The through-August-13 daily draft was sent once and verified at `2026-08-14T19:30:35Z`.
-- Tim Fleming and Jeff's August 3-14 source is represented by one durable packet. Wes clarified that Jeff's labor is billed through Tim, so Tim is issuer/payee for all three revised drafts: Pond `$812.50`, Tensity `$337.50`, and Rosebrooks `$75.00`, combined `$1,225.00`. The revised package was sent exactly once and verified at `2026-08-14T19:48:08Z`. The earlier two-draft package remains preserved as superseded review evidence.
+- Tim Fleming and Jeff's August 3-14 source is represented by one durable packet. Wes clarified that Jeff's labor is billed through Tim, so Tim is issuer/payee for all three revised drafts: Pond `$812.50`, Tensity `$337.50`, and Rosebrooks `$75.00`, combined `$1,225.00`. The revised package was sent exactly once and verified at `2026-08-14T19:48:08Z`. Tim replied `Ok to pay`, which verifies the displayed facts and four-total-hours Tensity interpretation but is not Wes approval or payment authority. The separate Wes approval-review package was sent exactly once and verified at `2026-08-17T01:51:33Z`. The earlier two-draft package remains preserved as superseded review evidence.
 - The 2026-08-04 First Bank account-ending-3613 repeat notice is reconciled into the existing statement packet; it did not create another statement record or downloaded file.
 - The 2026-08-06 Truist credit-card notice for account ending 4528 is represented by one held statement packet. It is distinct from the 1141/1254 checking notices and contains no attachment or transaction detail.
 - The 2026-08-07 Shellpoint mortgage notice for account ending 7767 is represented by one held statement packet. It contains no attachment, amount, due date, or property address; borrower and account-suffix facts are not project evidence.
@@ -70,7 +70,7 @@ Classified working files:
 | 1 | 2025 Lowe's statements, BYH 5997 and SYH 6140 | 18 authoritative SharePoint PDFs; no duplicate periods; BYH gaps January-April and SYH gaps January-February. Fourteen supported rows are now in authoritative Review tables: Tensity 8 / `$426.32`, Britton 1 / `$122.55`, Pond 5 / `$118.24`. Willowdell 3 / `$152.55` and Old Buckhorn 9 / `$836.44` are held because those workbooks have no Review table. | Wes should review final Vendor Tabs for inserted rows. Template to Project must make Willowdell and Old Buckhorn Review-ready before the 12 held rows can be inserted; do not insert them directly into Vendor Tabs. Remaining packet rows lack supported project routing. |
 | 2 | Josh Kennedy LLC semimonthly Time Card invoice, 2026-07-16 through 2026-07-31 | Approved by Wes with format revisions permitted; `INV-JKLLC-20260731-001`, 97 hours 5 minutes, `$2,500.00`; allocation is `$199.57` BackOffice and `$2,300.43` Tensity; revised one-page PDF sent and verified | Make only Wes-directed format changes without changing the approved invoice facts. Filing and project posting remain held until the historical weekly PDFs and existing Tensity Review row are reconciled. Approval is not payment or paid status. |
 | 3 | Josh Kennedy LLC Time Card, 2026-08-01 through 2026-08-15 | Accepted time through August 13 is 92 hours 25 minutes: 70 hours 25 minutes Tensity, 10 hours BackOffice, and 12 hours Rosebrooks. Amount remains `$2,708.33`; allocation is `$2,063.60` Tensity, `$293.06` BackOffice, and `$351.67` Rosebrooks. Updated draft sent once and verified. | Continue accumulating through August 15. Do not finalize, file, post, approve, or treat the invoice as payable before the period closes and Wes approves it. |
-| 3A | Tim Fleming and Jeff hours, 2026-08-03 through 2026-08-14 | Wes clarified that Jeff's labor is billed through Tim. Revised Tim-issued drafts: Pond `$812.50`; Tensity `$337.50` including Jeff's `$87.50` line; Rosebrooks `$75.00` Jeff line; combined `$1,225.00`. Sent exactly once and verified. | Await Tim correction by exception. No separate Jeff invoice/contact is needed. No approval, filing, posting, payment, or paid status. |
+| 3A | Tim Fleming and Jeff hours, 2026-08-03 through 2026-08-14 | Vendor verified; awaiting Wes approval. Revised Tim-issued drafts: Pond `$812.50`; Tensity `$337.50` including Jeff's `$87.50` line; Rosebrooks `$75.00` Jeff line; combined `$1,225.00`. Tim replied `Ok to pay`, accepting the displayed package without correction. The separate approval-review email to Wes with Jenny copied was sent and verified. | Await Wes's approval or correction. Tim's response is not payment authority. Do not repeat the approval-review delivery or finalize, file, post, pay, or mark paid before Wes approval. |
 | 4 | Construction Loan Services loan `77278`, July 2026, 908 Pond St V3 | `$1,658.75` due 2026-08-10; current balance `$181,141.75`; maturity 2026-09-24; no statement attachment or component breakdown | Obtain the detailed statement through Doc Scan if allocation is required and obtain accounting direction. Do not insert, approve, schedule, or pay from the email notice. |
 | 5 | Trenchant Build invoice `422`, 4121 Tensity Dr | Paid once for `$5,185.71`; one Review row exists as `IE-20260801-TRENCHANT-422`; workbook upload and validation passed | Wait for Wes to choose one approved destination worksheet or approve a supported split for mixed work and the card-processing fee. Do not create another row. |
 | 6 | QuickBooks Line of Credit statements `2a46fea` and `a46f130`, July 2026 | Two distinct statements, each held as `Needs Review - Statement - Accounting Allocation` | Wait for accounting direction outside property workbooks. Do not create invoices, approve payment, or insert either statement into a project workbook. |
@@ -90,6 +90,16 @@ Classified working files:
 | 20 | Rosebrooks cleanup-cash receipt `RCPT-20260814-115-001` | Complete for workbook posting. One `$300.00` cash receipt was generated and QA-verified; the PDF remains in the Invoice Entry working archive because no current property receipt destination is established. One `-$300.00` opposite-signed row is verified in authoritative `Review / tblInvoiceReview` with blank destination and `Needs Review`; exact-target upload and byte-for-byte SharePoint read-back passed. | Do not recreate the receipt or workbook row, invent a property filing folder, or use the stale `19-HM` folder. Review may later supply a supported category/destination. Do not record a deposit without evidence. |
 
 ## Verified Delivery Evidence
+
+### Tim Fleming Three-Project Wes Approval Review
+
+- Request: `IE-EMAIL-20260816-TIM-MULTIPROJECT-WES-APPROVAL-001`
+- Sent and verified: `2026-08-17T01:51:33Z`
+- Message id ending: `ACi7Uw1gAAAA==`
+- From OfficeAssist to Wes; Jenny copied; BCC empty.
+- Subject: `Invoice Approval - Tim Fleming`
+- Verified attachments: Pond 3,470 bytes; Tensity 3,618 bytes; Rosebrooks 3,496 bytes; all non-inline `application/pdf`.
+- Vendor verified only; awaiting Wes approval. Not finalized, filed, posted, paid, or marked paid.
 
 ### Mathews Flooring LLC Invoice 936569 Draft
 

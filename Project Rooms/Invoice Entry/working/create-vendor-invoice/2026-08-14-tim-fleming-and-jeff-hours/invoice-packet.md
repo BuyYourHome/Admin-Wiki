@@ -2,14 +2,15 @@
 
 ## Status
 
-- State: `Revised Tim Drafts Prepared - Jeff Labor Billed Through Tim`
+- State: `Vendor Verified - Awaiting Wes Approval`
 - Workflow: `Create Vendor Invoice / Time Card`
 - Dispatch: `email-monitor-route-vendor-invoice-20260814-tim-jeff-hours-001`
 - Revised Tim invoice drafts: generated and visually verified for Pond, Tensity, and Rosebrooks
 - Invoice issuer/payee: Tim Fleming for all three drafts
 - Jeff treatment: named worker on applicable labor lines billed through Tim; no separate Jeff invoice or contact is required
 - Correction-review email: revised three-draft package sent and verified; the prior two-draft package is superseded evidence
-- Approval, finalization, filing, workbook posting, payment, and paid status: not performed
+- Vendor verification: Tim replied `Ok to pay` to the exact revised three-draft package on `2026-08-14`; treated as correction-review accuracy confirmation only
+- Wes approval, finalization, filing, workbook posting, payment, and paid status: not performed
 
 ## Exact Source
 
@@ -49,7 +50,7 @@ The revised Tim correction-review package totals `$1,225.00`: Pond `$812.50`; Te
 ## Decisions Needed
 
 1. Tim should correct the Tensity draft if `4 hours 8/3 and 8/4` means four hours on each date rather than four hours total, or if the date split should be shown.
-Tim's revised drafts may proceed through correction review but may not become vendor-verified or enter approval/final processing until the Tensity ambiguity is resolved by correction or accepted review.
+Tim's `Ok to pay` reply accepted the revised package without correction, resolving the Tensity ambiguity in favor of the displayed four-total-hours interpretation. It verifies the invoice facts but is not Wes approval or payment authority.
 
 ## Tim Draft Delivery
 
@@ -76,3 +77,22 @@ Tim's revised drafts may proceed through correction review but may not become ve
 - Verified non-inline PDFs: Pond 3,470 transmitted bytes; Tensity 3,618 transmitted bytes; Rosebrooks 3,496 transmitted bytes.
 - Exact body and all three attachments matched the authorized package. Earlier Sent Items evidence remains unchanged.
 - No approval, finalization, filing, posting, payment, or paid status occurred.
+
+## Tim Vendor Verification - 2026-08-14
+
+- Dispatch: `email-monitor-route-vendor-invoice-20260814-tim-ok-to-pay-001`.
+- Outlook message id: `AQMkADZkMGMwNDI3LWU5ZjctNDgzMC1iMjdkLTY0NmRiN2IwNmIyZgBGAAADKGOvWJYjX0aEKaRpd0MYQQcAVSXargQY20aF7RLCkro4ggAAAgEMAAAAVSXargQY20aF7RLCkro4ggACiq4RGAAAAA==`.
+- Tim replied `Ok to pay` to the exact revised three-draft package totaling `$1,225.00`.
+- Invoice Entry treats the response as vendor verification that no correction is needed, including acceptance of the displayed four-total-hours Tensity interpretation.
+- Tim cannot approve Buy Your Home payment. The package requires separate Wes approval before finalization, filing, workbook posting, payment eligibility, or any paid status.
+
+## Wes Approval-Review Delivery
+
+- Request id: `IE-EMAIL-20260816-TIM-MULTIPROJECT-WES-APPROVAL-001`.
+- Sent exactly once from OfficeAssist to Wes with Jenny copied; BCC empty.
+- Subject: `Invoice Approval - Tim Fleming`.
+- Sent and verified: `2026-08-17T01:51:33Z`.
+- Sent message id ending: `ACi7Uw1gAAAA==`.
+- Verified non-inline PDFs: Pond 3,470 transmitted bytes; Tensity 3,618 transmitted bytes; Rosebrooks 3,496 transmitted bytes.
+- The body stated that Tim's response confirms the displayed facts but is not payment authority, and that no invoice has been finalized, filed, posted, paid, or marked paid.
+- Current state remains `Vendor Verified - Awaiting Wes Approval`. Do not repeat this approval-review delivery.
