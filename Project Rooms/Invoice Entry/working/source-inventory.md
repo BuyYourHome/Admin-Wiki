@@ -110,3 +110,10 @@
 | Source | Classification | Durable outcome |
 | --- | --- | --- |
 | Doc Scan packet `2026-lowes-scan-20260817\SYH-6140-2026-08-02-scanned-packet.json`; archived scan `Receipt_2026-08-17_154629.pdf` | authoritative structured Lowe's statement packet - held for project conflict | Four item rows for invoice `74830` total `$111.79`; `$8.10` tax is notes-only; invoice total `$119.89`. Handwritten `908 Pond` conflicts with printed P.O. `4121`. Rows are retained once in the held-detail register with no workbook action pending Wes's project decision. Lowe's page 3 of 3 is missing from the scan. |
+
+## Josh Time Card Sources - 2026-08-18
+
+| Source | Classification | Durable outcome |
+| --- | --- | --- |
+| Outlook message ending `ACi7Vd1wAAAA==`, received `2026-08-18T12:01:45Z`; dispatch `email-monitor-route-vendor-invoice-20260818-josh-approval-001` | authoritative Josh worker accuracy confirmation - processed | Josh replied `I approve` to the exact August 1-15 full-period correction-review draft. Recorded as worker confirmation only. Wes approval remains pending; no resend, finalization, filing, posting, payment, or paid status. |
+| Outlook message ending `ACi7Vd2AAAAA==`, received `2026-08-18T12:06:41Z`; dispatch `email-monitor-route-vendor-invoice-20260818-josh-time-card-aug17-001` | authoritative Josh Time Card source - partially accepted and partially held | August 17 Pond 8:00 AM-3:45 PM was accepted once as 7 hours 45 minutes. The 3:45 PM-5:10 PM interval is retained once as unallocated because the source mentions both Tim/framing and Rosebrooks wallpaper/estate-sale work without assigning the interval to one project. No draft was generated. Packet: `working\create-vendor-invoice\2026-08-31-josh-kennedy-semimonthly-time-card-invoice\invoice-packet.md`. |

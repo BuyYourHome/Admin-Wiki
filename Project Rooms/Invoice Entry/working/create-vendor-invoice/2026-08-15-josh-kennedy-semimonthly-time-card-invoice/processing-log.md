@@ -212,3 +212,13 @@ Outcome: `Done - August 14 recorded once and period-closed correction-review dra
 - No finalization, filing, workbook posting, payment, or paid status occurred.
 
 Outcome: `Needs Wes - full-period correction-review draft delivered and exact invoice sent for approval`.
+
+## 2026-08-18 - Josh Worker Accuracy Confirmation
+
+- Wrote the exact same-id durable accepted receipt for dispatch `email-monitor-route-vendor-invoice-20260818-josh-approval-001`, payload hash `c5becac2c7f3ba201cfb387870a7b3c2e4cb93ce9d801ac6bdec5509cbc028f2`, before substantive work and moved it to `Processing`.
+- Read the exact Outlook source ending `ACi7Vd1wAAAA==`. Josh replied `I approve` to the full-period August 1-15 correction-review draft delivered under request `IE-EMAIL-20260817-JOSH-SEMIMONTHLY-CLOSED-DRAFT-006`.
+- Recorded the response as worker accuracy confirmation only. It does not satisfy the separate Wes approval gate.
+- The exact package is already with Wes under verified request `IE-EMAIL-20260817-JOSH-SEMIMONTHLY-WES-APPROVAL-001`; no email was resent.
+- Invoice status is `Period Closed - Worker Confirmed - Awaiting Wes Approval`. No finalization, filing, workbook posting, payment, or paid status occurred.
+
+Outcome: `Done - Josh confirmed the draft; Wes approval remains pending`.

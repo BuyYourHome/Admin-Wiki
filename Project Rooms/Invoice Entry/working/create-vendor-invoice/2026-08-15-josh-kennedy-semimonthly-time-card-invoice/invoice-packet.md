@@ -2,7 +2,7 @@
 
 ## Status
 
-- State: `Period Closed - Full-Period Correction Review Sent - Awaiting Wes Approval`
+- State: `Period Closed - Worker Confirmed - Awaiting Wes Approval`
 - Stable invoice number: `INV-JKLLC-20260815-001`
 - Semimonthly period: `2026-08-01 through 2026-08-15`
 - Issuer: `Josh Kennedy LLC`
@@ -43,6 +43,15 @@ Wes approval request:
 - Awaiting Wes's approval or correction. No finalization, filing, workbook posting, payment, or paid status occurred.
 
 The PDF, structured input, and one-page QA render are archived at `Generated\2026-08-17-Josh-Semimonthly-Closed-Draft-Through-Aug15`; 3 files totaling 271,603 bytes verified.
+
+## Worker Accuracy Confirmation
+
+- Dispatch id: `email-monitor-route-vendor-invoice-20260818-josh-approval-001`.
+- Payload hash: `c5becac2c7f3ba201cfb387870a7b3c2e4cb93ce9d801ac6bdec5509cbc028f2`.
+- Outlook message id ends `ACi7Vd1wAAAA==`; sender Josh Kennedy; received `2026-08-18T12:01:45Z`; subject replies to the exact full-period correction-review draft.
+- Josh replied `I approve`. This confirms the draft's worker-facing time, project allocation, and totals for correction review.
+- Josh's response is not Wes approval, payment authority, paid status, or authority to finalize, file, or post the invoice.
+- The separate exact-package approval request already sent to Wes remains pending and must not be resent solely because Josh confirmed the draft.
 
 ## Routed Sources
 
