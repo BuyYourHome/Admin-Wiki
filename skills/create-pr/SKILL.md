@@ -148,6 +148,71 @@ Output standards:
 - Prefer solid arrows for primary handoffs and dashed arrows for support/feedback relationships.
 - Include a generated date and short source note in the diagram footer.
 
+## Minimum PR Chat Set
+
+Use this mode when Wes asks Create PR to set up the minimum matching Codex chat / Project Room combinations on a prepared computer.
+
+Purpose:
+
+- Create a consistent, small set of named Codex chats for the Project Rooms Wes is most likely to use from a target computer.
+- Keep chat names aligned with Project Room names without implying that chats on different computers share live conversation state.
+- Make each chat start safely from `C:\Codex\Wiki Files` and verify its Project Room and matching skill before doing file work.
+- Record which chats are ready and which are still pending when a usable thread id is not returned.
+
+Default minimum set:
+
+1. `Codex Environment`
+2. `Jean Wright`
+3. `Email Monitor`
+4. `Doc Scan`
+5. `Invoice Entry`
+6. `Manager`
+7. `Lowes Order`
+8. `Marketplace`
+
+Required sources:
+
+1. `C:\Codex\Wiki Files\Project Room Chat Startup Rule.md`
+2. `C:\Codex\Wiki Files\Project Room File Ownership And Git Coordination Rule.md`
+3. `C:\Codex\Wiki Files\Agents and Automations Registry.md`
+4. `C:\Codex\Wiki Files\Project Rooms\Jean Wright\working\dispatcher-routing-map.md`
+5. The README and matching skill source for each Project Room in the approved minimum set.
+
+Workflow:
+
+1. Confirm the target computer has already passed Codex Environment setup or update verification.
+2. Confirm the target computer's Codex Desktop project is pointed at `C:\Codex\Wiki Files`.
+3. Confirm the approved Project Room list. Use the default minimum set unless Wes names a different exact list.
+4. For each Project Room, verify:
+   - `Project Rooms\<Project Room>\README.md` exists,
+   - `skills\<skill-name>\SKILL.md` exists when the room has a matching skill,
+   - the intended chat title matches the Project Room name.
+5. Build a startup prompt for each chat using the New Chat Startup Requirements in this skill.
+6. Create each Codex chat only when Wes explicitly asks to create the chats or run this setup mode. If the Codex app connector returns a usable thread id, record it.
+7. If chat creation does not return a usable thread id promptly, stop waiting on that chat and mark it `pending until the dedicated chat is created`.
+8. Do not mark a chat as dispatchable until a usable thread id is recorded in the appropriate registry/routing metadata.
+9. Do not edit the target Project Room's content files merely because this mode created or verified a chat. Limit cross-PR writes to explicit chat/thread metadata that Wes authorized for this setup run.
+10. Save a run manifest under `C:\Codex\Wiki Files\Project Rooms\Create PR\outputs\minimum-pr-chat-set\` showing:
+    - target computer,
+    - approved Project Room list,
+    - chat title,
+    - README status,
+    - skill status,
+    - created or pending status,
+    - thread id when available,
+    - and any blocker.
+11. Commit only scoped Create PR mode outputs and authorized metadata updates.
+12. Push only under normal Admin wiki push rules.
+
+Safety rules:
+
+- Do not create every possible Project Room chat by default.
+- Do not use or point any chat to a Teams-synced wiki folder.
+- Do not assume identical chat names share context. Each chat must run its own startup prompt before doing file work.
+- Do not create substitute chats for a Project Room that already has a registered dedicated task/thread id unless Wes explicitly approves replacing or adding a chat for that room.
+- Do not route Jean Dispatcher work to any chat marked `pending`.
+- Do not create automations as part of this mode unless Wes separately asks for scheduled or event-triggered behavior.
+
 ## Chat Startup Prompt Requirements
 
 When creating a new PR chat, include:
