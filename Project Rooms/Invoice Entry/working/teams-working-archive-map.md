@@ -230,3 +230,11 @@ The one-page PDF passed visual, extracted-text, hours, and arithmetic checks. Bo
 | Full-period correction-review PDF, structured input, and one-page QA render | `Generated\2026-08-17-Josh-Semimonthly-Closed-Draft-Through-Aug15` | 3 | 271,603 | semimonthly Time Card draft and QA evidence; awaiting Wes approval |
 
 The one-page PDF passed visual, extracted-text, hours, and arithmetic checks. Accepted time is `100 hours 25 minutes`, and both detail and project allocation totals equal `$2,708.33`. Correction-review delivery to Josh and the separate approval request to Wes were both sent exactly once and verified. No finalization, property filing, workbook posting, payment, or paid status occurred.
+
+## Tim Fleming August 17-20 Pond Draft Recorded 2026-08-20
+
+| Local working files | Teams destination under `Invoice Entry Working Archive` | Files | Bytes | Category |
+| --- | --- | ---: | ---: | --- |
+| Correction-review PDF and structured input | `Generated\2026-08-20-Tim-Pond-Hours-Draft` | 2 | 5,603 | generated vendor invoice draft; not approved, filed, posted, or paid |
+
+The one-page PDF passed visual, extracted-text, invoice-number, source, status, and arithmetic checks. The disposable QA render was removed after inspection. The draft records `18.5` hours / `$1,156.25` and visibly preserves the August 19 Rosebrooks-duration question. OfficeAssist delivery to Tim with Wes and Jenny copied was sent exactly once and verified at `2026-08-20T22:26:05Z`.

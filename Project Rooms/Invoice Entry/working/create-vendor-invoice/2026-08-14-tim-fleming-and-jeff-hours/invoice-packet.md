@@ -132,3 +132,11 @@ Tim's `Ok to pay` reply accepted the revised package without correction, resolvi
 - Wes again replied `I approve` to the OfficeAssist approval request for the exact package already approved under the earlier source: Pond `$812.50`, Tensity `$337.50`, and Rosebrooks `$75.00`; combined `$1,225.00`.
 - Classified as corroborating duplicate approval evidence. The package remains `Approved By Wes - Partially Filed - Not Paid`.
 - No invoice regeneration or finalization, filing, email, workbook posting, payment, or paid-status action was repeated.
+
+## Payment-Timing Status - 2026-08-20
+
+- Dispatch: `email-monitor-route-vendor-invoice-20260820-tim-invoice-status-001`; payload hash `17c3fc5e3258a92811d82f094049039940813449c4e8d71a28f75127b5018811`.
+- Tim asked for the package status. Wes replied to Tim and OfficeAssist: `The Pond invoice will pay today. The other 2 will pay on Tues.`
+- Recorded expected payment timing as Pond `2026-08-20` and Tensity/Rosebrooks `2026-08-25`.
+- This is payment timing/instruction evidence, not verified completed-payment evidence. All three invoices remain `Not Paid` until a payment confirmation or transaction source is received.
+- Wes's reply already communicated the status directly to Tim. No duplicate response email was requested or sent by Invoice Entry.

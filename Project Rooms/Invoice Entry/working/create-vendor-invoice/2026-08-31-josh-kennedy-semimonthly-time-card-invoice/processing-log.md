@@ -12,3 +12,16 @@
 - No filing, workbook posting, approval, payment, paid status, email, or vendor contact occurred.
 
 Outcome: `Needs Wes - clarify whether 3:45 PM-5:10 PM belongs to Pond, Rosebrooks, or a supported split`.
+
+## 2026-08-20 - August 18 And 19 Intake
+
+- Wrote durable same-id accepted receipts for both dispatches before substantive work and moved both to `Processing`.
+- Read only the exact Outlook sources ending `ACi7Vd2gAAAA==` and `ACjkdy7AAAAA==`.
+- Added August 18 once: Pond 6:00 AM-2:45 PM (`8 hours 45 minutes`) and Rosebrooks 2:45 PM-4:00 PM (`1 hour 15 minutes`).
+- Added August 19 once: Rosebrooks 6:00 AM-10:45 AM (`4 hours 45 minutes`) and Pond 10:45 AM-2:45 PM (`4 hours`).
+- Accepted subtotal through August 19 is now `26 hours 30 minutes`: Pond `20 hours 30 minutes`; Rosebrooks `6 hours`.
+- The separate August 17 `3:45 PM-5:10 PM` interval remains held once and unallocated. Neither later source clarifies it.
+- Kept the August 18 `$50.00` bed-frame sale outside the Time Card invoice. Receipt generation is held because the source does not expressly confirm collection, payment method, buyer, collector, or exact item/listing identity.
+- No draft, filing, workbook posting, approval, payment, paid status, email, receipt, project credit, or Marketplace action occurred.
+
+Outcome: `Time Card lines done; August 17 allocation and bed-frame collection facts need Wes`.

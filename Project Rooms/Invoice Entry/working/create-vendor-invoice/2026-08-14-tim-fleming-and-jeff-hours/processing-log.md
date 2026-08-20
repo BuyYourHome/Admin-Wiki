@@ -96,3 +96,13 @@ Outcome: `Done with filing hold - approved-not-paid package finalized; Pond and 
 - Did not regenerate PDFs, repeat Pond or Tensity filing, create a Rosebrooks folder, resend the approved-status email, open or edit a workbook, initiate payment, or mark any invoice paid.
 
 Outcome: `Done - later approval reply reconciled as duplicate evidence; approved-not-paid package unchanged`.
+
+## 2026-08-20 - Invoice Status And Payment Timing
+
+- Wrote the same-id durable accepted receipt for dispatch `email-monitor-route-vendor-invoice-20260820-tim-invoice-status-001` and moved it to `Processing` before substantive work.
+- Reconciled Tim's status question and Wes's direct reply to the existing three-invoice package; no new invoice or obligation was created.
+- Recorded expected payment timing: Pond on August 20; Tensity and Rosebrooks on Tuesday, August 25.
+- Kept all three invoices `Not Paid` because the messages contain no verified payment-completion evidence.
+- Did not resend the approved-status package, reply to Tim, regenerate or file invoices, post a workbook entry, initiate payment, or mark paid.
+
+Outcome: `Done - expected payment timing recorded; payment completion still unverified`.
