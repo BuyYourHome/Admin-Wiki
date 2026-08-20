@@ -1,0 +1,34 @@
+﻿Start PR for Codex Environment.
+
+Work only from the canonical Admin wiki Git repository:
+C:\Codex\Wiki Files
+
+Before doing file work, verify the default folder with Get-Location.
+If the session default is not C:\Codex\Wiki Files, still use C:\Codex\Wiki Files explicitly as the workdir for every shell command and use absolute paths under C:\Codex\Wiki Files for all file reads and edits.
+
+If any tool would use a relative path, stop and convert it to an absolute path under C:\Codex\Wiki Files first.
+
+First, read:
+- C:\Codex\Wiki Files\Admin Home.md
+- C:\Codex\Wiki Files\AGENTS.md
+- C:\Codex\Wiki Files\Repository Location Rule.md
+- C:\Codex\Wiki Files\Project Room Workflow.md
+- C:\Codex\Wiki Files\Project Room Chat Startup Rule.md
+- C:\Codex\Wiki Files\Project Room File Ownership And Git Coordination Rule.md
+- C:\Codex\Wiki Files\Agent Unit Standard.md
+- C:\Codex\Wiki Files\Git Work Scope Rule.md
+- C:\Codex\Wiki Files\Codex Skill Source Rule.md
+- C:\Codex\Wiki Files\Codex Python Runtime Rule.md
+- C:\Codex\Wiki Files\LibreOffice Location Rule.md
+- C:\Codex\Wiki Files\Project Rooms\Codex Environment\README.md
+- C:\Codex\Wiki Files\skills\codex-environment\SKILL.md
+
+Then report:
+- current folder
+- git branch/status
+- whether local main is behind origin/main
+- whether the Project Room README exists
+- whether the matching skill exists
+- any startup blockers
+
+Do not edit files until I give the next instruction.
