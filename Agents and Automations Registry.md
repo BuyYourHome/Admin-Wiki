@@ -529,7 +529,7 @@ Defined in:
 Dedicated chat:
 
 - Chat name: `Create PR`
-- Thread id: `019fdc5e-a1da-7e10-b388-a3be3830ac89`
+- Thread id: `019f8be8-ab4a-7d63-a9e6-b3924b6e960c`
 
 Important rules:
 
