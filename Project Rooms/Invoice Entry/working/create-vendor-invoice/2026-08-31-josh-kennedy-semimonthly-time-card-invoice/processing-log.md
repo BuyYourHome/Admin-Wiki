@@ -25,3 +25,14 @@ Outcome: `Needs Wes - clarify whether 3:45 PM-5:10 PM belongs to Pond, Rosebrook
 - No draft, filing, workbook posting, approval, payment, paid status, email, receipt, project credit, or Marketplace action occurred.
 
 Outcome: `Time Card lines done; August 17 allocation and bed-frame collection facts need Wes`.
+
+## 2026-08-21 - August 20 Intake
+
+- Accepted authoritative PR message `email-monitor-route-vendor-invoice-20260821-josh-time-card-aug20-001`, payload hash `c5c7c4d06173d95360159751dab914b4870428786ce47db479b3005e069404b0`, before substantive work and recorded Processing.
+- Duplicate checking found no matching dispatch, Outlook message ending `ACjvzcuAAAAA==`, or August 20 Josh line.
+- Added August 20 once: BackOffice 8:00 AM-3:45 PM (`7 hours 45 minutes`) and 4121 Tensity Dr 3:45 PM-4:30 PM (`45 minutes`) for the outside storage-closet door, handle, and deadbolt.
+- Accepted subtotal through August 20 is now `35 hours`: Pond `20 hours 30 minutes`; Rosebrooks `6 hours`; BackOffice `7 hours 45 minutes`; Tensity `45 minutes`.
+- The August 17 3:45 PM-5:10 PM interval remains held once and unallocated. The August 20 source does not clarify it.
+- No draft was generated or delivered because the unresolved August 17 project allocation prevents a complete proportional allocation of the fixed `$2,708.33` invoice. No filing, workbook posting, approval, payment, paid status, or email occurred.
+
+Outcome: `Done - August 20 recorded once; August 17 allocation still needs Wes`.
