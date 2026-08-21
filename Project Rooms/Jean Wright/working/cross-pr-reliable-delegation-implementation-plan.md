@@ -10,6 +10,15 @@ Give every Project Room a reliable, observable messaging path. A request, questi
 
 ## Messaging Model
 
+### Planned Host And Clients
+
+- Central messaging host: `WES-VIDEOEDITOR` (`Wes-VideoEditor`).
+- `WES-VIDEOEDITOR` will hold the authoritative message store, PR inboxes/outboxes, delivery history, acknowledgments, and queue-health state.
+- WesStudio and every other approved computer will operate as authenticated messaging clients. PR ownership follows the Project Room, not the computer executing the work.
+- A client that cannot reach `WES-VIDEOEDITOR` keeps outbound work in a local pending spool and reports it as not delivered. It must not claim acceptance or completion until the central host records the corresponding state.
+- The host service must be restricted to the approved private network and registered clients. The implementation must define authentication, firewall scope, backup, restoration, and host-unavailable behavior before activation.
+- Live message records remain outside Git. Git contains only schemas, client/host code, configuration templates, and durable governance documentation.
+
 ### One Durable Message Record
 
 - Every inter-PR message receives a stable `message_id`; a work request also receives a stable `dispatch_id`.
@@ -45,8 +54,8 @@ Give every Project Room a reliable, observable messaging path. A request, questi
 1. Define the shared message envelope and state machine.
    Specify the stable identifiers, message types, authorization/reference fields, payload hashing, parent/successor links, timestamps, ownership, attempt history, status updates, and final result format.
 
-2. Establish a durable PR message bus outside Git.
-   Give each PR an inbox and outbox within one machine-local message store. Keep live messages and source references out of Git; keep schemas, templates, and operational rules in the Admin Wiki.
+2. Establish the durable PR message bus on `WES-VIDEOEDITOR` outside Git.
+   Give each PR an inbox and outbox within the central host store. Install a client on every approved computer, with a local pending spool for temporary host outages. Keep live messages and source references out of Git; keep schemas, templates, host/client code, and operational rules in the Admin Wiki.
 
 3. Update the central delegation contract.
    Require the durable record before notification; require acceptance before work; define reconciliation, retries, corrections, and all valid return states. Make clear that task chat is a notification channel, not the transport.
@@ -86,6 +95,8 @@ Give every Project Room a reliable, observable messaging path. A request, questi
 ## Preconditions Before Starting
 
 - Wes explicitly authorizes implementation.
+- `WES-VIDEOEDITOR` is online, reachable from each approved client over the private network, and has a stable host address or resolvable hostname.
+- Host authentication, client registration, firewall scope, service startup, backup, restore, and outage behavior are approved and tested before live PR traffic is migrated.
 - Current task-message bridge and project/task registrations are checked.
 - Existing live dispatch records, active work, and current task-message dependencies are inventoried before schema or runtime changes.
 - A rollback point and restoration instructions are documented before changing any automation or shared routing rule.
