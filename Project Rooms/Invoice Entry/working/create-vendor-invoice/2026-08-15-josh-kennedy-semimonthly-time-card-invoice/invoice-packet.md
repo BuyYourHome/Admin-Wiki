@@ -2,14 +2,15 @@
 
 ## Status
 
-- State: `Period Closed - Worker Confirmed - Awaiting Wes Approval`
+- State: `Approved by Wes - Not Paid; Tensity and Pond posted; Rosebrooks posting needs Wes`
 - Stable invoice number: `INV-JKLLC-20260815-001`
 - Semimonthly period: `2026-08-01 through 2026-08-15`
 - Issuer: `Josh Kennedy LLC`
 - Invoice contact: `profcyber0077@gmail.com`
 - Customer: `Buy Your Home`
-- Draft PDF: generated, visually verified, sent to Josh, and verified in OfficeAssist Sent Items
-- Filing, workbook posting, approval, payment, and paid-status action: not performed
+- Approved PDF: generated with `APPROVED BY WES - NOT PAID`, visually verified, and filed in `Office Admin/Invoices & Receipts`
+- Workbook posting: Tensity and Pond verified in `Review`; Rosebrooks locally staged but SharePoint overwrite rejected; BackOffice held without an approved accounting destination
+- Payment and paid-status action: not performed
 
 ## August 15 Closeout
 
@@ -52,6 +53,20 @@ The PDF, structured input, and one-page QA render are archived at `Generated\202
 - Josh replied `I approve`. This confirms the draft's worker-facing time, project allocation, and totals for correction review.
 - Josh's response is not Wes approval, payment authority, paid status, or authority to finalize, file, or post the invoice.
 - The separate exact-package approval request already sent to Wes remains pending and must not be resent solely because Josh confirmed the draft.
+
+## Wes Approval And Finalization - 2026-08-21
+
+- Authoritative PR message: `email-monitor-route-vendor-invoice-20260821-josh-approval-001`; payload hash `dc7334c923651acf33486cebb83653b3b37b2652e4b69a7a2deb92951aaa66b4`.
+- Wes approved the exact closed-period invoice `INV-JKLLC-20260815-001` for `$2,708.33`. The approval does not prove payment.
+- Final PDF status is `APPROVED BY WES - NOT PAID`; SHA-256 is `BDE66D2ABBB68AFED75223DB18E0A41BAD4DE0DB3B4DB14B20908ADD3C377427`.
+- The final PDF is filed once at `Office Admin/Invoices & Receipts/26-08-15 - Josh Kennedy LLC - Time Card Invoice - 2026-08-01 to 2026-08-15.pdf`. A connector fetch verified the invoice number, status, amount, allocations, and time detail.
+- Tensity allocation `$1,899.20` was inserted once into `Review!tblInvoiceReview` as row `IE-20260821-JOSH-20260815-TENSITY`; destination is blank and status is `Needs Review` because Labor / Time Card is not an approved Vendor Tabs destination.
+- Pond allocation `$94.40` was inserted once into `Review!tblInvoiceReview` as row `IE-20260821-JOSH-20260815-POND` with the same blank-destination `Needs Review` treatment.
+- Both SharePoint workbook overwrites passed byte-for-byte download verification and Excel reopen/read-back. Formula-error signatures, external-link counts, and VBA-presence checks were unchanged from their fresh sources.
+- Rosebrooks allocation `$404.56` is staged and QA-verified in the local rollback-controlled workbook as row `IE-20260821-JOSH-20260815-ROSEBROOKS`, but SharePoint rejected the overwrite as an unacceptable macro-workbook safety risk. No workaround or retry was attempted. Explicit Wes approval is required before retrying that exact overwrite.
+- The Rosebrooks Owning folder has no established `Invoices` folder, so no property-folder copy was invented. The authoritative Office Admin filing remains complete.
+- BackOffice allocation `$310.17` remains held because no approved BackOffice accounting workbook or destination is registered.
+- Approved-status delivery request `invoice-entry-email-delivery-20260821-josh-approved-001` was sent exactly once from OfficeAssist to Josh with Wes and Jenny copied and verified in OfficeAssist Sent Items at `2026-08-21T13:57:12Z`. Sent message id ends `ACjvzQ8gAAAA==`; the exact body and one non-inline PDF were verified.
 
 ## Routed Sources
 
@@ -255,7 +270,7 @@ Updated through-August-11 delivery:
 
 ## Current Hold
 
-The August 11 work date is a documented received-date assumption pending correction-by-exception review; the projects, activities, time ranges, and total interval are source-supported. The semimonthly period has closed, but the invoice is not final. Reconcile any correction or late source in place before seeking Wes's approval. No workbook edit, filing, approval, payment, or paid-status action occurred.
+The approved invoice is final and not paid. Tensity and Pond posting are complete and duplicate-protected. Rosebrooks posting requires Wes's explicit approval to retry the connector-rejected exact workbook overwrite; BackOffice remains held until an approved accounting destination exists. Do not repeat the completed filing, Tensity/Pond uploads, or approved-status delivery after verified completion.
 
 ## 2026-08-12 Compensation Basis Correction
 

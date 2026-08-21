@@ -1,12 +1,12 @@
 # Invoice Entry Current Work Status
 
-Last updated: 2026-08-20
+Last updated: 2026-08-21
 
 This is the authoritative current-state register for Invoice Entry. Read it before processing a handoff or opening a workbook. Packet files and processing logs remain the detailed evidence; when an older summary conflicts with this file, stop and reconcile the source before acting.
 
 ## Operating State
 
-- Status: `Active - Josh August 17 Allocation And Bed-Frame Receipt Need Wes; Tim August 17-20 Awaiting Corrections; Lowe's 74830 Needs Wes`
+- Status: `Active - Josh August 1-15 Approved; Rosebrooks Posting And BackOffice Allocation Need Wes; Other Open Work Unchanged`
 - Primary intake: direct Doc Scan or Email Monitor handoff; authorized versioned Manager Time Card packets are also supported for Time Card intake.
 - Current task: `019fbf4f-c629-7dd1-a3f6-0de33de0ed8f`.
 - Canonical skill: `C:\Codex\Wiki Files\skills\invoice-entry\SKILL.md`.
@@ -24,7 +24,7 @@ This is the authoritative current-state register for Invoice Entry. Read it befo
 - Operation in flight: no
 - Operation started at UTC: none
 - Current work durably recorded: yes
-- External delivery evidence recorded: yes; Tim August 17-20 Pond correction-review draft verified `2026-08-20T22:26:05Z`; Josh full-period correction-review draft verified `2026-08-17T12:00:22Z` and Wes approval request verified `2026-08-17T12:02:37Z`; prior Tim approved-status package verified `2026-08-17T02:08:42Z`
+- External delivery evidence recorded: yes; Josh August 1-15 approved-status package verified `2026-08-21T13:57:12Z`; Tim August 17-20 Pond correction-review draft verified `2026-08-20T22:26:05Z`; Josh full-period correction-review draft and Wes approval request remain historical verified evidence
 - Open packets and blockers current: yes
 - Git and working-file state classified: yes
 - Recent task timeouts: 0
@@ -200,7 +200,7 @@ Classified working files:
 | --- | --- | --- |
 | Josh Kennedy separate biweekly invoice `SP-JK-20260731-001` | `Denied by Wes - Retired - Do Not Pay` | None. Retain as history only. Do not approve, file, post, pay, revive, or reuse it. The referenced recurrence automation is not installed at its recorded local path. |
 | Josh Kennedy LLC semimonthly invoice `INV-JKLLC-20260731-001` | `Approved by Wes - Format Revisions Permitted`; revised PDF sent and verified | Filing and project posting remain held pending duplicate-safe reconciliation of the historical weekly PDFs and existing Tensity Review row. Approval is not payment or paid status. |
-| Josh Kennedy LLC August 1-15 Time Card invoice | `Period Closed - Worker Confirmed - Awaiting Wes Approval`; stable number `INV-JKLLC-20260815-001`; 100 hours 25 minutes; amount `$2,708.33` | Josh's confirmation does not satisfy the Wes approval gate. Await Wes approval; do not repeat delivery or perform finalization, filing, posting, payment, or paid status. |
+| Josh Kennedy LLC August 1-15 Time Card invoice | `Approved by Wes - Not Paid`; stable number `INV-JKLLC-20260815-001`; `$2,708.33`; final Office Admin filing and approved-status delivery verified; Tensity `$1,899.20` and Pond `$94.40` posted once to Review | Rosebrooks `$404.56` local staging passed QA, but SharePoint rejected the exact workbook overwrite; explicit Wes approval is required before retry. BackOffice `$310.17` remains held without an approved accounting destination. Do not repeat filing, Tensity/Pond posting, or email delivery. |
 | Josh Kennedy LLC August 16-31 Time Card invoice | `Period Open - Accepted Through August 19 - Allocation Clarification Required`; stable number `INV-JKLLC-20260831-001`; accepted `26h30m`; held `1h25m` unallocated | Clarify the August 17 3:45 PM-5:10 PM project allocation between Pond and Rosebrooks or provide a supported split. No draft should be generated until resolved. |
 | Tim Fleming Pond invoice `IE-TF-20260820-POND-001` | Correction-review draft generated and sent exactly once; `18.5` hours / `$1,156.25`; Sent Items verification passed | Await Tim correction-by-exception review. Do not resend, approve, file, post, pay, or mark paid. |
 | Rosebrooks bed-frame sale report | Receipt-mode hold; `$50.00` sale reported but collection facts incomplete | Confirm collection, payment method, buyer, collector, and exact item/listing before assigning a receipt number or taking workbook/Marketplace action. |

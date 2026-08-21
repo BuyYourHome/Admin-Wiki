@@ -222,3 +222,17 @@ Outcome: `Needs Wes - full-period correction-review draft delivered and exact in
 - Invoice status is `Period Closed - Worker Confirmed - Awaiting Wes Approval`. No finalization, filing, workbook posting, payment, or paid status occurred.
 
 Outcome: `Done - Josh confirmed the draft; Wes approval remains pending`.
+
+## 2026-08-21 - Wes Approval, Finalization, Filing, And Project Posting
+
+- Accepted authoritative PR message `email-monitor-route-vendor-invoice-20260821-josh-approval-001` before substantive work and recorded Processing.
+- Reconciled Wes's approval to the exact closed-period invoice `INV-JKLLC-20260815-001`, August 1-15, 2026, `$2,708.33`; no new obligation was created.
+- Generated and visually verified the one-page final PDF with `APPROVED BY WES - NOT PAID`. The final SHA-256 is `BDE66D2ABBB68AFED75223DB18E0A41BAD4DE0DB3B4DB14B20908ADD3C377427`.
+- Filed the stable PDF once in SharePoint `Office Admin/Invoices & Receipts`; connector read-back verified the exact invoice content.
+- Inserted Tensity `$1,899.20` and Pond `$94.40` once into their fresh authoritative `Review!tblInvoiceReview` tables with stable row IDs, blank destinations, and `Needs Review`. Exact-target uploads, byte-for-byte downloads, and Excel reopen/read-back all passed.
+- Staged and QA-verified Rosebrooks `$404.56` locally with rollback evidence, but SharePoint rejected the macro-enabled workbook overwrite as unsafe. No workaround or retry occurred; explicit Wes approval is required.
+- Held BackOffice `$310.17` because no approved accounting workbook/destination exists.
+- Email Monitor sent delivery request `invoice-entry-email-delivery-20260821-josh-approved-001` exactly once from OfficeAssist to Josh with Wes and Jenny copied and verified the exact body and one non-inline PDF in Sent Items at `2026-08-21T13:57:12Z`. Sent message id ends `ACjvzQ8gAAAA==`.
+- No payment, paid status, or duplicate filing/upload/delivery was performed.
+
+Outcome: `Needs Wes - invoice approved and filed; Tensity/Pond posted; Rosebrooks workbook retry requires explicit approval; BackOffice has no approved destination`.
