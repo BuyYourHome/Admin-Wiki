@@ -309,6 +309,16 @@ Invoke-WithQueueLock {
         "Accept" {
             Assert-DestinationActor -Record $record
             if ($record.state -in @("Accepted", "Processing", "Completed", "Blocked", "Needs Wes")) { $record | ConvertTo-Json -Depth 30; return }
+            $attempts = @($record.attempts)
+            if ($attempts.Count -gt 0) {
+                $index = $attempts.Count - 1
+                if ($attempts[$index].outcome -eq "Pending") {
+                    $attempts[$index].completed_at_utc = Get-UtcTimestamp
+                    $attempts[$index].outcome = "Delivered"
+                    $attempts[$index].detail = "Destination wrote the authoritative acceptance receipt."
+                    $record.attempts = $attempts
+                }
+            }
             $record.state = "Accepted"
             $record.receipt = [pscustomobject][ordered]@{ accepted_at_utc = Get-UtcTimestamp; project_room = $record.destination.project_room; task_id = $record.destination.task_id; machine = $env:COMPUTERNAME; detail = $Detail }
             Add-Event -Record $record -Event "Accepted" -EventDetail $Detail -ProjectRoom $record.destination.project_room -TaskId $record.destination.task_id

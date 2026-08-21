@@ -76,6 +76,22 @@ Production migration requires all validation checks to pass. Then:
 5. Sync the updated skills on each client.
 6. Run one low-risk real delegation and verify acceptance and return before expanding traffic.
 
+## Validation Record - 2026-08-21
+
+- `WES-VIDEOEDITOR` installed the secured host at `D:\BuyYourHome\PRMessaging`.
+- Share `\\WES-VIDEOEDITOR\BYH-PRMessaging$` requires SMB encryption and grants change access only to `MicrosoftAccount\wesbrowning1@outlook.com` plus local administrators.
+- Firewall rule `BYH PR Messaging SMB Host` permits TCP 445 only on the Private profile from `10.0.0.0/24`.
+- WesStudio created authoritative synthetic request `prmsg-pilot-20260821-001` for Doc Scan.
+- `WES-VIDEOEDITOR` read the same record, accepted it under the registered Doc Scan identity, entered Processing, and completed it without a business action.
+- WesStudio read back `Completed` with payload hash `6ebedee8aad2c152458ba63e95e566a6989ed3e33a82bd5b1a0b3b2904dd6f35`; acceptance and completion both identify `WES-VIDEOEDITOR`.
+- The local automated suite also passed duplicate/hash conflict protection, offline spool synchronization, and a 12-writer concurrency test.
+
+At this stage, transport validation was complete but production migration remained disabled because an actual destination Codex task had not yet demonstrated automatic queue polling or wake-up and same-ID acceptance. Manual execution of a queue record was not treated as evidence of automatic task delivery.
+
+Automatic task wake-up was subsequently validated with `prmsg-pilot-20260821-002`: the dispatcher heartbeat wrote attempt 1 before notifying the registered Doc Scan task, and Doc Scan independently verified the central payload hash, wrote Accepted and Processing, and returned Completed without business action. This run exposed that acceptance did not close the attempt's `Pending` outcome; the canonical manager and automated suite were corrected so destination acceptance atomically closes the latest pending attempt as `Delivered`.
+
+Regression message `prmsg-pilot-20260821-003` then passed through the same dispatcher and actual Doc Scan task. Its central record reached `Completed`, attempt 1 closed as `Delivered` at acceptance, and no business action occurred. All synthetic central records were removed afterward. Production migration remains disabled pending reconciliation of unresolved legacy records and a deliberate low-risk production cutover.
+
 ## Rollback
 
 On clients, stop using the new queue and leave local spool records untouched.

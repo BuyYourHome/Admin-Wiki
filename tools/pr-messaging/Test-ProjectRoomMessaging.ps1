@@ -17,7 +17,10 @@ try {
 
     & $manager -Action StartAttempt -QueuePath $queue -MessageId "test-message-001" -AttemptId "attempt-1" -ActorProjectRoom "Jean Wright" -ActorTaskId "jean-task" | Out-Null
     & $manager -Action MarkAttempt -QueuePath $queue -MessageId "test-message-001" -AttemptId "attempt-1" -AttemptOutcome DeliveryAmbiguous -Detail "simulated timeout" -ActorProjectRoom "Jean Wright" -ActorTaskId "jean-task" | Out-Null
+    & $manager -Action StartAttempt -QueuePath $queue -MessageId "test-message-001" -AttemptId "attempt-2" -ActorProjectRoom "Jean Wright" -ActorTaskId "jean-task" | Out-Null
     & $manager -Action Accept -QueuePath $queue -MessageId "test-message-001" -ActorProjectRoom "Invoice Entry" -ActorTaskId "invoice-task" -Detail "accepted test" | Out-Null
+    $accepted = & $manager -Action Get -QueuePath $queue -MessageId "test-message-001" | ConvertFrom-Json
+    if ($accepted.attempts[-1].outcome -ne "Delivered" -or -not $accepted.attempts[-1].completed_at_utc) { throw "Accepted delivery attempt was not closed as Delivered." }
     & $manager -Action StartProcessing -QueuePath $queue -MessageId "test-message-001" -ActorProjectRoom "Invoice Entry" -ActorTaskId "invoice-task" | Out-Null
     & $manager -Action Update -QueuePath $queue -MessageId "test-message-001" -ActorProjectRoom "Invoice Entry" -ActorTaskId "invoice-task" -Detail "halfway" | Out-Null
     $completed = & $manager -Action Complete -QueuePath $queue -MessageId "test-message-001" -ActorProjectRoom "Invoice Entry" -ActorTaskId "invoice-task" -Detail "complete" -ResultJson '{"rows":1}' | ConvertFrom-Json

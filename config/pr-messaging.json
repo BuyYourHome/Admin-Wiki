@@ -13,5 +13,6 @@
     "Marketplace"
   ],
   "live_migration_status": "not_migrated",
+  "transport_validation_status": "validated_2026-08-21",
   "legacy_queue_remains_authoritative": true
 }
