@@ -17,6 +17,7 @@
 
 - Dispatch `email-monitor-route-vendor-invoice-20260820-tim-hours-aug17-19-001`; payload hash `c8e2fed006b21ea81c061a5a9eb65f7f5a13822a90dfb9f4e9cd19dbdb6ca9ec`; Outlook message ending `ACi7Vd2wAAAA==`.
 - Dispatch `email-monitor-route-vendor-invoice-20260820-tim-hours-aug20-001`; payload hash `919d7533efa1a2a7b4674d936260bee434896be1f43c43e7a74e50c99d69722e`; Outlook message ending `ACjkdy8AAAAA==`.
+- Dispatch `email-monitor-route-vendor-invoice-20260821-tim-hours-aug21-001`; payload hash `af1cedca2941b603d31f492207184f844d98f9d37c5b1504d19231d0ddd828f6`; Outlook message ending `ACjvzcuQAAAA==`. Tim reported no hours. The subject says `Friday 8/21`, while the body says `Friday 8/12`; both date statements are preserved without selecting one.
 
 ## Draft Lines
 
@@ -44,6 +45,7 @@ Tim expressly reported the August 19 line as `Pond 5 hours`, so the draft keeps 
 - Prior Tim package ends August 14; these August 17-20 hours do not overlap it.
 - No prior dispatch, Outlook source, invoice number, or August 17-20 Tim packet matched these sources.
 - Repeated routing must update this packet rather than create another obligation.
+- The zero-hours source creates no payable line and does not change the existing `18.5` hours or `$1,156.25` draft total. Its date conflict remains source evidence only unless Tim supplies a correction.
 
 ## Correction-Review Delivery
 

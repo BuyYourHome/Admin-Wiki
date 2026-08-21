@@ -18,3 +18,13 @@
 - The delivery clearly states the draft is for correction review and is not approved, filed, posted, or paid.
 
 Outcome: `Done - correction-review draft sent and verified; awaiting corrections by exception`.
+
+## 2026-08-21 - Zero-Hours Report With Date Conflict
+
+- Accepted authoritative PR message `email-monitor-route-vendor-invoice-20260821-tim-hours-aug21-001`, payload hash `af1cedca2941b603d31f492207184f844d98f9d37c5b1504d19231d0ddd828f6`, before substantive work and recorded Processing.
+- Duplicate checking found no prior matching dispatch or Outlook message ending `ACjvzcuQAAAA==`.
+- Preserved the subject date `Friday 8/21` and body date `Friday 8/12` without choosing between them.
+- Tim reported no hours, so no payable line, invoice amount, project allocation, or existing draft fact changed. The existing draft remains `18.5` hours / `$1,156.25` for August 17-20.
+- No new draft, email, filing, workbook posting, approval, payment, or paid status occurred.
+
+Outcome: `Done - zero-hours source recorded; date conflict preserved; invoice unchanged`.
