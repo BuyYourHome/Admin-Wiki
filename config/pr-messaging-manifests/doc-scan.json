@@ -1,0 +1,12 @@
+{
+  "schema_version": 1,
+  "project_room": "Doc Scan",
+  "skill": "doc-scan",
+  "task_id": "019ecc0d-02b4-73a3-9c20-dacda5d811d0",
+  "dispatchable": true,
+  "execution_machine": "any_registered_client_with_authorized_source_access",
+  "owned_actions": ["scan intake", "OCR and document parsing", "document classification", "structured packet preparation", "source-preserving routing"],
+  "accepted_message_types": ["request", "question", "status", "decision", "result", "improvement"],
+  "related_project_rooms": ["Invoice Entry", "Email Monitor"],
+  "limitations": ["does not modify project spreadsheets", "does not infer unsupported entity or project allocation"]
+}

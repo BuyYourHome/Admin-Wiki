@@ -45,18 +45,19 @@ Before Create PR file work:
 9. Include this short pointer in the README and matching skill instead of copying the full central rule: `Start PR: Before durable work, follow Start PR in C:\Codex\Wiki Files\Project Room Chat Startup Rule.md. Interpret unqualified requests under the Current PR Scope Rule in that file. Work on main unless Wes explicitly asks for a branch.`
 10. Include this short delegation-contract pointer in the README and matching skill: `Delegation Contract: Follow C:\Codex\Wiki Files\Project Room Delegation Contract.md. Jean may delegate this PR's work only to its registered task; accept and return the same dispatch id under the central contract.`
 11. Include this exact short Action Ownership pointer in the README and matching skill: `Action Ownership: Follow C:\Codex\Wiki Files\Project Room Delegation Contract.md. Perform only this PR's documented actions. Delegate another PR's action to its registered task; a missing task/thread id is a blocker, never permission to perform it locally. Return accepted, done, blocked, needs Wes, or rejected as wrong room.`
-12. Make the new room dispatcher-ready by relying on the central Dispatcher Intake And Return Rule in `Project Room Chat Startup Rule.md`; do not copy the full dispatcher rule into the PR unless Wes explicitly asks for a local exception.
-13. If the new room has a dedicated task/thread id, record it in the README, matching skill when useful, registry entry, and Jean routing map.
-14. Create the matching skill under `skills\<skill-name>\SKILL.md` with source paths, required startup, workflow, boundaries, outputs, Git rules, Start PR pointer, and Action Ownership pointer.
-15. Make the new Project Room subject to `Project Room File Ownership And Git Coordination Rule.md`; do not set up a new room so it can edit other PR files by default.
-16. Add `skills\<skill-name>\agents\openai.yaml` when practical.
-17. Update `Agents and Automations Registry.md` when the room is repeatable, agent-like, has a dedicated chat, or may later have automation.
-18. Add `Admin Home.md` links when the room should be visible from the wiki start page.
-19. Commit the scoped Project Room, skill, registry, and index changes before attempting dedicated task creation.
-20. Mark the Project Room `pending setup` and not dispatchable until its dedicated task/thread id is recorded in the README, registry, and Jean routing map. Do not route work into a pending room.
-21. Create or hand off to a dedicated chat using `Project Room Chat Startup Rule.md` only when Wes explicitly asks. If the task cannot be created or a usable id is not returned, record that explicit blocker; do not silently treat the new room as ready or route its work through another chat.
-22. If a dedicated chat is created, record the returned thread id in the README, registry, and Jean routing map, then commit that metadata update separately.
-23. Push only under the Admin wiki push rules.
+12. Include this short PR Messaging pointer in the README and matching skill: `PR Messaging: Follow C:\Codex\Wiki Files\Project Room Messaging Rule.md. Use the central message record as authoritative only after the shared host is validated and migration is enabled; task messages are wake-up signals, not delivery proof.`
+13. Make the new room dispatcher-ready by relying on the central Dispatcher Intake And Return Rule in `Project Room Chat Startup Rule.md`; do not copy the full dispatcher rule into the PR unless Wes explicitly asks for a local exception.
+14. If the new room has a dedicated task/thread id, record it in the README, matching skill when useful, registry entry, and Jean routing map.
+15. Create the matching skill under `skills\<skill-name>\SKILL.md` with source paths, required startup, workflow, boundaries, outputs, Git rules, Start PR pointer, Action Ownership pointer, and PR Messaging pointer.
+16. Make the new Project Room subject to `Project Room File Ownership And Git Coordination Rule.md`; do not set up a new room so it can edit other PR files by default.
+17. Add `skills\<skill-name>\agents\openai.yaml` when practical.
+18. Update `Agents and Automations Registry.md` when the room is repeatable, agent-like, has a dedicated chat, or may later have automation.
+19. Add `Admin Home.md` links when the room should be visible from the wiki start page.
+20. Commit the scoped Project Room, skill, registry, and index changes before attempting dedicated task creation.
+21. Mark the Project Room `pending setup` and not dispatchable until its dedicated task/thread id is recorded in the README, registry, and Jean routing map. Do not route work into a pending room.
+22. Create or hand off to a dedicated chat using `Project Room Chat Startup Rule.md` only when Wes explicitly asks. If the task cannot be created or a usable id is not returned, record that explicit blocker; do not silently treat the new room as ready or route its work through another chat.
+23. If a dedicated chat is created, record the returned thread id in the README, registry, and Jean routing map, then commit that metadata update separately.
+24. Push only under the Admin wiki push rules.
 
 ## Delegated Dashboard Deletion Authorization
 
@@ -235,6 +236,7 @@ Every new PR should be able to receive a Jean Dispatcher handoff without adding 
 - The central Dispatcher Intake And Return Rule governs incoming Jean handoffs.
 - The registry entry identifies the Project Room, matching skill, status, schedule, and primary definition.
 - Jean's routing map records the PR, skill, task/thread id or `pending`, and routing notes.
+- README and skill include the short PR Messaging pointer to `C:\Codex\Wiki Files\Project Room Messaging Rule.md`.
 - `pending` means the new room cannot receive routine delegation. Jean must return the task-creation blocker to Wes rather than creating a substitute chat or performing the new room's work.
 - If the room receives substantial routed work, create or update `working\work-status.md`; do not create work-status files for trivial questions or quiet checks.
 

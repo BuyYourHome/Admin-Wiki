@@ -1,0 +1,63 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://buyyourhome.local/schemas/pr-messaging-message.schema.json",
+  "title": "Project Room message",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "message_id",
+    "message_type",
+    "source",
+    "destination",
+    "payload_hash",
+    "state",
+    "created_at_utc",
+    "updated_at_utc",
+    "events"
+  ],
+  "properties": {
+    "schema_version": { "const": 1 },
+    "message_id": { "type": "string", "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]{2,127}$" },
+    "dispatch_id": { "type": ["string", "null"] },
+    "message_type": {
+      "enum": ["request", "question", "status", "decision", "result", "improvement"]
+    },
+    "parent_message_id": { "type": ["string", "null"] },
+    "source": { "$ref": "#/$defs/endpoint" },
+    "destination": { "$ref": "#/$defs/endpoint" },
+    "authorization": { "type": "object" },
+    "references": { "type": "array" },
+    "payload": { "type": "object" },
+    "payload_hash": { "type": "string", "pattern": "^[a-f0-9]{64}$" },
+    "state": {
+      "enum": [
+        "Pending Host",
+        "Queued",
+        "Delivery Attempted",
+        "Delivery Ambiguous",
+        "Accepted",
+        "Processing",
+        "Completed",
+        "Blocked",
+        "Needs Wes",
+        "Rejected as Wrong Room"
+      ]
+    },
+    "events": { "type": "array" },
+    "status_updates": { "type": "array" },
+    "attempts": { "type": "array" },
+    "receipt": { "type": ["object", "null"] },
+    "result": { "type": ["object", "null"] }
+  },
+  "$defs": {
+    "endpoint": {
+      "type": "object",
+      "required": ["project_room", "task_id"],
+      "properties": {
+        "project_room": { "type": "string", "minLength": 1 },
+        "task_id": { "type": "string", "minLength": 1 },
+        "machine": { "type": ["string", "null"] }
+      }
+    }
+  }
+}

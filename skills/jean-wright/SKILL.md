@@ -76,6 +76,7 @@ Use when Wes gives Jean a request that belongs to a specialized Project Room, as
 
 9. Route only to the task/thread id recorded in the dispatcher routing map. Do not consider work started until the destination returns `accepted` with the same `dispatch_id`; a missing receipt is an unresolved handoff, not authority for Jean to perform the specialized work.
 10. Route requests to create Project Rooms, matching skills, or dedicated PR chats to the registered Create PR task. Do not create the package locally. A new PR cannot receive routine delegation until Create PR records a usable dedicated task/thread id or the explicit task-creation blocker.
+11. Read `C:\Codex\Wiki Files\config\pr-messaging.json` before choosing the durable transport. While `legacy_queue_remains_authoritative` is `true`, use the existing Email Monitor dispatch queue for production and use the shared `WES-VIDEOEDITOR` queue only for controlled pilot tests. After validated migration, create the central message before task notification and reconcile acceptance and final return there.
 
 ### General Delegation Default
 
@@ -134,3 +135,7 @@ Delegation Contract: Follow `C:\Codex\Wiki Files\Project Room Delegation Contrac
 ## Action Ownership
 
 Action Ownership: Follow `C:\Codex\Wiki Files\Project Room Delegation Contract.md`. Perform only this PR's documented actions. Delegate another PR's action to its registered task; a missing task/thread id is a blocker, never permission to perform it locally. Return `accepted`, `done`, `blocked`, `needs Wes`, or `rejected as wrong room`.
+
+## PR Messaging
+
+PR Messaging: Follow `C:\Codex\Wiki Files\Project Room Messaging Rule.md`. Use the central message record as authoritative only after the shared host is validated and migration is enabled; task messages are wake-up signals, not delivery proof.

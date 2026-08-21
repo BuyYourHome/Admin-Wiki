@@ -1,0 +1,62 @@
+# Project Room Messaging Rule
+
+This rule governs durable messages between Buy Your Home Project Rooms across one or more computers.
+
+## Authority And Host
+
+- Planned central host: `WES-VIDEOEDITOR`.
+- Planned shared queue: `\\WES-VIDEOEDITOR\BYH-PRMessaging$`.
+- Canonical configuration: `C:\Codex\Wiki Files\config\pr-messaging.json`.
+- Canonical message tool: `C:\Codex\Wiki Files\tools\pr-messaging\Manage-ProjectRoomMessage.ps1`.
+- Live message records remain outside Git. Git contains rules, schemas, manifests, tools, tests, and deployment instructions only.
+
+The new shared queue is a pilot until host installation, client registration, and end-to-end validation are complete. During the pilot, `legacy_queue_remains_authoritative` in `config\pr-messaging.json` controls migration. Do not retire or bypass the existing Email Monitor dispatch queue while that value is `true`.
+
+## Message Contract
+
+1. Save the durable message before sending a Codex task notification.
+2. Treat task notification as a wake-up signal, not proof of delivery.
+3. The destination verifies its Project Room, task id, message id, and payload hash before accepting.
+4. The destination writes `Accepted` before substantive work, then `Processing`, meaningful updates, and exactly one final result.
+5. Valid final states are `Completed`, `Blocked`, `Needs Wes`, and `Rejected as Wrong Room`.
+6. Reconcile `Delivery Ambiguous` against the central record and task history before retrying the same immutable message.
+7. A missing task id, unavailable host, or inaccessible source is a blocker. It is not permission to execute another PR's work locally.
+8. Corrections use a new linked message. Do not overwrite the immutable payload of the original message.
+
+## Multi-Machine Behavior
+
+- PR ownership belongs to the Project Room, not the computer running it.
+- Every approved computer registers its PR/task identities as a messaging client.
+- The central record on `WES-VIDEOEDITOR` is authoritative for delivery and processing state.
+- If the host is unavailable, a sender may create a local `Pending Host` spool record. It must report that the message is not delivered.
+- A spooled message becomes authoritative only after synchronization to the central host and hash verification.
+- Cross-machine updates use the shared file lock in the canonical message tool. Do not hand-edit runtime JSON records.
+
+## Message Types
+
+- `request`: owned work.
+- `question`: bounded clarification or source context.
+- `status`: meaningful progress or changed blocker.
+- `decision`: the smallest choice needed from Wes.
+- `result`: a final return.
+- `improvement`: a failure, workaround, unclear ownership, missing rule, or repeated problem that needs correction.
+
+## Security And Privacy
+
+- The host share must require authenticated Windows access, SMB encryption, NTFS restrictions, and a Private-profile firewall rule scoped to the approved subnet.
+- Do not place passwords, tokens, full email bodies, unnecessary personal data, financial credentials, or document copies in queue records.
+- Store source references and authoritative paths instead of duplicating source files.
+- Dashboard may show counts, age, state, and attention flags, but not sensitive payloads.
+
+## Recovery
+
+- If `WES-VIDEOEDITOR` is unavailable, preserve local spool records and do not claim delivery.
+- Host removal must preserve message data by default.
+- Restore the share and validate payload hashes before resuming clients.
+- During pilot rollback, set `live_migration_status` to `not_migrated`, keep `legacy_queue_remains_authoritative` as `true`, and continue using the existing Email Monitor queue.
+
+## PR Pointer
+
+Every PR README and matching skill should use this short pointer:
+
+`PR Messaging: Follow C:\Codex\Wiki Files\Project Room Messaging Rule.md. Use the central message record as authoritative only after the shared host is validated and migration is enabled; task messages are wake-up signals, not delivery proof.`

@@ -1,0 +1,12 @@
+{
+  "schema_version": 1,
+  "project_room": "Email Monitor",
+  "skill": "email-monitor",
+  "task_id": "019ecba7-f1cc-7ac1-aaf7-d89a3f21b582",
+  "dispatchable": true,
+  "execution_machine": "any_registered_client_with_authorized_outlook_access",
+  "owned_actions": ["mailbox summaries", "OfficeAssist instruction intake", "email routing", "Email Delivery coordination", "email workflow health"],
+  "accepted_message_types": ["request", "question", "status", "decision", "result", "improvement"],
+  "related_project_rooms": ["Jean Wright", "Invoice Entry", "Manager"],
+  "limitations": ["external delivery remains subject to sender and Sent Items verification", "queue intake does not authorize unsupported external actions"]
+}

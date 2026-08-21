@@ -1,0 +1,12 @@
+{
+  "schema_version": 1,
+  "project_room": "Jean Wright",
+  "skill": "jean-wright",
+  "task_id": "019e8e54-f8c3-7233-88dd-e1dffd79c9a6",
+  "dispatchable": true,
+  "execution_machine": "any_registered_client",
+  "owned_actions": ["general office-assistant coordination", "Project Room routing", "cross-PR reconciliation", "Wes decision relay"],
+  "accepted_message_types": ["request", "question", "status", "decision", "result", "improvement"],
+  "related_project_rooms": ["Email Monitor", "Create PR", "Dashboard"],
+  "limitations": ["does not perform another Project Room's specialized actions", "does not send email directly"]
+}

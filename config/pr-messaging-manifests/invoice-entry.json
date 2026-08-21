@@ -1,0 +1,12 @@
+{
+  "schema_version": 1,
+  "project_room": "Invoice Entry",
+  "skill": "invoice-entry",
+  "task_id": "019fbf4f-c629-7dd1-a3f6-0de33de0ed8f",
+  "dispatchable": true,
+  "execution_machine": "any_registered_client_with_authorized_workbook_access",
+  "owned_actions": ["structured invoice processing", "receipt processing", "statement packet processing", "time-card processing", "project workbook routing and validation"],
+  "accepted_message_types": ["request", "question", "status", "decision", "result", "improvement"],
+  "related_project_rooms": ["Doc Scan", "Email Monitor", "Marketplace", "Manager"],
+  "limitations": ["requires structured source evidence", "does not approve or pay invoices"]
+}

@@ -1,0 +1,17 @@
+{
+  "schema_version": 1,
+  "host_computer": "WES-VIDEOEDITOR",
+  "host_ipv4": "10.0.0.130",
+  "share_name": "BYH-PRMessaging$",
+  "queue_path": "\\\\WES-VIDEOEDITOR\\BYH-PRMessaging$",
+  "remote_subnet": "10.0.0.0/24",
+  "pilot_project_rooms": [
+    "Jean Wright",
+    "Email Monitor",
+    "Invoice Entry",
+    "Doc Scan",
+    "Marketplace"
+  ],
+  "live_migration_status": "not_migrated",
+  "legacy_queue_remains_authoritative": true
+}

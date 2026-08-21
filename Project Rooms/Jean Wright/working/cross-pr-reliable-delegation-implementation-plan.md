@@ -2,7 +2,7 @@
 
 ## Status
 
-Deferred for later implementation. This document is a plan only. It does not authorize live queue, automation, routing, task, skill, Dashboard, or Git changes.
+Implementation in progress as of 2026-08-20. The shared schema, tools, deployment package, pilot manifests, and governance pointers are being built and locally validated. Existing live dispatch traffic remains on the Email Monitor queue until the `WES-VIDEOEDITOR` host and clients pass end-to-end validation.
 
 ## Objective
 

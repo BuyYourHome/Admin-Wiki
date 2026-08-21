@@ -1,0 +1,12 @@
+{
+  "schema_version": 1,
+  "project_room": "Marketplace",
+  "skill": "marketplace",
+  "task_id": "019fb5b0-6c29-7b32-822b-aa13b5920c29",
+  "dispatchable": true,
+  "execution_machine": "any_registered_client_with_authorized_marketplace_session",
+  "owned_actions": ["Marketplace sourcing", "resale evaluation", "authorized seller conversation", "estate-sale listing preparation", "sold-status handoff"],
+  "accepted_message_types": ["request", "question", "status", "decision", "result", "improvement"],
+  "related_project_rooms": ["Jean Wright", "Email Monitor", "Invoice Entry"],
+  "limitations": ["current Marketplace pause and narrow exceptions remain controlling", "publication, payment, pickup, and commitments remain gated"]
+}

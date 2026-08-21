@@ -70,6 +70,12 @@ If any condition fails, the receiving PR must return `blocked` or `needs Wes` tr
 - A duplicate dispatch ID with identical content is idempotent. The same ID with different content is a blocker.
 - Operational queue records remain outside Git. Canonical tools and rules remain in the Admin wiki.
 
+## Shared Multi-Machine Messaging Pilot
+
+- Follow `C:\Codex\Wiki Files\Project Room Messaging Rule.md` for the `WES-VIDEOEDITOR` shared-host pilot, standard message types, cross-machine locking, offline spooling, correction messages, and pilot manifests.
+- The pilot queue does not replace the current durable queue until host and client validation pass and `C:\Codex\Wiki Files\config\pr-messaging.json` changes `legacy_queue_remains_authoritative` to `false`.
+- Before migration, production dispatches continue using the current shared Email Monitor queue. Pilot records may be used only for controlled validation and must not create duplicate production work.
+
 ## Direct Work
 
 A direct request from Wes inside the actual owning PR task remains direct work for that PR. This contract governs delegation and does not require Jean to sit between Wes and the owning PR.

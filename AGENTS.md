@@ -21,6 +21,7 @@ Use this repo when formulating solutions for office-admin workflows, SOPs, autom
 - Use `Project Room Workflow.md` before major work that depends on multiple source files, emails, scans, notes, spreadsheets, or prior drafts.
 - Use `Project Room Chat Startup Rule.md` for Start PR, Jean Dispatcher, PR-scoped interpretation, chat creation, and dispatcher intake/return rules.
 - Use `Project Room Delegation Contract.md` for the universal Jean-to-Project-Room routing, acceptance, and return contract.
+- Use `Project Room Messaging Rule.md` for durable PR-to-PR messages, multi-machine inbox/outbox behavior, offline spooling, and the `WES-VIDEOEDITOR` shared-host pilot.
 - Use `Project Room File Ownership And Git Coordination Rule.md` before durable Project Room edits, cross-PR work, shared Admin rule edits, commits, pulls, or pushes.
 - Use `Project Rooms\SOPs\` for SOP source emails, extracted notes, SOP pages, SOP index, source map, and SOP review questions.
 - Use `Project Rooms\Email Monitor\` for development work on the Email Monitor workflow, including source inventory, automation notes, open questions, and review-ready handoffs.
@@ -121,6 +122,7 @@ Use this repo when formulating solutions for office-admin workflows, SOPs, autom
 - A missing or `pending` destination id is a blocker. Do not create a substitute task, perform the specialized work in Jean, or route it through another PR.
 - Create PR exclusively owns new Project Room package setup. A new room is non-dispatchable until Create PR records its dedicated task/thread id or the explicit task-creation blocker.
 - Receiving PRs must reject work outside their scope and may not treat a handoff as permission to edit another PR's files. See `Project Room Chat Startup Rule.md` for the full contract.
+- During the shared-messaging pilot, follow `Project Room Messaging Rule.md`. Keep the existing Email Monitor dispatch queue authoritative until `config\pr-messaging.json` records a validated live migration. Do not claim that a `Pending Host` spool record was delivered.
 
 ## Jean's Voice Interface
 
