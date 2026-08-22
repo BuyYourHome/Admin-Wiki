@@ -1,6 +1,8 @@
 # Unpublished Facebook Marketplace Draft — Vinyl Records by Genre
 
-**Approval status:** ready for Wes review; not published
+**Approval status:** published; Facebook review pending
+
+**Facebook listing:** https://www.facebook.com/marketplace/item/1043750024935411/
 
 **Proposed title:** Vinyl Records — Classic Rock, Jazz, Orchestral & More
 

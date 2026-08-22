@@ -47,7 +47,7 @@ This register controls the stable reference numbers printed on the Avery 18660 p
 | ES-20260815-036 | Folding Rollaway Bed with Mattress | Furniture, Storage & Lighting | $50 | Active |
 | ES-20260815-037 | Mixed Decorative Figurine Lot | Decor, Collectibles & Books | $45 | Active |
 | ES-20260815-038 | Ornate Carved Mantel Clock | Decor, Collectibles & Books | $65 | Active |
-| ES-20260815-039 | Assortment of Vinyl Records | Electronics & Media | $30 | Active |
+| ES-20260815-039 | Vinyl Records - Classic Rock, Jazz, Orchestral & More | Books, Movies & Music | $30 | Active — Facebook listing under review; https://www.facebook.com/marketplace/item/1043750024935411/ |
 | ES-20260815-040 | Detecto 350-lb Physician Balance-Beam Scale | Health, Mobility & Fitness | $95 | Active |
 | ES-20260815-041 | Wall-Mounted Toilet-Paper Storage Cabinet | Tools, Office & Household | $20 | Active |
 | ES-20260815-042 | Vintage Gold-Tone Rose-Pattern Flatware Set with Case | Kitchen & Dining | $75 | Active |
