@@ -70,11 +70,11 @@ When creating a new PR, work from `main`.
 2. If the repo is not on `main`, switch to `main` only when the worktree is clean or the dirty files are clearly part of the current scoped setup and can safely move with the branch.
 3. If unrelated dirty work, Git locks, or branch conflicts block switching to `main`, stop and report the blocker. Do not force, stash, reset, delete, or carry unrelated work into the new PR.
 4. Create the Project Room, skill, registry, and index files on `main`.
-5. Create a new chat only when Wes explicitly asks or when there is no existing chat that should own the work.
+5. Treat a request to create a new PR as authorization to provide its dedicated chat. Reuse a verified existing matching chat when one already owns the work; otherwise create one after the local PR package is committed.
 
 ## Dedicated Chat Connector Rule
 
-When creating a new PR requires a dedicated Codex task:
+Every new PR requires a dedicated Codex task. A request to create the PR includes authorization for this task-creation attempt; Wes does not need to request the chat separately.
 
 1. Create and commit the Project Room files, matching skill, registry entry, and Admin Home link first.
 2. Try the Codex app task-creation connector once.
@@ -249,7 +249,7 @@ Safety rules:
 16. Add an `Admin Home.md` link when the room should be easy to find from the wiki start page.
 17. Create and commit the scoped durable files locally before attempting a dedicated Codex task.
 18. A Project Room is `pending setup`, not dispatchable, until it has a dedicated task/thread id recorded in its README, registry entry, and Jean routing map. Do not route specialized work to a pending room.
-19. Create a new Codex chat using the Project Room Chat Startup Rule startup text only when Wes explicitly asks; if chat creation has not been authorized or does not return a usable id, record the explicit blocker and report that the PR package is not dispatchable.
+19. Treat the request to create the new PR as authorization to create its dedicated Codex chat. Reuse a verified existing matching task when one already owns the room; otherwise attempt chat creation once using the Project Room Chat Startup Rule startup text. If no usable id is returned, record the explicit task-creation blocker and report that the PR package is not dispatchable.
 20. If a dedicated chat is created, record the returned thread id in the README, registry, and Jean routing map, then commit that metadata update separately.
 21. Push only when Wes explicitly asks, says the work is finished, or the applicable rule defines the deliverable as ready to publish.
 

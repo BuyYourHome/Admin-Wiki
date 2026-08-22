@@ -145,7 +145,7 @@ If a PR uses `working\work-status.md`, update it for substantial routed work. Do
 
 When creating a new Project Room chat:
 
-0. Create a new chat only when Wes explicitly asks or when no existing chat should own the work.
+0. A request to create a new Project Room includes authorization to provide one dedicated chat for it. Reuse a verified existing matching chat when one already owns the room; otherwise Create PR creates the chat after committing the local PR package. Outside new-PR creation, create a chat only when Wes explicitly asks or when no existing chat should own the work.
 1. Name the chat after the Project Room unless Wes gives another name.
 2. Include the required startup text above.
 3. Include the Project Room path, matching skill path, and any automation id or thread id that belongs to the room.

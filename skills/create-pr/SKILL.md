@@ -55,7 +55,7 @@ Before Create PR file work:
 19. Add `Admin Home.md` links when the room should be visible from the wiki start page.
 20. Commit the scoped Project Room, skill, registry, and index changes before attempting dedicated task creation.
 21. Mark the Project Room `pending setup` and not dispatchable until its dedicated task/thread id is recorded in the README, registry, and Jean routing map. Do not route work into a pending room.
-22. Create or hand off to a dedicated chat using `Project Room Chat Startup Rule.md` only when Wes explicitly asks. If the task cannot be created or a usable id is not returned, record that explicit blocker; do not silently treat the new room as ready or route its work through another chat.
+22. Treat the request to create the new PR as authorization to provide its dedicated chat. Reuse a verified existing matching task when one already owns the room; otherwise attempt chat creation once using `Project Room Chat Startup Rule.md`. If the task cannot be created or a usable id is not returned, record that explicit blocker; do not silently treat the new room as ready or route its work through another chat.
 23. If a dedicated chat is created, record the returned thread id in the README, registry, and Jean routing map, then commit that metadata update separately.
 24. Push only under the Admin wiki push rules.
 
@@ -75,7 +75,7 @@ When every condition is true, `Create PR` should not stop merely to ask Wes the 
 
 ## Dedicated Chat Connector Rule
 
-When creating a new PR requires a dedicated Codex task:
+Every new PR requires a dedicated Codex task. A request to create the PR includes authorization for this task-creation attempt; Wes does not need to request the chat separately.
 
 1. Complete and commit the local PR package first.
 2. Try the Codex app task-creation connector once.
