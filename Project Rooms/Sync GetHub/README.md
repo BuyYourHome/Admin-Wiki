@@ -54,7 +54,7 @@ Use this mode when Wes asks for an immediate repository status or safe synchroni
 
 ## Multi-Computer Enrollment
 
-- Initial registered computers: `WesStudio` and `Wes-VideoEditor`.
+- Registered computers: `WesStudio`, `Wes-VideoEditor`, and `OfficeAssist`.
 - Any future computer added to the authoritative Codex Environment target-computer register must be considered for enrollment.
 - Each computer requires its own local scheduled automation because a Codex automation runs on its configured host; a schedule created on one computer does not prove installation on another.
 - A computer is not marked enrolled until its canonical repo, GitHub access, local automation, and one safe run are verified on that computer.
@@ -63,7 +63,7 @@ Use this mode when Wes asks for an immediate repository status or safe synchroni
 
 Status: active and dispatchable through the registered dedicated task. The local automation is active on `WesStudio`; first-run verification and other-computer enrollment remain pending.
 
-The local Project Room package and `sync-gethub-daily` automation are installed on `WesStudio`. `Wes-VideoEditor` enrollment requires a separate authorized deployment on that computer.
+The local Project Room package and `sync-gethub-daily` automation are installed on `WesStudio`. `Wes-VideoEditor` and `OfficeAssist` enrollment each require a separate authorized deployment on that computer.
 
 ## Matching Skill
 
@@ -80,7 +80,7 @@ The local Project Room package and `sync-gethub-daily` automation are installed 
 - Automation id: `sync-gethub-daily`
 - Required cadence: at least once daily on every enrolled computer.
 - Initial schedule: daily at 5:30 AM Eastern on each enrolled computer.
-- Deployment state: active on `WesStudio`; pending separate installation and verification on `Wes-VideoEditor`.
+- Deployment state: active on `WesStudio`; pending separate installation and verification on `Wes-VideoEditor` and `OfficeAssist`.
 
 ## Reporting And Logging
 
@@ -116,4 +116,4 @@ PR Messaging: Follow `C:\Codex\Wiki Files\Project Room Messaging Rule.md`. The c
 ## Next Actions
 
 1. Run and verify the first scheduled or manual `WesStudio` automation execution.
-2. Use an authorized Codex Environment deployment to install and verify the same automation on `Wes-VideoEditor` and later approved computers.
+2. Use authorized Codex Environment deployments to install and verify the same automation on `Wes-VideoEditor`, `OfficeAssist`, and later approved computers.
