@@ -3,7 +3,7 @@
   "workflow_id": "officeassist-morning-email-summary-and-instruction-monitor",
   "display_name": "Email Monitor",
   "check_type": "heartbeat_liveness",
-  "assigned_machine": "WESSTUDIO",
+  "assigned_machine": "OFFICEASSIST",
   "watchdog_enabled": true,
   "time_zone": "America/New_York",
   "active_window_start": "07:45",

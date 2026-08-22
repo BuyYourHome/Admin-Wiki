@@ -57,7 +57,7 @@ For each recipient, keep the Email Summary subject unchanged throughout the Mond
 
 Use this mode to own one independent Windows workflow-health supervisor for multiple registered workflows. The shared registry enrolls Email Monitor and Invoice Entry while keeping separate configurations, health snapshots, alert transitions, current-alert files, and diagnostic logs.
 
-The Windows task `Codex - Workflow Health Supervisor` runs every 10 minutes on `WESSTUDIO`. Email Monitor keeps its heartbeat lifecycle, 7:45 AM through 11:00 PM active window, 35-minute warning, and 60-minute critical threshold. Invoice Entry receives a daily substantive Project Room/task-health review; intervening supervisor runs perform only a due check unless warning, critical, or active-operation follow-up is required.
+The Windows task `Codex - Workflow Health Supervisor` runs every 10 minutes on `WESSTUDIO`. During the controlled 2026-08-22 Email Monitor move to `OFFICEASSIST`, Email Monitor's enrollment in that shared supervisor is disabled so the old machine cannot emit false stale-heartbeat alerts. Its lifecycle configuration is assigned to `OFFICEASSIST`. Invoice Entry remains enrolled on WesStudio unchanged. A dedicated or multi-machine OfficeAssist supervisor design must pass destination verification before Email Monitor liveness alerts are re-enabled.
 
 Routine healthy and unchanged-state checks are diagnostic-only. Visible warning, critical, and recovery alerts occur only on state transitions. The supervisor uses a named mutex for overlap protection, isolates malformed workflow configurations, refuses the wrong machine, and does not depend on Outlook or another supervised connector.
 
