@@ -18,6 +18,12 @@
       "display_name": "Email Monitor",
       "enabled": true,
       "config_path": "C:\\Codex\\Wiki Files\\Project Rooms\\Email Monitor\\config\\email-monitor-health.json"
+    },
+    {
+      "workflow_id": "doc-scan",
+      "display_name": "Doc Scan",
+      "enabled": true,
+      "config_path": "C:\\Codex\\Wiki Files\\Project Rooms\\Email Monitor\\config\\doc-scan-health.json"
     }
   ]
 }
