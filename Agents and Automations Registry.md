@@ -29,6 +29,7 @@ Use [[Agent Unit Standard]] for the standard package behind an agent-like operat
 | Manager | Wiki-managed skill plus project room plus dedicated chat | Draft | On demand | `skills\manager\SKILL.md`; `Project Rooms\Manager\README.md` |
 | Codex Environment | Wiki-managed skill plus project room plus dedicated chat | Draft | On demand | `skills\codex-environment\SKILL.md`; `Project Rooms\Codex Environment\README.md` |
 | Computers | Wiki-managed skill plus project room plus dedicated chat | Draft | On demand | `skills\computers\SKILL.md`; `Project Rooms\Computers\README.md` |
+| Sync GetHub | Wiki-managed skill plus project room plus dedicated chat plus per-computer daily automation | Pending setup | Daily at 5:30 AM Eastern on each enrolled computer; on demand | `skills\sync-gethub\SKILL.md`; `Project Rooms\Sync GetHub\README.md`; planned automation id `sync-gethub-daily` |
 | Facebook Engagement | Wiki-managed skill plus project room plus dedicated chat | Active | On demand | `skills\facebook-engagement\SKILL.md`; `Project Rooms\Facebook Engagement\README.md` |
 | Marketplace | Wiki-managed skill plus project room plus dedicated chat plus heartbeat automation | Paused | No recurring or on-demand Marketplace activity until Wes explicitly resumes it | `skills\marketplace\SKILL.md`; `Project Rooms\Marketplace\README.md`; app automation id `marketplace-seller-response-monitor` |
 | SOPs | Wiki-managed skill plus project room | Active | On demand | `skills\sops\SKILL.md`; `Project Rooms\SOPs\README.md`; `Project Rooms\SOPs\outputs\SOP Index.md` |
@@ -753,6 +754,39 @@ Important rules:
 - Record verified computer facts in `Project Rooms\Computers\working\computer-register.md`.
 - Record final inventory/configuration outcomes in `Project Rooms\Computers\working\computer-inventory-action-log.md`.
 - No automation is currently attached.
+
+## Sync GetHub
+
+Type: wiki-managed skill plus project room plus dedicated chat plus per-computer daily automation.
+
+Status: pending dedicated task and automation registration.
+
+Purpose:
+
+- Keep `C:\Codex\Wiki Files` current with `origin/main` on every enrolled Buy Your Home computer.
+- Fetch daily and apply only clean fast-forward pulls.
+- Surface dirty worktrees, local-only commits, divergence, authentication failures, and per-computer enrollment gaps without overwriting local work.
+
+Defined in:
+
+- `C:\Codex\Wiki Files\skills\sync-gethub\SKILL.md`
+- `C:\Codex\Wiki Files\Project Rooms\Sync GetHub\README.md`
+
+Dedicated chat:
+
+- Thread id: `pending until the dedicated chat is created`
+
+Automation:
+
+- Planned id: `sync-gethub-daily`
+- Schedule: daily at 5:30 AM Eastern on each enrolled computer.
+- Initial computers: `WesStudio` and `Wes-VideoEditor`; each requires separate local installation and verification.
+
+Important rules:
+
+- GitHub is the exchange point; never use a Teams-synced Wiki Files folder as the repository.
+- Never auto-commit, stash, reset, clean, rebase, merge, force-push, pull over dirty work, or automatically push local commits.
+- Codex Environment retains remote deployment, machine setup, broader environment updates, and installed-skill synchronization.
 
 ## Facebook Engagement
 
