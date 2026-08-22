@@ -28,7 +28,7 @@ These are decision aids, not guarantees. Low-confidence prices should be revisit
 
 ### ES-20260815-001 - Decorative Doll and Angel Lot - $45
 
-**Public draft:** Five decorative dolls and angel figures in varied styles, including porcelain-look and soft-bodied pieces. Sold together as pictured. Used condition; maker, materials and any chips or repairs have not yet been verified. Available to view during the estate-sale showing window Saturday, August 15, from 9:00 AM to noon.
+**Public draft:** Five decorative dolls and angel figures in varied styles, including porcelain-look and soft-bodied pieces. Sold together as pictured. Used condition; maker, materials and any chips or repairs have not yet been verified. Available to view in Cary, NC, Saturday, August 15, from 9:00 AM to 5:00 PM.
 
 **Private:** Expected $25-$40; quick-sale $20; confidence low. Photos 132010996, 134030752, 134049396, 134103005 and 134202707. Obtain base/label and defect photos before publication.
 
@@ -256,9 +256,9 @@ These are decision aids, not guarantees. Low-confidence prices should be revisit
 
 ### ES-20260815-039 - Children's Vinyl Record and Book Lot - $30
 
-**Public draft:** Mixed children's vinyl record/book lot with Disney titles visible. Used condition; records have not been play-tested. Sold together as pictured. Estate-sale showing Saturday, August 15, 9:00 AM-noon.
+**Public draft:** Vinyl record lot, grouped by confirmed genre where the covers are readable: classic rock/pop (including The Beatles, *Sgt. Pepper's Lonely Hearts Club Band*), jazz/big-band saxophone (including Boots Randolph, *Yakety Sax*), orchestral/easy-listening (including Henry Mancini, *Mancini*), plus a separate children's/storybook group where the newer covers are not yet fully readable. Used condition; records have not been play-tested. Sold together by genre group as pictured. Available to view in Cary, NC, Saturday, August 15, from 9:00 AM to 5:00 PM.
 
-**Private:** Expected $20-$25; quick-sale $15; confidence medium-low. Photo 133906872. Add title/count and record-surface photos.
+**Private:** Expected $30-$45 for the confirmed adult-record group; quick-sale $25; confidence medium-low pending count and play-test. New Google Photos vinyl images dated Aug. 21, 2026 were copied to `working/estate-sale-2026-08-15-images/` (three verified originals). The visible newer batch confirms Beatles/classic rock-pop, Boots Randolph jazz/saxophone, and Henry Mancini orchestral/easy-listening covers; additional records should remain in an “unidentified/other” group until readable. Preserve the originals and add title/count and record-surface photos before publication. Do not publish or upload these photos without final review.
 
 ### ES-20260815-040 - Detecto 350-lb Physician Balance-Beam Scale - $95
 
