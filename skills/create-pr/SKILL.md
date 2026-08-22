@@ -90,6 +90,7 @@ Use this standard when documenting Project Room modes in READMEs, matching skill
 
 - Use `## Modes` as the container section when a room has more than one mode.
 - Use the invocation name only as the mode heading; do not append `Mode` to the heading.
+- In a PR-dedicated chat, an unqualified request to list, show, display, or identify `modes` must return the workflow modes defined in that PR's README and matching skill, including a named default workflow documented outside `## Modes`. Codex collaboration modes such as `Default` and `Plan` are returned only when Wes explicitly asks for collaboration modes.
 - In prose, write "Use this mode..." or "this mode..." when explanation needs the generic noun.
 - Preserve existing filenames, folder names, automation ids, task names, historical logs, and external references unless Wes separately authorizes those exact renames.
 - New Project Room packages should follow this standard from creation.

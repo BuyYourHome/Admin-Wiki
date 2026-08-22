@@ -59,6 +59,7 @@ Steps:
 In a PR-dedicated chat, interpret unqualified requests as scoped to the current PR.
 
 - If Wes asks about `modes`, `rules`, `files`, `status`, `open issues`, or similar without saying otherwise, answer for the current PR only.
+- In a PR-dedicated chat, `modes`, `list modes`, `show modes`, `display modes`, and `display defined modes` mean the workflow modes defined by the current PR's README and matching skill. Read both sources, list the defined PR workflow modes, and include any named default workflow that is documented outside the `## Modes` section. Do not answer with Codex collaboration modes such as `Default` and `Plan` unless Wes explicitly asks for `Codex modes`, `collaboration modes`, `Default/Plan`, or equivalent.
 - Do not expand to all PRs, the whole wiki, or global rules unless Wes says `all`, `global`, `across PRs`, `anywhere`, `in the wiki`, or equivalent.
 - If the request clearly belongs to another existing PR or specialized skill, say that briefly and ask whether to route the work there unless an existing rule already authorizes the handoff.
 - If ownership is unclear and the action would create files, change rules, create chats, commit, push, send messages, or affect another PR, ask before acting.
