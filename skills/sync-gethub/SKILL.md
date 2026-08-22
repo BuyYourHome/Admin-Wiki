@@ -13,6 +13,12 @@ description: Keep the Buy Your Home Admin wiki Git repository current across app
 - Routing map: `C:\Codex\Wiki Files\Project Rooms\Jean Wright\working\dispatcher-routing-map.md`
 - Machine register: `C:\Codex\Wiki Files\Project Rooms\Codex Environment\working\target-computer-register.md`
 
+## Dedicated Task
+
+- Task name: `Sync GetHub`
+- Thread id: `01a02a26-6ffa-7e52-a8ce-825ca0bfe3f0`
+- Accept Jean-routed Sync GetHub work only through this registered task under the central delegation contract.
+
 ## Required Startup
 
 1. Confirm the computer name and that the repo is exactly `C:\Codex\Wiki Files`.

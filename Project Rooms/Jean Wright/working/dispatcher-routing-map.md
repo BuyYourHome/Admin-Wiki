@@ -45,7 +45,7 @@ This is the live task registry for the universal [[Project Room Delegation Contr
 | Property Trade Evaluation | `property-trade-evaluation` | pending | Route property trade case-study/evaluation work here. | Confirm source spreadsheet/property context before analysis. |
 | REI BlackBook | `rei-blackbook` | `019f4691-5466-7f72-9683-ab5d3b750c25` | Route GM Site and REI BlackBook website/worktools work here. | Uses Email Monitor for completion email delivery. |
 | SOPs | `sops` | pending | Route SOP creation, extraction, and maintenance here. | SOP source material should follow SOP room rules. |
-| Sync GetHub | `sync-gethub` | pending | Route Admin wiki repository freshness checks, computer enrollment, and safe clean fast-forward work here. | Pending dedicated task registration; daily automation must be installed and verified separately on each approved computer. |
+| Sync GetHub | `sync-gethub` | `01a02a26-6ffa-7e52-a8ce-825ca0bfe3f0` | Route Admin wiki repository freshness checks, computer enrollment, and safe clean fast-forward work here. | Dedicated task registered. WesStudio automation is active; other computers require separate installation and verification. |
 | Template to Project | `template-to-project` | pending | Route project spreadsheet template and worksheet-mode rollout work here. | Also owns Project Management Spreadsheet Rewrite continuation by default. |
 | Voices | `voices` | pending | Route voice likeness, TTS, avatar/video, and consent-governance work here. | Planning PR. |
 

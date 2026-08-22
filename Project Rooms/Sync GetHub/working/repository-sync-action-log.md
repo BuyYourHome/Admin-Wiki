@@ -4,3 +4,4 @@ Record only material automation deployment, enrollment, recurring blocker, recov
 
 | Date | Computer | Action | Before | After | Status | Notes |
 | --- | --- | --- | --- | --- | --- | --- |
+| 2026-08-22 | WesStudio | Create daily local automation | not installed | `sync-gethub-daily`, daily 5:30 AM Eastern | active; first run pending | Standalone local cron uses clean-fast-forward-only safety gates and does not commit or push. |

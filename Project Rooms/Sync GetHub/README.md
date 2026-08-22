@@ -61,9 +61,9 @@ Use this mode when Wes asks for an immediate repository status or safe synchroni
 
 ## Current Status
 
-Status: pending setup and not dispatchable until its dedicated task is registered.
+Status: active and dispatchable through the registered dedicated task. The local automation is active on `WesStudio`; first-run verification and other-computer enrollment remain pending.
 
-The local Project Room package is prepared on `WesStudio`. Daily automation deployment and verification are pending until the dedicated task is registered. `Wes-VideoEditor` enrollment requires a separate authorized deployment on that computer.
+The local Project Room package and `sync-gethub-daily` automation are installed on `WesStudio`. `Wes-VideoEditor` enrollment requires a separate authorized deployment on that computer.
 
 ## Matching Skill
 
@@ -72,7 +72,7 @@ The local Project Room package is prepared on `WesStudio`. Daily automation depl
 ## Dedicated Chat
 
 - Chat name: `Sync GetHub`
-- Thread id: `pending until the dedicated chat is created`
+- Thread id: `01a02a26-6ffa-7e52-a8ce-825ca0bfe3f0`
 - Purpose: own daily repository freshness checks, computer enrollment state, blockers, and safe recovery recommendations.
 
 ## Automation
@@ -80,7 +80,7 @@ The local Project Room package is prepared on `WesStudio`. Daily automation depl
 - Automation id: `sync-gethub-daily`
 - Required cadence: at least once daily on every enrolled computer.
 - Initial schedule: daily at 5:30 AM Eastern on each enrolled computer.
-- Deployment state: pending until the dedicated task exists; each computer must be installed and verified separately.
+- Deployment state: active on `WesStudio`; pending separate installation and verification on `Wes-VideoEditor`.
 
 ## Reporting And Logging
 
@@ -115,6 +115,5 @@ PR Messaging: Follow `C:\Codex\Wiki Files\Project Room Messaging Rule.md`. The c
 
 ## Next Actions
 
-1. Create and register the dedicated Sync GetHub task.
-2. Create and verify the `sync-gethub-daily` automation on `WesStudio`.
-3. Use an authorized Codex Environment deployment to install and verify the same automation on `Wes-VideoEditor` and later approved computers.
+1. Run and verify the first scheduled or manual `WesStudio` automation execution.
+2. Use an authorized Codex Environment deployment to install and verify the same automation on `Wes-VideoEditor` and later approved computers.
