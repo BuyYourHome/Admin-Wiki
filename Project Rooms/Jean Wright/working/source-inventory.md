@@ -8,3 +8,4 @@
 | `Project Room Chat Startup Rule.md` | Wiki rule | authoritative | Defines new PR chat startup requirements. |
 | `Agent Unit Standard.md` | Wiki rule | authoritative | Defines the Project Room, skill, registry, chat, and automation package. |
 | Conversation instruction creating Jean Wright PR | User instruction | authoritative | Wes asked to use Create PR to create a Jean Wright PR and add the current rules to it. |
+| `Project Rooms\Jean Wright\working\quo-text-interface.md` | Interface contract | authoritative | Defines the OfficeAssist signed webhook, instant-response boundary, authorized sender, and durable Jean handoff path. |

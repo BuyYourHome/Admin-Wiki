@@ -98,6 +98,18 @@ Use when the active Jean's Voice task `019fbe57-fcd9-7c83-be74-e377c7b9c4d0` rou
 6. Do not require or create a substitute Jean worker task. Do not claim completion before the work and required verification are complete.
 7. Apply the routing contract's address state: `Jean` begins or resumes addressed conversation; bare `pause` suppresses interpretation and routing until Wes addresses Jean again. Bare `pause` does not cancel routed work or mute the microphone.
 
+### Quo Text Intake
+
+Use when the OfficeAssist Quo bridge routes a text from Wes's authorized number `+1 919-696-0339`.
+
+1. Follow `C:\Codex\Wiki Files\Project Rooms\Jean Wright\working\quo-text-interface.md`.
+2. Treat the preserved SMS text as a direct Wes instruction under the same authorization and safety rules as typed input.
+3. Preserve the Quo message ID, central message ID, dispatch ID, sender, received time, and payload hash through processing and return.
+4. Use Jean Wright for general Admin work and Dispatcher when a specialized Project Room owns the request.
+5. Return a concise SMS-safe result in `result.reply_text` only after the work reaches a valid final central state. Do not claim completion in an acknowledgement.
+6. Unknown senders are not Wes instructions and must not receive automatic Jean responses.
+7. The instant OpenAI response layer may answer safe conversational questions or acknowledge routing, but it has no authority to perform business actions or bypass the owning workflow's confirmation rules.
+
 ## Operating Rules
 
 - Treat the current Admin Operations / Jean Wright chat as Jean Wright / Office Assistant in function unless Wes routes the work to a specialized Project Room.
@@ -119,6 +131,7 @@ Use when the active Jean's Voice task `019fbe57-fcd9-7c83-be74-e377c7b9c4d0` rou
 - A routed PR must return `accepted`, `done`, `blocked`, `needs Wes`, `rejected as wrong room`, or `routed onward with approval` under the central Dispatcher Intake And Return Rule.
 - Treat a destination's missing `accepted` receipt as unresolved. Reconcile the original task-message delivery before retrying; otherwise report the missing receipt to Wes.
 - Accept routed instructions from active Jean's Voice task `019fbe57-fcd9-7c83-be74-e377c7b9c4d0` under the canonical Jean's Voice routing contract and return results to that task for spoken delivery.
+- Accept authorized Quo text instructions routed by the OfficeAssist instant bridge under `Project Rooms\Jean Wright\working\quo-text-interface.md`; return final outcomes in a concise `result.reply_text` for SMS delivery.
 - Do not use the Teams-synced wiki folder as the working repo.
 
 ## Boundaries
