@@ -322,7 +322,7 @@ For each routed email:
 - if an apparent invoice attachment cannot be retrieved, preserve the Outlook link and exact attachment-access blocker;
 - update `C:\Codex\Wiki Files\Project Rooms\Invoice Entry\working\source-inventory.md` or the current Invoice Entry intake ledger only with the Outlook reference, external path if any, summary, and status when the routed email becomes part of the durable source set;
 - record the routed Outlook message id in Email Monitor compact state so the same source is not routed repeatedly;
-- create the durable dispatch before any task-message call by using `C:\Codex\Wiki Files\Project Rooms\Email Monitor\tools\Manage-EmailMonitorDispatch.ps1 -Action Create`; use the runtime queue and state contract in `working\dispatch-queue-spec.md`;
+- create the durable message before any task-message call by using `C:\Codex\Wiki Files\tools\pr-messaging\Manage-ProjectRoomMessage.ps1 -Action Send`; use the shared runtime queue and state contract in `working\dispatch-queue-spec.md`; never create a new record in the legacy Email Monitor queue;
 - use one stable dispatch ID and immutable payload; idempotent creation with the same payload is safe, but the same ID with different content is a blocker;
 - store the source and concise handoff fields in the queue record, then send the existing Invoice Entry task one wake-up message containing the dispatch ID, queue-record path, and these fields in this exact order:
   - `mailbox`: exact mailbox identity;
@@ -657,4 +657,4 @@ Action Ownership: Follow `C:\Codex\Wiki Files\Project Room Delegation Contract.m
 
 ## PR Messaging
 
-PR Messaging: Follow `C:\Codex\Wiki Files\Project Room Messaging Rule.md`. Use the central message record as authoritative only after the shared host is validated and migration is enabled; task messages are wake-up signals, not delivery proof.
+PR Messaging: Follow `C:\Codex\Wiki Files\Project Room Messaging Rule.md`. The central message record is authoritative; task messages are wake-up signals, not delivery proof.

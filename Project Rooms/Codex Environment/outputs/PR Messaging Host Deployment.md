@@ -54,6 +54,9 @@ Repeat for each PR/task that may execute on that computer. Registration writes o
 
 ## Validation
 
+- Production cutover validation on 2026-08-21 completed through the central queue: Email Monitor returned a read-only health result, and Invoice Entry accepted and processed a real routed approval using the same durable state contract.
+- The dispatcher heartbeat was paused on 2026-08-21 because Codex displayed routine empty heartbeat turns. Durable queue records remain available while a genuinely quiet background dispatcher is prepared.
+
 1. Run `Test-ProjectRoomMessagingHost.ps1` from the host and every client.
 2. Confirm host availability, SMB 3.x, and SMB encryption.
 3. Create one synthetic `request` message from WesStudio.

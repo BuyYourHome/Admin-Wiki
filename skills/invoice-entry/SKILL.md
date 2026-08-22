@@ -114,8 +114,8 @@ If a concise handoff lacks enough information to identify or access the authorit
 
 For Email Monitor and Jean cross-Project-Room dispatches, the durable queue record is the authoritative handoff and a task message is only a wake-up signal.
 
-- Queue location: `C:\Users\wesbr\.codex\automations\officeassist-morning-email-summary-and-instruction-monitor\dispatch-queue\records`.
-- Queue tool: `C:\Codex\Wiki Files\Project Rooms\Email Monitor\tools\Manage-EmailMonitorDispatch.ps1`.
+- Queue location: `\\WES-VIDEOEDITOR\BYH-PRMessaging$\records`.
+- Queue tool: `C:\Codex\Wiki Files\tools\pr-messaging\Manage-ProjectRoomMessage.ps1`.
 - Protocol: `C:\Codex\Wiki Files\Project Rooms\Email Monitor\working\dispatch-queue-spec.md`.
 
 At every Invoice Entry startup and backup-monitor run:
@@ -124,10 +124,10 @@ At every Invoice Entry startup and backup-monitor run:
 2. Deduplicate by dispatch ID and payload hash. Never process the same dispatch twice.
 3. Confirm the request belongs to Invoice Entry and that its exact source pointer is accessible.
 4. Before substantive work, run `Accept` with the registered Invoice Entry task ID. This writes the durable receipt. Return `accepted: <dispatch_id>` in the task when the channel is available.
-5. Run `StartProcessing` before durable processing and `Complete` or `Fail` when the outcome is known.
+5. Run `StartProcessing` before durable processing and use exactly one valid final action: `Complete`, `Block`, `NeedsWes`, or `Reject` for wrong-room work.
 6. If the same accepted or completed dispatch is received again, return its existing status without repeating work or external actions.
 
-Queue presence authorizes intake only. It does not authorize approval, payment, filing, workbook posting, vendor contact, email delivery, or another gated action. A malformed, conflicting, inaccessible, or wrong-room record must be failed or rejected with the same dispatch ID and a concise reason.
+Queue presence authorizes intake only. It does not authorize approval, payment, filing, workbook posting, vendor contact, email delivery, or another gated action. A malformed, conflicting, or inaccessible record must be blocked; wrong-room work must be rejected with the same dispatch ID and a concise reason.
 
 ## Task Health
 
@@ -585,4 +585,4 @@ Action Ownership: Follow `C:\Codex\Wiki Files\Project Room Delegation Contract.m
 
 ## PR Messaging
 
-PR Messaging: Follow `C:\Codex\Wiki Files\Project Room Messaging Rule.md`. Use the central message record as authoritative only after the shared host is validated and migration is enabled; task messages are wake-up signals, not delivery proof.
+PR Messaging: Follow `C:\Codex\Wiki Files\Project Room Messaging Rule.md`. The central message record is authoritative; task messages are wake-up signals, not delivery proof.

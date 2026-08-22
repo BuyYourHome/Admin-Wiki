@@ -117,7 +117,7 @@ Use this repo when formulating solutions for office-admin workflows, SOPs, autom
 ## Project Room Delegation
 
 - Jean routes specialized work only through the owning task/thread id in `Project Rooms\Jean Wright\working\dispatcher-routing-map.md` and must obtain an `accepted` receipt with the same dispatch id before considering it started.
-- Before task notification, write an immutable durable dispatch record under `C:\Users\wesbr\.codex\automations\officeassist-morning-email-summary-and-instruction-monitor\dispatch-queue\records` with `Project Rooms\Email Monitor\tools\Manage-EmailMonitorDispatch.ps1`. Task messaging is a best-effort wake-up signal, not the authoritative handoff.
+- Before task notification, write an immutable durable message under `\\WES-VIDEOEDITOR\BYH-PRMessaging$\records` with `tools\pr-messaging\Manage-ProjectRoomMessage.ps1`. Task messaging is a best-effort wake-up signal, not the authoritative handoff. The former Email Monitor dispatch queue is preserved read-only as legacy history.
 - A receiving PR must deduplicate by dispatch id and payload hash, write the durable `accepted` receipt before substantive work, and record `Processing`, then `Completed` or `Failed`. A busy or timed-out task message is `Delivery Ambiguous`; reconcile before a bounded same-ID retry.
 - A missing or `pending` destination id is a blocker. Do not create a substitute task, perform the specialized work in Jean, or route it through another PR.
 - Create PR exclusively owns new Project Room package setup. A new room is non-dispatchable until Create PR records its dedicated task/thread id or the explicit task-creation blocker.

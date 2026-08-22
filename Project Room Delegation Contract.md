@@ -55,7 +55,7 @@ If any condition fails, the receiving PR must return `blocked` or `needs Wes` tr
 ## Dispatch Contract
 
 1. Jean first identifies whether a specialized PR owns a request. Jean retains only general Office Assistant work and unowned cross-PR coordination.
-2. For specialized work, Jean assigns a stable `dispatch_id` and writes an immutable durable dispatch record before task notification. Use the shared Email Monitor queue unless an owning workflow documents an equivalent durable queue.
+2. For specialized work, Jean assigns a stable `dispatch_id` and writes an immutable durable message on the shared Project Room messaging host before task notification, unless an owning workflow documents an equivalent durable queue.
 3. Jean sends the scoped handoff only to the destination task recorded in the routing map. Task messaging is a best-effort wake-up signal, not the authoritative copy.
 4. The receiving PR must write `accepted` with the same `dispatch_id` to the durable record before durable edits, external actions, or onward handoffs. It should also return `accepted: <dispatch_id>` in the task when available.
 5. The receiving PR deduplicates by dispatch ID and payload hash, works only within its documented scope, and writes `Processing`, then `Completed` or `Failed`, while returning the applicable standard status with the same dispatch ID.
@@ -64,17 +64,18 @@ If any condition fails, the receiving PR must return `blocked` or `needs Wes` tr
 
 ## Durable Queue Standard
 
-- Shared queue: `C:\Users\wesbr\.codex\automations\officeassist-morning-email-summary-and-instruction-monitor\dispatch-queue\records`.
-- Shared tool: `C:\Codex\Wiki Files\Project Rooms\Email Monitor\tools\Manage-EmailMonitorDispatch.ps1`.
-- Standard states: `Queued`, `Send Attempted`, `Delivery Ambiguous`, `Accepted`, `Processing`, `Completed`, and `Failed`.
+- Shared queue: `\\WES-VIDEOEDITOR\BYH-PRMessaging$\records`.
+- Shared tool: `C:\Codex\Wiki Files\tools\pr-messaging\Manage-ProjectRoomMessage.ps1`.
+- Standard states: `Pending Host`, `Queued`, `Delivery Attempted`, `Delivery Ambiguous`, `Accepted`, `Processing`, `Completed`, `Blocked`, `Needs Wes`, and `Rejected as Wrong Room`.
 - A duplicate dispatch ID with identical content is idempotent. The same ID with different content is a blocker.
 - Operational queue records remain outside Git. Canonical tools and rules remain in the Admin wiki.
+- The former Email Monitor queue is preserved read-only as legacy history. Do not create new records there after the 2026-08-21 cutover.
 
-## Shared Multi-Machine Messaging Pilot
+## Shared Multi-Machine Messaging
 
-- Follow `C:\Codex\Wiki Files\Project Room Messaging Rule.md` for the `WES-VIDEOEDITOR` shared-host pilot, standard message types, cross-machine locking, offline spooling, correction messages, and pilot manifests.
-- The pilot queue does not replace the current durable queue until host and client validation pass and `C:\Codex\Wiki Files\config\pr-messaging.json` changes `legacy_queue_remains_authoritative` to `false`.
-- Before migration, production dispatches continue using the current shared Email Monitor queue. Pilot records may be used only for controlled validation and must not create duplicate production work.
+- Follow `C:\Codex\Wiki Files\Project Room Messaging Rule.md` for the `WES-VIDEOEDITOR` shared host, standard message types, cross-machine locking, offline spooling, correction messages, and PR manifests.
+- Host transport, automatic task wake-up, acceptance, final return, offline spool, locking, correction, wrong-room, blocked, and Needs Wes behavior were validated before production cutover.
+- The former Email Monitor queue contained 16 completed records, no unresolved states, and no duplicate IDs or hashes at cutover. Preserve those records without replaying or copying them.
 
 ## Direct Work
 

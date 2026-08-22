@@ -111,7 +111,7 @@ Trigger: Wes gives Jean a request that belongs to a specialized Project Room, as
 6. If no task/thread id is known, report the owning PR and blocker instead of creating a new chat unless Wes explicitly asks.
 7. Record durable dispatches in `working\dispatcher-action-log.md`.
 8. Do not edit another PR's files, skill, automation, registry entry, or chat title unless Wes explicitly authorizes that exact cross-PR or global governance change.
-9. Read `C:\Codex\Wiki Files\config\pr-messaging.json` before choosing the durable transport. Keep production on the existing Email Monitor queue while `legacy_queue_remains_authoritative` is `true`; use the `WES-VIDEOEDITOR` queue only for controlled pilot tests until validated migration.
+9. Read `C:\Codex\Wiki Files\config\pr-messaging.json` before choosing the durable transport. During normal operation, create the authoritative central message on `WES-VIDEOEDITOR` before task notification. Use the existing Email Monitor queue only when the config explicitly activates rollback with `legacy_queue_remains_authoritative` set to `true`.
 
 ### Jean's Voice Intake
 
@@ -161,4 +161,4 @@ Action Ownership: Follow `C:\Codex\Wiki Files\Project Room Delegation Contract.m
 
 ## PR Messaging
 
-PR Messaging: Follow `C:\Codex\Wiki Files\Project Room Messaging Rule.md`. Use the central message record as authoritative only after the shared host is validated and migration is enabled; task messages are wake-up signals, not delivery proof.
+PR Messaging: Follow `C:\Codex\Wiki Files\Project Room Messaging Rule.md`. The central message record is authoritative; task messages are wake-up signals, not delivery proof.

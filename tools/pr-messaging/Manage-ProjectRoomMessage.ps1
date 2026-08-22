@@ -251,7 +251,7 @@ if ($Action -eq "Health") {
         queue_path = $QueuePath
         available = $available
         total_messages = $records.Count
-        attention_messages = @($records | Where-Object { $_.state -in @("Delivery Ambiguous", "Blocked", "Needs Wes") }).Count
+        attention_messages = @($records | Where-Object { $_.state -in @("Delivery Ambiguous", "Blocked", "Needs Wes", "Rejected as Wrong Room") }).Count
         pending_local_spool = $spooledCount
         checked_at_utc = Get-UtcTimestamp
     } | ConvertTo-Json

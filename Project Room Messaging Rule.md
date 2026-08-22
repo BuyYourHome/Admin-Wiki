@@ -4,13 +4,13 @@ This rule governs durable messages between Buy Your Home Project Rooms across on
 
 ## Authority And Host
 
-- Planned central host: `WES-VIDEOEDITOR`.
-- Planned shared queue: `\\WES-VIDEOEDITOR\BYH-PRMessaging$`.
+- Central host: `WES-VIDEOEDITOR`.
+- Shared queue: `\\WES-VIDEOEDITOR\BYH-PRMessaging$`.
 - Canonical configuration: `C:\Codex\Wiki Files\config\pr-messaging.json`.
 - Canonical message tool: `C:\Codex\Wiki Files\tools\pr-messaging\Manage-ProjectRoomMessage.ps1`.
 - Live message records remain outside Git. Git contains rules, schemas, manifests, tools, tests, and deployment instructions only.
 
-The new shared queue is a pilot until host installation, client registration, and end-to-end validation are complete. During the pilot, `legacy_queue_remains_authoritative` in `config\pr-messaging.json` controls migration. Do not retire or bypass the existing Email Monitor dispatch queue while that value is `true`.
+The shared queue became authoritative for production Project Room messages after host installation, client registration, legacy reconciliation, and automatic end-to-end validation on 2026-08-21. `legacy_queue_remains_authoritative` in `config\pr-messaging.json` is the rollback control. The former Email Monitor queue is preserved read-only as legacy history.
 
 ## Message Contract
 
@@ -53,10 +53,10 @@ The new shared queue is a pilot until host installation, client registration, an
 - If `WES-VIDEOEDITOR` is unavailable, preserve local spool records and do not claim delivery.
 - Host removal must preserve message data by default.
 - Restore the share and validate payload hashes before resuming clients.
-- During pilot rollback, set `live_migration_status` to `not_migrated`, keep `legacy_queue_remains_authoritative` as `true`, and continue using the existing Email Monitor queue.
+- During rollback, set `live_migration_status` to `not_migrated`, set `legacy_queue_remains_authoritative` to `true`, pause the PR Messaging Dispatcher, and continue using the existing Email Monitor queue without copying or replaying completed records.
 
 ## PR Pointer
 
 Every PR README and matching skill should use this short pointer:
 
-`PR Messaging: Follow C:\Codex\Wiki Files\Project Room Messaging Rule.md. Use the central message record as authoritative only after the shared host is validated and migration is enabled; task messages are wake-up signals, not delivery proof.`
+`PR Messaging: Follow C:\Codex\Wiki Files\Project Room Messaging Rule.md. The central message record is authoritative; task messages are wake-up signals, not delivery proof.`

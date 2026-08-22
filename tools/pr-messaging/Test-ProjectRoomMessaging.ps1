@@ -31,6 +31,25 @@ try {
     $synced = & $manager -Action SyncSpool -QueuePath $queue -SpoolPath $spool | ConvertFrom-Json
     if ($synced.count -ne 1) { throw "Spool sync assertion failed." }
 
+    & $manager -Action Send -QueuePath $queue -MessageId "test-message-003" -MessageType question -SourceProjectRoom "Jean Wright" -SourceTaskId "jean-task" -DestinationProjectRoom "Invoice Entry" -DestinationTaskId "invoice-task" -PayloadJson '{"question":"test"}' | Out-Null
+    & $manager -Action Accept -QueuePath $queue -MessageId "test-message-003" -ActorProjectRoom "Invoice Entry" -ActorTaskId "invoice-task" | Out-Null
+    $needsWes = & $manager -Action NeedsWes -QueuePath $queue -MessageId "test-message-003" -ActorProjectRoom "Invoice Entry" -ActorTaskId "invoice-task" -Detail "test decision" | ConvertFrom-Json
+    if ($needsWes.state -ne "Needs Wes") { throw "Needs Wes assertion failed." }
+
+    & $manager -Action Send -QueuePath $queue -MessageId "test-message-004" -MessageType request -SourceProjectRoom "Jean Wright" -SourceTaskId "jean-task" -DestinationProjectRoom "Marketplace" -DestinationTaskId "marketplace-task" -PayloadJson '{"requested_action":"wrong room test"}' | Out-Null
+    & $manager -Action Accept -QueuePath $queue -MessageId "test-message-004" -ActorProjectRoom "Marketplace" -ActorTaskId "marketplace-task" | Out-Null
+    $rejected = & $manager -Action Reject -QueuePath $queue -MessageId "test-message-004" -ActorProjectRoom "Marketplace" -ActorTaskId "marketplace-task" -Detail "owned elsewhere" | ConvertFrom-Json
+    if ($rejected.state -ne "Rejected as Wrong Room") { throw "Wrong-room rejection assertion failed." }
+
+    & $manager -Action Send -QueuePath $queue -MessageId "test-message-005" -MessageType request -ParentMessageId "test-message-001" -SourceProjectRoom "Jean Wright" -SourceTaskId "jean-task" -DestinationProjectRoom "Invoice Entry" -DestinationTaskId "invoice-task" -PayloadJson '{"correction":"linked test"}' | Out-Null
+    $correction = & $manager -Action Get -QueuePath $queue -MessageId "test-message-005" | ConvertFrom-Json
+    if ($correction.parent_message_id -ne "test-message-001") { throw "Linked correction assertion failed." }
+
+    & $manager -Action Send -QueuePath $queue -MessageId "test-message-006" -MessageType request -SourceProjectRoom "Jean Wright" -SourceTaskId "jean-task" -DestinationProjectRoom "Doc Scan" -DestinationTaskId "doc-task" -PayloadJson '{"requested_action":"blocked test"}' | Out-Null
+    & $manager -Action Accept -QueuePath $queue -MessageId "test-message-006" -ActorProjectRoom "Doc Scan" -ActorTaskId "doc-task" | Out-Null
+    $blocked = & $manager -Action Block -QueuePath $queue -MessageId "test-message-006" -ActorProjectRoom "Doc Scan" -ActorTaskId "doc-task" -Detail "test blocker" | ConvertFrom-Json
+    if ($blocked.state -ne "Blocked") { throw "Blocked assertion failed." }
+
     $conflict = $false
     try {
         & $manager -Action Send -QueuePath $queue -MessageId "test-message-001" -MessageType request -SourceProjectRoom "Jean Wright" -SourceTaskId "jean-task" -DestinationProjectRoom "Invoice Entry" -DestinationTaskId "invoice-task" -PayloadJson '{"different":true}' | Out-Null
@@ -39,7 +58,7 @@ try {
     if (-not $conflict) { throw "Immutable conflict assertion failed." }
 
     $health = & $manager -Action Health -QueuePath $queue -SpoolPath $spool | ConvertFrom-Json
-    if (-not $health.available -or $health.total_messages -ne 2) { throw "Health assertion failed." }
+    if (-not $health.available -or $health.total_messages -ne 6 -or $health.attention_messages -ne 3) { throw "Health assertion failed." }
 
     [pscustomobject]@{ result = "PASS"; messages = $health.total_messages; offline_spool_synced = $synced.count; conflict_detected = $conflict } | ConvertTo-Json
 }

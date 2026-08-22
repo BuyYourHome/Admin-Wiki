@@ -27,7 +27,7 @@ This project room holds development notes, source inventory, and review artifact
 - Responsibility boundary: the heartbeat checks email and takes defined actions. Separately, direct authorized Email Delivery handoffs from other Project Rooms trigger immediately without waiting for the heartbeat or scanning a mailbox. Email Monitor coordinates delivery but does not take ownership of the requesting workflow's purpose, content, authorization, recipients, attachments, or restrictions.
 - Status thread id: `019ecba7-f1cc-7ac1-aaf7-d89a3f21b582`.
 - Task lifecycle: keep one dedicated active task and keep routine heartbeat history outside task context. Do not replace it for ordinary compaction; use the controlled, Wes-approved rollover procedure only when multiple measured health signals justify it.
-- Durable dispatch queue: `C:\Users\wesbr\.codex\automations\officeassist-morning-email-summary-and-instruction-monitor\dispatch-queue\records`. Queue records are runtime state outside Git; source-controlled tools and protocol live in this Project Room.
+- Durable dispatch queue: `\\WES-VIDEOEDITOR\BYH-PRMessaging$\records`, managed by `C:\Codex\Wiki Files\tools\pr-messaging\Manage-ProjectRoomMessage.ps1`. Queue records are runtime state outside Git. The former Email Monitor queue is read-only legacy history.
 
 ## Room Layout
 
@@ -115,7 +115,7 @@ Email Monitor does not create or edit Manager tasks, infer task status changes, 
 
 Use this branch for invoice, bill, receipt, statement, pay-application, payment-request, project-cost, and exact-subject `Time Card` sources that belong to Invoice Entry.
 
-This mode creates the durable queue record before task notification, verifies the destination is idle before attempting a wake-up message, requires the exact dispatch ID in a durable `accepted` receipt, retries the same immutable dispatch only after reconciliation, and emails Wes once through verified OfficeAssist delivery if acknowledgment is missing before the routing run ends. See `working\dispatch-queue-spec.md` and `tools\Manage-EmailMonitorDispatch.ps1`.
+This mode creates the durable central message before task notification, verifies the destination is idle before attempting a wake-up message, requires the exact dispatch ID in a durable `Accepted` receipt, retries the same immutable message only after reconciliation, and emails Wes once through verified OfficeAssist delivery if acknowledgment is missing before the routing run ends. See `working\dispatch-queue-spec.md` and `C:\Codex\Wiki Files\tools\pr-messaging\Manage-ProjectRoomMessage.ps1`.
 
 Send Invoice Entry one concise handoff with these fields in order: exact `mailbox`, `outlook_message_id`, `outlook_link`, attachment paths or exact blocker, short factual `summary`, `requested_operation`, and `unique_warning`. Use `none` when there is no attachment or source-specific warning. Apply the same format to Time Card, approval, correction, and paid-receipt routing.
 
@@ -235,4 +235,4 @@ Action Ownership: Follow `C:\Codex\Wiki Files\Project Room Delegation Contract.m
 
 ## PR Messaging
 
-PR Messaging: Follow `C:\Codex\Wiki Files\Project Room Messaging Rule.md`. Use the central message record as authoritative only after the shared host is validated and migration is enabled; task messages are wake-up signals, not delivery proof.
+PR Messaging: Follow `C:\Codex\Wiki Files\Project Room Messaging Rule.md`. The central message record is authoritative; task messages are wake-up signals, not delivery proof.

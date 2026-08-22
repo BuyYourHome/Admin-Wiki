@@ -12,7 +12,8 @@
     "Doc Scan",
     "Marketplace"
   ],
-  "live_migration_status": "not_migrated",
+  "live_migration_status": "validated_2026-08-21",
   "transport_validation_status": "validated_2026-08-21",
-  "legacy_queue_remains_authoritative": true
+  "legacy_queue_remains_authoritative": false,
+  "production_cutover_at_utc": "2026-08-21T13:05:00Z"
 }

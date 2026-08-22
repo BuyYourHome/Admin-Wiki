@@ -23,6 +23,7 @@ $summary = [ordered]@{
     needs_wes = @($records | Where-Object { $_.state -eq "Needs Wes" }).Count
     blocked = @($records | Where-Object { $_.state -eq "Blocked" }).Count
     delivery_ambiguous = @($records | Where-Object { $_.state -eq "Delivery Ambiguous" }).Count
+    rejected_wrong_room = @($records | Where-Object { $_.state -eq "Rejected as Wrong Room" }).Count
     by_state = [ordered]@{}
 }
 

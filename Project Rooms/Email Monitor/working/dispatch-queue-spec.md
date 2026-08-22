@@ -6,7 +6,7 @@ Use a durable runtime record as the authoritative cross-Project-Room handoff. Co
 
 ## Runtime Location
 
-`C:\Users\wesbr\.codex\automations\officeassist-morning-email-summary-and-instruction-monitor\dispatch-queue\records\<dispatch_id>.json`
+`\\WES-VIDEOEDITOR\BYH-PRMessaging$\records\<message_id>.json`
 
 Do not place operational queue records in Git. Keep queue tools and this specification in the Admin wiki.
 
@@ -42,4 +42,4 @@ Do not place operational queue records in Git. Keep queue tools and this specifi
 
 ## Tool
 
-Use `Project Rooms\Email Monitor\tools\Manage-EmailMonitorDispatch.ps1` for all queue mutations. The script uses a process-safe mutex, atomic record replacement, payload hashing, idempotent creation and acceptance, bounded attempts, and explicit state transitions.
+Use `C:\Codex\Wiki Files\tools\pr-messaging\Manage-ProjectRoomMessage.ps1` for all queue mutations. The script uses a cross-process and SMB-safe lock, atomic record replacement, payload hashing, idempotent creation and acceptance, bounded attempts, offline spooling, and explicit state transitions. The former Email Monitor queue is preserved read-only as legacy history; do not create new records there.

@@ -192,4 +192,4 @@ Action Ownership: Follow `C:\Codex\Wiki Files\Project Room Delegation Contract.m
 
 ## PR Messaging
 
-PR Messaging: Follow `C:\Codex\Wiki Files\Project Room Messaging Rule.md`. Use the central message record as authoritative only after the shared host is validated and migration is enabled; task messages are wake-up signals, not delivery proof.
+PR Messaging: Follow `C:\Codex\Wiki Files\Project Room Messaging Rule.md`. The central message record is authoritative; task messages are wake-up signals, not delivery proof.
