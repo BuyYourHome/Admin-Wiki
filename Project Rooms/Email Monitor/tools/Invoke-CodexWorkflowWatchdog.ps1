@@ -90,6 +90,18 @@ function ConvertTo-StatusBool {
     return $null
 }
 
+function ConvertTo-UtcDateTime {
+    param([object]$Value)
+    if ($Value -is [DateTime]) {
+        return ([DateTime]$Value).ToUniversalTime()
+    }
+    return [DateTimeOffset]::Parse(
+        [string]$Value,
+        [Globalization.CultureInfo]::InvariantCulture,
+        [Globalization.DateTimeStyles]::RoundtripKind
+    ).UtcDateTime
+}
+
 function Evaluate-Heartbeat {
     param([object]$Config, [datetime]$NowUtc)
     $health = Read-JsonFile -Path $Config.health_file
@@ -99,7 +111,7 @@ function Evaluate-Heartbeat {
     if ($null -ne $health) {
         $referenceValue = if ($health.status -eq "running" -and $health.run_started_at_utc) { $health.run_started_at_utc } elseif ($health.run_completed_at_utc) { $health.run_completed_at_utc } elseif ($health.last_update_at_utc) { $health.last_update_at_utc } else { $null }
         if ($referenceValue) {
-            $ageMinutes = ($NowUtc - [DateTime]::Parse([string]$referenceValue).ToUniversalTime()).TotalMinutes
+            $ageMinutes = ($NowUtc - (ConvertTo-UtcDateTime -Value $referenceValue)).TotalMinutes
             if ($health.status -eq "failed") {
                 $level = if ([int]$health.consecutive_failures -ge 3) { "CRITICAL" } else { "WARNING" }
                 $reason = "Heartbeat reported failure at '$($health.failure_stage)': $($health.failure_message)"
@@ -141,7 +153,7 @@ function Evaluate-ProjectRoomTask {
     $operationStarted = Get-MarkdownField -Content $content -Name "Operation started at UTC"
     if ($operationInFlight -eq $true) {
         if ($operationStarted -and $operationStarted -notmatch '^(none|unavailable)$') {
-            $operationAge = ($NowUtc - [DateTime]::Parse($operationStarted).ToUniversalTime()).TotalMinutes
+            $operationAge = ($NowUtc - (ConvertTo-UtcDateTime -Value $operationStarted)).TotalMinutes
             if ($operationAge -gt [double]$Config.operation_critical_after_minutes) { $level = "CRITICAL"; $signals.Add("operation has remained in flight for $([math]::Round($operationAge)) minutes") }
             elseif ($operationAge -gt [double]$Config.operation_warning_after_minutes -and $level -ne "CRITICAL") { $level = "WARNING"; $signals.Add("operation has remained in flight for $([math]::Round($operationAge)) minutes") }
         } elseif ($level -ne "CRITICAL") { $level = "WARNING"; $signals.Add("operation is in flight but its start time is unavailable") }
@@ -238,7 +250,7 @@ if (-not (Test-WithinActiveWindow -Config $config -Now $nowLocal)) {
 $previousState = Read-JsonFile -Path $config.watchdog_state_file
 $checkType = if ($config.check_type) { [string]$config.check_type } else { "heartbeat_liveness" }
 if ($checkType -eq "project_room_task_health" -and -not $ForceEvaluation) {
-    $lastSubstantive = if ($previousState -and $previousState.substantive_evaluated_at_utc) { [DateTime]::Parse([string]$previousState.substantive_evaluated_at_utc).ToUniversalTime() } else { $null }
+    $lastSubstantive = if ($previousState -and $previousState.substantive_evaluated_at_utc) { ConvertTo-UtcDateTime -Value $previousState.substantive_evaluated_at_utc } else { $null }
     $due = $null -eq $lastSubstantive -or ($nowUtc - $lastSubstantive).TotalMinutes -ge [double]$config.evaluation_interval_minutes
     $statusContent = if (Test-Path -LiteralPath $config.work_status_file) { Get-Content -Raw -LiteralPath $config.work_status_file } else { "" }
     $operationActive = ConvertTo-StatusBool (Get-MarkdownField -Content $statusContent -Name "Operation in flight")
