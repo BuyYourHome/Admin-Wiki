@@ -34,6 +34,19 @@ function Save-DpapiSecret {
     $Value | ConvertTo-SecureString -AsPlainText -Force | ConvertFrom-SecureString | Set-Content -LiteralPath $Path -Encoding ascii
 }
 
+function Get-CloudflaredPath {
+    $command = Get-Command cloudflared.exe -ErrorAction SilentlyContinue
+    if ($command) { return $command.Source }
+
+    $linkPath = Join-Path $env:LOCALAPPDATA "Microsoft\WinGet\Links\cloudflared.exe"
+    if (Test-Path -LiteralPath $linkPath) { return $linkPath }
+
+    $packagePath = Get-ChildItem -LiteralPath (Join-Path $env:LOCALAPPDATA "Microsoft\WinGet\Packages") `
+        -Filter cloudflared.exe -File -Recurse -ErrorAction SilentlyContinue | Select-Object -First 1
+    if ($packagePath) { return $packagePath.FullName }
+    throw "cloudflared.exe is not installed or could not be located."
+}
+
 function Register-QuoWebhook {
     param([string]$PublicUrl)
     $key = Read-DpapiSecret -Path $quoCredentialPath
@@ -72,12 +85,12 @@ foreach ($required in @($quoCredentialPath, $listenerScript)) {
     if (-not (Test-Path -LiteralPath $required)) { throw "Required bridge dependency is missing: $required" }
 }
 
-$cloudflaredCommand = Get-Command cloudflared.exe -ErrorAction Stop
+$cloudflaredPath = Get-CloudflaredPath
 Remove-Item -LiteralPath $tunnelOutLog, $tunnelErrorLog -Force -ErrorAction SilentlyContinue
 
 $listenerArguments = "-NoProfile -ExecutionPolicy Bypass -WindowStyle Hidden -File `"$listenerScript`""
 $listener = Start-Process -FilePath "powershell.exe" -ArgumentList $listenerArguments -WindowStyle Hidden -PassThru
-$tunnel = Start-Process -FilePath $cloudflaredCommand.Source -ArgumentList @(
+$tunnel = Start-Process -FilePath $cloudflaredPath -ArgumentList @(
     "tunnel", "--no-autoupdate", "--url", "http://127.0.0.1:8787"
 ) -WindowStyle Hidden -RedirectStandardError $tunnelErrorLog -RedirectStandardOutput $tunnelOutLog -PassThru
 

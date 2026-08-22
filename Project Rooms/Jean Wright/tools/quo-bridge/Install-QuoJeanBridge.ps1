@@ -11,13 +11,24 @@ $quoCredentialPath = Join-Path $dataRoot "api-key.dpapi"
 $openAiCredentialPath = Join-Path $dataRoot "openai-api-key.dpapi"
 $metadataPath = Join-Path $dataRoot "webhook.json"
 
+function Get-CloudflaredPath {
+    $command = Get-Command cloudflared.exe -ErrorAction SilentlyContinue
+    if ($command) { return $command.Source }
+
+    $linkPath = Join-Path $env:LOCALAPPDATA "Microsoft\WinGet\Links\cloudflared.exe"
+    if (Test-Path -LiteralPath $linkPath) { return $linkPath }
+
+    $packagePath = Get-ChildItem -LiteralPath (Join-Path $env:LOCALAPPDATA "Microsoft\WinGet\Packages") `
+        -Filter cloudflared.exe -File -Recurse -ErrorAction SilentlyContinue | Select-Object -First 1
+    if ($packagePath) { return $packagePath.FullName }
+    throw "cloudflared.exe is not installed or could not be located."
+}
+
 if ($env:COMPUTERNAME -ne "OFFICEASSIST") { throw "This installer must run on OFFICEASSIST." }
 foreach ($required in @($launcherPath, $listenerPath, $quoCredentialPath, $openAiCredentialPath)) {
     if (-not (Test-Path -LiteralPath $required)) { throw "Required bridge dependency is missing: $required" }
 }
-if (-not (Get-Command cloudflared.exe -ErrorAction SilentlyContinue)) {
-    throw "cloudflared.exe is not installed or is not available on PATH."
-}
+$cloudflaredPath = Get-CloudflaredPath
 
 foreach ($script in @($launcherPath, $listenerPath)) {
     $tokens = $null
@@ -52,4 +63,5 @@ $metadata = if (Test-Path -LiteralPath $metadataPath) { Get-Content -Raw -Litera
     webhook_id = if ($metadata) { $metadata.webhook_id } else { $null }
     endpoint = if ($metadata) { $metadata.endpoint } else { $null }
     model = "gpt-5-mini"
+    cloudflared_path = $cloudflaredPath
 }
