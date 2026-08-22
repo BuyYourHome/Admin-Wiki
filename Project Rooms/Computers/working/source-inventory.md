@@ -12,3 +12,4 @@
 | Future computer inspection reports | Source records | pending | Use direct machine inspection, vendor/system reports, or Wes-provided specs as authoritative once captured. |
 | Codex Environment setup handoffs | Project Room handoff | pending | Use only final setup outcomes or referenced reports from Codex Environment unless Computers is explicitly assigned setup work. |
 | `Project Rooms\Codex Environment\outputs\OfficeAssist Core Installation Progress.md` | Project Room handoff | authoritative | Source for OfficeAssist computer identity, core Codex/Admin wiki installation status, PR messaging validation, and Email Monitor production cutover status. |
+| Wes instruction for Computers inventory ownership | User instruction | authoritative | Clarifies that Computers owns the authoritative business computer list; other Project Rooms should provide setup or verification handoffs rather than competing machine lists. |

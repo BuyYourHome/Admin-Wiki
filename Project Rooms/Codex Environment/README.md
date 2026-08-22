@@ -15,7 +15,8 @@ In scope:
 - Installing or configuring approved applications needed to replicate the Codex environment.
 - Cloning or configuring the canonical Admin wiki repository at `C:\Codex\Wiki Files` on the target computer.
 - Syncing wiki-managed Codex skills from the canonical Admin wiki source after the target repo is current.
-- Recording per-computer setup notes, missing prerequisites, blockers, and verification results.
+- Recording setup-run notes, missing prerequisites, blockers, and verification results for authorized target computers.
+- Sending setup outcome handoffs to the Computers Project Room when a machine's inventory, role, lifecycle status, or readiness summary changes.
 
 Out of scope:
 
@@ -23,6 +24,7 @@ Out of scope:
 - Storing passwords, tokens, recovery codes, payment details, license keys, or other live secrets in the wiki, Project Room, skill, git history, or chat.
 - Installing paid software, accepting paid plans, purchasing licenses, changing security settings, or changing account ownership unless Wes explicitly approves the specific action.
 - Copying files from Teams-synced wiki folders as the working repository.
+- Maintaining the authoritative computer inventory. `Project Rooms\Computers\working\computer-register.md` is the source of truth for the list of business computers, machine specs, assigned roles, lifecycle status, and overall readiness summary.
 - Editing another Project Room's files or matching skill unless Wes explicitly authorizes that specific cross-PR edit.
 
 ## Folder Map
@@ -31,7 +33,7 @@ Out of scope:
 - `working\source-inventory.md` - inventory of baseline and target-machine sources.
 - `working\duplicate-and-conflict-log.md` - conflicting app lists, outdated setup notes, or unclear machine states.
 - `working\missing-context.md` - missing target details, approvals, access blockers, and app decisions.
-- `working\target-computer-register.md` - durable status table for computers being prepared.
+- `working\target-computer-register.md` - setup-run/status log for Codex Environment work. This is not the authoritative computer inventory.
 - `outputs\` - review-ready setup checklists, run summaries, verification reports, and handoffs.
 
 ## Modes
@@ -83,7 +85,8 @@ Workflow:
 2. Identify the intended role for the machine, such as Wes primary development, Wes secondary/video, Josh admin support, or backup.
 3. Recommend the minimum Project Room chat set for that role.
 4. Hand off to Create PR `Minimum PR Chat Set` for chat creation, startup prompts, and thread-id metadata.
-5. Record the assigned role and handoff result in `working\target-computer-register.md`.
+5. Record the setup-run handoff result in `working\target-computer-register.md`.
+6. Ensure Computers receives or already has the authoritative machine-list update in `Project Rooms\Computers\working\computer-register.md`.
 
 ### Replacement Machine
 
@@ -97,7 +100,8 @@ Workflow:
 4. Compare assigned roles, Project Room chats, connector needs, OneDrive/data placement, plugin/cache needs, and local-only files from the old computer.
 5. Confirm no unpushed commits or unique required local files remain on the old computer before declaring replacement complete.
 6. Use Role Assignment and Create PR `Minimum PR Chat Set` to recreate or record the needed PR/chat surface.
-7. Update `working\target-computer-register.md` with replacement status, blockers, and any remaining old-machine action.
+7. Update `working\target-computer-register.md` with setup-run replacement status, blockers, and any remaining old-machine action.
+8. Ensure Computers owns the authoritative replacement/lifecycle status in `Project Rooms\Computers\working\computer-register.md`.
 
 This mode does not authorize deleting files, unlinking accounts, removing software, or changing routing away from the old computer until Wes approves the exact action.
 
@@ -109,9 +113,10 @@ Workflow:
 
 1. Confirm Wes explicitly authorized decommissioning the named computer.
 2. Verify no pending PR work, unpushed Git commits, unique local files, or needed local-only notes remain.
-3. Record the machine as retired, backup-only, or unavailable in `working\target-computer-register.md`.
-4. Identify any registered Project Room chats, task/thread ids, automations, or routing references that still point to the machine.
-5. Do not remove accounts, delete files, uninstall software, archive chats, or change routing metadata unless Wes explicitly approves the exact change.
+3. Record Codex Environment setup/run implications in `working\target-computer-register.md`.
+4. Ensure Computers records the authoritative retired, backup-only, or unavailable machine status in `Project Rooms\Computers\working\computer-register.md`.
+5. Identify any registered Project Room chats, task/thread ids, automations, or routing references that still point to the machine.
+6. Do not remove accounts, delete files, uninstall software, archive chats, or change routing metadata unless Wes explicitly approves the exact change.
 
 ### Machine Health Check
 
@@ -128,7 +133,7 @@ Check:
 - key connector/plugin availability when needed for the assigned role;
 - known blockers, unrelated dirty work, and whether the machine can safely receive PR work.
 
-Record material results in `working\target-computer-register.md` or a target-specific output report when the check changes machine readiness.
+Record material Codex Environment setup/readiness results in `working\target-computer-register.md` or a target-specific output report when the check changes machine readiness. Ensure Computers receives the authoritative machine inventory/readiness update.
 
 ## Current Status
 

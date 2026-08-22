@@ -1,4 +1,10 @@
-# Target Computer Register
+# Target Setup Run Register
+
+This file records Codex Environment setup and verification history for authorized target computers. It is not the authoritative business computer inventory.
+
+For the current list of business computers, machine specs, assigned roles, lifecycle status, and overall readiness summary, use:
+
+`C:\Codex\Wiki Files\Project Rooms\Computers\working\computer-register.md`
 
 | Computer | User | Status | Remote access authorized | Last run | Apps/config changed | Verification | Notes |
 | --- | --- | --- | --- | --- | --- | --- | --- |

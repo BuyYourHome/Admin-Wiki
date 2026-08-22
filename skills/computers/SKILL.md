@@ -33,7 +33,7 @@ Before Computers file work:
 ## Workflow
 
 1. Identify whether the request is computer inventory, spec/configuration update, comparison, readiness review, handoff intake, report generation, or routing to another Project Room.
-2. Use `working\computer-register.md` as the durable list of business computers and their current known status.
+2. Use `working\computer-register.md` as the authoritative list of business computers and their current known status.
 3. Use `working\computer-inventory-action-log.md` to record final outcomes: inventory completed, configuration verified, app status changed, setup handoff received, blocker found, or report delivered.
 4. Record source support in `working\source-inventory.md` when new source documents, inspection reports, screenshots, vendor reports, or Project Room handoffs become authoritative.
 5. Record duplicate names, conflicting specs, stale machine facts, and unclear ownership in `working\duplicate-and-conflict-log.md`.
@@ -43,6 +43,14 @@ Before Computers file work:
 9. For suspected compromise or active remote-control concerns, route to Investigate Computer and record the handoff.
 10. Preserve review-ready reports and handoffs under `outputs\`.
 11. Commit only scoped Computers room, matching skill, registry, and index changes.
+
+## Authoritative Inventory Rule
+
+`C:\Codex\Wiki Files\Project Rooms\Computers\working\computer-register.md` is the source of truth for the list of business computers, machine specs, assigned roles, lifecycle status, and overall readiness summary.
+
+When another Project Room, including Codex Environment, creates a setup report or verification output for a computer, treat that output as a source/handoff and update the Computers register rather than maintaining a competing machine list elsewhere.
+
+When Wes asks what computers are listed, answer from the Computers register first. Use Codex Environment target setup logs as supporting history only.
 
 ## Inventory Fields
 

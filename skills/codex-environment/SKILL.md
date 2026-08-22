@@ -33,14 +33,15 @@ Before Codex Environment file work:
 1. Identify whether the task is baseline discovery, target-computer setup, app install, configuration, verification, or documentation.
 2. For baseline discovery, inspect WesStudio and record required apps, runtimes, paths, connectors, plugins, skills, configuration notes, and verification checks before standardizing target installs.
 3. For target-computer setup, confirm Wes authorized that specific computer and remote session before connecting.
-4. Record the target computer, user, remote access path, approval, and current state in `working\target-computer-register.md`.
+4. Record the target computer, user, remote access path, approval, and setup-run state in `working\target-computer-register.md`.
 5. Do not store passwords, tokens, recovery codes, license keys, or secrets. Have Wes or the authorized user enter credentials directly when needed.
 6. Install or configure only approved apps and prerequisites needed to replicate the Codex environment from WesStudio.
 7. Configure the Admin wiki repo as `C:\Codex\Wiki Files` on the target computer; do not use Teams-synced wiki folders as the working repo.
 8. Sync wiki-managed skills only after the target Admin wiki repo is current and the updated skills are ready to install.
 9. Verify the target computer with a repeatable checklist before marking it ready.
 10. Preserve run notes, blockers, and verification outputs under the Project Room.
-11. Commit only scoped Codex Environment room, matching skill, registry, and index changes.
+11. When setup work changes a machine's inventory, role, lifecycle status, or readiness summary, update or hand off the authoritative machine-list change to Computers. `Project Rooms\Computers\working\computer-register.md` is the source of truth for the list of business computers.
+12. Commit only scoped Codex Environment room, matching skill, registry, and index changes.
 
 ## Modes
 
@@ -91,7 +92,8 @@ Workflow:
 2. Identify the intended role for the machine, such as Wes primary development, Wes secondary/video, Josh admin support, or backup.
 3. Recommend the minimum Project Room chat set for that role.
 4. Hand off to Create PR `Minimum PR Chat Set` for chat creation, startup prompts, and thread-id metadata.
-5. Record the assigned role and handoff result in `working\target-computer-register.md`.
+5. Record the setup-run handoff result in `working\target-computer-register.md`.
+6. Ensure Computers receives or already has the authoritative machine-list update in `Project Rooms\Computers\working\computer-register.md`.
 
 ### Replacement Machine
 
@@ -105,7 +107,8 @@ Workflow:
 4. Compare assigned roles, Project Room chats, connector needs, OneDrive/data placement, plugin/cache needs, and local-only files from the old computer.
 5. Confirm no unpushed commits or unique required local files remain on the old computer before declaring replacement complete.
 6. Use Role Assignment and Create PR `Minimum PR Chat Set` to recreate or record the needed PR/chat surface.
-7. Update `working\target-computer-register.md` with replacement status, blockers, and any remaining old-machine action.
+7. Update `working\target-computer-register.md` with setup-run replacement status, blockers, and any remaining old-machine action.
+8. Ensure Computers owns the authoritative replacement/lifecycle status in `Project Rooms\Computers\working\computer-register.md`.
 
 This mode does not authorize deleting files, unlinking accounts, removing software, or changing routing away from the old computer until Wes approves the exact action.
 
@@ -117,9 +120,10 @@ Workflow:
 
 1. Confirm Wes explicitly authorized decommissioning the named computer.
 2. Verify no pending PR work, unpushed Git commits, unique local files, or needed local-only notes remain.
-3. Record the machine as retired, backup-only, or unavailable in `working\target-computer-register.md`.
-4. Identify any registered Project Room chats, task/thread ids, automations, or routing references that still point to the machine.
-5. Do not remove accounts, delete files, uninstall software, archive chats, or change routing metadata unless Wes explicitly approves the exact change.
+3. Record Codex Environment setup/run implications in `working\target-computer-register.md`.
+4. Ensure Computers records the authoritative retired, backup-only, or unavailable machine status in `Project Rooms\Computers\working\computer-register.md`.
+5. Identify any registered Project Room chats, task/thread ids, automations, or routing references that still point to the machine.
+6. Do not remove accounts, delete files, uninstall software, archive chats, or change routing metadata unless Wes explicitly approves the exact change.
 
 ### Machine Health Check
 
@@ -136,7 +140,17 @@ Check:
 - key connector/plugin availability when needed for the assigned role;
 - known blockers, unrelated dirty work, and whether the machine can safely receive PR work.
 
-Record material results in `working\target-computer-register.md` or a target-specific output report when the check changes machine readiness.
+Record material Codex Environment setup/readiness results in `working\target-computer-register.md` or a target-specific output report when the check changes machine readiness. Ensure Computers receives the authoritative machine inventory/readiness update.
+
+## Inventory Boundary
+
+Codex Environment owns setup runs, installation notes, target verification reports, setup blockers, and Codex/Admin wiki readiness evidence.
+
+Computers owns the authoritative computer inventory:
+
+`C:\Codex\Wiki Files\Project Rooms\Computers\working\computer-register.md`
+
+Do not answer "what computers are listed" from the Codex Environment target setup log when the Computers register is available. Use the Codex Environment setup log as supporting history only.
 
 ## Safety Boundaries
 

@@ -10,7 +10,7 @@ Use this room when Wes asks to inventory a business computer, compare computer s
 
 In scope:
 
-- Maintaining the business computer register.
+- Maintaining the authoritative business computer register.
 - Recording machine identity, owner/user, location, operating system, hardware specs, serial/service tag when available, warranty/support notes, and lifecycle status.
 - Tracking installed business apps, Office/Outlook/Teams/SharePoint readiness, Chrome/browser state, Git/Admin wiki readiness, Codex readiness, and remote-access method.
 - Recording configuration changes, inventory updates, and setup/verification outcomes.
@@ -63,6 +63,9 @@ Before durable work, follow Start PR in `C:\Codex\Wiki Files\Project Room Chat S
 
 ## Operating Rules
 
+- `working\computer-register.md` is the source of truth for the list of business computers, machine specs, assigned roles, lifecycle status, and overall readiness summary.
+- When another Project Room, including Codex Environment, creates a setup report or verification output for a computer, treat that output as a source/handoff and update the Computers register rather than maintaining a competing machine list elsewhere.
+- When Wes asks what computers are listed, answer from `working\computer-register.md` first.
 - Record facts only from authoritative sources, direct machine inspection, user-provided details, vendor/system reports, or named Project Room handoffs.
 - Mark unsupported or unverified machine facts as `unverified`.
 - Do not store live secrets in the register, source files, logs, scripts, git history, or chat handoffs.
