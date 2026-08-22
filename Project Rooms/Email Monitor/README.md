@@ -57,7 +57,7 @@ For each recipient, keep the Email Summary subject unchanged throughout the Mond
 
 Use this mode to own one independent Windows workflow-health supervisor for multiple registered workflows. The shared registry enrolls Email Monitor and Invoice Entry while keeping separate configurations, health snapshots, alert transitions, current-alert files, and diagnostic logs.
 
-The Windows task `Codex - Workflow Health Supervisor` runs every 10 minutes on `WESSTUDIO`. During the controlled 2026-08-22 Email Monitor move to `OFFICEASSIST`, Email Monitor's enrollment in that shared supervisor is disabled so the old machine cannot emit false stale-heartbeat alerts. Its lifecycle configuration is assigned to `OFFICEASSIST`. Invoice Entry remains enrolled on WesStudio unchanged. A dedicated or multi-machine OfficeAssist supervisor design must pass destination verification before Email Monitor liveness alerts are re-enabled.
+The Windows task `Codex - Workflow Health Supervisor` runs every 10 minutes independently on each assigned machine. `workflow-health-registry.json` keeps Invoice Entry enabled on `WESSTUDIO` and Email Monitor disabled there. `officeassist-workflow-health-registry.json` enables Email Monitor on `OFFICEASSIST`, where its lifecycle configuration and automation runtime now live. Each machine uses its own registry, mutex, task, state, and diagnostics; neither supervisor evaluates the other machine's workflow.
 
 Routine healthy and unchanged-state checks are diagnostic-only. Visible warning, critical, and recovery alerts occur only on state transitions. The supervisor uses a named mutex for overlap protection, isolates malformed workflow configurations, refuses the wrong machine, and does not depend on Outlook or another supervised connector.
 
@@ -67,7 +67,7 @@ Wes can manage this mode in plain language, including asking “Health Check, wh
 
 Invoice Entry task-growth thresholds trigger review only. The supervisor may recommend controlled rollover but cannot create or archive a task; Wes must approve rollover separately.
 
-Specification: `working\health-check-spec.md`. Registry: `config\workflow-health-registry.json`. Control surface: `tools\Manage-CodexWorkflowHealth.ps1`. Supervisor: `tools\Invoke-CodexWorkflowHealthSupervisor.ps1`.
+Specification: `working\health-check-spec.md`. Registries: `config\workflow-health-registry.json` for WesStudio and `config\officeassist-workflow-health-registry.json` for OfficeAssist. The control surface `tools\Manage-CodexWorkflowHealth.ps1` selects the current machine's registry by default. Supervisor: `tools\Invoke-CodexWorkflowHealthSupervisor.ps1`.
 
 ### Task Health
 

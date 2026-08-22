@@ -1,6 +1,6 @@
 [CmdletBinding()]
 param(
-    [string]$ConfigPath = "C:\Codex\Wiki Files\Project Rooms\Email Monitor\config\workflow-health-registry.json",
+    [string]$ConfigPath,
 
     [Parameter(Mandatory = $true)]
     [ValidateSet("Options", "Status", "Enable", "Disable", "Configure", "Test", "TestAlert")]
@@ -18,6 +18,15 @@ param(
 )
 
 $ErrorActionPreference = "Stop"
+
+if ([string]::IsNullOrWhiteSpace($ConfigPath)) {
+    $registryName = if ($env:COMPUTERNAME -eq "OFFICEASSIST") {
+        "officeassist-workflow-health-registry.json"
+    } else {
+        "workflow-health-registry.json"
+    }
+    $ConfigPath = Join-Path $PSScriptRoot "..\config\$registryName"
+}
 
 function Read-JsonFile {
     param([string]$Path)
