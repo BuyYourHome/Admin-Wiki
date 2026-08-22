@@ -39,10 +39,13 @@ No password, MFA code, recovery code, token, or license key was collected or rec
 | Repository state | Clean `main`, aligned with `origin/main`, latest target commit `f4b92227` at setup time |
 | Skills | Sync completed; 33 canonical skill folders and 34 installed folders including Codex's `.system` folder |
 | Codex project | Project named `Admin Wiki` connected to `C:\Codex\Wiki Files` |
+| PR messaging client transport | Validated 2026-08-22 against `\\WES-VIDEOEDITOR\BYH-PRMessaging$`; SMB 3.1.1 with encryption enabled |
 
 ## Verification So Far
 
 The OfficeAssist Codex task confirmed the exact workspace, clean `main`, correct GitHub origin, and readable `AGENTS.md` and `Admin Home.md` without making changes.
+
+OfficeAssist authenticated to the restricted PR messaging share as the approved Microsoft account principal. `Test-ProjectRoomMessagingHost.ps1` reported the host available, SMB dialect `3.1.1`, encryption enabled, and zero pending local spool records. Project Room task registration is intentionally deferred until the Email Monitor task is moved to OfficeAssist.
 
 GitHub, Outlook Email, Teams, SharePoint, browser control, documents, spreadsheets, presentations, and PDFs were visible. Outlook Calendar was unavailable. Visibility is not a functional pass; no business content was opened for this check.
 
