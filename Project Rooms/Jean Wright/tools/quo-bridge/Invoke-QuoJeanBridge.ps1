@@ -105,7 +105,7 @@ function Send-QuoReply {
     param([string]$Recipient, [string]$Text)
     $key = Read-DpapiSecret -Path $quoCredentialPath
     try {
-        $body = @{ from = $quoNumber; to = @($Recipient); content = $Text } | ConvertTo-Json -Compress
+        $body = @{ from = $phoneNumberId; to = @($Recipient); content = $Text } | ConvertTo-Json -Compress
         Invoke-RestMethod -Method Post -Uri "https://api.quo.com/v1/messages" `
             -Headers @{ Authorization = $key } -ContentType "application/json" -Body $body
     }
