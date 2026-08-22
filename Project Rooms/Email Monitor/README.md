@@ -25,7 +25,7 @@ This project room holds development notes, source inventory, and review artifact
 - Current-computer fallback: when the connector is definitively unavailable and no send occurred, use only the locally mounted `WesWill@BuyYourHomeLLC.com` mailbox under the temporary Jean fallback rules. OfficeAssist is never mounted locally on this computer.
 - Automation type: heartbeat, attached to the dedicated `Email Monitor` thread.
 - Responsibility boundary: the heartbeat checks email and takes defined actions. Separately, direct authorized Email Delivery handoffs from other Project Rooms trigger immediately without waiting for the heartbeat or scanning a mailbox. Email Monitor coordinates delivery but does not take ownership of the requesting workflow's purpose, content, authorization, recipients, attachments, or restrictions.
-- Status thread id: `019ecba7-f1cc-7ac1-aaf7-d89a3f21b582`.
+- Status thread id: `01a029bf-81d2-76e1-9960-64558a57640b` on `OFFICEASSIST` as of the controlled 2026-08-22 migration. The predecessor WesStudio task `019ecba7-f1cc-7ac1-aaf7-d89a3f21b582` remains rollback-only until post-cutover verification is complete.
 - Task lifecycle: keep one dedicated active task and keep routine heartbeat history outside task context. Do not replace it for ordinary compaction; use the controlled, Wes-approved rollover procedure only when multiple measured health signals justify it.
 - Durable dispatch queue: `\\WES-VIDEOEDITOR\BYH-PRMessaging$\records`, managed by `C:\Codex\Wiki Files\tools\pr-messaging\Manage-ProjectRoomMessage.ps1`. Queue records are runtime state outside Git. The former Email Monitor queue is read-only legacy history.
 

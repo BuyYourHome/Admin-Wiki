@@ -353,7 +353,7 @@ Important limitations:
 - Do not substitute another mailbox for Jenny.
 - Organize currently applies only to Wes's mailbox. Jenny's mailbox remains unchanged until Wes separately activates that scope.
 - Keep the automation attached to one dedicated status thread via `target_thread_id` so failure notifications and follow-up stay in one chat.
-- Current status thread id: `019ecba7-f1cc-7ac1-aaf7-d89a3f21b582`.
+- Current status thread id: `01a029bf-81d2-76e1-9960-64558a57640b` on `OFFICEASSIST` as of the controlled 2026-08-22 migration. Predecessor WesStudio task `019ecba7-f1cc-7ac1-aaf7-d89a3f21b582` is rollback-only pending post-cutover verification.
 
 Tools/services used:
 

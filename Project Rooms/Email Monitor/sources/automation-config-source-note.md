@@ -22,7 +22,7 @@ Current observed values as of 2026-07-24:
 | status | `ACTIVE` |
 | schedule | Runs every day; starts at 7:45 AM Eastern, then every 15 minutes from 8:00 AM through 11:00 PM Eastern |
 | target thread | `Email Monitor` |
-| target thread id | `019ecba7-f1cc-7ac1-aaf7-d89a3f21b582` |
+| target thread id | `01a029bf-81d2-76e1-9960-64558a57640b` on `OFFICEASSIST` (predecessor `019ecba7-f1cc-7ac1-aaf7-d89a3f21b582` retained rollback-only during verification) |
 
 The automation prompt points to:
 
