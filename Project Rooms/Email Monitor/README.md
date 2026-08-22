@@ -55,7 +55,7 @@ For each recipient, keep the Email Summary subject unchanged throughout the Mond
 
 ### Health Check
 
-Use this mode to own one independent Windows workflow-health supervisor for multiple registered workflows. The shared registry enrolls Email Monitor and Invoice Entry while keeping separate configurations, health snapshots, alert transitions, current-alert files, and diagnostic logs.
+Use this mode to own independent Windows workflow-health supervisors for registered workflows. Machine-specific registries keep Email Monitor on OfficeAssist and Invoice Entry on WesStudio while preserving separate configurations, health snapshots, alert transitions, current-alert files, and diagnostic logs.
 
 The Windows task `Codex - Workflow Health Supervisor` runs every 10 minutes independently on each assigned machine. `workflow-health-registry.json` keeps Invoice Entry enabled on `WESSTUDIO` and Email Monitor disabled there. `officeassist-workflow-health-registry.json` enables Email Monitor on `OFFICEASSIST`, where its lifecycle configuration and automation runtime now live. Each machine uses its own registry, mutex, task, state, and diagnostics; neither supervisor evaluates the other machine's workflow.
 

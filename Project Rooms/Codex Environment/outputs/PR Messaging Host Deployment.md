@@ -56,8 +56,8 @@ Repeat for each PR/task that may execute on that computer. Registration writes o
 
 - Production cutover validation on 2026-08-21 completed through the central queue: Email Monitor returned a read-only health result, and Invoice Entry accepted and processed a real routed approval using the same durable state contract.
 - The dispatcher heartbeat was paused on 2026-08-21 because Codex displayed routine empty heartbeat turns. Durable queue records remain available while a genuinely quiet background dispatcher is prepared.
-- OfficeAssist client transport passed on 2026-08-22: the restricted share authenticated successfully, the host was available, SMB 3.1.1 encryption was active, and no local spool records were pending. Email Monitor task registration and production execution remain deferred to the OfficeAssist cutover.
-- OfficeAssist Email Monitor task `01a029bf-81d2-76e1-9960-64558a57640b` subsequently completed exact-identity synthetic processing, restored compact state, activated the production heartbeat, and completed one gap-free live no-message routing cycle. The predecessor WesStudio heartbeat was paused before activation. Email Monitor liveness supervision remains temporarily disabled on the WesStudio shared supervisor to avoid false stale alerts; Invoice Entry supervision remains unchanged.
+- OfficeAssist client transport passed on 2026-08-22: the restricted share authenticated successfully, the host was available, SMB 3.1.1 encryption was active, and no local spool records were pending.
+- OfficeAssist Email Monitor task `01a029bf-81d2-76e1-9960-64558a57640b` subsequently completed exact-identity synthetic processing, restored compact state, activated the production heartbeat, and completed one gap-free live no-message routing cycle. The predecessor WesStudio heartbeat was paused before activation. OfficeAssist's independent Health Check supervisor is installed, ready, enabled, and verified healthy; the WesStudio supervisor retains Invoice Entry only.
 
 1. Run `Test-ProjectRoomMessagingHost.ps1` from the host and every client.
 2. Confirm host availability, SMB 3.x, and SMB encryption.
