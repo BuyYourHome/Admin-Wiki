@@ -25,14 +25,14 @@ Used condition. Records and sleeves show ordinary age/storage wear. Records have
 
 ## Photo order for review
 
-1. `working/estate-sale-2026-08-15-images/vinyl-2026-08-21-photo-01.jpg` — newer Google Photos original; cover needs rotation review.
-2. `working/estate-sale-2026-08-15-images/vinyl-2026-08-21-photo-02.jpg` — newer Google Photos original.
-3. `working/estate-sale-2026-08-15-images/vinyl-2026-08-21-photo-03.jpg` — newer Google Photos original.
+1. `working/estate-sale-2026-08-15-images/vinyl-2026-08-21-photo-01-upright.png` — corrected upright derivative; original JPG preserved.
+2. `working/estate-sale-2026-08-15-images/vinyl-2026-08-21-photo-02-upright.png` — corrected upright derivative; original JPG preserved.
+3. `working/estate-sale-2026-08-15-images/vinyl-2026-08-21-photo-03-upright.png` — corrected upright derivative; original JPG preserved.
 4. Original children’s record/book lot photo `133906872` after the newer adult-record photos, if that group remains part of the lot.
 
 ## Private review notes
 
 - The three newer source copies were downloaded from Google Photos on August 22, 2026 after locating the August 21 photo batch. Originals remain in Google Photos; local working copies are for listing preparation only.
 - Do not claim exact counts, pressing/edition details, playability, or condition beyond what the photos support.
-- Review the rotated orientation and inspect every sleeve/record surface before any upload.
-- Facebook currently shows no existing vinyl listing; this remains an offline draft. Uploading photos or publishing requires separate confirmation/authorization.
+- The Facebook listing was published at the URL above under the authorized estate-sale workflow; Facebook may continue its review process.
+- On 2026-08-22, all three sideways photos were replaced with the upright derivatives above. The listing text and $30 price were not changed.
