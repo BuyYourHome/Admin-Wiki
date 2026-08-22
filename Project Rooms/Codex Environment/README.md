@@ -36,7 +36,99 @@ Out of scope:
 
 ## Modes
 
-- Update Codex Environment: use `outputs\Update Codex Environment Mode.md` when Wes asks to keep an already prepared target computer current with changes from WesStudio. This mode pulls the target repo, syncs wiki-managed skills, restarts or refreshes Codex, and verifies repo/skill state without installing apps or changing accounts.
+Use these modes to keep machine setup, machine updates, role assignment, replacement, retirement, and health checks separate.
+
+### Baseline Machine Setup
+
+Use this mode when Wes authorizes preparing a computer that has never been configured for the Buy Your Home Codex/Admin wiki environment.
+
+This mode may include:
+
+- verifying the exact target computer, signed-in user, admin rights, Windows edition, architecture, RAM, disk capacity, and free space;
+- installing approved required apps and prerequisites, such as Git, LibreOffice, Obsidian, Chrome, and Codex Desktop when missing;
+- configuring the canonical Admin wiki repo at `C:\Codex\Wiki Files`;
+- cloning or updating `BuyYourHome/Admin-Wiki` on `main`;
+- syncing wiki-managed skills only after the target repo is current;
+- verifying Codex Desktop can open an `Admin Wiki` project pointed at `C:\Codex\Wiki Files`;
+- verifying plugin/cache presence and connector availability;
+- running one low-risk Admin wiki workflow before marking the machine ready.
+
+This mode does not authorize paid software, remote-control tools, VPNs, browser extensions, credential managers, security-setting changes, account ownership changes, or secret storage unless Wes explicitly approves the exact item.
+
+### Update Existing Machine
+
+Use this mode when Wes asks to keep an already prepared target computer current with changes made on WesStudio or another authorized Admin wiki machine.
+
+Follow `outputs\Update Codex Environment Mode.md`.
+
+This mode is limited to:
+
+- verifying the authorized target computer and canonical repo path;
+- pulling `BuyYourHome/Admin-Wiki` at `C:\Codex\Wiki Files` with `git pull --ff-only`;
+- syncing wiki-managed skills with `C:\Codex\Wiki Files\tools\sync-codex-skills.ps1`;
+- restarting or refreshing Codex so updated skills and rules load;
+- verifying repo status, latest commit, skill counts, and free space.
+
+This mode does not authorize app installs, paid software, account sign-ins, connector approvals, security-setting changes, deleting files, force-pulls, pushes to GitHub, or use of a Teams-synced wiki folder as the working repo.
+
+### Role Assignment
+
+Use this mode when a target computer is technically ready but needs task-specific Project Room chat assignments.
+
+Codex Environment owns the machine-readiness handoff. Create PR owns the actual `Minimum PR Chat Set` mode for creating or recording standard PR/chat combinations.
+
+Workflow:
+
+1. Confirm the target computer has passed Baseline Machine Setup or Update Existing Machine verification.
+2. Identify the intended role for the machine, such as Wes primary development, Wes secondary/video, Josh admin support, or backup.
+3. Recommend the minimum Project Room chat set for that role.
+4. Hand off to Create PR `Minimum PR Chat Set` for chat creation, startup prompts, and thread-id metadata.
+5. Record the assigned role and handoff result in `working\target-computer-register.md`.
+
+### Replacement Machine
+
+Use this mode when a new or repaired computer will replace another computer for Codex/Admin wiki work.
+
+Workflow:
+
+1. Identify the old computer, new computer, owner/user, and intended replacement date.
+2. Confirm whether the old computer remains active, becomes backup, or should be retired.
+3. Run Baseline Machine Setup on the replacement computer.
+4. Compare assigned roles, Project Room chats, connector needs, OneDrive/data placement, plugin/cache needs, and local-only files from the old computer.
+5. Confirm no unpushed commits or unique required local files remain on the old computer before declaring replacement complete.
+6. Use Role Assignment and Create PR `Minimum PR Chat Set` to recreate or record the needed PR/chat surface.
+7. Update `working\target-computer-register.md` with replacement status, blockers, and any remaining old-machine action.
+
+This mode does not authorize deleting files, unlinking accounts, removing software, or changing routing away from the old computer until Wes approves the exact action.
+
+### Decommission Machine
+
+Use this mode when a computer should no longer receive Codex/Admin wiki work.
+
+Workflow:
+
+1. Confirm Wes explicitly authorized decommissioning the named computer.
+2. Verify no pending PR work, unpushed Git commits, unique local files, or needed local-only notes remain.
+3. Record the machine as retired, backup-only, or unavailable in `working\target-computer-register.md`.
+4. Identify any registered Project Room chats, task/thread ids, automations, or routing references that still point to the machine.
+5. Do not remove accounts, delete files, uninstall software, archive chats, or change routing metadata unless Wes explicitly approves the exact change.
+
+### Machine Health Check
+
+Use this mode before assigning new work to a machine or when Wes asks whether a machine is still ready.
+
+Check:
+
+- computer name, user, Windows edition, admin status, RAM, disk health/free space, and major storage caveats;
+- `C:\Codex\Wiki Files` exists and is the Admin wiki repo;
+- Git branch/status and whether local `main` is behind `origin/main`;
+- latest commit;
+- installed skill count and required project skill availability;
+- Codex Desktop installation and project connection;
+- key connector/plugin availability when needed for the assigned role;
+- known blockers, unrelated dirty work, and whether the machine can safely receive PR work.
+
+Record material results in `working\target-computer-register.md` or a target-specific output report when the check changes machine readiness.
 
 ## Current Status
 

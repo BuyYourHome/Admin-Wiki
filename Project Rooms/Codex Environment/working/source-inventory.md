@@ -13,6 +13,7 @@
 | `outputs/Wes-VideoEditor Core Environment Verification.md` | Target-computer verification | authoritative | Records the Git, Admin wiki, LibreOffice, Obsidian, skill sync, Codex Desktop, and Codex project verification work completed on `WES-VIDEOEDITOR`. |
 | `working/configure-wesstudio-winrm-client.ps1` | Local helper script | reference | Helper used to configure/check WesStudio WinRM client TrustedHosts for `Wes-VideoEditor`. This records the attempted client-side setup; it does not prove WinRM connectivity or authorize security-setting changes on other machines. |
 | `working/migration-lessons-learned.md` | Deployment lessons | authoritative | Durable lessons from the first target migration, including storage thresholds, OneDrive cleanup, Windows edition verification, remote execution fallback, Codex Desktop naming, and project setup. |
+| Wes instruction for machine lifecycle modes | User instruction | authoritative | Defines separate Codex Environment modes for baseline setup, updating existing machines, role assignment, replacement, decommissioning, and health checks across multiple assigned computers. |
 | `outputs/Remote Codex Environment Setup Steps.md` | Initial deployment draft | outdated, preserved | Superseded by the canonical setup checklist and verification template after Step 2 approval. |
 | `Project Room Workflow.md` | Wiki rule | authoritative | Defines required Project Room structure and workflow. |
 | `Project Room Chat Startup Rule.md` | Wiki rule | authoritative | Defines Start PR and chat startup requirements. |
