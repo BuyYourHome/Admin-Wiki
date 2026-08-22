@@ -17,7 +17,7 @@ Development notes, source inventory, and open questions for this workflow live i
 
 Before using this skill, have:
 
-- the global profile at `C:\Codex\Office Assistant Profile.md`,
+- the global profile at `C:\Codex\Wiki Files\Office Assistant Profile.md`,
 - the admin rules in `C:\Codex\Wiki Files\AGENTS.md`,
 - the automation memory file for this workflow at `C:\Users\wesbr\.codex\automations\officeassist-morning-email-summary-and-instruction-monitor\memory.md`,
 - the compact-state specification at `C:\Codex\Wiki Files\Project Rooms\Email Monitor\working\memory-state-spec.md`,
