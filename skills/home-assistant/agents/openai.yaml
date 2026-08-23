@@ -1,0 +1,5 @@
+interface:
+  display_name: "Home Assistant"
+  short_description: "Manage and automate the Home Assistant environment"
+  default_prompt: "Use the Home Assistant Project Room, inspect safely, preserve backups and approval gates, and coordinate device and remote-access work with their owning Project Rooms."
+

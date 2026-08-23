@@ -40,6 +40,7 @@ This is the live task registry for the universal [[Project Room Delegation Contr
 | Marketplace | `marketplace` | `019fb5b0-6c29-7b32-822b-aa13b5920c29` | Route Facebook Marketplace tool sourcing, resale-profit evaluation, Messenger offer/conversation work, and seller-agreement reporting here. | Requires authorized Facebook/Messenger browser session; email notifications use Email Delivery rules. |
 | Manager | `manager` | `019f8274-5b7e-7170-a051-f7944954de82` | Route Josh/manager task-register work here. | Email Monitor obtains Manager Tasks from this task. |
 | Network Roadmap | `network-roadmap` | `01a02e19-01af-79a1-a770-42298d31eed6` | Route network identity, device-management, and messaging transport planning here. | Active dedicated task; exact approval is required before infrastructure changes. |
+| Home Assistant | `home-assistant` | `pending` | Blocked until Create PR records the dedicated task ID. | Home Assistant configuration, automation, diagnostics, backups, and updates. |
 | New Project | `new-project` | pending | Route new real-estate project setup workflow here. | Create PR owns PR creation; New Project owns property project creation workflow. |
 | Operating Agreements | `operating-agreement` | pending | Route operating-agreement drafting and source work here. | Skill folder name is singular. Rename only with explicit authorization. |
 | Project Management Spreadsheet Rewrite | shared `template-to-project` | pending | Route through Template to Project unless Wes revives this as separate active work. | Legacy/planning room. |
