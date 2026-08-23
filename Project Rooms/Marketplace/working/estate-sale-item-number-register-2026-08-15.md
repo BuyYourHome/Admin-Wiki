@@ -9,15 +9,15 @@ This register controls the stable reference numbers printed on the Avery 18660 p
 
 | Item id | Listing / item | Category | Listed price | Facebook status |
 | --- | --- | --- | ---: | --- |
-| ES-20260815-001 | Decorative Doll and Angel Lot | Decor, Collectibles & Books | $45 | Active |
+| ES-20260815-001 | Decorative Doll and Angel Lot | Decor, Collectibles & Books | $36 | Active |
 | ES-20260815-002 | Stained-Glass-Style Hanging Pendant Light | Decor, Collectibles & Books | $75 | Active |
 | ES-20260815-003 | Wood Rolling Kitchen Cart | Furniture, Storage & Lighting | $50 | Sold (2026-08-14) |
-| ES-20260815-004 | GE Countertop Microwave | Appliances | $30 | Active |
+| ES-20260815-004 | GE Countertop Microwave | Appliances | $24 | Active |
 | ES-20260815-005 | Oak-Finish Microwave Cabinet or Stand | Furniture, Storage & Lighting | $45 | Active |
 | ES-20260815-006 | Folding Drying-Rack Pair | Tools, Office & Household | $25 | Active |
 | ES-20260815-007 | Maytag Washer and Whirlpool Dryer Pair | Appliances | $500 | Active |
 | ES-20260815-008 | Frigidaire Top-Freezer Refrigerator | Appliances | $125 | Active |
-| ES-20260815-009 | Wood Folding TV Tray Table | Furniture, Storage & Lighting | $15 | Active |
+| ES-20260815-009 | Wood Folding TV Tray Table | Furniture, Storage & Lighting | $12 | Active |
 | ES-20260815-010 | Oak-Finish Entertainment Center | Furniture, Storage & Lighting | $60 | Active |
 | ES-20260815-011 | Wood and Metal Bed Frame | Furniture, Storage & Lighting | $75 | Active |
 | ES-20260815-012 | Round Wood Stool | Tools, Office & Household | $20 | Active |
@@ -47,7 +47,7 @@ This register controls the stable reference numbers printed on the Avery 18660 p
 | ES-20260815-036 | Folding Rollaway Bed with Mattress | Furniture, Storage & Lighting | $50 | Active |
 | ES-20260815-037 | Mixed Decorative Figurine Lot | Decor, Collectibles & Books | $45 | Active |
 | ES-20260815-038 | Ornate Carved Mantel Clock | Decor, Collectibles & Books | $65 | Active |
-| ES-20260815-039 | Vinyl Records - Classic Rock, Jazz, Orchestral & More | Books, Movies & Music | $30 | Active — Facebook listing under review; https://www.facebook.com/marketplace/item/1043750024935411/ |
+| ES-20260815-039 | Vinyl Records - Classic Rock, Jazz, Orchestral & More | Books, Movies & Music | $24 | Active — Facebook listing under review; https://www.facebook.com/marketplace/item/1043750024935411/ |
 | ES-20260815-040 | Detecto 350-lb Physician Balance-Beam Scale | Health, Mobility & Fitness | $95 | Active |
 | ES-20260815-041 | Wall-Mounted Toilet-Paper Storage Cabinet | Tools, Office & Household | $20 | Active |
 | ES-20260815-042 | Vintage Gold-Tone Rose-Pattern Flatware Set with Case | Kitchen & Dining | $75 | Active |
