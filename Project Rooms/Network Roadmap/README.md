@@ -9,9 +9,9 @@ The initial direction is to evaluate Microsoft Entra ID join and Intune through 
 ## Status
 
 - Project Room: `Network Roadmap`
-- Setup status: Pending dedicated task creation
-- Dedicated task ID: `pending`
-- Dispatchable: No, until the dedicated task ID is registered
+- Setup status: Active planning
+- Dedicated task ID: `01a02e19-01af-79a1-a770-42298d31eed6`
+- Dispatchable: Yes
 - Current phase: Phase 0 - baseline and prerequisites
 
 ## Default Workflow
