@@ -22,7 +22,7 @@ This register controls the stable reference numbers printed on the Avery 18660 p
 | ES-20260815-011 | Wood and Metal Bed Frame | Furniture, Storage & Lighting | $75 | Active |
 | ES-20260815-012 | Round Wood Stool | Tools, Office & Household | $20 | Active |
 | ES-20260815-013 | Lasko Digital Ceramic Heater | Appliances | $35 | Active |
-| ES-20260815-014 | Tall Media Storage Cabinet | Furniture, Storage & Lighting | $40 | Active |
+| ES-20260815-014 | Tall Media Storage Cabinet | Furniture, Storage & Lighting | $32 | Active |
 | ES-20260815-015 | Wood Lift-Top File or Record Cabinet | Electronics & Media | $50 | Active |
 | ES-20260815-016 | Four-Tier Basket Shelf | Tools, Office & Household | $20 | Active |
 | ES-20260815-017 | Wood Pedestal Book or Bible Stand | Furniture, Storage & Lighting | $30 | Active |
