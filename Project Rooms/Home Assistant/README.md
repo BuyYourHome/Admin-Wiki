@@ -7,9 +7,9 @@ Maintain the Buy Your Home Home Assistant environment running on a non-Windows m
 ## Status
 
 - Project Room: `Home Assistant`
-- Setup status: Pending dedicated task creation
-- Dedicated task ID: `pending`
-- Dispatchable: No, until the dedicated task ID is registered
+- Setup status: Active discovery
+- Dedicated task ID: `01a02e53-5f75-7103-b5e7-17b842547cef`
+- Dispatchable: Yes
 - Current phase: Discovery and secure remote-access planning
 
 ## Default Workflow
@@ -93,4 +93,3 @@ PR Messaging: Follow `C:\Codex\Wiki Files\Project Room Messaging Rule.md`. The c
 2. Have Network Roadmap ask Wes the remote-access decision questions.
 3. Inventory Home Assistant installation type, version, URL, backup state, add-ons, integrations, and critical automations.
 4. Establish the approved remote path before configuration work.
-

@@ -29,7 +29,7 @@ Use [[Agent Unit Standard]] for the standard package behind an agent-like operat
 | Lowes Order | Wiki-managed skill plus project room plus dedicated chat | Draft | On demand | `skills\lowes-order\SKILL.md`; `Project Rooms\Lowes Order\README.md` |
 | Manager | Wiki-managed skill plus project room plus dedicated chat | Draft | On demand | `skills\manager\SKILL.md`; `Project Rooms\Manager\README.md` |
 | Network Roadmap | Wiki-managed skill plus project room plus dedicated task | Active/planning | On demand | `skills\network-roadmap\SKILL.md`; `Project Rooms\Network Roadmap\README.md`; task id `01a02e19-01af-79a1-a770-42298d31eed6` |
-| Home Assistant | Wiki-managed skill plus project room plus dedicated task | Pending setup | On demand | `skills\home-assistant\SKILL.md`; `Project Rooms\Home Assistant\README.md`; task id `pending` |
+| Home Assistant | Wiki-managed skill plus project room plus dedicated task | Active/discovery | On demand | `skills\home-assistant\SKILL.md`; `Project Rooms\Home Assistant\README.md`; task id `01a02e53-5f75-7103-b5e7-17b842547cef` |
 | Codex Environment | Wiki-managed skill plus project room plus dedicated chat | Draft | On demand | `skills\codex-environment\SKILL.md`; `Project Rooms\Codex Environment\README.md` |
 | Computers | Wiki-managed skill plus project room plus dedicated chat | Draft | On demand | `skills\computers\SKILL.md`; `Project Rooms\Computers\README.md` |
 | Sync GetHub | Wiki-managed skill plus project room plus dedicated chat plus per-computer daily automation | Active; WesStudio first run and other-computer enrollment pending | Daily at 5:30 AM Eastern on each enrolled computer; on demand | `skills\sync-gethub\SKILL.md`; `Project Rooms\Sync GetHub\README.md`; automation id `sync-gethub-daily` |
