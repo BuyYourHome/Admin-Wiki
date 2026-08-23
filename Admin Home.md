@@ -22,6 +22,7 @@ This is the starting page for the Buy Your Home admin wiki.
 - [[Project Rooms/Jennys Drawings/README|Jennys Drawings Project Room]]
 - [[Project Rooms/Lowes Order/README|Lowes Order Project Room]]
 - [[Project Rooms/Manager/README|Manager Project Room]]
+- [[Project Rooms/Network Roadmap/README|Network Roadmap Project Room]]
 - [[Project Rooms/Codex Environment/README|Codex Environment Project Room]]
 - [[Project Rooms/Computers/README|Computers Project Room]]
 - [[Project Rooms/Sync GetHub/README|Sync GetHub Project Room]]

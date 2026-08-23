@@ -1,0 +1,5 @@
+interface:
+  display_name: "Network Roadmap"
+  short_description: "Plan identity, device management, and network modernization"
+  default_prompt: "Use the Network Roadmap Project Room to assess the request, preserve approval gates, and maintain the phased implementation plan."
+
