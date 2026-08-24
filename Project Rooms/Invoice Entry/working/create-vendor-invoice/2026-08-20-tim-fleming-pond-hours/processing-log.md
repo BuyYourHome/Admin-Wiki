@@ -28,3 +28,16 @@ Outcome: `Done - correction-review draft sent and verified; awaiting corrections
 - No new draft, email, filing, workbook posting, approval, payment, or paid status occurred.
 
 Outcome: `Done - zero-hours source recorded; date conflict preserved; invoice unchanged`.
+
+## 2026-08-24 - Wes Approval, Final PDF, Filing, And Workbook Hold
+
+- Validated the exact Invoice Entry destination and both immutable PR-message payload hashes, wrote the parent Accepted receipt before substantive work, and recorded Processing.
+- Applied Wes approval only to invoice `IE-TF-20260820-POND-001`: `18.5` hours at `$62.50` per hour, total `$1,156.25`.
+- Generated the final one-page `APPROVED BY WES / NOT PAID` PDF and passed visual, extracted-text, arithmetic, and source QA. SHA-256 is `0DBA9A1345934D74E68847F51EA9433054F978A23C57B4F43A99A36176CBB306`.
+- Filed the PDF once to the Pond property `Owning/Invoices` folder and verified the uploaded content by SharePoint read-back.
+- Retrieved the exact current Pond workbook from SharePoint, confirmed no duplicate invoice number or Review Row ID, and staged one blank-destination `Needs Review` row locally as `IE-20260824-TIM-20260820-POND`.
+- Excel reopen, Review-table, formula fingerprint, VBA-presence, zero-external-link, and visual checks passed. A fresh pre-update rollback copy was retained locally.
+- SharePoint rejected the exact full-workbook replacement because the shared-workbook overwrite requires explicit Wes approval. No workaround or alternate upload path was attempted; the authoritative workbook remains unchanged.
+- Did not send the unsent Outlook approval draft, contact Tim, pay, or mark paid.
+
+Outcome: `Needs Wes - approved-not-paid PDF finalized and filed; explicitly approve replacement of the shared Pond workbook to complete the staged Review posting`.
