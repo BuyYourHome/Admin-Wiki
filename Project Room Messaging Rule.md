@@ -44,6 +44,11 @@ The shared queue became authoritative for production Project Room messages after
 ## Security And Privacy
 
 - The host share must require authenticated Windows access, SMB encryption, NTFS restrictions, and a Private-profile firewall rule scoped to the approved subnet.
+- Use a separate host-local transport account for each remote client computer. Name it `PRMsg-<ComputerName>`, grant only `Change` on the messaging share and `Modify` on its backing folder, and store its SMB credential only in that computer's normal Windows profile. The transport account is not an interactive Windows login and must not be shared across computers.
+- On `WES-VIDEOEDITOR`, authorize the normal host identity explicitly for local queue work. As verified on 2026-08-24, the host identity is `WES-VIDEOEDITOR\IRAMa`; the approved remote transport identities are `WES-VIDEOEDITOR\PRMsg-OfficeAssist` and `WES-VIDEOEDITOR\PRMsg-WesStudio`.
+- New computers require their own restricted `PRMsg-*` account, share and NTFS entries, persistent authenticated SMB connection, machine-local client registration, and canonical read/write validation before they may process messages. Do not restore a shared Microsoft-account credential or grant a remote computer's ordinary Windows login direct access as a shortcut.
+- Keep machine-local client configuration under `%LOCALAPPDATA%\BuyYourHome\PRMessaging\client.json` for the normal Windows profile that runs Codex. Register only PR/task identities authorized to execute on that computer, and remove stale registrations after a task moves to another computer.
+- Back up the share and NTFS ACLs before access changes. Remove superseded principals only after every replacement client completes a canonical lifecycle test and successfully reauthenticates after its SMB session is closed.
 - Do not place passwords, tokens, full email bodies, unnecessary personal data, financial credentials, or document copies in queue records.
 - Store source references and authoritative paths instead of duplicating source files.
 - Dashboard may show counts, age, state, and attention flags, but not sensitive payloads.
