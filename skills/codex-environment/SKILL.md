@@ -33,15 +33,17 @@ Before Codex Environment file work:
 1. Identify whether the task is baseline discovery, target-computer setup, app install, configuration, verification, or documentation.
 2. For baseline discovery, inspect WesStudio and record required apps, runtimes, paths, connectors, plugins, skills, configuration notes, and verification checks before standardizing target installs.
 3. For target-computer setup, confirm Wes authorized that specific computer and remote session before connecting.
-4. Record the target computer, user, remote access path, approval, and setup-run state in `working\target-computer-register.md`.
-5. Do not store passwords, tokens, recovery codes, license keys, or secrets. Have Wes or the authorized user enter credentials directly when needed.
-6. Install or configure only approved apps and prerequisites needed to replicate the Codex environment from WesStudio.
-7. Configure the Admin wiki repo as `C:\Codex\Wiki Files` on the target computer; do not use Teams-synced wiki folders as the working repo.
-8. Sync wiki-managed skills only after the target Admin wiki repo is current and the updated skills are ready to install.
-9. Verify the target computer with a repeatable checklist before marking it ready.
-10. Preserve run notes, blockers, and verification outputs under the Project Room.
-11. When setup work changes a machine's inventory, role, lifecycle status, or readiness summary, update or hand off the authoritative machine-list change to Computers. `Project Rooms\Computers\working\computer-register.md` is the source of truth for the list of business computers.
-12. Commit only scoped Codex Environment room, matching skill, registry, and index changes.
+4. Confirm the intended Windows sign-in account, Windows profile, assigned human user, and business Microsoft 365 identity before installing profile-specific tools or configuring Codex.
+5. Do not default new implementations to `WesBrowning1@Outlook.com`. Use that account only when Wes explicitly designates it for the specific machine.
+6. Record the target computer, user, remote access path, approval, and setup-run state in `working\target-computer-register.md`.
+7. Do not store passwords, tokens, recovery codes, license keys, or secrets. Have Wes or the authorized user enter credentials directly when needed.
+8. Install or configure only approved apps and prerequisites needed to replicate the Codex environment from WesStudio.
+9. Configure the Admin wiki repo as `C:\Codex\Wiki Files` on the target computer; do not use Teams-synced wiki folders as the working repo.
+10. Sync wiki-managed skills only after the target Admin wiki repo is current and the updated skills are ready to install.
+11. Verify the target computer with a repeatable checklist before marking it ready.
+12. Preserve run notes, blockers, and verification outputs under the Project Room.
+13. When setup work changes a machine's inventory, role, lifecycle status, or readiness summary, update or hand off the authoritative machine-list change to Computers. `Project Rooms\Computers\working\computer-register.md` is the source of truth for the list of business computers.
+14. Commit only scoped Codex Environment room, matching skill, registry, and index changes.
 
 ## Modes
 
@@ -54,6 +56,7 @@ Use this mode when Wes authorizes preparing a computer that has never been confi
 This mode may include:
 
 - verifying the exact target computer, signed-in user, admin rights, Windows edition, architecture, RAM, disk capacity, and free space;
+- confirming the intended Windows sign-in account, Windows profile, assigned human user, and business Microsoft 365 identity before installing profile-specific tools or configuring Codex;
 - installing approved required apps and prerequisites, such as Git, LibreOffice, Obsidian, Chrome, and Codex Desktop when missing;
 - configuring the canonical Admin wiki repo at `C:\Codex\Wiki Files`;
 - cloning or updating `BuyYourHome/Admin-Wiki` on `main`;
@@ -63,6 +66,8 @@ This mode may include:
 - running one low-risk Admin wiki workflow before marking the machine ready.
 
 This mode does not authorize paid software, remote-control tools, VPNs, browser extensions, credential managers, security-setting changes, account ownership changes, or secret storage unless Wes explicitly approves the exact item.
+
+Do not default new implementations to `WesBrowning1@Outlook.com`. That account may be used only when Wes explicitly designates it for the specific machine. Otherwise, pause profile-specific setup until Wes confirms the intended login and business identity for that machine.
 
 ### Update Existing Machine
 
@@ -156,6 +161,8 @@ Do not answer "what computers are listed" from the Codex Environment target setu
 
 - Remote into only the specific computer Wes authorizes for the setup run.
 - Confirm the remote-control tool and session identity before making changes.
+- Confirm the target login/profile and business identity before installing or configuring profile-specific components such as Codex Desktop, Git global identity, `%USERPROFILE%\.codex\skills`, OneDrive, Outlook, Teams, browser sessions, and connectors.
+- Do not assume Wes's personal Microsoft account, including `WesBrowning1@Outlook.com`, is the correct implementation login for a target machine.
 - Do not install paid apps, trials that create billing risk, browser extensions, remote-control tools, VPNs, credential managers, or system-level agents unless Wes explicitly approves that exact item.
 - Do not disable antivirus, firewall, BitLocker, Windows security features, or endpoint protection unless Wes explicitly approves that exact change.
 - Do not make legal, financial, mailbox, security, or account-ownership changes unless Wes explicitly authorizes the specific action.
