@@ -2,7 +2,7 @@
 
 ## Status
 
-- State: `Period Open - Accepted Through August 20 - August 17 Allocation Clarification Required - No Draft Generated`
+- State: `Period Open - Accepted Through August 21 - August 17 Allocation Clarification Required - No Draft Generated`
 - Stable invoice number: `INV-JKLLC-20260831-001`
 - Semimonthly period: `2026-08-16 through 2026-08-31`
 - Issuer: `Josh Kennedy LLC`
@@ -23,6 +23,7 @@
 - Dispatch `email-monitor-route-vendor-invoice-20260820-josh-time-card-aug18-001`; payload hash `a068f7e242dc93b64906a0bef976809b9e84e02e99229b8776f511d5474c4fed`; Outlook message ending `ACi7Vd2gAAAA==`. August 18: Pond 6:00 AM-2:45 PM and Rosebrooks 2:45 PM-4:00 PM.
 - Dispatch `email-monitor-route-vendor-invoice-20260820-josh-time-card-aug19-001`; payload hash `8c71ce9651518ad7f046ff0d8ba3cc4482a8a08b366db0d7e0aeb1c108a7ac00`; Outlook message ending `ACjkdy7AAAAA==`. August 19: Rosebrooks 6:00 AM-10:45 AM and Pond 10:45 AM-2:45 PM.
 - Dispatch `email-monitor-route-vendor-invoice-20260821-josh-time-card-aug20-001`; payload hash `c5c7c4d06173d95360159751dab914b4870428786ce47db479b3005e069404b0`; Outlook message ending `ACjvzcuAAAAA==`. August 20: BackOffice 8:00 AM-3:45 PM and 4121 Tensity Dr 3:45 PM-4:30 PM installing the outside storage-closet door, handle, and deadbolt.
+- Dispatch `email-monitor-route-vendor-invoice-20260824-josh-time-card-aug21-001`; message id `prmsg-email-monitor-route-vendor-invoice-20260824-josh-time-card-aug21-001`; payload hash `496b36f77bd34661e088c71a7060508e56b084ad91830084e0f7c0cd7061e58e`; Outlook message ending `ACkJJCTgAAAA==`. August 21: 115 Rosebrooks Dr 6:00 AM-12:00 PM removing cabinet doors and hardware and helping load the truck with items for Green Leaf.
 - The August 18 `$50.00` bed-frame sale is a separate Receipt-mode hold and is not time or invoice compensation.
 
 ## Accepted Line
@@ -36,8 +37,9 @@
 | 2026-08-19 | 908 Pond St | 10:45 AM | 2:45 PM | 4 hours | Installed the spiral staircase with Tim Fleming | Added once; no break was stated or deducted. |
 | 2026-08-20 | BackOffice | 8:00 AM | 3:45 PM | 7 hours 45 minutes | BackOffice work | Added once from the exact August 20 source; no break was stated or deducted. |
 | 2026-08-20 | 4121 Tensity Dr | 3:45 PM | 4:30 PM | 45 minutes | Installed the outside storage-closet door, door handle, and deadbolt | Added once from the exact August 20 source; no break was stated or deducted. |
+| 2026-08-21 | 115 Rosebrooks Dr | 6:00 AM | 12:00 PM | 6 hours | Removed cabinet doors and hardware; helped load the truck with items for Green Leaf | Added once from the exact August 21 source; no break was stated or deducted. |
 
-Accepted subtotal through August 20: `35 hours 0 minutes` (`20 hours 30 minutes` Pond, `6 hours` Rosebrooks, `7 hours 45 minutes` BackOffice, and `45 minutes` Tensity), plus the separately held August 17 interval of `1 hour 25 minutes`.
+Accepted subtotal through August 21: `41 hours 0 minutes` (`20 hours 30 minutes` Pond, `12 hours` Rosebrooks, `7 hours 45 minutes` BackOffice, and `45 minutes` Tensity), plus the separately held August 17 interval of `1 hour 25 minutes`.
 
 ## Held Line
 
@@ -52,6 +54,7 @@ Accepted subtotal through August 20: `35 hours 0 minutes` (`20 hours 30 minutes`
 - This packet is separate from closed-period invoice `INV-JKLLC-20260815-001`; it must not alter or duplicate the August 1-15 invoice.
 - The August 18 and 19 sources were added once without changing the held August 17 interval. Do not generate or deliver the August 16-31 draft until that held interval has an authoritative project allocation. Do not infer a split.
 - The August 20 source was added once as two non-overlapping, expressly allocated intervals. It does not resolve or duplicate the held August 17 interval.
+- The August 21 source was added once as one expressly allocated Rosebrooks interval. It does not resolve or duplicate the held August 17 interval.
 
 ## Decision Needed
 

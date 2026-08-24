@@ -36,3 +36,14 @@ Outcome: `Time Card lines done; August 17 allocation and bed-frame collection fa
 - No draft was generated or delivered because the unresolved August 17 project allocation prevents a complete proportional allocation of the fixed `$2,708.33` invoice. No filing, workbook posting, approval, payment, paid status, or email occurred.
 
 Outcome: `Done - August 20 recorded once; August 17 allocation still needs Wes`.
+
+## 2026-08-24 - August 21 Intake
+
+- Accepted authoritative PR message `prmsg-email-monitor-route-vendor-invoice-20260824-josh-time-card-aug21-001` / dispatch `email-monitor-route-vendor-invoice-20260824-josh-time-card-aug21-001`, payload hash `496b36f77bd34661e088c71a7060508e56b084ad91830084e0f7c0cd7061e58e`, before substantive work and recorded Processing.
+- Duplicate checking found no matching message, dispatch, Outlook message ending `ACkJJCTgAAAA==`, or August 21 Josh line.
+- Added August 21 once: 115 Rosebrooks Dr 6:00 AM-12:00 PM (`6 hours`) removing cabinet doors and hardware and helping load the truck with items for Green Leaf. No break was stated or deducted.
+- Accepted subtotal through August 21 is now `41 hours`: Pond `20 hours 30 minutes`; Rosebrooks `12 hours`; BackOffice `7 hours 45 minutes`; Tensity `45 minutes`.
+- The August 17 3:45 PM-5:10 PM interval remains held once and unallocated. The August 21 source does not clarify it.
+- No draft was generated or delivered because the unresolved August 17 project allocation still prevents a complete proportional allocation of the fixed `$2,708.33` invoice. No filing, workbook posting, approval, payment, paid status, or email occurred.
+
+Outcome: `Done - August 21 recorded once; August 17 allocation still needs Wes`.

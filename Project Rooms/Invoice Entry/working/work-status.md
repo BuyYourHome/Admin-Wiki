@@ -1,6 +1,6 @@
 # Invoice Entry Current Work Status
 
-Last updated: 2026-08-21
+Last updated: 2026-08-24
 
 This is the authoritative current-state register for Invoice Entry. Read it before processing a handoff or opening a workbook. Packet files and processing logs remain the detailed evidence; when an older summary conflicts with this file, stop and reconcile the source before acting.
 
@@ -201,7 +201,7 @@ Classified working files:
 | Josh Kennedy separate biweekly invoice `SP-JK-20260731-001` | `Denied by Wes - Retired - Do Not Pay` | None. Retain as history only. Do not approve, file, post, pay, revive, or reuse it. The referenced recurrence automation is not installed at its recorded local path. |
 | Josh Kennedy LLC semimonthly invoice `INV-JKLLC-20260731-001` | `Approved by Wes - Format Revisions Permitted`; revised PDF sent and verified | Filing and project posting remain held pending duplicate-safe reconciliation of the historical weekly PDFs and existing Tensity Review row. Approval is not payment or paid status. |
 | Josh Kennedy LLC August 1-15 Time Card invoice | `Approved by Wes - Not Paid`; stable number `INV-JKLLC-20260815-001`; `$2,708.33`; final Office Admin filing and approved-status delivery verified; Tensity `$1,899.20` and Pond `$94.40` posted once to Review | Rosebrooks `$404.56` local staging passed QA, but SharePoint rejected the exact workbook overwrite; explicit Wes approval is required before retry. BackOffice `$310.17` remains held without an approved accounting destination. Do not repeat filing, Tensity/Pond posting, or email delivery. |
-| Josh Kennedy LLC August 16-31 Time Card invoice | `Period Open - Accepted Through August 20 - Allocation Clarification Required`; stable number `INV-JKLLC-20260831-001`; accepted `35h00m`; held `1h25m` unallocated | August 20 BackOffice `7h45m` and Tensity `0h45m` are recorded once. Clarify the August 17 3:45 PM-5:10 PM project allocation between Pond and Rosebrooks or provide a supported split. No draft should be generated until resolved. |
+| Josh Kennedy LLC August 16-31 Time Card invoice | `Period Open - Accepted Through August 21 - Allocation Clarification Required`; stable number `INV-JKLLC-20260831-001`; accepted `41h00m`; held `1h25m` unallocated | August 21 Rosebrooks `6h00m` is recorded once with no inferred break. Clarify the August 17 3:45 PM-5:10 PM project allocation between Pond and Rosebrooks or provide a supported split. No draft should be generated until resolved. |
 | Tim Fleming Pond invoice `IE-TF-20260820-POND-001` | Correction-review draft generated and sent exactly once; `18.5` hours / `$1,156.25`; Sent Items verification passed. Later zero-hours report preserved with subject/body date conflict and no invoice change. | Await Tim correction-by-exception review. Do not resend, approve, file, post, pay, or mark paid. |
 | Rosebrooks bed-frame sale report | Receipt-mode hold; `$50.00` sale reported but collection facts incomplete | Confirm collection, payment method, buyer, collector, and exact item/listing before assigning a receipt number or taking workbook/Marketplace action. |
 | Josh Kennedy Time Card, week ending 2026-07-24 | Historical source records consolidated into the semimonthly invoice | Do not create a second payment obligation. Reconcile the filed PDFs and Tensity Review row under exact duplicate checks before semimonthly posting. |
@@ -257,6 +257,7 @@ Classified working files:
 - Josh Outlook message ending `ACi7Vd2AAAAA==` adds August 17 Pond 8:00 AM-3:45 PM once and retains 3:45 PM-5:10 PM once as an unallocated held interval. Dispatch `email-monitor-route-vendor-invoice-20260818-josh-time-card-aug17-001` is consumed; reconcile a later clarification in place rather than adding another interval.
 - Josh Outlook message ending `ACjvzcuAAAAA==` adds August 20 BackOffice 8:00 AM-3:45 PM and Tensity 3:45 PM-4:30 PM once. Dispatch `email-monitor-route-vendor-invoice-20260821-josh-time-card-aug20-001` is consumed; do not add either interval again if rerouted.
 - Tim Outlook message ending `ACjvzcuQAAAA==` reports no hours but conflicts between subject date `Friday 8/21` and body date `Friday 8/12`. Dispatch `email-monitor-route-vendor-invoice-20260821-tim-hours-aug21-001` is consumed as zero-hours source evidence; it creates no payable line and does not change the existing Tim draft.
+- Josh Outlook message ending `ACkJJCTgAAAA==` adds August 21 Rosebrooks 6:00 AM-12:00 PM once as six hours with no inferred break. Message `prmsg-email-monitor-route-vendor-invoice-20260824-josh-time-card-aug21-001` and dispatch `email-monitor-route-vendor-invoice-20260824-josh-time-card-aug21-001` are consumed; do not add the interval again if rerouted.
 
 ## Safety Holds
 
