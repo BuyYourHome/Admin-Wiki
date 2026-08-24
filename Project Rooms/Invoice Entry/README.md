@@ -77,6 +77,8 @@ Insert only into the yellow actual-invoice area of an approved Vendor Tab. Never
 
 Invoice Entry never sends email directly. It prepares the exact package and hands it to Email Monitor's Email Delivery workflow. A send is complete only after Email Monitor returns verified OfficeAssist Sent Items evidence. Do not retry a verified or ambiguous delivery without reconciliation.
 
+Every invoice approved by Wes must have one Sent Items-verified approved-invoice email delivered to `WesWill@BuyYourHomeLLC.com` with the exact approved PDF attached. A verified approved-status delivery that already includes Wes and that PDF satisfies the requirement; otherwise route a separate Wes-only package. Vendor-contact restrictions do not suppress the Wes copy. Filing, workbook posting, an unsent draft, and approval evidence are not substitutes for delivery. Deduplicate before sending.
+
 ## Concise Handoffs
 
 A routine direct handoff should provide one authoritative source pointer, external attachment paths or blocker when applicable, a short summary, the requested operation, and only source-specific warnings. Do not repeat the full skill, standing safety rules, full email body, or completed history in task messages. Detailed evidence belongs in the referenced packet and Invoice Entry records.

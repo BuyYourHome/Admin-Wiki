@@ -39,5 +39,6 @@ Outcome: `Done - zero-hours source recorded; date conflict preserved; invoice un
 - Excel reopen, Review-table, formula fingerprint, VBA-presence, zero-external-link, and visual checks passed. A fresh pre-update rollback copy was retained locally.
 - SharePoint rejected the exact full-workbook replacement because the shared-workbook overwrite requires explicit Wes approval. No workaround or alternate upload path was attempted; the authoritative workbook remains unchanged.
 - Did not send the unsent Outlook approval draft, contact Tim, pay, or mark paid.
+- After Wes stated that every approved invoice must be sent to him, routed a separate Wes-only package through Email Monitor. Request `IE-EMAIL-20260824-TIM-POND-APPROVED-WES-001` was sent once from OfficeAssist and verified in Sent Items at `2026-08-24T14:00:57Z`; exact subject and one non-inline final PDF matched. Tim was not contacted.
 
-Outcome: `Needs Wes - approved-not-paid PDF finalized and filed; explicitly approve replacement of the shared Pond workbook to complete the staged Review posting`.
+Outcome: `Needs Wes - approved-not-paid PDF finalized, filed, and emailed to Wes; explicitly approve replacement of the shared Pond workbook to complete the staged Review posting`.

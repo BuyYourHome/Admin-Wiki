@@ -66,6 +66,7 @@ Tim expressly reported the August 19 line as `Pond 5 hours`, so the draft keeps 
 - PDF SHA-256: `0DBA9A1345934D74E68847F51EA9433054F978A23C57B4F43A99A36176CBB306`.
 - The final PDF was filed once and read back from `Property/26-BYH -908 Pond St/Owning/Invoices/26-08-20 - Tim Fleming - 908 Pond St - IE-TF-20260820-POND-001.pdf`.
 - The unsent Outlook approval draft was not sent. Tim was not contacted, and no payment or paid status was created.
+- Required approved-invoice delivery to Wes completed through Email Monitor request `IE-EMAIL-20260824-TIM-POND-APPROVED-WES-001`. OfficeAssist Sent Items verified Wes as the only recipient, exact subject `APPROVED: Tim Fleming Invoice IE-TF-20260820-POND-001 - 908 Pond St`, and one non-inline final PDF attachment at `2026-08-24T14:00:57Z`; sent message id ends `ACkJMD9QAAAA==`.
 
 ## Workbook Review Placement
 
