@@ -25,7 +25,7 @@ This project room holds development notes, source inventory, and review artifact
 - Current-computer fallback: when the connector is definitively unavailable and no send occurred, use only the locally mounted `WesWill@BuyYourHomeLLC.com` mailbox under the temporary Jean fallback rules. OfficeAssist is never mounted locally on this computer.
 - Automation type: heartbeat, attached to the dedicated `Email Monitor` thread.
 - Responsibility boundary: the heartbeat checks email and takes defined actions. Separately, direct authorized Email Delivery handoffs from other Project Rooms trigger immediately without waiting for the heartbeat or scanning a mailbox. Email Monitor coordinates delivery but does not take ownership of the requesting workflow's purpose, content, authorization, recipients, attachments, or restrictions.
-- Status thread id: `01a029bf-81d2-76e1-9960-64558a57640b` on `OFFICEASSIST` as of the controlled 2026-08-22 migration. The predecessor WesStudio task `019ecba7-f1cc-7ac1-aaf7-d89a3f21b582` remains rollback-only until post-cutover verification is complete.
+- Status thread id: `019ecba7-f1cc-7ac1-aaf7-d89a3f21b582` on `WESSTUDIO`. The unactivated OfficeAssist replacement task `01a029bf-81d2-76e1-9960-64558a57640b` remains inactive after the 2026-08-24 rollback review.
 - Task lifecycle: keep one dedicated active task and keep routine heartbeat history outside task context. Do not replace it for ordinary compaction; use the controlled, Wes-approved rollover procedure only when multiple measured health signals justify it.
 - Durable dispatch queue: `\\WES-VIDEOEDITOR\BYH-PRMessaging$\records`, managed by `C:\Codex\Wiki Files\tools\pr-messaging\Manage-ProjectRoomMessage.ps1`. Queue records are runtime state outside Git. The former Email Monitor queue is read-only legacy history.
 
@@ -55,9 +55,9 @@ For each recipient, keep the Email Summary subject unchanged throughout the Mond
 
 ### Health Check
 
-Use this mode to own independent Windows workflow-health supervisors for registered workflows. Machine-specific registries keep Email Monitor on OfficeAssist and Invoice Entry on WesStudio while preserving separate configurations, health snapshots, alert transitions, current-alert files, and diagnostic logs.
+Use this mode to own independent Windows workflow-health supervisors for registered workflows. Machine-specific registries keep Email Monitor and Invoice Entry on WesStudio while preserving separate configurations, health snapshots, alert transitions, current-alert files, and diagnostic logs.
 
-The Windows task `Codex - Workflow Health Supervisor` runs every 10 minutes independently on each assigned machine. `workflow-health-registry.json` keeps Invoice Entry enabled on `WESSTUDIO` and Email Monitor disabled there. `officeassist-workflow-health-registry.json` enables Email Monitor on `OFFICEASSIST`, where its lifecycle configuration and automation runtime now live. Each machine uses its own registry, mutex, task, state, and diagnostics; neither supervisor evaluates the other machine's workflow.
+The Windows task `Codex - Workflow Health Supervisor` runs every 10 minutes independently on each assigned machine. `workflow-health-registry.json` enables Email Monitor and Invoice Entry on `WESSTUDIO`. `officeassist-workflow-health-registry.json` keeps Email Monitor disabled on `OFFICEASSIST`; its Doc Scan entry remains unchanged pending migration evidence review. Each machine uses its own registry, mutex, task, state, and diagnostics.
 
 Routine healthy and unchanged-state checks are diagnostic-only. Visible warning, critical, and recovery alerts occur only on state transitions. The supervisor uses a named mutex for overlap protection, isolates malformed workflow configurations, refuses the wrong machine, and does not depend on Outlook or another supervised connector.
 

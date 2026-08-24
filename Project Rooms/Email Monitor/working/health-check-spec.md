@@ -29,7 +29,7 @@ The supervisor detects failures and performance degradation. It does not perform
 
 The supervisor refuses to run on the wrong machine. A second overlapping invocation exits after recording that the registry lock is held. A missing or malformed workflow configuration returns an error for that workflow and does not stop evaluation of the others.
 
-Migration note: Email Monitor moved to `OFFICEASSIST` on 2026-08-22. Its lifecycle configuration and enabled supervisor entry are defined in `config\officeassist-workflow-health-registry.json`. The WesStudio registry keeps Email Monitor disabled and Invoice Entry enabled. Each machine runs the same canonical supervisor against its own registry, scheduled task, mutex, runtime state, and diagnostics.
+Rollback note: Email Monitor returned to `WESSTUDIO` on 2026-08-24 after the OfficeAssist replacement remained unactivated. Its lifecycle configuration and enabled supervisor entry are defined in `config\workflow-health-registry.json`. The OfficeAssist registry keeps Email Monitor disabled.
 
 ## Alert Contract
 

@@ -20,9 +20,9 @@ Current observed values as of 2026-07-24:
 | kind | `heartbeat` |
 | name | `Email Monitor` |
 | status | `ACTIVE` |
-| schedule | Wakes every 5 minutes. The dispatcher runs on every wakeup; mailbox Email Routing runs every 15 minutes during the 7:45 AM through 11:00 PM Eastern active window. |
+| schedule | Runs every day; starts at 7:45 AM Eastern, then every 15 minutes from 8:00 AM through 11:00 PM Eastern |
 | target thread | `Email Monitor` |
-| target thread id | `01a029bf-81d2-76e1-9960-64558a57640b` on `OFFICEASSIST` (predecessor `019ecba7-f1cc-7ac1-aaf7-d89a3f21b582` retained rollback-only during verification) |
+| target thread id | `019ecba7-f1cc-7ac1-aaf7-d89a3f21b582` on `WESSTUDIO`; OfficeAssist task `01a029bf-81d2-76e1-9960-64558a57640b` remains inactive |
 
 The automation prompt points to:
 
@@ -33,8 +33,6 @@ The automation prompt points to:
 The prompt defines Email Delivery as an Email Monitor mode connected to `C:\Codex\Wiki Files\skills\email-delivery\SKILL.md`. It requires the OfficeAssist shared/delegated connector send path, absolute attachment-path lists, one clearly directed schema-correct retry, OfficeAssist Sent Items verification, delivery logging, and immediate failure reporting.
 
 The prompt also defines Health Check lifecycle updates. Each heartbeat records `Started` before operational work and records `Completed` or `Failed` before returning. The independent Windows watchdog and its machine assignment are defined by the Project Room Health Check specification and JSON config. Health Check management requests use `tools\Manage-CodexWorkflowHealth.ps1`, including option discovery, status, enable/disable, configuration, diagnostics, and test alerts.
-
-The OfficeAssist heartbeat also runs the central Project Room dispatcher stage first on every five-minute wakeup. Empty dispatcher polls are silent. The mailbox-routing stage remains gated to its fifteen-minute cadence so increasing dispatcher frequency does not multiply mailbox scans.
 
 The prompt also defines recurring daily summaries for Wes, Jenny, and Josh. Josh's summary scans `IRAManager@SellYourHomeRaleigh.com`, uses the prior verified Josh send as its cutoff, obtains its Manager Tasks section directly from the Manager task, sends to Josh with Wes and Jenny copied, and requires OfficeAssist Sent Items verification.
 
