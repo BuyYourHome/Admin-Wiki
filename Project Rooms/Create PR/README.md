@@ -185,6 +185,7 @@ Default minimum set:
 6. `Manager`
 7. `Lowes Order`
 8. `Marketplace`
+9. `Sync GetHub`
 
 Required sources:
 
@@ -203,12 +204,13 @@ Workflow:
    - `Project Rooms\<Project Room>\README.md` exists,
    - `skills\<skill-name>\SKILL.md` exists when the room has a matching skill,
    - the intended chat title matches the Project Room name.
-5. Build a startup prompt for each chat using the New Chat Startup Requirements in this README.
-6. Create each Codex chat only when Wes explicitly asks to create the chats or run this setup mode. If the Codex app connector returns a usable thread id, record it.
-7. If chat creation does not return a usable thread id promptly, stop waiting on that chat and mark it `pending until the dedicated chat is created`.
-8. Do not mark a chat as dispatchable until a usable thread id is recorded in the appropriate registry/routing metadata.
-9. Do not edit the target Project Room's content files merely because this mode created or verified a chat. Limit cross-PR writes to explicit chat/thread metadata that Wes authorized for this setup run.
-10. Save a run manifest under `C:\Codex\Wiki Files\Project Rooms\Create PR\outputs\minimum-pr-chat-set\` showing:
+5. When `Sync GetHub` is included, also verify the target computer has its machine-local `sync-gethub-daily` automation scheduled daily at 5:30 AM Eastern and has completed one safe run. Record missing installation or first-run verification as pending; route installation through Codex Environment only when that deployment is separately authorized.
+6. Build a startup prompt for each chat using the New Chat Startup Requirements in this README.
+7. Create each Codex chat only when Wes explicitly asks to create the chats or run this setup mode. If the Codex app connector returns a usable thread id, record it.
+8. If chat creation does not return a usable thread id promptly, stop waiting on that chat and mark it `pending until the dedicated chat is created`.
+9. Do not mark a chat as dispatchable until a usable thread id is recorded in the appropriate registry/routing metadata.
+10. Do not edit the target Project Room's content files merely because this mode created or verified a chat. Limit cross-PR writes to explicit chat/thread metadata that Wes authorized for this setup run.
+11. Save a run manifest under `C:\Codex\Wiki Files\Project Rooms\Create PR\outputs\minimum-pr-chat-set\` showing:
     - target computer,
     - approved Project Room list,
     - chat title,
@@ -216,9 +218,10 @@ Workflow:
     - skill status,
     - created or pending status,
     - thread id when available,
+    - Sync GetHub automation status and first-safe-run status when applicable,
     - and any blocker.
-11. Commit only scoped Create PR mode outputs and authorized metadata updates.
-12. Push only under normal Admin wiki push rules.
+12. Commit only scoped Create PR mode outputs and authorized metadata updates.
+13. Push only under normal Admin wiki push rules.
 
 Safety rules:
 
