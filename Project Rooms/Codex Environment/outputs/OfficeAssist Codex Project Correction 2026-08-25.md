@@ -27,11 +27,23 @@ Failed to create unified exec process: helper_unknown_error: setup refresh had e
 
 The task text shown in Codex Desktop reported that starting the Windows Secondary Logon service (`seclogon`) did not resolve the managed-command setup-refresh failure.
 
+Managed Runtime Failure Recovery was attempted on 2026-08-25:
+
+- Codex was fully quit, including the desktop/tray process as reported by Wes.
+- The affected OfficeAssist profile cache was renamed from `C:\Users\OfficeAssistLogin\.cache\codex-runtimes` to `C:\Users\OfficeAssistLogin\.cache\codex-runtimes.backup-20260825-130032`.
+- Codex was reopened so it could rebuild the runtime.
+- A brand-new task was opened under the corrected `Wiki Files` project.
+- The brand-new task still failed before launching any command with `setup refresh had errors`.
+
+Conclusion: the failure does not appear limited to the old task. It also occurs in a brand-new task after the runtime cache rename, so this is now recorded as a Codex managed-sandbox/setup-refresh blocker for the OfficeAssist profile.
+
 ## GitHub and Git verification status
 
 Status: incomplete from the corrected OfficeAssist project.
 
 Git and repository verification were not completed through the corrected project's managed command runner because the runner failed before launch.
+
+After the cache rename, the brand-new corrected-project task could report its task context as `C:\Codex\Wiki Files` and Windows username as `OfficeAssistLogin`, but could not run `git status --short --branch` or retrieve the latest commit through the managed command runner.
 
 ## Old-project task inventory
 
@@ -51,7 +63,7 @@ The full old-project task list was not expanded during this correction record.
 
 Min PR Set readiness: not ready.
 
-Reason: the corrected `Wiki Files` project exists and appears to point to `C:\Codex\Wiki Files`, but command-runner verification has not succeeded.
+Reason: the corrected `Wiki Files` project exists and appears to point to `C:\Codex\Wiki Files`, but command-runner verification still fails in a brand-new task after Managed Runtime Failure Recovery.
 
 Required before handoff to Create PR `Min PR Set`:
 
