@@ -17,9 +17,9 @@
 
 ## Managed command runner status
 
-Status: blocked.
+Status: verified after ACL repair.
 
-The corrected `Wiki Files` project still failed before command launch with:
+The corrected `Wiki Files` project initially failed before command launch with:
 
 ```text
 Failed to create unified exec process: helper_unknown_error: setup refresh had errors
@@ -35,15 +35,40 @@ Managed Runtime Failure Recovery was attempted on 2026-08-25:
 - A brand-new task was opened under the corrected `Wiki Files` project.
 - The brand-new task still failed before launching any command with `setup refresh had errors`.
 
-Conclusion: the failure does not appear limited to the old task. It also occurs in a brand-new task after the runtime cache rename, so this is now recorded as a Codex managed-sandbox/setup-refresh blocker for the OfficeAssist profile.
+The sandbox log showed the specific failure:
+
+```text
+write ACE failed on C:\Codex\Wiki Files: SetNamedSecurityInfoW failed: 5
+deny ACE failed on C:\Codex\Wiki Files\.git: SetNamedSecurityInfoW failed for C:\Codex\Wiki Files\.git: 5
+```
+
+Windows error `5` means access denied. ACL inspection showed `C:\Codex\Wiki Files` and `C:\Codex\Wiki Files\.git` were owned by `OfficeAssist\wesbr`, not `OfficeAssist\OfficeAssistLogin`.
+
+Corrective action:
+
+- The owner for `C:\Codex\Wiki Files` and `C:\Codex\Wiki Files\.git` was changed to `OfficeAssist\OfficeAssistLogin`.
+- `OfficeAssist\OfficeAssistLogin` was granted full control on the canonical Admin wiki repo folder.
+- The ACL command reported `Successfully processed 4561 files; Failed processing 0 files`.
+- Follow-up ACL verification confirmed `OfficeAssist\OfficeAssistLogin` owns both `C:\Codex\Wiki Files` and `C:\Codex\Wiki Files\.git` and has full control.
+
+Conclusion: the root cause was repo folder ownership/ACL mismatch after the repo was created or maintained under the prior `OfficeAssist\wesbr` profile. After correcting ownership and ACLs, the corrected `Wiki Files` project passed managed-runner verification.
 
 ## GitHub and Git verification status
 
-Status: incomplete from the corrected OfficeAssist project.
+Status: verified from the corrected OfficeAssist project.
 
-Git and repository verification were not completed through the corrected project's managed command runner because the runner failed before launch.
+After ACL repair, the corrected `Wiki Files` project completed recovery verification:
 
-After the cache rename, the brand-new corrected-project task could report its task context as `C:\Codex\Wiki Files` and Windows username as `OfficeAssistLogin`, but could not run `git status --short --branch` or retrieve the latest commit through the managed command runner.
+- Working folder: `C:\Codex\Wiki Files`
+- Computer name: `OFFICEASSIST`
+- Windows profile username: `OfficeAssistLogin`
+- Managed runner identity: `officeassist\codexsandboxoffline`
+- Wiki folder exists: yes
+- Git status: `main...origin/main` clean and synchronized
+- Latest commit: `5210539b Record OfficeAssist minimum PR chat set verification`
+- Requested incorrect skill path `C:\Users\OfficeAssistLogin.codex\skills\codex-environment\SKILL.md`: does not exist
+- Canonical skill path `C:\Users\OfficeAssistLogin\.codex\skills\codex-environment\SKILL.md`: exists
+- Normal managed command: successful
 
 ## Old-project task inventory
 
@@ -61,17 +86,15 @@ The full old-project task list was not expanded during this correction record.
 
 ## Readiness for Create PR
 
-Min PR Set readiness: not ready.
+Min PR Set readiness: ready from the corrected `Wiki Files` project.
 
-Reason: the corrected `Wiki Files` project exists and appears to point to `C:\Codex\Wiki Files`, but command-runner verification still fails in a brand-new task after Managed Runtime Failure Recovery.
+Reason: the corrected `Wiki Files` project points to `C:\Codex\Wiki Files`, the repo is clean and synchronized on `main`, the canonical installed skill exists, and a normal Codex managed command now runs successfully after the ACL repair.
 
-Required before handoff to Create PR `Min PR Set`:
+Remaining caution before any cleanup of old tasks:
 
-1. Open or create the `Wiki Files` Codex Desktop project with source folder `C:\Codex\Wiki Files`.
-2. Start a brand-new task in that project.
-3. Confirm the managed command runner can run without elevation.
-4. Verify `Get-Location`, `git status --short --branch`, local-versus-`origin/main`, latest commit, and an installed skill read.
-5. Inventory the full task list under the old `Admin WIKI` project, if Wes wants cleanup planning.
+- The old `Admin WIKI` project and tasks remain untouched.
+- Inventory the full task list under the old `Admin WIKI` project only if Wes wants cleanup planning.
+- Do not delete, archive, move, duplicate, replace, or register those tasks without Wes's specific approval.
 
 ## Secrets and external changes
 
