@@ -164,7 +164,7 @@ Output standards:
 - Prefer solid arrows for primary handoffs and dashed arrows for support/feedback relationships.
 - Include a generated date and short source note in the diagram footer.
 
-## Minimum PR Chat Set
+## Min PR Set
 
 Use this mode when Wes asks Create PR to set up the minimum matching Codex chat / Project Room combinations on a prepared computer.
 
