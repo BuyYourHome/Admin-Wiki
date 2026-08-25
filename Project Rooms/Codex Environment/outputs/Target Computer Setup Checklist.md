@@ -8,6 +8,10 @@ Use this checklist only after Wes authorizes the specific target computer and se
 
 - Target computer:
 - Authorized user:
+- Signed-in Windows user:
+- Windows profile path:
+- Assigned human user:
+- Intended business Microsoft 365 identity:
 - Setup date and time:
 - Remote-access method:
 - Remote session authorized by:
@@ -21,6 +25,8 @@ Do not put passwords, MFA codes, license keys, tokens, recovery codes, or other 
 ## 1. Authorization Gate
 
 - [ ] The exact target computer and authorized user are identified.
+- [ ] The intended Windows sign-in account, Windows profile, assigned human user, and business Microsoft 365 identity are confirmed before profile-specific setup.
+- [ ] `WesBrowning1@Outlook.com` is not assumed as the implementation login unless Wes explicitly designates it for this machine.
 - [ ] Wes authorized this specific setup session.
 - [ ] The remote-access method is approved for this target and session.
 - [ ] Wes or the authorized user is available to enter credentials, MFA, and license information directly.
@@ -29,6 +35,8 @@ Do not put passwords, MFA codes, license keys, tokens, recovery codes, or other 
 - [ ] No unapproved VPN, remote-control tool, browser extension, credential manager, system-level agent, or security change is planned.
 
 Stop before connecting if any required authorization is missing or ambiguous.
+
+Stop before profile-specific setup if the signed-in Windows profile does not match the implementation plan. Profile-specific setup includes Codex Desktop, Git global identity, `%USERPROFILE%\.codex\skills`, OneDrive, Outlook, Teams, browser sessions, and connectors.
 
 ## 2. Remote Session Safety
 
@@ -81,8 +89,11 @@ If an existing `C:\Codex\Wiki Files` repo contains uncommitted work, is on an un
 - [ ] Clone `https://github.com/BuyYourHome/Admin-Wiki.git` into that exact folder, or safely update an existing clean repo.
 - [ ] Confirm the remote is `BuyYourHome/Admin-Wiki` and contains no embedded credentials.
 - [ ] Confirm the active branch is `main`.
-- [ ] Fetch GitHub and confirm local `main` is not unexpectedly behind or diverged.
+- [ ] Fetch GitHub and update only with fast-forward-only behavior.
+- [ ] Do not merge, rebase, reset, discard local work, or push during setup unless Wes explicitly authorizes that exact action.
+- [ ] Confirm local `main` is not unexpectedly behind, ahead, or diverged from `origin/main`.
 - [ ] Run `git status --short --branch` and document any unexpected tracked or untracked work.
+- [ ] Record the active repository path, current branch, Git status, local-versus-`origin/main` comparison, and latest commit.
 - [ ] Confirm Codex and Obsidian both use `C:\Codex\Wiki Files` as the Admin wiki workspace/vault.
 - [ ] Confirm the Teams-synced wiki folder is not configured as the working repository.
 
@@ -99,6 +110,10 @@ If an existing `C:\Codex\Wiki Files` repo contains uncommitted work, is on an un
 - [ ] Confirm the installed runtime copies are under the authorized user's `.codex\skills` folder.
 - [ ] Start a fresh Codex session after skill sync.
 - [ ] Confirm Codex can open the Admin wiki and read the current project-room and matching skill instructions.
+- [ ] In Codex Desktop, add or open `C:\Codex\Wiki Files` as a saved local project named `Admin Wiki`.
+- [ ] Verify the saved Codex project points to `C:\Codex\Wiki Files`, not a Teams- or OneDrive-synced location.
+- [ ] Open a new Codex task in the saved `Admin Wiki` project and run normal read-only verification: report working folder, run `git status --short --branch`, compare local `main` with `origin/main`, and read one applicable installed skill.
+- [ ] Confirm commands run through Codex's normal managed execution path without elevation.
 - [ ] Enable and verify the approved Codex capabilities for GitHub, Chrome/browser control, Outlook Email, Outlook Calendar, SharePoint, Teams, documents, spreadsheets, presentations, and PDF work.
 - [ ] Have the authorized user complete connector sign-in or consent directly.
 
@@ -126,7 +141,29 @@ Do not disable, weaken, or reconfigure antivirus, firewall, BitLocker, endpoint 
 - [ ] Record failed checks and the precise corrective action or decision needed.
 - [ ] Confirm no secrets were stored in files, scripts, Git history, screenshots, or handoff notes.
 - [ ] Update `working\target-computer-register.md` with the run result.
+- [ ] Hand off any authoritative computer inventory or readiness change to the Computers Project Room.
+- [ ] Final report states `verified`, `blocked`, or `needs Wes`.
+- [ ] Final report includes computer name, Windows profile, assigned human user, intended business Microsoft 365 identity, canonical repo path, branch, Git state, local-versus-`origin/main` comparison, latest commit, saved Codex project path, installed-skill verification, managed-command result, and remaining blockers.
 - [ ] Mark the target `ready` only when every required check passes and no unresolved security or authorization issue remains.
+
+## 10. Managed Runtime Failure Recovery
+
+If a normal Codex command fails before launch with:
+
+```text
+Failed to create unified exec process: helper_unknown_error: setup refresh had errors
+```
+
+then:
+
+- [ ] Confirm commands and the repository themselves work through a harmless read-only diagnostic outside the managed sandbox.
+- [ ] Do not alter the Admin wiki repository.
+- [ ] With Wes's approval, fully quit Codex, including its system-tray process.
+- [ ] Rename the affected user's local cache at `C:\Users\<Windows-user>\.cache\codex-runtimes` to a dated backup such as `codex-runtimes.backup-YYYYMMDD`.
+- [ ] Reopen Codex and allow it to rebuild the runtime.
+- [ ] Open a brand-new task in the saved `Admin Wiki` project and repeat the normal managed-command verification.
+- [ ] Do not delete the backup until the rebuilt runtime is confirmed healthy.
+- [ ] If the failure remains, report it as a Codex managed-sandbox/setup-refresh blocker with the exact error and whether it follows the existing task or also occurs in a brand-new task.
 
 ## Stop Conditions
 
@@ -139,3 +176,5 @@ Stop and report the decision needed before:
 - Disabling or weakening Windows security protections.
 - Overwriting, deleting, resetting, stashing, or pulling over unclear existing work.
 - Saving or copying passwords, MFA codes, license keys, tokens, or recovery codes.
+- Continuing profile-specific setup when the signed-in Windows profile, assigned human, or business identity is unclear or mismatched.
+- Using a Teams- or OneDrive-synced Admin wiki folder as the working repository.

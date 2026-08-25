@@ -8,6 +8,10 @@ Copy this template for each authorized target-computer setup run. Use `Pass`, `F
 | --- | --- |
 | Target computer | |
 | Authorized user | |
+| Signed-in Windows user | |
+| Windows profile path | |
+| Assigned human user | |
+| Intended business Microsoft 365 identity | |
 | Setup date/time | |
 | Operator | |
 | Remote-access method | |
@@ -21,6 +25,8 @@ Copy this template for each authorized target-computer setup run. Use `Pass`, `F
 | ID | Check | Result | Non-secret evidence or notes |
 | --- | --- | --- | --- |
 | SEC-01 | Target computer, user, and session match the authorization. | | |
+| SEC-01A | Intended Windows sign-in account, Windows profile, assigned human user, and business Microsoft 365 identity were confirmed before profile-specific setup. | | |
+| SEC-01B | `WesBrowning1@Outlook.com` was not used as the implementation login unless Wes explicitly designated it for this machine. | | |
 | SEC-02 | Remote-access method and any remote-host/firewall changes were specifically approved. | | |
 | SEC-03 | No Remote Desktop service is exposed directly to the public internet. | | |
 | SEC-04 | No unapproved remote tool, VPN, extension, credential manager, or system agent was installed. | | |
@@ -53,11 +59,15 @@ Copy this template for each authorized target-computer setup run. Use `Pass`, `F
 | REP-04 | Local `main` is current with GitHub or any difference is understood and approved. | | |
 | REP-05 | `git status --short --branch` has no unexpected tracked changes. | | |
 | REP-06 | Teams-/OneDrive-synced wiki folders are not used as the working repo. | | |
+| REP-07 | Remote was fetched and any update used fast-forward-only behavior; no merge, rebase, reset, discard, or push occurred without exact authorization. | | |
+| REP-08 | Active repository path, branch, Git status, local-versus-`origin/main` comparison, and latest commit were recorded. | | |
 | SKL-01 | Wiki skill source is `C:\Codex\Wiki Files\skills`. | | |
 | SKL-02 | Skill sync completed from the current repo without an unresolved error. | | |
 | SKL-03 | Installed wiki-managed skills match the canonical source. | | |
 | SKL-04 | A fresh Codex session was started after skill sync. | | |
 | SKL-05 | Codex can read the Admin Home, current Project Room README, and matching skill. | | |
+| SKL-06 | Codex Desktop has a saved local project named `Admin Wiki` pointing to `C:\Codex\Wiki Files`. | | |
+| SKL-07 | A brand-new Codex task in the saved `Admin Wiki` project completed read-only verification through normal managed execution without elevation. | | |
 
 ## Codex Runtime And Document Tools
 
@@ -70,6 +80,7 @@ Copy this template for each authorized target-computer setup run. Use `Pass`, `F
 | RUN-05 | A PDF can be rendered or inspected with the Codex PDF workflow. | | |
 | RUN-06 | A basic Word document workflow completes. | | |
 | RUN-07 | A basic spreadsheet workflow completes without requiring global Python. | | |
+| RUN-08 | If managed execution failed before launch, runtime recovery was handled by the documented cache-backup procedure or reported as a blocker. | | |
 
 ## Plugins, Connectors, And Workflow Checks
 
@@ -116,8 +127,14 @@ Do not record message bodies, account tokens, or other confidential content mere
 - Required checks blocked:
 - Optional limitations:
 - Security or authorization issues:
+- Saved Codex project path:
+- Installed-skill verification:
+- Managed-command result:
+- Local-versus-`origin/main` comparison:
+- Latest commit:
 - Final status: Ready / Ready with documented optional limitations / Not Ready
 - Target register updated: yes / no
+- Computers Project Room handoff needed/completed:
 - Report completed by:
 - Completion date/time:
 

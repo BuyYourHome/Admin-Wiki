@@ -60,6 +60,84 @@ This mode does not authorize paid software, remote-control tools, VPNs, browser 
 
 Do not default new implementations to `WesBrowning1@Outlook.com`. That account may be used only when Wes explicitly designates it for the specific machine. Otherwise, pause profile-specific setup until Wes confirms the intended login and business identity for that machine.
 
+Before making profile-specific changes, confirm and record:
+
+- computer name;
+- signed-in Windows user and profile path;
+- assigned human user;
+- intended business Microsoft 365 identity.
+
+Do not continue when the signed-in Windows profile does not match the implementation plan. Profile-specific setup includes Codex Desktop, Git global identity, `%USERPROFILE%\.codex\skills`, OneDrive, Outlook, Teams, browser sessions, and connectors.
+
+### Canonical Admin Wiki Project Setup
+
+Use this sequence when configuring the Admin wiki on a target computer:
+
+1. Confirm the canonical Admin wiki Git repository exists at `C:\Codex\Wiki Files`.
+2. If it is not present, clone the authorized `BuyYourHome/Admin-Wiki` repository into that exact location.
+3. Confirm `C:\Codex\Wiki Files` is a valid Git repository on `main`.
+4. Fetch the remote and update only with fast-forward-only behavior.
+5. Do not merge, rebase, reset, discard local work, or push from the target machine during setup unless Wes explicitly authorizes that exact action.
+6. Confirm and record:
+   - active repository path;
+   - current branch;
+   - Git status;
+   - local-versus-`origin/main` comparison;
+   - latest commit.
+7. Sync wiki-managed Codex skills only after the repository is current, using `C:\Codex\Wiki Files\tools\sync-codex-skills.ps1`.
+8. In Codex Desktop, add or open `C:\Codex\Wiki Files` as a saved local project named `Admin Wiki`.
+9. Verify the saved Codex project points to `C:\Codex\Wiki Files`, not a Teams- or OneDrive-synced location.
+10. Open a new Codex task in that saved project and run normal read-only verification:
+    - report the working folder;
+    - run `git status --short --branch`;
+    - compare local `main` with `origin/main`;
+    - read one applicable installed skill.
+11. Confirm commands run through Codex's normal managed execution path without elevation.
+
+### Managed Runtime Failure Recovery
+
+If a normal Codex command fails before launch with:
+
+```text
+Failed to create unified exec process: helper_unknown_error: setup refresh had errors
+```
+
+then:
+
+1. Confirm commands and the repository themselves work through a harmless read-only diagnostic outside the managed sandbox.
+2. Do not alter the Admin wiki repository.
+3. With Wes's approval, fully quit Codex, including its system-tray process.
+4. Rename the affected user's local cache at `C:\Users\<Windows-user>\.cache\codex-runtimes` to a dated backup such as `codex-runtimes.backup-YYYYMMDD`.
+5. Reopen Codex and allow it to rebuild the runtime.
+6. Open a brand-new task in the saved `Admin Wiki` project and repeat the normal managed-command verification.
+7. Do not delete the backup until the rebuilt runtime is confirmed healthy.
+8. If the failure remains, report it as a Codex managed-sandbox/setup-refresh blocker. Include the exact error and state whether the failure follows the existing task or also occurs in a brand-new task.
+
+### Completion Requirements
+
+At completion, report one of:
+
+- `verified`;
+- `blocked`;
+- `needs Wes`.
+
+The completion report must include:
+
+- computer name;
+- Windows profile;
+- assigned human user;
+- intended business Microsoft 365 identity;
+- canonical repo path;
+- branch;
+- Git state and local-versus-`origin/main` comparison;
+- latest commit;
+- saved Codex project path;
+- installed-skill verification;
+- managed-command result;
+- remaining blockers.
+
+Record the setup and verification result in the Codex Environment Project Room. Hand off authoritative computer inventory or readiness changes to the Computers Project Room. Leave unrelated dirty work untouched, commit only scoped files, and do not push unless Wes explicitly authorizes it or declares the setup finished and ready to publish.
+
 ### Update Existing Machine
 
 Use this mode when Wes asks to keep an already prepared target computer current with changes made on WesStudio or another authorized Admin wiki machine.
