@@ -172,14 +172,14 @@ This mode does not authorize app installs, paid software, account sign-ins, conn
 
 Use this mode when a target computer is technically ready but needs task-specific Project Room chat assignments.
 
-Codex Environment owns the machine-readiness handoff. Create PR owns the actual `Minimum PR Chat Set` mode for creating or recording standard PR/chat combinations.
+Codex Environment owns the machine-readiness handoff. Create PR owns the actual `Min PR Set` mode for creating or recording standard PR/chat combinations.
 
 Workflow:
 
 1. Confirm the target computer has passed Baseline Machine Setup or Update Existing Machine verification.
 2. Identify the intended role for the machine, such as Wes primary development, Wes secondary/video, Josh admin support, or backup.
 3. Recommend the minimum Project Room chat set for that role.
-4. Hand off to Create PR `Minimum PR Chat Set` for chat creation, startup prompts, and thread-id metadata.
+4. Hand off to Create PR `Min PR Set` for chat creation, startup prompts, and thread-id metadata.
 5. Record the setup-run handoff result in `working\target-computer-register.md`.
 6. Ensure Computers receives or already has the authoritative machine-list update in `Project Rooms\Computers\working\computer-register.md`.
 
@@ -194,7 +194,7 @@ Workflow:
 3. Run Baseline Machine Setup on the replacement computer.
 4. Compare assigned roles, Project Room chats, connector needs, OneDrive/data placement, plugin/cache needs, and local-only files from the old computer.
 5. Confirm no unpushed commits or unique required local files remain on the old computer before declaring replacement complete.
-6. Use Role Assignment and Create PR `Minimum PR Chat Set` to recreate or record the needed PR/chat surface.
+6. Use Role Assignment and Create PR `Min PR Set` to recreate or record the needed PR/chat surface.
 7. Update `working\target-computer-register.md` with setup-run replacement status, blockers, and any remaining old-machine action.
 8. Ensure Computers owns the authoritative replacement/lifecycle status in `Project Rooms\Computers\working\computer-register.md`.
 
