@@ -1,0 +1,4 @@
+interface:
+  display_name: "Sync Github"
+  short_description: "Safely keep Admin Wiki Git repositories current"
+  default_prompt: "Use $sync-github to check this computer's Admin Wiki repository and apply only a safe clean fast-forward update."

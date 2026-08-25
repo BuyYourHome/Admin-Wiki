@@ -1,4 +1,0 @@
-interface:
-  display_name: "Sync GetHub"
-  short_description: "Safely keep Admin Wiki Git repositories current"
-  default_prompt: "Use $sync-gethub to check this computer's Admin Wiki repository and apply only a safe clean fast-forward update."

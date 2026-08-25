@@ -1,28 +1,28 @@
 ---
-name: sync-gethub
-description: Keep the Buy Your Home Admin wiki Git repository current across approved computers through daily or on-demand safe fetch and fast-forward checks. Use for Sync GetHub computer enrollment, repository freshness checks, local-versus-remote status, safe clean pulls, and multi-machine Git blockers. Do not use to auto-commit, discard, merge, rebase, or push local work.
+name: sync-github
+description: Keep the Buy Your Home Admin wiki Git repository current across approved computers through daily or on-demand safe fetch and fast-forward checks. Use for Sync Github computer enrollment, repository freshness checks, local-versus-remote status, safe clean pulls, and multi-machine Git blockers. Do not use to auto-commit, discard, merge, rebase, or push local work.
 ---
 
-# Sync GetHub
+# Sync Github
 
 ## Source Of Truth
 
-- Project Room: `C:\Codex\Wiki Files\Project Rooms\Sync GetHub`
-- Skill source: `C:\Codex\Wiki Files\skills\sync-gethub\SKILL.md`
+- Project Room: `C:\Codex\Wiki Files\Project Rooms\Sync Github`
+- Skill source: `C:\Codex\Wiki Files\skills\sync-github\SKILL.md`
 - Registry: `C:\Codex\Wiki Files\Agents and Automations Registry.md`
 - Routing map: `C:\Codex\Wiki Files\Project Rooms\Jean Wright\working\dispatcher-routing-map.md`
 - Machine register: `C:\Codex\Wiki Files\Project Rooms\Codex Environment\working\target-computer-register.md`
 
 ## Dedicated Task
 
-- Task name: `Sync GetHub`
+- Task name: `Sync Github`
 - Thread id: `01a02a26-6ffa-7e52-a8ce-825ca0bfe3f0`
-- Accept Jean-routed Sync GetHub work only through this registered task under the central delegation contract.
+- Accept Jean-routed Sync Github work only through this registered task under the central delegation contract.
 
 ## Required Startup
 
 1. Confirm the computer name and that the repo is exactly `C:\Codex\Wiki Files`.
-2. Read `AGENTS.md`, `Project Room Chat Startup Rule.md`, `Project Room File Ownership And Git Coordination Rule.md`, `Git Work Scope Rule.md`, and the Sync GetHub README.
+2. Read `AGENTS.md`, `Project Room Chat Startup Rule.md`, `Project Room File Ownership And Git Coordination Rule.md`, `Git Work Scope Rule.md`, and the Sync Github README.
 3. Confirm the current branch is `main` and inspect `git status --short --branch` before any pull.
 
 ## Modes
@@ -64,22 +64,23 @@ Use when Wes asks for an immediate repository status or safe synchronization che
 ## Automation
 
 - Automation id: `sync-gethub-daily`.
-- Automation kind: `heartbeat`, attached to the computer's existing `Sync GetHub` task.
+- Compatibility: retain this existing automation id across enrolled computers; the workflow, room, skill, and task use `Sync Github`.
+- Automation kind: `heartbeat`, attached to the computer's existing `Sync Github` task.
 - Schedule: daily at 5:30 AM Eastern on each enrolled computer.
 - Routine healthy no-change runs remain quiet.
 - Any blocker or fast-forward update should be reported with the computer identity.
 - Record only material deployment, recurring blocker, recovery, or enrollment outcomes in `working\repository-sync-action-log.md` so normal runs do not make the repo dirty.
-- Do not use a detached `cron` automation and do not create a separate permanent `Sync GetHub Daily` chat. Detached runs create redundant execution chats.
+- Do not use a detached `cron` automation and do not create a separate permanent `Sync Github Daily` chat. Detached runs create redundant execution chats.
 
 ## Outputs And Delivery
 
 - Return computer name, repo path, branch, worktree state, ahead/behind counts, action taken, and blocker when any.
-- Save review-ready multi-computer status summaries under `Project Rooms\Sync GetHub\outputs\` only when requested or materially useful.
+- Save review-ready multi-computer status summaries under `Project Rooms\Sync Github\outputs\` only when requested or materially useful.
 
 ## Git Rules
 
 - The scheduled workflow must not create commits or push.
-- For durable Sync GetHub rule or enrollment changes, commit only Sync GetHub files and specifically authorized registry, routing, or index updates.
+- For durable Sync Github rule or enrollment changes, commit only Sync Github files and specifically authorized registry, routing, or index updates.
 - Leave unrelated dirty work untouched.
 - Push only under the Admin wiki push rules.
 

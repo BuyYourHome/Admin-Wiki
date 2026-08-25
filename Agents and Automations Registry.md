@@ -32,7 +32,7 @@ Use [[Agent Unit Standard]] for the standard package behind an agent-like operat
 | Home Assistant | Wiki-managed skill plus project room plus dedicated task | Active/discovery | On demand | `skills\home-assistant\SKILL.md`; `Project Rooms\Home Assistant\README.md`; task id `01a02e53-5f75-7103-b5e7-17b842547cef` |
 | Codex Environment | Wiki-managed skill plus project room plus dedicated chat | Draft | On demand | `skills\codex-environment\SKILL.md`; `Project Rooms\Codex Environment\README.md` |
 | Computers | Wiki-managed skill plus project room plus dedicated chat | Draft | On demand | `skills\computers\SKILL.md`; `Project Rooms\Computers\README.md` |
-| Sync GetHub | Wiki-managed skill plus project room plus dedicated chat plus per-computer daily automation | Active; WesStudio first run and other-computer enrollment pending | Daily at 5:30 AM Eastern on each enrolled computer; on demand | `skills\sync-gethub\SKILL.md`; `Project Rooms\Sync GetHub\README.md`; automation id `sync-gethub-daily` |
+| Sync Github | Wiki-managed skill plus project room plus dedicated chat plus per-computer daily automation | Active; WesStudio first run and other-computer enrollment pending | Daily at 5:30 AM Eastern on each enrolled computer; on demand | `skills\sync-github\SKILL.md`; `Project Rooms\Sync Github\README.md`; automation id `sync-gethub-daily` |
 | Facebook Engagement | Wiki-managed skill plus project room plus dedicated chat | Active | On demand | `skills\facebook-engagement\SKILL.md`; `Project Rooms\Facebook Engagement\README.md` |
 | Marketplace | Wiki-managed skill plus project room plus dedicated chat plus heartbeat automation | Paused | No recurring or on-demand Marketplace activity until Wes explicitly resumes it | `skills\marketplace\SKILL.md`; `Project Rooms\Marketplace\README.md`; app automation id `marketplace-seller-response-monitor` |
 | SOPs | Wiki-managed skill plus project room | Active | On demand | `skills\sops\SKILL.md`; `Project Rooms\SOPs\README.md`; `Project Rooms\SOPs\outputs\SOP Index.md` |
@@ -758,7 +758,7 @@ Important rules:
 - Record final inventory/configuration outcomes in `Project Rooms\Computers\working\computer-inventory-action-log.md`.
 - No automation is currently attached.
 
-## Sync GetHub
+## Sync Github
 
 Type: wiki-managed skill plus project room plus dedicated chat plus per-computer daily automation.
 
@@ -772,8 +772,8 @@ Purpose:
 
 Defined in:
 
-- `C:\Codex\Wiki Files\skills\sync-gethub\SKILL.md`
-- `C:\Codex\Wiki Files\Project Rooms\Sync GetHub\README.md`
+- `C:\Codex\Wiki Files\skills\sync-github\SKILL.md`
+- `C:\Codex\Wiki Files\Project Rooms\Sync Github\README.md`
 
 Dedicated chat:
 
@@ -782,7 +782,7 @@ Dedicated chat:
 Automation:
 
 - Id: `sync-gethub-daily`
-- Kind: heartbeat attached to the existing machine-local `Sync GetHub` task; do not use detached cron execution chats.
+- Kind: heartbeat attached to the existing machine-local `Sync Github` task; do not use detached cron execution chats.
 - Schedule: daily at 5:30 AM Eastern on each enrolled computer.
 - Deployment: active on `WesStudio`; first run pending. `Wes-VideoEditor` still requires separate local installation and verification.
 

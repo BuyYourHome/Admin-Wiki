@@ -171,7 +171,7 @@ Default minimum set:
 6. `Manager`
 7. `Lowes Order`
 8. `Marketplace`
-9. `Sync GetHub`
+9. `Sync Github`
 
 Required sources:
 
@@ -190,7 +190,7 @@ Workflow:
    - `Project Rooms\<Project Room>\README.md` exists,
    - `skills\<skill-name>\SKILL.md` exists when the room has a matching skill,
    - the intended chat title matches the Project Room name.
-5. When `Sync GetHub` is included, also verify the target computer has one machine-local `sync-gethub-daily` heartbeat attached to its existing `Sync GetHub` chat, scheduled daily at 5:30 AM Eastern, and has completed one safe run. Do not create a separate `Sync GetHub Daily` chat or detached cron automation. Record missing installation or first-run verification as pending; route installation through Codex Environment only when that deployment is separately authorized.
+5. When `Sync Github` is included, also verify the target computer has one machine-local `sync-gethub-daily` heartbeat attached to its existing `Sync Github` chat, scheduled daily at 5:30 AM Eastern, and has completed one safe run. Do not create a separate `Sync Github Daily` chat or detached cron automation. Record missing installation or first-run verification as pending; route installation through Codex Environment only when that deployment is separately authorized.
 6. Build a startup prompt for each chat using the New Chat Startup Requirements in this skill.
 7. Create each Codex chat only when Wes explicitly asks to create the chats or run this setup mode. If the Codex app connector returns a usable thread id, record it.
 8. If chat creation does not return a usable thread id promptly, stop waiting on that chat and mark it `pending until the dedicated chat is created`.
@@ -204,7 +204,7 @@ Workflow:
     - skill status,
     - created or pending status,
     - thread id when available,
-    - Sync GetHub automation status and first-safe-run status when applicable,
+    - Sync Github automation status and first-safe-run status when applicable,
     - and any blocker.
 12. Commit only scoped Create PR mode outputs and authorized metadata updates.
 13. Push only under normal Admin wiki push rules.

@@ -1,4 +1,4 @@
-# Sync GetHub Project Room
+# Sync Github Project Room
 
 ## Purpose
 
@@ -14,7 +14,7 @@ In scope:
 - Verifying the exact computer, canonical repo path, `main` branch, worktree state, and relationship to `origin/main`.
 - Fetching `origin` and using `git pull --ff-only` only when local `main` is clean, only behind, and safe to fast-forward.
 - Reporting dirty worktrees, local-only commits, remote-only commits, divergence, authentication failures, locks, and unavailable computers.
-- Tracking which approved computers have the local Sync GetHub automation installed and verified.
+- Tracking which approved computers have the local Sync Github automation installed and verified.
 
 Out of scope:
 
@@ -67,23 +67,24 @@ The local Project Room package and `sync-gethub-daily` automation are installed 
 
 ## Matching Skill
 
-- Skill source: `C:\Codex\Wiki Files\skills\sync-gethub\SKILL.md`
+- Skill source: `C:\Codex\Wiki Files\skills\sync-github\SKILL.md`
 
 ## Dedicated Chat
 
-- Chat name: `Sync GetHub`
+- Chat name: `Sync Github`
 - Thread id: `01a02a26-6ffa-7e52-a8ce-825ca0bfe3f0`
 - Purpose: own daily repository freshness checks, computer enrollment state, blockers, and safe recovery recommendations.
 
 ## Automation
 
 - Automation id: `sync-gethub-daily`
-- Automation kind: `heartbeat`, attached to the computer's existing `Sync GetHub` task.
+- Compatibility: retain this existing automation id across enrolled computers; the workflow, room, skill, and task use `Sync Github`.
+- Automation kind: `heartbeat`, attached to the computer's existing `Sync Github` task.
 - Required cadence: at least once daily on every enrolled computer.
 - Initial schedule: daily at 5:30 AM Eastern on each enrolled computer.
 - Deployment state: active on `WesStudio`; pending separate installation and verification on `Wes-VideoEditor` and `OfficeAssist`.
-- Do not deploy this workflow as a detached `cron` automation. Detached cron runs create a new `Sync GetHub Daily` execution chat on every run.
-- Do not create a separate permanent chat named `Sync GetHub Daily`. Keep one `Sync GetHub` task and one attached heartbeat per enrolled computer.
+- Do not deploy this workflow as a detached `cron` automation. Detached cron runs create a new `Sync Github Daily` execution chat on every run.
+- Do not create a separate permanent chat named `Sync Github Daily`. Keep one `Sync Github` task and one attached heartbeat per enrolled computer.
 
 ## Reporting And Logging
 
@@ -96,7 +97,7 @@ The local Project Room package and `sync-gethub-daily` automation are installed 
 
 - Work on `main`.
 - Follow `C:\Codex\Wiki Files\Project Room File Ownership And Git Coordination Rule.md`.
-- Commit only Sync GetHub files and specifically authorized registry, routing, and index updates.
+- Commit only Sync Github files and specifically authorized registry, routing, and index updates.
 - The scheduled sync workflow must not commit or push work automatically.
 - Push setup changes only under the Admin wiki push rules.
 
