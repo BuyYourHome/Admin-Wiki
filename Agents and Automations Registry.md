@@ -782,6 +782,7 @@ Dedicated chat:
 Automation:
 
 - Id: `sync-gethub-daily`
+- Kind: heartbeat attached to the existing machine-local `Sync GetHub` task; do not use detached cron execution chats.
 - Schedule: daily at 5:30 AM Eastern on each enrolled computer.
 - Deployment: active on `WesStudio`; first run pending. `Wes-VideoEditor` still requires separate local installation and verification.
 
