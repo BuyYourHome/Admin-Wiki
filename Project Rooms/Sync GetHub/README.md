@@ -78,9 +78,12 @@ The local Project Room package and `sync-gethub-daily` automation are installed 
 ## Automation
 
 - Automation id: `sync-gethub-daily`
+- Automation kind: `heartbeat`, attached to the computer's existing `Sync GetHub` task.
 - Required cadence: at least once daily on every enrolled computer.
 - Initial schedule: daily at 5:30 AM Eastern on each enrolled computer.
 - Deployment state: active on `WesStudio`; pending separate installation and verification on `Wes-VideoEditor` and `OfficeAssist`.
+- Do not deploy this workflow as a detached `cron` automation. Detached cron runs create a new `Sync GetHub Daily` execution chat on every run.
+- Do not create a separate permanent chat named `Sync GetHub Daily`. Keep one `Sync GetHub` task and one attached heartbeat per enrolled computer.
 
 ## Reporting And Logging
 
