@@ -66,8 +66,8 @@ Copy this template for each authorized target-computer setup run. Use `Pass`, `F
 | SKL-03 | Installed wiki-managed skills match the canonical source. | | |
 | SKL-04 | A fresh Codex session was started after skill sync. | | |
 | SKL-05 | Codex can read the Admin Home, current Project Room README, and matching skill. | | |
-| SKL-06 | Codex Desktop has a saved local project named `Admin Wiki` pointing to `C:\Codex\Wiki Files`. | | |
-| SKL-07 | A brand-new Codex task in the saved `Admin Wiki` project completed read-only verification through normal managed execution without elevation. | | |
+| SKL-06 | Codex Desktop has a saved local project named `Wiki Files` pointing to `C:\Codex\Wiki Files`. | | |
+| SKL-07 | A brand-new Codex task in the saved `Wiki Files` project completed read-only verification through normal managed execution without elevation. | | |
 
 ## Codex Runtime And Document Tools
 

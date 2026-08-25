@@ -52,7 +52,7 @@ This mode may include:
 - configuring the canonical Admin wiki repo at `C:\Codex\Wiki Files`;
 - cloning or updating `BuyYourHome/Admin-Wiki` on `main`;
 - syncing wiki-managed skills only after the target repo is current;
-- verifying Codex Desktop can open an `Admin Wiki` project pointed at `C:\Codex\Wiki Files`;
+- verifying Codex Desktop can open a `Wiki Files` project pointed at `C:\Codex\Wiki Files`;
 - verifying plugin/cache presence and connector availability;
 - running one low-risk Admin wiki workflow before marking the machine ready.
 
@@ -85,7 +85,7 @@ Use this sequence when configuring the Admin wiki on a target computer:
    - local-versus-`origin/main` comparison;
    - latest commit.
 7. Sync wiki-managed Codex skills only after the repository is current, using `C:\Codex\Wiki Files\tools\sync-codex-skills.ps1`.
-8. In Codex Desktop, add or open `C:\Codex\Wiki Files` as a saved local project named `Admin Wiki`.
+8. In Codex Desktop, add or open `C:\Codex\Wiki Files` as a saved local project named `Wiki Files`.
 9. Verify the saved Codex project points to `C:\Codex\Wiki Files`, not a Teams- or OneDrive-synced location.
 10. Open a new Codex task in that saved project and run normal read-only verification:
     - report the working folder;
@@ -109,7 +109,7 @@ then:
 3. With Wes's approval, fully quit Codex, including its system-tray process.
 4. Rename the affected user's local cache at `C:\Users\<Windows-user>\.cache\codex-runtimes` to a dated backup such as `codex-runtimes.backup-YYYYMMDD`.
 5. Reopen Codex and allow it to rebuild the runtime.
-6. Open a brand-new task in the saved `Admin Wiki` project and repeat the normal managed-command verification.
+6. Open a brand-new task in the saved `Wiki Files` project and repeat the normal managed-command verification.
 7. Do not delete the backup until the rebuilt runtime is confirmed healthy.
 8. If the failure remains, report it as a Codex managed-sandbox/setup-refresh blocker. Include the exact error and state whether the failure follows the existing task or also occurs in a brand-new task.
 
@@ -220,7 +220,7 @@ Record material Codex Environment setup/readiness results in `working\target-com
 
 Status: `Wes-VideoEditor` core Admin wiki environment and Codex Desktop project connection installed and verified on 2026-07-22; connector sign-ins, plugin cache, and live workflow execution remain unverified.
 
-WesStudio's non-secret hardware, Windows, Codex, repo, runtime, application, skill, plugin, and remote-access baseline was inventoried on 2026-07-21. Wes approved the Step 2 Core, Business, Optional, and Safety Groups on 2026-07-21. Step 3 created the setup/verification package, and Step 4 authorized the exact `Wes-VideoEditor` scope. Step 5 connected over the private LAN, verified the session identity, and completed a read-only inventory in `outputs\Wes-VideoEditor Initial Inventory.md`. Storage initially blocked installation because `C:` had 4.8 GB free. After cleanup, Git, the canonical Admin wiki repo, LibreOffice, Obsidian, wiki-managed skills, and Codex Desktop were installed and verified. The `Admin Wiki` Codex project was created against `C:\Codex\Wiki Files` and passed a read-only repo check. Final core verification is recorded in `outputs\Wes-VideoEditor Core Environment Verification.md`. Durable migration lessons are recorded in `working\migration-lessons-learned.md`.
+WesStudio's non-secret hardware, Windows, Codex, repo, runtime, application, skill, plugin, and remote-access baseline was inventoried on 2026-07-21. Wes approved the Step 2 Core, Business, Optional, and Safety Groups on 2026-07-21. Step 3 created the setup/verification package, and Step 4 authorized the exact `Wes-VideoEditor` scope. Step 5 connected over the private LAN, verified the session identity, and completed a read-only inventory in `outputs\Wes-VideoEditor Initial Inventory.md`. Storage initially blocked installation because `C:` had 4.8 GB free. After cleanup, Git, the canonical Admin wiki repo, LibreOffice, Obsidian, wiki-managed skills, and Codex Desktop were installed and verified. The `Wiki Files` Codex project was created against `C:\Codex\Wiki Files` and passed a read-only repo check. Final core verification is recorded in `outputs\Wes-VideoEditor Core Environment Verification.md`. Durable migration lessons are recorded in `working\migration-lessons-learned.md`.
 
 ## Remote Access And Install Safety
 

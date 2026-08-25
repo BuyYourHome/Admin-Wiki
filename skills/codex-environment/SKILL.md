@@ -61,7 +61,7 @@ This mode may include:
 - configuring the canonical Admin wiki repo at `C:\Codex\Wiki Files`;
 - cloning or updating `BuyYourHome/Admin-Wiki` on `main`;
 - syncing wiki-managed skills only after the target repo is current;
-- verifying Codex Desktop can open an `Admin Wiki` project pointed at `C:\Codex\Wiki Files`;
+- verifying Codex Desktop can open a `Wiki Files` project pointed at `C:\Codex\Wiki Files`;
 - verifying plugin/cache presence and connector availability;
 - running one low-risk Admin wiki workflow before marking the machine ready.
 
@@ -94,7 +94,7 @@ Use this sequence when configuring the Admin wiki on a target computer:
    - local-versus-`origin/main` comparison;
    - latest commit.
 7. Sync wiki-managed Codex skills only after the repository is current, using `C:\Codex\Wiki Files\tools\sync-codex-skills.ps1`.
-8. In Codex Desktop, add or open `C:\Codex\Wiki Files` as a saved local project named `Admin Wiki`.
+8. In Codex Desktop, add or open `C:\Codex\Wiki Files` as a saved local project named `Wiki Files`.
 9. Verify the saved Codex project points to `C:\Codex\Wiki Files`, not a Teams- or OneDrive-synced location.
 10. Open a new Codex task in that saved project and run normal read-only verification:
     - report the working folder;
@@ -118,7 +118,7 @@ then:
 3. With Wes's approval, fully quit Codex, including its system-tray process.
 4. Rename the affected user's local cache at `C:\Users\<Windows-user>\.cache\codex-runtimes` to a dated backup such as `codex-runtimes.backup-YYYYMMDD`.
 5. Reopen Codex and allow it to rebuild the runtime.
-6. Open a brand-new task in the saved `Admin Wiki` project and repeat the normal managed-command verification.
+6. Open a brand-new task in the saved `Wiki Files` project and repeat the normal managed-command verification.
 7. Do not delete the backup until the rebuilt runtime is confirmed healthy.
 8. If the failure remains, report it as a Codex managed-sandbox/setup-refresh blocker. Include the exact error and state whether the failure follows the existing task or also occurs in a brand-new task.
 

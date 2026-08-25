@@ -110,9 +110,9 @@ If an existing `C:\Codex\Wiki Files` repo contains uncommitted work, is on an un
 - [ ] Confirm the installed runtime copies are under the authorized user's `.codex\skills` folder.
 - [ ] Start a fresh Codex session after skill sync.
 - [ ] Confirm Codex can open the Admin wiki and read the current project-room and matching skill instructions.
-- [ ] In Codex Desktop, add or open `C:\Codex\Wiki Files` as a saved local project named `Admin Wiki`.
+- [ ] In Codex Desktop, add or open `C:\Codex\Wiki Files` as a saved local project named `Wiki Files`.
 - [ ] Verify the saved Codex project points to `C:\Codex\Wiki Files`, not a Teams- or OneDrive-synced location.
-- [ ] Open a new Codex task in the saved `Admin Wiki` project and run normal read-only verification: report working folder, run `git status --short --branch`, compare local `main` with `origin/main`, and read one applicable installed skill.
+- [ ] Open a new Codex task in the saved `Wiki Files` project and run normal read-only verification: report working folder, run `git status --short --branch`, compare local `main` with `origin/main`, and read one applicable installed skill.
 - [ ] Confirm commands run through Codex's normal managed execution path without elevation.
 - [ ] Enable and verify the approved Codex capabilities for GitHub, Chrome/browser control, Outlook Email, Outlook Calendar, SharePoint, Teams, documents, spreadsheets, presentations, and PDF work.
 - [ ] Have the authorized user complete connector sign-in or consent directly.
@@ -161,7 +161,7 @@ then:
 - [ ] With Wes's approval, fully quit Codex, including its system-tray process.
 - [ ] Rename the affected user's local cache at `C:\Users\<Windows-user>\.cache\codex-runtimes` to a dated backup such as `codex-runtimes.backup-YYYYMMDD`.
 - [ ] Reopen Codex and allow it to rebuild the runtime.
-- [ ] Open a brand-new task in the saved `Admin Wiki` project and repeat the normal managed-command verification.
+- [ ] Open a brand-new task in the saved `Wiki Files` project and repeat the normal managed-command verification.
 - [ ] Do not delete the backup until the rebuilt runtime is confirmed healthy.
 - [ ] If the failure remains, report it as a Codex managed-sandbox/setup-refresh blocker with the exact error and whether it follows the existing task or also occurs in a brand-new task.
 
