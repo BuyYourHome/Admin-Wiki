@@ -1,0 +1,54 @@
+{
+  "dispatch_id": "doc-scan-heartbeat-20260817-195112-lowes-statement-allocation",
+  "packet_root": "C:\\Codex\\Wiki Files\\Project Rooms\\Doc Scan\\outputs\\statement-packets\\2026-lowes-scan-20260817",
+  "source_coverage": [
+    {
+      "account": "SYH-6140",
+      "statement_period": "2026-08-02",
+      "source_path": "C:\\Users\\wesbr\\Buy Your Home\\Buy Your Home - Office Admin\\Scanned Files\\Archived\\Receipt_2026-08-17_154629.pdf",
+      "source_scan_pages": 8,
+      "lowes_pages_present": [
+        7,
+        8
+      ],
+      "lowes_page_completeness": "Needs Review - page 3 of 3 missing",
+      "row_count": 4
+    }
+  ],
+  "statement_packets": [
+    {
+      "account": "SYH-6140",
+      "statement_period": "2026-08-02",
+      "packet_path": "C:\\Codex\\Wiki Files\\Project Rooms\\Doc Scan\\outputs\\statement-packets\\2026-lowes-scan-20260817\\SYH-6140-2026-08-02-scanned-packet.json",
+      "row_count": 4,
+      "source_supported_project_clues": [
+        "handwritten 908 Pond"
+      ],
+      "conflicting_po_values": [
+        "printed PO 4121",
+        "handwritten 908 Pond"
+      ]
+    }
+  ],
+  "totals": {
+    "packet_count": 1,
+    "row_count": 4,
+    "item_total_excluding_tax": "$111.79",
+    "tax_preserved_not_rowed": "$8.10",
+    "invoice_total": "$119.89"
+  },
+  "direct_handoff": {
+    "destination": "Invoice Entry",
+    "destination_task_id": "019fbf4f-c629-7dd1-a3f6-0de33de0ed8f",
+    "status": "Created for Invoice Entry duplicate-safe processing; Doc Scan did not edit any workbook.",
+    "source_supported_po_groups_ready": [
+      "908 Pond visible handwritten clue, invoice 74830, 4 item rows, $111.79 excluding tax; printed PO 4121 conflict requires Invoice Entry resolution."
+    ]
+  },
+  "review_routing": {
+    "mixed_scan_review_folder": "C:\\Users\\wesbr\\Buy Your Home\\Buy Your Home - Office Admin\\2026\\_Needs Review",
+    "reason": "Both new intake PDFs are mixed image-only statement packets with multiple institutions; routed to statement/general review after source preservation."
+  },
+  "created_by": "Doc Scan heartbeat",
+  "created_on": "2026-08-17"
+}

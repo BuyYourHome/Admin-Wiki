@@ -49,14 +49,14 @@
       "statement_period": "2025-11-17",
       "source_path": "C:\\Users\\wesbr\\Buy Your Home\\Buy Your Home - Office Admin\\2025\\Credit Cards\\Lowe's PRO BYH 5997\\25-11-17 .pdf",
       "page_count": 2,
-      "row_count": 4
+      "row_count": 6
     },
     {
       "account": "BYH-5997",
       "statement_period": "2025-12-17",
       "source_path": "C:\\Users\\wesbr\\Buy Your Home\\Buy Your Home - Office Admin\\2025\\Credit Cards\\Lowe's PRO BYH 5997\\25-12-17 .pdf",
       "page_count": 3,
-      "row_count": 7
+      "row_count": 8
     },
     {
       "account": "SYH-6140",
@@ -112,7 +112,7 @@
       "statement_period": "2025-10-02",
       "source_path": "C:\\Users\\wesbr\\Buy Your Home\\Buy Your Home - Office Admin\\2025\\Credit Cards\\Lowe's Pro-SYH-6140\\25-10-02.pdf",
       "page_count": 6,
-      "row_count": 10
+      "row_count": 15
     },
     {
       "account": "SYH-6140",
@@ -176,14 +176,14 @@
       "account": "BYH-5997",
       "statement_period": "2025-11-17",
       "packet_path": "C:\\Codex\\Wiki Files\\Project Rooms\\Doc Scan\\outputs\\statement-packets\\2025-lowes-all-accounts\\BYH-5997-2025-11-17-packet.json",
-      "row_count": 4,
+      "row_count": 6,
       "tensity_row_count": 0
     },
     {
       "account": "BYH-5997",
       "statement_period": "2025-12-17",
       "packet_path": "C:\\Codex\\Wiki Files\\Project Rooms\\Doc Scan\\outputs\\statement-packets\\2025-lowes-all-accounts\\BYH-5997-2025-12-17-packet.json",
-      "row_count": 7,
+      "row_count": 8,
       "tensity_row_count": 0
     },
     {
@@ -239,7 +239,7 @@
       "account": "SYH-6140",
       "statement_period": "2025-10-02",
       "packet_path": "C:\\Codex\\Wiki Files\\Project Rooms\\Doc Scan\\outputs\\statement-packets\\2025-lowes-all-accounts\\SYH-6140-2025-10-02-packet.json",
-      "row_count": 10,
+      "row_count": 15,
       "tensity_row_count": 0
     },
     {
@@ -257,7 +257,7 @@
       "tensity_row_count": 0
     }
   ],
-  "total_rows": 86,
+  "total_rows": 94,
   "tensity_rows": 8,
   "blockers": [
     "BYH-5997 2025-08-17: no invoice blocks extracted from OCR",
@@ -271,6 +271,7 @@
     "No duplicate statement periods identified in the provided inventory.",
     "Tensity allocation is limited to rows with visible PO 4121 evidence. Similar-sounding Tennessee project names were not used.",
     "2026-08-04 correction: Invoice Entry visually verified BYH-5997 2025-05-17 page 3 and 2025-07-17 page 3. Corrected five PO-4121 invoice blocks into eight nonzero item-level rows and excluded tax-only amounts from item rows.",
-    "2026-08-04 metadata correction: Added visible store numbers and item_number_sku values to the eight corrected PO-4121 rows without changing item amounts or PO evidence."
+    "2026-08-04 metadata correction: Added visible store numbers and item_number_sku values to the eight corrected PO-4121 rows without changing item amounts or PO evidence.",
+    "2026-08-13 correction: Doc Scan visually verified and corrected the 10 non-4121 visible-PO priority rows. Three aggregate OCR rows were split into item-level rows using only visible nonzero item data; tax remains in notes/totals and tax-only rows were excluded. Source-supported visible PO groups now include PO 6316 (3 rows), PO 1343 (9 rows), PO 612 (1 row), and PO 908 (5 rows)."
   ]
 }

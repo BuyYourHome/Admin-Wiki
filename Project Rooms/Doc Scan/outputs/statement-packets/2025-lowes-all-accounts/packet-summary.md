@@ -3,7 +3,7 @@
 - Dispatch ID: `jean-dispatch-20260804-lowes-statements-2025-v1-docscan-intake`
 - Packet root: `C:\Codex\Wiki Files\Project Rooms\Doc Scan\outputs\statement-packets\2025-lowes-all-accounts`
 - Statement packets: 18
-- Extracted OCR rows: 86
+- Extracted OCR rows: 94
 - Tensity-supported rows: 8
 
 ## Coverage
@@ -22,8 +22,8 @@
 | BYH-5997 | 2025-08-17 | 0 | 0 | `C:\Codex\Wiki Files\Project Rooms\Doc Scan\outputs\statement-packets\2025-lowes-all-accounts\BYH-5997-2025-08-17-packet.json` |
 | BYH-5997 | 2025-09-17 | 0 | 0 | `C:\Codex\Wiki Files\Project Rooms\Doc Scan\outputs\statement-packets\2025-lowes-all-accounts\BYH-5997-2025-09-17-packet.json` |
 | BYH-5997 | 2025-10-17 | 0 | 0 | `C:\Codex\Wiki Files\Project Rooms\Doc Scan\outputs\statement-packets\2025-lowes-all-accounts\BYH-5997-2025-10-17-packet.json` |
-| BYH-5997 | 2025-11-17 | 4 | 0 | `C:\Codex\Wiki Files\Project Rooms\Doc Scan\outputs\statement-packets\2025-lowes-all-accounts\BYH-5997-2025-11-17-packet.json` |
-| BYH-5997 | 2025-12-17 | 7 | 0 | `C:\Codex\Wiki Files\Project Rooms\Doc Scan\outputs\statement-packets\2025-lowes-all-accounts\BYH-5997-2025-12-17-packet.json` |
+| BYH-5997 | 2025-11-17 | 6 | 0 | `C:\Codex\Wiki Files\Project Rooms\Doc Scan\outputs\statement-packets\2025-lowes-all-accounts\BYH-5997-2025-11-17-packet.json` |
+| BYH-5997 | 2025-12-17 | 8 | 0 | `C:\Codex\Wiki Files\Project Rooms\Doc Scan\outputs\statement-packets\2025-lowes-all-accounts\BYH-5997-2025-12-17-packet.json` |
 | SYH-6140 | 2025-03-02 | 1 | 0 | `C:\Codex\Wiki Files\Project Rooms\Doc Scan\outputs\statement-packets\2025-lowes-all-accounts\SYH-6140-2025-03-02-packet.json` |
 | SYH-6140 | 2025-04-02 | 1 | 0 | `C:\Codex\Wiki Files\Project Rooms\Doc Scan\outputs\statement-packets\2025-lowes-all-accounts\SYH-6140-2025-04-02-packet.json` |
 | SYH-6140 | 2025-05-02 | 1 | 0 | `C:\Codex\Wiki Files\Project Rooms\Doc Scan\outputs\statement-packets\2025-lowes-all-accounts\SYH-6140-2025-05-02-packet.json` |
@@ -31,7 +31,7 @@
 | SYH-6140 | 2025-07-02 | 0 | 0 | `C:\Codex\Wiki Files\Project Rooms\Doc Scan\outputs\statement-packets\2025-lowes-all-accounts\SYH-6140-2025-07-02-packet.json` |
 | SYH-6140 | 2025-08-02 | 14 | 0 | `C:\Codex\Wiki Files\Project Rooms\Doc Scan\outputs\statement-packets\2025-lowes-all-accounts\SYH-6140-2025-08-02-packet.json` |
 | SYH-6140 | 2025-09-02 | 28 | 0 | `C:\Codex\Wiki Files\Project Rooms\Doc Scan\outputs\statement-packets\2025-lowes-all-accounts\SYH-6140-2025-09-02-packet.json` |
-| SYH-6140 | 2025-10-02 | 10 | 0 | `C:\Codex\Wiki Files\Project Rooms\Doc Scan\outputs\statement-packets\2025-lowes-all-accounts\SYH-6140-2025-10-02-packet.json` |
+| SYH-6140 | 2025-10-02 | 15 | 0 | `C:\Codex\Wiki Files\Project Rooms\Doc Scan\outputs\statement-packets\2025-lowes-all-accounts\SYH-6140-2025-10-02-packet.json` |
 | SYH-6140 | 2025-11-02 | 2 | 0 | `C:\Codex\Wiki Files\Project Rooms\Doc Scan\outputs\statement-packets\2025-lowes-all-accounts\SYH-6140-2025-11-02-packet.json` |
 | SYH-6140 | 2025-12-02 | 2 | 0 | `C:\Codex\Wiki Files\Project Rooms\Doc Scan\outputs\statement-packets\2025-lowes-all-accounts\SYH-6140-2025-12-02-packet.json` |
 
@@ -49,3 +49,4 @@
 
 - 2026-08-04: Invoice Entry visually verified BYH-5997 2025-05-17 page 3 and BYH-5997 2025-07-17 page 3, then returned a correction before workbook action. Doc Scan corrected five PO-4121 invoice blocks into eight nonzero item-level rows, preserved invoice/date/PO/source-page evidence, marked invoice 74794 as handwritten/corrected PO 4121 evidence, and excluded tax-only amounts from item rows.
 - 2026-08-04: Added visible store numbers and `item_number_sku` values to the eight corrected PO-4121 rows without changing the verified item amounts or PO evidence.
+- 2026-08-13: Doc Scan visually verified and corrected the 10 non-4121 visible-PO priority rows. Three aggregate OCR rows were split into item-level rows using only visible nonzero item data; tax remains in notes/totals and tax-only rows were excluded. Source-supported visible PO groups now include PO 6316 (3 rows), PO 1343 (9 rows), PO 612 (1 row), and PO 908 (5 rows). Doc Scan did not resolve project workbook or Vendor Tab placement for these non-4121 rows.
