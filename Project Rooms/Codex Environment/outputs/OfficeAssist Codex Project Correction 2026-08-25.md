@@ -92,7 +92,7 @@ The archived tasks were originally under the wrong `Documents\ChatGPT\Admin WIKI
 
 ## Readiness for Create PR
 
-Min PR Set readiness: verified with Sync GetHub caveat resolved after subsequent Create PR work.
+Min PR Set readiness: verified for Project Room task set; Sync Github unattended daily sync remains pending.
 
 Reason: the corrected `Wiki Files` project points to `C:\Codex\Wiki Files`, the repo is clean and synchronized on `main`, the canonical installed skill exists, and a normal Codex managed command now runs successfully after the ACL repair.
 
@@ -104,6 +104,11 @@ Subsequent Create PR `Min PR Set` status reported by Wes:
 - The first run initially found `main` diverged with one local commit and fifteen newer remote commits.
 - The earlier rebase had already replaced local commit `704157ad` with equivalent commit `86625ebf`, which was subsequently pushed.
 - Final OfficeAssist status reported by Wes: `main...origin/main`, clean and synchronized.
+- After pulling the current Admin wiki and syncing skills, OfficeAssist verified the installed `sync-github` skill exists and SHA-256 matches the canonical repository source.
+- Managed-runner `git fetch origin` still fails with `.git\FETCH_HEAD: Permission denied`.
+- Approved unsandboxed/local fetch succeeds.
+- Final OfficeAssist HEAD and `origin/main` after the manual check: `22f797d9249e4e7fc00549fdc33b6322274f5256`.
+- Unattended daily status remains pending because the 5:30 AM heartbeat has not yet proven it can select the approved unsandboxed/local fetch path without interaction.
 
 No additional push was performed from this Codex Environment record.
 
