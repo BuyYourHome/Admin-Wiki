@@ -1,5 +1,5 @@
-window.PROJECT_ROOMS_UPDATED = '2026-08-07 09:42';
-window.PROJECT_ROOMS_HASH = '0B9BA84632933C2AD17C0111082D5A48CA99D1AAE76D6C87C03754989C27DD96';
+window.PROJECT_ROOMS_UPDATED = '2026-08-14 15:53';
+window.PROJECT_ROOMS_HASH = 'E0D15EC8F41F5026B486F93FA758A1219B96F155E01667E48C64E231138AC8C3';
 window.PROJECT_ROOM_GROUPS = [
     {
         "name":  "Intake \u0026 Coordination",
@@ -408,6 +408,7 @@ window.PROJECT_ROOMS = [
                       "Health Check",
                       "Task Health",
                       "Email Routing",
+                      "Route Vendor Invoice",
                       "Email Delivery",
                       "Organize"
                   ],
@@ -453,6 +454,25 @@ window.PROJECT_ROOMS = [
 
                   ],
         "readmeUrl":  "../../Estate%20Documents/README.md",
+        "quickActions":  [
+
+                         ]
+    },
+    {
+        "name":  "Facebook Engagement",
+        "purpose":  "Prepare engaging Facebook Page post drafts from photos that Wes later makes available through an authorized Google Photos source. This room supports photo review, content planning, and draft preparation only until a specific external action is authorized.",
+        "status":  "active and dispatchable",
+        "skill":  "facebook-engagement",
+        "skillPath":  "C:\\Codex\\Wiki Files\\skills\\facebook-engagement\\SKILL.md",
+        "skillState":  "available",
+        "taskId":  "",
+        "attention":  null,
+        "group":  "Other",
+        "groupBasis":  "Used when a Project Room does not yet have a supported assignment to one of the defined functional groups.",
+        "modes":  [
+
+                  ],
+        "readmeUrl":  "../../Facebook%20Engagement/README.md",
         "quickActions":  [
 
                          ]
@@ -532,6 +552,7 @@ window.PROJECT_ROOMS = [
                       "Standard Packet Processing",
                       "Create Vendor Invoice",
                       "Time Card",
+                      "Receipt",
                       "Statement Processing",
                       "Reconcile",
                       "Vendor Tabs"
@@ -803,7 +824,7 @@ window.PROJECT_ROOMS = [
         "group":  "Systems \u0026 Maintenance",
         "groupBasis":  "Maintains computers, Codex operations, management support, purchasing tools, marketplace work, or system health.",
         "modes":  [
-
+                      "Estate Sale Mode"
                   ],
         "readmeUrl":  "../../Marketplace/README.md",
         "quickActions":  [
