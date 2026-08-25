@@ -107,8 +107,9 @@ Subsequent Create PR `Min PR Set` status reported by Wes:
 - After pulling the current Admin wiki and syncing skills, OfficeAssist verified the installed `sync-github` skill exists and SHA-256 matches the canonical repository source.
 - Managed-runner `git fetch origin` still fails with `.git\FETCH_HEAD: Permission denied`.
 - Approved unsandboxed/local fetch succeeds.
+- A repeat unsandboxed/local fetch from the OfficeAssist `Sync Github` task succeeded without asking Wes for another interactive approval.
 - Final OfficeAssist HEAD and `origin/main` after the manual check: `22f797d9249e4e7fc00549fdc33b6322274f5256`.
-- Unattended daily status remains pending because the 5:30 AM heartbeat has not yet proven it can select the approved unsandboxed/local fetch path without interaction.
+- Unattended daily status is partially verified: the approved unsandboxed/local fetch path is reusable without interaction, but the actual 5:30 AM heartbeat has not yet proven it invokes that path successfully.
 
 No additional push was performed from this Codex Environment record.
 
