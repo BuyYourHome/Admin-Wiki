@@ -97,15 +97,16 @@ Use this sequence when configuring the Admin wiki on a target computer:
    - Git status;
    - local-versus-`origin/main` comparison;
    - latest commit.
-8. Sync wiki-managed Codex skills only after the repository is current, using `C:\Codex\Wiki Files\tools\sync-codex-skills.ps1`.
-9. In Codex Desktop, add or open `C:\Codex\Wiki Files` as a saved local project named `Wiki Files`.
-10. Verify the saved Codex project points to `C:\Codex\Wiki Files`, not a Teams- or OneDrive-synced location.
-11. Open a new Codex task in that saved project and run normal read-only verification:
+8. Confirm `C:\Codex\Wiki Files` and `C:\Codex\Wiki Files\.git` are owned by, or grant full control to, the intended Windows profile that will run Codex. This is required when the repo was cloned, copied, repaired, or previously used under another Windows profile.
+9. Sync wiki-managed Codex skills only after the repository is current, using `C:\Codex\Wiki Files\tools\sync-codex-skills.ps1`.
+10. In Codex Desktop, add or open `C:\Codex\Wiki Files` as a saved local project named `Wiki Files`.
+11. Verify the saved Codex project points to `C:\Codex\Wiki Files`, not a Teams- or OneDrive-synced location.
+12. Open a new Codex task in that saved project and run normal read-only verification:
     - report the working folder;
     - run `git status --short --branch`;
     - compare local `main` with `origin/main`;
     - read one applicable installed skill.
-12. Confirm commands run through Codex's normal managed execution path without elevation.
+13. Confirm commands run through Codex's normal managed execution path without elevation.
 
 ### Managed Runtime Failure Recovery
 
@@ -124,7 +125,10 @@ then:
 5. Reopen Codex and allow it to rebuild the runtime.
 6. Open a brand-new task in the saved `Wiki Files` project and repeat the normal managed-command verification.
 7. Do not delete the backup until the rebuilt runtime is confirmed healthy.
-8. If the failure remains, report it as a Codex managed-sandbox/setup-refresh blocker. Include the exact error and state whether the failure follows the existing task or also occurs in a brand-new task.
+8. If the failure remains, inspect the affected user's `C:\Users\<Windows-user>\.codex\.sandbox\setup_error.json` and current `sandbox*.log` for the specific setup error.
+9. If the sandbox log reports `SetNamedSecurityInfoW failed: 5`, `write ACE failed`, `deny ACE failed`, or access denied on `C:\Codex\Wiki Files` or `C:\Codex\Wiki Files\.git`, verify repo ownership and ACLs. The intended Windows profile that runs Codex must own or have full control of the repo folder and `.git`.
+10. With Wes's approval, repair only the canonical repo ACL/ownership for the intended Windows profile, then quit and reopen Codex and retry verification in a brand-new `Wiki Files` task.
+11. If the failure remains after cache rebuild and ACL repair, report it as a Codex managed-sandbox/setup-refresh blocker. Include the exact error and state whether the failure follows the existing task or also occurs in a brand-new task.
 
 ### Completion Requirements
 

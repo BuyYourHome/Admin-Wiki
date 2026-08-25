@@ -65,6 +65,7 @@ Copy this template for each authorized target-computer setup run. Use `Pass`, `F
 | REP-06 | Teams-/OneDrive-synced wiki folders are not used as the working repo. | | |
 | REP-07 | Remote was fetched and any update used fast-forward-only behavior; no merge, rebase, reset, discard, or push occurred without exact authorization. | | |
 | REP-08 | Active repository path, branch, Git status, local-versus-`origin/main` comparison, and latest commit were recorded. | | |
+| REP-09 | `C:\Codex\Wiki Files` and `C:\Codex\Wiki Files\.git` are owned by, or grant full control to, the intended Windows profile that runs Codex. | | |
 | SKL-01 | Wiki skill source is `C:\Codex\Wiki Files\skills`. | | |
 | SKL-02 | Skill sync completed from the current repo without an unresolved error. | | |
 | SKL-03 | Installed wiki-managed skills match the canonical source. | | |
@@ -84,7 +85,7 @@ Copy this template for each authorized target-computer setup run. Use `Pass`, `F
 | RUN-05 | A PDF can be rendered or inspected with the Codex PDF workflow. | | |
 | RUN-06 | A basic Word document workflow completes. | | |
 | RUN-07 | A basic spreadsheet workflow completes without requiring global Python. | | |
-| RUN-08 | If managed execution failed before launch, runtime recovery was handled by the documented cache-backup procedure or reported as a blocker. | | |
+| RUN-08 | If managed execution failed before launch, runtime recovery was handled by the documented cache-backup procedure, sandbox logs were inspected, and repo ACL/ownership was repaired or ruled out before reporting a blocker. | | |
 
 ## Plugins, Connectors, And Workflow Checks
 

@@ -99,6 +99,8 @@ If an existing `C:\Codex\Wiki Files` repo contains uncommitted work, is on an un
 - [ ] Confirm local `main` is not unexpectedly behind, ahead, or diverged from `origin/main`.
 - [ ] Run `git status --short --branch` and document any unexpected tracked or untracked work.
 - [ ] Record the active repository path, current branch, Git status, local-versus-`origin/main` comparison, and latest commit.
+- [ ] Confirm `C:\Codex\Wiki Files` and `C:\Codex\Wiki Files\.git` are owned by, or grant full control to, the intended Windows profile that will run Codex.
+- [ ] If the repo was cloned, copied, repaired, or previously used under another Windows profile, verify the active profile can change ACLs on both `C:\Codex\Wiki Files` and `.git` before Codex managed-runner verification.
 - [ ] Confirm Codex and Obsidian both use `C:\Codex\Wiki Files` as the Admin wiki workspace/vault.
 - [ ] Confirm the Teams-synced wiki folder is not configured as the working repository.
 
@@ -169,7 +171,10 @@ then:
 - [ ] Reopen Codex and allow it to rebuild the runtime.
 - [ ] Open a brand-new task in the saved `Wiki Files` project and repeat the normal managed-command verification.
 - [ ] Do not delete the backup until the rebuilt runtime is confirmed healthy.
-- [ ] If the failure remains, report it as a Codex managed-sandbox/setup-refresh blocker with the exact error and whether it follows the existing task or also occurs in a brand-new task.
+- [ ] If the failure remains, inspect `C:\Users\<Windows-user>\.codex\.sandbox\setup_error.json` and the current `sandbox*.log`.
+- [ ] If the sandbox log reports `SetNamedSecurityInfoW failed: 5`, `write ACE failed`, `deny ACE failed`, or access denied on `C:\Codex\Wiki Files` or `.git`, verify and repair repo ownership/ACLs for the intended Windows profile with Wes's approval.
+- [ ] After ACL repair, quit and reopen Codex and repeat the normal managed-command verification in a brand-new `Wiki Files` task.
+- [ ] If the failure remains after cache rebuild and ACL repair, report it as a Codex managed-sandbox/setup-refresh blocker with the exact error and whether it follows the existing task or also occurs in a brand-new task.
 
 ## Stop Conditions
 
