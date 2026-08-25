@@ -72,29 +72,40 @@ After ACL repair, the corrected `Wiki Files` project completed recovery verifica
 
 ## Old-project task inventory
 
-Do not delete, archive, move, duplicate, replace, or register these tasks without Wes's specific approval.
+Wes reported after the corrected `Wiki Files` verification that he had already archived the old wrong-project tasks.
 
-Visible under the old `Admin WIKI` project:
+Old wrong-project inventory from OfficeAssist:
 
 - Create PR
-- Sync GetHub
+- Codex Environment
 - Computers
-- Marketplace
+- Jean Wright
+- Email Monitor
+- Doc Scan
+- Invoice Entry
 - Manager
+- Lowes Order
+- Marketplace
+- Sync GetHub
 
-The full old-project task list was not expanded during this correction record.
+The archived tasks were originally under the wrong `Documents\ChatGPT\Admin WIKI` project. No task archive, delete, rename, move, duplicate, replacement, or routing action was performed from this Codex Environment record.
 
 ## Readiness for Create PR
 
-Min PR Set readiness: ready from the corrected `Wiki Files` project.
+Min PR Set readiness: verified with Sync GetHub caveat resolved after subsequent Create PR work.
 
 Reason: the corrected `Wiki Files` project points to `C:\Codex\Wiki Files`, the repo is clean and synchronized on `main`, the canonical installed skill exists, and a normal Codex managed command now runs successfully after the ACL repair.
 
-Remaining caution before any cleanup of old tasks:
+Subsequent Create PR `Min PR Set` status reported by Wes:
 
-- The old `Admin WIKI` project and tasks remain untouched.
-- Inventory the full task list under the old `Admin WIKI` project only if Wes wants cleanup planning.
-- Do not delete, archive, move, duplicate, replace, or register those tasks without Wes's specific approval.
+- Eight Project Rooms verified and ready.
+- Sync GetHub task, README, and skill verified.
+- Machine-local `sync-gethub-daily` heartbeat was created or verified on the existing `Sync GetHub` task `01a03956-e6d4-7433-b992-1b951d1a4330`, scheduled daily at 5:30 AM Eastern.
+- The first run initially found `main` diverged with one local commit and fifteen newer remote commits.
+- The earlier rebase had already replaced local commit `704157ad` with equivalent commit `86625ebf`, which was subsequently pushed.
+- Final OfficeAssist status reported by Wes: `main...origin/main`, clean and synchronized.
+
+No additional push was performed from this Codex Environment record.
 
 ## Secrets and external changes
 
