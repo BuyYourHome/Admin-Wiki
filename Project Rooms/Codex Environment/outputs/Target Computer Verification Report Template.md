@@ -12,6 +12,8 @@ Copy this template for each authorized target-computer setup run. Use `Pass`, `F
 | Windows profile path | |
 | Assigned human user | |
 | Intended business Microsoft 365 identity | |
+| Designated GitHub identity for this computer | |
+| GitHub access to `BuyYourHome/Admin-Wiki` | |
 | Setup date/time | |
 | Operator | |
 | Remote-access method | |
@@ -27,6 +29,8 @@ Copy this template for each authorized target-computer setup run. Use `Pass`, `F
 | SEC-01 | Target computer, user, and session match the authorization. | | |
 | SEC-01A | Intended Windows sign-in account, Windows profile, assigned human user, and business Microsoft 365 identity were confirmed before profile-specific setup. | | |
 | SEC-01B | `WesBrowning1@Outlook.com` was not used as the implementation login unless Wes explicitly designated it for this machine. | | |
+| SEC-01C | Target computer has its own designated GitHub identity with access to `BuyYourHome/Admin-Wiki`, or a Wes-approved exception is documented. | | |
+| SEC-01D | No GitHub passwords, personal access tokens, recovery codes, or credential-manager secrets were stored in the wiki, scripts, Git history, or chat notes. | | |
 | SEC-02 | Remote-access method and any remote-host/firewall changes were specifically approved. | | |
 | SEC-03 | No Remote Desktop service is exposed directly to the public internet. | | |
 | SEC-04 | No unapproved remote tool, VPN, extension, credential manager, or system agent was installed. | | |
@@ -89,6 +93,7 @@ Do not record message bodies, account tokens, or other confidential content mere
 | ID | Check | Result | Non-secret evidence or notes |
 | --- | --- | --- | --- |
 | CON-01 | GitHub capability can access the authorized Admin Wiki repository. | | |
+| CON-01A | GitHub capability uses the designated target-computer GitHub identity or a Wes-approved exception. | | |
 | CON-02 | Chrome/browser-control capability connects to the approved browser session. | | |
 | CON-03 | Outlook Email capability can access the authorized mailbox scope. | | |
 | CON-04 | Outlook Calendar capability can access the authorized calendar scope. | | |
@@ -127,6 +132,7 @@ Do not record message bodies, account tokens, or other confidential content mere
 - Required checks blocked:
 - Optional limitations:
 - Security or authorization issues:
+- Designated GitHub identity and repo-access result:
 - Saved Codex project path:
 - Installed-skill verification:
 - Managed-command result:

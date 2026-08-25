@@ -12,6 +12,8 @@ Use this checklist only after Wes authorizes the specific target computer and se
 - Windows profile path:
 - Assigned human user:
 - Intended business Microsoft 365 identity:
+- Designated GitHub identity for this computer:
+- GitHub access to `BuyYourHome/Admin-Wiki` confirmed by:
 - Setup date and time:
 - Remote-access method:
 - Remote session authorized by:
@@ -27,6 +29,8 @@ Do not put passwords, MFA codes, license keys, tokens, recovery codes, or other 
 - [ ] The exact target computer and authorized user are identified.
 - [ ] The intended Windows sign-in account, Windows profile, assigned human user, and business Microsoft 365 identity are confirmed before profile-specific setup.
 - [ ] `WesBrowning1@Outlook.com` is not assumed as the implementation login unless Wes explicitly designates it for this machine.
+- [ ] The target computer has its own designated GitHub identity with access to `BuyYourHome/Admin-Wiki`.
+- [ ] Wes's personal GitHub identity, another user's GitHub identity, and another machine's GitHub credentials are not reused unless Wes explicitly approves that exact exception for this machine.
 - [ ] Wes authorized this specific setup session.
 - [ ] The remote-access method is approved for this target and session.
 - [ ] Wes or the authorized user is available to enter credentials, MFA, and license information directly.
@@ -36,7 +40,7 @@ Do not put passwords, MFA codes, license keys, tokens, recovery codes, or other 
 
 Stop before connecting if any required authorization is missing or ambiguous.
 
-Stop before profile-specific setup if the signed-in Windows profile does not match the implementation plan. Profile-specific setup includes Codex Desktop, Git global identity, `%USERPROFILE%\.codex\skills`, OneDrive, Outlook, Teams, browser sessions, and connectors.
+Stop before profile-specific setup if the signed-in Windows profile or GitHub identity does not match the implementation plan. Profile-specific setup includes Codex Desktop, Git global identity, `%USERPROFILE%\.codex\skills`, OneDrive, Outlook, Teams, browser sessions, GitHub authentication, and connectors.
 
 ## 2. Remote Session Safety
 
@@ -88,6 +92,7 @@ If an existing `C:\Codex\Wiki Files` repo contains uncommitted work, is on an un
 - [ ] Create or confirm `C:\Codex\Wiki Files`.
 - [ ] Clone `https://github.com/BuyYourHome/Admin-Wiki.git` into that exact folder, or safely update an existing clean repo.
 - [ ] Confirm the remote is `BuyYourHome/Admin-Wiki` and contains no embedded credentials.
+- [ ] Confirm the designated GitHub identity can access `BuyYourHome/Admin-Wiki` before private fetch, clone, or connector verification.
 - [ ] Confirm the active branch is `main`.
 - [ ] Fetch GitHub and update only with fast-forward-only behavior.
 - [ ] Do not merge, rebase, reset, discard local work, or push during setup unless Wes explicitly authorizes that exact action.
@@ -116,6 +121,7 @@ If an existing `C:\Codex\Wiki Files` repo contains uncommitted work, is on an un
 - [ ] Confirm commands run through Codex's normal managed execution path without elevation.
 - [ ] Enable and verify the approved Codex capabilities for GitHub, Chrome/browser control, Outlook Email, Outlook Calendar, SharePoint, Teams, documents, spreadsheets, presentations, and PDF work.
 - [ ] Have the authorized user complete connector sign-in or consent directly.
+- [ ] Verify the GitHub capability is using the designated target-computer GitHub identity or a Wes-approved exception.
 
 Plugin presence alone is not a passing result. Each required workflow must complete a functional check in the verification report.
 
@@ -143,7 +149,7 @@ Do not disable, weaken, or reconfigure antivirus, firewall, BitLocker, endpoint 
 - [ ] Update `working\target-computer-register.md` with the run result.
 - [ ] Hand off any authoritative computer inventory or readiness change to the Computers Project Room.
 - [ ] Final report states `verified`, `blocked`, or `needs Wes`.
-- [ ] Final report includes computer name, Windows profile, assigned human user, intended business Microsoft 365 identity, canonical repo path, branch, Git state, local-versus-`origin/main` comparison, latest commit, saved Codex project path, installed-skill verification, managed-command result, and remaining blockers.
+- [ ] Final report includes computer name, Windows profile, assigned human user, intended business Microsoft 365 identity, designated GitHub identity and repo-access result, canonical repo path, branch, Git state, local-versus-`origin/main` comparison, latest commit, saved Codex project path, installed-skill verification, managed-command result, and remaining blockers.
 - [ ] Mark the target `ready` only when every required check passes and no unresolved security or authorization issue remains.
 
 ## 10. Managed Runtime Failure Recovery
@@ -177,4 +183,5 @@ Stop and report the decision needed before:
 - Overwriting, deleting, resetting, stashing, or pulling over unclear existing work.
 - Saving or copying passwords, MFA codes, license keys, tokens, or recovery codes.
 - Continuing profile-specific setup when the signed-in Windows profile, assigned human, or business identity is unclear or mismatched.
+- Continuing setup when the designated GitHub identity for this computer is unclear, lacks `BuyYourHome/Admin-Wiki` access, or appears to be an unauthorized reused account.
 - Using a Teams- or OneDrive-synced Admin wiki folder as the working repository.

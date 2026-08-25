@@ -75,8 +75,11 @@ Before making profile-specific changes, confirm and record:
 - signed-in Windows user and profile path;
 - assigned human user;
 - intended business Microsoft 365 identity.
+- designated GitHub identity for this computer and confirmation that it has access to `BuyYourHome/Admin-Wiki`.
 
-Do not continue when the signed-in Windows profile does not match the implementation plan. Profile-specific setup includes Codex Desktop, Git global identity, `%USERPROFILE%\.codex\skills`, OneDrive, Outlook, Teams, browser sessions, and connectors.
+Do not continue when the signed-in Windows profile or GitHub identity does not match the implementation plan. Profile-specific setup includes Codex Desktop, Git global identity, `%USERPROFILE%\.codex\skills`, OneDrive, Outlook, Teams, browser sessions, GitHub authentication, and connectors.
+
+Each target computer should have its own designated GitHub account or machine-specific GitHub identity with access to `BuyYourHome/Admin-Wiki`. Do not reuse Wes's personal GitHub identity, another user's GitHub identity, or a prior machine's GitHub credentials unless Wes explicitly approves that exact exception for the target computer. Do not store GitHub passwords, personal access tokens, recovery codes, or credential-manager secrets in the wiki, scripts, Git history, or chat notes.
 
 ### Canonical Admin Wiki Project Setup
 
@@ -85,23 +88,24 @@ Use this sequence when configuring the Admin wiki on a target computer:
 1. Confirm the canonical Admin wiki Git repository exists at `C:\Codex\Wiki Files`.
 2. If it is not present, clone the authorized `BuyYourHome/Admin-Wiki` repository into that exact location.
 3. Confirm `C:\Codex\Wiki Files` is a valid Git repository on `main`.
-4. Fetch the remote and update only with fast-forward-only behavior.
-5. Do not merge, rebase, reset, discard local work, or push from the target machine during setup unless Wes explicitly authorizes that exact action.
-6. Confirm and record:
+4. Confirm the target computer's designated GitHub identity can access `BuyYourHome/Admin-Wiki` before private fetch, clone, or connector verification.
+5. Fetch the remote and update only with fast-forward-only behavior.
+6. Do not merge, rebase, reset, discard local work, or push from the target machine during setup unless Wes explicitly authorizes that exact action.
+7. Confirm and record:
    - active repository path;
    - current branch;
    - Git status;
    - local-versus-`origin/main` comparison;
    - latest commit.
-7. Sync wiki-managed Codex skills only after the repository is current, using `C:\Codex\Wiki Files\tools\sync-codex-skills.ps1`.
-8. In Codex Desktop, add or open `C:\Codex\Wiki Files` as a saved local project named `Wiki Files`.
-9. Verify the saved Codex project points to `C:\Codex\Wiki Files`, not a Teams- or OneDrive-synced location.
-10. Open a new Codex task in that saved project and run normal read-only verification:
+8. Sync wiki-managed Codex skills only after the repository is current, using `C:\Codex\Wiki Files\tools\sync-codex-skills.ps1`.
+9. In Codex Desktop, add or open `C:\Codex\Wiki Files` as a saved local project named `Wiki Files`.
+10. Verify the saved Codex project points to `C:\Codex\Wiki Files`, not a Teams- or OneDrive-synced location.
+11. Open a new Codex task in that saved project and run normal read-only verification:
     - report the working folder;
     - run `git status --short --branch`;
     - compare local `main` with `origin/main`;
     - read one applicable installed skill.
-11. Confirm commands run through Codex's normal managed execution path without elevation.
+12. Confirm commands run through Codex's normal managed execution path without elevation.
 
 ### Managed Runtime Failure Recovery
 
@@ -136,6 +140,7 @@ The completion report must include:
 - Windows profile;
 - assigned human user;
 - intended business Microsoft 365 identity;
+- designated GitHub identity and `BuyYourHome/Admin-Wiki` access result;
 - canonical repo path;
 - branch;
 - Git state and local-versus-`origin/main` comparison;
