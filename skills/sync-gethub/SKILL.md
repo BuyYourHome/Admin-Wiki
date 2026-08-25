@@ -64,10 +64,12 @@ Use when Wes asks for an immediate repository status or safe synchronization che
 ## Automation
 
 - Automation id: `sync-gethub-daily`.
+- Automation kind: `heartbeat`, attached to the computer's existing `Sync GetHub` task.
 - Schedule: daily at 5:30 AM Eastern on each enrolled computer.
 - Routine healthy no-change runs remain quiet.
 - Any blocker or fast-forward update should be reported with the computer identity.
 - Record only material deployment, recurring blocker, recovery, or enrollment outcomes in `working\repository-sync-action-log.md` so normal runs do not make the repo dirty.
+- Do not use a detached `cron` automation and do not create a separate permanent `Sync GetHub Daily` chat. Detached runs create redundant execution chats.
 
 ## Outputs And Delivery
 
