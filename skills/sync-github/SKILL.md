@@ -32,12 +32,13 @@ description: Keep the Buy Your Home Admin wiki Git repository current across app
 This is the default scheduled workflow on each enrolled computer.
 
 1. Identify the computer and verify the canonical repo and `origin`.
-2. Run `git fetch origin`.
+2. Run `git fetch origin` through an approved execution path that can write Git metadata, including `.git\FETCH_HEAD`.
 3. Determine whether local `main` is clean, ahead, behind, diverged, or on the wrong branch.
 4. Pull with `git pull --ff-only origin main` only when the worktree is clean and local `main` is only behind.
 5. If already current, finish quietly without file changes.
-6. If dirty, ahead, diverged, locked, on another branch, missing, or unable to authenticate, do not alter local work. Return the exact computer-specific blocker.
-7. For a successful fast-forward, report the computer name and before/after commit ids.
+6. If the managed Codex runner fails with `.git\FETCH_HEAD: Permission denied`, retry only through a Wes-approved unsandboxed/local execution path. If no approved unsandboxed path is available for that machine, report the automation as not viable unattended.
+7. If dirty, ahead, diverged, locked, on another branch, missing, unable to authenticate, or unable to write required Git metadata, do not alter local work. Return the exact computer-specific blocker.
+8. For a successful fast-forward, report the computer name and before/after commit ids.
 
 ### Manual Sync Check
 
@@ -67,6 +68,7 @@ Use when Wes asks for an immediate repository status or safe synchronization che
 - Compatibility: retain this existing automation id across enrolled computers; the workflow, room, skill, and task use `Sync Github`.
 - Automation kind: `heartbeat`, attached to the computer's existing `Sync Github` task.
 - Schedule: daily at 5:30 AM Eastern on each enrolled computer.
+- A machine-local automation is not fully verified until one safe run proves `git fetch origin` can update `.git\FETCH_HEAD`. If the managed runner can read the repo but cannot write `.git\FETCH_HEAD`, the machine needs a Wes-approved unsandboxed/local fetch path or must remain pending for unattended daily sync.
 - Routine healthy no-change runs remain quiet.
 - Any blocker or fast-forward update should be reported with the computer identity.
 - Record only material deployment, recurring blocker, recovery, or enrollment outcomes in `working\repository-sync-action-log.md` so normal runs do not make the repo dirty.

@@ -42,11 +42,12 @@ This is the default workflow. Run locally on every enrolled computer at least on
 
 1. Confirm the computer name and canonical repo path.
 2. Confirm the current branch is `main`.
-3. Run `git fetch origin`.
+3. Run `git fetch origin` through an approved execution path that can write Git metadata, including `.git\FETCH_HEAD`.
 4. Inspect worktree status and the ahead/behind relationship between `main` and `origin/main`.
 5. If the worktree is clean and local `main` is only behind, run `git pull --ff-only origin main`.
 6. If already current, finish without changing files.
-7. If dirty, ahead, diverged, locked, on another branch, or unable to authenticate, do not pull or alter local work; return the exact computer-specific blocker.
+7. If the managed Codex runner fails with `.git\FETCH_HEAD: Permission denied`, retry only through a Wes-approved unsandboxed/local execution path. If no approved unsandboxed path is available for that machine, report the automation as not viable unattended.
+8. If dirty, ahead, diverged, locked, on another branch, unable to authenticate, or unable to write required Git metadata, do not pull or alter local work; return the exact computer-specific blocker.
 
 ### Manual Sync Check
 
@@ -83,6 +84,7 @@ The local Project Room package and `sync-gethub-daily` automation are installed 
 - Required cadence: at least once daily on every enrolled computer.
 - Initial schedule: daily at 5:30 AM Eastern on each enrolled computer.
 - Deployment state: active on `WesStudio`; pending separate installation and verification on `Wes-VideoEditor` and `OfficeAssist`.
+- A machine-local automation is not fully verified until one safe run proves `git fetch origin` can update `.git\FETCH_HEAD`. On OfficeAssist, the normal managed runner could read the repo but could not fetch because `.git\FETCH_HEAD` was permission-denied; the safe run succeeded only through an approved unsandboxed path.
 - Do not deploy this workflow as a detached `cron` automation. Detached cron runs create a new `Sync Github Daily` execution chat on every run.
 - Do not create a separate permanent chat named `Sync Github Daily`. Keep one `Sync Github` task and one attached heartbeat per enrolled computer.
 

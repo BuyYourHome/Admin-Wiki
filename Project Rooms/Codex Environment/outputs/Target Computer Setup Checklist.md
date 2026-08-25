@@ -115,12 +115,14 @@ If an existing `C:\Codex\Wiki Files` repo contains uncommitted work, is on an un
 
 - [ ] Confirm the wiki-managed skill source is `C:\Codex\Wiki Files\skills`.
 - [ ] Confirm the installed runtime copies are under the authorized user's `.codex\skills` folder.
+- [ ] Confirm the installed Sync Github skill is `C:\Users\<Windows-user>\.codex\skills\sync-github\SKILL.md` and matches the canonical repo source; do not leave only the old `sync-gethub` skill installed.
 - [ ] Start a fresh Codex session after skill sync.
 - [ ] Confirm Codex can open the Admin wiki and read the current project-room and matching skill instructions.
 - [ ] In Codex Desktop, add or open `C:\Codex\Wiki Files` as a saved local project named `Wiki Files`.
 - [ ] Verify the saved Codex project points to `C:\Codex\Wiki Files`, not a Teams- or OneDrive-synced location.
 - [ ] Open a new Codex task in the saved `Wiki Files` project and run normal read-only verification: report working folder, run `git status --short --branch`, compare local `main` with `origin/main`, and read one applicable installed skill.
 - [ ] Confirm commands run through Codex's normal managed execution path without elevation.
+- [ ] For enrolled Sync Github targets, verify the `sync-gethub-daily` heartbeat can perform one safe live `git fetch origin`. If the managed runner is permission-denied on `.git\FETCH_HEAD`, verify the Wes-approved unsandboxed/local fetch path or keep unattended daily sync marked pending.
 - [ ] Enable and verify the approved Codex capabilities for GitHub, Chrome/browser control, Outlook Email, Outlook Calendar, SharePoint, Teams, documents, spreadsheets, presentations, and PDF work.
 - [ ] Have the authorized user complete connector sign-in or consent directly.
 - [ ] Verify the GitHub capability is using the designated target-computer GitHub identity or a Wes-approved exception.
