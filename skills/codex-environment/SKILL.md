@@ -183,9 +183,10 @@ Workflow:
 1. Confirm the target computer has passed Baseline Machine Setup or Update Existing Machine verification.
 2. Identify the intended role for the machine, such as Wes primary development, Wes secondary/video, Josh admin support, or backup.
 3. Recommend the minimum Project Room chat set for that role.
-4. Hand off to Create PR `Min PR Set` for chat creation, startup prompts, and thread-id metadata.
-5. Record the setup-run handoff result in `working\target-computer-register.md`.
-6. Ensure Computers receives or already has the authoritative machine-list update in `Project Rooms\Computers\working\computer-register.md`.
+4. Identify which recommended Project Rooms have required machine-local automations or heartbeats in the registry or room README. Include each required automation id, schedule, intended task/chat, and any scratch-folder or connector prerequisite in the handoff.
+5. Hand off to Create PR `Min PR Set` for chat creation, startup prompts, thread-id metadata, and required automation inventory. Creating or retargeting automations still requires Wes's separate authorization for that scheduled or event-triggered behavior.
+6. Record the setup-run handoff result in `working\target-computer-register.md`, including any `pending automation setup` items.
+7. Ensure Computers receives or already has the authoritative machine-list update in `Project Rooms\Computers\working\computer-register.md`.
 
 ### Replacement Machine
 
@@ -198,7 +199,7 @@ Workflow:
 3. Run Baseline Machine Setup on the replacement computer.
 4. Compare assigned roles, Project Room chats, connector needs, OneDrive/data placement, plugin/cache needs, and local-only files from the old computer.
 5. Confirm no unpushed commits or unique required local files remain on the old computer before declaring replacement complete.
-6. Use Role Assignment and Create PR `Min PR Set` to recreate or record the needed PR/chat surface.
+6. Use Role Assignment and Create PR `Min PR Set` to recreate or record the needed PR/chat surface and to inventory any required automations that must be created or retargeted to the replacement machine's current task ids.
 7. Update `working\target-computer-register.md` with setup-run replacement status, blockers, and any remaining old-machine action.
 8. Ensure Computers owns the authoritative replacement/lifecycle status in `Project Rooms\Computers\working\computer-register.md`.
 

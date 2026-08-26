@@ -435,7 +435,7 @@ Purpose:
 
 - Check scanned PDFs in the Office Admin scan intake folder.
 - Receive Jean Dispatcher scanned-statement intake in the dedicated Doc Scan task before any Invoice Entry handoff.
-- Use the SharePoint/Teams connector as the default discovery path for scans and destination-folder matching when available, with local synced folders as the scanner drop-zone, processing workspace, archive/log path, and fallback.
+- Use the SharePoint/Teams connector as the default source and destination path for scans and destination-folder matching when available, with a verified machine-local scratch root for processing and local synced folders only as verified fallback.
 - Split combined scans into separate financial/admin documents, including property closing packages and signed operating-agreement packages.
 - Name outputs using approved conventions.
 - Route mortgage statements, credit card statements, bank statements, invoices, receipts, property closing documents, signed operating agreements, tax forms, and related documents to the correct Teams/SharePoint folder.
@@ -463,6 +463,7 @@ Important rules:
 - Never pay invoices or contact vendors.
 - Durable scan outcomes are recorded in `Project Rooms\Doc Scan\working\scanned-document-action-log.md`; generated OCR, render, packet, and split-working artifacts stay out of Git unless Wes explicitly identifies one as durable source material.
 - If routing confidence is low, route to review and log why.
+- Each computer expected to process Doc Scan intake must have its own machine-local `doc-scan` heartbeat attached to that computer's current `Doc Scan` task under the `Wiki Files` project. Missing automations or automations targeting obsolete task ids are `pending automation setup`, not healthy scan processing.
 - Keep the automation attached to one dedicated status thread via `target_thread_id` so the user can review run history and adjust behavior in one place.
 - Use quiet-run behavior with `DONT_NOTIFY` when no new scans are found so routine empty checks do not create visible chat noise.
 

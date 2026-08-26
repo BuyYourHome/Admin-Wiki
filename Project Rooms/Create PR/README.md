@@ -205,12 +205,20 @@ Workflow:
    - `skills\<skill-name>\SKILL.md` exists when the room has a matching skill,
    - the intended chat title matches the Project Room name.
 5. When `Sync Github` is included, also verify the target computer has one machine-local `sync-gethub-daily` heartbeat attached to its existing `Sync Github` chat, scheduled daily at 5:30 AM Eastern, and has completed one safe run. The safe run must prove `git fetch origin` can update `.git\FETCH_HEAD`; if the managed runner is permission-denied on `.git\FETCH_HEAD`, verify a Wes-approved unsandboxed/local fetch path or mark unattended daily sync as pending. Do not create a separate `Sync Github Daily` chat or detached cron automation. Record missing installation or first-run verification as pending; route installation through Codex Environment only when that deployment is separately authorized.
-6. Build a startup prompt for each chat using the New Chat Startup Requirements in this README.
-7. Create each Codex chat only when Wes explicitly asks to create the chats or run this setup mode. If the Codex app connector returns a usable thread id, record it.
-8. If chat creation does not return a usable thread id promptly, stop waiting on that chat and mark it `pending until the dedicated chat is created`.
-9. Do not mark a chat as dispatchable until a usable thread id is recorded in the appropriate registry/routing metadata.
-10. Do not edit the target Project Room's content files merely because this mode created or verified a chat. Limit cross-PR writes to explicit chat/thread metadata that Wes authorized for this setup run.
-11. Save a run manifest under `C:\Codex\Wiki Files\Project Rooms\Create PR\outputs\minimum-pr-chat-set\` showing:
+6. For each Project Room in the set, check `Agents and Automations Registry.md` and the room README for required automations or heartbeats. Record whether each required automation is:
+   - not needed on this target computer,
+   - present and attached to the current machine-local task,
+   - missing,
+   - still targeting an obsolete task id,
+   - present but unverified,
+   - or blocked by permissions/connectors.
+7. When a required automation exists for a Project Room, Min PR Set must not treat the chat alone as complete. It must either verify the automation is attached to the current task id for this target computer, or record the automation as `pending automation setup`. Creating or retargeting the automation requires Wes's separate authorization for that scheduled or event-triggered behavior.
+8. Build a startup prompt for each chat using the New Chat Startup Requirements in this README.
+9. Create each Codex chat only when Wes explicitly asks to create the chats or run this setup mode. If the Codex app connector returns a usable thread id, record it.
+10. If chat creation does not return a usable thread id promptly, stop waiting on that chat and mark it `pending until the dedicated chat is created`.
+11. Do not mark a chat as dispatchable until a usable thread id is recorded in the appropriate registry/routing metadata.
+12. Do not edit the target Project Room's content files merely because this mode created or verified a chat. Limit cross-PR writes to explicit chat/thread metadata that Wes authorized for this setup run.
+13. Save a run manifest under `C:\Codex\Wiki Files\Project Rooms\Create PR\outputs\minimum-pr-chat-set\` showing:
     - target computer,
     - approved Project Room list,
     - chat title,
@@ -219,9 +227,10 @@ Workflow:
     - created or pending status,
     - thread id when available,
     - Sync Github automation status and first-safe-run status when applicable,
+    - required per-Project-Room automation status and target task id when applicable,
     - and any blocker.
-12. Commit only scoped Create PR mode outputs and authorized metadata updates.
-13. Push only under normal Admin wiki push rules.
+14. Commit only scoped Create PR mode outputs and authorized metadata updates.
+15. Push only under normal Admin wiki push rules.
 
 Safety rules:
 
@@ -230,7 +239,7 @@ Safety rules:
 - Do not assume identical chat names share context. Each chat must run its own startup prompt before doing file work.
 - Do not create substitute chats for a Project Room that already has a registered dedicated task/thread id unless Wes explicitly approves replacing or adding a chat for that room.
 - Do not route Jean Dispatcher work to any chat marked `pending`.
-- Do not create automations as part of this mode unless Wes separately asks for scheduled or event-triggered behavior.
+- Do not create or retarget automations as part of this mode unless Wes separately asks for the exact scheduled or event-triggered behavior. Missing or obsolete automations must be recorded as pending instead of silently ignored.
 
 ## Standard Create PR Workflow
 

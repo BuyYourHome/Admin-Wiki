@@ -46,6 +46,22 @@ If older OCR text, scan-run logs, generated review packets, or Lowe's statement 
 12. Write or append a `.log.txt` file in the SharePoint/Teams Logs folder, or in a verified local synced Logs folder when connector write access is unavailable, with the summary, destinations, confidence notes, and review items.
 13. When processing is complete and intent is clear, move the original scan to Archived through the connector or verified local sync path. Never delete it.
 
+## Automation Portability
+
+Each computer expected to process Doc Scan intake must have its own machine-local `doc-scan` heartbeat or automation attached to that computer's current `Doc Scan` task. A copied, migrated, archived, or obsolete task id does not run the heartbeat on the replacement computer.
+
+Before marking Doc Scan ready on a new or replacement computer, verify:
+
+- the `Doc Scan` task exists under the `Wiki Files` project;
+- the automation id `doc-scan` is present on that computer or explicitly recorded as not enabled there;
+- the automation targets the current machine-local `Doc Scan` task id, not an obsolete task id from another host or project;
+- the schedule matches the registry unless Wes approved a machine-specific exception;
+- the SharePoint/Teams connector can access the Office Admin scanned-files location;
+- the scratch root exists and is writable, preferably `C:\Codex\DocScanWork`;
+- one safe test run starts from the automation delivery path before relying on unattended processing.
+
+If the automation is missing, hidden, paused, completed, or targets an obsolete task id, do not assume uploaded scans will process later. Report `pending automation setup` and ask Wes before creating or retargeting scheduled behavior.
+
 ## Doc Search
 
 Use Doc Search when a scanned invoice, receipt, statement line, Lowe's allocation row, review item, or explicit Boss request needs supporting project-related document context that may not have come through the Doc Scan intake.
