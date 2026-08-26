@@ -4,7 +4,7 @@ Project room: [[Project Rooms/Doc Scan/README|Doc Scan Project Room]]
 
 Source folder:
 
-`C:\Users\wesbr\Buy Your Home\Buy Your Home - Office Admin\2026`
+SharePoint/Teams Office Admin `2026`, or a verified local synced equivalent only as fallback.
 
 Purpose: reference map for routing scanned statements, invoices, receipts, and related documents into the correct 2026 Office Admin folders.
 

@@ -12,6 +12,7 @@ This project room holds development notes, source inventory, and review artifact
 ## Current Status
 
 - Status: active.
+- Access model: connector-first. Use SharePoint/Teams connector access for scan discovery, source retrieval, destination confirmation, and filed outputs when available. Use a verified machine-local scratch root such as `C:\Codex\DocScanWork` for OCR, page rendering, splitting, and temporary work files. Use local synced OneDrive/Teams folders only as verified fallback paths for the signed-in Windows profile; do not depend on WesStudio-only `C:\Users\wesbr\...` paths on OfficeAssist or other target computers.
 - Automation id: `doc-scan`.
 - Schedule: every 15 minutes on weekdays from 10:00 AM through 4:45 PM Eastern.
 - Dedicated task/thread id: `019ecc0d-02b4-73a3-9c20-dacda5d811d0`.

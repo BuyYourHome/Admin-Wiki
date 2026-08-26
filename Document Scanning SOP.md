@@ -8,9 +8,9 @@ This SOP explains how the `doc-scan` skill and `document-scanning` automation pr
 
 ## Scope
 
-This process applies to scanned financial/admin PDFs and image scans (`.jpg` / `.jpeg`) placed in:
+This process applies to scanned financial/admin PDFs and image scans (`.jpg` / `.jpeg`) available in the Buy Your Home Office Admin `Scanned Files` location through SharePoint/Teams, or in a verified local synced scan-intake path for the current computer/profile.
 
-`C:\Users\wesbr\Buy Your Home\Buy Your Home - Office Admin\Scanned Files`
+Do not assume WesStudio's local OneDrive path (`C:\Users\wesbr\...`) exists or is usable on another computer.
 
 Supported document types include:
 
@@ -29,30 +29,32 @@ Supported document types include:
 
 ## Key Locations
 
-Scan intake folder:
+Scan intake:
 
-`C:\Users\wesbr\Buy Your Home\Buy Your Home - Office Admin\Scanned Files`
+- Primary: SharePoint/Teams connector to the Buy Your Home Office Admin `Scanned Files` location.
+- Fallback: a local synced scan-intake folder only after it is verified for the signed-in Windows profile.
 
 Primary Teams/SharePoint discovery path:
 
 - Use the SharePoint/Teams connector first to locate scans and destination folders when connector access is available.
-- Use the local synced folders as the scanner drop-zone, PDF processing workspace, archive/log location, and fallback path when the connector is unavailable or incomplete.
+- Use local synced folders only as a verified fallback, not as a hard-coded `C:\Users\wesbr\...` dependency.
+- Use a machine-local scratch/work folder outside the Admin wiki repo for PDF rendering, OCR, splitting, temporary files, and validation. Preferred path: `C:\Codex\DocScanWork`; use `D:\Codex\DocScanWork` or another approved local path when documented for the computer.
 
 Scan logs:
 
-`C:\Users\wesbr\Buy Your Home\Buy Your Home - Office Admin\Scanned Files\Logs`
+SharePoint/Teams Office Admin `Scanned Files\Logs`, or a verified local synced equivalent only as fallback.
 
 Archived originals:
 
-`C:\Users\wesbr\Buy Your Home\Buy Your Home - Office Admin\Scanned Files\Archived`
+SharePoint/Teams Office Admin `Scanned Files\Archived`, or a verified local synced equivalent only as fallback.
 
 Destination root:
 
-`C:\Users\wesbr\Buy Your Home\Buy Your Home - Office Admin\2026`
+SharePoint/Teams Office Admin `2026`, or a verified local synced equivalent only as fallback.
 
 Property/project destination root:
 
-`C:\Users\wesbr\Buy Your Home\Buy Your Home - Property`
+SharePoint/Teams Property library, or a verified local synced equivalent only as fallback.
 
 Installed skill:
 
@@ -90,25 +92,24 @@ It stays quiet when there are no new scans. It reports only when it processes fi
 ## What The Skill Does
 
 1. Checks Teams/SharePoint with the connector for new PDF, JPG, and JPEG scan files in the Office Admin scanned-files location when connector access is available.
-2. Checks the local synced scan intake folder as the scanner drop-zone, processing workspace, and fallback:
+2. Verifies or creates a machine-local scratch/work folder outside the Admin wiki repo for processing.
+3. Checks a local synced scan intake folder only when that exact path is verified for the signed-in Windows profile.
 
-   `C:\Users\wesbr\Buy Your Home\Buy Your Home - Office Admin\Scanned Files`
-
-3. Ignores files already inside `Logs` or `Archived`.
-4. Opens each new scan and checks:
+4. Ignores files already inside `Logs` or `Archived`.
+5. Opens each new scan and checks:
    - Page count
    - Whether text is embedded
    - Whether the scan is image-only
-5. If the PDF has no embedded text, or if the source is a JPG/JPEG image, treats it as a scanned image document and uses visual/OCR-style parsing.
-6. Reviews each page for:
+6. If the PDF has no embedded text, or if the source is a JPG/JPEG image, treats it as a scanned image document and uses visual/OCR-style parsing.
+7. Reviews each page for:
    - Company, lender, bank, or vendor name
    - Account number or account suffix
    - Statement date, billing date, or invoice date
    - Page numbering
    - Document headers and payment coupons
-7. Determines where each separate document starts and ends.
-8. Splits one combined PDF scan into separate PDF files when the document boundaries are clear. For JPG/JPEG scans, convert or file the document as a single PDF output unless the file is routed to review.
-9. Names each output file using:
+8. Determines where each separate document starts and ends.
+9. Splits one combined PDF scan into separate PDF files when the document boundaries are clear. For JPG/JPEG scans, convert or file the document as a single PDF output unless the file is routed to review.
+10. Names each output file using:
 
    `YY-MM-DD - Company.pdf`
 
@@ -116,18 +117,14 @@ It stays quiet when there are no new scans. It reports only when it processes fi
 
    `26-05-05 - First Citizens Bank VISA.pdf`
 
-10. Uses the SharePoint/Teams connector first to confirm destination folders and matching source documents when connector access is available.
-11. Saves each split or converted output PDF into the correct mapped folder under the Office Admin 2026 folder or the matching property/project/entity folder, depending on the document type:
+11. Uses the SharePoint/Teams connector first to confirm destination folders and matching source documents when connector access is available.
+12. Saves each split or converted output PDF into the correct mapped SharePoint/Teams folder under the Office Admin 2026 folder or the matching property/project/entity folder, depending on the document type. Verified local synced destinations are fallback only.
 
-   `C:\Users\wesbr\Buy Your Home\Buy Your Home - Office Admin\2026`
-
-   `C:\Users\wesbr\Buy Your Home\Buy Your Home - Property`
-
-12. Creates or updates a plain text log file in:
+13. Creates or updates a plain text log file in:
 
     `Scanned Files\Logs`
 
-13. Archives the original source scan in:
+14. Archives the original source scan in:
 
     `Scanned Files\Archived`
 
@@ -144,7 +141,7 @@ It stays quiet when there are no new scans. It reports only when it processes fi
 7. Do not rename the scanned file unless there is a specific reason. The scanner's default file name is enough because the automation will read, split or convert, rename, and file the documents.
 8. Place the PDF, JPG, or JPEG in:
 
-   `C:\Users\wesbr\Buy Your Home\Buy Your Home - Office Admin\Scanned Files`
+   SharePoint/Teams Office Admin `Scanned Files`, or a verified local synced equivalent only as fallback.
 
 9. Do not place new scans directly into `Logs` or `Archived`.
 
@@ -168,11 +165,11 @@ The skill uses the mapped folder structure as the routing authority.
 Common routing examples:
 
 - First Citizens credit card statement -> `2026\Credit Cards\...`
-- Mortgage statement -> matching property folder under `C:\Users\wesbr\Buy Your Home\Buy Your Home - Property`, then `Owning`, then the folder named for the mortgage company
-- Property insurance document -> matching property folder under `C:\Users\wesbr\Buy Your Home\Buy Your Home - Property`, then that property's `Insurance` folder
-- Property closing document -> matching property folder under `C:\Users\wesbr\Buy Your Home\Buy Your Home - Property`, then the same subfolder that already contains the unsigned version
+- Mortgage statement -> matching property folder in the SharePoint/Teams Property library, then `Owning`, then the folder named for the mortgage company
+- Property insurance document -> matching property folder in the SharePoint/Teams Property library, then that property's `Insurance` folder
+- Property closing document -> matching property folder in the SharePoint/Teams Property library, then the same subfolder that already contains the unsigned version
 - Signed operating agreement -> the same entity folder that already contains the unsigned or approved-final operating agreement
-- Project/property invoice or receipt with a specific property address -> matching property folder under `C:\Users\wesbr\Buy Your Home\Buy Your Home - Property`, then `Owning`
+- Project/property invoice or receipt with a specific property address -> matching property folder in the SharePoint/Teams Property library, then `Owning`
 - Bank statement -> `2026\Bank Statement\...`
 - Lowe's Pro statement -> `2026\Credit Cards\Lowe's Pro-SYH-6140`
 - Quest invoice -> `2026\Quest\Invoices\...`
@@ -195,7 +192,7 @@ For every scanned project invoice or receipt:
 1. Identify the related property using the property address, numeric street address, project name, entity label, or other reliable project details on the document.
 2. Match the property to a project folder under:
 
-   `C:\Users\wesbr\Buy Your Home\Buy Your Home - Property`
+   SharePoint/Teams Property library, or a verified local synced equivalent only as fallback.
 
 3. Open the matched property folder and drill into:
 
@@ -275,7 +272,7 @@ For every scanned mortgage statement:
 3. Identify the related property using the property address, numeric street address, borrower/entity, loan number or suffix, mortgage company, servicer, or other reliable details on the statement.
 4. Match the property to a project folder under:
 
-   `C:\Users\wesbr\Buy Your Home\Buy Your Home - Property`
+   SharePoint/Teams Property library, or a verified local synced equivalent only as fallback.
 
 5. Open the matched property folder and drill into:
 
@@ -304,7 +301,7 @@ These documents may arrive as one combined scan. For every scanned property clos
 2. Identify the related property using the property address, buyer/seller names, entity name, project folder name, closing date, document title, or other reliable closing-package details.
 3. Match the property to a project folder under:
 
-   `C:\Users\wesbr\Buy Your Home\Buy Your Home - Property`
+   SharePoint/Teams Property library, or a verified local synced equivalent only as fallback.
 
 4. Search that property's Teams-synced folder tree for the existing unsigned version of each document.
 5. File the signed document in the same folder as the matching unsigned version.
@@ -353,7 +350,7 @@ Property insurance documents are property documents when they come from an insur
 
 Use the current property/mortgage reference workbook when matching an insurance document to a property:
 
-`C:\Users\wesbr\Buy Your Home\Buy Your Home - Property\Credit Cards Sheet.xlsx`
+Property library `Credit Cards Sheet.xlsx`, or a verified local synced equivalent only as fallback.
 
 The `Mortgages` worksheet lists the current properties and mortgage context.
 
@@ -363,7 +360,7 @@ For every scanned property insurance document:
 2. Identify the related property using the property address, borrower/entity, mortgage company, loan number or suffix, insurance company, policy number, or other reliable document details.
 3. Match the property to a project folder under:
 
-   `C:\Users\wesbr\Buy Your Home\Buy Your Home - Property`
+   SharePoint/Teams Property library, or a verified local synced equivalent only as fallback.
 
 4. Open the matched property folder and drill into:
 
@@ -525,11 +522,13 @@ Email the report PDF to both `WesWill@BuyYourHomeLLC.com` and `Jenny@BuyYourHome
 
 ### SharePoint / Teams Connector Default
 
-Use the SharePoint/Teams connector as the default discovery path for scanned files and destination-folder matching when connector access is available.
+Use the SharePoint/Teams connector as the default source and destination access path for scanned files and destination-folder matching when connector access is available.
 
-The local synced folders remain the processing path for files dropped by the scanner and for PDF splitting, visual parsing, report generation, logging, and archiving. If the connector finds a scan that is not visible locally, download a working copy for processing, preserve the original SharePoint source file, log the SharePoint URL, and do not move or delete the source scan.
+Use a verified machine-local scratch root for PDF splitting, visual parsing, report generation, OCR scratch, temporary files, and validation. Preferred scratch root is `C:\Codex\DocScanWork`; use `D:\Codex\DocScanWork` or another approved path when documented for the computer.
 
-Use local synced folders as fallback when the connector is unavailable, lacks the needed site/library/folder, is stale, or cannot perform the required read/write action safely.
+Use local synced folders only as fallback when the connector is unavailable, lacks the needed site/library/folder, is stale, or cannot perform the required read/write action safely. The local synced path must be verified for the current Windows profile before use. Do not substitute a path under another user's profile, including `C:\Users\wesbr\...`, merely because it appears in older WesStudio instructions.
+
+If the connector finds a scan that is not visible locally, download a working copy to the scratch root for processing, preserve the original SharePoint source file, log the SharePoint URL, and do not move or delete the source scan except through the approved archive step.
 
 ### Source Document Retention Rule
 
@@ -554,7 +553,7 @@ When source documents are removed from the Admin wiki repo, preserve a pointer o
 
 Every processed source scan should have one `.log.txt` file in:
 
-`C:\Users\wesbr\Buy Your Home\Buy Your Home - Office Admin\Scanned Files\Logs`
+SharePoint/Teams Office Admin `Scanned Files\Logs`, or a verified local synced equivalent only as fallback.
 
 The log should include:
 
@@ -576,9 +575,7 @@ Use this checklist.
 
 1. Confirm the scan is a PDF, JPG, or JPEG.
 2. Use the SharePoint/Teams connector to confirm whether the scan exists in the Office Admin scanned-files location.
-3. Confirm whether the scan is visible in the local synced folder:
-
-   `C:\Users\wesbr\Buy Your Home\Buy Your Home - Office Admin\Scanned Files`
+3. If connector access is unavailable or incomplete, confirm whether the scan is visible in a verified local synced folder for the current Windows profile.
 
 4. Confirm it is not already in:
 

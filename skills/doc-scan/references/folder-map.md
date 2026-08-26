@@ -2,7 +2,7 @@
 
 Root:
 
-`C:\Users\wesbr\Buy Your Home\Buy Your Home - Office Admin\2026`
+SharePoint/Teams Office Admin `2026`, or a verified local synced equivalent only as fallback.
 
 ```text
 2026
