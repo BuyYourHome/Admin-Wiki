@@ -47,3 +47,15 @@ Outcome: `Done - August 20 recorded once; August 17 allocation still needs Wes`.
 - No draft was generated or delivered because the unresolved August 17 project allocation still prevents a complete proportional allocation of the fixed `$2,708.33` invoice. No filing, workbook posting, approval, payment, paid status, or email occurred.
 
 Outcome: `Done - August 21 recorded once; August 17 allocation still needs Wes`.
+
+## 2026-08-26 - Daily Draft Workflow Correction
+
+- Wes directed Invoice Entry to correct the workflow and send the missing current-period draft.
+- Reconciled the prior hold against the governing correction-by-exception rule. The August 17 3:45 PM-5:10 PM interval no longer suppresses later daily drafts.
+- Carried that interval once under the most reasonable source-supported working allocation, Pond, because it immediately follows the Pond interval and describes framing with Tim Fleming. Preserved the Rosebrooks wording as a visible correction request rather than inferring a split.
+- Draft total through August 21 is `42 hours 25 minutes`: Pond `21 hours 55 minutes`, Rosebrooks `12 hours`, BackOffice `7 hours 45 minutes`, and Tensity `45 minutes`.
+- Allocated the fixed `$2,708.33` semimonthly amount exactly: Pond `$1,399.39`, Rosebrooks `$766.21`, BackOffice `$494.84`, and Tensity `$47.89`.
+- Prepared the correction-review invoice under stable number `INV-JKLLC-20260831-001`. The period remains open through August 31; the draft is not final, approved, filed, posted, paid, or proof of payment.
+- Routed request `IE-EMAIL-20260826-JOSH-SEMIMONTHLY-DAILY-DRAFT-001` through Email Monitor. It was sent exactly once from OfficeAssist to Josh with Wes and Jenny copied and verified in OfficeAssist Sent Items at `2026-08-26T12:01:59Z`; message id ending `ACkJMD_wAAAA==`.
+
+Outcome: `Done - workflow corrected and current correction-review draft sent and verified`.

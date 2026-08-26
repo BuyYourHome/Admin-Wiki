@@ -399,3 +399,12 @@ Context: Tim Fleming reported his own hours and Jeff's hours in one source, and 
 - When labor is billed through a contractor, keep that contractor as issuer/payee and identify the actual worker on the applicable invoice lines.
 - Route the correction-review draft to the issuer/payee; a separate worker email is unnecessary unless the source says the worker bills independently.
 - A corrected package may supersede a verified draft delivery, but preserve the earlier Sent Items evidence and explicitly prevent either package from becoming a duplicate obligation.
+
+## 2026-08-26 - Correctable Ambiguity Must Not Stop Daily Time Card Drafts
+
+Context: Josh's August 16-31 daily drafts stopped after one August 17 interval mentioned both Pond framing and Rosebrooks work without expressly allocating the interval.
+
+- A prior correctable allocation ambiguity must not suppress later daily Time Card drafts.
+- Carry the interval once under the most reasonable source-supported working interpretation, label the interpretation in the PDF and email, and invite correction by exception.
+- Reconcile a later correction into the same interval and regenerate the same semimonthly invoice number; do not create another line or payment obligation.
+- A working interpretation permits correction-review delivery only. It does not establish final allocation, approval, filing, workbook posting, payment, or paid status.
