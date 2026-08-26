@@ -61,8 +61,8 @@ def build_invoice(data, output_path):
         pagesize=letter,
         rightMargin=0.55 * inch,
         leftMargin=0.55 * inch,
-        topMargin=0.48 * inch,
-        bottomMargin=0.48 * inch,
+        topMargin=0.38 * inch,
+        bottomMargin=0.35 * inch,
         title=f"{issuer} Time Card Invoice {invoice_no}",
         author=issuer,
     )
@@ -99,7 +99,7 @@ def build_invoice(data, output_path):
     story = []
     story.extend([
         Paragraph(f"<b>{issuer}</b><br/>{contact_email}", vendor),
-        Spacer(1, 0.09 * inch),
+        Spacer(1, 0.06 * inch),
     ])
     header = Table(
         [[
@@ -116,7 +116,7 @@ def build_invoice(data, output_path):
         ("LINEBELOW", (0, 0), (-1, -1), 1.2, accent),
         ("BOTTOMPADDING", (0, 0), (-1, -1), 10),
     ]))
-    story.extend([header, Spacer(1, 0.14 * inch)])
+    story.extend([header, Spacer(1, 0.11 * inch)])
 
     details = Table(
         [[
@@ -137,7 +137,7 @@ def build_invoice(data, output_path):
         ("TOPPADDING", (0, 0), (-1, -1), 8),
         ("BOTTOMPADDING", (0, 0), (-1, -1), 8),
     ]))
-    story.extend([details, Spacer(1, 0.17 * inch)])
+    story.extend([details, Spacer(1, 0.12 * inch)])
 
     summary_rows = [["Project / Destination", "Hours", "Allocated Cost"]]
     for row in allocation_summary:
@@ -158,10 +158,10 @@ def build_invoice(data, output_path):
         ("GRID", (0, 0), (-1, -1), 0.35, line_color),
         ("LEFTPADDING", (0, 0), (-1, -1), 6),
         ("RIGHTPADDING", (0, 0), (-1, -1), 6),
-        ("TOPPADDING", (0, 0), (-1, -1), 5),
-        ("BOTTOMPADDING", (0, 0), (-1, -1), 5),
+        ("TOPPADDING", (0, 0), (-1, -1), 4),
+        ("BOTTOMPADDING", (0, 0), (-1, -1), 4),
     ]))
-    story.extend([Paragraph("<b>Project Allocation Summary</b>", body), Spacer(1, 0.05 * inch), summary, Spacer(1, 0.17 * inch)])
+    story.extend([Paragraph("<b>Project Allocation Summary</b>", body), Spacer(1, 0.04 * inch), summary, Spacer(1, 0.12 * inch)])
 
     rows = [["Work Date", "Project / Destination", "Description", "Hours", "Allocated Cost"]]
     for line in lines:
@@ -187,10 +187,10 @@ def build_invoice(data, output_path):
         ("GRID", (0, 0), (-1, -1), 0.35, line_color),
         ("LEFTPADDING", (0, 0), (-1, -1), 4),
         ("RIGHTPADDING", (0, 0), (-1, -1), 4),
-        ("TOPPADDING", (0, 0), (-1, -1), 4),
-        ("BOTTOMPADDING", (0, 0), (-1, -1), 4),
+        ("TOPPADDING", (0, 0), (-1, -1), 3),
+        ("BOTTOMPADDING", (0, 0), (-1, -1), 3),
     ]))
-    story.extend([Paragraph("<b>Time and Allocation Detail</b>", body), Spacer(1, 0.05 * inch), items, Spacer(1, 0.14 * inch)])
+    story.extend([Paragraph("<b>Time and Allocation Detail</b>", body), Spacer(1, 0.04 * inch), items, Spacer(1, 0.08 * inch)])
 
     total = Table(
         [["Amount Due", money(expected_total)]],

@@ -238,3 +238,11 @@ The one-page PDF passed visual, extracted-text, hours, and arithmetic checks. Ac
 | Correction-review PDF and structured input | `Generated\2026-08-20-Tim-Pond-Hours-Draft` | 2 | 5,603 | generated vendor invoice draft; not approved, filed, posted, or paid |
 
 The one-page PDF passed visual, extracted-text, invoice-number, source, status, and arithmetic checks. The disposable QA render was removed after inspection. The draft records `18.5` hours / `$1,156.25` and visibly preserves the August 19 Rosebrooks-duration question. OfficeAssist delivery to Tim with Wes and Jenny copied was sent exactly once and verified at `2026-08-20T22:26:05Z`.
+
+## Josh Kennedy August 16-31 Draft Through August 25 Recorded 2026-08-26
+
+| Local working files | Teams destination under `Invoice Entry Working Archive` | Files | Bytes | Category |
+| --- | --- | ---: | ---: | --- |
+| Open-period correction-review PDF, structured input, and one-page QA render | `Generated\2026-08-26-Josh-Semimonthly-Daily-Draft-Through-Aug25` | 3 | 296,444 | semimonthly Time Card draft and QA evidence; August 25 allocation unresolved |
+
+The PDF matches SHA-256 `61D5BD870127149D73F6168597564687033F351C55F3D264563A05A2A3B463E4` and passed one-page visual, extracted-text, hours, ambiguity-label, and arithmetic checks. The August 25 10:30 AM-4:15 PM interval remains unallocated between Rosebrooks and BackOffice. The dispatch prohibited vendor contact, so this updated draft was not emailed. No approval, finalization, filing, workbook posting, payment, or paid status occurred.

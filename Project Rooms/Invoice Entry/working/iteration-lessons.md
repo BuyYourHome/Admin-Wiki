@@ -408,3 +408,4 @@ Context: Josh's August 16-31 daily drafts stopped after one August 17 interval m
 - Carry the interval once under the most reasonable source-supported working interpretation, label the interpretation in the PDF and email, and invite correction by exception.
 - Reconcile a later correction into the same interval and regenerate the same semimonthly invoice number; do not create another line or payment obligation.
 - A working interpretation permits correction-review delivery only. It does not establish final allocation, approval, filing, workbook posting, payment, or paid status.
+- When a source-specific handoff expressly prohibits any allocation inference, retain the interval once in an `Unallocated` correction-review bucket instead of guessing or duplicating it across both candidates. A prepared draft does not override an explicit no-contact restriction.

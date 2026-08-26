@@ -59,3 +59,16 @@ Outcome: `Done - August 21 recorded once; August 17 allocation still needs Wes`.
 - Routed request `IE-EMAIL-20260826-JOSH-SEMIMONTHLY-DAILY-DRAFT-001` through Email Monitor. It was sent exactly once from OfficeAssist to Josh with Wes and Jenny copied and verified in OfficeAssist Sent Items at `2026-08-26T12:01:59Z`; message id ending `ACkJMD_wAAAA==`.
 
 Outcome: `Done - workflow corrected and current correction-review draft sent and verified`.
+
+## 2026-08-26 - August 25 Intake
+
+- Accepted authoritative message `prmsg-email-monitor-route-vendor-invoice-20260826-josh-time-card-001` / dispatch `email-monitor-route-vendor-invoice-20260826-josh-time-card-001`, payload hash `dc38b252a0b7952732092fdb32e873533280f4a50f4e594c6641bcf858718b94`, before substantive work and recorded Processing.
+- Read only the exact OfficeAssist message ending `ACkJJCVQAAAA==`. Duplicate checking found no matching dispatch, message, or August 25 Josh line.
+- Added once the clear Rosebrooks interval, 7:45 AM-10:30 AM (`2 hours 45 minutes`), for installing the back-door lock and deadbolt. No break was stated or deducted.
+- Retained once the 10:30 AM-4:15 PM interval (`5 hours 45 minutes`) as `Unallocated - Rosebrooks or BackOffice`. The source calls it yardwork after stating the day was at Rosebrooks, then separately says BackOffice work; no project was inferred.
+- Updated draft total through August 25 is `50 hours 55 minutes`: Pond `21h55m`, Rosebrooks `14h45m`, BackOffice `7h45m`, Tensity `0h45m`, and unallocated `5h45m`.
+- Provisionally distributed the fixed `$2,708.33` amount across those time buckets so the draft reconciles exactly: Pond `$1,165.77`, Rosebrooks `$784.58`, BackOffice `$412.23`, Tensity `$39.89`, and unallocated `$305.86`.
+- Regenerated the stable invoice as a one-page correction-review PDF and verified the rendered page and extracted text. Compact spacing in the reusable generator prevents the amount due from spilling onto a second page as the period gains lines.
+- The dispatch expressly prohibited vendor contact. No email was requested or sent; no approval, finalization, filing, posting, workbook action, payment, or paid status occurred.
+
+Outcome: `Needs Wes - clarify the August 25 10:30 AM-4:15 PM Rosebrooks/BackOffice allocation or separately authorize correction-review delivery`.

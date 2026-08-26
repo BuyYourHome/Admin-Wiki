@@ -2,7 +2,7 @@
 
 ## Status
 
-- State: `Period Open - Correction-Review Draft Through August 21 Sent And Verified - August 17 Working Allocation Flagged`
+- State: `Period Open - Updated Draft Through August 25 Prepared - August 25 Allocation Unresolved - Delivery Withheld By Dispatch Restriction`
 - Stable invoice number: `INV-JKLLC-20260831-001`
 - Semimonthly period: `2026-08-16 through 2026-08-31`
 - Issuer: `Josh Kennedy LLC`
@@ -24,6 +24,7 @@
 - Dispatch `email-monitor-route-vendor-invoice-20260820-josh-time-card-aug19-001`; payload hash `8c71ce9651518ad7f046ff0d8ba3cc4482a8a08b366db0d7e0aeb1c108a7ac00`; Outlook message ending `ACjkdy7AAAAA==`. August 19: Rosebrooks 6:00 AM-10:45 AM and Pond 10:45 AM-2:45 PM.
 - Dispatch `email-monitor-route-vendor-invoice-20260821-josh-time-card-aug20-001`; payload hash `c5c7c4d06173d95360159751dab914b4870428786ce47db479b3005e069404b0`; Outlook message ending `ACjvzcuAAAAA==`. August 20: BackOffice 8:00 AM-3:45 PM and 4121 Tensity Dr 3:45 PM-4:30 PM installing the outside storage-closet door, handle, and deadbolt.
 - Dispatch `email-monitor-route-vendor-invoice-20260824-josh-time-card-aug21-001`; message id `prmsg-email-monitor-route-vendor-invoice-20260824-josh-time-card-aug21-001`; payload hash `496b36f77bd34661e088c71a7060508e56b084ad91830084e0f7c0cd7061e58e`; Outlook message ending `ACkJJCTgAAAA==`. August 21: 115 Rosebrooks Dr 6:00 AM-12:00 PM removing cabinet doors and hardware and helping load the truck with items for Green Leaf.
+- Dispatch `email-monitor-route-vendor-invoice-20260826-josh-time-card-001`; message id `prmsg-email-monitor-route-vendor-invoice-20260826-josh-time-card-001`; payload hash `dc38b252a0b7952732092fdb32e873533280f4a50f4e594c6641bcf858718b94`; Outlook message ending `ACkJJCVQAAAA==`. August 25: Rosebrooks 7:45 AM-10:30 AM installing the back-door lock and deadbolt; 10:30 AM-4:15 PM is retained once as unallocated because the source calls it Rosebrooks yardwork and then separately says BackOffice work.
 - The August 18 `$50.00` bed-frame sale is a separate Receipt-mode hold and is not time or invoice compensation.
 
 ## Accepted Line
@@ -39,8 +40,10 @@
 | 2026-08-20 | BackOffice | 8:00 AM | 3:45 PM | 7 hours 45 minutes | BackOffice work | Added once from the exact August 20 source; no break was stated or deducted. |
 | 2026-08-20 | 4121 Tensity Dr | 3:45 PM | 4:30 PM | 45 minutes | Installed the outside storage-closet door, door handle, and deadbolt | Added once from the exact August 20 source; no break was stated or deducted. |
 | 2026-08-21 | 115 Rosebrooks Dr | 6:00 AM | 12:00 PM | 6 hours | Removed cabinet doors and hardware; helped load the truck with items for Green Leaf | Added once from the exact August 21 source; no break was stated or deducted. |
+| 2026-08-25 | 115 Rosebrooks Dr | 7:45 AM | 10:30 AM | 2 hours 45 minutes | Installed the back-door lock and deadbolt | Added once from the exact August 25 source; no break was stated or deducted. |
+| 2026-08-25 | Unallocated - Rosebrooks or BackOffice | 10:30 AM | 4:15 PM | 5 hours 45 minutes | Source says yardwork after stating the day was at Rosebrooks, then separately says BackOffice work | Retained once without project inference. Correction is required before final allocation. |
 
-Draft total through August 21: `42 hours 25 minutes` (`21 hours 55 minutes` Pond under the flagged working interpretation, `12 hours` Rosebrooks, `7 hours 45 minutes` BackOffice, and `45 minutes` Tensity). The fixed `$2,708.33` amount is allocated as `$1,399.39` Pond, `$766.21` Rosebrooks, `$494.84` BackOffice, and `$47.89` Tensity.
+Draft total through August 25: `50 hours 55 minutes` (`21 hours 55 minutes` Pond under the flagged August 17 working interpretation, `14 hours 45 minutes` Rosebrooks, `7 hours 45 minutes` BackOffice, `45 minutes` Tensity, and `5 hours 45 minutes` unallocated between Rosebrooks and BackOffice). The fixed `$2,708.33` amount is provisionally distributed as `$1,165.77` Pond, `$784.58` Rosebrooks, `$412.23` BackOffice, `$39.89` Tensity, and `$305.86` unallocated pending correction.
 
 ## Duplicate And Period Control
 
@@ -50,10 +53,13 @@ Draft total through August 21: `42 hours 25 minutes` (`21 hours 55 minutes` Pond
 - The August 18 and 19 sources were added once without duplicating the August 17 interval. The correctable August 17 ambiguity does not suppress draft delivery; no split is inferred.
 - The August 20 source was added once as two non-overlapping, expressly allocated intervals. It does not resolve or duplicate the held August 17 interval.
 - The August 21 source was added once as one expressly allocated Rosebrooks interval. It does not resolve or duplicate the held August 17 interval.
+- The August 25 source is recorded once. The clear 7:45 AM-10:30 AM interval is Rosebrooks; the conflicting 10:30 AM-4:15 PM interval is one unallocated draft line, not both a Rosebrooks and BackOffice line.
 
 ## Correction-Review Note
 
 The draft places the `3:45 PM` to `5:10 PM` interval at `908 Pond St` as a working interpretation because it immediately follows the Pond interval and describes framing with Tim Fleming. The PDF and email must ask Josh to correct the allocation if the interval belongs to `115 Rosebrooks Dr` or should be split. The August 16-31 period remains open and the invoice is not final, approved, filed, posted, paid, or proof of payment.
+
+The August 25 `10:30 AM` to `4:15 PM` interval remains explicitly unallocated between Rosebrooks and BackOffice because the source conflicts and the dispatch prohibits inference. The updated one-page correction-review PDF through August 25 was generated and visually verified, but the dispatch expressly withheld vendor contact, so no new email was requested or sent.
 
 ## Delivery Evidence
 
