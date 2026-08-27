@@ -75,6 +75,24 @@ def build_invoice(data, output_path):
         leading=11,
         textColor=colors.HexColor("#111827"),
     )
+    if len(lines) >= 15:
+        detail_font_size = 7.0
+        detail_leading = 8.0
+        detail_padding = 1.0
+    elif len(lines) >= 12:
+        detail_font_size = 7.4
+        detail_leading = 8.6
+        detail_padding = 1.5
+    else:
+        detail_font_size = 8.2
+        detail_leading = 11
+        detail_padding = 3
+    detail_body = ParagraphStyle(
+        "DetailBody",
+        parent=body,
+        fontSize=detail_font_size,
+        leading=detail_leading,
+    )
     vendor = ParagraphStyle(
         "Vendor",
         parent=body,
@@ -167,8 +185,8 @@ def build_invoice(data, output_path):
     for line in lines:
         rows.append([
             required(line, "date"),
-            Paragraph(required(line, "project"), body),
-            Paragraph(required(line, "description"), body),
+            Paragraph(required(line, "project"), detail_body),
+            Paragraph(required(line, "description"), detail_body),
             line.get("hours_display", f"{float(required(line, 'hours')):.2f}"),
             money(required(line, "allocated_cost")),
         ])
@@ -181,14 +199,14 @@ def build_invoice(data, output_path):
         ("BACKGROUND", (0, 0), (-1, 0), deep),
         ("TEXTCOLOR", (0, 0), (-1, 0), colors.white),
         ("FONTNAME", (0, 0), (-1, 0), "Helvetica-Bold"),
-        ("FONTSIZE", (0, 0), (-1, -1), 8.2),
+        ("FONTSIZE", (0, 0), (-1, -1), detail_font_size),
         ("ALIGN", (3, 1), (-1, -1), "RIGHT"),
         ("VALIGN", (0, 0), (-1, -1), "TOP"),
         ("GRID", (0, 0), (-1, -1), 0.35, line_color),
         ("LEFTPADDING", (0, 0), (-1, -1), 4),
         ("RIGHTPADDING", (0, 0), (-1, -1), 4),
-        ("TOPPADDING", (0, 0), (-1, -1), 3),
-        ("BOTTOMPADDING", (0, 0), (-1, -1), 3),
+        ("TOPPADDING", (0, 0), (-1, -1), detail_padding),
+        ("BOTTOMPADDING", (0, 0), (-1, -1), detail_padding),
     ]))
     story.extend([Paragraph("<b>Time and Allocation Detail</b>", body), Spacer(1, 0.04 * inch), items, Spacer(1, 0.08 * inch)])
 

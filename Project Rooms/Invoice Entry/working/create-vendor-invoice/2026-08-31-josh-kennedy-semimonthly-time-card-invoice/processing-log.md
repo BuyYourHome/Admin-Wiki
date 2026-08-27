@@ -72,3 +72,18 @@ Outcome: `Done - workflow corrected and current correction-review draft sent and
 - The dispatch expressly prohibited vendor contact. No email was requested or sent; no approval, finalization, filing, posting, workbook action, payment, or paid status occurred.
 
 Outcome: `Needs Wes - clarify the August 25 10:30 AM-4:15 PM Rosebrooks/BackOffice allocation or separately authorize correction-review delivery`.
+
+## 2026-08-27 - August 26 Intake
+
+- Accepted authoritative message `prmsg-email-monitor-route-vendor-invoice-20260827-josh-time-card-001` / dispatch `email-monitor-route-vendor-invoice-20260827-josh-time-card-001`, payload hash `0a6772c0dfcaec73e05f5dc4ade2388b78ec069a826d182532e13d07428bca6f`, before substantive work and recorded Processing.
+- Duplicate checking found no matching dispatch, message, Outlook source ending `ACkJJCVwAAAA==`, or August 26 Josh line.
+- Added August 26 once: source-stated `115 Rose Brooks Dr.` 7:00 AM-9:00 AM (`2 hours`) working on countertops, then source-stated `908 Pond Dr.` 9:00 AM-4:00 PM (`7 hours`) framing walls with Tim Fleming. No break was stated or deducted.
+- Preserved both source property spellings and exact intervals while mapping the invoice destinations to the established `115 Rosebrooks Dr` and `908 Pond St` projects.
+- Updated draft total through August 26 to `59 hours 55 minutes`: Pond `28h55m`, Rosebrooks `16h45m`, BackOffice `7h45m`, Tensity `0h45m`, and unallocated `5h45m`.
+- Recalculated the fixed `$2,708.33` amount exactly: Pond `$1,307.08`, Rosebrooks `$757.13`, BackOffice `$350.31`, Tensity `$33.90`, and unallocated `$259.91`.
+- Corrected the draft invoice date to the semimonthly period end, `2026-08-31`, under the canonical Time Card rule.
+- The initial render placed only `Amount Due` on page two. Updated the owned generator to use compact detail-table typography and padding for 12 or more lines; the regenerated PDF passed one-page visual, extracted-text, source-spelling, hours, and arithmetic checks. PDF SHA-256: `DB797EB679CCAB3BEB17CF9B507147695323EF65B0E1A2E5F52BCCE5E8427ACE`.
+- The dispatch expressly prohibited vendor contact. No email was requested or sent; no filing, workbook action, approval, payment, or paid status occurred.
+- A Teams working-archive copy was not authorized by this intake. The three verified generated files remain locally classified pending explicit archive authority.
+
+Outcome: `Done - August 26 recorded once and one-page internal draft regenerated; delivery and other external actions withheld`.

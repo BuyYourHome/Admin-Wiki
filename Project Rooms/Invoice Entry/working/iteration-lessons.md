@@ -409,3 +409,12 @@ Context: Josh's August 16-31 daily drafts stopped after one August 17 interval m
 - Reconcile a later correction into the same interval and regenerate the same semimonthly invoice number; do not create another line or payment obligation.
 - A working interpretation permits correction-review delivery only. It does not establish final allocation, approval, filing, workbook posting, payment, or paid status.
 - When a source-specific handoff expressly prohibits any allocation inference, retain the interval once in an `Unallocated` correction-review bucket instead of guessing or duplicating it across both candidates. A prepared draft does not override an explicit no-contact restriction.
+
+## 2026-08-27 - Long Time Card Detail Must Keep Amount Due With The Invoice
+
+Context: Adding the twelfth and thirteenth active detail lines caused the amount-due block to spill onto an otherwise blank second page.
+
+- Treat a nearly blank second page containing only the amount-due block as a PDF layout defect, not an acceptable continuation page.
+- For 12 or more detail lines, reduce detail-table paragraph leading, font size, and vertical padding while keeping headings, summary totals, and amount due at normal emphasis.
+- For 15 or more detail lines, use the next compact tier and rerender; never shrink blindly without visual inspection.
+- After each tier change, require one-page verification when practical, readable source wording, exact line and summary totals, and visible amount due.

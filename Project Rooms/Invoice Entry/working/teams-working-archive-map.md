@@ -246,3 +246,11 @@ The one-page PDF passed visual, extracted-text, invoice-number, source, status, 
 | Open-period correction-review PDF, structured input, and one-page QA render | `Generated\2026-08-26-Josh-Semimonthly-Daily-Draft-Through-Aug25` | 3 | 296,444 | semimonthly Time Card draft and QA evidence; August 25 allocation unresolved |
 
 The PDF matches SHA-256 `61D5BD870127149D73F6168597564687033F351C55F3D264563A05A2A3B463E4` and passed one-page visual, extracted-text, hours, ambiguity-label, and arithmetic checks. The August 25 10:30 AM-4:15 PM interval remains unallocated between Rosebrooks and BackOffice. The dispatch prohibited vendor contact, so this updated draft was not emailed. No approval, finalization, filing, workbook posting, payment, or paid status occurred.
+
+## Josh Kennedy August 16-31 Draft Through August 26 - Local Archive Hold Recorded 2026-08-27
+
+| Local working files | Intended Teams destination under `Invoice Entry Working Archive` | Files | Bytes | Status |
+| --- | --- | ---: | ---: | --- |
+| One-page correction-review PDF, structured input, and QA render under `working\create-vendor-invoice\2026-08-31-josh-kennedy-semimonthly-time-card-invoice\generated-2026-08-27` | `Generated\2026-08-27-Josh-Semimonthly-Daily-Draft-Through-Aug26` | 3 | 283,859 | Retained locally; this intake did not authorize copying the draft to Teams |
+
+The PDF matches SHA-256 `DB797EB679CCAB3BEB17CF9B507147695323EF65B0E1A2E5F52BCCE5E8427ACE` and passed one-page visual, extracted-text, source-spelling, hours, and arithmetic checks. The files are classified and preserved locally pending explicit archive authority. No email, filing, workbook action, approval, payment, or paid status occurred.
