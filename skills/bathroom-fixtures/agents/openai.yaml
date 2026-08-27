@@ -1,0 +1,4 @@
+interface:
+  display_name: "Bathroom Fixtures"
+  short_description: "Compare and specify bathroom fixture systems"
+  default_prompt: "Use the Bathroom Fixtures Project Room to compare exact products, verify current specifications and pricing, and produce a project-specific recommendation without ordering anything."
