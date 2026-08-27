@@ -11,7 +11,7 @@ This is the live task registry for the universal [[Project Room Delegation Contr
 | Admin Wiki Maintenance | pending | pending | Jean handles only when Wes authorizes shared Admin governance work. | No matching skill at rollout. |
 | AIOS | `aios` | pending | Route planning or AIOS system-design work here. | Active/planning. |
 | Amortization | `amortization` | pending | Route amortization-table support here, usually as a support handoff from Contract for Deed or spreadsheet work. | Support PR. |
-| Bathroom Fixtures | `bathroom-fixtures` | pending | Route bathroom fixture comparisons, specifications, sourcing research, and fixture schedules here. | Pending dedicated task; no purchasing authority. |
+| Bathroom Fixtures | `bathroom-fixtures` | `01a0432b-d780-7b01-aed3-e0af40daa663` | Route bathroom fixture comparisons, specifications, sourcing research, and fixture schedules here. | Active dedicated task; no purchasing authority. |
 | Brynda Suit | `brynda-suit` | `019f61c3-d4c0-7a52-a5a0-e4066ea9b303` | Route Brynda Suit source review and response drafting here. | Do not send replies without Wes approval unless that PR's rules authorize it. |
 | CMA Report | `cma-report` | pending | Route CMA/property-report work here. | Per-property CMA rooms are child/output rooms. |
 | CMA Report - 5009 Sunnyfield Dr | shared `cma-report` | pending | Route through CMA Report. | Per-property output room; no separate skill. |

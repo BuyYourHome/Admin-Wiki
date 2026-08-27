@@ -7,9 +7,9 @@ Research, compare, select, and document bathroom fixtures and fixture systems fo
 ## Status
 
 - Project Room: `Bathroom Fixtures`
-- Setup status: Pending dedicated task creation
-- Dedicated task ID: pending
-- Dispatchable: No
+- Setup status: Active discovery
+- Dedicated task ID: `01a0432b-d780-7b01-aed3-e0af40daa663`
+- Dispatchable: Yes
 - Current phase: Smart-shower system comparison and requirements discovery
 
 ## Default Workflow
