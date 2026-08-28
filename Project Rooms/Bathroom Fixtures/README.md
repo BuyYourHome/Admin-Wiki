@@ -52,6 +52,11 @@ Find current products, availability, pricing, and approved purchasing options wi
 - `working/`: source inventory, comparison notes, conflicts, requirements, and open questions.
 - `outputs/`: review-ready comparisons, fixture schedules, specifications, and budgets.
 
+## Diagram Standard
+
+- In fixture and plumbing diagrams, make every identified product or selected model a clickable link to its source page.
+- Keep products that have not yet been selected labeled as pending rather than linking them to an assumed model.
+
 ## Required Pointers
 
 Start PR: Before durable work, follow Start PR in `C:\Codex\Wiki Files\Project Room Chat Startup Rule.md`. Interpret unqualified requests under the Current PR Scope Rule in that file. Work on main unless Wes explicitly asks for a branch.
