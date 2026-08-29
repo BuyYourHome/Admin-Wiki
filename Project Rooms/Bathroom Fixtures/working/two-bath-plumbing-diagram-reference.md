@@ -12,7 +12,9 @@
 - The Endurance Peregrine is the only Hall-bath tub selection; the Venice alternate is removed.
 - The plumbing page pairs each Delta rough-in with its selected Ashlyn trim: T14064-SS at both R10000 mixers, T11964-SS at the Master R11000, and T11864-SS at the Hall R11000.
 - The cost page pictures and links the controller, every selected trim item, and the selected shower fixtures.
-- Current rough-in and Peregrine subtotal: $2,255.74. Current visible trim and controller subtotal: $1,214.03. Selected shower-fixture subtotal: $486.94. Selected package total before unpriced items: $3,956.71.
+- Hall Position 2 uses the selected [Delta Ashlyn RP77092SS non-diverter tub spout in Stainless](https://www.deltafaucet.com/bathroom/product/RP77092SS.html).
+- Current rough-in and Peregrine subtotal: $2,255.74. Current visible trim, tub spout, and controller subtotal: $1,354.51. Selected shower-fixture subtotal: $486.94. Selected fixture-package total: $4,097.19.
+- The priced planning connection schedule adds four SharkBite U2008-0000LF check valves, two SharkBite Max UR362A tees, two Delta U4993-SS wall-shower arms/flanges, one Delta RP61058SS ceiling arm/flange, one Delta 50570-SS-PR wall elbow, and four SharkBite Max UR334Z drop-ear elbows. Connection-component subtotal: $459.09. Planning total: $4,556.28.
 
 ## Selected Shower Fixtures
 
@@ -24,9 +26,9 @@ Removed from consideration: Delta 51567-SS-PR, Delta 55085-SS, and Delta 52841-S
 
 ## Remaining Decisions
 
-- Select the Hall-bath tub spout.
-- Select the four check valves and confirm the common-tee/fitting arrangement with the plumber.
-- Select shower arms, flanges, drop elbows, and any model-specific connection fittings not included with the fixtures.
+- Have the plumber approve the provisional 1/2-in push-to-connect check valves, tees, drop-ear elbows, and final common-tee/fitting arrangement.
+- Confirm ceiling mounting and the 6-in drop for the Master RP50841SS rainhead; substitute an approved extended wall arm if the final layout is wall-mounted.
+- Complete the installer takeoff for pipe lengths, access panels, electrical scope, and any additional model-specific adapters or transition fittings.
 - Confirm acceptance of the selected 51584-PR's polished Lumicoat Chrome finish alongside the Ashlyn Stainless trim package.
 - Confirm final pipe sizing, access panels, GFCI power, hot-water capacity, and installer approval.
 

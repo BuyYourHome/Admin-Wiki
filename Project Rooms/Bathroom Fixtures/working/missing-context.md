@@ -13,7 +13,7 @@
 - Smart-home platform and importance of voice, app, or HomeKit control.
 - Preference for tactile controls versus touchscreen controls.
 - Installer or plumber requirements and preferred service brand.
-- Hall-bath tub-spout selection.
-- Four check-valve models and final common-tee/fitting arrangement.
-- Shower arms, flanges, drop elbows, and model-specific connection fittings.
+- Plumber approval of the provisional SharkBite U2008-0000LF check valves, UR362A common tees, UR334Z drop-ear elbows, and final fitting arrangement.
+- Confirmation that the Master RP50841SS rainhead will be ceiling-mounted with the selected RP61058SS 6-in arm; otherwise an extended wall-arm selection is needed.
+- Final pipe lengths, access-panel count and sizes, electrical takeoff, and any additional model-specific adapters or transition fittings.
 - Confirmation that the selected 51584-PR Lumicoat Chrome finish is acceptable alongside the Ashlyn Stainless trim package.
