@@ -542,6 +542,7 @@ Important rules:
 - Use the standard Project Room startup text from `Project Room Chat Startup Rule.md`.
 - Create new PR materials on `main` unless Wes explicitly asks for a branch.
 - Add `main` working-branch guidance to each new Project Room README.
+- Keep every new Project Room `Pending messaging registration - not dispatchable` until its exact task metadata, destination manifest, execution-machine registration, host access, and one-notification synthetic lifecycle pass the Create PR messaging-readiness validator.
 - Do not create Teams folders, automations, or external deliverables unless Wes explicitly asks.
 - Commit only the scoped Project Room, skill, registry, and index files for the room being created.
 

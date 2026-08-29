@@ -1,5 +1,5 @@
 {
-  "schema_version": 1,
+  "schema_version": 2,
   "project_room": "Create PR",
   "skill": "create-pr",
   "task_id": "019fdc5e-a1da-7e10-b388-a3be3830ac89",
@@ -8,5 +8,13 @@
   "owned_actions": ["Project Room creation", "Project Room package standardization", "dedicated task setup metadata", "Project Room relationship diagrams"],
   "accepted_message_types": ["request", "question", "status", "decision", "result", "improvement"],
   "related_project_rooms": ["Jean Wright", "Dashboard", "Codex Environment"],
-  "limitations": ["does not execute specialized work owned by another Project Room", "does not substitute tasks for missing registered destinations", "does not change machine registrations without authorization"]
+  "limitations": ["does not execute specialized work owned by another Project Room", "does not substitute tasks for missing registered destinations", "does not change machine registrations without authorization"],
+  "messaging_readiness": {
+    "status": "ready",
+    "machine_registration_verified_at_utc": "2026-08-29T17:19:54.7338524Z",
+    "host_access_verified_at_utc": "2026-08-29T17:26:04.8711500Z",
+    "validation_message_id": "prmsg-create-pr-readiness-validation-20260829-1726",
+    "lifecycle_completed_at_utc": "2026-08-29T17:26:57.4094125Z",
+    "notification_count": 1
+  }
 }

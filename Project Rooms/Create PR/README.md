@@ -47,6 +47,15 @@ This room was created to hold the standard Create PR process.
 - Thread id: `019fdc5e-a1da-7e10-b388-a3be3830ac89`
 - Purpose: continue developing and using this Project Room creation workflow.
 
+## Messaging Readiness
+
+- Dispatchable: Yes
+- Destination manifest: `C:\Codex\Wiki Files\config\pr-messaging-manifests\create-pr.json`
+- Execution machine: `WESSTUDIO`
+- Exact machine registration: verified for task `019fdc5e-a1da-7e10-b388-a3be3830ac89`
+- Host access: verified to `\\WES-VIDEOEDITOR\BYH-PRMessaging$`
+- Synthetic lifecycle: `prmsg-create-pr-readiness-validation-20260829-1726` completed after exactly one notification with Accepted, Processing, and Completed under the exact destination identity.
+
 ## Main And Push
 
 - Working branch: `main`
@@ -83,6 +92,23 @@ Every new PR requires a dedicated Codex task. A request to create the PR include
 5. Report that the local PR package is complete and the dedicated task creation is pending because the connector did not return.
 6. Do not let task creation block the whole PR setup, and do not retry indefinitely in the same turn.
 7. When the connector later succeeds, record the returned thread id in the PR README and registry, then commit that small metadata update separately.
+
+## Mandatory Messaging Readiness Gate
+
+Every generated Project Room package must contain a `## Messaging Readiness` section in its README and matching skill. A new room starts as `Pending messaging registration - not dispatchable`.
+
+Create PR must complete this checklist after the dedicated task is created:
+
+1. Record the exact task id in the Project Room README, `Agents and Automations Registry.md`, and `Project Rooms\Jean Wright\working\dispatcher-routing-map.md`.
+2. Create `config\pr-messaging-manifests\<skill-name>.json` with `dispatchable` set to `false`, the exact task id, and the exact execution machine.
+3. On that execution machine, register the exact Project Room/task identity with `tools\pr-messaging\Register-ProjectRoomMessagingClient.ps1` under the normal Windows profile that runs Codex.
+4. Verify authenticated access to `\\WES-VIDEOEDITOR\BYH-PRMessaging$` with the canonical message tool.
+5. Create an immutable synthetic validation message with `Manage-ProjectRoomMessage.ps1`, write `StartAttempt` before exactly one task notification, and require `Accepted`, `Processing`, and `Completed` under the exact destination identity.
+6. Record the validation message id and timestamps in the destination manifest.
+7. Run `tools\pr-messaging\Test-ProjectRoomMessagingReadiness.ps1` on the exact execution machine.
+8. Change `dispatchable` to `true` and mark `Dispatchable: Yes` only after the validator returns `ready: true`.
+
+If any check fails, keep the README, registry, routing map, manifest, and setup report marked `Pending messaging registration - not dispatchable`. Do not substitute a task or machine, store credentials in Git, or change an existing machine registration merely to make an audit pass.
 
 ## Delegated Dashboard Deletion Authorization
 
@@ -260,9 +286,9 @@ Safety rules:
 15. Update `Agents and Automations Registry.md` when the workflow is agent-like, repeatable, or expected to have a dedicated chat.
 16. Add an `Admin Home.md` link when the room should be easy to find from the wiki start page.
 17. Create and commit the scoped durable files locally before attempting a dedicated Codex task.
-18. A Project Room is `pending setup`, not dispatchable, until it has a dedicated task/thread id recorded in its README, registry entry, and Jean routing map. Do not route specialized work to a pending room.
+18. A Project Room is `pending setup`, not dispatchable, until it passes the Mandatory Messaging Readiness Gate. A recorded task id by itself is not enough.
 19. Treat the request to create the new PR as authorization to create its dedicated Codex chat. Reuse a verified existing matching task when one already owns the room; otherwise attempt chat creation once using the Project Room Chat Startup Rule startup text. If no usable id is returned, record the explicit task-creation blocker and report that the PR package is not dispatchable.
-20. If a dedicated chat is created, record the returned thread id in the README, registry, and Jean routing map, then commit that metadata update separately.
+20. If a dedicated chat is created, record the returned thread id in the README, registry, and Jean routing map, then complete the manifest, execution-machine registration, host-access, and exact-identity synthetic lifecycle checks before marking it dispatchable.
 21. Push only when Wes explicitly asks, says the work is finished, or the applicable rule defines the deliverable as ready to publish.
 
 ## Existing PR Rename Or Move Rule
@@ -299,6 +325,8 @@ Every new PR should be able to receive a Jean Dispatcher handoff without adding 
 - The central Dispatcher Intake And Return Rule governs incoming Jean handoffs.
 - The registry entry identifies the Project Room, matching skill, status, schedule, and primary definition.
 - Jean's routing map records the PR, skill, task/thread id or `pending`, and routing notes.
+- `config\pr-messaging-manifests\<skill-name>.json` records the exact task id, execution machine, gate evidence, and dispatchability state.
+- The exact Project Room/task identity is registered on the execution machine and has passed one immutable synthetic Accepted, Processing, and Completed lifecycle after exactly one notification.
 - README and skill include the short PR Messaging pointer to `C:\Codex\Wiki Files\Project Room Messaging Rule.md`.
 - A `pending` task/thread id means the room is not dispatchable. Jean must return that blocker to Wes instead of routing work to another chat, creating a substitute chat, or handling the room's specialized work locally.
 - If the room receives substantial routed work, create or update `working\work-status.md`; do not create work-status files for trivial questions or quiet checks.
