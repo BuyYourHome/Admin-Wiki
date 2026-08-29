@@ -5,13 +5,14 @@
 - Approved format reference: `sources/two-bath-plumbing-diagram-format-reference-2026-08-29.pdf`
 - Preserve the card-based parallel-source layout, centered Master Bathroom and Hall Bathroom headings, colored water-connection lines, clickable product links, and separate cost page.
 
-## Pending Revisions
+## Current Diagram
 
-- Show the smart source with separate red hot-water and blue cold-water inlets, not a purple mixed-water inlet.
-- Reference only the default Endurance Peregrine Hall-bath tub.
-- Remove the alternate Endurance Venice tub from the diagram and cost page.
-- Add a product picture for every selected trim item on the price page.
-- Wait for Wes's forthcoming trim selections before regenerating the diagram or PDF.
+- Current PDF: `outputs/two-bath-shower-and-tub-plumbing-diagram-2026-08-29.pdf`
+- The smart-source branches use separate red hot-water and blue cold-water inlet identification, with purple mixed-water lines downstream of each source and check valve.
+- The Endurance Peregrine is the only Hall-bath tub selection; the Venice alternate is removed.
+- The plumbing page pairs each Delta rough-in with its selected Ashlyn trim: T14064-SS at both R10000 mixers, T11964-SS at the Master R11000, and T11864-SS at the Hall R11000.
+- The cost page pictures and links the controller and every selected trim item, and keeps the pending wand and showerhead candidates outside the selected-package subtotal.
+- Current rough-in and Peregrine subtotal: $2,255.74. Current visible trim and controller subtotal: $1,214.03. Selected package total before unpriced items: $3,469.77.
 
 ## Master-Bath Wand Candidates
 
