@@ -1,0 +1,12 @@
+{
+  "schema_version": 1,
+  "project_room": "Create PR",
+  "skill": "create-pr",
+  "task_id": "019fdc5e-a1da-7e10-b388-a3be3830ac89",
+  "dispatchable": true,
+  "execution_machine": "WESSTUDIO",
+  "owned_actions": ["Project Room creation", "Project Room package standardization", "dedicated task setup metadata", "Project Room relationship diagrams"],
+  "accepted_message_types": ["request", "question", "status", "decision", "result", "improvement"],
+  "related_project_rooms": ["Jean Wright", "Dashboard", "Codex Environment"],
+  "limitations": ["does not execute specialized work owned by another Project Room", "does not substitute tasks for missing registered destinations", "does not change machine registrations without authorization"]
+}
