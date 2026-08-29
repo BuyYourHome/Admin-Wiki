@@ -1,0 +1,12 @@
+{
+  "schema_version": 1,
+  "project_room": "Bathroom Fixtures",
+  "skill": "bathroom-fixtures",
+  "task_id": "01a0432b-d780-7b01-aed3-e0af40daa663",
+  "dispatchable": true,
+  "execution_machine": "WESSTUDIO",
+  "owned_actions": ["bathroom fixture research", "fixture comparison and selection", "fixture specifications and schedules", "fixture sourcing and budgets"],
+  "accepted_message_types": ["request", "question", "status", "decision", "result", "improvement"],
+  "related_project_rooms": ["Jean Wright", "Lowes Order", "Home Assistant", "Network Roadmap"],
+  "limitations": ["does not purchase products or place orders", "does not authorize installation or construction changes", "does not perform Home Assistant or network configuration"]
+}
