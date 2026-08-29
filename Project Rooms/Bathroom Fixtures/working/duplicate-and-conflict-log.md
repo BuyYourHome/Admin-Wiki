@@ -2,7 +2,7 @@
 
 ## Open Conflicts
 
-None recorded at setup.
+- Lowe's describes Delta RP50841SS as an 8-in round rain showerhead, while Delta's manufacturer specification sheet identifies RP50841 as an 8-in square raincan. Treat Delta's square-shape specification as authoritative and confirm the delivered model before purchase.
 
 ## Review Notes
 

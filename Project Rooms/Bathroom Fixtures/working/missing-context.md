@@ -14,3 +14,4 @@
 - Preference for tactile controls versus touchscreen controls.
 - Installer or plumber requirements and preferred service brand.
 - Master-bath wand selection among the three Lowe's Delta candidates recorded in `working/two-bath-plumbing-diagram-reference.md`.
+- Showerhead selection and bathroom assignment among the three Lowe's Delta candidates recorded in `working/two-bath-plumbing-diagram-reference.md`.
