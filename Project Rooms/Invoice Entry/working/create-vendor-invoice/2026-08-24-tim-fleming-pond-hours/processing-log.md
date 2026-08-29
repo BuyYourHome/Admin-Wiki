@@ -37,3 +37,15 @@ Outcome: `Done - additional source recorded once in the existing open draft accu
 - Did not generate or send a draft because this intake expressly withholds vendor contact. No filing, workbook action, approval, payment, or paid status occurred.
 
 Outcome: `Done - two additional source lines recorded once in the existing open draft accumulation; external actions withheld`.
+
+## 2026-08-29 - August 28 Pond Hours
+
+- Validated PR message `prmsg-email-monitor-route-vendor-invoice-20260828-tim-pond-hours-001`, dispatch `email-monitor-route-vendor-invoice-20260828-tim-pond-hours-001`, and payload hash `f3cef5a3734cd204502f8a7c05e3f1de4a5fcb39e11ecffb9673bb93b144a8a9` against the exact Invoice Entry destination.
+- Wrote the durable Accepted receipt before substantive work and recorded Processing.
+- Duplicate checking found no prior matching dispatch, message, Outlook source ending `ACk8hyIAAAAA==`, or August 28 work line.
+- Added August 28 once as `2.5` source-stated Pond hours for finishing framing, mapped to the established `908 Pond St` project identity.
+- Applied Tim's established rate: `2.5 x $62.50 = $156.25`.
+- Updated open draft accumulation `IE-TF-20260824-POND-001` to `14.0` hours / `$875.00` through August 28.
+- Did not generate or send a draft because this intake expressly withholds vendor contact. No filing, workbook action, approval, payment, or paid status occurred.
+
+Outcome: `Done - additional Pond source recorded once in the existing open draft accumulation; external actions withheld`.

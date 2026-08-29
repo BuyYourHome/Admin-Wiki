@@ -1,4 +1,4 @@
-# Tim Fleming Multi-Project Hours Invoice Packet - August 24-27, 2026
+# Tim Fleming Multi-Project Hours Invoice Packet - August 24-28, 2026
 
 ## Status
 
@@ -9,8 +9,8 @@
 - Draft invoice number: `IE-TF-20260824-POND-001`
 - Invoice date: `2026-08-24`
 - Rate: `$62.50 per hour`
-- Reported time: `11.5 hours`
-- Draft total: `$718.75`
+- Reported time: `14.0 hours`
+- Draft total: `$875.00`
 - Approval, payment, and paid status: not established
 
 ## Exact Sources
@@ -39,6 +39,14 @@
 - Subject: `8/27 hours`.
 - Received: `2026-08-27T18:09:18Z`.
 - Attachment: none.
+- PR message: `prmsg-email-monitor-route-vendor-invoice-20260828-tim-pond-hours-001`.
+- Dispatch: `email-monitor-route-vendor-invoice-20260828-tim-pond-hours-001`.
+- Payload hash: `f3cef5a3734cd204502f8a7c05e3f1de4a5fcb39e11ecffb9673bb93b144a8a9`.
+- Outlook message ending: `ACk8hyIAAAAA==`.
+- Sender: `Tim Fleming <tflem04@gmail.com>`.
+- Subject: `Friday 8/28`.
+- Received: `2026-08-28T20:32:46Z`.
+- Attachment: none.
 
 ## Draft Line
 
@@ -48,12 +56,13 @@
 | 2026-08-26 | 908 Pond St | Completed framing around the stairs to allow for a 36-inch hallway | 4.0 | `$62.50` | `$250.00` |
 | 2026-08-27 | 115 Rosebrooks Dr | Countertop removal and appliance removal (source project wording: `Rosebrook`) | 2.0 | `$62.50` | `$125.00` |
 | 2026-08-27 | 908 Pond St | Framing work | 2.5 | `$62.50` | `$156.25` |
-| **Total** |  |  | **11.5** |  | **`$718.75`** |
+| 2026-08-28 | 908 Pond St | Finish framing (source project wording: `Pond`) | 2.5 | `$62.50` | `$156.25` |
+| **Total** |  |  | **14.0** |  | **`$875.00`** |
 
 ## Duplicate Control
 
 - Tim's approved invoice `IE-TF-20260820-POND-001` ends August 20 and remains unchanged.
-- No prior Invoice Entry record matched any of the three dispatches, PR messages, Outlook sources, or work lines.
+- No prior Invoice Entry record matched any of the four dispatches, PR messages, Outlook sources, or work lines.
 - Repeated routing must update this packet rather than create another obligation.
 - Later Tim Pond time belonging to the same open accumulation should be reconciled into this packet unless a source or approved period boundary requires a separate invoice.
 
