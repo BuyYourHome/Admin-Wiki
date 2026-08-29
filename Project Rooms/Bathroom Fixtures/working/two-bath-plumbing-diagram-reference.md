@@ -13,3 +13,12 @@
 - Add a product picture for every selected trim item on the price page.
 - Wait for Wes's forthcoming trim selections before regenerating the diagram or PDF.
 
+## Master-Bath Wand Candidates
+
+Selection is pending. Keep all three as options until Wes chooses one:
+
+- [Delta H2Okinetic single-setting slide-bar hand shower](https://www.lowes.com/pd/Delta-H2Okinetic-174-Single-Setting-Slide-Bar-Hand-Shower/5006061761)
+- [Delta Stainless 1-spray handheld shower](https://www.lowes.com/pd/Delta-Stainless-1-Spray-Handheld-Shower/1003069180)
+- [Delta Lumicoat Chrome round handheld shower, 1.75 GPM](https://www.lowes.com/pd/Delta-Lumicoat-Chrome-Round-Handheld-Shower-Head-1-75-GPM-6-6-LPM/5014505171)
+
+Before final selection, confirm the exact model number, finish, included mounting and hose components, and compatibility with the selected Master-bath trim package.
