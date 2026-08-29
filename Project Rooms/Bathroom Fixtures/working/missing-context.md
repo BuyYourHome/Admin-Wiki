@@ -13,5 +13,7 @@
 - Smart-home platform and importance of voice, app, or HomeKit control.
 - Preference for tactile controls versus touchscreen controls.
 - Installer or plumber requirements and preferred service brand.
-- Master-bath wand selection among the three Lowe's Delta candidates recorded in `working/two-bath-plumbing-diagram-reference.md`.
-- Showerhead selection and bathroom assignment among the three Lowe's Delta candidates recorded in `working/two-bath-plumbing-diagram-reference.md`.
+- Hall-bath tub-spout selection.
+- Four check-valve models and final common-tee/fitting arrangement.
+- Shower arms, flanges, drop elbows, and model-specific connection fittings.
+- Confirmation that the selected 51584-PR Lumicoat Chrome finish is acceptable alongside the Ashlyn Stainless trim package.
