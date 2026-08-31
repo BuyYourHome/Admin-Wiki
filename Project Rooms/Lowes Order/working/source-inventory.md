@@ -14,3 +14,5 @@
 | Wes instruction to include the Lowe's cart link in cart-loaded notifications | User instruction | authoritative | When the cart is loaded, send the instruction sender, Jenny, and Wes a notification that includes `https://www.lowes.com/cart`. |
 | `sources\2026-08-29-bathroom-roughin-cart-handoff-summary.md` | PR message source summary | authoritative | Bathroom Fixtures durable handoff for the Lowe's rough-in cart package. |
 | `outputs\2026-08-29-bathroom-roughin-cart-filled.md` | Cart-fill output | authoritative result | Bathroom Fixtures rough-in package was loaded into Lowe's cart and OfficeAssist notification was verified. |
+| `sources\2026-08-31-bathroom-complete-cart-handoff-summary.md` | PR message source summary | authoritative | Bathroom Fixtures durable handoff for the complete selected package with delivery/ship-to-home preference for ZIP `27511`. |
+| `outputs\2026-08-31-bathroom-complete-cart-filled.md` | Cart-fill output | authoritative result | Complete Bathroom Fixtures package was loaded to the extent possible; all requested items except out-of-stock Moen `S3102` were in the cart and OfficeAssist notification was verified. |
