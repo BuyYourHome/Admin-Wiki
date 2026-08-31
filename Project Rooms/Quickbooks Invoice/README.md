@@ -68,6 +68,15 @@ No-production-impact validation completed at `2026-08-31T16:51:43Z`:
 
 The earlier Zapier MCP setup path is superseded by Wes's later interim browser-control decision. Credentials and session data remain outside Git and Project Room messages.
 
+### Recorded Chrome Navigation
+
+The current validated workflow records navigation incrementally as Wes confirms each step:
+
+1. Continue through the recognized Intuit account sign-in. Stop for Wes on a password, verification-code, CAPTCHA, or other user-only challenge.
+2. At `Choose your company`, select the exact company file from the validated handoff and visibly verify the company name after it opens.
+3. Use the QuickBooks left sidebar: `Bookmarks` > `Vendors`.
+4. Locate the exact vendor before reviewing its transactions or staging a bill.
+
 ## Messaging Readiness
 
 - Dispatchable: Yes, only for validated Invoice Entry handoffs under the interim Chrome policy
@@ -85,8 +94,8 @@ Passing Project Room messaging readiness does not override the per-bill browser 
 
 1. Reconcile the authoritative central message, verify the exact destination identity and payload hash, deduplicate by dispatch id, and write `Accepted` before substantive work.
 2. Confirm the request came from the registered Invoice Entry task and contains the required validated handoff fields.
-3. Confirm the Chrome session is authenticated, then visibly select and verify the exact company from the handoff. Stop on any login challenge or company uncertainty.
-4. Reconcile the action log by dispatch id and search the target company for likely duplicates using all supplied duplicate-check fields. If a match or ambiguity exists, stop without creating a bill and return the existing transaction id or the review needed.
+3. Confirm the Chrome session is authenticated, visibly select and verify the exact company from the handoff, then use `Bookmarks` > `Vendors` to locate the exact vendor. Stop on any login challenge, company uncertainty, browser-control blocker, or vendor ambiguity.
+4. Reconcile the action log by dispatch id, review the vendor's transactions, and search the target company for likely duplicate bills using all supplied duplicate-check fields. If a match or ambiguity exists, stop without creating a bill and return the existing transaction id or the review needed.
 5. Resolve the exact vendor and every bill-line mapping in QuickBooks without creating or editing vendors, customers, items, accounts, classes, locations, projects, jobs, tax settings, or terms.
 6. Review the staged bill against the authorized vendor invoice, then save exactly once. If the browser errors or becomes ambiguous after submission, do not retry creation; reconcile through the action log and QuickBooks search first.
 7. Read the saved bill back and compare company file, property entity, vendor, dates, number, currency, line items, mappings, total, and QuickBooks bill identifier to the authorized handoff.

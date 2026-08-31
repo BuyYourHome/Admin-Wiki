@@ -50,6 +50,15 @@ Before every vendor invoice, require authenticated access, visible exact-company
 - Therefore, a Heritage Management property invoice must retain its Heritage Management property/project coding while the visible QuickBooks company selection is `Buy Your Home LLC`.
 - Do not infer the company file for another entity. Require the handoff to name it and stop on any conflict with the current documented rule.
 
+## Chrome Navigation
+
+Use the recorded QuickBooks Online path and extend it only as later steps are validated:
+
+1. Continue through the existing Intuit sign-in when the session recognizes the authorized account. A password, verification-code, CAPTCHA, or other user-only challenge requires Wes.
+2. At `Choose your company`, select the exact company file required by the handoff and visibly verify the company name after it opens.
+3. In the QuickBooks left sidebar, open `Bookmarks`, then choose `Vendors`.
+4. Locate the exact vendor from the handoff before reviewing transactions or staging a bill.
+
 ## Required Startup
 
 1. Confirm the working folder is `C:\Codex\Wiki Files`.
@@ -77,8 +86,8 @@ Do not infer missing company, property entity, vendor, dates, line items, totals
 
 1. Reconcile the authoritative central message with `Manage-ProjectRoomMessage.ps1`, verify the exact destination and payload hash, deduplicate by dispatch id, and write `Accepted` before substantive work.
 2. Confirm the source is the registered Invoice Entry task and the handoff is complete, internally consistent, and authorized.
-3. Confirm messaging readiness, authenticated Chrome access, and the exact visible company named in the handoff.
-4. Search for likely duplicates using all supplied fields. Stop without creation when a match or ambiguity exists.
+3. Confirm messaging readiness and authenticated Chrome access, select and visibly verify the exact company named in the handoff, then navigate through `Bookmarks` > `Vendors` to the exact vendor.
+4. Review the vendor's transactions and search for likely duplicate bills using all supplied fields. Stop without creation when a match or ambiguity exists.
 5. Resolve the exact vendor and every bill-line mapping without creating or changing unrelated QuickBooks entities or settings.
 6. Review the staged bill against the authorized vendor invoice, save exactly once, and record the QuickBooks bill identifier immediately when visible. If the browser result after submission is ambiguous, stop and reconcile before any retry.
 7. Read the saved bill back and compare company file, property entity, vendor, number, dates, currency, line items, mappings, total, and QuickBooks bill identifier.
