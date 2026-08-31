@@ -58,6 +58,10 @@ Use the recorded QuickBooks Online path and extend it only as later steps are va
 2. At `Choose your company`, select the exact company file required by the handoff and visibly verify the company name after it opens.
 3. In the QuickBooks left sidebar, open `Bookmarks`, then choose `Vendors`.
 4. Locate the exact vendor from the handoff before reviewing transactions or staging a bill.
+5. Stay on the exact vendor record and choose `New transaction` > `Bill`.
+6. If several approved source invoices for the same vendor belong in the same QuickBooks company file, they may be entered as separate category lines on one QuickBooks bill. Preserve each source invoice identity, property/project coding, and amount on its own line; stop on conflicting controlling fields rather than silently combining them.
+
+QuickBooks may truncate a long `Bill no.` value. Read back the saved value and preserve each full source invoice identity in its category-line description and the durable action log so duplicate protection does not depend on the bill-number field alone.
 
 ## Required Startup
 
@@ -88,11 +92,12 @@ Do not infer missing company, property entity, vendor, dates, line items, totals
 2. Confirm the source is the registered Invoice Entry task and the handoff is complete, internally consistent, and authorized.
 3. Confirm messaging readiness and authenticated Chrome access, select and visibly verify the exact company named in the handoff, then navigate through `Bookmarks` > `Vendors` to the exact vendor.
 4. Review the vendor's transactions and search for likely duplicate bills using all supplied fields. Stop without creation when a match or ambiguity exists.
-5. Resolve the exact vendor and every bill-line mapping without creating or changing unrelated QuickBooks entities or settings.
-6. Review the staged bill against the authorized vendor invoice, save exactly once, and record the QuickBooks bill identifier immediately when visible. If the browser result after submission is ambiguous, stop and reconcile before any retry.
-7. Read the saved bill back and compare company file, property entity, vendor, number, dates, currency, line items, mappings, total, and QuickBooks bill identifier.
-8. Log the outcome in `working\quickbooks-invoice-action-log.md` and return the QuickBooks bill id, company/file, property entity, vendor, amount, creation timestamp, and verification result to Invoice Entry under the same dispatch id.
-9. Do not pay the bill or perform paid-status, void/delete, unrelated-bookkeeping, unscoped-browser, vendor-contact, or customer-invoice actions.
+5. From the exact vendor record, choose `New transaction` > `Bill`. Represent multiple approved same-vendor source invoices in the same company file as separate category lines on one bill when their controlling fields do not conflict. With Wes's explicit same-batch instruction, an additional approved source invoice may be added to an existing unpaid bill only after verifying that bill and source are not duplicates.
+6. Resolve the exact vendor and every bill-line mapping without creating or changing unrelated QuickBooks entities or settings.
+7. Review the staged bill against every authorized source invoice represented on it, save exactly once, and record the QuickBooks bill identifier immediately when visible. If the browser result after submission is ambiguous, stop and reconcile before any retry.
+8. Read the saved bill back and compare company file, property entity, vendor, number, dates, currency, line items, mappings, total, and QuickBooks bill identifier.
+9. Log the outcome in `working\quickbooks-invoice-action-log.md` and return the QuickBooks bill id, company/file, property entity, vendor, amount, creation or update timestamp, and verification result to Invoice Entry under the same dispatch id.
+10. Do not pay the bill or perform paid-status, void/delete, unrelated-bookkeeping, unscoped-browser, vendor-contact, or customer-invoice actions.
 
 ## Duplicate Protection
 
@@ -112,7 +117,7 @@ Do not infer missing company, property entity, vendor, dates, line items, totals
 
 - Invoice Entry owns intake, source validation, mappings, approval gates, and structured handoff preparation.
 - Do not create or send customer invoices.
-- Do not pay a bill, apply or receive payments, mark paid, void, delete, or alter a bill after creation.
+- Do not pay a bill, apply or receive payments, mark paid, void, delete, or alter a saved bill after creation except for Wes's explicit correction or same-batch instruction to add another approved source invoice to that same unpaid bill.
 - Do not perform unrelated bookkeeping or change QuickBooks vendors, customers, items, accounts, classes, locations, projects, jobs, tax settings, terms, or company settings.
 - Do not contact customers, vendors, or another external party.
 - Do not use Chrome outside the exact authorized invoice workflow or while the interim authorization is inactive.

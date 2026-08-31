@@ -11,7 +11,7 @@ In scope:
 - Receive immutable durable handoffs only from the registered Invoice Entry task.
 - Verify the handoff identity, authorization, target company file, property entity, vendor, vendor-invoice fields, bill lines, totals, and supporting references.
 - Check for an existing QuickBooks bill before creation.
-- Create one bill through authenticated Chrome browser control after every readiness and per-bill gate passes while Wes's interim authorization remains active.
+- Create a vendor bill—or, with Wes's explicit authorization, update an unpaid vendor bill—through authenticated Chrome browser control after every readiness and per-bill gate passes while Wes's interim authorization remains active.
 - Read the created record back, compare the controlling fields, log the durable outcome, and return the result to Invoice Entry.
 
 Out of scope:
@@ -19,7 +19,7 @@ Out of scope:
 - Vendor-invoice intake, source validation, project/vendor mapping, approval decisions, or handoff preparation; Invoice Entry owns those actions.
 - Creating or sending a customer invoice.
 - Paying a bill, applying or receiving a payment, marking a bill paid, or changing payment status.
-- Voiding, deleting, or altering a bill after creation.
+- Voiding, deleting, or altering a saved bill after creation, except for Wes's explicit correction or same-batch instruction to add another approved source invoice to the same unpaid bill.
 - Unrelated bookkeeping, reconciliation, journal entries, expenses, estimates, credits, vendor/customer changes, or company settings.
 - Any browser action outside the controlled invoice workflow and the exact authorized handoff.
 - Vendor/customer contact or any other external communication.
@@ -31,6 +31,7 @@ Out of scope:
 - Current rule: both Buy Your Home and Heritage Management property transactions are held in the `Buy Your Home LLC` QuickBooks company file.
 - A Heritage Management property bill must therefore be entered in `Buy Your Home LLC` while retaining its Heritage Management property/project coding.
 - Other entities require an exact company-file selection in the validated handoff; do not infer or substitute one.
+- When several approved source invoices have the same vendor and are tracked in the same QuickBooks company file, they may be represented by one QuickBooks bill with a separate category line for each source invoice. Preserve each source invoice identity, property/project coding, and amount on its own line; stop on conflicting bill dates, terms, currencies, or other controlling fields instead of silently combining them.
 
 ## Required Invoice Entry Handoff
 
@@ -76,6 +77,10 @@ The current validated workflow records navigation incrementally as Wes confirms 
 2. At `Choose your company`, select the exact company file from the validated handoff and visibly verify the company name after it opens.
 3. Use the QuickBooks left sidebar: `Bookmarks` > `Vendors`.
 4. Locate the exact vendor before reviewing its transactions or staging a bill.
+5. Stay on the vendor record and choose `New transaction` > `Bill`; do not detour through the general Bills page when the exact vendor is already open.
+6. If the authorized batch contains multiple source invoices for that vendor in the same company file, add each as a separate category line and preserve the full source invoice identity in that line's description.
+
+QuickBooks may truncate a long value entered in `Bill no.`. Read back the exact saved value and do not rely on that field alone for duplicate protection; preserve every full source invoice identity in its line description and in the durable action log.
 
 ## Messaging Readiness
 
@@ -96,11 +101,12 @@ Passing Project Room messaging readiness does not override the per-bill browser 
 2. Confirm the request came from the registered Invoice Entry task and contains the required validated handoff fields.
 3. Confirm the Chrome session is authenticated, visibly select and verify the exact company from the handoff, then use `Bookmarks` > `Vendors` to locate the exact vendor. Stop on any login challenge, company uncertainty, browser-control blocker, or vendor ambiguity.
 4. Reconcile the action log by dispatch id, review the vendor's transactions, and search the target company for likely duplicate bills using all supplied duplicate-check fields. If a match or ambiguity exists, stop without creating a bill and return the existing transaction id or the review needed.
-5. Resolve the exact vendor and every bill-line mapping in QuickBooks without creating or editing vendors, customers, items, accounts, classes, locations, projects, jobs, tax settings, or terms.
-6. Review the staged bill against the authorized vendor invoice, then save exactly once. If the browser errors or becomes ambiguous after submission, do not retry creation; reconcile through the action log and QuickBooks search first.
-7. Read the saved bill back and compare company file, property entity, vendor, dates, number, currency, line items, mappings, total, and QuickBooks bill identifier to the authorized handoff.
-8. Record the outcome in `working\quickbooks-invoice-action-log.md` and return the QuickBooks bill id, company/file, property entity, vendor, amount, creation timestamp, and verification result to Invoice Entry.
-9. Do not pay the bill or take any paid-status, void/delete, unrelated-bookkeeping, unscoped-browser, vendor-contact, or customer-invoice action.
+5. From the exact vendor record, choose `New transaction` > `Bill`. When multiple approved source invoices in the same authorized batch share the vendor and QuickBooks company file, use separate category lines on one bill and preserve each source identity and property coding on its line. If an explicitly authorized same-batch source must be added to an existing unpaid bill, verify that exact bill and source are not duplicates before editing it.
+6. Resolve the exact vendor and every bill-line mapping in QuickBooks without creating or editing vendors, customers, items, accounts, classes, locations, projects, jobs, tax settings, or terms.
+7. Review the staged bill against every authorized source invoice represented on it, then save exactly once. If the browser errors or becomes ambiguous after submission, do not retry creation or update; reconcile through the action log and QuickBooks search first.
+8. Read the saved bill back and compare company file, property entity, vendor, dates, number, currency, line items, mappings, total, and QuickBooks bill identifier to the authorized handoff.
+9. Record the outcome in `working\quickbooks-invoice-action-log.md` and return the QuickBooks bill id, company/file, property entity, vendor, amount, creation or update timestamp, and verification result to Invoice Entry.
+10. Do not pay the bill or take any paid-status, void/delete, unrelated-bookkeeping, unscoped-browser, vendor-contact, or customer-invoice action.
 
 ## Folder Map
 
