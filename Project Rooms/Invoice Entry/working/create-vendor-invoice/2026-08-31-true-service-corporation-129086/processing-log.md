@@ -13,3 +13,17 @@
 - No approval, payment, vendor contact, property filing, workbook posting, paid status, or other external action occurred.
 
 Outcome: `Needs Wes - approve separately and identify or approve the mixed-scope worksheet allocation before filing or posting`.
+
+## 2026-08-31 - Payment Receipt Reconciliation
+
+- Validated the exact Invoice Entry destination and payload hash `147034e9ec07ac7ea8fc3f17295d37bc62876b9095d673fe4edb30ab3b71bbc4` in authoritative message/dispatch `prmsg-email-monitor-route-vendor-invoice-20260831-true-service-129086-payment-receipt-001`.
+- Wrote the durable Accepted receipt before substantive work and then recorded Processing.
+- Verified the retained receipt exists at `C:\Users\wesbr\Buy Your Home\Buy Your Home - Office Admin\Scanned Files\Invoice Entry Working Archive\Source Documents\2026-08-31 True Service Corporation 129086\receipt\receipt.pdf`, is a one-page PDF, has `65,257` bytes, and matches SHA-256 `C2EEF4257AF137523D0C30A0847B0104A6FCF2D9C722A5BF0AED88D1291DCBD4`.
+- Inspected the complete rendered page and extracted text. The receipt identifies True Service Corporation, Buy Your Home LLC, a `$11,000.00` credit-card payment dated `2026-08-31`, and application to invoice `129086`.
+- Preserved transaction reference `ch_3UAbwNKXLQIAg16L0mZxSwJN` from the authoritative durable record; it is not printed on the retained PDF.
+- Reconciled the receipt once against the existing `$11,178.50` obligation. Current arithmetic leaves `$178.50` unpaid.
+- Durable duplicate search found no prior Invoice Entry record matching the payment message/dispatch id, payload hash, transaction reference, or receipt PDF hash. The receipt is supplemental evidence for the existing invoice, not a new obligation or a second payment.
+- Updated the invoice to partial-payment evidence recorded while preserving the separate Wes approval hold and mixed-scope worksheet-allocation hold.
+- No payment was initiated. No approval, full-paid status, vendor contact, property filing, workbook posting, or other external action occurred.
+
+Outcome: `Needs Wes - $11,000.00 partial-payment evidence recorded; $178.50 remains; approval and mixed-scope allocation still required`.

@@ -2,7 +2,7 @@
 
 ## Status
 
-- State: `Held - Project Confirmed; Mixed-Scope Worksheet Allocation And Later Approval Required`
+- State: `Partial Payment Evidence Recorded - $178.50 Remaining; Approval And Mixed-Scope Worksheet Allocation Still Held`
 - Vendor: `True Service Corporation`
 - Invoice number: `129086`
 - Invoice date: `2026-08-31`
@@ -12,7 +12,8 @@
 - Project/property: `26-BYH - 908 Pond St` (`908 Pond Street` on the invoice)
 - Work category: `Multiple - HVAC equipment, ductwork, gas line, and bathroom exhaust venting`
 - Confidence/status: `Needs Review - Mixed Scope`
-- Approval, property filing, workbook posting, payment, vendor contact, and paid status: not performed
+- Payment evidence: `$11,000.00` credit-card payment dated `2026-08-31` applied to invoice `129086`; the current invoice arithmetic leaves `$178.50` unpaid
+- Approval, property filing, workbook posting, vendor contact, and full-paid status: not performed
 
 ## Source Traceability
 
@@ -26,6 +27,20 @@
 - Retained source size: `89,326` bytes
 - Retained source SHA-256: `B2A336A95B27F5DFB549121BA89948C64EDEFE168DE475879A21D5A5B9380719`
 - Vendor contact shown on invoice: `Info@trueserviceinc.com`; phone `9197941804`
+
+## Payment Receipt Reconciliation
+
+- Payment message/dispatch id: `prmsg-email-monitor-route-vendor-invoice-20260831-true-service-129086-payment-receipt-001`
+- Payment payload hash: `147034e9ec07ac7ea8fc3f17295d37bc62876b9095d673fe4edb30ab3b71bbc4`
+- Payment Outlook message id ending: `AClUGMGAAAAA==`
+- Payment source: Wes forward received `2026-08-31T20:38:22Z`, subject `FW: Receipt for payment from True Service Corporation - Aug 31, 2026`
+- Retained receipt PDF: `C:\Users\wesbr\Buy Your Home\Buy Your Home - Office Admin\Scanned Files\Invoice Entry Working Archive\Source Documents\2026-08-31 True Service Corporation 129086\receipt\receipt.pdf`
+- Retained receipt size: `65,257` bytes
+- Retained receipt SHA-256: `C2EEF4257AF137523D0C30A0847B0104A6FCF2D9C722A5BF0AED88D1291DCBD4`
+- Receipt-supported facts: True Service Corporation received `$11,000.00` by credit card on `2026-08-31`, applied to invoice `129086` for Buy Your Home LLC.
+- Provider transaction reference preserved from the authoritative durable record: `ch_3UAbwNKXLQIAg16L0mZxSwJN`.
+- Reconciliation: `$11,178.50` invoice amount due less `$11,000.00` verified payment equals `$178.50` remaining.
+- This is partial-payment evidence only. It does not approve the invoice, establish full payment, resolve the mixed-scope worksheet allocation, authorize filing or posting, or support a `Paid` status.
 
 ## Source-Supported Scope And Math
 
@@ -52,10 +67,11 @@
 
 ## Duplicate Control
 
-- Durable Invoice Entry search found no prior `True Service Corporation`, invoice `129086`, matching Outlook message, payload hash, source PDF hash, or matching project/vendor/invoice identity.
+- Durable Invoice Entry search found no prior `True Service Corporation`, invoice `129086`, matching invoice Outlook message, invoice payload hash, source invoice PDF hash, or matching project/vendor/invoice identity.
 - One obligation was recorded from this dispatch. Repeated routing must reconcile to this packet rather than create another invoice record.
+- The payment-receipt search found no prior Invoice Entry record matching its message/dispatch id, payload hash, transaction reference, or retained receipt PDF hash. It was reconciled once as supplemental payment evidence against the existing obligation, not as a new invoice or a second payment.
 - The project workbook was not opened, so no workbook-level duplicate assertion is made.
 
 ## Next Permitted Action
 
-Wes must approve the invoice separately and identify or approve the worksheet allocation for its mixed scope before property filing or workbook posting. Payment and paid status require separate verified authority and evidence.
+Wes must approve the invoice separately and identify or approve the worksheet allocation for its mixed scope before property filing or workbook posting. The verified receipt supports a partial-payment status only; `$178.50` remains under the current invoice arithmetic, so do not mark the invoice fully paid without additional verified evidence.
