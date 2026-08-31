@@ -2,7 +2,7 @@
 
 ## Status
 
-- State: `Period Open - Updated Draft Through August 27 Prepared - August 25 Allocation Unresolved - Delivery Withheld By Dispatch Restriction`
+- State: `Period Open - Updated Draft Through August 29 Prepared - August 25 Allocation Unresolved - Delivery Withheld By Dispatch Restriction`
 - Stable invoice number: `INV-JKLLC-20260831-001`
 - Invoice date: `2026-08-31` (semimonthly period end)
 - Semimonthly period: `2026-08-16 through 2026-08-31`
@@ -28,6 +28,7 @@
 - Dispatch `email-monitor-route-vendor-invoice-20260826-josh-time-card-001`; message id `prmsg-email-monitor-route-vendor-invoice-20260826-josh-time-card-001`; payload hash `dc38b252a0b7952732092fdb32e873533280f4a50f4e594c6641bcf858718b94`; Outlook message ending `ACkJJCVQAAAA==`. August 25: Rosebrooks 7:45 AM-10:30 AM installing the back-door lock and deadbolt; 10:30 AM-4:15 PM is retained once as unallocated because the source calls it Rosebrooks yardwork and then separately says BackOffice work.
 - Dispatch `email-monitor-route-vendor-invoice-20260827-josh-time-card-001`; message id `prmsg-email-monitor-route-vendor-invoice-20260827-josh-time-card-001`; payload hash `0a6772c0dfcaec73e05f5dc4ade2388b78ec069a826d182532e13d07428bca6f`; Outlook message ending `ACkJJCVwAAAA==`. August 26: source-stated `115 Rose Brooks Dr.` 7:00 AM-9:00 AM working on countertops, then source-stated `908 Pond Dr.` 9:00 AM-4:00 PM framing walls with Tim Fleming.
 - Dispatch `email-monitor-route-vendor-invoice-20260828-josh-time-card-001`; message id `prmsg-email-monitor-route-vendor-invoice-20260828-josh-time-card-001`; payload hash `862e8f433b004f10a9945f6c0d9e99bb7f9971f7d7f5ac6d514c84caaf767c21`; Outlook message ending `ACk8hyHgAAAA==`. August 27: source-stated `115 Rose Books Dr.` 6:00 AM-9:30 AM sanding cabinets and removing countertops with Tim Fleming, then source-stated `908 Pond Drive` 9:30 AM-3:45 PM framing walls with Tim and reviewing items with Nate the plumber.
+- Message/dispatch `prmsg-email-monitor-route-vendor-invoice-20260831-josh-time-card-001`; payload hash `99294adb703aeb1fd24678d27c97f3cb0d0c9c71079f2a6643142fa47dbd750a`; Outlook message ending `AClUGMFgAAAA==`. August 28: source-stated `115 Rosebrooks Dr.` 6:00 AM-10:00 AM sanding cabinet doors, then source-stated `908 Pond Dr.` 10:00 AM-2:00 PM working with Tim Fleming and going over things with Nate the plumber. August 29: source-stated `908 Po Drive` 8:15 AM-9:15 AM with no task description.
 - The August 18 `$50.00` bed-frame sale is a separate Receipt-mode hold and is not time or invoice compensation.
 
 ## Accepted Line
@@ -49,8 +50,11 @@
 | 2026-08-26 | 908 Pond St | 9:00 AM | 4:00 PM | 7 hours | Framed walls with Tim Fleming; source property wording is `908 Pond Dr.` | Added once from the exact August 26 source; no break was stated or deducted. |
 | 2026-08-27 | 115 Rosebrooks Dr | 6:00 AM | 9:30 AM | 3 hours 30 minutes | Sanded cabinets and removed countertops with Tim Fleming; source property wording is `115 Rose Books Dr.` | Added once from the exact August 27 source; no break was stated or deducted. |
 | 2026-08-27 | 908 Pond St | 9:30 AM | 3:45 PM | 6 hours 15 minutes | Framed walls with Tim Fleming and reviewed items with Nate the plumber; source property wording is `908 Pond Drive` | Added once from the exact August 27 source; no break was stated or deducted. |
+| 2026-08-28 | 115 Rosebrooks Dr | 6:00 AM | 10:00 AM | 4 hours | Sanded cabinet doors; source property wording is `115 Rosebrooks Dr.` | Added once from the exact August 28 source; no break was stated or deducted. |
+| 2026-08-28 | 908 Pond St | 10:00 AM | 2:00 PM | 4 hours | Worked with Tim Fleming and went over things with Nate the plumber; source property wording is `908 Pond Dr.` | Added once from the exact August 28 source; no break was stated or deducted. |
+| 2026-08-29 | 908 Pond St | 8:15 AM | 9:15 AM | 1 hour | No task description supplied; source property wording is `908 Po Drive` | Added once from the exact August 29 source. No task description or break was stated or inferred. |
 
-Draft total through August 27: `69 hours 40 minutes` (`35 hours 10 minutes` Pond under the flagged August 17 working interpretation, `20 hours 15 minutes` Rosebrooks, `7 hours 45 minutes` BackOffice, `45 minutes` Tensity, and `5 hours 45 minutes` unallocated between Rosebrooks and BackOffice). The fixed `$2,708.33` amount is provisionally distributed as `$1,367.12` Pond, `$787.23` Rosebrooks, `$301.29` BackOffice, `$29.16` Tensity, and `$223.53` unallocated pending correction.
+Draft total through August 29: `78 hours 40 minutes` (`40 hours 10 minutes` Pond under the flagged August 17 working interpretation, `24 hours 15 minutes` Rosebrooks, `7 hours 45 minutes` BackOffice, `45 minutes` Tensity, and `5 hours 45 minutes` unallocated between Rosebrooks and BackOffice). The fixed `$2,708.33` amount is provisionally distributed as `$1,382.85` Pond, `$834.88` Rosebrooks, `$266.82` BackOffice, `$25.82` Tensity, and `$197.96` unallocated pending correction.
 
 ## Duplicate And Period Control
 
@@ -63,12 +67,13 @@ Draft total through August 27: `69 hours 40 minutes` (`35 hours 10 minutes` Pond
 - The August 25 source is recorded once. The clear 7:45 AM-10:30 AM interval is Rosebrooks; the conflicting 10:30 AM-4:15 PM interval is one unallocated draft line, not both a Rosebrooks and BackOffice line.
 - The August 26 source is recorded once as two non-overlapping lines. The source spellings and exact intervals are preserved while the established invoice destinations remain `115 Rosebrooks Dr` and `908 Pond St`.
 - The August 27 source is recorded once as two non-overlapping lines. The source spellings `115 Rose Books Dr.` and `908 Pond Drive` and exact intervals are preserved while the established invoice destinations remain `115 Rosebrooks Dr` and `908 Pond St`.
+- The August 28-29 source is recorded once as three non-overlapping lines. The source spellings `115 Rosebrooks Dr.`, `908 Pond Dr.`, and `908 Po Drive` and exact intervals are preserved while the established invoice destinations remain `115 Rosebrooks Dr` and `908 Pond St`.
 
 ## Correction-Review Note
 
 The draft places the `3:45 PM` to `5:10 PM` interval at `908 Pond St` as a working interpretation because it immediately follows the Pond interval and describes framing with Tim Fleming. The PDF and email must ask Josh to correct the allocation if the interval belongs to `115 Rosebrooks Dr` or should be split. The August 16-31 period remains open and the invoice is not final, approved, filed, posted, paid, or proof of payment.
 
-The August 25 `10:30 AM` to `4:15 PM` interval remains explicitly unallocated between Rosebrooks and BackOffice because the source conflicts and the dispatch prohibits inference. The updated one-page correction-review PDF through August 27 was generated and visually verified, but the August 28 handoff expressly withheld vendor contact, so no new email was requested or sent. The verified local PDF/input/QA set is retained pending explicit authority to copy it to the Teams working archive.
+The August 25 `10:30 AM` to `4:15 PM` interval remains explicitly unallocated between Rosebrooks and BackOffice because the source conflicts and the dispatch prohibits inference. The updated one-page correction-review PDF through August 29 was generated and visually verified, but the August 31 handoff expressly withheld external contact, so no new email was requested or sent. The verified local PDF/input/QA set is retained pending explicit authority to copy it to the Teams working archive.
 
 ## Delivery Evidence
 

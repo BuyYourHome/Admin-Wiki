@@ -100,3 +100,17 @@ Outcome: `Done - August 26 recorded once and one-page internal draft regenerated
 - The handoff withheld vendor contact. No email was requested or sent; no filing, workbook action, approval, payment, or paid status occurred.
 
 Outcome: `Done - August 27 recorded once and one-page internal draft regenerated; delivery and other external actions withheld`.
+
+## 2026-08-31 - August 28 And 29 Intake
+
+- Accepted authoritative message/dispatch `prmsg-email-monitor-route-vendor-invoice-20260831-josh-time-card-001`, payload hash `99294adb703aeb1fd24678d27c97f3cb0d0c9c71079f2a6643142fa47dbd750a`, before substantive work and recorded Processing.
+- Duplicate checking found no matching message, dispatch, Outlook source ending `AClUGMFgAAAA==`, or August 28-29 Josh line.
+- Added August 28 once: source-stated `115 Rosebrooks Dr.` 6:00 AM-10:00 AM (`4 hours`) sanding cabinet doors, then source-stated `908 Pond Dr.` 10:00 AM-2:00 PM (`4 hours`) working with Tim Fleming and going over things with Nate the plumber.
+- Added August 29 once: source-stated `908 Po Drive` 8:15 AM-9:15 AM (`1 hour`). No task description or break was stated or inferred.
+- Preserved all source property wording and exact intervals while mapping the invoice destinations to the established `115 Rosebrooks Dr` and `908 Pond St` projects.
+- Updated draft total through August 29 to `78 hours 40 minutes`: Pond `40h10m`, Rosebrooks `24h15m`, BackOffice `7h45m`, Tensity `0h45m`, and unallocated `5h45m`.
+- Recalculated the fixed `$2,708.33` amount exactly: Pond `$1,382.85`, Rosebrooks `$834.88`, BackOffice `$266.82`, Tensity `$25.82`, and unallocated `$197.96`.
+- Regenerated the stable invoice as a one-page correction-review PDF. Visual and extracted-text QA verified the source wording, exact intervals, total hours, allocation arithmetic, and one-page layout. PDF SHA-256: `A2AD403420F72EC1988871DD0D1885DE1E936002EC58CEFD95F072693CB2149A`.
+- The handoff prohibited external contact. No email was requested or sent; no filing, workbook action, approval, payment, paid status, or other external action occurred.
+
+Outcome: `Done - August 28-29 recorded once and one-page internal draft regenerated; delivery and other external actions withheld`.
