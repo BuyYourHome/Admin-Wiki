@@ -49,7 +49,7 @@ Use [[Agent Unit Standard]] for the standard package behind an agent-like operat
 | Gracious Millionaire | Wiki-managed skill plus project room plus heartbeat automation | Active | Project-room heartbeat every 15 minutes during active window; on demand otherwise | `skills\gracious-millionaire\SKILL.md`; `Project Rooms\Gracious Millionaire\README.md`; `Project Rooms\Gracious Millionaire\working\intake-heartbeat-rules.md`; automation id `gracious-millionaire-project-room-heartbeat` |
 | Template to Project | Wiki-managed skill plus project room | Active | On demand | `skills\template-to-project\SKILL.md`; `Project Rooms\Template to Project\README.md`; `Project Rooms\Template to Project\Project Spreadsheet Expense Placement Rules.md` |
 | Invoice Entry | Wiki-managed skill plus project room, standalone backup cron monitor, shared Windows health-supervisor enrollment, and dedicated task | Active | Direct handoff is primary; backup monitor runs at noon and 4:00 PM without targeting the operational task; shared health supervisor performs a daily substantive review | `skills\invoice-entry\SKILL.md`; `Project Rooms\Invoice Entry\README.md`; app automation id `invoice-entry-to-projects-backup-heartbeat`; workflow-health id `invoice-entry` |
-| Quickbooks Invoice | Wiki-managed skill plus project room plus dedicated task | Moving to `WES-VIDEOEDITOR`; pending messaging registration and browser readiness; not dispatchable | On demand after every per-invoice gate passes; receives validated Invoice Entry handoffs only | `skills\quickbooks-invoice\SKILL.md`; `Project Rooms\Quickbooks Invoice\README.md`; destination manifest `config\pr-messaging-manifests\quickbooks-invoice.json` |
+| Quickbooks Invoice | Wiki-managed skill plus project room plus dedicated task | Active and dispatchable on `WES-VIDEOEDITOR` only for validated Invoice Entry handoffs under the interim Chrome policy | On demand after every per-invoice gate passes; receives validated Invoice Entry handoffs only | `skills\quickbooks-invoice\SKILL.md`; `Project Rooms\Quickbooks Invoice\README.md`; destination manifest `config\pr-messaging-manifests\quickbooks-invoice.json` |
 | Project Management Spreadsheet Rewrite | Planning/history project room now covered by Template to Project | Active/planning | On demand | `skills\template-to-project\SKILL.md`; `Project Rooms\Project Management Spreadsheet Rewrite\README.md` |
 | Property Trade Evaluation | Wiki-managed skill plus project room | Active | On demand | `skills\property-trade-evaluation\SKILL.md`; `Project Rooms\Property Trade Evaluation\README.md` |
 | Voices | Wiki-managed skill plus project room | Planning | On demand | `skills\voices\SKILL.md`; `Project Rooms\Voices\README.md` |
@@ -1261,7 +1261,7 @@ Current status:
 
 Type: wiki-managed skill plus project room plus dedicated task.
 
-Status: moving to `WES-VIDEOEDITOR`; pending messaging registration and browser readiness; not dispatchable.
+Status: active and dispatchable on `WES-VIDEOEDITOR` only for validated Invoice Entry handoffs under the interim Chrome policy.
 
 Purpose:
 
@@ -1286,7 +1286,7 @@ Readiness and operating gates:
 - Wes authorized authenticated Chrome browser control as the interim execution method; the earlier Zapier MCP setup path is superseded while that authorization remains active.
 - The earlier no-production-impact authenticated company-chooser validation on `WESSTUDIO` is historical only; repeat it on `WES-VIDEOEDITOR` before enabling dispatch.
 - Every invoice still requires a validated Invoice Entry handoff, visible exact-company confirmation, action-log and QuickBooks duplicate search, one save, complete read-back, and reconciliation before any retry after an ambiguous browser result.
-- Exact task registration, host access, and a new one-notification Project Room messaging lifecycle are pending on `WES-VIDEOEDITOR`.
+- Exact task registration, host access, one-notification Project Room messaging lifecycle, and no-production-impact authenticated company-chooser validation passed on `WES-VIDEOEDITOR`.
 
 Important limitations:
 

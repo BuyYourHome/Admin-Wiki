@@ -22,20 +22,20 @@ description: Enter and verify vendor invoices as QuickBooks bills from validated
 
 ## Messaging Readiness
 
-- Dispatchable: No
-- State: Pending messaging registration and machine-specific browser readiness on `WES-VIDEOEDITOR`
+- Dispatchable: Yes, only for validated Invoice Entry handoffs under the interim Chrome policy
+- State: Messaging transport and machine-specific browser readiness complete; every per-invoice gate remains required
 - Exact task id: `01a05967-9a05-7081-a62e-616b2d8e61fd`
-- Machine registration and host access: pending on `WES-VIDEOEDITOR`
-- Synthetic lifecycle: pending for the new task and execution machine; the earlier `WESSTUDIO` lifecycle is historical evidence and does not transfer
+- Machine registration verified at `2026-08-31T21:43:02.1661378Z`; host access verified at `2026-08-31T22:31:07.8796039Z` on `WES-VIDEOEDITOR`
+- Synthetic lifecycle: corrected record `prmsg-quickbooks-invoice-wve-readiness-correction-20260831-001` completed after exactly one notification with `synthetic_test: true`, exact identity and payload-hash verification, and no QuickBooks business action
 
 Messaging readiness alone does not override the interim browser and per-bill safety gates.
 
 ## Interim Browser Readiness
 
-Status: pending no-production-impact revalidation on `WES-VIDEOEDITOR` under Wes's interim Chrome authorization.
+Status: ready for validated Invoice Entry handoffs on `WES-VIDEOEDITOR` under Wes's interim Chrome authorization.
 
 - Use the existing authenticated Intuit/QuickBooks Online session through Chrome browser control.
-- The prior no-production-impact validation on `WESSTUDIO` is historical only. Repeat authenticated company-chooser validation on `WES-VIDEOEDITOR` without selecting a company or changing any record before enabling dispatch.
+- No-production-impact validation on `WES-VIDEOEDITOR` at `2026-08-31T22:31:07.0879564Z` reached the authenticated company chooser and verified five visible companies without selecting a company or changing any record.
 - The visible companies were `Buy Your Home LLC`, `BYH 401K LLC`, `Heritage Management LLC`, `Home Acct`, and `Sell Your Home LLC`.
 - The earlier Zapier MCP setup path is superseded while this interim authorization remains active.
 
