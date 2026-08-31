@@ -1,6 +1,6 @@
 ---
 name: quickbooks-invoice
-description: Create and verify QuickBooks invoice records from validated, authorized Invoice Entry handoffs through Wes-authorized authenticated Chrome browser control or a later approved method. Use for Quickbooks Invoice intake, duplicate protection, controlled one-invoice creation, read-back verification, outcome logging, and return to Invoice Entry. Do not use for invoice intake or approval, customer sending, payment activity, paid status, void/delete, unrelated bookkeeping, or unscoped browser action.
+description: Enter and verify vendor invoices as QuickBooks bills from validated, authorized Invoice Entry handoffs through Wes-authorized authenticated Chrome browser control or a later approved method. Use for Quickbooks Invoice vendor-bill intake, duplicate protection, controlled one-bill creation, read-back verification, outcome logging, and return to Invoice Entry. Do not use for invoice intake or approval, customer invoices, bill payment, paid status, void/delete, unrelated bookkeeping, or unscoped browser action.
 ---
 
 # Quickbooks Invoice
@@ -23,12 +23,12 @@ description: Create and verify QuickBooks invoice records from validated, author
 ## Messaging Readiness
 
 - Dispatchable: Yes, only for validated Invoice Entry handoffs under the interim Chrome policy
-- State: Messaging transport and interim browser readiness complete; per-invoice gates required
+- State: Messaging transport and interim browser readiness complete; per-bill gates required
 - Exact task id: `01a05809-d732-7b80-80b9-63602b8a6032`
 - Machine registration and host access: verified on `WESSTUDIO`
 - Synthetic lifecycle: corrected record `prmsg-quickbooks-invoice-readiness-validation-20260831-1342-correction-001` completed after exactly one notification with explicit notification-count evidence under the exact destination identity
 
-Messaging readiness alone does not override the interim browser and per-invoice safety gates.
+Messaging readiness alone does not override the interim browser and per-bill safety gates.
 
 ## Interim Browser Readiness
 
@@ -39,7 +39,16 @@ Status: ready for validated Invoice Entry handoffs under Wes's interim Chrome au
 - The visible companies were `Buy Your Home LLC`, `BYH 401K LLC`, `Heritage Management LLC`, `Home Acct`, and `Sell Your Home LLC`.
 - The earlier Zapier MCP setup path is superseded while this interim authorization remains active.
 
-Before every invoice, require authenticated access, visible exact-company confirmation from the handoff, action-log reconciliation by dispatch id, duplicate search, exact customer and line mappings, one save, and full read-back verification. A login challenge, uncertain company, ambiguous duplicate, browser error after submission, or failed read-back is a blocker. Never blindly retry creation.
+Before every vendor invoice, require authenticated access, visible exact-company confirmation from the handoff, action-log reconciliation by dispatch id, duplicate search, exact vendor and bill-line mappings, one save, and full read-back verification. A login challenge, uncertain company, ambiguous duplicate, browser error after submission, or failed read-back is a blocker. Never blindly retry creation.
+
+## Transaction And Company-File Rule
+
+- Vendor invoices received through this Project Room are entered as QuickBooks **Bills**, not customer invoices.
+- Use the exact vendor identity from the validated Invoice Entry handoff. Do not create or alter a vendor.
+- The project/property entity and the QuickBooks company file are separate controlling fields. Preserve both.
+- Current company-file rule: transactions for both `Buy Your Home LLC` properties and `Heritage Management LLC` properties are held in the `Buy Your Home LLC` QuickBooks company file.
+- Therefore, a Heritage Management property invoice must retain its Heritage Management property/project coding while the visible QuickBooks company selection is `Buy Your Home LLC`.
+- Do not infer the company file for another entity. Require the handoff to name it and stop on any conflict with the current documented rule.
 
 ## Required Startup
 
@@ -47,7 +56,7 @@ Before every invoice, require authenticated access, visible exact-company confir
 2. Read `AGENTS.md`, `Project Room Chat Startup Rule.md`, `Project Room File Ownership And Git Coordination Rule.md`, `Project Room Delegation Contract.md`, and `Project Room Messaging Rule.md`.
 3. Read the Quickbooks Invoice README, source inventory, duplicate/conflict log, missing-context file, and action log.
 4. Check `git status --short --branch` and work on `main` unless Wes explicitly asks for a branch.
-5. Confirm Messaging Readiness, Interim Browser Readiness, and every per-invoice gate before accepting production work.
+5. Confirm Messaging Readiness, Interim Browser Readiness, and every per-bill gate before accepting production work.
 
 ## Required Handoff
 
@@ -55,14 +64,14 @@ Accept only an immutable durable message from the registered Invoice Entry task 
 
 - dispatch id and payload hash;
 - Invoice Entry validation and authorization evidence;
-- exact target company/file;
-- exact customer identity;
-- source invoice identity, dates or terms, currency, invoice number when controlled, and total;
+- exact target QuickBooks company/file and the separate property/project entity;
+- exact vendor identity;
+- source vendor-invoice identity, bill date, due date or terms, currency, vendor invoice number when controlled, and total;
 - complete line items and every required accounting/project mapping;
 - source references and stable duplicate-check fields;
 - any known prior QuickBooks transaction id.
 
-Do not infer missing company, customer, dates, line items, totals, accounts, items, classes, locations, projects, jobs, tax, terms, or approval state.
+Do not infer missing company, property entity, vendor, dates, line items, totals, accounts, items, classes, locations, projects, jobs, tax, terms, or approval state.
 
 ## Workflow
 
@@ -70,17 +79,17 @@ Do not infer missing company, customer, dates, line items, totals, accounts, ite
 2. Confirm the source is the registered Invoice Entry task and the handoff is complete, internally consistent, and authorized.
 3. Confirm messaging readiness, authenticated Chrome access, and the exact visible company named in the handoff.
 4. Search for likely duplicates using all supplied fields. Stop without creation when a match or ambiguity exists.
-5. Resolve the exact customer and every line-item mapping without creating or changing unrelated QuickBooks entities or settings.
-6. Review the staged invoice, save exactly once, and record the QuickBooks identifier immediately when visible. If the browser result after submission is ambiguous, stop and reconcile before any retry.
-7. Read the saved invoice back and compare company, customer, number, dates, currency, line items, mappings, total, and QuickBooks invoice identifier.
-8. Log the outcome in `working\quickbooks-invoice-action-log.md` and return the QuickBooks invoice id, company/file, customer, amount, creation timestamp, and verification result to Invoice Entry under the same dispatch id.
-9. Do not send the invoice or perform payment, paid-status, void/delete, unrelated-bookkeeping, unscoped-browser, or customer-contact actions.
+5. Resolve the exact vendor and every bill-line mapping without creating or changing unrelated QuickBooks entities or settings.
+6. Review the staged bill against the authorized vendor invoice, save exactly once, and record the QuickBooks bill identifier immediately when visible. If the browser result after submission is ambiguous, stop and reconcile before any retry.
+7. Read the saved bill back and compare company file, property entity, vendor, number, dates, currency, line items, mappings, total, and QuickBooks bill identifier.
+8. Log the outcome in `working\quickbooks-invoice-action-log.md` and return the QuickBooks bill id, company/file, property entity, vendor, amount, creation timestamp, and verification result to Invoice Entry under the same dispatch id.
+9. Do not pay the bill or perform paid-status, void/delete, unrelated-bookkeeping, unscoped-browser, vendor-contact, or customer-invoice actions.
 
 ## Duplicate Protection
 
 - Treat dispatch id and payload hash as immutable request identity.
-- Search QuickBooks before creation using source invoice identity, customer, amount, invoice date, and any external reference or transaction id.
-- Record the created QuickBooks transaction id immediately after a successful response.
+- Search QuickBooks before creation using source vendor-invoice identity, vendor, amount, bill date, vendor invoice number, property/project, and any external reference or transaction id.
+- Record the created QuickBooks bill/transaction id immediately after a successful response.
 - On retry, reconcile the action log and QuickBooks search results before any create call.
 - An ambiguous connector result is not permission to retry creation. Return a blocker for reconciliation.
 
@@ -88,14 +97,14 @@ Do not infer missing company, customer, dates, line items, totals, accounts, ite
 
 - Durable outcomes: `C:\Codex\Wiki Files\Project Rooms\Quickbooks Invoice\working\quickbooks-invoice-action-log.md`
 - Review-ready reports when needed: `C:\Codex\Wiki Files\Project Rooms\Quickbooks Invoice\outputs\`
-- Return to Invoice Entry: QuickBooks invoice id, company/file, customer, amount, creation timestamp, read-back verification, duplicate-check result, and any blocker.
+- Return to Invoice Entry: QuickBooks bill id, company/file, property entity, vendor, amount, creation timestamp, read-back verification, duplicate-check result, and any blocker.
 
 ## Boundaries
 
 - Invoice Entry owns intake, source validation, mappings, approval gates, and structured handoff preparation.
-- Do not send or schedule invoices to customers.
-- Do not apply or receive payments, mark paid, void, delete, or alter an invoice after creation.
-- Do not perform unrelated bookkeeping or change QuickBooks customers, items, accounts, classes, locations, projects, jobs, tax settings, terms, or company settings.
+- Do not create or send customer invoices.
+- Do not pay a bill, apply or receive payments, mark paid, void, delete, or alter a bill after creation.
+- Do not perform unrelated bookkeeping or change QuickBooks vendors, customers, items, accounts, classes, locations, projects, jobs, tax settings, terms, or company settings.
 - Do not contact customers, vendors, or another external party.
 - Do not use Chrome outside the exact authorized invoice workflow or while the interim authorization is inactive.
 - Do not store credentials, tokens, session data, or unnecessary financial documents in Git or Project Room messages.
