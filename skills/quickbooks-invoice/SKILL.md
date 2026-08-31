@@ -16,15 +16,17 @@ description: Create and verify QuickBooks invoice records from validated, author
 ## Dedicated Task
 
 - Task name: `Quickbooks Invoice`
-- Thread id: `pending until the dedicated task is created`
+- Thread id: `01a05809-d732-7b80-80b9-63602b8a6032`
 - Execution machine: `WESSTUDIO`
 - Accept work only through this exact registered task after all readiness gates pass.
 
 ## Messaging Readiness
 
 - Dispatchable: No
-- State: `Pending messaging registration - not dispatchable`
-- Machine registration, host access, and exact-identity synthetic lifecycle: pending
+- State: Messaging transport ready; connector readiness pending - not dispatchable
+- Exact task id: `01a05809-d732-7b80-80b9-63602b8a6032`
+- Machine registration and host access: verified on `WESSTUDIO`
+- Synthetic lifecycle: corrected record `prmsg-quickbooks-invoice-readiness-validation-20260831-1342-correction-001` completed after exactly one notification with explicit notification-count evidence under the exact destination identity
 
 Messaging readiness alone does not satisfy Connector Readiness.
 

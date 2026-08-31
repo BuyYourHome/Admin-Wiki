@@ -8,4 +8,4 @@
 | Exact QuickBooks target company/file | needs Wes | Wes must identify and confirm the exact company/file; validation must compare its immutable connector identifier. |
 | Safe validation environment | pending | Use a QuickBooks sandbox, connector dry run, or another explicitly approved no-production-impact path. |
 | Duplicate protection validation | pending | Prove the connector can search required duplicate fields before creation and preserve a stable source/idempotency reference. |
-| Dedicated task and Project Room messaging lifecycle | pending | Create the task, register its exact identity, verify host access, and complete the one-notification synthetic lifecycle. |
+| Project Room messaging lifecycle | ready | Exact task registration, host access, and corrected synthetic lifecycle `prmsg-quickbooks-invoice-readiness-validation-20260831-1342-correction-001` completed on `WESSTUDIO` after exactly one notification. This does not satisfy connector readiness. |

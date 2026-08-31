@@ -2,7 +2,7 @@
   "schema_version": 2,
   "project_room": "Quickbooks Invoice",
   "skill": "quickbooks-invoice",
-  "task_id": "pending",
+  "task_id": "01a05809-d732-7b80-80b9-63602b8a6032",
   "dispatchable": false,
   "execution_machine": "WESSTUDIO",
   "owned_actions": ["connector-backed QuickBooks invoice creation from validated Invoice Entry handoffs", "duplicate protection", "created-invoice read-back verification", "outcome return to Invoice Entry"],
@@ -10,12 +10,12 @@
   "related_project_rooms": ["Invoice Entry", "Jean Wright"],
   "limitations": ["connector authentication pending", "target QuickBooks company selection pending", "least-privilege review pending", "duplicate-protection validation pending", "safe connector validation pending", "does not send invoices", "does not apply payments or mark paid", "does not void or delete", "does not perform unrelated bookkeeping", "does not substitute browser automation"],
   "messaging_readiness": {
-    "status": "pending",
-    "machine_registration_verified_at_utc": null,
-    "host_access_verified_at_utc": null,
-    "validation_message_id": null,
-    "lifecycle_completed_at_utc": null,
-    "notification_count": 0
+    "status": "ready",
+    "machine_registration_verified_at_utc": "2026-08-31T13:39:19.8514402Z",
+    "host_access_verified_at_utc": "2026-08-31T13:39:20.8539842Z",
+    "validation_message_id": "prmsg-quickbooks-invoice-readiness-validation-20260831-1342-correction-001",
+    "lifecycle_completed_at_utc": "2026-08-31T13:48:19.9819523Z",
+    "notification_count": 1
   },
   "connector_readiness": {
     "status": "pending",

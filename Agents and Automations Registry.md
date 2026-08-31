@@ -49,7 +49,7 @@ Use [[Agent Unit Standard]] for the standard package behind an agent-like operat
 | Gracious Millionaire | Wiki-managed skill plus project room plus heartbeat automation | Active | Project-room heartbeat every 15 minutes during active window; on demand otherwise | `skills\gracious-millionaire\SKILL.md`; `Project Rooms\Gracious Millionaire\README.md`; `Project Rooms\Gracious Millionaire\working\intake-heartbeat-rules.md`; automation id `gracious-millionaire-project-room-heartbeat` |
 | Template to Project | Wiki-managed skill plus project room | Active | On demand | `skills\template-to-project\SKILL.md`; `Project Rooms\Template to Project\README.md`; `Project Rooms\Template to Project\Project Spreadsheet Expense Placement Rules.md` |
 | Invoice Entry | Wiki-managed skill plus project room, standalone backup cron monitor, shared Windows health-supervisor enrollment, and dedicated task | Active | Direct handoff is primary; backup monitor runs at noon and 4:00 PM without targeting the operational task; shared health supervisor performs a daily substantive review | `skills\invoice-entry\SKILL.md`; `Project Rooms\Invoice Entry\README.md`; app automation id `invoice-entry-to-projects-backup-heartbeat`; workflow-health id `invoice-entry` |
-| Quickbooks Invoice | Wiki-managed skill plus project room plus dedicated task | Pending connector and messaging readiness | On demand after every readiness gate passes; receives validated Invoice Entry handoffs only | `skills\quickbooks-invoice\SKILL.md`; `Project Rooms\Quickbooks Invoice\README.md`; destination manifest `config\pr-messaging-manifests\quickbooks-invoice.json` |
+| Quickbooks Invoice | Wiki-managed skill plus project room plus dedicated task | Pending connector readiness; messaging ready; not dispatchable | On demand after every readiness gate passes; receives validated Invoice Entry handoffs only | `skills\quickbooks-invoice\SKILL.md`; `Project Rooms\Quickbooks Invoice\README.md`; destination manifest `config\pr-messaging-manifests\quickbooks-invoice.json` |
 | Project Management Spreadsheet Rewrite | Planning/history project room now covered by Template to Project | Active/planning | On demand | `skills\template-to-project\SKILL.md`; `Project Rooms\Project Management Spreadsheet Rewrite\README.md` |
 | Property Trade Evaluation | Wiki-managed skill plus project room | Active | On demand | `skills\property-trade-evaluation\SKILL.md`; `Project Rooms\Property Trade Evaluation\README.md` |
 | Voices | Wiki-managed skill plus project room | Planning | On demand | `skills\voices\SKILL.md`; `Project Rooms\Voices\README.md` |
@@ -1261,7 +1261,7 @@ Current status:
 
 Type: wiki-managed skill plus project room plus dedicated task.
 
-Status: pending connector and messaging readiness; not dispatchable.
+Status: pending connector readiness; messaging ready; not dispatchable.
 
 Purpose:
 
@@ -1278,14 +1278,14 @@ Defined in:
 Dedicated task:
 
 - Task name: `Quickbooks Invoice`
-- Thread id: `pending until the dedicated task is created`
+- Thread id: `01a05809-d732-7b80-80b9-63602b8a6032`
 - Execution machine: `WESSTUDIO`
 
 Readiness blockers:
 
 - No callable QuickBooks/Intuit connector is currently available in the Codex environment.
 - Connector authentication, least-privilege review, exact target-company confirmation, duplicate-protection testing, and safe non-production or otherwise explicitly approved validation are pending.
-- Exact task registration and the one-notification Project Room messaging lifecycle are pending.
+- Exact task registration, host access, and the one-notification Project Room messaging lifecycle are complete on `WESSTUDIO`.
 
 Important limitations:
 

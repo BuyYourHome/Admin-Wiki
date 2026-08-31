@@ -58,13 +58,13 @@ Current blocker: no callable QuickBooks/Intuit connector is available in the cur
 ## Messaging Readiness
 
 - Dispatchable: No
-- State: `Pending messaging registration - not dispatchable`
+- State: Messaging transport ready; connector readiness pending - not dispatchable
 - Destination manifest: `C:\Codex\Wiki Files\config\pr-messaging-manifests\quickbooks-invoice.json`
 - Execution machine: `WESSTUDIO`
-- Dedicated task id: `pending until the dedicated task is created`
-- Machine registration: pending
-- Host access: pending for this exact destination identity
-- Synthetic lifecycle: pending
+- Dedicated task id: `01a05809-d732-7b80-80b9-63602b8a6032`
+- Machine registration: verified at `2026-08-31T13:39:19.8514402Z`
+- Host access: verified at `2026-08-31T13:39:20.8539842Z`
+- Synthetic lifecycle: corrected record `prmsg-quickbooks-invoice-readiness-validation-20260831-1342-correction-001` completed at `2026-08-31T13:48:19.9819523Z` after exactly one notification with Accepted, Processing, Completed, and explicit notification-count evidence under the exact destination identity
 
 Passing Project Room messaging readiness does not override the separate Connector Readiness gates.
 
@@ -93,7 +93,7 @@ Passing Project Room messaging readiness does not override the separate Connecto
 
 Status: pending setup and not dispatchable.
 
-The local Project Room package is prepared. Dedicated task creation, Project Room messaging validation, and every QuickBooks connector readiness gate remain pending.
+The local Project Room package, dedicated task, and exact-identity Project Room messaging lifecycle are complete. Every QuickBooks connector readiness gate remains pending, so the room is not dispatchable.
 
 ## Matching Skill
 
@@ -102,7 +102,7 @@ The local Project Room package is prepared. Dedicated task creation, Project Roo
 ## Dedicated Task
 
 - Task name: `Quickbooks Invoice`
-- Thread id: `pending until the dedicated task is created`
+- Thread id: `01a05809-d732-7b80-80b9-63602b8a6032`
 - Execution machine: `WESSTUDIO`
 
 ## Automation
@@ -134,8 +134,6 @@ PR Messaging: Follow `C:\Codex\Wiki Files\Project Room Messaging Rule.md`. The c
 
 ## Next Actions
 
-1. Create the dedicated `Quickbooks Invoice` task and record its exact id.
-2. Complete exact-identity Project Room messaging registration and validation.
-3. Select and authenticate an approved QuickBooks connector or API integration with the least privilege reasonably available.
-4. Have Wes confirm the exact target company/file.
-5. Run and document the safe non-production or otherwise explicitly approved connector validation.
+1. Select and authenticate an approved QuickBooks connector or API integration with the least privilege reasonably available.
+2. Have Wes confirm the exact target company/file.
+3. Run and document duplicate protection and the safe non-production or otherwise explicitly approved connector validation.
