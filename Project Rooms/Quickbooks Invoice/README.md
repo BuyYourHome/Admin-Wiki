@@ -84,14 +84,14 @@ QuickBooks may truncate a long value entered in `Bill no.`. Read back the exact 
 
 ## Messaging Readiness
 
-- Dispatchable: Yes, only for validated Invoice Entry handoffs under the interim Chrome policy
-- State: Messaging transport and interim browser readiness complete; per-bill gates required
+- Dispatchable: No
+- State: Pending `WES-VIDEOEDITOR` messaging registration and machine-specific browser readiness
 - Destination manifest: `C:\Codex\Wiki Files\config\pr-messaging-manifests\quickbooks-invoice.json`
-- Execution machine: `WESSTUDIO`
-- Dedicated task id: `01a05809-d732-7b80-80b9-63602b8a6032`
-- Machine registration: verified at `2026-08-31T13:39:19.8514402Z`
-- Host access: verified at `2026-08-31T13:39:20.8539842Z`
-- Synthetic lifecycle: corrected record `prmsg-quickbooks-invoice-readiness-validation-20260831-1342-correction-001` completed at `2026-08-31T13:48:19.9819523Z` after exactly one notification with Accepted, Processing, Completed, and explicit notification-count evidence under the exact destination identity
+- Execution machine: `WES-VIDEOEDITOR`
+- Dedicated task id: `01a05967-9a05-7081-a62e-616b2d8e61fd`
+- Machine registration: pending on `WES-VIDEOEDITOR`
+- Host access: pending on `WES-VIDEOEDITOR`
+- Synthetic lifecycle: pending for the new task and execution machine; the earlier `WESSTUDIO` lifecycle is historical evidence and does not transfer
 
 Passing Project Room messaging readiness does not override the per-bill browser safety gates.
 
@@ -119,9 +119,9 @@ Passing Project Room messaging readiness does not override the per-bill browser 
 
 ## Current Status
 
-Status: dispatchable for validated Invoice Entry handoffs under the interim Chrome policy.
+Status: Pending messaging registration and browser readiness on `WES-VIDEOEDITOR` - not dispatchable.
 
-The local Project Room package, dedicated task, messaging lifecycle, and no-production-impact Chrome readiness validation are complete. Every vendor bill remains subject to exact target-company, duplicate-search, one-save, read-back, and reconciliation gates.
+The canonical Project Room package is complete, and Wes selected task `01a05967-9a05-7081-a62e-616b2d8e61fd` on `WES-VIDEOEDITOR` as the new dedicated task. That machine must register the exact identity, pass central messaging validation, and repeat no-production-impact authenticated Chrome readiness before dispatch resumes. Every vendor bill remains subject to exact target-company, duplicate-search, one-save, read-back, and reconciliation gates.
 
 ## Matching Skill
 
@@ -130,8 +130,8 @@ The local Project Room package, dedicated task, messaging lifecycle, and no-prod
 ## Dedicated Task
 
 - Task name: `Quickbooks Invoice`
-- Thread id: `01a05809-d732-7b80-80b9-63602b8a6032`
-- Execution machine: `WESSTUDIO`
+- Thread id: `01a05967-9a05-7081-a62e-616b2d8e61fd`
+- Execution machine: `WES-VIDEOEDITOR`
 
 ## Automation
 

@@ -16,26 +16,26 @@ description: Enter and verify vendor invoices as QuickBooks bills from validated
 ## Dedicated Task
 
 - Task name: `Quickbooks Invoice`
-- Thread id: `01a05809-d732-7b80-80b9-63602b8a6032`
-- Execution machine: `WESSTUDIO`
+- Thread id: `01a05967-9a05-7081-a62e-616b2d8e61fd`
+- Execution machine: `WES-VIDEOEDITOR`
 - Accept work only through this exact registered task after all readiness gates pass.
 
 ## Messaging Readiness
 
-- Dispatchable: Yes, only for validated Invoice Entry handoffs under the interim Chrome policy
-- State: Messaging transport and interim browser readiness complete; per-bill gates required
-- Exact task id: `01a05809-d732-7b80-80b9-63602b8a6032`
-- Machine registration and host access: verified on `WESSTUDIO`
-- Synthetic lifecycle: corrected record `prmsg-quickbooks-invoice-readiness-validation-20260831-1342-correction-001` completed after exactly one notification with explicit notification-count evidence under the exact destination identity
+- Dispatchable: No
+- State: Pending messaging registration and machine-specific browser readiness on `WES-VIDEOEDITOR`
+- Exact task id: `01a05967-9a05-7081-a62e-616b2d8e61fd`
+- Machine registration and host access: pending on `WES-VIDEOEDITOR`
+- Synthetic lifecycle: pending for the new task and execution machine; the earlier `WESSTUDIO` lifecycle is historical evidence and does not transfer
 
 Messaging readiness alone does not override the interim browser and per-bill safety gates.
 
 ## Interim Browser Readiness
 
-Status: ready for validated Invoice Entry handoffs under Wes's interim Chrome authorization.
+Status: pending no-production-impact revalidation on `WES-VIDEOEDITOR` under Wes's interim Chrome authorization.
 
 - Use the existing authenticated Intuit/QuickBooks Online session through Chrome browser control.
-- A no-production-impact validation on `2026-08-31T16:51:43Z` reached the company chooser and verified five visible QuickBooks Online companies without selecting a company or changing any record.
+- The prior no-production-impact validation on `WESSTUDIO` is historical only. Repeat authenticated company-chooser validation on `WES-VIDEOEDITOR` without selecting a company or changing any record before enabling dispatch.
 - The visible companies were `Buy Your Home LLC`, `BYH 401K LLC`, `Heritage Management LLC`, `Home Acct`, and `Sell Your Home LLC`.
 - The earlier Zapier MCP setup path is superseded while this interim authorization remains active.
 
