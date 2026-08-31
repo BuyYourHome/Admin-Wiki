@@ -34,6 +34,10 @@ Messaging readiness alone does not satisfy Connector Readiness.
 
 Status: pending and not dispatchable.
 
+Authorized integration path: Zapier QuickBooks Online MCP. Interactive Chrome OAuth is permitted only for connector setup and authentication. Configure five separately named company connections and permit only `Find Customer`, `Find Product/Service`, `Find Invoice`, and `Create Invoice`. Readiness validation must remain read-only and must not invoke `Create Invoice`.
+
+Current blocker: Wes must complete the Zapier login in the preserved Chrome tab before QuickBooks OAuth and company-connection setup can continue.
+
 Require all of the following before any production invoice creation:
 
 1. A callable approved QuickBooks connector or API integration; never substitute browser automation.

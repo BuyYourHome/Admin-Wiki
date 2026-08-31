@@ -41,7 +41,15 @@ Missing, conflicting, or unsupported controlling data is a blocker. Do not guess
 
 ## Connector Readiness
 
-Status: **Pending connector setup - not dispatchable**.
+Status: **Zapier QuickBooks Online MCP selected; authentication pending - not dispatchable**.
+
+Authorized readiness path:
+
+- Connector: Zapier QuickBooks Online MCP.
+- Setup may use interactive Chrome OAuth only for connector authentication and configuration; browser automation remains prohibited for production invoice work.
+- Configure five separately named company connections after authentication, one for each available QuickBooks Online company file.
+- Permit only `Find Customer`, `Find Product/Service`, `Find Invoice`, and `Create Invoice`.
+- Readiness validation is read-only. `Create Invoice` may be configured but must not be invoked during readiness testing.
 
 All of these gates must pass before this room may become dispatchable:
 
@@ -53,7 +61,7 @@ All of these gates must pass before this room may become dispatchable:
 6. A non-production QuickBooks sandbox, connector dry run, or another explicitly approved validation path proves invoice creation and read-back without sending, payment activity, paid status, void/delete, unrelated bookkeeping, or production-book impact.
 7. The validation result, company selection evidence, connector identity, permission review, and timestamp are recorded without secrets.
 
-Current blocker: no callable QuickBooks/Intuit connector is available in the current Codex environment, so authentication, target-company selection, least-privilege review, duplicate-protection testing, and safe invoice validation have not occurred.
+Current blocker: the Zapier MCP sign-in page is open in Chrome, but Wes must complete the Zapier login before QuickBooks OAuth, the five company connections, fixed-tool review, secret-free company identity capture, and read-only validation can continue. No QuickBooks authentication or business action has occurred.
 
 ## Messaging Readiness
 
@@ -93,7 +101,7 @@ Passing Project Room messaging readiness does not override the separate Connecto
 
 Status: pending setup and not dispatchable.
 
-The local Project Room package, dedicated task, and exact-identity Project Room messaging lifecycle are complete. Every QuickBooks connector readiness gate remains pending, so the room is not dispatchable.
+The local Project Room package, dedicated task, and exact-identity Project Room messaging lifecycle are complete. Zapier QuickBooks Online MCP is the authorized integration path, but authentication is waiting for Wes in Chrome. The five company connections and all read-only connector validation remain incomplete, so the room is not dispatchable.
 
 ## Matching Skill
 
@@ -134,6 +142,8 @@ PR Messaging: Follow `C:\Codex\Wiki Files\Project Room Messaging Rule.md`. The c
 
 ## Next Actions
 
-1. Select and authenticate an approved QuickBooks connector or API integration with the least privilege reasonably available.
-2. Have Wes confirm the exact target company/file.
-3. Run and document duplicate protection and the safe non-production or otherwise explicitly approved connector validation.
+1. Wes completes the Zapier login in the preserved Chrome tab.
+2. Configure five separately named QuickBooks Online connections and record each exact secret-free company display name and immutable connector identity.
+3. Verify that only `Find Customer`, `Find Product/Service`, `Find Invoice`, and `Create Invoice` are enabled.
+4. Run read-only company, customer, product/service, and invoice lookup validation; do not invoke `Create Invoice` during readiness testing.
+5. Document duplicate controls and keep production dispatch disabled until every connector gate passes.

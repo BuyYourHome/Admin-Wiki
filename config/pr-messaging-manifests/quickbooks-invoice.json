@@ -8,7 +8,7 @@
   "owned_actions": ["connector-backed QuickBooks invoice creation from validated Invoice Entry handoffs", "duplicate protection", "created-invoice read-back verification", "outcome return to Invoice Entry"],
   "accepted_message_types": ["request", "question", "status", "decision", "result", "improvement"],
   "related_project_rooms": ["Invoice Entry", "Jean Wright"],
-  "limitations": ["connector authentication pending", "target QuickBooks company selection pending", "least-privilege review pending", "duplicate-protection validation pending", "safe connector validation pending", "does not send invoices", "does not apply payments or mark paid", "does not void or delete", "does not perform unrelated bookkeeping", "does not substitute browser automation"],
+  "limitations": ["Zapier login requires Wes interaction", "five QuickBooks Online company connections pending", "connector authentication pending", "target QuickBooks company selection pending", "least-privilege review pending", "duplicate-protection validation pending", "read-only connector validation pending", "does not send invoices", "does not apply payments or mark paid", "does not void or delete", "does not perform unrelated bookkeeping", "does not substitute browser automation for production connector work"],
   "messaging_readiness": {
     "status": "ready",
     "machine_registration_verified_at_utc": "2026-08-31T13:39:19.8514402Z",
@@ -18,8 +18,14 @@
     "notification_count": 1
   },
   "connector_readiness": {
-    "status": "pending",
-    "connector_identity": null,
+    "status": "needs_wes_authentication",
+    "connector_identity": "Zapier QuickBooks Online MCP",
+    "readiness_message_id": "prmsg-create-pr-quickbooks-connector-readiness-20260831-001",
+    "authentication_blocker": "Wes must complete Zapier login in the preserved Chrome tab",
+    "required_company_connection_count": 5,
+    "configured_company_connections": [],
+    "allowed_tools": ["Find Customer", "Find Product/Service", "Find Invoice", "Create Invoice"],
+    "readiness_validation_mode": "read-only; Create Invoice configured but not invoked",
     "authentication_verified_at_utc": null,
     "least_privilege_reviewed_at_utc": null,
     "target_company_verified_at_utc": null,

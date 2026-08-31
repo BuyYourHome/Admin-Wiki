@@ -1261,7 +1261,7 @@ Current status:
 
 Type: wiki-managed skill plus project room plus dedicated task.
 
-Status: pending connector readiness; messaging ready; not dispatchable.
+Status: Zapier QuickBooks Online MCP selected; waiting for Wes authentication; messaging ready; not dispatchable.
 
 Purpose:
 
@@ -1283,8 +1283,9 @@ Dedicated task:
 
 Readiness blockers:
 
-- No callable QuickBooks/Intuit connector is currently available in the Codex environment.
-- Connector authentication, least-privilege review, exact target-company confirmation, duplicate-protection testing, and safe non-production or otherwise explicitly approved validation are pending.
+- Zapier QuickBooks Online MCP is the authorized integration path, but Wes must complete the Zapier login in the preserved Chrome tab before QuickBooks OAuth can continue.
+- Five separately named company connections, secret-free company identities, fixed-tool verification, least-privilege review, duplicate-protection testing, and read-only validation are pending.
+- The permitted tool set is limited to `Find Customer`, `Find Product/Service`, `Find Invoice`, and `Create Invoice`; readiness validation must not invoke `Create Invoice`.
 - Exact task registration, host access, and the one-notification Project Room messaging lifecycle are complete on `WESSTUDIO`.
 
 Important limitations:
