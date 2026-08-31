@@ -295,8 +295,10 @@ Classified working files:
 - Eligible approved unpaid obligations: `INV-JKLLC-20260731-001` for `$2,500.00` and `INV-JKLLC-20260815-001` for `$2,708.33`.
 - Excluded from bill creation: the superseded weekly July presentations, denied `SP-JK-20260731-001`, and open draft `INV-JKLLC-20260831-001`.
 - No authoritative Josh QuickBooks bill id or completed live duplicate search was found. Neither approved invoice may be called missing from QuickBooks on current evidence.
-- Quickbooks Invoice task `01a05967-9a05-7081-a62e-616b2d8e61fd` remains non-dispatchable. No child handoff, QuickBooks search, bill creation, payment, paid status, or external contact occurred.
-- Resume only after the destination is dispatchable and exact due-date/terms and line-level mappings are supplied; require duplicate search, no more than one save, and saved-bill read-back.
+- Resume message `prmsg-jean-josh-quickbooks-reconciliation-resume-20260831-001`, payload hash `4d4e1ed88ebc8ad0d2d3f28a95fb7152d848c37dee87ef65b20c254c511fa9d7`, was accepted after authoritative readiness message `prmsg-jean-quickbooks-wve-browser-readiness-retry-20260831-002` completed for Quickbooks Invoice task `01a05967-9a05-7081-a62e-616b2d8e61fd` on WES-VIDEOEDITOR.
+- Destination readiness is resolved. Direct PDF review confirmed invoice dates `2026-07-31` and `2026-08-15`, but neither invoice supplies a due date or terms. The durable source set also lacks Josh's exact QuickBooks vendor identifier and complete account/item, customer/project/job, class, location, and tax mappings for all lines, including BackOffice and Tensity.
+- Tim's supervised Pond/Rosebrooks mappings apply only to Tim's exact bill and were not copied to Josh. No incomplete child handoff, QuickBooks search, bill creation, payment, paid status, or external contact occurred.
+- Status: `Needs Wes`. Supply the exact vendor record, due date or terms, and every required line mapping. Then create the immutable child handoff and require live duplicate search, no more than one save, and saved-bill read-back.
 
 - Invoice Entry does not approve or pay invoices.
 - Invoice Entry does not send email directly; all delivery goes through Email Monitor's Email Delivery workflow.

@@ -45,3 +45,21 @@ Quickbooks Invoice is not dispatchable. Its manifest names task `01a05967-9a05-7
 ## Required Next Step
 
 After the Quickbooks Invoice owner changes its manifest to dispatchable and completes the registered machine/browser readiness checks, Invoice Entry must re-read this reconciliation, confirm the exact QuickBooks terms and mappings for each approved obligation, and send one duplicate-safe handoff per eligible obligation or an explicitly authorized combined batch. Quickbooks Invoice must then search before creation, save no more than once, and read the saved bill back. An existing-match result must be returned with its QuickBooks transaction id; an ambiguous result must block retry.
+
+## Resume Result - 2026-08-31
+
+- Resume message: `prmsg-jean-josh-quickbooks-reconciliation-resume-20260831-001`
+- Payload hash: `4d4e1ed88ebc8ad0d2d3f28a95fb7152d848c37dee87ef65b20c254c511fa9d7`
+- Authoritative readiness evidence: `prmsg-jean-quickbooks-wve-browser-readiness-retry-20260831-002` completed for Quickbooks Invoice task `01a05967-9a05-7081-a62e-616b2d8e61fd` on `WES-VIDEOEDITOR`, with messaging and Chrome readiness passed, `dispatchable: true`, five visible companies, no company selected, and no QuickBooks data changed.
+- The existing invoice inventory was reused without repeating or expanding it.
+
+The approved PDFs were read directly. They confirm:
+
+| Invoice | Invoice date | Supported destinations | Unsupported production-handoff fields | Result |
+| --- | --- | --- | --- | --- |
+| `INV-JKLLC-20260731-001` | `2026-07-31` | BackOffice `$199.57`; `24-HM - 4121 Tensity Dr` `$2,300.43` | No due date or terms on the PDF; no authoritative QuickBooks vendor identifier; no exact BackOffice or Tensity customer/project/job mapping; no exact account/item, class, location, or tax mapping | No child handoff created; `Needs Wes` |
+| `INV-JKLLC-20260815-001` | `2026-08-15` | Tensity `$1,899.20`; BackOffice `$310.17`; Rosebrooks `$404.56`; Pond `$94.40` | No due date or terms on the PDF; no authoritative QuickBooks vendor identifier; no complete exact customer/project/job mapping for all four lines; no exact account/item, class, location, or tax mapping | No child handoff created; `Needs Wes` |
+
+The Tim Fleming supervised bill proves only that its Pond and Rosebrooks lines used `BYH:908`, `BYH:115`, and `Property Asset:Property Asset Improvements`. It does not establish a reusable Josh labor rule, a Tensity mapping, a BackOffice mapping, Josh's exact QuickBooks vendor record, or the missing terms. Reusing those values would be an unsupported accounting inference.
+
+No immutable production child message was created because neither obligation meets the Quickbooks Invoice required-handoff contract. Wes or an authoritative accounting mapping source must supply the exact vendor record, due date or terms, and all required account/item, customer/project/job, class, location, and tax mappings for each line. After those facts are supplied, Invoice Entry may create the exact child handoff and require live duplicate search, one save only when absent, and full read-back.
