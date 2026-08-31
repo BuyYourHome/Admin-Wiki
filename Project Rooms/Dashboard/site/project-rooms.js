@@ -1,5 +1,5 @@
-window.PROJECT_ROOMS_UPDATED = '2026-08-14 15:53';
-window.PROJECT_ROOMS_HASH = 'E0D15EC8F41F5026B486F93FA758A1219B96F155E01667E48C64E231138AC8C3';
+window.PROJECT_ROOMS_UPDATED = '2026-08-28 08:07';
+window.PROJECT_ROOMS_HASH = '2DE9637F490B37249CC4D4365D06C65DDCBE24536DCBE8BB37778CC346E4C5B4';
 window.PROJECT_ROOM_GROUPS = [
     {
         "name":  "Intake \u0026 Coordination",
@@ -202,6 +202,27 @@ window.PROJECT_ROOMS = [
                          ]
     },
     {
+        "name":  "Bathroom Fixtures",
+        "purpose":  "Research, compare, select, and document bathroom fixtures and fixture systems for Buy Your Home properties and projects.",
+        "status":  "Status not recorded",
+        "skill":  "",
+        "skillPath":  "",
+        "skillState":  "not-applicable",
+        "taskId":  "",
+        "attention":  null,
+        "group":  "Other",
+        "groupBasis":  "Used when a Project Room does not yet have a supported assignment to one of the defined functional groups.",
+        "modes":  [
+                      "Compare",
+                      "Specify",
+                      "Source"
+                  ],
+        "readmeUrl":  "../../Bathroom%20Fixtures/README.md",
+        "quickActions":  [
+
+                         ]
+    },
+    {
         "name":  "Brynda Suit",
         "purpose":  "This Project Room holds source material, working notes, open questions, and review-ready outputs for the Brynda Suit workflow. Use this room when Wes asks Codex to organize, analyze, draft, or maintain materials specifically tied to Brynda Suit.",
         "status":  "draft",
@@ -251,7 +272,15 @@ window.PROJECT_ROOMS = [
         "group":  "Systems \u0026 Maintenance",
         "groupBasis":  "Maintains computers, Codex operations, management support, purchasing tools, marketplace work, or system health.",
         "modes":  [
-                      "Update Codex Environment"
+                      "Baseline Machine Setup",
+                      "Canonical Admin Wiki Project Setup",
+                      "Managed Runtime Failure Recovery",
+                      "Completion Requirements",
+                      "Update Existing Machine",
+                      "Role Assignment",
+                      "Replacement Machine",
+                      "Decommission Machine",
+                      "Machine Health Check"
                   ],
         "readmeUrl":  "../../Codex%20Environment/README.md",
         "quickActions":  [
@@ -327,7 +356,8 @@ window.PROJECT_ROOMS = [
         "group":  "Intake \u0026 Coordination",
         "groupBasis":  "Receives requests, routes work, creates Project Rooms, or provides an operating overview across workflows.",
         "modes":  [
-                      "Diagram"
+                      "Diagram",
+                      "Min PR Set"
                   ],
         "readmeUrl":  "../../Create%20PR/README.md",
         "quickActions":  [
@@ -399,7 +429,7 @@ window.PROJECT_ROOMS = [
         "skill":  "email-monitor",
         "skillPath":  "C:\\Codex\\Wiki Files\\skills\\email-monitor\\SKILL.md",
         "skillState":  "available",
-        "taskId":  "019f8274-5b7e-7170-a051-f7944954de82",
+        "taskId":  "01a029bf-81d2-76e1-9960-64558a57640b",
         "attention":  null,
         "group":  "Intake \u0026 Coordination",
         "groupBasis":  "Receives requests, routes work, creates Project Rooms, or provides an operating overview across workflows.",
@@ -516,6 +546,29 @@ window.PROJECT_ROOMS = [
                                  "label":  "Open GraciousMillionaire.com",
                                  "href":  "https://graciousmillionaire.com"
                              }
+                         ]
+    },
+    {
+        "name":  "Home Assistant",
+        "purpose":  "Maintain the Buy Your Home Home Assistant environment running on a non-Windows mini computer, including integrations, dashboards, automations, backups, updates, diagnostics, and approved configuration changes.",
+        "status":  "Status not recorded",
+        "skill":  "",
+        "skillPath":  "",
+        "skillState":  "not-applicable",
+        "taskId":  "",
+        "attention":  null,
+        "group":  "Other",
+        "groupBasis":  "Used when a Project Room does not yet have a supported assignment to one of the defined functional groups.",
+        "modes":  [
+                      "Manage",
+                      "Automate",
+                      "Diagnose",
+                      "Backup And Recovery",
+                      "Update"
+                  ],
+        "readmeUrl":  "../../Home%20Assistant/README.md",
+        "quickActions":  [
+
                          ]
     },
     {
@@ -666,7 +719,8 @@ window.PROJECT_ROOMS = [
                       "Push",
                       "Dispatcher",
                       "General Delegation Default",
-                      "Jean\u0027s Voice Intake"
+                      "Jean\u0027s Voice Intake",
+                      "Quo Text Intake"
                   ],
         "readmeUrl":  "../../Jean%20Wright/README.md",
         "quickActions":  [
@@ -827,6 +881,25 @@ window.PROJECT_ROOMS = [
                       "Estate Sale Mode"
                   ],
         "readmeUrl":  "../../Marketplace/README.md",
+        "quickActions":  [
+
+                         ]
+    },
+    {
+        "name":  "Network Roadmap",
+        "purpose":  "Plan and govern Buy Your Home network and device-management modernization across WesStudio, OfficeAssist, WES-VIDEOEDITOR, and future business computers. The initial direction is to evaluate Microsoft Entra ID join and Intune through a noncritical pilot instead of deploying traditional on-premises Active Directory solely to solve current workgroup credential friction.",
+        "status":  "Status not recorded",
+        "skill":  "",
+        "skillPath":  "",
+        "skillState":  "not-applicable",
+        "taskId":  "",
+        "attention":  null,
+        "group":  "Other",
+        "groupBasis":  "Used when a Project Room does not yet have a supported assignment to one of the defined functional groups.",
+        "modes":  [
+
+                  ],
+        "readmeUrl":  "../../Network%20Roadmap/README.md",
         "quickActions":  [
 
                          ]
@@ -1056,6 +1129,26 @@ window.PROJECT_ROOMS = [
                                "href":  "../../SOPs/outputs/SOPs/SOP%20-%20Item%20104%20-%20Update%20Transactions%20into%20QuickBooks%20from%20Receipts.md"
                            }
                        ]
+    },
+    {
+        "name":  "Sync Github",
+        "purpose":  "Keep the canonical Admin wiki Git repository current across every approved Buy Your Home computer that has C:\\Codex\\Wiki Files configured. GitHub is the exchange point between computers. Each enrolled computer runs the same local check at least once daily, fetches current remote state, and fast-forwards local main only when doing so cannot overwrite or conceal local work.",
+        "status":  "active and dispatchable through the registered dedicated task",
+        "skill":  "sync-github",
+        "skillPath":  "C:\\Codex\\Wiki Files\\skills\\sync-github\\SKILL.md",
+        "skillState":  "available",
+        "taskId":  "",
+        "attention":  null,
+        "group":  "Other",
+        "groupBasis":  "Used when a Project Room does not yet have a supported assignment to one of the defined functional groups.",
+        "modes":  [
+                      "Daily Sync",
+                      "Manual Sync Check"
+                  ],
+        "readmeUrl":  "../../Sync%20Github/README.md",
+        "quickActions":  [
+
+                         ]
     },
     {
         "name":  "Template to Project",
