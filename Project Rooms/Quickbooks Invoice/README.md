@@ -2,7 +2,7 @@
 
 ## Purpose
 
-Create invoice records in QuickBooks from validated, authorized, structured handoffs received from Invoice Entry. This room owns connector-backed creation and read-back verification of the matching QuickBooks invoice only.
+Create invoice records in QuickBooks from validated, authorized, structured handoffs received from Invoice Entry. This room owns controlled creation and read-back verification of the matching QuickBooks invoice through the currently approved execution method only.
 
 ## Scope
 
@@ -11,7 +11,7 @@ In scope:
 - Receive immutable durable handoffs only from the registered Invoice Entry task.
 - Verify the handoff identity, authorization, target company, customer, invoice fields, line items, totals, and supporting references.
 - Check for an existing QuickBooks invoice before creation.
-- Create one invoice through an authenticated, approved QuickBooks connector or API integration after every readiness and per-invoice gate passes.
+- Create one invoice through authenticated Chrome browser control after every readiness and per-invoice gate passes while Wes's interim authorization remains active.
 - Read the created record back, compare the controlling fields, log the durable outcome, and return the result to Invoice Entry.
 
 Out of scope:
@@ -21,7 +21,7 @@ Out of scope:
 - Applying or receiving a payment, marking an invoice paid, or changing payment status.
 - Voiding, deleting, or altering an invoice after creation.
 - Unrelated bookkeeping, reconciliation, journal entries, bills, expenses, estimates, credits, customer changes, or company settings.
-- Browser automation as a substitute for a missing or unavailable connector.
+- Any browser action outside the controlled invoice workflow and the exact authorized handoff.
 - Customer contact or any other external communication.
 
 ## Required Invoice Entry Handoff
@@ -39,34 +39,31 @@ Each request must provide or reference:
 
 Missing, conflicting, or unsupported controlling data is a blocker. Do not guess.
 
-## Connector Readiness
+## Interim Browser Readiness
 
-Status: **Zapier QuickBooks Online MCP selected; authentication pending - not dispatchable**.
+Status: **Ready for validated Invoice Entry handoffs under Wes's interim Chrome authorization**.
 
-Authorized readiness path:
+Authorized method:
 
-- Connector: Zapier QuickBooks Online MCP.
-- Setup may use interactive Chrome OAuth only for connector authentication and configuration; browser automation remains prohibited for production invoice work.
-- Configure five separately named company connections after authentication, one for each available QuickBooks Online company file.
-- Permit only `Find Customer`, `Find Product/Service`, `Find Invoice`, and `Create Invoice`.
-- Readiness validation is read-only. `Create Invoice` may be configured but must not be invoked during readiness testing.
+- Use Chrome browser control with the existing authenticated Intuit/QuickBooks Online session.
+- Before every invoice, visibly select and verify the exact company named in the validated Invoice Entry handoff.
+- Check the durable action log by dispatch id and search QuickBooks using the supplied invoice identity, customer, amount, date, invoice number, and any known transaction id before creation.
+- Create exactly one invoice, save once, and read the saved record back before returning success.
+- A login challenge, uncertain company, ambiguous duplicate, browser error after submission, or failed read-back is a blocker. Reconcile before any retry.
 
-All of these gates must pass before this room may become dispatchable:
+No-production-impact validation completed at `2026-08-31T16:51:43Z`:
 
-1. An approved QuickBooks connector or API integration is callable from the dedicated task. Browser automation is not an alternative.
-2. Authentication succeeds without storing credentials or tokens in Git, Project Room files, or durable messages.
-3. The granted access is reviewed for the least privilege reasonably available for invoice creation and read-back verification.
-4. Wes confirms the exact target QuickBooks company/file, and the connector reports the same immutable company identifier during validation.
-5. Duplicate protection is validated against the target company using dispatch id, source invoice identity, customer, amount, invoice date, and QuickBooks transaction id when any.
-6. A non-production QuickBooks sandbox, connector dry run, or another explicitly approved validation path proves invoice creation and read-back without sending, payment activity, paid status, void/delete, unrelated bookkeeping, or production-book impact.
-7. The validation result, company selection evidence, connector identity, permission review, and timestamp are recorded without secrets.
+- Chrome control reached the authenticated QuickBooks Online company chooser.
+- The chooser visibly listed exactly five QuickBooks Online companies: `Buy Your Home LLC`, `BYH 401K LLC`, `Heritage Management LLC`, `Home Acct`, and `Sell Your Home LLC`.
+- No company was selected because no Invoice Entry handoff identified a target.
+- No invoice, customer, item, payment, setting, or bookkeeping record was created or changed.
 
-Current blocker: the Zapier MCP sign-in page is open in Chrome, but Wes must complete the Zapier login before QuickBooks OAuth, the five company connections, fixed-tool review, secret-free company identity capture, and read-only validation can continue. No QuickBooks authentication or business action has occurred.
+The earlier Zapier MCP setup path is superseded by Wes's later interim browser-control decision. Credentials and session data remain outside Git and Project Room messages.
 
 ## Messaging Readiness
 
-- Dispatchable: No
-- State: Messaging transport ready; connector readiness pending - not dispatchable
+- Dispatchable: Yes, only for validated Invoice Entry handoffs under the interim Chrome policy
+- State: Messaging transport and interim browser readiness complete; per-invoice gates required
 - Destination manifest: `C:\Codex\Wiki Files\config\pr-messaging-manifests\quickbooks-invoice.json`
 - Execution machine: `WESSTUDIO`
 - Dedicated task id: `01a05809-d732-7b80-80b9-63602b8a6032`
@@ -74,19 +71,19 @@ Current blocker: the Zapier MCP sign-in page is open in Chrome, but Wes must com
 - Host access: verified at `2026-08-31T13:39:20.8539842Z`
 - Synthetic lifecycle: corrected record `prmsg-quickbooks-invoice-readiness-validation-20260831-1342-correction-001` completed at `2026-08-31T13:48:19.9819523Z` after exactly one notification with Accepted, Processing, Completed, and explicit notification-count evidence under the exact destination identity
 
-Passing Project Room messaging readiness does not override the separate Connector Readiness gates.
+Passing Project Room messaging readiness does not override the per-invoice browser safety gates.
 
 ## Workflow
 
 1. Reconcile the authoritative central message, verify the exact destination identity and payload hash, deduplicate by dispatch id, and write `Accepted` before substantive work.
 2. Confirm the request came from the registered Invoice Entry task and contains the required validated handoff fields.
-3. Confirm every Connector Readiness gate remains valid for the exact connector and target company.
-4. Search the target company for likely duplicates using all supplied duplicate-check fields. If a match or ambiguity exists, stop without creating an invoice and return the existing transaction id or the review needed.
-5. Resolve the exact customer and every line-item mapping through the connector. Do not create or edit customers, items, accounts, classes, locations, projects, jobs, tax settings, or terms unless a later workflow specifically authorizes that action.
-6. Create exactly one invoice through the approved connector using a stable idempotency reference derived from the durable dispatch id when supported.
-7. Read the created invoice back and compare company, customer, dates, number, currency, line items, mappings, and total to the authorized handoff.
+3. Confirm the Chrome session is authenticated, then visibly select and verify the exact company from the handoff. Stop on any login challenge or company uncertainty.
+4. Reconcile the action log by dispatch id and search the target company for likely duplicates using all supplied duplicate-check fields. If a match or ambiguity exists, stop without creating an invoice and return the existing transaction id or the review needed.
+5. Resolve the exact customer and every line-item mapping in QuickBooks without creating or editing customers, items, accounts, classes, locations, projects, jobs, tax settings, or terms.
+6. Review the staged invoice against the authorized handoff, then save exactly once. If the browser errors or becomes ambiguous after submission, do not retry creation; reconcile through the action log and QuickBooks search first.
+7. Read the saved invoice back and compare company, customer, dates, number, currency, line items, mappings, total, and QuickBooks invoice identifier to the authorized handoff.
 8. Record the outcome in `working\quickbooks-invoice-action-log.md` and return the QuickBooks invoice id, company/file, customer, amount, creation timestamp, and verification result to Invoice Entry.
-9. Do not send the invoice or take any payment, paid-status, void/delete, bookkeeping, browser, or customer-contact action.
+9. Do not send the invoice or take any payment, paid-status, void/delete, unrelated-bookkeeping, unscoped-browser, or customer-contact action.
 
 ## Folder Map
 
@@ -99,9 +96,9 @@ Passing Project Room messaging readiness does not override the separate Connecto
 
 ## Current Status
 
-Status: pending setup and not dispatchable.
+Status: dispatchable for validated Invoice Entry handoffs under the interim Chrome policy.
 
-The local Project Room package, dedicated task, and exact-identity Project Room messaging lifecycle are complete. Zapier QuickBooks Online MCP is the authorized integration path, but authentication is waiting for Wes in Chrome. The five company connections and all read-only connector validation remain incomplete, so the room is not dispatchable.
+The local Project Room package, dedicated task, messaging lifecycle, and no-production-impact Chrome readiness validation are complete. Every invoice remains subject to exact target-company, duplicate-search, one-save, read-back, and reconciliation gates.
 
 ## Matching Skill
 
@@ -142,8 +139,7 @@ PR Messaging: Follow `C:\Codex\Wiki Files\Project Room Messaging Rule.md`. The c
 
 ## Next Actions
 
-1. Wes completes the Zapier login in the preserved Chrome tab.
-2. Configure five separately named QuickBooks Online connections and record each exact secret-free company display name and immutable connector identity.
-3. Verify that only `Find Customer`, `Find Product/Service`, `Find Invoice`, and `Create Invoice` are enabled.
-4. Run read-only company, customer, product/service, and invoice lookup validation; do not invoke `Create Invoice` during readiness testing.
-5. Document duplicate controls and keep production dispatch disabled until every connector gate passes.
+1. Accept only validated and authorized Invoice Entry handoffs containing the exact target company and complete invoice fields.
+2. Apply the target-company, action-log, duplicate-search, one-save, and read-back gates for every invoice.
+3. Reconcile any ambiguous browser result before retrying; never blindly create a second invoice.
+4. Revisit connector/API adoption separately if Wes replaces the interim Chrome authorization.

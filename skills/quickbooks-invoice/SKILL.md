@@ -1,6 +1,6 @@
 ---
 name: quickbooks-invoice
-description: Create and verify QuickBooks invoice records from validated, authorized Invoice Entry handoffs through an approved authenticated connector. Use for Quickbooks Invoice intake, duplicate protection, connector-backed invoice creation, read-back verification, outcome logging, and return to Invoice Entry. Do not use for invoice intake or approval, customer sending, payment activity, paid status, void/delete, unrelated bookkeeping, or browser substitution.
+description: Create and verify QuickBooks invoice records from validated, authorized Invoice Entry handoffs through Wes-authorized authenticated Chrome browser control or a later approved method. Use for Quickbooks Invoice intake, duplicate protection, controlled one-invoice creation, read-back verification, outcome logging, and return to Invoice Entry. Do not use for invoice intake or approval, customer sending, payment activity, paid status, void/delete, unrelated bookkeeping, or unscoped browser action.
 ---
 
 # Quickbooks Invoice
@@ -22,33 +22,24 @@ description: Create and verify QuickBooks invoice records from validated, author
 
 ## Messaging Readiness
 
-- Dispatchable: No
-- State: Messaging transport ready; connector readiness pending - not dispatchable
+- Dispatchable: Yes, only for validated Invoice Entry handoffs under the interim Chrome policy
+- State: Messaging transport and interim browser readiness complete; per-invoice gates required
 - Exact task id: `01a05809-d732-7b80-80b9-63602b8a6032`
 - Machine registration and host access: verified on `WESSTUDIO`
 - Synthetic lifecycle: corrected record `prmsg-quickbooks-invoice-readiness-validation-20260831-1342-correction-001` completed after exactly one notification with explicit notification-count evidence under the exact destination identity
 
-Messaging readiness alone does not satisfy Connector Readiness.
+Messaging readiness alone does not override the interim browser and per-invoice safety gates.
 
-## Connector Readiness
+## Interim Browser Readiness
 
-Status: pending and not dispatchable.
+Status: ready for validated Invoice Entry handoffs under Wes's interim Chrome authorization.
 
-Authorized integration path: Zapier QuickBooks Online MCP. Interactive Chrome OAuth is permitted only for connector setup and authentication. Configure five separately named company connections and permit only `Find Customer`, `Find Product/Service`, `Find Invoice`, and `Create Invoice`. Readiness validation must remain read-only and must not invoke `Create Invoice`.
+- Use the existing authenticated Intuit/QuickBooks Online session through Chrome browser control.
+- A no-production-impact validation on `2026-08-31T16:51:43Z` reached the company chooser and verified five visible QuickBooks Online companies without selecting a company or changing any record.
+- The visible companies were `Buy Your Home LLC`, `BYH 401K LLC`, `Heritage Management LLC`, `Home Acct`, and `Sell Your Home LLC`.
+- The earlier Zapier MCP setup path is superseded while this interim authorization remains active.
 
-Current blocker: Wes must complete the Zapier login in the preserved Chrome tab before QuickBooks OAuth and company-connection setup can continue.
-
-Require all of the following before any production invoice creation:
-
-1. A callable approved QuickBooks connector or API integration; never substitute browser automation.
-2. Successful secret-safe authentication.
-3. Review of the least privilege reasonably available for invoice creation and read-back.
-4. Wes-confirmed exact target company/file and connector-reported immutable company identity.
-5. Proven duplicate search using dispatch id, source invoice identity, customer, amount, date, and QuickBooks transaction id when any.
-6. A non-production sandbox, connector dry run, or another explicitly approved validation with no customer sending, payment activity, paid status, void/delete, unrelated bookkeeping, or production-book impact.
-7. Durable, secret-free evidence of connector identity, target-company selection, permission review, validation result, and timestamp.
-
-If any gate is missing or stale, return `blocked` or `needs Wes` and do not create an invoice.
+Before every invoice, require authenticated access, visible exact-company confirmation from the handoff, action-log reconciliation by dispatch id, duplicate search, exact customer and line mappings, one save, and full read-back verification. A login challenge, uncertain company, ambiguous duplicate, browser error after submission, or failed read-back is a blocker. Never blindly retry creation.
 
 ## Required Startup
 
@@ -56,7 +47,7 @@ If any gate is missing or stale, return `blocked` or `needs Wes` and do not crea
 2. Read `AGENTS.md`, `Project Room Chat Startup Rule.md`, `Project Room File Ownership And Git Coordination Rule.md`, `Project Room Delegation Contract.md`, and `Project Room Messaging Rule.md`.
 3. Read the Quickbooks Invoice README, source inventory, duplicate/conflict log, missing-context file, and action log.
 4. Check `git status --short --branch` and work on `main` unless Wes explicitly asks for a branch.
-5. Confirm Connector Readiness and Messaging Readiness before accepting production work.
+5. Confirm Messaging Readiness, Interim Browser Readiness, and every per-invoice gate before accepting production work.
 
 ## Required Handoff
 
@@ -77,13 +68,13 @@ Do not infer missing company, customer, dates, line items, totals, accounts, ite
 
 1. Reconcile the authoritative central message with `Manage-ProjectRoomMessage.ps1`, verify the exact destination and payload hash, deduplicate by dispatch id, and write `Accepted` before substantive work.
 2. Confirm the source is the registered Invoice Entry task and the handoff is complete, internally consistent, and authorized.
-3. Confirm every connector and messaging readiness gate remains valid for the exact connector and company.
+3. Confirm messaging readiness, authenticated Chrome access, and the exact visible company named in the handoff.
 4. Search for likely duplicates using all supplied fields. Stop without creation when a match or ambiguity exists.
 5. Resolve the exact customer and every line-item mapping without creating or changing unrelated QuickBooks entities or settings.
-6. Create exactly one invoice through the approved connector, using the durable dispatch id as a stable external or idempotency reference when supported.
-7. Read the invoice back and compare company, customer, number, dates, currency, line items, mappings, and total.
+6. Review the staged invoice, save exactly once, and record the QuickBooks identifier immediately when visible. If the browser result after submission is ambiguous, stop and reconcile before any retry.
+7. Read the saved invoice back and compare company, customer, number, dates, currency, line items, mappings, total, and QuickBooks invoice identifier.
 8. Log the outcome in `working\quickbooks-invoice-action-log.md` and return the QuickBooks invoice id, company/file, customer, amount, creation timestamp, and verification result to Invoice Entry under the same dispatch id.
-9. Do not send the invoice or perform payment, paid-status, void/delete, unrelated bookkeeping, browser, or customer-contact actions.
+9. Do not send the invoice or perform payment, paid-status, void/delete, unrelated-bookkeeping, unscoped-browser, or customer-contact actions.
 
 ## Duplicate Protection
 
@@ -106,7 +97,7 @@ Do not infer missing company, customer, dates, line items, totals, accounts, ite
 - Do not apply or receive payments, mark paid, void, delete, or alter an invoice after creation.
 - Do not perform unrelated bookkeeping or change QuickBooks customers, items, accounts, classes, locations, projects, jobs, tax settings, terms, or company settings.
 - Do not contact customers, vendors, or another external party.
-- Do not use browser automation as a connector substitute.
+- Do not use Chrome outside the exact authorized invoice workflow or while the interim authorization is inactive.
 - Do not store credentials, tokens, session data, or unnecessary financial documents in Git or Project Room messages.
 
 ## Git Rules

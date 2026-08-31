@@ -49,7 +49,7 @@ Use [[Agent Unit Standard]] for the standard package behind an agent-like operat
 | Gracious Millionaire | Wiki-managed skill plus project room plus heartbeat automation | Active | Project-room heartbeat every 15 minutes during active window; on demand otherwise | `skills\gracious-millionaire\SKILL.md`; `Project Rooms\Gracious Millionaire\README.md`; `Project Rooms\Gracious Millionaire\working\intake-heartbeat-rules.md`; automation id `gracious-millionaire-project-room-heartbeat` |
 | Template to Project | Wiki-managed skill plus project room | Active | On demand | `skills\template-to-project\SKILL.md`; `Project Rooms\Template to Project\README.md`; `Project Rooms\Template to Project\Project Spreadsheet Expense Placement Rules.md` |
 | Invoice Entry | Wiki-managed skill plus project room, standalone backup cron monitor, shared Windows health-supervisor enrollment, and dedicated task | Active | Direct handoff is primary; backup monitor runs at noon and 4:00 PM without targeting the operational task; shared health supervisor performs a daily substantive review | `skills\invoice-entry\SKILL.md`; `Project Rooms\Invoice Entry\README.md`; app automation id `invoice-entry-to-projects-backup-heartbeat`; workflow-health id `invoice-entry` |
-| Quickbooks Invoice | Wiki-managed skill plus project room plus dedicated task | Pending connector readiness; messaging ready; not dispatchable | On demand after every readiness gate passes; receives validated Invoice Entry handoffs only | `skills\quickbooks-invoice\SKILL.md`; `Project Rooms\Quickbooks Invoice\README.md`; destination manifest `config\pr-messaging-manifests\quickbooks-invoice.json` |
+| Quickbooks Invoice | Wiki-managed skill plus project room plus dedicated task | Interim authenticated Chrome method ready; messaging ready; dispatchable only for validated Invoice Entry handoffs | On demand after every per-invoice gate passes; receives validated Invoice Entry handoffs only | `skills\quickbooks-invoice\SKILL.md`; `Project Rooms\Quickbooks Invoice\README.md`; destination manifest `config\pr-messaging-manifests\quickbooks-invoice.json` |
 | Project Management Spreadsheet Rewrite | Planning/history project room now covered by Template to Project | Active/planning | On demand | `skills\template-to-project\SKILL.md`; `Project Rooms\Project Management Spreadsheet Rewrite\README.md` |
 | Property Trade Evaluation | Wiki-managed skill plus project room | Active | On demand | `skills\property-trade-evaluation\SKILL.md`; `Project Rooms\Property Trade Evaluation\README.md` |
 | Voices | Wiki-managed skill plus project room | Planning | On demand | `skills\voices\SKILL.md`; `Project Rooms\Voices\README.md` |
@@ -1261,7 +1261,7 @@ Current status:
 
 Type: wiki-managed skill plus project room plus dedicated task.
 
-Status: Zapier QuickBooks Online MCP selected; waiting for Wes authentication; messaging ready; not dispatchable.
+Status: interim authenticated Chrome method ready; messaging ready; dispatchable only for validated Invoice Entry handoffs.
 
 Purpose:
 
@@ -1281,16 +1281,16 @@ Dedicated task:
 - Thread id: `01a05809-d732-7b80-80b9-63602b8a6032`
 - Execution machine: `WESSTUDIO`
 
-Readiness blockers:
+Readiness and operating gates:
 
-- Zapier QuickBooks Online MCP is the authorized integration path, but Wes must complete the Zapier login in the preserved Chrome tab before QuickBooks OAuth can continue.
-- Five separately named company connections, secret-free company identities, fixed-tool verification, least-privilege review, duplicate-protection testing, and read-only validation are pending.
-- The permitted tool set is limited to `Find Customer`, `Find Product/Service`, `Find Invoice`, and `Create Invoice`; readiness validation must not invoke `Create Invoice`.
+- Wes authorized authenticated Chrome browser control as the interim execution method; the earlier Zapier MCP setup path is superseded while that authorization remains active.
+- No-production-impact validation reached the authenticated company chooser and verified five visible QuickBooks Online companies without selecting a company or changing any record.
+- Every invoice still requires a validated Invoice Entry handoff, visible exact-company confirmation, action-log and QuickBooks duplicate search, one save, complete read-back, and reconciliation before any retry after an ambiguous browser result.
 - Exact task registration, host access, and the one-notification Project Room messaging lifecycle are complete on `WESSTUDIO`.
 
 Important limitations:
 
-- Do not send invoices to customers, apply or receive payments, mark invoices paid, void/delete records, perform unrelated bookkeeping, contact external parties, or substitute browser automation.
+- Do not send invoices to customers, apply or receive payments, mark invoices paid, void/delete records, perform unrelated bookkeeping, contact external parties, create/change QuickBooks entities or settings, or use Chrome outside the exact authorized workflow.
 - Invoice Entry retains intake, source validation, mappings, approval gates, and structured handoff preparation.
 
 ## Investigate Computer

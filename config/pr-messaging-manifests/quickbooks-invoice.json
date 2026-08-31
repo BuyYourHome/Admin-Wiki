@@ -3,12 +3,12 @@
   "project_room": "Quickbooks Invoice",
   "skill": "quickbooks-invoice",
   "task_id": "01a05809-d732-7b80-80b9-63602b8a6032",
-  "dispatchable": false,
+  "dispatchable": true,
   "execution_machine": "WESSTUDIO",
-  "owned_actions": ["connector-backed QuickBooks invoice creation from validated Invoice Entry handoffs", "duplicate protection", "created-invoice read-back verification", "outcome return to Invoice Entry"],
+  "owned_actions": ["controlled QuickBooks invoice creation from validated Invoice Entry handoffs", "exact target-company verification", "duplicate protection", "single-save execution", "saved-invoice read-back verification", "outcome return to Invoice Entry"],
   "accepted_message_types": ["request", "question", "status", "decision", "result", "improvement"],
   "related_project_rooms": ["Invoice Entry", "Jean Wright"],
-  "limitations": ["Zapier login requires Wes interaction", "five QuickBooks Online company connections pending", "connector authentication pending", "target QuickBooks company selection pending", "least-privilege review pending", "duplicate-protection validation pending", "read-only connector validation pending", "does not send invoices", "does not apply payments or mark paid", "does not void or delete", "does not perform unrelated bookkeeping", "does not substitute browser automation for production connector work"],
+  "limitations": ["interim Chrome authorization only", "requires a validated Invoice Entry handoff", "requires visible exact target-company confirmation for every invoice", "requires action-log and QuickBooks duplicate search before creation", "requires exactly one save and full read-back", "login challenges and ambiguous post-submit results block retries", "does not send invoices", "does not apply payments or mark paid", "does not void or delete", "does not create or change QuickBooks entities or settings", "does not perform unrelated bookkeeping"],
   "messaging_readiness": {
     "status": "ready",
     "machine_registration_verified_at_utc": "2026-08-31T13:39:19.8514402Z",
@@ -18,10 +18,11 @@
     "notification_count": 1
   },
   "connector_readiness": {
-    "status": "needs_wes_authentication",
+    "status": "superseded_by_interim_browser_control",
     "connector_identity": "Zapier QuickBooks Online MCP",
     "readiness_message_id": "prmsg-create-pr-quickbooks-connector-readiness-20260831-001",
-    "authentication_blocker": "Wes must complete Zapier login in the preserved Chrome tab",
+    "superseded_by_message_id": "prmsg-jean-quickbooks-browser-control-decision-20260831-001",
+    "authentication_blocker": "historical Zapier setup blocker; no longer controlling while interim Chrome authorization is active",
     "required_company_connection_count": 5,
     "configured_company_connections": [],
     "allowed_tools": ["Find Customer", "Find Product/Service", "Find Invoice", "Create Invoice"],
@@ -31,5 +32,17 @@
     "target_company_verified_at_utc": null,
     "duplicate_protection_verified_at_utc": null,
     "safe_validation_completed_at_utc": null
+  },
+  "browser_readiness": {
+    "status": "ready",
+    "authorization_message_id": "prmsg-jean-quickbooks-browser-control-decision-20260831-001",
+    "method": "authenticated Chrome browser control using the existing Intuit/QuickBooks Online session",
+    "validated_at_utc": "2026-08-31T16:51:43.3915689Z",
+    "validation_mode": "no-production-impact company-chooser inspection",
+    "visible_company_count": 5,
+    "visible_companies": ["Buy Your Home LLC", "BYH 401K LLC", "Heritage Management LLC", "Home Acct", "Sell Your Home LLC"],
+    "company_selected": false,
+    "business_action_performed": false,
+    "per_invoice_gates": ["validated Invoice Entry handoff", "authenticated session", "visible exact target-company confirmation", "action-log reconciliation by dispatch id", "QuickBooks duplicate search", "exact customer and line mappings", "single save", "saved-invoice read-back", "ambiguous-result reconciliation before retry"]
   }
 }
