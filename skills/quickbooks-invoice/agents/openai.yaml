@@ -1,0 +1,4 @@
+interface:
+  display_name: "Quickbooks Invoice"
+  short_description: "Create verified QuickBooks invoices safely"
+  default_prompt: "Use $quickbooks-invoice to process an authorized Invoice Entry handoff after confirming all connector and messaging readiness gates."

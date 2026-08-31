@@ -1,0 +1,29 @@
+{
+  "schema_version": 2,
+  "project_room": "Quickbooks Invoice",
+  "skill": "quickbooks-invoice",
+  "task_id": "pending",
+  "dispatchable": false,
+  "execution_machine": "WESSTUDIO",
+  "owned_actions": ["connector-backed QuickBooks invoice creation from validated Invoice Entry handoffs", "duplicate protection", "created-invoice read-back verification", "outcome return to Invoice Entry"],
+  "accepted_message_types": ["request", "question", "status", "decision", "result", "improvement"],
+  "related_project_rooms": ["Invoice Entry", "Jean Wright"],
+  "limitations": ["connector authentication pending", "target QuickBooks company selection pending", "least-privilege review pending", "duplicate-protection validation pending", "safe connector validation pending", "does not send invoices", "does not apply payments or mark paid", "does not void or delete", "does not perform unrelated bookkeeping", "does not substitute browser automation"],
+  "messaging_readiness": {
+    "status": "pending",
+    "machine_registration_verified_at_utc": null,
+    "host_access_verified_at_utc": null,
+    "validation_message_id": null,
+    "lifecycle_completed_at_utc": null,
+    "notification_count": 0
+  },
+  "connector_readiness": {
+    "status": "pending",
+    "connector_identity": null,
+    "authentication_verified_at_utc": null,
+    "least_privilege_reviewed_at_utc": null,
+    "target_company_verified_at_utc": null,
+    "duplicate_protection_verified_at_utc": null,
+    "safe_validation_completed_at_utc": null
+  }
+}
