@@ -288,6 +288,16 @@ Classified working files:
 
 ## Safety Holds
 
+### Josh Kennedy LLC QuickBooks Reconciliation - 2026-08-31
+
+- Parent message `prmsg-jean-josh-quickbooks-reconciliation-20260831-001`, payload hash `499c74325628b889974903417a10d60578c96a3a1ceffcf9056d3e485361c28e`, was accepted and processed under the exact Invoice Entry identity.
+- Complete inventory is recorded in `working\josh-quickbooks-reconciliation-2026-08-31.md`.
+- Eligible approved unpaid obligations: `INV-JKLLC-20260731-001` for `$2,500.00` and `INV-JKLLC-20260815-001` for `$2,708.33`.
+- Excluded from bill creation: the superseded weekly July presentations, denied `SP-JK-20260731-001`, and open draft `INV-JKLLC-20260831-001`.
+- No authoritative Josh QuickBooks bill id or completed live duplicate search was found. Neither approved invoice may be called missing from QuickBooks on current evidence.
+- Quickbooks Invoice task `01a05967-9a05-7081-a62e-616b2d8e61fd` remains non-dispatchable. No child handoff, QuickBooks search, bill creation, payment, paid status, or external contact occurred.
+- Resume only after the destination is dispatchable and exact due-date/terms and line-level mappings are supplied; require duplicate search, no more than one save, and saved-bill read-back.
+
 - Invoice Entry does not approve or pay invoices.
 - Invoice Entry does not send email directly; all delivery goes through Email Monitor's Email Delivery workflow.
 - Do not retry a verified send or workbook upload without evidence that the prior action failed.
