@@ -254,3 +254,11 @@ The PDF matches SHA-256 `61D5BD870127149D73F6168597564687033F351C55F3D264563A05A
 | One-page correction-review PDF, structured input, and QA render under `working\create-vendor-invoice\2026-08-31-josh-kennedy-semimonthly-time-card-invoice\generated-2026-08-27` | `Generated\2026-08-27-Josh-Semimonthly-Daily-Draft-Through-Aug26` | 3 | 283,859 | Retained locally; this intake did not authorize copying the draft to Teams |
 
 The PDF matches SHA-256 `DB797EB679CCAB3BEB17CF9B507147695323EF65B0E1A2E5F52BCCE5E8427ACE` and passed one-page visual, extracted-text, source-spelling, hours, and arithmetic checks. The files are classified and preserved locally pending explicit archive authority. No email, filing, workbook action, approval, payment, or paid status occurred.
+
+## Tim Fleming August 24-28 Correction-Review Package - Archived 2026-08-31
+
+| Local working files | Teams destination under `Invoice Entry Working Archive` | Files | Bytes | Status |
+| --- | --- | ---: | ---: | --- |
+| Two separate invoice PDFs, two JSON generation inputs, and two visual-QA PNG renders from `working\create-vendor-invoice\2026-08-24-tim-fleming-pond-hours\generated-2026-08-31` | `Generated\2026-08-31 Tim Fleming Weekly Correction Review` | 6 | 355,158 | Destination count and byte total verified; temporary local generation folder removed |
+
+OfficeAssist delivery `IE-EMAIL-20260831-TIM-WEEKLY-CORRECTION-REVIEW-001` was Sent Items-verified before cleanup. The archive contains the generated correction-review evidence only; neither invoice is approved, filed to a property, posted, paid, or marked paid.

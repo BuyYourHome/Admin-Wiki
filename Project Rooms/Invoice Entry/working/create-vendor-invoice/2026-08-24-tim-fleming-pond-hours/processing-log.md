@@ -49,3 +49,30 @@ Outcome: `Done - two additional source lines recorded once in the existing open 
 - Did not generate or send a draft because this intake expressly withholds vendor contact. No filing, workbook action, approval, payment, or paid status occurred.
 
 Outcome: `Done - additional Pond source recorded once in the existing open draft accumulation; external actions withheld`.
+
+## 2026-08-31 - Separate Project Invoice Delivery Authorization
+
+- Validated authoritative request `prmsg-jean-tim-weekly-invoices-send-20260831-001`, exact destination task `019fbf4f-c629-7dd1-a3f6-0de33de0ed8f`, and payload hash `46fdd1a33e0926bdd661e77b5037da067846b15bf94deaa84dc4ae769d05d6cf`.
+- Wrote the durable Accepted receipt before substantive work and recorded Processing.
+- Preserved the existing Pond invoice identity `IE-TF-20260824-POND-001` and created separate Rosebrooks identity `IE-TF-20260824-ROSEBROOKS-001`.
+- Generated one Pond correction-review invoice for 12.0 hours / `$750.00` and one Rosebrooks correction-review invoice for 2.0 hours / `$125.00`.
+- Verified both PDFs are one-page Letter documents whose line totals, rates, project identities, invoice dates, invoice numbers, statuses, and totals match the packet.
+- Rendered both PDFs to PNG and visually inspected them; no clipping, overlap, black boxes, or unreadable content was found.
+- Prepared Email Delivery request `IE-EMAIL-20260831-TIM-WEEKLY-CORRECTION-REVIEW-001` from OfficeAssist to Tim with Wes and Jenny copied, BCC empty, and both PDFs required.
+- The package asks for factual corrections by Tuesday, September 1, 2026 at 5:00 PM Eastern. Silence is no correction, not approval or payment authority.
+- No filing, workbook posting, approval, payment, or paid status occurred.
+
+Outcome: `Processing - visually verified correction-review package ready for Email Monitor delivery and Sent Items verification`.
+
+## 2026-08-31 - Email Delivery Verified And Working Set Archived
+
+- Email Monitor returned `Sent and Verified` for request `IE-EMAIL-20260831-TIM-WEEKLY-CORRECTION-REVIEW-001`.
+- OfficeAssist sent exactly once at `2026-08-31T12:57:08Z`; sent message id ends `AClUELEAAAAA==`.
+- Verified recipients: Tim Fleming; Wes and Jenny copied; BCC empty.
+- Verified exact subject: `DRAFTS: Tim Fleming Invoices - 908 Pond St and 115 Rosebrooks Dr - Correction Review`.
+- Verified both required attachments as non-inline `application/pdf`: Pond 3,859 transmitted bytes and Rosebrooks 3,675 transmitted bytes.
+- No approval, filing, workbook posting, payment, or paid status occurred.
+- Archived the two PDFs, two JSON generation inputs, and two QA renders to `Invoice Entry Working Archive\Generated\2026-08-31 Tim Fleming Weekly Correction Review`.
+- Archive verification passed at six files / 355,158 bytes; the temporary local generation folder was removed after verification.
+
+Outcome: `Done - correction-review package sent once and verified; awaiting corrections by exception through 2026-09-01 5:00 PM Eastern`.

@@ -2,12 +2,13 @@
 
 ## Status
 
-- State: `Open Draft Facts Recorded - Vendor Contact Not Authorized`
+- State: `Correction-Review Package Sent And Verified - Awaiting Corrections By 2026-09-01 5:00 PM Eastern`
 - Vendor/payee: `Tim Fleming`
 - Contact: `tflem04@gmail.com`
 - Projects: `26-BYH - 908 Pond St`; `20-HM - 115 Rosebrooks Dr` (source wording on August 27: `Rosebrook`)
-- Draft invoice number: `IE-TF-20260824-POND-001`
-- Invoice date: `2026-08-24`
+- Pond draft invoice number: `IE-TF-20260824-POND-001`
+- Rosebrooks draft invoice number: `IE-TF-20260824-ROSEBROOKS-001`
+- Invoice date: `2026-08-28`
 - Rate: `$62.50 per hour`
 - Reported time: `14.0 hours`
 - Draft total: `$875.00`
@@ -66,6 +67,18 @@
 - Repeated routing must update this packet rather than create another obligation.
 - Later Tim Pond time belonging to the same open accumulation should be reconciled into this packet unless a source or approved period boundary requires a separate invoice.
 
-## Current Hold
+## Authorized Correction-Review Package - 2026-08-31
 
-The handoff authorizes duplicate-safe Invoice Entry intake but explicitly withholds vendor contact and live workbook action. The source facts are therefore recorded once, but no PDF, correction-review email, filing, workbook row, approval, payment, or paid status was created. A future authorized delivery can generate and route the correction-review draft through Email Monitor.
+- Authoritative request: `prmsg-jean-tim-weekly-invoices-send-20260831-001`.
+- Payload hash: `46fdd1a33e0926bdd661e77b5037da067846b15bf94deaa84dc4ae769d05d6cf`.
+- Wes authorization: `send them`.
+- Pond invoice: `IE-TF-20260824-POND-001`; 12.0 hours at `$62.50`; `$750.00`.
+- Rosebrooks invoice: `IE-TF-20260824-ROSEBROOKS-001`; 2.0 hours at `$62.50`; `$125.00`.
+- Both one-page PDFs were rendered and visually inspected with no clipping, overlap, or unsupported approval/payment wording.
+- Delivery request: `IE-EMAIL-20260831-TIM-WEEKLY-CORRECTION-REVIEW-001` through Email Monitor Email Delivery.
+- Authorized recipients: Tim Fleming; Wes and Jenny copied; BCC empty.
+- Sent and verified from OfficeAssist at `2026-08-31T12:57:08Z`; message id ending `AClUELEAAAAA==`.
+- Verified non-inline PDF attachments: Pond 3,859 transmitted bytes; Rosebrooks 3,675 transmitted bytes.
+- The six-file local generation/QA set was archived and count/byte verified at `Invoice Entry Working Archive\Generated\2026-08-31 Tim Fleming Weekly Correction Review`; the temporary local generation folder was removed.
+- Correction deadline: Tuesday, September 1, 2026 at 5:00 PM Eastern. Silence means no factual correction was reported; it is not Wes approval or payment authority.
+- Filing, workbook posting, approval, payment, and paid status remain prohibited.
