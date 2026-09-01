@@ -180,5 +180,13 @@ Outcome: `Done - August 17 corrected in place; August 25 clarification and Wes a
 - Reconciled Outlook source ending `AClUGMJgAAAA==` into existing invoice `INV-JKLLC-20260831-001`: August 25 7:45 AM-10:30 AM is Pond for back-door lock/deadbolt installation and yardwork; 10:30 AM-4:15 PM is BackOffice work.
 - Updated the two existing August 25 lines in place. The prior Rosebrooks wording and Rosebrooks afternoon working interpretation are superseded; no interval, hours, or obligation was duplicated.
 - Total remains `88h10m` and `$2,708.33`. Corrected allocation is Pond `48h00m` / `$1,474.48`, Rosebrooks `25h55m` / `$796.11`, BackOffice `13h30m` / `$414.70`, and Tensity `0h45m` / `$23.04`.
-- Regenerated and visually verified a one-page internal correction-review PDF with SHA-256 `0FF68C2F51F43D2BF632B96884722BB6F45D11AD46039AA8D829445739A6BB2`; detail and summary arithmetic both equal `$2,708.33`.
+- Regenerated and visually verified a one-page internal correction-review PDF with SHA-256 `0FF68C2F51F43D2BF632B96884722BB6F45D11AD46039AA8D829445739A6BB2E`; detail and summary arithmetic both equal `$2,708.33`.
 - No email, finalization, filing, workbook posting, QuickBooks routing, approval, payment, paid status, or vendor contact occurred. The closed-period invoice now awaits Wes approval.
+
+## 2026-09-01 - Corrected Draft Sent For Review And Approval
+
+- Wes directed that corrected Time Card drafts be emailed to the worker/payee and Wes so he can locate and approve the exact corrected presentation.
+- The first immutable delivery request, `IE-EMAIL-20260901-JOSH-SEMIMONTHLY-CORRECTED-DRAFT-008`, was blocked before any send because its attachment hash was truncated. It is superseded and caused no connector send.
+- Corrected request `IE-EMAIL-20260901-JOSH-SEMIMONTHLY-CORRECTED-DRAFT-009` was sent exactly once and verified in OfficeAssist Sent Items at `2026-09-01T22:20:03Z`, message ending `AClUELHwAAAA==`.
+- Verified To `profcyber0077@gmail.com`; CC `WesWill@BuyYourHomeLLC.com` and `Jenny@BuyYourHomeLLC.com`; empty BCC; exact subject/body; one non-inline corrected PDF with source SHA-256 `0FF68C2F51F43D2BF632B96884722BB6F45D11AD46039AA8D829445739A6BB2E`.
+- No approval, finalization, filing, workbook posting, QuickBooks routing, payment, or paid status occurred. Await Josh corrections by exception and Wes approval.

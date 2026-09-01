@@ -285,4 +285,4 @@ OfficeAssist delivery `IE-EMAIL-20260831-TIM-WEEKLY-CORRECTION-REVIEW-001` was S
 | --- | --- | ---: | ---: | --- |
 | Corrected one-page draft PDF, JSON input, and QA render under `tmp\pdfs\josh-aug25-correction` | Hold locally pending authorized cleanup or archive handling | 3 | 391,136 | Visual and arithmetic QA passed; external Working Archive retention was not authorized under the no-filing restriction |
 
-The PDF matches SHA-256 `0FF68C2F51F43D2BF632B96884722BB6F45D11AD46039AA8D829445739A6BB2`. It incorporates Josh's exact August 17 and August 25 allocation corrections. No email, finalization, filing, workbook posting, QuickBooks routing, approval, payment, or paid status occurred.
+The PDF matches SHA-256 `0FF68C2F51F43D2BF632B96884722BB6F45D11AD46039AA8D829445739A6BB2E`. It incorporates Josh's exact August 17 and August 25 allocation corrections. Corrected delivery `IE-EMAIL-20260901-JOSH-SEMIMONTHLY-CORRECTED-DRAFT-009` was sent exactly once and Sent Items-verified; the malformed predecessor was blocked before send. No finalization, filing, workbook posting, QuickBooks routing, approval, payment, or paid status occurred.
