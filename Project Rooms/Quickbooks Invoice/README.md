@@ -55,6 +55,7 @@ Status: **Ready for validated Invoice Entry handoffs under Wes's interim Chrome 
 Authorized method:
 
 - Use Chrome browser control with the existing authenticated Intuit/QuickBooks Online session.
+- If Intuit presents its sign-in page, continue once through the normal retained-account flow when Chrome or Intuit recognizes the authorized account or fills its saved credentials. Do not view, copy, edit, or record the credentials. The sign-in page by itself is not a blocker and must not be returned as `Needs Wes` before this recognized flow is attempted.
 - Before every bill, visibly select and verify the exact company named in the validated Invoice Entry handoff.
 - Check the durable action log by dispatch id and search QuickBooks using the supplied vendor-invoice identity, vendor, amount, date, vendor invoice number, property/project, and any known transaction id before creation.
 - Create exactly one bill, save once, and read the saved record back before returning success.
@@ -73,7 +74,7 @@ The earlier Zapier MCP setup path is superseded by Wes's later interim browser-c
 
 The current validated workflow records navigation incrementally as Wes confirms each step:
 
-1. Continue through the recognized Intuit account sign-in. Stop for Wes on a password, verification-code, CAPTCHA, or other user-only challenge.
+1. When Intuit presents sign-in, use the authorized account offered by Intuit or credentials retained and filled by Chrome, then attempt the normal sign-in flow once. Do not reveal, copy, edit, or record credentials. A sign-in page alone is not a blocker. Stop for Wes only if a password must be entered manually, a verification code, MFA, CAPTCHA, account recovery, or account-identity choice is required, or the recognized retained-account attempt fails.
 2. At `Choose your company`, select the exact company file from the validated handoff and visibly verify the company name after it opens.
 3. Use the QuickBooks left sidebar: `Bookmarks` > `Vendors`.
 4. Locate the exact vendor before reviewing its transactions or staging a bill.
@@ -101,7 +102,7 @@ Passing Project Room messaging readiness does not override the per-bill browser 
 
 1. Reconcile the authoritative central message, verify the exact destination identity and payload hash, deduplicate by dispatch id, and write `Accepted` before substantive work.
 2. Confirm the request came from the registered Invoice Entry task and contains the required validated handoff fields.
-3. Confirm the Chrome session is authenticated, visibly select and verify the exact company from the handoff, then use `Bookmarks` > `Vendors` to locate the exact vendor. Stop on any login challenge, company uncertainty, browser-control blocker, or vendor ambiguity.
+3. Confirm Chrome access. If Intuit presents sign-in, first attempt the one recognized retained-account flow allowed under Recorded Chrome Navigation and stop only on its documented user-only challenges or failure. After authentication, visibly select and verify the exact company from the handoff, then use `Bookmarks` > `Vendors` to locate the exact vendor. Stop on company uncertainty, a browser-control blocker, or vendor ambiguity.
 4. Reconcile the action log by dispatch id, review the vendor's transactions, and search the target company for likely duplicate bills using all supplied duplicate-check fields. If a match or ambiguity exists, stop without creating a bill and return the existing transaction id or the review needed.
 5. From the exact vendor record, choose `New transaction` > `Bill`. When multiple approved source invoices in the same authorized batch share the vendor and QuickBooks company file, use separate category lines on one bill and preserve each source identity and property coding on its line. If an explicitly authorized same-batch source must be added to an existing unpaid bill, verify that exact bill and source are not duplicates before editing it.
 6. Resolve the exact vendor and every bill-line mapping in QuickBooks without creating or editing vendors, customers, items, accounts, classes, locations, projects, jobs, tax settings, or terms.
