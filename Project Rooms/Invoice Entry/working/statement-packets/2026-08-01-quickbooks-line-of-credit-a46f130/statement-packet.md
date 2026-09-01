@@ -64,3 +64,10 @@ Two Wes forwards were received at the same timestamp and contain the same statem
 ## Open Decision
 
 Accounting must determine where the `$1,108.74` principal reduction and `$378.17` interest expense are recorded. Invoice Entry has no approved project-workbook or accounting-system destination for this statement.
+
+## 2026-09-01 August Notice
+
+- Message/dispatch `prmsg-email-monitor-route-vendor-invoice-20260901-quickbooks-loc-a46f130-statement-001`; payload hash `b8218f6d39505c95bf60224638714950820f6bd09a3bc8ec6d61a9330466df68`.
+- Outlook message ending `AClUGMHwAAAA==` covers August 1-31, 2026; no statement PDF is attached.
+- The exact 32.99% interest rate, 33.14% APR, and 2026-09-08 due date are preserved. Monetary fields in the routed summary are incomplete because leading dollar digits are absent, so no amount was inferred.
+- Status: `Held - Statement Not Retrieved / Exact Amounts Unavailable`.

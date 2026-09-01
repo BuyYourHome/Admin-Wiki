@@ -114,3 +114,15 @@ Outcome: `Done - August 27 recorded once and one-page internal draft regenerated
 - The handoff prohibited external contact. No email was requested or sent; no filing, workbook action, approval, payment, paid status, or other external action occurred.
 
 Outcome: `Done - August 28-29 recorded once and one-page internal draft regenerated; delivery and other external actions withheld`.
+
+## 2026-09-01 - Corrected August 31 Intake
+
+- Accepted authoritative message/dispatch `prmsg-email-monitor-route-vendor-invoice-20260901-josh-time-card-correction-20260831-001`, payload hash `e7e3cee073a2a4aeaf1eb4f9c60aa378f228a6a8b80fd477d8f395079f604b1f`, before substantive work and recorded Processing.
+- Preserved Outlook message ending `AClUGMGgAAAA==` as superseded because it reversed the properties. It created no invoice line.
+- Added the corrected Outlook source ending `AClUGMGwAAAA==` once: Rosebrooks 6:00 AM-9:00 AM (`3 hours`) and Pond 9:00 AM-3:30 PM (`6 hours 30 minutes`).
+- Closed the period at `88 hours 10 minutes`: Pond `46h40m`, Rosebrooks `27h15m`, BackOffice `7h45m`, Tensity `0h45m`, and unallocated `5h45m`.
+- Recalculated the fixed `$2,708.33` amount exactly: Pond `$1,433.52`, Rosebrooks `$837.07`, BackOffice `$238.07`, Tensity `$23.04`, and unallocated `$176.63`.
+- Regenerated and visually verified the one-page closed-period draft. PDF SHA-256: `3DF36A0EA74CFDE0EB1E7D8811A496C93E72E6D8066A2B61FE877D5F2DA661BB`.
+- The August 25 allocation remains unresolved, so the invoice is not final or ready for approval. External contact was prohibited; no email, filing, workbook action, approval, payment, or paid status occurred.
+
+Outcome: `Done - corrected August 31 time recorded once; closed-period draft regenerated; August 25 allocation still needs review`.

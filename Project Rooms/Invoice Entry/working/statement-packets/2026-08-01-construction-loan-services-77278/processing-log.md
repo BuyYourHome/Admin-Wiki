@@ -9,3 +9,10 @@
 - Checked Invoice Entry records for the loan, project, period, and amount; no prior matching packet was found.
 - Classified the source as `Needs Review - Statement - Accounting Allocation`.
 - Did not create an invoice or replacement statement PDF, edit a workbook, file a document to Teams, approve or schedule payment, contact the servicer, or make an accounting decision.
+
+## 2026-09-01 - August Notice
+
+- Accepted message/dispatch `prmsg-email-monitor-route-vendor-invoice-20260901-cls-loan-77278-statement-001`, payload hash `539e39fe0d299a1fdb59fbfa76873ba20e22d88f2b1630761e033245d7031fe4`.
+- Reconciled the August secure-portal notice to the existing loan-77278 packet as a new period.
+- Preserved exact due/maturity dates and the late-fee condition; did not infer incomplete dollar values.
+- No portal access, filing, workbook action, approval, payment, external contact, or paid status occurred.

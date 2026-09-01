@@ -11,3 +11,9 @@
 - Confirmed this is a different loan from the previously processed statement for loan ending `2a46fea`.
 - Classified the statement as `Needs Review - Statement - Accounting Allocation`.
 - Did not create an invoice, replacement statement PDF, project-workbook entry, payment, approval, or vendor communication.
+
+## 2026-09-01 - August Notice
+
+- Accepted message/dispatch `prmsg-email-monitor-route-vendor-invoice-20260901-quickbooks-loc-a46f130-statement-001`, payload hash `b8218f6d39505c95bf60224638714950820f6bd09a3bc8ec6d61a9330466df68`.
+- Reconciled the August source to loan `a46f130` as a distinct period and kept it separate from loan `2a46fea`.
+- Did not infer incomplete monetary fields. No statement retrieval, workbook action, filing, approval, payment, external contact, or paid status occurred.

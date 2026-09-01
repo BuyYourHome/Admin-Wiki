@@ -55,3 +55,10 @@
 - Do not create a project-workbook or accounting entry.
 - Do not approve, schedule, or make a payment.
 - Preserve the Outlook reference and hold the item until the actual statement is available through an authorized source.
+
+## 2026-09-01 Repeat Notice
+
+- Message/dispatch id: `prmsg-email-monitor-route-vendor-invoice-20260901-first-bank-3613-statement-001`; payload hash `e6d58e2025229a64de9beef046066722b520b3dbb632280dfb3c271e278b0f85`.
+- Outlook message ending `AClUGMGQAAAA==`, received `2026-09-01T06:18:26Z`, has no attachment or statement facts.
+- Reconciled as a third availability notice for the same account-ending-3613 retrieval hold. It is not a statement or separate obligation.
+- Status remains `Held - Statement Not Retrieved`.

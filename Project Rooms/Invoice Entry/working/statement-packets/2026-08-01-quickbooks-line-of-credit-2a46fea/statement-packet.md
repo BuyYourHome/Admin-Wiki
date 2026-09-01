@@ -56,3 +56,10 @@ The July principal and interest components reconcile to the stated July total pa
 - Hold the July principal and interest components for accounting review because allocating principal reduction and interest expense is an accounting decision outside Invoice Entry authority.
 - Do not approve, schedule, or make the August 26 payment.
 - Do not create a replacement statement PDF because the authoritative source is the Outlook message and no original attachment was supplied.
+
+## 2026-09-01 August Notice
+
+- Message/dispatch `prmsg-email-monitor-route-vendor-invoice-20260901-quickbooks-loc-2a46fea-statement-001`; payload hash `f82972a13887ffee2c231ff9ba6dc04a61e25cd236049988c81710e83143539c`.
+- Outlook messages ending `AClUGMHQAAAA==` and `AClUGMHAAAAA==` are duplicate copies of one August 1-31 source group.
+- No statement PDF is attached. The exact period, 32.99% interest rate, 33.01% APR, and 2026-09-26 due date are preserved. Monetary fields in the routed summary are incomplete because leading dollar digits are absent, so no amount was inferred.
+- Status: `Held - Statement Not Retrieved / Exact Amounts Unavailable`.

@@ -59,3 +59,10 @@ The email does not identify principal, interest, escrow, fee, or other accountin
 ## Open Decision
 
 Wes or accounting must determine the accounting destination and obtain the detailed statement when component allocation is required. The August 10 due date and September 24 maturity date are informational and require review outside Invoice Entry's payment authority.
+
+## 2026-09-01 August Notice
+
+- Message/dispatch `prmsg-email-monitor-route-vendor-invoice-20260901-cls-loan-77278-statement-001`; payload hash `539e39fe0d299a1fdb59fbfa76873ba20e22d88f2b1630761e033245d7031fe4`.
+- Outlook message ending `AClUGMHgAAAA==` reports another secure-portal statement for loan `77278` / `908 Pond St V3`; no PDF is attached.
+- Exact supported dates are payment due `2026-09-10`, maturity `2026-09-24`, and the late-fee condition after end of business on the fifteenth day. Monetary fields in the routed summary are incomplete because leading dollar digits are absent, so no amount was inferred.
+- Status: `Held - Statement Not Retrieved / Exact Amounts Unavailable`.
