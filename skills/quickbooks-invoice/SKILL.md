@@ -36,6 +36,7 @@ Messaging readiness alone does not override the interim browser and per-bill saf
 Status: ready for validated Invoice Entry handoffs on `WES-VIDEOEDITOR` under Wes's interim Chrome authorization.
 
 - Use the existing authenticated Intuit/QuickBooks Online session through Chrome browser control.
+- If Intuit presents its sign-in page, continue once through the normal retained-account flow when Chrome or Intuit recognizes the authorized account or fills its saved credentials. Do not view, copy, edit, or record the credentials. The sign-in page by itself is not a blocker and must not be returned as `Needs Wes` before this recognized flow is attempted.
 - No-production-impact validation on `WES-VIDEOEDITOR` at `2026-08-31T22:31:07.0879564Z` reached the authenticated company chooser and verified five visible companies without selecting a company or changing any record.
 - The visible companies were `Buy Your Home LLC`, `BYH 401K LLC`, `Heritage Management LLC`, `Home Acct`, and `Sell Your Home LLC`.
 - The earlier Zapier MCP setup path is superseded while this interim authorization remains active.
@@ -55,7 +56,7 @@ Before every vendor invoice, require authenticated access, visible exact-company
 
 Use the recorded QuickBooks Online path and extend it only as later steps are validated:
 
-1. Continue through the existing Intuit sign-in when the session recognizes the authorized account. A password, verification-code, CAPTCHA, or other user-only challenge requires Wes.
+1. When Intuit presents sign-in, use the authorized account offered by Intuit or credentials retained and filled by Chrome, then attempt the normal sign-in flow once. Do not reveal, copy, edit, or record credentials. A sign-in page alone is not a blocker. Stop for Wes only if a password must be entered manually, a verification code, MFA, CAPTCHA, account recovery, or account-identity choice is required, or the recognized retained-account attempt fails.
 2. At `Choose your company`, select the exact company file required by the handoff and visibly verify the company name after it opens.
 3. In the QuickBooks left sidebar, open `Bookmarks`, then choose `Vendors`.
 4. Locate the exact vendor from the handoff before reviewing transactions or staging a bill.
@@ -91,7 +92,7 @@ Do not infer missing company, property entity, vendor, dates, line items, totals
 
 1. Reconcile the authoritative central message with `Manage-ProjectRoomMessage.ps1`, verify the exact destination and payload hash, deduplicate by dispatch id, and write `Accepted` before substantive work.
 2. Confirm the source is the registered Invoice Entry task and the handoff is complete, internally consistent, and authorized.
-3. Confirm messaging readiness and authenticated Chrome access, select and visibly verify the exact company named in the handoff, then navigate through `Bookmarks` > `Vendors` to the exact vendor.
+3. Confirm messaging readiness and Chrome access. If Intuit presents sign-in, first attempt the one recognized retained-account flow allowed under Chrome Navigation and stop only on its documented user-only challenges or failure. After authentication, select and visibly verify the exact company named in the handoff, then navigate through `Bookmarks` > `Vendors` to the exact vendor.
 4. Review the vendor's transactions and search for likely duplicate bills using all supplied fields. Stop without creation when a match or ambiguity exists.
 5. From the exact vendor record, choose `New transaction` > `Bill`. Represent multiple approved same-vendor source invoices in the same company file as separate category lines on one bill when their controlling fields do not conflict. With Wes's explicit same-batch instruction, an additional approved source invoice may be added to an existing unpaid bill only after verifying that bill and source are not duplicates.
 6. Resolve the exact vendor and every bill-line mapping without creating or changing unrelated QuickBooks entities or settings.
