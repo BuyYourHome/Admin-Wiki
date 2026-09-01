@@ -18,6 +18,8 @@ For each run:
 2. Poll only central records whose `destination.machine` exactly equals the local computer and whose state is `Queued` or `Delivery Ambiguous`.
 3. Reconcile the latest central state, message id, dispatch id, payload hash, destination manifest, exact task id, local client registration, prior attempts, and final-state history.
 4. Skip records already accepted, processing, or final. Deduplicate by message id, dispatch id, and payload hash.
+   - A `Delivery Ambiguous` record is not a duplicate merely because an earlier same-ID notification was attempted. It is eligible for one bounded same-ID retry when there is no accepted receipt or final state, every prior attempt is completed, `attempt_count` is below `max_attempts`, and the destination now passes the manifest gate.
+   - A destination changing from non-dispatchable to dispatchable is a new actionable delivery condition. Reconcile and use the existing record's next permitted attempt; never create a replacement record.
 5. Do not notify a destination whose manifest is absent, assigned to another machine, or inconsistent with the record. A destination is eligible only when either:
    - its manifest has `dispatchable: true`; or
    - its manifest has `dispatchable: false`, `messaging_readiness.status: validation_ready`, and `messaging_readiness.validation_message_id` exactly matches the current record, whose payload explicitly has `synthetic_test: true` and does not authorize or perform a business action.
