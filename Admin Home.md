@@ -31,6 +31,7 @@ This is the starting page for the Buy Your Home admin wiki.
 - [[Project Rooms/Marketplace/README|Marketplace Project Room]]
 - [[Project Rooms/Facebook Engagement/README|Facebook Engagement Project Room]]
 - [[Project Rooms/Quickbooks Invoice/README|Quickbooks Invoice Project Room]]
+- [[Project Rooms/PR Messaging Dispatcher/README|PR Messaging Dispatcher Project Room]]
 - [[Connector and Plugin Usage Rules]]
 - [[Project Rooms/SOPs/README|SOPs Project Room]]
 - [[Project Rooms/Email Monitor/README|Email Monitor Project Room]]

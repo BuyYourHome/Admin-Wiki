@@ -11,7 +11,8 @@ New Project Rooms begin with `"dispatchable": false`. Create PR may change that 
 3. The exact Project Room/task identity is registered on that execution machine with `tools\pr-messaging\Register-ProjectRoomMessagingClient.ps1`.
 4. The normal Codex Windows profile on that machine has authenticated access to `\\WES-VIDEOEDITOR\BYH-PRMessaging$`.
 5. A synthetic message is created with `Manage-ProjectRoomMessage.ps1`, `StartAttempt` is written before exactly one task notification, and the destination writes `Accepted`, `Processing`, and `Completed` under the exact registered identity.
-6. `tools\pr-messaging\Test-ProjectRoomMessagingReadiness.ps1` returns `"ready": true` on the recorded execution machine.
+6. For a cross-machine destination, the execution computer has one verified machine-local dispatcher task/heartbeat and completes an unattended lifecycle initiated from another computer without manual pasting or direct user activation.
+7. `tools\pr-messaging\Test-ProjectRoomMessagingReadiness.ps1` returns `"ready": true` on the recorded execution machine.
 
 If any check fails, use `Pending messaging registration - not dispatchable` in the Project Room README, registry, routing map, and setup report. A task id by itself is not messaging readiness.
 
@@ -37,7 +38,11 @@ Use schema version 2 for newly created or newly validated manifests:
     "host_access_verified_at_utc": null,
     "validation_message_id": null,
     "lifecycle_completed_at_utc": null,
-    "notification_count": 0
+    "notification_count": 0,
+    "dispatcher_task_id": null,
+    "dispatcher_automation_id": null,
+    "cross_machine_source": null,
+    "manual_intervention": null
   }
 }
 ```

@@ -103,10 +103,13 @@ After a dedicated task is created:
 3. On that machine, register the exact Project Room/task identity with `tools\pr-messaging\Register-ProjectRoomMessagingClient.ps1` under the normal Codex Windows profile.
 4. Verify authenticated access to `\\WES-VIDEOEDITOR\BYH-PRMessaging$` with `Manage-ProjectRoomMessage.ps1`.
 5. Create an immutable synthetic validation record, write `StartAttempt` before exactly one task notification, and require `Accepted`, `Processing`, and `Completed` under the exact destination identity.
-6. Record the lifecycle evidence in the manifest and run `tools\pr-messaging\Test-ProjectRoomMessagingReadiness.ps1` on the exact execution machine.
-7. Set `dispatchable: true` and `Dispatchable: Yes` only when the validator returns `ready: true`.
+6. For a cross-machine destination, verify one active machine-local PR Messaging Dispatcher capability on the execution computer. OfficeAssist may use its documented Email Monitor dispatcher stage; other computers should use a dedicated `PR Messaging Dispatcher - <COMPUTERNAME>` task and heartbeat.
+7. Run an unattended cross-machine validation from a different computer. The destination machine's local dispatcher must discover the message and the exact destination task must write `Accepted`, `Processing`, and `Completed` without manual pasting or direct user activation.
+8. Record the validation message id, timestamps, dispatcher task/automation identity, source and destination machines, and `manual_intervention: false` in the destination manifest.
+9. Run `tools\pr-messaging\Test-ProjectRoomMessagingReadiness.ps1` on the exact execution machine.
+10. Set `dispatchable: true` and `Dispatchable: Yes` only when the validator returns `ready: true` and the unattended cross-machine validation is complete.
 
-If any check fails, preserve `Pending messaging registration - not dispatchable`. Do not substitute tasks or machines, store credentials in Git, or alter existing registrations merely to make an audit pass. Follow `config\pr-messaging-manifests\README.md` for the required manifest evidence.
+If any check fails, preserve `Pending messaging registration - not dispatchable`. A manually pasted synthetic lifecycle is not dispatcher-readiness evidence. Do not substitute tasks or machines, store credentials in Git, or alter existing registrations merely to make an audit pass. Follow `config\pr-messaging-manifests\README.md` for the required manifest evidence.
 
 ## Mode Documentation Standard
 
@@ -214,21 +217,22 @@ Workflow:
    - `Project Rooms\<Project Room>\README.md` exists,
    - `skills\<skill-name>\SKILL.md` exists when the room has a matching skill,
    - the intended chat title matches the Project Room name.
-5. When `Sync Github` is included, also verify the target computer has one machine-local `sync-gethub-daily` heartbeat attached to its existing `Sync Github` chat, scheduled daily at 5:30 AM Eastern, and has completed one safe run. The safe run must prove `git fetch origin` can update `.git\FETCH_HEAD`; if the managed runner is permission-denied on `.git\FETCH_HEAD`, verify a Wes-approved unsandboxed/local fetch path or mark unattended daily sync as pending. Do not create a separate `Sync Github Daily` chat or detached cron automation. Record missing installation or first-run verification as pending; route installation through Codex Environment only when that deployment is separately authorized.
-6. For each Project Room in the set, check `Agents and Automations Registry.md` and the room README for required automations or heartbeats. Record whether each required automation is:
+5. Verify one machine-local PR Messaging Dispatcher capability on the target computer. Accept the documented Email Monitor dispatcher stage on OfficeAssist; otherwise require a dedicated `PR Messaging Dispatcher - <COMPUTERNAME>` task with an active five-minute heartbeat and an unattended cross-machine validation.
+6. When `Sync Github` is included, also verify the target computer has one machine-local `sync-gethub-daily` heartbeat attached to its existing `Sync Github` chat, scheduled daily at 5:30 AM Eastern, and has completed one safe run. The safe run must prove `git fetch origin` can update `.git\FETCH_HEAD`; if the managed runner is permission-denied on `.git\FETCH_HEAD`, verify a Wes-approved unsandboxed/local fetch path or mark unattended daily sync as pending. Do not create a separate `Sync Github Daily` chat or detached cron automation. Record missing installation or first-run verification as pending; route installation through Codex Environment only when that deployment is separately authorized.
+7. For each Project Room in the set, check `Agents and Automations Registry.md` and the room README for required automations or heartbeats. Record whether each required automation is:
    - not needed on this target computer,
    - present and attached to the current machine-local task,
    - missing,
    - still targeting an obsolete task id,
    - present but unverified,
    - or blocked by permissions/connectors.
-7. When a required automation exists for a Project Room, Min PR Set must not treat the chat alone as complete. It must either verify the automation is attached to the current task id for this target computer, or record the automation as `pending automation setup`. Creating or retargeting the automation requires Wes's separate authorization for that scheduled or event-triggered behavior.
-8. Build a startup prompt for each chat using the New Chat Startup Requirements in this skill.
-9. Create each Codex chat only when Wes explicitly asks to create the chats or run this setup mode. If the Codex app connector returns a usable thread id, record it.
-10. If chat creation does not return a usable thread id promptly, stop waiting on that chat and mark it `pending until the dedicated chat is created`.
-11. Do not mark a chat as dispatchable until a usable thread id is recorded in the appropriate registry/routing metadata.
-12. Do not edit the target Project Room's content files merely because this mode created or verified a chat. Limit cross-PR writes to explicit chat/thread metadata that Wes authorized for this setup run.
-13. Save a run manifest under `C:\Codex\Wiki Files\Project Rooms\Create PR\outputs\minimum-pr-chat-set\` showing:
+8. When a required automation exists for a Project Room, Min PR Set must not treat the chat alone as complete. It must either verify the automation is attached to the current task id for this target computer, or record the automation as `pending automation setup`. Creating or retargeting the automation requires Wes's separate authorization for that scheduled or event-triggered behavior.
+9. Build a startup prompt for each chat using the New Chat Startup Requirements in this skill.
+10. Create each Codex chat only when Wes explicitly asks to create the chats or run this setup mode. If the Codex app connector returns a usable thread id, record it.
+11. If chat creation does not return a usable thread id promptly, stop waiting on that chat and mark it `pending until the dedicated chat is created`.
+12. Do not mark a chat as dispatchable until a usable thread id is recorded in the appropriate registry/routing metadata.
+13. Do not edit the target Project Room's content files merely because this mode created or verified a chat. Limit cross-PR writes to explicit chat/thread metadata that Wes authorized for this setup run.
+14. Save a run manifest under `C:\Codex\Wiki Files\Project Rooms\Create PR\outputs\minimum-pr-chat-set\` showing:
     - target computer,
     - approved Project Room list,
     - chat title,
@@ -238,9 +242,10 @@ Workflow:
     - thread id when available,
     - Sync Github automation status and first-safe-run status when applicable,
     - required per-Project-Room automation status and target task id when applicable,
+    - machine-local PR Messaging Dispatcher task id, automation id, and unattended validation status,
     - and any blocker.
-14. Commit only scoped Create PR mode outputs and authorized metadata updates.
-15. Push only under normal Admin wiki push rules.
+15. Commit only scoped Create PR mode outputs and authorized metadata updates.
+16. Push only under normal Admin wiki push rules.
 
 Safety rules:
 
@@ -275,6 +280,7 @@ Every new PR should be able to receive a Jean Dispatcher handoff without adding 
 - Jean's routing map records the PR, skill, task/thread id or `pending`, and routing notes.
 - `config\pr-messaging-manifests\<skill-name>.json` records the exact task id, execution machine, gate evidence, and dispatchability state.
 - The exact Project Room/task identity is registered on the execution machine and has passed one immutable synthetic Accepted, Processing, and Completed lifecycle after exactly one notification.
+- A cross-machine destination has a verified machine-local dispatcher and one unattended remote-source lifecycle with no manual paste or direct user activation.
 - README and skill include the short PR Messaging pointer to `C:\Codex\Wiki Files\Project Room Messaging Rule.md`.
 - `pending` means the new room cannot receive routine delegation. Jean must return the task-creation blocker to Wes rather than creating a substitute chat or performing the new room's work.
 - If the room receives substantial routed work, create or update `working\work-status.md`; do not create work-status files for trivial questions or quiet checks.

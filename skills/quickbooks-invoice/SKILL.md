@@ -22,11 +22,12 @@ description: Enter and verify vendor invoices as QuickBooks bills from validated
 
 ## Messaging Readiness
 
-- Dispatchable: Yes, only for validated Invoice Entry handoffs under the interim Chrome policy
-- State: Messaging transport and machine-specific browser readiness complete; every per-invoice gate remains required
+- Dispatchable: No - pending WES-VIDEOEDITOR machine-local dispatcher deployment and unattended cross-machine validation
+- State: Queue access, exact task registration, and browser readiness are complete; automatic host-local wake-up is not yet validated
 - Exact task id: `01a05967-9a05-7081-a62e-616b2d8e61fd`
 - Machine registration verified at `2026-08-31T21:43:02.1661378Z`; host access verified at `2026-08-31T22:31:07.8796039Z` on `WES-VIDEOEDITOR`
 - Synthetic lifecycle: corrected record `prmsg-quickbooks-invoice-wve-readiness-correction-20260831-001` completed after exactly one notification with `synthetic_test: true`, exact identity and payload-hash verification, and no QuickBooks business action
+- Dispatcher blocker: the prior lifecycle was manually activated. It does not satisfy the unattended cross-machine gate in `Project Room Messaging Rule.md`. Do not accept routine production dispatch until the local dispatcher is active and a remote-source lifecycle completes with `manual_intervention: false`.
 
 Messaging readiness alone does not override the interim browser and per-bill safety gates.
 

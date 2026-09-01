@@ -32,6 +32,21 @@ The shared queue became authoritative for production Project Room messages after
 - A spooled message becomes authoritative only after synchronization to the central host and hash verification.
 - Cross-machine updates use the shared file lock in the canonical message tool. Do not hand-edit runtime JSON records.
 
+## Machine-Local Dispatcher Requirement
+
+The shared queue is cross-machine, but Codex task notification is host-local. A durable central record does not by itself wake a task on another computer.
+
+- Every computer that hosts dispatchable Project Room tasks must have one active machine-local PR Messaging Dispatcher capability.
+- Use one dispatcher task and heartbeat per computer, not one heartbeat per destination Project Room.
+- The OfficeAssist Email Monitor heartbeat may satisfy this requirement for `OFFICEASSIST` while its dispatcher stage remains active and verified. Other computers should use a dedicated `PR Messaging Dispatcher - <COMPUTERNAME>` task unless a documented local heartbeat already provides the same bounded behavior.
+- The local dispatcher polls only central records whose `destination.machine` exactly matches its own computer name and whose state is `Queued` or `Delivery Ambiguous`.
+- Before notification, it reconciles the current central state, immutable payload hash, destination manifest, exact task id, local client registration, prior attempts, and final-state history. It writes `StartAttempt` before exactly one same-ID task notification.
+- It must never execute destination work, alter an immutable payload, create substitute tasks, broaden authorization, or treat notification as delivery proof.
+- The destination must write `Accepted`, `Processing`, and a valid final state under its exact identity. Missing acknowledgment after a bounded wait is `Delivery Ambiguous`; a definitive local notification failure is `NotDelivered`.
+- Empty polls are strictly silent. Notify Wes only for newly delivered consequential work, a new actionable blocker, or a new decision.
+
+A Project Room created on or moved to another computer is not dispatchable until an unattended cross-machine validation starts on a different computer, is discovered by the destination computer's local dispatcher, and reaches `Accepted`, `Processing`, and `Completed` without manual pasting or direct user activation. A manually pasted synthetic lifecycle proves queue and task identity only; it does not prove dispatcher readiness.
+
 ## Message Types
 
 - `request`: owned work.

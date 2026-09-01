@@ -1,0 +1,35 @@
+{
+  "schema_version": 2,
+  "project_room": "PR Messaging Dispatcher",
+  "skill": "pr-messaging-dispatcher",
+  "task_id": "pending",
+  "dispatchable": false,
+  "execution_machine": "WES-VIDEOEDITOR",
+  "owned_actions": [
+    "poll machine-addressed central records",
+    "reconcile immutable delivery state",
+    "write StartAttempt before one local notification",
+    "classify delivery receipt, definitive failure, or ambiguity"
+  ],
+  "accepted_message_types": ["status", "improvement"],
+  "related_project_rooms": ["Create PR", "Jean Wright", "Quickbooks Invoice"],
+  "limitations": [
+    "never executes destination work",
+    "never changes immutable payloads",
+    "never dispatches another machine's records",
+    "silent on empty polls",
+    "pending local WES-VIDEOEDITOR deployment"
+  ],
+  "messaging_readiness": {
+    "status": "pending_machine_local_task",
+    "machine_registration_verified_at_utc": null,
+    "host_access_verified_at_utc": null,
+    "validation_message_id": null,
+    "lifecycle_completed_at_utc": null,
+    "notification_count": 0,
+    "dispatcher_task_id": null,
+    "dispatcher_automation_id": "pr-messaging-dispatcher-wes-videoeditor",
+    "cross_machine_source": null,
+    "manual_intervention": null
+  }
+}
