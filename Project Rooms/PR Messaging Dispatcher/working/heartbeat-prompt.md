@@ -22,7 +22,7 @@ For each run:
    - its manifest has `dispatchable: true`; or
    - its manifest has `dispatchable: false`, `messaging_readiness.status: validation_ready`, and `messaging_readiness.validation_message_id` exactly matches the current record, whose payload explicitly has `synthetic_test: true` and does not authorize or perform a business action.
    The validation exception applies to that one exact synthetic record only. Skip every production record while the destination remains non-dispatchable.
-6. Write `StartAttempt` before notification, then send exactly one concise same-ID local handoff to the registered destination task. Include the message id, payload hash, and instruction to write `Accepted`, `Processing`, and one valid final state with the canonical manager.
+6. Write `StartAttempt` before notification, then send exactly one concise same-ID local handoff to the registered destination task. Include the message id, payload hash, and instruction to write `Accepted`, `Processing`, and one valid final state with the canonical manager. For synthetic readiness validation, require final result data to include `notification_count` or `notification_attempt_count` equal to the authoritative delivery attempt count.
 7. Never execute destination work, create a substitute task, alter authorization, broaden scope, or infer delivery from notification alone.
 8. Reconcile the destination receipt after a bounded wait. A valid exact-identity receipt closes delivery. A definitive local notification failure is `NotDelivered`. Missing or uncertain acknowledgment is `DeliveryAmbiguous`.
 9. Respect the record's maximum attempts. Never create a replacement message merely to retry delivery.
