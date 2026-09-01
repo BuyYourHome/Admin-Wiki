@@ -12,24 +12,18 @@ Read before acting:
 
 Use only `C:\Codex\Wiki Files\tools\pr-messaging\Manage-ProjectRoomMessage.ps1` for the authoritative queue.
 
+Use `C:\Codex\Wiki Files\tools\pr-messaging\Claim-ProjectRoomDispatch.ps1` for deterministic eligibility evaluation and `StartAttempt`. The helper reads the queue only through the canonical manager.
+
 For each run:
 
 1. Determine the local computer name from the current Windows environment. Do not use a configured or assumed machine name instead.
-2. Poll only central records whose `destination.machine` exactly equals the local computer and whose state is `Queued` or `Delivery Ambiguous`.
-3. Reconcile the latest central state, message id, dispatch id, payload hash, destination manifest, exact task id, local client registration, prior attempts, and final-state history.
-4. Skip records already accepted, processing, or final. Deduplicate by message id, dispatch id, and payload hash.
-   - For every `Delivery Ambiguous` record, mechanically evaluate all five conditions: no accepted receipt, no final result, no prior attempt with a `Pending` outcome, `attempt_count` below `max_attempts`, and the destination currently passes the manifest gate.
-   - When all five conditions are true, the record is a required same-ID retry. Write `StartAttempt` and notify the exact destination in the current run. Do not require a new authorization, approval, payload change, state change, or user instruction; the immutable record's existing authorization controls the destination work.
-   - Do not end the run with a summary instead of acting on an eligible record. Do not classify an eligible retry as unchanged, duplicate, or blocked. If any condition is false, name that exact failed condition and skip the record without consuming an attempt.
-   - Always retry the existing record; never create a replacement record.
-5. Do not notify a destination whose manifest is absent, assigned to another machine, or inconsistent with the record. A destination is eligible only when either:
-   - its manifest has `dispatchable: true`; or
-   - its manifest has `dispatchable: false`, `messaging_readiness.status: validation_ready`, and `messaging_readiness.validation_message_id` exactly matches the current record, whose payload explicitly has `synthetic_test: true` and does not authorize or perform a business action.
-   The validation exception applies to that one exact synthetic record only. Skip every production record while the destination remains non-dispatchable.
-6. Write `StartAttempt` before notification, then send exactly one concise same-ID local handoff to the registered destination task. Include the message id, payload hash, and instruction to write `Accepted`, `Processing`, and one valid final state with the canonical manager. For synthetic readiness validation, require final result data to include `notification_count` or `notification_attempt_count` equal to the authoritative delivery attempt count.
-7. Never execute destination work, create a substitute task, alter authorization, broaden scope, or infer delivery from notification alone.
-8. Reconcile the destination receipt after a bounded wait. A valid exact-identity receipt closes delivery. A definitive local notification failure is `NotDelivered`. Missing or uncertain acknowledgment is `DeliveryAmbiguous`.
-9. Respect the record's maximum attempts. Never create a replacement message merely to retry delivery.
-10. Empty polls are strictly silent. Emit no routine queue-check status. Notify Wes only for newly delivered consequential work, a new actionable blocker, or a new decision.
+2. Run `Claim-ProjectRoomDispatch.ps1 -ActorTaskId <this exact dispatcher task id>` exactly once.
+3. If it returns `claimed: false`, end silently. Do not reinterpret queue eligibility.
+4. If it returns `claimed: true`, the helper has already reconciled identity, manifest, registration, state, attempts, and readiness and has written `StartAttempt`. Send exactly one concise same-ID local handoff to `destination_task_id` in the helper output. Include `message_id`, `payload_hash`, and the returned notification instruction. Do not reconsider authorization or eligibility after a claim.
+5. Require the destination to write `Accepted`, `Processing`, and one valid final state with the canonical manager. For synthetic readiness validation, require final result data to include `notification_count` or `notification_attempt_count` equal to the authoritative delivery attempt count.
+6. Never execute destination work, create a substitute task, alter authorization, broaden scope, or infer delivery from notification alone.
+7. Reconcile the destination receipt after a bounded wait. A valid exact-identity receipt closes delivery. A definitive local notification failure is `NotDelivered`. Missing or uncertain acknowledgment is `DeliveryAmbiguous`.
+8. Respect the record's maximum attempts. Never create a replacement message merely to retry delivery.
+9. Empty polls are strictly silent. Emit no routine queue-check status. Notify Wes only for newly delivered consequential work, a new actionable blocker, or a new decision.
 
 If the central host is inaccessible, leave central records unchanged and preserve any canonical local spool state. Do not claim delivery.

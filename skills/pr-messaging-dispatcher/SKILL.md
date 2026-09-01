@@ -11,6 +11,7 @@ description: Run one machine-local Buy Your Home Project Room messaging dispatch
 - Heartbeat prompt: `C:\Codex\Wiki Files\Project Rooms\PR Messaging Dispatcher\working\heartbeat-prompt.md`
 - Messaging rule: `C:\Codex\Wiki Files\Project Room Messaging Rule.md`
 - Manager: `C:\Codex\Wiki Files\tools\pr-messaging\Manage-ProjectRoomMessage.ps1`
+- Deterministic claim helper: `C:\Codex\Wiki Files\tools\pr-messaging\Claim-ProjectRoomDispatch.ps1`
 
 ## Purpose
 
@@ -20,11 +21,11 @@ Provide the host-local wake-up layer for Project Room messages addressed to task
 
 1. Read the canonical heartbeat prompt and messaging rules at every run.
 2. Determine the actual local computer name.
-3. Poll only records addressed to that computer in `Queued` or `Delivery Ambiguous` state.
-4. Reconcile immutable identity, hash, manifest, exact task id, registration, attempts, and current state.
-5. Mechanically evaluate every `Delivery Ambiguous` record: no accepted receipt, no final result, no pending attempt, attempts remain, and the destination passes its manifest gate. When all five are true, `StartAttempt` and same-ID notification are mandatory in that run. Do not require new authorization or substitute a summary for the required action.
+3. Run the deterministic claim helper once. It owns queue selection, exact manifest and registration checks, bounded retry eligibility, and `StartAttempt` through the canonical manager.
+4. When the helper returns a claim, notify the returned exact destination once without reinterpreting eligibility or authorization.
+5. When the helper returns no claim, end silently.
 6. Require `dispatchable: true`, except for one exact manifest-authorized `validation_ready` synthetic record that authorizes and performs no business action. Never use that exception for production work.
-7. Write `StartAttempt` before exactly one local notification.
+7. `StartAttempt` must already exist before exactly one local notification.
 8. Require the destination to write `Accepted`, `Processing`, and one valid final state.
 9. Mark definitive failure `NotDelivered` and uncertainty `DeliveryAmbiguous`.
 10. Remain silent on empty polls and unchanged conditions.

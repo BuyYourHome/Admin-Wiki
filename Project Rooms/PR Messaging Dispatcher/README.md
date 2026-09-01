@@ -9,6 +9,7 @@ Provide one machine-local dispatcher heartbeat on each computer that hosts dispa
 In scope:
 
 - Poll the authoritative queue with `Manage-ProjectRoomMessage.ps1`.
+- Select and claim one eligible record with `Claim-ProjectRoomDispatch.ps1`, which uses the canonical manager for every queue operation.
 - Process only records addressed to the dispatcher computer.
 - Reconcile immutable identity, payload hash, manifest, task id, local registration, state, and prior attempts.
 - Write `StartAttempt` before one concise same-ID local task notification.
@@ -32,6 +33,7 @@ Out of scope:
 - `working\missing-context.md` - deployment blockers and unresolved machine details.
 - `working\dispatcher-action-log.md` - material deployment and failure outcomes only.
 - `outputs\WES-VIDEOEDITOR Deployment.md` - machine-specific deployment handoff.
+- `C:\Codex\Wiki Files\tools\pr-messaging\Claim-ProjectRoomDispatch.ps1` - deterministic machine-local eligibility and `StartAttempt` helper.
 
 ## Status
 
