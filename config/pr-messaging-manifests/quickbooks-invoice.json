@@ -20,6 +20,7 @@
     "dispatcher_automation_id": "pr-messaging-dispatcher-wes-videoeditor",
     "cross_machine_source": "WESSTUDIO",
     "manual_intervention": false,
+    "readiness_validator_checked_at_utc": "2026-09-01T16:26:05.5963715Z",
     "prior_manual_validation_message_id": "prmsg-quickbooks-invoice-wve-readiness-correction-20260831-001",
     "prior_manual_validation_completed_at_utc": "2026-08-31T22:35:23.2843551Z"
   },

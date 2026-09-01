@@ -93,6 +93,7 @@ QuickBooks may truncate a long value entered in `Bill no.`. Read back the exact 
 - Host access: verified at `2026-08-31T22:31:07.8796039Z` on `WES-VIDEOEDITOR`
 - Synthetic lifecycle: corrected record `prmsg-quickbooks-invoice-wve-readiness-correction-20260831-001` completed at `2026-08-31T22:35:23.2843551Z` after exactly one notification with `synthetic_test: true`, exact identity and payload-hash verification, and no QuickBooks business action
 - Dispatcher validation: task `01a05d0c-8031-7d92-9474-ab2330008ddb` and automation `pr-messaging-dispatcher-wes-videoeditor` delivered `prmsg-invoice-entry-wve-dispatcher-unattended-validation-20260901-001` exactly once. Quickbooks Invoice wrote `Accepted`, `Processing`, and `Completed` by `2026-09-01T16:15:32.4201488Z` with `manual_intervention: false` and no business action.
+- Readiness validator: `ready: true` on `WES-VIDEOEDITOR` at `2026-09-01T16:26:05.5963715Z`; every check passed.
 
 Passing Project Room messaging readiness does not override the per-bill browser safety gates.
 
