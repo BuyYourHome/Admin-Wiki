@@ -6,7 +6,7 @@ This is the authoritative current-state register for Invoice Entry. Read it befo
 
 ## Operating State
 
-- Status: `Active - Five September 1 Sources Reconciled; Josh August 16-31 Period Closed With One Allocation Hold; Four Statement Retrieval Holds Current`
+- Status: `Active - Poyner Spruill Invoice 1277608 Validated; Filing Path And QuickBooks Mappings Need Wes`
 - Primary intake: direct Doc Scan or Email Monitor handoff; authorized versioned Manager Time Card packets are also supported for Time Card intake.
 - Current task: `019fbf4f-c629-7dd1-a3f6-0de33de0ed8f`.
 - Canonical skill: `C:\Codex\Wiki Files\skills\invoice-entry\SKILL.md`.
@@ -24,6 +24,7 @@ This is the authoritative current-state register for Invoice Entry. Read it befo
 - `Receipt` is a user-callable Invoice Entry mode as of 2026-08-14. For the current Rosebrooks Estate Sale, Wes's command `Receipt item #<item number>` confirms the exact item sold and cash collected, defaults to the item's current established Marketplace price and the request date, and assigns the receipt to `20-HM - 115 Rosebrooks Dr`. Invoice Entry then sends the exact item/listing to Marketplace for its separately owned Facebook `Sold` update. Receipt documents show the positive amount collected; project workbooks receive the negative equivalent through the normal invoice-placement workflow. Supported categories use the matching Vendor Tab, while unclear categories enter `Review` with a blank destination.
 - 2026-09-01 routing rule: every validated payable invoice must be evaluated for Quickbooks Invoice task `01a05967-9a05-7081-a62e-616b2d8e61fd` on `WES-VIDEOEDITOR` after the exact QuickBooks company file and required accounting mappings are supported. Drafts, statements, receipts, duplicates, superseded/denied/non-payable items, and guessed or incomplete company mappings are not bill-creation handoffs. Project-related invoices still follow the project-management spreadsheet workflow as a separate parallel destination; neither destination replaces the other.
 - 2026-09-01 Poyner Spruill rule: these invoices and statements are non-project-related, BYH is the responsible entity, and authoritative documents belong in Teams/SharePoint `Property/2-HM - 115 Rosebrooks Dr/Lawsuit/Billing` under the naming convention established by comparable files already there. Do not insert them into the Rosebrooks project workbook. Statements and payment confirmations remain reconciliation evidence unless they independently establish a payable invoice.
+- Poyner Spruill invoice `1277608` dated `2026-08-11` is source-validated at `$3,671.80`, payable upon receipt, with no prior matching obligation found. PDF hash `2E61120798D9E667F6A60A6D3730068CACC473DC12B4C87E67C1C82F0A0C28E3` controls over the malformed email-body amount. BYH and vendor ID `1389` are supported, but required QuickBooks accounting mappings remain unresolved. Filing is also held because the rule names `2-HM - 115 Rosebrooks Dr` while the synced folder and prior source inventory use `20-HM-115 Rosebrooks Dr`. No filing, QuickBooks handoff, project-workbook action, approval, payment, vendor contact, or paid status occurred.
 
 ## Task Health Status
 
