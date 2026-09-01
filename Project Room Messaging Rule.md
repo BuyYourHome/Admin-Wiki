@@ -47,6 +47,8 @@ The shared queue is cross-machine, but Codex task notification is host-local. A 
 
 A Project Room created on or moved to another computer is not dispatchable until an unattended cross-machine validation starts on a different computer, is discovered by the destination computer's local dispatcher, and reaches `Accepted`, `Processing`, and `Completed` without manual pasting or direct user activation. A manually pasted synthetic lifecycle proves queue and task identity only; it does not prove dispatcher readiness.
 
+To avoid a circular readiness gate, Create PR may place one destination in `validation_ready` while keeping `dispatchable: false`. The destination manifest must name one exact pending validation message id, the verified dispatcher task and automation ids, and the source and destination machines. A machine-local dispatcher may bypass `dispatchable: false` only for that exact record when its payload explicitly contains `synthetic_test: true` and authorizes and performs no business action. It must skip all production records until the validation completes and Create PR records `manual_intervention: false` and sets `dispatchable: true`.
+
 ## Message Types
 
 - `request`: owned work.

@@ -16,6 +16,10 @@ New Project Rooms begin with `"dispatchable": false`. Create PR may change that 
 
 If any check fails, use `Pending messaging registration - not dispatchable` in the Project Room README, registry, routing map, and setup report. A task id by itself is not messaging readiness.
 
+### Validation-Ready Exception
+
+When checks 1-5 pass and the machine-local dispatcher is active, Create PR may set `messaging_readiness.status` to `validation_ready` while leaving `dispatchable: false`. The manifest must record the one exact unattended `validation_message_id`, dispatcher task id, dispatcher automation id, cross-machine source, and `manual_intervention: null`. The dispatcher may process only that exact record when it is explicitly synthetic and authorizes and performs no business action. This exception never permits production delivery. After the exact lifecycle completes unattended, record its timestamps and `manual_intervention: false`, run the readiness validator, and only then set `dispatchable: true`.
+
 ## Required Manifest Fields
 
 Use schema version 2 for newly created or newly validated manifests:

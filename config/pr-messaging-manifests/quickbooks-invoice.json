@@ -10,16 +10,18 @@
   "related_project_rooms": ["Invoice Entry", "Jean Wright"],
   "limitations": ["interim Chrome authorization only", "requires a validated Invoice Entry handoff", "requires visible exact target-company confirmation for every invoice", "requires action-log and QuickBooks duplicate search before creation", "requires exactly one save and full read-back", "login challenges and ambiguous post-submit results block retries", "does not send invoices", "does not apply payments or mark paid", "does not void or delete", "does not create or change QuickBooks entities or settings", "does not perform unrelated bookkeeping"],
   "messaging_readiness": {
-    "status": "pending_machine_local_dispatcher",
+    "status": "validation_ready",
     "machine_registration_verified_at_utc": "2026-08-31T21:43:02.1661378Z",
     "host_access_verified_at_utc": "2026-08-31T22:31:07.8796039Z",
-    "validation_message_id": "prmsg-quickbooks-invoice-wve-readiness-correction-20260831-001",
-    "lifecycle_completed_at_utc": "2026-08-31T22:35:23.2843551Z",
-    "notification_count": 1,
-    "dispatcher_task_id": null,
+    "validation_message_id": "prmsg-invoice-entry-wve-dispatcher-unattended-validation-20260901-001",
+    "lifecycle_completed_at_utc": null,
+    "notification_count": 0,
+    "dispatcher_task_id": "01a05d0c-8031-7d92-9474-ab2330008ddb",
     "dispatcher_automation_id": "pr-messaging-dispatcher-wes-videoeditor",
-    "cross_machine_source": null,
-    "manual_intervention": true
+    "cross_machine_source": "WESSTUDIO",
+    "manual_intervention": null,
+    "prior_manual_validation_message_id": "prmsg-quickbooks-invoice-wve-readiness-correction-20260831-001",
+    "prior_manual_validation_completed_at_utc": "2026-08-31T22:35:23.2843551Z"
   },
   "connector_readiness": {
     "status": "superseded_by_interim_browser_control",

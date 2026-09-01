@@ -22,10 +22,11 @@ Provide the host-local wake-up layer for Project Room messages addressed to task
 2. Determine the actual local computer name.
 3. Poll only records addressed to that computer in `Queued` or `Delivery Ambiguous` state.
 4. Reconcile immutable identity, hash, manifest, exact task id, registration, attempts, and current state.
-5. Write `StartAttempt` before exactly one local notification.
-6. Require the destination to write `Accepted`, `Processing`, and one valid final state.
-7. Mark definitive failure `NotDelivered` and uncertainty `DeliveryAmbiguous`.
-8. Remain silent on empty polls and unchanged conditions.
+5. Require `dispatchable: true`, except for one exact manifest-authorized `validation_ready` synthetic record that authorizes and performs no business action. Never use that exception for production work.
+6. Write `StartAttempt` before exactly one local notification.
+7. Require the destination to write `Accepted`, `Processing`, and one valid final state.
+8. Mark definitive failure `NotDelivered` and uncertainty `DeliveryAmbiguous`.
+9. Remain silent on empty polls and unchanged conditions.
 
 ## Boundaries
 
@@ -39,7 +40,7 @@ Provide the host-local wake-up layer for Project Room messages addressed to task
 ## Deployment
 
 - Use one task and heartbeat per computer.
-- WES-VIDEOEDITOR task: `PR Messaging Dispatcher - WES-VIDEOEDITOR`, pending local creation.
+- WES-VIDEOEDITOR task: `PR Messaging Dispatcher - WES-VIDEOEDITOR`, task `01a05d0c-8031-7d92-9474-ab2330008ddb`.
 - WES-VIDEOEDITOR automation id: `pr-messaging-dispatcher-wes-videoeditor`.
 - OFFICEASSIST may use its existing Email Monitor dispatcher stage instead of a duplicate task.
 - A cross-machine Project Room is not dispatchable until an unattended remote-source lifecycle passes without manual pasting.

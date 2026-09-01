@@ -35,9 +35,9 @@ Out of scope:
 
 ## Status
 
-Status: `Pending WES-VIDEOEDITOR task creation and heartbeat installation - not active`.
+Status: `Active on WES-VIDEOEDITOR; unattended destination validation pending`.
 
-The wiki package is defined. Deployment requires a task created locally on `WES-VIDEOEDITOR`, an active five-minute heartbeat attached to that task, machine-local client registration, and one unattended cross-machine lifecycle test.
+The task and five-minute heartbeat are active on `WES-VIDEOEDITOR`. The exact Quickbooks Invoice synthetic lifecycle remains pending; production delivery to that destination stays disabled until it completes unattended.
 
 ## Matching Skill
 
@@ -46,7 +46,7 @@ The wiki package is defined. Deployment requires a task created locally on `WES-
 ## Dedicated Tasks
 
 - WES-VIDEOEDITOR task name: `PR Messaging Dispatcher - WES-VIDEOEDITOR`
-- WES-VIDEOEDITOR task id: `pending until created locally on WES-VIDEOEDITOR`
+- WES-VIDEOEDITOR task id: `01a05d0c-8031-7d92-9474-ab2330008ddb`
 - WES-VIDEOEDITOR automation id: `pr-messaging-dispatcher-wes-videoeditor`
 - OFFICEASSIST exception: its active Email Monitor heartbeat may provide the local dispatcher stage; do not create a duplicate dispatcher heartbeat while that stage remains verified.
 
@@ -62,7 +62,7 @@ Do not mark a destination Project Room on a remote computer dispatchable until:
 
 1. The machine-local dispatcher task and heartbeat are active.
 2. The dispatcher can access the central queue under the normal Codex Windows profile.
-3. The destination task is registered locally and its manifest is dispatchable.
+3. The destination task is registered locally and its manifest is either dispatchable or names one exact `validation_ready` synthetic record under the central exception.
 4. A synthetic message created on another computer is discovered locally without manual pasting.
 5. The destination writes `Accepted`, `Processing`, and `Completed` under its exact identity.
 6. The manifest records the dispatcher task id, automation id, source and destination machines, and `manual_intervention: false`.

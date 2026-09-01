@@ -105,10 +105,11 @@ Create PR must complete this checklist after the dedicated task is created:
 4. Verify authenticated access to `\\WES-VIDEOEDITOR\BYH-PRMessaging$` with the canonical message tool.
 5. Create an immutable synthetic validation message with `Manage-ProjectRoomMessage.ps1`, write `StartAttempt` before exactly one task notification, and require `Accepted`, `Processing`, and `Completed` under the exact destination identity.
 6. If the execution machine differs from the source machine, verify that the destination computer has one active machine-local PR Messaging Dispatcher task/heartbeat, or a documented local equivalent such as the OfficeAssist Email Monitor dispatcher stage.
-7. Run an unattended cross-machine validation from a different computer. The destination computer's local dispatcher must discover the central record and the exact destination task must write `Accepted`, `Processing`, and `Completed` without manual pasting, direct user activation, or destination work being performed by the dispatcher.
-8. Record the validation message id, timestamps, dispatcher task/automation identity, source machine, destination machine, and `manual_intervention: false` in the destination manifest.
-9. Run `tools\pr-messaging\Test-ProjectRoomMessagingReadiness.ps1` on the exact execution machine.
-10. Change `dispatchable` to `true` and mark `Dispatchable: Yes` only after the validator returns `ready: true` and the unattended cross-machine validation is complete.
+7. Before the unattended test, keep `dispatchable: false` and set `messaging_readiness.status: validation_ready`. Record one exact pending synthetic `validation_message_id`, dispatcher task id, dispatcher automation id, cross-machine source, and `manual_intervention: null`. This authorizes only that exact no-business-action synthetic record and does not authorize production delivery.
+8. Run an unattended cross-machine validation from a different computer. The destination computer's local dispatcher must discover the exact validation message and the exact destination task must write `Accepted`, `Processing`, and `Completed` without manual pasting, direct user activation, or destination work being performed by the dispatcher.
+9. Record the validation message id, timestamps, dispatcher task/automation identity, source machine, destination machine, and `manual_intervention: false` in the destination manifest.
+10. Run `tools\pr-messaging\Test-ProjectRoomMessagingReadiness.ps1` on the exact execution machine.
+11. Change `dispatchable` to `true` and mark `Dispatchable: Yes` only after the validator returns `ready: true` and the unattended cross-machine validation is complete.
 
 If any check fails, keep the README, registry, routing map, manifest, and setup report marked `Pending messaging registration - not dispatchable`. A manually pasted synthetic lifecycle is insufficient for a cross-machine room. Do not substitute a task or machine, store credentials in Git, or change an existing machine registration merely to make an audit pass.
 

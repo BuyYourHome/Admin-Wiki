@@ -2,7 +2,7 @@
   "schema_version": 2,
   "project_room": "PR Messaging Dispatcher",
   "skill": "pr-messaging-dispatcher",
-  "task_id": "pending",
+  "task_id": "01a05d0c-8031-7d92-9474-ab2330008ddb",
   "dispatchable": false,
   "execution_machine": "WES-VIDEOEDITOR",
   "owned_actions": [
@@ -21,13 +21,13 @@
     "pending local WES-VIDEOEDITOR deployment"
   ],
   "messaging_readiness": {
-    "status": "pending_machine_local_task",
+    "status": "active_pending_destination_validation",
     "machine_registration_verified_at_utc": null,
     "host_access_verified_at_utc": null,
     "validation_message_id": null,
     "lifecycle_completed_at_utc": null,
     "notification_count": 0,
-    "dispatcher_task_id": null,
+    "dispatcher_task_id": "01a05d0c-8031-7d92-9474-ab2330008ddb",
     "dispatcher_automation_id": "pr-messaging-dispatcher-wes-videoeditor",
     "cross_machine_source": null,
     "manual_intervention": null

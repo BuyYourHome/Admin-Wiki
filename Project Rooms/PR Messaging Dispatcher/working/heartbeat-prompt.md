@@ -18,7 +18,10 @@ For each run:
 2. Poll only central records whose `destination.machine` exactly equals the local computer and whose state is `Queued` or `Delivery Ambiguous`.
 3. Reconcile the latest central state, message id, dispatch id, payload hash, destination manifest, exact task id, local client registration, prior attempts, and final-state history.
 4. Skip records already accepted, processing, or final. Deduplicate by message id, dispatch id, and payload hash.
-5. Do not notify a destination whose manifest is absent, not dispatchable, assigned to another machine, or inconsistent with the record. Return a new actionable blocker without changing the immutable payload.
+5. Do not notify a destination whose manifest is absent, assigned to another machine, or inconsistent with the record. A destination is eligible only when either:
+   - its manifest has `dispatchable: true`; or
+   - its manifest has `dispatchable: false`, `messaging_readiness.status: validation_ready`, and `messaging_readiness.validation_message_id` exactly matches the current record, whose payload explicitly has `synthetic_test: true` and does not authorize or perform a business action.
+   The validation exception applies to that one exact synthetic record only. Skip every production record while the destination remains non-dispatchable.
 6. Write `StartAttempt` before notification, then send exactly one concise same-ID local handoff to the registered destination task. Include the message id, payload hash, and instruction to write `Accepted`, `Processing`, and one valid final state with the canonical manager.
 7. Never execute destination work, create a substitute task, alter authorization, broaden scope, or infer delivery from notification alone.
 8. Reconcile the destination receipt after a bounded wait. A valid exact-identity receipt closes delivery. A definitive local notification failure is `NotDelivered`. Missing or uncertain acknowledgment is `DeliveryAmbiguous`.
