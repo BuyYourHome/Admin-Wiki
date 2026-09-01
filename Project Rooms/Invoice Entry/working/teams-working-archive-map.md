@@ -278,3 +278,11 @@ The PDF matches SHA-256 `7409455004CFDE4B1BBBA5E8E42FBDFB782ED6044F0A3A1F454D4B0
 | Two separate invoice PDFs, two JSON generation inputs, and two visual-QA PNG renders from `working\create-vendor-invoice\2026-08-24-tim-fleming-pond-hours\generated-2026-08-31` | `Generated\2026-08-31 Tim Fleming Weekly Correction Review` | 6 | 355,158 | Destination count and byte total verified; temporary local generation folder removed |
 
 OfficeAssist delivery `IE-EMAIL-20260831-TIM-WEEKLY-CORRECTION-REVIEW-001` was Sent Items-verified before cleanup. The archive contains the generated correction-review evidence only; neither invoice is approved, filed to a property, posted, paid, or marked paid.
+
+## Josh Kennedy August 25 Corrected Closed-Period Draft - Local Hold 2026-09-01
+
+| Local working files | Intended handling | Files | Bytes | Status |
+| --- | --- | ---: | ---: | --- |
+| Corrected one-page draft PDF, JSON input, and QA render under `tmp\pdfs\josh-aug25-correction` | Hold locally pending authorized cleanup or archive handling | 3 | 391,136 | Visual and arithmetic QA passed; external Working Archive retention was not authorized under the no-filing restriction |
+
+The PDF matches SHA-256 `0FF68C2F51F43D2BF632B96884722BB6F45D11AD46039AA8D829445739A6BB2`. It incorporates Josh's exact August 17 and August 25 allocation corrections. No email, finalization, filing, workbook posting, QuickBooks routing, approval, payment, or paid status occurred.

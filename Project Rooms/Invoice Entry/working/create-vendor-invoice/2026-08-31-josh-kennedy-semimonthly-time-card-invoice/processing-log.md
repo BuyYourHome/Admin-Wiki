@@ -173,3 +173,12 @@ Outcome: `Done - second August 25 clarification request recorded; awaiting Josh'
 - External Working Archive retention was not authorized under the no-filing restriction. The three generated artifacts remain classified under `tmp\pdfs\josh-aug17-correction` as 3 files / 396,390 bytes pending authorized cleanup or archive handling.
 
 Outcome: `Done - August 17 corrected in place; August 25 clarification and Wes approval remain pending`.
+
+## 2026-09-01 - August 25 Exact Correction Reconciled
+
+- Accepted and processed authoritative message/dispatch `prmsg-email-monitor-route-vendor-invoice-20260901-josh-time-card-aug25-correction-003`, payload hash `1875f1533864173e05cb1a1e72f1c0ce65c5003059ed61a57aac611142084604`, under the exact Invoice Entry task identity.
+- Reconciled Outlook source ending `AClUGMJgAAAA==` into existing invoice `INV-JKLLC-20260831-001`: August 25 7:45 AM-10:30 AM is Pond for back-door lock/deadbolt installation and yardwork; 10:30 AM-4:15 PM is BackOffice work.
+- Updated the two existing August 25 lines in place. The prior Rosebrooks wording and Rosebrooks afternoon working interpretation are superseded; no interval, hours, or obligation was duplicated.
+- Total remains `88h10m` and `$2,708.33`. Corrected allocation is Pond `48h00m` / `$1,474.48`, Rosebrooks `25h55m` / `$796.11`, BackOffice `13h30m` / `$414.70`, and Tensity `0h45m` / `$23.04`.
+- Regenerated and visually verified a one-page internal correction-review PDF with SHA-256 `0FF68C2F51F43D2BF632B96884722BB6F45D11AD46039AA8D829445739A6BB2`; detail and summary arithmetic both equal `$2,708.33`.
+- No email, finalization, filing, workbook posting, QuickBooks routing, approval, payment, paid status, or vendor contact occurred. The closed-period invoice now awaits Wes approval.
