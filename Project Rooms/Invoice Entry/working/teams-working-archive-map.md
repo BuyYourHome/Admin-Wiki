@@ -255,6 +255,14 @@ The PDF matches SHA-256 `61D5BD870127149D73F6168597564687033F351C55F3D264563A05A
 
 The PDF matches SHA-256 `DB797EB679CCAB3BEB17CF9B507147695323EF65B0E1A2E5F52BCCE5E8427ACE` and passed one-page visual, extracted-text, source-spelling, hours, and arithmetic checks. The files are classified and preserved locally pending explicit archive authority. No email, filing, workbook action, approval, payment, or paid status occurred.
 
+## Josh Kennedy August 16-31 Closed-Period Correction Review - Archived 2026-09-01
+
+| Local working files | Teams destination under `Invoice Entry Working Archive` | Files | Bytes | Status |
+| --- | --- | ---: | ---: | --- |
+| One-page correction-review PDF, structured input, and QA render from `working\create-vendor-invoice\2026-08-31-josh-kennedy-semimonthly-time-card-invoice\generated-2026-09-01-closeout` | `Generated\2026-09-01-Josh-Semimonthly-Closeout-Draft` | 3 | 368,707 | Destination count, byte total, and per-file SHA-256 verified; temporary local generation folder removed |
+
+The PDF matches SHA-256 `857A85444FA98FB2B7E8DFA3A0EFE5C13467C4AAB71993A4EA75E83643FB61E0` and passed one-page visual, hours, disclosure, and arithmetic checks. Email delivery was Sent Items-verified before cleanup. The invoice remains a correction-review draft awaiting Wes approval; it is not final, filed, posted, paid, or marked paid.
+
 ## Tim Fleming August 24-28 Correction-Review Package - Archived 2026-08-31
 
 | Local working files | Teams destination under `Invoice Entry Working Archive` | Files | Bytes | Status |

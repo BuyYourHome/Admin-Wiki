@@ -126,3 +126,16 @@ Outcome: `Done - August 28-29 recorded once and one-page internal draft regenera
 - The August 25 allocation remains unresolved, so the invoice is not final or ready for approval. External contact was prohibited; no email, filing, workbook action, approval, payment, or paid status occurred.
 
 Outcome: `Done - corrected August 31 time recorded once; closed-period draft regenerated; August 25 allocation still needs review`.
+
+## 2026-09-01 - Closed-Period Correction Review And Approval Request
+
+- Accepted parent `prmsg-jean-josh-time-card-closeout-20260901-001`, payload hash `6e0a098760177ffe85cbc63362b7d82906467e814b80ec34ab5cdd82e82aef3c`, under the exact Invoice Entry identity and recorded Processing before work.
+- Applied Wes's authorized source-supported working interpretation to the existing August 25 10:30 AM-4:15 PM line: Rosebrooks because the source places the day there and describes yardwork. The final BackOffice sentence remains visible for correction by exception; no duplicate line or split was created.
+- Closed-period totals remain `88h10m` / `$2,708.33`: Pond `46h40m` / `$1,433.52`; Rosebrooks `33h` / `$1,013.70`; BackOffice `7h45m` / `$238.07`; Tensity `0h45m` / `$23.04`.
+- Regenerated and visually verified the one-page correction-review draft. PDF SHA-256: `857A85444FA98FB2B7E8DFA3A0EFE5C13467C4AAB71993A4EA75E83643FB61E0`.
+- Created one immutable Email Delivery child, `prmsg-invoice-entry-email-delivery-20260901-josh-closeout-001`, payload hash `9835cc600cbcade2383408cacf178e3f824318e052e2b8618cb28d3657e8428f`.
+- Email Monitor sent exactly once under request `IE-EMAIL-20260901-JOSH-SEMIMONTHLY-CLOSED-DRAFT-007` and verified OfficeAssist Sent Items at `2026-09-01T20:16:27Z`; sent message ending `AClUELHAAAAA==`. Exact To was `profcyber0077@gmail.com`; Wes and Jenny were copied; BCC was empty; one non-inline PDF was verified at `5,417` transmitted bytes.
+- The generated PDF, JSON input, and QA render were hash-verified in `Invoice Entry Working Archive\Generated\2026-09-01-Josh-Semimonthly-Closeout-Draft` as 3 files / 368,707 bytes, then the temporary local generation folder was removed.
+- No finalization, filing, workbook posting, QuickBooks routing, payment, or paid status occurred.
+
+Outcome: `Done - closed-period correction-review draft sent and verified; awaiting corrections by exception and Wes approval`.

@@ -2,7 +2,7 @@
 
 ## Status
 
-- State: `Period Closed - Corrected Draft Through August 31 Prepared - August 25 Allocation Unresolved - Delivery Withheld By Dispatch Restriction`
+- State: `Period Closed - Correction-Review Draft Sent - Awaiting Corrections By Exception And Wes Approval`
 - Stable invoice number: `INV-JKLLC-20260831-001`
 - Invoice date: `2026-08-31` (semimonthly period end)
 - Semimonthly period: `2026-08-16 through 2026-08-31`
@@ -25,7 +25,7 @@
 - Dispatch `email-monitor-route-vendor-invoice-20260820-josh-time-card-aug19-001`; payload hash `8c71ce9651518ad7f046ff0d8ba3cc4482a8a08b366db0d7e0aeb1c108a7ac00`; Outlook message ending `ACjkdy7AAAAA==`. August 19: Rosebrooks 6:00 AM-10:45 AM and Pond 10:45 AM-2:45 PM.
 - Dispatch `email-monitor-route-vendor-invoice-20260821-josh-time-card-aug20-001`; payload hash `c5c7c4d06173d95360159751dab914b4870428786ce47db479b3005e069404b0`; Outlook message ending `ACjvzcuAAAAA==`. August 20: BackOffice 8:00 AM-3:45 PM and 4121 Tensity Dr 3:45 PM-4:30 PM installing the outside storage-closet door, handle, and deadbolt.
 - Dispatch `email-monitor-route-vendor-invoice-20260824-josh-time-card-aug21-001`; message id `prmsg-email-monitor-route-vendor-invoice-20260824-josh-time-card-aug21-001`; payload hash `496b36f77bd34661e088c71a7060508e56b084ad91830084e0f7c0cd7061e58e`; Outlook message ending `ACkJJCTgAAAA==`. August 21: 115 Rosebrooks Dr 6:00 AM-12:00 PM removing cabinet doors and hardware and helping load the truck with items for Green Leaf.
-- Dispatch `email-monitor-route-vendor-invoice-20260826-josh-time-card-001`; message id `prmsg-email-monitor-route-vendor-invoice-20260826-josh-time-card-001`; payload hash `dc38b252a0b7952732092fdb32e873533280f4a50f4e594c6641bcf858718b94`; Outlook message ending `ACkJJCVQAAAA==`. August 25: Rosebrooks 7:45 AM-10:30 AM installing the back-door lock and deadbolt; 10:30 AM-4:15 PM is retained once as unallocated because the source calls it Rosebrooks yardwork and then separately says BackOffice work.
+- Dispatch `email-monitor-route-vendor-invoice-20260826-josh-time-card-001`; message id `prmsg-email-monitor-route-vendor-invoice-20260826-josh-time-card-001`; payload hash `dc38b252a0b7952732092fdb32e873533280f4a50f4e594c6641bcf858718b94`; Outlook message ending `ACkJJCVQAAAA==`. August 25: Rosebrooks 7:45 AM-10:30 AM installing the back-door lock and deadbolt; 10:30 AM-4:15 PM was initially retained once as unallocated because the source calls it Rosebrooks yardwork and then separately says BackOffice work. Wes's later closeout authorization carries that same interval once at Rosebrooks as a disclosed correction-review working interpretation.
 - Dispatch `email-monitor-route-vendor-invoice-20260827-josh-time-card-001`; message id `prmsg-email-monitor-route-vendor-invoice-20260827-josh-time-card-001`; payload hash `0a6772c0dfcaec73e05f5dc4ade2388b78ec069a826d182532e13d07428bca6f`; Outlook message ending `ACkJJCVwAAAA==`. August 26: source-stated `115 Rose Brooks Dr.` 7:00 AM-9:00 AM working on countertops, then source-stated `908 Pond Dr.` 9:00 AM-4:00 PM framing walls with Tim Fleming.
 - Dispatch `email-monitor-route-vendor-invoice-20260828-josh-time-card-001`; message id `prmsg-email-monitor-route-vendor-invoice-20260828-josh-time-card-001`; payload hash `862e8f433b004f10a9945f6c0d9e99bb7f9971f7d7f5ac6d514c84caaf767c21`; Outlook message ending `ACk8hyHgAAAA==`. August 27: source-stated `115 Rose Books Dr.` 6:00 AM-9:30 AM sanding cabinets and removing countertops with Tim Fleming, then source-stated `908 Pond Drive` 9:30 AM-3:45 PM framing walls with Tim and reviewing items with Nate the plumber.
 - Message/dispatch `prmsg-email-monitor-route-vendor-invoice-20260831-josh-time-card-001`; payload hash `99294adb703aeb1fd24678d27c97f3cb0d0c9c71079f2a6643142fa47dbd750a`; Outlook message ending `AClUGMFgAAAA==`. August 28: source-stated `115 Rosebrooks Dr.` 6:00 AM-10:00 AM sanding cabinet doors, then source-stated `908 Pond Dr.` 10:00 AM-2:00 PM working with Tim Fleming and going over things with Nate the plumber. August 29: source-stated `908 Po Drive` 8:15 AM-9:15 AM with no task description.
@@ -46,7 +46,7 @@
 | 2026-08-20 | 4121 Tensity Dr | 3:45 PM | 4:30 PM | 45 minutes | Installed the outside storage-closet door, door handle, and deadbolt | Added once from the exact August 20 source; no break was stated or deducted. |
 | 2026-08-21 | 115 Rosebrooks Dr | 6:00 AM | 12:00 PM | 6 hours | Removed cabinet doors and hardware; helped load the truck with items for Green Leaf | Added once from the exact August 21 source; no break was stated or deducted. |
 | 2026-08-25 | 115 Rosebrooks Dr | 7:45 AM | 10:30 AM | 2 hours 45 minutes | Installed the back-door lock and deadbolt | Added once from the exact August 25 source; no break was stated or deducted. |
-| 2026-08-25 | Unallocated - Rosebrooks or BackOffice | 10:30 AM | 4:15 PM | 5 hours 45 minutes | Source says yardwork after stating the day was at Rosebrooks, then separately says BackOffice work | Retained once without project inference. Correction is required before final allocation. |
+| 2026-08-25 | 115 Rosebrooks Dr - working interpretation | 10:30 AM | 4:15 PM | 5 hours 45 minutes | Source places the day at Rosebrooks and says yardwork; final sentence separately mentions BackOffice | Carried once at Rosebrooks under Wes's authorized working interpretation. Josh should correct it if any portion belongs to BackOffice. |
 | 2026-08-26 | 115 Rosebrooks Dr | 7:00 AM | 9:00 AM | 2 hours | Worked on countertops; source property spelling is `115 Rose Brooks Dr.` | Added once from the exact August 26 source; no break was stated or deducted. |
 | 2026-08-26 | 908 Pond St | 9:00 AM | 4:00 PM | 7 hours | Framed walls with Tim Fleming; source property wording is `908 Pond Dr.` | Added once from the exact August 26 source; no break was stated or deducted. |
 | 2026-08-27 | 115 Rosebrooks Dr | 6:00 AM | 9:30 AM | 3 hours 30 minutes | Sanded cabinets and removed countertops with Tim Fleming; source property wording is `115 Rose Books Dr.` | Added once from the exact August 27 source; no break was stated or deducted. |
@@ -57,7 +57,7 @@
 | 2026-08-31 | 115 Rosebrooks Dr | 6:00 AM | 9:00 AM | 3 hours | Sanding, desk measurements, removed desktop, and return trip for vacuum cleaner | Added once from corrected source. The earlier reversed-property message is superseded. |
 | 2026-08-31 | 908 Pond St | 9:00 AM | 3:30 PM | 6 hours 30 minutes | Worked with Tim Fleming | Added once from corrected source. The earlier reversed-property message is superseded. |
 
-Closed-period draft total through August 31: `88 hours 10 minutes` (`46 hours 40 minutes` Pond under the flagged August 17 working interpretation, `27 hours 15 minutes` Rosebrooks, `7 hours 45 minutes` BackOffice, `45 minutes` Tensity, and `5 hours 45 minutes` unallocated between Rosebrooks and BackOffice). The fixed `$2,708.33` amount is provisionally distributed as `$1,433.52` Pond, `$837.07` Rosebrooks, `$238.07` BackOffice, `$23.04` Tensity, and `$176.63` unallocated pending correction.
+Closed-period draft total through August 31: `88 hours 10 minutes` (`46 hours 40 minutes` Pond under the flagged August 17 working interpretation, `33 hours` Rosebrooks under the flagged August 25 working interpretation, `7 hours 45 minutes` BackOffice, and `45 minutes` Tensity). The fixed `$2,708.33` amount is provisionally distributed as `$1,433.52` Pond, `$1,013.70` Rosebrooks, `$238.07` BackOffice, and `$23.04` Tensity.
 
 ## Duplicate And Period Control
 
@@ -67,7 +67,7 @@ Closed-period draft total through August 31: `88 hours 10 minutes` (`46 hours 40
 - The August 18 and 19 sources were added once without duplicating the August 17 interval. The correctable August 17 ambiguity does not suppress draft delivery; no split is inferred.
 - The August 20 source was added once as two non-overlapping, expressly allocated intervals. It does not resolve or duplicate the held August 17 interval.
 - The August 21 source was added once as one expressly allocated Rosebrooks interval. It does not resolve or duplicate the held August 17 interval.
-- The August 25 source is recorded once. The clear 7:45 AM-10:30 AM interval is Rosebrooks; the conflicting 10:30 AM-4:15 PM interval is one unallocated draft line, not both a Rosebrooks and BackOffice line.
+- The August 25 source is recorded once. The clear 7:45 AM-10:30 AM interval is Rosebrooks. Wes authorized the 10:30 AM-4:15 PM interval to be carried once at Rosebrooks as a visible correction-review working interpretation because the source places the day there and describes yardwork; the source's final BackOffice sentence remains disclosed for correction by exception.
 - The August 26 source is recorded once as two non-overlapping lines. The source spellings and exact intervals are preserved while the established invoice destinations remain `115 Rosebrooks Dr` and `908 Pond St`.
 - The August 27 source is recorded once as two non-overlapping lines. The source spellings `115 Rose Books Dr.` and `908 Pond Drive` and exact intervals are preserved while the established invoice destinations remain `115 Rosebrooks Dr` and `908 Pond St`.
 - The August 28-29 source is recorded once as three non-overlapping lines. The source spellings `115 Rosebrooks Dr.`, `908 Pond Dr.`, and `908 Po Drive` and exact intervals are preserved while the established invoice destinations remain `115 Rosebrooks Dr` and `908 Pond St`.
@@ -77,7 +77,7 @@ Closed-period draft total through August 31: `88 hours 10 minutes` (`46 hours 40
 
 The draft places the `3:45 PM` to `5:10 PM` interval at `908 Pond St` as a working interpretation because it immediately follows the Pond interval and describes framing with Tim Fleming. Any later correction-review delivery must ask Josh to correct the allocation if the interval belongs to `115 Rosebrooks Dr` or should be split. The August 16-31 period is closed, but the invoice is not final, approved, filed, posted, paid, or proof of payment.
 
-The August 25 `10:30 AM` to `4:15 PM` interval remains explicitly unallocated between Rosebrooks and BackOffice because the source conflicts and the dispatch prohibits inference. The corrected one-page closed-period draft through August 31 was generated and visually verified; PDF SHA-256 `3DF36A0EA74CFDE0EB1E7D8811A496C93E72E6D8066A2B61FE877D5F2DA661BB`. The September 1 handoff expressly withheld external contact, so no new email was requested or sent. The verified local PDF/input/QA set is retained pending explicit authority to copy it to the Teams working archive.
+Wes's closeout authorization `prmsg-jean-josh-time-card-closeout-20260901-001` directed the August 25 `10:30 AM` to `4:15 PM` interval to Rosebrooks as a source-supported working interpretation while visibly preserving the BackOffice wording for correction. The regenerated one-page draft passed visual and arithmetic QA; PDF SHA-256 `857A85444FA98FB2B7E8DFA3A0EFE5C13467C4AAB71993A4EA75E83643FB61E0`. It remains a correction-review draft awaiting any factual correction and Wes approval; it is not final, filed, posted, paid, or proof of payment.
 
 ## Delivery Evidence
 
@@ -87,3 +87,13 @@ The August 25 `10:30 AM` to `4:15 PM` interval remains explicitly unallocated be
 - Sent and verified in OfficeAssist Sent Items at `2026-08-26T12:01:59Z`; message id ending `ACkJMD_wAAAA==`.
 - Verified attachment: `26-08-31 - Josh Kennedy LLC - Time Card Invoice - 2026-08-16 to 2026-08-31.pdf`, non-inline PDF.
 - No approval, finalization, filing, posting, payment, paid status, or proof of payment resulted from delivery.
+
+### Closed-Period Closeout Delivery - 2026-09-01
+
+- Parent authorization: `prmsg-jean-josh-time-card-closeout-20260901-001`; payload hash `6e0a098760177ffe85cbc63362b7d82906467e814b80ec34ab5cdd82e82aef3c`.
+- Delivery request: `IE-EMAIL-20260901-JOSH-SEMIMONTHLY-CLOSED-DRAFT-007`; durable child `prmsg-invoice-entry-email-delivery-20260901-josh-closeout-001`.
+- Sent exactly once from `OfficeAssist@BuyYourHomeLLC.com` to `profcyber0077@gmail.com`, with `WesWill@BuyYourHomeLLC.com` and `Jenny@BuyYourHomeLLC.com` copied; BCC empty.
+- Subject: `CLOSED-PERIOD DRAFT: Josh Kennedy LLC Time Card Invoice - August 16-31, 2026`.
+- Sent and verified in OfficeAssist Sent Items at `2026-09-01T20:16:27Z`; message id ending `AClUELHAAAAA==`.
+- Verified attachment: `26-08-31 - Josh Kennedy LLC - Time Card Invoice - 2026-08-16 to 2026-08-31.pdf`, `application/pdf`, non-inline, `5,417` transmitted bytes; source SHA-256 `857A85444FA98FB2B7E8DFA3A0EFE5C13467C4AAB71993A4EA75E83643FB61E0`.
+- Josh may respond with factual corrections by exception. Silence from Josh is not Wes approval. Wes approval remains required before finalization, filing, posting, QuickBooks routing, payment processing, or any paid status.
