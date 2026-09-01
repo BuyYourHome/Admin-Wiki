@@ -48,11 +48,46 @@ Each invoice number, invoice date, amount, client, and matter below was validate
 - Valid child message and dispatch: `prmsg-invoice-entry-poyner-spruill-qb-existence-audit-20260831-002`
 - Payload hash: `7b40a78b7e551453e98310a56287550848a3cd3c31ca0767be6acb9e8a56fb57`
 - Destination: Quickbooks Invoice task `01a05967-9a05-7081-a62e-616b2d8e61fd` on `WES-VIDEOEDITOR`
-- Current state: `Queued`
+- Current state: `Completed`
 - Operation: read-only bill existence and duplicate audit
 - Required return: one `Found`, `Not Found`, `Ambiguous`, or `Blocked` result per invoice, with QuickBooks transaction ID when visible
 - Prohibited: any create, edit, save, payment, paid-status, email, vendor, mapping, or other QuickBooks data change
 
-Direct task notification was unavailable from this host and was recorded `NotDelivered`; the central child remains the authoritative queued handoff.
+The WES-VIDEOEDITOR dispatcher later delivered the exact immutable child. Quickbooks Invoice accepted it, completed the read-only audit, and wrote the authoritative return on `2026-09-01T18:56:55Z`.
 
 An earlier pre-delivery control record, `prmsg-invoice-entry-poyner-spruill-qb-existence-audit-20260831-001`, serialized its aggregate as `$0.00`. It was blocked before notification or recipient action and must never be processed. The corrected `-002` child above is the only valid processable handoff.
+
+## Authoritative QuickBooks Return
+
+- QuickBooks company verified: `Buy Your Home LLC`
+- Vendor verified: `Poyner Spruill LLP`; vendor ID `1389`
+- Result: `13 Found`, `6 Ambiguous`, `0 Not Found`, `0 Blocked`
+- Found source total: `$131,634.51`
+- Ambiguous source total: `$66,732.50`
+- Full source total: `$198,367.01`
+- Evidence rule applied: payment confirmations, bill payments, statements, and credits were not treated as proof that a bill exists.
+- QuickBooks data changed: `No`
+
+| Source invoice | Status | QuickBooks transaction ID | QuickBooks bill number | QuickBooks date | QuickBooks amount | Result note |
+| --- | --- | --- | --- | --- | ---: | --- |
+| `1258847` | Ambiguous | `8385` | `1258847` | `2025-01-08` | `$17,616.15` | Source is `2025-02-27` / `$12,616.15`; both date and amount conflict. |
+| `1260193` | Found | `9505` | `1260193` | `2025-04-07` | `$13,447.55` | Exact vendor, number, date, and amount. |
+| `1261819` | Found | `9506` | `1261819` | `2025-05-09` | `$7,407.68` | Exact vendor, number, date, and amount. |
+| `1262741` | Found | `9529` | `1262741` | `2025-06-10` | `$12,200.06` | Exact vendor, number, date, and amount. |
+| `1263955` | Found | `9615` | `1263955` | `2025-07-10` | `$21,911.62` | Exact vendor, number, date, and amount. |
+| `1265053` | Found | `9790` | `1265053` | `2025-08-11` | `$8,215.90` | Exact vendor, number, date, and amount. |
+| `1265033` | Ambiguous | `9789` | `1265033` | `2025-08-10` | `$8,715.80` | Source date is `2025-08-11`; date conflicts. |
+| `1265911` | Ambiguous | `9804` | `1265911` | `2025-09-10` | `$7,062.25` | Source PDF amount is `$7,065.25`; amount conflicts by `$3.00`. |
+| `1265916` | Found | `9803` | `1265916` | `2025-09-10` | `$5,166.60` | Exact vendor, number, date, and amount. |
+| `1266909` | Ambiguous | `9885` | `11266909` | `2025-10-10` | `$14,765.25` | Source PDF says invoice `1266909`, dated `2025-10-09`; number and date conflict. |
+| `1266915` | Ambiguous | `9884` | `1266915` | `2025-10-10` | `$4,330.00` | Source is `2025-10-09` / `$4,433.50`; date and amount conflict by `$103.50`. |
+| `1268311` | Found | `10335` | `1268311` | `2025-11-11` | `$1,934.70` | Exact vendor, number, date, and amount. |
+| `1268317` | Found | `10336` | `1268317` | `2025-11-11` | `$385.20` | Exact vendor, number, date, and amount. |
+| `1269006` | Found | `12192` | `1269006` | `2025-11-25` | `$261.90` | Exact vendor, number, date, and amount. |
+| `1269381` | Found | `10469` | `1269381` | `2025-12-09` | `$204.60` | Exact vendor, number, date, and amount. |
+| `1271506` | Found | `12191` | `1271506` | `2026-02-10` | `$15,799.60` | Exact vendor, number, date, and amount. |
+| `1272381` | Found | `12629` | `1272381` | `2026-03-10` | `$3,968.60` | Exact vendor, number, date, and amount. |
+| `1274613` | Found | `13029` | `1274613` | `2026-05-11` | `$40,730.50` | Exact vendor, number, date, and amount. |
+| `1275366` | Ambiguous | `13030` | `1275366` | `2026-05-11` | `$19,136.55` | Source date is `2026-06-09`; date conflicts. |
+
+The six ambiguous candidates require review against the controlling PDFs and QuickBooks bill records before any correction or bookkeeping action. This read-only audit did not authorize or perform those actions.
