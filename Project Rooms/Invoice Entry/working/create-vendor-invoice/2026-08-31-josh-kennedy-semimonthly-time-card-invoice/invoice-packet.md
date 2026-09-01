@@ -2,7 +2,7 @@
 
 ## Status
 
-- State: `Period Closed - Wes Says Clarification Needed - Awaiting Specific Correction And Approval`
+- State: `Period Closed - August 17 Corrected - August 25 Clarification Pending - Awaiting Wes Approval`
 - Stable invoice number: `INV-JKLLC-20260831-001`
 - Invoice date: `2026-08-31` (semimonthly period end)
 - Semimonthly period: `2026-08-16 through 2026-08-31`
@@ -21,6 +21,7 @@
 - Sender: `IRAManager@SellYourHomeRaleigh.com`; received `2026-08-18T12:06:41Z`; subject `Time card`; attachments: none.
 - Exact-source facts: Monday, August 17; `8:00 AM` to `3:45 PM` at source-stated `908 Pond Dr`; `3:45 PM` to `5:10 PM`; work with Tim Fleming framing; and work at `115 Rosebrooks Dr` taking down wallpaper and waiting for estate-sale customers.
 - Source conflict: the email does not clearly tie the `3:45 PM` to `5:10 PM` interval to either Pond or Rosebrooks. For correction-review drafting, the interval is provisionally allocated to Pond because it immediately follows the Pond interval and describes framing with Tim Fleming. The source's Rosebrooks wording remains visibly flagged for correction by exception.
+- Message/dispatch `prmsg-email-monitor-route-vendor-invoice-20260901-josh-time-card-aug17-correction-001`; payload hash `78b9edb56effe83e7049885148848a08831acf3c5bb5453d46ffb7662baad53b`; Outlook message ending `AClUGMJQAAAA==`, received `2026-09-01T20:57:53Z`. Josh's exact correction supersedes only the prior working allocation: August 17 was 8:00 AM-3:45 PM at source-stated `908 Pond Dr` framing with Tim Fleming, then 3:45 PM-5:10 PM at `115 Rosebrooks Dr` taking down wallpaper and waiting for estate-sale customers.
 - Dispatch `email-monitor-route-vendor-invoice-20260820-josh-time-card-aug18-001`; payload hash `a068f7e242dc93b64906a0bef976809b9e84e02e99229b8776f511d5474c4fed`; Outlook message ending `ACi7Vd2gAAAA==`. August 18: Pond 6:00 AM-2:45 PM and Rosebrooks 2:45 PM-4:00 PM.
 - Dispatch `email-monitor-route-vendor-invoice-20260820-josh-time-card-aug19-001`; payload hash `8c71ce9651518ad7f046ff0d8ba3cc4482a8a08b366db0d7e0aeb1c108a7ac00`; Outlook message ending `ACjkdy7AAAAA==`. August 19: Rosebrooks 6:00 AM-10:45 AM and Pond 10:45 AM-2:45 PM.
 - Dispatch `email-monitor-route-vendor-invoice-20260821-josh-time-card-aug20-001`; payload hash `c5c7c4d06173d95360159751dab914b4870428786ce47db479b3005e069404b0`; Outlook message ending `ACjvzcuAAAAA==`. August 20: BackOffice 8:00 AM-3:45 PM and 4121 Tensity Dr 3:45 PM-4:30 PM installing the outside storage-closet door, handle, and deadbolt.
@@ -37,7 +38,7 @@
 | Work date | Destination | Start | End | Accepted time | Description | Source/status |
 | --- | --- | --- | --- | --- | --- | --- |
 | 2026-08-17 | 908 Pond St | 8:00 AM | 3:45 PM | 7 hours 45 minutes | Work at source-stated 908 Pond Dr; framing with Tim Fleming is preserved as source context | Added once; source expressly places this interval at Pond. No break was stated or deducted. |
-| 2026-08-17 | 908 Pond St - working interpretation | 3:45 PM | 5:10 PM | 1 hour 25 minutes | Working with Tim Fleming framing; source also mentions Rosebrooks wallpaper and estate-sale customer work | Carried once for correction review under the most reasonable source-supported allocation. Josh should correct it if it belongs to Rosebrooks or should be split. |
+| 2026-08-17 | 115 Rosebrooks Dr | 3:45 PM | 5:10 PM | 1 hour 25 minutes | Took down wallpaper and waited for estate-sale customers | Corrected in place from Josh's exact source; supersedes only the prior Pond working interpretation and creates no second interval. |
 | 2026-08-18 | 908 Pond St | 6:00 AM | 2:45 PM | 8 hours 45 minutes | Framing work and project walk-through with Tim, Wes, and the general contractor | Added once; no break was stated or deducted. |
 | 2026-08-18 | 115 Rosebrooks Dr | 2:45 PM | 4:00 PM | 1 hour 15 minutes | Began removing kitchen wallpaper | Added once; no break was stated or deducted. |
 | 2026-08-19 | 115 Rosebrooks Dr | 6:00 AM | 10:45 AM | 4 hours 45 minutes | Removed kitchen wallpaper and began removing cabinet hardware and doors; reviewed dishwasher/water shutoff with Tim | Added once; no break was stated or deducted. |
@@ -57,12 +58,12 @@
 | 2026-08-31 | 115 Rosebrooks Dr | 6:00 AM | 9:00 AM | 3 hours | Sanding, desk measurements, removed desktop, and return trip for vacuum cleaner | Added once from corrected source. The earlier reversed-property message is superseded. |
 | 2026-08-31 | 908 Pond St | 9:00 AM | 3:30 PM | 6 hours 30 minutes | Worked with Tim Fleming | Added once from corrected source. The earlier reversed-property message is superseded. |
 
-Closed-period draft total through August 31: `88 hours 10 minutes` (`46 hours 40 minutes` Pond under the flagged August 17 working interpretation, `33 hours` Rosebrooks under the flagged August 25 working interpretation, `7 hours 45 minutes` BackOffice, and `45 minutes` Tensity). The fixed `$2,708.33` amount is provisionally distributed as `$1,433.52` Pond, `$1,013.70` Rosebrooks, `$238.07` BackOffice, and `$23.04` Tensity.
+Closed-period draft total through August 31: `88 hours 10 minutes` (`45 hours 15 minutes` Pond, `34 hours 25 minutes` Rosebrooks under the still-flagged August 25 working interpretation, `7 hours 45 minutes` BackOffice, and `45 minutes` Tensity). The fixed `$2,708.33` amount is provisionally distributed as `$1,390.00` Pond, `$1,057.22` Rosebrooks, `$238.07` BackOffice, and `$23.04` Tensity.
 
 ## Duplicate And Period Control
 
 - No prior matching dispatch id, Outlook message id, or August 18/19/20 time line existed in Invoice Entry durable records.
-- The 7-hour-45-minute Pond line is accepted once. The 1-hour-25-minute interval is retained once under the flagged Pond working interpretation and must be corrected in place if Josh supplies a different allocation.
+- The 7-hour-45-minute Pond line is accepted once. Josh's exact correction moves the existing 1-hour-25-minute interval from the superseded Pond working interpretation to Rosebrooks; no second interval was added.
 - This packet is separate from closed-period invoice `INV-JKLLC-20260815-001`; it must not alter or duplicate the August 1-15 invoice.
 - The August 18 and 19 sources were added once without duplicating the August 17 interval. The correctable August 17 ambiguity does not suppress draft delivery; no split is inferred.
 - The August 20 source was added once as two non-overlapping, expressly allocated intervals. It does not resolve or duplicate the held August 17 interval.
@@ -75,7 +76,7 @@ Closed-period draft total through August 31: `88 hours 10 minutes` (`46 hours 40
 
 ## Correction-Review Note
 
-The draft places the `3:45 PM` to `5:10 PM` interval at `908 Pond St` as a working interpretation because it immediately follows the Pond interval and describes framing with Tim Fleming. Any later correction-review delivery must ask Josh to correct the allocation if the interval belongs to `115 Rosebrooks Dr` or should be split. The August 16-31 period is closed, but the invoice is not final, approved, filed, posted, paid, or proof of payment.
+Josh's exact correction places the August 17 `3:45 PM` to `5:10 PM` interval at `115 Rosebrooks Dr` for wallpaper removal and waiting for estate-sale customers. This supersedes only the earlier Pond working interpretation. The August 17 ambiguity is resolved, but the separate August 25 Rosebrooks/BackOffice clarification remains pending. The August 16-31 period is closed, but the invoice is not final, approved, filed, posted, paid, or proof of payment.
 
 Wes's closeout authorization `prmsg-jean-josh-time-card-closeout-20260901-001` directed the August 25 `10:30 AM` to `4:15 PM` interval to Rosebrooks as a source-supported working interpretation while visibly preserving the BackOffice wording for correction. The regenerated one-page draft passed visual and arithmetic QA; PDF SHA-256 `857A85444FA98FB2B7E8DFA3A0EFE5C13467C4AAB71993A4EA75E83643FB61E0`. It remains a correction-review draft awaiting any factual correction and Wes approval; it is not final, filed, posted, paid, or proof of payment.
 
@@ -99,3 +100,4 @@ Wes's closeout authorization `prmsg-jean-josh-time-card-closeout-20260901-001` d
 - Josh may respond with factual corrections by exception. Silence from Josh is not Wes approval. Wes approval remains required before finalization, filing, posting, QuickBooks routing, payment processing, or any paid status.
 - Wes replied at `2026-09-01T20:21:25Z` under Outlook message ending `AClUGMIwAAAA==` that Josh's wording needs clarification and the invoice reflects ambiguity. The reply does not identify the intended allocation or correction. Preserve the sent draft as review evidence and wait for the specific clarification; do not infer a change, send another email, finalize, file, post, route to QuickBooks, approve, pay, or mark paid.
 - Wes sent a second distinct clarification request at `2026-09-01T20:24:24Z` under Outlook message ending `AClUGMJAAAAA==`, message/dispatch `prmsg-email-monitor-route-vendor-invoice-20260901-wes-josh-time-card-aug25-clarification-002`, payload hash `1173d7fa95c1fe2900dca07a76f4901b9f464250f3099b2d10020f8e52429169`: Wes asked Josh to clarify his August 25 time because Jean is unsure how to allocate the 10:30 AM-4:15 PM interval between 115 Rosebrooks Dr yardwork and BackOffice work. This is clarification-request evidence, not Josh's correction. August 25 remains unresolved, and the draft, lines, totals, and prior delivery evidence remain unchanged.
+- Josh supplied the exact August 17 correction at `2026-09-01T20:57:53Z` under Outlook message ending `AClUGMJQAAAA==`. A corrected one-page internal draft was regenerated and visually verified with PDF SHA-256 `7409455004CFDE4B1BBBA5E8E42FBDFB782ED6044F0A3A1F454D4B0F940F0670`. It was not emailed, finalized, filed, posted, routed to QuickBooks, approved, paid, or marked paid. The three corrected working artifacts remain under `tmp\pdfs\josh-aug17-correction` because the handoff prohibits filing and external Working Archive retention was therefore not authorized.

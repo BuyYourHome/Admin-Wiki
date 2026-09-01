@@ -263,6 +263,14 @@ The PDF matches SHA-256 `DB797EB679CCAB3BEB17CF9B507147695323EF65B0E1A2E5F52BCCE
 
 The PDF matches SHA-256 `857A85444FA98FB2B7E8DFA3A0EFE5C13467C4AAB71993A4EA75E83643FB61E0` and passed one-page visual, hours, disclosure, and arithmetic checks. Email delivery was Sent Items-verified before cleanup. The invoice remains a correction-review draft awaiting Wes approval; it is not final, filed, posted, paid, or marked paid.
 
+## Josh Kennedy August 17 Corrected Closed-Period Draft - Local Hold 2026-09-01
+
+| Local working files | Intended handling | Files | Bytes | Status |
+| --- | --- | ---: | ---: | --- |
+| Corrected one-page draft PDF, JSON input, and QA render under `tmp\pdfs\josh-aug17-correction` | Hold locally pending authorized cleanup or archive handling | 3 | 396,390 | Visual and arithmetic QA passed; external Working Archive retention was not authorized under the no-filing restriction |
+
+The PDF matches SHA-256 `7409455004CFDE4B1BBBA5E8E42FBDFB782ED6044F0A3A1F454D4B0F940F0670`. It reflects only Josh's exact August 17 allocation correction; August 25 remains unresolved. No email, finalization, filing, workbook posting, QuickBooks routing, approval, payment, or paid status occurred.
+
 ## Tim Fleming August 24-28 Correction-Review Package - Archived 2026-08-31
 
 | Local working files | Teams destination under `Invoice Entry Working Archive` | Files | Bytes | Status |

@@ -160,3 +160,16 @@ Outcome: `Done - Wes clarification request recorded; awaiting the specific corre
 - No inference, email, finalization, filing, workbook posting, QuickBooks routing, approval, payment, or paid status occurred.
 
 Outcome: `Done - second August 25 clarification request recorded; awaiting Josh's exact correction`.
+
+## 2026-09-01 - August 17 Exact Correction Reconciled
+
+- Accepted message/dispatch `prmsg-email-monitor-route-vendor-invoice-20260901-josh-time-card-aug17-correction-001`, payload hash `78b9edb56effe83e7049885148848a08831acf3c5bb5453d46ffb7662baad53b`, under the exact Invoice Entry identity before substantive work and recorded Processing.
+- Preserved Outlook message ending `AClUGMJQAAAA==`, received `2026-09-01T20:57:53Z`, subject `Re: Time card`.
+- Applied only Josh's exact August 17 correction: Pond remains 8:00 AM-3:45 PM for framing with Tim Fleming; the existing 3:45 PM-5:10 PM interval was changed in place from the superseded Pond working interpretation to Rosebrooks for taking down wallpaper and waiting for estate-sale customers.
+- No line or hour was added. Closed-period total remains `88h10m` and invoice amount remains `$2,708.33`.
+- Recalculated project totals exactly: Pond `45h15m` / `$1,390.00`; Rosebrooks `34h25m` / `$1,057.22`; BackOffice `7h45m` / `$238.07`; Tensity `0h45m` / `$23.04`.
+- Regenerated and visually verified a one-page internal correction-review draft. PDF SHA-256: `7409455004CFDE4B1BBBA5E8E42FBDFB782ED6044F0A3A1F454D4B0F940F0670`. JSON line and allocation sums both reconcile to `88h10m` / `$2,708.33`.
+- August 25 remains separately unresolved. No email, finalization, filing, workbook posting, QuickBooks routing, approval, payment, or paid status occurred.
+- External Working Archive retention was not authorized under the no-filing restriction. The three generated artifacts remain classified under `tmp\pdfs\josh-aug17-correction` as 3 files / 396,390 bytes pending authorized cleanup or archive handling.
+
+Outcome: `Done - August 17 corrected in place; August 25 clarification and Wes approval remain pending`.
