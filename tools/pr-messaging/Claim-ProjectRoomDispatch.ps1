@@ -1,7 +1,7 @@
 [CmdletBinding()]
 param(
-    [string]$ManagerPath = (Join-Path $PSScriptRoot "Manage-ProjectRoomMessage.ps1"),
-    [string]$ManifestDirectory = (Join-Path (Split-Path (Split-Path $PSScriptRoot -Parent) -Parent) "config\pr-messaging-manifests"),
+    [string]$ManagerPath,
+    [string]$ManifestDirectory,
     [string]$ClientConfigPath = (Join-Path $env:LOCALAPPDATA "BuyYourHome\PRMessaging\client.json"),
     [string]$ActorProjectRoom = "PR Messaging Dispatcher",
     [Parameter(Mandatory = $true)]
@@ -9,6 +9,13 @@ param(
 )
 
 $ErrorActionPreference = "Stop"
+
+if ([string]::IsNullOrWhiteSpace($ManagerPath)) {
+    $ManagerPath = Join-Path $PSScriptRoot "Manage-ProjectRoomMessage.ps1"
+}
+if ([string]::IsNullOrWhiteSpace($ManifestDirectory)) {
+    $ManifestDirectory = Join-Path (Split-Path (Split-Path $PSScriptRoot -Parent) -Parent) "config\pr-messaging-manifests"
+}
 
 if (-not (Test-Path -LiteralPath $ManagerPath)) { throw "Messaging manager not found: $ManagerPath" }
 if (-not (Test-Path -LiteralPath $ManifestDirectory)) { throw "Manifest directory not found: $ManifestDirectory" }
@@ -26,7 +33,13 @@ Get-ChildItem -LiteralPath $ManifestDirectory -Filter "*.json" -File | ForEach-O
     }
 }
 
-$records = @(& $ManagerPath -Action List | ConvertFrom-Json)
+$recordsJson = (& $ManagerPath -Action List | Out-String)
+$records = if ([string]::IsNullOrWhiteSpace($recordsJson)) {
+    @()
+}
+else {
+    @($recordsJson | ConvertFrom-Json)
+}
 $candidates = @($records | Where-Object {
     $_.destination.machine -eq $machine -and
     $_.state -in @("Queued", "Delivery Ambiguous")
