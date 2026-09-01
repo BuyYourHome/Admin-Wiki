@@ -62,3 +62,10 @@
 - Outlook message ending `AClUGMGQAAAA==`, received `2026-09-01T06:18:26Z`, has no attachment or statement facts.
 - Reconciled as a third availability notice for the same account-ending-3613 retrieval hold. It is not a statement or separate obligation.
 - Status remains `Held - Statement Not Retrieved`.
+
+## 2026-09-01 Later Duplicate-Source Group
+
+- Message/dispatch id: `prmsg-email-monitor-route-vendor-invoice-20260901-first-bank-3613-statement-duplicate-002`; payload hash `195211a2da394bd6c8e642e8395a66ad4e75ae0e3b26b185f746fd056f09f292`.
+- Outlook messages ending `AClUGMIQAAAA==` and `AClUGMIAAAAA==`, received together at `2026-09-01T17:18:59Z`, are duplicate transport copies of one later availability notice.
+- The two-copy group was reconciled once to this existing account-ending-3613 retrieval hold. It is supporting source evidence, not a statement or separate obligation.
+- No PDF or statement facts were supplied. Status remains `Held - Statement Not Retrieved`.

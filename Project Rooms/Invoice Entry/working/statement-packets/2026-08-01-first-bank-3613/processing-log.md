@@ -26,3 +26,10 @@
 - Reconciled Outlook message ending `AClUGMGQAAAA==` into the existing account-ending-3613 retrieval hold.
 - The notice has no attachment or statement facts and created no new obligation or packet.
 - Retained status `Held - Statement Not Retrieved`; no bank access, email, filing, workbook action, approval, payment, or paid status occurred.
+
+## 2026-09-01 - Later Duplicate-Source Reconciliation
+
+- Accepted message/dispatch `prmsg-email-monitor-route-vendor-invoice-20260901-first-bank-3613-statement-duplicate-002`, payload hash `195211a2da394bd6c8e642e8395a66ad4e75ae0e3b26b185f746fd056f09f292`.
+- Consolidated Outlook messages ending `AClUGMIQAAAA==` and `AClUGMIAAAAA==` as one source group and reconciled that group to the completed account-ending-3613 retrieval hold.
+- The group contains no attachment or statement facts and created no new packet, statement, or payment obligation.
+- Retained status `Held - Statement Not Retrieved`; no portal access, bank contact, email, filing, workbook action, approval, payment, posting, or paid status occurred.
