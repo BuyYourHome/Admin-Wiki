@@ -2,7 +2,7 @@
 
 ## Status
 
-- State: `Period Closed - Correction-Review Draft Sent - Awaiting Corrections By Exception And Wes Approval`
+- State: `Period Closed - Wes Says Clarification Needed - Awaiting Specific Correction And Approval`
 - Stable invoice number: `INV-JKLLC-20260831-001`
 - Invoice date: `2026-08-31` (semimonthly period end)
 - Semimonthly period: `2026-08-16 through 2026-08-31`
@@ -97,3 +97,4 @@ Wes's closeout authorization `prmsg-jean-josh-time-card-closeout-20260901-001` d
 - Sent and verified in OfficeAssist Sent Items at `2026-09-01T20:16:27Z`; message id ending `AClUELHAAAAA==`.
 - Verified attachment: `26-08-31 - Josh Kennedy LLC - Time Card Invoice - 2026-08-16 to 2026-08-31.pdf`, `application/pdf`, non-inline, `5,417` transmitted bytes; source SHA-256 `857A85444FA98FB2B7E8DFA3A0EFE5C13467C4AAB71993A4EA75E83643FB61E0`.
 - Josh may respond with factual corrections by exception. Silence from Josh is not Wes approval. Wes approval remains required before finalization, filing, posting, QuickBooks routing, payment processing, or any paid status.
+- Wes replied at `2026-09-01T20:21:25Z` under Outlook message ending `AClUGMIwAAAA==` that Josh's wording needs clarification and the invoice reflects ambiguity. The reply does not identify the intended allocation or correction. Preserve the sent draft as review evidence and wait for the specific clarification; do not infer a change, send another email, finalize, file, post, route to QuickBooks, approve, pay, or mark paid.

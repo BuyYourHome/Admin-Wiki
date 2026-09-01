@@ -139,3 +139,13 @@ Outcome: `Done - corrected August 31 time recorded once; closed-period draft reg
 - No finalization, filing, workbook posting, QuickBooks routing, payment, or paid status occurred.
 
 Outcome: `Done - closed-period correction-review draft sent and verified; awaiting corrections by exception and Wes approval`.
+
+## 2026-09-01 - Wes Clarification Reply Reconciled
+
+- Accepted message/dispatch `prmsg-email-monitor-route-vendor-invoice-20260901-wes-josh-time-card-clarification-001`, payload hash `76bba70ad90f37f6e5b85648c21e8f2de16ab58dc2e51bc3707521957ce57363`, before substantive work and recorded Processing.
+- Preserved Outlook message ending `AClUGMIwAAAA==`, received `2026-09-01T20:21:25Z`, subject `RE: Time card`.
+- Wes stated that Josh's wording needs clarification and that the period invoice reflects ambiguity. The source does not specify an intended allocation, corrected wording, date, time, project, or task.
+- Reconciled the reply as `Clarification Still Needed` against existing draft `INV-JKLLC-20260831-001`. The draft, lines, totals, and prior delivery evidence remain unchanged pending a specific correction.
+- No inference, second email, finalization, filing, workbook posting, QuickBooks routing, approval, payment, or paid status occurred.
+
+Outcome: `Done - Wes clarification request recorded; awaiting the specific correction`.
