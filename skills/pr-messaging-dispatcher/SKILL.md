@@ -22,7 +22,7 @@ Provide the host-local wake-up layer for Project Room messages addressed to task
 2. Determine the actual local computer name.
 3. Poll only records addressed to that computer in `Queued` or `Delivery Ambiguous` state.
 4. Reconcile immutable identity, hash, manifest, exact task id, registration, attempts, and current state.
-5. Treat a `Delivery Ambiguous` record as eligible for a bounded same-ID retry when no receipt or final state exists, prior attempts are complete, attempts remain, and the destination currently passes its manifest gate. A newly dispatchable destination is a new actionable condition, not a deduplication stop.
+5. Mechanically evaluate every `Delivery Ambiguous` record: no accepted receipt, no final result, no pending attempt, attempts remain, and the destination passes its manifest gate. When all five are true, `StartAttempt` and same-ID notification are mandatory in that run. Do not require new authorization or substitute a summary for the required action.
 6. Require `dispatchable: true`, except for one exact manifest-authorized `validation_ready` synthetic record that authorizes and performs no business action. Never use that exception for production work.
 7. Write `StartAttempt` before exactly one local notification.
 8. Require the destination to write `Accepted`, `Processing`, and one valid final state.
