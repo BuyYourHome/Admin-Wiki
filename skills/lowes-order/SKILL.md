@@ -29,7 +29,7 @@ Before Lowes Order file work:
 2. Put source material, product lists, screenshots, emails, or source summaries in `sources\`.
 3. Update `working\source-inventory.md` before drafting order outputs.
 4. Record duplicates, outdated product information, conflicting quantities, and unclear instructions in `working\duplicate-and-conflict-log.md`.
-5. Record missing item details, quantity, pickup/delivery method, budget, payment, timing, and approval questions in `working\missing-context.md`.
+5. Record missing item details, quantity, pickup/delivery method, pickup person, budget, payment, timing, and approval questions in `working\missing-context.md`.
 6. Draft order summaries, review checklists, or handoff notes in `outputs\` using authoritative sources only.
 7. Mark unsupported order assumptions as `[UNSUPPORTED]` instead of smoothing them into a final recommendation.
 8. When asked to fill a Lowe's cart from an email, follow the Cart Fill Workflow below.
@@ -43,17 +43,18 @@ Use this workflow when Wes asks Codex to add Lowe's items to a cart from an emai
 2. Preserve a durable source copy or source summary in `Project Rooms\Lowes Order\sources` when the order will be part of the project-room record.
 3. Extract requested item names, quantities, model numbers, item numbers, dimensions, colors, brands, delivery/pickup notes, project/property context, timing, and budget notes.
 4. If a confirmed item has no stated quantity, assume quantity `1`, add that quantity to the cart, and record the assumption in the cart summary so Wes can adjust the quantity in the cart if needed.
-5. Record missing or ambiguous order details in `working\missing-context.md` before making assumptions. Missing quantity alone does not block cart fill when the product match is confirmed.
-6. Use Chrome for Lowe's website work when Wes expects the workflow to use his logged-in Lowe's session.
-7. Verify the browser session appears to be the intended Lowe's account before changing the cart.
-8. Search Lowe's for each requested item and prefer exact item numbers or model numbers when the email provides them.
-9. Add only confirmed matches and requested or defaulted quantities to the Lowe's cart.
-10. If several plausible products match or the requested item is unavailable, do not guess silently. Either skip the item and report it, or add the clearly supported closest match only when the email details justify it.
-11. Stop at cart review and report matched items, skipped items, uncertain matches, price/availability issues, delivery/pickup questions, defaulted quantities, and checkout decisions needed.
-12. When the cart has been filled to the extent safely possible, send a cart-loaded notification from `OfficeAssist@BuyYourHomeLLC.com` to the instruction sender, Jenny at `Jenny@BuyYourHomeLLC.com`, and Wes at `WesWill@BuyYourHomeLLC.com`. The notification must include the Lowe's cart link `https://www.lowes.com/cart` and ask Wes to review and approve the cart on the Lowe's website. If Wes is the instruction sender, one approval notification to Wes with Jenny copied may serve both purposes.
-13. If product ambiguity, availability, or another uncertainty prevents or limits cart preparation, send one question email from OfficeAssist to the instruction sender with Wes copied. Do not guess silently, except for the approved default quantity `1` rule.
-14. Prefix every confirmation, question, and approval-notification subject with `[Lowes Order]`. In the body, state that the request was processed in Lowes Order mode. If the source email subject did not identify `Lowes Order` mode, tell the sender to identify `Lowes Order` in the subject next time.
-15. Use `C:\Codex\Wiki Files\skills\email-delivery\SKILL.md` for every notification, save to OfficeAssist Sent Items, and verify sender, recipients, subject, and attachment status before reporting delivery.
+5. Always confirm fulfillment before or during cart preparation: identify whether the order should be delivery/shipping or pickup, and if pickup is requested, identify the pickup person. Do not guess a delivery method or pickup person silently. If Wes or the authoritative source does not specify it, ask for the missing fulfillment decision or record it as a blocker in the cart summary.
+6. Record missing or ambiguous order details in `working\missing-context.md` before making assumptions. Missing quantity alone does not block cart fill when the product match is confirmed.
+7. Use Chrome for Lowe's website work when Wes expects the workflow to use his logged-in Lowe's session.
+8. Verify the browser session appears to be the intended Lowe's account before changing the cart.
+9. Search Lowe's for each requested item and prefer exact item numbers or model numbers when the email provides them.
+10. Add only confirmed matches and requested or defaulted quantities to the Lowe's cart.
+11. If several plausible products match or the requested item is unavailable, do not guess silently. Either skip the item and report it, or add the clearly supported closest match only when the email details justify it.
+12. Stop at cart review and report matched items, skipped items, uncertain matches, price/availability issues, delivery/pickup questions, confirmed or missing fulfillment decision, defaulted quantities, and checkout decisions needed.
+13. When the cart has been filled to the extent safely possible, send a cart-loaded notification from `OfficeAssist@BuyYourHomeLLC.com` to the instruction sender, Jenny at `Jenny@BuyYourHomeLLC.com`, and Wes at `WesWill@BuyYourHomeLLC.com`. The notification must include the Lowe's cart link `https://www.lowes.com/cart` and ask Wes to review and approve the cart on the Lowe's website. If Wes is the instruction sender, one approval notification to Wes with Jenny copied may serve both purposes.
+14. If product ambiguity, availability, fulfillment, or another uncertainty prevents or limits cart preparation, send one question email from OfficeAssist to the instruction sender with Wes copied. Do not guess silently, except for the approved default quantity `1` rule.
+15. Prefix every confirmation, question, and approval-notification subject with `[Lowes Order]`. In the body, state that the request was processed in Lowes Order mode. If the source email subject did not identify `Lowes Order` mode, tell the sender to identify `Lowes Order` in the subject next time.
+16. Use `C:\Codex\Wiki Files\skills\email-delivery\SKILL.md` for every notification, save to OfficeAssist Sent Items, and verify sender, recipients, subject, and attachment status before reporting delivery.
 
 ## Boundaries
 

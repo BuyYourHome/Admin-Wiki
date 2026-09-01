@@ -63,18 +63,19 @@ When Wes asks Lowes Order to fill a cart from an email:
 2. Save or summarize the email source in `sources\` when the order will become a durable project-room record.
 3. Extract item names, quantities, model numbers, dimensions, colors, brand requirements, delivery/pickup notes, project/property context, and stated urgency.
 4. If a confirmed item has no stated quantity, assume quantity `1`, add that quantity to the cart, and record the assumption in the cart summary so Wes can adjust the quantity in the cart if needed.
-5. Record missing or ambiguous item details in `working\missing-context.md` before guessing. Missing quantity alone does not block cart fill when the product match is confirmed.
-6. Use Chrome with Wes's existing signed-in Lowe's session when browser interaction is needed.
-7. Open the Lowe's website, verify the session appears to be the intended account, and avoid changing account, payment, address, or profile settings.
-8. Search for each requested item on the Lowe's website and choose matches based on the email details.
-9. Prefer exact item numbers or model numbers when the email provides them.
-10. If multiple plausible matches exist, choose the closest match only when the source details clearly support it; otherwise leave the item out of the cart and report the decision needed.
-11. Add confirmed matches and requested or defaulted quantities to the Lowe's cart.
-12. Stop at cart review. Do not check out, place the order, submit payment, approve substitutions, schedule delivery, or change pickup/delivery details unless Wes explicitly approves that specific final action.
-13. Report the cart status, matched items, missing items, substitutions or uncertainties, price/availability issues, pickup/delivery questions, defaulted quantities, and the exact approval needed before checkout.
-14. When the cart is filled to the extent safely possible, email a cart-loaded notification to the instruction sender, Jenny at `Jenny@BuyYourHomeLLC.com`, and Wes at `WesWill@BuyYourHomeLLC.com`. Include the Lowe's cart link `https://www.lowes.com/cart` and ask Wes to review and approve the cart on the Lowe's website. If Wes sent the instruction, one approval email to Wes with Jenny copied may serve both purposes.
-15. When uncertainties prevent or limit cart preparation, email the questions to the instruction sender with Wes copied instead of guessing, except for the approved default quantity `1` rule.
-16. Send all confirmations, questions, and approval notifications from OfficeAssist through Email Delivery with Sent Items verification. Prefix the subject with `[Lowes Order]` and state that Lowes Order mode handled the request. If the source email subject did not identify `Lowes Order` mode, tell the sender to identify `Lowes Order` in the subject next time.
+5. Always confirm fulfillment before or during cart preparation: identify whether the order should be delivery/shipping or pickup, and if pickup is requested, identify the pickup person. Do not guess a delivery method or pickup person silently. If Wes or the authoritative source does not specify it, ask for the missing fulfillment decision or record it as a blocker in the cart summary.
+6. Record missing or ambiguous item details in `working\missing-context.md` before guessing. Missing quantity alone does not block cart fill when the product match is confirmed.
+7. Use Chrome with Wes's existing signed-in Lowe's session when browser interaction is needed.
+8. Open the Lowe's website, verify the session appears to be the intended account, and avoid changing account, payment, address, or profile settings.
+9. Search for each requested item on the Lowe's website and choose matches based on the email details.
+10. Prefer exact item numbers or model numbers when the email provides them.
+11. If multiple plausible matches exist, choose the closest match only when the source details clearly support it; otherwise leave the item out of the cart and report the decision needed.
+12. Add confirmed matches and requested or defaulted quantities to the Lowe's cart.
+13. Stop at cart review. Do not check out, place the order, submit payment, approve substitutions, schedule delivery, or change pickup/delivery details unless Wes explicitly approves that specific final action.
+14. Report the cart status, matched items, missing items, substitutions or uncertainties, price/availability issues, pickup/delivery questions, confirmed or missing fulfillment decision, defaulted quantities, and the exact approval needed before checkout.
+15. When the cart is filled to the extent safely possible, email a cart-loaded notification to the instruction sender, Jenny at `Jenny@BuyYourHomeLLC.com`, and Wes at `WesWill@BuyYourHomeLLC.com`. Include the Lowe's cart link `https://www.lowes.com/cart` and ask Wes to review and approve the cart on the Lowe's website. If Wes sent the instruction, one approval email to Wes with Jenny copied may serve both purposes.
+16. When uncertainties prevent or limit cart preparation, email the questions to the instruction sender with Wes copied instead of guessing, except for the approved default quantity `1` rule.
+17. Send all confirmations, questions, and approval notifications from OfficeAssist through Email Delivery with Sent Items verification. Prefix the subject with `[Lowes Order]` and state that Lowes Order mode handled the request. If the source email subject did not identify `Lowes Order` mode, tell the sender to identify `Lowes Order` in the subject next time.
 
 ## Safety Rules For Website Use
 
@@ -88,7 +89,7 @@ When Wes asks Lowes Order to fill a cart from an email:
 
 1. Add authoritative Lowe's order source material to `sources\` when Wes provides it or when an email-based order needs a durable record.
 2. Update the source inventory before drafting order outputs or filling a cart.
-3. Record any missing item details, property/project assignment, budget, delivery/pickup details, or approval decisions in `working\missing-context.md`.
+3. Record any missing item details, property/project assignment, budget, delivery/pickup details, pickup person, or approval decisions in `working\missing-context.md`.
 4. Fill a Lowe's cart only from authoritative email or user-provided instructions, then stop at cart review unless Wes explicitly approves checkout.
 5. Draft review-ready order outputs in `outputs\` only from authoritative sources.
 ## Start PR Pointer
