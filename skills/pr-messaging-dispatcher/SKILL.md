@@ -44,6 +44,7 @@ Provide the host-local wake-up layer for Project Room messages addressed to task
 - WES-VIDEOEDITOR automation id: `pr-messaging-dispatcher-wes-videoeditor`.
 - OFFICEASSIST may use its existing Email Monitor dispatcher stage instead of a duplicate task.
 - A cross-machine Project Room is not dispatchable until an unattended remote-source lifecycle passes without manual pasting.
+- Store only a short pointer in the automation prompt requiring every run to reread `Project Rooms\PR Messaging Dispatcher\working\heartbeat-prompt.md` and `Project Room Messaging Rule.md`. Never copy the full policy into the automation prompt; copied policy becomes stale after repository updates.
 
 ## Start PR Pointer
 

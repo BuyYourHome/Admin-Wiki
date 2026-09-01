@@ -56,6 +56,15 @@ The task and five-minute heartbeat are active on `WES-VIDEOEDITOR`. The exact Qu
 - Empty polls are strictly silent.
 - Notify Wes only for newly delivered consequential work, a new actionable blocker, or a new decision.
 
+## Automation Prompt Contract
+
+The stored automation prompt must be a short pointer, not a copied snapshot of dispatcher policy. At every run it must read and follow the current contents of:
+
+- `C:\Codex\Wiki Files\Project Rooms\PR Messaging Dispatcher\working\heartbeat-prompt.md`
+- `C:\Codex\Wiki Files\Project Room Messaging Rule.md`
+
+Do not embed the full heartbeat instructions in the automation prompt. Repository updates must take effect after a safe pull without separately rewriting the automation.
+
 ## Deployment Gate
 
 Do not mark a destination Project Room on a remote computer dispatchable until:
