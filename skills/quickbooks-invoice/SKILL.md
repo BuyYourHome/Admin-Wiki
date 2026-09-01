@@ -22,12 +22,12 @@ description: Enter and verify vendor invoices as QuickBooks bills from validated
 
 ## Messaging Readiness
 
-- Dispatchable: No - validation ready; production delivery remains disabled until the exact unattended lifecycle completes
-- State: The WES-VIDEOEDITOR dispatcher is active and may process only `prmsg-invoice-entry-wve-dispatcher-unattended-validation-20260901-001` while this room remains non-dispatchable.
+- Dispatchable: Yes - on `WES-VIDEOEDITOR` for validated Invoice Entry handoffs only
+- State: Unattended cross-machine dispatcher validation completed successfully.
 - Exact task id: `01a05967-9a05-7081-a62e-616b2d8e61fd`
 - Machine registration verified at `2026-08-31T21:43:02.1661378Z`; host access verified at `2026-08-31T22:31:07.8796039Z` on `WES-VIDEOEDITOR`
 - Synthetic lifecycle: corrected record `prmsg-quickbooks-invoice-wve-readiness-correction-20260831-001` completed after exactly one notification with `synthetic_test: true`, exact identity and payload-hash verification, and no QuickBooks business action
-- Dispatcher validation: task `01a05d0c-8031-7d92-9474-ab2330008ddb` and automation `pr-messaging-dispatcher-wes-videoeditor` are active. The exact validation record above is the only non-dispatchable exception. Do not accept routine production dispatch until it completes with `manual_intervention: false`.
+- Dispatcher validation: task `01a05d0c-8031-7d92-9474-ab2330008ddb` and automation `pr-messaging-dispatcher-wes-videoeditor` delivered `prmsg-invoice-entry-wve-dispatcher-unattended-validation-20260901-001` exactly once. The exact destination wrote `Accepted`, `Processing`, and `Completed` with `manual_intervention: false` and no business action.
 
 Messaging readiness alone does not override the interim browser and per-bill safety gates.
 

@@ -21,15 +21,15 @@
     "pending local WES-VIDEOEDITOR deployment"
   ],
   "messaging_readiness": {
-    "status": "active_pending_destination_validation",
+    "status": "active_validated",
     "machine_registration_verified_at_utc": null,
     "host_access_verified_at_utc": null,
-    "validation_message_id": null,
-    "lifecycle_completed_at_utc": null,
-    "notification_count": 0,
+    "validation_message_id": "prmsg-invoice-entry-wve-dispatcher-unattended-validation-20260901-001",
+    "lifecycle_completed_at_utc": "2026-09-01T16:15:32.4201488Z",
+    "notification_count": 1,
     "dispatcher_task_id": "01a05d0c-8031-7d92-9474-ab2330008ddb",
     "dispatcher_automation_id": "pr-messaging-dispatcher-wes-videoeditor",
-    "cross_machine_source": null,
-    "manual_intervention": null
+    "cross_machine_source": "WESSTUDIO",
+    "manual_intervention": false
   }
 }

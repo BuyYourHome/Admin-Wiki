@@ -35,9 +35,9 @@ Out of scope:
 
 ## Status
 
-Status: `Active on WES-VIDEOEDITOR; unattended destination validation pending`.
+Status: `Active and unattended validation complete on WES-VIDEOEDITOR`.
 
-The task and five-minute heartbeat are active on `WES-VIDEOEDITOR`. The exact Quickbooks Invoice synthetic lifecycle remains pending; production delivery to that destination stays disabled until it completes unattended.
+The task and five-minute heartbeat are active on `WES-VIDEOEDITOR`. It delivered the exact Quickbooks Invoice synthetic lifecycle without manual activation, and the destination completed the required receipt lifecycle with no business action.
 
 ## Matching Skill
 

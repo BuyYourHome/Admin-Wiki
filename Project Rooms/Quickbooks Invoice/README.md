@@ -84,15 +84,15 @@ QuickBooks may truncate a long value entered in `Bill no.`. Read back the exact 
 
 ## Messaging Readiness
 
-- Dispatchable: No - validation ready; production delivery remains disabled until the exact unattended lifecycle completes
-- State: The WES-VIDEOEDITOR dispatcher is active. It may process only `prmsg-invoice-entry-wve-dispatcher-unattended-validation-20260901-001` while this room remains non-dispatchable.
+- Dispatchable: Yes - on `WES-VIDEOEDITOR` for validated Invoice Entry handoffs only
+- State: Unattended cross-machine dispatcher validation completed successfully.
 - Destination manifest: `C:\Codex\Wiki Files\config\pr-messaging-manifests\quickbooks-invoice.json`
 - Execution machine: `WES-VIDEOEDITOR`
 - Dedicated task id: `01a05967-9a05-7081-a62e-616b2d8e61fd`
 - Machine registration: verified at `2026-08-31T21:43:02.1661378Z` on `WES-VIDEOEDITOR`
 - Host access: verified at `2026-08-31T22:31:07.8796039Z` on `WES-VIDEOEDITOR`
 - Synthetic lifecycle: corrected record `prmsg-quickbooks-invoice-wve-readiness-correction-20260831-001` completed at `2026-08-31T22:35:23.2843551Z` after exactly one notification with `synthetic_test: true`, exact identity and payload-hash verification, and no QuickBooks business action
-- Dispatcher validation: task `01a05d0c-8031-7d92-9474-ab2330008ddb` and automation `pr-messaging-dispatcher-wes-videoeditor` are active. The exact remote-source synthetic record above is authorized for validation-only pickup; every production record remains blocked until it completes with `manual_intervention: false`.
+- Dispatcher validation: task `01a05d0c-8031-7d92-9474-ab2330008ddb` and automation `pr-messaging-dispatcher-wes-videoeditor` delivered `prmsg-invoice-entry-wve-dispatcher-unattended-validation-20260901-001` exactly once. Quickbooks Invoice wrote `Accepted`, `Processing`, and `Completed` by `2026-09-01T16:15:32.4201488Z` with `manual_intervention: false` and no business action.
 
 Passing Project Room messaging readiness does not override the per-bill browser safety gates.
 
@@ -120,7 +120,7 @@ Passing Project Room messaging readiness does not override the per-bill browser 
 
 ## Current Status
 
-Status: Active on `WES-VIDEOEDITOR` and validation ready, but not production-dispatchable until the exact unattended validation passes. The interim Chrome and per-bill controls remain unchanged.
+Status: Active and dispatchable on `WES-VIDEOEDITOR` for validated Invoice Entry handoffs only. The interim Chrome and per-bill controls remain unchanged.
 
 The exact task identity is registered on `WES-VIDEOEDITOR`, central host access is verified, and the required one-notification messaging lifecycle completed. At `2026-08-31T22:31:07.0879564Z`, read-only Chrome validation reached the authenticated `Choose your company` screen and showed `Buy Your Home LLC`, `BYH 401K LLC`, `Heritage Management LLC`, `Home Acct`, and `Sell Your Home LLC`. No company was selected and no QuickBooks data changed. Every vendor bill remains subject to validated Invoice Entry authorization, visible exact-company confirmation, dispatch/action-log reconciliation, duplicate search, exact vendor and bill-line mappings, one save, saved-bill read-back, ambiguous-result stop, no-payment, no-send, and no-unrelated-bookkeeping controls.
 
