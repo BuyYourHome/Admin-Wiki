@@ -40,3 +40,9 @@
 | August QuickBooks LOC statements `2a46fea` and `a46f130` | actual statements or exact-source reads required | No PDFs are attached and leading dollar digits are missing from the durable routed summaries. Do not infer amounts. Obtain each distinct August statement before accounting allocation. |
 | Construction Loan Services loan `77278`, August 2026 | actual secure-portal statement required | The notice supports due date `2026-09-10`, maturity `2026-09-24`, and a late-fee condition, but not exact monetary amounts because leading digits are absent. Obtain the PDF before allocation or payment review. |
 
+## Josh Kennedy LLC Invoice INV-JKLLC-20260831-001 - QuickBooks And BackOffice Hold
+
+- Status: `Approved By Wes - Not Paid`; project Review posting and final filing are complete.
+- BackOffice allocation `$414.70` has no approved accounting workbook or destination.
+- Before routing to Quickbooks Invoice, Wes must confirm the exact QuickBooks company file and the authoritative Josh vendor identifier, terms/due date, account or item, customer/project/job, class, location, and tax mappings for all invoice allocations.
+- Do not create an incomplete QuickBooks child, infer mappings, initiate payment, or mark paid.

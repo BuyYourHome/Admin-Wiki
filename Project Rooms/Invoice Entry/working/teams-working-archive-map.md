@@ -286,3 +286,10 @@ OfficeAssist delivery `IE-EMAIL-20260831-TIM-WEEKLY-CORRECTION-REVIEW-001` was S
 | Corrected one-page draft PDF, JSON input, and QA render under `tmp\pdfs\josh-aug25-correction` | Hold locally pending authorized cleanup or archive handling | 3 | 391,136 | Visual and arithmetic QA passed; external Working Archive retention was not authorized under the no-filing restriction |
 
 The PDF matches SHA-256 `0FF68C2F51F43D2BF632B96884722BB6F45D11AD46039AA8D829445739A6BB2E`. It incorporates Josh's exact August 17 and August 25 allocation corrections. Corrected delivery `IE-EMAIL-20260901-JOSH-SEMIMONTHLY-CORRECTED-DRAFT-009` was sent exactly once and Sent Items-verified; the malformed predecessor was blocked before send. No finalization, filing, workbook posting, QuickBooks routing, approval, payment, or paid status occurred.
+
+## Josh Kennedy LLC August 16-31 Approved Invoice - 2026-09-01
+
+- Final filing: `C:\Users\wesbr\Buy Your Home\Buy Your Home - Office Admin\Invoices & Receipts\26-08-31 - Josh Kennedy LLC - Time Card Invoice - 2026-08-16 to 2026-08-31.pdf`.
+- Working archive: `C:\Users\wesbr\Buy Your Home\Buy Your Home - Office Admin\Scanned Files\Invoice Entry Working Archive\Generated\2026-09-01-Josh-Semimonthly-Approved-Aug16-31`.
+- Approved PDF SHA-256: `7C7035C1FE3EC44DC6A485D54E7E7EC566D7FC9DF556BCDBE3C31D0D6051E433`.
+- Archive contains the approved PDF, workbook rollback copies, validated edited/staged copies, and Review QA evidence for Pond, Rosebrooks, and Tensity.

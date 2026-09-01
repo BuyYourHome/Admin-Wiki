@@ -2,7 +2,7 @@
 
 ## Status
 
-- State: `Period Closed - August 17 And August 25 Corrected - Awaiting Wes Approval`
+- State: `Approved By Wes - Not Paid`
 - Stable invoice number: `INV-JKLLC-20260831-001`
 - Invoice date: `2026-08-31` (semimonthly period end)
 - Semimonthly period: `2026-08-16 through 2026-08-31`
@@ -10,8 +10,8 @@
 - Invoice contact: `profcyber0077@gmail.com`
 - Customer: `Buy Your Home`
 - Fixed semimonthly amount when a complete allocatable draft can be produced: `$2,708.33`
-- Draft PDF: `26-08-31 - Josh Kennedy LLC - Time Card Invoice - 2026-08-16 to 2026-08-31.pdf`
-- Filing, workbook posting, approval, payment, and paid status: not performed
+- Approved PDF: `26-08-31 - Josh Kennedy LLC - Time Card Invoice - 2026-08-16 to 2026-08-31.pdf`
+- Filing and supported project Review posting: complete; BackOffice and QuickBooks mapping remain held; payment and paid status were not performed
 
 ## Routed Sources
 
@@ -89,6 +89,18 @@ Wes's closeout authorization `prmsg-jean-josh-time-card-closeout-20260901-001` d
 - Sent and verified in OfficeAssist Sent Items at `2026-08-26T12:01:59Z`; message id ending `ACkJMD_wAAAA==`.
 - Verified attachment: `26-08-31 - Josh Kennedy LLC - Time Card Invoice - 2026-08-16 to 2026-08-31.pdf`, non-inline PDF.
 - No approval, finalization, filing, posting, payment, paid status, or proof of payment resulted from delivery.
+
+### Wes Approval And Approved-Copy Delivery - 2026-09-01
+
+- Approval message/dispatch: `prmsg-email-monitor-route-vendor-invoice-20260901-wes-josh-corrected-draft-approval-001`; payload hash `6b6a37ee680ef7bd97a511a5ed8b282c99a0704779c8f4f3054032011280aa30`; Outlook message ending `AClUGMJwAAAA==`.
+- Wes approved the exact corrected invoice `INV-JKLLC-20260831-001`, `88h10m`, `$2,708.33`. Approval does not authorize payment or establish paid status.
+- Generated and visually verified the one-page approved PDF with status `APPROVED BY WES - NOT PAID`; SHA-256 `7C7035C1FE3EC44DC6A485D54E7E7EC566D7FC9DF556BCDBE3C31D0D6051E433`.
+- Filed once at `Office Admin/Invoices & Receipts/26-08-31 - Josh Kennedy LLC - Time Card Invoice - 2026-08-16 to 2026-08-31.pdf`; hash read-back matched the approved PDF.
+- Added three duplicate-safe blank-destination `Needs Review` rows to fresh synced root workbooks and verified each by Excel reopen/read-back: Pond `$1,474.48` as `IE-20260901-JOSH-20260831-POND`; Rosebrooks `$796.11` as `IE-20260901-JOSH-20260831-ROSEBROOKS`; Tensity `$23.04` as `IE-20260901-JOSH-20260831-TENSITY`.
+- BackOffice `$414.70` remains held because no approved accounting workbook or destination exists.
+- QuickBooks routing remains `Needs Wes - QuickBooks Company Or Mapping`: Buy Your Home is the supported customer/entity context, but the exact QuickBooks company file, Josh vendor identifier, terms/due date, and required account/item, customer/project/job, class, location, and tax mappings are not all authoritative. No incomplete QuickBooks child was created.
+- Malformed approved-status request `...-001` dropped the dollar sign and leading `2` from `$2,708.33`; Email Monitor blocked it before connector send. Corrected request `IE-EMAIL-20260901-JOSH-SEMIMONTHLY-APPROVED-STATUS-002` / child `prmsg-invoice-entry-email-delivery-20260901-josh-approved-status-002` was sent exactly once and verified in OfficeAssist Sent Items at `2026-09-01T22:58:20Z`, message ending `AClUELIgAAAA==`. Exact approved PDF, Josh To, Wes and Jenny CC, empty BCC, subject, and corrected body were verified.
+- No payment, paid status, or duplicate filing, posting, or delivery occurred.
 
 ### Closed-Period Closeout Delivery - 2026-09-01
 
