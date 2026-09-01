@@ -149,3 +149,14 @@ Outcome: `Done - closed-period correction-review draft sent and verified; awaiti
 - No inference, second email, finalization, filing, workbook posting, QuickBooks routing, approval, payment, or paid status occurred.
 
 Outcome: `Done - Wes clarification request recorded; awaiting the specific correction`.
+
+## 2026-09-01 - Second August 25 Clarification Request Reconciled
+
+- Accepted message/dispatch `prmsg-email-monitor-route-vendor-invoice-20260901-wes-josh-time-card-aug25-clarification-002`, payload hash `1173d7fa95c1fe2900dca07a76f4901b9f464250f3099b2d10020f8e52429169`, under the exact Invoice Entry identity before substantive work and recorded Processing.
+- Preserved Outlook message ending `AClUGMJAAAAA==`, received `2026-09-01T20:24:24Z`, subject `RE: Time card`.
+- Source wording preserved: Wes asked Josh to clarify his August 25 time because Jean is unsure how to allocate the 10:30 AM-4:15 PM interval between 115 Rosebrooks Dr yardwork and BackOffice work.
+- This is a second distinct clarification request, not a corrected allocation. It corroborates the unresolved issue recorded under `prmsg-email-monitor-route-vendor-invoice-20260901-wes-josh-time-card-clarification-001` but does not create another time line, draft, obligation, or delivery.
+- Reconciled to `INV-JKLLC-20260831-001` as `Clarification Still Needed`. The draft, lines, `88h10m` / `$2,708.33` totals, and prior Sent Items-verified delivery remain unchanged pending Josh's exact correction.
+- No inference, email, finalization, filing, workbook posting, QuickBooks routing, approval, payment, or paid status occurred.
+
+Outcome: `Done - second August 25 clarification request recorded; awaiting Josh's exact correction`.
