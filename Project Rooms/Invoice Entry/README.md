@@ -79,7 +79,7 @@ Evaluate every validated payable invoice for routing to Quickbooks Invoice task 
 
 For project-related invoices, QuickBooks and the project-management spreadsheet are parallel destinations. Continue the established project-spreadsheet placement workflow; neither destination replaces the other.
 
-Poyner Spruill invoices and statements are a special non-project workflow owned by BYH. File their authoritative documents in Teams/SharePoint at `Property/2-HM - 115 Rosebrooks Dr/Lawsuit/Billing`, using the naming convention established by comparable files already in that folder. Do not insert them into the Rosebrooks project workbook. Statements remain reconciliation evidence unless they independently establish a payable invoice.
+Poyner Spruill payable invoices are BYH legal expenses for `20-HM - 115 Rosebrooks Dr`. File authoritative documents at `Property/20-HM-115 Rosebrooks Dr/Lawsuit/Billing`, add each validated bill once to the Rosebrooks project workbook with category `Legal Expenses`, and route each new payable invoice to Quickbooks Invoice under `Buy Your Home LLC`, vendor `Poyner Spruill LLP` / ID `1389`, and the verified 115 Rosebrooks project. If the workbook lacks a `Legal Expenses` vendor tab, retain the row in `Review!tblInvoiceReview` with blank `Destination Worksheet`; Invoice Entry must not invent that worksheet. Statements and payment confirmations remain reconciliation evidence unless they independently establish a payable invoice.
 
 ## Email Boundary
 

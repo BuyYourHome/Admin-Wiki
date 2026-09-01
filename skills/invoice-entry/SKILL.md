@@ -147,9 +147,10 @@ Project-related invoices have two independent destinations. They must continue t
 
 ### Poyner Spruill Special Routing
 
-- Treat Poyner Spruill invoices and statements as non-project-related legal/accounting records. Do not insert them into the Rosebrooks project-management spreadsheet merely because their filing folder is under the Rosebrooks property tree.
-- The responsible entity is Buy Your Home (`BYH`). Use that entity when determining the QuickBooks destination, while still resolving and recording the exact authoritative QuickBooks company-file name or identifier before handoff.
-- File the authoritative invoices and statements in Teams/SharePoint at `Property/2-HM - 115 Rosebrooks Dr/Lawsuit/Billing`.
+- Treat validated Poyner Spruill payable invoices as project-related legal expenses for `20-HM - 115 Rosebrooks Dr`. Insert each bill once into that project's spreadsheet with work category `Legal Expenses` after the normal duplicate, rollback, save/reopen, and read-back controls.
+- If the workbook has no approved `Legal Expenses` vendor worksheet, keep the bill in `Review!tblInvoiceReview`, set `Work category` and `Recommended worksheet` to `Legal Expenses`, leave `Destination Worksheet` blank, and use `Needs Review`. Do not invent or create a vendor worksheet from Invoice Entry; Template to Project owns that structure.
+- The responsible entity and QuickBooks company are `Buy Your Home LLC`. The QuickBooks vendor is `Poyner Spruill LLP` (vendor ID `1389`), the intended customer/project/job is `115 Rosebrooks Dr`, and the expense category is `Legal Expenses`. Require the Quickbooks Invoice task to verify the exact displayed project and any other required mappings before one duplicate-safe save.
+- File authoritative invoices and statements in the established synced folder `Property/20-HM-115 Rosebrooks Dr/Lawsuit/Billing`.
 - Before naming a new file, inspect the current authoritative `Billing` folder and follow the naming convention established by comparable files there. If the existing names do not establish one clear convention for that document type, keep the proposed file held and ask Wes instead of inventing a new pattern.
 - Statements and payment confirmations are reconciliation evidence only unless the document independently establishes a payable invoice. Filing a statement does not authorize creation of a QuickBooks bill.
 
