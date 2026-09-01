@@ -84,14 +84,14 @@ QuickBooks may truncate a long value entered in `Bill no.`. Read back the exact 
 
 ## Messaging Readiness
 
-- Dispatchable: No
-- State: Pending `WES-VIDEOEDITOR` messaging registration and machine-specific browser readiness
+- Dispatchable: Yes, only for validated Invoice Entry handoffs under the interim Chrome policy
+- State: Messaging transport and machine-specific browser readiness complete; every per-invoice gate remains required
 - Destination manifest: `C:\Codex\Wiki Files\config\pr-messaging-manifests\quickbooks-invoice.json`
 - Execution machine: `WES-VIDEOEDITOR`
 - Dedicated task id: `01a05967-9a05-7081-a62e-616b2d8e61fd`
-- Machine registration: pending on `WES-VIDEOEDITOR`
-- Host access: pending on `WES-VIDEOEDITOR`
-- Synthetic lifecycle: pending for the new task and execution machine; the earlier `WESSTUDIO` lifecycle is historical evidence and does not transfer
+- Machine registration: verified at `2026-08-31T21:43:02.1661378Z` on `WES-VIDEOEDITOR`
+- Host access: verified at `2026-08-31T22:31:07.8796039Z` on `WES-VIDEOEDITOR`
+- Synthetic lifecycle: corrected record `prmsg-quickbooks-invoice-wve-readiness-correction-20260831-001` completed at `2026-08-31T22:35:23.2843551Z` after exactly one notification with `synthetic_test: true`, exact identity and payload-hash verification, and no QuickBooks business action
 
 Passing Project Room messaging readiness does not override the per-bill browser safety gates.
 
@@ -119,9 +119,9 @@ Passing Project Room messaging readiness does not override the per-bill browser 
 
 ## Current Status
 
-Status: Pending messaging registration and browser readiness on `WES-VIDEOEDITOR` - not dispatchable.
+Status: Dispatchable on `WES-VIDEOEDITOR` only for validated Invoice Entry handoffs under the interim Chrome policy.
 
-The canonical Project Room package is complete, and Wes selected task `01a05967-9a05-7081-a62e-616b2d8e61fd` on `WES-VIDEOEDITOR` as the new dedicated task. That machine must register the exact identity, pass central messaging validation, and repeat no-production-impact authenticated Chrome readiness before dispatch resumes. Every vendor bill remains subject to exact target-company, duplicate-search, one-save, read-back, and reconciliation gates.
+The exact task identity is registered on `WES-VIDEOEDITOR`, central host access is verified, and the required one-notification messaging lifecycle completed. At `2026-08-31T22:31:07.0879564Z`, read-only Chrome validation reached the authenticated `Choose your company` screen and showed `Buy Your Home LLC`, `BYH 401K LLC`, `Heritage Management LLC`, `Home Acct`, and `Sell Your Home LLC`. No company was selected and no QuickBooks data changed. Every vendor bill remains subject to validated Invoice Entry authorization, visible exact-company confirmation, dispatch/action-log reconciliation, duplicate search, exact vendor and bill-line mappings, one save, saved-bill read-back, ambiguous-result stop, no-payment, no-send, and no-unrelated-bookkeeping controls.
 
 ## Matching Skill
 
