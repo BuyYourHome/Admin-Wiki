@@ -73,6 +73,14 @@ Run Reconcile as a user-callable mode when Wes directly requests it or an author
 
 Insert only into the yellow actual-invoice area of an approved Vendor Tab. Never write imported records into orange template-estimate rows. Read the current Template to Project Vendor Tabs rules before insertion.
 
+### QuickBooks Routing
+
+Evaluate every validated payable invoice for routing to Quickbooks Invoice task `01a05967-9a05-7081-a62e-616b2d8e61fd` on `WES-VIDEOEDITOR`. Resolve the exact QuickBooks company file and required accounting mappings before creating the handoff. Missing or conflicting company-file evidence is `Needs Wes`; never guess. Require the destination to perform a live duplicate search, save at most one absent bill, and return a full read-back. QuickBooks routing does not approve, pay, or mark an invoice paid.
+
+For project-related invoices, QuickBooks and the project-management spreadsheet are parallel destinations. Continue the established project-spreadsheet placement workflow; neither destination replaces the other.
+
+Poyner Spruill invoices and statements are a special non-project workflow owned by BYH. File their authoritative documents in Teams/SharePoint at `Property/2-HM - 115 Rosebrooks Dr/Lawsuit/Billing`, using the naming convention established by comparable files already in that folder. Do not insert them into the Rosebrooks project workbook. Statements remain reconciliation evidence unless they independently establish a payable invoice.
+
 ## Email Boundary
 
 Invoice Entry never sends email directly. It prepares the exact package and hands it to Email Monitor's Email Delivery workflow. A send is complete only after Email Monitor returns verified OfficeAssist Sent Items evidence. Do not retry a verified or ambiguous delivery without reconciliation.
