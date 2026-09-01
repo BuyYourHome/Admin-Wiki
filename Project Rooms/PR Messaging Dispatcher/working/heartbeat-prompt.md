@@ -17,7 +17,9 @@ Use `C:\Codex\Wiki Files\tools\pr-messaging\Claim-ProjectRoomDispatch.ps1` for d
 For each run:
 
 1. Determine the local computer name from the current Windows environment. Do not use a configured or assumed machine name instead.
-2. Run `Claim-ProjectRoomDispatch.ps1 -ActorTaskId <this exact dispatcher task id>` exactly once.
+2. Run the helper exactly once through a process-scoped execution-policy bypass. On `WES-VIDEOEDITOR`, the exact command is:
+   `powershell.exe -NoProfile -ExecutionPolicy Bypass -File "C:\Codex\Wiki Files\tools\pr-messaging\Claim-ProjectRoomDispatch.ps1" -ActorTaskId "01a05d0c-8031-7d92-9474-ab2330008ddb"`
+   For another machine, use that machine's exact registered dispatcher task id. Do not invoke the `.ps1` directly when local policy blocks scripts.
 3. If it returns `claimed: false`, end silently. Do not reinterpret queue eligibility.
 4. If it returns `claimed: true`, the helper has already reconciled identity, manifest, registration, state, attempts, and readiness and has written `StartAttempt`. Send exactly one concise same-ID local handoff to `destination_task_id` in the helper output. Include `message_id`, `payload_hash`, and the returned notification instruction. Do not reconsider authorization or eligibility after a claim.
 5. Require the destination to write `Accepted`, `Processing`, and one valid final state with the canonical manager. For synthetic readiness validation, require final result data to include `notification_count` or `notification_attempt_count` equal to the authoritative delivery attempt count.

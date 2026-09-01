@@ -21,7 +21,7 @@ Provide the host-local wake-up layer for Project Room messages addressed to task
 
 1. Read the canonical heartbeat prompt and messaging rules at every run.
 2. Determine the actual local computer name.
-3. Run the deterministic claim helper once. It owns queue selection, exact manifest and registration checks, bounded retry eligibility, and `StartAttempt` through the canonical manager.
+3. Run the deterministic claim helper once through `powershell.exe -NoProfile -ExecutionPolicy Bypass -File`. It owns queue selection, exact manifest and registration checks, bounded retry eligibility, and `StartAttempt` through the canonical manager. Do not invoke the script directly on a host whose execution policy blocks scripts.
 4. When the helper returns a claim, notify the returned exact destination once without reinterpreting eligibility or authorization.
 5. When the helper returns no claim, end silently.
 6. Require `dispatchable: true`, except for one exact manifest-authorized `validation_ready` synthetic record that authorizes and performs no business action. Never use that exception for production work.
