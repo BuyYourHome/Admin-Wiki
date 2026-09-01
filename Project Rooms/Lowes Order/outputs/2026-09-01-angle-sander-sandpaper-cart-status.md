@@ -23,3 +23,12 @@
 ## Remaining Approval Or Action Needed
 
 - Wes must review and approve any checkout, payment, pickup-person entry, final pickup scheduling, substitutions, paid services, protection plans, financing, or account/address/payment changes.
+
+## Notification
+
+- Sent from: `OfficeAssist@BuyYourHomeLLC.com`.
+- To: `WesWill@BuyYourHomeLLC.com`.
+- CC: `Jenny@BuyYourHomeLLC.com`.
+- Subject: `[Lowes Order] Lowe's cart ready for sandpaper pickup review`.
+- Sent Items verification: verified in OfficeAssist Sent Items at `2026-09-01T12:46:53Z`.
+- Sent message id: `AQMkADZkMGMwNDI3LWU5ZjctNDgzMC1iMjdkLTY0NmRiN2IwNmIyZgBGAAADKGOvWJYjX0aEKaRpd0MYQQcAVSXargQY20aF7RLCkro4ggAAAgEJAAAAVSXargQY20aF7RLCkro4ggAClUELFgAAAA==`.
