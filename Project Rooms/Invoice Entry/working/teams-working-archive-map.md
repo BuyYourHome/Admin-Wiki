@@ -255,6 +255,22 @@ The PDF matches SHA-256 `61D5BD870127149D73F6168597564687033F351C55F3D264563A05A
 
 The PDF matches SHA-256 `DB797EB679CCAB3BEB17CF9B507147695323EF65B0E1A2E5F52BCCE5E8427ACE` and passed one-page visual, extracted-text, source-spelling, hours, and arithmetic checks. The files are classified and preserved locally pending explicit archive authority. No email, filing, workbook action, approval, payment, or paid status occurred.
 
+## Josh Kennedy August 16-31 Closed-Period Correction Review - Archived 2026-09-01
+
+| Local working files | Teams destination under `Invoice Entry Working Archive` | Files | Bytes | Status |
+| --- | --- | ---: | ---: | --- |
+| One-page correction-review PDF, structured input, and QA render from `working\create-vendor-invoice\2026-08-31-josh-kennedy-semimonthly-time-card-invoice\generated-2026-09-01-closeout` | `Generated\2026-09-01-Josh-Semimonthly-Closeout-Draft` | 3 | 368,707 | Destination count, byte total, and per-file SHA-256 verified; temporary local generation folder removed |
+
+The PDF matches SHA-256 `857A85444FA98FB2B7E8DFA3A0EFE5C13467C4AAB71993A4EA75E83643FB61E0` and passed one-page visual, hours, disclosure, and arithmetic checks. Email delivery was Sent Items-verified before cleanup. The invoice remains a correction-review draft awaiting Wes approval; it is not final, filed, posted, paid, or marked paid.
+
+## Josh Kennedy August 17 Corrected Closed-Period Draft - Local Hold 2026-09-01
+
+| Local working files | Intended handling | Files | Bytes | Status |
+| --- | --- | ---: | ---: | --- |
+| Corrected one-page draft PDF, JSON input, and QA render under `tmp\pdfs\josh-aug17-correction` | Hold locally pending authorized cleanup or archive handling | 3 | 396,390 | Visual and arithmetic QA passed; external Working Archive retention was not authorized under the no-filing restriction |
+
+The PDF matches SHA-256 `7409455004CFDE4B1BBBA5E8E42FBDFB782ED6044F0A3A1F454D4B0F940F0670`. It reflects only Josh's exact August 17 allocation correction; August 25 remains unresolved. No email, finalization, filing, workbook posting, QuickBooks routing, approval, payment, or paid status occurred.
+
 ## Tim Fleming August 24-28 Correction-Review Package - Archived 2026-08-31
 
 | Local working files | Teams destination under `Invoice Entry Working Archive` | Files | Bytes | Status |
@@ -262,3 +278,11 @@ The PDF matches SHA-256 `DB797EB679CCAB3BEB17CF9B507147695323EF65B0E1A2E5F52BCCE
 | Two separate invoice PDFs, two JSON generation inputs, and two visual-QA PNG renders from `working\create-vendor-invoice\2026-08-24-tim-fleming-pond-hours\generated-2026-08-31` | `Generated\2026-08-31 Tim Fleming Weekly Correction Review` | 6 | 355,158 | Destination count and byte total verified; temporary local generation folder removed |
 
 OfficeAssist delivery `IE-EMAIL-20260831-TIM-WEEKLY-CORRECTION-REVIEW-001` was Sent Items-verified before cleanup. The archive contains the generated correction-review evidence only; neither invoice is approved, filed to a property, posted, paid, or marked paid.
+
+## Josh Kennedy August 25 Corrected Closed-Period Draft - Local Hold 2026-09-01
+
+| Local working files | Intended handling | Files | Bytes | Status |
+| --- | --- | ---: | ---: | --- |
+| Corrected one-page draft PDF, JSON input, and QA render under `tmp\pdfs\josh-aug25-correction` | Hold locally pending authorized cleanup or archive handling | 3 | 391,136 | Visual and arithmetic QA passed; external Working Archive retention was not authorized under the no-filing restriction |
+
+The PDF matches SHA-256 `0FF68C2F51F43D2BF632B96884722BB6F45D11AD46039AA8D829445739A6BB2E`. It incorporates Josh's exact August 17 and August 25 allocation corrections. Corrected delivery `IE-EMAIL-20260901-JOSH-SEMIMONTHLY-CORRECTED-DRAFT-009` was sent exactly once and Sent Items-verified; the malformed predecessor was blocked before send. No finalization, filing, workbook posting, QuickBooks routing, approval, payment, or paid status occurred.

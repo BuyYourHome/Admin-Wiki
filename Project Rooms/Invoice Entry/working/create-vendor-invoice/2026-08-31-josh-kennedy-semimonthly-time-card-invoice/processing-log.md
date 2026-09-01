@@ -126,3 +126,67 @@ Outcome: `Done - August 28-29 recorded once and one-page internal draft regenera
 - The August 25 allocation remains unresolved, so the invoice is not final or ready for approval. External contact was prohibited; no email, filing, workbook action, approval, payment, or paid status occurred.
 
 Outcome: `Done - corrected August 31 time recorded once; closed-period draft regenerated; August 25 allocation still needs review`.
+
+## 2026-09-01 - Closed-Period Correction Review And Approval Request
+
+- Accepted parent `prmsg-jean-josh-time-card-closeout-20260901-001`, payload hash `6e0a098760177ffe85cbc63362b7d82906467e814b80ec34ab5cdd82e82aef3c`, under the exact Invoice Entry identity and recorded Processing before work.
+- Applied Wes's authorized source-supported working interpretation to the existing August 25 10:30 AM-4:15 PM line: Rosebrooks because the source places the day there and describes yardwork. The final BackOffice sentence remains visible for correction by exception; no duplicate line or split was created.
+- Closed-period totals remain `88h10m` / `$2,708.33`: Pond `46h40m` / `$1,433.52`; Rosebrooks `33h` / `$1,013.70`; BackOffice `7h45m` / `$238.07`; Tensity `0h45m` / `$23.04`.
+- Regenerated and visually verified the one-page correction-review draft. PDF SHA-256: `857A85444FA98FB2B7E8DFA3A0EFE5C13467C4AAB71993A4EA75E83643FB61E0`.
+- Created one immutable Email Delivery child, `prmsg-invoice-entry-email-delivery-20260901-josh-closeout-001`, payload hash `9835cc600cbcade2383408cacf178e3f824318e052e2b8618cb28d3657e8428f`.
+- Email Monitor sent exactly once under request `IE-EMAIL-20260901-JOSH-SEMIMONTHLY-CLOSED-DRAFT-007` and verified OfficeAssist Sent Items at `2026-09-01T20:16:27Z`; sent message ending `AClUELHAAAAA==`. Exact To was `profcyber0077@gmail.com`; Wes and Jenny were copied; BCC was empty; one non-inline PDF was verified at `5,417` transmitted bytes.
+- The generated PDF, JSON input, and QA render were hash-verified in `Invoice Entry Working Archive\Generated\2026-09-01-Josh-Semimonthly-Closeout-Draft` as 3 files / 368,707 bytes, then the temporary local generation folder was removed.
+- No finalization, filing, workbook posting, QuickBooks routing, payment, or paid status occurred.
+
+Outcome: `Done - closed-period correction-review draft sent and verified; awaiting corrections by exception and Wes approval`.
+
+## 2026-09-01 - Wes Clarification Reply Reconciled
+
+- Accepted message/dispatch `prmsg-email-monitor-route-vendor-invoice-20260901-wes-josh-time-card-clarification-001`, payload hash `76bba70ad90f37f6e5b85648c21e8f2de16ab58dc2e51bc3707521957ce57363`, before substantive work and recorded Processing.
+- Preserved Outlook message ending `AClUGMIwAAAA==`, received `2026-09-01T20:21:25Z`, subject `RE: Time card`.
+- Wes stated that Josh's wording needs clarification and that the period invoice reflects ambiguity. The source does not specify an intended allocation, corrected wording, date, time, project, or task.
+- Reconciled the reply as `Clarification Still Needed` against existing draft `INV-JKLLC-20260831-001`. The draft, lines, totals, and prior delivery evidence remain unchanged pending a specific correction.
+- No inference, second email, finalization, filing, workbook posting, QuickBooks routing, approval, payment, or paid status occurred.
+
+Outcome: `Done - Wes clarification request recorded; awaiting the specific correction`.
+
+## 2026-09-01 - Second August 25 Clarification Request Reconciled
+
+- Accepted message/dispatch `prmsg-email-monitor-route-vendor-invoice-20260901-wes-josh-time-card-aug25-clarification-002`, payload hash `1173d7fa95c1fe2900dca07a76f4901b9f464250f3099b2d10020f8e52429169`, under the exact Invoice Entry identity before substantive work and recorded Processing.
+- Preserved Outlook message ending `AClUGMJAAAAA==`, received `2026-09-01T20:24:24Z`, subject `RE: Time card`.
+- Source wording preserved: Wes asked Josh to clarify his August 25 time because Jean is unsure how to allocate the 10:30 AM-4:15 PM interval between 115 Rosebrooks Dr yardwork and BackOffice work.
+- This is a second distinct clarification request, not a corrected allocation. It corroborates the unresolved issue recorded under `prmsg-email-monitor-route-vendor-invoice-20260901-wes-josh-time-card-clarification-001` but does not create another time line, draft, obligation, or delivery.
+- Reconciled to `INV-JKLLC-20260831-001` as `Clarification Still Needed`. The draft, lines, `88h10m` / `$2,708.33` totals, and prior Sent Items-verified delivery remain unchanged pending Josh's exact correction.
+- No inference, email, finalization, filing, workbook posting, QuickBooks routing, approval, payment, or paid status occurred.
+
+Outcome: `Done - second August 25 clarification request recorded; awaiting Josh's exact correction`.
+
+## 2026-09-01 - August 17 Exact Correction Reconciled
+
+- Accepted message/dispatch `prmsg-email-monitor-route-vendor-invoice-20260901-josh-time-card-aug17-correction-001`, payload hash `78b9edb56effe83e7049885148848a08831acf3c5bb5453d46ffb7662baad53b`, under the exact Invoice Entry identity before substantive work and recorded Processing.
+- Preserved Outlook message ending `AClUGMJQAAAA==`, received `2026-09-01T20:57:53Z`, subject `Re: Time card`.
+- Applied only Josh's exact August 17 correction: Pond remains 8:00 AM-3:45 PM for framing with Tim Fleming; the existing 3:45 PM-5:10 PM interval was changed in place from the superseded Pond working interpretation to Rosebrooks for taking down wallpaper and waiting for estate-sale customers.
+- No line or hour was added. Closed-period total remains `88h10m` and invoice amount remains `$2,708.33`.
+- Recalculated project totals exactly: Pond `45h15m` / `$1,390.00`; Rosebrooks `34h25m` / `$1,057.22`; BackOffice `7h45m` / `$238.07`; Tensity `0h45m` / `$23.04`.
+- Regenerated and visually verified a one-page internal correction-review draft. PDF SHA-256: `7409455004CFDE4B1BBBA5E8E42FBDFB782ED6044F0A3A1F454D4B0F940F0670`. JSON line and allocation sums both reconcile to `88h10m` / `$2,708.33`.
+- August 25 remains separately unresolved. No email, finalization, filing, workbook posting, QuickBooks routing, approval, payment, or paid status occurred.
+- External Working Archive retention was not authorized under the no-filing restriction. The three generated artifacts remain classified under `tmp\pdfs\josh-aug17-correction` as 3 files / 396,390 bytes pending authorized cleanup or archive handling.
+
+Outcome: `Done - August 17 corrected in place; August 25 clarification and Wes approval remain pending`.
+
+## 2026-09-01 - August 25 Exact Correction Reconciled
+
+- Accepted and processed authoritative message/dispatch `prmsg-email-monitor-route-vendor-invoice-20260901-josh-time-card-aug25-correction-003`, payload hash `1875f1533864173e05cb1a1e72f1c0ce65c5003059ed61a57aac611142084604`, under the exact Invoice Entry task identity.
+- Reconciled Outlook source ending `AClUGMJgAAAA==` into existing invoice `INV-JKLLC-20260831-001`: August 25 7:45 AM-10:30 AM is Pond for back-door lock/deadbolt installation and yardwork; 10:30 AM-4:15 PM is BackOffice work.
+- Updated the two existing August 25 lines in place. The prior Rosebrooks wording and Rosebrooks afternoon working interpretation are superseded; no interval, hours, or obligation was duplicated.
+- Total remains `88h10m` and `$2,708.33`. Corrected allocation is Pond `48h00m` / `$1,474.48`, Rosebrooks `25h55m` / `$796.11`, BackOffice `13h30m` / `$414.70`, and Tensity `0h45m` / `$23.04`.
+- Regenerated and visually verified a one-page internal correction-review PDF with SHA-256 `0FF68C2F51F43D2BF632B96884722BB6F45D11AD46039AA8D829445739A6BB2E`; detail and summary arithmetic both equal `$2,708.33`.
+- No email, finalization, filing, workbook posting, QuickBooks routing, approval, payment, paid status, or vendor contact occurred. The closed-period invoice now awaits Wes approval.
+
+## 2026-09-01 - Corrected Draft Sent For Review And Approval
+
+- Wes directed that corrected Time Card drafts be emailed to the worker/payee and Wes so he can locate and approve the exact corrected presentation.
+- The first immutable delivery request, `IE-EMAIL-20260901-JOSH-SEMIMONTHLY-CORRECTED-DRAFT-008`, was blocked before any send because its attachment hash was truncated. It is superseded and caused no connector send.
+- Corrected request `IE-EMAIL-20260901-JOSH-SEMIMONTHLY-CORRECTED-DRAFT-009` was sent exactly once and verified in OfficeAssist Sent Items at `2026-09-01T22:20:03Z`, message ending `AClUELHwAAAA==`.
+- Verified To `profcyber0077@gmail.com`; CC `WesWill@BuyYourHomeLLC.com` and `Jenny@BuyYourHomeLLC.com`; empty BCC; exact subject/body; one non-inline corrected PDF with source SHA-256 `0FF68C2F51F43D2BF632B96884722BB6F45D11AD46039AA8D829445739A6BB2E`.
+- No approval, finalization, filing, workbook posting, QuickBooks routing, payment, or paid status occurred. Await Josh corrections by exception and Wes approval.
