@@ -300,6 +300,17 @@ Classified working files:
 - Tim's supervised Pond/Rosebrooks mappings apply only to Tim's exact bill and were not copied to Josh. No incomplete child handoff, QuickBooks search, bill creation, payment, paid status, or external contact occurred.
 - Status: `Needs Wes`. Supply the exact vendor record, due date or terms, and every required line mapping. Then create the immutable child handoff and require live duplicate search, no more than one save, and saved-bill read-back.
 
+### Poyner Spruill QuickBooks Existence Audit - 2026-08-31
+
+- Parent message `prmsg-jean-poyner-spruill-qb-existence-audit-20260831-002`, payload hash `87b053f809826d6a208fa54a0e17d3968d81871615c9fd2deef3eaaa97a289ed`, was accepted and processed under the exact Invoice Entry identity.
+- Nineteen source PDFs in the Rosebrooks Lawsuit/Billing folder were validated internally for invoice number, date, amount, client, matter, and payable-upon-receipt terms. The aggregate is `$198,367.01`.
+- Statements and payment confirmations are reconciliation evidence only; promissory-note and disclosure files are not bills.
+- Filename conflicts were resolved to PDF values: `1265911` / `$7,065.25` and `1266909` / `$14,765.25`.
+- Valid read-only child `prmsg-invoice-entry-poyner-spruill-qb-existence-audit-20260831-002`, payload hash `7b40a78b7e551453e98310a56287550848a3cd3c31ca0767be6acb9e8a56fb57`, is centrally queued for Quickbooks Invoice task `01a05967-9a05-7081-a62e-616b2d8e61fd` on WES-VIDEOEDITOR.
+- Direct task notification was unavailable from this host. The child remains authoritative and queued; do not infer delivery or repeat ambiguously.
+- Pre-delivery child `...-001` serialized an invalid `$0.00` aggregate and was blocked before recipient notification. It must not be processed.
+- No QuickBooks create, edit, save, payment, paid status, email, vendor, mapping, or other data change occurred.
+
 - Invoice Entry does not approve or pay invoices.
 - Invoice Entry does not send email directly; all delivery goes through Email Monitor's Email Delivery workflow.
 - Do not retry a verified send or workbook upload without evidence that the prior action failed.
