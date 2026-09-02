@@ -1,12 +1,12 @@
 # Invoice Entry Current Work Status
 
-Last updated: 2026-09-01
+Last updated: 2026-09-02
 
 This is the authoritative current-state register for Invoice Entry. Read it before processing a handoff or opening a workbook. Packet files and processing logs remain the detailed evidence; when an older summary conflicts with this file, stop and reconcile the source before acting.
 
 ## Operating State
 
-- Status: `Active - Poyner Spruill Rosebrooks Posting Complete; Invoice 1277608 QuickBooks Handoff Queued`
+- Status: `Active - Poyner Spruill Rosebrooks Posting Complete; Invoice 1277608 QuickBooks Resume Handoff Queued`
 - Primary intake: direct Doc Scan or Email Monitor handoff; authorized versioned Manager Time Card packets are also supported for Time Card intake.
 - Current task: `019fbf4f-c629-7dd1-a3f6-0de33de0ed8f`.
 - Canonical skill: `C:\Codex\Wiki Files\skills\invoice-entry\SKILL.md`.
@@ -25,7 +25,7 @@ This is the authoritative current-state register for Invoice Entry. Read it befo
 - 2026-09-01 routing rule: every validated payable invoice must be evaluated for Quickbooks Invoice task `01a05967-9a05-7081-a62e-616b2d8e61fd` on `WES-VIDEOEDITOR` after the exact QuickBooks company file and required accounting mappings are supported. Drafts, statements, receipts, duplicates, superseded/denied/non-payable items, and guessed or incomplete company mappings are not bill-creation handoffs. Project-related invoices still follow the project-management spreadsheet workflow as a separate parallel destination; neither destination replaces the other.
 - 2026-09-01 corrected Poyner Spruill rule: validated payable invoices are BYH legal expenses for `20-HM - 115 Rosebrooks Dr`. File them in `Property/20-HM-115 Rosebrooks Dr/Lawsuit/Billing`, add them once to the Rosebrooks project workbook as `Legal Expenses`, and route each new payable invoice to Quickbooks Invoice under supported BYH/vendor/project mappings. Statements and payment confirmations remain reconciliation evidence unless they independently establish a payable invoice.
 - Twenty source-supported Poyner Spruill invoices totaling `$202,038.81`, including `1277608`, were added once to live `Review!tblInvoiceReview` in `20_Project Management - 115 Rosebrooks Dr.xlsm`. Every row uses category/recommendation `Legal Expenses`, blank `Destination Worksheet`, and `Needs Review` because the workbook has no approved Legal Expenses vendor tab. Live read-back found 20 rows, the exact aggregate, zero workbook links, Automatic calculation, unchanged 25-sheet/22-table structure, and zero formula errors.
-- Invoice `1277608` dated `2026-08-11` for `$3,671.80` was filed as `26-08-11 Poyner Spruill - invoice 1277608 3671.80.pdf`; its SHA-256 is `2E61120798D9E667F6A60A6D3730068CACC473DC12B4C87E67C1C82F0A0C28E3`. Immutable production handoff `prmsg-invoice-entry-quickbooks-poyner-1277608-20260901-001`, hash `af45347f5a35f85fdfbb8739e977a8c19346ea25747e60ba53e325f030b34b60`, is queued for duplicate-safe QuickBooks processing on WES-VIDEOEDITOR. No approval, payment, vendor contact, or paid status occurred.
+- Invoice `1277608` dated `2026-08-11` for `$3,671.80` was filed as `26-08-11 Poyner Spruill - invoice 1277608 3671.80.pdf`; its SHA-256 is `2E61120798D9E667F6A60A6D3730068CACC473DC12B4C87E67C1C82F0A0C28E3`. The original Invoice Entry child `prmsg-invoice-entry-quickbooks-poyner-1277608-20260901-001`, hash `af45347f5a35f85fdfbb8739e977a8c19346ea25747e60ba53e325f030b34b60`, returned `Needs Wes` because QuickBooks authentication was unavailable; it performed no duplicate search and saved nothing. After Wes directly authorized the corrected Invoice Entry route on 2026-09-02, resume child `prmsg-invoice-entry-quickbooks-poyner-1277608-resume-20260902-001`, hash `9c16b467d6386e6ff6d1a7318de71dbdaf4a5f2ba4c3dd83658e1d8baafcad29`, was queued for the exact Quickbooks Invoice task on WES-VIDEOEDITOR. It supersedes wrong direct route `prmsg-jean-quickbooks-poyner-1277608-resume-20260902-001` and requires a live duplicate search, at most one save only if absent, complete read-back, and no payment or send action. No approval, payment, vendor contact, or paid status occurred.
 
 ## Task Health Status
 
