@@ -123,6 +123,14 @@ Do not put Invoice Entry's standing rules, the full email body, quoted thread te
 
 The durable queue record is authoritative; a task message is a best-effort wake-up signal. Do not treat a completed tool call as acceptance, and do not lose or duplicate a dispatch when the destination is busy.
 
+### Organize
+
+Use Organize for messages that Outlook rules place directly in `Inbox/Jean Wright` in Wes's or Jenny's mailbox. Wes and Jenny have independent folder and classification rule sets so either set can change without silently changing the other. A verified Email Delivery activates Organize for each mailbox whose owner appears in To or CC; an explicit Organize request may target Wes, Jenny, or both.
+
+For both mailboxes, `Time Cards` has first classification priority. It receives every message concerning Josh Kennedy's reported or worked hours or Time Card invoice cycle, including source reports, corrections, clarifications, drafts, approvals, approved-status notices, and delivery confirmations regardless of sender. It also receives Tim Fleming messages that report Tim's hours worked. Other Tim messages follow the remaining mailbox-specific rules.
+
+Each activated mailbox is processed only at its own `Inbox/Jean Wright` root. Existing child-folder messages are not reclassified, message state and content are preserved, and folder-access or move failures are reported. The canonical skill contains the full separate Wes and Jenny folder sets and precedence rules.
+
 ### Email Delivery
 
 Use this mode when this project room has an authorized email ready to send, another Email Monitor mode reaches its send step, or an authorized Project Room, including Invoice Entry, sends a complete direct delivery handoff. A direct handoff triggers immediately. It does not require mailbox scanning, an instruction email, the Email Monitor heartbeat, or a rerun of the originating workflow.
