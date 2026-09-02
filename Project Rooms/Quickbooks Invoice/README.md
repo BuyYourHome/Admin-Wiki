@@ -147,6 +147,13 @@ The exact task identity is registered on `WES-VIDEOEDITOR`, central host access 
 - Commit only Quickbooks Invoice files and specifically authorized registry, routing, manifest, and index updates.
 - Push only under the Admin wiki push rules.
 
+## Skill Deployment Gate
+
+- Treat the canonical skill, committed revision, GitHub publication, installed runtime copy, and new-session activation as separate states.
+- Do not report a skill correction as deployed until its canonical commit is on `origin/main`, the installed skill tree matches the canonical tree on `WES-VIDEOEDITOR`, and a newly started Quickbooks Invoice task has read the installed rule.
+- Record deployment evidence in `working\skill-deployment-status.md`.
+- After synchronization, run `scripts\Test-QuickbooksInvoiceSkillDeployment.ps1` on the exact execution machine. A successful installation check requires `machine_installation_ready: true`; activation still requires a separate new-session record.
+
 ## Start PR Pointer
 
 Start PR: Before durable work, follow Start PR in `C:\Codex\Wiki Files\Project Room Chat Startup Rule.md`. Interpret unqualified requests under the Current PR Scope Rule in that file. Work on main unless Wes explicitly asks for a branch.

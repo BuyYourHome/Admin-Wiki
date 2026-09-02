@@ -131,6 +131,13 @@ Do not infer missing company, property entity, vendor, dates, line items, totals
 - Leave unrelated dirty work untouched.
 - Push only under the Admin wiki push rules.
 
+## Skill Deployment Gate
+
+- Editing or committing this canonical skill does not by itself deploy the behavior.
+- Track canonical commit, publication to `origin/main`, installed-tree equality on `WES-VIDEOEDITOR`, and activation in a newly started Quickbooks Invoice task as separate states in `Project Rooms\Quickbooks Invoice\working\skill-deployment-status.md`.
+- Do not describe a correction as deployed until every state is verified.
+- After installing with `tools\sync-codex-skills.ps1`, run `Project Rooms\Quickbooks Invoice\scripts\Test-QuickbooksInvoiceSkillDeployment.ps1` on the execution machine and require `machine_installation_ready: true`.
+
 ## Start PR Pointer
 
 Start PR: Before durable work, follow Start PR in `C:\Codex\Wiki Files\Project Room Chat Startup Rule.md`. Interpret unqualified requests under the Current PR Scope Rule in that file. Work on main unless Wes explicitly asks for a branch.
