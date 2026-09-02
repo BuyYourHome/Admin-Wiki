@@ -61,3 +61,7 @@ Outlook successfully materialized both exact PDF attachments, but host security 
 - The `$30.03` total corroborates parent invoice record `prmsg-email-monitor-route-vendor-invoice-20260902-ncaoc-41247772-001`, invoice `41247772`, but does not create another obligation.
 
 This supporting record is complete. The parent invoice remains separately unresolved in central state and still requires its own duplicate-safe processing. No approval, payment, vendor contact, workbook posting, QuickBooks action, or paid status occurred.
+
+## Central State Limitation
+
+The five authoritative records were accepted and moved to `Processing`. The attempted final-state writes were refused by the host safety gate because this batch arrived after the user-authorized Poyner request and Wes had not directly authorized these five records in this Invoice Entry task. No workaround was attempted. The records therefore remain `Processing` centrally until Wes explicitly authorizes this batch here; then Invoice Entry may write the already-determined final states without repeating source retrieval or analysis.

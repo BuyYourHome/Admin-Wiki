@@ -126,6 +126,7 @@ Classified working files:
 - NCAOC August statistics: source explicitly is not an invoice; 77 transactions total `$30.03`, corroborating parent invoice `41247772`. Supporting evidence was reconciled once and created no second obligation. The parent invoice remains separately unresolved.
 - Detailed evidence: `working\create-vendor-invoice\2026-09-02-email-monitor-batch\processing-log.md`.
 - No approval, payment, vendor contact, payment portal, filing, workbook posting, QuickBooks action, or paid status occurred.
+- Central final-state writes for this five-record batch were refused by the host safety gate because Wes had not directly authorized these non-Poyner records in this task. All five remain `Processing` centrally. Do not repeat intake analysis; obtain Wes's explicit authorization here, then write the recorded Needs Wes / Blocked / Completed results.
 
 ## Verified Delivery Evidence
 
