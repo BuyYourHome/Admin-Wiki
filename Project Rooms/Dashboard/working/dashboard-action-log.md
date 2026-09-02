@@ -234,3 +234,9 @@
 - Confirmed that Dashboard-owned stale metadata can survive deletion outside the generated card index; removed obsolete deleted-room assignments from `config\project-room-groups.json`.
 - Confirmed that the generic bridge path was healthy only after every canonical `Create PR` thread-id reference was rerouted to the replacement task `019fdc5e-a1da-7e10-b388-a3be3830ac89`.
 - Recorded that the local PowerShell execution policy may block direct script invocation from an ordinary shell; the documented `powershell.exe -ExecutionPolicy Bypass -File ...` refresh path remains the reliable fallback on WesStudio.
+
+## 2026-09-02 - Transaction Attention Requirement Recorded
+
+- Received centralized improvement message `prmsg-jean-dashboard-transaction-recovery-attention-20260902-001` with dispatch id `jean-dispatch-20260902-transaction-recovery-attention-v1`.
+- Added `DASH-046` to the Dashboard change list for a consolidated transaction-attention view and automatic recovery coordination driven by authoritative PR messaging records.
+- Kept the boundary explicit: Dashboard may display safe transaction attention and next-step context, but it must not execute another Project Room's transaction work.
