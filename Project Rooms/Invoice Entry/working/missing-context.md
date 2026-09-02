@@ -46,3 +46,9 @@
 - BackOffice allocation `$414.70` has no approved accounting workbook or destination.
 - Before routing to `Quickbooks`, Wes must confirm the exact QuickBooks company file and the authoritative Josh vendor identifier, terms/due date, account or item, customer/project/job, class, location, and tax mappings for all invoice allocations.
 - Do not create an incomplete QuickBooks child, infer mappings, initiate payment, or mark paid.
+
+## September 2 Vendor Invoice Intake
+
+- Greenview Works `000379` (`$120.00`, 4121 Tensity) and `000380` (`$100.00`, 908 Pond) need persistent source-PDF retention, an approved project-workbook worksheet, and exact QuickBooks expense/account and related mappings. Invoice `000379` also needs the source's `JULY` heading reconciled against its August 15 and August 29 service dates. Do not guess or post either invoice.
+- Meridian accounts `50-32856 2` and `50-36858 4` need inspection of their exact Outlook PDF attachments. Host security blocked the local download during this cross-task wake-up; no workaround was attempted. Wes must explicitly authorize retrieval/inspection in this task or Email Monitor must supply a persistent authorized file path. Account `50-32856 2` has prior Pond file-history evidence, but current invoice facts remain unverified; account `50-36858 4` has no supported project mapping.
+- NCAOC August usage statistics are reconciled only as `$30.03` supporting evidence for invoice `41247772`. The statistics are not a second invoice. The separately routed parent invoice record remains unresolved and must be processed under its own exact dispatch.

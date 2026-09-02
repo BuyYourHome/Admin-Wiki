@@ -117,6 +117,16 @@ Classified working files:
 | 22 | Citi Diamond Preferred Mastercard statement notice, account ending `7127` | Statement closed 2026-08-26; `$0.00` statement balance; `$0.00` minimum due; payment due 2026-09-22; no statement PDF, transactions, entity, or project detail | No current payment amount is shown. If statement review or allocation is required, Wes must retrieve the PDF through an authorized Citi session or supply it, then route it through Doc Scan. Do not access the authenticated link or infer classification from the notice. |
 | 23 | True Service Corporation invoice `129086`, 908 Pond St | Invoice and payment receipt verified. The `$11,178.50` obligation has one `$11,000.00` credit-card payment dated `2026-08-31`, leaving `$178.50` by arithmetic. Project is clear; worksheet allocation is not. Not approved, filed, posted, or fully paid. | Wes must approve separately, provide or route verified evidence for any remaining payment before full-paid status, and identify or approve the mixed HVAC/ductwork/gas-line/bathroom-vent worksheet allocation. Then use a fresh SharePoint workbook and normal duplicate/validation controls for any authorized posting. |
 
+### September 2 Vendor Invoice Batch
+
+- Greenview Works invoice `000379`: 4121 Tensity Drive, `$120.00`, dated/due 2026-09-02, service date 2026-08-29, with August 15 and August 29 lawn service. The source heading says July despite August service dates. No duplicate was found. Persistent PDF retention, project worksheet, and QuickBooks mapping remain unresolved; no downstream action occurred.
+- Greenview Works invoice `000380`: 908 Pond St, `$100.00`, dated/due 2026-09-02, service date 2026-08-29, with August 14 and August 29 lawn service. No duplicate was found. Persistent PDF retention, project worksheet, and QuickBooks mapping remain unresolved; no downstream action occurred.
+- Meridian Waste account `50-32856 2`: exact Outlook attachment `Billing50-32856 2_153.pdf`, 169,518 bytes. Prior property-file history associates the account with Pond, but the current invoice facts remain unverified because host security blocked local PDF download from the cross-task wake-up.
+- Meridian Waste account `50-36858 4`: exact Outlook attachment `Billing50-36858 4_154.pdf`, 168,884 bytes. Project and current invoice facts remain unverified because host security blocked local PDF download from the cross-task wake-up.
+- NCAOC August statistics: source explicitly is not an invoice; 77 transactions total `$30.03`, corroborating parent invoice `41247772`. Supporting evidence was reconciled once and created no second obligation. The parent invoice remains separately unresolved.
+- Detailed evidence: `working\create-vendor-invoice\2026-09-02-email-monitor-batch\processing-log.md`.
+- No approval, payment, vendor contact, payment portal, filing, workbook posting, QuickBooks action, or paid status occurred.
+
 ## Verified Delivery Evidence
 
 ### Tim Fleming Three-Project Approved Status
