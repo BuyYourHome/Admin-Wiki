@@ -9,6 +9,7 @@ $root = [System.IO.Path]::GetFullPath($RepositoryRoot)
 $projectRoomsRoot = Join-Path $root 'Project Rooms'
 $dashboardSiteRoot = Join-Path $projectRoomsRoot 'Dashboard\site'
 $refreshScript = Join-Path $root 'Project Rooms\Dashboard\tools\Refresh-DashboardData.ps1'
+$transactionAttentionScript = Join-Path $root 'Project Rooms\Dashboard\tools\Get-TransactionAttention.ps1'
 $actionRequestStatePath = Join-Path $root 'Project Rooms\Dashboard\working\tmp\dashboard-action-requests.json'
 $bridgeTestStatePath = Join-Path $root 'Project Rooms\Dashboard\working\tmp\dashboard-bridge-test-state.json'
 $deletionRequestStatePath = Join-Path $root 'Project Rooms\Dashboard\working\tmp\dashboard-deletion-requests.json'
@@ -409,6 +410,7 @@ function Resolve-AllowedTarget {
     if ($normalized -eq 'Project Rooms/Dashboard/site/__dashboard-bridge-test') { return '__dashboard_bridge_test__' }
     if ($normalized -eq 'Project Rooms/Dashboard/site/__dashboard-deletion-request') { return '__dashboard_deletion_request__' }
     if ($normalized -eq 'Project Rooms/Dashboard/site/__dashboard-action-requests') { return '__dashboard_action_requests__' }
+    if ($normalized -eq 'Project Rooms/Dashboard/site/__dashboard-transaction-attention') { return '__dashboard_transaction_attention__' }
 
     if ($normalized.StartsWith('Project Rooms/Dashboard/site/', [System.StringComparison]::OrdinalIgnoreCase)) {
         $target = [System.IO.Path]::GetFullPath((Join-Path $root $RelativePath))
@@ -625,6 +627,19 @@ try {
                     $payload = @{ ok = $false; message = $_.Exception.Message } | ConvertTo-Json -Compress
                     $body = [Text.Encoding]::UTF8.GetBytes($payload)
                     Send-Response -Response $context.Response -StatusCode 500 -Body $body -ContentType 'application/json; charset=utf-8'
+                }
+                continue
+            }
+            if ($target -eq '__dashboard_transaction_attention__') {
+                try {
+                    $payload = (& $transactionAttentionScript -RepositoryRoot $root | Out-String).Trim()
+                    if (-not $payload) { throw 'Transaction attention source returned no data.' }
+                    $body = [Text.Encoding]::UTF8.GetBytes($payload)
+                    Send-Response -Response $context.Response -StatusCode 200 -Body $body -ContentType 'application/json; charset=utf-8'
+                } catch {
+                    $payload = @{ ok = $false; message = $_.Exception.Message } | ConvertTo-Json -Compress
+                    $body = [Text.Encoding]::UTF8.GetBytes($payload)
+                    Send-Response -Response $context.Response -StatusCode 503 -Body $body -ContentType 'application/json; charset=utf-8'
                 }
                 continue
             }

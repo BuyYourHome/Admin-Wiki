@@ -6,6 +6,7 @@ param(
 $ErrorActionPreference = 'Stop'
 $root = [System.IO.Path]::GetFullPath($RepositoryRoot)
 $refreshScript = Join-Path $root 'Project Rooms\Dashboard\tools\Refresh-DashboardData.ps1'
+$transactionAttentionScript = Join-Path $root 'Project Rooms\Dashboard\tools\Get-TransactionAttention.ps1'
 $managerTaskRegisterPath = Join-Path $root 'Project Rooms\Manager\working\task-register.md'
 $actionRequestStatePath = Join-Path $root 'Project Rooms\Dashboard\working\tmp\dashboard-action-requests.json'
 $bridgeTestStatePath = Join-Path $root 'Project Rooms\Dashboard\working\tmp\dashboard-bridge-test-state.json'
@@ -502,6 +503,19 @@ try {
                     $payload = @{ ok = $false; message = $_.Exception.Message } | ConvertTo-Json -Compress
                     $body = [Text.Encoding]::UTF8.GetBytes($payload)
                     Send-Response -Response $context.Response -StatusCode 500 -Body $body -ContentType 'application/json; charset=utf-8'
+                }
+                continue
+            }
+            if ($context.Request.HttpMethod -eq 'GET' -and $path -eq 'Project Rooms/Dashboard/site/__dashboard-transaction-attention') {
+                try {
+                    $payload = (& $transactionAttentionScript -RepositoryRoot $root | Out-String).Trim()
+                    if (-not $payload) { throw 'Transaction attention source returned no data.' }
+                    $body = [Text.Encoding]::UTF8.GetBytes($payload)
+                    Send-Response -Response $context.Response -StatusCode 200 -Body $body -ContentType 'application/json; charset=utf-8'
+                } catch {
+                    $payload = @{ ok = $false; message = $_.Exception.Message } | ConvertTo-Json -Compress
+                    $body = [Text.Encoding]::UTF8.GetBytes($payload)
+                    Send-Response -Response $context.Response -StatusCode 503 -Body $body -ContentType 'application/json; charset=utf-8'
                 }
                 continue
             }

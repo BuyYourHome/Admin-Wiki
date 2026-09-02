@@ -240,3 +240,11 @@
 - Received centralized improvement message `prmsg-jean-dashboard-transaction-recovery-attention-20260902-001` with dispatch id `jean-dispatch-20260902-transaction-recovery-attention-v1`.
 - Added `DASH-046` to the Dashboard change list for a consolidated transaction-attention view and automatic recovery coordination driven by authoritative PR messaging records.
 - Kept the boundary explicit: Dashboard may display safe transaction attention and next-step context, but it must not execute another Project Room's transaction work.
+
+## 2026-09-02 - Transaction Attention View Implemented
+
+- Completed `DASH-046` with a top-bar shortcut and Dashboard `Transaction Attention` mode.
+- Added a live, read-only host endpoint backed by the canonical Project Room message manager for both local and LAN views.
+- Sanitized output excludes payloads, authorization senders, mailbox identifiers, links, attachment paths, credentials, hashes, synthetic tests, and superseded records.
+- Classified current transaction attention as `Needs Wes`, automatic recovery, system blocker, or workflow blocker and displayed safe ownership, context, attempts, next action, and decision fields.
+- Kept Dashboard display-only; it performs no retry, state transition, acceptance, completion, or destination work.

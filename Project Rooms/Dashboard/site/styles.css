@@ -18,6 +18,8 @@ h1 { margin: 0; font-size: clamp(28px, 4vw, 42px); line-height: 1.05; letter-spa
 .ask-jean-button { min-height: 40px; padding: 0 14px; display: inline-flex; align-items: center; border: 1px solid #a9c6b7; border-radius: 4px; color: #fff; background: #286246; font-weight: 800; text-decoration: none; cursor: pointer; }
 .ask-jean-button:hover { background: #347757; }
 .ask-jean-button.disabled, .ask-jean-button[aria-disabled="true"] { pointer-events: none; opacity: .6; background: #335547; }
+.attention-button { min-height: 40px; padding: 0 14px; border: 1px solid #b8cbd7; border-radius: 4px; color: #fff; background: #315f7b; font-weight: 800; cursor: pointer; }
+.attention-button:hover { background: #3d7393; }
 .refresh-button { min-height: 40px; padding: 0 14px; border: 1px solid #d0a148; border-radius: 4px; color: #183c2e; background: #f6d680; font-weight: 800; cursor: pointer; }
 .refresh-button:hover:not(:disabled) { background: #ffe6a1; }
 .refresh-button:disabled { opacity: .65; cursor: wait; }
@@ -100,6 +102,30 @@ main { padding: 22px clamp(18px, 4vw, 52px) 48px; }
 .mode-panel-template { margin: 0; padding: 10px; border: 1px solid var(--line); background: var(--paper); color: var(--ink); white-space: pre-wrap; font: 11px Consolas, monospace; line-height: 1.45; }
 .mode-panel-link.disabled { border-color: #aeb8b2; color: var(--muted); background: var(--paper); pointer-events: none; }
 .mode-panel-link.disabled::after { content: "Host only"; }
+.transaction-attention-card { border-left-color: var(--blue); }
+.transaction-attention-header { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+.compact-button { min-height: 32px; padding: 0 9px; font-size: 11px; }
+.transaction-attention-summary { display: flex; gap: 6px; flex-wrap: wrap; }
+.attention-filter { min-height: 30px; padding: 0 8px; border: 1px solid var(--line); border-radius: 4px; color: var(--muted); background: var(--surface); cursor: pointer; font-size: 11px; }
+.attention-filter.active { border-color: var(--blue); color: #1f4f6c; background: #eaf2f8; font-weight: 800; }
+.transaction-attention-list { display: grid; gap: 8px; }
+.transaction-attention-item { padding: 10px; border: 1px solid var(--line); border-left: 4px solid var(--gold); background: var(--surface); display: grid; gap: 6px; }
+.transaction-attention-item.wes-decision { border-left-color: #9c463f; }
+.transaction-attention-item.automatic-recovery { border-left-color: var(--green); }
+.transaction-attention-item.system-blocker { border-left-color: var(--blue); }
+.transaction-attention-item.workflow-blocker { border-left-color: var(--gold); }
+.transaction-attention-item-top { display: flex; align-items: start; justify-content: space-between; gap: 8px; }
+.transaction-attention-item-top > strong { color: var(--ink); font-size: 12px; text-transform: none; overflow-wrap: anywhere; }
+.transaction-attention-badge { flex: 0 0 auto; padding: 3px 6px; border-radius: 3px; font-size: 9px; font-weight: 800; text-transform: uppercase; }
+.transaction-attention-badge.wes-decision { color: #8d312c; background: #f9e9e7; }
+.transaction-attention-badge.automatic-recovery { color: var(--green); background: var(--green-soft); }
+.transaction-attention-badge.system-blocker { color: #1f4f6c; background: #eaf2f8; }
+.transaction-attention-badge.workflow-blocker { color: #704600; background: #fff0c4; }
+.transaction-attention-meta { color: var(--muted) !important; font-size: 10px !important; overflow-wrap: anywhere; }
+.transaction-attention-blocker { color: var(--ink) !important; font-size: 11px !important; }
+.transaction-attention-next { color: var(--blue) !important; font-size: 11px !important; font-weight: 700; }
+.transaction-attention-error { padding: 9px; border-left: 3px solid #9c463f; color: #8d312c !important; background: #f9e9e7; }
+.transaction-attention-empty { color: var(--muted) !important; }
 .manager-task-list { display: grid; gap: 8px; }
 .manager-task-item { width: 100%; display: grid; gap: 4px; padding: 10px; text-align: left; border: 1px solid var(--line); border-radius: 4px; background: var(--surface); color: var(--ink); cursor: pointer; }
 .manager-task-item.selected, .manager-task-item:hover { border-color: var(--green); background: var(--green-soft); }
