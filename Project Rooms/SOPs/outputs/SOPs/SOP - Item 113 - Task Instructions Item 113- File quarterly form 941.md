@@ -54,7 +54,7 @@ Accounting / Payroll Tax
 13. Leave Part 3 blank unless a valid adjustment applies.
 14. Leave the third-party designee section blank unless intentionally authorizing someone.
 15. Sign and date the form with the correct title.
-16. If payment is owed, go to `https://www.eftps.gov`, choose the EFTPS payment/login path, authenticate using Login.gov, then supply BYH's EIN and the EFTPS PIN stored in Wes's password manager when prompted.
+16. If payment is owed, go to [EFTPS](https://www.eftps.gov), choose the EFTPS payment/login path, authenticate using Login.gov, then supply BYH's EIN and the EFTPS PIN stored in Wes's password manager when prompted.
 17. Save proof of filing and payment.
 18. Confirm quarterly totals will reconcile to year-end W-2 totals.
 
