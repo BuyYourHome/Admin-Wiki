@@ -139,12 +139,12 @@ function New-MessageRecord {
     $references = ConvertFrom-RequiredJson -Json $ReferencesJson -Name "ReferencesJson"
     $payload = ConvertFrom-RequiredJson -Json $PayloadJson -Name "PayloadJson"
     if ($null -eq $MessageType) { throw "MessageType is required for Send." }
-    foreach ($required in @($SourceProjectRoom, $SourceTaskId, $DestinationProjectRoom, $DestinationTaskId)) {
-        if ([string]::IsNullOrWhiteSpace($required)) { throw "Source and destination Project Room/task fields are required for Send." }
+    foreach ($required in @($SourceProjectRoom, $SourceTaskId, $DestinationProjectRoom, $DestinationTaskId, $DestinationMachine)) {
+        if ([string]::IsNullOrWhiteSpace($required)) { throw "Source and destination Project Room/task fields and DestinationMachine are required for Send." }
     }
     if ($MaxAttempts -lt 1) { throw "MaxAttempts must be at least 1." }
     $source = [pscustomobject][ordered]@{ project_room = $SourceProjectRoom; task_id = $SourceTaskId; machine = $SourceMachine }
-    $destination = [pscustomobject][ordered]@{ project_room = $DestinationProjectRoom; task_id = $DestinationTaskId; machine = if ([string]::IsNullOrWhiteSpace($DestinationMachine)) { $null } else { $DestinationMachine } }
+    $destination = [pscustomobject][ordered]@{ project_room = $DestinationProjectRoom; task_id = $DestinationTaskId; machine = $DestinationMachine }
     $now = Get-UtcTimestamp
     [pscustomobject][ordered]@{
         schema_version = 1

@@ -117,6 +117,8 @@ Use this branch for invoice, bill, receipt, statement, pay-application, payment-
 
 This mode creates the durable central message before task notification, verifies the destination is idle before attempting a wake-up message, requires the exact dispatch ID in a durable `Accepted` receipt, retries the same immutable message only after reconciliation, and emails Wes once through verified OfficeAssist delivery if acknowledgment is missing before the routing run ends. See `working\dispatch-queue-spec.md` and `C:\Codex\Wiki Files\tools\pr-messaging\Manage-ProjectRoomMessage.ps1`.
 
+Every central `Send` must include the exact execution machine from Invoice Entry's active manifest as `DestinationMachine`. Never create a record with a blank, wildcard, inferred, or `null` destination machine. The wake-up task is transport only; Invoice Entry evaluates authorization from the verified same-ID central record.
+
 Send Invoice Entry one concise handoff with these fields in order: exact `mailbox`, `outlook_message_id`, `outlook_link`, attachment paths or exact blocker, short factual `summary`, `requested_operation`, and `unique_warning`. Use `none` when there is no attachment or source-specific warning. Apply the same format to Time Card, approval, correction, and paid-receipt routing.
 
 Do not put Invoice Entry's standing rules, the full email body, quoted thread text, or prior processing history in the task message. Preserve detailed sender/recipient metadata, timestamps, attachment metadata, routing evidence, duplicate notes, and reconciliation history in Email Monitor compact state and `working\routing-action-log.md` as appropriate.

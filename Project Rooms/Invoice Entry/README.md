@@ -95,7 +95,7 @@ Invoice Entry may read one exact Outlook message when the handoff supplies its e
 
 ## Durable Dispatch Intake
 
-Email Monitor and Jean dispatches are authoritative in `C:\Users\wesbr\.codex\automations\officeassist-morning-email-summary-and-instruction-monitor\dispatch-queue\records`; task messages are wake-up signals. On every startup and backup-monitor run, inspect unresolved records addressed to the registered Invoice Entry task, deduplicate by dispatch ID and payload hash, write the durable `accepted` receipt before substantive work, then record `Processing`, `Completed`, or `Failed` through `Project Rooms\Email Monitor\tools\Manage-EmailMonitorDispatch.ps1`. Queue presence grants intake authority only and does not bypass Invoice Entry's approval, payment, filing, workbook, vendor-contact, or email-delivery gates.
+Email Monitor and Jean dispatches are authoritative in the central queue at `\\WES-VIDEOEDITOR\BYH-PRMessaging$\records`; task messages are wake-up signals. On every startup and backup-monitor run, inspect unresolved records addressed to the registered Invoice Entry task, deduplicate by dispatch ID and payload hash, validate source, destination, payload hash, and recorded authorization from the same-ID central record, write the durable `Accepted` receipt before substantive work, then record `Processing` and one valid final state through `tools\pr-messaging\Manage-ProjectRoomMessage.ps1`. Do not require the wake-up itself to originate from the source task; dispatcher and relaying tasks are transport only. Queue presence grants intake authority only and does not bypass Invoice Entry's approval, payment, filing, workbook, vendor-contact, or email-delivery gates.
 
 ## Workbook Safety
 

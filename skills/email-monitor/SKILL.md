@@ -323,6 +323,7 @@ For each routed email:
 - update `C:\Codex\Wiki Files\Project Rooms\Invoice Entry\working\source-inventory.md` or the current Invoice Entry intake ledger only with the Outlook reference, external path if any, summary, and status when the routed email becomes part of the durable source set;
 - record the routed Outlook message id in Email Monitor compact state so the same source is not routed repeatedly;
 - create the durable message before any task-message call by using `C:\Codex\Wiki Files\tools\pr-messaging\Manage-ProjectRoomMessage.ps1 -Action Send`; use the shared runtime queue and state contract in `working\dispatch-queue-spec.md`; never create a new record in the legacy Email Monitor queue;
+- resolve Invoice Entry's exact execution machine from its active destination manifest and pass it explicitly as `DestinationMachine` on every central `Send`; a missing, wildcard, inferred, or blank destination machine is a creation blocker and must never be serialized as `null`;
 - use one stable dispatch ID and immutable payload; idempotent creation with the same payload is safe, but the same ID with different content is a blocker;
 - store the source and concise handoff fields in the queue record, then send the existing Invoice Entry task one wake-up message containing the dispatch ID, queue-record path, and these fields in this exact order:
   - `mailbox`: exact mailbox identity;
@@ -336,6 +337,7 @@ For each routed email:
 Dispatch lifecycle:
 
 1. Treat the durable queue record as the authoritative handoff and task messaging as a best-effort wake-up signal.
+   The task that sends or relays the wake-up is not the authorization source. Invoice Entry must retrieve the same-ID central record and evaluate its immutable source, destination, payload hash, and recorded authorization.
 2. Establish that Invoice Entry is idle before `StartAttempt`. If status is unavailable or busy, leave the record `Queued`; do not start a blocking task-message call.
 3. Mark `StartAttempt`, send the wake-up message, and request `accepted: <dispatch_id>` before substantive work.
 4. Verify acceptance independently in both the durable queue record and Invoice Entry history. Tool completion alone is not proof.

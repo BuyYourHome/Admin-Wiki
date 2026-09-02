@@ -14,10 +14,10 @@ The shared queue became authoritative for production Project Room messages after
 
 ## Message Contract
 
-1. Save the durable message before sending a Codex task notification.
+1. Save the durable message before sending a Codex task notification. `Send` requires an exact nonblank `destination.machine` resolved from the active destination manifest; never serialize a missing, wildcard, inferred, or `null` destination machine.
 2. Treat task notification as a wake-up signal, not proof of delivery.
 3. The destination verifies its Project Room, task id, message id, and payload hash before accepting.
-4. The destination writes `Accepted` before substantive work, then `Processing`, meaningful updates, and exactly one final result.
+4. The destination writes `Accepted` before substantive work, then `Processing`, meaningful updates, and exactly one final result. Authorization is evaluated from the verified same-ID central record, not from the task that relayed its wake-up. A dispatcher or another task may carry the wake-up without becoming the source or authorization authority.
 5. Valid final states are `Completed`, `Blocked`, `Needs Wes`, and `Rejected as Wrong Room`.
 6. Reconcile `Delivery Ambiguous` against the central record and task history before retrying the same immutable message.
 7. A missing task id, unavailable host, or inaccessible source is a blocker. It is not permission to execute another PR's work locally.
