@@ -2,8 +2,8 @@
 
 | Item | Status | Notes |
 | --- | --- | --- |
-| Project Room or matching skill named `Quickbooks Invoice` / `quickbooks-invoice` | no duplicate found | No existing matching room, skill, registry entry, routing row, manifest, or task was found during setup review. |
-| Invoice Entry versus Quickbooks Invoice ownership | clarified | Invoice Entry owns vendor-invoice intake, source validation, mappings, approval gates, and handoff preparation. Quickbooks Invoice owns controlled QuickBooks bill creation and read-back verification only. |
+| Project Room or matching skill named `Quickbooks` / `quickbooks` | renamed from prior identity | Wes authorized renaming `Quickbooks Invoice` / `quickbooks-invoice` on `2026-09-02`; historical immutable message IDs retain the old slug. |
+| Invoice Entry versus Quickbooks ownership | clarified | Invoice Entry owns vendor-invoice intake, source validation, mappings, approval gates, and handoff preparation. Quickbooks owns controlled QuickBooks execution and read-back verification through `Invoice` mode. |
 | Customer invoice versus vendor bill | resolved by Wes | Vendor invoices sent through this PR are entered as QuickBooks bills. Customer-invoice creation is out of scope. |
 | Heritage Management entity versus QuickBooks company file | resolved by Wes | Heritage Management property transactions are currently held in the `Buy Your Home LLC` QuickBooks company file. Preserve the Heritage Management property/project identity separately; do not select the visible `Heritage Management LLC` file for these transactions under the current rule. |
 | Browser versus connector execution | superseded by Wes decision | Durable decision `prmsg-jean-quickbooks-browser-control-decision-20260831-001` authorizes authenticated Chrome browser control as the interim method. The prior connector-only/browser-prohibited rule no longer controls while this authorization remains active. |

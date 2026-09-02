@@ -1,33 +1,39 @@
 ---
-name: quickbooks-invoice
-description: Enter and verify vendor invoices as QuickBooks bills from validated, authorized Invoice Entry handoffs through Wes-authorized authenticated Chrome browser control or a later approved method. Use for Quickbooks Invoice vendor-bill intake, duplicate protection, controlled one-bill creation, read-back verification, outcome logging, and return to Invoice Entry. Do not use for invoice intake or approval, customer invoices, bill payment, paid status, void/delete, unrelated bookkeeping, or unscoped browser action.
+name: quickbooks
+description: Run authorized Buy Your Home QuickBooks workflows through explicitly defined modes. Use Invoice mode to enter and verify vendor bills from validated Invoice Entry handoffs. Do not use for invoice intake or approval, customer invoices, bill payment, paid status, void/delete, unrelated bookkeeping, or unscoped browser action.
 ---
 
-# Quickbooks Invoice
+# Quickbooks
 
 ## Source Of Truth
 
-- Project Room: `C:\Codex\Wiki Files\Project Rooms\Quickbooks Invoice`
-- Skill source: `C:\Codex\Wiki Files\skills\quickbooks-invoice\SKILL.md`
+- Project Room: `C:\Codex\Wiki Files\Project Rooms\Quickbooks`
+- Skill source: `C:\Codex\Wiki Files\skills\quickbooks\SKILL.md`
 - Registry: `C:\Codex\Wiki Files\Agents and Automations Registry.md`
 - Routing map: `C:\Codex\Wiki Files\Project Rooms\Jean Wright\working\dispatcher-routing-map.md`
-- Destination manifest: `C:\Codex\Wiki Files\config\pr-messaging-manifests\quickbooks-invoice.json`
+- Destination manifest: `C:\Codex\Wiki Files\config\pr-messaging-manifests\quickbooks.json`
 
 ## Dedicated Task
 
-- Task name: `Quickbooks Invoice`
+- Task name: `Quickbooks`
 - Thread id: `01a05967-9a05-7081-a62e-616b2d8e61fd`
 - Execution machine: `WES-VIDEOEDITOR`
 - Accept work only through this exact registered task after all readiness gates pass.
 
+## Modes
+
+### Invoice
+
+Use this mode for controlled vendor-bill creation and read-back verification from validated Invoice Entry handoffs. Invoice Entry owns intake, source validation, mappings, and approval; Quickbooks owns only the authorized QuickBooks execution and verification steps below.
+
 ## Messaging Readiness
 
-- Dispatchable: Yes - on `WES-VIDEOEDITOR` for validated Invoice Entry handoffs only
-- State: Unattended cross-machine dispatcher validation completed successfully.
+- Dispatchable: No - renamed identity validation pending on `WES-VIDEOEDITOR`
+- State: Pending messaging registration - not dispatchable.
 - Exact task id: `01a05967-9a05-7081-a62e-616b2d8e61fd`
-- Machine registration verified at `2026-08-31T21:43:02.1661378Z`; host access verified at `2026-08-31T22:31:07.8796039Z` on `WES-VIDEOEDITOR`
+- Machine registration is pending for the renamed `Quickbooks` identity; prior registration and host-access evidence belongs to `Quickbooks Invoice`.
 - Synthetic lifecycle: corrected record `prmsg-quickbooks-invoice-wve-readiness-correction-20260831-001` completed after exactly one notification with `synthetic_test: true`, exact identity and payload-hash verification, and no QuickBooks business action
-- Dispatcher validation: task `01a05d0c-8031-7d92-9474-ab2330008ddb` and automation `pr-messaging-dispatcher-wes-videoeditor` delivered `prmsg-invoice-entry-wve-dispatcher-unattended-validation-20260901-001` exactly once. The exact destination wrote `Accepted`, `Processing`, and `Completed` with `manual_intervention: false` and no business action.
+- Dispatcher validation: the prior `Quickbooks Invoice` identity completed `prmsg-invoice-entry-wve-dispatcher-unattended-validation-20260901-001` unattended. The renamed `Quickbooks` identity requires a new no-business-action lifecycle before dispatch resumes.
 
 Messaging readiness alone does not override the interim browser and per-bill safety gates.
 
@@ -69,7 +75,7 @@ QuickBooks may truncate a long `Bill no.` value. Read back the saved value and p
 
 1. Confirm the working folder is `C:\Codex\Wiki Files`.
 2. Read `AGENTS.md`, `Project Room Chat Startup Rule.md`, `Project Room File Ownership And Git Coordination Rule.md`, `Project Room Delegation Contract.md`, and `Project Room Messaging Rule.md`.
-3. Read the Quickbooks Invoice README, source inventory, duplicate/conflict log, missing-context file, and action log.
+3. Read the Quickbooks README, source inventory, duplicate/conflict log, missing-context file, and the Invoice action log.
 4. Check `git status --short --branch` and work on `main` unless Wes explicitly asks for a branch.
 5. Confirm Messaging Readiness, Interim Browser Readiness, and every per-bill gate before accepting production work.
 
@@ -111,8 +117,8 @@ Do not infer missing company, property entity, vendor, dates, line items, totals
 
 ## Outputs And Delivery
 
-- Durable outcomes: `C:\Codex\Wiki Files\Project Rooms\Quickbooks Invoice\working\quickbooks-invoice-action-log.md`
-- Review-ready reports when needed: `C:\Codex\Wiki Files\Project Rooms\Quickbooks Invoice\outputs\`
+- Durable outcomes: `C:\Codex\Wiki Files\Project Rooms\Quickbooks\working\quickbooks-invoice-action-log.md`
+- Review-ready reports when needed: `C:\Codex\Wiki Files\Project Rooms\Quickbooks\outputs\`
 - Return to Invoice Entry: QuickBooks bill id, company/file, property entity, vendor, amount, creation timestamp, read-back verification, duplicate-check result, and any blocker.
 
 ## Boundaries
@@ -127,16 +133,16 @@ Do not infer missing company, property entity, vendor, dates, line items, totals
 
 ## Git Rules
 
-- Commit only Quickbooks Invoice files and specifically authorized registry, routing, manifest, and index updates.
+- Commit only Quickbooks files and specifically authorized registry, routing, manifest, and index updates.
 - Leave unrelated dirty work untouched.
 - Push only under the Admin wiki push rules.
 
 ## Skill Deployment Gate
 
 - Editing or committing this canonical skill does not by itself deploy the behavior.
-- Track canonical commit, publication to `origin/main`, installed-tree equality on `WES-VIDEOEDITOR`, and activation in a newly started Quickbooks Invoice task as separate states in `Project Rooms\Quickbooks Invoice\working\skill-deployment-status.md`.
+- Track canonical commit, publication to `origin/main`, installed-tree equality on `WES-VIDEOEDITOR`, and activation in a newly started Quickbooks task as separate states in `Project Rooms\Quickbooks\working\skill-deployment-status.md`.
 - Do not describe a correction as deployed until every state is verified.
-- After installing with `tools\sync-codex-skills.ps1`, run `Project Rooms\Quickbooks Invoice\scripts\Test-QuickbooksInvoiceSkillDeployment.ps1` on the execution machine and require `machine_installation_ready: true`.
+- After installing with `tools\sync-codex-skills.ps1`, run `Project Rooms\Quickbooks\scripts\Test-QuickbooksSkillDeployment.ps1` on the execution machine and require `machine_installation_ready: true`.
 
 ## Start PR Pointer
 

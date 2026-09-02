@@ -36,13 +36,14 @@ function Get-DirectoryHash {
     }
 }
 
-$skillName = "quickbooks-invoice"
+$skillName = "quickbooks"
 $sourcePath = Join-Path $WikiRoot "skills\$skillName"
 $installedPath = Join-Path $CodexHome "skills\$skillName"
 $sourceHash = Get-DirectoryHash -Root $sourcePath
 $installedHash = Get-DirectoryHash -Root $installedPath
 
-$skillCommit = (& git -C $WikiRoot log -1 --format=%H -- "skills/$skillName").Trim()
+$skillCommitOutput = & git -C $WikiRoot log -1 --format=%H -- "skills/$skillName" 2>$null
+$skillCommit = if ($null -eq $skillCommitOutput) { "" } else { (@($skillCommitOutput) -join "").Trim() }
 $published = $false
 if ($skillCommit) {
     & git -C $WikiRoot merge-base --is-ancestor $skillCommit origin/main 2>$null

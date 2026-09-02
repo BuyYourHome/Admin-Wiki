@@ -1,4 +1,4 @@
-# Quickbooks Invoice Action Log
+# Quickbooks Invoice Mode Action Log
 
 Record durable outcomes only. Do not store credentials, tokens, full source documents, unnecessary personal data, or payment information.
 

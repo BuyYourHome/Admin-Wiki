@@ -50,7 +50,7 @@ Use [[Agent Unit Standard]] for the standard package behind an agent-like operat
 | Gracious Millionaire | Wiki-managed skill plus project room plus heartbeat automation | Active | Project-room heartbeat every 15 minutes during active window; on demand otherwise | `skills\gracious-millionaire\SKILL.md`; `Project Rooms\Gracious Millionaire\README.md`; `Project Rooms\Gracious Millionaire\working\intake-heartbeat-rules.md`; automation id `gracious-millionaire-project-room-heartbeat` |
 | Template to Project | Wiki-managed skill plus project room | Active | On demand | `skills\template-to-project\SKILL.md`; `Project Rooms\Template to Project\README.md`; `Project Rooms\Template to Project\Project Spreadsheet Expense Placement Rules.md` |
 | Invoice Entry | Wiki-managed skill plus project room, standalone backup cron monitor, shared Windows health-supervisor enrollment, and dedicated task | Active | Direct handoff is primary; backup monitor runs at noon and 4:00 PM without targeting the operational task; shared health supervisor performs a daily substantive review | `skills\invoice-entry\SKILL.md`; `Project Rooms\Invoice Entry\README.md`; app automation id `invoice-entry-to-projects-backup-heartbeat`; workflow-health id `invoice-entry` |
-| Quickbooks Invoice | Wiki-managed skill plus project room plus dedicated task | Active and dispatchable on `WES-VIDEOEDITOR` for validated Invoice Entry handoffs only | On demand after every per-invoice gate passes; receives validated Invoice Entry handoffs only | `skills\quickbooks-invoice\SKILL.md`; `Project Rooms\Quickbooks Invoice\README.md`; destination manifest `config\pr-messaging-manifests\quickbooks-invoice.json` |
+| Quickbooks | Wiki-managed skill plus project room plus dedicated task | Active on `WES-VIDEOEDITOR`; dispatch paused until renamed messaging identity validation completes | On demand by named mode; current `Invoice` mode receives validated Invoice Entry handoffs only | `skills\quickbooks\SKILL.md`; `Project Rooms\Quickbooks\README.md`; destination manifest `config\pr-messaging-manifests\quickbooks.json` |
 | Project Management Spreadsheet Rewrite | Planning/history project room now covered by Template to Project | Active/planning | On demand | `skills\template-to-project\SKILL.md`; `Project Rooms\Project Management Spreadsheet Rewrite\README.md` |
 | Property Trade Evaluation | Wiki-managed skill plus project room | Active | On demand | `skills\property-trade-evaluation\SKILL.md`; `Project Rooms\Property Trade Evaluation\README.md` |
 | Voices | Wiki-managed skill plus project room | Planning | On demand | `skills\voices\SKILL.md`; `Project Rooms\Voices\README.md` |
@@ -1259,27 +1259,28 @@ Current status:
 - First workbook for proving the workflow is Outrigger after Wes approves the Vendor Tabs Mode design.
 - Durable records are authoritative for cross-PR dispatches; direct messages are wake-up signals. The backup automation checks at noon and 4:00 PM Eastern for missed project-room packet handoffs and unresolved Invoice Entry queue records.
 
-## Quickbooks Invoice
+## Quickbooks
 
-Type: wiki-managed skill plus project room plus dedicated task.
+Type: wiki-managed skill plus project room plus dedicated task with named operating modes.
 
-Status: active and dispatchable on `WES-VIDEOEDITOR` only for validated Invoice Entry handoffs under the interim Chrome policy.
+Status: active on `WES-VIDEOEDITOR`; dispatch temporarily paused until the renamed `Quickbooks` messaging identity passes registration and unattended validation.
 
 Purpose:
 
-- Receive validated, authorized, structured invoice-creation handoffs from the registered Invoice Entry task.
-- Use an approved authenticated QuickBooks connector or API integration to create exactly one matching invoice.
+- Run authorized QuickBooks workflows through explicitly named modes.
+- In `Invoice` mode, receive validated, authorized, structured vendor-bill handoffs from the registered Invoice Entry task.
+- Use the authorized authenticated QuickBooks execution method to create exactly one matching bill.
 - Protect against duplicates, read the created record back, log the outcome, and return the verified result to Invoice Entry.
 
 Defined in:
 
-- `C:\Codex\Wiki Files\skills\quickbooks-invoice\SKILL.md`
-- `C:\Codex\Wiki Files\Project Rooms\Quickbooks Invoice\README.md`
-- `C:\Codex\Wiki Files\config\pr-messaging-manifests\quickbooks-invoice.json`
+- `C:\Codex\Wiki Files\skills\quickbooks\SKILL.md`
+- `C:\Codex\Wiki Files\Project Rooms\Quickbooks\README.md`
+- `C:\Codex\Wiki Files\config\pr-messaging-manifests\quickbooks.json`
 
 Dedicated task:
 
-- Task name: `Quickbooks Invoice`
+- Task name: `Quickbooks`
 - Thread id: `01a05967-9a05-7081-a62e-616b2d8e61fd`
 - Execution machine: `WES-VIDEOEDITOR`
 

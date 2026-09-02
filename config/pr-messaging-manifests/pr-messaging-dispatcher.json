@@ -12,7 +12,7 @@
     "classify delivery receipt, definitive failure, or ambiguity"
   ],
   "accepted_message_types": ["status", "improvement"],
-  "related_project_rooms": ["Create PR", "Jean Wright", "Quickbooks Invoice"],
+  "related_project_rooms": ["Create PR", "Jean Wright", "Quickbooks"],
   "limitations": [
     "never executes destination work",
     "never changes immutable payloads",

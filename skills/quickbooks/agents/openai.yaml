@@ -1,0 +1,4 @@
+interface:
+  display_name: "Quickbooks"
+  short_description: "Run controlled QuickBooks workflows by mode"
+  default_prompt: "Use $quickbooks in Invoice mode to process an authorized Invoice Entry handoff after confirming all messaging, browser, and per-bill gates."
