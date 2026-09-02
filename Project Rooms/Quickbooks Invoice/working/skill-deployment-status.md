@@ -5,7 +5,7 @@ A canonical skill correction is not deployed merely because it was edited or com
 | Change | Canonical commit | Published to `origin/main` | Execution machine | Installed tree matches canonical | New-session activation | Overall status |
 | --- | --- | --- | --- | --- | --- | --- |
 | `QB-001` retained Intuit credential rule | `04113ca3` | Yes | `WES-VIDEOEDITOR` | Yes; tree SHA-256 `1ABABFE3C929ACC8A51E1F5E4CC79DC0EA54205C0789B0AF2156C2D5A5010F06` | Verified in task `01a05967-9a05-7081-a62e-616b2d8e61fd` through new-turn message `prmsg-quickbooks-skill-activation-wve-20260901-001` | Deployed |
-| `SKILL-001` deployment gate and checker | `b8f99453`; Windows PowerShell compatibility `66e46f09` | Yes | `WES-VIDEOEDITOR` | Yes; `machine_installation_ready: true` under Windows PowerShell 5.1 | Verified in the same separate dispatcher-triggered turn; installed retained-account and deployment-gate rules were read and acknowledged | Deployed |
+| `QB-003` deployment gate and checker | `b8f99453`; Windows PowerShell compatibility `66e46f09` | Yes | `WES-VIDEOEDITOR` | Yes; `machine_installation_ready: true` under Windows PowerShell 5.1 | Verified in the same separate dispatcher-triggered turn; installed retained-account and deployment-gate rules were read and acknowledged | Deployed |
 
 ## Required Evidence
 
