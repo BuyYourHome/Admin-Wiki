@@ -6,7 +6,7 @@ This is the authoritative current-state register for Invoice Entry. Read it befo
 
 ## Operating State
 
-- Status: `Active - Poyner Spruill Invoice 1277608 Entered In QuickBooks; Unpaid`
+- Status: `Active - September 2 Queue Remediation Complete; Open Holds Recorded`
 - Primary intake: direct Doc Scan or Email Monitor handoff; authorized versioned Manager Time Card packets are also supported for Time Card intake.
 - Current task: `019fbf4f-c629-7dd1-a3f6-0de33de0ed8f`.
 - Canonical skill: `C:\Codex\Wiki Files\skills\invoice-entry\SKILL.md`.
@@ -123,10 +123,12 @@ Classified working files:
 - Greenview Works invoice `000380`: 908 Pond St, `$100.00`, dated/due 2026-09-02, service date 2026-08-29, with August 14 and August 29 lawn service. No duplicate was found. Persistent PDF retention, project worksheet, and QuickBooks mapping remain unresolved; no downstream action occurred.
 - Meridian Waste account `50-32856 2`: exact Outlook attachment `Billing50-32856 2_153.pdf`, 169,518 bytes. Prior property-file history associates the account with Pond, but the current invoice facts remain unverified because host security blocked local PDF download from the cross-task wake-up.
 - Meridian Waste account `50-36858 4`: exact Outlook attachment `Billing50-36858 4_154.pdf`, 168,884 bytes. Project and current invoice facts remain unverified because host security blocked local PDF download from the cross-task wake-up.
-- NCAOC August statistics: source explicitly is not an invoice; 77 transactions total `$30.03`, corroborating parent invoice `41247772`. Supporting evidence was reconciled once and created no second obligation. The parent invoice remains separately unresolved.
+- NCAOC August statistics are `Completed` as `$30.03` supporting evidence only. Corrected parent invoice `41247772` is `Blocked` because the reported PDF attachment is not persistently retrievable; no second obligation or downstream action was created.
 - Detailed evidence: `working\create-vendor-invoice\2026-09-02-email-monitor-batch\processing-log.md`.
 - No approval, payment, vendor contact, payment portal, filing, workbook posting, QuickBooks action, or paid status occurred.
-- Central final-state writes for this five-record batch were refused by the host safety gate because Wes had not directly authorized these non-Poyner records in this task. All five remain `Processing` centrally. Do not repeat intake analysis; obtain Wes's explicit authorization here, then write the recorded Needs Wes / Blocked / Completed results.
+- Wes directly authorized the September 2 remediation. Central results now read: Greenview `000379` and `000380` `Needs Wes`; both Meridian records `Blocked`; NCAOC August statistics `Completed`; and the three malformed Reinsure Pro, Josh, and NCAOC parents `Blocked` as superseded without business-payload processing.
+- Reinsure Pro duplicate Outlook copies are reconciled once as payment evidence for one `$174.30` credit-card payment ending `3223`, applied to Buy Your Home LLC invoice `1545904` dated `2026-09-01`. No second payment or obligation was created. The underlying invoice and project/accounting allocation remain missing.
+- Josh September 1 is recorded once in new period invoice `INV-JKLLC-20260915-001`: source-stated `115 Rose Brooke Drive`, 6:00 AM-3:45 PM, sanding, `9h45m`, with no inferred break. Canonical allocation is `20-HM - 115 Rosebrooks Dr`. Open-period draft delivery `IE-EMAIL-20260902-JOSH-SEMIMONTHLY-DAILY-DRAFT-010` was sent exactly once through OfficeAssist and Sent Items-verified at `2026-09-02T20:37:11Z`; no approval, finalization, filing, posting, QuickBooks routing, payment, or paid status occurred.
 - Truist Simple Business Checking ending `1254`: September 1 availability notices ending `AClUGMKQAAAA==` and `AClUGMKAAAAA==` are one duplicate source group under `prmsg-email-monitor-route-vendor-invoice-20260901-truist-1254-statement-001`. They add no statement contents or obligation and are consolidated into the existing retrieval hold. Do not access the portal, infer amounts, create a bill, post, approve, pay, or mark paid.
 
 ## Verified Delivery Evidence

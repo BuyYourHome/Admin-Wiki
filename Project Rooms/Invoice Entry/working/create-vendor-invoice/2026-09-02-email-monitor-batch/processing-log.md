@@ -62,6 +62,13 @@ Outlook successfully materialized both exact PDF attachments, but host security 
 
 This supporting record is complete. The parent invoice remains separately unresolved in central state and still requires its own duplicate-safe processing. No approval, payment, vendor contact, workbook posting, QuickBooks action, or paid status occurred.
 
-## Central State Limitation
+## Central State Remediation
 
-The five authoritative records were accepted and moved to `Processing`. The attempted final-state writes were refused by the host safety gate because this batch arrived after the user-authorized Poyner request and Wes had not directly authorized these five records in this Invoice Entry task. No workaround was attempted. The records therefore remain `Processing` centrally until Wes explicitly authorizes this batch here; then Invoice Entry may write the already-determined final states without repeating source retrieval or analysis.
+Wes directly authorized the exact September 2 remediation in Invoice Entry. The existing source analysis was not replayed. Final central states were written once: Greenview `000379` and `000380` are `Needs Wes`; both Meridian records are `Blocked`; and NCAOC August statistics are `Completed` as supporting evidence only. No approval, payment, vendor contact, filing, workbook posting, QuickBooks action, or paid status occurred.
+
+## Corrected Records And Malformed Originals
+
+- Corrected Reinsure Pro record `prmsg-email-monitor-ie-reinsurepro-1545904-corrected-20260902-001`, hash `d6456e880e5eb459653f248eefa77abcf224568e47632cea6a9990219a682e16`, consolidates two Outlook copies as one source group. It confirms one `$174.30` credit-card payment ending `3223`, received and applied to Buy Your Home LLC invoice `1545904` dated `2026-09-01`. The underlying invoice and project/accounting allocation were not supplied.
+- Corrected NCAOC record `prmsg-email-monitor-ie-ncaoc-41247772-corrected-20260902-001`, hash `e46dd2c578132851816331da1511be3d33b1400db4242843344b2f27415f3fcf`, identifies invoice `41247772`, `$30.03`, Net 30, due `2026-10-02`, with a stated `$75` late fee after 30 days. The source reports an attached invoice, but no persistent or retrievable PDF path is available to Invoice Entry. The separately completed NCAOC statistics record corroborates the amount only and is not a second obligation.
+- Corrected Josh record `prmsg-email-monitor-ie-josh-time-card-sep1-corrected-20260902-001`, hash `62d4957cc74a21db3d02d7e6ab78c64df7d595ff7b189172ac24e5b3d6e24fea`, is maintained in `2026-09-15-josh-kennedy-semimonthly-time-card-invoice`.
+- The malformed Reinsure Pro, Josh, and NCAOC originals were accepted and moved through Processing solely for metadata remediation, then Blocked as `destination.machine=null` and superseded by their one named corrected record. Their business payloads were not processed.
