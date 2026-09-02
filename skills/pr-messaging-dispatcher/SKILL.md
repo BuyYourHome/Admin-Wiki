@@ -22,7 +22,7 @@ Provide the host-local wake-up layer for Project Room messages addressed to task
 1. Read the canonical heartbeat prompt and messaging rules at every run.
 2. Treat each scheduler invocation as a new operational run. Do not carry forward a prior one-turn diagnostic, read-only, or no-claim instruction after that earlier turn ends. Only an explicit persistent pause or disable instruction from Wes suppresses an active scheduled run.
 3. Determine the actual local computer name.
-4. Run the deterministic claim helper once through `powershell.exe -NoProfile -ExecutionPolicy Bypass -File`. It owns queue selection, exact manifest and registration checks, bounded retry eligibility, structured skip diagnostics, local dispatcher-health output, and `StartAttempt` through the canonical manager. Do not invoke the script directly on a host whose execution policy blocks scripts.
+4. Run the deterministic claim helper once through `powershell.exe -NoProfile -ExecutionPolicy Bypass -File` using an approved unrestricted/escalated shell execution under the normal Windows identity so its saved SMB credential is available. The offline sandbox intentionally cannot authenticate to the central share; sandbox `Access is denied` is not host-unavailable evidence. The helper owns queue selection, exact manifest and registration checks, bounded retry eligibility, structured skip diagnostics, local dispatcher-health output, and `StartAttempt` through the canonical manager. Do not invoke the script directly on a host whose execution policy blocks scripts.
 5. If the tool wrapper fails before PowerShell starts, retry the identical wrapper once. A pre-execution wrapper retry is not another helper run or delivery attempt. Report the exact underlying error after a second wrapper failure.
 6. When the helper returns a claim, notify the returned exact destination once without reinterpreting eligibility or authorization. Identify the notification as a wake-up signal and require canonical-record verification.
 7. When the helper returns no claim, end silently when its candidate and skip counts are consistent. Report an internally inconsistent result as an actionable helper blocker.
@@ -46,6 +46,8 @@ Provide the host-local wake-up layer for Project Room messages addressed to task
 - Use one task and heartbeat per computer.
 - WES-VIDEOEDITOR task: `PR Messaging Dispatcher - WES-VIDEOEDITOR`, task `01a05d0c-8031-7d92-9474-ab2330008ddb`.
 - WES-VIDEOEDITOR automation id: `pr-messaging-dispatcher-wes-videoeditor`.
+- WESSTUDIO task: `PR Messaging Dispatcher - WESSTUDIO`, task `01a06337-1b59-7dc2-9586-6660eb7b5da7`.
+- WESSTUDIO automation id: `pr-messaging-dispatcher`.
 - OFFICEASSIST may use its existing Email Monitor dispatcher stage instead of a duplicate task.
 - A cross-machine Project Room is not dispatchable until an unattended remote-source lifecycle passes without manual pasting.
 - Store only a short pointer in the automation prompt requiring every run to reread `Project Rooms\PR Messaging Dispatcher\working\heartbeat-prompt.md` and `Project Room Messaging Rule.md`. Never copy the full policy into the automation prompt; copied policy becomes stale after repository updates.
