@@ -33,7 +33,7 @@ The workbook has no approved `Legal Expenses` vendor worksheet. Invoice Entry th
 - Filed PDF SHA-256: `2E61120798D9E667F6A60A6D3730068CACC473DC12B4C87E67C1C82F0A0C28E3`.
 - QuickBooks child: `prmsg-invoice-entry-quickbooks-poyner-1277608-20260901-001`.
 - Child payload hash: `af45347f5a35f85fdfbb8739e977a8c19346ea25747e60ba53e325f030b34b60`.
-- Destination: Quickbooks Invoice task `01a05967-9a05-7081-a62e-616b2d8e61fd` on `WES-VIDEOEDITOR`.
+- Destination task is now registered to the `Quickbooks` Project Room as `01a05967-9a05-7081-a62e-616b2d8e61fd` on `WES-VIDEOEDITOR`.
 - The child requires a live duplicate search, one save only if absent, full read-back, and a block if the exact project or any additional required mapping cannot be verified.
 - The 19 historical invoices were not sent for creation. Their completed audit remains authoritative: 13 exact matches and six ambiguous candidates.
 

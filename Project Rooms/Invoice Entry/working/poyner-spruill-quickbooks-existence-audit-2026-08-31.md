@@ -47,13 +47,13 @@ Each invoice number, invoice date, amount, client, and matter below was validate
 
 - Valid child message and dispatch: `prmsg-invoice-entry-poyner-spruill-qb-existence-audit-20260831-002`
 - Payload hash: `7b40a78b7e551453e98310a56287550848a3cd3c31ca0767be6acb9e8a56fb57`
-- Destination: Quickbooks Invoice task `01a05967-9a05-7081-a62e-616b2d8e61fd` on `WES-VIDEOEDITOR`
+- Destination task is now registered to the `Quickbooks` Project Room as `01a05967-9a05-7081-a62e-616b2d8e61fd` on `WES-VIDEOEDITOR`
 - Current state: `Completed`
 - Operation: read-only bill existence and duplicate audit
 - Required return: one `Found`, `Not Found`, `Ambiguous`, or `Blocked` result per invoice, with QuickBooks transaction ID when visible
 - Prohibited: any create, edit, save, payment, paid-status, email, vendor, mapping, or other QuickBooks data change
 
-The WES-VIDEOEDITOR dispatcher later delivered the exact immutable child. Quickbooks Invoice accepted it, completed the read-only audit, and wrote the authoritative return on `2026-09-01T18:56:55Z`.
+The WES-VIDEOEDITOR dispatcher later delivered the exact immutable child. The task now registered to `Quickbooks` accepted it, completed the read-only audit, and wrote the authoritative return on `2026-09-01T18:56:55Z`.
 
 An earlier pre-delivery control record, `prmsg-invoice-entry-poyner-spruill-qb-existence-audit-20260831-001`, serialized its aggregate as `$0.00`. It was blocked before notification or recipient action and must never be processed. The corrected `-002` child above is the only valid processable handoff.
 

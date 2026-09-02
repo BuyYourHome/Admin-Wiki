@@ -67,7 +67,7 @@ This skill owns:
 - preserving workbook formulas, formatting, selectors, tables, and links,
 - validating totals and downstream links,
 - uploading the verified workbook back to Teams/SharePoint when authorized,
-- evaluating each validated payable invoice for the exact QuickBooks company file and preparing a duplicate-safe handoff to Quickbooks Invoice,
+- evaluating each validated payable invoice for the exact QuickBooks company file and preparing a duplicate-safe handoff to the `Quickbooks` Project Room,
 - insertion notes and review questions.
 
 This skill does not own:
@@ -130,17 +130,17 @@ At every Invoice Entry startup and backup-monitor run:
 
 Queue presence authorizes intake only. It does not authorize approval, payment, filing, workbook posting, vendor contact, email delivery, or another gated action. A malformed, conflicting, or inaccessible record must be blocked; wrong-room work must be rejected with the same dispatch ID and a concise reason.
 
-## QuickBooks Invoice Routing
+## QuickBooks Routing
 
-Every received document that is a validated payable invoice must be evaluated for routing to the Quickbooks Invoice task `01a05967-9a05-7081-a62e-616b2d8e61fd` on `WES-VIDEOEDITOR`. This is a standing routing requirement after source validation and duplicate classification; it does not authorize Invoice Entry to operate QuickBooks itself.
+Every received document that is a validated payable invoice must be evaluated for routing to the exact `Quickbooks` Project Room, task `01a05967-9a05-7081-a62e-616b2d8e61fd`, on `WES-VIDEOEDITOR`. This is a standing routing requirement after source validation and duplicate classification; it does not authorize Invoice Entry to operate QuickBooks itself. Do not use the retired destination name `Quickbooks Invoice`.
 
-Before creating the immutable Quickbooks Invoice handoff:
+Before creating the immutable `Quickbooks` handoff:
 
 1. Confirm the source represents one actual payable invoice rather than a draft, estimate, statement, receipt, payment confirmation, duplicate, superseded presentation, denied item, or other non-payable evidence.
 2. Determine the exact QuickBooks company file from authoritative entity, bill-to, contract, property-ownership, or accounting evidence. A property address, mailbox, source folder, or vendor name alone is not proof of the company file.
 3. Resolve the exact vendor identity, invoice number, invoice date, amount, due date or terms when required, and the supported account/item, customer/project/job, class, location, tax, and line-allocation mappings required by the destination workflow.
 4. If the company file or another required accounting mapping is missing or conflicting, retain the invoice as `Needs Wes - QuickBooks Company Or Mapping` and state the exact decision required. Do not route an incomplete or guessed handoff.
-5. Deduplicate the handoff by source invoice identity and prior Invoice Entry/QuickBooks results. Require Quickbooks Invoice to perform a live duplicate search, save no more than one bill only when absent, and return a complete saved-bill read-back with the QuickBooks transaction ID when available.
+5. Deduplicate the handoff by source invoice identity and prior Invoice Entry/QuickBooks results. Require `Quickbooks` to perform a live duplicate search, save no more than one bill only when absent, and return a complete saved-bill read-back with the QuickBooks transaction ID when available.
 6. Preserve the invoice's actual approval and payment states. Routing or bill entry does not approve the invoice, authorize payment, prove payment, or create paid status.
 
 Project-related invoices have two independent destinations. They must continue through the applicable project-management spreadsheet workflow in addition to QuickBooks routing. QuickBooks entry does not replace project-cost recording, and project-spreadsheet insertion does not replace QuickBooks routing. Each destination keeps its own duplicate, authority, validation, and read-back requirements. If the project or worksheet is unresolved, hold that spreadsheet action without suppressing an otherwise complete QuickBooks handoff; if the responsible entity or QuickBooks company file is unresolved, hold the QuickBooks handoff without inventing a company.
@@ -149,7 +149,7 @@ Project-related invoices have two independent destinations. They must continue t
 
 - Treat validated Poyner Spruill payable invoices as project-related legal expenses for `20-HM - 115 Rosebrooks Dr`. Insert each bill once into that project's spreadsheet with work category `Legal Expenses` after the normal duplicate, rollback, save/reopen, and read-back controls.
 - If the workbook has no approved `Legal Expenses` vendor worksheet, keep the bill in `Review!tblInvoiceReview`, set `Work category` and `Recommended worksheet` to `Legal Expenses`, leave `Destination Worksheet` blank, and use `Needs Review`. Do not invent or create a vendor worksheet from Invoice Entry; Template to Project owns that structure.
-- The responsible entity and QuickBooks company are `Buy Your Home LLC`. The QuickBooks vendor is `Poyner Spruill LLP` (vendor ID `1389`), the intended customer/project/job is `115 Rosebrooks Dr`, and the expense category is `Legal Expenses`. Require the Quickbooks Invoice task to verify the exact displayed project and any other required mappings before one duplicate-safe save.
+- The responsible entity and QuickBooks company are `Buy Your Home LLC`. The QuickBooks vendor is `Poyner Spruill LLP` (vendor ID `1389`), the intended customer/project/job is `115 Rosebrooks Dr`, and the expense category is `Legal Expenses`. Require the `Quickbooks` task to verify the exact displayed project and any other required mappings before one duplicate-safe save.
 - File authoritative invoices and statements in the established synced folder `Property/20-HM-115 Rosebrooks Dr/Lawsuit/Billing`.
 - Before naming a new file, inspect the current authoritative `Billing` folder and follow the naming convention established by comparable files there. If the existing names do not establish one clear convention for that document type, keep the proposed file held and ask Wes instead of inventing a new pattern.
 - Statements and payment confirmations are reconciliation evidence only unless the document independently establishes a payable invoice. Filing a statement does not authorize creation of a QuickBooks bill.
