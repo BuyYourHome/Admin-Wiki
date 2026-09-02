@@ -3,12 +3,60 @@ param(
     [string]$ManagerPath,
     [string]$ManifestDirectory,
     [string]$ClientConfigPath = (Join-Path $env:LOCALAPPDATA "BuyYourHome\PRMessaging\client.json"),
+    [string]$HealthPath,
     [string]$ActorProjectRoom = "PR Messaging Dispatcher",
     [Parameter(Mandatory = $true)]
     [string]$ActorTaskId
 )
 
 $ErrorActionPreference = "Stop"
+$runStartedAtUtc = [DateTime]::UtcNow.ToString("o")
+
+if ([string]::IsNullOrWhiteSpace($HealthPath)) {
+    $HealthPath = Join-Path $env:LOCALAPPDATA "BuyYourHome\PRMessaging\dispatcher-health.json"
+}
+
+function Write-DispatcherHealth {
+    param(
+        [string]$Status,
+        [string]$Detail,
+        [Nullable[bool]]$Claimed = $null,
+        [int]$CandidateCount = 0,
+        [string]$MessageId = $null
+    )
+
+    try {
+        $healthDirectory = Split-Path $HealthPath -Parent
+        if (-not (Test-Path -LiteralPath $healthDirectory)) {
+            New-Item -ItemType Directory -Path $healthDirectory -Force | Out-Null
+        }
+        $health = [pscustomobject][ordered]@{
+            schema_version = 1
+            machine = $env:COMPUTERNAME
+            dispatcher_task_id = $ActorTaskId
+            status = $Status
+            detail = $Detail
+            claimed = $Claimed
+            candidate_count = $CandidateCount
+            message_id = $MessageId
+            run_started_at_utc = $runStartedAtUtc
+            updated_at_utc = [DateTime]::UtcNow.ToString("o")
+        }
+        $temporaryPath = "$HealthPath.tmp"
+        $health | ConvertTo-Json -Depth 8 | Set-Content -LiteralPath $temporaryPath -Encoding UTF8
+        Move-Item -LiteralPath $temporaryPath -Destination $HealthPath -Force
+    }
+    catch {
+        # Health reporting must never alter dispatch eligibility or queue state.
+    }
+}
+
+trap {
+    Write-DispatcherHealth -Status "Failed" -Detail $_.Exception.Message
+    throw
+}
+
+Write-DispatcherHealth -Status "Running" -Detail "Claim evaluation started."
 
 if ([string]::IsNullOrWhiteSpace($ManagerPath)) {
     $ManagerPath = Join-Path $PSScriptRoot "Manage-ProjectRoomMessage.ps1"
@@ -45,25 +93,61 @@ $candidates = @($records | Where-Object {
     $_.state -in @("Queued", "Delivery Ambiguous")
 } | Sort-Object created_at_utc)
 
+$skipCounts = [ordered]@{
+    receipt_or_result = 0
+    pending_attempt = 0
+    attempts_exhausted = 0
+    manifest_missing = 0
+    task_id_mismatch = 0
+    execution_machine_mismatch = 0
+    message_type_not_accepted = 0
+    registration_mismatch = 0
+    not_dispatchable = 0
+}
+
 foreach ($record in $candidates) {
-    if ($null -ne $record.receipt -or $null -ne $record.result) { continue }
+    if ($null -ne $record.receipt -or $null -ne $record.result) {
+        $skipCounts.receipt_or_result++
+        continue
+    }
 
     $attempts = @($record.attempts)
-    if (@($attempts | Where-Object { $_.outcome -eq "Pending" }).Count -gt 0) { continue }
-    if ([int]$record.attempt_count -ge [int]$record.max_attempts) { continue }
+    if (@($attempts | Where-Object { $_.outcome -eq "Pending" }).Count -gt 0) {
+        $skipCounts.pending_attempt++
+        continue
+    }
+    if ([int]$record.attempt_count -ge [int]$record.max_attempts) {
+        $skipCounts.attempts_exhausted++
+        continue
+    }
 
     $room = [string]$record.destination.project_room
-    if (-not $manifests.ContainsKey($room)) { continue }
+    if (-not $manifests.ContainsKey($room)) {
+        $skipCounts.manifest_missing++
+        continue
+    }
     $manifest = $manifests[$room]
 
-    if ([string]$manifest.task_id -ne [string]$record.destination.task_id) { continue }
-    if ([string]$manifest.execution_machine -ne $machine) { continue }
-    if ([string]$record.message_type -notin @($manifest.accepted_message_types)) { continue }
+    if ([string]$manifest.task_id -ne [string]$record.destination.task_id) {
+        $skipCounts.task_id_mismatch++
+        continue
+    }
+    if ([string]$manifest.execution_machine -ne $machine) {
+        $skipCounts.execution_machine_mismatch++
+        continue
+    }
+    if ([string]$record.message_type -notin @($manifest.accepted_message_types)) {
+        $skipCounts.message_type_not_accepted++
+        continue
+    }
 
     $registration = @($client.registrations | Where-Object {
         $_.project_room -eq $room -and $_.task_id -eq $record.destination.task_id
     })
-    if ($registration.Count -ne 1) { continue }
+    if ($registration.Count -ne 1) {
+        $skipCounts.registration_mismatch++
+        continue
+    }
 
     $validationException = (
         $manifest.dispatchable -ne $true -and
@@ -73,7 +157,10 @@ foreach ($record in $candidates) {
         $record.authorization.business_action_authorized -ne $true -and
         $record.payload.business_action_performed -ne $true
     )
-    if ($manifest.dispatchable -ne $true -and -not $validationException) { continue }
+    if ($manifest.dispatchable -ne $true -and -not $validationException) {
+        $skipCounts.not_dispatchable++
+        continue
+    }
 
     $attemptNumber = [int]$record.attempt_count + 1
     $attemptId = "dispatcher-$($machine.ToLowerInvariant())-$($record.message_id)-$attemptNumber"
@@ -83,7 +170,7 @@ foreach ($record in $candidates) {
         -ActorProjectRoom $ActorProjectRoom `
         -ActorTaskId $ActorTaskId | ConvertFrom-Json
 
-    [pscustomobject][ordered]@{
+    $claim = [pscustomobject][ordered]@{
         claimed = $true
         message_id = $updated.message_id
         dispatch_id = $updated.dispatch_id
@@ -95,12 +182,21 @@ foreach ($record in $candidates) {
         attempt_count = $updated.attempt_count
         max_attempts = $updated.max_attempts
         notification_instruction = "Notify the exact destination task once. Require Accepted, Processing, and a valid final state for this same message id and payload hash."
-    } | ConvertTo-Json -Depth 10
+        candidate_count = $candidates.Count
+        skip_counts = [pscustomobject]$skipCounts
+    }
+    Write-DispatcherHealth -Status "Completed" -Detail "One eligible record was claimed." -Claimed $true -CandidateCount $candidates.Count -MessageId $updated.message_id
+    $claim | ConvertTo-Json -Depth 10
     return
 }
 
-[pscustomobject][ordered]@{
+$noClaim = [pscustomobject][ordered]@{
     claimed = $false
     machine = $machine
+    candidate_count = $candidates.Count
     eligible_record_count = 0
-} | ConvertTo-Json
+    oldest_candidate_message_id = if ($candidates.Count -gt 0) { $candidates[0].message_id } else { $null }
+    skip_counts = [pscustomobject]$skipCounts
+}
+Write-DispatcherHealth -Status "Completed" -Detail "No eligible record was claimed." -Claimed $false -CandidateCount $candidates.Count
+$noClaim | ConvertTo-Json -Depth 10

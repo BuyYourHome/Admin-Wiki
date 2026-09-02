@@ -21,14 +21,15 @@ Provide the host-local wake-up layer for Project Room messages addressed to task
 
 1. Read the canonical heartbeat prompt and messaging rules at every run.
 2. Determine the actual local computer name.
-3. Run the deterministic claim helper once through `powershell.exe -NoProfile -ExecutionPolicy Bypass -File`. It owns queue selection, exact manifest and registration checks, bounded retry eligibility, and `StartAttempt` through the canonical manager. Do not invoke the script directly on a host whose execution policy blocks scripts.
-4. When the helper returns a claim, notify the returned exact destination once without reinterpreting eligibility or authorization.
-5. When the helper returns no claim, end silently.
-6. Require `dispatchable: true`, except for one exact manifest-authorized `validation_ready` synthetic record that authorizes and performs no business action. Never use that exception for production work.
-7. `StartAttempt` must already exist before exactly one local notification.
-8. Require the destination to write `Accepted`, `Processing`, and one valid final state.
-9. Mark definitive failure `NotDelivered` and uncertainty `DeliveryAmbiguous`.
-10. Remain silent on empty polls and unchanged conditions.
+3. Run the deterministic claim helper once through `powershell.exe -NoProfile -ExecutionPolicy Bypass -File`. It owns queue selection, exact manifest and registration checks, bounded retry eligibility, structured skip diagnostics, local dispatcher-health output, and `StartAttempt` through the canonical manager. Do not invoke the script directly on a host whose execution policy blocks scripts.
+4. If the tool wrapper fails before PowerShell starts, retry the identical wrapper once. A pre-execution wrapper retry is not another helper run or delivery attempt. Report the exact underlying error after a second wrapper failure.
+5. When the helper returns a claim, notify the returned exact destination once without reinterpreting eligibility or authorization. Identify the notification as a wake-up signal and require canonical-record verification.
+6. When the helper returns no claim, end silently when its candidate and skip counts are consistent. Report an internally inconsistent result as an actionable helper blocker.
+7. Require `dispatchable: true`, except for one exact manifest-authorized `validation_ready` synthetic record that authorizes and performs no business action. Never use that exception for production work.
+8. `StartAttempt` must already exist before exactly one local notification.
+9. Require the destination to write `Accepted`, `Processing`, and one valid final state.
+10. Wait up to 120 seconds for destination progress and reconcile the authoritative record again immediately before marking a definitive failure `NotDelivered` or uncertainty `DeliveryAmbiguous`.
+11. Remain silent on empty polls and unchanged conditions.
 
 ## Boundaries
 

@@ -14,6 +14,8 @@ In scope:
 - Reconcile immutable identity, payload hash, manifest, task id, local registration, state, and prior attempts.
 - Write `StartAttempt` before one concise same-ID local task notification.
 - Require destination receipts and preserve uncertain delivery honestly.
+- Record deterministic candidate/skip diagnostics and machine-local dispatcher health without treating health as delivery evidence.
+- Retry one tool-wrapper failure only when PowerShell never started and no queue state changed.
 - Remain silent on empty polls.
 
 Out of scope:
@@ -39,7 +41,9 @@ Out of scope:
 
 Status: `Active and unattended validation complete on WES-VIDEOEDITOR`.
 
-The task and five-minute heartbeat are active on `WES-VIDEOEDITOR`. It delivered the exact Quickbooks Invoice synthetic lifecycle without manual activation, and the destination completed the required receipt lifecycle with no business action.
+The task and five-minute heartbeat are active on `WES-VIDEOEDITOR`. It delivered the exact Quickbooks synthetic lifecycle without manual activation, and the destination completed the required receipt lifecycle with no business action.
+
+The dispatcher now distinguishes a pre-PowerShell tool-wrapper failure from a helper or queue failure. It retries one pre-execution wrapper failure, records deterministic skip counts, writes machine-local health to `%LOCALAPPDATA%\BuyYourHome\PRMessaging\dispatcher-health.json`, and allows up to 120 seconds for destination startup before final delivery reconciliation.
 
 ## Matching Skill
 
