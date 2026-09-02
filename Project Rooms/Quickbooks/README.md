@@ -91,13 +91,13 @@ QuickBooks may truncate a long value entered in `Bill no.`. Read back the exact 
 
 ## Messaging Readiness
 
-- Dispatchable: No - renamed identity validation pending on `WES-VIDEOEDITOR`
-- State: Pending messaging registration - not dispatchable.
+- Dispatchable: No - renamed identity unattended validation pending on `WES-VIDEOEDITOR`
+- State: Validation ready for exact synthetic record `prmsg-quickbooks-renamed-identity-validation-20260902-001`; not dispatchable.
 - Destination manifest: `C:\Codex\Wiki Files\config\pr-messaging-manifests\quickbooks.json`
 - Execution machine: `WES-VIDEOEDITOR`
 - Dedicated task id: `01a05967-9a05-7081-a62e-616b2d8e61fd`
-- Machine registration: pending for the renamed `Quickbooks` identity; prior identity verification is historical evidence only
-- Host access: prior host access verified at `2026-08-31T22:31:07.8796039Z`; recheck required during rename validation
+- Machine registration: renamed `Quickbooks` identity verified at `2026-09-02T02:08:10.9144177Z`
+- Host access: verified during renamed-identity registration at `2026-09-02T02:08:10.9144177Z`
 - Synthetic lifecycle: corrected record `prmsg-quickbooks-invoice-wve-readiness-correction-20260831-001` completed at `2026-08-31T22:35:23.2843551Z` after exactly one notification with `synthetic_test: true`, exact identity and payload-hash verification, and no QuickBooks business action
 - Dispatcher validation: task `01a05d0c-8031-7d92-9474-ab2330008ddb` and automation `pr-messaging-dispatcher-wes-videoeditor` delivered `prmsg-invoice-entry-wve-dispatcher-unattended-validation-20260901-001` exactly once. The former Quickbooks Invoice identity wrote `Accepted`, `Processing`, and `Completed` by `2026-09-01T16:15:32.4201488Z` with `manual_intervention: false` and no business action. The renamed `Quickbooks` identity must pass a replacement no-business-action lifecycle before dispatch resumes.
 - Readiness validator: pending for the renamed identity; the prior `ready: true` result belongs to `Quickbooks Invoice`.
@@ -129,9 +129,9 @@ Passing Project Room messaging readiness does not override the per-bill browser 
 
 ## Current Status
 
-Status: Active, with dispatch temporarily paused while the renamed `Quickbooks` messaging identity is registered and validated on `WES-VIDEOEDITOR`. The interim Chrome and per-bill controls remain unchanged.
+Status: Active, with dispatch temporarily paused while the registered `Quickbooks` identity completes exact synthetic record `prmsg-quickbooks-renamed-identity-validation-20260902-001` on `WES-VIDEOEDITOR`. The interim Chrome and per-bill controls remain unchanged.
 
-The task id and host were previously validated under the `Quickbooks Invoice` identity. The renamed `Quickbooks` registration and lifecycle are still pending. At `2026-08-31T22:31:07.0879564Z`, read-only Chrome validation reached the authenticated `Choose your company` screen and showed `Buy Your Home LLC`, `BYH 401K LLC`, `Heritage Management LLC`, `Home Acct`, and `Sell Your Home LLC`. No company was selected and no QuickBooks data changed. Every vendor bill remains subject to validated Invoice Entry authorization, visible exact-company confirmation, dispatch/action-log reconciliation, duplicate search, exact vendor and bill-line mappings, one save, saved-bill read-back, ambiguous-result stop, no-payment, no-send, and no-unrelated-bookkeeping controls.
+The unchanged task id is now registered under `Quickbooks`, the renamed skill is installed, and the superseded installed `quickbooks-invoice` copy is removed. The new identity remains non-dispatchable until its exact unattended lifecycle passes. At `2026-08-31T22:31:07.0879564Z`, read-only Chrome validation reached the authenticated `Choose your company` screen and showed `Buy Your Home LLC`, `BYH 401K LLC`, `Heritage Management LLC`, `Home Acct`, and `Sell Your Home LLC`. No company was selected and no QuickBooks data changed. Every vendor bill remains subject to validated Invoice Entry authorization, visible exact-company confirmation, dispatch/action-log reconciliation, duplicate search, exact vendor and bill-line mappings, one save, saved-bill read-back, ambiguous-result stop, no-payment, no-send, and no-unrelated-bookkeeping controls.
 
 ## Matching Skill
 

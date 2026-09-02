@@ -6,7 +6,7 @@ A canonical skill correction is not deployed merely because it was edited or com
 | --- | --- | --- | --- | --- | --- | --- |
 | `QB-001` retained Intuit credential rule | `04113ca3` | Yes | `WES-VIDEOEDITOR` | Yes; tree SHA-256 `1ABABFE3C929ACC8A51E1F5E4CC79DC0EA54205C0789B0AF2156C2D5A5010F06` | Verified in task `01a05967-9a05-7081-a62e-616b2d8e61fd` through new-turn message `prmsg-quickbooks-skill-activation-wve-20260901-001` | Deployed |
 | `QB-003` deployment gate and checker | `b8f99453`; Windows PowerShell compatibility `66e46f09` | Yes | `WES-VIDEOEDITOR` | Yes; `machine_installation_ready: true` under Windows PowerShell 5.1 | Verified in the same separate dispatcher-triggered turn; installed retained-account and deployment-gate rules were read and acknowledged | Deployed |
-| `QB-004` rename to Quickbooks with `Invoice` mode | Pending rename commit | No | `WES-VIDEOEDITOR` | Pending renamed installed-tree check | Pending renamed task/session activation | Not deployed |
+| `QB-004` rename to Quickbooks with `Invoice` mode | `69050252` | Yes | `WES-VIDEOEDITOR` | Yes; tree SHA-256 `B5763F8321295410C5AB305F388E89FEF60E607BE875AE19FA22B861DE73810F` and old installed copy removed | Pending exact renamed-identity validation turn `prmsg-quickbooks-renamed-identity-validation-20260902-001` | Installation ready; activation pending |
 
 ## Required Evidence
 
@@ -22,3 +22,4 @@ Do not store credentials, session data, or copied skill bodies in this ledger.
 
 - Installation verification: `prmsg-quickbooks-skill-deployment-wve-20260901-001`, completed `2026-09-02T01:23:23Z` with no QuickBooks or Chrome action.
 - New-turn activation verification: `prmsg-quickbooks-skill-activation-wve-20260901-001`, completed `2026-09-02T01:32:55Z` with `machine_installation_ready: true` and `new_turn_activation_verified: true`.
+- Renamed-skill installation verification: `prmsg-quickbooks-identity-rename-wve-20260902-001`, completed `2026-09-02T02:09:34.4351815Z` with task title and registration `Quickbooks`, installed-tree match, old-copy removal, and no QuickBooks or Chrome action.
