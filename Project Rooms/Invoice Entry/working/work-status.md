@@ -127,6 +127,7 @@ Classified working files:
 - Detailed evidence: `working\create-vendor-invoice\2026-09-02-email-monitor-batch\processing-log.md`.
 - No approval, payment, vendor contact, payment portal, filing, workbook posting, QuickBooks action, or paid status occurred.
 - Central final-state writes for this five-record batch were refused by the host safety gate because Wes had not directly authorized these non-Poyner records in this task. All five remain `Processing` centrally. Do not repeat intake analysis; obtain Wes's explicit authorization here, then write the recorded Needs Wes / Blocked / Completed results.
+- Truist Simple Business Checking ending `1254`: September 1 availability notices ending `AClUGMKQAAAA==` and `AClUGMKAAAAA==` are one duplicate source group under `prmsg-email-monitor-route-vendor-invoice-20260901-truist-1254-statement-001`. They add no statement contents or obligation and are consolidated into the existing retrieval hold. Do not access the portal, infer amounts, create a bill, post, approve, pay, or mark paid.
 
 ## Verified Delivery Evidence
 
