@@ -92,7 +92,7 @@ QuickBooks may truncate a long value entered in `Bill no.`. Read back the exact 
 ## Messaging Readiness
 
 - Dispatchable: No - renamed identity unattended validation pending on `WES-VIDEOEDITOR`
-- State: Validation ready for exact synthetic record `prmsg-quickbooks-renamed-identity-validation-20260902-001`; not dispatchable.
+- State: Validation ready for linked correction record `prmsg-quickbooks-renamed-identity-validation-20260902-correction-001`; not dispatchable. The parent record was blocked after two delivery attempts and an installed-tree mismatch, so it cannot be reused.
 - Destination manifest: `C:\Codex\Wiki Files\config\pr-messaging-manifests\quickbooks.json`
 - Execution machine: `WES-VIDEOEDITOR`
 - Dedicated task id: `01a05967-9a05-7081-a62e-616b2d8e61fd`
@@ -129,7 +129,7 @@ Passing Project Room messaging readiness does not override the per-bill browser 
 
 ## Current Status
 
-Status: Active, with dispatch temporarily paused while the registered `Quickbooks` identity completes exact synthetic record `prmsg-quickbooks-renamed-identity-validation-20260902-001` on `WES-VIDEOEDITOR`. The interim Chrome and per-bill controls remain unchanged.
+Status: Active, with dispatch temporarily paused while the registered `Quickbooks` identity synchronizes the published skill and completes linked correction record `prmsg-quickbooks-renamed-identity-validation-20260902-correction-001` on `WES-VIDEOEDITOR`. The interim Chrome and per-bill controls remain unchanged.
 
 The unchanged task id is now registered under `Quickbooks`, the renamed skill is installed, and the superseded installed `quickbooks-invoice` copy is removed. The new identity remains non-dispatchable until its exact unattended lifecycle passes. At `2026-08-31T22:31:07.0879564Z`, read-only Chrome validation reached the authenticated `Choose your company` screen and showed `Buy Your Home LLC`, `BYH 401K LLC`, `Heritage Management LLC`, `Home Acct`, and `Sell Your Home LLC`. No company was selected and no QuickBooks data changed. Every vendor bill remains subject to validated Invoice Entry authorization, visible exact-company confirmation, dispatch/action-log reconciliation, duplicate search, exact vendor and bill-line mappings, one save, saved-bill read-back, ambiguous-result stop, no-payment, no-send, and no-unrelated-bookkeeping controls.
 

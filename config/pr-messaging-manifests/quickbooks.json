@@ -13,7 +13,7 @@
     "status": "validation_ready",
     "machine_registration_verified_at_utc": "2026-09-02T02:08:10.9144177Z",
     "host_access_verified_at_utc": "2026-09-02T02:08:10.9144177Z",
-    "validation_message_id": "prmsg-quickbooks-renamed-identity-validation-20260902-001",
+    "validation_message_id": "prmsg-quickbooks-renamed-identity-validation-20260902-correction-001",
     "lifecycle_completed_at_utc": null,
     "notification_count": 0,
     "dispatcher_task_id": "01a05d0c-8031-7d92-9474-ab2330008ddb",
@@ -21,6 +21,7 @@
     "cross_machine_source": "WESSTUDIO",
     "manual_intervention": null,
     "readiness_validator_checked_at_utc": null,
+    "prior_failed_validation_message_id": "prmsg-quickbooks-renamed-identity-validation-20260902-001",
     "prior_manual_validation_message_id": "prmsg-quickbooks-invoice-wve-readiness-correction-20260831-001",
     "prior_manual_validation_completed_at_utc": "2026-08-31T22:35:23.2843551Z"
   },

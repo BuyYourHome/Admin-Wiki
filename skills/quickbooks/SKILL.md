@@ -29,9 +29,9 @@ Use this mode for controlled vendor-bill creation and read-back verification fro
 ## Messaging Readiness
 
 - Dispatchable: No - renamed identity unattended validation pending on `WES-VIDEOEDITOR`
-- State: Validation ready for exact synthetic record `prmsg-quickbooks-renamed-identity-validation-20260902-001`; not dispatchable.
+- State: Validation ready for linked correction record `prmsg-quickbooks-renamed-identity-validation-20260902-correction-001`; not dispatchable. The parent record is immutable and failed because it received two delivery attempts and the installed skill did not match the published canonical tree.
 - Exact task id: `01a05967-9a05-7081-a62e-616b2d8e61fd`
-- Machine registration and host access for `Quickbooks` were verified at `2026-09-02T02:08:10.9144177Z`; the exact unattended lifecycle is still pending.
+- Machine registration and host access for `Quickbooks` were verified at `2026-09-02T02:08:10.9144177Z`; the linked correction lifecycle and installed-tree synchronization are pending.
 - Synthetic lifecycle: corrected record `prmsg-quickbooks-invoice-wve-readiness-correction-20260831-001` completed after exactly one notification with `synthetic_test: true`, exact identity and payload-hash verification, and no QuickBooks business action
 - Dispatcher validation: the prior `Quickbooks Invoice` identity completed `prmsg-invoice-entry-wve-dispatcher-unattended-validation-20260901-001` unattended. The renamed `Quickbooks` identity requires a new no-business-action lifecycle before dispatch resumes.
 
