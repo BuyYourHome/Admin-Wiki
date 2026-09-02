@@ -28,12 +28,13 @@ Use this mode for controlled vendor-bill creation and read-back verification fro
 
 ## Messaging Readiness
 
-- Dispatchable: No - renamed identity unattended validation pending on `WES-VIDEOEDITOR`
-- State: Validation ready for linked correction record `prmsg-quickbooks-renamed-identity-validation-20260902-correction-001`; not dispatchable. The parent record is immutable and failed because it received two delivery attempts and the installed skill did not match the published canonical tree.
+- Dispatchable: Yes - exact renamed identity is ready on `WES-VIDEOEDITOR`
+- State: Ready. Linked correction record `prmsg-quickbooks-renamed-identity-validation-20260902-correction-001` completed unattended at `2026-09-02T09:40:19.2516703Z` after exactly one delivered notification, with `manual_intervention: false` and no QuickBooks business action. The blocked parent remains immutable historical evidence and was not reused.
 - Exact task id: `01a05967-9a05-7081-a62e-616b2d8e61fd`
-- Machine registration and host access for `Quickbooks` were verified at `2026-09-02T02:08:10.9144177Z`; the linked correction lifecycle and installed-tree synchronization are pending.
+- Machine registration and host access for `Quickbooks` were verified at `2026-09-02T02:08:10.9144177Z`.
 - Synthetic lifecycle: corrected record `prmsg-quickbooks-invoice-wve-readiness-correction-20260831-001` completed after exactly one notification with `synthetic_test: true`, exact identity and payload-hash verification, and no QuickBooks business action
-- Dispatcher validation: the prior `Quickbooks Invoice` identity completed `prmsg-invoice-entry-wve-dispatcher-unattended-validation-20260901-001` unattended. The renamed `Quickbooks` identity requires a new no-business-action lifecycle before dispatch resumes.
+- Dispatcher validation: task `01a05d0c-8031-7d92-9474-ab2330008ddb` and automation `pr-messaging-dispatcher-wes-videoeditor` delivered linked correction `prmsg-quickbooks-renamed-identity-validation-20260902-correction-001` exactly once. The exact `Quickbooks` task wrote `Accepted`, `Processing`, and `Completed`; the result records `notification_count: 1`, `manual_intervention: false`, `machine_installation_ready: true`, `new_turn_activation_verified: true`, matching canonical and installed hashes, and no business action.
+- Readiness validator: `ready: true` on `WES-VIDEOEDITOR` at `2026-09-02T12:39:40.8102237Z`.
 
 Messaging readiness alone does not override the interim browser and per-bill safety gates.
 

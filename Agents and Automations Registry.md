@@ -50,7 +50,7 @@ Use [[Agent Unit Standard]] for the standard package behind an agent-like operat
 | Gracious Millionaire | Wiki-managed skill plus project room plus heartbeat automation | Active | Project-room heartbeat every 15 minutes during active window; on demand otherwise | `skills\gracious-millionaire\SKILL.md`; `Project Rooms\Gracious Millionaire\README.md`; `Project Rooms\Gracious Millionaire\working\intake-heartbeat-rules.md`; automation id `gracious-millionaire-project-room-heartbeat` |
 | Template to Project | Wiki-managed skill plus project room | Active | On demand | `skills\template-to-project\SKILL.md`; `Project Rooms\Template to Project\README.md`; `Project Rooms\Template to Project\Project Spreadsheet Expense Placement Rules.md` |
 | Invoice Entry | Wiki-managed skill plus project room, standalone backup cron monitor, shared Windows health-supervisor enrollment, and dedicated task | Active | Direct handoff is primary; backup monitor runs at noon and 4:00 PM without targeting the operational task; shared health supervisor performs a daily substantive review | `skills\invoice-entry\SKILL.md`; `Project Rooms\Invoice Entry\README.md`; app automation id `invoice-entry-to-projects-backup-heartbeat`; workflow-health id `invoice-entry` |
-| Quickbooks | Wiki-managed skill plus project room plus dedicated task | Active on `WES-VIDEOEDITOR`; renamed identity registered and exact unattended validation pending | On demand by named mode; current `Invoice` mode receives validated Invoice Entry handoffs only after dispatch resumes | `skills\quickbooks\SKILL.md`; `Project Rooms\Quickbooks\README.md`; destination manifest `config\pr-messaging-manifests\quickbooks.json` |
+| Quickbooks | Wiki-managed skill plus project room plus dedicated task | Active and dispatchable on `WES-VIDEOEDITOR`; renamed identity readiness verified | On demand by named mode; current `Invoice` mode receives validated Invoice Entry handoffs subject to all per-bill gates | `skills\quickbooks\SKILL.md`; `Project Rooms\Quickbooks\README.md`; destination manifest `config\pr-messaging-manifests\quickbooks.json` |
 | Project Management Spreadsheet Rewrite | Planning/history project room now covered by Template to Project | Active/planning | On demand | `skills\template-to-project\SKILL.md`; `Project Rooms\Project Management Spreadsheet Rewrite\README.md` |
 | Property Trade Evaluation | Wiki-managed skill plus project room | Active | On demand | `skills\property-trade-evaluation\SKILL.md`; `Project Rooms\Property Trade Evaluation\README.md` |
 | Voices | Wiki-managed skill plus project room | Planning | On demand | `skills\voices\SKILL.md`; `Project Rooms\Voices\README.md` |
@@ -1263,7 +1263,7 @@ Current status:
 
 Type: wiki-managed skill plus project room plus dedicated task with named operating modes.
 
-Status: active on `WES-VIDEOEDITOR`; renamed `Quickbooks` identity registered, with dispatch paused until exact unattended validation record `prmsg-quickbooks-renamed-identity-validation-20260902-001` completes.
+Status: active and dispatchable on `WES-VIDEOEDITOR`; renamed `Quickbooks` identity registration and linked unattended correction `prmsg-quickbooks-renamed-identity-validation-20260902-correction-001` are complete.
 
 Purpose:
 
@@ -1287,9 +1287,9 @@ Dedicated task:
 Readiness and operating gates:
 
 - Wes authorized authenticated Chrome browser control as the interim execution method; the earlier Zapier MCP setup path is superseded while that authorization remains active.
-- The earlier no-production-impact authenticated company-chooser validation on `WESSTUDIO` is historical only; repeat it on `WES-VIDEOEDITOR` before enabling dispatch.
+- No-production-impact authenticated company-chooser validation passed on `WES-VIDEOEDITOR`; no company was selected and no QuickBooks data changed.
 - Every invoice still requires a validated Invoice Entry handoff, visible exact-company confirmation, action-log and QuickBooks duplicate search, one save, complete read-back, and reconciliation before any retry after an ambiguous browser result.
-- Exact task registration, host access, one-notification Project Room messaging lifecycle, and no-production-impact authenticated company-chooser validation passed on `WES-VIDEOEDITOR`.
+- Exact task registration, host access, one-notification linked correction lifecycle, and no-production-impact authenticated company-chooser validation passed on `WES-VIDEOEDITOR`. The correction completed at `2026-09-02T09:40:19.2516703Z` with `manual_intervention: false` and no business action.
 
 Important limitations:
 
