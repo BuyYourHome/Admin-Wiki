@@ -13,10 +13,15 @@ function Get-DirectoryHash {
         return $null
     }
 
+    $normalizedRoot = [System.IO.Path]::GetFullPath($Root).TrimEnd("\") + "\"
     $entries = Get-ChildItem -LiteralPath $Root -Recurse -File |
         Sort-Object FullName |
         ForEach-Object {
-            $relative = [System.IO.Path]::GetRelativePath($Root, $_.FullName).Replace("\", "/")
+            $normalizedFile = [System.IO.Path]::GetFullPath($_.FullName)
+            if (-not $normalizedFile.StartsWith($normalizedRoot, [System.StringComparison]::OrdinalIgnoreCase)) {
+                throw "Skill file is outside the expected root: $normalizedFile"
+            }
+            $relative = $normalizedFile.Substring($normalizedRoot.Length).Replace("\", "/")
             $fileHash = (Get-FileHash -Algorithm SHA256 -LiteralPath $_.FullName).Hash
             "$relative|$fileHash"
         }
