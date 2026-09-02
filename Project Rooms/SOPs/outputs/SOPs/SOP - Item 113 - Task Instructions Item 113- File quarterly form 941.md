@@ -77,6 +77,7 @@ Accounting / Payroll Tax
 
 - Source email: `Project Rooms/SOPs/sources/emails/Task Instructions Item 113_ File quarterly form 941.msg`
 - Extracted note: `Project Rooms/SOPs/sources/extracted-emails/Item 113 - Task Instructions Item 113- File quarterly form 941.md`
+- Follow-up email reference: [[Project Rooms/SOPs/sources/extracted-emails/Item 113 - Follow-up source reference - 2026-09-02]]
 - Spreadsheet item: Not matched in current spreadsheet extract
 
 ## Review Notes
