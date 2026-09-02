@@ -20,16 +20,17 @@ Provide the host-local wake-up layer for Project Room messages addressed to task
 ## Required Behavior
 
 1. Read the canonical heartbeat prompt and messaging rules at every run.
-2. Determine the actual local computer name.
-3. Run the deterministic claim helper once through `powershell.exe -NoProfile -ExecutionPolicy Bypass -File`. It owns queue selection, exact manifest and registration checks, bounded retry eligibility, structured skip diagnostics, local dispatcher-health output, and `StartAttempt` through the canonical manager. Do not invoke the script directly on a host whose execution policy blocks scripts.
-4. If the tool wrapper fails before PowerShell starts, retry the identical wrapper once. A pre-execution wrapper retry is not another helper run or delivery attempt. Report the exact underlying error after a second wrapper failure.
-5. When the helper returns a claim, notify the returned exact destination once without reinterpreting eligibility or authorization. Identify the notification as a wake-up signal and require canonical-record verification.
-6. When the helper returns no claim, end silently when its candidate and skip counts are consistent. Report an internally inconsistent result as an actionable helper blocker.
-7. Require `dispatchable: true`, except for one exact manifest-authorized `validation_ready` synthetic record that authorizes and performs no business action. Never use that exception for production work.
-8. `StartAttempt` must already exist before exactly one local notification.
-9. Require the destination to write `Accepted`, `Processing`, and one valid final state.
-10. Wait up to 120 seconds for destination progress and reconcile the authoritative record again immediately before marking a definitive failure `NotDelivered` or uncertainty `DeliveryAmbiguous`.
-11. Remain silent on empty polls and unchanged conditions.
+2. Treat each scheduler invocation as a new operational run. Do not carry forward a prior one-turn diagnostic, read-only, or no-claim instruction after that earlier turn ends. Only an explicit persistent pause or disable instruction from Wes suppresses an active scheduled run.
+3. Determine the actual local computer name.
+4. Run the deterministic claim helper once through `powershell.exe -NoProfile -ExecutionPolicy Bypass -File`. It owns queue selection, exact manifest and registration checks, bounded retry eligibility, structured skip diagnostics, local dispatcher-health output, and `StartAttempt` through the canonical manager. Do not invoke the script directly on a host whose execution policy blocks scripts.
+5. If the tool wrapper fails before PowerShell starts, retry the identical wrapper once. A pre-execution wrapper retry is not another helper run or delivery attempt. Report the exact underlying error after a second wrapper failure.
+6. When the helper returns a claim, notify the returned exact destination once without reinterpreting eligibility or authorization. Identify the notification as a wake-up signal and require canonical-record verification.
+7. When the helper returns no claim, end silently when its candidate and skip counts are consistent. Report an internally inconsistent result as an actionable helper blocker.
+8. Require `dispatchable: true`, except for one exact manifest-authorized `validation_ready` synthetic record that authorizes and performs no business action. Never use that exception for production work.
+9. `StartAttempt` must already exist before exactly one local notification.
+10. Require the destination to write `Accepted`, `Processing`, and one valid final state.
+11. Wait up to 120 seconds for destination progress and reconcile the authoritative record again immediately before marking a definitive failure `NotDelivered` or uncertainty `DeliveryAmbiguous`.
+12. Remain silent on empty polls and unchanged conditions.
 
 ## Boundaries
 

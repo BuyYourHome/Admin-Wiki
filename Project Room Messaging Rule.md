@@ -38,6 +38,7 @@ The shared queue is cross-machine, but Codex task notification is host-local. A 
 
 - Every computer that hosts dispatchable Project Room tasks must have one active machine-local PR Messaging Dispatcher capability.
 - Use one dispatcher task and heartbeat per computer, not one heartbeat per destination Project Room.
+- Each scheduled dispatcher invocation is a new operational run. A one-turn diagnostic, read-only, or no-claim instruction from an earlier dispatcher task turn expires with that turn and must not suppress a later scheduled run. Only an explicit persistent pause or disable instruction from Wes may suppress an active dispatcher automation.
 - The OfficeAssist Email Monitor heartbeat may satisfy this requirement for `OFFICEASSIST` while its dispatcher stage remains active and verified. Other computers should use a dedicated `PR Messaging Dispatcher - <COMPUTERNAME>` task unless a documented local heartbeat already provides the same bounded behavior.
 - The local dispatcher polls only central records whose `destination.machine` exactly matches its own computer name and whose state is `Queued` or `Delivery Ambiguous`.
 - Use `tools\pr-messaging\Claim-ProjectRoomDispatch.ps1` to select and claim one eligible record deterministically. The helper must access and change the authoritative queue only through `Manage-ProjectRoomMessage.ps1`; the model must not redo or override its eligibility decision.

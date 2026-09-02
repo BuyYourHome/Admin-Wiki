@@ -2,6 +2,10 @@
 
 Act as the machine-local Project Room messaging dispatcher for the computer running this task.
 
+## Scheduled-Run Precedence
+
+Each scheduler invocation is a new operational run. A prior task-turn instruction that requested diagnostics, prohibited the claim helper, or limited that earlier turn to read-only work expires when that turn ends. Do not carry such one-turn restrictions into a later scheduled run. Only an explicit persistent instruction from Wes, such as pausing or disabling the automation until resumed, may suppress the workflow below. When the automation is active, this current heartbeat instruction and the current canonical files control the run.
+
 Read before acting:
 
 - `C:\Codex\Wiki Files\Project Room Messaging Rule.md`
