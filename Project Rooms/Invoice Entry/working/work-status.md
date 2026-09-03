@@ -1,12 +1,12 @@
 # Invoice Entry Current Work Status
 
-Last updated: 2026-09-02
+Last updated: 2026-09-03
 
 This is the authoritative current-state register for Invoice Entry. Read it before processing a handoff or opening a workbook. Packet files and processing logs remain the detailed evidence; when an older summary conflicts with this file, stop and reconcile the source before acting.
 
 ## Operating State
 
-- Status: `Active - September 2 Queue Remediation Complete; Open Holds Recorded`
+- Status: `Active - Josh September 1-15 Accumulation Current Through September 3; Open Holds Recorded`
 - Primary intake: direct Doc Scan or Email Monitor handoff; authorized versioned Manager Time Card packets are also supported for Time Card intake.
 - Current task: `019fbf4f-c629-7dd1-a3f6-0de33de0ed8f`.
 - Canonical skill: `C:\Codex\Wiki Files\skills\invoice-entry\SKILL.md`.
@@ -130,6 +130,7 @@ Classified working files:
 - Wes directly authorized the September 2 remediation. Central results now read: Greenview `000379` and `000380` `Needs Wes`; both Meridian records `Blocked`; NCAOC August statistics `Completed`; and the three malformed Reinsure Pro, Josh, and NCAOC parents `Blocked` as superseded without business-payload processing.
 - Reinsure Pro duplicate Outlook copies are reconciled once as payment evidence for one `$174.30` credit-card payment ending `3223`, applied to Buy Your Home LLC invoice `1545904` dated `2026-09-01`. No second payment or obligation was created. The underlying invoice and project/accounting allocation remain missing.
 - Josh September 1 is recorded once in new period invoice `INV-JKLLC-20260915-001`: source-stated `115 Rose Brooke Drive`, 6:00 AM-3:45 PM, sanding, `9h45m`, with no inferred break. Canonical allocation is `20-HM - 115 Rosebrooks Dr`. Open-period draft delivery `IE-EMAIL-20260902-JOSH-SEMIMONTHLY-DAILY-DRAFT-010` was sent exactly once through OfficeAssist and Sent Items-verified at `2026-09-02T20:37:11Z`; no approval, finalization, filing, posting, QuickBooks routing, payment, or paid status occurred.
+- Josh September 2 and 3 central records are `Completed` and recorded once in `INV-JKLLC-20260915-001`. Current period total is `27h30m`: Rosebrooks `25h45m` / `$2,535.99` and Pond `1h45m` / `$172.34`, totaling `$2,708.33`. The updated draft was regenerated and internally verified. The intake records prohibit contact with Josh, so no Email Delivery handoff was created and the prior September 1 send was not repeated.
 - Truist Simple Business Checking ending `1254`: September 1 availability notices ending `AClUGMKQAAAA==` and `AClUGMKAAAAA==` are one duplicate source group under `prmsg-email-monitor-route-vendor-invoice-20260901-truist-1254-statement-001`. They add no statement contents or obligation and are consolidated into the existing retrieval hold. Do not access the portal, infer amounts, create a bill, post, approve, pay, or mark paid.
 
 ## Verified Delivery Evidence
