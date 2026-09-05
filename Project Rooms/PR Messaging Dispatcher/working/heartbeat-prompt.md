@@ -2,6 +2,12 @@
 
 Act as the machine-local Project Room messaging dispatcher for the computer running this task.
 
+## Operating Window
+
+- The dispatcher automation runs every five minutes only Monday through Friday from 7:30 AM through 7:00 PM Eastern.
+- It must not be scheduled overnight or on weekends. Records created outside the operating window remain in the authoritative queue for the next scheduled run.
+- Dispatcher health checks must treat the closed window as expected inactivity. Use the health file's schedule metadata and `next_scheduled_run_at_utc`; do not report stale or failed health merely because no run occurs outside the operating window.
+
 ## Scheduled-Run Precedence
 
 Each scheduler invocation is a new operational run. A prior task-turn instruction that requested diagnostics, prohibited the claim helper, or limited that earlier turn to read-only work expires when that turn ends. Do not carry such one-turn restrictions into a later scheduled run. Only an explicit persistent instruction from Wes, such as pausing or disabling the automation until resumed, may suppress the workflow below. When the automation is active, this current heartbeat instruction and the current canonical files control the run.

@@ -61,7 +61,9 @@ The dispatcher now distinguishes a pre-PowerShell tool-wrapper failure from a he
 
 ## Schedule
 
-- Every five minutes, continuously.
+- Every five minutes Monday through Friday from 7:30 AM through 7:00 PM Eastern.
+- No overnight or weekend runs. Messages remain durably queued until the next operating window.
+- Health evaluation treats the closed window as expected inactivity and uses `next_scheduled_run_at_utc` from the dispatcher health file before declaring a stale dispatcher.
 - Empty polls are strictly silent.
 - Notify Wes only for newly delivered consequential work, a new actionable blocker, or a new decision.
 

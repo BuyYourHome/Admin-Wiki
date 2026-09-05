@@ -178,6 +178,8 @@ Use Task Health for Email Monitor task-context review and Wes-approved controlle
 
 Use Email Routing as the OfficeAssist mailbox intake funnel during the configured active window.
 
+When the OfficeAssist Email Monitor supplies the machine-local PR Messaging Dispatcher stage, run that dispatcher stage only Monday through Friday from 7:30 AM through 7:00 PM Eastern. Outside that window, continue any separately scheduled Email Monitor work but do not poll or claim Project Room messages. Those records remain in the authoritative queue for the next dispatcher operating window. Closed-window inactivity is expected and must not be reported as stale dispatcher health.
+
 For each new message:
 
 - check `OfficeAssist@BuyYourHomeLLC.com` Inbox, Task Instructions, and Accts Payable;

@@ -11,9 +11,58 @@ param(
 
 $ErrorActionPreference = "Stop"
 $runStartedAtUtc = [DateTime]::UtcNow.ToString("o")
+$dispatcherTimeZoneId = "Eastern Standard Time"
+$dispatcherWindowStart = [TimeSpan]::FromHours(7.5)
+$dispatcherWindowEnd = [TimeSpan]::FromHours(19)
 
 if ([string]::IsNullOrWhiteSpace($HealthPath)) {
     $HealthPath = Join-Path $env:LOCALAPPDATA "BuyYourHome\PRMessaging\dispatcher-health.json"
+}
+
+function Get-DispatcherScheduleState {
+    $timeZone = [TimeZoneInfo]::FindSystemTimeZoneById($dispatcherTimeZoneId)
+    $utcNow = [DateTime]::UtcNow
+    $localNow = [TimeZoneInfo]::ConvertTimeFromUtc($utcNow, $timeZone)
+    $isWeekday = $localNow.DayOfWeek -notin @([DayOfWeek]::Saturday, [DayOfWeek]::Sunday)
+    $isOpen = $isWeekday -and $localNow.TimeOfDay -ge $dispatcherWindowStart -and $localNow.TimeOfDay -le $dispatcherWindowEnd
+
+    $nextLocal = $null
+    if ($isWeekday) {
+        $windowStart = $localNow.Date.Add($dispatcherWindowStart)
+        if ($localNow -lt $windowStart) {
+            $nextLocal = $windowStart
+        }
+        elseif ($localNow.TimeOfDay -le $dispatcherWindowEnd) {
+            $minutesSinceStart = ($localNow - $windowStart).TotalMinutes
+            $nextOffsetMinutes = [Math]::Ceiling($minutesSinceStart / 5.0) * 5
+            $candidate = $windowStart.AddMinutes($nextOffsetMinutes)
+            if ($candidate -le $localNow) {
+                $candidate = $candidate.AddMinutes(5)
+            }
+            if ($candidate.TimeOfDay -le $dispatcherWindowEnd) {
+                $nextLocal = $candidate
+            }
+        }
+    }
+
+    if ($null -eq $nextLocal) {
+        $nextDate = $localNow.Date.AddDays(1)
+        while ($nextDate.DayOfWeek -in @([DayOfWeek]::Saturday, [DayOfWeek]::Sunday)) {
+            $nextDate = $nextDate.AddDays(1)
+        }
+        $nextLocal = $nextDate.Add($dispatcherWindowStart)
+    }
+
+    $unspecifiedNext = [DateTime]::SpecifyKind($nextLocal, [DateTimeKind]::Unspecified)
+    [pscustomobject][ordered]@{
+        time_zone = "America/New_York"
+        weekdays = @("Monday", "Tuesday", "Wednesday", "Thursday", "Friday")
+        start_local = "07:30"
+        end_local = "19:00"
+        interval_minutes = 5
+        is_open_now = $isOpen
+        next_scheduled_run_at_utc = [TimeZoneInfo]::ConvertTimeToUtc($unspecifiedNext, $timeZone).ToString("o")
+    }
 }
 
 function Write-DispatcherHealth {
@@ -26,12 +75,13 @@ function Write-DispatcherHealth {
     )
 
     try {
+        $schedule = Get-DispatcherScheduleState
         $healthDirectory = Split-Path $HealthPath -Parent
         if (-not (Test-Path -LiteralPath $healthDirectory)) {
             New-Item -ItemType Directory -Path $healthDirectory -Force | Out-Null
         }
         $health = [pscustomobject][ordered]@{
-            schema_version = 1
+            schema_version = 2
             machine = $env:COMPUTERNAME
             dispatcher_task_id = $ActorTaskId
             status = $Status
@@ -41,6 +91,7 @@ function Write-DispatcherHealth {
             message_id = $MessageId
             run_started_at_utc = $runStartedAtUtc
             updated_at_utc = [DateTime]::UtcNow.ToString("o")
+            schedule = $schedule
         }
         $temporaryPath = "$HealthPath.tmp"
         $health | ConvertTo-Json -Depth 8 | Set-Content -LiteralPath $temporaryPath -Encoding UTF8
