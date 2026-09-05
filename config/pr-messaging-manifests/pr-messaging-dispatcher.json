@@ -21,15 +21,16 @@
     "recipient readiness pending for the exact WES-VIDEOEDITOR dispatcher task; historical transport validation is not recipient proof"
   ],
   "messaging_readiness": {
-    "status": "pending",
-    "machine_registration_verified_at_utc": null,
-    "host_access_verified_at_utc": null,
-    "validation_message_id": null,
+    "status": "validation_ready",
+    "machine_registration_verified_at_utc": "2026-09-05T17:06:20.9498223Z",
+    "host_access_verified_at_utc": "2026-09-05T17:03:54.8495601Z",
+    "validation_message_id": "prmsg-create-pr-wve-dispatcher-recipient-validation-20260905-001",
+    "validation_payload_hash": "3920b0a0251234448410c1763bc8c33dab8370278e71ef29629b79974d4a89fe",
     "lifecycle_completed_at_utc": null,
     "notification_count": 0,
     "dispatcher_task_id": "01a05d0c-8031-7d92-9474-ab2330008ddb",
     "dispatcher_automation_id": "pr-messaging-dispatcher-wes-videoeditor",
-    "cross_machine_source": null,
+    "cross_machine_source": "WESSTUDIO",
     "manual_intervention": null
   },
   "historical_transport_validation": {
@@ -45,10 +46,25 @@
     "proves_dispatcher_recipient_readiness": false
   },
   "readiness_reconciliation": {
-    "message_id": "prmsg-jean-dispatcher-wve-readiness-lowtoken-20260905-001",
+    "message_id": "prmsg-wve-dispatcher-local-preflight-20260905-1705-001",
+    "payload_hash": "3205f813c772134494e96891a16279795fdd4f1b4e94b7870554839e455ef8c0",
+    "original_repair_message_id": "prmsg-jean-dispatcher-wve-readiness-lowtoken-20260905-001",
     "checked_on": "2026-09-05",
-    "status": "blocked_pending_execution_machine_validation",
-    "blocker": "WESSTUDIO Codex app has no readable match for the exact WES-VIDEOEDITOR owner task; local registration, host access and exact-recipient unattended lifecycle require verification on WES-VIDEOEDITOR.",
-    "instructions_path": "C:\\Codex\\Wiki Files\\Project Rooms\\Create PR\\outputs\\WES-VIDEOEDITOR Dispatcher Recipient Readiness Repair.md"
+    "status": "local_preflight_verified_validation_queued",
+    "local_preflight_verified_commit": "6090ac22946f3c008111c6f40fbdf902fbbff54c",
+    "windows_identity": "WES-VIDEOEDITOR\\IRAMa",
+    "exact_registration_count": 1,
+    "automation_status_reported": "ACTIVE",
+    "automation_schedule_reported": "Every five minutes Monday-Friday 07:30-19:00 America/New_York",
+    "automation_pointer_prompt_verified": true,
+    "earliest_authorized_window_start_utc": "2026-09-07T11:30:00Z",
+    "remaining_gates": [
+      "WES-VIDEOEDITOR must safely pull and verify this exact validation-ready manifest before the authorized run",
+      "unattended exact-recipient lifecycle after one real notification, including supported self-task enqueue",
+      "owner README and skill Messaging Readiness sections before readiness promotion",
+      "exact execution-machine validator and independent unattended evidence review before dispatchability promotion"
+    ],
+    "instructions_path": "C:\\Codex\\Wiki Files\\Project Rooms\\Create PR\\outputs\\WES-VIDEOEDITOR Dispatcher Recipient Readiness Repair.md",
+    "validation_queue_path": "C:\\Codex\\Wiki Files\\Project Rooms\\Create PR\\outputs\\WES-VIDEOEDITOR Dispatcher Validation Queue 2026-09-05.md"
   }
 }

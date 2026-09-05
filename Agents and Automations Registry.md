@@ -67,11 +67,12 @@ Use [[Agent Unit Standard]] for the standard package behind an agent-like operat
 - Owner automation: `pr-messaging-dispatcher-wes-videoeditor`.
 - Matching skill: `skills\pr-messaging-dispatcher\SKILL.md`.
 - Destination manifest: `config\pr-messaging-manifests\pr-messaging-dispatcher.json`.
-- Recipient status as reconciled 2026-09-05: **Pending messaging registration - not dispatchable**. Exact execution-machine registration and authenticated host-access timestamps remain unverified; an exact-recipient unattended lifecycle is still required.
+- Recipient status as reconciled 2026-09-05: **Pending messaging registration - not dispatchable**. Local preflight `prmsg-wve-dispatcher-local-preflight-20260905-1705-001` verified exact execution-machine registration, authenticated host access, and the existing active weekday automation. Manifest status `validation_ready` permits only `prmsg-create-pr-wve-dispatcher-recipient-validation-20260905-001`; an exact-recipient unattended lifecycle, safe self-task notification, and owner readiness documentation remain required before promotion.
 - Historical transport evidence: `prmsg-invoice-entry-wve-dispatcher-unattended-validation-20260901-001` completed for Quickbooks Invoice task `01a05967-9a05-7081-a62e-616b2d8e61fd`. That evidence does not validate the dispatcher itself as a recipient.
 - WESSTUDIO task `01a06337-1b59-7dc2-9586-6660eb7b5da7` remains local transport only, not a substitute implementation owner. OFFICEASSIST retains its documented Email Monitor dispatcher stage.
 - This readiness repair changes no live automation or schedule. Existing deployment/schedule notes in the summary retain their original scope; they do not assert recipient readiness.
 - Reconciliation: `prmsg-jean-dispatcher-wve-readiness-lowtoken-20260905-001`; local validation instructions: [[Project Rooms/Create PR/outputs/WES-VIDEOEDITOR Dispatcher Recipient Readiness Repair]].
+- Current queued test and remaining WES-VIDEOEDITOR pull step: [[Project Rooms/Create PR/outputs/WES-VIDEOEDITOR Dispatcher Validation Queue 2026-09-05]]. The next authorized window begins Monday, 2026-09-07, at 7:30 AM Eastern; no live schedule was changed.
 
 ## Jean Wright / Office Assistant
 
