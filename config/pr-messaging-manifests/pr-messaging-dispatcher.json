@@ -18,18 +18,37 @@
     "never changes immutable payloads",
     "never dispatches another machine's records",
     "silent on empty polls",
-    "pending local WES-VIDEOEDITOR deployment"
+    "recipient readiness pending for the exact WES-VIDEOEDITOR dispatcher task; historical transport validation is not recipient proof"
   ],
   "messaging_readiness": {
-    "status": "active_validated",
+    "status": "pending",
     "machine_registration_verified_at_utc": null,
     "host_access_verified_at_utc": null,
-    "validation_message_id": "prmsg-invoice-entry-wve-dispatcher-unattended-validation-20260901-001",
-    "lifecycle_completed_at_utc": "2026-09-01T16:15:32.4201488Z",
-    "notification_count": 1,
+    "validation_message_id": null,
+    "lifecycle_completed_at_utc": null,
+    "notification_count": 0,
     "dispatcher_task_id": "01a05d0c-8031-7d92-9474-ab2330008ddb",
     "dispatcher_automation_id": "pr-messaging-dispatcher-wes-videoeditor",
+    "cross_machine_source": null,
+    "manual_intervention": null
+  },
+  "historical_transport_validation": {
+    "message_id": "prmsg-invoice-entry-wve-dispatcher-unattended-validation-20260901-001",
+    "payload_hash": "d4cac473eebf9f2eb494a9ad4bd7065c770cd2574bb84a10f7ad38d837ad9f31",
+    "destination_project_room": "Quickbooks Invoice",
+    "destination_task_id": "01a05967-9a05-7081-a62e-616b2d8e61fd",
+    "destination_machine": "WES-VIDEOEDITOR",
+    "completed_at_utc": "2026-09-01T16:15:32.4201488Z",
+    "notification_count": 1,
     "cross_machine_source": "WESSTUDIO",
-    "manual_intervention": false
+    "manual_intervention": false,
+    "proves_dispatcher_recipient_readiness": false
+  },
+  "readiness_reconciliation": {
+    "message_id": "prmsg-jean-dispatcher-wve-readiness-lowtoken-20260905-001",
+    "checked_on": "2026-09-05",
+    "status": "blocked_pending_execution_machine_validation",
+    "blocker": "WESSTUDIO Codex app has no readable match for the exact WES-VIDEOEDITOR owner task; local registration, host access and exact-recipient unattended lifecycle require verification on WES-VIDEOEDITOR.",
+    "instructions_path": "C:\\Codex\\Wiki Files\\Project Rooms\\Create PR\\outputs\\WES-VIDEOEDITOR Dispatcher Recipient Readiness Repair.md"
   }
 }

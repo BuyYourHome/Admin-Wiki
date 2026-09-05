@@ -61,6 +61,18 @@ Use [[Agent Unit Standard]] for the standard package behind an agent-like operat
 | Investigate Computer | Wiki-managed skill plus project room plus heartbeat automation | Active | Daily at 6:00 AM Eastern; email Wes only when an issue is detected | `skills\investigate-computer\SKILL.md`; `Project Rooms\Investigate Computer\README.md`; app automation id `investigate-computer-daily-check` |
 | Jenny Email Summary | Behavior inside Email Monitor heartbeat | Active | Runs once daily at/after 8:00 AM Eastern with the Email Monitor heartbeat; emails Jenny from OfficeAssist and verifies Sent Items | `skills\email-monitor\SKILL.md`; `Email Monitor` prompt notes |
 
+## PR Messaging Dispatcher
+
+- Canonical implementation owner: `PR Messaging Dispatcher - WES-VIDEOEDITOR`, task `01a05d0c-8031-7d92-9474-ab2330008ddb`, execution machine `WES-VIDEOEDITOR`.
+- Owner automation: `pr-messaging-dispatcher-wes-videoeditor`.
+- Matching skill: `skills\pr-messaging-dispatcher\SKILL.md`.
+- Destination manifest: `config\pr-messaging-manifests\pr-messaging-dispatcher.json`.
+- Recipient status as reconciled 2026-09-05: **Pending messaging registration - not dispatchable**. Exact execution-machine registration and authenticated host-access timestamps remain unverified; an exact-recipient unattended lifecycle is still required.
+- Historical transport evidence: `prmsg-invoice-entry-wve-dispatcher-unattended-validation-20260901-001` completed for Quickbooks Invoice task `01a05967-9a05-7081-a62e-616b2d8e61fd`. That evidence does not validate the dispatcher itself as a recipient.
+- WESSTUDIO task `01a06337-1b59-7dc2-9586-6660eb7b5da7` remains local transport only, not a substitute implementation owner. OFFICEASSIST retains its documented Email Monitor dispatcher stage.
+- This readiness repair changes no live automation or schedule. Existing deployment/schedule notes in the summary retain their original scope; they do not assert recipient readiness.
+- Reconciliation: `prmsg-jean-dispatcher-wve-readiness-lowtoken-20260905-001`; local validation instructions: [[Project Rooms/Create PR/outputs/WES-VIDEOEDITOR Dispatcher Recipient Readiness Repair]].
+
 ## Jean Wright / Office Assistant
 
 Type: assistant profile and operating role.
