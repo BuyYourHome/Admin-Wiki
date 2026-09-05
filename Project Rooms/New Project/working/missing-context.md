@@ -8,3 +8,4 @@
 | City, state, ZIP, and county for 5512 Desert Willow Ln | Needed to complete `Profit!E2` and `Profit!G2` without guessing. | missing |
 | Whether the Tensity working copy is acceptable for production templates | Wes allowed Tensity for this test, but it has not been approved as the default clean template. | open |
 | Whether inherited `#REF!` matches should be fixed before using this workbook | Verification found `Gnatt Chart!AP14` and `Paint!J46` formula-error matches outside the cleaned Profit inputs. | open |
+| Standard folder/file package for a production property setup | Needed to know whether this PR should create only the project-management workbook or additional standard folders/files for each property. | open |

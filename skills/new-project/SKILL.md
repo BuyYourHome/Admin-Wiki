@@ -1,11 +1,11 @@
 ---
 name: new-project
-description: Start and maintain the Buy Your Home New Project project room. Use when Wes asks to use, develop, scope, organize, inventory, or produce work from `Project Rooms\New Project`, or when a request explicitly refers to the New Project room or New Project skill.
+description: Create and track Buy Your Home New Project property folder/file packages under the New Project project room. Use when Wes asks to create a new property project, use/develop the New Project room, inventory New Project property setups, or produce work from `Project Rooms\New Project`.
 ---
 
 # New Project
 
-Use this skill to organize and develop the `New Project` project room.
+Use this skill to create new Buy Your Home property project folders/files and track all properties handled by the `New Project` project room.
 
 ## Required Context
 
@@ -19,29 +19,35 @@ Read these files first:
 - `C:\Codex\Wiki Files\Project Rooms\New Project\working\source-inventory.md`
 - `C:\Codex\Wiki Files\Project Rooms\New Project\working\duplicate-and-conflict-log.md`
 - `C:\Codex\Wiki Files\Project Rooms\New Project\working\missing-context.md`
+- `C:\Codex\Wiki Files\Project Rooms\New Project\working\property-tracker.md`
 
 ## Workflow
 
 1. Work only from `C:\Codex\Wiki Files`.
 2. Keep New Project materials under `C:\Codex\Wiki Files\Project Rooms\New Project`.
-3. When Wes says to create a new project, suggest an existing project to use as the template for the new project spreadsheet and associated folders, then wait for Wes to confirm that template or name another one.
-4. Expect Wes to provide the new project address. Use that address for the new project spreadsheet and associated folders after the template project is confirmed.
-5. When the new project spreadsheet is created, review the `Profit` sheet and blank out specific values that came from the prototype/template project and should not carry into the new project. Preserve formulas, labels, structural formatting, and reusable assumptions unless Wes says to change them.
-6. If it is unclear whether a `Profit` sheet value is template-specific or a reusable formula/assumption, record it for review instead of deleting it.
-7. If Wes has not defined the project scope, record the missing scope in `working\missing-context.md` and ask only for the minimum needed next decision.
-8. Put raw source files or source notes in `sources\`.
-9. Update `working\source-inventory.md` before drafting from sources.
-10. Record duplicate, outdated, conflicting, or unclear sources in `working\duplicate-and-conflict-log.md`.
-11. Keep analysis, experiments, and drafts in `working\`.
-12. Put review-ready drafts and final deliverables in `outputs\`.
-13. Mark unsupported factual claims instead of smoothing over gaps.
-14. Commit durable wiki changes locally. Push only under the Admin wiki push rules.
+3. Track every property setup request in `working\property-tracker.md`.
+4. When Wes says to create a new project, suggest an existing project to use as the template for the new project spreadsheet and associated folders, then wait for Wes to confirm that template or name another one.
+5. Expect Wes to provide the new project address. Use that address for the new project spreadsheet and associated folders after the template project is confirmed.
+6. Create an address-specific output folder under `outputs\` for the property files.
+7. Create any needed address-specific working folder under `working\` for cleanup notes, review questions, validation notes, or setup logs.
+8. When the new project spreadsheet is created, review the `Profit` sheet and blank out specific values that came from the prototype/template project and should not carry into the new project. Preserve formulas, labels, structural formatting, and reusable assumptions unless Wes says to change them.
+9. If it is unclear whether a `Profit` sheet value is template-specific or a reusable formula/assumption, record it for review instead of deleting it.
+10. Update `working\property-tracker.md` with the confirmed template, output folder, spreadsheet path, cleanup status, blockers, and final setup status.
+11. If Wes has not provided the minimum address, template, or setup scope needed to create files safely, record the missing context in `working\missing-context.md` and ask only for the minimum needed next decision.
+12. Put raw source files or source notes in `sources\`.
+13. Update `working\source-inventory.md` before drafting from sources.
+14. Record duplicate, outdated, conflicting, or unclear sources in `working\duplicate-and-conflict-log.md`.
+15. Keep analysis, experiments, and drafts in `working\`.
+16. Put created property files, review-ready drafts, and final deliverables in `outputs\`.
+17. Mark unsupported factual claims instead of smoothing over gaps.
+18. Commit durable wiki changes locally. Push only under the Admin wiki push rules.
 
 ## Boundaries
 
 - Do not move unrelated project-room materials into New Project unless Wes explicitly says they belong there.
 - Do not treat New Project as a substitute for an existing specialized room when a better room already exists.
 - Do not create final deliverables from unclear or missing source context.
+- Do not treat property tracking as authority to edit live project workbooks, invoice workflows, contract packages, or another PR's files.
 - Preserve original source files.
 ## Start PR Pointer
 
