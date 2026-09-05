@@ -15,6 +15,19 @@
   },
   "modePanels": {
     "Dashboard": {
+      "Transaction Attention": {
+        "title": "Transaction Attention",
+        "intro": "Review sanitized transaction records that need a Wes decision, automatic delivery recovery, or owning-workflow follow-up.",
+        "stateText": "Transaction Attention loaded. This view is read-only and never performs another Project Room's work.",
+        "controls": [
+          {
+            "type": "transaction-attention",
+            "label": "Current transaction attention",
+            "availability": "lan-readonly",
+            "description": "Reads current sanitized Blocked, Needs Wes, and Delivery Ambiguous transaction states from the authoritative Project Room queue."
+          }
+        ]
+      },
       "Bridge Test": {
         "title": "Dashboard Bridge Test",
         "intro": "Use this helper to prove the Dashboard-to-Create-PR bridge path without browser popups, manual paste, or any delegated Project Room work.",

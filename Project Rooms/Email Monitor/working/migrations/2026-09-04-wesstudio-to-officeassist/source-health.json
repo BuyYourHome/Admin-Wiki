@@ -1,0 +1,16 @@
+﻿{
+    "schema_version":  1,
+    "workflow_id":  "officeassist-morning-email-summary-and-instruction-monitor",
+    "display_name":  "Email Monitor",
+    "assigned_machine":  "WESSTUDIO",
+    "observed_machine":  "WESSTUDIO",
+    "status":  "completed",
+    "mode":  "Email Routing",
+    "run_started_at_utc":  "2026-09-05T02:02:12.1497030Z",
+    "run_completed_at_utc":  "2026-09-05T02:03:12.7725373Z",
+    "last_success_at_utc":  "2026-09-05T02:03:12.7725373Z",
+    "last_update_at_utc":  "2026-09-05T02:03:12.7725373Z",
+    "consecutive_failures":  0,
+    "failure_stage":  null,
+    "failure_message":  null
+}

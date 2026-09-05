@@ -9,14 +9,14 @@
   "mutex_name": "Global\\CodexWorkflowHealthSupervisorOfficeAssist",
   "supervisor_script": "C:\\Codex\\Wiki Files\\Project Rooms\\Email Monitor\\tools\\Invoke-CodexWorkflowHealthSupervisor.ps1",
   "workflow_evaluator_script": "C:\\Codex\\Wiki Files\\Project Rooms\\Email Monitor\\tools\\Invoke-CodexWorkflowWatchdog.ps1",
-  "supervisor_runtime_directory": "C:\\Users\\wesbr\\.codex\\workflow-health-supervisor",
-  "supervisor_state_file": "C:\\Users\\wesbr\\.codex\\workflow-health-supervisor\\supervisor-state.json",
-  "supervisor_log_file": "C:\\Users\\wesbr\\.codex\\workflow-health-supervisor\\supervisor.log",
+  "supervisor_runtime_directory": "C:\\Users\\OfficeAssistLogin\\.codex\\workflow-health-supervisor",
+  "supervisor_state_file": "C:\\Users\\OfficeAssistLogin\\.codex\\workflow-health-supervisor\\supervisor-state.json",
+  "supervisor_log_file": "C:\\Users\\OfficeAssistLogin\\.codex\\workflow-health-supervisor\\supervisor.log",
   "workflows": [
     {
       "workflow_id": "officeassist-morning-email-summary-and-instruction-monitor",
       "display_name": "Email Monitor",
-      "enabled": false,
+      "enabled": true,
       "config_path": "C:\\Codex\\Wiki Files\\Project Rooms\\Email Monitor\\config\\email-monitor-health.json"
     },
     {

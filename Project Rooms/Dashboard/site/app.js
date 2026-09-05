@@ -12,7 +12,7 @@
     allowHostActions: true
   };
   const groupOrder = groupDefinitions.map(group => group.name);
-  const state = { group: "All", query: "", view: "grid", selected: null, selectedRoom: null, selectedMode: "", selectedManagerTaskId: "", selectedInvoiceEntryProject: "", managerTaskUpdatePending: false, sopGroup: "All", visibleSopEntries: [], invoiceEntryRequestResult: null, showInvoiceEntryRequestText: false, bridgeTestState: null, bridgeTestLoaded: false, bridgeTestLoading: false, bridgeTestSubmitting: false, deletionRequestState: null, deletionRequestLoadedRoomName: "", deletionRequestLoading: false, deletionRequestSubmitting: false, deletionRequestQueryPending: null };
+  const state = { group: "All", query: "", view: "grid", selected: null, selectedRoom: null, selectedMode: "", selectedManagerTaskId: "", selectedInvoiceEntryProject: "", managerTaskUpdatePending: false, sopGroup: "All", visibleSopEntries: [], invoiceEntryRequestResult: null, showInvoiceEntryRequestText: false, bridgeTestState: null, bridgeTestLoaded: false, bridgeTestLoading: false, bridgeTestSubmitting: false, transactionAttention: null, transactionAttentionLoaded: false, transactionAttentionLoading: false, transactionAttentionError: "", transactionAttentionFilter: "all", deletionRequestState: null, deletionRequestLoadedRoomName: "", deletionRequestLoading: false, deletionRequestSubmitting: false, deletionRequestQueryPending: null };
   const el = id => document.getElementById(id);
   const initials = name => name.split(/\s+/).filter(Boolean).slice(0, 2).map(word => word[0]).join("").toUpperCase();
   const attentionLabel = attention => attention?.type === "approval-needed" ? "Approval needed" : "Confirmation needed";
@@ -33,6 +33,19 @@
   const parseTime = value => {
     const timestamp = Date.parse(value || "");
     return Number.isNaN(timestamp) ? null : timestamp;
+  };
+  const attentionClassLabels = {
+    "wes-decision": "Needs Wes",
+    "automatic-recovery": "Automatic recovery",
+    "system-blocker": "System blocker",
+    "workflow-blocker": "Workflow blocker"
+  };
+  const formatAttentionAmount = value => {
+    if (value === null || value === undefined || value === "") return "";
+    const number = Number(value);
+    return Number.isFinite(number)
+      ? new Intl.NumberFormat("en-US", { style: "currency", currency: "USD" }).format(number)
+      : String(value);
   };
   const filteredRooms = () => {
     const query = state.query.trim().toLowerCase();
@@ -232,6 +245,27 @@
       if (state.selectedRoom?.name === "Dashboard" && state.selectedMode === "Bridge Test") {
         renderModePanel(state.selectedRoom, getModePanel(state.selectedRoom?.name, state.selectedMode));
       }
+    }
+  }
+
+  async function loadTransactionAttention({ force = false } = {}) {
+    if (state.transactionAttentionLoading || (!force && state.transactionAttentionLoaded)) return;
+    state.transactionAttentionLoading = true;
+    state.transactionAttentionError = "";
+    renderModePanel(state.selectedRoom, getModePanel(state.selectedRoom?.name, state.selectedMode));
+    try {
+      const response = await fetch("__dashboard-transaction-attention", { headers: { Accept: "application/json" } });
+      const result = await response.json().catch(() => ({}));
+      if (!response.ok || result.ok !== true) {
+        throw new Error(result.message || `Transaction attention load failed (${response.status}).`);
+      }
+      state.transactionAttention = result;
+      state.transactionAttentionLoaded = true;
+    } catch (error) {
+      state.transactionAttentionError = error?.message || "Transaction attention could not be loaded.";
+    } finally {
+      state.transactionAttentionLoading = false;
+      renderModePanel(state.selectedRoom, getModePanel(state.selectedRoom?.name, state.selectedMode));
     }
   }
   async function prepareBridgeTestRequest() {
@@ -891,6 +925,9 @@
     if (room?.name === "Dashboard" && state.selectedMode === "Bridge Test" && !state.bridgeTestLoaded && !state.bridgeTestLoading) {
       loadBridgeTestState();
     }
+    if (room?.name === "Dashboard" && state.selectedMode === "Transaction Attention" && !state.transactionAttentionLoaded && !state.transactionAttentionLoading) {
+      loadTransactionAttention();
+    }
 
     const controlElements = (Array.isArray(panel.controls) ? panel.controls : []).map(control => {
       if (control.type === "project-select") {
@@ -1215,6 +1252,108 @@
         return card;
       }
 
+      if (control.type === "transaction-attention") {
+        const card = document.createElement("div");
+        card.className = "mode-panel-card transaction-attention-card";
+        const header = document.createElement("div");
+        header.className = "transaction-attention-header";
+        const label = document.createElement("strong");
+        label.textContent = control.label || "Transaction attention";
+        const refreshButton = document.createElement("button");
+        refreshButton.type = "button";
+        refreshButton.className = "secondary-button compact-button";
+        refreshButton.textContent = state.transactionAttentionLoading ? "Refreshing..." : "Refresh";
+        refreshButton.disabled = state.transactionAttentionLoading;
+        refreshButton.addEventListener("click", () => loadTransactionAttention({ force: true }));
+        header.append(label, refreshButton);
+        card.append(header);
+
+        if (state.transactionAttentionLoading && !state.transactionAttention) {
+          const loading = document.createElement("p");
+          loading.textContent = "Reading sanitized attention states from the authoritative Project Room queue...";
+          card.append(loading);
+          return card;
+        }
+        if (state.transactionAttentionError) {
+          const error = document.createElement("p");
+          error.className = "transaction-attention-error";
+          error.textContent = state.transactionAttentionError;
+          card.append(error);
+          return card;
+        }
+
+        const data = state.transactionAttention || { counts: {}, items: [] };
+        const counts = data.counts || {};
+        const summary = document.createElement("div");
+        summary.className = "transaction-attention-summary";
+        [
+          ["All", "all", counts.total || 0],
+          ["Needs Wes", "wes-decision", counts.wesDecision || 0],
+          ["Auto", "automatic-recovery", counts.automaticRecovery || 0],
+          ["System", "system-blocker", counts.systemBlocker || 0],
+          ["Workflow", "workflow-blocker", counts.workflowBlocker || 0]
+        ].forEach(([text, value, count]) => {
+          const button = document.createElement("button");
+          button.type = "button";
+          button.className = `attention-filter${state.transactionAttentionFilter === value ? " active" : ""}`;
+          button.textContent = `${text} ${count}`;
+          button.addEventListener("click", () => {
+            state.transactionAttentionFilter = value;
+            renderModePanel(room, panel);
+          });
+          summary.append(button);
+        });
+        card.append(summary);
+
+        const items = (Array.isArray(data.items) ? data.items : []).filter(item => (
+          state.transactionAttentionFilter === "all" || item.classification === state.transactionAttentionFilter
+        ));
+        const list = document.createElement("div");
+        list.className = "transaction-attention-list";
+        if (!items.length) {
+          const empty = document.createElement("p");
+          empty.className = "transaction-attention-empty";
+          empty.textContent = "No current records match this attention category.";
+          list.append(empty);
+        }
+        items.forEach(item => {
+          const entry = document.createElement("article");
+          entry.className = `transaction-attention-item ${item.classification}`;
+          const top = document.createElement("div");
+          top.className = "transaction-attention-item-top";
+          const title = document.createElement("strong");
+          title.textContent = item.reference || item.destinationRoom || "Transaction record";
+          const badge = document.createElement("span");
+          badge.className = `transaction-attention-badge ${item.classification}`;
+          badge.textContent = attentionClassLabels[item.classification] || item.state;
+          top.append(title, badge);
+
+          const context = [item.company, item.project, formatAttentionAmount(item.amount)].filter(Boolean).join(" | ");
+          const ownership = document.createElement("p");
+          ownership.className = "transaction-attention-meta";
+          ownership.textContent = `${item.destinationRoom || "Unassigned PR"}${item.destinationMachine ? ` on ${item.destinationMachine}` : ""}${context ? ` | ${context}` : ""}`;
+          const blocker = document.createElement("p");
+          blocker.className = "transaction-attention-blocker";
+          blocker.textContent = item.blocker || "No safe blocker detail was recorded.";
+          const next = document.createElement("p");
+          next.className = "transaction-attention-next";
+          next.textContent = `Next: ${item.nextAction}`;
+          const footer = document.createElement("p");
+          footer.className = "transaction-attention-meta";
+          const attemptText = item.maxAttempts ? `Attempt ${item.attemptCount || 0} of ${item.maxAttempts}` : "No delivery limit recorded";
+          footer.textContent = `${attemptText} | Updated ${item.updatedAt || "unknown"} | ${item.messageId}`;
+          entry.append(top, ownership, blocker, next, footer);
+          list.append(entry);
+        });
+        card.append(list);
+
+        const sourceNote = document.createElement("p");
+        sourceNote.className = "reconcile-request-note";
+        sourceNote.textContent = `Display-only sanitized queue view. Payloads, mailbox identifiers, and credentials are never returned. Refreshed ${data.generatedAtUtc || "on request"}.`;
+        card.append(sourceNote);
+        return card;
+      }
+
       if (control.type === "open-url") {
         const link = document.createElement("a");
         const available = controlAvailable(control.availability || "local-only");
@@ -1345,6 +1484,16 @@
   });
   el("askJeanButton").href = dashboardActions.jeansVoice?.href || "#";
   el("refreshDashboardButton").addEventListener("click", refreshDashboard);
+  el("transactionAttentionButton").addEventListener("click", () => {
+    const dashboardRoom = findRoom("Dashboard");
+    if (!dashboardRoom) return;
+    selectRoom(dashboardRoom);
+    state.selectedMode = "Transaction Attention";
+    el("detailModeSelect").value = state.selectedMode;
+    el("detailModeState").textContent = "Transaction Attention is a display-only view of sanitized authoritative queue states.";
+    renderModePanel(dashboardRoom, getModePanel("Dashboard", state.selectedMode));
+    el("detailPanel").scrollIntoView({ behavior: "smooth", block: "start" });
+  });
   el("requestDeleteButton").addEventListener("click", openDeleteRequest);
   el("prepareDeleteButton").addEventListener("click", prepareDeleteRequest);
   el("refreshDeleteRequestButton").addEventListener("click", () => {

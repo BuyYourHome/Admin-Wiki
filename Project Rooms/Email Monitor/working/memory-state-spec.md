@@ -4,7 +4,7 @@
 
 The heartbeat's `memory.md` is a compact current-state file, not a chronological run log. Rewrite it in place after meaningful state changes; do not append a new heartbeat narrative every 15 minutes.
 
-The only runtime memory path is `C:\Users\wesbr\.codex\automations\officeassist-morning-email-summary-and-instruction-monitor\memory.md`. Do not create or use `Project Rooms\Email Monitor\working\memory.md` or another project-room memory file.
+The destination runtime memory path is `C:\Users\OfficeAssistLogin\.codex\automations\officeassist-morning-email-summary-and-instruction-monitor\memory.md`. Do not create or use `Project Rooms\Email Monitor\working\memory.md` or another project-room memory file.
 
 ## Required State
 

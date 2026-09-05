@@ -38,6 +38,7 @@ description: Use for the Buy Your Home Dashboard Project Room, including refresh
 13. On desktop, keep the selected Project Room sidebar independently scrollable from the card section; preserve a normal stacked single-scroll layout on mobile.
 14. Record requested improvements in `working\dashboard-change-list.md` and substantive outcomes in `working\dashboard-action-log.md`.
 15. For the SOPs side-panel viewer, use only `Project Rooms\SOPs\outputs\SOP Index.md` as the authoritative list. Show every valid index entry, but enable opening only when a corresponding clean Markdown page exists under `Project Rooms\SOPs\outputs\SOPs\`. Do not edit, synthesize, or infer SOP entries from Dashboard.
+16. For Transaction Attention, read only the sanitized Dashboard endpoint backed by the canonical central PR messaging manager. Show safe ownership, blocker, attempt, next-action, and exact-decision context; never expose payloads, mailbox identifiers, links, attachment paths, credentials, or hashes, and never perform another Project Room's transaction or queue-state work.
 
 ## Mode Map
 

@@ -14,10 +14,10 @@ The shared queue became authoritative for production Project Room messages after
 
 ## Message Contract
 
-1. Save the durable message before sending a Codex task notification.
+1. Save the durable message before sending a Codex task notification. `Send` requires an exact nonblank `destination.machine` resolved from the active destination manifest; never serialize a missing, wildcard, inferred, or `null` destination machine.
 2. Treat task notification as a wake-up signal, not proof of delivery.
 3. The destination verifies its Project Room, task id, message id, and payload hash before accepting.
-4. The destination writes `Accepted` before substantive work, then `Processing`, meaningful updates, and exactly one final result.
+4. The destination writes `Accepted` before substantive work, then `Processing`, meaningful updates, and exactly one final result. Authorization is evaluated from the verified same-ID central record, not from the task that relayed its wake-up. A dispatcher or another task may carry the wake-up without becoming the source or authorization authority.
 5. Valid final states are `Completed`, `Blocked`, `Needs Wes`, and `Rejected as Wrong Room`.
 6. Reconcile `Delivery Ambiguous` against the central record and task history before retrying the same immutable message.
 7. A missing task id, unavailable host, or inaccessible source is a blocker. It is not permission to execute another PR's work locally.
@@ -38,10 +38,13 @@ The shared queue is cross-machine, but Codex task notification is host-local. A 
 
 - Every computer that hosts dispatchable Project Room tasks must have one active machine-local PR Messaging Dispatcher capability.
 - Use one dispatcher task and heartbeat per computer, not one heartbeat per destination Project Room.
+- Schedule dispatcher polling every five minutes only Monday through Friday from 7:30 AM through 7:00 PM Eastern. Do not schedule dispatcher model turns overnight or on weekends. Messages created while closed remain durably queued for the next operating window.
+- Dispatcher health consumers must honor the health file's operating-window metadata and `next_scheduled_run_at_utc`. Expected inactivity outside the operating window is not stale or failed dispatcher health.
 - Each scheduled dispatcher invocation is a new operational run. A one-turn diagnostic, read-only, or no-claim instruction from an earlier dispatcher task turn expires with that turn and must not suppress a later scheduled run. Only an explicit persistent pause or disable instruction from Wes may suppress an active dispatcher automation.
-- The OfficeAssist Email Monitor heartbeat may satisfy this requirement for `OFFICEASSIST` while its dispatcher stage remains active and verified. Other computers should use a dedicated `PR Messaging Dispatcher - <COMPUTERNAME>` task unless a documented local heartbeat already provides the same bounded behavior.
+- The OfficeAssist Email Monitor heartbeat may satisfy this requirement for `OFFICEASSIST` while its dispatcher stage remains active and verified. That dispatcher stage follows the same weekday 7:30 AM through 7:00 PM Eastern window even if Email Monitor performs other authorized work later. Other computers should use a dedicated `PR Messaging Dispatcher - <COMPUTERNAME>` task unless a documented local heartbeat already provides the same bounded behavior.
 - The local dispatcher polls only central records whose `destination.machine` exactly matches its own computer name and whose state is `Queued` or `Delivery Ambiguous`.
 - Use `tools\pr-messaging\Claim-ProjectRoomDispatch.ps1` to select and claim one eligible record deterministically. The helper must access and change the authoritative queue only through `Manage-ProjectRoomMessage.ps1`; the model must not redo or override its eligibility decision.
+- Run the claim helper through an approved unrestricted/escalated PowerShell execution under the normal Windows identity so the machine's saved SMB credential is available. The offline Codex sandbox intentionally lacks that credential; sandbox `Access is denied` is not evidence that the central host is unavailable.
 - Before notification, it reconciles the current central state, immutable payload hash, destination manifest, exact task id, local client registration, prior attempts, and final-state history. It writes `StartAttempt` before exactly one same-ID task notification.
 - It must never execute destination work, alter an immutable payload, create substitute tasks, broaden authorization, or treat notification as delivery proof.
 - The destination must write `Accepted`, `Processing`, and a valid final state under its exact identity. Missing acknowledgment after a bounded wait is `Delivery Ambiguous`; a definitive local notification failure is `NotDelivered`.

@@ -1,16 +1,17 @@
 # Work Status
 
-Current status: active on restored WesStudio runtime
+Current status: source-side migration prepared; WESSTUDIO paused; OFFICEASSIST activation pending
 
-Current focus: Continue Email Monitor from the preserved WesStudio cutoff and deduplication state; do not replay mail from the OfficeAssist migration attempt.
+Current focus: Activate Email Monitor once on OFFICEASSIST from the preserved WESSTUDIO cutoff and deduplication state; do not replay mail or unresolved queue work.
 
 Notes:
 
 - Jean Dispatcher handoffs that require outbound OfficeAssist email should route here for Email Delivery mode.
 - Do not send duplicate delivery requests; require a stable `delivery_request_id` for direct delivery packages.
 - Rollback record reconciled: `prmsg-officeassist-email-monitor-profile-migration-20260824-001`, payload hash `9a668324da5f9f6416cfff70d750f961d6aec9757735747602c536ac101e90c5`, final state `Needs Wes`.
-- Restored runtime target: `019ecba7-f1cc-7ac1-aaf7-d89a3f21b582` on `WESSTUDIO`; OfficeAssist task `01a029bf-81d2-76e1-9960-64558a57640b` remains inactive.
-- The preserved heartbeat was reactivated without changing its prompt, schedule, memory, cutoff, or deduplication files and without running a production mailbox test.
+- Source task: `019ecba7-f1cc-7ac1-aaf7-d89a3f21b582` on `WESSTUDIO`; its heartbeat is paused for controlled migration and the task is not archived.
+- Intended destination: `01a03956-fe55-7f62-9c0a-17c18f763320` on `OFFICEASSIST` under `C:\Users\OfficeAssistLogin`; destination identity verification and activation remain machine-local steps.
+- Migration package: `working/migrations/2026-09-04-wesstudio-to-officeassist/handoff.md`.
 - Doc Scan rollback review record `prmsg-doc-scan-rollback-review-20260824-001`, payload hash `dc03b0ab70b657a77dcd0df7327c5e5cca5bbef6529232c5b186fd2ec48289b9`, is `Delivery Ambiguous`; no Doc Scan state was changed.
 
 ## Task Health Status

@@ -19,7 +19,7 @@ Before using this skill, have:
 
 - the global profile at `C:\Codex\Wiki Files\Office Assistant Profile.md`,
 - the admin rules in `C:\Codex\Wiki Files\AGENTS.md`,
-- the automation memory file for this workflow at `C:\Users\wesbr\.codex\automations\officeassist-morning-email-summary-and-instruction-monitor\memory.md`,
+- the automation memory file for this workflow at `C:\Users\OfficeAssistLogin\.codex\automations\officeassist-morning-email-summary-and-instruction-monitor\memory.md`,
 - the compact-state specification at `C:\Codex\Wiki Files\Project Rooms\Email Monitor\working\memory-state-spec.md`,
 - the seven-day rolling-log config at `C:\Codex\Wiki Files\Project Rooms\Email Monitor\config\email-monitor-log.json`,
 - access to `WesWill@BuyYourHomeLLC.com` mailbox contents,
@@ -33,7 +33,7 @@ The automation path above is the only Email Monitor runtime memory file. Do not 
 
 ## Workflow
 
-1. Read `C:\Users\wesbr\.codex\automations\officeassist-morning-email-summary-and-instruction-monitor\memory.md` and find the last verified Boss, Jenny, and Josh summary send times.
+1. Read `C:\Users\OfficeAssistLogin\.codex\automations\officeassist-morning-email-summary-and-instruction-monitor\memory.md` and find the last verified Boss, Jenny, and Josh summary send times.
 2. Use that verified send time as the cutoff unless a newer verified Boss summary is already present in `OfficeAssist@BuyYourHomeLLC.com` Sent Items for the same day.
 3. Use the last verified Jenny summary send time as Jenny's cutoff unless a newer Jenny summary is already recorded in the memory file for the same day. If there is no prior Jenny summary record, use the 2026-06-29 resume timestamp as the initial new-mail cutoff.
 4. Use the last verified Josh summary send time as Josh's cutoff. The verified manual Josh summary sent at `2026-07-21T12:24:17Z` is the initial cutoff.
@@ -74,7 +74,7 @@ Activation:
 
 Cutoff and mailbox scan:
 
-- read `C:\Users\wesbr\.codex\automations\officeassist-morning-email-summary-and-instruction-monitor\memory.md`;
+- read `C:\Users\OfficeAssistLogin\.codex\automations\officeassist-morning-email-summary-and-instruction-monitor\memory.md`;
 - use the last verified Boss summary send time as the Boss cutoff unless a newer verified Boss summary is already present in `OfficeAssist@BuyYourHomeLLC.com` Sent Items for the same day;
 - use the last verified Jenny summary send time as Jenny's cutoff unless a newer Jenny summary is already recorded in memory for the same day;
 - if no prior Jenny summary record exists, use the 2026-06-29 resume timestamp as Jenny's initial new-mail cutoff;
@@ -135,7 +135,7 @@ Use Health Check to maintain the shared independent Windows workflow-health supe
 
 At Email Monitor heartbeat start, call the health updater with `Started` and the intended mode. Before returning, call it with `Completed`; on failure call it with `Failed`, a stage, and a concise message. Preserve the existing Email Monitor health file and its 7:45 AM through 11:00 PM active window, 35-minute warning, and 60-minute critical threshold.
 
-The scheduled supervisor runs every 10 minutes independently on each assigned machine. `workflow-health-registry.json` enables Email Monitor and Invoice Entry on `WESSTUDIO`. `officeassist-workflow-health-registry.json` keeps Email Monitor disabled on `OFFICEASSIST`; its Doc Scan entry remains unchanged pending migration evidence review. Each supervisor evaluates only its machine's enabled entries, uses a machine-specific mutex, isolates malformed configurations, refuses the wrong machine, and does not depend on Outlook or another connector it supervises.
+The scheduled supervisor runs every 10 minutes independently on each assigned machine. `workflow-health-registry.json` keeps Invoice Entry enabled and Email Monitor disabled on `WESSTUDIO`. During migration, `officeassist-workflow-health-registry.json` keeps Email Monitor disabled until its correct-login task, restored runtime, connector access, and heartbeat are verified on `OFFICEASSIST`; its Doc Scan entry remains unchanged. Each supervisor evaluates only its machine's enabled entries, uses a machine-specific mutex, isolates malformed configurations, refuses the wrong machine, and does not depend on Outlook or another connector it supervises.
 
 The separate Invoice Entry packet-backup automation remains a detached cron job, so each scheduled run receives its own execution task. A clean completed run must obtain its actual current execution task id from runtime metadata, suppress routine inbox and final output, and archive only that execution task with `set_thread_archived({ threadId: currentExecutionThreadId, archived: true })`. The id is required: never omit it, guess it from a title or timestamp, or substitute the active Invoice Entry operational task id. If the runtime does not expose an unambiguous current execution id, leave the execution visible and report the archival limitation.
 
@@ -177,6 +177,8 @@ Use Task Health for Email Monitor task-context review and Wes-approved controlle
 ### Email Routing
 
 Use Email Routing as the OfficeAssist mailbox intake funnel during the configured active window.
+
+When the OfficeAssist Email Monitor supplies the machine-local PR Messaging Dispatcher stage, run that dispatcher stage only Monday through Friday from 7:30 AM through 7:00 PM Eastern. Outside that window, continue any separately scheduled Email Monitor work but do not poll or claim Project Room messages. Those records remain in the authoritative queue for the next dispatcher operating window. Closed-window inactivity is expected and must not be reported as stale dispatcher health.
 
 For each new message:
 
@@ -323,6 +325,7 @@ For each routed email:
 - update `C:\Codex\Wiki Files\Project Rooms\Invoice Entry\working\source-inventory.md` or the current Invoice Entry intake ledger only with the Outlook reference, external path if any, summary, and status when the routed email becomes part of the durable source set;
 - record the routed Outlook message id in Email Monitor compact state so the same source is not routed repeatedly;
 - create the durable message before any task-message call by using `C:\Codex\Wiki Files\tools\pr-messaging\Manage-ProjectRoomMessage.ps1 -Action Send`; use the shared runtime queue and state contract in `working\dispatch-queue-spec.md`; never create a new record in the legacy Email Monitor queue;
+- resolve Invoice Entry's exact execution machine from its active destination manifest and pass it explicitly as `DestinationMachine` on every central `Send`; a missing, wildcard, inferred, or blank destination machine is a creation blocker and must never be serialized as `null`;
 - use one stable dispatch ID and immutable payload; idempotent creation with the same payload is safe, but the same ID with different content is a blocker;
 - store the source and concise handoff fields in the queue record, then send the existing Invoice Entry task one wake-up message containing the dispatch ID, queue-record path, and these fields in this exact order:
   - `mailbox`: exact mailbox identity;
@@ -336,6 +339,7 @@ For each routed email:
 Dispatch lifecycle:
 
 1. Treat the durable queue record as the authoritative handoff and task messaging as a best-effort wake-up signal.
+   The task that sends or relays the wake-up is not the authorization source. Invoice Entry must retrieve the same-ID central record and evaluate its immutable source, destination, payload hash, and recorded authorization.
 2. Establish that Invoice Entry is idle before `StartAttempt`. If status is unavailable or busy, leave the record `Queued`; do not start a blocking task-message call.
 3. Mark `StartAttempt`, send the wake-up message, and request `accepted: <dispatch_id>` before substantive work.
 4. Verify acceptance independently in both the durable queue record and Invoice Entry history. Tool completion alone is not proof.
@@ -681,7 +685,7 @@ After a successful verified Josh send, update the automation memory with:
 
 If the send fails or verification fails, record the blocker and the action taken.
 
-Use `C:\Users\wesbr\.codex\automations\officeassist-morning-email-summary-and-instruction-monitor\memory.md` only as compact current state under `working\memory-state-spec.md`. Rewrite it instead of appending heartbeat history.
+Use `C:\Users\OfficeAssistLogin\.codex\automations\officeassist-morning-email-summary-and-instruction-monitor\memory.md` only as compact current state under `working\memory-state-spec.md`. Rewrite it instead of appending heartbeat history.
 
 Use `C:\Codex\Wiki Files\Project Rooms\Email Monitor\tools\Update-EmailMonitorRollingLog.ps1` with `config\email-monitor-log.json` for meaningful operational history. Retain seven days in the single Teams file at `Office Admin/Codex Logs/Email Monitor/Email Monitor - Rolling 7 Days.md`. Exclude routine no-activity checks. If Teams is unavailable, use the one capped pending file defined by the config and merge it on the next successful log write.
 

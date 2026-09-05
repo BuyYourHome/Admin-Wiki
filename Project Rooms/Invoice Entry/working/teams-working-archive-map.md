@@ -293,3 +293,19 @@ The PDF matches SHA-256 `0FF68C2F51F43D2BF632B96884722BB6F45D11AD46039AA8D829445
 - Working archive: `C:\Users\wesbr\Buy Your Home\Buy Your Home - Office Admin\Scanned Files\Invoice Entry Working Archive\Generated\2026-09-01-Josh-Semimonthly-Approved-Aug16-31`.
 - Approved PDF SHA-256: `7C7035C1FE3EC44DC6A485D54E7E7EC566D7FC9DF556BCDBE3C31D0D6051E433`.
 - Archive contains the approved PDF, workbook rollback copies, validated edited/staged copies, and Review QA evidence for Pond, Rosebrooks, and Tensity.
+
+## Josh Kennedy September 1-15 Draft Through September 1 - 2026-09-02
+
+| Local working files | Teams destination under `Invoice Entry Working Archive` | Files | Bytes | Status |
+| --- | --- | ---: | ---: | --- |
+| One-page open-period draft PDF, structured JSON input, and QA render from `working\create-vendor-invoice\2026-09-15-josh-kennedy-semimonthly-time-card-invoice\generated-2026-09-02` | `Generated\2026-09-02-Josh-Semimonthly-Daily-Draft-Through-Sep1` | 3 | 109,170 | Destination count, byte total, and per-file SHA-256 verified; local generated folder removed |
+
+The PDF matches SHA-256 `C4035D25A2C3C0A40E469DCFD2FA203B3029ACF6C88D9152EBE62EB0E06FD630`. Email Delivery request `IE-EMAIL-20260902-JOSH-SEMIMONTHLY-DAILY-DRAFT-010` was sent exactly once and OfficeAssist Sent Items-verified before cleanup. The invoice remains an open-period correction-review draft; no approval, finalization, filing, workbook posting, QuickBooks routing, payment, or paid status occurred.
+
+## Josh Kennedy September 1-15 Draft Through September 3 - 2026-09-03
+
+| Local working files | Teams destination under `Invoice Entry Working Archive` | Files | Bytes | Status |
+| --- | --- | ---: | ---: | --- |
+| One-page open-period draft PDF, structured JSON input, and QA render from `working\create-vendor-invoice\2026-09-15-josh-kennedy-semimonthly-time-card-invoice\generated-2026-09-03` | `Generated\2026-09-03-Josh-Semimonthly-Daily-Draft-Through-Sep3` | 3 | 151,099 | Destination count, byte total, and per-file SHA-256 verified; local generated folder removed |
+
+The PDF matches SHA-256 `3E1003B9B7077311B7ACEB3B68C38E5DD7D823B744F4C639A6DC216DC78F1C78`. The updated draft was internally verified but not sent because both intake records prohibit contact with Josh. The prior September 1 Sent Items evidence was not repeated. No approval, finalization, filing, workbook posting, QuickBooks routing, payment, or paid status occurred.

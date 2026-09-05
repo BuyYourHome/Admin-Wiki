@@ -52,7 +52,7 @@ Lead Sourcing
 16. Save another copy in CSV UTF-8 format using the same base name and location.
 17. Close the spreadsheet.
 18. In Teams, confirm the new CSV is the newest file in the Exported folder.
-19. Download the CSV if needed for REI Blackbook or Direct Skip.
+19. For Direct Skip processing instructions, open [[SOP - Item 092 - Import to Direct Skip|SOP 92: Import File to Direct Skip]] and, when source context is needed, the [[Project Rooms/SOPs/sources/emails/Task Instructions Item 092_ Import to Direct Skip.msg|Task 92 source email]]. If importing directly into REI BlackBook, download the CSV and continue with step 20.
 20. If importing manually to REI, open REI Blackbook and go to Contacts.
 21. Click Add Contact and choose Import Contact.
 22. Choose the CSV file and upload it.

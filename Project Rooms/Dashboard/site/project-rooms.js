@@ -1,5 +1,5 @@
-window.PROJECT_ROOMS_UPDATED = '2026-08-28 08:07';
-window.PROJECT_ROOMS_HASH = '2DE9637F490B37249CC4D4365D06C65DDCBE24536DCBE8BB37778CC346E4C5B4';
+window.PROJECT_ROOMS_UPDATED = '2026-09-02 18:20';
+window.PROJECT_ROOMS_HASH = 'F83CC9201F9D4BA365865685EC0D19BF81CC4F0E377C499D0061D8ADBDE90BF0';
 window.PROJECT_ROOM_GROUPS = [
     {
         "name":  "Intake \u0026 Coordination",
@@ -51,6 +51,19 @@ window.DASHBOARD_ACTIONS = {
                     },
     "modePanels":  {
                        "Dashboard":  {
+                                         "Transaction Attention":  {
+                                                                       "title":  "Transaction Attention",
+                                                                       "intro":  "Review sanitized transaction records that need a Wes decision, automatic delivery recovery, or owning-workflow follow-up.",
+                                                                       "stateText":  "Transaction Attention loaded. This view is read-only and never performs another Project Room\u0027s work.",
+                                                                       "controls":  [
+                                                                                        {
+                                                                                            "type":  "transaction-attention",
+                                                                                            "label":  "Current transaction attention",
+                                                                                            "availability":  "lan-readonly",
+                                                                                            "description":  "Reads current sanitized Blocked, Needs Wes, and Delivery Ambiguous transaction states from the authoritative Project Room queue."
+                                                                                        }
+                                                                                    ]
+                                                                   },
                                          "Bridge Test":  {
                                                              "title":  "Dashboard Bridge Test",
                                                              "intro":  "Use this helper to prove the Dashboard-to-Create-PR bridge path without browser popups, manual paste, or any delegated Project Room work.",
@@ -351,7 +364,7 @@ window.PROJECT_ROOMS = [
         "skill":  "create-pr",
         "skillPath":  "C:\\Codex\\Wiki Files\\skills\\create-pr\\SKILL.md",
         "skillState":  "available",
-        "taskId":  "",
+        "taskId":  "019fdc5e-a1da-7e10-b388-a3be3830ac89",
         "attention":  null,
         "group":  "Intake \u0026 Coordination",
         "groupBasis":  "Receives requests, routes work, creates Project Rooms, or provides an operating overview across workflows.",
@@ -396,7 +409,8 @@ window.PROJECT_ROOMS = [
         "groupBasis":  "Receives requests, routes work, creates Project Rooms, or provides an operating overview across workflows.",
         "modes":  [
                       "Mode Map",
-                      "Bridge Test"
+                      "Bridge Test",
+                      "Transaction Attention"
                   ],
         "readmeUrl":  "../../Dashboard/README.md",
         "quickActions":  [
@@ -439,8 +453,8 @@ window.PROJECT_ROOMS = [
                       "Task Health",
                       "Email Routing",
                       "Route Vendor Invoice",
-                      "Email Delivery",
-                      "Organize"
+                      "Organize",
+                      "Email Delivery"
                   ],
         "readmeUrl":  "../../Email%20Monitor/README.md",
         "quickActions":  [
@@ -597,7 +611,7 @@ window.PROJECT_ROOMS = [
         "skill":  "invoice-entry",
         "skillPath":  "C:\\Codex\\Wiki Files\\skills\\invoice-entry\\SKILL.md",
         "skillState":  "available",
-        "taskId":  "019fbf4f-c629-7dd1-a3f6-0de33de0ed8f",
+        "taskId":  "01a05967-9a05-7081-a62e-616b2d8e61fd",
         "attention":  null,
         "group":  "Accounting \u0026 Project Data",
         "groupBasis":  "Maintains financial calculations, invoice processing, project workbooks, templates, or structured project data.",
@@ -608,7 +622,8 @@ window.PROJECT_ROOMS = [
                       "Receipt",
                       "Statement Processing",
                       "Reconcile",
-                      "Vendor Tabs"
+                      "Vendor Tabs",
+                      "QuickBooks Routing"
                   ],
         "readmeUrl":  "../../Invoice%20Entry/README.md",
         "quickActions":  [
@@ -943,6 +958,25 @@ window.PROJECT_ROOMS = [
                          ]
     },
     {
+        "name":  "PR Messaging Dispatcher",
+        "purpose":  "Provide one machine-local dispatcher heartbeat on each computer that hosts dispatchable Buy Your Home Project Room tasks. The dispatcher bridges the cross-machine durable queue to Codex task notifications that are local to its own computer.",
+        "status":  "`Active and unattended validation complete on WES-VIDEOEDITOR`",
+        "skill":  "pr-messaging-dispatcher",
+        "skillPath":  "C:\\Codex\\Wiki Files\\skills\\pr-messaging-dispatcher\\SKILL.md",
+        "skillState":  "available",
+        "taskId":  "",
+        "attention":  null,
+        "group":  "Other",
+        "groupBasis":  "Used when a Project Room does not yet have a supported assignment to one of the defined functional groups.",
+        "modes":  [
+
+                  ],
+        "readmeUrl":  "../../PR%20Messaging%20Dispatcher/README.md",
+        "quickActions":  [
+
+                         ]
+    },
+    {
         "name":  "Project Management Spreadsheet Rewrite",
         "purpose":  "Rewrite and improve the Project Management spreadsheet used by Buy Your Home for real estate projects. The current workbook has a new instance for each real estate project, so the redesign must support repeatable project-level use without losing property-specific flexibility.",
         "status":  "Status not recorded",
@@ -976,6 +1010,25 @@ window.PROJECT_ROOMS = [
 
                   ],
         "readmeUrl":  "../../Property%20Trade%20Evaluation/README.md",
+        "quickActions":  [
+
+                         ]
+    },
+    {
+        "name":  "Quickbooks",
+        "purpose":  "Operate authorized QuickBooks workflows through explicitly defined modes. The current Invoice mode enters vendor invoices as QuickBooks bills from validated, authorized, structured handoffs received from Invoice Entry.",
+        "status":  "**Ready for validated Invoice Entry handoffs under Wes\u0027s interim Chrome authorization**",
+        "skill":  "quickbooks",
+        "skillPath":  "C:\\Codex\\Wiki Files\\skills\\quickbooks\\SKILL.md",
+        "skillState":  "available",
+        "taskId":  "01a05d0c-8031-7d92-9474-ab2330008ddb",
+        "attention":  null,
+        "group":  "Other",
+        "groupBasis":  "Used when a Project Room does not yet have a supported assignment to one of the defined functional groups.",
+        "modes":  [
+                      "Invoice"
+                  ],
+        "readmeUrl":  "../../Quickbooks/README.md",
         "quickActions":  [
 
                          ]

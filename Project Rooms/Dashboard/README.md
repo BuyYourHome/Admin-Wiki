@@ -44,6 +44,8 @@ Status: active initial design.
 
 The local dashboard provides search, codified functional-group filters, status counts, Project Room summaries, skill visibility, documented-mode selection, and extensible side-panel Quick actions. Every card has a README action and, when it has fewer than two actions, an unassigned future-action slot. The Entity Relationship card also opens its SVG diagram, and Gracious Millionaire opens its website. Dashboard action links use the browser's normal separate-tab/window behavior. The deletion control presents a one-confirmation, exact-resource workflow preview and can record a structured deletion request for `Create PR`, but Dashboard still does not delete, archive, rename, or alter anything itself. Group remains a displayed side-panel property with a preview-only selector. The two SOP viewer combo boxes remain scoped to the SOPs Project Room only. A section heading can count as a documented mode either by using a recognized `Modes` section or by beginning that section with `Use this mode ...`; the mode name itself does not need to end with `Mode`. Wes will review the design and decide what to alter.
 
+The top bar also opens `Transaction Attention`, a Dashboard-owned read-only mode. Its host endpoint reads the authoritative central Project Room queue and returns only sanitized attention fields for transaction-related records in `Delivery Ambiguous`, `Blocked`, or `Needs Wes`. It omits payloads, mailbox identifiers, source links, credentials, and superseded synthetic records. The view separates automatic recovery, system blockers, workflow blockers, and decisions that require Wes; it never retries, edits, accepts, completes, or otherwise processes a transaction.
+
 When a documented mode has a Dashboard-keyed action in `config\dashboard-actions.json`, selecting that mode now invokes the configured safe action immediately. The current seeded example is `Create PR` -> `Diagram`, which opens the canonical `outputs\Project Room Relationship Diagram.svg`. Modes without a keyed action remain review-only and say so truthfully.
 
 For the SOPs Project Room, the side panel reads the authoritative `outputs\SOP Index.md` during Dashboard refresh. It lists the index entries without changing them and enables `View selected SOP` only when a corresponding clean Markdown page exists. The viewer opens that canonical page using normal separate-tab/window behavior.
@@ -161,6 +163,20 @@ Status interpretation:
 - `prepared` - queued locally on Dashboard; not yet delivered to the target PR.
 - `sent` - delivered by the Dashboard task; waiting for the target PR to return a status.
 - `accepted`, `done`, `blocked`, `needs Wes`, `rejected as wrong room` - returned by the target PR and written back by the Dashboard task.
+
+## Transaction Attention
+
+Use this mode when Wes wants one safe list of transactions that need attention or automatic recovery visibility.
+
+Rules:
+
+1. Read live records through `tools\Get-TransactionAttention.ps1`, which uses the canonical Project Room message manager.
+2. Include only transaction-related records in `Delivery Ambiguous`, `Blocked`, or `Needs Wes`.
+3. Exclude synthetic tests and records explicitly finalized as superseded.
+4. Return only safe summary fields: record id, state, owning/destination Project Room, machine, timestamps, attempt counts, safe amount/company/project/reference fields, blocker, next action, and exact Wes decision when applicable.
+5. Never expose the message payload, authorization sender, mailbox identifiers, source links, attachment paths, credentials, or hashes.
+6. Treat the view as display-only. Dashboard never retries delivery, changes central state, performs transaction work, or substitutes for the owning Project Room.
+7. `Delivery Ambiguous` shows the next bounded automatic-recovery action. `Needs Wes` shows the exact recorded decision. `Blocked` is classified as a system or workflow blocker for owning-PR follow-up.
 
 ## Matching Skill
 

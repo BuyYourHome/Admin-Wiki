@@ -115,6 +115,8 @@ If a concise handoff lacks enough information to identify or access the authorit
 
 For Email Monitor and Jean cross-Project-Room dispatches, the durable queue record is the authoritative handoff and a task message is only a wake-up signal.
 
+Do not require the wake-up to originate from the source task or treat the dispatcher, Jean, Email Monitor, or another relaying task as the authorization source. Retrieve the exact same-ID central record and validate its immutable source Project Room/task, destination Project Room/task/machine, payload hash, and recorded authorization. When those checks pass and the request is in scope, write `Accept` even though a different task delivered the wake-up. Queue presence authorizes intake only and never bypasses a separate approval, payment, filing, workbook, vendor-contact, email-delivery, or other business-action gate.
+
 - Queue location: `\\WES-VIDEOEDITOR\BYH-PRMessaging$\records`.
 - Queue tool: `C:\Codex\Wiki Files\tools\pr-messaging\Manage-ProjectRoomMessage.ps1`.
 - Protocol: `C:\Codex\Wiki Files\Project Rooms\Email Monitor\working\dispatch-queue-spec.md`.
@@ -124,6 +126,7 @@ At every Invoice Entry startup and backup-monitor run:
 1. Inspect unresolved queue records whose destination task ID is `019fbf4f-c629-7dd1-a3f6-0de33de0ed8f`.
 2. Deduplicate by dispatch ID and payload hash. Never process the same dispatch twice.
 3. Confirm the request belongs to Invoice Entry and that its exact source pointer is accessible.
+   Validate authority from the central record itself. Do not reject an otherwise valid record merely because a dispatcher or another task supplied the wake-up signal.
 4. Before substantive work, run `Accept` with the registered Invoice Entry task ID. This writes the durable receipt. Return `accepted: <dispatch_id>` in the task when the channel is available.
 5. Run `StartProcessing` before durable processing and use exactly one valid final action: `Complete`, `Block`, `NeedsWes`, or `Reject` for wrong-room work.
 6. If the same accepted or completed dispatch is received again, return its existing status without repeating work or external actions.

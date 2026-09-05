@@ -32,6 +32,9 @@ The workbook has no approved `Legal Expenses` vendor worksheet. Invoice Entry th
 - Invoice `1277608` was filed as `C:\Users\wesbr\Buy Your Home\Buy Your Home - Property\20-HM-115 Rosebrooks Dr\Lawsuit\Billing\26-08-11 Poyner Spruill - invoice 1277608 3671.80.pdf`.
 - Filed PDF SHA-256: `2E61120798D9E667F6A60A6D3730068CACC473DC12B4C87E67C1C82F0A0C28E3`.
 - QuickBooks child: `prmsg-invoice-entry-quickbooks-poyner-1277608-20260901-001`.
+- Corrected QuickBooks child: `prmsg-invoice-entry-quickbooks-poyner-1277608-resume-corrected-20260902-001`; the earlier authentication blocker is superseded by authoritative return `prmsg-quickbooks-invoice-entry-poyner-1277608-completed-return-20260902-001`.
+- QuickBooks result: live duplicate search Not Found; exactly one bill saved in Buy Your Home LLC as transaction `13399`, total/balance `$3,671.80`, status `Unpaid`. Returned lines are `$3,584.00` attorney fees and `$87.80` expenses under `SchC-Professional Fees:Legal fees`, class `BYH:115:Atorneys fees`, customer blank.
+- Do not recreate the bill, initiate payment, mark paid, or infer invoice approval from QuickBooks entry.
 - Child payload hash: `af45347f5a35f85fdfbb8739e977a8c19346ea25747e60ba53e325f030b34b60`.
 - Destination task is now registered to the `Quickbooks` Project Room as `01a05967-9a05-7081-a62e-616b2d8e61fd` on `WES-VIDEOEDITOR`.
 - The child requires a live duplicate search, one save only if absent, full read-back, and a block if the exact project or any additional required mapping cannot be verified.

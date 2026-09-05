@@ -12,13 +12,13 @@ Use [[Agent Unit Standard]] for the standard package behind an agent-like operat
 |---|---|---|---|---|
 | Jean Wright / Office Assistant | Wiki-managed skill plus project room plus assistant profile and operating role | Active | On demand and through related automations | `skills\jean-wright\SKILL.md`; `Project Rooms\Jean Wright\README.md`; `C:\Codex\Office Assistant Profile.md`; `AGENTS.md` |
 | Jean Dispatcher | Jean Wright mode plus central Project Room routing rule | Active | On demand when Wes asks Jean to delegate, coordinate, or route specialized work | `Project Room Chat Startup Rule.md`; `Project Rooms\Jean Wright\working\dispatcher-routing-map.md`; `Project Rooms\Jean Wright\working\dispatcher-action-log.md`; `skills\jean-wright\SKILL.md` |
-| PR Messaging Dispatcher | Machine-local skill, task, and heartbeat per execution computer | Active and unattended-validation complete on WES-VIDEOEDITOR; pre-execution wrapper retry, structured skip diagnostics, local health state, 120-second receipt reconciliation, and scheduled-run precedence hardening added 2026-09-02; OFFICEASSIST local stage provided by Email Monitor | Every five minutes; empty polls silent | `Project Room Messaging Rule.md`; `Project Rooms\PR Messaging Dispatcher\README.md`; `skills\pr-messaging-dispatcher\SKILL.md` |
+| PR Messaging Dispatcher | Machine-local skill, task, and heartbeat per execution computer | Active on WES-VIDEOEDITOR and WESSTUDIO; WESSTUDIO office-hours schedule applied 2026-09-04; WES-VIDEOEDITOR machine-local schedule update pending because its automation is not manageable from WESSTUDIO; schedule-aware local health state; OFFICEASSIST local stage provided by Email Monitor and governed by the same dispatcher window | Every five minutes Monday-Friday, 7:30 AM-7:00 PM Eastern; closed-window polls disabled where deployed; empty polls silent | `Project Room Messaging Rule.md`; `Project Rooms\PR Messaging Dispatcher\README.md`; `skills\pr-messaging-dispatcher\SKILL.md` |
 | Jean's Voice | Voice interface task for Jean Wright | Active | On demand while the Codex voice session and host are available | `Project Rooms\Jean Wright\working\jeans-voice-routing-contract.md`; active task `019fbe57-fcd9-7c83-be74-e377c7b9c4d0` |
 | Jean Quo Text Bridge | OfficeAssist signed Quo webhook, instant OpenAI response, and Jean Wright routing bridge | Pending carrier approval | Incoming texts are webhook-driven and receive an immediate answer or routing acknowledgement; routed final states are checked every 15 seconds | `Project Rooms\Jean Wright\working\quo-text-interface.md`; `Project Rooms\Jean Wright\tools\quo-bridge\Invoke-QuoJeanBridge.ps1`; `Project Rooms\Jean Wright\tools\quo-bridge\Start-QuoJeanBridge.ps1` |
 | REI Text Message Watcher | Heartbeat automation | Active | Every 15 minutes during 8:00 AM-9:00 PM Eastern; adaptive 1-minute checks during activity | `C:\Users\wesbr\.codex\automations\morning-weswill-email-summary\automation.toml` |
-| OfficeAssist Instruction Inbox Monitor | Behavior inside Email Monitor heartbeat | Active | Runs every day; starts at 7:45 AM Eastern, then every 15 minutes through 11:00 PM Eastern; checks email and takes defined actions | `AGENTS.md`; `C:\Users\wesbr\.codex\automations\officeassist-morning-email-summary-and-instruction-monitor\automation.toml` |
+| OfficeAssist Instruction Inbox Monitor | Behavior inside Email Monitor heartbeat | Migration pending | Runs every day; starts at 7:45 AM Eastern, then every 15 minutes through 11:00 PM Eastern; checks email and takes defined actions | `AGENTS.md`; `C:\Users\OfficeAssistLogin\.codex\automations\officeassist-morning-email-summary-and-instruction-monitor\automation.toml` |
 | Gracious Millionaire Project Room Heartbeat | Project-room heartbeat automation | Active | Every 15 minutes from 8:00 AM-11:45 PM Eastern; project-room Markdown intake processing only | `Project Rooms\Gracious Millionaire\README.md`; `Project Rooms\Gracious Millionaire\working\intake-heartbeat-rules.md`; `C:\Users\wesbr\.codex\automations\gracious-millionaire-project-room-heartbeat\automation.toml` |
-| Email Monitor | Wiki-managed skill plus heartbeat automation, project room, direct Email Delivery endpoint, Organize mode, compact current state, and seven-day Teams rolling log | Active | Heartbeat runs every day from 7:45 AM through 11:00 PM Eastern; direct authorized Project Room delivery handoffs trigger immediately; verified deliveries to Wes trigger Organize for `Inbox/Jean Wright` | `skills\email-monitor\SKILL.md`; `Project Rooms\Email Monitor\README.md`; `Project Rooms\Email Monitor\config\email-monitor-log.json`; `C:\Users\wesbr\.codex\automations\officeassist-morning-email-summary-and-instruction-monitor\automation.toml` |
+| Email Monitor | Wiki-managed skill plus heartbeat automation, project room, direct Email Delivery endpoint, Organize mode, compact current state, and seven-day Teams rolling log | WESSTUDIO paused; OFFICEASSIST activation pending | Heartbeat runs every day from 7:45 AM through 11:00 PM Eastern; embedded dispatcher runs only Monday-Friday 7:30 AM-7:00 PM Eastern; direct authorized delivery handoffs remain subject to destination readiness | `skills\email-monitor\SKILL.md`; `Project Rooms\Email Monitor\README.md`; `Project Rooms\Email Monitor\config\email-monitor-log.json`; `Project Rooms\Email Monitor\working\migrations\2026-09-04-wesstudio-to-officeassist\handoff.md` |
 | Email Delivery | Wiki-managed support skill | Active | Called by email-capable Admin workflows | `skills\email-delivery\SKILL.md` |
 | Doc Scan | Wiki-managed skill plus heartbeat automation plus project room | Active | Every 15 minutes on weekdays from 10:00 AM through 4:45 PM Eastern | `skills\doc-scan\SKILL.md`; `Project Rooms\Doc Scan\README.md`; `C:\Users\wesbr\.codex\skills\doc-scan\SKILL.md`; app automation id `doc-scan` |
 | Codex Skill Source Control | Wiki-managed skill system | Active | On demand after skill changes or wiki pulls | `Codex Skill Source Rule.md`; `tools\sync-codex-skills.ps1`; `skills\` |
@@ -251,7 +251,7 @@ Special routing:
 Defined in:
 
 - `C:\Codex\Wiki Files\AGENTS.md`
-- `C:\Users\wesbr\.codex\automations\officeassist-morning-email-summary-and-instruction-monitor\memory.md` for local message-id memory.
+- `C:\Users\OfficeAssistLogin\.codex\automations\officeassist-morning-email-summary-and-instruction-monitor\memory.md` for Email Monitor message-id memory after activation.
 
 Activation note:
 
@@ -350,7 +350,7 @@ Defined in:
 - `C:\Codex\Wiki Files\skills\email-monitor\SKILL.md`
 - `C:\Codex\Wiki Files\Project Rooms\Email Monitor\README.md`
 - `C:\Codex\Wiki Files\Project Rooms\Email Monitor\working\routing-action-log.md`
-- `C:\Users\wesbr\.codex\automations\officeassist-morning-email-summary-and-instruction-monitor\automation.toml`
+- `C:\Users\OfficeAssistLogin\.codex\automations\officeassist-morning-email-summary-and-instruction-monitor\automation.toml` after OFFICEASSIST activation
 - Email safety rules in `AGENTS.md`.
 
 Important limitations:
@@ -360,7 +360,7 @@ Important limitations:
 - Do not substitute another mailbox for Jenny.
 - Organize maintains independent Wes and Jenny rule sets for each mailbox's `Inbox/Jean Wright` root. A verified Email Delivery activates each owner whose address appears in To or CC. `Time Cards` has first filing priority for every Josh time-cycle message and for Tim Fleming messages that report his hours worked.
 - Keep the automation attached to one dedicated status thread via `target_thread_id` so failure notifications and follow-up stay in one chat.
-- Current status thread id: `019ecba7-f1cc-7ac1-aaf7-d89a3f21b582` on `WESSTUDIO`. The unactivated OfficeAssist replacement task `01a029bf-81d2-76e1-9960-64558a57640b` remains inactive after the 2026-08-24 rollback review.
+- Controlled migration target: `01a03956-fe55-7f62-9c0a-17c18f763320` on `OFFICEASSIST` under `OfficeAssistLogin`. Source task `019ecba7-f1cc-7ac1-aaf7-d89a3f21b582` on `WESSTUDIO` is retained paused for rollback. Destination activation and unattended messaging validation remain required.
 
 Tools/services used:
 
@@ -1347,7 +1347,7 @@ Activation note:
 
 Defined in:
 
-- `C:\Users\wesbr\.codex\automations\officeassist-morning-email-summary-and-instruction-monitor\automation.toml`
+- `C:\Users\OfficeAssistLogin\.codex\automations\officeassist-morning-email-summary-and-instruction-monitor\automation.toml` after OFFICEASSIST activation
 - `C:\Codex\Wiki Files\skills\email-monitor\SKILL.md`
 
 Operating rule:

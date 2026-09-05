@@ -54,11 +54,16 @@ The dispatcher now distinguishes a pre-PowerShell tool-wrapper failure from a he
 - WES-VIDEOEDITOR task name: `PR Messaging Dispatcher - WES-VIDEOEDITOR`
 - WES-VIDEOEDITOR task id: `01a05d0c-8031-7d92-9474-ab2330008ddb`
 - WES-VIDEOEDITOR automation id: `pr-messaging-dispatcher-wes-videoeditor`
+- WESSTUDIO task name: `PR Messaging Dispatcher - WESSTUDIO`
+- WESSTUDIO task id: `01a06337-1b59-7dc2-9586-6660eb7b5da7`
+- WESSTUDIO automation id: `pr-messaging-dispatcher`
 - OFFICEASSIST exception: its active Email Monitor heartbeat may provide the local dispatcher stage; do not create a duplicate dispatcher heartbeat while that stage remains verified.
 
 ## Schedule
 
-- Every five minutes, continuously.
+- Every five minutes Monday through Friday from 7:30 AM through 7:00 PM Eastern.
+- No overnight or weekend runs. Messages remain durably queued until the next operating window.
+- Health evaluation treats the closed window as expected inactivity and uses `next_scheduled_run_at_utc` from the dispatcher health file before declaring a stale dispatcher.
 - Empty polls are strictly silent.
 - Notify Wes only for newly delivered consequential work, a new actionable blocker, or a new decision.
 
