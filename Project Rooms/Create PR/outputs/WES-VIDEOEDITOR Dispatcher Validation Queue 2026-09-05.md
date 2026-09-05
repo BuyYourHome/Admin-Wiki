@@ -3,7 +3,7 @@
 Date: 2026-09-05
 Status: one synthetic validation queued; production dispatch remains disabled. This is test preparation, not readiness completion or implementation authorization.
 
-Later decision: `prmsg-jean-wve-synthetic-hours-exception-20260905-001` conditionally supersedes the weekday wait for this exact test on 2026-09-05. See [[Project Rooms/Create PR/outputs/WES-VIDEOEDITOR One-Hour Synthetic Exception Setup]]. The original queued record is unchanged. Until the existing WES-VIDEOEDITOR heartbeat has verified safe local setup and automatic restoration, no outside-hours run is authorized to proceed. WESSTUDIO has not installed that override.
+Later decisions: `prmsg-jean-wve-synthetic-hours-exception-20260905-001` conditionally superseded the weekday wait for this exact test on 2026-09-05; revised decision `prmsg-jean-wve-synthetic-hours-exception-20260905-002` supersedes only its independent automatic-restoration prerequisite. See [[Project Rooms/Create PR/outputs/WES-VIDEOEDITOR One-Hour Synthetic Exception Setup]]. The original queued record is unchanged. A supported, verified hard automatic schedule stop within one hour remains mandatory before local activation; exact original settings may be restored later by Codex or manually. Until verified restoration, an expired/terminal override permits no further claims or unfiltered production fallback. WESSTUDIO has not installed that override.
 
 ## Accepted Preflight
 
