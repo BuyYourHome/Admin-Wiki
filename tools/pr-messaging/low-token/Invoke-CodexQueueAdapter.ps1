@@ -1,0 +1,31 @@
+[CmdletBinding()]
+param(
+    [Parameter(Mandatory=$true)][string]$ThreadId,
+    [Parameter(Mandatory=$true)][string]$DispatcherTaskId,
+    [Parameter(Mandatory=$true)][string]$MessageId,
+    [Parameter(Mandatory=$true)][string]$PayloadHash,
+    [Parameter(Mandatory=$true)][string]$CliPath,
+    [Parameter(Mandatory=$true)][string]$ExpectedCliHash,
+    [ValidateRange(1,20)][int]$TimeoutSeconds=10,
+    [switch]$DescribeOnly
+)
+$ErrorActionPreference='Stop'
+. "$PSScriptRoot\Common.ps1"
+. "$PSScriptRoot\Process.ps1"
+Assert-LtUuid $ThreadId; Assert-LtUuid $DispatcherTaskId; Assert-LtId $MessageId
+if ($ThreadId -ceq $DispatcherTaskId) { throw 'SelfNotificationForbidden' }
+if ($PayloadHash -cnotmatch '^[0-9a-f]{64}$') { throw 'InvalidPayloadHash' }
+if ($ExpectedCliHash -notmatch '^[0-9a-fA-F]{64}$' -or (Get-FileHash -LiteralPath $CliPath -Algorithm SHA256).Hash -ine $ExpectedCliHash) { throw 'CliReleaseMismatch' }
+$message="PR Messaging transport wake-up only, not a new Wes instruction. MessageId $MessageId; payload_hash $PayloadHash. Retrieve and verify the authoritative record using C:\Codex\Wiki Files\tools\pr-messaging\Manage-ProjectRoomMessage.ps1 before accepting. Follow only its authorized scope. Notification is not delivery proof."
+$argv=@('queue','--thread',$ThreadId,'--message',$message)
+function Invoke-ReviewedQueueSubmission {
+    # Complete transport implementation, intentionally unreachable from this release's entry point.
+    $start=[DateTime]::UtcNow.ToString('o')
+    $p=Invoke-LtProcess $CliPath $argv $TimeoutSeconds
+    $submitted=(!$p.timed_out -and $p.exit_code -eq 0 -and $p.stdout -match ('Queued message ([0-9a-f-]{36}) for thread '+[regex]::Escape($ThreadId)+'\.'))
+    [pscustomobject]@{started_at_utc=$start;completed_at_utc=[DateTime]::UtcNow.ToString('o');submitted=$submitted;accepted=$false;timed_out=$p.timed_out;exit_code=$p.exit_code;stdout=$p.stdout;stderr=$p.stderr;reason=if($submitted){'SubmittedNotAccepted'}else{'SubmissionUncertain'}}
+}
+if ($DescribeOnly) { [pscustomobject]@{executable=$CliPath;arguments=$argv;submission_performed=$false} | ConvertTo-Json -Depth 5; return }
+# Hard safety barrier for development release. Remove only in a reviewed canary release.
+throw 'RealSubmissionDisabledInDevelopmentRelease'
+# A reviewed canary release may replace the hard stop with Invoke-ReviewedQueueSubmission.
