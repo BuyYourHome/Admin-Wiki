@@ -3,7 +3,7 @@
 Date: 2026-09-05
 Status: one synthetic validation queued; production dispatch remains disabled. This is test preparation, not readiness completion or implementation authorization.
 
-Later decisions: `prmsg-jean-wve-synthetic-hours-exception-20260905-001` conditionally superseded the weekday wait for this exact test on 2026-09-05; revised decision `prmsg-jean-wve-synthetic-hours-exception-20260905-002` supersedes only its independent automatic-restoration prerequisite. See [[Project Rooms/Create PR/outputs/WES-VIDEOEDITOR One-Hour Synthetic Exception Setup]]. The original queued record is unchanged. A supported, verified hard automatic schedule stop within one hour remains mandatory before local activation; exact original settings may be restored later by Codex or manually. Until verified restoration, an expired/terminal override permits no further claims or unfiltered production fallback. WESSTUDIO has not installed that override.
+Current decision: `prmsg-jean-wve-synthetic-hours-exception-20260905-003` supersedes prior hours, today-only, expiry, and automatic-restoration prerequisites for this exact test. The existing WVE heartbeat may run every five minutes continuously without expiry until Wes closes the hours. See [[Project Rooms/Create PR/outputs/WES-VIDEOEDITOR One-Hour Synthetic Exception Setup]]; the filename is retained but its one-hour title/rules are superseded. The synthetic is unchanged, with a persistent exact-ID filter across every scheduled turn. No setup claim/lifecycle, production, or promotion is authorized. After terminal/exhausted attempt, no more claims or unfiltered fallback. WESSTUDIO has not installed the override. Prior decisions/failures remain history.
 
 ## Accepted Preflight
 
@@ -42,7 +42,7 @@ Safely fetch and fast-forward the canonical `C:\Codex\Wiki Files` repository on 
 
 This pull is deployment of test metadata only. It is not permission to paste the validation into a task, force a heartbeat, run a claim helper manually, change an automation, or execute the low-token design. No code or live schedule is changed by this package.
 
-The next authorized operating window begins **Monday, September 7, 2026, at 7:30 AM Eastern (11:30 UTC)** and ends at 7:00 PM Eastern. The current Saturday and Sunday are closed. This follows the verified weekday schedule; no separate holiday exclusion was reported. The exact runtime start still depends on the computer being awake, connected, signed in, and the unchanged automation running normally.
+Historical normal window: Monday, September 7, 2026, at 7:30 AM Eastern (11:30 UTC), under the preflight weekday schedule. Decision 003 removes that wait for this exact validation setup and permits continuous five-minute scheduled runs without expiry until Wes closes the hours. Actual start still requires safe local configuration/read-back, an awake connected computer, the intended signed-in profile, and a normal scheduled turn. Do not force or manually execute the test.
 
 ## Test And Promotion Boundaries
 
