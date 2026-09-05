@@ -1,7 +1,7 @@
 # WES-VIDEOEDITOR Dispatcher Validation Queue
 
 Date: 2026-09-05
-Status: one synthetic validation queued; production dispatch remains disabled. This is test preparation, not readiness completion or implementation authorization.
+Status: historical self-test is Delivery Ambiguous with its one attempt exhausted and no receipt/result. Current replacement is an explicitly authorized distinct-recipient transport test, not a retry. See [[Project Rooms/Create PR/outputs/WES-VIDEOEDITOR Distinct Recipient Transport Validation]] for the current queued ID/hash and local filter replacement. Production dispatch remains disabled for the dispatcher recipient; its readiness is not proved by transport to another task. The self-test details below are preserved history and must not trigger another attempt.
 
 Current decision: `prmsg-jean-wve-synthetic-hours-exception-20260905-003` supersedes prior hours, today-only, expiry, and automatic-restoration prerequisites for this exact test. The existing WVE heartbeat may run every five minutes continuously without expiry until Wes closes the hours. See [[Project Rooms/Create PR/outputs/WES-VIDEOEDITOR One-Hour Synthetic Exception Setup]]; the filename is retained but its one-hour title/rules are superseded. The synthetic is unchanged, with a persistent exact-ID filter across every scheduled turn. No setup claim/lifecycle, production, or promotion is authorized. After terminal/exhausted attempt, no more claims or unfiltered fallback. WESSTUDIO has not installed the override. Prior decisions/failures remain history.
 

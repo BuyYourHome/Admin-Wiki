@@ -1,5 +1,7 @@
 # WES-VIDEOEDITOR Continuous Synthetic Validation Setup
 
+**Superseded setup:** the self-test below exhausted its one-attempt limit without a recipient receipt. Do not use its old filter or retry it. Current local setup is [[Project Rooms/Create PR/outputs/WES-VIDEOEDITOR Distinct Recipient Transport Validation]], authorized by `prmsg-jean-wve-distinct-recipient-validation-design-20260905-001`. Preserve the installed 24/7/no-expiry schedule and replace only the persistent exact-ID filter as described there. The remainder of this file is historical instruction/evidence, not the current test procedure.
+
 Date: 2026-09-05
 Status: current authorized setup instructions prepared; remote override **not installed** from WESSTUDIO.
 
