@@ -58,6 +58,21 @@
     "automation_schedule_reported": "Every five minutes Monday-Friday 07:30-19:00 America/New_York",
     "automation_pointer_prompt_verified": true,
     "earliest_authorized_window_start_utc": "2026-09-07T11:30:00Z",
+    "temporary_hours_exception": {
+      "decision_message_id": "prmsg-jean-wve-synthetic-hours-exception-20260905-001",
+      "decision_payload_hash": "68f29c5b33e768376652f1b9f4983c2f47eedd437b8a7ba5ef0a99de1618b2b7",
+      "validation_message_id": "prmsg-create-pr-wve-dispatcher-recipient-validation-20260905-001",
+      "authorized_local_date": "2026-09-05",
+      "time_zone": "America/New_York",
+      "max_duration_minutes": 60,
+      "status": "authorized_pending_safe_local_setup",
+      "installed": false,
+      "activated_at_utc": null,
+      "expires_at_utc": null,
+      "automatic_restoration_verified": false,
+      "scope": "Supersedes only weekday wait for this one immutable synthetic test after safe local setup; exact MessageId filter and automatic original-prompt/schedule restoration required; no production or promotion.",
+      "instructions_path": "C:\\Codex\\Wiki Files\\Project Rooms\\Create PR\\outputs\\WES-VIDEOEDITOR One-Hour Synthetic Exception Setup.md"
+    },
     "remaining_gates": [
       "WES-VIDEOEDITOR must safely pull and verify this exact validation-ready manifest before the authorized run",
       "unattended exact-recipient lifecycle after one real notification, including supported self-task enqueue",
