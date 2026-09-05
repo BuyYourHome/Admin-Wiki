@@ -54,7 +54,7 @@ Use [[Agent Unit Standard]] for the standard package behind an agent-like operat
 | Project Management Spreadsheet Rewrite | Planning/history project room now covered by Template to Project | Active/planning | On demand | `skills\template-to-project\SKILL.md`; `Project Rooms\Project Management Spreadsheet Rewrite\README.md` |
 | Property Trade Evaluation | Wiki-managed skill plus project room | Active | On demand | `skills\property-trade-evaluation\SKILL.md`; `Project Rooms\Property Trade Evaluation\README.md` |
 | Voices | Wiki-managed skill plus project room | Planning | On demand | `skills\voices\SKILL.md`; `Project Rooms\Voices\README.md` |
-| New Project | Wiki-managed skill plus project room | Draft | On demand | `skills\new-project\SKILL.md`; `Project Rooms\New Project\README.md` |
+| Properties | Wiki-managed skill plus project room | Draft | On demand | `skills\properties\SKILL.md`; `Project Rooms\Properties\README.md` |
 | Confidential | Wiki-managed skill plus project room plus dedicated chat | Draft | On demand | `skills\confidential\SKILL.md`; `Project Rooms\Confidential\README.md` |
 | REI BlackBook | Wiki-managed skill plus project room plus dedicated chat | Draft | On demand | `skills\rei-blackbook\SKILL.md`; `Project Rooms\REI BlackBook\README.md`; thread id `019f4691-5466-7f72-9683-ab5d3b750c25` |
 | GM Site Iteration | GM heartbeat automation plus REI BlackBook project room | Active | Every 30 minutes; each acquired run chains coherent book-site iterations for approximately 45-90 minutes, then emails Wes the remaining backlog from OfficeAssist | `skills\rei-blackbook\SKILL.md`; `Project Rooms\REI BlackBook\README.md`; automation id `gm-mode-site-iteration` |
@@ -1065,7 +1065,7 @@ Next needed inputs:
 - At least one messy or frustrating project instance.
 - Desired reports and project lifecycle stages.
 
-## New Project
+## Properties
 
 Type: wiki-managed skill plus project room.
 
@@ -1073,23 +1073,23 @@ Status: draft.
 
 Purpose:
 
-- Hold a newly scoped Buy Your Home admin project once Wes defines the goal.
-- Keep source files, working notes, open questions, and review-ready outputs separated from other project rooms.
+- Create the folder and file package for new Buy Your Home property projects after Wes confirms the address and template source.
+- Track all properties handled by this workflow, including template choice, created paths, Profit cleanup status, blockers, and review notes.
 
 Defined in:
 
-- `C:\Codex\Wiki Files\skills\new-project\SKILL.md`
-- `C:\Codex\Wiki Files\Project Rooms\New Project\README.md`
+- `C:\Codex\Wiki Files\skills\properties\SKILL.md`
+- `C:\Codex\Wiki Files\Project Rooms\Properties\README.md`
 
 Important rules:
 
-- Record the project goal and controlling sources before drafting final outputs.
+- Track each property setup request in `Project Rooms\Properties\working\property-tracker.md`.
 - When Wes says to create a new project, first suggest an existing project to use as the template for the new project spreadsheet and associated folders.
 - Wait for Wes to confirm the suggested template project or provide another project to use instead.
 - Use the confirmed template project and Wes-provided address for the new project spreadsheet and associated folders.
 - When creating the new project spreadsheet, review the `Profit` sheet and blank out prototype/template-specific values while preserving formulas, labels, structural formatting, and reusable assumptions.
 - If it is unclear whether a `Profit` sheet value is template-specific or reusable, record it for review instead of deleting it.
-- Do not use New Project when an existing specialized project room is the better fit.
+- Do not use Properties when an existing specialized project room is the better fit.
 
 ## Confidential
 

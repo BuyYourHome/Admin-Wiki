@@ -1,11 +1,11 @@
 ---
-name: new-project
-description: Create and track Buy Your Home New Project property folder/file packages under the New Project project room. Use when Wes asks to create a new property project, use/develop the New Project room, inventory New Project property setups, or produce work from `Project Rooms\New Project`.
+name: properties
+description: Create and track Buy Your Home Properties folder/file packages under the Properties project room. Use when Wes asks to create a new property project, use/develop the Properties room, inventory property setups, or produce work from `Project Rooms\Properties`.
 ---
 
-# New Project
+# Properties
 
-Use this skill to create new Buy Your Home property project folders/files and track all properties handled by the `New Project` project room.
+Use this skill to create new Buy Your Home property project folders/files and track all properties handled by the `Properties` project room.
 
 ## Required Context
 
@@ -15,16 +15,16 @@ Read these files first:
 - `C:\Codex\Wiki Files\AGENTS.md`
 - `C:\Codex\Wiki Files\Project Room Workflow.md`
 - `C:\Codex\Wiki Files\Codex Skill Source Rule.md`
-- `C:\Codex\Wiki Files\Project Rooms\New Project\README.md`
-- `C:\Codex\Wiki Files\Project Rooms\New Project\working\source-inventory.md`
-- `C:\Codex\Wiki Files\Project Rooms\New Project\working\duplicate-and-conflict-log.md`
-- `C:\Codex\Wiki Files\Project Rooms\New Project\working\missing-context.md`
-- `C:\Codex\Wiki Files\Project Rooms\New Project\working\property-tracker.md`
+- `C:\Codex\Wiki Files\Project Rooms\Properties\README.md`
+- `C:\Codex\Wiki Files\Project Rooms\Properties\working\source-inventory.md`
+- `C:\Codex\Wiki Files\Project Rooms\Properties\working\duplicate-and-conflict-log.md`
+- `C:\Codex\Wiki Files\Project Rooms\Properties\working\missing-context.md`
+- `C:\Codex\Wiki Files\Project Rooms\Properties\working\property-tracker.md`
 
 ## Workflow
 
 1. Work only from `C:\Codex\Wiki Files`.
-2. Keep New Project materials under `C:\Codex\Wiki Files\Project Rooms\New Project`.
+2. Keep Properties materials under `C:\Codex\Wiki Files\Project Rooms\Properties`.
 3. Track every property setup request in `working\property-tracker.md`.
 4. When Wes says to create a new project, suggest an existing project to use as the template for the new project spreadsheet and associated folders, then wait for Wes to confirm that template or name another one.
 5. Expect Wes to provide the new project address. Use that address for the new project spreadsheet and associated folders after the template project is confirmed.
@@ -44,8 +44,8 @@ Read these files first:
 
 ## Boundaries
 
-- Do not move unrelated project-room materials into New Project unless Wes explicitly says they belong there.
-- Do not treat New Project as a substitute for an existing specialized room when a better room already exists.
+- Do not move unrelated project-room materials into Properties unless Wes explicitly says they belong there.
+- Do not treat Properties as a substitute for an existing specialized room when a better room already exists.
 - Do not create final deliverables from unclear or missing source context.
 - Do not treat property tracking as authority to edit live project workbooks, invoice workflows, contract packages, or another PR's files.
 - Preserve original source files.

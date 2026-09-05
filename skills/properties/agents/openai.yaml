@@ -1,0 +1,4 @@
+interface:
+  display_name: "Properties"
+  short_description: "Create and track property setup folders and files"
+  default_prompt: "Use $properties to create property setup folders/files and track all properties handled by the Properties room."

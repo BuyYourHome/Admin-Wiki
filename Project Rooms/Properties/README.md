@@ -1,6 +1,6 @@
-# New Project
+# Properties
 
-This Project Room owns the New Project setup workflow for Buy Your Home properties.
+This Project Room owns the Properties setup workflow for Buy Your Home properties.
 
 ## Purpose
 
@@ -13,7 +13,7 @@ This Project Room owns the New Project setup workflow for Buy Your Home properti
 - Status: active draft workflow.
 - Owner intent: create property project folders/files and maintain a tracker for all properties handled by this PR.
 - Next action: use `working\property-tracker.md` for each new property request and keep setup outputs under address-specific folders.
-- Related skill: `C:\Codex\Wiki Files\skills\new-project\SKILL.md`.
+- Related skill: `C:\Codex\Wiki Files\skills\properties\SKILL.md`.
 
 ## Room Layout
 

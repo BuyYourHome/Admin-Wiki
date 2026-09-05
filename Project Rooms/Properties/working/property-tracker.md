@@ -1,6 +1,6 @@
 # Property Tracker
 
-Use this tracker for every property setup request handled by the New Project PR.
+Use this tracker for every property setup request handled by the Properties PR.
 
 ## Status Terms
 
@@ -15,4 +15,4 @@ Use this tracker for every property setup request handled by the New Project PR.
 
 | Property | Status | Template Source | Output Folder | Project Spreadsheet | Profit Cleanup | Blockers / Review Notes | Last Updated |
 |---|---|---|---|---|---|---|---|
-| 5512 Desert Willow Ln | review needed | `Project Rooms\Property Trade Evaluation\working\tensity-inspection\24_Project Management - 4121 Tensity Dr 2 - inspection copy after translation.xlsm` | `Project Rooms\New Project\outputs\5512 Desert Willow Ln` | `Project Rooms\New Project\outputs\5512 Desert Willow Ln\Project Management - 5512 Desert Willow Ln.xlsm` | Conservative cleanup completed; see `working\5512 Desert Willow Ln\profit-cleanup-review.md`. | City/state/ZIP/county missing; Tensity was approved for test use only; inherited `#REF!` matches at `Gnatt Chart!AP14` and `Paint!J46` need review before production use. | 2026-09-05 |
+| 5512 Desert Willow Ln | review needed | `Project Rooms\Property Trade Evaluation\working\tensity-inspection\24_Project Management - 4121 Tensity Dr 2 - inspection copy after translation.xlsm` | `Project Rooms\Properties\outputs\5512 Desert Willow Ln` | `Project Rooms\Properties\outputs\5512 Desert Willow Ln\Project Management - 5512 Desert Willow Ln.xlsm` | Conservative cleanup completed; see `working\5512 Desert Willow Ln\profit-cleanup-review.md`. | City/state/ZIP/county missing; Tensity was approved for test use only; inherited `#REF!` matches at `Gnatt Chart!AP14` and `Paint!J46` need review before production use. | 2026-09-05 |

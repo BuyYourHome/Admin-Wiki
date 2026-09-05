@@ -2,7 +2,7 @@
 
 ## Test Output
 
-- Output workbook: `Project Rooms\New Project\outputs\5512 Desert Willow Ln\Project Management - 5512 Desert Willow Ln.xlsm`
+- Output workbook: `Project Rooms\Properties\outputs\5512 Desert Willow Ln\Project Management - 5512 Desert Willow Ln.xlsm`
 - Template used: `Project Rooms\Property Trade Evaluation\working\tensity-inspection\24_Project Management - 4121 Tensity Dr 2 - inspection copy after translation.xlsm`
 - Requested address: `5512 Desert Willow Ln`
 
