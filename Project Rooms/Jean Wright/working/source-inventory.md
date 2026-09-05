@@ -9,3 +9,4 @@
 | `Agent Unit Standard.md` | Wiki rule | authoritative | Defines the Project Room, skill, registry, chat, and automation package. |
 | Conversation instruction creating Jean Wright PR | User instruction | authoritative | Wes asked to use Create PR to create a Jean Wright PR and add the current rules to it. |
 | `Project Rooms\Jean Wright\working\quo-text-interface.md` | Interface contract | authoritative | Defines the OfficeAssist signed webhook, instant-response boundary, authorized sender, and durable Jean handoff path. |
+| `outputs\24-Hour Low-Token Dispatcher Design.md` | Coordination design, 2026-09-05 | review-ready | Records Wes's continuous-availability/token-saving request, inspected sources, owners, tests and remaining adapter proof. Not deployed policy. |
