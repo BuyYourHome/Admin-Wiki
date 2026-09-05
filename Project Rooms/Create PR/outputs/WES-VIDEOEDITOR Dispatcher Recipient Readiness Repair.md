@@ -47,10 +47,10 @@ No attempt was backfilled, no immutable payload was changed, and this parent is 
 8. The owning dispatcher task may prepare its own missing Messaging Readiness pointers/status in its README/skill under its ownership rules. Create PR has not edited those owned files. Keep the room non-dispatchable until actual evidence passes.
 9. Return the preflight evidence or smallest blocker to Create PR using a new linked central status message through the canonical manager, with this parent ID as the relationship. Use the exact Create PR destination above, then the normal machine-local notification path. No manual edit of runtime JSON. A manually initiated preflight is not unattended delivery proof.
 
-Read-only host-access command on WES-VIDEOEDITOR:
+Read-only host-access command on WES-VIDEOEDITOR. Use this process-scoped wrapper to avoid the known scripts-disabled launch error; do not change machine execution policy:
 
 ```powershell
-& 'C:\Codex\Wiki Files\tools\pr-messaging\Manage-ProjectRoomMessage.ps1' -Action Health
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File 'C:\Codex\Wiki Files\tools\pr-messaging\Manage-ProjectRoomMessage.ps1' -Action Health
 ```
 
 ## Gated Synthetic Validation And Later Implementation
@@ -71,7 +71,7 @@ Require all of the following before promotion:
 Run the read-only validator on **WES-VIDEOEDITOR**, not WESSTUDIO:
 
 ```powershell
-& 'C:\Codex\Wiki Files\tools\pr-messaging\Test-ProjectRoomMessagingReadiness.ps1' `
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File 'C:\Codex\Wiki Files\tools\pr-messaging\Test-ProjectRoomMessagingReadiness.ps1' `
   -ProjectRoom 'PR Messaging Dispatcher' `
   -TaskId '01a05d0c-8031-7d92-9474-ab2330008ddb' `
   -ReadmePath 'C:\Codex\Wiki Files\Project Rooms\PR Messaging Dispatcher\README.md' `
@@ -91,7 +91,7 @@ Work only in C:\Codex\Wiki Files on main. Verify Get-Location first and use that
 
 Read C:\Codex\Wiki Files\Project Rooms\Create PR\outputs\WES-VIDEOEDITOR Dispatcher Recipient Readiness Repair.md and follow its Local Recovery Sequence. First verify the published correction and design are safely present. Reconcile the parent through C:\Codex\Wiki Files\tools\pr-messaging\Manage-ProjectRoomMessage.ps1 and verify hash d2e8b8200896a1d8cadde8a5dfc7d10c4ce721cf155968813487ec05435ce6ec. Do not Accept or finalize that parent; its destination is Create PR task 019fdc5e-a1da-7e10-b388-a3be3830ac89 on WESSTUDIO.
 
-Verify your exact local registration, authenticated central-host access, and existing automation pr-messaging-dispatcher-wes-videoeditor read-only. Report actual evidence/timestamps or the smallest blocker. Keep dispatchable false. Do not change registrations, ACLs, credentials, live schedules, automation state, or code; do not claim any queued work during this preflight. Do not manually deliver a synthetic message or count this turn as unattended proof. Return a linked central status to the exact Create PR task under the canonical messaging rules. Readiness must pass before the separate GPT-6 Astra High implementation handoff.
+Verify your exact local registration, authenticated central-host access, and existing automation pr-messaging-dispatcher-wes-videoeditor read-only. Launch the canonical scripts using powershell.exe -NoProfile -ExecutionPolicy Bypass -File with their full quoted paths; this is process-scoped and does not change machine execution policy. Report actual evidence/timestamps or the smallest blocker. Keep dispatchable false. Do not change registrations, ACLs, credentials, live schedules, automation state, or code; do not claim any queued work during this preflight. Do not manually deliver a synthetic message or count this turn as unattended proof. Return a linked central status to the exact Create PR task under the canonical messaging rules. Readiness must pass before the separate GPT-6 Astra High implementation handoff.
 ```
 
 ## Completion Boundary
