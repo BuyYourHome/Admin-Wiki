@@ -2,27 +2,27 @@
 
 Source path:
 
-`C:\Users\wesbr\.codex\automations\officeassist-morning-email-summary-and-instruction-monitor\automation.toml`
+`C:\Users\OfficeAssistLogin\.codex\automations\officeassist-morning-email-summary-and-instruction-monitor\automation.toml` after destination activation
 
 Status: authoritative for the live local automation configuration.
 
 Related run memory:
 
-`C:\Users\wesbr\.codex\automations\officeassist-morning-email-summary-and-instruction-monitor\memory.md`
+`C:\Users\OfficeAssistLogin\.codex\automations\officeassist-morning-email-summary-and-instruction-monitor\memory.md` after destination activation
 
 Status: authoritative for persistent run state, including verified send history, cutoff decisions, summary topics, blockers, and Jenny pause notes.
 
-Current observed values as of 2026-07-24:
+Current migration values as of 2026-09-04:
 
 | Field | Value |
 |---|---|
 | id | `officeassist-morning-email-summary-and-instruction-monitor` |
 | kind | `heartbeat` |
 | name | `Email Monitor` |
-| status | `ACTIVE` |
+| status | Source `PAUSED`; destination activation pending |
 | schedule | Runs every day; starts at 7:45 AM Eastern, then every 15 minutes from 8:00 AM through 11:00 PM Eastern |
 | target thread | `Email Monitor` |
-| target thread id | `019ecba7-f1cc-7ac1-aaf7-d89a3f21b582` on `WESSTUDIO`; OfficeAssist task `01a029bf-81d2-76e1-9960-64558a57640b` remains inactive |
+| target thread id | Intended destination `01a03956-fe55-7f62-9c0a-17c18f763320` on `OFFICEASSIST`; source `019ecba7-f1cc-7ac1-aaf7-d89a3f21b582` retained paused |
 
 The automation prompt points to:
 

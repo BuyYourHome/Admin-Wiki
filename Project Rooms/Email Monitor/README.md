@@ -7,14 +7,14 @@ This project room holds development notes, source inventory, and review artifact
 - Keep Email Monitor development separate from the general Admin Operations chat.
 - Preserve the active automation id: `officeassist-morning-email-summary-and-instruction-monitor`.
 - Keep the canonical workflow source in `C:\Codex\Wiki Files\skills\email-monitor\SKILL.md`.
-- Track the active OfficeAssist heartbeat config at `C:\Users\wesbr\.codex\automations\officeassist-morning-email-summary-and-instruction-monitor\automation.toml`.
-- Keep compact current state in `C:\Users\wesbr\.codex\automations\officeassist-morning-email-summary-and-instruction-monitor\memory.md`; it is not a heartbeat-history file.
+- Track the active OfficeAssist heartbeat config at `C:\Users\OfficeAssistLogin\.codex\automations\officeassist-morning-email-summary-and-instruction-monitor\automation.toml` after destination activation.
+- Keep compact current state in `C:\Users\OfficeAssistLogin\.codex\automations\officeassist-morning-email-summary-and-instruction-monitor\memory.md`; it is not a heartbeat-history file.
 - Keep one seven-day rolling operational log in Teams at `Office Admin/Codex Logs/Email Monitor/Email Monitor - Rolling 7 Days.md`.
 - Record open decisions before changing mailbox scope, cutoff behavior, delivery behavior, or automation thread targeting.
 
 ## Current Status
 
-- Status: active for Wes, Jenny, and Josh.
+- Status: WESSTUDIO source paused; OFFICEASSIST activation pending for the complete Wes, Jenny, Josh, routing, delivery, organization, health, and embedded-dispatcher workflow.
 - Active automation id: `officeassist-morning-email-summary-and-instruction-monitor`.
 - Schedule: starts at 7:45 AM Eastern, then every 15 minutes from 8:00 AM through 11:00 PM Eastern.
 - Jenny summary: active as of 2026-06-29; scan `Jenny@BuyYourHomeLLC.com` and email the summary to `Jenny@BuyYourHomeLLC.com` from OfficeAssist with Sent Items verification.
@@ -22,10 +22,10 @@ This project room holds development notes, source inventory, and review artifact
 - Send identity: `OfficeAssist@BuyYourHomeLLC.com`.
 - Recipient for Wes summary: `WesWill@BuyYourHomeLLC.com`.
 - Preferred mailbox/send path: Outlook Email connector, with OfficeAssist sent-item verification.
-- Current-computer fallback: when the connector is definitively unavailable and no send occurred, use only the locally mounted `WesWill@BuyYourHomeLLC.com` mailbox under the temporary Jean fallback rules. OfficeAssist is never mounted locally on this computer.
+- Current-computer fallback: use only a sender path allowed by the canonical Email Delivery rules and verified under the active OFFICEASSIST profile; never infer availability from the former WESSTUDIO Outlook profile.
 - Automation type: heartbeat, attached to the dedicated `Email Monitor` thread.
 - Responsibility boundary: the heartbeat checks email and takes defined actions. Separately, direct authorized Email Delivery handoffs from other Project Rooms trigger immediately without waiting for the heartbeat or scanning a mailbox. Email Monitor coordinates delivery but does not take ownership of the requesting workflow's purpose, content, authorization, recipients, attachments, or restrictions.
-- Status thread id: `019ecba7-f1cc-7ac1-aaf7-d89a3f21b582` on `WESSTUDIO`. The unactivated OfficeAssist replacement task `01a029bf-81d2-76e1-9960-64558a57640b` remains inactive after the 2026-08-24 rollback review.
+- Source task `019ecba7-f1cc-7ac1-aaf7-d89a3f21b582` on `WESSTUDIO` is paused and retained for rollback. Intended destination task `01a03956-fe55-7f62-9c0a-17c18f763320` on `OFFICEASSIST` remains non-dispatchable until machine-local verification and activation complete.
 - Task lifecycle: keep one dedicated active task and keep routine heartbeat history outside task context. Do not replace it for ordinary compaction; use the controlled, Wes-approved rollover procedure only when multiple measured health signals justify it.
 - Durable dispatch queue: `\\WES-VIDEOEDITOR\BYH-PRMessaging$\records`, managed by `C:\Codex\Wiki Files\tools\pr-messaging\Manage-ProjectRoomMessage.ps1`. Queue records are runtime state outside Git. The former Email Monitor queue is read-only legacy history.
 
@@ -57,7 +57,7 @@ For each recipient, keep the Email Summary subject unchanged throughout the Mond
 
 Use this mode to own independent Windows workflow-health supervisors for registered workflows. Machine-specific registries keep Email Monitor and Invoice Entry on WesStudio while preserving separate configurations, health snapshots, alert transitions, current-alert files, and diagnostic logs.
 
-The Windows task `Codex - Workflow Health Supervisor` runs every 10 minutes independently on each assigned machine. `workflow-health-registry.json` enables Email Monitor and Invoice Entry on `WESSTUDIO`. `officeassist-workflow-health-registry.json` keeps Email Monitor disabled on `OFFICEASSIST`; its Doc Scan entry remains unchanged pending migration evidence review. Each machine uses its own registry, mutex, task, state, and diagnostics.
+The Windows task `Codex - Workflow Health Supervisor` runs every 10 minutes independently on each assigned machine. `workflow-health-registry.json` keeps Invoice Entry enabled and Email Monitor disabled on `WESSTUDIO`. `officeassist-workflow-health-registry.json` keeps Email Monitor disabled until destination activation; its Doc Scan entry remains unchanged. Each machine uses its own registry, mutex, task, state, and diagnostics.
 
 Routine healthy and unchanged-state checks are diagnostic-only. Visible warning, critical, and recovery alerts occur only on state transitions. The supervisor uses a named mutex for overlap protection, isolates malformed workflow configurations, refuses the wrong machine, and does not depend on Outlook or another supervised connector.
 
@@ -152,7 +152,7 @@ Every direct package must provide:
 - workflow-specific restrictions;
 - callback task/thread ID.
 
-Reject or hold incomplete or conflicting packages. Do not invent or change any caller-owned field. Before sending, search durable Email Monitor delivery records and automation memory for the request ID. A request already marked `Sent and Verified` must not be sent again; return its existing result. A request already unresolved must not start a parallel send. Record a new accepted request before invoking the connector and update that record with the result. The default durable record is `C:\Users\wesbr\.codex\automations\officeassist-morning-email-summary-and-instruction-monitor\memory.md` unless Email Monitor establishes a dedicated delivery ledger.
+Reject or hold incomplete or conflicting packages. Do not invent or change any caller-owned field. Before sending, search durable Email Monitor delivery records and automation memory for the request ID. A request already marked `Sent and Verified` must not be sent again; return its existing result. A request already unresolved must not start a parallel send. Record a new accepted request before invoking the connector and update that record with the result. The default durable record is `C:\Users\OfficeAssistLogin\.codex\automations\officeassist-morning-email-summary-and-instruction-monitor\memory.md` unless Email Monitor establishes a dedicated delivery ledger.
 
 A properly authorized Invoice Entry package may request vendor invoice-accuracy verification, Time Card invoice verification, Wes approval/payment review, or a post-Wes-approval status notice. Route Vendor Invoice's prohibition on contacting a vendor applies to intake routing; it does not block a later, specifically authorized Email Delivery package under Invoice Entry's saved rules.
 
@@ -171,7 +171,7 @@ After sending, verify the OfficeAssist Sent Items copy for sender, To, CC, BCC, 
 - `C:\Codex\Wiki Files\Project Rooms\Email Monitor\working\routing-action-log.md`
 - `C:\Codex\Wiki Files\AGENTS.md`
 - `C:\Codex\Wiki Files\Agents and Automations Registry.md`
-- `C:\Users\wesbr\.codex\automations\officeassist-morning-email-summary-and-instruction-monitor\automation.toml`
+- `C:\Users\OfficeAssistLogin\.codex\automations\officeassist-morning-email-summary-and-instruction-monitor\automation.toml`
 
 ## Development Boundary
 

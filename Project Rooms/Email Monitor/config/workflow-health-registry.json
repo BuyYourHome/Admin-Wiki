@@ -16,7 +16,7 @@
     {
       "workflow_id": "officeassist-morning-email-summary-and-instruction-monitor",
       "display_name": "Email Monitor",
-      "enabled": true,
+      "enabled": false,
       "config_path": "C:\\Codex\\Wiki Files\\Project Rooms\\Email Monitor\\config\\email-monitor-health.json"
     },
     {

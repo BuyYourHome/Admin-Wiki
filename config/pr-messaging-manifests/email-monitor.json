@@ -1,12 +1,25 @@
 {
-  "schema_version": 1,
+  "schema_version": 2,
   "project_room": "Email Monitor",
   "skill": "email-monitor",
-  "task_id": "019ecba7-f1cc-7ac1-aaf7-d89a3f21b582",
-  "dispatchable": true,
-  "execution_machine": "WESSTUDIO",
+  "task_id": "01a03956-fe55-7f62-9c0a-17c18f763320",
+  "dispatchable": false,
+  "execution_machine": "OFFICEASSIST",
   "owned_actions": ["mailbox summaries", "OfficeAssist instruction intake", "email routing", "Email Delivery coordination", "email workflow health"],
   "accepted_message_types": ["request", "question", "status", "decision", "result", "improvement"],
   "related_project_rooms": ["Jean Wright", "Invoice Entry", "Manager"],
-  "limitations": ["external delivery remains subject to sender and Sent Items verification", "queue intake does not authorize unsupported external actions"]
+  "limitations": ["external delivery remains subject to sender and Sent Items verification", "queue intake does not authorize unsupported external actions"],
+  "messaging_readiness": {
+    "status": "pending_officeassist_activation",
+    "source_task_id": "019ecba7-f1cc-7ac1-aaf7-d89a3f21b582",
+    "source_machine": "WESSTUDIO",
+    "destination_task_id": "01a03956-fe55-7f62-9c0a-17c18f763320",
+    "destination_machine": "OFFICEASSIST",
+    "destination_windows_profile": "C:\\Users\\OfficeAssistLogin",
+    "migration_handoff": "Project Rooms/Email Monitor/working/migrations/2026-09-04-wesstudio-to-officeassist/handoff.md",
+    "machine_registration_verified_at_utc": null,
+    "host_access_verified_at_utc": null,
+    "lifecycle_completed_at_utc": null,
+    "manual_intervention": null
+  }
 }

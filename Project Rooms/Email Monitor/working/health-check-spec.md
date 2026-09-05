@@ -19,7 +19,7 @@ The supervisor detects failures and performance degradation. It does not perform
 
 ## Shared Runtime
 
-- Assigned machine: `WESSTUDIO`.
+- Email Monitor destination machine: `OFFICEASSIST`.
 - Scheduled task: `Codex - Workflow Health Supervisor`.
 - Polling interval: 10 minutes.
 - Mutex: `Global\CodexWorkflowHealthSupervisor`.
@@ -29,7 +29,7 @@ The supervisor detects failures and performance degradation. It does not perform
 
 The supervisor refuses to run on the wrong machine. A second overlapping invocation exits after recording that the registry lock is held. A missing or malformed workflow configuration returns an error for that workflow and does not stop evaluation of the others.
 
-Rollback note: Email Monitor returned to `WESSTUDIO` on 2026-08-24 after the OfficeAssist replacement remained unactivated. Its lifecycle configuration and enabled supervisor entry are defined in `config\workflow-health-registry.json`. The OfficeAssist registry keeps Email Monitor disabled.
+Migration note: the WESSTUDIO Email Monitor heartbeat is retained paused for rollback. Its WESSTUDIO supervisor entry is disabled. The OfficeAssist registry keeps Email Monitor disabled until task identity, runtime state, connector access, and heartbeat activation are verified under `OfficeAssistLogin`.
 
 ## Alert Contract
 
@@ -54,10 +54,10 @@ Alerts attempt a Windows toast and an Application event-log entry. Email and SMS
 - Expected heartbeat: 15 minutes.
 - Warning: 35 minutes.
 - Critical: 60 minutes.
-- Health: `C:\Users\wesbr\.codex\automations\officeassist-morning-email-summary-and-instruction-monitor\health.json`.
-- State: `C:\Users\wesbr\.codex\automations\officeassist-morning-email-summary-and-instruction-monitor\watchdog-state.json`.
-- Alert: `C:\Users\wesbr\.codex\automations\officeassist-morning-email-summary-and-instruction-monitor\current-alert.txt`.
-- Diagnostics: `C:\Users\wesbr\.codex\automations\officeassist-morning-email-summary-and-instruction-monitor\watchdog.log`.
+- Health: `C:\Users\OfficeAssistLogin\.codex\automations\officeassist-morning-email-summary-and-instruction-monitor\health.json`.
+- State: `C:\Users\OfficeAssistLogin\.codex\automations\officeassist-morning-email-summary-and-instruction-monitor\watchdog-state.json`.
+- Alert: `C:\Users\OfficeAssistLogin\.codex\automations\officeassist-morning-email-summary-and-instruction-monitor\current-alert.txt`.
+- Diagnostics: `C:\Users\OfficeAssistLogin\.codex\automations\officeassist-morning-email-summary-and-instruction-monitor\watchdog.log`.
 
 Email Monitor continues calling the updater at heartbeat start and completion or failure. Migration must preserve its machine-local history where practical.
 
