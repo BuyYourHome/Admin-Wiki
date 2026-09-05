@@ -19,12 +19,22 @@
     "cross_machine_source": "WESSTUDIO",
     "destination_windows_profile": "C:\\Users\\OfficeAssistLogin",
     "migration_handoff": "Project Rooms/Email Monitor/working/migrations/2026-09-04-wesstudio-to-officeassist/handoff.md",
-    "machine_registration_verified_at_utc": null,
-    "host_access_verified_at_utc": null,
-    "validation_message_id": "prmsg-email-monitor-officeassist-validation-20260904-001",
-    "notification_count": 1,
-    "notification_delivered": false,
-    "notification_result": "NotDelivered: destination task was not readable from WESSTUDIO",
+    "machine_registration_verified_at_utc": "2026-09-05T02:18:40.8163925Z",
+    "host_access_verified_at_utc": "2026-09-05T02:18:49.5608497Z",
+    "validation_message_id": "prmsg-email-monitor-officeassist-validation-20260905-002",
+    "notification_count": 0,
+    "notification_delivered": null,
+    "notification_result": "Pending unattended OFFICEASSIST embedded-dispatcher processing",
+    "dispatcher_task_id": "01a03956-fe55-7f62-9c0a-17c18f763320",
+    "dispatcher_automation_id": "officeassist-morning-email-summary-and-instruction-monitor",
+    "prior_failed_validation": {
+      "message_id": "prmsg-email-monitor-officeassist-validation-20260904-001",
+      "state": "Queued",
+      "attempt_count": 1,
+      "notification_count": 1,
+      "attempt_outcome": "NotDelivered",
+      "failure_detail": "Exactly one task-notification call was made, but Codex returned: No Codex thread found for destination task 01a03956-fe55-7f62-9c0a-17c18f763320; hosts without a readable match: local. No destination notification was delivered."
+    },
     "lifecycle_completed_at_utc": null,
     "manual_intervention": null
   }
