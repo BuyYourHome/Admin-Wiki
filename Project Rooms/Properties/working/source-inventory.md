@@ -9,6 +9,8 @@
 | 5512 Desert Willow Ln Profit cleanup review | `Project Rooms\Properties\working\5512 Desert Willow Ln\profit-cleanup-review.md` | working note | Records cells cleaned, values preserved, and review items before any production use. |
 | Properties redefinition instruction | Current Codex thread | authoritative | Wes redefined this PR to create the folder and files, and track all properties. |
 | Property tracker | `Project Rooms\Properties\working\property-tracker.md` | authoritative | Durable tracker for property setup requests, template choices, created folders/files, cleanup status, and blockers. |
+| Teams Property root survey | `C:\Users\wesbr\Buy Your Home\Buy Your Home - Property`; SharePoint connector path `lifeisanadventure.sharepoint.com/sites/SellYourHome` / `Property` | authoritative source area | Wes instructed this PR to be the authoritative source for information about properties in Teams. Initial survey on 2026-09-05 found active property folders, top-level project-management workbooks, template folders, offers, and closed-property archives. SharePoint connector confirmed the Teams root and first-page folder list. |
+| Property information ledger | `Project Rooms\Properties\working\property-information-ledger.md` | authoritative index | Durable index for Teams property information, including rents, lease evidence, insurance evidence, purchase price/cost candidates, and sales price candidates. |
 
 ## Inventory Notes
 

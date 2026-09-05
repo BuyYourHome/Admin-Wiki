@@ -6,24 +6,28 @@ This Project Room owns the Properties setup workflow for Buy Your Home propertie
 
 - Create the standard folder and file package for a new Buy Your Home property project after Wes confirms the project address and template source.
 - Track all properties processed or queued through this workflow.
+- Maintain the authoritative Admin wiki index for property information found in the Teams-synced Property area, including rents, lease evidence, insurance evidence, purchase price or cost, and sales price.
 - Preserve source materials, setup decisions, template choices, cleanup notes, and open questions before any project package is treated as production-ready.
 
 ## Current Status
 
 - Status: active draft workflow.
 - Owner intent: create property project folders/files and maintain a tracker for all properties handled by this PR.
-- Next action: use `working\property-tracker.md` for each new property request and keep setup outputs under address-specific folders.
+- Next action: keep `working\property-tracker.md` for setup requests and maintain `working\property-information-ledger.md` as the Teams property information source of truth.
 - Related skill: `C:\Codex\Wiki Files\skills\properties\SKILL.md`.
 
 ## Room Layout
 
 - `sources\` - raw inputs, source notes, copied reference files, or source summaries.
-- `working\` - inventories, audits, open questions, property tracker, setup notes, and per-property cleanup reviews.
+- `working\` - inventories, audits, open questions, property tracker, Teams property information ledger, setup notes, and per-property cleanup reviews.
 - `outputs\` - address-specific folders containing created project files or review-ready setup outputs.
 
 ## Operating Rules
 
 - Track every property setup request in `working\property-tracker.md`, including address, status, confirmed template, output folder, spreadsheet path, cleanup status, blockers, and handoff notes.
+- Track every Teams property record in `working\property-information-ledger.md`.
+- For rents, leases, insurance, purchase price or cost, and sales price, record the Teams source path or workbook cell used as evidence.
+- Do not treat a value as final unless the cited Teams evidence directly supports it. Mark ambiguous spreadsheet values, stale workbooks, duplicate folders, backup files, and `DONT USE` files for review instead of blending them into final property facts.
 - When Wes says to create a new project, first suggest an existing project to use as the template for the new project spreadsheet and associated folders.
 - Wait for Wes to confirm the suggested template project or provide another project to use instead.
 - Wes will provide the new project address. Use that address for the new project spreadsheet and associated folders after the template project is confirmed.

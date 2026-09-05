@@ -2,6 +2,8 @@
 
 Use this tracker for every property setup request handled by the Properties PR.
 
+For the authoritative Teams property information index, use `working\property-information-ledger.md`.
+
 ## Status Terms
 
 - `requested` - Wes named a property, but the template or required address details are not confirmed.
