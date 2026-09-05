@@ -44,6 +44,18 @@ These records are transferred as holds and are not migration work:
 
 Do not retry, recreate, or process these during activation. Reconcile them separately under their owning workflows.
 
+## Synthetic Validation
+
+- Message: `prmsg-email-monitor-officeassist-validation-20260904-001`
+- Payload hash: `3284a6510ae6fb814f2327c099a97d895bd617b34ec0e22a5023e2d389f2f550`
+- Central state after the source attempt: `Queued`
+- Notification calls: `1`
+- Delivery result: `NotDelivered`; WESSTUDIO could not resolve destination task `01a03956-fe55-7f62-9c0a-17c18f763320` on a readable host.
+- Lifecycle: not started at the destination; no receipt exists.
+- Safety: no mailbox, email, production, historical replay, or business action was authorized or performed.
+
+The immutable record has reached its one-attempt limit. Do not perform its destination lifecycle manually and do not create a replacement unless Wes separately authorizes a corrective validation after the OFFICEASSIST task identity is verified.
+
 ## Destination Actions
 
 1. Pull the commit containing this package and verify the worktree before making machine-local changes.

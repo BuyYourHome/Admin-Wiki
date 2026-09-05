@@ -10,15 +10,21 @@
   "related_project_rooms": ["Jean Wright", "Invoice Entry", "Manager"],
   "limitations": ["external delivery remains subject to sender and Sent Items verification", "queue intake does not authorize unsupported external actions"],
   "messaging_readiness": {
-    "status": "pending_officeassist_activation",
+    "status": "validation_ready",
     "source_task_id": "019ecba7-f1cc-7ac1-aaf7-d89a3f21b582",
     "source_machine": "WESSTUDIO",
     "destination_task_id": "01a03956-fe55-7f62-9c0a-17c18f763320",
     "destination_machine": "OFFICEASSIST",
+    "destination_automation_id": "officeassist-morning-email-summary-and-instruction-monitor",
+    "cross_machine_source": "WESSTUDIO",
     "destination_windows_profile": "C:\\Users\\OfficeAssistLogin",
     "migration_handoff": "Project Rooms/Email Monitor/working/migrations/2026-09-04-wesstudio-to-officeassist/handoff.md",
     "machine_registration_verified_at_utc": null,
     "host_access_verified_at_utc": null,
+    "validation_message_id": "prmsg-email-monitor-officeassist-validation-20260904-001",
+    "notification_count": 1,
+    "notification_delivered": false,
+    "notification_result": "NotDelivered: destination task was not readable from WESSTUDIO",
     "lifecycle_completed_at_utc": null,
     "manual_intervention": null
   }
