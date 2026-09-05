@@ -1,12 +1,14 @@
 [CmdletBinding()]
 param(
     [string]$ManagerPath,
+    [string]$QueuePath,
     [string]$ManifestDirectory,
     [string]$ClientConfigPath = (Join-Path $env:LOCALAPPDATA "BuyYourHome\PRMessaging\client.json"),
     [string]$HealthPath,
     [string]$ActorProjectRoom = "PR Messaging Dispatcher",
     [Parameter(Mandatory = $true)]
-    [string]$ActorTaskId
+    [string]$ActorTaskId,
+    [string]$MessageId
 )
 
 $ErrorActionPreference = "Stop"
@@ -103,8 +105,9 @@ function Write-DispatcherHealth {
 }
 
 trap {
-    Write-DispatcherHealth -Status "Failed" -Detail $_.Exception.Message
-    throw
+    $failure = $_
+    Write-DispatcherHealth -Status "Failed" -Detail $failure.Exception.Message
+    throw $failure
 }
 
 Write-DispatcherHealth -Status "Running" -Detail "Claim evaluation started."
@@ -132,17 +135,49 @@ Get-ChildItem -LiteralPath $ManifestDirectory -Filter "*.json" -File | ForEach-O
     }
 }
 
-$recordsJson = (& $ManagerPath -Action List | Out-String)
+$recordsJson = if ([string]::IsNullOrWhiteSpace($QueuePath)) {
+    (& $ManagerPath -Action List | Out-String)
+}
+else {
+    (& $ManagerPath -Action List -QueuePath $QueuePath | Out-String)
+}
 $records = if ([string]::IsNullOrWhiteSpace($recordsJson)) {
     @()
 }
 else {
     @($recordsJson | ConvertFrom-Json)
 }
-$candidates = @($records | Where-Object {
+$targetMatches = if ([string]::IsNullOrWhiteSpace($MessageId)) {
+    @()
+}
+else {
+    @($records | Where-Object { [string]$_.message_id -ceq $MessageId })
+}
+if ($targetMatches.Count -gt 1) {
+    throw "Authoritative queue returned duplicate records for MessageId '$MessageId'."
+}
+$scopedRecords = if ([string]::IsNullOrWhiteSpace($MessageId)) {
+    @($records)
+}
+else {
+    @($targetMatches)
+}
+$candidates = @($scopedRecords | Where-Object {
     $_.destination.machine -eq $machine -and
     $_.state -in @("Queued", "Delivery Ambiguous")
 } | Sort-Object created_at_utc)
+$targetFilter = if ([string]::IsNullOrWhiteSpace($MessageId)) {
+    $null
+}
+else {
+    $targetRecord = if ($targetMatches.Count -eq 1) { $targetMatches[0] } else { $null }
+    [pscustomobject][ordered]@{
+        requested_message_id = $MessageId
+        record_found = $null -ne $targetRecord
+        destination_machine_matches = $null -ne $targetRecord -and $targetRecord.destination.machine -eq $machine
+        state_is_candidate = $null -ne $targetRecord -and $targetRecord.state -in @("Queued", "Delivery Ambiguous")
+    }
+}
 
 $skipCounts = [ordered]@{
     receipt_or_result = 0
@@ -215,14 +250,21 @@ foreach ($record in $candidates) {
 
     $attemptNumber = [int]$record.attempt_count + 1
     $attemptId = "dispatcher-$($machine.ToLowerInvariant())-$($record.message_id)-$attemptNumber"
-    $updated = & $ManagerPath -Action StartAttempt `
-        -MessageId $record.message_id `
-        -AttemptId $attemptId `
-        -ActorProjectRoom $ActorProjectRoom `
-        -ActorTaskId $ActorTaskId | ConvertFrom-Json
+    $startAttemptArguments = @{
+        Action = "StartAttempt"
+        MessageId = $record.message_id
+        AttemptId = $attemptId
+        ActorProjectRoom = $ActorProjectRoom
+        ActorTaskId = $ActorTaskId
+    }
+    if (-not [string]::IsNullOrWhiteSpace($QueuePath)) {
+        $startAttemptArguments.QueuePath = $QueuePath
+    }
+    $updated = & $ManagerPath @startAttemptArguments | ConvertFrom-Json
 
     $claim = [pscustomobject][ordered]@{
         claimed = $true
+        requested_message_id = if ([string]::IsNullOrWhiteSpace($MessageId)) { $null } else { $MessageId }
         message_id = $updated.message_id
         dispatch_id = $updated.dispatch_id
         payload_hash = $updated.payload_hash
@@ -235,6 +277,7 @@ foreach ($record in $candidates) {
         notification_instruction = "Notify the exact destination task once. Require Accepted, Processing, and a valid final state for this same message id and payload hash."
         candidate_count = $candidates.Count
         skip_counts = [pscustomobject]$skipCounts
+        target_filter = $targetFilter
     }
     Write-DispatcherHealth -Status "Completed" -Detail "One eligible record was claimed." -Claimed $true -CandidateCount $candidates.Count -MessageId $updated.message_id
     $claim | ConvertTo-Json -Depth 10
@@ -248,6 +291,7 @@ $noClaim = [pscustomobject][ordered]@{
     eligible_record_count = 0
     oldest_candidate_message_id = if ($candidates.Count -gt 0) { $candidates[0].message_id } else { $null }
     skip_counts = [pscustomobject]$skipCounts
+    target_filter = $targetFilter
 }
 Write-DispatcherHealth -Status "Completed" -Detail "No eligible record was claimed." -Claimed $false -CandidateCount $candidates.Count
 $noClaim | ConvertTo-Json -Depth 10
