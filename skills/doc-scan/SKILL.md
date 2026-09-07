@@ -24,13 +24,13 @@ Process scanned Office Admin PDFs and JPG/JPEG image scans conservatively. Split
 - Operating Agreements project room for signed operating-agreement source matching: `C:\Codex\Wiki Files\Project Rooms\Operating Agreements`
 - Current property/mortgage reference workbook: Property library `Credit Cards Sheet.xlsx`, worksheet `Mortgages`; use a verified local synced equivalent only as fallback.
 
-### OFFICEASSIST Raw Download Helper
+### OFFICEASSIST Raw Download Broker
 
-On OFFICEASSIST, when SharePoint `fetch` returns a raw `file_uri.download_url`, use the constrained helper below instead of calling a general download command:
+On OFFICEASSIST, when SharePoint `fetch` returns a raw `file_uri.download_url`, submit it to the constrained local broker instead of calling a general download command:
 
-`powershell.exe -NoProfile -ExecutionPolicy Bypass -File "C:\Codex\Wiki Files\Project Rooms\Doc Scan\tools\Invoke-DocScanScratch.ps1" -Action Download -DownloadUrl "<connector download_url>" -SourceFileName "<exact source name>"`
+`powershell.exe -NoProfile -ExecutionPolicy Bypass -File "C:\Codex\Wiki Files\Project Rooms\Doc Scan\tools\Submit-DocScanDownloadRequest.ps1" -DownloadUrl "<connector download_url>" -SourceFileName "<exact source name>"`
 
-The helper accepts only HTTPS downloads from an `oaiusercontent.com` host and writes only beneath `C:\Codex\DocScanWork`. Preserve the returned `run_id` and use the helper's `Cleanup` action after the SharePoint output, log, and source-archive state have been verified. Do not substitute another host, scratch root, or arbitrary destination path.
+The submitter accepts only HTTPS downloads from an `oaiusercontent.com` host and writes a local request beneath `C:\Codex\DocScanWork\Requests`. The limited `Codex - Doc Scan Scratch Downloader` Windows task processes the request within one minute and writes the result under `C:\Codex\DocScanWork\Results`. Read the returned `result_path`; require `status: Completed` before using `file_path`. Preserve the returned `run_id` and use `Invoke-DocScanScratch.ps1 -Action Cleanup -RunId <run_id>` after the SharePoint output, log, and source-archive state have been verified. Remove the completed request/result files after successful reconciliation. Do not substitute another host, scratch root, or arbitrary destination path.
 
 Do not hard-code `C:\Users\wesbr\...` paths on another computer. Before using any local synced Doc Scan path, verify that it exists under the current Windows profile or another approved machine-local data root, and verify read/write access for the Codex task. If no verified local synced path exists, use the connector for source/destination access and the machine-local scratch root for processing.
 
@@ -343,7 +343,7 @@ Use local synced folders only as fallback when the connector is unavailable, lac
 
 If the connector finds a scan that is not visible locally, download a working copy to the scratch root for processing, preserve the original SharePoint source file, log the SharePoint URL, and do not move or delete the source scan except through the approved archive step.
 
-On OFFICEASSIST, use the constrained raw-download helper documented under Paths for this download. A socket or scratch-write denial from a general shell command is not a SharePoint-access failure; retry through the approved helper before reporting the cycle blocked.
+On OFFICEASSIST, use the constrained raw-download broker documented under Paths for this download. A socket denial from a general shell command is not a SharePoint-access failure; submit the request to the local broker before reporting the cycle blocked.
 
 ## Invoice And Receipt Routing
 
