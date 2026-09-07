@@ -43,7 +43,7 @@ function Invoke-Manager([string]$Action,[hashtable]$Extra=@{}) {
 }
 function Recover-Entry($Entry,$Record) {
     if (!$Record) { throw 'JournalRecordMissing' }
-    if ($Record.payload_hash -cne $Entry.payload_hash -or (Get-LtPayloadHash $Record) -cne $Entry.payload_hash -or $Record.destination.task_id -cne $Entry.destination_task_id) { throw 'JournalHashOrDestinationMismatch' }
+    if ($Record.payload_hash -cne $Entry.payload_hash -or !(Get-PrMessageHashEvidence $Record).valid -or $Record.destination.task_id -cne $Entry.destination_task_id) { throw 'JournalHashOrDestinationMismatch' }
     $a=@($Record.attempts | Where-Object attempt_id -CEQ $Entry.attempt_id)
     if (!$a.Count) {
         if ($Entry.phase -ne 'planned' -and $Entry.outcome -ne 'NotClaimed') { throw 'JournalAttemptMissing' }
@@ -58,7 +58,7 @@ function Recover-Entry($Entry,$Record) {
             $Record=$answer.record
         }
         $Entry.outcome='Delivered'
-        $Entry.phase=if(Test-LtCompleted $Record){'closed'}else{'awaiting_completion'}
+        $Entry.phase=if(Test-PrMessageTerminal $Record){'closed'}else{'awaiting_completion'}
         Save-Journal
         if($Entry.phase -ne 'closed'){$health.attention+=@{message_id=$Entry.message_id;reason='AwaitingCompletion'}}
         $health.reconciled+=@{message_id=$Entry.message_id;outcome='Delivered';phase=$Entry.phase};return

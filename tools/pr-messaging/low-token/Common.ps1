@@ -1,4 +1,5 @@
 # Development release 0.2.0. No production activation in this package.
+. "$PSScriptRoot\..\Message-Integrity.ps1"
 function Get-LtSha256([string]$Text) {
     $sha = [Security.Cryptography.SHA256]::Create()
     try { ([BitConverter]::ToString($sha.ComputeHash([Text.Encoding]::UTF8.GetBytes($Text)))).Replace('-', '').ToLowerInvariant() }
@@ -36,6 +37,7 @@ function Assert-LtUnder([string]$Path,[string]$Root) {
 }
 function Get-LtPackageHash([string]$Directory) {
     $parts=@(Get-ChildItem -LiteralPath $Directory -Filter '*.ps1' -File|Sort-Object Name|ForEach-Object{$_.Name+':'+(Get-FileHash -LiteralPath $_.FullName).Hash})
+    $parts+=@('Message-Integrity.ps1:'+(Get-FileHash -LiteralPath (Join-Path $Directory '..\Message-Integrity.ps1')).Hash)
     Get-LtSha256 ($parts -join "`n")
 }
 function Assert-LtFixture([string]$Root,[string[]]$Paths) {
@@ -51,7 +53,7 @@ function Get-LtConfigHash($Client,$Manifests) {
 function Test-LtRecord($Record,$Client,$Manifests,[string]$Machine,[string]$Mode,[string]$MessageId,$AllRecords=@()) {
     if (!$Record) { return 'MissingTarget' }
     if ($MessageId -and $Record.message_id -cne $MessageId) { return 'WrongTarget' }
-    if ((Get-LtPayloadHash $Record) -cne $Record.payload_hash) { return 'HashMismatch' }
+    if (!(Get-PrMessageHashEvidence $Record).valid) { return 'HashMismatch' }
     try { Assert-LtId $Record.message_id; Assert-LtUuid $Record.destination.task_id; Assert-LtUuid $Record.source.task_id } catch { return 'InvalidIdentity' }
     if ($Record.authoritative -ne $true) { return 'NotAuthoritative' }
     if ($Record.destination.machine -cne $Machine -or $Client.machine -cne $Machine) { return 'MachineMismatch' }
@@ -107,8 +109,8 @@ function Test-LtCompleted($Record) {
 function Test-LtDestinationOutstanding($Record) {
     $attempts=@($Record.attempts)
     if (!$attempts.Count -and !$Record.receipt -and !$Record.result -and $Record.state -eq 'Queued') { return $false }
-    if ((Get-LtPayloadHash $Record) -cne $Record.payload_hash) { return $true }
-    if (Test-LtCompleted $Record) { return $false }
+    if (!(Get-PrMessageHashEvidence $Record).valid) { return $true }
+    if ((Test-PrMessageTerminal $Record) -or (Test-PrAdministrativeClosure $Record)) { return $false }
     if (!$Record.receipt -and !$Record.result -and $Record.state -eq 'Queued' -and $attempts.Count -gt 0 -and !@($attempts | Where-Object outcome -ne 'NotDelivered').Count) { return $false }
     return $true
 }

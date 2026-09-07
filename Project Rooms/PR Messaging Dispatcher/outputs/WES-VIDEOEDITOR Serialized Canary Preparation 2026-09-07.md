@@ -1,5 +1,7 @@
 # Serialized worker canary preparation — stopped at reconciliation
 
+Subsequent update: Wes approved the exact administrative closure and worker corrections. See [[WES-VIDEOEDITOR Administrative Closure and Integrity Correction 2026-09-07]] for the resolved serialization diagnosis, verified closure and current evidence. The original findings below are preserved as the review-time snapshot, not current unresolved-hash claims.
+
 ## Decision and authority
 
 Wes requested review of the finished tests and preparation of one fresh end-to-end synthetic worker canary, with outstanding submissions reconciled first. This is preparation only, not launch authorization. Owning task: `01a05d0c-8031-7d92-9474-ab2330008ddb` on WES-VIDEOEDITOR.

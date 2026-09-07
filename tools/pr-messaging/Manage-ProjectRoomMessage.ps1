@@ -1,7 +1,7 @@
 [CmdletBinding()]
 param(
     [Parameter(Mandatory = $true)]
-    [ValidateSet("Initialize", "Send", "Get", "List", "StartAttempt", "MarkAttempt", "Accept", "StartProcessing", "Update", "Complete", "Block", "NeedsWes", "Reject", "SyncSpool", "Health")]
+    [ValidateSet("Initialize", "Send", "Get", "List", "StartAttempt", "MarkAttempt", "Accept", "StartProcessing", "Update", "Complete", "Block", "NeedsWes", "Reject", "SyncSpool", "Health", "AdministrativeCloseSuperseded")]
     [string]$Action,
 
     [string]$QueuePath = "\\WES-VIDEOEDITOR\BYH-PRMessaging$",
@@ -25,6 +25,7 @@ param(
     [string]$ActorTaskId,
     [string]$Detail,
     [string]$AttemptId,
+    [string]$ExpectedRecordVersion,
     [ValidateSet("DeliveryAmbiguous", "NotDelivered", "Failed")]
     [string]$AttemptOutcome,
     [string]$State,
@@ -274,6 +275,28 @@ Invoke-WithQueueLock {
     $recordPath = Get-RecordPath -Root $QueuePath -Id $MessageId
     $record = Read-Record -Path $recordPath
     if ($Action -eq "Get") { $record | ConvertTo-Json -Depth 30; return }
+
+    if ($Action -eq 'AdministrativeCloseSuperseded') {
+        . "$PSScriptRoot\Message-Integrity.ps1"
+        if($QueuePath -cne '\\WES-VIDEOEDITOR\BYH-PRMessaging$'){
+            $full=[IO.Path]::GetFullPath($QueuePath);$temp=[IO.Path]::GetFullPath([IO.Path]::GetTempPath()).TrimEnd('\')+'\'
+            if(!$full.StartsWith($temp,[StringComparison]::OrdinalIgnoreCase) -or !(Test-Path -LiteralPath (Join-Path $full '.administrative-closure-fixture'))){throw 'AdministrativeClosureQueueNotAuthorized'}
+            $walk=$full;while($walk.Length -ge $temp.TrimEnd('\').Length){if((Get-Item -LiteralPath $walk -Force).Attributes -band [IO.FileAttributes]::ReparsePoint){throw 'AdministrativeClosureReparsePointForbidden'};$walk=Split-Path -Parent $walk}
+        }
+        if($ActorProjectRoom -cne 'PR Messaging Dispatcher' -or $ActorTaskId -cne '01a05d0c-8031-7d92-9474-ab2330008ddb' -or $env:COMPUTERNAME -cne 'WES-VIDEOEDITOR' -or [Security.Principal.WindowsIdentity]::GetCurrent().Name -ine 'WES-VIDEOEDITOR\IRAMa'){throw 'AdministrativeClosureActorMismatch'}
+        if(!(Test-PrSupersededRecord $record)){throw 'AdministrativeClosureExactRecordRequired'}
+        if(Test-PrAdministrativeClosure $record){$record|ConvertTo-Json -Depth 30;return}
+        if($record.administrative_closure){throw 'AdministrativeClosureConflict'}
+        if($ExpectedRecordVersion -cnotmatch '^[0-9a-f]{64}$' -or (Get-PrMessageDigest ($record|ConvertTo-Json -Depth 30 -Compress)) -cne $ExpectedRecordVersion){throw 'AdministrativeClosureVersionConflict'}
+        $successor=Read-Record (Get-RecordPath -Root $QueuePath -Id 'prmsg-invoice-entry-poyner-spruill-qb-existence-audit-20260831-002')
+        if($successor.payload_hash -cne '7b40a78b7e551453e98310a56287550848a3cd3c31ca0767be6acb9e8a56fb57' -or $successor.destination.task_id -cne $record.destination.task_id -or $successor.state -cne 'Completed' -or !(Test-PrMessageTerminal $successor)){throw 'AdministrativeClosureSuccessorNotVerified'}
+        $closure=[pscustomobject][ordered]@{schema_version=1;message_id=$record.message_id;payload_hash=$record.payload_hash;disposition='SupersededUndelivered';superseded_by=$successor.message_id;authorized_by='Wes';actor_task_id=$ActorTaskId;closed_at_utc=Get-UtcTimestamp;delivery_claimed=$false;business_completion_claimed=$false;detail='Wes explicitly authorized administrative closure in the owning dispatcher task on 2026-09-07. Invalid superseded record retired; original Blocked state, Failed attempt and absent recipient receipt/result preserved. No delivery or business completion claimed.'}
+        $record|Add-Member administrative_closure $closure
+        Add-Event -Record $record -Event 'AdministrativelyClosed' -EventDetail $closure.detail -ProjectRoom $ActorProjectRoom -TaskId $ActorTaskId
+        Write-JsonAtomic -Path $recordPath -Value $record
+        $record|ConvertTo-Json -Depth 30
+        return
+    }
 
     switch ($Action) {
         "StartAttempt" {

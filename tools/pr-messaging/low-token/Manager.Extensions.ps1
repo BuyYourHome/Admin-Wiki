@@ -12,7 +12,7 @@ function Invoke-LtManagerOperation {
     $r = Read-Record $path
     if ($Action -eq 'Inspect') { return [pscustomobject]@{record=$r;version=(Get-LtVersion $r)} }
     Assert-LtOwner
-    if ($ExpectedHash -cnotmatch '^[0-9a-f]{64}$' -or $r.payload_hash -cne $ExpectedHash -or (Get-LtPayloadHash $r) -cne $ExpectedHash) { throw 'ImmutableHashMismatch' }
+    if ($ExpectedHash -cnotmatch '^[0-9a-f]{64}$' -or $r.payload_hash -cne $ExpectedHash -or !(Get-PrMessageHashEvidence $r).valid) { throw 'ImmutableHashMismatch' }
     if ([string]::IsNullOrWhiteSpace($AttemptId)) { throw 'AttemptIdRequired' }
     Assert-LtId $AttemptId
     $existing = @($r.attempts | Where-Object attempt_id -CEQ $AttemptId)
