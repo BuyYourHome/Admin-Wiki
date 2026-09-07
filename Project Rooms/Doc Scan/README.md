@@ -17,7 +17,7 @@ This project room holds development notes, source inventory, and review artifact
 - Schedule: every 15 minutes on weekdays from 10:00 AM through 4:45 PM Eastern.
 - Per-machine requirement: each computer expected to process scan intake must have its own `doc-scan` heartbeat attached to that computer's current `Doc Scan` task under the `Wiki Files` project. If the heartbeat is missing or still targets an obsolete task id from another host/project, scan intake will not process by waiting for the next interval.
 - OfficeAssist prerequisite: `C:\Codex\DocScanWork` is the intended scratch root unless Wes approves another machine-local path.
-- Dedicated task/thread id: `019ecc0d-02b4-73a3-9c20-dacda5d811d0`.
+- Dedicated task/thread id: `01a07d59-9052-7623-a03c-f2b80b9116e0`.
 - Defined operating modes: `working\doc-scan-modes.md`.
 - Canonical skill source: `C:\Codex\Wiki Files\skills\doc-scan\SKILL.md`.
 - Installed skill copy: `C:\Users\wesbr\.codex\skills\doc-scan\SKILL.md`.
