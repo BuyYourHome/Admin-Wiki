@@ -11,7 +11,7 @@ $queue='\\WES-VIDEOEDITOR\BYH-PRMessaging$'
 $auto='C:\Users\IRAMa\.codex\automations\pr-messaging-dispatcher-wes-videoeditor\automation.toml'
 $started=[DateTime]::UtcNow
 $out=Join-Path $env:LOCALAPPDATA ('BuyYourHome\PRMessaging\low-token\shadow-'+$started.ToString('yyyyMMddTHHmmssZ'))
-$config=[ordered]@{schema_version=1;release='0.1.0';package_sha256=(Get-LtPackageHash $release);expected_machine=$env:COMPUTERNAME;expected_sid=[Security.Principal.WindowsIdentity]::GetCurrent().User.Value;dispatcher_task_id='01a05d0c-8031-7d92-9474-ab2330008ddb';fixture_root=$null;queue_path=$queue;manager_path=$manager;manager_sha256=(Get-FileHash $manager).Hash;client_path=(Join-Path $env:LOCALAPPDATA 'BuyYourHome\PRMessaging\client.json');manifest_directory='C:\Codex\Wiki Files\config\pr-messaging-manifests';state_directory=(Join-Path $out 'state');powershell_path=$ps;max_tick_seconds=25;acceptance_deadline_seconds=120}
+$config=[ordered]@{schema_version=1;release='0.2.0';package_sha256=(Get-LtPackageHash $release);expected_machine=$env:COMPUTERNAME;expected_sid=[Security.Principal.WindowsIdentity]::GetCurrent().User.Value;dispatcher_task_id='01a05d0c-8031-7d92-9474-ab2330008ddb';fixture_root=$null;queue_path=$queue;manager_path=$manager;manager_sha256=(Get-FileHash $manager).Hash;client_path=(Join-Path $env:LOCALAPPDATA 'BuyYourHome\PRMessaging\client.json');manifest_directory='C:\Codex\Wiki Files\config\pr-messaging-manifests';state_directory=(Join-Path $out 'state');powershell_path=$ps;max_tick_seconds=25;queued_receipt_warning_seconds=600}
 Write-LtJson (Join-Path $out 'config.json') $config
 $beforeAuto=(Get-FileHash $auto).Hash
 function Snapshot {

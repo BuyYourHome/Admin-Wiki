@@ -6,6 +6,7 @@ param(
     [Parameter(Mandatory=$true)][string]$PayloadHash,
     [Parameter(Mandatory=$true)][string]$CliPath,
     [Parameter(Mandatory=$true)][string]$ExpectedCliHash,
+    [string]$AttemptId,
     [ValidateRange(1,20)][int]$TimeoutSeconds=10,
     [switch]$DescribeOnly
 )
@@ -22,8 +23,10 @@ function Invoke-ReviewedQueueSubmission {
     # Complete transport implementation, intentionally unreachable from this release's entry point.
     $start=[DateTime]::UtcNow.ToString('o')
     $p=Invoke-LtProcess $CliPath $argv $TimeoutSeconds
-    $submitted=(!$p.timed_out -and $p.exit_code -eq 0 -and $p.stdout -match ('Queued message ([0-9a-f-]{36}) for thread '+[regex]::Escape($ThreadId)+'\.'))
-    [pscustomobject]@{started_at_utc=$start;completed_at_utc=[DateTime]::UtcNow.ToString('o');submitted=$submitted;accepted=$false;timed_out=$p.timed_out;exit_code=$p.exit_code;stdout=$p.stdout;stderr=$p.stderr;reason=if($submitted){'SubmittedNotAccepted'}else{'SubmissionUncertain'}}
+    $queuedId=$null
+    $submitted=(!$p.timed_out -and $p.exit_code -eq 0 -and $p.stdout.Trim() -cmatch ('^Queued message ([0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}) for thread '+[regex]::Escape($ThreadId)+'\.$'))
+    if($submitted){$queuedId=$Matches[1]}
+    [pscustomobject]@{started_at_utc=$start;completed_at_utc=[DateTime]::UtcNow.ToString('o');message_id=$MessageId;thread_id=$ThreadId;attempt_id=$AttemptId;queue_message_id=$queuedId;submitted=$submitted;accepted=$false;timed_out=$p.timed_out;exit_code=$p.exit_code;stdout=$p.stdout;stderr=$p.stderr;reason=if($submitted){'QueuedAwaitingReceipt'}else{'SubmissionUncertain'}}
 }
 if ($DescribeOnly) { [pscustomobject]@{executable=$CliPath;arguments=$argv;submission_performed=$false} | ConvertTo-Json -Depth 5; return }
 # Hard safety barrier for development release. Remove only in a reviewed canary release.

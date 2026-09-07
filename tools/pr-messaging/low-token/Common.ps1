@@ -1,4 +1,4 @@
-# Development release 0.1.0. No production activation in this package.
+# Development release 0.2.0. No production activation in this package.
 function Get-LtSha256([string]$Text) {
     $sha = [Security.Cryptography.SHA256]::Create()
     try { ([BitConverter]::ToString($sha.ComputeHash([Text.Encoding]::UTF8.GetBytes($Text)))).Replace('-', '').ToLowerInvariant() }
@@ -60,6 +60,7 @@ function Test-LtRecord($Record,$Client,$Manifests,[string]$Machine,[string]$Mode
     if (@($Record.attempts).Count -ne [int]$Record.attempt_count) { return 'AttemptCountMismatch' }
     if (@($Record.attempts | Where-Object outcome -eq 'Pending').Count) { return 'PendingAttempt' }
     if ([int]$Record.attempt_count -ge [int]$Record.max_attempts -or [int]$Record.max_attempts -lt 1) { return 'AttemptsExhausted' }
+    if (@($Record.attempts | Where-Object outcome -ne 'NotDelivered').Count) { return 'SubmissionUnresolved' }
     if ([string]::IsNullOrWhiteSpace($Record.authorization.authorized_by) -or [string]::IsNullOrWhiteSpace($Record.authorization.instruction) -or [string]::IsNullOrWhiteSpace($Record.source.project_room) -or [string]::IsNullOrWhiteSpace($Record.source.machine)) { return 'AuthorizationMissing' }
     $m = @($Manifests | Where-Object project_room -CEQ $Record.destination.project_room)
     if ($m.Count -ne 1) { return 'ManifestMissingOrDuplicate' }
@@ -80,7 +81,7 @@ function Test-LtRecord($Record,$Client,$Manifests,[string]$Machine,[string]$Mode
     $exception = $synthetic -and $m.messaging_readiness.status -ceq 'validation_ready' -and $m.messaging_readiness.validation_message_id -ceq $Record.message_id
     if ($m.dispatchable -ne $true -and !$exception) { return 'NotDispatchable' }
     foreach ($other in @($AllRecords)) {
-        if ($other.message_id -cne $Record.message_id -and $other.destination.task_id -ceq $Record.destination.task_id -and !$other.receipt -and @($other.attempts | Where-Object outcome -eq 'Pending').Count) { return 'DestinationPending' }
+        if ($other.message_id -cne $Record.message_id -and $other.destination.task_id -ceq $Record.destination.task_id -and (Test-LtDestinationOutstanding $other)) { return 'DestinationOutstanding' }
     }
     if ($Record.attempt_count -gt 0) {
         $last = @($Record.attempts)[-1]
@@ -93,4 +94,29 @@ function Test-LtRecord($Record,$Client,$Manifests,[string]$Machine,[string]$Mode
 function Test-LtReceipt($Record) {
     $r=$Record.receipt
     return ($null -ne $r -and $r.project_room -ceq $Record.destination.project_room -and $r.task_id -ceq $Record.destination.task_id -and $r.machine -ceq $Record.destination.machine)
+}
+function Test-LtCompleted($Record) {
+    # Acceptance proves delivery, not completion. Only verified completion releases a slot.
+    if (!(Test-LtReceipt $Record) -or $Record.state -cne 'Completed' -or $Record.result.state -cne 'Completed' -or $Record.result.machine -cne $Record.destination.machine) { return $false }
+    try {
+        $accepted=[DateTimeOffset]::Parse($Record.receipt.accepted_at_utc)
+        $completed=[DateTimeOffset]::Parse($Record.result.completed_at_utc)
+        return ($completed -ge $accepted)
+    } catch { return $false }
+}
+function Test-LtDestinationOutstanding($Record) {
+    $attempts=@($Record.attempts)
+    if (!$attempts.Count -and !$Record.receipt -and !$Record.result -and $Record.state -eq 'Queued') { return $false }
+    if ((Get-LtPayloadHash $Record) -cne $Record.payload_hash) { return $true }
+    if (Test-LtCompleted $Record) { return $false }
+    if (!$Record.receipt -and !$Record.result -and $Record.state -eq 'Queued' -and $attempts.Count -gt 0 -and !@($attempts | Where-Object outcome -ne 'NotDelivered').Count) { return $false }
+    return $true
+}
+function Test-LtQueueAcknowledgment($Response,[string]$MessageId,[string]$ThreadId,[string]$AttemptId) {
+    if ($Response.timed_out -or $Response.exit_code -ne 0) { return $false }
+    try {
+        $a=$Response.stdout | ConvertFrom-Json -ErrorAction Stop
+        Assert-LtUuid $a.queue_message_id
+        return ($a.submitted -is [bool] -and $a.submitted -eq $true -and $a.accepted -is [bool] -and $a.accepted -eq $false -and $a.message_id -ceq $MessageId -and $a.thread_id -ceq $ThreadId -and $a.attempt_id -ceq $AttemptId)
+    } catch { return $false }
 }
