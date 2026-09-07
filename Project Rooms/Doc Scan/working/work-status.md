@@ -11,4 +11,6 @@ Notes:
 
 ## Task replacement - 2026-09-07
 
-Wes designated task `01a07d59-9052-7623-a03c-f2b80b9116e0` as the replacement Doc Scan task on OFFICEASSIST in `C:\Codex\Wiki Files`, branch `main`. Previous local task: `01a03956-f670-7482-8a73-f85b85dd64b4`; retained for history and reconciliation of its in-progress turn. The existing `doc-scan` heartbeat now targets this replacement with its schedule, prompt, active state, and notification preference preserved. Scheduler delivery and processing readiness have not yet been tested in this replacement task. Existing action-log changes belong to the prior scan run and are excluded from the replacement commit.
+Wes designated task `01a07d59-9052-7623-a03c-f2b80b9116e0` as the replacement Doc Scan task on OFFICEASSIST in `C:\Codex\Wiki Files`, branch `main`. Previous local task: `01a03956-f670-7482-8a73-f85b85dd64b4`; retained for history. The existing `doc-scan` heartbeat targets this replacement with its schedule, prompt, active state, and notification preference preserved.
+
+Validation completed 2026-09-07. A scheduled heartbeat reached the replacement task, SharePoint intake access succeeded, the constrained scratch-download broker completed, and source `2026-09-07_1539.pdf` was processed. After Wes approved the review upload, the Enbridge bill and scan log were verified in SharePoint, the original was archived, and scratch artifacts were cleaned up. Missing page 2 and the unverified handwritten payment note remain review flags, not workflow blockers.
