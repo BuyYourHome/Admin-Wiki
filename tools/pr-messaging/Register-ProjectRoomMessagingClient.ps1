@@ -14,7 +14,9 @@ $directory = Split-Path -Parent $ConfigPath
 New-Item -ItemType Directory -Path $directory -Force | Out-Null
 $existing = if (Test-Path -LiteralPath $ConfigPath) { Get-Content -Raw -LiteralPath $ConfigPath | ConvertFrom-Json } else { $null }
 $registrations = if ($existing) { @($existing.registrations) } else { @() }
-$registrations = @($registrations | Where-Object { $_.task_id -ne $TaskId })
+$registrations = @($registrations | Where-Object {
+    $_.task_id -ne $TaskId -and $_.project_room -ne $ProjectRoom
+})
 $registrations += [pscustomobject][ordered]@{ project_room = $ProjectRoom; task_id = $TaskId; registered_at_utc = [DateTime]::UtcNow.ToString("o") }
 $config = [pscustomobject][ordered]@{
     schema_version = 1

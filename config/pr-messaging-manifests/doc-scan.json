@@ -2,7 +2,7 @@
   "schema_version": 1,
   "project_room": "Doc Scan",
   "skill": "doc-scan",
-  "task_id": "01a029bf-8534-7b73-a330-55015eb2a722",
+  "task_id": "01a03956-f670-7482-8a73-f85b85dd64b4",
   "dispatchable": true,
   "execution_machine": "OFFICEASSIST",
   "owned_actions": ["scan intake", "OCR and document parsing", "document classification", "structured packet preparation", "source-preserving routing"],
