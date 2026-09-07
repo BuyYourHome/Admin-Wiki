@@ -24,6 +24,14 @@ Process scanned Office Admin PDFs and JPG/JPEG image scans conservatively. Split
 - Operating Agreements project room for signed operating-agreement source matching: `C:\Codex\Wiki Files\Project Rooms\Operating Agreements`
 - Current property/mortgage reference workbook: Property library `Credit Cards Sheet.xlsx`, worksheet `Mortgages`; use a verified local synced equivalent only as fallback.
 
+### OFFICEASSIST Raw Download Helper
+
+On OFFICEASSIST, when SharePoint `fetch` returns a raw `file_uri.download_url`, use the constrained helper below instead of calling a general download command:
+
+`powershell.exe -NoProfile -ExecutionPolicy Bypass -File "C:\Codex\Wiki Files\Project Rooms\Doc Scan\tools\Invoke-DocScanScratch.ps1" -Action Download -DownloadUrl "<connector download_url>" -SourceFileName "<exact source name>"`
+
+The helper accepts only HTTPS downloads from an `oaiusercontent.com` host and writes only beneath `C:\Codex\DocScanWork`. Preserve the returned `run_id` and use the helper's `Cleanup` action after the SharePoint output, log, and source-archive state have been verified. Do not substitute another host, scratch root, or arbitrary destination path.
+
 Do not hard-code `C:\Users\wesbr\...` paths on another computer. Before using any local synced Doc Scan path, verify that it exists under the current Windows profile or another approved machine-local data root, and verify read/write access for the Codex task. If no verified local synced path exists, use the connector for source/destination access and the machine-local scratch root for processing.
 
 Read `references/folder-map.md` before routing files. Read `references/routing-rules.md` before deciding uncertain matches.
@@ -334,6 +342,8 @@ Use a verified machine-local scratch root for PDF processing, OCR, page renderin
 Use local synced folders only as fallback when the connector is unavailable, lacks the needed site/library/folder, is stale, or cannot perform the required read/write action safely. The local synced path must be verified for the current Windows profile before use. Do not substitute a path under another user's profile, including `C:\Users\wesbr\...`, merely because it exists in WesStudio instructions.
 
 If the connector finds a scan that is not visible locally, download a working copy to the scratch root for processing, preserve the original SharePoint source file, log the SharePoint URL, and do not move or delete the source scan except through the approved archive step.
+
+On OFFICEASSIST, use the constrained raw-download helper documented under Paths for this download. A socket or scratch-write denial from a general shell command is not a SharePoint-access failure; retry through the approved helper before reporting the cycle blocked.
 
 ## Invoice And Receipt Routing
 
