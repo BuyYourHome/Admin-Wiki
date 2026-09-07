@@ -16,9 +16,15 @@ $ErrorActionPreference='Stop'
 [Console]::OutputEncoding=[Text.UTF8Encoding]::new($false)
 if((Get-FileHash -LiteralPath $ManagerPath).Hash -ine $ExpectedManagerHash){throw 'ManagerReleaseMismatch'}
 if($Action -ne 'List'){
-    if($ManagerPath -cne (Join-Path $PSScriptRoot 'Manage-ProjectRoomMessage.Development.ps1')){throw 'MutationRequiresStagedFixtureManager'}
     . "$PSScriptRoot\Common.ps1"
-    Assert-LtFixture $FixtureRoot @($QueuePath,$ClientConfigPath,$ManifestDirectory)
+    if($Mode -ceq 'Canary'){
+        . "$PSScriptRoot\Canary.Guards.ps1"
+        Assert-LtCanaryIdentity
+        if($ManagerPath -cne 'C:\Codex\Wiki Files\tools\pr-messaging\Manage-ProjectRoomMessage.ps1' -or $QueuePath -cne '\\WES-VIDEOEDITOR\BYH-PRMessaging$' -or $MessageId -cne (Get-LtCanaryId)){throw 'CanaryRelayScopeMismatch'}
+    }else{
+        if($ManagerPath -cne (Join-Path $PSScriptRoot 'Manage-ProjectRoomMessage.Development.ps1')){throw 'MutationRequiresStagedFixtureManager'}
+        Assert-LtFixture $FixtureRoot @($QueuePath,$ClientConfigPath,$ManifestDirectory)
+    }
 }
 $forward=@{}
 foreach($key in $PSBoundParameters.Keys){if($key -notin @('ManagerPath','ExpectedManagerHash')){$forward[$key]=$PSBoundParameters[$key]}}

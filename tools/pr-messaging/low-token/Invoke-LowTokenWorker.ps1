@@ -1,7 +1,7 @@
 [CmdletBinding()]
 param(
     [Parameter(Mandatory=$true)][string]$ConfigPath,
-    [ValidateSet('Shadow','Validation','Live','Drain','Paused')][string]$Mode='Shadow',
+    [ValidateSet('Shadow','Validation','Canary','Live','Drain','Paused')][string]$Mode='Shadow',
     [string]$MessageId,
     [ValidateSet('None','AfterPlan','AfterClaim','BeforeAdapter','AfterAdapter')][string]$FailurePoint='None',
     [ValidateSet('None','AfterPlan','AfterClaim','BeforeAdapter','AfterAdapter')][string]$CrashTestPauseAt='None'
@@ -9,6 +9,7 @@ param(
 $ErrorActionPreference='Stop'
 . "$PSScriptRoot\Common.ps1"
 . "$PSScriptRoot\Process.ps1"
+. "$PSScriptRoot\Canary.Guards.ps1"
 $started=[DateTime]::UtcNow; $watch=[Diagnostics.Stopwatch]::StartNew()
 $lock=$null; $cfg=$null; $journal=$null
 $health=[ordered]@{schema_version=1;release='0.2.0';mode=$Mode;machine=$env:COMPUTERNAME;sid=[Security.Principal.WindowsIdentity]::GetCurrent().User.Value;started_at_utc=$started.ToString('o');status='Starting';queue_reachable=$false;claims=0;submissions=0;model_requests=0;reconciled=@();attention=@();candidates=@();next_tick_at_utc=$started.AddSeconds(60).ToString('o')}
@@ -33,6 +34,9 @@ function Invoke-Manager([string]$Action,[hashtable]$Extra=@{}) {
     $argv=@('-NoProfile','-ExecutionPolicy','Bypass','-File',(Join-Path $PSScriptRoot 'Invoke-ManagerCommand.ps1'),'-ManagerPath',$cfg.manager_path,'-ExpectedManagerHash',$cfg.manager_sha256,'-Action',$Action,'-QueuePath',$cfg.queue_path)
     if ($Mode -in @('Validation','Drain')) {
         $argv+=@('-FixtureRoot',$cfg.fixture_root,'-TransportOwner',$cfg.owner,'-Generation',$cfg.generation,'-Mode','Validation','-ClientConfigPath',$cfg.client_path,'-ManifestDirectory',$cfg.manifest_directory,'-ActorTaskId',$cfg.dispatcher_task_id,'-ActorProjectRoom','PR Messaging Dispatcher')
+    }
+    if($Mode -ceq 'Canary' -and $Action -ne 'List'){
+        $argv+=@('-TransportOwner',$cfg.owner,'-Generation',$cfg.generation,'-Mode','Canary','-ClientConfigPath',$cfg.client_path,'-ManifestDirectory',$cfg.manifest_directory,'-ActorTaskId',$cfg.dispatcher_task_id,'-ActorProjectRoom','PR Messaging Dispatcher')
     }
     foreach($k in $Extra.Keys){$argv+=@("-$k",[string]$Extra[$k])}
     $p=Invoke-LtProcess $cfg.powershell_path $argv ([Math]::Min(15,$left))
@@ -91,6 +95,7 @@ try {
     if($Mode -eq 'Live'){throw 'LiveDisabledInDevelopmentRelease'}
     if($PSBoundParameters.ContainsKey('MessageId')){Assert-LtId $MessageId}
     if($Mode -eq 'Validation' -and [string]::IsNullOrWhiteSpace($MessageId)){throw 'ValidationFilterRequired'}
+    if($Mode -ceq 'Canary'){Assert-LtCanaryConfig $cfg $MessageId}
     if($Mode -in @('Validation','Drain')){
         Assert-LtFixture $cfg.fixture_root @($cfg.queue_path,$cfg.state_directory,$cfg.client_path,$cfg.manifest_directory,$cfg.adapter_path)
         if($cfg.adapter_kind -cne 'Fixture'){throw 'RealAdapterDisabledInDevelopmentRelease'}
@@ -109,7 +114,7 @@ try {
     $client=Read-LtJson $cfg.client_path
     $manifests=@(Get-ChildItem -LiteralPath $cfg.manifest_directory -Filter '*.json' -File|ForEach-Object{Read-LtJson $_.FullName})
     $configurationHash=Get-LtConfigHash $client $manifests
-    if($Mode -in @('Validation','Drain')){
+    if($Mode -in @('Validation','Drain','Canary')){
         $jp=Join-Path $cfg.state_directory 'journal.json'
         if(Test-Path -LiteralPath $jp){$journal=Read-LtJson $jp}else{$journal=[pscustomobject]@{schema_version=2;machine=$env:COMPUTERNAME;sid=$health.sid;owner=$cfg.owner;generation=$cfg.generation;created_at_utc=[DateTime]::UtcNow.ToString('o');entries=@()}}
         if($journal.schema_version -ne 2 -or $journal.machine -cne $env:COMPUTERNAME -or $journal.sid -cne $health.sid -or $journal.owner -cne $cfg.owner -or $journal.generation -cne $cfg.generation -or $null -eq $journal.entries){throw 'JournalIdentityOrSchemaMismatch'}
@@ -139,10 +144,12 @@ try {
     foreach($r in @($scoped|Sort-Object created_at_utc,message_id)){
         $evaluationMode=if($Mode -eq 'Validation'){'Validation'}else{'Shadow'}
         $reason=Test-LtRecord $r $client $manifests $env:COMPUTERNAME $evaluationMode $MessageId $records
+        if($Mode -ceq 'Canary'){Assert-LtCanaryRecord $r; if($cfg.payload_hash -cne $r.payload_hash){throw 'CanaryPinnedHashMismatch'}}
         if($r.destination.task_id -ceq $cfg.dispatcher_task_id){$reason='SelfNotificationForbidden'}
         if($journal -and @($journal.entries|Where-Object {$_.phase -ne 'closed' -and $_.destination_task_id -ceq $r.destination.task_id}).Count){$reason='DestinationOutstanding'}
         $health.candidates+=@{message_id=$r.message_id;state=$r.state;reason=$reason}
-        if($Mode -ne 'Validation' -or $reason -cne 'Eligible' -or $health.claims -ge 1){continue}
+        if($Mode -notin @('Validation','Canary') -or $reason -cne 'Eligible' -or $health.claims -ge 1){continue}
+        if($Mode -ceq 'Canary'){Assert-LtCanaryRecord $r -ForSubmission}
         if($watch.Elapsed.TotalSeconds -gt $cfg.max_tick_seconds-20){throw 'TickBudgetExhausted'}
         if((Get-FileHash -LiteralPath $cfg.adapter_path).Hash -ine $cfg.adapter_sha256){throw 'AdapterReleaseMismatch'}
         # codex queue serializes behind an existing turn. No desktop status connection.
@@ -163,8 +170,13 @@ try {
         Invoke-CrashTestPause 'BeforeAdapter'
         if($FailurePoint -eq 'BeforeAdapter'){throw 'InjectedBeforeAdapter'}
         $argv=@('-NoProfile','-ExecutionPolicy','Bypass','-File',$cfg.adapter_path,'-FixtureRoot',$cfg.fixture_root,'-MessageId',$r.message_id,'-ThreadId',$r.destination.task_id,'-AttemptId',$entry.attempt_id)
+        if($Mode -ceq 'Canary'){
+            $argv=@('-NoProfile','-ExecutionPolicy','Bypass','-File',$cfg.adapter_path,'-CanaryConfigPath',$ConfigPath,'-MessageId',$r.message_id,'-ThreadId',$r.destination.task_id,'-DispatcherTaskId',$cfg.dispatcher_task_id,'-PayloadHash',$r.payload_hash,'-CliPath',$cfg.cli_path,'-ExpectedCliHash',$cfg.cli_sha256,'-AttemptId',$entry.attempt_id,'-TimeoutSeconds','8')
+        }
         $health.submissions++
-        $answer=Invoke-LtProcess $cfg.powershell_path $argv ([Math]::Min(10,[Math]::Max(1,[int]($cfg.max_tick_seconds-$watch.Elapsed.TotalSeconds))))
+        $adapterBound=if($Mode -ceq 'Canary'){20}else{10}
+        $answer=Invoke-LtProcess $cfg.powershell_path $argv ([Math]::Min($adapterBound,[Math]::Max(1,[int]($cfg.max_tick_seconds-$watch.Elapsed.TotalSeconds))))
+        if($Mode -ceq 'Canary'){Write-LtJson (Join-Path $cfg.state_directory 'adapter-process-result.json') $answer}
         Invoke-CrashTestPause 'AfterAdapter'
         if($FailurePoint -eq 'AfterAdapter'){throw 'InjectedAfterAdapter'}
         # Any exit after submission began is uncertain, including nonzero and timeout.

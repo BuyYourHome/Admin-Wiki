@@ -1,5 +1,11 @@
 # Dot-sourced by the isolated manager copy; uses that manager's existing queue lock and writers.
 function Assert-LtOwner {
+    if($Mode -ceq 'Canary'){
+        Assert-LtCanaryIdentity
+        if($QueuePath -cne '\\WES-VIDEOEDITOR\BYH-PRMessaging$' -or $MessageId -cne (Get-LtCanaryId) -or $TransportOwner -cne $MessageId -or $Generation -cne 'one-shot-1' -or $ActorTaskId -cne '01a05d0c-8031-7d92-9474-ab2330008ddb' -or $ActorProjectRoom -cne 'PR Messaging Dispatcher'){throw 'CanaryClaimOwnerMismatch'}
+        if($ClientConfigPath -cne (Join-Path $env:LOCALAPPDATA 'BuyYourHome\PRMessaging\client.json') -or $ManifestDirectory -cne 'C:\Codex\Wiki Files\config\pr-messaging-manifests'){throw 'CanaryClaimConfigurationMismatch'}
+        return
+    }
     $o = Read-LtJson (Join-Path $QueuePath '.transport-owner.json')
     if ($o.owner -cne $TransportOwner -or $o.generation -cne $Generation -or $o.machine -cne $env:COMPUTERNAME -or $o.sid -cne [Security.Principal.WindowsIdentity]::GetCurrent().User.Value) { throw 'TransportOwnershipMismatch' }
     if($o.task_id -cne $ActorTaskId){throw 'TransportActorMismatch'}
@@ -12,6 +18,7 @@ function Invoke-LtManagerOperation {
     $r = Read-Record $path
     if ($Action -eq 'Inspect') { return [pscustomobject]@{record=$r;version=(Get-LtVersion $r)} }
     Assert-LtOwner
+    if($Mode -ceq 'Canary'){Assert-LtCanaryRecord $r -ForSubmission:($Action -eq 'ConditionalClaim')}
     if ($ExpectedHash -cnotmatch '^[0-9a-f]{64}$' -or $r.payload_hash -cne $ExpectedHash -or !(Get-PrMessageHashEvidence $r).valid) { throw 'ImmutableHashMismatch' }
     if ([string]::IsNullOrWhiteSpace($AttemptId)) { throw 'AttemptIdRequired' }
     Assert-LtId $AttemptId

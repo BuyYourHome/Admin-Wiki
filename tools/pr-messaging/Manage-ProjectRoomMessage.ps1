@@ -1,7 +1,7 @@
 [CmdletBinding()]
 param(
     [Parameter(Mandatory = $true)]
-    [ValidateSet("Initialize", "Send", "Get", "List", "StartAttempt", "MarkAttempt", "Accept", "StartProcessing", "Update", "Complete", "Block", "NeedsWes", "Reject", "SyncSpool", "Health", "AdministrativeCloseSuperseded")]
+    [ValidateSet("Initialize", "Send", "Get", "List", "StartAttempt", "MarkAttempt", "Accept", "StartProcessing", "Update", "Complete", "Block", "NeedsWes", "Reject", "SyncSpool", "Health", "AdministrativeCloseSuperseded", "ConditionalClaim", "ReconcileAttempt")]
     [string]$Action,
 
     [string]$QueuePath = "\\WES-VIDEOEDITOR\BYH-PRMessaging$",
@@ -30,7 +30,10 @@ param(
     [string]$AttemptOutcome,
     [string]$State,
     [int]$MaxAttempts = 3,
-    [switch]$ForceOffline
+    [switch]$ForceOffline,
+    [string]$TransportOwner,[string]$Generation,[string]$Mode,
+    [string]$ClientConfigPath,[string]$ManifestDirectory,
+    [string]$ExpectedHash,[string]$ExpectedVersion,[string]$ExpectedConfigHash
 )
 
 $ErrorActionPreference = "Stop"
@@ -276,6 +279,16 @@ Invoke-WithQueueLock {
     $record = Read-Record -Path $recordPath
     if ($Action -eq "Get") { $record | ConvertTo-Json -Depth 30; return }
 
+    if($Action -in @('ConditionalClaim','ReconcileAttempt')){
+        # Additive exact-ID canary extension; all ordinary transport behavior stays unchanged.
+        . "$PSScriptRoot\low-token\Common.ps1"
+        . "$PSScriptRoot\low-token\Canary.Guards.ps1"
+        . "$PSScriptRoot\low-token\Manager.Extensions.ps1"
+        if($Mode -cne 'Canary' -or $QueuePath -cne '\\WES-VIDEOEDITOR\BYH-PRMessaging$'){throw 'CanonicalMutationRequiresExactCanary'}
+        Invoke-LtManagerOperation | ConvertTo-Json -Depth 30
+        return
+    }
+
     if ($Action -eq 'AdministrativeCloseSuperseded') {
         . "$PSScriptRoot\Message-Integrity.ps1"
         if($QueuePath -cne '\\WES-VIDEOEDITOR\BYH-PRMessaging$'){
@@ -300,6 +313,7 @@ Invoke-WithQueueLock {
 
     switch ($Action) {
         "StartAttempt" {
+            if($MessageId -ceq 'prmsg-wve-serialized-worker-canary-20260907-001'){throw 'ExactCanaryReservedForAtomicWorkerClaim'}
             if ($record.state -notin @("Queued", "Delivery Ambiguous")) { throw "Cannot start delivery while state is '$($record.state)'." }
             if ([int]$record.attempt_count -ge [int]$record.max_attempts) { throw "Message reached its maximum delivery attempts." }
             if ([string]::IsNullOrWhiteSpace($AttemptId)) { $AttemptId = [guid]::NewGuid().ToString("N") }

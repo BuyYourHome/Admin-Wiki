@@ -1,5 +1,13 @@
 # WES-VIDEOEDITOR low-token worker development
 
+## Latest manual canary — September 7, 2026
+
+Wes explicitly authorized one real synthetic worker canary. The exact-ID one-shot implementation made one canonical claim and one real CLI queue submission to Quickbooks; CLI exit 0 and queue UUID are preserved. End-to-end gate did not pass: at 14:17:14 UTC no recipient turn/Accepted/Completed/tool evidence existed; app reported notLoaded. Record `prmsg-wve-serialized-worker-canary-20260907-001` remains Delivery Attempted/Pending, attempts 1/1. One reconciliation tick made zero further claims/submissions and retained the hold. It may execute later; never retry or replace it without reconciliation. See `outputs\WES-VIDEOEDITOR Real Serialized Worker Canary 2026-09-07.md` for commands, hashes, 90 distinct test cases plus four focused repeats, and exact remaining gates.
+
+All 146 preexisting queue records and heartbeat/cron settings remain unchanged. Heartbeats remain PAUSED, production and recurring installation disabled. Only the exact canary extension was added to the canonical manager; general claim helper, manifests and production eligibility are unchanged. No shared Admin registry/policy or other PR file was edited. Prior entries below are historical scope snapshots, superseded only by this explicit one-shot authorization.
+
+## Previous development and reconciliation history
+
 - Owning task: `01a05d0c-8031-7d92-9474-ab2330008ddb`.
 - Repository: `C:\Codex\Wiki Files`, `main`.
 - Authority: Wes's direct September 7, 2026 instruction to implement the scoped serialized change and test recovery, concurrency, outages and duplicates.
