@@ -90,7 +90,7 @@ Invoice Entry must not send email directly. Do not use an Outlook connector, loc
 When an Invoice Entry rule authorizes an email:
 
 1. Prepare the final delivery package inside Invoice Entry: sender, To, CC/BCC, subject, plain-text body, absolute attachment paths, authorization basis, and any stricter workflow restrictions.
-2. Send a direct handoff message to the existing Email Monitor status task, `019ecba7-f1cc-7ac1-aaf7-d89a3f21b582`, explicitly requesting its Email Delivery mode.
+2. Send a direct handoff message to the existing Email Monitor status task, `01a03956-fe55-7f62-9c0a-17c18f763320`, explicitly requesting its Email Delivery mode.
 3. Email Monitor's Email Delivery mode must use `C:\Codex\Wiki Files\skills\email-delivery\SKILL.md` for OfficeAssist sender safety, connector/local-Outlook handling, attachment validation, Sent Items verification, delivery logging, and failure reporting.
 4. Do not mark the email sent until Email Monitor returns a verified OfficeAssist Sent Items result with the sent message id and timestamp.
 5. Record the handoff and returned delivery result in the Invoice Entry packet or processing log. If delivery fails or cannot be verified, keep the Invoice Entry item held and report the blocker.

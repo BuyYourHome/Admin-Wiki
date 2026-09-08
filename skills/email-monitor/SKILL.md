@@ -176,7 +176,7 @@ Use Task Health for Email Monitor task-context review and Wes-approved controlle
 
 ### Email Routing
 
-Use Email Routing as the OfficeAssist mailbox intake funnel during the configured active window.
+Use Email Routing as the OfficeAssist mailbox intake funnel during the configured active window. Treat incoming instruction emails from authorized OfficeAssist senders as workflow priority even when another Email Monitor mode is still active or no longer in its preferred branch. New instruction intent must not be skipped because the current task context feels unrelated.
 
 When the OfficeAssist Email Monitor supplies the machine-local PR Messaging Dispatcher stage, run that dispatcher stage only Monday through Friday from 7:30 AM through 7:00 PM Eastern. Outside that window, continue any separately scheduled Email Monitor work but do not poll or claim Project Room messages. Those records remain in the authoritative queue for the next dispatcher operating window. Closed-window inactivity is expected and must not be reported as stale dispatcher health.
 
@@ -186,6 +186,7 @@ For each new message:
 - use monitor memory so the same Outlook message id is not processed repeatedly;
 - recognize instructions from Wes at `WesWill@BuyYourHomeLLC.com` or `Wes@myBrowning.net`, Jenny at `Jenny@BuyYourHomeLLC.com`, and Josh Kennedy at `IRAManager@SellYourHomeRaleigh.com`;
 - treat both Wes addresses as the same authorized instruction identity, subject to the same workflow-specific safety gates; when a reply is required, address it to the Wes address that originated the instruction and copy `WesWill@BuyYourHomeLLC.com` unless Wes directs otherwise;
+- when a message clearly contains an instruction intent (for example, requests for approval, review, correction, or action), escalate it immediately through the applicable routing branch even if this run also includes non-instruction tasks;
 - perform a safe, in-scope admin action or start the applicable workflow when current Admin wiki rules authorize it;
 - hold and report a decision needed when authorization, routing, or high-impact action authority is incomplete;
 - apply the specialized routing branch when the message matches Lowes Order, Gracious Millionaire, Web Site, Brynda Suit, Manager Routing, or Route Vendor Invoice rules;
@@ -201,7 +202,9 @@ If a routed email or attachment must be materialized as a file, save it outside 
 
 #### General Instruction Handling
 
-Use General Instruction Handling for an authorized Wes, Jenny, or Josh instruction that does not match a specialized routing branch. Determine the applicable Admin wiki rule or workflow, complete safe authorized work, or route it to the owning workflow. Josh's authorization permits safe instruction intake and workflow routing; it does not authorize purchases, payments, approvals, legal or financial changes, or another high-impact action that remains reserved to Wes or separately gated by the owning workflow. Do not invent authority or bypass a specialized Project Room's ownership boundary.
+Use General Instruction Handling for an authorized Wes, Jenny, or Josh instruction that does not match a specialized routing branch. This is a priority branch for every run when an instruction intent is present.
+
+Determine the applicable Admin wiki rule or workflow, complete safe authorized work, or route it to the owning workflow. Josh's authorization permits safe instruction intake and workflow routing; it does not authorize purchases, payments, approvals, legal or financial changes, or another high-impact action that remains reserved to Wes or separately gated by the owning workflow. Do not invent authority or bypass a specialized Project Room's ownership boundary.
 
 #### Lowes Order Email Routing
 

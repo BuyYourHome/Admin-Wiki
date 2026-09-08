@@ -97,7 +97,7 @@ When sending a CFD Email Package:
 10. Set sender to `OfficeAssist@BuyYourHomeLLC.com` unless Wes explicitly authorizes a different sender for that specific run.
 11. Do not prefix the CFD package email subject with `DRAFT:`. Use a neutral review-submission subject such as `<Property> - <Buyer> - Closing Package for Review` unless Wes provides a different subject for that specific run.
 12. Do not say the message is "on Wes's behalf" unless Wes explicitly asks for that wording for that specific message.
-13. Send a direct handoff to the existing Email Monitor status task `019ecba7-f1cc-7ac1-aaf7-d89a3f21b582`, explicitly requesting Email Delivery mode. Include sender, To, CC/BCC, subject, plain-text body, HTML body path when applicable, complete package ZIP path, authorization basis, and the restriction that the package goes to Wes only.
+13. Send a direct handoff to the existing Email Monitor status task `01a03956-fe55-7f62-9c0a-17c18f763320`, explicitly requesting Email Delivery mode. Include sender, To, CC/BCC, subject, plain-text body, HTML body path when applicable, complete package ZIP path, authorization basis, and the restriction that the package goes to Wes only.
 14. Email Monitor's Email Delivery mode must use `C:\Codex\Wiki Files\skills\email-delivery\SKILL.md` for OfficeAssist sender safety, connector/local-Outlook handling, attachment validation, Sent Items verification, delivery logging, and failure reporting.
 15. Do not mark the package email sent until Email Monitor returns a verified Sent Items result with the sent message id and timestamp.
 

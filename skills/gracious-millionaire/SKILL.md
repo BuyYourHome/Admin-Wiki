@@ -168,7 +168,7 @@ For Interview, Jean may draw from approved YouTube transcripts, teaching notes, 
 - Do not attach mailbox checking to the Gracious Millionaire project-room heartbeat.
 - Do not query Outlook directly from this skill unless Wes explicitly authorizes that action in the current request and the Admin rules allow it.
 - Do not send book responses, create new chats, delete source files, or push Git changes from heartbeat processing unless Wes explicitly asks.
-- When Gracious Millionaire rules authorize a Jenny review-packet email after a significant manuscript change, this skill may prepare only the final delivery package and must hand it to the existing Email Monitor status task `019ecba7-f1cc-7ac1-aaf7-d89a3f21b582` requesting Email Delivery mode. Do not send directly from this Project Room. Do not mark the email sent until Email Monitor returns verified Sent Items evidence with the sent message id and timestamp.
+- When Gracious Millionaire rules authorize a Jenny review-packet email after a significant manuscript change, this skill may prepare only the final delivery package and must hand it to the existing Email Monitor status task `01a03956-fe55-7f62-9c0a-17c18f763320` requesting Email Delivery mode. Do not send directly from this Project Room. Do not mark the email sent until Email Monitor returns verified Sent Items evidence with the sent message id and timestamp.
 ## Start PR Pointer
 
 Before durable work, follow Start PR in `C:\Codex\Wiki Files\Project Room Chat Startup Rule.md`.

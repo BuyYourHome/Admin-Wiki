@@ -39,7 +39,7 @@ Project room:
    - Use Administrator-approved removal for protected services or folders.
    - Reboot and rerun diagnostics.
 6. If Wes asks for email documentation:
-   - Prepare the final delivery package and send a direct handoff to the existing Email Monitor status task `019ecba7-f1cc-7ac1-aaf7-d89a3f21b582` requesting Email Delivery mode.
+   - Prepare the final delivery package and send a direct handoff to the existing Email Monitor status task `01a03956-fe55-7f62-9c0a-17c18f763320` requesting Email Delivery mode.
    - Set sender to `OfficeAssist@BuyYourHomeLLC.com` unless Wes explicitly names another sender for that specific message.
    - Attach the current report when practical.
    - Email Monitor's Email Delivery mode must use `C:\Codex\Wiki Files\skills\email-delivery\SKILL.md` for sender safety, attachment handling, delivery, Sent Items verification, and failure reporting.

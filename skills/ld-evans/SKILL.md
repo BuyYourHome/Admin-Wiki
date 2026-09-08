@@ -62,7 +62,7 @@ Whenever the LD Evans manuscript or another review-ready file under `outputs\` i
 3. Prepare the final delivery package to `WesWill@BuyYourHomeLLC.com` from `OfficeAssist@BuyYourHomeLLC.com`.
 4. Use a plain subject that identifies the LD Evans deliverable and that it was updated. Do not use the `DRAFT:` prefix merely because a manuscript is a working draft; the email is delivering a file for Wes's review, not proposing an outbound email message.
 5. Attach the changed deliverable. Do not silently request delivery without the attachment.
-6. Send a direct handoff to the existing Email Monitor status task `019ecba7-f1cc-7ac1-aaf7-d89a3f21b582`, explicitly requesting Email Delivery mode. Include sender, To, CC/BCC, subject, plain-text body, absolute attachment paths, authorization basis, and any stricter LD Evans restrictions.
+6. Send a direct handoff to the existing Email Monitor status task `01a03956-fe55-7f62-9c0a-17c18f763320`, explicitly requesting Email Delivery mode. Include sender, To, CC/BCC, subject, plain-text body, absolute attachment paths, authorization basis, and any stricter LD Evans restrictions.
 7. Email Monitor's Email Delivery mode must use `C:\Codex\Wiki Files\skills\email-delivery\SKILL.md` for OfficeAssist sender safety, connector/local-Outlook handling, attachment validation, Sent Items verification, delivery logging, and failure reporting.
 8. Treat the manuscript or deliverable update as incomplete until Email Monitor returns a verified OfficeAssist Sent Items result with the sent message id and timestamp. Report any send or verification failure immediately in the LD Evans thread.
 
