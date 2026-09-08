@@ -418,3 +418,8 @@ Context: Adding the twelfth and thirteenth active detail lines caused the amount
 - For 12 or more detail lines, reduce detail-table paragraph leading, font size, and vertical padding while keeping headings, summary totals, and amount due at normal emphasis.
 - For 15 or more detail lines, use the next compact tier and rerender; never shrink blindly without visual inspection.
 - After each tier change, require one-page verification when practical, readable source wording, exact line and summary totals, and visible amount due.
+## 2026-09-08 - Worker-Specific Time Card Cycles
+
+- Do not apply Josh Kennedy's semimonthly cycle to Tim Fleming. Tim is paid weekly; the established August 31-September 5, 2026 period runs Monday through Saturday.
+- Reconcile all routed messages in the same worker-specific period before drafting. Tim's August 31 source arrived by email on September 2 and had to be combined with the separate September 2 source.
+- A user restriction such as `send it to me only` overrides the normal worker/Wes/Jenny correction-review recipient set for that exact draft. Preserve the restriction literally and verify empty CC and BCC.

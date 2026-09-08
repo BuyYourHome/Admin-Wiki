@@ -1,12 +1,12 @@
 # Invoice Entry Current Work Status
 
-Last updated: 2026-09-03
+Last updated: 2026-09-08
 
 This is the authoritative current-state register for Invoice Entry. Read it before processing a handoff or opening a workbook. Packet files and processing logs remain the detailed evidence; when an older summary conflicts with this file, stop and reconcile the source before acting.
 
 ## Operating State
 
-- Status: `Active - Josh September 1-15 Accumulation Current Through September 3; Open Holds Recorded`
+- Status: `Active - Tim August 31-September 5 Weekly Draft Sent To Wes Only; Open Holds Recorded`
 - Primary intake: direct Doc Scan or Email Monitor handoff; authorized versioned Manager Time Card packets are also supported for Time Card intake.
 - Current task: `019fbf4f-c629-7dd1-a3f6-0de33de0ed8f`.
 - Canonical skill: `C:\Codex\Wiki Files\skills\invoice-entry\SKILL.md`.
@@ -16,6 +16,7 @@ This is the authoritative current-state register for Invoice Entry. Read it befo
 - 2026-08-22 backup-monitor run: the central PR messaging share `\\WES-VIDEOEDITOR\BYH-PRMessaging$` denied access, so unresolved dispatches could not be authoritatively classified from the central record during this run.
 - 2026-08-27 backup-monitor run: no new packet was found in the room beyond the existing held source set. The canonical messaging tool again returned access denied for `\\WES-VIDEOEDITOR\BYH-PRMessaging$`, so unresolved dispatches to task `019fbf4f-c629-7dd1-a3f6-0de33de0ed8f` remain unclassifiable from this machine and no wake-up was sent.
 - No external action from the prior unfinished turn requires retry.
+- Wes corrected that Tim is paid weekly. The authoritative August 31 source and September 2 source are recorded once in corrected weekly invoice `IE-TF-20260905-001` for August 31-September 5: Pond `5.0h` / `$312.50` and Rosebrooks `1.0h` / `$62.50`; total `6.0h` / `$375.00`. The erroneous semimonthly draft `INV-TF-20260915-001` is superseded and was never sent. Corrected delivery `IE-EMAIL-20260908-TIM-WEEKLY-WES-REVIEW-001` was sent exactly once from OfficeAssist to Wes only and Sent Items-verified at `2026-09-08T19:47:10Z`; Tim and Jenny were not sent or copied. The invoice remains a draft and is not approved, filed, posted, routed to QuickBooks, paid, or marked paid. The central records still address the retired WESSTUDIO task, so this OFFICEASSIST task did not impersonate them or write false receipts.
 - Poyner Spruill read-only QuickBooks existence audit child `prmsg-invoice-entry-poyner-spruill-qb-existence-audit-20260831-002` is complete. Thirteen exact matches were Found; six candidates are Ambiguous (`1258847`, `1265033`, `1265911`, `1266909`, `1266915`, `1275366`); none were Not Found or Blocked. No QuickBooks data changed. Do not repeat the audit; review the six controlling conflicts before any separately authorized correction.
 - Doc Scan returned corrected item-level packets for eight visually verified PO-4121 Lowe's rows. After the initial lock cleared, a freshness-safe retry uploaded the validated workbook and the re-fetched authoritative copy passed hash and Excel read-back verification.
 - Do not resend an email, repeat a workbook upload, or recreate a packet solely because an older task response was delayed or missing.
