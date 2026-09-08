@@ -8,6 +8,10 @@ Wes directly authorized the serialized-worker change and isolated restart, concu
 
 This is a development package, not an installed recurring worker. Existing heartbeat, active claim helper, manifests, registrations, ACLs, credentials and other PRs remain unchanged. The active manager's exact closure and one-shot synthetic extensions are described below. No recurring task is registered. No production claims are enabled.
 
+## Bounded assisted deployment 0.3.0
+
+The separately authorized `prmsg-jean-wve-assisted-worker-deployment-20260907-001` installs `Invoke-AssistedWorker.ps1` only for Quickbooks task `01a05967-9a05-7081-a62e-616b2d8e61fd` on `WES-VIDEOEDITOR`. It runs as the normal interactive `WES-VIDEOEDITOR\IRAMa` user every 60 seconds, with a per-profile singleton lock, one outstanding destination slot, canonical helper claim, pinned CLI adapter and durable local state. Manual opening of Quickbooks may be required; queue acknowledgment is never treated as recipient acceptance. The existing `pr-messaging-dispatcher-wes-videoeditor` heartbeat remains PAUSED and OFFICEASSIST is not modified. `Install-LowTokenWorker.ps1 -Install` is the only activation path; `-Uninstall` removes only this task and retains state/records.
+
 ## September 7 one-shot authorization
 
 Wes directly authorized `authorize one real synthetic worker canary` in the owning task. `Canary` mode is limited in code to `prmsg-wve-serialized-worker-canary-20260907-001`, the existing Quickbooks task `01a05967-9a05-7081-a62e-616b2d8e61fd`, WES-VIDEOEDITOR/IRAMa, one attempt and one hour of submission authority. It requires exact explicit synthetic/no-business flags and immutable hash, pinned package/manager/adapter/CLI, unchanged paused heartbeat, existing dispatchable destination manifest and registration, and no outstanding same-destination work. It is not a readiness exception and does not replace the manifest's historical readiness validation ID. No onboarding/readiness or general production rule is changed.
