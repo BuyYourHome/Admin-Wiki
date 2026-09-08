@@ -9,7 +9,8 @@ param(
     [string]$AttemptId,
     [ValidateRange(1,20)][int]$TimeoutSeconds=10,
     [switch]$DescribeOnly,
-    [string]$CanaryConfigPath
+    [string]$CanaryConfigPath,
+    [string]$LiveConfigPath
 )
 $ErrorActionPreference='Stop'
 . "$PSScriptRoot\Common.ps1"
@@ -46,6 +47,21 @@ if($CanaryConfigPath){
     $result|ConvertTo-Json -Depth 10
     return
 }
-# Hard safety barrier for development release. Remove only in a reviewed canary release.
+if($LiveConfigPath){
+    . "$PSScriptRoot\Canary.Guards.ps1"
+    $cfg=Read-LtJson $LiveConfigPath
+    if($cfg.release -cne '0.3.0-assisted' -or $cfg.allowlist.project_room -cne 'Quickbooks' -or $ThreadId -cne $cfg.allowlist.task_id -or $DispatcherTaskId -cne $cfg.dispatcher_task_id -or $PayloadHash -cnotmatch '^[0-9a-f]{64}$' -or $CliPath -cne $cfg.cli_path -or $ExpectedCliHash -ine $cfg.cli_sha256){throw 'AssistedAdapterIdentityMismatch'}
+    if($env:COMPUTERNAME -cne $cfg.expected_machine -or [Security.Principal.WindowsIdentity]::GetCurrent().User.Value -cne $cfg.expected_sid){throw 'AssistedAdapterWindowsIdentityMismatch'}
+    $r=(& $cfg.manager_path -Action Get -MessageId $MessageId -QueuePath $cfg.queue_path | ConvertFrom-Json)
+    $a=@($r.attempts)[-1]
+    if($r.destination.project_room -cne 'Quickbooks' -or $r.destination.task_id -cne $ThreadId -or $r.state -ne 'Delivery Attempted' -or $r.payload_hash -cne $PayloadHash -or $a.attempt_id -cne $AttemptId -or $a.outcome -ne 'Pending' -or $r.receipt -or $r.result){throw 'AssistedAdapterClaimMismatch'}
+    if(Test-Path -LiteralPath (Join-Path $cfg.state_directory 'submission-once.json')){throw 'AssistedSubmissionAlreadyMarked'}
+    New-LtCanarySubmissionMarker (Join-Path $cfg.state_directory 'submission-once.json') @{message_id=$MessageId;attempt_id=$AttemptId;created_at_utc=[DateTime]::UtcNow.ToString('o');executable=$CliPath;arguments=$argv}
+    $result=Invoke-ReviewedQueueSubmission
+    Write-LtJson (Join-Path $cfg.state_directory 'last-cli-result.json') $result
+    $result|ConvertTo-Json -Depth 10
+    return
+}
+# Hard safety barrier for development release. The only live path is the pinned assisted Quickbooks release above.
 throw 'RealSubmissionDisabledInDevelopmentRelease'
 # A reviewed canary release may replace the hard stop with Invoke-ReviewedQueueSubmission.
