@@ -25,7 +25,8 @@ Do not keep routine no-mail checks, repeated failure narratives, completed histo
 
 - Meaningful operational history goes to the single Teams rolling log defined in `config\email-monitor-log.json`.
 - The rolling log retains seven days and excludes routine no-activity checks.
-- Durable Git audit entries remain in `working\routing-action-log.md` only when the routing or delivery outcome matters for audit, debugging, or follow-up.
+- Cross-PR handoffs and lifecycle receipts remain in the authoritative central Project Room messaging record; email source and delivery evidence remain in Outlook and Sent Items.
+- `working\routing-action-log.md` is historical and read-only after the 2026-09-10 operational-log migration. Do not append routine operational outcomes to it.
 - Unresolved requests remain in compact state regardless of age until resolved.
 
 ## Stable Chat Rule

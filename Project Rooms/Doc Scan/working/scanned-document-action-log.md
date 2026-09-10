@@ -1,10 +1,12 @@
 # Scanned Document Action Log
 
-This log records durable outcomes for scanned documents handled by Doc Scan.
+Historical, read-only evidence through the 2026-09-10 operational-log migration. Do not append routine scan transactions. Current per-scan outcomes belong in SharePoint/Teams `Scanned Files\Logs`, with cross-PR handoffs and lifecycle receipts in the authoritative central Project Room messaging record.
 
-Keep entries focused on what happened to the source scan and filed document. Do not preserve OCR scratch folders, temporary render folders, split experiments, or generated packet files in Git merely to show how the scan was processed.
+This log records historical durable outcomes for scanned documents handled by Doc Scan before the operational-log migration.
 
-The detailed per-scan `.log.txt` file in the Teams Scanned Files Logs folder remains the operational run log. This Markdown log is the Admin wiki summary of durable outcomes, especially when a scan results in a filed document, review routing, or handoff to another Project Room.
+Historical entries remain unchanged. Do not preserve OCR scratch folders, temporary render folders, split experiments, generated packet files, or new routine scan outcomes in Git merely to show how the scan was processed.
+
+The detailed per-scan `.log.txt` file in the Teams Scanned Files Logs folder is the operational run log. This Markdown file is no longer updated for routine filed documents, review routing, or handoffs.
 
 ## Entries
 

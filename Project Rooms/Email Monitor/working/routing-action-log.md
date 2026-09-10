@@ -1,6 +1,8 @@
 # Routing Action Log
 
-This log records durable outcomes for Email Monitor routing and delivery work.
+This log records historical outcomes for Email Monitor routing and delivery work through the 2026-09-10 operational-log migration.
+
+This file is read-only historical evidence. Do not append routine Email Monitor transactions. Current operations use compact machine-local state, the seven-day Teams rolling log, Outlook/Sent Items, and authoritative central Project Room messaging records as applicable.
 
 Keep entries focused on what happened to the email or delivery request: which message was routed, where the source was preserved, which Project Room received the handoff, whether delivery was verified, and whether anything was held or blocked.
 

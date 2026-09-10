@@ -13,7 +13,7 @@
 | Health Check specification | `Project Rooms\Email Monitor\working\health-check-spec.md` | authoritative | Defines workflow-specific health state, watchdog thresholds, alerts, machine assignment, and reuse rules. |
 | Health Check config | `Project Rooms\Email Monitor\config\email-monitor-health.json` | authoritative | Assigns Email Monitor to `OFFICEASSIST` under `OfficeAssistLogin`; watchdog activation remains a destination verification step. |
 | Health Check tools | `Project Rooms\Email Monitor\tools\*.ps1` | authoritative mechanism | Manage conversational options and configuration, update health state, evaluate and alert on stale state, and install the Windows scheduled watchdog. |
-| Routing Action Log | `Project Rooms\Email Monitor\working\routing-action-log.md` | authoritative outcome log | Durable Admin wiki summary of important routed-email and Email Delivery outcomes, including preserved source path, handoff target, status, and blockers. |
+| Routing Action Log | `Project Rooms\Email Monitor\working\routing-action-log.md` | historical/read-only | Historical Admin wiki summary through the 2026-09-10 operational-log migration. Current routine outcomes live in compact runtime state, the Teams rolling log, Outlook/Sent Items, and central messaging records. |
 | Automation config source note | `Project Rooms\Email Monitor\sources\automation-config-source-note.md` | background | Snapshot summary of the live local automation config. |
 | Skill source note | `Project Rooms\Email Monitor\sources\skill-source-note.md` | background | Summary of skill ownership and boundaries. |
 

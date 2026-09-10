@@ -17,7 +17,7 @@ Process scanned Office Admin PDFs and JPG/JPEG image scans conservatively. Split
 - Logs: write logs back to the SharePoint/Teams `Scanned Files\Logs` location when connector write access is available; local synced logs are a machine-specific fallback only after verification.
 - Archive: move originals to SharePoint/Teams `Scanned Files\Archived` only when the connector or verified local sync path can safely perform the move. Never archive through an unverified local profile path.
 - Working archive map: `C:\Codex\Wiki Files\Project Rooms\Doc Scan\working\teams-working-archive-map.md`
-- Scanned document action log: `C:\Codex\Wiki Files\Project Rooms\Doc Scan\working\scanned-document-action-log.md`
+- Historical scanned document action log: `C:\Codex\Wiki Files\Project Rooms\Doc Scan\working\scanned-document-action-log.md`; read-only after the 2026-09-10 operational-log migration.
 - Teams working archive: SharePoint/Teams Office Admin `Scanned Files\Doc Scan Working Archive`; use a verified local synced equivalent only as fallback.
 - Destination root: SharePoint/Teams Office Admin `2026`; use a verified local synced equivalent only as fallback.
 - Property root for mortgage, property insurance, and property closing documents: SharePoint/Teams Property library; use a verified local synced equivalent only as fallback.
@@ -80,7 +80,7 @@ Doc Search may inspect Teams/SharePoint project and property folders, Admin wiki
 
 Record relevant matches as evidence notes in the scan log, review note, or Invoice Entry packet with file path or SharePoint URL, date, document type, and why the document appears related.
 
-For explicit Boss-requested Doc Search work that is not tied to an active scan, log the completed search in the scanned document action log or another appropriate durable activity log. Include the request, searched locations, found documents, confidence, and outcome. Treat one-off Markdown search notes in `Project Rooms\Doc Scan\working` as temporary scratch; delete them when the search has been reported or handed off unless Boss explicitly asks to keep the research trail or the note is part of a larger unresolved review packet.
+For explicit Boss-requested Doc Search work that is not tied to an active scan, log the completed search outside Git in SharePoint/Teams `Scanned Files\Logs` or another approved non-Git operational record. Include the request, searched locations, found documents, confidence, and outcome. Treat one-off Markdown search notes in `Project Rooms\Doc Scan\working` as temporary scratch; delete them when the search has been reported or handed off unless Boss explicitly asks to keep the research trail or the note is part of a larger unresolved review packet.
 
 Do not use Doc Search to move, rename, file, archive, or delete found documents. Do not edit project-management workbooks, decide final spreadsheet placement, or override Invoice Entry duplicate checks and insertion decisions.
 
@@ -462,7 +462,7 @@ Write one text log per source scan in the Logs folder. Include:
 - Confidence notes and any review items.
 - Archive path for the original source scan, if archived.
 
-Also update `C:\Codex\Wiki Files\Project Rooms\Doc Scan\working\scanned-document-action-log.md` when a scan produces a durable outcome such as a filed document, review routing, register alert, or handoff to Invoice Entry or another Project Room. Record what happened to the source scan and filed/review document, including source scan, identified document, filed or review destination, project/account/vendor, handoff/register action, status, and notes. Do not commit OCR scratch folders, temporary render folders, split experiments, or generated packet files merely to show how the scan was processed.
+The per-source text log in SharePoint/Teams `Scanned Files\Logs` is the durable operational record for a scan. Record what happened to the source scan and filed/review document, including source scan, identified document, filed or review destination, project/account/vendor, handoff/register action, status, and notes. Cross-PR handoffs and lifecycle receipts remain in the authoritative central Project Room messaging record. Do not append routine outcomes to the historical Git action log, and do not commit OCR scratch folders, temporary render folders, split experiments, generated packet files, or routine scan records merely to show how the scan was processed.
 
 ## End-Of-Run Working File Cleanup Rule
 
@@ -474,14 +474,12 @@ Required end-of-run steps:
 
 1. Preserve the original source scan. Never delete the original scan file.
 2. Preserve the final filed document, review document, handoff packet, or report in the correct Teams, property, Office Admin, or Project Room destination.
-3. Record the durable outcome in:
-   `C:\Codex\Wiki Files\Project Rooms\Doc Scan\working\scanned-document-action-log.md`
+3. Record the durable outcome in the per-source text log under SharePoint/Teams `Scanned Files\Logs`; record any cross-PR handoff in the authoritative central Project Room messaging record.
 4. Do not keep generated page renders, OCR text, contact sheets, temporary PDFs, preview images, split-test files, extraction scratch files, or run folders in the Admin wiki Git repo.
 5. If generated working artifacts need temporary retention, move them to the SharePoint/Teams Office Admin `Scanned Files\Doc Scan Working Archive` location, or to a verified local synced equivalent only when connector write access is unavailable.
 6. Preserve the same relative folder structure when moving generated working artifacts to the Teams archive.
 7. Verify the Teams copy by file count and byte total before removing the local working copy.
-8. Record the Teams archive location in:
-   `C:\Codex\Wiki Files\Project Rooms\Doc Scan\working\teams-working-archive-map.md`
+8. Record the Teams archive location in the per-source operational log. Update `C:\Codex\Wiki Files\Project Rooms\Doc Scan\working\teams-working-archive-map.md` only when the reusable archive mapping or policy changes, not for each run.
 9. After successful verification and mapping, remove the local generated working files from `Project Rooms\Doc Scan\working\`.
 10. If the run cannot safely determine whether a file is source material, generated output, or needed evidence, leave it in place and record the decision needed instead of deleting it.
 
@@ -491,7 +489,7 @@ A Doc Scan job is not complete until its generated working files have either bee
 
 Doc Scan source documents are not durable Admin wiki repo content.
 
-The Admin wiki repo should keep rules, SOPs, folder maps, source inventories, action logs, archive maps, review notes, and handoff records. It should not keep original scanned PDFs/JPGs, email attachment PDFs/XLSX/images, or final filed project/property documents.
+The Admin wiki repo should keep rules, SOPs, folder maps, source inventories, historical action logs, reusable archive maps, review notes, and deliberate migration or handoff specifications. It should not keep routine operational records, original scanned PDFs/JPGs, email attachment PDFs/XLSX/images, or final filed project/property documents.
 
 Source documents should live in Teams, SharePoint, the scanner intake/archive folders, property folders, Office Admin folders, or another approved Teams source/archive location.
 
@@ -536,6 +534,7 @@ If an insurance worksheet does not exist yet, do not substitute another workshee
 - Never delete source scans.
 - Never overwrite existing filed PDFs.
 - Do not copy Teams-archived Doc Scan working history back into Git unless Wes explicitly identifies a specific file as durable source material.
+- Ordinary Doc Scan processing must not modify Git or require a commit, push, or immediate pull. The Git action log is historical and read-only after the 2026-09-10 operational-log migration.
 - Never pay invoices, submit forms, move money, contact vendors, or spend money.
 - Do not file external lead/customer documents unless the destination is clear and approved.
 - If a scan contains verification codes, passwords, security codes, or scam-looking messages, flag for review and do not share the code.
