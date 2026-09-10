@@ -12,3 +12,14 @@
 - Did not log in, retrieve a statement, create an invoice, file a document, change a workbook, approve or make a payment, contact a vendor, alter an account, or perform any mailbox action.
 
 Outcome: `Blocked - actual statement must be supplied by Wes or retrieved through an authorized Shellpoint session and routed through Doc Scan`.
+
+## 2026-09-10 Repeat Availability Notice
+
+- Validated central record `prmsg-email-monitor-route-vendor-invoice-20260910-shellpoint-7767-statement-001`, exact current Invoice Entry destination, and payload hash `0296963fb4eb7ce38eed4adad231dd283dbcf25f522df84c7e4f94931d0813f7`.
+- Reconciled the notice into this existing account-ending-7767 retrieval hold. It repeats Shellpoint, Henry Bladimir Ramos, account ending `7767`, and online monthly-statement availability.
+- The notice has no PDF, statement date or period, balance, payment amount, due date, property address, entity-obligation evidence, or project mapping. It cannot establish a separate obligation.
+- Exact source needed: the actual billing-statement PDF supplied by Wes or retrieved through an authorized Shellpoint session, then routed through Doc Scan.
+- Exact mapping needed: authoritative evidence linking the mortgage/account and borrower obligation to the responsible company/entity and property/project; the borrower name and account suffix alone are insufficient.
+- No portal access, debt acknowledgment, approval, scheduling, payment, filing, workbook/accounting entry, or mailbox action occurred.
+
+Outcome: `Held - Statement Not Retrieved; Property/Entity Mapping Missing`.

@@ -33,10 +33,19 @@
 - Attachments: none
 - Statement access named by the notice: authorized Shellpoint online account under `Statements > Monthly`
 
+### 2026-09-10 Routed Notice
+
+- Central message: `prmsg-email-monitor-route-vendor-invoice-20260910-shellpoint-7767-statement-001`
+- Payload hash: `0296963fb4eb7ce38eed4adad231dd283dbcf25f522df84c7e4f94931d0813f7`
+- Mailbox: `OfficeAssist@BuyYourHomeLLC.com`
+- Outlook message ending: `ACnE1ShQAAAA==`
+- The notice again names Henry Bladimir Ramos and account ending `7767`, says the current monthly billing statement is available online, and supplies no attachment, statement date, balance, payment amount, due date, or property mapping.
+
 ## Duplicate Check
 
 - No prior Invoice Entry record matched the exact Outlook message ID, exact dispatch id, Shellpoint account ending `7767`, or the named borrower.
 - This is a distinct retrieval hold. If the same notice is routed again, reconcile it to this packet instead of creating another statement record or payment obligation.
+- The 2026-09-10 routed notice repeats the same account-level availability facts without enough information to establish whether it represents a distinct statement period. It is supporting source evidence for this existing hold, not a second obligation.
 
 ## Retrieval Decision
 
