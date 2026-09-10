@@ -1,6 +1,6 @@
 # Josh Kennedy LLC Time Card Invoice - September 1-15, 2026
 
-- State: `Open-period draft through September 3; regenerated and internally verified; delivery held by source restriction`
+- State: `Open-period source accumulation through September 4; September 4 recorded once; no new delivery authorized`
 - Invoice number: `INV-JKLLC-20260915-001`
 - Invoice date: `2026-09-15`
 - Period: `2026-09-01` through `2026-09-15`
@@ -32,15 +32,23 @@
 - Accepted elapsed time: `8 hours`; no break was stated or deducted.
 - Canonical mappings: `20-HM - 115 Rosebrooks Dr` and `26-BYH - 908 Pond St`; source wording remains preserved above and in the invoice detail.
 
+- Central message: `prmsg-email-monitor-route-vendor-invoice-20260909-josh-time-card-sep4-task-correction-001`
+- Payload hash: `9085134fef8b97baa66911fe014c2780ed8f94fae8ca62fee73063c01ff568a6`
+- Outlook message ending: `ACmYNAegAAAA==`
+- Source report: Friday, September 4, 2026, `115 Rosebrooks Drive` from 6:00 AM-10:30 AM finishing sanding, then BackOffice from 10:30 AM-4:00 PM.
+- Accepted elapsed time: `10 hours`: Rosebrooks `4 hours 30 minutes`; BackOffice `5 hours 30 minutes`; no break was stated or deducted.
+- Canonical project mapping: `20-HM - 115 Rosebrooks Dr` for the first interval; BackOffice remains BackOffice.
+
 ## Current Allocation
 
 | Destination | Time | Allocation |
 | --- | ---: | ---: |
-| 115 Rosebrooks Dr | 25 hr 45 min | $2,535.99 |
-| 908 Pond St | 1 hr 45 min | $172.34 |
-| **Total** | **27 hr 30 min** | **$2,708.33** |
+| 115 Rosebrooks Dr | 30 hr 15 min | $2,184.72 |
+| 908 Pond St | 1 hr 45 min | $126.39 |
+| BackOffice | 5 hr 30 min | $397.22 |
+| **Total** | **37 hr 30 min** | **$2,708.33** |
 
-The September 1, 2, and 3 sources are recorded once as four non-overlapping lines. They do not establish approval, filing, posting, payment, or paid status.
+The September 1-4 sources are recorded once as six non-overlapping lines. They do not establish approval, filing, posting, payment, or paid status.
 
 ## Delivery
 

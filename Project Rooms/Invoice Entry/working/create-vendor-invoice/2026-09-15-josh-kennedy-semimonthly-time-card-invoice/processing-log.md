@@ -24,3 +24,12 @@
 - Both intake records restrict contact with Josh. No Email Delivery handoff was created, and the September 1 verified email was not repeated.
 - Both central records were completed with exact hash read-back after the durable packet and archive were current.
 - No approval, finalization, filing, workbook posting, QuickBooks routing, payment, paid status, or external contact occurred.
+
+## September 10 Intake - September 4 Time
+
+- Validated corrected central record `prmsg-email-monitor-route-vendor-invoice-20260909-josh-time-card-sep4-task-correction-001`, its linked retired-task parent, exact current Invoice Entry destination, and payload hash `9085134fef8b97baa66911fe014c2780ed8f94fae8ca62fee73063c01ff568a6`.
+- Duplicate review found no existing September 4 line in the open September 1-15 packet.
+- Added September 4 once as `4 hr 30 min` at source-stated `115 Rosebrooks Drive`, finishing sanding, and `5 hr 30 min` BackOffice; no break was inferred.
+- Mapped the property interval to canonical project `20-HM - 115 Rosebrooks Dr` and retained BackOffice separately.
+- Recalculated the open-period accumulation to `37 hr 30 min`: Rosebrooks `30 hr 15 min` / `$2,184.72`, Pond `1 hr 45 min` / `$126.39`, BackOffice `5 hr 30 min` / `$397.22`, total `$2,708.33`.
+- This intake authorized recording the exact source-supported time once. No draft regeneration or delivery, approval, finalization, filing, workbook posting, QuickBooks routing, payment, paid status, or external contact occurred.
