@@ -3,14 +3,14 @@
   "project_room": "Invoice Entry",
   "skill": "invoice-entry",
   "task_id": "01a03956-fa4f-77c1-9ab7-f709e5f1174e",
-  "dispatchable": false,
+  "dispatchable": true,
   "execution_machine": "OFFICEASSIST",
   "owned_actions": ["structured invoice processing", "receipt processing", "statement packet processing", "time-card processing", "project workbook routing and validation"],
   "accepted_message_types": ["request", "question", "status", "decision", "result", "improvement"],
   "related_project_rooms": ["Doc Scan", "Email Monitor", "Marketplace", "Manager"],
   "limitations": ["requires structured source evidence", "does not approve or pay invoices", "production dispatch disabled pending OFFICEASSIST unattended messaging readiness"],
   "messaging_readiness": {
-    "status": "validation_ready",
+    "status": "ready",
     "machine_registration_verified_at_utc": "2026-09-10T14:53:46.9313796Z",
     "host_access_verified_at_utc": "2026-09-10T14:54:13.638511Z",
     "prerequisite_message_id": "prmsg-create-pr-officeassist-invoice-entry-migration-setup-retry-20260910-correction-001",
@@ -18,11 +18,12 @@
     "prerequisites_completed_at_utc": "2026-09-10T14:56:06.3945753Z",
     "validation_message_id": "prmsg-create-pr-officeassist-invoice-entry-validation-20260910-001",
     "validation_payload_hash": "3b83194c329b380c1a5e1549768671210d8a10d0264259b05e79484cb1d5bb79",
-    "lifecycle_completed_at_utc": null,
-    "notification_count": 0,
+    "lifecycle_completed_at_utc": "2026-09-10T15:51:22.7830079Z",
+    "notification_count": 1,
+    "attempt_count": 1,
     "dispatcher_task_id": "01a03956-fe55-7f62-9c0a-17c18f763320",
     "dispatcher_automation_id": "officeassist-morning-email-summary-and-instruction-monitor",
     "cross_machine_source": "WESSTUDIO",
-    "manual_intervention": null
+    "manual_intervention": false
   }
 }
