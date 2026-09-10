@@ -27,3 +27,11 @@
 Status: `Needs Wes - Project Conflict; No Workbook Action`.
 
 Wes must identify whether invoice `74830` belongs to `908 Pond St` or `4121 Tensity Dr`, or provide another authoritative allocation. After that decision, Invoice Entry can retrieve the fresh exact workbook, run workbook-level duplicate checks, and place the four rows in `Review`. No approval, payment, email, filing, or vendor contact occurred.
+
+## 2026-09-10 Wes Project Correction And Split Direction
+
+- Wes confirmed the handwritten `908 Pond` note is wrong and the project typed on the statement as `4121` is correct.
+- Canonical project is `24-HM - 4121 Tensity Dr` for all four retained invoice `74830` item rows.
+- Wes also confirmed the mixed source scan contains four separate statements that must be split and managed as four separate documents.
+- Invoice Entry removed the project conflict but did not open or edit the Tensity workbook. The rows remain held until Doc Scan returns the separated authoritative document set and resolves or explicitly records the missing Lowe's page 3 of 3.
+- No approval, filing, workbook posting, QuickBooks routing, payment, or paid status occurred.
