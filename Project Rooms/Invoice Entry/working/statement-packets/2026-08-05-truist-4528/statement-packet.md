@@ -8,7 +8,7 @@
 - Account owner: Buy Your Home LLC
 - Account type: credit card
 - Account identifier: ending `4528`
-- Statement date: `2026-08-05`
+- Statement dates represented: `2026-08-05` and `2026-09-05`
 - Statement period: not otherwise stated
 - Source type: authoritative OfficeAssist Outlook notice; no attachment supplied
 - Project/property: not established
@@ -25,6 +25,15 @@
 
 These are notice facts only. Do not treat the minimum payment or statement balance as authorization to approve, schedule, or make a payment.
 
+### September 2026 Notice
+
+- Statement date: `2026-09-05`.
+- Statement balance: `$14,916.34`.
+- Minimum payment due: `$201.00`.
+- Payment due date: `2026-10-02`.
+- The actual statement PDF and transaction detail were not attached.
+- These later-period facts are distinct from the August 2026 statement notice but remain reconciled in this account-level retrieval packet.
+
 ## Source Traceability
 
 - Dispatch id: `email-monitor-route-vendor-invoice-20260806-truist-4528-statement-001`
@@ -38,11 +47,21 @@ These are notice facts only. Do not treat the minimum payment or statement balan
 - Attachments: none
 - Statement access named by the notice: authorized Truist online-banking session
 
+### September 2026 Source
+
+- Corrected central message: `prmsg-email-monitor-route-vendor-invoice-20260909-truist-4528-statement-task-correction-001`
+- Linked retired-task parent: `prmsg-email-monitor-route-vendor-invoice-20260909-truist-4528-statement-001`; never delivered
+- Payload hash: `695f6160760907d9eb189220f9d37f66256c73aa8f7a25cee1e74dd5778b8b10`
+- Mailbox: `OfficeAssist@BuyYourHomeLLC.com`
+- Outlook message ending: `ACmPpNDgAAAA==`
+- Attachments: none
+
 ## Duplicate Check
 
 - No prior Invoice Entry record matched account ending `4528`, statement date `2026-08-05`, the exact Outlook message ID, the exact dispatch id, or the combined `$3,946.94` balance and `$76.00` minimum due.
 - The existing Truist packet for accounts ending `1141` and `1254` concerns two checking accounts and a different notice date. It is not this credit-card statement and must remain separate.
 - If this notice is routed again, reconcile it to this packet instead of creating another statement record or payment obligation.
+- The September 5 notice is a distinct monthly statement event for the same account. It is recorded once in this account-level packet and does not duplicate or replace the August 5 notice.
 
 ## Retrieval Decision
 
