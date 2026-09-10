@@ -1,12 +1,25 @@
 {
-  "schema_version": 1,
+  "schema_version": 2,
   "project_room": "Invoice Entry",
   "skill": "invoice-entry",
-  "task_id": "019fbf4f-c629-7dd1-a3f6-0de33de0ed8f",
-  "dispatchable": true,
+  "task_id": "01a03956-fa4f-77c1-9ab7-f709e5f1174e",
+  "dispatchable": false,
   "execution_machine": "OFFICEASSIST",
   "owned_actions": ["structured invoice processing", "receipt processing", "statement packet processing", "time-card processing", "project workbook routing and validation"],
   "accepted_message_types": ["request", "question", "status", "decision", "result", "improvement"],
   "related_project_rooms": ["Doc Scan", "Email Monitor", "Marketplace", "Manager"],
-  "limitations": ["requires structured source evidence", "does not approve or pay invoices"]
+  "limitations": ["requires structured source evidence", "does not approve or pay invoices", "production dispatch disabled pending OFFICEASSIST unattended messaging readiness"],
+  "messaging_readiness": {
+    "status": "pending",
+    "machine_registration_verified_at_utc": null,
+    "host_access_verified_at_utc": null,
+    "validation_message_id": "prmsg-create-pr-officeassist-invoice-entry-validation-20260910-001",
+    "validation_payload_hash": "3b83194c329b380c1a5e1549768671210d8a10d0264259b05e79484cb1d5bb79",
+    "lifecycle_completed_at_utc": null,
+    "notification_count": 0,
+    "dispatcher_task_id": "01a03956-fe55-7f62-9c0a-17c18f763320",
+    "dispatcher_automation_id": "officeassist-morning-email-summary-and-instruction-monitor",
+    "cross_machine_source": "WESSTUDIO",
+    "manual_intervention": null
+  }
 }

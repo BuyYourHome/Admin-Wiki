@@ -86,7 +86,7 @@ Use Time Card to record, correct, and display time worked by the Manager togethe
 - Preserve corrections as history. Mark replaced lines `Superseded` and identify the replacement; mark withdrawn lines `Cancelled` rather than deleting them.
 - Manager owns the time ledger, source traceability, clarification, display, period totals, and structured Invoice Entry packet. Manager does not calculate pay, create or finalize invoices, approve payment, file invoices, or edit project spreadsheets.
 - Invoice Entry owns invoice rates and amounts, semimonthly accumulation, draft/final invoice generation, correction review, Wes approval, filing, allocation, and project-spreadsheet insertion under its own rules.
-- When Wes requests a draft/final-processing handoff or otherwise authorizes Invoice Entry processing, follow `working\time-card-invoice-entry-handoff-contract.md` and send the versioned packet to the registered Invoice Entry task `019fbf4f-c629-7dd1-a3f6-0de33de0ed8f`.
+- When Wes requests a draft/final-processing handoff or otherwise authorizes Invoice Entry processing, follow `working\time-card-invoice-entry-handoff-contract.md` and send the versioned packet to the registered Invoice Entry task `01a03956-fa4f-77c1-9ab7-f709e5f1174e`.
 - Invoice Entry accepts authorized, versioned Manager Time Card packets under its receiver rules committed as `0bf157b7`. Do not claim that Invoice Entry accepted, drafted, or finalized a specific packet until that task returns the corresponding result with the same dispatch id.
 
 ## Manager Attributes

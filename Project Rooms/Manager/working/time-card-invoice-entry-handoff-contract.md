@@ -7,7 +7,7 @@ Manager preserves the source time ledger and sends structured, versioned time pa
 ## Destination
 
 - Project Room: Invoice Entry
-- Registered task/thread id: `019fbf4f-c629-7dd1-a3f6-0de33de0ed8f`
+- Registered task/thread id: `01a03956-fa4f-77c1-9ab7-f709e5f1174e`
 - Dispatch id: `manager-dispatch-YYYYMMDD-time-card-vN`
 
 ## Activation
