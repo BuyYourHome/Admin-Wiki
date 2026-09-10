@@ -8,7 +8,7 @@
   "owned_actions": ["structured invoice processing", "receipt processing", "statement packet processing", "time-card processing", "project workbook routing and validation"],
   "accepted_message_types": ["request", "question", "status", "decision", "result", "improvement"],
   "related_project_rooms": ["Doc Scan", "Email Monitor", "Marketplace", "Manager"],
-  "limitations": ["requires structured source evidence", "does not approve or pay invoices", "production dispatch disabled pending OFFICEASSIST unattended messaging readiness"],
+  "limitations": ["requires structured source evidence", "does not approve or pay invoices"],
   "messaging_readiness": {
     "status": "ready",
     "machine_registration_verified_at_utc": "2026-09-10T14:53:46.9313796Z",
