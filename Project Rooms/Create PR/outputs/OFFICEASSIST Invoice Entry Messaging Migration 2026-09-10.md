@@ -85,6 +85,44 @@ Read-only central inventory on 2026-09-10. All original immutable records remain
 
 Tim approval `prmsg-email-monitor-route-vendor-invoice-20260909-wes-tim-approval-001` is already handled under Wes's direct recovery instruction and the approved invoice was sent. This migration must not regenerate or resend it. Source owner must link the existing verified delivery evidence without pretending the old destination accepted the record.
 
+## Published setup and verification
+
+- Shared routing commit: `d3900d9c`.
+- Active PR routing and fail-closed gate commit: `8111546a`.
+- Initial audit/report commit: `e7b7c24b976f4d0b3d269b9a4657e5d16d47f237`.
+- All three pushed to origin/main; independent remote read-back matched e7b7c24b. This publishes setup prerequisites, not completed readiness.
+- Authoritative remote configuration handoff: `prmsg-create-pr-officeassist-invoice-entry-migration-setup-20260910-001`.
+- Handoff hash: `cfbd475b6ba49e6226e0e63e997ca82c5fc3adfed5019b8b28d5895311b71169`.
+- Handoff created `2026-09-10T13:07:53.6927749Z`, Queued / attempts 0; no receipt returned at the last check. The normal OFFICEASSIST dispatcher owns notification; Create PR did not issue a remote notification attempt through a local-only task tool.
+- Validation SHA-256 independently recomputed and matched; synthetic remains Queued / attempts 0.
+- JSON gate assertions and scoped Git whitespace checks passed. Full repository ID search found only the six preserved historical/evidence files listed in the audit, no remaining active obsolete-task route.
+- Only the current-task line in the dirty Invoice Entry work-status file was staged; its three pre-existing backup-monitor additions remain uncommitted and unchanged.
+- The standard skill validator could not run because the bundled Python lacks PyYAML. No package was installed. Skill frontmatter was unchanged; review was limited to exact routing substitutions and the new Invoice Entry readiness boundary.
+
+Active files changed:
+
+- `C:\Codex\Wiki Files\AGENTS.md`
+- `C:\Codex\Wiki Files\Agents and Automations Registry.md`
+- `C:\Codex\Wiki Files\Document Scanning SOP.md`
+- `C:\Codex\Wiki Files\Document Scanning Skill Spec.md`
+- `C:\Codex\Wiki Files\skills\doc-scan\SKILL.md`
+- `C:\Codex\Wiki Files\skills\email-monitor\SKILL.md`
+- `C:\Codex\Wiki Files\skills\invoice-entry\SKILL.md`
+- `C:\Codex\Wiki Files\skills\manager\SKILL.md`
+- `C:\Codex\Wiki Files\skills\marketplace\SKILL.md`
+- `C:\Codex\Wiki Files\Project Rooms\Jean Wright\working\dispatcher-routing-map.md`
+- `C:\Codex\Wiki Files\Project Rooms\Email Monitor\config\invoice-entry-health.json`
+- `C:\Codex\Wiki Files\Project Rooms\Email Monitor\working\health-check-spec.md`
+- `C:\Codex\Wiki Files\Project Rooms\Doc Scan\README.md`
+- `C:\Codex\Wiki Files\Project Rooms\Manager\README.md`
+- `C:\Codex\Wiki Files\Project Rooms\Manager\working\time-card-invoice-entry-handoff-contract.md`
+- `C:\Codex\Wiki Files\Project Rooms\Marketplace\README.md`
+- `C:\Codex\Wiki Files\Project Rooms\Invoice Entry\README.md`
+- `C:\Codex\Wiki Files\config\pr-messaging-manifests\invoice-entry.json`
+- `C:\Codex\Wiki Files\Project Rooms\Invoice Entry\working\work-status.md`
+
+This Create PR migration report is the additional evidence file. No automation, installed remote skill, remote registration or live business document has been changed by Create PR.
+
 ## Remaining completion gates
 
 - Actual OFFICEASSIST registration, installed-skill and automation evidence.
