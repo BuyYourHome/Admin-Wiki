@@ -22,7 +22,7 @@ This project room holds development notes, source inventory, and review artifact
 - Canonical skill source: `C:\Codex\Wiki Files\skills\doc-scan\SKILL.md`.
 - Installed skill copy: `C:\Users\wesbr\.codex\skills\doc-scan\SKILL.md`.
 - Live automation config: `C:\Users\wesbr\.codex\automations\doc-scan\automation.toml`.
-- Dispatcher route: Jean routes scanned-statement intake to the dedicated Doc Scan task first; Doc Scan prepares filed statements and structured packets before handing qualifying invoice/statement packets to Invoice Entry task `019fbf4f-c629-7dd1-a3f6-0de33de0ed8f`.
+- Dispatcher route: Jean routes scanned-statement intake to the dedicated Doc Scan task first; Doc Scan prepares filed statements and structured packets before handing qualifying invoice/statement packets to Invoice Entry task `01a03956-fa4f-77c1-9ab7-f709e5f1174e`.
 
 ## Room Layout
 

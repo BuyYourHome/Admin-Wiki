@@ -5,6 +5,14 @@ description: Use for Buy Your Home invoice-entry work after Doc Scan prepares a 
 
 # Invoice Entry
 
+## Messaging Readiness
+
+- Status: Pending messaging registration - not dispatchable.
+- Execution machine: `OFFICEASSIST`; exact task id: `01a03956-fa4f-77c1-9ab7-f709e5f1174e`.
+- Manifest: `C:\Codex\Wiki Files\config\pr-messaging-manifests\invoice-entry.json`.
+- Hold production dispatch/intake until the Mandatory Messaging Readiness Gate passes. While `validation_ready`, accept only the manifest's exact immutable synthetic record after scheduler-originated notification, verify its hash and exact destination, and write Accepted, Processing, and Completed through the canonical manager without business actions. Do not manually discover or claim the validation from an unrelated setup turn.
+- Do not claim records addressed to a retired task. Immutable records require source-owned linked correction and duplicate reconciliation.
+
 ## Source Of Truth
 
 - Project room: `C:\Codex\Wiki Files\Project Rooms\Invoice Entry`
@@ -123,7 +131,7 @@ Do not require the wake-up to originate from the source task or treat the dispat
 
 At every Invoice Entry startup and backup-monitor run:
 
-1. Inspect unresolved queue records whose destination task ID is `019fbf4f-c629-7dd1-a3f6-0de33de0ed8f`.
+1. Inspect unresolved queue records whose destination task ID is `01a03956-fa4f-77c1-9ab7-f709e5f1174e`.
 2. Deduplicate by dispatch ID and payload hash. Never process the same dispatch twice.
 3. Confirm the request belongs to Invoice Entry and that its exact source pointer is accessible.
    Validate authority from the central record itself. Do not reject an otherwise valid record merely because a dispatcher or another task supplied the wake-up signal.

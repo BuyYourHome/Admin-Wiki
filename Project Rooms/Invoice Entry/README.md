@@ -1,5 +1,14 @@
 # Invoice Entry
 
+## Messaging Readiness
+
+- Status: Pending messaging registration - not dispatchable.
+- Execution machine: `OFFICEASSIST`; Windows profile: `OfficeAssistLogin`.
+- Exact task id: `01a03956-fa4f-77c1-9ab7-f709e5f1174e`.
+- Manifest: `C:\Codex\Wiki Files\config\pr-messaging-manifests\invoice-entry.json`.
+- Production intake is held until the canonical Mandatory Messaging Readiness Gate passes. Only the manifest's exact synthetic validation may run while `validation_ready`; it authorizes no business action.
+- Migration evidence: `C:\Codex\Wiki Files\Project Rooms\Create PR\outputs\OFFICEASSIST Invoice Entry Messaging Migration 2026-09-10.md`.
+
 ## Purpose
 
 Invoice Entry owns operational processing after a structured invoice, receipt, statement-line, routed vendor-invoice, or routed Time Card source reaches this Project Room. It resolves the correct active project-management workbook, checks duplicates, determines approved row placement, performs authorized insertion, validates the workbook, and records the outcome.
@@ -112,7 +121,7 @@ Email Monitor and Jean dispatches are authoritative in the central queue at `\\W
 
 The current operational queue, verified deliveries, holds, and known stale records live only in `working\work-status.md`. Update that file after every substantive run. Do not place an active queue in this README.
 
-Dedicated task: `019fbf4f-c629-7dd1-a3f6-0de33de0ed8f`.
+Dedicated task: `01a03956-fa4f-77c1-9ab7-f709e5f1174e`.
 
 Backup automation: standalone local cron job `invoice-entry-to-projects-backup-heartbeat`, displayed as `Invoice Entry Backup Monitor`, scheduled for noon and 4:00 PM Eastern. It reads durable Project Room state and does not target or wake the operational task. Direct handoffs remain the primary trigger. After recording its outcome, a clean run with no new packet, failure, blocker, or decision archives only its own cron execution task. A run that finds a packet or needs attention remains visible.
 

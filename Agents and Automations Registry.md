@@ -255,7 +255,7 @@ Special routing:
 - Save safely retrievable invoice attachments outside Git in the Invoice Entry Teams source/working archive location required by Invoice Entry's current rules. If an apparent invoice attachment cannot be retrieved, preserve the Outlook message link and report the blocker in the Invoice Entry handoff.
 - Update `Project Rooms\Invoice Entry\working\source-inventory.md` or the current Invoice Entry intake ledger with references and external paths when the routed source becomes part of the durable source set.
 - Send a direct follow-up message to the existing Invoice Entry task with the Outlook reference, external attachment paths or blocker, a short vendor/project summary, and the instruction to process the invoice under Invoice Entry rules.
-- Current Invoice Entry task id: `019fbf4f-c629-7dd1-a3f6-0de33de0ed8f`.
+- Current Invoice Entry task id: `01a03956-fa4f-77c1-9ab7-f709e5f1174e`.
 - Durable dispatch queue: `\\WES-VIDEOEDITOR\BYH-PRMessaging$\records`; canonical tool: `tools\pr-messaging\Manage-ProjectRoomMessage.ps1`. The queue record is authoritative and the task message is a wake-up signal. The former Email Monitor queue is retained read-only as legacy history.
 - Before each notification attempt, establish that Invoice Entry is idle. Require Invoice Entry to write `accepted` with the exact dispatch ID before substantive work. Reconcile ambiguous calls before a maximum of three same-ID attempts and email Wes once through verified OfficeAssist delivery when acceptance is missing.
 - Do not create a new Invoice Entry task for routing unless Wes explicitly asks for one.
@@ -1236,7 +1236,9 @@ Defined in:
 
 Dedicated chat:
 
-- Thread id: `019fbf4f-c629-7dd1-a3f6-0de33de0ed8f`
+- Thread id: `01a03956-fa4f-77c1-9ab7-f709e5f1174e`
+- Execution machine: `OFFICEASSIST`.
+- Messaging status: `Pending messaging registration - not dispatchable`; production held until exact registration and unattended synthetic readiness pass. Canonical manifest: `config\pr-messaging-manifests\invoice-entry.json`.
 
 Automation:
 

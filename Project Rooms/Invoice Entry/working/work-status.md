@@ -8,7 +8,7 @@ This is the authoritative current-state register for Invoice Entry. Read it befo
 
 - Status: `Active - Tim August 31-September 5 Approved Invoice Sent To Wes And Verified; Open Holds Recorded`
 - Primary intake: direct Doc Scan or Email Monitor handoff; authorized versioned Manager Time Card packets are also supported for Time Card intake.
-- Current task: `019fbf4f-c629-7dd1-a3f6-0de33de0ed8f`.
+- Current task: `01a03956-fa4f-77c1-9ab7-f709e5f1174e` on `OFFICEASSIST`; production dispatch held pending canonical messaging readiness.
 - Canonical skill: `C:\Codex\Wiki Files\skills\invoice-entry\SKILL.md`.
 - Canonical skill and installed local `invoice-entry` skill were synchronized and recursive SHA-256 hash-verified across 10 files on 2026-08-14 after the opposite-signed Receipt posting rule, draft-first correction-review rule, and worker-versus-payee billing rule were added. Receipt documents retain positive collected amounts; workbook entries use the negative equivalent through normal invoice placement. Correctable invoice/time ambiguity is shown in a payee-and-Wes draft rather than held when one reasonable working interpretation exists. When one person's labor is billed through a contractor, the contractor remains issuer/payee and the worker is identified on the line item.
 - Backup automation `invoice-entry-to-projects-backup-heartbeat` is a standalone local cron job at noon and 4:00 PM Eastern. It has no target task and must not add quiet-check turns to this operational task. Clean no-action runs archive their own execution task after recording memory; runs with a new packet, failure, blocker, or decision remain visible. The five completed no-action run tasks from 2026-08-01 through 2026-08-03 were archived on 2026-08-04.

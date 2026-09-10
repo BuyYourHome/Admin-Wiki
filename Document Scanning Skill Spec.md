@@ -149,7 +149,7 @@ Invoice Entry project room:
 
 Dedicated chat/thread:
 
-`019fbf4f-c629-7dd1-a3f6-0de33de0ed8f`
+`01a03956-fa4f-77c1-9ab7-f709e5f1174e`
 
 Doc Scan owns scan inspection/OCR, document splitting, invoice/receipt identification, project/property folder routing, saving or copying the invoice file, scan log entries, and invoice packet creation.
 

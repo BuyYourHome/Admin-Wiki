@@ -356,7 +356,7 @@ Do not reproduce Invoice Entry's standing rules, the full email body, quoted thr
 
 On each heartbeat, reconcile every unresolved `Route Vendor Invoice` queue record before treating the run as a quiet no-mail check. A queued or ambiguous record is meaningful unresolved work, not `DONT_NOTIFY`; suppress only duplicate visible/chat and email alerts after the first verified alert.
 
-Current Invoice Entry task id: `019fbf4f-c629-7dd1-a3f6-0de33de0ed8f`.
+Current Invoice Entry task id: `01a03956-fa4f-77c1-9ab7-f709e5f1174e`.
 
 Do not create a new Invoice Entry task for this routing unless Wes explicitly asks. During intake routing, do not approve, pay, reply to the contractor/vendor, make live spreadsheet entries, or move files into Teams from this Email Monitor task unless Wes explicitly asks for processing here and the Invoice Entry rules allow it. This intake-stage prohibition on contractor/vendor contact does not block a later Email Delivery request when Invoice Entry's saved rules and the delivery package explicitly authorize that specific message. The default intake action remains source routing plus direct Invoice Entry handoff only.
 
