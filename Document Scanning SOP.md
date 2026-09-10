@@ -506,7 +506,7 @@ Search may include Teams/SharePoint project folders, Admin wiki records, project
 
 Record relevant matches as evidence notes in the scan log, review note, or Invoice Entry packet with file path or SharePoint URL, date, document type, and why the document appears related.
 
-For explicit Boss-requested Doc Search work that is not tied to an active scan, record the completed search in the scanned document action log or another appropriate durable activity log. Include the request, searched locations, found documents, confidence, and outcome. Treat one-off Markdown search notes in `Project Rooms\Doc Scan\working` as temporary scratch; delete them when the search has been reported or handed off unless Boss explicitly asks to keep the research trail or the note is part of a larger unresolved review packet.
+For explicit Boss-requested Doc Search work that is not tied to an active scan, record the completed search outside Git in SharePoint/Teams `Scanned Files\Logs` or another approved non-Git operational record. Include the request, searched locations, found documents, confidence, and outcome. Treat one-off Markdown search notes in `Project Rooms\Doc Scan\working` as temporary scratch; delete them when the search has been reported or handed off unless Boss explicitly asks to keep the research trail or the note is part of a larger unresolved review packet.
 
 Do not use Doc Search to move, rename, file, archive, or delete found documents. Do not edit project-management workbooks, decide final spreadsheet placement, or override Invoice Entry duplicate checks and insertion decisions.
 
@@ -534,7 +534,7 @@ If the connector finds a scan that is not visible locally, download a working co
 
 Doc Scan source documents are not durable Admin wiki repo content.
 
-The Admin wiki repo should keep rules, SOPs, folder maps, source inventories, action logs, archive maps, review notes, and handoff records. It should not keep original scanned PDFs/JPGs, email attachment PDFs/XLSX/images, or final filed project/property documents.
+The Admin wiki repo should keep rules, SOPs, folder maps, source inventories, historical action logs, reusable archive maps, review notes, and deliberate migration or handoff specifications. It should not keep routine operational records, original scanned PDFs/JPGs, email attachment PDFs/XLSX/images, or final filed project/property documents.
 
 Source documents should live in Teams, SharePoint, the scanner intake/archive folders, property folders, Office Admin folders, or another approved Teams source/archive location.
 

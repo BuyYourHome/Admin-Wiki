@@ -29,8 +29,8 @@ This project room holds development notes, source inventory, and review artifact
 - `sources\` - source notes for controlling SOPs, maps, skill source, automation config, and related workflow inputs.
 - `working\` - inventories, conflicts, open questions, route audits, and proposed changes.
 - `outputs\` - review-ready specs, runbooks, handoffs, or finalized drafts.
-- Large generated output packets, OCR working files, and scan-run logs removed from Git are mapped in `working\teams-working-archive-map.md`.
-- Durable scan outcomes are recorded in `working\scanned-document-action-log.md`; record what happened to the source scan and filed/review document instead of preserving every intermediate processing artifact in Git.
+- `working\teams-working-archive-map.md` documents reusable archive mapping and historical migrations; routine run-specific archive locations belong in the per-source Teams/SharePoint log.
+- Routine scan outcomes are recorded in per-source text logs under SharePoint/Teams `Scanned Files\Logs`; cross-PR handoffs are recorded in the central messaging host. `working\scanned-document-action-log.md` remains read-only historical evidence through the 2026-09-10 migration.
 
 ## Operating Modes
 
@@ -42,8 +42,8 @@ The project room's defined scan modes are maintained in [[doc-scan-modes]]. Trea
 - `C:\Codex\Wiki Files\Document Scanning Skill Spec.md`
 - `C:\Codex\Wiki Files\Document Scanning Folder Map.md`
 - `C:\Codex\Wiki Files\skills\doc-scan\SKILL.md`
-- `C:\Codex\Wiki Files\Project Rooms\Doc Scan\working\teams-working-archive-map.md`
-- `C:\Codex\Wiki Files\Project Rooms\Doc Scan\working\scanned-document-action-log.md`
+- `C:\Codex\Wiki Files\Project Rooms\Doc Scan\working\teams-working-archive-map.md` - reusable mapping and historical migration evidence, not a per-run ledger
+- `C:\Codex\Wiki Files\Project Rooms\Doc Scan\working\scanned-document-action-log.md` - historical, read-only evidence
 - `C:\Codex\Wiki Files\Invoice and Receipt Processing Notes.md`
 - `C:\Codex\Wiki Files\Invoice Project List.md`
 - `C:\Users\wesbr\.codex\automations\doc-scan\automation.toml`

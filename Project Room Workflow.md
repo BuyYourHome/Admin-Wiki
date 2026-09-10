@@ -47,11 +47,20 @@ Every Project Room should contain:
 
 ## Durable Outcome Log Pattern
 
-When creating or updating a Project Room, decide whether the room needs a durable outcome log.
+When creating or updating a Project Room, decide whether the room needs a durable outcome log and where that log belongs.
 
-Create an outcome log when the Project Room handles repeatable intake, routing, processing, delivery, filing, document movement, scan handling, email handling, spreadsheet insertion, or external workflow handoffs.
+Routine per-transaction operations must not require a Git write, commit, push, or immediate pull. Repeatable intake, routing, processing, delivery, filing, document movement, scan handling, email handling, spreadsheet insertion, and external workflow handoffs belong in the workflow's approved non-Git operational records. Use, in order as applicable:
 
-The log should live under:
+- the authoritative Project Room messaging record for cross-PR handoffs and lifecycle receipts;
+- machine-local compact runtime state for current cutoffs, deduplication, unresolved work, and recovery;
+- Outlook and Sent Items for authoritative email source and delivery evidence;
+- Teams/SharePoint source, filed-document, archive, and operational-log history.
+
+Git is for policy, configuration, schemas, manifests, code, reusable templates, migration records, and explicitly approved durable summaries. It is not the transaction ledger for ordinary workflow runs.
+
+Historical Git outcome logs may remain in place as read-only evidence. Do not delete or rewrite their historical entries. After a workflow adopts non-Git operational logging, add no routine transaction rows to its historical Git log.
+
+If a Project Room needs a Git-tracked development or migration log, it may live under:
 
 ```text
 C:\Codex\Wiki Files\Project Rooms\<Project Name>\working\
@@ -81,7 +90,7 @@ Typical fields:
 
 Do not commit scratch artifacts merely to prove how work was done. Generated OCR folders, render folders, connector scratch output, temporary packets, workbook copies, draft PDFs, and review packets should normally be moved to Teams archive, ignored, or deleted only with approval.
 
-Commit durable Markdown logs, source inventories, rules, and small reusable scripts. Use Teams for large generated working history unless Wes explicitly identifies a specific file as durable source material.
+Commit durable design or migration summaries, source inventories, rules, and small reusable scripts. Keep routine operational history in the approved non-Git records above unless Wes explicitly identifies a specific summary as durable Git source material.
 
 ## Source Status Terms
 

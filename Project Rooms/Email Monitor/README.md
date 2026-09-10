@@ -34,8 +34,8 @@ This project room holds development notes, source inventory, and review artifact
 - `sources\` - source notes for controlling rules, skill source, automation config, connector behavior, and related files.
 - `working\` - inventories, conflicts, missing context, development notes, and proposed changes.
 - `outputs\` - review-ready specs, handoffs, runbooks, or finalized drafts.
-- Durable routing and delivery outcomes are recorded in `working\routing-action-log.md`; record what happened to the email or delivery request instead of preserving connector scratch output in Git.
-- Routed emails and attachments should not be saved as routine source files in the Admin wiki Git repo. Preserve Outlook message ids or web links, short summaries, statuses, and external Teams paths in Git logs and inventories. If a routed source must be materialized, store it outside Git in the owning Project Room's Teams source/reference, working, or archive location under that room's rules.
+- Routine routing and delivery outcomes are recorded outside Git in compact runtime state, the Teams rolling log, Outlook/Sent Items, and authoritative central messaging records as applicable. The historical Git routing log is read-only.
+- Routed emails and attachments should not be saved as routine source files in the Admin wiki Git repo. Preserve Outlook message ids or web links, short summaries, statuses, and external Teams paths in the approved non-Git operational records. If a routed source must be materialized, store it outside Git in the owning Project Room's Teams source/reference, working, or archive location under that room's rules.
 
 ## Modes
 
@@ -121,7 +121,7 @@ Every central `Send` must include the exact execution machine from Invoice Entry
 
 Send Invoice Entry one concise handoff with these fields in order: exact `mailbox`, `outlook_message_id`, `outlook_link`, attachment paths or exact blocker, short factual `summary`, `requested_operation`, and `unique_warning`. Use `none` when there is no attachment or source-specific warning. Apply the same format to Time Card, approval, correction, and paid-receipt routing.
 
-Do not put Invoice Entry's standing rules, the full email body, quoted thread text, or prior processing history in the task message. Preserve detailed sender/recipient metadata, timestamps, attachment metadata, routing evidence, duplicate notes, and reconciliation history in Email Monitor compact state and `working\routing-action-log.md` as appropriate.
+Do not put Invoice Entry's standing rules, the full email body, quoted thread text, or prior processing history in the task message. Preserve detailed sender/recipient metadata, timestamps, attachment metadata, routing evidence, duplicate notes, and reconciliation history in Email Monitor compact state, the Teams rolling log, and the central message record as appropriate.
 
 The durable queue record is authoritative; a task message is a best-effort wake-up signal. Do not treat a completed tool call as acceptance, and do not lose or duplicate a dispatch when the destination is busy.
 
@@ -168,7 +168,7 @@ After sending, verify the OfficeAssist Sent Items copy for sender, To, CC, BCC, 
 
 - `C:\Codex\Wiki Files\skills\email-monitor\SKILL.md`
 - `C:\Codex\Wiki Files\skills\email-delivery\SKILL.md`
-- `C:\Codex\Wiki Files\Project Rooms\Email Monitor\working\routing-action-log.md`
+- `C:\Codex\Wiki Files\Project Rooms\Email Monitor\working\routing-action-log.md` - historical, read-only evidence through the 2026-09-10 operational-log migration
 - `C:\Codex\Wiki Files\AGENTS.md`
 - `C:\Codex\Wiki Files\Agents and Automations Registry.md`
 - `C:\Users\OfficeAssistLogin\.codex\automations\officeassist-morning-email-summary-and-instruction-monitor\automation.toml`
@@ -193,7 +193,8 @@ When the workflow changes, update the skill, this project room, and the registry
 
 - 2026-07-24: Changed Email Routing source retention so routed emails and attachments are preserved by Outlook reference and external Teams paths instead of routine Git `sources\email` files.
 
-- 2026-07-24: Added `working\routing-action-log.md` as the durable outcome log for routed emails and Email Delivery requests.
+- 2026-09-10: Moved routine Email Monitor outcome logging out of Git. Current operations use compact runtime state, the Teams rolling log, Outlook/Sent Items, and central Project Room messaging records; `working\routing-action-log.md` remains read-only historical evidence.
+- 2026-07-24: Added `working\routing-action-log.md` as the original durable outcome log for routed emails and Email Delivery requests.
 
 - 2026-07-24: Added conversational Health Check management for option discovery, status, enable/disable, configuration, diagnostics, and test alerts, with healthy-state and machine-migration safeguards.
 

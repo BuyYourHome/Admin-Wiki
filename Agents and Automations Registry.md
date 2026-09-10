@@ -362,7 +362,7 @@ Defined in:
 
 - `C:\Codex\Wiki Files\skills\email-monitor\SKILL.md`
 - `C:\Codex\Wiki Files\Project Rooms\Email Monitor\README.md`
-- `C:\Codex\Wiki Files\Project Rooms\Email Monitor\working\routing-action-log.md`
+- `C:\Codex\Wiki Files\Project Rooms\Email Monitor\working\routing-action-log.md` - historical, read-only evidence through 2026-09-10
 - `C:\Users\OfficeAssistLogin\.codex\automations\officeassist-morning-email-summary-and-instruction-monitor\automation.toml` after OFFICEASSIST activation
 - Email safety rules in `AGENTS.md`.
 
@@ -403,7 +403,7 @@ Workflow boundary:
 - Defined mode: Email Delivery handles authorized Email Monitor sends and immediate direct handoffs from other Project Rooms through the shared `email-delivery` skill. Each direct package must include a unique request ID, origin Project Room and task/thread ID, authorization basis, sender, To/CC/BCC, subject, exact plain-text body, absolute attachment paths, attachment-required status, workflow restrictions, and callback task/thread ID. Email Monitor rejects incomplete packages, checks durable request records before sending, prevents duplicate sends, verifies sender/recipients/subject/attachments in OfficeAssist Sent Items, and returns a fixed success or unresolved-failure result to the callback task.
 - Defined mode: Organize files direct-root messages in Wes's and Jenny's separate `Inbox/Jean Wright` scopes after verified deliveries or an explicit Organize request. Each mailbox has an independently maintained folder and precedence rule set. `Time Cards` overrides the other filing classes for all Josh reported-hours and Time Card cycle messages, regardless of sender or status, and for Tim Fleming messages that report his hours worked.
 - Invoice Entry may submit properly authorized delivery packages for vendor invoice-accuracy verification, Time Card invoice verification, Wes approval/payment review, or post-Wes-approval status notices. Route Vendor Invoice's no-vendor-contact rule applies during intake routing and does not override a later delivery specifically authorized under Invoice Entry's saved rules.
-- Durable routing and delivery outcomes that matter for audit, debugging, or follow-up are recorded in `Project Rooms\Email Monitor\working\routing-action-log.md`.
+- Routine routing and delivery outcomes are recorded outside Git in compact runtime state, the Teams rolling log, Outlook/Sent Items, and authoritative central Project Room messaging records as applicable. The Git routing log is historical and read-only after 2026-09-10.
 - Development work, source inventory, open questions, and review-ready handoffs for this workflow live in `C:\Codex\Wiki Files\Project Rooms\Email Monitor\`.
 
 ## Email Delivery
@@ -463,7 +463,7 @@ Defined in:
 
 - Canonical skill source: `C:\Codex\Wiki Files\skills\doc-scan\SKILL.md`
 - Project room: `C:\Codex\Wiki Files\Project Rooms\Doc Scan\README.md`
-- Outcome log: `C:\Codex\Wiki Files\Project Rooms\Doc Scan\working\scanned-document-action-log.md`
+- Historical outcome log: `C:\Codex\Wiki Files\Project Rooms\Doc Scan\working\scanned-document-action-log.md`; read-only after 2026-09-10
 - Installed local skill copy: `C:\Users\wesbr\.codex\skills\doc-scan\SKILL.md`
 - Automation: `C:\Users\wesbr\.codex\automations\doc-scan\automation.toml`
 - Wiki support:
@@ -478,7 +478,7 @@ Important rules:
 - Never delete source scans.
 - Never overwrite filed PDFs.
 - Never pay invoices or contact vendors.
-- Durable scan outcomes are recorded in `Project Rooms\Doc Scan\working\scanned-document-action-log.md`; generated OCR, render, packet, and split-working artifacts stay out of Git unless Wes explicitly identifies one as durable source material.
+- Routine scan outcomes are recorded in SharePoint/Teams `Scanned Files\Logs`, and cross-PR handoffs in the authoritative central messaging record. The Git scan-action log is historical and read-only after 2026-09-10; generated OCR, render, packet, and split-working artifacts stay out of Git unless Wes explicitly identifies one as durable source material.
 - If routing confidence is low, route to review and log why.
 - Each computer expected to process Doc Scan intake must have its own machine-local `doc-scan` heartbeat attached to that computer's current `Doc Scan` task under the `Wiki Files` project. Missing automations or automations targeting obsolete task ids are `pending automation setup`, not healthy scan processing.
 - Keep the automation attached to one dedicated status thread via `target_thread_id` so the user can review run history and adjust behavior in one place.

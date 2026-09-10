@@ -26,7 +26,7 @@ Before using this skill, have:
 - access to `Jenny@BuyYourHomeLLC.com` mailbox contents when running Jenny's summary,
 - access to `IRAManager@SellYourHomeRaleigh.com` mailbox contents when running Josh's summary,
 - direct task messaging access to Manager task `019f8274-5b7e-7170-a051-f7944954de82`,
-- the routing action log at `C:\Codex\Wiki Files\Project Rooms\Email Monitor\working\routing-action-log.md` when routing or delivery outcomes need durable tracking,
+- the historical routing action log at `C:\Codex\Wiki Files\Project Rooms\Email Monitor\working\routing-action-log.md` only when reviewing pre-migration evidence; do not append routine operations,
 - access to `C:\Codex\Wiki Files\tools\get-codex-token-summary.ps1` when Wes's usage totals are needed.
 
 The automation path above is the only Email Monitor runtime memory file. Do not create or update `Project Rooms\Email Monitor\working\memory.md`.
@@ -196,9 +196,9 @@ Email Routing is not the trigger for the scheduled Email Summary mode or a direc
 
 #### Routed Source Retention
 
-Do not routinely save routed email bodies or attachments into Git-tracked Project Room folders. Treat the Outlook message as the authoritative source and preserve the Outlook message id or web link in monitor memory, the Email Monitor routing log when an audit entry is needed, and the handoff to the owning Project Room.
+Do not routinely save routed email bodies, attachments, or outcome rows into Git-tracked Project Room folders. Treat the Outlook message as the authoritative source and preserve the Outlook message id or web link in compact monitor memory, the Teams rolling log when operational history is needed, and the authoritative messaging record for a cross-PR handoff.
 
-If a routed email or attachment must be materialized as a file, save it outside the Admin wiki Git repo in the owning Project Room's Teams source/reference, working, or archive location according to that room's current rules. Keep only the path, message id, short summary, and outcome log in Git. If the owning Project Room has no external retention rule yet, ask or hand off the decision to that Project Room instead of creating a new Git `sources\email` folder.
+If a routed email or attachment must be materialized as a file, save it outside the Admin wiki Git repo in the owning Project Room's Teams source/reference, working, or archive location according to that room's current rules. Preserve the path, message id, short summary, and outcome in compact state, the Teams rolling log, and the central message record as applicable. If the owning Project Room has no external retention rule yet, ask or hand off the decision to that Project Room instead of creating a new Git `sources\email` folder.
 
 #### General Instruction Handling
 
@@ -243,7 +243,7 @@ For each routed email:
 - preserve the Outlook message id or web link, sender, recipients, sent time when available, received time, subject, and a short summary in the handoff and monitor memory;
 - if Gracious Millionaire rules require a materialized source file, save it outside Git in the room's Teams source/reference location and record that external path;
 - update `C:\Codex\Wiki Files\Project Rooms\Gracious Millionaire\working\officeassist-intake-log.md` when the current Gracious Millionaire project-room rules require the intake ledger;
-- update `C:\Codex\Wiki Files\Project Rooms\Gracious Millionaire\working\source-inventory.md` only with the Outlook reference, Teams path if any, summary, and status when the routed source becomes part of the durable source inventory;
+- include the Outlook reference, Teams path if any, summary, and status in the central handoff; do not edit the receiving room's Git-tracked source inventory during routine routing;
 - record the routed Outlook message id in this workflow's monitor memory so the same email is not routed repeatedly;
 - send a direct follow-up message to the existing Gracious Millionaire project-room thread with the Outlook reference, Teams path if any, and a short summary of the email.
 
@@ -268,7 +268,7 @@ For each routed email:
 
 - preserve the Outlook message id or web link, sender, recipients, sent time when available, received time, subject, and a short summary in the handoff and monitor memory;
 - if REI BlackBook rules require a materialized source file, save it outside Git in the room's Teams source/reference location and record that external path;
-- update `C:\Codex\Wiki Files\Project Rooms\REI BlackBook\working\source-inventory.md` only with the Outlook reference, Teams path if any, summary, and status when the routed email becomes part of the durable source set;
+- include the Outlook reference, Teams path if any, summary, and status in the central handoff; do not edit the receiving room's Git-tracked source inventory during routine routing;
 - record the routed Outlook message id in this workflow's monitor memory so the same email is not routed repeatedly;
 - send a direct follow-up message to the existing REI Blackbook project-room thread with the Outlook reference, Teams path if any, a short summary of the email, and the instruction to process the website request.
 
@@ -291,7 +291,7 @@ For each routed email:
 
 - preserve the Outlook message id or web link, sender, recipients, sent time when available, received time, subject, and a short summary in the handoff and monitor memory;
 - if Brynda Suit rules require a materialized source file, save it outside Git in the room's Teams source/reference location and record that external path;
-- update `C:\Codex\Wiki Files\Project Rooms\Brynda Suit\working\source-inventory.md` only with the Outlook reference, Teams path if any, summary, and status when the routed email becomes part of the durable source set;
+- include the Outlook reference, Teams path if any, summary, and status in the central handoff; do not edit the receiving room's Git-tracked source inventory during routine routing;
 - record the routed Outlook message id in this workflow's monitor memory so the same email is not routed repeatedly;
 - send a direct follow-up message to the existing Brynda Suit task with the Outlook reference, Teams path if any, a short summary of the email, and the instruction to wake up and respond to the email.
 
@@ -303,7 +303,7 @@ Do not create a new Brynda Suit task for this routing unless Wes explicitly asks
 
 Use Manager Routing when Email Routing sees an email whose subject contains `Manager Task`, matched case-insensitively. This includes the established `[Manager Task][<Priority>][<Task ID>] <short title>` format and normal reply or forward prefixes.
 
-Preserve the Outlook message id or web link, sender, summary, and attachment metadata in Email Monitor memory and the Manager handoff. Save safely retrievable attachments outside Git in Manager's Teams source/reference or working location according to Manager rules; otherwise preserve the Outlook link and report the blocker. Update the Manager source inventory when applicable with references and external paths only, and send Manager task `019f8274-5b7e-7170-a051-f7944954de82` a direct handoff with the Outlook reference, external attachment paths or blocker, sender, summary, and instruction to process it under Manager Tasks mode.
+Preserve the Outlook message id or web link, sender, summary, and attachment metadata in Email Monitor memory and the Manager handoff. Save safely retrievable attachments outside Git in Manager's Teams source/reference or working location according to Manager rules; otherwise preserve the Outlook link and report the blocker. Do not edit Manager's Git-tracked source inventory during routine routing. Send Manager task `019f8274-5b7e-7170-a051-f7944954de82` a direct handoff with the Outlook reference, external attachment paths or blocker, sender, summary, and instruction to process it under Manager Tasks mode.
 
 Manager must determine whether the email is a new task request, delivery-related message, or status update and apply its existing sender, task-id, status, authorization, and task-register rules. Email Monitor must not infer a status change, create or edit a Manager task, or perform the requested business action from this routing branch.
 
@@ -322,10 +322,10 @@ Activation:
 
 For each routed email:
 
-- preserve the exact mailbox identity, Outlook message id and web link when available, attachment names/metadata, sender/recipient metadata, subject, timestamps, and routing evidence in Email Monitor compact state or `C:\Codex\Wiki Files\Project Rooms\Email Monitor\working\routing-action-log.md` when needed for duplicate prevention, audit, debugging, or follow-up;
+- preserve the exact mailbox identity, Outlook message id and web link when available, attachment names/metadata, sender/recipient metadata, subject, timestamps, and routing evidence in Email Monitor compact state, the Teams rolling log, and the authoritative central message record as applicable; do not append routine outcomes to the historical Git routing log;
 - when the connector or local mailbox path can safely retrieve attachments, save invoice attachments outside Git in the Invoice Entry Teams source/working archive location required by Invoice Entry's current rules and reference those external paths;
 - if an apparent invoice attachment cannot be retrieved, preserve the Outlook link and exact attachment-access blocker;
-- update `C:\Codex\Wiki Files\Project Rooms\Invoice Entry\working\source-inventory.md` or the current Invoice Entry intake ledger only with the Outlook reference, external path if any, summary, and status when the routed email becomes part of the durable source set;
+- include the Outlook reference, external path if any, summary, and status in the central handoff; do not edit Invoice Entry's Git-tracked source inventory or work-status file during routine routing;
 - record the routed Outlook message id in Email Monitor compact state so the same source is not routed repeatedly;
 - create the durable message before any task-message call by using `C:\Codex\Wiki Files\tools\pr-messaging\Manage-ProjectRoomMessage.ps1 -Action Send`; use the shared runtime queue and state contract in `working\dispatch-queue-spec.md`; never create a new record in the legacy Email Monitor queue;
 - resolve Invoice Entry's exact execution machine from its active destination manifest and pass it explicitly as `DestinationMachine` on every central `Send`; a missing, wildcard, inferred, or blank destination machine is a creation blocker and must never be serialized as `null`;
@@ -503,13 +503,13 @@ Reject or hold an incomplete or internally conflicting package. Return the missi
 
 #### Duplicate Prevention And Durable State
 
-Before any send attempt, search compact Email Monitor state, the seven-day rolling log, and the durable routing action log for `delivery_request_id`.
+Before any send attempt, search compact Email Monitor state and the seven-day Teams rolling log for `delivery_request_id`. Consult the historical Git routing log only for pre-migration evidence.
 
 - If that request is already `Sent and Verified`, do not send it again; return the existing verified result to the callback task/thread.
 - If it is `Sending`, `Held`, `Failed - Unresolved`, or otherwise unresolved, do not create a second send attempt until the existing record is reconciled under the shared Email Delivery retry rules.
 - If it is new and complete, create a durable request record before invoking the connector, then update that same record with the final result.
 
-Keep unresolved delivery requests and requests completed within the last seven days in compact state. Record meaningful outcomes in the seven-day Teams rolling log and use `working\routing-action-log.md` for durable audit entries when needed. Do not append full completed delivery narratives indefinitely to `memory.md`.
+Keep unresolved delivery requests and requests completed within the last seven days in compact state. Record meaningful outcomes in the seven-day Teams rolling log. Cross-PR routing remains auditable in the authoritative central message record, and sent email remains auditable in Outlook Sent Items. Do not append routine operations to `working\routing-action-log.md` or full completed delivery narratives indefinitely to `memory.md`.
 
 #### Invoice Entry Requests
 
@@ -692,7 +692,7 @@ Use `C:\Users\OfficeAssistLogin\.codex\automations\officeassist-morning-email-su
 
 Use `C:\Codex\Wiki Files\Project Rooms\Email Monitor\tools\Update-EmailMonitorRollingLog.ps1` with `config\email-monitor-log.json` for meaningful operational history. Retain seven days in the single Teams file at `Office Admin/Codex Logs/Email Monitor/Email Monitor - Rolling 7 Days.md`. Exclude routine no-activity checks. If Teams is unavailable, use the one capped pending file defined by the config and merge it on the next successful log write.
 
-For routed emails and direct Email Delivery requests that matter for audit, debugging, or follow-up, also update `C:\Codex\Wiki Files\Project Rooms\Email Monitor\working\routing-action-log.md` with the durable outcome: Outlook message or delivery request, mode or branch, preserved Outlook reference, external source path if any, delivery record, handoff/recipient, status, and notes. Do not commit connector search scratch output, temporary drafts, duplicate fetched message bodies, routed email body files, or routed attachments merely to show how the routing decision was made.
+For routed emails and direct Email Delivery requests that matter for audit, debugging, or follow-up, record the outcome in compact runtime state while unresolved, the seven-day Teams rolling log, Outlook/Sent Items, and the authoritative central message record as applicable. `C:\Codex\Wiki Files\Project Rooms\Email Monitor\working\routing-action-log.md` is historical and read-only after the 2026-09-10 operational-log migration. Ordinary Email Monitor processing must not modify Git or require a commit, push, or immediate pull. Do not commit connector search scratch output, temporary drafts, duplicate fetched message bodies, routed email body files, routed attachments, or routine outcome rows merely to show how the routing decision was made.
 ## Start PR Pointer
 
 Before durable work, follow Start PR in `C:\Codex\Wiki Files\Project Room Chat Startup Rule.md`.
