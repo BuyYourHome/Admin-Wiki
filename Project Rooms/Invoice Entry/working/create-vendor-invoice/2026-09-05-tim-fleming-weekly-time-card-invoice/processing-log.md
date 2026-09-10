@@ -26,3 +26,24 @@
 - No approval, filing, workbook posting, QuickBooks routing, payment, or paid status occurred.
 
 Outcome: `Done - corrected weekly draft sent once to Wes only and OfficeAssist Sent Items-verified`.
+
+## 2026-09-10 - Approval Reconciliation And Approved PDF
+
+- Email Monitor performed a read-only exact-thread check and found two Wes approval messages that had not been routed back to Invoice Entry.
+- The first approval was received `2026-09-08T19:51:39Z`, message ending `ACmwabEAAAAA==`.
+- The later message used subject `Time Card Approval - Tim Fleming` and expressly approved invoice `IE-TF-20260905-001` for `2026-08-31` through `2026-09-05`.
+- Applied approval without changing the invoice number, service period, accepted lines, project allocations, hourly rate, or `$375.00` total.
+- Generated one-page approved PDF with status `APPROVED BY WES / NOT PAID`.
+- Extracted-text and visual QA passed. The PDF shows Pond `5h00m` / `$312.50`, Rosebrooks `1h00m` / `$62.50`, and total `6h00m` / `$375.00`, with no clipping, overlap, or unsupported paid wording.
+
+## 2026-09-10 - Approved Invoice Delivery Verified
+
+- Email Delivery request `IE-EMAIL-20260910-TIM-WEEKLY-APPROVED-WES-001` was completed exactly once.
+- OfficeAssist Sent Items verification passed at `2026-09-10T12:22:35Z`.
+- Verified sender: `OfficeAssist@BuyYourHomeLLC.com`; To: `WesWill@BuyYourHomeLLC.com` only; CC and BCC empty.
+- Verified subject: `APPROVED: Tim Fleming Time Card Invoice - August 31-September 5, 2026`.
+- Verified non-inline PDF attachment: `26-09-05 - Tim Fleming - Time Card Invoice - 2026-08-31 to 2026-09-05.pdf`, 3,568 transmitted bytes.
+- Sent message id ends `ACnE01LwAAAA==`.
+- Tim and Jenny were not sent or copied. No payment or paid status was established.
+
+Outcome: `Done - approved-not-paid invoice generated, visually verified, sent to Wes only, and OfficeAssist Sent Items-verified`.

@@ -2,7 +2,7 @@
 
 ## Status
 
-- State: `Closed-Period Draft - Wes Review Only`
+- State: `Approved By Wes - Not Paid; Approved PDF Sent To Wes And Verified`
 - Vendor/payee: `Tim Fleming`
 - Contact: `tflem04@gmail.com`
 - Customer: `Buy Your Home`
@@ -13,7 +13,25 @@
 - Rate: `$62.50 per hour`
 - Reported time: `6.0 hours`
 - Draft total: `$375.00`
-- Approval, filing, posting, payment, and paid status: not established
+- Approval: established by Wes's two OfficeAssist messages received `2026-09-08T19:51:39Z` and later under subject `Time Card Approval - Tim Fleming`.
+- Filing, posting, payment, and paid status: not established.
+
+## Approval Evidence
+
+- Wes reply message ending `ACmwabEAAAAA==`, received `2026-09-08T19:51:39Z`, approved the delivered draft.
+- Wes's later approval message states: `Approved invoice number IE-TF-20260905-001 and period 2026-08-31 through 2026-09-05`.
+- The approval applies to the exact invoice number, service period, three accepted lines, `6.0` hours, and `$375.00` total recorded in this packet.
+- Approved status does not establish payment or paid status.
+
+## Approved Invoice Delivery
+
+- Delivery request: `IE-EMAIL-20260910-TIM-WEEKLY-APPROVED-WES-001`.
+- Sent and verified from `OfficeAssist@BuyYourHomeLLC.com` at `2026-09-10T12:22:35Z`.
+- Recipient: `WesWill@BuyYourHomeLLC.com` only; CC and BCC empty.
+- Subject: `APPROVED: Tim Fleming Time Card Invoice - August 31-September 5, 2026`.
+- Sent message id ending: `ACnE01LwAAAA==`.
+- Attachment verified as non-inline `application/pdf`, 3,568 transmitted bytes.
+- Tim and Jenny were not sent or copied. No payment or paid status was established.
 
 ## Exact Sources
 
@@ -50,4 +68,3 @@
 - The erroneous September 1-15 semimonthly working draft `INV-TF-20260915-001` is superseded and must not be sent, approved, filed, posted, or paid.
 - Tim's earlier August 24-28 invoices end before this weekly period and remain unchanged.
 - Any repeat of either source must reconcile into this packet without adding another line or obligation.
-
