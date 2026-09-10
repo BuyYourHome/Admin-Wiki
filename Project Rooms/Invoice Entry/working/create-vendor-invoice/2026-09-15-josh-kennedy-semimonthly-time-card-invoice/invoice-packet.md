@@ -1,6 +1,6 @@
 # Josh Kennedy LLC Time Card Invoice - September 1-15, 2026
 
-- State: `Open-period source accumulation through September 4; September 4 recorded once; no new delivery authorized`
+- State: `Open-period source accumulation through September 8; September 8 recorded once; no new delivery authorized`
 - Invoice number: `INV-JKLLC-20260915-001`
 - Invoice date: `2026-09-15`
 - Period: `2026-09-01` through `2026-09-15`
@@ -39,16 +39,24 @@
 - Accepted elapsed time: `10 hours`: Rosebrooks `4 hours 30 minutes`; BackOffice `5 hours 30 minutes`; no break was stated or deducted.
 - Canonical project mapping: `20-HM - 115 Rosebrooks Dr` for the first interval; BackOffice remains BackOffice.
 
+- Central message: `prmsg-email-monitor-route-vendor-invoice-20260909-josh-time-card-sep8-task-correction-001`
+- Payload hash: `5edcbbd23832b68ddfb8e6652acddf8ee81cadbc236c9a3802ad9362bfe0c763`
+- Outlook message ending: `ACm8bJywAAAA==`
+- Source report: Tuesday, September 8, 2026, `4121 Tensity Dr` from 6:45 AM-9:00 AM locating equipment; `908 Pond Dr` from 9:00 AM-12:00 PM working with Tim Fleming and the plumber; `115 Rose Brooks Dr` from 12:00 PM-4:00 PM preparing cabinets for primer.
+- Accepted elapsed time: `9 hours 15 minutes`: Tensity `2 hours 15 minutes`; Pond `3 hours`; Rosebrooks `4 hours`; no break or unstated activity was inferred.
+- Canonical mappings: `24-HM - 4121 Tensity Dr`, `26-BYH - 908 Pond St`, and `20-HM - 115 Rosebrooks Dr`; source property wording remains preserved above.
+
 ## Current Allocation
 
 | Destination | Time | Allocation |
 | --- | ---: | ---: |
-| 115 Rosebrooks Dr | 30 hr 15 min | $2,184.72 |
-| 908 Pond St | 1 hr 45 min | $126.39 |
-| BackOffice | 5 hr 30 min | $397.22 |
-| **Total** | **37 hr 30 min** | **$2,708.33** |
+| 115 Rosebrooks Dr | 34 hr 15 min | $1,984.18 |
+| 908 Pond St | 4 hr 45 min | $275.18 |
+| BackOffice | 5 hr 30 min | $318.63 |
+| 4121 Tensity Dr | 2 hr 15 min | $130.34 |
+| **Total** | **46 hr 45 min** | **$2,708.33** |
 
-The September 1-4 sources are recorded once as six non-overlapping lines. They do not establish approval, filing, posting, payment, or paid status.
+The September 1-4 and September 8 sources are recorded once as nine non-overlapping lines. They do not establish approval, filing, posting, payment, or paid status.
 
 ## Delivery
 

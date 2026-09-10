@@ -33,3 +33,12 @@
 - Mapped the property interval to canonical project `20-HM - 115 Rosebrooks Dr` and retained BackOffice separately.
 - Recalculated the open-period accumulation to `37 hr 30 min`: Rosebrooks `30 hr 15 min` / `$2,184.72`, Pond `1 hr 45 min` / `$126.39`, BackOffice `5 hr 30 min` / `$397.22`, total `$2,708.33`.
 - This intake authorized recording the exact source-supported time once. No draft regeneration or delivery, approval, finalization, filing, workbook posting, QuickBooks routing, payment, paid status, or external contact occurred.
+
+## September 10 Intake - September 8 Time
+
+- Validated corrected central record `prmsg-email-monitor-route-vendor-invoice-20260909-josh-time-card-sep8-task-correction-001`, its linked retired-task parent, exact current Invoice Entry destination, and payload hash `5edcbbd23832b68ddfb8e6652acddf8ee81cadbc236c9a3802ad9362bfe0c763`.
+- Duplicate review found no existing September 8 line in the open September 1-15 packet.
+- Added September 8 once as `2 hr 15 min` at source-stated `4121 Tensity Dr` locating equipment, `3 hr` at source-stated `908 Pond Dr` working with Tim Fleming and the plumber, and `4 hr` at source-stated `115 Rose Brooks Dr` preparing cabinets for primer.
+- Preserved all source property wording, mapped the intervals to canonical Tensity, Pond, and Rosebrooks projects, and inferred no break or unstated activity.
+- Recalculated the open-period accumulation to `46 hr 45 min`: Rosebrooks `34 hr 15 min` / `$1,984.18`, Pond `4 hr 45 min` / `$275.18`, BackOffice `5 hr 30 min` / `$318.63`, Tensity `2 hr 15 min` / `$130.34`, total `$2,708.33`.
+- This intake authorized recording the exact source-supported time once. No draft regeneration or delivery, approval, finalization, filing, workbook posting, QuickBooks routing, payment, paid status, or external contact occurred.
