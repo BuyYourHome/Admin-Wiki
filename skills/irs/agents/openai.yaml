@@ -1,0 +1,5 @@
+interface:
+  display_name: "IRS"
+  short_description: "Coordinate tax readiness for every entity"
+  default_prompt: "Use the IRS Project Room to inventory every entity and filing obligation, identify missing tax and accounting records, and prepare evidence-based CPA-ready checklists without filing or changing financial records."
+

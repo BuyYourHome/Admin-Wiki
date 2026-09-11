@@ -25,6 +25,7 @@ This is the starting page for the Buy Your Home admin wiki.
 - [[Project Rooms/Network Roadmap/README|Network Roadmap Project Room]]
 - [[Project Rooms/Home Assistant/README|Home Assistant Project Room]]
 - [[Project Rooms/Bathroom Fixtures/README|Bathroom Fixtures Project Room]]
+- [[Project Rooms/IRS/README|IRS Project Room]]
 - [[Project Rooms/Codex Environment/README|Codex Environment Project Room]]
 - [[Project Rooms/Computers/README|Computers Project Room]]
 - [[Project Rooms/Sync Github/README|Sync Github Project Room]]
