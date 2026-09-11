@@ -200,7 +200,23 @@ Do not routinely save routed email bodies, attachments, or outcome rows into Git
 
 If a routed email or attachment must be materialized as a file, save it outside the Admin wiki Git repo in the owning Project Room's Teams source/reference, working, or archive location according to that room's current rules. Preserve the path, message id, short summary, and outcome in compact state, the Teams rolling log, and the central message record as applicable. If the owning Project Room has no external retention rule yet, ask or hand off the decision to that Project Room instead of creating a new Git `sources\email` folder.
 
-Every PDF or other attachment created, downloaded, or materialized for work that is still incomplete, pending, held, blocked, awaiting review, or awaiting final routing must have a verified durable copy in the owning workflow's approved Teams/SharePoint working or archive location. A copy on the executing computer's local `C:` drive may be used as disposable processing scratch, but it must never be the only retained copy or the only path supplied in a cross-machine handoff. Record the Teams/SharePoint path or link in the handoff and keep that durable copy until the owning workflow verifies the file reached its proper final destination. If the Teams copy cannot be created or verified, keep the item unresolved, preserve the source Outlook reference, and report the cross-machine attachment-access blocker; do not claim that the file is available or fully routed.
+Every PDF or other attachment created, downloaded, or materialized for work that is still incomplete, pending, held, blocked, awaiting review, or awaiting final routing must have a verified durable copy in the owning workflow's approved Teams/SharePoint working or archive location. This includes PDFs created or obtained by OfficeAssist or a Project Room on any workstation: OfficeAssist and another authorized executing computer must be able to retrieve the Teams/SharePoint copy before the file is treated as available for further processing, email delivery, or routing. A copy on the executing computer's local `C:` drive may be used as disposable processing scratch, but it must never be the only retained copy or the only path supplied in a cross-machine handoff. Record the Teams/SharePoint path or link in the handoff and keep that durable copy until the owning workflow verifies the file reached its proper final destination. If the Teams copy cannot be created or verified, keep the item unresolved, preserve the source Outlook reference, and report the cross-machine attachment-access blocker; do not claim that the file is available or fully routed.
+
+#### Legacy Teams Source Recovery Rule
+
+For older documents processed before the current source-retention and handoff rules were established:
+
+1. Do not assume a source document is unavailable merely because it is absent from the current computer, local scan folder, Project Room, or Invoice Entry working folder.
+2. Check the original Teams/SharePoint location first, followed by its `Archived`, `Processed`, and comparable historical subfolders.
+3. Search using the original filename, document date, vendor, property, statement period, amount, and any preserved Teams/SharePoint URL.
+4. Treat the Teams/SharePoint copy as the authoritative source when the document was originally placed there.
+5. Retrieve the source from Teams/SharePoint for processing; do not require it to remain on the computer where it was first scanned or handled.
+6. Preserve the original document in Teams/SharePoint. Do not move, rename, overwrite, or delete it merely to process the older item.
+7. If one legacy scan contains multiple documents or statements, route it to Doc Scan. Doc Scan must retrieve the original file, split the documents, and manage each one separately under the rules applicable to its document type. Email Monitor must not split or process the combined scan itself.
+8. Preserve the relationship between every split document and the original combined scan, including the original filename, Teams/SharePoint path or URL, page range, and resulting document identity.
+9. Apply all current workflow rules to the recovered document from the point of recovery forward, including duplicate checks, project identification, approval requirements, filing, and processing logs.
+10. If the Teams/SharePoint source cannot be found or accessed, record the exact expected location, searches performed, and access or retrieval blocker. Do not reconstruct, replace, or declare the document missing without completing this legacy-source check.
+11. Do not create a duplicate payable record, invoice, statement entry, approval, or spreadsheet entry solely because an older source has been recovered. Reconcile it against prior processing evidence first.
 
 #### General Instruction Handling
 
