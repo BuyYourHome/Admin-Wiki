@@ -44,3 +44,14 @@ Delegation Contract: Follow `C:\Codex\Wiki Files\Project Room Delegation Contrac
 ## Action Ownership
 
 Action Ownership: Follow `C:\Codex\Wiki Files\Project Room Delegation Contract.md`. Perform only this PR's documented actions. Delegate another PR's action to its registered task; a missing task/thread id is a blocker, never permission to perform it locally. Return `accepted`, `done`, `blocked`, `needs Wes`, or `rejected as wrong room`.
+
+## PR Messaging
+
+PR Messaging: Follow `C:\Codex\Wiki Files\Project Room Messaging Rule.md`. The central message record is authoritative; task messages are wake-up signals, not delivery proof.
+
+## Messaging Readiness
+
+- Dedicated task ID: `01a09295-d979-7e00-ab98-9390d005a1bf`
+- Dispatchable: No
+- Status: Pending messaging registration - not dispatchable
+- Destination manifest: `C:\Codex\Wiki Files\config\pr-messaging-manifests\entity-relationship.json`

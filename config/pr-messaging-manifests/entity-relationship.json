@@ -1,0 +1,27 @@
+{
+  "schema_version": 1,
+  "project_room": "Entity Relationship",
+  "skill": "entity-relationship",
+  "task_id": "01a09295-d979-7e00-ab98-9390d005a1bf",
+  "dispatchable": false,
+  "execution_machine": "WESSTUDIO",
+  "owned_actions": [
+    "entity relationship inventories",
+    "ownership and management relationship summaries",
+    "entity and property relationship diagrams",
+    "source-backed entity mapping"
+  ],
+  "accepted_message_types": ["request", "question", "status", "decision", "result", "improvement"],
+  "related_project_rooms": ["IRS", "Operating Agreements", "Properties", "Jean Wright"],
+  "limitations": [
+    "does not infer unsupported ownership percentages or authority",
+    "does not determine tax classification or tax filing obligations",
+    "does not draft or revise operating agreements",
+    "pending messaging registration and synthetic lifecycle validation"
+  ],
+  "messaging_readiness": {
+    "status": "pending_registration",
+    "validation_message_id": null,
+    "manual_intervention": null
+  }
+}
