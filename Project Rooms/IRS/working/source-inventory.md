@@ -8,7 +8,7 @@
 | `Project Rooms\Entity Relationship\` | Related Project Room | background | Expected source for entity and relationship mapping; facts must be independently verified for tax use. |
 | `Project Rooms\Operating Agreements\` | Related Project Room | background | Expected source for governing-document references and ownership questions. |
 | QuickBooks company files and accounting reports | External accounting source | missing | Inventory exact company files, periods, reconciliation status, and authoritative report locations. |
-| Prior federal, state, and local tax returns | Secure tax source | missing | Record secure locations and filing evidence; do not copy sensitive returns into Git. |
+| Prior federal, state, and local tax returns | Secure tax source | source identified; review pending | Wes confirmed all prior returns are in Teams. Screenshot shows `Office Admin > 2024 > CPA`. Start there; verify other years and entity coverage from the actual records. Do not copy sensitive returns into Git or infer filing acceptance from their presence. |
 | Payroll and information-return records | External tax source | missing | Identify providers, quarters, Forms 941/940/W-2/W-3/1099 and applicable state filings. |
 | Tax notices, extensions, elections, and acceptance confirmations | Secure tax source | missing | Needed to establish authoritative status and carryforwards. |
 
