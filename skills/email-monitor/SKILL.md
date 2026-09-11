@@ -200,6 +200,8 @@ Do not routinely save routed email bodies, attachments, or outcome rows into Git
 
 If a routed email or attachment must be materialized as a file, save it outside the Admin wiki Git repo in the owning Project Room's Teams source/reference, working, or archive location according to that room's current rules. Preserve the path, message id, short summary, and outcome in compact state, the Teams rolling log, and the central message record as applicable. If the owning Project Room has no external retention rule yet, ask or hand off the decision to that Project Room instead of creating a new Git `sources\email` folder.
 
+Every PDF or other attachment created, downloaded, or materialized for work that is still incomplete, pending, held, blocked, awaiting review, or awaiting final routing must have a verified durable copy in the owning workflow's approved Teams/SharePoint working or archive location. A copy on the executing computer's local `C:` drive may be used as disposable processing scratch, but it must never be the only retained copy or the only path supplied in a cross-machine handoff. Record the Teams/SharePoint path or link in the handoff and keep that durable copy until the owning workflow verifies the file reached its proper final destination. If the Teams copy cannot be created or verified, keep the item unresolved, preserve the source Outlook reference, and report the cross-machine attachment-access blocker; do not claim that the file is available or fully routed.
+
 #### General Instruction Handling
 
 Use General Instruction Handling for an authorized Wes, Jenny, or Josh instruction that does not match a specialized routing branch. This is a priority branch for every run when an instruction intent is present.
@@ -323,7 +325,7 @@ Activation:
 For each routed email:
 
 - preserve the exact mailbox identity, Outlook message id and web link when available, attachment names/metadata, sender/recipient metadata, subject, timestamps, and routing evidence in Email Monitor compact state, the Teams rolling log, and the authoritative central message record as applicable; do not append routine outcomes to the historical Git routing log;
-- when the connector or local mailbox path can safely retrieve attachments, save invoice attachments outside Git in the Invoice Entry Teams source/working archive location required by Invoice Entry's current rules and reference those external paths;
+- when the connector or local mailbox path can safely retrieve attachments, save invoice attachments outside Git in the Invoice Entry Teams source/working archive location required by Invoice Entry's current rules, verify the Teams copy, and reference that durable external path; a local-only attachment is a routing blocker;
 - if an apparent invoice attachment cannot be retrieved, preserve the Outlook link and exact attachment-access blocker;
 - include the Outlook reference, external path if any, summary, and status in the central handoff; do not edit Invoice Entry's Git-tracked source inventory or work-status file during routine routing;
 - record the routed Outlook message id in Email Monitor compact state so the same source is not routed repeatedly;
@@ -495,6 +497,7 @@ Require every direct delivery handoff to contain all of these fields:
 - `subject`;
 - `plain_text_body`;
 - `absolute_attachment_paths`, explicitly an empty list when there are no attachments;
+- `durable_attachment_locations`, listing the verified Teams/SharePoint path or link for every required attachment, or explicitly an empty list when there are no attachments;
 - `attachment_required_status`, identifying whether attachments are required and which paths are mandatory;
 - `workflow_specific_restrictions`;
 - `callback_task_thread_id` for the result.
@@ -530,7 +533,8 @@ For each accepted package:
 - prefer the Outlook Email connector shared/delegated mailbox send action with Sent Items saving enabled;
 - pass To, CC, and BCC as structured recipient objects;
 - pass the caller's subject and body as plain-text values without rewriting them;
-- validate every attachment path and pass attachments as a list of absolute local paths;
+- validate every attachment's durable Teams/SharePoint location and its absolute local path on the executing computer before sending, then pass attachments as a list of absolute local paths;
+- do not accept a required attachment whose only verified location is another computer's local drive; keep the request unresolved until the durable Teams/SharePoint copy is available to the executing computer;
 - never silently omit a required attachment;
 - when required attachments cannot be sent through the connector because of size or transport limits, preserve the package as unresolved unless the shared `email-delivery` skill can use a verified OfficeAssist-capable fallback; do not replace required attachments with links, reduced files, split emails, or a no-attachment message without explicit authorization from the requesting workflow or Wes;
 - make only the schema-correct retry documented in `email-delivery`, and only when the first connector error clearly explains the correction;
