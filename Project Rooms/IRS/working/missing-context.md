@@ -6,7 +6,7 @@
 | Which tax year should be addressed first? | missing | Confirm current priority, open extensions, notices, and overdue filings. |
 | Who prepares each return? | missing | Record CPA, enrolled agent, payroll provider, internal owner, and review responsibilities. |
 | Where are authoritative tax documents stored? | prior-return source identified; review pending | Wes confirmed all prior returns are in Teams; the supplied screenshot shows `Office Admin > 2024 > CPA`. Other year paths and locations of supporting tax records remain to be verified. Record only minimal references in Git. |
-| Which QuickBooks file belongs to each entity? | missing | Confirm exact company and accounting period; do not infer from similar names. |
+| Which QuickBooks file belongs to each entity? | access route identified; mapping pending | Wes confirmed QuickBooks access through the Quickbooks Invoice PR. Coordinate with that owning PR under the current delegation contract to establish exact company and accounting-period mappings and supported report access; do not infer from similar names. |
 | What filings and jurisdictions apply? | missing | Verify from prior filings, registrations, professional advice, and current official requirements. |
 | Are books reconciled and closed for each period? | missing | Identify bank, credit-card, loan, payroll, fixed-asset, intercompany, and equity reconciliation gaps. |
 | What extensions, notices, elections, carryforwards, and estimated payments exist? | missing | Require authoritative evidence. |
