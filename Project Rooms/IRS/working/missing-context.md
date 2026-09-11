@@ -11,3 +11,7 @@
 | Are books reconciled and closed for each period? | missing | Identify bank, credit-card, loan, payroll, fixed-asset, intercompany, and equity reconciliation gaps. |
 | What extensions, notices, elections, carryforwards, and estimated payments exist? | missing | Require authoritative evidence. |
 
+
+## Inventory Follow-Up - 2026-09-11
+
+Source locations have now been indexed in [[source-path-index]]. Five Corp roots, CPA folders for 2019-2026, and the Property source tree have searchable metadata. The earlier rows describe unresolved factual questions, not a need for Wes to resupply those locations. Use [[source-review-tracker]] for coverage limits, authority checks, and remaining QuickBooks access/report mapping. Taxpayer completeness, tax classifications, filing status, bookkeeping readiness, and priority tax year remain unverified.

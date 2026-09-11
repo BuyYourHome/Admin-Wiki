@@ -19,3 +19,6 @@
 Wes confirmed that the entity list and entity information are in Teams. All Teams folders whose names start with `Corp` provide the documentation about the entities. Use these folders as the starting source for the master entity inventory and entity-document review before asking Wes to supply entity information again.
 
 The source location is confirmed by Wes; individual folder paths, document contents, and tax-year completeness have not yet been reviewed. Record minimal secure references here and keep sensitive entity and tax documents outside Git. The Admin wiki working repository remains `C:\Codex\Wiki Files`.
+## Searchable Path Inventory - 2026-09-11
+
+Start with [[source-path-index]] for exact-path lookup instructions, [[entity-source-index]], [[cpa-source-index]], and [[property-source-index]]. Review status is tracked in [[source-review-tracker]]. Detailed metadata is stored outside Git at the private catalog path in the guide. Source-location rows above retain the original intake history; the new indexes record the subsequent metadata inventory. Contents and filing evidence remain unreviewed.
