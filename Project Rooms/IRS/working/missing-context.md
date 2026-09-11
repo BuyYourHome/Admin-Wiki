@@ -2,7 +2,7 @@
 
 | Question | Status | Notes |
 | --- | --- | --- |
-| What is the complete entity and taxpayer list? | missing | Include active, inactive, dissolved, disregarded, retirement-plan, trust, individual, and property-related reporting units when applicable. |
+| What is the complete entity and taxpayer list? | source identified; review pending | Wes confirmed on 2026-09-11 that Teams folders whose names start with `Corp` contain the entity list, entity information, and entity documentation. Review those folders first; confirm coverage of all applicable taxpayers and reporting units from the records. See [[source-inventory]]. |
 | Which tax year should be addressed first? | missing | Confirm current priority, open extensions, notices, and overdue filings. |
 | Who prepares each return? | missing | Record CPA, enrolled agent, payroll provider, internal owner, and review responsibilities. |
 | Where are authoritative tax documents stored? | missing | Use secure storage; record only minimal references in Git. |

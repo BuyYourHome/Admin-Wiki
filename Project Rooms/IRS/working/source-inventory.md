@@ -12,3 +12,9 @@
 | Payroll and information-return records | External tax source | missing | Identify providers, quarters, Forms 941/940/W-2/W-3/1099 and applicable state filings. |
 | Tax notices, extensions, elections, and acceptance confirmations | Secure tax source | missing | Needed to establish authoritative status and carryforwards. |
 
+
+## Entity Documentation Source - Wes Instruction, 2026-09-11
+
+Wes confirmed that the entity list and entity information are in Teams. All Teams folders whose names start with `Corp` provide the documentation about the entities. Use these folders as the starting source for the master entity inventory and entity-document review before asking Wes to supply entity information again.
+
+The source location is confirmed by Wes; individual folder paths, document contents, and tax-year completeness have not yet been reviewed. Record minimal secure references here and keep sensitive entity and tax documents outside Git. The Admin wiki working repository remains `C:\Codex\Wiki Files`.
