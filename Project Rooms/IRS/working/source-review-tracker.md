@@ -17,3 +17,20 @@ Snapshot: 2026-09-11. Statuses: located, metadata indexed, contents reviewed, au
 | Local sync completeness | unresolved | Property and CPA descendants enumerated locally after SharePoint throttling; recheck source availability/current version before relying on contents. |
 
 For later substantive source review, add source key, review date, exact supported finding, and remaining issue. Do not mark filed, accepted, paid, or closed based on filenames or this inventory.
+
+## Substantive Review - 2026-09-12
+
+See [[../outputs/2025-return-checklist-and-gaps|2025 return checklist and gaps]] for source keys, scope limits, supported findings and questions. This supersedes the earlier metadata-only status for the selected records below.
+
+| Sources | Review | Remaining issue |
+| --- | --- | --- |
+| T08000, T08001 | BYH 2024 return schedules and IRS S-election acceptance examined; letter visually verified. | 2025 filing evidence and basis reconciliation. |
+| T08006 | SYH 2024 return and retirement-account K-1 ownership examined. | 2025 custodian, allocation and income review. |
+| T08003 | Joint 2024 return and selected carryforward/basis schedules examined. | Resolve basis worksheet differences before carryforward. |
+| T08099 | Providence 2025 initial/final return and K-1s examined; initial/final boxes visually verified. | Acceptance, actual closure and loan/loss treatment. |
+| T08104-T08106 | BYH NC extension cover/voucher and 2025 BS/P&L examined. | Federal/state extension and payment proof; unresolved ledger categories. |
+| T07958, T08109, T08111 | Plan adoption first page visually examined and 2025 accounting reports reviewed. | Full plan document, account/entity mapping, valuation and related-party loan review. |
+| E00038, E00031, E00149, E00103 | Selected OA text examined. | Executed status, conflicting text, 2025 effective ownership/custodian evidence. |
+| T08107-T08108, T08110, T08113-T08116 | Located accounting workbooks. | Contents and ledger reconciliation not yet completed. |
+
+No 2025 return marked accepted or paid. No full property or workbook reconciliation completed.

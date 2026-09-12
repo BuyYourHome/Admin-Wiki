@@ -90,3 +90,7 @@ PR Messaging: Follow `C:\Codex\Wiki Files\Project Room Messaging Rule.md`. The c
 4. Inventory secure source locations and identify missing documents without copying sensitive records into Git.
 5. Produce the first entity-by-entity gap report and CPA request list.
 
+
+## Current 2025 Deliverable
+
+[[outputs/2025-return-checklist-and-gaps|2025 return checklist and open questions]] records the first substantive review, selected source evidence, expected and conditional forms, remaining work and focused questions. Use [[working/tax-filing-status]] for filing evidence status.

@@ -15,3 +15,7 @@
 ## Inventory Follow-Up - 2026-09-11
 
 Source locations have now been indexed in [[source-path-index]]. Five Corp roots, CPA folders for 2019-2026, and the Property source tree have searchable metadata. The earlier rows describe unresolved factual questions, not a need for Wes to resupply those locations. Use [[source-review-tracker]] for coverage limits, authority checks, and remaining QuickBooks access/report mapping. Taxpayer completeness, tax classifications, and filing evidence remain to be verified. Wes subsequently confirmed 2025 as the priority year and reported the books reconciled and closed; see [[2025-preparation-instructions]].
+
+## Source-Based Questions - 2026-09-12
+
+The current entity checklist and eight focused questions are in [[../outputs/2025-return-checklist-and-gaps]]. Prior-return and 2025 report contents have now been selectively reviewed. Prioritize extension evidence, Providence initial/final-return status, executed 2025 ownership, related-party bookkeeping, plan records and basis carryforwards. Located Teams sources should be retrieved before asking Wes to resend documents.
