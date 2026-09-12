@@ -600,6 +600,12 @@ Invoice Entry may temporarily use local copies only when needed for processing, 
 
 Do not leave source packets, routed emails, attachments, generated PDFs, workbook copies, or other operational source artifacts under `Project Rooms\Invoice Entry\sources` unless Wes explicitly approves a specific file as durable repo source material.
 
+## Minimum Safe Progress
+
+When a requested final action is blocked or requires separate approval, continue through every safe, authorized preparatory step. Validate and reconcile the source, complete duplicate checks, resolve all supported project and accounting facts, prepare drafts or packets, identify the exact destination, route permitted handoffs, preserve evidence, and report the specific remaining gate. Do not stop merely because a later approval, filing, workbook posting, QuickBooks save, payment, email delivery, overwrite, or ambiguous external action is prohibited.
+
+If Invoice Entry remains responsible for the final requested outcome after another PR performs a child action, use `route-and-monitor` under the Project Room Delegation Contract. Persist the waiting state and next authorized action, then resume when the linked result returns. Ask Wes only for the exact decision that cannot be resolved from authoritative sources. Never interpret minimum progress as permission to guess mappings, bypass approval, repeat an ambiguous action, or perform another PR's work.
+
 ## Completion
 
 - Record insertion decisions, duplicate findings, and unresolved questions in the project room.

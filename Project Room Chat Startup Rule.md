@@ -81,8 +81,8 @@ Before routing:
 2. Confirm whether the destination PR has a known task/thread id.
 3. Assign a stable `dispatch_id` in this format: `jean-dispatch-YYYYMMDD-<short-topic>-vN`.
 4. Decide whether the handoff is:
-   - `route-and-return`: Jean sends the handoff and reports that the destination PR owns the work.
-   - `route-and-monitor`: Jean sends the handoff and watches for a completion or blocker response because Wes asked Jean to monitor.
+   - `route-and-return`: the destination PR owns the final requested outcome and the source has no remaining integration, verification, or reporting obligation.
+   - `route-and-monitor`: the source PR remains responsible for the final outcome, so it persists its waiting state and resumes automatically from the destination's correlated result. This is the default whenever the source still owns a later step; Wes does not need to ask separately.
    - `multi-pr-bundle`: Jean splits the request into clearly scoped handoffs for more than one PR.
 5. Do not create a new task, rename a task, move a PR, edit another PR's skill, or change automation settings unless Wes explicitly authorizes that exact action.
 
@@ -97,6 +97,10 @@ Requested action:
 Authorizing Wes instruction:
 Source paths or message ids:
 Output expected:
+Completion owner:
+Parent message or dispatch id:
+Resume condition:
+Next authorized source action:
 Files or systems that must not be touched:
 Email/Teams/connector authority, if any:
 Return instruction:
@@ -140,6 +144,16 @@ Return one of these statuses to Jean or Wes:
 - `routed onward with approval`: Wes explicitly authorized routing to another PR or system.
 
 If a PR uses `working\work-status.md`, update it for substantial routed work. Do not create or update work-status files merely for quiet checks or trivial questions. Jean's dispatcher action log remains the authoritative record of whether a handoff was sent, acknowledged, completed, blocked, or awaiting Wes; a destination work-status file never grants ownership to another chat.
+
+### Route-And-Monitor Resume
+
+When the source PR remains the completion owner:
+
+1. Before ending its current turn, record the parent dispatch id, child message id, destination identity, expected return, resume condition, and next authorized action in its durable current-work state.
+2. The destination completes its own central lifecycle and creates one linked `result` message back to the source PR's registered task under the Project Room Messaging Rule.
+3. The source accepts the result message, verifies its link and payload hash, reconciles any external-action evidence, and continues the remaining authorized workflow without asking Wes to repeat authorization.
+4. If the result is `Blocked` or `Needs Wes`, ask only for the exact unresolved decision. When that decision is supplied, resume the recorded workflow automatically.
+5. Do not treat `accepted`, a handoff, a progress report, or a destination-side `Completed` state as completion of the source-owned workflow when an integration, delivery, filing, posting, verification, or final report still remains.
 
 ## Chat Creation Rule
 

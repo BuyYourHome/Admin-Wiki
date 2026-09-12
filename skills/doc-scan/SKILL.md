@@ -529,6 +529,12 @@ Match insurance rows using:
 
 If an insurance worksheet does not exist yet, do not substitute another worksheet. Capture the insurance details in the scan log and final summary, and flag that register update is pending.
 
+## Minimum Safe Progress
+
+When a requested final action is blocked or requires separate approval, continue through every safe, authorized preparatory step. Inspect and reconcile sources, perform duplicate checks, extract and classify supported facts, prepare the structured packet, identify the exact destination, route permitted handoffs, preserve evidence, and report the specific remaining gate. Do not stop merely because a later filing, posting, payment, overwrite, external contact, or uncertain-routing action is prohibited.
+
+If Doc Scan remains responsible for the final requested outcome after another PR performs a child action, use `route-and-monitor` under the Project Room Delegation Contract. Persist the waiting state and next authorized action, then resume when the linked result returns. Ask Wes only for the exact decision that cannot be resolved from authoritative sources.
+
 ## Safety
 
 - Never delete source scans.

@@ -152,6 +152,10 @@ At the end of a run, preserve durable evidence, archive or remove generated work
 - Push only when Wes explicitly asks or the deliverable is already defined as final.
 - The wiki-managed skill is the source of truth. Sync it to `%USERPROFILE%\.codex\skills\invoice-entry` only after the source is correct and ready for use.
 
+## Minimum Safe Progress
+
+Continue through every safe, authorized preparatory step before stopping at a genuine approval, mapping, duplicate-risk, filing, workbook-posting, QuickBooks-save, payment, email-delivery, overwrite, or ambiguity gate. Prepare and route permitted packets, preserve evidence, and identify the exact remaining decision rather than stopping early. When Invoice Entry still owns the final requested outcome after a handoff, use the Delegation Contract's durable `route-and-monitor` return path and resume automatically from the linked result.
+
 ## Start PR Pointer
 
 Before durable work, follow `C:\Codex\Wiki Files\Project Room Chat Startup Rule.md`. Work on `main` unless Wes explicitly asks for another branch.

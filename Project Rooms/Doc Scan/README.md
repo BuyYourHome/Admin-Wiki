@@ -53,6 +53,10 @@ The project room's defined scan modes are maintained in [[doc-scan-modes]]. Trea
 Use this project room for development and design work. Do not change live scan routing, automation schedule, archive behavior, or skill behavior without updating the authoritative SOP/spec/map and the registry together.
 
 Preserve source scans. Never delete source scan files as part of this workflow.
+
+## Minimum Safe Progress
+
+Continue through every safe, authorized preparatory step before stopping at a genuine approval, ambiguity, filing, posting, payment, overwrite, external-contact, or destination gate. Prepare and route the structured packet, preserve evidence, and identify the exact remaining decision rather than stopping early. When Doc Scan still owns the final requested outcome after a handoff, use the Delegation Contract's durable `route-and-monitor` return path and resume automatically from the linked result.
 ## Start PR Pointer
 
 Before durable work, follow Start PR in `C:\Codex\Wiki Files\Project Room Chat Startup Rule.md`.

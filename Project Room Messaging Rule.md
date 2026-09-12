@@ -68,6 +68,15 @@ To avoid a circular readiness gate, Create PR may place one destination in `vali
 - `result`: a final return.
 - `improvement`: a failure, workaround, unclear ownership, missing rule, or repeated problem that needs correction.
 
+## Monitored Completion Returns
+
+- When a source PR remains the completion owner after delegating a child action, the source records a durable waiting state and the destination returns its terminal outcome through exactly one immutable `result` message.
+- Set the result record's `parent_message_id` to the child request message id. Preserve the originating dispatch id when the manager permits the same immutable correlation; otherwise use a unique return dispatch id that includes or references the parent dispatch id in the payload.
+- Address the result to the source PR's exact registered task and machine. The source manifest must accept `result`; a missing registration, non-dispatchable source, or unsupported message type is an infrastructure blocker.
+- The result payload should contain the destination final state, concise result, evidence references, exact blocker or decision when any, and whether a business or external action occurred. Do not copy source documents, secrets, full email bodies, or unrelated history into the return.
+- The normal dispatcher delivers the result record. The receiving source verifies the link, identity, payload hash, and destination's terminal central state before resuming. A result wake-up carries outcome evidence, not fresh authority and not permission to repeat an ambiguous or completed external action.
+- Deduplicate monitored returns by result message id, parent message id, dispatch correlation, and payload hash. Never create repeated return records merely because a wake-up was delayed or ambiguous.
+
 ## Security And Privacy
 
 - The host share must require authenticated Windows access, SMB encryption, NTFS restrictions, and a Private-profile firewall rule scoped to the approved subnet.

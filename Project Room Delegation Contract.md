@@ -62,6 +62,17 @@ If any condition fails, the receiving PR must return `blocked` or `needs Wes` tr
 6. A send timeout or busy destination is `Delivery Ambiguous`, not proof of delivery. Reconcile the durable record and destination history before retrying. Retry the same immutable dispatch only when the destination is idle, the ID is absent, and the bounded attempt limit permits it.
 7. Jean reports the returned result to Wes. A missing receipt is unresolved; Jean must not assume the work started or complete it locally. When the owning workflow requires email escalation, send and verify that notice independently of task-message delivery.
 
+## Completion Ownership And Route-And-Monitor
+
+- Choose the completion owner before sending a handoff. The completion owner is the PR that remains responsible for the final outcome Wes requested, including integrating a returned result, completing remaining authorized steps, and reporting the verified outcome.
+- Use `route-and-return` only when the destination PR owns the final requested outcome and the source PR has no remaining integration, verification, or reporting obligation.
+- Use `route-and-monitor` whenever the source PR remains the completion owner. Wes does not need to request monitoring separately.
+- Before the source PR suspends for a destination result, it must preserve a durable waiting state containing the parent dispatch id, child message id, destination PR and task, expected return, resume condition, and next authorized source action. Waiting for a genuine external result is not `Needs Wes` and must not ask Wes to type `go`, `continue`, or `finish`.
+- The destination writes the child message's final central state. When the source remains the completion owner, the destination must also create exactly one immutable `result` message addressed to the source PR's registered task, linked through `parent_message_id` and carrying the original dispatch id or an unambiguous correlated return id. The result payload contains only the outcome, evidence references, remaining blocker or decision, and whether any external action occurred.
+- The result message uses the normal central queue and machine-local dispatcher. It is a wake-up signal for the source PR, not new authorization and not permission to repeat a completed or ambiguous external action.
+- On receipt, the source PR verifies the linked message identity and payload hash, reconciles the destination's final state, resumes the recorded next authorized action, and closes or updates the parent workflow. A status question or context compaction does not cancel this responsibility.
+- If the source has no dispatchable registered task, the destination cannot create a safe automatic return. Record that exact infrastructure blocker rather than treating a manual user wake-up as the normal design.
+
 ## Durable Queue Standard
 
 - Shared queue: `\\WES-VIDEOEDITOR\BYH-PRMessaging$\records`.
