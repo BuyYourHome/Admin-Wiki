@@ -51,6 +51,15 @@ Use this repo when formulating solutions for office-admin workflows, SOPs, autom
 - Proceed only after an explicit action instruction such as `proceed`, `implement`, `do it`, `make the change`, `run it`, `start`, or another clear instruction to act.
 - If Wes says to write or implement one specific rule, keep the work limited to that rule and do not expand into related process changes unless he separately authorizes them.
 
+## Persistent Authorization And Completion Rule
+
+- Once Wes authorizes a workflow, continue through all required steps until the requested outcome is completed and verified, Wes explicitly stops or pauses the work, or a concrete blocker requires his input.
+- Authorization persists across turns, status questions, corrections, handoffs, and context compaction.
+- Resolving a blocker automatically resumes the remaining authorized work.
+- Do not end a turn merely with a plan, acknowledgment, handoff, or partial completion while an actionable step remains.
+- Do not ask Wes to repeat `go`, `continue`, or `finish`.
+- Keep the continuing work within the originally authorized scope. This rule does not bypass an explicit safety gate, required action-time confirmation, permission boundary, or new decision that the governing workflow reserves for Wes.
+
 ## Skill Ownership Boundary Rule
 
 - When working from a process-specific chat, write only that process's own skill source unless Wes explicitly authorizes editing another skill.
