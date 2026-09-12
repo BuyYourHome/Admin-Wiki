@@ -5,6 +5,10 @@ description: Use for Buy Your Home invoice-entry work after Doc Scan prepares a 
 
 # Invoice Entry
 
+## Mandatory Teams Retention
+
+Read `C:\Codex\Wiki Files\Project Rooms\Invoice Entry\Teams Retention Rule.md` before operational intake, status updates, recordkeeping, or Git work. It controls retention throughout this skill: transaction records, logs, current status, registers, validation evidence, and operational packets belong in Teams, not Git. Older references to repository `working` operational filenames resolve to the Teams equivalents defined there; they are not instructions to update or commit those repository files. The wiki retains reusable rules, schemas, templates, scripts, generic lessons, and static Teams-location pointers only. Read legacy records for duplicate safety until verified migration; never treat a missing Teams ledger as empty history.
+
 ## Messaging Readiness
 
 - Status: Pending messaging registration - not dispatchable.
@@ -575,14 +579,12 @@ At the end of every Invoice Entry run, clean up the generated working files crea
 Required end-of-run steps:
 
 1. Preserve the authoritative source material in Teams, SharePoint, the routed email source, the filed project document, or the active project workbook as applicable.
-2. Preserve durable process records in Markdown logs, packet summaries, source inventories, held-detail registers, and action logs.
+2. Preserve durable process records in Teams Markdown logs, packet summaries, source inventories, held-detail registers, and action logs under the Teams Retention Rule; never in Git.
 3. Do not keep generated workbook backups, temporary workbook downloads, rendered page previews, generated invoice PDFs, PDF render images, machine handoff packets, packet experiments, or statement working folders in the Admin wiki Git repo merely to show how work was performed.
-4. If generated working artifacts need temporary retention, move them to:
-   `C:\Users\wesbr\Buy Your Home\Buy Your Home - Office Admin\Scanned Files\Invoice Entry Working Archive`
+4. If generated working artifacts need retention, archive them in the connector-verified Teams Invoice Entry Working Archive defined by the Teams Retention Rule, not a hardcoded Windows user profile.
 5. Preserve the same relative folder structure when moving generated working artifacts to the Teams archive.
 6. Verify the Teams copy by file count and byte total before removing the local working copy.
-7. Record the Teams archive location in:
-   `C:\Codex\Wiki Files\Project Rooms\Invoice Entry\working\teams-working-archive-map.md`
+7. Record transaction-specific archive locations in the Teams `teams-working-archive-map.md`; repository pointers contain only static location instructions.
 8. After successful verification and mapping, remove the local generated working files from `Project Rooms\Invoice Entry\working\`.
 9. If the run cannot safely determine whether a file is durable source material, generated output, or needed evidence, leave it in place and record the decision needed instead of deleting it.
 
@@ -590,9 +592,9 @@ An Invoice Entry job is not complete until its generated working files have eith
 
 ## Source Packet And Email Retention Rule
 
-Invoice Entry source material is not durable Admin wiki repo content.
+Invoice Entry source material and transaction-specific operational records are not durable Admin wiki repo content. Follow `Project Rooms\Invoice Entry\Teams Retention Rule.md` for the authoritative locations, legacy migration, and precedence over older paths in this skill.
 
-The Admin wiki repo should keep rules, SOP pointers, packet schemas, source inventories, action logs, archive maps, held-detail registers, review notes, and handoff records. It should not keep routed email source files, operational packet JSON/Markdown files, source attachments, generated invoice drafts, machine handoff files, or final filed project documents.
+The Admin wiki repo keeps reusable rules, SOP pointers, schemas, templates, scripts, generic process lessons, and static Teams-location pointers only. Source inventories, action logs, transaction archive maps, held-detail registers, review decisions, current status, packet summaries, and processing histories belong in Teams alongside the operational evidence. Do not commit them merely because they are Markdown, JSON, or described as durable records. Central dispatch records remain under the established messaging protocol.
 
 Source material should live in Teams, SharePoint, routed mailbox evidence, property folders, Office Admin folders, or the Invoice Entry Teams Working Archive.
 
@@ -608,10 +610,10 @@ If Invoice Entry remains responsible for the final requested outcome after anoth
 
 ## Completion
 
-- Record insertion decisions, duplicate findings, and unresolved questions in the project room.
-- Update `working\work-status.md` after every substantive run. Keep only current work, pending decisions, verified non-repeatable actions, blockers, and next permitted actions there; leave detailed chronology in packet and processing logs.
-- Capture new reusable lessons in the project-room rules or a relevant workflow rule before completion.
-- Commit durable wiki/skill changes when made.
+- Record insertion decisions, duplicate findings, and unresolved questions in Teams operational records.
+- Update the Teams `work-status.md` after every substantive run; preserve current work, pending decisions, verified non-repeatable actions, blockers, and next permitted actions there. Keep chronology in Teams packet and processing logs, not repository copies.
+- Capture genuinely reusable lessons without transaction-specific facts in the project-room rules when warranted.
+- Routine operational completion requires no Git commit. Commit only scoped reusable wiki/skill changes; never include operational records in a policy commit.
 - Do not push Git changes unless Wes says the work is finished, explicitly asks for a push, or the task defines the deliverable as final.
 ## Start PR Pointer
 

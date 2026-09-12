@@ -17,6 +17,8 @@ Invoice Entry does not redesign workbook templates, approve or pay invoices, mon
 
 ## Canonical Operating Sources
 
+Read [[Teams Retention Rule]] first. It controls storage: operational names below refer to their Teams `Operational Records` equivalents, not writable repository ledgers. Repository copies are read-only legacy evidence until verified migration. This README and the skill remain reusable wiki policy; operational status and history do not.
+
 - Detailed workflow rules: `C:\Codex\Wiki Files\skills\invoice-entry\SKILL.md`
 - Authoritative current work: `working\work-status.md`
 - Packet structure: `working\invoice-packet-schema.md`
@@ -29,13 +31,13 @@ Invoice Entry does not redesign workbook templates, approve or pay invoices, mon
 - Working archive locations: `working\teams-working-archive-map.md`
 - Reusable lessons: `working\iteration-lessons.md`
 
-Do not duplicate the full skill rules in this README. The skill controls workflow behavior; `work-status.md` controls what is currently open. Historical packet and processing logs preserve evidence but do not override a later governing rule or current status.
+Do not duplicate the full skill rules in this README. The skill controls workflow behavior; Teams `work-status.md` controls what is currently open. Historical packet and processing logs preserve evidence but do not override a later governing rule or current status. Follow [[Teams Retention Rule]] for exact record locations and safe read-through of older wiki records.
 
 ## Required Startup
 
 1. Confirm the working folder is exactly `C:\Codex\Wiki Files`.
 2. Read the installed Invoice Entry skill and this README.
-3. Read `working\work-status.md` before processing a handoff or opening a workbook.
+3. Read the Teams `work-status.md` before processing a handoff or opening a workbook, reconciling legacy evidence under [[Teams Retention Rule]] when migration is incomplete.
 4. Read the packet, source references, and detailed processing log for the specific item.
 5. If records conflict, stop and reconcile the authoritative source before repeating an external action.
 6. Use SharePoint/Teams as the source of truth for active project-management workbooks.
@@ -119,7 +121,7 @@ Email Monitor and Jean dispatches are authoritative in the central queue at `\\W
 
 ## Current State
 
-The current operational queue, verified deliveries, holds, and known stale records live only in `working\work-status.md`. Update that file after every substantive run. Do not place an active queue in this README.
+The current operational queue, verified deliveries, holds, and known stale records belong in Teams `Operational Records/work-status.md`. Update that Teams record after every substantive run. Do not maintain an active queue in this README or another Git-tracked file.
 
 Dedicated task: `01a03956-fa4f-77c1-9ab7-f709e5f1174e`.
 
@@ -127,8 +129,8 @@ Backup automation: standalone local cron job `invoice-entry-to-projects-backup-h
 
 ## Task Health
 
-- Keep detailed processing history in packet files, logs, or approved Teams locations instead of repeating it in task messages.
-- Keep `working\work-status.md` current after meaningful state changes and before a substantial run ends. It must identify the operation state, queue, blockers, delivery evidence, classified working files, and observable task-health metrics.
+- Keep detailed processing history in Teams packet files and logs instead of Git or repeated task messages.
+- Keep Teams `work-status.md` current after meaningful state changes and before a substantial run ends. It identifies the operation state, queue, blockers, delivery evidence, classified working files, and observable task-health metrics.
 - Quiet backup and health checks must not add turns to the operational Invoice Entry task. Notify it only for actionable work, a health transition, a failure, or a decision.
 - More than 150 observable turns or five observable context compactions triggers review; neither threshold causes automatic rollover.
 - The shared Windows supervisor may recommend controlled rollover only when multiple measured signals support it. It may not create or archive a task.
@@ -140,9 +142,9 @@ Shared supervisor configuration is owned by Email Monitor at `Project Rooms\Emai
 
 ## Source And Working-File Retention
 
-The Git repository retains rules, status, schemas, compact packet summaries, references, decisions, and logs. Operational source emails, attachments, generated PDFs, workbook copies, render previews, OCR files, and machine handoff artifacts belong in their authoritative mailbox, SharePoint/Teams location, project folder, or mapped Invoice Entry Working Archive.
+Follow [[Teams Retention Rule]]. Git retains reusable policy, skills, schemas, templates, scripts, generic lessons, and static location pointers only. Actual transaction status, compact packet summaries, decisions, source inventories, logs, held-detail registers, archive evidence, source files, and outputs belong in Teams/SharePoint or the authoritative mailbox. File format does not change this classification.
 
-At the end of a run, preserve durable evidence, archive or remove generated working artifacts under the detailed skill rules, and update the archive map. Do not delete uncertain evidence.
+At the end of a run, preserve and verify the Teams outcome and archive records. Do not delete uncertain evidence, migrate unrelated histories, or sweep legacy operational edits into a policy commit. Routine invoice completion does not require Git activity.
 
 ## Git And Skill Sync
 
