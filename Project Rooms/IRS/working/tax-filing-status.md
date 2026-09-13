@@ -28,7 +28,7 @@ This file records durable milestone summaries and unresolved cross-year issues. 
 | BYH | 2025 | NC CD-401S | collecting sources | T08104 package only | IRS / Wes | Verify transmission/payment. |
 | SYH | 2025 | Federal 1065 | collecting sources | T08006; T08113-T08116 located | IRS / Wes | Verify extension and ownership. |
 | SYH | 2025 | NC D-403 | collecting sources | T08006 prior pattern | IRS / Wes | Verify state status. |
-| Providence Landing Management | 2025 | Federal 1065 | unknown | T08099 prepared initial/final return | IRS / Wes | Verify acceptance and closure. |
+| Providence Landing Management | 2025 | Federal 1065 | unknown | T08099; CPA clarification supplied by Wes 2026-09-13 | IRS / Wes | Initial/final treatment confirmed; verify acceptance. |
 | Providence Landing Management | 2025 | NC D-403 | unknown | T08099 prepared return | IRS / Wes | Verify state acceptance. |
 | Heritage Management | 2025 | Federal income reporting | unknown | E00038 sole-member text | IRS / Wes | Determine inclusion with BYH. |
 | Heritage Management | 2025 | State obligations | unknown | Governing documents | IRS / Wes | Establish nexus and separate obligations. |
@@ -47,3 +47,7 @@ This file records durable milestone summaries and unresolved cross-year issues. 
 
 
 Review: 2026-09-12. No 2025 acceptance/payment established. Conditional obligations remain unknown until supported. Payroll, information returns, sales/use and local property obligations need taxpayer/jurisdiction mapping before individual rows can be completed. See [[../outputs/2025-return-checklist-and-gaps]] for source scope and urgent extension questions.
+
+## Providence Update - 2026-09-13
+
+CPA text supplied by Wes confirms initial/final treatment and equal spouse loss allocation. Filing status remains unknown because the text does not expressly confirm acceptance. Both K-1s are inputs to the joint personal return; deductible loss and related-party reconciliation remain review items. See [[../sources/2026-09-13-providence-cpa-clarification]].

@@ -17,3 +17,7 @@
 - BYH Providence loan and Providence return loss/bad-debt treatment require a matched funding/tax reconciliation.
 - Closed-books confirmation does not resolve accountant-question/unapplied-payment categories or related-party loan classification.
 - Full details and source keys: [[../outputs/2025-return-checklist-and-gaps]].
+
+## Providence Clarification - 2026-09-13
+
+The CPA text supplied by Wes confirms the 2025 initial/final treatment and equal spouse allocations, resolving the question about the return boxes. Legal dissolution, acceptance and the loan/loss reconciliation remain separate evidence checks. See [[../sources/2026-09-13-providence-cpa-clarification]].

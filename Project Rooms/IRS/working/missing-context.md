@@ -19,3 +19,7 @@ Source locations have now been indexed in [[source-path-index]]. Five Corp roots
 ## Source-Based Questions - 2026-09-12
 
 The current entity checklist and eight focused questions are in [[../outputs/2025-return-checklist-and-gaps]]. Prior-return and 2025 report contents have now been selectively reviewed. Prioritize extension evidence, Providence initial/final-return status, executed 2025 ownership, related-party bookkeeping, plan records and basis carryforwards. Located Teams sources should be retrieved before asking Wes to resend documents.
+
+## Answer Received - 2026-09-13
+
+Providence initial/final return treatment and equal spouse loss allocation are confirmed by CPA text supplied by Wes. Remove the request to explain both boxes from follow-up questions; retain acceptance and reconciliation checks. See [[../sources/2026-09-13-providence-cpa-clarification]].

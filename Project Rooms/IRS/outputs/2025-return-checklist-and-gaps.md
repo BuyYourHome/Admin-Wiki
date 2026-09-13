@@ -52,7 +52,7 @@ These are preparation checks to perform against existing Teams records first, no
 ## New Questions For Wes
 
 1. Were BYH and SYH's 2025 federal extensions filed, and where are their confirmations? Were personal and any other entity returns extended or already filed?
-2. Was Providence Landing Management's 2025 return filed and accepted, and did the entity close in 2025? Its return has both initial and final boxes checked.
+2. Initial/final treatment and equal spouse loss allocation were confirmed by the CPA text Wes supplied on 2026-09-13. Remaining evidence: federal/state acceptance and any legal dissolution records; do not ask again why both return boxes are checked. See [[../sources/2026-09-13-providence-cpa-clarification]].
 3. Are the later operating-agreement files merely updated drafts, or did Investment Services membership or SYH's retirement custodian change during 2025? Identify the executed versions/effective dates; I will retrieve the documents.
 4. Was Providence Landing LLLP ever actually formed or active, or did it remain a proposed structure?
 5. Do Heritage Management's complete 2025 transactions already appear in BYH's books, and where are Investment Services' 2025 books?
@@ -66,3 +66,7 @@ First verify near-term filing status; then resolve entity/tax-owner mapping, ana
 
 This review has not reconciled every property, analyzed the 2025 XLSX ledgers, established all state/local jurisdictions, completed any tax forms, or verified any 2025 filing acceptance/payment. No live bookkeeping changes, external messages, filing or payment were performed.
 
+
+## CPA Clarification - 2026-09-13
+
+Wes supplied CPA confirmation of Providence's initial/final 2025 returns and half the loss allocated to each spouse. This updates the earlier unresolved treatment question above. Use the two K-1s in joint-return preparation; acceptance and underlying loan/loss reconciliation remain unverified. See [[../sources/2026-09-13-providence-cpa-clarification]] for source limitations and the CPA's accountant-handoff recommendation.
