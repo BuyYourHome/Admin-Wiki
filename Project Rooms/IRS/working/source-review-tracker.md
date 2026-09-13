@@ -34,3 +34,7 @@ See [[../outputs/2025-return-checklist-and-gaps|2025 return checklist and gaps]]
 | T08107-T08108, T08110, T08113-T08116 | Located accounting workbooks. | Contents and ledger reconciliation not yet completed. |
 
 No 2025 return marked accepted or paid. No full property or workbook reconciliation completed.
+
+## Providence Legal Review - 2026-09-13
+
+E00422, E00432 and E00436 reviewed for hierarchy, member identity and conditional vesting. Management is named general partner/equity holder above LLLP; sole ownership and executed percentages not established. Two subsidiary names appear as unverified candidates. See [[../sources/2026-09-13-providence-hierarchy-review]].

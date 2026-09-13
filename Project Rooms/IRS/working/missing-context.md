@@ -27,3 +27,7 @@ Providence initial/final return treatment and equal spouse loss allocation are c
 ## Further Answers - 2026-09-13
 
 Extensions owner-confirmed; Investment Services owned by BYH with transactions in BYH books, no income and little expense; no ownership/custodian changes; PL formed and first/final filing in 2025 (exact entity clarification pending); no new accountants engaged. Still ask only for Heritage inclusion, plan administrator/documents/valuations and exact PL identity. Locate filing receipts independently. See [[2025-preparation-instructions]].
+
+## Additional Answers And Naming - 2026-09-13
+
+Wes confirms Heritage Management transactions are included in BYH books. Wes administers the solo 401(k) and will provide the complete documents. PL means the owning entity; review of E00422/E00432/E00436 supports using PL for Providence Landing Management LLC, the general partner/equity holder above Providence Landing LLLP. Exact executed ownership percentages are unverified. This resolves the earlier administrator, Heritage mapping and shorthand questions. See [[../sources/2026-09-13-providence-hierarchy-review]] for evidence and newly identified subsidiary candidates.

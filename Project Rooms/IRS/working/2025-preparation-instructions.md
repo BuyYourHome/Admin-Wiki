@@ -34,3 +34,7 @@ These are direct owner statements, distinct from independently verified filing e
 - Still unanswered: whether all Heritage Management activity is included in BYH, and retirement-plan administrator/full documents/year-end valuations.
 
 Next source work: verify extension evidence and return deadlines, extract Investment Services activity from BYH books, reconcile legal/tax owner mapping, and prepare specific bookkeeping questions. Do not request already-answered facts again or treat owner confirmation as tax-authority acceptance.
+
+## Additional Answers And Naming - 2026-09-13
+
+Wes confirms Heritage Management transactions are included in BYH books. Wes administers the solo 401(k) and will provide the complete documents. PL means the owning entity; review of E00422/E00432/E00436 supports using PL for Providence Landing Management LLC, the general partner/equity holder above Providence Landing LLLP. Exact executed ownership percentages are unverified. This resolves the earlier administrator, Heritage mapping and shorthand questions. See [[../sources/2026-09-13-providence-hierarchy-review]] for evidence and newly identified subsidiary candidates.

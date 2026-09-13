@@ -54,10 +54,10 @@ These are preparation checks to perform against existing Teams records first, no
 1. Answered by Wes 2026-09-13: extensions were filed; he reports the deadline is September 15. Locate receipts and verify each taxpayer deadline separately.
 2. Initial/final treatment and equal spouse loss allocation were confirmed by the CPA text Wes supplied on 2026-09-13. Remaining evidence: federal/state acceptance and any legal dissolution records; do not ask again why both return boxes are checked. See [[../sources/2026-09-13-providence-cpa-clarification]].
 3. Answered by Wes 2026-09-13: no 2025 ownership/custodian changes. Investment Services is owned by BYH. Reconcile signed authority against the conflicting drafts.
-4. Wes says PL was formed and its first/final filing was in 2025. Clarify whether this identifies the separate LLLP or Management LLC before resolving both rows.
-5. Investment Services transactions are in BYH books, with no income and little expense, per Wes 2026-09-13. Still unanswered: are all Heritage Management transactions included there too?
+4. Resolved naming: PL means the owning entity, mapped to Providence Landing Management LLC by the legal-source hierarchy. The separate LLLP filing status still requires source review.
+5. Investment Services transactions are in BYH books, with no income and little expense, per Wes 2026-09-13. Wes also confirms all Heritage Management transactions are included in BYH books.
 6. Please resolve the BYH accountant-question and unapplied-payment accounts and explain the Providence loan/loss treatment and retirement-related balances. I will assemble the exact entries for your bookkeeping review before any adjustment.
-7. Who administers the BYH retirement plan and handles retirement-account tax reporting, and where are the complete signed plan package and year-end valuation records?
+7. Wes administers the solo 401(k) and will make the documents available. Complete signed plan package and year-end valuations remain outstanding; administrator question resolved.
 8. Wes confirms no new accountants are engaged as of 2026-09-13. Professional reviewer remains undesignated; Codex draft preparation and Wes approval assignment continues.
 
 ## Preparation Sequence And Limits
@@ -75,3 +75,8 @@ Wes supplied CPA confirmation of Providence's initial/final 2025 returns and hal
 ## Owner Updates - 2026-09-13
 
 The entity table records the initial source review. Subsequent owner confirmation supersedes its working assumptions: Investment Services is BYH-owned and recorded in BYH books, with no income and little expense; no 2025 ownership/custodian changes reported. Extensions are owner-confirmed, not receipt-verified. PL formation and first/final filing are owner-reported, with exact entity identity still to clarify. No new accountants are engaged. See [[../working/2025-preparation-instructions]] for evidence distinctions and remaining questions.
+
+
+## Hierarchy Review And Remaining Plan Records
+
+See [[../sources/2026-09-13-providence-hierarchy-review]] for the reviewed Providence general-partner/equity hierarchy and two document-mentioned subsidiary candidates. Earlier open questions about Heritage bookkeeping, plan administrator and PL shorthand are resolved by Wes. Full solo-plan records remain forthcoming; source-level filing and ownership verification continues.

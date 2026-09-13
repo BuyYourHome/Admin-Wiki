@@ -55,3 +55,7 @@ CPA text supplied by Wes confirms initial/final treatment and equal spouse loss 
 ## Owner-Reported Status - 2026-09-13
 
 Wes confirms extensions in response to the BYH/SYH/joint-return question and reports a September 15 deadline. Underlying receipts and each taxpayer deadline remain unverified; do not mark receipt-verified extended or accepted. Investment Services is BYH-owned with activity recorded in BYH books; its separate filing requirement remains unknown pending legal/election reconciliation. PL formation and first/final filing in 2025 are owner-reported; exact LLLP versus Management identity and acceptance still need verification. See [[2025-preparation-instructions]].
+
+## Hierarchy And Plan Update - 2026-09-13
+
+PL shorthand now maps to Providence Landing Management LLC, based on Wes's owning-entity convention and legal-source hierarchy. Its first/final return statement does not resolve the separate LLLP filing. Providence Landing Real Estate LLC and Providence Landing Events LLC are document-mentioned candidates; entity existence, reporting year and jurisdiction must be established before adding required-return rows. Wes confirms Heritage activity in BYH books and that he administers the solo 401(k); plan documents are forthcoming. See [[../sources/2026-09-13-providence-hierarchy-review]].
