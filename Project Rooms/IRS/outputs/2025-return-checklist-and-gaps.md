@@ -51,14 +51,14 @@ These are preparation checks to perform against existing Teams records first, no
 
 ## New Questions For Wes
 
-1. Were BYH and SYH's 2025 federal extensions filed, and where are their confirmations? Were personal and any other entity returns extended or already filed?
+1. Answered by Wes 2026-09-13: extensions were filed; he reports the deadline is September 15. Locate receipts and verify each taxpayer deadline separately.
 2. Initial/final treatment and equal spouse loss allocation were confirmed by the CPA text Wes supplied on 2026-09-13. Remaining evidence: federal/state acceptance and any legal dissolution records; do not ask again why both return boxes are checked. See [[../sources/2026-09-13-providence-cpa-clarification]].
-3. Are the later operating-agreement files merely updated drafts, or did Investment Services membership or SYH's retirement custodian change during 2025? Identify the executed versions/effective dates; I will retrieve the documents.
-4. Was Providence Landing LLLP ever actually formed or active, or did it remain a proposed structure?
-5. Do Heritage Management's complete 2025 transactions already appear in BYH's books, and where are Investment Services' 2025 books?
+3. Answered by Wes 2026-09-13: no 2025 ownership/custodian changes. Investment Services is owned by BYH. Reconcile signed authority against the conflicting drafts.
+4. Wes says PL was formed and its first/final filing was in 2025. Clarify whether this identifies the separate LLLP or Management LLC before resolving both rows.
+5. Investment Services transactions are in BYH books, with no income and little expense, per Wes 2026-09-13. Still unanswered: are all Heritage Management transactions included there too?
 6. Please resolve the BYH accountant-question and unapplied-payment accounts and explain the Providence loan/loss treatment and retirement-related balances. I will assemble the exact entries for your bookkeeping review before any adjustment.
 7. Who administers the BYH retirement plan and handles retirement-account tax reporting, and where are the complete signed plan package and year-end valuation records?
-8. Who should review the unresolved retirement, ownership and basis tax positions before the forms are finalized? No external contact has been made.
+8. Wes confirms no new accountants are engaged as of 2026-09-13. Professional reviewer remains undesignated; Codex draft preparation and Wes approval assignment continues.
 
 ## Preparation Sequence And Limits
 
@@ -70,3 +70,8 @@ This review has not reconciled every property, analyzed the 2025 XLSX ledgers, e
 ## CPA Clarification - 2026-09-13
 
 Wes supplied CPA confirmation of Providence's initial/final 2025 returns and half the loss allocated to each spouse. This updates the earlier unresolved treatment question above. Use the two K-1s in joint-return preparation; acceptance and underlying loan/loss reconciliation remain unverified. See [[../sources/2026-09-13-providence-cpa-clarification]] for source limitations and the CPA's accountant-handoff recommendation.
+
+
+## Owner Updates - 2026-09-13
+
+The entity table records the initial source review. Subsequent owner confirmation supersedes its working assumptions: Investment Services is BYH-owned and recorded in BYH books, with no income and little expense; no 2025 ownership/custodian changes reported. Extensions are owner-confirmed, not receipt-verified. PL formation and first/final filing are owner-reported, with exact entity identity still to clarify. No new accountants are engaged. See [[../working/2025-preparation-instructions]] for evidence distinctions and remaining questions.

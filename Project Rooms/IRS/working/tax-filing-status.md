@@ -51,3 +51,7 @@ Review: 2026-09-12. No 2025 acceptance/payment established. Conditional obligati
 ## Providence Update - 2026-09-13
 
 CPA text supplied by Wes confirms initial/final treatment and equal spouse loss allocation. Filing status remains unknown because the text does not expressly confirm acceptance. Both K-1s are inputs to the joint personal return; deductible loss and related-party reconciliation remain review items. See [[../sources/2026-09-13-providence-cpa-clarification]].
+
+## Owner-Reported Status - 2026-09-13
+
+Wes confirms extensions in response to the BYH/SYH/joint-return question and reports a September 15 deadline. Underlying receipts and each taxpayer deadline remain unverified; do not mark receipt-verified extended or accepted. Investment Services is BYH-owned with activity recorded in BYH books; its separate filing requirement remains unknown pending legal/election reconciliation. PL formation and first/final filing in 2025 are owner-reported; exact LLLP versus Management identity and acceptance still need verification. See [[2025-preparation-instructions]].

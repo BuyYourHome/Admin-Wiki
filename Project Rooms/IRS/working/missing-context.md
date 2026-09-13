@@ -23,3 +23,7 @@ The current entity checklist and eight focused questions are in [[../outputs/202
 ## Answer Received - 2026-09-13
 
 Providence initial/final return treatment and equal spouse loss allocation are confirmed by CPA text supplied by Wes. Remove the request to explain both boxes from follow-up questions; retain acceptance and reconciliation checks. See [[../sources/2026-09-13-providence-cpa-clarification]].
+
+## Further Answers - 2026-09-13
+
+Extensions owner-confirmed; Investment Services owned by BYH with transactions in BYH books, no income and little expense; no ownership/custodian changes; PL formed and first/final filing in 2025 (exact entity clarification pending); no new accountants engaged. Still ask only for Heritage inclusion, plan administrator/documents/valuations and exact PL identity. Locate filing receipts independently. See [[2025-preparation-instructions]].
