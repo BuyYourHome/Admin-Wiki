@@ -79,14 +79,14 @@ Status: active and dispatchable through the registered dedicated task. OFFICEASS
 - Installer: `C:\Codex\Wiki Files\tools\sync-github\Install-SafeAdminWikiSyncTask.ps1`.
 - Runner: `C:\Codex\Wiki Files\tools\sync-github\Invoke-SafeAdminWikiSync.ps1`.
 - Principal: the machine's normal non-administrator Windows profile; on OFFICEASSIST this is `OfficeAssistLogin` with limited run level.
-- Triggers: at user logon and every 15 minutes.
+- Triggers: at `OfficeAssistLogin` logon and daily at 5:30 AM Eastern.
 - Local status: `%LOCALAPPDATA%\BuyYourHome\SyncGithub\status.json`, written atomically.
 - Codex heartbeat id: `sync-gethub-daily`; retain this compatibility id and attach it to the existing `Sync Github` task.
 - The heartbeat reads the local status file at 5:30 AM Eastern and does not execute Git.
 - Do not deploy detached Codex cron execution chats or a separate permanent `Sync Github Daily` task.
 - The 24/7 PR messaging worker uses its pinned local release and must not depend on GitHub during routine queue checks.
 
-OFFICEASSIST validation covers normal scheduled execution, dirty-worktree refusal without alteration, already-current behavior, an isolated safe fast-forward, repeated-failure suppression, limited-user execution, and persistent registered logon/repeating triggers. Verification of persistence is structural; it does not require rebooting the active office computer.
+OFFICEASSIST validation covers normal scheduled execution, dirty-worktree refusal without alteration, already-current behavior, an isolated safe fast-forward, repeated-failure suppression, limited-user execution, and persistent registered logon/daily triggers. Verification of persistence is structural; it does not require rebooting the active office computer.
 
 ## Reporting And Logging
 

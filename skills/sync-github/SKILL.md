@@ -65,7 +65,7 @@ Use when Wes asks for an immediate repository status or safe synchronization che
 
 - Windows Scheduled Task: `BuyYourHome-SyncGithub`, running as the normal non-administrator user with limited run level.
 - Installer: `C:\Codex\Wiki Files\tools\sync-github\Install-SafeAdminWikiSyncTask.ps1`.
-- Triggers: at logon and every 15 minutes.
+- Triggers: at `OfficeAssistLogin` logon and daily at 5:30 AM Eastern.
 - Runner: `C:\Codex\Wiki Files\tools\sync-github\Invoke-SafeAdminWikiSync.ps1`.
 - Status file: `%LOCALAPPDATA%\BuyYourHome\SyncGithub\status.json`.
 - Codex heartbeat id: `sync-gethub-daily`, retained for compatibility and attached to the existing Sync Github task.

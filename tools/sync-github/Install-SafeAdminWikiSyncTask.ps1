@@ -27,8 +27,7 @@ if (-not (Test-Path -LiteralPath $syncScript -PathType Leaf)) {
 $actionArguments = '-NoProfile -NonInteractive -ExecutionPolicy Bypass -File "{0}"' -f $syncScript
 $action = New-ScheduledTaskAction -Execute 'powershell.exe' -Argument $actionArguments -WorkingDirectory $repository
 $logonTrigger = New-ScheduledTaskTrigger -AtLogOn -User $identity
-$scheduleStart = (Get-Date).Date.AddMinutes(1)
-$scheduledTrigger = New-ScheduledTaskTrigger -Once -At $scheduleStart -RepetitionInterval (New-TimeSpan -Minutes 15) -RepetitionDuration (New-TimeSpan -Days 3650)
+$scheduledTrigger = New-ScheduledTaskTrigger -Daily -At '5:30 AM'
 $principal = New-ScheduledTaskPrincipal -UserId $identity -LogonType Interactive -RunLevel Limited
 $settings = New-ScheduledTaskSettingsSet -StartWhenAvailable -MultipleInstances IgnoreNew -ExecutionTimeLimit (New-TimeSpan -Minutes 10) -AllowStartIfOnBatteries -DontStopIfGoingOnBatteries
 
@@ -41,6 +40,18 @@ if ($task.Principal.UserId.Split('\\')[-1] -ne $ExpectedUser -or $task.Principal
 if ($task.Triggers.Count -ne 2) {
     throw "Scheduled-task trigger verification failed: expected 2, found $($task.Triggers.Count)"
 }
+$installedLogonTrigger = @($task.Triggers | Where-Object { $_.CimClass.CimClassName -eq 'MSFT_TaskLogonTrigger' })
+$installedDailyTrigger = @($task.Triggers | Where-Object { $_.CimClass.CimClassName -eq 'MSFT_TaskDailyTrigger' })
+if ($installedLogonTrigger.Count -ne 1 -or $installedLogonTrigger[0].UserId.Split('\\')[-1] -ne $ExpectedUser) {
+    throw 'Scheduled-task logon-trigger verification failed.'
+}
+if ($installedDailyTrigger.Count -ne 1) {
+    throw 'Scheduled-task daily-trigger verification failed.'
+}
+$dailyStart = [datetime]$installedDailyTrigger[0].StartBoundary
+if ($installedDailyTrigger[0].DaysInterval -ne 1 -or $dailyStart.Hour -ne 5 -or $dailyStart.Minute -ne 30 -or $installedDailyTrigger[0].Repetition.Interval) {
+    throw 'Scheduled-task daily-trigger verification failed.'
+}
 
 [pscustomobject]@{
     task_name = $TaskName
@@ -48,6 +59,6 @@ if ($task.Triggers.Count -ne 2) {
     principal = $task.Principal.UserId
     run_level = $task.Principal.RunLevel
     logon_trigger = $true
-    interval = $task.Triggers[1].Repetition.Interval
+    daily_start = $dailyStart.ToString('o')
     state = $task.State
 } | ConvertTo-Json

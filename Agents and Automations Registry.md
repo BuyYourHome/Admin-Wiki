@@ -35,7 +35,7 @@ Use [[Agent Unit Standard]] for the standard package behind an agent-like operat
 | IRS | Wiki-managed skill plus project room; dedicated task pending | Pending setup; not dispatchable | On demand | `skills\irs\SKILL.md`; `Project Rooms\IRS\README.md` |
 | Codex Environment | Wiki-managed skill plus project room plus dedicated chat | Draft | On demand | `skills\codex-environment\SKILL.md`; `Project Rooms\Codex Environment\README.md` |
 | Computers | Wiki-managed skill plus project room plus dedicated chat | Draft | On demand | `skills\computers\SKILL.md`; `Project Rooms\Computers\README.md` |
-| Sync Github | Wiki-managed skill plus project room, per-computer Windows safe-sync task, and status-reader heartbeat | Active; OFFICEASSIST installed and validated | Windows task at logon and every 15 minutes; Codex status check daily at 5:30 AM Eastern | `skills\sync-github\SKILL.md`; `Project Rooms\Sync Github\README.md`; Windows task `BuyYourHome-SyncGithub`; heartbeat id `sync-gethub-daily` |
+| Sync Github | Wiki-managed skill plus project room, per-computer Windows safe-sync task, and status-reader heartbeat | Active; OFFICEASSIST installed and validated | Windows task at logon and daily at 5:30 AM Eastern; Codex status check daily at 5:30 AM Eastern | `skills\sync-github\SKILL.md`; `Project Rooms\Sync Github\README.md`; Windows task `BuyYourHome-SyncGithub`; heartbeat id `sync-gethub-daily` |
 | Facebook Engagement | Wiki-managed skill plus project room plus dedicated chat | Active | On demand | `skills\facebook-engagement\SKILL.md`; `Project Rooms\Facebook Engagement\README.md` |
 | Marketplace | Wiki-managed skill plus project room plus dedicated chat plus heartbeat automation | Paused | No recurring or on-demand Marketplace activity until Wes explicitly resumes it | `skills\marketplace\SKILL.md`; `Project Rooms\Marketplace\README.md`; app automation id `marketplace-seller-response-monitor` |
 | SOPs | Wiki-managed skill plus project room | Active | On demand | `skills\sops\SKILL.md`; `Project Rooms\SOPs\README.md`; `Project Rooms\SOPs\outputs\SOP Index.md` |
@@ -787,7 +787,7 @@ Status: active and dispatchable; OFFICEASSIST Windows task installed and validat
 Purpose:
 
 - Keep `C:\Codex\Wiki Files` current with `origin/main` on every enrolled Buy Your Home computer.
-- Run Git outside the Codex sandbox at logon and every 15 minutes; apply only clean fast-forward pulls.
+- Run Git outside the Codex sandbox at logon and daily at 5:30 AM Eastern; apply only clean fast-forward pulls.
 - Write an atomic local status file for Codex to read without invoking Git.
 - Surface dirty worktrees, local-only commits, divergence, authentication failures, and per-computer enrollment gaps without overwriting local work.
 
@@ -802,7 +802,7 @@ Dedicated chat:
 
 Automation:
 
-- Windows task: `BuyYourHome-SyncGithub`, non-administrator limited run level, at logon and every 15 minutes.
+- Windows task: `BuyYourHome-SyncGithub`, non-administrator limited run level, at logon and daily at 5:30 AM Eastern.
 - Runner: `C:\Codex\Wiki Files\tools\sync-github\Invoke-SafeAdminWikiSync.ps1`.
 - Status: `%LOCALAPPDATA%\BuyYourHome\SyncGithub\status.json`.
 - Codex heartbeat id: `sync-gethub-daily`, attached to the existing machine-local `Sync Github` task.
