@@ -31,3 +31,7 @@ Extensions owner-confirmed; Investment Services owned by BYH with transactions i
 ## Additional Answers And Naming - 2026-09-13
 
 Wes confirms Heritage Management transactions are included in BYH books. Wes administers the solo 401(k) and will provide the complete documents. PL means the owning entity; review of E00422/E00432/E00436 supports using PL for Providence Landing Management LLC, the general partner/equity holder above Providence Landing LLLP. Exact executed ownership percentages are unverified. This resolves the earlier administrator, Heritage mapping and shorthand questions. See [[../sources/2026-09-13-providence-hierarchy-review]] for evidence and newly identified subsidiary candidates.
+
+## Trust Ownership Correction - 2026-09-13
+
+Wes says Browning Family Revocable Trust owns Heritage Management LLC. Current owner-confirmed mapping is trust -> Heritage, with 2025 effective date/percentage unverified. E00038 instead names BYH and must be reconciled with signed assignment/current authority. Heritage transactions being in BYH books is accounting-location evidence only; do not automatically include them on BYH's tax return. The signed 16-page trust PDF has now been visually read; revocation rights support preliminary grantor treatment, but reporting method and 2025 facts remain to verify. See [[../sources/2026-09-13-family-trust-review]].

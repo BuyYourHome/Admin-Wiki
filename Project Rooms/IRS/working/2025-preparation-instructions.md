@@ -42,3 +42,7 @@ Wes confirms Heritage Management transactions are included in BYH books. Wes adm
 ## BYH 401K LLC Assumption - 2026-09-13
 
 Wes directs a working presumption of no tax due for BYH 401K LLC, stating ownership by their solo accounts and no taxable event. Recorded as A-001 in [[2025-preparation-assumptions]]. Apply provisionally in drafts; retain known loan/activity review exceptions and separate filing-obligation checks. This is not a verified no-return-required conclusion.
+
+## Trust Ownership Correction - 2026-09-13
+
+Wes says Browning Family Revocable Trust owns Heritage Management LLC. Current owner-confirmed mapping is trust -> Heritage, with 2025 effective date/percentage unverified. E00038 instead names BYH and must be reconciled with signed assignment/current authority. Heritage transactions being in BYH books is accounting-location evidence only; do not automatically include them on BYH's tax return. The signed 16-page trust PDF has now been visually read; revocation rights support preliminary grantor treatment, but reporting method and 2025 facts remain to verify. See [[../sources/2026-09-13-family-trust-review]].

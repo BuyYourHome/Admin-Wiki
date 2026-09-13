@@ -84,3 +84,7 @@ See [[../sources/2026-09-13-providence-hierarchy-review]] for the reviewed Provi
 ## Owner-Directed Assumption A-001
 
 Wes requests zero anticipated tax due for BYH 401K LLC based on solo-account ownership and no taxable event. Use this provisionally in draft preparation, with the known loan/activity review exceptions disclosed. Separate filing obligations remain open. See [[../working/2025-preparation-assumptions]].
+
+## Trust Ownership Correction - 2026-09-13
+
+Wes says Browning Family Revocable Trust owns Heritage Management LLC. Current owner-confirmed mapping is trust -> Heritage, with 2025 effective date/percentage unverified. E00038 instead names BYH and must be reconciled with signed assignment/current authority. Heritage transactions being in BYH books is accounting-location evidence only; do not automatically include them on BYH's tax return. The signed 16-page trust PDF has now been visually read; revocation rights support preliminary grantor treatment, but reporting method and 2025 facts remain to verify. See [[../sources/2026-09-13-family-trust-review]].

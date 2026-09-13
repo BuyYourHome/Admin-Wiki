@@ -38,3 +38,7 @@ No 2025 return marked accepted or paid. No full property or workbook reconciliat
 ## Providence Legal Review - 2026-09-13
 
 E00422, E00432 and E00436 reviewed for hierarchy, member identity and conditional vesting. Management is named general partner/equity holder above LLLP; sole ownership and executed percentages not established. Two subsidiary names appear as unverified candidates. See [[../sources/2026-09-13-providence-hierarchy-review]].
+
+## Trust Ownership Correction - 2026-09-13
+
+Wes says Browning Family Revocable Trust owns Heritage Management LLC. Current owner-confirmed mapping is trust -> Heritage, with 2025 effective date/percentage unverified. E00038 instead names BYH and must be reconciled with signed assignment/current authority. Heritage transactions being in BYH books is accounting-location evidence only; do not automatically include them on BYH's tax return. The signed 16-page trust PDF has now been visually read; revocation rights support preliminary grantor treatment, but reporting method and 2025 facts remain to verify. See [[../sources/2026-09-13-family-trust-review]].

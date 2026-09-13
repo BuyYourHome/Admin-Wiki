@@ -63,3 +63,7 @@ PL shorthand now maps to Providence Landing Management LLC, based on Wes's ownin
 ## BYH 401K LLC - Provisional Tax-Due Assumption
 
 As of 2026-09-13, A-001 in [[2025-preparation-assumptions]] records Wes's requested zero-tax-due presumption. Filing status remains unresolved, including distinction between the LLC, retirement plan and participant accounts. Do not mark accepted, paid, exempt or not applicable on this basis.
+
+## Trust Ownership Correction - 2026-09-13
+
+Wes says Browning Family Revocable Trust owns Heritage Management LLC. Current owner-confirmed mapping is trust -> Heritage, with 2025 effective date/percentage unverified. E00038 instead names BYH and must be reconciled with signed assignment/current authority. Heritage transactions being in BYH books is accounting-location evidence only; do not automatically include them on BYH's tax return. The signed 16-page trust PDF has now been visually read; revocation rights support preliminary grantor treatment, but reporting method and 2025 facts remain to verify. See [[../sources/2026-09-13-family-trust-review]].

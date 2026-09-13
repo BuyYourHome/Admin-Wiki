@@ -21,3 +21,7 @@
 ## Providence Clarification - 2026-09-13
 
 The CPA text supplied by Wes confirms the 2025 initial/final treatment and equal spouse allocations, resolving the question about the return boxes. Legal dissolution, acceptance and the loan/loss reconciliation remain separate evidence checks. See [[../sources/2026-09-13-providence-cpa-clarification]].
+
+## Trust Ownership Correction - 2026-09-13
+
+Wes says Browning Family Revocable Trust owns Heritage Management LLC. Current owner-confirmed mapping is trust -> Heritage, with 2025 effective date/percentage unverified. E00038 instead names BYH and must be reconciled with signed assignment/current authority. Heritage transactions being in BYH books is accounting-location evidence only; do not automatically include them on BYH's tax return. The signed 16-page trust PDF has now been visually read; revocation rights support preliminary grantor treatment, but reporting method and 2025 facts remain to verify. See [[../sources/2026-09-13-family-trust-review]].
