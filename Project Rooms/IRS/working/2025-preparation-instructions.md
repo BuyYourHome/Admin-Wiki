@@ -38,3 +38,7 @@ Next source work: verify extension evidence and return deadlines, extract Invest
 ## Additional Answers And Naming - 2026-09-13
 
 Wes confirms Heritage Management transactions are included in BYH books. Wes administers the solo 401(k) and will provide the complete documents. PL means the owning entity; review of E00422/E00432/E00436 supports using PL for Providence Landing Management LLC, the general partner/equity holder above Providence Landing LLLP. Exact executed ownership percentages are unverified. This resolves the earlier administrator, Heritage mapping and shorthand questions. See [[../sources/2026-09-13-providence-hierarchy-review]] for evidence and newly identified subsidiary candidates.
+
+## BYH 401K LLC Assumption - 2026-09-13
+
+Wes directs a working presumption of no tax due for BYH 401K LLC, stating ownership by their solo accounts and no taxable event. Recorded as A-001 in [[2025-preparation-assumptions]]. Apply provisionally in drafts; retain known loan/activity review exceptions and separate filing-obligation checks. This is not a verified no-return-required conclusion.

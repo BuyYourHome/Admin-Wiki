@@ -59,3 +59,7 @@ Wes confirms extensions in response to the BYH/SYH/joint-return question and rep
 ## Hierarchy And Plan Update - 2026-09-13
 
 PL shorthand now maps to Providence Landing Management LLC, based on Wes's owning-entity convention and legal-source hierarchy. Its first/final return statement does not resolve the separate LLLP filing. Providence Landing Real Estate LLC and Providence Landing Events LLC are document-mentioned candidates; entity existence, reporting year and jurisdiction must be established before adding required-return rows. Wes confirms Heritage activity in BYH books and that he administers the solo 401(k); plan documents are forthcoming. See [[../sources/2026-09-13-providence-hierarchy-review]].
+
+## BYH 401K LLC - Provisional Tax-Due Assumption
+
+As of 2026-09-13, A-001 in [[2025-preparation-assumptions]] records Wes's requested zero-tax-due presumption. Filing status remains unresolved, including distinction between the LLC, retirement plan and participant accounts. Do not mark accepted, paid, exempt or not applicable on this basis.

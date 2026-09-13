@@ -80,3 +80,7 @@ The entity table records the initial source review. Subsequent owner confirmatio
 ## Hierarchy Review And Remaining Plan Records
 
 See [[../sources/2026-09-13-providence-hierarchy-review]] for the reviewed Providence general-partner/equity hierarchy and two document-mentioned subsidiary candidates. Earlier open questions about Heritage bookkeeping, plan administrator and PL shorthand are resolved by Wes. Full solo-plan records remain forthcoming; source-level filing and ownership verification continues.
+
+## Owner-Directed Assumption A-001
+
+Wes requests zero anticipated tax due for BYH 401K LLC based on solo-account ownership and no taxable event. Use this provisionally in draft preparation, with the known loan/activity review exceptions disclosed. Separate filing obligations remain open. See [[../working/2025-preparation-assumptions]].
