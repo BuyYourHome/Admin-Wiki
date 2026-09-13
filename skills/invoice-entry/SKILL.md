@@ -11,10 +11,11 @@ Read `C:\Codex\Wiki Files\Project Rooms\Invoice Entry\Teams Retention Rule.md` b
 
 ## Messaging Readiness
 
-- Status: Pending messaging registration - not dispatchable.
+- Status: Ready and dispatchable on `OFFICEASSIST`.
 - Execution machine: `OFFICEASSIST`; exact task id: `01a03956-fa4f-77c1-9ab7-f709e5f1174e`.
 - Manifest: `C:\Codex\Wiki Files\config\pr-messaging-manifests\invoice-entry.json`.
-- Hold production dispatch/intake until the Mandatory Messaging Readiness Gate passes. While `validation_ready`, accept only the manifest's exact immutable synthetic record after scheduler-originated notification, verify its hash and exact destination, and write Accepted, Processing, and Completed through the canonical manager without business actions. Do not manually discover or claim the validation from an unrelated setup turn.
+- The canonical messaging lifecycle completed at `2026-09-10T15:51:22.7830079Z` with one notification, one attempt, and `manual_intervention: false`. Dispatcher task `01a03956-fe55-7f62-9c0a-17c18f763320` uses automation `officeassist-morning-email-summary-and-instruction-monitor`.
+- Production dispatch and intake may proceed subject to all normal Invoice Entry source, duplicate, approval, filing, workbook, QuickBooks, payment, and email-delivery gates.
 - Do not claim records addressed to a retired task. Immutable records require source-owned linked correction and duplicate reconciliation.
 
 ## Source Of Truth

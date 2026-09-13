@@ -2,11 +2,12 @@
 
 ## Messaging Readiness
 
-- Status: Pending messaging registration - not dispatchable.
+- Status: Ready and dispatchable on `OFFICEASSIST`.
 - Execution machine: `OFFICEASSIST`; Windows profile: `OfficeAssistLogin`.
 - Exact task id: `01a03956-fa4f-77c1-9ab7-f709e5f1174e`.
 - Manifest: `C:\Codex\Wiki Files\config\pr-messaging-manifests\invoice-entry.json`.
-- Production intake is held until the canonical Mandatory Messaging Readiness Gate passes. Only the manifest's exact synthetic validation may run while `validation_ready`; it authorizes no business action.
+- The canonical messaging lifecycle completed at `2026-09-10T15:51:22.7830079Z` with one notification, one attempt, and `manual_intervention: false`. Dispatcher task `01a03956-fe55-7f62-9c0a-17c18f763320` uses automation `officeassist-morning-email-summary-and-instruction-monitor`.
+- Production dispatch and intake may proceed subject to Invoice Entry's normal source, duplicate, approval, filing, workbook, QuickBooks, payment, and email-delivery gates.
 - Migration evidence: `C:\Codex\Wiki Files\Project Rooms\Create PR\outputs\OFFICEASSIST Invoice Entry Messaging Migration 2026-09-10.md`.
 
 ## Purpose
