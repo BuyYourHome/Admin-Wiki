@@ -67,3 +67,9 @@ As of 2026-09-13, A-001 in [[2025-preparation-assumptions]] records Wes's reques
 ## Trust Ownership Correction - 2026-09-13
 
 Wes says Browning Family Revocable Trust owns Heritage Management LLC. Current owner-confirmed mapping is trust -> Heritage, with 2025 effective date/percentage unverified. E00038 instead names BYH and must be reconciled with signed assignment/current authority. Heritage transactions being in BYH books is accounting-location evidence only; do not automatically include them on BYH's tax return. The signed 16-page trust PDF has now been visually read; revocation rights support preliminary grantor treatment, but reporting method and 2025 facts remain to verify. See [[../sources/2026-09-13-family-trust-review]].
+
+## Heritage Initial Draft Error Resolved By Wes - 2026-09-13
+
+Wes explicitly states the initial draft is wrong and will be corrected: Heritage Management LLC is owned by Browning Family Revocable Trust. For 2025 preparation use trust -> Heritage as the owner-confirmed mapping. E00038's BYH ownership entry is an erroneous initial-draft statement, not evidence of an actual BYH-to-trust transfer. Do not keep asking Wes to choose between BYH and the trust or infer a transfer event from the draft conflict.
+
+The corrected executed governing document remains pending as supporting evidence; this task has not edited it. Trust ownership does not itself settle Heritage's tax classification or the trust's reporting method. Heritage's transactions remain located in BYH books per Wes; accounting location is distinct from tax ownership. See [[../sources/2026-09-13-family-trust-review]].
