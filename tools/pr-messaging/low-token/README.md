@@ -1,4 +1,16 @@
-# Low-token dispatcher development release 0.2.0
+# Low-token dispatcher releases
+
+## Production candidate 0.4.0
+
+Release `0.4.0` is the generalized, staged 24/7 transport worker. It discovers only exact local registrations that match one dispatchable canonical manifest, pins those destinations at staging, polls once per minute without a model call, atomically claims at most one record per tick, and queues one wake-up to the exact destination task. Empty ticks report `model_requests: 0`.
+
+Deployment is deliberately three-phase: `Stage` installs a disabled task and writes no transport owner; `StartValidation` disables the prior WES-VIDEOEDITOR assisted task, installs a machine-scoped validation owner, and permits only one exact queued synthetic; `PromoteLive` requires that synthetic's verified one-attempt Completed lifecycle before enabling general local delivery. `Rollback` removes only this release and its owned machine record while preserving journals and central records. It does not silently reactivate an older dispatcher.
+
+Machine-scoped ownership lives under `.transport-owners\<COMPUTERNAME>.json`. The canonical manager rejects legacy `StartAttempt` for records addressed to that owned machine while leaving other machines unchanged. The worker's journal and per-message/per-attempt CreateNew submission markers prevent repeat submission after restart or ambiguous CLI output. A CLI queue acknowledgment is not acceptance; the destination slot remains held until exact authoritative receipt and terminal evidence arrive.
+
+The source is ready for WES-VIDEOEDITOR staging and a fresh synthetic validation. It is not deployed by this repository change. The existing `0.3.0-assisted` QuickBooks task remains the current WES-VIDEOEDITOR runtime until that cutover.
+
+## Historical development release 0.2.0
 
 Owner: PR Messaging Dispatcher on WES-VIDEOEDITOR. Direct Wes authorization and central record `prmsg-jean-wve-lowtoken-worker-development-20260905-001` control; older WESSTUDIO-first wording is superseded for implementation ownership only.
 
@@ -6,11 +18,11 @@ Wes directly authorized the serialized-worker change and isolated restart, concu
 
 ## Deployment boundary
 
-This is a development package, not an installed recurring worker. Existing heartbeat, active claim helper, manifests, registrations, ACLs, credentials and other PRs remain unchanged. The active manager's exact closure and one-shot synthetic extensions are described below. No recurring task is registered. No production claims are enabled.
+Release `0.2.0` was a development package, not an installed recurring worker. The statements in this historical section describe that release, not `0.4.0`.
 
 ## Bounded assisted deployment 0.3.0
 
-The separately authorized `prmsg-jean-wve-assisted-worker-deployment-20260907-001` installs `Invoke-AssistedWorker.ps1` only for Quickbooks task `01a05967-9a05-7081-a62e-616b2d8e61fd` on `WES-VIDEOEDITOR`. It runs as the normal interactive `WES-VIDEOEDITOR\IRAMa` user every 60 seconds, with a per-profile singleton lock, one outstanding destination slot, canonical helper claim, pinned CLI adapter and durable local state. Manual opening of Quickbooks may be required; queue acknowledgment is never treated as recipient acceptance. The existing `pr-messaging-dispatcher-wes-videoeditor` heartbeat remains PAUSED and OFFICEASSIST is not modified. `Install-LowTokenWorker.ps1 -Install` is the only activation path; `-Uninstall` removes only this task and retains state/records.
+The separately authorized `prmsg-jean-wve-assisted-worker-deployment-20260907-001` installed `Invoke-AssistedWorker.ps1` only for Quickbooks task `01a05967-9a05-7081-a62e-616b2d8e61fd` on `WES-VIDEOEDITOR`. This remains current runtime history until release `0.4.0` cutover. Its old installer switches are superseded by `0.4.0` `Plan`, `Stage`, `StartValidation`, `PromoteLive`, and `Rollback` actions.
 
 ## September 7 one-shot authorization
 
@@ -20,16 +32,16 @@ Wes directly authorized `authorize one real synthetic worker canary` in the owni
 
 The real adapter requires that exact Pending claim and the matching flushed `submission_started` journal entry, then flushes an exclusive CreateNew `submission-once.json` before invoking the reviewed CLI. This marker is never deleted or overwritten, even after errors. Missing acknowledgment, timeout or uncertainty never authorizes a repeat. Expiry stops new claims/submissions, not read-only reconciliation. `-Action Inspect` captures the authoritative lifecycle, real CLI evidence, journal and before/after record fingerprints. Only the recipient may write Accepted/Processing/final results. A Completed transport synthetic is not production readiness or business completion.
 
-The standard fixture paths and general real-submission guard remain in place; only the pinned `CanaryConfigPath` can reach the one-shot adapter. `Live` and actual installation remain disabled. See `tests/Test-OneShotCanary.ps1` for new pure scope/expiry/journal guards and duplicate-marker tests; the normal regression and serialized suites cover the shared claim/recovery implementation. Runtime evidence stays outside Git.
+For historical release `0.2.0`, only the pinned `CanaryConfigPath` could reach the one-shot adapter and `Live` remained disabled. Release `0.4.0` supersedes that limitation only through its pinned staged configuration and machine-scoped ownership gate. Runtime evidence stays outside Git.
 
 September 7 integrity/closure revision, directly approved by Wes: the active manager now has one additive `AdministrativeCloseSuperseded` operation, restricted to the exact invalid `prmsg-invoice-entry-poyner-spruill-qb-existence-audit-20260831-001` record/hash and normal WVE dispatcher identity. It preserves Blocked state, Failed attempt and absent receipt/result, adding a distinct SupersededUndelivered disposition after verifying the exact Completed successor. No existing Send/claim/receipt operation or production dispatch policy changed. `Close-WveSupersededRecord.ps1` defaults to read-only preflight; `-Apply` performs only this approved closure with backup and changed-record verification. No general administrative-close capability is authorized.
 
 `..\Message-Integrity.ps1` is a required hash-pinned package dependency. Verification supports the two observed legacy JSON string escape encodings (PowerShell default and HTML escaping), preserving property order, numbers, dates and literal backslash text. It never rewrites stored hashes or payloads. All verification boundaries—eligibility, locked claim, recovery and slot release—use it. Existing payload creation hashing is unchanged.
 
 - `Manage-ProjectRoomMessage.Development.ps1` is a staged copy of the active manager with additive conditional claim/reconciliation operations. Every operation requires a marked fixture under the current profile's temporary directory. It cannot be used against the central share.
-- `Invoke-LowTokenWorker.ps1` runs one bounded tick. Default `Shadow` calls only the configured canonical manager's `List`; it writes only its separate profile-local health file. `Validation` and `Drain` require fixtures; `Canary` permits only the exact one-shot above; `Live` fails closed; `Paused` does no queue processing.
+- `Invoke-LowTokenWorker.ps1` runs one bounded tick. Release `0.2.0` retains its original development gates. Release `0.4.0` additionally permits canonical `Validation` and `Live` only with a matching machine-scoped owner and pinned production configuration. `Paused` does no queue processing.
 - `Invoke-CodexQueueAdapter.ps1` validates exact IDs, forbids self-notification, pins the CLI executable, and builds the constant argv message. `-DescribeOnly` is safe. General real submissions fail closed; only the exact one-shot gate above is enabled. `Process.ps1` supplies tested structured Windows argument quoting, redirected output and bounded child execution.
-- `Install-LowTokenWorker.ps1 -PlanOnly` emits a versioned, hashed installation/rollback plan. Actual installation fails closed.
+- `Install-LowTokenWorker.ps1 -Action Plan` describes the current staged release. `Stage` is non-activating; validation and live promotion are separate guarded actions.
 
 ## Atomic manager behavior
 
@@ -64,4 +76,4 @@ Use `Invoke-LowTokenWorker.ps1 -ConfigPath <profile-local-shadow-config> -Mode S
 5. Pin the reviewed adapter/release, exercise actual worker-to-recipient receipts and tool parity, then restart/login/offline behavior without production work.
 6. Only after reviewed compatibility and exclusive ownership may the active manager be replaced. If deployment requires pausing transport, obtain approval first. Live activation remains a separate decision.
 
-Integration handoffs (not performed here): Jean owns shared policy/registry cutover; Email Monitor owns removal of its embedded dispatcher and mailbox regression; Dashboard owns transport/stalled-work attention views; Create PR owns onboarding/readiness changes. WESSTUDIO Email Monitor remains paused.
+Integration ownership: Jean owns shared policy/registry cutover; Email Monitor owns removal of its embedded dispatcher and mailbox regression after OFFICEASSIST worker validation; Dashboard owns transport/stalled-work attention views; Create PR owns onboarding/readiness changes. WESSTUDIO Email Monitor remains paused.

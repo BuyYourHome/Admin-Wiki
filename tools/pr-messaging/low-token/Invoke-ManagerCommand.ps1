@@ -21,6 +21,9 @@ if($Action -ne 'List'){
         . "$PSScriptRoot\Canary.Guards.ps1"
         Assert-LtCanaryIdentity
         if($ManagerPath -cne 'C:\Codex\Wiki Files\tools\pr-messaging\Manage-ProjectRoomMessage.ps1' -or $QueuePath -cne '\\WES-VIDEOEDITOR\BYH-PRMessaging$' -or $MessageId -cne (Get-LtCanaryId)){throw 'CanaryRelayScopeMismatch'}
+    }elseif($Mode -in @('Validation','Live') -and $ManagerPath -ceq 'C:\Codex\Wiki Files\tools\pr-messaging\Manage-ProjectRoomMessage.ps1'){
+        if($ManagerPath -cne 'C:\Codex\Wiki Files\tools\pr-messaging\Manage-ProjectRoomMessage.ps1' -or $QueuePath -cne '\\WES-VIDEOEDITOR\BYH-PRMessaging$'){throw 'LiveRelayScopeMismatch'}
+        if(-not [string]::IsNullOrWhiteSpace($FixtureRoot)){throw 'LiveFixtureRootForbidden'}
     }else{
         if($ManagerPath -cne (Join-Path $PSScriptRoot 'Manage-ProjectRoomMessage.Development.ps1')){throw 'MutationRequiresStagedFixtureManager'}
         Assert-LtFixture $FixtureRoot @($QueuePath,$ClientConfigPath,$ManifestDirectory)

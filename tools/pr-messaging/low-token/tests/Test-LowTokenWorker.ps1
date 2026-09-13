@@ -4,6 +4,7 @@ $ErrorActionPreference='Stop'
 $release=Split-Path $PSScriptRoot -Parent
 . "$release\Common.ps1"
 . "$release\Process.ps1"
+. "$release\Canary.Guards.ps1"
 $manager=Join-Path $release 'Manage-ProjectRoomMessage.Development.ps1'
 $legacy=Join-Path (Split-Path $release -Parent) 'Manage-ProjectRoomMessage.ps1'
 $worker=Join-Path $release 'Invoke-LowTokenWorker.ps1'
@@ -81,7 +82,7 @@ foreach($case in @('hash','task','machine','registration','authorization','synth
             synthetic {$r.payload.synthetic_test='true'}
             budget {$r.max_attempts=2}
             terminal {$r.state='Completed'}
-            manifest-validation {$m=Read-LtJson (Join-Path $f.manifests 'test.json');$m.messaging_readiness.validation_message_id='other';Write-LtJson (Join-Path $f.manifests 'test.json') $m}
+            manifest-validation {$m=Read-LtJson (Join-Path $f.manifests 'test.json');$m.dispatchable=$false;$m.messaging_readiness.status='validation_ready';$m.messaging_readiness.validation_message_id='other';Write-LtJson (Join-Path $f.manifests 'test.json') $m}
         }
         if($case -ne 'hash'){$r.payload_hash=Get-LtPayloadHash $r};SaveRecord $f $r
         if($case -eq 'hash'){try{Claim $f|Out-Null;throw 'not rejected'}catch{Assert ($_.Exception.Message -eq 'ImmutableHashMismatch')}}else{Assert (!(Claim $f).claimed)}
@@ -91,6 +92,7 @@ foreach($case in @('hash','task','machine','registration','authorization','synth
 Check 'blank filter no fallback' {$f=Fixture;$a=ClaimArgs $f;$a.MessageId='';try{& $manager @a|Out-Null;throw 'not rejected'}catch{Assert ($_.Exception.Message -match 'MessageId|message')} ; Assert ((Record $f).attempt_count -eq 0)}
 Check 'missing exact target no fallback' {$f=Fixture;$a=ClaimArgs $f;$a.MessageId='missing-target';$r=(& $manager @a)|ConvertFrom-Json;Assert (!$r.claimed -and $r.reason -eq 'MissingTarget')}
 Check 'worker validation requires explicit filter' {$f=Fixture;$r=& $worker -ConfigPath $f.config -Mode Validation|ConvertFrom-Json;Assert ($r.error -eq 'ValidationFilterRequired')}
+Check 'ready destination permits fresh worker validation id' {$f=Fixture;$m=Read-LtJson (Join-Path $f.manifests 'test.json');$m.messaging_readiness.validation_message_id='historical-validation';Write-LtJson (Join-Path $f.manifests 'test.json') $m;$r=Tick $f;Assert ($r.claims -eq 1 -and $r.submissions -eq 1)}
 Check 'live fails closed' {$f=Fixture;$r=Tick $f Live;Assert ($r.error -eq 'LiveDisabledInDevelopmentRelease');Assert ((CountSubmissions $f) -eq 0)}
 Check 'paused makes no queue read or submission' {$f=Fixture;$r=Tick $f Paused;Assert ($r.status -eq 'Paused' -and !$r.queue_reachable -and $r.submissions -eq 0)}
 Check 'empty shadow no central change or model call' {$f=Fixture;$c=Read-LtJson $f.config;$c.manager_path=$legacy;$c.manager_sha256=(Get-FileHash $legacy).Hash;Write-LtJson $f.config $c;Remove-Item -LiteralPath (Join-Path $f.queue ('records\'+$f.id+'.json'));$r=Tick $f Shadow;Assert ($r.status -eq 'ShadowComplete' -and @($r.candidates).Count -eq 0 -and $r.claims -eq 0 -and $r.model_requests -eq 0 -and $r.submissions -eq 0)}
@@ -122,7 +124,47 @@ Check 'rollback flag cannot enable unfiltered validation' {$f=Fixture;$c=Read-Lt
 Check 'duplicate registration rejected' {$f=Fixture;$c=Read-LtJson $f.client;$c.registrations=@($c.registrations)+@($c.registrations);Write-LtJson $f.client $c;Assert ((Claim $f).reason -eq 'RegistrationMismatch')}
 Check 'unauthorized synthetic authority rejected' {$f=Fixture;$r=Record $f;$r.authorization.authorized_by='unknown';$r.payload_hash=Get-LtPayloadHash $r;SaveRecord $f $r;Assert ((Claim $f).reason -eq 'ValidationAuthorizationMissing')}
 Check 'fixture drain never claims' {$f=Fixture;$r=Tick $f Drain;Assert ($r.status -eq 'DrainComplete' -and $r.claims -eq 0 -and (Record $f).attempt_count -eq 0)}
-Check 'installer plan is bounded assisted release' {$x=& (Join-Path $release 'Install-LowTokenWorker.ps1') -PlanOnly|ConvertFrom-Json;Assert ($x.release -eq '0.3.0-assisted' -and !$x.install_performed -and !$x.schedule_registered -and $x.destination_allowlist.task_id -eq '01a05967-9a05-7081-a62e-616b2d8e61fd')}
+Check 'installer plan stages generalized production release' {$x=& (Join-Path $release 'Install-LowTokenWorker.ps1') -Action Plan|ConvertFrom-Json;Assert ($x.release -eq '0.4.0' -and !$x.stage_changes_transport -and $x.schedule -eq 'Every 60 seconds, 24/7' -and $x.validation -match 'synthetic')}
+Check 'machine-scoped live owner permits one atomic claim' {
+    $f=Fixture
+    Remove-Item -LiteralPath (Join-Path $f.queue '.transport-owner.json')
+    $ownerPath=Get-LtTransportOwnerPath $f.queue $env:COMPUTERNAME
+    Write-LtJson $ownerPath @{owner='fixture-worker';generation='g1';mode='Live';machine=$env:COMPUTERNAME;sid=[Security.Principal.WindowsIdentity]::GetCurrent().User.Value;task_id=$f.source}
+    $a=ClaimArgs $f;$a.Mode='Live'
+    $x=(& $manager @a)|ConvertFrom-Json
+    Assert ($x.claimed -and $x.may_submit -and (Record $f).attempt_count -eq 1)
+}
+Check 'machine-scoped owner blocks legacy claimer only for owned destination machine' {
+    $f=Fixture
+    Remove-Item -LiteralPath (Join-Path $f.queue '.transport-owner.json')
+    Write-LtJson (Get-LtTransportOwnerPath $f.queue $env:COMPUTERNAME) @{owner='fixture-worker';generation='g1';mode='Live';machine=$env:COMPUTERNAME;sid=[Security.Principal.WindowsIdentity]::GetCurrent().User.Value;task_id=$f.source}
+    try{& $manager -FixtureRoot $f.root -Action StartAttempt -QueuePath $f.queue -MessageId $f.id|Out-Null;throw 'not rejected'}catch{Assert ($_.Exception.Message -eq 'LegacyTransportNotOwner')}
+    Assert ((Record $f).attempt_count -eq 0)
+}
+Check 'canonical manager honors machine-scoped owner on isolated queue' {
+    $f=Fixture
+    Remove-Item -LiteralPath (Join-Path $f.queue '.transport-owner.json')
+    Write-LtJson (Get-LtTransportOwnerPath $f.queue $env:COMPUTERNAME) @{owner='fixture-worker';generation='g1';mode='Live';machine=$env:COMPUTERNAME;sid=[Security.Principal.WindowsIdentity]::GetCurrent().User.Value;task_id=$f.source}
+    try{& $legacy -Action StartAttempt -QueuePath $f.queue -MessageId $f.id|Out-Null;throw 'not rejected'}catch{Assert ($_.Exception.Message -eq 'LegacyTransportNotOwner')}
+    Assert ((Record $f).attempt_count -eq 0)
+}
+Check 'submission markers are permanent and scoped per message attempt' {
+    $root=Join-Path ([IO.Path]::GetTempPath()) ('byh-marker-'+[guid]::NewGuid().ToString('N'))
+    $one=Get-LtSubmissionMarkerPath $root 'message-one' 'attempt-one'
+    $two=Get-LtSubmissionMarkerPath $root 'message-two' 'attempt-one'
+    New-Item -ItemType Directory -Path (Split-Path -Parent $one) -Force|Out-Null
+    New-LtCanarySubmissionMarker $one @{message_id='message-one';attempt_id='attempt-one'}
+    New-LtCanarySubmissionMarker $two @{message_id='message-two';attempt_id='attempt-one'}
+    Assert ((Test-Path $one) -and (Test-Path $two) -and $one -cne $two)
+    try{New-LtCanarySubmissionMarker $one @{duplicate=$true};throw 'duplicate accepted'}catch{Assert ($_.Exception.Message -ne 'duplicate accepted')}
+}
+Check 'production destination pin requires one exact room task and machine' {
+    $d=[pscustomobject]@{project_room='One';task_id='11111111-1111-4111-8111-111111111111';machine=$env:COMPUTERNAME}
+    $cfg=[pscustomobject]@{destinations=@($d)}
+    Assert (Test-LtPinnedDestination $cfg $d)
+    foreach($field in @('project_room','task_id','machine')){$changed=$d|ConvertTo-Json|ConvertFrom-Json;$changed.$field='Other';Assert (!(Test-LtPinnedDestination $cfg $changed))}
+    $cfg.destinations=@($d,$d);Assert (!(Test-LtPinnedDestination $cfg $d))
+}
 Check 'Unicode JSON survives manager subprocess round trip' {$f=Fixture;$r=Record $f;$r.payload|Add-Member note ('Unicode '+[char]0x2014+' '+[char]0x201c+'quoted'+[char]0x201d);$r.payload_hash=Get-LtPayloadHash $r;SaveRecord $f $r;$x=Tick $f;Assert ($x.claims -eq 1 -and $x.submissions -eq 1);Assert ((Record $f).payload.note -ceq $r.payload.note)}
 Check 'journal preserves dispatch identity and submission evidence' {$f=Fixture;Tick $f|Out-Null;$j=Read-LtJson (Join-Path $f.state 'journal.json');$e=$j.entries[0];Assert ($e.dispatch_id -ceq $f.id -and $e.adapter_release -eq '0.2.0' -and $e.submission_started_at_utc -and $e.submission_completed_at_utc -and $e.submission_evidence.exit_code -eq 0 -and !$e.submission_evidence.accepted)}
 Check 'two process claimers one winner' {

@@ -6,10 +6,19 @@ function Assert-LtOwner {
         if($ClientConfigPath -cne (Join-Path $env:LOCALAPPDATA 'BuyYourHome\PRMessaging\client.json') -or $ManifestDirectory -cne 'C:\Codex\Wiki Files\config\pr-messaging-manifests'){throw 'CanaryClaimConfigurationMismatch'}
         return
     }
-    $o = Read-LtJson (Join-Path $QueuePath '.transport-owner.json')
+    $ownerPath = if($Mode -ceq 'Validation' -and (Test-Path -LiteralPath (Join-Path $QueuePath '.transport-owner.json'))){
+        Join-Path $QueuePath '.transport-owner.json'
+    } else {
+        Get-LtTransportOwnerPath $QueuePath $env:COMPUTERNAME
+    }
+    $o = Read-LtJson $ownerPath
     if ($o.owner -cne $TransportOwner -or $o.generation -cne $Generation -or $o.machine -cne $env:COMPUTERNAME -or $o.sid -cne [Security.Principal.WindowsIdentity]::GetCurrent().User.Value) { throw 'TransportOwnershipMismatch' }
     if($o.task_id -cne $ActorTaskId){throw 'TransportActorMismatch'}
-    if ($o.mode -cne 'Validation' -or $Mode -cne 'Validation' -or $o.validation_message_id -cne $MessageId) { throw 'ExclusiveValidationOwnershipRequired' }
+    if($Mode -ceq 'Validation'){
+        if ($o.mode -cne 'Validation' -or $o.validation_message_id -cne $MessageId) { throw 'ExclusiveValidationOwnershipRequired' }
+    } elseif($Mode -ceq 'Live') {
+        if($o.mode -cne 'Live'){throw 'ExclusiveLiveOwnershipRequired'}
+    } else { throw 'UnsupportedTransportMode' }
 }
 function Invoke-LtManagerOperation {
     Assert-LtId $MessageId

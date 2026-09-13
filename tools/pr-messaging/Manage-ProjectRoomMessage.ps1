@@ -280,11 +280,13 @@ Invoke-WithQueueLock {
     if ($Action -eq "Get") { $record | ConvertTo-Json -Depth 30; return }
 
     if($Action -in @('ConditionalClaim','ReconcileAttempt')){
-        # Additive exact-ID canary extension; all ordinary transport behavior stays unchanged.
+        # Atomic worker claim/reconciliation. Canary remains exact-ID; Live requires
+        # a machine-scoped exclusive ownership record on the canonical queue.
         . "$PSScriptRoot\low-token\Common.ps1"
         . "$PSScriptRoot\low-token\Canary.Guards.ps1"
         . "$PSScriptRoot\low-token\Manager.Extensions.ps1"
-        if($Mode -cne 'Canary' -or $QueuePath -cne '\\WES-VIDEOEDITOR\BYH-PRMessaging$'){throw 'CanonicalMutationRequiresExactCanary'}
+        if($Mode -ceq 'Canary' -and $QueuePath -cne '\\WES-VIDEOEDITOR\BYH-PRMessaging$'){throw 'CanonicalMutationRequiresExactCanary'}
+        if($Mode -notin @('Canary','Validation','Live') -or $QueuePath -cne '\\WES-VIDEOEDITOR\BYH-PRMessaging$'){throw 'CanonicalMutationRequiresAuthorizedWorker'}
         Invoke-LtManagerOperation | ConvertTo-Json -Depth 30
         return
     }
@@ -313,6 +315,8 @@ Invoke-WithQueueLock {
 
     switch ($Action) {
         "StartAttempt" {
+            $machineOwnerPath=Join-Path (Join-Path $QueuePath '.transport-owners') (([string]$record.destination.machine).ToUpperInvariant()+'.json')
+            if(Test-Path -LiteralPath $machineOwnerPath){throw 'LegacyTransportNotOwner'}
             if($MessageId -ceq 'prmsg-wve-serialized-worker-canary-20260907-001'){throw 'ExactCanaryReservedForAtomicWorkerClaim'}
             if ($record.state -notin @("Queued", "Delivery Ambiguous")) { throw "Cannot start delivery while state is '$($record.state)'." }
             if ([int]$record.attempt_count -ge [int]$record.max_attempts) { throw "Message reached its maximum delivery attempts." }

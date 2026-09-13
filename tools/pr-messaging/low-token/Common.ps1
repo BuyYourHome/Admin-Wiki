@@ -26,6 +26,18 @@ function Assert-LtId([string]$Id) {
 function Assert-LtUuid([string]$Id) {
     if ($Id -cnotmatch '^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$') { throw 'InvalidTaskUuid' }
 }
+function Get-LtTransportOwnerPath([string]$QueuePath,[string]$Machine=$env:COMPUTERNAME) {
+    if ([string]::IsNullOrWhiteSpace($Machine) -or $Machine -cnotmatch '^[A-Za-z0-9-]{1,63}$') { throw 'InvalidOwnerMachine' }
+    Join-Path (Join-Path $QueuePath '.transport-owners') ($Machine.ToUpperInvariant()+'.json')
+}
+function Get-LtSubmissionMarkerPath([string]$StateDirectory,[string]$MessageId,[string]$AttemptId) {
+    Assert-LtId $MessageId
+    Assert-LtId $AttemptId
+    Join-Path (Join-Path $StateDirectory 'submissions') ($MessageId+'--'+$AttemptId+'.json')
+}
+function Test-LtPinnedDestination($Config,$Destination) {
+    @($Config.destinations|Where-Object {$_.project_room -ceq $Destination.project_room -and $_.task_id -ceq $Destination.task_id -and $_.machine -ceq $Destination.machine}).Count -eq 1
+}
 function Assert-LtUnder([string]$Path,[string]$Root) {
     $p = [IO.Path]::GetFullPath($Path); $r = [IO.Path]::GetFullPath($Root).TrimEnd('\','/') + [IO.Path]::DirectorySeparatorChar
     if (!$p.StartsWith($r,[StringComparison]::OrdinalIgnoreCase)) { throw 'PathOutsideFixture' }
@@ -77,7 +89,8 @@ function Test-LtRecord($Record,$Client,$Manifests,[string]$Machine,[string]$Mode
         if ([string]::IsNullOrWhiteSpace($MessageId)) { return 'ValidationFilterRequired' }
         if (!$synthetic) { return 'NotExplicitSynthetic' }
         if ($Record.authorization.authorized_by -cne 'Wes') { return 'ValidationAuthorizationMissing' }
-        if ($m.messaging_readiness.validation_message_id -cne $MessageId) { return 'ValidationManifestMismatch' }
+        $alreadyReady = ($m.dispatchable -eq $true -and $m.messaging_readiness.status -ceq 'ready')
+        if (!$alreadyReady -and $m.messaging_readiness.validation_message_id -cne $MessageId) { return 'ValidationManifestMismatch' }
         if ([int]$Record.max_attempts -ne 1) { return 'ValidationBudgetMustBeOne' }
     }
     $exception = $synthetic -and $m.messaging_readiness.status -ceq 'validation_ready' -and $m.messaging_readiness.validation_message_id -ceq $Record.message_id

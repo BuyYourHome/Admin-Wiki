@@ -12,7 +12,7 @@ $ErrorActionPreference='Stop'
 . "$PSScriptRoot\Canary.Guards.ps1"
 $started=[DateTime]::UtcNow; $watch=[Diagnostics.Stopwatch]::StartNew()
 $lock=$null; $cfg=$null; $journal=$null
-$health=[ordered]@{schema_version=1;release='0.2.0';mode=$Mode;machine=$env:COMPUTERNAME;sid=[Security.Principal.WindowsIdentity]::GetCurrent().User.Value;started_at_utc=$started.ToString('o');status='Starting';queue_reachable=$false;claims=0;submissions=0;model_requests=0;reconciled=@();attention=@();candidates=@();next_tick_at_utc=$started.AddSeconds(60).ToString('o')}
+$health=[ordered]@{schema_version=1;release=$null;mode=$Mode;machine=$env:COMPUTERNAME;sid=[Security.Principal.WindowsIdentity]::GetCurrent().User.Value;started_at_utc=$started.ToString('o');status='Starting';queue_reachable=$false;claims=0;submissions=0;model_requests=0;reconciled=@();attention=@();candidates=@();next_tick_at_utc=$started.AddSeconds(60).ToString('o')}
 function Save-Journal {
     $script:journal | Add-Member updated_at_utc ([DateTime]::UtcNow.ToString('o')) -Force
     Write-LtJson (Join-Path $cfg.state_directory 'journal.json') $script:journal
@@ -26,14 +26,17 @@ function Invoke-CrashTestPause([string]$Point) {
     throw 'CrashTestWasNotTerminated'
 }
 function New-JournalEntry($Record,[string]$AttemptId,[string]$Phase) {
-    [pscustomobject]@{message_id=$Record.message_id;dispatch_id=$Record.dispatch_id;destination_task_id=$Record.destination.task_id;payload_hash=$Record.payload_hash;attempt_id=$AttemptId;phase=$Phase;outcome=$null;created_at_utc=[DateTime]::UtcNow.ToString('o');submission_started_at_utc=$null;submission_completed_at_utc=$null;adapter_release='0.2.0';adapter_sha256=$cfg.adapter_sha256;submission_evidence=$null}
+    [pscustomobject]@{message_id=$Record.message_id;dispatch_id=$Record.dispatch_id;destination_task_id=$Record.destination.task_id;payload_hash=$Record.payload_hash;attempt_id=$AttemptId;phase=$Phase;outcome=$null;created_at_utc=[DateTime]::UtcNow.ToString('o');submission_started_at_utc=$null;submission_completed_at_utc=$null;adapter_release=$cfg.release;adapter_sha256=$cfg.adapter_sha256;submission_evidence=$null}
 }
 function Invoke-Manager([string]$Action,[hashtable]$Extra=@{}) {
     $left=[Math]::Floor($cfg.max_tick_seconds-$watch.Elapsed.TotalSeconds)
     if ($left -le 0) { throw 'TickBudgetExhausted' }
     $argv=@('-NoProfile','-ExecutionPolicy','Bypass','-File',(Join-Path $PSScriptRoot 'Invoke-ManagerCommand.ps1'),'-ManagerPath',$cfg.manager_path,'-ExpectedManagerHash',$cfg.manager_sha256,'-Action',$Action,'-QueuePath',$cfg.queue_path)
-    if ($Mode -in @('Validation','Drain')) {
-        $argv+=@('-FixtureRoot',$cfg.fixture_root,'-TransportOwner',$cfg.owner,'-Generation',$cfg.generation,'-Mode','Validation','-ClientConfigPath',$cfg.client_path,'-ManifestDirectory',$cfg.manifest_directory,'-ActorTaskId',$cfg.dispatcher_task_id,'-ActorProjectRoom','PR Messaging Dispatcher')
+    if ($Mode -in @('Validation','Drain','Live')) {
+        $managerMode=if($Mode -ceq 'Live'){'Live'}else{'Validation'}
+        $argv+=@('-TransportOwner',$cfg.owner,'-Generation',$cfg.generation,'-Mode',$managerMode,'-ClientConfigPath',$cfg.client_path,'-ManifestDirectory',$cfg.manifest_directory,'-ActorTaskId',$cfg.dispatcher_task_id,'-ActorProjectRoom','PR Messaging Dispatcher')
+        $usesCanonicalProduction=$cfg.release -ceq '0.4.0' -and $cfg.manager_path -ceq 'C:\Codex\Wiki Files\tools\pr-messaging\Manage-ProjectRoomMessage.ps1' -and $Mode -in @('Validation','Live')
+        if(!$usesCanonicalProduction){$argv+=@('-FixtureRoot',$cfg.fixture_root)}
     }
     if($Mode -ceq 'Canary' -and $Action -ne 'List'){
         $argv+=@('-TransportOwner',$cfg.owner,'-Generation',$cfg.generation,'-Mode','Canary','-ClientConfigPath',$cfg.client_path,'-ManifestDirectory',$cfg.manifest_directory,'-ActorTaskId',$cfg.dispatcher_task_id,'-ActorProjectRoom','PR Messaging Dispatcher')
@@ -87,18 +90,23 @@ function Recover-Entry($Entry,$Record) {
 }
 try {
     $cfg=Read-LtJson $ConfigPath
-    if ($cfg.schema_version -ne 1 -or $cfg.release -cne '0.2.0') { throw 'UnsupportedConfigRelease' }
+    if ($cfg.schema_version -ne 1 -or $cfg.release -notin @('0.2.0','0.4.0')) { throw 'UnsupportedConfigRelease' }
+    $health.release=$cfg.release
     if((Get-LtPackageHash $PSScriptRoot) -cne $cfg.package_sha256){throw 'PackageReleaseMismatch'}
     if($cfg.expected_machine -cne $env:COMPUTERNAME -or $cfg.expected_sid -cne $health.sid){throw 'WorkerIdentityMismatch'}
     if ($cfg.max_tick_seconds -lt 5 -or $cfg.max_tick_seconds -gt 55 -or $cfg.queued_receipt_warning_seconds -lt 1 -or $cfg.queued_receipt_warning_seconds -gt 86400) { throw 'InvalidTimeBounds' }
     Assert-LtUuid $cfg.dispatcher_task_id
-    if($Mode -eq 'Live'){throw 'LiveDisabledInDevelopmentRelease'}
+    if($Mode -eq 'Live' -and $cfg.release -cne '0.4.0'){throw 'LiveDisabledInDevelopmentRelease'}
     if($PSBoundParameters.ContainsKey('MessageId')){Assert-LtId $MessageId}
     if($Mode -eq 'Validation' -and [string]::IsNullOrWhiteSpace($MessageId)){throw 'ValidationFilterRequired'}
     if($Mode -ceq 'Canary'){Assert-LtCanaryConfig $cfg $MessageId}
     if($Mode -in @('Validation','Drain')){
-        Assert-LtFixture $cfg.fixture_root @($cfg.queue_path,$cfg.state_directory,$cfg.client_path,$cfg.manifest_directory,$cfg.adapter_path)
-        if($cfg.adapter_kind -cne 'Fixture'){throw 'RealAdapterDisabledInDevelopmentRelease'}
+        if($cfg.release -ceq '0.4.0' -and $Mode -ceq 'Validation'){
+            if($cfg.adapter_kind -cne 'CodexQueue'){throw 'ProductionAdapterRequired'}
+        } else {
+            Assert-LtFixture $cfg.fixture_root @($cfg.queue_path,$cfg.state_directory,$cfg.client_path,$cfg.manifest_directory,$cfg.adapter_path)
+            if($cfg.adapter_kind -cne 'Fixture'){throw 'RealAdapterDisabledInDevelopmentRelease'}
+        }
         if($Mode -eq 'Validation' -and $cfg.validation_message_id -cne $MessageId){throw 'ValidationConfigMismatch'}
     } elseif($FailurePoint -ne 'None' -or $CrashTestPauseAt -ne 'None') { throw 'FailureInjectionRequiresFixture' }
     if($Mode -eq 'Shadow' -and !$cfg.fixture_root){
@@ -114,7 +122,7 @@ try {
     $client=Read-LtJson $cfg.client_path
     $manifests=@(Get-ChildItem -LiteralPath $cfg.manifest_directory -Filter '*.json' -File|ForEach-Object{Read-LtJson $_.FullName})
     $configurationHash=Get-LtConfigHash $client $manifests
-    if($Mode -in @('Validation','Drain','Canary')){
+    if($Mode -in @('Validation','Drain','Canary','Live')){
         $jp=Join-Path $cfg.state_directory 'journal.json'
         if(Test-Path -LiteralPath $jp){$journal=Read-LtJson $jp}else{$journal=[pscustomobject]@{schema_version=2;machine=$env:COMPUTERNAME;sid=$health.sid;owner=$cfg.owner;generation=$cfg.generation;created_at_utc=[DateTime]::UtcNow.ToString('o');entries=@()}}
         if($journal.schema_version -ne 2 -or $journal.machine -cne $env:COMPUTERNAME -or $journal.sid -cne $health.sid -or $journal.owner -cne $cfg.owner -or $journal.generation -cne $cfg.generation -or $null -eq $journal.entries){throw 'JournalIdentityOrSchemaMismatch'}
@@ -142,13 +150,14 @@ try {
     $scoped=@(if($MessageId){$records|Where-Object message_id -CEQ $MessageId}else{$records|Where-Object {$_.destination.machine -ceq $env:COMPUTERNAME -and $_.state -in @('Queued','Delivery Ambiguous')}})
     if($MessageId -and $scoped.Count -ne 1){$health.attention+=@{message_id=$MessageId;reason='MissingOrDuplicateTarget'}}
     foreach($r in @($scoped|Sort-Object created_at_utc,message_id)){
-        $evaluationMode=if($Mode -eq 'Validation'){'Validation'}else{'Shadow'}
+        $evaluationMode=if($Mode -eq 'Validation'){'Validation'}else{'Live'}
         $reason=Test-LtRecord $r $client $manifests $env:COMPUTERNAME $evaluationMode $MessageId $records
+        if($cfg.release -ceq '0.4.0' -and !(Test-LtPinnedDestination $cfg $r.destination)){$reason='DestinationNotPinned'}
         if($Mode -ceq 'Canary'){Assert-LtCanaryRecord $r; if($cfg.payload_hash -cne $r.payload_hash){throw 'CanaryPinnedHashMismatch'}}
         if($r.destination.task_id -ceq $cfg.dispatcher_task_id){$reason='SelfNotificationForbidden'}
         if($journal -and @($journal.entries|Where-Object {$_.phase -ne 'closed' -and $_.destination_task_id -ceq $r.destination.task_id}).Count){$reason='DestinationOutstanding'}
         $health.candidates+=@{message_id=$r.message_id;state=$r.state;reason=$reason}
-        if($Mode -notin @('Validation','Canary') -or $reason -cne 'Eligible' -or $health.claims -ge 1){continue}
+        if($Mode -notin @('Validation','Canary','Live') -or $reason -cne 'Eligible' -or $health.claims -ge 1){continue}
         if($Mode -ceq 'Canary'){Assert-LtCanaryRecord $r -ForSubmission}
         if($watch.Elapsed.TotalSeconds -gt $cfg.max_tick_seconds-20){throw 'TickBudgetExhausted'}
         if((Get-FileHash -LiteralPath $cfg.adapter_path).Hash -ine $cfg.adapter_sha256){throw 'AdapterReleaseMismatch'}
@@ -172,9 +181,11 @@ try {
         $argv=@('-NoProfile','-ExecutionPolicy','Bypass','-File',$cfg.adapter_path,'-FixtureRoot',$cfg.fixture_root,'-MessageId',$r.message_id,'-ThreadId',$r.destination.task_id,'-AttemptId',$entry.attempt_id)
         if($Mode -ceq 'Canary'){
             $argv=@('-NoProfile','-ExecutionPolicy','Bypass','-File',$cfg.adapter_path,'-CanaryConfigPath',$ConfigPath,'-MessageId',$r.message_id,'-ThreadId',$r.destination.task_id,'-DispatcherTaskId',$cfg.dispatcher_task_id,'-PayloadHash',$r.payload_hash,'-CliPath',$cfg.cli_path,'-ExpectedCliHash',$cfg.cli_sha256,'-AttemptId',$entry.attempt_id,'-TimeoutSeconds','8')
+        } elseif($Mode -ceq 'Live' -or ($Mode -ceq 'Validation' -and $cfg.release -ceq '0.4.0')) {
+            $argv=@('-NoProfile','-ExecutionPolicy','Bypass','-File',$cfg.adapter_path,'-LiveConfigPath',$ConfigPath,'-MessageId',$r.message_id,'-ThreadId',$r.destination.task_id,'-DispatcherTaskId',$cfg.dispatcher_task_id,'-PayloadHash',$r.payload_hash,'-CliPath',$cfg.cli_path,'-ExpectedCliHash',$cfg.cli_sha256,'-AttemptId',$entry.attempt_id,'-TimeoutSeconds','10')
         }
         $health.submissions++
-        $adapterBound=if($Mode -ceq 'Canary'){20}else{10}
+        $adapterBound=if($Mode -in @('Canary','Live') -or ($Mode -ceq 'Validation' -and $cfg.release -ceq '0.4.0')){20}else{10}
         $answer=Invoke-LtProcess $cfg.powershell_path $argv ([Math]::Min($adapterBound,[Math]::Max(1,[int]($cfg.max_tick_seconds-$watch.Elapsed.TotalSeconds))))
         if($Mode -ceq 'Canary'){Write-LtJson (Join-Path $cfg.state_directory 'adapter-process-result.json') $answer}
         Invoke-CrashTestPause 'AfterAdapter'

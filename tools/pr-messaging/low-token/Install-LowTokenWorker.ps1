@@ -1,26 +1,128 @@
 [CmdletBinding()]
-param([switch]$PlanOnly,[switch]$Install,[switch]$Uninstall)
+param(
+    [ValidateSet('Plan','Stage','StartValidation','PromoteLive','Rollback')]
+    [string]$Action='Plan',
+    [string]$ExpectedMachine='WES-VIDEOEDITOR',
+    [string]$DispatcherTaskId='01a05d0c-8031-7d92-9474-ab2330008ddb',
+    [string]$LegacyAutomationId='pr-messaging-dispatcher-wes-videoeditor',
+    [string]$ValidationMessageId
+)
 $ErrorActionPreference='Stop'
-$release='0.3.0-assisted';$machine='WES-VIDEOEDITOR';$dispatcher='01a05d0c-8031-7d92-9474-ab2330008ddb';$quickbooks='01a05967-9a05-7081-a62e-616b2d8e61fd'
-$root=Join-Path $env:LOCALAPPDATA "BuyYourHome\PRMessaging\low-token\releases\$release";$pkg=Join-Path $root 'low-token';$state=Join-Path $env:LOCALAPPDATA 'BuyYourHome\PRMessaging\low-token\assisted-quickbooks';$task='BYH PR Messaging Assisted Worker - Quickbooks'
-$cli='C:\Users\IRAMa\AppData\Local\OpenAI\Codex\bin\1e3e57cdf0634c02\codex.exe';$ps='C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe'
-if(@($PlanOnly,$Install,$Uninstall|Where-Object {$_}).Count -gt 1){throw 'ChooseOneAction'}
-if($Uninstall){Unregister-ScheduledTask -TaskName $task -Confirm:$false -ErrorAction SilentlyContinue;[pscustomobject]@{release=$release;status='Uninstalled';task=$task;changed_heartbeat=$false}|ConvertTo-Json;return}
-$source=$PSScriptRoot;$files=@('Common.ps1','Process.ps1','Canary.Guards.ps1','Invoke-AssistedWorker.ps1','Invoke-CodexQueueAdapter.ps1')
-$hashes=@{};foreach($f in $files){$hashes[$f]=(Get-FileHash (Join-Path $source $f)).Hash}
-$manager=Join-Path $source '..\Manage-ProjectRoomMessage.ps1';$helper=Join-Path $source '..\Claim-ProjectRoomDispatch.ps1'
-$config=[ordered]@{schema_version=1;release=$release;expected_machine=$machine;expected_sid=[Security.Principal.WindowsIdentity]::GetCurrent().User.Value;owner='assisted-wve-quickbooks-0.3.0';generation='assisted-1';dispatcher_task_id=$dispatcher;queue_path='\\WES-VIDEOEDITOR\BYH-PRMessaging$';manager_path='C:\Codex\Wiki Files\tools\pr-messaging\Manage-ProjectRoomMessage.ps1';manager_sha256=(Get-FileHash $manager).Hash;helper_path='C:\Codex\Wiki Files\tools\pr-messaging\Claim-ProjectRoomDispatch.ps1';helper_sha256=(Get-FileHash $helper).Hash;adapter_path=(Join-Path $pkg 'Invoke-CodexQueueAdapter.ps1');adapter_sha256=$hashes['Invoke-CodexQueueAdapter.ps1'];client_path=(Join-Path $env:LOCALAPPDATA 'BuyYourHome\PRMessaging\client.json');manifest_path='C:\Codex\Wiki Files\config\pr-messaging-manifests\quickbooks.json';state_directory=$state;powershell_path=$ps;cli_path=$cli;cli_sha256=(Get-FileHash $cli).Hash;allowlist=@{project_room='Quickbooks';task_id=$quickbooks;machine=$machine}}
-$plan=[ordered]@{schema_version=1;release=$release;machine=$env:COMPUTERNAME;identity=[Security.Principal.WindowsIdentity]::GetCurrent().Name;status='PlanOnly';install_performed=$false;schedule_registered=$false;task_name=$task;task_identity='InteractiveToken / current user';schedule='Every 60 seconds, indefinitely';destination_allowlist=$config.allowlist;heartbeat_preserved='pr-messaging-dispatcher-wes-videoeditor remains PAUSED';officeassist_preserved=$true;rollback='Unregister this task; retain state, journals and central records; do not resume old heartbeat';files=$hashes}
-if(!$Install){$plan|ConvertTo-Json -Depth 8;return}
-if($env:COMPUTERNAME -cne $machine -or [Security.Principal.WindowsIdentity]::GetCurrent().Name -ine 'WES-VIDEOEDITOR\IRAMa'){throw 'InstallationIdentityMismatch'}
-$hb=Join-Path $env:USERPROFILE '.codex\automations\pr-messaging-dispatcher-wes-videoeditor\automation.toml';if((Get-FileHash $hb).Hash -ine '0CA185E83670F01538B373E8DADF4DA7DA41E9BCD044A1699277EE71D9A0687C'){throw 'HeartbeatMustRemainPaused'}
-New-Item -ItemType Directory -Path $pkg,$state -Force|Out-Null
-foreach($f in $files){Copy-Item (Join-Path $source $f) (Join-Path $pkg $f) -Force}
-Copy-Item (Join-Path $source '..\Message-Integrity.ps1') (Join-Path $root 'Message-Integrity.ps1') -Force
-$config|ConvertTo-Json -Depth 12|Set-Content (Join-Path $pkg 'config.json') -Encoding UTF8
-$action=New-ScheduledTaskAction -Execute $ps -Argument "-NoProfile -ExecutionPolicy Bypass -File `"$(Join-Path $pkg 'Invoke-AssistedWorker.ps1')`" -ConfigPath `"$(Join-Path $pkg 'config.json')`""
-$trigger=New-ScheduledTaskTrigger -Once -At (Get-Date).AddMinutes(1) -RepetitionInterval (New-TimeSpan -Seconds 60) -RepetitionDuration (New-TimeSpan -Days 3650)
-$principal=New-ScheduledTaskPrincipal -UserId ([Security.Principal.WindowsIdentity]::GetCurrent().Name) -LogonType Interactive -RunLevel Limited
-$settings=New-ScheduledTaskSettingsSet -ExecutionTimeLimit (New-TimeSpan -Seconds 55) -MultipleInstances IgnoreNew -StartWhenAvailable
-Register-ScheduledTask -TaskName $task -Action $action -Trigger $trigger -Principal $principal -Settings $settings -Description 'Bounded Quickbooks-only PR messaging worker; manual Quickbooks opening may be required.' -Force|Out-Null
-[pscustomobject]@{release=$release;status='Installed';install_performed=$true;schedule_registered=$true;task_name=$task;task_state=(Get-ScheduledTask -TaskName $task).State;task_user=$principal.UserId;schedule='Every 60 seconds, indefinitely';destination_allowlist=$config.allowlist;config_path=(Join-Path $pkg 'config.json');state_directory=$state;heartbeat_hash=(Get-FileHash $hb).Hash;officeassist_unchanged=$true}|ConvertTo-Json -Depth 8
+$release='0.4.0'
+$queue='\\WES-VIDEOEDITOR\BYH-PRMessaging$'
+$task="BYH PR Messaging Worker - $ExpectedMachine"
+$root=Join-Path $env:LOCALAPPDATA "BuyYourHome\PRMessaging\low-token\releases\$release"
+$pkg=Join-Path $root 'low-token'
+$state=Join-Path $env:LOCALAPPDATA 'BuyYourHome\PRMessaging\low-token\production'
+$configPath=Join-Path $pkg 'config.json'
+$ownerPath=Join-Path (Join-Path $queue '.transport-owners') ($ExpectedMachine.ToUpperInvariant()+'.json')
+$ps='C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe'
+$legacyTask='BYH PR Messaging Assisted Worker - Quickbooks'
+$files=@('Common.ps1','Process.ps1','Canary.Guards.ps1','Invoke-LowTokenWorker.ps1','Invoke-CodexQueueAdapter.ps1','Invoke-ManagerCommand.ps1')
+
+if($Action -eq 'Plan'){
+    [ordered]@{schema_version=1;release=$release;action=$Action;machine=$ExpectedMachine;dispatcher_task_id=$DispatcherTaskId;task_name=$task;schedule='Every 60 seconds, 24/7';stage_changes_transport=$false;validation='One exact synthetic record before live promotion';exclusive_owner=$ownerPath;rollback='Remove only this worker and owner; preserve journals and central records; explicitly restore the prior dispatcher.'}|ConvertTo-Json -Depth 8
+    return
+}
+if($env:COMPUTERNAME -cne $ExpectedMachine){throw 'InstallationMachineMismatch'}
+if($DispatcherTaskId -cnotmatch '^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$'){throw 'InvalidDispatcherTaskId'}
+
+if($Action -eq 'Rollback'){
+    if(Test-Path -LiteralPath $configPath){
+        . (Join-Path $pkg 'Common.ps1')
+        $rollbackCfg=Read-LtJson $configPath
+        $journalPath=Join-Path $rollbackCfg.state_directory 'journal.json'
+        if(Test-Path -LiteralPath $journalPath){
+            $journal=Read-LtJson $journalPath
+            if(@($journal.entries|Where-Object phase -ne 'closed').Count){throw 'RollbackBlockedByOutstandingJournal'}
+        }
+        $owned=@((& $rollbackCfg.manager_path -Action List -QueuePath $queue|Out-String)|ConvertFrom-Json|Where-Object {@($_.attempts|Where-Object {$_.transport_owner -ceq $rollbackCfg.owner -and $_.outcome -eq 'Pending'}).Count})
+        if($owned.Count){throw 'RollbackBlockedByOutstandingCentralAttempt'}
+    }
+    Disable-ScheduledTask -TaskName $task -ErrorAction SilentlyContinue|Out-Null
+    Unregister-ScheduledTask -TaskName $task -Confirm:$false -ErrorAction SilentlyContinue
+    if(Test-Path -LiteralPath $ownerPath){
+        $owner=Get-Content -Raw -LiteralPath $ownerPath|ConvertFrom-Json
+        if($owner.owner -cne ('low-token-'+$ExpectedMachine.ToLowerInvariant()) -or $owner.task_id -cne $DispatcherTaskId){throw 'ForeignTransportOwnerRefused'}
+        Remove-Item -LiteralPath $ownerPath -Force
+    }
+    [pscustomobject]@{release=$release;status='RolledBack';task=$task;owner_removed=!(Test-Path -LiteralPath $ownerPath);state_preserved=$true}|ConvertTo-Json
+    return
+}
+
+if($Action -eq 'Stage'){
+    $clientPath=Join-Path $env:LOCALAPPDATA 'BuyYourHome\PRMessaging\client.json'
+    if(!(Test-Path -LiteralPath $clientPath)){throw 'ClientRegistrationMissing'}
+    $client=Get-Content -Raw -LiteralPath $clientPath|ConvertFrom-Json
+    if($client.machine -cne $ExpectedMachine){throw 'ClientMachineMismatch'}
+    $manifestDirectory='C:\Codex\Wiki Files\config\pr-messaging-manifests'
+    $manifests=@(Get-ChildItem -LiteralPath $manifestDirectory -Filter '*.json' -File|ForEach-Object{Get-Content -Raw -LiteralPath $_.FullName|ConvertFrom-Json})
+    $destinations=@()
+    foreach($reg in @($client.registrations)){
+        if($reg.task_id -ceq $DispatcherTaskId){continue}
+        $matches=@($manifests|Where-Object {$_.project_room -ceq $reg.project_room -and $_.task_id -ceq $reg.task_id -and $_.execution_machine -ceq $ExpectedMachine -and ($_.dispatchable -eq $true -or $_.messaging_readiness.status -ceq 'validation_ready')})
+        if($matches.Count -eq 1){$destinations+=@{project_room=$reg.project_room;task_id=$reg.task_id;machine=$ExpectedMachine}}
+    }
+    if(!$destinations.Count){throw 'NoDispatchableLocalDestinations'}
+    $cli=(Get-Command codex.exe -ErrorAction Stop).Source
+    New-Item -ItemType Directory -Path $pkg,$state -Force|Out-Null
+    foreach($f in $files){Copy-Item -LiteralPath (Join-Path $PSScriptRoot $f) -Destination (Join-Path $pkg $f) -Force}
+    Copy-Item -LiteralPath (Join-Path $PSScriptRoot '..\Message-Integrity.ps1') -Destination (Join-Path $root 'Message-Integrity.ps1') -Force
+    . (Join-Path $pkg 'Common.ps1')
+    $cfg=[ordered]@{schema_version=1;release=$release;expected_machine=$ExpectedMachine;expected_sid=[Security.Principal.WindowsIdentity]::GetCurrent().User.Value;owner=('low-token-'+$ExpectedMachine.ToLowerInvariant());generation=$release;dispatcher_task_id=$DispatcherTaskId;queue_path=$queue;manager_path='C:\Codex\Wiki Files\tools\pr-messaging\Manage-ProjectRoomMessage.ps1';manager_sha256=(Get-FileHash 'C:\Codex\Wiki Files\tools\pr-messaging\Manage-ProjectRoomMessage.ps1').Hash;client_path=$clientPath;manifest_directory=$manifestDirectory;state_directory=$state;powershell_path=$ps;max_tick_seconds=50;queued_receipt_warning_seconds=600;adapter_kind='CodexQueue';adapter_path=(Join-Path $pkg 'Invoke-CodexQueueAdapter.ps1');adapter_sha256=(Get-FileHash (Join-Path $pkg 'Invoke-CodexQueueAdapter.ps1')).Hash;cli_path=$cli;cli_sha256=(Get-FileHash $cli).Hash;destinations=@($destinations|Sort-Object project_room,task_id)}
+    $cfg.package_sha256=Get-LtPackageHash $pkg
+    Write-LtJson $configPath $cfg
+    $taskAction=New-ScheduledTaskAction -Execute $ps -Argument "-NoProfile -ExecutionPolicy Bypass -File `"$(Join-Path $pkg 'Invoke-LowTokenWorker.ps1')`" -ConfigPath `"$configPath`" -Mode Paused"
+    $trigger=New-ScheduledTaskTrigger -Once -At (Get-Date).AddMinutes(1) -RepetitionInterval (New-TimeSpan -Seconds 60) -RepetitionDuration (New-TimeSpan -Days 3650)
+    $principal=New-ScheduledTaskPrincipal -UserId ([Security.Principal.WindowsIdentity]::GetCurrent().Name) -LogonType Interactive -RunLevel Limited
+    $settings=New-ScheduledTaskSettingsSet -ExecutionTimeLimit (New-TimeSpan -Seconds 55) -MultipleInstances IgnoreNew -StartWhenAvailable
+    Register-ScheduledTask -TaskName $task -Action $taskAction -Trigger $trigger -Principal $principal -Settings $settings -Description '24/7 deterministic Project Room transport worker.' -Force|Out-Null
+    Disable-ScheduledTask -TaskName $task|Out-Null
+    [pscustomobject]@{release=$release;status='Staged';task=$task;task_enabled=$false;destinations=$cfg.destinations;config_path=$configPath;owner_written=$false}|ConvertTo-Json -Depth 8
+    return
+}
+
+if(!(Test-Path -LiteralPath $configPath)){throw 'StagedConfigMissing'}
+. (Join-Path $pkg 'Common.ps1')
+$cfg=Read-LtJson $configPath
+if($cfg.release -cne $release -or $cfg.expected_machine -cne $ExpectedMachine -or $cfg.dispatcher_task_id -cne $DispatcherTaskId){throw 'StagedConfigMismatch'}
+if((Get-LtPackageHash $pkg) -cne $cfg.package_sha256){throw 'StagedPackageMismatch'}
+
+if($Action -eq 'StartValidation'){
+    Assert-LtId $ValidationMessageId
+    $record=& $cfg.manager_path -Action Get -QueuePath $queue -MessageId $ValidationMessageId|ConvertFrom-Json
+    $synthetic=$record.payload.synthetic_test -is [bool] -and $record.payload.synthetic_test -eq $true -and $record.authorization.business_action_authorized -ne $true -and $record.payload.business_action_performed -ne $true
+    $pinned=@($cfg.destinations|Where-Object {$_.project_room -ceq $record.destination.project_room -and $_.task_id -ceq $record.destination.task_id -and $_.machine -ceq $ExpectedMachine})
+    if(!$synthetic -or $pinned.Count -ne 1 -or $record.destination.machine -cne $ExpectedMachine -or $record.state -cne 'Queued' -or [int]$record.attempt_count -ne 0 -or [int]$record.max_attempts -ne 1){throw 'ValidationRecordNotSafe'}
+    if(-not [string]::IsNullOrWhiteSpace($LegacyAutomationId)){
+        $legacyAutomation=Join-Path $env:USERPROFILE ('.codex\automations\'+$LegacyAutomationId+'\automation.toml')
+        if((Test-Path -LiteralPath $legacyAutomation) -and (Get-Content -Raw -LiteralPath $legacyAutomation) -notmatch '(?m)^status\s*=\s*"PAUSED"\s*$'){throw 'LegacyHeartbeatMustBePaused'}
+    }
+    $cfg|Add-Member validation_message_id $ValidationMessageId -Force
+    Write-LtJson $configPath $cfg
+    Disable-ScheduledTask -TaskName $legacyTask -ErrorAction SilentlyContinue|Out-Null
+    New-Item -ItemType Directory -Path (Split-Path -Parent $ownerPath) -Force|Out-Null
+    Write-LtJson $ownerPath @{schema_version=1;owner=$cfg.owner;generation=$cfg.generation;mode='Validation';machine=$ExpectedMachine;sid=$cfg.expected_sid;task_id=$DispatcherTaskId;validation_message_id=$ValidationMessageId;created_at_utc=[DateTime]::UtcNow.ToString('o')}
+    $taskAction=New-ScheduledTaskAction -Execute $ps -Argument "-NoProfile -ExecutionPolicy Bypass -File `"$(Join-Path $pkg 'Invoke-LowTokenWorker.ps1')`" -ConfigPath `"$configPath`" -Mode Validation -MessageId `"$ValidationMessageId`""
+    Set-ScheduledTask -TaskName $task -Action $taskAction|Out-Null
+    Enable-ScheduledTask -TaskName $task|Out-Null
+    [pscustomobject]@{release=$release;status='ValidationActive';message_id=$ValidationMessageId;task=$task;legacy_assisted_disabled=$true;production_enabled=$false}|ConvertTo-Json
+    return
+}
+
+if($Action -eq 'PromoteLive'){
+    if([string]::IsNullOrWhiteSpace([string]$cfg.validation_message_id)){throw 'ValidationIdentityMissing'}
+    $record=& $cfg.manager_path -Action Get -QueuePath $queue -MessageId $cfg.validation_message_id|ConvertFrom-Json
+    if(!(Test-LtCompleted $record) -or [int]$record.attempt_count -ne 1){throw 'ValidationLifecycleIncomplete'}
+    $currentManifests=@(Get-ChildItem -LiteralPath $cfg.manifest_directory -Filter '*.json' -File|ForEach-Object{Read-LtJson $_.FullName})
+    foreach($destination in @($cfg.destinations)){
+        $match=@($currentManifests|Where-Object {$_.project_room -ceq $destination.project_room -and $_.task_id -ceq $destination.task_id -and $_.execution_machine -ceq $ExpectedMachine -and $_.dispatchable -eq $true -and $_.messaging_readiness.status -ceq 'ready'})
+        if($match.Count -ne 1){throw ('DestinationNotReadyForLive: '+$destination.project_room)}
+    }
+    Write-LtJson $ownerPath @{schema_version=1;owner=$cfg.owner;generation=$cfg.generation;mode='Live';machine=$ExpectedMachine;sid=$cfg.expected_sid;task_id=$DispatcherTaskId;validation_message_id=$cfg.validation_message_id;promoted_at_utc=[DateTime]::UtcNow.ToString('o')}
+    $taskAction=New-ScheduledTaskAction -Execute $ps -Argument "-NoProfile -ExecutionPolicy Bypass -File `"$(Join-Path $pkg 'Invoke-LowTokenWorker.ps1')`" -ConfigPath `"$configPath`" -Mode Live"
+    Set-ScheduledTask -TaskName $task -Action $taskAction|Out-Null
+    Enable-ScheduledTask -TaskName $task|Out-Null
+    [pscustomobject]@{release=$release;status='Live';task=$task;schedule='Every 60 seconds, 24/7';destinations=$cfg.destinations;legacy_assisted_disabled=$true}|ConvertTo-Json -Depth 8
+    return
+}

@@ -1,6 +1,6 @@
 ---
 name: pr-messaging-dispatcher
-description: Run one machine-local Buy Your Home Project Room messaging dispatcher heartbeat per computer, bridging the authoritative shared queue to exact local Codex destination tasks without performing destination work.
+description: Run one machine-local Buy Your Home Project Room messaging transport per computer, using the 24/7 deterministic low-token worker where validated and a model heartbeat only as a temporary fallback.
 ---
 
 # PR Messaging Dispatcher
@@ -19,11 +19,11 @@ Provide the host-local wake-up layer for Project Room messages addressed to task
 
 ## Required Behavior
 
-1. Run every five minutes only Monday through Friday from 7:30 AM through 7:00 PM Eastern. Do not schedule overnight or weekend model turns. Records created while closed remain in the authoritative queue for the next operating window.
+1. Prefer the validated deterministic worker: poll every 60 seconds, 24/7, and start no model turn on an empty poll. Use the five-minute weekday model heartbeat only as a temporary fallback on a machine not yet migrated.
 2. Read the canonical heartbeat prompt and messaging rules at every run.
 3. Treat each scheduler invocation as a new operational run. Do not carry forward a prior one-turn diagnostic, read-only, or no-claim instruction after that earlier turn ends. Only an explicit persistent pause or disable instruction from Wes suppresses an active scheduled run.
 4. Determine the actual local computer name.
-5. Run the deterministic claim helper once through `powershell.exe -NoProfile -ExecutionPolicy Bypass -File` using an approved unrestricted/escalated shell execution under the normal Windows identity so its saved SMB credential is available. The offline sandbox intentionally cannot authenticate to the central share; sandbox `Access is denied` is not host-unavailable evidence. The helper owns queue selection, exact manifest and registration checks, bounded retry eligibility, structured skip diagnostics, local dispatcher-health output, and `StartAttempt` through the canonical manager. Do not invoke the script directly on a host whose execution policy blocks scripts.
+5. In worker mode, use the installed hash-pinned release under the normal Windows identity so its saved SMB credential and local Codex CLI are available. The worker owns queue selection, atomic claim, exact manifest and registration checks, durable journal recovery, duplicate prevention, and local health. In fallback mode, run the legacy claim helper once through `powershell.exe -NoProfile -ExecutionPolicy Bypass -File` using the approved unrestricted path.
    - Normal scheduled runs omit `-MessageId` and retain oldest-first selection.
    - When Wes explicitly limits one run to one immutable record, pass `-MessageId "<exact-message-id>"`. The helper must scope the record set before candidate selection and fail closed if that exact record is missing or ineligible. Do not carry a one-run filter into later scheduled runs.
 6. If the tool wrapper fails before PowerShell starts, retry the identical wrapper once. A pre-execution wrapper retry is not another helper run or delivery attempt. Report the exact underlying error after a second wrapper failure.
@@ -47,13 +47,14 @@ Provide the host-local wake-up layer for Project Room messages addressed to task
 
 ## Deployment
 
-- Use one task and heartbeat per computer.
+- Use one dedicated dispatcher task and one deterministic Windows worker per computer.
 - WES-VIDEOEDITOR task: `PR Messaging Dispatcher - WES-VIDEOEDITOR`, task `01a05d0c-8031-7d92-9474-ab2330008ddb`.
 - WES-VIDEOEDITOR automation id: `pr-messaging-dispatcher-wes-videoeditor`.
 - WESSTUDIO task: `PR Messaging Dispatcher - WESSTUDIO`, task `01a06337-1b59-7dc2-9586-6660eb7b5da7`.
 - WESSTUDIO automation id: `pr-messaging-dispatcher`.
-- OFFICEASSIST may use its existing Email Monitor dispatcher stage instead of a duplicate task.
-- The OFFICEASSIST dispatcher stage follows the same weekday 7:30 AM through 7:00 PM Eastern operating window even when Email Monitor continues other mailbox work later.
+- OFFICEASSIST may retain its Email Monitor dispatcher stage only until its separate worker and dispatcher task pass unattended validation. Then remove only that embedded stage.
+- Install release `0.4.0` through `tools\pr-messaging\low-token\Install-LowTokenWorker.ps1`: `Stage`, one exact synthetic `StartValidation`, and `PromoteLive` only after verified completion. `Rollback` preserves journals and central records.
+- Machine-scoped ownership must block the legacy dispatcher for only the migrated destination machine. Never activate overlapping transport owners.
 - A cross-machine Project Room is not dispatchable until an unattended remote-source lifecycle passes without manual pasting.
 - Store only a short pointer in the automation prompt requiring every run to reread `Project Rooms\PR Messaging Dispatcher\working\heartbeat-prompt.md` and `Project Room Messaging Rule.md`. Never copy the full policy into the automation prompt; copied policy becomes stale after repository updates.
 

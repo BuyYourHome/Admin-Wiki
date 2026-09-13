@@ -39,9 +39,9 @@ Out of scope:
 
 ## Status
 
-Status: `Active and unattended validation complete on WES-VIDEOEDITOR`.
+Status: `Release 0.4.0 staged in source; WES-VIDEOEDITOR production cutover pending`.
 
-The task and five-minute heartbeat are active on `WES-VIDEOEDITOR`. It delivered the exact Quickbooks synthetic lifecycle without manual activation, and the destination completed the required receipt lifecycle with no business action.
+The current WES-VIDEOEDITOR runtime remains the bounded QuickBooks-only assisted worker. Release `0.4.0` generalizes transport to every exact locally registered, dispatchable destination and adds per-machine exclusive ownership. It is not live until WES-VIDEOEDITOR stages it, completes one fresh exact synthetic lifecycle, and promotes it.
 
 The dispatcher now distinguishes a pre-PowerShell tool-wrapper failure from a helper or queue failure. It retries one pre-execution wrapper failure, records deterministic skip counts, writes machine-local health to `%LOCALAPPDATA%\BuyYourHome\PRMessaging\dispatcher-health.json`, and allows up to 120 seconds for destination startup before final delivery reconciliation.
 
@@ -59,15 +59,15 @@ The dispatcher now distinguishes a pre-PowerShell tool-wrapper failure from a he
 - WESSTUDIO automation id: `pr-messaging-dispatcher`
 - OFFICEASSIST exception: its active Email Monitor heartbeat may provide the local dispatcher stage; do not create a duplicate dispatcher heartbeat while that stage remains verified.
 
-## Schedule
+## Target Schedule
 
-- Every five minutes Monday through Friday from 7:30 AM through 7:00 PM Eastern.
-- No overnight or weekend runs. Messages remain durably queued until the next operating window.
-- Health evaluation treats the closed window as expected inactivity and uses `next_scheduled_run_at_utc` from the dispatcher health file before declaring a stale dispatcher.
-- Empty polls are strictly silent.
+- Deterministic Windows worker every 60 seconds, 24/7.
+- Empty polls start no model and consume no model tokens.
+- Only an eligible claimed record queues one wake-up to the exact destination task.
+- Legacy five-minute heartbeat schedules remain fallback-only and must be paused at machine cutover.
 - Notify Wes only for newly delivered consequential work, a new actionable blocker, or a new decision.
 
-## Automation Prompt Contract
+## Legacy Automation Prompt Contract
 
 The stored automation prompt must be a short pointer, not a copied snapshot of dispatcher policy. At every run it must read and follow the current contents of:
 

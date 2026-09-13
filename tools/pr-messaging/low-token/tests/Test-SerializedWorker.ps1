@@ -47,7 +47,10 @@ foreach($point in @('AfterPlan','AfterClaim','BeforeAdapter','AfterAdapter')) {
         $marker=Join-Path $f.state 'crash-ready.json'
         try {
             $watch=[Diagnostics.Stopwatch]::StartNew()
-            while(!(Test-Path -LiteralPath $marker) -and !$child.p.HasExited -and $watch.Elapsed.TotalSeconds -lt 20){Start-Sleep -Milliseconds 100}
+            # CI and endpoint security can add several seconds to each nested
+            # PowerShell launch. Keep this below the worker's 55-second bound
+            # but long enough to reach the post-adapter durability marker.
+            while(!(Test-Path -LiteralPath $marker) -and !$child.p.HasExited -and $watch.Elapsed.TotalSeconds -lt 40){Start-Sleep -Milliseconds 100}
             Assert (Test-Path -LiteralPath $marker) 'Crash rendezvous absent'
             $ready=Read-LtJson $marker
             Assert ($ready.pid -eq $pidUnderTest -and $ready.point -eq $point) 'Wrong process rendezvous'

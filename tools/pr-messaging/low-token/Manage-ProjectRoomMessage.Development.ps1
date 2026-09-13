@@ -37,7 +37,7 @@ param(
     [string]$ExpectedConfigHash,
     [string]$ClientConfigPath,
     [string]$ManifestDirectory,
-    [ValidateSet("Validation")][string]$Mode = "Validation",
+    [ValidateSet("Validation","Live")][string]$Mode = "Validation",
     [switch]$ForceOffline
 )
 
@@ -292,7 +292,9 @@ Invoke-WithQueueLock {
 
     switch ($Action) {
         "StartAttempt" {
-            if (Test-Path -LiteralPath (Join-Path $QueuePath ".transport-owner.json")) { throw "LegacyTransportNotOwner" }
+            $legacyOwner=Join-Path $QueuePath '.transport-owner.json'
+            $machineOwner=Get-LtTransportOwnerPath $QueuePath ([string]$record.destination.machine)
+            if ((Test-Path -LiteralPath $legacyOwner) -or (Test-Path -LiteralPath $machineOwner)) { throw "LegacyTransportNotOwner" }
             if ($record.state -notin @("Queued", "Delivery Ambiguous")) { throw "Cannot start delivery while state is '$($record.state)'." }
             if ([int]$record.attempt_count -ge [int]$record.max_attempts) { throw "Message reached its maximum delivery attempts." }
             if ([string]::IsNullOrWhiteSpace($AttemptId)) { $AttemptId = [guid]::NewGuid().ToString("N") }
