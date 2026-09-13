@@ -1,5 +1,5 @@
-window.PROJECT_ROOMS_UPDATED = '2026-09-02 18:20';
-window.PROJECT_ROOMS_HASH = 'F83CC9201F9D4BA365865685EC0D19BF81CC4F0E377C499D0061D8ADBDE90BF0';
+window.PROJECT_ROOMS_UPDATED = '2026-09-13 12:38';
+window.PROJECT_ROOMS_HASH = 'C5F965E1EF18DD94A60D327C2ABF0C23541221AE454D910AF0C8EE101A86A507';
 window.PROJECT_ROOM_GROUPS = [
     {
         "name":  "Intake \u0026 Coordination",
@@ -424,7 +424,7 @@ window.PROJECT_ROOMS = [
         "skill":  "doc-scan",
         "skillPath":  "C:\\Codex\\Wiki Files\\skills\\doc-scan\\SKILL.md",
         "skillState":  "available",
-        "taskId":  "019ecc0d-02b4-73a3-9c20-dacda5d811d0",
+        "taskId":  "01a07d59-9052-7623-a03c-f2b80b9116e0",
         "attention":  null,
         "group":  "Document Intake",
         "groupBasis":  "Receives, identifies, organizes, or maintains source documents and operating procedures before downstream processing.",
@@ -443,7 +443,7 @@ window.PROJECT_ROOMS = [
         "skill":  "email-monitor",
         "skillPath":  "C:\\Codex\\Wiki Files\\skills\\email-monitor\\SKILL.md",
         "skillState":  "available",
-        "taskId":  "01a029bf-81d2-76e1-9960-64558a57640b",
+        "taskId":  "019ecba7-f1cc-7ac1-aaf7-d89a3f21b582",
         "attention":  null,
         "group":  "Intake \u0026 Coordination",
         "groupBasis":  "Receives requests, routes work, creates Project Rooms, or provides an operating overview across workflows.",
@@ -718,6 +718,28 @@ window.PROJECT_ROOMS = [
                                  ]
     },
     {
+        "name":  "IRS",
+        "purpose":  "Identify, organize, and track everything needed to prepare and file federal, state, and local tax returns for every Buy Your Home entity and tax-reporting owner or activity in scope.",
+        "status":  "Status not recorded",
+        "skill":  "",
+        "skillPath":  "",
+        "skillState":  "not-applicable",
+        "taskId":  "",
+        "attention":  null,
+        "group":  "Other",
+        "groupBasis":  "Used when a Project Room does not yet have a supported assignment to one of the defined functional groups.",
+        "modes":  [
+                      "Inventory",
+                      "Tax Package",
+                      "Gap Review",
+                      "Filing Status"
+                  ],
+        "readmeUrl":  "../../IRS/README.md",
+        "quickActions":  [
+
+                         ]
+    },
+    {
         "name":  "Jean Wright",
         "purpose":  "This Project Room is the durable operating room for Jean Wright / Office Assistant. Use this room for rules, operating notes, source inventories, review questions, and future improvements that affect Jean\u0027s general office-assistant role across Buy Your Home admin work.",
         "status":  "Status not recorded",
@@ -920,25 +942,6 @@ window.PROJECT_ROOMS = [
                          ]
     },
     {
-        "name":  "New Project",
-        "purpose":  "Capture the project purpose once Wes defines it. - Keep sources, working notes, and review-ready outputs separated from other Admin wiki work. - Preserve source materials and track open questions before drafting final outputs.",
-        "status":  "Status not recorded",
-        "skill":  "new-project",
-        "skillPath":  "C:\\Codex\\Wiki Files\\skills\\new-project\\SKILL.md",
-        "skillState":  "available",
-        "taskId":  "",
-        "attention":  null,
-        "group":  "Real Estate Transactions",
-        "groupBasis":  "Supports property acquisition, valuation, buyer qualification, seller financing, transaction packaging, or project setup.",
-        "modes":  [
-
-                  ],
-        "readmeUrl":  "../../New%20Project/README.md",
-        "quickActions":  [
-
-                         ]
-    },
-    {
         "name":  "Operating Agreements",
         "purpose":  "Create a dedicated Project Room for operating agreements so entity governance documents, amendments, notes, and future agreement-related questions are reviewed from a clean source inventory.",
         "status":  "Status not recorded",
@@ -991,6 +994,25 @@ window.PROJECT_ROOMS = [
 
                   ],
         "readmeUrl":  "../../Project%20Management%20Spreadsheet%20Rewrite/README.md",
+        "quickActions":  [
+
+                         ]
+    },
+    {
+        "name":  "Properties",
+        "purpose":  "Create the standard folder and file package for a new Buy Your Home property project after Wes confirms the project address and template source. - Track all properties processed or queued through this workflow. - Maintain the authoritative Admin wiki index for property information found in the Teams-synced Property area, including rents, lease evidence, insurance evidence, purchase price or cost, and sales price.",
+        "status":  "Status not recorded",
+        "skill":  "properties",
+        "skillPath":  "C:\\Codex\\Wiki Files\\skills\\properties\\SKILL.md",
+        "skillState":  "available",
+        "taskId":  "",
+        "attention":  null,
+        "group":  "Real Estate Transactions",
+        "groupBasis":  "Supports property acquisition, valuation, buyer qualification, seller financing, transaction packaging, or project setup.",
+        "modes":  [
+
+                  ],
+        "readmeUrl":  "../../Properties/README.md",
         "quickActions":  [
 
                          ]
