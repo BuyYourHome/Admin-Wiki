@@ -31,14 +31,13 @@ description: Keep the Buy Your Home Admin wiki Git repository current across app
 
 This is the default scheduled workflow on each enrolled computer.
 
-1. Identify the computer and verify the canonical repo and `origin`.
-2. Run `git fetch origin` through an approved execution path that can write Git metadata, including `.git\FETCH_HEAD`.
-3. Determine whether local `main` is clean, ahead, behind, diverged, or on the wrong branch.
-4. Pull with `git pull --ff-only origin main` only when the worktree is clean and local `main` is only behind.
-5. If already current, finish quietly without file changes.
-6. If the managed Codex runner fails with `.git\FETCH_HEAD: Permission denied`, retry only through a Wes-approved unsandboxed/local execution path. If no approved unsandboxed path is available for that machine, report the automation as not viable unattended.
-7. If dirty, ahead, diverged, locked, on another branch, missing, unable to authenticate, or unable to write required Git metadata, do not alter local work. Return the exact computer-specific blocker.
-8. For a successful fast-forward, report the computer name and before/after commit ids.
+1. The non-administrator Windows Scheduled Task runs `C:\Codex\Wiki Files\tools\sync-github\Invoke-SafeAdminWikiSync.ps1` outside the Codex sandbox.
+2. The script verifies the computer, canonical repo, exact origin, `main`, and complete worktree cleanliness.
+3. It refuses dirty, ahead, or diverged state without changing history or local work.
+4. It fetches `origin main` and runs `git pull --ff-only origin main` only when clean and strictly behind.
+5. It synchronizes installed skills only after a successful fast-forward that changed the repo.
+6. It writes `%LOCALAPPDATA%\BuyYourHome\SyncGithub\status.json` atomically with result, commit ids, ahead/behind counts, blocker, and notification fingerprint.
+7. Codex reads that status file rather than executing unattended Git. Report changed blockers and fast-forwards; keep repeated unchanged states and healthy current results quiet.
 
 ### Manual Sync Check
 
@@ -64,15 +63,15 @@ Use when Wes asks for an immediate repository status or safe synchronization che
 
 ## Automation
 
-- Automation id: `sync-gethub-daily`.
-- Compatibility: retain this existing automation id across enrolled computers; the workflow, room, skill, and task use `Sync Github`.
-- Automation kind: `heartbeat`, attached to the computer's existing `Sync Github` task.
-- Schedule: daily at 5:30 AM Eastern on each enrolled computer.
-- A machine-local automation is not fully verified until one safe run proves `git fetch origin` can update `.git\FETCH_HEAD`. If the managed runner can read the repo but cannot write `.git\FETCH_HEAD`, the machine needs a Wes-approved unsandboxed/local fetch path or must remain pending for unattended daily sync.
-- Routine healthy no-change runs remain quiet.
-- Any blocker or fast-forward update should be reported with the computer identity.
-- Record only material deployment, recurring blocker, recovery, or enrollment outcomes in `working\repository-sync-action-log.md` so normal runs do not make the repo dirty.
-- Do not use a detached `cron` automation and do not create a separate permanent `Sync Github Daily` chat. Detached runs create redundant execution chats.
+- Windows Scheduled Task: `BuyYourHome-SyncGithub`, running as the normal non-administrator user with limited run level.
+- Installer: `C:\Codex\Wiki Files\tools\sync-github\Install-SafeAdminWikiSyncTask.ps1`.
+- Triggers: at logon and every 15 minutes.
+- Runner: `C:\Codex\Wiki Files\tools\sync-github\Invoke-SafeAdminWikiSync.ps1`.
+- Status file: `%LOCALAPPDATA%\BuyYourHome\SyncGithub\status.json`.
+- Codex heartbeat id: `sync-gethub-daily`, retained for compatibility and attached to the existing Sync Github task.
+- The heartbeat runs daily at 5:30 AM Eastern and reads the status file only; it does not run Git.
+- Repeated identical failures are suppressed through the status file's event fingerprint.
+- Do not use a detached Codex cron or a separate permanent `Sync Github Daily` task.
 
 ## Outputs And Delivery
 
