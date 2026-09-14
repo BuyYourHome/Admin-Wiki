@@ -2,7 +2,7 @@
 
 ## Outcome
 
-Release `0.4.0` is live on WES-VIDEOEDITOR and OFFICEASSIST after their staged validations completed. WESSTUDIO remains pending its separate machine-local cutover.
+Release `0.4.0` is live on WES-VIDEOEDITOR, OFFICEASSIST, and WESSTUDIO after their staged validations completed.
 
 ## Behavior
 
@@ -44,12 +44,20 @@ Synthetic `prmsg-wve-low-token-worker-validation-20260913-001` completed through
 
 OFFICEASSIST staged the worker under dedicated dispatcher task `01a09d84-a309-7591-a790-e770fcb53dee`, separately from Doc Scan, Email Monitor, and Invoice Entry. Synthetic `prmsg-officeassist-low-token-worker-docscan-validation-20260914-001` completed through one delivered attempt with exact Accepted, Processing, and Completed events and no business action. After Doc Scan was promoted to ready and dispatchable, OFFICEASSIST promoted owner `low-token-officeassist` to `Live`. Scheduled task `BYH PR Messaging Worker - OFFICEASSIST` now runs every 60 seconds in `Live` mode for Email Monitor, Doc Scan, and Invoice Entry. One eligible production record was delivered to Email Monitor and ended Blocked under destination rules because required delivery-package fields were missing; no email or Outlook draft was created. Two subsequent empty live ticks made zero claims, submissions, model requests, notifications, or errors. Email Monitor's embedded dispatcher stage was then removed while its existing active mailbox heartbeat, schedule, target, notification policy, and mailbox functions were preserved.
 
+## WESSTUDIO Result
+
+WESSTUDIO staged the worker under dedicated dispatcher task `01a06337-1b59-7dc2-9586-6660eb7b5da7` with Create PR and Bathroom Fixtures pinned. Initial cross-machine synthetic `prmsg-officeassist-wesstudio-low-token-worker-validation-20260914-001` wrote one attempt, but its CLI queue call timed out while Create PR was unloaded and returned no queue acknowledgment or receipt. The worker preserved it as exhausted `Delivery Ambiguous` and did not retry. Replacement cross-machine synthetic `prmsg-officeassist-wesstudio-low-token-worker-validation-20260914-002` completed through one delivered attempt to the loaded Bathroom Fixtures task with exact Accepted, Processing, and Completed events, one read-only self-task check, no business action, and `manual_intervention: false`. WESSTUDIO then promoted owner `low-token-wesstudio` to `Live`. Scheduled task `BYH PR Messaging Worker - WESSTUDIO` runs every 60 seconds, the model heartbeat remains paused, and two consecutive Live ticks made zero claims, submissions, model requests, or notifications.
+
+The exhausted ambiguous validation remains a task-specific Create PR hold because the canonical manager intentionally cannot write a destination final state without acceptance, and release `0.4.0` has no general administrative closure for this case. Do not falsify acceptance or retry the attempt. Bathroom Fixtures remains operational. A later reviewed release must add an identity-bound administrative disposition for exhausted no-receipt ambiguity before Create PR can resume through this worker.
+
 ## Deployment Lessons
 
 - Machine-local scheduled tasks, installed packages, health files, and central owner records are runtime state outside Git. Record verified status in Git from the coordinating task; do not create empty commits on deployment machines.
 - Pulling a source hotfix does not update a profile-local staged package. Refresh that package before retrying validation or promotion.
 - A successful CLI queue result is not acceptance. The validation remained pending while Quickbooks was `notLoaded`; opening the existing task allowed the original queued request to complete. No duplicate wake-up was required or permitted.
 - Each computer needs a dedicated dispatcher task identity separate from every operational destination. This is required on OFFICEASSIST so Email Monitor can remain a destination after its embedded dispatcher stage is removed.
+- A legacy schema-1 manifest with bare `dispatchable: true` can be admitted during staging but cannot satisfy the validation worker's explicit readiness gate. Convert the selected validation destination to schema 2 with exact `validation_ready` evidence before starting validation; after the lifecycle passes, promote it to `ready` and `dispatchable: true`.
+- An exhausted `Delivery Ambiguous` record without a receipt remains destination-outstanding by design. Release `0.4.0` must not retry it, fake acceptance, or mutate it directly. A future administrative-closure operation must be general, immutable-field-preserving, owner- and machine-bound, version-checked, and covered by isolated tests before deployment.
 
 ## Verification
 
