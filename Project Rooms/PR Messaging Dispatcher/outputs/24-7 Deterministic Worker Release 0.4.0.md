@@ -40,6 +40,10 @@ After WES-VIDEOEDITOR passes, create or verify one separate dispatcher task on O
 
 Synthetic `prmsg-wve-low-token-worker-validation-20260913-001` completed through one delivered attempt with exact Accepted, Processing, and Completed events. The read-only recipient self-task check succeeded and no business action occurred. After the SMB-safe owner replacement hotfix in `f13c56fa`, WES-VIDEOEDITOR promoted at `2026-09-14T01:04:33.2988501Z`. Scheduled task `BYH PR Messaging Worker - WES-VIDEOEDITOR` runs every 60 seconds in `Live` mode for Quickbooks. The old assisted worker is disabled and the model heartbeat remains paused. Two empty live ticks made zero claims, submissions, model requests, or notifications.
 
+## OFFICEASSIST Gate
+
+OFFICEASSIST staged the worker under dedicated dispatcher task `01a09d84-a309-7591-a790-e770fcb53dee`, separately from Doc Scan, Email Monitor, and Invoice Entry. Synthetic `prmsg-officeassist-low-token-worker-docscan-validation-20260914-001` validates both the worker transport and Doc Scan messaging readiness through one permitted attempt. During this validation only, `-AllowActiveEmbeddedFallback` keeps Email Monitor mailbox work active while machine-scoped Validation ownership causes its embedded legacy dispatcher claims to fail closed. After verified live promotion, remove only that embedded dispatcher stage.
+
 ## Deployment Lessons
 
 - Machine-local scheduled tasks, installed packages, health files, and central owner records are runtime state outside Git. Record verified status in Git from the coordinating task; do not create empty commits on deployment machines.

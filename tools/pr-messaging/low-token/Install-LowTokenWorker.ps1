@@ -5,6 +5,7 @@ param(
     [string]$ExpectedMachine='WES-VIDEOEDITOR',
     [string]$DispatcherTaskId='01a05d0c-8031-7d92-9474-ab2330008ddb',
     [string]$LegacyAutomationId='pr-messaging-dispatcher-wes-videoeditor',
+    [switch]$AllowActiveEmbeddedFallback,
     [string]$ValidationMessageId
 )
 $ErrorActionPreference='Stop'
@@ -21,7 +22,8 @@ $legacyTask='BYH PR Messaging Assisted Worker - Quickbooks'
 $files=@('Common.ps1','Process.ps1','Canary.Guards.ps1','Invoke-LowTokenWorker.ps1','Invoke-CodexQueueAdapter.ps1','Invoke-ManagerCommand.ps1')
 
 if($Action -eq 'Plan'){
-    [ordered]@{schema_version=1;release=$release;action=$Action;machine=$ExpectedMachine;dispatcher_task_id=$DispatcherTaskId;task_name=$task;schedule='Every 60 seconds, 24/7';stage_changes_transport=$false;validation='One exact synthetic record before live promotion';exclusive_owner=$ownerPath;rollback='Remove only this worker and owner; preserve journals and central records; explicitly restore the prior dispatcher.'}|ConvertTo-Json -Depth 8
+    $embeddedFallbackException=([bool]$AllowActiveEmbeddedFallback -and $ExpectedMachine -ceq 'OFFICEASSIST' -and $LegacyAutomationId -ceq 'officeassist-morning-email-summary-and-instruction-monitor')
+    [ordered]@{schema_version=1;release=$release;action=$Action;machine=$ExpectedMachine;dispatcher_task_id=$DispatcherTaskId;task_name=$task;schedule='Every 60 seconds, 24/7';stage_changes_transport=$false;validation='One exact synthetic record before live promotion';active_embedded_fallback_exception=$embeddedFallbackException;exclusive_owner=$ownerPath;rollback='Remove only this worker and owner; preserve journals and central records; explicitly restore the prior dispatcher.'}|ConvertTo-Json -Depth 8
     return
 }
 if($env:COMPUTERNAME -cne $ExpectedMachine){throw 'InstallationMachineMismatch'}
@@ -96,7 +98,8 @@ if($Action -eq 'StartValidation'){
     if(!$synthetic -or $pinned.Count -ne 1 -or $record.destination.machine -cne $ExpectedMachine -or $record.state -cne 'Queued' -or [int]$record.attempt_count -ne 0 -or [int]$record.max_attempts -ne 1){throw 'ValidationRecordNotSafe'}
     if(-not [string]::IsNullOrWhiteSpace($LegacyAutomationId)){
         $legacyAutomation=Join-Path $env:USERPROFILE ('.codex\automations\'+$LegacyAutomationId+'\automation.toml')
-        if((Test-Path -LiteralPath $legacyAutomation) -and (Get-Content -Raw -LiteralPath $legacyAutomation) -notmatch '(?m)^status\s*=\s*"PAUSED"\s*$'){throw 'LegacyHeartbeatMustBePaused'}
+        $legacyActive=(Test-Path -LiteralPath $legacyAutomation) -and (Get-Content -Raw -LiteralPath $legacyAutomation) -notmatch '(?m)^status\s*=\s*"PAUSED"\s*$'
+        if($legacyActive -and !(Test-LtActiveEmbeddedFallbackException $ExpectedMachine $LegacyAutomationId ([bool]$AllowActiveEmbeddedFallback))){throw 'LegacyHeartbeatMustBePaused'}
     }
     $cfg|Add-Member validation_message_id $ValidationMessageId -Force
     Write-LtJson $configPath $cfg
@@ -106,7 +109,7 @@ if($Action -eq 'StartValidation'){
     $taskAction=New-ScheduledTaskAction -Execute $ps -Argument "-NoProfile -WindowStyle Hidden -ExecutionPolicy Bypass -File `"$(Join-Path $pkg 'Invoke-LowTokenWorker.ps1')`" -ConfigPath `"$configPath`" -Mode Validation -MessageId `"$ValidationMessageId`""
     Set-ScheduledTask -TaskName $task -Action $taskAction|Out-Null
     Enable-ScheduledTask -TaskName $task|Out-Null
-    [pscustomobject]@{release=$release;status='ValidationActive';message_id=$ValidationMessageId;task=$task;legacy_assisted_disabled=$true;production_enabled=$false}|ConvertTo-Json
+    [pscustomobject]@{release=$release;status='ValidationActive';message_id=$ValidationMessageId;task=$task;legacy_assisted_disabled=$true;active_embedded_fallback_guarded=[bool]$legacyActive;production_enabled=$false}|ConvertTo-Json
     return
 }
 

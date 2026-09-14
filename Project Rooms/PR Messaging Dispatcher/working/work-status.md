@@ -8,6 +8,8 @@ WES-VIDEOEDITOR staged the worker, completed `prmsg-wve-low-token-worker-validat
 
 Next gate: stage and validate OFFICEASSIST while preserving its active Email Monitor heartbeat and embedded dispatcher as the fallback. Remove only the embedded dispatcher stage after the OFFICEASSIST worker is live. WESSTUDIO follows after OFFICEASSIST passes.
 
+OFFICEASSIST staged release `0.4.0` under dedicated dispatcher task `01a09d84-a309-7591-a790-e770fcb53dee` with Doc Scan, Email Monitor, and Invoice Entry pinned. Cross-machine synthetic `prmsg-officeassist-low-token-worker-docscan-validation-20260914-001` is queued with zero of one attempts. Doc Scan is temporarily `validation_ready` and non-dispatchable for every record except that exact no-business-action synthetic. The installer has an explicit OFFICEASSIST-only active embedded fallback gate so mailbox monitoring can remain active while machine-scoped validation ownership blocks overlapping legacy dispatcher claims.
+
 See `outputs\24-7 Deterministic Worker Release 0.4.0.md`.
 
 ## Historical WES-VIDEOEDITOR development

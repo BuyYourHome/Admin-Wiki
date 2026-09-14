@@ -41,6 +41,9 @@ function Get-LtSubmissionMarkerPath([string]$StateDirectory,[string]$MessageId,[
 function Test-LtPinnedDestination($Config,$Destination) {
     @($Config.destinations|Where-Object {$_.project_room -ceq $Destination.project_room -and $_.task_id -ceq $Destination.task_id -and $_.machine -ceq $Destination.machine}).Count -eq 1
 }
+function Test-LtActiveEmbeddedFallbackException([string]$Machine,[string]$AutomationId,[bool]$ExplicitlyAllowed) {
+    $ExplicitlyAllowed -and $Machine -ceq 'OFFICEASSIST' -and $AutomationId -ceq 'officeassist-morning-email-summary-and-instruction-monitor'
+}
 function Assert-LtUnder([string]$Path,[string]$Root) {
     $p = [IO.Path]::GetFullPath($Path); $r = [IO.Path]::GetFullPath($Root).TrimEnd('\','/') + [IO.Path]::DirectorySeparatorChar
     if (!$p.StartsWith($r,[StringComparison]::OrdinalIgnoreCase)) { throw 'PathOutsideFixture' }

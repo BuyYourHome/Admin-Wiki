@@ -55,6 +55,7 @@ Provide the host-local wake-up layer for Project Room messages addressed to task
 - WESSTUDIO task: `PR Messaging Dispatcher - WESSTUDIO`, task `01a06337-1b59-7dc2-9586-6660eb7b5da7`.
 - WESSTUDIO automation id: `pr-messaging-dispatcher`.
 - OFFICEASSIST may retain its Email Monitor dispatcher stage only until its separate worker and dispatcher task pass unattended validation. Then remove only that embedded stage.
+- For OFFICEASSIST validation, use `-AllowActiveEmbeddedFallback` only with automation `officeassist-morning-email-summary-and-instruction-monitor`. The machine-scoped Validation owner blocks its embedded dispatcher before the deterministic worker starts; the exception keeps mailbox monitoring active but never permits overlapping claims.
 - Install release `0.4.0` through `tools\pr-messaging\low-token\Install-LowTokenWorker.ps1`: `Stage`, one exact synthetic `StartValidation`, and `PromoteLive` only after verified completion. `Rollback` preserves journals and central records.
 - If source files change after `Stage`, pull the corrective commit and refresh the staged package before continuing. Never assume the profile-local installed package changed merely because the Git repository changed.
 - Machine-scoped ownership must block the legacy dispatcher for only the migrated destination machine. Never activate overlapping transport owners.
