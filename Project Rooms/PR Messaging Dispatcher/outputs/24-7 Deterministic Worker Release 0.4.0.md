@@ -2,7 +2,7 @@
 
 ## Outcome
 
-Release `0.4.0` is live on WES-VIDEOEDITOR after the staged validation completed. OFFICEASSIST and WESSTUDIO remain pending their separate machine-local cutovers.
+Release `0.4.0` is live on WES-VIDEOEDITOR and OFFICEASSIST after their staged validations completed. WESSTUDIO remains pending its separate machine-local cutover.
 
 ## Behavior
 
@@ -40,9 +40,9 @@ After WES-VIDEOEDITOR passes, create or verify one separate dispatcher task on O
 
 Synthetic `prmsg-wve-low-token-worker-validation-20260913-001` completed through one delivered attempt with exact Accepted, Processing, and Completed events. The read-only recipient self-task check succeeded and no business action occurred. After the SMB-safe owner replacement hotfix in `f13c56fa`, WES-VIDEOEDITOR promoted at `2026-09-14T01:04:33.2988501Z`. Scheduled task `BYH PR Messaging Worker - WES-VIDEOEDITOR` runs every 60 seconds in `Live` mode for Quickbooks. The old assisted worker is disabled and the model heartbeat remains paused. Two empty live ticks made zero claims, submissions, model requests, or notifications.
 
-## OFFICEASSIST Gate
+## OFFICEASSIST Result
 
-OFFICEASSIST staged the worker under dedicated dispatcher task `01a09d84-a309-7591-a790-e770fcb53dee`, separately from Doc Scan, Email Monitor, and Invoice Entry. Synthetic `prmsg-officeassist-low-token-worker-docscan-validation-20260914-001` validates both the worker transport and Doc Scan messaging readiness through one permitted attempt. During this validation only, `-AllowActiveEmbeddedFallback` keeps Email Monitor mailbox work active while machine-scoped Validation ownership causes its embedded legacy dispatcher claims to fail closed. After verified live promotion, remove only that embedded dispatcher stage.
+OFFICEASSIST staged the worker under dedicated dispatcher task `01a09d84-a309-7591-a790-e770fcb53dee`, separately from Doc Scan, Email Monitor, and Invoice Entry. Synthetic `prmsg-officeassist-low-token-worker-docscan-validation-20260914-001` completed through one delivered attempt with exact Accepted, Processing, and Completed events and no business action. After Doc Scan was promoted to ready and dispatchable, OFFICEASSIST promoted owner `low-token-officeassist` to `Live`. Scheduled task `BYH PR Messaging Worker - OFFICEASSIST` now runs every 60 seconds in `Live` mode for Email Monitor, Doc Scan, and Invoice Entry. One eligible production record was delivered to Email Monitor and ended Blocked under destination rules because required delivery-package fields were missing; no email or Outlook draft was created. Two subsequent empty live ticks made zero claims, submissions, model requests, notifications, or errors. Email Monitor's embedded dispatcher stage was then removed while its existing active mailbox heartbeat, schedule, target, notification policy, and mailbox functions were preserved.
 
 ## Deployment Lessons
 
