@@ -35,6 +35,7 @@ Provide the host-local wake-up layer for Project Room messages addressed to task
 12. Wait up to 120 seconds for destination progress and reconcile the authoritative record again immediately before marking a definitive failure `NotDelivered` or uncertainty `DeliveryAmbiguous`.
 13. Remain silent on empty polls and unchanged conditions.
 14. Dispatcher health consumers must honor the schedule metadata and `next_scheduled_run_at_utc` written by the claim helper. Closed nights and weekends are expected inactivity, not stale health.
+15. A successful CLI queue submission to a destination reported as `notLoaded` may remain pending until that existing task is opened. Preserve the original submission and reconcile it; do not send a second wake-up merely because the task was unloaded.
 
 ## Boundaries
 
@@ -47,14 +48,16 @@ Provide the host-local wake-up layer for Project Room messages addressed to task
 
 ## Deployment
 
-- Use one dedicated dispatcher task and one deterministic Windows worker per computer.
+- Use one dedicated dispatcher task and one deterministic Windows worker per computer. The dispatcher task id must be separate from every operational destination task id on that computer so each destination, including Email Monitor, remains eligible for notification and self-notification is impossible.
 - WES-VIDEOEDITOR task: `PR Messaging Dispatcher - WES-VIDEOEDITOR`, task `01a05d0c-8031-7d92-9474-ab2330008ddb`.
 - WES-VIDEOEDITOR automation id: `pr-messaging-dispatcher-wes-videoeditor`.
 - WESSTUDIO task: `PR Messaging Dispatcher - WESSTUDIO`, task `01a06337-1b59-7dc2-9586-6660eb7b5da7`.
 - WESSTUDIO automation id: `pr-messaging-dispatcher`.
 - OFFICEASSIST may retain its Email Monitor dispatcher stage only until its separate worker and dispatcher task pass unattended validation. Then remove only that embedded stage.
 - Install release `0.4.0` through `tools\pr-messaging\low-token\Install-LowTokenWorker.ps1`: `Stage`, one exact synthetic `StartValidation`, and `PromoteLive` only after verified completion. `Rollback` preserves journals and central records.
+- If source files change after `Stage`, pull the corrective commit and refresh the staged package before continuing. Never assume the profile-local installed package changed merely because the Git repository changed.
 - Machine-scoped ownership must block the legacy dispatcher for only the migrated destination machine. Never activate overlapping transport owners.
+- Scheduled tasks, profile-local packages, health files, and central transport-owner records are runtime state outside Git. Record verified deployment status in the canonical repository from the coordinating task; do not require a runtime-only machine to create an empty commit.
 - A cross-machine Project Room is not dispatchable until an unattended remote-source lifecycle passes without manual pasting.
 - Store only a short pointer in the automation prompt requiring every run to reread `Project Rooms\PR Messaging Dispatcher\working\heartbeat-prompt.md` and `Project Room Messaging Rule.md`. Never copy the full policy into the automation prompt; copied policy becomes stale after repository updates.
 

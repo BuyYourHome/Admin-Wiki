@@ -39,6 +39,13 @@ After WES-VIDEOEDITOR passes, create or verify one separate dispatcher task on O
 
 Synthetic `prmsg-wve-low-token-worker-validation-20260913-001` completed through one delivered attempt with exact Accepted, Processing, and Completed events. The read-only recipient self-task check succeeded and no business action occurred. After the SMB-safe owner replacement hotfix in `f13c56fa`, WES-VIDEOEDITOR promoted at `2026-09-14T01:04:33.2988501Z`. Scheduled task `BYH PR Messaging Worker - WES-VIDEOEDITOR` runs every 60 seconds in `Live` mode for Quickbooks. The old assisted worker is disabled and the model heartbeat remains paused. Two empty live ticks made zero claims, submissions, model requests, or notifications.
 
+## Deployment Lessons
+
+- Machine-local scheduled tasks, installed packages, health files, and central owner records are runtime state outside Git. Record verified status in Git from the coordinating task; do not create empty commits on deployment machines.
+- Pulling a source hotfix does not update a profile-local staged package. Refresh that package before retrying validation or promotion.
+- A successful CLI queue result is not acceptance. The validation remained pending while Quickbooks was `notLoaded`; opening the existing task allowed the original queued request to complete. No duplicate wake-up was required or permitted.
+- Each computer needs a dedicated dispatcher task identity separate from every operational destination. This is required on OFFICEASSIST so Email Monitor can remain a destination after its embedded dispatcher stage is removed.
+
 ## Verification
 
 The primary fixture baseline passed 56 checks on September 13, 2026. A focused restricted-share-compatible owner-replacement regression, the 34-check one-shot compatibility suite, and focused crash-boundary reruns also passed. Coverage includes atomic claims, version/config conflicts, destination serialization, restart boundaries, timeout ambiguity, late receipts, queue outage recovery, singleton execution, machine-scoped ownership, legacy-owner exclusion, fresh worker validation without overwriting historical room readiness evidence, per-attempt submission markers, Unicode transport, and competing claimers. The tests made zero production changes and zero real CLI submissions. One administrative-closure test remains intentionally WES-VIDEOEDITOR-bound and cannot pass on WESSTUDIO because the canonical operation rejects the wrong machine identity.
