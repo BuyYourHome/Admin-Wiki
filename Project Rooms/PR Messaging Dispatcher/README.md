@@ -57,7 +57,9 @@ The dispatcher now distinguishes a pre-PowerShell tool-wrapper failure from a he
 - WESSTUDIO task name: `PR Messaging Dispatcher - WESSTUDIO`
 - WESSTUDIO task id: `01a06337-1b59-7dc2-9586-6660eb7b5da7`
 - WESSTUDIO automation id: `pr-messaging-dispatcher`
-- OFFICEASSIST exception: its active Email Monitor heartbeat may provide the local dispatcher stage; do not create a duplicate dispatcher heartbeat while that stage remains verified.
+- OFFICEASSIST task name: `PR Messaging Dispatcher - OFFICEASSIST`
+- OFFICEASSIST task id: `01a09d84-a309-7591-a790-e770fcb53dee`
+- OFFICEASSIST has no Codex heartbeat or recurring automation. Its Email Monitor dispatcher stage remains the fallback until the deterministic worker completes validation and live promotion.
 
 ## Target Schedule
 
