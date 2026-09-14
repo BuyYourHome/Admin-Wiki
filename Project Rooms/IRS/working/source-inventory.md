@@ -22,3 +22,7 @@ The source location is confirmed by Wes; individual folder paths, document conte
 ## Searchable Path Inventory - 2026-09-11
 
 Start with [[source-path-index]] for exact-path lookup instructions, [[entity-source-index]], [[cpa-source-index]], and [[property-source-index]]. Review status is tracked in [[source-review-tracker]]. Detailed metadata is stored outside Git at the private catalog path in the guide. Source-location rows above retain the original intake history; the new indexes record the subsequent metadata inventory. Contents and filing evidence remain unreviewed.
+
+## Solo Plan Documents Located - 2026-09-14
+
+Wes identified Corp-BYH 401K LLC in Teams. Verified in the separate SellYourHome-Solo401K SharePoint site. Root and both subfolders inventoried: 24 files total. Signed plan package, certificate of trust, EIN records, successor-administrator records and nested LLC formation documents located. Selected adoption text confirms Buy Your Home Retirement Plan Trust, employer BYH, plan 001, effective October 17, 2024. Full document/signature and annual reporting review remains pending. Stop asking Wes to supply the already-located plan package; see [[../sources/2026-09-14-solo-plan-source-index]] for exact links and remaining checks. The earlier main-site inventory did not include this separate site.

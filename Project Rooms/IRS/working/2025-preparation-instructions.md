@@ -60,3 +60,7 @@ Wes explicitly confirms Browning Family Revocable Trust owned Heritage Managemen
 ## Trust Filing History And EIN Search - 2026-09-13
 
 Wes confirms no prior trust Form 1041 filing and believes no trust EIN exists. Teams cloud folder listings and targeted searches found no EIN/SS-4 record; status is EIN not located, not confirmed absent. A signed July 13, 2023 assignment of 100% BYH membership to the family trust was also found and visually reviewed, requiring legal/tax shareholder reconciliation. See [[../sources/2026-09-13-trust-ein-search]] for paths, scope and evidence limits. Do not ask again about prior 1041 history.
+
+## Solo Plan Documents Located - 2026-09-14
+
+Wes identified Corp-BYH 401K LLC in Teams. Verified in the separate SellYourHome-Solo401K SharePoint site. Root and both subfolders inventoried: 24 files total. Signed plan package, certificate of trust, EIN records, successor-administrator records and nested LLC formation documents located. Selected adoption text confirms Buy Your Home Retirement Plan Trust, employer BYH, plan 001, effective October 17, 2024. Full document/signature and annual reporting review remains pending. Stop asking Wes to supply the already-located plan package; see [[../sources/2026-09-14-solo-plan-source-index]] for exact links and remaining checks. The earlier main-site inventory did not include this separate site.
