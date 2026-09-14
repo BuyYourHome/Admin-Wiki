@@ -2,7 +2,7 @@
 
 ## Release 0.4.0 source ready — September 13, 2026
 
-The generalized 24/7 deterministic worker, machine-scoped exclusive ownership, staged installer, and canonical operating-rule updates are implemented in the repository. The 56-check primary suite, 34-check compatibility suite, and focused crash-boundary reruns pass with zero real submissions. No live task, owner file, heartbeat, queue record, or production destination was changed from WESSTUDIO.
+The generalized 24/7 deterministic worker, machine-scoped exclusive ownership, staged installer, and canonical operating-rule updates are implemented in the repository. The 56-check baseline suite, focused restricted-share owner-replacement regression, 34-check compatibility suite, and focused crash-boundary reruns pass with zero real submissions. No live task, owner file, heartbeat, queue record, or production destination was changed from WESSTUDIO.
 
 Next gate: publish the commit, pull it on WES-VIDEOEDITOR, run `Stage`, create one fresh cross-machine synthetic, run `StartValidation`, verify the exact lifecycle, then `PromoteLive`. OFFICEASSIST and WESSTUDIO follow only after WES-VIDEOEDITOR passes.
 

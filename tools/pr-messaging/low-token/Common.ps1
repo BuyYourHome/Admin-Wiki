@@ -18,7 +18,10 @@ function Write-LtJson([string]$Path, $Value) {
     $bytes = [Text.UTF8Encoding]::new($false).GetBytes(($Value | ConvertTo-Json -Depth 30))
     $stream = [IO.File]::Open($tmp, [IO.FileMode]::CreateNew, [IO.FileAccess]::Write, [IO.FileShare]::None)
     try { $stream.Write($bytes,0,$bytes.Length); $stream.Flush($true) } finally { $stream.Dispose() }
-    if (Test-Path -LiteralPath $Path) { [IO.File]::Replace($tmp,$Path,[NullString]::Value) } else { [IO.File]::Move($tmp,$Path) }
+    # File.Replace requests SMB rights that are not available to the restricted
+    # transport accounts. A same-directory forced move preserves the atomic
+    # publication pattern used by the canonical queue manager.
+    Move-Item -LiteralPath $tmp -Destination $Path -Force
 }
 function Assert-LtId([string]$Id) {
     if ([string]::IsNullOrWhiteSpace($Id) -or $Id -cnotmatch '^[A-Za-z0-9][A-Za-z0-9._-]{2,127}$') { throw 'InvalidOrBlankMessageId' }
