@@ -36,6 +36,7 @@ Provide the host-local wake-up layer for Project Room messages addressed to task
 13. Remain silent on empty polls and unchanged conditions.
 14. Dispatcher health consumers must honor the schedule metadata and `next_scheduled_run_at_utc` written by the claim helper. Closed nights and weekends are expected inactivity, not stale health.
 15. A successful CLI queue submission to a destination reported as `notLoaded` may remain pending until that existing task is opened. Preserve the original submission and reconcile it; do not send a second wake-up merely because the task was unloaded.
+16. Configure every scheduled worker action with PowerShell hidden-window mode so the one-minute poll never displays a console or steals focus from the interactive user.
 
 ## Boundaries
 

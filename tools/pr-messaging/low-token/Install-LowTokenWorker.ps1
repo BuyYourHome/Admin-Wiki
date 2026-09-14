@@ -72,7 +72,7 @@ if($Action -eq 'Stage'){
     $cfg=[ordered]@{schema_version=1;release=$release;expected_machine=$ExpectedMachine;expected_sid=[Security.Principal.WindowsIdentity]::GetCurrent().User.Value;owner=('low-token-'+$ExpectedMachine.ToLowerInvariant());generation=$release;dispatcher_task_id=$DispatcherTaskId;queue_path=$queue;manager_path='C:\Codex\Wiki Files\tools\pr-messaging\Manage-ProjectRoomMessage.ps1';manager_sha256=(Get-FileHash 'C:\Codex\Wiki Files\tools\pr-messaging\Manage-ProjectRoomMessage.ps1').Hash;client_path=$clientPath;manifest_directory=$manifestDirectory;state_directory=$state;powershell_path=$ps;max_tick_seconds=50;queued_receipt_warning_seconds=600;adapter_kind='CodexQueue';adapter_path=(Join-Path $pkg 'Invoke-CodexQueueAdapter.ps1');adapter_sha256=(Get-FileHash (Join-Path $pkg 'Invoke-CodexQueueAdapter.ps1')).Hash;cli_path=$cli;cli_sha256=(Get-FileHash $cli).Hash;destinations=@($destinations|Sort-Object project_room,task_id)}
     $cfg.package_sha256=Get-LtPackageHash $pkg
     Write-LtJson $configPath $cfg
-    $taskAction=New-ScheduledTaskAction -Execute $ps -Argument "-NoProfile -ExecutionPolicy Bypass -File `"$(Join-Path $pkg 'Invoke-LowTokenWorker.ps1')`" -ConfigPath `"$configPath`" -Mode Paused"
+    $taskAction=New-ScheduledTaskAction -Execute $ps -Argument "-NoProfile -WindowStyle Hidden -ExecutionPolicy Bypass -File `"$(Join-Path $pkg 'Invoke-LowTokenWorker.ps1')`" -ConfigPath `"$configPath`" -Mode Paused"
     $trigger=New-ScheduledTaskTrigger -Once -At (Get-Date).AddMinutes(1) -RepetitionInterval (New-TimeSpan -Seconds 60) -RepetitionDuration (New-TimeSpan -Days 3650)
     $principal=New-ScheduledTaskPrincipal -UserId ([Security.Principal.WindowsIdentity]::GetCurrent().Name) -LogonType Interactive -RunLevel Limited
     $settings=New-ScheduledTaskSettingsSet -ExecutionTimeLimit (New-TimeSpan -Seconds 55) -MultipleInstances IgnoreNew -StartWhenAvailable
@@ -103,7 +103,7 @@ if($Action -eq 'StartValidation'){
     Disable-ScheduledTask -TaskName $legacyTask -ErrorAction SilentlyContinue|Out-Null
     New-Item -ItemType Directory -Path (Split-Path -Parent $ownerPath) -Force|Out-Null
     Write-LtJson $ownerPath @{schema_version=1;owner=$cfg.owner;generation=$cfg.generation;mode='Validation';machine=$ExpectedMachine;sid=$cfg.expected_sid;task_id=$DispatcherTaskId;validation_message_id=$ValidationMessageId;created_at_utc=[DateTime]::UtcNow.ToString('o')}
-    $taskAction=New-ScheduledTaskAction -Execute $ps -Argument "-NoProfile -ExecutionPolicy Bypass -File `"$(Join-Path $pkg 'Invoke-LowTokenWorker.ps1')`" -ConfigPath `"$configPath`" -Mode Validation -MessageId `"$ValidationMessageId`""
+    $taskAction=New-ScheduledTaskAction -Execute $ps -Argument "-NoProfile -WindowStyle Hidden -ExecutionPolicy Bypass -File `"$(Join-Path $pkg 'Invoke-LowTokenWorker.ps1')`" -ConfigPath `"$configPath`" -Mode Validation -MessageId `"$ValidationMessageId`""
     Set-ScheduledTask -TaskName $task -Action $taskAction|Out-Null
     Enable-ScheduledTask -TaskName $task|Out-Null
     [pscustomobject]@{release=$release;status='ValidationActive';message_id=$ValidationMessageId;task=$task;legacy_assisted_disabled=$true;production_enabled=$false}|ConvertTo-Json
@@ -120,7 +120,7 @@ if($Action -eq 'PromoteLive'){
         if($match.Count -ne 1){throw ('DestinationNotReadyForLive: '+$destination.project_room)}
     }
     Write-LtJson $ownerPath @{schema_version=1;owner=$cfg.owner;generation=$cfg.generation;mode='Live';machine=$ExpectedMachine;sid=$cfg.expected_sid;task_id=$DispatcherTaskId;validation_message_id=$cfg.validation_message_id;promoted_at_utc=[DateTime]::UtcNow.ToString('o')}
-    $taskAction=New-ScheduledTaskAction -Execute $ps -Argument "-NoProfile -ExecutionPolicy Bypass -File `"$(Join-Path $pkg 'Invoke-LowTokenWorker.ps1')`" -ConfigPath `"$configPath`" -Mode Live"
+    $taskAction=New-ScheduledTaskAction -Execute $ps -Argument "-NoProfile -WindowStyle Hidden -ExecutionPolicy Bypass -File `"$(Join-Path $pkg 'Invoke-LowTokenWorker.ps1')`" -ConfigPath `"$configPath`" -Mode Live"
     Set-ScheduledTask -TaskName $task -Action $taskAction|Out-Null
     Enable-ScheduledTask -TaskName $task|Out-Null
     [pscustomobject]@{release=$release;status='Live';task=$task;schedule='Every 60 seconds, 24/7';destinations=$cfg.destinations;legacy_assisted_disabled=$true}|ConvertTo-Json -Depth 8

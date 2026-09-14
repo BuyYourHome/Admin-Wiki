@@ -56,6 +56,7 @@ The shared queue is cross-machine, but Codex task notification is host-local. A 
 - A queued CLI submission may remain pending while its existing destination task is `notLoaded`. Opening that exact task may allow the original queued request to run. Do not create or send a second wake-up solely because the task was unloaded; reconcile the original central attempt.
 - Machine-local dispatcher health may record run status and claim metadata outside the central queue. Health is observability only and never proves notification, acceptance, processing, or completion.
 - Empty worker polls consume no model tokens and are strictly silent. Notify Wes only through an explicit attention workflow for a new actionable blocker or decision; the transport worker itself performs no destination or business work.
+- Run the one-minute PowerShell worker with hidden-window mode. Its scheduled tick must not open a visible console, take keyboard focus, or interrupt typing on an interactive workstation.
 - Worker installation, scheduled-task state, profile-local packages, health files, and `.transport-owners` records are runtime state outside Git. Git records tools, policy, manifests, and verified deployment status. A runtime-only change does not require an empty commit on that machine.
 - If a worker source hotfix is published after `Stage`, refresh the machine's staged profile-local package from the pulled source before validation or promotion. Pulling Git alone does not update an already staged package.
 

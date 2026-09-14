@@ -7,6 +7,7 @@ Release `0.4.0` is live on WES-VIDEOEDITOR after the staged validation completed
 ## Behavior
 
 - Runs as a limited Windows scheduled task every 60 seconds, 24/7.
+- Runs PowerShell in hidden-window mode so scheduled ticks do not display a console or interrupt typing.
 - Reads the central queue without starting a model on empty polls.
 - Pins exact locally registered destinations from canonical manifests at staging.
 - Claims at most one eligible record per tick under the canonical queue lock.
