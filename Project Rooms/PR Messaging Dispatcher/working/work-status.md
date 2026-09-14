@@ -1,10 +1,12 @@
 # PR Messaging Dispatcher work status
 
-## Release 0.4.0 source ready — September 13, 2026
+## Release 0.4.0 live on WES-VIDEOEDITOR — September 13-14, 2026
 
-The generalized 24/7 deterministic worker, machine-scoped exclusive ownership, staged installer, and canonical operating-rule updates are implemented in the repository. The 56-check baseline suite, focused restricted-share owner-replacement regression, 34-check compatibility suite, and focused crash-boundary reruns pass with zero real submissions. No live task, owner file, heartbeat, queue record, or production destination was changed from WESSTUDIO.
+The generalized 24/7 deterministic worker, machine-scoped exclusive ownership, staged installer, and canonical operating-rule updates are implemented. The 56-check baseline suite, focused restricted-share owner-replacement regression, 34-check compatibility suite, and focused crash-boundary reruns passed with zero unintended production actions.
 
-Next gate: publish the commit, pull it on WES-VIDEOEDITOR, run `Stage`, create one fresh cross-machine synthetic, run `StartValidation`, verify the exact lifecycle, then `PromoteLive`. OFFICEASSIST and WESSTUDIO follow only after WES-VIDEOEDITOR passes.
+WES-VIDEOEDITOR staged the worker, completed `prmsg-wve-low-token-worker-validation-20260913-001` with one delivered attempt and exact Accepted, Processing, and Completed lifecycle, then promoted at `2026-09-14T01:04:33.2988501Z`. The worker is live every 60 seconds for the exact pinned Quickbooks task. Two empty live ticks completed with zero claims, submissions, model requests, or notifications. The old assisted worker remains disabled and the model heartbeat remains paused.
+
+Next gate: stage and validate OFFICEASSIST while preserving its active Email Monitor heartbeat and embedded dispatcher as the fallback. Remove only the embedded dispatcher stage after the OFFICEASSIST worker is live. WESSTUDIO follows after OFFICEASSIST passes.
 
 See `outputs\24-7 Deterministic Worker Release 0.4.0.md`.
 

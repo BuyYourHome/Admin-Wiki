@@ -39,9 +39,9 @@ Out of scope:
 
 ## Status
 
-Status: `Release 0.4.0 staged in source; WES-VIDEOEDITOR production cutover pending`.
+Status: `Release 0.4.0 live on WES-VIDEOEDITOR; OFFICEASSIST cutover next`.
 
-The current WES-VIDEOEDITOR runtime remains the bounded QuickBooks-only assisted worker. Release `0.4.0` generalizes transport to every exact locally registered, dispatchable destination and adds per-machine exclusive ownership. It is not live until WES-VIDEOEDITOR stages it, completes one fresh exact synthetic lifecycle, and promotes it.
+WES-VIDEOEDITOR promoted release `0.4.0` after exact synthetic `prmsg-wve-low-token-worker-validation-20260913-001` completed with one delivered attempt and no business action. Scheduled task `BYH PR Messaging Worker - WES-VIDEOEDITOR` now runs every 60 seconds in `Live` mode for its pinned Quickbooks destination. The old assisted QuickBooks task is disabled and the model-driven dispatcher heartbeat remains paused. OFFICEASSIST must complete its own staged validation before Email Monitor's embedded dispatcher fallback is removed.
 
 The dispatcher now distinguishes a pre-PowerShell tool-wrapper failure from a helper or queue failure. It retries one pre-execution wrapper failure, records deterministic skip counts, writes machine-local health to `%LOCALAPPDATA%\BuyYourHome\PRMessaging\dispatcher-health.json`, and allows up to 120 seconds for destination startup before final delivery reconciliation.
 

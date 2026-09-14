@@ -2,7 +2,7 @@
 
 ## Outcome
 
-Release `0.4.0` is ready in the canonical repository for a WES-VIDEOEDITOR-first staged validation. It is not deployed by this source change. The existing WES-VIDEOEDITOR QuickBooks-only assisted worker remains the current runtime until cutover.
+Release `0.4.0` is live on WES-VIDEOEDITOR after the staged validation completed. OFFICEASSIST and WESSTUDIO remain pending their separate machine-local cutovers.
 
 ## Behavior
 
@@ -34,6 +34,10 @@ Run `-Action Rollback` under the same Windows identity. It removes only release 
 ## Following Machines
 
 After WES-VIDEOEDITOR passes, create or verify one separate dispatcher task on OFFICEASSIST and WESSTUDIO. Repeat the same staged lifecycle on each machine. OFFICEASSIST removes only Email Monitor's embedded dispatcher stage after its worker is live; Email Monitor mailbox and summary functions remain active on their own schedule.
+
+## WES-VIDEOEDITOR Result
+
+Synthetic `prmsg-wve-low-token-worker-validation-20260913-001` completed through one delivered attempt with exact Accepted, Processing, and Completed events. The read-only recipient self-task check succeeded and no business action occurred. After the SMB-safe owner replacement hotfix in `f13c56fa`, WES-VIDEOEDITOR promoted at `2026-09-14T01:04:33.2988501Z`. Scheduled task `BYH PR Messaging Worker - WES-VIDEOEDITOR` runs every 60 seconds in `Live` mode for Quickbooks. The old assisted worker is disabled and the model heartbeat remains paused. Two empty live ticks made zero claims, submissions, model requests, or notifications.
 
 ## Verification
 
