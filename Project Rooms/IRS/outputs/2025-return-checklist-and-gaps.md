@@ -98,3 +98,7 @@ The corrected executed governing document remains pending as supporting evidence
 ## Heritage Ownership Date Confirmed - 2026-09-13
 
 Wes explicitly confirms Browning Family Revocable Trust owned Heritage Management LLC from origination. Use trust ownership from formation throughout its 2025 existence. The earlier BYH entry was an initial-draft error, not an actual ownership transfer. Ownership identity and start date are resolved by owner confirmation; do not request that clarification again. The corrected executed governing document remains pending as supporting evidence, and tax classification/reporting review remains separate.
+
+## Trust Filing History And EIN Search - 2026-09-13
+
+Wes confirms no prior trust Form 1041 filing and believes no trust EIN exists. Teams cloud folder listings and targeted searches found no EIN/SS-4 record; status is EIN not located, not confirmed absent. A signed July 13, 2023 assignment of 100% BYH membership to the family trust was also found and visually reviewed, requiring legal/tax shareholder reconciliation. See [[../sources/2026-09-13-trust-ein-search]] for paths, scope and evidence limits. Do not ask again about prior 1041 history.

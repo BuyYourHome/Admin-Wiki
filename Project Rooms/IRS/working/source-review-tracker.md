@@ -42,3 +42,7 @@ E00422, E00432 and E00436 reviewed for hierarchy, member identity and conditiona
 ## Trust Ownership Correction - 2026-09-13
 
 Wes says Browning Family Revocable Trust owns Heritage Management LLC. Current owner-confirmed mapping is trust -> Heritage, with 2025 effective date/percentage unverified. E00038 instead names BYH and must be reconciled with signed assignment/current authority. Heritage transactions being in BYH books is accounting-location evidence only; do not automatically include them on BYH's tax return. The signed 16-page trust PDF has now been visually read; revocation rights support preliminary grantor treatment, but reporting method and 2025 facts remain to verify. See [[../sources/2026-09-13-family-trust-review]].
+
+## Trust Filing History And EIN Search - 2026-09-13
+
+Wes confirms no prior trust Form 1041 filing and believes no trust EIN exists. Teams cloud folder listings and targeted searches found no EIN/SS-4 record; status is EIN not located, not confirmed absent. A signed July 13, 2023 assignment of 100% BYH membership to the family trust was also found and visually reviewed, requiring legal/tax shareholder reconciliation. See [[../sources/2026-09-13-trust-ein-search]] for paths, scope and evidence limits. Do not ask again about prior 1041 history.
