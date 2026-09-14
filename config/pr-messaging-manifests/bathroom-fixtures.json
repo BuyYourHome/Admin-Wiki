@@ -1,12 +1,28 @@
 {
-  "schema_version": 1,
+  "schema_version": 2,
   "project_room": "Bathroom Fixtures",
   "skill": "bathroom-fixtures",
   "task_id": "01a0432b-d780-7b01-aed3-e0af40daa663",
-  "dispatchable": true,
+  "dispatchable": false,
   "execution_machine": "WESSTUDIO",
   "owned_actions": ["bathroom fixture research", "fixture comparison and selection", "fixture specifications and schedules", "fixture sourcing and budgets"],
   "accepted_message_types": ["request", "question", "status", "decision", "result", "improvement"],
   "related_project_rooms": ["Jean Wright", "Lowes Order", "Home Assistant", "Network Roadmap"],
-  "limitations": ["does not purchase products or place orders", "does not authorize installation or construction changes", "does not perform Home Assistant or network configuration"]
+  "limitations": ["does not purchase products or place orders", "does not authorize installation or construction changes", "does not perform Home Assistant or network configuration"],
+  "messaging_readiness": {
+    "status": "validation_ready",
+    "machine_registration_verified_at_utc": "2026-09-14T23:35:03.8402509Z",
+    "host_access_verified_at_utc": "2026-09-14T23:35:03.8402509Z",
+    "validation_message_id": "prmsg-officeassist-wesstudio-low-token-worker-validation-20260914-002",
+    "validation_payload_hash": "468eea7ba756a71b543339b0192ad091820daf6ed39e2d0b96189df8c5078152",
+    "lifecycle_completed_at_utc": null,
+    "notification_count": 0,
+    "attempt_count": 0,
+    "dispatcher_task_id": "01a06337-1b59-7dc2-9586-6660eb7b5da7",
+    "dispatcher_automation_id": null,
+    "dispatcher_worker_task_name": "BYH PR Messaging Worker - WESSTUDIO",
+    "transport_kind": "deterministic_windows_worker",
+    "cross_machine_source": "OFFICEASSIST",
+    "manual_intervention": null
+  }
 }
