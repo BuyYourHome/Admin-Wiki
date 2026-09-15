@@ -20,3 +20,7 @@ This agrees with the initial/final boxes and equal allocations already observed 
 - Record the CPA's forwarding recommendation as source context only. Wes has not instructed this task to send documents, named recipient accountants, or changed the existing preparation/approval assignment. No external message or document transfer is authorized by the quoted CPA instruction alone.
 
 Related: [[../working/tax-filing-status]], [[../outputs/2025-return-checklist-and-gaps]].
+
+## Acceptance confirmation received September 15, 2026
+
+Wes now reports: the CPA says both NC and IRS confirmed acceptance on March 20, 2026. Map this to the reviewed Providence Landing Management LLC 2025 initial/final federal Form 1065 and NC D-403 package. Status is accepted based on CPA confirmation relayed by Wes; this task has not independently inspected the agency acknowledgment records. This supersedes the earlier unresolved submission/acceptance question and the broad statement that only SYH had filed. Remove Providence Management from the unfiled-return priority list and do not prepare or submit a duplicate original. Preserve both spouse K-1s for personal-return preparation; acceptance does not establish the deductible loss amount, payment, dissolution or the separate LLLP filing status. Retain direct acknowledgments when available without treating their absence as a reason to refile.

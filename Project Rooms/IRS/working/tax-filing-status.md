@@ -4,7 +4,7 @@ This file records durable milestone summaries and unresolved cross-year issues. 
 
 ## Current priority - 2026-09-15
 
-Wes reports that only SYH has been filed and directs urgent completion of all required forms, accepting that corrections may follow. SYH is owner-reported filed, with acceptance and jurisdiction coverage unverified. Treat other returns as unfiled for preparation; Providence specifically requires clarification because earlier owner/CPA statements described its initial/final return as filed. Do not transmit a duplicate original while resolving this conflict.
+Wes reports that only SYH has been filed and directs urgent completion of all required forms, accepting that corrections may follow. SYH is owner-reported filed, with acceptance and jurisdiction coverage unverified. Subsequent CPA confirmation relayed by Wes resolves Providence: its 2025 federal and NC returns were accepted March 20, 2026. Remove Providence Landing Management from the unfiled-return priority list. Direct agency acknowledgments have not been independently inspected; do not submit another original return.
 
 Draft preparation is active. Private interactive working PDFs for BYH Form 1120-S, Form 8825 and the documented retirement plan Form 5500-EZ were created with supported fields, together with a reconciliation report and source-row detail. They are incomplete and NOT ready to sign/file. No completed-return or readiness claim is made. The owner/class allocation, contract-for-deed transaction, remaining bookkeeping items, depreciation/basis, shareholder reporting and plan financial information still affect completion. Questions were sent to Wes on Providence submission, current book version and the property sale's beneficial owner.
 
@@ -40,8 +40,8 @@ Wes confirms Heritage Management LLC owned 2325 Cool Springs at the time of the 
 | BYH | 2025 | NC CD-401S | collecting sources | T08104 package only | IRS / Wes | Verify transmission/payment. |
 | SYH | 2025 | Federal 1065 | collecting sources | T08006; T08113-T08116 located | IRS / Wes | Verify extension and ownership. |
 | SYH | 2025 | NC D-403 | collecting sources | T08006 prior pattern | IRS / Wes | Verify state status. |
-| Providence Landing Management | 2025 | Federal 1065 | unknown | T08099; CPA clarification supplied by Wes 2026-09-13 | IRS / Wes | Initial/final treatment confirmed; verify acceptance. |
-| Providence Landing Management | 2025 | NC D-403 | unknown | T08099 prepared return | IRS / Wes | Verify state acceptance. |
+| Providence Landing Management | 2025 | Federal 1065 | accepted - CPA confirmation relayed by Wes | Acceptance March 20, 2026; owner message September 15, 2026; T08099 | IRS / Wes | No duplicate original; retain acknowledgment when available. |
+| Providence Landing Management | 2025 | NC D-403 | accepted - CPA confirmation relayed by Wes | Acceptance March 20, 2026; owner message September 15, 2026; T08099 | IRS / Wes | No duplicate original; retain acknowledgment when available. |
 | Heritage Management | 2025 | Federal income reporting | unknown | E00038 sole-member text | IRS / Wes | Determine inclusion with BYH. |
 | Heritage Management | 2025 | State obligations | unknown | Governing documents | IRS / Wes | Establish nexus and separate obligations. |
 | Investment Services | 2025 | Federal income reporting | unknown | E00031/E00149 conflicting/incomplete authority | IRS / Wes | Confirm owners, classification and activity. |
