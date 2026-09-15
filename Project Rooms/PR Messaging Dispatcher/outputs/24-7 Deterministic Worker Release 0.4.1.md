@@ -31,6 +31,12 @@ WES-VIDEOEDITOR upgraded in place under dispatcher task `01a05d0c-8031-7d92-9474
 
 The installed task now runs release `0.4.1` through hidden PowerShell with no exact-message restriction. The assisted QuickBooks worker remains disabled and the model dispatcher heartbeat remains paused. Two consecutive natural scheduled ticks completed with zero claims, submissions, model requests, errors, or attention items. No queue record or business data changed during the upgrade.
 
+## OFFICEASSIST Upgrade
+
+OFFICEASSIST upgraded in place under dispatcher task `01a09d84-a309-7591-a790-e770fcb53dee`. The worker remains owned by `low-token-officeassist` in Live mode with generation `0.4.0`; its task identity, state directory, journal entries, 60-second schedule, and Email Monitor, Doc Scan, and Invoice Entry destination pins were preserved.
+
+The installed task now runs release `0.4.1` through hidden PowerShell with no exact-message restriction. The Email Monitor heartbeat remained byte-for-byte unchanged, ACTIVE on its existing 15-minute schedule, and without an embedded dispatcher stage. Two consecutive natural scheduled ticks completed with zero claims, submissions, model requests, or errors. Only the journal's routine update timestamp changed; no business action occurred.
+
 ## Verification
 
 - Integrity and closure suite: 47 passed, 0 failed.
@@ -38,9 +44,10 @@ The installed task now runs release `0.4.1` through hidden PowerShell with no ex
 - Focused pre-submission repair suite: 12 passed, 0 failed.
 - WESSTUDIO scheduled worker: enabled, hidden, Live, every 60 seconds.
 - WES-VIDEOEDITOR scheduled worker: enabled, hidden, Live, every 60 seconds.
+- OFFICEASSIST scheduled worker: enabled, hidden, Live, every 60 seconds.
 - Post-install health: `TickComplete` with no worker error; unresolved notification evidence remains visible as attention.
 - Production business actions performed by this release work: none.
 
 ## Rollout
 
-WESSTUDIO and WES-VIDEOEDITOR are running installed release `0.4.1`. OFFICEASSIST remains on installed release `0.4.0` until it pulls the published source and runs the guarded `UpgradeLive` action under its normal Windows identity. Verify two healthy natural ticks after that upgrade. Do not run `Stage`, replace dispatcher tasks, reset journals, or reactivate model heartbeats for this upgrade.
+WESSTUDIO, WES-VIDEOEDITOR, and OFFICEASSIST are running installed release `0.4.1`. Each machine preserved its existing dispatcher task identity, owner generation, runtime state, journal, schedule, and destination pins. Model dispatcher heartbeats remain paused or absent, and Email Monitor retains only its mailbox heartbeat. The controlled three-machine upgrade is complete.
