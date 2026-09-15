@@ -13,3 +13,7 @@
 - Finalization: retain this assumption in the review packet until supported or revised; any contradictory evidence must be brought to Wes with the resulting preparation change. No filing, payment, election or later correction has been authorized by this assumption alone.
 
 Official references checked 2026-09-13: [IRS Form 5500-EZ](https://www.irs.gov/forms-pubs/about-form-5500-ez), [2025 Form 990-T instructions](https://www.irs.gov/instructions/i990t).
+
+## Solo plan review - 2026-09-14
+
+Plan setup documents are received and partly verified; do not continue treating them as forthcoming. See [[../sources/2026-09-14-solo-plan-review]] for confirmed identity/elections, separate plan and LLC identifiers, ownership-record conflict, accounting reconciliation and remaining evidence. A-001 is not cleared; plan-return and LLC obligations remain unresolved. No filing or acceptance established.

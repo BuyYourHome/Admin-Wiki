@@ -51,3 +51,7 @@ This resolves the earlier request for Wes to make the signed plan package availa
 ## Next Review
 
 Review the plan package/e-signature version and any referenced Basic Plan Document; identify which EIN belongs to the plan versus LLC; review LLC formation/ownership and reconcile the accounting activity. Look for 2025 valuations and plan filings in available sources before requesting them again. No changes to Teams, plan elections, bookkeeping or filings were made.
+
+## Review update
+
+The original table records discovery status. Subsequent review of S401-01, 02, 03, 05, 08, 15, 17 and 20 is documented, with page and text-review limits, in [[2026-09-14-solo-plan-review]].
