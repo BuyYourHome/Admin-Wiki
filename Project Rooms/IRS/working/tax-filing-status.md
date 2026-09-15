@@ -102,3 +102,10 @@ Plan setup documents are received and partly verified; do not continue treating 
 - T08049 has a payer inconsistent with its filename and is excluded from BYH's minimum count; T08064 is a zero correction and is excluded. Preserve this source conflict.
 - The wage difference is traced to additional payroll journals and four purchases coded as wages. The journals have retirement-contribution and employee-tax offsets, so they cannot simply be removed as duplicates. Owner clarification is pending; detailed amounts and source rows are in the private packet. Personal and BYH wages require joint reconciliation.
 - The private packet now preserves Heritage ownership of 2325, the 50/50 underlying allocation assumption, and CPA-reported federal/NC Providence Management acceptance. Existing form PDFs remain incomplete; no transmission or source-book changes occurred.
+
+## TaxAct draft setup - 2026-09-15
+
+- Wes explicitly authorized entering BYH address, EIN, financial records and required shareholder/trust information into his TaxAct account for preparation. This excludes payment, signatures and filing.
+- Created one 2025 Online Business 1120S draft and saved BYH name, mailing address, EIN, business activity code, principal service, cash method and incorporation date using T08000 and existing source review. Optional telephone field bookmarked for verification. No financial totals entered in this setup pass.
+- Current screen is the S-election effective-date question. T08000 page 3 explicitly reports January 1, 2024. Automatic approval review rejected saving the date for insufficient trusted confirmation. T08001 acceptance PDF was located, but fresh rendering failed; date entry remains blocked pending user confirmation or successful independent verification. Do not claim it was saved.
+- QuickBooks-integrated tax product was unavailable to Wes's account. TaxAct supported-form lists were inspected for 2025 Schedule B-1, NC CD-401S and NC D-403. No service purchase, tax filing or signature occurred.
