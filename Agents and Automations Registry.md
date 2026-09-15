@@ -451,6 +451,7 @@ Dedicated task/thread id:
 Schedule:
 
 - Every 15 minutes on weekdays from 10:00 AM through 4:45 PM Eastern.
+- The supporting `Codex - Doc Scan Scratch Downloader` Windows task checks download requests every minute through `Invoke-DocScanScratchDownloaderHidden.vbs` using `wscript.exe`; it must not launch recurring PowerShell directly or display a console.
 
 Purpose:
 
@@ -467,6 +468,8 @@ Defined in:
 
 - Canonical skill source: `C:\Codex\Wiki Files\skills\doc-scan\SKILL.md`
 - Project room: `C:\Codex\Wiki Files\Project Rooms\Doc Scan\README.md`
+- Scratch downloader installer: `C:\Codex\Wiki Files\Project Rooms\Doc Scan\tools\Install-DocScanScratchDownloader.ps1`
+- Hidden scratch downloader launcher: `C:\Codex\Wiki Files\Project Rooms\Doc Scan\tools\Invoke-DocScanScratchDownloaderHidden.vbs`
 - Historical outcome log: `C:\Codex\Wiki Files\Project Rooms\Doc Scan\working\scanned-document-action-log.md`; read-only after 2026-09-10
 - Installed local skill copy: `C:\Users\wesbr\.codex\skills\doc-scan\SKILL.md`
 - Automation: `C:\Users\wesbr\.codex\automations\doc-scan\automation.toml`
