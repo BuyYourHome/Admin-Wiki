@@ -17,3 +17,12 @@ Official references checked 2026-09-13: [IRS Form 5500-EZ](https://www.irs.gov/f
 ## Solo plan review - 2026-09-14
 
 Plan setup documents are received and partly verified; do not continue treating them as forthcoming. See [[../sources/2026-09-14-solo-plan-review]] for confirmed identity/elections, separate plan and LLC identifiers, ownership-record conflict, accounting reconciliation and remaining evidence. A-001 is not cleared; plan-return and LLC obligations remain unresolved. No filing or acceptance established.
+
+## A-002 - Heritage underlying grantor allocation
+
+- On September 15, 2026, Wes directs assuming a 50/50 split between himself and Jenny for Heritage preparation and says this should be specified in HM's operating agreement.
+- Use as an owner-directed provisional tax-allocation assumption, not as proof of executed agreement terms or historical contributions. Preserve Browning Family Revocable Trust as Heritage's legal owner from origination; do not substitute direct personal membership for trust ownership.
+- The reviewed trust identifies both spouses as grantors with lifetime benefit and revocation provisions. Heritage's EIN notice lists Form 1065. Partnership reporting remains the working preparation path pending the ownership/classification reconciliation; this instruction resolves the requested allocation assumption, not all filing determinations.
+- Do not infer equal contributed capital, tax basis, debt allocations, or loss deductibility from equal ownership. Retain separate supporting calculations.
+- Operating Agreement follow-up: the corrected Heritage agreement should accurately identify the trust as legal member and document the underlying grantor allocation in the appropriate agreement/schedule. Existing E00038 was identified by Wes as an erroneous draft naming BYH. No corrected executed agreement has been verified. This IRS note records the requested clarification; no OA or other Project Room file was edited or externally routed.
+- Return preparation remains paused until resumed. Recording this assumption does not authorize signing or filing.
