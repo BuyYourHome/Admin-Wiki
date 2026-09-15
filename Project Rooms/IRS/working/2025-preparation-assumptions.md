@@ -25,4 +25,5 @@ Plan setup documents are received and partly verified; do not continue treating 
 - The reviewed trust identifies both spouses as grantors with lifetime benefit and revocation provisions. Heritage's EIN notice lists Form 1065. Partnership reporting remains the working preparation path pending the ownership/classification reconciliation; this instruction resolves the requested allocation assumption, not all filing determinations.
 - Do not infer equal contributed capital, tax basis, debt allocations, or loss deductibility from equal ownership. Retain separate supporting calculations.
 - Operating Agreement follow-up: the corrected Heritage agreement should accurately identify the trust as legal member and document the underlying grantor allocation in the appropriate agreement/schedule. Existing E00038 was identified by Wes as an erroneous draft naming BYH. No corrected executed agreement has been verified. This IRS note records the requested clarification; no OA or other Project Room file was edited or externally routed.
-- Return preparation remains paused until resumed. Recording this assumption does not authorize signing or filing.
+- Wes resumed preparation on September 15, 2026. Apply this assumption to supported draft work; it does not authorize signing or filing.
+

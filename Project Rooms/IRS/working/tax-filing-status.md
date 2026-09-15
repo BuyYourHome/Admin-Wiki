@@ -93,3 +93,12 @@ Wes confirms no prior trust Form 1041 filing and believes no trust EIN exists. T
 ## Solo plan review - 2026-09-14
 
 Plan setup documents are received and partly verified; do not continue treating them as forthcoming. See [[../sources/2026-09-14-solo-plan-review]] for confirmed identity/elections, separate plan and LLC identifiers, ownership-record conflict, accounting reconciliation and remaining evidence. A-001 is not cleared; plan-return and LLC obligations remain unresolved. No filing or acceptance established.
+
+## Preparation resumed and electronic filing review - 2026-09-15
+
+- Wes resumed preparation after recording Heritage assumption A-002. Resume supported draft work; signatures and filing still require approval.
+- Private reconciliation packet updated at `C:\Users\wesbr\AppData\Local\BYH\IRS\2025-draft-returns\2025-Preparation-Status-and-Reconciliation.pdf`; supporting entity bridge is `Entity-reconciliation-2025.csv` in that directory. Exact control balance verified; financial figures remain outside Git.
+- BYH paper filing is not the supported path: at least ten federal returns in the 2026 filing calendar year are supported by five BYH information returns T08044-T08048, two W-2s T08102, Form 940 T08071, Q4 Form 941 T08075 and Form 1120-S. The two scanned payroll forms were visually verified as BYH. Do not count earlier 2025 quarters automatically or double-count copies/corrections. No applicable e-file waiver/exemption established. Reference: https://www.irs.gov/instructions/i1120s . This count does not establish acceptance of each return.
+- T08049 has a payer inconsistent with its filename and is excluded from BYH's minimum count; T08064 is a zero correction and is excluded. Preserve this source conflict.
+- The wage difference is traced to additional payroll journals and four purchases coded as wages. The journals have retirement-contribution and employee-tax offsets, so they cannot simply be removed as duplicates. Owner clarification is pending; detailed amounts and source rows are in the private packet. Personal and BYH wages require joint reconciliation.
+- The private packet now preserves Heritage ownership of 2325, the 50/50 underlying allocation assumption, and CPA-reported federal/NC Providence Management acceptance. Existing form PDFs remain incomplete; no transmission or source-book changes occurred.
