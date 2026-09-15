@@ -10,6 +10,10 @@ Draft preparation is active. Private interactive working PDFs for BYH Form 1120-
 
 Financial figures, draft PDFs and detailed evidence remain outside Git at C:\Users\wesbr\AppData\Local\BYH\IRS\2025-draft-returns. The willingness to amend later permits provisional preparation with disclosed assumptions; it does not support inventing entries, ignoring conflicting sources or signing/transmitting an incomplete return. No forms were filed, signed or paid by this task.
 
+## Property owner confirmation - 2026-09-15
+
+Wes confirms Heritage Management LLC owned 2325 Cool Springs at the time of the contract-for-deed sale. The owner question is resolved. Use Heritage as the tax-workpaper owner and exclude the sale from BYH corporate gross receipts; reconcile the related basis, receivable, deposit, interest and expenses to the same owner. BYH's journal location is not ownership evidence. Heritage remains owned by Browning Family Revocable Trust from formation per Wes. Sale recognition, basis and the trust/grantor reporting route remain to be completed; ownership confirmation alone does not determine taxable gain or installment eligibility. No QuickBooks change or filing performed.
+
 ## Status Vocabulary
 
 - `unknown`
