@@ -54,7 +54,7 @@ function Assert-LtUnder([string]$Path,[string]$Root) {
     }
 }
 function Get-LtPackageHash([string]$Directory) {
-    $parts=@(Get-ChildItem -LiteralPath $Directory -Filter '*.ps1' -File|Sort-Object Name|ForEach-Object{$_.Name+':'+(Get-FileHash -LiteralPath $_.FullName).Hash})
+    $parts=@(Get-ChildItem -LiteralPath $Directory -File|Where-Object {$_.Extension -in @('.ps1','.vbs')}|Sort-Object Name|ForEach-Object{$_.Name+':'+(Get-FileHash -LiteralPath $_.FullName).Hash})
     $parts+=@('Message-Integrity.ps1:'+(Get-FileHash -LiteralPath (Join-Path $Directory '..\Message-Integrity.ps1')).Hash)
     Get-LtSha256 ($parts -join "`n")
 }

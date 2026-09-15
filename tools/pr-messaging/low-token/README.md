@@ -1,5 +1,14 @@
 # Low-token dispatcher releases
 
+## Controlled release 0.4.2
+
+Release `0.4.2` preserves the `0.4.1` transport contract and changes only scheduled task launch behavior:
+
+- The task executes `wscript.exe` with `Invoke-LowTokenWorkerHidden.vbs` instead of executing `powershell.exe` directly.
+- The wrapper starts the same hash-pinned PowerShell worker with window style `0`, waits for its exit code, and accepts only the expected worker arguments and modes.
+- `UpgradeLive` accepts an existing live `0.4.0`, `0.4.1`, or partially installed `0.4.2` package and preserves owner generation, state, journal, task identity, schedule, and destination pins.
+- Package integrity now includes both `.ps1` and `.vbs` release files.
+
 ## Controlled release 0.4.1
 
 Release `0.4.1` preserves the `0.4.0` transport contract and adds two controls discovered during three-machine rollout:
