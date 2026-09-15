@@ -2,6 +2,14 @@
 
 This file records durable milestone summaries and unresolved cross-year issues. Routine document intake and sensitive tax records belong in approved secure operational storage, not Git.
 
+## Current priority - 2026-09-15
+
+Wes reports that only SYH has been filed and directs urgent completion of all required forms, accepting that corrections may follow. SYH is owner-reported filed, with acceptance and jurisdiction coverage unverified. Treat other returns as unfiled for preparation; Providence specifically requires clarification because earlier owner/CPA statements described its initial/final return as filed. Do not transmit a duplicate original while resolving this conflict.
+
+Draft preparation is active. Private interactive working PDFs for BYH Form 1120-S, Form 8825 and the documented retirement plan Form 5500-EZ were created with supported fields, together with a reconciliation report and source-row detail. They are incomplete and NOT ready to sign/file. No completed-return or readiness claim is made. The owner/class allocation, contract-for-deed transaction, remaining bookkeeping items, depreciation/basis, shareholder reporting and plan financial information still affect completion. Questions were sent to Wes on Providence submission, current book version and the property sale's beneficial owner.
+
+Financial figures, draft PDFs and detailed evidence remain outside Git at C:\Users\wesbr\AppData\Local\BYH\IRS\2025-draft-returns. The willingness to amend later permits provisional preparation with disclosed assumptions; it does not support inventing entries, ignoring conflicting sources or signing/transmitting an incomplete return. No forms were filed, signed or paid by this task.
+
 ## Status Vocabulary
 
 - `unknown`
