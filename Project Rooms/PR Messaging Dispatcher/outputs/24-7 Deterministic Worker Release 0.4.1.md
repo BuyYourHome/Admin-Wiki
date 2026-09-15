@@ -25,15 +25,22 @@ During the upgrade, the first attempt for `prmsg-wve-synthetic-exception-setup-b
 
 One later historical Create PR status notification timed out without a marker or queue acknowledgment. It remains unresolved because timeout is not proof of non-submission. The worker correctly holds that destination and does not retry it automatically.
 
+## WES-VIDEOEDITOR Upgrade
+
+WES-VIDEOEDITOR upgraded in place under dispatcher task `01a05d0c-8031-7d92-9474-ab2330008ddb`. The worker remains owned by `low-token-wes-videoeditor` in Live mode with generation `0.4.0`; its task identity, state directory, journal, 60-second schedule, and Quickbooks destination pin were preserved.
+
+The installed task now runs release `0.4.1` through hidden PowerShell with no exact-message restriction. The assisted QuickBooks worker remains disabled and the model dispatcher heartbeat remains paused. Two consecutive natural scheduled ticks completed with zero claims, submissions, model requests, errors, or attention items. No queue record or business data changed during the upgrade.
+
 ## Verification
 
 - Integrity and closure suite: 47 passed, 0 failed.
 - Full worker suite: 61 passed, 1 timing-sensitive crash-fixture assertion failed; the exact isolated test then passed 1 of 1 without a code change.
 - Focused pre-submission repair suite: 12 passed, 0 failed.
 - WESSTUDIO scheduled worker: enabled, hidden, Live, every 60 seconds.
+- WES-VIDEOEDITOR scheduled worker: enabled, hidden, Live, every 60 seconds.
 - Post-install health: `TickComplete` with no worker error; unresolved notification evidence remains visible as attention.
 - Production business actions performed by this release work: none.
 
 ## Rollout
 
-WES-VIDEOEDITOR and OFFICEASSIST remain on installed release `0.4.0` until each computer pulls the published source and runs the guarded `UpgradeLive` action under its normal Windows identity. Upgrade one machine at a time and verify two healthy ticks before proceeding to the next. Do not run `Stage`, replace dispatcher tasks, reset journals, or reactivate model heartbeats for this upgrade.
+WESSTUDIO and WES-VIDEOEDITOR are running installed release `0.4.1`. OFFICEASSIST remains on installed release `0.4.0` until it pulls the published source and runs the guarded `UpgradeLive` action under its normal Windows identity. Verify two healthy natural ticks after that upgrade. Do not run `Stage`, replace dispatcher tasks, reset journals, or reactivate model heartbeats for this upgrade.
