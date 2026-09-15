@@ -68,3 +68,7 @@ Wes identified Corp-BYH 401K LLC in Teams. Verified in the separate SellYourHome
 ## Deadline-day instruction - 2026-09-15
 
 Wes directs doing everything possible to complete required forms today even if later corrections are needed, and reports only SYH filed. This supersedes the earlier no-urgent-deadline answer. Prioritize actual due-date obligations and produce reviewable drafts with disclosed assumptions, preserving unresolved facts. See [[tax-filing-status]] for current preparation milestones, Providence status conflict and private outputs. Approval to sign/transmit is not supplied by this preparation request.
+
+## Current accounting reports confirmed - 2026-09-15
+
+Wes confirms the reports discussed in Teams Office Admin / 2025 / CPA / _BYH and _BYH 401K LLC are up to date. Use those reports as the current 2025 book baseline. The question about a newer corrected export is resolved; do not ask again solely because the reports were generated in June 2026. This confirmation does not clear the identified tax classification, owner allocation, basis, depreciation or reconciliation items. Track proposed tax adjustments separately without changing QuickBooks or source reports. Heritage ownership of the 2325 sale remains the owner-confirmed mapping.
