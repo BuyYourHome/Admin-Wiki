@@ -123,3 +123,10 @@ Plan setup documents are received and partly verified; do not continue treating 
 - IRS 2025 Form 1041 instructions allow qualifying grantor trusts using Optional Method 1 to report without a trust EIN. Spouses filing jointly can be treated as one grantor for this method if they own the entire trust. Eligibility and the reporting identity must be established; no EIN application or substitution of an arbitrary SSN is authorized or performed.
 - The TaxAct trust-name draft entry is incomplete and bookmarked. The on-screen EIN label alone does not establish a legal EIN requirement. Correct 1120-S K-1 and Schedule B-1 reporting and the software entry method remain open.
 - References: https://www.irs.gov/instructions/i1041 (Optional Filing Methods for Certain Grantor Type Trusts); https://www.irs.gov/instructions/i1120s (Schedule K-1 shareholder identification).
+
+### Trust payer identification clarification - 2026-09-15
+
+- Asked whether the family trust had used Wes's SSN, Jenny's SSN, or neither on bank accounts or Forms W-9. Wes answered neither. Record no existing use of either grantor SSN as owner-confirmed; do not ask the same historical question again.
+- TaxAct's trust interview exposes a separate responsible-party name and SSN/EIN screen after trust identity and residency. Its existence does not resolve the two-grantor K-1 allocation or prove that a blank trust EIN will pass e-file validation. Those remain pending. No reporting identity was selected or SSN entered.
+- Trust name persisted on re-entry. Identity, residency, responsible-party and shares questions are bookmarked/incomplete. Do not interpret a single draft shareholder record as a final decision to allocate all income to one spouse.
+- Verified saved draft deductions: advertising and business rent, from the private BYH class workpaper. Other deduction categories displaying zero remain uncompleted rather than verified zero. No filing occurred.
