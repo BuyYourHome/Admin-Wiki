@@ -116,3 +116,10 @@ Plan setup documents are received and partly verified; do not continue treating 
 - Saved full calendar-year treatment. Corrected the incomplete mailing-address setup by adding the source-supported city and state; TaxAct displayed the completed address and a successful-save confirmation.
 - Reached Other Tax Info and bookmarked the assumptions screen. Selected supported answers for payments requiring information returns, not being the first S-corporation return, and LLC status. Remaining answers have not been represented as verified.
 - Requested confirmation about 2025 digital assets and whether all required Forms 1099 were or will be filed. Business information is saved; no financial totals, signature, purchase or filing occurred in this continuation.
+
+### Trust EIN owner confirmation - 2026-09-15
+
+- Wes explicitly confirms Browning Family Revocable Trust has no EIN. Supersedes the earlier EIN-not-located status; do not ask him to locate a nonexistent trust EIN.
+- IRS 2025 Form 1041 instructions allow qualifying grantor trusts using Optional Method 1 to report without a trust EIN. Spouses filing jointly can be treated as one grantor for this method if they own the entire trust. Eligibility and the reporting identity must be established; no EIN application or substitution of an arbitrary SSN is authorized or performed.
+- The TaxAct trust-name draft entry is incomplete and bookmarked. The on-screen EIN label alone does not establish a legal EIN requirement. Correct 1120-S K-1 and Schedule B-1 reporting and the software entry method remain open.
+- References: https://www.irs.gov/instructions/i1041 (Optional Filing Methods for Certain Grantor Type Trusts); https://www.irs.gov/instructions/i1120s (Schedule K-1 shareholder identification).
