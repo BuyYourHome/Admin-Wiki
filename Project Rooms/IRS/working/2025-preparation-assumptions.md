@@ -27,3 +27,12 @@ Plan setup documents are received and partly verified; do not continue treating 
 - Operating Agreement follow-up: the corrected Heritage agreement should accurately identify the trust as legal member and document the underlying grantor allocation in the appropriate agreement/schedule. Existing E00038 was identified by Wes as an erroneous draft naming BYH. No corrected executed agreement has been verified. This IRS note records the requested clarification; no OA or other Project Room file was edited or externally routed.
 - Wes resumed preparation on September 15, 2026. Apply this assumption to supported draft work; it does not authorize signing or filing.
 
+
+## A-003 - Expected BYH W-2 corrections
+
+- On September 15, 2026, Wes instructs assuming the W-2s will be corrected. Continue supported draft preparation with correction pending; do not treat the previously submitted W-2 totals as the final controlling amounts.
+- Wes confirms the retirement-related payroll journals were reported as employee compensation on Form 941 and corrects his stated amount to match the books. Preserve compensation treatment; do not reclassify these journals as owner distributions.
+- Reconcile each employee's annual wages, payroll-tax amounts and retirement reporting to the quarterly 941s and payroll detail before setting corrected W-2 or personal-return amounts. The instruction does not establish that the journal amounts are additional to, or overlap with, the existing W-2 wages. Do not automatically add the two sets together.
+- Expected corrections are an owner-directed preparation assumption, not evidence a W-2c/W-3c was prepared, submitted or accepted. No payroll filing, signature or external transmission is authorized by this note.
+- The separate purchases coded as wages remain a proposed owner-distribution treatment pending factual confirmation; this W-2 instruction does not settle their treatment.
+- Private financial reconciliation: `C:\Users\wesbr\AppData\Local\BYH\IRS\2025-draft-returns\2025-Preparation-Status-and-Reconciliation.pdf`. This assumption supersedes that packet's request to confirm whether the retirement-related journals were compensation; employee allocation and corrected totals remain open.
