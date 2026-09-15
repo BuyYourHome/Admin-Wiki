@@ -37,6 +37,8 @@ Provide the host-local wake-up layer for Project Room messages addressed to task
 14. Dispatcher health consumers must honor the schedule metadata and `next_scheduled_run_at_utc` written by the claim helper. Closed nights and weekends are expected inactivity, not stale health.
 15. A successful CLI queue submission to a destination reported as `notLoaded` may remain pending until that existing task is opened. Preserve the original submission and reconcile it; do not send a second wake-up merely because the task was unloaded.
 16. Configure every scheduled worker action with PowerShell hidden-window mode so the one-minute poll never displays a console or steals focus from the interactive user.
+17. Never retry a `Delivery Ambiguous` attempt automatically. Release `0.4.1` may classify a non-timeout, nonzero adapter exit as `NotDelivered` only when the permanent submission marker is absent. Timeouts, acknowledgments, existing markers, receipts, or conflicting evidence remain unresolved.
+18. Use the guarded administrative closure only for an exhausted, old no-receipt ambiguity after exact owner, identity, hash, record-version, attempt-history, and Wes-authorization checks. Closure releases only the transport slot and never claims recipient delivery or business completion.
 
 ## Boundaries
 
@@ -56,7 +58,8 @@ Provide the host-local wake-up layer for Project Room messages addressed to task
 - WESSTUDIO automation id: `pr-messaging-dispatcher`.
 - OFFICEASSIST may retain its Email Monitor dispatcher stage only until its separate worker and dispatcher task pass unattended validation. Then remove only that embedded stage.
 - For OFFICEASSIST validation, use `-AllowActiveEmbeddedFallback` only with automation `officeassist-morning-email-summary-and-instruction-monitor`. The machine-scoped Validation owner blocks its embedded dispatcher before the deterministic worker starts; the exception keeps mailbox monitoring active but never permits overlapping claims.
-- Install release `0.4.0` through `tools\pr-messaging\low-token\Install-LowTokenWorker.ps1`: `Stage`, one exact synthetic `StartValidation`, and `PromoteLive` only after verified completion. `Rollback` preserves journals and central records.
+- Install release `0.4.1` through `tools\pr-messaging\low-token\Install-LowTokenWorker.ps1`: `Stage`, one exact synthetic `StartValidation`, and `PromoteLive` only after verified completion. Existing live `0.4.0` machines use `UpgradeLive`, which preserves the owner generation, journal, state directory, task identity, and schedule while replacing the hash-pinned package. `Rollback` preserves journals and central records.
+- Staging admits only an explicit `ready` and dispatchable manifest, or one explicit `validation_ready`, non-dispatchable manifest with an exact validation message id. Never stage from a legacy bare `dispatchable: true` declaration.
 - If source files change after `Stage`, pull the corrective commit and refresh the staged package before continuing. Never assume the profile-local installed package changed merely because the Git repository changed.
 - Machine-scoped ownership must block the legacy dispatcher for only the migrated destination machine. Never activate overlapping transport owners.
 - Scheduled tasks, profile-local packages, health files, and central transport-owner records are runtime state outside Git. Record verified deployment status in the canonical repository from the coordinating task; do not require a runtime-only machine to create an empty commit.

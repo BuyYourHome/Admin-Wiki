@@ -1,7 +1,7 @@
 [CmdletBinding()]
 param(
     [Parameter(Mandatory = $true)]
-    [ValidateSet("Inspect", "ConditionalClaim", "ReconcileAttempt", "Initialize", "Send", "Get", "List", "StartAttempt", "MarkAttempt", "Accept", "StartProcessing", "Update", "Complete", "Block", "NeedsWes", "Reject", "SyncSpool", "Health")]
+    [ValidateSet("Inspect", "ConditionalClaim", "ReconcileAttempt", "AdministrativeCloseExhaustedAmbiguous", "ReconcileProvenPreSubmissionFailure", "Initialize", "Send", "Get", "List", "StartAttempt", "MarkAttempt", "Accept", "StartProcessing", "Update", "Complete", "Block", "NeedsWes", "Reject", "SyncSpool", "Health")]
     [string]$Action,
 
     [string]$QueuePath = "\\WES-VIDEOEDITOR\BYH-PRMessaging$",
@@ -33,11 +33,14 @@ param(
     [string]$TransportOwner,
     [string]$Generation,
     [string]$ExpectedVersion,
+    [string]$ExpectedRecordVersion,
     [string]$ExpectedHash,
     [string]$ExpectedConfigHash,
     [string]$ClientConfigPath,
     [string]$ManifestDirectory,
     [ValidateSet("Validation","Live")][string]$Mode = "Validation",
+    [string]$AuthorizationReference,
+    [string]$WorkerConfigPath,
     [switch]$ForceOffline
 )
 
@@ -276,6 +279,7 @@ if (-not (Test-Path -LiteralPath $QueuePath)) { throw "Central PR messaging host
 
 if ($Action -eq "List") {
     $items = @(Get-ChildItem -LiteralPath (Join-Path $QueuePath "records") -Filter "*.json" -File -ErrorAction SilentlyContinue | ForEach-Object { Read-Record -Path $_.FullName })
+    if (-not [string]::IsNullOrWhiteSpace($DestinationMachine)) { $items = @($items | Where-Object { $_.destination.machine -eq $DestinationMachine }) }
     if (-not [string]::IsNullOrWhiteSpace($DestinationProjectRoom)) { $items = @($items | Where-Object { $_.destination.project_room -eq $DestinationProjectRoom }) }
     if (-not [string]::IsNullOrWhiteSpace($DestinationTaskId)) { $items = @($items | Where-Object { $_.destination.task_id -eq $DestinationTaskId }) }
     if (-not [string]::IsNullOrWhiteSpace($State)) { $items = @($items | Where-Object { $_.state -eq $State }) }
@@ -289,6 +293,14 @@ Invoke-WithQueueLock {
     $recordPath = Get-RecordPath -Root $QueuePath -Id $MessageId
     $record = Read-Record -Path $recordPath
     if ($Action -eq "Get") { $record | ConvertTo-Json -Depth 30; return }
+    if ($Action -in @('AdministrativeCloseExhaustedAmbiguous','ReconcileProvenPreSubmissionFailure')) {
+        if($Action -eq 'AdministrativeCloseExhaustedAmbiguous'){
+            Invoke-LtAdministrativeCloseExhaustedAmbiguous $record $recordPath | ConvertTo-Json -Depth 30
+        } else {
+            Invoke-LtReconcileProvenPreSubmissionFailure $record $recordPath | ConvertTo-Json -Depth 30
+        }
+        return
+    }
 
     switch ($Action) {
         "StartAttempt" {

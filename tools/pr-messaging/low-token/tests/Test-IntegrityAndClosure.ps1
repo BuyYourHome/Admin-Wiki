@@ -38,14 +38,166 @@ foreach($fault in @('receipt','result','state','time','hash')){
         Assert (!(Test-PrMessageTerminal $r));Assert (Test-LtDestinationOutstanding $r)
     }
 }
+Check 'exhausted ambiguous predicate requires complete old no-receipt evidence' {
+    $f=Fixture;$r=Record $f;$old=[DateTime]::UtcNow.AddMinutes(-60).ToString('o')
+    $r.state='Delivery Ambiguous';$r.attempt_count=1;$r.max_attempts=1
+    $r.attempts=@(@{attempt_id='ambiguous-attempt';started_at_utc=$old;completed_at_utc=$old;outcome='DeliveryAmbiguous'})
+    Assert (Test-PrExhaustedAmbiguousRecord $r 30)
+    foreach($fault in @('receipt','pending','unexhausted','recent')){
+        $x=Clone $r
+        switch($fault){
+            receipt {$x.receipt=@{task_id=$f.task}}
+            pending {$x.attempts[0].outcome='Pending';$x.attempts[0].completed_at_utc=$null}
+            unexhausted {$x.max_attempts=2}
+            recent {$x.attempts[0].completed_at_utc=[DateTime]::UtcNow.ToString('o')}
+        }
+        Assert (!(Test-PrExhaustedAmbiguousRecord $x 30))
+    }
+}
+Check 'exhausted ambiguity closure releases transport without claiming delivery' {
+    $f=Fixture;$r=Record $f;$old=[DateTime]::UtcNow.AddMinutes(-60).ToString('o')
+    $r.state='Delivery Ambiguous';$r.attempt_count=1;$r.max_attempts=1
+    $r.attempts=@(@{attempt_id='ambiguous-attempt';started_at_utc=$old;completed_at_utc=$old;outcome='DeliveryAmbiguous'})
+    $immutable=ImmutableText $r
+    $r|Add-Member administrative_closure ([pscustomobject][ordered]@{
+        schema_version=1;message_id=$r.message_id;payload_hash=$r.payload_hash
+        disposition='ExhaustedAmbiguousUndelivered';authorized_by='Wes'
+        authorization_reference='Fixture authorization';actor_project_room='PR Messaging Dispatcher'
+        actor_task_id=$f.source;actor_machine=$env:COMPUTERNAME
+        transport_owner='low-token-fixture';transport_generation='g1';transport_owner_task_id=$f.source
+        closed_at_utc=[DateTime]::UtcNow.ToString('o');delivery_claimed=$false
+        business_completion_claimed=$false;detail='Administrative transport closure only.'
+    })
+    Assert (Test-PrAdministrativeClosure $r) 'Closure evidence was not valid.'
+    Assert (!(Test-LtDestinationOutstanding $r)) 'Valid closure did not release destination.'
+    Assert ((ImmutableText $r) -ceq $immutable) 'Closure changed immutable content.'
+    Assert (!$r.receipt -and !$r.result -and $r.state -ceq 'Delivery Ambiguous') 'Closure claimed recipient state.'
+}
+function NewAmbiguousFixture {
+    $f=Fixture;$r=Record $f;$old=[DateTime]::UtcNow.AddMinutes(-60).ToString('o')
+    $r.state='Delivery Ambiguous';$r.attempt_count=1;$r.max_attempts=1
+    $r.attempts=@(@{attempt_id='ambiguous-attempt';started_at_utc=$old;completed_at_utc=$old;outcome='DeliveryAmbiguous';transport_owner='fixture-worker';transport_generation='g1'})
+    SaveRecord $f $r
+    $ownerPath=Get-LtTransportOwnerPath $f.queue $env:COMPUTERNAME
+    Write-LtJson $ownerPath @{schema_version=1;owner='low-token-fixture';generation='g1';mode='Live';machine=$env:COMPUTERNAME;sid=[Security.Principal.WindowsIdentity]::GetCurrent().User.Value;task_id=$f.source}
+    return $f
+}
+function CloseAmbiguousFixture($f,[string]$Version,[string]$Hash,[string]$Task,[string]$Reference='Wes authorized fixture closure') {
+    & $manager -FixtureRoot $f.root -Action AdministrativeCloseExhaustedAmbiguous -QueuePath $f.queue -MessageId $f.id `
+        -ActorProjectRoom 'PR Messaging Dispatcher' -ActorTaskId $Task -ExpectedRecordVersion $Version -ExpectedHash $Hash `
+        -TransportOwner 'low-token-fixture' -Generation 'g1' -Mode Live -AuthorizationReference $Reference `
+        -Detail 'Administrative transport closure only; no delivery or business completion claimed.'|ConvertFrom-Json
+}
+function NewPreSubmissionFailureFixture {
+    $f=NewAmbiguousFixture
+    $r=Record $f
+    $r.max_attempts=3
+    $r.attempts[0]|Add-Member detail 'Submission may have happened.' -Force
+    SaveRecord $f $r
+    $cfg=[pscustomobject][ordered]@{
+        schema_version=1;release='0.4.1';expected_machine=$env:COMPUTERNAME
+        expected_sid=[Security.Principal.WindowsIdentity]::GetCurrent().User.Value
+        owner='low-token-fixture';generation='g1';dispatcher_task_id=$f.source
+        state_directory=$f.state;destinations=@([pscustomobject]@{
+            project_room='Test Recipient';task_id=$f.task;machine=$env:COMPUTERNAME
+        })
+    }
+    $f.workerConfig=Join-Path $f.root 'worker-config.json'
+    Write-LtJson $f.workerConfig $cfg
+    $entry=[pscustomobject][ordered]@{
+        message_id=$f.id;dispatch_id=$f.id;destination_task_id=$f.task
+        payload_hash=$r.payload_hash;attempt_id='ambiguous-attempt';phase='unresolved'
+        outcome='DeliveryAmbiguous';adapter_release='0.4.1'
+        submission_evidence=[pscustomobject]@{
+            timed_out=$false;exit_code=1;queue_acknowledged=$false
+        }
+    }
+    Write-LtJson (Join-Path $f.state 'journal.json') ([pscustomobject][ordered]@{
+        schema_version=2;machine=$env:COMPUTERNAME;sid=$cfg.expected_sid
+        owner=$cfg.owner;generation=$cfg.generation;entries=@($entry)
+    })
+    return $f
+}
+function RepairPreSubmissionFixture($f,[string]$Version,[string]$Hash,[string]$Task,[string]$Reference='Wes authorized fixture repair') {
+    & $manager -FixtureRoot $f.root -Action ReconcileProvenPreSubmissionFailure -QueuePath $f.queue -MessageId $f.id `
+        -AttemptId 'ambiguous-attempt' -ActorProjectRoom 'PR Messaging Dispatcher' -ActorTaskId $Task `
+        -ExpectedRecordVersion $Version -ExpectedHash $Hash -TransportOwner 'low-token-fixture' -Generation 'g1' `
+        -Mode Live -AuthorizationReference $Reference -WorkerConfigPath $f.workerConfig `
+        -Detail 'Pinned adapter exited before creating its permanent submission marker; no notification occurred.'|ConvertFrom-Json
+}
+Check 'manager closes only exact exhausted ambiguity and is idempotent' {
+    $f=NewAmbiguousFixture;$before=Record $f;$version=Get-PrMessageDigest ($before|ConvertTo-Json -Depth 30 -Compress)
+    $r=CloseAmbiguousFixture $f $version $before.payload_hash $f.source
+    Assert (Test-PrAdministrativeClosure $r) 'Manager closure evidence invalid.'
+    Assert (!(Test-LtDestinationOutstanding $r)) 'Manager closure did not release destination.'
+    Assert ((ImmutableText $r) -ceq (ImmutableText $before)) 'Manager closure changed immutable content.'
+    Assert (!$r.receipt -and !$r.result -and $r.state -ceq 'Delivery Ambiguous') 'Manager closure claimed recipient state.'
+    $file=Join-Path $f.queue ('records\'+$f.id+'.json');$afterHash=(Get-FileHash $file).Hash
+    CloseAmbiguousFixture $f $version $before.payload_hash $f.source|Out-Null
+    Assert ((Get-FileHash $file).Hash -ceq $afterHash) 'Idempotent call rewrote record.'
+    Assert (@((Record $f).events|Where-Object event -eq 'AdministrativelyClosed').Count -eq 1) 'Closure event count was not one.'
+}
+foreach($fault in @('actor','version','hash','receipt','recent','owner','authorization')){
+    Check ('exhausted ambiguity closure rejects '+$fault) {
+        $f=NewAmbiguousFixture;$r=Record $f;$task=$f.source;$reference='Wes authorized fixture closure'
+        switch($fault){
+            actor {$task='33333333-3333-4333-8333-333333333333'}
+            receipt {$r.receipt=@{task_id=$f.task}}
+            recent {$r.attempts[0].completed_at_utc=[DateTime]::UtcNow.ToString('o')}
+            owner {$o=Read-LtJson (Get-LtTransportOwnerPath $f.queue $env:COMPUTERNAME);$o.owner='foreign';Write-LtJson (Get-LtTransportOwnerPath $f.queue $env:COMPUTERNAME) $o}
+            authorization {$reference=''}
+        }
+        SaveRecord $f $r;$version=Get-PrMessageDigest ($r|ConvertTo-Json -Depth 30 -Compress);$hash=$r.payload_hash
+        if($fault -eq 'version'){$version='a'*64};if($fault -eq 'hash'){$hash='b'*64}
+        $path=Join-Path $f.queue ('records\'+$f.id+'.json');$before=(Get-FileHash $path).Hash;$caught=$false
+        try{CloseAmbiguousFixture $f $version $hash $task $reference|Out-Null}catch{$caught=$true}
+        Assert $caught;Assert ((Get-FileHash $path).Hash -ceq $before)
+    }
+}
+Check 'manager repairs only proven marker-free pre-submission ambiguity' {
+    $f=NewPreSubmissionFailureFixture;$before=Record $f
+    $version=Get-PrMessageDigest ($before|ConvertTo-Json -Depth 30 -Compress)
+    $r=RepairPreSubmissionFixture $f $version $before.payload_hash $f.source
+    Assert ($r.state -ceq 'Queued' -and $r.attempts[0].outcome -ceq 'NotDelivered')
+    Assert ($r.attempts[0].correction.reason -ceq 'ProvenPreSubmissionFailure')
+    Assert (!$r.receipt -and !$r.result -and $r.attempt_count -eq 1)
+    Assert ((ImmutableText $r) -ceq (ImmutableText $before)) 'Repair changed immutable content.'
+    Assert (@($r.events|Where-Object event -eq 'DeliveryAmbiguityCorrected').Count -eq 1)
+    $nextVersion=Get-PrMessageDigest ($r|ConvertTo-Json -Depth 30 -Compress)
+    $file=Join-Path $f.queue ('records\'+$f.id+'.json');$afterHash=(Get-FileHash $file).Hash
+    RepairPreSubmissionFixture $f $nextVersion $r.payload_hash $f.source|Out-Null
+    Assert ((Get-FileHash $file).Hash -ceq $afterHash) 'Idempotent repair rewrote record.'
+}
+foreach($fault in @('actor','version','hash','receipt','timeout','exit','ack','marker','owner','authorization','config')){
+    Check ('pre-submission repair rejects '+$fault) {
+        $f=NewPreSubmissionFailureFixture;$r=Record $f;$task=$f.source;$reference='Wes authorized fixture repair'
+        switch($fault){
+            actor {$task='33333333-3333-4333-8333-333333333333'}
+            receipt {$r.receipt=@{task_id=$f.task}}
+            timeout {$j=Read-LtJson (Join-Path $f.state 'journal.json');$j.entries[0].submission_evidence.timed_out=$true;Write-LtJson (Join-Path $f.state 'journal.json') $j}
+            exit {$j=Read-LtJson (Join-Path $f.state 'journal.json');$j.entries[0].submission_evidence.exit_code=0;Write-LtJson (Join-Path $f.state 'journal.json') $j}
+            ack {$j=Read-LtJson (Join-Path $f.state 'journal.json');$j.entries[0].submission_evidence.queue_acknowledged=$true;Write-LtJson (Join-Path $f.state 'journal.json') $j}
+            marker {$marker=Get-LtSubmissionMarkerPath $f.state $f.id 'ambiguous-attempt';New-Item -ItemType Directory -Path (Split-Path -Parent $marker) -Force|Out-Null;Write-LtJson $marker @{submitted=$true}}
+            owner {$o=Read-LtJson (Get-LtTransportOwnerPath $f.queue $env:COMPUTERNAME);$o.owner='foreign';Write-LtJson (Get-LtTransportOwnerPath $f.queue $env:COMPUTERNAME) $o}
+            authorization {$reference=''}
+            config {$c=Read-LtJson $f.workerConfig;$c.release='0.4.0';Write-LtJson $f.workerConfig $c}
+        }
+        SaveRecord $f $r;$version=Get-PrMessageDigest ($r|ConvertTo-Json -Depth 30 -Compress);$hash=$r.payload_hash
+        if($fault -eq 'version'){$version='a'*64};if($fault -eq 'hash'){$hash='b'*64}
+        $path=Join-Path $f.queue ('records\'+$f.id+'.json');$beforeHash=(Get-FileHash $path).Hash;$caught=$false
+        try{RepairPreSubmissionFixture $f $version $hash $task $reference|Out-Null}catch{$caught=$true}
+        Assert $caught;Assert ((Get-FileHash $path).Hash -ceq $beforeHash)
+    }
+}
 # Read canonical snapshots once; all closure mutations below target a fresh temp fixture.
 $oldId='prmsg-invoice-entry-poyner-spruill-qb-existence-audit-20260831-001'
 $newId='prmsg-invoice-entry-poyner-spruill-qb-existence-audit-20260831-002'
 $original=(& $canonicalManager -Action Get -MessageId $oldId)|ConvertFrom-Json
 $successor=(& $canonicalManager -Action Get -MessageId $newId)|ConvertFrom-Json
+$canonicalClosureValid=Test-PrAdministrativeClosure $original
 # Reconstruct only the isolated fixture's pre-closure snapshot on later test runs.
 # Never remove the real canonical disposition or its audit event.
-if(Test-PrAdministrativeClosure $original){
+if($canonicalClosureValid){
     $original.PSObject.Properties.Remove('administrative_closure')
     $original.events=@($original.events|Where-Object event -cne 'AdministrativelyClosed')
 }
@@ -56,6 +208,10 @@ $oldPath=Join-Path $root ('records\'+$oldId+'.json');$newPath=Join-Path $root ('
 function ResetClosureFixture{Write-LtJson $oldPath $original;Write-LtJson $newPath $successor}
 function CloseFixture($Version,$Task=$actor){& $canonicalManager -Action AdministrativeCloseSuperseded -QueuePath $root -MessageId $oldId -ActorProjectRoom 'PR Messaging Dispatcher' -ActorTaskId $Task -ExpectedRecordVersion $Version|ConvertFrom-Json}
 Check 'exact administrative closure preserves history and is idempotent' {
+    if($env:COMPUTERNAME -cne 'WES-VIDEOEDITOR'){
+        Assert $canonicalClosureValid 'Existing canonical closure lost backward compatibility.'
+        return
+    }
     ResetClosureFixture;$before=Read-LtJson $oldPath;$v=Get-PrMessageDigest ($before|ConvertTo-Json -Depth 30 -Compress);$r=CloseFixture $v
     Assert (Test-PrAdministrativeClosure $r);Assert (!(Test-LtDestinationOutstanding $r))
     Assert ($r.state -ceq 'Blocked' -and !$r.receipt -and !$r.result -and $r.attempt_count -eq 1)

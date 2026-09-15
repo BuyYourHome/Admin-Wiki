@@ -68,6 +68,16 @@ function Assert-LtFixture([string]$Root,[string[]]$Paths) {
 function Get-LtConfigHash($Client,$Manifests) {
     Get-LtSha256 (([ordered]@{client=$Client;manifests=@($Manifests | Sort-Object project_room)} | ConvertTo-Json -Depth 30 -Compress))
 }
+function Test-LtStageManifest($Manifest,$Registration,[string]$Machine) {
+    if(!$Manifest -or !$Registration -or $Manifest.project_room -cne $Registration.project_room -or
+        $Manifest.task_id -cne $Registration.task_id -or $Manifest.execution_machine -cne $Machine){return $false}
+    $ready=($Manifest.dispatchable -is [bool] -and $Manifest.dispatchable -eq $true -and
+        $Manifest.messaging_readiness.status -ceq 'ready')
+    $validationReady=($Manifest.dispatchable -is [bool] -and $Manifest.dispatchable -eq $false -and
+        $Manifest.messaging_readiness.status -ceq 'validation_ready' -and
+        ![string]::IsNullOrWhiteSpace([string]$Manifest.messaging_readiness.validation_message_id))
+    return ($ready -or $validationReady)
+}
 function Test-LtRecord($Record,$Client,$Manifests,[string]$Machine,[string]$Mode,[string]$MessageId,$AllRecords=@()) {
     if (!$Record) { return 'MissingTarget' }
     if ($MessageId -and $Record.message_id -cne $MessageId) { return 'WrongTarget' }
@@ -140,4 +150,10 @@ function Test-LtQueueAcknowledgment($Response,[string]$MessageId,[string]$Thread
         Assert-LtUuid $a.queue_message_id
         return ($a.submitted -is [bool] -and $a.submitted -eq $true -and $a.accepted -is [bool] -and $a.accepted -eq $false -and $a.message_id -ceq $MessageId -and $a.thread_id -ceq $ThreadId -and $a.attempt_id -ceq $AttemptId)
     } catch { return $false }
+}
+function Test-LtProvenPreSubmissionFailure($Response,[string]$SubmissionMarkerPath) {
+    return ($null -ne $Response -and $Response.timed_out -eq $false -and
+        $null -ne $Response.exit_code -and [int]$Response.exit_code -ne 0 -and
+        ![string]::IsNullOrWhiteSpace($SubmissionMarkerPath) -and
+        !(Test-Path -LiteralPath $SubmissionMarkerPath))
 }

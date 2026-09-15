@@ -119,14 +119,50 @@ Check 'adapter failure becomes ambiguity not retry' {$f=Fixture;Write-LtJson (Jo
 Check 'adapter timeout is bounded and ambiguous' {$f=Fixture;Write-LtJson (Join-Path $f.root 'adapter-control.json') @{behavior='timeout'};$r=Tick $f;Assert ($r.elapsed_ms -lt 55000);Tick $f|Out-Null;Assert ((CountSubmissions $f) -eq 1 -and (Record $f).state -eq 'Delivery Ambiguous')}
 Check 'singleton prevents concurrent worker' {$f=Fixture;$s=[IO.File]::Open((Join-Path $f.state 'worker.lock'),[IO.FileMode]::OpenOrCreate,[IO.FileAccess]::ReadWrite,[IO.FileShare]::None);try{$r=Tick $f;Assert ($r.error -eq 'WorkerAlreadyRunning')}finally{$s.Dispose()}}
 Check 'CLI adapter refuses real submission' {$cli=(Get-Command codex.exe).Source;try{& (Join-Path $release 'Invoke-CodexQueueAdapter.ps1') -ThreadId '11111111-1111-4111-8111-111111111111' -DispatcherTaskId '22222222-2222-4222-8222-222222222222' -MessageId 'fixture-test' -PayloadHash ('a'*64) -CliPath $cli -ExpectedCliHash (Get-FileHash $cli).Hash|Out-Null;throw 'not rejected'}catch{Assert ($_.Exception.Message -eq 'RealSubmissionDisabledInDevelopmentRelease')}}
+Check 'production adapter source recognizes release 0.4.1' {
+    $text=Get-Content -Raw -LiteralPath (Join-Path $release 'Invoke-CodexQueueAdapter.ps1')
+    Assert ($text -match "'0\.4\.0','0\.4\.1'" -and $text -match "'0\.3\.0-assisted','0\.4\.0','0\.4\.1'")
+}
+Check 'only nonzero marker-free adapter exit proves no submission' {
+    $missing=Join-Path ([IO.Path]::GetTempPath()) ('missing-'+[guid]::NewGuid().ToString('N'))
+    Assert (Test-LtProvenPreSubmissionFailure ([pscustomobject]@{timed_out=$false;exit_code=1}) $missing)
+    Assert (!(Test-LtProvenPreSubmissionFailure ([pscustomobject]@{timed_out=$true;exit_code=$null}) $missing))
+    $present=$missing+'.json';Set-Content -LiteralPath $present -Value '{}'
+    Assert (!(Test-LtProvenPreSubmissionFailure ([pscustomobject]@{timed_out=$false;exit_code=1}) $present))
+    Remove-Item -LiteralPath $present -Force
+}
 Check 'Windows argv quoting round trip' {$p=Invoke-LtProcess $ps @('-NoProfile','-ExecutionPolicy','Bypass','-File',(Join-Path $PSScriptRoot 'Echo-Arguments.ps1'),'with spaces','quote"inside','trailing\','$(do not execute); & text') 5;$a=$p.stdout|ConvertFrom-Json;Assert ($a[0] -ceq 'with spaces' -and $a[1] -ceq 'quote"inside' -and $a[2] -ceq 'trailing\' -and $a[3] -ceq '$(do not execute); & text')}
 Check 'unresolved journal reconciles late receipt on worker restart' {$f=Fixture;Write-LtJson (Join-Path $f.root 'adapter-control.json') @{behavior='error'};Tick $f|Out-Null;Tick $f|Out-Null;& $manager -FixtureRoot $f.root -Action Accept -QueuePath $f.queue -MessageId $f.id -ActorTaskId $f.task -ActorProjectRoom 'Test Recipient'|Out-Null;Tick $f|Out-Null;Assert ((Record $f).attempts[0].outcome -eq 'Delivered');Assert ((CountSubmissions $f) -eq 1)}
+Check 'valid administrative closure closes unresolved journal without resubmission' {
+    $f=Fixture;Write-LtJson (Join-Path $f.root 'adapter-control.json') @{behavior='error'};Tick $f|Out-Null;Tick $f|Out-Null
+    $r=Record $f;$r.attempts[0].completed_at_utc=[DateTime]::UtcNow.AddMinutes(-60).ToString('o')
+    $r|Add-Member administrative_closure ([pscustomobject][ordered]@{
+        schema_version=1;message_id=$r.message_id;payload_hash=$r.payload_hash
+        disposition='ExhaustedAmbiguousUndelivered';authorized_by='Wes';authorization_reference='Fixture authorization'
+        actor_project_room='PR Messaging Dispatcher';actor_task_id=$f.source;actor_machine=$env:COMPUTERNAME
+        transport_owner='low-token-fixture';transport_generation='g1';transport_owner_task_id=$f.source
+        closed_at_utc=[DateTime]::UtcNow.ToString('o');delivery_claimed=$false;business_completion_claimed=$false;detail='Fixture closure.'
+    })
+    SaveRecord $f $r;Tick $f|Out-Null
+    $j=Read-LtJson (Join-Path $f.state 'journal.json')
+    Assert ($j.entries[0].phase -ceq 'closed' -and $j.entries[0].outcome -ceq 'ExhaustedAmbiguousUndelivered')
+    Assert ((CountSubmissions $f) -eq 1)
+}
 Check 'package drift fails closed' {$f=Fixture;$c=Read-LtJson $f.config;$c.package_sha256='bad';Write-LtJson $f.config $c;$r=Tick $f;Assert ($r.error -eq 'PackageReleaseMismatch' -and $r.claims -eq 0)}
 Check 'rollback flag cannot enable unfiltered validation' {$f=Fixture;$c=Read-LtJson $f.config;$c|Add-Member legacy_queue_remains_authoritative $true;Write-LtJson $f.config $c;$r=& $worker -ConfigPath $f.config -Mode Validation|ConvertFrom-Json;Assert ($r.error -eq 'ValidationFilterRequired')}
 Check 'duplicate registration rejected' {$f=Fixture;$c=Read-LtJson $f.client;$c.registrations=@($c.registrations)+@($c.registrations);Write-LtJson $f.client $c;Assert ((Claim $f).reason -eq 'RegistrationMismatch')}
 Check 'unauthorized synthetic authority rejected' {$f=Fixture;$r=Record $f;$r.authorization.authorized_by='unknown';$r.payload_hash=Get-LtPayloadHash $r;SaveRecord $f $r;Assert ((Claim $f).reason -eq 'ValidationAuthorizationMissing')}
 Check 'fixture drain never claims' {$f=Fixture;$r=Tick $f Drain;Assert ($r.status -eq 'DrainComplete' -and $r.claims -eq 0 -and (Record $f).attempt_count -eq 0)}
-Check 'installer plan stages generalized production release' {$x=& (Join-Path $release 'Install-LowTokenWorker.ps1') -Action Plan|ConvertFrom-Json;Assert ($x.release -eq '0.4.0' -and !$x.stage_changes_transport -and $x.schedule -eq 'Every 60 seconds, 24/7' -and $x.validation -match 'synthetic')}
+Check 'installer plan stages generalized production release' {$x=& (Join-Path $release 'Install-LowTokenWorker.ps1') -Action Plan|ConvertFrom-Json;Assert ($x.release -eq '0.4.1' -and !$x.stage_changes_transport -and $x.schedule -eq 'Every 60 seconds, 24/7' -and $x.validation -match 'synthetic')}
+Check 'stage manifest requires explicit readiness evidence' {
+    $reg=@{project_room='Test Recipient';task_id='11111111-1111-4111-8111-111111111111'}
+    $m=@{project_room=$reg.project_room;task_id=$reg.task_id;execution_machine=$env:COMPUTERNAME;dispatchable=$true}
+    Assert (!(Test-LtStageManifest $m $reg $env:COMPUTERNAME))
+    $m.messaging_readiness=@{status='ready'};Assert (Test-LtStageManifest $m $reg $env:COMPUTERNAME)
+    $m.dispatchable=$false;$m.messaging_readiness=@{status='validation_ready';validation_message_id='synthetic-validation'};Assert (Test-LtStageManifest $m $reg $env:COMPUTERNAME)
+    $m.messaging_readiness.validation_message_id='';Assert (!(Test-LtStageManifest $m $reg $env:COMPUTERNAME))
+    [void]$m.Remove('dispatchable');$m.messaging_readiness.validation_message_id='synthetic-validation';Assert (!(Test-LtStageManifest $m $reg $env:COMPUTERNAME))
+}
 Check 'machine-scoped live owner permits one atomic claim' {
     $f=Fixture
     Remove-Item -LiteralPath (Join-Path $f.queue '.transport-owner.json')

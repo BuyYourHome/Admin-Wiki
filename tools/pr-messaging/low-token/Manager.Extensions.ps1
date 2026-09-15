@@ -20,6 +20,112 @@ function Assert-LtOwner {
         if($o.mode -cne 'Live'){throw 'ExclusiveLiveOwnershipRequired'}
     } else { throw 'UnsupportedTransportMode' }
 }
+function Invoke-LtAdministrativeCloseExhaustedAmbiguous($Record,[string]$RecordPath) {
+    if($ActorProjectRoom -cne 'PR Messaging Dispatcher' -or
+        [string]::IsNullOrWhiteSpace($ActorTaskId) -or
+        [string]::IsNullOrWhiteSpace($AuthorizationReference) -or
+        [string]::IsNullOrWhiteSpace($Detail)){throw 'AdministrativeClosureAuthorityMissing'}
+    if(Test-PrAdministrativeClosure $Record){
+        if($Record.administrative_closure.disposition -cne 'ExhaustedAmbiguousUndelivered' -or
+            $Record.administrative_closure.actor_task_id -cne $ActorTaskId){throw 'AdministrativeClosureConflict'}
+        return $Record
+    }
+    if($Record.administrative_closure){throw 'AdministrativeClosureConflict'}
+    if(!(Test-PrExhaustedAmbiguousRecord $Record 30)){throw 'ExhaustedAmbiguousRecordRequired'}
+    if($ExpectedHash -cnotmatch '^[0-9a-f]{64}$' -or $ExpectedHash -cne $Record.payload_hash){throw 'AdministrativeClosureHashMismatch'}
+    if($ExpectedRecordVersion -cnotmatch '^[0-9a-f]{64}$' -or
+        (Get-PrMessageDigest ($Record|ConvertTo-Json -Depth 30 -Compress)) -cne $ExpectedRecordVersion){throw 'AdministrativeClosureVersionConflict'}
+    $ownerPath=Get-LtTransportOwnerPath $QueuePath ([string]$Record.destination.machine)
+    if(!(Test-Path -LiteralPath $ownerPath)){throw 'AdministrativeClosureLiveOwnerRequired'}
+    $owner=Read-LtJson $ownerPath
+    if($owner.mode -cne 'Live' -or $owner.machine -cne $Record.destination.machine -or
+        $owner.task_id -cne $ActorTaskId -or $owner.owner -cne $TransportOwner -or
+        $owner.generation -cne $Generation -or $owner.sid -cne [Security.Principal.WindowsIdentity]::GetCurrent().User.Value -or
+        $env:COMPUTERNAME -cne $Record.destination.machine){throw 'AdministrativeClosureOwnerMismatch'}
+    $closure=[pscustomobject][ordered]@{
+        schema_version=1;message_id=$Record.message_id;payload_hash=$Record.payload_hash
+        disposition='ExhaustedAmbiguousUndelivered';authorized_by='Wes'
+        authorization_reference=$AuthorizationReference;actor_project_room=$ActorProjectRoom
+        actor_task_id=$ActorTaskId;actor_machine=$env:COMPUTERNAME
+        transport_owner=$owner.owner;transport_generation=$owner.generation;transport_owner_task_id=$owner.task_id
+        closed_at_utc=Get-UtcTimestamp;delivery_claimed=$false;business_completion_claimed=$false;detail=$Detail
+    }
+    $Record|Add-Member administrative_closure $closure
+    Add-Event $Record 'AdministrativelyClosed' $Detail $ActorProjectRoom $ActorTaskId
+    Write-JsonAtomic $RecordPath $Record
+    return $Record
+}
+function Invoke-LtReconcileProvenPreSubmissionFailure($Record,[string]$RecordPath) {
+    if($ActorProjectRoom -cne 'PR Messaging Dispatcher' -or
+        [string]::IsNullOrWhiteSpace($ActorTaskId) -or
+        [string]::IsNullOrWhiteSpace($AuthorizationReference) -or
+        [string]::IsNullOrWhiteSpace($Detail)){throw 'PreSubmissionRepairAuthorityMissing'}
+    if($ExpectedHash -cnotmatch '^[0-9a-f]{64}$' -or $ExpectedHash -cne $Record.payload_hash -or
+        !(Get-PrMessageHashEvidence $Record).valid){throw 'PreSubmissionRepairHashMismatch'}
+    if($ExpectedRecordVersion -cnotmatch '^[0-9a-f]{64}$' -or
+        (Get-PrMessageDigest ($Record|ConvertTo-Json -Depth 30 -Compress)) -cne $ExpectedRecordVersion){throw 'PreSubmissionRepairVersionConflict'}
+    if([string]::IsNullOrWhiteSpace($AttemptId)){throw 'PreSubmissionRepairAttemptRequired'}
+    $attempts=@($Record.attempts|Where-Object attempt_id -CEQ $AttemptId)
+    if($attempts.Count -ne 1){throw 'PreSubmissionRepairAttemptMismatch'}
+    $attempt=$attempts[0]
+    $alreadyRepaired=($Record.state -ceq 'Queued' -and $attempt.outcome -ceq 'NotDelivered' -and
+        @($Record.events|Where-Object {$_.event -ceq 'DeliveryAmbiguityCorrected' -and $_.detail -match [regex]::Escape($AttemptId)}).Count -eq 1)
+    if($alreadyRepaired){return $Record}
+    if($Record.authoritative -ne $true -or $Record.state -cne 'Delivery Ambiguous' -or $Record.receipt -or $Record.result -or
+        $attempt.outcome -cne 'DeliveryAmbiguous' -or [string]::IsNullOrWhiteSpace([string]$attempt.completed_at_utc)){
+        throw 'PreSubmissionRepairAmbiguousAttemptRequired'
+    }
+    $ownerPath=Get-LtTransportOwnerPath $QueuePath ([string]$Record.destination.machine)
+    if(!(Test-Path -LiteralPath $ownerPath)){throw 'PreSubmissionRepairLiveOwnerRequired'}
+    $owner=Read-LtJson $ownerPath
+    if($owner.mode -cne 'Live' -or $owner.machine -cne $Record.destination.machine -or
+        $owner.task_id -cne $ActorTaskId -or $owner.owner -cne $TransportOwner -or
+        $owner.generation -cne $Generation -or $owner.sid -cne [Security.Principal.WindowsIdentity]::GetCurrent().User.Value -or
+        $env:COMPUTERNAME -cne $Record.destination.machine){throw 'PreSubmissionRepairOwnerMismatch'}
+    if([string]::IsNullOrWhiteSpace($WorkerConfigPath) -or !(Test-Path -LiteralPath $WorkerConfigPath)){throw 'PreSubmissionRepairConfigMissing'}
+    if($FixtureRoot){Assert-LtUnder $WorkerConfigPath $FixtureRoot}else{
+        $expectedConfig=Join-Path $env:LOCALAPPDATA 'BuyYourHome\PRMessaging\low-token\releases\0.4.1\low-token\config.json'
+        if([IO.Path]::GetFullPath($WorkerConfigPath) -cne [IO.Path]::GetFullPath($expectedConfig)){throw 'PreSubmissionRepairConfigPathMismatch'}
+    }
+    $cfg=Read-LtJson $WorkerConfigPath
+    if($cfg.release -cne '0.4.1' -or $cfg.expected_machine -cne $env:COMPUTERNAME -or
+        $cfg.expected_sid -cne $owner.sid -or $cfg.dispatcher_task_id -cne $ActorTaskId -or
+        $cfg.owner -cne $owner.owner -or $cfg.generation -cne $owner.generation -or
+        !(Test-LtPinnedDestination $cfg $Record.destination)){throw 'PreSubmissionRepairConfigMismatch'}
+    if($FixtureRoot){Assert-LtUnder $cfg.state_directory $FixtureRoot}else{
+        Assert-LtUnder $cfg.state_directory (Join-Path $env:LOCALAPPDATA 'BuyYourHome\PRMessaging\low-token')
+    }
+    $journalPath=Join-Path $cfg.state_directory 'journal.json'
+    if(!(Test-Path -LiteralPath $journalPath)){throw 'PreSubmissionRepairJournalMissing'}
+    $journal=Read-LtJson $journalPath
+    if($journal.schema_version -ne 2 -or $journal.machine -cne $env:COMPUTERNAME -or
+        $journal.sid -cne $owner.sid -or $journal.owner -cne $owner.owner -or
+        $journal.generation -cne $owner.generation){throw 'PreSubmissionRepairJournalIdentityMismatch'}
+    $entries=@($journal.entries|Where-Object attempt_id -CEQ $AttemptId)
+    if($entries.Count -ne 1){throw 'PreSubmissionRepairJournalAttemptMismatch'}
+    $entry=$entries[0]
+    $evidence=$entry.submission_evidence
+    if($entry.message_id -cne $Record.message_id -or $entry.payload_hash -cne $Record.payload_hash -or
+        $entry.destination_task_id -cne $Record.destination.task_id -or $entry.phase -cne 'unresolved' -or
+        $entry.outcome -cne 'DeliveryAmbiguous' -or $entry.adapter_release -cne '0.4.1' -or
+        !$evidence -or $evidence.timed_out -ne $false -or [int]$evidence.exit_code -eq 0 -or
+        $evidence.queue_acknowledged -eq $true){throw 'PreSubmissionRepairEvidenceMismatch'}
+    $markerPath=Get-LtSubmissionMarkerPath $cfg.state_directory $Record.message_id $AttemptId
+    if(Test-Path -LiteralPath $markerPath){throw 'PreSubmissionRepairMarkerPresent'}
+    $priorDetail=[string]$attempt.detail
+    $attempt.outcome='NotDelivered'
+    $attempt.detail=$Detail
+    $attempt|Add-Member correction ([pscustomobject][ordered]@{
+        schema_version=1;reason='ProvenPreSubmissionFailure';prior_outcome='DeliveryAmbiguous'
+        prior_detail=$priorDetail;authorization_reference=$AuthorizationReference
+        corrected_by_task_id=$ActorTaskId;corrected_on_machine=$env:COMPUTERNAME
+        corrected_at_utc=Get-UtcTimestamp;delivery_claimed=$false
+    }) -Force
+    $Record.state='Queued'
+    Add-Event $Record 'DeliveryAmbiguityCorrected' "Attempt $AttemptId corrected to NotDelivered: $Detail" $ActorProjectRoom $ActorTaskId
+    Write-JsonAtomic $RecordPath $Record
+    return $Record
+}
 function Invoke-LtManagerOperation {
     Assert-LtId $MessageId
     $path = Get-RecordPath -Root $QueuePath -Id $MessageId

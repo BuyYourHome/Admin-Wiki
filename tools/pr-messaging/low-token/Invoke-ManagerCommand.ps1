@@ -8,7 +8,8 @@ param(
     [string]$Mode,[string]$ClientConfigPath,[string]$ManifestDirectory,
     [string]$ActorTaskId,[string]$ActorProjectRoom,[string]$MessageId,
     [string]$ExpectedHash,[string]$ExpectedVersion,[string]$ExpectedConfigHash,
-    [string]$AttemptId,[string]$AttemptOutcome,[string]$Detail
+    [string]$AttemptId,[string]$AttemptOutcome,[string]$Detail,
+    [string]$DestinationMachine
 )
 $ErrorActionPreference='Stop'
 # Windows PowerShell's default console encoding can best-fit Unicode quotes into

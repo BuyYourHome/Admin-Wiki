@@ -47,15 +47,41 @@ function Test-PrSupersededRecord($Record) {
         $Record.attempt_count -eq 1 -and @($Record.attempts).Count -eq 1 -and
         $Record.attempts[0].attempt_id -ceq 'invalid-control-total-20260831-001' -and $Record.attempts[0].outcome -ceq 'Failed')
 }
+function Test-PrExhaustedAmbiguousRecord($Record,[int]$MinimumAgeMinutes=30) {
+    if($MinimumAgeMinutes -lt 1 -or !(Get-PrMessageHashEvidence $Record).valid -or
+        $Record.authoritative -ne $true -or $Record.state -cne 'Delivery Ambiguous' -or
+        $Record.receipt -or $Record.result -or [int]$Record.max_attempts -lt 1 -or
+        [int]$Record.attempt_count -ne [int]$Record.max_attempts){return $false}
+    $attempts=@($Record.attempts)
+    if($attempts.Count -ne [int]$Record.attempt_count -or
+        @($attempts|Where-Object {$_.outcome -eq 'Pending' -or [string]::IsNullOrWhiteSpace([string]$_.completed_at_utc)}).Count -or
+        !@($attempts|Where-Object outcome -eq 'DeliveryAmbiguous').Count){return $false}
+    try{
+        $latest=@($attempts|ForEach-Object{[DateTimeOffset]::Parse($_.completed_at_utc)}|Sort-Object -Descending|Select-Object -First 1)[0]
+        return (([DateTimeOffset]::UtcNow-$latest).TotalMinutes -ge $MinimumAgeMinutes)
+    }catch{return $false}
+}
 function Test-PrAdministrativeClosure($Record) {
-    if(!(Test-PrSupersededRecord $Record)){return $false}
     $c=$Record.administrative_closure
-    if(!$c -or $c.schema_version -ne 1 -or $c.disposition -cne 'SupersededUndelivered' -or
+    if(!$c -or $c.schema_version -ne 1 -or
         $c.message_id -cne $Record.message_id -or $c.payload_hash -cne $Record.payload_hash -or
-        $c.superseded_by -cne 'prmsg-invoice-entry-poyner-spruill-qb-existence-audit-20260831-002' -or
-        $c.authorized_by -cne 'Wes' -or $c.actor_task_id -cne '01a05d0c-8031-7d92-9474-ab2330008ddb' -or
+        $c.authorized_by -cne 'Wes' -or [string]::IsNullOrWhiteSpace([string]$c.actor_task_id) -or
         $c.delivery_claimed -isnot [bool] -or $c.delivery_claimed -ne $false -or
         $c.business_completion_claimed -isnot [bool] -or $c.business_completion_claimed -ne $false){return $false}
     try{[void][DateTimeOffset]::Parse($c.closed_at_utc)}catch{return $false}
-    return $true
+    if($c.disposition -ceq 'SupersededUndelivered'){
+        return ((Test-PrSupersededRecord $Record) -and
+            $c.superseded_by -ceq 'prmsg-invoice-entry-poyner-spruill-qb-existence-audit-20260831-002' -and
+            $c.actor_task_id -ceq '01a05d0c-8031-7d92-9474-ab2330008ddb')
+    }
+    if($c.disposition -ceq 'ExhaustedAmbiguousUndelivered'){
+        return ((Test-PrExhaustedAmbiguousRecord $Record 1) -and
+            ![string]::IsNullOrWhiteSpace([string]$c.authorization_reference) -and
+            $c.actor_project_room -ceq 'PR Messaging Dispatcher' -and
+            $c.actor_task_id -ceq $c.transport_owner_task_id -and
+            $c.actor_machine -ceq $Record.destination.machine -and
+            $c.transport_owner -cmatch '^low-token-[a-z0-9-]+$' -and
+            ![string]::IsNullOrWhiteSpace([string]$c.transport_generation))
+    }
+    return $false
 }

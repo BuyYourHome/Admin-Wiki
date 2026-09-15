@@ -1,6 +1,6 @@
 [CmdletBinding()]
 param(
-    [ValidateSet('Plan','Stage','StartValidation','PromoteLive','Rollback')]
+    [ValidateSet('Plan','Stage','StartValidation','PromoteLive','UpgradeLive','Rollback')]
     [string]$Action='Plan',
     [string]$ExpectedMachine='WES-VIDEOEDITOR',
     [string]$DispatcherTaskId='01a05d0c-8031-7d92-9474-ab2330008ddb',
@@ -9,7 +9,7 @@ param(
     [string]$ValidationMessageId
 )
 $ErrorActionPreference='Stop'
-$release='0.4.0'
+$release='0.4.1'
 $queue='\\WES-VIDEOEDITOR\BYH-PRMessaging$'
 $task="BYH PR Messaging Worker - $ExpectedMachine"
 $root=Join-Path $env:LOCALAPPDATA "BuyYourHome\PRMessaging\low-token\releases\$release"
@@ -20,6 +20,7 @@ $ownerPath=Join-Path (Join-Path $queue '.transport-owners') ($ExpectedMachine.To
 $ps='C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe'
 $legacyTask='BYH PR Messaging Assisted Worker - Quickbooks'
 $files=@('Common.ps1','Process.ps1','Canary.Guards.ps1','Invoke-LowTokenWorker.ps1','Invoke-CodexQueueAdapter.ps1','Invoke-ManagerCommand.ps1')
+. (Join-Path $PSScriptRoot 'Common.ps1')
 
 if($Action -eq 'Plan'){
     $embeddedFallbackException=([bool]$AllowActiveEmbeddedFallback -and $ExpectedMachine -ceq 'OFFICEASSIST' -and $LegacyAutomationId -ceq 'officeassist-morning-email-summary-and-instruction-monitor')
@@ -28,6 +29,48 @@ if($Action -eq 'Plan'){
 }
 if($env:COMPUTERNAME -cne $ExpectedMachine){throw 'InstallationMachineMismatch'}
 if($DispatcherTaskId -cnotmatch '^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$'){throw 'InvalidDispatcherTaskId'}
+
+if($Action -eq 'UpgradeLive'){
+    $oldRoot=Join-Path $env:LOCALAPPDATA 'BuyYourHome\PRMessaging\low-token\releases\0.4.0'
+    $oldPkg=Join-Path $oldRoot 'low-token';$oldConfigPath=Join-Path $oldPkg 'config.json'
+    if(!(Test-Path -LiteralPath $oldConfigPath)){throw 'Live040ConfigMissing'}
+    $oldCfg=Read-LtJson $oldConfigPath
+    if($oldCfg.release -cne '0.4.0' -or $oldCfg.expected_machine -cne $ExpectedMachine -or
+        $oldCfg.dispatcher_task_id -cne $DispatcherTaskId -or (Get-LtPackageHash $oldPkg) -cne $oldCfg.package_sha256){throw 'Live040ConfigurationMismatch'}
+    $owner=Read-LtJson $ownerPath
+    if($owner.mode -cne 'Live' -or $owner.machine -cne $ExpectedMachine -or
+        $owner.task_id -cne $DispatcherTaskId -or $owner.owner -cne $oldCfg.owner -or
+        $owner.generation -cne $oldCfg.generation -or $owner.sid -cne $oldCfg.expected_sid){throw 'Live040OwnerMismatch'}
+    $scheduled=Get-ScheduledTask -TaskName $task -ErrorAction Stop
+    Disable-ScheduledTask -TaskName $task|Out-Null
+    $deadline=[DateTime]::UtcNow.AddSeconds(60)
+    while((Get-ScheduledTask -TaskName $task).State -eq 'Running' -and [DateTime]::UtcNow -lt $deadline){Start-Sleep -Milliseconds 250}
+    if((Get-ScheduledTask -TaskName $task).State -eq 'Running'){
+        Enable-ScheduledTask -TaskName $task|Out-Null
+        throw 'LiveWorkerDidNotBecomeIdle'
+    }
+    try{
+        New-Item -ItemType Directory -Path $pkg -Force|Out-Null
+        foreach($f in $files){Copy-Item -LiteralPath (Join-Path $PSScriptRoot $f) -Destination (Join-Path $pkg $f) -Force}
+        Copy-Item -LiteralPath (Join-Path $PSScriptRoot '..\Message-Integrity.ps1') -Destination (Join-Path $root 'Message-Integrity.ps1') -Force
+        . (Join-Path $pkg 'Common.ps1')
+        $cfg=$oldCfg
+        $cfg.release=$release
+        $cfg.manager_sha256=(Get-FileHash 'C:\Codex\Wiki Files\tools\pr-messaging\Manage-ProjectRoomMessage.ps1').Hash
+        $cfg.adapter_path=Join-Path $pkg 'Invoke-CodexQueueAdapter.ps1'
+        $cfg.adapter_sha256=(Get-FileHash $cfg.adapter_path).Hash
+        $cfg.package_sha256=Get-LtPackageHash $pkg
+        Write-LtJson $configPath $cfg
+        $taskAction=New-ScheduledTaskAction -Execute $ps -Argument "-NoProfile -WindowStyle Hidden -ExecutionPolicy Bypass -File `"$(Join-Path $pkg 'Invoke-LowTokenWorker.ps1')`" -ConfigPath `"$configPath`" -Mode Live"
+        Set-ScheduledTask -TaskName $task -Action $taskAction|Out-Null
+        Enable-ScheduledTask -TaskName $task|Out-Null
+    }catch{
+        Enable-ScheduledTask -TaskName $task -ErrorAction SilentlyContinue|Out-Null
+        throw
+    }
+    [pscustomobject]@{release=$release;status='LiveUpgraded';task=$task;task_enabled=$true;config_path=$configPath;owner=$owner.owner;generation_preserved=$owner.generation;state_directory=$cfg.state_directory;journal_preserved=$true}|ConvertTo-Json -Depth 8
+    return
+}
 
 if($Action -eq 'Rollback'){
     if(Test-Path -LiteralPath $configPath){
@@ -62,7 +105,7 @@ if($Action -eq 'Stage'){
     $destinations=@()
     foreach($reg in @($client.registrations)){
         if($reg.task_id -ceq $DispatcherTaskId){continue}
-        $matches=@($manifests|Where-Object {$_.project_room -ceq $reg.project_room -and $_.task_id -ceq $reg.task_id -and $_.execution_machine -ceq $ExpectedMachine -and ($_.dispatchable -eq $true -or $_.messaging_readiness.status -ceq 'validation_ready')})
+        $matches=@($manifests|Where-Object {Test-LtStageManifest $_ $reg $ExpectedMachine})
         if($matches.Count -eq 1){$destinations+=@{project_room=$reg.project_room;task_id=$reg.task_id;machine=$ExpectedMachine}}
     }
     if(!$destinations.Count){throw 'NoDispatchableLocalDestinations'}

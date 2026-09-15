@@ -1,7 +1,7 @@
 [CmdletBinding()]
 param(
     [Parameter(Mandatory = $true)]
-    [ValidateSet("Initialize", "Send", "Get", "List", "StartAttempt", "MarkAttempt", "Accept", "StartProcessing", "Update", "Complete", "Block", "NeedsWes", "Reject", "SyncSpool", "Health", "AdministrativeCloseSuperseded", "ConditionalClaim", "ReconcileAttempt")]
+    [ValidateSet("Initialize", "Send", "Get", "List", "StartAttempt", "MarkAttempt", "Accept", "StartProcessing", "Update", "Complete", "Block", "NeedsWes", "Reject", "SyncSpool", "Health", "AdministrativeCloseSuperseded", "AdministrativeCloseExhaustedAmbiguous", "ReconcileProvenPreSubmissionFailure", "ConditionalClaim", "ReconcileAttempt")]
     [string]$Action,
 
     [string]$QueuePath = "\\WES-VIDEOEDITOR\BYH-PRMessaging$",
@@ -33,7 +33,9 @@ param(
     [switch]$ForceOffline,
     [string]$TransportOwner,[string]$Generation,[string]$Mode,
     [string]$ClientConfigPath,[string]$ManifestDirectory,
-    [string]$ExpectedHash,[string]$ExpectedVersion,[string]$ExpectedConfigHash
+    [string]$ExpectedHash,[string]$ExpectedVersion,[string]$ExpectedConfigHash,
+    [string]$AuthorizationReference,
+    [string]$WorkerConfigPath
 )
 
 $ErrorActionPreference = "Stop"
@@ -266,6 +268,7 @@ if (-not (Test-Path -LiteralPath $QueuePath)) { throw "Central PR messaging host
 
 if ($Action -eq "List") {
     $items = @(Get-ChildItem -LiteralPath (Join-Path $QueuePath "records") -Filter "*.json" -File -ErrorAction SilentlyContinue | ForEach-Object { Read-Record -Path $_.FullName })
+    if (-not [string]::IsNullOrWhiteSpace($DestinationMachine)) { $items = @($items | Where-Object { $_.destination.machine -eq $DestinationMachine }) }
     if (-not [string]::IsNullOrWhiteSpace($DestinationProjectRoom)) { $items = @($items | Where-Object { $_.destination.project_room -eq $DestinationProjectRoom }) }
     if (-not [string]::IsNullOrWhiteSpace($DestinationTaskId)) { $items = @($items | Where-Object { $_.destination.task_id -eq $DestinationTaskId }) }
     if (-not [string]::IsNullOrWhiteSpace($State)) { $items = @($items | Where-Object { $_.state -eq $State }) }
@@ -288,6 +291,22 @@ Invoke-WithQueueLock {
         if($Mode -ceq 'Canary' -and $QueuePath -cne '\\WES-VIDEOEDITOR\BYH-PRMessaging$'){throw 'CanonicalMutationRequiresExactCanary'}
         if($Mode -notin @('Canary','Validation','Live') -or $QueuePath -cne '\\WES-VIDEOEDITOR\BYH-PRMessaging$'){throw 'CanonicalMutationRequiresAuthorizedWorker'}
         Invoke-LtManagerOperation | ConvertTo-Json -Depth 30
+        return
+    }
+
+    if($Action -in @('AdministrativeCloseExhaustedAmbiguous','ReconcileProvenPreSubmissionFailure')){
+        . "$PSScriptRoot\low-token\Common.ps1"
+        . "$PSScriptRoot\low-token\Manager.Extensions.ps1"
+        if($QueuePath -cne '\\WES-VIDEOEDITOR\BYH-PRMessaging$'){
+            $full=[IO.Path]::GetFullPath($QueuePath);$temp=[IO.Path]::GetFullPath([IO.Path]::GetTempPath()).TrimEnd('\')+'\'
+            if(!$full.StartsWith($temp,[StringComparison]::OrdinalIgnoreCase) -or !(Test-Path -LiteralPath (Join-Path $full '.administrative-closure-fixture'))){throw 'AdministrativeClosureQueueNotAuthorized'}
+            $walk=$full;while($walk.Length -ge $temp.TrimEnd('\').Length){if((Get-Item -LiteralPath $walk -Force).Attributes -band [IO.FileAttributes]::ReparsePoint){throw 'AdministrativeClosureReparsePointForbidden'};$walk=Split-Path -Parent $walk}
+        }
+        if($Action -eq 'AdministrativeCloseExhaustedAmbiguous'){
+            Invoke-LtAdministrativeCloseExhaustedAmbiguous $record $recordPath | ConvertTo-Json -Depth 30
+        } else {
+            Invoke-LtReconcileProvenPreSubmissionFailure $record $recordPath | ConvertTo-Json -Depth 30
+        }
         return
     }
 

@@ -1,8 +1,20 @@
 # Low-token dispatcher releases
 
-## Production candidate 0.4.0
+## Controlled release 0.4.1
 
-Release `0.4.0` is the generalized, staged 24/7 transport worker. It discovers only exact local registrations that match one dispatchable canonical manifest, pins those destinations at staging, polls once per minute without a model call, atomically claims at most one record per tick, and queues one wake-up to the exact destination task. Empty ticks report `model_requests: 0`.
+Release `0.4.1` preserves the `0.4.0` transport contract and adds two controls discovered during three-machine rollout:
+
+- `Stage` now rejects legacy manifests that have bare `dispatchable: true` without explicit `messaging_readiness.status: ready`. The only alternate staging state is `validation_ready`, `dispatchable: false`, with one exact validation message id.
+- The production adapter creates a permanent message/attempt marker immediately before invoking `codex queue`. A non-timeout, nonzero adapter exit with no marker is proven pre-submission failure and is reconciled as `NotDelivered`; timeout, acknowledgment, marker-present, or conflicting evidence remains ambiguous and is never retried automatically.
+- `AdministrativeCloseExhaustedAmbiguous` can release an exhausted, old no-receipt transport hold only with exact immutable hash, record version, live owner, dispatcher task, machine, Windows identity, generation, and Wes-authorization evidence. It preserves the ambiguous state and attempts and claims neither delivery nor business completion.
+- `ReconcileProvenPreSubmissionFailure` is a guarded repair for an already-recorded ambiguity only when the matching local `0.4.1` journal proves a non-timeout/nonzero adapter exit and the derived permanent marker is absent. It restores `Queued` with the exact attempt marked `NotDelivered`, preserving the prior ambiguity detail in correction evidence.
+- `UpgradeLive` refreshes an existing live `0.4.0` installation in place while preserving its owner generation, state directory, journal, dispatcher identity, schedule, and machine-local destination pins.
+
+The worker scopes manager inventory to its own destination machine, avoids a redundant second queue read when recovery did not alter a central record, and allows a longer bounded inventory read within the existing 50-second tick budget.
+
+## Production baseline 0.4.0
+
+Release `0.4.0` is the generalized, staged 24/7 transport worker. It discovers exact local registrations and manifest identities, pins those destinations at staging, polls once per minute without a model call, atomically claims at most one record per tick, and queues one wake-up to the exact destination task. Empty ticks report `model_requests: 0`. Release `0.4.1` supersedes its staging and ambiguity-handling controls.
 
 Deployment is deliberately three-phase: `Stage` installs a disabled task and writes no transport owner; `StartValidation` disables the prior WES-VIDEOEDITOR assisted task, installs a machine-scoped validation owner, and permits only one exact queued synthetic; `PromoteLive` requires that synthetic's verified one-attempt Completed lifecycle before enabling general local delivery. `Rollback` removes only this release and its owned machine record while preserving journals and central records. It does not silently reactivate an older dispatcher.
 
