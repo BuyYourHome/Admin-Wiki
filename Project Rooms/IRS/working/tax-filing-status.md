@@ -109,3 +109,10 @@ Plan setup documents are received and partly verified; do not continue treating 
 - Created one 2025 Online Business 1120S draft and saved BYH name, mailing address, EIN, business activity code, principal service, cash method and incorporation date using T08000 and existing source review. Optional telephone field bookmarked for verification. No financial totals entered in this setup pass.
 - Current screen is the S-election effective-date question. T08000 page 3 explicitly reports January 1, 2024. Automatic approval review rejected saving the date for insufficient trusted confirmation. T08001 acceptance PDF was located, but fresh rendering failed; date entry remains blocked pending user confirmation or successful independent verification. Do not claim it was saved.
 - QuickBooks-integrated tax product was unavailable to Wes's account. TaxAct supported-form lists were inspected for 2025 Schedule B-1, NC CD-401S and NC D-403. No service purchase, tax filing or signature occurred.
+
+### Election-date approval resolved and setup review
+
+- Wes expressly confirmed January 1, 2024 as BYH's S-election effective date. Entered it in TaxAct and continued successfully; this supersedes the date-entry blocker above.
+- Saved full calendar-year treatment. Corrected the incomplete mailing-address setup by adding the source-supported city and state; TaxAct displayed the completed address and a successful-save confirmation.
+- Reached Other Tax Info and bookmarked the assumptions screen. Selected supported answers for payments requiring information returns, not being the first S-corporation return, and LLC status. Remaining answers have not been represented as verified.
+- Requested confirmation about 2025 digital assets and whether all required Forms 1099 were or will be filed. Business information is saved; no financial totals, signature, purchase or filing occurred in this continuation.
