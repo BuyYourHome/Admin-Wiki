@@ -541,6 +541,8 @@ Reject or hold an incomplete or internally conflicting package. Return the missi
 
 #### Delegated Authorization
 
+Josh Kennedy's only permitted delivery address is `IRAManager@SellYourHomeRaleigh.com`. Check To, CC, and BCC on every Josh delivery, including drafts, final invoices, corrections, summaries, and replies. His printed invoice contact `profcyber0077@gmail.com` is not an email destination. Hold any package naming another Josh address and return the recipient correction to the originating PR for a new immutable version and hash; never substitute recipients inside an existing package. Preserve required Wes and Jenny copies, and reconcile any prior submission before sending the corrected version.
+
 Apply `Project Room Delegation Contract.md`, section `Email Delivery Authorization Evidence`. Before the send tool call, read the cited authority into this task's current execution context and record the package-bound authority check. On refusal, preserve the exact sanitized response and distinguish platform review from Outlook service errors and local interpretations. Do not announce a universal direct-in-this-task approval requirement without evidence. Rule changes alone do not demonstrate that a platform denial is resolved.
 
 A complete package from another registered Project Room carries Wes's authorization into Email Monitor when all of these conditions pass:

@@ -104,6 +104,8 @@ Poyner Spruill payable invoices are BYH legal expenses for `20-HM - 115 Rosebroo
 
 ## Email Boundary
 
+All email intended for Josh Kennedy must use `IRAManager@SellYourHomeRaleigh.com` only, in To, CC, or BCC. The Gmail contact printed on his invoice is not a delivery address. Preserve required Wes and Jenny copies. A held package with the wrong Josh address requires a new linked immutable version after prior-send reconciliation; do not alter the original package.
+
 Invoice Entry never sends email directly. It prepares the exact package and hands it to Email Monitor's Email Delivery workflow. A send is complete only after Email Monitor returns verified OfficeAssist Sent Items evidence. Do not retry a verified or ambiguous delivery without reconciliation.
 
 Every invoice approved by Wes must have one Sent Items-verified approved-invoice email delivered to `WesWill@BuyYourHomeLLC.com` with the exact approved PDF attached. A verified approved-status delivery that already includes Wes and that PDF satisfies the requirement; otherwise route a separate Wes-only package. Vendor-contact restrictions do not suppress the Wes copy. Filing, workbook posting, an unsent draft, and approval evidence are not substitutes for delivery. Deduplicate before sending.

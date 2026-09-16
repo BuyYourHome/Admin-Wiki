@@ -55,6 +55,8 @@ Before sending, deduplicate by both delivery request ID and payload hash, check 
 
 ## Sender And Recipient Safety
 
+- Josh Kennedy's only permitted email delivery address is `IRAManager@SellYourHomeRaleigh.com`, including To, CC, and BCC. Never deliver to his invoice-contact address `profcyber0077@gmail.com` or another Josh address. This applies to all workflow email, not only Time Cards. Hold a package with the wrong address and return it to its origin for a new immutable version; do not silently rewrite its recipients. Preserve required Wes/Jenny copies and reconcile prior send evidence before any corrected delivery.
+
 - Send from `OfficeAssist@BuyYourHomeLLC.com` when acting as Jean or Office Assistant unless Wes explicitly names another sender for that specific message.
 - Do not say the message is "on Wes's behalf" unless Wes explicitly asks for that wording for that specific message or the actual sending identity is a delegated/on-behalf-of Wes identity.
 - For OfficeAssist emails concerning Wes's business or requested by Wes, copy or send to `WesWill@BuyYourHomeLLC.com` unless the calling workflow has a stricter rule or Wes explicitly says not to copy himself for that specific message.

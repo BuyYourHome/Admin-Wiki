@@ -135,6 +135,8 @@ Each activated mailbox is processed at its own `Inbox/Jean Wright` root. Organiz
 
 ### Email Delivery
 
+Deliver email to Josh Kennedy only at `IRAManager@SellYourHomeRaleigh.com`, including To, CC, and BCC. Do not use his printed Gmail invoice contact as a recipient. Return wrong-address packages to their originating PR for a corrected immutable version; preserve the held original and reconcile any prior submission before sending.
+
 Use this mode when this project room has an authorized email ready to send, another Email Monitor mode reaches its send step, or an authorized Project Room, including Invoice Entry, sends a complete direct delivery handoff. A direct handoff triggers immediately. It does not require mailbox scanning, an instruction email, the Email Monitor heartbeat, or a rerun of the originating workflow.
 
 This mode is connected directly to `C:\Codex\Wiki Files\skills\email-delivery\SKILL.md`. The requesting Project Room owns the message purpose, authorization, sender request, To/CC/BCC recipients, subject, exact plain-text body, attachment paths and required status, and workflow-specific restrictions. Email Monitor owns package validation, request-ID duplicate prevention, delivery coordination, durable delivery-request state, failure escalation, and callback reporting. The shared Email Delivery skill owns OfficeAssist sender safety, connector handling, attachment-path validation and parameter shape, Sent Items verification, its documented retry, and delivery failure mechanics.

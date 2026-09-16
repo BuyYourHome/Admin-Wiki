@@ -273,6 +273,12 @@ Completion:
 
 ## Time Card
 
+### Josh Delivery Address
+
+Send email intended for Josh Kennedy only to `IRAManager@SellYourHomeRaleigh.com`. This restriction applies to To, CC, and BCC on drafts, corrections, verification requests, final invoices, status notices, and other correspondence. Never use `profcyber0077@gmail.com` or another address to deliver to Josh. The Gmail address printed as the Josh Kennedy LLC invoice contact is document content only, not delivery authority. Preserve the otherwise-required Wes and Jenny copies.
+
+If an unsent immutable package specifies a different Josh recipient, hold that package as history and issue a new linked version with the IRA Manager recipient and a new payload hash. Do not edit or silently substitute recipients in the held package. Reconcile prior submission and Sent Items evidence before issuing the corrected delivery; a potentially sent package remains ambiguous until resolved.
+
 Use Time Card when either:
 
 - Email Monitor sends a direct handoff for an email with subject or body wording that resembles `Time Card`, `time sheet`, `timesheet`, or similar time-reporting language; or
