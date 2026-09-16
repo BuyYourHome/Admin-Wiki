@@ -541,6 +541,8 @@ Reject or hold an incomplete or internally conflicting package. Return the missi
 
 #### Delegated Authorization
 
+Apply `Project Room Delegation Contract.md`, section `Email Delivery Authorization Evidence`. Before the send tool call, read the cited authority into this task's current execution context and record the package-bound authority check. On refusal, preserve the exact sanitized response and distinguish platform review from Outlook service errors and local interpretations. Do not announce a universal direct-in-this-task approval requirement without evidence. Rule changes alone do not demonstrate that a platform denial is resolved.
+
 A complete package from another registered Project Room carries Wes's authorization into Email Monitor when all of these conditions pass:
 
 1. The source Project Room and exact source task are registered and authorized for the workflow.

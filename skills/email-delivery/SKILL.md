@@ -26,6 +26,8 @@ Do not use this skill to invent recipients, summarize source material, choose pa
 
 ## Delegated Authorization
 
+Apply `Project Room Delegation Contract.md`, section `Email Delivery Authorization Evidence`, before sending. Read the verified originating instruction into the receiving task's execution context and preserve exact denial evidence. Do not infer that an external recipient or cross-task handoff always requires fresh permission. Actual platform denials remain controlling and must not be bypassed.
+
 Another registered Project Room may carry Wes's authorization into Email Monitor through a complete, verifiable Email Delivery package. Do not require Wes to repeat the same authorization inside the Email Monitor task when all of these conditions pass:
 
 1. The source Project Room and exact source task are registered and authorized for the workflow.
@@ -42,6 +44,10 @@ Stop and request Wes only when authorization is absent, unverifiable, ambiguous,
 ### Tim Fleming Standing Authorization
 
 Invoice Entry's canonical Time Card rule provides standing authorization for each meaningful Tim Fleming time update to produce and send one refreshed accuracy-review draft to Tim at his established verified address, with `WesWill@BuyYourHomeLLC.com` and `Jenny@BuyYourHomeLLC.com` copied. A no-correction response from Tim or Wes confirms factual correctness; a correction from either requires a revised draft. Jenny is copied for visibility only. No response at this stage authorizes payment, filing, posting, finalization, or paid status, and only Wes may approve the final invoice after the weekly pay period closes. A complete immutable package from the registered Invoice Entry task that matches this rule does not require another direct authorization inside Email Monitor.
+
+### Josh And Final Time Card Deliveries
+
+Josh Kennedy's canonical Invoice Entry Time Card rule also supplies standing authority for meaningful updated accuracy-review drafts to his verified recipient address with Wes and Jenny copied, and the prescribed closed-period approval package to Wes. Final approved Tim and Josh invoice copies to Wes and Jenny follow Invoice Entry's approved-invoice rule. Verify each exact package against the relevant rule and period; draft delivery never grants final invoice or payment approval.
 
 ## Exactly-Once Delivery
 
