@@ -23,6 +23,7 @@ Read `C:\Codex\Wiki Files\Project Rooms\Invoice Entry\Teams Retention Rule.md` b
 - Project room: `C:\Codex\Wiki Files\Project Rooms\Invoice Entry`
 - Skill source: `C:\Codex\Wiki Files\skills\invoice-entry\SKILL.md`
 - Teams operational-record root: SharePoint site `https://lifeisanadventure.sharepoint.com/sites/SellYourHome`, folder `Office Admin/Scanned Files/Invoice Entry Working Archive/Operational Records`
+- Local fallback resolver: `C:\Codex\Wiki Files\tools\sharepoint\Resolve-SharePointSyncedPath.ps1`
 - Authoritative current work: Teams `Operational Records/work-status.md`
 - Teams working archive map: Teams `Operational Records/teams-working-archive-map.md`
 - Scanned document action log: Teams `Operational Records/scanned-document-action-log.md`
@@ -46,6 +47,7 @@ Doc Scan owns Lowes Statement extraction and will send extracted statement data 
    - `C:\Codex\Wiki Files\Project Rooms\Template to Project\Worksheet Modes\Vendor Tabs Mode Rules.md`
    - `C:\Codex\Wiki Files\Project Rooms\Template to Project\Project Spreadsheet Expense Placement Rules.md`
 10. Use the SharePoint/Teams connector as the source-of-truth path for active project-management workbooks.
+11. When Excel, PDF tooling, PowerShell, or another desktop tool requires a Windows path, resolve the canonical SharePoint relative path on the current machine with the local fallback resolver and an expected child. If the Codex sandbox cannot see OneDrive, run the resolver through an approved local execution path under the signed-in Windows profile. Refuse missing or multiple matches. Never use a local path copied from another computer.
 
 ## Ownership Boundary
 
@@ -113,7 +115,7 @@ When an Invoice Entry rule authorizes an email:
 
 Direct handoff messages are activation pointers, not durable processing histories. A normal Doc Scan or Email Monitor handoff should contain only:
 
-- one packet path, exact Outlook message ID/link, or authoritative Teams/SharePoint source path;
+- one authoritative SharePoint item URL/ID or site-and-drive-relative path, exact Outlook message ID/link, or packet reference; a sender-local synced path may be included only as a nonportable hint;
 - external attachment paths or a concise attachment-access blocker when applicable;
 - a short vendor, project, statement, or Time Card summary;
 - the requested Invoice Entry operation; and

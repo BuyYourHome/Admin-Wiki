@@ -329,6 +329,8 @@ Manager must determine whether the email is a new task request, delivery-related
 
 Use Route Vendor Invoice when Email Routing sees a contractor or vendor email that appears to contain or request processing of an invoice, bill, receipt, payment request, statement, pay application, draw request, or project-cost document.
 
+For files preserved in SharePoint/Teams, hand Invoice Entry the canonical SharePoint item URL/ID or the site, library, and drive-relative path. Do not make a Windows path from OFFICEASSIST or another sender machine the authoritative file reference. Include a local synced path only as a clearly labeled nonportable hint; Invoice Entry resolves its own local path if a desktop tool requires one.
+
 This is a formal Email Monitor mode, not an informal Email Routing label. It owns source routing, durable dispatch creation, Invoice Entry notification, acceptance verification, bounded retry, and missing-acknowledgment escalation. It does not own invoice approval, payment, vendor contact, final accounting judgment, live project-spreadsheet entry, Teams filing, or creating a new Invoice Entry chat.
 
 Activation:

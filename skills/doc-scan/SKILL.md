@@ -373,7 +373,7 @@ When Doc Scan processes a project-specific invoice or receipt, finish the scan w
 
 Do not edit the project-management spreadsheet directly. After filing a high-confidence project invoice or receipt, create a structured invoice packet and hand it off to Invoice Entry.
 
-Default handoff trigger: send a direct follow-up message to the dedicated Invoice Entry chat with the packet path and packet summary. The Invoice Entry heartbeat is a backup monitor that periodically checks the packet folder for handoffs that were not delivered by direct message.
+Default handoff trigger: send a direct follow-up message to the dedicated Invoice Entry chat with the packet reference and packet summary. Identify SharePoint/Teams files by item URL/ID or by site, library, and drive-relative path. Do not make Doc Scan's local synced Windows path the authoritative cross-machine reference; include it only as a labeled nonportable hint. Invoice Entry resolves its own local path when a desktop tool requires one. The Invoice Entry heartbeat is a backup monitor that periodically checks the packet folder for handoffs that were not delivered by direct message.
 
 Invoice Entry project room:
 
@@ -389,7 +389,7 @@ Invoice Entry owns selecting the exact live project-management workbook, checkin
 
 Use this same concise direct handoff contract for invoices, receipts, Lowe's statements, and other statement packets that Doc Scan prepares for Invoice Entry:
 
-- Structured packet path.
+- Structured packet SharePoint item URL/ID or site/library/drive-relative path.
 - Filed document path.
 - Short vendor/project/statement summary.
 - Record count and confidence summary.
@@ -411,7 +411,7 @@ Include these fields in each scanned-invoice handoff packet:
 - Invoice amount
 - Work category
 - Source scan path
-- Filed invoice path in Teams/project folder
+- Filed invoice SharePoint item URL/ID or site/library/drive-relative path
 - Recommended project-management workbook
 - Recommended worksheet/vendor tab
 - Confidence/status

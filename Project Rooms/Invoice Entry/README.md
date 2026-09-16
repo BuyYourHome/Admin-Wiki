@@ -18,7 +18,7 @@ Invoice Entry does not redesign workbook templates, approve or pay invoices, mon
 
 ## Canonical Operating Sources
 
-Read [[Teams Retention Rule]] first. It controls storage. The canonical operational-record root is SharePoint site `https://lifeisanadventure.sharepoint.com/sites/SellYourHome`, folder `Office Admin/Scanned Files/Invoice Entry Working Archive/Operational Records`; resolve it through SharePoint/Teams rather than a machine-specific profile path. This README and the skill remain reusable wiki policy; operational status and history do not.
+Read [[Teams Retention Rule]] first. It controls storage. The canonical operational-record root is SharePoint site `https://lifeisanadventure.sharepoint.com/sites/SellYourHome`, folder `Office Admin/Scanned Files/Invoice Entry Working Archive/Operational Records`; resolve it through SharePoint/Teams rather than a machine-specific profile path. Use `tools\sharepoint\Resolve-SharePointSyncedPath.ps1` only when a local desktop tool requires filesystem access. This README and the skill remain reusable wiki policy; operational status and history do not.
 
 - Detailed workflow rules: `C:\Codex\Wiki Files\skills\invoice-entry\SKILL.md`
 - Authoritative current work: Teams `Operational Records/work-status.md`
@@ -42,6 +42,7 @@ Do not duplicate the full skill rules in this README. The skill controls workflo
 4. Read the packet, source references, and detailed processing log for the specific item.
 5. If records conflict, stop and reconcile the authoritative source before repeating an external action.
 6. Use SharePoint/Teams as the source of truth for active project-management workbooks.
+7. Resolve a local synced path only when the required desktop tool cannot operate on the SharePoint item directly; never reuse another machine's resolved path.
 
 ## Ownership Boundary
 
