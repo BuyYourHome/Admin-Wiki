@@ -40,3 +40,7 @@ Wes explicitly confirms Browning Family Revocable Trust owned Heritage Managemen
 
 - Pond-named project workbook identifies Outrigger and Heritage internally. Do not use its values as Pond evidence; original source untouched. Exact source paths and cells retained in private POND-REFINANCE-RECONCILIATION-2025.md.
 - Signed Isaacs note names retirement-plan trust. Wes confirms BYH owed it and refinancing repaid it, resolving intended borrower identity. Repayment timing and closing-source match remain pending: the inspected 2025 ALTA lists Shellpoint, not Isaacs, as payoff recipient. Recorded collateral release alone does not prove note satisfaction. Private detail: POND-NOTE-AND-MORTGAGE-EXCEPTIONS-2025.md.
+
+### Isaacs repayment statement corrected by Wes - September 15, 2026
+
+Wes corrects the prior statement: the Isaacs loan was not paid; collateral moved from Pond to Tensity. BYH remains the owner-confirmed borrower. This supersedes prior repayment language and closes the payoff-year question as not applicable. Do not eliminate the debt or reassign the borrower solely because Heritage property now secures it. Exact principal and collateral-document reconciliation remain separate. Private entry register and note-exception workpaper updated. No return or QuickBooks entry changed.

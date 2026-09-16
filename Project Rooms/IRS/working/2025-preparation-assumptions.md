@@ -61,3 +61,7 @@ Plan setup documents are received and partly verified; do not continue treating 
 - Wes confirms 6004 Sandy Run and 8225 Burgwyn sold in 2024. Do not create 2025 sales or assume year-end ownership. Their remaining 2025 legal/utility charges require source review rather than automatic deletion.
 - Wes confirms 908 Pond remains in rehab for resale. Route to resale/inventory review, not rental treatment; separately review capitalizable costs versus current expenses and hold unapplied-payment activity once.
 - The four-property owner question is resolved. No repeated question needed. No QuickBooks changes or filing occurred. Exact figures and source rows are private in PROPERTY-CLASSIFICATION-CONFIRMATION-2025.md; current bridge is Entity-reconciliation-2025-v3-Banks-Heritage.csv.
+
+### Isaacs repayment statement corrected by Wes - September 15, 2026
+
+Wes corrects the prior statement: the Isaacs loan was not paid; collateral moved from Pond to Tensity. BYH remains the owner-confirmed borrower. This supersedes prior repayment language and closes the payoff-year question as not applicable. Do not eliminate the debt or reassign the borrower solely because Heritage property now secures it. Exact principal and collateral-document reconciliation remain separate. Private entry register and note-exception workpaper updated. No return or QuickBooks entry changed.

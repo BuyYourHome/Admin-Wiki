@@ -171,3 +171,7 @@ Banks belongs to Heritage; Sandy Run and Burgwyn sold in 2024; Pond is rehab hel
 ### Mortgage reconciliation continuation - September 15, 2026
 
 Reconciled all mortgage-account transactions to the combined opening and closing balances; private Mortgage-movement-trace-2025.csv preserves the source rows and preliminary entity matches. This does not complete entity-separated Schedule L. Pond refinance principal matches lender statement after excluding undrawn holdback. Acquisition funding/equity classification requires review. Wes resolved the Isaacs borrower identity as BYH and reports repayment through refinancing; payoff year remains a focused pending question. TaxAct no-EIN/B-1 issue remains unresolved. No return amounts changed in this pass; no filing, signatures, payment, or QuickBooks edits.
+
+### Isaacs repayment statement corrected by Wes - September 15, 2026
+
+Wes corrects the prior statement: the Isaacs loan was not paid; collateral moved from Pond to Tensity. BYH remains the owner-confirmed borrower. This supersedes prior repayment language and closes the payoff-year question as not applicable. Do not eliminate the debt or reassign the borrower solely because Heritage property now secures it. Exact principal and collateral-document reconciliation remain separate. Private entry register and note-exception workpaper updated. No return or QuickBooks entry changed.
