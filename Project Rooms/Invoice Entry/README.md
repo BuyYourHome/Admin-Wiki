@@ -18,18 +18,18 @@ Invoice Entry does not redesign workbook templates, approve or pay invoices, mon
 
 ## Canonical Operating Sources
 
-Read [[Teams Retention Rule]] first. It controls storage: operational names below refer to their Teams `Operational Records` equivalents, not writable repository ledgers. Repository copies are read-only legacy evidence until verified migration. This README and the skill remain reusable wiki policy; operational status and history do not.
+Read [[Teams Retention Rule]] first. It controls storage. The canonical operational-record root is SharePoint site `https://lifeisanadventure.sharepoint.com/sites/SellYourHome`, folder `Office Admin/Scanned Files/Invoice Entry Working Archive/Operational Records`; resolve it through SharePoint/Teams rather than a machine-specific profile path. This README and the skill remain reusable wiki policy; operational status and history do not.
 
 - Detailed workflow rules: `C:\Codex\Wiki Files\skills\invoice-entry\SKILL.md`
-- Authoritative current work: `working\work-status.md`
+- Authoritative current work: Teams `Operational Records/work-status.md`
 - Packet structure: `working\invoice-packet-schema.md`
-- Active workbook lookup: `working\project-spreadsheet-register.md`
-- Current blockers and decisions: `working\missing-context.md`
-- Source references and retention outcomes: `working\source-inventory.md`
-- Duplicate decisions: `working\duplicate-and-conflict-log.md`
-- Lowe's retained detail: `working\lowes-statement-held-detail-register.md`
-- Scanned-document outcomes: `working\scanned-document-action-log.md`
-- Working archive locations: `working\teams-working-archive-map.md`
+- Active workbook lookup: Teams `Operational Records/project-spreadsheet-register.md`
+- Current blockers and decisions: Teams `Operational Records/missing-context.md`
+- Source references and retention outcomes: Teams `Operational Records/source-inventory.md`
+- Duplicate decisions: Teams `Operational Records/duplicate-and-conflict-log.md`
+- Lowe's retained detail: Teams `Operational Records/lowes-statement-held-detail-register.md`
+- Scanned-document outcomes: Teams `Operational Records/scanned-document-action-log.md`
+- Working archive locations: Teams `Operational Records/teams-working-archive-map.md`
 - Reusable lessons: `working\iteration-lessons.md`
 
 Do not duplicate the full skill rules in this README. The skill controls workflow behavior; Teams `work-status.md` controls what is currently open. Historical packet and processing logs preserve evidence but do not override a later governing rule or current status. Follow [[Teams Retention Rule]] for exact record locations and safe read-through of older wiki records.
@@ -112,7 +112,7 @@ Email Monitor and Jean dispatches are authoritative in the central queue at `\\W
 ## Workbook Safety
 
 - Confirm the exact live workbook at the SharePoint `Property` root before every edit.
-- Use `working\project-spreadsheet-register.md` as a lookup aid, not as proof that a cached filename is still current.
+- Use Teams `Operational Records/project-spreadsheet-register.md` as a lookup aid, not as proof that a cached filename is still current.
 - Create a rollback copy before editing.
 - Check duplicates before insertion.
 - Preserve formulas, formatting, tables, controls, selectors, names, macros, and links.

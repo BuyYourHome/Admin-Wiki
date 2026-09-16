@@ -22,9 +22,10 @@ Read `C:\Codex\Wiki Files\Project Rooms\Invoice Entry\Teams Retention Rule.md` b
 
 - Project room: `C:\Codex\Wiki Files\Project Rooms\Invoice Entry`
 - Skill source: `C:\Codex\Wiki Files\skills\invoice-entry\SKILL.md`
-- Authoritative current work: `C:\Codex\Wiki Files\Project Rooms\Invoice Entry\working\work-status.md`
-- Teams working archive map: `C:\Codex\Wiki Files\Project Rooms\Invoice Entry\working\teams-working-archive-map.md`
-- Scanned document action log: `C:\Codex\Wiki Files\Project Rooms\Invoice Entry\working\scanned-document-action-log.md`
+- Teams operational-record root: SharePoint site `https://lifeisanadventure.sharepoint.com/sites/SellYourHome`, folder `Office Admin/Scanned Files/Invoice Entry Working Archive/Operational Records`
+- Authoritative current work: Teams `Operational Records/work-status.md`
+- Teams working archive map: Teams `Operational Records/teams-working-archive-map.md`
+- Scanned document action log: Teams `Operational Records/scanned-document-action-log.md`
 - Template-to-project migration room: `C:\Codex\Wiki Files\Project Rooms\Template to Project`
 
 Use this skill for operational invoices, collected-money Receipts, Time Cards, and approved statement-line insertion into project-management spreadsheets. `Invoice` records money the business pays or owes; Receipt mode records money the business actually collects and posts that collection to the project workbook as the opposite-signed equivalent of an invoice expense. For scanned vendor receipts and Statement records, Doc Scan is the normal intake workflow and should trigger this workflow by direct follow-up message after creating the packet. For routed contractor/vendor invoice and Time Card emails, Email Monitor or OfficeAssist must hand off the preserved email source. Manager may separately hand off an authorized, versioned structured Time Card packet under the receiver rules below; this does not give Manager mailbox, invoice, rate, approval, filing, or workbook authority. A standalone backup cron monitor checks durable Project Room state for missed packet handoffs without waking the operational Invoice Entry task. Do not use this skill for scan inspection/OCR, document splitting, statement extraction, invoice-file routing, mailbox monitoring, Marketplace listing changes, or spreadsheet template redesign.
@@ -36,11 +37,11 @@ Doc Scan owns Lowes Statement extraction and will send extracted statement data 
 1. Confirm the working folder is `C:\Codex\Wiki Files`.
 2. Read `AGENTS.md`, `Admin Home.md`, `Project Room Workflow.md`, `Codex Skill Source Rule.md`, and `Git Work Scope Rule.md`.
 3. Read the project-room `README.md`.
-4. Read `working\work-status.md` before processing a handoff or opening a workbook. Treat it as the authority for active work, pending decisions, verified actions that must not be repeated, and current blockers.
+4. Read Teams `Operational Records/work-status.md` before processing a handoff or opening a workbook. Treat it as the authority for active work, pending decisions, verified actions that must not be repeated, and current blockers.
 5. Read `working\invoice-packet-schema.md` and the packet and processing log for the specific item.
-6. If an older summary conflicts with `working\work-status.md` or the latest packet status, reconcile the authoritative source before repeating an email, workbook edit, upload, filing action, or generated-document action.
-7. If older machine handoff packets, statement working files, review workbook evidence, or temporary workbook copies may matter, read `working\teams-working-archive-map.md` before assuming those files are unavailable locally.
-8. For scanned-document-derived invoice work, read or update `working\scanned-document-action-log.md` to track what happened to the document and related spreadsheet action.
+6. If an older summary conflicts with Teams `Operational Records/work-status.md` or the latest packet status, reconcile the authoritative source before repeating an email, workbook edit, upload, filing action, or generated-document action.
+7. If older machine handoff packets, statement working files, review workbook evidence, or temporary workbook copies may matter, read Teams `Operational Records/teams-working-archive-map.md` before assuming those files are unavailable locally.
+8. For scanned-document-derived invoice work, read or update Teams `Operational Records/scanned-document-action-log.md` to track what happened to the document and related spreadsheet action.
 9. If the insertion is for Vendor Tabs, read:
    - `C:\Codex\Wiki Files\Project Rooms\Template to Project\Worksheet Modes\Vendor Tabs Mode Rules.md`
    - `C:\Codex\Wiki Files\Project Rooms\Template to Project\Project Spreadsheet Expense Placement Rules.md`
@@ -118,7 +119,7 @@ Direct handoff messages are activation pointers, not durable processing historie
 - the requested Invoice Entry operation; and
 - any source-specific warning that is not already governed by the Invoice Entry skill.
 
-Do not repeat the full Invoice Entry standing rules, safety limits, mode instructions, full email body, complete prior-thread history, or completed-delivery narrative in a routine handoff. Invoice Entry must read its canonical skill, `working\work-status.md`, and the referenced packet or source record instead.
+Do not repeat the full Invoice Entry standing rules, safety limits, mode instructions, full email body, complete prior-thread history, or completed-delivery narrative in a routine handoff. Invoice Entry must read its canonical skill, Teams `Operational Records/work-status.md`, and the referenced packet or source record instead.
 
 When the handoff supplies only an Outlook reference, fetch only that exact message when its full body is required. Do not broaden the operation into a mailbox search. Preserve the exact message ID/link and concise extracted facts in the packet or source inventory; do not copy the full body into repeated task messages.
 
@@ -174,7 +175,7 @@ Project-related invoices have two independent destinations. They must continue t
 
 ## Task Health
 
-Invoice Entry is enrolled in the shared Windows workflow-health supervisor owned by Email Monitor. Follow `C:\Codex\Wiki Files\Project Rooms\Invoice Entry\README.md` for Invoice Entry context controls, `working\work-status.md` for current health fields, and `C:\Codex\Wiki Files\Project Rooms\Email Monitor\working\health-check-spec.md` for the shared supervisor contract. Do not copy the full supervisor implementation into this skill.
+Invoice Entry is enrolled in the shared Windows workflow-health supervisor owned by Email Monitor. Follow `C:\Codex\Wiki Files\Project Rooms\Invoice Entry\README.md` for Invoice Entry context controls, Teams `Operational Records/work-status.md` for current health fields, and `C:\Codex\Wiki Files\Project Rooms\Email Monitor\working\health-check-spec.md` for the shared supervisor contract. Do not copy the full supervisor implementation into this skill.
 
 Activate Task Health when Wes requests it, when an authorized handoff reports an Invoice Entry context-health transition, or when observable performance degradation requires review. A Windows alert file alone does not invoke Codex; do not claim the mode ran unless the Invoice Entry task or an authorized coordinating task actually performed the review.
 
@@ -182,7 +183,7 @@ Activate Task Health when Wes requests it, when an authorized handoff reports an
 
 - Keep detailed processing history in packet files, processing logs, or approved Teams locations instead of task messages.
 - Keep exactly one active Invoice Entry operational task. Quiet health and backup checks must not add turns to it.
-- Update `working\work-status.md` after meaningful state changes and before a substantial run ends. Maintain the operation state and start time, current-work durability, delivery evidence, open packets and blockers, Git/working-file classification, recent timeout/stall/duplicate-action counts, explicit health-follow-up status, and any observable task-turn or context-compaction measurements with source and observation time.
+- Update Teams `Operational Records/work-status.md` after meaningful state changes and before a substantial run ends. Maintain the operation state and start time, current-work durability, delivery evidence, open packets and blockers, Git/working-file classification, recent timeout/stall/duplicate-action counts, explicit health-follow-up status, and any observable task-turn or context-compaction measurements with source and observation time.
 - Treat more than 150 observable task turns or five observable context compactions as review triggers only. If exact counts are unavailable, record them as unavailable; do not invent metrics.
 - The supervisor may recommend controlled rollover only when multiple measured signals support review. It must not create or archive a task, repeat an external action, move Git state, or change the operational queue.
 - Actual rollover requires Wes's separate approval. Before rollover, confirm no ambiguous external operation is in flight and that current work, delivery evidence, open packets, blockers, and Git classification are durable and current.
@@ -312,7 +313,7 @@ Project handling:
 
 - Split the semimonthly time by project and BackOffice inside the single payable invoice.
 - Show a destination-allocation summary on the invoice so each project and BackOffice receives its supported share without creating multiple payment obligations.
-- Maintain the current project-spreadsheet lookup list in `C:\Codex\Wiki Files\Project Rooms\Invoice Entry\working\project-spreadsheet-register.md`.
+- Maintain the current project-spreadsheet lookup list in Teams `Operational Records/project-spreadsheet-register.md`.
 - Use the register to identify the proposed workbook, then verify the exact current workbook at the SharePoint `Property` root before every edit. The register is a lookup aid, not authority to use a stale file.
 - Invoice Entry owns this register until Wes explicitly transfers that duty to a Project PR or another named workflow.
 - After the closed-period invoice is approved by Wes, insert each project's allocated cost into that project's correct project-management spreadsheet under existing Invoice Entry insertion rules.
@@ -501,7 +502,7 @@ Lowes statements have one supported intake path:
 
 Do not request statement processing directly in this Invoice Entry project room or skill. If Wes or another workflow wants one statement or a set of statements processed, route the request to Doc Scan first. Invoice Entry must wait for the Doc Scan Statement packet and must not substitute its own OCR, statement extraction, or raw-PDF parsing.
 
-Do not commit machine handoff packets, OCR scratch files, generated statement working files, review workbook copies, or temporary workbook copies merely because they supported an invoice-entry action. Preserve the original scan and final filed document in Teams/SharePoint, archive working artifacts in the Teams working archive when useful, and record the durable outcome in `working\scanned-document-action-log.md`.
+Do not commit machine handoff packets, OCR scratch files, generated statement working files, review workbook copies, or temporary workbook copies merely because they supported an invoice-entry action. Preserve the original scan and final filed document in Teams/SharePoint, archive working artifacts in the Teams working archive when useful, and record the durable outcome in Teams `Operational Records/scanned-document-action-log.md`.
 
 For Statement handoffs:
 
@@ -541,7 +542,7 @@ Moving or copying a reviewed Lowes statement row from `Review` into a vendor tab
 
 Provisional vendor-tab copy exception: if Wes explicitly authorizes post-copy review for a Statement batch, Invoice Entry may copy high-confidence Lowe's statement rows directly from `Review` into a vendor tab when project, amount, description, and destination worksheet are defensible from the packet and approved worksheet-mode rules. This is a copy-for-review, not final approval. Keep the source `Review` row, set or leave its status as `Copied - Needs Owner Verification` or another clear review status rather than `Moved`, and record the destination worksheet/table and copy date in the review or notes field. Do not use this exception for rows with unclear project, blank or guessed destination, tax-only amounts, missing/fragmented amount evidence, mixed destination items, incomplete-source-only summary rows, or an explicit stop status such as `Hold`.
 
-Rows not inserted into a particular project workbook must still be retained. Use `C:\Codex\Wiki Files\Project Rooms\Invoice Entry\working\lowes-statement-held-detail-register.md` for statement detail that is Home/non-project, accounting-review, unclear-project, belongs to a project whose workbook is not ready, or otherwise cannot yet be inserted into the appropriate project workbook.
+Rows not inserted into a particular project workbook must still be retained. Use Teams `Operational Records/lowes-statement-held-detail-register.md` for statement detail that is Home/non-project, accounting-review, unclear-project, belongs to a project whose workbook is not ready, or otherwise cannot yet be inserted into the appropriate project workbook.
 
 ## Duplicate Checks
 

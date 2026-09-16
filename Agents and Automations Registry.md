@@ -257,7 +257,7 @@ Special routing:
 - Route an email when the sender display name is `Josh Kennedy` and the subject is exactly `Time Card`, matched case-insensitively, even when the message has no invoice keyword or attachment.
 - Do not routinely preserve routed Invoice Entry emails or attachments as Git-tracked files. Preserve Outlook message id or web link, available sender, recipient, timestamp, subject, short body summary, available attachment names/metadata, and any external Teams source path in applicable ledgers.
 - Save safely retrievable invoice attachments outside Git in the Invoice Entry Teams source/working archive location required by Invoice Entry's current rules. If an apparent invoice attachment cannot be retrieved, preserve the Outlook message link and report the blocker in the Invoice Entry handoff.
-- Update `Project Rooms\Invoice Entry\working\source-inventory.md` or the current Invoice Entry intake ledger with references and external paths when the routed source becomes part of the durable source set.
+- Update Teams `Invoice Entry Working Archive/Operational Records/source-inventory.md` or the current Invoice Entry intake ledger with references and external paths when the routed source becomes part of the durable source set.
 - Send a direct follow-up message to the existing Invoice Entry task with the Outlook reference, external attachment paths or blocker, a short vendor/project summary, and the instruction to process the invoice under Invoice Entry rules.
 - Current Invoice Entry task id: `01a03956-fa4f-77c1-9ab7-f709e5f1174e`.
 - Durable dispatch queue: `\\WES-VIDEOEDITOR\BYH-PRMessaging$\records`; canonical tool: `tools\pr-messaging\Manage-ProjectRoomMessage.ps1`. The queue record is authoritative and the task message is a wake-up signal. The former Email Monitor queue is retained read-only as legacy history.
@@ -1266,7 +1266,7 @@ Shared Windows health supervisor:
 - Workflow id: `invoice-entry`.
 - Windows task: `Codex - Workflow Health Supervisor`, every 10 minutes on `WESSTUDIO`, launched invisibly through the canonical `wscript.exe` wrapper rather than direct recurring PowerShell.
 - Substantive Invoice Entry health evaluation: no more than daily unless warning, critical, or active-operation follow-up is required.
-- Canonical status source: `Project Rooms\Invoice Entry\working\work-status.md`.
+- Canonical status source: Teams `Invoice Entry Working Archive/Operational Records/work-status.md`.
 - Task-growth thresholds of 150 turns and five context compactions are review triggers only. The supervisor cannot create or archive tasks; controlled rollover requires Wes's separate approval.
 - Defined Invoice Entry mode: Task Health performs the measured health/readiness review and, only after Wes approval, verifies one replacement and updates specifically authorized routing references before archiving the predecessor.
 

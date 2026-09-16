@@ -47,6 +47,7 @@ This is the starting page for the Buy Your Home admin wiki.
 - [[Repository Location Rule]]
 - [[Git Work Scope Rule]]
 - [[Project Room File Ownership And Git Coordination Rule]]
+- [[Project Room Repository Retention Cleanup Tracker]]
 - [[Codex Skill Source Rule]]
 
 ## Grocery List

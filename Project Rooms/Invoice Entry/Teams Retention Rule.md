@@ -16,11 +16,15 @@ Keep original/final business documents and active workbooks in their established
 
 Preserve familiar logical record names beneath that root: `work-status.md`, `source-inventory.md`, `missing-context.md`, `duplicate-and-conflict-log.md`, `lowes-statement-held-detail-register.md`, `scanned-document-action-log.md`, `teams-working-archive-map.md`, and transaction packet/processing-log subfolders. These are Teams records, not Git-tracked files. Instruction references to those operational `working` filenames mean their Teams equivalents under this rule. Schemas, workflow instructions, scripts, and generic lookup configuration remain in the wiki.
 
+The canonical current-status filename is `work-status.md`. The former `work-status-OfficeAssist.md` is retained only as migration evidence and must not receive new updates. On 2026-09-15 its newer content was promoted to `work-status.md`; the prior stale `work-status.md` was preserved in the dated legacy archive before replacement.
+
 Before processing, read the Teams current state and the exact packet/processing evidence. Preserve canonical transaction IDs and verified outcomes so the move of a record never causes a repeated invoice, email, workbook entry, or upload. Follow the existing central messaging protocol separately; do not replace its authoritative records with a Teams copy or change routing/automation targets.
 
 ## Older Records And Safe Migration
 
 Older records already in the wiki remain read-only historical evidence until migrated. Do not start a second empty ledger merely because the Teams record is absent. Reconcile the existing state, copy the in-scope operational record to Teams, verify content and file identity, then use that Teams record for subsequent updates. If the migration overlaps another owner's work, preserve the source and report that exact ownership issue; do not edit their files.
+
+The 2026-09-15 repository-retention migration archived 124 former Git-tracked operational files under `Operational Records/Legacy Git Archive/2026-09-15 Repository Retention Cleanup`, preserving relative paths and recording SHA-256 verification in `migration-manifest.json`. Current operations must use the live records directly under `Operational Records`; the dated archive is historical evidence, not a writable queue.
 
 Do not delete, truncate, revert, or remove tracked history until the authoritative Teams copy has been verified and the specific cleanup is authorized. A policy change alone does not authorize bulk migration, historical Git rewriting, or discarding uncommitted work. Existing pending transaction-log edits must not be swept into the policy commit.
 
