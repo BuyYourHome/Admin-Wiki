@@ -54,3 +54,10 @@ Plan setup documents are received and partly verified; do not continue treating 
 - Heritage owned 115 Rosebrooks Dr and 7001 Outrigger Dr throughout 2025. Route their activity to Heritage workpapers; preserve separate review of capitalization and asset/debt attribution.
 - Printer lease replacement was paid in 2025. The ledger match is documented privately; do not add the intercepted payment as a second rent deduction.
 - No IRS audit redetermination; BYH operated only in North Carolina in 2025. These questions are resolved and entered in the draft.
+
+## Remaining property classifications resolved - September 15, 2026
+
+- Wes confirms 3325 Banks Rd belongs to Heritage, overriding the stale BYH folder/class label for preparation. Reassigned its 2025 class activity to Heritage in a new private bridge version; retained prior versions and all columns.
+- Wes confirms 6004 Sandy Run and 8225 Burgwyn sold in 2024. Do not create 2025 sales or assume year-end ownership. Their remaining 2025 legal/utility charges require source review rather than automatic deletion.
+- Wes confirms 908 Pond remains in rehab for resale. Route to resale/inventory review, not rental treatment; separately review capitalizable costs versus current expenses and hold unapplied-payment activity once.
+- The four-property owner question is resolved. No repeated question needed. No QuickBooks changes or filing occurred. Exact figures and source rows are private in PROPERTY-CLASSIFICATION-CONFIRMATION-2025.md; current bridge is Entity-reconciliation-2025-v3-Banks-Heritage.csv.
