@@ -1,5 +1,5 @@
-window.PROJECT_ROOMS_UPDATED = '2026-09-13 12:38';
-window.PROJECT_ROOMS_HASH = 'C5F965E1EF18DD94A60D327C2ABF0C23541221AE454D910AF0C8EE101A86A507';
+window.PROJECT_ROOMS_UPDATED = '2026-09-15 23:56';
+window.PROJECT_ROOMS_HASH = 'CD5B74485C5DD761232C39DDFBBE0BFD49753A2072D9C451B0635550575E89BD';
 window.PROJECT_ROOM_GROUPS = [
     {
         "name":  "Intake \u0026 Coordination",
@@ -238,11 +238,11 @@ window.PROJECT_ROOMS = [
     {
         "name":  "Brynda Suit",
         "purpose":  "This Project Room holds source material, working notes, open questions, and review-ready outputs for the Brynda Suit workflow. Use this room when Wes asks Codex to organize, analyze, draft, or maintain materials specifically tied to Brynda Suit.",
-        "status":  "draft",
+        "status":  "draft.",
         "skill":  "brynda-suit",
         "skillPath":  "C:\\Codex\\Wiki Files\\skills\\brynda-suit\\SKILL.md",
         "skillState":  "available",
-        "taskId":  "",
+        "taskId":  "019f61c3-d4c0-7a52-a5a0-e4066ea9b303",
         "attention":  null,
         "group":  "Legal \u0026 Entity",
         "groupBasis":  "Maintains litigation, confidential legal material, entity governance, ownership relationships, estate, or claim work.",
@@ -276,11 +276,11 @@ window.PROJECT_ROOMS = [
     {
         "name":  "Codex Environment",
         "purpose":  "This Project Room owns the workflow for preparing other authorized computers to replicate the Codex working environment from WesStudio. Use this room when Wes asks Codex to remote into a computer, inspect what is missing, install required apps, configure the Admin wiki/Codex working environment, or verify that the target computer can run the same Admin wiki workflows as WesStudio.",
-        "status":  "`Wes-VideoEditor` core Admin wiki environment and Codex Desktop project connection installed and verified on 2026-07-22; connector sign-ins, plugin cache, and live workflow execution remain unverified",
+        "status":  "`Wes-VideoEditor` core Admin wiki environment and Codex Desktop project connection installed and verified on 2026-07-22; connector sign-ins, plugin cache, and live workflow execution remain unverified.",
         "skill":  "codex-environment",
         "skillPath":  "C:\\Codex\\Wiki Files\\skills\\codex-environment\\SKILL.md",
         "skillState":  "available",
-        "taskId":  "",
+        "taskId":  "019f84d0-78d4-7013-8c07-42c01f961be1",
         "attention":  null,
         "group":  "Systems \u0026 Maintenance",
         "groupBasis":  "Maintains computers, Codex operations, management support, purchasing tools, marketplace work, or system health.",
@@ -303,11 +303,11 @@ window.PROJECT_ROOMS = [
     {
         "name":  "Computers",
         "purpose":  "This Project Room keeps track of Buy Your Home business computers, including each computer\u0027s owner or primary user, hardware specifications, operating system, installed business applications, security and remote-access posture, Codex/Admin wiki readiness, and configuration notes. Use this room when Wes asks to inventory a business computer, compare computer specs, document configuration, track app installation status, record remote-access readiness, or maintain the current list of company machines.",
-        "status":  "draft",
+        "status":  "draft.",
         "skill":  "computers",
         "skillPath":  "C:\\Codex\\Wiki Files\\skills\\computers\\SKILL.md",
         "skillState":  "available",
-        "taskId":  "",
+        "taskId":  "019f96e9-c663-7550-bf20-5829f6cb6c88",
         "attention":  null,
         "group":  "Systems \u0026 Maintenance",
         "groupBasis":  "Maintains computers, Codex operations, management support, purchasing tools, marketplace work, or system health.",
@@ -322,7 +322,7 @@ window.PROJECT_ROOMS = [
     {
         "name":  "Confidential",
         "purpose":  "Keep confidential source notes, working analysis, open questions, and review-ready outputs separated from other Admin wiki work. - Preserve source context before drafting final outputs. - Track privacy concerns and unsupported claims before any material is shared outside the Admin wiki.",
-        "status":  "Status not recorded",
+        "status":  "created; awaiting specific Confidential work.",
         "skill":  "confidential",
         "skillPath":  "C:\\Codex\\Wiki Files\\skills\\confidential\\SKILL.md",
         "skillState":  "available",
@@ -360,7 +360,7 @@ window.PROJECT_ROOMS = [
     {
         "name":  "Create PR",
         "purpose":  "This Project Room defines the repeatable workflow for creating a new Buy Your Home Project Room, matching Codex skill, and dedicated startup chat. Use this room when Wes asks to create a new PR, Project Room, room-specific skill, or room-specific chat for a recurring body of work.",
-        "status":  "active",
+        "status":  "active.",
         "skill":  "create-pr",
         "skillPath":  "C:\\Codex\\Wiki Files\\skills\\create-pr\\SKILL.md",
         "skillState":  "available",
@@ -399,11 +399,11 @@ window.PROJECT_ROOMS = [
     {
         "name":  "Dashboard",
         "purpose":  "Build and maintain a locally hosted dashboard showing Buy Your Home Project Rooms and the functionality each room owns.",
-        "status":  "active initial design",
+        "status":  "active initial design.",
         "skill":  "dashboard",
         "skillPath":  "C:\\Codex\\Wiki Files\\skills\\dashboard\\SKILL.md",
         "skillState":  "available",
-        "taskId":  "",
+        "taskId":  "019fc52f-858a-72e1-926b-a0f6fbf0fd89",
         "attention":  null,
         "group":  "Intake \u0026 Coordination",
         "groupBasis":  "Receives requests, routes work, creates Project Rooms, or provides an operating overview across workflows.",
@@ -420,7 +420,7 @@ window.PROJECT_ROOMS = [
     {
         "name":  "Doc Scan",
         "purpose":  "Keep Doc Scan workflow development separate from general Admin Operations. - Preserve the current authoritative workflow documents and skill source. - Track routing rules, automation behavior, open questions, and review-ready handoffs in one place.",
-        "status":  "Status not recorded",
+        "status":  "active.",
         "skill":  "doc-scan",
         "skillPath":  "C:\\Codex\\Wiki Files\\skills\\doc-scan\\SKILL.md",
         "skillState":  "available",
@@ -439,7 +439,7 @@ window.PROJECT_ROOMS = [
     {
         "name":  "Email Monitor",
         "purpose":  "Keep Email Monitor development separate from the general Admin Operations chat. - Preserve the active automation id: officeassist-morning-email-summary-and-instruction-monitor. - Keep the canonical workflow source in C:\\Codex\\Wiki Files\\skills\\email-monitor\\SKILL.md.",
-        "status":  "Status not recorded",
+        "status":  "WESSTUDIO source paused; OFFICEASSIST activation pending for the complete Wes, Jenny, Josh, routing, delivery, organization, health, and embedded-dispatcher workflow.",
         "skill":  "email-monitor",
         "skillPath":  "C:\\Codex\\Wiki Files\\skills\\email-monitor\\SKILL.md",
         "skillState":  "available",
@@ -464,7 +464,7 @@ window.PROJECT_ROOMS = [
     {
         "name":  "Entity Relationship",
         "purpose":  "Maintain Buy Your Home entity relationship materials, including charts, source notes, ownership/management relationship summaries, and review-ready diagrams.",
-        "status":  "active planning",
+        "status":  "active planning.",
         "skill":  "entity-relationship",
         "skillPath":  "C:\\Codex\\Wiki Files\\skills\\entity-relationship\\SKILL.md",
         "skillState":  "available",
@@ -505,11 +505,11 @@ window.PROJECT_ROOMS = [
     {
         "name":  "Facebook Engagement",
         "purpose":  "Prepare engaging Facebook Page post drafts from photos that Wes later makes available through an authorized Google Photos source. This room supports photo review, content planning, and draft preparation only until a specific external action is authorized.",
-        "status":  "active and dispatchable",
+        "status":  "active and dispatchable.",
         "skill":  "facebook-engagement",
         "skillPath":  "C:\\Codex\\Wiki Files\\skills\\facebook-engagement\\SKILL.md",
         "skillState":  "available",
-        "taskId":  "",
+        "taskId":  "019fe20a-db88-7602-a4a7-544d1be0ceee",
         "attention":  null,
         "group":  "Other",
         "groupBasis":  "Used when a Project Room does not yet have a supported assignment to one of the defined functional groups.",
@@ -524,7 +524,7 @@ window.PROJECT_ROOMS = [
     {
         "name":  "Geico Insurance Claim",
         "purpose":  "Organize source documents, correspondence, notes, and review-ready outputs for the Geico insurance claim.",
-        "status":  "Status not recorded",
+        "status":  "Room created; awaiting source materials.",
         "skill":  "",
         "skillPath":  "",
         "skillState":  "not-applicable",
@@ -607,11 +607,11 @@ window.PROJECT_ROOMS = [
     {
         "name":  "Invoice Entry",
         "purpose":  "Invoice Entry owns operational processing after a structured invoice, receipt, statement-line, routed vendor-invoice, or routed Time Card source reaches this Project Room. It resolves the correct active project-management workbook, checks duplicates, determines approved row placement, performs authorized insertion, validates the workbook, and records the outcome. Invoice Entry does not redesign workbook templates, approve or pay invoices, monitor mailboxes, perform scan OCR, or make unsupported accounting decisions.",
-        "status":  "Status not recorded",
+        "status":  "Ready and dispatchable on `OFFICEASSIST`.",
         "skill":  "invoice-entry",
         "skillPath":  "C:\\Codex\\Wiki Files\\skills\\invoice-entry\\SKILL.md",
         "skillState":  "available",
-        "taskId":  "01a05967-9a05-7081-a62e-616b2d8e61fd",
+        "taskId":  "01a03956-fa4f-77c1-9ab7-f709e5f1174e",
         "attention":  null,
         "group":  "Accounting \u0026 Project Data",
         "groupBasis":  "Maintains financial calculations, invoice processing, project workbooks, templates, or structured project data.",
@@ -630,97 +630,13 @@ window.PROJECT_ROOMS = [
 
                          ],
         "invoiceEntryProjects":  [
-                                     {
-                                         "project":  "07-BYH - 3325 Banks Rd",
-                                         "workbookPath":  "Property/07_Project Management - 3325 Banks Rd.xlsm",
-                                         "status":  "Current"
-                                     },
-                                     {
-                                         "project":  "13-SYH - 5008 Larchmont Dr",
-                                         "workbookPath":  "Property/13_Project Management - 5008 Larchmont Dr.xlsx",
-                                         "status":  "Current"
-                                     },
-                                     {
-                                         "project":  "15-BYH - 6004 Sandy Run",
-                                         "workbookPath":  "Property/15_Project Management - 6004 Sandy Run.xlsx",
-                                         "status":  "Current"
-                                     },
-                                     {
-                                         "project":  "16-BYH - 3021 Pearces Rd",
-                                         "workbookPath":  "Property/16_Project Management - 3021 Pearces Rd.xlsx",
-                                         "status":  "Current"
-                                     },
-                                     {
-                                         "project":  "17-SYH - 3413 Pinetree Ln",
-                                         "workbookPath":  "Property/17_Project Management - 3413 Pinetree Ln.xlsm",
-                                         "status":  "Current"
-                                     },
-                                     {
-                                         "project":  "18-HM - 1426 Pleasant Garden Ln",
-                                         "workbookPath":  "Property/18_Project Management - 1426 Pleasant Garden Ln.xlsm",
-                                         "status":  "Current"
-                                     },
-                                     {
-                                         "project":  "19-BYH - 8225 Burgwyn Ln",
-                                         "workbookPath":  "Property/19_Project Management - 8225 Burgwyn Ln.xlsx",
-                                         "status":  "Current"
-                                     },
-                                     {
-                                         "project":  "20-HM - 115 Rosebrooks Dr",
-                                         "workbookPath":  "Property/20_Project Management - 115 Rosebrooks Dr.xlsm",
-                                         "status":  "Current"
-                                     },
-                                     {
-                                         "project":  "21-SYH - 1343 Old Buckhorn Rd",
-                                         "workbookPath":  "Property/21_Project Management - 1343 Old Buckhorn Rd.xlsm",
-                                         "status":  "Current"
-                                     },
-                                     {
-                                         "project":  "22-HM - 2325 Cool Springs Rd",
-                                         "workbookPath":  "Property/22_Project Management - 2325 Cool Springs Rd 4.xlsm",
-                                         "status":  "Current"
-                                     },
-                                     {
-                                         "project":  "23-SYH - 6316 Willowdell Dr",
-                                         "workbookPath":  "Property/23_Project Management - 6316 Willowdell Dr 4.xlsm",
-                                         "status":  "Current"
-                                     },
-                                     {
-                                         "project":  "24-HM - 4121 Tensity Dr",
-                                         "workbookPath":  "Property/24_Project Management - 4121 Tensity Dr 2.xlsm",
-                                         "status":  "Current"
-                                     },
-                                     {
-                                         "project":  "25-401K - 612 Britton Ct",
-                                         "workbookPath":  "Property/25_Project Management - 612 Britton Ct.xlsm",
-                                         "status":  "Current"
-                                     },
-                                     {
-                                         "project":  "26-BYH - 908 Pond St",
-                                         "workbookPath":  "Property/26_Project Management - 908 Pond St 3.xlsm",
-                                         "status":  "Current"
-                                     },
-                                     {
-                                         "project":  "27-HM - 7001 Outrigger Dr",
-                                         "workbookPath":  "Property/27_Project Management - 7001 Outrigger Dr.xlsm",
-                                         "status":  "Current"
-                                     },
-                                     {
-                                         "project":  "28-SYH - 320 Rose Pl",
-                                         "workbookPath":  "Property/28_Project Management - 320 Rose Pl.xlsm",
-                                         "status":  "Current"
-                                     },
-                                     {
-                                         "project":  "Mom - 18804 Hwy 41 Lutz",
-                                         "workbookPath":  "Property/Mom_Project Management - 18804 Hwy 41 Lutz, 33549 US.xlsm",
-                                         "status":  "Current"
-                                     }
+
                                  ]
     },
     {
         "name":  "IRS",
         "purpose":  "Identify, organize, and track everything needed to prepare and file federal, state, and local tax returns for every Buy Your Home entity and tax-reporting owner or activity in scope.",
-        "status":  "Status not recorded",
+        "status":  "Pending messaging registration - not dispatchable",
         "skill":  "",
         "skillPath":  "",
         "skillState":  "not-applicable",
@@ -767,11 +683,11 @@ window.PROJECT_ROOMS = [
     {
         "name":  "Jennys Drawings",
         "purpose":  "This Project Room holds source material, working notes, open questions, and review-ready outputs for the Jennys Drawings workflow. Use this room when Wes asks Codex to organize, review, describe, prepare, or maintain materials specifically tied to Jennys Drawings.",
-        "status":  "active review draft",
+        "status":  "active review draft.",
         "skill":  "jennys-drawings",
         "skillPath":  "C:\\Codex\\Wiki Files\\skills\\jennys-drawings\\SKILL.md",
         "skillState":  "available",
-        "taskId":  "01a03956-fe55-7f62-9c0a-17c18f763320",
+        "taskId":  "019f700e-419a-7280-ba62-c01fe032b5b7",
         "attention":  null,
         "group":  "Publishing \u0026 Public Work",
         "groupBasis":  "Develops books, drawings, voice/media assets, websites, or other public-facing content.",
@@ -786,11 +702,11 @@ window.PROJECT_ROOMS = [
     {
         "name":  "LD Evans",
         "purpose":  "This Project Room holds source material, working notes, open questions, and review-ready outputs for the LD Evans workflow. Use this room when Wes asks Codex to organize, analyze, draft, or maintain materials specifically tied to LD Evans.",
-        "status":  "active manuscript development",
+        "status":  "active manuscript development.",
         "skill":  "ld-evans",
         "skillPath":  "C:\\Codex\\Wiki Files\\skills\\ld-evans\\SKILL.md",
         "skillState":  "available",
-        "taskId":  "01a03956-fe55-7f62-9c0a-17c18f763320",
+        "taskId":  "019f6ffe-d7b7-71f0-87d7-17b8e453f59e",
         "attention":  null,
         "group":  "Publishing \u0026 Public Work",
         "groupBasis":  "Develops books, drawings, voice/media assets, websites, or other public-facing content.",
@@ -805,11 +721,11 @@ window.PROJECT_ROOMS = [
     {
         "name":  "Lowes Order",
         "purpose":  "This Project Room holds the repeatable workflow for Buy Your Home Lowe\u0027s order work. Use this room when Wes asks Codex to plan, organize, review, or document Lowe\u0027s ordering tasks, including source notes, order requirements, follow-up decisions, cart-filling from email instructions, and review-ready outputs.",
-        "status":  "draft",
+        "status":  "draft.",
         "skill":  "lowes-order",
         "skillPath":  "C:\\Codex\\Wiki Files\\skills\\lowes-order\\SKILL.md",
         "skillState":  "available",
-        "taskId":  "",
+        "taskId":  "019f5845-fb96-7370-baf2-b8f00fddffae",
         "attention":  null,
         "group":  "Systems \u0026 Maintenance",
         "groupBasis":  "Maintains computers, Codex operations, management support, purchasing tools, marketplace work, or system health.",
@@ -824,11 +740,11 @@ window.PROJECT_ROOMS = [
     {
         "name":  "Manager",
         "purpose":  "This Project Room holds source material, working notes, open questions, and review-ready outputs for the Manager workflow. Use this room when Wes asks Codex to organize, define, draft, review, or maintain materials specifically routed to Manager.",
-        "status":  "active draft",
+        "status":  "active draft.",
         "skill":  "manager",
         "skillPath":  "C:\\Codex\\Wiki Files\\skills\\manager\\SKILL.md",
         "skillState":  "available",
-        "taskId":  "01a03956-fe55-7f62-9c0a-17c18f763320",
+        "taskId":  "019f8274-5b7e-7170-a051-f7944954de82",
         "attention":  null,
         "group":  "Systems \u0026 Maintenance",
         "groupBasis":  "Maintains computers, Codex operations, management support, purchasing tools, marketplace work, or system health.",
@@ -906,11 +822,11 @@ window.PROJECT_ROOMS = [
     {
         "name":  "Marketplace",
         "purpose":  "This Project Room owns the Facebook Marketplace tools workflow: finding tool listings, evaluating buy price versus likely resale value, calculating a safe offer, using Facebook Messenger to make and negotiate that offer when authorized, and notifying Wes by email when a seller reaches an agreement. Use this room when Wes asks Codex to search Facebook Marketplace for tools, evaluate a listing for resale profit, prepare or send an offer through Messenger, continue a seller conversation, or report Marketplace opportunities.",
-        "status":  "paused by Wes as of 2026-08-05",
+        "status":  "paused by Wes as of 2026-08-05.",
         "skill":  "marketplace",
         "skillPath":  "C:\\Codex\\Wiki Files\\skills\\marketplace\\SKILL.md",
         "skillState":  "available",
-        "taskId":  "",
+        "taskId":  "019fb5b0-6c29-7b32-822b-aa13b5920c29",
         "attention":  null,
         "group":  "Systems \u0026 Maintenance",
         "groupBasis":  "Maintains computers, Codex operations, management support, purchasing tools, marketplace work, or system health.",
@@ -963,7 +879,7 @@ window.PROJECT_ROOMS = [
     {
         "name":  "PR Messaging Dispatcher",
         "purpose":  "Provide one machine-local dispatcher heartbeat on each computer that hosts dispatchable Buy Your Home Project Room tasks. The dispatcher bridges the cross-machine durable queue to Codex task notifications that are local to its own computer.",
-        "status":  "`Active and unattended validation complete on WES-VIDEOEDITOR`",
+        "status":  "Release 0.4.1 live on WESSTUDIO, WES-VIDEOEDITOR, and OFFICEASSIST; console-free release 0.4.2 ready for controlled in-place upgrade",
         "skill":  "pr-messaging-dispatcher",
         "skillPath":  "C:\\Codex\\Wiki Files\\skills\\pr-messaging-dispatcher\\SKILL.md",
         "skillState":  "available",
@@ -1001,7 +917,7 @@ window.PROJECT_ROOMS = [
     {
         "name":  "Properties",
         "purpose":  "Create the standard folder and file package for a new Buy Your Home property project after Wes confirms the project address and template source. - Track all properties processed or queued through this workflow. - Maintain the authoritative Admin wiki index for property information found in the Teams-synced Property area, including rents, lease evidence, insurance evidence, purchase price or cost, and sales price.",
-        "status":  "Status not recorded",
+        "status":  "active draft workflow.",
         "skill":  "properties",
         "skillPath":  "C:\\Codex\\Wiki Files\\skills\\properties\\SKILL.md",
         "skillState":  "available",
@@ -1020,7 +936,7 @@ window.PROJECT_ROOMS = [
     {
         "name":  "Property Trade Evaluation",
         "purpose":  "Maintain analyses, term sheets, valuation notes, and supporting materials for property trade and transaction-structure evaluations.",
-        "status":  "active",
+        "status":  "active.",
         "skill":  "property-trade-evaluation",
         "skillPath":  "C:\\Codex\\Wiki Files\\skills\\property-trade-evaluation\\SKILL.md",
         "skillState":  "available",
@@ -1039,11 +955,11 @@ window.PROJECT_ROOMS = [
     {
         "name":  "Quickbooks",
         "purpose":  "Operate authorized QuickBooks workflows through explicitly defined modes. The current Invoice mode enters vendor invoices as QuickBooks bills from validated, authorized, structured handoffs received from Invoice Entry.",
-        "status":  "**Ready for validated Invoice Entry handoffs under Wes\u0027s interim Chrome authorization**",
+        "status":  "**Ready for validated Invoice Entry handoffs under Wes\u0027s interim Chrome authorization**.",
         "skill":  "quickbooks",
         "skillPath":  "C:\\Codex\\Wiki Files\\skills\\quickbooks\\SKILL.md",
         "skillState":  "available",
-        "taskId":  "01a05d0c-8031-7d92-9474-ab2330008ddb",
+        "taskId":  "01a05967-9a05-7081-a62e-616b2d8e61fd",
         "attention":  null,
         "group":  "Other",
         "groupBasis":  "Used when a Project Room does not yet have a supported assignment to one of the defined functional groups.",
@@ -1058,7 +974,7 @@ window.PROJECT_ROOMS = [
     {
         "name":  "REI BlackBook",
         "purpose":  "Canonical Project Room; open its README for current responsibilities.",
-        "status":  "started 2026-07-09",
+        "status":  "started 2026-07-09.",
         "skill":  "rei-blackbook",
         "skillPath":  "C:\\Codex\\Wiki Files\\skills\\rei-blackbook\\SKILL.md",
         "skillState":  "available",
@@ -1077,7 +993,7 @@ window.PROJECT_ROOMS = [
     {
         "name":  "SOPs",
         "purpose":  "This Project Room is the canonical workspace for Buy Your Home SOP source material, SOP drafts, SOP review questions, and SOP maintenance outputs. Use this room when creating, reconciling, reviewing, or updating SOPs from task instruction emails, the SOP spreadsheet, or operating-rule updates.",
-        "status":  "active",
+        "status":  "active.",
         "skill":  "sops",
         "skillPath":  "C:\\Codex\\Wiki Files\\skills\\sops\\SKILL.md",
         "skillState":  "available",
@@ -1208,11 +1124,11 @@ window.PROJECT_ROOMS = [
     {
         "name":  "Sync Github",
         "purpose":  "Keep the canonical Admin wiki Git repository current across every approved Buy Your Home computer that has C:\\Codex\\Wiki Files configured. GitHub is the exchange point between computers. Each enrolled computer runs the same local check at least once daily, fetches current remote state, and fast-forwards local main only when doing so cannot overwrite or conceal local work.",
-        "status":  "active and dispatchable through the registered dedicated task",
+        "status":  "active and dispatchable through the registered dedicated task. OFFICEASSIST installed and validated the machine-local safe-sync Scheduled Task on 2026-09-13; other computers require separate installation and verification.",
         "skill":  "sync-github",
         "skillPath":  "C:\\Codex\\Wiki Files\\skills\\sync-github\\SKILL.md",
         "skillState":  "available",
-        "taskId":  "",
+        "taskId":  "01a02a26-6ffa-7e52-a8ce-825ca0bfe3f0",
         "attention":  null,
         "group":  "Other",
         "groupBasis":  "Used when a Project Room does not yet have a supported assignment to one of the defined functional groups.",
@@ -1247,7 +1163,7 @@ window.PROJECT_ROOMS = [
     {
         "name":  "Voices",
         "purpose":  "Develop a practical, permissioned system so Wes\u0027s audible voice can be used to read text aloud, with an optional video avatar path for situations where a visual presenter is useful.",
-        "status":  "Status not recorded",
+        "status":  "project room created; initial scope captured.",
         "skill":  "voices",
         "skillPath":  "C:\\Codex\\Wiki Files\\skills\\voices\\SKILL.md",
         "skillState":  "available",

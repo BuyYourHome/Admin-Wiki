@@ -222,7 +222,11 @@ $rooms = foreach ($directory in Get-ChildItem -LiteralPath $projectRoomsRoot -Di
     $text = Get-Content -LiteralPath $readme -Raw
     $purpose = Get-SectionText -Text $text -Heading 'Purpose'
     if (-not $purpose) { $purpose = 'Canonical Project Room; open its README for current responsibilities.' }
-    $statusMatch = [regex]::Match($text, '(?im)^Status:\s*([^\r\n.]+)')
+    $statusMatch = [regex]::Match($text, '(?im)^\s*(?:-\s*)?Status:\s*(?<status>[^\r\n]+)')
+    $statusText = if ($statusMatch.Success) { $statusMatch.Groups['status'].Value.Trim() } else { 'Status not recorded' }
+    if ($statusText -match '^`(?<value>.*)`[.]?$') {
+        $statusText = $Matches['value'].Trim()
+    }
     $skillMatch = [regex]::Match($text, 'skills\\([^\\`\r\n]+)\\SKILL\.md')
     $skillName = if ($skillMatch.Success) { $skillMatch.Groups[1].Value } else { '' }
     $skillText = ''
@@ -237,9 +241,21 @@ $rooms = foreach ($directory in Get-ChildItem -LiteralPath $projectRoomsRoot -Di
             $skillState = 'missing'
         }
     }
-    $taskMatch = [regex]::Match($text, '(?i)(?:dedicated\s+task|dedicated\s+task/thread\s+id|task|thread)\s*:?\s*`?([0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12})`?')
+    $taskIdPattern = '[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}'
+    $explicitTaskPattern = '(?im)^\s*(?:-\s*)?(?:Exact\s+task\s+id|Dedicated\s+task(?:/thread\s+id)?|Task(?:/thread)?\s+id|Thread\s+id)\s*:\s*`?(?<id>{0})`?' -f $taskIdPattern
+    $taskMatch = [regex]::Match(
+        $text,
+        $explicitTaskPattern
+    )
+    if (-not $taskMatch.Success) {
+        $fallbackTaskPattern = '(?i)(?:dedicated\s+task|dedicated\s+task/thread\s+id|task|thread)\s*:?\s*`?(?<id>{0})`?' -f $taskIdPattern
+        $taskMatch = [regex]::Match(
+            $text,
+            $fallbackTaskPattern
+        )
+    }
     $dispatcherTaskId = Get-DispatcherTaskId -RoutingMapPath $dispatcherRoutingMapPath -ProjectRoomName $directory.Name
-    $taskId = if ($taskMatch.Success) { $taskMatch.Groups[1].Value } elseif ($dispatcherTaskId) { $dispatcherTaskId } else { '' }
+    $taskId = if ($taskMatch.Success) { $taskMatch.Groups['id'].Value } elseif ($dispatcherTaskId) { $dispatcherTaskId } else { '' }
     $modes = Get-DocumentedModes -Documents @($text, $skillText)
     $group = if ($groupAssignments.ContainsKey($directory.Name) -and $groupNames -contains $groupAssignments[$directory.Name]) { $groupAssignments[$directory.Name] } else { 'Other' }
     $groupDefinition = $groupDefinitions | Where-Object { $_.name -eq $group } | Select-Object -First 1
@@ -259,7 +275,7 @@ $rooms = foreach ($directory in Get-ChildItem -LiteralPath $projectRoomsRoot -Di
     $room = [ordered]@{
         name = $directory.Name
         purpose = $purpose
-        status = if ($statusMatch.Success) { $statusMatch.Groups[1].Value.Trim() } else { 'Status not recorded' }
+        status = $statusText
         skill = $skillName
         skillPath = $skillPath
         skillState = $skillState

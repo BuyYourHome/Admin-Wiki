@@ -248,3 +248,9 @@
 - Sanitized output excludes payloads, authorization senders, mailbox identifiers, links, attachment paths, credentials, hashes, synthetic tests, and superseded records.
 - Classified current transaction attention as `Needs Wes`, automatic recovery, system blocker, or workflow blocker and displayed safe ownership, context, attempts, next action, and decision fields.
 - Kept Dashboard display-only; it performs no retry, state transition, acceptance, completion, or destination work.
+
+## 2026-09-15 - Dashboard Metadata Parsing Corrected
+
+- Corrected status parsing so dotted release numbers such as `0.4.1` are preserved instead of truncating at the first period.
+- Prioritized explicit `Exact task id`, `Dedicated task`, `Task id`, and `Thread id` fields before generic task references so a dispatcher dependency cannot replace a Project Room's own task identity.
+- Regenerated and verified the Invoice Entry and PR Messaging Dispatcher Dashboard entries from their canonical READMEs.
