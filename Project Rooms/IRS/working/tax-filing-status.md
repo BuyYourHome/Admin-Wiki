@@ -138,3 +138,11 @@ Plan setup documents are received and partly verified; do not continue treating 
 - T08000 prior K-1 pages 10 and 17 report 100 total shares and 50 shares per spouse. Used 50 beginning shares per record. TaxAct Shareholder List visibly calculates 50.0000% each and 100.0000% total.
 - The list report leaves names/address display blank even though trust-name input persisted on re-entry. Generated K-1 identity fields, grantor details and Schedule B-1 must be inspected before treating the two-record presentation as validated. Software percentage calculation alone does not establish correct tax reporting.
 - Identification, address/residency and shareholder-loan balances remain incomplete/bookmarked. Mini-alerts deferred for completion, not cleared. Neither final nor amended K-1 selected. No filing or payment.
+
+### TaxAct and ownership reconciliation update - September 15, 2026
+
+- Inspected both actual K-1 form views: trust in F1, respective grantor in F2, Trust in F3, and equal allocation/shares. This resolves the blank overview-name presentation concern; TIN/address/residency, B-1, basis/loans and e-file validation remain incomplete.
+- Nine draft deductions were saved and verified, including the owner-selected TOTAL compensation. Exact values and evidence are private in taxact-entry-register-2025.json. Other zero fields remain uncompleted, not verified zero.
+- Heritage full-year ownership of both rental properties is now confirmed; see assumptions register. No rental income had been entered in TaxAct. Private book bridge updated without altering combined total.
+- NC draft added. Prior T08000 NC page 36 reports neither QSub nor QSub parent; used that answer provisionally after source review. State identification number entered from prior return. Taxed S-corporation election remains unanswered/bookmarked; extension receipt and state residency still require verification. Displayed state balance is provisional.
+- No purchase, signature, tax filing, payment or payroll correction was performed. Incomplete paper PDFs are superseded by the private correction notice where inconsistent.

@@ -36,3 +36,15 @@ Plan setup documents are received and partly verified; do not continue treating 
 - Expected corrections are an owner-directed preparation assumption, not evidence a W-2c/W-3c was prepared, submitted or accepted. No payroll filing, signature or external transmission is authorized by this note.
 - The separate purchases coded as wages remain a proposed owner-distribution treatment pending factual confirmation; this W-2 instruction does not settle their treatment.
 - Private financial reconciliation: `C:\Users\wesbr\AppData\Local\BYH\IRS\2025-draft-returns\2025-Preparation-Status-and-Reconciliation.pdf`. This assumption supersedes that packet's request to confirm whether the retirement-related journals were compensation; employee allocation and corrected totals remain open.
+
+## A-004 - Owner-selected total wage draft, September 15, 2026
+
+- Wes selected option 3 in the wage clarification: the journal-based amount is the TOTAL draft compensation, replacing the lower reported total, not additional to regular payments. Exact amounts and source reconciliation are stored privately in taxact-entry-register-2025.json.
+- This supersedes any additive interpretation of A-003. Reviewed quarterly 941s do not match the selected total. Expected W-2/941 corrections are not verified filings. The book-to-draft difference remains unclassified; do not automatically treat it as distributions or return of capital.
+- NC unemployment reports contain penalties and interest within tax charges. Those charges do not establish or explain the wage discrepancy. Separate penalties, interest, tax and payment timing before deduction treatment.
+
+## Confirmed property ownership - September 15, 2026
+
+- Wes directly confirms Heritage owned both 1426 Pleasant Garden Ln and 4121 Tensity Dr throughout 2025. This resolves the pending ownership/date question: do not assume a 2025 transfer from BYH.
+- Route all activity from both BYH property columns in T08107 to Heritage tax workpapers, together with existing Heritage activity once. Reconcile associated assets, debt and depreciation; do not move rents alone. This supplements the earlier Heritage ownership confirmation for 2325 Cool Springs.
+- The private entity bridge was updated and balances to the unchanged combined book control. No QuickBooks changes were made. Older BYH rental PDF and reconciliation PDF are superseded as described in the private CURRENT-CORRECTIONS.md; they must not be used as current filing figures.
