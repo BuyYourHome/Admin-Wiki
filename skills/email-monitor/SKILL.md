@@ -410,23 +410,29 @@ Wes folder set:
 - `Sent Confirmations`
 - `Health and Failures`
 - `Time Cards`
+- `Time Cards\Tim`
+- `Time Cards\Josh`
 - `Other`
 
 Create any missing Wes folder beneath `Inbox/Jean Wright`. Leave all additional existing Wes folders, including `Fraud` and `Invoices`, intact.
 
+For Wes, `Time Cards\Tim` and `Time Cards\Josh` are final-approved-invoice archives. A message qualifies only when its controlling subject, body, or attachment establishes Wes's final approval of the invoice or transmits the exact final Wes-approved invoice. A factual-accuracy confirmation, correction response, open-period draft, daily or refreshed draft, approval request, or other review copy is not a final approved invoice.
+
 Wes classification precedence:
 
-1. `Time Cards`: every message whose controlling subject or content concerns Josh Kennedy's reported or worked hours or his Time Card invoice cycle, regardless of sender or whether the message is a source report, correction, clarification, draft, approval, approved-status notice, delivery confirmation, or other time-related status. Also use `Time Cards` for a Tim Fleming message that reports Tim's hours worked. Tim messages that do not report hours worked continue through the remaining rules. This classification takes precedence even when another folder label would otherwise match.
-2. `Health and Failures`: failures, failed checks, health alerts, fraud alerts, or rollback instructions.
-3. `Brynda Law Suit`: subjects identifying Brynda Suit or the associated mediation, possession, counterclaim, witness, settlement-position, or settlement-proposal work.
-4. `Drafts for Review`: subjects identifying a draft, revised draft, or draft attachment.
-5. `Approvals Needed`: subjects requesting approval, asking Wes to approve, or stating that Wes approval is needed.
-6. `Daily Summaries`: Wes, Boss, Morning, OfficeAssist, Jenny, or Josh email/mailbox summaries.
-7. `Manager Tasks`: subjects containing `Manager Task`, matched case-insensitively.
-8. `Sent Confirmations`: approved-status notices, sent-and-verified notices, delivery verification, completed/run-complete notices, sender tests, or display-name verification.
-9. `Invoice Entry`: invoices, cost-allocation reports, vendor verification, and related payment-report messages that do not match `Time Cards` and were not already classified as approval or confirmation.
-10. `Project Rooms`: Gracious Millionaire, GM Site, manuscript, Codex/dispatcher/computer setup, document-scan, closing-document, MOU, insurance-report, or other identifiable Project Room work.
-11. `Other`: anything that does not match a class above.
+1. `Time Cards\Tim`: a Tim Fleming message containing or transmitting the exact final Wes-approved invoice.
+2. `Time Cards\Josh`: a Josh Kennedy or Josh Kennedy LLC message containing or transmitting the exact final Wes-approved invoice.
+3. `Time Cards`: every other message whose controlling subject or content concerns Josh Kennedy's reported or worked hours or his Time Card invoice cycle, including source reports, corrections, clarifications, daily or refreshed drafts, approval requests, factual confirmations, and other time-related status. Also use `Time Cards` for a Tim Fleming message that reports Tim's hours worked or carries an open or unapproved Tim draft. Tim messages that do not concern hours or the invoice cycle continue through the remaining rules. These three Time Card classifications take precedence even when another folder label would otherwise match.
+4. `Health and Failures`: failures, failed checks, health alerts, fraud alerts, or rollback instructions.
+5. `Brynda Law Suit`: subjects identifying Brynda Suit or the associated mediation, possession, counterclaim, witness, settlement-position, or settlement-proposal work.
+6. `Drafts for Review`: subjects identifying a draft, revised draft, or draft attachment.
+7. `Approvals Needed`: subjects requesting approval, asking Wes to approve, or stating that Wes approval is needed.
+8. `Daily Summaries`: Wes, Boss, Morning, OfficeAssist, Jenny, or Josh email/mailbox summaries.
+9. `Manager Tasks`: subjects containing `Manager Task`, matched case-insensitively.
+10. `Sent Confirmations`: approved-status notices, sent-and-verified notices, delivery verification, completed/run-complete notices, sender tests, or display-name verification.
+11. `Invoice Entry`: invoices, cost-allocation reports, vendor verification, and related payment-report messages that do not match `Time Cards` and were not already classified as approval or confirmation.
+12. `Project Rooms`: Gracious Millionaire, GM Site, manuscript, Codex/dispatcher/computer setup, document-scan, closing-document, MOU, insurance-report, or other identifiable Project Room work.
+13. `Other`: anything that does not match a class above.
 
 Jenny mailbox and folder root:
 
@@ -445,30 +451,37 @@ Jenny folder set:
 - `Sent Confirmations`
 - `Health and Failures`
 - `Time Cards`
+- `Time Cards\Tim`
+- `Time Cards\Josh`
 - `Other`
 
 Create any missing Jenny folder beneath `Inbox/Jean Wright`. Leave all additional existing Jenny folders intact.
 
+For Jenny, `Time Cards\Tim` and `Time Cards\Josh` use the same final-approved-invoice standard as Wes's folders. Jenny's review, visibility, or factual response does not establish Wes's final approval.
+
 Jenny classification precedence:
 
-1. `Time Cards`: every message whose controlling subject or content concerns Josh Kennedy's reported or worked hours or his Time Card invoice cycle, regardless of sender or whether the message is a source report, correction, clarification, draft, approval, approved-status notice, delivery confirmation, or other time-related status. Also use `Time Cards` for a Tim Fleming message that reports Tim's hours worked. Tim messages that do not report hours worked continue through the remaining rules. This classification takes precedence even when another folder label would otherwise match.
-2. `Health and Failures`: failures, failed checks, health alerts, fraud alerts, or rollback instructions.
-3. `Brynda Law Suit`: subjects identifying Brynda Suit or the associated mediation, possession, counterclaim, witness, settlement-position, or settlement-proposal work.
-4. `Drafts for Review`: subjects identifying a draft, revised draft, or draft attachment.
-5. `Approvals Needed`: subjects requesting approval, asking Jenny to approve or review, or stating that Jenny action is needed.
-6. `Daily Summaries`: Jenny, Josh, Wes, Boss, Morning, OfficeAssist, or other email/mailbox summaries delivered to Jenny.
-7. `Manager Tasks`: subjects containing `Manager Task`, matched case-insensitively.
-8. `Sent Confirmations`: approved-status notices, sent-and-verified notices, delivery verification, completed/run-complete notices, sender tests, or display-name verification.
-9. `Invoice Entry`: invoices, cost-allocation reports, vendor verification, and related payment-report messages that do not match `Time Cards` and were not already classified as approval or confirmation.
-10. `Project Rooms`: Gracious Millionaire, GM Site, manuscript, Codex/dispatcher/computer setup, document-scan, closing-document, MOU, insurance-report, or other identifiable Project Room work.
-11. `Other`: anything that does not match a class above.
+1. `Time Cards\Tim`: a Tim Fleming message containing or transmitting the exact final Wes-approved invoice.
+2. `Time Cards\Josh`: a Josh Kennedy or Josh Kennedy LLC message containing or transmitting the exact final Wes-approved invoice.
+3. `Time Cards`: every other message whose controlling subject or content concerns Josh Kennedy's reported or worked hours or his Time Card invoice cycle, including source reports, corrections, clarifications, daily or refreshed drafts, approval requests, factual confirmations, and other time-related status. Also use `Time Cards` for a Tim Fleming message that reports Tim's hours worked or carries an open or unapproved Tim draft. Tim messages that do not concern hours or the invoice cycle continue through the remaining rules. These three Time Card classifications take precedence even when another folder label would otherwise match.
+4. `Health and Failures`: failures, failed checks, health alerts, fraud alerts, or rollback instructions.
+5. `Brynda Law Suit`: subjects identifying Brynda Suit or the associated mediation, possession, counterclaim, witness, settlement-position, or settlement-proposal work.
+6. `Drafts for Review`: subjects identifying a draft, revised draft, or draft attachment.
+7. `Approvals Needed`: subjects requesting approval, asking Jenny to approve or review, or stating that Jenny action is needed.
+8. `Daily Summaries`: Jenny, Josh, Wes, Boss, Morning, OfficeAssist, or other email/mailbox summaries delivered to Jenny.
+9. `Manager Tasks`: subjects containing `Manager Task`, matched case-insensitively.
+10. `Sent Confirmations`: approved-status notices, sent-and-verified notices, delivery verification, completed/run-complete notices, sender tests, or display-name verification.
+11. `Invoice Entry`: invoices, cost-allocation reports, vendor verification, and related payment-report messages that do not match `Time Cards` and were not already classified as approval or confirmation.
+12. `Project Rooms`: Gracious Millionaire, GM Site, manuscript, Codex/dispatcher/computer setup, document-scan, closing-document, MOU, insurance-report, or other identifiable Project Room work.
+13. `Other`: anything that does not match a class above.
 
 Execution rules:
 
 - prefer the Outlook Email connector for delegated Wes and Jenny mailbox folder discovery, message listing, and moves;
 - use the mounted local Outlook profile only when the connector cannot create the required delegated-mailbox folders or cannot complete the move safely;
 - never hardcode folder IDs; resolve the exact mailbox and folder path independently each run;
-- move only messages directly inside the activated mailbox's `Inbox/Jean Wright`; do not reclassify messages already in a child folder;
+- classify messages directly inside the activated mailbox's `Inbox/Jean Wright`; additionally inspect messages directly inside its `Time Cards` child folder and move only qualifying final Wes-approved invoices into `Time Cards\Tim` or `Time Cards\Josh` so an existing backlog is corrected;
+- leave daily drafts, refreshed drafts, source reports, correction threads, factual confirmations, approval requests, and all other non-final Time Card messages in the parent `Time Cards` folder; do not reclassify messages already inside `Time Cards\Tim`, `Time Cards\Josh`, or any other child folder;
 - preserve read/unread state, flags, categories, attachments, conversation state, and message content;
 - if Outlook rule processing has not yet placed the newly sent message in `Jean Wright`, retry the folder check briefly, then leave it for the next Organize run rather than moving a message from another folder;
 - record and report a folder-access, creation, or move failure; routine successful organization does not require a user notification.
