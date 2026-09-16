@@ -36,14 +36,14 @@ function Invoke-Manager([string]$Action,[hashtable]$Extra=@{}) {
     if ($Mode -in @('Validation','Drain','Live')) {
         $managerMode=if($Mode -ceq 'Live'){'Live'}else{'Validation'}
         $argv+=@('-TransportOwner',$cfg.owner,'-Generation',$cfg.generation,'-Mode',$managerMode,'-ClientConfigPath',$cfg.client_path,'-ManifestDirectory',$cfg.manifest_directory,'-ActorTaskId',$cfg.dispatcher_task_id,'-ActorProjectRoom','PR Messaging Dispatcher')
-        $usesCanonicalProduction=$cfg.release -in @('0.4.0','0.4.1','0.4.2','0.4.3','0.4.4') -and $cfg.manager_path -ceq 'C:\Codex\Wiki Files\tools\pr-messaging\Manage-ProjectRoomMessage.ps1' -and $Mode -in @('Validation','Live')
+        $usesCanonicalProduction=$cfg.release -in @('0.4.0','0.4.1','0.4.2','0.4.3','0.4.4','0.4.5') -and $cfg.manager_path -ceq 'C:\Codex\Wiki Files\tools\pr-messaging\Manage-ProjectRoomMessage.ps1' -and $Mode -in @('Validation','Live')
         if(!$usesCanonicalProduction){$argv+=@('-FixtureRoot',$cfg.fixture_root)}
     }
     if($Mode -ceq 'Canary' -and $Action -ne 'List'){
         $argv+=@('-TransportOwner',$cfg.owner,'-Generation',$cfg.generation,'-Mode','Canary','-ClientConfigPath',$cfg.client_path,'-ManifestDirectory',$cfg.manifest_directory,'-ActorTaskId',$cfg.dispatcher_task_id,'-ActorProjectRoom','PR Messaging Dispatcher')
     }
     foreach($k in $Extra.Keys){$argv+=@("-$k",[string]$Extra[$k])}
-    $managerBound=if($Action -ceq 'List'){25}else{15}
+    $managerBound=if($cfg.release -ceq '0.4.5'){if($Action -ceq 'List'){60}else{120}}else{if($Action -ceq 'List'){25}else{15}}
     $p=Invoke-LtProcess $cfg.powershell_path $argv ([Math]::Min($managerBound,$left))
     if($p.timed_out){throw 'ManagerTimeoutUncertain'}
     if($p.exit_code -ne 0){throw ('ManagerFailed: '+$p.stderr)}
@@ -99,19 +99,19 @@ function Recover-Entry($Entry,$Record) {
 }
 try {
     $cfg=Read-LtJson $ConfigPath
-    if ($cfg.schema_version -ne 1 -or $cfg.release -notin @('0.2.0','0.4.0','0.4.1','0.4.2','0.4.3','0.4.4')) { throw 'UnsupportedConfigRelease' }
+    if ($cfg.schema_version -ne 1 -or $cfg.release -notin @('0.2.0','0.4.0','0.4.1','0.4.2','0.4.3','0.4.4','0.4.5')) { throw 'UnsupportedConfigRelease' }
     $health.release=$cfg.release
     if((Get-LtPackageHash $PSScriptRoot) -cne $cfg.package_sha256){throw 'PackageReleaseMismatch'}
     if($cfg.expected_machine -cne $env:COMPUTERNAME -or $cfg.expected_sid -cne $health.sid){throw 'WorkerIdentityMismatch'}
-    $maxAllowedTick=if($cfg.release -ceq '0.4.4'){180}else{55}
+    $maxAllowedTick=if($cfg.release -in @('0.4.4','0.4.5')){180}else{55}
     if ($cfg.max_tick_seconds -lt 5 -or $cfg.max_tick_seconds -gt $maxAllowedTick -or $cfg.queued_receipt_warning_seconds -lt 1 -or $cfg.queued_receipt_warning_seconds -gt 86400) { throw 'InvalidTimeBounds' }
     Assert-LtUuid $cfg.dispatcher_task_id
-    if($Mode -eq 'Live' -and $cfg.release -notin @('0.4.0','0.4.1','0.4.2','0.4.3','0.4.4')){throw 'LiveDisabledInDevelopmentRelease'}
+    if($Mode -eq 'Live' -and $cfg.release -notin @('0.4.0','0.4.1','0.4.2','0.4.3','0.4.4','0.4.5')){throw 'LiveDisabledInDevelopmentRelease'}
     if($PSBoundParameters.ContainsKey('MessageId')){Assert-LtId $MessageId}
     if($Mode -eq 'Validation' -and [string]::IsNullOrWhiteSpace($MessageId)){throw 'ValidationFilterRequired'}
     if($Mode -ceq 'Canary'){Assert-LtCanaryConfig $cfg $MessageId}
     if($Mode -in @('Validation','Drain')){
-        if($cfg.release -in @('0.4.0','0.4.1','0.4.2','0.4.3','0.4.4') -and $Mode -ceq 'Validation'){
+        if($cfg.release -in @('0.4.0','0.4.1','0.4.2','0.4.3','0.4.4','0.4.5') -and $Mode -ceq 'Validation'){
             if($cfg.adapter_kind -cne 'CodexQueue'){throw 'ProductionAdapterRequired'}
         } else {
             Assert-LtFixture $cfg.fixture_root @($cfg.queue_path,$cfg.state_directory,$cfg.client_path,$cfg.manifest_directory,$cfg.adapter_path)
@@ -164,7 +164,7 @@ try {
     foreach($r in @($scoped|Sort-Object created_at_utc,message_id)){
         $evaluationMode=if($Mode -eq 'Validation'){'Validation'}else{'Live'}
         $reason=Test-LtRecord $r $client $manifests $env:COMPUTERNAME $evaluationMode $MessageId $records
-        if($cfg.release -in @('0.4.0','0.4.1','0.4.2','0.4.3','0.4.4') -and !(Test-LtPinnedDestination $cfg $r.destination)){$reason='DestinationNotPinned'}
+        if($cfg.release -in @('0.4.0','0.4.1','0.4.2','0.4.3','0.4.4','0.4.5') -and !(Test-LtPinnedDestination $cfg $r.destination)){$reason='DestinationNotPinned'}
         if($Mode -ceq 'Canary'){Assert-LtCanaryRecord $r; if($cfg.payload_hash -cne $r.payload_hash){throw 'CanaryPinnedHashMismatch'}}
         if($r.destination.task_id -ceq $cfg.dispatcher_task_id){$reason='SelfNotificationForbidden'}
         if($journal -and @($journal.entries|Where-Object {$_.phase -ne 'closed' -and $_.destination_task_id -ceq $r.destination.task_id}).Count){$reason='DestinationOutstanding'}
@@ -193,16 +193,16 @@ try {
         $argv=@('-NoProfile','-ExecutionPolicy','Bypass','-File',$cfg.adapter_path,'-FixtureRoot',$cfg.fixture_root,'-MessageId',$r.message_id,'-ThreadId',$r.destination.task_id,'-AttemptId',$entry.attempt_id)
         if($Mode -ceq 'Canary'){
             $argv=@('-NoProfile','-ExecutionPolicy','Bypass','-File',$cfg.adapter_path,'-CanaryConfigPath',$ConfigPath,'-MessageId',$r.message_id,'-ThreadId',$r.destination.task_id,'-DispatcherTaskId',$cfg.dispatcher_task_id,'-PayloadHash',$r.payload_hash,'-CliPath',$cfg.cli_path,'-ExpectedCliHash',$cfg.cli_sha256,'-AttemptId',$entry.attempt_id,'-TimeoutSeconds','8')
-        } elseif($Mode -ceq 'Live' -or ($Mode -ceq 'Validation' -and $cfg.release -in @('0.4.0','0.4.1','0.4.2','0.4.3','0.4.4'))) {
+        } elseif($Mode -ceq 'Live' -or ($Mode -ceq 'Validation' -and $cfg.release -in @('0.4.0','0.4.1','0.4.2','0.4.3','0.4.4','0.4.5'))) {
             $argv=@('-NoProfile','-ExecutionPolicy','Bypass','-File',$cfg.adapter_path,'-LiveConfigPath',$ConfigPath,'-MessageId',$r.message_id,'-ThreadId',$r.destination.task_id,'-DispatcherTaskId',$cfg.dispatcher_task_id,'-PayloadHash',$r.payload_hash,'-CliPath',$cfg.cli_path,'-ExpectedCliHash',$cfg.cli_sha256,'-AttemptId',$entry.attempt_id,'-TimeoutSeconds','10')
         }
         $health.submissions++
-        $adapterBound=if($Mode -in @('Canary','Live') -or ($Mode -ceq 'Validation' -and $cfg.release -in @('0.4.0','0.4.1','0.4.2','0.4.3','0.4.4'))){20}else{10}
+        $adapterBound=if($Mode -in @('Canary','Live') -or ($Mode -ceq 'Validation' -and $cfg.release -in @('0.4.0','0.4.1','0.4.2','0.4.3','0.4.4','0.4.5'))){20}else{10}
         $answer=Invoke-LtProcess $cfg.powershell_path $argv ([Math]::Min($adapterBound,[Math]::Max(1,[int]($cfg.max_tick_seconds-$watch.Elapsed.TotalSeconds))))
         if($Mode -ceq 'Canary'){Write-LtJson (Join-Path $cfg.state_directory 'adapter-process-result.json') $answer}
         Invoke-CrashTestPause 'AfterAdapter'
         if($FailurePoint -eq 'AfterAdapter'){throw 'InjectedAfterAdapter'}
-        $productionMarker=if($cfg.release -in @('0.4.1','0.4.2','0.4.3','0.4.4') -and ($Mode -ceq 'Live' -or $Mode -ceq 'Validation')){Get-LtSubmissionMarkerPath $cfg.state_directory $r.message_id $entry.attempt_id}else{$null}
+        $productionMarker=if($cfg.release -in @('0.4.1','0.4.2','0.4.3','0.4.4','0.4.5') -and ($Mode -ceq 'Live' -or $Mode -ceq 'Validation')){Get-LtSubmissionMarkerPath $cfg.state_directory $r.message_id $entry.attempt_id}else{$null}
         if(Test-LtProvenPreSubmissionFailure $answer $productionMarker){
             $detail='Pinned adapter exited before its permanent submission marker was created; no destination notification occurred.'
             $reconciled=Invoke-Manager 'ReconcileAttempt' @{MessageId=$r.message_id;ExpectedHash=$r.payload_hash;AttemptId=$entry.attempt_id;AttemptOutcome='NotDelivered';Detail=$detail}

@@ -1,5 +1,14 @@
 # Low-token dispatcher releases
 
+## Controlled release 0.4.5
+
+Release `0.4.5` preserves all `0.4.4` ownership, quarantine, journal, duplicate-prevention, and 180-second tick controls. It corrects the manager-call bounds after OFFICEASSIST measured `ManagerTimeoutUncertain` during otherwise eligible claim processing:
+
+- Read-only manager list calls may use up to 60 seconds.
+- Other manager calls, including the atomic conditional claim under the queue lock, may use up to 120 seconds.
+- Every manager call remains capped by the time left in the existing 180-second overall tick; this release does not permit an unbounded call.
+- `UpgradeLive` accepts release `0.4.4` and preserves the existing owner generation, state, journal, scheduled task, hidden launcher, and destination pins.
+
 ## Controlled release 0.4.4
 
 Release `0.4.4` preserves `0.4.3` journal-backlog controls and addresses two conditions verified during the OFFICEASSIST upgrade:

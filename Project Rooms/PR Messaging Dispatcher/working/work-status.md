@@ -8,7 +8,7 @@ WES-VIDEOEDITOR staged the worker, completed `prmsg-wve-low-token-worker-validat
 
 Next gate: stage and validate OFFICEASSIST while preserving its active Email Monitor heartbeat and embedded dispatcher as the fallback. Remove only the embedded dispatcher stage after the OFFICEASSIST worker is live. WESSTUDIO follows after OFFICEASSIST passes.
 
-OFFICEASSIST upgraded to release `0.4.3` and verified that closed journal entries are skipped without `TickBudgetExhausted`, but its remote-SMB scan still required 64–78 seconds and a completed Tim approval record held Invoice Entry because its stored immutable hash matches neither supported canonical encoding. Release `0.4.4` retains the backlog fix, extends the bounded production tick to 180 seconds, and adds an audited owner-bound integrity quarantine that preserves the invalid record while releasing only its transport slot.
+OFFICEASSIST upgraded through release `0.4.4`. The owner-bound quarantine successfully preserved the hash-invalid completed Tim approval record while releasing only its transport slot. Subsequent claim processing exposed a separate bound mismatch: the overall tick allowed 180 seconds, but the atomic manager call still timed out after 15 seconds and returned `ManagerTimeoutUncertain`. Release `0.4.5` preserves all existing controls and raises only the bounded manager subprocess limits to 60 seconds for list calls and 120 seconds for atomic mutations, capped by the remaining overall tick budget.
 
 See `outputs\24-7 Deterministic Worker Release 0.4.0.md`.
 

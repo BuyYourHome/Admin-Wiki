@@ -39,7 +39,7 @@ Out of scope:
 
 ## Status
 
-Status: `Release 0.4.4 developed for controlled in-place upgrade after OFFICEASSIST verified remote-SMB latency and one completed-record integrity hold`.
+Status: `Release 0.4.5 developed for controlled in-place upgrade after OFFICEASSIST verified the 0.4.4 integrity quarantine and exposed an inner manager-call timeout`.
 
 WES-VIDEOEDITOR promoted release `0.4.0` after exact synthetic `prmsg-wve-low-token-worker-validation-20260913-001` completed with one delivered attempt and no business action, then upgraded in place to `0.4.1`. Scheduled task `BYH PR Messaging Worker - WES-VIDEOEDITOR` runs every 60 seconds in `Live` mode for its pinned Quickbooks destination. The old assisted QuickBooks task is disabled and the model-driven dispatcher heartbeat remains paused. OFFICEASSIST promoted after exact synthetic `prmsg-officeassist-low-token-worker-docscan-validation-20260914-001` completed through one delivered attempt, then upgraded in place to `0.4.1`. Its worker runs every 60 seconds in `Live` mode for Email Monitor, Doc Scan, and Invoice Entry, and Email Monitor's embedded dispatcher stage has been removed while its mailbox heartbeat remains active.
 
@@ -50,6 +50,8 @@ Release `0.4.2` changes only the recurring task launcher. It uses the release-pi
 Release `0.4.3` preserves those controls and corrects routine journal traversal. Closed history remains validated and retained but is no longer reconciled or rewritten on every tick; only active entries are recovered, attempt lookups are indexed, and traversal stops after the one permitted claim. This prevents a large historical journal from consuming the 50-second tick budget before eligible work is reached.
 
 Release `0.4.4` retains that optimization and permits a bounded 180-second production tick because OFFICEASSIST's authoritative remote-SMB scan was measured at 64–78 seconds. It also adds an owner-bound administrative quarantine for a structurally terminal record with an invalid immutable hash. Quarantine preserves the bad hash and all record evidence, records both recomputed hashes, releases only the transport hold, and never claims delivery or business completion.
+
+Release `0.4.5` retains every `0.4.4` control and aligns the canonical manager subprocess bounds with the 180-second tick. List calls may use up to 60 seconds and atomic mutation calls may use up to 120 seconds, always capped by the time remaining in the tick. This addresses OFFICEASSIST `ManagerTimeoutUncertain` results caused by the prior 15-second conditional-claim limit without permitting an unbounded manager call.
 
 The dispatcher now distinguishes a pre-PowerShell tool-wrapper failure from a helper or queue failure. It retries one pre-execution wrapper failure, records deterministic skip counts, writes machine-local health to `%LOCALAPPDATA%\BuyYourHome\PRMessaging\dispatcher-health.json`, and allows up to 120 seconds for destination startup before final delivery reconciliation.
 
