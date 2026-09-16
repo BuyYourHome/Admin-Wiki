@@ -92,6 +92,14 @@ Evaluate every validated payable invoice for routing to the exact `Quickbooks` P
 
 For project-related invoices, QuickBooks and the project-management spreadsheet are parallel destinations. Continue the established project-spreadsheet placement workflow; neither destination replaces the other.
 
+## Approved Invoice Completion
+
+Wes's approval of a project-related invoice authorizes and requires the supported non-payment downstream workflow without another `go`: final filing, insertion of every supported project allocation into the proper authoritative SharePoint project workbook, save/reopen read-back validation, and any otherwise-ready QuickBooks handoff required by the Invoice Entry skill. Spreadsheet posting is not a separate authorization after approval.
+
+An approved invoice is not operationally `Completed` while a supported allocation remains unposted. PDF generation, approval, filing, archiving, email delivery, or QuickBooks routing cannot substitute for project-spreadsheet insertion. If an allocation is blocked by mapping, duplicate risk, missing data, workbook availability, or save safety, retain completed insertions and return `Blocked` or `Needs Wes` with the exact invoice, project, workbook, worksheet or missing mapping, and decision required. Never silently record `workbook_posted: false` in an otherwise completed workflow.
+
+Use invoice ID plus project/allocation identity for duplicate checks; amount-only matches are insufficient. Approval never authorizes payment or paid status. On every startup and backup-monitor run, compare approved project-related invoices in durable Invoice Entry state with the authoritative project workbooks and automatically resume supported missing insertions under the existing approval. This backstop includes Tim Fleming and Josh Kennedy invoices and must not require Wes to repeat approval.
+
 Poyner Spruill payable invoices are BYH legal expenses for `20-HM - 115 Rosebrooks Dr`. File authoritative documents at `Property/20-HM-115 Rosebrooks Dr/Lawsuit/Billing`, add each validated bill once to the Rosebrooks project workbook with category `Legal Expenses`, and route each new payable invoice to `Quickbooks` under `Buy Your Home LLC`, vendor `Poyner Spruill LLP` / ID `1389`, and the verified 115 Rosebrooks project. If the workbook lacks a `Legal Expenses` vendor tab, retain the row in `Review!tblInvoiceReview` with blank `Destination Worksheet`; Invoice Entry must not invent that worksheet. Statements and payment confirmations remain reconciliation evidence unless they independently establish a payable invoice.
 
 ## Email Boundary
@@ -108,7 +116,7 @@ Invoice Entry may read one exact Outlook message when the handoff supplies its e
 
 ## Durable Dispatch Intake
 
-Email Monitor and Jean dispatches are authoritative in the central queue at `\\WES-VIDEOEDITOR\BYH-PRMessaging$\records`; task messages are wake-up signals. On every startup and backup-monitor run, inspect unresolved records addressed to the registered Invoice Entry task, deduplicate by dispatch ID and payload hash, validate source, destination, payload hash, and recorded authorization from the same-ID central record, write the durable `Accepted` receipt before substantive work, then record `Processing` and one valid final state through `tools\pr-messaging\Manage-ProjectRoomMessage.ps1`. Do not require the wake-up itself to originate from the source task; dispatcher and relaying tasks are transport only. Queue presence grants intake authority only and does not bypass Invoice Entry's approval, payment, filing, workbook, vendor-contact, or email-delivery gates.
+Email Monitor and Jean dispatches are authoritative in the central queue at `\\WES-VIDEOEDITOR\BYH-PRMessaging$\records`; task messages are wake-up signals. On every startup and backup-monitor run, inspect unresolved records addressed to the registered Invoice Entry task, deduplicate by dispatch ID and payload hash, validate source, destination, payload hash, and recorded authorization from the same-ID central record, write the durable `Accepted` receipt before substantive work, then record `Processing` and one valid final state through `tools\pr-messaging\Manage-ProjectRoomMessage.ps1`. Also reconcile approved project-related invoices in durable Invoice Entry state against their authoritative project workbooks and resume supported missing insertions under the existing approval. Do not require the wake-up itself to originate from the source task; dispatcher and relaying tasks are transport only. Queue presence grants intake authority only and does not bypass Invoice Entry's approval, payment, filing, workbook, vendor-contact, or email-delivery gates.
 
 ## Workbook Safety
 
