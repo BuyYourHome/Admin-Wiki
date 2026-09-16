@@ -35,3 +35,8 @@ The corrected executed governing document remains pending as supporting evidence
 ## Heritage Ownership Date Confirmed - 2026-09-13
 
 Wes explicitly confirms Browning Family Revocable Trust owned Heritage Management LLC from origination. Use trust ownership from formation throughout its 2025 existence. The earlier BYH entry was an initial-draft error, not an actual ownership transfer. Ownership identity and start date are resolved by owner confirmation; do not request that clarification again. The corrected executed governing document remains pending as supporting evidence, and tax classification/reporting review remains separate.
+
+## Pond sources reviewed - September 15, 2026
+
+- Pond-named project workbook identifies Outrigger and Heritage internally. Do not use its values as Pond evidence; original source untouched. Exact source paths and cells retained in private POND-REFINANCE-RECONCILIATION-2025.md.
+- Signed Isaacs note names retirement-plan trust. Wes confirms BYH owed it and refinancing repaid it, resolving intended borrower identity. Repayment timing and closing-source match remain pending: the inspected 2025 ALTA lists Shellpoint, not Isaacs, as payoff recipient. Recorded collateral release alone does not prove note satisfaction. Private detail: POND-NOTE-AND-MORTGAGE-EXCEPTIONS-2025.md.

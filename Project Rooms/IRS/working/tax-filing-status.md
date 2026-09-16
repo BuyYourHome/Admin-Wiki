@@ -167,3 +167,7 @@ Plan setup documents are received and partly verified; do not continue treating 
 ### Four-property question resolved - September 15, 2026
 
 Banks belongs to Heritage; Sandy Run and Burgwyn sold in 2024; Pond is rehab held for resale, per Wes. Updated private source register and created a balanced third reconciliation version retaining previous files. The pending property-use question is closed. Remaining work is reconciliation and reporting validation, not waiting for this ownership/use answer. Existing 2025 costs on prior-year sold properties are under review; Pond inventory/basis and separate entity balance-sheet allocation remain incomplete. No return filed.
+
+### Mortgage reconciliation continuation - September 15, 2026
+
+Reconciled all mortgage-account transactions to the combined opening and closing balances; private Mortgage-movement-trace-2025.csv preserves the source rows and preliminary entity matches. This does not complete entity-separated Schedule L. Pond refinance principal matches lender statement after excluding undrawn holdback. Acquisition funding/equity classification requires review. Wes resolved the Isaacs borrower identity as BYH and reports repayment through refinancing; payoff year remains a focused pending question. TaxAct no-EIN/B-1 issue remains unresolved. No return amounts changed in this pass; no filing, signatures, payment, or QuickBooks edits.
