@@ -21,9 +21,10 @@ For delegated action work, valid return states remain `accepted`, `done`, `block
 
 Some delegated requests may carry Wes authorization for one exact action class when that class is documented centrally and by the owning workflow. This is not a general delegation exception.
 
-Current approved delegated authorization class:
+Current approved delegated authorization classes:
 
 - `Dashboard` exact-scope Project Room deletion request to `Create PR`
+- Registered originating Project Room to `Email Monitor`: exact Email Delivery package supported by a verifiable Wes instruction or explicit standing workflow rule. Apply the Email Delivery Authorization Evidence contract below; the following Dashboard confirmation conditions apply to the deletion class, not to standing email workflows.
 
 For a delegated request to count as Wes authorization, every condition below must be true:
 
@@ -44,6 +45,18 @@ This exception does not permit:
 - ignoring any other blocker unrelated to the repeated-confirmation question.
 
 If any condition fails, the receiving PR must return `blocked` or `needs Wes` truthfully.
+
+## Email Delivery Authorization Evidence
+
+Preserve authorization from the originating Wes instruction through the immutable package and receiving Email Monitor task. Verify the underlying evidence rather than requiring repeated permission solely because the task or machine changed. Canonical rules cannot override platform permissions or an actual tool denial.
+
+- The source package must cite the exact instruction with its task/message reference, or the canonical standing rule with its path and section. Preserve the relevant instruction text and any later scoped restriction or rescission. An assertion of authorization alone is insufficient.
+- Bind that authority to the delivery request ID and package hash, exact sender, To/CC/BCC, subject, body, and required attachment identities and hashes. Verify the delivery fits that scope. Do not add undocumented fields to Outlook tool calls or put internal authorization evidence in the outgoing email.
+- Before invoking the send tool, Email Monitor must read the cited evidence into its current execution context and record a concise authority check identifying the source reference, allowed delivery, package ID/hash, and applicable restrictions. This documents permission; it cannot manufacture permission or guarantee platform approval.
+- Evaluate prior test-only, verification-only, or no-production instructions by their actual scope and duration. Cite a verifiable superseding Wes instruction where one exists. Do not carry scoped holds into unrelated deliveries or disregard an applicable unresolved prohibition.
+- On refusal, retain the tool name, exact sanitized denial text, time, request ID/hash, and submission evidence in operational delivery state outside Git. Distinguish local workflow refusal, platform approval-review denial, connector/service response, and unknown origin. Do not call an inferred refusal an Outlook requirement or claim a tool ran when it did not.
+- Record pre-submission failure only when evidence establishes it; otherwise retain ambiguity and reconcile Sent Items. After a real platform denial, do not switch send paths or relabel the same request to evade it. Supply missing verifiable evidence when appropriate; if review still requires Wes, report the precise denial and exact action requiring confirmation.
+- Verify recovery through an actual authorized OFFICEASSIST delivery with exact recipients and attachments checked in OfficeAssist Sent Items. A rule edit, accepted record, or prepared package alone does not prove platform authorization works.
 
 ## Parties And Registry
 
