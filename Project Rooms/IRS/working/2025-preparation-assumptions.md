@@ -48,3 +48,9 @@ Plan setup documents are received and partly verified; do not continue treating 
 - Wes directly confirms Heritage owned both 1426 Pleasant Garden Ln and 4121 Tensity Dr throughout 2025. This resolves the pending ownership/date question: do not assume a 2025 transfer from BYH.
 - Route all activity from both BYH property columns in T08107 to Heritage tax workpapers, together with existing Heritage activity once. Reconcile associated assets, debt and depreciation; do not move rents alone. This supplements the earlier Heritage ownership confirmation for 2325 Cool Springs.
 - The private entity bridge was updated and balances to the unchanged combined book control. No QuickBooks changes were made. Older BYH rental PDF and reconciliation PDF are superseded as described in the private CURRENT-CORRECTIONS.md; they must not be used as current filing figures.
+
+## Additional owner confirmations after restart - September 15, 2026
+
+- Heritage owned 115 Rosebrooks Dr and 7001 Outrigger Dr throughout 2025. Route their activity to Heritage workpapers; preserve separate review of capitalization and asset/debt attribution.
+- Printer lease replacement was paid in 2025. The ledger match is documented privately; do not add the intercepted payment as a second rent deduction.
+- No IRS audit redetermination; BYH operated only in North Carolina in 2025. These questions are resolved and entered in the draft.
