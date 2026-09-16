@@ -44,3 +44,7 @@ Wes explicitly confirms Browning Family Revocable Trust owned Heritage Managemen
 ### Isaacs repayment statement corrected by Wes - September 15, 2026
 
 Wes corrects the prior statement: the Isaacs loan was not paid; collateral moved from Pond to Tensity. BYH remains the owner-confirmed borrower. This supersedes prior repayment language and closes the payoff-year question as not applicable. Do not eliminate the debt or reassign the borrower solely because Heritage property now secures it. Exact principal and collateral-document reconciliation remain separate. Private entry register and note-exception workpaper updated. No return or QuickBooks entry changed.
+
+### Isaacs borrower transfer clarified by Wes - September 15, 2026
+
+Wes confirms the owing LLC changed with the collateral and answers "oct 25" to the Heritage assumption/date question. Interpret as October 2025, exact day unconfirmed. Use Heritage Management as year-end borrower in the working allocation, superseding the earlier BYH-remains-borrower statement. Debt was not paid off. Principal, assumption documentation, transfer consideration/intercompany entries, and period-specific interest remain to reconcile. Private register updated; no live books or tax-return totals changed.
