@@ -1264,7 +1264,7 @@ Automation:
 Shared Windows health supervisor:
 
 - Workflow id: `invoice-entry`.
-- Windows task: `Codex - Workflow Health Supervisor`, every 10 minutes on `WESSTUDIO`.
+- Windows task: `Codex - Workflow Health Supervisor`, every 10 minutes on `WESSTUDIO`, launched invisibly through the canonical `wscript.exe` wrapper rather than direct recurring PowerShell.
 - Substantive Invoice Entry health evaluation: no more than daily unless warning, critical, or active-operation follow-up is required.
 - Canonical status source: `Project Rooms\Invoice Entry\working\work-status.md`.
 - Task-growth thresholds of 150 turns and five context compactions are review triggers only. The supervisor cannot create or archive tasks; controlled rollover requires Wes's separate approval.

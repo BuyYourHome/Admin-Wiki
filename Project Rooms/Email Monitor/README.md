@@ -57,7 +57,7 @@ For each recipient, keep the Email Summary subject unchanged throughout the Mond
 
 Use this mode to own independent Windows workflow-health supervisors for registered workflows. Machine-specific registries keep Email Monitor and Invoice Entry on WesStudio while preserving separate configurations, health snapshots, alert transitions, current-alert files, and diagnostic logs.
 
-The Windows task `Codex - Workflow Health Supervisor` runs every 10 minutes independently on each assigned machine. `workflow-health-registry.json` keeps Invoice Entry enabled and Email Monitor disabled on `WESSTUDIO`. `officeassist-workflow-health-registry.json` keeps Email Monitor disabled until destination activation; its Doc Scan entry remains unchanged. Each machine uses its own registry, mutex, task, state, and diagnostics.
+The Windows task `Codex - Workflow Health Supervisor` runs every 10 minutes independently on each assigned machine through the canonical hidden `wscript.exe` launcher so routine checks do not display a console or steal focus. `workflow-health-registry.json` keeps Invoice Entry enabled and Email Monitor disabled on `WESSTUDIO`. `officeassist-workflow-health-registry.json` keeps Email Monitor disabled until destination activation; its Doc Scan entry remains unchanged. Each machine uses its own registry, mutex, task, state, and diagnostics.
 
 Routine healthy and unchanged-state checks are diagnostic-only. Visible warning, critical, and recovery alerts occur only on state transitions. The supervisor uses a named mutex for overlap protection, isolates malformed workflow configurations, refuses the wrong machine, and does not depend on Outlook or another supervised connector.
 

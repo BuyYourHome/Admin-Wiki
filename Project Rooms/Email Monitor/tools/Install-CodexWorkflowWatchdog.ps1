@@ -24,8 +24,12 @@ if ($env:COMPUTERNAME -ne $registry.assigned_machine) {
 }
 
 $supervisorPath = [string]$registry.supervisor_script
-$arguments = "-NoProfile -NonInteractive -WindowStyle Hidden -ExecutionPolicy Bypass -File `"$supervisorPath`" -RegistryPath `"$RegistryPath`""
-$action = New-ScheduledTaskAction -Execute "powershell.exe" -Argument $arguments
+$launcherPath = Join-Path $PSScriptRoot 'Invoke-CodexWorkflowHealthSupervisorHidden.vbs'
+if (-not (Test-Path -LiteralPath $launcherPath -PathType Leaf)) {
+    throw "Hidden workflow-health launcher was not found: $launcherPath"
+}
+$arguments = "//B //NoLogo `"$launcherPath`" `"$supervisorPath`" `"$RegistryPath`""
+$action = New-ScheduledTaskAction -Execute 'C:\Windows\System32\wscript.exe' -Argument $arguments
 $trigger = New-ScheduledTaskTrigger `
     -Once `
     -At ((Get-Date).AddMinutes(1)) `
@@ -48,7 +52,7 @@ Register-ScheduledTask `
     -Trigger $trigger `
     -Settings $settings `
     -Principal $principal `
-    -Description "Runs the shared Codex workflow-health supervisor on $($registry.assigned_machine)." `
+    -Description "Runs the shared Codex workflow-health supervisor on $($registry.assigned_machine) without displaying a console." `
     -Force | Out-Null
 
 if (-not [bool]$registry.enabled -or @($registry.workflows | Where-Object { [bool]$_.enabled }).Count -eq 0) {
@@ -56,4 +60,4 @@ if (-not [bool]$registry.enabled -or @($registry.workflows | Where-Object { [boo
 }
 
 Get-ScheduledTask -TaskName ([string]$registry.scheduled_task_name) |
-    Select-Object TaskName, State, Author, Description
+    Select-Object TaskName, State, Author, Description,@{n='Execute';e={@($_.Actions)[0].Execute}},@{n='Arguments';e={@($_.Actions)[0].Arguments}}

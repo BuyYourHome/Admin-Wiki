@@ -14,7 +14,7 @@ The supervisor detects failures and performance degradation. It does not perform
 | Supervisor | `tools\Invoke-CodexWorkflowHealthSupervisor.ps1` | Acquires the registry mutex, evaluates enabled workflows independently, isolates malformed configurations, and writes shared state and diagnostics. |
 | Workflow evaluator | `tools\Invoke-CodexWorkflowWatchdog.ps1` | Evaluates heartbeat liveness or Project Room/task health and manages per-workflow alert transitions. |
 | Heartbeat updater | `tools\Update-CodexWorkflowHealth.ps1` | Preserves Email Monitor `Started`, `Completed`, and `Failed` lifecycle writes. |
-| Installer | `tools\Install-CodexWorkflowWatchdog.ps1` | Installs or refreshes the one shared Windows scheduled task. A legacy workflow config path resolves to the shared registry. |
+| Installer | `tools\Install-CodexWorkflowWatchdog.ps1` | Installs or refreshes the one shared Windows scheduled task through the hidden `wscript.exe` launcher. A legacy workflow config path resolves to the shared registry. |
 | Manager | `tools\Manage-CodexWorkflowHealth.ps1` | Provides Options, Status, Enable, Disable, Configure, Test, and TestAlert for one workflow or supported all-workflow scope. |
 
 ## Shared Runtime
@@ -22,6 +22,7 @@ The supervisor detects failures and performance degradation. It does not perform
 - Email Monitor destination machine: `OFFICEASSIST`.
 - Scheduled task: `Codex - Workflow Health Supervisor`.
 - Polling interval: 10 minutes.
+- Launcher: `tools\Invoke-CodexWorkflowHealthSupervisorHidden.vbs` through `wscript.exe`; direct recurring `powershell.exe` execution is prohibited because it can display a console and interrupt the interactive user.
 - Mutex: `Global\CodexWorkflowHealthSupervisor`.
 - Registry: `C:\Codex\Wiki Files\Project Rooms\Email Monitor\config\workflow-health-registry.json`.
 - Supervisor state: `C:\Users\wesbr\.codex\workflow-health-supervisor\supervisor-state.json`.
