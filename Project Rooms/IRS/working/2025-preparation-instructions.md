@@ -72,3 +72,9 @@ Wes directs doing everything possible to complete required forms today even if l
 ## Current accounting reports confirmed - 2026-09-15
 
 Wes confirms the reports discussed in Teams Office Admin / 2025 / CPA / _BYH and _BYH 401K LLC are up to date. Use those reports as the current 2025 book baseline. The question about a newer corrected export is resolved; do not ask again solely because the reports were generated in June 2026. This confirmation does not clear the identified tax classification, owner allocation, basis, depreciation or reconciliation items. Track proposed tax adjustments separately without changing QuickBooks or source reports. Heritage ownership of the 2325 sale remains the owner-confirmed mapping.
+
+## File as soon as supportable - September 15, 2026
+
+Wes directs prioritizing filing once a loss return can be filed, with later corrections if needed. Treat this as urgency and intent to file a supportable return, not authorization to manufacture a loss or omit known material items. Continue preparation and validation, then present the concrete return for required signature/submission. A loss alone is not the readiness test. Retain disclosed reasonable assumptions and a correction register.
+
+TaxAct all-alert review started: total assets currently default to zero because the separate BYH balance sheet is incomplete. Multiple-activity warning also appears, unresolved pending property-use classification. Previously verified trust identification/B-1 issues and source reconciliation gaps remain. No filing occurred.
