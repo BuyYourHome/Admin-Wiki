@@ -146,3 +146,11 @@ Plan setup documents are received and partly verified; do not continue treating 
 - Heritage full-year ownership of both rental properties is now confirmed; see assumptions register. No rental income had been entered in TaxAct. Private book bridge updated without altering combined total.
 - NC draft added. Prior T08000 NC page 36 reports neither QSub nor QSub parent; used that answer provisionally after source review. State identification number entered from prior return. Taxed S-corporation election remains unanswered/bookmarked; extension receipt and state residency still require verification. Displayed state balance is provisional.
 - No purchase, signature, tax filing, payment or payroll correction was performed. Incomplete paper PDFs are superseded by the private correction notice where inconsistent.
+
+### Windows restart checkpoint - September 15, 2026
+
+- User requested a pause to restart Windows for updates. Latest TaxAct save verified by progression to Wes record beginning-shares screen, showing the existing equal-share amount.
+- NC incorporation state, incorporation and certificate dates, business description, Raleigh location and prior-return no protected-activity answer saved. Sources: T08000 NC pages 36-37.
+- Wes confirms no IRS audit redetermination and NC-only 2025 operations. These answers are resolved, but the corresponding bookmarked screens still require completion/cleanup after restart; do not ask again.
+- First trust record street/ZIP, NC residency and grantor identifier saved. Verify mailing city/state. Second record address/residency and identifier, B-1, loans/basis and e-file validation remain incomplete. Identifiers remain outside Git.
+- Exact restart checkpoint is in private taxact-entry-register-2025.json. Resume K-1 wizard record 1, complete record 2, then NC bookmarks and financial reconciliation. No filing, signature, payment or restart was performed by the agent.
