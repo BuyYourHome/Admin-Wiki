@@ -13,7 +13,7 @@ $ErrorActionPreference='Stop'
 $started=[DateTime]::UtcNow; $watch=[Diagnostics.Stopwatch]::StartNew()
 $lock=$null; $cfg=$null; $journal=$null
 $script:centralRecordChanged=$false
-$health=[ordered]@{schema_version=1;release=$null;mode=$Mode;machine=$env:COMPUTERNAME;sid=[Security.Principal.WindowsIdentity]::GetCurrent().User.Value;started_at_utc=$started.ToString('o');status='Starting';queue_reachable=$false;claims=0;submissions=0;model_requests=0;reconciled=@();attention=@();candidates=@();next_tick_at_utc=$started.AddSeconds(60).ToString('o')}
+$health=[ordered]@{schema_version=1;release=$null;mode=$Mode;machine=$env:COMPUTERNAME;sid=[Security.Principal.WindowsIdentity]::GetCurrent().User.Value;started_at_utc=$started.ToString('o');status='Starting';queue_reachable=$false;claims=0;submissions=0;model_requests=0;journal_closed_skipped=0;reconciled=@();attention=@();candidates=@();next_tick_at_utc=$started.AddSeconds(60).ToString('o')}
 function Save-Journal {
     $script:journal | Add-Member updated_at_utc ([DateTime]::UtcNow.ToString('o')) -Force
     Write-LtJson (Join-Path $cfg.state_directory 'journal.json') $script:journal
@@ -36,7 +36,7 @@ function Invoke-Manager([string]$Action,[hashtable]$Extra=@{}) {
     if ($Mode -in @('Validation','Drain','Live')) {
         $managerMode=if($Mode -ceq 'Live'){'Live'}else{'Validation'}
         $argv+=@('-TransportOwner',$cfg.owner,'-Generation',$cfg.generation,'-Mode',$managerMode,'-ClientConfigPath',$cfg.client_path,'-ManifestDirectory',$cfg.manifest_directory,'-ActorTaskId',$cfg.dispatcher_task_id,'-ActorProjectRoom','PR Messaging Dispatcher')
-        $usesCanonicalProduction=$cfg.release -in @('0.4.0','0.4.1','0.4.2') -and $cfg.manager_path -ceq 'C:\Codex\Wiki Files\tools\pr-messaging\Manage-ProjectRoomMessage.ps1' -and $Mode -in @('Validation','Live')
+        $usesCanonicalProduction=$cfg.release -in @('0.4.0','0.4.1','0.4.2','0.4.3') -and $cfg.manager_path -ceq 'C:\Codex\Wiki Files\tools\pr-messaging\Manage-ProjectRoomMessage.ps1' -and $Mode -in @('Validation','Live')
         if(!$usesCanonicalProduction){$argv+=@('-FixtureRoot',$cfg.fixture_root)}
     }
     if($Mode -ceq 'Canary' -and $Action -ne 'List'){
@@ -99,18 +99,18 @@ function Recover-Entry($Entry,$Record) {
 }
 try {
     $cfg=Read-LtJson $ConfigPath
-    if ($cfg.schema_version -ne 1 -or $cfg.release -notin @('0.2.0','0.4.0','0.4.1','0.4.2')) { throw 'UnsupportedConfigRelease' }
+    if ($cfg.schema_version -ne 1 -or $cfg.release -notin @('0.2.0','0.4.0','0.4.1','0.4.2','0.4.3')) { throw 'UnsupportedConfigRelease' }
     $health.release=$cfg.release
     if((Get-LtPackageHash $PSScriptRoot) -cne $cfg.package_sha256){throw 'PackageReleaseMismatch'}
     if($cfg.expected_machine -cne $env:COMPUTERNAME -or $cfg.expected_sid -cne $health.sid){throw 'WorkerIdentityMismatch'}
     if ($cfg.max_tick_seconds -lt 5 -or $cfg.max_tick_seconds -gt 55 -or $cfg.queued_receipt_warning_seconds -lt 1 -or $cfg.queued_receipt_warning_seconds -gt 86400) { throw 'InvalidTimeBounds' }
     Assert-LtUuid $cfg.dispatcher_task_id
-    if($Mode -eq 'Live' -and $cfg.release -notin @('0.4.0','0.4.1','0.4.2')){throw 'LiveDisabledInDevelopmentRelease'}
+    if($Mode -eq 'Live' -and $cfg.release -notin @('0.4.0','0.4.1','0.4.2','0.4.3')){throw 'LiveDisabledInDevelopmentRelease'}
     if($PSBoundParameters.ContainsKey('MessageId')){Assert-LtId $MessageId}
     if($Mode -eq 'Validation' -and [string]::IsNullOrWhiteSpace($MessageId)){throw 'ValidationFilterRequired'}
     if($Mode -ceq 'Canary'){Assert-LtCanaryConfig $cfg $MessageId}
     if($Mode -in @('Validation','Drain')){
-        if($cfg.release -in @('0.4.0','0.4.1','0.4.2') -and $Mode -ceq 'Validation'){
+        if($cfg.release -in @('0.4.0','0.4.1','0.4.2','0.4.3') -and $Mode -ceq 'Validation'){
             if($cfg.adapter_kind -cne 'CodexQueue'){throw 'ProductionAdapterRequired'}
         } else {
             Assert-LtFixture $cfg.fixture_root @($cfg.queue_path,$cfg.state_directory,$cfg.client_path,$cfg.manifest_directory,$cfg.adapter_path)
@@ -135,23 +135,25 @@ try {
         $jp=Join-Path $cfg.state_directory 'journal.json'
         if(Test-Path -LiteralPath $jp){$journal=Read-LtJson $jp}else{$journal=[pscustomobject]@{schema_version=2;machine=$env:COMPUTERNAME;sid=$health.sid;owner=$cfg.owner;generation=$cfg.generation;created_at_utc=[DateTime]::UtcNow.ToString('o');entries=@()}}
         if($journal.schema_version -ne 2 -or $journal.machine -cne $env:COMPUTERNAME -or $journal.sid -cne $health.sid -or $journal.owner -cne $cfg.owner -or $journal.generation -cne $cfg.generation -or $null -eq $journal.entries){throw 'JournalIdentityOrSchemaMismatch'}
-        $keys=@{};foreach($entry in @($journal.entries)){
+        $keys=@{};$activeJournalEntries=[System.Collections.Generic.List[object]]::new()
+        foreach($entry in @($journal.entries)){
             Assert-LtId $entry.message_id;Assert-LtId $entry.attempt_id;Assert-LtUuid $entry.destination_task_id
             if($entry.payload_hash -cnotmatch '^[0-9a-f]{64}$' -or $entry.phase -notin @('planned','claimed','submission_started','submitted','awaiting_completion','unresolved','closed') -or $keys.ContainsKey($entry.attempt_id)){throw 'JournalCorrupt'}
             $keys[$entry.attempt_id]=$true
+            if($entry.phase -ceq 'closed'){$health.journal_closed_skipped++}else{$activeJournalEntries.Add($entry)}
         }
-        foreach($entry in @($journal.entries)){
+        foreach($entry in @($activeJournalEntries)){
             if($watch.Elapsed.TotalSeconds -gt $cfg.max_tick_seconds-5){throw 'TickBudgetExhausted'}
             $match=@($records|Where-Object message_id -CEQ $entry.message_id)
             if($match.Count -gt 1){throw 'DuplicateRecord'}
             Recover-Entry $entry ($match|Select-Object -First 1)
         }
         foreach($r in $records){foreach($a in @($r.attempts|Where-Object {$_.transport_owner -ceq $cfg.owner})){
-            if(!@($journal.entries|Where-Object attempt_id -CEQ $a.attempt_id).Count){
+            if(!$keys.ContainsKey($a.attempt_id)){
                 $health.attention+=@{message_id=$r.message_id;reason='UnjournaledAttempt'}
                 # Unknown journal is uncertainty, never proof that submission did not happen.
                 $entry=New-JournalEntry $r $a.attempt_id 'submission_started'
-                $journal.entries+=@($entry);Save-Journal;Recover-Entry $entry $r
+                $journal.entries+=@($entry);$keys[$a.attempt_id]=$true;Save-Journal;Recover-Entry $entry $r
             }
         }}
         if($script:centralRecordChanged){$records=@(Invoke-Manager 'List' @{DestinationMachine=$env:COMPUTERNAME})}
@@ -161,7 +163,7 @@ try {
     foreach($r in @($scoped|Sort-Object created_at_utc,message_id)){
         $evaluationMode=if($Mode -eq 'Validation'){'Validation'}else{'Live'}
         $reason=Test-LtRecord $r $client $manifests $env:COMPUTERNAME $evaluationMode $MessageId $records
-        if($cfg.release -in @('0.4.0','0.4.1','0.4.2') -and !(Test-LtPinnedDestination $cfg $r.destination)){$reason='DestinationNotPinned'}
+        if($cfg.release -in @('0.4.0','0.4.1','0.4.2','0.4.3') -and !(Test-LtPinnedDestination $cfg $r.destination)){$reason='DestinationNotPinned'}
         if($Mode -ceq 'Canary'){Assert-LtCanaryRecord $r; if($cfg.payload_hash -cne $r.payload_hash){throw 'CanaryPinnedHashMismatch'}}
         if($r.destination.task_id -ceq $cfg.dispatcher_task_id){$reason='SelfNotificationForbidden'}
         if($journal -and @($journal.entries|Where-Object {$_.phase -ne 'closed' -and $_.destination_task_id -ceq $r.destination.task_id}).Count){$reason='DestinationOutstanding'}
@@ -181,7 +183,7 @@ try {
         $health.claims++
         Invoke-CrashTestPause 'AfterClaim'
         if($FailurePoint -eq 'AfterClaim'){throw 'InjectedAfterClaim'}
-        if(!$claim.may_submit){$entry.phase='submission_started';Save-Journal;continue}
+        if(!$claim.may_submit){$entry.phase='submission_started';Save-Journal;break}
         $entry.phase='claimed';Save-Journal
         if((Get-LtPackageHash $PSScriptRoot) -cne $cfg.package_sha256 -or (Get-FileHash -LiteralPath $cfg.adapter_path).Hash -ine $cfg.adapter_sha256){throw 'ReleaseChangedBeforeSubmission'}
         $entry.phase='submission_started';$entry.submission_started_at_utc=[DateTime]::UtcNow.ToString('o');Save-Journal
@@ -190,23 +192,23 @@ try {
         $argv=@('-NoProfile','-ExecutionPolicy','Bypass','-File',$cfg.adapter_path,'-FixtureRoot',$cfg.fixture_root,'-MessageId',$r.message_id,'-ThreadId',$r.destination.task_id,'-AttemptId',$entry.attempt_id)
         if($Mode -ceq 'Canary'){
             $argv=@('-NoProfile','-ExecutionPolicy','Bypass','-File',$cfg.adapter_path,'-CanaryConfigPath',$ConfigPath,'-MessageId',$r.message_id,'-ThreadId',$r.destination.task_id,'-DispatcherTaskId',$cfg.dispatcher_task_id,'-PayloadHash',$r.payload_hash,'-CliPath',$cfg.cli_path,'-ExpectedCliHash',$cfg.cli_sha256,'-AttemptId',$entry.attempt_id,'-TimeoutSeconds','8')
-        } elseif($Mode -ceq 'Live' -or ($Mode -ceq 'Validation' -and $cfg.release -in @('0.4.0','0.4.1','0.4.2'))) {
+        } elseif($Mode -ceq 'Live' -or ($Mode -ceq 'Validation' -and $cfg.release -in @('0.4.0','0.4.1','0.4.2','0.4.3'))) {
             $argv=@('-NoProfile','-ExecutionPolicy','Bypass','-File',$cfg.adapter_path,'-LiveConfigPath',$ConfigPath,'-MessageId',$r.message_id,'-ThreadId',$r.destination.task_id,'-DispatcherTaskId',$cfg.dispatcher_task_id,'-PayloadHash',$r.payload_hash,'-CliPath',$cfg.cli_path,'-ExpectedCliHash',$cfg.cli_sha256,'-AttemptId',$entry.attempt_id,'-TimeoutSeconds','10')
         }
         $health.submissions++
-        $adapterBound=if($Mode -in @('Canary','Live') -or ($Mode -ceq 'Validation' -and $cfg.release -in @('0.4.0','0.4.1','0.4.2'))){20}else{10}
+        $adapterBound=if($Mode -in @('Canary','Live') -or ($Mode -ceq 'Validation' -and $cfg.release -in @('0.4.0','0.4.1','0.4.2','0.4.3'))){20}else{10}
         $answer=Invoke-LtProcess $cfg.powershell_path $argv ([Math]::Min($adapterBound,[Math]::Max(1,[int]($cfg.max_tick_seconds-$watch.Elapsed.TotalSeconds))))
         if($Mode -ceq 'Canary'){Write-LtJson (Join-Path $cfg.state_directory 'adapter-process-result.json') $answer}
         Invoke-CrashTestPause 'AfterAdapter'
         if($FailurePoint -eq 'AfterAdapter'){throw 'InjectedAfterAdapter'}
-        $productionMarker=if($cfg.release -in @('0.4.1','0.4.2') -and ($Mode -ceq 'Live' -or $Mode -ceq 'Validation')){Get-LtSubmissionMarkerPath $cfg.state_directory $r.message_id $entry.attempt_id}else{$null}
+        $productionMarker=if($cfg.release -in @('0.4.1','0.4.2','0.4.3') -and ($Mode -ceq 'Live' -or $Mode -ceq 'Validation')){Get-LtSubmissionMarkerPath $cfg.state_directory $r.message_id $entry.attempt_id}else{$null}
         if(Test-LtProvenPreSubmissionFailure $answer $productionMarker){
             $detail='Pinned adapter exited before its permanent submission marker was created; no destination notification occurred.'
             $reconciled=Invoke-Manager 'ReconcileAttempt' @{MessageId=$r.message_id;ExpectedHash=$r.payload_hash;AttemptId=$entry.attempt_id;AttemptOutcome='NotDelivered';Detail=$detail}
             $entry.phase='closed';$entry.outcome='NotDelivered';$entry.submission_completed_at_utc=[DateTime]::UtcNow.ToString('o')
             $entry.submission_evidence=@{timed_out=$answer.timed_out;exit_code=$answer.exit_code;stdout_sha256=(Get-LtSha256 $answer.stdout);stderr_sha256=(Get-LtSha256 $answer.stderr);accepted=$false;queue_acknowledged=$false;queue_message_id=$null;submission_marker_present=$false}
             Save-Journal;$health.reconciled+=@{message_id=$r.message_id;outcome=$reconciled.outcome;reason='ProvenPreSubmissionFailure'}
-            continue
+            break
         }
         # Any exit after submission began is uncertain, including nonzero and timeout.
         $ack=Test-LtQueueAcknowledgment $answer $r.message_id $r.destination.task_id $entry.attempt_id
@@ -215,6 +217,7 @@ try {
         $entry.submission_evidence=@{timed_out=$answer.timed_out;exit_code=$answer.exit_code;stdout_sha256=(Get-LtSha256 $answer.stdout);stderr_sha256=(Get-LtSha256 $answer.stderr);accepted=$false;queue_acknowledged=$ack;queue_message_id=if($ack){($answer.stdout|ConvertFrom-Json).queue_message_id}else{$null};submission_marker_present=if($productionMarker){Test-Path -LiteralPath $productionMarker}else{$null}}
         Save-Journal
         $health.attention+=@{message_id=$r.message_id;reason=$entry.outcome}
+        break
     }
     $health.status=if($Mode -eq 'Shadow'){'ShadowComplete'}elseif($Mode -eq 'Drain'){'DrainComplete'}else{'TickComplete'}
 }catch{

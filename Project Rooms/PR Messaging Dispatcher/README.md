@@ -39,13 +39,15 @@ Out of scope:
 
 ## Status
 
-Status: `Release 0.4.1 live on WESSTUDIO, WES-VIDEOEDITOR, and OFFICEASSIST; console-free release 0.4.2 ready for controlled in-place upgrade`.
+Status: `Release 0.4.3 developed for controlled in-place upgrade; production machines remain on their previously verified live releases until individually upgraded and checked`.
 
 WES-VIDEOEDITOR promoted release `0.4.0` after exact synthetic `prmsg-wve-low-token-worker-validation-20260913-001` completed with one delivered attempt and no business action, then upgraded in place to `0.4.1`. Scheduled task `BYH PR Messaging Worker - WES-VIDEOEDITOR` runs every 60 seconds in `Live` mode for its pinned Quickbooks destination. The old assisted QuickBooks task is disabled and the model-driven dispatcher heartbeat remains paused. OFFICEASSIST promoted after exact synthetic `prmsg-officeassist-low-token-worker-docscan-validation-20260914-001` completed through one delivered attempt, then upgraded in place to `0.4.1`. Its worker runs every 60 seconds in `Live` mode for Email Monitor, Doc Scan, and Invoice Entry, and Email Monitor's embedded dispatcher stage has been removed while its mailbox heartbeat remains active.
 
 WESSTUDIO promoted after replacement synthetic `prmsg-officeassist-wesstudio-low-token-worker-validation-20260914-002` completed through one delivered attempt to Bathroom Fixtures with no business action or manual intervention. It then upgraded in place to release `0.4.1`. The original exhausted ambiguous validation `prmsg-officeassist-wesstudio-low-token-worker-validation-20260914-001` received an identity-bound administrative transport closure without a delivery or completion claim. A separate adapter-version rejection was proven to have occurred before submission, corrected to `NotDelivered`, retried once under the same immutable record, and then completed through Create PR's exact receipt and result. Scheduled task `BYH PR Messaging Worker - WESSTUDIO` remains Live every 60 seconds for Bathroom Fixtures and Create PR, and the model-driven heartbeat remains paused.
 
 Release `0.4.2` changes only the recurring task launcher. It uses the release-pinned Windows Script Host wrapper to start the same PowerShell worker with window style `0`, preventing the one-minute console flash that `powershell.exe -WindowStyle Hidden` could not prevent. The guarded in-place upgrade preserves worker ownership, generation, state, journal, schedule, identity, destination pins, and transport logic.
+
+Release `0.4.3` preserves those controls and corrects routine journal traversal. Closed history remains validated and retained but is no longer reconciled or rewritten on every tick; only active entries are recovered, attempt lookups are indexed, and traversal stops after the one permitted claim. This prevents a large historical journal from consuming the 50-second tick budget before eligible work is reached.
 
 The dispatcher now distinguishes a pre-PowerShell tool-wrapper failure from a helper or queue failure. It retries one pre-execution wrapper failure, records deterministic skip counts, writes machine-local health to `%LOCALAPPDATA%\BuyYourHome\PRMessaging\dispatcher-health.json`, and allows up to 120 seconds for destination startup before final delivery reconciliation.
 

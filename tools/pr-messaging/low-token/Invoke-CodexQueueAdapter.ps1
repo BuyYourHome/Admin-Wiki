@@ -50,7 +50,7 @@ if($CanaryConfigPath){
 if($LiveConfigPath){
     . "$PSScriptRoot\Canary.Guards.ps1"
     $cfg=Read-LtJson $LiveConfigPath
-    if($cfg.release -notin @('0.3.0-assisted','0.4.0','0.4.1','0.4.2') -or $DispatcherTaskId -cne $cfg.dispatcher_task_id -or $PayloadHash -cnotmatch '^[0-9a-f]{64}$' -or $CliPath -cne $cfg.cli_path -or $ExpectedCliHash -ine $cfg.cli_sha256){throw 'LiveAdapterIdentityMismatch'}
+    if($cfg.release -notin @('0.3.0-assisted','0.4.0','0.4.1','0.4.2','0.4.3') -or $DispatcherTaskId -cne $cfg.dispatcher_task_id -or $PayloadHash -cnotmatch '^[0-9a-f]{64}$' -or $CliPath -cne $cfg.cli_path -or $ExpectedCliHash -ine $cfg.cli_sha256){throw 'LiveAdapterIdentityMismatch'}
     if($env:COMPUTERNAME -cne $cfg.expected_machine -or [Security.Principal.WindowsIdentity]::GetCurrent().User.Value -cne $cfg.expected_sid){throw 'LiveAdapterWindowsIdentityMismatch'}
     if($cfg.release -ceq '0.3.0-assisted'){
         if($cfg.allowlist.project_room -cne 'Quickbooks' -or $ThreadId -cne $cfg.allowlist.task_id){throw 'AssistedAdapterIdentityMismatch'}
@@ -61,7 +61,7 @@ if($LiveConfigPath){
         $allowedRoom=$allowed[0].project_room
     }
     $r=(& $cfg.manager_path -Action Get -MessageId $MessageId -QueuePath $cfg.queue_path | ConvertFrom-Json)
-    if($cfg.release -in @('0.4.0','0.4.1','0.4.2') -and !(Test-LtPinnedDestination $cfg $r.destination)){throw 'LiveDestinationNotPinned'}
+    if($cfg.release -in @('0.4.0','0.4.1','0.4.2','0.4.3') -and !(Test-LtPinnedDestination $cfg $r.destination)){throw 'LiveDestinationNotPinned'}
     $a=@($r.attempts)[-1]
     if($r.destination.project_room -cne $allowedRoom -or $r.destination.task_id -cne $ThreadId -or $r.destination.machine -cne $cfg.expected_machine -or $r.state -ne 'Delivery Attempted' -or $r.payload_hash -cne $PayloadHash -or $a.attempt_id -cne $AttemptId -or $a.outcome -ne 'Pending' -or $r.receipt -or $r.result){throw 'LiveAdapterClaimMismatch'}
     $markerDir=Join-Path $cfg.state_directory 'submissions'

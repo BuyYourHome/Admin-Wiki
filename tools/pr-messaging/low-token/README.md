@@ -1,5 +1,16 @@
 # Low-token dispatcher releases
 
+## Controlled release 0.4.3
+
+Release `0.4.3` preserves the `0.4.2` transport, ownership, exactly-once, and hidden-launcher contracts while preventing closed journal history from exhausting a live tick before new work can be claimed:
+
+- Every journal entry is still schema- and identity-validated, but routine recovery processes only entries whose phase is not `closed`.
+- Closed entries remain in the journal unchanged and are reported through `journal_closed_skipped`; they are not reconciled or rewritten merely because a tick ran.
+- Attempt lookup uses one in-memory index instead of repeatedly searching the complete journal for each central attempt.
+- After the one permitted successful claim, the tick stops candidate traversal instead of spending its remaining budget classifying historical records.
+- `UpgradeLive` accepts an existing `0.4.2`, `0.4.1`, or `0.4.0` installation and preserves owner generation, state, journal, task identity, schedule, and destination pins.
+- The regression suite includes 750 retained closed entries plus one eligible record and requires the record to be claimed and submitted within half of the 50-second production budget.
+
 ## Controlled release 0.4.2
 
 Release `0.4.2` preserves the `0.4.1` transport contract and changes only scheduled task launch behavior:

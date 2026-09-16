@@ -99,6 +99,29 @@ Check 'live fails closed' {$f=Fixture;$r=Tick $f Live;Assert ($r.error -eq 'Live
 Check 'paused makes no queue read or submission' {$f=Fixture;$r=Tick $f Paused;Assert ($r.status -eq 'Paused' -and !$r.queue_reachable -and $r.submissions -eq 0)}
 Check 'empty shadow no central change or model call' {$f=Fixture;$c=Read-LtJson $f.config;$c.manager_path=$legacy;$c.manager_sha256=(Get-FileHash $legacy).Hash;Write-LtJson $f.config $c;Remove-Item -LiteralPath (Join-Path $f.queue ('records\'+$f.id+'.json'));$r=Tick $f Shadow;Assert ($r.status -eq 'ShadowComplete' -and @($r.candidates).Count -eq 0 -and $r.claims -eq 0 -and $r.model_requests -eq 0 -and $r.submissions -eq 0)}
 Check 'one fake submission then restart never resubmits' {$f=Fixture;$r=Tick $f;Assert ($r.claims -eq 1 -and $r.submissions -eq 1);Tick $f|Out-Null;Assert ((CountSubmissions $f) -eq 1);Assert ((Record $f).state -eq 'Delivery Attempted')}
+Check 'closed journal backlog is retained but skipped before eligible claim' {
+    $f=Fixture
+    $closed=@(1..750|ForEach-Object{
+        [pscustomobject]@{
+            message_id=('closed-message-{0:D4}' -f $_);dispatch_id=('closed-message-{0:D4}' -f $_)
+            destination_task_id=$f.task;payload_hash=('a'*64);attempt_id=('closed-attempt-{0:D4}' -f $_)
+            phase='closed';outcome='Delivered';created_at_utc='2026-01-01T00:00:00Z'
+            submission_started_at_utc='2026-01-01T00:00:01Z';submission_completed_at_utc='2026-01-01T00:00:02Z'
+            adapter_release='0.4.2';adapter_sha256=('b'*64);submission_evidence=$null
+        }
+    })
+    Write-LtJson (Join-Path $f.state 'journal.json') ([pscustomobject]@{
+        schema_version=2;machine=$env:COMPUTERNAME;sid=[Security.Principal.WindowsIdentity]::GetCurrent().User.Value
+        owner='fixture-worker';generation='g1';created_at_utc='2026-01-01T00:00:00Z';entries=$closed
+    })
+    $r=Tick $f
+    $j=Read-LtJson (Join-Path $f.state 'journal.json')
+    Assert ($r.status -eq 'TickComplete' -and $r.claims -eq 1 -and $r.submissions -eq 1) ('Worker result: '+($r|ConvertTo-Json -Depth 8 -Compress))
+    Assert ($r.journal_closed_skipped -eq 750 -and $r.elapsed_ms -lt 25000) ('Backlog metrics: skipped='+$r.journal_closed_skipped+' elapsed_ms='+$r.elapsed_ms)
+    Assert (@($j.entries|Where-Object phase -ceq 'closed').Count -eq 750) ('Closed count: '+@($j.entries|Where-Object phase -ceq 'closed').Count)
+    Assert (@($j.entries).Count -eq 751) ('Journal count: '+@($j.entries).Count)
+    Assert ((CountSubmissions $f) -eq 1) ('Submission count: '+(CountSubmissions $f))
+}
 foreach($fault in @('AfterPlan','AfterClaim','BeforeAdapter','AfterAdapter')){
     Check ('restart recovery '+$fault) {
         $f=Fixture;$r=Tick $f Validation $fault;Assert ($r.status -eq 'Blocked');Tick $f|Out-Null
@@ -119,9 +142,9 @@ Check 'adapter failure becomes ambiguity not retry' {$f=Fixture;Write-LtJson (Jo
 Check 'adapter timeout is bounded and ambiguous' {$f=Fixture;Write-LtJson (Join-Path $f.root 'adapter-control.json') @{behavior='timeout'};$r=Tick $f;Assert ($r.elapsed_ms -lt 55000);Tick $f|Out-Null;Assert ((CountSubmissions $f) -eq 1 -and (Record $f).state -eq 'Delivery Ambiguous')}
 Check 'singleton prevents concurrent worker' {$f=Fixture;$s=[IO.File]::Open((Join-Path $f.state 'worker.lock'),[IO.FileMode]::OpenOrCreate,[IO.FileAccess]::ReadWrite,[IO.FileShare]::None);try{$r=Tick $f;Assert ($r.error -eq 'WorkerAlreadyRunning')}finally{$s.Dispose()}}
 Check 'CLI adapter refuses real submission' {$cli=(Get-Command codex.exe).Source;try{& (Join-Path $release 'Invoke-CodexQueueAdapter.ps1') -ThreadId '11111111-1111-4111-8111-111111111111' -DispatcherTaskId '22222222-2222-4222-8222-222222222222' -MessageId 'fixture-test' -PayloadHash ('a'*64) -CliPath $cli -ExpectedCliHash (Get-FileHash $cli).Hash|Out-Null;throw 'not rejected'}catch{Assert ($_.Exception.Message -eq 'RealSubmissionDisabledInDevelopmentRelease')}}
-Check 'production adapter source recognizes release 0.4.2' {
+Check 'production adapter source recognizes release 0.4.3' {
     $text=Get-Content -Raw -LiteralPath (Join-Path $release 'Invoke-CodexQueueAdapter.ps1')
-    Assert ($text -match "'0\.4\.0','0\.4\.1','0\.4\.2'" -and $text -match "'0\.3\.0-assisted','0\.4\.0','0\.4\.1','0\.4\.2'")
+    Assert ($text -match "'0\.4\.0','0\.4\.1','0\.4\.2','0\.4\.3'" -and $text -match "'0\.3\.0-assisted','0\.4\.0','0\.4\.1','0\.4\.2','0\.4\.3'")
 }
 Check 'only nonzero marker-free adapter exit proves no submission' {
     $missing=Join-Path ([IO.Path]::GetTempPath()) ('missing-'+[guid]::NewGuid().ToString('N'))
@@ -153,7 +176,8 @@ Check 'rollback flag cannot enable unfiltered validation' {$f=Fixture;$c=Read-Lt
 Check 'duplicate registration rejected' {$f=Fixture;$c=Read-LtJson $f.client;$c.registrations=@($c.registrations)+@($c.registrations);Write-LtJson $f.client $c;Assert ((Claim $f).reason -eq 'RegistrationMismatch')}
 Check 'unauthorized synthetic authority rejected' {$f=Fixture;$r=Record $f;$r.authorization.authorized_by='unknown';$r.payload_hash=Get-LtPayloadHash $r;SaveRecord $f $r;Assert ((Claim $f).reason -eq 'ValidationAuthorizationMissing')}
 Check 'fixture drain never claims' {$f=Fixture;$r=Tick $f Drain;Assert ($r.status -eq 'DrainComplete' -and $r.claims -eq 0 -and (Record $f).attempt_count -eq 0)}
-Check 'installer plan stages generalized production release' {$x=& (Join-Path $release 'Install-LowTokenWorker.ps1') -Action Plan|ConvertFrom-Json;Assert ($x.release -eq '0.4.2' -and !$x.stage_changes_transport -and $x.schedule -eq 'Every 60 seconds, 24/7' -and $x.validation -match 'synthetic' -and $x.launcher -eq 'wscript.exe hidden window host')}
+Check 'installer plan stages generalized production release' {$x=& (Join-Path $release 'Install-LowTokenWorker.ps1') -Action Plan|ConvertFrom-Json;Assert ($x.release -eq '0.4.3' -and !$x.stage_changes_transport -and $x.schedule -eq 'Every 60 seconds, 24/7' -and $x.validation -match 'synthetic' -and $x.launcher -eq 'wscript.exe hidden window host')}
+Check 'installer upgrade recognizes current 0.4.2 source' {$text=Get-Content -Raw -LiteralPath (Join-Path $release 'Install-LowTokenWorker.ps1');Assert ($text -match '@\(\$release,''0\.4\.2'',''0\.4\.1'',''0\.4\.0''\)')}
 Check 'scheduled worker uses a console-free launcher' {
     $installer=Get-Content -Raw -LiteralPath (Join-Path $release 'Install-LowTokenWorker.ps1')
     $launcher=Get-Content -Raw -LiteralPath (Join-Path $release 'Invoke-LowTokenWorkerHidden.vbs')
