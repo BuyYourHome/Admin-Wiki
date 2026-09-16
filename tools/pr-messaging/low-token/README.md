@@ -1,5 +1,14 @@
 # Low-token dispatcher releases
 
+## Controlled release 0.4.6
+
+Release `0.4.6` preserves all `0.4.5` transport controls and corrects the versioned Codex CLI pin during guarded in-place upgrades:
+
+- `UpgradeLive` resolves `codex.exe` under the normal user's local Codex `bin` directory, rejects unreviewed locations and reparse points, and pins the current absolute path and SHA-256.
+- The worker still never discovers or trusts a replacement CLI during an ordinary tick. A Codex application update therefore fails closed until a guarded upgrade reviews and pins the replacement executable.
+- A missing pinned executable now reports the safe code `CliExecutableMissing`. The journal and health may retain that allowlisted code while command output remains represented only by hashes.
+- Owner generation, journal, state directory, task identity, hidden launcher, schedule, destination pins, attempts, and central records remain unchanged.
+
 ## Controlled release 0.4.5
 
 Release `0.4.5` preserves all `0.4.4` ownership, quarantine, journal, duplicate-prevention, and 180-second tick controls. It corrects the manager-call bounds after OFFICEASSIST measured `ManagerTimeoutUncertain` during otherwise eligible claim processing:

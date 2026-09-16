@@ -142,9 +142,13 @@ Check 'adapter failure becomes ambiguity not retry' {$f=Fixture;Write-LtJson (Jo
 Check 'adapter timeout is bounded and ambiguous' {$f=Fixture;Write-LtJson (Join-Path $f.root 'adapter-control.json') @{behavior='timeout'};$r=Tick $f;Assert ($r.elapsed_ms -lt 55000);Tick $f|Out-Null;Assert ((CountSubmissions $f) -eq 1 -and (Record $f).state -eq 'Delivery Ambiguous')}
 Check 'singleton prevents concurrent worker' {$f=Fixture;$s=[IO.File]::Open((Join-Path $f.state 'worker.lock'),[IO.FileMode]::OpenOrCreate,[IO.FileAccess]::ReadWrite,[IO.FileShare]::None);try{$r=Tick $f;Assert ($r.error -eq 'WorkerAlreadyRunning')}finally{$s.Dispose()}}
 Check 'CLI adapter refuses real submission' {$cli=(Get-Command codex.exe).Source;try{& (Join-Path $release 'Invoke-CodexQueueAdapter.ps1') -ThreadId '11111111-1111-4111-8111-111111111111' -DispatcherTaskId '22222222-2222-4222-8222-222222222222' -MessageId 'fixture-test' -PayloadHash ('a'*64) -CliPath $cli -ExpectedCliHash (Get-FileHash $cli).Hash|Out-Null;throw 'not rejected'}catch{Assert ($_.Exception.Message -eq 'RealSubmissionDisabledInDevelopmentRelease')}}
-Check 'production adapter source recognizes release 0.4.5' {
+Check 'production adapter source recognizes release 0.4.6' {
     $text=Get-Content -Raw -LiteralPath (Join-Path $release 'Invoke-CodexQueueAdapter.ps1')
-    Assert ($text -match "'0\.4\.0','0\.4\.1','0\.4\.2','0\.4\.3','0\.4\.4','0\.4\.5'" -and $text -match "'0\.3\.0-assisted','0\.4\.0','0\.4\.1','0\.4\.2','0\.4\.3','0\.4\.4','0\.4\.5'")
+    Assert ($text -match "'0\.4\.0','0\.4\.1','0\.4\.2','0\.4\.3','0\.4\.4','0\.4\.5','0\.4\.6'" -and $text -match "'0\.3\.0-assisted','0\.4\.0','0\.4\.1','0\.4\.2','0\.4\.3','0\.4\.4','0\.4\.5','0\.4\.6'")
+}
+Check 'adapter reports a missing pinned CLI before submission' {
+    $missing=Join-Path ([IO.Path]::GetTempPath()) ('missing-codex-'+[guid]::NewGuid().ToString('N')+'\codex.exe')
+    try{& (Join-Path $release 'Invoke-CodexQueueAdapter.ps1') -ThreadId '11111111-1111-4111-8111-111111111111' -DispatcherTaskId '22222222-2222-4222-8222-222222222222' -MessageId 'fixture-test' -PayloadHash ('a'*64) -CliPath $missing -ExpectedCliHash ('b'*64)|Out-Null;throw 'not rejected'}catch{Assert ($_.Exception.Message -eq 'CliExecutableMissing')}
 }
 Check 'only nonzero marker-free adapter exit proves no submission' {
     $missing=Join-Path ([IO.Path]::GetTempPath()) ('missing-'+[guid]::NewGuid().ToString('N'))
@@ -176,11 +180,11 @@ Check 'rollback flag cannot enable unfiltered validation' {$f=Fixture;$c=Read-Lt
 Check 'duplicate registration rejected' {$f=Fixture;$c=Read-LtJson $f.client;$c.registrations=@($c.registrations)+@($c.registrations);Write-LtJson $f.client $c;Assert ((Claim $f).reason -eq 'RegistrationMismatch')}
 Check 'unauthorized synthetic authority rejected' {$f=Fixture;$r=Record $f;$r.authorization.authorized_by='unknown';$r.payload_hash=Get-LtPayloadHash $r;SaveRecord $f $r;Assert ((Claim $f).reason -eq 'ValidationAuthorizationMissing')}
 Check 'fixture drain never claims' {$f=Fixture;$r=Tick $f Drain;Assert ($r.status -eq 'DrainComplete' -and $r.claims -eq 0 -and (Record $f).attempt_count -eq 0)}
-Check 'installer plan stages generalized production release' {$x=& (Join-Path $release 'Install-LowTokenWorker.ps1') -Action Plan|ConvertFrom-Json;Assert ($x.release -eq '0.4.5' -and !$x.stage_changes_transport -and $x.schedule -eq 'Every 60 seconds, 24/7' -and $x.validation -match 'synthetic' -and $x.launcher -eq 'wscript.exe hidden window host')}
-Check 'installer upgrade recognizes current 0.4.4 source and extends bounded tick' {$text=Get-Content -Raw -LiteralPath (Join-Path $release 'Install-LowTokenWorker.ps1');Assert ($text -match '@\(\$release,''0\.4\.4'',''0\.4\.3'',''0\.4\.2'',''0\.4\.1'',''0\.4\.0''\)' -and $text -match '\$cfg\.max_tick_seconds=180')}
-Check 'release 0.4.5 aligns manager calls with the bounded tick' {
+Check 'installer plan stages generalized production release' {$x=& (Join-Path $release 'Install-LowTokenWorker.ps1') -Action Plan|ConvertFrom-Json;Assert ($x.release -eq '0.4.6' -and !$x.stage_changes_transport -and $x.schedule -eq 'Every 60 seconds, 24/7' -and $x.validation -match 'synthetic' -and $x.launcher -eq 'wscript.exe hidden window host')}
+Check 'installer upgrade recognizes current 0.4.5 source and refreshes reviewed CLI' {$text=Get-Content -Raw -LiteralPath (Join-Path $release 'Install-LowTokenWorker.ps1');Assert ($text -match '@\(\$release,''0\.4\.5'',''0\.4\.4'',''0\.4\.3'',''0\.4\.2'',''0\.4\.1'',''0\.4\.0''\)' -and $text -match '\$cfg\.max_tick_seconds=180' -and $text.Contains('$cfg.cli_path=$reviewedCli.path') -and $text.Contains('$cfg.cli_sha256=$reviewedCli.sha256'))}
+Check 'release 0.4.6 aligns manager calls with the bounded tick' {
     $text=Get-Content -Raw -LiteralPath (Join-Path $release 'Invoke-LowTokenWorker.ps1')
-    Assert ($text.Contains("`$managerBound=if(`$cfg.release -ceq '0.4.5'){if(`$Action -ceq 'List'){60}else{120}}") -and $text.Contains('[Math]::Min($managerBound,$left)'))
+    Assert ($text.Contains("`$managerBound=if(`$cfg.release -in @('0.4.5','0.4.6')){if(`$Action -ceq 'List'){60}else{120}}") -and $text.Contains('[Math]::Min($managerBound,$left)'))
 }
 Check 'scheduled worker uses a console-free launcher' {
     $installer=Get-Content -Raw -LiteralPath (Join-Path $release 'Install-LowTokenWorker.ps1')

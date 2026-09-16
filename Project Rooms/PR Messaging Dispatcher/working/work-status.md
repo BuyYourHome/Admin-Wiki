@@ -10,6 +10,8 @@ Next gate: stage and validate OFFICEASSIST while preserving its active Email Mon
 
 OFFICEASSIST upgraded through release `0.4.4`. The owner-bound quarantine successfully preserved the hash-invalid completed Tim approval record while releasing only its transport slot. Subsequent claim processing exposed a separate bound mismatch: the overall tick allowed 180 seconds, but the atomic manager call still timed out after 15 seconds and returned `ManagerTimeoutUncertain`. Release `0.4.5` preserves all existing controls and raises only the bounded manager subprocess limits to 60 seconds for list calls and 120 seconds for atomic mutations, capped by the remaining overall tick budget.
 
+After OFFICEASSIST installed `0.4.5`, three Josh September 15 Time Card attempts were proven to fail before notification because the configured versioned Codex CLI executable no longer existed. The current normal-user CLI had moved to a new versioned directory after a Codex application update. Release `0.4.6` refreshes the reviewed CLI path/hash only during guarded `UpgradeLive`, preserves the exhausted record as history, and emits a safe `CliExecutableMissing` diagnostic for future missing-pin failures.
+
 See `outputs\24-7 Deterministic Worker Release 0.4.0.md`.
 
 ## Historical WES-VIDEOEDITOR development

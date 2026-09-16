@@ -9,7 +9,7 @@ param(
     [string]$ValidationMessageId
 )
 $ErrorActionPreference='Stop'
-$release='0.4.5'
+$release='0.4.6'
 $queue='\\WES-VIDEOEDITOR\BYH-PRMessaging$'
 $task="BYH PR Messaging Worker - $ExpectedMachine"
 $root=Join-Path $env:LOCALAPPDATA "BuyYourHome\PRMessaging\low-token\releases\$release"
@@ -31,6 +31,18 @@ function New-LtWorkerTaskAction([string]$Package,[string]$WorkerConfig,[string]$
     New-ScheduledTaskAction -Execute $wscript -Argument $arguments
 }
 
+function Get-LtReviewedCli {
+    $command=Get-Command codex.exe -ErrorAction Stop
+    $path=[IO.Path]::GetFullPath($command.Source)
+    $root=[IO.Path]::GetFullPath((Join-Path $env:LOCALAPPDATA 'OpenAI\Codex\bin')).TrimEnd('\')+'\'
+    $item=Get-Item -LiteralPath $path -Force -ErrorAction Stop
+    if(!$path.StartsWith($root,[StringComparison]::OrdinalIgnoreCase) -or
+        $item.Name -cne 'codex.exe' -or
+        $item.Directory.Name -cnotmatch '^[0-9a-f]{8,64}$' -or
+        ($item.Attributes -band [IO.FileAttributes]::ReparsePoint)) { throw 'UnreviewedCliLocation' }
+    [pscustomobject]@{path=$path;sha256=(Get-FileHash -LiteralPath $path -Algorithm SHA256).Hash}
+}
+
 if($Action -eq 'Plan'){
     $embeddedFallbackException=([bool]$AllowActiveEmbeddedFallback -and $ExpectedMachine -ceq 'OFFICEASSIST' -and $LegacyAutomationId -ceq 'officeassist-morning-email-summary-and-instruction-monitor')
     [ordered]@{schema_version=1;release=$release;action=$Action;machine=$ExpectedMachine;dispatcher_task_id=$DispatcherTaskId;task_name=$task;schedule='Every 60 seconds, 24/7';launcher='wscript.exe hidden window host';stage_changes_transport=$false;validation='One exact synthetic record before live promotion';active_embedded_fallback_exception=$embeddedFallbackException;exclusive_owner=$ownerPath;rollback='Remove only this worker and owner; preserve journals and central records; explicitly restore the prior dispatcher.'}|ConvertTo-Json -Depth 8
@@ -40,7 +52,7 @@ if($env:COMPUTERNAME -cne $ExpectedMachine){throw 'InstallationMachineMismatch'}
 if($DispatcherTaskId -cnotmatch '^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$'){throw 'InvalidDispatcherTaskId'}
 
 if($Action -eq 'UpgradeLive'){
-    $sourceRelease=@($release,'0.4.4','0.4.3','0.4.2','0.4.1','0.4.0')|Where-Object {Test-Path -LiteralPath (Join-Path $env:LOCALAPPDATA "BuyYourHome\PRMessaging\low-token\releases\$_\low-token\config.json")}|Select-Object -First 1
+    $sourceRelease=@($release,'0.4.5','0.4.4','0.4.3','0.4.2','0.4.1','0.4.0')|Where-Object {Test-Path -LiteralPath (Join-Path $env:LOCALAPPDATA "BuyYourHome\PRMessaging\low-token\releases\$_\low-token\config.json")}|Select-Object -First 1
     if([string]::IsNullOrWhiteSpace($sourceRelease)){throw 'LiveSourceConfigMissing'}
     $oldRoot=Join-Path $env:LOCALAPPDATA "BuyYourHome\PRMessaging\low-token\releases\$sourceRelease"
     $oldPkg=Join-Path $oldRoot 'low-token';$oldConfigPath=Join-Path $oldPkg 'config.json'
@@ -70,6 +82,9 @@ if($Action -eq 'UpgradeLive'){
         $cfg.manager_sha256=(Get-FileHash 'C:\Codex\Wiki Files\tools\pr-messaging\Manage-ProjectRoomMessage.ps1').Hash
         $cfg.adapter_path=Join-Path $pkg 'Invoke-CodexQueueAdapter.ps1'
         $cfg.adapter_sha256=(Get-FileHash $cfg.adapter_path).Hash
+        $reviewedCli=Get-LtReviewedCli
+        $cfg.cli_path=$reviewedCli.path
+        $cfg.cli_sha256=$reviewedCli.sha256
         $cfg.package_sha256=Get-LtPackageHash $pkg
         Write-LtJson $configPath $cfg
         $taskAction=New-LtWorkerTaskAction $pkg $configPath 'Live'
@@ -120,12 +135,13 @@ if($Action -eq 'Stage'){
         if($matches.Count -eq 1){$destinations+=@{project_room=$reg.project_room;task_id=$reg.task_id;machine=$ExpectedMachine}}
     }
     if(!$destinations.Count){throw 'NoDispatchableLocalDestinations'}
-    $cli=(Get-Command codex.exe -ErrorAction Stop).Source
+    $reviewedCli=Get-LtReviewedCli
+    $cli=$reviewedCli.path
     New-Item -ItemType Directory -Path $pkg,$state -Force|Out-Null
     foreach($f in $files){Copy-Item -LiteralPath (Join-Path $PSScriptRoot $f) -Destination (Join-Path $pkg $f) -Force}
     Copy-Item -LiteralPath (Join-Path $PSScriptRoot '..\Message-Integrity.ps1') -Destination (Join-Path $root 'Message-Integrity.ps1') -Force
     . (Join-Path $pkg 'Common.ps1')
-    $cfg=[ordered]@{schema_version=1;release=$release;expected_machine=$ExpectedMachine;expected_sid=[Security.Principal.WindowsIdentity]::GetCurrent().User.Value;owner=('low-token-'+$ExpectedMachine.ToLowerInvariant());generation=$release;dispatcher_task_id=$DispatcherTaskId;queue_path=$queue;manager_path='C:\Codex\Wiki Files\tools\pr-messaging\Manage-ProjectRoomMessage.ps1';manager_sha256=(Get-FileHash 'C:\Codex\Wiki Files\tools\pr-messaging\Manage-ProjectRoomMessage.ps1').Hash;client_path=$clientPath;manifest_directory=$manifestDirectory;state_directory=$state;powershell_path=$ps;max_tick_seconds=180;queued_receipt_warning_seconds=600;adapter_kind='CodexQueue';adapter_path=(Join-Path $pkg 'Invoke-CodexQueueAdapter.ps1');adapter_sha256=(Get-FileHash (Join-Path $pkg 'Invoke-CodexQueueAdapter.ps1')).Hash;cli_path=$cli;cli_sha256=(Get-FileHash $cli).Hash;destinations=@($destinations|Sort-Object project_room,task_id)}
+    $cfg=[ordered]@{schema_version=1;release=$release;expected_machine=$ExpectedMachine;expected_sid=[Security.Principal.WindowsIdentity]::GetCurrent().User.Value;owner=('low-token-'+$ExpectedMachine.ToLowerInvariant());generation=$release;dispatcher_task_id=$DispatcherTaskId;queue_path=$queue;manager_path='C:\Codex\Wiki Files\tools\pr-messaging\Manage-ProjectRoomMessage.ps1';manager_sha256=(Get-FileHash 'C:\Codex\Wiki Files\tools\pr-messaging\Manage-ProjectRoomMessage.ps1').Hash;client_path=$clientPath;manifest_directory=$manifestDirectory;state_directory=$state;powershell_path=$ps;max_tick_seconds=180;queued_receipt_warning_seconds=600;adapter_kind='CodexQueue';adapter_path=(Join-Path $pkg 'Invoke-CodexQueueAdapter.ps1');adapter_sha256=(Get-FileHash (Join-Path $pkg 'Invoke-CodexQueueAdapter.ps1')).Hash;cli_path=$cli;cli_sha256=$reviewedCli.sha256;destinations=@($destinations|Sort-Object project_room,task_id)}
     $cfg.package_sha256=Get-LtPackageHash $pkg
     Write-LtJson $configPath $cfg
     $taskAction=New-LtWorkerTaskAction $pkg $configPath 'Paused'

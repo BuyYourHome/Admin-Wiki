@@ -18,6 +18,7 @@ $ErrorActionPreference='Stop'
 Assert-LtUuid $ThreadId; Assert-LtUuid $DispatcherTaskId; Assert-LtId $MessageId
 if ($ThreadId -ceq $DispatcherTaskId) { throw 'SelfNotificationForbidden' }
 if ($PayloadHash -cnotmatch '^[0-9a-f]{64}$') { throw 'InvalidPayloadHash' }
+if (!(Test-Path -LiteralPath $CliPath -PathType Leaf)) { throw 'CliExecutableMissing' }
 if ($ExpectedCliHash -notmatch '^[0-9a-fA-F]{64}$' -or (Get-FileHash -LiteralPath $CliPath -Algorithm SHA256).Hash -ine $ExpectedCliHash) { throw 'CliReleaseMismatch' }
 $message="PR Messaging transport wake-up only, not a new Wes instruction. MessageId $MessageId; payload_hash $PayloadHash. Retrieve and verify the authoritative record using C:\Codex\Wiki Files\tools\pr-messaging\Manage-ProjectRoomMessage.ps1 before accepting. Follow only its authorized scope. Notification is not delivery proof."
 $argv=@('queue','--thread',$ThreadId,'--message',$message)
@@ -50,7 +51,7 @@ if($CanaryConfigPath){
 if($LiveConfigPath){
     . "$PSScriptRoot\Canary.Guards.ps1"
     $cfg=Read-LtJson $LiveConfigPath
-    if($cfg.release -notin @('0.3.0-assisted','0.4.0','0.4.1','0.4.2','0.4.3','0.4.4','0.4.5') -or $DispatcherTaskId -cne $cfg.dispatcher_task_id -or $PayloadHash -cnotmatch '^[0-9a-f]{64}$' -or $CliPath -cne $cfg.cli_path -or $ExpectedCliHash -ine $cfg.cli_sha256){throw 'LiveAdapterIdentityMismatch'}
+    if($cfg.release -notin @('0.3.0-assisted','0.4.0','0.4.1','0.4.2','0.4.3','0.4.4','0.4.5','0.4.6') -or $DispatcherTaskId -cne $cfg.dispatcher_task_id -or $PayloadHash -cnotmatch '^[0-9a-f]{64}$' -or $CliPath -cne $cfg.cli_path -or $ExpectedCliHash -ine $cfg.cli_sha256){throw 'LiveAdapterIdentityMismatch'}
     if($env:COMPUTERNAME -cne $cfg.expected_machine -or [Security.Principal.WindowsIdentity]::GetCurrent().User.Value -cne $cfg.expected_sid){throw 'LiveAdapterWindowsIdentityMismatch'}
     if($cfg.release -ceq '0.3.0-assisted'){
         if($cfg.allowlist.project_room -cne 'Quickbooks' -or $ThreadId -cne $cfg.allowlist.task_id){throw 'AssistedAdapterIdentityMismatch'}
@@ -61,7 +62,7 @@ if($LiveConfigPath){
         $allowedRoom=$allowed[0].project_room
     }
     $r=(& $cfg.manager_path -Action Get -MessageId $MessageId -QueuePath $cfg.queue_path | ConvertFrom-Json)
-    if($cfg.release -in @('0.4.0','0.4.1','0.4.2','0.4.3','0.4.4','0.4.5') -and !(Test-LtPinnedDestination $cfg $r.destination)){throw 'LiveDestinationNotPinned'}
+    if($cfg.release -in @('0.4.0','0.4.1','0.4.2','0.4.3','0.4.4','0.4.5','0.4.6') -and !(Test-LtPinnedDestination $cfg $r.destination)){throw 'LiveDestinationNotPinned'}
     $a=@($r.attempts)[-1]
     if($r.destination.project_room -cne $allowedRoom -or $r.destination.task_id -cne $ThreadId -or $r.destination.machine -cne $cfg.expected_machine -or $r.state -ne 'Delivery Attempted' -or $r.payload_hash -cne $PayloadHash -or $a.attempt_id -cne $AttemptId -or $a.outcome -ne 'Pending' -or $r.receipt -or $r.result){throw 'LiveAdapterClaimMismatch'}
     $markerDir=Join-Path $cfg.state_directory 'submissions'
