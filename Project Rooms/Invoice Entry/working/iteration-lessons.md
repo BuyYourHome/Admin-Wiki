@@ -1,425 +1,98 @@
-# Iteration Lessons
-
-Use this file to record, refine, or expand lessons learned after each workbook or workflow iteration. Each entry should state what changed or failed, the practical lesson, and how the next iteration should be constrained or validated.
-
-## 2026-07-22 - Outbound Email Ownership
-
-Context: Invoice Entry prepared an amended Josh Kennedy Time Card package but could not verify an OfficeAssist send from its own task.
-
-Lessons:
-
-- Invoice Entry owns email content, attachments, recipient decisions allowed by its workflow, and the authorization basis; it does not own the delivery operation.
-- Route every authorized Invoice Entry email to Email Monitor's Email Delivery mode at status task `01a03956-fe55-7f62-9c0a-17c18f763320`.
-- Do not call Outlook, local Outlook, or Outlook Web from Invoice Entry and do not substitute another mailbox when OfficeAssist is unavailable.
-- Mark an email sent only after Email Monitor returns verified OfficeAssist Sent Items evidence with the sent message id and timestamp.
-
-## 2026-07-20 - Routed Timesheet vs Time Card
-
-Context: Email Monitor routed a Josh Kennedy `Timesheet` email to Invoice Entry as a contractor/project-cost source, but the current Time Card trigger requires a subject containing `Time Card`.
-
-Lessons:
-
-- Wes expanded Time Card so `Timesheet`, `time sheet`, and similar wording are Time Card-relevant when Email Monitor routes the source.
-- If the source omits the worked date, use the email received date and record the assumption in the packet.
-- Invoice Entry creates the Time Card invoice number; do not require the worker/vendor to provide one.
-- For Josh Kennedy, use the established `$31.25/hour` rate unless the source conflicts with it.
-- Split Time Card drafts into one invoice per project and one invoice for BackOffice when both are present.
-- Do not copy Time Card invoices to Teams until the final end-of-week email is received and processed.
-- After every Time Card email, amend the current weekly invoice drafts and email them to the sender for verification with Wes and Jenny copied.
-- When Wes forwards the worker's Time Card immediately after the original arrives, preserve the forward as transport evidence but key the line to the original worker message so the same hours are not accumulated twice.
-- Preserve the existing weekly invoice number across amendments; add only the new dated line and recalculate the existing project invoice.
-
-## 2026-07-08 - Outrigger Table Layout Rollout Attempt
-
-Context: Attempted to apply the `Appliances` label/total placement, repair the `Appliances` toggle, standardize table columns, and match table formatting across upgraded Outrigger vendor tabs.
-
-Result: The broad table/style pass was not uploaded. The workbook was restored from rollback after validation showed Excel had changed table headers such as `Item #`, `Qty`, and `Cost/Unit` into generic names like `Column1`, `Column2`, and `Column3`.
-
-Lessons:
-
-- Do not combine table structure changes, style changes, formula relocation, checkbox repair, and Gantt relinking in one workbook pass.
-- Do not rely on broad format-paste or table-wide copy/paste operations across Excel tables; they can corrupt table headers or table metadata.
-- Break future workbook design iterations into one narrow change at a time, then reopen and validate before continuing.
-- Treat table header names as a first-class validation item after every table edit.
-- If Excel COM disconnects, assume the workbook may not have saved all intended changes; release orphan Excel processes, reopen the workbook, and verify before uploading.
-- If validation fails, restore the rollback copy and do not upload.
-
-Next safer sequence:
-
-1. Repair only `Demo & Trash Haul` totals without changing table structure.
-2. Validate totals, Gantt link, table headers, workbook links, and reopen behavior.
-3. Upload only if validation passes.
-4. In a later separate pass, standardize one table's columns at a time, starting with a copy or non-live test workbook.
-
-## 2026-07-08 - Outrigger Appliances-Pattern Retry
-
-Context: Wes fixed the `Appliances` tab and asked to retry correcting the other upgraded tables using `Appliances` as the layout standard.
-
-Result: Uploaded a safe nonstructural pass. The pass repaired `Demo & Trash Haul` totals, moved other tabs' template/grand/invoice totals to the `Appliances`-style right-side placement, updated affected `Gnatt Chart` links, and applied the table style without changing table widths. Validation passed with no external workbook links or table-header corruption.
-
-Lessons:
-
-- Preserve Wes's manually fixed tab as the source of truth; do not overwrite it while using it as the pattern.
-- Split totals/layout work from table-width or column-order work. Totals and Gantt relinking can be safely updated without resizing tables.
-- `Demo & Trash Haul` can be repaired safely if its existing 7-column table structure is left intact.
-- If `Demo & Trash Haul` is widened to standard invoice columns, totals must move away from the immediately adjacent column; otherwise Excel may auto-expand the table into the total cells.
-- Standardizing `Cabinets` columns can change totals if tax formulas are filled into rows that previously had intentionally blank tax cells. Preserve existing tax behavior unless Wes explicitly approves recalculating tax.
-
-Next safer sequence:
-
-1. Standardize only `Demo & Trash Haul` on a non-live copy, with totals placed at least one blank column away from the widened table.
-2. Validate that the final table has exactly these headers: `Group`, `Date`, `Vendor`, `Description`, `Sq Ft`, `Item #`, `Qty`, `Cost/Unit`, `Sub-Total`, `Tax`.
-3. Preserve the current grand total of `6561.72` and the `Gnatt Chart` row 8 link.
-4. Standardize `Cabinets` separately and preserve its current actual total of `5563` unless Wes explicitly changes the tax rule.
-
-## 2026-07-08 - Outrigger Column-Based Invoice Totals
-
-Context: Wes identified that several upgraded tabs were still not summing invoice totals by table column. The affected tabs were `Plumbing Fixtures`, `Windows & Doors`, `Cabinets`, `Paint`, `Flooring`, `HVAC`, `Electrical Fixtures`, and `Landscape`.
-
-Result: Uploaded a focused formula-only fix. Each affected `Invoice Total` formula now sums its table's `Sub-Total` and `Tax` columns by table name, while preserving the existing checkbox condition and grand-total cells. Validation passed: each affected grand total matched the linked `Gnatt Chart` value, table headers stayed intact, and no external workbook links were present.
-
-Lessons:
-
-- For invoice table totals, prefer structured table formulas such as `SUM(tblName[Sub-Total])+SUM(tblName[Tax])` over fixed cell ranges.
-- A formula-only pass is safe when it does not resize tables, paste formatting, or alter table headers.
-- Validate both the invoice total formula text and the downstream grand-total/Gnatt values after the formula change.
-- Do not assume stored total cell locations from prior iterations; inspect the current workbook because Wes may have moved labels and totals manually.
-
-## 2026-07-08 - Outrigger HVAC Tax Formula Repair
-
-Context: Wes identified that `HVAC` was not calculating taxes.
-
-Result: Uploaded a focused HVAC-only formula fix. The `tblHVACInvoices[Tax]` column now uses `=IFERROR([@[Sub-Total]]*0.0725,0)`. The existing HVAC invoice total already summed `tblHVACInvoices[Sub-Total]` and `tblHVACInvoices[Tax]`, so the invoice total, grand total, and `Gnatt Chart` row 19 recalculated after the tax column was repaired.
-
-Lessons:
-
-- When a tab total appears wrong, inspect the table's component columns first; the total formula may already be correct while an input formula column is blank.
-- Keep narrow formula repairs limited to the affected table column when the total chain is already structurally correct.
-- Validate the changed column formula, invoice total, grand total, and Gantt-linked value after recalculation.
-
-## 2026-07-08 - Statement Handoff Boundary
-
-Context: Doc Scan now has Lowes Statement and will send extracted statement data for Invoice Entry to consume.
-
-Lessons:
-
-- Keep statement extraction in Doc Scan and statement allocation in Invoice Entry.
-- Treat extracted statement lines as source data, not approval for insertion.
-- Do not insert Statement lines until the allocation rule for project, worksheet/table, duplicate check, audit trace, and totals validation has been designed, tested, and approved.
-
-## 2026-07-08 - Lowes Statement Allocation Pilot
-
-Context: Processed the Lowes PRO BYH 5997 statement closing 2026-03-17 as the first Statement handoff test for Outrigger.
-
-Lessons:
-
-- For credit-card statement line items, treat the statement amount as the transaction total unless the extracted packet separates pre-tax subtotal and tax. Do not apply the worksheet tax formula again to statement totals.
-- Lowes Statement uses project-first routing, then Review-first handling inside the matched project workbook. Do not insert all lines from a multi-project statement into the current project's `Review` table.
-- Fill `Review[Destination Worksheet]` only when Invoice Entry has confidence in the destination tab for a line that already belongs to that project. Leave it blank for same-project vendor-tab uncertainty.
-- Keep Home/non-project, unclear-project, mixed-tab/project-unclear, PO-conflicted, accounting-only, and other non-matched-project lines outside project workbooks until the project/accounting status is resolved.
-- A filled `Destination Worksheet` is a routing recommendation and does not mean the line has already been inserted into the destination vendor table.
-- Record the statement PDF path as source evidence for every inserted or review-routed statement line.
-- When writing Excel tables through automation, restore from rollback after any failed COM write attempt before retrying; partial unsaved attempts should not be carried forward.
-- If a Statement rule changes after an upload, rebuild from the pre-statement rollback and reprocess the packet under the new rule instead of patching already-uploaded Review and vendor-table rows in place.
-- For multi-project statements, do not use the currently open project workbook as the holding place for every line. Route by project/workbook first; only lines belonging to that project should enter that project's `Review` table, and non-project or unclear-project lines should stay outside project workbooks until resolved.
-- For Lowes statement packets, Doc Scan should preserve visible receipt-item detail. A single statement transaction/ref can become multiple Invoice Entry rows when it contains multiple items, delivery/shipping, or separable credits; do not consume broad transaction-summary rows when item-level rows are needed for later vendor-tab placement.
-
-## 2026-07-08 - Lowes Statement Inclusion Rule Amendment
-
-Context: Wes amended the Lowes Statement rule after reviewing rows 13-25 in the item-level packet. The prior project-first rule was too strict for rows that might belong to Outrigger but had PO, project, destination, mixed-tab, or allocation uncertainty.
-
-Lessons:
-
-- Exclude rows that clearly do not belong to the target project.
-- Include rows that certainly belong to the target project.
-- Also include rows that may belong to the target project but need review before final destination or allocation is known.
-- Exclude sales-tax-only and tax-credit-only rows from Review and vendor tabs during initial statement consumption; tax will be calculated or allocated later by an approved spreadsheet tax method.
-- For possible-project rows, leave `Destination Worksheet` blank unless the destination is clear and explain the uncertainty in the review/status fields.
-- If a Statement inclusion rule changes after upload, rebuild from the clean pre-statement workbook copy and reprocess the packet rather than patching already-uploaded Review rows in place.
-
-## 2026-07-08 - Review Description Column
-
-Context: Wes identified that the `Review` table needs a dedicated item description because reviewed rows will later be copied into vendor tables.
-
-Lessons:
-
-- Keep `Review[Description]` as a separate clean item-description field after `Invoice #` and before `Amount`.
-- Do not rely on the narrative `Review` column as the future vendor-table description source.
-- For Statement rows, preserve source traceability in `Review`, but put only the item description itself in `Description`.
-- Validate the Review header order before upload: `Invoice #`, `Description`, then `Amount`.
-
-## 2026-07-08 - Lowes Item Description Lookup
-
-Context: Wes asked to use Lowe's item numbers to retrieve better product descriptions for the `Review[Description]` column.
-
-Lessons:
-
-- Strip leading zeroes from Lowe's statement item/SKU values when searching for Lowe's product pages.
-- Use Lowe's product-page titles when the item number match is reliable.
-- Keep statement-derived text for delivery/shipping, payment/credit components, and rows where no reliable Lowe's product match is found.
-- Do not overwrite source traceability in the `Review` column; only improve the clean `Description` field.
-
-## 2026-07-13 - Review Request Checkbox Finalization
-
-Context: The first Outrigger Review request test exposed a mismatch between the intended marker cell and the defined name. The workbook had visible request text in `Review!Q2`, while `invoiceEntryReviewRequest` pointed elsewhere.
-
-Lessons:
-
-- Invoice Entry must read the Review request by the defined name `invoiceEntryReviewRequest`, not by a visible text selector or guessed cell address.
-- The finalized request design is a checkbox at `Review!B1` labeled `Needs Invoice Entry Review`, with `invoiceEntryReviewRequest` reopening in Excel as the absolute reference `=Review!$B$1`.
-- `TRUE` means process the pending Review request; `FALSE` or blank means no request is pending.
-- The prior `Review!Q2` text selector is obsolete and must not be used.
-- Before processing Review rows, verify the defined name target through Excel. If it is relative or points anywhere other than `=Review!$B$1`, stop and report the workbook design mismatch.
-- Do not clear the request checkbox until eligible rows have been processed, excluded rows have been noted, the workbook has passed validation, and the updated workbook is ready to replace the Teams source.
-
-## 2026-07-13 - Outrigger Review Request Processing
-
-Context: Processed the first finalized Outrigger `tblInvoiceReview` request from the checkbox-trigger design and copied approved Review rows into `tblPlumbingFixturesInvoices`.
-
-Lessons:
-
-- Run Review-request processing in two phases: insert approved rows and save first, reopen and validate totals/links, then clear `invoiceEntryReviewRequest` and validate again before upload.
-- If an Excel automation write fails after touching a workbook, restore from the rollback copy before retrying. Do not continue from a partially written workbook copy.
-- Do not inspect the raw workbook ZIP/package while Excel still has the file open. Close Excel fully before checking for external-link package parts.
-- For current Outrigger Plumbing Fixtures rows, use the table's existing `Group` value pattern `PlumbingFixtures` when filling new actual-invoice rows.
-- When copying Lowe's Review rows into vendor tables, preserve clean item descriptions from `Review[Description]`, parse item number and quantity from the Review trace when available, and let the table's `Sub-Total` and `Tax` formulas calculate from quantity and cost/unit.
-- Recalculate attached-invoice line extensions before routing or insertion. If quantity times unit price does not equal the vendor's printed line total, preserve the printed obligation, flag the exact difference, and hold approval and workbook action until Wes decides whether a corrected vendor invoice is required.
-- When a routed Time Card retry says the prior task-message delivery is absent, verify the durable period packet, message id, dispatch id, worker/date/project, and time range before adding it. Once added, consume the same identities so another retry cannot duplicate the line.
-- For Time Card sources that state start and end times but no break, preserve the full elapsed interval and do not invent a break deduction. Record that basis so a later correction updates the same line rather than adding a second entry.
-- A Wes-filled `Destination Worksheet` is approval to move a Review row unless the status is an explicit stop such as `Hold`, `Do Not Move`, `Duplicate Risk`, or `Missing Data`. Do not let stale `Needs Review` wording block a row after Wes has supplied the destination; correct the status to `Moved` during the successful move.
-- A destination-filled Review row can still be excluded when the destination worksheet is outside the approved Vendor Tabs scope. `Exterior` and tabs to the right of `Landscape` remain out of scope until Wes explicitly expands Vendor Tabs.
-- For Lowe's statement modes, rows that are not inserted into a specific project workbook must still be retained. Use the held-detail register for Home/non-project, accounting-review, unclear-project, tax-only, or not-ready-project rows so a later active-project sweep can import them without rereading or guessing from the raw statement.
-- Avoid duplicating Review row movement rules. Use a trigger rule instead: when Invoice Entry opens an authorized active project workbook and finds `Review` / `tblInvoiceReview`, invoke the existing Review Request Processing rules before other workbook work.
-
-## 2026-07-15 - Requested Multi-Account Lowe's Sweep
-
-Context: Wes asked Invoice Entry to process the remaining 2026 Lowe's statements from both Lowe's accounts after all active projects were ready for Lowe's workflow.
-
-Lessons:
-
-- For requested statement sweeps, scan every named account folder for the requested period, but do not treat a scanned/image statement as reliable item-level data merely because OCR produced text.
-- Project Review insertion requires enough confidence in project identity and the statement line/ref. If the OCR is dense, truncated, or cannot support item-level splitting, retain the row in the held-detail register instead of importing a fuzzy transaction summary.
-- Payment-only, interest-only, sales-tax-only, tax-credit-only, and Home/non-project details remain outside project workbooks even during all-project sweeps.
-- When all projects are ready for Lowe's workflow, route confident rows to each matched project's own `Review` table. Do not use Outrigger or any other currently active workbook as a temporary holding workbook for other projects.
-- If Invoice Entry supplies a `Destination Worksheet` recommendation for a Lowe's Review row, keep the status in a review state unless Wes has separately approved movement; initial statement consumption is still Review-first, not vendor-tab insertion.
-- Direct Invoice Entry OCR is not an acceptable substitute for Doc Scan Lowes Statement on dense scanned statements. If Wes points out missed statement detail, back out partial Review rows and wait for a Doc Scan item-level packet.
-- Do not accept direct requests in Invoice Entry to process raw statements. Statement requests belong in Doc Scan first; Invoice Entry starts only after Doc Scan provides a structured Statement packet.
-- A Doc Scan Statement packet can still be review-grade rather than workbook-ready. Do not import transaction-section rows to project Review tables when the packet cannot provide reliable project, date, amount, item split, and source-completeness signals; retain them in held detail instead.
-- If Wes explicitly wants review-grade statement rows placed into project spreadsheets for manual review, insert them into `tblInvoiceReview` only, keep `Destination Worksheet` blank unless Wes has approved it, and leave status as `Needs Review - Lowes Statement`.
-- If Wes explicitly authorizes post-copy review, high-confidence Statement rows may be copied to vendor tabs provisionally, but the Review row must remain open as `Copied - Needs Owner Verification`; do not mark it `Moved` until Wes accepts it.
-
-## 2026-07-17 - Create Vendor Invoice
-
-Context: Wes defined Create Vendor Invoice for contractor/vendor invoice emails routed by Email Monitor or OfficeAssist.
-
-Lessons:
-
-- Email Monitor and OfficeAssist own mailbox monitoring and routed source-email preservation; Invoice Entry starts after a direct handoff and a saved email source under `sources\email\`.
-- In this workflow, Invoice Entry may create the structured invoice packet from routed email and attachments instead of receiving a Doc Scan packet.
-- Do not treat routed email intake as authority to approve, pay, contact vendors, guess missing fields, or treat multi-project statements as single invoices.
-- Keep source traceability back to the routed email, attachments, Outlook link when available, and handoff summary.
-- If a routed vendor email includes an attached invoice, treat the attachment as the invoice and proceed under normal Invoice Entry rules; do not generate a replacement invoice or send it back for verification merely because it came by email.
-- If a routed vendor email is free text with no attached invoice, generate a formal invoice from the source email and send it back to the proper vendor for accuracy verification, copying Wes and Jenny. Hold final filing and spreadsheet insertion until the vendor confirms it.
-- The only vendor contact authorized by this workflow is the free-text invoice accuracy-verification request. Do not send it unless vendor identity, vendor email address, and free-text source evidence are clear, and never word it as approval, payment, or acceptance.
-
-## 2026-07-17 - Lowe's SYH 6140 Review-First Packet
-
-Context: Processed the Doc Scan item-level Lowe's Pro SYH 6140 statement packet closing 2026-07-02 for PO `7001`.
-
-Lessons:
-
-- For Doc Scan Statement packets, insert confident project item rows into the matched project `Review` table only; do not copy them into vendor tabs during initial packet consumption.
-- Keep imported Lowe's statement rows in a review status such as `Needs Review - Statement` even when `Destination Worksheet` contains a recommendation. Wes can change status to `Ready` or another approval status when the row should be posted.
-- Keep payment, interest, and other accounting-review rows out of project workbooks and retain them in the held-detail register with source traceability.
-- If Excel COM reports successful validation but times out during cleanup, independently read back the workbook, then terminate only the hidden automation Excel process created by the run.
-
-## 2026-07-21 - Sherwin-Williams Doc Scan Packet
-
-Context: Processed a Doc Scan packet for Sherwin-Williams invoices filed to 320 Rose and Outrigger.
-
-Lessons:
-
-- Treat packet-recommended workbook paths inside a property folder as routing clues, not final workbook authority. Active project-management workbooks must still be resolved from the Teams/SharePoint `Property` root before editing.
-- A same-invoice source duplicate can have a different PDF hash because of scan/export differences. Extract or compare invoice text before deciding whether two same-date PDFs are materially the same invoice.
-- When a vendor table lacks a dedicated invoice-number column, include the invoice number in the clean description or another existing trace field and record the full source path in the project-room processing log for future duplicate checks.
-
-## 2026-07-22 - Create Vendor Invoice Approval Preflight
-
-Context: Tim Fleming's free-text Pond-hours invoice exposed several workflow bottlenecks after vendor verification and Wes approval. The packet still said no invoice number, the PDF generator had hardcoded stage/status wording, the first Outlook connector send used the wrong attachment shape, and filing/spreadsheet insertion needed to stay separate because the destination worksheet was unresolved.
-
-Lessons:
-
-- Before sending any generated free-text invoice for vendor verification, Wes approval, or post-approval status, verify that the packet and generated PDF both show an invoice date and invoice number.
-- If the vendor did not provide an invoice number, assign the Invoice Entry-generated number before generating the approval package, not after the email is drafted.
-- Inspect the PDF generator/template for hardcoded date, invoice-number, total-label, and status text before regenerating a later-stage PDF. Do not reuse a vendor-verification or "not approved" PDF after Wes approval.
-- Treat vendor verification, Wes approval, project-folder filing, project-spreadsheet insertion, payment handling, and updated-status email as separate gates. Passing one gate does not automatically complete the others.
-- When Wes approves a generated invoice but the destination worksheet remains unresolved, file/send the approved invoice as allowed, but keep workbook insertion explicitly held and state the blocker in the updated-status email.
-- Before replacing a project-folder PDF, confirm the replacement PDF is the current generated stage, then record the local project-folder path in the packet and processing log.
-- For Outlook connector sends with attachments, pass `attachment_files` as a list of absolute paths on the first attempt. If a schema retry is needed, make only the allowed schema-correct retry and record the send/verification result.
-- After any sent Create Vendor Invoice email, verify the OfficeAssist Sent Items copy for sender, recipients, copied recipients, subject, attachment flag, and timestamp before marking the email step complete.
-
-## 2026-07-28 - Time Card Week Rollover And Verification
-
-Context: Josh Kennedy sent a new Monday time line, a blank reply, and a separate accuracy confirmation for the prior week's invoice thread.
-
-Lessons:
-
-- Separate new-week time from prior-week verification even when both arrive in replies to the prior week's email subject. Use the worked date and week-ending date, not the reply-thread subject alone.
-- A blank reply with only quoted history is traceability evidence, not a new time line or approval.
-- Worker wording such as `The times are correct` verifies invoice accuracy but does not authorize payment.
-- After worker verification of the final weekly package, file only the project-specific invoice whose Teams folder is known. Keep BackOffice filing and workbook insertion held when their approved destinations are unresolved.
-- For Time Card email delivery, pass `attachment_files` as a one-item absolute-path list on the first Email Monitor connector attempt; a plain string repeats a known argument-binding failure.
-- After each daily Time Card delivery, archive routed source copies and generated PDF/render files only after file-count and byte-total verification, while retaining the structured packet and processing log needed for weekly accumulation.
-
-## 2026-07-28 - Square Invoice Link Without Attachment
-
-Context: Email Monitor routed duplicate Square invoice notices and a paid confirmation that reported no Outlook attachments.
-
-Lessons:
-
-- A Square invoice email can contain a usable invoice-PDF download link even when Outlook reports no attachment. Retrieve and validate that PDF from the preserved direct message before treating the invoice document as unavailable.
-- Consolidate repeated invoice notices and later payment confirmations by vendor plus invoice number. The payment confirmation updates the one invoice record and must not create another invoice row.
-- Product category and a vendor's prior project history do not establish the current project. If the invoice and routed messages omit the property, PO, and job name, hold filing and workbook insertion for project assignment.
-
-## 2026-07-29 - Time Card Final Approval And Workbook Routing
-
-Context: Josh's weekly Time Card process needed a clear boundary between his accuracy verification and Wes's authorization to file and post the invoices.
-
-Lessons:
-
-- Treat worker accuracy verification and Wes approval as separate gates. Worker verification changes the package to `Worker Verified - Awaiting Wes Approval`; it does not authorize Teams filing or project-spreadsheet insertion.
-- After worker verification, route the complete weekly package to Wes for approval and copy Jenny through Email Monitor's Email Delivery workflow.
-- Only Wes approval authorizes final filing and spreadsheet processing.
-- File project-specific invoices in the applicable Teams project `Invoices` folder. File the BackOffice invoice in Teams `Office Admin/Invoices & Receipts`.
-- Maintain a project-spreadsheet register as a lookup aid, but verify the current workbook at the SharePoint `Property` root before every edit.
-- Keep Invoice Entry responsible for the register until Wes explicitly transfers ownership to a named Project PR or workflow.
-- After Wes approval, regenerate final PDFs from accumulated source data so the documents show the current approval stage; do not reuse a worker-verification PDF.
-- If an approved project cost has no approved Vendor Tabs destination, add it to the project's Review table with a stable Review Row ID, blank `Destination Worksheet`, and `Needs Review`. Do not guess a tab.
-- For large macro-enabled workbooks, use Excel's native `Find` for targeted duplicate checks and package-level formula/error fingerprints for integrity validation. A cell-by-cell COM scan can time out without adding confidence.
-- If the authorized BackOffice filing folder does not exist, verify the exact SharePoint parent and create only `Office Admin/Invoices & Receipts`.
-
-## 2026-07-30 - Outside-Person Invoice Identity
-
-Context: A Josh Kennedy reference invoice visually appeared to come from Buy Your Home even though Josh was the outside person billing the company.
-
-Lessons:
-
-- When Invoice Entry creates an invoice for an outside person or vendor, show that outside party as the invoice issuer and primary identity.
-- Show Buy Your Home as the customer. Do not present Buy Your Home as the issuer of an invoice payable to the outside party.
-- Generate the PDF from structured invoice data with the canonical generator so the invoice can be reproduced without editing an older PDF.
-- Replacing an approved stored PDF to correct presentation does not require a workbook edit when the invoice number, date, lines, amount, approval state, and payment state are unchanged.
-- Sent email records are historical evidence and cannot be replaced. Do not send a duplicate message solely because the stored PDF format was corrected.
-
-## 2026-07-30 - Separate Josh Payment From Project Allocation
-
-Context: Josh's compensation changed to a fixed biweekly service-payment invoice while Time Card records remain necessary for internal project-cost allocation.
-
-Lessons:
-
-- Maintain one payable document for Josh's compensation: the biweekly service-payment invoice for two weeks at `$1,250.00` per week.
-- Generate Time Card outputs as Project Cost Allocation Reports, not invoices. Mark them `Not an invoice` and `Not payable`.
-- Recalculate reports from accepted weekly time records rather than editing prior PDFs.
-- Allocate the fixed weekly `$1,250.00` cost proportionally across accepted project and BackOffice hours so the allocation reports reconcile to the weekly service cost without creating a second payment obligation.
-- When later source evidence completes a held time line, match it to the existing worker/date/project/start-time record and amend that line once. Do not create a duplicate time record.
-- Keep the payable invoice approval trail separate from worker verification of time and project allocation.
-
-## 2026-08-03 - Semimonthly Time Card Invoice Consolidation
-
-Context: Wes replaced per-destination Project Cost Allocation Reports with one semimonthly payable invoice that also carries the project allocation detail.
-
-- Use periods 1st-15th and 16th-last calendar day; do not finalize before the period closes.
-- For Josh, show `Josh Kennedy LLC` as issuer and `profcyber0077@gmail.com` as invoice contact regardless of the mailbox used to submit time.
-- Keep one payable invoice per period and show project/BackOffice allocations inside it. Do not create separate destination payables.
-- When converting older weekly packets, preserve their source and delivery evidence but explicitly supersede their payable identity and reconcile any filed PDFs or workbook rows before new posting.
-- Display exact accumulated time as hours and minutes on the invoice; keep decimal hours only as structured calculation data.
-
-## 2026-08-03 - Approved Invoice Format Revision
-
-Context: Wes approved Josh Kennedy LLC invoice `INV-JKLLC-20260731-001` but requested a cleaner presentation after reviewing the initial two-page draft.
-
-- Place the vendor name and contact above `INVOICE` on the upper left so issuer identity is immediately clear.
-- Omit explanatory allocation, method, and traceability panels from the invoice; preserve that evidence in the durable packet instead.
-- Keep approval across format-only revisions when the invoice number, period, accepted time, allocations, and amount remain unchanged.
-- Re-render every revised PDF and visually check the whole document. This revision reduced the invoice from two pages to one without dropping any time or allocation rows.
-- Treat approval, filing/posting, payment, and paid status as separate states. An approved revision does not authorize or prove the later states.
-
-## 2026-08-03 - Duplicate General-Invoice Email Intake
-
-Context: NCAOC Remote Public Access invoice `41247668` arrived in two Outlook copies one second apart, and its bill-to address could be mistaken for a project assignment.
-
-- Treat repeated Outlook copies with the same vendor, invoice number, amount, and attachment hash as duplicate transport evidence for one obligation.
-- A bill-to or customer mailing address does not establish that a general service charge belongs to that property project.
-- When no project designation exists and the approved vendor folder is absent, file one copy to the general-invoice `_Needs Review` folder rather than create a vendor folder or guess a project.
-- Keep email-only late-fee context separate from PDF line-item facts when the attached invoice does not display that fee.
-- Do not open a project workbook, approve payment, or schedule payment while general accounting or project allocation remains unresolved.
-
-## 2026-08-04 - Time Card Meridiem Hold
-
-Context: Josh reported an arrival of `615` and departure of `415` for August 3 without AM/PM markers.
-
-- Preserve raw clock values exactly and hold the line when AM/PM is missing.
-- Do not use an apparently likely daytime interpretation to calculate duration or allocate a fixed service amount.
-- Open the semimonthly accumulated packet with the source pointer and pending line, but do not generate an invoice when no supported accepted hours exist.
-- When clarification arrives, amend the existing pending line rather than creating another worker/date/project record.
-
-## 2026-08-04 - Repeated Statement Notice Reconciliation
-
-Context: First Bank sent another account-ending-3613 statement-availability notice while the actual statement remained inaccessible.
-
-- Repeated notices for the same account and unresolved statement should update the existing packet rather than create another statement record.
-- A new notice does not prove a new statement, balance, amount due, payment obligation, or project assignment when it supplies none of those facts.
-- A public online-banking login page is not an authorized statement source. Do not enter credentials or initiate MFA; keep retrieval held until an authenticated user session or supplied statement is available.
-- Two near-simultaneous forwarded copies of the same statement-ready notice for the same account and month are duplicate transport evidence. Preserve both message identities but create one retrieval hold, even when a due date is present and the balance is absent.
-
-## 2026-08-04 - Reconcile Mode
-
-- Workbook reconciliation must be a documented user-callable mode, not only an internal insertion preflight.
-- Keep one workbook writer: Dashboard may invoke `Reconcile`, but Invoice Entry resolves, edits, validates, and uploads the authoritative workbook.
-- An explicit Wes invocation is sufficient authorization to evaluate existing Review rows even when the visible request checkbox is false or blank; checkbox state still controls whether it needs to be cleared after successful validation.
-
-## 2026-08-04 - Packet Metadata And Locked Workbook Retry
-
-Context: Corrected 2025 Lowe's packets had accurate item amounts but initially omitted visible store and SKU metadata; the validated Tensity upload then failed because SharePoint reported the workbook locked.
-
-- Revalidate transaction-header metadata after a packet correction, not only row counts and amounts. Preserve visible store, PO, SKU/item number, invoice, date, and page evidence before treating the packet as complete.
-- A SharePoint `423 resourceLocked` response is a definitive failed replacement. Record that the authoritative workbook is unchanged and do not repeat the upload automatically.
-- Preserve the validated edited workbook and rollback copy outside Git. Before retry, compare the live workbook modified time with the recorded source version; if it changed, re-fetch and reapply instead of overwriting newer work.
-
-# Receipt Mode Lessons
-
-- A collected-money Receipt is not a vendor purchase receipt: preserve the original project cost and classify sale proceeds separately as project credit.
-- Marketplace listing facts identify an item, but only supported completed-sale and collection evidence can establish the receipt date and actual amount collected.
-- Collection and deposit are separate states. A cash receipt must not imply that the cash was deposited.
-
-## 2026-08-14 - Worker Versus Invoice Payee
-
-Context: Tim Fleming reported his own hours and Jeff's hours in one source, and Wes clarified that Jeff's labor is billed through Tim.
-
-- Do not assume every named worker is a separate invoice issuer or payee.
-- When labor is billed through a contractor, keep that contractor as issuer/payee and identify the actual worker on the applicable invoice lines.
-- Route the correction-review draft to the issuer/payee; a separate worker email is unnecessary unless the source says the worker bills independently.
-- A corrected package may supersede a verified draft delivery, but preserve the earlier Sent Items evidence and explicitly prevent either package from becoming a duplicate obligation.
-
-## 2026-08-26 - Correctable Ambiguity Must Not Stop Daily Time Card Drafts
-
-Context: Josh's August 16-31 daily drafts stopped after one August 17 interval mentioned both Pond framing and Rosebrooks work without expressly allocating the interval.
-
-- A prior correctable allocation ambiguity must not suppress later daily Time Card drafts.
-- Carry the interval once under the most reasonable source-supported working interpretation, label the interpretation in the PDF and email, and invite correction by exception.
-- Reconcile a later correction into the same interval and regenerate the same semimonthly invoice number; do not create another line or payment obligation.
-- A working interpretation permits correction-review delivery only. It does not establish final allocation, approval, filing, workbook posting, payment, or paid status.
-- When a source-specific handoff expressly prohibits any allocation inference, retain the interval once in an `Unallocated` correction-review bucket instead of guessing or duplicating it across both candidates. A prepared draft does not override an explicit no-contact restriction.
-
-## 2026-08-27 - Long Time Card Detail Must Keep Amount Due With The Invoice
-
-Context: Adding the twelfth and thirteenth active detail lines caused the amount-due block to spill onto an otherwise blank second page.
-
-- Treat a nearly blank second page containing only the amount-due block as a PDF layout defect, not an acceptable continuation page.
-- For 12 or more detail lines, reduce detail-table paragraph leading, font size, and vertical padding while keeping headings, summary totals, and amount due at normal emphasis.
-- For 15 or more detail lines, use the next compact tier and rerender; never shrink blindly without visual inspection.
-- After each tier change, require one-page verification when practical, readable source wording, exact line and summary totals, and visible amount due.
-## 2026-09-08 - Worker-Specific Time Card Cycles
-
-- Do not apply Josh Kennedy's semimonthly cycle to Tim Fleming. Tim is paid weekly; the established August 31-September 5, 2026 period runs Monday through Saturday.
-- Reconcile all routed messages in the same worker-specific period before drafting. Tim's August 31 source arrived by email on September 2 and had to be combined with the separate September 2 source.
-- A user restriction such as `send it to me only` overrides the normal worker/Wes/Jenny correction-review recipient set for that exact draft. Preserve the restriction literally and verify empty CC and BCC.
+# Invoice Entry Reusable Lessons
+
+This file contains transaction-neutral lessons for future Invoice Entry work. Transaction histories, vendor identities, document numbers, amounts, project-specific outcomes, approvals, dispatch records, and machine-local paths belong in SharePoint operational records or historical archives.
+
+## Retention And Source Identity
+
+- Keep operational packets, source inventories, logs, registers, decisions, drafts, outputs, and validation evidence in the canonical SharePoint archive, not Git.
+- Identify SharePoint material by site URL plus drive-relative path, item ID, or web URL. A synced Windows path is only a temporary tool input and must not become the durable identity.
+- Preserve the authoritative source before removing temporary files. Verify archived copies by hash, file count, byte total, or read-back as appropriate.
+- Treat migrated Git history as read-only evidence. Do not recreate an active operational ledger in the repository.
+
+## Handoffs And Durable Messaging
+
+- Keep handoff messages concise: one authoritative source pointer, a short summary, the requested operation, and any source-specific warning.
+- Treat the durable central message as authoritative and task notification as a wake-up signal only.
+- Validate source, destination, authorization, payload identity, and duplicate status before substantive work.
+- Record acceptance before processing and exactly one terminal result afterward.
+- Reconcile ambiguous or repeated delivery before retrying. Never repeat a possibly successful external action merely because a notification timed out.
+
+## Duplicate And Correction Control
+
+- Prefer project + issuer + document number as the strongest invoice key; use project + issuer + date + amount only as a fallback.
+- Repeated email copies, forwards, or notices can be transport duplicates rather than new obligations. Preserve their identities but record one business transaction.
+- Compare retained-file hashes and extracted document facts; different scan hashes can still represent the same invoice.
+- Apply an explicit correction to the existing line or packet version. Preserve lineage and do not create a second obligation.
+- When identity remains ambiguous, stop at `Duplicate Risk` instead of guessing.
+
+## Email Ownership And Delivery Verification
+
+- Invoice Entry prepares permitted email content, recipients, attachments, and authorization evidence; the Email Delivery workflow performs the send.
+- Do not mark a message sent without verified sender, recipient, subject, attachment, timestamp, and Sent Items evidence.
+- Treat source reading and outbound delivery as separate authorities. Permission to read one exact message does not authorize mailbox search or sending.
+- Vendor fact verification, owner approval, filing, workbook posting, payment, and paid status are separate gates.
+
+## Generated Invoice Integrity
+
+- Generate invoices from structured data so corrections and status changes can be reproduced without editing an old PDF.
+- Before delivery, filing, or replacement, verify issuer/payee, customer, document number, date, service period, project, amount, and current status wording.
+- The outside party billing the company is the invoice issuer; the company is the customer.
+- Preserve approval only for format-only revisions that do not change transaction identity, period, accepted lines, allocations, or total.
+- Re-render every revised PDF and inspect the full document. A nearly blank continuation page caused only by the amount-due block is a layout defect.
+
+## Time-Card Accumulation
+
+- Use the worker's authorized billing cycle; do not assume every worker shares the same period.
+- Reconcile every source into one accumulated record for that worker and period. The structured record is authoritative; the PDF is replaceable output.
+- Preserve exact hours and minutes. Do not invent breaks, AM/PM, dates, project allocations, or unstated activity.
+- Keep the invoice issuer/payee distinct from the individual worker when labor is billed through another party.
+- A reasonable working interpretation may support correction review when the workflow permits it, but it does not establish final allocation, approval, filing, posting, or payment.
+- Apply later corrections to the same source line and stable invoice identity.
+- Worker accuracy confirmation does not authorize payment. Closed-period owner approval remains a separate gate.
+
+## Statement Processing
+
+- Keep statement extraction with the scanning workflow and allocation/insertion with Invoice Entry.
+- Treat a statement as potentially multi-project and multi-category; never assign the entire statement from one matching line.
+- Preserve item-level detail when a transaction contains separable purchases, returns, delivery, or credits.
+- Route by project first, then by worksheet. Initial statement consumption is review-first unless an approved exception explicitly allows otherwise.
+- Retain every uninserted line with sufficient source traceability and a clear hold reason.
+- Keep payment, interest, tax-only, accounting-review, unclear-project, and not-ready-project lines outside project workbooks until supported routing exists.
+- Use reliable product-page descriptions only when the source item identity matches; otherwise retain source-derived wording.
+
+## Workbook Editing Safety
+
+- Resolve a fresh authoritative workbook from SharePoint before every edit; registry entries and prior filenames are lookup aids only.
+- Create a rollback copy before editing.
+- Make one narrow structural or formula change at a time. Broad paste, resize, style, and formula operations can corrupt table metadata.
+- Treat table headers, table ranges, defined names, formulas, controls, macros, and external links as first-class validation targets.
+- Prefer structured table formulas over fixed ranges when the workbook design supports them.
+- Preserve existing tax behavior unless a separate authorized rule changes it.
+- Save through the required application, reopen cleanly, verify totals and downstream links, and upload only after validation passes.
+- If the application disconnects or cleanup times out, assume nothing. Reopen and verify the saved file independently before upload.
+- A definitive SharePoint lock or replacement error means the authoritative workbook is unchanged. Re-fetch if the live version changes before retry.
+
+## Review And Reconcile
+
+- Read review work by table name and column headers, not visible row numbers, filters, or fixed cell ranges.
+- Verify the review-request defined name points to its documented absolute cell before relying on it.
+- An explicit authorized reconcile request can be sufficient to evaluate existing review rows even when the visible checkbox is not selected.
+- Move only rows with complete source traceability and an approved destination. Preserve hard-stop, missing-data, and duplicate-risk rows.
+- Keep the review row after movement and record destination and movement status so later runs can deduplicate.
+- Clear a pending request marker only after the complete request passes save, reopen, formula, link, and upload validation.
+
+## Receipts For Collected Money
+
+- A collected-money receipt is not a vendor purchase receipt. Preserve the original expense and classify collected proceeds separately.
+- An asking price or listing identifies an item but does not prove a completed sale or collected amount.
+- Collection and deposit are separate states; never infer deposit from possession of cash.
+- Require exact property, payer or explicit unknown status, collector or explicit unknown status, payment method, line items, total collected, application, and durable source evidence.
+- Keep listing or marketplace actions with their owning workflow and deduplicate any sold-status handoff before retry.
+
+## Validation And Completion
+
+- Validate packet values against source evidence before insertion or routing.
+- Keep approval, delivery, filing, workbook posting, accounting entry, payment, and paid status as independent fields.
+- Record the operational result and next permitted action in SharePoint before marking work complete.
+- Do not use a Git commit as an operational retention fallback.
+- Remove temporary local artifacts only after the authoritative archive and required operational records are verified.
