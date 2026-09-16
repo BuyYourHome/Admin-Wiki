@@ -55,6 +55,43 @@ function Invoke-LtAdministrativeCloseExhaustedAmbiguous($Record,[string]$RecordP
     Write-JsonAtomic $RecordPath $Record
     return $Record
 }
+function Invoke-LtAdministrativeQuarantineIntegrityFailure($Record,[string]$RecordPath) {
+    if($ActorProjectRoom -cne 'PR Messaging Dispatcher' -or
+        [string]::IsNullOrWhiteSpace($ActorTaskId) -or
+        [string]::IsNullOrWhiteSpace($AuthorizationReference) -or
+        [string]::IsNullOrWhiteSpace($Detail)){throw 'IntegrityQuarantineAuthorityMissing'}
+    if(Test-PrAdministrativeClosure $Record){
+        if($Record.administrative_closure.disposition -cne 'IntegrityFailureQuarantined' -or
+            $Record.administrative_closure.actor_task_id -cne $ActorTaskId){throw 'AdministrativeClosureConflict'}
+        return $Record
+    }
+    if($Record.administrative_closure){throw 'AdministrativeClosureConflict'}
+    $hashes=Get-PrMessageHashEvidence $Record
+    if($hashes.valid -or !(Test-PrMessageStructurallyTerminal $Record)){throw 'InvalidStructurallyTerminalRecordRequired'}
+    if($ExpectedHash -cnotmatch '^[0-9a-f]{64}$' -or $ExpectedHash -cne $Record.payload_hash){throw 'IntegrityQuarantineHashMismatch'}
+    if($ExpectedRecordVersion -cnotmatch '^[0-9a-f]{64}$' -or
+        (Get-PrMessageDigest ($Record|ConvertTo-Json -Depth 30 -Compress)) -cne $ExpectedRecordVersion){throw 'IntegrityQuarantineVersionConflict'}
+    $ownerPath=Get-LtTransportOwnerPath $QueuePath ([string]$Record.destination.machine)
+    if(!(Test-Path -LiteralPath $ownerPath)){throw 'IntegrityQuarantineLiveOwnerRequired'}
+    $owner=Read-LtJson $ownerPath
+    if($owner.mode -cne 'Live' -or $owner.machine -cne $Record.destination.machine -or
+        $owner.task_id -cne $ActorTaskId -or $owner.owner -cne $TransportOwner -or
+        $owner.generation -cne $Generation -or $owner.sid -cne [Security.Principal.WindowsIdentity]::GetCurrent().User.Value -or
+        $env:COMPUTERNAME -cne $Record.destination.machine){throw 'IntegrityQuarantineOwnerMismatch'}
+    $closure=[pscustomobject][ordered]@{
+        schema_version=1;message_id=$Record.message_id;payload_hash=$Record.payload_hash
+        disposition='IntegrityFailureQuarantined';authorized_by='Wes'
+        authorization_reference=$AuthorizationReference;actor_project_room=$ActorProjectRoom
+        actor_task_id=$ActorTaskId;actor_machine=$env:COMPUTERNAME
+        transport_owner=$owner.owner;transport_generation=$owner.generation;transport_owner_task_id=$owner.task_id
+        observed_default_hash=$hashes.default_hash;observed_html_hash=$hashes.html_hash
+        closed_at_utc=Get-UtcTimestamp;delivery_claimed=$false;business_completion_claimed=$false;detail=$Detail
+    }
+    $Record|Add-Member administrative_closure $closure
+    Add-Event $Record 'AdministrativelyClosed' $Detail $ActorProjectRoom $ActorTaskId
+    Write-JsonAtomic $RecordPath $Record
+    return $Record
+}
 function Invoke-LtReconcileProvenPreSubmissionFailure($Record,[string]$RecordPath) {
     if($ActorProjectRoom -cne 'PR Messaging Dispatcher' -or
         [string]::IsNullOrWhiteSpace($ActorTaskId) -or

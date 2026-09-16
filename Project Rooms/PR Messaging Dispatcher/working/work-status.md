@@ -8,7 +8,7 @@ WES-VIDEOEDITOR staged the worker, completed `prmsg-wve-low-token-worker-validat
 
 Next gate: stage and validate OFFICEASSIST while preserving its active Email Monitor heartbeat and embedded dispatcher as the fallback. Remove only the embedded dispatcher stage after the OFFICEASSIST worker is live. WESSTUDIO follows after OFFICEASSIST passes.
 
-Release `0.4.3` is verified and ready for controlled in-place deployment after the OFFICEASSIST live worker exhausted its tick budget while repeatedly traversing closed journal history before eligible Invoice Entry approval records. The fix retains and validates closed history but reconciles only active entries during routine ticks, indexes attempt lookup, and stops traversal after the one permitted claim. Verification passed `65` worker tests, `35` serialized crash/concurrency tests, and `47` integrity/closure tests with no failures. Production machines remain on their previously installed live releases until each completes an in-place upgrade and natural-tick verification.
+OFFICEASSIST upgraded to release `0.4.3` and verified that closed journal entries are skipped without `TickBudgetExhausted`, but its remote-SMB scan still required 64–78 seconds and a completed Tim approval record held Invoice Entry because its stored immutable hash matches neither supported canonical encoding. Release `0.4.4` retains the backlog fix, extends the bounded production tick to 180 seconds, and adds an audited owner-bound integrity quarantine that preserves the invalid record while releasing only its transport slot.
 
 See `outputs\24-7 Deterministic Worker Release 0.4.0.md`.
 

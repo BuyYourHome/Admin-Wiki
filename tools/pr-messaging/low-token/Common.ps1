@@ -138,8 +138,9 @@ function Test-LtCompleted($Record) {
 function Test-LtDestinationOutstanding($Record) {
     $attempts=@($Record.attempts)
     if (!$attempts.Count -and !$Record.receipt -and !$Record.result -and $Record.state -eq 'Queued') { return $false }
+    if (Test-PrAdministrativeClosure $Record) { return $false }
     if (!(Get-PrMessageHashEvidence $Record).valid) { return $true }
-    if ((Test-PrMessageTerminal $Record) -or (Test-PrAdministrativeClosure $Record)) { return $false }
+    if (Test-PrMessageTerminal $Record) { return $false }
     if (!$Record.receipt -and !$Record.result -and $Record.state -eq 'Queued' -and $attempts.Count -gt 0 -and !@($attempts | Where-Object outcome -ne 'NotDelivered').Count) { return $false }
     return $true
 }

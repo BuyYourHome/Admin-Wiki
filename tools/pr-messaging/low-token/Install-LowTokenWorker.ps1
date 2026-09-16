@@ -9,7 +9,7 @@ param(
     [string]$ValidationMessageId
 )
 $ErrorActionPreference='Stop'
-$release='0.4.3'
+$release='0.4.4'
 $queue='\\WES-VIDEOEDITOR\BYH-PRMessaging$'
 $task="BYH PR Messaging Worker - $ExpectedMachine"
 $root=Join-Path $env:LOCALAPPDATA "BuyYourHome\PRMessaging\low-token\releases\$release"
@@ -40,7 +40,7 @@ if($env:COMPUTERNAME -cne $ExpectedMachine){throw 'InstallationMachineMismatch'}
 if($DispatcherTaskId -cnotmatch '^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$'){throw 'InvalidDispatcherTaskId'}
 
 if($Action -eq 'UpgradeLive'){
-    $sourceRelease=@($release,'0.4.2','0.4.1','0.4.0')|Where-Object {Test-Path -LiteralPath (Join-Path $env:LOCALAPPDATA "BuyYourHome\PRMessaging\low-token\releases\$_\low-token\config.json")}|Select-Object -First 1
+    $sourceRelease=@($release,'0.4.3','0.4.2','0.4.1','0.4.0')|Where-Object {Test-Path -LiteralPath (Join-Path $env:LOCALAPPDATA "BuyYourHome\PRMessaging\low-token\releases\$_\low-token\config.json")}|Select-Object -First 1
     if([string]::IsNullOrWhiteSpace($sourceRelease)){throw 'LiveSourceConfigMissing'}
     $oldRoot=Join-Path $env:LOCALAPPDATA "BuyYourHome\PRMessaging\low-token\releases\$sourceRelease"
     $oldPkg=Join-Path $oldRoot 'low-token';$oldConfigPath=Join-Path $oldPkg 'config.json'
@@ -66,6 +66,7 @@ if($Action -eq 'UpgradeLive'){
         . (Join-Path $pkg 'Common.ps1')
         $cfg=$oldCfg
         $cfg.release=$release
+        $cfg.max_tick_seconds=180
         $cfg.manager_sha256=(Get-FileHash 'C:\Codex\Wiki Files\tools\pr-messaging\Manage-ProjectRoomMessage.ps1').Hash
         $cfg.adapter_path=Join-Path $pkg 'Invoke-CodexQueueAdapter.ps1'
         $cfg.adapter_sha256=(Get-FileHash $cfg.adapter_path).Hash
@@ -124,7 +125,7 @@ if($Action -eq 'Stage'){
     foreach($f in $files){Copy-Item -LiteralPath (Join-Path $PSScriptRoot $f) -Destination (Join-Path $pkg $f) -Force}
     Copy-Item -LiteralPath (Join-Path $PSScriptRoot '..\Message-Integrity.ps1') -Destination (Join-Path $root 'Message-Integrity.ps1') -Force
     . (Join-Path $pkg 'Common.ps1')
-    $cfg=[ordered]@{schema_version=1;release=$release;expected_machine=$ExpectedMachine;expected_sid=[Security.Principal.WindowsIdentity]::GetCurrent().User.Value;owner=('low-token-'+$ExpectedMachine.ToLowerInvariant());generation=$release;dispatcher_task_id=$DispatcherTaskId;queue_path=$queue;manager_path='C:\Codex\Wiki Files\tools\pr-messaging\Manage-ProjectRoomMessage.ps1';manager_sha256=(Get-FileHash 'C:\Codex\Wiki Files\tools\pr-messaging\Manage-ProjectRoomMessage.ps1').Hash;client_path=$clientPath;manifest_directory=$manifestDirectory;state_directory=$state;powershell_path=$ps;max_tick_seconds=50;queued_receipt_warning_seconds=600;adapter_kind='CodexQueue';adapter_path=(Join-Path $pkg 'Invoke-CodexQueueAdapter.ps1');adapter_sha256=(Get-FileHash (Join-Path $pkg 'Invoke-CodexQueueAdapter.ps1')).Hash;cli_path=$cli;cli_sha256=(Get-FileHash $cli).Hash;destinations=@($destinations|Sort-Object project_room,task_id)}
+    $cfg=[ordered]@{schema_version=1;release=$release;expected_machine=$ExpectedMachine;expected_sid=[Security.Principal.WindowsIdentity]::GetCurrent().User.Value;owner=('low-token-'+$ExpectedMachine.ToLowerInvariant());generation=$release;dispatcher_task_id=$DispatcherTaskId;queue_path=$queue;manager_path='C:\Codex\Wiki Files\tools\pr-messaging\Manage-ProjectRoomMessage.ps1';manager_sha256=(Get-FileHash 'C:\Codex\Wiki Files\tools\pr-messaging\Manage-ProjectRoomMessage.ps1').Hash;client_path=$clientPath;manifest_directory=$manifestDirectory;state_directory=$state;powershell_path=$ps;max_tick_seconds=180;queued_receipt_warning_seconds=600;adapter_kind='CodexQueue';adapter_path=(Join-Path $pkg 'Invoke-CodexQueueAdapter.ps1');adapter_sha256=(Get-FileHash (Join-Path $pkg 'Invoke-CodexQueueAdapter.ps1')).Hash;cli_path=$cli;cli_sha256=(Get-FileHash $cli).Hash;destinations=@($destinations|Sort-Object project_room,task_id)}
     $cfg.package_sha256=Get-LtPackageHash $pkg
     Write-LtJson $configPath $cfg
     $taskAction=New-LtWorkerTaskAction $pkg $configPath 'Paused'

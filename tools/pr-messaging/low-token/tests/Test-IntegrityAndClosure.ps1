@@ -73,6 +73,40 @@ Check 'exhausted ambiguity closure releases transport without claiming delivery'
     Assert ((ImmutableText $r) -ceq $immutable) 'Closure changed immutable content.'
     Assert (!$r.receipt -and !$r.result -and $r.state -ceq 'Delivery Ambiguous') 'Closure claimed recipient state.'
 }
+function NewIntegrityFailureFixture {
+    $f=Fixture;$r=Record $f
+    $r.state='Completed'
+    $r.receipt=[pscustomobject]@{project_room='Test Recipient';task_id=$f.task;machine=$env:COMPUTERNAME;accepted_at_utc='2026-09-01T00:00:00Z'}
+    $r.result=[pscustomobject]@{state='Completed';machine=$env:COMPUTERNAME;completed_at_utc='2026-09-01T00:01:00Z';detail='Fixture completed before corruption was detected.'}
+    $r.payload|Add-Member changed_after_creation $true
+    SaveRecord $f $r
+    Write-LtJson (Get-LtTransportOwnerPath $f.queue $env:COMPUTERNAME) @{schema_version=1;owner='low-token-fixture';generation='g1';mode='Live';machine=$env:COMPUTERNAME;sid=[Security.Principal.WindowsIdentity]::GetCurrent().User.Value;task_id=$f.source}
+    return $f
+}
+function QuarantineIntegrityFixture($f,[string]$Version,[string]$Hash,[string]$Task=$f.source,[string]$Reference='Wes authorized fixture integrity quarantine') {
+    & $manager -FixtureRoot $f.root -Action AdministrativeQuarantineIntegrityFailure -QueuePath $f.queue -MessageId $f.id `
+        -ActorProjectRoom 'PR Messaging Dispatcher' -ActorTaskId $Task -ExpectedRecordVersion $Version -ExpectedHash $Hash `
+        -TransportOwner 'low-token-fixture' -Generation 'g1' -Mode Live -AuthorizationReference $Reference `
+        -Detail 'Quarantine the immutable-hash failure and release only the transport slot.'|ConvertFrom-Json
+}
+Check 'integrity quarantine preserves corrupt terminal record and releases transport' {
+    $f=NewIntegrityFailureFixture;$before=Record $f;$immutable=ImmutableText $before
+    Assert (!(Get-PrMessageHashEvidence $before).valid)
+    $version=Get-PrMessageDigest ($before|ConvertTo-Json -Depth 30 -Compress)
+    $r=QuarantineIntegrityFixture $f $version $before.payload_hash
+    Assert (Test-PrAdministrativeClosure $r)
+    Assert (!(Test-LtDestinationOutstanding $r))
+    Assert ((ImmutableText $r) -ceq $immutable)
+    Assert ($r.state -ceq 'Completed' -and $r.receipt -and $r.result -and $r.administrative_closure.delivery_claimed -eq $false -and $r.administrative_closure.business_completion_claimed -eq $false)
+}
+Check 'integrity quarantine rejects wrong actor and valid record' {
+    $f=NewIntegrityFailureFixture;$r=Record $f;$version=Get-PrMessageDigest ($r|ConvertTo-Json -Depth 30 -Compress);$caught=$false
+    try{QuarantineIntegrityFixture $f $version $r.payload_hash '33333333-3333-4333-8333-333333333333'|Out-Null}catch{$caught=$true};Assert $caught
+    $f=Fixture;$r=Record $f;$r.state='Completed';$r.receipt=@{project_room='Test Recipient';task_id=$f.task;machine=$env:COMPUTERNAME;accepted_at_utc='2026-09-01T00:00:00Z'};$r.result=@{state='Completed';machine=$env:COMPUTERNAME;completed_at_utc='2026-09-01T00:01:00Z'};SaveRecord $f $r
+    Write-LtJson (Get-LtTransportOwnerPath $f.queue $env:COMPUTERNAME) @{schema_version=1;owner='low-token-fixture';generation='g1';mode='Live';machine=$env:COMPUTERNAME;sid=[Security.Principal.WindowsIdentity]::GetCurrent().User.Value;task_id=$f.source}
+    $version=Get-PrMessageDigest ($r|ConvertTo-Json -Depth 30 -Compress);$caught=$false
+    try{QuarantineIntegrityFixture $f $version $r.payload_hash|Out-Null}catch{$caught=$true};Assert $caught
+}
 function NewAmbiguousFixture {
     $f=Fixture;$r=Record $f;$old=[DateTime]::UtcNow.AddMinutes(-60).ToString('o')
     $r.state='Delivery Ambiguous';$r.attempt_count=1;$r.max_attempts=1

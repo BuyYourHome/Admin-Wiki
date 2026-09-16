@@ -1,7 +1,7 @@
 [CmdletBinding()]
 param(
     [Parameter(Mandatory = $true)]
-    [ValidateSet("Initialize", "Send", "Get", "List", "StartAttempt", "MarkAttempt", "Accept", "StartProcessing", "Update", "Complete", "Block", "NeedsWes", "Reject", "SyncSpool", "Health", "AdministrativeCloseSuperseded", "AdministrativeCloseExhaustedAmbiguous", "ReconcileProvenPreSubmissionFailure", "ConditionalClaim", "ReconcileAttempt")]
+    [ValidateSet("Initialize", "Send", "Get", "List", "StartAttempt", "MarkAttempt", "Accept", "StartProcessing", "Update", "Complete", "Block", "NeedsWes", "Reject", "SyncSpool", "Health", "AdministrativeCloseSuperseded", "AdministrativeCloseExhaustedAmbiguous", "AdministrativeQuarantineIntegrityFailure", "ReconcileProvenPreSubmissionFailure", "ConditionalClaim", "ReconcileAttempt")]
     [string]$Action,
 
     [string]$QueuePath = "\\WES-VIDEOEDITOR\BYH-PRMessaging$",
@@ -294,7 +294,7 @@ Invoke-WithQueueLock {
         return
     }
 
-    if($Action -in @('AdministrativeCloseExhaustedAmbiguous','ReconcileProvenPreSubmissionFailure')){
+    if($Action -in @('AdministrativeCloseExhaustedAmbiguous','AdministrativeQuarantineIntegrityFailure','ReconcileProvenPreSubmissionFailure')){
         . "$PSScriptRoot\low-token\Common.ps1"
         . "$PSScriptRoot\low-token\Manager.Extensions.ps1"
         if($QueuePath -cne '\\WES-VIDEOEDITOR\BYH-PRMessaging$'){
@@ -304,6 +304,8 @@ Invoke-WithQueueLock {
         }
         if($Action -eq 'AdministrativeCloseExhaustedAmbiguous'){
             Invoke-LtAdministrativeCloseExhaustedAmbiguous $record $recordPath | ConvertTo-Json -Depth 30
+        } elseif($Action -eq 'AdministrativeQuarantineIntegrityFailure') {
+            Invoke-LtAdministrativeQuarantineIntegrityFailure $record $recordPath | ConvertTo-Json -Depth 30
         } else {
             Invoke-LtReconcileProvenPreSubmissionFailure $record $recordPath | ConvertTo-Json -Depth 30
         }

@@ -47,6 +47,16 @@ function Test-PrSupersededRecord($Record) {
         $Record.attempt_count -eq 1 -and @($Record.attempts).Count -eq 1 -and
         $Record.attempts[0].attempt_id -ceq 'invalid-control-total-20260831-001' -and $Record.attempts[0].outcome -ceq 'Failed')
 }
+function Test-PrMessageStructurallyTerminal($Record) {
+    if($Record.authoritative -ne $true -or
+        $Record.state -cnotin @('Completed','Blocked','Needs Wes','Rejected as Wrong Room') -or
+        !$Record.result -or $Record.result.state -cne $Record.state){return $false}
+    $r=$Record.receipt
+    if(!$r -or $r.project_room -cne $Record.destination.project_room -or
+        $r.task_id -cne $Record.destination.task_id -or $r.machine -cne $Record.destination.machine -or
+        $Record.result.machine -cne $Record.destination.machine){return $false}
+    try{return ([DateTimeOffset]::Parse($Record.result.completed_at_utc) -ge [DateTimeOffset]::Parse($r.accepted_at_utc))}catch{return $false}
+}
 function Test-PrExhaustedAmbiguousRecord($Record,[int]$MinimumAgeMinutes=30) {
     if($MinimumAgeMinutes -lt 1 -or !(Get-PrMessageHashEvidence $Record).valid -or
         $Record.authoritative -ne $true -or $Record.state -cne 'Delivery Ambiguous' -or
@@ -76,6 +86,18 @@ function Test-PrAdministrativeClosure($Record) {
     }
     if($c.disposition -ceq 'ExhaustedAmbiguousUndelivered'){
         return ((Test-PrExhaustedAmbiguousRecord $Record 1) -and
+            ![string]::IsNullOrWhiteSpace([string]$c.authorization_reference) -and
+            $c.actor_project_room -ceq 'PR Messaging Dispatcher' -and
+            $c.actor_task_id -ceq $c.transport_owner_task_id -and
+            $c.actor_machine -ceq $Record.destination.machine -and
+            $c.transport_owner -cmatch '^low-token-[a-z0-9-]+$' -and
+            ![string]::IsNullOrWhiteSpace([string]$c.transport_generation))
+    }
+    if($c.disposition -ceq 'IntegrityFailureQuarantined'){
+        $hashes=Get-PrMessageHashEvidence $Record
+        return (!$hashes.valid -and (Test-PrMessageStructurallyTerminal $Record) -and
+            $c.observed_default_hash -ceq $hashes.default_hash -and
+            $c.observed_html_hash -ceq $hashes.html_hash -and
             ![string]::IsNullOrWhiteSpace([string]$c.authorization_reference) -and
             $c.actor_project_room -ceq 'PR Messaging Dispatcher' -and
             $c.actor_task_id -ceq $c.transport_owner_task_id -and

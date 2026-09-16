@@ -1,5 +1,14 @@
 # Low-token dispatcher releases
 
+## Controlled release 0.4.4
+
+Release `0.4.4` preserves `0.4.3` journal-backlog controls and addresses two conditions verified during the OFFICEASSIST upgrade:
+
+- Production ticks remain bounded but may run for up to 180 seconds when the authoritative SMB queue scan exceeds one minute. Task Scheduler still requests a tick every 60 seconds and does not create overlapping worker instances.
+- A structurally terminal record with an invalid immutable hash remains a hard destination hold unless Wes authorizes `AdministrativeQuarantineIntegrityFailure` under the exact machine-local dispatcher owner.
+- Integrity quarantine preserves the stored hash, immutable content, receipt, result, and event history. It appends observed recomputed hashes and releases only the transport slot; it does not claim delivery or business completion.
+- `UpgradeLive` accepts release `0.4.3` and preserves the existing owner generation, state, journal, scheduled task, and destination pins.
+
 ## Controlled release 0.4.3
 
 Release `0.4.3` preserves the `0.4.2` transport, ownership, exactly-once, and hidden-launcher contracts while preventing closed journal history from exhausting a live tick before new work can be claimed:
