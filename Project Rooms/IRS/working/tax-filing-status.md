@@ -130,3 +130,11 @@ Plan setup documents are received and partly verified; do not continue treating 
 - TaxAct's trust interview exposes a separate responsible-party name and SSN/EIN screen after trust identity and residency. Its existence does not resolve the two-grantor K-1 allocation or prove that a blank trust EIN will pass e-file validation. Those remain pending. No reporting identity was selected or SSN entered.
 - Trust name persisted on re-entry. Identity, residency, responsible-party and shares questions are bookmarked/incomplete. Do not interpret a single draft shareholder record as a final decision to allocate all income to one spouse.
 - Verified saved draft deductions: advertising and business rent, from the private BYH class workpaper. Other deduction categories displaying zero remain uncompleted rather than verified zero. No filing occurred.
+
+### BYH equal grantor allocation confirmed - 2026-09-15
+
+- Wes explicitly directs continuing with himself and Jenny allocated 50/50 and adding Jenny's corresponding record. This is BYH-specific owner confirmation; prior Heritage-only assumption must not be its sole support.
+- Entered Wes's full grantor name as responsible party in record 1 and Jenny's full grantor name in record 2, retaining Trust type and Browning Family Revocable Trust as shareholder-of-record name on both draft entries. No SSNs entered during this pass; no trust EIN invented.
+- T08000 prior K-1 pages 10 and 17 report 100 total shares and 50 shares per spouse. Used 50 beginning shares per record. TaxAct Shareholder List visibly calculates 50.0000% each and 100.0000% total.
+- The list report leaves names/address display blank even though trust-name input persisted on re-entry. Generated K-1 identity fields, grantor details and Schedule B-1 must be inspected before treating the two-record presentation as validated. Software percentage calculation alone does not establish correct tax reporting.
+- Identification, address/residency and shareholder-loan balances remain incomplete/bookmarked. Mini-alerts deferred for completion, not cleared. Neither final nor amended K-1 selected. No filing or payment.
