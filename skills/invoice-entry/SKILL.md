@@ -130,6 +130,8 @@ For Email Monitor and Jean cross-Project-Room dispatches, the durable queue reco
 
 Do not require the wake-up to originate from the source task or treat the dispatcher, Jean, Email Monitor, or another relaying task as the authorization source. Retrieve the exact same-ID central record and validate its immutable source Project Room/task, destination Project Room/task/machine, payload hash, and recorded authorization. When those checks pass and the request is in scope, write `Accept` even though a different task delivered the wake-up. Queue presence authorizes intake only and never bypasses a separate approval, payment, filing, workbook, vendor-contact, email-delivery, or other business-action gate.
 
+An explicitly rescinded temporary instruction to avoid inspecting or processing the production queue must not continue to block later turns. After Wes supersedes or rescinds such a hold, apply the correction to the current operational task and future valid Invoice Entry dispatches. A verified same-ID central record with the required authorization fields is sufficient authority to inspect and accept its in-scope intake; do not require Wes to repeat a separate dispatch-specific approval unless the requested downstream business action is independently reserved for Wes by this skill. This rule does not revive a completed or rejected record, permit duplicate processing, or bypass any downstream business-action gate.
+
 - Queue location: `\\WES-VIDEOEDITOR\BYH-PRMessaging$\records`.
 - Queue tool: `C:\Codex\Wiki Files\tools\pr-messaging\Manage-ProjectRoomMessage.ps1`.
 - Protocol: `C:\Codex\Wiki Files\Project Rooms\Email Monitor\working\dispatch-queue-spec.md`.
