@@ -24,6 +24,29 @@ Before calling this skill, the calling workflow must provide:
 
 Do not use this skill to invent recipients, summarize source material, choose package contents, or decide whether an external party should receive a message.
 
+## Delegated Authorization
+
+Another registered Project Room may carry Wes's authorization into Email Monitor through a complete, verifiable Email Delivery package. Do not require Wes to repeat the same authorization inside the Email Monitor task when all of these conditions pass:
+
+1. The source Project Room and exact source task are registered and authorized for the workflow.
+2. Email Monitor retrieves the authoritative central record or durable delivery package instead of relying only on inter-task message text.
+3. The source identity, destination identity, delivery request ID, dispatch ID when applicable, and payload hash match exactly.
+4. The immutable package contains the unique delivery request ID, origin Project Room and task ID, authorization basis, applicable Wes instruction or canonical standing authorization, sender, exact To/CC/BCC recipients, exact subject and plain-text body, exact attachment paths and required status, workflow restrictions, and callback Project Room and task ID.
+5. The requested send remains within the cited authority.
+6. No prior successful or unresolved ambiguous send exists for the same delivery request ID and payload hash.
+
+Recognized authorization sources are an exact Wes instruction preserved by the originating Project Room, a documented standing workflow rule that expressly requires the email, or a previously authorized workflow whose required next step is the specified email delivery. An originating Project Room cannot manufacture authority merely by stating that a send is authorized. Verify the cited instruction or standing rule and confirm that the package does not broaden it. Dispatcher notifications provide transport only and never create authority.
+
+Stop and request Wes only when authorization is absent, unverifiable, ambiguous, or narrower than the requested send; the source or destination identity is wrong; the immutable payload changed; the recipients, subject, body, or attachments materially differ; a required recipient or attachment is unknown; the action includes payment, legal approval, account changes, filing approval, or another Wes-reserved decision; or a possibly submitted connector result cannot be resolved through Sent Items. Do not impose a new direct-in-Email-Monitor confirmation merely because valid authorization originated in another registered Project Room.
+
+### Tim Fleming Standing Authorization
+
+Invoice Entry's canonical Time Card rule provides standing authorization for each meaningful Tim Fleming time update to produce and send one refreshed accuracy-review draft to Tim at his established verified address, with `WesWill@BuyYourHomeLLC.com` and `Jenny@BuyYourHomeLLC.com` copied. A no-correction response from Tim or Wes confirms factual correctness; a correction from either requires a revised draft. Jenny is copied for visibility only. No response at this stage authorizes payment, filing, posting, finalization, or paid status, and only Wes may approve the final invoice after the weekly pay period closes. A complete immutable package from the registered Invoice Entry task that matches this rule does not require another direct authorization inside Email Monitor.
+
+## Exactly-Once Delivery
+
+Before sending, deduplicate by both delivery request ID and payload hash, check the durable delivery record, and search OfficeAssist Sent Items for the exact package. If a prior attempt definitively failed before connector submission, record it as `NotDelivered`; the same immutable request may be retried under its existing verified authorization. If connector submission may have occurred, record the attempt as ambiguous and do not retry until Sent Items resolves whether it was sent. After sending, verify the OfficeAssist sender, exact recipients, subject, required attachments, and Sent Items copy, then record one final success or unresolved failure and return it to the callback task.
+
 ## Sender And Recipient Safety
 
 - Send from `OfficeAssist@BuyYourHomeLLC.com` when acting as Jean or Office Assistant unless Wes explicitly names another sender for that specific message.
@@ -117,7 +140,11 @@ If sender verification fails, the email cannot be sent, an attachment is missing
 - Do not leave a silent Outlook draft for later manual sending.
 - Do not send a partial or altered message unless the caller explicitly approves that fallback.
 - Notify Wes in the chat with the blocker and the proposed email body.
-- Do not send correction emails or retries without Wes's explicit instruction.
+- Do not send a correction email. Retry only when the prior attempt is proven `NotDelivered` before connector submission and the same immutable package remains authorized, or when Wes explicitly directs a different authorized action. Never retry an ambiguous or possibly submitted send.
+
+## Change Log
+
+- 2026-09-16: Added durable delegated authorization, exact authority verification, Tim Fleming standing accuracy-review authority, and request-ID-plus-payload-hash exactly-once retry rules without changing sender, recipient, attachment, Sent Items, or Wes-reserved decision controls.
 ## Start PR Pointer
 
 Before durable work, follow Start PR in `C:\Codex\Wiki Files\Project Room Chat Startup Rule.md`.

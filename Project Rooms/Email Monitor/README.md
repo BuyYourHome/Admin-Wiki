@@ -144,17 +144,24 @@ Every direct package must provide:
 - delivery request ID;
 - originating Project Room and task/thread ID;
 - authorization basis;
+- the applicable preserved Wes instruction or canonical standing authorization;
+- dispatch ID when applicable and the immutable package payload hash;
 - sender mailbox;
 - To, CC, and BCC recipients, with unused recipient classes explicitly empty;
 - subject and exact plain-text body;
 - absolute attachment paths, including an explicit empty list when unused;
+- durable Teams/SharePoint locations for required attachments;
 - attachment-required status;
 - workflow-specific restrictions;
-- callback task/thread ID.
+- callback Project Room and task/thread ID.
 
-Reject or hold incomplete or conflicting packages. Do not invent or change any caller-owned field. Before sending, search durable Email Monitor delivery records and automation memory for the request ID. A request already marked `Sent and Verified` must not be sent again; return its existing result. A request already unresolved must not start a parallel send. Record a new accepted request before invoking the connector and update that record with the result. The default durable record is `C:\Users\OfficeAssistLogin\.codex\automations\officeassist-morning-email-summary-and-instruction-monitor\memory.md` unless Email Monitor establishes a dedicated delivery ledger.
+Reject or hold incomplete or conflicting packages. Do not invent or change any caller-owned field. A registered Project Room may carry Wes's authorization through a complete durable package when Email Monitor verifies the authoritative source, exact identities, request and dispatch IDs, payload hash, cited instruction or standing rule, and unchanged delivery fields. The originating room cannot create authority merely by asserting it, but Wes does not need to repeat a verified authorization inside Email Monitor.
+
+Before sending, deduplicate by delivery request ID and payload hash, search durable Email Monitor state and OfficeAssist Sent Items, and record the accepted request before connector submission. A `Sent and Verified` request is final. A possibly submitted or ambiguous request must not be retried until Sent Items resolves it. A request proven to have failed before connector submission is `NotDelivered` and may be retried under the same immutable verified authorization. The default durable record is `C:\Users\OfficeAssistLogin\.codex\automations\officeassist-morning-email-summary-and-instruction-monitor\memory.md` unless Email Monitor establishes a dedicated delivery ledger.
 
 A properly authorized Invoice Entry package may request vendor invoice-accuracy verification, Time Card invoice verification, Wes approval/payment review, or a post-Wes-approval status notice. Route Vendor Invoice's prohibition on contacting a vendor applies to intake routing; it does not block a later, specifically authorized Email Delivery package under Invoice Entry's saved rules.
+
+Invoice Entry's Tim Fleming standing rule authorizes one refreshed accuracy-review draft for every meaningful time update to Tim's established verified address with Wes and Jenny copied. Tim or Wes may confirm factual correctness or provide a correction; Jenny is copied for visibility. This stage never authorizes payment, filing, posting, finalization, or paid status, and only Wes may approve the final closed-period invoice. A matching complete package from the registered Invoice Entry task needs no repeated direct authorization inside Email Monitor.
 
 For an accepted connector send, use `OfficeAssist@BuyYourHomeLLC.com` unless the package contains specific Wes authorization for another sender. Prefer the Outlook connector, enable Sent Items saving, pass structured recipient objects, preserve the exact plain-text subject/body, and pass attachments as a list of absolute paths. Never omit a required attachment. Make only the documented schema-correct retry when the first connector error clearly explains it.
 
@@ -180,6 +187,8 @@ Use this room for development and design work. Do not change the live automation
 When the workflow changes, update the skill, this project room, and the registry together.
 
 ## Change Log
+
+- 2026-09-16: Added durable delegated email authorization, verified authority sources, Tim Fleming standing accuracy-review delivery, and request-ID-plus-payload-hash exactly-once retry rules while preserving sender, recipient, attachment, Sent Items, and Wes-reserved action gates.
 
 - 2026-08-14: Made Route Vendor Invoice a formal mode and added a durable runtime dispatch queue, payload hashing, idempotent receipts, explicit lifecycle states, idle-only bounded notification attempts, independent acceptance verification, and verified OfficeAssist escalation for missing acknowledgments.
 

@@ -508,6 +508,9 @@ Require every direct delivery handoff to contain all of these fields:
 - `originating_project_room`: requesting Project Room name;
 - `originating_task_thread_id`: task/thread that owns the request;
 - `authorization_basis`: the exact saved rule or specific Wes authorization allowing this delivery;
+- `applicable_wes_instruction_or_standing_authorization`: the exact preserved Wes instruction or canonical standing rule being exercised;
+- `dispatch_id` when the package arrived through Project Room messaging;
+- `payload_hash`: hash of the immutable delivery package;
 - `sender_mailbox`;
 - `to_recipients`;
 - `cc_recipients`, explicitly `none` or an empty list when unused;
@@ -518,16 +521,33 @@ Require every direct delivery handoff to contain all of these fields:
 - `durable_attachment_locations`, listing the verified Teams/SharePoint path or link for every required attachment, or explicitly an empty list when there are no attachments;
 - `attachment_required_status`, identifying whether attachments are required and which paths are mandatory;
 - `workflow_specific_restrictions`;
+- `callback_project_room` for the result;
 - `callback_task_thread_id` for the result.
 
 Reject or hold an incomplete or internally conflicting package. Return the missing or conflicting fields to the callback task/thread and record the request as unresolved. Do not invent, infer, remove, add, or change recipients, content, attachments, authorization, or workflow restrictions.
 
+#### Delegated Authorization
+
+A complete package from another registered Project Room carries Wes's authorization into Email Monitor when all of these conditions pass:
+
+1. The source Project Room and exact source task are registered and authorized for the workflow.
+2. Email Monitor retrieves and verifies the authoritative central record or durable delivery package rather than relying only on inter-task message text.
+3. The source identity, Email Monitor destination identity, delivery request ID, dispatch ID when applicable, and payload hash match exactly.
+4. Every required package field above is present and internally consistent.
+5. The requested send stays within the cited Wes instruction, canonical standing authorization, or previously authorized workflow whose required next step is the specified delivery.
+6. No prior successful or unresolved ambiguous send exists for the same delivery request ID and payload hash.
+
+An originating Project Room cannot manufacture authority by merely stating that a send is authorized. Verify the cited instruction or standing rule and ensure the package does not broaden it. Dispatcher notification is transport only and never creates authority. When the complete immutable package passes these checks, do not require Wes to repeat the same authorization directly inside Email Monitor.
+
+Stop and request Wes only when authorization is absent, unverifiable, ambiguous, or narrower than the requested send; the source Project Room, source task, or destination identity is wrong; the request ID, dispatch ID, or payload hash does not match; the immutable package changed; recipients, subject, body, or attachments materially differ; a required recipient or attachment is unknown; the request includes payment, legal approval, account changes, filing approval, or another Wes-reserved decision; or connector submission may have occurred and Sent Items cannot resolve it.
+
 #### Duplicate Prevention And Durable State
 
-Before any send attempt, search compact Email Monitor state and the seven-day Teams rolling log for `delivery_request_id`. Consult the historical Git routing log only for pre-migration evidence.
+Before any send attempt, deduplicate by both `delivery_request_id` and `payload_hash`. Search compact Email Monitor state, the seven-day Teams rolling log, and OfficeAssist Sent Items for the exact package. Consult the historical Git routing log only for pre-migration evidence.
 
 - If that request is already `Sent and Verified`, do not send it again; return the existing verified result to the callback task/thread.
-- If it is `Sending`, `Held`, `Failed - Unresolved`, or otherwise unresolved, do not create a second send attempt until the existing record is reconciled under the shared Email Delivery retry rules.
+- If it is `Sending`, `Held`, `Delivery Ambiguous`, or otherwise possibly submitted, do not create a second send attempt until Sent Items and the durable record resolve the existing attempt.
+- If a prior attempt definitively failed before connector submission, record it as `NotDelivered`. The same immutable request may be retried under its existing verified authorization after reconfirming that no matching OfficeAssist Sent Items copy exists.
 - If it is new and complete, create a durable request record before invoking the connector, then update that same record with the final result.
 
 Keep unresolved delivery requests and requests completed within the last seven days in compact state. Record meaningful outcomes in the seven-day Teams rolling log. Cross-PR routing remains auditable in the authoritative central message record, and sent email remains auditable in Outlook Sent Items. Do not append routine operations to `working\routing-action-log.md` or full completed delivery narratives indefinitely to `memory.md`.
@@ -542,6 +562,8 @@ A properly authorized Invoice Entry delivery handoff may request:
 - a post-Wes-approval status notice.
 
 The Invoice Entry package still controls the exact recipient set, content, attachments, required-attachment status, and restrictions. Authorization for one category or message does not authorize a different recipient, purpose, or follow-up.
+
+Tim Fleming has standing Invoice Entry authorization for each meaningful time update to produce and send one refreshed accuracy-review draft through Email Monitor to Tim at his established verified address, copying `WesWill@BuyYourHomeLLC.com` and `Jenny@BuyYourHomeLLC.com`. A no-correction response from Tim or Wes confirms factual correctness; a correction from either requires a revised draft. Jenny is visibility-only. No response at this stage authorizes payment, filing, posting, finalization, or paid status, and only Wes may approve the final invoice after the weekly period closes. A complete immutable package from registered Invoice Entry task `01a03956-fa4f-77c1-9ab7-f709e5f1174e` that matches this canonical rule does not require another direct authorization in Email Monitor.
 
 #### Send And Verification
 
