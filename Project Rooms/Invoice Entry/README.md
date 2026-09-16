@@ -108,6 +108,8 @@ Invoice Entry never sends email directly. It prepares the exact package and hand
 
 Every invoice approved by Wes must have one Sent Items-verified approved-invoice email delivered to `WesWill@BuyYourHomeLLC.com` with the exact approved PDF attached. A verified approved-status delivery that already includes Wes and that PDF satisfies the requirement; otherwise route a separate Wes-only package. Vendor-contact restrictions do not suppress the Wes copy. Filing, workbook posting, an unsent draft, and approval evidence are not substitutes for delivery. Deduplicate before sending.
 
+Every final approved Tim Fleming or Josh Kennedy Time Card invoice must also be delivered to `Jenny@BuyYourHomeLLC.com` with the exact approved PDF attached. Prefer one Sent Items-verified message addressed to both Wes and Jenny; if only one received the verified approved invoice, send one duplicate-safe supplemental package to the missing recipient. Jenny is copied for visibility and recordkeeping only; her receipt or response is not approval, payment authorization, or paid status.
+
 ## Concise Handoffs
 
 A routine direct handoff should provide one authoritative source pointer, external attachment paths or blocker when applicable, a short summary, the requested operation, and only source-specific warnings. Do not repeat the full skill, standing safety rules, full email body, or completed history in task messages. Detailed evidence belongs in the referenced packet and Invoice Entry records.
