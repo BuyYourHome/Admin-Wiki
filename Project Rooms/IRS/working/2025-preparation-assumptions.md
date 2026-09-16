@@ -69,3 +69,7 @@ Wes corrects the prior statement: the Isaacs loan was not paid; collateral moved
 ### Isaacs borrower transfer clarified by Wes - September 15, 2026
 
 Wes confirms the owing LLC changed with the collateral and answers "oct 25" to the Heritage assumption/date question. Interpret as October 2025, exact day unconfirmed. Use Heritage Management as year-end borrower in the working allocation, superseding the earlier BYH-remains-borrower statement. Debt was not paid off. Principal, assumption documentation, transfer consideration/intercompany entries, and period-specific interest remain to reconcile. Private register updated; no live books or tax-return totals changed.
+
+### December Isaacs entry identified as existing-loan transfer
+
+Wes confirms the December Isaacs entry represents transfer of the existing BYH loan to Heritage, not an additional loan or excess funds requiring repayment. Close the additional-liability question and count the transferred obligation once in the working Heritage allocation. The bank and liability ledger rows are two sides of one transaction. Original BYH liability removal and bank reconciliation remain bookkeeping checks; no unsupported offset or cash correction applied. Exact amounts and source rows remain in the private workpaper and entry register.
