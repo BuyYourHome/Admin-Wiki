@@ -158,7 +158,7 @@ function CancelStatusFixture($f,[string]$Version,[string]$Hash,[string]$Task,[st
         -Detail 'Cancel obsolete status transport only; delivery remains unresolved and no business completion is claimed.'|ConvertFrom-Json
 }
 function NewAcknowledgedStatusCancellationFixture {
-    $f=Fixture;$r=Record $f;$old=[DateTime]::UtcNow.AddHours(-6).ToString('o');$attemptId='acknowledged-attempt'
+    $f=Fixture;$r=Record $f;$old=[DateTime]::UtcNow.AddHours(-2).ToString('o');$attemptId='acknowledged-attempt'
     $r.message_type='status';$r.state='Delivery Attempted';$r.attempt_count=1;$r.max_attempts=3
     $r.attempts=@([pscustomobject][ordered]@{attempt_id=$attemptId;started_at_utc=$old;completed_at_utc=$null;outcome='Pending';detail=$null;transport_owner='low-token-fixture';transport_generation='g1'})
     $r.authorization|Add-Member business_action_authorized $false -Force

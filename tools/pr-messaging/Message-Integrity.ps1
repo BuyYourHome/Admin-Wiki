@@ -135,7 +135,11 @@ function Test-PrAcknowledgedStatusCancellationRecord($Record,[string]$AttemptId,
     if($attempts.Count -ne [int]$Record.attempt_count -or $matching.Count -ne 1 -or
         $matching[0].outcome -cne 'Pending' -or $null -ne $matching[0].completed_at_utc -or
         [string]::IsNullOrWhiteSpace([string]$matching[0].started_at_utc)){return $false}
-    try{return (([DateTimeOffset]::UtcNow-[DateTimeOffset]::Parse($matching[0].started_at_utc)).TotalMinutes -ge $MinimumAgeMinutes)}catch{return $false}
+    try{
+        $startedValue=$matching[0].started_at_utc
+        $started=if($startedValue -is [DateTimeOffset]){$startedValue}elseif($startedValue -is [DateTime]){[DateTimeOffset]$startedValue}else{[DateTimeOffset]::Parse([string]$startedValue)}
+        return (([DateTimeOffset]::UtcNow-$started).TotalMinutes -ge $MinimumAgeMinutes)
+    }catch{return $false}
 }
 function Test-PrAdministrativeClosure($Record) {
     $c=$Record.administrative_closure
