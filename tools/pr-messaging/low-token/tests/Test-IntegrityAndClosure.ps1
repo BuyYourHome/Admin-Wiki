@@ -288,7 +288,7 @@ Check 'acknowledged status cancellation preserves pending evidence and rejects l
     $caught=$false;try{& $manager -FixtureRoot $f.root -QueuePath $f.queue -Action Accept -MessageId $f.id -ActorTaskId $f.task -ActorProjectRoom 'Test Recipient'|Out-Null}catch{$caught=$true}
     Assert $caught
 }
-foreach($fault in @('actor','version','hash','receipt','recent','owner','attempt-owner','authorization','journal-ack','marker','adapter-result','binary')){
+foreach($fault in @('actor','version','hash','receipt','recent','owner','attempt-owner','authorization','journal-ack','marker','adapter-result','adapter-stdout','binary')){
     Check ('acknowledged status cancellation rejects '+$fault) {
         $f=NewAcknowledgedStatusCancellationFixture;$r=Record $f;$task=$f.source;$reference='Wes explicitly cancelled the acknowledged fixture status'
         switch($fault){
@@ -301,6 +301,7 @@ foreach($fault in @('actor','version','hash','receipt','recent','owner','attempt
             'journal-ack' {$j=Read-LtJson (Join-Path $f.state 'journal.json');$j.entries[0].submission_evidence.queue_acknowledged=$false;Write-LtJson (Join-Path $f.state 'journal.json') $j}
             marker {$m=Read-LtJson (Get-LtSubmissionMarkerPath $f.state $f.id $f.attemptId);$m.arguments[4]='different';Write-LtJson (Get-LtSubmissionMarkerPath $f.state $f.id $f.attemptId) $m}
             'adapter-result' {$a=Read-LtJson (Join-Path $f.state 'last-cli-result.json');$a.queue_message_id='aaaaaaaa-bbbb-4ccc-8ddd-eeeeeeeeeeee';Write-LtJson (Join-Path $f.state 'last-cli-result.json') $a}
+            'adapter-stdout' {$a=Read-LtJson (Join-Path $f.state 'last-cli-result.json');$a.stdout='different';Write-LtJson (Join-Path $f.state 'last-cli-result.json') $a}
             binary {Add-Content -LiteralPath (Read-LtJson $f.workerConfig).cli_path -Value 'changed'}
         }
         SaveRecord $f $r;$version=Get-PrMessageDigest ($r|ConvertTo-Json -Depth 30 -Compress);$hash=$r.payload_hash

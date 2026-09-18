@@ -161,12 +161,13 @@ function Invoke-LtAdministrativeCancelAcknowledgedStatus($Record,[string]$Record
     $lastPath=Join-Path $cfg.state_directory 'last-cli-result.json'
     if(!(Test-Path -LiteralPath $lastPath)){throw 'AcknowledgedStatusCancellationAdapterResultMissing'}
     $last=Read-LtJson $lastPath
+    $expectedStdout="Queued message $($evidence.queue_message_id) for thread $($Record.destination.task_id)."
     if($last.message_id -cne $Record.message_id -or $last.thread_id -cne $Record.destination.task_id -or
         $last.attempt_id -cne $AttemptId -or $last.queue_message_id -cne $evidence.queue_message_id -or
         $last.submitted -ne $true -or $last.accepted -ne $false -or $last.timed_out -ne $false -or
         [int]$last.exit_code -ne 0 -or $last.reason -cne 'QueuedAwaitingReceipt' -or
-        (Get-PrMessageDigest ([string]$last.stdout)) -cne $evidence.stdout_sha256 -or
-        (Get-PrMessageDigest ([string]$last.stderr)) -cne $evidence.stderr_sha256){throw 'AcknowledgedStatusCancellationAdapterResultMismatch'}
+        ([string]$last.stdout).Trim() -cne $expectedStdout -or
+        ![string]::IsNullOrEmpty([string]$last.stderr)){throw 'AcknowledgedStatusCancellationAdapterResultMismatch'}
     $evidenceSnapshot=[ordered]@{journal_entry=$entry;marker=$marker;adapter_result=$last;config_release=$cfg.release;cli_sha256=$cfg.cli_sha256}
     $evidenceSha=Get-PrMessageDigest ($evidenceSnapshot|ConvertTo-Json -Depth 30 -Compress)
     $closure=[pscustomobject][ordered]@{
