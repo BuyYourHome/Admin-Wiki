@@ -1,7 +1,7 @@
 [CmdletBinding()]
 param(
     [Parameter(Mandatory = $true)]
-    [ValidateSet("Inspect", "ConditionalClaim", "ReconcileAttempt", "AdministrativeCloseExhaustedAmbiguous", "AdministrativeCancelAuthorizedStatus", "AdministrativeQuarantineIntegrityFailure", "ReconcileProvenPreSubmissionFailure", "Initialize", "Send", "Get", "List", "StartAttempt", "MarkAttempt", "Accept", "StartProcessing", "Update", "Complete", "Block", "NeedsWes", "Reject", "SyncSpool", "Health")]
+    [ValidateSet("Inspect", "ConditionalClaim", "ReconcileAttempt", "AdministrativeCloseExhaustedAmbiguous", "AdministrativeCancelAuthorizedStatus", "AdministrativeCancelAcknowledgedStatus", "AdministrativeQuarantineIntegrityFailure", "ReconcileProvenPreSubmissionFailure", "Initialize", "Send", "Get", "List", "StartAttempt", "MarkAttempt", "Accept", "StartProcessing", "Update", "Complete", "Block", "NeedsWes", "Reject", "SyncSpool", "Health")]
     [string]$Action,
 
     [string]$QueuePath = "\\WES-VIDEOEDITOR\BYH-PRMessaging$",
@@ -293,11 +293,13 @@ Invoke-WithQueueLock {
     $recordPath = Get-RecordPath -Root $QueuePath -Id $MessageId
     $record = Read-Record -Path $recordPath
     if ($Action -eq "Get") { $record | ConvertTo-Json -Depth 30; return }
-    if ($Action -in @('AdministrativeCloseExhaustedAmbiguous','AdministrativeCancelAuthorizedStatus','AdministrativeQuarantineIntegrityFailure','ReconcileProvenPreSubmissionFailure')) {
+    if ($Action -in @('AdministrativeCloseExhaustedAmbiguous','AdministrativeCancelAuthorizedStatus','AdministrativeCancelAcknowledgedStatus','AdministrativeQuarantineIntegrityFailure','ReconcileProvenPreSubmissionFailure')) {
         if($Action -eq 'AdministrativeCloseExhaustedAmbiguous'){
             Invoke-LtAdministrativeCloseExhaustedAmbiguous $record $recordPath | ConvertTo-Json -Depth 30
         } elseif($Action -eq 'AdministrativeCancelAuthorizedStatus') {
             Invoke-LtAdministrativeCancelAuthorizedStatus $record $recordPath | ConvertTo-Json -Depth 30
+        } elseif($Action -eq 'AdministrativeCancelAcknowledgedStatus') {
+            Invoke-LtAdministrativeCancelAcknowledgedStatus $record $recordPath | ConvertTo-Json -Depth 30
         } elseif($Action -eq 'AdministrativeQuarantineIntegrityFailure') {
             Invoke-LtAdministrativeQuarantineIntegrityFailure $record $recordPath | ConvertTo-Json -Depth 30
         } else {

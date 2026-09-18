@@ -38,6 +38,15 @@ foreach($fault in @('receipt','result','state','time','hash')){
         Assert (!(Test-PrMessageTerminal $r));Assert (Test-LtDestinationOutstanding $r)
     }
 }
+Check 'typed dates verify against Windows PowerShell round-trip precision without mutation' {
+    $f=Fixture;$r=Record $f
+    $r.payload|Add-Member saved_update_at_utc ([DateTime]::Parse('2026-09-05T18:36:48.9860000Z'))
+    $before=[string]$r.payload.saved_update_at_utc
+    $e=Get-PrMessageHashEvidence $r
+    $r.payload_hash=$e.legacy_datetime_default_hash
+    Assert (Get-PrMessageHashEvidence $r).valid
+    Assert ([string]$r.payload.saved_update_at_utc -ceq $before) 'Verification mutated immutable date content.'
+}
 Check 'exhausted ambiguous predicate requires complete old no-receipt evidence' {
     $f=Fixture;$r=Record $f;$old=[DateTime]::UtcNow.AddMinutes(-60).ToString('o')
     $r.state='Delivery Ambiguous';$r.attempt_count=1;$r.max_attempts=1
@@ -148,6 +157,54 @@ function CancelStatusFixture($f,[string]$Version,[string]$Hash,[string]$Task,[st
         -TransportOwner 'low-token-fixture' -Generation 'g1' -Mode Live -AuthorizationReference $Reference `
         -Detail 'Cancel obsolete status transport only; delivery remains unresolved and no business completion is claimed.'|ConvertFrom-Json
 }
+function NewAcknowledgedStatusCancellationFixture {
+    $f=Fixture;$r=Record $f;$old=[DateTime]::UtcNow.AddHours(-6).ToString('o');$attemptId='acknowledged-attempt'
+    $r.message_type='status';$r.state='Delivery Attempted';$r.attempt_count=1;$r.max_attempts=3
+    $r.attempts=@([pscustomobject][ordered]@{attempt_id=$attemptId;started_at_utc=$old;completed_at_utc=$null;outcome='Pending';detail=$null;transport_owner='low-token-fixture';transport_generation='g1'})
+    $r.authorization|Add-Member business_action_authorized $false -Force
+    $r.authorization|Add-Member production_claims_authorized $false -Force
+    $r.payload|Add-Member status 'Installed and saved-settings readback verified' -Force
+    $r.payload|Add-Member business_action_performed $false -Force
+    $r.payload|Add-Member production_claims 0 -Force
+    $r.payload|Add-Member forced_runs 0 -Force
+    $r.payload_hash=(Get-PrMessageHashEvidence $r).default_hash
+    SaveRecord $f $r
+    Write-LtJson (Get-LtTransportOwnerPath $f.queue $env:COMPUTERNAME) @{schema_version=1;owner='low-token-fixture';generation='g1';mode='Live';machine=$env:COMPUTERNAME;sid=[Security.Principal.WindowsIdentity]::GetCurrent().User.Value;task_id=$f.source}
+    $adapter=Join-Path $f.root 'adapter.ps1';$cli=Join-Path $f.root 'codex.exe'
+    Copy-Item -LiteralPath $manager -Destination $adapter
+    Copy-Item -LiteralPath $manager -Destination $cli
+    $cfg=[pscustomobject][ordered]@{
+        schema_version=1;release='0.4.6';expected_machine=$env:COMPUTERNAME
+        expected_sid=[Security.Principal.WindowsIdentity]::GetCurrent().User.Value
+        owner='low-token-fixture';generation='g1';dispatcher_task_id=$f.source
+        state_directory=$f.state;adapter_path=$adapter;adapter_sha256=(Get-FileHash $adapter).Hash
+        cli_path=$cli;cli_sha256=(Get-FileHash $cli).Hash
+        destinations=@([pscustomobject]@{project_room='Test Recipient';task_id=$f.task;machine=$env:COMPUTERNAME})
+    }
+    $f.workerConfig=Join-Path $f.root 'worker-config.json';Write-LtJson $f.workerConfig $cfg
+    $queueId='11111111-2222-4333-8444-555555555555'
+    $stdout="Queued message $queueId for thread $($f.task).`n";$stderr=''
+    $entry=[pscustomobject][ordered]@{
+        message_id=$f.id;dispatch_id=$f.id;destination_task_id=$f.task;payload_hash=$r.payload_hash
+        attempt_id=$attemptId;phase='submitted';outcome='QueuedAwaitingReceipt';adapter_release='0.4.6';adapter_sha256=$cfg.adapter_sha256
+        submission_evidence=[pscustomobject][ordered]@{timed_out=$false;exit_code=0;accepted=$false;queue_acknowledged=$true;queue_message_id=$queueId;submission_marker_present=$true;stdout_sha256=(Get-PrMessageDigest $stdout);stderr_sha256=(Get-PrMessageDigest $stderr)}
+    }
+    Write-LtJson (Join-Path $f.state 'journal.json') ([pscustomobject][ordered]@{schema_version=2;machine=$env:COMPUTERNAME;sid=$cfg.expected_sid;owner=$cfg.owner;generation=$cfg.generation;entries=@($entry)})
+    $notice="PR Messaging transport wake-up only, not a new Wes instruction. MessageId $($f.id); payload_hash $($r.payload_hash). Retrieve and verify the authoritative record using C:\Codex\Wiki Files\tools\pr-messaging\Manage-ProjectRoomMessage.ps1 before accepting. Follow only its authorized scope. Notification is not delivery proof."
+    $marker=Get-LtSubmissionMarkerPath $f.state $f.id $attemptId
+    New-Item -ItemType Directory -Path (Split-Path -Parent $marker) -Force|Out-Null
+    Write-LtJson $marker ([pscustomobject][ordered]@{created_at_utc=$old;message_id=$f.id;attempt_id=$attemptId;arguments=@('queue','--thread',$f.task,'--message',$notice);executable=$cli})
+    Write-LtJson (Join-Path $f.state 'last-cli-result.json') ([pscustomobject][ordered]@{message_id=$f.id;thread_id=$f.task;attempt_id=$attemptId;queue_message_id=$queueId;submitted=$true;accepted=$false;timed_out=$false;exit_code=0;stdout=$stdout;stderr=$stderr;reason='QueuedAwaitingReceipt'})
+    $f|Add-Member attemptId $attemptId;$f|Add-Member queueId $queueId
+    return $f
+}
+function CancelAcknowledgedStatusFixture($f,[string]$Version,[string]$Hash,[string]$Task=$f.source,[string]$Reference='Wes explicitly cancelled the acknowledged fixture status') {
+    & $manager -FixtureRoot $f.root -Action AdministrativeCancelAcknowledgedStatus -QueuePath $f.queue -MessageId $f.id `
+        -AttemptId $f.attemptId -ActorProjectRoom 'PR Messaging Dispatcher' -ActorTaskId $Task `
+        -ExpectedRecordVersion $Version -ExpectedHash $Hash -TransportOwner 'low-token-fixture' -Generation 'g1' `
+        -Mode Live -AuthorizationReference $Reference -WorkerConfigPath $f.workerConfig `
+        -Detail 'Cancel queue-acknowledged status transport only; recipient delivery remains unresolved.'|ConvertFrom-Json
+}
 function NewPreSubmissionFailureFixture {
     $f=NewAmbiguousFixture
     $r=Record $f
@@ -216,6 +273,42 @@ Check 'authorized status cancellation preserves ambiguity and rejects late accep
     $caught=$false
     try{& $manager -FixtureRoot $f.root -QueuePath $f.queue -Action Accept -MessageId $f.id -ActorTaskId $f.task -ActorProjectRoom 'Test Recipient'|Out-Null}catch{$caught=$true}
     Assert $caught 'Late acceptance of cancelled status was not rejected.'
+}
+Check 'acknowledged status cancellation preserves pending evidence and rejects late acceptance' {
+    $f=NewAcknowledgedStatusCancellationFixture;$before=Record $f;$immutable=ImmutableText $before
+    Assert (Test-PrAcknowledgedStatusCancellationRecord $before $f.attemptId 30)
+    $version=Get-PrMessageDigest ($before|ConvertTo-Json -Depth 30 -Compress)
+    $r=CancelAcknowledgedStatusFixture $f $version $before.payload_hash
+    Assert (Test-PrAdministrativeClosure $r);Assert (!(Test-LtDestinationOutstanding $r))
+    Assert ((ImmutableText $r) -ceq $immutable);Assert ($r.state -ceq 'Delivery Attempted' -and $r.attempts[0].outcome -ceq 'Pending' -and !$r.receipt -and !$r.result)
+    Assert ($r.administrative_closure.disposition -ceq 'AcknowledgedStatusCancelled' -and $r.administrative_closure.queue_message_id -ceq $f.queueId -and $r.administrative_closure.delivery_claimed -eq $false)
+    $file=Join-Path $f.queue ('records\'+$f.id+'.json');$afterHash=(Get-FileHash $file).Hash
+    CancelAcknowledgedStatusFixture $f $version $before.payload_hash|Out-Null
+    Assert ((Get-FileHash $file).Hash -ceq $afterHash)
+    $caught=$false;try{& $manager -FixtureRoot $f.root -QueuePath $f.queue -Action Accept -MessageId $f.id -ActorTaskId $f.task -ActorProjectRoom 'Test Recipient'|Out-Null}catch{$caught=$true}
+    Assert $caught
+}
+foreach($fault in @('actor','version','hash','receipt','recent','owner','attempt-owner','authorization','journal-ack','marker','adapter-result','binary')){
+    Check ('acknowledged status cancellation rejects '+$fault) {
+        $f=NewAcknowledgedStatusCancellationFixture;$r=Record $f;$task=$f.source;$reference='Wes explicitly cancelled the acknowledged fixture status'
+        switch($fault){
+            actor {$task='33333333-3333-4333-8333-333333333333'}
+            receipt {$r.receipt=@{task_id=$f.task}}
+            recent {$r.attempts[0].started_at_utc=[DateTime]::UtcNow.ToString('o')}
+            owner {$o=Read-LtJson (Get-LtTransportOwnerPath $f.queue $env:COMPUTERNAME);$o.owner='foreign';Write-LtJson (Get-LtTransportOwnerPath $f.queue $env:COMPUTERNAME) $o}
+            'attempt-owner' {$r.attempts[0].transport_owner='foreign'}
+            authorization {$reference=''}
+            'journal-ack' {$j=Read-LtJson (Join-Path $f.state 'journal.json');$j.entries[0].submission_evidence.queue_acknowledged=$false;Write-LtJson (Join-Path $f.state 'journal.json') $j}
+            marker {$m=Read-LtJson (Get-LtSubmissionMarkerPath $f.state $f.id $f.attemptId);$m.arguments[4]='different';Write-LtJson (Get-LtSubmissionMarkerPath $f.state $f.id $f.attemptId) $m}
+            'adapter-result' {$a=Read-LtJson (Join-Path $f.state 'last-cli-result.json');$a.queue_message_id='aaaaaaaa-bbbb-4ccc-8ddd-eeeeeeeeeeee';Write-LtJson (Join-Path $f.state 'last-cli-result.json') $a}
+            binary {Add-Content -LiteralPath (Read-LtJson $f.workerConfig).cli_path -Value 'changed'}
+        }
+        SaveRecord $f $r;$version=Get-PrMessageDigest ($r|ConvertTo-Json -Depth 30 -Compress);$hash=$r.payload_hash
+        if($fault -eq 'version'){$version='a'*64};if($fault -eq 'hash'){$hash='b'*64}
+        $path=Join-Path $f.queue ('records\'+$f.id+'.json');$beforeHash=(Get-FileHash $path).Hash;$caught=$false
+        try{CancelAcknowledgedStatusFixture $f $version $hash $task $reference|Out-Null}catch{$caught=$true}
+        Assert $caught;Assert ((Get-FileHash $path).Hash -ceq $beforeHash)
+    }
 }
 foreach($fault in @('actor','version','hash','receipt','business','production','live','recent','owner','attempt-owner','authorization')){
     Check ('authorized status cancellation rejects '+$fault) {

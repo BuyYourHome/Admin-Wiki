@@ -26,11 +26,39 @@ function Get-PrMessageDigest([string]$Text) {
     $sha=[Security.Cryptography.SHA256]::Create()
     try{([BitConverter]::ToString($sha.ComputeHash([Text.Encoding]::UTF8.GetBytes($Text)))).Replace('-','').ToLowerInvariant()}finally{$sha.Dispose()}
 }
+function Convert-PrMessageLegacyDateValues($Value) {
+    if($null -eq $Value){return $null}
+    if($Value -is [DateTime]){return $Value.ToUniversalTime().ToString('o')}
+    if($Value -is [DateTimeOffset]){return $Value.ToUniversalTime().ToString('o')}
+    if($Value -is [Collections.IDictionary]){
+        $copy=[ordered]@{}
+        foreach($key in $Value.Keys){$copy[$key]=Convert-PrMessageLegacyDateValues $Value[$key]}
+        return $copy
+    }
+    if($Value -is [Collections.IEnumerable] -and $Value -isnot [string]){
+        return @($Value|ForEach-Object {Convert-PrMessageLegacyDateValues $_})
+    }
+    if($Value.GetType().FullName -ceq 'System.Management.Automation.PSCustomObject'){
+        $copy=[ordered]@{}
+        foreach($property in $Value.PSObject.Properties){$copy[$property.Name]=Convert-PrMessageLegacyDateValues $property.Value}
+        return [pscustomobject]$copy
+    }
+    return $Value
+}
 function Get-PrMessageHashEvidence($Record) {
-    $canonical=[ordered]@{message_type=[string]$Record.message_type;parent_message_id=[string]$Record.parent_message_id;source=$Record.source;destination=$Record.destination;authorization=$Record.authorization;references=$Record.references;payload=$Record.payload}|ConvertTo-Json -Depth 30 -Compress
+    $immutable=[ordered]@{message_type=[string]$Record.message_type;parent_message_id=[string]$Record.parent_message_id;source=$Record.source;destination=$Record.destination;authorization=$Record.authorization;references=$Record.references;payload=$Record.payload}
+    $canonical=$immutable|ConvertTo-Json -Depth 30 -Compress
     $plain=Get-PrMessageDigest (Convert-PrMessageJsonEscaping $canonical $false)
     $html=Get-PrMessageDigest (Convert-PrMessageJsonEscaping $canonical $true)
-    [pscustomobject]@{valid=($Record.payload_hash -cmatch '^[0-9a-f]{64}$' -and ($Record.payload_hash -ceq $plain -or $Record.payload_hash -ceq $html));default_hash=$plain;html_hash=$html}
+    $legacyCanonical=(Convert-PrMessageLegacyDateValues $immutable)|ConvertTo-Json -Depth 30 -Compress
+    $legacyPlain=Get-PrMessageDigest (Convert-PrMessageJsonEscaping $legacyCanonical $false)
+    $legacyHtml=Get-PrMessageDigest (Convert-PrMessageJsonEscaping $legacyCanonical $true)
+    [pscustomobject]@{
+        valid=($Record.payload_hash -cmatch '^[0-9a-f]{64}$' -and
+            $Record.payload_hash -cin @($plain,$html,$legacyPlain,$legacyHtml))
+        default_hash=$plain;html_hash=$html
+        legacy_datetime_default_hash=$legacyPlain;legacy_datetime_html_hash=$legacyHtml
+    }
 }
 function Test-PrMessageTerminal($Record) {
     if(!(Get-PrMessageHashEvidence $Record).valid){return $false}
@@ -91,6 +119,24 @@ function Test-PrAuthorizedStatusCancellationRecord($Record,[int]$MinimumAgeMinut
         return (([DateTimeOffset]::UtcNow-$latest).TotalMinutes -ge $MinimumAgeMinutes)
     }catch{return $false}
 }
+function Test-PrAcknowledgedStatusCancellationRecord($Record,[string]$AttemptId,[int]$MinimumAgeMinutes=30) {
+    if($MinimumAgeMinutes -lt 1 -or [string]::IsNullOrWhiteSpace($AttemptId) -or
+        !(Get-PrMessageHashEvidence $Record).valid -or $Record.authoritative -ne $true -or
+        $Record.message_type -cne 'status' -or $Record.state -cne 'Delivery Attempted' -or
+        $Record.receipt -or $Record.result -or $Record.administrative_closure -or
+        [int]$Record.max_attempts -lt 1 -or [int]$Record.attempt_count -lt 1 -or
+        [int]$Record.attempt_count -ge [int]$Record.max_attempts -or
+        $Record.authorization.business_action_authorized -ne $false -or
+        $Record.authorization.production_claims_authorized -ne $false -or
+        $Record.payload.business_action_performed -ne $false -or
+        [int]$Record.payload.production_claims -ne 0 -or [int]$Record.payload.forced_runs -ne 0){return $false}
+    $attempts=@($Record.attempts)
+    $matching=@($attempts|Where-Object attempt_id -CEQ $AttemptId)
+    if($attempts.Count -ne [int]$Record.attempt_count -or $matching.Count -ne 1 -or
+        $matching[0].outcome -cne 'Pending' -or $null -ne $matching[0].completed_at_utc -or
+        [string]::IsNullOrWhiteSpace([string]$matching[0].started_at_utc)){return $false}
+    try{return (([DateTimeOffset]::UtcNow-[DateTimeOffset]::Parse($matching[0].started_at_utc)).TotalMinutes -ge $MinimumAgeMinutes)}catch{return $false}
+}
 function Test-PrAdministrativeClosure($Record) {
     $c=$Record.administrative_closure
     if(!$c -or $c.schema_version -ne 1 -or
@@ -135,6 +181,21 @@ function Test-PrAdministrativeClosure($Record) {
             $c.actor_machine -ceq $Record.destination.machine -and
             $c.transport_owner -cmatch '^low-token-[a-z0-9-]+$' -and
             ![string]::IsNullOrWhiteSpace([string]$c.transport_generation) -and
+            $c.delivery_status -ceq 'Unresolved')
+    }
+    if($c.disposition -ceq 'AcknowledgedStatusCancelled'){
+        $withoutClosure=$Record|ConvertTo-Json -Depth 30|ConvertFrom-Json
+        $withoutClosure.PSObject.Properties.Remove('administrative_closure')
+        return ((Test-PrAcknowledgedStatusCancellationRecord $withoutClosure ([string]$c.attempt_id) 1) -and
+            ![string]::IsNullOrWhiteSpace([string]$c.authorization_reference) -and
+            $c.actor_project_room -ceq 'PR Messaging Dispatcher' -and
+            $c.actor_task_id -ceq $c.transport_owner_task_id -and
+            $c.actor_machine -ceq $Record.destination.machine -and
+            $c.transport_owner -cmatch '^low-token-[a-z0-9-]+$' -and
+            ![string]::IsNullOrWhiteSpace([string]$c.transport_generation) -and
+            $c.submission_status -ceq 'QueueAcknowledgedAwaitingReceipt' -and
+            $c.queue_message_id -cmatch '^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$' -and
+            $c.evidence_sha256 -cmatch '^[0-9a-f]{64}$' -and
             $c.delivery_status -ceq 'Unresolved')
     }
     return $false

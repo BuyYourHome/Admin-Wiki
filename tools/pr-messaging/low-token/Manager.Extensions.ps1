@@ -93,6 +93,97 @@ function Invoke-LtAdministrativeCancelAuthorizedStatus($Record,[string]$RecordPa
     Write-JsonAtomic $RecordPath $Record
     return $Record
 }
+function Invoke-LtAdministrativeCancelAcknowledgedStatus($Record,[string]$RecordPath) {
+    if($ActorProjectRoom -cne 'PR Messaging Dispatcher' -or
+        [string]::IsNullOrWhiteSpace($ActorTaskId) -or [string]::IsNullOrWhiteSpace($AttemptId) -or
+        [string]::IsNullOrWhiteSpace($AuthorizationReference) -or
+        [string]::IsNullOrWhiteSpace($Detail)){throw 'AcknowledgedStatusCancellationAuthorityMissing'}
+    if(Test-PrAdministrativeClosure $Record){
+        if($Record.administrative_closure.disposition -cne 'AcknowledgedStatusCancelled' -or
+            $Record.administrative_closure.actor_task_id -cne $ActorTaskId -or
+            $Record.administrative_closure.attempt_id -cne $AttemptId){throw 'AdministrativeClosureConflict'}
+        return $Record
+    }
+    if($Record.administrative_closure){throw 'AdministrativeClosureConflict'}
+    if(!(Test-PrAcknowledgedStatusCancellationRecord $Record $AttemptId 30)){throw 'CancellableAcknowledgedStatusRecordRequired'}
+    if($ExpectedHash -cnotmatch '^[0-9a-f]{64}$' -or $ExpectedHash -cne $Record.payload_hash){throw 'AcknowledgedStatusCancellationHashMismatch'}
+    if($ExpectedRecordVersion -cnotmatch '^[0-9a-f]{64}$' -or
+        (Get-PrMessageDigest ($Record|ConvertTo-Json -Depth 30 -Compress)) -cne $ExpectedRecordVersion){throw 'AcknowledgedStatusCancellationVersionConflict'}
+    $ownerPath=Get-LtTransportOwnerPath $QueuePath ([string]$Record.destination.machine)
+    if(!(Test-Path -LiteralPath $ownerPath)){throw 'AcknowledgedStatusCancellationLiveOwnerRequired'}
+    $owner=Read-LtJson $ownerPath
+    if($Mode -cne 'Live' -or $owner.mode -cne 'Live' -or $owner.machine -cne $Record.destination.machine -or
+        $owner.task_id -cne $ActorTaskId -or $owner.owner -cne $TransportOwner -or
+        $owner.generation -cne $Generation -or $owner.sid -cne [Security.Principal.WindowsIdentity]::GetCurrent().User.Value -or
+        $env:COMPUTERNAME -cne $Record.destination.machine){throw 'AcknowledgedStatusCancellationOwnerMismatch'}
+    $attempt=@($Record.attempts|Where-Object attempt_id -CEQ $AttemptId)[0]
+    if($attempt.transport_owner -cne $owner.owner -or $attempt.transport_generation -cne $owner.generation){throw 'AcknowledgedStatusCancellationAttemptOwnerMismatch'}
+    if([string]::IsNullOrWhiteSpace($WorkerConfigPath) -or !(Test-Path -LiteralPath $WorkerConfigPath)){throw 'AcknowledgedStatusCancellationConfigMissing'}
+    if($FixtureRoot){Assert-LtUnder $WorkerConfigPath $FixtureRoot}else{
+        $expectedConfig=Join-Path $env:LOCALAPPDATA 'BuyYourHome\PRMessaging\low-token\releases\0.4.6\low-token\config.json'
+        if([IO.Path]::GetFullPath($WorkerConfigPath) -cne [IO.Path]::GetFullPath($expectedConfig)){throw 'AcknowledgedStatusCancellationConfigPathMismatch'}
+    }
+    $cfg=Read-LtJson $WorkerConfigPath
+    if($cfg.release -cne '0.4.6' -or $cfg.expected_machine -cne $env:COMPUTERNAME -or
+        $cfg.expected_sid -cne $owner.sid -or $cfg.dispatcher_task_id -cne $ActorTaskId -or
+        $cfg.owner -cne $owner.owner -or $cfg.generation -cne $owner.generation -or
+        !(Test-LtPinnedDestination $cfg $Record.destination)){throw 'AcknowledgedStatusCancellationConfigMismatch'}
+    if($FixtureRoot){Assert-LtUnder $cfg.state_directory $FixtureRoot;Assert-LtUnder $cfg.adapter_path $FixtureRoot;Assert-LtUnder $cfg.cli_path $FixtureRoot}else{
+        Assert-LtUnder $cfg.state_directory (Join-Path $env:LOCALAPPDATA 'BuyYourHome\PRMessaging\low-token')
+    }
+    if(!(Test-Path -LiteralPath $cfg.adapter_path) -or (Get-FileHash -LiteralPath $cfg.adapter_path -Algorithm SHA256).Hash -ine $cfg.adapter_sha256 -or
+        !(Test-Path -LiteralPath $cfg.cli_path) -or (Get-FileHash -LiteralPath $cfg.cli_path -Algorithm SHA256).Hash -ine $cfg.cli_sha256){throw 'AcknowledgedStatusCancellationPinnedBinaryMismatch'}
+    $journalPath=Join-Path $cfg.state_directory 'journal.json'
+    if(!(Test-Path -LiteralPath $journalPath)){throw 'AcknowledgedStatusCancellationJournalMissing'}
+    $journal=Read-LtJson $journalPath
+    if($journal.schema_version -ne 2 -or $journal.machine -cne $env:COMPUTERNAME -or
+        $journal.sid -cne $owner.sid -or $journal.owner -cne $owner.owner -or
+        $journal.generation -cne $owner.generation){throw 'AcknowledgedStatusCancellationJournalIdentityMismatch'}
+    $entries=@($journal.entries|Where-Object attempt_id -CEQ $AttemptId)
+    if($entries.Count -ne 1){throw 'AcknowledgedStatusCancellationJournalAttemptMismatch'}
+    $entry=$entries[0];$evidence=$entry.submission_evidence
+    if($entry.message_id -cne $Record.message_id -or $entry.payload_hash -cne $Record.payload_hash -or
+        $entry.destination_task_id -cne $Record.destination.task_id -or $entry.phase -cne 'submitted' -or
+        $entry.outcome -cne 'QueuedAwaitingReceipt' -or $entry.adapter_release -cne '0.4.6' -or
+        $entry.adapter_sha256 -ine $cfg.adapter_sha256 -or !$evidence -or $evidence.timed_out -ne $false -or
+        [int]$evidence.exit_code -ne 0 -or $evidence.accepted -ne $false -or
+        $evidence.queue_acknowledged -ne $true -or $evidence.submission_marker_present -ne $true -or
+        [string]::IsNullOrWhiteSpace([string]$evidence.queue_message_id)){throw 'AcknowledgedStatusCancellationSubmissionEvidenceMismatch'}
+    $markerPath=Get-LtSubmissionMarkerPath $cfg.state_directory $Record.message_id $AttemptId
+    if(!(Test-Path -LiteralPath $markerPath)){throw 'AcknowledgedStatusCancellationMarkerMissing'}
+    $marker=Read-LtJson $markerPath
+    $expectedNotice="PR Messaging transport wake-up only, not a new Wes instruction. MessageId $($Record.message_id); payload_hash $($Record.payload_hash). Retrieve and verify the authoritative record using C:\Codex\Wiki Files\tools\pr-messaging\Manage-ProjectRoomMessage.ps1 before accepting. Follow only its authorized scope. Notification is not delivery proof."
+    $args=@($marker.arguments)
+    if($marker.message_id -cne $Record.message_id -or $marker.attempt_id -cne $AttemptId -or
+        $marker.executable -cne $cfg.cli_path -or $args.Count -ne 5 -or $args[0] -cne 'queue' -or
+        $args[1] -cne '--thread' -or $args[2] -cne $Record.destination.task_id -or
+        $args[3] -cne '--message' -or $args[4] -cne $expectedNotice){throw 'AcknowledgedStatusCancellationMarkerMismatch'}
+    $lastPath=Join-Path $cfg.state_directory 'last-cli-result.json'
+    if(!(Test-Path -LiteralPath $lastPath)){throw 'AcknowledgedStatusCancellationAdapterResultMissing'}
+    $last=Read-LtJson $lastPath
+    if($last.message_id -cne $Record.message_id -or $last.thread_id -cne $Record.destination.task_id -or
+        $last.attempt_id -cne $AttemptId -or $last.queue_message_id -cne $evidence.queue_message_id -or
+        $last.submitted -ne $true -or $last.accepted -ne $false -or $last.timed_out -ne $false -or
+        [int]$last.exit_code -ne 0 -or $last.reason -cne 'QueuedAwaitingReceipt' -or
+        (Get-PrMessageDigest ([string]$last.stdout)) -cne $evidence.stdout_sha256 -or
+        (Get-PrMessageDigest ([string]$last.stderr)) -cne $evidence.stderr_sha256){throw 'AcknowledgedStatusCancellationAdapterResultMismatch'}
+    $evidenceSnapshot=[ordered]@{journal_entry=$entry;marker=$marker;adapter_result=$last;config_release=$cfg.release;cli_sha256=$cfg.cli_sha256}
+    $evidenceSha=Get-PrMessageDigest ($evidenceSnapshot|ConvertTo-Json -Depth 30 -Compress)
+    $closure=[pscustomobject][ordered]@{
+        schema_version=1;message_id=$Record.message_id;payload_hash=$Record.payload_hash
+        disposition='AcknowledgedStatusCancelled';authorized_by='Wes';authorization_reference=$AuthorizationReference
+        actor_project_room=$ActorProjectRoom;actor_task_id=$ActorTaskId;actor_machine=$env:COMPUTERNAME
+        transport_owner=$owner.owner;transport_generation=$owner.generation;transport_owner_task_id=$owner.task_id
+        attempt_id=$AttemptId;queue_message_id=$evidence.queue_message_id
+        submission_status='QueueAcknowledgedAwaitingReceipt';evidence_sha256=$evidenceSha
+        closed_at_utc=Get-UtcTimestamp;delivery_status='Unresolved';delivery_claimed=$false
+        business_completion_claimed=$false;detail=$Detail
+    }
+    $Record|Add-Member administrative_closure $closure
+    Add-Event $Record 'AdministrativelyClosed' $Detail $ActorProjectRoom $ActorTaskId
+    Write-JsonAtomic $RecordPath $Record
+    return $Record
+}
 function Invoke-LtAdministrativeQuarantineIntegrityFailure($Record,[string]$RecordPath) {
     if($ActorProjectRoom -cne 'PR Messaging Dispatcher' -or
         [string]::IsNullOrWhiteSpace($ActorTaskId) -or
