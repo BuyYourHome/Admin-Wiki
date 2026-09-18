@@ -30,6 +30,9 @@ function Convert-PrMessageLegacyDateValues($Value) {
     if($null -eq $Value){return $null}
     if($Value -is [DateTime]){return $Value.ToUniversalTime().ToString('o')}
     if($Value -is [DateTimeOffset]){return $Value.ToUniversalTime().ToString('o')}
+    if($Value -is [string] -and $Value -cmatch '^(?<prefix>\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}\.)(?<fraction>\d{1,6})Z$'){
+        return $Matches.prefix+$Matches.fraction.PadRight(7,'0')+'Z'
+    }
     if($Value -is [Collections.IDictionary]){
         $copy=[ordered]@{}
         foreach($key in $Value.Keys){$copy[$key]=Convert-PrMessageLegacyDateValues $Value[$key]}

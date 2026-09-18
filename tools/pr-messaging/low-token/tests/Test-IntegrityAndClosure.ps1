@@ -47,6 +47,16 @@ Check 'typed dates verify against Windows PowerShell round-trip precision withou
     Assert (Get-PrMessageHashEvidence $r).valid
     Assert ([string]$r.payload.saved_update_at_utc -ceq $before) 'Verification mutated immutable date content.'
 }
+Check 'short exact UTC strings verify against seven-digit legacy precision without mutation' {
+    $f=Fixture;$r=Record $f
+    $r.payload|Add-Member saved_update_at_utc '2026-09-05T18:36:48.986Z'
+    $e=Get-PrMessageHashEvidence $r
+    Assert ($e.legacy_datetime_default_hash -cne $e.default_hash)
+    $r.payload_hash=$e.legacy_datetime_default_hash
+    $before=$r.payload.saved_update_at_utc
+    Assert (Get-PrMessageHashEvidence $r).valid
+    Assert ($r.payload.saved_update_at_utc -ceq $before) 'Verification mutated immutable UTC text.'
+}
 Check 'exhausted ambiguous predicate requires complete old no-receipt evidence' {
     $f=Fixture;$r=Record $f;$old=[DateTime]::UtcNow.AddMinutes(-60).ToString('o')
     $r.state='Delivery Ambiguous';$r.attempt_count=1;$r.max_attempts=1
