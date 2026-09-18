@@ -1,0 +1,4 @@
+interface:
+  display_name: "LED lighting"
+  short_description: "Plan 24-volt remodel lighting and controls"
+  default_prompt: "Use $led-lighting to organize my remodel lighting requirements and review component compatibility."

@@ -8,6 +8,7 @@ This is the live task registry for the universal [[Project Room Delegation Contr
 
 | Project Room | Matching Skill | Known Task/Thread Id | Dispatcher Route | Notes |
 | --- | --- | --- | --- | --- |
+| LED lighting | `led-lighting` | pending | Pending messaging registration - not dispatchable. | WESSTUDIO; 24-volt remodel lighting, switches, dimmers, controls, supplies and compatibility/load planning. No purchase or installation authority. |
 | Admin Wiki Maintenance | pending | pending | Jean handles only when Wes authorizes shared Admin governance work. | No matching skill at rollout. |
 | AIOS | `aios` | pending | Route planning or AIOS system-design work here. | Active/planning. |
 | Amortization | `amortization` | pending | Route amortization-table support here, usually as a support handoff from Contract for Deed or spreadsheet work. | Support PR. |

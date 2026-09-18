@@ -10,6 +10,7 @@ Use [[Agent Unit Standard]] for the standard package behind an agent-like operat
 
 | Name | Type | Status | Schedule | Primary Definition |
 |---|---|---|---|---|
+| LED lighting | Wiki-managed skill plus project room; dedicated task pending | Pending messaging registration - not dispatchable | On demand | `skills\led-lighting\SKILL.md`; `Project Rooms\LED lighting\README.md` |
 | Jean Wright / Office Assistant | Wiki-managed skill plus project room plus assistant profile and operating role | Active | On demand and through related automations | `skills\jean-wright\SKILL.md`; `Project Rooms\Jean Wright\README.md`; `C:\Codex\Office Assistant Profile.md`; `AGENTS.md` |
 | Jean Dispatcher | Jean Wright mode plus central Project Room routing rule | Active | On demand when Wes asks Jean to delegate, coordinate, or route specialized work | `Project Room Chat Startup Rule.md`; `Project Rooms\Jean Wright\working\dispatcher-routing-map.md`; `Project Rooms\Jean Wright\working\dispatcher-action-log.md`; `skills\jean-wright\SKILL.md` |
 | PR Messaging Dispatcher | Machine-local deterministic worker plus dedicated dispatcher task per execution computer | Live workers validated on WES-VIDEOEDITOR, OFFICEASSIST, and WESSTUDIO; release 0.4.6 is ready for controlled in-place upgrade | Every 60 seconds, 24/7; empty polls use no model tokens; legacy model heartbeats are fallback-only | `Project Room Messaging Rule.md`; `Project Rooms\PR Messaging Dispatcher\README.md`; `skills\pr-messaging-dispatcher\SKILL.md` |
@@ -61,6 +62,16 @@ Use [[Agent Unit Standard]] for the standard package behind an agent-like operat
 | GM Site Iteration | GM heartbeat automation plus REI BlackBook project room | Active | Every 30 minutes; each acquired run chains coherent book-site iterations for approximately 45-90 minutes, then emails Wes the remaining backlog from OfficeAssist | `skills\rei-blackbook\SKILL.md`; `Project Rooms\REI BlackBook\README.md`; automation id `gm-mode-site-iteration` |
 | Investigate Computer | Wiki-managed skill plus project room plus heartbeat automation | Active | Daily at 6:00 AM Eastern; email Wes only when an issue is detected | `skills\investigate-computer\SKILL.md`; `Project Rooms\Investigate Computer\README.md`; app automation id `investigate-computer-daily-check` |
 | Jenny Email Summary | Behavior inside Email Monitor heartbeat | Active | Runs once daily at/after 8:00 AM Eastern with the Email Monitor heartbeat; emails Jenny from OfficeAssist and verifies Sent Items | `skills\email-monitor\SKILL.md`; `Email Monitor` prompt notes |
+
+## LED lighting
+
+- Dedicated task: pending until the dedicated task is created.
+- Execution machine: `WESSTUDIO`.
+- Status: Pending messaging registration - not dispatchable.
+- Room: `Project Rooms\LED lighting\README.md`; matching skill: `skills\led-lighting\SKILL.md`.
+- Scope: on-demand 24-volt remodel lighting, switches/dimmers/controls, power supplies, compatibility, and load-planning documentation.
+- No automation, purchases, or electrical installation authorized by setup.
+- Setup evidence: `Project Rooms\LED lighting\working\setup-status.md`.
 
 ## PR Messaging Dispatcher
 
