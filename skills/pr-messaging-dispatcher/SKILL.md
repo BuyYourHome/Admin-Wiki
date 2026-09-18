@@ -39,6 +39,7 @@ Provide the host-local wake-up layer for Project Room messages addressed to task
 16. Configure every scheduled worker action through the release-pinned `wscript.exe` hidden launcher so the one-minute poll creates no console and never steals focus from the interactive user. `powershell.exe -WindowStyle Hidden` is insufficient because its console may appear before PowerShell processes that option.
 17. Never retry a `Delivery Ambiguous` attempt automatically. Release `0.4.1` may classify a non-timeout, nonzero adapter exit as `NotDelivered` only when the permanent submission marker is absent. Timeouts, acknowledgments, existing markers, receipts, or conflicting evidence remain unresolved.
 18. Use the guarded administrative closure only for an exhausted, old no-receipt ambiguity after exact owner, identity, hash, record-version, attempt-history, and Wes-authorization checks. Closure releases only the transport slot and never claims recipient delivery or business completion.
+19. When Wes explicitly cancels an old, non-exhausted ambiguous status-only record, use `AdministrativeCancelAuthorizedStatus` only if the canonical manager verifies that the record authorized and performed no business or production action, has no receipt/result, and passes exact hash, version, attempt, live-owner, Windows-identity, machine, generation, and authorization checks. Preserve delivery as unresolved, retain the original evidence, release only the transport slot, and reject late acceptance of the closed record.
 
 ## Boundaries
 

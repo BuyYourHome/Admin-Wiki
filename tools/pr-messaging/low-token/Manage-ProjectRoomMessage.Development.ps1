@@ -1,7 +1,7 @@
 [CmdletBinding()]
 param(
     [Parameter(Mandatory = $true)]
-    [ValidateSet("Inspect", "ConditionalClaim", "ReconcileAttempt", "AdministrativeCloseExhaustedAmbiguous", "AdministrativeQuarantineIntegrityFailure", "ReconcileProvenPreSubmissionFailure", "Initialize", "Send", "Get", "List", "StartAttempt", "MarkAttempt", "Accept", "StartProcessing", "Update", "Complete", "Block", "NeedsWes", "Reject", "SyncSpool", "Health")]
+    [ValidateSet("Inspect", "ConditionalClaim", "ReconcileAttempt", "AdministrativeCloseExhaustedAmbiguous", "AdministrativeCancelAuthorizedStatus", "AdministrativeQuarantineIntegrityFailure", "ReconcileProvenPreSubmissionFailure", "Initialize", "Send", "Get", "List", "StartAttempt", "MarkAttempt", "Accept", "StartProcessing", "Update", "Complete", "Block", "NeedsWes", "Reject", "SyncSpool", "Health")]
     [string]$Action,
 
     [string]$QueuePath = "\\WES-VIDEOEDITOR\BYH-PRMessaging$",
@@ -293,9 +293,11 @@ Invoke-WithQueueLock {
     $recordPath = Get-RecordPath -Root $QueuePath -Id $MessageId
     $record = Read-Record -Path $recordPath
     if ($Action -eq "Get") { $record | ConvertTo-Json -Depth 30; return }
-    if ($Action -in @('AdministrativeCloseExhaustedAmbiguous','AdministrativeQuarantineIntegrityFailure','ReconcileProvenPreSubmissionFailure')) {
+    if ($Action -in @('AdministrativeCloseExhaustedAmbiguous','AdministrativeCancelAuthorizedStatus','AdministrativeQuarantineIntegrityFailure','ReconcileProvenPreSubmissionFailure')) {
         if($Action -eq 'AdministrativeCloseExhaustedAmbiguous'){
             Invoke-LtAdministrativeCloseExhaustedAmbiguous $record $recordPath | ConvertTo-Json -Depth 30
+        } elseif($Action -eq 'AdministrativeCancelAuthorizedStatus') {
+            Invoke-LtAdministrativeCancelAuthorizedStatus $record $recordPath | ConvertTo-Json -Depth 30
         } elseif($Action -eq 'AdministrativeQuarantineIntegrityFailure') {
             Invoke-LtAdministrativeQuarantineIntegrityFailure $record $recordPath | ConvertTo-Json -Depth 30
         } else {
@@ -340,6 +342,7 @@ Invoke-WithQueueLock {
         }
         "Accept" {
             Assert-DestinationActor -Record $record
+            if(Test-PrAdministrativeClosure $record){throw "Message is administratively closed."}
             if ($record.state -in @("Accepted", "Processing", "Completed", "Blocked", "Needs Wes")) { $record | ConvertTo-Json -Depth 30; return }
             $attempts = @($record.attempts)
             if ($attempts.Count -gt 0) {

@@ -122,6 +122,32 @@ function CloseAmbiguousFixture($f,[string]$Version,[string]$Hash,[string]$Task,[
         -TransportOwner 'low-token-fixture' -Generation 'g1' -Mode Live -AuthorizationReference $Reference `
         -Detail 'Administrative transport closure only; no delivery or business completion claimed.'|ConvertFrom-Json
 }
+function NewStatusCancellationFixture {
+    $f=NewAmbiguousFixture
+    $r=Record $f
+    $r.message_type='status'
+    $r.max_attempts=3
+    $old=[DateTime]::UtcNow.AddHours(-6).ToString('o')
+    $r.attempts[0].started_at_utc=$old
+    $r.attempts[0].completed_at_utc=$old
+    $r.attempts[0].transport_owner='low-token-fixture'
+    $r.authorization|Add-Member business_action_authorized $false -Force
+    $r.authorization|Add-Member production_claims_authorized $false -Force
+    $r.payload|Add-Member status 'Blocked' -Force
+    $r.payload|Add-Member business_action_performed $false -Force
+    $r.payload|Add-Member production_claims 0 -Force
+    $r.payload|Add-Member forced_runs 0 -Force
+    $r.payload|Add-Member live_automation_calls 0 -Force
+    $r.payload_hash=(Get-PrMessageHashEvidence $r).default_hash
+    SaveRecord $f $r
+    return $f
+}
+function CancelStatusFixture($f,[string]$Version,[string]$Hash,[string]$Task,[string]$Reference='Wes explicitly cancelled the fixture status') {
+    & $manager -FixtureRoot $f.root -Action AdministrativeCancelAuthorizedStatus -QueuePath $f.queue -MessageId $f.id `
+        -ActorProjectRoom 'PR Messaging Dispatcher' -ActorTaskId $Task -ExpectedRecordVersion $Version -ExpectedHash $Hash `
+        -TransportOwner 'low-token-fixture' -Generation 'g1' -Mode Live -AuthorizationReference $Reference `
+        -Detail 'Cancel obsolete status transport only; delivery remains unresolved and no business completion is claimed.'|ConvertFrom-Json
+}
 function NewPreSubmissionFailureFixture {
     $f=NewAmbiguousFixture
     $r=Record $f
@@ -170,6 +196,48 @@ Check 'manager closes only exact exhausted ambiguity and is idempotent' {
     CloseAmbiguousFixture $f $version $before.payload_hash $f.source|Out-Null
     Assert ((Get-FileHash $file).Hash -ceq $afterHash) 'Idempotent call rewrote record.'
     Assert (@((Record $f).events|Where-Object event -eq 'AdministrativelyClosed').Count -eq 1) 'Closure event count was not one.'
+}
+Check 'authorized status cancellation preserves ambiguity and rejects late acceptance' {
+    $f=NewStatusCancellationFixture;$before=Record $f;$immutable=ImmutableText $before
+    Assert (Test-PrAuthorizedStatusCancellationRecord $before 30) 'Fixture did not qualify for status cancellation.'
+    $version=Get-PrMessageDigest ($before|ConvertTo-Json -Depth 30 -Compress)
+    $r=CancelStatusFixture $f $version $before.payload_hash $f.source
+    Assert (Test-PrAdministrativeClosure $r) 'Cancellation closure did not validate.'
+    Assert (!(Test-LtDestinationOutstanding $r)) 'Cancellation did not release destination transport.'
+    Assert ((ImmutableText $r) -ceq $immutable) 'Cancellation changed immutable content.'
+    Assert ($r.state -ceq 'Delivery Ambiguous' -and !$r.receipt -and !$r.result) 'Cancellation changed ambiguous recipient state.'
+    Assert ($r.administrative_closure.disposition -ceq 'AuthorizedStatusCancelled' -and
+        $r.administrative_closure.delivery_status -ceq 'Unresolved' -and
+        $r.administrative_closure.delivery_claimed -eq $false -and
+        $r.administrative_closure.business_completion_claimed -eq $false) 'Cancellation closure claims were not fail-closed.'
+    $file=Join-Path $f.queue ('records\'+$f.id+'.json');$afterHash=(Get-FileHash $file).Hash
+    CancelStatusFixture $f $version $before.payload_hash $f.source|Out-Null
+    Assert ((Get-FileHash $file).Hash -ceq $afterHash) 'Idempotent cancellation rewrote record.'
+    $caught=$false
+    try{& $manager -FixtureRoot $f.root -QueuePath $f.queue -Action Accept -MessageId $f.id -ActorTaskId $f.task -ActorProjectRoom 'Test Recipient'|Out-Null}catch{$caught=$true}
+    Assert $caught 'Late acceptance of cancelled status was not rejected.'
+}
+foreach($fault in @('actor','version','hash','receipt','business','production','live','recent','owner','attempt-owner','authorization')){
+    Check ('authorized status cancellation rejects '+$fault) {
+        $f=NewStatusCancellationFixture;$r=Record $f;$task=$f.source;$reference='Wes explicitly cancelled the fixture status'
+        switch($fault){
+            actor {$task='33333333-3333-4333-8333-333333333333'}
+            receipt {$r.receipt=@{task_id=$f.task}}
+            business {$r.authorization.business_action_authorized=$true}
+            production {$r.payload.production_claims=1}
+            live {$r.payload.live_automation_calls=1}
+            recent {$r.attempts[0].completed_at_utc=[DateTime]::UtcNow.ToString('o')}
+            owner {$o=Read-LtJson (Get-LtTransportOwnerPath $f.queue $env:COMPUTERNAME);$o.owner='foreign';Write-LtJson (Get-LtTransportOwnerPath $f.queue $env:COMPUTERNAME) $o}
+            'attempt-owner' {$r.attempts[0].transport_owner='foreign'}
+            authorization {$reference=''}
+        }
+        if($fault -in @('business','production','live')){$r.payload_hash=(Get-PrMessageHashEvidence $r).default_hash}
+        SaveRecord $f $r;$version=Get-PrMessageDigest ($r|ConvertTo-Json -Depth 30 -Compress);$hash=$r.payload_hash
+        if($fault -eq 'version'){$version='a'*64};if($fault -eq 'hash'){$hash='b'*64}
+        $path=Join-Path $f.queue ('records\'+$f.id+'.json');$beforeHash=(Get-FileHash $path).Hash;$caught=$false
+        try{CancelStatusFixture $f $version $hash $task $reference|Out-Null}catch{$caught=$true}
+        Assert $caught;Assert ((Get-FileHash $path).Hash -ceq $beforeHash)
+    }
 }
 foreach($fault in @('actor','version','hash','receipt','recent','owner','authorization')){
     Check ('exhausted ambiguity closure rejects '+$fault) {

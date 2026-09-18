@@ -71,6 +71,26 @@ function Test-PrExhaustedAmbiguousRecord($Record,[int]$MinimumAgeMinutes=30) {
         return (([DateTimeOffset]::UtcNow-$latest).TotalMinutes -ge $MinimumAgeMinutes)
     }catch{return $false}
 }
+function Test-PrAuthorizedStatusCancellationRecord($Record,[int]$MinimumAgeMinutes=30) {
+    if($MinimumAgeMinutes -lt 1 -or !(Get-PrMessageHashEvidence $Record).valid -or
+        $Record.authoritative -ne $true -or $Record.message_type -cne 'status' -or
+        $Record.state -cne 'Delivery Ambiguous' -or $Record.receipt -or $Record.result -or
+        $Record.administrative_closure -or [int]$Record.max_attempts -lt 1 -or
+        [int]$Record.attempt_count -lt 1 -or [int]$Record.attempt_count -ge [int]$Record.max_attempts -or
+        $Record.authorization.business_action_authorized -ne $false -or
+        $Record.authorization.production_claims_authorized -ne $false -or
+        $Record.payload.status -cne 'Blocked' -or $Record.payload.business_action_performed -ne $false -or
+        [int]$Record.payload.production_claims -ne 0 -or [int]$Record.payload.forced_runs -ne 0 -or
+        [int]$Record.payload.live_automation_calls -ne 0){return $false}
+    $attempts=@($Record.attempts)
+    if($attempts.Count -ne [int]$Record.attempt_count -or
+        @($attempts|Where-Object {$_.outcome -eq 'Pending' -or [string]::IsNullOrWhiteSpace([string]$_.completed_at_utc)}).Count -or
+        !@($attempts|Where-Object outcome -eq 'DeliveryAmbiguous').Count){return $false}
+    try{
+        $latest=@($attempts|ForEach-Object{[DateTimeOffset]::Parse($_.completed_at_utc)}|Sort-Object -Descending|Select-Object -First 1)[0]
+        return (([DateTimeOffset]::UtcNow-$latest).TotalMinutes -ge $MinimumAgeMinutes)
+    }catch{return $false}
+}
 function Test-PrAdministrativeClosure($Record) {
     $c=$Record.administrative_closure
     if(!$c -or $c.schema_version -ne 1 -or
@@ -104,6 +124,18 @@ function Test-PrAdministrativeClosure($Record) {
             $c.actor_machine -ceq $Record.destination.machine -and
             $c.transport_owner -cmatch '^low-token-[a-z0-9-]+$' -and
             ![string]::IsNullOrWhiteSpace([string]$c.transport_generation))
+    }
+    if($c.disposition -ceq 'AuthorizedStatusCancelled'){
+        $withoutClosure=$Record|ConvertTo-Json -Depth 30|ConvertFrom-Json
+        $withoutClosure.PSObject.Properties.Remove('administrative_closure')
+        return ((Test-PrAuthorizedStatusCancellationRecord $withoutClosure 1) -and
+            ![string]::IsNullOrWhiteSpace([string]$c.authorization_reference) -and
+            $c.actor_project_room -ceq 'PR Messaging Dispatcher' -and
+            $c.actor_task_id -ceq $c.transport_owner_task_id -and
+            $c.actor_machine -ceq $Record.destination.machine -and
+            $c.transport_owner -cmatch '^low-token-[a-z0-9-]+$' -and
+            ![string]::IsNullOrWhiteSpace([string]$c.transport_generation) -and
+            $c.delivery_status -ceq 'Unresolved')
     }
     return $false
 }

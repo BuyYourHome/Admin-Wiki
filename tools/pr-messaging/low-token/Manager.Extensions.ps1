@@ -55,6 +55,44 @@ function Invoke-LtAdministrativeCloseExhaustedAmbiguous($Record,[string]$RecordP
     Write-JsonAtomic $RecordPath $Record
     return $Record
 }
+function Invoke-LtAdministrativeCancelAuthorizedStatus($Record,[string]$RecordPath) {
+    if($ActorProjectRoom -cne 'PR Messaging Dispatcher' -or
+        [string]::IsNullOrWhiteSpace($ActorTaskId) -or
+        [string]::IsNullOrWhiteSpace($AuthorizationReference) -or
+        [string]::IsNullOrWhiteSpace($Detail)){throw 'StatusCancellationAuthorityMissing'}
+    if(Test-PrAdministrativeClosure $Record){
+        if($Record.administrative_closure.disposition -cne 'AuthorizedStatusCancelled' -or
+            $Record.administrative_closure.actor_task_id -cne $ActorTaskId){throw 'AdministrativeClosureConflict'}
+        return $Record
+    }
+    if($Record.administrative_closure){throw 'AdministrativeClosureConflict'}
+    if(!(Test-PrAuthorizedStatusCancellationRecord $Record 30)){throw 'CancellableStatusRecordRequired'}
+    if($ExpectedHash -cnotmatch '^[0-9a-f]{64}$' -or $ExpectedHash -cne $Record.payload_hash){throw 'StatusCancellationHashMismatch'}
+    if($ExpectedRecordVersion -cnotmatch '^[0-9a-f]{64}$' -or
+        (Get-PrMessageDigest ($Record|ConvertTo-Json -Depth 30 -Compress)) -cne $ExpectedRecordVersion){throw 'StatusCancellationVersionConflict'}
+    $ownerPath=Get-LtTransportOwnerPath $QueuePath ([string]$Record.destination.machine)
+    if(!(Test-Path -LiteralPath $ownerPath)){throw 'StatusCancellationLiveOwnerRequired'}
+    $owner=Read-LtJson $ownerPath
+    if($owner.mode -cne 'Live' -or $owner.machine -cne $Record.destination.machine -or
+        $owner.task_id -cne $ActorTaskId -or $owner.owner -cne $TransportOwner -or
+        $owner.generation -cne $Generation -or $owner.sid -cne [Security.Principal.WindowsIdentity]::GetCurrent().User.Value -or
+        $env:COMPUTERNAME -cne $Record.destination.machine){throw 'StatusCancellationOwnerMismatch'}
+    if(@($Record.attempts|Where-Object {$_.transport_owner -cne $owner.owner -or $_.transport_generation -cne $owner.generation}).Count){
+        throw 'StatusCancellationAttemptOwnerMismatch'
+    }
+    $closure=[pscustomobject][ordered]@{
+        schema_version=1;message_id=$Record.message_id;payload_hash=$Record.payload_hash
+        disposition='AuthorizedStatusCancelled';authorized_by='Wes';authorization_reference=$AuthorizationReference
+        actor_project_room=$ActorProjectRoom;actor_task_id=$ActorTaskId;actor_machine=$env:COMPUTERNAME
+        transport_owner=$owner.owner;transport_generation=$owner.generation;transport_owner_task_id=$owner.task_id
+        closed_at_utc=Get-UtcTimestamp;delivery_status='Unresolved';delivery_claimed=$false
+        business_completion_claimed=$false;detail=$Detail
+    }
+    $Record|Add-Member administrative_closure $closure
+    Add-Event $Record 'AdministrativelyClosed' $Detail $ActorProjectRoom $ActorTaskId
+    Write-JsonAtomic $RecordPath $Record
+    return $Record
+}
 function Invoke-LtAdministrativeQuarantineIntegrityFailure($Record,[string]$RecordPath) {
     if($ActorProjectRoom -cne 'PR Messaging Dispatcher' -or
         [string]::IsNullOrWhiteSpace($ActorTaskId) -or
