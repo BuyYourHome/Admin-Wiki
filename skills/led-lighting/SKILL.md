@@ -12,11 +12,11 @@ description: Plan Buy Your Home 24-volt LED lighting for house remodels, includi
 - Skill: `C:\Codex\Wiki Files\skills\led-lighting\SKILL.md`.
 - Read the room README, source inventory, conflict log, and missing-context notes before planning. Read only source documents needed for the current question.
 - Follow `C:\Codex\Wiki Files\Project Room File Ownership And Git Coordination Rule.md` before durable changes. Leave unrelated work untouched.
-- Dedicated task: pending until the dedicated task is created; execution machine `WESSTUDIO`.
+- Dedicated task: `01a0b696-05a2-7291-a857-084a6f2bc2eb`; execution machine `WESSTUDIO`.
 
 ## Messaging Readiness
 
-Pending messaging registration - not dispatchable. Manifest: `C:\Codex\Wiki Files\config\pr-messaging-manifests\led-lighting.json` (created after task identity is known). Task creation alone does not satisfy the exact-recipient messaging gate. No automation is authorized by setup.
+Pending messaging registration - not dispatchable. Manifest: `C:\Codex\Wiki Files\config\pr-messaging-manifests\led-lighting.json`. Task creation alone does not satisfy the exact-recipient messaging gate. No automation is authorized by setup.
 
 ## Inputs And Owned Workflow
 

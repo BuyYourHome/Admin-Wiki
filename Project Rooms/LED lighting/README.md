@@ -10,7 +10,7 @@ This room is for planning and selection support. No purchases, live electrical w
 
 - Package: prepared for discovery; messaging setup pending.
 - Matching skill: `C:\Codex\Wiki Files\skills\led-lighting\SKILL.md`.
-- Dedicated task: pending until the dedicated task is created.
+- Dedicated task: `LED lighting`, id `01a0b696-05a2-7291-a857-084a6f2bc2eb`.
 - Execution machine: `WESSTUDIO`.
 - Branch and repository: `main` in `C:\Codex\Wiki Files`; never the Teams-synced wiki.
 - Trigger: on demand. No automation requested or created.
@@ -19,9 +19,10 @@ This room is for planning and selection support. No purchases, live electrical w
 ## Messaging Readiness
 
 - Pending messaging registration - not dispatchable.
-- Manifest: `C:\Codex\Wiki Files\config\pr-messaging-manifests\led-lighting.json` (created after the exact task id is available).
+- Manifest: `C:\Codex\Wiki Files\config\pr-messaging-manifests\led-lighting.json`.
 - Registration, authenticated host access, exact-recipient synthetic lifecycle, worker destination enrollment, and readiness validation must be recorded before promotion.
 - A task id or startup acknowledgment alone is not messaging readiness. No manual paste is to be represented as unattended validation.
+- Exact local registration and authenticated messaging-host access are verified. Remaining blocker: the existing WESSTUDIO worker has not enrolled this destination; synthetic validation and promotion are pending. See `working/setup-status.md`.
 
 ## Folder Map
 

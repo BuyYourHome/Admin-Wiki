@@ -1,0 +1,25 @@
+{
+  "schema_version": 2,
+  "project_room": "LED lighting",
+  "skill": "led-lighting",
+  "task_id": "01a0b696-05a2-7291-a857-084a6f2bc2eb",
+  "dispatchable": false,
+  "execution_machine": "WESSTUDIO",
+  "owned_actions": ["24-volt remodel lighting planning", "lighting component compatibility review", "lighting load schedules", "review-ready lighting component documentation"],
+  "accepted_message_types": ["request", "question", "status", "decision", "result", "improvement"],
+  "related_project_rooms": ["Jean Wright", "Create PR", "Home Assistant", "Lowes Order"],
+  "limitations": ["No purchases or electrical installation authorized by setup", "No live device changes or unrelated PR edits", "No automatic dispatch until exact messaging readiness passes"],
+  "messaging_readiness": {
+    "status": "pending",
+    "machine_registration_verified_at_utc": "2026-09-18T22:16:24.7185219Z",
+    "host_access_verified_at_utc": "2026-09-18T22:16:30.6614112Z",
+    "validation_message_id": null,
+    "lifecycle_completed_at_utc": null,
+    "notification_count": 0,
+    "dispatcher_task_id": "01a06337-1b59-7dc2-9586-6660eb7b5da7",
+    "dispatcher_automation_id": "BYH PR Messaging Worker - WESSTUDIO",
+    "cross_machine_source": null,
+    "manual_intervention": null,
+    "blocker": "Exact new destination is not in the existing WESSTUDIO worker pins; worker-owned enrollment and synthetic lifecycle remain required."
+  }
+}

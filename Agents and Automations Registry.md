@@ -10,7 +10,7 @@ Use [[Agent Unit Standard]] for the standard package behind an agent-like operat
 
 | Name | Type | Status | Schedule | Primary Definition |
 |---|---|---|---|---|
-| LED lighting | Wiki-managed skill plus project room; dedicated task pending | Pending messaging registration - not dispatchable | On demand | `skills\led-lighting\SKILL.md`; `Project Rooms\LED lighting\README.md` |
+| LED lighting | Wiki-managed skill plus project room plus dedicated task | Pending messaging registration - not dispatchable | On demand | `skills\led-lighting\SKILL.md`; `Project Rooms\LED lighting\README.md`; task `01a0b696-05a2-7291-a857-084a6f2bc2eb` |
 | Jean Wright / Office Assistant | Wiki-managed skill plus project room plus assistant profile and operating role | Active | On demand and through related automations | `skills\jean-wright\SKILL.md`; `Project Rooms\Jean Wright\README.md`; `C:\Codex\Office Assistant Profile.md`; `AGENTS.md` |
 | Jean Dispatcher | Jean Wright mode plus central Project Room routing rule | Active | On demand when Wes asks Jean to delegate, coordinate, or route specialized work | `Project Room Chat Startup Rule.md`; `Project Rooms\Jean Wright\working\dispatcher-routing-map.md`; `Project Rooms\Jean Wright\working\dispatcher-action-log.md`; `skills\jean-wright\SKILL.md` |
 | PR Messaging Dispatcher | Machine-local deterministic worker plus dedicated dispatcher task per execution computer | Live workers validated on WES-VIDEOEDITOR, OFFICEASSIST, and WESSTUDIO; release 0.4.6 is ready for controlled in-place upgrade | Every 60 seconds, 24/7; empty polls use no model tokens; legacy model heartbeats are fallback-only | `Project Room Messaging Rule.md`; `Project Rooms\PR Messaging Dispatcher\README.md`; `skills\pr-messaging-dispatcher\SKILL.md` |
@@ -65,7 +65,7 @@ Use [[Agent Unit Standard]] for the standard package behind an agent-like operat
 
 ## LED lighting
 
-- Dedicated task: pending until the dedicated task is created.
+- Dedicated task: `LED lighting`, id `01a0b696-05a2-7291-a857-084a6f2bc2eb`.
 - Execution machine: `WESSTUDIO`.
 - Status: Pending messaging registration - not dispatchable.
 - Room: `Project Rooms\LED lighting\README.md`; matching skill: `skills\led-lighting\SKILL.md`.
