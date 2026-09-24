@@ -1,5 +1,7 @@
 # SOP - Item 025: Respond to Remove Request in REI
 
+**Sequence navigation:** Previous: [[SOP - Item 024 - Validate Test Text Campaign|← SOP 024]]
+
 ## Purpose
 
 Find contacts who requested removal and mark them for deletion in REI Blackbook.
@@ -62,3 +64,7 @@ Lead Sourcing
 - Last reviewed: 2026-05-23
 - Reviewed by: Codex draft
 - Status: Draft - Needs Review
+
+---
+
+**Sequence navigation:** Previous: [[SOP - Item 024 - Validate Test Text Campaign|← SOP 024]]

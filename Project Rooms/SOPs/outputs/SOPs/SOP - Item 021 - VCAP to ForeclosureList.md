@@ -1,5 +1,7 @@
 # SOP - Item 021: VCAP to ForeclosureList
 
+**Sequence navigation:** Next: [[SOP - Item 022 - Import ForeclosureList to REI|SOP 022 →]]
+
 ## Purpose
 
 Find new foreclosure case records in VCAP, collect required property and hearing information, and enter them into the ForeclosureList spreadsheet.
@@ -78,3 +80,7 @@ Lead Sourcing
 - Last reviewed: 2026-05-23
 - Reviewed by: Codex draft
 - Status: Draft - Needs Review
+
+---
+
+**Sequence navigation:** Next: [[SOP - Item 022 - Import ForeclosureList to REI|SOP 022 →]]

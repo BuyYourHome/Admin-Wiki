@@ -1,12 +1,14 @@
-# SOP - Item 024: Validate Test Text Campaign in REI Blackbook
+# SOP - Item 024: Validate Test Text and Email Campaigns in REI Blackbook
+
+**Sequence navigation:** Previous: [[SOP - Item 022 - Import ForeclosureList to REI|← SOP 022]] | Next: [[SOP - Item 025 - Respond to remove request in REI|SOP 025 →]]
 
 ## Purpose
 
-Review contacts in the test foreclosure text campaign, resolve delivery errors, and tag failed contacts correctly.
+Review contacts in the test foreclosure text and email campaigns, resolve delivery errors, and tag failed contacts correctly.
 
 ## When To Use
 
-Use this after contacts have been added to a test foreclosure text campaign in REI Blackbook.
+Use this after contacts have been added to the test foreclosure text and email campaigns in REI Blackbook.
 
 ## Owner
 
@@ -48,11 +50,21 @@ Lead Sourcing
 16. Remove the `Foreclosure TEST` tag.
 17. Remove the `Foreclosure TEXT 1` tag.
 18. Add the `Foreclosure_Fail` tag.
+19. Immediately after completing the text-campaign validation, click Emails for the contact.
+20. Confirm the contact is enrolled in the correct email campaign.
+21. Check the email activity for delivery errors, bounces, or an inactive campaign.
+22. If the email campaign is active and shows no delivery error, consider the email campaign validated.
+23. If an email error appears, verify the current email address against an available source.
+24. Replace the address only when another verified email address is available, then recheck the campaign.
+25. If no valid email address is available, do not guess or keep retrying. Record or tag the email failure using the established REI campaign convention.
+26. Repeat the email-campaign validation for each contact in the `Test Foreclosure` list.
 
 ## Decision Rules
 
 - Do not text contacts marked DNC or otherwise legally restricted.
+- Do not email contacts who have unsubscribed or requested removal.
 - Use additional numbers only when the source indicates they are valid and usable.
+- Use replacement email addresses only when they are verified by an available source.
 - Failed contacts should be tagged clearly so they do not continue in the same workflow.
 
 ## Common Mistakes
@@ -60,15 +72,21 @@ Lead Sourcing
 - Removing test tags before verifying delivery status.
 - Retrying the same failed phone number.
 - Forgetting to add `Foreclosure_Fail` when no valid number remains.
+- Completing the text validation but skipping the email-campaign check.
 
 ## Source Material
 
 - Source email: `Project Rooms/SOPs/sources/emails/Task Instructions Item 024_ Validate Test Text Campaign.msg`
 - Extracted note: `Project Rooms/SOPs/sources/extracted-emails/Item 024 - Validate Test Text Campaign.md`
 - Spreadsheet item: 24
+- Wes instruction dated 2026-09-24: validate the email campaign immediately after validating the text campaign.
 
 ## Review Notes
 
 - Last reviewed: 2026-05-23
 - Reviewed by: Codex draft
 - Status: Draft - Needs Review
+
+---
+
+**Sequence navigation:** Previous: [[SOP - Item 022 - Import ForeclosureList to REI|← SOP 022]] | Next: [[SOP - Item 025 - Respond to remove request in REI|SOP 025 →]]

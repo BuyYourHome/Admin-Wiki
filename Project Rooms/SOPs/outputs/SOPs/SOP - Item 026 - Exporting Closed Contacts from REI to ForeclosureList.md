@@ -1,5 +1,7 @@
 # SOP - Item 026: Export Closed Contacts from REI to ForeclosureList
 
+**Sequence navigation:** Next: [[SOP - Item 028 - Printing Letters|SOP 028 →]]
+
 ## Purpose
 
 Export closed contacts from REI Blackbook so the ForeclosureList can mark matching records as Do Not Mail.
@@ -71,3 +73,7 @@ Lead Sourcing
 - Last reviewed: 2026-05-23
 - Reviewed by: Codex draft
 - Status: Draft - Needs Review
+
+---
+
+**Sequence navigation:** Next: [[SOP - Item 028 - Printing Letters|SOP 028 →]]

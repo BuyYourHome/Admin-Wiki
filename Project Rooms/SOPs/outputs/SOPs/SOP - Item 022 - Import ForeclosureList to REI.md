@@ -1,5 +1,7 @@
 # SOP - Item 022: Prepare ForeclosureList Export and Import New Records to REI
 
+**Sequence navigation:** Previous: [[SOP - Item 021 - VCAP to ForeclosureList|← SOP 021]] | Next: [[SOP - Item 024 - Validate Test Text Campaign|SOP 024 →]]
+
 ## Purpose
 
 Export new ForeclosureList records, create the CSV used for skip tracing and REI import, and begin the REI Blackbook import process.
@@ -84,3 +86,7 @@ Lead Sourcing
 - Last reviewed: 2026-05-23
 - Reviewed by: Codex draft
 - Status: Draft - Needs Review
+
+---
+
+**Sequence navigation:** Previous: [[SOP - Item 021 - VCAP to ForeclosureList|← SOP 021]] | Next: [[SOP - Item 024 - Validate Test Text Campaign|SOP 024 →]]

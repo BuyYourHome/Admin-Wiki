@@ -1,5 +1,7 @@
 # SOP - Item 067: Start Electrical, Water, and Gas Service
 
+**Sequence navigation:** Previous: [[SOP - Item 066 - Add Insurance|← SOP 066]] | Next: [[SOP - Item 075 - Add property to Our Website|SOP 075 →]]
+
 ## Purpose
 
 Start utility service for a property under the correct company account.
@@ -73,3 +75,7 @@ Property Rehab
 - Last reviewed: 2026-05-23
 - Reviewed by: Codex draft
 - Status: Draft - Needs Review
+
+---
+
+**Sequence navigation:** Previous: [[SOP - Item 066 - Add Insurance|← SOP 066]] | Next: [[SOP - Item 075 - Add property to Our Website|SOP 075 →]]

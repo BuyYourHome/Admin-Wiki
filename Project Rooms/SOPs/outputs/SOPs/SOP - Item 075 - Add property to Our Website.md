@@ -1,5 +1,7 @@
 # SOP - Item 075: Add Property to Website
 
+**Sequence navigation:** Previous: [[SOP - Item 067 - Start Electrical, Water & Gas Service|← SOP 067]]
+
 ## Purpose
 
 Publish or update a property on the BuyYourHomeLLC.com website through REI Blackbook.
@@ -82,3 +84,7 @@ Property Rehab / Marketing
 - Last reviewed: 2026-05-23
 - Reviewed by: Codex draft
 - Status: Draft - Needs Review
+
+---
+
+**Sequence navigation:** Previous: [[SOP - Item 067 - Start Electrical, Water & Gas Service|← SOP 067]]

@@ -1,5 +1,7 @@
 # SOP - Item 028: Printing Letters
 
+**Sequence navigation:** Previous: [[SOP - Item 026 - Exporting Closed Contacts from REI to ForeclosureList|← SOP 026]] · [[SOP - Item 027 - Prepping ForeclosureList for Mailing Letters|← SOP 027]]
+
 ## Purpose
 
 Print foreclosure mailing letters after the ForeclosureList has been prepared.
@@ -53,3 +55,7 @@ Marketing
 - Last reviewed: 2026-05-23
 - Reviewed by: Codex draft
 - Status: Incomplete - Needs Source Document
+
+---
+
+**Sequence navigation:** Previous: [[SOP - Item 026 - Exporting Closed Contacts from REI to ForeclosureList|← SOP 026]] · [[SOP - Item 027 - Prepping ForeclosureList for Mailing Letters|← SOP 027]]

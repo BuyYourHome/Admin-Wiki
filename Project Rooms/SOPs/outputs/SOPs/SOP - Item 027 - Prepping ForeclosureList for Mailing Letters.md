@@ -1,5 +1,7 @@
 # SOP - Item 027: Prep ForeclosureList for Mailing Letters
 
+**Sequence navigation:** Next: [[SOP - Item 028 - Printing Letters|SOP 028 →]]
+
 ## Purpose
 
 Prepare the ForeclosureList workbook so eligible records are moved into the Print Envelopes batch for the next mailing.
@@ -86,3 +88,7 @@ Marketing
 - Last reviewed: 2026-05-23
 - Reviewed by: Codex draft
 - Status: Draft - Needs Review
+
+---
+
+**Sequence navigation:** Next: [[SOP - Item 028 - Printing Letters|SOP 028 →]]

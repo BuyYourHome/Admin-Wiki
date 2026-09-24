@@ -1,5 +1,7 @@
 # SOP - Item 066: Add Property Insurance
 
+**Sequence navigation:** Next: [[SOP - Item 067 - Start Electrical, Water & Gas Service|SOP 067 →]]
+
 ## Purpose
 
 Request property insurance coverage for a new property and make sure interested parties are included.
@@ -69,3 +71,7 @@ Property Rehab
 - Last reviewed: 2026-05-23
 - Reviewed by: Codex draft
 - Status: Draft - Needs Review
+
+---
+
+**Sequence navigation:** Next: [[SOP - Item 067 - Start Electrical, Water & Gas Service|SOP 067 →]]
