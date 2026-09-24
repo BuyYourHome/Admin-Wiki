@@ -1,6 +1,6 @@
 # SOP - Item 024: Validate Test Text and Email Campaigns in REI Blackbook
 
-**Sequence navigation:** Previous: [[SOP - Item 022 - Import ForeclosureList to REI|← SOP 022]] | Next: [[SOP - Item 025 - Respond to remove request in REI|SOP 025 →]]
+**Sequence navigation:** Previous: [[SOP - Item 093 - Direct Skip to REI|← SOP 093]] | Next: [[SOP - Item 025 - Respond to remove request in REI|SOP 025 →]]
 
 ## Purpose
 
@@ -83,10 +83,10 @@ Lead Sourcing
 
 ## Review Notes
 
-- Last reviewed: 2026-05-23
+- Last refreshed: 2026-09-24
 - Reviewed by: Codex draft
 - Status: Draft - Needs Review
 
 ---
 
-**Sequence navigation:** Previous: [[SOP - Item 022 - Import ForeclosureList to REI|← SOP 022]] | Next: [[SOP - Item 025 - Respond to remove request in REI|SOP 025 →]]
+**Sequence navigation:** Previous: [[SOP - Item 093 - Direct Skip to REI|← SOP 093]] | Next: [[SOP - Item 025 - Respond to remove request in REI|SOP 025 →]]
