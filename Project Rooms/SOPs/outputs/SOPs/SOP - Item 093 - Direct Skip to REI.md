@@ -1,5 +1,7 @@
 # SOP - Item 093: Import Direct Skip Results to REI
 
+**Sequence navigation:** Previous: [[SOP - Item 092 - Import to Direct Skip|← SOP 092]] | Next: [[SOP - Item 024 - Validate Test Text Campaign|SOP 024 →]]
+
 ## Purpose
 
 Import edited Direct Skip results into REI Blackbook and start appropriate communication campaigns for each contact.
@@ -64,11 +66,12 @@ Lead Sourcing
 15. Add the property to the contact or connect the contact to the existing property.
 16. If Do Not Call is No, opt the contact in for text following REI's confirmation prompts.
 17. If Do Not Call is DNC, leave the contact opted out and do not text the contact.
-18. Start the email campaign if appropriate.
-19. Start the text campaign if appropriate and legally allowed.
+18. Open the Email Campaign dropdown and choose Start when the contact should receive email.
+19. Open the Start Text Campaign dropdown and choose Start only when the contact is opted in and texting is legally allowed.
 20. Save the profile.
 21. Remove the `Imported` tag after setup is complete.
 22. Move to the next imported contact and repeat.
+23. After the contacts have been enrolled, continue with [[SOP - Item 024 - Validate Test Text Campaign|SOP 024: Validate Test Text and Email Campaigns]].
 
 ## Decision Rules
 
@@ -90,6 +93,11 @@ Lead Sourcing
 
 ## Review Notes
 
-- Last reviewed: 2026-05-23
+- Last refreshed: 2026-09-24
 - Reviewed by: Codex draft
 - Status: Draft - Needs Review
+- Open decision: Item 023 remains historical pending Wes's confirmation that Item 093 fully replaces it.
+
+---
+
+**Sequence navigation:** Previous: [[SOP - Item 092 - Import to Direct Skip|← SOP 092]] | Next: [[SOP - Item 024 - Validate Test Text Campaign|SOP 024 →]]
