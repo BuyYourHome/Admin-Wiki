@@ -82,6 +82,7 @@ function Test-LtRecord($Record,$Client,$Manifests,[string]$Machine,[string]$Mode
     if (!$Record) { return 'MissingTarget' }
     if ($MessageId -and $Record.message_id -cne $MessageId) { return 'WrongTarget' }
     if (!(Get-PrMessageHashEvidence $Record).valid) { return 'HashMismatch' }
+    if($Record.administrative_closure.disposition -ceq 'ObsoleteRollbackRetired' -and (Test-PrAdministrativeClosure $Record)){return 'AdministrativelyRetired'}
     try { Assert-LtId $Record.message_id; Assert-LtUuid $Record.destination.task_id; Assert-LtUuid $Record.source.task_id } catch { return 'InvalidIdentity' }
     if ($Record.authoritative -ne $true) { return 'NotAuthoritative' }
     if ($Record.destination.machine -cne $Machine -or $Client.machine -cne $Machine) { return 'MachineMismatch' }

@@ -2,6 +2,16 @@
 
 ## Controlled release 0.4.6
 
+### Exact obsolete Doc Scan rollback retirement
+
+`AdministrativeRetireObsoleteRollback` is restricted to `prmsg-doc-scan-rollback-review-20260824-001`, its fixed immutable digest, obsolete Doc Scan destination, original Queued state, and three exact completed attempts (one ambiguous, two NotDelivered). It is separate from `AdministrativeCloseExhaustedAmbiguous`; that guard is unchanged.
+
+Only the current OFFICEASSIST Live owner `low-token-officeassist`, generation `0.4.0`, dispatcher task `01a09d84-a309-7591-a790-e770fcb53dee`, matching Windows SID, and the exact September 25 Wes cancellation reference may retire it. The caller must retrieve a fresh record and supply `ExpectedHash` and `ExpectedRecordVersion`. Recipient activity, pending/incomplete attempts, identity drift, and version conflicts fail closed.
+
+The operation appends `ObsoleteRollbackRetired` administrative evidence and one event without changing payload, stored hash, state, or attempts. Delivery remains unresolved; neither delivery nor business completion is claimed. The canonical manager rejects subsequent dispatch and recipient mutation actions; worker eligibility recognizes retirement. Repeated retirement calls also reject rather than rewriting evidence. Publish reviewed changes and use the existing `UpgradeLive` procedure to refresh the manager/package pins before applying retirement. Do not hand-edit runtime pins or records.
+
+`tests\Test-ObsoleteRollbackRetirement.ps1` exercises the canonical manager in a marked temporary fixture queue. Its isolated source copy substitutes only the hardcoded digest for a synthetic fixture digest; production exposes no fixture override. It tests evidence preservation, dispatch/late-processing rejection, and authority, identity, hash, version, attempt, and recipient-activity failures.
+
 Release `0.4.6` preserves all `0.4.5` transport controls and corrects the versioned Codex CLI pin during guarded in-place upgrades:
 
 - `UpgradeLive` resolves `codex.exe` under the normal user's local Codex `bin` directory, rejects unreviewed locations and reparse points, and pins the current absolute path and SHA-256.
