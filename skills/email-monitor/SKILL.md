@@ -51,6 +51,12 @@ The automation path above is the only Email Monitor runtime memory file. Do not 
 
 Formal modes are `Email Summary`, `Health Check`, `Task Health`, `Email Routing`, `Route Vendor Invoice`, `Organize`, and `Email Delivery`. Email Routing may invoke a specialized routing mode, but the invoked mode keeps its own acceptance, state, retry, and escalation rules.
 
+### Project Room Handoff Construction
+
+For every future Email Monitor handoff that creates a central Project Room record, use `C:\Codex\Wiki Files\Project Rooms\Email Monitor\tools\Send-EmailMonitorProjectRoomHandoff.ps1`. Do not bypass it with a direct shared-manager `Send` call. Before creation, the builder must validate the canonical message type, exact manifest-resolved destination, nonempty payload, immutable source evidence, and the complete authorization fields: actual `authorized_by`, exact authorized `instruction`, explicit `scope`, matching `evidence_reference`, and Boolean `business_action_authorized`.
+
+The authority evidence must name the same actual authorizer. An authorizing email reference preserves a stable reference id, Outlook message id or link, exact sender, received time, and subject. A direct task authorization preserves the task/thread and turn reference and exact authorizer. Keep a routed source as separate evidence when its sender is not the authorizer. Never infer Wes's approval from another sender, the forwarding sender, the dispatcher, or the wake-up task, and never add or broaden authorization merely to satisfy validation. An incomplete or mismatched package stops before central creation and notification.
+
 ### Email Summary
 
 Use Email Summary for the once-daily Boss, Jenny, and Josh Outlook mailbox summaries.
@@ -347,7 +353,11 @@ For each routed email:
 - if an apparent invoice attachment cannot be retrieved, preserve the Outlook link and exact attachment-access blocker;
 - include the Outlook reference, external path if any, summary, and status in the central handoff; do not edit Invoice Entry's Git-tracked source inventory or work-status file during routine routing;
 - record the routed Outlook message id in Email Monitor compact state so the same source is not routed repeatedly;
-- create the durable message before any task-message call by using `C:\Codex\Wiki Files\tools\pr-messaging\Manage-ProjectRoomMessage.ps1 -Action Send`; use the shared runtime queue and state contract in `working\dispatch-queue-spec.md`; never create a new record in the legacy Email Monitor queue;
+- build every new durable Project Room handoff through `C:\Codex\Wiki Files\Project Rooms\Email Monitor\tools\Send-EmailMonitorProjectRoomHandoff.ps1`; never call the shared manager's `Send` action directly from Email Monitor and never create a new record in the legacy Email Monitor queue;
+- before central creation, require the builder to validate the canonical message type, exact manifest-resolved destination Project Room/task/machine, nonempty payload, and immutable source references; validation failure is a blocker and must not create a central record or send a wake-up;
+- require every authorization object to contain nonblank `authorized_by`, the exact authorized `instruction`, explicit `scope`, a matching `evidence_reference`, and Boolean `business_action_authorized`; the authority evidence must name the same actual authorizer or sender;
+- for email authority, preserve a stable reference id, Outlook message id or link, exact sender, received time, and subject; for direct task authority, preserve the task/thread and turn reference and the exact authorizer; keep routed-source evidence separate when it is not itself the authority;
+- never infer Wes's approval from Jenny, Josh, a vendor, a forwarding sender, or a wake-up task; never insert `authorized_by: Wes` or broaden scope merely to pass validation; if the authoritative evidence does not establish the requested action, preserve the actual sender and narrower instruction or stop with an authorization blocker;
 - resolve Invoice Entry's exact execution machine from its active destination manifest and pass it explicitly as `DestinationMachine` on every central `Send`; a missing, wildcard, inferred, or blank destination machine is a creation blocker and must never be serialized as `null`;
 - use one stable dispatch ID and immutable payload; idempotent creation with the same payload is safe, but the same ID with different content is a blocker;
 - store the source and concise handoff fields in the queue record, then send the existing Invoice Entry task one wake-up message containing the dispatch ID, queue-record path, and these fields in this exact order:

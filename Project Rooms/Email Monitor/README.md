@@ -41,6 +41,10 @@ This project room holds development notes, source inventory, and review artifact
 
 Formal modes are Email Summary, Health Check, Task Health, Email Routing, Route Vendor Invoice, Organize, and Email Delivery.
 
+### Project Room Handoff Construction
+
+All future Email Monitor handoffs that create a central Project Room record must use `tools\Send-EmailMonitorProjectRoomHandoff.ps1`. The builder validates authorization, evidence, destination, message type, and payload before it may delegate creation to the shared manager. Incomplete or mismatched packages stop before central creation or task notification. This applies across modes, including vendor invoices, approvals, corrections, status returns, and improvements.
+
 ### Email Summary
 
 Use this mode for the once-daily Boss, Jenny, and Josh Outlook mailbox summaries.
@@ -117,7 +121,9 @@ Use this branch for invoice, bill, receipt, statement, pay-application, payment-
 
 This mode creates the durable central message before task notification, verifies the destination is idle before attempting a wake-up message, requires the exact dispatch ID in a durable `Accepted` receipt, retries the same immutable message only after reconciliation, and emails Wes once through verified OfficeAssist delivery if acknowledgment is missing before the routing run ends. See `working\dispatch-queue-spec.md` and `C:\Codex\Wiki Files\tools\pr-messaging\Manage-ProjectRoomMessage.ps1`.
 
-Every central `Send` must include the exact execution machine from Invoice Entry's active manifest as `DestinationMachine`. Never create a record with a blank, wildcard, inferred, or `null` destination machine. The wake-up task is transport only; Invoice Entry evaluates authorization from the verified same-ID central record.
+Build every future central handoff through `tools\Send-EmailMonitorProjectRoomHandoff.ps1`; Email Monitor must not call the shared manager's `Send` action directly. The builder fails closed before central creation unless the package includes a valid message type, exact manifest-resolved destination, immutable source evidence, nonblank `authorization.authorized_by`, exact authorized `instruction`, explicit `scope`, a matching `evidence_reference`, and Boolean `business_action_authorized`. The authority evidence must name the same actual authorizer. Never infer Wes's approval from another sender, treat the wake-up task as authority, or add authorization merely to satisfy validation.
+
+Every central handoff must include the exact execution machine from Invoice Entry's active manifest as `DestinationMachine`. Never create a record with a blank, wildcard, inferred, or `null` destination machine. The wake-up task is transport only; Invoice Entry evaluates authorization from the verified same-ID central record.
 
 Send Invoice Entry one concise handoff with these fields in order: exact `mailbox`, `outlook_message_id`, `outlook_link`, attachment paths or exact blocker, short factual `summary`, `requested_operation`, and `unique_warning`. Use `none` when there is no attachment or source-specific warning. Apply the same format to Time Card, approval, correction, and paid-receipt routing.
 
@@ -193,6 +199,7 @@ When the workflow changes, update the skill, this project room, and the registry
 - 2026-09-16: Added durable delegated email authorization, verified authority sources, Tim Fleming standing accuracy-review delivery, and request-ID-plus-payload-hash exactly-once retry rules while preserving sender, recipient, attachment, Sent Items, and Wes-reserved action gates.
 
 - 2026-08-14: Made Route Vendor Invoice a formal mode and added a durable runtime dispatch queue, payload hashing, idempotent receipts, explicit lifecycle states, idle-only bounded notification attempts, independent acceptance verification, and verified OfficeAssist escalation for missing acknowledgments.
+- 2026-09-25: Added an Email Monitor-owned fail-closed handoff builder and non-production validation test after a Tim approval correction preserved its evidence and instruction but omitted `authorization.authorized_by` before central creation.
 
 - 2026-08-01: Standardized concise Invoice Entry routing handoffs for invoices, Time Cards, approvals, corrections, and paid receipts; moved detailed evidence to Email Monitor records; required reconciliation before any slow-response resend; and reduced successful delivery callbacks to verified result fields only.
 
