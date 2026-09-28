@@ -14,7 +14,7 @@ $started=[DateTime]::UtcNow; $watch=[Diagnostics.Stopwatch]::StartNew()
 $lock=$null; $cfg=$null; $journal=$null
 $script:centralRecordChanged=$false
 $health=[ordered]@{schema_version=1;release=$null;mode=$Mode;machine=$env:COMPUTERNAME;sid=[Security.Principal.WindowsIdentity]::GetCurrent().User.Value;started_at_utc=$started.ToString('o');status='Starting';queue_reachable=$false;claims=0;submissions=0;model_requests=0;journal_closed_skipped=0;reconciled=@();attention=@();candidates=@();next_tick_at_utc=$started.AddSeconds(60).ToString('o')}
-$script:PrHashMetrics=@{calls=0;elapsed_ms=0.0}
+$script:PrHashMetrics=@{calls=0;calculations=0;cache_hits=0;elapsed_ms=0.0}
 $health.diagnostics=[ordered]@{version=1;pid=$PID;priority=[string]([Diagnostics.Process]::GetCurrentProcess().PriorityClass);phases=@();manager_calls=@();before_conditional_claim=@();hash_checks=$script:PrHashMetrics}
 $script:phase='preflight';$script:phaseStart=0L;$script:phaseHashStart=0
 function Set-LtPhase([string]$Name) {
@@ -186,6 +186,7 @@ try {
         if($script:centralRecordChanged){$records=@(Invoke-Manager 'List' @{DestinationMachine=$env:COMPUTERNAME})}
     }
     Set-LtPhase 'candidate_evaluation';Save-LtCheckpoint
+    Start-PrIntegritySnapshot
     $scoped=@(if($MessageId){$records|Where-Object message_id -CEQ $MessageId}else{$records|Where-Object {$_.destination.machine -ceq $env:COMPUTERNAME -and $_.state -in @('Queued','Delivery Ambiguous')}})
     if($MessageId -and $scoped.Count -ne 1){$health.attention+=@{message_id=$MessageId;reason='MissingOrDuplicateTarget'}}
     foreach($r in @($scoped|Sort-Object created_at_utc,message_id)){
@@ -211,6 +212,7 @@ try {
         Invoke-CrashTestPause 'AfterPlan'
         if($FailurePoint -eq 'AfterPlan'){throw 'InjectedAfterPlan'}
         Set-LtPhase 'claim_and_submission';Save-LtCheckpoint
+        Stop-PrIntegritySnapshot
         $claim=Invoke-Manager 'ConditionalClaim' @{MessageId=$r.message_id;ExpectedHash=$r.payload_hash;ExpectedVersion=(Get-LtVersion $r);ExpectedConfigHash=$configurationHash;AttemptId=$entry.attempt_id}
         if(!$claim.claimed){$entry.phase='closed';$entry.outcome='NotClaimed';$entry|Add-Member claim_denial $claim.reason -Force;Save-Journal;continue}
         $health.claims++
@@ -261,6 +263,7 @@ try {
     $health.error=if($failureText -cmatch '^[A-Za-z][A-Za-z0-9]{0,80}$'){$failureText}elseif($failureText.StartsWith('ManagerFailed:')){'ManagerFailed'}else{'WorkerFailure'}
     $health.error_sha256=Get-LtSha256 $failureText
 }finally{
+    Stop-PrIntegritySnapshot
     Set-LtPhase 'finished'
     if($journal){$health.outstanding_attempts=@($journal.entries|Where-Object phase -ne 'closed'|ForEach-Object{@{message_id=$_.message_id;destination_task_id=$_.destination_task_id;attempt_id=$_.attempt_id;phase=$_.phase;queued_receipt_warning_seconds=$cfg.queued_receipt_warning_seconds}})}
     $health.completed_at_utc=[DateTime]::UtcNow.ToString('o');$health.elapsed_ms=$watch.ElapsedMilliseconds

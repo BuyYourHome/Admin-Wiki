@@ -344,7 +344,11 @@ function Invoke-LtManagerOperation {
         $manifests=@(Get-ChildItem -LiteralPath $ManifestDirectory -Filter '*.json' -File | ForEach-Object { Read-LtJson $_.FullName })
         if ((Get-LtConfigHash $client $manifests) -cne $ExpectedConfigHash) { return [pscustomobject]@{claimed=$false;reason='ConfigurationConflict'} }
         $all=@(Get-ChildItem -LiteralPath (Join-Path $QueuePath 'records') -Filter '*.json' -File | ForEach-Object {Read-Record $_.FullName})
-        $reason=Test-LtRecord $r $client $manifests $env:COMPUTERNAME $Mode $MessageId $all
+        # This inventory was read inside the queue lock. Never inherit worker
+        # evidence or retain cache state after this one atomic validation.
+        Start-PrIntegritySnapshot
+        try{$reason=Test-LtRecord $r $client $manifests $env:COMPUTERNAME $Mode $MessageId $all}
+        finally{Stop-PrIntegritySnapshot}
         if ($reason -cne 'Eligible') { return [pscustomobject]@{claimed=$false;reason=$reason} }
         $attempt=[pscustomobject][ordered]@{attempt_id=$AttemptId;started_at_utc=(Get-UtcTimestamp);completed_at_utc=$null;outcome='Pending';detail=$null;transport_owner=$TransportOwner;transport_generation=$Generation}
         $r.attempts=@($r.attempts)+@($attempt); $r.attempt_count=[int]$r.attempt_count+1; $r.state='Delivery Attempted'

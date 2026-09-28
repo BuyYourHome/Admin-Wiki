@@ -49,19 +49,41 @@ function Convert-PrMessageLegacyDateValues($Value) {
     return $Value
 }
 function Get-PrMessageHashEvidence($Record) {
-    if(!$script:PrHashMetrics){return Get-PrMessageHashEvidenceCore $Record}
+    if(!$script:PrHashMetrics -and $null -eq $script:PrIntegritySnapshot){return Get-PrMessageHashEvidenceCore $Record}
     $timer=[Diagnostics.Stopwatch]::StartNew()
-    try { Get-PrMessageHashEvidenceCore $Record }
-    finally {$script:PrHashMetrics.calls++;$script:PrHashMetrics.elapsed_ms+=$timer.Elapsed.TotalMilliseconds}
+    try {
+        $key=$null
+        if($null -ne $script:PrIntegritySnapshot){
+            # Full record content, not message id or stored immutable hash. A
+            # changed payload, state, receipt, or attempt can never hit this key.
+            $key=Get-PrMessageDigest ($Record|ConvertTo-Json -Depth 30 -Compress)
+            if($script:PrIntegritySnapshot.ContainsKey($key)){
+                if($script:PrHashMetrics){$script:PrHashMetrics.cache_hits++}
+                return $script:PrIntegritySnapshot[$key]
+            }
+        }
+        if($script:PrHashMetrics){$script:PrHashMetrics.calculations++}
+        $evidence=Get-PrMessageHashEvidenceCore $Record
+        if($key){$script:PrIntegritySnapshot[$key]=$evidence}
+        return $evidence
+    }
+    finally {if($script:PrHashMetrics){$script:PrHashMetrics.calls++;$script:PrHashMetrics.elapsed_ms+=$timer.Elapsed.TotalMilliseconds}}
 }
+function Start-PrIntegritySnapshot { $script:PrIntegritySnapshot=@{} }
+function Stop-PrIntegritySnapshot { $script:PrIntegritySnapshot=$null }
 function Get-PrMessageHashEvidenceCore($Record) {
     $immutable=[ordered]@{message_type=[string]$Record.message_type;parent_message_id=[string]$Record.parent_message_id;source=$Record.source;destination=$Record.destination;authorization=$Record.authorization;references=$Record.references;payload=$Record.payload}
     $canonical=$immutable|ConvertTo-Json -Depth 30 -Compress
     $plain=Get-PrMessageDigest (Convert-PrMessageJsonEscaping $canonical $false)
     $html=Get-PrMessageDigest (Convert-PrMessageJsonEscaping $canonical $true)
     $legacyCanonical=(Convert-PrMessageLegacyDateValues $immutable)|ConvertTo-Json -Depth 30 -Compress
-    $legacyPlain=Get-PrMessageDigest (Convert-PrMessageJsonEscaping $legacyCanonical $false)
-    $legacyHtml=Get-PrMessageDigest (Convert-PrMessageJsonEscaping $legacyCanonical $true)
+    if($legacyCanonical -ceq $canonical){
+        # Identical bytes need no second escaping pass or digest calculation.
+        $legacyPlain=$plain;$legacyHtml=$html
+    }else{
+        $legacyPlain=Get-PrMessageDigest (Convert-PrMessageJsonEscaping $legacyCanonical $false)
+        $legacyHtml=Get-PrMessageDigest (Convert-PrMessageJsonEscaping $legacyCanonical $true)
+    }
     [pscustomobject]@{
         valid=($Record.payload_hash -cmatch '^[0-9a-f]{64}$' -and
             $Record.payload_hash -cin @($plain,$html,$legacyPlain,$legacyHtml))

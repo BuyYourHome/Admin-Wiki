@@ -26,6 +26,34 @@ Check 'diagnostics survive post-claim failure without duplicate submission' {
     $h=Tick $f
     Assert ((CountSubmissions $f) -eq 0 -and (Record $f).attempt_count -eq 1)
 }
+Check 'snapshot reuses unchanged evidence and rejects altered immutable content' {
+    $f=Fixture;$r=Record $f;$script:PrHashMetrics=@{calls=0;calculations=0;cache_hits=0;elapsed_ms=0.0}
+    Start-PrIntegritySnapshot
+    Assert (Get-PrMessageHashEvidence $r).valid
+    Assert (Get-PrMessageHashEvidence $r).valid
+    Assert ($script:PrHashMetrics.calculations -eq 1 -and $script:PrHashMetrics.cache_hits -eq 1)
+    $r.payload.synthetic_test=$false
+    Assert (!(Get-PrMessageHashEvidence $r).valid)
+    Assert ($script:PrHashMetrics.calculations -eq 2)
+    Stop-PrIntegritySnapshot
+    Start-PrIntegritySnapshot
+    Assert (!(Get-PrMessageHashEvidence $r).valid)
+    Assert ($script:PrHashMetrics.calculations -eq 3) 'Cache crossed snapshot boundary'
+    Stop-PrIntegritySnapshot;$script:PrHashMetrics=$null
+}
+Check 'atomic claim rereads altered state and payload after cached validation' {
+    foreach($fault in @('payload','state')){
+        $f=Fixture;$r=Record $f;$args=ClaimArgs $f
+        Start-PrIntegritySnapshot;Assert (Get-PrMessageHashEvidence $r).valid
+        if($fault -eq 'payload'){$r.payload.synthetic_test=$false}else{$r.state='Blocked'}
+        SaveRecord $f $r
+        $rejected=$false
+        try{$answer=(& $manager @args|Out-String)|ConvertFrom-Json;$rejected=(!$answer.claimed)}catch{$rejected=$_.Exception.Message -eq 'ImmutableHashMismatch'}
+        Stop-PrIntegritySnapshot
+        Assert $rejected ('Cached evidence accepted altered '+$fault)
+        Assert ((Record $f).attempt_count -eq 0)
+    }
+}
 $summary=@{passed=@($results|Where-Object passed).Count;failed=@($results|Where-Object {!$_.passed}).Count;tests=$results}
 if($EvidenceDirectory){Write-LtJson (Join-Path $EvidenceDirectory 'diagnostics-tests.json') $summary}
 $summary|ConvertTo-Json -Depth 7
