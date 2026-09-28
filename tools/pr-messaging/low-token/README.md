@@ -2,6 +2,12 @@
 
 ## Controlled release 0.4.6
 
+### Scheduled phase diagnostics (2026-09-28)
+
+Guarded `UpgradeLive` refreshes the release-pinned diagnostic build without changing schedule, time bounds, priority, identity, or delivery rules. Health includes preflight, List, journal reconciliation, candidate evaluation, manager-call durations, hash-check counts/time, process identity/priority, and the elapsed/remaining budget immediately before the claim gate. Phase and candidate checkpoints preserve progress during a long or interrupted tick. Timings are inclusive; manager-call durations inside a phase must not be added again.
+
+Failed preflight writes only a separate `preflight-health.json` at the fixed local transport directory (or validated isolated fixture state directory), never an untrusted configuration path or another worker's lock-protected health. Diagnostics contain counts/timings and safe error codes plus an error digest, not payloads or command output. `Test-WorkerDiagnostics.ps1` covers successful phases, preflight failure preservation, and failure recovery without duplicate submission.
+
 ### Exact obsolete Doc Scan rollback retirement
 
 `AdministrativeRetireObsoleteRollback` is restricted to `prmsg-doc-scan-rollback-review-20260824-001`, its fixed immutable digest, obsolete Doc Scan destination, original Queued state, and three exact completed attempts (one ambiguous, two NotDelivered). It is separate from `AdministrativeCloseExhaustedAmbiguous`; that guard is unchanged.

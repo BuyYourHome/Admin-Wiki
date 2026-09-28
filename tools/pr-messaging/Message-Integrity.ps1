@@ -49,6 +49,12 @@ function Convert-PrMessageLegacyDateValues($Value) {
     return $Value
 }
 function Get-PrMessageHashEvidence($Record) {
+    if(!$script:PrHashMetrics){return Get-PrMessageHashEvidenceCore $Record}
+    $timer=[Diagnostics.Stopwatch]::StartNew()
+    try { Get-PrMessageHashEvidenceCore $Record }
+    finally {$script:PrHashMetrics.calls++;$script:PrHashMetrics.elapsed_ms+=$timer.Elapsed.TotalMilliseconds}
+}
+function Get-PrMessageHashEvidenceCore($Record) {
     $immutable=[ordered]@{message_type=[string]$Record.message_type;parent_message_id=[string]$Record.parent_message_id;source=$Record.source;destination=$Record.destination;authorization=$Record.authorization;references=$Record.references;payload=$Record.payload}
     $canonical=$immutable|ConvertTo-Json -Depth 30 -Compress
     $plain=Get-PrMessageDigest (Convert-PrMessageJsonEscaping $canonical $false)
