@@ -2,6 +2,12 @@
 param([string]$EvidenceDirectory)
 $ErrorActionPreference='Stop'
 . "$PSScriptRoot\Test-LowTokenWorker.ps1" -LibraryOnly
+Check 'literal runs preserve exact escape bytes and literal backslash sequences' {
+    $plain='{"text":"long uninterrupted text A&B <tag> can''t \\u0027"}'
+    $html='{"text":"long uninterrupted text A\u0026B \u003ctag\u003e can\u0027t \\u0027"}'
+    Assert ((Convert-PrMessageJsonEscaping $plain $true) -ceq $html)
+    Assert ((Convert-PrMessageJsonEscaping $html $false) -ceq $plain)
+}
 Check 'diagnostics preserve successful phase and claim evidence' {
     $f=Fixture;$h=Tick $f
     Assert ($h.status -eq 'TickComplete' -and $h.claims -eq 1 -and (CountSubmissions $f) -eq 1)

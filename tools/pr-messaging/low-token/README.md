@@ -10,6 +10,8 @@ Failed preflight writes only a separate `preflight-health.json` at the fixed loc
 
 Natural diagnostic ticks identified repeated immutable verification as the dominant candidate cost. Candidate evaluation now reuses evidence only under a digest of the complete unchanged inventory record, discarding it before ConditionalClaim and at tick exit. Changed payload, hash, state, receipt, or attempts miss that cache. The atomic manager separately rereads state and owner under the queue lock, verifies target hash/version, then creates and destroys its own cache for that locked inventory; worker evidence is never passed in. There is no persistent cache or reuse across ticks. Identical canonical and legacy-date representations share their already-calculated hashes; different representations retain all compatibility checks. Health reports requested checks, actual calculations, and cache hits.
 
+The JSON escape verifier processes unchanged literal text in runs instead of invoking a PowerShell callback per character. Escape sequences and the five HTML-sensitive characters remain separate atomic tokens; canonical bytes and accepted hashes are unchanged. This avoids interpreter overhead without relaxing integrity validation or changing execution budgets.
+
 ### Exact obsolete Doc Scan rollback retirement
 
 `AdministrativeRetireObsoleteRollback` is restricted to `prmsg-doc-scan-rollback-review-20260824-001`, its fixed immutable digest, obsolete Doc Scan destination, original Queued state, and three exact completed attempts (one ambiguous, two NotDelivered). It is separate from `AdministrativeCloseExhaustedAmbiguous`; that guard is unchanged.

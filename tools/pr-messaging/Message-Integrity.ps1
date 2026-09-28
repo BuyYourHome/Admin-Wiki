@@ -6,7 +6,9 @@ function Convert-PrMessageJsonEscaping([string]$Json,[bool]$Html) {
     [regex]::Replace($Json, '"(?:\\.|[^"\\])*"', [Text.RegularExpressions.MatchEvaluator]{
         param($token)
         $inner=$token.Value.Substring(1,$token.Value.Length-2)
-        $converted=[regex]::Replace($inner, '\\(?:u[0-9a-fA-F]{4}|.)|[^\\]', [Text.RegularExpressions.MatchEvaluator]{
+        # Ordinary text is unchanged; consume it as a run instead of invoking
+        # PowerShell once per character. Escapes and HTML characters stay atomic.
+        $converted=[regex]::Replace($inner, '\\(?:u[0-9a-fA-F]{4}|.)|[''&<>"]|[^\\''&<>"]+', [Text.RegularExpressions.MatchEvaluator]{
             param($part)
             $v=$part.Value
             $character=switch -CaseSensitive ($v) {
