@@ -119,6 +119,20 @@ Email Monitor does not create or edit Manager tasks, infer task status changes, 
 
 Use this branch for invoice, bill, receipt, statement, pay-application, payment-request, project-cost, and exact-subject `Time Card` sources that belong to Invoice Entry.
 
+Before activating this branch, classify an automated or outside-party email as `No Routing Required - Availability Notice Only` only when every condition below is true:
+
+- it merely says that a statement or other financial document is available online;
+- the actual invoice, statement, receipt, or other document is not attached or otherwise supplied;
+- it contains no payable amount, balance, minimum due, due date, transaction detail, or other actionable financial information;
+- Wes did not explicitly instruct Email Monitor or Invoice Entry to retrieve or process the document; and
+- obtaining the document would require logging into an account or portal.
+
+For this classification, do not create an Invoice Entry dispatch, missing-document blocker, or retrieval request; do not access the provider account or portal; consolidate duplicate copies; and retain only the compact monitor deduplication state needed to avoid repeat processing. Take no approval, payment, filing, workbook, accounting, or paid-status action. Do not add a transaction-specific Teams or Git record merely to record the ignored notice.
+
+This exclusion does not apply when an invoice, statement, receipt, or Time Card is supplied; the email contains actionable financial details; Wes explicitly requested retrieval or processing; or any classification fact is uncertain. In those cases, continue the normal Route Vendor Invoice evaluation without guessing.
+
+When reviewing a previously routed unresolved record, apply the exclusion only if the immutable central record proves every condition. Preserve the original payload and event history, consolidate known duplicate source copies, and have Invoice Entry use its own canonical lifecycle to close the record as `Completed - No Processing Required - Availability Notice Only`. Do not create a replacement dispatch or ask Invoice Entry to obtain the missing document. An already terminal record may be clarified only through the canonical linked correction or administrative process; never rewrite its audit history.
+
 This mode creates the durable central message before task notification, verifies the destination is idle before attempting a wake-up message, requires the exact dispatch ID in a durable `Accepted` receipt, retries the same immutable message only after reconciliation, and emails Wes once through verified OfficeAssist delivery if acknowledgment is missing before the routing run ends. See `working\dispatch-queue-spec.md` and `C:\Codex\Wiki Files\tools\pr-messaging\Manage-ProjectRoomMessage.ps1`.
 
 Build every future central handoff through `tools\Send-EmailMonitorProjectRoomHandoff.ps1`; Email Monitor must not call the shared manager's `Send` action directly. The builder fails closed before central creation unless the package includes a valid message type, exact manifest-resolved destination, immutable source evidence, nonblank `authorization.authorized_by`, exact authorized `instruction`, explicit `scope`, a matching `evidence_reference`, and Boolean `business_action_authorized`. The authority evidence must name the same actual authorizer. Never infer Wes's approval from another sender, treat the wake-up task as authority, or add authorization merely to satisfy validation.
@@ -195,6 +209,8 @@ Use this room for development and design work. Do not change the live automation
 When the workflow changes, update the skill, this project room, and the registry together.
 
 ## Change Log
+
+- 2026-09-28: Added `No Routing Required - Availability Notice Only` as a fail-closed pre-routing exclusion when every required criterion is proven, including duplicate consolidation, compact deduplication state, no portal or retrieval action, and canonical cleanup of qualifying unresolved central records without rewriting audit history.
 
 - 2026-09-16: Added durable delegated email authorization, verified authority sources, Tim Fleming standing accuracy-review delivery, and request-ID-plus-payload-hash exactly-once retry rules while preserving sender, recipient, attachment, Sent Items, and Wes-reserved action gates.
 

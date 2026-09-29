@@ -335,6 +335,28 @@ Manager must determine whether the email is a new task request, delivery-related
 
 Use Route Vendor Invoice when Email Routing sees a contractor or vendor email that appears to contain or request processing of an invoice, bill, receipt, payment request, statement, pay application, draw request, or project-cost document.
 
+#### Availability-only exclusion
+
+Before applying any Route Vendor Invoice activation rule, classify an automated or outside-party email as `No Routing Required - Availability Notice Only` only when all of these are true:
+
+- the email merely says that a statement or other financial document is available online;
+- the actual invoice, statement, receipt, or other document is not attached or otherwise supplied;
+- the email contains no payable amount, balance, minimum due, due date, transaction detail, or other actionable financial information;
+- Wes did not explicitly instruct Email Monitor or Invoice Entry to retrieve or process the document; and
+- obtaining the document would require logging into an account or portal.
+
+For an availability-only notice:
+
+- do not create an Invoice Entry dispatch, missing-document blocker, or request that Wes retrieve the document;
+- do not access the provider account or portal;
+- consolidate duplicate copies and retain only the compact Email Monitor deduplication state needed to avoid processing the source again;
+- do not create a transaction-specific Teams or Git record merely to record the ignored notice; and
+- take no approval, payment, filing, workbook, accounting, paid-status, or other business action.
+
+Do not apply this exclusion when an invoice, statement, receipt, or Time Card is attached or otherwise supplied; the email contains actionable financial information; Wes explicitly requested retrieval or processing; or classification is uncertain. Continue normal routing evaluation in those cases without inferring missing facts.
+
+During an authorized review of previously routed unresolved records, use the immutable central record to verify every criterion. Preserve the original payload and event history, consolidate known duplicate sources, and have Invoice Entry close each qualifying record through its own canonical lifecycle as `Completed - No Processing Required - Availability Notice Only`. Do not create a replacement dispatch or ask Invoice Entry to process or retrieve the missing document. Clarify an already terminal record only through a new linked correction or the authorized administrative closure process; never overwrite the original record.
+
 For files preserved in SharePoint/Teams, hand Invoice Entry the canonical SharePoint item URL/ID or the site, library, and drive-relative path. Do not make a Windows path from OFFICEASSIST or another sender machine the authoritative file reference. Include a local synced path only as a clearly labeled nonportable hint; Invoice Entry resolves its own local path if a desktop tool requires one.
 
 This is a formal Email Monitor mode, not an informal Email Routing label. It owns source routing, durable dispatch creation, Invoice Entry notification, acceptance verification, bounded retry, and missing-acknowledgment escalation. It does not own invoice approval, payment, vendor contact, final accounting judgment, live project-spreadsheet entry, Teams filing, or creating a new Invoice Entry chat.
