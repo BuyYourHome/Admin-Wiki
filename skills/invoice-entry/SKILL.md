@@ -151,6 +151,19 @@ At every Invoice Entry startup and backup-monitor run:
 
 Queue presence authorizes intake only. It does not authorize approval, payment, filing, workbook posting, vendor contact, email delivery, or another gated action. A malformed, conflicting, or inaccessible record must be blocked; wrong-room work must be rejected with the same dispatch ID and a concise reason.
 
+### Availability-Only Financial Notices
+
+An automated or outside-party email that only says a bank, lender, credit-card issuer, utility, or other provider has made a statement or document available online is not an invoice, Statement packet, or actionable Invoice Entry source when all of these are true:
+
+- the actual invoice, statement, receipt, or other financial document is not attached or otherwise supplied;
+- the routed source supplies no payable amount, balance, minimum due, due date, transaction detail, or other facts requiring Invoice Entry processing;
+- Wes did not explicitly instruct Invoice Entry to retrieve the document or take another specific action; and
+- accessing an account or portal would be required to obtain the missing document.
+
+Do not create a transaction packet, missing-document blocker, payable, follow-up request, or `Needs Wes` item from an availability-only notice. For a verified central record already addressed to Invoice Entry, deduplicate repeated copies, write the required `Accepted` and `Processing` lifecycle events, then use `Complete` with a result of `No Processing Required - Availability Notice Only`. The terminal result must state that no document was supplied and no account access, financial action, or business action occurred. The central result is sufficient routine audit evidence; do not add transaction-specific Teams records merely to record the ignored notice.
+
+At startup or during an authorized queue cleanup, apply this classification to unresolved Invoice Entry records that clearly satisfy every criterion above and close them individually without portal access. Preserve existing terminal history; use only the canonical correction or administrative lifecycle when a previously terminal record must be reclassified. Do not apply this rule to an attached or supplied financial document, a Time Card, an email containing actionable financial facts, an explicit retrieval instruction, or any record whose classification is uncertain.
+
 ## QuickBooks Routing
 
 Every received document that is a validated payable invoice must be evaluated for routing to the exact `Quickbooks` Project Room, task `01a05967-9a05-7081-a62e-616b2d8e61fd`, on `WES-VIDEOEDITOR`. This is a standing routing requirement after source validation and duplicate classification; it does not authorize Invoice Entry to operate QuickBooks itself. Do not use the retired destination name `Quickbooks Invoice`.

@@ -124,6 +124,12 @@ Invoice Entry may read one exact Outlook message when the handoff supplies its e
 
 Email Monitor and Jean dispatches are authoritative in the central queue at `\\WES-VIDEOEDITOR\BYH-PRMessaging$\records`; task messages are wake-up signals. On every startup and backup-monitor run, inspect unresolved records addressed to the registered Invoice Entry task, deduplicate by dispatch ID and payload hash, validate source, destination, payload hash, and recorded authorization from the same-ID central record, write the durable `Accepted` receipt before substantive work, then record `Processing` and one valid final state through `tools\pr-messaging\Manage-ProjectRoomMessage.ps1`. Also reconcile approved project-related invoices in durable Invoice Entry state against their authoritative project workbooks and resume supported missing insertions under the existing approval. Do not require the wake-up itself to originate from the source task; dispatcher and relaying tasks are transport only. Queue presence grants intake authority only and does not bypass Invoice Entry's approval, payment, filing, workbook, vendor-contact, or email-delivery gates.
 
+### Availability-Only Financial Notices
+
+An outside-party or automated email that merely says a statement or financial document is available online is not actionable Invoice Entry work when no document is supplied, no payable amount or other actionable financial detail is present, Wes gave no specific retrieval instruction, and obtaining the document would require account or portal access. Email Monitor should not route these notices to Invoice Entry.
+
+If one is already in the Invoice Entry queue, validate and deduplicate the central record, then close it as `Completed - No Processing Required - Availability Notice Only`; do not create a packet, blocker, payable, follow-up request, or Teams transaction record. Record that no document was supplied and no account access or financial action occurred. During queue review, close unresolved records that clearly meet every criterion, but preserve terminal history and use only canonical correction procedures for an already terminal record. This exclusion does not apply to supplied documents, Time Cards, actionable financial facts, explicit retrieval instructions, or uncertain classifications.
+
 ## Workbook Safety
 
 - Confirm the exact live workbook at the SharePoint `Property` root before every edit.
