@@ -582,7 +582,7 @@ A complete package from another registered Project Room carries Wes's authorizat
 1. The source Project Room and exact source task are registered and authorized for the workflow.
 2. Email Monitor retrieves and verifies the authoritative central record or durable delivery package rather than relying only on inter-task message text.
 3. The source identity, Email Monitor destination identity, delivery request ID, dispatch ID when applicable, and payload hash match exactly.
-4. Every required package field above is present and internally consistent.
+4. Every required package field above is present and internally consistent, including one top-level `authorization` object with nonblank `authorized_by`, the exact authorized `instruction`, explicit `scope`, a matching `evidence_reference`, and Boolean `business_action_authorized`; the referenced immutable evidence names the same actual authorizer and supports the exact delivery.
 5. The requested send stays within the cited Wes instruction, canonical standing authorization, or previously authorized workflow whose required next step is the specified delivery.
 6. No prior successful or unresolved ambiguous send exists for the same delivery request ID and payload hash.
 
@@ -612,7 +612,7 @@ A properly authorized Invoice Entry delivery handoff may request:
 
 The Invoice Entry package still controls the exact recipient set, content, attachments, required-attachment status, and restrictions. Authorization for one category or message does not authorize a different recipient, purpose, or follow-up.
 
-Tim Fleming has standing Invoice Entry authorization for each meaningful time update to produce and send one refreshed accuracy-review draft through Email Monitor to Tim at his established verified address, copying `WesWill@BuyYourHomeLLC.com` and `Jenny@BuyYourHomeLLC.com`. A no-correction response from Tim or Wes confirms factual correctness; a correction from either requires a revised draft. Jenny is visibility-only. No response at this stage authorizes payment, filing, posting, finalization, or paid status, and only Wes may approve the final invoice after the weekly period closes. A complete immutable package from registered Invoice Entry task `01a03956-fa4f-77c1-9ab7-f709e5f1174e` that matches this canonical rule does not require another direct authorization in Email Monitor.
+Tim Fleming has standing Invoice Entry authorization for each meaningful time update to produce and send one refreshed accuracy-review draft through Email Monitor only to `WesWill@BuyYourHomeLLC.com` with `Jenny@BuyYourHomeLLC.com` copied. Tim must not appear in To, CC, or BCC on a Tim draft, approval request, correction, approved-invoice delivery, or status email. A no-correction response from Wes confirms factual correctness; a correction from Wes requires a revised draft to Wes and Jenny only. Jenny is included for visibility and recordkeeping only. No response at this stage authorizes payment, filing, posting, finalization, or paid status, and only Wes may approve the final invoice after the weekly period closes. A complete immutable package from registered Invoice Entry task `01a03956-fa4f-77c1-9ab7-f709e5f1174e` that matches this canonical rule does not require another direct authorization in Email Monitor.
 
 #### Send And Verification
 
