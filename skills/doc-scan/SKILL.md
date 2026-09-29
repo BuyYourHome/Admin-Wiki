@@ -53,6 +53,7 @@ If older OCR text, scan-run logs, generated review packets, or Lowe's statement 
 11. Save each output PDF into the matching SharePoint/Teams folder from `references/folder-map.md`; use verified local synced destination folders only as fallback.
 12. Write or append a `.log.txt` file in the SharePoint/Teams Logs folder, or in a verified local synced Logs folder when connector write access is unavailable, with the summary, destinations, confidence notes, and review items.
 13. When processing is complete and intent is clear, move the original scan to Archived through the connector or verified local sync path. Never delete it.
+14. If the source came from a scanner-created intake subfolder, delete that subfolder after every source document it contained has been processed or otherwise resolved, every original has been verified in `Archived`, and every required output and log has been verified. Re-list the subfolder recursively immediately before deletion and require it to be completely empty. If any file or child folder remains, leave the subfolder in place and record what remains. Never apply this cleanup to permanent workflow folders such as `Logs`, `Archived`, `Verification needed`, `Doc Scan Working Archive`, or `Invoice Entry Working Archive`.
 
 ## Automation Portability
 

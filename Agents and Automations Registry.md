@@ -494,6 +494,7 @@ Defined in:
 Important rules:
 
 - Never delete source scans.
+- Delete a scanner-created intake subfolder after all of its sources have been resolved, archived originals and required outputs/logs have been verified, and a recursive recheck confirms the subfolder is completely empty. Leave nonempty subfolders in place, and never apply this cleanup to permanent workflow folders.
 - Never overwrite filed PDFs.
 - Never pay invoices or contact vendors.
 - Routine scan outcomes are recorded in SharePoint/Teams `Scanned Files\Logs`, and cross-PR handoffs in the authoritative central messaging record. The Git scan-action log is historical and read-only after 2026-09-10; generated OCR, render, packet, and split-working artifacts stay out of Git unless Wes explicitly identifies one as durable source material.

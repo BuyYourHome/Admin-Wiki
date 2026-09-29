@@ -55,6 +55,8 @@ Use this project room for development and design work. Do not change live scan r
 
 Preserve source scans. Never delete source scan files as part of this workflow.
 
+Scanner-created intake subfolders are temporary containers. After every source inside one has been processed or otherwise resolved, its original has been verified in `Archived`, and all required outputs and logs have been verified, recursively confirm the subfolder is completely empty and delete it. Leave nonempty subfolders in place and record what remains. Do not apply this cleanup to permanent workflow folders.
+
 ## Minimum Safe Progress
 
 Continue through every safe, authorized preparatory step before stopping at a genuine approval, ambiguity, filing, posting, payment, overwrite, external-contact, or destination gate. Prepare and route the structured packet, preserve evidence, and identify the exact remaining decision rather than stopping early. When Doc Scan still owns the final requested outcome after a handoff, use the Delegation Contract's durable `route-and-monitor` return path and resume automatically from the linked result.
