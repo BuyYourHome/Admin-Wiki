@@ -31,3 +31,12 @@ Sources checked:
 Historical 2026-06-15 decision: do not edit or recreate the live automation until the app-managed automation details are verified.
 
 Current 2026-07-08 status: Wes directed the old missing `document-scanning` automation to be replaced. The app reported `document-scanning` did not exist, and a new active heartbeat automation was created with id `doc-scan`, local config `C:\Users\wesbr\.codex\automations\doc-scan\automation.toml`, and schedule every 15 minutes on weekdays from 10:00 AM through 4:45 PM Eastern.
+
+## OFFICEASSIST Restoration - 2026-09-29
+
+- Verified the registered current Doc Scan task as `01a07d59-9052-7623-a03c-f2b80b9116e0` on `OFFICEASSIST`.
+- Audited every local automation definition and found one scan-intake automation: `doc-scan`. No second active scan schedule or WESSTUDIO predecessor was present.
+- Retargeted the existing automation from obsolete task `01a03956-f670-7482-8a73-f85b85dd64b4` to the registered current task, aligned its prompt with the current connector-first Doc Scan rules, and resumed it.
+- Preserved the established schedule, every 15 minutes on weekdays from 10:00 AM through 4:45 PM Eastern, and the `failed_runs_only` notification policy.
+- Verified an actual backlog run. It processed 44 source PDFs into 119 outputs, confirmed four exact duplicate sources, reused the prior completed True Service invoice record without repeating it, wrote 44 per-source logs plus one run report, archived all 44 originals after read-back verification, and created one authoritative six-record Invoice Entry handoff.
+- SharePoint read-back showed 103 new review outputs, the filed statement and utility outputs, the six-record packet, 45 run logs, and an Archived count increase from 82 to 126 items.

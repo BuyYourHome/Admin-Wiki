@@ -21,8 +21,8 @@ This project room holds development notes, source inventory, and review artifact
 - Dedicated task/thread id: `01a07d59-9052-7623-a03c-f2b80b9116e0`.
 - Defined operating modes: `working\doc-scan-modes.md`.
 - Canonical skill source: `C:\Codex\Wiki Files\skills\doc-scan\SKILL.md`.
-- Installed skill copy: `C:\Users\wesbr\.codex\skills\doc-scan\SKILL.md`.
-- Live automation config: `C:\Users\wesbr\.codex\automations\doc-scan\automation.toml`.
+- Installed skill copy on OFFICEASSIST: `C:\Users\OfficeAssistLogin\.codex\skills\doc-scan\SKILL.md`.
+- Live automation config on OFFICEASSIST: `C:\Users\OfficeAssistLogin\.codex\automations\doc-scan\automation.toml`.
 - Dispatcher route: Jean routes scanned-statement intake to the dedicated Doc Scan task first; Doc Scan prepares filed statements and structured packets before handing qualifying invoice/statement packets to Invoice Entry task `01a03956-fa4f-77c1-9ab7-f709e5f1174e`.
 
 ## Room Layout
@@ -47,7 +47,7 @@ The project room's defined scan modes are maintained in [[doc-scan-modes]]. Trea
 - `C:\Codex\Wiki Files\Project Rooms\Doc Scan\working\scanned-document-action-log.md` - historical, read-only evidence
 - `C:\Codex\Wiki Files\Invoice and Receipt Processing Notes.md`
 - `C:\Codex\Wiki Files\Invoice Project List.md`
-- `C:\Users\wesbr\.codex\automations\doc-scan\automation.toml`
+- `C:\Users\OfficeAssistLogin\.codex\automations\doc-scan\automation.toml`
 
 ## Development Boundary
 

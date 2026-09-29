@@ -482,8 +482,8 @@ Defined in:
 - Scratch downloader installer: `C:\Codex\Wiki Files\Project Rooms\Doc Scan\tools\Install-DocScanScratchDownloader.ps1`
 - Hidden scratch downloader launcher: `C:\Codex\Wiki Files\Project Rooms\Doc Scan\tools\Invoke-DocScanScratchDownloaderHidden.vbs`
 - Historical outcome log: `C:\Codex\Wiki Files\Project Rooms\Doc Scan\working\scanned-document-action-log.md`; read-only after 2026-09-10
-- Installed local skill copy: `C:\Users\wesbr\.codex\skills\doc-scan\SKILL.md`
-- Automation: `C:\Users\wesbr\.codex\automations\doc-scan\automation.toml`
+- Installed local skill copy on OFFICEASSIST: `C:\Users\OfficeAssistLogin\.codex\skills\doc-scan\SKILL.md`
+- Automation on OFFICEASSIST: `C:\Users\OfficeAssistLogin\.codex\automations\doc-scan\automation.toml`
 - Wiki support:
   - `Document Scanning SOP.md`
   - `Document Scanning Skill Spec.md`
@@ -501,6 +501,7 @@ Important rules:
 - Each computer expected to process Doc Scan intake must have its own machine-local `doc-scan` heartbeat attached to that computer's current `Doc Scan` task under the `Wiki Files` project. Missing automations or automations targeting obsolete task ids are `pending automation setup`, not healthy scan processing.
 - Keep the automation attached to one dedicated status thread via `target_thread_id` so the user can review run history and adjust behavior in one place.
 - Use quiet-run behavior with `DONT_NOTIFY` when no new scans are found so routine empty checks do not create visible chat noise.
+- OFFICEASSIST verification on 2026-09-29 found exactly one active scan-intake automation: `doc-scan`, targeting task `01a07d59-9052-7623-a03c-f2b80b9116e0`, with the established weekday 10:00 AM-4:45 PM Eastern fifteen-minute schedule and `failed_runs_only` notification policy. The run processed the accumulated intake and verified the resulting SharePoint files and logs.
 
 ## Codex Skill Source Control
 
