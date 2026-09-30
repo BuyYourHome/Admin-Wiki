@@ -102,3 +102,30 @@ The Teams save at `2026-09-30T14:04:33Z` again contained the old formulas, super
 - Other category date blocks remain outside this approved repair. No other project was updated.
 
 Lesson: repair and verify the actual authorized live session when repeated file replacements are being superseded. Treat a write timeout as uncertain until a read establishes its outcome, and verify both the live display and the subsequent Teams save before reporting completion.
+
+## Seven Remaining Date Blocks
+
+Wes reported the same symptom in G, J, M, Y, and AB. Inspection also found the same defect in V and AE. Wes approved repairing all seven date/payment blocks together, preserving source values, totals, formatting, and tax-escrow logic.
+
+- Fresh Teams baseline saved at `2026-09-30T14:45:16Z`. Rollback: `Property/Project Template/Rollback Copies/26_Project Management - 908 Pond St 3.before-seven-dates-20260930-1448.xlsm`.
+- Independently inspected all 294 target formulas and the matching source records. No manual overrides existed in those ranges. Removed only `DATEVALUE` around `tblCarryingExpenses[Date]`; retained each formula's existing selection, counters, sorting, amount conversion, and blank behavior.
+- Applied through the connected open Pond workbook, not a whole-file replacement. No other project was changed.
+
+| Repaired range | Category | Source pairs verified | Unchanged category total |
+| --- | --- | ---: | ---: |
+| G4:H24 | Private Money | 19 | 5,500.00 |
+| J4:K24 | Casa Lending | 19 | 5,921.56 |
+| M4:N24 | Insurance Payments | 19 | 0.00 |
+| V4:W24 | HOA | 19 | 0.00 |
+| Y4:Z24 | Property Taxes | 19 | 0.00 net of existing escrow |
+| AB4:AC24 | Excavator Rental | 19 | 6,000.00 |
+| AE4:AF24 | Lawn | 0 | 0.00 |
+
+- All 114 populated date/payment pairs matched the source table in chronological order. Lawn remained blank; unused tail rows stayed blank. Dated zero-dollar schedules remained visible. Source schedule dates were not corrected or reinterpreted as actual payments.
+- Complete live checks confirmed unchanged source table records, number formats, totals and total formulas, and `AA4:AA24` escrow formulas, values, and number formats. Profit carrying cost remained $33,770.25. Calculation mode was Automatic. Native range images confirmed readable dates in all six populated blocks.
+- Downstream Carrying references found in Profit were category outputs; the archived Docs mortgage reference was outside this repair. No downstream formula was rewritten.
+- The first connector download captured an intermediate AutoSave at `2026-09-30T14:49:30Z` with only 210 of 294 changes. The last two blocks were already correct live. Did not repeat writes; retrieved the subsequent save at `2026-09-30T14:51:48Z` instead.
+- Final Teams verification found all 294 exact substitutions, no remaining `DATEVALUE(tblCarryingExpenses[Date])` formulas in Carrying, no unexpected formula or constant-value changes across worksheets, no cell-style changes, unchanged defined names, and no saved-versus-live result mismatches in the repaired ranges.
+- Verified final SHA-256: `BC0E7389FFF0B3A36649CF9DC3E6AB24402649CEDD9A87F20F288CB6C1F7B9D2`. Observed ETag: `"{29C35775-DC91-47CF-AC62-F0054399FE81},53"`. Rollback retained in Teams; temporary local verification copies removed after completion. Macros were not function-tested.
+
+Lesson: a correct live display and a newer cloud timestamp are insufficient by themselves. Multi-block AutoSave can be intermediate; compare the complete approved repair against the saved Teams content before declaring delivery complete.

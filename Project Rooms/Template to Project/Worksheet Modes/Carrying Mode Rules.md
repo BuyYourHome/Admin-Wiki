@@ -5,7 +5,7 @@ Use these rules for Carrying worksheet design, repairs, and approved template mi
 ## Current Prototype and Scope
 
 - Prototype under evaluation: Pond, `Property/26_Project Management - 908 Pond St 3.xlsm`, retrieved fresh through the Teams/SharePoint connector.
-- The September 30, 2026 grid-only expense repair and subsequent mortgage-payment date repair are approved and completed on Pond. The complete Carrying redesign and rollout to other projects are not yet approved.
+- The September 30, 2026 grid-only expense repair, mortgage-payment date repair, and seven remaining category date/payment-block repairs are approved and completed on Pond. The complete Carrying redesign and rollout to other projects are not yet approved.
 - Follow [[Project Spreadsheet Expense Placement Rules]] for existing category, escrow, and presentation conventions. Locate current tables and outputs by name and label, not historical coordinates.
 - A fix approved during prototype review becomes a required check and repair for later authorized Carrying migrations. Apply the repair method independently to each project; never copy Pond's expense values into another project.
 
@@ -34,6 +34,8 @@ When a date conversion is inside the matched array shared by date and amount dis
 - For missing-date complaints, verify Excel's displayed cell text as well as values, formulas, and formatting; dates must be nonblank and not overflow markers. After upload, identify the verified Teams version and direct reopening from the authoritative Teams link. A later save can restore old formulas even after a successful upload. If the defect recurs, fetch current Teams content and compare the formulas before blaming formatting or identifying a saving session without evidence.
 - If repeated file replacements are later overwritten, do not continue uploading the same repair. With Wes's explicit approval, repair the confirmed open workbook through connected Excel tools, preserving a fresh Teams rollback first. Verify the signed-in add-in, exact workbook session, displayed date/amount pairs, and a new connector download after AutoSave. Do not substitute UI cell typing or COM for a missing live capability.
 - A timed-out live write has an uncertain outcome. Read the target cells before retrying; the edit may already have applied. Verify the complete authorized range, not only the first cell. Native AutoSave can change package metadata and the VBA binary without a requested macro edit; distinguish cell/formula preservation from binary identity and do not claim unverified macro equivalence.
+- AutoSave can publish an intermediate version containing only part of a multi-block edit. Verify every approved formula and saved result in the connector-downloaded version. If the live workbook is correct but Teams has an earlier partial save, wait for the newer version and recheck rather than repeating edits or replacing the whole workbook.
+- Check equivalent date/payment blocks together when assessing a shared defect, then obtain approval for the expanded repair scope. Preserve dated zero-dollar schedules and keep categories with no source records blank. A date-display repair does not authorize changing source schedule dates, escrow offsets, or payment assumptions.
 - Keep workbook backups and binary validation artifacts in Teams, not Git. Remove superseded temporary workbook copies after verification.
 - After every completed repair or migration, record new lessons in this mode file and a project-specific mapping/validation log before treating the iteration as complete.
 
@@ -41,4 +43,4 @@ When a date conversion is inside the matched array shared by date and amount dis
 
 See [[pond-carrying-repair-20260930]] for the 13 recovered bills, replacement of ten approved Natural Gas placeholders, corrected electric date, downstream Docs change, subsequent mortgage date/amount pairing repair, rollback references, and verified totals. These values are evidence for Pond only, not default values for other projects.
 
-Remaining prototype discussions: date formulas in the other category blocks, property-tax escrow offsets, and the remaining design extensions. Do not roll those changes out without approval.
+Remaining prototype discussions: property-tax escrow offsets, source schedule assumptions if questioned, and the remaining design extensions. The shared `DATEVALUE` defect is repaired across Pond's current Carrying grid. Do not roll these changes out to other projects without approval.
