@@ -128,7 +128,9 @@ It stays quiet when there are no new scans. It reports only when it processes fi
 
     `Scanned Files\Archived`
 
-14. If the scan cannot be confidently parsed or routed, it does not guess. It flags the document for review.
+15. If the source came from a scanner-created intake subfolder, recursively rechecks that subfolder after every contained source has been resolved and every original, output, and log has been verified. It deletes the subfolder only when it is completely empty. If anything remains, it leaves the subfolder in place and records the remaining item. Permanent workflow folders are never deleted by this cleanup.
+
+16. If the scan cannot be confidently parsed or routed, it does not guess. It flags the document for review.
 
 ## Human Responsibilities Before Scanning
 

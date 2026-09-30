@@ -1,7 +1,7 @@
 [CmdletBinding()]
 param(
     [Parameter(Mandatory = $true)]
-    [ValidateSet("Initialize", "Send", "Get", "List", "StartAttempt", "MarkAttempt", "Accept", "StartProcessing", "Update", "Complete", "Block", "NeedsWes", "Reject", "SyncSpool", "Health", "AdministrativeCloseSuperseded", "AdministrativeCloseExhaustedAmbiguous", "AdministrativeCancelAuthorizedStatus", "AdministrativeCancelAcknowledgedStatus", "AdministrativeQuarantineIntegrityFailure", "ReconcileProvenPreSubmissionFailure", "ConditionalClaim", "ReconcileAttempt")]
+    [ValidateSet("Initialize", "Send", "Get", "List", "StartAttempt", "MarkAttempt", "Accept", "StartProcessing", "Update", "Complete", "Block", "NeedsWes", "Reject", "SyncSpool", "Health", "AdministrativeCloseSuperseded", "AdministrativeCloseExhaustedAmbiguous", "AdministrativeRetireObsoleteRollback", "AdministrativeCancelAuthorizedStatus", "AdministrativeCancelAcknowledgedStatus", "AdministrativeQuarantineIntegrityFailure", "ReconcileProvenPreSubmissionFailure", "ConditionalClaim", "ReconcileAttempt")]
     [string]$Action,
 
     [string]$QueuePath = "\\WES-VIDEOEDITOR\BYH-PRMessaging$",
@@ -282,6 +282,9 @@ Invoke-WithQueueLock {
     $record = Read-Record -Path $recordPath
     if ($Action -eq "Get") { $record | ConvertTo-Json -Depth 30; return }
 
+    if($record.administrative_closure.disposition -ceq 'ObsoleteRollbackRetired'){
+        throw 'MessageAdministrativelyRetired'
+    }
     if($Action -in @('ConditionalClaim','ReconcileAttempt')){
         # Atomic worker claim/reconciliation. Canary remains exact-ID; Live requires
         # a machine-scoped exclusive ownership record on the canonical queue.
@@ -294,7 +297,7 @@ Invoke-WithQueueLock {
         return
     }
 
-    if($Action -in @('AdministrativeCloseExhaustedAmbiguous','AdministrativeCancelAuthorizedStatus','AdministrativeCancelAcknowledgedStatus','AdministrativeQuarantineIntegrityFailure','ReconcileProvenPreSubmissionFailure')){
+    if($Action -in @('AdministrativeRetireObsoleteRollback','AdministrativeCloseExhaustedAmbiguous','AdministrativeCancelAuthorizedStatus','AdministrativeCancelAcknowledgedStatus','AdministrativeQuarantineIntegrityFailure','ReconcileProvenPreSubmissionFailure')){
         . "$PSScriptRoot\low-token\Common.ps1"
         . "$PSScriptRoot\low-token\Manager.Extensions.ps1"
         if($QueuePath -cne '\\WES-VIDEOEDITOR\BYH-PRMessaging$'){
@@ -302,7 +305,9 @@ Invoke-WithQueueLock {
             if(!$full.StartsWith($temp,[StringComparison]::OrdinalIgnoreCase) -or !(Test-Path -LiteralPath (Join-Path $full '.administrative-closure-fixture'))){throw 'AdministrativeClosureQueueNotAuthorized'}
             $walk=$full;while($walk.Length -ge $temp.TrimEnd('\').Length){if((Get-Item -LiteralPath $walk -Force).Attributes -band [IO.FileAttributes]::ReparsePoint){throw 'AdministrativeClosureReparsePointForbidden'};$walk=Split-Path -Parent $walk}
         }
-        if($Action -eq 'AdministrativeCloseExhaustedAmbiguous'){
+        if($Action -eq 'AdministrativeRetireObsoleteRollback'){
+            Invoke-LtAdministrativeRetireObsoleteRollback $record $recordPath | ConvertTo-Json -Depth 30
+        } elseif($Action -eq 'AdministrativeCloseExhaustedAmbiguous'){
             Invoke-LtAdministrativeCloseExhaustedAmbiguous $record $recordPath | ConvertTo-Json -Depth 30
         } elseif($Action -eq 'AdministrativeCancelAuthorizedStatus') {
             Invoke-LtAdministrativeCancelAuthorizedStatus $record $recordPath | ConvertTo-Json -Depth 30

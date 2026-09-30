@@ -75,6 +75,8 @@ Use [[Agent Unit Standard]] for the standard package behind an agent-like operat
 
 ## PR Messaging Dispatcher
 
+- Policy update authorized 2026-09-30: verified recipient acceptance releases the destination notification hold for subsequent eligible requests; business processing remains ordered by the destination. Unacknowledged or ambiguous submissions remain held. Worker/atomic-manager implementation and guarded deployment are pending; current `awaiting_completion` blocking must not be reported as corrected merely because the rules are published. See `Project Room Messaging Rule.md`.
+
 - Canonical implementation owner: `PR Messaging Dispatcher - WES-VIDEOEDITOR`, task `01a05d0c-8031-7d92-9474-ab2330008ddb`, execution machine `WES-VIDEOEDITOR`.
 - Owner automation: `pr-messaging-dispatcher-wes-videoeditor`.
 - Matching skill: `skills\pr-messaging-dispatcher\SKILL.md`.
@@ -482,8 +484,8 @@ Defined in:
 - Scratch downloader installer: `C:\Codex\Wiki Files\Project Rooms\Doc Scan\tools\Install-DocScanScratchDownloader.ps1`
 - Hidden scratch downloader launcher: `C:\Codex\Wiki Files\Project Rooms\Doc Scan\tools\Invoke-DocScanScratchDownloaderHidden.vbs`
 - Historical outcome log: `C:\Codex\Wiki Files\Project Rooms\Doc Scan\working\scanned-document-action-log.md`; read-only after 2026-09-10
-- Installed local skill copy: `C:\Users\wesbr\.codex\skills\doc-scan\SKILL.md`
-- Automation: `C:\Users\wesbr\.codex\automations\doc-scan\automation.toml`
+- Installed local skill copy on OFFICEASSIST: `C:\Users\OfficeAssistLogin\.codex\skills\doc-scan\SKILL.md`
+- Automation on OFFICEASSIST: `C:\Users\OfficeAssistLogin\.codex\automations\doc-scan\automation.toml`
 - Wiki support:
   - `Document Scanning SOP.md`
   - `Document Scanning Skill Spec.md`
@@ -494,6 +496,7 @@ Defined in:
 Important rules:
 
 - Never delete source scans.
+- Delete a scanner-created intake subfolder after all of its sources have been resolved, archived originals and required outputs/logs have been verified, and a recursive recheck confirms the subfolder is completely empty. Leave nonempty subfolders in place, and never apply this cleanup to permanent workflow folders.
 - Never overwrite filed PDFs.
 - Never pay invoices or contact vendors.
 - Routine scan outcomes are recorded in SharePoint/Teams `Scanned Files\Logs`, and cross-PR handoffs in the authoritative central messaging record. The Git scan-action log is historical and read-only after 2026-09-10; generated OCR, render, packet, and split-working artifacts stay out of Git unless Wes explicitly identifies one as durable source material.
@@ -501,6 +504,7 @@ Important rules:
 - Each computer expected to process Doc Scan intake must have its own machine-local `doc-scan` heartbeat attached to that computer's current `Doc Scan` task under the `Wiki Files` project. Missing automations or automations targeting obsolete task ids are `pending automation setup`, not healthy scan processing.
 - Keep the automation attached to one dedicated status thread via `target_thread_id` so the user can review run history and adjust behavior in one place.
 - Use quiet-run behavior with `DONT_NOTIFY` when no new scans are found so routine empty checks do not create visible chat noise.
+- OFFICEASSIST verification on 2026-09-29 found exactly one active scan-intake automation: `doc-scan`, targeting task `01a07d59-9052-7623-a03c-f2b80b9116e0`, with the established weekday 10:00 AM-4:45 PM Eastern fifteen-minute schedule and `failed_runs_only` notification policy. The run processed the accumulated intake and verified the resulting SharePoint files and logs.
 
 ## Codex Skill Source Control
 

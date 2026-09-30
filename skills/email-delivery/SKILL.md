@@ -33,7 +33,7 @@ Another registered Project Room may carry Wes's authorization into Email Monitor
 1. The source Project Room and exact source task are registered and authorized for the workflow.
 2. Email Monitor retrieves the authoritative central record or durable delivery package instead of relying only on inter-task message text.
 3. The source identity, destination identity, delivery request ID, dispatch ID when applicable, and payload hash match exactly.
-4. The immutable package contains the unique delivery request ID, origin Project Room and task ID, authorization basis, applicable Wes instruction or canonical standing authorization, sender, exact To/CC/BCC recipients, exact subject and plain-text body, exact attachment paths and required status, workflow restrictions, and callback Project Room and task ID.
+4. The immutable package contains the unique delivery request ID, origin Project Room and task ID, sender, exact To/CC/BCC recipients, exact subject and plain-text body, exact attachment paths and required status, workflow restrictions, and callback Project Room and task ID. It also contains one top-level `authorization` object with nonblank `authorized_by`, the exact authorized `instruction`, explicit `scope`, a matching `evidence_reference`, and Boolean `business_action_authorized`; the referenced immutable evidence names the same actual authorizer and supports the exact delivery.
 5. The requested send remains within the cited authority.
 6. No prior successful or unresolved ambiguous send exists for the same delivery request ID and payload hash.
 
@@ -43,7 +43,7 @@ Stop and request Wes only when authorization is absent, unverifiable, ambiguous,
 
 ### Tim Fleming Standing Authorization
 
-Invoice Entry's canonical Time Card rule provides standing authorization for each meaningful Tim Fleming time update to produce and send one refreshed accuracy-review draft to Tim at his established verified address, with `WesWill@BuyYourHomeLLC.com` and `Jenny@BuyYourHomeLLC.com` copied. A no-correction response from Tim or Wes confirms factual correctness; a correction from either requires a revised draft. Jenny is copied for visibility only. No response at this stage authorizes payment, filing, posting, finalization, or paid status, and only Wes may approve the final invoice after the weekly pay period closes. A complete immutable package from the registered Invoice Entry task that matches this rule does not require another direct authorization inside Email Monitor.
+Invoice Entry's canonical Time Card rule provides standing authorization for each meaningful Tim Fleming time update to produce and send one refreshed accuracy-review draft only to `WesWill@BuyYourHomeLLC.com` with `Jenny@BuyYourHomeLLC.com` copied. Tim must not appear in To, CC, or BCC on a Tim draft, approval request, correction, approved-invoice delivery, or status email. A no-correction response from Wes confirms factual correctness; a correction from Wes requires a revised draft to Wes and Jenny only. Jenny is copied for visibility and recordkeeping only. No response at this stage authorizes payment, filing, posting, finalization, or paid status, and only Wes may approve the final invoice after the weekly pay period closes. A complete immutable package from the registered Invoice Entry task that matches this rule does not require another direct authorization inside Email Monitor.
 
 ### Josh And Final Time Card Deliveries
 

@@ -38,7 +38,7 @@ The automation path above is the only Email Monitor runtime memory file. Do not 
 3. Use the last verified Jenny summary send time as Jenny's cutoff unless a newer Jenny summary is already recorded in the memory file for the same day. If there is no prior Jenny summary record, use the 2026-06-29 resume timestamp as the initial new-mail cutoff.
 4. Use the last verified Josh summary send time as Josh's cutoff. The verified manual Josh summary sent at `2026-07-21T12:24:17Z` is the initial cutoff.
 5. Scan only the intended mailbox for the current summary: `WesWill@BuyYourHomeLLC.com` for Boss, `Jenny@BuyYourHomeLLC.com` for Jenny, or `IRAManager@SellYourHomeRaleigh.com` for Josh.
-6. Review the entire mailbox recursively, including Inbox and rule-routed subfolders.
+6. Review only messages directly in the mailbox's top-level Inbox. Do not scan Inbox subfolders or any other mailbox folder for Email Summary.
 7. Focus on:
    - unread messages, and
    - newly received messages after the cutoff.
@@ -50,6 +50,12 @@ The automation path above is the only Email Monitor runtime memory file. Do not 
 ## Modes
 
 Formal modes are `Email Summary`, `Health Check`, `Task Health`, `Email Routing`, `Route Vendor Invoice`, `Organize`, and `Email Delivery`. Email Routing may invoke a specialized routing mode, but the invoked mode keeps its own acceptance, state, retry, and escalation rules.
+
+### Project Room Handoff Construction
+
+For every future Email Monitor handoff that creates a central Project Room record, use `C:\Codex\Wiki Files\Project Rooms\Email Monitor\tools\Send-EmailMonitorProjectRoomHandoff.ps1`. Do not bypass it with a direct shared-manager `Send` call. Before creation, the builder must validate the canonical message type, exact manifest-resolved destination, nonempty payload, immutable source evidence, and the complete authorization fields: actual `authorized_by`, exact authorized `instruction`, explicit `scope`, matching `evidence_reference`, and Boolean `business_action_authorized`.
+
+The authority evidence must name the same actual authorizer. An authorizing email reference preserves a stable reference id, Outlook message id or link, exact sender, received time, and subject. A direct task authorization preserves the task/thread and turn reference and exact authorizer. Keep a routed source as separate evidence when its sender is not the authorizer. Never infer Wes's approval from another sender, the forwarding sender, the dispatcher, or the wake-up task, and never add or broaden authorization merely to satisfy validation. An incomplete or mismatched package stops before central creation and notification.
 
 ### Email Summary
 
@@ -80,7 +86,7 @@ Cutoff and mailbox scan:
 - if no prior Jenny summary record exists, use the 2026-06-29 resume timestamp as Jenny's initial new-mail cutoff;
 - use the last verified Josh summary send time as Josh's cutoff, with `2026-07-21T12:24:17Z` as the initial verified cutoff;
 - scan only the intended mailbox for the current summary;
-- review the entire mailbox recursively, including Inbox and rule-routed subfolders;
+- review only the mailbox's top-level Inbox and do not scan Inbox subfolders or any other mailbox folder for Email Summary;
 - focus on unread messages and newly received messages after the cutoff;
 - include older unread messages only when they are still priority business items, and do not treat Jenny's historic unread backlog as new.
 
@@ -92,7 +98,7 @@ Priority selection:
 
 Summary body:
 
-- include the mailbox scanned, cutoff used, priority items, low-priority exclusions when applicable, and a clear note if no priority messages were found;
+- identify the top-level Inbox scanned, cutoff used, priority items, low-priority exclusions when applicable, and a clear note if no priority messages were found;
 - include the Codex usage section only in Wes's summary, using `C:\Codex\Wiki Files\tools\get-codex-token-summary.ps1` when reliable totals are available;
 - do not include Codex usage or token information in Jenny's or Josh's summary;
 - for Josh, send Manager task `019f8274-5b7e-7170-a051-f7944954de82` a direct request for the current formatted `Manager Tasks` section, then wait for and use Manager's response;
@@ -329,6 +335,28 @@ Manager must determine whether the email is a new task request, delivery-related
 
 Use Route Vendor Invoice when Email Routing sees a contractor or vendor email that appears to contain or request processing of an invoice, bill, receipt, payment request, statement, pay application, draw request, or project-cost document.
 
+#### Availability-only exclusion
+
+Before applying any Route Vendor Invoice activation rule, classify an automated or outside-party email as `No Routing Required - Availability Notice Only` only when all of these are true:
+
+- the email merely says that a statement or other financial document is available online;
+- the actual invoice, statement, receipt, or other document is not attached or otherwise supplied;
+- the email contains no payable amount, balance, minimum due, due date, transaction detail, or other actionable financial information;
+- Wes did not explicitly instruct Email Monitor or Invoice Entry to retrieve or process the document; and
+- obtaining the document would require logging into an account or portal.
+
+For an availability-only notice:
+
+- do not create an Invoice Entry dispatch, missing-document blocker, or request that Wes retrieve the document;
+- do not access the provider account or portal;
+- consolidate duplicate copies and retain only the compact Email Monitor deduplication state needed to avoid processing the source again;
+- do not create a transaction-specific Teams or Git record merely to record the ignored notice; and
+- take no approval, payment, filing, workbook, accounting, paid-status, or other business action.
+
+Do not apply this exclusion when an invoice, statement, receipt, or Time Card is attached or otherwise supplied; the email contains actionable financial information; Wes explicitly requested retrieval or processing; or classification is uncertain. Continue normal routing evaluation in those cases without inferring missing facts.
+
+During an authorized review of previously routed unresolved records, use the immutable central record to verify every criterion. Preserve the original payload and event history, consolidate known duplicate sources, and have Invoice Entry close each qualifying record through its own canonical lifecycle as `Completed - No Processing Required - Availability Notice Only`. Do not create a replacement dispatch or ask Invoice Entry to process or retrieve the missing document. Clarify an already terminal record only through a new linked correction or the authorized administrative closure process; never overwrite the original record.
+
 For files preserved in SharePoint/Teams, hand Invoice Entry the canonical SharePoint item URL/ID or the site, library, and drive-relative path. Do not make a Windows path from OFFICEASSIST or another sender machine the authoritative file reference. Include a local synced path only as a clearly labeled nonportable hint; Invoice Entry resolves its own local path if a desktop tool requires one.
 
 This is a formal Email Monitor mode, not an informal Email Routing label. It owns source routing, durable dispatch creation, Invoice Entry notification, acceptance verification, bounded retry, and missing-acknowledgment escalation. It does not own invoice approval, payment, vendor contact, final accounting judgment, live project-spreadsheet entry, Teams filing, or creating a new Invoice Entry chat.
@@ -347,7 +375,11 @@ For each routed email:
 - if an apparent invoice attachment cannot be retrieved, preserve the Outlook link and exact attachment-access blocker;
 - include the Outlook reference, external path if any, summary, and status in the central handoff; do not edit Invoice Entry's Git-tracked source inventory or work-status file during routine routing;
 - record the routed Outlook message id in Email Monitor compact state so the same source is not routed repeatedly;
-- create the durable message before any task-message call by using `C:\Codex\Wiki Files\tools\pr-messaging\Manage-ProjectRoomMessage.ps1 -Action Send`; use the shared runtime queue and state contract in `working\dispatch-queue-spec.md`; never create a new record in the legacy Email Monitor queue;
+- build every new durable Project Room handoff through `C:\Codex\Wiki Files\Project Rooms\Email Monitor\tools\Send-EmailMonitorProjectRoomHandoff.ps1`; never call the shared manager's `Send` action directly from Email Monitor and never create a new record in the legacy Email Monitor queue;
+- before central creation, require the builder to validate the canonical message type, exact manifest-resolved destination Project Room/task/machine, nonempty payload, and immutable source references; validation failure is a blocker and must not create a central record or send a wake-up;
+- require every authorization object to contain nonblank `authorized_by`, the exact authorized `instruction`, explicit `scope`, a matching `evidence_reference`, and Boolean `business_action_authorized`; the authority evidence must name the same actual authorizer or sender;
+- for email authority, preserve a stable reference id, Outlook message id or link, exact sender, received time, and subject; for direct task authority, preserve the task/thread and turn reference and the exact authorizer; keep routed-source evidence separate when it is not itself the authority;
+- never infer Wes's approval from Jenny, Josh, a vendor, a forwarding sender, or a wake-up task; never insert `authorized_by: Wes` or broaden scope merely to pass validation; if the authoritative evidence does not establish the requested action, preserve the actual sender and narrower instruction or stop with an authorization blocker;
 - resolve Invoice Entry's exact execution machine from its active destination manifest and pass it explicitly as `DestinationMachine` on every central `Send`; a missing, wildcard, inferred, or blank destination machine is a creation blocker and must never be serialized as `null`;
 - use one stable dispatch ID and immutable payload; idempotent creation with the same payload is safe, but the same ID with different content is a blocker;
 - store the source and concise handoff fields in the queue record, then send the existing Invoice Entry task one wake-up message containing the dispatch ID, queue-record path, and these fields in this exact order:
@@ -550,11 +582,31 @@ A complete package from another registered Project Room carries Wes's authorizat
 1. The source Project Room and exact source task are registered and authorized for the workflow.
 2. Email Monitor retrieves and verifies the authoritative central record or durable delivery package rather than relying only on inter-task message text.
 3. The source identity, Email Monitor destination identity, delivery request ID, dispatch ID when applicable, and payload hash match exactly.
-4. Every required package field above is present and internally consistent.
+4. Every required package field above is present and internally consistent, including one top-level `authorization` object with nonblank `authorized_by`, the exact authorized `instruction`, explicit `scope`, a matching `evidence_reference`, and Boolean `business_action_authorized`; the referenced immutable evidence names the same actual authorizer and supports the exact delivery.
 5. The requested send stays within the cited Wes instruction, canonical standing authorization, or previously authorized workflow whose required next step is the specified delivery.
 6. No prior successful or unresolved ambiguous send exists for the same delivery request ID and payload hash.
 
 An originating Project Room cannot manufacture authority by merely stating that a send is authorized. Verify the cited instruction or standing rule and ensure the package does not broaden it. Dispatcher notification is transport only and never creates authority. When the complete immutable package passes these checks, do not require Wes to repeat the same authorization directly inside Email Monitor.
+
+##### Standing Authorization - Routine Time Card Delivery
+
+Wes Browning's 2026-09-30 standing instruction authorizes Email Monitor to send every routine Invoice Entry Time Card accuracy-review or approved-copy email without case-by-case confirmation when the immutable package conforms exactly to the applicable canonical recipient, attachment, and workflow rules. Preserve this authority as:
+
+- `authorized_by`: `Wes Browning`;
+- `instruction`: `Implement standing authorization for Email Monitor to send all routine Invoice Entry timecard accuracy-review and approved-copy emails that conform exactly to the canonical recipient, attachment, and workflow rules, without requesting case-by-case confirmation. This authorizes email delivery only—not approval, payment, accounting entry, filing, or paid status.`;
+- `scope`: delivery of a canonical routine Invoice Entry Time Card accuracy-review or approved-copy email only;
+- `evidence_reference`: `email-monitor-standing-authorization-timecard-review-and-approved-copy-20260930`;
+- `business_action_authorized`: `true` for the email-delivery action only.
+
+This standing authority applies only when all of these conditions pass:
+
+1. The authoritative package comes from the registered Invoice Entry Project Room and task, and its request ID, dispatch ID when applicable, and payload hash reconcile exactly.
+2. The message is classified as either a routine Time Card accuracy-review email or an approved-copy email; it is not a request to approve, pay, post, file, change accounting records, or mark an item paid.
+3. The exact sender, To/CC/BCC recipients, subject, body, required attachments, durable attachment locations, and workflow restrictions match the current canonical Invoice Entry and Email Monitor rules for the named worker and period.
+4. An approved-copy package includes immutable evidence that Wes already approved the underlying Time Card invoice and identifies the status as approved, not paid. This standing authorization never supplies the underlying approval.
+5. Duplicate prevention and OfficeAssist Sent Items reconciliation show that the same immutable package was not already sent and is not in an ambiguous submission state.
+
+Do not ask Wes to repeat `send the email` when these conditions pass. If the package is incomplete or does not cite this standing authority correctly, return it to Invoice Entry for one corrected immutable package; do not ask Wes for case-by-case delivery approval and do not invent or repair the package inside Email Monitor. Continue to ask Wes only for a genuinely reserved decision or a material exception outside this scope.
 
 Stop and request Wes only when authorization is absent, unverifiable, ambiguous, or narrower than the requested send; the source Project Room, source task, or destination identity is wrong; the request ID, dispatch ID, or payload hash does not match; the immutable package changed; recipients, subject, body, or attachments materially differ; a required recipient or attachment is unknown; the request includes payment, legal approval, account changes, filing approval, or another Wes-reserved decision; or connector submission may have occurred and Sent Items cannot resolve it.
 
@@ -580,7 +632,11 @@ A properly authorized Invoice Entry delivery handoff may request:
 
 The Invoice Entry package still controls the exact recipient set, content, attachments, required-attachment status, and restrictions. Authorization for one category or message does not authorize a different recipient, purpose, or follow-up.
 
-Tim Fleming has standing Invoice Entry authorization for each meaningful time update to produce and send one refreshed accuracy-review draft through Email Monitor to Tim at his established verified address, copying `WesWill@BuyYourHomeLLC.com` and `Jenny@BuyYourHomeLLC.com`. A no-correction response from Tim or Wes confirms factual correctness; a correction from either requires a revised draft. Jenny is visibility-only. No response at this stage authorizes payment, filing, posting, finalization, or paid status, and only Wes may approve the final invoice after the weekly period closes. A complete immutable package from registered Invoice Entry task `01a03956-fa4f-77c1-9ab7-f709e5f1174e` that matches this canonical rule does not require another direct authorization in Email Monitor.
+Tim Fleming has standing Invoice Entry authorization for each meaningful time update to produce and send one refreshed accuracy-review draft through Email Monitor only to `WesWill@BuyYourHomeLLC.com` with `Jenny@BuyYourHomeLLC.com` copied. Tim must not appear in To, CC, or BCC on a Tim draft, approval request, correction, approved-invoice delivery, or status email. A no-correction response from Wes confirms factual correctness; a correction from Wes requires a revised draft to Wes and Jenny only. Jenny is included for visibility and recordkeeping only. No response at this stage authorizes payment, filing, posting, finalization, or paid status, and only Wes may approve the final invoice after the weekly period closes. A complete immutable package from registered Invoice Entry task `01a03956-fa4f-77c1-9ab7-f709e5f1174e` that matches this canonical rule does not require another direct authorization in Email Monitor.
+
+Josh Kennedy's routine accuracy-review draft must be sent only to `IRAManager@SellYourHomeRaleigh.com`, with `WesWill@BuyYourHomeLLC.com` and `Jenny@BuyYourHomeLLC.com` copied, when the complete immutable Invoice Entry package matches the canonical open-period or period-close review rule. The standing authorization above covers that email-delivery action without another confirmation. It does not approve Josh's time, finalize the invoice, authorize payment, create an accounting entry, authorize filing, or establish paid status.
+
+For a canonical Tim or Josh approved-copy package, send automatically under the standing authorization above only after the package supplies immutable evidence of Wes's prior approval and preserves the canonical approved-copy recipient set and required PDF. Describe the status as `Approved by Wes - Not Paid` or the exact canonical equivalent. The delivery does not authorize or imply payment, posting, filing, or paid status.
 
 #### Send And Verification
 
@@ -663,9 +719,9 @@ Include:
 
 Do not say the email is on Wes's behalf unless the actual sending identity requires that wording.
 
-For Jenny's summary, write a concise plain-text email to Jenny. Include the mailbox scanned, cutoff used, priority items, low-priority exclusions when applicable, and a clear note if no priority messages were found.
+For Jenny's summary, write a concise plain-text email to Jenny. Include the top-level Inbox scanned, cutoff used, priority items, low-priority exclusions when applicable, and a clear note if no priority messages were found.
 
-For Josh's summary, write a concise plain-text email to Josh. Include the mailbox scanned, cutoff used, priority items, low-priority exclusions when applicable, a clear note if no priority messages were found, and the Manager Tasks section defined above.
+For Josh's summary, write a concise plain-text email to Josh. Include the top-level Inbox scanned, cutoff used, priority items, low-priority exclusions when applicable, a clear note if no priority messages were found, and the Manager Tasks section defined above.
 
 Do not include Codex usage, token totals, rate-limit information, or process-time totals in Jenny's or Josh's summary.
 

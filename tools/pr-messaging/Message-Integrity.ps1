@@ -6,7 +6,9 @@ function Convert-PrMessageJsonEscaping([string]$Json,[bool]$Html) {
     [regex]::Replace($Json, '"(?:\\.|[^"\\])*"', [Text.RegularExpressions.MatchEvaluator]{
         param($token)
         $inner=$token.Value.Substring(1,$token.Value.Length-2)
-        $converted=[regex]::Replace($inner, '\\(?:u[0-9a-fA-F]{4}|.)|[^\\]', [Text.RegularExpressions.MatchEvaluator]{
+        # Ordinary text is unchanged; consume it as a run instead of invoking
+        # PowerShell once per character. Escapes and HTML characters stay atomic.
+        $converted=[regex]::Replace($inner, '\\(?:u[0-9a-fA-F]{4}|.)|[''&<>"]|[^\\''&<>"]+', [Text.RegularExpressions.MatchEvaluator]{
             param($part)
             $v=$part.Value
             $character=switch -CaseSensitive ($v) {
@@ -49,13 +51,41 @@ function Convert-PrMessageLegacyDateValues($Value) {
     return $Value
 }
 function Get-PrMessageHashEvidence($Record) {
+    if(!$script:PrHashMetrics -and $null -eq $script:PrIntegritySnapshot){return Get-PrMessageHashEvidenceCore $Record}
+    $timer=[Diagnostics.Stopwatch]::StartNew()
+    try {
+        $key=$null
+        if($null -ne $script:PrIntegritySnapshot){
+            # Full record content, not message id or stored immutable hash. A
+            # changed payload, state, receipt, or attempt can never hit this key.
+            $key=Get-PrMessageDigest ($Record|ConvertTo-Json -Depth 30 -Compress)
+            if($script:PrIntegritySnapshot.ContainsKey($key)){
+                if($script:PrHashMetrics){$script:PrHashMetrics.cache_hits++}
+                return $script:PrIntegritySnapshot[$key]
+            }
+        }
+        if($script:PrHashMetrics){$script:PrHashMetrics.calculations++}
+        $evidence=Get-PrMessageHashEvidenceCore $Record
+        if($key){$script:PrIntegritySnapshot[$key]=$evidence}
+        return $evidence
+    }
+    finally {if($script:PrHashMetrics){$script:PrHashMetrics.calls++;$script:PrHashMetrics.elapsed_ms+=$timer.Elapsed.TotalMilliseconds}}
+}
+function Start-PrIntegritySnapshot { $script:PrIntegritySnapshot=@{} }
+function Stop-PrIntegritySnapshot { $script:PrIntegritySnapshot=$null }
+function Get-PrMessageHashEvidenceCore($Record) {
     $immutable=[ordered]@{message_type=[string]$Record.message_type;parent_message_id=[string]$Record.parent_message_id;source=$Record.source;destination=$Record.destination;authorization=$Record.authorization;references=$Record.references;payload=$Record.payload}
     $canonical=$immutable|ConvertTo-Json -Depth 30 -Compress
     $plain=Get-PrMessageDigest (Convert-PrMessageJsonEscaping $canonical $false)
     $html=Get-PrMessageDigest (Convert-PrMessageJsonEscaping $canonical $true)
     $legacyCanonical=(Convert-PrMessageLegacyDateValues $immutable)|ConvertTo-Json -Depth 30 -Compress
-    $legacyPlain=Get-PrMessageDigest (Convert-PrMessageJsonEscaping $legacyCanonical $false)
-    $legacyHtml=Get-PrMessageDigest (Convert-PrMessageJsonEscaping $legacyCanonical $true)
+    if($legacyCanonical -ceq $canonical){
+        # Identical bytes need no second escaping pass or digest calculation.
+        $legacyPlain=$plain;$legacyHtml=$html
+    }else{
+        $legacyPlain=Get-PrMessageDigest (Convert-PrMessageJsonEscaping $legacyCanonical $false)
+        $legacyHtml=Get-PrMessageDigest (Convert-PrMessageJsonEscaping $legacyCanonical $true)
+    }
     [pscustomobject]@{
         valid=($Record.payload_hash -cmatch '^[0-9a-f]{64}$' -and
             $Record.payload_hash -cin @($plain,$html,$legacyPlain,$legacyHtml))
@@ -87,6 +117,29 @@ function Test-PrMessageStructurallyTerminal($Record) {
         $r.task_id -cne $Record.destination.task_id -or $r.machine -cne $Record.destination.machine -or
         $Record.result.machine -cne $Record.destination.machine){return $false}
     try{return ([DateTimeOffset]::Parse($Record.result.completed_at_utc) -ge [DateTimeOffset]::Parse($r.accepted_at_utc))}catch{return $false}
+}
+function Test-PrObsoleteRollbackRecord($Record) {
+    if($Record.message_id -cne 'prmsg-doc-scan-rollback-review-20260824-001' -or
+        $Record.payload_hash -cne 'dc03b0ab70b657a77dcd0df7327c5e5cca5bbef6529232c5b186fd2ec48289b9' -or
+        !(Get-PrMessageHashEvidence $Record).valid -or $Record.authoritative -ne $true -or
+        $Record.destination.project_room -cne 'Doc Scan' -or
+        $Record.destination.task_id -cne '01a029bf-8534-7b73-a330-55015eb2a722' -or
+        $Record.destination.machine -cne 'OFFICEASSIST' -or $Record.state -cne 'Queued' -or
+        $Record.receipt -or $Record.result -or $Record.attempt_count -ne 3 -or $Record.max_attempts -ne 3){return $false}
+    $a=@($Record.attempts)
+    $ids=@('49e711c01d79407f9c4f1e7409f42d71','dispatcher-officeassist-prmsg-doc-scan-rollback-review-20260824-001-2','dispatcher-officeassist-prmsg-doc-scan-rollback-review-20260824-001-3')
+    if($a.Count -ne 3){return $false}
+    for($i=0;$i -lt 3;$i++){
+        $outcome=if($i -eq 0){'DeliveryAmbiguous'}else{'NotDelivered'}
+        if($a[$i].attempt_id -cne $ids[$i] -or $a[$i].outcome -cne $outcome){return $false}
+        try{
+            $start=[DateTimeOffset]::Parse([string]$a[$i].started_at_utc)
+            $end=[DateTimeOffset]::Parse([string]$a[$i].completed_at_utc)
+            if($end -lt $start -or $end -gt [DateTimeOffset]::UtcNow.AddMinutes(-30)){return $false}
+        }catch{return $false}
+    }
+    if(@($Record.events|Where-Object event -notin @('Created','DeliveryAttemptStarted','DeliveryAttemptCompleted','AdministrativelyRetired')).Count){return $false}
+    return $true
 }
 function Test-PrExhaustedAmbiguousRecord($Record,[int]$MinimumAgeMinutes=30) {
     if($MinimumAgeMinutes -lt 1 -or !(Get-PrMessageHashEvidence $Record).valid -or
@@ -152,6 +205,16 @@ function Test-PrAdministrativeClosure($Record) {
         $c.delivery_claimed -isnot [bool] -or $c.delivery_claimed -ne $false -or
         $c.business_completion_claimed -isnot [bool] -or $c.business_completion_claimed -ne $false){return $false}
     try{[void][DateTimeOffset]::Parse($c.closed_at_utc)}catch{return $false}
+    if($c.disposition -ceq 'ObsoleteRollbackRetired'){
+        return ((Test-PrObsoleteRollbackRecord $Record) -and
+            $c.actor_project_room -ceq 'PR Messaging Dispatcher' -and
+            $c.actor_task_id -ceq '01a09d84-a309-7591-a790-e770fcb53dee' -and
+            $c.transport_owner_task_id -ceq $c.actor_task_id -and $c.actor_machine -ceq 'OFFICEASSIST' -and
+            $c.transport_owner -ceq 'low-token-officeassist' -and $c.transport_generation -ceq '0.4.0' -and
+            $c.original_state -ceq 'Queued' -and $c.delivery_status -ceq 'Unresolved' -and
+            $c.authorization_reference -ceq 'Wes explicitly cancelled and authorized administrative retirement in Jean Wright on September 25, 2026.' -and
+            $c.record_version_before -cmatch '^[0-9a-f]{64}$')
+    }
     if($c.disposition -ceq 'SupersededUndelivered'){
         return ((Test-PrSupersededRecord $Record) -and
             $c.superseded_by -ceq 'prmsg-invoice-entry-poyner-spruill-qb-existence-audit-20260831-002' -and

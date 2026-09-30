@@ -14,6 +14,21 @@ $started=[DateTime]::UtcNow; $watch=[Diagnostics.Stopwatch]::StartNew()
 $lock=$null; $cfg=$null; $journal=$null
 $script:centralRecordChanged=$false
 $health=[ordered]@{schema_version=1;release=$null;mode=$Mode;machine=$env:COMPUTERNAME;sid=[Security.Principal.WindowsIdentity]::GetCurrent().User.Value;started_at_utc=$started.ToString('o');status='Starting';queue_reachable=$false;claims=0;submissions=0;model_requests=0;journal_closed_skipped=0;reconciled=@();attention=@();candidates=@();next_tick_at_utc=$started.AddSeconds(60).ToString('o')}
+$script:PrHashMetrics=@{calls=0;calculations=0;cache_hits=0;elapsed_ms=0.0}
+$health.diagnostics=[ordered]@{version=1;pid=$PID;priority=[string]([Diagnostics.Process]::GetCurrentProcess().PriorityClass);phases=@();manager_calls=@();before_conditional_claim=@();hash_checks=$script:PrHashMetrics}
+$script:phase='preflight';$script:phaseStart=0L;$script:phaseHashStart=0
+function Set-LtPhase([string]$Name) {
+    $health.diagnostics.phases+=@{name=$script:phase;elapsed_ms=($watch.ElapsedMilliseconds-$script:phaseStart);hash_checks=($script:PrHashMetrics.calls-$script:phaseHashStart)}
+    $script:phase=$Name;$script:phaseStart=$watch.ElapsedMilliseconds;$script:phaseHashStart=$script:PrHashMetrics.calls
+    $health.diagnostics.current_phase=$Name
+}
+function Save-LtCheckpoint {
+    if($lock){
+        $health.diagnostics.checkpoint_at_utc=[DateTime]::UtcNow.ToString('o')
+        $health.diagnostics.checkpoint_elapsed_ms=$watch.ElapsedMilliseconds
+        try{Write-LtJson (Join-Path $cfg.state_directory 'health.json') $health}catch{}
+    }
+}
 function Save-Journal {
     $script:journal | Add-Member updated_at_utc ([DateTime]::UtcNow.ToString('o')) -Force
     Write-LtJson (Join-Path $cfg.state_directory 'journal.json') $script:journal
@@ -50,7 +65,9 @@ function Invoke-Manager([string]$Action,[hashtable]$Extra=@{}) {
     }
     foreach($k in $Extra.Keys){$argv+=@("-$k",[string]$Extra[$k])}
     $managerBound=if($cfg.release -in @('0.4.5','0.4.6')){if($Action -ceq 'List'){60}else{120}}else{if($Action -ceq 'List'){25}else{15}}
-    $p=Invoke-LtProcess $cfg.powershell_path $argv ([Math]::Min($managerBound,$left))
+    $callWatch=[Diagnostics.Stopwatch]::StartNew()
+    try{$p=Invoke-LtProcess $cfg.powershell_path $argv ([Math]::Min($managerBound,$left))}
+    finally{$health.diagnostics.manager_calls+=@{action=$Action;elapsed_ms=$callWatch.ElapsedMilliseconds;started_elapsed_ms=($watch.ElapsedMilliseconds-$callWatch.ElapsedMilliseconds)}}
     if($p.timed_out){throw 'ManagerTimeoutUncertain'}
     if($p.exit_code -ne 0){throw ('ManagerFailed: '+$p.stderr)}
     $parsed=$p.stdout | ConvertFrom-Json
@@ -133,8 +150,11 @@ try {
     if (!(Test-Path -LiteralPath $cfg.state_directory)){New-Item -ItemType Directory -Path $cfg.state_directory -Force|Out-Null}
     try{$lock=[IO.File]::Open((Join-Path $cfg.state_directory 'worker.lock'),[IO.FileMode]::OpenOrCreate,[IO.FileAccess]::ReadWrite,[IO.FileShare]::None)}catch{throw 'WorkerAlreadyRunning'}
     $health.config_sha256=(Get-FileHash -LiteralPath $ConfigPath).Hash
+    $health.status='Running';Set-LtPhase 'List';Save-LtCheckpoint
     if($Mode -eq 'Paused'){$health.status='Paused';return}
     $records=@(Invoke-Manager 'List' @{DestinationMachine=$env:COMPUTERNAME}); $health.queue_reachable=$true
+    $health.diagnostics.inventory_count=$records.Count
+    Set-LtPhase 'journal_reconciliation';Save-LtCheckpoint
     $client=Read-LtJson $cfg.client_path
     $manifests=@(Get-ChildItem -LiteralPath $cfg.manifest_directory -Filter '*.json' -File|ForEach-Object{Read-LtJson $_.FullName})
     $configurationHash=Get-LtConfigHash $client $manifests
@@ -165,18 +185,24 @@ try {
         }}
         if($script:centralRecordChanged){$records=@(Invoke-Manager 'List' @{DestinationMachine=$env:COMPUTERNAME})}
     }
+    Set-LtPhase 'candidate_evaluation';Save-LtCheckpoint
+    Start-PrIntegritySnapshot
     $scoped=@(if($MessageId){$records|Where-Object message_id -CEQ $MessageId}else{$records|Where-Object {$_.destination.machine -ceq $env:COMPUTERNAME -and $_.state -in @('Queued','Delivery Ambiguous')}})
     if($MessageId -and $scoped.Count -ne 1){$health.attention+=@{message_id=$MessageId;reason='MissingOrDuplicateTarget'}}
     foreach($r in @($scoped|Sort-Object created_at_utc,message_id)){
+        $candidateWatch=[Diagnostics.Stopwatch]::StartNew();$candidateHashes=$script:PrHashMetrics.calls
         $evaluationMode=if($Mode -eq 'Validation'){'Validation'}else{'Live'}
         $reason=Test-LtRecord $r $client $manifests $env:COMPUTERNAME $evaluationMode $MessageId $records
         if($cfg.release -in @('0.4.0','0.4.1','0.4.2','0.4.3','0.4.4','0.4.5','0.4.6') -and !(Test-LtPinnedDestination $cfg $r.destination)){$reason='DestinationNotPinned'}
         if($Mode -ceq 'Canary'){Assert-LtCanaryRecord $r; if($cfg.payload_hash -cne $r.payload_hash){throw 'CanaryPinnedHashMismatch'}}
         if($r.destination.task_id -ceq $cfg.dispatcher_task_id){$reason='SelfNotificationForbidden'}
         if($journal -and @($journal.entries|Where-Object {$_.phase -ne 'closed' -and $_.destination_task_id -ceq $r.destination.task_id}).Count){$reason='DestinationOutstanding'}
-        $health.candidates+=@{message_id=$r.message_id;state=$r.state;reason=$reason}
+        $health.candidates+=@{message_id=$r.message_id;state=$r.state;reason=$reason;elapsed_ms=$candidateWatch.ElapsedMilliseconds;hash_checks=($script:PrHashMetrics.calls-$candidateHashes)}
+        Save-LtCheckpoint
         if($Mode -notin @('Validation','Canary','Live') -or $reason -cne 'Eligible' -or $health.claims -ge 1){continue}
         if($Mode -ceq 'Canary'){Assert-LtCanaryRecord $r -ForSubmission}
+        $health.diagnostics.before_conditional_claim+=@{elapsed_ms=$watch.ElapsedMilliseconds;remaining_ms=($cfg.max_tick_seconds*1000-$watch.ElapsedMilliseconds);hash_checks=$script:PrHashMetrics.calls}
+        Save-LtCheckpoint
         if($watch.Elapsed.TotalSeconds -gt $cfg.max_tick_seconds-20){throw 'TickBudgetExhausted'}
         if((Get-FileHash -LiteralPath $cfg.adapter_path).Hash -ine $cfg.adapter_sha256){throw 'AdapterReleaseMismatch'}
         # codex queue serializes behind an existing turn. No desktop status connection.
@@ -185,6 +211,8 @@ try {
         $journal.entries+=@($entry);Save-Journal
         Invoke-CrashTestPause 'AfterPlan'
         if($FailurePoint -eq 'AfterPlan'){throw 'InjectedAfterPlan'}
+        Set-LtPhase 'claim_and_submission';Save-LtCheckpoint
+        Stop-PrIntegritySnapshot
         $claim=Invoke-Manager 'ConditionalClaim' @{MessageId=$r.message_id;ExpectedHash=$r.payload_hash;ExpectedVersion=(Get-LtVersion $r);ExpectedConfigHash=$configurationHash;AttemptId=$entry.attempt_id}
         if(!$claim.claimed){$entry.phase='closed';$entry.outcome='NotClaimed';$entry|Add-Member claim_denial $claim.reason -Force;Save-Journal;continue}
         $health.claims++
@@ -230,11 +258,26 @@ try {
     }
     $health.status=if($Mode -eq 'Shadow'){'ShadowComplete'}elseif($Mode -eq 'Drain'){'DrainComplete'}else{'TickComplete'}
 }catch{
-    $health.status='Blocked';$health.error=$_.Exception.Message
+    $health.status='Blocked'
+    $failureText=$_.Exception.Message
+    $health.error=if($failureText -cmatch '^[A-Za-z][A-Za-z0-9]{0,80}$'){$failureText}elseif($failureText.StartsWith('ManagerFailed:')){'ManagerFailed'}else{'WorkerFailure'}
+    $health.error_sha256=Get-LtSha256 $failureText
 }finally{
+    Stop-PrIntegritySnapshot
+    Set-LtPhase 'finished'
     if($journal){$health.outstanding_attempts=@($journal.entries|Where-Object phase -ne 'closed'|ForEach-Object{@{message_id=$_.message_id;destination_task_id=$_.destination_task_id;attempt_id=$_.attempt_id;phase=$_.phase;queued_receipt_warning_seconds=$cfg.queued_receipt_warning_seconds}})}
     $health.completed_at_utc=[DateTime]::UtcNow.ToString('o');$health.elapsed_ms=$watch.ElapsedMilliseconds
     if($cfg -and $lock){try{Write-LtJson (Join-Path $cfg.state_directory 'health.json') $health}catch{$health.health_write_error=$_.Exception.Message}}
+    if(!$lock){
+        # Never trust a failed configuration's arbitrary state path. Keep preflight
+        # diagnostics separate so a concurrent launch cannot overwrite tick health.
+        try{
+            $diagnosticRoot=Join-Path $env:LOCALAPPDATA 'BuyYourHome\PRMessaging\low-token'
+            if($cfg.fixture_root){Assert-LtFixture $cfg.fixture_root @($cfg.state_directory);$diagnosticRoot=$cfg.state_directory}
+            $safeError=if($health.error -cmatch '^[A-Za-z][A-Za-z0-9]{0,80}$'){$health.error}else{'PreflightFailure'}
+            Write-LtJson (Join-Path $diagnosticRoot 'preflight-health.json') @{status='Blocked';error_code=$safeError;started_at_utc=$health.started_at_utc;completed_at_utc=$health.completed_at_utc;diagnostics=$health.diagnostics}
+        }catch{}
+    }
     if($lock){$lock.Dispose()}
     $health|ConvertTo-Json -Depth 15
 }

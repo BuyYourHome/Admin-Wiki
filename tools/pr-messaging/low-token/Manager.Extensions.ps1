@@ -20,6 +20,33 @@ function Assert-LtOwner {
         if($o.mode -cne 'Live'){throw 'ExclusiveLiveOwnershipRequired'}
     } else { throw 'UnsupportedTransportMode' }
 }
+function Invoke-LtAdministrativeRetireObsoleteRollback($Record,[string]$RecordPath) {
+    if($env:COMPUTERNAME -cne 'OFFICEASSIST' -or $ActorProjectRoom -cne 'PR Messaging Dispatcher' -or
+        $ActorTaskId -cne '01a09d84-a309-7591-a790-e770fcb53dee' -or
+        $TransportOwner -cne 'low-token-officeassist' -or $Generation -cne '0.4.0' -or $Mode -cne 'Live' -or
+        $AuthorizationReference -cne 'Wes explicitly cancelled and authorized administrative retirement in Jean Wright on September 25, 2026.' -or
+        [string]::IsNullOrWhiteSpace($Detail)){throw 'RollbackRetirementAuthorityMismatch'}
+    if(!(Test-PrObsoleteRollbackRecord $Record)){throw 'ExactObsoleteRollbackRecordRequired'}
+    if($ExpectedHash -cne $Record.payload_hash){throw 'RollbackRetirementHashMismatch'}
+    if($ExpectedRecordVersion -cnotmatch '^[0-9a-f]{64}$' -or
+        (Get-PrMessageDigest ($Record|ConvertTo-Json -Depth 30 -Compress)) -cne $ExpectedRecordVersion){throw 'RollbackRetirementVersionConflict'}
+    Assert-LtOwner
+    if($Record.administrative_closure){throw 'AdministrativeClosureConflict'}
+    $closure=[pscustomobject][ordered]@{
+        schema_version=1;message_id=$Record.message_id;payload_hash=$Record.payload_hash
+        disposition='ObsoleteRollbackRetired';authorized_by='Wes';authorization_reference=$AuthorizationReference
+        actor_project_room=$ActorProjectRoom;actor_task_id=$ActorTaskId;actor_machine=$env:COMPUTERNAME
+        transport_owner=$TransportOwner;transport_generation=$Generation;transport_owner_task_id=$ActorTaskId
+        closed_at_utc=Get-UtcTimestamp;original_state=$Record.state;record_version_before=$ExpectedRecordVersion
+        delivery_status='Unresolved';delivery_claimed=$false;business_completion_claimed=$false
+        detail='Rollback request retired at Wes''s direction; not delivered or completed. Original state, payload, and all attempts preserved. '+$Detail
+    }
+    $Record|Add-Member administrative_closure $closure
+    if(!(Test-PrAdministrativeClosure $Record)){throw 'RollbackRetirementEvidenceInvalid'}
+    Add-Event $Record 'AdministrativelyRetired' $closure.detail $ActorProjectRoom $ActorTaskId
+    Write-JsonAtomic $RecordPath $Record
+    return $Record
+}
 function Invoke-LtAdministrativeCloseExhaustedAmbiguous($Record,[string]$RecordPath) {
     if($ActorProjectRoom -cne 'PR Messaging Dispatcher' -or
         [string]::IsNullOrWhiteSpace($ActorTaskId) -or
@@ -317,7 +344,11 @@ function Invoke-LtManagerOperation {
         $manifests=@(Get-ChildItem -LiteralPath $ManifestDirectory -Filter '*.json' -File | ForEach-Object { Read-LtJson $_.FullName })
         if ((Get-LtConfigHash $client $manifests) -cne $ExpectedConfigHash) { return [pscustomobject]@{claimed=$false;reason='ConfigurationConflict'} }
         $all=@(Get-ChildItem -LiteralPath (Join-Path $QueuePath 'records') -Filter '*.json' -File | ForEach-Object {Read-Record $_.FullName})
-        $reason=Test-LtRecord $r $client $manifests $env:COMPUTERNAME $Mode $MessageId $all
+        # This inventory was read inside the queue lock. Never inherit worker
+        # evidence or retain cache state after this one atomic validation.
+        Start-PrIntegritySnapshot
+        try{$reason=Test-LtRecord $r $client $manifests $env:COMPUTERNAME $Mode $MessageId $all}
+        finally{Stop-PrIntegritySnapshot}
         if ($reason -cne 'Eligible') { return [pscustomobject]@{claimed=$false;reason=$reason} }
         $attempt=[pscustomobject][ordered]@{attempt_id=$AttemptId;started_at_utc=(Get-UtcTimestamp);completed_at_utc=$null;outcome='Pending';detail=$null;transport_owner=$TransportOwner;transport_generation=$Generation}
         $r.attempts=@($r.attempts)+@($attempt); $r.attempt_count=[int]$r.attempt_count+1; $r.state='Delivery Attempted'

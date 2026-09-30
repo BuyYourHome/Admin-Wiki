@@ -8,6 +8,12 @@ SharePoint/Teams Office Admin `2026`, or a verified local synced equivalent only
 
 Purpose: reference map for routing scanned statements, invoices, receipts, and related documents into the correct 2026 Office Admin folders.
 
+## Intake Subfolder Cleanup
+
+Scanner-created subfolders under SharePoint/Teams Office Admin `Scanned Files` are temporary intake containers. After every source in one of these subfolders has been processed or otherwise resolved, every original has been verified in `Scanned Files\Archived`, and every required output and log has been verified, recursively re-list the intake subfolder. Delete it only when it is completely empty. If any file or child folder remains, leave it in place and record the remaining item.
+
+This cleanup never applies to permanent workflow folders, including `Logs`, `Archived`, `Verification needed`, `Doc Scan Working Archive`, and `Invoice Entry Working Archive`.
+
 ```text
 2026
 ├─ Bank Statement

@@ -66,6 +66,7 @@ Example user requests:
 7. Route each output PDF to the best matching SharePoint/Teams folder under the 2026 Office Admin folder map or the matching property/project/entity folder, using verified local synced folders only as fallback.
 8. Avoid destructive changes. Never delete the original scan automatically.
 9. Flag uncertain classifications for human review instead of guessing.
+10. After all sources from a scanner-created intake subfolder have been processed or otherwise resolved, verify the archived originals, outputs, and logs; recursively confirm the source subfolder is completely empty; then delete the empty subfolder. Leave any nonempty subfolder in place and record what remains. Do not delete permanent workflow folders.
 
 ## Document Types
 
