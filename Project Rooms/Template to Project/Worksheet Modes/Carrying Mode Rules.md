@@ -5,7 +5,7 @@ Use these rules for Carrying worksheet design, repairs, and approved template mi
 ## Current Prototype and Scope
 
 - Prototype under evaluation: Pond, `Property/26_Project Management - 908 Pond St 3.xlsm`, retrieved fresh through the Teams/SharePoint connector.
-- The September 30, 2026 grid-only expense repair is approved and completed on Pond. The complete Carrying redesign and rollout to other projects are not yet approved.
+- The September 30, 2026 grid-only expense repair and subsequent mortgage-payment date repair are approved and completed on Pond. The complete Carrying redesign and rollout to other projects are not yet approved.
 - Follow [[Project Spreadsheet Expense Placement Rules]] for existing category, escrow, and presentation conventions. Locate current tables and outputs by name and label, not historical coordinates.
 - A fix approved during prototype review becomes a required check and repair for later authorized Carrying migrations. Apply the repair method independently to each project; never copy Pond's expense values into another project.
 
@@ -22,6 +22,8 @@ Use these rules for Carrying worksheet design, repairs, and approved template mi
 9. Confirm every migrated bill appears exactly once and that the grid has sufficient display capacity. Do not silently hide overflow or discard valid schedule rows to make records fit.
 10. Reconcile table amounts, displayed entries, category totals, and corresponding Profit totals. Protect downstream references to positional grid cells when sorting changes which bill occupies a row.
 
+When a date conversion is inside the matched array shared by date and amount display formulas, repair both formulas together. A date-only change can leave the amounts in their old order. Verify every date/amount pair against the table, including equal dates and zero/blank schedule amounts, and require unchanged category and Profit totals for a presentation-only repair. Do not infer that a valid date display establishes the accuracy of the source payment records.
+
 ## Validation and Delivery
 
 - Preserve formulas outside the approved scope, formatting, widths, heights, merged cells, print settings, tables, defined names, macros, controls, and links.
@@ -34,6 +36,6 @@ Use these rules for Carrying worksheet design, repairs, and approved template mi
 
 ## Pond Repair Reference
 
-See [[pond-carrying-repair-20260930]] for the 13 recovered bills, replacement of ten approved Natural Gas placeholders, corrected electric date, downstream Docs change, rollback reference, and verified totals. These values are evidence for Pond only, not default values for other projects.
+See [[pond-carrying-repair-20260930]] for the 13 recovered bills, replacement of ten approved Natural Gas placeholders, corrected electric date, downstream Docs change, subsequent mortgage date/amount pairing repair, rollback references, and verified totals. These values are evidence for Pond only, not default values for other projects.
 
 Remaining prototype discussions: date formulas in the other category blocks, property-tax escrow offsets, and the remaining design extensions. Do not roll those changes out without approval.

@@ -57,3 +57,20 @@ Owner: Template to Project. Scope: approved repair of grid-only Carrying expense
 ## Lesson
 
 The visible grid may contain newer actual bills and corrected dates that are absent from its source table. Reconcile these records before restoring formulas; otherwise a seemingly successful redesign can erase project data or leave costs out of Profit. Apply this check independently on every future authorized Carrying migration. See [[Carrying Mode Rules]].
+
+## Mortgage Date Follow-Up
+
+Completed September 30, 2026, approximately 13:56 UTC, after Wes approved the mortgage-payment date fix and confirmed Pond was closed.
+
+- Fresh Teams baseline: saved at `2026-09-30T13:47:30Z`.
+- Rollback: `Property/Project Template/Rollback Copies/26_Project Management - 908 Pond St 3.before-mortgage-dates-20260930-1352.xlsm`.
+- Changed only the 42 display formulas and their saved results in `Carrying!D4:E24`. Replaced `DATEVALUE(tblCarryingExpenses[Date])` with the typed table date column in both halves of the paired display. All category selection, anchored counters, and amount conversion logic were retained.
+- All 19 included mortgage records now display chronologically with their corresponding amounts. Six records have nonzero payments; zero/blank schedule records and the two records dated October 10, 2025 remain intact.
+- No table records or source payment values were changed. Mortgage subtotal remains $14,421.92; Profit carrying costs remain $33,770.25; current Docs output remains $1,825.
+- The archived `Docs - Old 0704!B62` still references positional cell `Carrying!E5`, but its current condition yields zero. No archived formula was changed. Current `Docs!E39` uses `Profit!C9` and is independent of the reordered mortgage grid.
+- Only the Carrying worksheet package part changed. All other package parts, tables, names, macros, controls, and styles were byte-identical; all cell styles and formulas outside the approved display cells were verified unchanged.
+- Hidden, read-only Excel opened the workbook normally in Automatic calculation. All 19 displayed pairs matched the table after recalculation. A temporary unsaved date change updated its display with the correct payment still paired; the test was restored and discarded.
+- Live Teams source was unchanged immediately before replacement. The downloaded replacement matched the validated file at SHA-256 `7624B4CC1DD33A29970468721894B70E18E6DB8C44B28158E277D8515C44EA01`.
+- This supersedes the earlier open mortgage-date issue only. Date formulas in other unrepaired category blocks, escrow assumptions, and further design changes remain for review. No other project was updated.
+
+Lesson: repair both date and amount formulas when their shared sort array contains the defect. Validate pairings, not only total amounts or the presence of dates.
