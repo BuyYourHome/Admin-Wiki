@@ -25,12 +25,31 @@ try{
         [void]$cell.GetType().InvokeMember('Value2',[Reflection.BindingFlags]::SetProperty,$null,$cell,@($value))
     }
     function Prefill([int]$row=0){[string]$e.Run("'"+$b.Name.Replace("'","''")+"'!CarryingEntry_Prefill",$row)}
-    Set-Field Vendor 'Duke Electric';$date.MergeArea.ClearContents()
-    Assert ((Prefill).StartsWith('Choose a ')) 'Different descriptions did not require explicit choice.'
-    Assert ($null -eq $date.Value2) 'Ambiguous record populated Date.'
+    foreach($entry in @(@('Duke Electric','2026-08-10',109.49),@('Water','2026-08-14',65.77))){
+        Set-Field Vendor $entry[0];$date.MergeArea.ClearContents()
+        Assert ((Prefill).StartsWith('Filled.')) 'Descriptions incorrectly split a recurring bill.'
+        Assert ($date.Value2 -eq ([datetime]$entry[1]).ToOADate()) 'Combined Vendor/Category history date incorrect.'
+        Assert ([math]::Abs($b.Names.Item('ceAmount').RefersToRange.Value2-$entry[2]) -lt .001) 'Latest amount not selected.'
+        Assert ($b.Names.Item('ceDescription').RefersToRange.Value2 -eq 'Recovered existing Carrying grid expense') 'Latest description not selected.'
+    }
     Set-Field Vendor 'Unknown Vendor'
     Assert ((Prefill).Contains('no matching')) 'Unknown Vendor accepted.'
     $results=[Collections.Generic.List[object]]::new()
+    # A second category still requires a choice; choosing an older row selects the latest in that category.
+    $extra=$t.ListRows.Add().Range
+    foreach($pair in @(@('Vendor','Water'),@('Category','Labor'),@('Description','TEST alternate category'),@('Include','No'))){$extra.Cells.Item(1,$t.ListColumns.Item($pair[0]).Index).Value2=$pair[1]}
+    Set-Cell $extra.Cells.Item(1,$t.ListColumns.Item('Date').Index) (([datetime]'2027-01-01').ToOADate())
+    Set-Field Vendor 'Water';$date.MergeArea.ClearContents();Set-Field Description 'Preserve pending input'
+    Assert ((Prefill).StartsWith('Choose a category:')) 'Multiple categories silently selected.'
+    Assert ($null -eq $date.Value2 -and $b.Names.Item('ceDescription').RefersToRange.Value2 -eq 'Preserve pending input') 'Ambiguous selection changed form.'
+    $oldWater=0
+    for($i=1;$i -le $count;$i++){if($t.DataBodyRange.Cells.Item($i,$t.ListColumns.Item('Vendor').Index).Value2 -eq 'Water'){$oldWater=$i;break}}
+    Assert ((Prefill $oldWater).StartsWith('Filled.') -and $date.Value2 -eq ([datetime]'2026-08-14').ToOADate()) 'Category selection did not use full history.'
+    Assert ($b.Names.Item('ceDescription').RefersToRange.Value2 -eq 'Recovered existing Carrying grid expense') 'Category selection reused older description.'
+    Assert ((Prefill ($count+2)).Contains('invalid category record')) 'Out-of-range row accepted.'
+    Assert ((Prefill 1).Contains('no matching Vendor')) 'Different vendor row accepted.'
+    $t.ListRows.Item($count+1).Delete()
+    $results.Add(@{case='Vendor/Category match, latest description, category separation and explicit choice';passed=$true})
     $cases=@(
         @{name='Monthly';dates=@('2026-01-10','2026-02-10','2026-03-10');expected='2026-04-10'},
         @{name='Monthly jitter';dates=@('2026-05-05','2026-06-04','2026-07-07');expected='2026-08-07'},

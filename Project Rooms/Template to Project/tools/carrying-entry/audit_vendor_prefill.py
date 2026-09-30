@@ -57,6 +57,7 @@ def table_xml(book, table):
 a, az, ac = load(sys.argv[1])
 b, bz, bc = load(sys.argv[2])
 issues = []
+module_only = '--module-only' in sys.argv
 left, top, right, bottom = range_boundaries(a['Carrying'].tables['tblCarryingExpenses'].ref)
 headers = [c.name for c in a['Carrying'].tables['tblCarryingExpenses'].tableColumns]
 vendor_letter = get_column_letter(left + headers.index('Vendor'))
@@ -73,16 +74,16 @@ for name, old in ac.items():
     for addr in old.keys() | bc[name].keys():
         before = old.get(addr, (None, None, None, 0))
         after = bc[name].get(addr, (None, None, None, 0))
-        helper = name == 'Carrying' and addr in ['AX' + str(i) for i in range(1, len(unique_vendors) + 2)]
+        helper = not module_only and name == 'Carrying' and addr in ['AX' + str(i) for i in range(1, len(unique_vendors) + 2)]
         vendor = name == 'Carrying' and addr in vendor_map
         expected = before[0] if before[0] is not None else before[1]
         actual = after[0] if after[0] is not None else after[1]
         if vendor:
             assert expected in (None, '', ' ')
             expected = ac[name][vendor_map[addr]][1]
-        if name == 'Carrying' and addr == 'W3':
+        if not module_only and name == 'Carrying' and addr == 'W3':
             expected = None
-        if name == 'Carrying' and addr == 'Z3':
+        if not module_only and name == 'Carrying' and addr == 'Z3':
             expected = ac[name]['W3'][0] or ac[name]['W3'][1]
         if not helper and expected != actual:
             issues.append([name, addr, 'content', expected, actual])
@@ -98,10 +99,10 @@ for name, old in ac.items():
     new_dv = [ET.tostring(d.to_tree()) for d in b[name].data_validations.dataValidation]
     for dv in old_dv:
         if dv not in new_dv: issues.append([name, 'validation removed'])
-    if len(new_dv)-len(old_dv) != (1 if name == 'Carrying' else 0):
+    if len(new_dv)-len(old_dv) != (1 if name == 'Carrying' and not module_only else 0):
         issues.append([name, 'unexpected validations'])
 for key, value in a.defined_names.items():
-    expected = 'Carrying!$Z$3' if key == 'ceFeedback' else value.attr_text
+    expected = 'Carrying!$Z$3' if key == 'ceFeedback' and not module_only else value.attr_text
     if key not in b.defined_names or b.defined_names[key].attr_text != expected:
         issues.append(['name', key])
 # Excel records the LET variable as a hidden compatibility name.

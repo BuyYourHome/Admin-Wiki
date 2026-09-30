@@ -14,7 +14,7 @@ Private Function PrefillNextDate(ByRef prefillData As Variant, ByRef prefillCols
     'Use the three latest distinct calendar dates for this exact bill type, including hidden rows.
     For prefillIndex = 1 To UBound(prefillData, 1)
         prefillMatch = True
-        For prefillCol = 0 To 2
+        For prefillCol = 0 To 1
             If StrComp(PrefillText(prefillData(prefillIndex, prefillCols(prefillCol))), _
                 PrefillText(prefillData(prefillCandidate, prefillCols(prefillCol))), vbTextCompare) <> 0 Then prefillMatch = False
         Next prefillCol
@@ -104,7 +104,7 @@ Public Sub CarryingEntry_Recurring()
     Set prefillList = PrefillTable()
     On Error Resume Next
     Set prefillChoice = Application.InputBox( _
-        "This vendor has different bill types. Select one cell in its Carrying table record, or Cancel.", _
+        "This vendor has multiple categories. Select one cell in a record for the category to reuse, or Cancel.", _
         "Choose recurring bill", Type:=8)
     On Error GoTo 0
     If prefillChoice Is Nothing Then Exit Sub
@@ -123,6 +123,7 @@ Public Function CarryingEntry_Prefill(Optional ByVal prefillRow As Long = 0) As 
     Dim prefillNames As Variant, prefillValues As Variant, prefillOld() As Variant
     Dim prefillNumber As Variant, prefillFailure As String, prefillSuggested As Variant, prefillDateMessage As String
     Dim prefillWriteDate As Boolean
+    Dim prefillSelectedCategory As String
     On Error GoTo PrefillFailed
     Set prefillList = PrefillTable()
     If ThisWorkbook.ReadOnly Or prefillList.Parent.ProtectContents Then
@@ -143,13 +144,23 @@ Public Function CarryingEntry_Prefill(Optional ByVal prefillRow As Long = 0) As 
         prefillCols(prefillIndex) = prefillList.ListColumns(CStr(prefillHeaders(prefillIndex))).Index
     Next prefillIndex
     prefillData = prefillList.DataBodyRange.Value2
+    If prefillRow <> 0 Then
+        If prefillRow < 1 Or prefillRow > UBound(prefillData, 1) Then
+            prefillOutcome = "Not filled: invalid category record."
+            GoTo PrefillFinished
+        End If
+        If StrComp(PrefillText(prefillData(prefillRow, prefillCols(0))), prefillVendor, vbTextCompare) <> 0 Then
+            prefillOutcome = "Not filled: no matching Vendor record."
+            GoTo PrefillFinished
+        End If
+        prefillSelectedCategory = PrefillText(prefillData(prefillRow, prefillCols(1)))
+    End If
     prefillNewest = -1
     For prefillIndex = 1 To UBound(prefillData, 1)
         If StrComp(PrefillText(prefillData(prefillIndex, prefillCols(0))), prefillVendor, vbTextCompare) = 0 Then
-            If prefillRow = 0 Or prefillRow = prefillIndex Then
-                prefillGroup = LCase$(PrefillText(prefillData(prefillIndex, prefillCols(1)))) & vbTab & _
-                    LCase$(PrefillText(prefillData(prefillIndex, prefillCols(2))))
-                If prefillFirstGroup = "" Then prefillFirstGroup = prefillGroup
+            If prefillRow = 0 Or StrComp(PrefillText(prefillData(prefillIndex, prefillCols(1))), prefillSelectedCategory, vbTextCompare) = 0 Then
+                prefillGroup = LCase$(PrefillText(prefillData(prefillIndex, prefillCols(1))))
+                If prefillCandidate = 0 Then prefillFirstGroup = prefillGroup
                 If prefillGroup <> prefillFirstGroup Then prefillGroupsDiffer = True
                 prefillDate = -1
                 If Not IsError(prefillData(prefillIndex, prefillCols(4))) Then
@@ -169,7 +180,7 @@ Public Function CarryingEntry_Prefill(Optional ByVal prefillRow As Long = 0) As 
         GoTo PrefillFinished
     End If
     If prefillGroupsDiffer Then
-        prefillOutcome = "Choose a record: this Vendor has different bill types."
+        prefillOutcome = "Choose a category: this Vendor has multiple categories."
         GoTo PrefillFinished
     End If
     prefillNumber = Empty

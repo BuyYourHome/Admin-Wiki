@@ -10,13 +10,13 @@ Required package for later authorized targets:
 2. Preserve project values and owner formatting. Reconcile grid overrides into `tblCarryingExpenses`; apply the approved typed-date pairing, Labor, supporting Profit/Review/Docs fixes and numeric-zero cleanup from [[Carrying Mode Rules]]. Never import the prototype's expenses.
 3. Add or upgrade the named manual-entry form, Include control and Insert Record behavior. Confirm the target's table location, grid capacity, VBA and security prerequisites; do not launch visible Excel or change trust settings.
 4. Add the Vendor dropdown and same-size Recurring Bill button beneath Insert Record. Preserve existing vendor identities; fill blanks from Category only with project-specific approval. Place the helper and feedback without overwriting cells.
-5. Include next-logical-date suggestions: preserve entered dates/formulas; otherwise attempt weekly/monthly/quarterly/annual inference from the three latest distinct dates of the same Vendor/Category/Description. Preserve month ends and February clamping; uncertain patterns remain blank. Suggestions are editable, and prefill never inserts an expense.
+5. Include next-logical-date suggestions: preserve entered dates/formulas; otherwise attempt weekly/monthly/quarterly/annual inference from the three latest distinct dates of the same Vendor + Category. Copy the latest record's Description without using it as a matching key. Only multiple categories require a choice; that choice identifies the category and still uses its latest record. Preserve month ends and February clamping; uncertain patterns remain blank. Suggestions are editable, and prefill never inserts an expense.
 6. Verify original records, formulas, styles, macros, table definitions, controls, print settings, totals and existing-error baseline. Test dates, ambiguity, filtering, duplicate prevention, credits, manual date overrides, leap years and Automatic recalculation. Discard all test data.
 7. Recheck Teams freshness, replace the same authorized item, download and match hash, repeat unsaved native tests, retain rollback, remove superseded temporary files and record lessons.
 
 ## Rollout Gates
 
-- Pond: first next-date enhancement completed and verified in Teams, saved September 30, 2026 at 21:25:47Z; ready for Wes's inspection. See [[pond-recurring-date-20260930]].
+- Pond: next-date enhancement and subsequent Vendor + Category matching correction completed and verified in Teams, latest save September 30, 2026 at 21:46:48Z; ready for Wes's inspection. See [[pond-recurring-date-20260930]] and [[pond-recurring-category-match-20260930]].
 - Tensity: existing Vendor prefill works, but does not yet contain date inference. Follow Pond verification/review and obtain authorization for the upgrade; its closure notice alone does not change the requested Pond-first scope.
 - Other active projects: pending later rollout authorization and independently confirmed active list. No workbook changed by creating this plan.
 - Cool Springs: remains separately gated because of buyer-facing amortization history. Carrying scope does not authorize Amortization replacement.
