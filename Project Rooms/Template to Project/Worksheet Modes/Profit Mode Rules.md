@@ -1,5 +1,11 @@
 # Profit Mode Rules
 
+## Carrying Labor Integration - September 30, 2026
+
+For the authorized Carrying rollout, independently locate the carrying-expense block and add Labor immediately before Lawn when absent. Use native whole-row insertion so downstream formulas, controls and names follow. Include Labor in both monthly cost and the full carrying subtotal and use the existing mode-dependent J-column allocation pattern. Do not copy Pond's amounts or replace the entire Profit worksheet for this supporting change.
+
+Repair return formulas referencing Start Date/End Date headings to point to the actual dated cells. Preserve the target's existing numerator and business logic. In Tensity, old L82 becomes L83 after inserting row 41; its J83 profit numerator stays J83 and the denominator becomes DAYS(J75,H75). Pond's current H75 numerator is a separate owner-specific formula, not authorization to substitute a date serial for Tensity's profit value. Test all three mode controls and retain project inputs and checkbox states.
+
 Use these rules when designing, repairing, or rolling out the `Profit` worksheet in Buy Your Home project-management spreadsheets.
 
 ## Mode Scope

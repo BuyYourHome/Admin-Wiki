@@ -8,12 +8,13 @@ Workbook-side design owned by Template to Project. Operational invoice posting r
 - `Install-CarryingEntry.ps1`: native hidden Excel installer for an independently mapped A1:AJ grid with its source table to the right. Requires fresh connector source and a new output path. Refuses repeat installation and module collisions.
 - `Test-CarryingEntry.ps1`: native Excel tests on an isolated copy; never saves test records. Current assertions are mapped specifically to Pond's moved grid and Profit links.
 - `audit_package.py`: read-only Pond source/output package audit. It does not save workbooks through openpyxl. Compares formulas, constants, resolved styles, merges, names, tables, controls, links, print settings and saved errors. The mapped move is A1:AJ29 to A5:AJ33, with the visible grid ending at row 29.
+- `Migrate-Tensity.ps1`, `Test-Tensity.ps1`, `audit_tensity.py`: independently mapped September 30 Tensity migration and read-only/unsaved checks. Not a generic batch runner. Relocates Tensity's source block, uses current Pond form formatting, adds Labor and supporting Profit/Review/Docs changes, preserves existing records and tests all 134 displayed pairs.
 
 These are migration building blocks, not an authorized batch runner. Re-map each project independently before adapting installation and validation. Do not copy Pond's records to another project.
 
 ## Interface
 
-Four rows above the Carrying grid contain yellow Date, Category, Vendor, Description, Amount, Include, Invoice #, Source, Source File, Notes and Status inputs. Category uses the mapped category list; Include is a linked native checkbox. Insert Record calls `CarryingEntry_Insert`. Orange feedback reports validation or completion.
+Four rows above the Carrying grid contain yellow Date, Category, Vendor, Description, Amount, Include, Invoice #, Source, Source File, Notes and Status inputs. Category uses the mapped category list; Include is a linked native checkbox. Insert Record calls `CarryingEntry_Insert`. Latest owner formatting uses white, unmerged feedback at W3; the original Pond installer retains its historical orange merged feedback. For migration use the current saved template, not stale installer formatting. Long feedback can extend to the right; no owner approval to redesign that presentation has been given.
 
 The `ce` workbook names identify each input; `ceCategories`, `ceDisplayCapacity` and `ceVersion` identify configuration. Names refer to individual anchor cells, not whole merged ranges. The button is bound to the destination workbook's filename without a local path; rebind during a file rename or migration.
 

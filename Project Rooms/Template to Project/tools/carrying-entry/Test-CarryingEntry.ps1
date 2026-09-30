@@ -51,7 +51,9 @@ try {
     $last=$table.ListRows.Item($count+1).Range
     Assert ($last.Cells.Item(1,$table.ListColumns.Item('Invoice #').Index).Value2 -ceq '00001') 'Invoice leading zeros lost.'
     Assert (-not $last.Cells.Item(1,$table.ListColumns.Item('Vendor').Index).HasFormula) 'Text was interpreted as formula.'
-    Assert ($sheet.Range('AH9').Text -eq '9/30/2026') 'Inserted date not displayed.'
+    $foundDate=$false
+    foreach($r in 8..28){if($sheet.Range("AH$r").Text -eq '9/30/2026' -and [math]::Abs([double]$sheet.Range("AI$r").Value2-12.34) -lt .001){$foundDate=$true}}
+    Assert $foundDate 'Inserted date/amount pair not displayed.'
     $results.Add('Valid row, leading zeros, literal text, dates, Labor and Profit automatic recalculation passed')
     $r=Submit
     Assert ($r.StartsWith('Not inserted:') -and $table.ListRows.Count -eq $count+1) 'Second click created a duplicate.'
