@@ -12,6 +12,8 @@ Workbook-side design owned by Template to Project. Operational invoice posting r
 
 These are migration building blocks, not an authorized batch runner. Re-map each project independently before adapting installation and validation. Do not copy Pond's records to another project.
 
+Required follow-on for authorized Carrying migrations: `Remove-CarryingZeroRows.ps1` removes literal numeric-zero records after independent mapping. Supply verified source row count, numeric-zero count and Profit subtotal address. Preserve blank/space amounts, credits and formula-driven values; retain headings and reconcile all survivors/totals. This requirement was approved after Tensity's initial migration, so the historical `Migrate-Tensity.ps1` build alone is no longer the complete migration pipeline. See Carrying Mode Rules.
+
 ## Interface
 
 Four rows above the Carrying grid contain yellow Date, Category, Vendor, Description, Amount, Include, Invoice #, Source, Source File, Notes and Status inputs. Category uses the mapped category list; Include is a linked native checkbox. Insert Record calls `CarryingEntry_Insert`. Latest owner formatting uses white, unmerged feedback at W3; the original Pond installer retains its historical orange merged feedback. For migration use the current saved template, not stale installer formatting. Long feedback can extend to the right; no owner approval to redesign that presentation has been given.
