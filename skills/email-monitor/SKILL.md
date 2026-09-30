@@ -38,7 +38,7 @@ The automation path above is the only Email Monitor runtime memory file. Do not 
 3. Use the last verified Jenny summary send time as Jenny's cutoff unless a newer Jenny summary is already recorded in the memory file for the same day. If there is no prior Jenny summary record, use the 2026-06-29 resume timestamp as the initial new-mail cutoff.
 4. Use the last verified Josh summary send time as Josh's cutoff. The verified manual Josh summary sent at `2026-07-21T12:24:17Z` is the initial cutoff.
 5. Scan only the intended mailbox for the current summary: `WesWill@BuyYourHomeLLC.com` for Boss, `Jenny@BuyYourHomeLLC.com` for Jenny, or `IRAManager@SellYourHomeRaleigh.com` for Josh.
-6. Review the entire mailbox recursively, including Inbox and rule-routed subfolders.
+6. Review only messages directly in the mailbox's top-level Inbox. Do not scan Inbox subfolders or any other mailbox folder for Email Summary.
 7. Focus on:
    - unread messages, and
    - newly received messages after the cutoff.
@@ -86,7 +86,7 @@ Cutoff and mailbox scan:
 - if no prior Jenny summary record exists, use the 2026-06-29 resume timestamp as Jenny's initial new-mail cutoff;
 - use the last verified Josh summary send time as Josh's cutoff, with `2026-07-21T12:24:17Z` as the initial verified cutoff;
 - scan only the intended mailbox for the current summary;
-- review the entire mailbox recursively, including Inbox and rule-routed subfolders;
+- review only the mailbox's top-level Inbox and do not scan Inbox subfolders or any other mailbox folder for Email Summary;
 - focus on unread messages and newly received messages after the cutoff;
 - include older unread messages only when they are still priority business items, and do not treat Jenny's historic unread backlog as new.
 
@@ -98,7 +98,7 @@ Priority selection:
 
 Summary body:
 
-- include the mailbox scanned, cutoff used, priority items, low-priority exclusions when applicable, and a clear note if no priority messages were found;
+- identify the top-level Inbox scanned, cutoff used, priority items, low-priority exclusions when applicable, and a clear note if no priority messages were found;
 - include the Codex usage section only in Wes's summary, using `C:\Codex\Wiki Files\tools\get-codex-token-summary.ps1` when reliable totals are available;
 - do not include Codex usage or token information in Jenny's or Josh's summary;
 - for Josh, send Manager task `019f8274-5b7e-7170-a051-f7944954de82` a direct request for the current formatted `Manager Tasks` section, then wait for and use Manager's response;
@@ -719,9 +719,9 @@ Include:
 
 Do not say the email is on Wes's behalf unless the actual sending identity requires that wording.
 
-For Jenny's summary, write a concise plain-text email to Jenny. Include the mailbox scanned, cutoff used, priority items, low-priority exclusions when applicable, and a clear note if no priority messages were found.
+For Jenny's summary, write a concise plain-text email to Jenny. Include the top-level Inbox scanned, cutoff used, priority items, low-priority exclusions when applicable, and a clear note if no priority messages were found.
 
-For Josh's summary, write a concise plain-text email to Josh. Include the mailbox scanned, cutoff used, priority items, low-priority exclusions when applicable, a clear note if no priority messages were found, and the Manager Tasks section defined above.
+For Josh's summary, write a concise plain-text email to Josh. Include the top-level Inbox scanned, cutoff used, priority items, low-priority exclusions when applicable, a clear note if no priority messages were found, and the Manager Tasks section defined above.
 
 Do not include Codex usage, token totals, rate-limit information, or process-time totals in Jenny's or Josh's summary.
 

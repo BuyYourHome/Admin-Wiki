@@ -182,15 +182,15 @@ Use this repo when formulating solutions for office-admin workflows, SOPs, autom
 
 ## Email Monitor Scope
 
-- Morning email summaries for Wes must scan the entire `WesWill@BuyYourHomeLLC.com` Outlook mailbox store, including all subfolders where Outlook rules may move messages.
-- Morning email summaries for Jenny are resumed as of 2026-06-29. Scan the entire `Jenny@BuyYourHomeLLC.com` Outlook mailbox store, including all subfolders where Outlook rules may move messages.
-- Morning email summaries for Josh are active as of 2026-07-21 after Wes authorized the recurring summary and delegated Outlook access was verified. Scan the entire `IRAManager@SellYourHomeRaleigh.com` Outlook mailbox store, including all subfolders where Outlook rules may move messages.
+- Morning email summaries for Wes scan only the top-level Inbox of `WesWill@BuyYourHomeLLC.com`. Do not scan Inbox subfolders or any other mailbox folder for the summary.
+- Morning email summaries for Jenny are resumed as of 2026-06-29 and scan only the top-level Inbox of `Jenny@BuyYourHomeLLC.com`. Do not scan Inbox subfolders or any other mailbox folder for the summary.
+- Morning email summaries for Josh are active as of 2026-07-21 after Wes authorized the recurring summary and delegated Outlook access was verified. Scan only the top-level Inbox of `IRAManager@SellYourHomeRaleigh.com`; do not scan Inbox subfolders or any other mailbox folder for the summary.
 - For Jenny's first resumed summary, use the 2026-06-29 resume timestamp as the new-mail cutoff unless a prior Jenny summary record is later found. Include older unread Jenny items only when they are clearly priority business items.
-- Do not limit the summary to Inbox unless Wes explicitly asks for an Inbox-only summary.
-- Focus on unread or newly received messages since the last successful summary. Include rule-routed folders when messages are financial, legal, property-related, vendor/admin-related, time-sensitive, or action-oriented.
+- Limit each summary to messages directly in that mailbox's top-level Inbox. Messages moved by rules into subfolders are outside Email Summary scope even when unread, financial, legal, property-related, vendor/admin-related, time-sensitive, or action-oriented.
+- Within the top-level Inbox, focus on unread or newly received messages since the last successful summary.
 - Exclude routine promotional, automated, or newsletter messages unless they are time-sensitive, financial, legal, property-related, or require action.
 - When the OfficeAssist heartbeat runs every 15 minutes for email monitoring, run each morning summary only once per calendar day: the first eligible run at or after 8:00 AM Eastern sends Boss's summary if it has not already been sent and verified, sends Jenny's summary to `Jenny@BuyYourHomeLLC.com`, and sends Josh's summary to `IRAManager@SellYourHomeRaleigh.com` with Wes and Jenny copied, all from `OfficeAssist@BuyYourHomeLLC.com`, when each has not already been sent and verified. Later same-day heartbeat runs perform instruction-email monitoring only.
-- Record the summary cutoff time used so the next summary can avoid both missed rule-routed messages and duplicate reporting.
+- Record the summary cutoff time used so the next top-level Inbox summary avoids duplicate reporting.
 - The email-monitor workflow owns the mailbox scan, cutoff logic, priority selection, summary body, and attachment decision for Wes, Jenny, and Josh.
 - For the send step only, use the shared `skills\email-delivery\SKILL.md` workflow by passing sender, recipient, subject, plain-text body, attachment paths if any, and the rule that send or verification failure must be reported in the OfficeAssist thread.
 - If the morning summary cannot be sent by email, notify Wes immediately and use the available text/SMS fallback when one is available. A failed send or unverified send is not a quiet/no-news run.

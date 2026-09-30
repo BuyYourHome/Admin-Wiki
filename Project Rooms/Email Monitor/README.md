@@ -49,7 +49,7 @@ All future Email Monitor handoffs that create a central Project Room record must
 
 Use this mode for the once-daily Boss, Jenny, and Josh Outlook mailbox summaries.
 
-This mode scans `WesWill@BuyYourHomeLLC.com` for Boss, `Jenny@BuyYourHomeLLC.com` for Jenny, and `IRAManager@SellYourHomeRaleigh.com` for Josh, using the last verified send time in OfficeAssist monitor memory as each mailbox cutoff. Josh's initial cutoff is the verified manual summary send at `2026-07-21T12:24:17Z`. It scans each mailbox recursively, including rule-routed folders, and summarizes unread or newly received priority business messages: financial, legal, property-related, vendor/admin-related, time-sensitive, or action-oriented.
+This mode scans only the top-level Inbox of `WesWill@BuyYourHomeLLC.com` for Boss, `Jenny@BuyYourHomeLLC.com` for Jenny, and `IRAManager@SellYourHomeRaleigh.com` for Josh, using the last verified send time in OfficeAssist monitor memory as each Inbox cutoff. Josh's initial cutoff is the verified manual summary send at `2026-07-21T12:24:17Z`. It does not scan Inbox subfolders, rule-routed folders, or any other mailbox folder for Email Summary. Within the top-level Inbox, it summarizes unread or newly received priority business messages: financial, legal, property-related, vendor/admin-related, time-sensitive, or action-oriented. Email Routing, Organize, and Sent Items verification keep their existing folder scopes.
 
 This mode sends Boss's summary to `WesWill@BuyYourHomeLLC.com`, Jenny's summary to `Jenny@BuyYourHomeLLC.com`, and Josh's summary to `IRAManager@SellYourHomeRaleigh.com` with Wes and Jenny copied, from `OfficeAssist@BuyYourHomeLLC.com`. Josh's summary obtains its `Manager Tasks` section directly from Manager task `019f8274-5b7e-7170-a051-f7944954de82`; Email Monitor does not read or edit the Manager register. Codex Usage appears only in Wes's summary and is omitted from Jenny's and Josh's summaries. The shared `email-delivery` skill owns the send step, OfficeAssist sender safety, and Sent Items verification.
 
@@ -211,6 +211,8 @@ Use this room for development and design work. Do not change the live automation
 When the workflow changes, update the skill, this project room, and the registry together.
 
 ## Change Log
+
+- 2026-09-30: Limited Wes, Jenny, and Josh Email Summary scans to each mailbox's top-level Inbox; Inbox subfolders, rule-routed folders, and all other mailbox folders are excluded from summary scans without changing Email Routing, Organize, or Sent Items verification.
 
 - 2026-09-30: Added Wes's standing delivery-only authorization for canonical Invoice Entry Time Card accuracy-review and approved-copy emails, eliminated repeated case-by-case send requests for conforming packages, and preserved separate approval, payment, accounting, filing, and paid-status gates.
 
