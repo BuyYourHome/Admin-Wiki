@@ -41,6 +41,14 @@ When a date conversion is inside the matched array shared by date and amount dis
 - Keep workbook backups and binary validation artifacts in Teams, not Git. Remove superseded temporary workbook copies after verification.
 - After every completed repair or migration, record new lessons in this mode file and a project-specific mapping/validation log before treating the iteration as complete.
 
+## Labor Prototype
+
+- Wes authorized a new Labor display section in Pond at `AH:AJ` on September 30, 2026. Use the existing three-column date/payment presentation, with the category label at `AH1`, table-driven dates and amounts at `AH4:AI24`, and the full-category subtotal at `AI25`. The spacer `AK` and source table at `AL:AV` stay in place. Locate by labels and table name during later migrations rather than assuming these coordinates are universal.
+- The display reads included `tblCarryingExpenses` rows with `Category = Labor`. No separate Labor source table or placeholder invoice rows are required. Preserve the existing typed-date, chronological-sort and anchored-counter formula pattern, and verify structured references after copying a neighboring block.
+- Intended workflow under consultation: laborer invoices enter Review for Wes's destination decision; appropriate vendor tabs are preferred, and approved labor that does not fit them may go to Carrying. Invoice Entry owns record transfer, duplicate checks, provenance and audit status. Template to Project does not perform those operational actions.
+- This iteration adds the Carrying display only. Profit's category list does not yet include Labor. Complete that connection and the reviewed routing design before treating Labor posting as production-ready. No records were moved, Review behavior was not changed, and no rollout was authorized.
+- The 21-row display capacity must be checked before later entry/rollout; its subtotal intentionally reads the whole included category, not only displayed rows. A zero subtotal with no source records does not constitute an end-to-end posting test.
+
 ## Pond Repair Reference
 
 See [[pond-carrying-repair-20260930]] for the 13 recovered bills, replacement of ten approved Natural Gas placeholders, corrected electric date, downstream Docs change, subsequent mortgage date/amount pairing repair, rollback references, and verified totals. These values are evidence for Pond only, not default values for other projects.
