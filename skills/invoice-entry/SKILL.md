@@ -139,15 +139,20 @@ An explicitly rescinded temporary instruction to avoid inspecting or processing 
 - Queue tool: `C:\Codex\Wiki Files\tools\pr-messaging\Manage-ProjectRoomMessage.ps1`.
 - Protocol: `C:\Codex\Wiki Files\Project Rooms\Email Monitor\working\dispatch-queue-spec.md`.
 
-At every Invoice Entry startup and backup-monitor run:
+Use `scripts\Get-InvoiceEntryQueueDrain.ps1` to inspect the exact task queue without changing record state. The helper is a queue-ordering aid, not a substitute for validating each authoritative record through the canonical queue tool.
 
-1. Inspect unresolved queue records whose destination task ID is `01a03956-fa4f-77c1-9ab7-f709e5f1174e`.
-2. Deduplicate by dispatch ID and payload hash. Never process the same dispatch twice.
-3. Confirm the request belongs to Invoice Entry and that its exact source pointer is accessible.
-   Validate authority from the central record itself. Do not reject an otherwise valid record merely because a dispatcher or another task supplied the wake-up signal.
-4. Before substantive work, run `Accept` with the registered Invoice Entry task ID. This writes the durable receipt. Return `accepted: <dispatch_id>` in the task when the channel is available.
-5. Run `StartProcessing` before durable processing and use exactly one valid final action: `Complete`, `Block`, `NeedsWes`, or `Reject` for wrong-room work.
-6. If the same accepted or completed dispatch is received again, return its existing status without repeating work or external actions.
+At every Invoice Entry startup and whenever a new dispatch is received:
+
+1. Inspect nonterminal queue records whose destination task ID is `01a03956-fa4f-77c1-9ab7-f709e5f1174e` and destination machine is `OFFICEASSIST`.
+2. For a newly received dispatch, validate the same-ID record and write its durable `Accept` receipt first so the sender has authoritative delivery evidence.
+3. Before generating or delivering an external output for that dispatch, drain every older nonterminal record for this exact destination in `created_at_utc`, then message-ID order. External output includes an invoice or draft, an email-delivery package, a workbook insertion, a filed document, or a QuickBooks handoff. Internal source validation and duplicate review may continue while the drain is in progress.
+4. For each drained record, deduplicate by dispatch ID and payload hash, reconcile corrections and superseding versions, then record `Processing` and exactly one valid terminal action: `Complete`, `Block`, `NeedsWes`, or `Reject` for wrong-room work. A duplicate, superseded, or no-action record still requires an accurate terminal result; never leave it queued merely because no business action is needed.
+5. Never repeat an already verified external action. When an older record represents a correction to the same invoice, period, or source, incorporate it into the current accumulated state and produce one refreshed output after the applicable queue records are terminal instead of emitting intermediate or duplicate outputs.
+6. Re-run the queue-order check immediately before external output. If another applicable record older than or equal to the trigger has become nonterminal, drain it and repeat the check. This is a queue-state check only; do not add a second mailbox, source-file, or transaction-completeness reconstruction.
+7. Start the trigger record's substantive processing only after older records are terminal. Run `StartProcessing`, complete the authorized Invoice Entry workflow, and write exactly one valid terminal action for the trigger.
+8. If the same accepted or completed dispatch is received again, return its existing status without repeating work or external actions.
+
+Treat records at least 60 minutes old as aged queue records. The startup check is the backup watchdog: surface and drain aged records oldest-first whenever Invoice Entry next runs. Do not create or revive a separate recurring monitor merely to duplicate this check; a new scheduled monitor requires its own explicit authorization.
 
 Queue presence authorizes intake only. It does not authorize approval, payment, filing, workbook posting, vendor contact, email delivery, or another gated action. A malformed, conflicting, or inaccessible record must be blocked; wrong-room work must be rejected with the same dispatch ID and a concise reason.
 
