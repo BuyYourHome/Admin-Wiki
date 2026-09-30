@@ -183,7 +183,9 @@ Before sending, deduplicate by delivery request ID and payload hash, search dura
 
 A properly authorized Invoice Entry package may request vendor invoice-accuracy verification, Time Card invoice verification, Wes approval/payment review, or a post-Wes-approval status notice. Route Vendor Invoice's prohibition on contacting a vendor applies to intake routing; it does not block a later, specifically authorized Email Delivery package under Invoice Entry's saved rules.
 
-Invoice Entry's Tim Fleming standing rule authorizes one refreshed accuracy-review draft for every meaningful time update to Tim's established verified address with Wes and Jenny copied. Tim or Wes may confirm factual correctness or provide a correction; Jenny is copied for visibility. This stage never authorizes payment, filing, posting, finalization, or paid status, and only Wes may approve the final closed-period invoice. A matching complete package from the registered Invoice Entry task needs no repeated direct authorization inside Email Monitor.
+Wes's 2026-09-30 standing authorization lets Email Monitor send all routine Invoice Entry Time Card accuracy-review and approved-copy emails without case-by-case confirmation when each immutable package matches the canonical sender, recipient, attachment, period, status, and workflow rules. Packages cite `email-monitor-standing-authorization-timecard-review-and-approved-copy-20260930`, preserve Wes as the actual authorizer, and limit `business_action_authorized: true` to the email-delivery action. An incomplete package returns to Invoice Entry for correction instead of generating another Wes approval request.
+
+Tim accuracy-review, correction, approval-request, approved-copy, and status emails may include only Wes and Jenny; Tim must not appear in To, CC, or BCC. Josh routine accuracy-review drafts go only to `IRAManager@SellYourHomeRaleigh.com`, with Wes and Jenny copied. Approved-copy packages send automatically only after immutable evidence proves Wes already approved the underlying invoice, and they must state `Approved by Wes - Not Paid` or the canonical equivalent. This standing authority never approves time, payment, accounting entry, filing, posting, finalization, or paid status.
 
 For an accepted connector send, use `OfficeAssist@BuyYourHomeLLC.com` unless the package contains specific Wes authorization for another sender. Prefer the Outlook connector, enable Sent Items saving, pass structured recipient objects, preserve the exact plain-text subject/body, and pass attachments as a list of absolute paths. Never omit a required attachment. Make only the documented schema-correct retry when the first connector error clearly explains it.
 
@@ -209,6 +211,8 @@ Use this room for development and design work. Do not change the live automation
 When the workflow changes, update the skill, this project room, and the registry together.
 
 ## Change Log
+
+- 2026-09-30: Added Wes's standing delivery-only authorization for canonical Invoice Entry Time Card accuracy-review and approved-copy emails, eliminated repeated case-by-case send requests for conforming packages, and preserved separate approval, payment, accounting, filing, and paid-status gates.
 
 - 2026-09-28: Added `No Routing Required - Availability Notice Only` as a fail-closed pre-routing exclusion when every required criterion is proven, including duplicate consolidation, compact deduplication state, no portal or retrieval action, and canonical cleanup of qualifying unresolved central records without rewriting audit history.
 

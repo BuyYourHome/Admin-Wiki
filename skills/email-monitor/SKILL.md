@@ -588,6 +588,26 @@ A complete package from another registered Project Room carries Wes's authorizat
 
 An originating Project Room cannot manufacture authority by merely stating that a send is authorized. Verify the cited instruction or standing rule and ensure the package does not broaden it. Dispatcher notification is transport only and never creates authority. When the complete immutable package passes these checks, do not require Wes to repeat the same authorization directly inside Email Monitor.
 
+##### Standing Authorization - Routine Time Card Delivery
+
+Wes Browning's 2026-09-30 standing instruction authorizes Email Monitor to send every routine Invoice Entry Time Card accuracy-review or approved-copy email without case-by-case confirmation when the immutable package conforms exactly to the applicable canonical recipient, attachment, and workflow rules. Preserve this authority as:
+
+- `authorized_by`: `Wes Browning`;
+- `instruction`: `Implement standing authorization for Email Monitor to send all routine Invoice Entry timecard accuracy-review and approved-copy emails that conform exactly to the canonical recipient, attachment, and workflow rules, without requesting case-by-case confirmation. This authorizes email delivery only—not approval, payment, accounting entry, filing, or paid status.`;
+- `scope`: delivery of a canonical routine Invoice Entry Time Card accuracy-review or approved-copy email only;
+- `evidence_reference`: `email-monitor-standing-authorization-timecard-review-and-approved-copy-20260930`;
+- `business_action_authorized`: `true` for the email-delivery action only.
+
+This standing authority applies only when all of these conditions pass:
+
+1. The authoritative package comes from the registered Invoice Entry Project Room and task, and its request ID, dispatch ID when applicable, and payload hash reconcile exactly.
+2. The message is classified as either a routine Time Card accuracy-review email or an approved-copy email; it is not a request to approve, pay, post, file, change accounting records, or mark an item paid.
+3. The exact sender, To/CC/BCC recipients, subject, body, required attachments, durable attachment locations, and workflow restrictions match the current canonical Invoice Entry and Email Monitor rules for the named worker and period.
+4. An approved-copy package includes immutable evidence that Wes already approved the underlying Time Card invoice and identifies the status as approved, not paid. This standing authorization never supplies the underlying approval.
+5. Duplicate prevention and OfficeAssist Sent Items reconciliation show that the same immutable package was not already sent and is not in an ambiguous submission state.
+
+Do not ask Wes to repeat `send the email` when these conditions pass. If the package is incomplete or does not cite this standing authority correctly, return it to Invoice Entry for one corrected immutable package; do not ask Wes for case-by-case delivery approval and do not invent or repair the package inside Email Monitor. Continue to ask Wes only for a genuinely reserved decision or a material exception outside this scope.
+
 Stop and request Wes only when authorization is absent, unverifiable, ambiguous, or narrower than the requested send; the source Project Room, source task, or destination identity is wrong; the request ID, dispatch ID, or payload hash does not match; the immutable package changed; recipients, subject, body, or attachments materially differ; a required recipient or attachment is unknown; the request includes payment, legal approval, account changes, filing approval, or another Wes-reserved decision; or connector submission may have occurred and Sent Items cannot resolve it.
 
 #### Duplicate Prevention And Durable State
@@ -613,6 +633,10 @@ A properly authorized Invoice Entry delivery handoff may request:
 The Invoice Entry package still controls the exact recipient set, content, attachments, required-attachment status, and restrictions. Authorization for one category or message does not authorize a different recipient, purpose, or follow-up.
 
 Tim Fleming has standing Invoice Entry authorization for each meaningful time update to produce and send one refreshed accuracy-review draft through Email Monitor only to `WesWill@BuyYourHomeLLC.com` with `Jenny@BuyYourHomeLLC.com` copied. Tim must not appear in To, CC, or BCC on a Tim draft, approval request, correction, approved-invoice delivery, or status email. A no-correction response from Wes confirms factual correctness; a correction from Wes requires a revised draft to Wes and Jenny only. Jenny is included for visibility and recordkeeping only. No response at this stage authorizes payment, filing, posting, finalization, or paid status, and only Wes may approve the final invoice after the weekly period closes. A complete immutable package from registered Invoice Entry task `01a03956-fa4f-77c1-9ab7-f709e5f1174e` that matches this canonical rule does not require another direct authorization in Email Monitor.
+
+Josh Kennedy's routine accuracy-review draft must be sent only to `IRAManager@SellYourHomeRaleigh.com`, with `WesWill@BuyYourHomeLLC.com` and `Jenny@BuyYourHomeLLC.com` copied, when the complete immutable Invoice Entry package matches the canonical open-period or period-close review rule. The standing authorization above covers that email-delivery action without another confirmation. It does not approve Josh's time, finalize the invoice, authorize payment, create an accounting entry, authorize filing, or establish paid status.
+
+For a canonical Tim or Josh approved-copy package, send automatically under the standing authorization above only after the package supplies immutable evidence of Wes's prior approval and preserves the canonical approved-copy recipient set and required PDF. Describe the status as `Approved by Wes - Not Paid` or the exact canonical equivalent. The delivery does not authorize or imply payment, posting, filing, or paid status.
 
 #### Send And Verification
 
