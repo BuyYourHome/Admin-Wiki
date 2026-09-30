@@ -157,3 +157,15 @@ Wes authorized three new Labor display columns starting at AH and consultation w
 - Consultation saved in the authoritative central queue as `prmsg-template-invoice-labor-consult-20260930-001`, addressed to Invoice Entry on OFFICEASSIST. As of this close-out it is Queued with no delivery attempt, accepted receipt or result. Questions cover approval/destination semantics, category mapping, source traceability, duplicates, splitting and retained Posted audit records. No Invoice Entry files were edited. See [[work-status]] for exact identities and hash; consultation completion remains pending.
 
 Lesson: copy a verified neighboring category block into confirmed empty space, validate every translated structured-reference formula, and distinguish a completed display addition from operational posting readiness. Adding Carrying presentation alone does not connect Profit or authorize Invoice Entry movement.
+
+## Review Destination Dropdown
+
+On September 30, 2026, Wes authorized adding Carrying to Pond's Review destination selector. Wes will implement the related Profit row himself; inspect and map those current changes for the later coordinated migration, without overwriting them or assuming their final location.
+
+- Resumed after the Excel connection was restored, using the newly discovered Pond session. Fresh Teams baseline saved at `2026-09-30T16:37:19Z`; rollback retained as `Property/Project Template/Rollback Copies/26_Project Management - 908 Pond St 3.before-review-destination-20260930-1638.xlsm`.
+- Confirmed `Destination Worksheet` is column B of `tblInvoiceReview`, header row 4, with 32 records through row 36. Existing dropdown validation extends through `B234`. Appended `Carrying` once to that same `B5:B234` list, retaining all 13 prior choices and existing dropdown, blank-entry, prompt and Stop-alert settings.
+- Live read-back verified unchanged Review records/formulas, Status choices, unchecked `B1`, and `invoiceEntryReviewRequest = Review!$B$1`. Calculation mode remains Automatic. No invoices moved and no Profit cells were written.
+- Final Teams save at `2026-09-30T16:39:35Z` contains the updated dropdown. Saved Review cell data is identical; other validations and table parts are unchanged. Review is the only changed worksheet XML part. SHA-256: `E3CB2FE599C0EB2570A2703896A2E20A2F68A290B0719A505D2A457150C992B1`.
+- Existing destination-type validation also occurs on `C5:C234` and `D37:D234`; these are outside the approved column-B edit and were preserved, not corrected. Reassess their intended roles during the broader Review design rather than copying them blindly.
+
+Lesson: validation coverage may extend beyond a populated table. Preserve that coverage when adding a destination, and keep destination availability separate from operational posting approval and accounting integration.

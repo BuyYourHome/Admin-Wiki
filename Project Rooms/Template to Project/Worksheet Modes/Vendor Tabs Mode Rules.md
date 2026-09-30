@@ -33,6 +33,7 @@ Current Vendor Tabs mode list:
 
 - `Review` is the intake and exception queue for Vendor Tabs Mode.
 - Its table is `tblInvoiceReview`.
+- The `Destination Worksheet` dropdown must include `Carrying` alongside the project's existing choices. Pond's prototype was updated on September 30, 2026. Resolve the destination column by header, then preserve its existing validation coverage, including prepared rows below the table; do not blindly overwrite other Review columns' validations. Adding the choice does not authorize posting or change Status/approval requirements. Coordinate the Labor design with [[Carrying Mode Rules]] before rollout.
 - `Review!B1` contains the native `Needs Invoice Entry Review` checkbox.
 - Workbook name `invoiceEntryReviewRequest` must refer absolutely to `=Review!$B$1`.
 - Template to Project owns the Review layout, columns, validation, checkbox, table structure, formatting, and rollout.
