@@ -81,6 +81,19 @@ This file contains transaction-neutral lessons for future Invoice Entry work. Tr
 - Keep the review row after movement and record destination and movement status so later runs can deduplicate.
 - Clear a pending request marker only after the complete request passes save, reopen, formula, link, and upload validation.
 
+## Efficient Reconcile Execution
+
+- Use the established SharePoint working-copy workflow for an ordinary Reconcile run. Do not require a live Excel add-in session unless the user explicitly invokes or provides one.
+- Follow one fixed sequence: resolve the exact current SharePoint workbook, retrieve a fresh copy, inspect the named Review table and requested destination tables, check duplicates, create the rollback copy, edit through Excel, save and reopen, validate, confirm the source did not change concurrently, replace the exact SharePoint item, and read back the uploaded file.
+- Keep discovery bounded. Inspect the required defined name, table headers, eligible Review rows, destination table, duplicate keys, affected subtotal, downstream value, request marker, and workbook links. Do not repeatedly rediscover unrelated workbook structure after these controls are verified.
+- Read and write table data in blocks where possible. Avoid cell-by-cell COM scans across large worksheet ranges; acquire range values or formulas in one call and perform comparisons in memory.
+- Use one controlled Excel lifecycle for the working copy: open, edit, recalculate, save, close, reopen read-only, and verify. Give each retry a fresh working-copy filename so an interrupted attempt cannot block or contaminate the next run.
+- If an execution stalls, cancel only the task-owned command or session. Do not terminate generic Excel processes without proving they belong exclusively to the task, and do not assume an interrupted save succeeded.
+- Scale validation to the authorized change while preserving the required safeguards. Verify the exact inserted row, retained Review row and movement status, destination-row count, affected subtotal, downstream `Gnatt Chart` or other documented dependency, request-marker state, external-link count, and any change in the formula-error set. Do not rescan unaffected cells individually.
+- Immediately before upload, recheck the authoritative SharePoint item's identity and modification metadata against the retrieved source. If it changed, discard the proposed replacement and reconcile against a new fresh copy.
+- After upload, retrieve the authoritative item again and verify its hash, byte size, moved-row state, destination row, affected total, and zero unintended links. SharePoint replacement acknowledgment alone is not final read-back evidence.
+- Record reusable execution failures and improvements in this file during the same run. Keep transaction facts and validation evidence in SharePoint operational records.
+
 ## Receipts For Collected Money
 
 - A collected-money receipt is not a vendor purchase receipt. Preserve the original expense and classify collected proceeds separately.
