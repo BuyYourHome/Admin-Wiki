@@ -1,0 +1,59 @@
+# Pond Carrying Repair - 2026-09-30
+
+Owner: Template to Project. Scope: approved repair of grid-only Carrying expenses in Pond. No other project was migrated.
+
+## Source and Delivery
+
+- Live workbook: [Pond in Teams](https://lifeisanadventure.sharepoint.com/sites/SellYourHome/_layouts/15/Doc.aspx?sourcedoc=%7B29C35775-DC91-47CF-AC62-F0054399FE81%7D).
+- Latest baseline: Teams save at `2026-09-30T13:31:56Z`; compared with the initial download, with no cell-value/formula differences. Used the newer package to preserve its saved state.
+- Rollback: `Property/Project Template/Rollback Copies/26_Project Management - 908 Pond St 3.before-carrying-repair-20260930-133156.xlsm`.
+- Teams replacement downloaded and verified at approximately `2026-09-30T13:36Z`.
+- Verified SHA-256: `57736216028206E6B2DA2BE57DEC7AD45774F3181B954427BD23231499740094`.
+- Additional record: `Property/Project Template/Validation Evidence/Pond Carrying Repair and Migration Lesson - 2026-09-30.md`. Its note about pending canonical documentation describes the earlier Git blocker; this canonical log and [[Carrying Mode Rules]] now record the repair and lesson.
+
+## Project-Specific Mapping
+
+| Source in Carrying | Category | Date | Amount |
+| --- | --- | --- | ---: |
+| A14/B14 | Duke Electric | 2026-06-09 | 20.68 |
+| A15/B15 | Duke Electric | 2026-07-10 | 109.49 |
+| P15/Q15 | Water | 2026-06-15 | 22.52 |
+| P16/Q16 | Water | 2026-07-14 | 65.77 |
+| S4/T4 | Natural Gas | 2025-12-05 | 12.41 |
+| S5/T5 | Natural Gas | 2026-01-07 | 14.24 |
+| S6/T6 | Natural Gas | 2026-02-05 | 27.62 |
+| S7/T7 | Natural Gas | 2026-03-05 | 333.34 |
+| S8/T8 | Natural Gas | 2026-04-06 | 195.04 |
+| S9/T9 | Natural Gas | 2026-05-05 | 64.84 |
+| S10/T10 | Natural Gas | 2026-06-04 | 25.05 |
+| S11/T11 | Natural Gas | 2026-07-07 | 12.84 |
+| S12/T12 | Natural Gas | 2026-08-05 | 12.84 |
+
+- Added these 13 existing grid bills to `tblCarryingExpenses`, with original grid-cell references in its Notes field. No matching category/date/amount duplicates were found.
+- Replaced ten $1 Natural Gas placeholders with the nine actual gas bills after Wes directed that table rows reflect the bills replacing the grid entries. Did not count both sets.
+- Preserved the corrected date from `A10` in table cell `AN9`: February 9, 2026 rather than February 9, 2025, for the uniquely matched $46.16 electric bill.
+- Restored calculated date/amount displays in `A4:B24`, `P4:Q24`, and `S4:T24`, reading typed dates directly and sorting ascending. Other date blocks were not changed.
+- Changed `Docs!E39` from `=Carrying!E5` to `=Profit!C9`, yielding $1,825, as directed by Wes. This is a Pond-specific mapping; other projects require independent label-based verification.
+- Final table: `AL2:AV195`, with 193 data records. All other source records, including dated zero/blank schedules, were preserved.
+
+## Reconciled Outputs
+
+| Output | Before | After |
+| --- | ---: | ---: |
+| Electric | 608.30 | 738.47 |
+| Water | 401.79 | 490.08 |
+| Natural Gas | 10.00 | 698.22 |
+| Profit carrying cost, B42 | 32,863.57 | 33,770.25 |
+
+## Verification and Remaining Work
+
+- Every recovered bill appears exactly once in its calculated grid, with the source date and amount. Grid, table, category, and Profit totals reconcile.
+- Final workbook reopened normally in a hidden, read-only Excel session. An unsaved $1 increase to an electric table amount increased its subtotal by $1; restoring the input restored the subtotal. The test was discarded without saving.
+- Automatic calculation is explicitly saved. Saved category caches were checked as well as formulas and live recalculation.
+- Original formulas outside approved cells, cell styles, defined names, VBA binary, drawings, controls, rich-data parts, and external-link parts were preserved. Unrelated native-save churn was removed and the final package revalidated.
+- The exact Teams replacement matched the validated file by SHA-256. Rollback copies remain in Teams; superseded local workbook copies were removed.
+- Other date blocks, property-tax escrow assumptions, and unrelated pre-existing worksheet errors remain for discussion. No complete Carrying redesign or migration to other projects was approved by this repair.
+
+## Lesson
+
+The visible grid may contain newer actual bills and corrected dates that are absent from its source table. Reconcile these records before restoring formulas; otherwise a seemingly successful redesign can erase project data or leave costs out of Profit. Apply this check independently on every future authorized Carrying migration. See [[Carrying Mode Rules]].

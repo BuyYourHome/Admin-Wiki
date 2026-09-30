@@ -9,6 +9,7 @@ For every worksheet-mode migration, assume the agent does not already know the f
 Current mode files:
 
 - `Amortization Mode Rules.md`
+- `Carrying Mode Rules.md`
 - `Profit Mode Rules.md`
 - `Docs Mode Rules.md`
 - `Gnatt Chart Mode Rules.md`

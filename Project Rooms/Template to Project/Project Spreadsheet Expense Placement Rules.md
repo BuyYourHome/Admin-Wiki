@@ -74,6 +74,8 @@ Use Wes's color conventions when designing or revising project spreadsheet input
 
 ## Carrying Expense Prototype
 
+For current Carrying design repairs and rollout checks, also follow [[Carrying Mode Rules]]. Its grid-to-table reconciliation rules apply before restoring display formulas or migrating the Carrying design. The prototype paths and approved-pass totals below are historical references, not current workbook inputs.
+
 The 908 Pond St test workbook in the project-room `sources` folder now demonstrates a normalized carrying expense source table:
 
 `C:\Codex\Wiki Files\Project Rooms\Project Management Spreadsheet Rewrite\sources\26_Project Management - 908 Pond St 3- Test.xlsm`
