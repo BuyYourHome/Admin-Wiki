@@ -70,14 +70,24 @@ When a date conversion is inside the matched array shared by date and amount dis
 
 ## Vendor Prefill Pilot
 
-- Tensity is the approved September 30, 2026 pilot for the Vendor dropdown and Recurring Bill button. This does not authorize other-project rollout or change Pond automatically.
+- Tensity was the initial September 30, 2026 pilot for the Vendor dropdown and Recurring Bill button. Wes subsequently approved Pond first for the next-logical-date enhancement and inclusion in future Carrying migration. See [[carrying-migration-plan]]; other-project rollout still requires authorization.
 - Wes explicitly approved filling Tensity's 41 blank Vendor cells from each row's Category. Preserve existing nonblank vendors and formulas. Category labels are owner-selected defaults, not verified supplier identities; do not infer the same mapping in another project without approval.
 - The Vendor dropdown reads unique nonblank table vendors through a dynamic named list and allows typing a new vendor. Inspect helper placement before installation; Tensity uses hidden AX and `ceVendorList`.
 - Prefill reads every table row regardless of filtering. For one Category/Description bill type, select the latest dated matching Vendor record; ties use the last physical row. Different bill types require explicit row selection, not a guessed default.
-- Prefill is not insertion or a recurring schedule: preserve the user-entered Date, copy Category/Vendor/Description/Amount/Include, clear previous invoice number/source-file/notes, and reset Source/Status to Manual Entry/Entered. Preserve a blank latest amount as blank rather than silently substituting an earlier amount. Wes reviews Date and Amount before Insert Record.
+- Prefill is not insertion or a recurring schedule: preserve any entered Date or Date formula; when Date is blank, attempt the next date using the rule below. Copy Category/Vendor/Description/Amount/Include, clear previous invoice number/source-file/notes, and reset Source/Status to Manual Entry/Entered. Preserve a blank latest amount as blank rather than silently substituting an earlier amount. Wes reviews Date and Amount before Insert Record.
 - Match the existing Insert Record button dimensions and place the new button directly below without overlapping the grid or feedback. Tensity moves the named feedback anchor from W3 to Z3; preserve the form's owner formatting.
 - Test unknown vendors, latest records, blanks, filtered records, ambiguous bill types, explicit row selection, credits, Include No, dynamic dropdown growth, and existing insertion/duplicate checks. Prefill must never append a record or change totals. Preserve and separately report unrelated existing errors.
-- See [[tensity-vendor-prefill-20260930]] and `tools/carrying-entry/README.md`. Installation scripts and baseline assertions are Tensity-specific; independently remap each later target.
+- See [[tensity-vendor-prefill-20260930]], [[pond-recurring-date-20260930]] and `tools/carrying-entry/README.md`. Installer gates and baseline assertions require independent mapping for each target.
+
+### Next Logical Date
+
+- Required in subsequent authorized Carrying migrations: install the Vendor selector, prefill button and date suggestion together, preserving project-specific records and the owner's current form formatting. Pond is the first enhanced prototype; do not infer batch authorization.
+- Match Vendor, Category and Description using trimmed, case-insensitive text. After explicit selection among different bill types, use that selected type's history, not a different category or description. Never merge histories merely because their vendors match.
+- Require the three latest distinct valid numeric calendar dates (ignore time fractions and duplicate dates). Read all table rows regardless of visibility or Include state. Do not manufacture a pattern from one or two records, invalid/text dates, or missing periods.
+- Recognize exact weekly intervals, or monthly/quarterly/annual calendar intervals. For variable billing dates, permit at most three days of deviation from the latest date over the two observed intervals. Preserve an exact fixed day with February clamping, and preserve month end when all three dates are month ends.
+- Propose one interval after the latest matching date, not automatically after today. Historic or future-dated table entries can therefore produce past or future suggestions. This is an editable estimate, not evidence of a due date or unpaid bill. Unclear histories leave Date blank with feedback; an entered date or formula is never overwritten.
+- Validate year boundaries, leap years, February clamping, month ends, sorting, duplicate dates, irregular and insufficient history, hidden records, bill-type separation, and preservation of an entered date/formula. No source date or amount may change, and no record may be inserted by prefill.
+- Record independent Vendor mapping approval: Pond's 74 blanks were authorized to use Category; Josh Kennedy LLC remains unchanged. Do not substitute category labels for known supplier identities.
 
 ## Pond Repair Reference
 

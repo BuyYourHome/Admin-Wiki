@@ -1,0 +1,24 @@
+# Carrying Migration Plan
+
+## Approved Design
+
+Prototype: Pond's current owner-formatted Carrying/manual-entry interface. Tensity received the first Carrying migration and Vendor prefill. On September 30, 2026, Wes requested next-logical-date suggestions in Pond first and inclusion in this migration plan.
+
+Required package for later authorized targets:
+
+1. Fetch the latest Teams target, confirm closure, preserve a rollback, and independently map all records, labels, formulas, controls, helpers and downstream dependencies.
+2. Preserve project values and owner formatting. Reconcile grid overrides into `tblCarryingExpenses`; apply the approved typed-date pairing, Labor, supporting Profit/Review/Docs fixes and numeric-zero cleanup from [[Carrying Mode Rules]]. Never import the prototype's expenses.
+3. Add or upgrade the named manual-entry form, Include control and Insert Record behavior. Confirm the target's table location, grid capacity, VBA and security prerequisites; do not launch visible Excel or change trust settings.
+4. Add the Vendor dropdown and same-size Recurring Bill button beneath Insert Record. Preserve existing vendor identities; fill blanks from Category only with project-specific approval. Place the helper and feedback without overwriting cells.
+5. Include next-logical-date suggestions: preserve entered dates/formulas; otherwise attempt weekly/monthly/quarterly/annual inference from the three latest distinct dates of the same Vendor/Category/Description. Preserve month ends and February clamping; uncertain patterns remain blank. Suggestions are editable, and prefill never inserts an expense.
+6. Verify original records, formulas, styles, macros, table definitions, controls, print settings, totals and existing-error baseline. Test dates, ambiguity, filtering, duplicate prevention, credits, manual date overrides, leap years and Automatic recalculation. Discard all test data.
+7. Recheck Teams freshness, replace the same authorized item, download and match hash, repeat unsaved native tests, retain rollback, remove superseded temporary files and record lessons.
+
+## Rollout Gates
+
+- Pond: first next-date enhancement completed and verified in Teams, saved September 30, 2026 at 21:25:47Z; ready for Wes's inspection. See [[pond-recurring-date-20260930]].
+- Tensity: existing Vendor prefill works, but does not yet contain date inference. Follow Pond verification/review and obtain authorization for the upgrade; its closure notice alone does not change the requested Pond-first scope.
+- Other active projects: pending later rollout authorization and independently confirmed active list. No workbook changed by creating this plan.
+- Cool Springs: remains separately gated because of buyer-facing amortization history. Carrying scope does not authorize Amortization replacement.
+
+The plan defines required functionality, not blanket permission to replace every active workbook. Stop after Pond for review under the current request.

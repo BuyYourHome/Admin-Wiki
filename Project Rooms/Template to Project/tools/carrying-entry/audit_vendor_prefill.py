@@ -1,10 +1,11 @@
-"""Read-only before/after audit for the Tensity Vendor prefill pilot."""
+"""Read-only prefill installation audit; explicitly pass the approved Vendor fill count."""
 import json
 import posixpath
 import sys
 import zipfile
 from xml.etree import ElementTree as ET
 import openpyxl
+from openpyxl.utils.cell import range_boundaries, get_column_letter
 
 NS = {'s': 'http://schemas.openxmlformats.org/spreadsheetml/2006/main'}
 RID = '{http://schemas.openxmlformats.org/officeDocument/2006/relationships}id'
@@ -56,18 +57,33 @@ def table_xml(book, table):
 a, az, ac = load(sys.argv[1])
 b, bz, bc = load(sys.argv[2])
 issues = []
+left, top, right, bottom = range_boundaries(a['Carrying'].tables['tblCarryingExpenses'].ref)
+headers = [c.name for c in a['Carrying'].tables['tblCarryingExpenses'].tableColumns]
+vendor_letter = get_column_letter(left + headers.index('Vendor'))
+category_letter = get_column_letter(left + headers.index('Category'))
+vendor_map = {}
+for row in range(top + 1, bottom + 1):
+    cell = a['Carrying'][f'{vendor_letter}{row}']
+    if cell.data_type != 'f' and not str(cell.value or '').strip():
+        vendor_map[cell.coordinate] = f'{category_letter}{row}'
+assert len(vendor_map) == int(sys.argv[3]), 'Approved blank Vendor count changed'
+unique_vendors = {str(b['Carrying'][f'{vendor_letter}{row}'].value).strip().lower() for row in range(top + 1, bottom + 1)}
 assert a.sheetnames == b.sheetnames
 for name, old in ac.items():
     for addr in old.keys() | bc[name].keys():
         before = old.get(addr, (None, None, None, 0))
         after = bc[name].get(addr, (None, None, None, 0))
-        helper = name == 'Carrying' and addr in ['AX' + str(i) for i in range(1, 8)]
-        vendor = name == 'Carrying' and addr in ['AO' + str(i) for i in range(3, 44)]
+        helper = name == 'Carrying' and addr in ['AX' + str(i) for i in range(1, len(unique_vendors) + 2)]
+        vendor = name == 'Carrying' and addr in vendor_map
         expected = before[0] if before[0] is not None else before[1]
         actual = after[0] if after[0] is not None else after[1]
         if vendor:
             assert expected in (None, '', ' ')
-            expected = ac[name]['AM' + addr[2:]][1]
+            expected = ac[name][vendor_map[addr]][1]
+        if name == 'Carrying' and addr == 'W3':
+            expected = None
+        if name == 'Carrying' and addr == 'Z3':
+            expected = ac[name]['W3'][0] or ac[name]['W3'][1]
         if not helper and expected != actual:
             issues.append([name, addr, 'content', expected, actual])
         if not helper and style(a, before[3]) != style(b, after[3]):
@@ -89,13 +105,15 @@ for key, value in a.defined_names.items():
     if key not in b.defined_names or b.defined_names[key].attr_text != expected:
         issues.append(['name', key])
 # Excel records the LET variable as a hidden compatibility name.
-assert set(b.defined_names)-set(a.defined_names) == {'ceVendorList', '_xlpm.v'}
+assert set(b.defined_names)-set(a.defined_names) == {'ceVendorList', '_xlpm.v'} - set(a.defined_names)
 assert b.defined_names['_xlpm.v'].hidden and b.defined_names['_xlpm.v'].attr_text == '#NAME?'
 old_errors = {(s, c, v[1]) for s, rows in ac.items() for c, v in rows.items() if v[2] == 'e'}
 new_errors = {(s, c, v[1]) for s, rows in bc.items() for c, v in rows.items() if v[2] == 'e'}
 if new_errors != old_errors: issues.append(['errors changed'])
 assert not any(n.startswith('xl/externalLinks/') for n in bz.namelist())
 assert ac['Profit']['B43'][1] == bc['Profit']['B43'][1]
-print(json.dumps({'issues': issues, 'vendors_filled': 41, 'existing_errors': len(old_errors),
+for col in ('B', 'E', 'H', 'K', 'N', 'Q', 'T', 'W', 'Z', 'AC', 'AF', 'AI'):
+    assert ac['Carrying'][col+'29'][1] == bc['Carrying'][col+'29'][1], col+' total changed'
+print(json.dumps({'issues': issues, 'vendors_filled': len(vendor_map), 'existing_errors': len(old_errors),
                   'profit_unchanged': bc['Profit']['B43'][1]}, indent=2))
 sys.exit(bool(issues))
