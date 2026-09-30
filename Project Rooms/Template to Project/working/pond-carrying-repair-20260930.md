@@ -129,3 +129,17 @@ Wes reported the same symptom in G, J, M, Y, and AB. Inspection also found the s
 - Verified final SHA-256: `BC0E7389FFF0B3A36649CF9DC3E6AB24402649CEDD9A87F20F288CB6C1F7B9D2`. Observed ETag: `"{29C35775-DC91-47CF-AC62-F0054399FE81},53"`. Rollback retained in Teams; temporary local verification copies removed after completion. Macros were not function-tested.
 
 Lesson: a correct live display and a newer cloud timestamp are insufficient by themselves. Multi-block AutoSave can be intermediate; compare the complete approved repair against the saved Teams content before declaring delivery complete.
+
+## Approved Zero-Dollar Row Cleanup
+
+Wes explicitly requested deletion of zero-dollar table rows. Completed September 30, 2026 through the connected Pond workbook; no other project was edited.
+
+- Fresh Teams rollback: `Property/Project Template/Rollback Copies/26_Project Management - 908 Pond St 3.before-zero-rows-20260930-1519.xlsm`, from the save at `2026-09-30T14:51:48Z`.
+- Deleted 119 numeric-zero records from `tblCarryingExpenses`, using bottom-up native table-row deletion. None of those amounts was a formula. Table changed from `AL2:AV195` (193 records) to `AL2:AV76` (74 records).
+- Deleted counts by category: Duke Electric 9; Mortgage Payment 10; Private Money 4; Casa Lending 12; Insurance Payments 19; Water 8; Natural Gas 9; HOA 19; Property Taxes 16; Excavator Rental 13.
+- Preserved all 62 nonzero records, including credits, and all 12 blank-amount records (Mortgage Payment 3, Private Money 9). Blank amounts were not included in the deletion authorization; current display formulas still show those blanks as $0.00 alongside their dates.
+- All surviving source values, formulas, number formats, and order match the baseline. Grid formulas and formats, escrow formulas, category totals, Profit outputs, and Docs output are unchanged. Profit carrying costs remain $33,770.25; Docs remains $1,825. Calculation mode is Automatic; the live grid has no displayed formula errors. Native range-image inspection confirmed the shortened display lists.
+- First cloud save was intermediate, with 103 records. Did not repeat the deletion. Final connector download saved at `2026-09-30T15:23:45Z` contains exactly the expected 74 records. Saved comparisons found no surviving-record value/formula/style differences, no formula/constant/style changes outside the table data area, unchanged defined names, and unchanged category totals.
+- Final SHA-256: `F2EB98BC0EEEBA3CEAAD4B4AFF9140FB6E2E951FFEE10A9B80FB55F3FB42F066`. Macro behavior was not function-tested. Rollback remains in Teams.
+
+Lesson: blank amounts and zero-dollar amounts are different source states. Apply explicit deletion criteria to table rows only, preserve credits, verify surviving records rather than only totals, and disclose blank-to-zero display behavior. This cleanup does not establish a global policy to delete dated schedules.

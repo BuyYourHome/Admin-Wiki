@@ -26,6 +26,8 @@ When a date conversion is inside the matched array shared by date and amount dis
 
 ## Validation and Delivery
 
+- For an explicitly approved zero-dollar cleanup, distinguish numeric zero from a blank amount, credit, or formula-driven forecast. Delete only the approved table records, using native table-row deletion rather than whole worksheet rows. Preserve blank amounts unless separately authorized. Compare every surviving record, formula, and format to the original sequence and require unchanged category/Profit totals. A blank source amount may still display as $0.00 in the grid; disclose this rather than claiming all displayed zeros were removed. Pond's September 30 cleanup is not blanket authorization to remove schedules in other projects.
+
 - Preserve formulas outside the approved scope, formatting, widths, heights, merged cells, print settings, tables, defined names, macros, controls, and links.
 - Native Excel saves can modify unrelated styles and macro-package metadata. Compare before/after and remove unintended changes before delivery; never assume that a successful save proves preservation.
 - Verify saved formula caches as well as formulas. Reopen normally in hidden Excel, verify Automatic calculation, and test a reversible, unsaved table edit to confirm dependent totals respond.
