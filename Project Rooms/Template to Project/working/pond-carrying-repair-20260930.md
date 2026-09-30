@@ -86,3 +86,19 @@ After Wes again confirmed closure, fetched the latest baseline saved at `2026-09
 - Mortgage total remained $14,421.92; Profit carrying costs remained $33,770.25; current Docs remained $1,825. Only the Carrying worksheet package part changed; source records and other package parts were preserved.
 - Teams replacement was downloaded and hash-verified at approximately `2026-09-30T14:02Z`: `EDE2700D37A26AEE593D0C0A2AC7B81E387E11B76957D877DA55C9FCD9A51629`. This is the newer delivered version, superseding the earlier mortgage-repair hash.
 - Completion handoff directs Wes to open the authoritative Teams link after verification. If old formulas reappear, inspect the latest saved version before retrying or assigning a cause.
+
+## Live Workbook Repair After Second Reversion
+
+The Teams save at `2026-09-30T14:04:33Z` again contained the old formulas, superseding the earlier verified file replacements. The responsible saving session or automation was not established. Wes explicitly authorized updating only `Carrying!D4:E24` in his open Pond workbook. Earlier completion claims describe those delivered snapshots, not the subsequently reverted content.
+
+- Confirmed the exact open Pond workbook and its signed-in ChatGPT add-in. Connected Excel tools read the old formulas directly from that workbook before editing.
+- Fresh Teams rollback: `Property/Project Template/Rollback Copies/26_Project Management - 908 Pond St 3.before-live-mortgage-20260930-1427.xlsm`, based on the save at `2026-09-30T14:26:23Z`.
+- Wrote only the 42 formulas in `D4:E24`, removing the same inappropriate `DATEVALUE` wrapper. No source table values or formatting were written. The command reported a timeout, but subsequent complete range reads proved all 42 edits applied; no duplicate write was issued.
+- Verified every one of the 19 displayed date/amount pairs against the live included Mortgage Payment table records, preserving equal-date order and zero-dollar records. `D23:E24` remained blank. Native range-image verification showed readable dates from June 18, 2025 through September 9, 2026.
+- Mortgage total remained $14,421.92; live and saved Profit carrying cost remained $33,770.25. Saved `Docs!E39` remained `Profit!C9`, value $1,825.
+- Excel AutoSave, not another full-file replacement, saved the correction to Teams at `2026-09-30T14:31:08Z`. A fresh connector download verified the fixed formulas and cached dates. ETag: `"{29C35775-DC91-47CF-AC62-F0054399FE81},49"`. SHA-256: `F0D88FC1F574CF266B44D97F05E70026C2A4FCC8A60084D321C468D4C2B5D110`.
+- Across all worksheets, saved-file comparison found exactly the 42 approved formula substitutions, no other formula or constant-value changes, and no cell-style changes. Defined names were unchanged. Table, style, drawing, control, and external-link package parts were byte-identical. Saved calculation mode was the default Automatic (no manual override).
+- Native saving changed workbook metadata, Carrying XML, calculation chain, core properties, and the same-sized VBA binary. No macro editing command was used; VBA source equivalence was not independently established, so this is not a byte-identical macro-preservation claim. The rollback remains available. No unrelated package parts were replaced to suppress native-save changes.
+- Other category date blocks remain outside this approved repair. No other project was updated.
+
+Lesson: repair and verify the actual authorized live session when repeated file replacements are being superseded. Treat a write timeout as uncertain until a read establishes its outcome, and verify both the live display and the subsequent Teams save before reporting completion.
