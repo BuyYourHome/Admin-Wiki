@@ -119,6 +119,13 @@ When a sheet has no visible `#REF!` cells but the package still contains `#REF!`
 
 ## Profit Formula Rules
 
+### Pond Labor Design, September 30, 2026
+
+- Wes inserted `Labor(not in Vendor Tabs)` in the Pond Profit prototype. The targeted read-only inspection verified `B41 = +Carrying!AI25/Profit!$B$28`, Lawn moved to row 42, and `B43 = +B28*SUM(B31:B42)` includes Labor. Preserve Wes's current layout during the later approved migration; resolve the row and source subtotal by labels rather than assuming these coordinates in other projects.
+- Verify both model paths: Flip's `D43 = IF(E1=1,-B43,0)` feeds its expense/net-result sums; Hold/Slow Flip's `J41` uses the same carrying-period weighting as adjacent expense rows and is included in `J54`/`J55`. Read the current formulas and period inputs independently for each project. Do not copy Pond's costs or month assumptions.
+- Expected controlled-test result for a new included Labor amount X: Carrying Labor subtotal and total Profit carrying costs rise by X; Flip's net result falls by X if all other inputs remain unchanged. No live invoice test or mode toggle was performed during the initial inspection.
+- Profit `L83` currently uses `DAYS(J74,H74)` on text headings instead of the dates in row 75; `L85` inherits its `#VALUE!`. This issue was reported but not repaired. Do not call the entire Profit sheet error-free or propagate the faulty date references without a reviewed correction.
+
 When rewiring Profit mode logic to a numeric selector such as `Profit!E1`, change only formulas that actually depend on mode labels like `B1`, `C1`, or `D1`.
 
 Do not blindly replace nearby cells such as `B2` property address, and do not treat substring matches such as `C15` as `C1`. Verify exact cell references and business meaning before editing.

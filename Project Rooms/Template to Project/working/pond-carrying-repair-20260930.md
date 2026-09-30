@@ -169,3 +169,19 @@ On September 30, 2026, Wes authorized adding Carrying to Pond's Review destinati
 - Existing destination-type validation also occurs on `C5:C234` and `D37:D234`; these are outside the approved column-B edit and were preserved, not corrected. Reassess their intended roles during the broader Review design rather than copying them blindly.
 
 Lesson: validation coverage may extend beyond a populated table. Preserve that coverage when adding a destination, and keep destination availability separate from operational posting approval and accounting integration.
+
+## Wes's Profit Integration Inspection
+
+September 30, 2026: Wes authorized a read-only inspection and migration documentation, then plans to request a test record from the invoice workflow himself. Fresh Teams version obtained at `2026-09-30T16:47:40Z`; inspected the confirmed connected Pond workbook. No workbook edits, mode toggles, record insertions, or posting instructions were performed.
+
+- New label: `Profit!A41 = Labor(not in Vendor Tabs)`.
+- `B41 = +Carrying!AI25/Profit!$B$28`; current Labor subtotal and this average are zero. Months carried is 12.9520052596976, shown rounded to 13.
+- Lawn is now row 42. `B43 = +B28*SUM(B31:B42)` includes the new Labor row; current total is $33,770.25.
+- In current Flip mode (`E1=1`), `D43 = IF(E1=1,-B43,0)` feeds `D54 = SUM(D14:D53)` and `E55 = SUM(D10:E53)`. Each additional included Labor dollar therefore increases carrying cost and decreases the Flip result by one dollar, with other inputs unchanged.
+- For Hold/Slow Flip, `J41 = IF(OR($E$1=2,$E$1=3),-B41,0)*$B$28/($B$28+$B$9)`. Both `J54 = SUM(J15:J53)` and `J55 = SUM(J10:K53)` include it. `M42` uses `B43/B28` except in Slow Flip, where it uses `-J54`. These were formula-trace checks, not executed scenario tests.
+- Profit error search found `L83` and `L85` with `#VALUE!`. `L83` uses `DAYS(J74,H74)`, but those cells hold End Date/Start Date headings; actual dates are in `J75`/`H75`. `L85` averages a range containing L83. Their origin was not established. Reported without repairing; they do not block the traced Labor subtotal/carrying-cost calculation, but the entire Profit sheet is not clean.
+- This was a targeted Labor integration review, not a complete audit of all Profit changes. Later migration still requires the full template comparison and project-specific mapping required by Profit Mode.
+
+Invoice Entry's exact central consultation record completed at `2026-09-30T16:37:44Z` and its identity/hash were verified. Recommendations: one Review row per time-card source line/project/work category; use an appropriate vendor destination first, Carrying/Labor otherwise; append by table header with Include Yes; preserve source work date, payee, supported description, allocated amount, invoice identity, canonical PDF reference, Review Row ID and source-line identity. Retain the Review row and mark Posted only after insertion validation. Reconcile split allocations exactly and prevent duplicates using source-line identity across destinations, not amount alone. These are consultation findings, not edits to Invoice Entry's rules. The response's Profit-not-connected blocker predates and is resolved by the inspected Wes changes; end-to-end posting remains unproven until the controlled test.
+
+Test baseline: `Carrying!AI25 = 0`, `Profit!B41 = 0`, `Profit!B43 = 33770.25`, `Profit!D43 = -33770.25`, `E1 = 1`. For an included test expense X, verify the source row once, its date/amount display, Labor subtotal X, Profit B41 X/B28, B43 33770.25+X, D43 -(33770.25+X), and retained Review audit status. No other project is approved for this test or rollout.
