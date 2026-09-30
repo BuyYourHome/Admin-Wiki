@@ -1,5 +1,16 @@
 # Low-token dispatcher releases
 
+## Controlled release 0.4.7
+
+Release `0.4.7` implements acceptance-based notification release without changing business-processing state:
+
+- A canonical `Accepted` or `Processing` record releases its destination notification hold only after the immutable hash, message ID, dispatch ID, destination task, destination machine, receipt timestamp, and either the new receipt binding fields or the exact legacy `Accepted` event are verified.
+- The worker reconciles the attempt as `Delivered` and closes, but never deletes, its journal entry. It leaves the central record, receipt, events, attempts, result, and unfinished business-work state intact.
+- Missing, invalid, mismatched, ambiguous, or conflicting evidence remains a destination hold. A submitted or ambiguous attempt is never resubmitted.
+- `ConditionalClaim` repeats the same destination predicate over a freshly reread inventory inside the canonical queue lock, so concurrent workers still produce at most one claim and submission.
+- New canonical receipts carry their message ID, dispatch ID, and payload hash explicitly. Legacy receipts remain eligible only when their containing record and exact destination-authored `Accepted` event verify the same acceptance.
+- `UpgradeLive` accepts `0.4.6` and preserves owner generation, production state, journal, task identity, hidden launcher, schedule, Live mode, destination pins, attempts, receipts, results, and central records.
+
 ## Controlled release 0.4.6
 
 ### Scheduled phase diagnostics (2026-09-28)
@@ -134,7 +145,7 @@ September 7 integrity/closure revision, directly approved by Wes: the active man
 
 The per-profile singleton lock encloses the tick. Manager subprocesses are bounded by the remaining tick budget (maximum 55 seconds); adapter subprocesses are bounded too. `Invoke-ManagerCommand.ps1` is a fixed, hash-pinned UTF-8 relay: general real manager access is List-only; mutations require the staged fixture manager or the exact Canary gate. No polling loop, sleep, direct model API request, task creation or business operation is used by the worker. The real CLI wake-up does start a recipient model turn and consumes its normal tokens.
 
-Journal schema 2 phases are `planned`, `claimed`, `submission_started`, `submitted`, `awaiting_completion`, `unresolved`, `closed`. Entries retain message/dispatch/destination/attempt/hash, UTC timestamps, adapter release/hash, queue acknowledgment ID and hashed output/exit/timeout evidence, never payload copies. Journal/health writes use flushed sibling temporary files plus atomic replacement. The submission-start marker precedes the external effect. Recovery never re-submits an existing attempt: pre-submission proof closes NotDelivered; possible submission without a verified durable queue acknowledgment becomes ambiguous and retains its destination. Exact acceptance marks delivery but retains the slot until a verified terminal result; closing a transport journal is not a business-completion claim. Missing journals reconstruct owned attempts conservatively, including already ambiguous or accepted attempts. A corrupt/old-schema journal or missing/stale canonical record blocks without discarding evidence. There is no automatic journal migration or erasure.
+Journal schema 2 phases are `planned`, `claimed`, `submission_started`, `submitted`, legacy `awaiting_completion`, `unresolved`, and `closed`. Entries retain message/dispatch/destination/attempt/hash, UTC timestamps, adapter release/hash, queue acknowledgment ID and hashed output/exit/timeout evidence, never payload copies. Journal/health writes use flushed sibling temporary files plus atomic replacement. The submission-start marker precedes the external effect. Recovery never re-submits an existing attempt: pre-submission proof closes NotDelivered; possible submission without a verified durable queue acknowledgment becomes ambiguous and retains its destination. Exact acceptance marks delivery and closes only the notification slot while the canonical request remains unfinished business work; closing a transport journal is not a business-completion claim. Missing journals reconstruct owned attempts conservatively, including already ambiguous or accepted attempts. A corrupt/old-schema journal or missing/stale canonical record blocks without discarding evidence. Legacy `awaiting_completion` entries are reconciled in place after verified acceptance and are never erased.
 
 A verified adapter acknowledgment must bind the exact message, destination and attempt to a queue UUID, report submitted=true and accepted=false, and have a successful process result. A queue acknowledgment is not a recipient receipt. Long waits retain Pending and the slot; `queued_receipt_warning_seconds` (recommended 600, allowed 1–86400) emits `QueuedReceiptOverdue` attention only, not a retry or automatic failure/release. Error/timeout/malformed/wrong-target responses remain uncertain. There is no deadline that makes a possibly submitted message safe to repeat.
 

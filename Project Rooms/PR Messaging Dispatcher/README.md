@@ -12,7 +12,7 @@ Notify new eligible requests after the prior request has a verified canonical ac
 
 The destination accepts and deduplicates new in-scope intake, then applies its processing-order rules. Invoice Entry handles older nonterminal records oldest-first and rechecks its queue-drain gate before output. No approval, payment, filing, or other business-action gate changes.
 
-As of 2026-09-30, this is the authorized policy; the worker and atomic manager still require an implementation correction and guarded deployment. Rule publication alone does not establish live behavior. Do not bypass the gap by manually changing records or sending duplicate wake-ups.
+Release `0.4.7` implements this authorized policy in the worker and atomic manager. Each machine still requires its guarded in-place deployment before the behavior is active there. Do not bypass an undeployed machine by manually changing records or sending duplicate wake-ups.
 
 ### Transport scope
 
@@ -49,7 +49,7 @@ Out of scope:
 
 ## Status
 
-Status: `Release 0.4.6 developed for controlled in-place upgrade after an OFFICEASSIST Codex update removed the worker's pinned CLI executable`.
+Status: `Release 0.4.7 developed for guarded acceptance-based notification release`.
 
 WES-VIDEOEDITOR promoted release `0.4.0` after exact synthetic `prmsg-wve-low-token-worker-validation-20260913-001` completed with one delivered attempt and no business action, then upgraded in place to `0.4.1`. Scheduled task `BYH PR Messaging Worker - WES-VIDEOEDITOR` runs every 60 seconds in `Live` mode for its pinned Quickbooks destination. The old assisted QuickBooks task is disabled and the model-driven dispatcher heartbeat remains paused. OFFICEASSIST promoted after exact synthetic `prmsg-officeassist-low-token-worker-docscan-validation-20260914-001` completed through one delivered attempt, then upgraded in place to `0.4.1`. Its worker runs every 60 seconds in `Live` mode for Email Monitor, Doc Scan, and Invoice Entry, and Email Monitor's embedded dispatcher stage has been removed while its mailbox heartbeat remains active.
 
@@ -64,6 +64,8 @@ Release `0.4.4` retains that optimization and permits a bounded 180-second produ
 Release `0.4.5` retains every `0.4.4` control and aligns the canonical manager subprocess bounds with the 180-second tick. List calls may use up to 60 seconds and atomic mutation calls may use up to 120 seconds, always capped by the time remaining in the tick. This addresses OFFICEASSIST `ManagerTimeoutUncertain` results caused by the prior 15-second conditional-claim limit without permitting an unbounded manager call.
 
 Release `0.4.6` retains every `0.4.5` control and refreshes the reviewed Codex CLI path/hash during `UpgradeLive`. This addresses Codex application updates that replace the versioned CLI directory. Ordinary worker ticks remain unable to discover or trust a new executable automatically, and a missing pinned CLI now produces the safe diagnostic code `CliExecutableMissing` before any submission marker or task notification.
+
+Release `0.4.7` retains every `0.4.6` control and releases only the destination notification hold after exact canonical acceptance. The accepted request remains nonterminal business work, with all central and journal history preserved. Invalid, ambiguous, or conflicting evidence remains held, and the canonical manager repeats the same eligibility decision under the queue lock.
 
 The dispatcher now distinguishes a pre-PowerShell tool-wrapper failure from a helper or queue failure. It retries one pre-execution wrapper failure, records deterministic skip counts, writes machine-local health to `%LOCALAPPDATA%\BuyYourHome\PRMessaging\dispatcher-health.json`, and allows up to 120 seconds for destination startup before final delivery reconciliation.
 

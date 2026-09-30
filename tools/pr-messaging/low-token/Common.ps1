@@ -125,7 +125,29 @@ function Test-LtRecord($Record,$Client,$Manifests,[string]$Machine,[string]$Mode
 }
 function Test-LtReceipt($Record) {
     $r=$Record.receipt
-    return ($null -ne $r -and $r.project_room -ceq $Record.destination.project_room -and $r.task_id -ceq $Record.destination.task_id -and $r.machine -ceq $Record.destination.machine)
+    if($null -eq $r -or $r.project_room -cne $Record.destination.project_room -or
+        $r.task_id -cne $Record.destination.task_id -or $r.machine -cne $Record.destination.machine){return $false}
+    try{
+        Assert-LtId ([string]$Record.message_id)
+        Assert-LtId ([string]$Record.dispatch_id)
+        if([string]$Record.payload_hash -cnotmatch '^[0-9a-f]{64}$' -or !(Get-PrMessageHashEvidence $Record).valid){return $false}
+        [void][DateTimeOffset]::Parse([string]$r.accepted_at_utc)
+    }catch{return $false}
+    $bindingFields=@('message_id','dispatch_id','payload_hash')
+    $hasBinding=@($bindingFields|Where-Object {$null -ne $r.PSObject.Properties[$_] -and ![string]::IsNullOrWhiteSpace([string]$r.$_)}).Count -gt 0
+    if($hasBinding){
+        return ($r.message_id -ceq $Record.message_id -and $r.dispatch_id -ceq $Record.dispatch_id -and $r.payload_hash -ceq $Record.payload_hash)
+    }
+    # Receipts written before 0.4.7 are bound by their containing canonical
+    # record plus the exact destination-authored Accepted event.
+    return @($Record.events|Where-Object {
+        $_.event -ceq 'Accepted' -and $_.actor.project_room -ceq $Record.destination.project_room -and
+        $_.actor.task_id -ceq $Record.destination.task_id -and $_.actor.machine -ceq $Record.destination.machine
+    }).Count -eq 1
+}
+function Test-LtAcceptedNotification($Record) {
+    if(!(Test-LtReceipt $Record) -or $Record.result){return $false}
+    return $Record.state -in @('Accepted','Processing')
 }
 function Test-LtCompleted($Record) {
     # Acceptance proves delivery, not completion. Only verified completion releases a slot.
@@ -142,6 +164,7 @@ function Test-LtDestinationOutstanding($Record) {
     if (Test-PrAdministrativeClosure $Record) { return $false }
     if (!(Get-PrMessageHashEvidence $Record).valid) { return $true }
     if (Test-PrMessageTerminal $Record) { return $false }
+    if (Test-LtAcceptedNotification $Record) { return $false }
     if (!$Record.receipt -and !$Record.result -and $Record.state -eq 'Queued' -and $attempts.Count -gt 0 -and !@($attempts | Where-Object outcome -ne 'NotDelivered').Count) { return $false }
     return $true
 }

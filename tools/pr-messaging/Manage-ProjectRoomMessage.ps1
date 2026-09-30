@@ -393,7 +393,11 @@ Invoke-WithQueueLock {
                 }
             }
             $record.state = "Accepted"
-            $record.receipt = [pscustomobject][ordered]@{ accepted_at_utc = Get-UtcTimestamp; project_room = $record.destination.project_room; task_id = $record.destination.task_id; machine = $env:COMPUTERNAME; detail = $Detail }
+            $record.receipt = [pscustomobject][ordered]@{
+                message_id = $record.message_id; dispatch_id = $record.dispatch_id; payload_hash = $record.payload_hash
+                accepted_at_utc = Get-UtcTimestamp; project_room = $record.destination.project_room
+                task_id = $record.destination.task_id; machine = $env:COMPUTERNAME; detail = $Detail
+            }
             Add-Event -Record $record -Event "Accepted" -EventDetail $Detail -ProjectRoom $record.destination.project_room -TaskId $record.destination.task_id
         }
         "StartProcessing" {
