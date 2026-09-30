@@ -68,6 +68,17 @@ When a date conversion is inside the matched array shared by date and amount dis
 - Append by table headers, validate required input and possible duplicates across all rows, verify the new row before clearing the form, preserve rejected input, and never leave synthetic test records in the delivered workbook. Flag category-display overflow even though totals include the entire source table. No operational Invoice Entry approval, routing, payment, or cross-destination reconciliation is implied by this manual interface.
 - Do not automate macro-security or VBA-trust settings. Installation may require owner-enabled VBA project-object access; normal use does not. Remind Wes to turn that installation permission off after verification. Use only the reviewed isolated workbook for macro tests, keep existing event handlers disabled, and leave other Excel sessions untouched.
 
+## Vendor Prefill Pilot
+
+- Tensity is the approved September 30, 2026 pilot for the Vendor dropdown and Recurring Bill button. This does not authorize other-project rollout or change Pond automatically.
+- Wes explicitly approved filling Tensity's 41 blank Vendor cells from each row's Category. Preserve existing nonblank vendors and formulas. Category labels are owner-selected defaults, not verified supplier identities; do not infer the same mapping in another project without approval.
+- The Vendor dropdown reads unique nonblank table vendors through a dynamic named list and allows typing a new vendor. Inspect helper placement before installation; Tensity uses hidden AX and `ceVendorList`.
+- Prefill reads every table row regardless of filtering. For one Category/Description bill type, select the latest dated matching Vendor record; ties use the last physical row. Different bill types require explicit row selection, not a guessed default.
+- Prefill is not insertion or a recurring schedule: preserve the user-entered Date, copy Category/Vendor/Description/Amount/Include, clear previous invoice number/source-file/notes, and reset Source/Status to Manual Entry/Entered. Preserve a blank latest amount as blank rather than silently substituting an earlier amount. Wes reviews Date and Amount before Insert Record.
+- Match the existing Insert Record button dimensions and place the new button directly below without overlapping the grid or feedback. Tensity moves the named feedback anchor from W3 to Z3; preserve the form's owner formatting.
+- Test unknown vendors, latest records, blanks, filtered records, ambiguous bill types, explicit row selection, credits, Include No, dynamic dropdown growth, and existing insertion/duplicate checks. Prefill must never append a record or change totals. Preserve and separately report unrelated existing errors.
+- See [[tensity-vendor-prefill-20260930]] and `tools/carrying-entry/README.md`. Installation scripts and baseline assertions are Tensity-specific; independently remap each later target.
+
 ## Pond Repair Reference
 
 See [[pond-carrying-repair-20260930]] for the 13 recovered bills, replacement of ten approved Natural Gas placeholders, corrected electric date, downstream Docs change, subsequent mortgage date/amount pairing repair, rollback references, and verified totals. These values are evidence for Pond only, not default values for other projects.

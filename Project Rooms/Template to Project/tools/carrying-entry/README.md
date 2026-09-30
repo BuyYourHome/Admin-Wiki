@@ -39,6 +39,14 @@ The display remains a fixed-height grid. All included rows affect the full-categ
 7. Audit saved content and render the actual final layout. Resolve style IDs and differential-format IDs before comparison; native Excel can renumber them without changing formatting. Audit raw cell XML too: merged cells can contain hidden legacy formulas that a high-level reader hides.
 8. Replace the same Teams item through the connector only after freshness and validation pass. Download the uploaded file, match its SHA-256 and run unsaved native tests again. Retain rollback, remove superseded temporary workbooks, document lessons and commit this room's scoped source. Do not push without authorization.
 
+## Vendor Prefill Extension
+
+`BYHCarryingPrefill.bas` adds the separate `CarryingEntry_Recurring` button handler and testable `CarryingEntry_Prefill` function. `Install-CarryingPrefill.ps1` is a guarded Tensity pilot installer, not a batch migration tool. It fills owner-approved blank Vendor values from Category, installs a dynamic Vendor list in hidden AX, adds a same-size button below Insert Record, and moves named feedback to Z3. Existing insertion code remains unchanged.
+
+Select a vendor, click Recurring Bill, then review Date and Amount before Insert Record. The latest matching dated record seeds ordinary fields; different Category/Description types prompt selection of a source-table cell. Date is left untouched. Invoice number, source-file reference and notes are cleared; Source and Status reset to Manual Entry and Entered. Blank latest amounts remain blank. Nothing is inserted or saved by prefill. Existing future-dated schedule rows may be selected; this feature does not validate recurrence or advance dates.
+
+Run `Test-CarryingPrefill.ps1`, the existing insertion and Tensity dependency tests, and `audit_vendor_prefill.py` against the fresh source and result. Tests are unsaved. The audit resolves differential-format IDs and permits Excel's hidden LET compatibility name; it does not write workbooks. See [[tensity-vendor-prefill-20260930]] for the verified pilot.
+
 ## Security And Limits
 
 Do not enable all macros globally or create a broad trusted folder. VBA project-object access is needed to install code, not for ordinary use of the button; Wes can turn it off again. Normal workbook macro trust still applies. If organizational policy blocks the macro, obtain an approved signing/deployment path rather than weakening that policy.
