@@ -75,6 +75,8 @@ Use [[Agent Unit Standard]] for the standard package behind an agent-like operat
 
 ## PR Messaging Dispatcher
 
+- Policy update authorized 2026-09-30: verified recipient acceptance releases the destination notification hold for subsequent eligible requests; business processing remains ordered by the destination. Unacknowledged or ambiguous submissions remain held. Worker/atomic-manager implementation and guarded deployment are pending; current `awaiting_completion` blocking must not be reported as corrected merely because the rules are published. See `Project Room Messaging Rule.md`.
+
 - Canonical implementation owner: `PR Messaging Dispatcher - WES-VIDEOEDITOR`, task `01a05d0c-8031-7d92-9474-ab2330008ddb`, execution machine `WES-VIDEOEDITOR`.
 - Owner automation: `pr-messaging-dispatcher-wes-videoeditor`.
 - Matching skill: `skills\pr-messaging-dispatcher\SKILL.md`.

@@ -31,7 +31,7 @@ Provide the host-local wake-up layer for Project Room messages addressed to task
 8. When the helper returns no claim, end silently when its candidate and skip counts are consistent. Report an internally inconsistent result as an actionable helper blocker.
 9. Require `dispatchable: true`, except for one exact manifest-authorized `validation_ready` synthetic record that authorizes and performs no business action. Never use that exception for production work.
 10. `StartAttempt` must already exist before exactly one local notification.
-11. Require the destination to write `Accepted`, `Processing`, and one valid final state.
+11. Require the destination to write `Accepted`, `Processing`, and one valid final state. Release the destination notification hold after the same-ID immutable hash, exact destination task/machine, and authoritative acceptance receipt are verified; do not wait for business completion before notifying a different eligible request. Preserve the accepted record's journal and unfinished-work status. Unacknowledged, ambiguous, invalid, or conflicting evidence continues to hold notification and must never be retried automatically. The destination owns processing order: Invoice Entry accepts new in-scope intake, then processes older nonterminal records oldest-first and enforces its queue-drain gate before output.
 12. Wait up to 120 seconds for destination progress and reconcile the authoritative record again immediately before marking a definitive failure `NotDelivered` or uncertainty `DeliveryAmbiguous`.
 13. Remain silent on empty polls and unchanged conditions.
 14. Dispatcher health consumers must honor the schedule metadata and `next_scheduled_run_at_utc` written by the claim helper. Closed nights and weekends are expected inactivity, not stale health.
@@ -53,6 +53,8 @@ Provide the host-local wake-up layer for Project Room messages addressed to task
 - Never exceed the record's attempt limit.
 
 ## Deployment
+
+- Acceptance-based notification policy authorized 2026-09-30: the currently installed worker still retains its destination hold through `awaiting_completion`. Updating these rules does not deploy that behavior. The canonical implementation owner must align worker and atomic-manager eligibility, preserve duplicate and ambiguity protections, test acceptance-versus-completion behavior, and use guarded deployment plus natural-run verification. Never work around this gap with manual journal closure or duplicate notification.
 
 - Use one dedicated dispatcher task and one deterministic Windows worker per computer. The dispatcher task id must be separate from every operational destination task id on that computer so each destination, including Email Monitor, remains eligible for notification and self-notification is impossible.
 - WES-VIDEOEDITOR task: `PR Messaging Dispatcher - WES-VIDEOEDITOR`, task `01a05d0c-8031-7d92-9474-ab2330008ddb`.

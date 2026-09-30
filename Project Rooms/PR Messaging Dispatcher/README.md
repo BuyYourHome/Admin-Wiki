@@ -6,6 +6,16 @@ Provide one machine-local dispatcher heartbeat on each computer that hosts dispa
 
 ## Scope
 
+### Acceptance and processing order
+
+Notify new eligible requests after the prior request has a verified canonical acceptance receipt; do not hold new intake until prior business work finishes. Verify the same message/dispatch ID, immutable hash, and exact destination task/machine. Keep unacknowledged or ambiguous submissions held and preserve all journal and lifecycle evidence. Acceptance releases only the notification hold and does not mark work completed.
+
+The destination accepts and deduplicates new in-scope intake, then applies its processing-order rules. Invoice Entry handles older nonterminal records oldest-first and rechecks its queue-drain gate before output. No approval, payment, filing, or other business-action gate changes.
+
+As of 2026-09-30, this is the authorized policy; the worker and atomic manager still require an implementation correction and guarded deployment. Rule publication alone does not establish live behavior. Do not bypass the gap by manually changing records or sending duplicate wake-ups.
+
+### Transport scope
+
 In scope:
 
 - Poll the authoritative queue with `Manage-ProjectRoomMessage.ps1`.
