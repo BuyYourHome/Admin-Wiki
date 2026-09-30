@@ -31,6 +31,7 @@ When a date conversion is inside the matched array shared by date and amount dis
 - Verify saved formula caches as well as formulas. Reopen normally in hidden Excel, verify Automatic calculation, and test a reversible, unsaved table edit to confirm dependent totals respond.
 - Recheck the live Teams version immediately before replacement. If it changed, fetch the newer version, reconcile differences, and revalidate instead of overwriting it.
 - Upload through the Teams/SharePoint connector and verify the downloaded replacement matches the validated file.
+- For missing-date complaints, verify Excel's displayed cell text as well as values, formulas, and formatting; dates must be nonblank and not overflow markers. After upload, identify the verified Teams version and direct reopening from the authoritative Teams link. A later save can restore old formulas even after a successful upload. If the defect recurs, fetch current Teams content and compare the formulas before blaming formatting or identifying a saving session without evidence.
 - Keep workbook backups and binary validation artifacts in Teams, not Git. Remove superseded temporary workbook copies after verification.
 - After every completed repair or migration, record new lessons in this mode file and a project-specific mapping/validation log before treating the iteration as complete.
 

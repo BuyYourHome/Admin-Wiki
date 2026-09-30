@@ -74,3 +74,15 @@ Completed September 30, 2026, approximately 13:56 UTC, after Wes approved the mo
 - This supersedes the earlier open mortgage-date issue only. Date formulas in other unrepaired category blocks, escrow assumptions, and further design changes remain for review. No other project was updated.
 
 Lesson: repair both date and amount formulas when their shared sort array contains the defect. Validate pairings, not only total amounts or the presence of dates.
+
+## Mortgage Repair Reapplied After Later Save
+
+Wes reported missing dates after reopening. A fresh Teams inspection found the old `DATEVALUE` formulas restored in the save at `2026-09-30T13:57:51Z`, after the previously hash-verified repair. The saving session responsible was not established; this was not evidence of a date-formatting problem.
+
+After Wes again confirmed closure, fetched the latest baseline saved at `2026-09-30T13:59:06Z` and reapplied only the same `D4:E24` date/amount formula repair. Preserved the newer workbook's other content rather than uploading an older whole-workbook copy.
+
+- Rollback: `Property/Project Template/Rollback Copies/26_Project Management - 908 Pond St 3.before-mortgage-reapply-20260930-1400.xlsm`.
+- Hidden Excel verified all 19 pairs and nonblank date display text. Representative displayed values: `D4 = 6/18/2025`, `D5 = 7/18/2025`, `D22 = 9/9/2026`. The temporary unsaved date-change test passed again.
+- Mortgage total remained $14,421.92; Profit carrying costs remained $33,770.25; current Docs remained $1,825. Only the Carrying worksheet package part changed; source records and other package parts were preserved.
+- Teams replacement was downloaded and hash-verified at approximately `2026-09-30T14:02Z`: `EDE2700D37A26AEE593D0C0A2AC7B81E387E11B76957D877DA55C9FCD9A51629`. This is the newer delivered version, superseding the earlier mortgage-repair hash.
+- Completion handoff directs Wes to open the authoritative Teams link after verification. If old formulas reappear, inspect the latest saved version before retrying or assigning a cause.
