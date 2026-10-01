@@ -46,7 +46,7 @@ Lead Sourcing
 10. Locate the downloaded file.
 11. Rename it `Foreclosure-Closed.csv`.
 12. Move it to the Teams Properties folder, replacing the existing file when appropriate.
-13. Open ForeclosureList while `Foreclosure-Closed.csv` is available.
+13. Open, from teams synced folder,  ForeclosureList while `Foreclosure-Closed.csv` is available.
 14. Confirm the ForeclosureList reads the closed contacts and sets the Mail? column to `Don't Mail` for matching records.
 15. Continue with Item 027 to prepare the ForeclosureList for mailing letters.
 

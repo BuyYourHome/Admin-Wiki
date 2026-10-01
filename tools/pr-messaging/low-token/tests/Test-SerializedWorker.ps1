@@ -33,7 +33,7 @@ function OtherRecord($f,[string]$State='Processing') {
     $r=Record $f
     $r.message_id='other-synthetic-002';$r.dispatch_id=$r.message_id;$r.state=$State
     $r.attempt_count=1;$r.attempts=@([pscustomobject]@{attempt_id='other-attempt';outcome='Delivered';started_at_utc=[DateTime]::UtcNow.AddMinutes(-10).ToString('o');completed_at_utc=[DateTime]::UtcNow.AddMinutes(-9).ToString('o')})
-    $r.receipt=[pscustomobject]@{project_room='Test Recipient';task_id=$f.task;machine=$env:COMPUTERNAME;accepted_at_utc=[DateTime]::UtcNow.AddMinutes(-9).ToString('o')}
+    $r.receipt=[pscustomobject]@{message_id=$r.message_id;dispatch_id=$r.dispatch_id;payload_hash=$r.payload_hash;project_room='Test Recipient';task_id=$f.task;machine=$env:COMPUTERNAME;accepted_at_utc=[DateTime]::UtcNow.AddMinutes(-9).ToString('o')}
     $r.result=$null
     if($State -eq 'Completed'){$r.result=[pscustomobject]@{state='Completed';machine=$env:COMPUTERNAME;completed_at_utc=[DateTime]::UtcNow.AddMinutes(-1).ToString('o')}}
     if($State -eq 'Delivery Ambiguous'){$r.receipt=$null;$r.attempts[0].outcome='DeliveryAmbiguous'}
@@ -94,13 +94,38 @@ Check 'delayed queued receipt warns without failure or slot release' {
     Assert ((Record $f).state -eq 'Delivery Attempted' -and $h.attention[0].reason -eq 'QueuedReceiptOverdue')
     Assert ($h.outstanding_attempts.Count -eq 1 -and (CountSubmissions $f) -eq 1)
 }
-Check 'acceptance retains slot until verified completion' {
+Check 'acceptance releases notification slot while preserving unfinished lifecycle and journal' {
     $f=Fixture;Tick $f|Out-Null;AcceptFixture $f;$h=Tick $f
-    Assert ($h.outstanding_attempts[0].phase -eq 'awaiting_completion' -and (Record $f).attempts[0].outcome -eq 'Delivered')
-    & $manager -FixtureRoot $f.root -Action Complete -QueuePath $f.queue -MessageId $f.id -ActorTaskId $f.task -ResultJson '{"fixture":true}'|Out-Null
-    $h=Tick $f;Assert ($h.outstanding_attempts.Count -eq 0 -and (CountSubmissions $f) -eq 1)
+    $r=Record $f;$j=Read-LtJson (Join-Path $f.state 'journal.json')
+    Assert ($h.outstanding_attempts.Count -eq 0 -and $r.state -ceq 'Processing' -and !$r.result)
+    Assert ($r.attempts[0].outcome -eq 'Delivered' -and $r.receipt.message_id -ceq $r.message_id -and $r.receipt.dispatch_id -ceq $r.dispatch_id -and $r.receipt.payload_hash -ceq $r.payload_hash)
+    Assert ($j.entries.Count -eq 1 -and $j.entries[0].phase -ceq 'closed' -and $j.entries[0].outcome -ceq 'Delivered' -and (CountSubmissions $f) -eq 1)
 }
-foreach($state in @('Accepted','Processing','Delivery Ambiguous','Blocked','Needs Wes','Rejected as Wrong Room')) {
+foreach($state in @('Accepted','Processing')) {
+    Check ('atomic claim releases verified accepted same-destination '+$state) {
+        $f=Fixture;$other=OtherRecord $f $state;SaveOther $f $other
+        $claim=Claim $f
+        Assert ($claim.claimed -and $claim.may_submit -and (Record $f).attempt_count -eq 1)
+    }
+}
+foreach($fault in @('missing-receipt','wrong-task','wrong-machine','wrong-message','wrong-dispatch','wrong-hash-binding','invalid-record-hash')) {
+    Check ('accepted evidence fault retains notification hold '+$fault) {
+        $f=Fixture;$other=OtherRecord $f 'Accepted'
+        switch($fault){
+            missing-receipt {$other.receipt=$null}
+            wrong-task {$other.receipt.task_id=$f.source}
+            wrong-machine {$other.receipt.machine='OTHER'}
+            wrong-message {$other.receipt.message_id='wrong-message'}
+            wrong-dispatch {$other.receipt.dispatch_id='wrong-dispatch'}
+            wrong-hash-binding {$other.receipt.payload_hash=('b'*64)}
+            invalid-record-hash {$other.payload_hash=('f'*64)}
+        }
+        SaveOther $f $other
+        Assert ((Claim $f).reason -eq 'DestinationOutstanding')
+        Assert ((Record $f).attempt_count -eq 0)
+    }
+}
+foreach($state in @('Delivery Ambiguous','Blocked','Needs Wes','Rejected as Wrong Room')) {
     Check ('atomic claim holds other same-destination '+$state) {
         $f=Fixture;$other=OtherRecord $f $state;SaveOther $f $other
         Assert ((Claim $f).reason -eq 'DestinationOutstanding')
@@ -108,8 +133,8 @@ foreach($state in @('Accepted','Processing','Delivery Ambiguous','Blocked','Need
     }
 }
 Check 'completed other message releases destination and submits next once' {
-    $f=Fixture;SaveOther $f (OtherRecord $f 'Processing');Assert ((Tick $f).claims -eq 0)
-    SaveOther $f (OtherRecord $f 'Completed');Assert ((Tick $f).submissions -eq 1);Tick $f|Out-Null;Assert ((CountSubmissions $f) -eq 1)
+    $f=Fixture;SaveOther $f (OtherRecord $f 'Completed')
+    Assert ((Tick $f).submissions -eq 1);Tick $f|Out-Null;Assert ((CountSubmissions $f) -eq 1)
 }
 Check 'other destination does not block target' {
     $f=Fixture;$other=OtherRecord $f;$other.destination.task_id='33333333-3333-4333-8333-333333333333';$other.payload_hash=Get-LtPayloadHash $other;SaveOther $f $other
@@ -156,10 +181,11 @@ Check 'lost journal after ambiguous submission reconstructs hold' {
     $jp=Join-Path $f.state 'journal.json';Assert-LtUnder $jp $f.root;Remove-Item -LiteralPath $jp
     $h=Tick $f;Assert ($h.outstanding_attempts[0].phase -eq 'unresolved' -and (CountSubmissions $f) -eq 1)
 }
-Check 'lost journal after acceptance reconstructs completion hold' {
+Check 'lost journal after acceptance reconstructs closed delivery history without replay' {
     $f=Fixture;Tick $f|Out-Null;AcceptFixture $f
     $jp=Join-Path $f.state 'journal.json';Assert-LtUnder $jp $f.root;Remove-Item -LiteralPath $jp
-    $h=Tick $f;Assert ($h.outstanding_attempts[0].phase -eq 'awaiting_completion' -and (CountSubmissions $f) -eq 1)
+    $h=Tick $f;$j=Read-LtJson $jp
+    Assert ($h.outstanding_attempts.Count -eq 0 -and $j.entries.Count -eq 1 -and $j.entries[0].phase -ceq 'closed' -and (CountSubmissions $f) -eq 1)
 }
 Check 'restored stale queue cannot replay journaled submission' {
     $f=Fixture;$before=Record $f;Tick $f|Out-Null;SaveRecord $f $before
