@@ -9,7 +9,7 @@ Required package for later authorized targets:
 1. Fetch the latest Teams target, confirm closure, preserve a rollback, and independently map all records, labels, formulas, controls, helpers and downstream dependencies.
 2. Preserve project values and owner formatting. Reconcile grid overrides into `tblCarryingExpenses`; apply the approved typed-date pairing, Labor, supporting Profit/Review/Docs fixes and numeric-zero cleanup from [[Carrying Mode Rules]]. Never import the prototype's expenses.
 3. Add or upgrade the named manual-entry form, Include control and Insert Record behavior. Confirm the target's table location, grid capacity, VBA and security prerequisites; do not launch visible Excel or change trust settings.
-4. Add the Vendor dropdown and same-size Recurring Bill button beneath Insert Record. Preserve existing vendor identities; fill blanks from Category only with project-specific approval. Place the helper and feedback without overwriting cells.
+4. Add the Vendor dropdown and same-size Recurring Bill button beneath Insert Record. Preserve existing vendor identities and formulas; fill blank Vendors from their Category under Wes's September 30 batch authorization. Place the helper and feedback without overwriting cells.
 5. Include next-logical-date suggestions: preserve entered dates/formulas; otherwise attempt weekly/monthly/quarterly/annual inference from the three latest distinct dates of the same Vendor + Category. Copy the latest record's Description without using it as a matching key. Only multiple categories require a choice; that choice identifies the category and still uses its latest record. Preserve month ends and February clamping; uncertain patterns remain blank. Suggestions are editable, and prefill never inserts an expense.
 6. Verify original records, formulas, styles, macros, table definitions, controls, print settings, totals and existing-error baseline. Test dates, ambiguity, filtering, duplicate prevention, credits, manual date overrides, leap years and Automatic recalculation. Discard all test data.
 7. Recheck Teams freshness, replace the same authorized item, download and match hash, repeat unsaved native tests, retain rollback, remove superseded temporary files and record lessons.
@@ -21,4 +21,10 @@ Required package for later authorized targets:
 - Other active projects: pending later rollout authorization and independently confirmed active list. No workbook changed by creating this plan.
 - Cool Springs: remains separately gated because of buyer-facing amortization history. Carrying scope does not authorize Amortization replacement.
 
-The plan defines required functionality, not blanket permission to replace every active workbook. Stop after Pond for review under the current request.
+## September 30 Batch Authorization
+
+Wes authorized completing Outrigger and continuing through all active projects without a project-by-project design approval pause. The earlier rollout gates above are historical. Use manual grid amounts/dates over conflicting table values and fill blank Vendors from Category. Continue independent mapping and closure/freshness checks, rollback, validation and same-item Teams delivery for each project. Never copy prototype expense records.
+
+Confirmed prior active rollout set: Outrigger, Rose, Pond, Banks, Pinetree, Pleasant Garden, Rosebrooks, Cool Springs, Tensity and Britton. Reconcile this set against current Teams files; retain earlier inactive exclusions (Old Buckhorn, Burgwyn, Pearces, Sandy Run, Larchmont, Willowdell and Mom). Pond is already enhanced; verify rather than reinstall. Tensity needs the current recurring module. Cool Springs Carrying may be updated but its Amortization must remain untouched.
+
+Outrigger closure is confirmed. Other target closure confirmation was requested before replacement. Document any project-specific blocker without stopping safe work on other confirmed targets.

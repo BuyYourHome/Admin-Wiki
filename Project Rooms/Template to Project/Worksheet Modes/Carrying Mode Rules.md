@@ -4,6 +4,10 @@ Use these rules for Carrying worksheet design, repairs, and approved template mi
 
 ## Current Prototype and Scope
 
+- September 30, 2026 batch authorization supersedes earlier single-project stop gates: finish Outrigger, then migrate the approved Carrying package to all confirmed active projects. Retain each project's closure/freshness, independent mapping, rollback and validation gates. Do not alter Cool Springs Amortization.
+- Wes authorized filling blank Vendor fields from their own Category during every migration. Preserve nonblank vendors and formulas; category defaults are not verified supplier identities. This supersedes the earlier project-by-project Vendor approval requirement below.
+- When manually entered grid dates or amounts conflict with the table, the grid wins. Map each override to its corresponding record independently, preserve old values and grid coordinates in the migration evidence, and reconcile the resulting total change. Do not treat formula results or a blank display as authority to erase records, and do not guess an ambiguous record match.
+
 - Prototype under evaluation: Pond, `Property/26_Project Management - 908 Pond St 3.xlsm`, retrieved fresh through the Teams/SharePoint connector.
 - The September 30, 2026 repairs and manual-entry design are completed on Pond. Wes subsequently approved Tensity as the first migration target. Stop after Tensity for review; this is not batch authorization.
 - Follow [[Project Spreadsheet Expense Placement Rules]] for existing category, escrow, and presentation conventions. Locate current tables and outputs by name and label, not historical coordinates.
