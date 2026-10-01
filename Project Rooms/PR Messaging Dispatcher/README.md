@@ -85,6 +85,8 @@ The dispatcher now distinguishes a pre-PowerShell tool-wrapper failure from a he
 - OFFICEASSIST task id: `01a09d84-a309-7591-a790-e770fcb53dee`
 - OFFICEASSIST has no Codex dispatcher heartbeat or recurring dispatcher automation. Its deterministic worker is live, and Email Monitor no longer contains the embedded dispatcher fallback.
 
+Dedicated dispatcher tasks are transport identities, not operational destinations for their own workers. Cross-machine work must be recorded in the central queue and awakened by the destination machine's local worker, never by a remote-host thread API. A worker cannot deliver a maintenance instruction to its own dispatcher task: that task has no operational destination pin, and self-notification is rejected before claim or submission. Do not create a self-addressed record, add a pin, or choose a substitute task automatically. Start dispatcher maintenance locally in the existing dispatcher task, unless Wes separately authorizes and validates a distinct local destination.
+
 ## Target Schedule
 
 - Deterministic Windows worker every 60 seconds, 24/7.
