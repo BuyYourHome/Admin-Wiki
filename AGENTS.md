@@ -40,6 +40,7 @@ Use this repo when formulating solutions for office-admin workflows, SOPs, autom
 - Prefer concise sections with clear routing rules, exception rules, and human responsibilities.
 - Use Obsidian-style links for related local docs, such as `[[Invoice Project List]]`.
 - When the user gives a durable instruction, update the relevant Markdown file and commit it.
+- Do not store source documents, generated document deliverables, spreadsheets, email message files, images, zip packages, or other binary document artifacts in the Admin wiki repository unless Wes explicitly approves a specific exception. Store those files in the appropriate Teams/SharePoint location and keep only Markdown notes, source references, inventories, ledgers, and links in Git.
 - Do not push every commit to GitHub automatically. Push only when Wes says the work is a finished product, explicitly asks for a push, or the task instructions already define the deliverable as final and ready to publish.
 - Do not commit Obsidian local settings, temporary scan previews, logs, or generated scratch files.
 - In final responses, report the total elapsed time for the whole request. Do not report timing for each individual step unless Wes explicitly asks for step timing.
