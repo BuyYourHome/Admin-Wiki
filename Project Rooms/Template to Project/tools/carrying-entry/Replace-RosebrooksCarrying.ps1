@@ -10,7 +10,7 @@ Assert (-not (Test-Path -LiteralPath $Output)) 'Output already exists.'
 [void](New-Item -ItemType Directory -Path (Split-Path -Parent $Output) -Force)
 Copy-Item -LiteralPath $Source -Destination $Output
 $e=New-Object -ComObject Excel.Application
-$e.Visible=$false;$e.DisplayAlerts=$false;$e.EnableEvents=$false;$e.AutomationSecurity=3
+$e.Visible=$false;$e.DisplayAlerts=$false;$e.EnableEvents=$false;$e.AutomationSecurity=1
 try{
     $b=$e.Workbooks.Open($Output,0,$false)
     Assert (-not $b.ReadOnly -and $b.FileFormat -eq 52) 'Expected writable XLSM.'
@@ -42,9 +42,17 @@ try{
     $p=$e.Workbooks.Open($Template,0,$true);$ps=$p.Worksheets.Item('Carrying')
     # Keep the source sheet intact; native renaming maintains its internal references.
     $old.Name='Carrying - Old'
+    $sheetCount=$b.Worksheets.Count
+    $copyObjects=$e.CopyObjectsWithCells;$e.CopyObjectsWithCells=$true
+    $b.Activate();$old.Activate()
     $ps.Copy([Type]::Missing,$old)
+    Assert ($b.Worksheets.Count -eq $sheetCount+1) 'Native worksheet copy did not insert a sheet in target.'
     $s=$b.Worksheets.Item($old.Index+1);$s.Name='Carrying'
-    $t=$s.ListObjects.Item('tblCarryingExpenses')
+    foreach($control in 'ceIncludeCheckbox','ceInsertButton','ceRecurringButton'){[void]$s.Shapes.Item($control)}
+    Assert ($s.ListObjects.Count -eq 1) 'Expected one copied Carrying expense table.'
+    $t=$s.ListObjects.Item(1)
+    Assert ($t.ListColumns.Count -eq 11 -and $t.ListColumns.Item(2).Name -eq 'Category') 'Copied table schema changed.'
+    $t.Name='tblCarryingExpenses'
     while($t.ListRows.Count -gt 0){$t.ListRows.Item($t.ListRows.Count).Delete()}
     foreach($r in $m.records){
         $row=$t.ListRows.Add().Range
@@ -95,20 +103,20 @@ try{
     $list=[string]$review.Cells.Item(1,1).Validation.Formula1
     Assert (-not ($list.Split(',') -contains 'Carrying')) 'Review map changed.'
     $review.Validation.Modify(3,1,1,($list+',Carrying'))
-    $p.Close($false);$p=$null;$e.CutCopyMode=$false
+    $e.CutCopyMode=$false
     # Remove only copied external template names. Existing names remain owned by the target.
     foreach($n in @($b.Names)){
-        if($n.RefersTo -match '\[.*\.xls'){
+        if($n.RefersTo -match '\[.*\.xls|\.xls[mxb]?\x27?!'){
             Assert (-not $oldNames.ContainsKey($n.Name)) "Original external name: $($n.Name)"
             Assert ($n.Name -notmatch '^ce[A-Z]') "Unresolved form name: $($n.Name)"
             $n.Delete()
         }
     }
     foreach($sheet in $b.Worksheets){
-        try{$formulas=$sheet.UsedRange.SpecialCells(-4123)}catch{$formulas=$null}
-        if($formulas){foreach($cell in $formulas){Assert (-not ([string]$cell.Formula2 -match '\[.*\.xls')) "External cell formula: $($sheet.Name)!$($cell.Address())"}}
+        $formulas=$sheet.UsedRange.Formula2
+        foreach($f in $formulas){Assert (-not ([string]$f -match '^=.*\[.*\.xls')) "External cell formula on $($sheet.Name)"}
     }
-    foreach($link in @($b.LinkSources(1))){if($link){Assert ([string]$link -like '*rosebrooks-carrying-1252-source-26*') 'Unexpected external source';$b.BreakLink($link,1)}}
+    foreach($link in @($b.LinkSources(1))){if($link){Assert ([IO.Path]::GetFileName([string]$link) -eq [IO.Path]::GetFileName($Template)) 'Unexpected external source';$b.BreakLink($link,1)}}
     Assert ($null -eq $b.LinkSources(1)) 'External workbook link remains.'
     $e.Calculation=-4105;$e.CalculateFullRebuild()
     Assert ($t.ListRows.Count -eq 24) 'Record count mismatch.'
@@ -123,7 +131,8 @@ try{
     $b.Save()
     [ordered]@{output=$Output;records=$t.ListRows.Count;table=$t.Range.Address();profitTotal=$profit.Range('B43').Value2;oldTab=$old.Name;docs=$b.Worksheets.Item('Docs').Range('E39').Formula2;originalModulesPreserved=$code.Count;calculation=$e.Calculation}|ConvertTo-Json
 }catch{Write-Output $_.ScriptStackTrace;throw}finally{
-    if($p){$p.Close($false)};if($b){$b.Close($false)};$e.Quit()
+    if($null -ne $copyObjects){$e.CopyObjectsWithCells=$copyObjects}
+    if($b){$b.Close($false)};if($p){$p.Close($false)};$e.Quit()
     [void][Runtime.InteropServices.Marshal]::FinalReleaseComObject($e)
     [GC]::Collect();[GC]::WaitForPendingFinalizers()
 }

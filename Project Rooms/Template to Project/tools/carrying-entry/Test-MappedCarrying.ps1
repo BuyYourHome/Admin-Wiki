@@ -38,7 +38,10 @@ try {
         }
     }
     Assert (($modes | Sort-Object) -join ',' -eq '1,2,3') 'Mode controls missing.'
-    Assert ($b.Worksheets.Item('Docs').Range('E39').Value2 -eq $m.rent) 'Docs rent not connected.'
+    $docs=$b.Worksheets.Item('Docs').Range('E39')
+    if($m.keepDocs){
+        Assert ($docs.Value2 -eq $m.docsValue -and $docs.Formula2 -match "'Carrying - Old'!E5$") 'Deferred Docs source changed.'
+    }else{Assert ($docs.Value2 -eq $m.rent) 'Docs rent not connected.'}
     $vendor=$b.Names.Item('ceVendor').RefersToRange;$date=$b.Names.Item('ceDate').RefersToRange
     Assert ($vendor.Validation.Formula1 -eq '=ceVendorList' -and $vendor.Validation.InCellDropdown) 'Vendor dropdown missing.'
     $insert=$s.Shapes.Item('ceInsertButton');$recurring=$s.Shapes.Item('ceRecurringButton')

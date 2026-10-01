@@ -116,11 +116,29 @@ for index,record in enumerate(mapping['records'],3):
     values=[b.cells['Carrying'].get(get_column_letter(c)+str(index),(None,None))[1] for c in range(38,49)]
     expected=['Yes',record['category'],format(record['date'],'.15g'),record['vendor'],'Legacy '+record['category']+' entry',None if record['amount'] is None else format(record['amount'],'.15g'),'Legacy Grid Snapshot',None,mapping['sourceName'],'Missing Data' if record['amount'] is None else 'Migrated Snapshot']
     for i,v in enumerate(expected):
+        if i in (2,5) and v is not None and values[i] is not None:
+            if abs(float(v)-float(values[i]))>0.0000001:issues.append(['record numeric value',index,i,v,values[i]])
+            continue
         if values[i] not in (v,'' if v is None else v):issues.append(['record',index,i,v,values[i]])
     if 'Carrying - Old!'+record['dateCell']+':'+record['amountCell'] not in values[10]:issues.append(['provenance',index])
     if any(b.cells['Carrying'].get(get_column_letter(c)+str(index),(None,))[0] for c in range(38,49)):issues.append(['record formula',index])
 for addr in ('A2','C2','G2','L2','R2','U2','A4','D4','I4','O4','U4','Z3'):
     if p.style(p.cells['Carrying'][addr][3])!=b.style(b.cells['Carrying'][addr][3]):issues.append(['form style',addr])
+for attr in ('page_setup','page_margins','print_options','freeze_panes','print_area'):
+    if getattr(p.w['Carrying'],attr)!=getattr(b.w['Carrying'],attr):issues.append(['prototype layout',attr])
+if set(map(str,p.w['Carrying'].merged_cells.ranges))!=set(map(str,b.w['Carrying'].merged_cells.ranges)):
+    issues.append(['prototype merges'])
+for col,d in p.w['Carrying'].column_dimensions.items():
+    other=b.w['Carrying'].column_dimensions.get(col)
+    if other is None or (d.width,d.hidden,d.outlineLevel)!=(other.width,other.hidden,other.outlineLevel):issues.append(['prototype column',col])
+for row in range(1,30):
+    if p.w['Carrying'].row_dimensions[row].height!=b.w['Carrying'].row_dimensions[row].height:issues.append(['prototype row height',row])
+for addr,v in p.cells['Carrying'].items():
+    row,col=coordinate_to_tuple(addr)
+    if row<=29 and col<=36 and p.style(v[3])!=b.style(b.cells['Carrying'].get(addr,(None,None,None,0))[3]):issues.append(['prototype grid style',addr])
+for addr,v in b.cells['Carrying'].items():
+    row,col=coordinate_to_tuple(addr)
+    if row>26 and 38<=col<=48 and (v[0] is not None or v[1] is not None):issues.append(['template record residue',addr])
 for addr in ('A2','C2','G2','L2','R2','A4','I4','O4','Z3'):
     if b.cells['Carrying'].get(addr,(None,None))[1] is not None:issues.append(['template input residue',addr])
 for col in (1,2,4,5,7,8,10,11,13,14,16,17,19,20,22,23,25,26,28,29,31,32,34,35):
@@ -130,9 +148,10 @@ for col in (1,2,4,5,7,8,10,11,13,14,16,17,19,20,22,23,25,26,28,29,31,32,34,35):
         if canonical(expected)!=canonical(b.cells['Carrying'][addr][0]):issues.append(['grid formula',addr])
 for row in range(8,29):
     if b.cells['Carrying'].get('AA'+str(row),(None,None))[:2]!=(None,None):issues.append(['template escrow residue',row])
-for n in b.w.defined_names.values():
-    if re.search(r'\[.*\.xls',n.attr_text,re.I):issues.append(['external name',n.name])
-assert not any(n.startswith('xl/externalLinks/') for n in b.z.namelist())
+for scope in [b.w,*b.w.worksheets]:
+    for n in scope.defined_names.values():
+        if re.search(r'\[.*\.xls|\.xls[mxb]?\x27?!',n.attr_text,re.I):issues.append(['external name',n.name])
+if any(n.startswith('xl/externalLinks/') for n in b.z.namelist()):issues.append(['external link package residue'])
 def controls(book):return collections.Counter(ET.tostring(ET.fromstring(book.z.read(n))) for n in book.z.namelist() if n.startswith('xl/ctrlProps/') and n.endswith('.xml'))
 if controls(a)-controls(b):issues.append(['original controls missing'])
 print(json.dumps({'issueCount':len(issues),'issues':issues[:20],'oldErrors':len(old_errors),'remainingErrors':len(new_errors),'removedErrors':sorted(old_errors-new_errors),'records':24,'oldSheetPreserved':not any(x[0]=='old grid result changed' for x in issues),'profitTotal':b.cells['Profit']['B43'][1]},indent=2))
