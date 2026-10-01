@@ -12,6 +12,8 @@ Workbook-side design owned by Template to Project. Operational invoice posting r
 
 These are migration building blocks, not an authorized batch runner. Re-map each project independently before adapting installation and validation. Do not copy Pond's records to another project.
 
+`Migrate-Outrigger.ps1`, `Test-Outrigger.ps1`, `Test-OutriggerRecurring.ps1` and `audit_outrigger.py` implement the separately mapped September 30 Outrigger migration. They include its approved two Water overrides, 132 Vendor defaults, latest Pond interface and recurring-date module, actual option-control names, full-cell audit and unsaved native tests. They are specific to that source version, not a generic installer for the other authorized batch targets. See [[outrigger-carrying-migration-20260930]].
+
 Required follow-on for authorized Carrying migrations: `Remove-CarryingZeroRows.ps1` removes literal numeric-zero records after independent mapping. Supply verified source row count, numeric-zero count and Profit subtotal address. Preserve blank/space amounts, credits and formula-driven values; retain headings and reconcile all survivors/totals. This requirement was approved after Tensity's initial migration, so the historical `Migrate-Tensity.ps1` build alone is no longer the complete migration pipeline. See Carrying Mode Rules.
 
 ## Interface
