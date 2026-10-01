@@ -1,5 +1,5 @@
-window.PROJECT_ROOMS_UPDATED = '2026-09-15 23:56';
-window.PROJECT_ROOMS_HASH = 'CD5B74485C5DD761232C39DDFBBE0BFD49753A2072D9C451B0635550575E89BD';
+window.PROJECT_ROOMS_UPDATED = '2026-09-30 12:20';
+window.PROJECT_ROOMS_HASH = '629966CD1F9B4C372BC97077B909FED6965ED0B0A34B13BE860799B347583542';
 window.PROJECT_ROOM_GROUPS = [
     {
         "name":  "Intake \u0026 Coordination",
@@ -448,6 +448,7 @@ window.PROJECT_ROOMS = [
         "group":  "Intake \u0026 Coordination",
         "groupBasis":  "Receives requests, routes work, creates Project Rooms, or provides an operating overview across workflows.",
         "modes":  [
+                      "Project Room Handoff Construction",
                       "Email Summary",
                       "Health Check",
                       "Task Health",
@@ -719,6 +720,25 @@ window.PROJECT_ROOMS = [
                          ]
     },
     {
+        "name":  "LED lighting",
+        "purpose":  "Canonical Project Room; open its README for current responsibilities.",
+        "status":  "Status not recorded",
+        "skill":  "led-lighting",
+        "skillPath":  "C:\\Codex\\Wiki Files\\skills\\led-lighting\\SKILL.md",
+        "skillState":  "available",
+        "taskId":  "",
+        "attention":  null,
+        "group":  "Other",
+        "groupBasis":  "Used when a Project Room does not yet have a supported assignment to one of the defined functional groups.",
+        "modes":  [
+
+                  ],
+        "readmeUrl":  "../../LED%20lighting/README.md",
+        "quickActions":  [
+
+                         ]
+    },
+    {
         "name":  "Lowes Order",
         "purpose":  "This Project Room holds the repeatable workflow for Buy Your Home Lowe\u0027s order work. Use this room when Wes asks Codex to plan, organize, review, or document Lowe\u0027s ordering tasks, including source notes, order requirements, follow-up decisions, cart-filling from email instructions, and review-ready outputs.",
         "status":  "draft.",
@@ -879,7 +899,7 @@ window.PROJECT_ROOMS = [
     {
         "name":  "PR Messaging Dispatcher",
         "purpose":  "Provide one machine-local dispatcher heartbeat on each computer that hosts dispatchable Buy Your Home Project Room tasks. The dispatcher bridges the cross-machine durable queue to Codex task notifications that are local to its own computer.",
-        "status":  "Release 0.4.1 live on WESSTUDIO, WES-VIDEOEDITOR, and OFFICEASSIST; console-free release 0.4.2 ready for controlled in-place upgrade",
+        "status":  "Release 0.4.6 developed for controlled in-place upgrade after an OFFICEASSIST Codex update removed the worker\u0027s pinned CLI executable",
         "skill":  "pr-messaging-dispatcher",
         "skillPath":  "C:\\Codex\\Wiki Files\\skills\\pr-messaging-dispatcher\\SKILL.md",
         "skillState":  "available",
