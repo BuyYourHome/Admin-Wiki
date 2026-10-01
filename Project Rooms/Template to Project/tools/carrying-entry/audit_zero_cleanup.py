@@ -40,6 +40,7 @@ for r in range(top+1,bottom+1):
     if c.data_type!='f' and isinstance(v,(int,float)) and not isinstance(v,bool) and v==0:removed.append(r)
     else:dest+=1;mapping[r]=dest
 assert list(a.sheetnames)==list(b.sheetnames)
+inverse={new:old for old,new in mapping.items()}
 for name,cells in ac.items():
     new=bc[name]
     for addr,value in cells.items():
@@ -51,13 +52,19 @@ for name,cells in ac.items():
         actual=new.get(target,(None,None,None,0))
         expected_value=value[0] if value[0] is not None else value[1]
         actual_value=actual[0] if actual[0] is not None else actual[1]
-        if expected_value!=actual_value:issues.append([name,addr,target,'content'])
+        # AX is the defined dynamic Vendor list; its cached spill changes as
+        # zero-only vendors disappear. Verify the entire resulting list below.
+        vendor_spill=name=='Carrying' and c==50 and r>=2 and value[0] is None and actual[0] is None
+        if expected_value!=actual_value and not vendor_spill:issues.append([name,addr,target,'content'])
         if style(a,value[3])!=style(b,actual[3]):issues.append([name,addr,target,'style'])
     for addr,value in new.items():
         r,c=coordinate_to_tuple(addr)
         if name=='Carrying' and left<=c<=right and dest<r<=bottom:
             if value[0] is not None or value[1] is not None:issues.append(['table tail not cleared',addr])
-        elif addr not in cells and (value[0] is not None or value[1] is not None):issues.append(['unexpected cell',name,addr])
+        elif addr not in cells and (value[0] is not None or value[1] is not None):
+            source_addr=get_column_letter(c)+str(inverse[r]) if name=='Carrying' and left<=c<=right and r in inverse else None
+            source=cells.get(source_addr,(None,None,None,0))
+            if (source[0] if source[0] is not None else source[1])!=(value[0] if value[0] is not None else value[1]):issues.append(['unexpected cell',name,addr])
     for attr in ('merged_cells','page_setup','page_margins','print_options','data_validations'):
         if getattr(a[name],attr)!=getattr(b[name],attr):issues.append(['layout',name,attr])
     for tn,t in a[name].tables.items():
@@ -66,10 +73,16 @@ for name,cells in ac.items():
         if b[name].tables[tn].ref!=expected:issues.append(['table',tn])
 for name,n in a.defined_names.items():
     if name not in b.defined_names or n.attr_text!=b.defined_names[name].attr_text:issues.append(['name',name])
-for addr in ['B29','E29','H29','K29','N29','Q29','T29','W29','Z29','AC29','AF29','AI29']:
+footer=8+int(a.defined_names['ceDisplayCapacity'].attr_text.lstrip('='))
+for addr in [c+str(footer) for c in ('B','E','H','K','N','Q','T','W','Z','AC','AF','AI')]:
     if ac['Carrying'][addr][1]!=bc['Carrying'][addr][1]:issues.append(['total',addr])
 if ac['Profit']['B43'][1]!=bc['Profit']['B43'][1]:issues.append(['Profit total'])
 old_errors={(s,k,v[1]) for s,rows in ac.items() for k,v in rows.items() if v[2]=='e'}
+if 'ceVendorList' in b.defined_names:
+    assert b.defined_names['ceVendorList'].attr_text in ('Carrying!$AX$2#','_xlfn.ANCHORARRAY(Carrying!$AX$2)')
+    vendors=sorted({str(b['Carrying'].cell(r,left+3).value).strip() for r in range(top+1,dest+1) if b['Carrying'].cell(r,left+3).value is not None and str(b['Carrying'].cell(r,left+3).value).strip()},key=str.casefold)
+    actual=[bc['Carrying'].get('AX'+str(r),(None,None))[1] for r in range(2,2+len(vendors))]
+    if actual!=vendors:issues.append(['vendor spill',vendors,actual])
 new_errors={(s,k,v[1]) for s,rows in bc.items() for k,v in rows.items() if v[2]=='e'}
 if new_errors-old_errors:issues.append(['new errors',sorted(new_errors-old_errors)])
 vba_changed=az.read('xl/vbaProject.bin')!=bz.read('xl/vbaProject.bin')

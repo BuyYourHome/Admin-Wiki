@@ -28,3 +28,9 @@ Wes authorized completing Outrigger and continuing through all active projects w
 Confirmed prior active rollout set: Outrigger, Rose, Pond, Banks, Pinetree, Pleasant Garden, Rosebrooks, Cool Springs, Tensity and Britton. Reconcile this set against current Teams files; retain earlier inactive exclusions (Old Buckhorn, Burgwyn, Pearces, Sandy Run, Larchmont, Willowdell and Mom). Pond is already enhanced; verify rather than reinstall. Tensity needs the current recurring module. Cool Springs Carrying may be updated but its Amortization must remain untouched.
 
 Outrigger closure is confirmed. Other target closure confirmation was requested before replacement. Document any project-specific blocker without stopping safe work on other confirmed targets.
+
+## October 1 Progress
+
+Wes confirmed remaining workbooks closed. Rose, Cool Springs, Britton and Pleasant Garden delivered and verified. Pond verified already current without replacement. Tensity recurrence-only update rebuilt from its latest owner save after freshness gates detected changes, delivered and verified at 12:41:39Z; Wes may reopen it. See [[carrying-batch-20261001]] for exact sources, maps, rollback filenames, deltas and tests.
+
+Wes explicitly deferred Banks and Rosebrooks for separate legacy-schedule review before migration. Pinetree has no Carrying tab or bill history and awaits the requested decision about retaining its existing $890.28 monthly mortgage estimate alongside an empty interface. Do not invent payment records. Outrigger remains completed from September 30. No push requested.

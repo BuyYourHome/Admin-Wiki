@@ -101,6 +101,10 @@ Remaining prototype discussions: property-tax escrow offsets, source schedule as
 
 ## Tensity Migration Lessons
 
+- A source grid may begin on row 3 rather than row 4. Match manual overrides against actual detail-row start, neighboring dates, and full record history, not a fixed ordinal. Pleasant Garden's July HOA bill was a new record, not a replacement for January. A live Teams version change requires refetch, reconciliation and renewed closure confirmation when editing activity is evident; preserve pending form values as well as table records.
+
+- Rose batch validation: retain each target's actual display capacity and source-table position, even when they differ from Pond. Audit shared formulas and normalize serialization whitespace without changing quoted strings or range-intersection semantics. After zero cleanup, validate the Vendor helper against surviving records rather than stale spill caches. Compare all native VBA component sources when a save changes the binary. See [[carrying-batch-20261001]].
+
 - Outrigger confirmed that approved grid overrides can replace a nonzero table amount as well as fill a blank. Record both old/new values and reconcile the authorized total delta, not merely an unchanged-total assertion. Recover actual grid bills before deleting numeric-zero placeholders. Validate Vendor defaults even when source XML omits blank cells. Inspect each project's real control names/links and saved geometry before reusing tests. See [[outrigger-carrying-migration-20260930]].
 
 - Independently map the source-table position before adding Labor. Tensity's AI:AS source block overlapped the proposed AH:AJ Labor display. Its title and all 134 records were moved through an empty, non-overlapping range to AL:AV before moving the presentation grid. An approved structural relocation is an exception to the usual keep-table-in-place preference; compare every record and preserve references, styles and table identity.

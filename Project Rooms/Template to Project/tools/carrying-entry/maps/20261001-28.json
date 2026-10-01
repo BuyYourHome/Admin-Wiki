@@ -1,0 +1,38 @@
+{
+  "key": "28",
+  "project": "Rose",
+  "end": 154,
+  "rows": 152,
+  "blankVendors": 152,
+  "review": "B5:B214",
+  "profitTotal": 13407.59,
+  "zeros": 115,
+  "mode": 3,
+  "rent": 1736,
+  "overrides": [
+    {
+      "cell": "AK16",
+      "grid": "A17",
+      "before": 46190.42,
+      "after": 46190
+    },
+    {
+      "cell": "AN16",
+      "grid": "B17",
+      "before": 0,
+      "after": 66.61
+    }
+  ],
+  "notes": [
+    {
+      "cell": "AS16",
+      "append": "; Grid override Carrying!A17:B17, 2026-10-01: date 46190.42 -> 46190; amount 0 -> 66.61"
+    }
+  ],
+  "totals": [
+    {
+      "index": 0,
+      "value": 1029.72
+    }
+  ]
+}

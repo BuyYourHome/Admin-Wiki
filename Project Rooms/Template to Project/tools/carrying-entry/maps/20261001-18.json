@@ -1,0 +1,13 @@
+{
+  "key": "18", "project": "Pleasant Garden", "end": 132, "rows": 130,
+  "tableLeft": "AL", "footer": 47, "blankVendors": 130,
+  "review": "B5:B218", "profitTotal": 73656.53, "zeros": 2,
+  "mode": 2, "rent": 2225, "keepReturnFormula": true,
+  "connectEmptyCategories": true, "overrides": [], "notes": [],
+  "totals": [{"index": 7, "value": 1627.40}],
+  "additions": [{
+    "gridDate": "V11", "gridAmount": "W11", "date": 46204,
+    "category": "HOA", "amount": 253.65,
+    "notes": "Recovered actual bill from Carrying!V11:W11 on 2026-10-01. Existing January 15, 2026 bill retained; July 1 bill was not represented in the source table. Vendor defaults from Category."
+  }]
+}

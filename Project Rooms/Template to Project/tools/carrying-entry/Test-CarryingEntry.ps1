@@ -1,4 +1,4 @@
-param([Parameter(Mandatory)][string]$Workbook,[string]$PreviewPdf)
+param([Parameter(Mandatory)][string]$Workbook,[string]$PreviewPdf,[int]$Footer=29)
 $ErrorActionPreference='Stop'
 function Assert($ok,[string]$message){if(-not $ok){throw $message}}
 $excel=New-Object -ComObject Excel.Application
@@ -19,7 +19,7 @@ try {
     Assert ($book.Names.Item('ceInclude').RefersToRange.Value2 -eq $false) 'Unchecked control not linked.'
     $sheet.Shapes.Item('ceIncludeCheckbox').ControlFormat.Value=1
     Assert ($book.Names.Item('ceInclude').RefersToRange.Value2 -eq $true) 'Checked control not linked.'
-    $base=[double]$sheet.Range('AI29').Value2
+    $base=[double]$sheet.Range(('AI'+$Footer)).Value2
     $profitBase=[double]$profit.Range('B43').Value2
     function Set-Field([string]$name,$value){
         $cell=$book.Names.Item('ce'+$name).RefersToRange
@@ -40,19 +40,21 @@ try {
     }
     function Submit { [string]$excel.Run("'"+$book.Name.Replace("'","''")+"'!CarryingEntry_Submit") }
     $results=[Collections.Generic.List[string]]::new()
+    # Test blank-input rejection without consuming any owner-entered pending form.
+    $book.Names.Item('ceDate').RefersToRange.MergeArea.ClearContents()
     $r=Submit
     Assert ($r.StartsWith('Not inserted: enter a valid Date.') -and $table.ListRows.Count -eq $count) "Blank validation failed: $r"
     $results.Add('Blank input rejected')
     Fill-Record 12.34 '00001'
     $r=Submit
     Assert ($r.StartsWith('Inserted Labor:') -and $table.ListRows.Count -eq $count+1) "Valid insert failed: $r"
-    Assert ([math]::Abs([double]$sheet.Range('AI29').Value2-$base-12.34) -lt .001) 'Labor did not update automatically.'
+    Assert ([math]::Abs([double]$sheet.Range(('AI'+$Footer)).Value2-$base-12.34) -lt .001) 'Labor did not update automatically.'
     Assert ([math]::Abs([double]$profit.Range('B43').Value2-$profitBase-12.34) -lt .001) 'Profit did not update automatically.'
     $last=$table.ListRows.Item($count+1).Range
     Assert ($last.Cells.Item(1,$table.ListColumns.Item('Invoice #').Index).Value2 -ceq '00001') 'Invoice leading zeros lost.'
     Assert (-not $last.Cells.Item(1,$table.ListColumns.Item('Vendor').Index).HasFormula) 'Text was interpreted as formula.'
     $foundDate=$false
-    foreach($r in 8..28){if($sheet.Range("AH$r").Text -eq '9/30/2026' -and [math]::Abs([double]$sheet.Range("AI$r").Value2-12.34) -lt .001){$foundDate=$true}}
+    foreach($r in 8..($Footer-1)){if($sheet.Range("AH$r").Text -eq '9/30/2026' -and [math]::Abs([double]$sheet.Range("AI$r").Value2-12.34) -lt .001){$foundDate=$true}}
     Assert $foundDate 'Inserted date/amount pair not displayed.'
     $results.Add('Valid row, leading zeros, literal text, dates, Labor and Profit automatic recalculation passed')
     $r=Submit
@@ -92,7 +94,7 @@ try {
         Set-Field Include $true
         Set-Field Source 'Manual Entry'
         Set-Field Status 'Entered'
-        $sheet.PageSetup.PrintArea='$A$1:$AJ$29'
+        $sheet.PageSetup.PrintArea='$A$1:$AJ$'+$Footer
         $sheet.PageSetup.Orientation=2
         $sheet.PageSetup.Zoom=$false
         $sheet.PageSetup.FitToPagesWide=1
