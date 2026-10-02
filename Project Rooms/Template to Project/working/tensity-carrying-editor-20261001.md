@@ -4,7 +4,7 @@
 
 Wes requested an implemented quick row editor in Tensity, not a design discussion. Scope is Tensity Carrying only; no rollout to other projects was requested.
 
-Status: implemented and validated in a local copy; live Teams workbook has not been replaced. Saved/closed confirmation was requested and remains unanswered. Once confirmed, refetch current Teams bytes and reconcile any changes before replacing the same item, then verify the exact downloaded hash and rerun unsaved native tests. Do not ask for another design approval or repeat go.
+Status: complete. Wes confirmed Tensity saved/closed. A fresh connector download matched the original source hash exactly. The tested workbook replaced the same live Teams item at 2026-10-02T01:37:36Z (October 1, 9:37:36 PM Eastern), version 1227. The downloaded delivery hash exactly matches the validated result below. Downloaded native editor checks passed, including grid selection, save/cancel, pending-form restoration, duplicate protection, sorting, literal text, original-formula preservation, concurrent-change rejection and protected-sheet handling. All 56 records and the $28,224.97 total remain unchanged; test edits were discarded. Wes may reopen Tensity. No other-project rollout was authorized.
 
 ## Source And Rollback
 
@@ -12,8 +12,8 @@ Status: implemented and validated in a local copy; live Teams workbook has not b
 - Source version 1226, saved 2026-10-01T17:59:35Z; fresh Teams connector download. SHA256 `EE5A2BA71E6F828B72387C9920B6EA378646F52D9F0B34CE9FF03C20FBFC324A`.
 - Source table: `tblCarryingExpenses`, AL2:AV58, 56 records and eleven columns. Included Carrying total/Profit B43 $28,224.97, including Labor $6,207.47. Do not use the earlier 45-record migration snapshot.
 - Teams rollback: `Property/Project Template/Rollback Copies/24_Project Management - 4121 Tensity Dr 2.before-carrying-editor-20261001-2115.xlsm`, item `01ZGFUBDMY4FBFUAIFDBHJGF5V4X26JPAB`.
-- Validated pending file: `%TEMP%\tensity-carrying-editor-final\24_Project Management - 4121 Tensity Dr 2.xlsm`; SHA256 `92137820384AD130E68BDF699AE7BFB220A63539103F0FE22468AE1D6C8448F6`.
-- Fresh source remains `%TEMP%\tensity-carrying-edit-source-20261001.xlsm` for final delivery reconciliation; current result is not superseded while awaiting closure.
+- Delivered SHA256: `92137820384AD130E68BDF699AE7BFB220A63539103F0FE22468AE1D6C8448F6`, verified against a fresh post-upload connector download.
+- Temporary source, freshness-check, candidate and roundtrip copies are removed after final validation; the Teams rollback remains available.
 
 ## Implemented Behavior
 
@@ -33,7 +33,7 @@ Status: implemented and validated in a local copy; live Teams workbook has not b
 - Unsaved native editor tests passed: grid load, single-field save, automatic Profit delta, pending-form restoration, insert/recurring guards, cancellation, no-op save, invalid category/date/amount rejection, blank/fractional-date preservation, filtered duplicate rejection, leading-zero identifiers, literal text, credits, Include edits, source formula preservation, concurrent-source-change rejection, sorting and protected-sheet handling.
 - Separate disposable saved/reopened-session test passed: stale Save rejected, Insert blocked, Cancel cleared stale inputs, all 56 original records unchanged. Disposable test workbook removed.
 - Existing manual-insertion tests also passed with the editor installed: checkbox, required fields, insertion, duplicates, credits, excluded records and automatic recalculation. All behavioral tests discarded test edits.
-- Before/after PDF renders inspected. Buttons fit above the grid and do not cover feedback or existing controls. Preview: `%TEMP%\tensity-carrying-editor-after.pdf`.
+- Before/after PDF renders inspected. Buttons fit above the grid and do not cover feedback or existing controls. Approved preview archived in Teams: `Property/Project Template/Validation Evidence/Tensity Carrying Editor 2026-10-01.pdf`, item `01ZGFUBDNL56AYHDCW75DJWOBPL2YDVNMG`.
 
 ## Lessons And Limits
 
@@ -41,4 +41,4 @@ Status: implemented and validated in a local copy; live Teams workbook has not b
 - A protected-sheet rejection must not itself fail while writing feedback into the protected sheet. Feedback is best-effort; preserve the returned error and do not attempt a data write.
 - Test closing/reopening an edit, filtered records, sort-induced row movement, unchanged source formulas and pending form entries. A remembered row index alone is not a safe edit identity.
 - During a stalled protected-sheet test, only the identified isolated automation Excel process was stopped. The unrelated Teams Credit Cards Excel session was left untouched.
-- No new instruction to roll this editor out to other projects, edit Invoice Entry rules, or push to GitHub was given. Delivery remains gated on Tensity closure and final freshness.
+- No instruction to roll this editor out to other projects, edit Invoice Entry rules, or push to GitHub was given. Closure and final source freshness were verified before delivery.

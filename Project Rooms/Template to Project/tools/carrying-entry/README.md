@@ -62,7 +62,7 @@ Run the project-specific prefill tests, existing insertion tests, and `audit_ven
 
 ## Row Editor
 
-Tensity-only pilot: `BYHCarryingEdit.bas`, `Install-CarryingEdit.ps1`, `Test-CarryingEdit.ps1`, `Test-CarryingEditReopen.ps1` and `audit_carrying_editor.py`. See [[tensity-carrying-editor-20261001]] for the exact source hash, record map and pending delivery gate. The installer is deliberately gated to this Tensity version, not a generic batch tool.
+Tensity-only pilot: `BYHCarryingEdit.bas`, `Install-CarryingEdit.ps1`, `Test-CarryingEdit.ps1`, `Test-CarryingEditReopen.ps1` and `audit_carrying_editor.py`. See [[tensity-carrying-editor-20261001]] for the exact source hash, record map and verified delivery. The installer is deliberately gated to this Tensity version, not a generic batch tool.
 
 The editor reuses all eleven named input fields. Three adjacent native controls load a selected grid/table record, save changed fields only, or cancel and restore the prior form. New names: `ceEditActive`, `ceEditVersion`, `ceEditGrid`, `ceEditHeaders`. Existing button actions are redirected through edit-state guards; original insertion and prefill modules stay unchanged. Full-row/formula snapshot matching prevents stale row-index writes after sorting. A persistent marker rejects a reopened edit without its in-memory snapshot.
 
