@@ -60,6 +60,14 @@ Select a vendor, click Recurring Bill, then review Date and Amount before Insert
 
 Run the project-specific prefill tests, existing insertion tests, and `audit_vendor_prefill.py source result approvedBlankVendorCount` against the fresh source and result. `Test-CarryingPrefill.ps1` contains initial Tensity baseline assertions; `Test-CarryingRecurringDates.ps1` tests date edge cases and Pond examples. Independently remap expectations for later projects. Tests are unsaved. The audit resolves differential-format IDs and permits Excel's hidden LET compatibility name; it does not write workbooks. See [[tensity-vendor-prefill-20260930]] and [[pond-recurring-date-20260930]].
 
+## Row Editor
+
+Tensity-only pilot: `BYHCarryingEdit.bas`, `Install-CarryingEdit.ps1`, `Test-CarryingEdit.ps1`, `Test-CarryingEditReopen.ps1` and `audit_carrying_editor.py`. See [[tensity-carrying-editor-20261001]] for the exact source hash, record map and pending delivery gate. The installer is deliberately gated to this Tensity version, not a generic batch tool.
+
+The editor reuses all eleven named input fields. Three adjacent native controls load a selected grid/table record, save changed fields only, or cancel and restore the prior form. New names: `ceEditActive`, `ceEditVersion`, `ceEditGrid`, `ceEditHeaders`. Existing button actions are redirected through edit-state guards; original insertion and prefill modules stay unchanged. Full-row/formula snapshot matching prevents stale row-index writes after sorting. A persistent marker rejects a reopened edit without its in-memory snapshot.
+
+Use native source-level VBA comparison, full workbook content/style preservation audit, unsaved behavioral tests and a disposable saved/reopened-session test. Blank fields and formulas that the user did not change must remain exact. Native buttons require desktop Excel's normal trusted-macro path; no global security setting or visible desktop app should be changed automatically.
+
 ## Security And Limits
 
 Do not enable all macros globally or create a broad trusted folder. VBA project-object access is needed to install code, not for ordinary use of the button; Wes can turn it off again. Normal workbook macro trust still applies. If organizational policy blocks the macro, obtain an approved signing/deployment path rather than weakening that policy.

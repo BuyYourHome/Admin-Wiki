@@ -72,6 +72,13 @@ When a date conversion is inside the matched array shared by date and amount dis
 - Append by table headers, validate required input and possible duplicates across all rows, verify the new row before clearing the form, preserve rejected input, and never leave synthetic test records in the delivered workbook. Flag category-display overflow even though totals include the entire source table. No operational Invoice Entry approval, routing, payment, or cross-destination reconciliation is implied by this manual interface.
 - Do not automate macro-security or VBA-trust settings. Installation may require owner-enabled VBA project-object access; normal use does not. Remind Wes to turn that installation permission off after verification. Use only the reviewed isolated workbook for macro tests, keep existing event handlers disabled, and leave other Excel sessions untouched.
 
+## Row Editor Pilot
+
+- October 1, 2026: Wes requested implementation in Tensity only. `BYHCarryingEdit.bas` reuses the current manual-entry form with Edit Record, Save Changes and Cancel Edit controls. Do not roll this design out elsewhere without approval. See [[tensity-carrying-editor-20261001]] for implementation and delivery status.
+- Resolve a selected grid bill back to its table record using category, Include state, chronological ordering and the displayed date/amount pair. Support direct source-table selection; reject ambiguous, changed, deleted or indistinguishable duplicate records. Never save to a remembered row ordinal after a sort.
+- Update changed fields only. Preserve unchanged formulas, date fractions, blank/space values, source references, Status and Notes; preserve existing pending form input across load/save/cancel. Validate changes and inspect all rows for duplicates regardless of filtering. Editing does not append, delete, approve, post, pay or save a workbook.
+- Guard Insert and Recurring buttons during an edit. Persist an active-edit marker so a saved/reopened form cannot be inserted or saved without reloading a validated source record. Cancel must explicitly discard stale edits. Test read-only/protected states without failing again when writing feedback, and test actual form restoration; a bare no-argument VBA call followed by a colon may be parsed as a label.
+
 ## Vendor Prefill Pilot
 
 - Tensity was the initial September 30, 2026 pilot for the Vendor dropdown and Recurring Bill button. Wes subsequently approved Pond first for the next-logical-date enhancement and inclusion in future Carrying migration. See [[carrying-migration-plan]]; other-project rollout still requires authorization.
