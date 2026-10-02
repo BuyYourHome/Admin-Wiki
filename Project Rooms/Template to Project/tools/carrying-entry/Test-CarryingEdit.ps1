@@ -14,19 +14,32 @@ try{
     function Cancel{[string](Run 'CarryingEdit_Cancel')}
     function Load($index){[string](Run 'CarryingEdit_Load' $index)}
     function Save{[string](Run 'CarryingEdit_Save')}
+    function Check-Context($label){
+        $context=@($b.Names | Where-Object {$_.Name -eq 'ceButtonContext'})
+        if($context.Count){Assert ($context[0].RefersToRange.Cells.Item(1,1).Value2.StartsWith($label+':')) "Wrong context for $label"}
+    }
     $passed=[Collections.Generic.List[string]]::new()
     Assert ($e.Calculation -eq -4105) 'Not Automatic on reopen.'
+    if([bool]$e.Evaluate($b.Names.Item('ceEditActive').RefersTo)){
+        Assert ((Save).StartsWith('Not saved: select Cancel Edit')) 'Stale edit unexpectedly saved.'
+        [void](Cancel)
+        $passed.Add('Saved active edit safely rejected and reset only in unsaved test session')
+    }
     Assert ($s.Shapes.Item('ceSaveButton').ControlFormat.Enabled -eq $false) 'Save initially enabled.'
     Set-Cell (Field 'Vendor') 'PENDING draft'
     Set-Cell (Field 'Amount') 777
-    $s.Activate();$s.Range('A8').Select()
+    $s.Activate();$b.Names.Item('ceEditGrid').RefersToRange.Cells.Item(1,1).Select()
     $result=[string](Run 'CarryingEdit_Load')
+    Check-Context 'Edit Record'
     Assert ($result.StartsWith('Editing ') -and (Field 'Amount').Value2 -eq 60.23) "Grid load failed: $result"
     Assert ($s.Shapes.Item('ceSaveButton').ControlFormat.Enabled) 'Save not enabled.'
     [void](Run 'CarryingEdit_InsertGuard');Assert ($t.ListRows.Count -eq $count) 'Insert guard failed.'
+    Check-Context 'Insert Record'
     [void](Run 'CarryingEdit_RecurringGuard');Assert ((Field 'Amount').Value2 -eq 60.23) 'Recurring overwrote edit.'
+    Check-Context 'Recurring Bill'
     Set-Cell (Field 'Amount') 61.23
     $result=Save
+    Check-Context 'Save Changes'
     Assert ($result.StartsWith('Saved changes') -and $t.ListRows.Count -eq $count) "Save failed: $result"
     Assert ([math]::Abs($p.Range('B43').Value2-$baseline-1) -lt .001) 'Edited amount did not reach Profit.'
     Assert ((Field 'Vendor').Value2 -eq 'PENDING draft' -and (Field 'Amount').Value2 -eq 777) "Pending entry not restored: vendor=$((Field 'Vendor').Value2), amount=$((Field 'Amount').Value2)."
@@ -36,6 +49,7 @@ try{
     $passed.Add('Grid selection, single-field save, automatic totals, pending-form restore and entry guards')
     Write-Output $passed[$passed.Count-1]
     [void](Load 1);Set-Cell (Field 'Amount') 99999;[void](Cancel)
+    Check-Context 'Cancel Edit'
     Assert ($t.DataBodyRange.Cells.Item(1,6).Value2 -eq 61.23) 'Cancel changed record.'
     [void](Load 1);$result=Save;Assert ($result -eq 'No changes; edit closed.') 'No-op save failed.'
     [void](Load 1);Set-Cell (Field 'Category') 'invalid category';$result=Save

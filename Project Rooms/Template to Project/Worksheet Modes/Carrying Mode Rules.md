@@ -79,6 +79,15 @@ When a date conversion is inside the matched array shared by date and amount dis
 - Update changed fields only. Preserve unchanged formulas, date fractions, blank/space values, source references, Status and Notes; preserve existing pending form input across load/save/cancel. Validate changes and inspect all rows for duplicates regardless of filtering. Editing does not append, delete, approve, post, pay or save a workbook.
 - Guard Insert and Recurring buttons during an edit. Persist an active-edit marker so a saved/reopened form cannot be inserted or saved without reloading a validated source record. Cancel must explicitly discard stale edits. Test read-only/protected states without failing again when writing feedback, and test actual form restoration; a bare no-argument VBA call followed by a colon may be parsed as a label.
 
+## October 2 Presentation
+
+- Tensity is the current presentation candidate for Wes's review: preserve its two owner-added top rows (23.25 points each), yellow entry fields and named grid references. Repeat the G:H:I widths across category triples (10.14, 9.00, 2.86). Inspect each third column before narrowing it: Tensity AA contains Paid in Escrow amounts and remains 9.14 for readability; this exception was disclosed for review, not generalized to other projects.
+- Grid background uses the existing orange sample, RGB 255/192/0 (#FFC000), across headings, details, spacers and subtotals. In Tensity that is A7:AJ31. Orange means do not edit directly; this is visual guidance, not new worksheet protection. Keep yellow form cells unchanged.
+- Preserve button sizes/order and distribute equal edge-to-edge gaps across the remaining top band. Reserve a named context box to the right, Tensity W1:AJ2 / ceButtonContext. Each of the five buttons updates its own purpose and next-step guidance when pressed; preserve the separate result feedback. The recurring button now sits in the top toolbar rather than beneath Insert Record.
+- Tensity has a saved unfinished edit. Preserve it during formatting; on reopen the original safe behavior requires Cancel Edit and reloading the selected record. Never clear the owner's pending fields merely to simplify a formatting test. Tests may clear only their unsaved disposable session.
+- Run row-editor tests through ceEditGrid rather than historical A8 coordinates. Compare all cell values/formulas, resolved styles except the approved fill/context box, names, table records, validation, print settings, row heights, controls and unchanged VBA modules. Check native error baselines, totals, macro binding, all five context messages and current Teams freshness.
+- Preparation is not batch authorization. See [[carrying-migration-plan]] and [[tensity-carrying-layout-20261002]]; other projects remain unchanged pending Wes's review.
+
 ## Vendor Prefill Pilot
 
 - Tensity was the initial September 30, 2026 pilot for the Vendor dropdown and Recurring Bill button. Wes subsequently approved Pond first for the next-logical-date enhancement and inclusion in future Carrying migration. See [[carrying-migration-plan]]; other-project rollout still requires authorization.

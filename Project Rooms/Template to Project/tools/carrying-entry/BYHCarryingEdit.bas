@@ -70,6 +70,26 @@ Private Sub EditFeedback(ByVal editMessage As String)
     On Error GoTo 0
 End Sub
 
+Private Sub EditContext(ByVal editAction As String)
+    Dim editHelp As String
+    Select Case editAction
+        Case "Edit Record"
+            editHelp = "Select a bill's date or amount, then Edit Record. Change the yellow fields and use Save Changes, or Cancel Edit to leave the record unchanged."
+        Case "Save Changes"
+            editHelp = "Save Changes updates the loaded record, not a new row. Invalid or duplicate entries remain in the form for correction. Check the result message below."
+        Case "Cancel Edit"
+            editHelp = "Cancel Edit discards unsaved edits without changing the table. After reopening a saved edit, cancel it and select the bill again before editing."
+        Case "Insert Record"
+            editHelp = "Insert Record adds a new bill from the yellow fields after validation and duplicate checks. Finish any current edit first. Check the result message below."
+        Case "Recurring Bill"
+            editHelp = "Choose a Vendor and Category, then Recurring Bill to fill the form from its latest bill and suggest a date. Review the fields, then Insert Record to add it."
+    End Select
+    ' Older installations may not yet have the optional context box.
+    On Error Resume Next
+    ThisWorkbook.Names("ceButtonContext").RefersToRange.Value2 = editAction & ": " & editHelp
+    On Error GoTo 0
+End Sub
+
 Private Sub EditLiteral(ByVal editTarget As Range, ByVal editValue As Variant)
     Dim editFormat As Variant
     editFormat = editTarget.NumberFormat
@@ -148,6 +168,7 @@ Public Function CarryingEdit_Load(Optional ByVal editRowIndex As Long = 0) As St
     Dim editList As ListObject, editRow As Range, editNames As Variant, editCols As Variant
     Dim editI As Long, editCol As Long, editMessage As String, editValue As Variant
     Dim editEvents As Boolean, editStarted As Boolean
+    EditContext "Edit Record"
     On Error GoTo Failed
     If editBusy Then Exit Function
     If EditActive() Then
@@ -187,10 +208,10 @@ Public Function CarryingEdit_Load(Optional ByVal editRowIndex As Long = 0) As St
     Next editI
     editLoaded = True: EditState True
     editMessage = "Editing " & EditText(editLoadedValues(1, editList.ListColumns("Vendor").Index)) & "."
-    Application.Goto EditCell("Amount"), False
+    Application.GoTo EditCell("Amount"), False
     GoTo Finished
 Failed:
-    editMessage = "Not loaded: " & Err.Description
+    editMessage = "Not loaded: " & Err.description
     If editStarted Then
         On Error Resume Next
         EditRestoreForm
@@ -248,6 +269,7 @@ Public Function CarryingEdit_Save() As String
     Dim editMessage As String, editCategory As Variant, editValid As Boolean
     Dim editEvents As Boolean, editStarted As Boolean, editCommitted As Boolean
     Dim editVendor As String, editInvoice As String, editFailure As String
+    EditContext "Save Changes"
     On Error GoTo Failed
     If editBusy Then Exit Function
     editBusy = True
@@ -333,7 +355,7 @@ Public Function CarryingEdit_Save() As String
     If editChanges = 0 Then editMessage = "No changes; edit closed."
     GoTo Finished
 Failed:
-    editFailure = Err.Description
+    editFailure = Err.description
     If editCommitted Then
         editMessage = "Saved, but form reset failed. Do not re-enter. " & editFailure
     ElseIf editStarted Then
@@ -363,6 +385,7 @@ Finished:
 End Function
 
 Public Sub CarryingEdit_CancelButton()
+    EditContext "Cancel Edit"
     If MsgBox("Cancel this edit and discard its unsaved changes?", vbQuestion + vbYesNo, "Cancel Edit") <> vbYes Then Exit Sub
     Dim editResult As String
     editResult = CarryingEdit_Cancel()
@@ -370,6 +393,7 @@ End Sub
 
 Public Function CarryingEdit_Cancel() As String
     Dim editEvents As Boolean
+    EditContext "Cancel Edit"
     On Error GoTo Failed
     editEvents = Application.EnableEvents: Application.EnableEvents = False
     If editLoaded Then
@@ -389,13 +413,14 @@ Public Function CarryingEdit_Cancel() As String
     If CarryingEdit_Cancel = "" Then CarryingEdit_Cancel = "Edit cancelled; source record unchanged."
     GoTo Finished
 Failed:
-    CarryingEdit_Cancel = "Could not cancel: " & Err.Description
+    CarryingEdit_Cancel = "Could not cancel: " & Err.description
 Finished:
     Application.EnableEvents = editEvents
     EditFeedback CarryingEdit_Cancel
 End Function
 
 Public Sub CarryingEdit_InsertGuard()
+    EditContext "Insert Record"
     If EditActive() Then
         EditFeedback "Finish Save Changes or Cancel Edit before inserting a record."
     Else
@@ -404,6 +429,7 @@ Public Sub CarryingEdit_InsertGuard()
 End Sub
 
 Public Sub CarryingEdit_RecurringGuard()
+    EditContext "Recurring Bill"
     If EditActive() Then
         EditFeedback "Finish Save Changes or Cancel Edit before using Recurring Bill."
     Else

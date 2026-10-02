@@ -41,16 +41,30 @@ def style(w,i):
     fmt=w._number_formats[s.numFmtId-164] if s.numFmtId>=164 else s.numFmtId
     return (w._fonts[s.fontId],w._fills[s.fillId],w._borders[s.borderId],w._alignments[s.alignmentId],w._protections[s.protectionId],fmt)
 
+layout_only='--layout-only' in sys.argv
+context_box='--context-box' in sys.argv
+orange_grid='--orange-grid' in sys.argv
 a,az,ac=load(sys.argv[1]);b,bz,bc=load(sys.argv[2]);issues=[]
 assert a.sheetnames==b.sheetnames
 for name,cells in ac.items():
     for addr,v in cells.items():
         n=bc[name].get(addr,(None,None,None,0))
+        row,col=openpyxl.utils.cell.coordinate_to_tuple(addr)
+        if context_box and name=='Carrying' and row<=2 and 23<=col<=36:continue
         if (v[0] if v[0] is not None else v[1])!=(n[0] if n[0] is not None else n[1]):issues.append(['content',name,addr])
-        if style(a,v[3])!=style(b,n[3]):issues.append(['style',name,addr])
+        sa,sb=style(a,v[3]),style(b,n[3])
+        if orange_grid and name=='Carrying' and 7<=row<=31 and col<=36:
+            sa=sa[:1]+sa[2:];sb=sb[:1]+sb[2:]
+            if style(b,n[3])[1]!=style(a,ac['Carrying']['H11'][3])[1]:issues.append(['orange fill',name,addr])
+        if sa!=sb:issues.append(['style',name,addr])
     for addr,v in bc[name].items():
+        if context_box and name=='Carrying' and addr=='W1':continue
         if addr not in cells and (v[0] is not None or v[1] is not None):issues.append(['new cell',name,addr])
     for attr in ('merged_cells','page_setup','page_margins','print_options','data_validations','freeze_panes','print_area'):
+        if context_box and name=='Carrying' and attr=='merged_cells':
+            if set(map(str,b[name].merged_cells.ranges))-set(map(str,a[name].merged_cells.ranges))!={'W1:AJ2'}:issues.append(['context merge'])
+            if set(map(str,a[name].merged_cells.ranges))-set(map(str,b[name].merged_cells.ranges)):issues.append(['removed merge'])
+            continue
         if getattr(a[name],attr)!=getattr(b[name],attr):issues.append(['layout',name,attr])
     if set(a[name].tables)!=set(b[name].tables):issues.append(['tables',name])
     for tn in a[name].tables:
@@ -58,6 +72,7 @@ for name,cells in ac.items():
         other=b[name].tables[tn]
         if t.ref!=other.ref or [c.name for c in t.tableColumns]!=[c.name for c in other.tableColumns]:issues.append(['table schema',tn])
     for col,d in a[name].column_dimensions.items():
+        if layout_only and name=='Carrying' and d.min<=36:continue
         other=b[name].column_dimensions.get(col)
         if other is None or (d.width,d.hidden,d.outlineLevel)!=(other.width,other.hidden,other.outlineLevel):issues.append(['column',name,col])
     for row,d in a[name].row_dimensions.items():
@@ -67,8 +82,8 @@ for name,cells in ac.items():
         if key not in b[name].defined_names or n.attr_text!=b[name].defined_names[key].attr_text:issues.append(['sheet name',name,key])
 for key,n in a.defined_names.items():
     if key not in b.defined_names or n.attr_text!=b.defined_names[key].attr_text:issues.append(['name',key])
-assert set(b.defined_names)-set(a.defined_names)=={'ceEditActive','ceEditGrid','ceEditHeaders','ceEditVersion'}
-assert b.defined_names['ceEditActive'].attr_text=='FALSE'
+assert set(b.defined_names)-set(a.defined_names)==({'ceButtonContext'} if context_box else set() if layout_only else {'ceEditActive','ceEditGrid','ceEditHeaders','ceEditVersion'})
+if not layout_only:assert b.defined_names['ceEditActive'].attr_text=='FALSE'
 for addr in ('B29','E29','H29','K29','N29','Q29','T29','W29','Z29','AC29','AF29','AI29'):
     if ac['Carrying'].get(addr,(None,None))[1]!=bc['Carrying'].get(addr,(None,None))[1]:issues.append(['total',addr])
 if abs(float(ac['Profit']['B43'][1])-float(bc['Profit']['B43'][1]))>.000001:issues.append(['Profit total'])

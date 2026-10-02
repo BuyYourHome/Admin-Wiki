@@ -2,6 +2,8 @@
 
 ## Approved Design
 
+October 2 presentation addendum: Tensity's owner-added top rows, repeated category widths, evenly spaced five-button toolbar, context box and orange read-only-by-convention grid are implemented for review. This presentation supersedes the historical below-Insert placement of Recurring Bill when later approved. No other project is authorized by the request to "be ready". After approval, independently map each target, retain all project records and pending form input, locate grid/form/table by names, introduce two top rows only where missing, validate shifted named ranges and macro bindings, and handle occupied third columns explicitly. Include the row editor and context-aware module without replacing unrelated VBA. Do not reuse the Tensity-gated formatting installer blindly; remap and test each project. Existing Banks/Pinetree decisions and Cool Springs Amortization restrictions remain. See [[tensity-carrying-layout-20261002]].
+
 Prototype: Pond's current owner-formatted Carrying/manual-entry interface. Tensity received the first Carrying migration and Vendor prefill. On September 30, 2026, Wes requested next-logical-date suggestions in Pond first and inclusion in this migration plan.
 
 Required package for later authorized targets:
