@@ -18,6 +18,8 @@ Required package for later authorized targets:
 
 ## Rollout Gates
 
+October 2 Rent addendum: prepare a thirteenth three-column Rent category after Labor, including category dropdown, named-grid extent, normal manual/recurring/edit behavior and separate income subtotal. It is income, excluded from all expense totals; do not add a Profit expense row or net it against expenses. Independently move any source table/helpers occupying the expansion area using native reference-preserving operations, keep all existing records and owner-formatted instruction boxes, and verify positive Rent test records leave expenses unchanged. Tensity has AK:AM Rent, AN spacer, AO:AY source table and BA Vendor helper. These positions are not universal. See [[tensity-rent-income-20261002]].
+
 October 2 recurring-button addendum: subsequent authorized rollout must include grid-selected Vendor + Category routing and matching context help, not the former form-Vendor-driven button. Preserve the existing next-date algorithm and entered dates; do not insert automatically. See [[tensity-grid-recurring-20261002]].
 
 - Pond: next-date enhancement and subsequent Vendor + Category matching correction completed and verified in Teams, latest save September 30, 2026 at 21:46:48Z; ready for Wes's inspection. See [[pond-recurring-date-20260930]] and [[pond-recurring-category-match-20260930]].
