@@ -82,7 +82,7 @@ Private Sub EditContext(ByVal editAction As String)
         Case "Insert Record"
             editHelp = "Insert Record adds a new bill from the yellow fields after validation and duplicate checks. Finish any current edit first. Check the result message below."
         Case "Recurring Bill"
-            editHelp = "Choose a Vendor and Category, then Recurring Bill to fill the form from its latest bill and suggest a date. Review the fields, then Insert Record to add it."
+            editHelp = "Select a bill's date or amount in the grid, then Recurring Bill. Its vendor and category choose the latest matching bill. Review the suggested fields, then Insert Record."
     End Select
     ' Older installations may not yet have the optional context box.
     On Error Resume Next
@@ -429,10 +429,58 @@ Public Sub CarryingEdit_InsertGuard()
 End Sub
 
 Public Sub CarryingEdit_RecurringGuard()
-    EditContext "Recurring Bill"
-    If EditActive() Then
-        EditFeedback "Finish Save Changes or Cancel Edit before using Recurring Bill."
-    Else
-        CarryingEntry_Recurring
-    End If
+    Dim editResult As String
+    editResult = CarryingEdit_RecurringFromSelection()
 End Sub
+
+Public Function CarryingEdit_RecurringFromSelection() As String
+    Dim editList As ListObject, editIndex As Long, editVendor As Variant
+    Dim editOldVendor As Variant, editOldFormula As Boolean, editOldFormat As Variant
+    Dim editEvents As Boolean, editStarted As Boolean, editMessage As String
+    EditContext "Recurring Bill"
+    On Error GoTo Failed
+    If EditActive() Then
+        editMessage = "Finish Save Changes or Cancel Edit before using Recurring Bill.": GoTo Finished
+    End If
+    Set editList = EditTable()
+    If ThisWorkbook.ReadOnly Or editList.Parent.ProtectContents Then
+        editMessage = "Not filled: Carrying is read-only or protected.": GoTo Finished
+    End If
+    editIndex = EditChosenRow(editList)
+    If editIndex = 0 Then
+        editMessage = "Select a bill's date or amount in the grid, or a source-table cell, then Recurring Bill.": GoTo Finished
+    End If
+    editVendor = editList.ListRows(editIndex).Range.Cells(1, editList.ListColumns("Vendor").Index).Value2
+    If IsError(editVendor) Then
+        editMessage = "Not filled: the selected bill's Vendor contains an error.": GoTo Finished
+    End If
+    If EditText(editVendor) = "" Then
+        editMessage = "Not filled: the selected bill has no Vendor.": GoTo Finished
+    End If
+    editOldVendor = EditCell("Vendor").Formula2
+    editOldFormula = EditCell("Vendor").HasFormula
+    editOldFormat = EditCell("Vendor").NumberFormat
+    editEvents = Application.EnableEvents: Application.EnableEvents = False: editStarted = True
+    EditLiteral EditCell("Vendor"), editVendor
+    ' Reuse recurrence inference, explicitly identifying this vendor's selected category.
+    editMessage = CarryingEntry_Prefill(editIndex)
+    If Left$(editMessage, 7) = "Filled." Then GoTo Finished
+    GoTo RestoreVendor
+Failed:
+    editMessage = "Not filled: " & Err.description
+RestoreVendor:
+    If editStarted Then
+        On Error Resume Next
+        If editOldFormula Then
+            EditCell("Vendor").Formula2 = editOldVendor
+        Else
+            EditLiteral EditCell("Vendor"), editOldVendor
+        End If
+        EditCell("Vendor").NumberFormat = editOldFormat
+        On Error GoTo 0
+    End If
+Finished:
+    If editStarted Then Application.EnableEvents = editEvents
+    EditFeedback editMessage
+    CarryingEdit_RecurringFromSelection = editMessage
+End Function

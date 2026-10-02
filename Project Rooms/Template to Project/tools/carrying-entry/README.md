@@ -70,6 +70,8 @@ Use native source-level VBA comparison, full workbook content/style preservation
 
 ## Security And Limits
 
+Grid-selected recurrence: `Update-CarryingEditor.ps1` compares the existing editor module with an explicit approved Git commit, replaces that module only, and asserts every other module unchanged. `Test-CarryingGridRecurring.ps1` covers valid/invalid grid and source-table selection, vendor/category separation, current-form mismatch, irregular and month-end dates, guards and no insertion. Use `audit_carrying_editor.py source result --unchanged` for a module-only change. See [[tensity-grid-recurring-20261002]].
+
 Do not enable all macros globally or create a broad trusted folder. VBA project-object access is needed to install code, not for ordinary use of the button; Wes can turn it off again. Normal workbook macro trust still applies. If organizational policy blocks the macro, obtain an approved signing/deployment path rather than weakening that policy.
 
 The code requires a writable, unprotected destination table. It preserves rather than repairs unrelated workbook errors. Tests for this iteration do not establish that unrelated legacy macros or every financial assumption are correct.

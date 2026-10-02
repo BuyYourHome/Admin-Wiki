@@ -42,6 +42,7 @@ def style(w,i):
     return (w._fonts[s.fontId],w._fills[s.fillId],w._borders[s.borderId],w._alignments[s.alignmentId],w._protections[s.protectionId],fmt)
 
 layout_only='--layout-only' in sys.argv
+unchanged='--unchanged' in sys.argv
 context_box='--context-box' in sys.argv
 orange_grid='--orange-grid' in sys.argv
 a,az,ac=load(sys.argv[1]);b,bz,bc=load(sys.argv[2]);issues=[]
@@ -82,8 +83,8 @@ for name,cells in ac.items():
         if key not in b[name].defined_names or n.attr_text!=b[name].defined_names[key].attr_text:issues.append(['sheet name',name,key])
 for key,n in a.defined_names.items():
     if key not in b.defined_names or n.attr_text!=b.defined_names[key].attr_text:issues.append(['name',key])
-assert set(b.defined_names)-set(a.defined_names)==({'ceButtonContext'} if context_box else set() if layout_only else {'ceEditActive','ceEditGrid','ceEditHeaders','ceEditVersion'})
-if not layout_only:assert b.defined_names['ceEditActive'].attr_text=='FALSE'
+assert set(b.defined_names)-set(a.defined_names)==({'ceButtonContext'} if context_box else set() if layout_only or unchanged else {'ceEditActive','ceEditGrid','ceEditHeaders','ceEditVersion'})
+if not layout_only and not unchanged:assert b.defined_names['ceEditActive'].attr_text=='FALSE'
 for addr in ('B29','E29','H29','K29','N29','Q29','T29','W29','Z29','AC29','AF29','AI29'):
     if ac['Carrying'].get(addr,(None,None))[1]!=bc['Carrying'].get(addr,(None,None))[1]:issues.append(['total',addr])
 if abs(float(ac['Profit']['B43'][1])-float(bc['Profit']['B43'][1]))>.000001:issues.append(['Profit total'])

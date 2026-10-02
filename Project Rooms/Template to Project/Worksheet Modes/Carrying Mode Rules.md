@@ -90,6 +90,8 @@ When a date conversion is inside the matched array shared by date and amount dis
 
 ## Vendor Prefill Pilot
 
+- October 2 grid-selection change supersedes the button's former input-Vendor selection: in Tensity, select one date/amount cell in the category grid (or one source-table cell), then Recurring Bill. Resolve the selected record with the same named-grid/date/amount checks as Edit Record; take its Vendor and Category explicitly. Reuse the latest bill and existing date inference for that exact pair, not the latest bill in the category or the vendor previously typed in the form. No selection/blank vendor must not silently fall back to an unrelated form vendor. Keep entered dates/formulas, reject during active edits, and never insert automatically. Include this in subsequent authorized Carrying rollout. See [[tensity-grid-recurring-20261002]].
+
 - Tensity was the initial September 30, 2026 pilot for the Vendor dropdown and Recurring Bill button. Wes subsequently approved Pond first for the next-logical-date enhancement and inclusion in future Carrying migration. See [[carrying-migration-plan]]; other-project rollout still requires authorization.
 - Wes explicitly approved filling Tensity's 41 blank Vendor cells from each row's Category. Preserve existing nonblank vendors and formulas. Category labels are owner-selected defaults, not verified supplier identities; do not infer the same mapping in another project without approval.
 - The Vendor dropdown reads unique nonblank table vendors through a dynamic named list and allows typing a new vendor. Inspect helper placement before installation; Tensity uses hidden AX and `ceVendorList`.

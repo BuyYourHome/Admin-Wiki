@@ -18,6 +18,8 @@ Required package for later authorized targets:
 
 ## Rollout Gates
 
+October 2 recurring-button addendum: subsequent authorized rollout must include grid-selected Vendor + Category routing and matching context help, not the former form-Vendor-driven button. Preserve the existing next-date algorithm and entered dates; do not insert automatically. See [[tensity-grid-recurring-20261002]].
+
 - Pond: next-date enhancement and subsequent Vendor + Category matching correction completed and verified in Teams, latest save September 30, 2026 at 21:46:48Z; ready for Wes's inspection. See [[pond-recurring-date-20260930]] and [[pond-recurring-category-match-20260930]].
 - Tensity: existing Vendor prefill works, but does not yet contain date inference. Follow Pond verification/review and obtain authorization for the upgrade; its closure notice alone does not change the requested Pond-first scope.
 - Other active projects: pending later rollout authorization and independently confirmed active list. No workbook changed by creating this plan.
