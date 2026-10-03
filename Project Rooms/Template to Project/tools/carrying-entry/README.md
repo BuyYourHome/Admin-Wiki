@@ -12,6 +12,14 @@ Workbook-side design owned by Template to Project. Operational invoice posting r
 
 These are migration building blocks, not an authorized batch runner. Re-map each project independently before adapting installation and validation. Do not copy Pond's records to another project.
 
+## Delete Record Addition
+
+`Install-CarryingDelete.ps1` appends only the approved Delete procedure suffix and adds a last inline button styled from the target's Cancel button. It does not copy a worksheet or replace the existing editor. Use only with a fresh source, verified rollback and confirmed compatible named grid/header/context ranges. It refuses repeat installation and insufficient toolbar space.
+
+`Test-ProjectDelete.ps1` validates each project's own grid-to-source mapping and display capacity, tests cancellation/confirmed deletion by category and for undated entries, and compares surviving records, grid formulas and pending input. It handles an empty Pinetree-style table with a synthetic in-memory record. All changes, including test-only VBA confirmation substitutions, are discarded. `Test-CarryingDelete.ps1` remains the detailed Tensity-specific branch/regression suite, not a test for another project's numbers.
+
+`Inspect-RentPrototype.ps1 -SkipRender` provides the native VBA/control/error/three-model snapshot and actual row count for the narrow no-financial-change audit. `audit_carrying_delete.py` verifies complete source/output preservation except the authorized button/positions/procedure suffix. Existing financial differences between projects are preserved, not standardized by this toolbar migration. The installer exports each toolbar for visual review; connector closure/freshness/upload/download verification remains separate.
+
 `Migrate-Outrigger.ps1`, `Test-Outrigger.ps1`, `Test-OutriggerRecurring.ps1` and `audit_outrigger.py` implement the separately mapped September 30 Outrigger migration. They include its approved two Water overrides, 132 Vendor defaults, latest Pond interface and recurring-date module, actual option-control names, full-cell audit and unsaved native tests. They are specific to that source version, not a generic installer for the other authorized batch targets. See [[outrigger-carrying-migration-20260930]].
 
 Required follow-on for authorized Carrying migrations: `Remove-CarryingZeroRows.ps1` removes literal numeric-zero records after independent mapping. Supply verified source row count, numeric-zero count and Profit subtotal address. Preserve blank/space amounts, credits and formula-driven values; retain headings and reconcile all survivors/totals. This requirement was approved after Tensity's initial migration, so the historical `Migrate-Tensity.ps1` build alone is no longer the complete migration pipeline. See Carrying Mode Rules.

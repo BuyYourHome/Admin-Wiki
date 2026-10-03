@@ -76,7 +76,9 @@ if b.calculation.calcMode not in ('auto', None):
 for path in az.namelist():
     if path.startswith(('xl/media/', 'xl/externalLinks/')) and (path not in bz.namelist() or az.read(path) != bz.read(path)):
         issues.append(['media/link changed', path])
-result = dict(issues=issues, issueCount=len(issues), recordsPreserved=68, nativeErrors=len(errors(after)), modes=after['modes'])
+if before.get('records') != after.get('records'):
+    issues.append(['record count'])
+result = dict(issues=issues, issueCount=len(issues), recordsPreserved=after.get('records'), nativeErrors=len(errors(after)), modes=after['modes'])
 evidence.write_text(json.dumps(result, indent=2), encoding='utf-8')
 print(json.dumps(result, indent=2))
 sys.exit(bool(issues))

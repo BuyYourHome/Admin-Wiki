@@ -1,4 +1,4 @@
-param([Parameter(Mandatory)][string]$Workbook,[Parameter(Mandatory)][string]$Evidence)
+param([Parameter(Mandatory)][string]$Workbook,[Parameter(Mandatory)][string]$Evidence,[switch]$SkipRender)
 $ErrorActionPreference='Stop'
 $e=New-Object -ComObject Excel.Application
 $e.Visible=$false;$e.DisplayAlerts=$false;$e.EnableEvents=$false;$e.AutomationSecurity=3
@@ -23,12 +23,14 @@ try {
         $modes[[string]$n]=$values
     }
     $p.Range('E1').Formula=[string]$mode;$e.CalculateFullRebuild()
-    $result=[ordered]@{file=$b.Name;calculation=$e.Calculation;mode=$mode;codes=$codes;controls=$controls;errors=$errors;modes=$modes;rentGrid=$s.Range('AK9:AM31').Value2;profitWidths=@(1..23|ForEach-Object{$p.Columns.Item($_).ColumnWidth})}
+    $result=[ordered]@{file=$b.Name;records=$s.ListObjects.Item('tblCarryingExpenses').ListRows.Count;calculation=$e.Calculation;mode=$mode;codes=$codes;controls=$controls;errors=$errors;modes=$modes;rentGrid=$s.Range('AK9:AM31').Value2;profitWidths=@(1..23|ForEach-Object{$p.Columns.Item($_).ColumnWidth})}
     $result|ConvertTo-Json -Depth 12|Set-Content -LiteralPath $Evidence
+    if(-not $SkipRender){
     $p.PageSetup.PrintArea='$A$1:$W$63';$p.PageSetup.Zoom=$false;$p.PageSetup.FitToPagesWide=1;$p.PageSetup.FitToPagesTall=1;$p.PageSetup.Orientation=2
     $p.ExportAsFixedFormat(0,[IO.Path]::ChangeExtension($Evidence,'.pdf'))
     $s.PageSetup.PrintArea='$AH$7:$AM$31';$s.PageSetup.Zoom=$false;$s.PageSetup.FitToPagesWide=1;$s.PageSetup.FitToPagesTall=1;$s.PageSetup.Orientation=1
     $s.ExportAsFixedFormat(0,[IO.Path]::ChangeExtension($Evidence,'.rent.pdf'))
+    }
     [ordered]@{modes=$modes;errorCount=($errors.Values|ForEach-Object{$_.Count}|Measure-Object -Sum).Sum;controlCount=($controls.Values|ForEach-Object{$_.Count}|Measure-Object -Sum).Sum;calculation=$e.Calculation}|ConvertTo-Json -Depth 6
 } finally {
     if($b){$b.Close($false)};$e.Quit();[void][Runtime.InteropServices.Marshal]::FinalReleaseComObject($e)
