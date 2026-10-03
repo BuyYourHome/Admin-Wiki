@@ -102,6 +102,14 @@ Private Sub EditLiteral(ByVal editTarget As Range, ByVal editValue As Variant)
     End If
 End Sub
 
+Private Function EditDateKey(ByVal editDateValue As Variant) As Double
+    If EditText(editDateValue) = "" Then
+        EditDateKey = 1E+99
+    Else
+        EditDateKey = CDbl(editDateValue)
+    End If
+End Function
+
 Private Function EditChosenRow(ByVal editList As ListObject) As Long
     Dim editChoice As Range, editGrid As Range, editHeading As Range
     Dim editData As Variant, editRows() As Long, editCount As Long
@@ -133,7 +141,9 @@ Private Function EditChosenRow(ByVal editList As ListObject) As Long
         If EditText(editData(editI, editList.ListColumns("Include").Index)) = "Yes" And _
            EditText(editData(editI, editList.ListColumns("Category").Index)) = editCategory Then
             If IsError(editData(editI, editDateCol)) Then Exit Function
-            If Not IsNumeric(editData(editI, editDateCol)) Then Exit Function
+            If EditText(editData(editI, editDateCol)) <> "" Then
+                If Not IsNumeric(editData(editI, editDateCol)) Then Exit Function
+            End If
             editCount = editCount + 1: editRows(editCount) = editI
         End If
     Next editI
@@ -141,7 +151,7 @@ Private Function EditChosenRow(ByVal editList As ListObject) As Long
     For editI = 2 To editCount
         editTemp = editRows(editI): editJ = editI - 1
         Do While editJ >= 1
-            If CDbl(editData(editRows(editJ), editDateCol)) <= CDbl(editData(editTemp, editDateCol)) Then Exit Do
+            If EditDateKey(editData(editRows(editJ), editDateCol)) <= EditDateKey(editData(editTemp, editDateCol)) Then Exit Do
             editRows(editJ + 1) = editRows(editJ): editJ = editJ - 1
         Loop
         editRows(editJ + 1) = editTemp
@@ -149,7 +159,11 @@ Private Function EditChosenRow(ByVal editList As ListObject) As Long
     editOrdinal = editChoice.Row - editGrid.Row + 1
     If editOrdinal > editCount Then Exit Function
     editTemp = editRows(editOrdinal)
-    If Not EditEqual(editGrid.Cells(editOrdinal, editColumn).Value2, editData(editTemp, editDateCol)) Then Exit Function
+    If EditText(editData(editTemp, editDateCol)) = "" Then
+        If EditText(editGrid.Cells(editOrdinal, editColumn).Value2) <> "" Then Exit Function
+    ElseIf Not EditEqual(editGrid.Cells(editOrdinal, editColumn).Value2, editData(editTemp, editDateCol)) Then
+        Exit Function
+    End If
     If Not editGrid.Cells(editOrdinal, editColumn + 1).HasFormula Then Exit Function
     If IsEmpty(editData(editTemp, editAmountCol)) Then
         If editGrid.Cells(editOrdinal, editColumn + 1).Value2 <> 0 Then Exit Function

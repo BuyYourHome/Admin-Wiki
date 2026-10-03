@@ -1,4 +1,5 @@
-param([Parameter(Mandatory)][string]$Workbook,[Parameter(Mandatory)][string]$Evidence)
+param([Parameter(Mandatory)][string]$Workbook,[Parameter(Mandatory)][string]$Evidence,
+    [string]$ProfitTotalCell='B43',[switch]$PreserveProfitEstimates)
 $ErrorActionPreference='Stop'
 function Assert($ok,$message){if(-not $ok){throw $message}}
 function Set-Cell($cell,$value){[void]$cell.GetType().InvokeMember('Value2',[Reflection.BindingFlags]::SetProperty,$null,$cell,@($value))}
@@ -6,7 +7,9 @@ $e=New-Object -ComObject Excel.Application
 $e.Visible=$false;$e.DisplayAlerts=$false;$e.EnableEvents=$false;$e.AutomationSecurity=1
 try{
     $b=$e.Workbooks.Open($Workbook,0,$false);$s=$b.Worksheets.Item('Carrying');$t=$s.ListObjects.Item('tblCarryingExpenses')
-    $count=$t.ListRows.Count;$original=$t.DataBodyRange.Formula2;$baseline=[double]$b.Worksheets.Item('Profit').Range('B43').Value2
+    $count=$t.ListRows.Count;$original=$null
+    if($count){$original=$t.DataBodyRange.Formula2}
+    $baseline=[double]$b.Worksheets.Item('Profit').Range($ProfitTotalCell).Value2
     $grid=$b.Names.Item('ceEditGrid').RefersToRange;$footer=$grid.Row+$grid.Rows.Count
     function Field($name){$b.Names.Item('ce'+$name).RefersToRange}
     function Run($name){$e.Run("'"+$b.Name.Replace("'","''")+"'!"+$name)}
@@ -32,14 +35,22 @@ try{
             if($original[$r,1] -eq 'Yes' -and $original[$r,2] -eq $category){
                 [pscustomobject]@{row=$r;date=$t.DataBodyRange.Cells.Item($r,3).Value2;amount=$t.DataBodyRange.Cells.Item($r,6).Value2}
             }
-        }) | Sort-Object date,row
+        }) | Sort-Object @{Expression={if($null -eq $_.date -or $_.date -eq ''){[double]::MaxValue}else{[double]$_.date}}},row
         Assert (@($matching).Count -le $grid.Rows.Count) "Grid overflow: $category"
         for($i=0;$i -lt @($matching).Count;$i++){
             $date=$grid.Cells.Item($i+1,$col);$amount=$grid.Cells.Item($i+1,$col+1);$record=@($matching)[$i]
             Assert (Near $date.Value2 $record.date) "Grid date mismatch $category row $i"
             if($record.date){Assert ($date.Text -and $date.Text -notmatch '^#+$') "Invisible date $category row $i"}
+            else{Assert ($date.Text -eq '') "Invented date for undated $category row $i"}
             if($record.amount -is [double]){Assert (Near $amount.Value2 $record.amount) "Grid amount mismatch $category row $i"}
             else{Assert ($null -eq $record.amount -or ([string]$record.amount).Trim() -eq '') "Unmapped amount $category row $i"}
+            if($i -eq 0 -or -not $record.date){
+                $s.Activate();$amount.Select()
+                $loadResult=[string](Run 'CarryingEdit_Load')
+                Assert ($loadResult.StartsWith('Editing')) "Cannot select mapped $category record $i : $loadResult"
+                if(-not $record.date){Assert ($null -eq (Field 'Date').Value2) 'Loading an undated record invented a date.'}
+                [void](Run 'CarryingEdit_Cancel')
+            }
         }
     }
     $passed.Add('Every included record appears with its own paired date and amount; no grid overflow')
@@ -52,7 +63,7 @@ try{
     }
     $e.CalculateFullRebuild()
     Assert (Near $s.Cells.Item($footer,38).Value2 3750) 'Rent subtotal failed.'
-    Assert (Near $b.Worksheets.Item('Profit').Range('B43').Value2 $baseline) 'Rent entered expense total.'
+    Assert (Near $b.Worksheets.Item('Profit').Range($ProfitTotalCell).Value2 $baseline) 'Rent entered expense total.'
     (Field 'Date').MergeArea.ClearContents();Set-Cell (Field 'Vendor') 'Wrong previous vendor'
     $s.Activate();$s.Range('AK10').Select()
     $result=[string](Run 'CarryingEdit_RecurringFromSelection');Context 'Recurring Bill'
@@ -70,7 +81,7 @@ try{
     $result=[string](Run 'CarryingEdit_Save');Context 'Save Changes'
     Assert ($result.StartsWith('Saved changes') -and $t.DataBodyRange.Cells.Item($count+1,6).Value2 -eq 1260) "Save wrong record: $result"
     Assert (Near $s.Cells.Item($footer,38).Value2 3760) 'Edited Rent subtotal failed.'
-    Assert (Near $b.Worksheets.Item('Profit').Range('B43').Value2 $baseline) 'Edited Rent entered expenses.'
+    Assert (Near $b.Worksheets.Item('Profit').Range($ProfitTotalCell).Value2 $baseline) 'Edited Rent entered expenses.'
     $s.Range('AK10').Select();[void](Run 'CarryingEdit_Load');Set-Cell (Field 'Amount') 9999
     [void](Run 'CarryingEdit_Cancel');Context 'Cancel Edit'
     Assert ($t.DataBodyRange.Cells.Item($count+1,6).Value2 -eq 1260) 'Cancel changed record.'
@@ -84,9 +95,10 @@ try{
         [void](Run 'CarryingEdit_InsertGuard')
     }
     Assert ($t.ListRows.Count -eq $count+5) "Insert failed: $((Field 'Feedback').Value2)"
-    Assert (Near $b.Worksheets.Item('Profit').Range('B43').Value2 ($baseline+5)) 'Labor/Refinance not flowing to Profit.'
+    $expectedProfit=if($PreserveProfitEstimates){$baseline}else{$baseline+5}
+    Assert (Near $b.Worksheets.Item('Profit').Range($ProfitTotalCell).Value2 $expectedProfit) 'Labor/Refinance Profit behavior differs from approved mapping.'
     [void](Run 'CarryingEdit_InsertGuard');Assert ($t.ListRows.Count -eq $count+5) 'Empty/duplicate form inserted.'
-    $passed.Add('Labor and Refinance insertion flow to Profit without Rent; no unintended insertion')
+    $passed.Add($(if($PreserveProfitEstimates){'Labor and Refinance insert successfully; existing Profit estimates stay unchanged'}else{'Labor and Refinance insertion flow to Profit without Rent; no unintended insertion'}))
     $after=$t.DataBodyRange.Formula2
     for($r=1;$r -le $count;$r++){for($c=1;$c -le 11;$c++){Assert ($original[$r,$c] -ceq $after[$r,$c]) "Existing record modified $r,$c"}}
     Assert ($e.EnableEvents -eq $false) 'Events unexpectedly enabled.'

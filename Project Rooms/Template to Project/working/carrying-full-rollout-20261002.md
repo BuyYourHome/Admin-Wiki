@@ -20,8 +20,10 @@ Fresh connector downloads from the live Property folder were inventoried separat
 | Cool Springs | 98 / 98 | 21 | $25,807.15 | Delivered; exact Teams hash verified |
 | Britton | 34 / 34 | 21 | $18,176.28 | Delivered; exact Teams hash verified |
 | Outrigger | 127 / 126 | 21 | $19,473.95 | Delivered; exact Teams hash verified; one literal zero removed |
-| Banks | Legacy grid | Pending | Not certified | Earlier legacy-schedule review gate; specific approval requested |
-| Pinetree | No Carrying | Pending | Existing $890.28/month estimate retained | Earlier empty-interface/estimate gate; specific approval requested |
+| Banks | Legacy grid / 160 records | 82 | Grid $75,064.94 preserved; old Profit $45,684.97 corrected by category | Delivered after specific approval; old tab retained |
+| Pinetree | No Carrying / empty table | 21 | Existing $890.28/month estimate and $5,341.68 total retained | Delivered after specific approval; Profit intentionally remains estimate-based |
+
+Banks/Pinetree completion and verification are recorded in [[carrying-banks-pinetree-20261002]]. All ten approved targets now have the Carrying design; the eight-project delivery/evidence section below records the earlier phase.
 
 Inactive exclusions remain Old Buckhorn, Burgwyn, Pearces, Sandy Run, Larchmont, Willowdell and Mom. Rosebrooks' earlier rent/Docs question is outside this change. Its current source no longer contains Carrying - Old; this rollout did not delete it.
 
