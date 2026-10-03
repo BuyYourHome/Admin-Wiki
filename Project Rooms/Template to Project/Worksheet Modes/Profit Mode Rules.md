@@ -125,6 +125,15 @@ When a sheet has no visible `#REF!` cells but the package still contains `#REF!`
 
 ## Profit Formula Rules
 
+### Tensity Rent Prototype, October 3, 2026
+
+- Wes authorized a Tensity-only minimal-layout connection from Carrying Rent to Profit. Preserve the current monthly rent and modeled-month inputs, loan/CFD formulas, expense model and existing worksheet geometry. Do not transplant another project's rent records.
+- `rentTotalCollected` feeds the existing historical rent income line in all three scenarios. `rentMonthsRented` counts distinct included, positive rental months through the current month with Scheduled, Collected or Reported Collected status; it does not count transactions or assert independently verified occupancy. In Tensity the new labeled Rent history block is Q18:W25, total is V19, months V20, and income line E9. Resolve labels/names during later approved migration, not these coordinates.
+- Keep B9 as the existing total modeled rental horizon and C9 as the monthly-rent assumption. They also feed expenses, appreciation, loan lookup and MOG. Do not replace B9 with an actual-month count without tracing those dependencies independently.
+- Avoid counting historical rent twice in Hold: preserve the full-horizon expense calculations and monthly cash-flow input, but remove the monthly-rent estimate for already elapsed/collected rental periods from the modeled aggregate before adding actual collections. Tensity K57 subtracts `(MAX(0,B9)-rentMonthsProjected)*C9` in Hold only. `rentMonthsProjected` is the nonnegative remainder of the existing horizon after distinct accounted-for rental months, including prepaid future months but excluding unpaid future schedules. Slow Flip keeps the existing CFD cash-flow logic and replaces the old B9*C9 historical-rent estimate with actual collected rent. Flip gains that historical income once.
+- The Hold aggregate is an adjusted full-horizon cash-flow amount, not a forecast of future expenses alone. Past unpaid lease months must not remain projected as if collected; no payment is inferred merely because a due date passed. Preserve existing cost assumptions and disclose rather than silently repair unrelated modeling defects.
+- Test all three scenarios, no-rent state, partial/split receipts, credits, inclusion/status changes and future prepayments. With the Tensity source's 12 months at $1,850, adding $22,200 reported historical collections increases Flip total profit by $22,200; Hold and Slow Flip overall totals stay unchanged because their former equivalent rent estimates are replaced, not added twice. Source-supported collected amounts may differ from the former estimate in other projects.
+
 ### Pond Labor Design, September 30, 2026
 
 - Wes inserted `Labor(not in Vendor Tabs)` in the Pond Profit prototype. The targeted read-only inspection verified `B41 = +Carrying!AI25/Profit!$B$28`, Lawn moved to row 42, and `B43 = +B28*SUM(B31:B42)` includes Labor. Preserve Wes's current layout during the later approved migration; resolve the row and source subtotal by labels rather than assuming these coordinates in other projects.
