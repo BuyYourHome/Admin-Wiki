@@ -498,3 +498,126 @@ Finished:
     EditFeedback editMessage
     CarryingEdit_RecurringFromSelection = editMessage
 End Function
+
+' Delete Record toolbar action. Install this suffix without replacing project VBA.
+Public Sub CarryingEdit_DeleteRecord()
+    Dim deleteResult As String
+    deleteResult = CarryingEdit_DeleteSelected()
+End Sub
+
+Private Function DeleteConfirm(ByVal deletePrompt As String) As Boolean
+    DeleteConfirm = (MsgBox(deletePrompt, vbQuestion + vbYesNo + vbDefaultButton2, "Delete Record") = vbYes)
+End Function
+
+Private Function DeleteFindSnapshot(ByVal deleteList As ListObject, ByVal deleteSnapshot As Variant, ByRef deleteFormulaFlags() As Boolean) As Long
+    Dim deleteRow As ListRow, deleteValues As Variant, deleteCol As Long, deleteMatches As Long, deleteSame As Boolean
+    If deleteList.ListColumns.Count <> UBound(deleteSnapshot, 2) Then Exit Function
+    For Each deleteRow In deleteList.ListRows
+        deleteValues = deleteRow.Range.Formula2: deleteSame = True
+        For deleteCol = 1 To UBound(deleteSnapshot, 2)
+            If Not EditEqual(deleteValues(1, deleteCol), deleteSnapshot(1, deleteCol)) Then deleteSame = False: Exit For
+            If deleteRow.Range.Cells(1, deleteCol).HasFormula <> deleteFormulaFlags(deleteCol) Then deleteSame = False: Exit For
+        Next deleteCol
+        If deleteSame Then deleteMatches = deleteMatches + 1: DeleteFindSnapshot = deleteRow.Index
+    Next deleteRow
+    If deleteMatches <> 1 Then DeleteFindSnapshot = 0
+End Function
+
+Public Function CarryingEdit_DeleteSelected() As String
+    Dim deleteList As ListObject, deleteChoice As Range, deleteGrid As Range
+    Dim deleteSnapshot As Variant, deleteValues As Variant, deleteFormulaFlags() As Boolean
+    Dim deleteIndex As Long, deleteCol As Long, deleteCount As Long
+    Dim deletePrompt As String, deleteMessage As String, deleteDate As String, deleteAmount As String
+    Dim deleteCategory As String, deleteVendor As String, deleteDescription As String
+    Dim deleteEvents As Boolean, deleteStarted As Boolean, deleteCommitted As Boolean, deleteAttempted As Boolean
+    On Error GoTo Failed
+    If editBusy Then Exit Function
+    editBusy = True
+    ThisWorkbook.Names("ceButtonContext").RefersToRange.Cells(1, 1).Value2 = _
+        "Delete Record: Select one grid date or amount. Review the matching record, then confirm deletion. Only its table row is removed; Excel Undo is unavailable."
+    If EditActive() Then
+        deleteMessage = "Not deleted: finish Save Changes or Cancel Edit first.": GoTo Finished
+    End If
+    Set deleteList = EditTable()
+    If ThisWorkbook.ReadOnly Or deleteList.Parent.ProtectContents Then
+        deleteMessage = "Not deleted: Carrying is read-only or protected.": GoTo Finished
+    End If
+    If deleteList.AutoFilter.FilterMode Then
+        deleteMessage = "Not deleted: clear the Carrying table filter first, then select the grid record again.": GoTo Finished
+    End If
+    If TypeName(Selection) <> "Range" Then GoTo InvalidSelection
+    Set deleteChoice = Selection
+    If Not deleteChoice.Parent Is deleteList.Parent Then GoTo InvalidSelection
+    If deleteChoice.Cells.CountLarge <> 1 Then GoTo InvalidSelection
+    Set deleteGrid = ThisWorkbook.Names("ceEditGrid").RefersToRange
+    If Intersect(deleteChoice, deleteGrid) Is Nothing Then GoTo InvalidSelection
+    ' Do not recalculate a stale display and silently substitute a different record.
+    deleteIndex = EditChosenRow(deleteList)
+    If deleteIndex = 0 Then GoTo InvalidSelection
+    deleteSnapshot = deleteList.ListRows(deleteIndex).Range.Formula2
+    deleteValues = deleteList.ListRows(deleteIndex).Range.Value2
+    ReDim deleteFormulaFlags(1 To UBound(deleteSnapshot, 2))
+    For deleteCol = 1 To UBound(deleteSnapshot, 2)
+        If IsError(deleteValues(1, deleteCol)) Then
+            deleteMessage = "Not deleted: the source record contains an error.": GoTo Finished
+        End If
+        deleteFormulaFlags(deleteCol) = deleteList.ListRows(deleteIndex).Range.Cells(1, deleteCol).HasFormula
+    Next deleteCol
+    If DeleteFindSnapshot(deleteList, deleteSnapshot, deleteFormulaFlags) = 0 Then
+        deleteMessage = "Not deleted: identical records make the selection ambiguous.": GoTo Finished
+    End If
+    deleteCategory = EditText(deleteValues(1, deleteList.ListColumns("Category").Index))
+    deleteVendor = EditText(deleteValues(1, deleteList.ListColumns("Vendor").Index))
+    deleteDescription = EditText(deleteValues(1, deleteList.ListColumns("Description").Index))
+    deleteDate = deleteList.ListRows(deleteIndex).Range.Cells(1, deleteList.ListColumns("Date").Index).Text
+    deleteAmount = deleteList.ListRows(deleteIndex).Range.Cells(1, deleteList.ListColumns("Amount").Index).Text
+    deletePrompt = "Delete this Carrying table record?" & vbCrLf & vbCrLf & _
+        "Category: " & deleteCategory & vbCrLf & "Vendor: " & deleteVendor & vbCrLf & _
+        IIf(deleteCategory = "Rent", "Rental month: ", "Date: ") & deleteDate & vbCrLf & _
+        "Amount: " & deleteAmount & vbCrLf & "Description: " & Left$(deleteDescription, 180) & vbCrLf & _
+        "Invoice/reference: " & EditText(deleteValues(1, deleteList.ListColumns("Invoice #").Index)) & vbCrLf & _
+        "Status: " & EditText(deleteValues(1, deleteList.ListColumns("Status").Index)) & vbCrLf & vbCrLf & _
+        "This removes only this record, not a worksheet row or Review audit row." & vbCrLf & _
+        "Excel Undo cannot restore it. Recovery requires a saved backup/version."
+    If Not DeleteConfirm(deletePrompt) Then
+        deleteMessage = "Delete cancelled; source record unchanged.": GoTo Finished
+    End If
+    If ThisWorkbook.ReadOnly Or deleteList.Parent.ProtectContents Or EditActive() Then
+        deleteMessage = "Not deleted: workbook or edit state changed. Select the record again.": GoTo Finished
+    End If
+    If deleteList.AutoFilter.FilterMode Then
+        deleteMessage = "Not deleted: a table filter was applied. Clear it and select the grid record again.": GoTo Finished
+    End If
+    ' Re-find the unique full snapshot after confirmation, never a remembered row ordinal.
+    deleteIndex = DeleteFindSnapshot(deleteList, deleteSnapshot, deleteFormulaFlags)
+    If deleteIndex = 0 Then
+        deleteMessage = "Not deleted: record changed, was removed, or became ambiguous. Select it again.": GoTo Finished
+    End If
+    deleteCount = deleteList.ListRows.Count
+    deleteEvents = Application.EnableEvents: Application.EnableEvents = False: deleteStarted = True
+    deleteAttempted = True
+    deleteList.ListRows(deleteIndex).Delete
+    deleteCommitted = True
+    If deleteList.ListRows.Count <> deleteCount - 1 Then
+        deleteMessage = "Deletion uncertain: inspect the table before trying again.": GoTo Finished
+    End If
+    Application.Calculate
+    deleteMessage = "Deleted " & deleteCategory & " / " & deleteVendor & " / " & deleteDate & " / " & deleteAmount & "."
+    GoTo Finished
+InvalidSelection:
+    deleteMessage = "Not deleted: select one matching date or amount in the grid. Headers, totals, spacers and blank or stale entries are not records."
+    GoTo Finished
+Failed:
+    If deleteCommitted Then
+        deleteMessage = "Record deleted, but refresh failed. Do not delete again. " & Err.description
+    ElseIf deleteAttempted Then
+        deleteMessage = "Deletion uncertain: inspect the table before retrying. " & Err.description
+    Else
+        deleteMessage = "Not deleted: " & Err.description
+    End If
+Finished:
+    If deleteStarted Then Application.EnableEvents = deleteEvents
+    editBusy = False
+    EditFeedback deleteMessage
+    CarryingEdit_DeleteSelected = deleteMessage
+End Function
