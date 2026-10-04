@@ -122,7 +122,7 @@ Invoice Entry may read one exact Outlook message when the handoff supplies its e
 
 ## Durable Dispatch Intake
 
-Email Monitor and Jean dispatches are authoritative in the central queue at `\\WES-VIDEOEDITOR\BYH-PRMessaging$\records`; task messages are wake-up signals. On receipt, validate the exact central record and write its durable `Accepted` receipt. Acceptance releases only the dispatcher notification hold; it does not represent processing or business completion. Before any invoice, draft, delivery package, workbook insertion, filed document, or QuickBooks handoff is produced, use `skills\invoice-entry\scripts\Get-InvoiceEntryQueueDrain.ps1` and process every older nonterminal record for the exact Invoice Entry task on `OFFICEASSIST`, oldest-first. Deduplicate by dispatch ID and payload hash, reconcile corrections or superseding versions into one current output, and give every handled record one valid terminal result even when no business action is needed. Recheck queue order immediately before output; this is a queue-state gate, not a second mailbox or source-completeness audit. Also reconcile approved project-related invoices in durable Invoice Entry state against their authoritative project workbooks and resume supported missing insertions under the existing approval. Do not require the wake-up itself to originate from the source task; dispatcher and relaying tasks are transport only. Queue presence grants intake authority only and does not bypass Invoice Entry's approval, payment, filing, workbook, vendor-contact, or email-delivery gates.
+Email Monitor and Jean dispatches use the authoritative central queue. Validate and accept the exact record, then complete new actionable work end to end before revisiting older broken or blocked work. Acceptance releases the notification hold, not business responsibility. Follow the canonical Invoice Entry skill's dependency review and queue helper procedure: older records are advisory unless genuinely related, conflicting, or uncertain. Preserve duplicate, integrity, authorization, approval, payment, filing, workbook, and email-delivery gates. Retain ownership through verified downstream outcomes or an exact blocker. Missing approved workbook insertions remain recovery work under existing approval, not a reason to delay unrelated new requests.
 
 ### Availability-Only Financial Notices
 
@@ -147,7 +147,7 @@ The current operational queue, verified deliveries, holds, and known stale recor
 
 Dedicated task: `01a03956-fa4f-77c1-9ab7-f709e5f1174e`.
 
-The former standalone `Invoice Entry Backup Monitor` cron was deleted on 2026-09-18 and must not be recreated without new authorization. Direct handoffs remain the primary trigger. The lightweight backup is the startup queue check: any nonterminal record at least 60 minutes old is treated as aged and drained oldest-first when Invoice Entry next runs. This backup does not rescan mailboxes or reconstruct source completeness.
+The former standalone `Invoice Entry Backup Monitor` cron was deleted on 2026-09-18 and must not be recreated without new authorization. Direct handoffs remain primary. The startup queue check surfaces records at least 60 minutes old, but age is diagnostic rather than automatic priority. Revisit broken or blocked backlog after new actionable work completes or reaches a concrete blocker. This check does not rescan mailboxes.
 
 ## Task Health
 

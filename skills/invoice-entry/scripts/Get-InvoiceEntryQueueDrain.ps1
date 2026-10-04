@@ -6,6 +6,8 @@ param(
     [string]$DestinationTaskId = "01a03956-fa4f-77c1-9ab7-f709e5f1174e",
     [string]$DestinationMachine = "OFFICEASSIST",
     [string]$TriggerMessageId,
+    [switch]$DependenciesReviewed,
+    [string[]]$BlockingMessageId = @(),
     [ValidateRange(1, 10080)]
     [int]$AgedMinutes = 60
 )
@@ -69,6 +71,10 @@ $aged = @($unresolved | Where-Object {
 })
 
 $result = [pscustomobject][ordered]@{
+    processing_policy = 'NewActionableEndToEndBeforeRecovery'
+    dependencies_reviewed = [bool]$DependenciesReviewed
+    blocking_message_ids = @($BlockingMessageId)
+    older_records_are_advisory = $true
     destination = [pscustomobject][ordered]@{
         project_room = $DestinationProjectRoom
         task_id = $DestinationTaskId
@@ -87,7 +93,9 @@ $result = [pscustomobject][ordered]@{
     external_output_allowed = (
         $null -ne $trigger -and
         [string]$trigger.state -eq "Processing" -and
-        $older.Count -eq 0
+        $DependenciesReviewed -and
+        $BlockingMessageId.Count -eq 0 -and
+        -not $trigger.administrative_closure
     )
 }
 

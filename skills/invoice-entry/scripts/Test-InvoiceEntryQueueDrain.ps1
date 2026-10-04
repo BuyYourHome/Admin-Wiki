@@ -47,7 +47,14 @@ try {
     Assert-Equal "older-a" $first.older_unresolved[0].message_id "Equal-time ordering must use message ID."
     Assert-Equal "older-b" $first.older_unresolved[1].message_id "Equal-time ordering must use message ID."
     Assert-Equal 3 $first.aged_unresolved_count "Aged watchdog count is wrong."
-    Assert-Equal $false $first.external_output_allowed "Output must remain gated while older records exist."
+    Assert-Equal $false $first.external_output_allowed "Output requires explicit dependency review."
+
+    $reviewed = & $helperPath -ManagerPath $managerPath -QueuePath $queuePath -TriggerMessageId "trigger" -DependenciesReviewed | ConvertFrom-Json
+    Assert-Equal $true $reviewed.external_output_allowed "Unrelated older work must not gate a reviewed new request."
+    $blocked = & $helperPath -ManagerPath $managerPath -QueuePath $queuePath -TriggerMessageId "trigger" -DependenciesReviewed -BlockingMessageId "older-b" | ConvertFrom-Json
+    Assert-Equal $false $blocked.external_output_allowed "A genuine dependency must still block output."
+    $queued = & $helperPath -ManagerPath $managerPath -QueuePath $queuePath -TriggerMessageId "newer" -DependenciesReviewed | ConvertFrom-Json
+    Assert-Equal $false $queued.external_output_allowed "Unaccepted queued work cannot produce output."
 
     (Get-Content -Raw -LiteralPath (Join-Path $recordsPath "older-a.json") | ConvertFrom-Json) | ForEach-Object {
         $_.state = "Completed"
@@ -58,7 +65,7 @@ try {
         $_ | ConvertTo-Json -Depth 8 | Set-Content -LiteralPath (Join-Path $recordsPath "older-b.json") -Encoding UTF8
     }
 
-    $second = & $helperPath -ManagerPath $managerPath -QueuePath $queuePath -TriggerMessageId "trigger" | ConvertFrom-Json
+    $second = & $helperPath -ManagerPath $managerPath -QueuePath $queuePath -TriggerMessageId "trigger" -DependenciesReviewed | ConvertFrom-Json
     Assert-Equal 0 $second.older_unresolved_count "Terminal older records must clear the gate."
     Assert-Equal $true $second.external_output_allowed "A processing trigger with no older unresolved records must allow output."
     Assert-Equal 2 $second.all_unresolved_count "Only trigger and newer record should remain unresolved."
