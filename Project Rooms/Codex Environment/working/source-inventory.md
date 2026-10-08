@@ -2,6 +2,7 @@
 
 | Source | Type | Status | Notes |
 | --- | --- | --- | --- |
+| `working/handoff-repair-rollout-2026-10-08.md` | Authorized cross-machine repair investigation | authoritative migration evidence | One rollout checklist for WESSTUDIO, OFFICEASSIST, and WES-VIDEOEDITOR; reference invoice evidence remains read-only, owner corrections and installed-file/synthetic validation tracked separately from business execution. |
 | Wes instruction to create Codex environment deployment PR | User instruction | authoritative | Creates a Project Room whose job is to remote into other authorized computers and install apps needed to replicate the Codex environment from WesStudio. |
 | `outputs/WesStudio Baseline Inventory.md` | Local machine inspection | authoritative | Non-secret WesStudio hardware, Windows, Codex, repo, runtime, application, skill, plugin, and remote-access baseline recorded on 2026-07-21. |
 | `working/application-classification.md` | Wes approval record | authoritative | Records the Step 2 Core, Business, Optional, and Safety Groups approved on 2026-07-21. |

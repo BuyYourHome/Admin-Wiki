@@ -2,6 +2,7 @@
 
 | Item | Status | Notes |
 | --- | --- | --- |
+| Handoff contract and deployed runtime consistency, October 8, 2026 | investigating | Cross-producer envelope mismatch, stale installed skills/worker pins, routing-default conflict, and missing completion-return registration are tracked together in `handoff-repair-rollout-2026-10-08.md`. Owner correction and actual installation/synthetic verification are required. |
 | Project Room name | no conflict identified | No existing `Project Rooms\Codex Environment` folder or `skills\codex-environment` folder was found before creation. |
 | Remote setup authority | approval gated | Remote access and installation actions require Wes authorization for the specific target computer and setup session. |
 | Baseline app list | resolved for Step 1 | WesStudio was inspected on 2026-07-21 and the non-secret baseline is recorded in `outputs/WesStudio Baseline Inventory.md`. Step 2 must classify which present applications are required on targets. |

@@ -2,6 +2,7 @@
 
 | Question | Status | Notes |
 | --- | --- | --- |
+| Are all three machines' handoff boundaries repaired and verified? | blocked / active investigation | See the single `handoff-repair-rollout-2026-10-08.md` checklist. OFFICEASSIST local maintenance access, WVE maintenance identity, workflow-owner returns, exact refusal evidence, installed hashes, and synthetic downstream returns remain unresolved. No business approval/send/post is authorized by this repair. |
 | What is the authoritative WesStudio baseline? | resolved for Step 1 | See `outputs/WesStudio Baseline Inventory.md`, recorded 2026-07-21. |
 | What remote-control tool should be used? | resolved for first target | `Wes-VideoEditor` is authorized for Windows Remote Desktop over the same private LAN. Other targets require separate authorization. |
 | Which target computer is first? | resolved | `Wes-VideoEditor`, user `wesbrowning1@outlook.com`. See `working/wes-videoeditor-authorized-setup-scope.md`. |
