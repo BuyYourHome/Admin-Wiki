@@ -266,6 +266,17 @@ Before declaring another computer ready, identify and document the WesStudio bas
 - Chat name: `Codex Environment`
 - Thread id: `019f84d0-78d4-7013-8c07-42c01f961be1`
 
+## Messaging Readiness
+
+- Dispatchable: No - pending messaging registration and validation completion.
+- Existing task execution machine: `WESSTUDIO`; no replacement chat created.
+- Manifest: `C:\Codex\Wiki Files\config\pr-messaging-manifests\codex-environment.json`.
+- Exact normal-profile client registration and central host access verified 2026-10-08. Other local registrations were preserved.
+- Worker-owned destination enrollment and one unattended cross-machine synthetic Accepted, Processing, Completed lifecycle remain required. Do not send result returns to this endpoint until those gates pass.
+- Registration repair evidence: [[Project Rooms/Create PR/outputs/Handoff Registration Audit 2026-10-08]].
+
+PR Messaging: Follow `C:\Codex\Wiki Files\Project Room Messaging Rule.md`. The central message record is authoritative; task messages are wake-up signals, not delivery proof.
+
 ## Start PR
 
 Before durable work, follow Start PR in `C:\Codex\Wiki Files\Project Room Chat Startup Rule.md`. Interpret unqualified requests under the Current PR Scope Rule in that file. Work on `main` unless Wes explicitly asks for a branch.

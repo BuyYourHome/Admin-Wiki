@@ -760,6 +760,14 @@ Dedicated chat:
 - Chat name: `Codex Environment`
 - Thread id: `019f84d0-78d4-7013-8c07-42c01f961be1`
 
+Messaging readiness:
+
+- Execution machine: `WESSTUDIO`.
+- Dispatchable: No - pending messaging registration and validation completion.
+- Manifest: `config\pr-messaging-manifests\codex-environment.json`.
+- Exact local client registration and host access verified 2026-10-08; worker destination enrollment and unattended cross-machine synthetic lifecycle remain required before result returns or production routing.
+- Evidence: `Project Rooms\Create PR\outputs\Handoff Registration Audit 2026-10-08.md`.
+
 Important rules:
 
 - Work on `main` unless Wes explicitly asks for a branch.

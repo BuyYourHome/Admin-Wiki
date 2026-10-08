@@ -18,7 +18,7 @@ This is the live task registry for the universal [[Project Room Delegation Contr
 | CMA Report - 5009 Sunnyfield Dr | shared `cma-report` | pending | Route through CMA Report. | Per-property output room; no separate skill. |
 | CMA Report - 5021 Sunnyfield Dr | shared `cma-report` | pending | Route through CMA Report. | Per-property output room; no separate skill. |
 | CMA Report - 5512 Desert Willow Ln | shared `cma-report` | pending | Route through CMA Report. | Per-property output room; no separate skill. |
-| Codex Environment | `codex-environment` | `019f84d0-78d4-7013-8c07-42c01f961be1` | Route Codex/machine environment setup and replication here. | Use for multi-machine readiness. |
+| Codex Environment | `codex-environment` | `019f84d0-78d4-7013-8c07-42c01f961be1` | Owns Codex/machine environment setup and rollout coordination; WESSTUDIO. | Dispatchable No - exact local registration and host access verified 2026-10-08; worker enrollment and unattended cross-machine lifecycle pending. Do not queue result returns yet. See Create PR Handoff Registration Audit 2026-10-08. |
 | Computers | `computers` | `019f96e9-c663-7550-bf20-5829f6cb6c88` | Route computer inventory, specs, and device-readiness work here. | Distinct from Codex app behavior. |
 | Confidential | `confidential` | `019f47a8-b32a-73a0-9bc4-9e493f1b0c5e` | Route confidential sensitive-source organization here. | Keep handoffs minimal and avoid unnecessary source copying. |
 | Contract for Deed | `contract-for-deed` | pending | Route seller-financing and CFD package work here. | Uses Email Monitor for delivery. |
