@@ -1,6 +1,6 @@
 # Project Room handoff repair rollout — 2026-10-08
 
-Status: investigating; Codex Environment remains completion owner.
+Status: blocked / needs Wes for authorized local access to remaining machines; Codex Environment remains completion owner. No business execution is authorized by this repair.
 
 ## Authority and scope
 
@@ -50,7 +50,7 @@ Infrastructure limitation: the WES-VIDEOEDITOR dispatcher implementation task is
 
 ## Repair dispatch ledger
 
-All five new immutable repair messages were created centrally, with maximum one notification attempt each and business execution explicitly prohibited. WESSTUDIO's repaired worker submitted Create PR once, attempt `lt-9e2c3a148aaa4a61a87b57f9bd8157c2`. Create PR wrote its genuine acceptance at 2026-10-08T11:59:14Z and remains Processing; terminal result is pending. The existing task was notLoaded and was opened to permit the original queue submission to execute, without a second notification. The natural worker tick reconciled acceptance, closed the notification journal entry, and released the notification hold; this is not business completion or unattended task-readiness proof. Jean is skipped as DestinationNotPinned. OFFICEASSIST owner results remain pending. Creation/submission is not acceptance.
+All five new immutable repair messages were created centrally, with maximum one notification attempt each and business execution explicitly prohibited. WESSTUDIO's repaired worker submitted Create PR once, attempt `lt-9e2c3a148aaa4a61a87b57f9bd8157c2`. Create PR wrote its genuine acceptance at 2026-10-08T11:59:14Z and returned Blocked after repairing registration metadata in commit `6485e7b5`; its result identifies the enrollment implementation and second-machine validation blockers. The existing task was notLoaded and was opened to permit the original queue submission to execute, without a second notification. The natural worker tick reconciled acceptance, closed the notification journal entry, and released the notification hold; this is not business completion or unattended task-readiness proof. Jean is skipped as DestinationNotPinned. OFFICEASSIST owner results remain pending. Creation/submission is not acceptance.
 
 | Owner | Message suffix after `prmsg-codex-environment-handoff-repair-20261008-` | Immutable hash |
 | --- | --- | --- |
