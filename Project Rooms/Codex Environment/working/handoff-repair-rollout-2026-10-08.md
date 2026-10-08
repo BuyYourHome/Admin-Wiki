@@ -19,6 +19,7 @@ Reference case: `IE-TF-20261003-POND-001`. Existing records and business files a
 | Claimed email refusal | Central result says no submission occurred and attributes refusal to Outlook sensitivity confirmation. Exact tool name, denial text, and submission evidence are absent from that record. | Email Monitor: inspect original task/tool evidence; distinguish workflow gate, approval-review denial, connector refusal, or unknown origin. No send-path substitution. |
 | Worker transport | Canonical read-only verifier passed all three reference record immutable hashes. Reference records have acceptance with attempt_count 0. That proves recipient state, not unattended worker discovery/claim/notification. No linked result messages were found for these three parents; the only child found is the approved-copy request. | Dispatcher owner: reconcile original journals/notifications read-only. |
 | Completion returns | Codex Environment has a routing-map task but no canonical messaging manifest or local worker pin. Routing map's Handoff Defaults conflict with central route-and-monitor completion-owner rule. | Create PR owns registration; Jean owns routing-map consistency. Automatic result return currently unproven. |
+| Producer coverage | Email Monitor has a dedicated validated builder and isolated authorization tests. Inspection found no equivalent handoff builder/validator under Doc Scan tools or Invoice Entry scripts; their rules reference the generic manager/delegation contract. The existing Invoice Entry envelope fails Email Monitor's required reference schema. | Doc Scan and Invoice Entry must implement or adopt the required contract through their owning PRs; matching installed prose alone is not validation. |
 | Workbook identity | Package states project workbook row is pending. SharePoint property-root listing exposes candidate `26_Project Management - 908 Pond St 3.xlsm`, item `01ZGFUBDNTDFAK6FPJKFGKOYF4E2XMQOU3`, last modified 2026-05-29, eTag `{AF4019B3-E915-4C51-A760-BC26AEC83A9B},2`. This discovery does not establish it as the current authoritative posting workbook. | Invoice Entry: reconcile the live canonical site/drive/item/version and row evidence; never substitute name-only/local-cache matches. |
 
 ## Single machine rollout checklist
@@ -29,7 +30,7 @@ All cells require fresh machine/profile evidence. Historical readiness and Git e
 | --- | --- | --- | --- |
 | Exact machine/profile and canonical repo | Verified WESSTUDIO / C:\Users\wesbr / C:\Codex\Wiki Files | Pending | Pending |
 | Git branch and live remote comparison | main, clean, live fetch 0 ahead / 0 behind at investigation start | Pending | Pending |
-| Installed skill hashes | codex-environment and create-pr match; invoice-entry, email-monitor, doc-scan, pr-messaging-dispatcher differ | Pending | Pending |
+| Installed skill hashes | After owner sync, complete folders match for codex-environment (2 files), create-pr (2), pr-messaging-dispatcher (1), doc-scan (7), email-monitor (2), email-delivery (1), invoice-entry (12), quickbooks (2); zero extra installed files | Pending | Pending |
 | Active worker package/config and file hashes | Guarded upgrade to 0.4.7 completed; independently verified manager/adapter/CLI hashes and CLI existence. Natural tick health TickComplete, queue reachable. Original owner/journal/destination pins preserved. | Pending | Pending |
 | Exact source/destination registrations and pins | Stale Email Monitor/Invoice Entry client registrations; Codex Environment absent | Pending | Pending |
 | Builder/validator contract tests | Existing Email Monitor suite PASS: rejects absent/mismatched authorizer, accepts complete fixture, zero records created. Cross-producer validation-only test REJECTS existing Invoice Entry envelope: `SourceEvidenceMissing: every reference requires reference_id.` | Installed tests pending | Installed tests pending |
@@ -49,7 +50,7 @@ Infrastructure limitation: the WES-VIDEOEDITOR dispatcher implementation task is
 
 ## Repair dispatch ledger
 
-All five new immutable repair messages were created centrally, with maximum one notification attempt each and business execution explicitly prohibited. WESSTUDIO's repaired worker submitted Create PR once, attempt `lt-9e2c3a148aaa4a61a87b57f9bd8157c2`; acceptance/result remain pending. The existing task was notLoaded and was opened to permit the original queue submission to execute, without a second notification. Jean is skipped as DestinationNotPinned. OFFICEASSIST owner results remain pending. Creation/submission is not acceptance.
+All five new immutable repair messages were created centrally, with maximum one notification attempt each and business execution explicitly prohibited. WESSTUDIO's repaired worker submitted Create PR once, attempt `lt-9e2c3a148aaa4a61a87b57f9bd8157c2`. Create PR wrote its genuine acceptance at 2026-10-08T11:59:14Z and remains Processing; terminal result is pending. The existing task was notLoaded and was opened to permit the original queue submission to execute, without a second notification. The natural worker tick reconciled acceptance, closed the notification journal entry, and released the notification hold; this is not business completion or unattended task-readiness proof. Jean is skipped as DestinationNotPinned. OFFICEASSIST owner results remain pending. Creation/submission is not acceptance.
 
 | Owner | Message suffix after `prmsg-codex-environment-handoff-repair-20261008-` | Immutable hash |
 | --- | --- | --- |
@@ -68,3 +69,15 @@ WESSTUDIO local transport maintenance was initiated in its existing dispatcher t
 - OFFICEASSIST `Test-WSMan` failed with fault 2150859046 (connection unavailable). WES-VIDEOEDITOR responds to `Test-WSMan`, but the existing identity's harmless `Invoke-Command` fails `Access is denied`. No credentials or security settings were changed.
 - Wes was asked to open the existing OFFICEASSIST local dispatcher chat so authorized local maintenance can proceed. Passwords/MFA are not requested in chat. Remote installation and synthetic lifecycle verification remain pending access or functioning local-worker evidence.
 - WESSTUDIO current config hash after upgrade: `7398B1ED4E0B7A01729E3B7251D249E8756D7C180F034170F1E9F8E09895AB26`. Current pins cover Create PR and Bathroom Fixtures only; they do not cover Jean or Codex Environment. A clean tick with these pins is not systemwide readiness.
+
+## Repeatable installed-evidence check
+
+Run the read-only checker locally on each authorized machine, in its intended Windows profile:
+
+```powershell
+& 'C:\Codex\Wiki Files\Project Rooms\Codex Environment\tools\Get-HandoffRolloutEvidence.ps1' -ExpectedComputer OFFICEASSIST
+```
+
+Use the exact target name for WESSTUDIO or WES-VIDEOEDITOR. The checker rejects a different computer, hashes every file in eight affected installed skill folders, reports extra installed files, compares installed worker scripts and executable pins, and reads local registration and task-selection evidence. It does not fetch, install, launch tasks, write queue records, inspect credentials, or execute business work. Cached origin comparison is explicitly not live GitHub verification. `overall_verified` deliberately remains false: this inventory cannot certify contract behavior or downstream completion.
+
+WESSTUDIO verification on October 8: normal managed execution succeeded; all eight skill folders and seven installed 0.4.7 worker scripts matched canonical hashes. Manager/adapter/CLI pins matched. Scheduled-task inspection required the approved normal-user path and verified Ready, selecting release 0.4.7; managed access denial was reported rather than treated as a missing task. Wrong-machine negative test passed (`ComputerMismatch`). These results do not cover OFFICEASSIST or WES-VIDEOEDITOR.
