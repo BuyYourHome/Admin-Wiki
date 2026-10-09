@@ -1,5 +1,15 @@
 # Low-token dispatcher releases
 
+## Controlled release 0.4.8
+
+Release `0.4.8` adds one guarded in-place destination-enrollment operation for the already-Live WESSTUDIO worker. `EnrollValidationDestination` is hard-scoped to the existing Codex Environment task `019f84d0-78d4-7013-8c07-42c01f961be1`. It requires an exact current config hash, owner generation, manifest file hash, immutable synthetic payload hash, one exact local registration, and a schema-2 `validation_ready` manifest bound to one queued, zero-attempt, no-business-action synthetic record. It refuses WES-VIDEOEDITOR and every other room/task combination.
+
+The operation disables the scheduled task only long enough to reach an idle configuration boundary, rereads all evidence, appends one destination pin, and re-enables the unchanged Live task. It does not change the task action, triggers, principal, settings, owner, owner generation, journal, state directory, existing pins, attempts, or central record. A current CLI mismatch fails with `CliPinRefreshRequiresUpgradeLive`; CLI pins may be refreshed only by the guarded `UpgradeLive` action.
+
+After enrollment, do not force a run. The normal Live worker may discover only the exact manifest-authorized synthetic record on a natural tick. Create PR still owns recipient registration, manifest preparation, synthetic-record creation, lifecycle verification, readiness validation, and the later `dispatchable: true` change.
+
+Run `tests\Test-DestinationEnrollment.ps1` for isolated positive, idempotency, wrong-identity/hash, unsafe-record, duplicate-registration, conflicting-pin, and installer-preservation checks.
+
 ## Controlled release 0.4.7
 
 Release `0.4.7` implements acceptance-based notification release without changing business-processing state:

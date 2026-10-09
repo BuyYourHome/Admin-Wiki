@@ -1,15 +1,21 @@
 [CmdletBinding()]
 param(
-    [ValidateSet('Plan','Stage','StartValidation','PromoteLive','UpgradeLive','Rollback')]
+    [ValidateSet('Plan','Stage','StartValidation','PromoteLive','UpgradeLive','EnrollValidationDestination','Rollback')]
     [string]$Action='Plan',
     [string]$ExpectedMachine='WES-VIDEOEDITOR',
     [string]$DispatcherTaskId='01a05d0c-8031-7d92-9474-ab2330008ddb',
     [string]$LegacyAutomationId='pr-messaging-dispatcher-wes-videoeditor',
     [switch]$AllowActiveEmbeddedFallback,
-    [string]$ValidationMessageId
+    [string]$ValidationMessageId,
+    [string]$DestinationProjectRoom,
+    [string]$DestinationTaskId,
+    [string]$ExpectedManifestSha256,
+    [string]$ExpectedValidationPayloadHash,
+    [string]$ExpectedConfigSha256,
+    [string]$ExpectedOwnerGeneration
 )
 $ErrorActionPreference='Stop'
-$release='0.4.7'
+$release='0.4.8'
 $queue='\\WES-VIDEOEDITOR\BYH-PRMessaging$'
 $task="BYH PR Messaging Worker - $ExpectedMachine"
 $root=Join-Path $env:LOCALAPPDATA "BuyYourHome\PRMessaging\low-token\releases\$release"
@@ -42,6 +48,14 @@ function Get-LtReviewedCli {
         ($item.Attributes -band [IO.FileAttributes]::ReparsePoint)) { throw 'UnreviewedCliLocation' }
     [pscustomobject]@{path=$path;sha256=(Get-FileHash -LiteralPath $path -Algorithm SHA256).Hash}
 }
+function Get-LtTaskStructure($ScheduledTask) {
+    [ordered]@{
+        actions=@($ScheduledTask.Actions|ForEach-Object{[ordered]@{execute=[string]$_.Execute;arguments=[string]$_.Arguments;working_directory=[string]$_.WorkingDirectory}})
+        triggers=@($ScheduledTask.Triggers|ForEach-Object{[ordered]@{start_boundary=[string]$_.StartBoundary;repetition_interval=[string]$_.Repetition.Interval;repetition_duration=[string]$_.Repetition.Duration;repetition_stop_at_duration_end=[bool]$_.Repetition.StopAtDurationEnd}})
+        principal=[ordered]@{user_id=[string]$ScheduledTask.Principal.UserId;logon_type=[string]$ScheduledTask.Principal.LogonType;run_level=[string]$ScheduledTask.Principal.RunLevel}
+        settings=[ordered]@{hidden=[bool]$ScheduledTask.Settings.Hidden;multiple_instances=[string]$ScheduledTask.Settings.MultipleInstances;execution_time_limit=[string]$ScheduledTask.Settings.ExecutionTimeLimit;start_when_available=[bool]$ScheduledTask.Settings.StartWhenAvailable}
+    }
+}
 
 if($Action -eq 'Plan'){
     $embeddedFallbackException=([bool]$AllowActiveEmbeddedFallback -and $ExpectedMachine -ceq 'OFFICEASSIST' -and $LegacyAutomationId -ceq 'officeassist-morning-email-summary-and-instruction-monitor')
@@ -51,8 +65,87 @@ if($Action -eq 'Plan'){
 if($env:COMPUTERNAME -cne $ExpectedMachine){throw 'InstallationMachineMismatch'}
 if($DispatcherTaskId -cnotmatch '^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$'){throw 'InvalidDispatcherTaskId'}
 
+if($Action -eq 'EnrollValidationDestination'){
+    if($ExpectedMachine -cne 'WESSTUDIO' -or $DestinationProjectRoom -cne 'Codex Environment' -or
+        $DestinationTaskId -cne '019f84d0-78d4-7013-8c07-42c01f961be1'){throw 'DestinationEnrollmentScopeMismatch'}
+    Assert-LtId $ValidationMessageId
+    if($ExpectedManifestSha256 -cnotmatch '^[0-9A-Fa-f]{64}$' -or $ExpectedValidationPayloadHash -cnotmatch '^[0-9a-f]{64}$' -or
+        $ExpectedConfigSha256 -cnotmatch '^[0-9A-Fa-f]{64}$' -or [string]::IsNullOrWhiteSpace($ExpectedOwnerGeneration)){throw 'DestinationEnrollmentExpectedEvidenceMissing'}
+    if(!(Test-Path -LiteralPath $configPath)){throw 'LiveSourceConfigMissing'}
+    if((Get-FileHash -LiteralPath $configPath -Algorithm SHA256).Hash -ine $ExpectedConfigSha256){throw 'DestinationEnrollmentConfigHashMismatch'}
+    $cfg=Read-LtJson $configPath
+    if($cfg.release -cne $release -or $cfg.expected_machine -cne $ExpectedMachine -or $cfg.dispatcher_task_id -cne $DispatcherTaskId -or
+        (Get-LtPackageHash $pkg) -cne $cfg.package_sha256 -or (Get-FileHash -LiteralPath $cfg.manager_path).Hash -ine $cfg.manager_sha256 -or
+        (Get-FileHash -LiteralPath $cfg.adapter_path).Hash -ine $cfg.adapter_sha256){throw 'DestinationEnrollmentLiveConfigurationMismatch'}
+    $reviewedCli=Get-LtReviewedCli
+    if($cfg.cli_path -cne $reviewedCli.path -or $cfg.cli_sha256 -ine $reviewedCli.sha256){throw 'CliPinRefreshRequiresUpgradeLive'}
+    $owner=Read-LtJson $ownerPath
+    if($owner.mode -cne 'Live' -or $owner.machine -cne $ExpectedMachine -or $owner.task_id -cne $DispatcherTaskId -or
+        $owner.owner -cne $cfg.owner -or $owner.generation -cne $cfg.generation -or $owner.generation -cne $ExpectedOwnerGeneration -or
+        $owner.sid -cne $cfg.expected_sid){throw 'DestinationEnrollmentOwnerMismatch'}
+    $journalPath=Join-Path $cfg.state_directory 'journal.json'
+    if(!(Test-Path -LiteralPath $journalPath)){throw 'DestinationEnrollmentJournalMissing'}
+    $journal=Read-LtJson $journalPath
+    if($journal.schema_version -ne 2 -or $journal.machine -cne $ExpectedMachine -or $journal.sid -cne $cfg.expected_sid -or
+        $journal.owner -cne $cfg.owner -or $journal.generation -cne $cfg.generation -or $null -eq $journal.entries){throw 'DestinationEnrollmentJournalMismatch'}
+    $journalHash=(Get-FileHash -LiteralPath $journalPath -Algorithm SHA256).Hash
+    $ownerHash=(Get-FileHash -LiteralPath $ownerPath -Algorithm SHA256).Hash
+    $client=Read-LtJson $cfg.client_path
+    $clientHash=(Get-FileHash -LiteralPath $cfg.client_path -Algorithm SHA256).Hash
+    $manifestFiles=@(Get-ChildItem -LiteralPath $cfg.manifest_directory -Filter '*.json' -File)
+    $manifestCandidates=@($manifestFiles|Where-Object {(Read-LtJson $_.FullName).project_room -ceq $DestinationProjectRoom})
+    if($manifestCandidates.Count -ne 1 -or (Get-FileHash -LiteralPath $manifestCandidates[0].FullName -Algorithm SHA256).Hash -ine $ExpectedManifestSha256){throw 'DestinationEnrollmentManifestHashMismatch'}
+    $manifests=@($manifestFiles|ForEach-Object{Read-LtJson $_.FullName})
+    $record=(& $cfg.manager_path -Action Get -QueuePath $queue -MessageId $ValidationMessageId|Out-String)|ConvertFrom-Json
+    $enrollment=New-LtValidationEnrollmentConfig $cfg $client $manifests $record $ExpectedMachine $DispatcherTaskId $DestinationProjectRoom $DestinationTaskId $ValidationMessageId $ExpectedValidationPayloadHash
+    $scheduled=Get-ScheduledTask -TaskName $task -ErrorAction Stop
+    $expectedAction=New-LtWorkerTaskAction $pkg $configPath 'Live'
+    if(!$scheduled.Settings.Enabled -or @($scheduled.Actions).Count -ne 1 -or $scheduled.Actions[0].Execute -cne $expectedAction.Execute -or
+        $scheduled.Actions[0].Arguments -cne $expectedAction.Arguments){throw 'DestinationEnrollmentTaskIdentityMismatch'}
+    $taskStructure=Get-LtTaskStructure $scheduled
+    $taskStructureHash=Get-LtSha256 ($taskStructure|ConvertTo-Json -Depth 12 -Compress)
+    $originalConfigBytes=[IO.File]::ReadAllBytes($configPath)
+    $configWritten=$false
+    Disable-ScheduledTask -TaskName $task|Out-Null
+    $deadline=[DateTime]::UtcNow.AddSeconds(60)
+    while((Get-ScheduledTask -TaskName $task).State -eq 'Running' -and [DateTime]::UtcNow -lt $deadline){Start-Sleep -Milliseconds 250}
+    if((Get-ScheduledTask -TaskName $task).State -eq 'Running'){
+        Enable-ScheduledTask -TaskName $task|Out-Null
+        throw 'LiveWorkerDidNotBecomeIdle'
+    }
+    try{
+        if((Get-FileHash -LiteralPath $configPath -Algorithm SHA256).Hash -ine $ExpectedConfigSha256 -or
+            (Get-FileHash -LiteralPath $journalPath -Algorithm SHA256).Hash -ine $journalHash -or
+            (Get-FileHash -LiteralPath $ownerPath -Algorithm SHA256).Hash -ine $ownerHash -or
+            (Get-FileHash -LiteralPath $cfg.client_path -Algorithm SHA256).Hash -ine $clientHash -or
+            (Get-FileHash -LiteralPath $manifestCandidates[0].FullName -Algorithm SHA256).Hash -ine $ExpectedManifestSha256){throw 'DestinationEnrollmentEvidenceChanged'}
+        $currentClient=Read-LtJson $cfg.client_path
+        $currentManifests=@(Get-ChildItem -LiteralPath $cfg.manifest_directory -Filter '*.json' -File|ForEach-Object{Read-LtJson $_.FullName})
+        $currentRecord=(& $cfg.manager_path -Action Get -QueuePath $queue -MessageId $ValidationMessageId|Out-String)|ConvertFrom-Json
+        $enrollment=New-LtValidationEnrollmentConfig $cfg $currentClient $currentManifests $currentRecord $ExpectedMachine $DispatcherTaskId $DestinationProjectRoom $DestinationTaskId $ValidationMessageId $ExpectedValidationPayloadHash
+        if(!$enrollment.already_enrolled){Write-LtJson $configPath $enrollment.config;$configWritten=$true}
+        $verified=Read-LtJson $configPath
+        if(@($verified.destinations|Where-Object {$_.project_room -ceq $DestinationProjectRoom -and $_.task_id -ceq $DestinationTaskId -and $_.machine -ceq $ExpectedMachine}).Count -ne 1 -or
+            @($verified.destinations).Count -ne (@($cfg.destinations).Count + $(if($enrollment.already_enrolled){0}else{1})) -or
+            (Get-FileHash -LiteralPath $journalPath -Algorithm SHA256).Hash -ine $journalHash -or
+            (Get-FileHash -LiteralPath $ownerPath -Algorithm SHA256).Hash -ine $ownerHash -or
+            (Get-FileHash -LiteralPath $cfg.client_path -Algorithm SHA256).Hash -ine $clientHash -or
+            (Get-FileHash -LiteralPath $manifestCandidates[0].FullName -Algorithm SHA256).Hash -ine $ExpectedManifestSha256){throw 'DestinationEnrollmentPostconditionFailed'}
+        $afterStructureHash=Get-LtSha256 ((Get-LtTaskStructure (Get-ScheduledTask -TaskName $task))|ConvertTo-Json -Depth 12 -Compress)
+        if($afterStructureHash -cne $taskStructureHash){throw 'DestinationEnrollmentTaskChanged'}
+        Enable-ScheduledTask -TaskName $task|Out-Null
+        if(!(Get-ScheduledTask -TaskName $task).Settings.Enabled){throw 'DestinationEnrollmentTaskEnableFailed'}
+    }catch{
+        if($configWritten){[IO.File]::WriteAllBytes($configPath,$originalConfigBytes)}
+        Enable-ScheduledTask -TaskName $task -ErrorAction SilentlyContinue|Out-Null
+        throw
+    }
+    [pscustomobject]@{release=$release;status=if($enrollment.already_enrolled){'ValidationDestinationAlreadyEnrolled'}else{'ValidationDestinationEnrolled'};machine=$ExpectedMachine;project_room=$DestinationProjectRoom;task_id=$DestinationTaskId;validation_message_id=$ValidationMessageId;payload_hash=$ExpectedValidationPayloadHash;manifest_sha256=$ExpectedManifestSha256;client_sha256=$clientHash;owner=$owner.owner;generation_preserved=$owner.generation;journal_sha256=$journalHash;journal_preserved=$true;existing_destinations_preserved=$true;scheduled_task=$task;task_structure_sha256=$taskStructureHash;schedule_preserved=$true;task_enabled=$true;recipient_lifecycle_started=$false}|ConvertTo-Json -Depth 8
+    return
+}
+
 if($Action -eq 'UpgradeLive'){
-    $sourceRelease=@($release,'0.4.6','0.4.5','0.4.4','0.4.3','0.4.2','0.4.1','0.4.0')|Where-Object {Test-Path -LiteralPath (Join-Path $env:LOCALAPPDATA "BuyYourHome\PRMessaging\low-token\releases\$_\low-token\config.json")}|Select-Object -First 1
+    $sourceRelease=@($release,'0.4.7','0.4.6','0.4.5','0.4.4','0.4.3','0.4.2','0.4.1','0.4.0')|Where-Object {Test-Path -LiteralPath (Join-Path $env:LOCALAPPDATA "BuyYourHome\PRMessaging\low-token\releases\$_\low-token\config.json")}|Select-Object -First 1
     if([string]::IsNullOrWhiteSpace($sourceRelease)){throw 'LiveSourceConfigMissing'}
     $oldRoot=Join-Path $env:LOCALAPPDATA "BuyYourHome\PRMessaging\low-token\releases\$sourceRelease"
     $oldPkg=Join-Path $oldRoot 'low-token';$oldConfigPath=Join-Path $oldPkg 'config.json'
