@@ -1,12 +1,16 @@
 [CmdletBinding()]
 param(
-    [ValidateSet('Plan','Stage','StartValidation','PromoteLive','UpgradeLive','Rollback')]
+    [ValidateSet('Plan','Stage','StartValidation','PromoteLive','UpgradeLive','Rollback','EnrollValidationDestination')]
     [string]$Action='Plan',
     [string]$ExpectedMachine='WES-VIDEOEDITOR',
     [string]$DispatcherTaskId='01a05d0c-8031-7d92-9474-ab2330008ddb',
     [string]$LegacyAutomationId='pr-messaging-dispatcher-wes-videoeditor',
     [switch]$AllowActiveEmbeddedFallback,
-    [string]$ValidationMessageId
+    [string]$ValidationMessageId,
+    [string]$ExpectedLiveConfigHash,
+    [string]$ExpectedOwnerGeneration,
+    [string]$ExpectedManifestHash,
+    [string]$ExpectedSyntheticPayloadHash
 )
 $ErrorActionPreference='Stop'
 $release='0.4.7'
@@ -50,6 +54,37 @@ if($Action -eq 'Plan'){
 }
 if($env:COMPUTERNAME -cne $ExpectedMachine){throw 'InstallationMachineMismatch'}
 if($DispatcherTaskId -cnotmatch '^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$'){throw 'InvalidDispatcherTaskId'}
+
+if($Action -eq 'EnrollValidationDestination'){
+    # Exact October 9 authorization. No generic or remote-machine enrollment.
+    if($ExpectedMachine -cne 'WESSTUDIO' -or $DispatcherTaskId -cne '01a06337-1b59-7dc2-9586-6660eb7b5da7'){
+        throw 'EnrollmentEndpointNotAuthorized'
+    }
+    . (Join-Path $PSScriptRoot 'installer\Enrollment.ps1')
+    $manifestPath='C:\Codex\Wiki Files\config\pr-messaging-manifests\codex-environment.json'
+    $expectedAction=New-LtWorkerTaskAction $pkg $configPath 'Live'
+    $scheduleEvidence={
+        $s=Get-ScheduledTask -TaskName $task -ErrorAction Stop
+        $principalSid=try{([Security.Principal.NTAccount]$s.Principal.UserId).Translate([Security.Principal.SecurityIdentifier]).Value}catch{[string]$s.Principal.UserId}
+        [pscustomobject]@{
+            enabled=[bool]$s.Settings.Enabled
+            principal_sid=$principalSid
+            actions=@($s.Actions|ForEach-Object{[pscustomobject]@{execute=$_.Execute;arguments=$_.Arguments}})
+            snapshot_hash=Get-LtSha256 (Export-ScheduledTask -TaskName $task)
+        }
+    }
+    $readValidation={param($c,$id) & $c.manager_path -Action Get -QueuePath $c.queue_path -MessageId $id | ConvertFrom-Json}
+    $reviewedCli=Get-LtReviewedCli
+    Invoke-LtValidationEnrollment -ConfigPath $configPath -StateDirectory $state -ManifestPath $manifestPath -OwnerPath $ownerPath `
+        -Machine $ExpectedMachine -Sid ([Security.Principal.WindowsIdentity]::GetCurrent().User.Value) -DispatcherTaskId $DispatcherTaskId `
+        -ProjectRoom 'Codex Environment' -DestinationTaskId '019f84d0-78d4-7013-8c07-42c01f961be1' `
+        -ValidationMessageId $ValidationMessageId -ExpectedLiveConfigHash $ExpectedLiveConfigHash -ExpectedOwnerGeneration $ExpectedOwnerGeneration `
+        -ExpectedManifestHash $ExpectedManifestHash -ExpectedSyntheticPayloadHash $ExpectedSyntheticPayloadHash `
+        -CurrentCliPath $reviewedCli.path -CurrentCliHash $reviewedCli.sha256 `
+        -ExpectedActionExecute $expectedAction.Execute -ExpectedActionArguments $expectedAction.Arguments `
+        -GetScheduleEvidence $scheduleEvidence -ReadValidationRecord $readValidation | ConvertTo-Json -Depth 8
+    return
+}
 
 if($Action -eq 'UpgradeLive'){
     $sourceRelease=@($release,'0.4.6','0.4.5','0.4.4','0.4.3','0.4.2','0.4.1','0.4.0')|Where-Object {Test-Path -LiteralPath (Join-Path $env:LOCALAPPDATA "BuyYourHome\PRMessaging\low-token\releases\$_\low-token\config.json")}|Select-Object -First 1
