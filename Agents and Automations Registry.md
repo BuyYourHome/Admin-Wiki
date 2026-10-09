@@ -765,7 +765,7 @@ Messaging readiness:
 - Execution machine: `WESSTUDIO`.
 - Dispatchable: No - pending messaging registration and validation completion.
 - Manifest: `config\pr-messaging-manifests\codex-environment.json`.
-- Exact local client registration and host access verified 2026-10-08; worker destination enrollment and unattended cross-machine synthetic lifecycle remain required before result returns or production routing.
+- Exact local client registration and host access reverified 2026-10-09; guarded `0.4.8` worker enrollment completed. One natural-worker synthetic submission is queue-acknowledged, but the task remains `notLoaded` without acceptance. Preserve that submission; unattended lifecycle remains required before result returns or production routing.
 - Evidence: `Project Rooms\Create PR\outputs\Handoff Registration Audit 2026-10-08.md`.
 
 Important rules:

@@ -1,6 +1,28 @@
 # Codex Environment additive enrollment - 2026-10-09
 
-Status: owner release received; Wes authorized a normal merge and reconciliation. The reconciled implementation is verified and ready for publication (23 application tests, 15 owner-validator tests, and 11 worker regression tests passed). Live enrollment, unattended validation, readiness promotion, and coordinator acceptance remain pending a genuine second-machine synthetic record. This is not overall system recovery.
+Status: reconciled implementation published as `2f5f1b2a`; 49 isolated checks passed. Guarded release `0.4.8` upgrade and exact destination enrollment completed on WESSTUDIO. One natural-worker synthetic submission is queue-acknowledged, but recipient lifecycle, readiness promotion, and coordinator acceptance remain pending because the exact chat is `notLoaded`. This is not overall system recovery.
+
+## Existing-record continuation and installed evidence
+
+Wes's subsequent direct instruction authorized continuing with the existing synthetic only. Git was clean and synchronized at `2f5f1b2a`; no new merge or duplicate tests were needed. The owner-published `375a1a58` release and preserved local `f713c650` safeguards remain reconciled in that normal merge. Validation-ready binding was published in `c8b7bb42`.
+
+- Exact endpoint: Codex Environment / `019f84d0-78d4-7013-8c07-42c01f961be1` / WESSTUDIO / normal profile `WESSTUDIO\wesbr`.
+- Source synthetic: `prmsg-wve-codex-environment-enrollment-validation-20261009-001`; immutable hash `ea18856ad260fd23b9c04ff39f066c893ab9af825024b376c1932d2496df32e3`; genuine WES-VIDEOEDITOR dispatcher source `01a05d0c-8031-7d92-9474-ab2330008ddb`. Initially verified Queued, zero attempts, budget one, explicit no-business flags.
+- Guarded UpgradeLive returned `LiveUpgraded`, release `0.4.8`. Package, manager, adapter, and current CLI pins verified. Owner/client hashes, two prior pins, principal, triggers/settings, and one-minute schedule preserved; only the release-specific launcher paths changed as required by upgrade. The natural worker's journal timestamp advanced with a zero-submission tick; no journal reset or manual edit occurred.
+- Guarded enrollment returned `EnrolledValidationDestination` at `2026-10-09T15:48:46.1385372Z`. Config before: `71E8232F8E280FD64AB95B96A17029559E821A43207CC1B3973473A723E8DBF5`; after: `483c1e2d8154b27685b4e5500b54a3cb7799a033fc2e7f2f60bb77c9f6bbc035`. Exactly three pins: original Create PR and Bathroom Fixtures, followed by Codex Environment.
+- Enrollment manifest guard: `5040D676D12F6C53BB4FF6D9C56C733FCAA9AFFED169EC61964662C7C0135EB7`. Later evidence-only manifest updates legitimately change its file hash; preserve the original guard in the runtime enrollment receipt.
+- Owner remains Live, generation `0.4.0`, hash `CF08968D62FEEA7766DFBCF6FC8BA07117E6FE7226B347102220BBBBD9BADAB2`. Schedule hash before/after enrollment: `c9cfc356eeab0f3f7a2d390dcb778c51fa719865c40567ea9cb9f47b00e6ebd6`. Client hash unchanged: `7B8DF3B6D068F3D5115278C3E59D630821CF86CCB8299BE1842E5B3E879F9E70`. Enrollment receipt preserves the lock-protected journal hash and atomic before-image.
+- Natural worker attempt: `lt-d34a43a482f846889bc7c08e07f5d133`, started `2026-10-09T15:50:12.6037419Z`; submission completed `2026-10-09T15:50:22.7064774Z`. Adapter exit zero, no timeout, permanent submission marker present, queue acknowledgment `01a1215b-b895-7551-ac79-72679a317f1b`. Central state remains Delivery Attempted / Pending, one attempt, no receipt/result. No forced tick or direct task notification occurred.
+
+### Separate uncertain Create PR notification
+
+`prmsg-wve-create-pr-codex-environment-validation-record-20261009-001`, verified hash `c30b30e227d31176f0c7315da6721ccaefefb61d3fc47ab718d2352a0b289bf8`, remains Delivery Ambiguous. Its only attempt `lt-68ed77a3c6bc4c1194acdaa154f7b2fc` timed out, had no queue acknowledgment, no submission marker, no receipt/result, and remains unresolved in the preserved journal. Recent Create PR task history contained no original transport wake-up for that ID. The direct Wes instruction is not proof of earlier delivery. No lifecycle, retry, attempt reset, or administrative closure was performed on this notification.
+
+### Remaining safety boundary
+
+The app's exact Codex Environment task still reports `notLoaded`, with its last turn from October 8 and no recipient-authored acceptance. Queue acknowledgment proves enqueueing, not execution. Keep the manifest `validation_ready` and `dispatchable: false`; do not remove the pin or revert config while this submission remains pending. Do not manually open/activate the chat to manufacture unattended validation, resubmit, create another synthetic, or write its lifecycle from Create PR. Recover the original queued message through a supported app mechanism that preserves identity and requires no manual test activation; otherwise Wes must explicitly decide how to address the unattended-execution limitation. Promotion and the recovery coordinator handoff are not yet authorized to bypass this gate.
+
+Read-only readiness validation at `2026-10-09T15:53:37.4566232Z` returned `ready: false`: 13 checks passed; readiness status, completed lifecycle timestamp, synthetic lifecycle, and dispatchable declaration correctly failed. A fresh central read still verified both immutable hashes with no receipts/results; the synthetic had exactly one Pending attempt and the separate Create PR record remained Delivery Ambiguous. No payment, email, invoice, workbook, or other business action occurred.
 
 ## Authorized merge reconciliation
 

@@ -16,13 +16,20 @@
     "validation_message_id": "prmsg-wve-codex-environment-enrollment-validation-20261009-001",
     "validation_payload_hash": "ea18856ad260fd23b9c04ff39f066c893ab9af825024b376c1932d2496df32e3",
     "lifecycle_completed_at_utc": null,
-    "notification_count": 0,
+    "notification_count": 1,
+    "worker_release": "0.4.8",
+    "worker_owner_generation": "0.4.0",
+    "worker_config_sha256": "483c1e2d8154b27685b4e5500b54a3cb7799a033fc2e7f2f60bb77c9f6bbc035",
+    "enrolled_at_utc": "2026-10-09T15:48:46.1385372Z",
+    "validation_attempt_id": "lt-d34a43a482f846889bc7c08e07f5d133",
+    "validation_queue_message_id": "01a1215b-b895-7551-ac79-72679a317f1b",
+    "validation_submitted_at_utc": "2026-10-09T15:50:22.7064774Z",
     "dispatcher_task_id": "01a06337-1b59-7dc2-9586-6660eb7b5da7",
     "dispatcher_automation_id": "pr-messaging-dispatcher",
     "dispatcher_worker_task_name": "BYH PR Messaging Worker - WESSTUDIO",
     "transport_kind": "deterministic_windows_worker",
     "cross_machine_source": "WES-VIDEOEDITOR",
     "manual_intervention": null,
-    "blocker": "Only the exact existing synthetic is authorized for guarded enrollment and natural-worker validation. Production routing and coordinator handoff remain disabled until lifecycle and readiness checks pass."
+    "blocker": "Guarded enrollment succeeded. Natural worker submitted the exact synthetic once with queue acknowledgment; destination remains notLoaded and has no Accepted/Processing/Completed receipt. Preserve the pending submission without retry, manual activation, or lifecycle fabrication. Production dispatch and recovery handoff remain gated."
   }
 }

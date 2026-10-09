@@ -272,7 +272,7 @@ Before declaring another computer ready, identify and document the WesStudio bas
 - Existing task execution machine: `WESSTUDIO`; no replacement chat created.
 - Manifest: `C:\Codex\Wiki Files\config\pr-messaging-manifests\codex-environment.json`.
 - Exact normal-profile client registration and central host access verified 2026-10-08. Other local registrations were preserved.
-- Worker-owned destination enrollment and one unattended cross-machine synthetic Accepted, Processing, Completed lifecycle remain required. Do not send result returns to this endpoint until those gates pass.
+- Guarded release `0.4.8` destination enrollment completed 2026-10-09, preserving generation `0.4.0` and existing pins. The natural worker submitted `prmsg-wve-codex-environment-enrollment-validation-20261009-001` once with queue acknowledgment; the chat remains `notLoaded` without a recipient receipt. Unattended Accepted, Processing, Completed remains required. Preserve the pending submission; do not retry or send result returns until readiness passes.
 - Registration repair evidence: [[Project Rooms/Create PR/outputs/Handoff Registration Audit 2026-10-08]].
 
 PR Messaging: Follow `C:\Codex\Wiki Files\Project Room Messaging Rule.md`. The central message record is authoritative; task messages are wake-up signals, not delivery proof.
