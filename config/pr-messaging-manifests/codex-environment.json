@@ -10,18 +10,19 @@
   "related_project_rooms": ["Create PR", "PR Messaging Dispatcher", "Computers", "Jean Wright"],
   "limitations": ["No substitute chats or another Project Room's business execution", "Machine and profile changes require their specific authorization", "No production routing until messaging readiness passes"],
   "messaging_readiness": {
-    "status": "pending",
-    "machine_registration_verified_at_utc": "2026-10-08T12:05:54.8191119Z",
-    "host_access_verified_at_utc": "2026-10-08T12:05:56.1413733Z",
-    "validation_message_id": null,
+    "status": "validation_ready",
+    "machine_registration_verified_at_utc": "2026-10-09T15:45:46.6165572Z",
+    "host_access_verified_at_utc": "2026-10-09T15:44:09Z",
+    "validation_message_id": "prmsg-wve-codex-environment-enrollment-validation-20261009-001",
+    "validation_payload_hash": "ea18856ad260fd23b9c04ff39f066c893ab9af825024b376c1932d2496df32e3",
     "lifecycle_completed_at_utc": null,
     "notification_count": 0,
     "dispatcher_task_id": "01a06337-1b59-7dc2-9586-6660eb7b5da7",
-    "dispatcher_automation_id": null,
+    "dispatcher_automation_id": "pr-messaging-dispatcher",
     "dispatcher_worker_task_name": "BYH PR Messaging Worker - WESSTUDIO",
     "transport_kind": "deterministic_windows_worker",
-    "cross_machine_source": null,
+    "cross_machine_source": "WES-VIDEOEDITOR",
     "manual_intervention": null,
-    "blocker": "Dispatcher-owned destination enrollment and one unattended cross-machine synthetic lifecycle remain unverified. Do not queue result returns until the exact endpoint passes readiness."
+    "blocker": "Only the exact existing synthetic is authorized for guarded enrollment and natural-worker validation. Production routing and coordinator handoff remain disabled until lifecycle and readiness checks pass."
   }
 }
