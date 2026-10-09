@@ -15,6 +15,8 @@ This rule applies to every existing and future PR, whether a request arrives fro
 
 ## Standard Return States
 
+Every PR must follow [[Project Room Confirmation And Resume Rule]]. A `needs Wes` approval return must contain the exact YES/NO question, action-owning chat/machine, preserved package reference, submission certainty, and continuation step. The originating PR tracks the outcome; the receiver resumes on valid confirmation without requiring another instruction to continue. This does not change central message states or permit rewriting a terminal record.
+
 For delegated action work, valid return states remain `accepted`, `done`, `blocked`, `needs Wes`, and `rejected as wrong room`. Preserve the same `dispatch_id` throughout the handoff and return.
 
 ## Delegated Authorization Classes

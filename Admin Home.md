@@ -11,6 +11,7 @@ This is the starting page for the Buy Your Home admin wiki.
 - [[AIOS/efforts-index|AIOS Efforts Index]]
 - [[Agents and Automations Registry]]
 - [[Agent Unit Standard]]
+- [[Project Room Confirmation And Resume Rule]]
 - [[Project Rooms/Jean Wright/README|Jean Wright Project Room]]
 - [[Project Rooms/Jean Wright/working/dispatcher-routing-map|Jean Dispatcher Routing Map]]
 - [[Project Room Chat Startup Rule]]

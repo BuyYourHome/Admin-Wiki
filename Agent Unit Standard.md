@@ -6,6 +6,8 @@ An agent unit is not always an independent software agent. It is the durable pac
 
 ## Standard Package
 
+Every agent unit must implement [[Project Room Confirmation And Resume Rule]] in its operating behavior. Approval-blocked work must expose the exact question and retained continuation; a status-only `Needs Wes` return is not sufficient. Include that rule's review cases when validating an affected workflow.
+
 Each agent unit should identify these parts:
 
 | Part | Purpose |

@@ -30,6 +30,7 @@ First, read:
 - C:\Codex\Wiki Files\AGENTS.md
 - C:\Codex\Wiki Files\Repository Location Rule.md
 - C:\Codex\Wiki Files\Project Room Workflow.md
+- C:\Codex\Wiki Files\Project Room Confirmation And Resume Rule.md
 - C:\Codex\Wiki Files\Project Room Chat Startup Rule.md
 - C:\Codex\Wiki Files\Project Room File Ownership And Git Coordination Rule.md
 - C:\Codex\Wiki Files\Agent Unit Standard.md

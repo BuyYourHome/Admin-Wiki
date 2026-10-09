@@ -61,6 +61,13 @@ Use this repo when formulating solutions for office-admin workflows, SOPs, autom
 - Do not ask Wes to repeat `go`, `continue`, or `finish`.
 - Keep the continuing work within the originally authorized scope. This rule does not bypass an explicit safety gate, required action-time confirmation, permission boundary, or new decision that the governing workflow reserves for Wes.
 
+## Mandatory Confirmation And Resume
+
+- Every PR and workflow must follow `Project Room Confirmation And Resume Rule.md` when a genuine approval blocker occurs.
+- Ask Wes one exact, self-contained YES/NO question in the same turn; never leave a bare `Needs Wes` status without the decision and owning chat identified.
+- Preserve the prepared work and continuation. On an unambiguous direct YES, revalidate and resume without another `go`; on NO, record the decline and notify the origin.
+- Existing verified authority does not need repetition merely because work was delegated. Do not bypass platform gates, retry uncertain actions, or treat silence as approval.
+
 ## Skill Ownership Boundary Rule
 
 - When working from a process-specific chat, write only that process's own skill source unless Wes explicitly authorizes editing another skill.

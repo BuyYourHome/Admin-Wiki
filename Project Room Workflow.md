@@ -1,5 +1,7 @@
 # AI Project Room Workflow
 
+All existing and future workflows must apply [[Project Room Confirmation And Resume Rule]]: genuine approval blockers require an actionable YES/NO question, retained work, and continuation on the answer, not silent abandonment. Existing authority and safety boundaries remain intact.
+
 Use an AI Project Room for any task that depends on multiple source files, emails, scans, notes, spreadsheets, or prior drafts.
 
 The purpose is to prepare the source set before drafting, analyzing, rewriting, or making recommendations. Do not ask Codex to produce a final deliverable from a messy folder. Build the room first.
