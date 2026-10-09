@@ -465,6 +465,7 @@ For Statement packets, set or treat `confidence/status` as `Needs Review - State
 - Copy the connector-verified workbook into the project-room working area before editing.
 - Create a rollback copy before every workbook edit.
 - Edit through Excel-controlled saves for `.xlsm` project workbooks.
+- Never edit, save, or upload a project workbook through Excel in a browser (including Excel for the web). Use native desktop Excel through an approved local execution path under the signed-in Windows profile for edits and validation. Browser sign-in does not establish desktop credentials, and browser Excel may not provide equivalent behavior for `.xlsm` macros, controls, or workbook modes. If native Excel is unavailable through the approved path, stop and report the exact blocker; do not substitute browser-based editing.
 - Verify the workbook opens cleanly before upload.
 - Upload back through the Teams/SharePoint connector only after validation passes.
 
