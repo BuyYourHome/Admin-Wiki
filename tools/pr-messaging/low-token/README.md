@@ -1,16 +1,16 @@
 # Low-token dispatcher releases
 
-## Additive validation enrollment (2026-10-09)
+## Controlled release 0.4.8 — reconciled enrollment (2026-10-09)
 
 `Install-LowTokenWorker.ps1 -Action EnrollValidationDestination` is restricted to the authorized existing Codex Environment task `019f84d0-78d4-7013-8c07-42c01f961be1` on **WESSTUDIO**, with dispatcher `01a06337-1b59-7dc2-9586-6660eb7b5da7`. It is not a WES-VIDEOEDITOR enrollment action or a general destination editor.
 
-Required inputs are `ExpectedLiveConfigHash`, `ExpectedOwnerGeneration`, `ExpectedManifestHash`, `ExpectedSyntheticPayloadHash`, and `ValidationMessageId`, plus the exact `ExpectedMachine` and `DispatcherTaskId`. Capture fresh guards only after reconciling the original request and any existing validation record through the canonical manager. Never invent a remote source machine or create a second validation as a retry.
+Required inputs are `ExpectedConfigSha256`, `ExpectedOwnerGeneration`, `ExpectedManifestSha256`, `ExpectedValidationPayloadHash`, and `ValidationMessageId`, plus the exact `ExpectedMachine`, `DispatcherTaskId`, `DestinationProjectRoom`, and `DestinationTaskId`. Capture fresh guards only after reconciling the original request and any existing validation record through the canonical manager. Never invent a remote source machine or create a second validation as a retry.
 
 The action verifies the Live identity/owner, existing client registration, schema-2 non-dispatchable `validation_ready` manifest, exact synthetic ID/hash, distinct approved source machine, zero prior attempts, one-attempt budget, current reviewed CLI and package/manager/adapter pins, and exact enabled scheduled action. It uses the existing `worker.lock`; `WorkerAlreadyRunning` means no enrollment occurred. Wait for normal completion and reconcile before another installer invocation; this grants no message retry authority.
 
 Only one destination entry is appended. Existing config fields, destination order, owner mode/generation, task identity, triggers, settings, journal and central records remain untouched. A flushed prepared receipt and an atomic local `File.Replace` before-image are retained under the profile-local production `enrollments` folder. A repeat using the original guards proves the current config is exactly the additive transformation of its hash-verified before-image and returns `AlreadyEnrolled` without writing or resubmitting. Unexpected state fails closed. Failed writes retain evidence; never remove the new pin, restore the before-image, or reset an attempt while submission is unresolved.
 
-The helper is installer-only, in `installer\Enrollment.ps1`; it is not installed into or loaded by worker ticks. This change requires no worker/adapter/manager code changes or package refresh. A tick that read the prior config before acquiring the lock may finish with the prior pin set; the next natural tick sees the new pin. No existing pin is removed, and no tick is forced.
+The helper is installer-only, in `installer\Enrollment.ps1`; it is not installed into or loaded by worker ticks. The owner-published `0.4.8` worker and adapter must first be installed with guarded `UpgradeLive`. Enrollment then changes only the destination configuration. A tick that read the prior config before acquiring the lock may finish with the prior pin set; the next natural tick sees the new pin. No existing pin is removed, and no tick is forced.
 
 Enrollment does not promote readiness. Existing worker and atomic-manager gates admit only the manifest-authorized synthetic record while `validation_ready`; other synthetic IDs and production messages remain ineligible. Wait for the natural WESSTUDIO tick and the exact recipient's Accepted/Processing/Completed lifecycle, then use the Create PR readiness promotion procedure. Do not manually notify, accept, process, complete, or retry the recipient record.
 
@@ -19,6 +19,8 @@ Run isolated tests with Windows PowerShell 5.1:
 ```powershell
 & 'C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe' -NoProfile -ExecutionPolicy Bypass -File 'C:\Codex\Wiki Files\tools\pr-messaging\low-token\tests\Test-Enrollment.ps1'
 ```
+
+The merge retains the owner's `0.4.8` release and parameter interface, uses its pure eligibility validator, and replaces schedule toggling/rollback with the required lock and atomic evidence-preserving application. Also run `tests\Test-DestinationEnrollment.ps1` for owner-validator coverage.
 
 Tests preserve temporary evidence and use only fixture queues, files, fake scheduled-task evidence, and hidden child processes. They do not call the real Codex CLI or mutate production configuration. A passing fixture suite is not unattended delivery or overall system recovery.
 

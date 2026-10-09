@@ -1,19 +1,21 @@
 [CmdletBinding()]
 param(
-    [ValidateSet('Plan','Stage','StartValidation','PromoteLive','UpgradeLive','Rollback','EnrollValidationDestination')]
+    [ValidateSet('Plan','Stage','StartValidation','PromoteLive','UpgradeLive','EnrollValidationDestination','Rollback')]
     [string]$Action='Plan',
     [string]$ExpectedMachine='WES-VIDEOEDITOR',
     [string]$DispatcherTaskId='01a05d0c-8031-7d92-9474-ab2330008ddb',
     [string]$LegacyAutomationId='pr-messaging-dispatcher-wes-videoeditor',
     [switch]$AllowActiveEmbeddedFallback,
     [string]$ValidationMessageId,
-    [string]$ExpectedLiveConfigHash,
-    [string]$ExpectedOwnerGeneration,
-    [string]$ExpectedManifestHash,
-    [string]$ExpectedSyntheticPayloadHash
+    [string]$DestinationProjectRoom,
+    [string]$DestinationTaskId,
+    [string]$ExpectedManifestSha256,
+    [string]$ExpectedValidationPayloadHash,
+    [string]$ExpectedConfigSha256,
+    [string]$ExpectedOwnerGeneration
 )
 $ErrorActionPreference='Stop'
-$release='0.4.7'
+$release='0.4.8'
 $queue='\\WES-VIDEOEDITOR\BYH-PRMessaging$'
 $task="BYH PR Messaging Worker - $ExpectedMachine"
 $root=Join-Path $env:LOCALAPPDATA "BuyYourHome\PRMessaging\low-token\releases\$release"
@@ -46,6 +48,14 @@ function Get-LtReviewedCli {
         ($item.Attributes -band [IO.FileAttributes]::ReparsePoint)) { throw 'UnreviewedCliLocation' }
     [pscustomobject]@{path=$path;sha256=(Get-FileHash -LiteralPath $path -Algorithm SHA256).Hash}
 }
+function Get-LtTaskStructure($ScheduledTask) {
+    [ordered]@{
+        actions=@($ScheduledTask.Actions|ForEach-Object{[ordered]@{execute=[string]$_.Execute;arguments=[string]$_.Arguments;working_directory=[string]$_.WorkingDirectory}})
+        triggers=@($ScheduledTask.Triggers|ForEach-Object{[ordered]@{start_boundary=[string]$_.StartBoundary;repetition_interval=[string]$_.Repetition.Interval;repetition_duration=[string]$_.Repetition.Duration;repetition_stop_at_duration_end=[bool]$_.Repetition.StopAtDurationEnd}})
+        principal=[ordered]@{user_id=[string]$ScheduledTask.Principal.UserId;logon_type=[string]$ScheduledTask.Principal.LogonType;run_level=[string]$ScheduledTask.Principal.RunLevel}
+        settings=[ordered]@{hidden=[bool]$ScheduledTask.Settings.Hidden;multiple_instances=[string]$ScheduledTask.Settings.MultipleInstances;execution_time_limit=[string]$ScheduledTask.Settings.ExecutionTimeLimit;start_when_available=[bool]$ScheduledTask.Settings.StartWhenAvailable}
+    }
+}
 
 if($Action -eq 'Plan'){
     $embeddedFallbackException=([bool]$AllowActiveEmbeddedFallback -and $ExpectedMachine -ceq 'OFFICEASSIST' -and $LegacyAutomationId -ceq 'officeassist-morning-email-summary-and-instruction-monitor')
@@ -57,7 +67,8 @@ if($DispatcherTaskId -cnotmatch '^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4
 
 if($Action -eq 'EnrollValidationDestination'){
     # Exact October 9 authorization. No generic or remote-machine enrollment.
-    if($ExpectedMachine -cne 'WESSTUDIO' -or $DispatcherTaskId -cne '01a06337-1b59-7dc2-9586-6660eb7b5da7'){
+    if($ExpectedMachine -cne 'WESSTUDIO' -or $DispatcherTaskId -cne '01a06337-1b59-7dc2-9586-6660eb7b5da7' -or
+        $DestinationProjectRoom -cne 'Codex Environment' -or $DestinationTaskId -cne '019f84d0-78d4-7013-8c07-42c01f961be1'){
         throw 'EnrollmentEndpointNotAuthorized'
     }
     . (Join-Path $PSScriptRoot 'installer\Enrollment.ps1')
@@ -78,8 +89,8 @@ if($Action -eq 'EnrollValidationDestination'){
     Invoke-LtValidationEnrollment -ConfigPath $configPath -StateDirectory $state -ManifestPath $manifestPath -OwnerPath $ownerPath `
         -Machine $ExpectedMachine -Sid ([Security.Principal.WindowsIdentity]::GetCurrent().User.Value) -DispatcherTaskId $DispatcherTaskId `
         -ProjectRoom 'Codex Environment' -DestinationTaskId '019f84d0-78d4-7013-8c07-42c01f961be1' `
-        -ValidationMessageId $ValidationMessageId -ExpectedLiveConfigHash $ExpectedLiveConfigHash -ExpectedOwnerGeneration $ExpectedOwnerGeneration `
-        -ExpectedManifestHash $ExpectedManifestHash -ExpectedSyntheticPayloadHash $ExpectedSyntheticPayloadHash `
+        -ValidationMessageId $ValidationMessageId -ExpectedLiveConfigHash $ExpectedConfigSha256 -ExpectedOwnerGeneration $ExpectedOwnerGeneration `
+        -ExpectedManifestHash $ExpectedManifestSha256 -ExpectedSyntheticPayloadHash $ExpectedValidationPayloadHash `
         -CurrentCliPath $reviewedCli.path -CurrentCliHash $reviewedCli.sha256 `
         -ExpectedActionExecute $expectedAction.Execute -ExpectedActionArguments $expectedAction.Arguments `
         -GetScheduleEvidence $scheduleEvidence -ReadValidationRecord $readValidation | ConvertTo-Json -Depth 8
@@ -87,7 +98,7 @@ if($Action -eq 'EnrollValidationDestination'){
 }
 
 if($Action -eq 'UpgradeLive'){
-    $sourceRelease=@($release,'0.4.6','0.4.5','0.4.4','0.4.3','0.4.2','0.4.1','0.4.0')|Where-Object {Test-Path -LiteralPath (Join-Path $env:LOCALAPPDATA "BuyYourHome\PRMessaging\low-token\releases\$_\low-token\config.json")}|Select-Object -First 1
+    $sourceRelease=@($release,'0.4.7','0.4.6','0.4.5','0.4.4','0.4.3','0.4.2','0.4.1','0.4.0')|Where-Object {Test-Path -LiteralPath (Join-Path $env:LOCALAPPDATA "BuyYourHome\PRMessaging\low-token\releases\$_\low-token\config.json")}|Select-Object -First 1
     if([string]::IsNullOrWhiteSpace($sourceRelease)){throw 'LiveSourceConfigMissing'}
     $oldRoot=Join-Path $env:LOCALAPPDATA "BuyYourHome\PRMessaging\low-token\releases\$sourceRelease"
     $oldPkg=Join-Path $oldRoot 'low-token';$oldConfigPath=Join-Path $oldPkg 'config.json'

@@ -78,6 +78,73 @@ function Test-LtStageManifest($Manifest,$Registration,[string]$Machine) {
         ![string]::IsNullOrWhiteSpace([string]$Manifest.messaging_readiness.validation_message_id))
     return ($ready -or $validationReady)
 }
+function New-LtValidationEnrollmentConfig($Config,$Client,$Manifests,$Record,[string]$ExpectedMachine,[string]$DispatcherTaskId,[string]$DestinationProjectRoom,[string]$DestinationTaskId,[string]$ValidationMessageId,[string]$ExpectedPayloadHash) {
+    Assert-LtUuid $DispatcherTaskId
+    Assert-LtUuid $DestinationTaskId
+    Assert-LtId $ValidationMessageId
+    if([string]::IsNullOrWhiteSpace($DestinationProjectRoom) -or $DestinationTaskId -ceq $DispatcherTaskId){throw 'EnrollmentIdentityInvalid'}
+    if($ExpectedPayloadHash -cnotmatch '^[0-9a-f]{64}$'){throw 'EnrollmentPayloadHashInvalid'}
+    if(!$Config -or $Config.expected_machine -cne $ExpectedMachine -or $Config.dispatcher_task_id -cne $DispatcherTaskId){throw 'EnrollmentConfigIdentityMismatch'}
+    if($Client.machine -cne $ExpectedMachine){throw 'EnrollmentClientMachineMismatch'}
+
+    $registrations=@($Client.registrations|Where-Object {$_.project_room -ceq $DestinationProjectRoom -and $_.task_id -ceq $DestinationTaskId})
+    $registrationConflicts=@($Client.registrations|Where-Object {
+        ($_.project_room -ceq $DestinationProjectRoom -or $_.task_id -ceq $DestinationTaskId) -and
+        !($_.project_room -ceq $DestinationProjectRoom -and $_.task_id -ceq $DestinationTaskId)
+    })
+    if($registrations.Count -ne 1 -or $registrationConflicts.Count){throw 'EnrollmentRegistrationMismatch'}
+
+    $manifestMatches=@($Manifests|Where-Object {$_.project_room -ceq $DestinationProjectRoom})
+    if($manifestMatches.Count -ne 1){throw 'EnrollmentManifestMissingOrDuplicate'}
+    $manifest=$manifestMatches[0]
+    $manualProperty=$manifest.messaging_readiness.PSObject.Properties['manual_intervention']
+    if($manifest.schema_version -ne 2 -or $manifest.skill -cne 'codex-environment' -or
+        $manifest.task_id -cne $DestinationTaskId -or $manifest.execution_machine -cne $ExpectedMachine -or
+        $manifest.dispatchable -isnot [bool] -or $manifest.dispatchable -ne $false -or
+        $manifest.messaging_readiness.status -cne 'validation_ready' -or
+        $manifest.messaging_readiness.validation_message_id -cne $ValidationMessageId -or
+        $manifest.messaging_readiness.dispatcher_task_id -cne $DispatcherTaskId -or
+        $manifest.messaging_readiness.dispatcher_automation_id -cne 'pr-messaging-dispatcher' -or
+        [string]::IsNullOrWhiteSpace([string]$manifest.messaging_readiness.cross_machine_source) -or
+        $manifest.messaging_readiness.cross_machine_source -ceq $ExpectedMachine -or
+        !$manualProperty -or $null -ne $manifest.messaging_readiness.manual_intervention){throw 'EnrollmentManifestNotValidationReady'}
+
+    if(!$Record -or $Record.message_id -cne $ValidationMessageId -or $Record.dispatch_id -cne $ValidationMessageId -or
+        $Record.payload_hash -cne $ExpectedPayloadHash -or !(Get-PrMessageHashEvidence $Record).valid -or
+        $Record.destination.project_room -cne $DestinationProjectRoom -or $Record.destination.task_id -cne $DestinationTaskId -or
+        $Record.destination.machine -cne $ExpectedMachine -or $Record.source.machine -cne $manifest.messaging_readiness.cross_machine_source -or
+        $Record.authoritative -ne $true -or $Record.state -cne 'Queued' -or [int]$Record.attempt_count -ne 0 -or
+        @($Record.attempts).Count -ne 0 -or [int]$Record.max_attempts -ne 1 -or $Record.receipt -or $Record.result){throw 'EnrollmentValidationRecordMismatch'}
+    $synthetic=($Record.payload.synthetic_test -is [bool] -and $Record.payload.synthetic_test -eq $true -and
+        $Record.authorization.authorized_by -ceq 'Wes' -and
+        $Record.authorization.business_action_authorized -is [bool] -and $Record.authorization.business_action_authorized -eq $false -and
+        $Record.payload.business_action_authorized -is [bool] -and $Record.payload.business_action_authorized -eq $false -and
+        $Record.payload.business_action_performed -is [bool] -and $Record.payload.business_action_performed -eq $false)
+    if(!$synthetic -or (Test-LtRecord $Record $Client $Manifests $ExpectedMachine 'Live' '' @($Record)) -cne 'Eligible'){throw 'EnrollmentValidationRecordNotSafe'}
+
+    $destinations=@($Config.destinations)
+    $keys=@{}
+    foreach($destination in $destinations){
+        $key=([string]$destination.project_room)+'|'+([string]$destination.task_id)+'|'+([string]$destination.machine)
+        if([string]::IsNullOrWhiteSpace([string]$destination.project_room) -or [string]::IsNullOrWhiteSpace([string]$destination.machine)){throw 'EnrollmentExistingDestinationInvalid'}
+        Assert-LtUuid ([string]$destination.task_id)
+        if($keys.ContainsKey($key)){throw 'EnrollmentExistingDestinationDuplicate'}
+        $keys[$key]=$true
+    }
+    $exact=@($destinations|Where-Object {$_.project_room -ceq $DestinationProjectRoom -and $_.task_id -ceq $DestinationTaskId -and $_.machine -ceq $ExpectedMachine})
+    $conflicts=@($destinations|Where-Object {
+        ($_.project_room -ceq $DestinationProjectRoom -or $_.task_id -ceq $DestinationTaskId) -and
+        !($_.project_room -ceq $DestinationProjectRoom -and $_.task_id -ceq $DestinationTaskId -and $_.machine -ceq $ExpectedMachine)
+    })
+    if($exact.Count -gt 1 -or $conflicts.Count){throw 'EnrollmentDestinationConflict'}
+
+    $updated=$Config|ConvertTo-Json -Depth 30|ConvertFrom-Json
+    if($exact.Count -eq 0){
+        $updated.destinations=@($updated.destinations)+@([pscustomobject]@{project_room=$DestinationProjectRoom;task_id=$DestinationTaskId;machine=$ExpectedMachine})
+        $updated.destinations=@($updated.destinations|Sort-Object project_room,task_id,machine)
+    }
+    return [pscustomobject]@{config=$updated;already_enrolled=($exact.Count -eq 1);manifest=$manifest}
+}
 function Test-LtRecord($Record,$Client,$Manifests,[string]$Machine,[string]$Mode,[string]$MessageId,$AllRecords=@()) {
     if (!$Record) { return 'MissingTarget' }
     if ($MessageId -and $Record.message_id -cne $MessageId) { return 'WrongTarget' }

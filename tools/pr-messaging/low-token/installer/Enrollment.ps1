@@ -39,7 +39,7 @@ function Invoke-LtValidationEnrollment {
         $manifestHash=(Get-FileHash -LiteralPath $ManifestPath -Algorithm SHA256).Hash
         if($manifestHash -ine $ExpectedManifestHash){throw 'EnrollmentManifestHashMismatch'}
         $manifest=Read-LtJson $ManifestPath
-        if($cfg.schema_version -ne 1 -or $cfg.release -cne '0.4.7' -or $cfg.expected_machine -cne $Machine -or
+        if($cfg.schema_version -ne 1 -or $cfg.release -cne '0.4.8' -or $cfg.expected_machine -cne $Machine -or
             $cfg.expected_sid -cne $Sid -or $cfg.dispatcher_task_id -cne $DispatcherTaskId -or
             $cfg.generation -cne $ExpectedOwnerGeneration -or $cfg.state_directory -cne $StateDirectory -or
             $cfg.adapter_kind -cne 'CodexQueue'){throw 'EnrollmentLiveConfigIdentityMismatch'}
@@ -66,12 +66,15 @@ function Invoke-LtValidationEnrollment {
             $regs[0].task_id -cne $DestinationTaskId){throw 'EnrollmentRegistrationMismatch'}
         $allManifests=@(Get-ChildItem -LiteralPath $cfg.manifest_directory -Filter '*.json' -File|ForEach-Object{Read-LtJson $_.FullName})
         $matches=@($allManifests|Where-Object {$_.project_room -ceq $ProjectRoom -or $_.task_id -ceq $DestinationTaskId})
-        if($matches.Count -ne 1 -or $manifest.schema_version -ne 2 -or $manifest.project_room -cne $ProjectRoom -or
+        if($matches.Count -ne 1 -or $manifest.schema_version -ne 2 -or $manifest.skill -cne 'codex-environment' -or $manifest.project_room -cne $ProjectRoom -or
             $manifest.task_id -cne $DestinationTaskId -or $manifest.execution_machine -cne $Machine -or
             $manifest.dispatchable -isnot [bool] -or $manifest.dispatchable -ne $false -or
             $manifest.messaging_readiness.status -cne 'validation_ready' -or
             $manifest.messaging_readiness.validation_message_id -cne $ValidationMessageId -or
-            $manifest.messaging_readiness.dispatcher_task_id -cne $DispatcherTaskId){throw 'EnrollmentValidationManifestMismatch'}
+            $manifest.messaging_readiness.dispatcher_task_id -cne $DispatcherTaskId -or
+            $manifest.messaging_readiness.dispatcher_automation_id -cne 'pr-messaging-dispatcher' -or
+            !$manifest.messaging_readiness.PSObject.Properties['manual_intervention'] -or
+            $null -ne $manifest.messaging_readiness.manual_intervention){throw 'EnrollmentValidationManifestMismatch'}
         $record=& $ReadValidationRecord $cfg $ValidationMessageId
         Assert-LtUuid ([string]$record.source.task_id)
         Assert-LtId ([string]$record.dispatch_id)
@@ -114,6 +117,9 @@ function Invoke-LtValidationEnrollment {
         if($journal.schema_version -ne 2 -or $journal.machine -cne $Machine -or $journal.sid -cne $Sid -or
             $journal.owner -cne $cfg.owner -or $journal.generation -cne $ExpectedOwnerGeneration -or $null -eq $journal.entries){throw 'EnrollmentJournalMismatch'}
         if(@($journal.entries|Where-Object {$_.destination_task_id -ceq $DestinationTaskId}).Count){throw 'EnrollmentDestinationHasJournalHistory'}
+        # Retain the registered code owner's release-0.4.8 eligibility validator.
+        # Its sorted projection is not applied: existing destination order stays intact.
+        $null=New-LtValidationEnrollmentConfig $cfg $client $allManifests $record $Machine $DispatcherTaskId $ProjectRoom $DestinationTaskId $ValidationMessageId $ExpectedSyntheticPayloadHash
         $cfg.destinations=@($cfg.destinations)+@([pscustomobject][ordered]@{project_room=$ProjectRoom;task_id=$DestinationTaskId;machine=$Machine})
         $json=$cfg|ConvertTo-Json -Depth 30
         $bytes=[Text.UTF8Encoding]::new($false).GetBytes($json)

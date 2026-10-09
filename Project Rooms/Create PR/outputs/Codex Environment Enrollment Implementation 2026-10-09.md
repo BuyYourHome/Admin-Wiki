@@ -1,6 +1,18 @@
 # Codex Environment additive enrollment - 2026-10-09
 
-Status: implemented and fixture-tested; owner coordination, publication, live enrollment, unattended validation, readiness promotion, and coordinator acceptance remain pending. This is not overall system recovery.
+Status: owner release received; Wes authorized a normal merge and reconciliation. The reconciled implementation is verified and ready for publication (23 application tests, 15 owner-validator tests, and 11 worker regression tests passed). Live enrollment, unattended validation, readiness promotion, and coordinator acceptance remain pending a genuine second-machine synthetic record. This is not overall system recovery.
+
+## Authorized merge reconciliation
+
+The owner published `375a1a58` (release `0.4.8`) while local `f713c650` was awaiting coordination. Its exact result message `prmsg-wve-dispatcher-create-pr-wesstudio-enrollment-release-20261009-001`, hash `a17236562b8474de1211548e5ef9649f630e70bb063e79227bdda03c9bfa91c3`, was verified and genuinely Accepted, Processing, then Blocked for Git divergence. That terminal result is historical evidence and is not reset. Wes subsequently explicitly authorized the normal merge.
+
+The merge preserves both histories, the owner's `0.4.8` release, worker/adapter recognition, public enrollment parameters, and pure eligibility validator. The production enrollment application retains the tested exclusive worker lock, atomic replacement, original pin order, before-image and prepared receipt, and no-rollback behavior. This replaces the owner's schedule-toggle/application path because it lacked the required worker lock and could restore config on failure. The helper now requires release `0.4.8` and the owner's exact skill/dispatcher-automation/manual-intervention manifest gates. No scheduled tick or runtime config was changed by this reconciliation.
+
+Reconciled fixture evidence: `C:\Users\wesbr\AppData\Local\Temp\byh-enrollment-merge-20261009`. All seven affected PowerShell sources parse without errors. Both enrollment suites and the worker regression subset passed, 49 total; zero production actions or actual notifications.
+
+Fresh canonical List still found zero records for the exact Codex Environment destination. The remaining external prerequisite is one authentic second-machine synthetic, not another user authorization for the same work. Wes received a paste-ready request for the existing WES-VIDEOEDITOR owner to reconcile/create that one record and return its immutable ID/hash. Do not fabricate a remote source from WESSTUDIO, manually notify the recipient, or turn the pending manifest into dispatchable while waiting.
+
+The earlier sections below retain the original implementation and blocker history. Where they describe release `0.4.7` or an unavailable owner handoff, this reconciliation supersedes them. The active deployment contract is the reconciled low-token README and `0.4.8` installer.
 
 ## Exact authorization and identities
 
