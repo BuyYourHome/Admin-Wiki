@@ -8,6 +8,23 @@ Wes authorized coordinated investigation and system correction across WESSTUDIO,
 
 Reference case: `IE-TF-20261003-POND-001`. Existing records and business files are read-only evidence for this investigation.
 
+## October 9 assisted-recovery correction and unloaded-chat investigation
+
+Wes resumed coordination and explicitly confirmed that he manually opened this chat before the synthetic turn ran. Classify `prmsg-wve-codex-environment-enrollment-validation-20261009-001` as **assisted recovery**, not unattended wake-up success. Its original immutable payload, single attempt, receipt and Completed result are preserved; no duplicate, retry, reset or replay is permitted.
+
+- Original hash: `ea18856ad260fd23b9c04ff39f066c893ab9af825024b376c1932d2496df32e3`.
+- Original worker attempt: `lt-d34a43a482f846889bc7c08e07f5d133`; queue UUID `01a1215b-b895-7551-ac79-72679a317f1b`.
+- Adapter submission: 2026-10-09T15:50:20.7137699Z–15:50:22.2819879Z, exit 0, no timeout or stderr, `submitted:true`, `accepted:false`, reason `QueuedAwaitingReceipt`.
+- Recipient Accepted: 2026-10-09T16:04:40.1978888Z; Completed: 16:04:40.5893307Z, after manual opening. Journal is now closed/Delivered based on that real receipt; this does not establish unattended execution.
+- Desktop runtime log `C:\Users\wesbr\AppData\Local\Codex\Logs\2026\10\09\codex-desktop-4e15bd8d-5da7-4608-8fa6-4c1fcf4e0ed7-22796-t0-i1-000010-0.log` independently records `maybe_resume_started`, `previousResumeState=needs_resume`, visible/focused primary window at 16:03:00.085Z (line 4345), then successful `thread/resume` at 16:03:01.158Z (line 4370). This establishes the assisted activation boundary; the internal reason that queueing did not load the task still requires owner/platform verification.
+- Release 0.4.8 now includes the Codex Environment destination pin. The October 8 enrollment-gap observation is historical, not the current blocker. Current investigation is the queue-to-unloaded-runtime execution boundary.
+- Adapter source performs only the pinned `codex queue --thread ... --message ...` operation. Pinned CLI help describes queueing to an existing session and provides no explicit load/start option. No inference that queue acknowledgment starts an unloaded desktop chat is justified.
+- Official app-server documentation distinguishes `thread/read` (does not load) from `thread/resume` (loads an existing thread for subsequent turns): https://learn.chatgpt.com/docs/app-server. This is a candidate supported mechanism, not proof that the worker can safely integrate with the existing Desktop server.
+- Existing WESSTUDIO dispatcher task was authorized to inspect local runtime evidence and supported behavior, without taking over WES-VIDEOEDITOR's shared worker-code ownership. WVE owner task lookup returned unavailable/failed host `durable`; do not substitute a worker owner or create a self-addressed dispatch.
+- Local dispatcher verified the pinned protocol exposes `thread/resume` and `thread/queue/start` as RPC methods, but the running Desktop-owned app-server uses its parent's stdio channel with no attachable socket/WebSocket endpoint. The shared daemon control socket is unavailable. A separate daemon/server is not an equivalent repair of the existing Desktop-managed task. Current concrete blocker: no verified supported worker-to-existing-Desktop activation interface in this installed build, plus unavailable WVE code-owner host. No workaround or new unattended test was executed.
+
+Coordination is authorized directly by Wes and is not gated on this coordinator's unattended readiness. Expected owner return: original-evidence diagnosis, supported scoped repair or exact platform limitation, implementation tests and deployment evidence, followed by a **new separately scoped** unattended synthetic only when supported. No business, mailbox, invoice, payment or workbook execution.
+
 ## Source inventory and findings
 
 | Boundary | Evidence and current finding | Owner / remaining verification |
