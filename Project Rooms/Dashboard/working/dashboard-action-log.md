@@ -1,5 +1,9 @@
 # Dashboard Action Log
 
+## 2026-10-10 - Needs Wes Review Surface
+
+Wes explicitly authorized Jean to edit Dashboard code/documentation for grouped decisions and separate system blockers. Added a first-screen Needs Wes list with safe text rendering and copyable owning-chat review requests. Failed loads clear stale controls and report unknown status. Corrected ambiguous-delivery guidance to require reconciliation, not automatic retry. Direct approval remains unavailable pending an authenticated package-bound channel and recipient/platform validation. No email, invoice, automation, or central queue mutation was performed.
+
 | Date | Source | Action | Result | Status | Notes |
 | --- | --- | --- | --- | --- | --- |
 | 2026-08-02 | Wes voice request | Created Dashboard Project Room and initial local dashboard design | Searchable Project Room functionality directory with local refresh and launch tools | Completed | No external publication or dedicated task creation. |

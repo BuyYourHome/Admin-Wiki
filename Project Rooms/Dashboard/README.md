@@ -40,6 +40,12 @@ Out of scope:
 
 ## Current Status
 
+### Needs Wes Review Surface (2026-10-10)
+
+The first-screen Needs Wes section groups returned attention records by destination Project Room, including Email Monitor. System/workflow blockers are separate. Review request expands the retained decision and a copyable request for the owning chat to verify current state and ask the exact YES/NO question. It does not record approval, route a message, or send email. Load failures display unknown status rather than an empty queue.
+
+Direct Approve & Send and Decline are not implemented: the current sanitized endpoint provides neither an authenticated approval channel nor an exact package-version binding/attachment preview. Enabling those actions requires an authenticated, version-bound approval contract accepted by the receiving workflow and platform, stale-package and duplicate protection, and a verified synthetic then separately authorized real delivery. Do not represent this review surface as end-to-end approval deployment. Existing source filtering limits coverage to transaction attention, not every possible pending workflow.
+
 Status: active initial design.
 
 The local dashboard provides search, codified functional-group filters, status counts, Project Room summaries, skill visibility, documented-mode selection, and extensible side-panel Quick actions. Every card has a README action and, when it has fewer than two actions, an unassigned future-action slot. The Entity Relationship card also opens its SVG diagram, and Gracious Millionaire opens its website. Dashboard action links use the browser's normal separate-tab/window behavior. The deletion control presents a one-confirmation, exact-resource workflow preview and can record a structured deletion request for `Create PR`, but Dashboard still does not delete, archive, rename, or alter anything itself. Group remains a displayed side-panel property with a preview-only selector. The two SOP viewer combo boxes remain scoped to the SOPs Project Room only. A section heading can count as a documented mode either by using a recognized `Modes` section or by beginning that section with `Use this mode ...`; the mode name itself does not need to end with `Mode`. Wes will review the design and decide what to alter.

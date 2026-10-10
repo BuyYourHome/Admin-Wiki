@@ -2,6 +2,7 @@
 
 | ID | Requested change | Status | Implementation boundary |
 | --- | --- | --- | --- |
+| DASH-NEEDS-WES | Group pending decisions by owning PR with actionable review controls, starting with Email Monitor. | Review surface implemented; direct approval blocked | Read-only canonical attention endpoint; Review request and copy only. Authenticated exact-package approval, recipient integration, and end-to-end send validation remain required. No central record or external action changed. |
 | DASH-001 | Give every Project Room card side panel at least one starter action and support several future actions. | completed | `Open Project Room README` is the truthful default; room-specific actions are appended. |
 | DASH-002 | Allow Wes to initiate deletion of an unwanted Project Room from its side panel. | workflow preview implemented | `Review deletion` presents one confirmation without name typing, names only the selected room and its documented matching skill/task, exposes unresolved resources, and downloads an audit-plan record. It does not delete, archive, hide, rename, route, or alter anything. |
 | DASH-003 | Show canonical documented modes in a selected-room side-panel combo box. | completed | Modes are extracted from the room README and matching skill when available. Selection is interface-only and activates nothing. |

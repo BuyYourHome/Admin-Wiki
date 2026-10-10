@@ -7,7 +7,7 @@
   <base href="/Project%20Rooms/Dashboard/site/">
   <title>Buy Your Home Project Rooms</title>
   <meta name="description" content="Local directory of Buy Your Home Project Room functionality.">
-  <link rel="stylesheet" href="styles.css?v=20260806a">
+  <link rel="stylesheet" href="styles.css?v=20261010a">
 </head>
 <body>
   <div class="app-shell">
@@ -27,6 +27,12 @@
       </div>
     </header>
     <main>
+      <section class="wes-attention" aria-labelledby="wesAttentionTitle">
+        <div class="wes-attention-heading"><h2 id="wesAttentionTitle">Needs Wes</h2><button id="wesAttentionRefresh" type="button">Refresh requests</button></div>
+        <p id="wesAttentionStatus" role="status">Loading requests...</p>
+        <div id="wesAttentionGroups"></div>
+        <details><summary id="wesSystemSummary">System and workflow blockers</summary><div id="wesSystemGroups"></div></details>
+      </section>
       <section class="summary" aria-label="Project Room summary">
         <div class="metric"><span>Project Rooms</span><strong id="roomCount">0</strong></div>
         <div class="metric"><span>Active</span><strong id="activeCount">0</strong></div>
@@ -156,5 +162,6 @@
   <script src="project-rooms.js?v=629966CD1F9B"></script>
   <script src="__dashboard-context.js?v=20260806a"></script>
   <script src="app.js?v=20260902a"></script>
+  <script src="needs-wes.js?v=20261010a"></script>
 </body>
 </html>

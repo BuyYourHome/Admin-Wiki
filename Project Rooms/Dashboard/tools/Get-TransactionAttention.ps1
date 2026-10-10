@@ -61,10 +61,7 @@ function Get-NextAction {
 
     switch ($Classification) {
         'automatic-recovery' {
-            if ([int]$Record.attempt_count -lt [int]$Record.max_attempts) {
-                return 'The destination dispatcher may retry this same record automatically.'
-            }
-            return 'Automatic attempts are exhausted; the owning Project Room must reconcile delivery.'
+            return 'The owning dispatcher must reconcile prior delivery evidence; an uncertain submission must not be retried automatically.'
         }
         'wes-decision' { return 'Wes must provide the decision described in this record.' }
         'system-blocker' { return 'The owning Project Room should retry after the missing dependency is restored.' }
