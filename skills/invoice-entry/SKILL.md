@@ -49,6 +49,14 @@ Doc Scan owns Lowes Statement extraction and will send extracted statement data 
 10. Use the SharePoint/Teams connector as the source-of-truth path for active project-management workbooks.
 11. When Excel, PDF tooling, PowerShell, or another desktop tool requires a Windows path, resolve the canonical SharePoint relative path on the current machine with the local fallback resolver and an expected child. If the Codex sandbox cannot see OneDrive, run the resolver through an approved local execution path under the signed-in Windows profile. Refuse missing or multiple matches. Never use a local path copied from another computer.
 
+### Reading Teams Markdown Status
+
+- Resolve the exact canonical SharePoint record with the SharePoint/Teams connector or its site-and-drive-relative identity. When a local desktop read is needed, use `tools\sharepoint\Resolve-SharePointSyncedPath.ps1` with the canonical relative folder and expected filename, then read only the resolved file with `Get-Content -Raw -LiteralPath`. A listing, metadata response, search snippet, cached summary, or browser-readable link is not proof that the file text was read.
+- A managed sandbox may read an existing local Teams-synced Markdown file when its ordinary file access permits it. The `CodexSandboxOffline` restriction applies to the PR messaging share and dispatcher operations; it is not a blanket prohibition on local synced-file reads. Do not infer local file access failure from the execution identity alone: verify the exact read result.
+- If the local synced-file read returns access denied, the file is online-only, or authenticated download is required, stop that path and use an approved normal-user execution path under the signed-in `OfficeAssistLogin` profile. Verify `whoami` reports `OfficeAssist\OfficeAssistLogin` before accessing the file. Do not modify ACLs or credentials, grant sandbox access, or use an elevated sandbox as a substitute for normal-user execution.
+- Do not open SharePoint or Teams in a browser or use browser sign-in to work around a content-read failure. Do not send signed download URLs to another tool. Connector metadata or `content: null` does not count as readable text; if neither the local synced copy nor the approved normal-user path can read the exact file, report the specific failure and do not proceed with dependent work.
+- File-read permission does not authorize PR messaging-share or dispatcher access, production-queue changes, or other business actions. Those remain governed by their separate authorization and identity rules.
+
 ## Ownership Boundary
 
 Doc Scan normally owns scanned invoice, receipt, and Statement intake, including:
