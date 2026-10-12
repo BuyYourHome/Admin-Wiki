@@ -472,12 +472,14 @@ For Statement packets, set or treat `confidence/status` as `Needs Review - State
 - Confirm the exact target workbook before editing.
 - Active project-management spreadsheets live directly under the Teams/SharePoint `Property` drive root.
 - Do not look for the project-management workbook inside individual property folders such as `Owning`, `Buying`, or `Renting`.
-- Copy the connector-verified workbook into the project-room working area before editing.
+- Use the SharePoint/Teams connector to retrieve the current bytes of the exact authoritative workbook item. Record its canonical item identity and version/eTag (or other available version marker) before editing. Do not treat a locally synced copy as current until its version is checked against SharePoint; if it is stale, use the connector-fetched current copy.
+- Stage the fetched workbook as a temporary local working copy under the signed-in `OfficeAssistLogin` profile, outside the Git repository. Keep an unchanged rollback copy before editing. Do not put workbook binaries, backups, or generated working copies in the Admin wiki repository.
 - Create a rollback copy before every workbook edit.
 - Edit through Excel-controlled saves for `.xlsm` project workbooks.
-- Never edit, save, or upload a project workbook through Excel in a browser (including Excel for the web). Use native desktop Excel through an approved local execution path under the signed-in Windows profile for edits and validation. Browser sign-in does not establish desktop credentials, and browser Excel may not provide equivalent behavior for `.xlsm` macros, controls, or workbook modes. If native Excel is unavailable through the approved path, stop and report the exact blocker; do not substitute browser-based editing.
-- Verify the workbook opens cleanly before upload.
-- Upload back through the Teams/SharePoint connector only after validation passes.
+- Open and edit the staged copy in native desktop Microsoft Excel through the approved local execution path under the signed-in `OfficeAssistLogin` profile. Use Excel's native macros and workbook controls when required by the workbook's established workflow. A missing Codex “connected Excel editing session” is not a blocker: workbook access is through the SharePoint connector for file transfer and native desktop Excel for editing; do not search for or require a separate connected editing session.
+- Never edit, save, or upload a project workbook through Excel in a browser (including Excel for the web). Browser sign-in does not establish desktop credentials, and browser Excel may not provide equivalent behavior for `.xlsm` macros, controls, or workbook modes. If the approved local execution path or native desktop Excel is genuinely unavailable, stop and report the specific unavailable capability; do not substitute browser-based editing.
+- Before uploading, verify the workbook opens cleanly in native Excel and that required values, formulas, totals, links, and workbook-specific validation checks pass. Recheck the authoritative SharePoint item version/eTag; if it changed since retrieval, reconcile the newer version before replacing anything rather than overwriting concurrent work.
+- After validation, upload the edited bytes through the Teams/SharePoint connector to the same exact authoritative item. Read the saved item back through the connector, open/inspect that read-back in native Excel when needed, and verify the persisted values and resulting version before reporting completion.
 
 ## Reconcile
 
