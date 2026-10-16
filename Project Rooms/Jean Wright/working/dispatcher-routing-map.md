@@ -8,6 +8,7 @@ This is the live task registry for the universal [[Project Room Delegation Contr
 
 | Project Room | Matching Skill | Known Task/Thread Id | Dispatcher Route | Notes |
 | --- | --- | --- | --- | --- |
+| Smart House | `smart-house` | pending | Pending messaging registration - not dispatchable. | WESSTUDIO; 908 Pond Street digital-twin/owner-package planning. Setup only; no implementation, publication, accounts, purchase or device control. |
 | LED lighting | `led-lighting` | `01a0b696-05a2-7291-a857-084a6f2bc2eb` | Pending messaging registration - not dispatchable. | WESSTUDIO; dedicated task created; worker enrollment and synthetic readiness required. 24-volt remodel lighting, controls, supplies and compatibility/load planning; no purchase or installation authority. |
 | Admin Wiki Maintenance | pending | pending | Jean handles only when Wes authorizes shared Admin governance work. | No matching skill at rollout. |
 | AIOS | `aios` | pending | Route planning or AIOS system-design work here. | Active/planning. |

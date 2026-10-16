@@ -10,6 +10,7 @@ Use [[Agent Unit Standard]] for the standard package behind an agent-like operat
 
 | Name | Type | Status | Schedule | Primary Definition |
 |---|---|---|---|---|
+| Smart House | Wiki-managed skill plus project room; dedicated chat pending | Pending messaging registration - not dispatchable | On demand; no automation | `skills\smart-house\SKILL.md`; `Project Rooms\Smart House\README.md`; task pending; WESSTUDIO |
 | LED lighting | Wiki-managed skill plus project room plus dedicated task | Pending messaging registration - not dispatchable | On demand | `skills\led-lighting\SKILL.md`; `Project Rooms\LED lighting\README.md`; task `01a0b696-05a2-7291-a857-084a6f2bc2eb` |
 | Jean Wright / Office Assistant | Wiki-managed skill plus project room plus assistant profile and operating role | Active | On demand and through related automations | `skills\jean-wright\SKILL.md`; `Project Rooms\Jean Wright\README.md`; `C:\Codex\Office Assistant Profile.md`; `AGENTS.md` |
 | Jean Dispatcher | Jean Wright mode plus central Project Room routing rule | Active | On demand when Wes asks Jean to delegate, coordinate, or route specialized work | `Project Room Chat Startup Rule.md`; `Project Rooms\Jean Wright\working\dispatcher-routing-map.md`; `Project Rooms\Jean Wright\working\dispatcher-action-log.md`; `skills\jean-wright\SKILL.md` |
