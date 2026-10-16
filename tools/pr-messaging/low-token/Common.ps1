@@ -98,7 +98,8 @@ function New-LtValidationEnrollmentConfig($Config,$Client,$Manifests,$Record,[st
     if($manifestMatches.Count -ne 1){throw 'EnrollmentManifestMissingOrDuplicate'}
     $manifest=$manifestMatches[0]
     $manualProperty=$manifest.messaging_readiness.PSObject.Properties['manual_intervention']
-    if($manifest.schema_version -ne 2 -or $manifest.skill -cne 'codex-environment' -or
+    $expectedSkill=if($DestinationProjectRoom -ceq 'Codex Environment'){'codex-environment'}elseif($DestinationProjectRoom -ceq 'Smart House'){'smart-house'}else{throw 'EnrollmentEndpointNotAuthorized'}
+    if($manifest.schema_version -ne 2 -or $manifest.skill -cne $expectedSkill -or
         $manifest.task_id -cne $DestinationTaskId -or $manifest.execution_machine -cne $ExpectedMachine -or
         $manifest.dispatchable -isnot [bool] -or $manifest.dispatchable -ne $false -or
         $manifest.messaging_readiness.status -cne 'validation_ready' -or

@@ -26,16 +26,20 @@ if($ChildFixture){
     try{Invoke-LtValidationEnrollment @a|ConvertTo-Json -Compress}catch{[pscustomobject]@{error=$_.Exception.Message}|ConvertTo-Json -Compress}
     return
 }
-function EnrollmentFixture {
+function EnrollmentFixture([string]$Room='Codex Environment',[string]$Skill='codex-environment') {
     $f=Fixture
+    $client=Read-LtJson $f.client
+    @($client.registrations|Where-Object {$_.task_id -ceq $f.task})[0].project_room=$Room
+    Write-LtJson $f.client $client
     $pkg=Join-Path $f.root 'package\low-token';New-Item -ItemType Directory -Path $pkg -Force|Out-Null
     Copy-Item -LiteralPath "$PSScriptRoot\..\..\Message-Integrity.ps1" -Destination (Join-Path $f.root 'package\Message-Integrity.ps1')
     Copy-Item -LiteralPath (Join-Path $f.root 'FakeAdapter.ps1') -Destination (Join-Path $pkg 'FakeAdapter.ps1')
     $cli=Join-Path $f.root 'fixture-cli.exe';[IO.File]::WriteAllBytes($cli,[byte[]](1,2,3))
-    $r=Record $f;$r.source.machine='WES-VIDEOEDITOR';$r.payload_hash=Get-LtPayloadHash $r;SaveRecord $f $r
+    $r=Record $f;$r.source.machine='WES-VIDEOEDITOR';$r.destination.project_room=$Room;$r.payload_hash=Get-LtPayloadHash $r;SaveRecord $f $r
     $manifest=Read-LtJson (Join-Path $f.manifests 'test.json')
     $manifest|Add-Member schema_version 2
-    $manifest|Add-Member skill 'codex-environment'
+    $manifest|Add-Member skill $Skill
+    $manifest.project_room=$Room
     $manifest.dispatchable=$false;$manifest.messaging_readiness.status='validation_ready'
     $manifest.messaging_readiness|Add-Member dispatcher_task_id $f.source
     $manifest.messaging_readiness|Add-Member cross_machine_source 'WES-VIDEOEDITOR'
@@ -51,7 +55,7 @@ function EnrollmentFixture {
     Write-LtJson (Join-Path $f.state 'journal.json') @{schema_version=2;machine=$env:COMPUTERNAME;sid=$o.sid;owner=$o.owner;generation=$o.generation;entries=@(@{destination_task_id='33333333-3333-4333-8333-333333333333';phase='closed';message_id='old-evidence'})}
     Write-LtJson (Join-Path $f.root 'schedule.json') @{enabled=$true;principal_sid=$o.sid;actions=@(@{execute='fixture-wscript.exe';arguments='exact hidden Live action'});snapshot_hash='unchanged-schedule'}
     $args=[ordered]@{ConfigPath=$f.config;StateDirectory=$f.state;ManifestPath=(Join-Path $f.manifests 'test.json');OwnerPath=$ownerPath;
-        Machine=$env:COMPUTERNAME;Sid=$o.sid;DispatcherTaskId=$f.source;ProjectRoom='Test Recipient';DestinationTaskId=$f.task;
+        Machine=$env:COMPUTERNAME;Sid=$o.sid;DispatcherTaskId=$f.source;ProjectRoom=$Room;DestinationTaskId=$f.task;
         ValidationMessageId=$f.id;ExpectedLiveConfigHash=(Get-FileHash $f.config).Hash;ExpectedOwnerGeneration='g1';
         ExpectedManifestHash=(Get-FileHash (Join-Path $f.manifests 'test.json')).Hash;ExpectedSyntheticPayloadHash=$r.payload_hash;
         CurrentCliPath=$cli;CurrentCliHash=(Get-FileHash $cli).Hash;ExpectedActionExecute='fixture-wscript.exe';ExpectedActionArguments='exact hidden Live action'}
@@ -86,6 +90,14 @@ Check 'enrollment appends exactly one pin and preserves all prior config and run
     Assert ((Get-FileHash (Join-Path $f.root 'schedule.json')).Hash -ceq $sh)
     Assert ((Get-FileHash $x.backup_path).Hash -ceq $a.ExpectedLiveConfigHash)
     Assert ((Record $f).attempt_count -eq 0 -and !(Record $f).receipt)
+}
+Check 'Smart House enrollment is additive and preserves prior pins' {
+    $f=EnrollmentFixture 'Smart House' 'smart-house';$a=EnrollmentArgs $f.root
+    $before=Read-LtJson $f.config;$result=Invoke-LtValidationEnrollment @a;$after=Read-LtJson $f.config
+    Assert ($result.changed -and @($after.destinations).Count -eq 3)
+    Assert (@($after.destinations|Where-Object {$_.project_room -ceq 'Smart House' -and $_.task_id -ceq $f.task}).Count -eq 1)
+    Assert ($after.destinations[0].task_id -ceq $before.destinations[0].task_id -and $after.destinations[1].task_id -ceq $before.destinations[1].task_id)
+    Assert ((Record $f).attempt_count -eq 0)
 }
 Check 'repeat enrollment is byte-stable and does not reset an unresolved submission' {
     $f=EnrollmentFixture;$a=EnrollmentArgs $f.root;$x=Invoke-LtValidationEnrollment @a

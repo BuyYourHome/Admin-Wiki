@@ -66,13 +66,15 @@ if($env:COMPUTERNAME -cne $ExpectedMachine){throw 'InstallationMachineMismatch'}
 if($DispatcherTaskId -cnotmatch '^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$'){throw 'InvalidDispatcherTaskId'}
 
 if($Action -eq 'EnrollValidationDestination'){
-    # Exact October 9 authorization. No generic or remote-machine enrollment.
+    # Only the two reviewed WESSTUDIO validation endpoints may be enrolled.
     if($ExpectedMachine -cne 'WESSTUDIO' -or $DispatcherTaskId -cne '01a06337-1b59-7dc2-9586-6660eb7b5da7' -or
-        $DestinationProjectRoom -cne 'Codex Environment' -or $DestinationTaskId -cne '019f84d0-78d4-7013-8c07-42c01f961be1'){
+        !(($DestinationProjectRoom -ceq 'Codex Environment' -and $DestinationTaskId -ceq '019f84d0-78d4-7013-8c07-42c01f961be1') -or
+          ($DestinationProjectRoom -ceq 'Smart House' -and $DestinationTaskId -ceq '01a14585-ffe6-7850-8db1-efcdd58e7071'))){
         throw 'EnrollmentEndpointNotAuthorized'
     }
     . (Join-Path $PSScriptRoot 'installer\Enrollment.ps1')
-    $manifestPath='C:\Codex\Wiki Files\config\pr-messaging-manifests\codex-environment.json'
+    $manifestName=if($DestinationProjectRoom -ceq 'Smart House'){'smart-house.json'}else{'codex-environment.json'}
+    $manifestPath=Join-Path 'C:\Codex\Wiki Files\config\pr-messaging-manifests' $manifestName
     $expectedAction=New-LtWorkerTaskAction $pkg $configPath 'Live'
     $scheduleEvidence={
         $s=Get-ScheduledTask -TaskName $task -ErrorAction Stop
@@ -88,7 +90,7 @@ if($Action -eq 'EnrollValidationDestination'){
     $reviewedCli=Get-LtReviewedCli
     Invoke-LtValidationEnrollment -ConfigPath $configPath -StateDirectory $state -ManifestPath $manifestPath -OwnerPath $ownerPath `
         -Machine $ExpectedMachine -Sid ([Security.Principal.WindowsIdentity]::GetCurrent().User.Value) -DispatcherTaskId $DispatcherTaskId `
-        -ProjectRoom 'Codex Environment' -DestinationTaskId '019f84d0-78d4-7013-8c07-42c01f961be1' `
+        -ProjectRoom $DestinationProjectRoom -DestinationTaskId $DestinationTaskId `
         -ValidationMessageId $ValidationMessageId -ExpectedLiveConfigHash $ExpectedConfigSha256 -ExpectedOwnerGeneration $ExpectedOwnerGeneration `
         -ExpectedManifestHash $ExpectedManifestSha256 -ExpectedSyntheticPayloadHash $ExpectedValidationPayloadHash `
         -CurrentCliPath $reviewedCli.path -CurrentCliHash $reviewedCli.sha256 `

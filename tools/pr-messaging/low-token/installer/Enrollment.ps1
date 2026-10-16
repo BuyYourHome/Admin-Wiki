@@ -66,7 +66,8 @@ function Invoke-LtValidationEnrollment {
             $regs[0].task_id -cne $DestinationTaskId){throw 'EnrollmentRegistrationMismatch'}
         $allManifests=@(Get-ChildItem -LiteralPath $cfg.manifest_directory -Filter '*.json' -File|ForEach-Object{Read-LtJson $_.FullName})
         $matches=@($allManifests|Where-Object {$_.project_room -ceq $ProjectRoom -or $_.task_id -ceq $DestinationTaskId})
-        if($matches.Count -ne 1 -or $manifest.schema_version -ne 2 -or $manifest.skill -cne 'codex-environment' -or $manifest.project_room -cne $ProjectRoom -or
+        $expectedSkill=if($ProjectRoom -ceq 'Codex Environment'){'codex-environment'}elseif($ProjectRoom -ceq 'Smart House'){'smart-house'}else{throw 'EnrollmentEndpointNotAuthorized'}
+        if($matches.Count -ne 1 -or $manifest.schema_version -ne 2 -or $manifest.skill -cne $expectedSkill -or $manifest.project_room -cne $ProjectRoom -or
             $manifest.task_id -cne $DestinationTaskId -or $manifest.execution_machine -cne $Machine -or
             $manifest.dispatchable -isnot [bool] -or $manifest.dispatchable -ne $false -or
             $manifest.messaging_readiness.status -cne 'validation_ready' -or
