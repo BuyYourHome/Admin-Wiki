@@ -132,6 +132,12 @@ It stays quiet when there are no new scans. It reports only when it processes fi
 
 16. If the scan cannot be confidently parsed or routed, it does not guess. It flags the document for review.
 
+## Missing-Page Gaps
+
+When page numbering shows that pages are absent from a scan, assume those pages were intentionally skipped. Do not hold delivery, request the omitted pages, or route a document to review solely because of the gap. Process and deliver every captured document/page range whose identity and destination are otherwise clear, then archive the original and complete the normal log and handoff steps.
+
+Record the page numbers present and the indicated pages absent in the log and any invoice handoff. Describe the output as the pages captured in the scan; never imply that omitted pages were received or that the full statement or invoice was reviewed. Other uncertainty about document identity, boundaries, or destination still follows the normal review rules.
+
 ## Human Responsibilities Before Scanning
 
 1. Sort pages in the order they should be processed.

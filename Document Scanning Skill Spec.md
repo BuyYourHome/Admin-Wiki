@@ -68,6 +68,12 @@ Example user requests:
 9. Flag uncertain classifications for human review instead of guessing.
 10. After all sources from a scanner-created intake subfolder have been processed or otherwise resolved, verify the archived originals, outputs, and logs; recursively confirm the source subfolder is completely empty; then delete the empty subfolder. Leave any nonempty subfolder in place and record what remains. Do not delete permanent workflow folders.
 
+### Missing-Page Gaps
+
+Assume pages absent from a scan, including pages indicated by page numbering, were intentionally skipped. A page gap alone does not block delivery, require a request for the omitted pages, or require review. Continue normal filing and handoff for each captured document/page range when its identity and destination are otherwise clear.
+
+Record which pages were captured and which indicated pages are absent in the log and any invoice handoff. Identify the deliverable as the scanned pages provided; do not imply that the omitted pages were received or that the full statement or invoice was reviewed. Apply the ordinary review rule to any separate uncertainty about identity, boundaries, or routing.
+
 ## Document Types
 
 Initial supported types:
@@ -141,6 +147,8 @@ When Doc Scan processes a project-specific invoice or receipt, finish the existi
 5. Log the scan routing result.
 6. Do not edit the project-management spreadsheet directly.
 7. Create a structured invoice packet and hand it off to Invoice Entry.
+
+Page-number gaps do not block delivery or Invoice Entry handoff by themselves. Assume omitted pages were intentionally skipped, include the captured pages when invoice identity and routing are otherwise clear, and disclose the pages present and absent in the log and packet. Do not describe the packet as a complete invoice when pages are absent.
 
 Default handoff trigger: send a direct follow-up message to the dedicated Invoice Entry chat with the packet path and packet summary. The Invoice Entry heartbeat is a backup monitor that periodically checks the packet folder for handoffs that were not delivered by direct message.
 
