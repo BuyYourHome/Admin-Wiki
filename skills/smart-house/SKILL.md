@@ -9,13 +9,15 @@ description: Plan the Buy Your Home Smart House digital identity, website/digita
 
 - Room: `C:\Codex\Wiki Files\Project Rooms\Smart House`.
 - Canonical skill: `C:\Codex\Wiki Files\skills\smart-house\SKILL.md`.
-- Dedicated task: pending until the dedicated chat is created.
+- Dedicated task: `01a14585-ffe6-7850-8db1-efcdd58e7071` (Smart House).
 - Execution machine: WESSTUDIO; on demand, no automation.
 - Read the room README, working/planning-context.md, source-inventory.md, duplicate-and-conflict-log.md, and missing-context.md before substantive planning.
 
 ## Messaging Readiness
 
 Pending messaging registration - not dispatchable. Task creation alone is insufficient. Require exact manifest/local registration, authenticated host access, guarded worker enrollment, unattended cross-machine synthetic Accepted/Processing/Completed evidence, and the canonical readiness validator before promotion.
+
+Manifest: `C:\Codex\Wiki Files\config\pr-messaging-manifests\smart-house.json`. Local registration and host access verified 2026-10-16. Guarded installer support for Smart House enrollment is missing; do not bypass it or send a manual synthetic wake-up.
 
 ## Workflow
 

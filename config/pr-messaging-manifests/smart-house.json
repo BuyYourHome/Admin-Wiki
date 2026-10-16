@@ -1,0 +1,24 @@
+{
+  "schema_version": 2,
+  "project_room": "Smart House",
+  "skill": "smart-house",
+  "task_id": "01a14585-ffe6-7850-8db1-efcdd58e7071",
+  "dispatchable": false,
+  "execution_machine": "WESSTUDIO",
+  "owned_actions": ["property-level Smart House planning", "908 Pond Street digital identity and owner knowledge planning", "buyer experience and transferable package requirements"],
+  "accepted_message_types": ["request", "question", "status", "decision", "result", "improvement"],
+  "related_project_rooms": ["LED lighting", "Home Assistant", "Properties"],
+  "limitations": ["Initial authority is setup and planning-context preservation only", "No purchase, domain, external account, website implementation/publication or device control", "No other Project Room file edits or specialized execution", "Guarded worker enrollment and unattended synthetic validation pending"],
+  "messaging_readiness": {
+    "status": "pending",
+    "machine_registration_verified_at_utc": "2026-10-16T16:23:10.0889494Z",
+    "host_access_verified_at_utc": "2026-10-16T16:10:38.4463333Z",
+    "validation_message_id": null,
+    "lifecycle_completed_at_utc": null,
+    "notification_count": 0,
+    "dispatcher_task_id": "01a06337-1b59-7dc2-9586-6660eb7b5da7",
+    "dispatcher_automation_id": null,
+    "cross_machine_source": null,
+    "manual_intervention": null
+  }
+}

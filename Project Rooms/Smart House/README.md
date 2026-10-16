@@ -8,8 +8,8 @@ Current authorization is **Project Room, matching skill, dedicated chat, and pla
 
 ## Status And Ownership
 
-- Status: pending setup; planning context preserved.
-- Dedicated chat: pending until the dedicated chat is created.
+- Status: room/skill/context package created; messaging setup pending.
+- Dedicated chat: `Smart House`, task `01a14585-ffe6-7850-8db1-efcdd58e7071`.
 - Execution machine: WESSTUDIO.
 - Matching skill: `C:\Codex\Wiki Files\skills\smart-house\SKILL.md`.
 - Repository: `C:\Codex\Wiki Files`; branch `main`.
@@ -20,6 +20,8 @@ Current authorization is **Project Room, matching skill, dedicated chat, and pla
 ## Messaging Readiness
 
 Pending messaging registration - not dispatchable. Dedicated identity, manifest, exact local registration, authenticated host access, guarded worker enrollment, unattended cross-machine synthetic lifecycle, and readiness validation are required. A startup response alone is not transport validation. Do not route routine work here while this gate remains pending.
+
+Exact local registration verified on WESSTUDIO at 2026-10-16T16:23:10.0889494Z; authenticated central-manager access verified. Manifest: `config\pr-messaging-manifests\smart-house.json`. Remaining blocker: the guarded installer only permits enrollment of Codex Environment, not Smart House. Worker-owner support for this exact destination and unattended validation are required; no production worker configuration was changed.
 
 ## Planning Workflow
 

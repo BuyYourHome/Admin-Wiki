@@ -10,7 +10,7 @@ Use [[Agent Unit Standard]] for the standard package behind an agent-like operat
 
 | Name | Type | Status | Schedule | Primary Definition |
 |---|---|---|---|---|
-| Smart House | Wiki-managed skill plus project room; dedicated chat pending | Pending messaging registration - not dispatchable | On demand; no automation | `skills\smart-house\SKILL.md`; `Project Rooms\Smart House\README.md`; task pending; WESSTUDIO |
+| Smart House | Wiki-managed skill plus project room plus dedicated chat | Pending messaging registration - not dispatchable | On demand; no automation | `skills\smart-house\SKILL.md`; `Project Rooms\Smart House\README.md`; task `01a14585-ffe6-7850-8db1-efcdd58e7071`; WESSTUDIO; guarded worker enrollment and synthetic validation pending |
 | LED lighting | Wiki-managed skill plus project room plus dedicated task | Pending messaging registration - not dispatchable | On demand | `skills\led-lighting\SKILL.md`; `Project Rooms\LED lighting\README.md`; task `01a0b696-05a2-7291-a857-084a6f2bc2eb` |
 | Jean Wright / Office Assistant | Wiki-managed skill plus project room plus assistant profile and operating role | Active | On demand and through related automations | `skills\jean-wright\SKILL.md`; `Project Rooms\Jean Wright\README.md`; `C:\Codex\Office Assistant Profile.md`; `AGENTS.md` |
 | Jean Dispatcher | Jean Wright mode plus central Project Room routing rule | Active | On demand when Wes asks Jean to delegate, coordinate, or route specialized work | `Project Room Chat Startup Rule.md`; `Project Rooms\Jean Wright\working\dispatcher-routing-map.md`; `Project Rooms\Jean Wright\working\dispatcher-action-log.md`; `skills\jean-wright\SKILL.md` |
@@ -63,6 +63,17 @@ Use [[Agent Unit Standard]] for the standard package behind an agent-like operat
 | GM Site Iteration | GM heartbeat automation plus REI BlackBook project room | Active | Every 30 minutes; each acquired run chains coherent book-site iterations for approximately 45-90 minutes, then emails Wes the remaining backlog from OfficeAssist | `skills\rei-blackbook\SKILL.md`; `Project Rooms\REI BlackBook\README.md`; automation id `gm-mode-site-iteration` |
 | Investigate Computer | Wiki-managed skill plus project room plus heartbeat automation | Active | Daily at 6:00 AM Eastern; email Wes only when an issue is detected | `skills\investigate-computer\SKILL.md`; `Project Rooms\Investigate Computer\README.md`; app automation id `investigate-computer-daily-check` |
 | Jenny Email Summary | Behavior inside Email Monitor heartbeat | Active | Runs once daily at/after 8:00 AM Eastern with the Email Monitor heartbeat; emails Jenny from OfficeAssist and verifies Sent Items | `skills\email-monitor\SKILL.md`; `Email Monitor` prompt notes |
+
+## Smart House
+
+- Dedicated task: `Smart House`, id `01a14585-ffe6-7850-8db1-efcdd58e7071`.
+- Execution machine: `WESSTUDIO`; canonical Wiki Files project.
+- Status: Pending messaging registration - not dispatchable.
+- Room: `Project Rooms\Smart House\README.md`; skill: `skills\smart-house\SKILL.md`.
+- Manifest: `config\pr-messaging-manifests\smart-house.json`.
+- Scope: on-demand 908 Pond Street digital-twin, buyer experience, owner knowledge and transferable-package planning. Initial authority is room/skill/chat/context setup only.
+- No automation, purchases, domain/account provisioning, website implementation/publication, or device control authorized by setup.
+- Exact client registration and host access verified. Guarded worker enrollment support and unattended synthetic validation remain blocked; see `Project Rooms\Smart House\working\setup-status.md`.
 
 ## LED lighting
 
