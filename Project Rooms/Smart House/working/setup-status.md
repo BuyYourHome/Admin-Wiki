@@ -21,3 +21,11 @@
 - Installed release 0.4.8 configuration has only Create PR, Bathroom Fixtures, and Codex Environment destinations; Smart House is absent. No configuration was changed. Scheduled-task inspection from the restricted shell was access-denied; no schedule claim is made.
 - Recovery owner: PR Messaging Dispatcher code owner on WES-VIDEOEDITOR, with machine-local deployment on WESSTUDIO, must provide an authorized guarded enrollment path for this exact task before unattended cross-machine validation. No worker-code expansion is authorized by this setup handoff.
 - Routine return transport to Jean also cannot be assumed ready: its manifest uses `any_registered_client`, and Jean is absent from the inspected WESSTUDIO destination pins. The authoritative setup record carries the result; do not invent a machine or manually notify around this limitation.
+
+## Readiness Promotion — 2026-10-17
+
+- The WESSTUDIO guarded worker enrolled the exact Smart House task without changing earlier pins, owner, journal, schedule, or task identity.
+- Synthetic `prmsg-wve-smart-house-validation-20261016-001` completed unattended after one delivered attempt, with exact-identity Accepted, Processing, and Completed events and no business action.
+- The canonical validator now uses that authoritative attempt and manifest count when the recipient result omits a redundant notification count. It also compares completion timestamps as UTC instants, preserving rejection of contradictory counts or times. The immutable result was not edited or retried.
+- The promoted manifest returned `ready: true` with all 17 checks passing on WESSTUDIO. Messaging is dispatchable for authorized Smart House planning handoffs only; setup did not authorize implementation, purchases, accounts, publication, or device control.
+- The earlier blocked setup account above is preserved as historical evidence. Jean return transport readiness remains a separate limitation.

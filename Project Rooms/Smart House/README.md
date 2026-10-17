@@ -8,7 +8,7 @@ Current authorization is **Project Room, matching skill, dedicated chat, and pla
 
 ## Status And Ownership
 
-- Status: room/skill/context package created; messaging setup pending.
+- Status: planning-only room active; messaging ready and dispatchable on WESSTUDIO.
 - Dedicated chat: `Smart House`, task `01a14585-ffe6-7850-8db1-efcdd58e7071`.
 - Execution machine: WESSTUDIO.
 - Matching skill: `C:\Codex\Wiki Files\skills\smart-house\SKILL.md`.
@@ -19,9 +19,9 @@ Current authorization is **Project Room, matching skill, dedicated chat, and pla
 
 ## Messaging Readiness
 
-Pending messaging registration - not dispatchable. Dedicated identity, manifest, exact local registration, authenticated host access, guarded worker enrollment, unattended cross-machine synthetic lifecycle, and readiness validation are required. A startup response alone is not transport validation. Do not route routine work here while this gate remains pending.
+Ready and dispatchable for authorized Smart House handoffs on WESSTUDIO. The exact task, registration, host access, guarded worker enrollment, and unattended cross-machine synthetic lifecycle were verified. Messaging readiness does not expand the planning-only business authority above.
 
-Exact local registration verified on WESSTUDIO at 2026-10-16T16:23:10.0889494Z; authenticated central-manager access verified. Manifest: `config\pr-messaging-manifests\smart-house.json`. Remaining blocker: the guarded installer only permits enrollment of Codex Environment, not Smart House. Worker-owner support for this exact destination and unattended validation are required; no production worker configuration was changed.
+Exact local registration verified on WESSTUDIO at 2026-10-16T16:23:10.0889494Z; authenticated central-manager access verified. Synthetic `prmsg-wve-smart-house-validation-20261016-001` completed after one delivered natural-worker attempt at 2026-10-17T01:49:56.633467Z without manual intervention or business action. Canonical manifest: `config\pr-messaging-manifests\smart-house.json`.
 
 ## Planning Workflow
 

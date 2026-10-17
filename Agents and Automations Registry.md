@@ -10,7 +10,7 @@ Use [[Agent Unit Standard]] for the standard package behind an agent-like operat
 
 | Name | Type | Status | Schedule | Primary Definition |
 |---|---|---|---|---|
-| Smart House | Wiki-managed skill plus project room plus dedicated chat | Pending messaging registration - not dispatchable | On demand; no automation | `skills\smart-house\SKILL.md`; `Project Rooms\Smart House\README.md`; task `01a14585-ffe6-7850-8db1-efcdd58e7071`; WESSTUDIO; guarded worker enrollment and synthetic validation pending |
+| Smart House | Wiki-managed skill plus project room plus dedicated chat | Ready and dispatchable for authorized planning handoffs | On demand; no automation | `skills\smart-house\SKILL.md`; `Project Rooms\Smart House\README.md`; task `01a14585-ffe6-7850-8db1-efcdd58e7071`; WESSTUDIO; unattended synthetic validation completed 2026-10-17 |
 | LED lighting | Wiki-managed skill plus project room plus dedicated task | Pending messaging registration - not dispatchable | On demand | `skills\led-lighting\SKILL.md`; `Project Rooms\LED lighting\README.md`; task `01a0b696-05a2-7291-a857-084a6f2bc2eb` |
 | Jean Wright / Office Assistant | Wiki-managed skill plus project room plus assistant profile and operating role | Active | On demand and through related automations | `skills\jean-wright\SKILL.md`; `Project Rooms\Jean Wright\README.md`; `C:\Codex\Office Assistant Profile.md`; `AGENTS.md` |
 | Jean Dispatcher | Jean Wright mode plus central Project Room routing rule | Active | On demand when Wes asks Jean to delegate, coordinate, or route specialized work | `Project Room Chat Startup Rule.md`; `Project Rooms\Jean Wright\working\dispatcher-routing-map.md`; `Project Rooms\Jean Wright\working\dispatcher-action-log.md`; `skills\jean-wright\SKILL.md` |
@@ -68,7 +68,7 @@ Use [[Agent Unit Standard]] for the standard package behind an agent-like operat
 
 - Dedicated task: `Smart House`, id `01a14585-ffe6-7850-8db1-efcdd58e7071`.
 - Execution machine: `WESSTUDIO`; canonical Wiki Files project.
-- Status: Pending messaging registration - not dispatchable.
+- Status: ready and dispatchable on WESSTUDIO for authorized Smart House planning handoffs; unattended synthetic validation completed 2026-10-17 with one delivered attempt and no business action. No recurring Smart House automation.
 - Room: `Project Rooms\Smart House\README.md`; skill: `skills\smart-house\SKILL.md`.
 - Manifest: `config\pr-messaging-manifests\smart-house.json`.
 - Scope: on-demand 908 Pond Street digital-twin, buyer experience, owner knowledge and transferable-package planning. Initial authority is room/skill/chat/context setup only.

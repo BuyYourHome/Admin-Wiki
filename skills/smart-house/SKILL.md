@@ -15,9 +15,9 @@ description: Plan the Buy Your Home Smart House digital identity, website/digita
 
 ## Messaging Readiness
 
-Pending messaging registration - not dispatchable. Task creation alone is insufficient. Require exact manifest/local registration, authenticated host access, guarded worker enrollment, unattended cross-machine synthetic Accepted/Processing/Completed evidence, and the canonical readiness validator before promotion.
+Ready and dispatchable for authorized Smart House handoffs on WESSTUDIO. The exact registration, authenticated host access, guarded enrollment, unattended cross-machine synthetic Accepted/Processing/Completed lifecycle, and canonical readiness validator passed. Transport readiness does not authorize business implementation.
 
-Manifest: `C:\Codex\Wiki Files\config\pr-messaging-manifests\smart-house.json`. Local registration and host access verified 2026-10-16. Guarded installer support for Smart House enrollment is missing; do not bypass it or send a manual synthetic wake-up.
+Manifest: `C:\Codex\Wiki Files\config\pr-messaging-manifests\smart-house.json`. Synthetic validation record: `prmsg-wve-smart-house-validation-20261016-001`, completed after one natural-worker delivery on 2026-10-17. Do not repeat it or treat the validation as new planning authority.
 
 ## Workflow
 
