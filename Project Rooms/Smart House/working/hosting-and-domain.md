@@ -17,7 +17,7 @@ Wes reported buying `Pondstr.com` from GoDaddy and instructed Smart House to hos
 
 ## Pondstr.com connection
 
-Custom-domain ID: `appgdom_6ad4db25251c819184c11d38ed7bcbbe`. GoDaddy DNS is configured and publicly verified. Latest Sites check: provider routing `active`, overall status `pending`, SSL `pending_validation`. HTTPS completion remains unverified.
+Custom-domain ID: `appgdom_6ad4db25251c819184c11d38ed7bcbbe`. GoDaddy DNS is configured and publicly verified. At 2026-10-18T15:00:28Z Sites confirmed overall status `active`, provider routing `active`, and SSL `active`. The custom domain is connected at https://pondstr.com .
 
 Exact DNS records returned by Sites on 2026-10-18:
 
@@ -38,7 +38,7 @@ On 2026-10-18 Smart House replaced the parked apex A record with `162.159.143.30
 
 Public resolver `1.1.1.1` independently returned both correct A addresses and both exact TXT values. At 2026-10-18T14:57:40Z Sites reported provider routing `active` but SSL `pending_validation`. A normal HTTPS check failed to establish SSL; no certificate checks were bypassed.
 
-Remaining continuation: refresh this existing custom-domain ID until certificate issuance completes, then verify HTTPS and expected owner-private website access. Reuse the existing Sites project and domain record; do not recreate either. Do not claim working HTTPS before verification. No additional purchase or public-audience change is required or authorized by this DNS work.
+Completion: the subsequent Sites refresh confirmed active domain routing and certificate. A normal HTTPS request completed certificate validation and received HTTP 401, consistent with owner-private access. Browser verification at https://pondstr.com displayed **Log in to access** and **Continue with ChatGPT**. The sign-in link reached OpenAI login; no credentials were entered. Signed-out delivery of the private site's access page is verified; a fresh owner login inside this browser was not completed. No public-audience change was made. Reuse the existing Sites project and domain record for future changes.
 
 ## Windows publication notes
 

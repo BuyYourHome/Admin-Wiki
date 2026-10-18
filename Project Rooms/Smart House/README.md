@@ -8,7 +8,7 @@ Wes authorized beginning the Pond Street website in this chat on 2026-10-18, the
 
 ## Status And Ownership
 
-- Status: initial owner-private website deployed through ChatGPT Sites; Pondstr.com DNS configured and publicly verified, provider routing active, HTTPS certificate pending. Messaging ready and dispatchable on WESSTUDIO.
+- Status: initial owner-private website deployed through ChatGPT Sites at https://pondstr.com . DNS, domain routing, and HTTPS certificate verified active. Messaging ready and dispatchable on WESSTUDIO.
 - Dedicated chat: `Smart House`, task `01a14585-ffe6-7850-8db1-efcdd58e7071`.
 - Execution machine: WESSTUDIO.
 - Matching skill: `C:\Codex\Wiki Files\skills\smart-house\SKILL.md`.
