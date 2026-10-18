@@ -1,2 +1,5 @@
 # Local preview copies; originals are retained in SharePoint.
 assets/
+.hosting-work/
+dist/
+.pondstr-deploy.tar.gz

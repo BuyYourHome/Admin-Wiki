@@ -4,11 +4,11 @@
 
 Plan the digital identity, website/digital twin, buyer demonstrations, owner knowledge, and transferable digital package for **908 Pond Street**. This is more than a property listing. It connects source-backed house information with a public educational experience, a constrained showing experience, and a future authenticated owner portal.
 
-Wes authorized beginning the Pond Street website in this chat on 2026-10-18. The first implementation is a **local concept preview** under `site/`, including simulated lighting and a planned owner-information library. Public publication, purchases, domains, external accounts, device connections/control, and production automation are not included in this phase.
+Wes authorized beginning the Pond Street website in this chat on 2026-10-18, then reported purchasing `Pondstr.com` through GoDaddy and requested ChatGPT hosting. The first implementation under `site/` includes simulated lighting and a planned owner-information library. ChatGPT Sites hosting and connecting the purchased domain are now in scope. Purchases, live device connections/control, and production home automations remain outside scope. Preserve the new Site's owner-private audience unless Wes requests a different audience.
 
 ## Status And Ownership
 
-- Status: local website concept draft in development; messaging ready and dispatchable on WESSTUDIO.
+- Status: initial website being deployed through ChatGPT Sites; purchased-domain connection in progress. Messaging ready and dispatchable on WESSTUDIO.
 - Dedicated chat: `Smart House`, task `01a14585-ffe6-7850-8db1-efcdd58e7071`.
 - Execution machine: WESSTUDIO.
 - Matching skill: `C:\Codex\Wiki Files\skills\smart-house\SKILL.md`.
