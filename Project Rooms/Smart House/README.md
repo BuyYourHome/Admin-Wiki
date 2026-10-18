@@ -4,11 +4,11 @@
 
 Plan the digital identity, website/digital twin, buyer demonstrations, owner knowledge, and transferable digital package for **908 Pond Street**. This is more than a property listing. It connects source-backed house information with a public educational experience, a constrained showing experience, and a future authenticated owner portal.
 
-Current authorization is **Project Room, matching skill, dedicated chat, and planning-context setup only**. No website implementation/publication, purchases, domains, external accounts, device connections/control, or production automation are authorized.
+Wes authorized beginning the Pond Street website in this chat on 2026-10-18. The first implementation is a **local concept preview** under `site/`, including simulated lighting and a planned owner-information library. Public publication, purchases, domains, external accounts, device connections/control, and production automation are not included in this phase.
 
 ## Status And Ownership
 
-- Status: planning-only room active; messaging ready and dispatchable on WESSTUDIO.
+- Status: local website concept draft in development; messaging ready and dispatchable on WESSTUDIO.
 - Dedicated chat: `Smart House`, task `01a14585-ffe6-7850-8db1-efcdd58e7071`.
 - Execution machine: WESSTUDIO.
 - Matching skill: `C:\Codex\Wiki Files\skills\smart-house\SKILL.md`.
@@ -19,7 +19,7 @@ Current authorization is **Project Room, matching skill, dedicated chat, and pla
 
 ## Messaging Readiness
 
-Ready and dispatchable for authorized Smart House handoffs on WESSTUDIO. The exact task, registration, host access, guarded worker enrollment, and unattended cross-machine synthetic lifecycle were verified. Messaging readiness does not expand the planning-only business authority above.
+Ready and dispatchable for authorized Smart House handoffs on WESSTUDIO. The exact task, registration, host access, guarded worker enrollment, and unattended cross-machine synthetic lifecycle were verified. Messaging readiness does not expand business authority.
 
 Exact local registration verified on WESSTUDIO at 2026-10-16T16:23:10.0889494Z; authenticated central-manager access verified. Synthetic `prmsg-wve-smart-house-validation-20261016-001` completed after one delivered natural-worker attempt at 2026-10-17T01:49:56.633467Z without manual intervention or business action. Canonical manifest: `config\pr-messaging-manifests\smart-house.json`.
 
@@ -36,7 +36,8 @@ Exact local registration verified on WESSTUDIO at 2026-10-16T16:23:10.0889494Z; 
 
 - `sources/`: source conversation and authoritative external references.
 - `working/`: planning brief, source inventory, conflicts, missing context, and setup evidence.
-- `outputs/`: review-ready Markdown plans when authorized; no implemented website yet.
+- `outputs/`: review-ready Markdown plans when authorized.
+- `site/`: portable HTML/CSS/JavaScript website concept; open `index.html` locally. Scenes and architectural illustrations are conceptual, not actual plans or device controls.
 
 This planning-only room does not need a routine transaction log at setup. Central messages own delegated operational receipts/results. Record durable design decisions with source references when future work warrants them. Store binary source material and deliverables outside Git in a verified approved location.
 

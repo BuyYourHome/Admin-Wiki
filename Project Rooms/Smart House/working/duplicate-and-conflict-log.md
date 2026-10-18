@@ -4,3 +4,4 @@
 - Smart House coordinates property-level experience and handover; LED lighting and Home Assistant retain their technical ownership. Do not maintain competing device specifications.
 - Prior assistant hosting/pricing/transfer claims are historical discussion only; reverify before relying on them.
 - Voice transcript segments overlap. Preserve source provenance; do not count repeated transcript text as separate instructions.
+- 2026-10-18: Wes's corrected intake covers only exterior concepts 06, 07, 08, and 23; other files in the external folder are excluded. `23-front-final-with-garage.png` remains a concept despite its filename. These are not measured plans or current-condition photographs. No construction or material approval is inferred.
