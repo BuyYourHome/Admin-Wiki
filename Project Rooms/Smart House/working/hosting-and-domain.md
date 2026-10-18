@@ -17,7 +17,7 @@ Wes reported buying `Pondstr.com` from GoDaddy and instructed Smart House to hos
 
 ## Pondstr.com connection
 
-Custom-domain ID: `appgdom_6ad4db25251c819184c11d38ed7bcbbe`. Sites returned `pending` with SSL `initializing`. Domain setup is not complete.
+Custom-domain ID: `appgdom_6ad4db25251c819184c11d38ed7bcbbe`. GoDaddy DNS is configured and publicly verified. Latest Sites check: provider routing `active`, overall status `pending`, SSL `pending_validation`. HTTPS completion remains unverified.
 
 Exact DNS records returned by Sites on 2026-10-18:
 
@@ -32,9 +32,13 @@ These are domain-verification DNS values intended for public DNS, not account cr
 
 ## Remaining work
 
-The signed-in GoDaddy Chrome session's DNS management page reports **No domains match 'pondstr.com'**. The account's domain search also showed Pondstr.com as available/added in its purchase search. That is not proof of purchase failure, but it does not establish that this account owns the domain. No DNS records were changed. Wes was asked to locate the correct purchasing account or confirm order status.
+Wes completed the domain purchase and asked Smart House to retry. GoDaddy's receipt confirmed `pondstr.com` registration, and its domain DNS editor then became available. The prior missing-domain blocker is resolved.
 
-When the owning account/domain appears: inspect the existing records, preserve mail and unrelated services, apply only the exact required records, then refresh this existing custom-domain ID and verify DNS, SSL, and website routing. Reuse the existing Sites project and domain record; do not recreate either. Do not claim the purchased domain works before verification.
+On 2026-10-18 Smart House replaced the parked apex A record with `162.159.143.30`, added the second required A address `172.66.3.26`, and added the two exact TXT verification records above. All four were read back in GoDaddy after its successful-save notices. Nameservers, SOA, existing `www` and `_domainconnect` CNAMEs, and `_dmarc` were preserved. GoDaddy displayed 600-second TTL for both A records and one hour for the new TXT records.
+
+Public resolver `1.1.1.1` independently returned both correct A addresses and both exact TXT values. At 2026-10-18T14:57:40Z Sites reported provider routing `active` but SSL `pending_validation`. A normal HTTPS check failed to establish SSL; no certificate checks were bypassed.
+
+Remaining continuation: refresh this existing custom-domain ID until certificate issuance completes, then verify HTTPS and expected owner-private website access. Reuse the existing Sites project and domain record; do not recreate either. Do not claim working HTTPS before verification. No additional purchase or public-audience change is required or authorized by this DNS work.
 
 ## Windows publication notes
 
