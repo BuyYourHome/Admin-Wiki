@@ -88,7 +88,9 @@ function Get-PayloadHash {
 function Read-Record {
     param([string]$Path)
     if (-not (Test-Path -LiteralPath $Path)) { throw "Message record not found: $Path" }
-    Get-Content -Raw -LiteralPath $Path | ConvertFrom-Json
+    # Queue records are UTF-8 JSON. Windows PowerShell 5.1 otherwise treats a
+    # BOM-less file as the active ANSI code page and changes immutable text.
+    Get-Content -Raw -LiteralPath $Path -Encoding UTF8 | ConvertFrom-Json
 }
 
 function Write-JsonAtomic {

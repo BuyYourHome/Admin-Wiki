@@ -15,7 +15,7 @@ param(
     [string]$ExpectedOwnerGeneration
 )
 $ErrorActionPreference='Stop'
-$release='0.4.8'
+$release='0.4.9'
 $queue='\\WES-VIDEOEDITOR\BYH-PRMessaging$'
 $task="BYH PR Messaging Worker - $ExpectedMachine"
 $root=Join-Path $env:LOCALAPPDATA "BuyYourHome\PRMessaging\low-token\releases\$release"
@@ -100,7 +100,7 @@ if($Action -eq 'EnrollValidationDestination'){
 }
 
 if($Action -eq 'UpgradeLive'){
-    $sourceRelease=@($release,'0.4.7','0.4.6','0.4.5','0.4.4','0.4.3','0.4.2','0.4.1','0.4.0')|Where-Object {Test-Path -LiteralPath (Join-Path $env:LOCALAPPDATA "BuyYourHome\PRMessaging\low-token\releases\$_\low-token\config.json")}|Select-Object -First 1
+    $sourceRelease=@($release,'0.4.8','0.4.7','0.4.6','0.4.5','0.4.4','0.4.3','0.4.2','0.4.1','0.4.0')|Where-Object {Test-Path -LiteralPath (Join-Path $env:LOCALAPPDATA "BuyYourHome\PRMessaging\low-token\releases\$_\low-token\config.json")}|Select-Object -First 1
     if([string]::IsNullOrWhiteSpace($sourceRelease)){throw 'LiveSourceConfigMissing'}
     $oldRoot=Join-Path $env:LOCALAPPDATA "BuyYourHome\PRMessaging\low-token\releases\$sourceRelease"
     $oldPkg=Join-Path $oldRoot 'low-token';$oldConfigPath=Join-Path $oldPkg 'config.json'

@@ -39,7 +39,7 @@ function Invoke-LtValidationEnrollment {
         $manifestHash=(Get-FileHash -LiteralPath $ManifestPath -Algorithm SHA256).Hash
         if($manifestHash -ine $ExpectedManifestHash){throw 'EnrollmentManifestHashMismatch'}
         $manifest=Read-LtJson $ManifestPath
-        if($cfg.schema_version -ne 1 -or $cfg.release -cne '0.4.8' -or $cfg.expected_machine -cne $Machine -or
+        if($cfg.schema_version -ne 1 -or $cfg.release -cne '0.4.9' -or $cfg.expected_machine -cne $Machine -or
             $cfg.expected_sid -cne $Sid -or $cfg.dispatcher_task_id -cne $DispatcherTaskId -or
             $cfg.generation -cne $ExpectedOwnerGeneration -or $cfg.state_directory -cne $StateDirectory -or
             $cfg.adapter_kind -cne 'CodexQueue'){throw 'EnrollmentLiveConfigIdentityMismatch'}
@@ -118,7 +118,7 @@ function Invoke-LtValidationEnrollment {
         if($journal.schema_version -ne 2 -or $journal.machine -cne $Machine -or $journal.sid -cne $Sid -or
             $journal.owner -cne $cfg.owner -or $journal.generation -cne $ExpectedOwnerGeneration -or $null -eq $journal.entries){throw 'EnrollmentJournalMismatch'}
         if(@($journal.entries|Where-Object {$_.destination_task_id -ceq $DestinationTaskId}).Count){throw 'EnrollmentDestinationHasJournalHistory'}
-        # Retain the registered code owner's release-0.4.8 eligibility validator.
+        # Retain the registered code owner's release-0.4.9 eligibility validator.
         # Its sorted projection is not applied: existing destination order stays intact.
         $null=New-LtValidationEnrollmentConfig $cfg $client $allManifests $record $Machine $DispatcherTaskId $ProjectRoom $DestinationTaskId $ValidationMessageId $ExpectedSyntheticPayloadHash
         $cfg.destinations=@($cfg.destinations)+@([pscustomobject][ordered]@{project_room=$ProjectRoom;task_id=$DestinationTaskId;machine=$Machine})

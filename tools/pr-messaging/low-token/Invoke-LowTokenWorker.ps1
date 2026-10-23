@@ -13,7 +13,7 @@ $ErrorActionPreference='Stop'
 $started=[DateTime]::UtcNow; $watch=[Diagnostics.Stopwatch]::StartNew()
 $lock=$null; $cfg=$null; $journal=$null
 $script:centralRecordChanged=$false
-$health=[ordered]@{schema_version=1;release=$null;mode=$Mode;machine=$env:COMPUTERNAME;sid=[Security.Principal.WindowsIdentity]::GetCurrent().User.Value;started_at_utc=$started.ToString('o');status='Starting';queue_reachable=$false;claims=0;submissions=0;model_requests=0;journal_closed_skipped=0;reconciled=@();attention=@();candidates=@();next_tick_at_utc=$started.AddSeconds(60).ToString('o')}
+$health=[ordered]@{schema_version=1;release=$null;mode=$Mode;machine=$env:COMPUTERNAME;sid=[Security.Principal.WindowsIdentity]::GetCurrent().User.Value;started_at_utc=$started.ToString('o');status='Starting';queue_reachable=$false;claims=0;submissions=0;model_requests=0;journal_closed_skipped=0;reconciled=@();attention=@();candidates=@();claim_attempts=0;failure_before_claim=$null;failure_phase=$null;next_tick_at_utc=$started.AddSeconds(60).ToString('o')}
 $script:PrHashMetrics=@{calls=0;calculations=0;cache_hits=0;elapsed_ms=0.0}
 $health.diagnostics=[ordered]@{version=1;pid=$PID;priority=[string]([Diagnostics.Process]::GetCurrentProcess().PriorityClass);phases=@();manager_calls=@();before_conditional_claim=@();hash_checks=$script:PrHashMetrics}
 $script:phase='preflight';$script:phaseStart=0L;$script:phaseHashStart=0
@@ -57,14 +57,14 @@ function Invoke-Manager([string]$Action,[hashtable]$Extra=@{}) {
     if ($Mode -in @('Validation','Drain','Live')) {
         $managerMode=if($Mode -ceq 'Live'){'Live'}else{'Validation'}
         $argv+=@('-TransportOwner',$cfg.owner,'-Generation',$cfg.generation,'-Mode',$managerMode,'-ClientConfigPath',$cfg.client_path,'-ManifestDirectory',$cfg.manifest_directory,'-ActorTaskId',$cfg.dispatcher_task_id,'-ActorProjectRoom','PR Messaging Dispatcher')
-        $usesCanonicalProduction=$cfg.release -in @('0.4.0','0.4.1','0.4.2','0.4.3','0.4.4','0.4.5','0.4.6','0.4.7','0.4.8') -and $cfg.manager_path -ceq 'C:\Codex\Wiki Files\tools\pr-messaging\Manage-ProjectRoomMessage.ps1' -and $Mode -in @('Validation','Live')
+        $usesCanonicalProduction=$cfg.release -in @('0.4.0','0.4.1','0.4.2','0.4.3','0.4.4','0.4.5','0.4.6','0.4.7','0.4.8','0.4.9') -and $cfg.manager_path -ceq 'C:\Codex\Wiki Files\tools\pr-messaging\Manage-ProjectRoomMessage.ps1' -and $Mode -in @('Validation','Live')
         if(!$usesCanonicalProduction){$argv+=@('-FixtureRoot',$cfg.fixture_root)}
     }
     if($Mode -ceq 'Canary' -and $Action -ne 'List'){
         $argv+=@('-TransportOwner',$cfg.owner,'-Generation',$cfg.generation,'-Mode','Canary','-ClientConfigPath',$cfg.client_path,'-ManifestDirectory',$cfg.manifest_directory,'-ActorTaskId',$cfg.dispatcher_task_id,'-ActorProjectRoom','PR Messaging Dispatcher')
     }
     foreach($k in $Extra.Keys){$argv+=@("-$k",[string]$Extra[$k])}
-    $managerBound=if($cfg.release -in @('0.4.5','0.4.6','0.4.7','0.4.8')){if($Action -ceq 'List'){60}else{120}}else{if($Action -ceq 'List'){25}else{15}}
+    $managerBound=if($cfg.release -in @('0.4.5','0.4.6','0.4.7','0.4.8','0.4.9')){if($Action -ceq 'List'){60}else{120}}else{if($Action -ceq 'List'){25}else{15}}
     $callWatch=[Diagnostics.Stopwatch]::StartNew()
     try{$p=Invoke-LtProcess $cfg.powershell_path $argv ([Math]::Min($managerBound,$left))}
     finally{$health.diagnostics.manager_calls+=@{action=$Action;elapsed_ms=$callWatch.ElapsedMilliseconds;started_elapsed_ms=($watch.ElapsedMilliseconds-$callWatch.ElapsedMilliseconds)}}
@@ -123,19 +123,19 @@ function Recover-Entry($Entry,$Record) {
 }
 try {
     $cfg=Read-LtJson $ConfigPath
-    if ($cfg.schema_version -ne 1 -or $cfg.release -notin @('0.2.0','0.4.0','0.4.1','0.4.2','0.4.3','0.4.4','0.4.5','0.4.6','0.4.7','0.4.8')) { throw 'UnsupportedConfigRelease' }
+    if ($cfg.schema_version -ne 1 -or $cfg.release -notin @('0.2.0','0.4.0','0.4.1','0.4.2','0.4.3','0.4.4','0.4.5','0.4.6','0.4.7','0.4.8','0.4.9')) { throw 'UnsupportedConfigRelease' }
     $health.release=$cfg.release
     if((Get-LtPackageHash $PSScriptRoot) -cne $cfg.package_sha256){throw 'PackageReleaseMismatch'}
     if($cfg.expected_machine -cne $env:COMPUTERNAME -or $cfg.expected_sid -cne $health.sid){throw 'WorkerIdentityMismatch'}
-    $maxAllowedTick=if($cfg.release -in @('0.4.4','0.4.5','0.4.6','0.4.7','0.4.8')){180}else{55}
+    $maxAllowedTick=if($cfg.release -in @('0.4.4','0.4.5','0.4.6','0.4.7','0.4.8','0.4.9')){180}else{55}
     if ($cfg.max_tick_seconds -lt 5 -or $cfg.max_tick_seconds -gt $maxAllowedTick -or $cfg.queued_receipt_warning_seconds -lt 1 -or $cfg.queued_receipt_warning_seconds -gt 86400) { throw 'InvalidTimeBounds' }
     Assert-LtUuid $cfg.dispatcher_task_id
-    if($Mode -eq 'Live' -and $cfg.release -notin @('0.4.0','0.4.1','0.4.2','0.4.3','0.4.4','0.4.5','0.4.6','0.4.7','0.4.8')){throw 'LiveDisabledInDevelopmentRelease'}
+    if($Mode -eq 'Live' -and $cfg.release -notin @('0.4.0','0.4.1','0.4.2','0.4.3','0.4.4','0.4.5','0.4.6','0.4.7','0.4.8','0.4.9')){throw 'LiveDisabledInDevelopmentRelease'}
     if($PSBoundParameters.ContainsKey('MessageId')){Assert-LtId $MessageId}
     if($Mode -eq 'Validation' -and [string]::IsNullOrWhiteSpace($MessageId)){throw 'ValidationFilterRequired'}
     if($Mode -ceq 'Canary'){Assert-LtCanaryConfig $cfg $MessageId}
     if($Mode -in @('Validation','Drain')){
-        if($cfg.release -in @('0.4.0','0.4.1','0.4.2','0.4.3','0.4.4','0.4.5','0.4.6','0.4.7','0.4.8') -and $Mode -ceq 'Validation'){
+        if($cfg.release -in @('0.4.0','0.4.1','0.4.2','0.4.3','0.4.4','0.4.5','0.4.6','0.4.7','0.4.8','0.4.9') -and $Mode -ceq 'Validation'){
             if($cfg.adapter_kind -cne 'CodexQueue'){throw 'ProductionAdapterRequired'}
         } else {
             Assert-LtFixture $cfg.fixture_root @($cfg.queue_path,$cfg.state_directory,$cfg.client_path,$cfg.manifest_directory,$cfg.adapter_path)
@@ -194,7 +194,7 @@ try {
         $candidateWatch=[Diagnostics.Stopwatch]::StartNew();$candidateHashes=$script:PrHashMetrics.calls
         $evaluationMode=if($Mode -eq 'Validation'){'Validation'}else{'Live'}
         $reason=Test-LtRecord $r $client $manifests $env:COMPUTERNAME $evaluationMode $MessageId $records
-        if($cfg.release -in @('0.4.0','0.4.1','0.4.2','0.4.3','0.4.4','0.4.5','0.4.6','0.4.7','0.4.8') -and !(Test-LtPinnedDestination $cfg $r.destination)){$reason='DestinationNotPinned'}
+        if($cfg.release -in @('0.4.0','0.4.1','0.4.2','0.4.3','0.4.4','0.4.5','0.4.6','0.4.7','0.4.8','0.4.9') -and !(Test-LtPinnedDestination $cfg $r.destination)){$reason='DestinationNotPinned'}
         if($Mode -ceq 'Canary'){Assert-LtCanaryRecord $r; if($cfg.payload_hash -cne $r.payload_hash){throw 'CanaryPinnedHashMismatch'}}
         if($r.destination.task_id -ceq $cfg.dispatcher_task_id){$reason='SelfNotificationForbidden'}
         if($journal -and @($journal.entries|Where-Object {$_.phase -ne 'closed' -and $_.destination_task_id -ceq $r.destination.task_id}).Count){$reason='DestinationOutstanding'}
@@ -214,6 +214,7 @@ try {
         if($FailurePoint -eq 'AfterPlan'){throw 'InjectedAfterPlan'}
         Set-LtPhase 'claim_and_submission';Save-LtCheckpoint
         Stop-PrIntegritySnapshot
+        $health.claim_attempts++
         $claim=Invoke-Manager 'ConditionalClaim' @{MessageId=$r.message_id;ExpectedHash=$r.payload_hash;ExpectedVersion=(Get-LtVersion $r);ExpectedConfigHash=$configurationHash;AttemptId=$entry.attempt_id}
         if(!$claim.claimed){$entry.phase='closed';$entry.outcome='NotClaimed';$entry|Add-Member claim_denial $claim.reason -Force;Save-Journal;continue}
         $health.claims++
@@ -228,16 +229,16 @@ try {
         $argv=@('-NoProfile','-ExecutionPolicy','Bypass','-File',$cfg.adapter_path,'-FixtureRoot',$cfg.fixture_root,'-MessageId',$r.message_id,'-ThreadId',$r.destination.task_id,'-AttemptId',$entry.attempt_id)
         if($Mode -ceq 'Canary'){
             $argv=@('-NoProfile','-ExecutionPolicy','Bypass','-File',$cfg.adapter_path,'-CanaryConfigPath',$ConfigPath,'-MessageId',$r.message_id,'-ThreadId',$r.destination.task_id,'-DispatcherTaskId',$cfg.dispatcher_task_id,'-PayloadHash',$r.payload_hash,'-CliPath',$cfg.cli_path,'-ExpectedCliHash',$cfg.cli_sha256,'-AttemptId',$entry.attempt_id,'-TimeoutSeconds','8')
-        } elseif($Mode -ceq 'Live' -or ($Mode -ceq 'Validation' -and $cfg.release -in @('0.4.0','0.4.1','0.4.2','0.4.3','0.4.4','0.4.5','0.4.6','0.4.7','0.4.8'))) {
+        } elseif($Mode -ceq 'Live' -or ($Mode -ceq 'Validation' -and $cfg.release -in @('0.4.0','0.4.1','0.4.2','0.4.3','0.4.4','0.4.5','0.4.6','0.4.7','0.4.8','0.4.9'))) {
             $argv=@('-NoProfile','-ExecutionPolicy','Bypass','-File',$cfg.adapter_path,'-LiveConfigPath',$ConfigPath,'-MessageId',$r.message_id,'-ThreadId',$r.destination.task_id,'-DispatcherTaskId',$cfg.dispatcher_task_id,'-PayloadHash',$r.payload_hash,'-CliPath',$cfg.cli_path,'-ExpectedCliHash',$cfg.cli_sha256,'-AttemptId',$entry.attempt_id,'-TimeoutSeconds','10')
         }
         $health.submissions++
-        $adapterBound=if($Mode -in @('Canary','Live') -or ($Mode -ceq 'Validation' -and $cfg.release -in @('0.4.0','0.4.1','0.4.2','0.4.3','0.4.4','0.4.5','0.4.6','0.4.7','0.4.8'))){20}else{10}
+        $adapterBound=if($Mode -in @('Canary','Live') -or ($Mode -ceq 'Validation' -and $cfg.release -in @('0.4.0','0.4.1','0.4.2','0.4.3','0.4.4','0.4.5','0.4.6','0.4.7','0.4.8','0.4.9'))){20}else{10}
         $answer=Invoke-LtProcess $cfg.powershell_path $argv ([Math]::Min($adapterBound,[Math]::Max(1,[int]($cfg.max_tick_seconds-$watch.Elapsed.TotalSeconds))))
         if($Mode -ceq 'Canary'){Write-LtJson (Join-Path $cfg.state_directory 'adapter-process-result.json') $answer}
         Invoke-CrashTestPause 'AfterAdapter'
         if($FailurePoint -eq 'AfterAdapter'){throw 'InjectedAfterAdapter'}
-        $productionMarker=if($cfg.release -in @('0.4.1','0.4.2','0.4.3','0.4.4','0.4.5','0.4.6','0.4.7','0.4.8') -and ($Mode -ceq 'Live' -or $Mode -ceq 'Validation')){Get-LtSubmissionMarkerPath $cfg.state_directory $r.message_id $entry.attempt_id}else{$null}
+        $productionMarker=if($cfg.release -in @('0.4.1','0.4.2','0.4.3','0.4.4','0.4.5','0.4.6','0.4.7','0.4.8','0.4.9') -and ($Mode -ceq 'Live' -or $Mode -ceq 'Validation')){Get-LtSubmissionMarkerPath $cfg.state_directory $r.message_id $entry.attempt_id}else{$null}
         if(Test-LtProvenPreSubmissionFailure $answer $productionMarker){
             $errorCode=Get-SafeAdapterErrorCode $answer.stderr
             $detail='Pinned adapter exited before its permanent submission marker was created; no destination notification occurred.'
@@ -260,6 +261,8 @@ try {
     $health.status=if($Mode -eq 'Shadow'){'ShadowComplete'}elseif($Mode -eq 'Drain'){'DrainComplete'}else{'TickComplete'}
 }catch{
     $health.status='Blocked'
+    $health.failure_before_claim=($health.claim_attempts -eq 0)
+    $health.failure_phase=$script:phase
     $failureText=$_.Exception.Message
     $health.error=if($failureText -cmatch '^[A-Za-z][A-Za-z0-9]{0,80}$'){$failureText}elseif($failureText.StartsWith('ManagerFailed:')){'ManagerFailed'}else{'WorkerFailure'}
     $health.error_sha256=Get-LtSha256 $failureText
