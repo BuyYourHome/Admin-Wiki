@@ -1,0 +1,6 @@
+interface:
+  display_name: "Smart House"
+  short_description: "Plan a portable smart-house digital identity"
+  default_prompt: "Use $smart-house to continue the 908 Pond Street planning context and identify the next authorized step."
+policy:
+  allow_implicit_invocation: true

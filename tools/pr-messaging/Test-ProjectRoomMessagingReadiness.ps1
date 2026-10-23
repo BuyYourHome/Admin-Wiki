@@ -39,6 +39,14 @@ function Add-ReadinessCheck {
         detail = $Detail
     }
 }
+function Test-SameUtcInstant([string]$Actual,[string]$Expected) {
+    if($Actual -cnotmatch '(?:Z|[+]00:00)$' -or $Expected -cnotmatch '(?:Z|[+]00:00)$'){return $false}
+    $actualTime=[DateTimeOffset]::MinValue
+    $expectedTime=[DateTimeOffset]::MinValue
+    if(![DateTimeOffset]::TryParse($Actual,[Globalization.CultureInfo]::InvariantCulture,[Globalization.DateTimeStyles]::RoundtripKind,[ref]$actualTime) -or
+        ![DateTimeOffset]::TryParse($Expected,[Globalization.CultureInfo]::InvariantCulture,[Globalization.DateTimeStyles]::RoundtripKind,[ref]$expectedTime)){return $false}
+    return ($actualTime.UtcDateTime.Ticks -eq $expectedTime.UtcDateTime.Ticks)
+}
 
 foreach ($requiredPath in @($ReadmePath, $ManifestPath, $RegistryPath, $RoutingMapPath, $ClientConfigPath, $ManageToolPath)) {
     if (-not (Test-Path -LiteralPath $requiredPath)) {
@@ -107,7 +115,7 @@ if (-not [string]::IsNullOrWhiteSpace($validationMessageId)) {
             [int]$record.result.data.notification_attempt_count
         }
         else {
-            0
+            $null
         }
         $lifecyclePassed = (
             $record.payload.synthetic_test -eq $true -and
@@ -117,11 +125,12 @@ if (-not [string]::IsNullOrWhiteSpace($validationMessageId)) {
             $record.receipt.project_room -eq $ProjectRoom -and
             $record.receipt.task_id -eq $TaskId -and
             [int]$record.attempt_count -eq 1 -and
+            [int]$record.attempt_count -eq [int]$readiness.notification_count -and
             @($record.attempts).Count -eq 1 -and
             $record.attempts[0].outcome -eq "Delivered" -and
-            $resultNotificationCount -eq 1 -and
-            $resultNotificationCount -eq [int]$readiness.notification_count -and
-            [string]$record.result.completed_at_utc -eq [string]$readiness.lifecycle_completed_at_utc -and
+            ($null -eq $resultNotificationCount -or
+                ($resultNotificationCount -eq 1 -and $resultNotificationCount -eq [int]$readiness.notification_count)) -and
+            (Test-SameUtcInstant ([string]$record.result.completed_at_utc) ([string]$readiness.lifecycle_completed_at_utc)) -and
             $eventNames -contains "Accepted" -and
             $eventNames -contains "ProcessingStarted" -and
             $eventNames -contains "FinalResult"

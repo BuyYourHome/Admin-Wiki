@@ -3,12 +3,12 @@ param([string]$EvidenceDirectory)
 $ErrorActionPreference='Stop'
 . "$PSScriptRoot\Test-LowTokenWorker.ps1" -LibraryOnly
 
-function EnrollmentFixture {
+function EnrollmentFixture([string]$room='Codex Environment',[string]$skill='codex-environment') {
     $f=Fixture
-    $machine=$env:COMPUTERNAME;$room='Codex Environment';$dispatcher=$f.source;$task=$f.task
+    $machine=$env:COMPUTERNAME;$dispatcher=$f.source;$task=$f.task
     $client=[pscustomobject]@{machine=$machine;registrations=@([pscustomobject]@{project_room=$room;task_id=$task})}
     $manifest=[pscustomobject]@{
-        schema_version=2;project_room=$room;skill='codex-environment';task_id=$task;dispatchable=$false;execution_machine=$machine
+        schema_version=2;project_room=$room;skill=$skill;task_id=$task;dispatchable=$false;execution_machine=$machine
         accepted_message_types=@('status');messaging_readiness=[pscustomobject]@{status='validation_ready';validation_message_id=$f.id;dispatcher_task_id=$dispatcher;dispatcher_automation_id='pr-messaging-dispatcher';cross_machine_source='REMOTE-SOURCE';manual_intervention=$null}
     }
     $record=Record $f;$record.destination.project_room=$room;$record.destination.machine=$machine;$record.source.machine='REMOTE-SOURCE';$record.payload_hash=Get-LtPayloadHash $record
@@ -26,6 +26,15 @@ Check 'validation destination enrollment is additive and preserves config identi
     Assert ($answer.config.owner -ceq $x.config.owner -and $answer.config.generation -ceq $x.config.generation -and $answer.config.state_directory -ceq $x.config.state_directory)
 }
 Check 'validation destination enrollment is idempotent without duplicate pin' {$x=EnrollmentFixture;$first=Enroll $x;$x.config=$first.config;$second=Enroll $x;Assert ($second.already_enrolled -and @($second.config.destinations).Count -eq 2)}
+Check 'Smart House validation endpoint is eligible only with its matching skill' {
+    $x=EnrollmentFixture 'Smart House' 'smart-house';Assert ((Enroll $x).config.destinations.Count -eq 2)
+    $x.manifest.skill='codex-environment';$rejected=$false
+    try{Enroll $x|Out-Null}catch{$rejected=$true};Assert $rejected
+}
+Check 'unreviewed validation endpoint is rejected' {
+    $x=EnrollmentFixture 'Other Room' 'other-room';$rejected=$false
+    try{Enroll $x|Out-Null}catch{$rejected=$true};Assert $rejected
+}
 foreach($fault in @('record-hash','record-machine','record-task','record-attempt','business','manifest-status','manifest-message','manifest-dispatcher','manifest-automation','manifest-manual','registration-duplicate','destination-conflict')){
     Check ('validation destination enrollment rejects '+$fault) {
         $x=EnrollmentFixture
@@ -49,7 +58,8 @@ foreach($fault in @('record-hash','record-machine','record-task','record-attempt
 Check 'installer enrollment is scoped and preserves runtime structures' {
     $text=Get-Content -Raw -LiteralPath (Join-Path $release 'Install-LowTokenWorker.ps1');$start=$text.IndexOf("if(`$Action -eq 'EnrollValidationDestination')");$end=$text.IndexOf("if(`$Action -eq 'UpgradeLive')",$start)
     Assert ($start -ge 0 -and $end -gt $start);$block=$text.Substring($start,$end-$start)
-    Assert ($block.Contains("`$ExpectedMachine -cne 'WESSTUDIO'") -and $block.Contains("`$DestinationProjectRoom -cne 'Codex Environment'") -and $block.Contains('019f84d0-78d4-7013-8c07-42c01f961be1'))
+    Assert ($block.Contains("`$ExpectedMachine -cne 'WESSTUDIO'") -and $block.Contains('Codex Environment') -and $block.Contains('019f84d0-78d4-7013-8c07-42c01f961be1'))
+    Assert ($block.Contains('Smart House') -and $block.Contains('01a14585-ffe6-7850-8db1-efcdd58e7071') -and $block.Contains('smart-house.json'))
     foreach($required in @('ExpectedManifestSha256','ExpectedValidationPayloadHash','ExpectedConfigSha256','ExpectedOwnerGeneration','Get-LtReviewedCli','Invoke-LtValidationEnrollment')){Assert $block.Contains($required) ('Missing guard '+$required)}
     Assert (!$block.Contains('Set-ScheduledTask') -and !$block.Contains('Write-LtJson $ownerPath') -and !$block.Contains('Write-LtJson $journalPath'))
     Assert (!$block.Contains('Disable-ScheduledTask') -and !$block.Contains('Enable-ScheduledTask'))

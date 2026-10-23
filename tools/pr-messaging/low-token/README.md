@@ -1,12 +1,24 @@
 # Low-token dispatcher releases
 
+## Controlled release 0.4.9 — UTF-8 record recovery (2026-10-23)
+
+Release `0.4.9` corrects the canonical manager's Windows PowerShell 5.1 record read. Queue records are UTF-8 JSON, including BOM-less records written by another supported runtime. `Read-Record` now supplies `-Encoding UTF8`; it does not rewrite the stored file, payload, hash, receipt, result, attempt history, or lifecycle.
+
+The verified recovery case is an existing terminal record plus a retained `planned` journal entry with no central attempt, submission evidence, or marker. After the exact UTF-8 identity and immutable hash verify, the worker keeps the journal entry and closes it as `NotClaimed`. The terminal central record remains byte-for-byte unchanged and cannot enter candidate claim or submission. No retry, replacement record, manual journal deletion, integrity exception, or business action is permitted.
+
+Per-tick health retains the bounded phase, manager-call, hash, and checkpoint diagnostics and adds `claim_attempts`, `failure_before_claim`, and `failure_phase`. These fields make a journal or integrity failure before `ConditionalClaim` explicit without logging payloads, command output, or secrets. The maximum production tick remains 180 seconds; List remains bounded to 60 seconds and mutation calls to 120 seconds, each capped by the remaining tick budget.
+
+Use guarded `UpgradeLive` for an existing live machine. It preserves owner generation, state directory, journal, task identity, hidden launcher, Live mode, one-minute schedule, destination pins, central records, receipts, and results while reviewing the currently installed normal-user `codex.exe` path and SHA-256. Do not force a tick. Verify two natural ticks reach candidate evaluation and report zero or truthful claim/submission counts.
+
 ## Controlled release 0.4.8 — reconciled enrollment (2026-10-09)
 
-`Install-LowTokenWorker.ps1 -Action EnrollValidationDestination` is restricted to the authorized existing Codex Environment task `019f84d0-78d4-7013-8c07-42c01f961be1` on **WESSTUDIO**, with dispatcher `01a06337-1b59-7dc2-9586-6660eb7b5da7`. It is not a WES-VIDEOEDITOR enrollment action or a general destination editor.
+`Install-LowTokenWorker.ps1 -Action EnrollValidationDestination` is restricted to two exact WESSTUDIO endpoints, both under dispatcher `01a06337-1b59-7dc2-9586-6660eb7b5da7`: Codex Environment task `019f84d0-78d4-7013-8c07-42c01f961be1` and Smart House task `01a14585-ffe6-7850-8db1-efcdd58e7071`. It is not a WES-VIDEOEDITOR enrollment action or a general destination editor.
 
 Required inputs are `ExpectedConfigSha256`, `ExpectedOwnerGeneration`, `ExpectedManifestSha256`, `ExpectedValidationPayloadHash`, and `ValidationMessageId`, plus the exact `ExpectedMachine`, `DispatcherTaskId`, `DestinationProjectRoom`, and `DestinationTaskId`. Capture fresh guards only after reconciling the original request and any existing validation record through the canonical manager. Never invent a remote source machine or create a second validation as a retry.
 
 The action verifies the Live identity/owner, existing client registration, schema-2 non-dispatchable `validation_ready` manifest, exact synthetic ID/hash, distinct approved source machine, zero prior attempts, one-attempt budget, current reviewed CLI and package/manager/adapter pins, and exact enabled scheduled action. It uses the existing `worker.lock`; `WorkerAlreadyRunning` means no enrollment occurred. Wait for normal completion and reconcile before another installer invocation; this grants no message retry authority.
+
+For Smart House, Create PR must first record one cross-machine synthetic validation message and its exact hash in the Smart House manifest, then change only that manifest's readiness to `validation_ready` while keeping `dispatchable: false`. The message must come from OFFICEASSIST or WES-VIDEOEDITOR and authorize no business action. Only then may the guarded enrollment action run on WESSTUDIO. Code publication alone does not enroll or promote the destination.
 
 Only one destination entry is appended. Existing config fields, destination order, owner mode/generation, task identity, triggers, settings, journal and central records remain untouched. A flushed prepared receipt and an atomic local `File.Replace` before-image are retained under the profile-local production `enrollments` folder. A repeat using the original guards proves the current config is exactly the additive transformation of its hash-verified before-image and returns `AlreadyEnrolled` without writing or resubmitting. Unexpected state fails closed. Failed writes retain evidence; never remove the new pin, restore the before-image, or reset an attempt while submission is unresolved.
 
