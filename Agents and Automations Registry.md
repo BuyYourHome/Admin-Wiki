@@ -513,6 +513,7 @@ Important rules:
 - Never pay invoices or contact vendors.
 - Routine scan outcomes are recorded in SharePoint/Teams `Scanned Files\Logs`, and cross-PR handoffs in the authoritative central messaging record. The Git scan-action log is historical and read-only after 2026-09-10; generated OCR, render, packet, and split-working artifacts stay out of Git unless Wes explicitly identifies one as durable source material.
 - If routing confidence is low, route to review and log why.
+- Assume pages absent from a scan were intentionally skipped. Page gaps alone do not block delivery or Invoice Entry handoff; file clearly identified captured pages and record the page coverage without claiming the full document was received.
 - Each computer expected to process Doc Scan intake must have its own machine-local `doc-scan` heartbeat attached to that computer's current `Doc Scan` task under the `Wiki Files` project. Missing automations or automations targeting obsolete task ids are `pending automation setup`, not healthy scan processing.
 - Keep the automation attached to one dedicated status thread via `target_thread_id` so the user can review run history and adjust behavior in one place.
 - Use quiet-run behavior with `DONT_NOTIFY` when no new scans are found so routine empty checks do not create visible chat noise.

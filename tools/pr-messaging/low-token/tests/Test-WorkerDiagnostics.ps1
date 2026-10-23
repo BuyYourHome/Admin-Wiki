@@ -23,8 +23,37 @@ Check 'diagnostics preserve failed preflight without overwriting tick health' {
     $h=Tick $f
     $d=Read-LtJson (Join-Path $f.state 'preflight-health.json')
     Assert ($h.status -eq 'Blocked' -and $d.error_code -eq 'ManagerReleaseMismatch')
+    Assert ($h.failure_before_claim -eq $true -and $h.failure_phase -eq 'preflight' -and $h.claim_attempts -eq 0)
     Assert ((Read-LtJson (Join-Path $f.state 'health.json')).sentinel -eq 'unchanged')
     Assert ($d.diagnostics.phases[0].name -eq 'preflight' -and (CountSubmissions $f) -eq 0)
+}
+Check 'canonical manager reads BOM-less UTF-8 without changing immutable text' {
+    $f=Fixture;$r=Record $f
+    $r.payload|Add-Member note ('Rule '+[char]0x00a7+' '+[char]0x2014+' '+[char]0x201c+'quoted'+[char]0x201d)
+    $r.payload_hash=Get-LtPayloadHash $r
+    SaveRecord $f $r
+    $x=(& $legacy -Action Get -QueuePath $f.queue -MessageId $f.id)|ConvertFrom-Json
+    Assert ($x.payload.note -ceq $r.payload.note) 'Canonical manager changed UTF-8 text'
+    Assert ((Get-PrMessageHashEvidence $x).valid) 'Canonical manager returned hash-invalid text'
+}
+Check 'terminal UTF-8 record closes orphan plan without claim or submission' {
+    $f=Fixture;$r=Record $f
+    $r.payload|Add-Member evidence_reference ('Invoice Entry skill '+[char]0x00a7+' approved delivery')
+    $r.payload_hash=Get-LtPayloadHash $r
+    $r.state='Needs Wes'
+    $r.receipt=[pscustomobject]@{message_id=$r.message_id;dispatch_id=$r.dispatch_id;payload_hash=$r.payload_hash;accepted_at_utc='2026-10-08T11:35:07Z';project_room=$r.destination.project_room;task_id=$r.destination.task_id;machine=$r.destination.machine;detail='Fixture acceptance'}
+    $r.result=[pscustomobject]@{state='Needs Wes';completed_at_utc='2026-10-08T11:35:42Z';detail='Fixture preserves unresolved recipient decision';data=[pscustomobject]@{submitted=$false}}
+    SaveRecord $f $r
+    $recordBefore=Get-LtVersion (Record $f)
+    $entry=[pscustomobject]@{message_id=$r.message_id;dispatch_id=$r.dispatch_id;destination_task_id=$r.destination.task_id;payload_hash=$r.payload_hash;attempt_id='lt-8be621d704e74884a01c8085669c7a87';phase='planned';outcome=$null;created_at_utc='2026-10-08T00:00:00Z';submission_started_at_utc=$null;submission_completed_at_utc=$null;adapter_release='0.4.8';adapter_sha256=('a'*64);submission_evidence=$null}
+    Write-LtJson (Join-Path $f.state 'journal.json') ([pscustomobject]@{schema_version=2;machine=$env:COMPUTERNAME;sid=[Security.Principal.WindowsIdentity]::GetCurrent().User.Value;owner='fixture-worker';generation='g1';created_at_utc='2026-10-08T00:00:00Z';entries=@($entry)})
+    $h=Tick $f
+    $after=Record $f;$j=Read-LtJson (Join-Path $f.state 'journal.json')
+    Assert ($h.status -eq 'TickComplete' -and $h.claims -eq 0 -and $h.submissions -eq 0 -and $h.claim_attempts -eq 0)
+    Assert ((CountSubmissions $f) -eq 0 -and $after.attempt_count -eq 0 -and @($after.attempts).Count -eq 0)
+    Assert ((Get-LtVersion $after) -ceq $recordBefore) 'Central record changed during orphan-plan recovery'
+    Assert (@($j.entries).Count -eq 1 -and $j.entries[0].phase -ceq 'closed' -and $j.entries[0].outcome -ceq 'NotClaimed')
+    Assert ($after.state -ceq 'Needs Wes' -and $after.receipt.payload_hash -ceq $r.payload_hash -and $after.result.data.submitted -eq $false)
 }
 Check 'diagnostics survive post-claim failure without duplicate submission' {
     $f=Fixture;$h=Tick $f 'Validation' 'AfterClaim'

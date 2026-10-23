@@ -321,7 +321,7 @@ Invoice Entry owns:
 - validating totals and workbook links,
 - uploading the verified workbook back to Teams/SharePoint when authorized.
 
-Default handoff trigger: send a direct follow-up message to the dedicated Invoice Entry chat using the concise direct handoff contract in Invoice Entry Handoff. Include the packet path, filed statement path, short vendor/project/statement summary, record count and confidence summary, requested Invoice Entry operation, and only unique blockers such as missing pages, weak OCR, or duplicate risk.
+Default handoff trigger: send a direct follow-up message to the dedicated Invoice Entry chat using the concise direct handoff contract in Invoice Entry Handoff. Include the packet path, filed statement path, short vendor/project/statement summary, record count and confidence summary, requested Invoice Entry operation, and unique interpretation notes such as page gaps, weak OCR, or duplicate risk. Page gaps alone do not block delivery or handoff.
 
 ### Invoice And Receipt Reports
 
@@ -395,7 +395,7 @@ Use this same concise direct handoff contract for invoices, receipts, Lowe's sta
 - Short vendor/project/statement summary.
 - Record count and confidence summary.
 - Requested Invoice Entry operation.
-- Only unique blockers such as missing pages, weak OCR, or duplicate risk.
+- Unique interpretation notes such as page gaps, weak OCR, or duplicate risk. Page gaps alone do not block delivery or handoff.
 
 Keep item-level rows, OCR snippets, source-page references, and detailed extraction evidence inside the structured packet. Do not paste the full packet into the task message.
 
@@ -449,6 +449,12 @@ Treat a new document as likely starting when a page contains:
 - A new remittance/payment coupon after a previous document ends.
 
 Treat pages as one document when account, institution, statement period, and continuing page numbers match.
+
+## Missing-Page Gaps
+
+Assume pages absent from a scan, including pages indicated by page numbering, were intentionally skipped. Do not hold delivery, request omitted pages, or route a document to review solely because of a page gap. Continue normal routing for each captured document/page range when its identity, boundaries, and destination are otherwise clear; complete the ordinary output, log, source-archive, and Invoice Entry handoff steps.
+
+Log the page numbers present and indicated pages absent, and state that the deliverable contains only the pages captured in the scan. Never imply omitted pages were received or that the full statement or invoice was reviewed. Keep the normal review rule for any separate uncertainty about identity, boundaries, or routing.
 
 ## Logging
 

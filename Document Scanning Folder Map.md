@@ -8,6 +8,8 @@ SharePoint/Teams Office Admin `2026`, or a verified local synced equivalent only
 
 Purpose: reference map for routing scanned statements, invoices, receipts, and related documents into the correct 2026 Office Admin folders.
 
+Page-number gaps do not change folder routing or block delivery by themselves. Assume omitted pages were intentionally skipped, route the captured document/page range to its otherwise-clear mapped destination, and note the page coverage in the operational log and any handoff. See [[Document Scanning SOP#Missing-Page Gaps]].
+
 ## Intake Subfolder Cleanup
 
 Scanner-created subfolders under SharePoint/Teams Office Admin `Scanned Files` are temporary intake containers. After every source in one of these subfolders has been processed or otherwise resolved, every original has been verified in `Scanned Files\Archived`, and every required output and log has been verified, recursively re-list the intake subfolder. Delete it only when it is completely empty. If any file or child folder remains, leave it in place and record the remaining item.
