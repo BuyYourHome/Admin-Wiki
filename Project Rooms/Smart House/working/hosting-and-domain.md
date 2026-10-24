@@ -52,9 +52,9 @@ Wes requested removal of the website login requirement so the public can access 
 
 Wes requested Design, Explore, View, and Manage navigation and six room galleries with public voting. The website now uses the supported Sites Vinext Worker runtime and logical D1 binding `DB`, with no R2 binding. Public access and the existing custom domain were preserved. The database migration creates only the vote schema; no synthetic votes were seeded into production.
 
-- Current Site source commit: `9be5f64a945fe5a9b1af829f06195d2f490b2b20`.
-- Current saved version: `appgprj_6ad4d98e08708191858cab113814704e~appgver_e12f864447d08191a072e6e7575216c8` (version 15).
-- Current deployment: `appgdep_6adcabf75b2c8191b297f60f1b04f477`, confirmed `succeeded` at 2026-10-24 9:00 AM Eastern (`2026-10-24T13:00:49.156127Z`).
+- Current Site source commit: `45a5c9ef4b3d84237fa150d7711bac602b7eb828`.
+- Current saved version: `appgprj_6ad4d98e08708191858cab113814704e~appgver_24d6abde671c8191823efa0955d8638d` (version 16).
+- Current deployment: `appgdep_6adcb1f030888191ad1cf3aacbee2393`, confirmed `succeeded` at 2026-10-24 9:26 AM Eastern (`2026-10-24T13:26:15.735484Z`).
 - Live URL: https://pondstr.com . The original Sites URL remains https://pondstr.coolnewt4097.chatgpt.site .
 - Media Center has six supplied color concepts; Front Elevation has two concepts; Garage Barn Door has three concepts. Kitchen, ADU, and Master Bath await images.
 
@@ -132,3 +132,11 @@ Wes also supplied the kitchen-view scrolling-caption clip. The featured Media Ce
 Focused guide and comments checks, TypeScript checking, and the final production build passed. Full decoding of the new media passed; inspected middle and final frames show the first-person caption and retained credit. Local browser checks covered all five pages and a typed realtor question answered by Pondster. A 390-pixel phone preview had 375-pixel content, a 351-pixel guide panel, and a 261-pixel launcher within the content area. Local video metadata confirmed ten seconds and 1280×720.
 
 The official Sites helper pushed and packaged the matching source, and Sites confirmed version 15 deployed successfully. Live browser verification at https://pondstr.com showed the new first-person title and opening, loaded the new video URL with ten-second 1280×720 metadata, and advanced playback without a media error. The live View page displayed “Meet Ashley, my realtor” beside Ashley's loaded portrait. A screenshot was saved outside Git for the completion response. No production comments, votes, messages, appointments, lock actions, or microphone use occurred; public audience and DNS are unchanged.
+
+## Header prominence and animated logo — 2026-10-24
+
+Version 16 removes the forced break in View's “Come meet me” heading and keeps it on one line on desktop. The shared header now features a much larger serif Pondster wordmark, subordinate tagline, and larger P/HOME monogram. A gentle seven-second light sweep and glint give the mark movement; reduced-motion CSS disables both animations and the hover lift. No new image, dependency, or JavaScript animation was added.
+
+The production build passed. Browser checks at 1280 and 760 pixels confirmed a one-line heading and room between the enlarged brand and navigation. A 390-pixel phone preview had 375-pixel content without horizontal overflow, all five menu items, and a 40-pixel wordmark. Computed transforms changed between observations, confirming the logo animation was running; the reduced-motion override was reviewed in source. No microphone or production writes were used for testing.
+
+The official Sites helper pushed and packaged the exact built source, and Sites confirmed version 16 deployed successfully. The custom domain displayed the larger wordmark and single-line heading, with the logo animation applied. A live screenshot was saved outside Git for the completion response. Public audience, domain, voting, comments, first-person narrative, and house-system boundaries are preserved. The local preview was stopped after verification.

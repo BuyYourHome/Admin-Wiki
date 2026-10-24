@@ -48,7 +48,7 @@ export default function Home() {
   function guideAction(action:GuideAction){setMenu(action.menu);location.hash=menuHash(action.menu);if(action.room&&!saving)setRoom(action.room);if(action.scene)setScene(action.scene);}
   return <>
     <a className="skip" href="#main">Skip to content</a>
-    <header className="header"><a className="brand" href="#design" onClick={()=>navigate('Design')} aria-label="Pondster home"><span className="monogram">P<small>HOME</small></span><span>PONDSTER<small>I’m a home with a voice.</small></span></a><nav aria-label="Main menu">{menus.map(item=><a key={item} href={`#${menuHash(item)}`} onClick={()=>navigate(item)} aria-current={menu===item?'page':undefined}>{item}</a>)}</nav><span className="development">I’M A HOME IN THE MAKING</span></header>
+    <header className="header"><a className="brand" href="#design" onClick={()=>navigate('Design')} aria-label="Pondster home"><span className="monogram" aria-hidden="true">P<small>HOME</small></span><span className="brand-copy"><strong className="brand-name">Pondster</strong><small>I’m a home with a voice.</small></span></a><nav aria-label="Main menu">{menus.map(item=><a key={item} href={`#${menuHash(item)}`} onClick={()=>navigate(item)} aria-current={menu===item?'page':undefined}>{item}</a>)}</nav><span className="development">I’M A HOME IN THE MAKING</span></header>
     <main id="main">
       {menu==='Design' && <>
         <section className="intro"><div><p className="eyebrow">PONDSTER / MY DESIGN NOTEBOOK</p><h1>I’m taking shape.<br/><em>Have a say.</em></h1></div><div className="intro-note"><p>I’m exploring ideas for each space. Browse my designs, vote for the ones you love, and help me decide what feels right.</p><span>Explore my six galleries.</span></div></section>

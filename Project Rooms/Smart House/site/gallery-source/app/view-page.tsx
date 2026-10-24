@@ -5,7 +5,7 @@ const viewingEmail = 'mailto:ashley@elementrealtygroup.net?subject=Pondster%20vi
 
 export default function ViewPage({ onImage, onDesign }: { onImage: (design: Design) => void; onDesign: () => void }) {
   return <section className="secondary-page viewing-page">
-    <div className="viewing-intro"><div><p className="eyebrow">VIEW / COME MEET ME</p><h1>Come meet<br/><em>me.</em></h1></div><p className="lead">Meet Ashley, my realtor, and find out about visiting me as I take shape.</p></div>
+    <div className="viewing-intro"><div><p className="eyebrow">VIEW / COME MEET ME</p><h1>Come meet <em>me.</em></h1></div><p className="lead">Meet Ashley, my realtor, and find out about visiting me as I take shape.</p></div>
     <div className="viewing-layout">
       <article className="realtor-card" aria-labelledby="realtor-name">
         <div className="realtor-photo has-portrait"><img src="/people/ashley-morello.jpg" alt="Ashley Morello, my realtor" width="628" height="628" decoding="async"/><span>MY REALTOR</span></div>
