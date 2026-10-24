@@ -28,7 +28,7 @@ assert.match(answerPondster('Turn on the lights').text, /don’t control real ho
 assert.deepEqual(answerPondster('Show the football video').action, {menu:'Design',room:'media-center'});
 assert.match(answerPondster('Show the football video').text, /ten-second.*fixed decorative frame.*moving football/);
 assert.deepEqual(answerPondster('Show the barn door video').action, {menu:'Design',room:'garage-barn-door'});
-assert.match(answerPondster('Show the Tesla animation').text, /sixteen-second.*swings inward.*slides left.*concept/);
+assert.match(answerPondster('Show the Tesla animation').text, /twenty-five-second.*swings inward.*slides left.*driving out.*white-marble.*concept/);
 const vote = answerPondster('Vote for black shutters');
 assert.deepEqual(vote.action, {menu:'Design',room:'front-elevation'});
 assert.match(vote.text, /do not cast votes/);

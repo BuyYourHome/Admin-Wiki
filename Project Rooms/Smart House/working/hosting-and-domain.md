@@ -52,9 +52,9 @@ Wes requested removal of the website login requirement so the public can access 
 
 Wes requested Design, Explore, View, and Manage navigation and six room galleries with public voting. The website now uses the supported Sites Vinext Worker runtime and logical D1 binding `DB`, with no R2 binding. Public access and the existing custom domain were preserved. The database migration creates only the vote schema; no synthetic votes were seeded into production.
 
-- Current Site source commit: `f9f98b90c5a12d1af2f5b1dd338096142a23a4e6`.
-- Current saved version: `appgprj_6ad4d98e08708191858cab113814704e~appgver_5f6e68e9a84c8191bbd7b270ad6dba81` (version 20).
-- Current deployment: `appgdep_6adcc21bc6d8819185341f2402f24d85`, confirmed `succeeded` at 2026-10-24 10:35 AM Eastern (`2026-10-24T14:35:25.327275Z`).
+- Current Site source commit: `a3bb6bf7bc9aa73bf93a2dc6d14d9b9621607c0a`.
+- Current saved version: `appgprj_6ad4d98e08708191858cab113814704e~appgver_2b2ab8c5958c81918090cb683f1a63d7` (version 21).
+- Current deployment: `appgdep_6adcc582d34c8191b9be86513805f175`, confirmed `succeeded` at 2026-10-24 10:49 AM Eastern (`2026-10-24T14:49:47.356110Z`).
 - Live URL: https://pondstr.com . The original Sites URL remains https://pondstr.coolnewt4097.chatgpt.site .
 - Media Center has six supplied color concepts; Front Elevation has two concepts; Garage Barn Door has three concepts. Kitchen, ADU, and Master Bath await images.
 
@@ -171,3 +171,13 @@ The original video element stays mounted so playback position and pause state su
 The production build, TypeScript check, and focused read-only code review passed. Local browser checks verified expansion and return, unchanged page height (3,890 pixels), pause at 6.151719 seconds preserved through return and re-entry, Escape, dismissal suppression, switching galleries, automatic playback, and phone fitting without overflow. At 390×844, the uncropped garage stage measured 375×844 within 375-pixel page content; Tab moved to the next design and released the stage. A genuinely open Pondster panel prevented expansion while the source frame was inside the activation area. Reduced motion was reviewed in source, not emulated in the browser.
 
 The official Sites helper pushed and packaged the matching source, and Sites confirmed version 20 deployed successfully. At the custom domain, scrolling activated a 1165×828 stage matching the browser content viewport, playback advanced, and native fullscreen remained false. Scrolling past restored the gallery and visible launcher. A live screenshot was saved outside Git. No production comments, votes, messages, bookings, device actions, or microphone use occurred. The owned preview was stopped and its temporary tab closed; public access and DNS are unchanged.
+
+## Tesla drive-out and white-marble garage replacement — 2026-10-24
+
+Wes supplied `908-Pond-Barn-Door-Tesla-Drives-Out-White-Marble.mp4`. Version 21 replaces the featured Garage Barn Door clip with the 25-second revision at `/media/garage-barn-door-tesla-drive-out.mp4`, using `/media/garage-barn-door-drive-out-poster.jpg`. Its opening matches the earlier poster; the longer sequence adds the white Tesla driving forward, moving across the scene toward screen-left, and leaving the white-marble garage floor visible. The fixed facade and exterior concrete stay unchanged. The page title is “Watch me open up.” The duration, accessible description, concept caption, and Pondster guide response now describe this revision. The three existing voting choices, native controls, muted autoplay, looping, panoramic ratio, and scroll expansion are preserved.
+
+The supplied source remains untouched. The derived web copy changes only the existing three caption bands to Pondster's first-person wording, leaving later car movement without additional overlays. All 750 frames of the source and web copy decoded successfully at 1600×640, 30 fps, H.264, silent. Source and derived hashes, sizes, captions, and sample findings are recorded in [[Project Rooms/Smart House/working/source-inventory]]. The source README describes an illustrative composite, not validated clearances or a turning-radius study; the public caption retains that limit. No video binary is stored in Admin Wiki Git.
+
+Focused guide checks and the production build passed. The official Sites helper pushed and packaged the matching source; Sites confirmed version 21 deployed successfully. Live browser checks loaded the exact new URL, confirmed 25-second 1600×640 metadata, and observed muted automatic playback with advancing time and no media error in the expanded stage. Existing scroll expansion had already passed its desktop and phone checks in version 20 and remains unchanged. No production comments, votes, messages, appointments, house-system actions, or microphone use occurred. Public access and DNS are unchanged.
+
+Wes also clarified that routine website updates do not need separate conversational approval for every step. This standing preference is recorded within the Smart House README; required native permission boundaries remain in force.

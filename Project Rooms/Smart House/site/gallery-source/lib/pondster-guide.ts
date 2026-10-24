@@ -66,7 +66,7 @@ export function answerPondster(input: string): GuideReply {
     return { text: 'Use my gallery voting buttons to save or change your choice. I keep one current choice per browser per gallery. I can open the gallery; I do not cast votes for you.', action: { menu: 'Design', ...(room ? { room: room.id } : {}) } };
   }
   if ((room?.id === 'garage-barn-door' && /\b(video|film|animation|motion|sliding|slides|swing|swings|inward|entry|pedestrian)\b/.test(words)) || /\btesla\b/.test(words)) {
-    return { text: 'I have a sixteen-second motion concept for my garage: my center entry section swings inward, closes, and then my full door assembly slides left to reveal a white Tesla Model Y. I’m sharing an illustrative AI/composited concept; my door hardware and clearances haven’t been validated.', action: { menu: 'Design', room: 'garage-barn-door' } };
+    return { text: 'I have a twenty-five-second motion concept for my garage: my center entry section swings inward and closes, then my full door slides left. I’m showing a white Tesla driving out and across the scene to the left, revealing my white-marble garage floor. This is my illustrative AI/composited concept; my hardware, clearances, and the car’s turning path haven’t been validated.', action: { menu: 'Design', room: 'garage-barn-door' } };
   }
   if (room) {
     const action: GuideAction = { menu: 'Design', room: room.id };
