@@ -2,9 +2,11 @@
 
 ## Purpose And Scope
 
-Plan the digital identity, website/digital twin, buyer demonstrations, owner knowledge, and transferable digital package for **908 Pond Street**. This is more than a property listing. It connects source-backed house information with a public educational experience, a constrained showing experience, and a future authenticated owner portal.
+Plan the digital identity, website/digital twin, buyer demonstrations, owner knowledge, and transferable digital package for **Pondster, the house at 908 Pond Street**. This is more than a property listing. It connects source-backed house information with a public educational experience, a constrained showing experience, and a future authenticated owner portal.
 
 Wes authorized beginning the Pond Street website in this chat on 2026-10-18, then reported purchasing `Pondstr.com` through GoDaddy and requested ChatGPT hosting. The first implementation under `site/` includes simulated lighting and a planned owner-information library. ChatGPT Sites hosting and connecting the purchased domain are now in scope. Purchases, live device connections/control, and production home automations remain outside scope. Wes requested public access without login on 2026-10-23; the existing website is now public.
+
+Wes named the house **Pondster** and identified **Jean Wright as its SI designer** on 2026-10-23. The public site offers a persistent public-information guide with typed questions and optional browser voice across Design, Explore, View, and Manage. See [[Project Rooms/Smart House/working/pondster-identity-and-guide]].
 
 ## Status And Ownership
 

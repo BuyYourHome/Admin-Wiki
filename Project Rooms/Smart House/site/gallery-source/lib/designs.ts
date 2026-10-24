@@ -10,7 +10,7 @@ export const galleries: Gallery[] = [
     { id: 'media-05', title: 'Deep Muted Olive Green', image: 'media-05-deep-olive.png', detail: 'Cabinets and TV frame: deep muted olive green. Central TV backdrop: light warm sand. Surrounding walls stay warm off-white; honey-toned wood floor stays unchanged.' },
     { id: 'media-06', title: 'Rich Charcoal Gray', image: 'media-06-charcoal-clay.png', detail: 'Cabinets and TV frame: rich charcoal gray. Central TV backdrop: muted terracotta clay. Surrounding walls stay warm off-white; honey-toned wood floor stays unchanged.' }
   ] },
-  { id: 'front-elevation', name: 'Front Elevation', summary: 'The first impression. Compare two exterior concepts for Pond Street.', designs: [
+  { id: 'front-elevation', name: 'Front Elevation', summary: 'The first impression. Compare two exterior concepts for Pondster.', designs: [
     { id: 'front-23', title: 'Warm welcome', image: '23-front-final-with-garage.png', detail: 'An exterior study combining warm lighting, wood shutters, and a coordinated garage.' },
     { id: 'front-black-shutters', title: 'Black shutters', image: 'front-black-shutters.png', detail: 'Black louvered shutters, contrasting dark and light siding, and warm exterior lighting at sunset.' }
   ] },
