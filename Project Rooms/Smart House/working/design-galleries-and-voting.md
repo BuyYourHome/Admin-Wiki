@@ -41,6 +41,14 @@ The center door swings inward independently and closes before the complete barn-
 
 Full source and derived-video decode passed, and sample frames confirmed readable captions and no visible property address. Exact sources, hashes, and validation are in [[Project Rooms/Smart House/working/source-inventory#Garage Barn Door motion concept — 2026-10-24|the source record]]. Keep source binaries outside Admin Wiki Git and selected public copies only in the dedicated Sites repository. Version 18 deployed successfully; local and live browser checks confirmed the new video, muted autoplay, and the three existing voting choices. The phone preview had no horizontal overflow.
 
+## Featured-video scroll expansion — 2026-10-24
+
+Both featured videos expand to fill the browser viewport as their stable gallery frame crosses the middle of the viewport while scrolling. This is an in-page stage rather than the browser Fullscreen API. Keep the same video element, native controls, muted autoplay, and loop behavior; entering or leaving the stage must preserve playback position and the viewer's paused state. The original gallery frame keeps its height so expansion does not shift page layout.
+
+Scrolling past the source frame exits the stage. **Back to my gallery** or Escape dismisses expansion until that source frame leaves and reenters the activation range. Tabbing out also releases the stage. Keep the whole video visible without cropping, using letterboxing where needed; the local 375×844 phone check confirmed this behavior without a layout-height change. Reduced-motion preferences disable the reveal animation.
+
+Pondster's guide remains usable in the normal gallery. An already-open guide panel prevents expansion; hide its launcher only while the video is expanded so native playback controls remain clear. This behavior passed local desktop/phone checks and was published in version 20; live browser checks confirmed viewport expansion, advancing playback, and release on scrolling past. Exact deployment status belongs in [[Project Rooms/Smart House/working/hosting-and-domain]].
+
 ## Vote behavior
 
 The site stays public. Voting requires no ChatGPT login and collects no names, email addresses, or IP addresses in the vote table. A random, site-scoped HTTP-only cookie identifies one browser. There is one current choice per browser per gallery; choosing a different design replaces that browser's earlier choice. Clearing cookies or using another browser can produce another vote; this is a preference poll, not verified one-person voting.

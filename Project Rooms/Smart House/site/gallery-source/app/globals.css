@@ -39,3 +39,18 @@ body{padding-bottom:95px}.pondster-welcome{margin:0 4% 30px;padding:20px 24px;bo
 .garage-media-feature video{aspect-ratio:5/2}
 
 .buyer-design-note{margin:0 0 36px;padding:24px 28px;border-left:3px solid var(--accent);background:var(--soft);font-size:16px;line-height:1.85}@media(max-width:720px){.buyer-design-note{padding:20px;font-size:15px;margin-bottom:28px}}
+
+/* Expand a video within the browser while its stable gallery frame crosses view. */
+.scroll-video-shell{position:relative;width:100%;background:#101712}
+.scroll-video-stage{position:absolute;inset:0;background:#101712}
+.scroll-video-shell video{display:block;width:100%;height:100%;aspect-ratio:auto;object-fit:contain}
+.scroll-video-stage.is-expanded{position:fixed;inset:0;z-index:80;height:100vh;height:100dvh;animation:scroll-video-reveal .2s ease-out}
+.scroll-video-toolbar{position:absolute;z-index:2;top:0;left:0;right:0;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:max(16px,env(safe-area-inset-top)) max(20px,env(safe-area-inset-right)) 25px max(20px,env(safe-area-inset-left));background:linear-gradient(#101712e8,transparent);color:#fffdf7}
+.scroll-video-toolbar>span{font-size:11px;letter-spacing:1px;text-transform:uppercase}
+.scroll-video-toolbar button{border:1px solid #fffdf77a;background:#101712c9;color:#fffdf7;padding:12px 16px;font-size:13px;min-height:44px}
+.scroll-video-toolbar button span{margin-left:12px}
+.scroll-video-hint{position:absolute;left:50%;bottom:calc(62px + env(safe-area-inset-bottom));transform:translateX(-50%);max-width:90%;margin:0;padding:7px 12px;background:#101712bb;color:#fffdf7;font-size:11px;text-align:center;pointer-events:none}
+.has-expanded-scroll-video .pondster-guide{visibility:hidden;pointer-events:none}
+@keyframes scroll-video-reveal{from{opacity:.35;transform:scale(.985)}to{opacity:1;transform:none}}
+@media(max-width:720px){.scroll-video-toolbar{gap:10px;padding-inline:12px}.scroll-video-toolbar>span{max-width:120px;font-size:9px;line-height:1.7}.scroll-video-toolbar button{padding:12px;font-size:12px}.scroll-video-hint{font-size:10px;width:max-content}}
+@media(prefers-reduced-motion:reduce){.scroll-video-stage.is-expanded{animation:none}}

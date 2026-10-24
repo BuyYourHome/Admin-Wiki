@@ -52,9 +52,9 @@ Wes requested removal of the website login requirement so the public can access 
 
 Wes requested Design, Explore, View, and Manage navigation and six room galleries with public voting. The website now uses the supported Sites Vinext Worker runtime and logical D1 binding `DB`, with no R2 binding. Public access and the existing custom domain were preserved. The database migration creates only the vote schema; no synthetic votes were seeded into production.
 
-- Current Site source commit: `864442983775fc5604b1d31d07934941fe04d71f`.
-- Current saved version: `appgprj_6ad4d98e08708191858cab113814704e~appgver_f2e6ad81016c8191b8bdc86d0c889db0` (version 19).
-- Current deployment: `appgdep_6adcb8696e1c8191adbd8567ee419f98`, confirmed `succeeded` at 2026-10-24 9:53 AM Eastern (`2026-10-24T13:53:53.503968Z`).
+- Current Site source commit: `f9f98b90c5a12d1af2f5b1dd338096142a23a4e6`.
+- Current saved version: `appgprj_6ad4d98e08708191858cab113814704e~appgver_5f6e68e9a84c8191bbd7b270ad6dba81` (version 20).
+- Current deployment: `appgdep_6adcc21bc6d8819185341f2402f24d85`, confirmed `succeeded` at 2026-10-24 10:35 AM Eastern (`2026-10-24T14:35:25.327275Z`).
 - Live URL: https://pondstr.com . The original Sites URL remains https://pondstr.coolnewt4097.chatgpt.site .
 - Media Center has six supplied color concepts; Front Elevation has two concepts; Garage Barn Door has three concepts. Kitchen, ADU, and Master Bath await images.
 
@@ -161,3 +161,13 @@ The official helper pushed and packaged the matching source; Sites confirmed ver
 Version 19 adds Wes's requested buyer-design paragraph near the top of View, between the introduction and Ashley/viewing cards. Pondster invites buyers who purchase while the house is taking shape to have a say in final design, limited to finishes and details still open for selection. The paragraph directs buyers to Ashley for available choices and timing. Exact wording is preserved in [[Project Rooms/Smart House/working/viewing-and-realtor]]. A soft background and accent rule make the invitation visible without changing the page's existing behavior.
 
 The production build passed, and the official Sites helper pushed and packaged the matching source. Sites confirmed version 19 deployed successfully. The published custom-domain View page displayed the complete paragraph above Ashley's portrait and the viewing preview. A 390-pixel phone check showed a 345-pixel paragraph, 15-pixel text, and 375-pixel content without horizontal overflow. A desktop screenshot was saved outside Git for the completion response. No booking, message, comment, vote, or house-system action was performed; public audience and DNS are preserved.
+
+## Scroll-to-expand video — 2026-10-24
+
+Wes chose expansion when scrolling to videos, rather than hovering. Version 20 applies a shared ScrollVideo wrapper to the Media Center and Garage Barn Door clips. As a video's stable gallery frame crosses the middle of the viewport, its player fills the browser window. Scrolling past releases it naturally; Back to my gallery, Escape, or focusing the next gallery item also dismisses it. Manual dismissal suppresses immediate reopening until the source frame leaves and re-enters the activation area. This uses no browser Fullscreen API, scroll lock, automatic focus capture, or new dependency.
+
+The original video element stays mounted so playback position and pause state survive expansion. The normal-flow aspect-ratio frame keeps page height stable. Expanded playback uses contain fitting, including letterboxing for the panoramic garage film. Native controls and existing mute/autoplay/loop behavior remain. Reduced-motion CSS removes the reveal animation. An already-open Pondster panel prevents expansion so listening/stop controls remain visible; while a video is expanded, the floating launcher is temporarily hidden to clear native playback controls, then restored on release. Existing figure captions, source credits, and disclaimers remain in the gallery.
+
+The production build, TypeScript check, and focused read-only code review passed. Local browser checks verified expansion and return, unchanged page height (3,890 pixels), pause at 6.151719 seconds preserved through return and re-entry, Escape, dismissal suppression, switching galleries, automatic playback, and phone fitting without overflow. At 390×844, the uncropped garage stage measured 375×844 within 375-pixel page content; Tab moved to the next design and released the stage. A genuinely open Pondster panel prevented expansion while the source frame was inside the activation area. Reduced motion was reviewed in source, not emulated in the browser.
+
+The official Sites helper pushed and packaged the matching source, and Sites confirmed version 20 deployed successfully. At the custom domain, scrolling activated a 1165×828 stage matching the browser content viewport, playback advanced, and native fullscreen remained false. Scrolling past restored the gallery and visible launcher. A live screenshot was saved outside Git. No production comments, votes, messages, bookings, device actions, or microphone use occurred. The owned preview was stopped and its temporary tab closed; public access and DNS are unchanged.
