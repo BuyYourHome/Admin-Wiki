@@ -26,6 +26,12 @@ These are design explorations, not photographs of completed work, measured const
 
 Other images in the external folder are outside this PR intake. These four concepts do not establish current property condition.
 
+## Black-shutter front elevation — 2026-10-23
+
+Wes directly supplied `C:\Users\wesbr\.codex\generated_images\01a0b696-05a2-7291-a857-084a6f2bc2eb\exec-a693cf80-9491-413e-9a85-9f929973da1c.png` and authorized adding it as another public Front Elevation voting choice on 2026-10-23. The owning chat visually confirmed an AI front elevation with black louvered shutters, dark left siding, pale right siding, warm exterior lighting, a vivid sunset, and a garage.
+
+Use public copy `front-black-shutters.png` and design ID `front-black-shutters`; preserve existing choice `front-23` (`23-front-final-with-garage.png`) so Front Elevation has two choices. Keep the original and all image binaries outside Admin Wiki Git; package the selected public copy only in the separate Sites source repository. Publication and verification are recorded in [[Project Rooms/Smart House/working/hosting-and-domain]].
+
 ## Media Center color concepts — 2026-10-23
 
 Wes directly supplied `C:\Users\wesbr\Buy Your Home\Buy Your Home - Property\26-BYH -908 Pond St\Owning\Planning\Entertainment-Color-Options-20261023` in this chat for the website gallery. Read and visually reviewed the six concepts and source captions in `COLOR-NAMES.txt` and `website-assets.json`. The manifest identifies Built-in Imagegen as the method and explicitly limits the colors to concepts rather than paint specifications.

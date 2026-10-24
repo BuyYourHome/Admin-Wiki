@@ -13,7 +13,7 @@ Wes reported buying `Pondstr.com` from GoDaddy and instructed Smart House to hos
 - Initial saved version: `appgprj_6ad4d98e08708191858cab113814704e~appgver_0176b707d1688191be325f28960f58a6`.
 - Initial deployment: `appgdep_6ad4dafedea88191934ecd974a287155`.
 - Canonical linkage: `site/.openai/hosting.json`.
-- Publication checkout: ignored `site/.hosting-work/`. Current publication uses the supported Sites Vinext runtime, gallery code, schema migrations, and the ten supplied concepts. Never publish the wiki, private records, credentials, or source inventories. The original static page remains as a historical local concept.
+- Publication checkout: ignored `site/.hosting-work/`. Current publication uses the supported Sites Vinext runtime, gallery code, schema migrations, and the eleven supplied concepts. Never publish the wiki, private records, credentials, or source inventories. The original static page remains as a historical local concept.
 
 ## Pondstr.com connection
 
@@ -52,12 +52,14 @@ Wes requested removal of the website login requirement so the public can access 
 
 Wes requested Design, Explore, View, and Manage navigation and six room galleries with public voting. The website now uses the supported Sites Vinext Worker runtime and logical D1 binding `DB`, with no R2 binding. Public access and the existing custom domain were preserved. The database migration creates only the vote schema; no synthetic votes were seeded into production.
 
-- Current Site source commit: `11aa5f6f9370100f5fccf265a6b08d469782e2cc`.
-- Current saved version: `appgprj_6ad4d98e08708191858cab113814704e~appgver_6beb018ee090819196fc04de5b77a14d` (version 3).
-- Current deployment: `appgdep_6adc1a5301d08191b8e221823e8e2f58`, confirmed `succeeded` at 2026-10-23 10:39 PM Eastern (`2026-10-24T02:39:21.782052Z`).
+- Current Site source commit: `4c3f52a6b4cccc4b27b50359473c1b895c52aa48`.
+- Current saved version: `appgprj_6ad4d98e08708191858cab113814704e~appgver_ad8712f8e84481918b085cf108a162b1` (version 4).
+- Current deployment: `appgdep_6adc223f006881919dae9003cb29e186`, confirmed `succeeded` at 2026-10-23 11:13 PM Eastern (`2026-10-24T03:13:11.017422Z`).
 - Live URL: https://pondstr.com . The original Sites URL remains https://pondstr.coolnewt4097.chatgpt.site .
-- Media Center has six supplied color concepts; Front Elevation has one concept; Garage Barn Door has three concepts. Kitchen, ADU, and Master Bath await images.
+- Media Center has six supplied color concepts; Front Elevation has two concepts; Garage Barn Door has three concepts. Kitchen, ADU, and Master Bath await images.
 
 The official source helper pushed and packaged the matching built source; the native Sites save/deploy operations confirmed publication. Final read-only checks against the custom domain returned HTTP 200 and zero initial Media Center votes, with secure HTTP-only voter-cookie initialization. Browser verification showed all six Media Center images loaded. Local-only tests covered saving, repeated votes, changing choices, separate visitor totals, missing cookies, invalid choices, empty galleries, and origin rejection. The local preview was stopped after verification.
 
 See [[Project Rooms/Smart House/working/design-galleries-and-voting]] for requirements, voting limits, and validation details. The earlier static page is historical; use the runtime source for future updates. Current portable publication required no Bash or global Git trust changes; credentials remained in memory and hidden stdin.
+
+Wes added the exact black-shutter rendering as another Front Elevation voting choice on 2026-10-23. Version 4 preserves `front-23` and adds `front-black-shutters`, with a two-column desktop comparison and one-column phone layout. The production build passed; local browser checks confirmed saving the new choice and changing between both elevations without increasing the total. A 390-pixel viewport had no horizontal overflow. The live Front Elevation gallery displayed both choices and loaded public vote totals; no production test votes were submitted. No schema, login-policy, or DNS change was needed. The local preview was stopped.
