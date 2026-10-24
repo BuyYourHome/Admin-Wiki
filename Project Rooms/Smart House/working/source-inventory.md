@@ -25,3 +25,20 @@ Highlighted AI visual concepts:
 These are design explorations, not photographs of completed work, measured construction drawings, as-built records, or confirmation of selected materials. A filename containing `final` does not establish construction approval. Four local preview copies are ignored under `site/assets/` for the website Wes asked to begin on 2026-10-18.
 
 Other images in the external folder are outside this PR intake. These four concepts do not establish current property condition.
+
+## Media Center color concepts — 2026-10-23
+
+Wes directly supplied `C:\Users\wesbr\Buy Your Home\Buy Your Home - Property\26-BYH -908 Pond St\Owning\Planning\Entertainment-Color-Options-20261023` in this chat for the website gallery. Read and visually reviewed the six concepts and source captions in `COLOR-NAMES.txt` and `website-assets.json`. The manifest identifies Built-in Imagegen as the method and explicitly limits the colors to concepts rather than paint specifications.
+
+| Choice | Cabinets / TV frame | Central TV backdrop | Short filename |
+| --- | --- | --- | --- |
+| 1 | Warm ivory cream | Muted warm mushroom taupe | `01-warm-ivory.png` |
+| 2 | Soft dusty sage green | Warm pale cream | `02-soft-sage.png` |
+| 3 | Deep muted navy blue | Light warm greige | `03-deep-navy.png` |
+| 4 | Medium mushroom taupe | Soft warm ivory | `04-mushroom-taupe.png` |
+| 5 | Deep muted olive green | Light warm sand | `05-deep-olive.png` |
+| 6 | Rich charcoal gray | Muted terracotta clay | `06-charcoal-clay.png` |
+
+The long descriptive filenames match the short aliases by SHA-256; count six distinct voting choices. The baseline is reference material, not another voting choice. Surrounding walls remain neutral warm off-white and the honey-toned floor remains unchanged. Selected copies are prefixed `media-` in the separate Sites source repository; originals and image binaries remain outside Admin Wiki Git.
+
+Kitchen, ADU, and Master Bath images have not been supplied for their requested galleries.

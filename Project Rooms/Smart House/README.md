@@ -37,13 +37,13 @@ Exact local registration verified on WESSTUDIO at 2026-10-16T16:23:10.0889494Z; 
 - `sources/`: source conversation and authoritative external references.
 - `working/`: planning brief, source inventory, conflicts, missing context, and setup evidence.
 - `outputs/`: review-ready Markdown plans when authorized.
-- `site/`: portable HTML/CSS/JavaScript website concept; open `index.html` locally. Scenes and architectural illustrations are conceptual, not actual plans or device controls.
+- `site/index.html`: the earlier portable website concept. Current gallery application sources are in `site/gallery-source/`; the supported Sites runtime and deployment checkout are in ignored `site/.hosting-work/`. Scenes and architectural illustrations are conceptual, not actual plans or device controls.
 
 This planning-only room does not need a routine transaction log at setup. Central messages own delegated operational receipts/results. Record durable design decisions with source references when future work warrants them. Store binary source material and deliverables outside Git in a verified approved location.
 
 ## Boundaries And Next Actions
 
-Continue discussion and directions in the dedicated chat once created. Determine source paths, device inventory, user journeys, safe demo actions, ownership-transfer requirements, and phase priorities before implementation. No host, domain, service account, device, or budget has been selected by this setup.
+Wes subsequently authorized website implementation and public Sites hosting at `https://pondstr.com`. Preserve public browsing without a login gate. See [[Project Rooms/Smart House/working/hosting-and-domain]] for deployment identity and [[Project Rooms/Smart House/working/design-galleries-and-voting]] for the Design, Explore, View, Manage navigation and gallery voting requirements. Live device configuration and private owner records remain outside this public website.
 
 ## Central Rules
 

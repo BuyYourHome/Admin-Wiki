@@ -3,3 +3,4 @@ assets/
 .hosting-work/
 dist/
 .pondstr-deploy.tar.gz
+.framework-starter/

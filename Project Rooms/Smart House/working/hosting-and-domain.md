@@ -9,11 +9,11 @@ Wes reported buying `Pondstr.com` from GoDaddy and instructed Smart House to hos
 - Hosted URL: https://pondstr.coolnewt4097.chatgpt.site
 - Audience: public, authorized by Wes in this chat on 2026-10-23. Visitors do not need to sign in. The owner retains editing access.
 - Initial publication succeeded: 2026-10-18T14:43:26Z.
-- Site source commit: `f01a688c6167555dfc0474bbdbd43d043b99695d` in the separate Sites source repository. This is not an Admin Wiki commit.
-- Saved version: `appgprj_6ad4d98e08708191858cab113814704e~appgver_0176b707d1688191be325f28960f58a6`.
-- Deployment: `appgdep_6ad4dafedea88191934ecd974a287155`.
+- Initial Site source commit: `f01a688c6167555dfc0474bbdbd43d043b99695d` in the separate Sites source repository. This is not an Admin Wiki commit.
+- Initial saved version: `appgprj_6ad4d98e08708191858cab113814704e~appgver_0176b707d1688191be325f28960f58a6`.
+- Initial deployment: `appgdep_6ad4dafedea88191934ecd974a287155`.
 - Canonical linkage: `site/.openai/hosting.json`.
-- Publication checkout: ignored `site/.hosting-work/`. Publish only the standalone static page, CSS, JavaScript, and the four approved exterior concepts; never the wiki, private records, credentials, or source inventories.
+- Publication checkout: ignored `site/.hosting-work/`. Current publication uses the supported Sites Vinext runtime, gallery code, schema migrations, and the ten supplied concepts. Never publish the wiki, private records, credentials, or source inventories. The original static page remains as a historical local concept.
 
 ## Pondstr.com connection
 
@@ -47,3 +47,17 @@ The official `site-workflow.mjs` helper uploaded and packaged the source. Its pr
 ## Public access — 2026-10-23
 
 Wes requested removal of the website login requirement so the public can access it easily. The existing Sites project's access mode was changed from owner-only custom access to `public` through the Sites connector. The connector confirmed policy revision 2. An HTTPS request without cookies or authentication to https://pondstr.com/ returned HTTP 200, the expected Pond Street page, and no login gate. This changes visitor access to the existing concept website only; it does not provide device controls, owner records, or editing access. No source rebuild or DNS change was needed.
+
+## Galleries and voting — 2026-10-23
+
+Wes requested Design, Explore, View, and Manage navigation and six room galleries with public voting. The website now uses the supported Sites Vinext Worker runtime and logical D1 binding `DB`, with no R2 binding. Public access and the existing custom domain were preserved. The database migration creates only the vote schema; no synthetic votes were seeded into production.
+
+- Current Site source commit: `11aa5f6f9370100f5fccf265a6b08d469782e2cc`.
+- Current saved version: `appgprj_6ad4d98e08708191858cab113814704e~appgver_6beb018ee090819196fc04de5b77a14d` (version 3).
+- Current deployment: `appgdep_6adc1a5301d08191b8e221823e8e2f58`, confirmed `succeeded` at 2026-10-23 10:39 PM Eastern (`2026-10-24T02:39:21.782052Z`).
+- Live URL: https://pondstr.com . The original Sites URL remains https://pondstr.coolnewt4097.chatgpt.site .
+- Media Center has six supplied color concepts; Front Elevation has one concept; Garage Barn Door has three concepts. Kitchen, ADU, and Master Bath await images.
+
+The official source helper pushed and packaged the matching built source; the native Sites save/deploy operations confirmed publication. Final read-only checks against the custom domain returned HTTP 200 and zero initial Media Center votes, with secure HTTP-only voter-cookie initialization. Browser verification showed all six Media Center images loaded. Local-only tests covered saving, repeated votes, changing choices, separate visitor totals, missing cookies, invalid choices, empty galleries, and origin rejection. The local preview was stopped after verification.
+
+See [[Project Rooms/Smart House/working/design-galleries-and-voting]] for requirements, voting limits, and validation details. The earlier static page is historical; use the runtime source for future updates. Current portable publication required no Bash or global Git trust changes; credentials remained in memory and hidden stdin.
