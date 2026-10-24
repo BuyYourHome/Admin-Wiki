@@ -84,3 +84,5 @@ The cookie is browser storage, not proof of a person. Simultaneous first-page in
 ## Vote button emphasis — 2026-10-24
 
 Wes requested more emphasis with a colored background and larger font. Gallery vote buttons now use the existing warm accent as a solid fill, 14px semibold desktop text, 16px phone text, and larger 52/56px minimum heights. Hover darkens the accent; the saved choice retains its dark-green selected state. This changes presentation only and preserves the existing voting behavior.
+
+Wes subsequently asked to put each voting item's name in its button and remove the separate title. Each button now shows the design name in a bold primary line (16px desktop, 18px phone) with the current action/status below it. The name stays visible during loading, saving, and selection; long names wrap. Remove the standalone card heading while retaining concept numbers, descriptive text, accessible card/image names, and the full-size viewer. Voting IDs, storage, selected-state behavior, and totals are unchanged. Published as version 25; see [[Project Rooms/Smart House/working/hosting-and-domain]].

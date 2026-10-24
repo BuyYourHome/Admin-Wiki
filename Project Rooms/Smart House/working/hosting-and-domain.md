@@ -52,9 +52,9 @@ Wes requested removal of the website login requirement so the public can access 
 
 Wes requested Design, Explore, View, and Manage navigation and six room galleries with public voting. The website now uses the supported Sites Vinext Worker runtime and logical D1 binding `DB`, with no R2 binding. Public access and the existing custom domain were preserved. The database migration creates only the vote schema; no synthetic votes were seeded into production.
 
-- Current Site source commit: `9f3bcdfa07b990ee77c7cae4e64848303973d7cd`.
-- Current saved version: `appgprj_6ad4d98e08708191858cab113814704e~appgver_c18e0ed522ec819181d0820075c065a5` (version 24).
-- Current deployment: `appgdep_6adcd2c4db4081919dc974b15947a997`, confirmed `succeeded` at 2026-10-24 11:46 AM Eastern (`2026-10-24T15:46:21.654123Z`).
+- Current Site source commit: `8aa0e05bd0da5d04dc926306214a2b726fd05b27`.
+- Current saved version: `appgprj_6ad4d98e08708191858cab113814704e~appgver_62a5e197ff308191a4dfd280cd2c136f` (version 25).
+- Current deployment: `appgdep_6adce351172081919d96e097246fe5c9`, confirmed `succeeded` at 2026-10-24 12:56 PM Eastern (`2026-10-24T16:56:57.140513Z`).
 - Live URL: https://pondstr.com . The original Sites URL remains https://pondstr.coolnewt4097.chatgpt.site .
 - Media Center has six supplied color concepts; Front Elevation has two concepts; Garage Barn Door has three concepts. Kitchen, ADU, Master Bath, Spiral Staircase, and Back Deck await images.
 
@@ -205,3 +205,9 @@ Version 24 adds Wes's requested stylized growing vine and fireworks to the share
 The artwork is hidden from assistive technology, ignores pointer input, and adds no dependency, external asset, timer, or network action. TypeScript checking and the production build passed. Local browser checks verified a freshly replayed stem offset, a visible firework frame, the settled vine, and keyboard replay. At a 390-pixel viewport the page stayed 375 pixels wide, the artwork's right edge was 289 pixels, and all five menu links remained available. Reduced-motion behavior was reviewed in source; browser preference emulation was not used.
 
 The official Sites helper pushed and packaged the matching source, and Sites confirmed version 24 publication. The custom domain loaded the seven leaves and two bursts with all five menu links intact. A live logo screenshot was saved outside Git. Existing pages, public audience, domain, and house-system boundaries are unchanged.
+
+## Named voting buttons — 2026-10-24
+
+Version 25 moves each design choice's name into its vote button and removes the separate card title, as Wes requested. The name is the button's primary line in loading, saving, available, and selected states; the smaller second line retains the action/status. Long names can wrap. Each card is still named accessibly through its button's title, and selected buttons expose their pressed state. Gallery headings, concept numbers, descriptions, images, and full-size image labels remain.
+
+The production build passed. Local browser checks confirmed all six Media Center button names, no separate card headings, a selected Black shutters choice, and changing that choice to Warm welcome while preserving its name. At 390 pixels, the page stayed 375 pixels wide and the 303-pixel comparison buttons used 18-pixel name text. The official helper pushed and packaged the matching source; Sites confirmed version 25 publication. Live read-only verification displayed both Front Elevation names inside their buttons, with no duplicate card headings, and a screenshot was saved outside Git. No production votes were submitted. Vote storage, current design IDs, public access, and DNS are unchanged.

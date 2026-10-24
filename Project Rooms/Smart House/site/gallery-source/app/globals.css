@@ -93,3 +93,10 @@ body{padding-bottom:95px}.pondster-welcome{margin:0 4% 30px;padding:20px 24px;bo
 @keyframes pondster-firework{0%{opacity:0;transform:scale(.15) rotate(-12deg)}18%{opacity:.9}55%{opacity:.7}100%{opacity:0;transform:scale(1.2) rotate(8deg)}}
 @media(max-width:720px){.pondster-logo-art{top:-20px;width:280px;height:93px}}
 @media(prefers-reduced-motion:reduce){.logo-vine-stem,.logo-vine-leaf,.logo-firework{animation:none}.logo-vine-stem{stroke-dashoffset:0}.logo-vine-leaf{opacity:1;transform:none}.logo-firework{display:none}}
+
+/* Keep each choice's name with its voting action in every state. */
+.vote-button>.vote-button-copy{display:flex;flex:1;flex-direction:column;gap:5px;min-width:0;text-align:left;font-size:inherit}
+.vote-button-icon{flex-shrink:0}
+.vote-button-copy strong{font-size:16px;line-height:1.35;font-weight:700;overflow-wrap:anywhere}
+.vote-button-copy small{font-size:11px;line-height:1.4;font-weight:400}
+@media(max-width:720px){.vote-button-copy strong{font-size:18px}.vote-button-copy small{font-size:12px}}
