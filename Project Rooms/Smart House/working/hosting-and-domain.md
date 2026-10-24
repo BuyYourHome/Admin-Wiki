@@ -52,9 +52,9 @@ Wes requested removal of the website login requirement so the public can access 
 
 Wes requested Design, Explore, View, and Manage navigation and six room galleries with public voting. The website now uses the supported Sites Vinext Worker runtime and logical D1 binding `DB`, with no R2 binding. Public access and the existing custom domain were preserved. The database migration creates only the vote schema; no synthetic votes were seeded into production.
 
-- Current Site source commit: `88c4855ad4407b56c06ed61f787cdecce6ec56ca`.
-- Current saved version: `appgprj_6ad4d98e08708191858cab113814704e~appgver_794278aa42f48191ae479148b172f30f` (version 23).
-- Current deployment: `appgdep_6adccbea24788191a396b81e4fd97db9`, confirmed `succeeded` at 2026-10-24 11:17 AM Eastern (`2026-10-24T15:17:06.623341Z`).
+- Current Site source commit: `9f3bcdfa07b990ee77c7cae4e64848303973d7cd`.
+- Current saved version: `appgprj_6ad4d98e08708191858cab113814704e~appgver_c18e0ed522ec819181d0820075c065a5` (version 24).
+- Current deployment: `appgdep_6adcd2c4db4081919dc974b15947a997`, confirmed `succeeded` at 2026-10-24 11:46 AM Eastern (`2026-10-24T15:46:21.654123Z`).
 - Live URL: https://pondstr.com . The original Sites URL remains https://pondstr.coolnewt4097.chatgpt.site .
 - Media Center has six supplied color concepts; Front Elevation has two concepts; Garage Barn Door has three concepts. Kitchen, ADU, Master Bath, Spiral Staircase, and Back Deck await images.
 
@@ -197,3 +197,11 @@ Version 23 adds six house-wide feature summaries and cards for all eight current
 The lighting simulation remains below the feature cards. A requested lighting scene opens Explore, waits for navigation to render, then scrolls to and focuses the lighting section. Design links preserve the existing pending-vote room guard. Public comments remain beneath Explore.
 
 The existing guide suite, all eight feature-request checks, TypeScript check, and final production build passed. Local browser checks confirmed six house summaries, eight room cards, a matching Back Deck gallery link, lighting changes, and a cross-page Evening request bringing the correct simulation into view. At 390 pixels, room cards were 345 pixels wide inside a 375-pixel page without horizontal overflow. The official source helper pushed and packaged the matching source, and Sites confirmed version 23 publication. The custom-domain Explore page displayed all eight named room cards; a live screenshot was saved outside Git. No production votes, comments, messages, bookings, device actions, or microphone use occurred. Public access and DNS are unchanged.
+
+## Growing vine and logo fireworks — 2026-10-24
+
+Version 24 adds Wes's requested stylized growing vine and fireworks to the shared Pondster header. A decorative inline SVG draws a curling stem around the P/HOME monogram and beneath the wordmark, opens seven leaves, then shows two small brass/terracotta firework bursts. The entrance finishes within 4.8 seconds, leaving the vine grown. Pointer entry or keyboard focus replays the artwork. The earlier monogram sweep/glint now also runs once. Reduced-motion CSS displays the still vine and hides fireworks.
+
+The artwork is hidden from assistive technology, ignores pointer input, and adds no dependency, external asset, timer, or network action. TypeScript checking and the production build passed. Local browser checks verified a freshly replayed stem offset, a visible firework frame, the settled vine, and keyboard replay. At a 390-pixel viewport the page stayed 375 pixels wide, the artwork's right edge was 289 pixels, and all five menu links remained available. Reduced-motion behavior was reviewed in source; browser preference emulation was not used.
+
+The official Sites helper pushed and packaged the matching source, and Sites confirmed version 24 publication. The custom domain loaded the seven leaves and two bursts with all five menu links intact. A live logo screenshot was saved outside Git. Existing pages, public audience, domain, and house-system boundaries are unchanged.

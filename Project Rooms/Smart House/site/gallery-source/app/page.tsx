@@ -7,6 +7,7 @@ import PondsterGuide from './pondster-guide';
 import Comments from './comments';
 import ScrollVideo from './scroll-video';
 import ExplorePage from './explore-page';
+import PondsterLogoArt from './pondster-logo-art';
 import type { GuideAction } from '../lib/pondster-guide';
 
 type VoteResults = { scores:Record<string,number>; total:number; selected:string|null };
@@ -27,6 +28,7 @@ export default function Home() {
   const [scene,setScene] = useState('day');
   const [guideOpen,setGuideOpen] = useState(false);
   const [showLighting,setShowLighting] = useState(false);
+  const [logoPlay,setLogoPlay] = useState(0);
   const dialog = useRef<HTMLDialogElement>(null);
   const gallery = galleries.find(gallery => gallery.id === room)!;
   useEffect(() => {
@@ -52,7 +54,7 @@ export default function Home() {
   function guideAction(action:GuideAction){setMenu(action.menu);location.hash=menuHash(action.menu);if(action.room&&!saving)setRoom(action.room);if(action.scene){setScene(action.scene);setShowLighting(true);}}
   return <>
     <a className="skip" href="#main">Skip to content</a>
-    <header className="header"><a className="brand" href="#design" onClick={()=>navigate('Design')} aria-label="Pondster home"><span className="monogram" aria-hidden="true">P<small>HOME</small></span><span className="brand-copy"><strong className="brand-name">Pondster</strong><small>I’m a home with a voice.</small></span></a><nav aria-label="Main menu">{menus.map(item=><a key={item} href={`#${menuHash(item)}`} onClick={()=>navigate(item)} aria-current={menu===item?'page':undefined}>{item}</a>)}</nav><span className="development">I’M A HOME IN THE MAKING</span></header>
+    <header className="header"><a className="brand" href="#design" onClick={()=>navigate('Design')} aria-label="Pondster home" onMouseEnter={()=>setLogoPlay(value=>value+1)} onFocus={()=>setLogoPlay(value=>value+1)}><PondsterLogoArt key={logoPlay}/><span className="monogram" aria-hidden="true">P<small>HOME</small></span><span className="brand-copy"><strong className="brand-name">Pondster</strong><small>I’m a home with a voice.</small></span></a><nav aria-label="Main menu">{menus.map(item=><a key={item} href={`#${menuHash(item)}`} onClick={()=>navigate(item)} aria-current={menu===item?'page':undefined}>{item}</a>)}</nav><span className="development">I’M A HOME IN THE MAKING</span></header>
     <main id="main">
       {menu==='Design' && <>
         <section className="intro"><div><p className="eyebrow">PONDSTER / MY DESIGN NOTEBOOK</p><h1>I’m taking shape.<br/><em>Have a say.</em></h1></div><div className="intro-note"><p>I’m exploring ideas for each space. Browse my designs, vote for the ones you love, and help me decide what feels right.</p><span>Explore my {galleries.length} galleries.</span></div></section>
