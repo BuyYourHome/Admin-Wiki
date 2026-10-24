@@ -1,3 +1,5 @@
+import { roomFeatures } from './features.js';
+
 export type GuideAction = { menu: 'Design' | 'Explore' | 'View' | 'Own' | 'Built By'; room?: string; scene?: 'day' | 'evening' | 'relax' };
 export type GuideReply = { text: string; action?: GuideAction };
 
@@ -71,6 +73,7 @@ export function answerPondster(input: string): GuideReply {
     return { text: 'I have a twenty-five-second motion concept for my garage: my center entry section swings inward and closes, then my full door slides left. I’m showing a white Tesla driving out and across the scene to the left, revealing my white-marble garage floor. This is my illustrative AI/composited concept; my hardware, clearances, and the car’s turning path haven’t been validated.', action: { menu: 'Design', room: 'garage-barn-door' } };
   }
   if (room) {
+    if (/\bfeatures?\b/.test(words)) return { text: `${roomFeatures[room.id].features.join(' ')} I’m sharing concepts and plans; my final specifications still need confirmation.`, action: { menu: 'Explore' } };
     const action: GuideAction = { menu: 'Design', room: room.id };
     if (choice) return { text: `I have ${choice.title} as an AI design concept in my ${room.name} gallery. I’m opening it so you can compare my options. My concept images do not confirm installed materials or finished work.`, action };
     if (!room.choices.length) return { text: `My ${room.name} gallery has design images still to come. I don’t have choices or specifications to share for it yet.`, action };
@@ -84,7 +87,7 @@ export function answerPondster(input: string): GuideReply {
   if (/\b(video|film|football|artwork|screen|motion)\b/.test(words)) {
     return { text: 'I have a ten-second AI motion concept for my Media Center, with a fixed decorative frame, a TV that turns toward my kitchen, moving football footage, and a scrolling first-person caption. I’m showing a composited scene; my mount mechanics have not been validated.', action: { menu: 'Design', room: 'media-center' } };
   }
-  if (has('explore')) return { text: 'I have illustrative lighting moods in Explore, with explanations of my systems planned for later. I still need verified equipment records.', action: { menu: 'Explore' } };
+  if (has('explore') || /\b(features?|room by room)\b/.test(words)) return { text: 'I share my house-wide ideas and a feature list for each of my spaces on Explore, with design concepts separated from details still in my plans. You can also try my illustrative lighting moods. My installed equipment and construction details still need confirmation.', action: { menu: 'Explore' } };
   if (has('view')) return { text: 'I introduce Ashley and my simulated viewing preview on View. For a real visit with me, arrange the details separately with Ashley.', action: { menu: 'View' } };
   if (/\b(design|designs|gallery|galleries|choices|colors|colours)\b/.test(words)) return { text: `I have ${rooms.length} design galleries: ${rooms.map(room => room.name).join(', ')}. I’m sharing AI concept images where choices are available; I’m still collecting images for my other galleries.`, action: { menu: 'Design' } };
   if (/\b(address|location|where are you|where is pondster)\b/.test(words)) return { text: 'I’m Pondster, the voice and identity of this house. My location is confidential for now—think witness protection, with better curb appeal. You can explore my design ideas here and find future viewing arrangements on View.', action: { menu: 'View' } };

@@ -6,6 +6,7 @@ import BuiltByPage from './built-by-page';
 import PondsterGuide from './pondster-guide';
 import Comments from './comments';
 import ScrollVideo from './scroll-video';
+import ExplorePage from './explore-page';
 import type { GuideAction } from '../lib/pondster-guide';
 
 type VoteResults = { scores:Record<string,number>; total:number; selected:string|null };
@@ -25,6 +26,7 @@ export default function Home() {
   const [zoom,setZoom] = useState<Design|null>(null);
   const [scene,setScene] = useState('day');
   const [guideOpen,setGuideOpen] = useState(false);
+  const [showLighting,setShowLighting] = useState(false);
   const dialog = useRef<HTMLDialogElement>(null);
   const gallery = galleries.find(gallery => gallery.id === room)!;
   useEffect(() => {
@@ -39,6 +41,7 @@ export default function Home() {
     return () => controller.abort();
   },[room,retry]);
   useEffect(() => {if(zoom && !dialog.current?.open)dialog.current?.showModal();if(!zoom && dialog.current?.open)dialog.current.close();},[zoom]);
+  useEffect(() => {if(menu!=='Explore' || !showLighting)return;const frame=requestAnimationFrame(()=>{const target=document.getElementById('lighting-features');target?.scrollIntoView({block:'start'});target?.focus({preventScroll:true});setShowLighting(false);});return ()=>cancelAnimationFrame(frame);},[menu,showLighting]);
   async function vote(designId:string) {
     if(saving)return;setSaving(true);setMessage('');
     try { const response=await fetch('/api/votes',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({room,designId})});const data=await response.json() as VoteResults & {error?:string};if(!response.ok)throw new Error(data.error);setResults(data);setFailed(false);setMessage('I’ve saved your choice. Thank you for helping shape my design.'); }
@@ -46,7 +49,7 @@ export default function Home() {
     finally{setSaving(false);}
   }
   function navigate(next:Menu){setMenu(next);}
-  function guideAction(action:GuideAction){setMenu(action.menu);location.hash=menuHash(action.menu);if(action.room&&!saving)setRoom(action.room);if(action.scene)setScene(action.scene);}
+  function guideAction(action:GuideAction){setMenu(action.menu);location.hash=menuHash(action.menu);if(action.room&&!saving)setRoom(action.room);if(action.scene){setScene(action.scene);setShowLighting(true);}}
   return <>
     <a className="skip" href="#main">Skip to content</a>
     <header className="header"><a className="brand" href="#design" onClick={()=>navigate('Design')} aria-label="Pondster home"><span className="monogram" aria-hidden="true">P<small>HOME</small></span><span className="brand-copy"><strong className="brand-name">Pondster</strong><small>I’m a home with a voice.</small></span></a><nav aria-label="Main menu">{menus.map(item=><a key={item} href={`#${menuHash(item)}`} onClick={()=>navigate(item)} aria-current={menu===item?'page':undefined}>{item}</a>)}</nav><span className="development">I’M A HOME IN THE MAKING</span></header>
@@ -68,7 +71,7 @@ export default function Home() {
         </div></section>
         <section className="design-footer"><span>MY DESIGN IS A CONVERSATION.</span><p>Come back as I explore new rooms and choices.</p><span>MY LOCATION IS CONFIDENTIAL</span></section>
       </>}
-      {menu==='Explore' && <section className="secondary-page"><p className="eyebrow">EXPLORE / GET TO KNOW ME</p><h1>Get to know me.<br/><em>See my possibilities.</em></h1><p className="lead">Let me show you how light could change the feel of a space.</p><div className="explore-demo"><div className={`illustrated-room ${scene}`} aria-label={`My illustrative room with ${scene} lighting`} role="img"><div className="window"/><div className="lamp"/><div className="sofa"/><span>MY LIGHTING CONCEPT · SIMULATION ONLY</span></div><div className="scene-options"><p className="eyebrow">TRY MY LIGHTING MOODS</p>{[['day','Daylight'],['evening','Evening'],['relax','Unwind']].map(([id,label])=><button key={id} onClick={()=>setScene(id)} aria-pressed={scene===id}>{label}<span>↗</span></button>)}<p role="status">{scene==='day'?'I’m bright and neutral.':scene==='evening'?'I’m settling into a warmer evening.':'I’m keeping things soft for a quiet moment.'}</p><small>I’m only changing this illustration, with no connection to my live systems.</small></div></div><div className="knowledge-grid">{[['Lighting','How my lighting zones, scenes, and everyday controls could work.'],['Climate & comfort','A place for my operating guides and equipment care.'],['Sound & screens','My connected experiences, explained.']].map(([title,description])=><article key={title}><h3>{title}</h3><p>{description}</p><small>I’m waiting for verified records before adding these details.</small></article>)}</div></section>}
+      {menu==='Explore' && <ExplorePage scene={scene} onScene={setScene} onDesign={nextRoom=>{if(!saving){setRoom(nextRoom);navigate('Design');location.hash='design';}}}/>}
       {menu==='View' && <ViewPage onImage={setZoom} onDesign={()=>navigate('Design')}/>}
       {menu==='Built By' && <BuiltByPage/>}
       {menu==='Own' && <section className="secondary-page manage"><p className="eyebrow">OWN / MY FUTURE OWNER EXPERIENCE</p><h1>I come<br/><em>with answers.</em></h1><p className="lead">I’m planning a place for my home guides, care information, and handover records. Ask me from any page for public guidance while my owner tools take shape.</p><div className="knowledge-grid">{[['Home guides','How my systems work and where you can find them.'],['Care & maintenance','My manuals, warranties, and equipment-specific schedules.'],['Owner handover','My records and account checklist for the next chapter.']].map(([title,description])=><article key={title}><span className="pending-tag">PLANNED</span><h3>{title}</h3><p>{description}</p></article>)}</div><div className="manage-notice"><strong>My owner tools aren’t ready yet.</strong><p>I’ll need separate, authenticated owner access before I can show private records or offer live controls. I’m not connected to my house systems through this public site.</p></div></section>}

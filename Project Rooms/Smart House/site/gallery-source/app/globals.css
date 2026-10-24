@@ -54,3 +54,27 @@ body{padding-bottom:95px}.pondster-welcome{margin:0 4% 30px;padding:20px 24px;bo
 @keyframes scroll-video-reveal{from{opacity:.35;transform:scale(.985)}to{opacity:1;transform:none}}
 @media(max-width:720px){.scroll-video-toolbar{gap:10px;padding-inline:12px}.scroll-video-toolbar>span{max-width:120px;font-size:9px;line-height:1.7}.scroll-video-toolbar button{padding:12px;font-size:12px}.scroll-video-hint{font-size:10px;width:max-content}}
 @media(prefers-reduced-motion:reduce){.scroll-video-stage.is-expanded{animation:none}}
+
+.explore-page>.lead{max-width:650px}
+.feature-section-heading{max-width:680px;margin-bottom:28px}
+.feature-section-heading .eyebrow{color:var(--accent);margin:0 0 10px}
+.feature-section-heading h2{font-size:clamp(30px,3vw,42px);letter-spacing:-1px;line-height:1.15;margin:0 0 16px}
+.feature-section-heading>p:not(.eyebrow){font-size:14px;color:var(--muted);margin:0}
+.house-features{padding:32px;background:var(--soft);border:1px solid var(--line)}
+.house-feature-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:30px}
+.feature-status{font-size:8px;letter-spacing:1.2px;line-height:1.6;color:var(--accent);font-weight:600}
+.house-feature-grid h3{font-size:26px;line-height:1.2;margin:12px 0}
+.house-feature-grid p{font-size:13px;color:var(--muted);margin:0}
+.room-features,.lighting-features{margin-top:58px}
+.room-feature-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px}
+.room-feature-card{display:flex;flex-direction:column;background:var(--white);border:1px solid var(--line);padding:28px;min-width:0}
+.room-feature-top{display:flex;align-items:center;justify-content:space-between;gap:14px}
+.feature-number{font:19px Georgia;color:#87917e}
+.room-feature-card h3{font-size:30px;letter-spacing:-.5px;line-height:1.2;margin:20px 0 16px}
+.room-feature-card ul{padding-left:18px;margin:0 0 24px;font-size:13px;line-height:1.8;color:var(--muted)}
+.room-feature-card li{padding-left:5px;margin-bottom:10px}
+.room-feature-card li::marker{color:var(--accent)}
+.feature-gallery-link{margin-top:auto;padding:16px 0 0;display:flex;align-items:center;justify-content:space-between;gap:15px;border:0;border-top:1px solid var(--line);background:none;text-align:left;font-size:12px;line-height:1.5;min-height:44px;color:var(--ink)}
+.feature-gallery-link:hover{color:var(--accent)}
+.feature-gallery-link span{font-size:18px}
+@media(max-width:720px){.house-features{padding:24px}.house-feature-grid,.room-feature-grid{grid-template-columns:1fr}.house-feature-grid{gap:25px}.house-feature-grid article+article{border-top:1px solid #c7cdbd;padding-top:25px}.room-feature-card{padding:24px}.room-feature-card h3{font-size:29px}.room-features,.lighting-features{margin-top:40px}}

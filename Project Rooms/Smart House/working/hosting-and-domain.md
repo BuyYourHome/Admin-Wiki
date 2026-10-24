@@ -52,9 +52,9 @@ Wes requested removal of the website login requirement so the public can access 
 
 Wes requested Design, Explore, View, and Manage navigation and six room galleries with public voting. The website now uses the supported Sites Vinext Worker runtime and logical D1 binding `DB`, with no R2 binding. Public access and the existing custom domain were preserved. The database migration creates only the vote schema; no synthetic votes were seeded into production.
 
-- Current Site source commit: `2a42875c1111c7d4d35ea3996de476692b7a75e4`.
-- Current saved version: `appgprj_6ad4d98e08708191858cab113814704e~appgver_a7a2d984d774819198910e7ebfff4d99` (version 22).
-- Current deployment: `appgdep_6adcc829fc0481918d1afbf159a3e8d7`, confirmed `succeeded` at 2026-10-24 11:01 AM Eastern (`2026-10-24T15:01:06.590761Z`).
+- Current Site source commit: `88c4855ad4407b56c06ed61f787cdecce6ec56ca`.
+- Current saved version: `appgprj_6ad4d98e08708191858cab113814704e~appgver_794278aa42f48191ae479148b172f30f` (version 23).
+- Current deployment: `appgdep_6adccbea24788191a396b81e4fd97db9`, confirmed `succeeded` at 2026-10-24 11:17 AM Eastern (`2026-10-24T15:17:06.623341Z`).
 - Live URL: https://pondstr.com . The original Sites URL remains https://pondstr.coolnewt4097.chatgpt.site .
 - Media Center has six supplied color concepts; Front Elevation has two concepts; Garage Barn Door has three concepts. Kitchen, ADU, Master Bath, Spiral Staircase, and Back Deck await images.
 
@@ -189,3 +189,11 @@ Version 22 appends Spiral Staircase and Back Deck as Design galleries 07 and 08.
 A filename/folder search of all 94 property Planning files found no identifiable images for either new gallery. Both therefore display Pondster's first-person coming-soon state, without invented design choices or voting controls. The source search and pending images are recorded in [[Project Rooms/Smart House/working/source-inventory]].
 
 The focused guide checks and production build passed. The official Sites helper pushed and packaged the matching source, and Sites confirmed version 22 deployed successfully. At the custom domain, both new galleries opened with the correct headings and pending-image messages. A 390-pixel phone check showed all eight navigation entries, 375-pixel page width, and no vote buttons for the empty Back Deck gallery. Pondster's typed “Show spiral stairs” request opened Spiral Staircase and correctly explained that images are still to come. No production votes, comments, messages, appointments, device actions, or microphone use occurred. Public access and DNS are unchanged.
+
+## Explore house and room features — 2026-10-24
+
+Version 23 adds six house-wide feature summaries and cards for all eight current Design spaces, with first-person feature lists and links to the matching galleries. The labels distinguish current website capabilities, design concepts, and plans. No unverified installed equipment, dimensions, construction approvals, or final material selections are asserted. Shared `lib/features.js` supplies both the Explore cards and Pondster's room-feature answers. See [[Project Rooms/Smart House/working/explore-features]] for content scope and sources.
+
+The lighting simulation remains below the feature cards. A requested lighting scene opens Explore, waits for navigation to render, then scrolls to and focuses the lighting section. Design links preserve the existing pending-vote room guard. Public comments remain beneath Explore.
+
+The existing guide suite, all eight feature-request checks, TypeScript check, and final production build passed. Local browser checks confirmed six house summaries, eight room cards, a matching Back Deck gallery link, lighting changes, and a cross-page Evening request bringing the correct simulation into view. At 390 pixels, room cards were 345 pixels wide inside a 375-pixel page without horizontal overflow. The official source helper pushed and packaged the matching source, and Sites confirmed version 23 publication. The custom-domain Explore page displayed all eight named room cards; a live screenshot was saved outside Git. No production votes, comments, messages, bookings, device actions, or microphone use occurred. Public access and DNS are unchanged.
