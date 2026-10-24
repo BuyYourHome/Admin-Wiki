@@ -37,3 +37,5 @@ body{padding-bottom:95px}.pondster-welcome{margin:0 4% 30px;padding:20px 24px;bo
 @media(prefers-reduced-motion:reduce){.monogram::before,.monogram::after{animation:none}.monogram::after{display:none}.brand:hover .monogram,.brand:focus-visible .monogram{transform:none}}
 
 .garage-media-feature video{aspect-ratio:5/2}
+
+.buyer-design-note{margin:0 0 36px;padding:24px 28px;border-left:3px solid var(--accent);background:var(--soft);font-size:16px;line-height:1.85}@media(max-width:720px){.buyer-design-note{padding:20px;font-size:15px;margin-bottom:28px}}

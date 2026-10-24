@@ -38,3 +38,11 @@ Wes requested Ashley's picture on View. The former Allen Tate profile now redire
 While this request was active, Wes directed that the property address be removed for now, with coy wording that Pondster needs to start anonymously. The public greeting, brand marks, footers, page metadata, Built By identity line, guide/location answers, viewing-email subject/body, and voting-error copy now use Pondster without the property address. The Sites display title is Pondster. Current public app/lib/build/assets were searched for the old street-address text. All five exterior concept images were visually checked and contained no legible property address or street number.
 
 Keep the internal property association and private source history for room operations. This is an anonymous introduction on the current public website, not a claim that past published versions or third-party records have been erased. The existing URL, realtor contact, concept galleries, and simulated viewing functionality remain in place.
+
+## Early-buyer design participation — 2026-10-24
+
+Wes asked for a View-page paragraph explaining that buyers who purchase in advance can have a say in final design. Place it prominently below the page introduction and above Ashley's profile/viewing preview, in Pondster's first-person voice:
+
+> Buy me early, while I’m still taking shape, and you can have a say in my final design. Help choose from the finishes and details that are still open, so I can feel like your home from the start. Talk with Ashley, my realtor, about which choices are available and when they need to be made.
+
+Keep this limited to choices still open; the paragraph does not promise control over every design decision or define prices, incentives, deadlines, or purchase terms. Ashley remains the contact for the actual options and timing. Publication and visual verification are recorded in the hosting notes.

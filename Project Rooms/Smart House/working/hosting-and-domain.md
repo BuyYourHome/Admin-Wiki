@@ -52,9 +52,9 @@ Wes requested removal of the website login requirement so the public can access 
 
 Wes requested Design, Explore, View, and Manage navigation and six room galleries with public voting. The website now uses the supported Sites Vinext Worker runtime and logical D1 binding `DB`, with no R2 binding. Public access and the existing custom domain were preserved. The database migration creates only the vote schema; no synthetic votes were seeded into production.
 
-- Current Site source commit: `2799a270f69a7835c55810ec8c82748dcadfd625`.
-- Current saved version: `appgprj_6ad4d98e08708191858cab113814704e~appgver_629fbefb29c88191bc45df2d2a5e09f3` (version 18).
-- Current deployment: `appgdep_6adcb6e31c388191af3c8ad4d5899cbc`, confirmed `succeeded` at 2026-10-24 9:47 AM Eastern (`2026-10-24T13:47:24.781313Z`).
+- Current Site source commit: `864442983775fc5604b1d31d07934941fe04d71f`.
+- Current saved version: `appgprj_6ad4d98e08708191858cab113814704e~appgver_f2e6ad81016c8191b8bdc86d0c889db0` (version 19).
+- Current deployment: `appgdep_6adcb8696e1c8191adbd8567ee419f98`, confirmed `succeeded` at 2026-10-24 9:53 AM Eastern (`2026-10-24T13:53:53.503968Z`).
 - Live URL: https://pondstr.com . The original Sites URL remains https://pondstr.coolnewt4097.chatgpt.site .
 - Media Center has six supplied color concepts; Front Elevation has two concepts; Garage Barn Door has three concepts. Kitchen, ADU, and Master Bath await images.
 
@@ -155,3 +155,9 @@ The supplied original is untouched. The web copy uses three first-person caption
 Focused guide checks and the production build passed. Source and derived video fully decoded; reviewed sample frames showed readable first-person captions and no legible address or plate. Local browser checks confirmed 16-second 1600×640 metadata, automatic muted playback without a media error, and three existing voting cards. At a 390-pixel phone viewport, the 343×137-pixel player fit within 375-pixel content without horizontal overflow.
 
 The official helper pushed and packaged the matching source; Sites confirmed version 18 deployed successfully. The custom domain loaded the exact new video URL, reported the same metadata, and played automatically while muted. The live garage gallery and first-person caption were visually verified, with a screenshot saved outside Git. No production comments, votes, messages, appointments, house controls, or microphone use occurred. Public audience and DNS are preserved; the owned preview was stopped and temporary tab closed.
+
+## Early-buyer design paragraph — 2026-10-24
+
+Version 19 adds Wes's requested buyer-design paragraph near the top of View, between the introduction and Ashley/viewing cards. Pondster invites buyers who purchase while the house is taking shape to have a say in final design, limited to finishes and details still open for selection. The paragraph directs buyers to Ashley for available choices and timing. Exact wording is preserved in [[Project Rooms/Smart House/working/viewing-and-realtor]]. A soft background and accent rule make the invitation visible without changing the page's existing behavior.
+
+The production build passed, and the official Sites helper pushed and packaged the matching source. Sites confirmed version 19 deployed successfully. The published custom-domain View page displayed the complete paragraph above Ashley's portrait and the viewing preview. A 390-pixel phone check showed a 345-pixel paragraph, 15-pixel text, and 375-pixel content without horizontal overflow. A desktop screenshot was saved outside Git for the completion response. No booking, message, comment, vote, or house-system action was performed; public audience and DNS are preserved.
