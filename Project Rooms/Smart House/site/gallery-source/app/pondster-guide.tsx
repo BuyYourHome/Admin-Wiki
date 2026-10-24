@@ -12,7 +12,7 @@ type Recognition = {
 };
 type SpeechWindow = Window & { SpeechRecognition?:new()=>Recognition; webkitSpeechRecognition?:new()=>Recognition };
 type Message = { who:'you'|'Pondster'; text:string };
-const greeting = "Hello, I’m Pondster, the home at 908 Pond Street. Ask me about the design choices, visiting, or Jean Wright, my SI designer.";
+const greeting = "Hello, I’m Pondster, a home with a voice. I need to start anonymously for now. Ask me about the design choices, visiting, or Jean Wright, my SI designer.";
 const wakeName = /\b(?:pondster|pond\s*star|pond\s*stir|jean\s+wright|jean\s+right)\b/i;
 
 export default function PondsterGuide({open,onOpenChange,onAction}:{open:boolean;onOpenChange:(open:boolean)=>void;onAction:(action:GuideAction)=>void}) {
@@ -129,6 +129,6 @@ export default function PondsterGuide({open,onOpenChange,onAction}:{open:boolean
       <form className="pondster-input" onSubmit={submit}><label className="visually-hidden" htmlFor="pondster-question">Ask Pondster a question</label><input id="pondster-question" name="question" ref={input} placeholder="Pondster, tell me about…" required maxLength={500} autoComplete="off"/><button type="submit" aria-label="Send question to Pondster">↑</button></form>
       <div className="pondster-panel-footer"><span>Public website guide · SI designer: Jean Wright</span>{speechAvailable&&<button onClick={()=>speak(lastReply)} aria-label="Read Pondster’s latest reply aloud">Read aloud</button>}</div>
     </section>}
-    <button ref={launch} className={`pondster-launch ${voiceSession?'is-listening':''}`} onClick={()=>open?close():onOpenChange(true)} aria-expanded={open} aria-controls="pondster-panel"><span className="pondster-launch-icon" aria-hidden="true">P</span><span>{open?'Close Pondster':'Talk to Pondster'}<small>{voiceSession?'VOICE SESSION ACTIVE':'908 POND STREET'}</small></span><span aria-hidden="true">{open?'×':'↗'}</span></button>
+    <button ref={launch} className={`pondster-launch ${voiceSession?'is-listening':''}`} onClick={()=>open?close():onOpenChange(true)} aria-expanded={open} aria-controls="pondster-panel"><span className="pondster-launch-icon" aria-hidden="true">P</span><span>{open?'Close Pondster':'Talk to Pondster'}<small>{voiceSession?'VOICE SESSION ACTIVE':'ANONYMOUS FOR NOW'}</small></span><span aria-hidden="true">{open?'×':'↗'}</span></button>
   </div>;
 }

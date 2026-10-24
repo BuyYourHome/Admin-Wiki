@@ -52,9 +52,9 @@ Wes requested removal of the website login requirement so the public can access 
 
 Wes requested Design, Explore, View, and Manage navigation and six room galleries with public voting. The website now uses the supported Sites Vinext Worker runtime and logical D1 binding `DB`, with no R2 binding. Public access and the existing custom domain were preserved. The database migration creates only the vote schema; no synthetic votes were seeded into production.
 
-- Current Site source commit: `cbb21cfcfc659b891533c3135ce9f8023e288702`.
-- Current saved version: `appgprj_6ad4d98e08708191858cab113814704e~appgver_d6a125e24b688191b9d1432972d94eb2` (version 9).
-- Current deployment: `appgdep_6adc3514fb888191b4af262dcd096dfc`, confirmed `succeeded` at 2026-10-24 12:33 AM Eastern (`2026-10-24T04:33:32.355999Z`).
+- Current Site source commit: `a688ff4f3dda7e316f8cfc45179e2ca09a8a24d8`.
+- Current saved version: `appgprj_6ad4d98e08708191858cab113814704e~appgver_751c7692a3388191a1da51c342c567a4` (version 10).
+- Current deployment: `appgdep_6adc96ecb448819191ff7e26da8e5ecf`, confirmed `succeeded` at 2026-10-24 7:30 AM Eastern (`2026-10-24T11:30:59.879338Z`).
 - Live URL: https://pondstr.com . The original Sites URL remains https://pondstr.coolnewt4097.chatgpt.site .
 - Media Center has six supplied color concepts; Front Elevation has two concepts; Garage Barn Door has three concepts. Kitchen, ADU, and Master Bath await images.
 
@@ -80,3 +80,13 @@ Version 8 adds Built By between View and Manage, with a direct `#built-by` link.
 Pondster answers who built it and can navigate to Built By; Wes contact requests open the company page. Focused routing checks, TypeScript checking, and the production build passed. Local browser checks verified the direct link, guide navigation from Manage, the 900-by-270 logo loading, and correct HTTPS and telephone links. Phone preview showed all five menu items within the 375-pixel page, no horizontal overflow, and a 287-pixel logo. The published custom domain displayed the new menu and complete company page. Public access, existing concepts/video, voting, domain, and device boundaries remain unchanged. See [[Project Rooms/Smart House/working/built-by-page]].
 
 Version 9 applies Wes's menu correction: Design, Explore, View, Own, Built By. Manage is renamed Own in the menu, page heading, and Pondster guide actions/copy. The new URL is `#own`; existing `#manage` links remain an alias to Own. The existing guide checks and production build passed. Local browser checks verified both old and new links; the published custom domain displayed the corrected menu order and Own page. No access-policy or owner capability change was made.
+
+## Portrait, anonymous introduction, and voting emphasis — 2026-10-24
+
+Version 10 adds Ashley Morello's unaltered 628-by-628 official brokerage portrait to View and updates her website link to the canonical Howard Hanna profile. The binary is packaged only in the separate Sites repository. The source and retrieval details are recorded in [[Project Rooms/Smart House/working/viewing-and-realtor]].
+
+At Wes's direction, the current public site starts anonymously. The introduction says, “I’m Pondster. I need to start anonymously for now.” The street address was removed from current public page copy, metadata, branding, footer, guide answers, and encoded viewing-request links. The Sites display title is Pondster. This supersedes version 7's public address treatment; internal property association and historical source records are retained. The current built public assets contain no street-address text, and the exterior concepts have no legible property address.
+
+Vote buttons now use the existing warm terracotta background, white bold text, and larger touch targets across all galleries: 14-pixel type on desktop and 16-pixel type on phones, with minimum heights of 52 and 56 pixels. Selected choices retain their dark-green appearance. Voting behavior is unchanged.
+
+Focused guide checks and the production build passed. Local checks verified all five menus without a public address, the guide's coy location response, Ashley's loaded portrait, and the new voting styles. Phone checks showed 375-pixel content in a 375-pixel viewport, a square portrait, and 16-pixel vote text without horizontal overflow. After publication, the custom domain displayed the anonymous title/introduction, loaded the 628-pixel portrait, and rendered terracotta vote buttons with larger bold type. No production test votes, messages, real bookings, or live lock actions were submitted. Public audience and DNS were preserved.

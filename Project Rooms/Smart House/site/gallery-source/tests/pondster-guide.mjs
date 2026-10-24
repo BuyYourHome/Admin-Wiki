@@ -2,7 +2,7 @@ import assert from 'node:assert/strict';
 import { answerPondster } from '../lib/pondster-guide.ts';
 import { galleries } from '../lib/designs.ts';
 
-assert.match(answerPondster('Hello Pondster').text, /Pondster.*908 Pond Street/);
+assert.match(answerPondster('Hello Pondster').text, /Pondster.*anonymously/);
 assert.match(answerPondster('Who is Jean Wright?').text, /Jean Wright is my SI designer/);
 assert.match(answerPondster('Who designed you?').text, /Jean Wright is my SI designer/);
 assert.deepEqual(answerPondster('Pondster show media center').action, {menu:'Design',room:'media-center'});
@@ -38,4 +38,5 @@ assert.deepEqual(answerPondster('Pondster, who built you?').action, {menu:'Built
 assert.deepEqual(answerPondster('Show Built By').action, {menu:'Built By'});
 assert.match(answerPondster('Tell me about Buy Your Home LLC').text, /Buy Your Home, LLC.*919-917-7466/);
 assert.deepEqual(answerPondster('Call Wes').action, {menu:'Built By'});
+assert.match(answerPondster('What is your address?').text, /start anonymously/);
 console.log('PASS: Pondster identity, exact Jean role, all current galleries/choices, scenes, video, non-mutating voting, simulated viewing, public contact, owner boundaries, and unknown-fact refusal.');

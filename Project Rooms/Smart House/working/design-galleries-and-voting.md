@@ -46,3 +46,7 @@ The original buildless `site/index.html` is the earlier local concept; the new a
 - Production verification is read-only. Test votes stay in the separate local database; no synthetic votes were added to the live poll.
 
 The cookie is browser storage, not proof of a person. Simultaneous first-page initialization, cookie replacement, clearing cookies, other browsers, and the alternative hosted origin can create another identity. Use these totals as informal design preferences.
+
+## Vote button emphasis — 2026-10-24
+
+Wes requested more emphasis with a colored background and larger font. Gallery vote buttons now use the existing warm accent as a solid fill, 14px semibold desktop text, 16px phone text, and larger 52/56px minimum heights. Hover darkens the accent; the saved choice retains its dark-green selected state. This changes presentation only and preserves the existing voting behavior.

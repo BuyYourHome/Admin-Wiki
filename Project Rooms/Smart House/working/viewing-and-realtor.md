@@ -30,3 +30,11 @@ A real booking calendar needs verified availability, booking ownership, confirma
 See [[Project Rooms/Smart House/working/hosting-and-domain]] for the published version and verification.
 
 Published as Sites version 6 at https://pondstr.com/#view . The production build, local demo flow, selection reset, phone layout, and live custom-domain demo passed. No live door or actual appointment integration was activated.
+
+## Portrait and anonymous introduction — 2026-10-24
+
+Wes requested Ashley's picture on View. The former Allen Tate profile now redirects to https://ashleymorello.howardhanna.com/ . Its live About Me page, https://ashleymorello.howardhanna.com/Agent/Content/108213/about_me, visibly identifies Ashley Morello and publishes the 628-by-628 portrait at https://ashleymorello.howardhanna.com/ClientImage/Agent-Full/108213.jpg . The browser's observed page-asset export recovered the image after a prolonged download stall; a direct shell fetch had been challenged. The exported JPEG was visually inspected and copied unchanged to the separate Site repo as `/people/ashley-morello.jpg`. No portrait binary is stored in Admin Wiki Git. The photo replaces the prior AM initials, and the official website link now uses the current Howard Hanna hostname.
+
+While this request was active, Wes directed that the property address be removed for now, with coy wording that Pondster needs to start anonymously. The public greeting, brand marks, footers, page metadata, Built By identity line, guide/location answers, viewing-email subject/body, and voting-error copy now use Pondster without the property address. The Sites display title is Pondster. Current public app/lib/build/assets were searched for the old street-address text. All five exterior concept images were visually checked and contained no legible property address or street number.
+
+Keep the internal property association and private source history for room operations. This is an anonymous introduction on the current public website, not a claim that past published versions or third-party records have been erased. The existing URL, realtor contact, concept galleries, and simulated viewing functionality remain in place.

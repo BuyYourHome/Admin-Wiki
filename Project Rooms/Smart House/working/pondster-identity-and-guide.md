@@ -33,3 +33,7 @@ Local browser checks confirmed Jean's answer, requested Front Elevation navigati
 No microphone was opened for testing and no ambient audio was captured. Actual speech recognition and audible playback are implemented but have not been verified end to end with a live microphone. They remain dependent on browser support, microphone permission, and the browser's speech service. Typed questions and page navigation were verified in the browser. No live lock, appointment, message, or production vote was initiated by these checks.
 
 Published as Sites version 7 at https://pondstr.com . The custom-domain browser check confirmed the Pondster identity and Jean Wright response. Public audience and the existing domain were preserved.
+
+## Current public anonymity — 2026-10-24
+
+Wes directed the public site to remove the property address for now and say that Pondster needs to start anonymously. This supersedes earlier public address wording while retaining the internal property association for room operations. Public greetings, location answers, title/description, brand marks, footer, and viewing-request email links must withhold the address. The current copy says: "I need to start anonymously for now." The page-asset source and Ashley portrait are documented in [[Project Rooms/Smart House/working/viewing-and-realtor]].

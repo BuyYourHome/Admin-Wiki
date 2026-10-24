@@ -33,7 +33,7 @@ export async function POST(request: NextRequest) {
   const key = voter(request);
   const respond = (body: unknown, status = 200) => withVoterCookie(request, NextResponse.json(body, {status, headers}), key);
   const origin = request.headers.get('origin');
-  if (!origin || origin !== new URL(request.url).origin) return respond({error:'Please vote from the Pond Street website.'}, 403);
+  if (!origin || origin !== new URL(request.url).origin) return respond({error:'Please vote from the Pondster website.'}, 403);
   if (Number(request.headers.get('content-length') ?? 0) > 1024) return respond({error:'Request too large.'}, 413);
   let body;
   try { const text = await request.text(); if (text.length > 1024) throw new Error(); body = JSON.parse(text); }

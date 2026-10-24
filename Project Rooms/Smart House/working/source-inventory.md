@@ -71,3 +71,7 @@ Wes directly named the house Pondster, requested named voice responses throughou
 ## Built By company page — 2026-10-24
 
 Wes asked for a Built By menu option using BuyYourHomeLLC.com. Public sources are https://www.buyyourhomellc.com/ and https://www.buyyourhomellc.com/buyer/authority-about/ . The company describes buying, repairing, managing, and selling homes with flexible options and individual service, and publishes Wes Browning at 919-917-7466. The official homepage header graphic was downloaded and visually verified; only the separate Sites repo contains the public image binary. No private contact information, internal SOPs, or stale financing/rate claims were used. See [[Project Rooms/Smart House/working/built-by-page]].
+
+## Ashley portrait and anonymous public identity — 2026-10-24
+
+Wes asked to add Ashley's picture and then withhold the property address, saying Pondster needs to start anonymously for now. Verified the current official redirect to https://ashleymorello.howardhanna.com/ and its named About Me page for agent108213. Public full portrait: https://ashleymorello.howardhanna.com/ClientImage/Agent-Full/108213.jpg, 628 by 628. Recovered the observed image through browser asset export, visually inspected it, and packaged an unchanged public copy only in the dedicated Sites repo. The earlier unverified-portrait/initials limitation is resolved. Current public address references are removed; internal property routing remains private. See [[Project Rooms/Smart House/working/viewing-and-realtor]].
