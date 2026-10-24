@@ -52,9 +52,9 @@ Wes requested removal of the website login requirement so the public can access 
 
 Wes requested Design, Explore, View, and Manage navigation and six room galleries with public voting. The website now uses the supported Sites Vinext Worker runtime and logical D1 binding `DB`, with no R2 binding. Public access and the existing custom domain were preserved. The database migration creates only the vote schema; no synthetic votes were seeded into production.
 
-- Current Site source commit: `a688ff4f3dda7e316f8cfc45179e2ca09a8a24d8`.
-- Current saved version: `appgprj_6ad4d98e08708191858cab113814704e~appgver_751c7692a3388191a1da51c342c567a4` (version 10).
-- Current deployment: `appgdep_6adc96ecb448819191ff7e26da8e5ecf`, confirmed `succeeded` at 2026-10-24 7:30 AM Eastern (`2026-10-24T11:30:59.879338Z`).
+- Current Site source commit: `652bda3f7105b25d663b23ca0f07926211a1e2d0`.
+- Current saved version: `appgprj_6ad4d98e08708191858cab113814704e~appgver_5db5c3d3b7648191bcdf52b81b9410e4` (version 11).
+- Current deployment: `appgdep_6adc9ab8e66881919dd6a987d8915660`, confirmed `succeeded` at 2026-10-24 7:47 AM Eastern (`2026-10-24T11:47:13.028639Z`).
 - Live URL: https://pondstr.com . The original Sites URL remains https://pondstr.coolnewt4097.chatgpt.site .
 - Media Center has six supplied color concepts; Front Elevation has two concepts; Garage Barn Door has three concepts. Kitchen, ADU, and Master Bath await images.
 
@@ -90,3 +90,11 @@ At Wes's direction, the current public site starts anonymously. The introduction
 Vote buttons now use the existing warm terracotta background, white bold text, and larger touch targets across all galleries: 14-pixel type on desktop and 16-pixel type on phones, with minimum heights of 52 and 56 pixels. Selected choices retain their dark-green appearance. Voting behavior is unchanged.
 
 Focused guide checks and the production build passed. Local checks verified all five menus without a public address, the guide's coy location response, Ashley's loaded portrait, and the new voting styles. Phone checks showed 375-pixel content in a 375-pixel viewport, a square portrait, and 16-pixel vote text without horizontal overflow. After publication, the custom domain displayed the anonymous title/introduction, loaded the 628-pixel portrait, and rendered terracotta vote buttons with larger bold type. No production test votes, messages, real bookings, or live lock actions were submitted. Public audience and DNS were preserved.
+
+## Public page comments — 2026-10-24
+
+Version 11 adds a separate saved public conversation beneath Design, Explore, View, Own, and Built By, as Wes requested. Visitors can use an optional display name or Guest without signing in. Comments have a 1,000-character limit, plain-text rendering, newest-first ordering, and pagination. The appended `0001_massive_epoch.sql` migration creates the comments table and indexes in the existing D1 binding. See [[Project Rooms/Smart House/working/page-comments]] for scope and limits.
+
+TypeScript checking, the production build, and focused local integration tests passed. Tests cover persistence, page isolation, public response fields, literal text, malformed/oversized/cross-origin requests, exact-retry deduplication, mismatched retries, concurrent cooldown, visitor isolation, and pagination. A preview rejection-path issue was reproduced and corrected by consuming bounded request bodies before rejecting headers; the full integration suite passed afterward. Existing migrations were not replayed.
+
+Local browser checks verified a posted comment surviving reload, literal markup displayed as text, comments on all five menus, and a 345-pixel form inside a 375-pixel phone page with no horizontal overflow. The hosted deployment succeeded, and the custom domain displayed all five comment sections with successfully loaded empty conversations. Production verification created no synthetic comments. Public access, anonymous identity, voting, realtor photo, and existing domain configuration were preserved. The preview was stopped after validation.

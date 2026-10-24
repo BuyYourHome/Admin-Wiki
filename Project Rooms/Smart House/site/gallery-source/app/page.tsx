@@ -4,6 +4,7 @@ import { galleries, type Design } from '../lib/designs';
 import ViewPage from './view-page';
 import BuiltByPage from './built-by-page';
 import PondsterGuide from './pondster-guide';
+import Comments from './comments';
 import type { GuideAction } from '../lib/pondster-guide';
 
 type VoteResults = { scores:Record<string,number>; total:number; selected:string|null };
@@ -63,6 +64,7 @@ export default function Home() {
       {menu==='View' && <ViewPage onImage={setZoom} onDesign={()=>navigate('Design')}/>}
       {menu==='Built By' && <BuiltByPage/>}
       {menu==='Own' && <section className="secondary-page manage"><p className="eyebrow">OWN / THE FUTURE OWNER EXPERIENCE</p><h1>Pondster comes<br/><em>with answers.</em></h1><p className="lead">A future place for the information that belongs with Pondster. Ask Pondster from any page for public guidance while owner tools take shape.</p><div className="knowledge-grid">{[['Home guides','How each system works and where to find it.'],['Care & maintenance','Manuals, warranties, and equipment-specific schedules.'],['Owner handover','The records and account checklist for the next chapter.']].map(([title,description])=><article key={title}><span className="pending-tag">PLANNED</span><h3>{title}</h3><p>{description}</p></article>)}</div><div className="manage-notice"><strong>Owner tools are not available yet.</strong><p>Private records and live controls will need separate, authenticated owner access. This public page does not connect to house systems.</p></div></section>}
+      <Comments key={menu} page={menuHash(menu)} title={menu}/>
     </main><footer><span>PONDSTER · ANONYMOUS FOR NOW</span><p>SI designer: <button className="designer-credit" onClick={()=>setGuideOpen(true)}>Jean Wright</button> · Buy Your Home</p><span>Public guide · Design concepts · No live controls</span></footer>
     <PondsterGuide open={guideOpen} onOpenChange={setGuideOpen} onAction={guideAction}/>
     <dialog ref={dialog} onCancel={()=>setZoom(null)} onClose={()=>setZoom(null)} className="lightbox">{zoom && <><button className="close-zoom" onClick={()=>setZoom(null)} aria-label="Close image">Close ×</button><img src={`/concepts/${zoom.image}`} alt={`AI design concept: ${zoom.title}`}/><div><h2>{zoom.title}</h2><p>AI visual concept · Not a measured plan or completed-work photograph.</p></div></>}</dialog>

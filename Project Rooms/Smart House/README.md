@@ -10,6 +10,8 @@ Wes named the house **Pondster** and identified **Jean Wright as its SI designer
 
 As of 2026-10-24, the public introduction withholds the property address at Wes's direction: Pondster needs to start anonymously for now. Keep the internal property association for room operations; do not include it in public copy, metadata, guide answers, or viewing-request links. Ashley's verified official portrait is featured on View.
 
+Wes requested a comment section on every page on 2026-10-24. Each of the five main pages has its own public, saved conversation without sign-in; see [[Project Rooms/Smart House/working/page-comments]].
+
 ## Status And Ownership
 
 - Status: public website with no visitor login required, deployed through ChatGPT Sites at https://pondstr.com . DNS, domain routing, and HTTPS certificate verified active. Messaging ready and dispatchable on WESSTUDIO.
