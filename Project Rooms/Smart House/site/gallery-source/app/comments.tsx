@@ -4,7 +4,7 @@ import { useEffect, useRef, useState, type FormEvent } from 'react';
 type Comment = {id:string;page:string;name:string;body:string;createdAt:number};
 type CommentPage = {comments:Comment[];nextCursor:string|null;error?:string};
 
-export default function Comments({page,title}:{page:string;title:string}) {
+export default function Comments({page,title,onAsk}:{page:string;title:string;onAsk:()=>void}) {
   const [comments,setComments] = useState<Comment[]>([]);
   const [cursor,setCursor] = useState<string|null>(null);
   const [loading,setLoading] = useState(true);
@@ -58,7 +58,7 @@ export default function Comments({page,title}:{page:string;title:string}) {
   }
 
   return <section className="comments-section" aria-labelledby="comments-heading">
-    <div className="comments-heading"><div><p className="eyebrow">COMMENTS / {title.toUpperCase()}</p><h2 id="comments-heading">Join the conversation.</h2></div><p>Ideas, questions, and a little conversation about {title==='Built By'?'the people behind Pondster':`Pondster’s ${title.toLowerCase()} page`}.</p></div>
+    <div className="comments-heading"><div><p className="eyebrow">COMMENTS / {title.toUpperCase()}</p><h2 id="comments-heading">Join the conversation.</h2></div><p>Share your thoughts about {title==='Built By'?'the people behind Pondster':`Pondster’s ${title.toLowerCase()} page`}. For questions, <button className="comments-ask" onClick={onAsk}>ask Pondster ↗</button></p></div>
     <div className="comments-layout">
       <form className="comment-form" onSubmit={submit}>
         <h3>Leave a comment.</h3>

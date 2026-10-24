@@ -5,6 +5,7 @@ Wes instructed on 2026-10-24: “Every page needs a comment section.” This aut
 ## Current behavior
 
 - Each main page has a separate public conversation below its content. Changing Design galleries keeps the Design conversation; the comments belong to the main page.
+- At Wes's later direction on 2026-10-24, visitor thoughts remain in comments while the adjacent Ask Pondster action opens the house guide for questions. The SI designer credit is not a conversation destination.
 - No sign-in is required. A visitor can supply a display name, up to 60 characters, or post as Guest. Names are self-entered, not verified identities.
 - Comments contain up to 1,000 characters, are rendered as plain text, and are saved in the existing Sites D1 database. They are visible across browsers and subsequent visits.
 - Newest comments appear first, 20 at a time, with a Load older comments action. The API returns only the public comment ID, page, display name, text, and creation time.

@@ -1,6 +1,6 @@
 'use client';
 import { useEffect, useRef, useState, type FormEvent } from 'react';
-import { answerPondster, type GuideAction } from '../lib/pondster-guide';
+import { answerPondster, isPondsterWakeRequest, type GuideAction } from '../lib/pondster-guide';
 
 type SpeechResult = { isFinal:boolean; 0:{transcript:string} };
 type Recognition = {
@@ -12,8 +12,7 @@ type Recognition = {
 };
 type SpeechWindow = Window & { SpeechRecognition?:new()=>Recognition; webkitSpeechRecognition?:new()=>Recognition };
 type Message = { who:'you'|'Pondster'; text:string };
-const greeting = "Hello, I’m Pondster, a home with a voice. I need to start anonymously for now. Ask me about the design choices, visiting, or Jean Wright, my SI designer.";
-const wakeName = /\b(?:pondster|pond\s*star|pond\s*stir|jean\s+wright|jean\s+right)\b/i;
+const greeting = "Hello, I’m Pondster, a home with a voice. I need to start anonymously for now. Direct your questions to me about my design choices, visiting, and future owner experience.";
 
 export default function PondsterGuide({open,onOpenChange,onAction}:{open:boolean;onOpenChange:(open:boolean)=>void;onAction:(action:GuideAction)=>void}) {
   const [messages,setMessages]=useState<Message[]>([{who:'Pondster',text:greeting}]);
@@ -79,12 +78,12 @@ export default function PondsterGuide({open,onOpenChange,onAction}:{open:boolean
     if(Voice){
       const engine=new Voice();recognition.current=engine;
       engine.continuous=true;engine.interimResults=false;engine.lang='en-US';
-      engine.onstart=()=>{starting.current=false;if(!desiredListening.current){engine.abort();return;}active.current=true;setListening(true);setStatus('Listening — say “Pondster” or “Jean Wright” with your question.');};
+      engine.onstart=()=>{starting.current=false;if(!desiredListening.current){engine.abort();return;}active.current=true;setListening(true);setStatus('Listening — say “Pondster” with your question.');};
       engine.onresult=event=>{
         if(!desiredListening.current||voiceBusy.current)return;
         for(let index=event.resultIndex;index<event.results.length;index++){
           const result=event.results[index];
-          if(result.isFinal&&wakeName.test(result[0].transcript)){askRef.current(result[0].transcript);break;}
+          if(result.isFinal&&isPondsterWakeRequest(result[0].transcript)){askRef.current(result[0].transcript);break;}
         }
       };
       engine.onerror=event=>{
@@ -125,9 +124,9 @@ export default function PondsterGuide({open,onOpenChange,onAction}:{open:boolean
       <header className="pondster-panel-heading"><span className="pondster-avatar" aria-hidden="true">P</span><div><h2 id="pondster-heading">Pondster</h2><p>YOUR HOUSE, WITH A VOICE</p></div><button className="pondster-close" onClick={close} aria-label="Close Pondster and stop voice">×</button></header>
       <div className="pondster-voice"><p>Say my name. Ask about my home.</p><div className="pondster-voice-controls"><button onClick={listen} disabled={!voiceAvailable} aria-pressed={voiceSession}>{voiceSession?'■ Stop voice':'◉ Listen for Pondster'}</button>{speechAvailable&&<label><input type="checkbox" checked={speakReplies} onChange={event=>{spoken.current=event.target.checked;setSpeakReplies(event.target.checked);if(!event.target.checked){utteranceVersion.current++;window.speechSynthesis.cancel();voiceBusy.current=false;setSpeaking(false);if(desiredListening.current)startRef.current();}}}/>Speak replies</label>}</div><p className={`pondster-status ${listening?'active':''}`} role="status">{speaking?'Pondster is speaking.':status}</p>{!voiceAvailable&&<p className="pondster-unavailable">Voice input is unavailable in this browser. Typed questions work here.</p>}<small>Voice starts only when you choose Listen. Your browser may send audio to its speech service. Close or Stop to end listening.</small></div>
       <div className="pondster-conversation" ref={log} role="log" aria-label="Conversation with Pondster" aria-live="polite" aria-relevant="additions">{messages.map((message,index)=><div className={`pondster-message ${message.who==='you'?'from-you':''}`} key={`${index}-${message.text.slice(0,20)}`}><span>{message.who==='you'?'YOU':'PONDSTER'}</span><p>{message.text}</p></div>)}</div>
-      <div className="pondster-prompts"><button onClick={()=>ask('Pondster, who is Jean Wright?')}>Who is Jean Wright?</button><button onClick={()=>ask('Pondster, show the design galleries')}>Explore designs ↗</button><button onClick={()=>ask('Pondster, how can I visit?')}>Plan a visit ↗</button></div>
+      <div className="pondster-prompts"><button onClick={()=>ask('Pondster, who are you?')}>Meet Pondster</button><button onClick={()=>ask('Pondster, show the design galleries')}>Explore designs ↗</button><button onClick={()=>ask('Pondster, how can I visit?')}>Plan a visit ↗</button></div>
       <form className="pondster-input" onSubmit={submit}><label className="visually-hidden" htmlFor="pondster-question">Ask Pondster a question</label><input id="pondster-question" name="question" ref={input} placeholder="Pondster, tell me about…" required maxLength={500} autoComplete="off"/><button type="submit" aria-label="Send question to Pondster">↑</button></form>
-      <div className="pondster-panel-footer"><span>Public website guide · SI designer: Jean Wright</span>{speechAvailable&&<button onClick={()=>speak(lastReply)} aria-label="Read Pondster’s latest reply aloud">Read aloud</button>}</div>
+      <div className="pondster-panel-footer"><span>Public website guide · SI designer: Dean Wright</span>{speechAvailable&&<button onClick={()=>speak(lastReply)} aria-label="Read Pondster’s latest reply aloud">Read aloud</button>}</div>
     </section>}
     <button ref={launch} className={`pondster-launch ${voiceSession?'is-listening':''}`} onClick={()=>open?close():onOpenChange(true)} aria-expanded={open} aria-controls="pondster-panel"><span className="pondster-launch-icon" aria-hidden="true">P</span><span>{open?'Close Pondster':'Talk to Pondster'}<small>{voiceSession?'VOICE SESSION ACTIVE':'ANONYMOUS FOR NOW'}</small></span><span aria-hidden="true">{open?'×':'↗'}</span></button>
   </div>;

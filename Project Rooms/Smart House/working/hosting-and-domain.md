@@ -52,9 +52,9 @@ Wes requested removal of the website login requirement so the public can access 
 
 Wes requested Design, Explore, View, and Manage navigation and six room galleries with public voting. The website now uses the supported Sites Vinext Worker runtime and logical D1 binding `DB`, with no R2 binding. Public access and the existing custom domain were preserved. The database migration creates only the vote schema; no synthetic votes were seeded into production.
 
-- Current Site source commit: `652bda3f7105b25d663b23ca0f07926211a1e2d0`.
-- Current saved version: `appgprj_6ad4d98e08708191858cab113814704e~appgver_5db5c3d3b7648191bcdf52b81b9410e4` (version 11).
-- Current deployment: `appgdep_6adc9ab8e66881919dd6a987d8915660`, confirmed `succeeded` at 2026-10-24 7:47 AM Eastern (`2026-10-24T11:47:13.028639Z`).
+- Current Site source commit: `23a1ae068b03fc0bc9aa6aebf98bf2877e163166`.
+- Current saved version: `appgprj_6ad4d98e08708191858cab113814704e~appgver_93f0c363c6d88191b1cb68b23d8e36c1` (version 12).
+- Current deployment: `appgdep_6adc9e17e3148191b195fc3e385a1e2e`, confirmed `succeeded` at 2026-10-24 8:01 AM Eastern (`2026-10-24T12:01:34.196940Z`).
 - Live URL: https://pondstr.com . The original Sites URL remains https://pondstr.coolnewt4097.chatgpt.site .
 - Media Center has six supplied color concepts; Front Elevation has two concepts; Garage Barn Door has three concepts. Kitchen, ADU, and Master Bath await images.
 
@@ -98,3 +98,9 @@ Version 11 adds a separate saved public conversation beneath Design, Explore, Vi
 TypeScript checking, the production build, and focused local integration tests passed. Tests cover persistence, page isolation, public response fields, literal text, malformed/oversized/cross-origin requests, exact-retry deduplication, mismatched retries, concurrent cooldown, visitor isolation, and pagination. A preview rejection-path issue was reproduced and corrected by consuming bounded request bodies before rejecting headers; the full integration suite passed afterward. Existing migrations were not replayed.
 
 Local browser checks verified a posted comment surviving reload, literal markup displayed as text, comments on all five menus, and a 345-pixel form inside a 375-pixel phone page with no horizontal overflow. The hosted deployment succeeded, and the custom domain displayed all five comment sections with successfully loaded empty conversations. Production verification created no synthetic comments. Public access, anonymous identity, voting, realtor photo, and existing domain configuration were preserved. The preview was stopped after validation.
+
+## Pondster-only questions — 2026-10-24
+
+Version 12 follows Wes's latest direction to acknowledge **Dean Wright** as SI designer while directing questions only to Pondster. Dean Wright is a static public credit in the introduction, footer, metadata, and guide acknowledgment. The clickable designer credit and designer-focused quick prompt were removed. Voice activation now recognizes only Pondster and its existing phonetic variants; neither Dean Wright nor Jean Wright is a wake name. Legacy typed questions about Jean receive the current Dean credit from Pondster. Every page's comment heading includes an Ask Pondster action, while public comments remain available for visitor thoughts. Realtor viewing arrangements and company contact details are preserved.
+
+The focused guide tests and production build passed, including Pondster wake-name acceptance and designer-name rejection. Local browser checks verified the comment-section question action opening Pondster, the named designer answer in Pondster's voice, and no designer buttons or links. After the successful deployment, the custom domain displayed Dean's static credit and answered the designer question as Pondster. No microphone was enabled, and no claim of live speech recognition testing is made. No production comment, vote, message, booking, or lock action was created. The local preview was stopped after verification.

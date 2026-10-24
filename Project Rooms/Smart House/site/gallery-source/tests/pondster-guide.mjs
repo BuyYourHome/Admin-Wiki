@@ -1,10 +1,15 @@
 import assert from 'node:assert/strict';
-import { answerPondster } from '../lib/pondster-guide.ts';
+import { answerPondster, isPondsterWakeRequest } from '../lib/pondster-guide.ts';
 import { galleries } from '../lib/designs.ts';
 
 assert.match(answerPondster('Hello Pondster').text, /Pondster.*anonymously/);
-assert.match(answerPondster('Who is Jean Wright?').text, /Jean Wright is my SI designer/);
-assert.match(answerPondster('Who designed you?').text, /Jean Wright is my SI designer/);
+assert.match(answerPondster('Who is Dean Wright?').text, /Dean Wright is my SI designer/);
+assert.match(answerPondster('Who designed you?').text, /Dean Wright is my SI designer/);
+assert.match(answerPondster('Can I ask Dean a question?').text, /Direct your questions to me, Pondster/);
+assert.equal(isPondsterWakeRequest('Pondster, show the designs'),true);
+assert.equal(isPondsterWakeRequest('Pond star, tell me about visiting'),true);
+assert.equal(isPondsterWakeRequest('Dean Wright, show the designs'),false);
+assert.equal(isPondsterWakeRequest('Jean Wright, show the designs'),false);
 assert.deepEqual(answerPondster('Pondster show media center').action, {menu:'Design',room:'media-center'});
 assert.deepEqual(answerPondster('Show front elevation').action, {menu:'Design',room:'front-elevation'});
 for (const gallery of galleries) {
@@ -39,4 +44,4 @@ assert.deepEqual(answerPondster('Show Built By').action, {menu:'Built By'});
 assert.match(answerPondster('Tell me about Buy Your Home LLC').text, /Buy Your Home, LLC.*919-917-7466/);
 assert.deepEqual(answerPondster('Call Wes').action, {menu:'Built By'});
 assert.match(answerPondster('What is your address?').text, /start anonymously/);
-console.log('PASS: Pondster identity, exact Jean role, all current galleries/choices, scenes, video, non-mutating voting, simulated viewing, public contact, owner boundaries, and unknown-fact refusal.');
+console.log('PASS: Pondster identity and exclusive wake name, Dean designer credit, all current galleries/choices, scenes, video, non-mutating voting, simulated viewing, public contact, owner boundaries, and unknown-fact refusal.');
