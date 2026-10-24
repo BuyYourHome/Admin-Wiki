@@ -26,6 +26,7 @@ assert.deepEqual(answerPondster('Try the evening lighting').action, {menu:'Explo
 assert.deepEqual(answerPondster('Pondster unwind').action, {menu:'Explore',scene:'relax'});
 assert.match(answerPondster('Turn on the lights').text, /does not control the house/);
 assert.deepEqual(answerPondster('Show the football video').action, {menu:'Design',room:'media-center'});
+assert.match(answerPondster('Show the football video').text, /ten-second.*fixed decorative frame.*moving football/);
 const vote = answerPondster('Vote for black shutters');
 assert.deepEqual(vote.action, {menu:'Design',room:'front-elevation'});
 assert.match(vote.text, /do not cast votes/);

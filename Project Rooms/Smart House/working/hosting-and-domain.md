@@ -52,9 +52,9 @@ Wes requested removal of the website login requirement so the public can access 
 
 Wes requested Design, Explore, View, and Manage navigation and six room galleries with public voting. The website now uses the supported Sites Vinext Worker runtime and logical D1 binding `DB`, with no R2 binding. Public access and the existing custom domain were preserved. The database migration creates only the vote schema; no synthetic votes were seeded into production.
 
-- Current Site source commit: `98d90b9c6698385308daac33bc9e416a625f4712`.
-- Current saved version: `appgprj_6ad4d98e08708191858cab113814704e~appgver_30df629334bc8191a4c47731b977d086` (version 13).
-- Current deployment: `appgdep_6adca1f41cc48191adb994090d44fa65`, confirmed `succeeded` at 2026-10-24 8:18 AM Eastern (`2026-10-24T12:18:04.497246Z`).
+- Current Site source commit: `3139e1d9328dbe4aba11ba0244b477001c8e3289`.
+- Current saved version: `appgprj_6ad4d98e08708191858cab113814704e~appgver_ac4aad86c930819199ead543af9b72bd` (version 14).
+- Current deployment: `appgdep_6adca55dfebc819196f58d15e2845168`, confirmed `succeeded` at 2026-10-24 8:32 AM Eastern (`2026-10-24T12:32:38.088236Z`).
 - Live URL: https://pondstr.com . The original Sites URL remains https://pondstr.coolnewt4097.chatgpt.site .
 - Media Center has six supplied color concepts; Front Elevation has two concepts; Garage Barn Door has three concepts. Kitchen, ADU, and Master Bath await images.
 
@@ -112,3 +112,13 @@ Version 13 corrects the SI designer credit to **Jean Wright**, as Wes clarified,
 Guide greetings, identity/location answers, metadata, footer, Built By identity line, and launcher now follow the same distinction. The title is Pondster · A house with a voice, and small public labels say LOCATION CONFIDENTIAL. Jean's credit remains static; questions and voice wake requests still go only to Pondster. Earlier version 12's Dean credit is superseded.
 
 Focused guide tests and the production build passed. Public app/lib source checks found no old designer name, anonymous-identity wording, or property address. Local browser checks confirmed the opening and a 375-pixel phone layout without horizontal overflow. The successful deployment was verified on the custom domain, including the new title, exact introduction, correct Jean credit, and absence of the address and prior name. No comments, votes, messages, bookings, or lock actions were submitted; no microphone was enabled. The local preview was stopped.
+
+## Fixed-frame Media Center video replacement — 2026-10-24
+
+Wes supplied `908-Pond-TV-Opening-Frame-Fixed-Moving-Football.mp4`, found in the existing property TV-Motion source folder. Version 14 replaces the featured Media Center player source with `/media/media-center-fixed-frame-football.mp4`, above the same six voting choices. The supplied 2,412,141-byte binary is unchanged; its copied SHA-256 matches `82896b300e815f23baa13a63e467afa1dd9aa0d4f3af641d5e5365b11c6b8906`. No video binary is stored in Admin Wiki Git.
+
+The revised ten-second clip keeps the decorative wall frame in place while the TV moves and the artwork transitions to moving football footage. Duration copy and Pondster's guide answer now describe this revision. The original poster visually matches the new opening. Native controls, inline playback, looping after manual play, metadata preload, and no autoplay remain. The caption retains the illustrative-composite and unvalidated-mount limits.
+
+The exact supplied clip preserves its ending source credit. The near-player caption adds the verified U.S. Marine Corps / Sgt. James Stanfield credit, direct DVIDS source link, and official non-endorsement disclaimer/use-notice link. The official source page identifies the footage as public domain; its copyright page provides the required notice. See [[Project Rooms/Smart House/working/source-inventory#Media Center fixed-frame moving-football revision — 2026-10-24|the new source record]].
+
+The focused guide checks and production build passed. Local browser metadata confirmed 10 seconds and 1280×720, with advancing playback, moving football, matching opening/poster, and no media error. Phone checks showed a 343-pixel player within 375-pixel content and no horizontal overflow. After the successful deployment, the custom domain loaded the new exact media URL, confirmed ten-second 1280×720 metadata, and played without error; the player was paused after verification. Credits and the unchanged binary are preserved; browser seeking did not verify the final credit frame separately. No production comments, votes, messages, bookings, lock actions, or microphone use occurred. The local preview was stopped.

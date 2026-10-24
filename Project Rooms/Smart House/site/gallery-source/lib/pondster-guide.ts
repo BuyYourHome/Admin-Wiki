@@ -77,7 +77,7 @@ export function answerPondster(input: string): GuideReply {
     return { text: `Here is the ${label} lighting simulation in Explore. It changes only the illustration on this website; it does not control the house.`, action: { menu: 'Explore', scene } };
   }
   if (/\b(video|film|football|artwork|screen|motion)\b/.test(words)) {
-    return { text: 'The Media Center has an eight-second AI motion concept showing framed artwork becoming football as the TV moves into viewing position. The movement is composited; mount mechanics have not been validated.', action: { menu: 'Design', room: 'media-center' } };
+    return { text: 'The Media Center has a ten-second AI motion concept with a fixed decorative frame, a moving TV, and artwork transitioning to moving football footage. The scene is composited; mount mechanics have not been validated.', action: { menu: 'Design', room: 'media-center' } };
   }
   if (has('explore')) return { text: 'Explore has illustrative lighting moods and planned explanations of house systems. Verified equipment records are still needed.', action: { menu: 'Explore' } };
   if (has('view')) return { text: 'View introduces Ashley and the simulated viewing preview. For a real visit, arrange the details separately with Ashley.', action: { menu: 'View' } };
