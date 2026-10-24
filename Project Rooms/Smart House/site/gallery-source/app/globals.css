@@ -35,3 +35,5 @@ body{padding-bottom:95px}.pondster-welcome{margin:0 4% 30px;padding:20px 24px;bo
 @keyframes pondster-glint{0%,12%,34%,100%{opacity:.4;transform:rotate(45deg) scale(.7)}23%{opacity:1;transform:rotate(45deg) scale(1.2)}}
 @media(max-width:720px){.brand{gap:14px}.brand-name{font-size:40px}.brand-copy small{font-size:10px;margin-top:7px}.monogram{flex-basis:50px;width:50px;height:57px;font-size:36px}.viewing-intro h1{white-space:normal}}
 @media(prefers-reduced-motion:reduce){.monogram::before,.monogram::after{animation:none}.monogram::after{display:none}.brand:hover .monogram,.brand:focus-visible .monogram{transform:none}}
+
+.garage-media-feature video{aspect-ratio:5/2}

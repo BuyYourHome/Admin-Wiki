@@ -33,6 +33,14 @@ Historical version 14 used `/media/media-center-fixed-frame-football.mp4`, the 1
 
 Historical version 5 used `/media/media-center-art-to-football.mp4` with `/media/media-center-art-poster.png`; its notes listed 8 seconds, 1280×720, 30 fps, H.264 MP4. That earlier publication passed the production build, local and live playback checks, and phone-layout validation. Those checks do not validate the replacement clip. See [[Project Rooms/Smart House/working/hosting-and-domain]] for deployment status.
 
+## Featured Garage Barn Door video — 2026-10-24
+
+Wes supplied the barn-door motion concept for Design > Garage Barn Door. Feature `/media/garage-barn-door-tesla.mp4` above the three existing color voting choices, with poster `/media/garage-barn-door-poster.jpg`. Preserve its 1600×640 panoramic aspect ratio: 16 seconds, 30 fps, H.264 MP4, silent. Use muted autoplay with `loop`, `playsInline`, native controls, and metadata preload; browser policies may block autoplay, so manual playback remains available. The video is a featured visual, not another voting choice.
+
+The center door swings inward independently and closes before the complete barn-door assembly slides left to reveal the Tesla. The derived web copy preserves the supplied motion and timing while replacing its baked captions with **“My center door swings inward independently”**, **“My center door closes before my full assembly moves”**, and **“My full barn door slides left to reveal the Tesla”**. The poster matches the final web copy's first frame. Label the video as an illustrative AI/composited concept; physical door mechanics have not been validated.
+
+Full source and derived-video decode passed, and sample frames confirmed readable captions and no visible property address. Exact sources, hashes, and validation are in [[Project Rooms/Smart House/working/source-inventory#Garage Barn Door motion concept — 2026-10-24|the source record]]. Keep source binaries outside Admin Wiki Git and selected public copies only in the dedicated Sites repository. Version 18 deployed successfully; local and live browser checks confirmed the new video, muted autoplay, and the three existing voting choices. The phone preview had no horizontal overflow.
+
 ## Vote behavior
 
 The site stays public. Voting requires no ChatGPT login and collects no names, email addresses, or IP addresses in the vote table. A random, site-scoped HTTP-only cookie identifies one browser. There is one current choice per browser per gallery; choosing a different design replaces that browser's earlier choice. Clearing cookies or using another browser can produce another vote; this is a preference poll, not verified one-person voting.
