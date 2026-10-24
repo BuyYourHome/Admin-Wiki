@@ -6,10 +6,11 @@ Wes directly named the house **Pondster**, asked for viewers and potential owner
 
 ## Current website implementation
 
-- Pondster is the header brand, page metadata identity, Design introduction, Explore and Own identity, View introduction, and footer identity. Dean Wright is acknowledged as SI designer in plain-text credit and public role answers. The credit does not open a designer persona or conversation.
+- Pondster is the public voice and identity of the house, reflected in the header brand, metadata, introductions, and footer. Jean Wright is acknowledged as SI designer in plain-text credit and public role answers. The credit does not open a designer persona or conversation.
+- Only the location and address are confidential. The opening introduces Pondster clearly, then makes a playful witness-protection joke about keeping the location secret. Do not imply that the house's name or identity is confidential.
 - A persistent Talk to Pondster control is mounted outside the five menu sections, preserving the guide conversation during navigation among Design, Explore, View, Own, and Built By.
 - Typed questions and quick prompts work without microphone access. All questions are directed to Pondster. The guide provides bounded public website answers and can navigate to room galleries, the viewing page, owner plans, or simulated lighting moods. It is a deterministic website guide, not an unrestricted general AI service or a live connection to a designer's chat.
-- Browser speech recognition and speech synthesis provide optional named voice interaction where supported. Listening starts only after the visitor chooses Listen and grants microphone permission. Say Pondster with a question; Jean Wright and Dean Wright are not wake names. A legacy question about Jean Wright receives the current Dean Wright designer credit from Pondster. Speech replies are opt-in; starting Listen enables them, and the visitor can turn them off or request Read aloud.
+- Browser speech recognition and speech synthesis provide optional named voice interaction where supported. Listening starts only after the visitor chooses Listen and grants microphone permission. Say Pondster with a question; the designer's name is not a wake name. Questions about the designer receive the Jean Wright credit from Pondster. Speech replies are opt-in; starting Listen enables them, and the visitor can turn them off or request Read aloud.
 - Listening status, Stop voice, close, Escape, and unsupported/denied/service error messages are visible. Close, Stop, and leaving the active tab stop listening; late recognition results cannot reopen it. The guide pauses recognition while it speaks, then resumes an explicitly requested listening session. It remains mounted while changing menus.
 - The browser's speech service may receive audio. The interface discloses this before microphone use. The website has no audio upload endpoint, transcript database, owner identity verification, or real house control. Conversation state is temporary component memory, limited to recent messages.
 - Only public facts are available. Saying someone is an owner does not reveal private records or unlock owner functionality. Votes require their actual gallery buttons. Viewing appointments and codes remain clearly simulated; no voice request sends a message, confirms a booking, or unlocks the house.
@@ -35,12 +36,18 @@ No microphone was opened for testing and no ambient audio was captured. Actual s
 
 Published as Sites version 7 at https://pondstr.com . The custom-domain browser check confirmed the Pondster identity and Jean Wright response. Public audience and the existing domain were preserved.
 
-## Current public anonymity — 2026-10-24
+## Earlier public anonymity wording — 2026-10-24; clarified below
 
-Wes directed the public site to remove the property address for now and say that Pondster needs to start anonymously. This supersedes earlier public address wording while retaining the internal property association for room operations. Public greetings, location answers, title/description, brand marks, footer, and viewing-request email links must withhold the address. The current copy says: "I need to start anonymously for now." The page-asset source and Ashley portrait are documented in [[Project Rooms/Smart House/working/viewing-and-realtor]].
+Wes initially directed the public site to remove the property address for now and say that Pondster needs to start anonymously. This superseded earlier public address wording while retaining the internal property association for room operations. Public greetings, location answers, title/description, brand marks, footer, and viewing-request email links must withhold the address. The earlier copy said: "I need to start anonymously for now." The later clarification below makes the location confidential while keeping Pondster's identity public. The page-asset source and Ashley portrait are documented in [[Project Rooms/Smart House/working/viewing-and-realtor]].
 
-## Pondster-only questions and designer acknowledgment — 2026-10-24
+## Earlier designer acknowledgment wording — 2026-10-24; name corrected below
 
-Wes's latest direct instruction is: "You can acknowledge Dean wright as the SI designer. But questions will only be directed to Pondster." Use **Dean Wright** for the current public SI designer credit. This supersedes the earlier Jean Wright public credit and dual-name interaction direction. Keep the original intake and prior validation above as historical records.
+The earlier instruction was: "You can acknowledge Dean wright as the SI designer. But questions will only be directed to Pondster." At that point the public credit used Dean Wright and questions were directed only to Pondster. The name was subsequently corrected to Jean Wright below. Keep this instruction, the original intake, and prior validation as historical records.
 
-Pondster is the only question recipient and voice wake name. Dean Wright's credit is static text, without a click action or separate persona. Legacy Jean Wright questions may identify the current designer credit in Pondster's answer, but neither designer name activates listening or redirects a question. Public comments remain available for thoughts, and their Ask Pondster control sends questions to the house guide.
+The Pondster-only question recipient and voice wake name remain in force. The designer acknowledgment stays static text, without a click action or separate persona. Public comments remain available for thoughts, and their Ask Pondster control sends questions to the house guide.
+
+## Current identity, location privacy, and designer correction — 2026-10-24
+
+Wes clarified: "It's Jean Wright, not Dean. The opening paragraph should be clearer. Pondster is the voice and identity of the house. It's location is what needs to be confidential. Make a joke about being in witness protection".
+
+Use **Jean Wright** as the current SI designer credit. **Pondster is the public voice and identity of the house; only its location and address are confidential.** The opening should state that identity clearly and use the requested witness-protection joke for the secret location. This supersedes the earlier Dean credit and ambiguous anonymous-identity wording. All questions and voice wake requests still go only to Pondster; Jean Wright is acknowledged through static credit, without a separate designer persona.

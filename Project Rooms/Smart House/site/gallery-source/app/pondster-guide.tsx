@@ -12,7 +12,7 @@ type Recognition = {
 };
 type SpeechWindow = Window & { SpeechRecognition?:new()=>Recognition; webkitSpeechRecognition?:new()=>Recognition };
 type Message = { who:'you'|'Pondster'; text:string };
-const greeting = "Hello, I’m Pondster, a home with a voice. I need to start anonymously for now. Direct your questions to me about my design choices, visiting, and future owner experience.";
+const greeting = "Hello, I’m Pondster, the voice and identity of this house. My location is confidential for now—think witness protection, with better curb appeal. Ask me about my design choices, visiting, and future owner experience.";
 
 export default function PondsterGuide({open,onOpenChange,onAction}:{open:boolean;onOpenChange:(open:boolean)=>void;onAction:(action:GuideAction)=>void}) {
   const [messages,setMessages]=useState<Message[]>([{who:'Pondster',text:greeting}]);
@@ -126,8 +126,8 @@ export default function PondsterGuide({open,onOpenChange,onAction}:{open:boolean
       <div className="pondster-conversation" ref={log} role="log" aria-label="Conversation with Pondster" aria-live="polite" aria-relevant="additions">{messages.map((message,index)=><div className={`pondster-message ${message.who==='you'?'from-you':''}`} key={`${index}-${message.text.slice(0,20)}`}><span>{message.who==='you'?'YOU':'PONDSTER'}</span><p>{message.text}</p></div>)}</div>
       <div className="pondster-prompts"><button onClick={()=>ask('Pondster, who are you?')}>Meet Pondster</button><button onClick={()=>ask('Pondster, show the design galleries')}>Explore designs ↗</button><button onClick={()=>ask('Pondster, how can I visit?')}>Plan a visit ↗</button></div>
       <form className="pondster-input" onSubmit={submit}><label className="visually-hidden" htmlFor="pondster-question">Ask Pondster a question</label><input id="pondster-question" name="question" ref={input} placeholder="Pondster, tell me about…" required maxLength={500} autoComplete="off"/><button type="submit" aria-label="Send question to Pondster">↑</button></form>
-      <div className="pondster-panel-footer"><span>Public website guide · SI designer: Dean Wright</span>{speechAvailable&&<button onClick={()=>speak(lastReply)} aria-label="Read Pondster’s latest reply aloud">Read aloud</button>}</div>
+      <div className="pondster-panel-footer"><span>Public website guide · SI designer: Jean Wright</span>{speechAvailable&&<button onClick={()=>speak(lastReply)} aria-label="Read Pondster’s latest reply aloud">Read aloud</button>}</div>
     </section>}
-    <button ref={launch} className={`pondster-launch ${voiceSession?'is-listening':''}`} onClick={()=>open?close():onOpenChange(true)} aria-expanded={open} aria-controls="pondster-panel"><span className="pondster-launch-icon" aria-hidden="true">P</span><span>{open?'Close Pondster':'Talk to Pondster'}<small>{voiceSession?'VOICE SESSION ACTIVE':'ANONYMOUS FOR NOW'}</small></span><span aria-hidden="true">{open?'×':'↗'}</span></button>
+    <button ref={launch} className={`pondster-launch ${voiceSession?'is-listening':''}`} onClick={()=>open?close():onOpenChange(true)} aria-expanded={open} aria-controls="pondster-panel"><span className="pondster-launch-icon" aria-hidden="true">P</span><span>{open?'Close Pondster':'Talk to Pondster'}<small>{voiceSession?'VOICE SESSION ACTIVE':'LOCATION CONFIDENTIAL'}</small></span><span aria-hidden="true">{open?'×':'↗'}</span></button>
   </div>;
 }

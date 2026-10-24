@@ -52,9 +52,9 @@ Wes requested removal of the website login requirement so the public can access 
 
 Wes requested Design, Explore, View, and Manage navigation and six room galleries with public voting. The website now uses the supported Sites Vinext Worker runtime and logical D1 binding `DB`, with no R2 binding. Public access and the existing custom domain were preserved. The database migration creates only the vote schema; no synthetic votes were seeded into production.
 
-- Current Site source commit: `23a1ae068b03fc0bc9aa6aebf98bf2877e163166`.
-- Current saved version: `appgprj_6ad4d98e08708191858cab113814704e~appgver_93f0c363c6d88191b1cb68b23d8e36c1` (version 12).
-- Current deployment: `appgdep_6adc9e17e3148191b195fc3e385a1e2e`, confirmed `succeeded` at 2026-10-24 8:01 AM Eastern (`2026-10-24T12:01:34.196940Z`).
+- Current Site source commit: `98d90b9c6698385308daac33bc9e416a625f4712`.
+- Current saved version: `appgprj_6ad4d98e08708191858cab113814704e~appgver_30df629334bc8191a4c47731b977d086` (version 13).
+- Current deployment: `appgdep_6adca1f41cc48191adb994090d44fa65`, confirmed `succeeded` at 2026-10-24 8:18 AM Eastern (`2026-10-24T12:18:04.497246Z`).
 - Live URL: https://pondstr.com . The original Sites URL remains https://pondstr.coolnewt4097.chatgpt.site .
 - Media Center has six supplied color concepts; Front Elevation has two concepts; Garage Barn Door has three concepts. Kitchen, ADU, and Master Bath await images.
 
@@ -104,3 +104,11 @@ Local browser checks verified a posted comment surviving reload, literal markup 
 Version 12 follows Wes's latest direction to acknowledge **Dean Wright** as SI designer while directing questions only to Pondster. Dean Wright is a static public credit in the introduction, footer, metadata, and guide acknowledgment. The clickable designer credit and designer-focused quick prompt were removed. Voice activation now recognizes only Pondster and its existing phonetic variants; neither Dean Wright nor Jean Wright is a wake name. Legacy typed questions about Jean receive the current Dean credit from Pondster. Every page's comment heading includes an Ask Pondster action, while public comments remain available for visitor thoughts. Realtor viewing arrangements and company contact details are preserved.
 
 The focused guide tests and production build passed, including Pondster wake-name acceptance and designer-name rejection. Local browser checks verified the comment-section question action opening Pondster, the named designer answer in Pondster's voice, and no designer buttons or links. After the successful deployment, the custom domain displayed Dean's static credit and answered the designer question as Pondster. No microphone was enabled, and no claim of live speech recognition testing is made. No production comment, vote, message, booking, or lock action was created. The local preview was stopped after verification.
+
+## Jean Wright and confidential location clarification — 2026-10-24
+
+Version 13 corrects the SI designer credit to **Jean Wright**, as Wes clarified, and replaces ambiguous anonymous-identity copy. Pondster is explicitly the public voice and identity of the house; only the location/address stays confidential. The opening now says: “I’m Pondster, the voice and identity of this house. Ask me about the design ideas and follow my story as it takes shape. My location is confidential for now—think witness protection, with better curb appeal. Jean Wright is my SI designer.”
+
+Guide greetings, identity/location answers, metadata, footer, Built By identity line, and launcher now follow the same distinction. The title is Pondster · A house with a voice, and small public labels say LOCATION CONFIDENTIAL. Jean's credit remains static; questions and voice wake requests still go only to Pondster. Earlier version 12's Dean credit is superseded.
+
+Focused guide tests and the production build passed. Public app/lib source checks found no old designer name, anonymous-identity wording, or property address. Local browser checks confirmed the opening and a 375-pixel phone layout without horizontal overflow. The successful deployment was verified on the custom domain, including the new title, exact introduction, correct Jean credit, and absence of the address and prior name. No comments, votes, messages, bookings, or lock actions were submitted; no microphone was enabled. The local preview was stopped.

@@ -34,7 +34,7 @@ function hasPhrase(input: string, phrase: string) { return ` ${input} `.includes
 export function answerPondster(input: string): GuideReply {
   const words = normalize(input).replace(/^(?:(?:hey|hi|hello|okay|ok) )?pondster(?: |$)/, '').trim();
   const has = (phrase: string) => hasPhrase(words, phrase);
-  const identity = "I'm Pondster, a house with a voice, starting anonymously for now. Dean Wright is my SI designer. Direct your questions to me about design concepts, the lighting simulation, viewing previews, the Built By company page, or owner plans.";
+  const identity = "I'm Pondster, the voice and identity of this house. My location is confidential for now—think witness protection, with better curb appeal. Jean Wright is my SI designer. Direct your questions to me about design concepts, the lighting simulation, viewing previews, the Built By company page, or owner plans.";
   if (!words || /^(hi|hello|hey|good morning|good afternoon|good evening|who are you|what is your name|what s your name)$/.test(words)) return { text: identity };
 
   if (/\b(password|passcode|secret|private|confidential|security camera|alarm code|wifi|wi fi|owner records|owner data)\b/.test(words)) {
@@ -46,8 +46,8 @@ export function answerPondster(input: string): GuideReply {
   if (/\b(built by|builder|builders|developer|buy your home|buyyourhomellc|wes|wes browning)\b/.test(words) || /\bwho (built|is building|developed) (you|pondster|the house)\b/.test(words)) {
     return { text: 'Buy Your Home, LLC is the company behind Pondster. Its website describes buying, repairing, managing, and selling homes with personal service and flexible real estate options. Built By has the company overview, official website, and Wes Browning at 919-917-7466.', action: { menu: 'Built By' } };
   }
-  if (/\b(dean|jean|wright|si designer)\b/.test(words) || /\bwho (designed|created|made) (you|pondster)\b/.test(words) || has('who is your designer')) {
-    return { text: "Dean Wright is my SI designer. Direct your questions to me, Pondster. I can explain my public design concepts and website information. This guide does not send questions to Dean." };
+  if (/\b(jean|wright|si designer)\b/.test(words) || /\bwho (designed|created|made) (you|pondster)\b/.test(words) || has('who is your designer')) {
+    return { text: "Jean Wright is my SI designer. Direct your questions to me, Pondster. I can explain my public design concepts and website information. This guide does not send questions to Jean." };
   }
   if (/\b(appointment|viewing|visit|tour|calendar|entry code|entrycode|access code|unlock|lock|book|booking|reservation)\b/.test(words)) {
     return { text: 'View has a simulated date-and-time preview and a DEMO entry code. It books no appointment and cannot unlock the house. Arrange a real viewing with Ashley at ashley@elementrealtygroup.net.', action: { menu: 'View' } };
@@ -82,6 +82,6 @@ export function answerPondster(input: string): GuideReply {
   if (has('explore')) return { text: 'Explore has illustrative lighting moods and planned explanations of house systems. Verified equipment records are still needed.', action: { menu: 'Explore' } };
   if (has('view')) return { text: 'View introduces Ashley and the simulated viewing preview. For a real visit, arrange the details separately with Ashley.', action: { menu: 'View' } };
   if (/\b(design|designs|gallery|galleries|choices|colors|colours)\b/.test(words)) return { text: 'Design has six galleries: Kitchen, Media Center, Front Elevation, Garage Barn Door, ADU, and Master Bath. Available images are AI concepts; three galleries are awaiting images.', action: { menu: 'Design' } };
-  if (/\b(address|location|where are you|where is pondster)\b/.test(words)) return { text: 'I am Pondster. I need to start anonymously for now, so my address is staying a little mystery. You can explore my design ideas and speak with Ashley about future viewing arrangements.', action: { menu: 'View' } };
-  return { text: "I can answer from Pondster's public site information: design concepts, simulated lighting, viewing previews, Ashley, my SI designer Dean Wright, Buy Your Home, LLC, and future owner plans. I don't have a verified answer to that question." };
+  if (/\b(address|location|where are you|where is pondster)\b/.test(words)) return { text: 'I’m Pondster, the voice and identity of this house. My location is confidential for now—think witness protection, with better curb appeal. You can explore my design ideas here and find future viewing arrangements on View.', action: { menu: 'View' } };
+  return { text: "I can answer from Pondster's public site information: design concepts, simulated lighting, viewing previews, Ashley, my SI designer Jean Wright, Buy Your Home, LLC, and future owner plans. I don't have a verified answer to that question." };
 }
