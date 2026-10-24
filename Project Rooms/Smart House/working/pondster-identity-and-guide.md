@@ -29,7 +29,7 @@ Deployment and validation: see [[Project Rooms/Smart House/working/hosting-and-d
 
 ## Validation
 
-Focused resolver checks pass for the identity, exact Jean role, all six galleries and eleven current choices, simulated scenes, video, voting boundaries, simulated viewing, Ashley contact, owner restrictions, and unavailable facts. TypeScript checking and the production build pass.
+Focused resolver checks pass for the identity, exact Jean role, all eight galleries and eleven current choices, simulated scenes, video, voting boundaries, simulated viewing, Ashley contact, owner restrictions, and unavailable facts. TypeScript checking and the production build pass.
 
 Local browser checks confirmed Jean's answer, requested Front Elevation navigation, persistent conversation through Explore/View/Manage, and a requested Evening scene changing only the illustration. Escape closes the panel and returns keyboard focus to the launch control. A phone preview confirmed 375-pixel page/content width with the corrected panel entirely inside the viewport (left 12, right 363) and its bottom at 764 in an 844-pixel-high viewport.
 

@@ -52,11 +52,11 @@ Wes requested removal of the website login requirement so the public can access 
 
 Wes requested Design, Explore, View, and Manage navigation and six room galleries with public voting. The website now uses the supported Sites Vinext Worker runtime and logical D1 binding `DB`, with no R2 binding. Public access and the existing custom domain were preserved. The database migration creates only the vote schema; no synthetic votes were seeded into production.
 
-- Current Site source commit: `a3bb6bf7bc9aa73bf93a2dc6d14d9b9621607c0a`.
-- Current saved version: `appgprj_6ad4d98e08708191858cab113814704e~appgver_2b2ab8c5958c81918090cb683f1a63d7` (version 21).
-- Current deployment: `appgdep_6adcc582d34c8191b9be86513805f175`, confirmed `succeeded` at 2026-10-24 10:49 AM Eastern (`2026-10-24T14:49:47.356110Z`).
+- Current Site source commit: `2a42875c1111c7d4d35ea3996de476692b7a75e4`.
+- Current saved version: `appgprj_6ad4d98e08708191858cab113814704e~appgver_a7a2d984d774819198910e7ebfff4d99` (version 22).
+- Current deployment: `appgdep_6adcc829fc0481918d1afbf159a3e8d7`, confirmed `succeeded` at 2026-10-24 11:01 AM Eastern (`2026-10-24T15:01:06.590761Z`).
 - Live URL: https://pondstr.com . The original Sites URL remains https://pondstr.coolnewt4097.chatgpt.site .
-- Media Center has six supplied color concepts; Front Elevation has two concepts; Garage Barn Door has three concepts. Kitchen, ADU, and Master Bath await images.
+- Media Center has six supplied color concepts; Front Elevation has two concepts; Garage Barn Door has three concepts. Kitchen, ADU, Master Bath, Spiral Staircase, and Back Deck await images.
 
 The official source helper pushed and packaged the matching built source; the native Sites save/deploy operations confirmed publication. Final read-only checks against the custom domain returned HTTP 200 and zero initial Media Center votes, with secure HTTP-only voter-cookie initialization. Browser verification showed all six Media Center images loaded. Local-only tests covered saving, repeated votes, changing choices, separate visitor totals, missing cookies, invalid choices, empty galleries, and origin rejection. The local preview was stopped after verification.
 
@@ -181,3 +181,11 @@ The supplied source remains untouched. The derived web copy changes only the exi
 Focused guide checks and the production build passed. The official Sites helper pushed and packaged the matching source; Sites confirmed version 21 deployed successfully. Live browser checks loaded the exact new URL, confirmed 25-second 1600×640 metadata, and observed muted automatic playback with advancing time and no media error in the expanded stage. Existing scroll expansion had already passed its desktop and phone checks in version 20 and remains unchanged. No production comments, votes, messages, appointments, house-system actions, or microphone use occurred. Public access and DNS are unchanged.
 
 Wes also clarified that routine website updates do not need separate conversational approval for every step. This standing preference is recorded within the Smart House README; required native permission boundaries remain in force.
+
+## Spiral Staircase and Back Deck galleries — 2026-10-24
+
+Version 22 appends Spiral Staircase and Back Deck as Design galleries 07 and 08. The intro and Pondster guide derive their gallery counts from the eight-entry catalog. The guide recognizes staircase/stairs and back/rear deck wording and opens the matching gallery. The 11 existing choices remain unchanged.
+
+A filename/folder search of all 94 property Planning files found no identifiable images for either new gallery. Both therefore display Pondster's first-person coming-soon state, without invented design choices or voting controls. The source search and pending images are recorded in [[Project Rooms/Smart House/working/source-inventory]].
+
+The focused guide checks and production build passed. The official Sites helper pushed and packaged the matching source, and Sites confirmed version 22 deployed successfully. At the custom domain, both new galleries opened with the correct headings and pending-image messages. A 390-pixel phone check showed all eight navigation entries, 375-pixel page width, and no vote buttons for the empty Back Deck gallery. Pondster's typed “Show spiral stairs” request opened Spiral Staircase and correctly explained that images are still to come. No production votes, comments, messages, appointments, device actions, or microphone use occurred. Public access and DNS are unchanged.

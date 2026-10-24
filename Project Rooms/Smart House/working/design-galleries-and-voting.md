@@ -9,6 +9,14 @@ Wes requested the main menu `Design`, `Explore`, `View`, and `Manage`, with desi
 - View: the available approved interior and exterior concepts together.
 - Manage: an explicitly planned owner-information area; no live administration, private data, or house control is exposed.
 
+## Current Design galleries — 2026-10-24
+
+Wes added Spiral Staircase and Back Deck after the original six galleries. Keep the original order and append entry 07 **Spiral Staircase** (`spiral-staircase`) and entry 08 **Back Deck** (`back-deck`). The current catalog has eight galleries; derive UI and guide counts from the catalog. This requirement supersedes the original six-gallery count above without changing its historical request.
+
+Pondster's guide recognizes `spiral staircase`, `spiral stairs`, `staircase`, and `stairs` for Spiral Staircase, and `back deck`, `rear deck`, and `deck` for Back Deck. Both new galleries show pending-image empty states, with no fictional choices or votes. Once authorized images are supplied, use the existing gallery, full-size viewer, and voting behavior. The 11 existing choices remain unchanged: six Media Center, two Front Elevation, and three Garage Barn Door.
+
+A filename/folder search of all 94 property Planning files found no identifiable Spiral Staircase or Back Deck sources; see [[Project Rooms/Smart House/working/source-inventory#Spiral Staircase and Back Deck intake — 2026-10-24|the intake record]]. Sites version 22 published successfully; live checks confirmed both galleries select correctly and show their pending-image empty states. Exact publication identifiers are in [[Project Rooms/Smart House/working/hosting-and-domain]].
+
 ## Image scope
 
 Front Elevation has two authorized choices: preserve `front-23` (`23-front-final-with-garage.png`, warm wood shutters) and add `front-black-shutters` (public copy `front-black-shutters.png`, black louvered shutters). Wes supplied the exact generated image and authorized the additional public voting choice on 2026-10-23; see [[Project Rooms/Smart House/working/source-inventory#Black-shutter front elevation — 2026-10-23|the source and authorization record]]. The new image also shows dark left siding, pale right siding, warm exterior lighting, a vivid sunset, and a garage. The production build, local save/change-vote checks, desktop comparison, phone layout, and live gallery verification passed; see the current deployment in [[Project Rooms/Smart House/working/hosting-and-domain]].
@@ -17,7 +25,7 @@ Garage Barn Door uses concepts 06, 07, and 08. Wes supplied six Media Center con
 
 The Media Center choices pair warm ivory cream with mushroom taupe, dusty sage with pale cream, navy with greige, mushroom taupe with ivory, olive with sand, and charcoal with terracotta clay. Accent colors refer only to the central TV backdrop; surrounding walls stay warm off-white and the honey-toned wood floor stays unchanged. These are concept names, not manufacturer paint specifications.
 
-Kitchen, ADU, and Master Bath still need design images; show honest empty states and no voting for invented choices. Concepts remain labeled as AI studies, not measured drawings or current-condition photos. Keep source binaries outside Admin Wiki Git and package selected copies only in the dedicated Sites source repository.
+Five galleries still need design images: Kitchen, ADU, Master Bath, Spiral Staircase, and Back Deck. Show honest empty states and no voting for invented choices. Concepts remain labeled as AI studies, not measured drawings or current-condition photos. Keep source binaries outside Admin Wiki Git and package selected copies only in the dedicated Sites source repository.
 
 ## Featured Media Center video
 

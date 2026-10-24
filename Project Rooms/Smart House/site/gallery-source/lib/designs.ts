@@ -20,6 +20,8 @@ export const galleries: Gallery[] = [
     { id: 'garage-08', title: 'Limewashed brick', image: '08-wall-limewashed-brick.png', detail: 'I’m considering pale masonry with a softer, textured appearance in this concept.' }
   ] },
   { id: 'adu', name: 'ADU', summary: 'I’m collecting ideas for an accessory dwelling unit.', designs: [] },
-  { id: 'master-bath', name: 'Master Bath', summary: 'I’m exploring materials and fixtures for my master bath.', designs: [] }
+  { id: 'master-bath', name: 'Master Bath', summary: 'I’m exploring materials and fixtures for my master bath.', designs: [] },
+  { id: 'spiral-staircase', name: 'Spiral Staircase', summary: 'I’m collecting spiral staircase ideas for how I could connect my spaces.', designs: [] },
+  { id: 'back-deck', name: 'Back Deck', summary: 'I’m collecting ideas for my back deck, from layout and finishes to outdoor living.', designs: [] }
 ];
 export const allDesigns = galleries.flatMap(gallery => gallery.designs.map(design => ({...design, room: gallery.name})));

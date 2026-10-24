@@ -47,7 +47,13 @@ Wes directly supplied `C:\Users\wesbr\Buy Your Home\Buy Your Home - Property\26-
 
 The long descriptive filenames match the short aliases by SHA-256; count six distinct voting choices. The baseline is reference material, not another voting choice. Surrounding walls remain neutral warm off-white and the honey-toned floor remains unchanged. Selected copies are prefixed `media-` in the separate Sites source repository; originals and image binaries remain outside Admin Wiki Git.
 
-Kitchen, ADU, and Master Bath images have not been supplied for their requested galleries.
+Kitchen, ADU, Master Bath, Spiral Staircase, and Back Deck images have not been supplied for their requested galleries.
+
+## Spiral Staircase and Back Deck intake — 2026-10-24
+
+Wes requested two additional Design galleries: entry 07 Spiral Staircase (`spiral-staircase`) and entry 08 Back Deck (`back-deck`), following the original six. Current UI and Pondster guide counts derive from the eight-entry catalog. Guide aliases are `spiral staircase`, `spiral stairs`, `staircase`, `stairs`, and `back deck`, `rear deck`, `deck`, respectively.
+
+Read-only `rg --files` search covered all 94 files under `C:\Users\wesbr\Buy Your Home\Buy Your Home - Property\26-BYH -908 Pond St\Owning\Planning`. Filename/folder checks for spiral, stair, deck, rear, porch, patio, and balcony found no identifiable matching sources. No assets were invented or copied for these additions. Keep both galleries as pending-image empty states; use the existing gallery, full-size viewer, and voting behavior when authorized images arrive. The existing 11 choices remain unchanged, and five galleries now await images. See [[Project Rooms/Smart House/working/design-galleries-and-voting#Current Design galleries — 2026-10-24|the current requirements]]. Sites version 22 published successfully; live checks confirmed both galleries select correctly and show their pending-image empty states. Exact publication identifiers are in [[Project Rooms/Smart House/working/hosting-and-domain]].
 
 ## Media Center motion concept — 2026-10-23
 

@@ -12,7 +12,9 @@ const rooms = [
   { id: 'front-elevation', name: 'Front Elevation', aliases: ['front elevation', 'front exterior', 'front of the house', 'exterior', 'shutters'], choices: ['Warm welcome', 'Black shutters'] },
   { id: 'garage-barn-door', name: 'Garage Barn Door', aliases: ['garage', 'barn door'], choices: ['Warm white board & batten', 'Charcoal green board & batten', 'Limewashed brick'] },
   { id: 'adu', name: 'ADU', aliases: ['adu', 'accessory dwelling unit'], choices: [] as string[] },
-  { id: 'master-bath', name: 'Master Bath', aliases: ['master bath', 'primary bath', 'main bath', 'bathroom'], choices: [] as string[] }
+  { id: 'master-bath', name: 'Master Bath', aliases: ['master bath', 'primary bath', 'main bath', 'bathroom'], choices: [] as string[] },
+  { id: 'spiral-staircase', name: 'Spiral Staircase', aliases: ['spiral staircase', 'spiral stairs', 'staircase', 'stairs'], choices: [] as string[] },
+  { id: 'back-deck', name: 'Back Deck', aliases: ['back deck', 'rear deck', 'deck'], choices: [] as string[] }
 ];
 const choiceAliases: Record<string, string[]> = {
   'Warm Ivory Cream': ['warm ivory', 'ivory cream'],
@@ -84,7 +86,7 @@ export function answerPondster(input: string): GuideReply {
   }
   if (has('explore')) return { text: 'I have illustrative lighting moods in Explore, with explanations of my systems planned for later. I still need verified equipment records.', action: { menu: 'Explore' } };
   if (has('view')) return { text: 'I introduce Ashley and my simulated viewing preview on View. For a real visit with me, arrange the details separately with Ashley.', action: { menu: 'View' } };
-  if (/\b(design|designs|gallery|galleries|choices|colors|colours)\b/.test(words)) return { text: 'I have six design galleries: Kitchen, Media Center, Front Elevation, Garage Barn Door, ADU, and Master Bath. I’m sharing AI concept images; three of my galleries are awaiting images.', action: { menu: 'Design' } };
+  if (/\b(design|designs|gallery|galleries|choices|colors|colours)\b/.test(words)) return { text: `I have ${rooms.length} design galleries: ${rooms.map(room => room.name).join(', ')}. I’m sharing AI concept images where choices are available; I’m still collecting images for my other galleries.`, action: { menu: 'Design' } };
   if (/\b(address|location|where are you|where is pondster)\b/.test(words)) return { text: 'I’m Pondster, the voice and identity of this house. My location is confidential for now—think witness protection, with better curb appeal. You can explore my design ideas here and find future viewing arrangements on View.', action: { menu: 'View' } };
   return { text: "I can answer from my public website information: design concepts, simulated lighting, viewing previews, Ashley, my SI designer Jean Wright, Buy Your Home, LLC, and my future owner plans. I don't have a verified answer to that question." };
 }
