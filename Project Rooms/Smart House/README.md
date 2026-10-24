@@ -4,11 +4,11 @@
 
 Plan the digital identity, website/digital twin, buyer demonstrations, owner knowledge, and transferable digital package for **908 Pond Street**. This is more than a property listing. It connects source-backed house information with a public educational experience, a constrained showing experience, and a future authenticated owner portal.
 
-Wes authorized beginning the Pond Street website in this chat on 2026-10-18, then reported purchasing `Pondstr.com` through GoDaddy and requested ChatGPT hosting. The first implementation under `site/` includes simulated lighting and a planned owner-information library. ChatGPT Sites hosting and connecting the purchased domain are now in scope. Purchases, live device connections/control, and production home automations remain outside scope. Preserve the new Site's owner-private audience unless Wes requests a different audience.
+Wes authorized beginning the Pond Street website in this chat on 2026-10-18, then reported purchasing `Pondstr.com` through GoDaddy and requested ChatGPT hosting. The first implementation under `site/` includes simulated lighting and a planned owner-information library. ChatGPT Sites hosting and connecting the purchased domain are now in scope. Purchases, live device connections/control, and production home automations remain outside scope. Wes requested public access without login on 2026-10-23; the existing website is now public.
 
 ## Status And Ownership
 
-- Status: initial owner-private website deployed through ChatGPT Sites at https://pondstr.com . DNS, domain routing, and HTTPS certificate verified active. Messaging ready and dispatchable on WESSTUDIO.
+- Status: public website with no visitor login required, deployed through ChatGPT Sites at https://pondstr.com . DNS, domain routing, and HTTPS certificate verified active. Messaging ready and dispatchable on WESSTUDIO.
 - Dedicated chat: `Smart House`, task `01a14585-ffe6-7850-8db1-efcdd58e7071`.
 - Execution machine: WESSTUDIO.
 - Matching skill: `C:\Codex\Wiki Files\skills\smart-house\SKILL.md`.

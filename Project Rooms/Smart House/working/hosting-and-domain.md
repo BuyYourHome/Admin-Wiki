@@ -7,7 +7,7 @@ Wes reported buying `Pondstr.com` from GoDaddy and instructed Smart House to hos
 - Provider: ChatGPT Sites.
 - Project ID: `appgprj_6ad4d98e08708191858cab113814704e`.
 - Hosted URL: https://pondstr.coolnewt4097.chatgpt.site
-- Audience: owner-private; no public-audience change requested or made.
+- Audience: public, authorized by Wes in this chat on 2026-10-23. Visitors do not need to sign in. The owner retains editing access.
 - Initial publication succeeded: 2026-10-18T14:43:26Z.
 - Site source commit: `f01a688c6167555dfc0474bbdbd43d043b99695d` in the separate Sites source repository. This is not an Admin Wiki commit.
 - Saved version: `appgprj_6ad4d98e08708191858cab113814704e~appgver_0176b707d1688191be325f28960f58a6`.
@@ -43,3 +43,7 @@ Completion: the subsequent Sites refresh confirmed active domain routing and cer
 ## Windows publication notes
 
 The official `site-workflow.mjs` helper uploaded and packaged the source. Its process required Git Bash and bundled Node on PATH, `TAR_OPTIONS=--force-local` for the Windows archive path, and a process-only `safe.directory` entry restricted to the newly created `.hosting-work` checkout because sandbox-created files had a different Windows owner. No global Git trust configuration was changed. Source credentials stayed in session memory and were passed through hidden stdin; none were written to Git or ordinary files.
+
+## Public access — 2026-10-23
+
+Wes requested removal of the website login requirement so the public can access it easily. The existing Sites project's access mode was changed from owner-only custom access to `public` through the Sites connector. The connector confirmed policy revision 2. An HTTPS request without cookies or authentication to https://pondstr.com/ returned HTTP 200, the expected Pond Street page, and no login gate. This changes visitor access to the existing concept website only; it does not provide device controls, owner records, or editing access. No source rebuild or DNS change was needed.
