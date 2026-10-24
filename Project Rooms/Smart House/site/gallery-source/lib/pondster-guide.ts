@@ -1,4 +1,4 @@
-export type GuideAction = { menu: 'Design' | 'Explore' | 'View' | 'Built By' | 'Manage'; room?: string; scene?: 'day' | 'evening' | 'relax' };
+export type GuideAction = { menu: 'Design' | 'Explore' | 'View' | 'Own' | 'Built By'; room?: string; scene?: 'day' | 'evening' | 'relax' };
 export type GuideReply = { text: string; action?: GuideAction };
 
 // Public concept names mirror lib/designs.ts; the focused tests check this list.
@@ -34,7 +34,7 @@ export function answerPondster(input: string): GuideReply {
   if (!words || /^(hi|hello|hey|good morning|good afternoon|good evening|who are you|what is your name|what s your name)$/.test(words)) return { text: identity };
 
   if (/\b(password|passcode|secret|private|confidential|security camera|alarm code|wifi|wi fi|owner records|owner data)\b/.test(words)) {
-    return { text: 'This public guide cannot provide private records, passwords, or real access codes. Owner tools are planned and will need authenticated access; saying you are the owner does not grant access.', action: { menu: 'Manage' } };
+    return { text: 'This public guide cannot provide private records, passwords, or real access codes. Owner tools are planned and will need authenticated access; saying you are the owner does not grant access.', action: { menu: 'Own' } };
   }
   if (/\b(price|pricing|cost|budget|tax|mortgage|rent|valuation|square footage|square feet|bedrooms|bathrooms|permit|inspection|wiring|voltage|hvac|thermostat|equipment|specifications?|model number|serial number|manufacturer|paint code|paint brand)\b/.test(words) || /\bhow much\b/.test(words)) {
     return { text: "I don't have verified pricing, property specifications, equipment records, or construction approvals in my public guide. The images show AI concepts, not installed or approved specifications. Ashley can help with property questions.", action: { menu: 'View' } };
@@ -52,8 +52,8 @@ export function answerPondster(input: string): GuideReply {
   if (/\b(privacy|microphone|listening|recording|speech|voice|history|personal data)\b/.test(words)) {
     return { text: 'Keep questions to public house information and avoid sharing private details or real entry codes. Check the on-screen voice notice before enabling a microphone. The preference poll uses a browser cookie; it does not verify a person or owner.' };
   }
-  if (/\b(owner|owners|manage|handover|warranties|warranty|manuals|manual|maintenance)\b/.test(words)) {
-    return { text: 'Manage previews future home guides, care and maintenance, and owner handover records. Owner tools are planned; this public guide has no private owner access or live device controls.', action: { menu: 'Manage' } };
+  if (/\b(owner|owners|own|manage|handover|warranties|warranty|manuals|manual|maintenance)\b/.test(words)) {
+    return { text: 'Own previews future home guides, care and maintenance, and owner handover records. Owner tools are planned; this public guide has no private owner access or live device controls.', action: { menu: 'Own' } };
   }
 
   const choice = rooms.flatMap(room => room.choices.map(title => ({ room, title }))).find(item => [item.title, ...(choiceAliases[item.title] ?? [])].some(alias => has(alias)));

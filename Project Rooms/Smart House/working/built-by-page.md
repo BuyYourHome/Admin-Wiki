@@ -13,7 +13,7 @@ Wes requested a Built By menu option and instructed Smart House to source its co
 
 ## Implementation
 
-The main menu is Design, Explore, View, Built By, Manage. Built By uses stable hash `#built-by`, including direct links and Pondster navigation. The company page uses a short factual paraphrase, official header graphic, overview/services, public contact, and official website/About links. It identifies Buy Your Home, LLC as the company behind Pondster under Wes's requested Built By framing; it makes no general-contractor licensing, completed-construction, warranty, rate, price, financing-approval, or property-specific program claim.
+The current main menu is Design, Explore, View, Own, Built By. Built By uses stable hash `#built-by`, including direct links and Pondster navigation. The company page uses a short factual paraphrase, official header graphic, overview/services, public contact, and official website/About links. It identifies Buy Your Home, LLC as the company behind Pondster under Wes's requested Built By framing; it makes no general-contractor licensing, completed-construction, warranty, rate, price, financing-approval, or property-specific program claim.
 
 Pondster can answer who built it, identify Buy Your Home, LLC, and open Built By. A request to contact Wes opens the company page rather than being routed to Ashley. The guide remains present on the new menu page. No forms or messages are sent by this implementation.
 
@@ -22,3 +22,7 @@ See [[Project Rooms/Smart House/working/hosting-and-domain]] for current publica
 ## Publication and verification
 
 Published as Sites version 8 at https://pondstr.com/#built-by . Focused guide routing checks, TypeScript, and build passed. Local and live browser checks verified content and the logo; the phone preview fit all five menu items without overflow. A Pondster question from Manage opened Built By. The local preview was stopped after verification.
+
+## Navigation update — 2026-10-24
+
+Wes directed Built By to be last and Manage to be renamed Own. The menu, owner-page heading, and Pondster actions/copy now use Own; #manage remains an alias for old links. No owner-access capability changed.

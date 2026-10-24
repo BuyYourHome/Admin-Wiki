@@ -52,9 +52,9 @@ Wes requested removal of the website login requirement so the public can access 
 
 Wes requested Design, Explore, View, and Manage navigation and six room galleries with public voting. The website now uses the supported Sites Vinext Worker runtime and logical D1 binding `DB`, with no R2 binding. Public access and the existing custom domain were preserved. The database migration creates only the vote schema; no synthetic votes were seeded into production.
 
-- Current Site source commit: `03e994d10a2c6b5aecfcf90fd53899fa3d8daa59`.
-- Current saved version: `appgprj_6ad4d98e08708191858cab113814704e~appgver_4d8df4829a2c81919884311cd22903de` (version 8).
-- Current deployment: `appgdep_6adc32ec58008191be53fe31747626ce`, confirmed `succeeded` at 2026-10-24 12:24 AM Eastern (`2026-10-24T04:24:19.387662Z`).
+- Current Site source commit: `cbb21cfcfc659b891533c3135ce9f8023e288702`.
+- Current saved version: `appgprj_6ad4d98e08708191858cab113814704e~appgver_d6a125e24b688191b9d1432972d94eb2` (version 9).
+- Current deployment: `appgdep_6adc3514fb888191b4af262dcd096dfc`, confirmed `succeeded` at 2026-10-24 12:33 AM Eastern (`2026-10-24T04:33:32.355999Z`).
 - Live URL: https://pondstr.com . The original Sites URL remains https://pondstr.coolnewt4097.chatgpt.site .
 - Media Center has six supplied color concepts; Front Elevation has two concepts; Garage Barn Door has three concepts. Kitchen, ADU, and Master Bath await images.
 
@@ -78,3 +78,5 @@ The focused knowledge/routing checks, TypeScript check, and production build pas
 Version 8 adds Built By between View and Manage, with a direct `#built-by` link. It features Buy Your Home, LLC using its official website: a visually verified copy of the linked header graphic, a short paraphrased company overview and services, Wes Browning at 919-917-7466, and official website/About links. No private data, financing guarantees, or contractor-license claims were added. The original company image is packaged only in the separate Sites repo; the Wiki stores code and source references.
 
 Pondster answers who built it and can navigate to Built By; Wes contact requests open the company page. Focused routing checks, TypeScript checking, and the production build passed. Local browser checks verified the direct link, guide navigation from Manage, the 900-by-270 logo loading, and correct HTTPS and telephone links. Phone preview showed all five menu items within the 375-pixel page, no horizontal overflow, and a 287-pixel logo. The published custom domain displayed the new menu and complete company page. Public access, existing concepts/video, voting, domain, and device boundaries remain unchanged. See [[Project Rooms/Smart House/working/built-by-page]].
+
+Version 9 applies Wes's menu correction: Design, Explore, View, Own, Built By. Manage is renamed Own in the menu, page heading, and Pondster guide actions/copy. The new URL is `#own`; existing `#manage` links remain an alias to Own. The existing guide checks and production build passed. Local browser checks verified both old and new links; the published custom domain displayed the corrected menu order and Own page. No access-policy or owner capability change was made.
