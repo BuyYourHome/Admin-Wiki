@@ -100,3 +100,7 @@ body{padding-bottom:95px}.pondster-welcome{margin:0 4% 30px;padding:20px 24px;bo
 .vote-button-copy strong{font-size:16px;line-height:1.35;font-weight:700;overflow-wrap:anywhere}
 .vote-button-copy small{font-size:11px;line-height:1.4;font-weight:400}
 @media(max-width:720px){.vote-button-copy strong{font-size:18px}.vote-button-copy small{font-size:12px}}
+
+.design-card>.vote-button{max-width:none}
+.design-card .result-track{margin-bottom:0}
+@media(max-width:1150px){.design-card>.vote-button{grid-column:1 / -1}}
