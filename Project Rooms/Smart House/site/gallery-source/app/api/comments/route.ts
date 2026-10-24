@@ -39,10 +39,10 @@ function respond(request: NextRequest, key: string | null, body: unknown, status
 
 export async function GET(request: NextRequest) {
   const page = request.nextUrl.searchParams.get('page');
-  if (!isCommentPage(page)) return respond(request, null, { error: 'Unknown page.' }, 400);
+  if (!isCommentPage(page)) return respond(request, null, { error: 'I don’t recognize that page.' }, 400);
   const rawCursor = request.nextUrl.searchParams.get('cursor');
   const cursor = rawCursor ? parseCommentCursor(rawCursor) : null;
-  if (rawCursor && !cursor) return respond(request, null, { error: 'Invalid comment page.' }, 400);
+  if (rawCursor && !cursor) return respond(request, null, { error: 'I couldn’t find that page of comments.' }, 400);
   const key = visitor(request) ?? crypto.randomUUID().replaceAll('-', '');
   try {
     const db = getDb();
@@ -51,7 +51,7 @@ export async function GET(request: NextRequest) {
     const comments = rows.slice(0, COMMENT_PAGE_SIZE);
     return respond(request, key, { comments, nextCursor: rows.length > COMMENT_PAGE_SIZE ? commentCursor(comments[comments.length - 1]) : null });
   } catch {
-    return respond(request, key, { error: 'Comments are temporarily unavailable. Please try again.' }, 503);
+    return respond(request, key, { error: 'I can’t load the comments right now. Please try again.' }, 503);
   }
 }
 
@@ -61,17 +61,17 @@ export async function POST(request: NextRequest) {
   // Consume bounded request bodies even for rejected headers so the worker can finish the request cleanly.
   let text: string | null;
   try { text = await boundedBody(request); }
-  catch { return reply({ error: 'Invalid comment.' }, 400); }
-  if (text === null) return reply({ error: 'Request too large.' }, 413);
+  catch { return reply({ error: 'I couldn’t read your comment.' }, 400); }
+  if (text === null) return reply({ error: 'I can’t accept a request that large.' }, 413);
   const origin = request.headers.get('origin');
-  if (!origin || origin !== new URL(request.url).origin) return reply({ error: 'Please comment from the Pondster website.' }, 403);
-  if (request.headers.get('content-type')?.split(';')[0].trim().toLowerCase() !== 'application/json') return reply({ error: 'Please submit a JSON comment.' }, 415);
+  if (!origin || origin !== new URL(request.url).origin) return reply({ error: 'I can only accept comments from my website.' }, 403);
+  if (request.headers.get('content-type')?.split(';')[0].trim().toLowerCase() !== 'application/json') return reply({ error: 'I couldn’t read that submission. Please use my comment form.' }, 415);
   let input: unknown;
   try { input = JSON.parse(text); }
-  catch { return reply({ error: 'Invalid comment.' }, 400); }
+  catch { return reply({ error: 'I couldn’t read your comment.' }, 400); }
   const parsed = validateComment(input);
   if ('error' in parsed) return reply({ error: parsed.error }, 400);
-  if (!key) return reply({ error: 'Please reload this page before commenting.' }, 409);
+  if (!key) return reply({ error: 'Please reload this page so I can accept your comment.' }, 409);
   const draft = parsed.value;
   try {
     const db = getDb();
@@ -79,7 +79,7 @@ export async function POST(request: NextRequest) {
       const rows = await db.select({ ...publicFields, requestId: pageComments.requestId, visitorKey: pageComments.visitorKey }).from(pageComments).where(eq(pageComments.requestId, draft.requestId)).limit(1);
       const saved = rows[0];
       if (!saved) return null;
-      if (saved.visitorKey !== key || saved.page !== draft.page || saved.name !== draft.name || saved.body !== draft.body) return reply({ error: 'That submission already contains a different comment. Please refresh and try again.' }, 409);
+      if (saved.visitorKey !== key || saved.page !== draft.page || saved.name !== draft.name || saved.body !== draft.body) return reply({ error: 'I already have a different comment for that submission. Please refresh and try again.' }, 409);
       const { requestId: _requestId, visitorKey: _visitorKey, ...comment } = saved;
       return reply({ comment });
     };
@@ -95,10 +95,10 @@ export async function POST(request: NextRequest) {
     if (!inserted.meta.changes) {
       const concurrentResponse = await existing();
       if (concurrentResponse) return concurrentResponse;
-      return reply({ error: 'Please wait before commenting again. This browser allows one comment every 30 seconds and up to 20 in a day.' }, 429, { 'Retry-After': '30' });
+      return reply({ error: 'I need a pause before your next comment. I accept one comment per browser every 30 seconds and up to 20 in a day.' }, 429, { 'Retry-After': '30' });
     }
     return reply({ comment }, 201);
   } catch {
-    return reply({ error: 'Your comment could not be saved. Please try again.' }, 503);
+    return reply({ error: 'I couldn’t save your comment. Please try again.' }, 503);
   }
 }

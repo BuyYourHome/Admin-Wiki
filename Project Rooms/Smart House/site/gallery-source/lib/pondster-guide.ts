@@ -27,7 +27,7 @@ const choiceAliases: Record<string, string[]> = {
   'Charcoal green board & batten': ['charcoal green'],
   'Limewashed brick': ['limewash', 'limewashed']
 };
-const ashley = 'Ashley Morello is our realtor with Element Realty Group at Howard Hanna Allen Tate. Email ashley@elementrealtygroup.net or call 919-417-0612.';
+const ashley = 'Ashley Morello is my realtor with Element Realty Group at Howard Hanna Allen Tate. You can reach her at ashley@elementrealtygroup.net or 919-417-0612.';
 function normalize(value: string) { return value.toLowerCase().replace(/[^a-z0-9]+/g, ' ').trim(); }
 function hasPhrase(input: string, phrase: string) { return ` ${input} `.includes(` ${normalize(phrase)} `); }
 
@@ -38,50 +38,50 @@ export function answerPondster(input: string): GuideReply {
   if (!words || /^(hi|hello|hey|good morning|good afternoon|good evening|who are you|what is your name|what s your name)$/.test(words)) return { text: identity };
 
   if (/\b(password|passcode|secret|private|confidential|security camera|alarm code|wifi|wi fi|owner records|owner data)\b/.test(words)) {
-    return { text: 'This public guide cannot provide private records, passwords, or real access codes. Owner tools are planned and will need authenticated access; saying you are the owner does not grant access.', action: { menu: 'Own' } };
+    return { text: 'I cannot provide private records, passwords, or real access codes here. My future owner tools will need authenticated access; saying you are the owner does not grant access.', action: { menu: 'Own' } };
   }
   if (/\b(price|pricing|cost|budget|tax|mortgage|rent|valuation|square footage|square feet|bedrooms|bathrooms|permit|inspection|wiring|voltage|hvac|thermostat|equipment|specifications?|model number|serial number|manufacturer|paint code|paint brand)\b/.test(words) || /\bhow much\b/.test(words)) {
-    return { text: "I don't have verified pricing, property specifications, equipment records, or construction approvals in my public guide. The images show AI concepts, not installed or approved specifications. You can keep asking me about the public information available here." };
+    return { text: "I don't have verified pricing, property specifications, equipment records, or construction approvals to share here. My images show AI concepts, not installed or approved specifications. You can keep asking me about my public information." };
   }
   if (/\b(built by|builder|builders|developer|buy your home|buyyourhomellc|wes|wes browning)\b/.test(words) || /\bwho (built|is building|developed) (you|pondster|the house)\b/.test(words)) {
-    return { text: 'Buy Your Home, LLC is the company behind Pondster. Its website describes buying, repairing, managing, and selling homes with personal service and flexible real estate options. Built By has the company overview, official website, and Wes Browning at 919-917-7466.', action: { menu: 'Built By' } };
+    return { text: 'Buy Your Home, LLC is the company behind me. Its website describes buying, repairing, managing, and selling homes with personal service and flexible real estate options. I can show you its overview, official website, and Wes Browning at 919-917-7466 on my Built By page.', action: { menu: 'Built By' } };
   }
   if (/\b(jean|wright|si designer)\b/.test(words) || /\bwho (designed|created|made) (you|pondster)\b/.test(words) || has('who is your designer')) {
-    return { text: "Jean Wright is my SI designer. Direct your questions to me, Pondster. I can explain my public design concepts and website information. This guide does not send questions to Jean." };
+    return { text: "Jean Wright is my SI designer. Direct your questions to me, Pondster. I can explain my public design concepts and website information. I don't send questions to Jean." };
   }
   if (/\b(appointment|viewing|visit|tour|calendar|entry code|entrycode|access code|unlock|lock|book|booking|reservation)\b/.test(words)) {
-    return { text: 'View has a simulated date-and-time preview and a DEMO entry code. It books no appointment and cannot unlock the house. Arrange a real viewing with Ashley at ashley@elementrealtygroup.net.', action: { menu: 'View' } };
+    return { text: 'I offer a simulated date-and-time preview and a DEMO entry code on my View page. I book no appointment and cannot unlock my doors. For a real visit with me, arrange the details with Ashley at ashley@elementrealtygroup.net.', action: { menu: 'View' } };
   }
   if (/\b(ashley|realtor|agent|broker|contact|email|phone|call)\b/.test(words)) return { text: ashley, action: { menu: 'View' } };
   if (/\b(privacy|microphone|listening|recording|speech|voice|history|personal data)\b/.test(words)) {
-    return { text: 'Keep questions to public house information and avoid sharing private details or real entry codes. Check the on-screen voice notice before enabling a microphone. The preference poll uses a browser cookie; it does not verify a person or owner.' };
+    return { text: 'Ask me about my public information, and please avoid sharing private details or real entry codes. Read my voice notice before enabling a microphone. I use a browser cookie for design preferences; it does not verify a person or owner.' };
   }
   if (/\b(owner|owners|own|manage|handover|warranties|warranty|manuals|manual|maintenance)\b/.test(words)) {
-    return { text: 'Own previews future home guides, care and maintenance, and owner handover records. Owner tools are planned; this public guide has no private owner access or live device controls.', action: { menu: 'Own' } };
+    return { text: 'I preview my future home guides, care and maintenance, and owner handover records on my Own page. I’m still planning those owner tools; I provide no private owner access or live device controls here.', action: { menu: 'Own' } };
   }
 
   const choice = rooms.flatMap(room => room.choices.map(title => ({ room, title }))).find(item => [item.title, ...(choiceAliases[item.title] ?? [])].some(alias => has(alias)));
   const room = choice?.room ?? rooms.find(item => item.aliases.some(alias => has(alias)));
   if (/\b(vote|voting|votes|favorite|favourite|choose|select)\b/.test(words)) {
-    return { text: 'Use a gallery’s voting buttons to save or change your choice. There is one current choice per browser per gallery. I can open the gallery; I do not cast votes for you.', action: { menu: 'Design', ...(room ? { room: room.id } : {}) } };
+    return { text: 'Use my gallery voting buttons to save or change your choice. I keep one current choice per browser per gallery. I can open the gallery; I do not cast votes for you.', action: { menu: 'Design', ...(room ? { room: room.id } : {}) } };
   }
   if (room) {
     const action: GuideAction = { menu: 'Design', room: room.id };
-    if (choice) return { text: `${choice.title} is an AI design concept in ${room.name}. Opening that gallery to compare the options. Concept images do not confirm installed materials or finished work.`, action };
-    if (!room.choices.length) return { text: `${room.name} has a gallery, with design images still to come. No choices or specifications have been supplied for it yet.`, action };
-    return { text: `${room.name} has ${room.choices.length} AI concept choices: ${room.choices.join('; ')}. These are visual studies, not confirmed materials or finished work.`, action };
+    if (choice) return { text: `I have ${choice.title} as an AI design concept in my ${room.name} gallery. I’m opening it so you can compare my options. My concept images do not confirm installed materials or finished work.`, action };
+    if (!room.choices.length) return { text: `My ${room.name} gallery has design images still to come. I don’t have choices or specifications to share for it yet.`, action };
+    return { text: `I have ${room.choices.length} AI concept choices for my ${room.name}: ${room.choices.join('; ')}. I’m sharing visual studies, not confirmed materials or finished work.`, action };
   }
   if (/\b(lights?|lighting|scenes?|daylight|daytime|evening|unwind|relax|night)\b/.test(words) || has('day mode')) {
     const scene: 'day' | 'evening' | 'relax' = /\b(unwind|relax|night)\b/.test(words) ? 'relax' : has('evening') ? 'evening' : 'day';
     const label = scene === 'relax' ? 'Unwind' : scene === 'evening' ? 'Evening' : 'Daylight';
-    return { text: `Here is the ${label} lighting simulation in Explore. It changes only the illustration on this website; it does not control the house.`, action: { menu: 'Explore', scene } };
+    return { text: `I’m showing you my ${label} lighting simulation in Explore. I change only the illustration on my website; I don’t control real house lighting here.`, action: { menu: 'Explore', scene } };
   }
   if (/\b(video|film|football|artwork|screen|motion)\b/.test(words)) {
-    return { text: 'The Media Center has a ten-second AI motion concept with a fixed decorative frame, a moving TV, and artwork transitioning to moving football footage. The scene is composited; mount mechanics have not been validated.', action: { menu: 'Design', room: 'media-center' } };
+    return { text: 'I have a ten-second AI motion concept for my Media Center, with a fixed decorative frame, a TV that turns toward my kitchen, moving football footage, and a scrolling first-person caption. I’m showing a composited scene; my mount mechanics have not been validated.', action: { menu: 'Design', room: 'media-center' } };
   }
-  if (has('explore')) return { text: 'Explore has illustrative lighting moods and planned explanations of house systems. Verified equipment records are still needed.', action: { menu: 'Explore' } };
-  if (has('view')) return { text: 'View introduces Ashley and the simulated viewing preview. For a real visit, arrange the details separately with Ashley.', action: { menu: 'View' } };
-  if (/\b(design|designs|gallery|galleries|choices|colors|colours)\b/.test(words)) return { text: 'Design has six galleries: Kitchen, Media Center, Front Elevation, Garage Barn Door, ADU, and Master Bath. Available images are AI concepts; three galleries are awaiting images.', action: { menu: 'Design' } };
+  if (has('explore')) return { text: 'I have illustrative lighting moods in Explore, with explanations of my systems planned for later. I still need verified equipment records.', action: { menu: 'Explore' } };
+  if (has('view')) return { text: 'I introduce Ashley and my simulated viewing preview on View. For a real visit with me, arrange the details separately with Ashley.', action: { menu: 'View' } };
+  if (/\b(design|designs|gallery|galleries|choices|colors|colours)\b/.test(words)) return { text: 'I have six design galleries: Kitchen, Media Center, Front Elevation, Garage Barn Door, ADU, and Master Bath. I’m sharing AI concept images; three of my galleries are awaiting images.', action: { menu: 'Design' } };
   if (/\b(address|location|where are you|where is pondster)\b/.test(words)) return { text: 'I’m Pondster, the voice and identity of this house. My location is confidential for now—think witness protection, with better curb appeal. You can explore my design ideas here and find future viewing arrangements on View.', action: { menu: 'View' } };
-  return { text: "I can answer from Pondster's public site information: design concepts, simulated lighting, viewing previews, Ashley, my SI designer Jean Wright, Buy Your Home, LLC, and future owner plans. I don't have a verified answer to that question." };
+  return { text: "I can answer from my public website information: design concepts, simulated lighting, viewing previews, Ashley, my SI designer Jean Wright, Buy Your Home, LLC, and my future owner plans. I don't have a verified answer to that question." };
 }

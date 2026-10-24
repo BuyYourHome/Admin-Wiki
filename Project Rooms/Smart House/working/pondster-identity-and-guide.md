@@ -7,6 +7,7 @@ Wes directly named the house **Pondster**, asked for viewers and potential owner
 ## Current website implementation
 
 - Pondster is the public voice and identity of the house, reflected in the header brand, metadata, introductions, and footer. Jean Wright is acknowledged as SI designer in plain-text credit and public role answers. The credit does not open a designer persona or conversation.
+- Authored page storytelling, metadata, gallery descriptions, status/error feedback, and guide replies use Pondster's first-person I/my/me voice. Ashley's introduction says "Meet Ashley, my realtor." Visitor comments, visitor-composed email text, quoted external credits, and required notices keep their original voices. Functional menu items, labels, and names may remain neutral.
 - Only the location and address are confidential. The opening introduces Pondster clearly, then makes a playful witness-protection joke about keeping the location secret. Do not imply that the house's name or identity is confidential.
 - A persistent Talk to Pondster control is mounted outside the five menu sections, preserving the guide conversation during navigation among Design, Explore, View, Own, and Built By.
 - Typed questions and quick prompts work without microphone access. All questions are directed to Pondster. The guide provides bounded public website answers and can navigate to room galleries, the viewing page, owner plans, or simulated lighting moods. It is a deterministic website guide, not an unrestricted general AI service or a live connection to a designer's chat.
@@ -14,7 +15,7 @@ Wes directly named the house **Pondster**, asked for viewers and potential owner
 - Listening status, Stop voice, close, Escape, and unsupported/denied/service error messages are visible. Close, Stop, and leaving the active tab stop listening; late recognition results cannot reopen it. The guide pauses recognition while it speaks, then resumes an explicitly requested listening session. It remains mounted while changing menus.
 - The browser's speech service may receive audio. The interface discloses this before microphone use. The website has no audio upload endpoint, transcript database, owner identity verification, or real house control. Conversation state is temporary component memory, limited to recent messages.
 - Only public facts are available. Saying someone is an owner does not reveal private records or unlock owner functionality. Votes require their actual gallery buttons. Viewing appointments and codes remain clearly simulated; no voice request sends a message, confirms a booking, or unlocks the house.
-- Each public page retains a comment section for visitors' thoughts. Questions use the Ask Pondster control; comments do not create another named assistant or designer conversation.
+- Each public page retains a comment section for visitors' thoughts. Questions use the Ask me control to open Pondster; comments do not create another named assistant or designer conversation.
 
 ## Source and future work
 
@@ -51,3 +52,9 @@ The Pondster-only question recipient and voice wake name remain in force. The de
 Wes clarified: "It's Jean Wright, not Dean. The opening paragraph should be clearer. Pondster is the voice and identity of the house. It's location is what needs to be confidential. Make a joke about being in witness protection".
 
 Use **Jean Wright** as the current SI designer credit. **Pondster is the public voice and identity of the house; only its location and address are confidential.** The opening should state that identity clearly and use the requested witness-protection joke for the secret location. This supersedes the earlier Dean credit and ambiguous anonymous-identity wording. All questions and voice wake requests still go only to Pondster; Jean Wright is acknowledged through static credit, without a separate designer persona.
+
+## First-person house voice — 2026-10-24
+
+Wes directed all website wording to use Pondster's first-person voice, including "Meet Ashley, my realtor." Write authored page stories, metadata, gallery descriptions, feedback, and guide answers as the house speaking through I, my, and me. Keep neutral functional menus, field labels, and names clear. Do not rewrite visitors' saved comments or composed email text, quoted third-party credits, or required notices as Pondster's statements.
+
+This changes voice, not authority or facts. Jean Wright remains a static SI designer acknowledgment, Pondster remains the only question recipient and voice wake name, and only the location/address stays confidential with the witness-protection joke. AI design labels, simulated lighting and viewing, unavailable owner tools, and the absence of live house controls remain explicit. Publication and final runtime validation are recorded separately in [[Project Rooms/Smart House/working/hosting-and-domain]].

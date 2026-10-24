@@ -11,17 +11,17 @@ export function isCommentPage(page: unknown): page is CommentPage {
 }
 
 export function validateComment(input: unknown) {
-  if (!input || typeof input !== 'object' || Array.isArray(input)) return { error: 'Invalid comment.' } as const;
+  if (!input || typeof input !== 'object' || Array.isArray(input)) return { error: 'I couldn’t read your comment.' } as const;
   const draft = input as Record<string, unknown>;
-  if (!isCommentPage(draft.page)) return { error: 'Choose an available page.' } as const;
-  if (typeof draft.requestId !== 'string' || !/^[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}$/i.test(draft.requestId)) return { error: 'Please refresh the page before commenting.' } as const;
-  if (draft.website !== undefined && (typeof draft.website !== 'string' || draft.website.trim())) return { error: 'Your comment could not be accepted.' } as const;
-  if (draft.name !== undefined && typeof draft.name !== 'string') return { error: 'Use a name of up to 60 characters.' } as const;
+  if (!isCommentPage(draft.page)) return { error: 'I need an available page for your comment.' } as const;
+  if (typeof draft.requestId !== 'string' || !/^[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}$/i.test(draft.requestId)) return { error: 'Please refresh the page so I can accept your comment.' } as const;
+  if (draft.website !== undefined && (typeof draft.website !== 'string' || draft.website.trim())) return { error: 'I couldn’t accept your comment.' } as const;
+  if (draft.name !== undefined && typeof draft.name !== 'string') return { error: 'I can display a name of up to 60 characters.' } as const;
   const name = (draft.name as string | undefined)?.trim() || 'Guest';
-  if (name.length > 60 || /[\r\n\u0000-\u001f\u007f]/.test(name)) return { error: 'Use a name of up to 60 characters.' } as const;
-  if (typeof draft.body !== 'string') return { error: 'Write a comment of 1 to 1,000 characters.' } as const;
+  if (name.length > 60 || /[\r\n\u0000-\u001f\u007f]/.test(name)) return { error: 'I can display a name of up to 60 characters.' } as const;
+  if (typeof draft.body !== 'string') return { error: 'I can accept a comment of 1 to 1,000 characters.' } as const;
   const body = draft.body.replace(/\r\n?/g, '\n').trim();
-  if (!body.length || body.length > 1000 || /[\u0000-\u0008\u000b\u000c\u000e-\u001f\u007f]/.test(body)) return { error: 'Write a comment of 1 to 1,000 characters.' } as const;
+  if (!body.length || body.length > 1000 || /[\u0000-\u0008\u000b\u000c\u000e-\u001f\u007f]/.test(body)) return { error: 'I can accept a comment of 1 to 1,000 characters.' } as const;
   return { value: { page: draft.page, name, body, requestId: draft.requestId.toLowerCase() } } as const;
 }
 

@@ -24,26 +24,26 @@ async function results(room: string, key: string | null) {
 }
 export async function GET(request: NextRequest) {
   const room = request.nextUrl.searchParams.get('room');
-  if (!galleries.some(gallery => gallery.id === room)) return NextResponse.json({error:'Unknown gallery.'}, {status:400, headers});
+  if (!galleries.some(gallery => gallery.id === room)) return NextResponse.json({error:'I don’t recognize that gallery.'}, {status:400, headers});
   const key = voter(request) ?? crypto.randomUUID().replaceAll('-', '');
   try { return withVoterCookie(request, NextResponse.json(await results(room!, key), {headers}), key); }
-  catch { return withVoterCookie(request, NextResponse.json({error:'Voting results are temporarily unavailable. Please try again.'}, {status:503, headers}), key); }
+  catch { return withVoterCookie(request, NextResponse.json({error:'I can’t load the voting results right now. Please try again.'}, {status:503, headers}), key); }
 }
 export async function POST(request: NextRequest) {
   const key = voter(request);
   const respond = (body: unknown, status = 200) => withVoterCookie(request, NextResponse.json(body, {status, headers}), key);
   const origin = request.headers.get('origin');
-  if (!origin || origin !== new URL(request.url).origin) return respond({error:'Please vote from the Pondster website.'}, 403);
-  if (Number(request.headers.get('content-length') ?? 0) > 1024) return respond({error:'Request too large.'}, 413);
+  if (!origin || origin !== new URL(request.url).origin) return respond({error:'I can only accept votes from my website.'}, 403);
+  if (Number(request.headers.get('content-length') ?? 0) > 1024) return respond({error:'I can’t accept a request that large.'}, 413);
   let body;
   try { const text = await request.text(); if (text.length > 1024) throw new Error(); body = JSON.parse(text); }
-  catch { return respond({error:'Invalid vote.'}, 400); }
+  catch { return respond({error:'I couldn’t read your vote.'}, 400); }
   const gallery = galleries.find(gallery => gallery.id === body?.room);
-  if (!gallery || !gallery.designs.some(design => design.id === body?.designId)) return respond({error:'Choose an available design in this gallery.'}, 400);
-  if (!key) return respond({error:'Please reload the page before voting so this browser can keep one choice per gallery.'}, 409);
+  if (!gallery || !gallery.designs.some(design => design.id === body?.designId)) return respond({error:'I need an available design from this gallery to save your vote.'}, 400);
+  if (!key) return respond({error:'Please reload the page so I can keep one choice per browser in each gallery.'}, 409);
   try {
     const db = getDb();
     await db.insert(designVotes).values({room:gallery.id, voterKey:key, designId:body.designId, updatedAt:Date.now()}).onConflictDoUpdate({target:[designVotes.room, designVotes.voterKey],set:{designId:body.designId, updatedAt:Date.now()}});
     return respond(await results(gallery.id, key));
-  } catch { return respond({error:'Your vote could not be saved. Please try again.'}, 503); }
+  } catch { return respond({error:'I couldn’t save your vote. Please try again.'}, 503); }
 }

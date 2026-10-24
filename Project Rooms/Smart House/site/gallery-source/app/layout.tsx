@@ -1,4 +1,4 @@
 import type { Metadata } from 'next';
 import './globals.css';
-export const metadata: Metadata = { title:'Pondster · A house with a voice', description:'Pondster is the voice and identity of this house. Its location is confidential for now. Ask Pondster your questions, explore and vote on design ideas, and meet realtor Ashley Morello. SI designer: Jean Wright.' };
+export const metadata: Metadata = { title:'Pondster · I’m a house with a voice', description:'I’m Pondster, the voice and identity of this house. My location is confidential for now. Meet Ashley, my realtor, explore my design ideas, and ask me your questions. Jean Wright is my SI designer.' };
 export default function Layout({children}:{children:React.ReactNode}) { return <html lang="en"><body>{children}</body></html>; }

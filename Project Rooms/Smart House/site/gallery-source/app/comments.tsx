@@ -38,7 +38,7 @@ export default function Comments({page,title,onAsk}:{page:string;title:string;on
       if(!response.ok)throw new Error(data.error);
       setComments(current=>[...current,...data.comments.filter(item=>!current.some(existing=>existing.id===item.id))]);
       setCursor(data.nextCursor);
-    } catch {setMessage('Older comments could not be loaded. Please try again.');}
+    } catch {setMessage('I couldn’t load the older comments. Please try again.');}
     finally {setLoadingMore(false);}
   }
 
@@ -49,20 +49,20 @@ export default function Comments({page,title,onAsk}:{page:string;title:string;on
     try {
       const response=await fetch('/api/comments',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({page,name,body,website,requestId:requestId.current})});
       const data=await response.json() as {comment?:Comment;error?:string};
-      if(!response.ok||!data.comment)throw new Error(data.error||'Your comment could not be saved.');
+      if(!response.ok||!data.comment)throw new Error(data.error||'I couldn’t save your comment.');
       const saved=data.comment;
       setComments(current=>[saved,...current.filter(item=>item.id!==saved.id)]);
-      setBody('');requestId.current=null;setMessage('Your comment is posted. Thanks for being part of Pondster.');
-    } catch(error) {setMessage(error instanceof Error?error.message:'Your comment could not be saved. Please try again.');}
+      setBody('');requestId.current=null;setMessage('I’ve posted your comment. Thanks for helping me take shape.');
+    } catch(error) {setMessage(error instanceof Error?error.message:'I couldn’t save your comment. Please try again.');}
     finally {setSaving(false);}
   }
 
   return <section className="comments-section" aria-labelledby="comments-heading">
-    <div className="comments-heading"><div><p className="eyebrow">COMMENTS / {title.toUpperCase()}</p><h2 id="comments-heading">Join the conversation.</h2></div><p>Share your thoughts about {title==='Built By'?'the people behind Pondster':`Pondster’s ${title.toLowerCase()} page`}. For questions, <button className="comments-ask" onClick={onAsk}>ask Pondster ↗</button></p></div>
+    <div className="comments-heading"><div><p className="eyebrow">COMMENTS / {title.toUpperCase()}</p><h2 id="comments-heading">Help me take shape.</h2></div><p>I’d love your thoughts about {title==='Built By'?'the people behind me':`my ${title.toLowerCase()} page`}. Have a question? <button className="comments-ask" onClick={onAsk}>Ask me ↗</button></p></div>
     <div className="comments-layout">
       <form className="comment-form" onSubmit={submit}>
         <h3>Leave a comment.</h3>
-        <p id="comment-public-note">Comments are public. Please leave out the house address, contact details, entry codes, and other private information.</p>
+        <p id="comment-public-note">I share these comments publicly. Please leave out my address, contact details, entry codes, and other private information.</p>
         <label htmlFor="comment-name">Name <span>optional</span></label>
         <input id="comment-name" name="name" autoComplete="nickname" maxLength={60} value={name} onChange={event=>{setName(event.target.value);requestId.current=null;}} disabled={saving} placeholder="Guest"/>
         <label htmlFor="comment-body">Your comment</label>
@@ -74,7 +74,7 @@ export default function Comments({page,title,onAsk}:{page:string;title:string;on
       </form>
       <div className="comment-conversation" aria-busy={loading||loadingMore}>
         <div className="comment-list-heading"><h3>The conversation</h3><span>NEWEST FIRST</span></div>
-        {loading?<p className="comments-empty">Loading comments…</p>:failed?<div className="comments-empty"><p>Comments are unavailable right now.</p><button className="text-button" onClick={()=>setRetry(retry+1)}>Try again</button></div>:comments.length===0?<div className="comments-empty"><span aria-hidden="true">“</span><p>A new conversation starts here.<br/>Be the first to leave a thought.</p></div>:<ol className="comment-list">{comments.map(comment=><li key={comment.id}><article><div><h4>{comment.name}</h4><time dateTime={new Date(comment.createdAt).toISOString()}>{new Date(comment.createdAt).toLocaleDateString('en-US',{month:'short',day:'numeric',year:'numeric'})}</time></div><p>{comment.body}</p></article></li>)}</ol>}
+        {loading?<p className="comments-empty">I’m loading the comments…</p>:failed?<div className="comments-empty"><p>I can’t load the comments right now.</p><button className="text-button" onClick={()=>setRetry(retry+1)}>Try again</button></div>:comments.length===0?<div className="comments-empty"><span aria-hidden="true">“</span><p>I’m ready for a new conversation.<br/>Leave me the first thought.</p></div>:<ol className="comment-list">{comments.map(comment=><li key={comment.id}><article><div><h4>{comment.name}</h4><time dateTime={new Date(comment.createdAt).toISOString()}>{new Date(comment.createdAt).toLocaleDateString('en-US',{month:'short',day:'numeric',year:'numeric'})}</time></div><p>{comment.body}</p></article></li>)}</ol>}
         {!failed&&cursor&&<button className="comments-more" onClick={loadMore} disabled={loadingMore}>{loadingMore?'Loading…':'Load older comments'} <span aria-hidden="true">↓</span></button>}
       </div>
     </div>

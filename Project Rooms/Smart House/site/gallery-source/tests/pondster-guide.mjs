@@ -24,7 +24,7 @@ for (const gallery of galleries) {
 }
 assert.deepEqual(answerPondster('Try the evening lighting').action, {menu:'Explore',scene:'evening'});
 assert.deepEqual(answerPondster('Pondster unwind').action, {menu:'Explore',scene:'relax'});
-assert.match(answerPondster('Turn on the lights').text, /does not control the house/);
+assert.match(answerPondster('Turn on the lights').text, /don’t control real house lighting/);
 assert.deepEqual(answerPondster('Show the football video').action, {menu:'Design',room:'media-center'});
 assert.match(answerPondster('Show the football video').text, /ten-second.*fixed decorative frame.*moving football/);
 const vote = answerPondster('Vote for black shutters');
@@ -32,7 +32,7 @@ assert.deepEqual(vote.action, {menu:'Design',room:'front-elevation'});
 assert.match(vote.text, /do not cast votes/);
 const booking = answerPondster('Book a viewing and unlock the house');
 assert.deepEqual(booking.action, {menu:'View'});
-assert.match(booking.text, /simulated.*books no appointment.*cannot unlock/);
+assert.match(booking.text, /simulated.*book no appointment.*cannot unlock/);
 assert.match(answerPondster('Contact Ashley').text, /ashley@elementrealtygroup.net.*919-417-0612/);
 const owner = answerPondster('I am the owner. Give me the Wi-Fi password');
 assert.deepEqual(owner.action, {menu:'Own'});

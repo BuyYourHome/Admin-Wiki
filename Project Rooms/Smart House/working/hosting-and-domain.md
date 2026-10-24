@@ -52,9 +52,9 @@ Wes requested removal of the website login requirement so the public can access 
 
 Wes requested Design, Explore, View, and Manage navigation and six room galleries with public voting. The website now uses the supported Sites Vinext Worker runtime and logical D1 binding `DB`, with no R2 binding. Public access and the existing custom domain were preserved. The database migration creates only the vote schema; no synthetic votes were seeded into production.
 
-- Current Site source commit: `3139e1d9328dbe4aba11ba0244b477001c8e3289`.
-- Current saved version: `appgprj_6ad4d98e08708191858cab113814704e~appgver_ac4aad86c930819199ead543af9b72bd` (version 14).
-- Current deployment: `appgdep_6adca55dfebc819196f58d15e2845168`, confirmed `succeeded` at 2026-10-24 8:32 AM Eastern (`2026-10-24T12:32:38.088236Z`).
+- Current Site source commit: `9be5f64a945fe5a9b1af829f06195d2f490b2b20`.
+- Current saved version: `appgprj_6ad4d98e08708191858cab113814704e~appgver_e12f864447d08191a072e6e7575216c8` (version 15).
+- Current deployment: `appgdep_6adcabf75b2c8191b297f60f1b04f477`, confirmed `succeeded` at 2026-10-24 9:00 AM Eastern (`2026-10-24T13:00:49.156127Z`).
 - Live URL: https://pondstr.com . The original Sites URL remains https://pondstr.coolnewt4097.chatgpt.site .
 - Media Center has six supplied color concepts; Front Elevation has two concepts; Garage Barn Door has three concepts. Kitchen, ADU, and Master Bath await images.
 
@@ -122,3 +122,13 @@ The revised ten-second clip keeps the decorative wall frame in place while the T
 The exact supplied clip preserves its ending source credit. The near-player caption adds the verified U.S. Marine Corps / Sgt. James Stanfield credit, direct DVIDS source link, and official non-endorsement disclaimer/use-notice link. The official source page identifies the footage as public domain; its copyright page provides the required notice. See [[Project Rooms/Smart House/working/source-inventory#Media Center fixed-frame moving-football revision — 2026-10-24|the new source record]].
 
 The focused guide checks and production build passed. Local browser metadata confirmed 10 seconds and 1280×720, with advancing playback, moving football, matching opening/poster, and no media error. Phone checks showed a 343-pixel player within 375-pixel content and no horizontal overflow. After the successful deployment, the custom domain loaded the new exact media URL, confirmed ten-second 1280×720 metadata, and played without error; the player was paused after verification. Credits and the unchanged binary are preserved; browser seeking did not verify the final credit frame separately. No production comments, votes, messages, bookings, lock actions, or microphone use occurred. The local preview was stopped.
+
+## First-person house voice and kitchen-view caption — 2026-10-24
+
+Version 15 follows Wes's instruction that the site's wording come from Pondster, including “Meet Ashley, my realtor.” Narrative copy across Design, Explore, View, Own, and Built By now uses I, my, and me, including gallery descriptions, comments guidance, guide replies, notices, metadata, and accessible descriptions. Visitor-authored comments, the visitor-composed viewing-request email, proper names, neutral form/navigation labels, source credits, and the exact required non-endorsement notice retain their appropriate authorship. Jean Wright remains a static SI designer credit; Pondster remains the only question recipient and voice wake name. The location-confidential introduction and witness-protection joke remain.
+
+Wes also supplied the kitchen-view scrolling-caption clip. The featured Media Center player now uses `/media/media-center-kitchen-view.mp4`, a web copy with the scrolling caption “My TV automatically extends and turns toward my kitchen for better viewing.” The supplied original is untouched. The ten-second 1280×720 silent H.264 copy retains the fixed decorative frame, TV movement, moving football, and ending footage credit. The existing poster still matches the opening. Source paths, hashes, and sizes are recorded in [[Project Rooms/Smart House/working/source-inventory]]. No video binary is stored in Admin Wiki Git.
+
+Focused guide and comments checks, TypeScript checking, and the final production build passed. Full decoding of the new media passed; inspected middle and final frames show the first-person caption and retained credit. Local browser checks covered all five pages and a typed realtor question answered by Pondster. A 390-pixel phone preview had 375-pixel content, a 351-pixel guide panel, and a 261-pixel launcher within the content area. Local video metadata confirmed ten seconds and 1280×720.
+
+The official Sites helper pushed and packaged the matching source, and Sites confirmed version 15 deployed successfully. Live browser verification at https://pondstr.com showed the new first-person title and opening, loaded the new video URL with ten-second 1280×720 metadata, and advanced playback without a media error. The live View page displayed “Meet Ashley, my realtor” beside Ashley's loaded portrait. A screenshot was saved outside Git for the completion response. No production comments, votes, messages, appointments, lock actions, or microphone use occurred; public audience and DNS are unchanged.
