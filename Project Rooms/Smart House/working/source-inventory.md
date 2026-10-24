@@ -58,3 +58,9 @@ Wes supplied `C:\Users\wesbr\Buy Your Home\Buy Your Home - Property\26-BYH -908 
 - `README.txt` lists 8 seconds, 1280×720, 30 fps, H.264 MP4, using Imagegen imagery and composited movement. Reviewed both stills: framed still-life artwork transitions to football as the TV moves into viewing position. The motion is illustrative; mount mechanics have not been validated.
 
 Use native video controls, `playsInline`, the poster, and metadata preload, with no autoplay and an illustrative caption. Keep all source binaries outside Admin Wiki Git and package public copies only in the dedicated Sites repository. Published as Sites version 5; verification and deployment details are recorded in [[Project Rooms/Smart House/working/hosting-and-domain]].
+
+## Realtor and self-viewing preview — 2026-10-23
+
+Wes asked to feature his realtor on View and instructed Smart House to use her email domain. A targeted Outlook People lookup returned Ashley Morello at `ashley@elementrealtygroup.net`. Official sources: https://elementrealtygroup.net/ and https://ashleymorello.allentate.com/ . The brokerage profile provides her public role, service area, and phone 919-417-0612. Use short factual paraphrases and official links. The direct portrait source was not verified; the site uses an AM monogram. No private personal material or source email bodies are published.
+
+Wes explicitly clarified that the entry code is simulated for now, with real-lock integration later. The date/time picker and code are a labeled browser-local demonstration, not confirmed appointment availability. See [[Project Rooms/Smart House/working/viewing-and-realtor]].

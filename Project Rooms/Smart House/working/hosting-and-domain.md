@@ -52,9 +52,9 @@ Wes requested removal of the website login requirement so the public can access 
 
 Wes requested Design, Explore, View, and Manage navigation and six room galleries with public voting. The website now uses the supported Sites Vinext Worker runtime and logical D1 binding `DB`, with no R2 binding. Public access and the existing custom domain were preserved. The database migration creates only the vote schema; no synthetic votes were seeded into production.
 
-- Current Site source commit: `86e5a1c4e21c32a32ad696a2302baaa3cec5e8ff`.
-- Current saved version: `appgprj_6ad4d98e08708191858cab113814704e~appgver_c49bd83539908191ab9a6afc9f38a15c` (version 5).
-- Current deployment: `appgdep_6adc25299ff88191b84c795db22d9ee5`, confirmed `succeeded` at 2026-10-23 11:25 PM Eastern (`2026-10-24T03:25:38.201324Z`).
+- Current Site source commit: `a34021799d4279d21b64dec97cfbb48dad79d195`.
+- Current saved version: `appgprj_6ad4d98e08708191858cab113814704e~appgver_7756e9ed513881919d3d0e6cf83abf18` (version 6).
+- Current deployment: `appgdep_6adc2a16c82c81918f4ad5809d7385d4`, confirmed `succeeded` at 2026-10-23 11:46 PM Eastern (`2026-10-24T03:46:36.930747Z`).
 - Live URL: https://pondstr.com . The original Sites URL remains https://pondstr.coolnewt4097.chatgpt.site .
 - Media Center has six supplied color concepts; Front Elevation has two concepts; Garage Barn Door has three concepts. Kitchen, ADU, and Master Bath await images.
 
@@ -65,3 +65,9 @@ See [[Project Rooms/Smart House/working/design-galleries-and-voting]] for requir
 Wes added the exact black-shutter rendering as another Front Elevation voting choice on 2026-10-23. Version 4 preserves `front-23` and adds `front-black-shutters`, with a two-column desktop comparison and one-column phone layout. The production build passed; local browser checks confirmed saving the new choice and changing between both elevations without increasing the total. A 390-pixel viewport had no horizontal overflow. The live Front Elevation gallery displayed both choices and loaded public vote totals; no production test votes were submitted. No schema, login-policy, or DNS change was needed. The local preview was stopped.
 
 Version 5 adds the supplied TV-Motion-20261023 clip as the main visual above the six Media Center color choices. Public assets: `/media/media-center-art-to-football.mp4` and `/media/media-center-art-poster.png`. The eight-second H.264 clip has native controls, inline playback, looping after manual play, metadata preload, a poster, and no autoplay. It is labeled an illustrative AI motion concept with unvalidated mount mechanics. The official build passed; local and live browser checks confirmed eight-second 1280×720 metadata, playback progress without errors, and play/pause controls. Phone-layout checks showed a 343-pixel player inside a 375-pixel page, no horizontal overflow, and placement above the voting cards. Public access, all voting choices, and the schema are preserved. The local preview was stopped after testing.
+
+Version 6 features Ashley Morello on View, with the business email identified from Wes's Outlook contact, a concise profile based on her official brokerage website, phone, and official website/team links. An AM monogram is used; no unverified portrait is published. The visual notebook is retained in an expandable section.
+
+At Wes's explicit clarification that entry codes are simulated for now, View also includes a date picker, Eastern-time selection, and a generated `DEMO-` code. No real appointment is reserved and no code operates a lock. The page communicates these limits and offers a separate email link to request a real viewing from Ashley. No booking data or personal information is written to the database or sent to Ashley by the demo.
+
+The production build passed. Local browser checks found and resolved a controlled date-input issue; the final native form preserves the selected date/time and generates the corresponding preview. Changing the time clears the previous code. A phone-sized layout had 375-pixel content within a 375-pixel viewport and a 297-pixel calendar with no horizontal overflow. The custom domain displayed Ashley's profile and successfully generated a simulated October 27, 2026, 2 PM Eastern viewing/code preview. No real appointment, message, lock action, or production vote was submitted. See [[Project Rooms/Smart House/working/viewing-and-realtor]] for source and future integration requirements.

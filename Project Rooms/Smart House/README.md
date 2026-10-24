@@ -43,7 +43,7 @@ This planning-only room does not need a routine transaction log at setup. Centra
 
 ## Boundaries And Next Actions
 
-Wes subsequently authorized website implementation and public Sites hosting at `https://pondstr.com`. Preserve public browsing without a login gate. See [[Project Rooms/Smart House/working/hosting-and-domain]] for deployment identity and [[Project Rooms/Smart House/working/design-galleries-and-voting]] for the Design, Explore, View, Manage navigation and gallery voting requirements. Live device configuration and private owner records remain outside this public website.
+Wes subsequently authorized website implementation and public Sites hosting at `https://pondstr.com`. Preserve public browsing without a login gate. See [[Project Rooms/Smart House/working/hosting-and-domain]] for deployment identity and [[Project Rooms/Smart House/working/design-galleries-and-voting]] for the Design, Explore, View, Manage navigation and gallery voting requirements. View now features Ashley Morello and a clearly labeled self-viewing calendar/code demonstration; see [[Project Rooms/Smart House/working/viewing-and-realtor]]. Live device configuration and private owner records remain outside this public website.
 
 ## Central Rules
 
