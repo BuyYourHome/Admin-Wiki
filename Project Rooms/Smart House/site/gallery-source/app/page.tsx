@@ -2,12 +2,14 @@
 import { useEffect, useRef, useState } from 'react';
 import { galleries, type Design } from '../lib/designs';
 import ViewPage from './view-page';
+import BuiltByPage from './built-by-page';
 import PondsterGuide from './pondster-guide';
 import type { GuideAction } from '../lib/pondster-guide';
 
 type VoteResults = { scores:Record<string,number>; total:number; selected:string|null };
 const empty:VoteResults = {scores:{},total:0,selected:null};
-const menus = ['Design','Explore','View','Manage'] as const;
+const menus = ['Design','Explore','View','Built By','Manage'] as const;
+const menuHash = (menu:string) => menu.toLowerCase().replace(/\s+/g,'-');
 type Menu = typeof menus[number];
 export default function Home() {
   const [menu,setMenu] = useState<Menu>('Design');
@@ -24,7 +26,7 @@ export default function Home() {
   const dialog = useRef<HTMLDialogElement>(null);
   const gallery = galleries.find(gallery => gallery.id === room)!;
   useEffect(() => {
-    const sync = () => { const value = location.hash.slice(1).toLowerCase(); const next = menus.find(item => item.toLowerCase() === value); if(next) setMenu(next); };
+    const sync = () => { const value = location.hash.slice(1).toLowerCase(); const next = menus.find(item => menuHash(item) === value); if(next) setMenu(next); };
     sync(); window.addEventListener('hashchange',sync); return () => window.removeEventListener('hashchange',sync);
   },[]);
   useEffect(() => {
@@ -42,10 +44,10 @@ export default function Home() {
     finally{setSaving(false);}
   }
   function navigate(next:Menu){setMenu(next);}
-  function guideAction(action:GuideAction){setMenu(action.menu);location.hash=action.menu.toLowerCase();if(action.room&&!saving)setRoom(action.room);if(action.scene)setScene(action.scene);}
+  function guideAction(action:GuideAction){setMenu(action.menu);location.hash=menuHash(action.menu);if(action.room&&!saving)setRoom(action.room);if(action.scene)setScene(action.scene);}
   return <>
     <a className="skip" href="#main">Skip to content</a>
-    <header className="header"><a className="brand" href="#design" onClick={()=>navigate('Design')} aria-label="Pondster home"><span className="monogram">P<small>908</small></span><span>PONDSTER<small>908 Pond Street · A home with a voice.</small></span></a><nav aria-label="Main menu">{menus.map(item=><a key={item} href={`#${item.toLowerCase()}`} onClick={()=>navigate(item)} aria-current={menu===item?'page':undefined}>{item}</a>)}</nav><span className="development">A HOME IN THE MAKING</span></header>
+    <header className="header"><a className="brand" href="#design" onClick={()=>navigate('Design')} aria-label="Pondster home"><span className="monogram">P<small>908</small></span><span>PONDSTER<small>908 Pond Street · A home with a voice.</small></span></a><nav aria-label="Main menu">{menus.map(item=><a key={item} href={`#${menuHash(item)}`} onClick={()=>navigate(item)} aria-current={menu===item?'page':undefined}>{item}</a>)}</nav><span className="development">A HOME IN THE MAKING</span></header>
     <main id="main">
       {menu==='Design' && <>
         <section className="intro"><div><p className="eyebrow">PONDSTER / THE DESIGN NOTEBOOK</p><h1>Pondster takes shape.<br/><em>Have a say.</em></h1></div><div className="intro-note"><p>Good design starts with possibilities. Explore the ideas for each space and vote for the ones you love.</p><span>Six galleries. One evolving home.</span></div></section>
@@ -59,6 +61,7 @@ export default function Home() {
       </>}
       {menu==='Explore' && <section className="secondary-page"><p className="eyebrow">EXPLORE / MEET PONDSTER</p><h1>Get to know Pondster.<br/><em>See the possibilities.</em></h1><p className="lead">A simple illustration of how light can change the feeling of a space.</p><div className="explore-demo"><div className={`illustrated-room ${scene}`} aria-label={`Illustrative room with ${scene} lighting`} role="img"><div className="window"/><div className="lamp"/><div className="sofa"/><span>ILLUSTRATIVE SPACE · SIMULATION ONLY</span></div><div className="scene-options"><p className="eyebrow">TRY A LIGHTING MOOD</p>{[['day','Daylight'],['evening','Evening'],['relax','Unwind']].map(([id,label])=><button key={id} onClick={()=>setScene(id)} aria-pressed={scene===id}>{label}<span>↗</span></button>)}<p role="status">{scene==='day'?'Bright and neutral.':scene==='evening'?'A warmer end to the day.':'Soft light for a quiet moment.'}</p><small>This demonstration does not control the house.</small></div></div><div className="knowledge-grid">{[['Lighting','Zones, scenes, and everyday controls.'],['Climate & comfort','Operating guides and equipment-specific care.'],['Sound & screens','Connected experiences, explained.']].map(([title,description])=><article key={title}><h3>{title}</h3><p>{description}</p><small>Details to follow verified house records.</small></article>)}</div></section>}
       {menu==='View' && <ViewPage onImage={setZoom} onDesign={()=>navigate('Design')}/>}
+      {menu==='Built By' && <BuiltByPage/>}
       {menu==='Manage' && <section className="secondary-page manage"><p className="eyebrow">MANAGE / THE FUTURE OWNER EXPERIENCE</p><h1>Pondster comes<br/><em>with answers.</em></h1><p className="lead">A future place for the information that belongs with Pondster. Ask Pondster from any page for public guidance while owner tools take shape.</p><div className="knowledge-grid">{[['Home guides','How each system works and where to find it.'],['Care & maintenance','Manuals, warranties, and equipment-specific schedules.'],['Owner handover','The records and account checklist for the next chapter.']].map(([title,description])=><article key={title}><span className="pending-tag">PLANNED</span><h3>{title}</h3><p>{description}</p></article>)}</div><div className="manage-notice"><strong>Owner tools are not available yet.</strong><p>Private records and live controls will need separate, authenticated owner access. This public page does not connect to house systems.</p></div></section>}
     </main><footer><span>PONDSTER · 908 POND STREET</span><p>SI designer: <button className="designer-credit" onClick={()=>setGuideOpen(true)}>Jean Wright</button> · Buy Your Home</p><span>Public guide · Design concepts · No live controls</span></footer>
     <PondsterGuide open={guideOpen} onOpenChange={setGuideOpen} onAction={guideAction}/>

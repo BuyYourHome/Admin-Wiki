@@ -67,3 +67,7 @@ Wes explicitly clarified that the entry code is simulated for now, with real-loc
 ## Pondster identity and Jean Wright role — 2026-10-24
 
 Wes directly named the house Pondster, requested named voice responses throughout the website, and identified Jean Wright as its SI designer. The exact term SI is preserved. This instruction authorizes identity, copy, and public website interaction updates, not publication of private owner information, a connection to Jean's chat, or live device control. The public guide draws only from the supplied design/video catalog, official realtor contact, and documented site behavior. Browser speech compatibility/privacy references and current limits are in [[Project Rooms/Smart House/working/pondster-identity-and-guide]].
+
+## Built By company page — 2026-10-24
+
+Wes asked for a Built By menu option using BuyYourHomeLLC.com. Public sources are https://www.buyyourhomellc.com/ and https://www.buyyourhomellc.com/buyer/authority-about/ . The company describes buying, repairing, managing, and selling homes with flexible options and individual service, and publishes Wes Browning at 919-917-7466. The official homepage header graphic was downloaded and visually verified; only the separate Sites repo contains the public image binary. No private contact information, internal SOPs, or stale financing/rate claims were used. See [[Project Rooms/Smart House/working/built-by-page]].

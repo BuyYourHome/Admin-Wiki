@@ -1,4 +1,4 @@
-export type GuideAction = { menu: 'Design' | 'Explore' | 'View' | 'Manage'; room?: string; scene?: 'day' | 'evening' | 'relax' };
+export type GuideAction = { menu: 'Design' | 'Explore' | 'View' | 'Built By' | 'Manage'; room?: string; scene?: 'day' | 'evening' | 'relax' };
 export type GuideReply = { text: string; action?: GuideAction };
 
 // Public concept names mirror lib/designs.ts; the focused tests check this list.
@@ -30,7 +30,7 @@ function hasPhrase(input: string, phrase: string) { return ` ${input} `.includes
 export function answerPondster(input: string): GuideReply {
   const words = normalize(input).replace(/^(?:(?:hey|hi|hello|okay|ok) )?pondster(?: |$)/, '').trim();
   const has = (phrase: string) => hasPhrase(words, phrase);
-  const identity = "I'm Pondster, the public house guide for 908 Pond Street. Jean Wright is my SI designer. Ask about design concepts, the lighting simulation, viewing previews, or owner plans.";
+  const identity = "I'm Pondster, the public house guide for 908 Pond Street. Jean Wright is my SI designer. Ask about design concepts, the lighting simulation, viewing previews, the Built By company page, or owner plans.";
   if (!words || /^(hi|hello|hey|good morning|good afternoon|good evening|who are you|what is your name|what s your name)$/.test(words)) return { text: identity };
 
   if (/\b(password|passcode|secret|private|confidential|security camera|alarm code|wifi|wi fi|owner records|owner data)\b/.test(words)) {
@@ -38,6 +38,9 @@ export function answerPondster(input: string): GuideReply {
   }
   if (/\b(price|pricing|cost|budget|tax|mortgage|rent|valuation|square footage|square feet|bedrooms|bathrooms|permit|inspection|wiring|voltage|hvac|thermostat|equipment|specifications?|model number|serial number|manufacturer|paint code|paint brand)\b/.test(words) || /\bhow much\b/.test(words)) {
     return { text: "I don't have verified pricing, property specifications, equipment records, or construction approvals in my public guide. The images show AI concepts, not installed or approved specifications. Ashley can help with property questions.", action: { menu: 'View' } };
+  }
+  if (/\b(built by|builder|builders|developer|buy your home|buyyourhomellc|wes|wes browning)\b/.test(words) || /\bwho (built|is building|developed) (you|pondster|the house)\b/.test(words)) {
+    return { text: 'Buy Your Home, LLC is the company behind Pondster. Its website describes buying, repairing, managing, and selling homes with personal service and flexible real estate options. Built By has the company overview, official website, and Wes Browning at 919-917-7466.', action: { menu: 'Built By' } };
   }
   if (/\b(jean|wright|si designer)\b/.test(words) || /\bwho (designed|created|made) (you|pondster)\b/.test(words) || has('who is your designer')) {
     return { text: "Jean Wright is my SI designer. I'm Pondster, the public house guide for 908 Pond Street. I can explain the site's public concepts; this guide does not send messages to Jean." };
@@ -76,5 +79,5 @@ export function answerPondster(input: string): GuideReply {
   if (has('view')) return { text: 'View introduces Ashley and the simulated viewing preview. For a real visit, arrange the details separately with Ashley.', action: { menu: 'View' } };
   if (/\b(design|designs|gallery|galleries|choices|colors|colours)\b/.test(words)) return { text: 'Design has six galleries: Kitchen, Media Center, Front Elevation, Garage Barn Door, ADU, and Master Bath. Available images are AI concepts; three galleries are awaiting images.', action: { menu: 'Design' } };
   if (/\b(address|location|where are you|where is pondster|pond street)\b/.test(words)) return { text: 'I am Pondster at 908 Pond Street. Contact Ashley to confirm a real viewing; the calendar and entry code here are demonstrations.', action: { menu: 'View' } };
-  return { text: "I can answer from Pondster's public site information: design concepts, simulated lighting, viewing previews, Ashley, Jean Wright, and future owner plans. I don't have a verified answer to that question." };
+  return { text: "I can answer from Pondster's public site information: design concepts, simulated lighting, viewing previews, Ashley, Jean Wright, Buy Your Home, LLC, and future owner plans. I don't have a verified answer to that question." };
 }

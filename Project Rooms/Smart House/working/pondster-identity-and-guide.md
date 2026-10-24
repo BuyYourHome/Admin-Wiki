@@ -7,7 +7,7 @@ Wes directly named the house **Pondster**, asked for viewers and potential owner
 ## Current website implementation
 
 - Pondster is the header brand, page metadata identity, Design introduction, Explore and Manage identity, View introduction, and footer identity. Jean Wright is credited as SI designer in the introduction, footer, guide introduction, and named-answer content.
-- A persistent Talk to Pondster control is mounted outside the four menu sections, preserving the guide conversation during navigation among Design, Explore, View, and Manage.
+- A persistent Talk to Pondster control is mounted outside the five menu sections, preserving the guide conversation during navigation among Design, Explore, View, Built By, and Manage.
 - Typed questions and quick prompts work without microphone access. The guide provides bounded public website answers and can navigate to room galleries, the viewing page, owner plans, or simulated lighting moods. It is a deterministic website guide, not an unrestricted general AI service or a live connection to Jean's chat.
 - Browser speech recognition and speech synthesis provide optional named voice interaction where supported. Listening starts only after the visitor chooses Listen and grants microphone permission. Say Pondster or Jean Wright with a question. Speech replies are opt-in; starting Listen enables them, and the visitor can turn them off or request Read aloud.
 - Listening status, Stop voice, close, Escape, and unsupported/denied/service error messages are visible. Close, Stop, and leaving the active tab stop listening; late recognition results cannot reopen it. The guide pauses recognition while it speaks, then resumes an explicitly requested listening session. It remains mounted while changing menus.

@@ -6,7 +6,7 @@ Plan the digital identity, website/digital twin, buyer demonstrations, owner kno
 
 Wes authorized beginning the Pond Street website in this chat on 2026-10-18, then reported purchasing `Pondstr.com` through GoDaddy and requested ChatGPT hosting. The first implementation under `site/` includes simulated lighting and a planned owner-information library. ChatGPT Sites hosting and connecting the purchased domain are now in scope. Purchases, live device connections/control, and production home automations remain outside scope. Wes requested public access without login on 2026-10-23; the existing website is now public.
 
-Wes named the house **Pondster** and identified **Jean Wright as its SI designer** on 2026-10-23. The public site offers a persistent public-information guide with typed questions and optional browser voice across Design, Explore, View, and Manage. See [[Project Rooms/Smart House/working/pondster-identity-and-guide]].
+Wes named the house **Pondster** and identified **Jean Wright as its SI designer** on 2026-10-23. The public site offers a persistent public-information guide with typed questions and optional browser voice across Design, Explore, View, Built By, and Manage. See [[Project Rooms/Smart House/working/pondster-identity-and-guide]].
 
 ## Status And Ownership
 
@@ -45,7 +45,7 @@ This planning-only room does not need a routine transaction log at setup. Centra
 
 ## Boundaries And Next Actions
 
-Wes subsequently authorized website implementation and public Sites hosting at `https://pondstr.com`. Preserve public browsing without a login gate. See [[Project Rooms/Smart House/working/hosting-and-domain]] for deployment identity and [[Project Rooms/Smart House/working/design-galleries-and-voting]] for the Design, Explore, View, Manage navigation and gallery voting requirements. View now features Ashley Morello and a clearly labeled self-viewing calendar/code demonstration; see [[Project Rooms/Smart House/working/viewing-and-realtor]]. Live device configuration and private owner records remain outside this public website.
+Wes subsequently authorized website implementation and public Sites hosting at `https://pondstr.com`. Preserve public browsing without a login gate. See [[Project Rooms/Smart House/working/hosting-and-domain]] for deployment identity and [[Project Rooms/Smart House/working/design-galleries-and-voting]] for the Design, Explore, View, Manage navigation and gallery voting requirements. View now features Ashley Morello and a clearly labeled self-viewing calendar/code demonstration; see [[Project Rooms/Smart House/working/viewing-and-realtor]]. The Built By menu features Buy Your Home, LLC using its official website; see [[Project Rooms/Smart House/working/built-by-page]]. Live device configuration and private owner records remain outside this public website.
 
 ## Central Rules
 

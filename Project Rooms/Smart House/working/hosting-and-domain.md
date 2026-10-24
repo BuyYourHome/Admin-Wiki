@@ -52,9 +52,9 @@ Wes requested removal of the website login requirement so the public can access 
 
 Wes requested Design, Explore, View, and Manage navigation and six room galleries with public voting. The website now uses the supported Sites Vinext Worker runtime and logical D1 binding `DB`, with no R2 binding. Public access and the existing custom domain were preserved. The database migration creates only the vote schema; no synthetic votes were seeded into production.
 
-- Current Site source commit: `7024e3b7b8c1723c23c8290f418a4d6ceabde69e`.
-- Current saved version: `appgprj_6ad4d98e08708191858cab113814704e~appgver_3839e40551188191b746ab2f3951d2d8` (version 7).
-- Current deployment: `appgdep_6adc307597788191a8c32c5400394b2e`, confirmed `succeeded` at 2026-10-24 12:13 AM Eastern (`2026-10-24T04:13:48.838342Z`).
+- Current Site source commit: `03e994d10a2c6b5aecfcf90fd53899fa3d8daa59`.
+- Current saved version: `appgprj_6ad4d98e08708191858cab113814704e~appgver_4d8df4829a2c81919884311cd22903de` (version 8).
+- Current deployment: `appgdep_6adc32ec58008191be53fe31747626ce`, confirmed `succeeded` at 2026-10-24 12:24 AM Eastern (`2026-10-24T04:24:19.387662Z`).
 - Live URL: https://pondstr.com . The original Sites URL remains https://pondstr.coolnewt4097.chatgpt.site .
 - Media Center has six supplied color concepts; Front Elevation has two concepts; Garage Barn Door has three concepts. Kitchen, ADU, and Master Bath await images.
 
@@ -74,3 +74,7 @@ The production build passed. Local browser checks found and resolved a controlle
 Version 7 establishes Pondster as the house identity throughout header branding, metadata, introductions, gallery copy, and footer, preserving the 908 Pond Street address and current domain. It credits Jean Wright as SI designer, exactly as Wes instructed. A persistent public website guide supports typed questions and optional browser speech across Design, Explore, View, and Manage. It can open galleries/pages and change the lighting illustration; it has no live house or owner-system access.
 
 The focused knowledge/routing checks, TypeScript check, and production build passed. Local browser checks verified named Jean answers, Front Elevation navigation, an Evening simulation request, retained conversation across all menus, keyboard close/focus return, and phone fitting without overflow. The published custom domain displayed the Pondster title/brand and answered the Jean Wright prompt. No microphone was opened for testing; actual microphone recognition and audible playback remain unverified end to end and depend on browser support, permission, and the browser speech service. The UI provides explicit listening controls, error/unsupported fallback, typed input, and a speech-service privacy notice. The local preview was stopped after verification. See [[Project Rooms/Smart House/working/pondster-identity-and-guide]].
+
+Version 8 adds Built By between View and Manage, with a direct `#built-by` link. It features Buy Your Home, LLC using its official website: a visually verified copy of the linked header graphic, a short paraphrased company overview and services, Wes Browning at 919-917-7466, and official website/About links. No private data, financing guarantees, or contractor-license claims were added. The original company image is packaged only in the separate Sites repo; the Wiki stores code and source references.
+
+Pondster answers who built it and can navigate to Built By; Wes contact requests open the company page. Focused routing checks, TypeScript checking, and the production build passed. Local browser checks verified the direct link, guide navigation from Manage, the 900-by-270 logo loading, and correct HTTPS and telephone links. Phone preview showed all five menu items within the 375-pixel page, no horizontal overflow, and a 287-pixel logo. The published custom domain displayed the new menu and complete company page. Public access, existing concepts/video, voting, domain, and device boundaries remain unchanged. See [[Project Rooms/Smart House/working/built-by-page]].
