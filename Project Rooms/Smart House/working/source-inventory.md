@@ -48,3 +48,13 @@ Wes directly supplied `C:\Users\wesbr\Buy Your Home\Buy Your Home - Property\26-
 The long descriptive filenames match the short aliases by SHA-256; count six distinct voting choices. The baseline is reference material, not another voting choice. Surrounding walls remain neutral warm off-white and the honey-toned floor remains unchanged. Selected copies are prefixed `media-` in the separate Sites source repository; originals and image binaries remain outside Admin Wiki Git.
 
 Kitchen, ADU, and Master Bath images have not been supplied for their requested galleries.
+
+## Media Center motion concept — 2026-10-23
+
+Wes supplied `C:\Users\wesbr\Buy Your Home\Buy Your Home - Property\26-BYH -908 Pond St\Owning\Planning\TV-Motion-20261023` and authorized its video as the main visual of Design > Media Center on 2026-10-23, above the six existing color voting choices.
+
+- Video: `908-Pond-TV-Opening-Art-to-Football.mp4`; public copy `/media/media-center-art-to-football.mp4`.
+- Poster: `01-retracted-art.png`; public copy `/media/media-center-art-poster.png`. `02-extended-football.png` is the ending-state source reference.
+- `README.txt` lists 8 seconds, 1280×720, 30 fps, H.264 MP4, using Imagegen imagery and composited movement. Reviewed both stills: framed still-life artwork transitions to football as the TV moves into viewing position. The motion is illustrative; mount mechanics have not been validated.
+
+Use native video controls, `playsInline`, the poster, and metadata preload, with no autoplay and an illustrative caption. Keep all source binaries outside Admin Wiki Git and package public copies only in the dedicated Sites repository. Published as Sites version 5; verification and deployment details are recorded in [[Project Rooms/Smart House/working/hosting-and-domain]].

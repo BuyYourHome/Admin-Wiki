@@ -19,6 +19,12 @@ The Media Center choices pair warm ivory cream with mushroom taupe, dusty sage w
 
 Kitchen, ADU, and Master Bath still need design images; show honest empty states and no voting for invented choices. Concepts remain labeled as AI studies, not measured drawings or current-condition photos. Keep source binaries outside Admin Wiki Git and package selected copies only in the dedicated Sites source repository.
 
+## Featured Media Center video
+
+On 2026-10-23 Wes authorized the TV motion video as the main visual of Design > Media Center, above the six existing color voting choices. See [[Project Rooms/Smart House/working/source-inventory#Media Center motion concept — 2026-10-23|the exact video source and poster]]. The six color concepts remain the voting choices.
+
+Use `/media/media-center-art-to-football.mp4` with poster `/media/media-center-art-poster.png`, native controls, `playsInline`, `preload="metadata"`, and no autoplay. Caption the artwork-to-football movement as an illustrative AI/composited concept whose mount mechanics have not been validated. Source notes list 8 seconds, 1280×720, 30 fps, H.264 MP4. Keep video and image binaries outside Admin Wiki Git; public copies belong only in the dedicated Sites repository. Published as Sites version 5; production build, local and live playback checks, and phone-layout validation passed. See [[Project Rooms/Smart House/working/hosting-and-domain]] for the current deployment.
+
 ## Vote behavior
 
 The site stays public. Voting requires no ChatGPT login and collects no names, email addresses, or IP addresses in the vote table. A random, site-scoped HTTP-only cookie identifies one browser. There is one current choice per browser per gallery; choosing a different design replaces that browser's earlier choice. Clearing cookies or using another browser can produce another vote; this is a preference poll, not verified one-person voting.
