@@ -52,9 +52,9 @@ Wes requested removal of the website login requirement so the public can access 
 
 Wes requested Design, Explore, View, and Manage navigation and six room galleries with public voting. The website now uses the supported Sites Vinext Worker runtime and logical D1 binding `DB`, with no R2 binding. Public access and the existing custom domain were preserved. The database migration creates only the vote schema; no synthetic votes were seeded into production.
 
-- Current Site source commit: `45a5c9ef4b3d84237fa150d7711bac602b7eb828`.
-- Current saved version: `appgprj_6ad4d98e08708191858cab113814704e~appgver_24d6abde671c8191823efa0955d8638d` (version 16).
-- Current deployment: `appgdep_6adcb1f030888191ad1cf3aacbee2393`, confirmed `succeeded` at 2026-10-24 9:26 AM Eastern (`2026-10-24T13:26:15.735484Z`).
+- Current Site source commit: `d2824f40f0f9d3edfe122cd09959652815098a47`.
+- Current saved version: `appgprj_6ad4d98e08708191858cab113814704e~appgver_3a2f17a3e09881919d69bcf3d3f90589` (version 17).
+- Current deployment: `appgdep_6adcb3737a908191b66d78d422be16ff`, confirmed `succeeded` at 2026-10-24 9:32 AM Eastern (`2026-10-24T13:32:43.030216Z`).
 - Live URL: https://pondstr.com . The original Sites URL remains https://pondstr.coolnewt4097.chatgpt.site .
 - Media Center has six supplied color concepts; Front Elevation has two concepts; Garage Barn Door has three concepts. Kitchen, ADU, and Master Bath await images.
 
@@ -140,3 +140,8 @@ Version 16 removes the forced break in View's “Come meet me” heading and kee
 The production build passed. Browser checks at 1280 and 760 pixels confirmed a one-line heading and room between the enlarged brand and navigation. A 390-pixel phone preview had 375-pixel content without horizontal overflow, all five menu items, and a 40-pixel wordmark. Computed transforms changed between observations, confirming the logo animation was running; the reduced-motion override was reviewed in source. No microphone or production writes were used for testing.
 
 The official Sites helper pushed and packaged the exact built source, and Sites confirmed version 16 deployed successfully. The custom domain displayed the larger wordmark and single-line heading, with the logo animation applied. A live screenshot was saved outside Git for the completion response. Public audience, domain, voting, comments, first-person narrative, and house-system boundaries are preserved. The local preview was stopped after verification.
+## Media Center autoplay — 2026-10-24
+
+Wes requested automatic video playback. Version 17 adds native `autoPlay` and `muted` to the existing Media Center video, retaining looping, inline playback, manual controls, the poster, and the same silent kitchen-view clip. This supersedes the prior no-autoplay behavior. Browser preferences and media policies can still require manual play.
+
+The production build passed. In the local browser, playback started when the player entered the visible page, without pressing Play. After successful deployment, the custom domain likewise showed autoplay and muted enabled, looping retained, `paused: false`, advancing time, and no media error after scrolling the player into view. A live screenshot was saved outside Git. No database writes or microphone access were used. The owned local preview was stopped after verification.
