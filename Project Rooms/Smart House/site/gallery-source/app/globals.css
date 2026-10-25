@@ -19,10 +19,11 @@ body{padding-bottom:95px}.pondster-welcome{margin:0 4% 30px;padding:20px 24px;bo
 .comments-ask{display:inline;background:none;border:0;padding:0;color:var(--accent);font:inherit;text-decoration:underline;text-underline-offset:3px;cursor:pointer}.comments-ask:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
 .media-source{font-size:10px;line-height:1.8;margin:12px 0 0;padding-top:12px;border-top:1px solid var(--line)}.media-source a{text-decoration:underline;text-underline-offset:3px}
 
-/* Give Pondster a clear signature and a little light in its house mark. */
+/* Pondster signs its name in a locally hosted, readable script. */
+@font-face{font-family:'Pondster Signature';src:url('/fonts/allura/Allura-Regular.ttf') format('truetype');font-style:normal;font-weight:400;font-display:swap}
 .brand{gap:18px;flex-shrink:0}
 .brand-copy{display:block}
-.brand-name{display:block;font:500 clamp(34px,3.7vw,54px)/1 Georgia,'Times New Roman',serif;letter-spacing:-1.5px}
+.brand-name{display:block;font:400 clamp(52px,5.1vw,76px)/.95 'Pondster Signature','Segoe Script','Brush Script MT',cursive;letter-spacing:0;padding-inline:.04em;font-synthesis:none}
 .brand-copy small{font-size:11px;letter-spacing:.6px;margin-top:9px}
 .monogram{position:relative;isolation:isolate;overflow:hidden;flex:0 0 58px;width:58px;height:64px;display:flex;flex-direction:column;align-items:center;justify-content:center;font-size:40px;line-height:1;letter-spacing:0;border-color:#9d8d66;background:linear-gradient(145deg,#fffdf7,#e8e9dd);transition:transform .25s,box-shadow .25s}
 .monogram small{margin-top:5px}
@@ -33,7 +34,7 @@ body{padding-bottom:95px}.pondster-welcome{margin:0 4% 30px;padding:20px 24px;bo
 .viewing-intro h1{white-space:nowrap;font-size:clamp(36px,4.7vw,70px)}
 @keyframes pondster-light{0%,12%{transform:translateX(-140%) skewX(-15deg)}30%,100%{transform:translateX(140%) skewX(-15deg)}}
 @keyframes pondster-glint{0%,12%,34%,100%{opacity:.4;transform:rotate(45deg) scale(.7)}23%{opacity:1;transform:rotate(45deg) scale(1.2)}}
-@media(max-width:720px){.brand{gap:14px}.brand-name{font-size:40px}.brand-copy small{font-size:10px;margin-top:7px}.monogram{flex-basis:50px;width:50px;height:57px;font-size:36px}.viewing-intro h1{white-space:normal}}
+@media(max-width:720px){.brand{gap:14px}.brand-name{font-size:60px}.brand-copy small{font-size:10px;margin-top:16px}.monogram{flex-basis:50px;width:50px;height:57px;font-size:36px}.viewing-intro h1{white-space:normal}}
 @media(prefers-reduced-motion:reduce){.monogram::before,.monogram::after{animation:none}.monogram::after{display:none}.brand:hover .monogram,.brand:focus-visible .monogram{transform:none}}
 
 .garage-media-feature video{aspect-ratio:5/2}

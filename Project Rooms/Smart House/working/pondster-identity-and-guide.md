@@ -80,6 +80,14 @@ This changes voice, not authority or facts. Jean Wright remains a static SI desi
 
 ## Brand prominence and logo motion — 2026-10-24
 
-Wes requested a larger, predominant Pondster headline, an animated logo, and a single-line “Come meet me” heading on desktop. The shared header uses a large serif Pondster wordmark with a subordinate first-person tagline. View's forced heading break is removed; desktop keeps the phrase together, while phones may wrap naturally if needed. Keep all five navigation items usable and the brand readable at narrow widths.
+Wes requested a larger, predominant Pondster headline, an animated logo, and a single-line “Come meet me” heading on desktop. The initial shared header used a large serif Pondster wordmark with a subordinate first-person tagline; the version 37 signature styling below supersedes that serif treatment. View's forced heading break is removed; desktop keeps the phrase together, while phones may wrap naturally if needed. Keep all five navigation items usable and the brand readable at narrow widths.
 
 Wes then requested a more animated logo with a stylized growing vine and fireworks. The current header draws a curling vine around the P/HOME monogram and beneath the wordmark, opens seven leaves, and finishes with two small bursts. The sequence finishes within 4.8 seconds and replays on pointer entry or keyboard focus. The earlier light sweep/glint now runs once. Reduced-motion preferences show a static vine and hide fireworks, with no hover lift. The artwork is decorative and cannot block the home link or menu. See the version 24 release in [[Project Rooms/Smart House/working/hosting-and-domain]].
+
+## Signature headline — version 37, 2026-10-25
+
+Wes requested: “I want the head line Pondster to be a signature.” The published change scopes self-hosted Allura Regular to `.brand-name`, with 400 weight, normal letterspacing, 52–76px desktop sizing, and 60px mobile sizing. Existing green ink, vine/fireworks, tagline text, and accessible Pondster home-link text remain unchanged. A 16px mobile tagline top margin keeps it clear of the vine leaves.
+
+Official source: https://github.com/google/fonts/tree/main/ofl/allura . The font uses OFL 1.1; its license ships alongside it in the public Sites source. TTF SHA256: `9C142B2E515832C0DFC4FF8B8EA18F40314943BF937B72E2B23C4661BAC14CC6`. Keep the font binary outside Admin Wiki Git.
+
+Local Chrome at 1920×911 and 390×844 confirmed the loaded signature was readable and uncropped, with the mobile tagline clear of the vine. The production build and version 37 publication passed. Fresh https://pondstr.com/#design visually confirmed the signature, home link, menu, and existing header text. Proof is outside Git at `C:\Users\wesbr\.codex\visualizations\2026\10\25\pondster-signature-live.png`. Exact release identifiers are in [[Project Rooms/Smart House/working/hosting-and-domain]]. No production votes, comments, bookings, or voice usage occurred.
