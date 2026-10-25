@@ -52,11 +52,11 @@ Wes requested removal of the website login requirement so the public can access 
 
 Wes requested Design, Explore, View, and Manage navigation and six room galleries with public voting. The website now uses the supported Sites Vinext Worker runtime and logical D1 binding `DB`, with no R2 binding. Public access and the existing custom domain were preserved. The database migration creates only the vote schema; no synthetic votes were seeded into production.
 
-- Current Site source commit: `d0f3a2562b0e06d2b0a9da893d96f7a0434b6f9c`.
-- Current saved version: `appgprj_6ad4d98e08708191858cab113814704e~appgver_966a18e75598819184206609fbc4ebd6` (version 28).
-- Current deployment: `appgdep_6add61771afc81918b2215eddf2c46fa`, confirmed `succeeded` at 2026-10-24 9:55 PM Eastern (`2026-10-25T01:55:11.768848+00:00`).
+- Current Site source commit: `5a726bc9f4450fdc5097b89ced336745007dfc6e`.
+- Current saved version: `appgprj_6ad4d98e08708191858cab113814704e~appgver_c9afbb5479408191aab34655d820cd5d` (version 29).
+- Current deployment: `appgdep_6ade4b4b255c8191923430ff1df7d6f2`, confirmed `succeeded` at 2026-10-25 2:32 PM Eastern (`2026-10-25T18:32:53.319989+00:00`).
 - Live URL: https://pondstr.com . The original Sites URL remains https://pondstr.coolnewt4097.chatgpt.site .
-- Media Center has six supplied color concepts; Front Elevation has two concepts; Garage Barn Door has three concepts. Kitchen, ADU, Master Bath, Spiral Staircase, and Back Deck await images.
+- Media Center has six supplied color concepts; Front Elevation has two concepts; Garage Barn Door has three concepts; Master Bath has six color studies. Kitchen, ADU, Spiral Staircase, and Back Deck await images.
 
 The official source helper pushed and packaged the matching built source; the native Sites save/deploy operations confirmed publication. Final read-only checks against the custom domain returned HTTP 200 and zero initial Media Center votes, with secure HTTP-only voter-cookie initialization. Browser verification showed all six Media Center images loaded. Local-only tests covered saving, repeated votes, changing choices, separate visitor totals, missing cookies, invalid choices, empty galleries, and origin rejection. The local preview was stopped after verification.
 
@@ -233,3 +233,13 @@ Version 28 repairs browser voice lifecycle and feedback following Wes's failure 
 Deterministic browser-engine tests, the existing guide suite, TypeScript checking, and production build passed. Local browser checks confirmed the two modes without activating listening, typed Jean Wright credit, Escape/focus recovery, and a 351-pixel panel within 375-pixel phone content at a 390×844 viewport. The official source helper pushed and packaged the matching source, and Sites confirmed successful publication. The custom-domain page displayed the new controls and instructions; a screenshot was saved outside Git.
 
 No live microphone or audible-output test was performed, so the particular browser/service failure experienced by Wes remains unverified. No microphone permission was granted and no ambient audio was captured. The repair adds no audio-upload endpoint, transcript storage, paid speech provider, house-system connection, or designer persona. Public audience, domain, votes, comments, and simulated viewing remain as before.
+
+## Master Bath color voting — 2026-10-25
+
+Version 29 adds six Master Bath voting choices: Warm Ivory, Soft Dusty Blue, Deep Navy, Forest Green, Mushroom Taupe, and Muted Terracotta. Wes's selected sage layout and original framing photo are saved beside the six full-resolution PNG studies and web JPEGs in the verified property Planning folder `Master-Bath-Color-Options-20261025`. The sage baseline is a saved reference rather than a seventh vote. Exact paths, palette pairings, prompts, hashes, and design intent are recorded in [[Project Rooms/Smart House/working/master-bath-color-concepts]] and [[Project Rooms/Smart House/working/source-inventory]]. No image binary enters Admin Wiki Git.
+
+The six `/concepts/master-bath-*.jpg` images preserve the refined three-plane layout, granite, gold accents, concealed cove lighting, and corrected mirror mapping. Each is 1672×941 and about 300–323 KB, encoded without cropping or resizing. Shared catalog entries supply the gallery and vote allowlist, Explore's room features, and Pondster's guide. Explicit room wording takes priority over overlapping color names. Existing 11 choices are unchanged, for 17 choices across eight galleries. No vote schema migration is needed.
+
+Visual review, TypeScript, focused guide checks, complete local vote API regression, and production build passed. Local browser checks loaded all six images, changed a Warm Ivory vote to Deep Navy, opened the full-size viewer, and confirmed 345-pixel cards inside 375-pixel content at a 390-pixel phone viewport. A deliberate cross-origin probe is rejected by Vite before the JSON route; the local test handles only that exact plain-text 403 and requires JSON for other responses. Test votes remained local.
+
+The official source helper pushed and packaged the matching source; Sites confirmed version 29 deployed successfully. A fresh custom-domain check showed all six named voting cards, zero current Master Bath votes, correct guide navigation and choice list, and the first-row images. A live screenshot was saved outside Git. No production vote, comment, booking, microphone access, or house-system action occurred. Public audience and DNS are unchanged.

@@ -22,6 +22,39 @@ for (const gallery of galleries) {
   }
   if (!gallery.designs.length) assert.match(reply.text, /images still to come/);
 }
+const masterBath = galleries.find(gallery => gallery.id === 'master-bath');
+assert.deepEqual(masterBath.designs.map(design => [design.id, design.title]), [
+  ['bath-warm-ivory', 'Warm Ivory'],
+  ['bath-dusty-blue', 'Soft Dusty Blue'],
+  ['bath-deep-navy', 'Deep Navy'],
+  ['bath-forest-green', 'Forest Green'],
+  ['bath-mushroom-taupe', 'Mushroom Taupe'],
+  ['bath-muted-terracotta', 'Muted Terracotta']
+]);
+assert.equal(new Set(galleries.flatMap(gallery => gallery.designs.map(design => design.id))).size, galleries.reduce((sum, gallery) => sum + gallery.designs.length, 0), 'Design IDs stay unique across galleries.');
+assert.ok(masterBath.designs.every(design => design.image === `master-${design.id}.jpg`));
+assert.ok(masterBath.designs.every(design => !/sage|baseline/i.test(design.id)), 'The sage baseline stays outside the six voting choices.');
+for (const design of masterBath.designs) {
+  const reply = answerPondster(`Show my Master Bath ${design.title}`);
+  assert.deepEqual(reply.action, {menu:'Design',room:'master-bath'});
+  assert.ok(reply.text.includes(design.title));
+}
+for (const [room, phrase, expected] of [
+  ['master-bath', 'Master Bath ivory', 'Warm Ivory'],
+  ['master-bath', 'Master Bath navy', 'Deep Navy'],
+  ['master-bath', 'Master Bath taupe', 'Mushroom Taupe'],
+  ['media-center', 'Media Center warm ivory', 'Warm Ivory Cream'],
+  ['media-center', 'Media Center navy', 'Deep Muted Navy Blue'],
+  ['media-center', 'Media Center taupe', 'Medium Mushroom Taupe']
+]) {
+  const reply = answerPondster(`Show ${phrase}`);
+  assert.deepEqual(reply.action, {menu:'Design',room});
+  assert.ok(reply.text.includes(expected), `The explicit room scopes an overlapping color: ${phrase}`);
+}
+const bathFeatures = answerPondster('What are my Master Bath features?');
+assert.deepEqual(bathFeatures.action, {menu:'Explore'});
+assert.match(bathFeatures.text, /6 cabinet color studies/);
+assert.match(bathFeatures.text, /baseline.*separate.*six voting choices/);
 assert.deepEqual(answerPondster('Try the evening lighting').action, {menu:'Explore',scene:'evening'});
 assert.deepEqual(answerPondster('Pondster unwind').action, {menu:'Explore',scene:'relax'});
 assert.match(answerPondster('Turn on the lights').text, /don’t control real house lighting/);
@@ -61,4 +94,4 @@ assert.match(answerPondster('Tell me about Buy Your Home LLC').text, /Buy Your H
 assert.deepEqual(answerPondster('Call Wes').action, {menu:'Built By'});
 assert.match(answerPondster('What is your address?').text, /location is confidential.*witness protection/);
 assert.doesNotMatch(answerPondster('What is your address?').text, /908|Pond Street|Dean|anonymously/);
-console.log('PASS: Pondster identity and exclusive wake name, Jean designer credit, confidential location, all current galleries/choices, scenes, video, non-mutating voting, simulated viewing, public contact, owner boundaries, and unknown-fact refusal.');
+console.log('PASS: Pondster identity and exclusive wake name, Jean designer credit, confidential location, all current galleries/choices, six Master Bath choices and overlapping color navigation, scenes, video, non-mutating voting, simulated viewing, public contact, owner boundaries, and unknown-fact refusal.');

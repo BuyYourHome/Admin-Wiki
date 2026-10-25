@@ -25,7 +25,13 @@ Garage Barn Door uses concepts 06, 07, and 08. Wes supplied six Media Center con
 
 The Media Center choices pair warm ivory cream with mushroom taupe, dusty sage with pale cream, navy with greige, mushroom taupe with ivory, olive with sand, and charcoal with terracotta clay. Accent colors refer only to the central TV backdrop; surrounding walls stay warm off-white and the honey-toned wood floor stays unchanged. These are concept names, not manufacturer paint specifications.
 
-Five galleries still need design images: Kitchen, ADU, Master Bath, Spiral Staircase, and Back Deck. Show honest empty states and no voting for invented choices. Concepts remain labeled as AI studies, not measured drawings or current-condition photos. Keep source binaries outside Admin Wiki Git and package selected copies only in the dedicated Sites source repository.
+As of 2026-10-25, Master Bath has six owner-authorized color studies. Kitchen, ADU, Spiral Staircase, and Back Deck still need design images; show honest empty states and no voting for invented choices. There are 17 choices across eight galleries, preserving the original 11 choices. Concepts remain labeled as AI studies, not measured drawings or current-condition photos. Keep source binaries outside Admin Wiki Git and package selected copies only in the dedicated Sites source repository.
+
+## Master Bath color choices — 2026-10-25
+
+Wes asked to save the refined sage layout, create six color variations, and add Master Bath voting choices. The saved baseline is a reference rather than a seventh vote. The six new choices are Warm Ivory, Soft Dusty Blue, Deep Navy, Forest Green, Mushroom Taupe, and Muted Terracotta. They keep the refined three-plane vanity layout, continuous granite, recessed granite drawer, gold hardware, concealed cove lighting, and corrected mirror reflections. Exact IDs, external saved paths, prompts, and validation are in [[Project Rooms/Smart House/working/master-bath-color-concepts]].
+
+Use the existing named buttons above pictures, full-size viewer, one-current-choice cookie/D1 behavior, and public concept labels. The catalog also supplies the vote allowlist and Pondster's public palette choices. Explicit room wording takes precedence when a color name overlaps Media Center. No schema migration, live house action, or production test vote is needed.
 
 ## Featured Media Center video
 

@@ -1,4 +1,4 @@
-import { roomFeatures, systemFeatures } from './features.js';
+import { masterBathDesigns, roomFeatures, systemFeatures } from './features.js';
 
 export type GuideAction = { menu: 'Design' | 'Explore' | 'View' | 'Own' | 'Built By'; room?: string; scene?: 'day' | 'evening' | 'relax' };
 export type GuideReply = { text: string; action?: GuideAction };
@@ -14,7 +14,7 @@ const rooms = [
   { id: 'front-elevation', name: 'Front Elevation', aliases: ['front elevation', 'front exterior', 'front of the house', 'exterior', 'shutters'], choices: ['Warm welcome', 'Black shutters'] },
   { id: 'garage-barn-door', name: 'Garage Barn Door', aliases: ['garage', 'barn door'], choices: ['Warm white board & batten', 'Charcoal green board & batten', 'Limewashed brick'] },
   { id: 'adu', name: 'ADU', aliases: ['adu', 'accessory dwelling unit'], choices: [] as string[] },
-  { id: 'master-bath', name: 'Master Bath', aliases: ['master bath', 'primary bath', 'main bath', 'bathroom'], choices: [] as string[] },
+  { id: 'master-bath', name: 'Master Bath', aliases: ['master bath', 'primary bath', 'main bath', 'bathroom'], choices: masterBathDesigns.map(design => design.title) },
   { id: 'spiral-staircase', name: 'Spiral Staircase', aliases: ['spiral staircase', 'spiral stairs', 'staircase', 'stairs'], choices: [] as string[] },
   { id: 'back-deck', name: 'Back Deck', aliases: ['back deck', 'rear deck', 'deck'], choices: [] as string[] }
 ];
@@ -25,6 +25,12 @@ const choiceAliases: Record<string, string[]> = {
   'Medium Mushroom Taupe': ['mushroom', 'taupe'],
   'Deep Muted Olive Green': ['olive'],
   'Rich Charcoal Gray': ['rich charcoal', 'charcoal gray', 'charcoal grey', 'charcoal clay'],
+  'Warm Ivory': ['ivory'],
+  'Soft Dusty Blue': ['dusty blue'],
+  'Deep Navy': ['navy'],
+  'Forest Green': ['forest'],
+  'Mushroom Taupe': ['mushroom', 'taupe'],
+  'Muted Terracotta': ['terracotta'],
   'Warm welcome': ['wood shutters', 'wooden shutters'],
   'Black shutters': ['black shutter'],
   'Warm white board & batten': ['warm white', 'white board and batten'],
@@ -72,8 +78,11 @@ export function answerPondster(input: string): GuideReply {
     return { text: 'I preview my future home guides, care and maintenance, and owner handover records on my Own page. I’m still planning those owner tools; I provide no private owner access or live device controls here.', action: { menu: 'Own' } };
   }
 
-  const choice = rooms.flatMap(room => room.choices.map(title => ({ room, title }))).find(item => [item.title, ...(choiceAliases[item.title] ?? [])].some(alias => has(alias)));
-  const room = choice?.room ?? rooms.find(item => item.aliases.some(alias => has(alias)));
+  const explicitRoom = rooms.find(item => has(item.name)) ?? rooms.find(item => item.aliases.some(alias => has(alias)));
+  const candidates = (explicitRoom ? [explicitRoom] : rooms).flatMap(room => room.choices.map(title => ({ room, title })));
+  const choice = [...candidates].sort((a, b) => b.title.length - a.title.length).find(item => has(item.title))
+    ?? candidates.find(item => (choiceAliases[item.title] ?? []).some(alias => has(alias)));
+  const room = explicitRoom ?? choice?.room;
   if (/\b(vote|voting|votes|favorite|favourite|choose|select)\b/.test(words)) {
     return { text: 'Use my gallery voting buttons to save or change your choice. I keep one current choice per browser per gallery. I can open the gallery; I do not cast votes for you.', action: { menu: 'Design', ...(room ? { room: room.id } : {}) } };
   }
