@@ -36,13 +36,21 @@ Wes reported that Pondster's voice feature did not work. Review found silent dis
 
 The repair uses an injected browser-speech controller with deterministic no-hardware tests covering direct questions, named requests and unmatched feedback, distinct failures, bounded idle reconnection, startup/playback timeouts, both recognition/speech completion orders, stale callbacks, tab hiding, and cleanup. TypeScript and the existing public-guide tests pass. Browser checks verify the new mode controls, typed fallback, keyboard close/focus recovery, and the panel fitting a 390×844 phone viewport without horizontal overflow. Actual microphone recognition and audible speaker playback were not exercised; neither microphone permission nor ambient audio was accessed. Browser/service dependence remains a real verification limit.
 
-## Validation
+## Chrome owner confirmation — 2026-10-25
 
-Focused resolver checks pass for the identity, exact Jean role, all eight galleries and eleven current choices, simulated scenes, video, voting boundaries, simulated viewing, Ashley contact, owner restrictions, and unavailable facts. TypeScript checking and the production build pass.
+Wes answered the earlier diagnostic question: Chrome listened but did not answer. Read-only inspection of his open Chrome tab showed the old “Say my name. Ask about me.” / “Listen for Pondster” interface, without the published Ask by voice repair. The tab was idle, with no unfinished typed question. Refreshing that same tab loaded the current controls from the existing version 29 publication; no code change or new deployment was needed.
+
+Wes then initiated Ask by voice himself. The page displayed recognized words, appended his question and Pondster's public feature reply, and showed “I’m speaking.” He answered the follow-up: **“It answers normally now.”** This confirms recognition and answering in the refreshed Chrome one-question flow, with owner-confirmed normal playback. Codex did not activate the microphone, grant microphone permission, or capture audio.
+
+The existing deterministic voice tests and an additional no-file cumulative-result probe passed. Named continuous listening and other browsers were not validated by this owner check. Initial no-microphone limitations below remain historical evidence of the earlier checks, superseded for this explicit Chrome flow by the owner confirmation.
+
+## Initial guide validation
+
+Focused resolver checks passed for the identity, exact Jean role, all eight galleries and eleven then-current choices, simulated scenes, video, voting boundaries, simulated viewing, Ashley contact, owner restrictions, and unavailable facts. TypeScript checking and the production build passed. Later Master Bath additions are recorded in [[Project Rooms/Smart House/working/master-bath-color-concepts]].
 
 Local browser checks confirmed Jean's answer, requested Front Elevation navigation, persistent conversation through Explore/View/Manage, and a requested Evening scene changing only the illustration. Escape closes the panel and returns keyboard focus to the launch control. A phone preview confirmed 375-pixel page/content width with the corrected panel entirely inside the viewport (left 12, right 363) and its bottom at 764 in an 844-pixel-high viewport.
 
-No microphone was opened for testing and no ambient audio was captured. Actual speech recognition and audible playback are implemented but have not been verified end to end with a live microphone. They remain dependent on browser support, microphone permission, and the browser's speech service. Typed questions and page navigation were verified in the browser. No live lock, appointment, message, or production vote was initiated by these checks.
+During the initial checks no microphone was opened and no ambient audio was captured; actual speech recognition and audible playback had not yet been verified end to end. They depend on browser support, microphone permission, and the browser's speech service. Typed questions and page navigation were verified in the browser. No live lock, appointment, message, or production vote was initiated by those checks. See the later Chrome owner confirmation above for the successful one-question voice check.
 
 Published as Sites version 7 at https://pondstr.com . The custom-domain browser check confirmed the Pondster identity and Jean Wright response. Public audience and the existing domain were preserved.
 
