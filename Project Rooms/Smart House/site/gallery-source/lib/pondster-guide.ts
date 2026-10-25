@@ -1,4 +1,4 @@
-import { basementColorSchemes, masterBathDesigns, roomFeatures, systemFeatures } from './features.js';
+import { basementColorSchemes, masterBathDesigns, masterBathTubDesigns, roomFeatures, systemFeatures } from './features.js';
 
 export type GuideAction = { menu: 'Design' | 'Explore' | 'View' | 'Own' | 'Built By'; room?: string; scene?: 'day' | 'evening' | 'relax' };
 export type GuideReply = { text: string; action?: GuideAction };
@@ -14,7 +14,7 @@ const rooms = [
   { id: 'front-elevation', name: 'Front Elevation', aliases: ['front elevation', 'front exterior', 'front of the house', 'exterior', 'shutters'], choices: ['Warm welcome', 'Black shutters'] },
   { id: 'garage-barn-door', name: 'Garage Barn Door', aliases: ['garage', 'barn door'], choices: ['Warm white board & batten', 'Charcoal green board & batten', 'Limewashed brick'] },
   { id: 'adu', name: 'ADU', aliases: ['adu', 'accessory dwelling unit'], choices: [] as string[] },
-  { id: 'master-bath', name: 'Master Bath', aliases: ['master bath', 'primary bath', 'main bath', 'bathroom'], choices: masterBathDesigns.map(design => design.title) },
+  { id: 'master-bath', name: 'Master Bath', aliases: ['master bath', 'primary bath', 'main bath', 'bathroom', 'tub and shower', 'tub shower', 'floating vanity'], choices: masterBathDesigns.map(design => design.title) },
   { id: 'spiral-staircase', name: 'Spiral Staircase', aliases: ['spiral staircase', 'spiral stairs', 'staircase', 'stairs', 'stair setting'], choices: ['Black spiral staircase', ...basementColorSchemes.map(scheme => `Stair setting · ${scheme.title}`)] },
   { id: 'back-deck', name: 'Back Deck', aliases: ['back deck', 'rear deck', 'deck'], choices: [] as string[] }
 ];
@@ -36,11 +36,18 @@ const choiceAliases: Record<string, string[]> = {
   'Warm white board & batten': ['warm white', 'white board and batten'],
   'Charcoal green board & batten': ['charcoal green'],
   'Limewashed brick': ['limewash', 'limewashed'],
+  ...Object.fromEntries(masterBathTubDesigns.map(design => [design.title, [design.title.replace('&', 'and'), design.title.replace(/^Tub & shower · /, '')]])),
   ...Object.fromEntries(basementColorSchemes.flatMap(scheme => [
     [`Basement · ${scheme.title}`, [scheme.title, scheme.title.replace('&', 'and')]],
     [`Stair setting · ${scheme.title}`, [scheme.title, scheme.title.replace('&', 'and')]]
   ]))
 };
+// Reuse established palette nicknames without changing their unscoped priority.
+for (const design of masterBathTubDesigns) {
+  const palette = design.title.replace(/^Tub & shower · /, '');
+  const original = masterBathDesigns.find(item => !item.id.startsWith('bath-tub-') && item.title.endsWith(palette));
+  if (original) choiceAliases[design.title].push(...(choiceAliases[original.title] ?? []));
+}
 const ashley = 'Ashley Morello is my realtor with Element Realty Group at Howard Hanna Allen Tate. You can reach her at ashley@elementrealtygroup.net or 919-417-0612.';
 function normalize(value: string) { return value.toLowerCase().replace(/[^a-z0-9]+/g, ' ').trim(); }
 function hasPhrase(input: string, phrase: string) { return ` ${input} `.includes(` ${normalize(phrase)} `); }
@@ -48,6 +55,10 @@ function hasPhrase(input: string, phrase: string) { return ` ${input} `.includes
 export function answerPondster(input: string): GuideReply {
   const words = normalize(input).replace(/^(?:(?:hey|hi|hello|okay|ok) )?pondster(?: |$)/, '').trim();
   const has = (phrase: string) => hasPhrase(words, phrase);
+  const tubContext = /\b(tubs?|showers?|bathtub|floating vanity)\b/.test(words);
+  const bathOperation = /\b(start|stop|fill|run|turn on|turn off|shut off|temperature|preferred|recognize|voice|activate|activated)\b/.test(words);
+  const tubDesignRequest = tubContext && !bathOperation && (masterBathTubDesigns.some(design => (choiceAliases[design.title] ?? []).some(alias => has(alias)))
+    || /\b(show|compare|designs?|galler(?:y|ies)|colou?rs?|palettes?|schemes?|choices?|finishes|features?|vote|voting|floating vanity)\b/.test(words));
   const identity = "I'm Pondster, the voice and identity of this house. My location is confidential for now—think witness protection, with better curb appeal. Jean Wright is my SI designer. Direct your questions to me about design concepts, the lighting simulation, viewing previews, the Built By company page, or owner plans.";
   if (!words || /^(hi|hello|hey|good morning|good afternoon|good evening|who are you|what is your name|what s your name)$/.test(words)) return { text: identity };
 
@@ -59,7 +70,7 @@ export function answerPondster(input: string): GuideReply {
   }
   const systemId = /\b(tankless|hot water|water heater|recirculation|recirculating|circulating system)\b/.test(words) ? 'hot-water'
     : /\b(proximity|occupancy|presence|multiple people)\b/.test(words) || (/\b(tv|television)\b/.test(words) && /\b(kitchen|living room)\b/.test(words) && /\b(automatic|automatically|people|empty|occupied|swing|swings|turn|turns)\b/.test(words)) ? 'presence'
-    : /\b(showers?|tubs?|bathtub)\b/.test(words) || (/\bbaths?\b/.test(words) && /\b(voice|activated|command|fill|temperature|preferred|stop|full)\b/.test(words)) ? 'bath-and-shower'
+    : !tubDesignRequest && (/\b(showers?|tubs?|bathtub)\b/.test(words) || (/\bbaths?\b/.test(words) && /\b(voice|activated|command|fill|temperature|preferred|stop|full)\b/.test(words))) ? 'bath-and-shower'
     : /\b(cameras?|surveillance)\b/.test(words) ? 'exterior-awareness' : null;
   if (systemId) {
     const feature = systemFeatures.find(item => item.id === systemId)!;
@@ -85,9 +96,10 @@ export function answerPondster(input: string): GuideReply {
     return { text: 'I preview my future home guides, care and maintenance, and owner handover records on my Own page. I’m still planning those owner tools; I provide no private owner access or live device controls here.', action: { menu: 'Own' } };
   }
 
-  const explicitRoom = rooms.find(item => has(item.name)) ?? rooms.find(item => item.aliases.some(alias => has(alias)));
-  const candidates = (explicitRoom ? [explicitRoom] : rooms).flatMap(room => room.choices.map(title => ({ room, title })));
-  const choice = [...candidates].sort((a, b) => b.title.length - a.title.length).find(item => has(item.title))
+  const explicitRoom = rooms.find(item => has(item.name)) ?? (tubDesignRequest ? rooms.find(item => item.id === 'master-bath') : rooms.find(item => item.aliases.some(alias => has(alias))));
+  const candidates = (explicitRoom ? [explicitRoom] : rooms).flatMap(room => room.choices.map(title => ({ room, title })))
+    .filter(item => !tubDesignRequest || item.room.id !== 'master-bath' || masterBathTubDesigns.some(design => design.title === item.title));
+  const choice = [...candidates].sort((a, b) => b.title.length - a.title.length).find(item => has(item.title) || has(item.title.replace('&', 'and')))
     ?? candidates.find(item => (choiceAliases[item.title] ?? []).some(alias => has(alias)));
   const room = explicitRoom ?? choice?.room;
   if (/\b(vote|voting|votes|favorite|favourite|choose|select)\b/.test(words)) {
@@ -104,7 +116,8 @@ export function answerPondster(input: string): GuideReply {
     const action: GuideAction = { menu: 'Design', room: room.id };
     if (choice) return { text: `I have ${choice.title} as an AI design concept in my ${room.name} gallery. I’m opening it so you can compare my options. My concept images do not confirm installed materials or finished work.`, action };
     if (!room.choices.length) return { text: `My ${room.name} gallery has design images still to come. I don’t have choices or specifications to share for it yet.`, action };
-    return { text: `I have ${room.choices.length} AI concept choices for my ${room.name}: ${room.choices.join('; ')}. I’m sharing visual studies, not confirmed materials or finished work.`, action };
+    const choices = tubDesignRequest && room.id === 'master-bath' ? masterBathTubDesigns.map(design => design.title) : room.choices;
+    return { text: `I have ${choices.length} AI concept choices for my ${room.name}: ${choices.join('; ')}. I’m sharing visual studies, not confirmed materials or finished work.`, action };
   }
   if (/\b(lights?|lighting|scenes?|daylight|daytime|evening|unwind|relax|night)\b/.test(words) || has('day mode')) {
     const scene: 'day' | 'evening' | 'relax' = /\b(unwind|relax|night)\b/.test(words) ? 'relax' : has('evening') ? 'evening' : 'day';

@@ -13,7 +13,7 @@ Wes reported buying `Pondstr.com` from GoDaddy and instructed Smart House to hos
 - Initial saved version: `appgprj_6ad4d98e08708191858cab113814704e~appgver_0176b707d1688191be325f28960f58a6`.
 - Initial deployment: `appgdep_6ad4dafedea88191934ecd974a287155`.
 - Canonical linkage: `site/.openai/hosting.json`.
-- Publication checkout: ignored `site/.hosting-work/work/gallery-release-20261025/` for version 32; the parent `site/.hosting-work/` preserves the pending natural-voice work. Current publication uses the supported Sites Vinext runtime, gallery code, existing schema migrations, 31 voting choices, and three concept films. Never publish the wiki, private records, credentials, or source inventories. The original static page remains as a historical local concept.
+- Publication checkout: ignored `site/.hosting-work/work/gallery-release-20261025/` for version 33; the parent `site/.hosting-work/` preserves the pending natural-voice work. Current publication uses the supported Sites Vinext runtime, gallery code, existing schema migrations, 37 voting choices, and three concept films. Never publish the wiki, private records, credentials, or source inventories. The original static page remains as a historical local concept.
 
 ## Pondstr.com connection
 
@@ -52,11 +52,11 @@ Wes requested removal of the website login requirement so the public can access 
 
 Wes requested Design, Explore, View, and Manage navigation and six room galleries with public voting. The website now uses the supported Sites Vinext Worker runtime and logical D1 binding `DB`, with no R2 binding. Public access and the existing custom domain were preserved. The database migration creates only the vote schema; no synthetic votes were seeded into production.
 
-- Current Site source commit: `dc48bfbe39c6cd00a2b85b15ea8b9fca51b30a54`.
-- Current saved version: `appgprj_6ad4d98e08708191858cab113814704e~appgver_4e06014f89308191a34f9365ec46a237` (version 32).
-- Current deployment: `appgdep_6ade7100bb2081919c7229b99fd995b3`, confirmed `succeeded` at 2026-10-25 5:13 PM Eastern (`2026-10-25T21:13:45.446819+00:00`).
+- Current Site source commit: `f9f26a6fe3ab3eebd2a42c74364019b50c263f91`.
+- Current saved version: `appgprj_6ad4d98e08708191858cab113814704e~appgver_1fc90c0d6b9c8191a32fb06448230e75` (version 33).
+- Current deployment: `appgdep_6ade7d8f6ca08191b8b753192c1dda8a`, confirmed `succeeded` at 2026-10-25 6:07 PM Eastern (`2026-10-25T22:07:21.053120+00:00`).
 - Live URL: https://pondstr.com . The original Sites URL remains https://pondstr.coolnewt4097.chatgpt.site .
-- Media Center has 13 choices; Front Elevation has two; Garage Barn Door has three; Master Bath has six; Spiral Staircase has seven. Kitchen, ADU, and Back Deck await images.
+- Media Center has 13 choices; Front Elevation has two; Garage Barn Door has three; Master Bath has 12; Spiral Staircase has seven. Kitchen, ADU, and Back Deck await images.
 
 The official source helper pushed and packaged the matching built source; the native Sites save/deploy operations confirmed publication. Final read-only checks against the custom domain returned HTTP 200 and zero initial Media Center votes, with secure HTTP-only voter-cookie initialization. Browser verification showed all six Media Center images loaded. Local-only tests covered saving, repeated votes, changing choices, separate visitor totals, missing cookies, invalid choices, empty galleries, and origin rejection. The local preview was stopped after verification.
 
@@ -279,4 +279,21 @@ Shared catalog, Explore features, Pondster's named palette routing, and tour win
 
 Guide and tour suites, TypeScript, the production build, and full local vote regression passed. Local checks confirmed saving/changing the new choices, no repeated-vote inflation, visitor isolation, and cross-gallery-ID rejection. Full-size image and 390-pixel phone checks passed. The combined prepared-voice checkout's guide/context checks and the code backup's guide/tour checks also passed, preserving the separate unpublished voice work.
 
-The official source helper pushed and packaged the matching production source; native Sites save/deploy confirmed success. Fresh Chrome checks on the custom domain showed 13 Media Center choices, seven Spiral Staircase choices, all six new named buttons in both galleries, and all six images loaded at their recorded full dimensions. The image viewer retained `contain` fitting. Live proof is saved at `C:\Users\wesbr\.codex\visualizations\2026\10\25\pondster-basement-colors-live.png`. No production test vote, comment, appointment, microphone access, or house-system action occurred. Public audience, DNS, and environment are unchanged. Natural voice remains prepared locally and inactive; its continuation now uses this production baseline.
+The official source helper pushed and packaged the matching production source; native Sites save/deploy confirmed success. Fresh Chrome checks on the custom domain showed 13 Media Center choices, seven Spiral Staircase choices, all six new named buttons in both galleries, and all six images loaded at their recorded full dimensions. The image viewer retained `contain` fitting. Live proof is saved at `C:\Users\wesbr\.codex\visualizations\2026\10\25\pondster-basement-colors-live.png`. No production test vote, comment, appointment, microphone access, or house-system action occurred. Public audience, DNS, and environment are unchanged. Natural voice remained prepared locally and inactive.
+
+## Six tub-and-shower color studies — 2026-10-25
+
+- Sites source commit: `f9f26a6fe3ab3eebd2a42c74364019b50c263f91`.
+- Saved version: `appgprj_6ad4d98e08708191858cab113814704e~appgver_1fc90c0d6b9c8191a32fb06448230e75`, version **33**.
+- Deployment: `appgdep_6ade7d8f6ca08191b8b753192c1dda8a`, succeeded at **2026-10-25T22:07:21.053120+00:00**, environment revision **0**.
+- Local archive: `C:\Users\wesbr\AppData\Local\Temp\pondster-bath-tub-colors-release-20261025.tar.gz`, 51,349,678 bytes; gzip-file SHA256 `0A89BB7C820AC89F2003F968A574AAAB570328519D7E9D3F1167B7A99523695D`.
+- Native archive record: 113 files, 53,524,480-byte tar; content SHA256 `3f7e4c27e0d9a126a0489bca8b38bb76b7dff854971cbbfd1c51695f59415d73`. This is the normalized tar record, distinct from the local compressed-file hash.
+- Native URL: https://pondstr.coolnewt4097.chatgpt.site . Custom domain: https://pondstr.com . Public audience retained.
+
+Wes supplied the tub/shower and floating-vanity image and chose six new color schemes for voting. Warm Ivory, Dusty Blue, Deep Navy, Forest Green, Mushroom Taupe, and Terracotta were independently edited from the same baseline with built-in image generation. Full PNGs, exact prompts, and source/web hashes are preserved outside Git. Web copies are 1672×941 JPEGs, quality 92/4:4:4, without resizing or cropping. See [[Project Rooms/Smart House/working/master-bath-tub-shower-colors]] for exact paths and visual scope.
+
+The new `bath-tub-{slug}` choices append after the unchanged original six vanity choices, for 12 Master Bath and 37 total choices across eight galleries. Named voting buttons remain above images, with a full-scene enlarged view. Shared features and Pondster's guide distinguish the new tub/shower palettes from the original vanity colors, including spoken “and” titles. A winning new study can become the Master Bath still in the unchanged eight-scene/three-film tour. No schema change or voice activation is included.
+
+Guide/tour suites, TypeScript, production build, and the full local vote suite passed, including changing/repeating choices without extra votes, visitor isolation, and cross-gallery rejection. Local Chrome saved Dusty Blue, confirmed its selected state, and opened a full-size `contain` viewer. At a 390×844 viewport, the Mushroom Taupe card was 345 pixels and its button/image 343 pixels within 375-pixel page content, without horizontal overflow; the override was reset. Both prepared code copies retain the separate unpublished voice work, and their guide/context checks pass.
+
+The official helper pushed and packaged the matching production source, and native Sites save/deploy confirmed successful version 33 publication. Fresh Chrome at the custom domain showed 12 Master Bath choices, all six new named voting buttons, and all six new images loaded at 1672×941. A typed “Show Tub and shower Deep Navy” returned that exact new choice and opened Master Bath. The live viewer preserved full-frame `contain` fitting. Proof is saved at `C:\Users\wesbr\.codex\visualizations\2026\10\25\pondster-master-bath-tub-shower-live.png`. No production test votes, comments, appointments, microphone access, or house-system actions occurred. Public access, DNS, environment, and existing films are unchanged. Natural voice remains prepared locally and inactive; its continuation uses this production baseline.

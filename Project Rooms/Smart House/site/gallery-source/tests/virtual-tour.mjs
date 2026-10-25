@@ -100,6 +100,20 @@ for (const [roomId, designId, image] of [
   assert.equal(motion.video, tour.find(scene => scene.id === motion.id).video, 'The original film stays separate from the new color winner.');
 }
 
+const tubTour = buildTourScenes(galleries, {
+  'master-bath': { scores: { 'bath-tub-deep-navy': 8, 'bath-deep-navy': 2 }, total: 10 }
+});
+const tubStill = tubTour.find(scene => scene.id === 'master-bath-design');
+assert.equal(tubStill.designId, 'bath-tub-deep-navy');
+assert.equal(tubStill.designTitle, 'Tub & shower · Deep Navy');
+assert.equal(tubStill.image, '/concepts/master-bath-tub-deep-navy.jpg');
+assert.equal(tubStill.status, 'leader');
+assert.equal(tubStill.kind, 'design');
+assert.equal(tubStill.durationSeconds, 8);
+assert.equal(tubStill.video, undefined);
+assert.equal(tubTour.length, 8, 'A new tub/shower winner replaces only its room still.');
+assert.equal(tubTour.filter(scene => scene.kind === 'motion').length, 3);
+
 const badScores = { 'front-elevation': { scores: { [front.designs[0].id]: -1, [front.designs[1].id]: NaN, invented: 100 }, total: 100 } };
 assert.equal(buildTourScenes(galleries, badScores)[0].status, 'no-votes');
 assert.equal(buildTourScenes(galleries, badScores)[0].totalVotes, 0);
@@ -108,4 +122,4 @@ const withExtra = buildTourScenes([extra, ...galleries], {});
 const extraScene = withExtra.find(scene => scene.roomId === 'future-room');
 assert.equal(withExtra.indexOf(extraScene), withExtra.findIndex(scene => scene.id === 'garage-barn-door-motion') + 1, 'Other populated spaces follow the prioritized rooms in catalog order.');
 assert.equal(extraScene.image, '/images/future.jpg');
-console.log('PASS: vote-based tour selection, new basement color winners and fallback stills, eight scenes and three unchanged separate films, room ordering, empty/failed/no-vote states, stable ties, invalid-score filtering, credits, and immutable deterministic output.');
+console.log('PASS: vote-based tour selection, new tub/shower winning still, basement color winners and fallback stills, eight scenes and three unchanged films, ordering, failed/no-vote states, ties, invalid scores, credits, and immutable deterministic output.');

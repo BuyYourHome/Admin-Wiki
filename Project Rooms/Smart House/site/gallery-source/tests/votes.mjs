@@ -1,5 +1,5 @@
 import assert from 'node:assert/strict';
-import { basementColorSchemes } from '../lib/features.js';
+import { basementColorSchemes, masterBathTubDesigns } from '../lib/features.js';
 const base = new URL(process.argv[2] ?? 'http://127.0.0.1:19081');
 if (!['127.0.0.1','localhost'].includes(base.hostname)) throw new Error('Write tests are restricted to a local preview.');
 const browser={cookie:''};
@@ -32,6 +32,18 @@ for(const designId of ['bath-warm-ivory','bath-dusty-blue','bath-deep-navy','bat
  const saved=await call('POST',{room:'master-bath',designId});assert.equal(saved.status,200,`The Master Bath allowlist accepts ${designId}`);assert.equal(saved.data.selected,designId);assert.equal(saved.data.total,bathBefore.data.total+1,'Changing the bath color keeps one vote in this browser.');
 }
 const bathStored=await call('GET',null,base.origin,browser,'master-bath');assert.equal(bathStored.data.selected,'bath-muted-terracotta');
+assert.equal(masterBathTubDesigns.length,6);
+for(const design of masterBathTubDesigns){
+ const saved=await call('POST',{room:'master-bath',designId:design.id},base.origin,browser,'master-bath');
+ assert.equal(saved.status,200,`The Master Bath allowlist accepts new study ${design.id}`);
+ assert.equal(saved.data.selected,design.id);assert.equal(saved.data.total,bathBefore.data.total+1,'Changing from an original vanity to a tub/shower study still keeps one gallery vote.');
+ const repeated=await call('POST',{room:'master-bath',designId:design.id},base.origin,browser,'master-bath');assert.equal(repeated.status,200);assert.equal(repeated.data.total,saved.data.total);
+ const crossed=await call('POST',{room:'media-center',designId:design.id},base.origin,browser,'media-center');assert.equal(crossed.status,400,'Tub/shower choices cannot be voted into another gallery.');
+}
+const tubStored=await call('GET',null,base.origin,browser,'master-bath');assert.equal(tubStored.data.selected,'bath-tub-terracotta');
+const otherBath=await call('GET',null,base.origin,visitorSession,'master-bath');assert.equal(otherBath.data.selected,null);assert.equal(otherBath.data.total,tubStored.data.total);
+const otherBathVote=await call('POST',{room:'master-bath',designId:'bath-tub-warm-ivory'},base.origin,visitorSession,'master-bath');assert.equal(otherBathVote.status,200);assert.equal(otherBathVote.data.total,tubStored.data.total+1);
+assert.equal((await call('GET',null,base.origin,browser,'master-bath')).data.selected,'bath-tub-terracotta','A second visitor cannot change the first visitor’s tub/shower selection.');
 const baseline=await call('POST',{room:'master-bath',designId:'bath-sage-baseline'});assert.equal(baseline.status,400,'The baseline is not a seventh vote.');
 const wrongRoom=await call('POST',{room:'master-bath',designId:'media-01'});assert.equal(wrongRoom.status,400);
 const garageStillStored=await call('GET');assert.equal(garageStillStored.data.selected,'garage-07','Bath votes do not alter a garage choice.');
@@ -47,4 +59,4 @@ for(const [room,prefix,otherPrefix] of [['media-center','media','spiral'],['spir
  const roomStored=await call('GET',null,base.origin,browser,room);assert.equal(roomStored.data.selected,`${prefix}-basement-coastal-blue`);assert.equal(roomStored.data.total,roomBefore.data.total+1);
 }
 const mediaStillStored=await call('GET',null,base.origin,browser,'media-center');assert.equal(mediaStillStored.data.selected,'media-basement-coastal-blue','Staircase votes do not alter a Media Center choice.');
-console.log('PASS: local voter initialization, missing-cookie rejection, persisted/repeated/changed votes, visitor and gallery isolation, cookie preservation, six Master Bath choices, six basement palettes in both galleries, baseline/cross-gallery rejection, empty galleries, and cross-origin rejection.');
+console.log('PASS: local voter initialization, missing-cookie rejection, persisted/repeated/changed votes, visitor/gallery isolation, cookie preservation, twelve Master Bath choices including six tub/shower studies, six basement palettes in both galleries, baseline/cross-gallery rejection, empty galleries, and cross-origin rejection.');

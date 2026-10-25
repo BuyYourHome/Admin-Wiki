@@ -24,7 +24,7 @@ export const galleries: Gallery[] = [
     { id: 'garage-08', title: 'Limewashed brick', image: '08-wall-limewashed-brick.png', detail: 'I’m considering pale masonry with a softer, textured appearance in this concept.' }
   ] },
   { id: 'adu', name: 'ADU', summary: 'I’m collecting ideas for an accessory dwelling unit.', designs: [] },
-  { id: 'master-bath', name: 'Master Bath', summary: 'I’m comparing six cabinet color studies in my refined Master Bath layout. These are visual concepts, not manufacturer paint specifications or installed finishes.', designs: masterBathDesigns },
+  { id: 'master-bath', name: 'Master Bath', summary: 'I’m comparing six cabinet color studies in my refined vanity layout and six tub-and-shower studies with my floating vanity. These are visual concepts, not manufacturer paint specifications or installed finishes.', designs: masterBathDesigns },
   { id: 'spiral-staircase', name: 'Spiral Staircase', summary: 'I’m comparing my original black spiral staircase concept with six color settings around my stairs and theater. I keep my black stairs and amber lights throughout. My AI studies leave dimensions, clearances, and construction details unconfirmed.', designs: [
     { id: 'spiral-01', title: 'Black spiral staircase', image: 'home-theater-spiral-staircase-amber.png', fullImage: true, detail: 'I’m exploring black spiral stairs with amber tread and cove lighting beside my home theater. My AI concept does not confirm dimensions, clearances, or construction details.' },
     ...basementColorSchemes.map(scheme => ({ id: `spiral-basement-${scheme.slug}`, title: `Stair setting · ${scheme.title}`, image: scheme.image, detail: scheme.detail, fullImage: true }))
