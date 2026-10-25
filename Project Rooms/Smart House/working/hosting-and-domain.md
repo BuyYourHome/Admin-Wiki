@@ -13,7 +13,7 @@ Wes reported buying `Pondstr.com` from GoDaddy and instructed Smart House to hos
 - Initial saved version: `appgprj_6ad4d98e08708191858cab113814704e~appgver_0176b707d1688191be325f28960f58a6`.
 - Initial deployment: `appgdep_6ad4dafedea88191934ecd974a287155`.
 - Canonical linkage: `site/.openai/hosting.json`.
-- Publication checkout: ignored `site/.hosting-work/work/gallery-release-20261025/` for version 35; the parent `site/.hosting-work/` preserves the pending natural-voice work. Current publication uses the supported Sites Vinext runtime, gallery code, existing schema migrations, 37 voting choices across nine galleries, and three concept films. Never publish the wiki, private records, credentials, or source inventories. The original static page remains as a historical local concept.
+- Publication checkout: ignored `site/.hosting-work/work/gallery-release-20261025/` for version 36; the parent `site/.hosting-work/` preserves the pending natural-voice work. Current publication uses the supported Sites Vinext runtime, gallery code, existing schema migrations, 37 voting choices across nine galleries, and a six-scene tour with three concept films. Never publish the wiki, private records, credentials, or source inventories. The original static page remains as a historical local concept.
 
 ## Pondstr.com connection
 
@@ -52,9 +52,9 @@ Wes requested removal of the website login requirement so the public can access 
 
 Wes requested Design, Explore, View, and Manage navigation and six room galleries with public voting. The website now uses the supported Sites Vinext Worker runtime and logical D1 binding `DB`, with no R2 binding. Public access and the existing custom domain were preserved. The database migration creates only the vote schema; no synthetic votes were seeded into production.
 
-- Current Site source commit: `bae490e0d82a177b34794f20bc930edb462153e6`.
-- Current saved version: `appgprj_6ad4d98e08708191858cab113814704e~appgver_695de9cd7d788191b88f874180a56d15` (version 35).
-- Current deployment: `appgdep_6ade8517976c8191b3bb705db08febc0`, confirmed `succeeded` at 2026-10-25 6:39 PM Eastern (`2026-10-25T22:39:29.149080+00:00`).
+- Current Site source commit: `0742172a389c44cf1a2b94f418a9b209fb0c1df2`.
+- Current saved version: `appgprj_6ad4d98e08708191858cab113814704e~appgver_17fc770c299c81919a404dd80826a753` (version 36).
+- Current deployment: `appgdep_6ade8ae2debc81918edfd26f386c2102`, confirmed `succeeded` at `2026-10-25T23:04:10.793606+00:00`, environment revision **0**.
 - Live URL: https://pondstr.com . The original Sites URL remains https://pondstr.coolnewt4097.chatgpt.site .
 - Media Center has 13 choices; Front Elevation has two; Garage Barn Door has three; Master Bath has six; Hall Bath has six; Spiral Staircase has seven. Kitchen, ADU, and Back Deck await images.
 
@@ -324,3 +324,16 @@ Wes requested a Next button for every gallery picture. The shared full-image vie
 Production and combined prepared-voice TypeScript checks passed, as did the production build. Local Chrome verified Hall Bath forward/backward/wrapping, keyboard navigation, Escape/focus restoration, phone control placement, and View-notebook gallery ownership for Spiral Staircase and Front Elevation. The first source push was explicitly rejected after credential expiry; a fresh credential and supported-helper reopen reconciled the retained commit. The helper then pushed and packaged the same successful build without changes or a duplicate publication attempt. Credentials remained in memory/hidden stdin.
 
 Native Sites confirmed successful version 35 publication. Fresh Chrome on https://pondstr.com/#design verified Next 1→2, Right arrow 2→3, Previous 3→2, and the loaded 1672×941 image with `contain` fitting. Live proof: `C:\Users\wesbr\.codex\visualizations\2026\10\25\pondster-gallery-next-live.png`. No production votes, comments, bookings, microphone use, or house actions occurred. Public audience, DNS, and environment are unchanged. Both prepared code copies retain the unpublished voice integration and its exact CSS block; natural voice remains inactive with the continuation updated to this production baseline.
+
+## Video-first and full-viewport tour correction — version 36, 2026-10-25
+
+- Sites source commit: `0742172a389c44cf1a2b94f418a9b209fb0c1df2`.
+- Saved version: `appgprj_6ad4d98e08708191858cab113814704e~appgver_17fc770c299c81919a404dd80826a753`, version **36**.
+- Deployment: `appgdep_6ade8ae2debc81918edfd26f386c2102`, succeeded at **2026-10-25T23:04:10.793606+00:00**, environment revision **0**.
+- Archive content hash: `sha256:f1ddc6c01874e93848a894b778855f429ca20a1a42b4dd57035feb3cbdd46731`.
+
+Version 36 follows Wes's correction: one scene per populated gallery, using its existing main film when available and otherwise its highest-voted image. Media Center, Garage Barn Door, and Spiral Staircase use films; Front Elevation, Master Bath, and Hall Bath use images. There are six scenes and three films, with nine galleries/37 choices unchanged. A room's selected still is only its failed-film fallback, not a duplicate scene; tie/no-vote/unavailable labels remain honest.
+
+TypeScript and the production build passed through the official helper for the exact pushed source. Local selection and soundtrack suites and combined prepared-voice TypeScript passed. Final UI/data mirrors preserve the voice CSS block once; the voice integration remains inactive and unpublished. Local desktop media filled 1920×911; at 390×844 the dialog/stage/image filled the viewport with in-bounds 44-pixel playback/Close controls, readable room details, and scrollable scene navigation. Automatic transitions and the final Spiral film completed to Thanks/Replay. Pause/resume, Escape/Close, Start focus restoration, and scroll-lock cleanup passed. The fullscreen target was corrected from the dialog to the document root; automated CUA clicks still rejected native fullscreen, so only the desktop/phone viewport fallback is verified.
+
+Native Sites confirmed publication. Fresh https://pondstr.com/#view showed “one view per room” and six spaces/three films. Starting without sound, pausing, and advancing opened Media Center as room 2 directly as a readyState 4 video, with no duplicate still. Live dialog/media measured 1920×911, and playback resumed and automatically advanced to Master Bath. Full-viewport Master Bath proof at 3/6 is saved outside Git at `C:\Users\wesbr\.codex\visualizations\2026\10\25\pondster-virtual-tour-fullscreen-live.png`. No production votes, comments, or bookings were created. Public audience, domain, catalog, assets, vote behavior, original music, and the unpublished natural-voice work are preserved. Requirements are in [[Project Rooms/Smart House/working/virtual-design-tour]].
