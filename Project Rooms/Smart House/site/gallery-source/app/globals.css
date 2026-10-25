@@ -21,12 +21,11 @@ body{padding-bottom:95px}.pondster-welcome{margin:0 4% 30px;padding:20px 24px;bo
 
 /* Pondster signs its name in a locally hosted, readable script. */
 @font-face{font-family:'Pondster Signature';src:url('/fonts/allura/Allura-Regular.ttf') format('truetype');font-style:normal;font-weight:400;font-display:swap}
-.brand{gap:18px;flex-shrink:0}
-.brand-copy{display:block}
+.brand{display:block;padding-left:3px;flex-shrink:0}
+.brand-copy{display:block;position:relative;z-index:2}
 .brand-name{display:block;font:400 clamp(52px,5.1vw,76px)/.95 'Pondster Signature','Segoe Script','Brush Script MT',cursive;letter-spacing:0;padding-inline:.04em;font-synthesis:none}
-.brand-copy small{font-size:11px;letter-spacing:.6px;margin-top:9px}
-.monogram{position:relative;isolation:isolate;overflow:hidden;flex:0 0 58px;width:58px;height:64px;display:flex;flex-direction:column;align-items:center;justify-content:center;font-size:40px;line-height:1;letter-spacing:0;border-color:#9d8d66;background:linear-gradient(145deg,#fffdf7,#e8e9dd);transition:transform .25s,box-shadow .25s}
-.monogram-initial{display:block;font:400 52px/.72 'Pondster Signature','Segoe Script','Brush Script MT',cursive;letter-spacing:0;font-synthesis:none}
+.brand-copy small{font-size:11px;letter-spacing:.6px;margin:9px 0 0 58px}
+.monogram{position:absolute;left:0;top:0;isolation:isolate;overflow:hidden;width:58px;height:78px;display:flex;align-items:flex-end;justify-content:center;padding-bottom:7px;letter-spacing:0;border-color:#9d8d66;background:linear-gradient(145deg,#fffdf7,#e8e9dd);transition:transform .25s,box-shadow .25s}
 .monogram small{margin-top:5px}
 .monogram::before{content:'';position:absolute;top:7px;right:7px;width:5px;height:5px;background:var(--accent);transform:rotate(45deg);animation:pondster-glint 7s ease-in-out infinite}
 .monogram::after{content:'';position:absolute;inset:-20%;background:linear-gradient(105deg,transparent 35%,#ffffffc7 50%,transparent 65%);transform:translateX(-140%) skewX(-15deg);pointer-events:none;animation:pondster-light 7s ease-in-out infinite}
@@ -35,7 +34,7 @@ body{padding-bottom:95px}.pondster-welcome{margin:0 4% 30px;padding:20px 24px;bo
 .viewing-intro h1{white-space:nowrap;font-size:clamp(36px,4.7vw,70px)}
 @keyframes pondster-light{0%,12%{transform:translateX(-140%) skewX(-15deg)}30%,100%{transform:translateX(140%) skewX(-15deg)}}
 @keyframes pondster-glint{0%,12%,34%,100%{opacity:.4;transform:rotate(45deg) scale(.7)}23%{opacity:1;transform:rotate(45deg) scale(1.2)}}
-@media(max-width:720px){.brand{gap:14px}.brand-name{font-size:60px}.brand-copy small{font-size:10px;margin-top:16px}.monogram{flex-basis:50px;width:50px;height:57px;font-size:36px}.monogram-initial{font-size:46px}.viewing-intro h1{white-space:normal}}
+@media(max-width:720px){.brand{gap:14px}.brand-name{font-size:60px}.brand-copy small{font-size:10px;margin:16px 0 0 48px}.monogram{width:50px;height:65px;padding-bottom:6px}.viewing-intro h1{white-space:normal}}
 @media(prefers-reduced-motion:reduce){.monogram::before,.monogram::after{animation:none}.monogram::after{display:none}.brand:hover .monogram,.brand:focus-visible .monogram{transform:none}}
 
 .garage-media-feature video{aspect-ratio:5/2}
@@ -83,7 +82,7 @@ body{padding-bottom:95px}.pondster-welcome{margin:0 4% 30px;padding:20px 24px;bo
 
 /* Pondster grows into its name, then celebrates with two small bursts. */
 .brand{position:relative;isolation:isolate}
-.pondster-logo-art{position:absolute;left:-6px;top:-22px;width:320px;height:106px;overflow:visible;pointer-events:none;z-index:1}
+.pondster-logo-art{position:absolute;left:-6px;top:-11px;width:270px;height:90px;overflow:visible;pointer-events:none;z-index:1}
 .logo-vine-stem{fill:none;stroke:#667e50;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:1;stroke-dashoffset:0;animation:pondster-vine-grow 2.4s cubic-bezier(.3,0,.2,1) both}
 .logo-vine-leaf{transform-box:fill-box;transform-origin:bottom center;animation:pondster-leaf-open .65s cubic-bezier(.2,.7,.25,1.25) both;animation-delay:calc(.65s + var(--leaf-order,0)*.23s)}
 .logo-firework{transform-box:fill-box;transform-origin:center;opacity:0;animation:pondster-firework 1.05s ease-out both;animation-delay:calc(2.8s + var(--burst-delay,0s))}
@@ -93,7 +92,7 @@ body{padding-bottom:95px}.pondster-welcome{margin:0 4% 30px;padding:20px 24px;bo
 @keyframes pondster-vine-grow{from{stroke-dashoffset:1}to{stroke-dashoffset:0}}
 @keyframes pondster-leaf-open{from{opacity:0;transform:scale(.05) rotate(-24deg)}to{opacity:1;transform:scale(1) rotate(0)}}
 @keyframes pondster-firework{0%{opacity:0;transform:scale(.15) rotate(-12deg)}18%{opacity:.9}55%{opacity:.7}100%{opacity:0;transform:scale(1.2) rotate(8deg)}}
-@media(max-width:720px){.pondster-logo-art{top:-20px;width:280px;height:93px}}
+@media(max-width:720px){.pondster-logo-art{top:-9px;width:240px;height:80px}}
 @media(prefers-reduced-motion:reduce){.logo-vine-stem,.logo-vine-leaf,.logo-firework{animation:none}.logo-vine-stem{stroke-dashoffset:0}.logo-vine-leaf{opacity:1;transform:none}.logo-firework{display:none}}
 
 /* Keep each choice's name with its voting action in every state. */

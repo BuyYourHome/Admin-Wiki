@@ -13,7 +13,7 @@ Wes reported buying `Pondstr.com` from GoDaddy and instructed Smart House to hos
 - Initial saved version: `appgprj_6ad4d98e08708191858cab113814704e~appgver_0176b707d1688191be325f28960f58a6`.
 - Initial deployment: `appgdep_6ad4dafedea88191934ecd974a287155`.
 - Canonical linkage: `site/.openai/hosting.json`.
-- Publication checkout: ignored `site/.hosting-work/work/gallery-release-20261025/` for version 38; the parent `site/.hosting-work/` preserves the pending natural-voice work. Current publication uses the supported Sites Vinext runtime, gallery code, existing schema migrations, 37 voting choices across nine galleries, and a six-scene tour with three concept films. Never publish the wiki, private records, credentials, or source inventories. The original static page remains as a historical local concept.
+- Publication checkout: ignored `site/.hosting-work/work/gallery-release-20261025/` for version 39; the parent `site/.hosting-work/` preserves the pending natural-voice work. Current publication uses the supported Sites Vinext runtime, gallery code, existing schema migrations, 37 voting choices across nine galleries, and a six-scene tour with three concept films. Never publish the wiki, private records, credentials, or source inventories. The original static page remains as a historical local concept.
 
 ## Pondstr.com connection
 
@@ -52,9 +52,9 @@ Wes requested removal of the website login requirement so the public can access 
 
 Wes requested Design, Explore, View, and Manage navigation and six room galleries with public voting. The website now uses the supported Sites Vinext Worker runtime and logical D1 binding `DB`, with no R2 binding. Public access and the existing custom domain were preserved. The database migration creates only the vote schema; no synthetic votes were seeded into production.
 
-- Current Site source commit: `19d50ccf80166b8f5fb1ea1f23cb6f57edabcc9a`.
-- Current saved version: `appgprj_6ad4d98e08708191858cab113814704e~appgver_fd9f6c95f764819192f88140ed5a5860` (version 38).
-- Current deployment: `appgdep_6ade925ee63c8191baa7002985223f2c`, confirmed `succeeded` at `2026-10-25T23:36:08.308134+00:00`, environment revision **0**.
+- Current Site source commit: `d8442dd6cde4e19e1c444ecd612ea806c2d0db1b`.
+- Current saved version: `appgprj_6ad4d98e08708191858cab113814704e~appgver_10e19196747c819194349a7578726043` (version 39).
+- Current deployment: `appgdep_6ade94e8cfc881919cfe590dc8d99b64`, confirmed `succeeded` at `2026-10-25T23:46:56.748576+00:00`, environment revision **0**.
 - Live URL: https://pondstr.com . The original Sites URL remains https://pondstr.coolnewt4097.chatgpt.site .
 - Media Center has 13 choices; Front Elevation has two; Garage Barn Door has three; Master Bath has six; Hall Bath has six; Spiral Staircase has seven. Kitchen, ADU, and Back Deck await images.
 
@@ -357,3 +357,14 @@ Wes directed using the signature's P in the header square and showing the result
 - Archive content hash: `sha256:89e01666b9f9c78f44df3eab087fb958e5cb2a27a000cd21e8afaad2a43fe176`.
 
 Production build and local desktop/390x844 phone visual checks passed. Fresh https://pondstr.com/#design confirmed the published initial uses Pondster Signature at 52px. Live proof: `C:\Users\wesbr\.codex\visualizations\2026\10\25\pondster-signature-p-live.png`, outside Git. Both prepared page/CSS copies are reconciled, preserving the exact pending voice CSS block once. No assets, vote data, comments, bookings, voice activation, domain, or audience changes.
+
+## One continuous signature — version 39, 2026-10-25
+
+Wes clarified that the P must not repeat: continue the signature outside the square. The header now renders exactly one uninterrupted Pondster text node, with a decorative frame behind its initial. The separate monogram initial is removed; its frame contains HOME only. Natural Allura letter shaping flows across the frame edge. Tagline/frame/vine fitting is adjusted for desktop and phone.
+
+- Source: `d8442dd6cde4e19e1c444ecd612ea806c2d0db1b`.
+- Saved version: `appgprj_6ad4d98e08708191858cab113814704e~appgver_10e19196747c819194349a7578726043`, version **39**.
+- Deployment: `appgdep_6ade94e8cfc881919cfe590dc8d99b64`, succeeded `2026-10-25T23:46:56.748576+00:00`, environment revision **0**.
+- Archive content hash: `sha256:f9356fbb8b6c0d123d6a6541d3a420b2c8dd9d8c498e7037ff8015cdc70a0496`.
+
+Production build, local desktop/390x844 phone visual checks, and fresh custom-domain verification passed. The live header has one Pondster wordmark, HOME-only decoration, and zero separate initials. Proof: `C:\Users\wesbr\.codex\visualizations\2026\10\25\pondster-continuous-signature-live.png`, outside Git. Prepared page/CSS mirrors preserve the exact pending voice CSS block once. No assets, votes, comments, bookings, voice activation, domain, or audience changes.
