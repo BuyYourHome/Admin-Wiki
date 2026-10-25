@@ -10,12 +10,12 @@ export function isPondsterWakeRequest(transcript: string) {
 // Public concept names mirror lib/designs.ts; the focused tests check this list.
 const rooms = [
   { id: 'kitchen', name: 'Kitchen', aliases: ['kitchen'], choices: [] as string[] },
-  { id: 'media-center', name: 'Media Center', aliases: ['media center', 'media centre', 'entertainment center', 'entertainment centre', 'television', 'tv'], choices: ['Warm Ivory Cream', 'Soft Dusty Sage Green', 'Deep Muted Navy Blue', 'Medium Mushroom Taupe', 'Deep Muted Olive Green', 'Rich Charcoal Gray'] },
+  { id: 'media-center', name: 'Media Center', aliases: ['media center', 'media centre', 'entertainment center', 'entertainment centre', 'home theater', 'home theatre', 'theater', 'theatre', 'television', 'tv'], choices: ['Warm Ivory Cream', 'Soft Dusty Sage Green', 'Deep Muted Navy Blue', 'Medium Mushroom Taupe', 'Deep Muted Olive Green', 'Rich Charcoal Gray', 'Amber-lit home theater'] },
   { id: 'front-elevation', name: 'Front Elevation', aliases: ['front elevation', 'front exterior', 'front of the house', 'exterior', 'shutters'], choices: ['Warm welcome', 'Black shutters'] },
   { id: 'garage-barn-door', name: 'Garage Barn Door', aliases: ['garage', 'barn door'], choices: ['Warm white board & batten', 'Charcoal green board & batten', 'Limewashed brick'] },
   { id: 'adu', name: 'ADU', aliases: ['adu', 'accessory dwelling unit'], choices: [] as string[] },
   { id: 'master-bath', name: 'Master Bath', aliases: ['master bath', 'primary bath', 'main bath', 'bathroom'], choices: masterBathDesigns.map(design => design.title) },
-  { id: 'spiral-staircase', name: 'Spiral Staircase', aliases: ['spiral staircase', 'spiral stairs', 'staircase', 'stairs'], choices: [] as string[] },
+  { id: 'spiral-staircase', name: 'Spiral Staircase', aliases: ['spiral staircase', 'spiral stairs', 'staircase', 'stairs'], choices: ['Black spiral staircase'] },
   { id: 'back-deck', name: 'Back Deck', aliases: ['back deck', 'rear deck', 'deck'], choices: [] as string[] }
 ];
 const choiceAliases: Record<string, string[]> = {
@@ -91,6 +91,9 @@ export function answerPondster(input: string): GuideReply {
   }
   if ((room?.id === 'garage-barn-door' && /\b(video|film|animation|motion|sliding|slides|swing|swings|inward|entry|pedestrian)\b/.test(words)) || /\btesla\b/.test(words)) {
     return { text: 'I have a twenty-five-second motion concept for my garage: my center entry section swings inward and closes, then my full door slides left. I’m showing a white Tesla driving out and across the scene to the left, revealing my white-marble garage floor. This is my illustrative AI/composited concept; my hardware, clearances, and the car’s turning path haven’t been validated.', action: { menu: 'Design', room: 'garage-barn-door' } };
+  }
+  if ((room?.id === 'spiral-staircase' || /\b(theater|theatre|cinema|sequential stair lights)\b/.test(words)) && /\b(video|film|animation|motion|lights)\b/.test(words)) {
+    return { text: 'I have a twelve-second theater and spiral-staircase film in both galleries. Moving football fills my screen while my amber stair lights illuminate in sequence. I’m showing a full-scene AI motion concept; my staircase, lighting, dimensions, and clearances still need validation.', action: { menu: 'Design', room: room?.id === 'spiral-staircase' ? 'spiral-staircase' : 'media-center' } };
   }
   if (room) {
     if (/\bfeatures?\b/.test(words)) return { text: `${roomFeatures[room.id].features.join(' ')} I’m sharing concepts and plans; my final specifications still need confirmation.`, action: { menu: 'Explore' } };

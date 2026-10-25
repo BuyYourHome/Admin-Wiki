@@ -97,3 +97,5 @@ assert.match(answerPondster('Show me your virtual tour').text, /Take my virtual 
 assert.deepEqual(answerPondster('Show me around').action, {menu:'View'});
 assert.doesNotMatch(answerPondster('What is your address?').text, /908|Pond Street|Dean|anonymously/);
 console.log('PASS: Pondster identity and exclusive wake name, Jean designer credit, confidential location, all current galleries/choices, six Master Bath choices and overlapping color navigation, scenes, video, non-mutating voting, simulated viewing, public contact, owner boundaries, and unknown-fact refusal.');
+assert.deepEqual(answerPondster('Show the spiral staircase video').action, {menu:'Design',room:'spiral-staircase'});
+assert.match(answerPondster('Show the home theater film').text, /twelve-second.*amber stair lights.*sequence/);

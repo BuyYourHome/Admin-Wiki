@@ -2,6 +2,7 @@
 
 | Source | Status | Use |
 | --- | --- | --- |
+| Wes's 2026-10-25 shared theater/staircase image and video instruction; exact generated PNG and Downloads MP4 recorded in [[Project Rooms/Smart House/working/theater-and-staircase]] | Byte-identical public copies in separate Sites source; decode, guide/tour, TypeScript/build, uncropped desktop/phone images, and local D1 voting checks passed; browser film playback and deployment pending | Media Center `media-07`, Spiral Staircase `spiral-01`, both gallery films, and one new View-tour motion scene; 19 choices across eight galleries |
 | Wes's 2026-10-25 natural voice action instruction; official OpenAI GPT-Live/WebRTC/delegation/server-control documentation; existing authored public catalog | Integration prepared and mock-tested locally; secure API setup missing; no provider call or deployment | Pondster natural voice; see [[Project Rooms/Smart House/working/pondster-natural-voice]] |
 | Wes's 2026-10-25 View-page tour instruction; existing `lib/designs.ts`, vote endpoint, and authorized Media Center/Garage films | Reused verified website assets and current vote reads; no new binary sources | Automatic virtual design tour; see [[Project Rooms/Smart House/working/virtual-design-tour]] |
 | Central message prmsg-jean-create-pr-smart-house-20261016-001 | Hash and exact destination verified; Accepted then Processing | Setup authority and scope |

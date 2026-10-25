@@ -41,7 +41,9 @@ export const roomFeatures = {
     'I’m planning to track multiple people with proximity devices and turn my TV between my kitchen and living room as people move.',
     'My planned exterior-camera system would let me switch my TV to surveillance mode while you’re inside.',
     'I have six cabinet-and-backdrop color combinations to compare.',
-    'I keep my surrounding walls warm off-white and my floor honey-toned in these studies.'
+    'I’m also exploring an amber-lit home theater with a black spiral staircase as another AI concept ready for your vote.',
+    'My twelve-second theater film shows moving football and amber stair lights illuminating in sequence.',
+    'I keep my surrounding walls warm off-white and my floor honey-toned in my six cabinet color studies. My theater concept leaves dimensions and clearances unconfirmed.'
   ] },
   'front-elevation': { status: 'MY DESIGN CONCEPT', features: [
     'I’m comparing warm wood shutters with black shutters.',
@@ -67,9 +69,10 @@ export const roomFeatures = {
     'My planned natural-gas tankless heater and recirculation loop would keep hot water ready throughout my house.',
     'I’m still confirming my actual fixtures, materials, and construction details.'
   ] },
-  'spiral-staircase': { status: 'IN MY PLANS', features: [
-    'I’m exploring a spiral staircase to connect my spaces.',
-    'I’m still defining my stair design, materials, and dimensions.'
+  'spiral-staircase': { status: 'MY DESIGN CONCEPT', features: [
+    'I’m exploring a black spiral staircase with amber tread and cove lighting beside my home theater.',
+    'My twelve-second concept film keeps my full screen-and-staircase scene in view while my stair lights illuminate in sequence.',
+    'I have one AI staircase concept ready for your vote; my dimensions, clearances, materials, and construction details still need confirmation.'
   ] },
   'back-deck': { status: 'IN MY PLANS', features: [
     'I’m exploring my back deck as an outdoor living space.',

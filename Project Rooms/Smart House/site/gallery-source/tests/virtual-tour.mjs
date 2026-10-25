@@ -14,15 +14,17 @@ for (const scene of pending.filter(scene => scene.kind === 'design')) assert.mat
 const zero = buildTourScenes(galleries, emptyVotes);
 assert.deepEqual(zero.map(scene => scene.id), [
   'front-elevation-design', 'media-center-design', 'media-center-motion',
-  'master-bath-design', 'garage-barn-door-design', 'garage-barn-door-motion'
+  'master-bath-design', 'garage-barn-door-design', 'garage-barn-door-motion',
+  'spiral-staircase-design', 'spiral-staircase-motion'
 ]);
 assert.ok(zero.every(scene => scene.status === 'no-votes' && scene.votes === 0 && scene.totalVotes === 0 && scene.tieCount === 0));
 assert.equal(new Set(zero.map(scene => scene.id)).size, zero.length);
 assert.ok(zero.every(scene => scene.image.startsWith('/concepts/')));
-assert.ok(!zero.some(scene => ['kitchen', 'adu', 'spiral-staircase', 'back-deck'].includes(scene.roomId)));
+assert.ok(!zero.some(scene => ['kitchen', 'adu', 'back-deck'].includes(scene.roomId)));
 
 const media = galleries.find(gallery => gallery.id === 'media-center');
 const garage = galleries.find(gallery => gallery.id === 'garage-barn-door');
+const staircase = galleries.find(gallery => gallery.id === 'spiral-staircase');
 const bath = galleries.find(gallery => gallery.id === 'master-bath');
 const front = galleries.find(gallery => gallery.id === 'front-elevation');
 const votes = {
@@ -49,12 +51,12 @@ assert.equal(tour.find(scene => scene.id === 'garage-barn-door-design').status, 
 assert.deepEqual(votes, snapshot); assert.equal(JSON.stringify(galleries), originalCatalog);
 assert.deepEqual(buildTourScenes(galleries, votes), tour, 'Identical inputs produce identical scene order and selections.');
 
-for (const room of [media, garage]) {
+for (const room of [media, garage, staircase]) {
   const still = tour.find(scene => scene.roomId === room.id && scene.kind === 'design');
   const motion = tour.find(scene => scene.roomId === room.id && scene.kind === 'motion');
   assert.equal(tour.indexOf(motion), tour.indexOf(still) + 1);
   assert.equal(still.durationSeconds, 8);
-  assert.equal(motion.durationSeconds, room.id === 'media-center' ? 10 : 25);
+  assert.equal(motion.durationSeconds, room.id === 'media-center' ? 10 : room.id === 'spiral-staircase' ? 12 : 25);
   assert.equal(motion.image, still.image, 'The selected still is the fallback when motion cannot play.');
   assert.equal(motion.designId, still.designId);
   assert.equal(motion.designTitle, still.designTitle);
@@ -69,12 +71,15 @@ assert.match(mediaMotion.sourceNotice, /does not imply or constitute DoW endorse
 assert.ok(mediaMotion.sourceUrl.startsWith('https://www.dvidshub.net/'));
 assert.ok(mediaMotion.sourceNoticeUrl.startsWith('https://www.dvidshub.net/'));
 assert.equal(tour.find(scene => scene.id === 'garage-barn-door-motion').video, '/media/garage-barn-door-tesla-drive-out.mp4');
+assert.equal(tour.find(scene => scene.id === 'spiral-staircase-motion').video, '/media/theater-football-sequential-stair-lights.mp4');
+assert.match(tour.find(scene => scene.id === 'spiral-staircase-motion').sourceCredit, /credit shown.*Marine Corps.*James Stanfield.*DVIDS/);
 
 const badScores = { 'front-elevation': { scores: { [front.designs[0].id]: -1, [front.designs[1].id]: NaN, invented: 100 }, total: 100 } };
 assert.equal(buildTourScenes(galleries, badScores)[0].status, 'no-votes');
 assert.equal(buildTourScenes(galleries, badScores)[0].totalVotes, 0);
 const extra = { id: 'future-room', name: 'Future Room', summary: '', designs: [{ id: 'future-01', title: 'Future idea', image: '/images/future.jpg', detail: 'I’m exploring a future idea.' }] };
 const withExtra = buildTourScenes([extra, ...galleries], {});
-assert.equal(withExtra.at(-1).roomId, 'future-room', 'Other populated spaces follow the prioritized rooms.');
-assert.equal(withExtra.at(-1).image, '/images/future.jpg');
+const extraScene = withExtra.find(scene => scene.roomId === 'future-room');
+assert.equal(withExtra.indexOf(extraScene), withExtra.findIndex(scene => scene.id === 'garage-barn-door-motion') + 1, 'Other populated spaces follow the prioritized rooms in catalog order.');
+assert.equal(extraScene.image, '/images/future.jpg');
 console.log('PASS: vote-based tour selection, room ordering, empty/failed/no-vote states, stable positive ties, invalid-score filtering, separate credited motion scenes, selected-still fallbacks, and immutable deterministic output.');
