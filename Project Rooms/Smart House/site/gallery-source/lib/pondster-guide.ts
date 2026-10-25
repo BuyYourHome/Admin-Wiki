@@ -67,6 +67,9 @@ export function answerPondster(input: string): GuideReply {
   if (/\b(jean|wright|si designer)\b/.test(words) || /\bwho (designed|created|made) (you|pondster)\b/.test(words) || has('who is your designer')) {
     return { text: "Jean Wright is my SI designer. Direct your questions to me, Pondster. I can explain my public design concepts and website information. I don't send questions to Jean." };
   }
+  if (/\b(virtual tour|design tour|show me around|show us around)\b/.test(words)) {
+    return { text: 'On my View page, choose Take my virtual tour. I bring together the leading design in each available gallery, my separate motion films, and optional instrumental music. I’m showing AI concepts, not a recording of completed work.', action: { menu: 'View' } };
+  }
   if (/\b(appointment|viewing|visit|tour|calendar|entry code|entrycode|access code|unlock|lock|book|booking|reservation)\b/.test(words)) {
     return { text: 'I offer a simulated date-and-time preview and a DEMO entry code on my View page. I book no appointment and cannot unlock my doors. For a real visit with me, arrange the details with Ashley at ashley@elementrealtygroup.net.', action: { menu: 'View' } };
   }

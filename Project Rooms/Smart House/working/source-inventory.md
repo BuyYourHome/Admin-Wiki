@@ -2,6 +2,7 @@
 
 | Source | Status | Use |
 | --- | --- | --- |
+| Wes's 2026-10-25 natural voice action instruction; official OpenAI GPT-Live/WebRTC/delegation/server-control documentation; existing authored public catalog | Integration prepared and mock-tested locally; secure API setup missing; no provider call or deployment | Pondster natural voice; see [[Project Rooms/Smart House/working/pondster-natural-voice]] |
 | Wes's 2026-10-25 View-page tour instruction; existing `lib/designs.ts`, vote endpoint, and authorized Media Center/Garage films | Reused verified website assets and current vote reads; no new binary sources | Automatic virtual design tour; see [[Project Rooms/Smart House/working/virtual-design-tour]] |
 | Central message prmsg-jean-create-pr-smart-house-20261016-001 | Hash and exact destination verified; Accepted then Processing | Setup authority and scope |
 | Jean's Voice task 019fbe57-fcd9-7c83-be74-e377c7b9c4d0; 16 relevant planning turns | Read via app; preserved in sources/planning-conversation-2026-10-16.md | Original requirements and discussion |

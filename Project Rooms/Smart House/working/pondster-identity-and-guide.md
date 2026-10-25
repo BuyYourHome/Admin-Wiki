@@ -22,6 +22,8 @@ Wes directly named the house **Pondster**, asked for viewers and potential owner
 
 ## Source and future work
 
+On 2026-10-25 Wes authorized natural OpenAI voice. The public-only integration is prepared locally, while the existing browser guide remains the live implementation. Secure OpenAI Developers API setup and actual speech verification are pending. See [[Project Rooms/Smart House/working/pondster-natural-voice]]; do not infer that Codex's private session or credentials are exposed.
+
 Authoritative facts come from Wes's direct identity/role instruction, the existing supplied gallery/video catalog, verified Ashley profile/contact, and existing website behavior. No private operational notes are used as guide answers.
 
 Browser API references: [SpeechRecognition](https://developer.mozilla.org/en-US/docs/Web/API/SpeechRecognition), [continuous results](https://developer.mozilla.org/en-US/docs/Web/API/SpeechRecognition/continuous), and [SpeechSynthesis](https://developer.mozilla.org/en-US/docs/Web/API/SpeechSynthesis). Recognition has limited browser support and some implementations send audio to a remote service. Never claim universal availability or wholly local audio processing.

@@ -105,6 +105,7 @@ body{padding-bottom:95px}.pondster-welcome{margin:0 4% 30px;padding:20px 24px;bo
 .design-card .result-track{margin-bottom:0}
 @media(max-width:1150px){.design-card>.vote-button{grid-column:1 / -1}}
 .pondster-wake{display:flex;align-items:center;gap:5px;font-size:10px;margin-top:8px;min-height:30px}.pondster-wake input{accent-color:var(--ink)}.pondster-heard{font-size:10px;line-height:1.6;margin:6px 0;overflow-wrap:anywhere;color:var(--ink)}
+.pondster-voice-choice{display:flex;align-items:center;gap:12px;font-size:11px;margin:10px 0 14px}.pondster-voice-choice select{flex:1;min-width:0;padding:9px;border:1px solid #acb5a6;background:var(--white);color:var(--ink);font:12px Arial,sans-serif;min-height:38px}.pondster-resume-audio{padding:10px 12px;min-height:44px;background:var(--ink);color:var(--white);border:0;font-size:12px}.pondster-live-audio:not([hidden]){position:fixed;bottom:95px;right:30px;width:min(320px,calc(100vw - 30px));z-index:42}
 
 /* A guided, vote-led visit through Pondster's available concepts. */
 .virtual-tour-invitation{margin:0 0 38px;border:1px solid var(--line);background:var(--white)}

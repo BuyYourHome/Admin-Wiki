@@ -51,6 +51,8 @@ This planning-only room does not need a routine transaction log at setup. Centra
 
 ## Boundaries And Next Actions
 
+Wes authorized Pondster's natural OpenAI voice connection on 2026-10-25. The implementation is prepared locally, with public-only house context and browser speech retained; activation is waiting for the required secure OpenAI Developers API setup. Production remains version 30. See [[Project Rooms/Smart House/working/pondster-natural-voice]] for verification limits and the automatic continuation.
+
 Wes subsequently authorized website implementation and public Sites hosting at `https://pondstr.com`. Preserve public browsing without a login gate. See [[Project Rooms/Smart House/working/hosting-and-domain]] for deployment identity and [[Project Rooms/Smart House/working/design-galleries-and-voting]] for the Design, Explore, View, Manage navigation and gallery voting requirements. View now features Ashley Morello and a clearly labeled self-viewing calendar/code demonstration; see [[Project Rooms/Smart House/working/viewing-and-realtor]]. The current menu order is Design, Explore, View, Own, Built By. Own is the renamed Manage page; legacy #manage links continue to open Own. The Built By menu features Buy Your Home, LLC using its official website; see [[Project Rooms/Smart House/working/built-by-page]]. Live device configuration and private owner records remain outside this public website.
 
 ## Central Rules

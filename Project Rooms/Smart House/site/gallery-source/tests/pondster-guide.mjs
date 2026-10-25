@@ -93,5 +93,7 @@ assert.deepEqual(answerPondster('Show Built By').action, {menu:'Built By'});
 assert.match(answerPondster('Tell me about Buy Your Home LLC').text, /Buy Your Home, LLC.*919-917-7466/);
 assert.deepEqual(answerPondster('Call Wes').action, {menu:'Built By'});
 assert.match(answerPondster('What is your address?').text, /location is confidential.*witness protection/);
+assert.match(answerPondster('Show me your virtual tour').text, /Take my virtual tour/);
+assert.deepEqual(answerPondster('Show me around').action, {menu:'View'});
 assert.doesNotMatch(answerPondster('What is your address?').text, /908|Pond Street|Dean|anonymously/);
 console.log('PASS: Pondster identity and exclusive wake name, Jean designer credit, confidential location, all current galleries/choices, six Master Bath choices and overlapping color navigation, scenes, video, non-mutating voting, simulated viewing, public contact, owner boundaries, and unknown-fact refusal.');

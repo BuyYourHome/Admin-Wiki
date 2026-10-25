@@ -15,6 +15,13 @@
       "when": 1792841884114,
       "tag": "0001_massive_epoch",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "6",
+      "when": 1792958117516,
+      "tag": "0002_flat_agent_brand",
+      "breakpoints": true
     }
   ]
 }
