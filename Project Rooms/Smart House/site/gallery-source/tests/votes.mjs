@@ -1,4 +1,5 @@
 import assert from 'node:assert/strict';
+import { basementColorSchemes } from '../lib/features.js';
 const base = new URL(process.argv[2] ?? 'http://127.0.0.1:19081');
 if (!['127.0.0.1','localhost'].includes(base.hostname)) throw new Error('Write tests are restricted to a local preview.');
 const browser={cookie:''};
@@ -34,4 +35,16 @@ const bathStored=await call('GET',null,base.origin,browser,'master-bath');assert
 const baseline=await call('POST',{room:'master-bath',designId:'bath-sage-baseline'});assert.equal(baseline.status,400,'The baseline is not a seventh vote.');
 const wrongRoom=await call('POST',{room:'master-bath',designId:'media-01'});assert.equal(wrongRoom.status,400);
 const garageStillStored=await call('GET');assert.equal(garageStillStored.data.selected,'garage-07','Bath votes do not alter a garage choice.');
-console.log('PASS: GET voter initialization, missing-cookie rejection, persisted vote, repeat-vote deduplication, vote changes, visitor isolation, cookie preservation on errors, six Master Bath choices, baseline/cross-gallery rejection, unknown choices, empty galleries, and cross-origin rejection.');
+assert.equal(basementColorSchemes.length,6);
+for(const [room,prefix,otherPrefix] of [['media-center','media','spiral'],['spiral-staircase','spiral','media']]){
+ const roomBefore=await call('GET',null,base.origin,browser,room);assert.equal(roomBefore.status,200);assert.equal(roomBefore.data.selected,null);
+ for(const scheme of basementColorSchemes){
+  const designId=`${prefix}-basement-${scheme.slug}`;
+  const saved=await call('POST',{room,designId},base.origin,browser,room);assert.equal(saved.status,200,`The ${room} allowlist accepts ${designId}`);assert.equal(saved.data.selected,designId);assert.equal(saved.data.total,roomBefore.data.total+1,'Changing the basement palette keeps one vote per browser per gallery.');
+  const repeated=await call('POST',{room,designId},base.origin,browser,room);assert.equal(repeated.status,200);assert.equal(repeated.data.total,saved.data.total);
+  const crossed=await call('POST',{room,designId:`${otherPrefix}-basement-${scheme.slug}`},base.origin,browser,room);assert.equal(crossed.status,400,'The shared image does not make its other gallery ID valid here.');
+ }
+ const roomStored=await call('GET',null,base.origin,browser,room);assert.equal(roomStored.data.selected,`${prefix}-basement-coastal-blue`);assert.equal(roomStored.data.total,roomBefore.data.total+1);
+}
+const mediaStillStored=await call('GET',null,base.origin,browser,'media-center');assert.equal(mediaStillStored.data.selected,'media-basement-coastal-blue','Staircase votes do not alter a Media Center choice.');
+console.log('PASS: local voter initialization, missing-cookie rejection, persisted/repeated/changed votes, visitor and gallery isolation, cookie preservation, six Master Bath choices, six basement palettes in both galleries, baseline/cross-gallery rejection, empty galleries, and cross-origin rejection.');

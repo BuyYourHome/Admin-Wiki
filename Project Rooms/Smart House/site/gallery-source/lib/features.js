@@ -10,6 +10,17 @@ export const masterBathDesigns = [
   { id: 'bath-muted-terracotta', title: 'Muted Terracotta', image: 'master-bath-muted-terracotta.jpg', detail: `I’m exploring muted terracotta on my cabinets with warm ivory walls. ${bathLayoutNote}` }
 ];
 
+const basementLayoutNote = 'I keep my black spiral staircase, full screen-and-stair composition, mountain artwork, marble floor, and amber LED lighting from my reference. My AI study is a visual concept, not manufacturer paint specifications or proof of installed finishes; my stair dimensions and clearances still need confirmation.';
+
+export const basementColorSchemes = [
+  { slug: 'soft-ivory', title: 'Soft Ivory', image: 'basement-soft-ivory.jpg', detail: `I’m exploring ivory walls and ceiling, pale brick, and a taupe sofa in my basement. ${basementLayoutNote}` },
+  { slug: 'midnight-navy', title: 'Midnight Navy', image: 'basement-midnight-navy.jpg', detail: `I’m exploring deep navy walls and ceiling, warm ivory brick, and a slate blue sofa in my basement. ${basementLayoutNote}` },
+  { slug: 'forest-green', title: 'Forest Green', image: 'basement-forest-green.jpg', detail: `I’m exploring forest green walls, an ivory ceiling, sage brick, and a moss sofa in my basement. ${basementLayoutNote}` },
+  { slug: 'charcoal-copper', title: 'Charcoal & Copper', image: 'basement-charcoal-copper.jpg', detail: `I’m exploring charcoal walls and ceiling, greige brick, and a camel sofa with copper tones in my basement. ${basementLayoutNote}` },
+  { slug: 'mushroom-clay', title: 'Mushroom & Clay', image: 'basement-mushroom-clay.jpg', detail: `I’m exploring mushroom taupe walls, an ivory ceiling, muted clay brick, and a clay sofa in my basement. ${basementLayoutNote}` },
+  { slug: 'coastal-blue', title: 'Coastal Blue', image: 'basement-coastal-blue.jpg', detail: `I’m exploring dusty blue walls, a white ceiling, whitewashed brick, and a blue gray sofa in my basement. ${basementLayoutNote}` }
+];
+
 export const systemFeatures = [
   { id: 'hot-water', title: 'My instant hot water', status: 'IN MY PLANS', text: 'I’m planning a natural-gas tankless water heater with whole-house recirculation, so hot water is ready when you need it.' },
   { id: 'presence', title: 'I follow your routine', status: 'IN MY PLANS', text: 'I’m planning proximity sensing for multiple people. If my living room is empty and you’re in my kitchen, I’d turn my TV toward you. I’d turn it back when you settle into my living room.' },
@@ -40,10 +51,10 @@ export const roomFeatures = {
     'I’m exploring a framed TV that changes from artwork to football and turns toward my kitchen.',
     'I’m planning to track multiple people with proximity devices and turn my TV between my kitchen and living room as people move.',
     'My planned exterior-camera system would let me switch my TV to surveillance mode while you’re inside.',
-    'I have six cabinet-and-backdrop color combinations to compare.',
-    'I’m also exploring an amber-lit home theater with a black spiral staircase as another AI concept ready for your vote.',
-    'My twelve-second theater film shows moving football and amber stair lights illuminating in sequence.',
-    'I keep my surrounding walls warm off-white and my floor honey-toned in my six cabinet color studies. My theater concept leaves dimensions and clearances unconfirmed.'
+    'I have six cabinet-and-backdrop color combinations and my original amber-lit home theater ready for your vote.',
+    `I’m also comparing ${basementColorSchemes.length} full-scene basement palettes: ${basementColorSchemes.map(scheme => scheme.title).join(', ')}. I offer these same palettes beside my spiral staircase, with a separate vote in each gallery.`,
+    'My twelve-second theater film shows moving football and amber stair lights illuminating in sequence. I keep its original amber palette; it does not change to match a winning color.',
+    'I keep my surrounding walls warm off-white and my floor honey-toned in my six cabinet color studies. My basement studies keep my black stairs, mountain artwork, marble floor, and amber LEDs. These are visual concepts, not manufacturer paint specifications or proof of installed finishes; dimensions and clearances remain unconfirmed.'
   ] },
   'front-elevation': { status: 'MY DESIGN CONCEPT', features: [
     'I’m comparing warm wood shutters with black shutters.',
@@ -71,8 +82,10 @@ export const roomFeatures = {
   ] },
   'spiral-staircase': { status: 'MY DESIGN CONCEPT', features: [
     'I’m exploring a black spiral staircase with amber tread and cove lighting beside my home theater.',
-    'My twelve-second concept film keeps my full screen-and-staircase scene in view while my stair lights illuminate in sequence.',
-    'I have one AI staircase concept ready for your vote; my dimensions, clearances, materials, and construction details still need confirmation.'
+    `I have my original black staircase concept and ${basementColorSchemes.length} full-scene color settings ready for your vote: ${basementColorSchemes.map(scheme => scheme.title).join(', ')}. I also show these six palettes in my Media Center, with a separate vote there.`,
+    'I keep my black staircase, mountain artwork, marble floor, and amber LEDs as I compare colors around my stairs.',
+    'My twelve-second concept film keeps my full screen-and-staircase scene in view while my stair lights illuminate in sequence. I keep its original amber palette; it does not change to match a winning color.',
+    'My color studies are visual concepts, not manufacturer paint specifications or proof of installed finishes. My dimensions, clearances, materials, and construction details still need confirmation.'
   ] },
   'back-deck': { status: 'IN MY PLANS', features: [
     'I’m exploring my back deck as an outdoor living space.',

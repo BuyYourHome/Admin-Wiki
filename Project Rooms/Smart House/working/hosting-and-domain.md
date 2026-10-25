@@ -13,7 +13,7 @@ Wes reported buying `Pondstr.com` from GoDaddy and instructed Smart House to hos
 - Initial saved version: `appgprj_6ad4d98e08708191858cab113814704e~appgver_0176b707d1688191be325f28960f58a6`.
 - Initial deployment: `appgdep_6ad4dafedea88191934ecd974a287155`.
 - Canonical linkage: `site/.openai/hosting.json`.
-- Publication checkout: ignored `site/.hosting-work/work/gallery-release-20261025/` for version 31; the parent `site/.hosting-work/` preserves the pending natural-voice work. Current publication uses the supported Sites Vinext runtime, gallery code, existing schema migrations, 19 voting choices, and three concept films. Never publish the wiki, private records, credentials, or source inventories. The original static page remains as a historical local concept.
+- Publication checkout: ignored `site/.hosting-work/work/gallery-release-20261025/` for version 32; the parent `site/.hosting-work/` preserves the pending natural-voice work. Current publication uses the supported Sites Vinext runtime, gallery code, existing schema migrations, 31 voting choices, and three concept films. Never publish the wiki, private records, credentials, or source inventories. The original static page remains as a historical local concept.
 
 ## Pondstr.com connection
 
@@ -52,11 +52,11 @@ Wes requested removal of the website login requirement so the public can access 
 
 Wes requested Design, Explore, View, and Manage navigation and six room galleries with public voting. The website now uses the supported Sites Vinext Worker runtime and logical D1 binding `DB`, with no R2 binding. Public access and the existing custom domain were preserved. The database migration creates only the vote schema; no synthetic votes were seeded into production.
 
-- Current Site source commit: `0883f0b9215d84af9028ef3193eff5f1ccfb60d3`.
-- Current saved version: `appgprj_6ad4d98e08708191858cab113814704e~appgver_44dac207488c8191aa27384320187bcd` (version 30).
-- Current deployment: `appgdep_6ade57e7afb88191a9b5e25175ba78db`, confirmed `succeeded` at 2026-10-25 3:26 PM Eastern (`2026-10-25T19:26:40.662281+00:00`).
+- Current Site source commit: `dc48bfbe39c6cd00a2b85b15ea8b9fca51b30a54`.
+- Current saved version: `appgprj_6ad4d98e08708191858cab113814704e~appgver_4e06014f89308191a34f9365ec46a237` (version 32).
+- Current deployment: `appgdep_6ade7100bb2081919c7229b99fd995b3`, confirmed `succeeded` at 2026-10-25 5:13 PM Eastern (`2026-10-25T21:13:45.446819+00:00`).
 - Live URL: https://pondstr.com . The original Sites URL remains https://pondstr.coolnewt4097.chatgpt.site .
-- Media Center has six supplied color concepts; Front Elevation has two concepts; Garage Barn Door has three concepts; Master Bath has six color studies. Kitchen, ADU, Spiral Staircase, and Back Deck await images.
+- Media Center has 13 choices; Front Elevation has two; Garage Barn Door has three; Master Bath has six; Spiral Staircase has seven. Kitchen, ADU, and Back Deck await images.
 
 The official source helper pushed and packaged the matching built source; the native Sites save/deploy operations confirmed publication. Final read-only checks against the custom domain returned HTTP 200 and zero initial Media Center votes, with secure HTTP-only voter-cookie initialization. Browser verification showed all six Media Center images loaded. Local-only tests covered saving, repeated votes, changing choices, separate visitor totals, missing cookies, invalid choices, empty galleries, and origin rejection. The local preview was stopped after verification.
 
@@ -263,4 +263,20 @@ The vote-selection and sound lifecycle/race suites, full TypeScript check, produ
 
 Wes confirmed adding the complete staircase-and-screen image as voting choices in both Media Center and Spiral Staircase, then supplied the 12-second football/sequential-stair-light video. Both original files are copied byte-identically into the separate Sites repository, with an extracted first-frame poster. The image is never cropped or enlarged on hover; each gallery has its own choice ID. The video plays in both galleries, with muted autoplay, looping, native controls, full-frame expanded viewing, retained ending credit, and the illustrative-concept label. Media Center retains its earlier TV film; the new film follows the voting cards there so two players do not expand together. The View tour adds the new motion study once under Spiral Staircase, for eight scenes and three films. See [[Project Rooms/Smart House/working/theater-and-staircase]] for exact source hashes and validation.
 
-Guide and tour checks, TypeScript, production build, local vote persistence/deduplication/isolation, full video decode, and desktop/phone image checks passed. Fresh local D1 used only existing migrations 0000/0001. The official helper pushed and packaged matching source. Live custom-domain checks showed both new cards and the new film; the Spiral Staircase player reported 12 seconds, 1672×940, muted loop, advancing currentTime, ready state 4, no error, and contain fitting. A live screenshot is saved outside Git. No production test votes, comments, appointments, microphone permission, or house-system actions occurred. No new schema or secret was deployed. Natural voice remains prepared locally and inactive; its continuation now points to this current production baseline.
+Guide and tour checks, TypeScript, production build, local vote persistence/deduplication/isolation, full video decode, and desktop/phone image checks passed. Fresh local D1 used only existing migrations 0000/0001. The official helper pushed and packaged matching source. Live custom-domain checks showed both new cards and the new film; the Spiral Staircase player reported 12 seconds, 1672×940, muted loop, advancing currentTime, ready state 4, no error, and contain fitting. A live screenshot is saved outside Git. No production test votes, comments, appointments, microphone permission, or house-system actions occurred. No new schema or secret was deployed. Natural voice remained prepared locally and inactive.
+
+## Six basement color schemes — 2026-10-25
+
+- Sites source commit: `dc48bfbe39c6cd00a2b85b15ea8b9fca51b30a54`.
+- Saved version: `appgprj_6ad4d98e08708191858cab113814704e~appgver_4e06014f89308191a34f9365ec46a237`, version **32**.
+- Deployment: `appgdep_6ade7100bb2081919c7229b99fd995b3`, succeeded at **2026-10-25T21:13:45.446819+00:00**, environment revision **0**.
+- Source archive: `C:\Users\wesbr\AppData\Local\Temp\pondster-basement-colors-release-20261025.tar.gz`, SHA-256 `cfd6f3e72615c483d1584eb23307b9afd0d58c596131a07bddcbefaec2243ee7` (51,394,560 bytes, 107 files).
+- Native URL: https://pondstr.coolnewt4097.chatgpt.site . Custom domain: https://pondstr.com . Public audience retained.
+
+Wes requested six basement color schemes and voting options. Soft Ivory, Midnight Navy, Forest Green, Charcoal & Copper, Mushroom & Clay, and Coastal Blue were independently edited from the same full-room reference with the built-in image tool. Full PNGs, complete prompts, and an asset/hash manifest are saved outside Git. The six JPEG web copies preserve full dimensions without cropping. Each palette appears in both Media Center and Spiral Staircase under a distinct gallery choice ID; all existing 19 IDs remain, bringing the catalog to 31 choices. See [[Project Rooms/Smart House/working/basement-color-concepts]] for exact paths and visual limits.
+
+Shared catalog, Explore features, Pondster's named palette routing, and tour winner/fallback checks are updated. The original amber reference and films remain available. The films explicitly retain their original palettes; the eight-scene, three-film tour uses a winning palette for its still rather than implying the separate film changes color. No schema migration is required.
+
+Guide and tour suites, TypeScript, the production build, and full local vote regression passed. Local checks confirmed saving/changing the new choices, no repeated-vote inflation, visitor isolation, and cross-gallery-ID rejection. Full-size image and 390-pixel phone checks passed. The combined prepared-voice checkout's guide/context checks and the code backup's guide/tour checks also passed, preserving the separate unpublished voice work.
+
+The official source helper pushed and packaged the matching production source; native Sites save/deploy confirmed success. Fresh Chrome checks on the custom domain showed 13 Media Center choices, seven Spiral Staircase choices, all six new named buttons in both galleries, and all six images loaded at their recorded full dimensions. The image viewer retained `contain` fitting. Live proof is saved at `C:\Users\wesbr\.codex\visualizations\2026\10\25\pondster-basement-colors-live.png`. No production test vote, comment, appointment, microphone access, or house-system action occurred. Public audience, DNS, and environment are unchanged. Natural voice remains prepared locally and inactive; its continuation now uses this production baseline.

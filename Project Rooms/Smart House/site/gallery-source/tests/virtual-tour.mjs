@@ -20,6 +20,8 @@ assert.deepEqual(zero.map(scene => scene.id), [
 assert.ok(zero.every(scene => scene.status === 'no-votes' && scene.votes === 0 && scene.totalVotes === 0 && scene.tieCount === 0));
 assert.equal(new Set(zero.map(scene => scene.id)).size, zero.length);
 assert.ok(zero.every(scene => scene.image.startsWith('/concepts/')));
+assert.equal(zero.length, 8);
+assert.equal(zero.filter(scene => scene.kind === 'motion').length, 3);
 assert.ok(!zero.some(scene => ['kitchen', 'adu', 'back-deck'].includes(scene.roomId)));
 
 const media = galleries.find(gallery => gallery.id === 'media-center');
@@ -74,6 +76,30 @@ assert.equal(tour.find(scene => scene.id === 'garage-barn-door-motion').video, '
 assert.equal(tour.find(scene => scene.id === 'spiral-staircase-motion').video, '/media/theater-football-sequential-stair-lights.mp4');
 assert.match(tour.find(scene => scene.id === 'spiral-staircase-motion').sourceCredit, /credit shown.*Marine Corps.*James Stanfield.*DVIDS/);
 
+const newBasementWinners = {
+  'media-center': { scores: { 'media-basement-midnight-navy': 9, 'media-01': 1 }, total: 10 },
+  'spiral-staircase': { scores: { 'spiral-basement-coastal-blue': 8, 'spiral-01': 1 }, total: 9 }
+};
+const colorTour = buildTourScenes(galleries, newBasementWinners);
+assert.equal(colorTour.length, 8, 'Additional voting designs do not add tour scenes.');
+assert.equal(colorTour.filter(scene => scene.kind === 'motion').length, 3);
+for (const [roomId, designId, image] of [
+  ['media-center', 'media-basement-midnight-navy', '/concepts/basement-midnight-navy.jpg'],
+  ['spiral-staircase', 'spiral-basement-coastal-blue', '/concepts/basement-coastal-blue.jpg']
+]) {
+  const still = colorTour.find(scene => scene.id === `${roomId}-design`);
+  const motion = colorTour.find(scene => scene.id === `${roomId}-motion`);
+  assert.equal(still.status, 'leader');
+  assert.equal(still.designId, designId);
+  assert.equal(still.image, image);
+  assert.equal(motion.designId, designId);
+  assert.equal(motion.image, image, 'A new winning palette becomes the motion fallback still.');
+  assert.equal(motion.designTitle, still.designTitle);
+  assert.match(motion.description, /separate illustrative motion film, not a film of the selected voting design/);
+  assert.notEqual(motion.title, still.title);
+  assert.equal(motion.video, tour.find(scene => scene.id === motion.id).video, 'The original film stays separate from the new color winner.');
+}
+
 const badScores = { 'front-elevation': { scores: { [front.designs[0].id]: -1, [front.designs[1].id]: NaN, invented: 100 }, total: 100 } };
 assert.equal(buildTourScenes(galleries, badScores)[0].status, 'no-votes');
 assert.equal(buildTourScenes(galleries, badScores)[0].totalVotes, 0);
@@ -82,4 +108,4 @@ const withExtra = buildTourScenes([extra, ...galleries], {});
 const extraScene = withExtra.find(scene => scene.roomId === 'future-room');
 assert.equal(withExtra.indexOf(extraScene), withExtra.findIndex(scene => scene.id === 'garage-barn-door-motion') + 1, 'Other populated spaces follow the prioritized rooms in catalog order.');
 assert.equal(extraScene.image, '/images/future.jpg');
-console.log('PASS: vote-based tour selection, room ordering, empty/failed/no-vote states, stable positive ties, invalid-score filtering, separate credited motion scenes, selected-still fallbacks, and immutable deterministic output.');
+console.log('PASS: vote-based tour selection, new basement color winners and fallback stills, eight scenes and three unchanged separate films, room ordering, empty/failed/no-vote states, stable ties, invalid-score filtering, credits, and immutable deterministic output.');

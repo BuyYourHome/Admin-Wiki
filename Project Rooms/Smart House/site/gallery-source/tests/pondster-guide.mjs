@@ -1,6 +1,7 @@
 import assert from 'node:assert/strict';
 import { answerPondster, isPondsterWakeRequest } from '../lib/pondster-guide.ts';
 import { galleries } from '../lib/designs.ts';
+import { basementColorSchemes } from '../lib/features.js';
 
 assert.match(answerPondster('Hello Pondster').text, /Pondster, the voice and identity of this house/);
 assert.match(answerPondster('Hello Pondster').text, /location is confidential.*witness protection/);
@@ -13,6 +14,8 @@ assert.equal(isPondsterWakeRequest('Dean Wright, show the designs'),false);
 assert.equal(isPondsterWakeRequest('Jean Wright, show the designs'),false);
 assert.deepEqual(answerPondster('Pondster show media center').action, {menu:'Design',room:'media-center'});
 assert.deepEqual(answerPondster('Show front elevation').action, {menu:'Design',room:'front-elevation'});
+assert.equal(galleries.length, 8);
+assert.equal(galleries.reduce((sum, gallery) => sum + gallery.designs.length, 0), 31);
 for (const gallery of galleries) {
   const reply = answerPondster(`Show ${gallery.name}`);
   assert.deepEqual(reply.action, {menu:'Design',room:gallery.id});
@@ -23,6 +26,32 @@ for (const gallery of galleries) {
   if (!gallery.designs.length) assert.match(reply.text, /images still to come/);
 }
 const masterBath = galleries.find(gallery => gallery.id === 'master-bath');
+const media = galleries.find(gallery => gallery.id === 'media-center');
+const staircase = galleries.find(gallery => gallery.id === 'spiral-staircase');
+assert.deepEqual(basementColorSchemes.map(scheme => [scheme.slug, scheme.title]), [
+  ['soft-ivory', 'Soft Ivory'],
+  ['midnight-navy', 'Midnight Navy'],
+  ['forest-green', 'Forest Green'],
+  ['charcoal-copper', 'Charcoal & Copper'],
+  ['mushroom-clay', 'Mushroom & Clay'],
+  ['coastal-blue', 'Coastal Blue']
+]);
+assert.equal(media.designs.length, 13);
+assert.equal(staircase.designs.length, 7);
+assert.deepEqual(media.designs.slice(0, 7).map(design => design.id), ['media-01', 'media-02', 'media-03', 'media-04', 'media-05', 'media-06', 'media-07']);
+assert.equal(media.designs[6].image, 'home-theater-spiral-staircase-amber.png');
+assert.equal(staircase.designs[0].id, 'spiral-01');
+assert.equal(staircase.designs[0].image, media.designs[6].image);
+for (const [gallery, prefix, label] of [[media, 'media', 'Basement'], [staircase, 'spiral', 'Stair setting']]) {
+  for (const scheme of basementColorSchemes) {
+    const design = gallery.designs.find(item => item.id === `${prefix}-basement-${scheme.slug}`);
+    assert.equal(design.title, `${label} · ${scheme.title}`);
+    assert.equal(design.image, `basement-${scheme.slug}.jpg`);
+    assert.equal(design.fullImage, true, 'Every palette keeps the full screen-and-stair composition.');
+    assert.match(design.detail, /black spiral staircase.*mountain artwork.*marble floor.*amber LED/);
+    assert.match(design.detail, /visual concept, not manufacturer paint specifications or proof of installed finishes/);
+  }
+}
 assert.deepEqual(masterBath.designs.map(design => [design.id, design.title]), [
   ['bath-warm-ivory', 'Warm Ivory'],
   ['bath-dusty-blue', 'Soft Dusty Blue'],
@@ -45,11 +74,31 @@ for (const [room, phrase, expected] of [
   ['master-bath', 'Master Bath taupe', 'Mushroom Taupe'],
   ['media-center', 'Media Center warm ivory', 'Warm Ivory Cream'],
   ['media-center', 'Media Center navy', 'Deep Muted Navy Blue'],
-  ['media-center', 'Media Center taupe', 'Medium Mushroom Taupe']
+  ['media-center', 'Media Center taupe', 'Medium Mushroom Taupe'],
+  ['master-bath', 'Master Bath Forest Green', 'Forest Green'],
+  ['media-center', 'basement Forest Green', 'Basement · Forest Green'],
+  ['media-center', 'Media Center Forest Green', 'Basement · Forest Green'],
+  ['spiral-staircase', 'Spiral Staircase Forest Green', 'Stair setting · Forest Green'],
+  ['media-center', 'basement Midnight Navy', 'Basement · Midnight Navy'],
+  ['spiral-staircase', 'stairs Midnight Navy', 'Stair setting · Midnight Navy'],
+  ['media-center', 'basement Mushroom & Clay', 'Basement · Mushroom & Clay'],
+  ['spiral-staircase', 'stairs Coastal Blue', 'Stair setting · Coastal Blue']
 ]) {
   const reply = answerPondster(`Show ${phrase}`);
   assert.deepEqual(reply.action, {menu:'Design',room});
   assert.ok(reply.text.includes(expected), `The explicit room scopes an overlapping color: ${phrase}`);
+}
+assert.deepEqual(answerPondster('Show Forest Green').action, {menu:'Design',room:'master-bath'}, 'The original unscoped Bath title keeps its route.');
+assert.match(answerPondster('Show basement').text, /13 AI concept choices/);
+for (const [question, expected] of [
+  ['What are my Media Center features?', /6 full-scene basement palettes/],
+  ['What are my Spiral Staircase features?', /6 full-scene color settings/]
+]) {
+  const reply = answerPondster(question);
+  assert.deepEqual(reply.action, {menu:'Explore'});
+  assert.match(reply.text, expected);
+  assert.match(reply.text, /original amber palette.*does not change to match a winning color/);
+  for (const scheme of basementColorSchemes) assert.ok(reply.text.includes(scheme.title));
 }
 const bathFeatures = answerPondster('What are my Master Bath features?');
 assert.deepEqual(bathFeatures.action, {menu:'Explore'});
@@ -59,6 +108,9 @@ assert.deepEqual(answerPondster('Try the evening lighting').action, {menu:'Explo
 assert.deepEqual(answerPondster('Pondster unwind').action, {menu:'Explore',scene:'relax'});
 assert.match(answerPondster('Turn on the lights').text, /don’t control real house lighting/);
 assert.deepEqual(answerPondster('Show the football video').action, {menu:'Design',room:'media-center'});
+assert.deepEqual(answerPondster('Show the spiral staircase video').action, {menu:'Design',room:'spiral-staircase'});
+assert.match(answerPondster('Show the home theater film').text, /twelve-second.*amber stair lights.*sequence/);
+assert.match(answerPondster('Show the home theater film').text, /original amber palette.*does not change to match a winning color/);
 assert.match(answerPondster('Show the football video').text, /ten-second.*fixed decorative frame.*moving football/);
 assert.deepEqual(answerPondster('Show the barn door video').action, {menu:'Design',room:'garage-barn-door'});
 assert.match(answerPondster('Show the Tesla animation').text, /twenty-five-second.*swings inward.*slides left.*driving out.*white-marble.*concept/);
@@ -96,6 +148,6 @@ assert.match(answerPondster('What is your address?').text, /location is confiden
 assert.match(answerPondster('Show me your virtual tour').text, /Take my virtual tour/);
 assert.deepEqual(answerPondster('Show me around').action, {menu:'View'});
 assert.doesNotMatch(answerPondster('What is your address?').text, /908|Pond Street|Dean|anonymously/);
-console.log('PASS: Pondster identity and exclusive wake name, Jean designer credit, confidential location, all current galleries/choices, six Master Bath choices and overlapping color navigation, scenes, video, non-mutating voting, simulated viewing, public contact, owner boundaries, and unknown-fact refusal.');
-assert.deepEqual(answerPondster('Show the spiral staircase video').action, {menu:'Design',room:'spiral-staircase'});
-assert.match(answerPondster('Show the home theater film').text, /twelve-second.*amber stair lights.*sequence/);
+assert.match(answerPondster('Show basement Charcoal and Copper').text, /Basement · Charcoal & Copper/);
+assert.match(answerPondster('Show stair setting Mushroom and Clay').text, /Stair setting · Mushroom & Clay/);
+console.log('PASS: Pondster identity, all eight galleries and 31 choices, six shared basement palettes in two independent voting galleries, preserved original designs, room-scoped color navigation, film palette boundaries, Master Bath choices, scenes, non-mutating voting, viewing, contacts, and private/unknown-fact boundaries.');

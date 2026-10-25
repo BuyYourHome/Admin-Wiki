@@ -1,4 +1,4 @@
-import { masterBathDesigns, roomFeatures, systemFeatures } from './features.js';
+import { basementColorSchemes, masterBathDesigns, roomFeatures, systemFeatures } from './features.js';
 
 export type GuideAction = { menu: 'Design' | 'Explore' | 'View' | 'Own' | 'Built By'; room?: string; scene?: 'day' | 'evening' | 'relax' };
 export type GuideReply = { text: string; action?: GuideAction };
@@ -10,12 +10,12 @@ export function isPondsterWakeRequest(transcript: string) {
 // Public concept names mirror lib/designs.ts; the focused tests check this list.
 const rooms = [
   { id: 'kitchen', name: 'Kitchen', aliases: ['kitchen'], choices: [] as string[] },
-  { id: 'media-center', name: 'Media Center', aliases: ['media center', 'media centre', 'entertainment center', 'entertainment centre', 'home theater', 'home theatre', 'theater', 'theatre', 'television', 'tv'], choices: ['Warm Ivory Cream', 'Soft Dusty Sage Green', 'Deep Muted Navy Blue', 'Medium Mushroom Taupe', 'Deep Muted Olive Green', 'Rich Charcoal Gray', 'Amber-lit home theater'] },
+  { id: 'media-center', name: 'Media Center', aliases: ['media center', 'media centre', 'entertainment center', 'entertainment centre', 'home theater', 'home theatre', 'theater', 'theatre', 'television', 'tv', 'basement'], choices: ['Warm Ivory Cream', 'Soft Dusty Sage Green', 'Deep Muted Navy Blue', 'Medium Mushroom Taupe', 'Deep Muted Olive Green', 'Rich Charcoal Gray', 'Amber-lit home theater', ...basementColorSchemes.map(scheme => `Basement · ${scheme.title}`)] },
   { id: 'front-elevation', name: 'Front Elevation', aliases: ['front elevation', 'front exterior', 'front of the house', 'exterior', 'shutters'], choices: ['Warm welcome', 'Black shutters'] },
   { id: 'garage-barn-door', name: 'Garage Barn Door', aliases: ['garage', 'barn door'], choices: ['Warm white board & batten', 'Charcoal green board & batten', 'Limewashed brick'] },
   { id: 'adu', name: 'ADU', aliases: ['adu', 'accessory dwelling unit'], choices: [] as string[] },
   { id: 'master-bath', name: 'Master Bath', aliases: ['master bath', 'primary bath', 'main bath', 'bathroom'], choices: masterBathDesigns.map(design => design.title) },
-  { id: 'spiral-staircase', name: 'Spiral Staircase', aliases: ['spiral staircase', 'spiral stairs', 'staircase', 'stairs'], choices: ['Black spiral staircase'] },
+  { id: 'spiral-staircase', name: 'Spiral Staircase', aliases: ['spiral staircase', 'spiral stairs', 'staircase', 'stairs', 'stair setting'], choices: ['Black spiral staircase', ...basementColorSchemes.map(scheme => `Stair setting · ${scheme.title}`)] },
   { id: 'back-deck', name: 'Back Deck', aliases: ['back deck', 'rear deck', 'deck'], choices: [] as string[] }
 ];
 const choiceAliases: Record<string, string[]> = {
@@ -35,7 +35,11 @@ const choiceAliases: Record<string, string[]> = {
   'Black shutters': ['black shutter'],
   'Warm white board & batten': ['warm white', 'white board and batten'],
   'Charcoal green board & batten': ['charcoal green'],
-  'Limewashed brick': ['limewash', 'limewashed']
+  'Limewashed brick': ['limewash', 'limewashed'],
+  ...Object.fromEntries(basementColorSchemes.flatMap(scheme => [
+    [`Basement · ${scheme.title}`, [scheme.title, scheme.title.replace('&', 'and')]],
+    [`Stair setting · ${scheme.title}`, [scheme.title, scheme.title.replace('&', 'and')]]
+  ]))
 };
 const ashley = 'Ashley Morello is my realtor with Element Realty Group at Howard Hanna Allen Tate. You can reach her at ashley@elementrealtygroup.net or 919-417-0612.';
 function normalize(value: string) { return value.toLowerCase().replace(/[^a-z0-9]+/g, ' ').trim(); }
@@ -93,7 +97,7 @@ export function answerPondster(input: string): GuideReply {
     return { text: 'I have a twenty-five-second motion concept for my garage: my center entry section swings inward and closes, then my full door slides left. I’m showing a white Tesla driving out and across the scene to the left, revealing my white-marble garage floor. This is my illustrative AI/composited concept; my hardware, clearances, and the car’s turning path haven’t been validated.', action: { menu: 'Design', room: 'garage-barn-door' } };
   }
   if ((room?.id === 'spiral-staircase' || /\b(theater|theatre|cinema|sequential stair lights)\b/.test(words)) && /\b(video|film|animation|motion|lights)\b/.test(words)) {
-    return { text: 'I have a twelve-second theater and spiral-staircase film in both galleries. Moving football fills my screen while my amber stair lights illuminate in sequence. I’m showing a full-scene AI motion concept; my staircase, lighting, dimensions, and clearances still need validation.', action: { menu: 'Design', room: room?.id === 'spiral-staircase' ? 'spiral-staircase' : 'media-center' } };
+    return { text: 'I have a twelve-second theater and spiral-staircase film in both galleries. Moving football fills my screen while my amber stair lights illuminate in sequence. My film keeps its original amber palette; it does not change to match a winning color. I’m showing a full-scene AI motion concept; my staircase, lighting, dimensions, and clearances still need validation.', action: { menu: 'Design', room: room?.id === 'spiral-staircase' ? 'spiral-staircase' : 'media-center' } };
   }
   if (room) {
     if (/\bfeatures?\b/.test(words)) return { text: `${roomFeatures[room.id].features.join(' ')} I’m sharing concepts and plans; my final specifications still need confirmation.`, action: { menu: 'Explore' } };
