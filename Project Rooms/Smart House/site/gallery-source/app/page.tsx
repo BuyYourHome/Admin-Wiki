@@ -1,5 +1,5 @@
 'use client';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { galleries, type Design } from '../lib/designs';
 import ViewPage from './view-page';
 import BuiltByPage from './built-by-page';
@@ -9,6 +9,7 @@ import ScrollVideo from './scroll-video';
 import TheaterMotion from './theater-motion';
 import ExplorePage from './explore-page';
 import PondsterLogoArt from './pondster-logo-art';
+import GalleryImageViewer from './gallery-image-viewer';
 import type { GuideAction } from '../lib/pondster-guide';
 
 type VoteResults = { scores:Record<string,number>; total:number; selected:string|null };
@@ -30,7 +31,6 @@ export default function Home() {
   const [guideOpen,setGuideOpen] = useState(false);
   const [showLighting,setShowLighting] = useState(false);
   const [logoPlay,setLogoPlay] = useState(0);
-  const dialog = useRef<HTMLDialogElement>(null);
   const gallery = galleries.find(gallery => gallery.id === room)!;
   useEffect(() => {
     const sync = () => { const raw = location.hash.slice(1).toLowerCase(); const value = raw === 'manage' ? 'own' : raw; const next = menus.find(item => menuHash(item) === value); if(next) setMenu(next); };
@@ -43,7 +43,6 @@ export default function Home() {
     fetch(`/api/votes?room=${encodeURIComponent(room)}`,{cache:'no-store',signal:controller.signal}).then(async response => {const data=await response.json() as VoteResults & {error?:string};if(!response.ok)throw new Error(data.error);return data;}).then(data=>setResults(data)).catch(error=>{if(error.name!=='AbortError'){setMessage('I can’t load the vote totals right now.');setFailed(true);}}).finally(()=>{if(!controller.signal.aborted)setLoading(false);});
     return () => controller.abort();
   },[room,retry]);
-  useEffect(() => {if(zoom && !dialog.current?.open)dialog.current?.showModal();if(!zoom && dialog.current?.open)dialog.current.close();},[zoom]);
   useEffect(() => {if(menu!=='Explore' || !showLighting)return;const frame=requestAnimationFrame(()=>{const target=document.getElementById('lighting-features');target?.scrollIntoView({block:'start'});target?.focus({preventScroll:true});setShowLighting(false);});return ()=>cancelAnimationFrame(frame);},[menu,showLighting]);
   async function vote(designId:string) {
     if(saving)return;setSaving(true);setMessage('');
@@ -83,6 +82,6 @@ export default function Home() {
       <Comments key={menu} page={menuHash(menu)} title={menu} onAsk={()=>setGuideOpen(true)}/>
     </main><footer><span>MY LOCATION IS CONFIDENTIAL</span><p>My SI designer: Jean Wright · Buy Your Home</p><span>I’m sharing concepts · No live controls</span></footer>
     <PondsterGuide open={guideOpen} onOpenChange={setGuideOpen} onAction={guideAction}/>
-    <dialog ref={dialog} onCancel={()=>setZoom(null)} onClose={()=>setZoom(null)} className="lightbox">{zoom && <><button className="close-zoom" onClick={()=>setZoom(null)} aria-label="Close image">Close ×</button><img src={`/concepts/${zoom.image}`} alt={`My AI design concept: ${zoom.title}`}/><div><h2>{zoom.title}</h2><p>I’m showing an AI concept for my design, not a measured plan or a photo of completed work.</p></div></>}</dialog>
+    <GalleryImageViewer design={zoom} onChange={setZoom} onClose={()=>setZoom(null)}/>
   </>;
 }

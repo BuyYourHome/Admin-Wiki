@@ -13,7 +13,7 @@ Wes reported buying `Pondstr.com` from GoDaddy and instructed Smart House to hos
 - Initial saved version: `appgprj_6ad4d98e08708191858cab113814704e~appgver_0176b707d1688191be325f28960f58a6`.
 - Initial deployment: `appgdep_6ad4dafedea88191934ecd974a287155`.
 - Canonical linkage: `site/.openai/hosting.json`.
-- Publication checkout: ignored `site/.hosting-work/work/gallery-release-20261025/` for version 34; the parent `site/.hosting-work/` preserves the pending natural-voice work. Current publication uses the supported Sites Vinext runtime, gallery code, existing schema migrations, 37 voting choices across nine galleries, and three concept films. Never publish the wiki, private records, credentials, or source inventories. The original static page remains as a historical local concept.
+- Publication checkout: ignored `site/.hosting-work/work/gallery-release-20261025/` for version 35; the parent `site/.hosting-work/` preserves the pending natural-voice work. Current publication uses the supported Sites Vinext runtime, gallery code, existing schema migrations, 37 voting choices across nine galleries, and three concept films. Never publish the wiki, private records, credentials, or source inventories. The original static page remains as a historical local concept.
 
 ## Pondstr.com connection
 
@@ -52,9 +52,9 @@ Wes requested removal of the website login requirement so the public can access 
 
 Wes requested Design, Explore, View, and Manage navigation and six room galleries with public voting. The website now uses the supported Sites Vinext Worker runtime and logical D1 binding `DB`, with no R2 binding. Public access and the existing custom domain were preserved. The database migration creates only the vote schema; no synthetic votes were seeded into production.
 
-- Current Site source commit: `9662bd139a0999c1579b11179e3f807768002ddf`.
-- Current saved version: `appgprj_6ad4d98e08708191858cab113814704e~appgver_dd5230b2cb2c819195abe34b23e961cd` (version 34).
-- Current deployment: `appgdep_6ade80a5df0c81918b27c988c4524a0a`, confirmed `succeeded` at 2026-10-25 6:20 PM Eastern (`2026-10-25T22:20:29.765759+00:00`).
+- Current Site source commit: `bae490e0d82a177b34794f20bc930edb462153e6`.
+- Current saved version: `appgprj_6ad4d98e08708191858cab113814704e~appgver_695de9cd7d788191b88f874180a56d15` (version 35).
+- Current deployment: `appgdep_6ade8517976c8191b3bb705db08febc0`, confirmed `succeeded` at 2026-10-25 6:39 PM Eastern (`2026-10-25T22:39:29.149080+00:00`).
 - Live URL: https://pondstr.com . The original Sites URL remains https://pondstr.coolnewt4097.chatgpt.site .
 - Media Center has 13 choices; Front Elevation has two; Garage Barn Door has three; Master Bath has six; Hall Bath has six; Spiral Staircase has seven. Kitchen, ADU, and Back Deck await images.
 
@@ -310,4 +310,17 @@ Wes clarified that the six tub-and-shower pictures belong to Hall Bath, a room n
 
 Guide/tour suites, TypeScript, production build, and the full local vote suite passed, including rejection of tub IDs in Master Bath and original vanity IDs in Hall Bath, independent room preferences, visitor isolation, and independent tour winners. Combined prepared-voice guide/context checks also passed. Live database reads at intake, immediately before deployment, and after publication found only the existing Media Center vote and zero bath/tub votes; no backfill, schema change, or production test vote was needed.
 
-The official helper pushed/packaged the matching source, and native Sites confirmed publication. Fresh Chrome at https://pondstr.com/#design showed nine rooms, Hall Bath's six tub/shower cards, Master Bath's six original cards, the Hall Bath Explore card/link, correct typed Pondster navigation, and a loaded 1672×941 full image. Proof: `C:\Users\wesbr\.codex\visualizations\2026\10\25\pondster-hall-bath-live.png`. No production comments, bookings, microphone use, or house actions occurred. Public audience, DNS, and environment remain unchanged. Natural voice remains prepared locally and inactive, with its continuation updated to this baseline.
+The official helper pushed/packaged the matching source, and native Sites confirmed publication. Fresh Chrome at https://pondstr.com/#design showed nine rooms, Hall Bath's six tub/shower cards, Master Bath's six original cards, the Hall Bath Explore card/link, correct typed Pondster navigation, and a loaded 1672×941 full image. Proof: `C:\Users\wesbr\.codex\visualizations\2026\10\25\pondster-hall-bath-live.png`. No production comments, bookings, microphone use, or house actions occurred. Public audience, DNS, and environment remained unchanged. Natural voice remained prepared locally and inactive.
+
+## Next / Previous for gallery pictures — 2026-10-25
+
+- Sites source commit: `bae490e0d82a177b34794f20bc930edb462153e6`.
+- Saved version: `appgprj_6ad4d98e08708191858cab113814704e~appgver_695de9cd7d788191b88f874180a56d15`, version **35**.
+- Deployment: `appgdep_6ade8517976c8191b3bb705db08febc0`, succeeded at **2026-10-25T22:39:29.149080+00:00**, environment revision **0**.
+- Helper archive: `C:\Users\wesbr\AppData\Local\Temp\pondster-gallery-navigation-release-20261025.tar.gz`. Native normalized tar record: 113 files, 53,534,720 bytes, SHA256 `f29ff86bc2c4e982c13a0942b80e1a8f159baeae052fe5b5af50799bd50567be`.
+
+Wes requested a Next button for every gallery picture. The shared full-image viewer now provides visible Next/Previous controls, a gallery/title/position counter, wraparound, Left/Right arrow keys, Close/Escape, and opener focus return. It resolves the owning room by unique design ID, including images opened in View's notebook and assets shared across rooms. The bounded phone layout retains full-image `contain` fitting with reachable 44-pixel buttons. No images, voting identities, gallery counts, database schema, or vote behavior changed. See [[Project Rooms/Smart House/working/design-galleries-and-voting]] for the checks.
+
+Production and combined prepared-voice TypeScript checks passed, as did the production build. Local Chrome verified Hall Bath forward/backward/wrapping, keyboard navigation, Escape/focus restoration, phone control placement, and View-notebook gallery ownership for Spiral Staircase and Front Elevation. The first source push was explicitly rejected after credential expiry; a fresh credential and supported-helper reopen reconciled the retained commit. The helper then pushed and packaged the same successful build without changes or a duplicate publication attempt. Credentials remained in memory/hidden stdin.
+
+Native Sites confirmed successful version 35 publication. Fresh Chrome on https://pondstr.com/#design verified Next 1→2, Right arrow 2→3, Previous 3→2, and the loaded 1672×941 image with `contain` fitting. Live proof: `C:\Users\wesbr\.codex\visualizations\2026\10\25\pondster-gallery-next-live.png`. No production votes, comments, bookings, microphone use, or house actions occurred. Public audience, DNS, and environment are unchanged. Both prepared code copies retain the unpublished voice integration and its exact CSS block; natural voice remains inactive with the continuation updated to this production baseline.

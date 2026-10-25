@@ -1,0 +1,77 @@
+'use client';
+
+import { useEffect, useId, useRef, type KeyboardEvent } from 'react';
+import { galleries, type Design } from '../lib/designs';
+
+type Props = { design: Design | null; onChange: (design: Design) => void; onClose: () => void };
+
+export default function GalleryImageViewer({ design, onChange, onClose }: Props) {
+  const dialog = useRef<HTMLDialogElement>(null);
+  const closeButton = useRef<HTMLButtonElement>(null);
+  const opener = useRef<HTMLElement | null>(null);
+  const titleId = useId();
+  const descriptionId = useId();
+  const isOpen = Boolean(design);
+  // A notebook image can share its filename with another room. Its unique
+  // voting ID, rather than the currently selected room, identifies this gallery.
+  const gallery = design ? galleries.find(item => item.designs.some(itemDesign => itemDesign.id === design.id)) : undefined;
+  const pictures = gallery?.designs ?? (design ? [design] : []);
+  const index = design ? pictures.findIndex(picture => picture.id === design.id) : -1;
+  const canBrowse = pictures.length > 1 && index >= 0;
+
+  function restoreFocus() {
+    const target = opener.current;
+    opener.current = null;
+    if (target?.isConnected) target.focus({ preventScroll: true });
+  }
+
+  useEffect(() => {
+    const node = dialog.current;
+    if (!node) return;
+    if (isOpen && !node.open) {
+      opener.current = document.activeElement instanceof HTMLElement ? document.activeElement : null;
+      node.showModal();
+      closeButton.current?.focus({ preventScroll: true });
+    } else if (!isOpen && node.open) {
+      node.close();
+      restoreFocus();
+    }
+  }, [isOpen]);
+
+  useEffect(() => {
+    const node = dialog.current;
+    return () => { if (node?.open) node.close(); restoreFocus(); };
+  }, []);
+
+  function advance(direction: -1 | 1) {
+    if (!canBrowse) return;
+    onChange(pictures[(index + direction + pictures.length) % pictures.length]);
+  }
+
+  function onKeyDown(event: KeyboardEvent<HTMLDialogElement>) {
+    if (event.altKey || event.ctrlKey || event.metaKey || event.shiftKey || !canBrowse) return;
+    if (event.key !== 'ArrowLeft' && event.key !== 'ArrowRight') return;
+    const target = event.target;
+    if (target instanceof HTMLElement && (target.isContentEditable || target.closest('input, textarea, select, [contenteditable="true"]'))) return;
+    event.preventDefault();
+    event.stopPropagation();
+    advance(event.key === 'ArrowLeft' ? -1 : 1);
+  }
+
+  return <dialog ref={dialog} className="lightbox gallery-image-viewer" aria-labelledby={titleId} aria-describedby={descriptionId}
+    onKeyDown={onKeyDown} onCancel={event => { event.preventDefault(); onClose(); }} onClose={() => { restoreFocus(); onClose(); }}>
+    {design && <>
+      <header className="gallery-viewer-toolbar">
+        <div className="gallery-viewer-heading"><p className="eyebrow">MY {gallery ? `${gallery.name.toUpperCase()} GALLERY` : 'DESIGN IMAGE'}</p><h2 id={titleId}>{design.title}</h2></div>
+        <button ref={closeButton} type="button" className="gallery-viewer-close" onClick={onClose} aria-label="Close image">Close <span aria-hidden="true">×</span></button>
+      </header>
+      <div className="gallery-viewer-image"><img key={design.id} src={`/concepts/${design.image}`} alt={`My AI design concept: ${design.title}`} decoding="async" /></div>
+      <div className="gallery-viewer-navigation" role="group" aria-label="Gallery picture navigation">
+        <button type="button" disabled={!canBrowse} onClick={() => advance(-1)} aria-label={`Previous picture${gallery ? ` in ${gallery.name}` : ''}`}><span aria-hidden="true">←</span> Previous</button>
+        <p className="gallery-viewer-counter" role="status" aria-live="polite" aria-atomic="true"><span className="gallery-viewer-announcement">{design.title}. </span><span>{gallery?.name ?? 'My design'}</span><strong>Picture {index + 1} of {pictures.length}</strong></p>
+        <button type="button" disabled={!canBrowse} onClick={() => advance(1)} aria-label={`Next picture${gallery ? ` in ${gallery.name}` : ''}`}>Next <span aria-hidden="true">→</span></button>
+      </div>
+      <p className="gallery-viewer-caption" id={descriptionId}>I’m showing an AI concept for my design, not a measured plan or a photo of completed work.</p>
+    </>}
+  </dialog>;
+}
