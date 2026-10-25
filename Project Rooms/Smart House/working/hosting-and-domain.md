@@ -52,9 +52,9 @@ Wes requested removal of the website login requirement so the public can access 
 
 Wes requested Design, Explore, View, and Manage navigation and six room galleries with public voting. The website now uses the supported Sites Vinext Worker runtime and logical D1 binding `DB`, with no R2 binding. Public access and the existing custom domain were preserved. The database migration creates only the vote schema; no synthetic votes were seeded into production.
 
-- Current Site source commit: `4ee693e03116d3438803df3abe6270ba2e9817d4`.
-- Current saved version: `appgprj_6ad4d98e08708191858cab113814704e~appgver_965c099c51e0819199fe7d065106dabc` (version 26).
-- Current deployment: `appgdep_6adce4b9c2c88191a3623133ca4c5c5e`, confirmed `succeeded` at 2026-10-24 1:02 PM Eastern (`2026-10-24T17:02:57.921077Z`).
+- Current Site source commit: `06aed6ae9a3995723a00ffe84cf8cd6b6890ed74`.
+- Current saved version: `appgprj_6ad4d98e08708191858cab113814704e~appgver_d83cd37b2d4081918a26c3b5289c5aa6` (version 27).
+- Current deployment: `appgdep_6add5e8ed3c081918562ea1da9da7213`, confirmed `succeeded` at 2026-10-24 9:42 PM Eastern (`2026-10-25T01:42:46.479806Z`).
 - Live URL: https://pondstr.com . The original Sites URL remains https://pondstr.coolnewt4097.chatgpt.site .
 - Media Center has six supplied color concepts; Front Elevation has two concepts; Garage Barn Door has three concepts. Kitchen, ADU, Master Bath, Spiral Staircase, and Back Deck await images.
 
@@ -217,3 +217,11 @@ The production build passed. Local browser checks confirmed all six Media Center
 Version 26 moves each existing named vote button to the first child of its design card, immediately above the image. Tablet buttons span both image/content columns, while desktop and phone cards keep their normal vertical order. The button remains full width, including a future single-choice gallery. Names, selected/disabled states, accessible labels, handlers, and stored votes are preserved.
 
 The production build passed. Local browser checks at desktop, 1000-pixel tablet, and 390-pixel phone widths confirmed each button's bottom edge equals its image's top edge. At tablet width, buttons filled both columns and image/content began together below; phone content remained 375 pixels wide without overflow. The official helper pushed and packaged the matching source, and Sites confirmed version 26 publication. Live Front Elevation checks confirmed both buttons directly above their pictures; a screenshot was saved outside Git. No production votes were submitted. Public access and DNS are unchanged.
+
+## Four owner-requested smart-house plans — 2026-10-24
+
+Version 27 adds Wes's four requested capabilities at the start of Explore's house feature list: natural-gas tankless hot water with whole-house recirculation; multiple-person proximity sensing and automatic TV direction between kitchen/living room; personalized voice-activated bath filling with preferred temperature/full-level shutoff and voice-start shower; and exterior cameras following individuals with an indoor TV surveillance view. All four are labeled `IN MY PLANS` and use Pondster's first-person voice. Kitchen, Media Center, Front Elevation, and Master Bath receive relevant feature bullets. Ten house summaries and the original eight room cards remain. The direct owner requirements and confirmation gaps are preserved in [[Project Rooms/Smart House/working/explore-features]] and [[Project Rooms/Smart House/working/source-inventory]].
+
+Shared `systemFeatures` content also supplies Pondster's public explanations. Topic matching precedes generic voice/privacy and room navigation, while private-record/credential/feed requests and unknown specifications retain their boundaries. An operation request describes the plan and states that the website cannot operate systems or show live camera feeds. This publication configures no heater, sensor, TV, bath, shower, camera, recognition method, or house integration.
+
+The focused guide suite, new planned-system/boundary checks, TypeScript check, and production build passed. Local browser checks confirmed the ten house summaries, eight room cards, 375-pixel page width at a 390-pixel viewport, and a typed bath request receiving the planned recognition/temperature/full-level description with a no-operation explanation. The official source helper pushed and packaged the matching source; Sites confirmed version 27 publication. The custom-domain Explore page displayed all four new headings and their planned labels; a live screenshot was saved outside Git. No production votes, comments, messages, appointments, microphone use, or live device actions occurred. Public audience and DNS are unchanged.

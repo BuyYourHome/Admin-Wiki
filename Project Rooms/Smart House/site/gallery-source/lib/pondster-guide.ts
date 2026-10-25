@@ -1,4 +1,4 @@
-import { roomFeatures } from './features.js';
+import { roomFeatures, systemFeatures } from './features.js';
 
 export type GuideAction = { menu: 'Design' | 'Explore' | 'View' | 'Own' | 'Built By'; room?: string; scene?: 'day' | 'evening' | 'relax' };
 export type GuideReply = { text: string; action?: GuideAction };
@@ -41,11 +41,19 @@ export function answerPondster(input: string): GuideReply {
   const identity = "I'm Pondster, the voice and identity of this house. My location is confidential for now—think witness protection, with better curb appeal. Jean Wright is my SI designer. Direct your questions to me about design concepts, the lighting simulation, viewing previews, the Built By company page, or owner plans.";
   if (!words || /^(hi|hello|hey|good morning|good afternoon|good evening|who are you|what is your name|what s your name)$/.test(words)) return { text: identity };
 
-  if (/\b(password|passcode|secret|private|confidential|security camera|alarm code|wifi|wi fi|owner records|owner data)\b/.test(words)) {
+  if (/\b(password|passcode|secret|private|confidential|live camera feed|camera footage|surveillance feed|saved profile|personal profile|alarm code|wifi|wi fi|owner records|owner data)\b/.test(words)) {
     return { text: 'I cannot provide private records, passwords, or real access codes here. My future owner tools will need authenticated access; saying you are the owner does not grant access.', action: { menu: 'Own' } };
   }
   if (/\b(price|pricing|cost|budget|tax|mortgage|rent|valuation|square footage|square feet|bedrooms|bathrooms|permit|inspection|wiring|voltage|hvac|thermostat|equipment|specifications?|model number|serial number|manufacturer|paint code|paint brand)\b/.test(words) || /\bhow much\b/.test(words)) {
     return { text: "I don't have verified pricing, property specifications, equipment records, or construction approvals to share here. My images show AI concepts, not installed or approved specifications. You can keep asking me about my public information." };
+  }
+  const systemId = /\b(tankless|hot water|water heater|recirculation|recirculating|circulating system)\b/.test(words) ? 'hot-water'
+    : /\b(proximity|occupancy|presence|multiple people)\b/.test(words) || (/\b(tv|television)\b/.test(words) && /\b(kitchen|living room)\b/.test(words) && /\b(automatic|automatically|people|empty|occupied|swing|swings|turn|turns)\b/.test(words)) ? 'presence'
+    : /\b(showers?|tubs?|bathtub)\b/.test(words) || (/\bbaths?\b/.test(words) && /\b(voice|activated|command|fill|temperature|preferred|stop|full)\b/.test(words)) ? 'bath-and-shower'
+    : /\b(cameras?|surveillance)\b/.test(words) ? 'exterior-awareness' : null;
+  if (systemId) {
+    const feature = systemFeatures.find(item => item.id === systemId)!;
+    return { text: `${feature.text} I’m describing my plans; my equipment and integrations still need confirmation. I can’t operate these systems or show live camera feeds from this website.`, action: { menu: 'Explore' } };
   }
   if (/\b(built by|builder|builders|developer|buy your home|buyyourhomellc|wes|wes browning)\b/.test(words) || /\bwho (built|is building|developed) (you|pondster|the house)\b/.test(words)) {
     return { text: 'Buy Your Home, LLC is the company behind me. Its website describes buying, repairing, managing, and selling homes with personal service and flexible real estate options. I can show you its overview, official website, and Wes Browning at 919-917-7466 on my Built By page.', action: { menu: 'Built By' } };

@@ -125,3 +125,16 @@ The derived web copy changes only the existing caption band to **“My center do
 - Public poster: `/media/garage-barn-door-drive-out-poster.jpg`, extracted from the final web copy's first frame, 1600×640, 270,585 bytes; SHA-256 `7B0CD3E36B2D35CFA98A944083BE1B287BDDF2D9480508117A3CB914E0D89FF4`. Its opening appearance matches the prior poster.
 
 Full source and derived-video decode passed, including all 750 frames. Sample frames confirmed all three readable first-person captions, the drive-out/turn sequence, and the final empty marble garage; no legible property address, house number, vehicle plate, or people appeared in those samples. The original hash remained unchanged. Preserve the three existing color votes, illustrative/unvalidated-mechanics-and-clearances caveat, and prior revision as history. Keep binaries outside Admin Wiki Git and selected public copies only in the dedicated Sites repository. Sites version 21 published successfully. Live checks on Pondstr.com confirmed `/media/garage-barn-door-tesla-drive-out.mp4`, 25-second 1600×640 metadata, muted autoplay with advancing playback, an active expanded stage, and no media error. See [[Project Rooms/Smart House/working/hosting-and-domain]] for exact publication identifiers.
+
+## Owner-requested smart capabilities — 2026-10-24
+
+Source: Wes's direct instruction in the Smart House owning chat on **2026-10-24, America/New_York**. These are owner-requested planned capabilities for first-person Explore content and bounded Pondster replies:
+
+1. Natural-gas tankless hot water plus whole-house recirculation for instant hot water.
+2. Proximity devices tracking multiple people and driving automations: the TV faces the occupied kitchen when the living room is empty, then returns when people settle in the living room.
+3. Voice bath/shower operation that knows the user, fills the bath at that user's preferred temperature, stops when full, and starts the shower by voice.
+4. Exterior cameras follow individuals, with the TV switching to surveillance while its viewer is inside.
+
+No equipment models, specifications, installation evidence, or operating validation accompanied this intake. Preserve instant hot water as a requested design goal rather than a measured guarantee. Presence/identity methods, multi-person rules, plumbing design, temperature/fill-level controls, and camera/TV configuration and privacy settings remain to be specified and validated; do not infer a recognition technology or camera placement.
+
+The four new planned summaries precede the existing six, bringing Explore to ten house-wide summaries while retaining all eight room cards. See [[Project Rooms/Smart House/working/explore-features]]. This intake authorizes public website descriptions only, with no live device integration, tracking, camera-feed access, or plumbing/TV actuation. Publication and exact deployment identifiers remain in [[Project Rooms/Smart House/working/hosting-and-domain]].
