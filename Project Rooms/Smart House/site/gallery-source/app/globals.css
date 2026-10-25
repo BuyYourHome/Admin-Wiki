@@ -104,3 +104,4 @@ body{padding-bottom:95px}.pondster-welcome{margin:0 4% 30px;padding:20px 24px;bo
 .design-card>.vote-button{max-width:none}
 .design-card .result-track{margin-bottom:0}
 @media(max-width:1150px){.design-card>.vote-button{grid-column:1 / -1}}
+.pondster-wake{display:flex;align-items:center;gap:5px;font-size:10px;margin-top:8px;min-height:30px}.pondster-wake input{accent-color:var(--ink)}.pondster-heard{font-size:10px;line-height:1.6;margin:6px 0;overflow-wrap:anywhere;color:var(--ink)}

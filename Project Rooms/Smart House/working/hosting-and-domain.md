@@ -52,9 +52,9 @@ Wes requested removal of the website login requirement so the public can access 
 
 Wes requested Design, Explore, View, and Manage navigation and six room galleries with public voting. The website now uses the supported Sites Vinext Worker runtime and logical D1 binding `DB`, with no R2 binding. Public access and the existing custom domain were preserved. The database migration creates only the vote schema; no synthetic votes were seeded into production.
 
-- Current Site source commit: `06aed6ae9a3995723a00ffe84cf8cd6b6890ed74`.
-- Current saved version: `appgprj_6ad4d98e08708191858cab113814704e~appgver_d83cd37b2d4081918a26c3b5289c5aa6` (version 27).
-- Current deployment: `appgdep_6add5e8ed3c081918562ea1da9da7213`, confirmed `succeeded` at 2026-10-24 9:42 PM Eastern (`2026-10-25T01:42:46.479806Z`).
+- Current Site source commit: `d0f3a2562b0e06d2b0a9da893d96f7a0434b6f9c`.
+- Current saved version: `appgprj_6ad4d98e08708191858cab113814704e~appgver_966a18e75598819184206609fbc4ebd6` (version 28).
+- Current deployment: `appgdep_6add61771afc81918b2215eddf2c46fa`, confirmed `succeeded` at 2026-10-24 9:55 PM Eastern (`2026-10-25T01:55:11.768848+00:00`).
 - Live URL: https://pondstr.com . The original Sites URL remains https://pondstr.coolnewt4097.chatgpt.site .
 - Media Center has six supplied color concepts; Front Elevation has two concepts; Garage Barn Door has three concepts. Kitchen, ADU, Master Bath, Spiral Staircase, and Back Deck await images.
 
@@ -225,3 +225,11 @@ Version 27 adds Wes's four requested capabilities at the start of Explore's hous
 Shared `systemFeatures` content also supplies Pondster's public explanations. Topic matching precedes generic voice/privacy and room navigation, while private-record/credential/feed requests and unknown specifications retain their boundaries. An operation request describes the plan and states that the website cannot operate systems or show live camera feeds. This publication configures no heater, sensor, TV, bath, shower, camera, recognition method, or house integration.
 
 The focused guide suite, new planned-system/boundary checks, TypeScript check, and production build passed. Local browser checks confirmed the ten house summaries, eight room cards, 375-pixel page width at a 390-pixel viewport, and a typed bath request receiving the planned recognition/temperature/full-level description with a no-operation explanation. The official source helper pushed and packaged the matching source; Sites confirmed version 27 publication. The custom-domain Explore page displayed all four new headings and their planned labels; a live screenshot was saved outside Git. No production votes, comments, messages, appointments, microphone use, or live device actions occurred. Public audience and DNS are unchanged.
+
+## Voice control repair — 2026-10-24
+
+Version 28 repairs browser voice lifecycle and feedback following Wes's failure report. **Ask by voice** captures one explicitly addressed question without a wake-name requirement. Visitors may separately choose **Keep listening for “Pondster”**. The public guide shows recognized words, explains unmatched named requests, and distinguishes microphone permission, missing microphone, blocked service, network failure, unsupported API, and stalled startup. Preparing output and actual speech have truthful states; Stop works during either, including browsers with speech output but no recognition. Close, Escape, tab hiding, stale callback protection, bounded silence reconnection, and startup/playback watchdogs are covered. See [[Project Rooms/Smart House/working/pondster-identity-and-guide]].
+
+Deterministic browser-engine tests, the existing guide suite, TypeScript checking, and production build passed. Local browser checks confirmed the two modes without activating listening, typed Jean Wright credit, Escape/focus recovery, and a 351-pixel panel within 375-pixel phone content at a 390×844 viewport. The official source helper pushed and packaged the matching source, and Sites confirmed successful publication. The custom-domain page displayed the new controls and instructions; a screenshot was saved outside Git.
+
+No live microphone or audible-output test was performed, so the particular browser/service failure experienced by Wes remains unverified. No microphone permission was granted and no ambient audio was captured. The repair adds no audio-upload endpoint, transcript storage, paid speech provider, house-system connection, or designer persona. Public audience, domain, votes, comments, and simulated viewing remain as before.
