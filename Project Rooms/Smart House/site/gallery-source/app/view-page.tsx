@@ -1,11 +1,13 @@
 import ViewingDemo from './viewing-demo';
+import VirtualTour from './virtual-tour';
 import { allDesigns, type Design } from '../lib/designs';
 
 const viewingEmail = 'mailto:ashley@elementrealtygroup.net?subject=Pondster%20viewing%20request&body=Hello%20Ashley%2C%0A%0AI%20would%20like%20to%20arrange%20a%20viewing%20of%20Pondster.%0A%0AMy%20preferred%20dates%20and%20times%3A%20%0AMy%20name%3A%20%0AMy%20phone%20number%3A%20%0A%0APlease%20confirm%20availability%20and%20viewing%20arrangements.%20Thank%20you.';
 
-export default function ViewPage({ onImage, onDesign }: { onImage: (design: Design) => void; onDesign: () => void }) {
+export default function ViewPage({ onImage, onDesign, onTourStart }: { onImage: (design: Design) => void; onDesign: () => void; onTourStart: () => void }) {
   return <section className="secondary-page viewing-page">
     <div className="viewing-intro"><div><p className="eyebrow">VIEW / COME MEET ME</p><h1>Come meet <em>me.</em></h1></div><p className="lead">Meet Ashley, my realtor, and find out about visiting me as I take shape.</p></div>
+    <VirtualTour onStart={onTourStart}/>
     <p className="buyer-design-note">Buy me early, while I’m still taking shape, and you can have a say in my final design. Help choose from the finishes and details that are still open, so I can feel like your home from the start. Talk with Ashley, my realtor, about which choices are available and when they need to be made.</p>
     <div className="viewing-layout">
       <article className="realtor-card" aria-labelledby="realtor-name">

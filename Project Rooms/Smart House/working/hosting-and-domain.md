@@ -52,9 +52,9 @@ Wes requested removal of the website login requirement so the public can access 
 
 Wes requested Design, Explore, View, and Manage navigation and six room galleries with public voting. The website now uses the supported Sites Vinext Worker runtime and logical D1 binding `DB`, with no R2 binding. Public access and the existing custom domain were preserved. The database migration creates only the vote schema; no synthetic votes were seeded into production.
 
-- Current Site source commit: `5a726bc9f4450fdc5097b89ced336745007dfc6e`.
-- Current saved version: `appgprj_6ad4d98e08708191858cab113814704e~appgver_c9afbb5479408191aab34655d820cd5d` (version 29).
-- Current deployment: `appgdep_6ade4b4b255c8191923430ff1df7d6f2`, confirmed `succeeded` at 2026-10-25 2:32 PM Eastern (`2026-10-25T18:32:53.319989+00:00`).
+- Current Site source commit: `0883f0b9215d84af9028ef3193eff5f1ccfb60d3`.
+- Current saved version: `appgprj_6ad4d98e08708191858cab113814704e~appgver_44dac207488c8191aa27384320187bcd` (version 30).
+- Current deployment: `appgdep_6ade57e7afb88191a9b5e25175ba78db`, confirmed `succeeded` at 2026-10-25 3:26 PM Eastern (`2026-10-25T19:26:40.662281+00:00`).
 - Live URL: https://pondstr.com . The original Sites URL remains https://pondstr.coolnewt4097.chatgpt.site .
 - Media Center has six supplied color concepts; Front Elevation has two concepts; Garage Barn Door has three concepts; Master Bath has six color studies. Kitchen, ADU, Spiral Staircase, and Back Deck await images.
 
@@ -247,3 +247,9 @@ The official source helper pushed and packaged the matching source; Sites confir
 ## Chrome voice refresh and owner confirmation — 2026-10-25
 
 After Wes identified Chrome as the browser that listened without answering, inspection found his open tab still running the pre-repair voice interface. Refreshing the idle tab loaded the existing version 29 Ask by voice controls. Wes initiated the microphone himself; the UI displayed recognized words, a written public feature answer, and speaking status. He then confirmed: “It answers normally now.” No microphone permission or recording was initiated by Codex. The successful owner check covers the explicit one-question Chrome flow; named continuous mode and other browsers remain outside this verification. See [[Project Rooms/Smart House/working/pondster-identity-and-guide]]. No source change, new publication, DNS change, production vote, or house-system action was needed.
+
+## Automatic virtual design tour — 2026-10-25
+
+Version 30 adds a prominent virtual tour invitation to View. Each new tour reads the latest vote totals and selects the leading still in every populated gallery, with stable labeled ties and separate no-vote or unavailable-result previews. Six current scenes cover Front Elevation, Media Center, Master Bath, and Garage Barn Door, including the two existing films as separately labeled motion studies whose finishes may differ. Eight-second stills and single-play films advance automatically with an original browser-generated instrumental soundtrack. Pause/resume, scene navigation, music on/off, optional full screen, replay, close/focus recovery, and hidden-tab pause are included. Empty galleries join as imagery becomes available.
+
+The vote-selection and sound lifecycle/race suites, full TypeScript check, production build, and local desktop/phone checks passed. Chrome verified automatic progression and the final 25-second film reaching the ending, clean-load music status, quick playback changes, and Escape recovery. Actual audible music quality was not independently assessed. The official Sites helper pushed and packaged matching source; Sites confirmed successful version 30 publication at the identifiers above. The custom-domain View page displayed the new invitation and live player. A screenshot was saved outside Git. Public access, vote storage, comments, realtor, viewing demonstration, domain, and house-system boundaries remain. See [[Project Rooms/Smart House/working/virtual-design-tour]] for sources and precise verification limits.

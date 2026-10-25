@@ -23,6 +23,10 @@ The website portion is authorized. No real lock, account provisioning, message s
 - A separate email link lets visitors request an actual viewing from Ashley. Opening the link does not send an email or confirm an appointment.
 - The visual notebook remains available as an expandable section, preserving the design images and enlarge behavior. Design voting and the Media Center motion clip remain unchanged.
 
+## Virtual design tour — 2026-10-25
+
+Version 30 adds Wes's automatic vote-based virtual design tour. Its invitation appears above the early-buying design note and realtor/viewing cards, while the original visual notebook remains below. See [[Project Rooms/Smart House/working/virtual-design-tour]] for scene selection, soundtrack, playback, and validation.
+
 ## Future connection
 
 A real booking calendar needs verified availability, booking ownership, confirmation/delivery rules, cancellation handling, and a selected provider. A real lock connection needs an identified system and authorized Home Assistant implementation, with codes tied to confirmed windows and revocable access. Do not represent this public preview as a working door-access system or place actual lock secrets in the frontend.
