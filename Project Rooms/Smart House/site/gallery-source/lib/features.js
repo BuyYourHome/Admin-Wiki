@@ -2,7 +2,7 @@
 const bathLayoutNote = 'In this study, I keep my granite, gold accents, cabinet layout across three planes with a 45-degree center section, cove lighting, and mirror reflections from my refined reference layout.';
 const bathTubLayoutNote = 'I keep my tub-and-shower arrangement, onyx-pattern tile, patterned window, step, gray floor, white countertop, mirror, gold fixtures, and LED lighting from my supplied image. My AI color study does not confirm paint codes or installed finishes.';
 
-export const masterBathTubDesigns = [
+export const hallBathDesigns = [
   { id: 'bath-tub-warm-ivory', title: 'Tub & shower · Warm Ivory', image: 'master-bath-tub-warm-ivory.jpg', fullImage: true, detail: `I’m exploring warm ivory on my floating vanity with warm cream on my main painted wall. ${bathTubLayoutNote}` },
   { id: 'bath-tub-dusty-blue', title: 'Tub & shower · Dusty Blue', image: 'master-bath-tub-dusty-blue.jpg', fullImage: true, detail: `I’m exploring dusty blue on my floating vanity with pale blue-gray on my main painted wall. ${bathTubLayoutNote}` },
   { id: 'bath-tub-deep-navy', title: 'Tub & shower · Deep Navy', image: 'master-bath-tub-deep-navy.jpg', fullImage: true, detail: `I’m exploring deep navy on my floating vanity with warm ivory on my main painted wall. ${bathTubLayoutNote}` },
@@ -17,8 +17,7 @@ export const masterBathDesigns = [
   { id: 'bath-deep-navy', title: 'Deep Navy', image: 'master-bath-deep-navy.jpg', detail: `I’m trying deep navy on my cabinets with light warm greige walls. ${bathLayoutNote}` },
   { id: 'bath-forest-green', title: 'Forest Green', image: 'master-bath-forest-green.jpg', detail: `I’m exploring forest green on my cabinets with warm ivory walls. ${bathLayoutNote}` },
   { id: 'bath-mushroom-taupe', title: 'Mushroom Taupe', image: 'master-bath-mushroom-taupe.jpg', detail: `I’m trying mushroom taupe on my cabinets with warm white walls. ${bathLayoutNote}` },
-  { id: 'bath-muted-terracotta', title: 'Muted Terracotta', image: 'master-bath-muted-terracotta.jpg', detail: `I’m exploring muted terracotta on my cabinets with warm ivory walls. ${bathLayoutNote}` },
-  ...masterBathTubDesigns
+  { id: 'bath-muted-terracotta', title: 'Muted Terracotta', image: 'master-bath-muted-terracotta.jpg', detail: `I’m exploring muted terracotta on my cabinets with warm ivory walls. ${bathLayoutNote}` }
 ];
 
 const basementLayoutNote = 'I keep my black spiral staircase, full screen-and-stair composition, mountain artwork, marble floor, and amber LED lighting from my reference. My AI study is a visual concept, not manufacturer paint specifications or proof of installed finishes; my stair dimensions and clearances still need confirmation.';
@@ -83,14 +82,19 @@ export const roomFeatures = {
     'I’m still defining my layout, finishes, and equipment details.'
   ] },
   'master-bath': { status: 'MY DESIGN CONCEPT', features: [
-    `I have ${masterBathDesigns.length - masterBathTubDesigns.length} cabinet color studies in my refined vanity layout and ${masterBathTubDesigns.length} tub-and-shower color studies ready for your vote: ${masterBathDesigns.map(design => design.title).join(', ')}.`,
+    `I have ${masterBathDesigns.length} cabinet color studies ready for your vote: ${masterBathDesigns.map(design => design.title).join(', ')}.`,
     'I’m exploring my refined vanity layout across three cabinet planes, including a 45-degree center section, with granite, gold accents, cove lighting, and reflected details in my mirrors.',
-    'My new tub-and-shower studies compare my floating vanity and main wall colors while keeping my tub, shower, onyx-pattern tile, patterned window, step, gray floor, white countertop, mirror, gold fixtures, and LED lighting.',
-    'I keep my sage baseline as a reference, separate from my six original vanity voting choices and six new tub-and-shower choices. My color studies are visual concepts, not manufacturer paint specifications or installed finishes.',
+    'I keep my sage baseline as a reference, separate from my six voting choices. My color studies are visual concepts, not manufacturer paint specifications or installed finishes.',
     'I’m planning a voice-activated bath that recognizes you, fills at your preferred temperature, and turns off the water when my tub is full.',
     'My planned shower would start at your voice command.',
     'My planned natural-gas tankless heater and recirculation loop would keep hot water ready throughout my house.',
     'I’m still confirming my actual fixtures, materials, and construction details.'
+  ] },
+  'hall-bath': { status: 'MY DESIGN CONCEPT', features: [
+    `I have ${hallBathDesigns.length} Hall Bath tub-and-shower color studies ready for your vote: ${hallBathDesigns.map(design => design.title).join(', ')}.`,
+    'I’m comparing colors on my floating vanity and main painted wall in my Hall Bath.',
+    'I keep my tub-and-shower arrangement, onyx-pattern tile, patterned window, step, gray floor, white countertop, mirror, gold fixtures, and LED lighting from my supplied image.',
+    'My Hall Bath studies are visual concepts, not manufacturer paint specifications or proof of installed finishes. My dimensions, fixtures, and construction details still need confirmation.'
   ] },
   'spiral-staircase': { status: 'MY DESIGN CONCEPT', features: [
     'I’m exploring a black spiral staircase with amber tread and cove lighting beside my home theater.',

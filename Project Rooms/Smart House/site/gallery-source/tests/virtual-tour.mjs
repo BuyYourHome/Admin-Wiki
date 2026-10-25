@@ -15,12 +15,12 @@ const zero = buildTourScenes(galleries, emptyVotes);
 assert.deepEqual(zero.map(scene => scene.id), [
   'front-elevation-design', 'media-center-design', 'media-center-motion',
   'master-bath-design', 'garage-barn-door-design', 'garage-barn-door-motion',
-  'spiral-staircase-design', 'spiral-staircase-motion'
+  'hall-bath-design', 'spiral-staircase-design', 'spiral-staircase-motion'
 ]);
 assert.ok(zero.every(scene => scene.status === 'no-votes' && scene.votes === 0 && scene.totalVotes === 0 && scene.tieCount === 0));
 assert.equal(new Set(zero.map(scene => scene.id)).size, zero.length);
 assert.ok(zero.every(scene => scene.image.startsWith('/concepts/')));
-assert.equal(zero.length, 8);
+assert.equal(zero.length, 9);
 assert.equal(zero.filter(scene => scene.kind === 'motion').length, 3);
 assert.ok(!zero.some(scene => ['kitchen', 'adu', 'back-deck'].includes(scene.roomId)));
 
@@ -81,7 +81,7 @@ const newBasementWinners = {
   'spiral-staircase': { scores: { 'spiral-basement-coastal-blue': 8, 'spiral-01': 1 }, total: 9 }
 };
 const colorTour = buildTourScenes(galleries, newBasementWinners);
-assert.equal(colorTour.length, 8, 'Additional voting designs do not add tour scenes.');
+assert.equal(colorTour.length, 9, 'The Hall Bath room adds one still without adding a film.');
 assert.equal(colorTour.filter(scene => scene.kind === 'motion').length, 3);
 for (const [roomId, designId, image] of [
   ['media-center', 'media-basement-midnight-navy', '/concepts/basement-midnight-navy.jpg'],
@@ -101,9 +101,10 @@ for (const [roomId, designId, image] of [
 }
 
 const tubTour = buildTourScenes(galleries, {
-  'master-bath': { scores: { 'bath-tub-deep-navy': 8, 'bath-deep-navy': 2 }, total: 10 }
+  'hall-bath': { scores: { 'bath-tub-deep-navy': 8, 'bath-deep-navy': 2 }, total: 10 },
+  'master-bath': { scores: { 'bath-deep-navy': 2, 'bath-tub-deep-navy': 99 }, total: 101 }
 });
-const tubStill = tubTour.find(scene => scene.id === 'master-bath-design');
+const tubStill = tubTour.find(scene => scene.id === 'hall-bath-design');
 assert.equal(tubStill.designId, 'bath-tub-deep-navy');
 assert.equal(tubStill.designTitle, 'Tub & shower · Deep Navy');
 assert.equal(tubStill.image, '/concepts/master-bath-tub-deep-navy.jpg');
@@ -111,7 +112,9 @@ assert.equal(tubStill.status, 'leader');
 assert.equal(tubStill.kind, 'design');
 assert.equal(tubStill.durationSeconds, 8);
 assert.equal(tubStill.video, undefined);
-assert.equal(tubTour.length, 8, 'A new tub/shower winner replaces only its room still.');
+assert.equal(tubStill.totalVotes, 8, 'A Master Bath ID is ignored in Hall Bath results.');
+assert.equal(tubTour.find(scene => scene.id === 'master-bath-design').designId, 'bath-deep-navy', 'Master Bath keeps its own original winner and ignores Hall Bath IDs.');
+assert.equal(tubTour.length, 9, 'The Hall Bath winner occupies its own still scene.');
 assert.equal(tubTour.filter(scene => scene.kind === 'motion').length, 3);
 
 const badScores = { 'front-elevation': { scores: { [front.designs[0].id]: -1, [front.designs[1].id]: NaN, invented: 100 }, total: 100 } };
@@ -122,4 +125,4 @@ const withExtra = buildTourScenes([extra, ...galleries], {});
 const extraScene = withExtra.find(scene => scene.roomId === 'future-room');
 assert.equal(withExtra.indexOf(extraScene), withExtra.findIndex(scene => scene.id === 'garage-barn-door-motion') + 1, 'Other populated spaces follow the prioritized rooms in catalog order.');
 assert.equal(extraScene.image, '/images/future.jpg');
-console.log('PASS: vote-based tour selection, new tub/shower winning still, basement color winners and fallback stills, eight scenes and three unchanged films, ordering, failed/no-vote states, ties, invalid scores, credits, and immutable deterministic output.');
+console.log('PASS: vote-based tour selection, independent Hall Bath and Master Bath winners, basement color winners and fallback stills, nine scenes and three unchanged films, ordering, failed/no-vote states, ties, invalid scores, credits, and immutable deterministic output.');
