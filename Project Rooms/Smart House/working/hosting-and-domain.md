@@ -2,6 +2,8 @@
 
 Wes reported buying `Pondstr.com` from GoDaddy and instructed Smart House to host it through ChatGPT on 2026-10-18. This supersedes the earlier local-only scope for hosting and connecting this purchased domain. No further purchase or live-device work is authorized.
 
+On 2026-10-25 Wes confirmed that, for now, people at the property will open the existing hosted website using the property's internet connection. Hosting Pondster on a computer inside the home is a possible later phase, not the current deployment. Keep the current Sites project, public domain and audience. Natural voice's production API key belongs in private server environment settings; a local `.env.local` file is only for development/testing. Visitors do not install or receive the key. In-home hosting, offline voice and local device control have not been implemented or authorized by this clarification.
+
 ## Hosting configuration
 
 - Provider: ChatGPT Sites.

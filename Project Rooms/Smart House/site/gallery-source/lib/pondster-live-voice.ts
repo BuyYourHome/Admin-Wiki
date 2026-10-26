@@ -43,7 +43,7 @@ type Attempt = {
   closeSent: boolean; stopSent: boolean;
 };
 const CANCELLED = Symbol('cancelled');
-const ROOMS = new Set(['kitchen', 'media-center', 'front-elevation', 'garage-barn-door', 'adu', 'master-bath', 'spiral-staircase', 'back-deck']);
+const ROOMS = new Set(['kitchen', 'media-center', 'front-elevation', 'garage-barn-door', 'adu', 'master-bath', 'hall-bath', 'spiral-staircase', 'back-deck']);
 const MENUS = new Set(['Design', 'Explore', 'View', 'Own', 'Built By']);
 const SCENES = new Set(['day', 'evening', 'relax']);
 const TEXT_LIMIT = 500, CAPTION_LIMIT = 1800;
