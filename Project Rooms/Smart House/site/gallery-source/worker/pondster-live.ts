@@ -1,6 +1,7 @@
 // Public voice has a fixed backend configuration and no private house tools.
 // Native WebSocket timers are a best-effort cap while this Worker remains alive;
 // unconfirmed reservations deliberately remain occupied after a lost connection.
+import { safeProviderFailure, VoiceProviderFailure } from './pondster-live-diagnostics';
 export const VOICE_COOKIE = 'pondster_voice_visitor';
 export const VOICE_DURATION_SECONDS = 180;
 export const VOICE_SETUP_MS = 20_000;
@@ -251,8 +252,8 @@ export function createPondsterLiveControl(options: ControllerOptions) {
       ready = true;
       later(() => { track(stop('I’ve reached my three-minute voice limit. You can keep exploring my website.')); }, VOICE_DURATION_SECONDS * 1000);
       safeSend(options.client, { type: 'pondster.ready', session: { id: session.id }, transport: { type: 'webrtc', sdp: session.sdp }, maxDurationSeconds: VOICE_DURATION_SECONDS });
-    } catch {
-      error('I couldn’t start my live voice connection. My written guide is still available.'); closing = true;
+    } catch (failure) {
+      error(failure instanceof VoiceProviderFailure ? failure.message : 'I couldn’t start my live voice connection. My written guide is still available.'); closing = true;
     } finally {
       cancel(setup);
       if (closing) track(finish());
@@ -302,21 +303,33 @@ export async function handlePondsterLiveControl(request: Request, env: VoiceEnvi
   const control = createPondsterLiveControl({
     client: server, store: d1VoiceStore(env.DB!), visitorKey, answer, track: task => ctx.waitUntil(task),
     async createSession(sdp, signal) {
-      const response = await fetch('https://api.openai.com/v1/live/sessions', {
-        method: 'POST', headers: { Authorization: `Bearer ${env.OPENAI_API_KEY}`, 'Content-Type': 'application/json' },
-        body: JSON.stringify({ session: buildSession(), transport: { type: 'webrtc', sdp } }), signal, redirect: 'error'
-      });
-      if (!response.ok) { await response.body?.cancel(); throw new Error('voice unavailable'); }
-      const payload = await response.json() as { session?: { id?: unknown }; transport?: { type?: unknown; sdp?: unknown } };
+      let response: Response;
+      try { response = await fetch('https://api.openai.com/v1/live/sessions', {
+        method: 'POST', headers: { Authorization: `Bearer ${env.OPENAI_API_KEY!.trim()}`, 'Content-Type': 'application/json' },
+        body: JSON.stringify({ session: buildSession(), transport: { type: 'webrtc', sdp } }), signal, redirect: 'manual'
+      }); } catch {
+        console.warn('pondster.voice.provider', JSON.stringify({ stage: 'create-fetch', httpStatus: null, code: 'transport_failure' }));
+        throw new Error('voice unavailable');
+      }
+      if (!response.ok) { const code = await safeProviderFailure(response, 'create-http'); throw new VoiceProviderFailure(response.status, code); }
+      let payload: { session?: { id?: unknown }; transport?: { type?: unknown; sdp?: unknown } };
+      try { payload = await response.json(); } catch {
+        console.warn('pondster.voice.provider', JSON.stringify({ stage: 'create-json', httpStatus: response.status, code: 'invalid_json' })); throw new Error('voice unavailable');
+      }
       if (typeof payload.session?.id !== 'string' || payload.session.id.length > 256 || payload.transport?.type !== 'webrtc'
-        || typeof payload.transport.sdp !== 'string' || payload.transport.sdp.length > MAX_MESSAGE_BYTES) throw new Error('voice unavailable');
+        || typeof payload.transport.sdp !== 'string' || payload.transport.sdp.length > MAX_MESSAGE_BYTES) {
+        console.warn('pondster.voice.provider', JSON.stringify({ stage: 'create-shape', httpStatus: response.status, code: 'unexpected_response' })); throw new Error('voice unavailable');
+      }
       return { id: payload.session.id, sdp: payload.transport.sdp };
     },
     async attach(id, signal) {
-      const response = await fetch(`https://api.openai.com/v1/live/sessions/${encodeURIComponent(id)}/attach`, {
-        headers: { Upgrade: 'websocket', Authorization: `Bearer ${env.OPENAI_API_KEY}` }, signal, redirect: 'error'
-      });
-      if (!response.webSocket) { await response.body?.cancel(); throw new Error('voice unavailable'); }
+      let response: Response;
+      try { response = await fetch(`https://api.openai.com/v1/live/sessions/${encodeURIComponent(id)}/attach`, {
+        headers: { Upgrade: 'websocket', Authorization: `Bearer ${env.OPENAI_API_KEY!.trim()}` }, signal, redirect: 'manual'
+      }); } catch {
+        console.warn('pondster.voice.provider', JSON.stringify({ stage: 'attach-fetch', httpStatus: null, code: 'transport_failure' })); throw new Error('voice unavailable');
+      }
+      if (!response.webSocket) { const code = await safeProviderFailure(response, 'attach-http'); throw new VoiceProviderFailure(response.status, code); }
       return response.webSocket;
     }
   });

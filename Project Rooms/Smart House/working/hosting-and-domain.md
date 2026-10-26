@@ -15,7 +15,7 @@ On 2026-10-25 Wes confirmed that, for now, people at the property will open the 
 - Initial saved version: `appgprj_6ad4d98e08708191858cab113814704e~appgver_0176b707d1688191be325f28960f58a6`.
 - Initial deployment: `appgdep_6ad4dafedea88191934ecd974a287155`.
 - Canonical linkage: `site/.openai/hosting.json`.
-- Publication checkout: ignored `site/.hosting-work/work/gallery-release-20261025/` for version 47; the parent `site/.hosting-work/` preserves the pending natural-voice work. Current publication uses the supported Sites Vinext runtime, gallery code, existing schema migrations, 37 voting choices across nine galleries, and a six-scene tour with three concept films. Never publish the wiki, private records, credentials, or source inventories. The original static page remains as a historical local concept.
+- Publication checkout: ignored `site/.hosting-work/work/gallery-release-20261025/` for version 48, including natural voice. The parent `site/.hosting-work/` retains its prepared copy. Current publication uses the supported Sites Vinext runtime, gallery code, schema migrations, 30 active voting choices across nine galleries, and a six-scene tour with three concept films. Never publish the wiki, private records, credentials, or source inventories. The original static page remains as a historical local concept.
 
 ## Pondstr.com connection
 
@@ -54,9 +54,9 @@ Wes requested removal of the website login requirement so the public can access 
 
 Wes requested Design, Explore, View, and Manage navigation and six room galleries with public voting. The website now uses the supported Sites Vinext Worker runtime and logical D1 binding `DB`, with no R2 binding. Public access and the existing custom domain were preserved. The database migration creates only the vote schema; no synthetic votes were seeded into production.
 
-- Current Site source commit: `49ee3d2ea2272027e4de4b39c1ea2463c8d02741`.
-- Current saved version: `appgprj_6ad4d98e08708191858cab113814704e~appgver_b001f979ac588191aa160db84e900608` (version 47).
-- Current deployment: `appgdep_6adeb8f919148191835e7b914afc3b24`, confirmed `succeeded` at `2026-10-26T02:20:51.169238+00:00`, environment revision **0**.
+- Current Site source commit: `48b940856ba0ff0f58f7efbdd61fea2e6c5d1ac7`.
+- Current saved version: `appgprj_6ad4d98e08708191858cab113814704e~appgver_7498061784e48191bf3441b5636eca99` (version 55).
+- Current deployment: `appgdep_6adedd28b4d881918467357e3532ffc6`, confirmed `succeeded` at `2026-10-26T04:55:12.996069+00:00`, environment revision **4**.
 - Live URL: https://pondstr.com . The original Sites URL remains https://pondstr.coolnewt4097.chatgpt.site .
 - Living Room has six choices; Front Elevation has two; Garage Barn Door has three; Master Bath has six; Hall Bath has six; Home Theatre has seven. Total: 30 active choices across nine galleries. Kitchen, ADU, and Back Deck await images.
 
@@ -451,7 +451,7 @@ The menu is Design, Explore, View, Belong, Built By. Belong uses #belong while #
 
 Catalog, guide routing, tour winner/filtering, prepared mirrors, and pure visible-vote tests passed. Local UI verified six cabinet-only Living Room cards/one turning-TV film and seven Home Theatre cards/one theatre film. All five page gaps were checked at1920px/390px; the four secondary pages measured20px/18px with no horizontal overflow. Legacy Own link and Belong page/comment label checks passed. Production build and fresh live catalog/menu checks passed.
 
-## Signed Explore heading — current, version 47, 2026-10-25 Eastern
+## Signed Explore heading — version 47, 2026-10-25 Eastern
 
 Wes directed the Explore feature heading to read "What makes me, Pondster." with Pondster in the signature. The word is live text using the existing locally hosted Allura font; it is not a second logo image. Desktop/phone fitting and production build passed. All version46 separation/navigation/spacing behavior remains.
 
@@ -461,3 +461,33 @@ Wes directed the Explore feature heading to read "What makes me, Pondster." with
 - Archive content hash: `sha256:5b693a662413ca2897fa042511df25a7a0fef7af83a86987def8b7e00ad4199d`.
 
 Fresh https://pondstr.com/#explore confirmed exact heading, Pondster Signature font, Belong navigation,20px top gap, and no overflow. Proof outside Git: `C:\Users\wesbr\.codex\visualizations\2026\10\25\pondster-explore-signed-heading-live.png`. Prepared copies preserve pending natural voice; it remains unpublished. No domain, audience, live-device, booking, comment-record, or production-vote writes were performed.
+
+## Natural voice activation — version 48, 2026-10-25 Eastern
+
+Source `87ebe3c6267dfcd2c2058f258e30aaecbf2463b1`, saved version `~appgver_3dc829cb3f588191945ef85951049c02`, deployment `appgdep_6adecaa110688191b60dcf6be5247d53`, succeeded at `2026-10-26T03:36:06.825826+00:00`, environment revision 4. The approved key was configured privately, voice was enabled, and the additive voice-session migration was verified. Metadata access and availability passed, but Wes's external-Chrome spoken test failed. An unconfirmed reservation with no provider ID remains occupied. No successful natural audio or provider closure is claimed; see [[Project Rooms/Smart House/working/pondster-natural-voice]].
+
+## Page headings and View default — version 49, 2026-10-26
+
+Source `6e8d78127ca3fba2615ba6060a5657af18295973`, saved version `~appgver_797e488614888191a7151f8789e20bad`, deployment `appgdep_6aded18297388191a187c26576242a55`, succeeded at `2026-10-26T04:05:31.195687+00:00`, environment revision 4. Removed the five page-opening eyebrow labels and Design's My Name/My Voice label. Explore, Belong and Built By main titles fit on one line; View is the initial/unknown-hash default while menu order stays Design, Explore, View, Belong, Built By. Raised Your/HOME and the voice tagline. Desktop/phone checks, TypeScript, build and secret-absence scan passed. The voice failure remained unresolved.
+
+## Fixed header and voice logo — version 50, 2026-10-26
+
+Source `17cb159074c597cd2ba33bccfac94a43270f4a2e`, saved version `~appgver_b3936fb3f3dc81919fa48ae70fb3230b`, deployment `appgdep_6aded4d58ea48191bb07a89ee96ea6e4`, succeeded at `2026-10-26T04:19:57.543090+00:00`, environment revision 4. The solid header stays visible as the page scrolls beneath it. The rectangle is shorter, the tagline is raised, and Your is centered between the signature P and o. The logo is an accessible button: an explicit click opens the voice panel and starts the selected mode, while an active session only reveals its controls. The floating bottom launcher is removed. Ordinary Ask controls retain typed access without opening a microphone; close/Escape stop voice and restore focus to the logo.
+
+TypeScript, mocked activation/cancellation checks, existing voice suites, production build and secret-absence scan passed. Local desktop/phone scrolling kept the header at top 0 with no horizontal overflow; close/focus recovery passed. The public domain showed the voice-logo button, 100px desktop frame, sticky header and no floating launcher. Public UI proof outside Git: `C:\Users\wesbr\.codex\visualizations\2026\10\26\pondster-header-voice-logo-live.png`. No microphone, voice session, vote, comment, real booking or live-device action was used for these checks. Voice diagnosis continues under Wes's same go instruction.
+
+## Safe voice diagnostics — version 51, 2026-10-26
+
+Source `ff61c4a8df2e6fe52eb6fa7dc88047ba9305f432`, saved version `~appgver_e17b83684ad88191ab24e5515029041b`, deployment `appgdep_6aded7e2cfc481919f96a3475bb3ca03`, succeeded at `2026-10-26T04:32:43.742963+00:00`, environment revision 4. Explicit voice startup now checks model metadata before microphone acquisition. This does not create a voice session or prove voice billing. The metadata check is cached for 60 seconds; normal page-open availability remains a configuration check. Auth/access/quota/rate-limit cases use fixed public messages. Server diagnostics allow only bounded error codes, HTTP status, request ID and a static stage; no raw errors, credentials, SDP, audio, transcripts or raw IPs are recorded.
+
+The deployed metadata check returned a transport failure with no HTTP status in a 13ms Worker invocation. This narrows the issue to request construction or outbound transport, but does not establish a bad key, billing failure or blocked host. Further safe classification is in progress. The prior unconfirmed reservation is preserved. TypeScript, diagnostic canary-secret cases, lifecycle suites, build and a 166-file secret-absence scan passed. No microphone or new voice session was used for diagnosis.
+
+## Voice redirect diagnosis and fix — versions 52–55, 2026-10-26
+
+Version 52 added fixed classifications for credential formatting and transport failures. Source `2e3b105dca0ecc9fe0ebf900817026c1a957e82e`, saved version `~appgver_51357e94719081919c49f8e707d78fa7`, deployment `appgdep_6aded95478588191b2f47e278e1104e1`, succeeded `2026-10-26T04:38:52.115967+00:00`. The deployed key passed formatting but the check still failed before HTTP. Version 53 temporarily logged a bounded exception message with credential/Bearer/token redaction before truncation. Source `a0a9679b5eb151dbc3a5a95db95c666b08714620`, saved version `~appgver_fcf3a8a8a44c81919ccc9586f154e950`, deployment `appgdep_6adeda9ad9248191af4c22c7c277c5aa`, succeeded `2026-10-26T04:44:18.822948+00:00`. It identified Cloudflare's unsupported `redirect: 'error'` Request option. No credential value, stack, body, SDP or audio was logged. [Cloudflare Request documentation](https://developers.cloudflare.com/workers/runtime-apis/request/) confirms this throws during Request construction, before sending any request.
+
+Version 54 changes all provider fetches to `redirect: 'manual'` and explicitly rejects non-success/redirect responses without forwarding credentials elsewhere. Source `7f28864e02c5945e43ffe15f8388bb756e00e932`, saved version `~appgver_ab3c8d32f20081918f5821270b697728`, deployment `appgdep_6adedc2626e8819189e0d91196210359`, succeeded `2026-10-26T04:50:55.239696+00:00`. A metadata GET from the actual hosted website returned HTTP 200/ready with its configured secret. This proves hosted authentication/model access, not paid speech or end-to-end audio.
+
+The original v48 create adapter was verified in immutable source to always use the rejected option. The sole reservation `aa4eb72d-ebce-4b7d-9d3b-f1a3c3064afc` therefore failed before network dispatch. A temporary, narrowly guarded runtime update changed only its state from unconfirmed to failed, comparing the exact ID, creation timestamp, null provider ID, zero usage and zero provider-confirmation flag. A real SQLite mock verified one exact change, idempotence and all mismatch guards. Native database reread verified only that state changed; final_usage_confirmed stays zero because this is not a provider-confirmed close. No schema migration or other record changed. This inference must not be applied to later manual-redirect requests.
+
+Version 55 removes the temporary repair function/route call and temporary exception-detail logger. Source `48b940856ba0ff0f58f7efbdd61fea2e6c5d1ac7`, saved version `~appgver_7498061784e48191bf3441b5636eca99`, deployment `appgdep_6adedd28b4d881918467357e3532ffc6`, succeeded `2026-10-26T04:55:12.996069+00:00`, environment revision 4. It retains only fixed diagnostic fields and the read-only metadata preflight, and refines phone Your centering by 3px. TypeScript, focused diagnostic tests, production build and a 166-file secret-absence scan passed. Source text is mirrored in gallery-source; keys/assets remain excluded. Wes was asked to refresh Chrome, click the logo, say Hello Pondster, and end the conversation. Spoken confirmation is pending. No microphone or paid voice session was initiated by Codex.

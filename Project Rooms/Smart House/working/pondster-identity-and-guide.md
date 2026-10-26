@@ -104,7 +104,7 @@ Wes clarified: do not repeat the P; continue the signature outside the square. T
 
 Wes requested "I Am" between P and d and required a preview before any page update. He approved the separate concept with "Publish." Keep the small copper Georgia italic words above "on" within that negative space, without splitting the Pondster text or adding another P. Base placement is left64/top9/type12px at a 76px signature, with the three dimensions scaling together via the scoped signature-size variable; phone signature size is 60px. Preserve the full-name accessible home link and mark the annotation decorative. Desktop/phone fit, build, and live custom-domain placement passed. Approved preview and live proof are outside Git at `C:\Users\wesbr\.codex\visualizations\2026\10\25\pondster-i-am-preview.png` and `pondster-i-am-live.png`. Exact release identifiers are in [[Project Rooms/Smart House/working/hosting-and-domain]].
 
-## No vine — current, version 41, 2026-10-25
+## No vine — version 41, 2026-10-25
 
 Wes rejected the botanical decoration with "Lose the vine," then explicitly authorized publication. The fuller climbing-vine concept remained a separate unpublished preview. Do not reintroduce any vine, leaves, or vine-growth animation without a new instruction. Keep the continuous Pondster signature, approved I Am annotation, square/HOME label, two firework bursts, monogram glint, and accessible home link. Source vectors and obsolete vine styles/keyframes are removed, rather than merely hidden. Local desktop/phone visual checks, build, and live verification passed; exact publication/proof is in [[Project Rooms/Smart House/working/hosting-and-domain]].
 
@@ -127,6 +127,20 @@ The current menu is **Design, Explore, View, Belong, Built By**. Belong is the v
 
 Version 46 is live at https://pondstr.com; fresh live checks confirmed Living Room's six choices, Home Theatre's seven, and Belong navigation. See [[Project Rooms/Smart House/working/hosting-and-domain]] for exact release and verification details. Natural voice remains prepared but unpublished, pending secure API setup.
 
-## Signed Explore heading — current, version 47, 2026-10-25
+## Signed Explore heading — version 47, 2026-10-25
 
 Use the exact feature heading "What makes me, Pondster." on Explore. Render only Pondster in the established Allura signature font, as accessible live text, with the period outside the signature span. Keep the version46 Living Room/Home Theatre separation,30 active choices, Belong menu and compatible IDs, and matching20px/18px page gaps. Local desktop/phone fit, build, and live checks passed. Release and proof: [[Project Rooms/Smart House/working/hosting-and-domain]].
+
+## Current header and voice entry — versions 49–50, 2026-10-26
+
+Wes explicitly said to collect his changes until go, then authorized implementation and continued voice diagnosis. Keep that discussion-before-action instruction for later queued batches.
+
+- Remove the small introductory eyebrow above every main page heading and Design's My Name/My Voice label. Functional gallery, section and comment labels remain.
+- Explore, Belong and Built By main titles use one line at desktop and phone widths. Preserve their exact text, including Like The Back Of Your Room.
+- View is the initial page and unknown-hash fallback. Menu order stays Design, Explore, View, Belong, Built By. Legacy Own/Manage navigation and storage keys remain compatible.
+- The signature remains its approved size and continuous text, with I Am, HOME, fireworks and no vine. The frame is shorter (100px desktop/80px phone); the tagline rises with its bottom edge. Your is centered between the P and o, superseding the earlier position above HOME.
+- The opaque header stays visible while the content scrolls underneath. Keep anchor targets clear of it and all menu items visible at phone widths.
+- The logo is now the primary voice button, replacing its old home-link behavior. An explicit click opens the Pondster panel and starts the selected voice mode. Clicking while voice is active only exposes controls. Remove the floating bottom launcher. Page loading, menu navigation, hover, focus and ordinary Ask buttons never start capture; Ask retains typed access.
+- Close, Escape and hidden-tab handling stop voice. Close/Escape return keyboard focus to the logo. Browser voice and typed questions remain available while natural voice is diagnosed.
+
+Versions 49/50 passed local desktop/phone fitting, sticky-header scrolling, typed-open and close/focus checks, lifecycle mocks, TypeScript and production builds. The public domain verified the shortened frame, sticky header, voice button and missing floating launcher. These UI checks used no microphone and do not prove natural speech. Exact releases: [[Project Rooms/Smart House/working/hosting-and-domain]]. Voice continuation: [[Project Rooms/Smart House/working/pondster-natural-voice]].

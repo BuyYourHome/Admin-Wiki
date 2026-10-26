@@ -1,9 +1,9 @@
 'use client';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { galleries, type Design } from '../lib/designs';
 import ViewPage from './view-page';
 import BuiltByPage from './built-by-page';
-import PondsterGuide from './pondster-guide';
+import PondsterGuide, { type PondsterGuideHandle } from './pondster-guide';
 import Comments from './comments';
 import ScrollVideo from './scroll-video';
 import TheaterMotion from './theater-motion';
@@ -19,7 +19,7 @@ const menuHash = (menu:string) => menu === 'Own' ? 'belong' : menu.toLowerCase()
 const menuLabel = (menu:string) => menu === 'Own' ? 'Belong' : menu;
 type Menu = typeof menus[number];
 export default function Home() {
-  const [menu,setMenu] = useState<Menu>('Design');
+  const [menu,setMenu] = useState<Menu>('View');
   const [room,setRoom] = useState('media-center');
   const [results,setResults] = useState<VoteResults>(empty);
   const [loading,setLoading] = useState(true);
@@ -30,11 +30,13 @@ export default function Home() {
   const [zoom,setZoom] = useState<Design|null>(null);
   const [scene,setScene] = useState('day');
   const [guideOpen,setGuideOpen] = useState(false);
+  const guide=useRef<PondsterGuideHandle>(null);
+  const logo=useRef<HTMLButtonElement>(null);
   const [showLighting,setShowLighting] = useState(false);
   const [logoPlay,setLogoPlay] = useState(0);
   const gallery = galleries.find(gallery => gallery.id === room)!;
   useEffect(() => {
-    const sync = () => { const raw = location.hash.slice(1).toLowerCase(); const value = raw === 'manage' || raw === 'own' ? 'belong' : raw; const next = menus.find(item => menuHash(item) === value); if(next) setMenu(next); };
+    const sync = () => { const raw = location.hash.slice(1).toLowerCase(); if(raw === 'main') return; const value = raw === 'manage' || raw === 'own' ? 'belong' : raw; const next = menus.find(item => menuHash(item) === value); setMenu(next ?? 'View'); };
     sync(); window.addEventListener('hashchange',sync); return () => window.removeEventListener('hashchange',sync);
   },[]);
   useEffect(() => {
@@ -55,11 +57,11 @@ export default function Home() {
   function guideAction(action:GuideAction){setMenu(action.menu);location.hash=menuHash(action.menu);if(action.room&&!saving)setRoom(action.room);if(action.scene){setScene(action.scene);setShowLighting(true);}}
   return <>
     <a className="skip" href="#main">Skip to content</a>
-    <header className="header"><a className="brand" href="#design" onClick={()=>navigate('Design')} aria-label="Pondster home" onMouseEnter={()=>setLogoPlay(value=>value+1)} onFocus={()=>setLogoPlay(value=>value+1)}><PondsterLogoArt key={logoPlay}/><span className="monogram" aria-hidden="true"><span className="monogram-your">Your</span><small>HOME</small></span><span className="brand-copy"><strong className="brand-name">Pondster<span className="signature-i-am" aria-hidden="true">I Am</span></strong><small>A home with a voice.</small></span></a><nav aria-label="Main menu">{menus.map(item=><a key={item} href={`#${menuHash(item)}`} onClick={()=>navigate(item)} aria-current={menu===item?'page':undefined}>{menuLabel(item)}</a>)}</nav><span className="development">I’M A HOME IN THE MAKING</span></header>
+    <header className="header"><button ref={logo} type="button" className="brand" onClick={()=>guide.current?.activateVoice()} aria-label="Talk to Pondster: AI voice and microphone controls" title="Talk to Pondster — start my selected voice or show its controls" aria-expanded={guideOpen} aria-controls="pondster-panel" onMouseEnter={()=>setLogoPlay(value=>value+1)} onFocus={()=>setLogoPlay(value=>value+1)}><PondsterLogoArt key={logoPlay}/><span className="monogram" aria-hidden="true"><span className="monogram-your">Your</span><small>HOME</small></span><span className="brand-copy"><strong className="brand-name">Pondster<span className="signature-i-am" aria-hidden="true">I Am</span></strong><small>A home with a voice.</small></span></button><nav aria-label="Main menu">{menus.map(item=><a key={item} href={`#${menuHash(item)}`} onClick={()=>navigate(item)} aria-current={menu===item?'page':undefined}>{menuLabel(item)}</a>)}</nav><span className="development">I’M A HOME IN THE MAKING</span></header>
     <main id="main">
       {menu==='Design' && <>
-        <section className="intro"><div><p className="eyebrow">PONDSTER / MY DESIGN NOTEBOOK</p><h1>Virtually - A Reality <br className="design-title-break"/><em>Have a say.</em></h1></div><div className="intro-note"><p>I’m exploring ideas for each space. Browse my designs, vote for the ones you love, and help me decide what feels right.</p><span>Explore my {galleries.length} galleries.</span></div></section>
-        <section className="pondster-welcome" aria-label="Meet Pondster"><div><span className="eyebrow">MY NAME. MY VOICE.</span><p>I’m Pondster, the voice and identity of this house. Ask me about the design ideas and follow my story as it takes shape. My location is confidential for now—think witness protection, with better curb appeal. Jean Wright is my SI designer.</p></div><button onClick={()=>setGuideOpen(true)}>Talk to me <span aria-hidden="true">↗</span></button></section>
+        <section className="intro"><div><h1>Virtually - A Reality <br className="design-title-break"/><em>Have a say.</em></h1></div><div className="intro-note"><p>I’m exploring ideas for each space. Browse my designs, vote for the ones you love, and help me decide what feels right.</p><span>Explore my {galleries.length} galleries.</span></div></section>
+        <section className="pondster-welcome" aria-label="Meet Pondster"><div><p>I’m Pondster, the voice and identity of this house. Ask me about the design ideas and follow my story as it takes shape. My location is confidential for now—think witness protection, with better curb appeal. Jean Wright is my SI designer.</p></div><button onClick={()=>setGuideOpen(true)}>Talk to me <span aria-hidden="true">↗</span></button></section>
         <section className="design-workspace" aria-label="My design galleries"><aside className="room-nav"><p className="eyebrow">EXPLORE MY ROOMS</p><div role="group" aria-label="Rooms">{galleries.map((item,index)=><button key={item.id} onClick={()=>{if(!saving)setRoom(item.id);}} disabled={saving} aria-pressed={room===item.id}><span className="room-number">0{index+1}</span><span>{item.name}<small>{item.designs.length?`${item.designs.length} ${item.designs.length===1?'design':'designs'}`:'Coming soon'}</small></span><b aria-hidden="true">↗</b></button>)}</div><div className="notebook-note"><span>I’M EXPLORING POSSIBILITIES.</span><p>I use AI concepts to explore how I could look. These aren’t measured plans or photos of my completed spaces.</p></div></aside>
         <div className="gallery-area"><div className="gallery-heading"><div><p className="eyebrow">DESIGN GALLERY / {String(galleries.indexOf(gallery)+1).padStart(2,'0')}</p><h2>{gallery.name}</h2><p>{gallery.summary}</p></div>{gallery.designs.length>0 && <span className="vote-total">{loading?'I’m loading votes…':failed?'I can’t load totals':`${results.total} ${results.total===1?'vote':'votes'}`}<small>COMMUNITY PREFERENCES</small></span>}</div>
         {room==='media-center' && <figure className="media-feature"><div className="media-feature-intro"><div><p className="eyebrow">MY LIVING ROOM / IN MOTION</p><h3>Watch me go from art to game time.</h3></div><span>MY 10-SECOND CONCEPT FILM</span></div><ScrollVideo label="My Living Room" ratio="16 / 9"><video controls autoPlay muted playsInline loop preload="metadata" poster="/media/media-center-art-poster.png" aria-label="My Living Room concept: my decorative frame stays fixed while my TV turns toward my kitchen and artwork becomes moving football" aria-describedby="media-motion-caption"><source src="/media/media-center-kitchen-view.mp4" type="video/mp4"/>Your browser can’t play my video here. <a href="/media/media-center-kitchen-view.mp4">Open my video file</a>.</video></ScrollVideo><figcaption id="media-motion-caption"><span>MY AI MOTION CONCEPT</span>I’m showing an illustrative AI concept: my decorative frame stays fixed while my TV turns toward my kitchen and its artwork becomes moving football. My mount mechanics haven’t been validated.<p className="media-source">Football footage: U.S. Marine Corps / Sgt. James Stanfield, via <a href="https://www.dvidshub.net/video/947000/125th-army-navy-football-game-b-roll" target="_blank" rel="noopener noreferrer">DVIDS</a>.<br/>The appearance of U.S. Department of War (DoW) visual information does not imply or constitute DoW endorsement. <a href="https://www.dvidshub.net/about/copyright" target="_blank" rel="noopener noreferrer">Source use notice ↗</a></p></figcaption></figure>}
@@ -79,10 +81,10 @@ export default function Home() {
       {menu==='Explore' && <ExplorePage scene={scene} onScene={setScene} onDesign={nextRoom=>{if(!saving){setRoom(nextRoom);navigate('Design');location.hash='design';}}}/>}
       {menu==='View' && <ViewPage onImage={setZoom} onDesign={()=>navigate('Design')} onTourStart={()=>setGuideOpen(false)}/>}
       {menu==='Built By' && <BuiltByPage/>}
-      {menu==='Own' && <section className="secondary-page manage"><p className="eyebrow">Belong / Your future Owner experience</p><h1>I come<br/><em>with answers.</em></h1><p className="lead">I’m planning a place for my home guides, care information, and handover records. Ask me from any page for public guidance while my owner tools take shape.</p><div className="knowledge-grid">{[['Home guides','How my systems work and where you can find them.'],['Care & maintenance','My manuals, warranties, and equipment-specific schedules.'],['Owner handover','My records and account checklist for the next chapter.']].map(([title,description])=><article key={title}><span className="pending-tag">PLANNED</span><h3>{title}</h3><p>{description}</p></article>)}</div><div className="manage-notice"><strong>My owner tools aren’t ready yet.</strong><p>I’ll need separate, authenticated owner access before I can show private records or offer live controls. I’m not connected to my house systems through this public site.</p></div></section>}
+      {menu==='Own' && <section className="secondary-page manage"><h1 className="single-line-page-title">I come <em>with answers.</em></h1><p className="lead">I’m planning a place for my home guides, care information, and handover records. Ask me from any page for public guidance while my owner tools take shape.</p><div className="knowledge-grid">{[['Home guides','How my systems work and where you can find them.'],['Care & maintenance','My manuals, warranties, and equipment-specific schedules.'],['Owner handover','My records and account checklist for the next chapter.']].map(([title,description])=><article key={title}><span className="pending-tag">PLANNED</span><h3>{title}</h3><p>{description}</p></article>)}</div><div className="manage-notice"><strong>My owner tools aren’t ready yet.</strong><p>I’ll need separate, authenticated owner access before I can show private records or offer live controls. I’m not connected to my house systems through this public site.</p></div></section>}
       <Comments key={menu} page={menu==='Own'?'own':menuHash(menu)} title={menuLabel(menu)} onAsk={()=>setGuideOpen(true)}/>
     </main><footer><span>MY LOCATION IS CONFIDENTIAL</span><p>My SI designer: Jean Wright · Buy Your Home</p><span>I’m sharing concepts · No live controls</span></footer>
-    <PondsterGuide open={guideOpen} onOpenChange={setGuideOpen} onAction={guideAction}/>
+    <PondsterGuide ref={guide} open={guideOpen} onOpenChange={setGuideOpen} onAction={guideAction} onReturnFocus={()=>logo.current?.focus()}/>
     <GalleryImageViewer design={zoom} onChange={setZoom} onClose={()=>setZoom(null)}/>
   </>;
 }

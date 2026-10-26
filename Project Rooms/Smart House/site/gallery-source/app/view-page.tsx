@@ -6,7 +6,7 @@ const viewingEmail = 'mailto:ashley@elementrealtygroup.net?subject=Pondster%20vi
 
 export default function ViewPage({ onImage, onDesign, onTourStart }: { onImage: (design: Design) => void; onDesign: () => void; onTourStart: () => void }) {
   return <section className="secondary-page viewing-page">
-    <div className="viewing-intro"><div><p className="eyebrow">VIEW / COME MEET ME</p><h1>Come meet <em>me.</em></h1></div><p className="lead">Meet Ashley, my realtor, and find out about visiting me as I take shape.</p></div>
+    <div className="viewing-intro"><div><h1>Come meet <em>me.</em></h1></div><p className="lead">Meet Ashley, my realtor, and find out about visiting me as I take shape.</p></div>
     <VirtualTour onStart={onTourStart}/>
     <p className="buyer-design-note">Buy me early, while I’m still taking shape, and you can have a say in my final design. Help choose from the finishes and details that are still open, so I can feel like your home from the start. Talk with Ashley, my realtor, about which choices are available and when they need to be made.</p>
     <div className="viewing-layout">

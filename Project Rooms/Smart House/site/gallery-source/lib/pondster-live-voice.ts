@@ -216,11 +216,11 @@ export function createPondsterLiveVoice(options: PondsterLiveVoiceOptions): Pond
   }
   async function run(a: Attempt) {
     try {
-      const response = await guard(a, fetcher('/api/voice/status', { method: 'GET', cache: 'no-store', credentials: 'same-origin', signal: a.abort.signal }));
+      const response = await guard(a, fetcher('/api/voice/status?check=provider', { method: 'GET', cache: 'no-store', credentials: 'same-origin', signal: a.abort.signal }));
       if (!response.ok) throw new Error('unavailable');
-      const status = await guard(a, response.json()) as { available?: unknown };
+      const status = await guard(a, response.json()) as { available?: unknown; message?: unknown };
       if (status?.available !== true) {
-        fail(a, 'My live voice is not connected yet. You can type to me instead.', true); return;
+        fail(a, typeof status?.message === 'string' && status.message.length <= 240 ? status.message : 'My live voice is not connected yet. You can type to me instead.', true); return;
       }
       notify({ available: true, status: 'Allow your microphone to talk with me.' });
       // Stop can win this await; a late permission grant must not retain capture.
