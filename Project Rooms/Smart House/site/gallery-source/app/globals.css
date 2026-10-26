@@ -208,9 +208,9 @@ body{padding-bottom:95px}.pondster-welcome{margin:0 4% 30px;padding:20px 24px;bo
 .pondster-inline-signature{font:400 1.45em/.95 'Pondster Signature','Segoe Script','Brush Script MT',cursive;letter-spacing:0;white-space:nowrap;font-synthesis:none}
 
 /* Align my signature, Your Home and tagline within the same rectangle. */
-.brand{--logo-height:100px;min-height:var(--logo-height);border:0;background:none;padding:0 0 0 4.5px;text-align:left}.brand-copy{height:var(--logo-height)}.brand-copy>small{position:absolute;left:87px;bottom:-2px;margin:0;line-height:1;white-space:nowrap}.monogram{height:var(--logo-height);padding-bottom:7.5px}.monogram-your{transform:translateX(22px)}
+.brand{--logo-height:100px;--logo-frame-drop:8.25px;min-height:var(--logo-height);border:0;background:none;padding:0 0 0 4.5px;text-align:left}.brand-copy{height:var(--logo-height)}.brand-copy>small{position:absolute;left:87px;bottom:-2px;margin:0;line-height:1;white-space:nowrap}.monogram{height:calc(var(--logo-height) + var(--logo-frame-drop));padding-bottom:calc(7.5px + var(--logo-frame-drop))}.monogram-your{transform:translateX(11px)}
 .secondary-page h1,.intro h1{margin-top:0}.single-line-page-title{white-space:nowrap;font-size:clamp(28px,7.8vw,70px);letter-spacing:-.025em}.explore-page-title{font-size:clamp(13px,4vw,58px)}
-@media(max-width:720px){.brand{--logo-height:80px}.brand-copy>small{left:72px;font-size:15px}.monogram{padding-bottom:5px}.monogram-your{transform:translateX(15px)}}
+@media(max-width:720px){.brand{--logo-height:80px;--logo-frame-drop:7.5px}.brand-copy>small{left:72px;font-size:15px}.monogram{padding-bottom:calc(5px + var(--logo-frame-drop))}.monogram-your{transform:translateX(7.5px)}}
 
 /* My signature and menu stay available as the page passes underneath. */
 .header{position:sticky;top:0;z-index:35;background:var(--paper)}html{scroll-padding-top:165px}.brand[aria-expanded=true] .monogram{box-shadow:0 0 0 2px var(--accent)}
