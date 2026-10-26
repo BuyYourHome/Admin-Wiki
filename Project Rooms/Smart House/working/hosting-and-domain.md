@@ -13,7 +13,7 @@ Wes reported buying `Pondstr.com` from GoDaddy and instructed Smart House to hos
 - Initial saved version: `appgprj_6ad4d98e08708191858cab113814704e~appgver_0176b707d1688191be325f28960f58a6`.
 - Initial deployment: `appgdep_6ad4dafedea88191934ecd974a287155`.
 - Canonical linkage: `site/.openai/hosting.json`.
-- Publication checkout: ignored `site/.hosting-work/work/gallery-release-20261025/` for version 44; the parent `site/.hosting-work/` preserves the pending natural-voice work. Current publication uses the supported Sites Vinext runtime, gallery code, existing schema migrations, 37 voting choices across nine galleries, and a six-scene tour with three concept films. Never publish the wiki, private records, credentials, or source inventories. The original static page remains as a historical local concept.
+- Publication checkout: ignored `site/.hosting-work/work/gallery-release-20261025/` for version 45; the parent `site/.hosting-work/` preserves the pending natural-voice work. Current publication uses the supported Sites Vinext runtime, gallery code, existing schema migrations, 37 voting choices across nine galleries, and a six-scene tour with three concept films. Never publish the wiki, private records, credentials, or source inventories. The original static page remains as a historical local concept.
 
 ## Pondstr.com connection
 
@@ -52,9 +52,9 @@ Wes requested removal of the website login requirement so the public can access 
 
 Wes requested Design, Explore, View, and Manage navigation and six room galleries with public voting. The website now uses the supported Sites Vinext Worker runtime and logical D1 binding `DB`, with no R2 binding. Public access and the existing custom domain were preserved. The database migration creates only the vote schema; no synthetic votes were seeded into production.
 
-- Current Site source commit: `2a1d82851f90454dd30de3a49e713a584db1b338`.
-- Current saved version: `appgprj_6ad4d98e08708191858cab113814704e~appgver_a841313fabbc81918571254dad5254ee` (version 44).
-- Current deployment: `appgdep_6adeabed781481918a1ec8d80fae8206`, confirmed `succeeded` at `2026-10-26T01:25:10.689414+00:00`, environment revision **0**.
+- Current Site source commit: `b06013b92c4448f920d35afd87e28e5cc34ab313`.
+- Current saved version: `appgprj_6ad4d98e08708191858cab113814704e~appgver_2ccfb9153ab48191adafb17ba9467720` (version 45).
+- Current deployment: `appgdep_6adeaf36dab081918989e215b1fc85ff`, confirmed `succeeded` at `2026-10-26T01:39:11.586495+00:00`, environment revision **0**.
 - Live URL: https://pondstr.com . The original Sites URL remains https://pondstr.coolnewt4097.chatgpt.site .
 - Media Center has 13 choices; Front Elevation has two; Garage Barn Door has three; Master Bath has six; Hall Bath has six; Spiral Staircase has seven. Kitchen, ADU, and Back Deck await images.
 
@@ -424,3 +424,14 @@ Wes changed the Design headline to "Virtually - A Reality", keeping "Have a say.
 - Archive content hash: `sha256:5bd66b99f1b1f3af2bea8f08ec8fc2aaf3e2d2c198ff152c0bd5b1fe785232b8`.
 
 Production build passed. Local Design remained one line at 1920px and two at 320px, without horizontal overflow. Local 390px Explore and logo visual check passed. Fresh live Design/Explore confirmed exact headings, Your/HOME, and accent rgb(167,89,54). Proofs outside Git: `C:\Users\wesbr\.codex\visualizations\2026\10\25\pondster-virtually-headline-live.png` and `pondster-back-of-hand-live.png`. Prepared copies preserve the pending natural voice integration; it remains unpublished.
+
+## Explore wording correction — version 45, 2026-10-25 Eastern
+
+Wes corrected the Explore subtitle to "Like The Back Of Your Room", superseding "Like The Back Of Your Hand". Only that phrase changed; the existing Get to know me introduction, styling, line break, and logo remain intact.
+
+- Source: `b06013b92c4448f920d35afd87e28e5cc34ab313`.
+- Saved version: `appgprj_6ad4d98e08708191858cab113814704e~appgver_2ccfb9153ab48191adafb17ba9467720`, version **45**.
+- Deployment: `appgdep_6adeaf36dab081918989e215b1fc85ff`, succeeded `2026-10-26T01:39:11.586495+00:00`, environment revision **0**.
+- Archive content hash: `sha256:d5b92cf6c6c0199cc729ecfa0d5d62378b6b27f0a507dfb3a2ead82d0f537664`.
+
+Production build passed. Fresh https://pondstr.com/#explore displayed the exact corrected heading. Live proof outside Git: `C:\Users\wesbr\.codex\visualizations\2026\10\25\pondster-back-of-room-live.png`. Both prepared Explore copies have the same exact replacement, with all other bytes preserved; pending natural voice remains unpublished.

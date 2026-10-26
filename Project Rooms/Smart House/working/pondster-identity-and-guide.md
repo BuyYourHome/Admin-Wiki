@@ -114,3 +114,7 @@ Wes explicitly requested a 50% larger Pondster logo, the tagline "A home with a 
 ## Exact approved headlines and Your HOME — version 44, 2026-10-25
 
 Use "Virtually - A Reality" then "Have a say." on Design, retaining one desktop line and two phone lines. Explore uses "Get to know me." then "Like The Back Of Your Hand". These are direct Wes wording choices. Inside the square, burnt-orange "Your" now sits below the signature P and above HOME, using #a75936. Preserve the single uninterrupted signature, I Am, 50% enlarged scale, A home with a voice tagline, fireworks, and accessible home link. Release and visual proof: [[Project Rooms/Smart House/working/hosting-and-domain]].
+
+## Explore wording correction — version 45, 2026-10-25
+
+Wes corrected Explore to "Get to know me." followed by "Like The Back Of Your Room". This supersedes version 44's "Like The Back Of Your Hand" wording; retain that earlier section as release history. The production build and fresh live verification passed for version 45. Exact release details are in [[Project Rooms/Smart House/working/hosting-and-domain]]; live proof remains outside Git at `C:\Users\wesbr\.codex\visualizations\2026\10\25\pondster-back-of-room-live.png`.

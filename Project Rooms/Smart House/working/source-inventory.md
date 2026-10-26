@@ -2,6 +2,7 @@
 
 | Source | Status | Use |
 | --- | --- | --- |
+| Wes 2026-10-25 correction: Get to know me. / Like The Back Of Your Room replaces Like The Back Of Your Hand on Explore | Production build and fresh live check passed; version 45 published | Preserve exact Room wording; supersedes version 44's Hand text; release and external live proof in [[Project Rooms/Smart House/working/hosting-and-domain]] |
 | Wes 2026-10-25: Virtually - A Reality; Get to know me / Like The Back Of Your Hand; burnt-orange Your between P and HOME | Local desktop/phone, build, and fresh live checks passed; version 44 published | Exact approved headline wording and decorative Your HOME placement; release/proof in [[Project Rooms/Smart House/working/hosting-and-domain]] |
 | Wes 2026-10-25: Own visitor wording, one desktop/two phone headline lines, 50% larger logo, and A home with a voice tagline | Local responsive checks, build, and live Own/Design verification passed; version 43 published | Preserve exact user wording and proportional branding; release and proof in [[Project Rooms/Smart House/working/hosting-and-domain]] |
 | Wes's 2026-10-25 screenshot and request to reduce space between the header and the small Design notebook line | Desktop/phone measurements, desktop visual check, production build, and live verification passed; version 42 published | Design intro top padding 20px desktop / 18px phone; remove first eyebrow top margin; keep header and logo sizes; release and proof in [[Project Rooms/Smart House/working/hosting-and-domain]] |
