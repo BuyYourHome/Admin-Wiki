@@ -19,6 +19,7 @@ export default forwardRef<PondsterGuideHandle,GuideProps>(function PondsterGuide
   const [speakReplies,setSpeakReplies]=useState(false);
   const [keepListening,setKeepListening]=useState(false);
   const [naturalReady,setNaturalReady]=useState<boolean|null>(null);
+  const [naturalMessage,setNaturalMessage]=useState('');
   const [voiceMode,setVoiceMode]=useState<'natural'|'browser'>('natural');
   const [live,setLive]=useState({available:false,connecting:false,active:false,status:'I’m not listening. Start a conversation when you’re ready.',heard:'',audioBlocked:false});
   const voiceState=useRef(voice);
@@ -69,7 +70,8 @@ export default forwardRef<PondsterGuideHandle,GuideProps>(function PondsterGuide
   useEffect(()=>{
     if(!open){stopVoice();return;}
     const cancellation=new AbortController();
-    fetch('/api/voice/status',{cache:'no-store',signal:cancellation.signal}).then(response=>response.ok?response.json() as Promise<{available?:unknown}>:null).then(data=>{if(!cancellation.signal.aborted)setNaturalReady(data?.available===true);}).catch(()=>{if(!cancellation.signal.aborted)setNaturalReady(false);});
+    setNaturalReady(null);setNaturalMessage('');
+    fetch('/api/voice/status',{cache:'no-store',signal:cancellation.signal}).then(response=>response.ok?response.json() as Promise<{available?:unknown;message?:unknown}>:null).then(data=>{if(!cancellation.signal.aborted){setNaturalReady(data?.available===true);setNaturalMessage(data?.available===false&&typeof data.message==='string'?data.message.slice(0,400):'');}}).catch(()=>{if(!cancellation.signal.aborted)setNaturalReady(false);});
     return()=>cancellation.abort();
   },[open]);
   useEffect(()=>{if(open)input.current?.focus();},[open]);
@@ -105,12 +107,12 @@ export default forwardRef<PondsterGuideHandle,GuideProps>(function PondsterGuide
       <header className="pondster-panel-heading"><span className="pondster-avatar" aria-hidden="true">P</span><div><h2 id="pondster-heading">Pondster</h2><p>I’M YOUR HOUSE, WITH A VOICE</p></div><button className="pondster-close" onClick={close} aria-label="Close Pondster and stop voice">×</button></header>
       <div className="pondster-voice"><p>{useNatural?'Let’s have a conversation.':'Ask me a question, out loud.'}</p>
         <label className="pondster-voice-choice">My voice<select value={voiceMode} onChange={event=>{stopVoice();setVoiceMode(event.target.value as 'natural'|'browser');}}><option value="natural">Natural conversation</option><option value="browser">Browser voice</option></select></label>
-        <div className="pondster-voice-controls"><button onClick={listen} disabled={useNatural?!live.available:!voice.available&&!voice.outputActive&&!voice.session} aria-pressed={voiceActive}>{useNatural?(voiceActive?'■ End conversation':'◉ Talk naturally'):(voiceActive?'■ Stop voice':keepListening?'◉ Listen for Pondster':'◉ Ask by voice')}</button>{!useNatural&&voice.speechAvailable&&<label><input type="checkbox" checked={speakReplies} onChange={event=>{spoken.current=event.target.checked;setSpeakReplies(event.target.checked);if(!event.target.checked)controller.current?.cancelSpeech();}}/>Speak replies</label>}</div>
+        <div className="pondster-voice-controls"><button onClick={listen} disabled={useNatural?!voiceActive&&(!live.available||naturalReady===false):!voice.available&&!voice.outputActive&&!voice.session} aria-pressed={voiceActive}>{useNatural?(voiceActive?'■ End conversation':'◉ Talk naturally'):(voiceActive?'■ Stop voice':keepListening?'◉ Listen for Pondster':'◉ Ask by voice')}</button>{!useNatural&&voice.speechAvailable&&<label><input type="checkbox" checked={speakReplies} onChange={event=>{spoken.current=event.target.checked;setSpeakReplies(event.target.checked);if(!event.target.checked)controller.current?.cancelSpeech();}}/>Speak replies</label>}</div>
         {!useNatural&&<label className="pondster-wake"><input type="checkbox" checked={keepListening} disabled={!voice.available} onChange={event=>{controller.current?.stop();setKeepListening(event.target.checked);}}/>Keep listening for “Pondster”</label>}
         <p className={`pondster-status ${voiceActive?'active':''}`} role="status">{useNatural?live.status:voice.status}</p>
         {(useNatural?live.heard:voice.heard)&&<p className="pondster-heard">I heard: “{useNatural?live.heard:voice.heard}”</p>}
         {useNatural&&live.audioBlocked&&<button className="pondster-resume-audio" onClick={()=>void liveController.current?.resumeAudio().catch(()=>{})}>Play my voice ▶</button>}
-        {(useNatural?!live.available||naturalReady===false&&!voiceActive:!voice.available)&&<p className="pondster-unavailable">{useNatural?'I can’t use my natural voice right now. You can choose Browser voice or type me a question.':'I can’t listen in this browser. Open pondstr.com in Chrome or Edge to try my voice, or type me a question here.'}</p>}
+        {(useNatural?!live.available||naturalReady===false&&!voiceActive:!voice.available)&&<p className="pondster-unavailable">{useNatural?naturalMessage||'I can’t use my natural voice right now. You can choose Browser voice or type me a question.':'I can’t listen in this browser. Open pondstr.com in Chrome or Edge to try my voice, or type me a question here.'}</p>}
         <small>{useNatural?'My natural voice is AI-generated. Starting sends your voice to OpenAI for this conversation. I keep no audio or transcript in my website’s database. I end after three minutes, when you stop or close me, or when you leave this tab.':`${keepListening?'Say “Pondster” with each question.':'Tap Ask by voice, then ask one question. You don’t need to say my name.'} Your browser may send audio to its speech service. I stop when you close me, stop voice, or leave this tab.`}</small>
       </div>
       <div className="pondster-conversation" ref={log} role="log" aria-label="Conversation with Pondster" aria-live="polite" aria-relevant="additions">{messages.map((message,index)=><div className={`pondster-message ${message.who==='you'?'from-you':''}`} key={`${index}-${message.text.slice(0,20)}`}><span>{message.who==='you'?'YOU':'PONDSTER'}</span><p>{message.text}</p></div>)}</div>

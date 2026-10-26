@@ -30,7 +30,7 @@ type ControllerOptions = {
   client: Socket;
   store: VoiceStore;
   visitorKey: string;
-  createSession: (sdp: string, signal: AbortSignal) => Promise<{ id: string; sdp: string }>;
+  createSession: (sdp: string, signal: AbortSignal, requestId: string) => Promise<{ id: string; sdp: string }>;
   attach: (id: string, signal: AbortSignal) => Promise<Socket>;
   answer: (question: string) => PublicAnswer;
   now?: () => number;
@@ -69,6 +69,34 @@ export const RESERVE_VOICE_SQL = `INSERT INTO voice_sessions (request_id, visito
  AND (SELECT COUNT(*) FROM voice_sessions WHERE state IN (${ACTIVE_STATES})) < 2
  AND NOT EXISTS (SELECT 1 FROM voice_sessions WHERE visitor_key = ? AND state IN (${ACTIVE_STATES}))
  ON CONFLICT(request_id) DO NOTHING`;
+
+// A read-only preview of the same predicates used by the atomic reservation.
+// It never releases an uncertain session or replaces the reservation at Start.
+export const VOICE_ADMISSION_SQL = `SELECT CASE WHEN
+ (SELECT COUNT(*) FROM voice_sessions WHERE created_at > ?) < 20
+ AND (SELECT COUNT(*) FROM voice_sessions WHERE visitor_key = ? AND created_at > ?) < 4
+ AND NOT EXISTS (SELECT 1 FROM voice_sessions WHERE visitor_key = ? AND created_at > ?)
+ AND (SELECT COUNT(*) FROM voice_sessions WHERE state IN (${ACTIVE_STATES})) < 2
+ AND NOT EXISTS (SELECT 1 FROM voice_sessions WHERE visitor_key = ? AND state IN (${ACTIVE_STATES}))
+ THEN 1 ELSE 0 END AS admitted`;
+
+export async function voiceAdmissionStatus(request: Request, env: VoiceEnvironment, base = voiceStatus(request, env)): Promise<Response> {
+  if (base.status !== 200 || !voiceIsAvailable(env)) return base;
+  const unavailable = () => new Response(JSON.stringify({ available: false,
+    message: 'My natural voice connection needs a service check. You can use Browser voice or type to me.' }), { headers: base.headers });
+  // A first status request has no request cookie yet: use exactly the identity
+  // issued by voiceStatus rather than minting a second visitor for this check.
+  const visitor = voiceVisitor(request) ?? base.headers.get('set-cookie')?.match(/^pondster_voice_visitor=([a-f0-9]{32})(?:;|$)/)?.[1];
+  if (!visitor) return unavailable();
+  try {
+    const visitorKey = await hashVoiceVisitor(visitor, env.OPENAI_API_KEY!);
+    const now = Date.now();
+    const result = await env.DB!.prepare(VOICE_ADMISSION_SQL)
+      .bind(now - DAY_MS, visitorKey, now - DAY_MS, visitorKey, now - 60_000, visitorKey)
+      .first<{ admitted: number }>();
+    return result?.admitted === 1 ? base : unavailable();
+  } catch { return unavailable(); }
+}
 
 export function d1VoiceStore(db: D1Database): VoiceStore {
   return {
@@ -115,6 +143,7 @@ export function createPondsterLiveControl(options: ControllerOptions) {
   let requestId: string | null = null;
   let reserved = false;
   let attempted = false;
+  let creationRejected = false;
   let ready = false;
   let closing = false;
   let finished = false;
@@ -203,7 +232,7 @@ export function createPondsterLiveControl(options: ControllerOptions) {
       for (const timer of timers) clearTimer(timer);
       timers.clear(); safeClose(sideband);
       if (reserved && requestId) {
-        try { await options.store.finish(requestId, { state: confirmed ? 'closed' : attempted ? 'unconfirmed' : 'failed', usageSeconds, confirmed }); }
+        try { await options.store.finish(requestId, { state: confirmed ? 'closed' : creationRejected ? 'failed' : attempted ? 'unconfirmed' : 'failed', usageSeconds, confirmed }); }
         catch { /* Existing reservation remains occupied: fail closed. */ }
       }
       safeSend(options.client, { type: 'pondster.ended', message: closeMessage });
@@ -229,7 +258,7 @@ export function createPondsterLiveControl(options: ControllerOptions) {
       if (!reserved) { error('I’m taking a short voice break. Please try again later.'); closing = true; return; }
       if (closing) return;
       attempted = true;
-      const session = await options.createSession(sdp, abort.signal);
+      const session = await options.createSession(sdp, abort.signal, requestId!);
       try { await options.store.activate(requestId!, session.id); }
       catch {
         // A D1 write failure must not prevent closing a session already created.
@@ -253,6 +282,9 @@ export function createPondsterLiveControl(options: ControllerOptions) {
       later(() => { track(stop('I’ve reached my three-minute voice limit. You can keep exploring my website.')); }, VOICE_DURATION_SECONDS * 1000);
       safeSend(options.client, { type: 'pondster.ready', session: { id: session.id }, transport: { type: 'webrtc', sdp: session.sdp }, maxDurationSeconds: VOICE_DURATION_SECONDS });
     } catch (failure) {
+      // A directly observed terminal create rejection is a failed startup, not
+      // a confirmed provider close. Attach/transport/parse failures stay unknown.
+      creationRejected = failure instanceof VoiceProviderFailure && failure.isDefinitiveCreateRejection();
       error(failure instanceof VoiceProviderFailure ? failure.message : 'I couldn’t start my live voice connection. My written guide is still available.'); closing = true;
     } finally {
       cancel(setup);
@@ -302,16 +334,16 @@ export async function handlePondsterLiveControl(request: Request, env: VoiceEnvi
   server.accept();
   const control = createPondsterLiveControl({
     client: server, store: d1VoiceStore(env.DB!), visitorKey, answer, track: task => ctx.waitUntil(task),
-    async createSession(sdp, signal) {
+    async createSession(sdp, signal, clientRequestId) {
       let response: Response;
       try { response = await fetch('https://api.openai.com/v1/live/sessions', {
-        method: 'POST', headers: { Authorization: `Bearer ${env.OPENAI_API_KEY!.trim()}`, 'Content-Type': 'application/json' },
+        method: 'POST', headers: { Authorization: `Bearer ${env.OPENAI_API_KEY!.trim()}`, 'Content-Type': 'application/json', 'X-Client-Request-Id': clientRequestId },
         body: JSON.stringify({ session: buildSession(), transport: { type: 'webrtc', sdp } }), signal, redirect: 'manual'
       }); } catch {
         console.warn('pondster.voice.provider', JSON.stringify({ stage: 'create-fetch', httpStatus: null, code: 'transport_failure' }));
         throw new Error('voice unavailable');
       }
-      if (!response.ok) { const code = await safeProviderFailure(response, 'create-http'); throw new VoiceProviderFailure(response.status, code); }
+      if (!response.ok) { const code = await safeProviderFailure(response, 'create-http'); throw new VoiceProviderFailure('create-http', response.status, code); }
       let payload: { session?: { id?: unknown }; transport?: { type?: unknown; sdp?: unknown } };
       try { payload = await response.json(); } catch {
         console.warn('pondster.voice.provider', JSON.stringify({ stage: 'create-json', httpStatus: response.status, code: 'invalid_json' })); throw new Error('voice unavailable');
@@ -329,7 +361,7 @@ export async function handlePondsterLiveControl(request: Request, env: VoiceEnvi
       }); } catch {
         console.warn('pondster.voice.provider', JSON.stringify({ stage: 'attach-fetch', httpStatus: null, code: 'transport_failure' })); throw new Error('voice unavailable');
       }
-      if (!response.webSocket) { const code = await safeProviderFailure(response, 'attach-http'); throw new VoiceProviderFailure(response.status, code); }
+      if (!response.webSocket) { const code = await safeProviderFailure(response, 'attach-http'); throw new VoiceProviderFailure('attach-http', response.status, code); }
       return response.webSocket;
     }
   });

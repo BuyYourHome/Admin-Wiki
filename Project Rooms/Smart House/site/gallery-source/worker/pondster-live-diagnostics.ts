@@ -7,7 +7,15 @@ export type ProviderCheck = { state: CheckState; httpStatus: number | null; code
 let cached: { key: string; until: number; result: Promise<ProviderCheck> } | null = null;
 
 export class VoiceProviderFailure extends Error {
-  constructor(status: number, code: string | null) { super(providerFailureMessage(status, code)); this.name = 'VoiceProviderFailure'; }
+  readonly stage: 'create-http' | 'attach-http';
+  readonly httpStatus: number;
+  constructor(stage: 'create-http' | 'attach-http', status: number, code: string | null) {
+    super(providerFailureMessage(status, code)); this.name = 'VoiceProviderFailure';
+    this.stage = stage; this.httpStatus = status;
+  }
+  isDefinitiveCreateRejection() {
+    return this.stage === 'create-http' && [400, 401, 403, 404, 422, 429].includes(this.httpStatus);
+  }
 }
 
 export async function safeProviderFailure(response: Response, stage: 'model-access' | 'create-http' | 'attach-http') {
