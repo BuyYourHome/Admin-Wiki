@@ -6,7 +6,7 @@ type Scene = 'day' | 'evening' | 'relax';
 export default function ExplorePage({ scene, onScene, onDesign }: { scene: string; onScene: (scene: Scene) => void; onDesign: (room: string) => void }) {
   return <section className="secondary-page explore-page">
     <p className="eyebrow">EXPLORE / GET TO KNOW ME</p>
-    <h1>Get to know me.<br/><em>Room by room.</em></h1>
+    <h1>Get to know me.<br/><em>Like The Back Of Your Hand</em></h1>
     <p className="lead">I’m Pondster. Here are my house-wide ideas and the features I’m exploring in each space as I take shape.</p>
 
     <section className="house-features" aria-labelledby="house-features-heading">

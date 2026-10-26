@@ -111,3 +111,6 @@ Wes rejected the botanical decoration with "Lose the vine," then explicitly auth
 ## Header sizing and visitor wording — version 43, 2026-10-25
 
 Wes explicitly requested a 50% larger Pondster logo, the tagline "A home with a voice.", the Own eyebrow "Own / Your future Owner experience", and a one-line Design headline on computers with two lines on phones. Preserve these user-specified exceptions to first-person labels. The continuous signature, I Am placement, HOME frame, fireworks, accessible home link, and absence of a vine remain intact. Signature sizes are 78–114px desktop and 90px phone. Keep the tighter Design header gap and fit down to a 320px phone. Exact release and visual evidence: [[Project Rooms/Smart House/working/hosting-and-domain]].
+## Exact approved headlines and Your HOME — version 44, 2026-10-25
+
+Use "Virtually - A Reality" then "Have a say." on Design, retaining one desktop line and two phone lines. Explore uses "Get to know me." then "Like The Back Of Your Hand". These are direct Wes wording choices. Inside the square, burnt-orange "Your" now sits below the signature P and above HOME, using #a75936. Preserve the single uninterrupted signature, I Am, 50% enlarged scale, A home with a voice tagline, fireworks, and accessible home link. Release and visual proof: [[Project Rooms/Smart House/working/hosting-and-domain]].

@@ -26,8 +26,9 @@ body{padding-bottom:95px}.pondster-welcome{margin:0 4% 30px;padding:20px 24px;bo
 .brand-name{--signature-size:clamp(78px,7.65vw,114px);position:relative;display:block;font:400 var(--signature-size)/.95 'Pondster Signature','Segoe Script','Brush Script MT',cursive;letter-spacing:0;padding-inline:.04em;font-synthesis:none}
 .signature-i-am{position:absolute;left:calc(var(--signature-size)*.842105);top:calc(var(--signature-size)*.118421);font:italic calc(var(--signature-size)*.157895)/1 Georgia,'Times New Roman',serif;letter-spacing:.15px;color:var(--accent);white-space:nowrap;pointer-events:none}
 .brand-copy small{font-size:16.5px;letter-spacing:.9px;margin:13.5px 0 0 87px}
-.monogram{position:absolute;left:0;top:0;isolation:isolate;overflow:hidden;width:87px;height:117px;display:flex;align-items:flex-end;justify-content:center;padding-bottom:10.5px;letter-spacing:0;border-color:#9d8d66;background:linear-gradient(145deg,#fffdf7,#e8e9dd);transition:transform .25s,box-shadow .25s}
-.monogram small{font-size:12px;letter-spacing:4.5px;margin-top:7.5px}
+.monogram{position:absolute;left:0;top:0;isolation:isolate;overflow:hidden;width:87px;height:117px;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;gap:2px;padding-bottom:10.5px;letter-spacing:0;border-color:#9d8d66;background:linear-gradient(145deg,#fffdf7,#e8e9dd);transition:transform .25s,box-shadow .25s}
+.monogram small{font-size:12px;letter-spacing:4.5px;margin:0;line-height:1}
+.monogram-your{font:italic 13px/1.1 Georgia,serif;letter-spacing:.3px;color:var(--accent)}
 .monogram::before{content:'';position:absolute;top:10.5px;right:10.5px;width:7.5px;height:7.5px;background:var(--accent);transform:rotate(45deg);animation:pondster-glint 7s ease-in-out infinite}
 .monogram::after{content:'';position:absolute;inset:-20%;background:linear-gradient(105deg,transparent 35%,#ffffffc7 50%,transparent 65%);transform:translateX(-140%) skewX(-15deg);pointer-events:none;animation:pondster-light 7s ease-in-out infinite}
 .brand:hover .monogram,.brand:focus-visible .monogram{transform:translateY(-2px);box-shadow:0 4px 12px #253d3218}
@@ -198,3 +199,4 @@ body{padding-bottom:95px}.pondster-welcome{margin:0 4% 30px;padding:20px 24px;bo
 /* Give my headline one line on computers and two on phones. */
 .intro{flex-wrap:wrap;gap:20px 40px;align-items:flex-start}.intro h1{white-space:nowrap}.design-title-break{display:none}
 @media(max-width:720px){.intro h1{white-space:normal;font-size:clamp(36px,11.28vw,44px)}.design-title-break{display:block}}
+@media(max-width:720px){.monogram-your{font-size:11px}}

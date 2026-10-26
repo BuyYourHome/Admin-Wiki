@@ -13,7 +13,7 @@ Wes reported buying `Pondstr.com` from GoDaddy and instructed Smart House to hos
 - Initial saved version: `appgprj_6ad4d98e08708191858cab113814704e~appgver_0176b707d1688191be325f28960f58a6`.
 - Initial deployment: `appgdep_6ad4dafedea88191934ecd974a287155`.
 - Canonical linkage: `site/.openai/hosting.json`.
-- Publication checkout: ignored `site/.hosting-work/work/gallery-release-20261025/` for version 43; the parent `site/.hosting-work/` preserves the pending natural-voice work. Current publication uses the supported Sites Vinext runtime, gallery code, existing schema migrations, 37 voting choices across nine galleries, and a six-scene tour with three concept films. Never publish the wiki, private records, credentials, or source inventories. The original static page remains as a historical local concept.
+- Publication checkout: ignored `site/.hosting-work/work/gallery-release-20261025/` for version 44; the parent `site/.hosting-work/` preserves the pending natural-voice work. Current publication uses the supported Sites Vinext runtime, gallery code, existing schema migrations, 37 voting choices across nine galleries, and a six-scene tour with three concept films. Never publish the wiki, private records, credentials, or source inventories. The original static page remains as a historical local concept.
 
 ## Pondstr.com connection
 
@@ -52,9 +52,9 @@ Wes requested removal of the website login requirement so the public can access 
 
 Wes requested Design, Explore, View, and Manage navigation and six room galleries with public voting. The website now uses the supported Sites Vinext Worker runtime and logical D1 binding `DB`, with no R2 binding. Public access and the existing custom domain were preserved. The database migration creates only the vote schema; no synthetic votes were seeded into production.
 
-- Current Site source commit: `36665d3d84cbcdd63e281558b538367df6374107`.
-- Current saved version: `appgprj_6ad4d98e08708191858cab113814704e~appgver_aa7d9983bbbc81919f7f312e71d15b8c` (version 43).
-- Current deployment: `appgdep_6adea9ac8f60819196967b0000deda34`, confirmed `succeeded` at `2026-10-26T01:15:33.206539+00:00`, environment revision **0**.
+- Current Site source commit: `2a1d82851f90454dd30de3a49e713a584db1b338`.
+- Current saved version: `appgprj_6ad4d98e08708191858cab113814704e~appgver_a841313fabbc81918571254dad5254ee` (version 44).
+- Current deployment: `appgdep_6adeabed781481918a1ec8d80fae8206`, confirmed `succeeded` at `2026-10-26T01:25:10.689414+00:00`, environment revision **0**.
 - Live URL: https://pondstr.com . The original Sites URL remains https://pondstr.coolnewt4097.chatgpt.site .
 - Media Center has 13 choices; Front Elevation has two; Garage Barn Door has three; Master Bath has six; Hall Bath has six; Spiral Staircase has seven. Kitchen, ADU, and Back Deck await images.
 
@@ -414,3 +414,13 @@ The Allura signature is now clamp(78px,7.65vw,114px) on desktop and 90px on phon
 - Archive content hash: `sha256:a2616089ee25a1ca240286c8fb36c300946ec44f454a15a33652b7a5b47fd788`.
 
 Production build passed. Local checks confirmed one headline line at 1920px/1366px, two at 390px/320px, and no final horizontal overflow. Fresh live Own verified the new label, tagline, and 114px logo; live Design verified the one-line headline. Screenshots are outside Git at `C:\Users\wesbr\.codex\visualizations\2026\10\25\pondster-own-label-live.png` and `pondster-header-refinements-live.png`. Both prepared copies preserve the voice integration; their CSS differs only by its exact 510-character block once. No natural-voice activation or data/audience/domain changes.
+## Approved headlines and Your HOME — version 44, 2026-10-25 Eastern
+
+Wes changed the Design headline to "Virtually - A Reality", keeping "Have a say." and its desktop/phone line behavior. Explore now reads "Get to know me." then "Like The Back Of Your Hand". He also directed adding "Your" between the signature P and HOME inside the square in burnt orange. Your uses the existing accent #a75936, italic Georgia at 13px desktop / 11px phone; the decorative square stacks the labels above its bottom padding. The accessible home-link name stays Pondster home.
+
+- Source: `2a1d82851f90454dd30de3a49e713a584db1b338`.
+- Saved version: `appgprj_6ad4d98e08708191858cab113814704e~appgver_a841313fabbc81918571254dad5254ee`, version **44**.
+- Deployment: `appgdep_6adeabed781481918a1ec8d80fae8206`, succeeded `2026-10-26T01:25:10.689414+00:00`, environment revision **0**.
+- Archive content hash: `sha256:5bd66b99f1b1f3af2bea8f08ec8fc2aaf3e2d2c198ff152c0bd5b1fe785232b8`.
+
+Production build passed. Local Design remained one line at 1920px and two at 320px, without horizontal overflow. Local 390px Explore and logo visual check passed. Fresh live Design/Explore confirmed exact headings, Your/HOME, and accent rgb(167,89,54). Proofs outside Git: `C:\Users\wesbr\.codex\visualizations\2026\10\25\pondster-virtually-headline-live.png` and `pondster-back-of-hand-live.png`. Prepared copies preserve the pending natural voice integration; it remains unpublished.
