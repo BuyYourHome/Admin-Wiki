@@ -6,4 +6,3 @@
 - Nineteen older exterior concepts share a folder with four explicitly accepted Smart House sources. Folder membership alone does not prove intake into these two source rooms; leave those nineteen unchanged pending lineage review.
 - One recorded LED image path is missing; no replacement is generated.
 - Smart House and Dashboard active work is unrelated. Source-room files and matching skills are not edited during this setup; the new inventory explicitly supersedes asset-authority paths only for verified migrated assets.
-

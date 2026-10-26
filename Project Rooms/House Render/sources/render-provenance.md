@@ -80,7 +80,7 @@ Pond Street anchors include LED turn `01a0fdea-a313-79e2-90d8-1b9198d33492` (908
 
 - Source: `C:\Users\wesbr\.codex\generated_images\01a14585-ffe6-7850-8db1-efcdd58e7071\exec-7ae103c5-594e-43a9-af59-62c960b925c9.png`
 - Turn: `01a1742c-7c84-7db0-8309-3c0a6aedbb9a`
-- Generation intent excerpt: Use case: precise-object-edit. Make a precise correction to this exact latest master-bath concept: MOVE THE CENTRAL45DEGREE WALL BACK ANOTHER TWO INCHES, AND MAKE THAT CENTRAL WALL NARROWER AT THE SAME TIME. The owner explicitly says the center wall is still TOO WIDE. The previous image left its corners too far apart. 
+- Generation intent excerpt: Use case: precise-object-edit. Make a precise correction to this exact latest master-bath concept: MOVE THE CENTRAL45DEGREE WALL BACK ANOTHER TWO INCHES, AND MAKE THAT CENTRAL WALL NARROWER AT THE SAME TIME. The owner explicitly says the center wall is still TOO WIDE. The previous image left its corners too far apart.
 
 ## exec-3f363c79-c482-498e-bf4e-2436810b540a.png
 
@@ -194,7 +194,7 @@ Pond Street anchors include LED turn `01a0fdea-a313-79e2-90d8-1b9198d33492` (908
 
 - Source: `C:\Users\wesbr\.codex\generated_images\01a0b696-05a2-7291-a857-084a6f2bc2eb\exec-a8c3c2ba-2464-4018-8d0b-94557c04da84.png`
 - Turn: `01a174f9-7e56-7bd2-9902-fc6be83d47f1`
-- Generation intent excerpt: Use case: precise-object-edit. Edit this exact finished bathroom rendering. Open the white paneled WATER CLOSET DOOR at the FAR LEFT fully inward so the existing doorway clearly reveals the small WC interior. Preserve the doorway frame, its angled 45-degree wall, location, width and height. Retain the door leaf, swung 
+- Generation intent excerpt: Use case: precise-object-edit. Edit this exact finished bathroom rendering. Open the white paneled WATER CLOSET DOOR at the FAR LEFT fully inward so the existing doorway clearly reveals the small WC interior. Preserve the doorway frame, its angled 45-degree wall, location, width and height. Retain the door leaf, swung
 
 ## exec-ce68731c-0ef6-4872-970c-606b63093f82.png
 
@@ -260,7 +260,7 @@ Pond Street anchors include LED turn `01a0fdea-a313-79e2-90d8-1b9198d33492` (908
 
 - Source: `C:\Users\wesbr\.codex\generated_images\01a0b696-05a2-7291-a857-084a6f2bc2eb\exec-ba346006-0420-4241-b567-ff5f001f20a5.png`
 - Turn: `01a174df-4ead-7f22-8e46-0a779cba83b3`
-- Generation intent excerpt: Use case: precise-object-edit. Create a photorealistic completed bathroom renovation concept by editing this EXACT construction photo. Preserve the room's actual narrow layout, doorway viewpoint and landscape framing, rear glass-block window size/location/pattern, and existing rectangular inset jetted bathtub directly 
+- Generation intent excerpt: Use case: precise-object-edit. Create a photorealistic completed bathroom renovation concept by editing this EXACT construction photo. Preserve the room's actual narrow layout, doorway viewpoint and landscape framing, rear glass-block window size/location/pattern, and existing rectangular inset jetted bathtub directly
 
 ## exec-1c9e5255-8c0f-48fd-a017-e8ec40f72118.png
 
@@ -272,7 +272,7 @@ Pond Street anchors include LED turn `01a0fdea-a313-79e2-90d8-1b9198d33492` (908
 
 - Source: `C:\Users\wesbr\.codex\generated_images\01a0b696-05a2-7291-a857-084a6f2bc2eb\exec-071e12b4-67e9-447e-8762-df77bfd4150e.png`
 - Turn: `01a174ab-c66a-79c0-aaea-195d9644c6ed`
-- Generation intent excerpt: Precise decor-only edit of this exact dimly lit home theater image. Add a tasteful restrained collection of decorations resting ON THE EXISTING narrow horizontal shelf/ledge along the painted-brick rear wall, between the screen wall on the left and staircase on the right. Use about four small spaced groupings, leaving 
+- Generation intent excerpt: Precise decor-only edit of this exact dimly lit home theater image. Add a tasteful restrained collection of decorations resting ON THE EXISTING narrow horizontal shelf/ledge along the painted-brick rear wall, between the screen wall on the left and staircase on the right. Use about four small spaced groupings, leaving
 
 ## exec-326eb5a0-4dfe-4671-8ab1-9fb7117adadd.png
 
@@ -320,7 +320,7 @@ Pond Street anchors include LED turn `01a0fdea-a313-79e2-90d8-1b9198d33492` (908
 
 - Source: `C:\Users\wesbr\.codex\generated_images\01a0b696-05a2-7291-a857-084a6f2bc2eb\exec-d08e7e6c-b29b-4d32-bf01-9103654d89e0.png`
 - Turn: `01a1749a-832a-7363-aadc-3549b5fd7fa4`
-- Generation intent excerpt: Precise material color edit of this exact staircase renovation image. Change ONLY the reddish exposed brick band ABOVE the horizontal shelf on the LEFT wall to PAINTED BRICK in warm ivory/off-white, coordinating with the existing ivory wall paint. Use an opaque matte painted finish on both brick faces and mortar, with 
+- Generation intent excerpt: Precise material color edit of this exact staircase renovation image. Change ONLY the reddish exposed brick band ABOVE the horizontal shelf on the LEFT wall to PAINTED BRICK in warm ivory/off-white, coordinating with the existing ivory wall paint. Use an opaque matte painted finish on both brick faces and mortar, with
 
 ## exec-6090122b-bba0-457a-82a6-03eddc07d0ac.png
 
@@ -368,7 +368,7 @@ Pond Street anchors include LED turn `01a0fdea-a313-79e2-90d8-1b9198d33492` (908
 
 - Source: `C:\Users\wesbr\.codex\generated_images\01a0b696-05a2-7291-a857-084a6f2bc2eb\exec-754ea2b8-a79b-4078-bdf6-e55f0c62e579.png`
 - Turn: `01a16b9c-3565-7b73-b98e-3731bb60ce0b`
-- Generation intent excerpt: Precise cleanup edit for animation background plate. Remove ONLY the actual television screen and its thin factory bezel from INSIDE the broad charcoal decorative frame on wall. Leave the broad decorative charcoal picture frame entirely unchanged at same original coordinates/perspective with all four sides. Inside the 
+- Generation intent excerpt: Precise cleanup edit for animation background plate. Remove ONLY the actual television screen and its thin factory bezel from INSIDE the broad charcoal decorative frame on wall. Leave the broad decorative charcoal picture frame entirely unchanged at same original coordinates/perspective with all four sides. Inside the
 
 ## exec-1534ca16-9ad2-4c51-8a97-a4194b642463.png
 
@@ -398,7 +398,7 @@ Pond Street anchors include LED turn `01a0fdea-a313-79e2-90d8-1b9198d33492` (908
 
 - Source: `C:\Users\wesbr\.codex\generated_images\01a0b696-05a2-7291-a857-084a6f2bc2eb\exec-87b01fd1-1d3d-4e5e-8059-b91b715bd503.png`
 - Turn: `01a16b97-2a97-7f21-b014-8a40fc063988`
-- Generation intent excerpt: Fix ONLY the floating television in this render. Rotate its viewing plane until perfectly parallel to the camera image plane, as if looking straight at a TV. It must be a WIDE 16:9 horizontal RECTANGLE, not the current narrow angled trapezoid. Make its visible screen about 600 pixels wide and 338 pixels tall, centered 
+- Generation intent excerpt: Fix ONLY the floating television in this render. Rotate its viewing plane until perfectly parallel to the camera image plane, as if looking straight at a TV. It must be a WIDE 16:9 horizontal RECTANGLE, not the current narrow angled trapezoid. Make its visible screen about 600 pixels wide and 338 pixels tall, centered
 
 ## exec-250a0d06-7fde-4854-99f6-764de622fb9f.png
 
@@ -422,7 +422,7 @@ Pond Street anchors include LED turn `01a0fdea-a313-79e2-90d8-1b9198d33492` (908
 
 - Source: `C:\Users\wesbr\.codex\generated_images\01a0b696-05a2-7291-a857-084a6f2bc2eb\exec-1ef740e5-cc9f-4a31-9f46-53c3c8779455.png`
 - Turn: `01a16b8b-ffd1-78e2-9a41-88ecc0dfb835`
-- Generation intent excerpt: Precise interior recolor edit of this exact baseline rendering. ONE full-frame photorealistic image, identical architecture, perspective, furnishings, lighting and scale. Cabinet palette: deep muted navy blue. Apply this to fridge surround/upper cabinet, base cabinets, right tall shelving cabinet, and outer decorative 
+- Generation intent excerpt: Precise interior recolor edit of this exact baseline rendering. ONE full-frame photorealistic image, identical architecture, perspective, furnishings, lighting and scale. Cabinet palette: deep muted navy blue. Apply this to fridge surround/upper cabinet, base cabinets, right tall shelving cabinet, and outer decorative
 
 ## exec-551f48a9-379a-4097-a6fe-472ba51c89c3.png
 
@@ -596,7 +596,7 @@ Pond Street anchors include LED turn `01a0fdea-a313-79e2-90d8-1b9198d33492` (908
 
 - Source: `C:\Users\wesbr\.codex\generated_images\01a0b696-05a2-7291-a857-084a6f2bc2eb\exec-2b939a39-71ea-4681-aea2-dc2312874d12.png`
 - Turn: `01a169b9-04f2-79a0-a475-77c18c8193c3`
-- Generation intent excerpt: Precise interior color edit, one full-size matching view. Edit target is attached entertainment-center rendering. Change ONLY the flat painted back wall within the central entertainment alcove behind the television and curved arch to Deep charcoal #383B3A. This includes visible wall above/left of TV and below/right of 
+- Generation intent excerpt: Precise interior color edit, one full-size matching view. Edit target is attached entertainment-center rendering. Change ONLY the flat painted back wall within the central entertainment alcove behind the television and curved arch to Deep charcoal #383B3A. This includes visible wall above/left of TV and below/right of
 
 ## exec-327c87ea-4bf0-407c-a3bd-2e657518c94d.png
 
@@ -614,7 +614,7 @@ Pond Street anchors include LED turn `01a0fdea-a313-79e2-90d8-1b9198d33492` (908
 
 - Source: `C:\Users\wesbr\.codex\generated_images\01a0b696-05a2-7291-a857-084a6f2bc2eb\exec-ee4667fa-05af-45c9-93b7-c4ea8dbd8df1.png`
 - Turn: `01a16989-c82c-7860-a553-62c938d6bc68`
-- Generation intent excerpt: Precise architectural scale correction of the supplied entertainment-center rendering. Enlarge ONLY the television screen and its surrounding cream decorative frame by approximately 13% in both width and height, keeping their exact current center position. Represent a true 85-inch diagonal 16:9 screen, about 74 inches 
+- Generation intent excerpt: Precise architectural scale correction of the supplied entertainment-center rendering. Enlarge ONLY the television screen and its surrounding cream decorative frame by approximately 13% in both width and height, keeping their exact current center position. Represent a true 85-inch diagonal 16:9 screen, about 74 inches
 
 ## exec-c559ce11-c868-4f58-a0ff-f95dc294b86d.png
 
@@ -632,7 +632,7 @@ Pond Street anchors include LED turn `01a0fdea-a313-79e2-90d8-1b9198d33492` (908
 
 - Source: `C:\Users\wesbr\.codex\generated_images\01a0b696-05a2-7291-a857-084a6f2bc2eb\exec-424acb42-dae2-44e5-a0c0-8a253bad4a56.png`
 - Turn: `01a16967-a50f-7061-aa46-6c3b095ecbbe`
-- Generation intent excerpt: Precise color-only edit of this latest house exterior rendering. VERSION 2: MUTED BRONZE-BROWN SHUTTERS. Repaint ONLY the SIX conventional louvered shutter panels in a rich muted medium-dark bronze-brown painted finish, distinctly warm brown rather than black, orange, or pale taupe. Satin painted surface, NOT metallic 
+- Generation intent excerpt: Precise color-only edit of this latest house exterior rendering. VERSION 2: MUTED BRONZE-BROWN SHUTTERS. Repaint ONLY the SIX conventional louvered shutter panels in a rich muted medium-dark bronze-brown painted finish, distinctly warm brown rather than black, orange, or pale taupe. Satin painted surface, NOT metallic
 
 ## exec-a693cf80-9491-413e-9a85-9f929973da1c.png
 
@@ -650,7 +650,7 @@ Pond Street anchors include LED turn `01a0fdea-a313-79e2-90d8-1b9198d33492` (908
 
 - Source: `C:\Users\wesbr\.codex\generated_images\01a0b696-05a2-7291-a857-084a6f2bc2eb\exec-18ccf9dc-0802-4172-a0ef-be95406ff574.png`
 - Turn: `01a16957-d87b-71a3-8cd3-f7befde3f7a4`
-- Generation intent excerpt: Precise localized architectural photo edit. Add ONE identical matching wall lantern on the light-colored siding to the RIGHT of the three adjoining windows, between the right shutter of that group and the garage door. Duplicate the existing black traditional lantern located to the LEFT of this three-window group: same 
+- Generation intent excerpt: Precise localized architectural photo edit. Add ONE identical matching wall lantern on the light-colored siding to the RIGHT of the three adjoining windows, between the right shutter of that group and the garage door. Duplicate the existing black traditional lantern located to the LEFT of this three-window group: same
 
 ## exec-9ff54209-431d-4b3a-92d5-4d2eff3fed4c.png
 
@@ -734,7 +734,7 @@ Pond Street anchors include LED turn `01a0fdea-a313-79e2-90d8-1b9198d33492` (908
 
 - Source: `C:\Users\wesbr\.codex\generated_images\01a0b696-05a2-7291-a857-084a6f2bc2eb\exec-9e47577a-c159-48e2-a751-e2575f026367.png`
 - Turn: `01a14175-0d7d-7ec1-999e-c0b350e885df`
-- Generation intent excerpt: Make ONE precise change to this image: the pale rectangular backlit frame/backing surrounding the black television currently has wide side margins and narrow top/bottom margins. Narrow BOTH LEFT AND RIGHT margins so ALL FOUR borders have the SAME thickness as the current TOP AND BOTTOM, approximately 22 pixels in this 
+- Generation intent excerpt: Make ONE precise change to this image: the pale rectangular backlit frame/backing surrounding the black television currently has wide side margins and narrow top/bottom margins. Narrow BOTH LEFT AND RIGHT margins so ALL FOUR borders have the SAME thickness as the current TOP AND BOTTOM, approximately 22 pixels in this
 
 ## exec-ae8845cf-51a2-49f9-8a15-2370b78dc4c4.png
 
@@ -788,7 +788,7 @@ Pond Street anchors include LED turn `01a0fdea-a313-79e2-90d8-1b9198d33492` (908
 
 - Source: `C:\Users\wesbr\.codex\generated_images\01a0b696-05a2-7291-a857-084a6f2bc2eb\exec-6cb34dd2-80b6-4824-9bdb-bae84cf82f50.png`
 - Turn: `01a140b8-a9d8-7f53-bfa3-e83001c1de09`
-- Generation intent excerpt: Edit IMAGE 1, the finished entertainment-center render. IMAGE 2 is reference only for the ADDITIONAL narrow curved oak trim piece being held against the upper wall by a person. Add that exact kind of narrow curved molded wood band to image 1 in the same architectural placement seen in image 2: its left end begins near 
+- Generation intent excerpt: Edit IMAGE 1, the finished entertainment-center render. IMAGE 2 is reference only for the ADDITIONAL narrow curved oak trim piece being held against the upper wall by a person. Add that exact kind of narrow curved molded wood band to image 1 in the same architectural placement seen in image 2: its left end begins near
 
 ## exec-478276b3-ee28-429d-b88d-f391a47b3f15.png
 
@@ -812,13 +812,13 @@ Pond Street anchors include LED turn `01a0fdea-a313-79e2-90d8-1b9198d33492` (908
 
 - Source: `C:\Users\wesbr\.codex\generated_images\01a0b696-05a2-7291-a857-084a6f2bc2eb\exec-8a1b2c48-8518-4f77-93c3-e32de0cbb539.png`
 - Turn: `01a1362a-c073-7891-b588-9335af0da345`
-- Generation intent excerpt: Precisely edit this architectural entertainment center concept. Remove the entire LEFT shelving tower, its decor and its lower base cabinet. In its place create a solid floor-to-ceiling painted drywall RETURN WALL perpendicular to the existing TV back wall, extending outward into the room toward the viewer. The return 
+- Generation intent excerpt: Precisely edit this architectural entertainment center concept. Remove the entire LEFT shelving tower, its decor and its lower base cabinet. In its place create a solid floor-to-ceiling painted drywall RETURN WALL perpendicular to the existing TV back wall, extending outward into the room toward the viewer. The return
 
 ## exec-094b5104-12d6-43c3-b77d-d46ce8307c7b.png
 
 - Source: `C:\Users\wesbr\.codex\generated_images\01a0b696-05a2-7291-a857-084a6f2bc2eb\exec-094b5104-12d6-43c3-b77d-d46ce8307c7b.png`
 - Turn: `01a1361e-f801-76a0-b969-5d2b896db593`
-- Generation intent excerpt: Edit this entertainment-center image following the homeowner's placement correction: take the tall curved oak panel currently standing vertically at the far left, rotate it 90 degrees CLOCKWISE and lay its LONG AXIS HORIZONTALLY across the bottom display level immediately ON TOP OF THE BASE CABINETS, below the TV. Its 
+- Generation intent excerpt: Edit this entertainment-center image following the homeowner's placement correction: take the tall curved oak panel currently standing vertically at the far left, rotate it 90 degrees CLOCKWISE and lay its LONG AXIS HORIZONTALLY across the bottom display level immediately ON TOP OF THE BASE CABINETS, below the TV. Its
 
 ## exec-0d21feb1-e5da-478a-8cc9-2dced3d91274.png
 
@@ -866,17 +866,16 @@ Pond Street anchors include LED turn `01a0fdea-a313-79e2-90d8-1b9198d33492` (908
 
 - Source: `C:\Users\wesbr\.codex\generated_images\01a0b696-05a2-7291-a857-084a6f2bc2eb\exec-e888c77d-c23c-468c-9952-f46c9b0cfe7b.png`
 - Turn: `01a0fdf2-4230-75a2-844e-25a92478f211`
-- Generation intent excerpt: Create a new architectural perspective concept board for 908 Pond, based primarily on floor plan reference 1 and the corrected TV-wall design reference 2. User request: perspective FROM FRONT DOOR including living room AND kitchen, with cabinets painted a light color, plus color ideas. Camera is at southwest corner of 
+- Generation intent excerpt: Create a new architectural perspective concept board for 908 Pond, based primarily on floor plan reference 1 and the corrected TV-wall design reference 2. User request: perspective FROM FRONT DOOR including living room AND kitchen, with cabinets painted a light color, plus color ideas. Camera is at southwest corner of
 
 ## exec-598f0af2-81a8-4f5c-951e-f181ae892d6d.png
 
 - Source: `C:\Users\wesbr\.codex\generated_images\01a0b696-05a2-7291-a857-084a6f2bc2eb\exec-598f0af2-81a8-4f5c-951e-f181ae892d6d.png`
 - Turn: `01a0fdef-2bc5-76e3-95af-fa1990b82b0d`
-- Generation intent excerpt: Revise this architectural concept rendering to correct the layout per homeowner. Critical geometry: refrigerator and TV are mounted/positioned against ONE SAME STRAIGHT CONTINUOUS WALL, with their fronts facing the camera in the same direction. The pantry door is LEFT of the refrigerator, not to its right. Composition 
+- Generation intent excerpt: Revise this architectural concept rendering to correct the layout per homeowner. Critical geometry: refrigerator and TV are mounted/positioned against ONE SAME STRAIGHT CONTINUOUS WALL, with their fronts facing the camera in the same direction. The pantry door is LEFT of the refrigerator, not to its right. Composition
 
 ## exec-48c2a4ba-e9c5-443d-899d-ae0c2e6622ce.png
 
 - Source: `C:\Users\wesbr\.codex\generated_images\01a0b696-05a2-7291-a857-084a6f2bc2eb\exec-48c2a4ba-e9c5-443d-899d-ae0c2e6622ce.png`
 - Turn: `01a0fdea-a313-79e2-90d8-1b9198d33492`
 - Generation intent excerpt: Create one refined architectural interior concept illustration for the user’s 908 Pond Street rehab, using the supplied floor plan as spatial reference. Main subject: the TV wall on the RIGHT/EAST side of the labeled Living Room, sharing its boundary with Existing Garage. Show an eye-level perspective from the living r
-

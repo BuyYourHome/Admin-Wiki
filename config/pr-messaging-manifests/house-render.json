@@ -1,0 +1,44 @@
+{
+  "schema_version": 2,
+  "project_room": "House Render",
+  "skill": "house-render",
+  "task_id": "01a178f1-8292-7aa3-863d-f6de8a3c44f7",
+  "dispatchable": false,
+  "execution_machine": "WESSTUDIO",
+  "owned_actions": [
+    "house visual concepts and authorized render revisions",
+    "Pond Street render provenance and authoritative external asset archive"
+  ],
+  "accepted_message_types": [
+    "request",
+    "question",
+    "status",
+    "decision",
+    "result",
+    "improvement"
+  ],
+  "related_project_rooms": [
+    "Smart House",
+    "LED lighting",
+    "Home Assistant",
+    "Properties"
+  ],
+  "limitations": [
+    "No website publication, device control, purchases or construction certification",
+    "No automatic authority to edit other Project Rooms",
+    "Current setup authority covers verified render migration only"
+  ],
+  "messaging_readiness": {
+    "status": "pending",
+    "machine_registration_verified_at_utc": "2026-10-26T16:02:10.7670195Z",
+    "host_access_verified_at_utc": "2026-10-26T16:02:16.8743237Z",
+    "validation_message_id": null,
+    "lifecycle_completed_at_utc": null,
+    "notification_count": 0,
+    "dispatcher_task_id": "01a06337-1b59-7dc2-9586-6660eb7b5da7",
+    "dispatcher_automation_id": "pr-messaging-dispatcher",
+    "cross_machine_source": null,
+    "manual_intervention": null,
+    "blocker": "EnrollmentEndpointNotAuthorized: published guarded installer 0.4.9 admits only Codex Environment and Smart House, not House Render. Worker-owner support and unattended cross-machine validation required."
+  }
+}

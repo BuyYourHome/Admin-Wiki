@@ -1445,10 +1445,10 @@ Use `Connector and Plugin Usage Rules.md` to see which installed plugins/connect
 ## House Render
 
 - Type: Project Room with matching skill and dedicated chat.
-- Status: package/migration setup; Pending messaging registration - not dispatchable.
-- Execution machine: WESSTUDIO. Task id: pending.
+- Status: package and verified render archive created; Pending messaging registration - not dispatchable. One historical render remains missing.
+- Execution machine: WESSTUDIO. Task id: `01a178f1-8292-7aa3-863d-f6de8a3c44f7`; exact local registration and host access verified 2026-10-26.
 - Trigger: on-demand authorized house rendering and asset intake; no automation.
-- Primary definitions: `Project Rooms\House Render\README.md`, `skills\house-render\SKILL.md`, and `config\pr-messaging-manifests\house-render.json` after registration.
+- Primary definitions: `Project Rooms\House Render\README.md`, `skills\house-render\SKILL.md`, and `config\pr-messaging-manifests\house-render.json`. Guarded worker enrollment currently rejects this endpoint; no synthetic delivery attempted.
 - Scope: house visual concepts, provenance and external asset archive, initially 908 Pond Street. Smart House retains website/publication; LED lighting retains technical lighting design.
 
 ## Maintenance Rule

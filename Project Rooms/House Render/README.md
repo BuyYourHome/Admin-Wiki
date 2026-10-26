@@ -8,7 +8,7 @@ Own render intake, approved image-generation/edit requests, visual comparisons, 
 
 ## Current status
 
-Verified migration package complete: 225 source references mapped to 195 distinct copied and SHA-256-verified files. One historical render is missing; uncertain older exterior lineage remains explicitly excluded. Dedicated chat: pending until the committed package is created. Branch: main. Automation: none; on demand only.
+Verified migration package complete: 225 source references mapped to 195 distinct copied and SHA-256-verified files. One historical render is missing; uncertain older exterior lineage remains explicitly excluded. Dedicated chat: House Render, task `01a178f1-8292-7aa3-863d-f6de8a3c44f7`, in the canonical Wiki Files project. Branch: main. Automation: none; on demand only.
 
 Authoritative external render root: `C:\Users\wesbr\Buy Your Home\Buy Your Home - Property\26-BYH -908 Pond St\Owning\Planning\House Render`. Binaries never belong in Admin Wiki Git. Existing generated originals, old saved packages, and public Sites copies remain intact. The old-to-new/hash map is [[Project Rooms/House Render/working/render-migration-inventory]]. Read [[Project Rooms/House Render/working/missing-context]] before claiming the historical source set is complete.
 
@@ -16,8 +16,9 @@ Authoritative external render root: `C:\Users\wesbr\Buy Your Home\Buy Your Home 
 
 - Dispatchable: No — Pending messaging registration - not dispatchable.
 - Execution machine: WESSTUDIO.
-- Task id: pending.
-- Manifest: `C:\Codex\Wiki Files\config\pr-messaging-manifests\house-render.json` (completed after chat creation).
+- Task id: `01a178f1-8292-7aa3-863d-f6de8a3c44f7`.
+- Manifest: `C:\Codex\Wiki Files\config\pr-messaging-manifests\house-render.json`.
+- Exact local registration verified 2026-10-26T16:02:10Z, with all 11 prior registrations preserved. Authenticated central host access verified 2026-10-26T16:02:16Z. No worker pin or synthetic attempt created.
 - Guarded installer release 0.4.9 only permits the exact Codex Environment and Smart House endpoints. House Render requires worker-owner support and unattended validation; do not bypass the enrollment guard or manually complete a synthetic.
 
 ## Folder map
@@ -50,4 +51,3 @@ Action Ownership: Follow C:\Codex\Wiki Files\Project Room Delegation Contract.md
 PR Messaging: Follow C:\Codex\Wiki Files\Project Room Messaging Rule.md. The central message record is authoritative; task messages are wake-up signals, not delivery proof.
 
 Approval and resume: Follow C:\Codex\Wiki Files\Project Room Confirmation And Resume Rule.md. Preserve scoped work and ask the exact decision only when a real authorization gap exists.
-

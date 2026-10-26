@@ -8,7 +8,7 @@ This is the live task registry for the universal [[Project Room Delegation Contr
 
 | Project Room | Matching Skill | Known Task/Thread Id | Dispatcher Route | Notes |
 | --- | --- | --- | --- | --- |
-| House Render | `house-render` | pending | Pending messaging registration - not dispatchable. | WESSTUDIO; house visualizations and Pond Street render archive; no website publication, device control, or lighting engineering. |
+| House Render | `house-render` | `01a178f1-8292-7aa3-863d-f6de8a3c44f7` | Pending messaging registration - not dispatchable. | WESSTUDIO; exact local registration verified; guarded worker enrollment does not yet admit endpoint. House visualizations and Pond Street render archive; no website publication, device control, or lighting engineering. |
 | Smart House | `smart-house` | `01a14585-ffe6-7850-8db1-efcdd58e7071` | Ready and dispatchable for authorized planning handoffs. | WESSTUDIO; guarded enrollment and one-attempt unattended synthetic lifecycle completed 2026-10-17. 908 Pond Street digital-twin/owner-package planning; no implementation, publication, accounts, purchase or device control. |
 | LED lighting | `led-lighting` | `01a0b696-05a2-7291-a857-084a6f2bc2eb` | Pending messaging registration - not dispatchable. | WESSTUDIO; dedicated task created; worker enrollment and synthetic readiness required. 24-volt remodel lighting, controls, supplies and compatibility/load planning; no purchase or installation authority. |
 | Admin Wiki Maintenance | pending | pending | Jean handles only when Wes authorizes shared Admin governance work. | No matching skill at rollout. |

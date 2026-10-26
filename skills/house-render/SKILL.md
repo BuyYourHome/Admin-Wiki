@@ -10,11 +10,11 @@ description: Create, revise, compare, and organize Buy Your Home house-design re
 - Room: `C:\Codex\Wiki Files\Project Rooms\House Render`.
 - Skill: `C:\Codex\Wiki Files\skills\house-render\SKILL.md`.
 - Render storage for 908 Pond: `C:\Users\wesbr\Buy Your Home\Buy Your Home - Property\26-BYH -908 Pond St\Owning\Planning\House Render`.
-- Dedicated task: pending; WESSTUDIO.
+- Dedicated task: `01a178f1-8292-7aa3-863d-f6de8a3c44f7`; WESSTUDIO.
 
 ## Messaging Readiness
 
-Dispatchable: No — Pending messaging registration - not dispatchable. Read `config\pr-messaging-manifests\house-render.json` after task registration. Existing guarded worker enrollment does not admit House Render; exact registration and unattended synthetic validation are still required. Do not substitute a chat or manual wake-up.
+Dispatchable: No — Pending messaging registration - not dispatchable. Read `C:\Codex\Wiki Files\config\pr-messaging-manifests\house-render.json`. Exact local task registration and authenticated host access are verified; guarded worker enrollment does not yet admit House Render and unattended synthetic validation is still required. Do not substitute a chat or manual wake-up.
 
 ## Startup and inputs
 
@@ -44,4 +44,3 @@ Action Ownership: Follow C:\Codex\Wiki Files\Project Room Delegation Contract.md
 PR Messaging: Follow C:\Codex\Wiki Files\Project Room Messaging Rule.md. The central message record is authoritative; task messages are wake-up signals, not delivery proof.
 
 Approval and resume: Follow C:\Codex\Wiki Files\Project Room Confirmation And Resume Rule.md. Preserve scoped work and ask the exact decision only when a real authorization gap exists.
-

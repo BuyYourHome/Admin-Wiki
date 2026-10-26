@@ -13,4 +13,3 @@
 | [[Project Rooms/House Render/working/render-migration-inventory]] | copied and hash-verified 2026-10-26T15:57:32Z | 225 old paths, 195 unique content objects and target paths |
 
 Render concepts are not measured construction/as-built evidence. Source photos remain where supplied and are referenced, not counted as generated renders.
-
