@@ -13,7 +13,7 @@ Wes reported buying `Pondstr.com` from GoDaddy and instructed Smart House to hos
 - Initial saved version: `appgprj_6ad4d98e08708191858cab113814704e~appgver_0176b707d1688191be325f28960f58a6`.
 - Initial deployment: `appgdep_6ad4dafedea88191934ecd974a287155`.
 - Canonical linkage: `site/.openai/hosting.json`.
-- Publication checkout: ignored `site/.hosting-work/work/gallery-release-20261025/` for version 41; the parent `site/.hosting-work/` preserves the pending natural-voice work. Current publication uses the supported Sites Vinext runtime, gallery code, existing schema migrations, 37 voting choices across nine galleries, and a six-scene tour with three concept films. Never publish the wiki, private records, credentials, or source inventories. The original static page remains as a historical local concept.
+- Publication checkout: ignored `site/.hosting-work/work/gallery-release-20261025/` for version 42; the parent `site/.hosting-work/` preserves the pending natural-voice work. Current publication uses the supported Sites Vinext runtime, gallery code, existing schema migrations, 37 voting choices across nine galleries, and a six-scene tour with three concept films. Never publish the wiki, private records, credentials, or source inventories. The original static page remains as a historical local concept.
 
 ## Pondstr.com connection
 
@@ -52,9 +52,9 @@ Wes requested removal of the website login requirement so the public can access 
 
 Wes requested Design, Explore, View, and Manage navigation and six room galleries with public voting. The website now uses the supported Sites Vinext Worker runtime and logical D1 binding `DB`, with no R2 binding. Public access and the existing custom domain were preserved. The database migration creates only the vote schema; no synthetic votes were seeded into production.
 
-- Current Site source commit: `5c9b99a9371c1a0e6e49b502f2ca56b93ba9490e`.
-- Current saved version: `appgprj_6ad4d98e08708191858cab113814704e~appgver_2373d34b99088191b0deeb159e2f3743` (version 41).
-- Current deployment: `appgdep_6ade9cd957f88191904f832f026bb84e`, confirmed `succeeded` at `2026-10-26T00:20:48.757761+00:00`, environment revision **0**.
+- Current Site source commit: `08b2a5ca84d171098ea070224027c5894498c8fe`.
+- Current saved version: `appgprj_6ad4d98e08708191858cab113814704e~appgver_4ff2b76e8c988191bba052e5e13af31c` (version 42).
+- Current deployment: `appgdep_6adea72bef8c8191a709808bc6881bd8`, confirmed `succeeded` at `2026-10-26T01:04:52.864820+00:00`, environment revision **0**.
 - Live URL: https://pondstr.com . The original Sites URL remains https://pondstr.coolnewt4097.chatgpt.site .
 - Media Center has 13 choices; Front Elevation has two; Garage Barn Door has three; Master Bath has six; Hall Bath has six; Spiral Staircase has seven. Kitchen, ADU, and Back Deck await images.
 
@@ -390,3 +390,14 @@ After viewing a separate livelier-vine concept, Wes directed "Lose the vine" and
 - Archive content hash: `sha256:c1c2e1ecd7abf0b3b823f654404bf3cd20f9085a63cc9cb87ba9369328498eda`.
 
 Production build and local desktop/390x844 phone visual checks passed. Fresh https://pondstr.com/#design verified zero vine elements and two retained firework groups, with Pondster/I Am/HOME intact. Live proof: `C:\Users\wesbr\.codex\visualizations\2026\10\25\pondster-no-vine-live.png`, outside Git. Both prepared logo/CSS copies are reconciled; the exact pending voice CSS block remains once. No assets, vote data, comments, bookings, voice activation, audience, or domain changes.
+
+## Tighter Design header spacing — version 42, 2026-10-25 Eastern
+
+Wes supplied a screenshot and asked to reduce the excess gap between the header and the small Design notebook line. The Design intro top padding is now 20px on desktop (previously 55px) and 18px on phone (previously 35px), with the first eyebrow paragraph's default top margin removed. Header dimensions and all logo/navigation styles remain intact.
+
+- Source: `08b2a5ca84d171098ea070224027c5894498c8fe`.
+- Saved version: `appgprj_6ad4d98e08708191858cab113814704e~appgver_4ff2b76e8c988191bba052e5e13af31c`, version **42**.
+- Deployment: `appgdep_6adea72bef8c8191a709808bc6881bd8`, succeeded `2026-10-26T01:04:52.864820+00:00`, environment revision **0**.
+- Archive content hash: `sha256:8f1abbabee92bad32aef17e79d87c04e2d233f3fd4b34390c7c934e7098bf6c1`.
+
+Production build passed. Local DOM measurements at 1920px and 390px confirmed respective 20px/18px gaps and no horizontal overflow; desktop screenshot and fresh live phone DOM confirmed the tighter spacing. Live proof: `C:\Users\wesbr\.codex\visualizations\2026\10\25\pondster-header-spacing-live.png`, outside Git. Both prepared CSS copies match production except for the exact pending 510-character voice block preserved once. Natural voice remains unpublished.
