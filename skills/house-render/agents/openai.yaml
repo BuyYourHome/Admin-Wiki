@@ -1,0 +1,5 @@
+interface:
+  display_name: "House Render"
+  short_description: "House render concepts, provenance, and asset archive"
+  default_prompt: "Use $house-render to prepare an authorized house visualization from the selected source."
+

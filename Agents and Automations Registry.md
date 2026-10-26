@@ -1442,6 +1442,15 @@ Each active automation folder contains an `automation.toml` file with the real s
 
 Use `Connector and Plugin Usage Rules.md` to see which installed plugins/connectors should be preferred for GitHub, spreadsheet, browser, and Outlook/email work.
 
+## House Render
+
+- Type: Project Room with matching skill and dedicated chat.
+- Status: package/migration setup; Pending messaging registration - not dispatchable.
+- Execution machine: WESSTUDIO. Task id: pending.
+- Trigger: on-demand authorized house rendering and asset intake; no automation.
+- Primary definitions: `Project Rooms\House Render\README.md`, `skills\house-render\SKILL.md`, and `config\pr-messaging-manifests\house-render.json` after registration.
+- Scope: house visual concepts, provenance and external asset archive, initially 908 Pond Street. Smart House retains website/publication; LED lighting retains technical lighting design.
+
 ## Maintenance Rule
 
 When creating, renaming, pausing, deleting, or materially changing an agent-like function, update this registry in the same change.
