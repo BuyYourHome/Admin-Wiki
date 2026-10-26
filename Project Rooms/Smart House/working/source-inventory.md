@@ -2,6 +2,7 @@
 
 | Source | Status | Use |
 | --- | --- | --- |
+| Wes 2026-10-25: Explore feature heading What makes me, Pondster. using the signature for Pondster | Desktop/phone fit, production build and fresh live check passed; version47 published | Existing Allura font as live text; preserves version46 room separation, Belong and shared spacing; release/proof in [[Project Rooms/Smart House/working/hosting-and-domain]] |
 | Wes 2026-10-25 correction: Get to know me. / Like The Back Of Your Room replaces Like The Back Of Your Hand on Explore | Production build and fresh live check passed; version 45 published | Preserve exact Room wording; supersedes version 44's Hand text; release and external live proof in [[Project Rooms/Smart House/working/hosting-and-domain]] |
 | Wes 2026-10-25: Virtually - A Reality; Get to know me / Like The Back Of Your Hand; burnt-orange Your between P and HOME | Local desktop/phone, build, and fresh live checks passed; version 44 published | Exact approved headline wording and decorative Your HOME placement; release/proof in [[Project Rooms/Smart House/working/hosting-and-domain]] |
 | Wes 2026-10-25: Own visitor wording, one desktop/two phone headline lines, 50% larger logo, and A home with a voice tagline | Local responsive checks, build, and live Own/Design verification passed; version 43 published | Preserve exact user wording and proportional branding; release and proof in [[Project Rooms/Smart House/working/hosting-and-domain]] |
@@ -54,6 +55,7 @@ Wes directly supplied `C:\Users\wesbr\Buy Your Home\Buy Your Home - Property\26-
 
 | Choice | Cabinets / TV frame | Central TV backdrop | Short filename |
 | --- | --- | --- | --- |
+| Wes 2026-10-25: Living Room / Home Theatre separation after clarification, Belong naming, and matching 20px desktop / 18px phone header gaps | Version 46 published at https://pondstr.com; fresh live checks confirmed Living Room 6, Home Theatre 7, and Belong navigation | 30 active choices across nine galleries; retain internal IDs and historical votes/assets while excluding retired duplicates from visible scores; exact release and verification in [[Project Rooms/Smart House/working/hosting-and-domain]] |
 | 1 | Warm ivory cream | Muted warm mushroom taupe | `01-warm-ivory.png` |
 | 2 | Soft dusty sage green | Warm pale cream | `02-soft-sage.png` |
 | 3 | Deep muted navy blue | Light warm greige | `03-deep-navy.png` |

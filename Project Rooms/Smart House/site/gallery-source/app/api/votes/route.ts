@@ -3,6 +3,7 @@ import { and, eq, count } from 'drizzle-orm';
 import { getDb } from '../../../db/index';
 import { designVotes } from '../../../db/schema';
 import { galleries } from '../../../lib/designs';
+import { visibleVotes } from '../../../lib/visible-votes';
 
 export const dynamic = 'force-dynamic';
 const COOKIE = 'pond_design_voter';
@@ -19,8 +20,8 @@ async function results(room: string, key: string | null) {
   const db = getDb();
   const rows = await db.select({ id: designVotes.designId, votes: count() }).from(designVotes).where(eq(designVotes.room, room)).groupBy(designVotes.designId);
   const own = key ? await db.select({ id: designVotes.designId }).from(designVotes).where(and(eq(designVotes.room, room), eq(designVotes.voterKey, key))).limit(1) : [];
-  const scores = Object.fromEntries(rows.map(row => [row.id, row.votes]));
-  return { scores, total: rows.reduce((total, row) => total + row.votes, 0), selected: own[0]?.id ?? null };
+  const activeDesignIds = galleries.find(gallery => gallery.id === room)?.designs.map(design => design.id) ?? [];
+  return visibleVotes(rows, own[0]?.id ?? null, activeDesignIds);
 }
 export async function GET(request: NextRequest) {
   const room = request.nextUrl.searchParams.get('room');

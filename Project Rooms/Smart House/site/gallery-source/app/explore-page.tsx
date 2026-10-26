@@ -10,7 +10,7 @@ export default function ExplorePage({ scene, onScene, onDesign }: { scene: strin
     <p className="lead">I’m Pondster. Here are my house-wide ideas and the features I’m exploring in each space as I take shape.</p>
 
     <section className="house-features" aria-labelledby="house-features-heading">
-      <div className="feature-section-heading"><p className="eyebrow">THE BIG PICTURE</p><h2 id="house-features-heading">What makes me, me.</h2></div>
+      <div className="feature-section-heading"><p className="eyebrow">THE BIG PICTURE</p><h2 id="house-features-heading">What makes me, <span className="pondster-inline-signature">Pondster</span>.</h2></div>
       <div className="house-feature-grid">{houseFeatures.map(feature => <article key={feature.title}>
         <span className="feature-status">{feature.status}</span><h3>{feature.title}</h3><p>{feature.text}</p>
       </article>)}</div>

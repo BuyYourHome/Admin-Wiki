@@ -10,13 +10,13 @@ export function isPondsterWakeRequest(transcript: string) {
 // Public concept names mirror lib/designs.ts; the focused tests check this list.
 const rooms = [
   { id: 'kitchen', name: 'Kitchen', aliases: ['kitchen'], choices: [] as string[] },
-  { id: 'media-center', name: 'Media Center', aliases: ['media center', 'media centre', 'entertainment center', 'entertainment centre', 'home theater', 'home theatre', 'theater', 'theatre', 'television', 'tv', 'basement'], choices: ['Warm Ivory Cream', 'Soft Dusty Sage Green', 'Deep Muted Navy Blue', 'Medium Mushroom Taupe', 'Deep Muted Olive Green', 'Rich Charcoal Gray', 'Amber-lit home theater', ...basementColorSchemes.map(scheme => `Basement · ${scheme.title}`)] },
+  { id: 'media-center', name: 'Living Room', aliases: ['living room', 'livingroom', 'media center', 'media centre', 'entertainment center', 'entertainment centre', 'television', 'tv'], choices: ['Warm Ivory Cream', 'Soft Dusty Sage Green', 'Deep Muted Navy Blue', 'Medium Mushroom Taupe', 'Deep Muted Olive Green', 'Rich Charcoal Gray'] },
   { id: 'front-elevation', name: 'Front Elevation', aliases: ['front elevation', 'front exterior', 'front of the house', 'exterior', 'shutters'], choices: ['Warm welcome', 'Black shutters'] },
   { id: 'garage-barn-door', name: 'Garage Barn Door', aliases: ['garage', 'barn door'], choices: ['Warm white board & batten', 'Charcoal green board & batten', 'Limewashed brick'] },
   { id: 'adu', name: 'ADU', aliases: ['adu', 'accessory dwelling unit'], choices: [] as string[] },
   { id: 'master-bath', name: 'Master Bath', aliases: ['master bath', 'primary bath', 'main bath', 'bathroom'], choices: masterBathDesigns.map(design => design.title) },
   { id: 'hall-bath', name: 'Hall Bath', aliases: ['hall bath', 'hall bathroom', 'hallway bath', 'hallway bathroom', 'tub and shower', 'tub shower', 'floating vanity'], choices: hallBathDesigns.map(design => design.title) },
-  { id: 'spiral-staircase', name: 'Spiral Staircase', aliases: ['spiral staircase', 'spiral stairs', 'staircase', 'stairs', 'stair setting'], choices: ['Black spiral staircase', ...basementColorSchemes.map(scheme => `Stair setting · ${scheme.title}`)] },
+  { id: 'spiral-staircase', name: 'Home Theatre', aliases: ['home theatre', 'home theater', 'theatre', 'theater', 'cinema', 'basement', 'spiral staircase', 'spiral stairs', 'spiral', 'staircase', 'stairs', 'stair setting', 'sequential stair lights'], choices: ['Black spiral staircase', ...basementColorSchemes.map(scheme => `Stair setting · ${scheme.title}`)] },
   { id: 'back-deck', name: 'Back Deck', aliases: ['back deck', 'rear deck', 'deck'], choices: [] as string[] }
 ];
 const choiceAliases: Record<string, string[]> = {
@@ -38,10 +38,9 @@ const choiceAliases: Record<string, string[]> = {
   'Charcoal green board & batten': ['charcoal green'],
   'Limewashed brick': ['limewash', 'limewashed'],
   ...Object.fromEntries(hallBathDesigns.map(design => [design.title, [design.title.replace('&', 'and'), design.title.replace(/^Tub & shower · /, '')]])),
-  ...Object.fromEntries(basementColorSchemes.flatMap(scheme => [
-    [`Basement · ${scheme.title}`, [scheme.title, scheme.title.replace('&', 'and')]],
+  ...Object.fromEntries(basementColorSchemes.map(scheme =>
     [`Stair setting · ${scheme.title}`, [scheme.title, scheme.title.replace('&', 'and')]]
-  ]))
+  ))
 };
 // Reuse established palette nicknames without changing their unscoped priority.
 for (const design of hallBathDesigns) {
@@ -93,8 +92,8 @@ export function answerPondster(input: string): GuideReply {
   if (/\b(privacy|microphone|listening|recording|speech|voice|history|personal data)\b/.test(words)) {
     return { text: 'Ask me about my public information, and please avoid sharing private details or real entry codes. Read my voice notice before enabling a microphone. I use a browser cookie for design preferences; it does not verify a person or owner.' };
   }
-  if (/\b(owner|owners|own|manage|handover|warranties|warranty|manuals|manual|maintenance)\b/.test(words)) {
-    return { text: 'I preview my future home guides, care and maintenance, and owner handover records on my Own page. I’m still planning those owner tools; I provide no private owner access or live device controls here.', action: { menu: 'Own' } };
+  if (/\b(owner|owners|own|belong|manage|handover|warranties|warranty|manuals|manual|maintenance)\b/.test(words)) {
+    return { text: 'I preview my future home guides, care and maintenance, and owner handover records on my Belong page. I’m still planning those owner tools; I provide no private owner access or live device controls here.', action: { menu: 'Own' } };
   }
 
   const explicitRoom = rooms.find(item => has(item.name))
@@ -110,8 +109,11 @@ export function answerPondster(input: string): GuideReply {
   if ((room?.id === 'garage-barn-door' && /\b(video|film|animation|motion|sliding|slides|swing|swings|inward|entry|pedestrian)\b/.test(words)) || /\btesla\b/.test(words)) {
     return { text: 'I have a twenty-five-second motion concept for my garage: my center entry section swings inward and closes, then my full door slides left. I’m showing a white Tesla driving out and across the scene to the left, revealing my white-marble garage floor. This is my illustrative AI/composited concept; my hardware, clearances, and the car’s turning path haven’t been validated.', action: { menu: 'Design', room: 'garage-barn-door' } };
   }
-  if ((room?.id === 'spiral-staircase' || /\b(theater|theatre|cinema|sequential stair lights)\b/.test(words)) && /\b(video|film|animation|motion|lights)\b/.test(words)) {
-    return { text: 'I have a twelve-second theater and spiral-staircase film in both galleries. Moving football fills my screen while my amber stair lights illuminate in sequence. My film keeps its original amber palette; it does not change to match a winning color. I’m showing a full-scene AI motion concept; my staircase, lighting, dimensions, and clearances still need validation.', action: { menu: 'Design', room: room?.id === 'spiral-staircase' ? 'spiral-staircase' : 'media-center' } };
+  if (room?.id === 'spiral-staircase' && /\b(video|film|animation|motion|lights|football)\b/.test(words)) {
+    return { text: 'I have a twelve-second concept film in my Home Theatre gallery. Moving football fills my screen while my amber stair lights illuminate in sequence. My film keeps its original amber palette; it does not change to match a winning color. I’m showing a full-scene AI motion concept; my staircase, lighting, dimensions, and clearances still need validation.', action: { menu: 'Design', room: 'spiral-staircase' } };
+  }
+  if (room?.id === 'media-center' && /\b(video|film|animation|motion|football)\b/.test(words)) {
+    return { text: 'I have a ten-second AI motion concept for my Living Room, with a fixed decorative frame, a TV that turns toward my kitchen, moving football footage, and a scrolling first-person caption. I’m showing a composited scene; my mount mechanics have not been validated.', action: { menu: 'Design', room: 'media-center' } };
   }
   if (room) {
     if (/\bfeatures?\b/.test(words)) return { text: `${roomFeatures[room.id].features.join(' ')} I’m sharing concepts and plans; my final specifications still need confirmation.`, action: { menu: 'Explore' } };
@@ -126,7 +128,7 @@ export function answerPondster(input: string): GuideReply {
     return { text: `I’m showing you my ${label} lighting simulation in Explore. I change only the illustration on my website; I don’t control real house lighting here.`, action: { menu: 'Explore', scene } };
   }
   if (/\b(video|film|football|artwork|screen|motion)\b/.test(words)) {
-    return { text: 'I have a ten-second AI motion concept for my Media Center, with a fixed decorative frame, a TV that turns toward my kitchen, moving football footage, and a scrolling first-person caption. I’m showing a composited scene; my mount mechanics have not been validated.', action: { menu: 'Design', room: 'media-center' } };
+    return { text: 'I have a ten-second AI motion concept for my Living Room, with a fixed decorative frame, a TV that turns toward my kitchen, moving football footage, and a scrolling first-person caption. I’m showing a composited scene; my mount mechanics have not been validated.', action: { menu: 'Design', room: 'media-center' } };
   }
   if (has('explore') || /\b(features?|room by room)\b/.test(words)) return { text: 'I share my house-wide ideas and a feature list for each of my spaces on Explore, with design concepts separated from details still in my plans. You can also try my illustrative lighting moods. My installed equipment and construction details still need confirmation.', action: { menu: 'Explore' } };
   if (has('view')) return { text: 'I introduce Ashley and my simulated viewing preview on View. For a real visit with me, arrange the details separately with Ashley.', action: { menu: 'View' } };

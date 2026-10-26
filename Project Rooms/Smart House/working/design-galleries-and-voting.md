@@ -1,5 +1,19 @@
 # Design galleries and voting
 
+## Current Living Room / Home Theatre separation — 2026-10-25
+
+After a pause for clarification, Wes confirmed **Home Theatre** with that British spelling and resumed the separation request. This supersedes the earlier room names, shared-gallery placement, and choice counts below.
+
+- **Living Room** retains internal room ID `media-center` and only its six cabinet choices, `media-01` through `media-06`.
+- **Home Theatre** retains internal room ID `spiral-staircase` and seven choices: `spiral-01` plus the six `spiral-basement-{slug}` palettes. Retained design IDs, titles, and assets are unchanged.
+- The active catalog has **30 unique choices across nine rooms**. The duplicate original theatre choice `media-07` and all six `media-basement-{slug}` choices are retired from the visible Living Room catalog.
+- Keep all historical vote rows. Visible choices, scores, and totals must exclude retired designs; do not delete or reassign votes or reuse retired IDs.
+- The original 12-second theatre/stair-light film belongs only to Home Theatre and its View-tour scene. Living Room keeps its separate 10-second turning-TV film.
+
+The current menu order is **Design, Explore, View, Belong, Built By**. All five pages use the same header-to-content top gap: **20px desktop / 18px phone**. See [[Project Rooms/Smart House/working/hosting-and-domain]] for current release and verification status.
+
+Preserve all original images, palette assets, films, posters, and historical source references. See [[Project Rooms/Smart House/working/hosting-and-domain]] for current release and verification status.
+
 ## Requested experience
 
 Wes requested the main menu `Design`, `Explore`, `View`, and `Manage`, with design-choice galleries and public voting for Kitchen, Media Center, Front Elevation, Garage Barn Door, ADU, and Master Bath in this chat on 2026-10-23.

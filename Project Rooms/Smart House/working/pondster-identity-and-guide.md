@@ -118,3 +118,15 @@ Use "Virtually - A Reality" then "Have a say." on Design, retaining one desktop 
 ## Explore wording correction — version 45, 2026-10-25
 
 Wes corrected Explore to "Get to know me." followed by "Like The Back Of Your Room". This supersedes version 44's "Like The Back Of Your Hand" wording; retain that earlier section as release history. The production build and fresh live verification passed for version 45. Exact release details are in [[Project Rooms/Smart House/working/hosting-and-domain]]; live proof remains outside Git at `C:\Users\wesbr\.codex\visualizations\2026\10\25\pondster-back-of-room-live.png`.
+
+## Room separation, Belong, and shared spacing — version 46, 2026-10-25
+
+After pausing for clarification, Wes confirmed the exact British spelling **Home Theatre** and resumed the separation request. Living Room retains room ID `media-center` and six cabinet choices, `media-01` through `media-06`. Home Theatre retains room ID `spiral-staircase` and seven choices: `spiral-01` plus six `spiral-basement-{slug}` palettes. The catalog has 30 active choices across nine galleries. Retire `media-07` and six `media-basement-{slug}` duplicates from the visible Living Room catalog and scores, preserving historical vote rows, retained IDs, and all assets. The original theatre still and film belong only to Home Theatre; Living Room keeps its separate turning-TV film.
+
+The current menu is **Design, Explore, View, Belong, Built By**. Belong is the visitor-facing page/comment label, with canonical `#belong`; legacy `#own`/`#manage` links, internal `Own` actions, and the `own` comments key remain compatible. All five pages use matching header-to-content top gaps of **20px desktop / 18px phone**.
+
+Version 46 is live at https://pondstr.com; fresh live checks confirmed Living Room's six choices, Home Theatre's seven, and Belong navigation. See [[Project Rooms/Smart House/working/hosting-and-domain]] for exact release and verification details. Natural voice remains prepared but unpublished, pending secure API setup.
+
+## Signed Explore heading — current, version 47, 2026-10-25
+
+Use the exact feature heading "What makes me, Pondster." on Explore. Render only Pondster in the established Allura signature font, as accessible live text, with the period outside the signature span. Keep the version46 Living Room/Home Theatre separation,30 active choices, Belong menu and compatible IDs, and matching20px/18px page gaps. Local desktop/phone fit, build, and live checks passed. Release and proof: [[Project Rooms/Smart House/working/hosting-and-domain]].

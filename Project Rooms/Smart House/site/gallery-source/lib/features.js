@@ -42,7 +42,7 @@ export const houseFeatures = [
   ...systemFeatures,
   { title: 'My voice', status: 'ON MY WEBSITE', text: 'I answer to Pondster from every page, with typed questions and optional voice interaction.' },
   { title: 'My lighting moods', status: 'IN MY PLANS', text: 'I’m exploring lighting zones, scenes, and everyday controls. You can try an illustration of my lighting moods below.' },
-  { title: 'My sound & screens', status: 'MY DESIGN CONCEPT', text: 'I’m exploring connected sound and screens, with a framed TV motion study in my Media Center gallery.' },
+  { title: 'My sound & screens', status: 'MY DESIGN CONCEPT', text: 'I’m exploring connected sound and screens, with a framed TV motion study in my Living Room and an amber-lit film in my Home Theatre.' },
   { title: 'My climate & comfort', status: 'IN MY PLANS', text: 'I’m planning operating guides and equipment care for my comfort systems as their details are confirmed.' },
   { title: 'Your say in my design', status: 'ON MY WEBSITE', text: 'I invite you to compare my concepts, vote on available choices, and share comments as I take shape.' },
   { title: 'My owner experience', status: 'IN MY PLANS', text: 'I’m planning home guides, care information, and handover records for my future owner.' }
@@ -52,7 +52,7 @@ export const houseFeatures = [
 export const roomFeatures = {
   kitchen: { status: 'IN MY PLANS', features: [
     'I’m collecting ideas for my kitchen layout and finishes.',
-    'My Media Center film explores a TV that turns toward my kitchen.',
+    'My Living Room film explores a TV that turns toward my kitchen.',
     'My planned proximity sensing would turn my TV toward my occupied kitchen when my living room is empty, then return it when you settle into my living room.',
     'My planned natural-gas tankless hot water system would recirculate hot water throughout my house, including my kitchen.',
     'I’m still gathering my kitchen designs and appliance details.'
@@ -61,10 +61,9 @@ export const roomFeatures = {
     'I’m exploring a framed TV that changes from artwork to football and turns toward my kitchen.',
     'I’m planning to track multiple people with proximity devices and turn my TV between my kitchen and living room as people move.',
     'My planned exterior-camera system would let me switch my TV to surveillance mode while you’re inside.',
-    'I have six cabinet-and-backdrop color combinations and my original amber-lit home theater ready for your vote.',
-    `I’m also comparing ${basementColorSchemes.length} full-scene basement palettes: ${basementColorSchemes.map(scheme => scheme.title).join(', ')}. I offer these same palettes beside my spiral staircase, with a separate vote in each gallery.`,
-    'My twelve-second theater film shows moving football and amber stair lights illuminating in sequence. I keep its original amber palette; it does not change to match a winning color.',
-    'I keep my surrounding walls warm off-white and my floor honey-toned in my six cabinet color studies. My basement studies keep my black stairs, mountain artwork, marble floor, and amber LEDs. These are visual concepts, not manufacturer paint specifications or proof of installed finishes; dimensions and clearances remain unconfirmed.'
+    'I have six cabinet-and-backdrop color combinations ready for your vote in my Living Room.',
+    'My ten-second film explores artwork changing to football as my framed TV turns toward my kitchen.',
+    'I keep my surrounding walls warm off-white and my floor honey-toned in these six cabinet studies. My images are visual concepts, not manufacturer paint specifications or proof of installed finishes.'
   ] },
   'front-elevation': { status: 'MY DESIGN CONCEPT', features: [
     'I’m comparing warm wood shutters with black shutters.',
@@ -97,9 +96,9 @@ export const roomFeatures = {
     'My Hall Bath studies are visual concepts, not manufacturer paint specifications or proof of installed finishes. My dimensions, fixtures, and construction details still need confirmation.'
   ] },
   'spiral-staircase': { status: 'MY DESIGN CONCEPT', features: [
-    'I’m exploring a black spiral staircase with amber tread and cove lighting beside my home theater.',
-    `I have my original black staircase concept and ${basementColorSchemes.length} full-scene color settings ready for your vote: ${basementColorSchemes.map(scheme => scheme.title).join(', ')}. I also show these six palettes in my Media Center, with a separate vote there.`,
-    'I keep my black staircase, mountain artwork, marble floor, and amber LEDs as I compare colors around my stairs.',
+    'I’m exploring my Home Theatre with a black spiral staircase, amber tread lights, and cove lighting.',
+    `I have my original black staircase concept and ${basementColorSchemes.length} full-scene Home Theatre color settings ready for your vote: ${basementColorSchemes.map(scheme => scheme.title).join(', ')}.`,
+    'I keep my black staircase, mountain artwork, marble floor, and amber LEDs as I compare colors around my screen and stairs.',
     'My twelve-second concept film keeps my full screen-and-staircase scene in view while my stair lights illuminate in sequence. I keep its original amber palette; it does not change to match a winning color.',
     'My color studies are visual concepts, not manufacturer paint specifications or proof of installed finishes. My dimensions, clearances, materials, and construction details still need confirmation.'
   ] },

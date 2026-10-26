@@ -1,5 +1,15 @@
 # Basement color concepts — 2026-10-25
 
+## Current palette ownership — 2026-10-25
+
+Wes confirmed **Home Theatre** after pausing for clarification and resuming the room-separation request. The six basement palettes now belong only to Home Theatre, under the unchanged `spiral-staircase` room ID and `spiral-basement-{slug}` design IDs. Together with `spiral-01`, Home Theatre has seven choices.
+
+Living Room keeps room ID `media-center` and only the six cabinet choices `media-01` through `media-06`. Its six `media-basement-{slug}` copies and duplicate original theatre choice `media-07` are retired from the visible catalog. There are **30 unique active choices across nine rooms**. The original theatre film belongs only to Home Theatre and its View-tour scene; Living Room keeps its separate turning-TV film.
+
+Keep all source images, palette files, films, and historical vote rows. Visible choices, scores, and totals must exclude retired designs without deleting votes or reassigning IDs. Retained titles and assets are unchanged. This section supersedes the shared-gallery placement below; see [[Project Rooms/Smart House/working/hosting-and-domain]] for current release and verification status.
+
+## Original shared-gallery intake (historical)
+
 Wes directed creating six basement color schemes and adding them as voting choices. His prior confirmation places the same full-room design image in both Media Center and Spiral Staircase; the six new studies follow that shared-room treatment. These are AI color studies, not paint specifications, measured drawings, installed finishes, or current-condition photographs.
 
 ## Saved sources and generation

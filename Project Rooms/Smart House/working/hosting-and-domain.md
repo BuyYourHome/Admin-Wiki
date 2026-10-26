@@ -13,7 +13,7 @@ Wes reported buying `Pondstr.com` from GoDaddy and instructed Smart House to hos
 - Initial saved version: `appgprj_6ad4d98e08708191858cab113814704e~appgver_0176b707d1688191be325f28960f58a6`.
 - Initial deployment: `appgdep_6ad4dafedea88191934ecd974a287155`.
 - Canonical linkage: `site/.openai/hosting.json`.
-- Publication checkout: ignored `site/.hosting-work/work/gallery-release-20261025/` for version 45; the parent `site/.hosting-work/` preserves the pending natural-voice work. Current publication uses the supported Sites Vinext runtime, gallery code, existing schema migrations, 37 voting choices across nine galleries, and a six-scene tour with three concept films. Never publish the wiki, private records, credentials, or source inventories. The original static page remains as a historical local concept.
+- Publication checkout: ignored `site/.hosting-work/work/gallery-release-20261025/` for version 47; the parent `site/.hosting-work/` preserves the pending natural-voice work. Current publication uses the supported Sites Vinext runtime, gallery code, existing schema migrations, 37 voting choices across nine galleries, and a six-scene tour with three concept films. Never publish the wiki, private records, credentials, or source inventories. The original static page remains as a historical local concept.
 
 ## Pondstr.com connection
 
@@ -52,11 +52,11 @@ Wes requested removal of the website login requirement so the public can access 
 
 Wes requested Design, Explore, View, and Manage navigation and six room galleries with public voting. The website now uses the supported Sites Vinext Worker runtime and logical D1 binding `DB`, with no R2 binding. Public access and the existing custom domain were preserved. The database migration creates only the vote schema; no synthetic votes were seeded into production.
 
-- Current Site source commit: `b06013b92c4448f920d35afd87e28e5cc34ab313`.
-- Current saved version: `appgprj_6ad4d98e08708191858cab113814704e~appgver_2ccfb9153ab48191adafb17ba9467720` (version 45).
-- Current deployment: `appgdep_6adeaf36dab081918989e215b1fc85ff`, confirmed `succeeded` at `2026-10-26T01:39:11.586495+00:00`, environment revision **0**.
+- Current Site source commit: `49ee3d2ea2272027e4de4b39c1ea2463c8d02741`.
+- Current saved version: `appgprj_6ad4d98e08708191858cab113814704e~appgver_b001f979ac588191aa160db84e900608` (version 47).
+- Current deployment: `appgdep_6adeb8f919148191835e7b914afc3b24`, confirmed `succeeded` at `2026-10-26T02:20:51.169238+00:00`, environment revision **0**.
 - Live URL: https://pondstr.com . The original Sites URL remains https://pondstr.coolnewt4097.chatgpt.site .
-- Media Center has 13 choices; Front Elevation has two; Garage Barn Door has three; Master Bath has six; Hall Bath has six; Spiral Staircase has seven. Kitchen, ADU, and Back Deck await images.
+- Living Room has six choices; Front Elevation has two; Garage Barn Door has three; Master Bath has six; Hall Bath has six; Home Theatre has seven. Total: 30 active choices across nine galleries. Kitchen, ADU, and Back Deck await images.
 
 The official source helper pushed and packaged the matching built source; the native Sites save/deploy operations confirmed publication. Final read-only checks against the custom domain returned HTTP 200 and zero initial Media Center votes, with secure HTTP-only voter-cookie initialization. Browser verification showed all six Media Center images loaded. Local-only tests covered saving, repeated votes, changing choices, separate visitor totals, missing cookies, invalid choices, empty galleries, and origin rejection. The local preview was stopped after verification.
 
@@ -435,3 +435,27 @@ Wes corrected the Explore subtitle to "Like The Back Of Your Room", superseding 
 - Archive content hash: `sha256:d5b92cf6c6c0199cc729ecfa0d5d62378b6b27f0a507dfb3a2ead82d0f537664`.
 
 Production build passed. Fresh https://pondstr.com/#explore displayed the exact corrected heading. Live proof outside Git: `C:\Users\wesbr\.codex\visualizations\2026\10\25\pondster-back-of-room-live.png`. Both prepared Explore copies have the same exact replacement, with all other bytes preserved; pending natural voice remains unpublished.
+
+## Gallery separation, Belong, shared spacing — version 46, 2026-10-25 Eastern
+
+Wes confirmed Home Theatre after pausing for clarification, then resumed. Living Room now contains only its six cabinet studies and turning-TV film; Home Theatre retains all seven staircase/theatre choices and its theatre film. The duplicate original theatre choice and six basement palettes are retired only from the visible Living Room catalog. Existing room/design IDs, files, and vote history are retained. Public vote results now filter retired IDs out of scores, totals, and selected choice. No votes were moved or deleted.
+
+The menu is Design, Explore, View, Belong, Built By. Belong uses #belong while #own/#manage still resolve; internal Own actions and the own comment-storage key deliberately remain compatible. Every page has a20px desktop/18px phone header gap. Explore features, Pondster answers, aliases, and tour labels match the renamed rooms. The tour remains six scenes/three films with video priority and active-choice vote fallback.
+
+- Source: `953ff9f1bcefb9f815341e2e5cc3721868fd2d48`.
+- Saved version: `appgprj_6ad4d98e08708191858cab113814704e~appgver_ce1eb86ae67081918ce036076dde9ed9`, version **46**.
+- Deployment: `appgdep_6adeb75c83d48191afcad2a2bbcf407a`, succeeded `2026-10-26T02:13:55.899479+00:00`, environment revision **0**.
+- Archive content hash: `sha256:1ecd15065112fe7318a2dbfbf0b31ed11e9d8c15ebbc865ddd1c965c1ec17db0`.
+
+Catalog, guide routing, tour winner/filtering, prepared mirrors, and pure visible-vote tests passed. Local UI verified six cabinet-only Living Room cards/one turning-TV film and seven Home Theatre cards/one theatre film. All five page gaps were checked at1920px/390px; the four secondary pages measured20px/18px with no horizontal overflow. Legacy Own link and Belong page/comment label checks passed. Production build and fresh live catalog/menu checks passed.
+
+## Signed Explore heading — current, version 47, 2026-10-25 Eastern
+
+Wes directed the Explore feature heading to read "What makes me, Pondster." with Pondster in the signature. The word is live text using the existing locally hosted Allura font; it is not a second logo image. Desktop/phone fitting and production build passed. All version46 separation/navigation/spacing behavior remains.
+
+- Source: `49ee3d2ea2272027e4de4b39c1ea2463c8d02741`.
+- Saved version: `appgprj_6ad4d98e08708191858cab113814704e~appgver_b001f979ac588191aa160db84e900608`, version **47**.
+- Deployment: `appgdep_6adeb8f919148191835e7b914afc3b24`, succeeded `2026-10-26T02:20:51.169238+00:00`, environment revision **0**.
+- Archive content hash: `sha256:5b693a662413ca2897fa042511df25a7a0fef7af83a86987def8b7e00ad4199d`.
+
+Fresh https://pondstr.com/#explore confirmed exact heading, Pondster Signature font, Belong navigation,20px top gap, and no overflow. Proof outside Git: `C:\Users\wesbr\.codex\visualizations\2026\10\25\pondster-explore-signed-heading-live.png`. Prepared copies preserve pending natural voice; it remains unpublished. No domain, audience, live-device, booking, comment-record, or production-vote writes were performed.

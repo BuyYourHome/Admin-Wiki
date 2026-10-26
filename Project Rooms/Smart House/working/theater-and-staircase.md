@@ -1,5 +1,15 @@
 # Theater and staircase — 2026-10-25
 
+## Current Home Theatre ownership — 2026-10-25
+
+After pausing for clarification, Wes confirmed **Home Theatre** with that British spelling and resumed the separation request. Home Theatre retains internal room ID `spiral-staircase`, the original still as `spiral-01`, and six `spiral-basement-{slug}` palettes: seven choices with unchanged retained IDs, titles, and assets. Its original 12-second theatre/stair-light film is featured only in Home Theatre and that room's View-tour scene.
+
+Living Room retains room ID `media-center`, its six cabinet choices `media-01` through `media-06`, and its separate 10-second turning-TV film. Retire the duplicate original theatre choice `media-07` and six `media-basement-{slug}` copies from its visible catalog. The active catalog has **30 unique choices across nine rooms**.
+
+Preserve all source images, films, posters, palettes, and historical vote rows. Visible choices, scores, and totals must exclude retired designs without deleting votes or reassigning IDs. This supersedes the earlier both-gallery placement below. Current release and verification status remain in [[Project Rooms/Smart House/working/hosting-and-domain]].
+
+## Original shared-gallery intake (historical)
+
 Wes supplied the full theater/staircase image and confirmed that the same image should be a voting choice in both Media Center and Spiral Staircase. He also authorized the supplied motion film in both galleries and the View virtual tour. This resolves the earlier Spiral Staircase pending-image state; dated intake records remain history.
 
 ## Source assets
