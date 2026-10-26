@@ -18,6 +18,20 @@ The [Sites skill](C:/Users/wesbr/.codex/plugins/cache/openai-curated-remote/site
 
 ## Current failed test and continuation — 2026-10-26
 
+### Refreshed Chrome failure and billing decision — 2026-10-26
+
+Wes reported that natural voice still shows its unavailable banner after the redirect fix. Native database inspection found a different request, `690cbd94-804a-4dc1-bf27-f2476a028659`, created at `2026-10-26T04:59:01.567Z` under version 55. It remains unconfirmed, with null provider_id, zero usage and final_usage_confirmed zero. Preserve this row. Unlike the earlier redirect-validation failure, there is no proof that this manual-redirect request never reached OpenAI. Its active reservation blocks later attempts from the same browser. Later canceled control requests do not prove another provider call occurred.
+
+The original provider warning is outside the newest 100 unfiltered events available through the Sites log tool. That tool has no cursor/end-time/warning filter; error-only queries omit the warning. Do not guess the lost status or treat this app UUID as an OpenAI request ID; it was not sent as X-Client-Request-Id.
+
+Read-only inspection of the connected OpenAI Platform account confirmed the same project and organization used for the approved key. Its private Billing overview shows Free trial, Credit remaining $0.00, and Add payment details. The Usage page shows no usage for the selected project/date range, which is aggregate evidence and does not resolve the exact unknown request. API credits are separate from ChatGPT. The metadata check proves key/model access only; it does not prove funded API execution. No payment details, purchase, billing setting, new key, microphone capture or database mutation was performed during this follow-up.
+
+The [current GPT-Live 1 model reference](https://developers.openai.com/api/docs/models/gpt-live-1) explicitly lists Free as Not supported. It lists $0.05/minute, billed per second, with backend model/tool use separate. This establishes the zero-credit/free-tier account as a blocker; it does not retroactively prove the exact status of the unknown create request.
+
+Prepared decision, owning chat Smart House (`01a14585-ffe6-7850-8db1-efcdd58e7071`): **Do you want to enable paid OpenAI API billing for Pondster's natural voice?** Wes was offered Yes—I'll enable API billing / No—keep Browser voice for now. The private billing tab is open for his own payment setup; no credit amount or purchase is authorized for Codex. Proof remains outside Git at `C:\Users\wesbr\.codex\visualizations\2026\10\26\pondster-api-billing-blocker.png`.
+
+On Yes, Wes completes the payment/credit step himself; verify the resulting account status, resolve the preserved unknown reservation on actual evidence, and continue the existing voice workflow without another generic go or key-creation request. On No, retain Browser voice and typed guidance and record that natural paid voice was declined for now. Never silently clear the unknown row, replace its visitor cookie, or bypass the existing limits to force a retry.
+
 Secure key setup is complete. Reuse the approved existing key and current private hosted secret with `PONDSTER_VOICE_ENABLED=true` at environment revision 4; do not repeat key creation or generic key approval. No billing change or credit purchase is authorized. The successful `GET /v1/models/gpt-live-1` returned HTTP 200 for model metadata only, not a successful provider voice session.
 
 At initial diagnosis, request `aa4eb72d-ebce-4b7d-9d3b-f1a3c3064afc` was unconfirmed with null provider_id and zero final_usage_confirmed, so its reservation was preserved. Version 54 later proved a failure before network dispatch and changed only its state to failed, as detailed below. That specific evidence resolves this row; expiry or a null provider ID alone still cannot justify releasing any other uncertain reservation.
