@@ -47,7 +47,7 @@ function EnrollmentFixture([string]$Room='Codex Environment',[string]$Skill='cod
     $manifest.messaging_readiness|Add-Member dispatcher_automation_id 'pr-messaging-dispatcher'
     $manifest.messaging_readiness|Add-Member manual_intervention $null
     Write-LtJson (Join-Path $f.manifests 'test.json') $manifest
-    $cfg=Read-LtJson $f.config;$cfg.release='0.4.9';$cfg.adapter_kind='CodexQueue'
+    $cfg=Read-LtJson $f.config;$cfg.release='0.4.10';$cfg.adapter_kind='CodexQueue'
     $cfg.adapter_path=Join-Path $pkg 'FakeAdapter.ps1';$cfg.adapter_sha256=(Get-FileHash $cfg.adapter_path).Hash
     $cfg|Add-Member cli_path $cli;$cfg|Add-Member cli_sha256 (Get-FileHash $cli).Hash
     $cfg|Add-Member destinations @(@{project_room='Existing A';task_id='33333333-3333-4333-8333-333333333333';machine=$env:COMPUTERNAME},@{project_room='Existing B';task_id='44444444-4444-4444-8444-444444444444';machine=$env:COMPUTERNAME})
@@ -97,6 +97,14 @@ Check 'Smart House enrollment is additive and preserves prior pins' {
     $before=Read-LtJson $f.config;$result=Invoke-LtValidationEnrollment @a;$after=Read-LtJson $f.config
     Assert ($result.changed -and @($after.destinations).Count -eq 3)
     Assert (@($after.destinations|Where-Object {$_.project_room -ceq 'Smart House' -and $_.task_id -ceq $f.task}).Count -eq 1)
+    Assert ($after.destinations[0].task_id -ceq $before.destinations[0].task_id -and $after.destinations[1].task_id -ceq $before.destinations[1].task_id)
+    Assert ((Record $f).attempt_count -eq 0)
+}
+Check 'House Render enrollment is additive and preserves prior pins' {
+    $f=EnrollmentFixture 'House Render' 'house-render';$a=EnrollmentArgs $f.root
+    $before=Read-LtJson $f.config;$result=Invoke-LtValidationEnrollment @a;$after=Read-LtJson $f.config
+    Assert ($result.changed -and @($after.destinations).Count -eq 3)
+    Assert (@($after.destinations|Where-Object {$_.project_room -ceq 'House Render' -and $_.task_id -ceq $f.task}).Count -eq 1)
     Assert ($after.destinations[0].task_id -ceq $before.destinations[0].task_id -and $after.destinations[1].task_id -ceq $before.destinations[1].task_id)
     Assert ((Record $f).attempt_count -eq 0)
 }
