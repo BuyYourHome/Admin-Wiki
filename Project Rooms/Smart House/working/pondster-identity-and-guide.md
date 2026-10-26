@@ -107,3 +107,7 @@ Wes requested "I Am" between P and d and required a preview before any page upda
 ## No vine — current, version 41, 2026-10-25
 
 Wes rejected the botanical decoration with "Lose the vine," then explicitly authorized publication. The fuller climbing-vine concept remained a separate unpublished preview. Do not reintroduce any vine, leaves, or vine-growth animation without a new instruction. Keep the continuous Pondster signature, approved I Am annotation, square/HOME label, two firework bursts, monogram glint, and accessible home link. Source vectors and obsolete vine styles/keyframes are removed, rather than merely hidden. Local desktop/phone visual checks, build, and live verification passed; exact publication/proof is in [[Project Rooms/Smart House/working/hosting-and-domain]].
+
+## Header sizing and visitor wording — version 43, 2026-10-25
+
+Wes explicitly requested a 50% larger Pondster logo, the tagline "A home with a voice.", the Own eyebrow "Own / Your future Owner experience", and a one-line Design headline on computers with two lines on phones. Preserve these user-specified exceptions to first-person labels. The continuous signature, I Am placement, HOME frame, fireworks, accessible home link, and absence of a vine remain intact. Signature sizes are 78–114px desktop and 90px phone. Keep the tighter Design header gap and fit down to a 320px phone. Exact release and visual evidence: [[Project Rooms/Smart House/working/hosting-and-domain]].

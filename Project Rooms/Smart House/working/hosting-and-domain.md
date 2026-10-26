@@ -13,7 +13,7 @@ Wes reported buying `Pondstr.com` from GoDaddy and instructed Smart House to hos
 - Initial saved version: `appgprj_6ad4d98e08708191858cab113814704e~appgver_0176b707d1688191be325f28960f58a6`.
 - Initial deployment: `appgdep_6ad4dafedea88191934ecd974a287155`.
 - Canonical linkage: `site/.openai/hosting.json`.
-- Publication checkout: ignored `site/.hosting-work/work/gallery-release-20261025/` for version 42; the parent `site/.hosting-work/` preserves the pending natural-voice work. Current publication uses the supported Sites Vinext runtime, gallery code, existing schema migrations, 37 voting choices across nine galleries, and a six-scene tour with three concept films. Never publish the wiki, private records, credentials, or source inventories. The original static page remains as a historical local concept.
+- Publication checkout: ignored `site/.hosting-work/work/gallery-release-20261025/` for version 43; the parent `site/.hosting-work/` preserves the pending natural-voice work. Current publication uses the supported Sites Vinext runtime, gallery code, existing schema migrations, 37 voting choices across nine galleries, and a six-scene tour with three concept films. Never publish the wiki, private records, credentials, or source inventories. The original static page remains as a historical local concept.
 
 ## Pondstr.com connection
 
@@ -52,9 +52,9 @@ Wes requested removal of the website login requirement so the public can access 
 
 Wes requested Design, Explore, View, and Manage navigation and six room galleries with public voting. The website now uses the supported Sites Vinext Worker runtime and logical D1 binding `DB`, with no R2 binding. Public access and the existing custom domain were preserved. The database migration creates only the vote schema; no synthetic votes were seeded into production.
 
-- Current Site source commit: `08b2a5ca84d171098ea070224027c5894498c8fe`.
-- Current saved version: `appgprj_6ad4d98e08708191858cab113814704e~appgver_4ff2b76e8c988191bba052e5e13af31c` (version 42).
-- Current deployment: `appgdep_6adea72bef8c8191a709808bc6881bd8`, confirmed `succeeded` at `2026-10-26T01:04:52.864820+00:00`, environment revision **0**.
+- Current Site source commit: `36665d3d84cbcdd63e281558b538367df6374107`.
+- Current saved version: `appgprj_6ad4d98e08708191858cab113814704e~appgver_aa7d9983bbbc81919f7f312e71d15b8c` (version 43).
+- Current deployment: `appgdep_6adea9ac8f60819196967b0000deda34`, confirmed `succeeded` at `2026-10-26T01:15:33.206539+00:00`, environment revision **0**.
 - Live URL: https://pondstr.com . The original Sites URL remains https://pondstr.coolnewt4097.chatgpt.site .
 - Media Center has 13 choices; Front Elevation has two; Garage Barn Door has three; Master Bath has six; Hall Bath has six; Spiral Staircase has seven. Kitchen, ADU, and Back Deck await images.
 
@@ -401,3 +401,16 @@ Wes supplied a screenshot and asked to reduce the excess gap between the header 
 - Archive content hash: `sha256:8f1abbabee92bad32aef17e79d87c04e2d233f3fd4b34390c7c934e7098bf6c1`.
 
 Production build passed. Local DOM measurements at 1920px and 390px confirmed respective 20px/18px gaps and no horizontal overflow; desktop screenshot and fresh live phone DOM confirmed the tighter spacing. Live proof: `C:\Users\wesbr\.codex\visualizations\2026\10\25\pondster-header-spacing-live.png`, outside Git. Both prepared CSS copies match production except for the exact pending 510-character voice block preserved once. Natural voice remains unpublished.
+
+## Header refinements — version 43, 2026-10-25 Eastern
+
+Wes requested four changes in one continuing request: Own / Your future Owner experience; a single-line Design headline on computers and two lines on phones; a logo about 50% larger; and the tagline A home with a voice. These specific wording choices supersede the earlier first-person wording for these two labels.
+
+The Allura signature is now clamp(78px,7.65vw,114px) on desktop and 90px on phone, exactly 1.5 times its prior values. The square, HOME, tagline, and firework artwork scale with it; artwork is bounded on narrow phones. The approved I Am annotation remains proportional and the vine remains absent. The Design line break is hidden above 720px and shown on phones, with 36–44px phone heading text to preserve two lines down to 320px. Flexible intro wrapping keeps the explanatory note clear, and top alignment preserves the tighter header gap.
+
+- Source: `36665d3d84cbcdd63e281558b538367df6374107`.
+- Saved version: `appgprj_6ad4d98e08708191858cab113814704e~appgver_aa7d9983bbbc81919f7f312e71d15b8c`, version **43**.
+- Deployment: `appgdep_6adea9ac8f60819196967b0000deda34`, succeeded `2026-10-26T01:15:33.206539+00:00`, environment revision **0**.
+- Archive content hash: `sha256:a2616089ee25a1ca240286c8fb36c300946ec44f454a15a33652b7a5b47fd788`.
+
+Production build passed. Local checks confirmed one headline line at 1920px/1366px, two at 390px/320px, and no final horizontal overflow. Fresh live Own verified the new label, tagline, and 114px logo; live Design verified the one-line headline. Screenshots are outside Git at `C:\Users\wesbr\.codex\visualizations\2026\10\25\pondster-own-label-live.png` and `pondster-header-refinements-live.png`. Both prepared copies preserve the voice integration; their CSS differs only by its exact 510-character block once. No natural-voice activation or data/audience/domain changes.
