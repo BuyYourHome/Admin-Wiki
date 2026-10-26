@@ -13,7 +13,7 @@ Wes reported buying `Pondstr.com` from GoDaddy and instructed Smart House to hos
 - Initial saved version: `appgprj_6ad4d98e08708191858cab113814704e~appgver_0176b707d1688191be325f28960f58a6`.
 - Initial deployment: `appgdep_6ad4dafedea88191934ecd974a287155`.
 - Canonical linkage: `site/.openai/hosting.json`.
-- Publication checkout: ignored `site/.hosting-work/work/gallery-release-20261025/` for version 40; the parent `site/.hosting-work/` preserves the pending natural-voice work. Current publication uses the supported Sites Vinext runtime, gallery code, existing schema migrations, 37 voting choices across nine galleries, and a six-scene tour with three concept films. Never publish the wiki, private records, credentials, or source inventories. The original static page remains as a historical local concept.
+- Publication checkout: ignored `site/.hosting-work/work/gallery-release-20261025/` for version 41; the parent `site/.hosting-work/` preserves the pending natural-voice work. Current publication uses the supported Sites Vinext runtime, gallery code, existing schema migrations, 37 voting choices across nine galleries, and a six-scene tour with three concept films. Never publish the wiki, private records, credentials, or source inventories. The original static page remains as a historical local concept.
 
 ## Pondstr.com connection
 
@@ -52,9 +52,9 @@ Wes requested removal of the website login requirement so the public can access 
 
 Wes requested Design, Explore, View, and Manage navigation and six room galleries with public voting. The website now uses the supported Sites Vinext Worker runtime and logical D1 binding `DB`, with no R2 binding. Public access and the existing custom domain were preserved. The database migration creates only the vote schema; no synthetic votes were seeded into production.
 
-- Current Site source commit: `7bb5a63633d22da521d329a04813006466d94793`.
-- Current saved version: `appgprj_6ad4d98e08708191858cab113814704e~appgver_39cb926cbf2c819186fd673a8eff8a72` (version 40).
-- Current deployment: `appgdep_6ade98cbed1c8191b176865da6d4667f`, confirmed `succeeded` at `2026-10-26T00:03:31.659224+00:00`, environment revision **0**.
+- Current Site source commit: `5c9b99a9371c1a0e6e49b502f2ca56b93ba9490e`.
+- Current saved version: `appgprj_6ad4d98e08708191858cab113814704e~appgver_2373d34b99088191b0deeb159e2f3743` (version 41).
+- Current deployment: `appgdep_6ade9cd957f88191904f832f026bb84e`, confirmed `succeeded` at `2026-10-26T00:20:48.757761+00:00`, environment revision **0**.
 - Live URL: https://pondstr.com . The original Sites URL remains https://pondstr.coolnewt4097.chatgpt.site .
 - Media Center has 13 choices; Front Elevation has two; Garage Barn Door has three; Master Bath has six; Hall Bath has six; Spiral Staircase has seven. Kitchen, ADU, and Back Deck await images.
 
@@ -379,3 +379,14 @@ Wes requested a preview of "I Am" between P and d, then explicitly directed "Pub
 - Archive content hash: `sha256:1d68dfbd8e8eddc35d4c841e6361d146b9adad75e04469916a7eadd87f76a353`.
 
 Local desktop/390x844 phone visual checks matched the approved preview, and the production build passed. Fresh https://pondstr.com/#design confirmed live "I Am" at 64px left / 9px top / 12px type and the unchanged home-link name. Live proof: `C:\Users\wesbr\.codex\visualizations\2026\10\25\pondster-i-am-live.png`. Approval preview: `C:\Users\wesbr\.codex\visualizations\2026\10\25\pondster-i-am-preview.png`. Both are outside Git. Prepared page/CSS copies match the release apart from the exact pending voice CSS block preserved once. No assets, vote data, comments, bookings, voice activation, audience, or domain changes.
+
+## Vine removed — version 41, 2026-10-25 Eastern
+
+After viewing a separate livelier-vine concept, Wes directed "Lose the vine" and then explicitly "Publish." The local livelier concept was never published. The live logo now has no vine stem, leaves, veins, or related growth styles/keyframes. The continuous signature, approved I Am placement, square/HOME label, two firework groups, monogram glint, accessible home link, and reduced-motion behavior are preserved.
+
+- Source: `5c9b99a9371c1a0e6e49b502f2ca56b93ba9490e`.
+- Saved version: `appgprj_6ad4d98e08708191858cab113814704e~appgver_2373d34b99088191b0deeb159e2f3743`, version **41**.
+- Deployment: `appgdep_6ade9cd957f88191904f832f026bb84e`, succeeded `2026-10-26T00:20:48.757761+00:00`, environment revision **0**.
+- Archive content hash: `sha256:c1c2e1ecd7abf0b3b823f654404bf3cd20f9085a63cc9cb87ba9369328498eda`.
+
+Production build and local desktop/390x844 phone visual checks passed. Fresh https://pondstr.com/#design verified zero vine elements and two retained firework groups, with Pondster/I Am/HOME intact. Live proof: `C:\Users\wesbr\.codex\visualizations\2026\10\25\pondster-no-vine-live.png`, outside Git. Both prepared logo/CSS copies are reconciled; the exact pending voice CSS block remains once. No assets, vote data, comments, bookings, voice activation, audience, or domain changes.
