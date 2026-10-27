@@ -79,7 +79,7 @@ export default function Home() {
     guide.current?.activateVoice();
   }
   function navigate(next:Menu){setTourRequest(null);setMenu(next);location.hash=menuHash(next);}
-  function openContact(){navigate('Contact');}
+  function openContact(){navigate('Contact');requestAnimationFrame(()=>guide.current?.focusText());}
   function guideAction(action:GuideAction){navigate(action.menu);if(action.tour===true&&action.menu==='View')setTourRequest(++nextTourRequest.current);if(action.room&&!saving)setRoom(action.room);if(action.scene){setScene(action.scene);setShowLighting(true);}}
   return <>
     <a className="skip" href="#main">Skip to content</a>
@@ -108,8 +108,8 @@ export default function Home() {
       {menu==='View' && <ViewPage tourRequest={tourRequest} onTourRequestHandled={()=>setTourRequest(null)} onImage={setZoom} onDesign={()=>navigate('Design')} onTourStart={()=>guide.current?.stopVoice()}/>}
       {menu==='Built By' && <BuiltByPage/>}
       {menu==='Own' && <section className="secondary-page manage"><h1 className="single-line-page-title">I come <em>with answers.</em></h1><p className="lead">I will provide a place for my home guides, care information, and handover records. Ask me from any page for public guidance while my owner tools take shape.</p><article className="manage-notice" aria-labelledby="deck-structural-heading"><h2 id="deck-structural-heading">My preliminary deck structural drawing</h2><p>I’m sharing my deck’s preliminary structural design reference. The drawing is marked <strong>PRELIMINARY / NOT FOR PERMIT</strong> and remains a design reference for review.</p><p><a className="solid-link" href="/documents/deck-structural-preliminary.pdf" target="_blank" rel="noopener noreferrer">View my drawing (PDF) ↗</a></p><a href="/documents/deck-structural-preliminary.pdf" download="deck-structural-preliminary.pdf">Download my drawing (PDF)</a></article><div className="knowledge-grid">{[['Home guides','How my systems will work and where you will find them.'],['Care & maintenance','My manuals, warranties, and equipment-specific schedules.'],['Owner handover','My records and account checklist for the next chapter.']].map(([title,description])=><article key={title}><span className="pending-tag">PLANNED</span><h3>{title}</h3><p>{description}</p></article>)}</div><div className="manage-notice"><strong>My owner tools aren’t ready yet.</strong><p>I’ll need separate, authenticated owner access before I can show private records or offer live controls. I’m not connected to my house systems through this public site.</p></div></section>}
-      <ContactPage active={menu==='Contact'}><PondsterGuide ref={guide} open={menu==='Contact'} onOpenChange={nextOpen=>nextOpen?openContact():navigate('View')} onAction={guideAction} onReturnFocus={()=>logo.current?.focus()} onVoiceState={setVoiceSummary}/></ContactPage>
-      <Comments key={menu} page={menu==='Own'?'own':menuHash(menu)} title={menuLabel(menu)} onAsk={openContact}/>
+      <ContactPage active={menu==='Contact'} comments={menu==='Contact'?<Comments key={menu} page="contact" title="Contact" onAsk={openContact}/>:null}><PondsterGuide ref={guide} open={menu==='Contact'} onOpenChange={nextOpen=>nextOpen?openContact():navigate('View')} onAction={guideAction} onReturnFocus={()=>logo.current?.focus()} onVoiceState={setVoiceSummary}/></ContactPage>
+      {menu!=='Contact'&&<Comments key={menu} page={menu==='Own'?'own':menuHash(menu)} title={menuLabel(menu)} onAsk={openContact}/>}
     </main><footer><span>MY LOCATION IS CONFIDENTIAL</span><p>My SI designer: Jean Wright · Buy Your Home</p><span>I’m sharing concepts · No live controls</span></footer>
     <GalleryImageViewer design={zoom} onChange={setZoom} onClose={()=>setZoom(null)}/>
   </>;

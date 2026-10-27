@@ -1,10 +1,9 @@
 import type { ReactNode } from 'react';
 
-export default function ContactPage({ active, children }: { active:boolean; children:ReactNode }) {
+export default function ContactPage({ active, comments, children }: { active:boolean; comments?:ReactNode; children:ReactNode }) {
   return <section className="secondary-page contact-page" hidden={!active} aria-labelledby="contact-heading">
     <div className="contact-intro"><div><h1 id="contact-heading">Let’s <em>talk.</em></h1></div><p className="lead">Ask me about my designs, my story, or a visit. I’ve also brought my realtor and the company behind me together here.</p></div>
     <div className="contact-layout">
-      <div className="contact-conversation">{children}</div>
       <aside className="contact-people" aria-label="My public contacts">
         <article className="contact-card" aria-labelledby="contact-ashley">
           <div className="contact-person"><img src="/people/ashley-morello.jpg" alt="Ashley Morello, my realtor" width="80" height="80" decoding="async"/><div><p className="eyebrow">MY REALTOR</p><h2 id="contact-ashley">Ashley Morello</h2></div></div>
@@ -36,5 +35,7 @@ export default function ContactPage({ active, children }: { active:boolean; chil
         </article>)}
       </div>
     </section>
+    {comments}
+    <div className="contact-conversation">{children}</div>
   </section>;
 }

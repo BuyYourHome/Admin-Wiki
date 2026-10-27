@@ -331,8 +331,8 @@ html{scroll-padding-top:200px}
 .contact-intro .eyebrow{margin-top:0}
 .contact-intro h1{margin-top:0}
 .contact-intro .lead{max-width:370px;margin:7px 0 0}
-.contact-layout{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(290px,.8fr);gap:30px;align-items:start}
-.contact-conversation,.contact-people{min-width:0}
+.contact-layout{display:block}
+.contact-conversation,.contact-people{min-width:0}.contact-conversation{margin-top:42px}.contact-people{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}.contact-people>.contact-card{margin-bottom:0}.contact-page>.comments-section{margin:42px 0 0;padding:30px 0 0}
 .contact-page .pondster-guide{position:static;inset:auto;z-index:auto;display:block}
 .contact-page .pondster-panel{width:100%;max-width:none;max-height:none;border-radius:0;box-shadow:none}
 .contact-page .pondster-conversation{min-height:220px;max-height:420px;flex:none}
@@ -356,10 +356,10 @@ html{scroll-padding-top:200px}
 .contact-card address a{display:block;min-height:44px;padding:12px 0;font-size:14px;overflow-wrap:anywhere}
 .contact-card address a>span{display:block;margin-bottom:6px;font-size:8px;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:var(--accent)}
 .contact-website{display:inline-block;min-height:44px;padding-top:15px;font-size:11px;line-height:1.7;text-decoration:underline;text-underline-offset:3px}
-.contact-note{font-size:11px;line-height:1.8;color:var(--muted);padding:0 3px}
-@media(max-width:1000px){.contact-layout{grid-template-columns:minmax(0,1.2fr) minmax(260px,.8fr);gap:22px}.contact-card{padding:22px}.contact-person{gap:12px}.contact-person img{width:65px;height:65px}.contact-person h2{font-size:25px}}
-@media(max-width:900px){html{scroll-padding-top:245px}.header nav{margin-left:0}.contact-intro{display:block}.contact-intro .lead{max-width:600px;margin-top:22px}.contact-layout{grid-template-columns:minmax(0,1fr)}.contact-people{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}.contact-card{margin-bottom:0}.contact-note{grid-column:1/-1;margin-top:0}}
-@media(max-width:720px){.header{gap:16px}.header-brand .brand-copy>small{margin-left:72px}.header-voice-status{font-size:10px;max-width:100%;margin-top:13px}.header nav{gap:8px;flex-wrap:nowrap}.header nav a{font-size:12px}.contact-intro{margin-bottom:25px}.contact-layout{gap:24px}.contact-people{grid-template-columns:minmax(0,1fr)}.contact-page .pondster-conversation{min-height:180px;max-height:360px}.contact-page .pondster-input input{font-size:16px}.contact-page .pondster-message p{font-size:13px}.contact-page .pondster-voice small{font-size:10px}.contact-person img{width:75px;height:75px}.contact-person h2{font-size:29px}}
+.contact-note{grid-column:1/-1;font-size:11px;line-height:1.8;color:var(--muted);padding:0 3px}
+@media(max-width:1000px){.contact-card{padding:22px}.contact-person{gap:12px}.contact-person img{width:65px;height:65px}.contact-person h2{font-size:25px}}
+@media(max-width:900px){html{scroll-padding-top:245px}.header nav{margin-left:0}.contact-intro{display:block}.contact-intro .lead{max-width:600px;margin-top:22px}.contact-people{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}.contact-card{margin-bottom:0}.contact-note{grid-column:1/-1;margin-top:0}}
+@media(max-width:720px){.header{gap:16px}.header-brand .brand-copy>small{margin-left:72px}.header-voice-status{font-size:10px;max-width:100%;margin-top:13px}.header nav{gap:8px;flex-wrap:nowrap}.header nav a{font-size:12px}.contact-intro{margin-bottom:25px}.contact-conversation{margin-top:30px}.contact-people{grid-template-columns:minmax(0,1fr)}.contact-page .pondster-conversation{min-height:180px;max-height:360px}.contact-page .pondster-input input{font-size:16px}.contact-page .pondster-message p{font-size:13px}.contact-page .pondster-voice small{font-size:10px}.contact-person img{width:75px;height:75px}.contact-person h2{font-size:29px}}
 @media(max-width:360px){.header nav{gap:6px}.header nav a{font-size:11px}.header-voice-status>span{flex-basis:165px}}
 
 .header.voice-is-live{background:#efd09f;--muted:#594a38;--accent:#854121}

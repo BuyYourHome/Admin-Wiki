@@ -18,7 +18,7 @@ function compactInactiveStatus(status:string) {
   return reason.length<=160?reason:`${reason.slice(0,157).trimEnd()}…`;
 }
 
-export type PondsterGuideHandle = { activateVoice:()=>void; startVoice:()=>void; stopVoice:()=>void };
+export type PondsterGuideHandle = { activateVoice:()=>void; startVoice:()=>void; stopVoice:()=>void; focusText:()=>void };
 export type PondsterVoiceSummary = { active:boolean; connecting?:boolean; status:string };
 type GuideProps = { open:boolean; onOpenChange:(open:boolean)=>void; onAction:(action:GuideAction)=>void; onReturnFocus:()=>void; onVoiceState:(state:PondsterVoiceSummary)=>void };
 
@@ -91,7 +91,6 @@ export default forwardRef<PondsterGuideHandle,GuideProps>(function PondsterGuide
     fetch('/api/voice/status',{cache:'no-store',signal:cancellation.signal}).then(response=>response.ok?response.json() as Promise<{available?:unknown;message?:unknown}>:null).then(data=>{if(!cancellation.signal.aborted&&!liveState.current.active&&!liveState.current.connecting){setNaturalReady(data?.available===true);setNaturalMessage(data?.available===false&&typeof data.message==='string'?data.message.slice(0,400):'');}}).catch(()=>{if(!cancellation.signal.aborted&&!liveState.current.active&&!liveState.current.connecting)setNaturalReady(false);});
     return()=>cancellation.abort();
   },[open]);
-  useEffect(()=>{if(open)input.current?.focus();},[open]);
   useEffect(()=>{if(open&&log.current)log.current.scrollTop=log.current.scrollHeight;},[messages,open]);
   function startSelectedVoice() {
     voiceRequested.current[voiceMode]=true;
@@ -108,7 +107,7 @@ export default forwardRef<PondsterGuideHandle,GuideProps>(function PondsterGuide
     if(voiceState.current.session)controller.current?.speak(voiceGreeting);
   }
   function isVoiceActive(){return liveState.current.active||liveState.current.connecting||voiceState.current.session||voiceState.current.outputActive;}
-  useImperativeHandle(ref,()=>({activateVoice(){if(isVoiceActive())stopVoice();else startSelectedVoice();},startVoice(){if(!isVoiceActive())startSelectedVoice();},stopVoice}));
+  useImperativeHandle(ref,()=>({activateVoice(){if(isVoiceActive())stopVoice();else startSelectedVoice();},startVoice(){if(!isVoiceActive())startSelectedVoice();},stopVoice,focusText(){input.current?.focus();}}));
   function listen(){if(isVoiceActive())stopVoice();else startSelectedVoice();}
   function close(){stopVoice();onOpenChange(false);onReturnFocus();}
   const voiceActive=live.active||live.connecting||voice.session||voice.outputActive;

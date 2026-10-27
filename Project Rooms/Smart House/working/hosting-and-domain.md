@@ -672,3 +672,14 @@ Contact is last: Design, Explore, View, Belong, Built By, Contact. It lists Glas
 - Archive: `sha256:90798bbc985d78d0c48c1e85737ae90d4ef251a95f260ed7e309eb96353f3179`, 128 files, 66,406,400 bytes.
 
 The intermediate version69 was saved only, never deployed. Final intent/client/server/SQLite/guide/context/navigation/hover/image/tour checks, Contact static rendering, TypeScript, build, diff and183-file secret scan passed. The two-page PDF passed decoded-object/stream/byte privacy scans and Poppler visual/pixel verification. Public homepage/menu/trade links and admission returned HTTP200; new PNG/PDF assets have exact approved hashes and correct MIME types. Browser automation was unavailable; opening the page returned queued. Fresh actual voice/quiet/tour/farewell verification is pending a user trial; no automated paid session or microphone capture occurred. No new key, billing, purchase, vote/comment write, device action or audience change occurred. Detailed authority, hashes and verification: [[Project Rooms/Smart House/working/voice-hover-quiet-and-contact-20261027]].
+
+## Contact conversation last — version 71, 2026-10-27
+
+Wes requested Talk to me as the final Contact-page section. The page now orders public people/company details, trade contacts, Contact comments, then the single voice/text Guide. Comments remain keyed to contact and render once; the hidden Guide remains mounted for off-page voice. Contact navigation no longer automatically jumps to the bottom input, while explicit Ask/Talk/Voice controls retain their focus shortcut. Responsive cards/comments spacing follows the new layout; no controller/provider/billing or data-storage change was made.
+
+- Source: `070635d51f6162514146ce92e4cbec8d7ae25ba3`.
+- Saved version: `appgprj_6ad4d98e08708191858cab113814704e~appgver_75681b5b95dc8191a1d019f296f61862`, version **71**.
+- Deployment: `appgdep_6ae12f7d68888191b30d630288949566`, succeeded `2026-10-27T23:11:03.009345+00:00`, environment revision **4**.
+- Archive: `sha256:e2e7221d21de892749bd9532ed52589730891c518c2f6c5fdee725214f937474`, 128 files, 66,406,400 bytes.
+
+Static Contact rendering, the existing navigation/hover suite, independent focus review, TypeScript, build, diff and183-file secret checks passed. Public HTTP200 markup confirms contact sections before the bottom conversation; active comments order is verified by static render. Four source mirrors match. Opening the page in Codex returned queued; no fresh browser visual or voice behavior is claimed. See [[Project Rooms/Smart House/working/contact-conversation-last-20261027]].
