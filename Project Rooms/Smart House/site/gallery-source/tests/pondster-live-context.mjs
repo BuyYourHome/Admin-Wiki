@@ -4,7 +4,7 @@ import { galleries } from '../lib/designs.ts';
 
 const session = buildPondsterLiveSession(galleries);
 assert.equal(session.model, 'gpt-live-1');
-assert.equal(session.audio.output.voice, 'marin');
+assert.equal(session.audio.output.voice, 'vesper');
 assert.equal(session.store, false);
 assert.deepEqual(session.delegation, { type: 'client' });
 assert.deepEqual(session.client.data_channel.allowed_client_events, ['session.close']);

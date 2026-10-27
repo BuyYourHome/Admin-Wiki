@@ -597,3 +597,16 @@ The verified temporary operation is removed. Admission is read-only again, with 
 Final https://pondstr.com/api/voice/status returned HTTP 200 and available=true. Native reread preserved all four previously verified rows and showed one additional conversation closed with 43 seconds of confirmed final usage. This additional provider completion is not a separately observed audible test. There are no active or unconfirmed reservations in that five-row snapshot. No automated microphone/provider voice test was run.
 
 Final server regressions and no-emit TypeScript passed. Production builds and the 170-file private secret scan passed. An expired source-push credential caused one upload rejection; local commits were preserved, publishing access renewed, and the same source rebuilt and successfully pushed/packaged by the official helper. No force push or credential exposure occurred. Four final text sources were mirrored and hash-verified in gallery-source. Browser automation remained unavailable; Wes's actual Chrome answer and native provider-finalization record establish the successful spoken result.
+
+## Vesper natural voice — version 64, 2026-10-27
+
+Wes directed, “change it to Vesper.” The fixed server-owned default changes from marin to vesper, with the existing context assertion updated to match. The official OpenAI voice table identifies Vesper as British, masculine English: https://developers.openai.com/api/docs/guides/live-conversations#voice-options . The new default applies when a new Natural conversation session starts. Historical Marin test evidence is preserved.
+
+- Source: `978288608a3e640d7b9cce1467811e47e4ea12c4`.
+- Saved version: `appgprj_6ad4d98e08708191858cab113814704e~appgver_c7ed692d59548191bf17cdc9e8580300`, version **64**.
+- Deployment: `appgdep_6ae1011beab08191ae350017812ea42f`, succeeded `2026-10-27T19:53:10.391512Z`, environment revision **4**.
+- Archive: `sha256:d050b89c213cfcbb663def9c5e5ea0d5e1b21e014de0ba6e5746a7b17907b3ca`, 121 files, 54,077,440 bytes.
+
+The existing voice-context check, production build, source diff check and 170-file private secret-absence scan passed. Source review confirmed exactly the default and its existing assertion changed. Two text mirrors match the independent checkout. The existing approved API key is reused. Model, instructions, public scope, delegation, lifecycle, limits and audience remain unchanged.
+
+The custom-domain status endpoint returned HTTP 200 and available=true after publication. This confirms availability, not an audible Vesper test. No microphone, provider voice session, production vote/comment write, key change or billing action was performed by Codex. Opening the production page in Codex returned queued. The user should refresh https://pondstr.com and start a new natural conversation to hear Vesper.

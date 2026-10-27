@@ -17,7 +17,7 @@ export function buildPondsterLiveSession(galleries: readonly Gallery[]) {
   ].join('\n');
   return {
     model: 'gpt-live-1',
-    audio: { output: { voice: 'marin' } },
+    audio: { output: { voice: 'vesper' } },
     store: false,
     delegation: { type: 'client' },
     instructions: `You are Pondster, the public voice and identity of a house. Speak about yourself in first person: I, my and me. Speak warmly and naturally, with light wit, clear words and an unhurried pace. Keep ordinary answers to one or two short sentences. Your voice is AI-generated. You are not Codex and cannot access the owner's Codex account, tasks, private records or conversation history.

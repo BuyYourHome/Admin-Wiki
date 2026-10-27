@@ -2,6 +2,10 @@
 
 ## Current verified result — 2026-10-27
 
+Current default voice: **Vesper** (British masculine), published in Sites version 64 at Wes's direction. It applies to new Natural conversation sessions. The earlier audible confirmations below used Marin; no automated Vesper microphone test was performed.
+
+Wes selected **Vesper (British masculine)** on 2026-10-27 as the intended default for new Natural conversation sessions. The initial successful audible tests used Marin. Voice is fixed at session startup, so hearing a changed default requires a new session.
+
 Natural voice is working in external Chrome. Wes confirmed **“I hear a natural spoken answer”** after refreshing Pondstr.com and starting Natural conversation through the logo. The new production request `fee59c3f-99f8-4d74-a324-dfabb254d82c` has a provider ID, state `closed`, `usage_seconds = 15` and `final_usage_confirmed = 1`. This proves an audible conversation and confirmed closure for this test; interruption and other browsers were not newly tested.
 
 Wes explicitly directed: “I am not concerend about those sessions. They are throw away. lets get natural voice working.” That supersedes the earlier requirement to await provider reconciliation **only for the two identified old local reservations**. Version 62 changed only their state from `unconfirmed` to `owner_waived`. All other fields and the third failed request were preserved. This is an owner-authorized local release, not proof that OpenAI canceled those old attempts or that their unknown usage was zero. Future uncertain requests retain the existing conservative admission rules. See [[Project Rooms/Smart House/working/owner-discarded-voice-tests-20261027]].
