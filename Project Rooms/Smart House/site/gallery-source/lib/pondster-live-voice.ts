@@ -40,7 +40,7 @@ type Attempt = {
   cancelled: Promise<symbol>; cancel(): void;
   startPromise: Promise<void>; ready(): void;
   captions: Record<'you' | 'Pondster', Caption>;
-  closeSent: boolean; stopSent: boolean;
+  closeSent: boolean; stopSent: boolean; startedSent: boolean;
 };
 const CANCELLED = Symbol('cancelled');
 const ROOMS = new Set(['kitchen', 'media-center', 'front-elevation', 'garage-barn-door', 'adu', 'master-bath', 'hall-bath', 'spiral-staircase', 'back-deck']);
@@ -292,6 +292,10 @@ export function createPondsterLiveVoice(options: PondsterLiveVoiceOptions): Pond
       await guard(a, peer.setRemoteDescription({ type: 'answer', sdp: transport.sdp }));
       await startedWait;
       if (!live(a)) return;
+      if (!a.startedSent) {
+        if (!send(a.control, { type: 'pondster.started' })) throw new Error('control');
+        a.startedSent = true;
+      }
       notify({ connecting: false, active: true,
         status: state.audioBlocked ? 'Tap Play my voice to hear me. You can still type to me.' : 'I’m listening. You can speak naturally.' });
     } catch (error) {
@@ -314,7 +318,7 @@ export function createPondsterLiveVoice(options: PondsterLiveVoiceOptions): Pond
       mic: null, peer: null, channel: null, control: null, abort: new AbortController(), timers: new Set(),
       cancelled, cancel, startPromise: Promise.resolve(), ready: () => {},
       captions: { you: { text: '', lastEnd: null, timer: null }, Pondster: { text: '', lastEnd: null, timer: null } },
-      closeSent: false, stopSent: false };
+      closeSent: false, stopSent: false, startedSent: false };
     current = a; attempts.add(a);
     notify({ connecting: true, active: false, heard: '', audioBlocked: false, status: 'Connecting my live voice…' });
     a.startPromise = run(a); return a.startPromise;

@@ -1,6 +1,8 @@
 import { basementColorSchemes, masterBathDesigns, hallBathDesigns } from './features.js';
 
-export type Design = { id: string; title: string; image: string; detail: string; fullImage?: boolean };
+export type DesignView = { image: string; label: string };
+// Optional views are one choice's ordered pictures; the first is its primary image.
+export type Design = { id: string; title: string; image: string; detail: string; fullImage?: boolean; views?: DesignView[] };
 export type Gallery = { id: string; name: string; summary: string; designs: Design[] };
 export const galleries: Gallery[] = [
   { id: 'kitchen', name: 'Kitchen', summary: 'I will feature cabinetry, surfaces, lighting, and my everyday details.', designs: [] },
@@ -28,6 +30,13 @@ export const galleries: Gallery[] = [
     { id: 'spiral-01', title: 'Black spiral staircase', image: 'home-theater-spiral-staircase-amber.png', fullImage: true, detail: 'In this design, I will feature black spiral stairs with amber tread and cove lighting beside my home theater. My AI concept does not confirm dimensions, clearances, or construction details.' },
     ...basementColorSchemes.map(scheme => ({ id: `spiral-basement-${scheme.slug}`, title: `Stair setting · ${scheme.title}`, image: scheme.image, detail: scheme.detail, fullImage: true }))
   ] },
-  { id: 'back-deck', name: 'Back Deck', summary: 'I will feature a back deck for outdoor living. My layout, materials, and finishes remain to be specified.', designs: [] }
+  { id: 'back-deck', name: 'Back Deck', summary: 'I will feature an oak courtyard deck for outdoor living. My overview and closer view show one design choice; my materials, dimensions, and construction details still need confirmation.', designs: [
+    { id: 'oak-courtyard', title: 'Oak courtyard deck', image: '/images/deck/oak-courtyard-overview.png', fullImage: true,
+      views: [
+        { image: '/images/deck/oak-courtyard-overview.png', label: 'Courtyard overview' },
+        { image: '/images/deck/oak-courtyard-closeup.png', label: 'Closer view' }
+      ],
+      detail: 'I will feature an oak deck in my courtyard. My overview and closer view show the same design, with one shared vote. These are illustrative concepts; my exact materials, dimensions, structure, and construction details still need confirmation.' }
+  ] }
 ];
 export const allDesigns = galleries.flatMap(gallery => gallery.designs.map(design => ({...design, room: gallery.name})));

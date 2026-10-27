@@ -81,6 +81,35 @@ function idle(state) {
   assert.equal(state.outputActive, false);
 }
 
+// Explicit browser voice startup can greet before the visitor speaks. Starting
+// recognition is detached during synthesis, then the chosen mode resumes once.
+for (const mode of ['question', 'wake']) {
+  const h = setup();
+  assert.equal(h.utterances.length, 0, 'Constructing browser voice never starts a greeting.');
+  h.voice.listen(mode);
+  const pendingRecognition = h.engine(), before = h.starts();
+  const greeting = 'Hello, I’m Pondster. What would you like to know about me?';
+  h.voice.speak(greeting);
+  assert.equal(h.state().session, true);
+  assert.equal(h.state().listening, false);
+  assert.equal(pendingRecognition.onresult, null, 'Recognition cannot hear the spoken greeting.');
+  assert.ok(pendingRecognition.aborts > 0);
+  assert.equal(h.utterances.length, 1);
+  assert.equal(h.utterances[0].text, greeting);
+  h.utterances[0].onstart();
+  assert.equal(h.starts(), before, 'Listening stays paused during greeting playback.');
+  const ended = h.utterances[0].onend;
+  ended();
+  assert.equal(h.starts(), before + 1);
+  assert.equal(h.engine().continuous, mode === 'wake', 'The originally chosen listening mode resumes.');
+  ended();
+  assert.equal(h.starts(), before + 1, 'A late duplicate playback event cannot restart listening again.');
+  h.engine().onstart();
+  assert.equal(h.state().listening, true);
+  assert.equal(h.questions.length, 0, 'The greeting does not become a visitor question.');
+  h.voice.destroy();
+}
+
 {
   const h = setup({ factoryThrows: true });
   assert.ok(h.states.length, 'An initial state is delivered even when construction fails.');

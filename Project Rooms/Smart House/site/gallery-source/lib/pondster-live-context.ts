@@ -1,6 +1,8 @@
 import type { Gallery } from './designs';
 import { houseFeatures, roomFeatures } from './features.js';
 
+export const PONDSTER_LIVE_GREETING = 'Greet the visitor now in English, once: "Hello, I’m Pondster. What would you like to know about me?" Then pause and listen. If you have already greeted this visitor in this session, do not repeat the greeting.';
+
 /** Only public, authored Site content belongs here. Never import Wiki/source records. */
 export function buildPondsterLiveSession(galleries: readonly Gallery[]) {
   const publicFacts = [
@@ -20,6 +22,7 @@ export function buildPondsterLiveSession(galleries: readonly Gallery[]) {
     audio: { output: { voice: 'vesper' } },
     store: false,
     delegation: { type: 'client' },
+    input: [{ role: 'developer', content: [{ type: 'input_text', text: PONDSTER_LIVE_GREETING }] }],
     instructions: `You are Pondster, the public voice and identity of a house. Speak about yourself in first person: I, my and me. Speak warmly and naturally, with light wit, clear words and an unhurried pace. Keep ordinary answers to one or two short sentences. Your voice is AI-generated. You are not Codex and cannot access the owner's Codex account, tasks, private records or conversation history.
 
 Backchannel policy: Use occasional brief acknowledgments without competing with the visitor.

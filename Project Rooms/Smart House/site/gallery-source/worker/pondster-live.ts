@@ -34,6 +34,7 @@ type ControllerOptions = {
   createSession: (sdp: string, signal: AbortSignal, requestId: string) => Promise<{ id: string; sdp: string }>;
   attach: (id: string, signal: AbortSignal) => Promise<Socket>;
   answer: (question: string) => PublicAnswer;
+  greetingInstructions?: () => string | null;
   now?: () => number;
   setTimer?: (callback: () => void, milliseconds: number) => ReturnType<typeof setTimeout>;
   clearTimer?: (timer: ReturnType<typeof setTimeout>) => void;
@@ -130,6 +131,19 @@ function actionIsPublic(action: PublicAction) {
     && (!action.scene || ['day', 'evening', 'relax'].includes(action.scene));
 }
 
+function greetingFromSession(session: unknown) {
+  // Read only the trusted server-built startup developer seed, never client text.
+  if (session === null || typeof session !== 'object' || Array.isArray(session) || !('input' in session)) return null;
+  const input = session.input;
+  if (!Array.isArray(input)) return null;
+  const message: unknown = input[0];
+  if (message === null || typeof message !== 'object' || Array.isArray(message) || !('role' in message) || message.role !== 'developer'
+    || !('content' in message) || !Array.isArray(message.content) || message.content.length !== 1) return null;
+  const part: unknown = message.content[0];
+  if (part === null || typeof part !== 'object' || Array.isArray(part) || !('type' in part) || part.type !== 'input_text' || !('text' in part)) return null;
+  return typeof part.text === 'string' && part.text.length > 0 && part.text.length <= 1000 ? part.text : null;
+}
+
 export function createPondsterLiveControl(options: ControllerOptions) {
   const now = options.now ?? Date.now;
   const setTimer = options.setTimer ?? setTimeout;
@@ -146,6 +160,7 @@ export function createPondsterLiveControl(options: ControllerOptions) {
   let attempted = false;
   let creationRejected = false;
   let ready = false;
+  let greetingSent = false;
   let closing = false;
   let finished = false;
   let confirmed = false;
@@ -309,6 +324,18 @@ export function createPondsterLiveControl(options: ControllerOptions) {
       requestId = input.requestId.toLowerCase();
       starting = start(input.sdp); return starting;
     }
+    if (input.type === 'pondster.started') {
+      // The browser acknowledges provider session.started on its existing control
+      // socket. Only this server chooses the greeting and writes trusted context.
+      if (!ready || !sideband || greetingSent) return;
+      try {
+        const content = options.greetingInstructions?.();
+        if (!content) return;
+        greetingSent = true;
+        sideband.send(JSON.stringify({ type: 'session.commentary.append', event_id: crypto.randomUUID(), delegation_id: null, content }));
+      } catch { error('I couldn’t begin my voice greeting. Please try again later.'); return stop(); }
+      return;
+    }
     if (input.type === 'pondster.text' && ready && typeof input.text === 'string' && input.text.trim().length > 0 && input.text.length <= 1000) {
       if (textCount >= 20 || now() - lastTextAt < 2000) { error('Please give me a moment before your next question.'); return; }
       textCount++; lastTextAt = now();
@@ -333,13 +360,18 @@ export async function handlePondsterLiveControl(request: Request, env: VoiceEnvi
   const pair = new WebSocketPair();
   const [client, server] = Object.values(pair);
   server.accept();
+  let startupGreeting: string | null = null;
   const control = createPondsterLiveControl({
     client: server, store: d1VoiceStore(env.DB!), visitorKey, answer, track: task => ctx.waitUntil(task),
+    greetingInstructions: () => startupGreeting,
     async createSession(sdp, signal, clientRequestId) {
       let response: Response;
-      try { response = await fetch('https://api.openai.com/v1/live/sessions', {
+      try {
+        const session = buildSession();
+        startupGreeting = greetingFromSession(session);
+        response = await fetch('https://api.openai.com/v1/live/sessions', {
         method: 'POST', headers: { Authorization: `Bearer ${env.OPENAI_API_KEY!.trim()}`, 'Content-Type': 'application/json', 'X-Client-Request-Id': clientRequestId },
-        body: JSON.stringify({ session: buildSession(), transport: { type: 'webrtc', sdp } }), signal, redirect: 'manual'
+        body: JSON.stringify({ session, transport: { type: 'webrtc', sdp } }), signal, redirect: 'manual'
       }); } catch (failure) {
         console.warn('pondster.voice.provider', JSON.stringify({ stage: 'create-fetch', httpStatus: null, code: safeNetworkCode(failure, signal.aborted) }));
         throw new Error('voice unavailable');

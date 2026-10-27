@@ -8,7 +8,8 @@ type Recognition = { start:()=>void; abort:()=>void };
 type SpeechWindow = Window & { SpeechRecognition?:new()=>Recognition; webkitSpeechRecognition?:new()=>Recognition };
 type VoiceState = { available:boolean; speechAvailable:boolean; session:boolean; listening:boolean; speaking:boolean; outputActive:boolean; status:string; heard:string };
 type Message = { who:'you'|'Pondster'; text:string };
-const greeting = "Hello, I’m Pondster, the voice and identity of this house. My location is confidential for now—think witness protection, with better curb appeal. Ask me about my design choices, visiting, and future owner experience.";
+const greeting = "Hello, I’m Pondster, the voice and persona of this house. My location is confidential for now—think witness protection, with better curb appeal. Ask me about my design choices, visiting, and future owner experience.";
+const voiceGreeting = 'Hello, I’m Pondster. What would you like to know about me?';
 
 export type PondsterGuideHandle = { activateVoice:()=>void };
 type GuideProps = { open:boolean; onOpenChange:(open:boolean)=>void; onAction:(action:GuideAction)=>void; onReturnFocus:()=>void };
@@ -86,6 +87,8 @@ export default forwardRef<PondsterGuideHandle,GuideProps>(function PondsterGuide
     liveController.current?.stop();
     spoken.current=true;setSpeakReplies(true);
     controller.current?.listen(keepListening?'wake':'question');
+    // speak() pauses this explicit listening session and resumes it after playback.
+    if(voiceState.current.session)controller.current?.speak(voiceGreeting);
   }
   function isVoiceActive(){return liveState.current.active||liveState.current.connecting||voiceState.current.session||voiceState.current.outputActive;}
   useImperativeHandle(ref,()=>({activateVoice(){onOpenChange(true);if(!isVoiceActive())startSelectedVoice();}}));

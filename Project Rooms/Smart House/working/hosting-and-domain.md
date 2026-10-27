@@ -610,3 +610,17 @@ Wes directed, “change it to Vesper.” The fixed server-owned default changes 
 The existing voice-context check, production build, source diff check and 170-file private secret-absence scan passed. Source review confirmed exactly the default and its existing assertion changed. Two text mirrors match the independent checkout. The existing approved API key is reused. Model, instructions, public scope, delegation, lifecycle, limits and audience remain unchanged.
 
 The custom-domain status endpoint returned HTTP 200 and available=true after publication. This confirms availability, not an audible Vesper test. No microphone, provider voice session, production vote/comment write, key change or billing action was performed by Codex. Opening the production page in Codex returned queued. The user should refresh https://pondstr.com and start a new natural conversation to hear Vesper.
+
+## Two-view Back Deck choice and logo greeting — version 65, 2026-10-27
+
+Wes selected one voting choice with two deck views and asked Pondster to speak first after logo activation. Back Deck now has Oak courtyard deck (oak-courtyard), with an overview and closeup sharing one vote. Card controls and the lightbox browse both pictures; Explore and the automatic tour use the overview. The catalog has 31 choices across nine galleries, and the tour has seven scenes with three films.
+
+A new Natural conversation seeds trusted developer greeting instructions and sends them once through the server sideband after a fixed browser startup acknowledgement. Vesper and existing permission/lifecycle/usage fences remain. Explicit Browser voice start greets with synthesis recognition pause/resume. Hover only shows the native invitation. The chat introduction says voice and persona. The startup greeting is model-generated; provider acceptance alone does not prove audible playback. Wes confirmed: Yes, Pondster greets me first. Native request 16723377-bc0a-40b9-b058-4541fd859618 received a provider ID and closed with 94 seconds of provider-confirmed final usage (final_usage_confirmed=1). This verifies the fresh Vesper greeting and clean closure for this trial.
+### Release identity
+
+- Source: `3f679988b8e1a164fd49a27b6520d3eb554c8e6a`.
+- Saved version: `appgprj_6ad4d98e08708191858cab113814704e~appgver_905826905abc8191aabd0e68690ac40a`.
+- Deployment: `appgdep_6ae10951d3d48191bf95ec7ac739ecd9`, succeeded `2026-10-27T20:28:13.646080+00:00`, environment revision **4**.
+- Archive: `sha256:2dd0836a153a6b34179ec925fbd0868b3c779b0da2cd1553ec45fb4b248977f6`, 125 files, 60467200 bytes.
+
+The official source helper pushed and packaged the verified source. Public access is preserved. No production vote/comment write, provider voice call, new key or billing action was performed by Codex. Opening the public page in Codex returned queued. Source PNG chunk inspection found no text/EXIF chunks and no private location/path strings in the overview provenance chunk; original provenance remains intact.

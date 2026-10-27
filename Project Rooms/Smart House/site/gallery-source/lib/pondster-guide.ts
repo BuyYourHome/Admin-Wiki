@@ -17,7 +17,7 @@ const rooms = [
   { id: 'master-bath', name: 'Master Bath', aliases: ['master bath', 'primary bath', 'main bath', 'bathroom'], choices: masterBathDesigns.map(design => design.title) },
   { id: 'hall-bath', name: 'Hall Bath', aliases: ['hall bath', 'hall bathroom', 'hallway bath', 'hallway bathroom', 'tub and shower', 'tub shower', 'floating vanity'], choices: hallBathDesigns.map(design => design.title) },
   { id: 'spiral-staircase', name: 'Home Theatre', aliases: ['home theatre', 'home theater', 'theatre', 'theater', 'cinema', 'basement', 'spiral staircase', 'spiral stairs', 'spiral', 'staircase', 'stairs', 'stair setting', 'sequential stair lights'], choices: ['Black spiral staircase', ...basementColorSchemes.map(scheme => `Stair setting · ${scheme.title}`)] },
-  { id: 'back-deck', name: 'Back Deck', aliases: ['back deck', 'rear deck', 'deck'], choices: [] as string[] }
+  { id: 'back-deck', name: 'Back Deck', aliases: ['back deck', 'rear deck', 'deck', 'courtyard'], choices: ['Oak courtyard deck'] }
 ];
 const choiceAliases: Record<string, string[]> = {
   'Warm Ivory Cream': ['warm ivory', 'ivory cream'],
@@ -117,7 +117,7 @@ export function answerPondster(input: string): GuideReply {
     const action: GuideAction = { menu: 'Design', room: room.id };
     if (choice) return { text: `I have ${choice.title} as an AI design concept in my ${room.name} gallery. I’m opening it so you can compare my options. My concept images do not confirm installed materials or finished work.`, action };
     if (!room.choices.length) return { text: `I will add design images to my ${room.name} gallery. I don’t have choices or specifications to share for it yet.`, action };
-    return { text: `I have ${room.choices.length} AI concept choices for my ${room.name}: ${room.choices.join('; ')}. I’m sharing visual studies, not confirmed materials or finished work.`, action };
+    return { text: `I have ${room.choices.length} AI concept choice${room.choices.length === 1 ? '' : 's'} for my ${room.name}: ${room.choices.join('; ')}. I’m sharing visual studies, not confirmed materials or finished work.`, action };
   }
   if (/\b(lights?|lighting|scenes?|daylight|daytime|evening|unwind|relax|night)\b/.test(words) || has('day mode')) {
     const scene: 'day' | 'evening' | 'relax' = /\b(unwind|relax|night)\b/.test(words) ? 'relax' : has('evening') ? 'evening' : 'day';

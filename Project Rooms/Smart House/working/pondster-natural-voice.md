@@ -2,6 +2,8 @@
 
 ## Current verified result — 2026-10-27
 
+Version 65 adds a trusted greeting on explicit Natural conversation startup, plus a short Browser voice greeting and a hover invitation. The application sends one server-owned greeting after provider readiness; hover, ordinary Ask and passive panel opening start no audio or microphone. Current post-publication status is available. Wes confirmed: Yes, Pondster greets me first. Native request 16723377-bc0a-40b9-b058-4541fd859618 received a provider ID and closed with 94 seconds of provider-confirmed final usage (final_usage_confirmed=1). This verifies the fresh Vesper greeting and clean closure for this trial. See [[Project Rooms/Smart House/working/deck-and-logo-greeting-20261027]].
+
 Current default voice: **Vesper** (British masculine), published in Sites version 64 at Wes's direction. It applies to new Natural conversation sessions. The earlier audible confirmations below used Marin; no automated Vesper microphone test was performed.
 
 Wes selected **Vesper (British masculine)** on 2026-10-27 as the intended default for new Natural conversation sessions. The initial successful audible tests used Marin. Voice is fixed at session startup, so hearing a changed default requires a new session.

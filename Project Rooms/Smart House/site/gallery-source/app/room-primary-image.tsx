@@ -2,12 +2,13 @@
 
 import { useEffect, useState } from 'react';
 import { galleries } from '../lib/designs';
+import { designImageSource } from '../lib/design-views';
 
 export default function RoomPrimaryImage({ galleryId, roomName }: { galleryId?: string; roomName: string }) {
   const gallery = galleries.find(item => item.id === galleryId);
   const design = gallery?.designs[0];
   const [failed, setFailed] = useState(false);
-  const image = design ? `/concepts/${design.image}` : undefined;
+  const image = design ? designImageSource(design.image) : undefined;
   useEffect(() => setFailed(false), [image]);
   const related = gallery && gallery.name !== roomName;
 

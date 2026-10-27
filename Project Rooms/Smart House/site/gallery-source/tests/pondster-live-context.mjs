@@ -1,5 +1,5 @@
 import assert from 'node:assert/strict';
-import { buildPondsterLiveSession } from '../lib/pondster-live-context.ts';
+import { buildPondsterLiveSession, PONDSTER_LIVE_GREETING } from '../lib/pondster-live-context.ts';
 import { galleries } from '../lib/designs.ts';
 
 const session = buildPondsterLiveSession(galleries);
@@ -7,6 +7,9 @@ assert.equal(session.model, 'gpt-live-1');
 assert.equal(session.audio.output.voice, 'vesper');
 assert.equal(session.store, false);
 assert.deepEqual(session.delegation, { type: 'client' });
+assert.deepEqual(session.input, [{ role: 'developer', content: [{ type: 'input_text', text: PONDSTER_LIVE_GREETING }] }]);
+assert.match(PONDSTER_LIVE_GREETING, /Hello, I’m Pondster\. What would you like to know about me\?/);
+assert.match(PONDSTER_LIVE_GREETING, /once.*pause and listen.*do not repeat/);
 assert.deepEqual(session.client.data_channel.allowed_client_events, ['session.close']);
 assert.ok(session.client.data_channel.allowed_server_events.every(event => typeof event.type === 'string'));
 assert.ok(!session.client.data_channel.allowed_server_events.some(event => event.type === 'session.delegation.created'));

@@ -296,6 +296,59 @@ for (const stage of ['create-fetch', 'attach-fetch']) {
   } finally { globalThis.Response = NativeResponse; globalThis.fetch = originalFetch; globalThis.WebSocketPair = OriginalPair; console.warn = originalWarn; }
 }
 
+// The actual Worker adapter reuses its trusted startup developer input for the
+// sideband greeting. The browser supplies only readiness, never greeting text.
+for (const seedShape of ['valid', 'null-session', 'array-session', 'null-developer', 'null-part']) {
+  const NativeResponse = globalThis.Response, originalFetch = globalThis.fetch, OriginalPair = globalThis.WebSocketPair;
+  const client = new FakeSocket(), server = new FakeSocket(), sideband = new FakeSocket(), tasks = [];
+  const greeting = 'Synthetic trusted startup greeting, once, then listen.';
+  const seed = [{ role: 'developer', content: [{ type: 'input_text', text: greeting }] }];
+  // The fake transport accepts these malformed configurations only to exercise
+  // structural validation without ever calling a real provider.
+  const sessionConfig = seedShape === 'null-session' ? null : seedShape === 'array-session' ? []
+    : { model: 'gpt-live-1', input: seedShape === 'null-developer' ? [null]
+      : seedShape === 'null-part' ? [{ role: 'developer', content: [null] }] : seed };
+  let postedSession;
+  sideband.onSend = event => {
+    if (event.type === 'session.close') queueMicrotask(() => sideband.emit({ type: 'session.closed', usage: { seconds: 3 } }));
+  };
+  globalThis.WebSocketPair = class { constructor() { return { 0: client, 1: server }; } };
+  globalThis.Response = function(body, init) {
+    if (init?.status === 101) return { status: 101, webSocket: init.webSocket };
+    return new NativeResponse(body, init);
+  };
+  globalThis.fetch = async (url, init) => {
+    if (url === 'https://api.openai.com/v1/live/sessions') {
+      postedSession = JSON.parse(init.body).session;
+      return new NativeResponse(JSON.stringify({ session: { id: 'live_greeting_synthetic' }, transport: { type: 'webrtc', sdp: 'v=0\r\ns=synthetic-answer\r\n' } }), { status: 201 });
+    }
+    assert.equal(url, 'https://api.openai.com/v1/live/sessions/live_greeting_synthetic/attach');
+    return { webSocket: sideband };
+  };
+  const mockD1 = { prepare() { return { bind() { return { async run() { return { success: true, meta: { changes: 1 } }; } }; } }; } };
+  try {
+    await handlePondsterLiveControl(new Request('https://pondstr.test/api/voice/control', { headers: baseHeaders }),
+      { DB: mockD1, OPENAI_API_KEY: secret }, { waitUntil(task) { tasks.push(task); } },
+      () => sessionConfig, () => ({ text: 'Synthetic public answer' }));
+    server.emit({ type: 'pondster.start', requestId: id(115), sdp: 'v=0\r\ns=synthetic-offer\r\n' });
+    await flush(); await Promise.all(tasks);
+    assert.deepEqual(postedSession, sessionConfig);
+    assert.equal(sideband.sent.length, 0, 'No sideband greeting is sent before provider-readiness acknowledgement.');
+    server.emit({ type: 'pondster.started', text: 'untrusted replacement', content: 'untrusted content' });
+    server.emit({ type: 'pondster.started' });
+    await flush(); await Promise.all(tasks);
+    assert.equal(sideband.sent.length, seedShape === 'valid' ? 1 : 0, 'Malformed or null startup seeds cannot become a trusted greeting.');
+    if (seedShape === 'valid') {
+      assert.equal(sideband.sent[0].type, 'session.commentary.append');
+      assert.equal(sideband.sent[0].delegation_id, null);
+      assert.equal(sideband.sent[0].content, greeting, 'The exact startup seed is reused; untrusted fields are ignored.');
+    }
+  } finally {
+    server.emit({ type: 'pondster.stop' }); await flush(); await Promise.all(tasks);
+    globalThis.Response = NativeResponse; globalThis.fetch = originalFetch; globalThis.WebSocketPair = OriginalPair;
+  }
+}
+
 {
   const f = fixture();
   await f.control.message(start(100));
@@ -304,6 +357,43 @@ for (const stage of ['create-fetch', 'attach-fetch']) {
   await f.control.message(start(101)); await f.control.completed;
   assert.equal(f.creates(), 1, 'A second start never creates another provider session.');
   assert.equal(f.records.at(-1).finish.state, 'closed');
+}
+{
+  const greeting = 'Greet the visitor once in English, then pause and listen.';
+  const f = fixture({ greetingInstructions: () => greeting });
+  await f.control.message(JSON.stringify({ type: 'pondster.started', content: 'untrusted early text' }));
+  assert.equal(f.creates(), 0, 'A readiness acknowledgement cannot create a session.');
+  await f.control.message(start(112));
+  assert.equal(f.sideband.sent.length, 0, 'The server waits for the browser to observe provider session.started.');
+  await f.control.message(JSON.stringify({ type: 'pondster.started', content: 'untrusted greeting replacement', text: 'untrusted text' }));
+  const first = f.sideband.sent[0];
+  assert.equal(first.type, 'session.commentary.append');
+  assert.equal(first.delegation_id, null);
+  assert.equal(first.content, greeting, 'Only server-owned greeting instructions are sent to the trusted sideband.');
+  assert.match(first.event_id, /^[0-9a-f-]{36}$/);
+  await f.control.message(JSON.stringify({ type: 'pondster.started' }));
+  assert.equal(f.sideband.sent.length, 1, 'A repeated readiness event never repeats the greeting.');
+  await f.control.stop();
+  await f.control.message(JSON.stringify({ type: 'pondster.started' }));
+  assert.equal(f.sideband.sent.filter(event => event.type === 'session.commentary.append').length, 1, 'Stopped sessions never greet again.');
+
+  const next = fixture({ greetingInstructions: () => greeting });
+  await next.control.message(start(113));
+  await next.control.message(JSON.stringify({ type: 'pondster.started' }));
+  assert.equal(next.sideband.sent.length, 1, 'A new session gets its own single greeting.');
+  assert.notEqual(next.sideband.sent[0].event_id, first.event_id);
+  await next.control.stop();
+}
+{
+  let resolveSession;
+  const f = fixture({ greetingInstructions: () => 'Synthetic greeting', createSession() { return new Promise(resolve => { resolveSession = resolve; }); } });
+  const pending = f.control.message(start(114)); await flush();
+  await f.control.message(JSON.stringify({ type: 'pondster.started' }));
+  assert.equal(f.sideband.sent.length, 0, 'Readiness received during setup cannot start a greeting.');
+  const stopped = f.control.stop();
+  resolveSession({ id: 'live_stopped_before_greeting', sdp: 'v=0\r\ns=synthetic-answer\r\n' });
+  await pending; await stopped;
+  assert.deepEqual(f.sideband.sent.map(event => event.type), ['session.close'], 'Cancelled setup performs trusted cleanup without greeting.');
 }
 {
   const f = fixture({ store: { async reserve() { return false; }, async activate() { throw new Error(); }, async finish() { throw new Error(); } } });

@@ -102,8 +102,8 @@ export const roomFeatures = {
     'My twelve-second concept film keeps my full screen-and-staircase scene in view while my stair lights illuminate in sequence. I keep its original amber palette; it does not change to match a winning color.',
     'My color studies are visual concepts, not manufacturer paint specifications or proof of installed finishes. My dimensions, clearances, materials, and construction details still need confirmation.'
   ] },
-  'back-deck': { status: 'IN MY PLANS', features: [
-    'I will feature my back deck as an outdoor living space.',
-    'My back-deck layout, materials, and finishes remain to be specified.'
+  'back-deck': { status: 'DESIGN CONCEPT', features: [
+    'I will feature my back deck as an outdoor living space. My oak courtyard concept has one voting choice with an overview and a closer view.',
+    'In this concept, my warm wood tones, railings and broad central steps open onto my courtyard. My dimensions, materials and final construction details still need verification.'
   ] }
 };

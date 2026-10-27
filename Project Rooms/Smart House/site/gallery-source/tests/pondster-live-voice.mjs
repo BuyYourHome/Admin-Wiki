@@ -88,7 +88,7 @@ function control(url, log) {
   });
 }
 
-function setup({ mediaGate, fetchGate, status = { available: true }, iceComplete = true, playPlans = [] } = {}) {
+function setup({ mediaGate, fetchGate, remoteGate, status = { available: true }, iceComplete = true, playPlans = [] } = {}) {
   const clock = fakeClock(), log = [], tracks = [track()], media = stream([...tracks]);
   const peers = [], controls = [], states = [], transcripts = [], actions = [], requests = [];
   let mediaCalls = 0;
@@ -109,7 +109,14 @@ function setup({ mediaGate, fetchGate, status = { available: true }, iceComplete
       if (mediaCalls === 1) return media;
       const next = track(); tracks.push(next); return stream([next]);
     },
-    peerFactory: () => { const value = peer(log, { iceComplete }); peers.push(value); return value; },
+    peerFactory: () => {
+      const value = peer(log, { iceComplete });
+      if (remoteGate) {
+        const applyAnswer = value.setRemoteDescription.bind(value);
+        value.setRemoteDescription = async description => { await remoteGate.promise; await applyAnswer(description); };
+      }
+      peers.push(value); return value;
+    },
     fetcher: async (url, options = {}) => {
       requests.push({ url, options });
       if (fetchGate) await new Promise((resolve, reject) => {
@@ -160,6 +167,8 @@ async function connect(harness, start = harness.voice.start(), maxDurationSecond
   return { peer: harness.peer(), control: harness.control(), events: harness.peer().events };
 }
 
+function startedAcks(socket) { return socket.sent.filter(message => message.type === 'pondster.started'); }
+
 async function dispose(harness) {
   harness.voice.dispose(); harness.clock.advance(10000); await flush();
   assert.equal(harness.clock.pending(), 0, 'Disposal leaves no timeout jobs after the close grace period.');
@@ -195,12 +204,65 @@ async function dispose(harness) {
   assert.deepEqual(h.peer().remoteDescription, { type: 'answer', sdp: 'mock-remote-answer' });
   assert.equal(h.state().active, false, 'A server answer alone cannot activate voice.');
   assert.equal(h.state().connecting, true);
+  assert.deepEqual(startedAcks(h.control()), [], 'The browser cannot acknowledge startup before provider session.started.');
   h.peer().events.open(); h.peer().events.receive({ type: 'session.started' });
   await settle(h, Promise.all([first, second]));
   assert.equal(h.state().active, true); assert.equal(h.state().connecting, false);
+  assert.deepEqual(startedAcks(h.control()), [{ type: 'pondster.started' }], 'Readiness sends exactly one fixed control acknowledgement.');
+  assert.deepEqual(h.peer().events.sent, [], 'The acknowledgement does not use the provider data channel.');
+  h.peer().events.receive({ type: 'session.started' });
+  h.control().receive({ type: 'pondster.ready', session: { id: 'session-one' }, transport: { type: 'webrtc', sdp: 'mock-remote-answer' } });
+  await flush();
   await h.voice.start();
+  assert.deepEqual(startedAcks(h.control()), [{ type: 'pondster.started' }], 'Duplicate started/ready events and repeated Start never resend readiness.');
   assert.equal(h.mediaCalls(), 1); assert.equal(h.peers.length, 1); assert.equal(h.controls.length, 1);
   assert.equal(h.requests.length, 1, 'An already active session is not renegotiated.');
+  await dispose(h);
+}
+
+// Provider startup cannot acknowledge an unfinished, cancelled, or failed answer application.
+for (const outcome of ['ready', 'cancelled', 'failed']) {
+  const gate = deferred(), h = setup({ remoteGate: gate });
+  const result = Promise.allSettled([h.voice.start()]); await flush();
+  const socket = h.control(); socket.open(); await flush();
+  socket.receive({ type: 'pondster.ready', session: { id: 'session-one' }, transport: { type: 'webrtc', sdp: 'mock-remote-answer' } });
+  await flush();
+  h.peer().events.open(); h.peer().events.receive({ type: 'session.started' }); await flush();
+  assert.deepEqual(startedAcks(socket), [], 'Provider session.started alone cannot bypass pending setRemoteDescription.');
+  if (outcome === 'cancelled') h.voice.stop();
+  if (outcome === 'failed') gate.reject(new Error('The answer could not be applied.'));
+  else gate.resolve();
+  const [finished] = await settle(h, result);
+  if (outcome === 'ready') {
+    assert.equal(finished.status, 'fulfilled');
+    assert.deepEqual(startedAcks(socket), [{ type: 'pondster.started' }]);
+  } else {
+    assert.equal(finished.status, outcome === 'failed' ? 'rejected' : 'fulfilled');
+    h.peer().events.receive({ type: 'session.started' });
+    socket.receive({ type: 'pondster.ready', session: { id: 'session-one' }, transport: { type: 'webrtc', sdp: 'mock-remote-answer' } });
+    await flush();
+    assert.deepEqual(startedAcks(socket), [], 'A cancelled or failed attempt cannot acknowledge late startup events.');
+    assert.equal(h.state().active, false); assert.ok(h.tracks.every(item => item.stopCalls > 0));
+  }
+  await dispose(h);
+}
+
+// A failed readiness send follows the existing startup failure and cleanup path.
+{
+  const h = setup(), result = Promise.allSettled([h.voice.start()]); await flush();
+  const socket = h.control(), originalSend = socket.send.bind(socket);
+  socket.send = data => {
+    if (JSON.parse(data).type === 'pondster.started') throw new Error('Control send failed.');
+    originalSend(data);
+  };
+  socket.open(); await flush();
+  socket.receive({ type: 'pondster.ready', session: { id: 'session-one' }, transport: { type: 'webrtc', sdp: 'mock-remote-answer' } });
+  await flush(); h.peer().events.open(); h.peer().events.receive({ type: 'session.started' });
+  const [finished] = await settle(h, result);
+  assert.equal(finished.status, 'rejected'); assert.equal(h.state().active, false);
+  assert.deepEqual(startedAcks(socket), []);
+  assert.ok(socket.sent.some(message => message.type === 'pondster.stop'));
+  assert.ok(h.tracks.every(item => item.stopCalls > 0)); assert.equal(h.audio.srcObject, null);
   await dispose(h);
 }
 
@@ -339,6 +401,8 @@ async function dispose(harness) {
   const stale = { data: old.events.onmessage, control: old.control.onmessage, track: old.peer.ontrack, connection: old.peer.onconnectionstatechange };
   h.voice.stop();
   const fresh = await connect(h);
+  assert.deepEqual(startedAcks(old.control), [{ type: 'pondster.started' }]);
+  assert.deepEqual(startedAcks(fresh.control), [{ type: 'pondster.started' }], 'A new session gets one new readiness acknowledgement.');
   const state = { ...h.state() }, transcriptCount = h.transcripts.length, actionCount = h.actions.length;
   stale.data?.({ data: JSON.stringify({ type: 'session.started' }) });
   stale.data?.({ data: JSON.stringify({ type: 'session.input_transcript.delta', delta: 'stale words' }) });
@@ -351,6 +415,8 @@ async function dispose(harness) {
   assert.ok(late.stopCalls > 0, 'A stale remote track is stopped.');
   assert.equal(fresh.peer.closeCalls, 0); assert.equal(h.tracks.at(-1).stopCalls, 0);
   assert.equal(h.controls.length, 2, 'Stale events never reconnect automatically.');
+  assert.deepEqual(startedAcks(old.control), [{ type: 'pondster.started' }], 'Stopped-session callbacks never resend readiness.');
+  assert.deepEqual(startedAcks(fresh.control), [{ type: 'pondster.started' }]);
   await dispose(h);
 }
 
@@ -398,4 +464,4 @@ for (const event of [{ type: 'pondster.error', message: 'Voice service is unavai
   const count = h.mediaCalls(); await assert.rejects(h.voice.start(), /closed/i); assert.equal(h.mediaCalls(), count);
 }
 
-console.log('PASS: lazy Live voice acquisition; same-origin status/control protocol; bounded ICE and session start; idempotence; permission/fetch cancellation; immediate capture/playback stop and ten-second unconfirmed close drain; typed control/actions; bounded debounced captions; autoplay recovery; stale events; availability and server failures; visibility and three-minute limits; disposal.');
+console.log('PASS: lazy Live voice acquisition; same-origin status/control protocol; one fixed readiness acknowledgement per successful session; bounded ICE and session start; idempotence; permission/fetch cancellation; immediate capture/playback stop and ten-second unconfirmed close drain; typed control/actions; bounded debounced captions; autoplay recovery; stale events; availability and server failures; visibility and three-minute limits; disposal.');
