@@ -12,8 +12,8 @@ import PondsterLogoArt from './pondster-logo-art';
 import GalleryImageViewer from './gallery-image-viewer';
 import type { GuideAction } from '../lib/pondster-guide';
 
-type VoteResults = { scores:Record<string,number>; total:number; selected:string|null };
-const empty:VoteResults = {scores:{},total:0,selected:null};
+type VoteResults = { scores:Record<string,number>; total:number; selected:string|null; roomTotals:Record<string,number> };
+const empty:VoteResults = {scores:{},total:0,selected:null,roomTotals:{}};
 const menus = ['Design','Explore','View','Own','Built By'] as const;
 const menuHash = (menu:string) => menu === 'Own' ? 'belong' : menu.toLowerCase().replace(/\s+/g,'-');
 const menuLabel = (menu:string) => menu === 'Own' ? 'Belong' : menu;
@@ -22,6 +22,9 @@ export default function Home() {
   const [menu,setMenu] = useState<Menu>('View');
   const [room,setRoom] = useState('media-center');
   const [results,setResults] = useState<VoteResults>(empty);
+  const [roomTotals,setRoomTotals] = useState<Record<string,number>>({});
+  const [roomTotalsLoading,setRoomTotalsLoading] = useState(true);
+  const [roomTotalsFailed,setRoomTotalsFailed] = useState(false);
   const [loading,setLoading] = useState(true);
   const [saving,setSaving] = useState(false);
   const [message,setMessage] = useState('');
@@ -42,14 +45,14 @@ export default function Home() {
   useEffect(() => {
     const controller = new AbortController();
     setLoading(true);setMessage('');setFailed(false);setResults(empty);
-    if (!gallery.designs.length) {setLoading(false);return () => controller.abort();}
-    fetch(`/api/votes?room=${encodeURIComponent(room)}`,{cache:'no-store',signal:controller.signal}).then(async response => {const data=await response.json() as VoteResults & {error?:string};if(!response.ok)throw new Error(data.error);return data;}).then(data=>setResults(data)).catch(error=>{if(error.name!=='AbortError'){setMessage('I can’t load the vote totals right now.');setFailed(true);}}).finally(()=>{if(!controller.signal.aborted)setLoading(false);});
+    setRoomTotalsLoading(true);setRoomTotalsFailed(false);
+    fetch(`/api/votes?room=${encodeURIComponent(room)}`,{cache:'no-store',signal:controller.signal}).then(async response => {const data=await response.json() as VoteResults & {error?:string};if(!response.ok)throw new Error(data.error);return data;}).then(data=>{if(controller.signal.aborted)return;setResults(data);setRoomTotals(data.roomTotals);setRoomTotalsFailed(false);}).catch(error=>{if(error.name!=='AbortError'){setMessage('I can’t load the vote totals right now.');setFailed(true);setRoomTotalsFailed(true);}}).finally(()=>{if(!controller.signal.aborted){setLoading(false);setRoomTotalsLoading(false);}});
     return () => controller.abort();
   },[room,retry]);
   useEffect(() => {if(menu!=='Explore' || !showLighting)return;const frame=requestAnimationFrame(()=>{const target=document.getElementById('lighting-features');target?.scrollIntoView({block:'start'});target?.focus({preventScroll:true});setShowLighting(false);});return ()=>cancelAnimationFrame(frame);},[menu,showLighting]);
   async function vote(designId:string) {
     if(saving)return;setSaving(true);setMessage('');
-    try { const response=await fetch('/api/votes',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({room,designId})});const data=await response.json() as VoteResults & {error?:string};if(!response.ok)throw new Error(data.error);setResults(data);setFailed(false);setMessage('I’ve saved your choice. Thank you for helping shape my design.'); }
+    try { const response=await fetch('/api/votes',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({room,designId})});const data=await response.json() as VoteResults & {error?:string};if(!response.ok)throw new Error(data.error);setResults(data);setRoomTotals(data.roomTotals);setRoomTotalsFailed(false);setFailed(false);setMessage('I’ve saved your choice. Thank you for helping shape my design.'); }
     catch(error){setMessage(error instanceof Error ? error.message : 'I couldn’t save your vote. Please try again.');}
     finally{setSaving(false);}
   }
@@ -62,7 +65,7 @@ export default function Home() {
       {menu==='Design' && <>
         <section className="intro"><div><h1>Virtually - A Reality <br className="design-title-break"/><em>Have a say.</em></h1></div><div className="intro-note"><p>I’m exploring ideas for each space. Browse my designs, vote for the ones you love, and help me decide what feels right.</p><span>Explore my {galleries.length} galleries.</span></div></section>
         <section className="pondster-welcome" aria-label="Meet Pondster"><div><p>I’m Pondster, the voice and persona of this house. Ask me about the design ideas and follow my story as it takes shape. My location is confidential for now—think witness protection, with better curb appeal. Jean Wright is my SI designer.</p></div><button onClick={()=>setGuideOpen(true)}>Talk to me <span aria-hidden="true">↗</span></button></section>
-        <section className="design-workspace" aria-label="My design galleries"><aside className="room-nav"><p className="eyebrow">EXPLORE MY ROOMS</p><div role="group" aria-label="Rooms">{galleries.map((item,index)=><button key={item.id} onClick={()=>{if(!saving)setRoom(item.id);}} disabled={saving} aria-pressed={room===item.id}><span className="room-number">0{index+1}</span><span>{item.name}<small>{item.designs.length?`${item.designs.length} ${item.designs.length===1?'design':'designs'}`:'Coming soon'}</small></span><b aria-hidden="true">↗</b></button>)}</div><div className="notebook-note"><span>I’M EXPLORING POSSIBILITIES.</span><p>I use AI concepts to explore how I could look. These aren’t measured plans or photos of my completed spaces.</p></div></aside>
+        <section className="design-workspace" aria-label="My design galleries"><aside className="room-nav"><p className="eyebrow">EXPLORE MY ROOMS</p><div role="group" aria-label="Rooms">{galleries.map((item,index)=>{const total=roomTotals[item.id] ?? (item.designs.length===0?0:undefined);return <button key={item.id} onClick={()=>{if(!saving)setRoom(item.id);}} disabled={saving} aria-pressed={room===item.id}><span className="room-number">0{index+1}</span><span>{item.name}<small>{item.designs.length?`${item.designs.length} ${item.designs.length===1?'design':'designs'}`:'Coming soon'}</small><span className="room-vote-count" title={roomTotalsFailed && total!==undefined?'Last loaded vote count; I couldn’t refresh it.':undefined}>{total!==undefined?`${total} ${total===1?'vote':'votes'} cast`:roomTotalsLoading?'Loading votes…':'Votes unavailable'}</span></span><b aria-hidden="true">↗</b></button>;})}</div><div className="notebook-note"><span>I’M EXPLORING POSSIBILITIES.</span><p>I use AI concepts to explore how I could look. These aren’t measured plans or photos of my completed spaces.</p></div></aside>
         <div className="gallery-area"><div className="gallery-heading"><div><p className="eyebrow">DESIGN GALLERY / {String(galleries.indexOf(gallery)+1).padStart(2,'0')}</p><h2>{gallery.name}</h2><p>{gallery.summary}</p></div>{gallery.designs.length>0 && <span className="vote-total">{loading?'I’m loading votes…':failed?'I can’t load totals':`${results.total} ${results.total===1?'vote':'votes'}`}<small>COMMUNITY PREFERENCES</small></span>}</div>
         {room==='media-center' && <figure className="media-feature"><div className="media-feature-intro"><div><p className="eyebrow">MY LIVING ROOM / IN MOTION</p><h3>Watch me go from art to game time.</h3></div><span>MY 10-SECOND CONCEPT FILM</span></div><ScrollVideo label="My Living Room" ratio="16 / 9"><video controls autoPlay muted playsInline loop preload="metadata" poster="/media/media-center-art-poster.png" aria-label="My Living Room concept: my decorative frame stays fixed while my TV turns toward my kitchen and artwork becomes moving football" aria-describedby="media-motion-caption"><source src="/media/media-center-kitchen-view.mp4" type="video/mp4"/>Your browser can’t play my video here. <a href="/media/media-center-kitchen-view.mp4">Open my video file</a>.</video></ScrollVideo><figcaption id="media-motion-caption"><span>MY AI MOTION CONCEPT</span>I’m showing an illustrative AI concept: my decorative frame stays fixed while my TV turns toward my kitchen and its artwork becomes moving football. My mount mechanics haven’t been validated.<p className="media-source">Football footage: U.S. Marine Corps / Sgt. James Stanfield, via <a href="https://www.dvidshub.net/video/947000/125th-army-navy-football-game-b-roll" target="_blank" rel="noopener noreferrer">DVIDS</a>.<br/>The appearance of U.S. Department of War (DoW) visual information does not imply or constitute DoW endorsement. <a href="https://www.dvidshub.net/about/copyright" target="_blank" rel="noopener noreferrer">Source use notice ↗</a></p></figcaption></figure>}
         {room==='spiral-staircase' && <TheaterMotion/>}

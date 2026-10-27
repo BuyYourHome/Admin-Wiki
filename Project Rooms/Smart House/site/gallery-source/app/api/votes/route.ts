@@ -18,10 +18,14 @@ function withVoterCookie(request: NextRequest, response: NextResponse, key: stri
 }
 async function results(room: string, key: string | null) {
   const db = getDb();
-  const rows = await db.select({ id: designVotes.designId, votes: count() }).from(designVotes).where(eq(designVotes.room, room)).groupBy(designVotes.designId);
+  const rows = await db.select({ room: designVotes.room, id: designVotes.designId, votes: count() }).from(designVotes).groupBy(designVotes.room, designVotes.designId);
   const own = key ? await db.select({ id: designVotes.designId }).from(designVotes).where(and(eq(designVotes.room, room), eq(designVotes.voterKey, key))).limit(1) : [];
   const activeDesignIds = galleries.find(gallery => gallery.id === room)?.designs.map(design => design.id) ?? [];
-  return visibleVotes(rows, own[0]?.id ?? null, activeDesignIds);
+  const roomTotals = Object.fromEntries(galleries.map(gallery => [
+    gallery.id,
+    visibleVotes(rows.filter(row => row.room === gallery.id), null, gallery.designs.map(design => design.id)).total
+  ]));
+  return { ...visibleVotes(rows.filter(row => row.room === room), own[0]?.id ?? null, activeDesignIds), roomTotals };
 }
 export async function GET(request: NextRequest) {
   const room = request.nextUrl.searchParams.get('room');

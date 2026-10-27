@@ -217,3 +217,43 @@ body{padding-bottom:95px}.pondster-welcome{margin:0 4% 30px;padding:20px 24px;bo
 @media(max-width:720px){html{scroll-padding-top:190px}}
 
 .pondster-voice-choice{display:flex;align-items:center;gap:12px;font-size:11px;margin:10px 0 14px}.pondster-voice-choice select{flex:1;min-width:0;padding:9px;border:1px solid #acb5a6;background:var(--white);color:var(--ink);font:12px Arial,sans-serif;min-height:38px}.pondster-resume-audio{padding:10px 12px;min-height:44px;background:var(--ink);color:var(--white);border:0;font-size:12px}.pondster-live-audio:not([hidden]){position:fixed;bottom:95px;right:30px;width:min(320px,calc(100vw - 30px));z-index:42}
+
+.room-nav .room-vote-count{display:block;margin-top:5px;font-size:11px;font-weight:600;color:var(--accent)}
+.room-nav button[aria-pressed=true] .room-vote-count{color:#ead0a9}
+.tour-side-caption{display:none}
+/* Reserve side rails in a short landscape viewport so labels never cover the media. */
+@media (orientation:landscape) and (max-height:600px) and (max-width:1100px){
+ .virtual-tour-dialog{--tour-title-width:clamp(120px,18vw,170px);--tour-controls-width:clamp(116px,16vw,150px)}
+ .tour-stage{inset:0 var(--tour-controls-width) 0 var(--tour-title-width);width:auto;height:100%}
+ .tour-toolbar{inset:0 auto 0 0;width:var(--tour-title-width);padding:max(10px,env(safe-area-inset-top)) 10px max(10px,env(safe-area-inset-bottom)) max(10px,env(safe-area-inset-left));flex-direction:column;align-items:stretch;justify-content:flex-start;gap:14px;background:#0a120e;border-right:1px solid #ffffff20;overflow-y:auto;scrollbar-width:thin}
+ .tour-toolbar>div{flex:0 0 auto}
+ .tour-toolbar .eyebrow{font-size:6px;letter-spacing:.6px;line-height:1.6}
+ .tour-toolbar h2{font-size:clamp(20px,2.8vw,26px);line-height:1.1}
+ .tour-side-caption{display:block;margin-top:16px;overflow-wrap:anywhere}
+ .tour-side-caption small{display:block;font-size:7px;line-height:1.6;letter-spacing:.3px;color:#dfc59b}
+ .tour-side-caption strong{display:block;margin-top:6px;font:17px/1.25 Georgia,serif}
+ .tour-scene-count{font-size:23px}
+ .tour-scene-count small{display:block;font-size:7px;margin-top:5px}
+ .tour-close{margin-top:auto;justify-content:space-between;min-height:44px;padding:9px 10px;font-size:11px;gap:6px}
+ .tour-player-dock{inset:0 0 0 auto;width:var(--tour-controls-width);padding:max(6px,env(safe-area-inset-top)) max(6px,env(safe-area-inset-right)) max(6px,env(safe-area-inset-bottom)) 6px;background:#0a120e;border-left:1px solid #ffffff20;overflow-y:auto;overscroll-behavior:contain;scrollbar-width:thin}
+ .tour-details{margin:0}
+ .tour-details>summary{min-height:44px;padding:8px 4px;gap:0}
+ .tour-details>summary>span:first-child{display:none}
+ .tour-details>summary>span:last-child{font-size:10px;white-space:normal}
+ .tour-details>summary b{margin-left:3px}
+ .tour-details-content{max-height:none;padding:4px}
+ .tour-scene-description{font-size:10px}
+ .tour-scenes{flex-direction:column;overflow-x:visible;gap:6px}
+ .tour-scenes button{white-space:normal;text-align:left;padding:8px 5px;gap:5px;font-size:10px}
+ .tour-player-note,.tour-source-credit{font-size:9px;overflow-wrap:anywhere}
+ .tour-notice{padding:3px 4px;margin-bottom:8px;font-size:10px}
+ .tour-progress{margin:4px 0}
+ .tour-controls{display:flex;flex-direction:column;align-items:stretch;gap:8px;padding:6px 0 0;border:0;background:none}
+ .tour-controls>div,.tour-controls>div:first-child,.tour-controls>div:last-child{display:grid;grid-template-columns:minmax(0,1fr);gap:6px}
+ .tour-controls button{width:100%;min-width:0;min-height:44px;padding:8px 3px;font-size:11px}
+ .tour-controls .tour-play{min-width:0}
+ .tour-loading{inset:0 var(--tour-controls-width) 0 var(--tour-title-width);padding:15px}
+ .tour-empty-notice{left:var(--tour-title-width);right:var(--tour-controls-width);font-size:10px}
+ .tour-finished{padding:14px}
+ .tour-finished h3{font-size:30px}
+}

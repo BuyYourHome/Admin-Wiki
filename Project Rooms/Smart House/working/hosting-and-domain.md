@@ -521,3 +521,18 @@ Wes explicitly requested publish after reviewing the logo preview and changing t
 - Archive: `sha256:85349923c630b472d2bd7a2fe138c1902c1d66f40baf7413a3537fde41537cb4`, 120 files, 53,872,640 bytes.
 
 The production build and 166-file secret-absence scan passed. Fresh https://pondstr.com/#design displayed the exact revised sentence. Live desktop geometry confirmed Your offset11px, frame height108.25px and unchanged signature/tagline coordinates without overflow. Phone geometry was verified in the identical approved local preview. The publication checkout is synchronized and gallery-source already contains the exact matching text/CSS. Proof outside Git: `C:\Users\wesbr\.codex\visualizations\2026\10\26\pondster-logo-persona-published.jpg`. Public access and all voice/backend/configuration, gallery, vote/comment and tour behavior are preserved. No microphone or paid voice test occurred; the separate support reconciliation remains pending.
+
+## Room vote totals and phone landscape tour — version 58, 2026-10-26
+
+Wes explicitly said Go after requesting vote counts on each Explore My Rooms card and titles/controls at the sides of the tour on a sideways phone. Counts use the same grouped results returned by GET and POST, filtered through the existing active-design rules. Selecting an empty gallery still loads all totals. Previously loaded totals survive room changes; unavailable new totals are labeled rather than shown as zero. Stored preferences and voter cookies are preserved.
+
+The compact-landscape layout applies up to 1100px wide and 600px tall: titles/captions/Close occupy a left rail, details/playback controls occupy a right rail, and photos/videos use contain fitting in the separate center area. Safe-area padding, scrollable rails, 44px controls and polite scene announcements are retained. Portrait and desktop keep their existing arrangements.
+
+- Source: `d5cc5a14f4bab78e853ea838f506744b6f9a0add`.
+- Saved version: `appgprj_6ad4d98e08708191858cab113814704e~appgver_c27b93c6a88081918db17f8257108b4a`, version **58**.
+- Deployment: `appgdep_6ae0053b6bf881918b435e2e7cce6f32`, succeeded `2026-10-27T01:58:27.475513+00:00`, environment revision **4**.
+- Archive: `sha256:33f310c1d235abbd9685443cdcf22002a3fcda0794934d6092c0b0ecd40efec7`, 120 files, 53,872,640 bytes.
+
+Synthetic aggregation checks covered retired designs, removed rooms, overlapping design IDs across rooms, empty galleries and changed counts. TypeScript, production build, diff check and 166-file secret-absence scan passed. Local browser checks covered 844×390 and 568×320 landscape, 390×844 portrait and 1440×900 desktop. Live https://pondstr.com/#design displayed all nine totals (Living Room 2, Home Theatre 1, other rooms 0 at verification). The live 844×390 tour placed the media between non-overlapping side rails and loaded the 1280×720 Living Room film without a media error. Native device fullscreen itself was not newly verified. Proof outside Git: `C:\Users\wesbr\.codex\visualizations\2026\10\26\pondster-tour-landscape-published.jpg`. Only four Site source files changed; matching text is mirrored in gallery-source. No production test vote/comment or voice session was created.
+
+Before Wiki edits, Wes explicitly approved merging GitHub's Dispatcher commit into the diverged local main while preserving existing work. The normal merge succeeded without conflict; SHA-256 checks confirmed both uncommitted Dashboard files were unchanged. No Wiki push was performed.
