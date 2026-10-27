@@ -6,7 +6,7 @@ Wes asked on October 27, 2026: "I would like to close the subscriptions to HM an
 
 Targets: the actual `Heritage Management LLC` and `Home Acct` QuickBooks Online company files. Verify their live company identifiers and visible names before extraction. Do not substitute the combined Buy Your Home file for either target.
 
-Status: extraction package prepared; authenticated access, exact target identity, target billing status and All Dates General Ledger availability are verified. No financial export has been downloaded because the protected primary archive location and independent backup destination remain unresolved. No subscription, payment, accounting record or company setting has been changed.
+Status: extraction package prepared; authenticated access, exact target identity, target billing status and All Dates General Ledger availability are verified. The protected primary archive folders now exist in the Teams `Office Admin` channel. No financial export has been downloaded because an independent backup destination remains unresolved. No subscription, payment, accounting record or company setting has been changed.
 
 ## Verified Availability And Gaps
 
@@ -18,7 +18,8 @@ Status: extraction package prepared; authenticated access, exact target identity
 - `Heritage Management LLC`, company ID `9341 4542 8085 1491`, opened successfully. Its billing page showed QuickBooks Plus as `SUBSCRIBED`, $140/month plus applicable taxes, next charge November 1, 2026, billed to Wes's authenticated account. QuickBooks Online Payments also displayed as subscribed. An All Dates General Ledger was available on accrual basis; the first visible dated row in the first visible account section was March 6, 2025.
 - `Home Acct`, company ID `1362 4761 70`, opened successfully. Its billing page showed QuickBooks Plus as `SUBSCRIBED`, $140/month plus applicable taxes, next charge November 19, 2026, billed to Wes's authenticated account. An All Dates General Ledger was available on cash basis; the first visible dated row in the first visible account section was November 17, 2015.
 - The first visible General Ledger dates are not certified company-wide earliest dates because the reports were organized by account and only visible rows were inspected. They prove live report access, not extraction completeness. No report was exported; the visible cancellation controls were not clicked; no QuickBooks data or settings were changed. Payment-card and merchant identifiers were intentionally excluded from the wiki.
-- The verified WesStudio pilot archive is not present at the same path on this host, and no current-user `BYH Quickbooks Data` root exists. No archive folder was created because the protected primary location and independent backup destination have not yet been confirmed.
+- The verified WesStudio pilot archive is not present at the same path on this host, and no current-user `BYH Quickbooks Data` root exists. No local archive folder was created on this host.
+- Wes selected the Buy Your Home Teams `Office Admin` channel as the protected primary location. On October 27, 2026, SharePoint folder creation and read-back verification succeeded at `Office Admin/QuickBooks Records Preservation`. Separate `Heritage Management LLC` and `Home Acct` trees each contain `2026-10-27 Pre-Cancellation Archive` with `Reports and Lists`, `Attachments`, and `Manifests and Verification` subfolders. These folders are empty pending extraction. A second folder on the same SharePoint site was intentionally not represented as an independent backup.
 
 ## Required Read-Only Extraction
 
@@ -34,7 +35,7 @@ For each exact company, preserve a separate dated package outside Git:
 
 ## Storage And Verification
 
-- Use separate `Heritage Management LLC` and `Home Acct` archive folders in an agreed protected financial-record location, with an independent backup. Financial exports, attachments and databases must not be committed to the Admin wiki.
+- Use the verified separate `Heritage Management LLC` and `Home Acct` trees under the Teams `Office Admin/QuickBooks Records Preservation` folder as the protected primary archive, with an independent backup in a separate storage location. Financial exports, attachments and databases must not be committed to the Admin wiki.
 - Keep a manifest of source company, file/report/partition, period/basis/filter parameters, byte size, SHA-256 hash, extraction time, and record/control counts. A hash proves file identity, not accounting completeness.
 - Open the saved files; verify date/partition coverage, transaction counts, opening/closing controls and representative transaction-to-attachment links. Explain every mismatch or missing record.
 - Excel/PDF exports are a historical archive, not a guaranteed complete directly restorable QuickBooks company backup. If restoration is required, select and test a supported backup/conversion method before relying on it.
@@ -51,6 +52,6 @@ Intuit's current US cancellation article says a single canceled subscription nor
 
 ## Action Boundary And Continuation
 
-Prepared next action: after Wes supplies the protected primary archive path and independent backup destination, the same registered Quickbooks task resumes the separate read-only archive workflow for the verified `Heritage Management LLC` and `Home Acct` company IDs without another `go`. No extraction is running while storage is unresolved. Do not use an arbitrary Downloads folder, substitute the combined BYH source, or begin cancellation before the saved packages are opened, hashed, coverage-checked and copied to the independent destination.
+Prepared next action: after Wes supplies the independent backup destination, the same registered Quickbooks task resumes the separate read-only archive workflow for the verified `Heritage Management LLC` and `Home Acct` company IDs without another `go`. The protected Teams primary path is ready, but no extraction is running while the independent destination is unresolved. Do not use an arbitrary Downloads folder, substitute the combined BYH source, or begin cancellation before the saved packages are opened, hashed, coverage-checked and copied to the independent destination.
 
 The handoff must explicitly prohibit subscription cancellation, financial postings, payments, deletion, data import, account/settings changes, purchases, new account creation, and credential disclosure. Stop on an actual user-only authentication challenge or uncertain target company. Return archive locations, coverage, hashes, reconciliations, and the smallest unresolved gap. Ask separately for the specific cancellation decision only after preservation/access requirements are verified.

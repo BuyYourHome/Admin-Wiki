@@ -59,9 +59,11 @@ Read-only subscription pages confirmed that both target company subscriptions ar
 
 Payment-card and merchant identifiers were intentionally excluded from the wiki. The visible cancellation controls were not clicked. No subscription, company setting, accounting data, payment or other QuickBooks business record was changed.
 
-The WesStudio pilot archive path and the corresponding current-user path were both absent on `WES-VIDEOEDITOR`; there is no local `C:\Users\IRAMa\BYH Quickbooks Data` root. This is bounded host evidence, not evidence that the verified WesStudio archive is missing or damaged. No second financial-data location was created.
+The WesStudio pilot archive path and the corresponding current-user path were both absent on `WES-VIDEOEDITOR`; there is no local `C:\Users\IRAMa\BYH Quickbooks Data` root. This is bounded host evidence, not evidence that the verified WesStudio archive is missing or damaged.
 
-Authentication, exact target identity, live read-only access, report availability and target billing status are now verified. The remaining immediate external dependency is confirmation of the protected non-Git primary archive location and an independent backup destination. Do not download financial exports to an arbitrary local folder or proceed to cancellation before those destinations and the resulting archive verification are complete.
+Wes selected the Buy Your Home Teams `Office Admin` channel for the protected primary HM/Home archive. SharePoint creation and read-back verification succeeded at `Office Admin/QuickBooks Records Preservation`, with separate company and dated pre-cancellation trees and subfolders for reports/lists, attachments, and manifests/verification. No export was downloaded. Because all created folders are on the same SharePoint site, they do not satisfy the independent-backup requirement by themselves.
+
+Authentication, exact target identity, live read-only access, report availability, target billing status and the protected non-Git primary archive location are now verified. The remaining immediate external dependency is an independent backup destination. Do not download financial exports to an arbitrary local folder or proceed to cancellation before that destination and the resulting archive verification are complete.
 
 ## Remaining Goal Requirements
 
