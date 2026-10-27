@@ -15,7 +15,7 @@ param(
     [string]$ExpectedOwnerGeneration
 )
 $ErrorActionPreference='Stop'
-$release='0.4.9'
+$release='0.4.10'
 $queue='\\WES-VIDEOEDITOR\BYH-PRMessaging$'
 $task="BYH PR Messaging Worker - $ExpectedMachine"
 $root=Join-Path $env:LOCALAPPDATA "BuyYourHome\PRMessaging\low-token\releases\$release"
@@ -66,14 +66,15 @@ if($env:COMPUTERNAME -cne $ExpectedMachine){throw 'InstallationMachineMismatch'}
 if($DispatcherTaskId -cnotmatch '^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$'){throw 'InvalidDispatcherTaskId'}
 
 if($Action -eq 'EnrollValidationDestination'){
-    # Only the two reviewed WESSTUDIO validation endpoints may be enrolled.
+    # Only the reviewed WESSTUDIO validation endpoints may be enrolled.
     if($ExpectedMachine -cne 'WESSTUDIO' -or $DispatcherTaskId -cne '01a06337-1b59-7dc2-9586-6660eb7b5da7' -or
         !(($DestinationProjectRoom -ceq 'Codex Environment' -and $DestinationTaskId -ceq '019f84d0-78d4-7013-8c07-42c01f961be1') -or
-          ($DestinationProjectRoom -ceq 'Smart House' -and $DestinationTaskId -ceq '01a14585-ffe6-7850-8db1-efcdd58e7071'))){
+          ($DestinationProjectRoom -ceq 'Smart House' -and $DestinationTaskId -ceq '01a14585-ffe6-7850-8db1-efcdd58e7071') -or
+          ($DestinationProjectRoom -ceq 'House Render' -and $DestinationTaskId -ceq '01a178f1-8292-7aa3-863d-f6de8a3c44f7'))){
         throw 'EnrollmentEndpointNotAuthorized'
     }
     . (Join-Path $PSScriptRoot 'installer\Enrollment.ps1')
-    $manifestName=if($DestinationProjectRoom -ceq 'Smart House'){'smart-house.json'}else{'codex-environment.json'}
+    $manifestName=if($DestinationProjectRoom -ceq 'Smart House'){'smart-house.json'}elseif($DestinationProjectRoom -ceq 'House Render'){'house-render.json'}else{'codex-environment.json'}
     $manifestPath=Join-Path 'C:\Codex\Wiki Files\config\pr-messaging-manifests' $manifestName
     $expectedAction=New-LtWorkerTaskAction $pkg $configPath 'Live'
     $scheduleEvidence={
@@ -100,7 +101,7 @@ if($Action -eq 'EnrollValidationDestination'){
 }
 
 if($Action -eq 'UpgradeLive'){
-    $sourceRelease=@($release,'0.4.8','0.4.7','0.4.6','0.4.5','0.4.4','0.4.3','0.4.2','0.4.1','0.4.0')|Where-Object {Test-Path -LiteralPath (Join-Path $env:LOCALAPPDATA "BuyYourHome\PRMessaging\low-token\releases\$_\low-token\config.json")}|Select-Object -First 1
+    $sourceRelease=@($release,'0.4.9','0.4.8','0.4.7','0.4.6','0.4.5','0.4.4','0.4.3','0.4.2','0.4.1','0.4.0')|Where-Object {Test-Path -LiteralPath (Join-Path $env:LOCALAPPDATA "BuyYourHome\PRMessaging\low-token\releases\$_\low-token\config.json")}|Select-Object -First 1
     if([string]::IsNullOrWhiteSpace($sourceRelease)){throw 'LiveSourceConfigMissing'}
     $oldRoot=Join-Path $env:LOCALAPPDATA "BuyYourHome\PRMessaging\low-token\releases\$sourceRelease"
     $oldPkg=Join-Path $oldRoot 'low-token';$oldConfigPath=Join-Path $oldPkg 'config.json'
