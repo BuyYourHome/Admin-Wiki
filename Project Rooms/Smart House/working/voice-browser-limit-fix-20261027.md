@@ -22,4 +22,8 @@ Worker/server mocks and real-SQLite admission/reservation equivalence passed, in
 
 The custom-domain homepage and anonymous voice-status endpoint returned HTTP 200; Contact and the exact tagline remain present. Opening the public page in Codex returned queued. Codex made no provider voice call, microphone capture or production vote/comment write.
 
-Wes was asked to refresh Chrome, click the logo, let the greeting finish and remain quiet with the page visible for about 30 seconds. The actual greeting/quiet result is pending; anonymous status and mocks do not prove either audible playback or timed shutdown. Preserve that distinction until the user test and native session finalization are checked.
+## Fresh spoken confirmation
+
+Wes supplied a screenshot showing the initial inactive line, then confirmed after refreshing and clicking the signature: **Pondster now speaks**. The screenshot itself showed no denied attempt. Narrow source review found no persistent handler, mounting or decorative-overlay defect, so no additional website change was made.
+
+The new request `e3d34401-b6a5-4a67-b0a1-3ff79853bf14`, created `2026-10-27T21:19:37.935Z`, has a provider ID, state `closed`, `usage_seconds=23` and `final_usage_confirmed=1`. User confirmation establishes audible speech after the refreshed logo click; the native record establishes clean finalization for that trial. A 23-second completed trial does not prove the 30-second quiet timer. That separate test remains pending, and Wes was asked to keep the page visible and quiet after Pondster finishes speaking.
