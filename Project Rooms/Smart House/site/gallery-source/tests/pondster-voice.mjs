@@ -8,6 +8,7 @@ function fakeClock() {
   return {
     setTimer(callback, delay) { const id = ++sequence; jobs.set(id, { callback, at: now + delay }); return id; },
     clearTimer(id) { jobs.delete(id); },
+    pending() { return jobs.size; },
     advance(milliseconds) {
       const target = now + milliseconds;
       let iterations = 0;
@@ -26,7 +27,7 @@ function fakeClock() {
 function recognition() {
   return {
     continuous: false, interimResults: false, lang: '', starts: 0, aborts: 0,
-    onstart: null, onend: null, onerror: null, onresult: null,
+    onstart: null, onend: null, onerror: null, onresult: null, onspeechstart: null, onspeechend: null,
     start() { this.starts++; },
     abort() { this.aborts++; }
   };
@@ -154,49 +155,91 @@ for (const mode of ['question', 'wake']) {
   h.voice.destroy();
 }
 
-{
+// Thirty seconds of continuous inactivity ends either listening mode precisely.
+for (const mode of ['question', 'wake']) {
+  const h = setup(), engine = begin(h, mode);
+  const lateSpeechStart = engine.onspeechstart, lateSpeechEnd = engine.onspeechend;
+  h.clock.advance(29999);
+  assert.equal(h.state().session, true); assert.equal(h.state().listening, true);
+  h.clock.advance(1); idle(h.state());
+  assert.match(h.state().status, /30 seconds/);
+  assert.ok(engine.aborts > 0, 'Inactivity releases recognition through the normal Stop path.');
+  assert.equal(engine.onspeechstart, null); assert.equal(engine.onspeechend, null);
+  assert.equal(h.clock.pending(), 0);
+  const stopped = { ...h.state() }, starts = h.starts();
+  lateSpeechStart?.(); lateSpeechEnd?.(); h.clock.advance(60000);
+  assert.deepEqual(h.state(), stopped); assert.equal(h.starts(), starts);
+  h.voice.destroy();
+}
+
+// Short recognizer attempts reconnect without resetting the session deadline.
+for (const mode of ['question', 'wake']) {
   const h = setup();
-  begin(h, 'wake');
-  for (let attempt = 0; attempt < 2; attempt++) {
+  begin(h, mode);
+  for (let attempt = 0; attempt < 3; attempt++) {
     const engine = h.engine(), status = h.state().status, before = h.starts();
     engine.onerror?.({ error: 'no-speech' });
-    assert.equal(h.state().status, status, 'Wake no-speech waits for onend before reconnecting.');
+    assert.equal(h.state().status, status, 'No-speech waits for onend before reconnecting.');
     assert.equal(h.state().session, true);
     engine.onend?.();
     assert.equal(h.state().listening, false);
     h.clock.advance(349);
     assert.equal(h.starts(), before);
     h.clock.advance(1);
-    assert.equal(h.starts(), before + 1, 'An idle wake attempt reconnects after 350ms.');
+    assert.equal(h.starts(), before + 1, 'An idle attempt reconnects after 350ms.');
     h.engine().onstart?.();
+    assert.equal(h.engine().continuous, mode === 'wake');
   }
-  h.engine().onerror?.({ error: 'no-speech' });
-  h.engine().onend?.();
-  idle(h.state());
-  h.clock.advance(20000);
-  assert.equal(h.starts(), 3, 'The third consecutive idle wake end stops further retries.');
+  assert.equal(h.state().session, true, 'Three quick idle ends cannot close a conversation before thirty seconds.');
+  h.clock.advance(28949); assert.equal(h.state().session, true);
+  h.clock.advance(1); idle(h.state());
+  assert.equal(h.clock.pending(), 0, 'The deadline cancels recognition and any reconnect work.');
   h.voice.destroy();
 }
 
+// Actual speech is activity even before a transcript; speech end starts a fresh window.
 {
-  const h = setup();
-  begin(h, 'wake');
-  const idleEndAndReconnect = () => {
-    h.engine().onerror?.({ error: 'no-speech' });
-    h.engine().onend?.();
-    h.clock.advance(350);
-    assert.equal(h.state().session, true);
-    h.engine().onstart?.();
-  };
-  idleEndAndReconnect(); idleEndAndReconnect();
-  final(h.engine(), 'A kitchen question without a wake name');
+  const h = setup(), engine = begin(h, 'wake');
+  h.clock.advance(29999); engine.onspeechstart?.();
+  h.clock.advance(45000);
+  assert.equal(h.state().session, true, 'Continuous speech is not mistaken for silence during a transcript gap.');
+  engine.onspeechend?.();
+  h.clock.advance(29999); assert.equal(h.state().session, true);
+  final(engine, 'A kitchen question without a wake name');
   assert.equal(h.questions.length, 0);
   assert.equal(h.state().heard, 'A kitchen question without a wake name');
-  h.engine().onend?.(); h.clock.advance(350); h.engine().onstart?.();
-  assert.equal(h.state().session, true, 'A recognized transcript resets the idle failure count, even without a wake name.');
-  idleEndAndReconnect(); idleEndAndReconnect();
-  h.engine().onerror?.({ error: 'no-speech' }); h.engine().onend?.();
-  idle(h.state());
+  h.clock.advance(29999); assert.equal(h.state().session, true, 'Recognized speech without a wake name resets inactivity.');
+  final(engine, 'Pondster, show my kitchen'); assert.equal(h.questions.length, 1);
+  h.clock.advance(29999); assert.equal(h.state().session, true, 'A recognized question resets inactivity.');
+  h.clock.advance(1); idle(h.state());
+  assert.equal(h.clock.pending(), 0);
+  h.voice.destroy();
+}
+{
+  const h = setup(), engine = begin(h, 'question');
+  h.clock.advance(29999);
+  engine.onresult?.({ resultIndex: 0, results: [{ isFinal: false, 0: { transcript: 'An unfinished spoken question' } }] });
+  assert.equal(h.questions.length, 0);
+  h.clock.advance(29999); assert.equal(h.state().session, true, 'Nonempty interim recognition activity also resets inactivity.');
+  h.clock.advance(1); idle(h.state());
+  h.voice.destroy();
+}
+
+// Long greetings/replies pause inactivity, then resume the original mode for thirty seconds.
+for (const mode of ['question', 'wake']) for (const finish of ['end', 'cancel']) {
+  const h = setup(); begin(h, mode); h.clock.advance(20000);
+  h.voice.speak('Hello, I’m Pondster. '.repeat(50));
+  const utterance = h.utterances.at(-1), staleEnd = utterance.onend;
+  utterance.onstart?.(); const cancels = h.synthesis.cancels;
+  h.clock.advance(60000);
+  assert.equal(h.state().session, true); assert.equal(h.state().speaking, true);
+  assert.equal(h.synthesis.cancels, cancels, 'The inactivity timer cannot interrupt synthesis playback.');
+  if (finish === 'end') utterance.onend?.(); else h.voice.cancelSpeech();
+  const current = h.engine(); current.onstart?.();
+  assert.equal(current.continuous, mode === 'wake'); assert.equal(h.state().listening, true);
+  staleEnd?.();
+  h.clock.advance(29999); assert.equal(h.state().session, true);
+  h.clock.advance(1); idle(h.state()); assert.equal(h.clock.pending(), 0);
   h.voice.destroy();
 }
 
@@ -355,18 +398,20 @@ for (const speechEndsFirst of [false, true]) {
 {
   const h = setup();
   const engine = begin(h, 'wake');
-  const callbacks = { start: engine.onstart, end: engine.onend, error: engine.onerror, result: engine.onresult };
+  const callbacks = { start: engine.onstart, end: engine.onend, error: engine.onerror, result: engine.onresult, speechStart: engine.onspeechstart, speechEnd: engine.onspeechend };
   h.voice.speak('A pending reply.');
   const utterance = h.utterances.at(-1);
   h.voice.destroy();
   const count = h.states.length, starts = h.starts();
   callbacks.start?.(); callbacks.end?.(); callbacks.error?.({ error: 'network' });
   callbacks.result?.({ resultIndex: 0, results: [{ isFinal: true, 0: { transcript: 'Pondster, show the kitchen' } }] });
+  callbacks.speechStart?.(); callbacks.speechEnd?.();
   utterance.onstart?.(); utterance.onend?.(); utterance.onerror?.({ error: 'canceled' });
   h.clock.advance(150000);
   assert.equal(h.states.length, count, 'Destroy suppresses every late callback and timer update.');
   assert.equal(h.starts(), starts);
   assert.equal(h.questions.length, 0);
+  assert.equal(h.clock.pending(), 0, 'Destroy removes inactivity, speech, startup, and reconnect timers.');
 }
 
-console.log('PASS: Pondster voice constructor fallback, direct questions, wake feedback and bounded idle retries, distinct browser errors, truthful speech startup, timeouts, stale-event cancellation, hidden tabs, both speech/recognition end orders, and cleanup; no microphone or audio used.');
+console.log('PASS: Pondster voice constructor fallback, direct questions, wake feedback, thirty-second speech-aware inactivity across reconnects, synthesis pause/resume, distinct browser errors, truthful speech startup, timeouts, stale-event cancellation, hidden tabs, both speech/recognition end orders, and cleanup; no microphone or audio used.');

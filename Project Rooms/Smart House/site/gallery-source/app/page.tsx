@@ -3,7 +3,8 @@ import { useEffect, useRef, useState } from 'react';
 import { galleries, type Design } from '../lib/designs';
 import ViewPage from './view-page';
 import BuiltByPage from './built-by-page';
-import PondsterGuide, { type PondsterGuideHandle } from './pondster-guide';
+import ContactPage from './contact-page';
+import PondsterGuide, { type PondsterGuideHandle, type PondsterVoiceSummary } from './pondster-guide';
 import Comments from './comments';
 import ScrollVideo from './scroll-video';
 import TheaterMotion from './theater-motion';
@@ -15,7 +16,7 @@ import type { GuideAction } from '../lib/pondster-guide';
 
 type VoteResults = { scores:Record<string,number>; total:number; selected:string|null; roomTotals:Record<string,number> };
 const empty:VoteResults = {scores:{},total:0,selected:null,roomTotals:{}};
-const menus = ['Design','Explore','View','Own','Built By'] as const;
+const menus = ['Design','Explore','View','Own','Contact','Built By'] as const;
 const menuHash = (menu:string) => menu === 'Own' ? 'belong' : menu.toLowerCase().replace(/\s+/g,'-');
 const menuLabel = (menu:string) => menu === 'Own' ? 'Belong' : menu;
 type Menu = typeof menus[number];
@@ -33,7 +34,7 @@ export default function Home() {
   const [retry,setRetry] = useState(0);
   const [zoom,setZoom] = useState<Design|null>(null);
   const [scene,setScene] = useState('day');
-  const [guideOpen,setGuideOpen] = useState(false);
+  const [voiceSummary,setVoiceSummary] = useState<PondsterVoiceSummary>({active:false,status:'Voice off. Click my logo to talk.'});
   const guide=useRef<PondsterGuideHandle>(null);
   const logo=useRef<HTMLButtonElement>(null);
   const [showLighting,setShowLighting] = useState(false);
@@ -57,15 +58,16 @@ export default function Home() {
     catch(error){setMessage(error instanceof Error ? error.message : 'I couldn’t save your vote. Please try again.');}
     finally{setSaving(false);}
   }
-  function navigate(next:Menu){setMenu(next);}
-  function guideAction(action:GuideAction){setMenu(action.menu);location.hash=menuHash(action.menu);if(action.room&&!saving)setRoom(action.room);if(action.scene){setScene(action.scene);setShowLighting(true);}}
+  function navigate(next:Menu){setMenu(next);location.hash=menuHash(next);}
+  function openContact(){navigate('Contact');}
+  function guideAction(action:GuideAction){navigate(action.menu);if(action.room&&!saving)setRoom(action.room);if(action.scene){setScene(action.scene);setShowLighting(true);}}
   return <>
     <a className="skip" href="#main">Skip to content</a>
-    <header className="header"><button ref={logo} type="button" className="brand" onClick={()=>guide.current?.activateVoice()} aria-label="Talk to Pondster: AI voice and microphone controls" title="Click me to talk. I’ll say hello." aria-expanded={guideOpen} aria-controls="pondster-panel" onMouseEnter={()=>setLogoPlay(value=>value+1)} onFocus={()=>setLogoPlay(value=>value+1)}><PondsterLogoArt key={logoPlay}/><span className="monogram" aria-hidden="true"><span className="monogram-your">Your</span><small>HOME</small></span><span className="brand-copy"><strong className="brand-name">Pondster<span className="signature-i-am" aria-hidden="true">I Am</span></strong><small>A Home You can Relate to</small></span></button><nav aria-label="Main menu">{menus.map(item=><a key={item} href={`#${menuHash(item)}`} onClick={()=>navigate(item)} aria-current={menu===item?'page':undefined}>{menuLabel(item)}</a>)}</nav><span className="development">I’M A HOME IN THE MAKING</span></header>
+    <header className="header"><div className="header-brand"><button ref={logo} type="button" className="brand" onClick={()=>guide.current?.activateVoice()} aria-label={voiceSummary.active?'Stop Pondster voice':'Start talking with Pondster'} title={voiceSummary.active?'Click my logo to stop voice.':'Click my logo to talk. Find text and voice controls in Contact.'} aria-pressed={voiceSummary.active} aria-describedby="pondster-header-voice-status" onMouseEnter={()=>setLogoPlay(value=>value+1)} onFocus={()=>setLogoPlay(value=>value+1)}><PondsterLogoArt key={logoPlay}/><span className="monogram" aria-hidden="true"><span className="monogram-your">Your</span><small>HOME</small></span><span className="brand-copy"><strong className="brand-name">Pondster<span className="signature-i-am" aria-hidden="true">I Am</span></strong><small>A Home You can Relate to. Talk to me!</small></span></button><div className={`header-voice-status ${voiceSummary.active?'is-active':''}`}><span id="pondster-header-voice-status" role="status" aria-live="polite">{voiceSummary.status}</span><a href="#contact" onClick={openContact}>Voice controls ↗</a></div></div><nav aria-label="Main menu">{menus.map(item=><a key={item} href={`#${menuHash(item)}`} onClick={()=>navigate(item)} aria-current={menu===item?'page':undefined}>{menuLabel(item)}</a>)}</nav><span className="development">I’M A HOME IN THE MAKING</span></header>
     <main id="main">
       {menu==='Design' && <>
         <section className="intro"><div><h1>Virtually - A Reality <br className="design-title-break"/><em>Have a say.</em></h1></div><div className="intro-note"><p>I will bring each space to life. Browse my designs, vote for the ones you love, and help me choose the finishes that feel right.</p><span>Explore my {galleries.length} galleries.</span></div></section>
-        <section className="pondster-welcome" aria-label="Meet Pondster"><div><p>I’m Pondster, the voice and persona of this house. Ask me about the design ideas and follow my story as it takes shape. My location is confidential for now—think witness protection, with better curb appeal. Jean Wright is my SI designer.</p></div><button onClick={()=>setGuideOpen(true)}>Talk to me <span aria-hidden="true">↗</span></button></section>
+        <section className="pondster-welcome" aria-label="Meet Pondster"><div><p>I’m Pondster, the voice and persona of this house. Ask me about the design ideas and follow my story as it takes shape. My location is confidential for now—think witness protection, with better curb appeal. Jean Wright is my SI designer.</p></div><button onClick={openContact}>Talk to me <span aria-hidden="true">↗</span></button></section>
         <section className="design-workspace" aria-label="My design galleries"><aside className="room-nav"><p className="eyebrow">EXPLORE MY ROOMS</p><div role="group" aria-label="Rooms">{galleries.map((item,index)=>{const total=roomTotals[item.id] ?? (item.designs.length===0?0:undefined);return <button key={item.id} onClick={()=>{if(!saving)setRoom(item.id);}} disabled={saving} aria-pressed={room===item.id}><span className="room-number">0{index+1}</span><span>{item.name}<small>{item.designs.length?`${item.designs.length} ${item.designs.length===1?'design':'designs'}`:'Coming soon'}</small><span className="room-vote-count" title={roomTotalsFailed && total!==undefined?'Last loaded vote count; I couldn’t refresh it.':undefined}>{total!==undefined?`${total} ${total===1?'vote':'votes'} cast`:roomTotalsLoading?'Loading votes…':'Votes unavailable'}</span></span><b aria-hidden="true">↗</b></button>;})}</div><div className="notebook-note"><span>MY FUTURE, IN DESIGN.</span><p>I use AI concepts to show my future features. These aren’t measured plans or photos of my completed spaces.</p></div></aside>
         <div className="gallery-area"><div className="gallery-heading"><div><p className="eyebrow">DESIGN GALLERY / {String(galleries.indexOf(gallery)+1).padStart(2,'0')}</p><h2>{gallery.name}</h2><p>{gallery.summary}</p></div>{gallery.designs.length>0 && <span className="vote-total">{loading?'I’m loading votes…':failed?'I can’t load totals':`${results.total} ${results.total===1?'vote':'votes'}`}<small>COMMUNITY PREFERENCES</small></span>}</div>
         {room==='media-center' && <figure className="media-feature"><div className="media-feature-intro"><div><p className="eyebrow">MY LIVING ROOM / IN MOTION</p><h3>Watch me go from art to game time.</h3></div><span>MY 10-SECOND CONCEPT FILM</span></div><ScrollVideo label="My Living Room" ratio="16 / 9"><video controls autoPlay muted playsInline loop preload="metadata" poster="/media/media-center-art-poster.png" aria-label="My illustrative Living Room film shows my TV turning toward my kitchen; my selected MM-MAX1 mount will be positioned manually" aria-describedby="media-motion-caption"><source src="/media/media-center-kitchen-view.mp4" type="video/mp4"/>Your browser can’t play my video here. <a href="/media/media-center-kitchen-view.mp4">Open my video file</a>.</video></ScrollVideo><figcaption id="media-motion-caption"><span>MY AI MOTION CONCEPT</span>I will feature my selected manual MM-MAX1 TV mount, positioned by hand. My illustrative AI film keeps my decorative frame fixed while my TV turns toward my kitchen and its artwork becomes moving football. The automatic motion is illustrative; my selected mount’s fit and clearances still need validation.<p className="media-source">Football footage: U.S. Marine Corps / Sgt. James Stanfield, via <a href="https://www.dvidshub.net/video/947000/125th-army-navy-football-game-b-roll" target="_blank" rel="noopener noreferrer">DVIDS</a>.<br/>The appearance of U.S. Department of War (DoW) visual information does not imply or constitute DoW endorsement. <a href="https://www.dvidshub.net/about/copyright" target="_blank" rel="noopener noreferrer">Source use notice ↗</a></p></figcaption></figure>}
@@ -83,12 +85,12 @@ export default function Home() {
         <section className="design-footer"><span>MY DESIGN IS A CONVERSATION.</span><p>Come back as I add new rooms and choices.</p><span>MY LOCATION IS CONFIDENTIAL</span></section>
       </>}
       {menu==='Explore' && <ExplorePage scene={scene} onScene={setScene}/>}
-      {menu==='View' && <ViewPage onImage={setZoom} onDesign={()=>navigate('Design')} onTourStart={()=>setGuideOpen(false)}/>}
+      {menu==='View' && <ViewPage onImage={setZoom} onDesign={()=>navigate('Design')} onTourStart={()=>guide.current?.stopVoice()}/>}
       {menu==='Built By' && <BuiltByPage/>}
       {menu==='Own' && <section className="secondary-page manage"><h1 className="single-line-page-title">I come <em>with answers.</em></h1><p className="lead">I will provide a place for my home guides, care information, and handover records. Ask me from any page for public guidance while my owner tools take shape.</p><div className="knowledge-grid">{[['Home guides','How my systems will work and where you will find them.'],['Care & maintenance','My manuals, warranties, and equipment-specific schedules.'],['Owner handover','My records and account checklist for the next chapter.']].map(([title,description])=><article key={title}><span className="pending-tag">PLANNED</span><h3>{title}</h3><p>{description}</p></article>)}</div><div className="manage-notice"><strong>My owner tools aren’t ready yet.</strong><p>I’ll need separate, authenticated owner access before I can show private records or offer live controls. I’m not connected to my house systems through this public site.</p></div></section>}
-      <Comments key={menu} page={menu==='Own'?'own':menuHash(menu)} title={menuLabel(menu)} onAsk={()=>setGuideOpen(true)}/>
+      <ContactPage active={menu==='Contact'}><PondsterGuide ref={guide} open={menu==='Contact'} onOpenChange={nextOpen=>nextOpen?openContact():navigate('View')} onAction={guideAction} onReturnFocus={()=>logo.current?.focus()} onVoiceState={setVoiceSummary}/></ContactPage>
+      <Comments key={menu} page={menu==='Own'?'own':menuHash(menu)} title={menuLabel(menu)} onAsk={openContact}/>
     </main><footer><span>MY LOCATION IS CONFIDENTIAL</span><p>My SI designer: Jean Wright · Buy Your Home</p><span>I’m sharing concepts · No live controls</span></footer>
-    <PondsterGuide ref={guide} open={guideOpen} onOpenChange={setGuideOpen} onAction={guideAction} onReturnFocus={()=>logo.current?.focus()}/>
     <GalleryImageViewer design={zoom} onChange={setZoom} onClose={()=>setZoom(null)}/>
   </>;
 }

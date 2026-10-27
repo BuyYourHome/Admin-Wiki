@@ -1,5 +1,5 @@
 import assert from 'node:assert/strict';
-import { createPondsterLiveVoice } from '../lib/pondster-live-voice.ts';
+import { createPondsterLiveVoice, createPondsterAudioSampler, createPondsterSilenceMonitor, PONDSTER_SILENCE_MS } from '../lib/pondster-live-voice.ts';
 
 // Browser, media, audio and transport doubles only: no devices or network access.
 const flush = async () => { for (let index = 0; index < 16; index++) await Promise.resolve(); };
@@ -88,7 +88,7 @@ function control(url, log) {
   });
 }
 
-function setup({ mediaGate, fetchGate, remoteGate, status = { available: true }, iceComplete = true, playPlans = [] } = {}) {
+function setup({ mediaGate, fetchGate, remoteGate, status = { available: true }, iceComplete = true, playPlans = [], activitySamplerFactory } = {}) {
   const clock = fakeClock(), log = [], tracks = [track()], media = stream([...tracks]);
   const peers = [], controls = [], states = [], transcripts = [], actions = [], requests = [];
   let mediaCalls = 0;
@@ -129,6 +129,7 @@ function setup({ mediaGate, fetchGate, remoteGate, status = { available: true },
     streamFactory: values => stream(values),
     visibilityTarget: visibility,
     setTimeout: clock.setTimeout, clearTimeout: clock.clearTimeout,
+    now: () => clock.now, activitySamplerFactory,
     origin: 'https://pondstr.com',
     requestIdFactory: () => '11111111-1111-4111-8111-111111111111'
   });
@@ -464,4 +465,135 @@ for (const event of [{ type: 'pondster.error', message: 'Voice service is unavai
   const count = h.mediaCalls(); await assert.rejects(h.voice.start(), /closed/i); assert.equal(h.mediaCalls(), count);
 }
 
-console.log('PASS: lazy Live voice acquisition; same-origin status/control protocol; one fixed readiness acknowledgement per successful session; bounded ICE and session start; idempotence; permission/fetch cancellation; immediate capture/playback stop and ten-second unconfirmed close drain; typed control/actions; bounded debounced captions; autoplay recovery; stale events; availability and server failures; visibility and three-minute limits; disposal.');
+// Advance asynchronous sampling without letting the synthetic clock outrun its
+// promise continuations. No test ever accesses a real microphone or connection.
+async function tick(clock, milliseconds) {
+  while (milliseconds > 0) { const step = Math.min(250, milliseconds); clock.advance(step); await flush(); milliseconds -= step; }
+}
+function silenceFixture(sample = async () => ({ input: false, output: false })) {
+  const clock = fakeClock(), ended = [], available = [];
+  const monitor = createPondsterSilenceMonitor({ sample, now: () => clock.now,
+    setTimeout: clock.setTimeout, clearTimeout: clock.clearTimeout,
+    onSilence: () => ended.push(clock.now), onAvailability: value => available.push(value) });
+  return { clock, monitor, ended, available };
+}
+{
+  const h = silenceFixture(); await flush();
+  await tick(h.clock, PONDSTER_SILENCE_MS - 1);
+  assert.deepEqual(h.ended, []);
+  await tick(h.clock, 1);
+  assert.deepEqual(h.ended, [PONDSTER_SILENCE_MS], 'Exactly thirty seconds from the first BOTH-quiet snapshot ends the monitor.');
+  assert.deepEqual(h.available, [true]); assert.equal(h.clock.pending(), 0);
+}
+for (const direction of ['input', 'output']) {
+  let speaking = true;
+  const h = silenceFixture(async () => ({ input: direction === 'input' && speaking, output: direction === 'output' && speaking }));
+  await flush(); await tick(h.clock, 45_000);
+  assert.deepEqual(h.ended, [], 'Speech longer than thirty seconds remains active without any transcript events.');
+  speaking = false; await tick(h.clock, 250);
+  const quiet = h.clock.now;
+  await tick(h.clock, 29_999); assert.deepEqual(h.ended, []);
+  await tick(h.clock, 1); assert.deepEqual(h.ended, [quiet + 30_000]);
+}
+{
+  const h = silenceFixture(); await flush(); await tick(h.clock, 29_000);
+  h.monitor.noteInteraction();
+  await tick(h.clock, 29_999); assert.deepEqual(h.ended, []);
+  await tick(h.clock, 1); assert.deepEqual(h.ended, [59_000], 'Real typing resets the quiet deadline.');
+}
+{
+  let output = false;
+  const h = silenceFixture(async () => ({ input: false, output })); await flush();
+  h.monitor.setBusy('work', true, 30_000); h.monitor.setBusy('response', true, 30_000);
+  output = true; await tick(h.clock, 250); output = false;
+  await tick(h.clock, 10_000);
+  h.monitor.setBusy('work', false); await tick(h.clock, 250);
+  const quiet = h.clock.now;
+  await tick(h.clock, 29_999); assert.deepEqual(h.ended, [], 'Output activity clears response wait but not still-pending work.');
+  await tick(h.clock, 1); assert.deepEqual(h.ended, [quiet + 30_000]);
+}
+{
+  const h = silenceFixture(); await flush();
+  h.monitor.setBusy('response', true, 999_999);
+  await tick(h.clock, 59_999); assert.deepEqual(h.ended, []);
+  await tick(h.clock, 1); assert.deepEqual(h.ended, [60_000], 'A response-wait hint is capped; it cannot hold silence indefinitely.');
+}
+{
+  const h = silenceFixture(async () => ({ input: false, output: null })); await flush();
+  await tick(h.clock, 60_000);
+  assert.deepEqual(h.ended, []); assert.deepEqual(h.available, [false], 'Unmeasured output is never interpreted as silence.');
+  h.monitor.stop(); assert.equal(h.clock.pending(), 0);
+}
+{
+  const pending = deferred(); let samples = 0;
+  const h = silenceFixture(() => { samples++; return pending.promise; });
+  await tick(h.clock, 999); assert.equal(samples, 1);
+  await tick(h.clock, 1);
+  assert.deepEqual(h.available, [false]); assert.equal(h.clock.pending(), 0);
+  pending.resolve({ input: false, output: false }); await flush(); await tick(h.clock, 60_000);
+  assert.equal(samples, 1, 'A hung getStats request is never overlapped.');
+  assert.deepEqual(h.ended, [], 'A timed-out stats result cannot later close the session.');
+}
+{
+  const pending = deferred(), h = silenceFixture(() => pending.promise);
+  h.monitor.stop(); pending.resolve({ input: false, output: false }); await flush();
+  assert.deepEqual(h.available, []); assert.deepEqual(h.ended, []); assert.equal(h.clock.pending(), 0, 'Stopped meters ignore stale promises and retain no timer.');
+}
+{
+  let at = 0;
+  const records = [
+    { id: 'mic', type: 'media-source', kind: 'audio', timestamp: 0, audioLevel: 0, totalAudioEnergy: 0, totalSamplesDuration: 1 },
+    { id: 'voice', type: 'inbound-rtp', kind: 'audio', timestamp: 0, audioLevel: 0, totalAudioEnergy: 0, totalSamplesDuration: 1 },
+  ];
+  const sample = createPondsterAudioSampler({ async getStats() { return new Map(records.map(item => [item.id, { ...item }])); } }, () => at);
+  assert.deepEqual(await sample(), { input: false, output: false });
+  at = 250; records.forEach(item => { item.timestamp = at; item.totalSamplesDuration += .25; }); records[0].totalAudioEnergy += .0001;
+  assert.deepEqual(await sample(), { input: true, output: false }, 'Interval RMS detects real microphone energy even with audioLevel zero.');
+  at = 500; records.forEach(item => { item.timestamp = at; item.totalSamplesDuration += .25; }); records[1].totalAudioEnergy += .0004;
+  assert.deepEqual(await sample(), { input: false, output: true }, 'Interval RMS independently detects Pondster output.');
+  at = 750; records.forEach(item => { item.timestamp = at; item.audioLevel = .9; });
+  assert.deepEqual(await sample(), { input: true, output: true }, 'Flat energy counters must preserve a positive reported audio level.');
+  at = 1000; records.forEach(item => { item.timestamp = at; delete item.audioLevel; });
+  assert.deepEqual(await sample(), { input: null, output: null }, 'Flat counters without a reported audio level cannot establish silence.');
+  at += 1501;
+  assert.deepEqual(await sample(), { input: null, output: null }, 'Stale snapshots cannot establish silence.');
+  at += 250; records.forEach(item => { item.timestamp = at; item.totalAudioEnergy = 0; item.totalSamplesDuration = 0; });
+  assert.deepEqual(await sample(), { input: null, output: null }, 'Reset energy counters are unknown for their first interval.');
+  assert.deepEqual(await createPondsterAudioSampler({})(), { input: null, output: null });
+}
+for (const interaction of ['typing', 'submitted']) {
+  const h = setup({ activitySamplerFactory: () => async () => ({ input: false, output: false }) });
+  assert.equal(h.state().silenceAvailable, null);
+  await connect(h); await flush(); assert.equal(h.state().silenceAvailable, true);
+  await tick(h.clock, 29_000);
+  if (interaction === 'typing') h.voice.noteInteraction();
+  else h.voice.sendText('Tell me about the deck');
+  await tick(h.clock, 29_999); assert.equal(h.state().active, true);
+  await tick(h.clock, 1);
+  assert.equal(h.state().active, false); assert.match(h.state().status, /thirty seconds of silence/);
+  assert.ok(h.tracks.every(item => item.stopCalls > 0)); assert.equal(h.audio.srcObject, null);
+  assert.ok(h.control().sent.some(message => message.type === 'pondster.stop'));
+  assert.equal(h.peer().closeCalls, 0, 'Silence stops capture immediately while the normal finalization drain remains open.');
+  h.clock.advance(10_000); await flush(); await dispose(h);
+}
+{
+  const h = setup({ activitySamplerFactory: () => async () => ({ input: false, output: false }) });
+  await connect(h); await tick(h.clock, 29_000);
+  h.control().receive({ type: 'pondster.busy', kind: 'work', active: true, holdMs: 30_000 });
+  await tick(h.clock, 20_000);
+  assert.equal(h.state().active, true, 'Trusted queued work suspends the otherwise-expiring quiet deadline.');
+  h.control().receive({ type: 'pondster.busy', kind: 'work', active: false, holdMs: 30_000 });
+  await tick(h.clock, 250);
+  await tick(h.clock, 29_999); assert.equal(h.state().active, true);
+  await tick(h.clock, 1); assert.equal(h.state().active, false);
+  await dispose(h);
+}
+{
+  const h = setup(); await connect(h); await tick(h.clock, 60_000);
+  assert.equal(h.state().silenceAvailable, false); assert.equal(h.state().active, true, 'Unsupported metrics retain the honest three-minute fallback.');
+  h.control().receive({ type: 'pondster.action', action: { menu: 'Contact' } });
+  assert.deepEqual(h.actions.at(-1), { menu: 'Contact' });
+  await dispose(h);
+}
+
+console.log('PASS: Live voice lifecycle and greeting; measured both-direction audio silence at30s; speech/typing resets; bounded trusted waits; unsupported/stale/hung stats; immediate stop and10s drain; Contact compatibility; privacy-safe mocks only.');

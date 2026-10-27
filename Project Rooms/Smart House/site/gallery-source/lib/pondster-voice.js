@@ -1,14 +1,27 @@
 /** Browser speech lifecycle, kept independent of React so failure paths can be tested without audio. */
 export function createPondsterVoice({ recognitionFactory, synthesis, createUtterance, onState, onQuestion, isWakeRequest, setTimer = setTimeout, clearTimer = clearTimeout, isHidden = () => false }) {
   let disposed = false, engine = null, mode = 'question', generation = 0, speechGeneration = 0;
-  let starting = false, active = false, busy = false, utterance = null, idleFailures = 0;
-  let startTimer, restartTimer, speechTimer;
+  let starting = false, active = false, busy = false, utterance = null, inputSpeaking = false;
+  let startTimer, restartTimer, speechTimer, inactivityTimer, inactivityGeneration = 0;
   const state = { available: false, speechAvailable: !!(synthesis && createUtterance), session: false, listening: false, speaking: false, outputActive: false, status: 'I’m not listening. You can type me a question.', heard: '' };
   const update = patch => { if (!disposed) { Object.assign(state, patch); onState({ ...state }); } };
   const clear = timer => { if (timer !== undefined) clearTimer(timer); };
+  const clearInactivity = () => {
+    inactivityGeneration++; clear(inactivityTimer); inactivityTimer = undefined;
+  };
+  const resetInactivity = () => {
+    clearInactivity();
+    if (disposed || !state.session || busy || inputSpeaking) return;
+    const version = inactivityGeneration;
+    inactivityTimer = setTimer(() => {
+      if (disposed || version !== inactivityGeneration || !state.session || busy || inputSpeaking) return;
+      inactivityTimer = undefined;
+      stop('I haven’t heard speech for 30 seconds, so I’ve turned off my microphone. Tap Ask by voice when you’re ready.');
+    }, 30000);
+  };
   const detach = () => {
-    if (engine) { engine.onstart = engine.onend = engine.onerror = engine.onresult = null; try { engine.abort(); } catch {} }
-    engine = null; active = starting = false;
+    if (engine) { engine.onstart = engine.onend = engine.onerror = engine.onresult = engine.onspeechstart = engine.onspeechend = null; try { engine.abort(); } catch {} }
+    engine = null; active = starting = inputSpeaking = false;
     clear(startTimer); clear(restartTimer);
   };
   const cancelSpeech = () => {
@@ -17,7 +30,7 @@ export function createPondsterVoice({ recognitionFactory, synthesis, createUtter
     update({ speaking: false, outputActive: false });
   };
   const stop = (message = 'I’m not listening. You can type me a question.') => {
-    generation++; state.session = false; detach(); cancelSpeech();
+    generation++; state.session = false; clearInactivity(); detach(); cancelSpeech();
     update({ session: false, listening: false, status: message });
   };
   const fail = message => stop(message);
@@ -29,27 +42,34 @@ export function createPondsterVoice({ recognitionFactory, synthesis, createUtter
     try {
       engine = recognitionFactory();
       const current = engine;
-      let heardThisAttempt = false;
       current.continuous = mode === 'wake'; current.interimResults = false; current.lang = 'en-US';
       current.onstart = () => {
         if (!valid() || busy) return;
         clear(startTimer); starting = false; active = true;
         update({ listening: true, status: mode === 'wake' ? 'I’m listening. Say “Pondster” with your question.' : 'I’m listening. Ask me one question; you don’t need to say my name.' });
       };
+      current.onspeechstart = () => {
+        if (!valid() || busy) return;
+        inputSpeaking = true; clearInactivity();
+      };
+      current.onspeechend = () => {
+        if (!valid() || busy) return;
+        inputSpeaking = false; resetInactivity();
+      };
       current.onresult = event => {
         if (!valid() || busy) return;
         for (let index = event.resultIndex; index < event.results.length; index++) {
           const result = event.results[index];
-          if (!result.isFinal) continue;
           const text = result[0].transcript.trim().slice(0, 500);
           if (!text) continue;
-          heardThisAttempt = true; idleFailures = 0;
+          resetInactivity();
+          if (!result.isFinal) continue;
           update({ heard: text });
           if (mode === 'wake' && !isWakeRequest(text)) {
             update({ status: 'I heard you. Say “Pondster” with your question, or turn off “Keep listening” and ask me directly.' });
             continue;
           }
-          if (mode === 'question') { generation++; state.session = false; detach(); update({ session: false, listening: false, status: 'I heard your question.' }); }
+          if (mode === 'question') { generation++; state.session = false; clearInactivity(); detach(); update({ session: false, listening: false, status: 'I heard your question.' }); }
           onQuestion(text);
           break;
         }
@@ -57,13 +77,12 @@ export function createPondsterVoice({ recognitionFactory, synthesis, createUtter
       current.onerror = event => {
         if (!valid() || busy) return;
         if (event.error === 'aborted') return;
-        if (event.error === 'no-speech' && mode === 'wake') return; // onend reconnects, with a bounded idle limit.
+        if (event.error === 'no-speech') return; // onend reconnects without extending the inactivity deadline.
         const errors = {
           'not-allowed': 'I don’t have microphone permission. Allow microphone access in your browser’s site settings, then try me again.',
           'service-not-allowed': 'Your browser has blocked my speech-recognition service. Try opening pondstr.com in Chrome or Edge, or type me a question.',
           'audio-capture': 'I can’t find an available microphone. Check your microphone and browser settings, then try me again.',
-          'network': 'I can’t reach your browser’s speech service. Check your connection or try me in Chrome or Edge.',
-          'no-speech': 'I didn’t hear a question. Try Ask by voice again, or type me a question.'
+          'network': 'I can’t reach your browser’s speech service. Check your connection or try me in Chrome or Edge.'
         };
         fail(errors[event.error] || 'Your browser couldn’t recognize your question. Try me again, or type me a question.');
       };
@@ -71,8 +90,7 @@ export function createPondsterVoice({ recognitionFactory, synthesis, createUtter
         if (!valid()) return;
         clear(startTimer); starting = active = false; update({ listening: false });
         if (busy) return;
-        if (mode === 'question') { fail('I didn’t catch a question. Try Ask by voice again, or type me a question.'); return; }
-        if (!heardThisAttempt && ++idleFailures >= 3) { fail('I haven’t heard a question for a while, so I’ve stopped my microphone. Tap Ask by voice when you’re ready.'); return; }
+        if (inputSpeaking) { inputSpeaking = false; resetInactivity(); }
         update({ status: 'I’m reconnecting to your browser’s speech service…' });
         clear(restartTimer); restartTimer = setTimer(start, 350);
       };
@@ -87,6 +105,7 @@ export function createPondsterVoice({ recognitionFactory, synthesis, createUtter
   function speak(text) {
     if (disposed) return;
     if (!state.speechAvailable) { update({ status: 'I can’t speak in this browser. You can read my reply below.' }); return; }
+    clearInactivity();
     cancelSpeech();
     busy = true; generation++; detach(); update({ listening: false, speaking: false, outputActive: true, status: 'I’m preparing my spoken reply…' });
     const version = ++speechGeneration;
@@ -95,7 +114,7 @@ export function createPondsterVoice({ recognitionFactory, synthesis, createUtter
       if (!valid()) return;
       speechGeneration++; clear(speechTimer); utterance = null; busy = false;
       update({ speaking: false, outputActive: false, status: message || 'I’ve finished speaking.' });
-      if (state.session) start();
+      if (state.session) { resetInactivity(); start(); }
     };
     const timeout = () => {
       if (!valid()) return;
@@ -128,10 +147,10 @@ export function createPondsterVoice({ recognitionFactory, synthesis, createUtter
       if (disposed) return;
       stop();
       if (!state.available) { update({ status: 'I can’t listen in this browser. Open pondstr.com in Chrome or Edge to try voice, or type me a question here.' }); return; }
-      mode = nextMode; idleFailures = 0; update({ session: true, heard: '' }); start();
+      mode = nextMode; update({ session: true, heard: '' }); resetInactivity(); start();
     },
     stop, speak,
-    cancelSpeech() { cancelSpeech(); update({ status: 'I’ve stopped speaking.' }); if (state.session) start(); },
+    cancelSpeech() { cancelSpeech(); update({ status: 'I’ve stopped speaking.' }); if (state.session) { resetInactivity(); start(); } },
     hide() { if (state.session || busy) stop('I stopped voice while you were away from this tab. Tap Ask by voice to start again.'); },
     destroy() { if (!disposed) { stop(); disposed = true; } }
   };

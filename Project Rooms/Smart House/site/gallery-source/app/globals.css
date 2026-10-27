@@ -309,3 +309,55 @@ body{padding-bottom:95px}.pondster-welcome{margin:0 4% 30px;padding:20px 24px;bo
  .tour-finished{padding:14px}
  .tour-finished h3{font-size:30px}
 }
+
+/* My conversation lives in Contact; my signature controls voice from every page. */
+body{padding-bottom:0}
+.header{flex-wrap:wrap;gap:20px 28px}
+.header-brand{min-width:0;max-width:100%;flex:0 1 480px}
+.header-brand .brand{width:100%;max-width:100%}
+.header-brand .brand-copy{height:auto;min-height:var(--logo-height)}
+.header-brand .brand-copy>small{position:static;left:auto;bottom:auto;margin:0 0 0 87px;line-height:1.25;white-space:normal}
+.header nav{flex-wrap:wrap;gap:6px 25px}
+.header nav a{white-space:nowrap}
+.header-voice-status{display:flex;align-items:baseline;flex-wrap:wrap;gap:4px 10px;max-width:390px;margin-top:15px;font-size:10px;line-height:1.5;color:var(--muted)}
+.header-voice-status::before{content:'';width:7px;height:7px;border-radius:50%;background:#9aa48f;flex:none}
+.header-voice-status.is-active::before{background:var(--accent);box-shadow:0 0 0 3px #a7593618}
+.header-voice-status>span{flex:1 1 180px}
+.header-voice-status a{text-decoration:underline;text-underline-offset:3px;white-space:nowrap;color:var(--ink)}
+.brand[aria-pressed=true] .monogram{box-shadow:0 0 0 2px var(--accent)}
+html{scroll-padding-top:200px}
+.contact-page[hidden]{display:none}
+.contact-intro{display:flex;align-items:flex-start;justify-content:space-between;gap:35px;margin-bottom:35px}
+.contact-intro .eyebrow{margin-top:0}
+.contact-intro h1{margin-top:0}
+.contact-intro .lead{max-width:370px;margin:7px 0 0}
+.contact-layout{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(290px,.8fr);gap:30px;align-items:start}
+.contact-conversation,.contact-people{min-width:0}
+.contact-page .pondster-guide{position:static;inset:auto;z-index:auto;display:block}
+.contact-page .pondster-panel{width:100%;max-width:none;max-height:none;border-radius:0;box-shadow:none}
+.contact-page .pondster-conversation{min-height:220px;max-height:420px;flex:none}
+.contact-page .pondster-close{min-width:44px;min-height:44px}
+.contact-page .pondster-voice-controls>button{min-height:44px;font-size:12px}
+.contact-page .pondster-message p{font-size:13px}
+.contact-page .pondster-input input{font-size:14px;min-height:48px}
+.contact-page .pondster-prompts button{min-height:40px;font-size:11px}
+.contact-page .pondster-panel-footer{padding-top:6px}
+.pondster-quiet-note{font-size:11px;line-height:1.7;margin:12px 0;color:var(--ink)}
+.contact-card{padding:26px;border:1px solid var(--line);background:var(--white);margin-bottom:20px}
+.contact-card h2{font-size:28px;line-height:1.15;margin:8px 0 12px;letter-spacing:-.5px}
+.contact-card>.eyebrow{margin-top:0}
+.contact-card>p:not(.eyebrow){font-size:13px;color:var(--muted)}
+.contact-person{display:flex;align-items:center;gap:16px;margin-bottom:18px}
+.contact-person img{display:block;width:80px;height:80px;object-fit:cover;flex:none}
+.contact-person .eyebrow{margin:0}
+.contact-person h2{margin-bottom:0}
+.contact-card .contact-affiliation{font-size:11px;line-height:1.7}
+.contact-card address{font-style:normal;border-top:1px solid var(--line);margin-top:20px;padding-top:5px}
+.contact-card address a{display:block;min-height:44px;padding:12px 0;font-size:14px;overflow-wrap:anywhere}
+.contact-card address a>span{display:block;margin-bottom:6px;font-size:8px;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:var(--accent)}
+.contact-website{display:inline-block;min-height:44px;padding-top:15px;font-size:11px;line-height:1.7;text-decoration:underline;text-underline-offset:3px}
+.contact-note{font-size:11px;line-height:1.8;color:var(--muted);padding:0 3px}
+@media(max-width:1000px){.contact-layout{grid-template-columns:minmax(0,1.2fr) minmax(260px,.8fr);gap:22px}.contact-card{padding:22px}.contact-person{gap:12px}.contact-person img{width:65px;height:65px}.contact-person h2{font-size:25px}}
+@media(max-width:900px){html{scroll-padding-top:245px}.header nav{margin-left:0}.contact-intro{display:block}.contact-intro .lead{max-width:600px;margin-top:22px}.contact-layout{grid-template-columns:minmax(0,1fr)}.contact-people{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}.contact-card{margin-bottom:0}.contact-note{grid-column:1/-1;margin-top:0}}
+@media(max-width:720px){.header{gap:16px}.header-brand .brand-copy>small{margin-left:72px}.header-voice-status{font-size:10px;max-width:100%;margin-top:13px}.header nav{gap:8px;flex-wrap:nowrap}.header nav a{font-size:12px}.contact-intro{margin-bottom:25px}.contact-layout{gap:24px}.contact-people{grid-template-columns:minmax(0,1fr)}.contact-page .pondster-conversation{min-height:180px;max-height:360px}.contact-page .pondster-input input{font-size:16px}.contact-page .pondster-message p{font-size:13px}.contact-page .pondster-voice small{font-size:10px}.contact-person img{width:75px;height:75px}.contact-person h2{font-size:29px}}
+@media(max-width:360px){.header nav{gap:6px}.header nav a{font-size:11px}.header-voice-status>span{flex-basis:165px}}

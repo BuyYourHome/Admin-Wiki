@@ -1,4 +1,4 @@
-export const commentPages = ['design', 'explore', 'view', 'own', 'built-by'] as const;
+export const commentPages = ['design', 'explore', 'view', 'own', 'contact', 'built-by'] as const;
 export type CommentPage = typeof commentPages[number];
 export type PublicComment = { id: string; page: string; name: string; body: string; createdAt: number };
 export const COMMENT_PAGE_SIZE = 20;

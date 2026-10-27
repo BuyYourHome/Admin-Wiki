@@ -624,3 +624,25 @@ A new Natural conversation seeds trusted developer greeting instructions and sen
 - Archive: `sha256:2dd0836a153a6b34179ec925fbd0868b3c779b0da2cd1553ec45fb4b248977f6`, 125 files, 60467200 bytes.
 
 The official source helper pushed and packaged the verified source. Public access is preserved. No production vote/comment write, provider voice call, new key or billing action was performed by Codex. Opening the public page in Codex returned queued. Source PNG chunk inspection found no text/EXIF chunks and no private location/path strings in the overview provenance chunk; original provenance remains intact.
+
+## Contact, voice-only logo and quiet detection — version 66, 2026-10-27
+
+Wes requested a 30-second quiet timeout, logo activation without opening the dialog, a Contact menu for text/voice and existing public contacts, and the exact tagline A Home You can Relate to. Talk to me! Menu order is Design, Explore, View, Belong, Contact, Built By; View remains default and legacy Own/Manage aliases remain compatible. Contact has saved public comments using the existing table; no migration was needed. Voice can remain active while the Contact child is hidden, with existing stop, Escape, tour and hidden-tab cleanup.
+
+- Source: `6c733c5d13186982276e2b07b7e1de504b3cb0d9`.
+- Saved version: `appgprj_6ad4d98e08708191858cab113814704e~appgver_1766eac5e9888191994e5a527b2af5e1`, version **66**.
+- Deployment: `appgdep_6ae110a3a47c81918136bff480b51dc0`, succeeded `2026-10-27T20:59:29.149434+00:00`, environment revision **4**.
+- Archive: `sha256:1c2c2fc54a4eb84876db4cf6375436ac99ce026dfd2c2662a8eba5b7a14fcda6`, 125 files, 60,497,920 bytes.
+
+Focused natural/browser voice, Contact/navigation/context/comments and React static-render checks passed, along with TypeScript, production build, diff and 178-file secret scan. Natural quiet detection uses fresh bidirectional WebRTC audio statistics; missing metrics are not counted as silence. The interface reports unavailable measurement honestly and retains the three-minute ceiling. The real 30-second quiet test remains unverified. Wes retracted his initial successful logo-test report and said the click produced no answer. Four same-browser closed conversations were at the former browser allowance; no new provider start followed this release. See [[Project Rooms/Smart House/working/contact-and-voice-idle-20261027]].
+
+## Browser allowance and visible voice feedback — version 67, 2026-10-27
+
+The browser allowance now matches the unchanged site-wide limit of 20 starts per rolling 24 hours. Atomic reservation and read-only admission use equivalent predicates. Fixed messages distinguish daily limit, cooldown, active conversation, pending/service check and database failure, and the header preserves the reason after an explicit attempt. The 60-second cooldown, two global concurrent conversations, one per browser, unknown-outcome handling and three-minute ceiling remain unchanged. No rows or cookies were reset.
+
+- Source: `35a5efbbeaecb32961ab458a799da7e578b70845`.
+- Saved version: `appgprj_6ad4d98e08708191858cab113814704e~appgver_065619cee52881919074e7eb007f0b77`, version **67**.
+- Deployment: `appgdep_6ae1147e0fd0819188bd228ef9b928cb`, succeeded `2026-10-27T21:15:51.374288+00:00`, environment revision **4**.
+- Archive: `sha256:c4759a140a332241a2170c795feda930230a823ac154bc442140752c47ad2946`, 125 files, 60,497,920 bytes.
+
+Server mocks and real-SQLite equivalence passed, including four closed attempts followed by an allowed fifth, 19/20 boundaries, unchanged cooldown/concurrency/unknown fences and fail-closed malformed/database cases. Independent review, TypeScript, production build, diff and the 178-file secret scan passed. Public homepage and anonymous voice status returned HTTP 200 with Contact/tagline present and anonymous availability true; this does not prove user-specific admission or audible behavior. Opening the site in Codex returned queued. A fresh Chrome greeting/quiet test is pending. Matching text sources are mirrored in gallery-source. No provider voice call, capture, vote/comment write, key change, billing action or device operation was performed by Codex. See [[Project Rooms/Smart House/working/voice-browser-limit-fix-20261027]].

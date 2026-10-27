@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict';
 import { DatabaseSync } from 'node:sqlite';
 import { readFileSync } from 'node:fs';
-import { createPondsterLiveControl, d1VoiceStore, handlePondsterLiveControl, hashVoiceVisitor, voiceAdmissionStatus, voiceStatus, VOICE_ADMISSION_SQL, RESERVE_VOICE_SQL, VOICE_DURATION_SECONDS, VOICE_FINALIZATION_MS } from '../worker/pondster-live.ts';
+import { createPondsterLiveControl, d1VoiceStore, handlePondsterLiveControl, hashVoiceVisitor, voiceAdmissionStatus, voiceStatus, VOICE_ADMISSION_SQL, RESERVE_VOICE_SQL, VOICE_DURATION_SECONDS, VOICE_FINALIZATION_MS, VOICE_GLOBAL_DAILY_LIMIT, VOICE_BROWSER_DAILY_LIMIT } from '../worker/pondster-live.ts';
 import { VoiceProviderFailure } from '../worker/pondster-live-diagnostics.ts';
 
 const flush = async () => { for (let i = 0; i < 12; i++) await Promise.resolve(); };
@@ -72,8 +72,14 @@ assert.equal(await reserve(4, 'c'), false, 'The global active limit is atomic in
 await finish(1); await finish(3);
 assert.equal(await reserve(5, 'a'), false, 'Cooldown also applies after a quick confirmed close.');
 timestamp += 60_001;
-for (let n = 6; n <= 8; n++) { assert.equal(await reserve(n, 'a'), true); await finish(n); timestamp += 60_001; }
-assert.equal(await reserve(9, 'a'), false, 'Four browser sessions exhaust the rolling daily allowance.');
+sqlite.exec('DELETE FROM voice_sessions');
+assert.equal(VOICE_GLOBAL_DAILY_LIMIT, 20, 'The absolute rolling global allowance is unchanged.');
+assert.equal(VOICE_BROWSER_DAILY_LIMIT, VOICE_GLOBAL_DAILY_LIMIT);
+for (let n = 6; n <= 25; n++) {
+  assert.equal(await reserve(n, 'a'), true, 'One browser may use the remaining global allowance, including a fifth start.');
+  await finish(n); timestamp += 60_001;
+}
+assert.equal(await reserve(26, 'a'), false, 'Twenty starts still exhaust the unchanged global allowance.');
 sqlite.exec('DELETE FROM voice_sessions');
 for (let n = 10; n < 30; n++) { assert.equal(await reserve(n), true); await finish(n); }
 assert.equal(await reserve(30), false, 'The global daily allowance applies across different browsers.');
@@ -129,7 +135,8 @@ assert.notEqual(await hashVoiceVisitor(visitor, secret), await hashVoiceVisitor(
     assert.equal(body.available, expected);
     if (expected) assert.equal(checked, response, 'Admitted response preserves the original cookie/body');
     else {
-      assert.deepEqual(Object.keys(body).sort(), ['available', 'message']);
+      assert.deepEqual(Object.keys(body).sort(), ['available', 'message', 'reason']);
+      assert.ok(['daily_cap', 'cooldown', 'active', 'pending_service', 'database'].includes(body.reason));
       assert.match(body.message, /Browser voice or type/);
     }
     assert.equal(checked.headers.get('set-cookie'), response.headers.get('set-cookie'));
@@ -142,23 +149,35 @@ assert.notEqual(await hashVoiceVisitor(visitor, secret), await hashVoiceVisitor(
       assert.equal(Number(inserted.changes) === 1, expected, 'Admission agrees with the exact atomic reservation SQL');
     } finally { admissionDb.exec('ROLLBACK'); }
     assert.deepEqual(snapshot(), before);
+    return body;
+  };
+  const expectReason = async reason => {
+    const body = await expectAdmission(false);
+    assert.equal(body.reason, reason);
+    return body;
   };
   try {
     await expectAdmission(true);
+    reset(); for (let n = 1; n <= 4; n++) seed(n, { state: 'closed' });
+    await expectAdmission(true); // Regression: the fifth start is not blocked by the former browser-only4 cap.
     for (const state of ['pending', 'active', 'closing', 'unconfirmed']) {
-      reset(); seed(1, { at: now - day - 1, state }); await expectAdmission(false);
+      reset(); seed(1, { at: now - day - 1, state }); await expectReason(state === 'active' ? 'active' : 'pending_service');
     }
     reset(); seed(1, { state: 'owner_waived' }); await expectAdmission(true);
     reset(); seed(1, { key: 'other-one', at: now - day - 1, state: 'unconfirmed' }); await expectAdmission(true);
-    seed(2, { key: 'other-two', at: now - day - 1, state: 'active' }); await expectAdmission(false);
+    seed(2, { key: 'other-two', at: now - day - 1, state: 'active' }); await expectReason('pending_service');
+    reset(); seed(1, { key: 'other-one', state: 'active' }); seed(2, { key: 'other-two', state: 'active' });
+    await expectReason('active');
     reset();
     seed(1, { key: 'other-1', state: 'owner_waived' });
     for (let n = 2; n <= 19; n++) seed(n, { key: `other-${n}` });
-    await expectAdmission(true); seed(20, { key: 'other-20' }); await expectAdmission(false);
+    await expectAdmission(true); seed(20, { key: 'other-20' });
+    assert.match((await expectReason('daily_cap')).message, /rolling 24-hour/);
     reset(); seed(1, { state: 'owner_waived' });
-    for (let n = 2; n <= 3; n++) seed(n); await expectAdmission(true);
-    seed(4); await expectAdmission(false, admissionRequest, voiceStatus(admissionRequest, environment));
-    reset(); seed(1, { at: now - 59_999, state: 'owner_waived' }); await expectAdmission(false);
+    for (let n = 2; n <= 19; n++) seed(n); await expectAdmission(true);
+    seed(20); await expectReason('daily_cap');
+    reset(); seed(1, { at: now - 59_999, state: 'owner_waived' });
+    assert.match((await expectReason('cooldown')).message, /up to a minute/);
     reset(); seed(1, { at: now - 60_000 }); await expectAdmission(true);
     reset(); for (let n = 1; n <= 20; n++) seed(n, { key: `other-${n}`, at: now - day }); await expectAdmission(true);
     reset(); for (let n = 1; n <= 20; n++) seed(n, { key: `other-${n}`, at: now - day + 1 }); await expectAdmission(false);
@@ -174,8 +193,17 @@ assert.notEqual(await hashVoiceVisitor(visitor, secret), await hashVoiceVisitor(
     const beforeError = snapshot();
     const brokenEnvironment = { DB: { prepare() { throw new Error('mock D1 unavailable'); } }, OPENAI_API_KEY: secret };
     const failed = await voiceAdmissionStatus(admissionRequest, brokenEnvironment);
-    assert.equal((await failed.json()).available, false, 'D1 errors fail closed');
+    const failedBody = await failed.json();
+    assert.equal(failedBody.available, false, 'D1 errors fail closed');
+    assert.equal(failedBody.reason, 'database');
+    assert.match(failedBody.message, /session records/);
     assert.deepEqual(snapshot(), beforeError);
+    for (const value of [null, { admitted: 0, reason: 'private-row-detail' }, { admitted: 1, reason: 'private-row-detail' }]) {
+      const malformed = { DB: { prepare() { return { bind() { return { async first() { return value; } }; } }; } }, OPENAI_API_KEY: secret };
+      const body = await (await voiceAdmissionStatus(admissionRequest, malformed)).json();
+      assert.equal(body.available, false); assert.equal(body.reason, 'database');
+      assert.doesNotMatch(JSON.stringify(body), /private-row-detail/);
+    }
     const denied = voiceStatus(new Request('https://pondstr.test/api/voice/status', { headers: { Origin: 'https://elsewhere.test' } }), environment);
     assert.equal(await voiceAdmissionStatus(admissionRequest, environment, denied), denied);
     const disabled = { ...environment, PONDSTER_VOICE_ENABLED: 'false' };
@@ -343,6 +371,8 @@ for (const seedShape of ['valid', 'null-session', 'array-session', 'null-develop
       assert.equal(sideband.sent[0].delegation_id, null);
       assert.equal(sideband.sent[0].content, greeting, 'The exact startup seed is reused; untrusted fields are ignored.');
     }
+    assert.deepEqual(server.sent.filter(event => event.type === 'pondster.busy'), seedShape === 'valid'
+      ? [{ type: 'pondster.busy', kind: 'response', active: true, holdMs: 30000 }] : [], 'Only a valid trusted greeting emits a bounded response-wait hint.');
   } finally {
     server.emit({ type: 'pondster.stop' }); await flush(); await Promise.all(tasks);
     globalThis.Response = NativeResponse; globalThis.fetch = originalFetch; globalThis.WebSocketPair = OriginalPair;
@@ -370,9 +400,11 @@ for (const seedShape of ['valid', 'null-session', 'array-session', 'null-develop
   assert.equal(first.type, 'session.commentary.append');
   assert.equal(first.delegation_id, null);
   assert.equal(first.content, greeting, 'Only server-owned greeting instructions are sent to the trusted sideband.');
+  assert.deepEqual(f.client.sent.at(-1), { type: 'pondster.busy', kind: 'response', active: true, holdMs: 30000 });
   assert.match(first.event_id, /^[0-9a-f-]{36}$/);
   await f.control.message(JSON.stringify({ type: 'pondster.started' }));
   assert.equal(f.sideband.sent.length, 1, 'A repeated readiness event never repeats the greeting.');
+  assert.equal(f.client.sent.filter(event => event.type === 'pondster.busy').length, 1, 'Repeated readiness cannot extend response waiting.');
   await f.control.stop();
   await f.control.message(JSON.stringify({ type: 'pondster.started' }));
   assert.equal(f.sideband.sent.filter(event => event.type === 'session.commentary.append').length, 1, 'Stopped sessions never greet again.');
@@ -500,7 +532,7 @@ for (const seedShape of ['valid', 'null-session', 'array-session', 'null-develop
   assert.equal(f.answers[0], 'Show my Master Bath');
   assert.equal(f.sideband.sent.at(-1).delegation_id, 'request-one');
   assert.equal(f.sideband.sent.at(-1).type, 'session.commentary.append');
-  assert.deepEqual(f.client.sent.at(-1), { type: 'pondster.action', action: { menu: 'Design', room: 'master-bath' } });
+  assert.deepEqual(f.client.sent.findLast(event => event.type === 'pondster.action'), { type: 'pondster.action', action: { menu: 'Design', room: 'master-bath' } });
   f.sideband.emit({ type: 'session.input_transcript.delta', delta: 'Who is Ashley?', start_ms: 1200, end_ms: 1600 });
   f.sideband.emit({ type: 'session.delegation.created', offset_ms: 1600, delegation: { id: 'request-two', target: 'client' } });
   await f.timer.tick(250);
@@ -521,4 +553,89 @@ for (const seedShape of ['valid', 'null-session', 'array-session', 'null-develop
   const f = fixture(); await f.control.message('x'.repeat(65_537)); await f.control.completed;
   assert.equal(f.creates(), 0); assert.equal(f.records.length, 0);
 }
-console.log('Pondster live server: read-only SQLite admission/cookie/limits, retained owner-waiver protection; terminal create rejection versus unknown/attach failures; validated upstream request ID; provider lifecycle, delegation and cleanup passed (mocks only).');
+
+const busyEvents = f => f.client.sent.filter(event => event.type === 'pondster.busy');
+{
+  const f = fixture(); await f.control.message(start(600));
+  const previousSend = f.sideband.onSend;
+  f.sideband.onSend = event => {
+    if (event.type === 'session.commentary.append') assert.deepEqual(f.client.sent.at(-1),
+      { type: 'pondster.busy', kind: 'response', active: true, holdMs: 30000 }, 'Every trusted commentary append is immediately preceded by its response-wait hint');
+    previousSend?.(event);
+  };
+  f.sideband.emit({ type: 'session.input_transcript.delta', delta: 'First question', start_ms: 0, end_ms: 100 });
+  f.sideband.emit({ type: 'session.delegation.created', offset_ms: 100, delegation: { id: 'overlap-one', target: 'client' } });
+  assert.deepEqual(busyEvents(f), [{ type: 'pondster.busy', kind: 'work', active: true, holdMs: 30000 }]);
+  await f.timer.tick(100);
+  f.sideband.emit({ type: 'session.input_transcript.delta', delta: 'Second question', start_ms: 1000, end_ms: 1100 });
+  f.sideband.emit({ type: 'session.delegation.created', offset_ms: 1100, delegation: { id: 'overlap-two', target: 'client' } });
+  f.sideband.emit({ type: 'session.delegation.created', offset_ms: 1100, delegation: { id: 'overlap-two', target: 'client' } });
+  assert.equal(busyEvents(f).length, 2, 'A duplicate pending delegation never adds a hold');
+  await f.timer.tick(150);
+  assert.equal(f.answers.length, 1);
+  assert.equal(busyEvents(f).filter(event => event.kind === 'work' && !event.active).length, 0, 'Finishing the first callback cannot clear another pending callback');
+  await f.timer.tick(100);
+  assert.deepEqual(f.answers, ['First question', 'Second question']);
+  assert.deepEqual(busyEvents(f).filter(event => event.kind === 'work').map(event => event.active), [true, true, false]);
+  assert.equal(busyEvents(f).filter(event => event.kind === 'response').length, 2);
+  const beforeDuplicate = busyEvents(f).length;
+  f.sideband.emit({ type: 'session.delegation.created', offset_ms: 100, delegation: { id: 'overlap-one', target: 'client' } });
+  await f.timer.tick(300);
+  assert.equal(busyEvents(f).length, beforeDuplicate, 'Seen-ID dedup remains after queued work finishes');
+  await f.control.message(JSON.stringify({ type: 'pondster.text', text: 'Typed public question' }));
+  assert.equal(busyEvents(f).filter(event => event.kind === 'response').length, 3, 'Typed answers also announce bounded response waiting');
+  assert.equal(busyEvents(f).filter(event => event.kind === 'work').length, 3, 'Typed synchronous answers do not invent provider work events');
+  assert.ok(busyEvents(f).every(event => event.holdMs === 30000 && typeof event.active === 'boolean' && ['work', 'response'].includes(event.kind)));
+  await f.control.stop();
+}
+{
+  const f = fixture(); await f.control.message(start(601));
+  const invalid = [
+    { offset_ms: 0, delegation: { id: 'other-target', target: 'responses' } },
+    { offset_ms: 0, delegation: { id: '', target: 'client' } },
+    { offset_ms: 0, delegation: { id: 'x'.repeat(257), target: 'client' } },
+    { offset_ms: 'not-a-number', delegation: { id: 'bad-offset', target: 'client' } }
+  ];
+  for (const value of invalid) f.sideband.emit({ type: 'session.delegation.created', ...value });
+  assert.deepEqual(busyEvents(f), [], 'Invalid or non-client delegations never create a busy hold');
+  for (let i = 0; i < 20; i++) {
+    f.sideband.emit({ type: 'session.delegation.created', offset_ms: i, delegation: { id: `bounded-${i}`, target: 'client' } });
+    await f.timer.tick(250);
+  }
+  assert.equal(f.sideband.sent.filter(event => event.type === 'session.commentary.append').length, 20);
+  assert.ok(f.sideband.sent.filter(event => event.type === 'session.commentary.append').every(event => /ask me again/.test(event.content)), 'Clarification fallback uses the same trusted response path');
+  const hintsAtCap = busyEvents(f).length;
+  f.sideband.emit({ type: 'session.delegation.created', offset_ms: 21, delegation: { id: 'over-cap', target: 'client' } });
+  await f.timer.tick(250);
+  assert.equal(busyEvents(f).length, hintsAtCap, 'The existing twenty-delegation cap cannot be extended by busy hints');
+  assert.equal(busyEvents(f).filter(event => event.kind === 'response').length, 20);
+  assert.equal(busyEvents(f).filter(event => event.kind === 'work' && !event.active).length, 20);
+  await f.control.stop();
+}
+{
+  const f = fixture(); await f.control.message(start(602));
+  f.sideband.emit({ type: 'session.delegation.created', offset_ms: 0, delegation: { id: 'cancel-pending', target: 'client' } });
+  await f.timer.tick(100); await f.control.stop();
+  const hintsAfterStop = busyEvents(f).length;
+  await f.timer.tick(1000);
+  f.sideband.emit({ type: 'session.delegation.created', offset_ms: 1, delegation: { id: 'late-work', target: 'client' } });
+  assert.equal(f.answers.length, 0);
+  assert.equal(busyEvents(f).length, hintsAfterStop, 'Closing emits no further work release or response hints');
+  assert.equal(f.timer.count(), 0);
+}
+{
+  const f = fixture(); await f.control.message(start(603));
+  await f.control.message(JSON.stringify({ type: 'pondster.busy', kind: 'work', active: true, holdMs: 999999 }));
+  await f.control.completed;
+  assert.deepEqual(busyEvents(f), [], 'The browser cannot manufacture a trusted busy hold');
+  assert.ok(f.client.sent.some(event => event.type === 'pondster.error'));
+  assert.deepEqual(f.sideband.sent.map(event => event.type), ['session.close']);
+}
+for (const menu of ['Contact', 'Own']) {
+  const f = fixture({ answer() { return { text: 'Synthetic public navigation.', action: { menu } }; } });
+  await f.control.message(start(604));
+  await f.control.message(JSON.stringify({ type: 'pondster.text', text: 'Show the public page' }));
+  assert.deepEqual(f.client.sent.findLast(event => event.type === 'pondster.action'), { type: 'pondster.action', action: { menu } });
+  await f.control.stop();
+}
+console.log('Pondster live server: trusted bounded work/response hints, overlapping delegation release/dedup/cap, no client busy injection, Contact/Own actions, SQLite admission and lifecycle/cleanup passed (mocks only).');

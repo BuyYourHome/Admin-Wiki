@@ -1,6 +1,6 @@
 import { basementColorSchemes, masterBathDesigns, hallBathDesigns, roomFeatures, systemFeatures } from './features.js';
 
-export type GuideAction = { menu: 'Design' | 'Explore' | 'View' | 'Own' | 'Built By'; room?: string; scene?: 'day' | 'evening' | 'relax' };
+export type GuideAction = { menu: 'Design' | 'Explore' | 'View' | 'Own' | 'Contact' | 'Built By'; room?: string; scene?: 'day' | 'evening' | 'relax' };
 export type GuideReply = { text: string; action?: GuideAction };
 
 export function isPondsterWakeRequest(transcript: string) {
@@ -68,6 +68,12 @@ export function answerPondster(input: string): GuideReply {
   if (/\b(price|pricing|cost|budget|tax|mortgage|rent|valuation|square footage|square feet|bedrooms|bathrooms|permit|inspection|wiring|voltage|hvac|thermostat|equipment|specifications?|model number|serial number|manufacturer|paint code|paint brand)\b/.test(words) || /\bhow much\b/.test(words)) {
     return { text: "I don't have verified pricing, property specifications, equipment records, or construction approvals to share here. My images show AI concepts, not installed or approved specifications. You can keep asking me about my public information." };
   }
+  const menuCommand = words.match(/\b(?:go to|open|show(?: me)?|take me to|navigate to)\s+(?:my\s+|the\s+)?(built by|contact|explore|design|view|belong|own|manage)(?:\s+(?:page|menu))?(?:\s+(?:please|now|for me))?$/);
+  if (menuCommand) {
+    const destinations: Record<string, GuideAction['menu']> = { design: 'Design', explore: 'Explore', view: 'View', belong: 'Own', own: 'Own', manage: 'Own', contact: 'Contact', 'built by': 'Built By' };
+    const menu = destinations[menuCommand[1]];
+    return { text: `I’m opening my ${menu === 'Own' ? 'Belong' : menu} page.`, action: { menu } };
+  }
   const systemId = /\b(tankless|hot water|water heater|recirculation|recirculating|circulating system)\b/.test(words) ? 'hot-water'
     : /\b(proximity|occupancy|presence|multiple people)\b/.test(words) || (/\b(tv|television)\b/.test(words) && /\b(kitchen|living room)\b/.test(words) && /\b(automatic|automatically|people|empty|occupied|swing|swings|turn|turns)\b/.test(words)) ? 'presence'
     : !tubDesignRequest && (/\b(showers?|tubs?|bathtub)\b/.test(words) || (/\bbaths?\b/.test(words) && /\b(voice|activated|command|fill|temperature|preferred|stop|full)\b/.test(words))) ? 'bath-and-shower'
@@ -85,7 +91,7 @@ export function answerPondster(input: string): GuideReply {
   if (/\b(appointment|viewing|visit|tour|calendar|entry code|entrycode|access code|unlock|lock|book|booking|reservation)\b/.test(words)) {
     return { text: 'I offer a simulated date-and-time preview and a DEMO entry code on my View page. I book no appointment and cannot unlock my doors. For a real visit with me, arrange the details with Ashley at ashley@elementrealtygroup.net.', action: { menu: 'View' } };
   }
-  if (/\b(ashley|realtor|agent|broker|contact|email|phone|call)\b/.test(words)) return { text: ashley, action: { menu: 'View' } };
+  if (/\b(ashley|realtor|agent|broker|contact|email|phone|call)\b/.test(words)) return { text: ashley + ' My Contact page also has my conversation controls and my company’s public contact details.', action: { menu: 'Contact' } };
   if (/\b(privacy|microphone|listening|recording|speech|voice|history|personal data)\b/.test(words)) {
     return { text: 'Ask me about my public information, and please avoid sharing private details or real entry codes. Read my voice notice before enabling a microphone. I use a browser cookie for design preferences; it does not verify a person or owner.' };
   }

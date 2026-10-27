@@ -6,6 +6,8 @@ export const VOICE_COOKIE = 'pondster_voice_visitor';
 export const VOICE_DURATION_SECONDS = 180;
 export const VOICE_SETUP_MS = 20_000;
 export const VOICE_FINALIZATION_MS = 10_000;
+export const VOICE_GLOBAL_DAILY_LIMIT = 20;
+export const VOICE_BROWSER_DAILY_LIMIT = VOICE_GLOBAL_DAILY_LIMIT;
 const DAY_MS = 86_400_000;
 const MAX_MESSAGE_BYTES = 65_536;
 const UUID = /^[0-9a-f]{8}-[0-9a-f]{4}-[1-8][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i;
@@ -65,8 +67,8 @@ export async function hashVoiceVisitor(cookie: string, pepper: string) {
 
 export const RESERVE_VOICE_SQL = `INSERT INTO voice_sessions (request_id, visitor_key, created_at, expires_at, state, usage_seconds, final_usage_confirmed)
  SELECT ?, ?, ?, ?, 'pending', 0, 0
- WHERE (SELECT COUNT(*) FROM voice_sessions WHERE created_at > ?) < 20
- AND (SELECT COUNT(*) FROM voice_sessions WHERE visitor_key = ? AND created_at > ?) < 4
+ WHERE (SELECT COUNT(*) FROM voice_sessions WHERE created_at > ?) < ${VOICE_GLOBAL_DAILY_LIMIT}
+ AND (SELECT COUNT(*) FROM voice_sessions WHERE visitor_key = ? AND created_at > ?) < ${VOICE_BROWSER_DAILY_LIMIT}
  AND NOT EXISTS (SELECT 1 FROM voice_sessions WHERE visitor_key = ? AND created_at > ?)
  AND (SELECT COUNT(*) FROM voice_sessions WHERE state IN (${ACTIVE_STATES})) < 2
  AND NOT EXISTS (SELECT 1 FROM voice_sessions WHERE visitor_key = ? AND state IN (${ACTIVE_STATES}))
@@ -74,30 +76,55 @@ export const RESERVE_VOICE_SQL = `INSERT INTO voice_sessions (request_id, visito
 
 // A read-only preview of the same predicates used by the atomic reservation.
 // It never releases an uncertain session or replaces the reservation at Start.
-export const VOICE_ADMISSION_SQL = `SELECT CASE WHEN
- (SELECT COUNT(*) FROM voice_sessions WHERE created_at > ?) < 20
- AND (SELECT COUNT(*) FROM voice_sessions WHERE visitor_key = ? AND created_at > ?) < 4
- AND NOT EXISTS (SELECT 1 FROM voice_sessions WHERE visitor_key = ? AND created_at > ?)
- AND (SELECT COUNT(*) FROM voice_sessions WHERE state IN (${ACTIVE_STATES})) < 2
- AND NOT EXISTS (SELECT 1 FROM voice_sessions WHERE visitor_key = ? AND state IN (${ACTIVE_STATES}))
- THEN 1 ELSE 0 END AS admitted`;
+export const VOICE_ADMISSION_SQL = `WITH parameters AS (
+ SELECT ? AS visitor_key, ? AS day_since, ? AS cooldown_since
+), checks AS (
+ SELECT
+  (SELECT COUNT(*) FROM voice_sessions WHERE created_at > p.day_since) AS daily_total,
+  (SELECT COUNT(*) FROM voice_sessions WHERE visitor_key = p.visitor_key AND created_at > p.day_since) AS daily_visitor,
+  EXISTS(SELECT 1 FROM voice_sessions WHERE visitor_key = p.visitor_key AND created_at > p.cooldown_since) AS cooldown,
+  (SELECT COUNT(*) FROM voice_sessions WHERE state IN (${ACTIVE_STATES})) AS active_total,
+  EXISTS(SELECT 1 FROM voice_sessions WHERE visitor_key = p.visitor_key AND state IN (${ACTIVE_STATES})) AS active_visitor,
+  (SELECT COUNT(*) FROM voice_sessions WHERE state IN ('pending','closing','unconfirmed')) AS pending_total,
+  EXISTS(SELECT 1 FROM voice_sessions WHERE visitor_key = p.visitor_key AND state IN ('pending','closing','unconfirmed')) AS pending_visitor
+ FROM parameters p
+)
+SELECT CASE WHEN daily_total < ${VOICE_GLOBAL_DAILY_LIMIT} AND daily_visitor < ${VOICE_BROWSER_DAILY_LIMIT}
+ AND NOT cooldown AND active_total < 2 AND NOT active_visitor THEN 1 ELSE 0 END AS admitted,
+ CASE WHEN daily_total >= ${VOICE_GLOBAL_DAILY_LIMIT} OR daily_visitor >= ${VOICE_BROWSER_DAILY_LIMIT} THEN 'daily_cap'
+  WHEN cooldown THEN 'cooldown'
+  WHEN pending_visitor OR (active_total >= 2 AND pending_total > 0) THEN 'pending_service'
+  WHEN active_visitor OR active_total >= 2 THEN 'active'
+  ELSE 'ready' END AS reason
+FROM checks`;
+
+const ADMISSION_MESSAGES = {
+  daily_cap: 'My natural voice has reached its rolling 24-hour conversation limit. You can use Browser voice or type to me.',
+  cooldown: 'Please wait up to a minute before another natural conversation. You can use Browser voice or type to me.',
+  active: 'My natural voice is busy with an open conversation. Please stop any open conversation or try later. You can use Browser voice or type to me.',
+  pending_service: 'An earlier natural conversation is still pending or needs a service check. You can use Browser voice or type to me.',
+  database: 'My natural voice session records are unavailable right now. You can use Browser voice or type to me.',
+};
+type AdmissionReason = keyof typeof ADMISSION_MESSAGES;
 
 export async function voiceAdmissionStatus(request: Request, env: VoiceEnvironment, base = voiceStatus(request, env)): Promise<Response> {
   if (base.status !== 200 || !voiceIsAvailable(env)) return base;
-  const unavailable = () => new Response(JSON.stringify({ available: false,
-    message: 'My natural voice connection needs a service check. You can use Browser voice or type to me.' }), { headers: base.headers });
+  const unavailable = (reason: AdmissionReason) => new Response(JSON.stringify({ available: false,
+    reason, message: ADMISSION_MESSAGES[reason] }), { headers: base.headers });
   // A first status request has no request cookie yet: use exactly the identity
   // issued by voiceStatus rather than minting a second visitor for this check.
   const visitor = voiceVisitor(request) ?? base.headers.get('set-cookie')?.match(/^pondster_voice_visitor=([a-f0-9]{32})(?:;|$)/)?.[1];
-  if (!visitor) return unavailable();
+  if (!visitor) return unavailable('database');
   try {
     const visitorKey = await hashVoiceVisitor(visitor, env.OPENAI_API_KEY!);
     const now = Date.now();
     const result = await env.DB!.prepare(VOICE_ADMISSION_SQL)
-      .bind(now - DAY_MS, visitorKey, now - DAY_MS, visitorKey, now - 60_000, visitorKey)
-      .first<{ admitted: number }>();
-    return result?.admitted === 1 ? base : unavailable();
-  } catch { return unavailable(); }
+      .bind(visitorKey, now - DAY_MS, now - 60_000)
+      .first<{ admitted: number; reason: unknown }>();
+    if (result?.admitted === 1 && result.reason === 'ready') return base;
+    const reason = result?.reason;
+    return unavailable(reason === 'daily_cap' || reason === 'cooldown' || reason === 'active' || reason === 'pending_service' ? reason : 'database');
+  } catch { return unavailable('database'); }
 }
 
 export function d1VoiceStore(db: D1Database): VoiceStore {
@@ -126,7 +153,7 @@ function safeClose(socket: Socket | null) {
   try { socket?.close(1000, 'Pondster voice ended'); } catch { /* Already closed. */ }
 }
 function actionIsPublic(action: PublicAction) {
-  return ['Design', 'Explore', 'View', 'Own', 'Built By'].includes(action.menu)
+  return ['Design', 'Explore', 'View', 'Own', 'Built By', 'Contact'].includes(action.menu)
     && (!action.room || /^[a-z][a-z-]{0,49}$/.test(action.room))
     && (!action.scene || ['day', 'evening', 'relax'].includes(action.scene));
 }
@@ -174,6 +201,7 @@ export function createPondsterLiveControl(options: ControllerOptions) {
   let lastDelegationOffset = -1;
   let consumedTranscriptEnd = -1;
   const delegations = new Set<string>();
+  const pendingDelegations = new Set<string>();
   const fragments: Array<{ text: string; start: number; end: number }> = [];
   let fragmentCharacters = 0;
   const abort = new AbortController();
@@ -184,12 +212,21 @@ export function createPondsterLiveControl(options: ControllerOptions) {
   const idle = later(() => { track(stop('I didn’t receive a voice request. Please try again.')); }, 10_000);
 
   function error(message: string) { safeSend(options.client, { type: 'pondster.error', message }); }
+  function busy(kind: 'work' | 'response', active: boolean) {
+    if (!closing && !finished) safeSend(options.client, { type: 'pondster.busy', kind, active, holdMs: 30_000 });
+  }
+  function appendCommentary(content: string, delegationId: string | null) {
+    if (closing || finished || !sideband) return;
+    // This is a bounded response-wait hint, not evidence of audible playback.
+    busy('response', true);
+    sideband.send(JSON.stringify({ type: 'session.commentary.append', event_id: crypto.randomUUID(), delegation_id: delegationId, content }));
+  }
   function deliver(question: string, delegationId: string | null) {
     if (closing || !ready || !sideband) return;
     const reply = options.answer(question);
     // Short public facts only; no user text is sent as a trusted instruction.
     const content = reply.text.slice(0, 1500);
-    sideband.send(JSON.stringify({ type: 'session.commentary.append', event_id: crypto.randomUUID(), delegation_id: delegationId, content }));
+    appendCommentary(content, delegationId);
     if (reply.action && actionIsPublic(reply.action)) safeSend(options.client, { type: 'pondster.action', action: reply.action });
   }
   function providerMessage(data: unknown) {
@@ -219,21 +256,26 @@ export function createPondsterLiveControl(options: ControllerOptions) {
     }
     if (event.type === 'session.delegation.created') {
       const delegation = event.delegation as { id?: unknown; target?: unknown } | undefined;
-      if (delegation?.target !== 'client' || typeof delegation.id !== 'string' || delegation.id.length > 256
+      if (delegation?.target !== 'client' || typeof delegation.id !== 'string' || !delegation.id.length || delegation.id.length > 256
         || delegations.has(delegation.id) || delegations.size >= 20 || typeof event.offset_ms !== 'number' || !Number.isFinite(event.offset_ms)) return;
       const id = delegation.id, offset = event.offset_ms, previousOffset = lastDelegationOffset;
       delegations.add(id); lastDelegationOffset = Math.max(offset, lastDelegationOffset);
+      pendingDelegations.add(id); busy('work', true);
       // A small buffer admits fragments delivered just after delegation metadata.
       later(() => {
-        if (closing) return;
-        const selected = fragments.filter(fragment => fragment.end > Math.max(previousOffset, consumedTranscriptEnd) && fragment.start <= offset + 250)
-          .sort((a, b) => a.start - b.start);
-        const question = selected.map(fragment => fragment.text).join('').trim().slice(-1500);
-        if (selected.length) consumedTranscriptEnd = Math.max(consumedTranscriptEnd, ...selected.map(fragment => fragment.end));
         try {
+          if (closing) return;
+          const selected = fragments.filter(fragment => fragment.end > Math.max(previousOffset, consumedTranscriptEnd) && fragment.start <= offset + 250)
+            .sort((a, b) => a.start - b.start);
+          const question = selected.map(fragment => fragment.text).join('').trim().slice(-1500);
+          if (selected.length) consumedTranscriptEnd = Math.max(consumedTranscriptEnd, ...selected.map(fragment => fragment.end));
           if (question) deliver(question, id);
-          else sideband?.send(JSON.stringify({ type: 'session.commentary.append', event_id: crypto.randomUUID(), delegation_id: id, content: 'I couldn’t quite catch your question. Please ask me again.' }));
+          else appendCommentary('I couldn’t quite catch your question. Please ask me again.', id);
         } catch { error('I couldn’t answer that voice request. Please try again.'); track(stop()); }
+        finally {
+          pendingDelegations.delete(id);
+          if (!pendingDelegations.size) busy('work', false);
+        }
       }, 250);
     }
   }
@@ -246,7 +288,7 @@ export function createPondsterLiveControl(options: ControllerOptions) {
       }
       finished = true; ready = false;
       for (const timer of timers) clearTimer(timer);
-      timers.clear(); safeClose(sideband);
+      timers.clear(); pendingDelegations.clear(); safeClose(sideband);
       if (reserved && requestId) {
         try { await options.store.finish(requestId, { state: confirmed ? 'closed' : creationRejected ? 'failed' : attempted ? 'unconfirmed' : 'failed', usageSeconds, confirmed }); }
         catch { /* Existing reservation remains occupied: fail closed. */ }
@@ -332,7 +374,7 @@ export function createPondsterLiveControl(options: ControllerOptions) {
         const content = options.greetingInstructions?.();
         if (!content) return;
         greetingSent = true;
-        sideband.send(JSON.stringify({ type: 'session.commentary.append', event_id: crypto.randomUUID(), delegation_id: null, content }));
+        appendCommentary(content, null);
       } catch { error('I couldn’t begin my voice greeting. Please try again later.'); return stop(); }
       return;
     }
