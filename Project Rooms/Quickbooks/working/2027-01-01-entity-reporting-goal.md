@@ -5,7 +5,7 @@
 - Recorded: October 27, 2026, America/New_York.
 - Target: January 1, 2027, America/New_York.
 - Owner instruction: Wes said, "Lets make it a goal to have this in place by Jan 1," following discussion of one QuickBooks file, entity classes, separate balance sheets, and an automatic data feed for Codex reporting.
-- Status: Active goal; planning recorded. Data collection, reporting software, migration, and production readiness have not been established by this document.
+- Status: Active goal; planning and an offline source-snapshot prototype are recorded. See [[Project Rooms/Quickbooks/working/entity-reporting-progress]] for verified captures, coverage findings and remaining access requirements. Authenticated automatic collection, complete entity reporting, migration and production readiness remain unproven.
 - Owning Project Room: Quickbooks. Registered execution target: `WES-VIDEOEDITOR`, task `01a05967-9a05-7081-a62e-616b2d8e61fd`, as documented in [[Project Rooms/Quickbooks/README]]. This note does not claim that a task handoff or deployment occurred.
 
 ## Intended Outcome
@@ -55,7 +55,7 @@ This record establishes the goal and proposed plan. It does not change the exist
 
 No recurring automation, reminder, live QuickBooks connection, or remote task notification was created by recording this plan. Implementation progress must be supported by actual evidence, not by the goal's active status.
 
-Next milestone work: inventory available source reports and establish entity/account ownership and data completeness for the BYH / Heritage pilot before changing live books.
+Next milestone work: restore usable read-only company access, execute the prepared HM/Home preservation scope, and obtain posting-complete sources and independent controls for the BYH / Heritage pilot before changing live books. Existing BYH exports have been preserved and structurally audited as documented in [[Project Rooms/Quickbooks/working/entity-reporting-progress]].
 
 ## References
 

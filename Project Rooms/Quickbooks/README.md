@@ -137,6 +137,10 @@ The unchanged task id is registered under `Quickbooks`, the renamed skill is ins
 
 Wes set January 1, 2027 as the target for one-file entity accounting, separate Codex-supported financial statements, and automatic data collection. See [[Project Rooms/Quickbooks/working/2027-01-01-entity-reporting-goal]] for proposed milestones, acceptance criteria, and open dependencies. This is an active development goal; it does not change the current Invoice mode or establish migration/connector readiness.
 
+Development references: [[Project Rooms/Quickbooks/working/entity-reporting-feed-contract]] defines the proposed collection controls. [[Project Rooms/Quickbooks/working/hm-home-preservation-package]] prepares the priority HM/Home archival scope; it does not establish that extraction or cancellation occurred. `scripts\Capture-QboReportSnapshot.py` is an offline export-snapshot and input-coverage inspector, not an authenticated QuickBooks connector or an approved entity-reporting engine.
+
+Current development evidence and remaining requirements are recorded in [[Project Rooms/Quickbooks/working/entity-reporting-progress]].
+
 ## Matching Skill
 
 - `C:\Codex\Wiki Files\skills\quickbooks\SKILL.md`
