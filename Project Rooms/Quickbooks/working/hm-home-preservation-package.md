@@ -14,6 +14,8 @@ Status: extraction package prepared; live company access and all-history extract
 - The existing BYH 2025 General Ledger and P&L exports remain available. They do not establish that the separate HM file is empty, duplicated, migrated, or completely preserved. No Home Acct source was found in the searched locations.
 - On October 27, the current task's host was verified as `WesStudio`. The registered Quickbooks execution target remains `WES-VIDEOEDITOR`, task `01a05967-9a05-7081-a62e-616b2d8e61fd`.
 - Two read-only browser inventory attempts timed out and reset their kernel before returning any browser/company state. No extraction or cancellation was attempted.
+- The continuation on registered target `Wes-VideoEditor` successfully controlled local Chrome and requested the QuickBooks company chooser. Intuit redirected to sign-in. The saved ID `weswill@buyyourhomellc.com` was visible with September 2, 2026 as the last access date on this device, but the session was not authenticated. No company list, company identifier, subscription ownership or shared-login arrangement was verified, and the task did not click the saved identity or select a company.
+- The verified WesStudio pilot archive is not present at the same path on this host, and no current-user `BYH Quickbooks Data` root exists. No archive folder was created because the protected primary location and independent backup destination have not yet been confirmed.
 
 ## Required Read-Only Extraction
 
@@ -46,6 +48,6 @@ Intuit's current US cancellation article says a single canceled subscription nor
 
 ## Action Boundary And Continuation
 
-Prepared next action: an exact read-only archive handoff to the registered Quickbooks task on `WES-VIDEOEDITOR`, once the task notification and required export access are authorized/available. This package has not been dispatched and must not be described as accepted or running remotely.
+Prepared next action: Wes signs in through the already-open Intuit page and leaves the QuickBooks company chooser visible. The same registered Quickbooks task then verifies the exact `Heritage Management LLC` and `Home Acct` identities and resumes the read-only archive workflow without another authorization prompt. Before downloading financial exports, confirm the protected primary archive path and independent backup destination. This package is active in the registered task but no extraction is running while authentication and storage are unresolved.
 
 The handoff must explicitly prohibit subscription cancellation, financial postings, payments, deletion, data import, account/settings changes, purchases, new account creation, and credential disclosure. Stop on an actual user-only authentication challenge or uncertain target company. Return archive locations, coverage, hashes, reconciliations, and the smallest unresolved gap. Ask separately for the specific cancellation decision only after preservation/access requirements are verified.
