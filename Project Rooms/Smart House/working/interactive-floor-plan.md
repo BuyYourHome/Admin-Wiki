@@ -6,7 +6,7 @@ On 2026-10-27 Wes supplied the proposed first-floor presentation PDF and directe
 
 Image creation remains with the Rendering PR. This website change reuses its supplied drawing, extracts a public crop, and adds navigation; it does not revise the architectural plan or create a new rendering.
 
-## Source And Public Asset
+## Initial v7 Source And Public Asset
 
 - Source intake path: `C:\Users\wesbr\Buy Your Home\Buy Your Home - Property\26-BYH -908 Pond St\Owning\Planning\House Render\floor-plans\908-Pond-Proposed-9-Presentation-Plan-v7.pdf`.
 - Source PDF SHA-256 reported by its adjacent provenance: `d25c8278110672272bae30d34a3bd7904aeb674326362cbc908df56378333225`.
@@ -18,7 +18,7 @@ Image creation remains with the Rendering PR. This website change reuses its sup
 
 At final wrap-up, the original v7 path could no longer be reopened and the v7 filenames were not found under the property Planning folder. The exact drawing had already been read, rendered, visually inspected and packaged; its public crop is retained in the Sites source/archive with the verified hash above. Do not silently substitute a later plan for future edits; obtain its verified source location/version from the Rendering PR when needed.
 
-## Navigation And Details
+## Initial v7 Navigation And Details
 
 The plan is the first feature below the existing Explore heading and lead. Seventeen labeled spaces have selectable navigation regions: Living Room, Kitchen, Dining Room, Master Bedroom, Master Bath, Hall, Bedrooms 1/2, Open Deck, Pantry, Laundry, Existing Garage, New Garage, Walk-in Closet, each bedroom closet, and Utility Closet.
 
@@ -35,8 +35,22 @@ Hall is not mapped to Hall Bath. The plan does not invent first-floor targets fo
 
 SVG regions support pointer activation and Enter/Space. A native room chooser provides a readable alternative for small spaces; changing its value preserves keyboard focus. The explicit details button focuses the chosen room heading, and Back to my plan returns to the corresponding region. Zoom runs from 100% to 250% within a scrollable canvas; the initial view fits the drawing. The site's exact Explore hash and existing gallery navigation callback are retained.
 
-## Verification And Release
+## Version 9 Source Update — 2026-10-27
+
+Wes supplied the newer PDF directly after the first interactive-plan release, authorizing the same website app to use this revision. The new source is `C:\Users\wesbr\Buy Your Home\Buy Your Home - Property\26-BYH -908 Pond St\Owning\Planning\House Render\floor-plans\908-Pond-Proposed-9-Presentation-Plan-v9.pdf`. Its actual SHA-256 matches the adjacent provenance: `30ccb8bf501dec95dbfab4e3a876ce8b2941f0cd616312080eab4b654cf159bd`.
+
+The supplied v9 presentation adds Hall Bath and the native spiral stair, retains the two garages and triangular laundry, and corrects the deck projection to 144 inches measured from the exterior wall face. Numeric dimension callouts are omitted from the supplied sheet; this website workflow does not alter the drawing or its source files.
+
+The current public drawing-only crop uses PDF points left 140, top 245, width 1190, height 1030. The wider right edge preserves the complete GARAGE DOOR label while stopping before the sidebar. Poppler at 144 dpi produces 2380×2060 px. The original address-bearing PDF is not published. Public asset `/plans/proposed-first-floor.png` SHA-256: `8f5ba9a003c504a422bce881b1a4f1bb44ae51600e9b95f216be848b814fb04b`.
+
+The app now has **19** selectable spaces. Hall Bath opens its existing `hall-bath` tub-and-shower gallery and feature content. Spiral Stair has separate source-backed details and a related `spiral-staircase` Home Theatre concept link; it does not assert a final physical connection or fit. Hall excludes these new targets. Deck selection follows the revised native bounds X230.5420004593–594.8641685495, Y412.2386944702–556.2386944702. Existing gallery IDs, stored votes/comments, room chooser, zoom and focus behavior remain compatible.
+
+All 19 source label centers select the correct topmost region; all region coordinates stay within the crop and IDs are unique. Local Chrome verified Hall Bath selection and its gallery navigation, showing all six existing color choices. An additional phone viewport check was interrupted by Chrome debugger detachment; the responsive component/CSS is unchanged. Production build, TypeScript, secret scan and live verification are recorded with the release below.
+
+## Initial Verification And Release
 
 Implementation checks: all 17 source label centers, bounds, unique room IDs and gallery targets passed geometry review; the Hall nook was included after review. TypeScript passed. Local desktop room activation displayed Master Bath details. A 390×844 viewport showed the plan before the existing feature sections, with no document overflow and the complete new tagline fitting horizontally. Browser debugger detachment interrupted additional keyboard checks; production verification and the publication record are recorded in [[Project Rooms/Smart House/working/hosting-and-domain]].
 
 Version **59** was published and visually verified on the custom domain. Live room activation displayed Master Bath, whose gallery action opened the correct Master Bath voting choices; Master Bedroom opened its own details. Proof outside Git: `C:\Users\wesbr\.codex\visualizations\2026\10\27\pondster-interactive-plan-published.jpg` and `C:\Users\wesbr\.codex\visualizations\2026\10\27\pondster-room-details-published.jpg`. The new delivery tab uses the browser’s normal sizing. Resetting the earlier temporary viewport on detached preview tabs was unavailable; those intermediate tabs are left to automatic cleanup.
+
+Version **60** publishes v9 at https://pondstr.com/#explore. Live Hall Bath and Spiral Stair selections displayed their separate details. Full release metadata: [[Project Rooms/Smart House/working/hosting-and-domain]]. Proof outside Git: `C:\Users\wesbr\.codex\visualizations\2026\10\27\pondster-v9-floor-plan-published.jpg`. The v7 sections above preserve the original release history; v9 is the current source.

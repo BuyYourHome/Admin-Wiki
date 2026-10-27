@@ -549,3 +549,14 @@ Explore now starts with a selectable first-floor plan and details for 17 labeled
 - Archive: `sha256:a53a8de13506adf327e35054b1d78ea2cf066aa91d05d15f49433f2d7898841f`, 121 files, 54,046,720 bytes.
 
 TypeScript, source diff check, source-center geometry/bounds/ID/gallery checks and production build passed. The secret scan checked 169 files with no leak. Local desktop room activation and 390×844 layout geometry passed, including no global horizontal overflow and the full tagline fitting. Chrome debugger detachment prevented completion of additional keyboard interaction checks. Live https://pondstr.com/#explore visibly showed the new tagline and plan. Live Master Bath activation opened its correct voting gallery; Master Bedroom opened its separate details. Proof and source/crop provenance are in [[Project Rooms/Smart House/working/interactive-floor-plan]]. Matching text sources are mirrored in gallery-source; the plan image remains outside Admin Wiki Git.
+
+## Supplied v9 interactive plan — version 60, 2026-10-27
+
+Wes supplied the newer presentation PDF as continuation of the Explore plan request. The existing app now uses its drawing-only crop, retaining the native spiral stair, newly labeled Hall Bath and corrected deck projection. Nineteen source-labeled spaces are clickable. Hall Bath reuses its existing tub-and-shower gallery; Spiral Stair links to related Home Theatre concepts without claiming physical fit. The Hall region excludes both new targets. The wider public crop retains the complete GARAGE DOOR label, excludes the address and sidebar, and publishes no original PDF.
+
+- Source: `f157843c3ae3938748e0e364698522101f044b58`.
+- Saved version: `appgprj_6ad4d98e08708191858cab113814704e~appgver_7ce89ddf95bc8191ae50cd5df7afb48a`, version **60**.
+- Deployment: `appgdep_6ae0a601a4cc8191b40d5f643eea238c`, succeeded `2026-10-27T13:24:27.742557+00:00`, environment revision **4**.
+- Archive: `sha256:de5a84095104d813410a78750c8cee964f2acafedf2d2c5f639723be0187a059`, 121 files, 54,067,200 bytes.
+
+All 19 label centers select their intended topmost region, every region stays within bounds, and IDs are unique. TypeScript, source diff check, production build and the 169-file secret scan passed. Local Hall Bath selection opened its correct six-choice gallery. Live https://pondstr.com/#explore displayed v9, and Hall Bath and Spiral Stair opened their own details. Additional phone verification was interrupted by Chrome debugger detachment; the responsive component/CSS is unchanged. Source/crop provenance and screenshot proof are in [[Project Rooms/Smart House/working/interactive-floor-plan]]. Only the mapping source and plan PNG changed in the independent Site checkout. The text mapping is mirrored in Wiki; no binary was added to Wiki Git. No vote/comment write, voice session or device action occurred.

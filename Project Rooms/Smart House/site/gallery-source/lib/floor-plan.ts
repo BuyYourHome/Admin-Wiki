@@ -1,6 +1,6 @@
 import { roomFeatures } from './features.js';
 
-export const PLAN_WIDTH = 1140;
+export const PLAN_WIDTH = 1190;
 export const PLAN_HEIGHT = 1030;
 
 export type FloorPlanRoom = {
@@ -15,7 +15,7 @@ export type FloorPlanRoom = {
 
 // Navigation regions follow the supplied first-floor presentation drawing.
 // The living/dining/kitchen zones share an open space; these are not new walls.
-// Native CAD inches -> PDF points -> the drawing-only crop (140,245,1280,1275).
+// Native CAD inches -> PDF points -> the v9 drawing-only crop (140,245,1330,1275).
 function region(points: [number, number][]) {
   return points.map(([x, y]) => `${(24 + x * 1.37).toFixed(2)},${(1116 - y * 1.37).toFixed(2)}`).join(' ');
 }
@@ -55,9 +55,22 @@ export const floorPlanRooms: FloorPlanRoom[] = [
   },
   {
     id: 'hall', name: 'Hall',
-    polygon: region([[6.8,273.8],[300.9,273.8],[300.9,405.8],[231.5,405.8],[231.5,378],[110,378],[110,489.4],[6.8,489.4]]),
+    polygon: region([[6.8,273.8],[300.9,273.8],[300.9,309.54],[203.42,309.54],[203.42,331.80],[230.12,358.50],[230.12,378],[110,378],[110,489.4],[6.8,489.4],[6.8,483],[70,483],[70,402],[6.8,402]]),
     summary: 'My hall connects the bedroom side of my proposed layout with my shared living spaces.',
     features: ['I show my hall between my bedrooms and living spaces.', 'I mark my narrow utility closet with a U on this plan.']
+  },
+  {
+    id: 'hall-bath', name: 'Hall Bath',
+    polygon: region([[203.42,314.04],[296.92,314.04],[296.92,405.29],[237.16,405.29],[237.16,373.66],[230.12,373.66],[230.12,358.50],[203.42,331.80]]),
+    summary: 'My Hall Bath sits beside my hall and dining area in this proposed layout. I’m comparing tub-and-shower color studies in its gallery.',
+    features: roomFeatures['hall-bath'].features,
+    galleryId: 'hall-bath', galleryLabel: 'Visit my Hall Bath gallery'
+  },
+  {
+    id: 'spiral-stair', name: 'Spiral Stair', polygon: box(7,402,70,483),
+    summary: 'I show my spiral stair beside my hall in this proposed first-floor plan.',
+    features: ['I show my stair and its shape from my proposed plan.', 'I’m exploring separate Home Theatre stair concepts; my final connections, clearances and construction details still need confirmation.'],
+    galleryId: 'spiral-staircase', galleryLabel: 'Explore my Home Theatre stair concepts'
   },
   {
     id: 'bedroom-1', name: 'Bedroom 1', polygon: box(151,80.4,300.9,273.8),
@@ -70,9 +83,9 @@ export const floorPlanRooms: FloorPlanRoom[] = [
     features: ['I label this space Bedroom 2 on my plan.', 'I’m still gathering its furniture, lighting and finish choices.']
   },
   {
-    id: 'open-deck', name: 'Open Deck', polygon: box(230.5,405.8,594.4,549.8),
+    id: 'open-deck', name: 'Open Deck', polygon: box(230.5420004593157,412.2386944702037,594.8641685495109,556.2386944702037),
     summary: 'My proposed open deck spans the space between my rear return walls.',
-    features: ['I’m proposing a deck extending 12 feet from my rear wall.', 'I show my deck boards parallel to the left return wall in this plan.', ...roomFeatures['back-deck'].features],
+    features: ['I’m proposing a deck extending 12 feet from the exterior face of my rear wall.', 'I show my deck boards parallel to the left return wall in this plan.', ...roomFeatures['back-deck'].features],
     galleryId: 'back-deck', galleryLabel: 'Visit my Back Deck gallery'
   },
   {
