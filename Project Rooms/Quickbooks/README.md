@@ -133,6 +133,10 @@ Status: Active and dispatchable on `WES-VIDEOEDITOR` under the exact registered 
 
 The unchanged task id is registered under `Quickbooks`, the renamed skill is installed, and the superseded installed `quickbooks-invoice` copy is removed. At `2026-08-31T22:31:07.0879564Z`, read-only Chrome validation reached the authenticated `Choose your company` screen and showed `Buy Your Home LLC`, `BYH 401K LLC`, `Heritage Management LLC`, `Home Acct`, and `Sell Your Home LLC`. No company was selected and no QuickBooks data changed. Every vendor bill remains subject to validated Invoice Entry authorization, visible exact-company confirmation, dispatch/action-log reconciliation, duplicate search, exact vendor and bill-line mappings, one save, saved-bill read-back, ambiguous-result stop, no-payment, no-send, and no-unrelated-bookkeeping controls.
 
+## January 1, 2027 Reporting Goal
+
+Wes set January 1, 2027 as the target for one-file entity accounting, separate Codex-supported financial statements, and automatic data collection. See [[Project Rooms/Quickbooks/working/2027-01-01-entity-reporting-goal]] for proposed milestones, acceptance criteria, and open dependencies. This is an active development goal; it does not change the current Invoice mode or establish migration/connector readiness.
+
 ## Matching Skill
 
 - `C:\Codex\Wiki Files\skills\quickbooks\SKILL.md`
