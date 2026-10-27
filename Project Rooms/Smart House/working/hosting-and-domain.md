@@ -646,3 +646,16 @@ The browser allowance now matches the unchanged site-wide limit of 20 starts per
 - Archive: `sha256:c4759a140a332241a2170c795feda930230a823ac154bc442140752c47ad2946`, 125 files, 60,497,920 bytes.
 
 Server mocks and real-SQLite equivalence passed, including four closed attempts followed by an allowed fifth, 19/20 boundaries, unchanged cooldown/concurrency/unknown fences and fail-closed malformed/database cases. Independent review, TypeScript, production build, diff and the 178-file secret scan passed. Public homepage and anonymous voice status returned HTTP 200 with Contact/tagline present and anonymous availability true; this does not prove user-specific admission or audible behavior. Opening the site in Codex returned queued. Wes subsequently confirmed Pondster now speaks after refreshing and clicking the signature. Fresh request e3d34401-b6a5-4a67-b0a1-3ff79853bf14 closed with 23 seconds of provider-confirmed final usage. The separate real 30-second quiet test remains pending. Matching text sources are mirrored in gallery-source. No provider voice call, capture, vote/comment write, key change, billing action or device operation was performed by Codex. See [[Project Rooms/Smart House/working/voice-browser-limit-fix-20261027]].
+
+## Voice startup independent of optional model metadata — version 68, 2026-10-27
+
+Wes reported another voice failure after the verified version 67 trial. Hosted diagnostics at 21:22:04.944Z recorded a received model-information HTTP 500, with no allowlisted code or valid upstream request ID. Later hosted checks remained unavailable while the same approved key returned HTTP 200/ready from a read-only local metadata check. No new voice-session row followed the failed preflight. The upstream origin and a service-wide outage are not established.
+
+Startup now requests ordinary /api/voice/status, retaining configuration and session admission before microphone access. The actual voice connection remains subject to atomic reservation and existing create/attach/finalization handling. The separate opt-in model diagnostic stays available. No automatic session-create retry, quota change, unknown-outcome release, key change or billing action was added.
+
+- Source: `312b155de529e107cdc6cb3f83f1aa28483c3667`.
+- Saved version: `appgprj_6ad4d98e08708191858cab113814704e~appgver_949cbfc1d35c8191a0bfa6c4ffaef502`, version **68**.
+- Deployment: `appgdep_6ae117df09a081918aab2e2886d093c2`, succeeded `2026-10-27T21:30:16.258459+00:00`, environment revision **4**.
+- Archive: `sha256:9b1cbe0ddc8d8c5d7ad34101ad053d0eacae289d6c1b6394ed7cfbabd6079ed6`, 125 files, 60,497,920 bytes.
+
+Lifecycle regressions, including exact ordinary admission URL, TypeScript, production build, independent review, diff and 178-file secret scan passed. Public homepage and ordinary admission returned HTTP 200, Contact and tagline remained present, and anonymous admission was available. These checks do not establish user-specific admission, audible speech or the real 30-second quiet timeout. A fresh user trial was requested after publication and remains pending. Opening the site in Codex returned queued. Two text mirrors match the hosted source; no binary, secret, provider voice-session call or microphone capture was introduced. See [[Project Rooms/Smart House/working/voice-start-metadata-gate-20261027]].

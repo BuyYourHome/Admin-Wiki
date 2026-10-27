@@ -345,7 +345,8 @@ export function createPondsterLiveVoice(options: PondsterLiveVoiceOptions): Pond
   }
   async function run(a: Attempt) {
     try {
-      const response = await guard(a, fetcher('/api/voice/status?check=provider', { method: 'GET', cache: 'no-store', credentials: 'same-origin', signal: a.abort.signal }));
+      // Admission gates capture; optional model metadata is not a voice-session health check.
+      const response = await guard(a, fetcher('/api/voice/status', { method: 'GET', cache: 'no-store', credentials: 'same-origin', signal: a.abort.signal }));
       if (!response.ok) throw new Error('unavailable');
       const status = await guard(a, response.json()) as { available?: unknown; message?: unknown };
       if (status?.available !== true) {

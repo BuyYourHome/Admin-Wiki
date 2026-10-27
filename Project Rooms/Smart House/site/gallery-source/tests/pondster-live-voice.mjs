@@ -192,7 +192,7 @@ async function dispose(harness) {
   await flush();
   assert.equal(h.mediaCalls(), 1); assert.equal(h.peers.length, 1); assert.equal(h.controls.length, 1);
   assert.equal(h.requests.length, 1);
-  assert.equal(new URL(h.requests[0].url, 'https://pondstr.com').pathname, '/api/voice/status');
+  assert.equal(new URL(h.requests[0].url, 'https://pondstr.com').href, 'https://pondstr.com/api/voice/status', 'Startup uses authoritative admission without making optional model metadata a prerequisite.');
   assert.equal(h.requests[0].options.method, 'GET');
   assert.equal(h.requests[0].options.credentials, 'same-origin');
   assert.equal(h.control().url, 'wss://pondstr.com/api/voice/control');
