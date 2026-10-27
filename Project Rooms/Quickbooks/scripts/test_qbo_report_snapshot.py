@@ -135,6 +135,39 @@ class CoverageTests(unittest.TestCase):
         ]
         self.assertEqual(MODULE.inspect_rows(rows)["accounting_basis"], "accrual")
 
+    def test_summary_profit_and_loss_footer_basis_does_not_imply_posting_coverage(self):
+        for basis in ("Cash", "Accrual"):
+            with self.subTest(basis=basis):
+                rows = [
+                    ("Example company",), ("Profit and Loss by Class",),
+                    ("January-December, 2025",),
+                    (None, "Entity A", "Entity B", "TOTAL"),
+                    ("Net Income", 10, 20, 30),
+                    (f"{basis} Basis Tuesday, January 7, 2025 10:00 AM",),
+                ]
+                result = MODULE.inspect_rows(rows)
+                self.assertEqual(result["accounting_basis"], basis.casefold())
+                self.assertIn("no_transaction_table_detected", result["coverage_findings"])
+                self.assertEqual(result["dated_row_count"], 0)
+                self.assertIsNone(result["header_row"])
+                self.assertFalse(result["entity_reporting_ready"])
+
+    def test_summary_memo_and_cell_text_do_not_establish_report_basis(self):
+        for text_row in (
+            ("Memo", "Cash Basis"),
+            ("Accrual Basis", 10, 20),
+            ("A question about cash basis",),
+            ("Cash Basis adjustment requested",),
+        ):
+            with self.subTest(text_row=text_row):
+                result = MODULE.inspect_rows([
+                    ("Example company",), ("Profit and Loss",),
+                    (None, "TOTAL"), ("Net Income", 30), text_row,
+                ])
+                self.assertIsNone(result["accounting_basis"])
+                self.assertIn("no_transaction_table_detected", result["coverage_findings"])
+                self.assertFalse(result["entity_reporting_ready"])
+
     def test_report_totals_are_not_counted_as_postings(self):
         rows = [("Date", "Transaction type", "Debit", "Credit"),
                 ("2025-01-01", "Journal", 8, 8), ("Total", None, 16, 0)]
@@ -189,6 +222,35 @@ class ArchiveTests(unittest.TestCase):
                 self.assertNotEqual(first["snapshot_id"], third["snapshot_id"])
                 self.assertEqual(connection.execute("SELECT count(*) FROM source_snapshots").fetchone()[0], 2)
                 self.assertEqual(connection.execute("SELECT content FROM source_snapshots LIMIT 1").fetchone()[0], source.read_bytes())
+            finally:
+                connection.close()
+
+    def test_replay_preserves_original_cached_audit_after_inspector_improves(self):
+        original_audit = {"accounting_basis": None, "entity_reporting_ready": False}
+        revised_audit = {"accounting_basis": "cash", "entity_reporting_ready": False}
+        with tempfile.TemporaryDirectory() as folder:
+            root = Path(folder)
+            source = root / "source.xlsx"
+            source.write_bytes(b"unchanged source snapshot fixture")
+            connection = MODULE.open_archive(root / "archive.sqlite3")
+            try:
+                with patch.object(MODULE, "inspect_xlsx", return_value=original_audit):
+                    with connection:
+                        first = MODULE.capture(connection, "Example", source)
+                stored_before = connection.execute(
+                    "SELECT captured_utc, audit_json, content FROM source_snapshots",
+                ).fetchone()
+                with patch.object(MODULE, "inspect_xlsx", return_value=revised_audit) as inspect:
+                    with connection:
+                        replay = MODULE.capture(connection, "Example", source)
+                inspect.assert_not_called()
+                self.assertFalse(replay["new_snapshot"])
+                self.assertEqual(replay["snapshot_id"], first["snapshot_id"])
+                self.assertEqual(replay["audit"], original_audit)
+                self.assertEqual(connection.execute(
+                    "SELECT captured_utc, audit_json, content FROM source_snapshots",
+                ).fetchone(), stored_before)
+                self.assertEqual(connection.execute("SELECT count(*) FROM source_snapshots").fetchone()[0], 1)
             finally:
                 connection.close()
 

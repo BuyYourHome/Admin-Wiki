@@ -130,6 +130,9 @@ def inspect_rows(rows, uncached_formula_cells=()):
             result["headers"] = [str(cell or "") for cell in row]
             break
     if not fields:
+        # Summary reports still carry recognized standalone basis metadata.
+        # Finding it does not turn a summary into a transaction table.
+        result["accounting_basis"] = report_basis(rows)
         result["coverage_findings"].append("no_transaction_table_detected")
         return result
     result["has_class_column"] = "class" in fields
@@ -297,6 +300,8 @@ def capture(connection, company, source):
         "FROM source_snapshots WHERE snapshot_id=?", (identity,),
     ).fetchone()
     if existing:
+        # Replay preserves the original cached inspection evidence. A newer
+        # inspector must not silently rewrite this immutable snapshot's audit.
         archived_company, archived_digest, archived_size, archived_content, audit_json = existing
         if (archived_company != company or archived_digest != digest
                 or not isinstance(archived_content, bytes)

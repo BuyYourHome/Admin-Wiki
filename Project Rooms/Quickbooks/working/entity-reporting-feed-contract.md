@@ -28,6 +28,15 @@
 - Store raw API objects separately under `(realmId, entityType, Id)` with versions, timestamps, hashes, and prior observed versions. Do not equate an API source line with a report posting line without verified correspondence.
 - Raw objects explain/enrich source postings. Never add their totals to already-counted report postings as additional ledger activity.
 
+### Source-Set Compatibility Gate
+
+- Preserve individual files first; archival acceptance does not approve a file as the controlling financial revision. The current offline collector does not implement this multi-report gate or certify entity readiness.
+- Before reconciliation, identify one versioned source-set manifest containing each immutable source hash/snapshot ID, verified source company/realm, report role, period, accounting basis, currency, retrieval/generation times, filters, class hierarchy, and authority for selecting the revision. Record unknown metadata as unknown, not as defaults.
+- Establish a common extraction cutoff/source state, or an explicit reviewed bridge for changes between reports. Matching company/period/basis alone is insufficient. Different timestamps alone are not proof of incompatibility; unexplained control differences or missing revision evidence block certification.
+- Compare company controls before attributing changes only to classes. Match classes by full hierarchy, not column position or repeated property labels; do not count both leaf classes and their subtotals.
+- Preserve superseded baselines and revision candidates separately. Trace and rebase any previous manual ownership/reclassification overlays against the selected revision before applying them; never apply the report's recoding and an already-reflected manual adjustment twice. Cross-PR workpapers remain owned by their originating PR.
+- Record the compatible-set decision, exceptions and mapping/overlay version used by every published statement. No approved set currently exists for complete BYH/Heritage entity statements; the actual two-P&L conflict is documented in [[Project Rooms/Quickbooks/working/entity-reporting-progress]].
+
 ## Raw Object Coverage And Settlement Context
 
 - Baseline ordinary financial-object candidates: `Invoice`, `Payment`, `CreditMemo`, `SalesReceipt`, `RefundReceipt`, `Bill`, `BillPayment`, `VendorCredit`, `Purchase`, `Deposit`, `Transfer`, and `JournalEntry`.
