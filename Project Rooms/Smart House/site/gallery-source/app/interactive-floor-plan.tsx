@@ -2,8 +2,9 @@
 
 import { useId, useRef, useState } from 'react';
 import { floorPlanRooms, PLAN_HEIGHT, PLAN_WIDTH } from '../lib/floor-plan';
+import RoomPrimaryImage from './room-primary-image';
 
-export default function InteractiveFloorPlan({ onDesign }: { onDesign: (room: string) => void }) {
+export default function InteractiveFloorPlan() {
   const instanceId = useId();
   const headingId = `${instanceId}-plan-heading`;
   const detailHeadingId = `${instanceId}-room-heading`;
@@ -90,10 +91,10 @@ export default function InteractiveFloorPlan({ onDesign }: { onDesign: (room: st
 
       <section id={detailId} className="floor-plan-details" aria-labelledby={detailHeadingId}>
         <h3 ref={detailHeading} id={detailHeadingId} className="floor-plan-detail-heading" tabIndex={-1}>My {selectedRoom.name}</h3>
+        <RoomPrimaryImage key={selectedRoom.id} galleryId={selectedRoom.galleryId} roomName={selectedRoom.name}/>
         <p>{selectedRoom.summary}</p>
         <ul>{selectedRoom.features.map(feature => <li key={feature}>{feature}</li>)}</ul>
         <div className="floor-plan-detail-actions">
-          {selectedRoom.galleryId && <button type="button" className="floor-plan-gallery-link" onClick={() => onDesign(selectedRoom.galleryId!)}>{selectedRoom.galleryLabel ?? `Visit my ${selectedRoom.name} gallery`} <span aria-hidden="true">↗</span></button>}
           <button type="button" className="floor-plan-back" onClick={returnToPlan}>Back to my plan <span aria-hidden="true">↑</span></button>
         </div>
       </section>

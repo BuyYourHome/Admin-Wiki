@@ -59,7 +59,7 @@ export function answerPondster(input: string): GuideReply {
   const bathOperation = /\b(start|stop|fill|run|turn on|turn off|shut off|temperature|preferred|recognize|voice|activate|activated)\b/.test(words);
   const tubDesignRequest = tubContext && !bathOperation && (hallBathDesigns.some(design => (choiceAliases[design.title] ?? []).some(alias => has(alias)))
     || /\b(show|compare|designs?|galler(?:y|ies)|colou?rs?|palettes?|schemes?|choices?|finishes|features?|vote|voting|floating vanity)\b/.test(words));
-  const identity = "I'm Pondster, the voice and identity of this house. My location is confidential for now—think witness protection, with better curb appeal. Jean Wright is my SI designer. Direct your questions to me about design concepts, the lighting simulation, viewing previews, the Built By company page, or owner plans.";
+  const identity = "I'm Pondster, the voice and identity of this house. My location is confidential for now—think witness protection, with better curb appeal. Jean Wright is my SI designer. Direct your questions to me about my future features, design concepts, lighting simulation, viewing previews, Built By company page, or owner experience.";
   if (!words || /^(hi|hello|hey|good morning|good afternoon|good evening|who are you|what is your name|what s your name)$/.test(words)) return { text: identity };
 
   if (/\b(password|passcode|secret|private|confidential|live camera feed|camera footage|surveillance feed|saved profile|personal profile|alarm code|wifi|wi fi|owner records|owner data)\b/.test(words)) {
@@ -74,16 +74,13 @@ export function answerPondster(input: string): GuideReply {
     : /\b(cameras?|surveillance)\b/.test(words) ? 'exterior-awareness' : null;
   if (systemId) {
     const feature = systemFeatures.find(item => item.id === systemId)!;
-    return { text: `${feature.text} I’m describing my plans; my equipment and integrations still need confirmation. I can’t operate these systems or show live camera feeds from this website.`, action: { menu: 'Explore' } };
+    return { text: `${feature.text} These are my future features; my equipment and integrations still need confirmation. I can’t operate these systems or show live camera feeds from this website.`, action: { menu: 'Explore' } };
   }
   if (/\b(built by|builder|builders|developer|buy your home|buyyourhomellc|wes|wes browning)\b/.test(words) || /\bwho (built|is building|developed) (you|pondster|the house)\b/.test(words)) {
     return { text: 'Buy Your Home, LLC is the company behind me. Its website describes buying, repairing, managing, and selling homes with personal service and flexible real estate options. I can show you its overview, official website, and Wes Browning at 919-917-7466 on my Built By page.', action: { menu: 'Built By' } };
   }
   if (/\b(jean|wright|si designer)\b/.test(words) || /\bwho (designed|created|made) (you|pondster)\b/.test(words) || has('who is your designer')) {
     return { text: "Jean Wright is my SI designer. Direct your questions to me, Pondster. I can explain my public design concepts and website information. I don't send questions to Jean." };
-  }
-  if (/\b(virtual tour|design tour|show me around|show us around)\b/.test(words)) {
-    return { text: 'On my View page, choose Take my virtual tour. I show one view per available gallery: its video when one exists, otherwise its leading design image, with optional instrumental music. My tour fills the viewing screen. I’m showing AI concepts, not a recording of completed work.', action: { menu: 'View' } };
   }
   if (/\b(appointment|viewing|visit|tour|calendar|entry code|entrycode|access code|unlock|lock|book|booking|reservation)\b/.test(words)) {
     return { text: 'I offer a simulated date-and-time preview and a DEMO entry code on my View page. I book no appointment and cannot unlock my doors. For a real visit with me, arrange the details with Ashley at ashley@elementrealtygroup.net.', action: { menu: 'View' } };
@@ -93,7 +90,7 @@ export function answerPondster(input: string): GuideReply {
     return { text: 'Ask me about my public information, and please avoid sharing private details or real entry codes. Read my voice notice before enabling a microphone. I use a browser cookie for design preferences; it does not verify a person or owner.' };
   }
   if (/\b(owner|owners|own|belong|manage|handover|warranties|warranty|manuals|manual|maintenance)\b/.test(words)) {
-    return { text: 'I preview my future home guides, care and maintenance, and owner handover records on my Belong page. I’m still planning those owner tools; I provide no private owner access or live device controls here.', action: { menu: 'Own' } };
+    return { text: 'I will provide home guides, care and maintenance information, and owner handover records. My Belong page previews those future tools; I provide no private owner access or live device controls here.', action: { menu: 'Own' } };
   }
 
   const explicitRoom = rooms.find(item => has(item.name))
@@ -107,19 +104,19 @@ export function answerPondster(input: string): GuideReply {
     return { text: 'Use my gallery voting buttons to save or change your choice. I keep one current choice per browser per gallery. I can open the gallery; I do not cast votes for you.', action: { menu: 'Design', ...(room ? { room: room.id } : {}) } };
   }
   if ((room?.id === 'garage-barn-door' && /\b(video|film|animation|motion|sliding|slides|swing|swings|inward|entry|pedestrian)\b/.test(words)) || /\btesla\b/.test(words)) {
-    return { text: 'I have a twenty-five-second motion concept for my garage: my center entry section swings inward and closes, then my full door slides left. I’m showing a white Tesla driving out and across the scene to the left, revealing my white-marble garage floor. This is my illustrative AI/composited concept; my hardware, clearances, and the car’s turning path haven’t been validated.', action: { menu: 'Design', room: 'garage-barn-door' } };
+    return { text: 'I will feature a garage center entry section that swings inward and closes before my full door slides left. My twenty-five-second film shows a white Tesla driving out and across the scene to the left, revealing my white-marble garage floor. This is my illustrative AI/composited concept; my hardware, clearances, and the car’s turning path haven’t been validated.', action: { menu: 'Design', room: 'garage-barn-door' } };
   }
   if (room?.id === 'spiral-staircase' && /\b(video|film|animation|motion|lights|football)\b/.test(words)) {
-    return { text: 'I have a twelve-second concept film in my Home Theatre gallery. Moving football fills my screen while my amber stair lights illuminate in sequence. My film keeps its original amber palette; it does not change to match a winning color. I’m showing a full-scene AI motion concept; my staircase, lighting, dimensions, and clearances still need validation.', action: { menu: 'Design', room: 'spiral-staircase' } };
+    return { text: 'I will feature a Home Theatre screen with amber stair lights that illuminate in sequence. My twelve-second concept film shows moving football and keeps its original amber palette; it does not change to match a winning color. My full-scene AI motion concept leaves my staircase, lighting, dimensions, and clearances to be validated.', action: { menu: 'Design', room: 'spiral-staircase' } };
   }
   if (room?.id === 'media-center' && /\b(video|film|animation|motion|football)\b/.test(words)) {
-    return { text: 'I have a ten-second AI motion concept for my Living Room, with a fixed decorative frame, a TV that turns toward my kitchen, moving football footage, and a scrolling first-person caption. I’m showing a composited scene; my mount mechanics have not been validated.', action: { menu: 'Design', room: 'media-center' } };
+    return { text: 'I will feature a framed TV with my selected manual MM-MAX1 mount, positioned by hand. My ten-second AI film shows a fixed decorative frame, a TV turning toward my kitchen, moving football, and a scrolling caption. The automatic motion is illustrative; my selected mount’s fit and clearances still need validation.', action: { menu: 'Design', room: 'media-center' } };
   }
   if (room) {
-    if (/\bfeatures?\b/.test(words)) return { text: `${roomFeatures[room.id].features.join(' ')} I’m sharing concepts and plans; my final specifications still need confirmation.`, action: { menu: 'Explore' } };
+    if (/\bfeatures?\b/.test(words)) return { text: `${roomFeatures[room.id].features.join(' ')} These are my future features and design concepts; my final specifications still need confirmation.`, action: { menu: 'Explore' } };
     const action: GuideAction = { menu: 'Design', room: room.id };
     if (choice) return { text: `I have ${choice.title} as an AI design concept in my ${room.name} gallery. I’m opening it so you can compare my options. My concept images do not confirm installed materials or finished work.`, action };
-    if (!room.choices.length) return { text: `My ${room.name} gallery has design images still to come. I don’t have choices or specifications to share for it yet.`, action };
+    if (!room.choices.length) return { text: `I will add design images to my ${room.name} gallery. I don’t have choices or specifications to share for it yet.`, action };
     return { text: `I have ${room.choices.length} AI concept choices for my ${room.name}: ${room.choices.join('; ')}. I’m sharing visual studies, not confirmed materials or finished work.`, action };
   }
   if (/\b(lights?|lighting|scenes?|daylight|daytime|evening|unwind|relax|night)\b/.test(words) || has('day mode')) {
@@ -128,11 +125,11 @@ export function answerPondster(input: string): GuideReply {
     return { text: `I’m showing you my ${label} lighting simulation in Explore. I change only the illustration on my website; I don’t control real house lighting here.`, action: { menu: 'Explore', scene } };
   }
   if (/\b(video|film|football|artwork|screen|motion)\b/.test(words)) {
-    return { text: 'I have a ten-second AI motion concept for my Living Room, with a fixed decorative frame, a TV that turns toward my kitchen, moving football footage, and a scrolling first-person caption. I’m showing a composited scene; my mount mechanics have not been validated.', action: { menu: 'Design', room: 'media-center' } };
+    return { text: 'I will feature a framed TV with my selected manual MM-MAX1 mount, positioned by hand. My ten-second AI film shows a fixed decorative frame, a TV turning toward my kitchen, moving football, and a scrolling caption. The automatic motion is illustrative; my selected mount’s fit and clearances still need validation.', action: { menu: 'Design', room: 'media-center' } };
   }
-  if (has('explore') || /\b(features?|room by room)\b/.test(words)) return { text: 'I share my house-wide ideas and a feature list for each of my spaces on Explore, with design concepts separated from details still in my plans. You can also try my illustrative lighting moods. My installed equipment and construction details still need confirmation.', action: { menu: 'Explore' } };
+  if (has('explore') || /\b(features?|room by room)\b/.test(words)) return { text: 'I show the features I will bring to my house and each of my spaces on Explore, alongside my design concepts. You can also try my illustrative lighting moods. My equipment and construction details still need confirmation.', action: { menu: 'Explore' } };
   if (has('view')) return { text: 'I introduce Ashley and my simulated viewing preview on View. For a real visit with me, arrange the details separately with Ashley.', action: { menu: 'View' } };
-  if (/\b(design|designs|gallery|galleries|choices|colors|colours)\b/.test(words)) return { text: `I have ${rooms.length} design galleries: ${rooms.map(room => room.name).join(', ')}. I’m sharing AI concept images where choices are available; I’m still collecting images for my other galleries.`, action: { menu: 'Design' } };
+  if (/\b(design|designs|gallery|galleries|choices|colors|colours)\b/.test(words)) return { text: `I have ${rooms.length} design galleries: ${rooms.map(room => room.name).join(', ')}. I share AI concept images where choices are available and will add images for my other galleries.`, action: { menu: 'Design' } };
   if (/\b(address|location|where are you|where is pondster)\b/.test(words)) return { text: 'I’m Pondster, the voice and identity of this house. My location is confidential for now—think witness protection, with better curb appeal. You can explore my design ideas here and find future viewing arrangements on View.', action: { menu: 'View' } };
-  return { text: "I can answer from my public website information: design concepts, simulated lighting, viewing previews, Ashley, my SI designer Jean Wright, Buy Your Home, LLC, and my future owner plans. I don't have a verified answer to that question." };
+  return { text: "I can answer from my public website information: future features, design concepts, simulated lighting, viewing previews, Ashley, my SI designer Jean Wright, Buy Your Home, LLC, and my future owner experience. I don't have a verified answer to that question." };
 }

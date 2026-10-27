@@ -70,7 +70,7 @@ export function buildTourScenes(galleries: readonly Gallery[], roomResults: Tour
     if (gallery.id === 'media-center') motion = {
       ...shared, id: `${gallery.id}-motion`, kind: 'motion', title: 'My Living Room in motion', durationSeconds: 10,
       video: '/media/media-center-kitchen-view.mp4', poster: '/media/media-center-art-poster.png',
-      description: `I’m showing a separate illustrative motion film, not a film of the selected voting design. My decorative frame stays fixed while my TV turns toward my kitchen and artwork becomes moving football. My mount mechanics haven’t been validated. ${fallbackNote}`,
+      description: `I will feature my selected manual MM-MAX1 TV mount, positioned by hand. My separate illustrative film shows my decorative frame staying fixed while my TV turns toward my kitchen and artwork becomes moving football. The automatic motion is illustrative; my selected mount’s fit and clearances still need validation. My film does not show the selected voting design. ${fallbackNote}`,
       sourceCredit: 'Football footage: U.S. Marine Corps / Sgt. James Stanfield, via DVIDS.',
       sourceUrl: 'https://www.dvidshub.net/video/947000/125th-army-navy-football-game-b-roll',
       sourceNotice: 'The appearance of U.S. Department of War (DoW) visual information does not imply or constitute DoW endorsement.',
@@ -79,7 +79,7 @@ export function buildTourScenes(galleries: readonly Gallery[], roomResults: Tour
     else if (gallery.id === 'spiral-staircase') motion = {
       ...shared, id: `${gallery.id}-motion`, kind: 'motion', title: 'My Home Theatre in motion', durationSeconds: 12,
       video: '/media/theater-football-sequential-stair-lights.mp4', poster: '/media/theater-stair-lights-poster.jpg',
-      description: `I’m showing a separate illustrative motion film, not a film of the selected voting design. Moving football fills my Home Theatre screen while my amber stair lights illuminate in sequence. My staircase, lighting, dimensions, and clearances still need validation. ${fallbackNote}`,
+      description: `I will feature my Home Theatre screen with amber stair lights that illuminate in sequence. My separate illustrative film shows moving football and keeps its original design rather than the selected voting design. My staircase, lighting, dimensions, and clearances still need validation. ${fallbackNote}`,
       sourceCredit: 'Football credit shown in my film: U.S. Marine Corps / Sgt. James Stanfield, via DVIDS.',
       sourceUrl: 'https://www.dvidshub.net/video/947000/125th-army-navy-football-game-b-roll',
       sourceNotice: 'The appearance of U.S. Department of War (DoW) visual information does not imply or constitute DoW endorsement.',
@@ -88,7 +88,7 @@ export function buildTourScenes(galleries: readonly Gallery[], roomResults: Tour
     else if (gallery.id === 'garage-barn-door') motion = {
       ...shared, id: `${gallery.id}-motion`, kind: 'motion', title: 'My Garage Barn Door in motion', durationSeconds: 25,
       video: '/media/garage-barn-door-tesla-drive-out.mp4', poster: '/media/garage-barn-door-drive-out-poster.jpg',
-      description: `I’m showing a separate illustrative motion film, not a film of the selected voting design. My center entry section swings inward and closes before my full door slides left. A white Tesla drives out to reveal my white-marble garage floor. My hardware, clearances, and the car’s turning path haven’t been validated. ${fallbackNote}`
+      description: `I will feature a center entry section that swings inward and closes before my full door slides left. My separate illustrative film shows a white Tesla driving out to reveal my white-marble garage floor. My film does not show the selected voting design. My hardware, clearances, and the car’s turning path haven’t been validated. ${fallbackNote}`
     };
     scenes.push(motion ?? still);
   }

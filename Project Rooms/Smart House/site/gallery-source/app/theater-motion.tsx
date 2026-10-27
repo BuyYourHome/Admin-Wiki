@@ -9,7 +9,7 @@ export default function TheaterMotion() {
         Your browser can’t play my video here. <a href="/media/theater-football-sequential-stair-lights.mp4">Open my video file</a>.
       </video>
     </ScrollVideo>
-    <figcaption id="theater-motion-caption"><span>MY AI MOTION CONCEPT</span>I’m exploring moving football on my Home Theatre screen while my amber stair lights illuminate in sequence. I keep my full staircase-and-screen scene in view. My film keeps its original amber palette; it does not change to match a winning color. My film illustrates a design idea; my staircase, lighting, dimensions, and clearances still need validation.
+    <figcaption id="theater-motion-caption"><span>MY AI MOTION CONCEPT</span>I will feature my Home Theatre screen with amber stair lights that illuminate in sequence. My film shows moving football and keeps my full staircase-and-screen scene in view. My film keeps its original amber palette; it does not change to match a winning color. My film illustrates my future design; my staircase, lighting, dimensions, and clearances still need validation.
       <p className="media-source">Football credit shown in my film: U.S. Marine Corps / Sgt. James Stanfield, via <a href="https://www.dvidshub.net/video/947000/125th-army-navy-football-game-b-roll" target="_blank" rel="noopener noreferrer">DVIDS</a>.<br/>The appearance of U.S. Department of War (DoW) visual information does not imply or constitute DoW endorsement. <a href="https://www.dvidshub.net/about/copyright" target="_blank" rel="noopener noreferrer">Source use notice ↗</a></p>
     </figcaption>
   </figure>;
