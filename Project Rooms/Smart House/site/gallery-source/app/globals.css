@@ -220,6 +220,40 @@ body{padding-bottom:95px}.pondster-welcome{margin:0 4% 30px;padding:20px 24px;bo
 
 .room-nav .room-vote-count{display:block;margin-top:5px;font-size:11px;font-weight:600;color:var(--accent)}
 .room-nav button[aria-pressed=true] .room-vote-count{color:#ead0a9}
+.floor-plan{margin:0 0 55px;border:1px solid var(--line);background:var(--white)}
+.floor-plan-heading{padding:26px 30px 22px;border-bottom:1px solid var(--line)}
+.floor-plan-status{display:inline-block;color:var(--accent);font-size:9px;letter-spacing:1.2px;font-weight:600}
+.floor-plan-heading h2{font-size:clamp(27px,3.2vw,40px);line-height:1.15;letter-spacing:-.8px;margin:12px 0}
+.floor-plan-intro{max-width:760px;font-size:13px;color:var(--muted);margin:0}
+.floor-plan-layout{display:grid;grid-template-columns:minmax(0,1.55fr) minmax(280px,.8fr);align-items:start}
+.floor-plan-map{min-width:0;padding:20px;background:#fff}
+.floor-plan-tools{display:flex;align-items:flex-end;justify-content:space-between;gap:15px;margin-bottom:16px}
+.floor-plan-select{flex:1;min-width:0;max-width:310px}
+.floor-plan-select label{display:block;font-size:10px;color:var(--muted);margin-bottom:7px}
+.floor-plan-select select{display:block;width:100%;min-height:44px;border:1px solid #acb5a6;background:var(--white);color:var(--ink);padding:10px;font:13px Arial,sans-serif}
+.floor-plan-zoom{display:flex;align-items:center;gap:4px;flex-shrink:0}
+.floor-plan-zoom button{width:44px;height:44px;border:1px solid var(--line);background:var(--paper);font-size:23px;line-height:1}
+.floor-plan-zoom output{min-width:39px;text-align:center;font-size:10px;color:var(--muted)}
+.floor-plan-viewport{overflow:auto;max-height:680px;overscroll-behavior:contain;scrollbar-width:thin;scroll-margin-top:12px;border:1px solid var(--line);background:#fff}
+.floor-plan-open-details{display:flex;align-items:center;justify-content:space-between;gap:10px;width:100%;min-height:44px;margin-top:12px;padding:10px 13px;border:1px solid var(--line);background:var(--paper);font-size:12px;text-align:left}
+.floor-plan-canvas{min-width:0;margin-inline:auto}
+.floor-plan-svg{display:block;width:100%;height:auto}
+.floor-plan-room{fill:transparent;stroke:transparent;stroke-width:3;vector-effect:non-scaling-stroke;cursor:pointer;transition:fill .16s,stroke .16s}
+.floor-plan-room:hover{fill:#a7593624;stroke:#a7593699}
+.floor-plan-room.is-selected{fill:#a7593630;stroke:var(--accent)}
+.floor-plan-room:focus-visible{outline:none;fill:#a7593645;stroke:#7d341a;stroke-width:4}
+.floor-plan-details{padding:28px;border-left:1px solid var(--line);min-width:0;align-self:stretch;background:var(--paper)}
+.floor-plan-detail-heading{font:32px/1.1 Georgia,serif;letter-spacing:-.6px;margin:0 0 16px;scroll-margin-top:12px}
+.floor-plan-detail-heading:focus-visible{outline:2px solid var(--accent);outline-offset:6px}
+.floor-plan-details>p{font-size:14px;line-height:1.75;margin:0 0 20px}
+.floor-plan-details ul{padding-left:18px;margin:0;color:var(--muted);font-size:12px;line-height:1.8}
+.floor-plan-details li+li{margin-top:12px}
+.floor-plan-detail-actions{display:flex;flex-direction:column;align-items:stretch;gap:10px;margin-top:25px}
+.floor-plan-gallery-link,.floor-plan-back{display:flex;align-items:center;justify-content:space-between;gap:10px;min-height:46px;padding:13px 15px;text-align:left;font-size:12px;line-height:1.5}
+.floor-plan-gallery-link{background:var(--ink);color:var(--white);border:1px solid var(--ink)}
+.floor-plan-back{background:none;border:1px solid #aab3a4}
+@media(max-width:1000px){.floor-plan-layout{grid-template-columns:minmax(0,1fr)}.floor-plan-details{border-left:0;border-top:1px solid var(--line)}.floor-plan-viewport{max-height:650px}.floor-plan-details ul{columns:2;column-gap:30px}.floor-plan-details li{break-inside:avoid}.floor-plan-detail-actions{flex-direction:row;flex-wrap:wrap}.floor-plan-gallery-link{flex:1}}
+@media(max-width:720px){.floor-plan{margin-bottom:35px}.floor-plan-heading{padding:22px 20px}.floor-plan-intro{font-size:12px}.floor-plan-map{padding:12px}.floor-plan-tools{gap:8px;align-items:flex-end}.floor-plan-select label{font-size:9px}.floor-plan-select select{font-size:12px}.floor-plan-zoom{gap:0}.floor-plan-zoom output{min-width:32px;font-size:9px}.floor-plan-zoom button{width:44px}.floor-plan-viewport{max-height:65dvh}.floor-plan-details{padding:23px 20px}.floor-plan-detail-heading{font-size:29px}.floor-plan-details ul{columns:auto;font-size:13px}.floor-plan-detail-actions{flex-direction:column}.floor-plan-gallery-link,.floor-plan-back{font-size:13px}}
 .tour-side-caption{display:none}
 /* Reserve side rails in a short landscape viewport so labels never cover the media. */
 @media (orientation:landscape) and (max-height:600px) and (max-width:1100px){

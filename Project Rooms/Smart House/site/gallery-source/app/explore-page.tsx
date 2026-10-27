@@ -1,12 +1,15 @@
 'use client';
 import { galleries } from '../lib/designs';
 import { houseFeatures, roomFeatures } from '../lib/features.js';
+import InteractiveFloorPlan from './interactive-floor-plan';
 
 type Scene = 'day' | 'evening' | 'relax';
 export default function ExplorePage({ scene, onScene, onDesign }: { scene: string; onScene: (scene: Scene) => void; onDesign: (room: string) => void }) {
   return <section className="secondary-page explore-page">
     <h1 className="single-line-page-title explore-page-title">Get to know me. <em>Like The Back Of Your Room</em></h1>
-    <p className="lead">I’m Pondster. Here are my house-wide ideas and the features I’m exploring in each space as I take shape.</p>
+    <p className="lead">Start with my floor plan. Choose a room to get to know its details, then explore the ideas that make me Pondster.</p>
+
+    <InteractiveFloorPlan onDesign={onDesign}/>
 
     <section className="house-features" aria-labelledby="house-features-heading">
       <div className="feature-section-heading"><p className="eyebrow">THE BIG PICTURE</p><h2 id="house-features-heading">What makes me, <span className="pondster-inline-signature">Pondster</span>.</h2></div>
