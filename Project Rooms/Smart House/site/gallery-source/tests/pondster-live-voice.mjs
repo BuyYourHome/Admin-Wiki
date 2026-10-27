@@ -161,7 +161,7 @@ async function connect(harness, start = harness.voice.start(), maxDurationSecond
 }
 
 async function dispose(harness) {
-  harness.voice.dispose(); harness.clock.advance(2000); await flush();
+  harness.voice.dispose(); harness.clock.advance(10000); await flush();
   assert.equal(harness.clock.pending(), 0, 'Disposal leaves no timeout jobs after the close grace period.');
   assert.ok(harness.peers.every(item => item.closeCalls > 0), 'Every created peer is closed.');
   assert.ok(harness.controls.every(item => item.closeCalls > 0), 'Every created control socket is closed.');
@@ -254,6 +254,10 @@ async function dispose(harness) {
   assert.ok(socket.sent.some(message => message.type === 'pondster.stop'));
   assert.deepEqual(events.sent, [{ type: 'session.close' }]);
   assert.equal(oldPeer.closeCalls, 0, 'The open data channel can drain the close acknowledgement.');
+  h.clock.advance(5000); await flush();
+  assert.equal(oldPeer.closeCalls, 0, 'WebRTC stays open for a close acknowledgement beyond two seconds.');
+  assert.equal(events.readyState, 'open'); assert.equal(socket.readyState, 1);
+  assert.equal(h.audio.srcObject, null); assert.ok(h.tracks.every(item => item.stopCalls > 0));
   events.receive({ type: 'session.closed' }); await flush();
   assert.equal(oldPeer.closeCalls, 1);
   assert.equal(socket.closeCalls, 1);
@@ -261,9 +265,18 @@ async function dispose(harness) {
   await dispose(h);
 }
 {
-  const h = setup(); const { peer: oldPeer } = await connect(h);
-  h.voice.stop(); h.clock.advance(1999); await flush(); assert.equal(oldPeer.closeCalls, 0);
-  h.clock.advance(1); await flush(); assert.equal(oldPeer.closeCalls, 1, 'An unacknowledged close cannot retain the peer beyond two seconds.');
+  const h = setup(); const { peer: oldPeer, control: socket, events } = await connect(h);
+  h.voice.stop();
+  const stoppedState = { ...h.state() };
+  h.clock.advance(9999); await flush();
+  assert.equal(oldPeer.closeCalls, 0); assert.equal(events.readyState, 'open'); assert.equal(socket.readyState, 1);
+  assert.equal(h.audio.srcObject, null); assert.ok(h.tracks.every(item => item.stopCalls > 0));
+  h.clock.advance(1); await flush();
+  assert.equal(oldPeer.closeCalls, 1, 'An unacknowledged close releases its transports after ten seconds.');
+  assert.equal(events.readyState, 'closed'); assert.equal(socket.readyState, 3);
+  assert.deepEqual(h.state(), stoppedState, 'The local drain timeout does not report provider-confirmed closure.');
+  assert.deepEqual(events.sent, [{ type: 'session.close' }], 'A drain timeout never fabricates session.closed.');
+  assert.ok(!socket.sent.some(message => message.type === 'session.closed'));
   await dispose(h);
 }
 
@@ -333,7 +346,7 @@ async function dispose(harness) {
   stale.control?.({ data: JSON.stringify({ type: 'pondster.action', action: { menu: 'Own' } }) });
   const late = track(); stale.track?.({ track: late, streams: [stream([late])] });
   old.peer.connectionState = 'failed'; stale.connection?.();
-  h.clock.advance(2000); await flush();
+  h.clock.advance(10000); await flush();
   assert.deepEqual(h.state(), state); assert.equal(h.transcripts.length, transcriptCount); assert.equal(h.actions.length, actionCount);
   assert.ok(late.stopCalls > 0, 'A stale remote track is stopped.');
   assert.equal(fresh.peer.closeCalls, 0); assert.equal(h.tracks.at(-1).stopCalls, 0);
@@ -385,4 +398,4 @@ for (const event of [{ type: 'pondster.error', message: 'Voice service is unavai
   const count = h.mediaCalls(); await assert.rejects(h.voice.start(), /closed/i); assert.equal(h.mediaCalls(), count);
 }
 
-console.log('PASS: lazy Live voice acquisition; same-origin status/control protocol; bounded ICE and session start; idempotence; permission/fetch cancellation; immediate capture/playback stop and two-second close drain; typed control/actions; bounded debounced captions; autoplay recovery; stale events; availability and server failures; visibility and three-minute limits; disposal.');
+console.log('PASS: lazy Live voice acquisition; same-origin status/control protocol; bounded ICE and session start; idempotence; permission/fetch cancellation; immediate capture/playback stop and ten-second unconfirmed close drain; typed control/actions; bounded debounced captions; autoplay recovery; stale events; availability and server failures; visibility and three-minute limits; disposal.');

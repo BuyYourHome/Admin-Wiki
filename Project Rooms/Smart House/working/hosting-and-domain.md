@@ -573,3 +573,27 @@ Explore retains the v9 floor plan and 19 regions. A selected room shows a contai
 - Archive: `sha256:ff0f336af52999d76be29a545c7f19b6f7fcf1349ee72e7c1817bf2b4dbe7448`, 121 files, 54,077,440 bytes.
 
 React static-render checks passed for all nine primary/empty states, source assets, related-image labeling, 19 plan spaces, nine in-place disclosures, absent gallery links and definite-copy scanning. TypeScript, production build, source diff and the 170-file secret scan passed. Independent source/accessibility review found no actionable issue. Chrome automation initialization repeatedly timed out, so no browser visual/live-interaction check or screenshot is claimed. The production URL is https://pondstr.com/#explore; opening it in the Codex panel returned queued. Thirteen text sources were mirrored and hash-verified in gallery-source. No binary or secret was added to Wiki Git; no vote/comment write, voice session, device control or purchase occurred. Requirements and review limits: [[Project Rooms/Smart House/working/future-feature-language-and-room-pictures]].
+
+## Verified natural voice and owner-discarded tests — version 62, 2026-10-27
+
+Wes directed that the two identified earlier test attempts be discarded locally so natural voice work could continue. The narrow runtime operation compared their exact request IDs, original creation/expiry timestamps, unconfirmed state, null provider IDs, zero usage and zero confirmation flags. Native comparison of all three existing rows verified that only those two states became owner_waived; every other field and the pre-existing failed row were unchanged. This records a local administrative waiver, not provider cancellation or confirmed final usage for either old attempt. Exact authorization and before/after evidence: [[Project Rooms/Smart House/working/owner-discarded-voice-tests-20261027]].
+
+- Source: `a66ae5cb0e175df566f1f0d4f4d0d8f7e5d606c2`.
+- Saved version: `appgprj_6ad4d98e08708191858cab113814704e~appgver_465a68484c0c8191a2f0c4c4aefbf4e0`, version **62**.
+- Deployment: `appgdep_6ae0b6cfdcb0819195e0e9e1e68996e6`, succeeded `2026-10-27T14:36:16.975549Z`, environment revision **4**.
+- Archive: `sha256:86e04dd290388f06963652c57865b026f814c8fa1f25ef92214c3915cbe6b799`, 121 files, 54,077,440 bytes.
+
+Public https://pondstr.com/api/voice/status returned available=true. Wes then confirmed, “I hear a natural spoken answer”. The new request `fee59c3f-99f8-4d74-a324-dfabb254d82c`, created `2026-10-27T14:37:56.107Z`, has a provider ID, state closed, usage_seconds=15 and final_usage_confirmed=1. This verifies the spoken trial and provider finalization for that new session. Normal active-session, daily and per-visitor limits/cooldowns remain unchanged. Stop ends local capture and playback immediately while transports may drain for up to ten seconds for session.closed; a timeout remains unconfirmed. Create/attach transport failures retain sanitized classifications. The cleanup release removing the completed one-time waiver hook will be recorded separately. See [[Project Rooms/Smart House/working/pondster-natural-voice]].
+
+## Completed voice cleanup — version 63, 2026-10-27
+
+The verified temporary operation is removed. Admission is read-only again, with no exact old request IDs or waiver-creation hook in production. Late activation/finalization guards retain the two owner_waived audit records. The ten-second finalization drain, immediate capture/playback stop, sanitized diagnostics and existing limits remain. The audible Chrome test occurred on version 62; this cleanup retains its working audio code.
+
+- Source: `bc7389bee6dd29e4e5e74703b75154d7d3f6b164`.
+- Saved version: `appgprj_6ad4d98e08708191858cab113814704e~appgver_c23614bbdcf481918ee4620b6a1de52e`, version **63**.
+- Deployment: `appgdep_6ae0bd44a5208191993d772b8718168e`, succeeded `2026-10-27T15:03:45.517490Z`, environment revision **4**.
+- Archive: `sha256:7e796f4947aa8ef11e1fe8b623dd50d645d91209ed58d0fe9e878f622d8367fd`, 121 files, 54,077,440 bytes.
+
+Final https://pondstr.com/api/voice/status returned HTTP 200 and available=true. Native reread preserved all four previously verified rows and showed one additional conversation closed with 43 seconds of confirmed final usage. This additional provider completion is not a separately observed audible test. There are no active or unconfirmed reservations in that five-row snapshot. No automated microphone/provider voice test was run.
+
+Final server regressions and no-emit TypeScript passed. Production builds and the 170-file private secret scan passed. An expired source-push credential caused one upload rejection; local commits were preserved, publishing access renewed, and the same source rebuilt and successfully pushed/packaged by the official helper. No force push or credential exposure occurred. Four final text sources were mirrored and hash-verified in gallery-source. Browser automation remained unavailable; Wes's actual Chrome answer and native provider-finalization record establish the successful spoken result.

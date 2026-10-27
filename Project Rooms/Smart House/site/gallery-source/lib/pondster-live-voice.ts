@@ -140,10 +140,11 @@ export function createPondsterLiveVoice(options: PondsterLiveVoiceOptions): Pond
       current = null; silence();
       notify({ connecting: false, active: false, audioBlocked: false, status, available });
     }
-    // Capture/playback ends now; only control events drain, with a hard two-second bound.
+    // Capture/playback ends now; transports retain a ten-second close-handshake drain.
+    // Reaching this local cleanup bound does not confirm provider finalization.
     sendClose(a);
     if (!a.peer && !a.control) finish(a);
-    else timer(a, () => finish(a), 2000);
+    else timer(a, () => finish(a), 10000);
   }
   function fail(a: Attempt, status: string, unavailable = false) {
     if (live(a)) end(a, status, unavailable ? false : state.available);

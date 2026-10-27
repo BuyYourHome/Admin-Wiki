@@ -1,10 +1,11 @@
 // Public voice has a fixed backend configuration and no private house tools.
 // Native WebSocket timers are a best-effort cap while this Worker remains alive;
 // unconfirmed reservations deliberately remain occupied after a lost connection.
-import { safeProviderFailure, VoiceProviderFailure } from './pondster-live-diagnostics';
+import { safeNetworkCode, safeProviderFailure, VoiceProviderFailure } from './pondster-live-diagnostics';
 export const VOICE_COOKIE = 'pondster_voice_visitor';
 export const VOICE_DURATION_SECONDS = 180;
 export const VOICE_SETUP_MS = 20_000;
+export const VOICE_FINALIZATION_MS = 10_000;
 const DAY_MS = 86_400_000;
 const MAX_MESSAGE_BYTES = 65_536;
 const UUID = /^[0-9a-f]{8}-[0-9a-f]{4}-[1-8][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i;
@@ -107,11 +108,11 @@ export function d1VoiceStore(db: D1Database): VoiceStore {
       return result.success && result.meta.changes === 1;
     },
     async activate(requestId, providerId) {
-      const result = await db.prepare("UPDATE voice_sessions SET provider_id = ?, state = 'active' WHERE request_id = ?").bind(providerId, requestId).run();
+      const result = await db.prepare("UPDATE voice_sessions SET provider_id = ?, state = 'active' WHERE request_id = ? AND state <> 'owner_waived'").bind(providerId, requestId).run();
       if (!result.success || result.meta.changes !== 1) throw new Error('reservation unavailable');
     },
     async finish(requestId, result) {
-      await db.prepare('UPDATE voice_sessions SET state = ?, usage_seconds = ?, final_usage_confirmed = ? WHERE request_id = ?')
+      await db.prepare("UPDATE voice_sessions SET state = ?, usage_seconds = ?, final_usage_confirmed = ? WHERE request_id = ? AND state <> 'owner_waived'")
         .bind(result.state, result.usageSeconds, result.confirmed ? 1 : 0, requestId).run();
     }
   };
@@ -226,7 +227,7 @@ export function createPondsterLiveControl(options: ControllerOptions) {
     finishing = (async () => {
       if (sideband && !confirmed) {
         try { sideband.send(JSON.stringify({ type: 'session.close', event_id: crypto.randomUUID() })); } catch { /* Finalization remains unconfirmed. */ }
-        await Promise.race([providerClosed, new Promise<void>(resolve => { later(resolve, 2000); })]);
+        await Promise.race([providerClosed, new Promise<void>(resolve => { later(resolve, VOICE_FINALIZATION_MS); })]);
       }
       finished = true; ready = false;
       for (const timer of timers) clearTimer(timer);
@@ -339,8 +340,8 @@ export async function handlePondsterLiveControl(request: Request, env: VoiceEnvi
       try { response = await fetch('https://api.openai.com/v1/live/sessions', {
         method: 'POST', headers: { Authorization: `Bearer ${env.OPENAI_API_KEY!.trim()}`, 'Content-Type': 'application/json', 'X-Client-Request-Id': clientRequestId },
         body: JSON.stringify({ session: buildSession(), transport: { type: 'webrtc', sdp } }), signal, redirect: 'manual'
-      }); } catch {
-        console.warn('pondster.voice.provider', JSON.stringify({ stage: 'create-fetch', httpStatus: null, code: 'transport_failure' }));
+      }); } catch (failure) {
+        console.warn('pondster.voice.provider', JSON.stringify({ stage: 'create-fetch', httpStatus: null, code: safeNetworkCode(failure, signal.aborted) }));
         throw new Error('voice unavailable');
       }
       if (!response.ok) { const code = await safeProviderFailure(response, 'create-http'); throw new VoiceProviderFailure('create-http', response.status, code); }
@@ -358,8 +359,8 @@ export async function handlePondsterLiveControl(request: Request, env: VoiceEnvi
       let response: Response;
       try { response = await fetch(`https://api.openai.com/v1/live/sessions/${encodeURIComponent(id)}/attach`, {
         headers: { Upgrade: 'websocket', Authorization: `Bearer ${env.OPENAI_API_KEY!.trim()}` }, signal, redirect: 'manual'
-      }); } catch {
-        console.warn('pondster.voice.provider', JSON.stringify({ stage: 'attach-fetch', httpStatus: null, code: 'transport_failure' })); throw new Error('voice unavailable');
+      }); } catch (failure) {
+        console.warn('pondster.voice.provider', JSON.stringify({ stage: 'attach-fetch', httpStatus: null, code: safeNetworkCode(failure, signal.aborted) })); throw new Error('voice unavailable');
       }
       if (!response.webSocket) { const code = await safeProviderFailure(response, 'attach-http'); throw new VoiceProviderFailure('attach-http', response.status, code); }
       return response.webSocket;

@@ -1,6 +1,14 @@
 # Pondster natural voice integration
 
-## Authority and current state — 2026-10-26
+## Current verified result — 2026-10-27
+
+Natural voice is working in external Chrome. Wes confirmed **“I hear a natural spoken answer”** after refreshing Pondstr.com and starting Natural conversation through the logo. The new production request `fee59c3f-99f8-4d74-a324-dfabb254d82c` has a provider ID, state `closed`, `usage_seconds = 15` and `final_usage_confirmed = 1`. This proves an audible conversation and confirmed closure for this test; interruption and other browsers were not newly tested.
+
+Wes explicitly directed: “I am not concerend about those sessions. They are throw away. lets get natural voice working.” That supersedes the earlier requirement to await provider reconciliation **only for the two identified old local reservations**. Version 62 changed only their state from `unconfirmed` to `owner_waived`. All other fields and the third failed request were preserved. This is an owner-authorized local release, not proof that OpenAI canceled those old attempts or that their unknown usage was zero. Future uncertain requests retain the existing conservative admission rules. See [[Project Rooms/Smart House/working/owner-discarded-voice-tests-20261027]].
+
+The same release extends the bounded close-event drain from two to ten seconds while stopping microphone capture and playback immediately. The successful fresh conversation closed with provider-confirmed usage. Version 63 removes the temporary exact-ID release hook after native database verification; late writes cannot revive `owner_waived` records. The approved existing hosted key and private environment revision 4 are reused.
+
+## Historical authority and initial state — 2026-10-26
 
 Wes directed: “Lets connect Pondster to Codex voice function.” This authorizes implementing a natural OpenAI voice conversation for the existing public Pondster website. It does not expose Wes's Codex account, private chats, owner records, or live house controls. The voice integration was **published in Sites version 48**, enabled in private environment revision 4. Wes's subsequent explicit test in an external Chrome window failed with a generic unavailable banner. No successful audible provider/WebRTC conversation is proven; availability and model metadata access are not proof of a working audio session. Production preserves version 47's separated Living Room/Home Theatre galleries, Belong navigation, matching page spacing and signed Explore heading, approved I Am and uninterrupted Allura signature, video-first six-scene/three-film viewport tour, nine galleries/30 choices, shared picture Next/Previous controls, browser speech fallback, theater/staircase assets, basement schemes, and separate Hall Bath/Master Bath galleries.
 
@@ -16,7 +24,7 @@ Wes clarified on 2026-10-25 that the property will use the existing hosted websi
 
 The [Sites skill](C:/Users/wesbr/.codex/plugins/cache/openai-curated-remote/sites/1.1.2/skills/sites/SKILL.md) links the [Identity and Secrets instructions](C:/Users/wesbr/.codex/plugins/cache/openai-curated-remote/sites/1.1.2/skills/sites/references/identity-and-secrets.md), which require: “For `OPENAI_API_KEY`, use the OpenAI Developers plugin's `openai-platform-api-key` skill and its required approval, then configure the Site secret before deployment. If unavailable, ask the user to enable it.” Preserve that secure workflow. Do not collect keys through chat, extract app credentials, or substitute another stored key.
 
-## Current failed test and continuation — 2026-10-26
+## Historical failed tests and continuation — 2026-10-26
 
 ### Billing active; support escalation and version 56
 
