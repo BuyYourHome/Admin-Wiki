@@ -46,11 +46,22 @@ The next pilot source package must identify a consistent source revision/cutoff,
 
 Two browser inventory calls on WesStudio timed out and reset their kernel without returning browser/company state. A read-only task-reader request for registered Quickbooks task `01a05967-9a05-7081-a62e-616b2d8e61fd` could not determine its existence and reported host `durable` unavailable; this is not proof the task is stopped or absent. Plugin Management search for `QuickBooks` returned an empty plugin list. No remote notification, authenticated export, subscription change, or financial action occurred.
 
-The continuation task then verified the actual registered host as `Wes-VideoEditor`, working folder `C:\Codex\Wiki Files`, branch `main`, at published commit `b8662353`. Local Chrome control worked and the connected Chrome profile displayed the saved Intuit user ID `weswill@buyyourhomellc.com`, with a last-accessed-on-device date of September 2, 2026. A direct request for the QuickBooks company chooser redirected to the Intuit sign-in page, so no authenticated company list, company identity, subscription ownership or shared-login arrangement was verified. The task stopped at that user-only authentication boundary and did not click the saved identity, select a company or change QuickBooks.
+The continuation task then verified the actual registered host as `Wes-VideoEditor`, working folder `C:\Codex\Wiki Files`, branch `main`, at published commit `b8662353`. After Wes completed the user-only Intuit authentication, the same connected Chrome profile displayed an authenticated company chooser for the Wes/`WesWill@BuyYourHomeLLC.com` session. The exact visible QuickBooks Online companies were `Buy Your Home LLC`, `BYH 401K LLC`, `Heritage Management LLC`, `Home Acct`, and `Sell Your Home LLC`. A separate `Canceled companies (1)` control was visible but was not opened. This establishes common authenticated access to the five visible companies; it does not by itself establish the billing owner for every company.
+
+Both preservation targets opened successfully without editing data. An All Dates General Ledger was available for each. Heritage Management LLC displayed an accrual-basis ledger; the first visible dated row in its first visible account section was March 6, 2025. Home Acct displayed a cash-basis ledger; the first visible dated row in its first visible account section was November 17, 2015. Because each report was organized by account and only visible rows were inspected, those dates are access evidence, not certified company-wide earliest dates or proof of complete historical coverage. No report was exported.
+
+Read-only subscription pages confirmed that both target company subscriptions are billed to Wes's authenticated account and currently show `SUBSCRIBED`:
+
+| Company | Displayed company ID | Plan | Next charge | Billing view |
+| --- | --- | --- | --- | --- |
+| Heritage Management LLC | `9341 4542 8085 1491` | QuickBooks Plus, $140/month plus applicable taxes | November 1, 2026 | Billed to you; QuickBooks Online Payments also displayed as subscribed |
+| Home Acct | `1362 4761 70` | QuickBooks Plus, $140/month plus applicable taxes | November 19, 2026 | Billed to you |
+
+Payment-card and merchant identifiers were intentionally excluded from the wiki. The visible cancellation controls were not clicked. No subscription, company setting, accounting data, payment or other QuickBooks business record was changed.
 
 The WesStudio pilot archive path and the corresponding current-user path were both absent on `WES-VIDEOEDITOR`; there is no local `C:\Users\IRAMa\BYH Quickbooks Data` root. This is bounded host evidence, not evidence that the verified WesStudio archive is missing or damaged. No second financial-data location was created.
 
-The next external dependencies are Wes completing the Intuit sign-in in this Chrome profile and leaving the company chooser visible, plus confirmation of the protected non-Git archive location and independent backup destination. After sign-in, recheck the exact company names and identifiers and resume the prepared read-only preservation work without another `go`. Do not create a replacement task or assume the saved user ID proves subscription ownership.
+Authentication, exact target identity, live read-only access, report availability and target billing status are now verified. The remaining immediate external dependency is confirmation of the protected non-Git primary archive location and an independent backup destination. Do not download financial exports to an arbitrary local folder or proceed to cancellation before those destinations and the resulting archive verification are complete.
 
 ## Remaining Goal Requirements
 
