@@ -30,13 +30,13 @@ export const galleries: Gallery[] = [
     { id: 'spiral-01', title: 'Black spiral staircase', image: 'home-theater-spiral-staircase-amber.png', fullImage: true, detail: 'In this design, I will feature black spiral stairs with amber tread and cove lighting beside my home theater. My AI concept does not confirm dimensions, clearances, or construction details.' },
     ...basementColorSchemes.map(scheme => ({ id: `spiral-basement-${scheme.slug}`, title: `Stair setting · ${scheme.title}`, image: scheme.image, detail: scheme.detail, fullImage: true }))
   ] },
-  { id: 'back-deck', name: 'Back Deck', summary: 'I will feature an oak courtyard deck for outdoor living. My overview and closer view show one design choice; my materials, dimensions, and construction details still need confirmation.', designs: [
-    { id: 'oak-courtyard', title: 'Oak courtyard deck', image: '/images/deck/oak-courtyard-overview.png', fullImage: true,
+  { id: 'back-deck', name: 'Back Deck', summary: 'I will feature a courtyard deck with a barn door stain. My wide and closer views show one design choice; my materials, dimensions, and construction details still need confirmation.', designs: [
+    { id: 'oak-courtyard', title: 'Barn door stain', image: '/images/deck/barn-door-stain-wide.png', fullImage: true,
       views: [
-        { image: '/images/deck/oak-courtyard-overview.png', label: 'Courtyard overview' },
-        { image: '/images/deck/oak-courtyard-closeup.png', label: 'Closer view' }
+        { image: '/images/deck/barn-door-stain-wide.png', label: 'Wide view' },
+        { image: '/images/deck/barn-door-stain-closeup.png', label: 'Closer view' }
       ],
-      detail: 'I will feature an oak deck in my courtyard. My overview and closer view show the same design, with one shared vote. These are illustrative concepts; my exact materials, dimensions, structure, and construction details still need confirmation.' }
+      detail: 'I will feature a barn door stain on my courtyard deck. My wide and closer views show the same design, with one shared vote. These are illustrative concepts; my exact materials, dimensions, structure, and construction details still need confirmation.' }
   ] }
 ];
 export const allDesigns = galleries.flatMap(gallery => gallery.designs.map(design => ({...design, room: gallery.name})));

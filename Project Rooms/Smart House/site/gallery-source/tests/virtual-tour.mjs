@@ -28,7 +28,7 @@ assert.equal(deck.designs.length, 1);
 assert.equal(deck.designs[0].views.length, 2);
 const deckPreview = zero.find(scene => scene.roomId === 'back-deck');
 assert.equal(deckPreview.designId, 'oak-courtyard');
-assert.equal(deckPreview.image, '/images/deck/oak-courtyard-overview.png');
+assert.equal(deckPreview.image, '/images/deck/barn-door-stain-wide.png');
 assert.equal(deckPreview.kind, 'design');
 assert.equal(deckPreview.video, undefined);
 assert.equal(zero.filter(scene => scene.roomId === 'back-deck').length, 1, 'Two deck views produce one primary tour scene.');
@@ -139,7 +139,7 @@ const deckTour = buildTourScenes(galleries, {
 });
 const deckWinner = deckTour.find(scene => scene.roomId === 'back-deck');
 assert.equal(deckWinner.designId, 'oak-courtyard');
-assert.equal(deckWinner.image, '/images/deck/oak-courtyard-overview.png', 'A deck vote selects the primary overview rather than a separate closeup entry.');
+assert.equal(deckWinner.image, '/images/deck/barn-door-stain-wide.png', 'A deck vote selects the primary wide view rather than a separate closeup entry.');
 assert.equal(deckWinner.status, 'leader');
 assert.equal(deckWinner.totalVotes, 3, 'Only the one catalog voting ID contributes to deck scores.');
 assert.equal(deckTour.filter(scene => scene.roomId === 'back-deck').length, 1);

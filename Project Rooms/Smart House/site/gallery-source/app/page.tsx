@@ -16,7 +16,7 @@ import type { GuideAction } from '../lib/pondster-guide';
 
 type VoteResults = { scores:Record<string,number>; total:number; selected:string|null; roomTotals:Record<string,number> };
 const empty:VoteResults = {scores:{},total:0,selected:null,roomTotals:{}};
-const menus = ['Design','Explore','View','Own','Contact','Built By'] as const;
+const menus = ['Design','Explore','View','Own','Built By','Contact'] as const;
 const menuHash = (menu:string) => menu === 'Own' ? 'belong' : menu.toLowerCase().replace(/\s+/g,'-');
 const menuLabel = (menu:string) => menu === 'Own' ? 'Belong' : menu;
 type Menu = typeof menus[number];
@@ -34,14 +34,19 @@ export default function Home() {
   const [retry,setRetry] = useState(0);
   const [zoom,setZoom] = useState<Design|null>(null);
   const [scene,setScene] = useState('day');
-  const [voiceSummary,setVoiceSummary] = useState<PondsterVoiceSummary>({active:false,status:'Voice off. Click my logo to talk.'});
+  const [tourRequest,setTourRequest] = useState<number|null>(null);
+  const nextTourRequest = useRef(0);
+  const [voiceSummary,setVoiceSummary] = useState<PondsterVoiceSummary>({active:false,status:'Voice off. Hover or click my logo to talk.'});
   const guide=useRef<PondsterGuideHandle>(null);
   const logo=useRef<HTMLButtonElement>(null);
   const [showLighting,setShowLighting] = useState(false);
   const [logoPlay,setLogoPlay] = useState(0);
+  const voiceHoverTimer = useRef<ReturnType<typeof setTimeout>|null>(null);
+  const voiceIsLive = voiceSummary.active&&!voiceSummary.connecting;
+  useEffect(()=>()=>cancelVoiceHover(),[]);
   const gallery = galleries.find(gallery => gallery.id === room)!;
   useEffect(() => {
-    const sync = () => { const raw = location.hash.slice(1).toLowerCase(); if(raw === 'main') return; const value = raw === 'manage' || raw === 'own' ? 'belong' : raw; const next = menus.find(item => menuHash(item) === value); setMenu(next ?? 'View'); };
+    const sync = () => { const raw = location.hash.slice(1).toLowerCase(); if(raw === 'main') return; const value = raw === 'manage' || raw === 'own' ? 'belong' : raw; const next = menus.find(item => menuHash(item) === value); setMenu(next ?? 'View');if(next!=='View')setTourRequest(null); };
     sync(); window.addEventListener('hashchange',sync); return () => window.removeEventListener('hashchange',sync);
   },[]);
   useEffect(() => {
@@ -58,12 +63,27 @@ export default function Home() {
     catch(error){setMessage(error instanceof Error ? error.message : 'I couldn’t save your vote. Please try again.');}
     finally{setSaving(false);}
   }
-  function navigate(next:Menu){setMenu(next);location.hash=menuHash(next);}
+  function cancelVoiceHover() {
+    if(voiceHoverTimer.current!==null){clearTimeout(voiceHoverTimer.current);voiceHoverTimer.current=null;}
+  }
+  function scheduleVoiceHover() {
+    setLogoPlay(value=>value+1);
+    cancelVoiceHover();
+    voiceHoverTimer.current=setTimeout(()=>{
+      voiceHoverTimer.current=null;
+      guide.current?.startVoice();
+    },500);
+  }
+  function toggleVoice() {
+    cancelVoiceHover();
+    guide.current?.activateVoice();
+  }
+  function navigate(next:Menu){setTourRequest(null);setMenu(next);location.hash=menuHash(next);}
   function openContact(){navigate('Contact');}
-  function guideAction(action:GuideAction){navigate(action.menu);if(action.room&&!saving)setRoom(action.room);if(action.scene){setScene(action.scene);setShowLighting(true);}}
+  function guideAction(action:GuideAction){navigate(action.menu);if(action.tour===true&&action.menu==='View')setTourRequest(++nextTourRequest.current);if(action.room&&!saving)setRoom(action.room);if(action.scene){setScene(action.scene);setShowLighting(true);}}
   return <>
     <a className="skip" href="#main">Skip to content</a>
-    <header className="header"><div className="header-brand"><button ref={logo} type="button" className="brand" onClick={()=>guide.current?.activateVoice()} aria-label={voiceSummary.active?'Stop Pondster voice':'Start talking with Pondster'} title={voiceSummary.active?'Click my logo to stop voice.':'Click my logo to talk. Find text and voice controls in Contact.'} aria-pressed={voiceSummary.active} aria-describedby="pondster-header-voice-status" onMouseEnter={()=>setLogoPlay(value=>value+1)} onFocus={()=>setLogoPlay(value=>value+1)}><PondsterLogoArt key={logoPlay}/><span className="monogram" aria-hidden="true"><span className="monogram-your">Your</span><small>HOME</small></span><span className="brand-copy"><strong className="brand-name">Pondster<span className="signature-i-am" aria-hidden="true">I Am</span></strong><small>A Home You can Relate to. Talk to me!</small></span></button><div className={`header-voice-status ${voiceSummary.active?'is-active':''}`}><span id="pondster-header-voice-status" role="status" aria-live="polite">{voiceSummary.status}</span><a href="#contact" onClick={openContact}>Voice controls ↗</a></div></div><nav aria-label="Main menu">{menus.map(item=><a key={item} href={`#${menuHash(item)}`} onClick={()=>navigate(item)} aria-current={menu===item?'page':undefined}>{menuLabel(item)}</a>)}</nav><span className="development">I’M A HOME IN THE MAKING</span></header>
+    <header className={`header ${voiceIsLive?'voice-is-live':''}`}><div className="header-brand"><button ref={logo} type="button" className="brand" onClick={toggleVoice} aria-label={voiceSummary.active?'Stop Pondster voice':'Start talking with Pondster'} title={voiceSummary.active?'Click my logo to stop voice.':'Hover or click my logo to talk. Find text and voice controls in Contact.'} aria-pressed={voiceSummary.active} aria-describedby="pondster-header-voice-status" onMouseEnter={scheduleVoiceHover} onMouseLeave={cancelVoiceHover} onFocus={()=>setLogoPlay(value=>value+1)}><PondsterLogoArt key={logoPlay}/><span className="monogram" aria-hidden="true"><span className="monogram-your">Your</span><small>HOME</small></span><span className="brand-copy"><strong className="brand-name">Pondster<span className="signature-i-am" aria-hidden="true">I Am</span></strong><small>{voiceIsLive?"A home You can Relate to - I'm listening!":"A Home You can Relate to. Talk to me!"}</small></span></button><div className={`header-voice-status ${voiceIsLive?'is-active':''}`}><span id="pondster-header-voice-status" aria-live="off">{voiceSummary.status}</span><span className="visually-hidden" role="status" aria-live="polite">{voiceSummary.connecting?"Pondster voice is connecting.":voiceIsLive?"Pondster voice is on.":voiceSummary.status}</span><a href="#contact" onClick={openContact}>Voice controls ↗</a></div></div><nav aria-label="Main menu">{menus.map(item=><a key={item} href={`#${menuHash(item)}`} onClick={()=>navigate(item)} aria-current={menu===item?'page':undefined}>{menuLabel(item)}</a>)}</nav><span className="development">I’M A HOME IN THE MAKING</span></header>
     <main id="main">
       {menu==='Design' && <>
         <section className="intro"><div><h1>Virtually - A Reality <br className="design-title-break"/><em>Have a say.</em></h1></div><div className="intro-note"><p>I will bring each space to life. Browse my designs, vote for the ones you love, and help me choose the finishes that feel right.</p><span>Explore my {galleries.length} galleries.</span></div></section>
@@ -85,9 +105,9 @@ export default function Home() {
         <section className="design-footer"><span>MY DESIGN IS A CONVERSATION.</span><p>Come back as I add new rooms and choices.</p><span>MY LOCATION IS CONFIDENTIAL</span></section>
       </>}
       {menu==='Explore' && <ExplorePage scene={scene} onScene={setScene}/>}
-      {menu==='View' && <ViewPage onImage={setZoom} onDesign={()=>navigate('Design')} onTourStart={()=>guide.current?.stopVoice()}/>}
+      {menu==='View' && <ViewPage tourRequest={tourRequest} onTourRequestHandled={()=>setTourRequest(null)} onImage={setZoom} onDesign={()=>navigate('Design')} onTourStart={()=>guide.current?.stopVoice()}/>}
       {menu==='Built By' && <BuiltByPage/>}
-      {menu==='Own' && <section className="secondary-page manage"><h1 className="single-line-page-title">I come <em>with answers.</em></h1><p className="lead">I will provide a place for my home guides, care information, and handover records. Ask me from any page for public guidance while my owner tools take shape.</p><div className="knowledge-grid">{[['Home guides','How my systems will work and where you will find them.'],['Care & maintenance','My manuals, warranties, and equipment-specific schedules.'],['Owner handover','My records and account checklist for the next chapter.']].map(([title,description])=><article key={title}><span className="pending-tag">PLANNED</span><h3>{title}</h3><p>{description}</p></article>)}</div><div className="manage-notice"><strong>My owner tools aren’t ready yet.</strong><p>I’ll need separate, authenticated owner access before I can show private records or offer live controls. I’m not connected to my house systems through this public site.</p></div></section>}
+      {menu==='Own' && <section className="secondary-page manage"><h1 className="single-line-page-title">I come <em>with answers.</em></h1><p className="lead">I will provide a place for my home guides, care information, and handover records. Ask me from any page for public guidance while my owner tools take shape.</p><article className="manage-notice" aria-labelledby="deck-structural-heading"><h2 id="deck-structural-heading">My preliminary deck structural drawing</h2><p>I’m sharing my deck’s preliminary structural design reference. The drawing is marked <strong>PRELIMINARY / NOT FOR PERMIT</strong> and remains a design reference for review.</p><p><a className="solid-link" href="/documents/deck-structural-preliminary.pdf" target="_blank" rel="noopener noreferrer">View my drawing (PDF) ↗</a></p><a href="/documents/deck-structural-preliminary.pdf" download="deck-structural-preliminary.pdf">Download my drawing (PDF)</a></article><div className="knowledge-grid">{[['Home guides','How my systems will work and where you will find them.'],['Care & maintenance','My manuals, warranties, and equipment-specific schedules.'],['Owner handover','My records and account checklist for the next chapter.']].map(([title,description])=><article key={title}><span className="pending-tag">PLANNED</span><h3>{title}</h3><p>{description}</p></article>)}</div><div className="manage-notice"><strong>My owner tools aren’t ready yet.</strong><p>I’ll need separate, authenticated owner access before I can show private records or offer live controls. I’m not connected to my house systems through this public site.</p></div></section>}
       <ContactPage active={menu==='Contact'}><PondsterGuide ref={guide} open={menu==='Contact'} onOpenChange={nextOpen=>nextOpen?openContact():navigate('View')} onAction={guideAction} onReturnFocus={()=>logo.current?.focus()} onVoiceState={setVoiceSummary}/></ContactPage>
       <Comments key={menu} page={menu==='Own'?'own':menuHash(menu)} title={menuLabel(menu)} onAsk={openContact}/>
     </main><footer><span>MY LOCATION IS CONFIDENTIAL</span><p>My SI designer: Jean Wright · Buy Your Home</p><span>I’m sharing concepts · No live controls</span></footer>

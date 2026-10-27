@@ -1,9 +1,8 @@
 // Public voice has a fixed backend configuration and no private house tools.
-// Native WebSocket timers are a best-effort cap while this Worker remains alive;
-// unconfirmed reservations deliberately remain occupied after a lost connection.
+// Setup and finalization are bounded; an ongoing conversation has no application duration cap.
+// Unconfirmed reservations deliberately remain occupied after a lost connection.
 import { safeNetworkCode, safeProviderFailure, VoiceProviderFailure } from './pondster-live-diagnostics';
 export const VOICE_COOKIE = 'pondster_voice_visitor';
-export const VOICE_DURATION_SECONDS = 180;
 export const VOICE_SETUP_MS = 20_000;
 export const VOICE_FINALIZATION_MS = 10_000;
 export const VOICE_GLOBAL_DAILY_LIMIT = 20;
@@ -19,7 +18,7 @@ export type VoiceEnvironment = {
   OPENAI_API_KEY?: string;
   PONDSTER_VOICE_ENABLED?: string;
 };
-type PublicAction = { menu: string; room?: string; scene?: string };
+type PublicAction = { menu: string; room?: string; scene?: string; tour?: true };
 type PublicAnswer = { text: string; action?: PublicAction };
 type Socket = Pick<WebSocket, 'send' | 'close' | 'addEventListener'> & { accept?: () => void };
 type Reservation = { requestId: string; visitorKey: string; createdAt: number; expiresAt: number };
@@ -155,7 +154,8 @@ function safeClose(socket: Socket | null) {
 function actionIsPublic(action: PublicAction) {
   return ['Design', 'Explore', 'View', 'Own', 'Built By', 'Contact'].includes(action.menu)
     && (!action.room || /^[a-z][a-z-]{0,49}$/.test(action.room))
-    && (!action.scene || ['day', 'evening', 'relax'].includes(action.scene));
+    && (!action.scene || ['day', 'evening', 'relax'].includes(action.scene))
+    && (action.tour === undefined || (action.tour === true && action.menu === 'View'));
 }
 
 function greetingFromSession(session: unknown) {
@@ -312,7 +312,8 @@ export function createPondsterLiveControl(options: ControllerOptions) {
       closing = true; abort.abort();
     }, VOICE_SETUP_MS);
     try {
-      reserved = await options.store.reserve({ requestId: requestId!, visitorKey: options.visitorKey, createdAt, expiresAt: createdAt + VOICE_SETUP_MS + VOICE_DURATION_SECONDS * 1000 });
+      // expires_at records the setup deadline only; active/unknown fences are state-based.
+      reserved = await options.store.reserve({ requestId: requestId!, visitorKey: options.visitorKey, createdAt, expiresAt: createdAt + VOICE_SETUP_MS });
       if (!reserved) { error('I’m taking a short voice break. Please try again later.'); closing = true; return; }
       if (closing) return;
       attempted = true;
@@ -337,8 +338,7 @@ export function createPondsterLiveControl(options: ControllerOptions) {
       sideband.accept?.();
       if (closing) return;
       ready = true;
-      later(() => { track(stop('I’ve reached my three-minute voice limit. You can keep exploring my website.')); }, VOICE_DURATION_SECONDS * 1000);
-      safeSend(options.client, { type: 'pondster.ready', session: { id: session.id }, transport: { type: 'webrtc', sdp: session.sdp }, maxDurationSeconds: VOICE_DURATION_SECONDS });
+      safeSend(options.client, { type: 'pondster.ready', session: { id: session.id }, transport: { type: 'webrtc', sdp: session.sdp } });
     } catch (failure) {
       // A directly observed terminal create rejection is a failed startup, not
       // a confirmed provider close. Attach/transport/parse failures stay unknown.

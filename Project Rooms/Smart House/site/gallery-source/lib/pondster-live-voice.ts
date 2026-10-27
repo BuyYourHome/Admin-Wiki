@@ -1,13 +1,18 @@
 /** Browser-only transport for Pondster's bounded, server-controlled Live voice. */
+import { createPondsterStreamMeter } from './pondster-stream-meter';
+import { isPondsterFarewell, PONDSTER_FAREWELL_ACK } from './pondster-voice-intents';
+export type PondsterQuietProgress = { reason: 'checking' | 'unavailable' | 'input' | 'output' | 'work' | 'response' | 'quiet'; remainingSeconds: number | null };
 export type PondsterLiveState = {
   available: boolean; connecting: boolean; active: boolean;
   status: string; heard: string; audioBlocked: boolean;
   silenceAvailable: boolean | null;
+  quietReason: PondsterQuietProgress['reason']; quietSecondsRemaining: number | null;
 };
 export type PondsterLiveTranscript = { who: 'you' | 'Pondster'; text: string };
 export type PondsterLiveAction = {
   menu: 'Design' | 'Explore' | 'View' | 'Own' | 'Contact' | 'Built By';
   room?: string; scene?: 'day' | 'evening' | 'relax';
+  tour?: true;
 };
 type Timer = unknown;
 type Visibility = Pick<Document, 'hidden' | 'addEventListener' | 'removeEventListener'>;
@@ -25,6 +30,7 @@ export type PondsterLiveVoiceOptions = {
   requestIdFactory?: () => string;
   now?: () => number;
   activitySamplerFactory?: (peer: RTCPeerConnection) => () => Promise<PondsterAudioActivity>;
+  streamMeterFactory?: typeof createPondsterStreamMeter;
   origin?: string;
   visibilityTarget?: Visibility;
   setTimeout?: (callback: () => void, milliseconds: number) => Timer;
@@ -45,6 +51,7 @@ type Attempt = {
   captions: Record<'you' | 'Pondster', Caption>;
   closeSent: boolean; stopSent: boolean; startedSent: boolean;
   silenceMonitor: PondsterSilenceMonitor | null;
+  streamMeter: ReturnType<typeof createPondsterStreamMeter> | null;
   busyUntil: { work: number; response: number };
 };
 const CANCELLED = Symbol('cancelled');
@@ -53,7 +60,7 @@ const MENUS = new Set(['Design', 'Explore', 'View', 'Own', 'Contact', 'Built By'
 const SCENES = new Set(['day', 'evening', 'relax']);
 const TEXT_LIMIT = 500, CAPTION_LIMIT = 1800;
 export const PONDSTER_SILENCE_MS = 30_000;
-const AUDIO_POLL_MS = 250, AUDIO_QUERY_MS = 1000, AUDIO_STALE_MS = 1500, BUSY_HOLD_MS = 30_000;
+const AUDIO_POLL_MS = 250, AUDIO_QUERY_MS = 1000, AUDIO_STALE_MS = 1500, AUDIO_UNAVAILABLE_MS = 10_000, BUSY_HOLD_MS = 30_000;
 // A low RMS floor distinguishes digital/room silence from audible activity.
 const AUDIO_ACTIVITY_LEVEL = 0.005;
 const liveNow = () => typeof performance === 'undefined' ? Date.now() : performance.now();
@@ -81,8 +88,8 @@ export function createPondsterAudioSampler(peer: Pick<RTCPeerConnection, 'getSta
     if (old && energy !== null && duration !== null && old.energy !== null && old.duration !== null) {
       const elapsed = duration - old.duration, used = energy - old.energy;
       if (elapsed > 0 && used >= 0) level = Math.sqrt(used / elapsed);
-      // Flat counters retain a valid reported level; without one they are unknown.
-      else if (elapsed !== 0 || used !== 0) level = null; // Reset, reordered, or inconsistent counters.
+      // An updated report timestamp does not make a latched last-packet level fresh.
+      else level = null; // Flat, reset, reordered, or inconsistent counters are unknown.
     }
     return level === null ? null : level > AUDIO_ACTIVITY_LEVEL;
   }
@@ -107,6 +114,7 @@ export function createPondsterAudioSampler(peer: Pick<RTCPeerConnection, 'getSta
 export function createPondsterSilenceMonitor(options: {
   sample: () => Promise<PondsterAudioActivity>;
   onSilence(): void; onAvailability(value: boolean): void;
+  onProgress?(progress: PondsterQuietProgress): void; onUnavailable?(): void;
   now?: () => number;
   setTimeout?: (callback: () => void, milliseconds: number) => Timer;
   clearTimeout?: (timer: Timer) => void;
@@ -115,9 +123,14 @@ export function createPondsterSilenceMonitor(options: {
   const later = options.setTimeout ?? ((fn, ms) => globalThis.setTimeout(fn, ms));
   const clear = options.clearTimeout ?? (timer => globalThis.clearTimeout(timer as ReturnType<typeof setTimeout>));
   const until = { work: 0, response: 0 };
-  let stopped = false, version = 0, quietSince: number | null = null, known: boolean | null = null, lastSampleAt: number | null = null;
+  let stopped = false, version = 0, quietSince: number | null = null, unknownSince: number | null = null, known: boolean | null = null, lastSampleAt: number | null = null;
+  let lastProgress = '';
   let poll: Timer | null = null, query: Timer | null = null;
   const availability = (value: boolean) => { if (known !== value) { known = value; options.onAvailability(value); } };
+  const progress = (reason: PondsterQuietProgress['reason'], remainingSeconds: number | null = null) => {
+    const key = `${reason}:${remainingSeconds}`;
+    if (lastProgress !== key) { lastProgress = key; options.onProgress?.({ reason, remainingSeconds }); }
+  };
   function stop() {
     stopped = true; version++; quietSince = null;
     if (poll !== null) clear(poll);
@@ -134,7 +147,7 @@ export function createPondsterSilenceMonitor(options: {
     const current = ++version;
     // getStats has no cancellation API. Disable this meter on timeout, ignore its
     // eventual result, and never overlap another query with the hung request.
-    query = later(() => { if (!stopped && current === version) { stop(); availability(false); } }, AUDIO_QUERY_MS);
+    query = later(() => { if (!stopped && current === version) { stop(); availability(false); progress('unavailable'); options.onUnavailable?.(); } }, AUDIO_QUERY_MS);
     const receive = (value: PondsterAudioActivity) => {
       if (stopped || current !== version) return;
       if (query !== null) clear(query);
@@ -145,9 +158,19 @@ export function createPondsterSilenceMonitor(options: {
       lastSampleAt = at;
       const measured = timely && typeof value.input === 'boolean' && typeof value.output === 'boolean';
       availability(measured);
-      if (!measured || value.input || value.output || at < until.work || at < until.response) quietSince = null;
-      else if (quietSince === null) quietSince = at;
-      else if (at - quietSince >= PONDSTER_SILENCE_MS) { stop(); options.onSilence(); return; }
+      if (!measured) {
+        quietSince = null; unknownSince ??= at; progress('unavailable');
+        if (at - unknownSince >= AUDIO_UNAVAILABLE_MS) { stop(); options.onUnavailable?.(); return; }
+      } else {
+        unknownSince = null;
+        const busy = value.output ? 'output' : value.input ? 'input' : at < until.work ? 'work' : at < until.response ? 'response' : null;
+        if (busy) { quietSince = null; progress(busy); }
+        else {
+          quietSince ??= at;
+          progress('quiet', Math.max(0, Math.ceil((PONDSTER_SILENCE_MS - (at - quietSince)) / 1000)));
+          if (at - quietSince >= PONDSTER_SILENCE_MS) { stop(); options.onSilence(); return; }
+        }
+      }
       schedule();
     };
     try { Promise.resolve(options.sample()).then(receive, () => receive({ input: null, output: null })); }
@@ -156,11 +179,13 @@ export function createPondsterSilenceMonitor(options: {
   check();
   return {
     stop,
-    noteInteraction() { if (!stopped) quietSince = now(); },
+    noteInteraction() { if (!stopped) { quietSince = now(); progress('quiet', 30); } },
     setBusy(kind, active, holdMs = BUSY_HOLD_MS) {
       if (stopped) return;
+      if (!active && until[kind] === 0) return;
       until[kind] = active ? now() + Math.max(0, Math.min(BUSY_HOLD_MS, holdMs)) : 0;
       quietSince = null;
+      if (active) progress(kind);
     },
   };
 }
@@ -171,9 +196,11 @@ function validAction(value: unknown): PondsterLiveAction | null {
   if (typeof action.menu !== 'string' || !MENUS.has(action.menu)) return null;
   if (action.room !== undefined && (typeof action.room !== 'string' || !ROOMS.has(action.room))) return null;
   if (action.scene !== undefined && (typeof action.scene !== 'string' || !SCENES.has(action.scene))) return null;
+  if (action.tour !== undefined && (action.tour !== true || action.menu !== 'View')) return null;
   return { menu: action.menu as PondsterLiveAction['menu'],
     ...(action.room === undefined ? {} : { room: action.room as string }),
-    ...(action.scene === undefined ? {} : { scene: action.scene as PondsterLiveAction['scene'] }) };
+    ...(action.scene === undefined ? {} : { scene: action.scene as PondsterLiveAction['scene'] }),
+    ...(action.tour === true ? { tour: true } : {}) };
 }
 
 /** Construction never opens a connection or asks for a microphone. Call start from a click. */
@@ -193,7 +220,7 @@ export function createPondsterLiveVoice(options: PondsterLiveVoiceOptions): Pond
     && (options.controlFactory || typeof WebSocket !== 'undefined'));
   let state: PondsterLiveState = { available: supported, connecting: false, active: false,
     status: supported ? 'Start my live voice when you are ready.' : 'My live voice is unavailable in this browser. You can type to me instead.',
-    heard: '', audioBlocked: false, silenceAvailable: null };
+    heard: '', audioBlocked: false, silenceAvailable: null, quietReason: 'checking', quietSecondsRemaining: null };
   let current: Attempt | null = null, disposed = false, sequence = 0;
   const attempts = new Set<Attempt>();
 
@@ -227,6 +254,7 @@ export function createPondsterLiveVoice(options: PondsterLiveVoiceOptions): Pond
     if (a.finalized) return;
     a.finalized = true;
     a.silenceMonitor?.stop();
+    a.streamMeter?.stop();
     for (const handle of a.timers) clearLater(handle);
     a.timers.clear();
     if (a.channel) {
@@ -243,22 +271,25 @@ export function createPondsterLiveVoice(options: PondsterLiveVoiceOptions): Pond
     }
     stopTracks(a.mic); attempts.delete(a);
   }
-  function flush(a: Attempt, who: 'you' | 'Pondster') {
+  function flush(a: Attempt, who: 'you' | 'Pondster', allowFarewell = true) {
     const caption = a.captions[who];
     clearTimer(a, caption.timer); caption.timer = null;
     const text = caption.text.trim(); caption.text = ''; caption.lastEnd = null;
-    if (text && live(a)) options.onTranscript({ who, text });
+    if (text && live(a)) {
+      options.onTranscript({ who, text });
+      if (allowFarewell && who === 'you' && isPondsterFarewell(text)) end(a, PONDSTER_FAREWELL_ACK);
+    }
   }
   function end(a: Attempt, status: string, available = state.available) {
     if (a.stopped) return;
-    if (live(a)) { flush(a, 'you'); flush(a, 'Pondster'); }
+    if (live(a)) { flush(a, 'you', false); flush(a, 'Pondster', false); }
     a.stopped = true; a.cancel(); a.abort.abort();
-    a.silenceMonitor?.stop();
+    a.silenceMonitor?.stop(); a.streamMeter?.stop();
     for (const handle of a.timers) clearLater(handle);
     a.timers.clear(); stopTracks(a.mic);
     if (current === a) {
       current = null; silence();
-      notify({ connecting: false, active: false, audioBlocked: false, status, available });
+      notify({ connecting: false, active: false, audioBlocked: false, quietSecondsRemaining: null, status, available });
     }
     // Capture/playback ends now; transports retain a ten-second close-handshake drain.
     // Reaching this local cleanup bound does not confirm provider finalization.
@@ -278,7 +309,10 @@ export function createPondsterLiveVoice(options: PondsterLiveVoiceOptions): Pond
     if (typeof event.delta !== 'string' || !event.delta) return;
     const buffer = a.captions[who];
     const start = typeof event.start_ms === 'number' ? event.start_ms : null;
-    if (buffer.text && start !== null && buffer.lastEnd !== null && start - buffer.lastEnd > 900) flush(a, who);
+    if (buffer.text && start !== null && buffer.lastEnd !== null && start - buffer.lastEnd > 900) {
+      flush(a, who);
+      if (!live(a)) return;
+    }
     buffer.text = (buffer.text + event.delta).slice(-CAPTION_LIMIT);
     buffer.lastEnd = typeof event.end_ms === 'number' ? event.end_ms : null;
     if (who === 'you') notify({ heard: buffer.text.trim().slice(-TEXT_LIMIT) });
@@ -352,10 +386,20 @@ export function createPondsterLiveVoice(options: PondsterLiveVoiceOptions): Pond
       if (status?.available !== true) {
         fail(a, typeof status?.message === 'string' && status.message.length <= 240 ? status.message : 'My live voice is not connected yet. You can type to me instead.', true); return;
       }
+      if (a.streamMeter?.available && typeof a.streamMeter.whenRunning === 'function') {
+        let readyTimeout: Timer | null = null;
+        const playbackReady = await guard(a, Promise.race([
+          a.streamMeter.whenRunning(),
+          new Promise<boolean>(resolve => { readyTimeout = timer(a, () => resolve(false), 1500); }),
+        ]));
+        clearTimer(a, readyTimeout);
+        if (!playbackReady) { fail(a, 'Please click my logo to enable voice playback in this browser.'); return; }
+      }
       notify({ available: true, status: 'Allow your microphone to talk with me.' });
       // Stop can win this await; a late permission grant must not retain capture.
       const micPromise = getMic().then(stream => { if (!live(a)) stopTracks(stream); return stream; });
       a.mic = await guard(a, micPromise);
+      a.streamMeter?.setInput(a.mic);
       const peer = a.peer = peerFactory();
       const channel = a.channel = peer.createDataChannel('oai-events');
       channel.onmessage = event => receive(a, event.data, false);
@@ -364,7 +408,8 @@ export function createPondsterLiveVoice(options: PondsterLiveVoiceOptions): Pond
       channel.onerror = () => { if (live(a)) fail(a, 'My live voice connection failed. You can type to me instead.'); };
       peer.ontrack = event => {
         if (!live(a)) { event.track.stop(); return; }
-        audio.srcObject = event.streams[0] || streamFactory([event.track]);
+        const remote = event.streams[0] || streamFactory([event.track]);
+        audio.srcObject = remote; a.streamMeter?.setOutput(remote);
         void play(a);
       };
       peer.onconnectionstatechange = () => {
@@ -407,9 +452,6 @@ export function createPondsterLiveVoice(options: PondsterLiveVoiceOptions): Pond
       const transport = ready.transport as { type?: unknown; sdp?: unknown } | undefined;
       const session = ready.session as { id?: unknown } | undefined;
       if (!session || typeof session.id !== 'string' || !session.id || transport?.type !== 'webrtc' || typeof transport.sdp !== 'string' || !transport.sdp) throw new Error('answer');
-      const duration = typeof ready.maxDurationSeconds === 'number' && Number.isFinite(ready.maxDurationSeconds)
-        ? Math.max(1, Math.min(180, ready.maxDurationSeconds)) : 180;
-      timer(a, () => end(a, 'My three-minute live voice session has ended. You can start again or type to me.'), duration * 1000);
       const started = new Promise<void>((resolve, reject) => {
         const timeout = timer(a, () => reject(new Error('timeout')), 15000);
         a.ready = () => { if (a.started) { clearTimer(a, timeout); resolve(); } };
@@ -422,9 +464,12 @@ export function createPondsterLiveVoice(options: PondsterLiveVoiceOptions): Pond
       await startedWait;
       if (!live(a)) return;
       a.silenceMonitor = createPondsterSilenceMonitor({
-        sample: options.activitySamplerFactory?.(peer) ?? createPondsterAudioSampler(peer, now),
+        sample: options.activitySamplerFactory?.(peer) ?? (a.streamMeter?.available
+          ? async () => a.streamMeter!.sample() : createPondsterAudioSampler(peer, now)),
         now, setTimeout: later, clearTimeout: clearLater,
         onAvailability: value => { if (live(a)) notify({ silenceAvailable: value }); },
+        onProgress: value => { if (live(a)) notify({ quietReason: value.reason, quietSecondsRemaining: value.remainingSeconds }); },
+        onUnavailable: () => { if (live(a)) end(a, 'I can’t monitor silence in this connection, so I’ve stopped my microphone and voice. You can try again or type to me.'); },
         onSilence: () => { if (live(a)) end(a, 'I’ve ended our conversation after thirty seconds of silence. You can start again or type to me.'); },
       });
       for (const kind of ['work', 'response'] as const) {
@@ -456,9 +501,11 @@ export function createPondsterLiveVoice(options: PondsterLiveVoiceOptions): Pond
       mic: null, peer: null, channel: null, control: null, abort: new AbortController(), timers: new Set(),
       cancelled, cancel, startPromise: Promise.resolve(), ready: () => {},
       captions: { you: { text: '', lastEnd: null, timer: null }, Pondster: { text: '', lastEnd: null, timer: null } },
-      closeSent: false, stopSent: false, startedSent: false, silenceMonitor: null, busyUntil: { work: 0, response: 0 } };
+      closeSent: false, stopSent: false, startedSent: false, silenceMonitor: null,
+      streamMeter: options.activitySamplerFactory ? null : (options.streamMeterFactory ?? createPondsterStreamMeter)(),
+      busyUntil: { work: 0, response: 0 } };
     current = a; attempts.add(a);
-    notify({ connecting: true, active: false, heard: '', audioBlocked: false, silenceAvailable: null, status: 'Connecting my live voice…' });
+    notify({ connecting: true, active: false, heard: '', audioBlocked: false, silenceAvailable: null, quietReason: 'checking', quietSecondsRemaining: null, status: 'Connecting my live voice…' });
     a.startPromise = run(a); return a.startPromise;
   }
   function stop() { if (current) end(current, 'My microphone and live voice are off. You can type to me.'); }

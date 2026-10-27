@@ -20,5 +20,21 @@ export default function ContactPage({ active, children }: { active:boolean; chil
         <p className="contact-note">My location remains confidential. Ashley confirms real viewing arrangements.</p>
       </aside>
     </div>
+    <section className="contact-trades" aria-labelledby="contact-trades-heading">
+      <h2 id="contact-trades-heading">My trade contacts.</h2>
+      <p>Let me introduce the people who help build and care for me.</p>
+      <div className="contact-trade-grid">
+        {[
+          ['general-contractor', 'General contractor', 'Glasgow Design Build', 'Glasgow Design Build is my general contractor.', 'https://glasgowdb.com/'],
+          ['plumber', 'Plumber', 'Executive Plumbing Company', 'Executive Plumbing Company is my plumbing contact.', 'https://www.executiveplumbingcompany.com/'],
+          ['hvac', 'HVAC', 'True Service', 'True Service is my heating and cooling contact.', 'https://www.trueserviceinc.com/'],
+        ].map(([id, role, company, description, website]) => <article className="contact-card contact-trade-card" key={id} aria-labelledby={`contact-trade-${id}`}>
+          <p className="eyebrow">{role}</p>
+          <h3 id={`contact-trade-${id}`}>{company}</h3>
+          <p>{description}</p>
+          <a className="contact-website" href={website} target="_blank" rel="noopener noreferrer">{company}’s official website ↗</a>
+        </article>)}
+      </div>
+    </section>
   </section>;
 }

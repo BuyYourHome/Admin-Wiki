@@ -88,7 +88,7 @@ function control(url, log) {
   });
 }
 
-function setup({ mediaGate, fetchGate, remoteGate, status = { available: true }, iceComplete = true, playPlans = [], activitySamplerFactory } = {}) {
+function setup({ mediaGate, fetchGate, remoteGate, status = { available: true }, iceComplete = true, playPlans = [], activitySamplerFactory, streamMeterFactory } = {}) {
   const clock = fakeClock(), log = [], tracks = [track()], media = stream([...tracks]);
   const peers = [], controls = [], states = [], transcripts = [], actions = [], requests = [];
   let mediaCalls = 0;
@@ -129,7 +129,8 @@ function setup({ mediaGate, fetchGate, remoteGate, status = { available: true },
     streamFactory: values => stream(values),
     visibilityTarget: visibility,
     setTimeout: clock.setTimeout, clearTimeout: clock.clearTimeout,
-    now: () => clock.now, activitySamplerFactory,
+    now: () => clock.now, activitySamplerFactory: activitySamplerFactory === undefined && !streamMeterFactory
+      ? () => async () => ({ input: true, output: false }) : activitySamplerFactory, streamMeterFactory,
     origin: 'https://pondstr.com',
     requestIdFactory: () => '11111111-1111-4111-8111-111111111111'
   });
@@ -175,7 +176,7 @@ async function dispose(harness) {
   assert.equal(harness.clock.pending(), 0, 'Disposal leaves no timeout jobs after the close grace period.');
   assert.ok(harness.peers.every(item => item.closeCalls > 0), 'Every created peer is closed.');
   assert.ok(harness.controls.every(item => item.closeCalls > 0), 'Every created control socket is closed.');
-  assert.ok(harness.tracks.every(item => item.stopCalls > 0), 'Acquired microphone tracks are stopped.');
+  assert.ok(harness.mediaCalls() === 0 || harness.tracks.every(item => item.stopCalls > 0), 'Acquired microphone tracks are stopped; a pre-permission refusal acquires none.');
   assert.equal(harness.audio.srcObject, null);
   assert.equal(harness.visibility.listenerCount(), 0, 'Disposal removes the visibility listener.');
 }
@@ -411,7 +412,7 @@ for (const outcome of ['ready', 'cancelled', 'failed']) {
   stale.control?.({ data: JSON.stringify({ type: 'pondster.action', action: { menu: 'Own' } }) });
   const late = track(); stale.track?.({ track: late, streams: [stream([late])] });
   old.peer.connectionState = 'failed'; stale.connection?.();
-  h.clock.advance(10000); await flush();
+  await tick(h.clock, 10000);
   assert.deepEqual(h.state(), state); assert.equal(h.transcripts.length, transcriptCount); assert.equal(h.actions.length, actionCount);
   assert.ok(late.stopCalls > 0, 'A stale remote track is stopped.');
   assert.equal(fresh.peer.closeCalls, 0); assert.equal(h.tracks.at(-1).stopCalls, 0);
@@ -448,7 +449,7 @@ for (const event of [{ type: 'pondster.error', message: 'Voice service is unavai
   await dispose(h);
 }
 
-// A hidden tab ends capture, and the service-provided duration is capped at three minutes.
+// A hidden tab ends capture; active conversation has no application duration cutoff.
 {
   const h = setup(); await connect(h);
   h.visibility.hidden = true; h.visibility.emit('visibilitychange');
@@ -457,10 +458,13 @@ for (const event of [{ type: 'pondster.error', message: 'Voice service is unavai
   await dispose(h);
 }
 {
-  const h = setup(); await connect(h, undefined, 999);
-  h.clock.advance(179999); await flush(); assert.equal(h.state().active, true);
-  h.clock.advance(1); await flush(); assert.equal(h.state().active, false);
-  assert.ok(h.tracks.every(item => item.stopCalls > 0)); assert.match(h.state().status, /three.minute|ended/i);
+  let speaking = true;
+  const h = setup({ activitySamplerFactory: () => async () => ({ input: speaking, output: false }) });
+  await connect(h, undefined, 180);
+  await tick(h.clock, 600_000); assert.equal(h.state().active, true, 'Continuing speech is not cut off at180s or by a legacy duration field.');
+  speaking = false; await tick(h.clock, 250); await tick(h.clock, 30_000);
+  assert.equal(h.state().active, false); assert.match(h.state().status, /thirty seconds of silence/);
+  assert.ok(h.tracks.every(item => item.stopCalls > 0));
   await dispose(h);
   const count = h.mediaCalls(); await assert.rejects(h.voice.start(), /closed/i); assert.equal(h.mediaCalls(), count);
 }
@@ -471,11 +475,12 @@ async function tick(clock, milliseconds) {
   while (milliseconds > 0) { const step = Math.min(250, milliseconds); clock.advance(step); await flush(); milliseconds -= step; }
 }
 function silenceFixture(sample = async () => ({ input: false, output: false })) {
-  const clock = fakeClock(), ended = [], available = [];
+  const clock = fakeClock(), ended = [], available = [], unavailable = [], progress = [];
   const monitor = createPondsterSilenceMonitor({ sample, now: () => clock.now,
     setTimeout: clock.setTimeout, clearTimeout: clock.clearTimeout,
-    onSilence: () => ended.push(clock.now), onAvailability: value => available.push(value) });
-  return { clock, monitor, ended, available };
+    onSilence: () => ended.push(clock.now), onAvailability: value => available.push(value),
+    onUnavailable: () => unavailable.push(clock.now), onProgress: value => progress.push(value) });
+  return { clock, monitor, ended, available, unavailable, progress };
 }
 {
   const h = silenceFixture(); await flush();
@@ -484,6 +489,13 @@ function silenceFixture(sample = async () => ({ input: false, output: false })) 
   await tick(h.clock, 1);
   assert.deepEqual(h.ended, [PONDSTER_SILENCE_MS], 'Exactly thirty seconds from the first BOTH-quiet snapshot ends the monitor.');
   assert.deepEqual(h.available, [true]); assert.equal(h.clock.pending(), 0);
+  assert.ok(h.progress.some(value => value.reason === 'quiet' && value.remainingSeconds === 30));
+  assert.ok(h.progress.some(value => value.reason === 'quiet' && value.remainingSeconds === 1));
+}
+{
+  const h = silenceFixture(); await flush(); await tick(h.clock, 29_000);
+  h.monitor.setBusy('work', false); h.monitor.setBusy('response', false);
+  await tick(h.clock, 1000); assert.deepEqual(h.ended, [30_000], 'Redundant idle hints do not restart a quiet deadline.');
 }
 for (const direction of ['input', 'output']) {
   let speaking = true;
@@ -522,6 +534,7 @@ for (const direction of ['input', 'output']) {
   const h = silenceFixture(async () => ({ input: false, output: null })); await flush();
   await tick(h.clock, 60_000);
   assert.deepEqual(h.ended, []); assert.deepEqual(h.available, [false], 'Unmeasured output is never interpreted as silence.');
+  assert.deepEqual(h.unavailable, [10_000], 'A broken meter stops through an explicit health failure rather than leaving paid voice open.');
   h.monitor.stop(); assert.equal(h.clock.pending(), 0);
 }
 {
@@ -552,7 +565,7 @@ for (const direction of ['input', 'output']) {
   at = 500; records.forEach(item => { item.timestamp = at; item.totalSamplesDuration += .25; }); records[1].totalAudioEnergy += .0004;
   assert.deepEqual(await sample(), { input: false, output: true }, 'Interval RMS independently detects Pondster output.');
   at = 750; records.forEach(item => { item.timestamp = at; item.audioLevel = .9; });
-  assert.deepEqual(await sample(), { input: true, output: true }, 'Flat energy counters must preserve a positive reported audio level.');
+  assert.deepEqual(await sample(), { input: null, output: null }, 'Fresh report timestamps cannot make a latched positive level a fresh measurement.');
   at = 1000; records.forEach(item => { item.timestamp = at; delete item.audioLevel; });
   assert.deepEqual(await sample(), { input: null, output: null }, 'Flat counters without a reported audio level cannot establish silence.');
   at += 1501;
@@ -589,11 +602,93 @@ for (const interaction of ['typing', 'submitted']) {
   await dispose(h);
 }
 {
-  const h = setup(); await connect(h); await tick(h.clock, 60_000);
-  assert.equal(h.state().silenceAvailable, false); assert.equal(h.state().active, true, 'Unsupported metrics retain the honest three-minute fallback.');
+  const h = setup({ activitySamplerFactory: null }); await connect(h);
   h.control().receive({ type: 'pondster.action', action: { menu: 'Contact' } });
   assert.deepEqual(h.actions.at(-1), { menu: 'Contact' });
+  await tick(h.clock, 10_000);
+  assert.equal(h.state().silenceAvailable, false); assert.equal(h.state().active, false);
+  assert.match(h.state().status, /can’t monitor silence/);
+  assert.ok(h.tracks.every(item => item.stopCalls > 0));
+  await dispose(h);
+}
+{
+  const calls = [], meter = { available: true, setInput: value => calls.push(['input', value]), setOutput: value => calls.push(['output', value]), sample: () => ({ input: false, output: false }), stop: () => calls.push(['stop']) };
+  let creations = 0;
+  const h = setup({ streamMeterFactory: () => { creations++; return meter; } });
+  assert.equal(creations, 0, 'Construction creates no audio context.');
+  await connect(h); assert.equal(creations, 1); assert.equal(calls[0][0], 'input');
+  const remote = stream([track()]); h.peer().emit('track', { track: remote.getTracks()[0], streams: [remote] }); await flush();
+  assert.ok(calls.some(([kind, value]) => kind === 'output' && value === remote));
+  await tick(h.clock, 30_000); assert.equal(h.state().active, false);
+  assert.ok(calls.some(([kind]) => kind === 'stop'), 'Silence cleanup disposes the in-memory audio graph immediately.');
   await dispose(h);
 }
 
-console.log('PASS: Live voice lifecycle and greeting; measured both-direction audio silence at30s; speech/typing resets; bounded trusted waits; unsupported/stale/hung stats; immediate stop and10s drain; Contact compatibility; privacy-safe mocks only.');
+{
+  const h = setup(); await connect(h);
+  h.control().receive({ type: 'pondster.action', action: { menu: 'View', tour: true } });
+  assert.deepEqual(h.actions.at(-1), { menu: 'View', tour: true });
+  const count = h.actions.length;
+  for (const action of [{ menu: 'View', tour: false }, { menu: 'Contact', tour: true }, { menu: 'View', tour: 'yes' }]) h.control().receive({ type: 'pondster.action', action });
+  h.peer().events.receive({ type: 'pondster.action', action: { menu: 'View', tour: true } });
+  assert.equal(h.actions.length, count, 'Only a validated same-origin View action can start the tour.');
+  await dispose(h);
+}
+for (const outcome of ['denied', 'timeout', 'stopped']) {
+  const ready = deferred(), calls = [];
+  const meter = { available: true, whenRunning: () => outcome === 'denied' ? Promise.resolve(false) : ready.promise,
+    setInput() {}, setOutput() {}, sample: () => ({ input: false, output: false }), stop: () => calls.push('stop') };
+  const h = setup({ streamMeterFactory: () => meter });
+  const start = h.voice.start(); await flush();
+  assert.equal(h.mediaCalls(), 0); assert.equal(h.controls.length, 0);
+  if (outcome === 'timeout') await tick(h.clock, 1500);
+  if (outcome === 'stopped') h.voice.stop();
+  ready.resolve(true); await settle(h, start);
+  assert.equal(h.mediaCalls(), 0); assert.equal(h.controls.length, 0, 'Unavailable hover playback never reaches microphone or paid session creation.');
+  assert.ok(calls.includes('stop'));
+  if (outcome !== 'stopped') assert.match(h.state().status, /click my logo/i);
+  await dispose(h);
+}
+// Debounced complete user farewells use the normal immediate-stop/close drain.
+{
+  const h=setup();await connect(h);
+  h.peer().events.receive({type:'session.input_transcript.delta',delta:'Pondster, goodbye!',start_ms:0,end_ms:100});
+  await tick(h.clock,349);assert.equal(h.state().active,true,'Partial captions wait for the existing debounce.');
+  await tick(h.clock,1);assert.equal(h.state().active,false);assert.match(h.state().status,/Goodbye.*microphone and voice are off/);
+  assert.ok(h.tracks.every(item=>item.stopCalls>0));assert.equal(h.audio.srcObject,null);
+  assert.equal(h.control().sent.filter(event=>event.type==='pondster.stop').length,1);
+  assert.equal(h.peer().events.sent.filter(event=>event.type==='session.close').length,1);
+  assert.equal(h.transcripts.filter(([item])=>item.who==='you').length,1,'Farewell flush cannot recurse through end.');
+  const starts=h.mediaCalls();await tick(h.clock,60_000);assert.equal(h.mediaCalls(),starts,'No automatic paid restart after goodbye.');
+  await dispose(h);
+}
+{
+  const h=setup();await connect(h);
+  h.peer().events.receive({type:'session.output_transcript.delta',delta:'Goodbye!',start_ms:0,end_ms:100});
+  await tick(h.clock,350);assert.equal(h.state().active,true,'Pondster output cannot trigger the user-farewell detector.');
+  for(const text of ['Thanks','Do not stop listening','What does "goodbye" mean?','Goodbye, show me the kitchen']) {
+    h.peer().events.receive({type:'session.input_transcript.delta',delta:text,start_ms:1000,end_ms:1100});
+    await tick(h.clock,350);assert.equal(h.state().active,true,text);
+  }
+  h.peer().events.receive({type:'session.input_transcript.delta',delta:'Goodbye',start_ms:2000,end_ms:2100});
+  await tick(h.clock,100);
+  h.peer().events.receive({type:'session.input_transcript.delta',delta:', can you show the kitchen?',start_ms:2100,end_ms:2400});
+  await tick(h.clock,350);assert.equal(h.state().active,true,'One longer request is classified only after its final buffered text.');
+  await dispose(h);
+}
+{
+  const h=setup();await connect(h);
+  h.peer().events.receive({type:'session.input_transcript.delta',delta:'Bye for now',start_ms:0,end_ms:100});
+  h.voice.stop();assert.equal(h.state().active,false,'Explicit stop can flush a pending farewell without recursive end.');
+  assert.equal(h.control().sent.filter(event=>event.type==='pondster.stop').length,1);
+  await dispose(h);
+}
+{
+  const h=setup();await connect(h);
+  h.peer().events.receive({type:'session.input_transcript.delta',delta:'See you later',start_ms:0,end_ms:100});
+  h.peer().events.receive({type:'session.input_transcript.delta',delta:'A later utterance',start_ms:2000,end_ms:2100});
+  assert.equal(h.state().active,false,'A gap-finalized farewell stops before another caption can create a new timer.');
+  await dispose(h);
+}
+
+console.log('PASS: explicit farewell shutdown; Live lifecycle;30s measured quiet countdown; no active conversation cutoff; PCM cleanup; unavailable-meter stop; hover playback gate; trusted tour action; cancellation and10s finalization; no devices/network.');

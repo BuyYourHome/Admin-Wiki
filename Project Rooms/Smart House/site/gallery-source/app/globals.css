@@ -361,3 +361,14 @@ html{scroll-padding-top:200px}
 @media(max-width:900px){html{scroll-padding-top:245px}.header nav{margin-left:0}.contact-intro{display:block}.contact-intro .lead{max-width:600px;margin-top:22px}.contact-layout{grid-template-columns:minmax(0,1fr)}.contact-people{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}.contact-card{margin-bottom:0}.contact-note{grid-column:1/-1;margin-top:0}}
 @media(max-width:720px){.header{gap:16px}.header-brand .brand-copy>small{margin-left:72px}.header-voice-status{font-size:10px;max-width:100%;margin-top:13px}.header nav{gap:8px;flex-wrap:nowrap}.header nav a{font-size:12px}.contact-intro{margin-bottom:25px}.contact-layout{gap:24px}.contact-people{grid-template-columns:minmax(0,1fr)}.contact-page .pondster-conversation{min-height:180px;max-height:360px}.contact-page .pondster-input input{font-size:16px}.contact-page .pondster-message p{font-size:13px}.contact-page .pondster-voice small{font-size:10px}.contact-person img{width:75px;height:75px}.contact-person h2{font-size:29px}}
 @media(max-width:360px){.header nav{gap:6px}.header nav a{font-size:11px}.header-voice-status>span{flex-basis:165px}}
+
+.header.voice-is-live{background:#efd09f;--muted:#594a38;--accent:#854121}
+.header.voice-is-live button:focus-visible,.header.voice-is-live a:focus-visible{outline-color:var(--accent)}
+.contact-trades{margin-top:42px;padding-top:30px;border-top:1px solid var(--line)}
+.contact-trades>h2{font-size:32px;line-height:1.15;letter-spacing:-.6px;margin:0 0 12px}
+.contact-trades>p{font-size:13px;color:var(--muted);max-width:650px;margin:0 0 24px}
+.contact-trade-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+.contact-trade-card{margin-bottom:0}
+.contact-trade-card h3{font-size:27px;line-height:1.15;letter-spacing:-.4px;margin:0 0 14px}
+.contact-trade-card .pending-tag{margin-top:8px}
+@media(max-width:720px){.contact-trade-grid{grid-template-columns:minmax(0,1fr)}.contact-trades{margin-top:30px;padding-top:25px}}

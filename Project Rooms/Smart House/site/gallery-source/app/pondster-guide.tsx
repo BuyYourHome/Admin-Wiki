@@ -2,7 +2,8 @@
 import { forwardRef, useEffect, useImperativeHandle, useRef, useState, type FormEvent } from 'react';
 import { answerPondster, isPondsterWakeRequest, type GuideAction } from '../lib/pondster-guide';
 import { createPondsterVoice } from '../lib/pondster-voice.js';
-import { createPondsterLiveVoice } from '../lib/pondster-live-voice';
+import { createPondsterLiveVoice, type PondsterLiveState } from '../lib/pondster-live-voice';
+import { isPondsterFarewell, PONDSTER_FAREWELL_ACK } from '../lib/pondster-voice-intents';
 
 type Recognition = { start:()=>void; abort:()=>void };
 type SpeechWindow = Window & { SpeechRecognition?:new()=>Recognition; webkitSpeechRecognition?:new()=>Recognition };
@@ -17,8 +18,8 @@ function compactInactiveStatus(status:string) {
   return reason.length<=160?reason:`${reason.slice(0,157).trimEnd()}…`;
 }
 
-export type PondsterGuideHandle = { activateVoice:()=>void; stopVoice:()=>void };
-export type PondsterVoiceSummary = { active:boolean; status:string };
+export type PondsterGuideHandle = { activateVoice:()=>void; startVoice:()=>void; stopVoice:()=>void };
+export type PondsterVoiceSummary = { active:boolean; connecting?:boolean; status:string };
 type GuideProps = { open:boolean; onOpenChange:(open:boolean)=>void; onAction:(action:GuideAction)=>void; onReturnFocus:()=>void; onVoiceState:(state:PondsterVoiceSummary)=>void };
 
 export default forwardRef<PondsterGuideHandle,GuideProps>(function PondsterGuide({open,onOpenChange,onAction,onReturnFocus,onVoiceState},ref) {
@@ -30,7 +31,7 @@ export default forwardRef<PondsterGuideHandle,GuideProps>(function PondsterGuide
   const [naturalSupported,setNaturalSupported]=useState(false);
   const [naturalMessage,setNaturalMessage]=useState('');
   const [voiceMode,setVoiceMode]=useState<'natural'|'browser'>('natural');
-  const [live,setLive]=useState({available:false,connecting:false,active:false,status:'I’m not listening. Start a conversation when you’re ready.',heard:'',audioBlocked:false,silenceAvailable:null as boolean|null});
+  const [live,setLive]=useState<PondsterLiveState>({available:false,connecting:false,active:false,status:'I’m not listening. Start a conversation when you’re ready.',heard:'',audioBlocked:false,silenceAvailable:null,quietReason:'checking',quietSecondsRemaining:null});
   const voiceState=useRef(voice);
   const liveState=useRef(live);
   const input=useRef<HTMLInputElement>(null);
@@ -45,6 +46,11 @@ export default forwardRef<PondsterGuideHandle,GuideProps>(function PondsterGuide
   const askRef=useRef<(text:string)=>void>(()=>{});
   function ask(text:string,reveal=true) {
     const question=text.trim().slice(0,500);if(!question)return;
+    if(isPondsterFarewell(question)){
+      stopVoice();
+      setMessages(previous=>[...previous,{who:'you' as const,text:question},{who:'Pondster' as const,text:PONDSTER_FAREWELL_ACK}].slice(-12));
+      return;
+    }
     if(live.active){liveController.current?.sendText(question);return;}
     const reply=answerPondster(question);
     setMessages(previous=>[...previous,{who:'you' as const,text:question},{who:'Pondster' as const,text:reply.text}].slice(-12));
@@ -62,7 +68,7 @@ export default forwardRef<PondsterGuideHandle,GuideProps>(function PondsterGuide
       createUtterance:typeof window.SpeechSynthesisUtterance==='function'?(text:string)=>new SpeechSynthesisUtterance(text):undefined,
       onState:(state:VoiceState)=>{if(state.session||state.outputActive)voiceRequested.current.browser=true;voiceState.current=state;setVoice(state);},
       onQuestion:(text:string)=>askRef.current(text),
-      isWakeRequest:isPondsterWakeRequest,
+      isWakeRequest:(text:string)=>isPondsterWakeRequest(text)||isPondsterFarewell(text),
       isHidden:()=>document.hidden
     });
     controller.current=current;
@@ -102,7 +108,7 @@ export default forwardRef<PondsterGuideHandle,GuideProps>(function PondsterGuide
     if(voiceState.current.session)controller.current?.speak(voiceGreeting);
   }
   function isVoiceActive(){return liveState.current.active||liveState.current.connecting||voiceState.current.session||voiceState.current.outputActive;}
-  useImperativeHandle(ref,()=>({activateVoice(){if(isVoiceActive())stopVoice();else startSelectedVoice();},stopVoice}));
+  useImperativeHandle(ref,()=>({activateVoice(){if(isVoiceActive())stopVoice();else startSelectedVoice();},startVoice(){if(!isVoiceActive())startSelectedVoice();},stopVoice}));
   function listen(){if(isVoiceActive())stopVoice();else startSelectedVoice();}
   function close(){stopVoice();onOpenChange(false);onReturnFocus();}
   const voiceActive=live.active||live.connecting||voice.session||voice.outputActive;
@@ -115,11 +121,15 @@ export default forwardRef<PondsterGuideHandle,GuideProps>(function PondsterGuide
   function submit(event:FormEvent<HTMLFormElement>){event.preventDefault();const data=new FormData(event.currentTarget);const text=String(data.get('question')||'');ask(text);event.currentTarget.reset();}
   const lastReply=[...messages].reverse().find(message=>message.who==='Pondster')?.text||greeting;
   const useNatural=voiceMode==='natural';
-  const inactiveStatus=voiceRequested.current[voiceMode]?compactInactiveStatus(useNatural?live.status:voice.status):'Voice off. Click my logo to talk.';
+  const inactiveStatus=voiceRequested.current[voiceMode]?compactInactiveStatus(useNatural?live.status:voice.status):'Voice off. Hover over or click my logo to talk.';
+  const quietStatus=live.silenceAvailable===false?' · quiet timer unavailable':live.silenceAvailable===null?' · checking quiet timer'
+    :live.quietSecondsRemaining!==null?` · quiet: ${live.quietSecondsRemaining}s left`
+    :live.quietReason==='output'?' · speaking':live.quietReason==='input'?' · hearing sound'
+    :live.quietReason==='work'||live.quietReason==='response'?' · thinking':'';
   const headerStatus=live.connecting?'Connecting my voice…':live.active
-    ?`Voice on${live.silenceAvailable===false?' · quiet timer unavailable':live.silenceAvailable===null?' · checking quiet timer':''}${live.audioBlocked?' · audio paused':''}`
+    ?`Voice on${quietStatus}${live.audioBlocked?' · audio paused':''}`
     :voice.outputActive?'I’m speaking. Click my logo to stop.':voice.session?'Voice on. Click my logo to stop.':inactiveStatus;
-  useEffect(()=>{onVoiceState({active:voiceActive,status:headerStatus});},[voiceActive,headerStatus,onVoiceState]);
+  useEffect(()=>{onVoiceState({active:voiceActive,connecting:live.connecting,status:headerStatus});},[voiceActive,live.connecting,headerStatus,onVoiceState]);
   return <div className="pondster-guide">
     <audio ref={audio} className="pondster-live-audio" hidden aria-label="Pondster’s natural voice audio"/>
     {open&&<section id="pondster-panel" className="pondster-panel" role="region" aria-labelledby="pondster-heading">
@@ -132,7 +142,7 @@ export default forwardRef<PondsterGuideHandle,GuideProps>(function PondsterGuide
         {(useNatural?live.heard:voice.heard)&&<p className="pondster-heard">I heard: “{useNatural?live.heard:voice.heard}”</p>}
         {useNatural&&live.audioBlocked&&<button className="pondster-resume-audio" onClick={()=>void liveController.current?.resumeAudio().catch(()=>{})}>Play my voice ▶</button>}
         {(useNatural?!live.available||naturalReady===false&&!voiceActive:!voice.available)&&<p className="pondster-unavailable">{useNatural?naturalMessage||'I can’t use my natural voice right now. You can choose Browser voice or type me a question.':'I can’t listen in this browser. Open pondstr.com in Chrome or Edge to try my voice, or type me a question here.'}</p>}
-        <p className="pondster-quiet-note">{useNatural?(live.silenceAvailable===false?'Quiet detection isn’t available in this connection. Use Stop voice or my logo to end our conversation; my three-minute limit still applies.':live.active&&live.silenceAvailable===null?'I’m checking whether this connection can detect quiet. You can stop with my logo at any time; my three-minute limit still applies.':'When quiet detection is available, I turn off after 30 seconds of quiet. Each natural conversation lasts up to three minutes.'):'I turn off after 30 seconds without speech. My timer pauses while I speak, then gives you time to reply.'}</p>
+        <p className="pondster-quiet-note">{useNatural?(live.silenceAvailable===false?'I can’t monitor quiet in this connection. I stop my microphone and voice if that check doesn’t recover.':live.active&&live.silenceAvailable===null?'I’m checking quiet detection. You can stop with my logo at any time.':'I end our conversation after 30 seconds of quiet. I stay with you while we keep talking, with no three-minute cutoff.'):'I turn off after 30 seconds without speech. My timer pauses while I speak, then gives you time to reply.'}</p>
         <small>{useNatural?'My natural voice is AI-generated. Starting sends your voice to OpenAI for this conversation. I keep no audio or transcript in my website’s database. I stop when you stop voice, close this conversation, press Escape, or leave this tab.':`${keepListening?'Say “Pondster” with each question.':'Tap Ask by voice, then ask one question. You don’t need to say my name.'} Your browser may send audio to its speech service. I stop when you close this conversation, stop voice, press Escape, or leave this tab.`} You can browse my other pages while we talk.</small>
       </div>
       <div className="pondster-conversation" ref={log} role="log" aria-label="Conversation with Pondster" aria-live="polite" aria-relevant="additions">{messages.map((message,index)=><div className={`pondster-message ${message.who==='you'?'from-you':''}`} key={`${index}-${message.text.slice(0,20)}`}><span>{message.who==='you'?'YOU':'PONDSTER'}</span><p>{message.text}</p></div>)}</div>

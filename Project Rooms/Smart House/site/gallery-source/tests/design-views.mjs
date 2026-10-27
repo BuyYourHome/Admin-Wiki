@@ -9,12 +9,13 @@ assert.equal(deck.designs.length, 1, 'Two deck pictures remain one voting choice
 assert.equal(deck.designs[0].id, 'oak-courtyard');
 assert.equal(allDesigns.length, 31);
 assert.equal(new Set(allDesigns.map(design => design.id)).size, 31);
-const overview = '/images/deck/oak-courtyard-overview.png';
-const closeup = '/images/deck/oak-courtyard-closeup.png';
+assert.equal(deck.designs[0].title, 'Barn door stain');
+const overview = '/images/deck/barn-door-stain-wide.png';
+const closeup = '/images/deck/barn-door-stain-closeup.png';
 assert.equal(deck.designs[0].image, overview, 'Explore and tour retain the primary overview');
 const pictures = galleryPictures(deck.designs);
 assert.deepEqual(pictures.map(picture => picture.image), [overview, closeup]);
-assert.deepEqual(pictures.map(picture => picture.label), ['Courtyard overview', 'Closer view']);
+assert.deepEqual(pictures.map(picture => picture.label), ['Wide view', 'Closer view']);
 assert.ok(pictures.every(picture => picture.design.id === 'oak-courtyard'));
 const selectedCloseup = pictureSelection(pictures[1]);
 assert.equal(selectedCloseup.id, 'oak-courtyard', 'A viewer change never creates another voting ID');

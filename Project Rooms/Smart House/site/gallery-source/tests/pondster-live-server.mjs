@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict';
 import { DatabaseSync } from 'node:sqlite';
 import { readFileSync } from 'node:fs';
-import { createPondsterLiveControl, d1VoiceStore, handlePondsterLiveControl, hashVoiceVisitor, voiceAdmissionStatus, voiceStatus, VOICE_ADMISSION_SQL, RESERVE_VOICE_SQL, VOICE_DURATION_SECONDS, VOICE_FINALIZATION_MS, VOICE_GLOBAL_DAILY_LIMIT, VOICE_BROWSER_DAILY_LIMIT } from '../worker/pondster-live.ts';
+import { createPondsterLiveControl, d1VoiceStore, handlePondsterLiveControl, hashVoiceVisitor, voiceAdmissionStatus, voiceStatus, VOICE_ADMISSION_SQL, RESERVE_VOICE_SQL, VOICE_SETUP_MS, VOICE_FINALIZATION_MS, VOICE_GLOBAL_DAILY_LIMIT, VOICE_BROWSER_DAILY_LIMIT } from '../worker/pondster-live.ts';
 import { VoiceProviderFailure } from '../worker/pondster-live-diagnostics.ts';
 
 const flush = async () => { for (let i = 0; i < 12; i++) await Promise.resolve(); };
@@ -85,6 +85,13 @@ for (let n = 10; n < 30; n++) { assert.equal(await reserve(n), true); await fini
 assert.equal(await reserve(30), false, 'The global daily allowance applies across different browsers.');
 timestamp += 86_400_001;
 assert.equal(await reserve(31), true);
+await store.activate(id(31), 'live_active_synthetic');
+timestamp += 250_000;
+assert.equal(await reserve(310, 'visitor-31'), false, 'Setup expiry never releases an ongoing conversation for the same visitor.');
+assert.equal(await reserve(311), true);
+timestamp += 250_000;
+assert.equal(await reserve(312), false, 'Two ongoing conversations retain the global fence after setup expiry.');
+await finish(311);
 await store.finish(id(31), { state: 'unconfirmed', usageSeconds: 0, confirmed: false });
 timestamp += 250_000;
 assert.equal(await reserve(32, 'visitor-31'), false, 'Expiry alone never frees an unconfirmed possibly billed session.');
@@ -383,7 +390,9 @@ for (const seedShape of ['valid', 'null-session', 'array-session', 'null-develop
   const f = fixture();
   await f.control.message(start(100));
   assert.equal(f.creates(), 1); assert.equal(f.attaches(), 1); assert.equal(f.sideband.accepted, true);
-  assert.equal(f.client.sent.find(event => event.type === 'pondster.ready').maxDurationSeconds, 180);
+  assert.equal(Object.hasOwn(f.client.sent.find(event => event.type === 'pondster.ready'), 'maxDurationSeconds'), false, 'Ready advertises no application conversation cutoff.');
+  const reservation = f.records.find(record => record.reserve).reserve;
+  assert.equal(reservation.expiresAt - reservation.createdAt, VOICE_SETUP_MS, 'Expiry records setup bookkeeping, not conversation lifetime.');
   await f.control.message(start(101)); await f.control.completed;
   assert.equal(f.creates(), 1, 'A second start never creates another provider session.');
   assert.equal(f.records.at(-1).finish.state, 'closed');
@@ -462,14 +471,24 @@ for (const seedShape of ['valid', 'null-session', 'array-session', 'null-develop
 }
 {
   const f = fixture(); await f.control.message(start(105));
-  await f.timer.tick(VOICE_DURATION_SECONDS * 1000); await f.control.completed;
+  await f.timer.tick(600_000);
+  assert.ok(!f.records.some(record => record.finish), 'An ongoing conversation remains open well beyond the former 180-second cap.');
+  assert.equal(f.sideband.sent.filter(event => event.type === 'session.close').length, 0);
+  assert.ok(!f.client.closed && !f.sideband.closed);
+  await f.control.message(JSON.stringify({ type: 'pondster.text', text: 'Still here after ten minutes' }));
+  assert.equal(f.answers.length, 1, 'The conversation still accepts a question after the former cutoff.');
+  const answeredBeforeClose = f.answers.length;
+  f.sideband.onSend = event => {
+    if (event.type === 'session.close') queueMicrotask(() => f.sideband.emit({ type: 'session.closed', usage: { seconds: 601 } }));
+  };
+  await f.control.stop(); await f.control.completed;
   assert.equal(f.sideband.sent.filter(event => event.type === 'session.close').length, 1);
-  assert.equal(f.records.at(-1).finish.usageSeconds, 7);
+  assert.equal(f.records.at(-1).finish.usageSeconds, 601, 'Provider-confirmed usage is preserved without clamping to the former cutoff.');
   assert.equal(f.records.at(-1).finish.confirmed, true);
   assert.equal(f.timer.count(), 0); assert.ok(f.client.closed && f.sideband.closed);
   f.sideband.emit({ type: 'session.delegation.created', offset_ms: 2, delegation: { target: 'client', id: 'late' } });
   await f.control.message(JSON.stringify({ type: 'pondster.text', text: 'late question' }));
-  assert.equal(f.answers.length, 0, 'Late callbacks after closure cannot answer or restart.');
+  assert.equal(f.answers.length, answeredBeforeClose, 'Late callbacks after closure cannot answer or restart.');
 }
 {
   const f = fixture(); await f.control.message(start(106));
@@ -638,4 +657,17 @@ for (const menu of ['Contact', 'Own']) {
   assert.deepEqual(f.client.sent.findLast(event => event.type === 'pondster.action'), { type: 'pondster.action', action: { menu } });
   await f.control.stop();
 }
-console.log('Pondster live server: trusted bounded work/response hints, overlapping delegation release/dedup/cap, no client busy injection, Contact/Own actions, SQLite admission and lifecycle/cleanup passed (mocks only).');
+// A trusted tour action is retained only for View and only with the literal true flag.
+for (const action of [
+  {menu:'View',tour:true}, {menu:'Design',tour:true}, {menu:'Own',tour:true},
+  {menu:'View',tour:false}, {menu:'View',tour:'true'}, {menu:'View',tour:null},
+]) {
+  const f = fixture({ answer() { return {text:'Synthetic tour navigation.',action}; } });
+  await f.control.message(start(605));
+  await f.control.message(JSON.stringify({type:'pondster.text',text:'Show me the virtual tour'}));
+  const actions = f.client.sent.filter(event => event.type==='pondster.action');
+  assert.deepEqual(actions, action.menu==='View' && action.tour===true
+    ? [{type:'pondster.action',action:{menu:'View',tour:true}}] : [], 'Invalid tour flags or destinations never reach browser navigation.');
+  await f.control.stop();
+}
+console.log('Pondster live server: trusted bounded work/response hints, overlapping delegation release/dedup/cap, no client busy injection, Contact/Own actions, uncapped ongoing conversation, retained expiry fences, SQLite admission and lifecycle/cleanup passed (mocks only).');

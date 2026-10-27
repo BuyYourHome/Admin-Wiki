@@ -1,6 +1,6 @@
 import { basementColorSchemes, masterBathDesigns, hallBathDesigns, roomFeatures, systemFeatures } from './features.js';
 
-export type GuideAction = { menu: 'Design' | 'Explore' | 'View' | 'Own' | 'Contact' | 'Built By'; room?: string; scene?: 'day' | 'evening' | 'relax' };
+export type GuideAction = { menu: 'Design' | 'Explore' | 'View' | 'Own' | 'Contact' | 'Built By'; room?: string; scene?: 'day' | 'evening' | 'relax'; tour?: true };
 export type GuideReply = { text: string; action?: GuideAction };
 
 export function isPondsterWakeRequest(transcript: string) {
@@ -17,7 +17,7 @@ const rooms = [
   { id: 'master-bath', name: 'Master Bath', aliases: ['master bath', 'primary bath', 'main bath', 'bathroom'], choices: masterBathDesigns.map(design => design.title) },
   { id: 'hall-bath', name: 'Hall Bath', aliases: ['hall bath', 'hall bathroom', 'hallway bath', 'hallway bathroom', 'tub and shower', 'tub shower', 'floating vanity'], choices: hallBathDesigns.map(design => design.title) },
   { id: 'spiral-staircase', name: 'Home Theatre', aliases: ['home theatre', 'home theater', 'theatre', 'theater', 'cinema', 'basement', 'spiral staircase', 'spiral stairs', 'spiral', 'staircase', 'stairs', 'stair setting', 'sequential stair lights'], choices: ['Black spiral staircase', ...basementColorSchemes.map(scheme => `Stair setting · ${scheme.title}`)] },
-  { id: 'back-deck', name: 'Back Deck', aliases: ['back deck', 'rear deck', 'deck', 'courtyard'], choices: ['Oak courtyard deck'] }
+  { id: 'back-deck', name: 'Back Deck', aliases: ['back deck', 'rear deck', 'deck', 'courtyard'], choices: ['Barn door stain'] }
 ];
 const choiceAliases: Record<string, string[]> = {
   'Warm Ivory Cream': ['warm ivory', 'ivory cream'],
@@ -65,9 +65,30 @@ export function answerPondster(input: string): GuideReply {
   if (/\b(password|passcode|secret|private|confidential|live camera feed|camera footage|surveillance feed|saved profile|personal profile|alarm code|wifi|wi fi|owner records|owner data)\b/.test(words)) {
     return { text: 'I cannot provide private records, passwords, or real access codes here. My future owner tools will need authenticated access; saying you are the owner does not grant access.', action: { menu: 'Own' } };
   }
-  if (/\b(price|pricing|cost|budget|tax|mortgage|rent|valuation|square footage|square feet|bedrooms|bathrooms|permit|inspection|wiring|voltage|hvac|thermostat|equipment|specifications?|model number|serial number|manufacturer|paint code|paint brand)\b/.test(words) || /\bhow much\b/.test(words)) {
+  if (/\b(address|location|where are you|where is pondster)\b/.test(words)) return { text: 'I’m Pondster, the voice and identity of this house. My location is confidential for now—think witness protection, with better curb appeal. You can explore my design ideas here and find future viewing arrangements on View.', action: { menu: 'View' } };
+  const unverifiedDetail = /\b(price|pricing|cost|budget|tax|mortgage|rent|valuation|square footage|square feet|bedrooms|bathrooms|permit|inspection|wiring|voltage|thermostat|equipment|specifications?|model number|serial number|manufacturer|paint code|paint brand)\b/.test(words) || /\bhow much\b/.test(words);
+  const trade = /\b(gc|general contractor|glasgow|glasgowdb)\b/.test(words) ? 'gc'
+    : /\b(hvac|true service|trueserviceinc)\b/.test(words) ? 'hvac'
+    : /\b(plumber|plumbing|executive plumbing|executiveplumbingcompany)\b/.test(words) ? 'plumber'
+    : /\b(contractors|trade contacts|trades)\b/.test(words) ? 'all' : null;
+  const tradeQuestion = /\b(who|contact|website|web site|url|link|contractors?|company|vendor|selected|hire|hired|phone|email|call)\b/.test(words);
+  if (trade && tradeQuestion && !unverifiedDetail && !/\b(address|location|where)\b/.test(words)) {
+    const contacts = {
+      gc: 'My selected general contractor is Glasgow Design Build: https://glasgowdb.com/.',
+      hvac: 'My selected HVAC contractor is True Service Inc.: https://www.trueserviceinc.com/.',
+      plumber: 'My selected plumber is Executive Plumbing Company: https://www.executiveplumbingcompany.com/.',
+    };
+    return { text: (trade === 'all' ? Object.values(contacts).join(' ') : contacts[trade]) + ' I can show you their public websites on my Contact page.', action: { menu: 'Contact' } };
+  }
+  if (unverifiedDetail || /\bhvac\b/.test(words)) {
     return { text: "I don't have verified pricing, property specifications, equipment records, or construction approvals to share here. My images show AI concepts, not installed or approved specifications. You can keep asking me about my public information." };
   }
+  if (/^(?:(?:show(?: me)?|open)(?: (?:my|your|the))? )?(?:deck structural drawing|preliminary deck drawing)(?: please)?$/.test(words)) {
+    return { text: 'I have a preliminary deck structural drawing on my Belong page: /documents/deck-structural-preliminary.pdf. I’m sharing it as a preliminary design reference, not approved construction plans or confirmed specifications.', action: { menu: 'Own' } };
+  }
+  const virtualTour = has('virtual tour') || has('virtual design tour') || has('virtualtour')
+    || /\b(?:take me on|give me|start|begin|launch|play|show(?: me)?|open)(?: (?:my|your|the|a))? tour\b/.test(words);
+  if (virtualTour) return { text: 'I’m opening my virtual design tour. I show one view per room using my concept films and vote-leading design images. My tour controls let you choose sound or full screen.', action: { menu: 'View', tour: true } };
   const menuCommand = words.match(/\b(?:go to|open|show(?: me)?|take me to|navigate to)\s+(?:my\s+|the\s+)?(built by|contact|explore|design|view|belong|own|manage)(?:\s+(?:page|menu))?(?:\s+(?:please|now|for me))?$/);
   if (menuCommand) {
     const destinations: Record<string, GuideAction['menu']> = { design: 'Design', explore: 'Explore', view: 'View', belong: 'Own', own: 'Own', manage: 'Own', contact: 'Contact', 'built by': 'Built By' };
@@ -100,6 +121,7 @@ export function answerPondster(input: string): GuideReply {
   }
 
   const explicitRoom = rooms.find(item => has(item.name))
+    ?? (has('Barn door stain') ? rooms.find(item => item.id === 'back-deck') : undefined)
     ?? rooms.find(item => item.id === 'hall-bath' && item.aliases.some(alias => has(alias)))
     ?? (tubDesignRequest ? rooms.find(item => item.id === 'hall-bath') : rooms.find(item => item.aliases.some(alias => has(alias))));
   const candidates = (explicitRoom ? [explicitRoom] : rooms).flatMap(room => room.choices.map(title => ({ room, title })));
@@ -136,6 +158,5 @@ export function answerPondster(input: string): GuideReply {
   if (has('explore') || /\b(features?|room by room)\b/.test(words)) return { text: 'I show the features I will bring to my house and each of my spaces on Explore, alongside my design concepts. You can also try my illustrative lighting moods. My equipment and construction details still need confirmation.', action: { menu: 'Explore' } };
   if (has('view')) return { text: 'I introduce Ashley and my simulated viewing preview on View. For a real visit with me, arrange the details separately with Ashley.', action: { menu: 'View' } };
   if (/\b(design|designs|gallery|galleries|choices|colors|colours)\b/.test(words)) return { text: `I have ${rooms.length} design galleries: ${rooms.map(room => room.name).join(', ')}. I share AI concept images where choices are available and will add images for my other galleries.`, action: { menu: 'Design' } };
-  if (/\b(address|location|where are you|where is pondster)\b/.test(words)) return { text: 'I’m Pondster, the voice and identity of this house. My location is confidential for now—think witness protection, with better curb appeal. You can explore my design ideas here and find future viewing arrangements on View.', action: { menu: 'View' } };
   return { text: "I can answer from my public website information: future features, design concepts, simulated lighting, viewing previews, Ashley, my SI designer Jean Wright, Buy Your Home, LLC, and my future owner experience. I don't have a verified answer to that question." };
 }
