@@ -722,3 +722,14 @@ Plain HVAC information requests and acronym-spacing variants now reveal the sele
 - Archive: `sha256:25abf472fea414563bd51e39aa1f10431c7dc8c8abcb17426aca4d9cc8a3ff22`, 128 files, 66,457,600 bytes.
 
 Guide/context, final TypeScript, build, diff and 185-file source/build secret checks passed. Four text mirrors match. The exact request was verified on public Pondstr.com through typed guidance with Voice off; True Service was identified and its card visibly aligned beneath the header. Fresh speech testing remains blocked by the existing 20-start site-wide rolling cap, confirmed read-only at 11:56Z. No cap, session row, key, billing, audience, voice/model or lifecycle setting was changed. See [[Project Rooms/Smart House/working/voice-section-navigation-20261028]].
+
+## Approved 100-start voice allowance — version 75, 2026-10-28
+
+Wes selected 100 starts per rolling 24 hours after being told that a higher cap permits more paid voice sessions. The global allowance constant changes 20→100; the browser allowance continues to derive from it. Both read-only admission and atomic reservation use the same value. No stored starts or uncertain reservations are reset, and the 30-second silence timeout, ongoing conversation behavior, one-minute cooldown and concurrency/per-conversation fences remain.
+
+- Source: `972ef4394e6a1e876ef348c88bf3d19e765fb014`.
+- Saved version: `appgprj_6ad4d98e08708191858cab113814704e~appgver_5b9d288723f8819180e35f81496ab46f`, version **75**.
+- Deployment: `appgdep_6ae1e7c288c08191a5c39787969792d7`, succeeded `2026-10-28T12:17:14.968961+00:00`, environment revision **4**.
+- Archive: `sha256:2a04a11effb608c3a221195b7bb22927165dfc138fd35d3745ca9cda07806c57`, 128 files, 66,457,600 bytes.
+
+Real in-memory SQLite boundary/admission/lifecycle tests, final TypeScript, build, diff and 185-file source/build secret checks passed. Tests allow the former 20-start state, admit 100 starts and reject the 101st, and preserve exact rolling-window/cooldown/uncertain-state semantics. Two source mirrors match. Public in-app-browser inspection with Voice off confirms the old daily-cap message is absent and Talk naturally is enabled; no microphone or paid session was started. Existing user tabs remain untouched. See [[Project Rooms/Smart House/working/voice-start-limit-20261028]].

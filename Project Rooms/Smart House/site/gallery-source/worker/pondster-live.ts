@@ -6,7 +6,7 @@ import { parsePondsterDestination, type PondsterDestination } from '../lib/ponds
 export const VOICE_COOKIE = 'pondster_voice_visitor';
 export const VOICE_SETUP_MS = 20_000;
 export const VOICE_FINALIZATION_MS = 10_000;
-export const VOICE_GLOBAL_DAILY_LIMIT = 20;
+export const VOICE_GLOBAL_DAILY_LIMIT = 100;
 export const VOICE_BROWSER_DAILY_LIMIT = VOICE_GLOBAL_DAILY_LIMIT;
 const DAY_MS = 86_400_000;
 const MAX_MESSAGE_BYTES = 65_536;

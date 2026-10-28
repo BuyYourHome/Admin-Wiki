@@ -73,16 +73,16 @@ await finish(1); await finish(3);
 assert.equal(await reserve(5, 'a'), false, 'Cooldown also applies after a quick confirmed close.');
 timestamp += 60_001;
 sqlite.exec('DELETE FROM voice_sessions');
-assert.equal(VOICE_GLOBAL_DAILY_LIMIT, 20, 'The absolute rolling global allowance is unchanged.');
+assert.equal(VOICE_GLOBAL_DAILY_LIMIT, 100, 'Wes approved 100 starts per rolling 24 hours.');
 assert.equal(VOICE_BROWSER_DAILY_LIMIT, VOICE_GLOBAL_DAILY_LIMIT);
-for (let n = 6; n <= 25; n++) {
-  assert.equal(await reserve(n, 'a'), true, 'One browser may use the remaining global allowance, including a fifth start.');
+for (let n = 1000; n < 1000 + VOICE_BROWSER_DAILY_LIMIT; n++) {
+  assert.equal(await reserve(n, 'a'), true, 'One browser may use the approved allowance, including starts beyond the former 20 cap.');
   await finish(n); timestamp += 60_001;
 }
-assert.equal(await reserve(26, 'a'), false, 'Twenty starts still exhaust the unchanged global allowance.');
+assert.equal(await reserve(1000 + VOICE_BROWSER_DAILY_LIMIT, 'a'), false, 'The 101st rolling start is rejected.');
 sqlite.exec('DELETE FROM voice_sessions');
-for (let n = 10; n < 30; n++) { assert.equal(await reserve(n), true); await finish(n); }
-assert.equal(await reserve(30), false, 'The global daily allowance applies across different browsers.');
+for (let n = 2000; n < 2000 + VOICE_GLOBAL_DAILY_LIMIT; n++) { assert.equal(await reserve(n), true); await finish(n); }
+assert.equal(await reserve(2000 + VOICE_GLOBAL_DAILY_LIMIT), false, 'The global daily allowance applies across different browsers.');
 timestamp += 86_400_001;
 assert.equal(await reserve(31), true);
 await store.activate(id(31), 'live_active_synthetic');
@@ -167,6 +167,8 @@ assert.notEqual(await hashVoiceVisitor(visitor, secret), await hashVoiceVisitor(
     await expectAdmission(true);
     reset(); for (let n = 1; n <= 4; n++) seed(n, { state: 'closed' });
     await expectAdmission(true); // Regression: the fifth start is not blocked by the former browser-only4 cap.
+    reset(); for (let n = 1; n <= 20; n++) seed(n, { state: 'closed' });
+    await expectAdmission(true); // The reported former site-wide20 cap no longer blocks a 21st start.
     for (const state of ['pending', 'active', 'closing', 'unconfirmed']) {
       reset(); seed(1, { at: now - day - 1, state }); await expectReason(state === 'active' ? 'active' : 'pending_service');
     }
@@ -177,17 +179,17 @@ assert.notEqual(await hashVoiceVisitor(visitor, secret), await hashVoiceVisitor(
     await expectReason('active');
     reset();
     seed(1, { key: 'other-1', state: 'owner_waived' });
-    for (let n = 2; n <= 19; n++) seed(n, { key: `other-${n}` });
-    await expectAdmission(true); seed(20, { key: 'other-20' });
+    for (let n = 2; n < VOICE_GLOBAL_DAILY_LIMIT; n++) seed(n, { key: `other-${n}` });
+    await expectAdmission(true); seed(VOICE_GLOBAL_DAILY_LIMIT, { key: 'last-global-start' });
     assert.match((await expectReason('daily_cap')).message, /rolling 24-hour/);
     reset(); seed(1, { state: 'owner_waived' });
-    for (let n = 2; n <= 19; n++) seed(n); await expectAdmission(true);
-    seed(20); await expectReason('daily_cap');
+    for (let n = 2; n < VOICE_BROWSER_DAILY_LIMIT; n++) seed(n); await expectAdmission(true);
+    seed(VOICE_BROWSER_DAILY_LIMIT); await expectReason('daily_cap');
     reset(); seed(1, { at: now - 59_999, state: 'owner_waived' });
     assert.match((await expectReason('cooldown')).message, /up to a minute/);
     reset(); seed(1, { at: now - 60_000 }); await expectAdmission(true);
-    reset(); for (let n = 1; n <= 20; n++) seed(n, { key: `other-${n}`, at: now - day }); await expectAdmission(true);
-    reset(); for (let n = 1; n <= 20; n++) seed(n, { key: `other-${n}`, at: now - day + 1 }); await expectAdmission(false);
+    reset(); for (let n = 1; n <= VOICE_GLOBAL_DAILY_LIMIT; n++) seed(n, { key: `other-${n}`, at: now - day }); await expectAdmission(true);
+    reset(); for (let n = 1; n <= VOICE_GLOBAL_DAILY_LIMIT; n++) seed(n, { key: `other-${n}`, at: now - day + 1 }); await expectAdmission(false);
 
     reset();
     const firstRequest = new Request('https://pondstr.test/api/voice/status');
