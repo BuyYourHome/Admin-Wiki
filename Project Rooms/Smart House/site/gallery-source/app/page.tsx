@@ -13,7 +13,8 @@ import PondsterLogoArt from './pondster-logo-art';
 import GalleryImageViewer from './gallery-image-viewer';
 import DesignCardImages from './design-card-images';
 import type { GuideAction } from '../lib/pondster-guide';
-import { getGalleryScrollTop } from '../lib/gallery-scroll';
+import { getGalleryScrollTop, getSectionRevealTop } from '../lib/gallery-scroll';
+import { getPondsterDestinationId, parsePondsterDestination, type PondsterDestination } from '../lib/pondster-destinations';
 
 type VoteResults = { scores:Record<string,number>; total:number; selected:string|null; roomTotals:Record<string,number> };
 const empty:VoteResults = {scores:{},total:0,selected:null,roomTotals:{}};
@@ -21,6 +22,7 @@ const menus = ['Design','Explore','View','Own','Built By','Contact'] as const;
 const menuHash = (menu:string) => menu === 'Own' ? 'belong' : menu.toLowerCase().replace(/\s+/g,'-');
 const menuLabel = (menu:string) => menu === 'Own' ? 'Belong' : menu;
 type Menu = typeof menus[number];
+type SectionReveal = { id:number; destination:PondsterDestination };
 export default function Home() {
   const [menu,setMenu] = useState<Menu>('View');
   const [room,setRoom] = useState('media-center');
@@ -44,14 +46,17 @@ export default function Home() {
   const galleryArea=useRef<HTMLDivElement>(null);
   const galleryHeading=useRef<HTMLDivElement>(null);
   const pendingGalleryScroll=useRef<{room:string}|null>(null);
-  const [showLighting,setShowLighting] = useState(false);
+  const [sectionReveal,setSectionReveal] = useState<SectionReveal|null>(null);
+  const pendingSectionReveal=useRef<SectionReveal|null>(null);
+  const nextSectionReveal=useRef(0);
+  const floorPlanDetails=useRef<HTMLElement>(null);
   const [logoPlay,setLogoPlay] = useState(0);
   const voiceHoverTimer = useRef<ReturnType<typeof setTimeout>|null>(null);
   const voiceIsLive = voiceSummary.active&&!voiceSummary.connecting;
   useEffect(()=>()=>cancelVoiceHover(),[]);
   const gallery = galleries.find(gallery => gallery.id === room)!;
   useEffect(() => {
-    const sync = () => { const raw = location.hash.slice(1).toLowerCase(); if(raw === 'main') return; const value = raw === 'manage' || raw === 'own' ? 'belong' : raw; const next = menus.find(item => menuHash(item) === value); setMenu(next ?? 'View');if(next!=='View')setTourRequest(null); };
+    const sync = () => { const raw = location.hash.slice(1).toLowerCase(); if(raw === 'main') return; const value = raw === 'manage' || raw === 'own' ? 'belong' : raw; const next = menus.find(item => menuHash(item) === value) ?? 'View'; if(pendingSectionReveal.current && pendingSectionReveal.current.destination.menu!==next){pendingSectionReveal.current=null;setSectionReveal(null);}setMenu(next);if(next!=='View')setTourRequest(null); };
     sync(); window.addEventListener('hashchange',sync); return () => window.removeEventListener('hashchange',sync);
   },[]);
   useEffect(() => {
@@ -61,7 +66,6 @@ export default function Home() {
     fetch(`/api/votes?room=${encodeURIComponent(room)}`,{cache:'no-store',signal:controller.signal}).then(async response => {const data=await response.json() as VoteResults & {error?:string};if(!response.ok)throw new Error(data.error);return data;}).then(data=>{if(controller.signal.aborted)return;setResults(data);setRoomTotals(data.roomTotals);setRoomTotalsFailed(false);}).catch(error=>{if(error.name!=='AbortError'){setMessage('I can’t load the vote totals right now.');setFailed(true);setRoomTotalsFailed(true);}}).finally(()=>{if(!controller.signal.aborted){setLoading(false);setRoomTotalsLoading(false);}});
     return () => controller.abort();
   },[room,retry]);
-  useEffect(() => {if(menu!=='Explore' || !showLighting)return;const frame=requestAnimationFrame(()=>{const target=document.getElementById('lighting-features');target?.scrollIntoView({block:'start'});target?.focus({preventScroll:true});setShowLighting(false);});return ()=>cancelAnimationFrame(frame);},[menu,showLighting]);
   useEffect(() => {
     const request = pendingGalleryScroll.current;
     if(menu!=='Design'){pendingGalleryScroll.current=null;return;}
@@ -84,6 +88,45 @@ export default function Home() {
     });
     return()=>cancelAnimationFrame(frame);
   },[menu,room]);
+  useEffect(() => {
+    const request=sectionReveal;
+    if(!request || pendingSectionReveal.current!==request || request.destination.menu!==menu)return;
+    const destination=request.destination, targetId=getPondsterDestinationId(destination);
+    if(!targetId || (menu==='Design' && destination.room && destination.room!==room))return;
+    let frame=0, attempts=0;
+    const finish=()=>{if(pendingSectionReveal.current===request){pendingSectionReveal.current=null;setSectionReveal(null);}};
+    const reveal=()=>{
+      if(pendingSectionReveal.current!==request)return;
+      if(++attempts>6){finish();return;}
+      let target=document.getElementById(targetId);
+      if(menu==='Explore' && destination.section==='floor-plan' && destination.room){
+        target=floorPlanDetails.current;
+        if(target?.dataset.pondsterRoom!==destination.room){frame=requestAnimationFrame(reveal);return;}
+      }
+      if(!target || !target.getClientRects().length || target.getBoundingClientRect().height<=0){frame=requestAnimationFrame(reveal);return;}
+      if(target.tagName==='DETAILS' && !(target as HTMLDetailsElement).open){
+        (target as HTMLDetailsElement).open=true;frame=requestAnimationFrame(reveal);return;
+      }
+      const isGallery=targetId==='design-gallery';
+      const heading=isGallery?galleryHeading.current:target;
+      if(!heading){finish();return;}
+      const visual=isGallery?[...target.querySelectorAll<HTMLElement>('video, img, .empty-gallery')]
+        .find(element=>element.getClientRects().length>0 && element.getBoundingClientRect().height>0):undefined;
+      const bounds=heading.getBoundingClientRect();
+      const headerBottom=stickyHeader.current?.getBoundingClientRect().bottom ?? 0;
+      const top=isGallery?getGalleryScrollTop({headingTop:bounds.top,headingBottom:bounds.bottom,
+        visualTop:visual?.getBoundingClientRect().top ?? null,
+        headerBottom,viewportHeight:window.innerHeight,scrollY:window.scrollY})
+        :getSectionRevealTop({targetTop:bounds.top,targetBottom:bounds.bottom,
+          headerBottom,viewportHeight:window.innerHeight,scrollY:window.scrollY});
+      finish();
+      if(top===null)return;
+      const reduceMotion=typeof window.matchMedia==='function' && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      window.scrollTo({top,behavior:reduceMotion?'auto':'smooth'});
+    };
+    frame=requestAnimationFrame(reveal);
+    return()=>cancelAnimationFrame(frame);
+  },[menu,room,sectionReveal]);
   async function vote(designId:string) {
     if(saving)return;setSaving(true);setMessage('');
     try { const response=await fetch('/api/votes',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({room,designId})});const data=await response.json() as VoteResults & {error?:string};if(!response.ok)throw new Error(data.error);setResults(data);setRoomTotals(data.roomTotals);setRoomTotalsFailed(false);setFailed(false);setMessage('I’ve saved your choice. Thank you for helping shape my design.'); }
@@ -107,18 +150,34 @@ export default function Home() {
   }
   function selectGallery(nextRoom:string) {
     if(nextRoom===room || !galleries.some(item=>item.id===nextRoom))return;
+    pendingSectionReveal.current=null;setSectionReveal(null);
     pendingGalleryScroll.current={room:nextRoom};
     setRoom(nextRoom);
   }
-  function navigate(next:Menu){pendingGalleryScroll.current=null;setTourRequest(null);setMenu(next);location.hash=menuHash(next);}
+  function navigate(next:Menu){pendingGalleryScroll.current=null;pendingSectionReveal.current=null;setSectionReveal(null);setTourRequest(null);setMenu(next);location.hash=menuHash(next);}
   function openContact(){navigate('Contact');requestAnimationFrame(()=>guide.current?.focusText());}
-  function guideAction(action:GuideAction){navigate(action.menu);if(action.tour===true&&action.menu==='View')setTourRequest(++nextTourRequest.current);if(action.room&&!saving){if(action.menu==='Design')selectGallery(action.room);else setRoom(action.room);}if(action.scene){setScene(action.scene);setShowLighting(true);}}
+  function guideAction(action:GuideAction){
+    const destination=parsePondsterDestination(action);
+    if(!destination)return;
+    navigate(action.menu);
+    if(action.tour===true&&action.menu==='View'){setTourRequest(++nextTourRequest.current);return;}
+    const isPlan=destination.menu==='Explore' && destination.section==='floor-plan';
+    if(action.room && !isPlan){
+      if(saving && action.menu==='Design')return;
+      if(!saving && galleries.some(item=>item.id===action.room))setRoom(action.room);
+    }
+    if(action.scene)setScene(action.scene);
+    if(getPondsterDestinationId(destination)){
+      const request={id:++nextSectionReveal.current,destination};
+      pendingSectionReveal.current=request;setSectionReveal(request);
+    }
+  }
   return <>
     <a className="skip" href="#main">Skip to content</a>
     <header ref={stickyHeader} className={`header ${voiceIsLive?'voice-is-live':''}`}><div className="header-brand"><button ref={logo} type="button" className="brand" onClick={toggleVoice} aria-label={voiceSummary.active?'Stop Pondster voice':'Start talking with Pondster'} title={voiceSummary.active?'Click my logo to stop voice.':'Hover or click my logo to talk. Find text and voice controls in Contact.'} aria-pressed={voiceSummary.active} aria-describedby="pondster-header-voice-status" onMouseEnter={scheduleVoiceHover} onMouseLeave={cancelVoiceHover} onFocus={()=>setLogoPlay(value=>value+1)}><PondsterLogoArt key={logoPlay}/><span className="monogram" aria-hidden="true"><span className="monogram-your">Your</span><small>HOME</small></span><span className="brand-copy"><strong className="brand-name">Pondster<span className="signature-i-am" aria-hidden="true">I Am</span></strong><small>{voiceIsLive?"A home You can Relate to - I'm listening!":"A Home You can Relate to. Talk to me!"}</small></span></button><div className={`header-voice-status ${voiceIsLive?'is-active':''}`}><span id="pondster-header-voice-status" aria-live="off">{voiceSummary.status}</span><span className="visually-hidden" role="status" aria-live="polite">{voiceSummary.connecting?"Pondster voice is connecting.":voiceIsLive?"Pondster voice is on.":voiceSummary.status}</span><a href="#contact" onClick={openContact}>Voice controls ↗</a></div></div><nav aria-label="Main menu">{menus.map(item=><a key={item} href={`#${menuHash(item)}`} onClick={()=>navigate(item)} aria-current={menu===item?'page':undefined}>{menuLabel(item)}</a>)}</nav><span className="development">I’M A HOME IN THE MAKING</span></header>
     <main id="main">
       {menu==='Design' && <>
-        <section className="intro"><div><h1>Virtually - A Reality <br className="design-title-break"/><em>Have a say.</em></h1></div><div className="intro-note"><p>I will bring each space to life. Browse my designs, vote for the ones you love, and help me choose the finishes that feel right.</p><span>Explore my {galleries.length} galleries.</span></div></section>
+        <section id="pondster-design-overview" className="intro"><div><h1>Virtually - A Reality <br className="design-title-break"/><em>Have a say.</em></h1></div><div className="intro-note"><p>I will bring each space to life. Browse my designs, vote for the ones you love, and help me choose the finishes that feel right.</p><span>Explore my {galleries.length} galleries.</span></div></section>
         <section className="pondster-welcome" aria-label="Meet Pondster"><div><p>I’m Pondster, the voice and persona of this house. Ask me about the design ideas and follow my story as it takes shape. My location is confidential for now—think witness protection, with better curb appeal. Jean Wright is my SI designer.</p></div><button onClick={openContact}>Talk to me <span aria-hidden="true">↗</span></button></section>
         <section className="design-workspace" aria-label="My design galleries"><aside className="room-nav"><p className="eyebrow">EXPLORE MY ROOMS</p><div role="group" aria-label="Rooms">{galleries.map((item,index)=>{const total=roomTotals[item.id] ?? (item.designs.length===0?0:undefined);return <button key={item.id} onClick={()=>{if(!saving)selectGallery(item.id);}} disabled={saving} aria-pressed={room===item.id} aria-controls="design-gallery"><span className="room-number">0{index+1}</span><span>{item.name}<small>{item.designs.length?`${item.designs.length} ${item.designs.length===1?'design':'designs'}`:'Coming soon'}</small><span className="room-vote-count" title={roomTotalsFailed && total!==undefined?'Last loaded vote count; I couldn’t refresh it.':undefined}>{total!==undefined?`${total} ${total===1?'vote':'votes'} cast`:roomTotalsLoading?'Loading votes…':'Votes unavailable'}</span></span><b aria-hidden="true">↗</b></button>;})}</div><div className="notebook-note"><span>MY FUTURE, IN DESIGN.</span><p>I use AI concepts to show my future features. These aren’t measured plans or photos of my completed spaces.</p></div></aside>
         <div ref={galleryArea} id="design-gallery" className="gallery-area" role="region" aria-labelledby="design-gallery-title"><div ref={galleryHeading} className="gallery-heading"><div><p className="eyebrow">DESIGN GALLERY / {String(galleries.indexOf(gallery)+1).padStart(2,'0')}</p><h2 id="design-gallery-title">{gallery.name}</h2><p>{gallery.summary}</p></div>{gallery.designs.length>0 && <span className="vote-total">{loading?'I’m loading votes…':failed?'I can’t load totals':`${results.total} ${results.total===1?'vote':'votes'}`}<small>COMMUNITY PREFERENCES</small></span>}</div>
@@ -136,10 +195,10 @@ export default function Home() {
         </div></section>
         <section className="design-footer"><span>MY DESIGN IS A CONVERSATION.</span><p>Come back as I add new rooms and choices.</p><span>MY LOCATION IS CONFIDENTIAL</span></section>
       </>}
-      {menu==='Explore' && <ExplorePage scene={scene} onScene={setScene}/>}
+      {menu==='Explore' && <ExplorePage scene={scene} onScene={setScene} floorPlanRequest={sectionReveal?.destination.menu==='Explore' && sectionReveal.destination.section==='floor-plan' && sectionReveal.destination.room?{id:sectionReveal.id,room:sectionReveal.destination.room}:undefined} floorPlanDetailRef={floorPlanDetails}/>}
       {menu==='View' && <ViewPage tourRequest={tourRequest} onTourRequestHandled={()=>setTourRequest(null)} onImage={setZoom} onDesign={()=>navigate('Design')} onTourStart={()=>guide.current?.stopVoice()}/>}
       {menu==='Built By' && <BuiltByPage/>}
-      {menu==='Own' && <section className="secondary-page manage"><h1 className="single-line-page-title">I come <em>with answers.</em></h1><p className="lead">I will provide a place for my home guides, care information, and handover records. Ask me from any page for public guidance while my owner tools take shape.</p><article className="manage-notice" aria-labelledby="deck-structural-heading"><h2 id="deck-structural-heading">My preliminary deck structural drawing</h2><p>I’m sharing my deck’s preliminary structural design reference. The drawing is marked <strong>PRELIMINARY / NOT FOR PERMIT</strong> and remains a design reference for review.</p><p><a className="solid-link" href="/documents/deck-structural-preliminary.pdf" target="_blank" rel="noopener noreferrer">View my drawing (PDF) ↗</a></p><a href="/documents/deck-structural-preliminary.pdf" download="deck-structural-preliminary.pdf">Download my drawing (PDF)</a></article><div className="knowledge-grid">{[['Home guides','How my systems will work and where you will find them.'],['Care & maintenance','My manuals, warranties, and equipment-specific schedules.'],['Owner handover','My records and account checklist for the next chapter.']].map(([title,description])=><article key={title}><span className="pending-tag">PLANNED</span><h3>{title}</h3><p>{description}</p></article>)}</div><div className="manage-notice"><strong>My owner tools aren’t ready yet.</strong><p>I’ll need separate, authenticated owner access before I can show private records or offer live controls. I’m not connected to my house systems through this public site.</p></div></section>}
+      {menu==='Own' && <section className="secondary-page manage"><h1 className="single-line-page-title">I come <em>with answers.</em></h1><p className="lead">I will provide a place for my home guides, care information, and handover records. Ask me from any page for public guidance while my owner tools take shape.</p><article id="pondster-own-drawing" className="manage-notice" aria-labelledby="deck-structural-heading"><h2 id="deck-structural-heading">My preliminary deck structural drawing</h2><p>I’m sharing my deck’s preliminary structural design reference. The drawing is marked <strong>PRELIMINARY / NOT FOR PERMIT</strong> and remains a design reference for review.</p><p><a className="solid-link" href="/documents/deck-structural-preliminary.pdf" target="_blank" rel="noopener noreferrer">View my drawing (PDF) ↗</a></p><a href="/documents/deck-structural-preliminary.pdf" download="deck-structural-preliminary.pdf">Download my drawing (PDF)</a></article><div className="knowledge-grid">{[['guides','Home guides','How my systems will work and where you will find them.'],['maintenance','Care & maintenance','My manuals, warranties, and equipment-specific schedules.'],['handover','Owner handover','My records and account checklist for the next chapter.']].map(([section,title,description])=><article id={`pondster-own-${section}`} key={section}><span className="pending-tag">PLANNED</span><h3>{title}</h3><p>{description}</p></article>)}</div><div className="manage-notice"><strong>My owner tools aren’t ready yet.</strong><p>I’ll need separate, authenticated owner access before I can show private records or offer live controls. I’m not connected to my house systems through this public site.</p></div></section>}
       <ContactPage active={menu==='Contact'} comments={menu==='Contact'?<Comments key={menu} page="contact" title="Contact" onAsk={openContact}/>:null}><PondsterGuide ref={guide} open={menu==='Contact'} onOpenChange={nextOpen=>nextOpen?openContact():navigate('View')} onAction={guideAction} onReturnFocus={()=>logo.current?.focus()} onVoiceState={setVoiceSummary}/></ContactPage>
       {menu!=='Contact'&&<Comments key={menu} page={menu==='Own'?'own':menuHash(menu)} title={menuLabel(menu)} onAsk={openContact}/>}
     </main><footer><span>MY LOCATION IS CONFIDENTIAL</span><p>My SI designer: Jean Wright · Buy Your Home</p><span>I’m sharing concepts · No live controls</span></footer>

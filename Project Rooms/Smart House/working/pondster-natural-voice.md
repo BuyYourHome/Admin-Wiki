@@ -1,6 +1,8 @@
 # Pondster natural voice integration
 
-## Current verified result — 2026-10-27
+## Current verified result — 2026-10-28
+
+Version 73 adds validated section/card destinations throughout the public site. Matched contact, room, feature and document questions delegate a precise reveal; other conversation remains direct, and a visual keyword miss preserves known public facts. Browser checks verified the GC card on public Pondstr.com and room/plan details locally with voice off. Server/client/context mocks, destination/UI regressions, TypeScript, build and secret checks passed. No new microphone/provider session was started; fresh natural spoken section navigation remains pending. End an old conversation and refresh/start a new one to use the new context. See [[Project Rooms/Smart House/working/voice-section-navigation-20261028]].
 
 Version 72 is published with direct answers from authored public facts and future plans, summary-only proposed room relationships, scoped unknown details and the requested “Can you show me around the house?” tour phrase. Explicit website actions still delegate and wait for confirmation. Guide/context regressions, mocked server/SQLite checks, TypeScript, build and secret checks passed. The approved key, Vesper, model and existing voice lifecycle remain unchanged. A new audible trial remains unverified; refresh and begin a new conversation to load the updated session context. See [[Project Rooms/Smart House/working/pondster-house-knowledge-20261027]].
 

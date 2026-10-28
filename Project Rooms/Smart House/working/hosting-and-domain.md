@@ -698,3 +698,16 @@ Wes then authorized automatic gallery reveal after discussing the below-screen s
 Guide/context, actual gallery selection/effect doubles, Contact/navigation and mocked server/real-SQLite checks passed. Independent knowledge/privacy and scroll review passed. Final TypeScript, production build, diff and 184-file source/build secret checks passed. Seven source text mirrors match. The earlier in-progress build was stopped after the new gallery request; only the complete final build was packaged. No microphone, paid voice request, key, billing, session-row, vote or comment change was made. Fresh Chrome interaction/spoken behavior remains unverified.
 
 See [[Project Rooms/Smart House/working/pondster-house-knowledge-20261027]] and [[Project Rooms/Smart House/working/design-gallery-visibility-20261027]].
+
+## Precise section and card navigation — version 73, 2026-10-28
+
+Wes requested that voice requests reveal the relevant section throughout the site, after reporting that the Living Room gallery scroll works but the GC question only opens Contact. Shared allowlisted destinations now flow through Guide, trusted server/client actions and the page reveal handler. Public targets cover all six pages, individual trade contacts, room features, selected proposed plan rooms, systems, viewing, public documents and owner-guide previews. Native room details open before measurement; plan selection waits for its rendered marker. Repeated requests, stale work, reduced motion, focus and actual fixed-header geometry are handled without replaying on votes or ordinary rendering. Existing tours retain their one-shot/start/voice-stop behavior.
+
+- Source: `4780d6bf76dfa28450723ee06e46dc4362085d38`.
+- Saved version: `appgprj_6ad4d98e08708191858cab113814704e~appgver_fe795798d78081919f88491c15c58f0b`, version **73**.
+- Deployment: `appgdep_6ae1dc1539648191978ef6bfafcb8cef`, succeeded `2026-10-28T11:27:25.243671+00:00`, environment revision **4**.
+- Archive: `sha256:f14aa93c9969bbb1f4ae799d207b7cde4f858ef9dd9d29d052d519b547ac13f7`, 128 files, 66,457,600 bytes.
+
+Destination/Guide, actual UI selection/effect, Contact/navigation, gallery geometry, server/client/context and existing design-view regressions passed. Final TypeScript, production build, diff and185-file source/build secret checks passed. Twenty source text mirrors match. Native in-app-browser local checks confirmed GC-card reveal, Master Bath expansion and committed Pantry detail selection; a large partially visible target was corrected and rechecked directly below the header. After publication, the same GC question was submitted through the public typed guide with Voice off; its card was visibly aligned below the fixed header. These checks prove the UI path and published client action, not a fresh natural spoken round trip. No microphone, paid voice session, production vote/comment write, key, billing, audience or device-control change occurred.
+
+The current owned19082 preview was stopped; older19081 was identified as obsolete and left untouched. A new voice conversation is needed for the new prompt/client settings. The later question about all house facts was discussion only; no complete house knowledge base or private-record import was added. See [[Project Rooms/Smart House/working/voice-section-navigation-20261028]].

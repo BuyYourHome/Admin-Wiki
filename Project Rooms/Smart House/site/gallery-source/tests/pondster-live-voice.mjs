@@ -634,6 +634,28 @@ for (const interaction of ['typing', 'submitted']) {
   assert.equal(h.actions.length, count, 'Only a validated same-origin View action can start the tour.');
   await dispose(h);
 }
+{
+  const h = setup(); const {control,events} = await connect(h);
+  const destinations = [
+    {menu:'Contact',section:'gc'}, {menu:'Contact',section:'plumber'}, {menu:'Contact',section:'hvac'}, {menu:'Contact',section:'ashley'},
+    {menu:'Explore',section:'hot-water'}, {menu:'Explore',section:'floor-plan',room:'master-bedroom'}, {menu:'Explore',section:'room',room:'kitchen'},
+    {menu:'Own',section:'drawing'}, {menu:'Own',section:'maintenance'}, {menu:'Own',section:'handover'},
+    {menu:'View',section:'tour',tour:true}, {menu:'Built By',section:'contact'},
+    {menu:'Design',section:'gallery',room:'master-bath'}, {menu:'Design',section:'overview'},
+  ];
+  for(const action of destinations)control.receive({type:'pondster.action',action:{...action,selector:'#private',url:'https://private.invalid/'}});
+  assert.deepEqual(h.actions,destinations,'Validated sections and room selections survive the trusted channel; extras never reach UI.');
+  for(const action of [
+    {menu:'Contact',section:'private'}, {menu:'Contact',section:'#pondster-contact-gc'},
+    {menu:'Contact',section:'https://example.com/'}, {menu:'Contact',section:['gc']},
+    {menu:'Explore',section:'gc'}, {menu:'Contact',section:'hot-water'},
+    {menu:'View',section:'ashley',tour:true}, {menu:'Own',section:'drawing',room:'master-bath'},
+    {menu:'Explore',section:'floor-plan',room:'private-room'}, {menu:'Explore',section:'hot-water',scene:'day'},
+  ])control.receive({type:'pondster.action',action});
+  events.receive({type:'pondster.action',action:{menu:'Contact',section:'gc'}});
+  assert.deepEqual(h.actions,destinations,'Unknown/malformed/wrong-page targets and provider-channel injection never reveal UI.');
+  await dispose(h);
+}
 for (const outcome of ['denied', 'timeout', 'stopped']) {
   const ready = deferred(), calls = [];
   const meter = { available: true, whenRunning: () => outcome === 'denied' ? Promise.resolve(false) : ready.promise,

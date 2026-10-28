@@ -48,7 +48,7 @@ assert.ok(pageSource.includes('<small>{voiceIsLive?"A home You can Relate to - I
 assert.match(pageSource,/aria-pressed=\{voiceSummary\.active\}/,'Connecting still exposes the Stop toggle.');
 assert.match(pageSource,/id="pondster-header-voice-status" aria-live="off"/,'The visible quiet countdown stays out of repeated live announcements.');
 const viewSource = await readFile(new URL('../app/view-page.tsx', import.meta.url), 'utf8');
-assert.match(pageSource, /action\.tour===true&&action\.menu==='View'\)setTourRequest\(\+\+nextTourRequest\.current\)/, 'Only an explicit View-tour action creates a new one-shot request.');
+assert.match(pageSource, /action\.tour===true&&action\.menu==='View'\)\{setTourRequest\(\+\+nextTourRequest\.current\);return;/, 'Only an explicit View-tour action creates a new one-shot request, without a competing section reveal.');
 assert.match(pageSource, /<ViewPage tourRequest=\{tourRequest\} onTourRequestHandled=\{\(\)=>setTourRequest\(null\)\}/);
 assert.match(pageSource, /onTourStart=\{\(\)=>guide\.current\?\.stopVoice\(\)\}/, 'The existing real tour start still stops voice.');
 assert.match(viewSource, /if\(tourRequest===null \|\| consumedTourRequest\.current===tourRequest\)return;/, 'Ordinary View mounts and already-consumed requests do not start a tour.');
@@ -63,7 +63,7 @@ for (const [name, menu] of [['Design','Design'],['Explore','Explore'],['View','V
 }
 assert.deepEqual(answerPondster('Show me the Back Deck').action, { menu: 'Design', room: 'back-deck' });
 assert.deepEqual(answerPondster('Show me the Master Bath').action, { menu: 'Design', room: 'master-bath' });
-assert.deepEqual(answerPondster('Contact Ashley').action, { menu: 'Contact' });
+assert.deepEqual(answerPondster('Contact Ashley').action, { menu: 'Contact', section: 'ashley' });
 assert.match(answerPondster('Contact Ashley').text, /ashley@elementrealtygroup.net/);
 assert.deepEqual(answerPondster('Open Contact and give me the Wi-Fi password').action, { menu: 'Own' });
 assert.match(answerPondster('Open Contact and give me the Wi-Fi password').text, /cannot provide private records/);

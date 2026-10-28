@@ -1,6 +1,7 @@
 /** Browser-only transport for Pondster's bounded, server-controlled Live voice. */
 import { createPondsterStreamMeter } from './pondster-stream-meter';
 import { isPondsterFarewell, PONDSTER_FAREWELL_ACK } from './pondster-voice-intents';
+import { parsePondsterDestination, type PondsterDestination } from './pondster-destinations';
 export type PondsterQuietProgress = { reason: 'checking' | 'unavailable' | 'input' | 'output' | 'work' | 'response' | 'quiet'; remainingSeconds: number | null };
 export type PondsterLiveState = {
   available: boolean; connecting: boolean; active: boolean;
@@ -9,11 +10,7 @@ export type PondsterLiveState = {
   quietReason: PondsterQuietProgress['reason']; quietSecondsRemaining: number | null;
 };
 export type PondsterLiveTranscript = { who: 'you' | 'Pondster'; text: string };
-export type PondsterLiveAction = {
-  menu: 'Design' | 'Explore' | 'View' | 'Own' | 'Contact' | 'Built By';
-  room?: string; scene?: 'day' | 'evening' | 'relax';
-  tour?: true;
-};
+export type PondsterLiveAction = PondsterDestination;
 type Timer = unknown;
 type Visibility = Pick<Document, 'hidden' | 'addEventListener' | 'removeEventListener'>;
 export type PondsterLiveVoiceOptions = {
@@ -55,9 +52,6 @@ type Attempt = {
   busyUntil: { work: number; response: number };
 };
 const CANCELLED = Symbol('cancelled');
-const ROOMS = new Set(['kitchen', 'media-center', 'front-elevation', 'garage-barn-door', 'adu', 'master-bath', 'hall-bath', 'spiral-staircase', 'back-deck']);
-const MENUS = new Set(['Design', 'Explore', 'View', 'Own', 'Contact', 'Built By']);
-const SCENES = new Set(['day', 'evening', 'relax']);
 const TEXT_LIMIT = 500, CAPTION_LIMIT = 1800;
 export const PONDSTER_SILENCE_MS = 30_000;
 const AUDIO_POLL_MS = 250, AUDIO_QUERY_MS = 1000, AUDIO_STALE_MS = 1500, AUDIO_UNAVAILABLE_MS = 10_000, BUSY_HOLD_MS = 30_000;
@@ -188,19 +182,6 @@ export function createPondsterSilenceMonitor(options: {
       if (active) progress(kind);
     },
   };
-}
-
-function validAction(value: unknown): PondsterLiveAction | null {
-  if (!value || typeof value !== 'object') return null;
-  const action = value as Record<string, unknown>;
-  if (typeof action.menu !== 'string' || !MENUS.has(action.menu)) return null;
-  if (action.room !== undefined && (typeof action.room !== 'string' || !ROOMS.has(action.room))) return null;
-  if (action.scene !== undefined && (typeof action.scene !== 'string' || !SCENES.has(action.scene))) return null;
-  if (action.tour !== undefined && (action.tour !== true || action.menu !== 'View')) return null;
-  return { menu: action.menu as PondsterLiveAction['menu'],
-    ...(action.room === undefined ? {} : { room: action.room as string }),
-    ...(action.scene === undefined ? {} : { scene: action.scene as PondsterLiveAction['scene'] }),
-    ...(action.tour === true ? { tour: true } : {}) };
 }
 
 /** Construction never opens a connection or asks for a microphone. Call start from a click. */
@@ -351,7 +332,7 @@ export function createPondsterLiveVoice(options: PondsterLiveVoiceOptions): Pond
         }
       } else if (event.type === 'pondster.ready') a.ready();
       else if (event.type === 'pondster.action') {
-        const action = validAction(event.action); if (action) options.onAction?.(action);
+        const action = parsePondsterDestination(event.action); if (action) options.onAction?.(action);
       } else if (event.type === 'pondster.error') {
         // Only our same-origin service can supply this public, bounded error message.
         const message = typeof event.message === 'string' ? event.message.trim().slice(0, 240) : '';

@@ -23,13 +23,14 @@ const source=await readFile(new URL('../app/page.tsx',import.meta.url),'utf8');
 const selection=source.match(/  function selectGallery\(nextRoom:string\) \{[\s\S]*?\n  \}/)?.[0];
 assert.ok(selection);
 const pending={current:null},selected=[];
-const select=new Function('room','galleries','pendingGalleryScroll','setRoom',stripTypeScriptTypes(selection)+'\nreturn selectGallery;')(
-  'media-center',galleries,pending,room=>selected.push(room));
+const select=new Function('room','galleries','pendingGalleryScroll','setRoom','pendingSectionReveal','setSectionReveal',stripTypeScriptTypes(selection)+'\nreturn selectGallery;')(
+  'media-center',galleries,pending,room=>selected.push(room),{current:null},()=>{});
 select('media-center');assert.equal(pending.current,null);assert.deepEqual(selected,[],'Current gallery activation does not schedule a jump.');
 select('kitchen');assert.deepEqual(pending.current,{room:'kitchen'});assert.deepEqual(selected,['kitchen']);
 select('unrecognized-room');assert.deepEqual(selected,['kitchen']);
 assert.match(source,/onClick=\{\(\)=>\{if\(!saving\)selectGallery\(item.id\);\}\} disabled=\{saving\}/,'Pointer saving guard is unchanged.');
-assert.match(source,/if\(action.room&&!saving\)\{if\(action.menu==='Design'\)selectGallery\(action.room\);else setRoom\(action.room\);\}/,'Deliberate voice gallery selection shares the reveal path and preserves its caller guard.');
+assert.match(source,/if\(saving && action.menu==='Design'\)return;/,'Voice gallery changes preserve the saving guard.');
+assert.match(source,/pendingSectionReveal.current=request;setSectionReveal\(request\);/,'Voice gallery requests use the same geometry through a repeatable section reveal.');
 assert.match(source,/function navigate\(next:Menu\)\{pendingGalleryScroll.current=null;/,'Navigation immediately cancels pending reveals.');
 assert.match(source,/aria-pressed=\{room===item.id\} aria-controls="design-gallery"/);
 assert.match(source,/id="design-gallery" className="gallery-area" role="region" aria-labelledby="design-gallery-title"/);

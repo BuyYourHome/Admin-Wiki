@@ -670,4 +670,57 @@ for (const action of [
     ? [{type:'pondster.action',action:{menu:'View',tour:true}}] : [], 'Invalid tour flags or destinations never reach browser navigation.');
   await f.control.stop();
 }
-console.log('Pondster live server: trusted bounded work/response hints, overlapping delegation release/dedup/cap, no client busy injection, Contact/Own actions, uncapped ongoing conversation, retained expiry fences, SQLite admission and lifecycle/cleanup passed (mocks only).');
+// The trusted control channel retains only fixed public targets and strips extras.
+for (const action of [
+  {menu:'Contact',section:'gc'}, {menu:'Contact',section:'plumber'}, {menu:'Contact',section:'hvac'}, {menu:'Contact',section:'ashley'},
+  {menu:'Explore',section:'hot-water'}, {menu:'Explore',section:'floor-plan',room:'master-bedroom'}, {menu:'Explore',section:'room',room:'kitchen'},
+  {menu:'Own',section:'drawing'}, {menu:'Own',section:'maintenance'}, {menu:'Own',section:'handover'},
+  {menu:'View',section:'tour',tour:true}, {menu:'Built By',section:'contact'},
+  {menu:'Design',section:'gallery',room:'master-bath'}, {menu:'Design',section:'overview'},
+]) {
+  const deliveryOrder = [];
+  const f = fixture({ answer() { return {text:'Synthetic public answer.',action:{...action,selector:'#private',url:'https://private.invalid/'}}; } });
+  await f.control.message(start(606));
+  f.client.onSend = event => { if(event.type==='pondster.action')deliveryOrder.push('action'); };
+  const priorSend = f.sideband.onSend;
+  f.sideband.onSend = event => { priorSend?.(event); if(event.type==='session.commentary.append')deliveryOrder.push('answer'); };
+  await f.control.message(JSON.stringify({type:'pondster.text',text:'Show the relevant public card'}));
+  assert.deepEqual(f.client.sent.filter(event=>event.type==='pondster.action'), [{type:'pondster.action',action}],
+    'Only a sanitized, correctly paired destination is forwarded to the browser.');
+  assert.deepEqual(deliveryOrder, ['action','answer'], 'The accepted action is sent before its spoken guide result.');
+  await f.control.stop();
+}
+for (const action of [
+  {menu:'Contact',section:'private'}, {menu:'Contact',section:'#pondster-contact-gc'},
+  {menu:'Contact',section:'https://example.com/'}, {menu:'Contact',section:['gc']},
+  {menu:'Explore',section:'gc'}, {menu:'Contact',section:'hot-water'},
+  {menu:'View',section:'ashley',tour:true}, {menu:'Own',section:'drawing',room:'master-bath'},
+  {menu:'Explore',section:'floor-plan',room:'private-room'}, {menu:'Explore',section:'hot-water',scene:'day'},
+]) {
+  const f = fixture({answer(){return {text:'Synthetic public answer.',action};}});
+  await f.control.message(start(607));
+  await f.control.message(JSON.stringify({type:'pondster.text',text:'Show a public section'}));
+  assert.deepEqual(f.client.sent.filter(event=>event.type==='pondster.action'), [], 'Unknown, malformed, private or wrong-page targets are rejected.');
+  await f.control.stop();
+}
+for (const action of [undefined, {menu:'Contact',section:'private'}]) {
+  const refusal = "I don't have a verified answer to that question.";
+  const f = fixture({answer(){return {text:refusal,...(action?{action}:{})};}});
+  await f.control.message(start(608));
+  f.sideband.emit({type:'session.input_transcript.delta',delta:'Tell me about the known plan',start_ms:100,end_ms:800});
+  f.sideband.emit({type:'session.delegation.created',offset_ms:800,delegation:{id:'unresolved-visual',target:'client'}});
+  await f.timer.tick(250);
+  const result = f.sideband.sent.findLast(event=>event.type==='session.commentary.append');
+  assert.equal(result.delegation_id, 'unresolved-visual');
+  assert.match(result.content, /No public visual destination was resolved/);
+  assert.match(result.content, /Answer the visitor from the authored public facts/);
+  assert.match(result.content, /do not claim a page, section or card was opened or scrolled/);
+  assert.ok(!result.content.includes(refusal), 'A visual keyword miss cannot override authored facts with the guide refusal.');
+  assert.ok(!result.content.includes('Tell me about'), 'User transcript text is never promoted into the trusted cue.');
+  assert.deepEqual(f.client.sent.filter(event=>event.type==='pondster.action'), []);
+  await f.control.message(JSON.stringify({type:'pondster.text',text:'An ordinary typed question'}));
+  assert.equal(f.sideband.sent.findLast(event=>event.type==='session.commentary.append').content, refusal,
+    'Typed input retains its bounded guide reply rather than the spoken visual fallback cue.');
+  await f.control.stop();
+}
+console.log('Pondster live server: validated public section targets, fact-preserving visual misses, trusted bounded hints and legacy actions; unchanged SQLite admission/lifecycle/cleanup passed (mocks only).');

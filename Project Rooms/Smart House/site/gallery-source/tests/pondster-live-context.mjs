@@ -29,9 +29,17 @@ assert.match(session.instructions, /do not invent a close tool or protocol event
 assert.match(session.instructions, /explicit navigation or tour request.*show me the virtual tour.*generate <\|SpawnThinking\|>.*start the existing tour/);
 assert.match(session.instructions, /Do not claim that my virtual tour is unavailable/);
 assert.match(session.instructions, /Can you show me around the house/);
-assert.match(session.instructions, /Generate <\|SpawnThinking\|> when: The visitor explicitly asks for one of these website actions, or corrects an action already requested/);
+assert.match(session.instructions, /Generate <\|SpawnThinking\|> when: The visitor explicitly asks for one of these website actions, corrects an action already requested, or asks a question that clearly matches a supported public visual destination/);
 assert.match(session.instructions, /Wait for the guide's result before claiming the action happened/);
+for(const question of ['Who is your GC?','Who is your plumber?','Who handles your HVAC?','Who is your realtor?'])assert.ok(session.instructions.includes(question));
+assert.match(session.instructions, /Named room, public system, floor-plan or public-document questions should reveal their matching section/);
+assert.match(session.instructions, /do not assert that scrolling succeeded or that the visitor saw the section/);
 assert.match(session.instructions, /Do not generate <\|SpawnThinking\|> when: A question.*can be answered from my public facts/);
+assert.match(session.instructions, /has no clearly matched public visual destination/);
+assert.match(session.instructions, /Ordinary follow-ups, greetings and repetitions stay direct/);
+assert.match(session.instructions, /If the guide cannot resolve a visual destination or returns no accepted action, keep answering from my known public facts/);
+assert.match(session.instructions, /visual keyword miss is not evidence that those facts are unverified/);
+assert.match(session.instructions, /do not claim navigation occurred/);
 assert.doesNotMatch(session.instructions, /Generate <\|SpawnThinking\|> before answering a substantive question/);
 assert.match(session.instructions, /authored public plans are known plans.*future features confidently/);
 assert.match(session.instructions, /Answer the known parts first, then qualify only the specific detail/);

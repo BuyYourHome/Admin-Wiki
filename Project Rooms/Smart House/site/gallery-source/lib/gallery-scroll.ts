@@ -20,3 +20,20 @@ export function getGalleryScrollTop(value: GalleryScrollGeometry): number | null
   const destination = Math.max(0, scrollY + headingTop - top);
   return Math.abs(destination - scrollY) <= 2 ? null : destination;
 }
+
+/** A voice section reveal aligns large panels instead of merely exposing their start. */
+export type SectionRevealGeometry = {
+  targetTop:number; targetBottom:number; headerBottom:number; viewportHeight:number; scrollY:number;
+};
+export function getSectionRevealTop(value:SectionRevealGeometry):number|null {
+  const {targetTop,targetBottom,headerBottom,viewportHeight,scrollY}=value;
+  if(![targetTop,targetBottom,headerBottom,viewportHeight,scrollY].every(Number.isFinite)
+    || viewportHeight<=0 || targetBottom<targetTop)return null;
+  const top=Math.max(0,headerBottom)+12, bottom=viewportHeight-12;
+  if(top>=bottom)return null;
+  const fullyVisible=targetTop>=top-2 && targetBottom<=bottom+2;
+  const oversized=targetBottom-targetTop>bottom-top;
+  if(fullyVisible || (oversized && Math.abs(targetTop-top)<=2))return null;
+  const destination=Math.max(0,scrollY+targetTop-top);
+  return Math.abs(destination-scrollY)<=2?null:destination;
+}

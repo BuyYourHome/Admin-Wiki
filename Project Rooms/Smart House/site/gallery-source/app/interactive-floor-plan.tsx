@@ -1,10 +1,11 @@
 'use client';
 
-import { useId, useRef, useState } from 'react';
+import { useEffect, useId, useRef, useState, type Ref } from 'react';
 import { floorPlanRooms, PLAN_HEIGHT, PLAN_WIDTH } from '../lib/floor-plan';
 import RoomPrimaryImage from './room-primary-image';
 
-export default function InteractiveFloorPlan() {
+export type FloorPlanRoomRequest = { id:number; room:string };
+export default function InteractiveFloorPlan({ roomRequest, detailRef }: { roomRequest?:FloorPlanRoomRequest; detailRef?:Ref<HTMLElement> }) {
   const instanceId = useId();
   const headingId = `${instanceId}-plan-heading`;
   const detailHeadingId = `${instanceId}-room-heading`;
@@ -17,6 +18,9 @@ export default function InteractiveFloorPlan() {
   const viewport = useRef<HTMLDivElement>(null);
   const roomSelect = useRef<HTMLSelectElement>(null);
   const roomShapes = useRef(new Map<string, SVGPolygonElement>());
+  useEffect(() => {
+    if(roomRequest && floorPlanRooms.some(room=>room.id===roomRequest.room))setSelectedId(roomRequest.room);
+  },[roomRequest?.id,roomRequest?.room]);
 
   function chooseRoom(roomId: string) {
     setSelectedId(roomId);
@@ -38,7 +42,7 @@ export default function InteractiveFloorPlan() {
     setZoom(current => Math.max(1, Math.min(2.5, Math.round((current + change) * 100) / 100)));
   }
 
-  return <section className="floor-plan" aria-labelledby={headingId}>
+  return <section id="pondster-explore-floor-plan" className="floor-plan" aria-labelledby={headingId}>
     <div className="floor-plan-heading">
       <span className="floor-plan-status">MY PROPOSED LAYOUT</span>
       <h2 id={headingId}>My proposed first-floor plan</h2>
@@ -89,7 +93,7 @@ export default function InteractiveFloorPlan() {
         <button type="button" className="floor-plan-open-details" onClick={() => chooseRoom(selectedRoom.id)}>See my {selectedRoom.name} details <span aria-hidden="true">↓</span></button>
       </div>
 
-      <section id={detailId} className="floor-plan-details" aria-labelledby={detailHeadingId}>
+      <section ref={detailRef} id={detailId} className="floor-plan-details" data-pondster-room={selectedRoom.id} aria-labelledby={detailHeadingId}>
         <h3 ref={detailHeading} id={detailHeadingId} className="floor-plan-detail-heading" tabIndex={-1}>My {selectedRoom.name}</h3>
         <RoomPrimaryImage key={selectedRoom.id} galleryId={selectedRoom.galleryId} roomName={selectedRoom.name}/>
         <p>{selectedRoom.summary}</p>

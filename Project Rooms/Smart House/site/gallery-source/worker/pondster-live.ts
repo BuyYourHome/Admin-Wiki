@@ -2,6 +2,7 @@
 // Setup and finalization are bounded; an ongoing conversation has no application duration cap.
 // Unconfirmed reservations deliberately remain occupied after a lost connection.
 import { safeNetworkCode, safeProviderFailure, VoiceProviderFailure } from './pondster-live-diagnostics';
+import { parsePondsterDestination, type PondsterDestination } from '../lib/pondster-destinations';
 export const VOICE_COOKIE = 'pondster_voice_visitor';
 export const VOICE_SETUP_MS = 20_000;
 export const VOICE_FINALIZATION_MS = 10_000;
@@ -18,7 +19,7 @@ export type VoiceEnvironment = {
   OPENAI_API_KEY?: string;
   PONDSTER_VOICE_ENABLED?: string;
 };
-type PublicAction = { menu: string; room?: string; scene?: string; tour?: true };
+type PublicAction = PondsterDestination;
 type PublicAnswer = { text: string; action?: PublicAction };
 type Socket = Pick<WebSocket, 'send' | 'close' | 'addEventListener'> & { accept?: () => void };
 type Reservation = { requestId: string; visitorKey: string; createdAt: number; expiresAt: number };
@@ -151,13 +152,6 @@ function safeSend(socket: Socket, value: unknown) {
 function safeClose(socket: Socket | null) {
   try { socket?.close(1000, 'Pondster voice ended'); } catch { /* Already closed. */ }
 }
-function actionIsPublic(action: PublicAction) {
-  return ['Design', 'Explore', 'View', 'Own', 'Built By', 'Contact'].includes(action.menu)
-    && (!action.room || /^[a-z][a-z-]{0,49}$/.test(action.room))
-    && (!action.scene || ['day', 'evening', 'relax'].includes(action.scene))
-    && (action.tour === undefined || (action.tour === true && action.menu === 'View'));
-}
-
 function greetingFromSession(session: unknown) {
   // Read only the trusted server-built startup developer seed, never client text.
   if (session === null || typeof session !== 'object' || Array.isArray(session) || !('input' in session)) return null;
@@ -224,10 +218,17 @@ export function createPondsterLiveControl(options: ControllerOptions) {
   function deliver(question: string, delegationId: string | null) {
     if (closing || !ready || !sideband) return;
     const reply = options.answer(question);
+    const action = parsePondsterDestination(reply.action);
+    if (delegationId !== null && !action) {
+      // A visual keyword miss is not a negative lookup of facts already present
+      // in the Live session. Never promote the guide's fallback into a refusal.
+      appendCommentary('No public visual destination was resolved for this request. Answer the visitor from the authored public facts and current conversation already supplied. A missing visual match does not invalidate those facts. If relevant, say that the visual destination could not be resolved; do not claim a page, section or card was opened or scrolled.', delegationId);
+      return;
+    }
     // Short public facts only; no user text is sent as a trusted instruction.
     const content = reply.text.slice(0, 1500);
+    if (action) safeSend(options.client, { type: 'pondster.action', action });
     appendCommentary(content, delegationId);
-    if (reply.action && actionIsPublic(reply.action)) safeSend(options.client, { type: 'pondster.action', action: reply.action });
   }
   function providerMessage(data: unknown) {
     if (finished || typeof data !== 'string' || data.length > 131_072) return;
