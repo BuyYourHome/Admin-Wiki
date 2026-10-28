@@ -414,7 +414,7 @@ html{scroll-padding-top:200px}
 .header-brand .brand-copy{height:var(--logo-height);min-height:var(--logo-height)}
 .header-brand .brand-copy>small{position:absolute;left:87px;bottom:calc(-1 * var(--logo-frame-drop));top:auto;margin:0;line-height:1;white-space:nowrap}
 .signature-exclamation{position:relative;display:inline-block;color:var(--accent);letter-spacing:0}
-.signature-exclamation .pondster-logo-art{position:absolute;left:50%;top:auto;bottom:0;width:90px;height:110px;transform:translateX(-50%);pointer-events:none;overflow:visible}
+.signature-exclamation .pondster-logo-art{position:absolute;left:.33em;top:calc(.065em - 90px);bottom:auto;width:90px;height:110px;transform:translateX(-50%);pointer-events:none;overflow:visible}
 .signature-exclamation .logo-firework{display:block;transform-box:view-box;transform-origin:50% 81.82%;animation:pondster-exclamation-burst 4.8s ease-out infinite;animation-delay:var(--burst-delay,0s)}
 @keyframes pondster-exclamation-burst{0%,8%{opacity:0;transform:scale(.08)}12%{opacity:.9}38%{opacity:0;transform:scale(1.35)}100%{opacity:0;transform:scale(1.35)}}
 .monogram::before{display:none}

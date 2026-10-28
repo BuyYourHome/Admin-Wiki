@@ -779,3 +779,10 @@ Details: [[gallery-controls-and-recording-startup-20261028]].
 Version **81** published successfully at `2026-10-28T16:00:48.293559+00:00`. Source `e318b97c3f1ee850cf9ccd31ade491d5913c7015`; saved version `appgprj_6ad4d98e08708191858cab113814704e~appgver_2f02655267b08191becef42c9cc1797f`; deployment `appgdep_6ae21c223a708191a0612d07ee40173b`; environment revision 4, public audience unchanged. Archive `sha256:3630240b826bc7a25ef9f060e54a2e63fd2950e2b64eb9385385abf078ea8637`, 136 files / 74,106,880 bytes. TypeScript, focused checks, production build and the 207-file secret scan passed. Site source was pushed by the supported helper; native publication returned succeeded. Public site: https://pondstr.com; native alias: https://pondstr.coolnewt4097.chatgpt.site.
 
 Voice enlarge/vote/restart fixes first published as version 80; see [[spoken-gallery-voting-enlargement-and-restart-20261028]]. Current scope and verification limits: [[site-wide-voice-controls-and-logo-20261028]].
+
+
+## Version 82 — exclamation-top firework origin
+
+Version **82** published at `2026-10-28T16:58:51.339390+00:00`. Source `5f31c916823759f8230f7a21fbeac9707b58732b`; saved version `appgprj_6ad4d98e08708191858cab113814704e~appgver_d8f9c3c78ae88191a325a049c612c987`; deployment `appgdep_6ae229c02d688191b2e5e16aa2b8e1ca`; environment revision 4. Archive `sha256:3a95cede504b5bd1a5e82b1c1f702a9d10bcd14e0104527b8f7db98d26e7d960`, 136 files / 74,106,880 bytes. Public audience retained. Build, whitespace check and secret scan passed; no fresh browser preview was available.
+
+CSS-only launch-point correction requested by Wes after approving the logo. Geometry and rationale: [[site-wide-voice-controls-and-logo-20261028]].
