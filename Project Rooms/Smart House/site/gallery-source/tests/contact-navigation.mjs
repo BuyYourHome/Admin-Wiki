@@ -17,11 +17,11 @@ const handlerDeclarations = handlerNames.map(name => {
 let hoverNow = 0, hoverId = 0, voiceStarts = 0, voiceToggles = 0, animations = 0;
 const hoverTimers = new Map(), hoverTimer = {current:null};
 const hoverGuide = {current:{startVoice(){voiceStarts++;},activateVoice(){voiceToggles++;}}};
-const hover = new Function('voiceHoverTimer','guide','setLogoPlay','setTimeout','clearTimeout',
+const hover = new Function('voiceHoverTimer','guide','setLogoPlay','setTimeout','clearTimeout','voiceSummary','hoverVoiceStarted','Date',
   handlerDeclarations.join('\n')+'\nreturn {cancelVoiceHover,scheduleVoiceHover,toggleVoice};')(
   hoverTimer,hoverGuide,update=>{animations=update(animations);},
   (fn,ms)=>{const id=++hoverId;hoverTimers.set(id,{fn,at:hoverNow+ms});return id;},
-  id=>hoverTimers.delete(id));
+  id=>hoverTimers.delete(id),{active:false,connecting:false},{current:null},{now:()=>hoverNow});
 function advanceHover(ms) {
   hoverNow+=ms;
   for(const [id,timer] of [...hoverTimers])if(timer.at<=hoverNow){hoverTimers.delete(id);timer.fn();}
@@ -50,7 +50,7 @@ assert.match(pageSource,/id="pondster-header-voice-status" aria-live="off"/,'The
 const viewSource = await readFile(new URL('../app/view-page.tsx', import.meta.url), 'utf8');
 assert.match(pageSource, /action\.tour===true&&action\.menu==='View'\)\{setTourRequest\(\+\+nextTourRequest\.current\);return;/, 'Only an explicit View-tour action creates a new one-shot request, without a competing section reveal.');
 assert.match(pageSource, /<ViewPage tourRequest=\{tourRequest\} onTourRequestHandled=\{\(\)=>setTourRequest\(null\)\}/);
-assert.match(pageSource, /onTourStart=\{\(\)=>guide\.current\?\.stopVoice\(\)\}/, 'The existing real tour start still stops voice.');
+assert.match(pageSource, /onTourStart=\{cancelVoiceHover\} voice=\{viewerVoice\}/, 'Voice stays available in the tour and exposes its own controls.');
 assert.match(viewSource, /if\(tourRequest===null \|\| consumedTourRequest\.current===tourRequest\)return;/, 'Ordinary View mounts and already-consumed requests do not start a tour.');
 const consumedAt = viewSource.indexOf('consumedTourRequest.current=tourRequest;');
 const handledAt = viewSource.indexOf('onTourRequestHandled?.();');

@@ -772,3 +772,10 @@ Final TypeScript, production build, 202-file secret scan, diff and focused SQLit
 Native Sites publication succeeded as version **79**, saved version `appgprj_6ad4d98e08708191858cab113814704e~appgver_4db34e8772e881918dc833050eee2886`, source `9306788f73bed46e47a51e14dab8dfe0f337bfbb`, deployment `appgdep_6ae20db12af48191a4bce765ce30aad1`, at `2026-10-28T14:59:07.956914+00:00`. Environment revision 4 and public audience are unchanged. Archive `sha256:0cba77f66e72a582e6272b731b4a604658ff6e633f4dd39790af5bb747f2e867`, 136 files / 74,065,920 bytes. Source helper pushed the matching Site source; the production archive passed the secret scan (204 text files, no key found). Source mirrors were byte-verified. Public site: https://pondstr.com; native alias: https://pondstr.coolnewt4097.chatgpt.site . Fresh real-browser/microphone validation and live text-capture confirmation remain pending; automated checks do not substitute for those.
 
 Details: [[gallery-controls-and-recording-startup-20261028]].
+
+
+## Version 81 — shared voice controls and logo
+
+Version **81** published successfully at `2026-10-28T16:00:48.293559+00:00`. Source `e318b97c3f1ee850cf9ccd31ade491d5913c7015`; saved version `appgprj_6ad4d98e08708191858cab113814704e~appgver_2f02655267b08191becef42c9cc1797f`; deployment `appgdep_6ae21c223a708191a0612d07ee40173b`; environment revision 4, public audience unchanged. Archive `sha256:3630240b826bc7a25ef9f060e54a2e63fd2950e2b64eb9385385abf078ea8637`, 136 files / 74,106,880 bytes. TypeScript, focused checks, production build and the 207-file secret scan passed. Site source was pushed by the supported helper; native publication returned succeeded. Public site: https://pondstr.com; native alias: https://pondstr.coolnewt4097.chatgpt.site.
+
+Voice enlarge/vote/restart fixes first published as version 80; see [[spoken-gallery-voting-enlargement-and-restart-20261028]]. Current scope and verification limits: [[site-wide-voice-controls-and-logo-20261028]].

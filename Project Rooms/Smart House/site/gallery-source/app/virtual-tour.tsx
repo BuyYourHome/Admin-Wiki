@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from 'react';
 import { galleries } from '../lib/designs';
 import { buildTourScenes, type TourScene } from '../lib/virtual-tour';
 import { createTourSoundtrack } from '../lib/tour-soundtrack';
+import type {GalleryVoiceControls} from './gallery-media-controls';
 
 type RoomResults = Record<string, { scores: Record<string, number>; total: number } | null>;
 const availableRooms = galleries.filter(room => room.designs.length > 0);
@@ -17,7 +18,7 @@ function selectionLabel(scene: TourScene) {
   return `${scene.status === 'tied' ? 'MY JOINT LEADING DESIGN' : 'MY LEADING DESIGN'} · ${scene.votes} ${scene.votes === 1 ? 'VOTE' : 'VOTES'}`;
 }
 
-export default function VirtualTour({ onStart }: { onStart?: () => void }) {
+export default function VirtualTour({ onStart,voice }: { onStart?: () => void;voice?:GalleryVoiceControls }) {
   const [open, setOpen] = useState(false);
   const [loading, setLoading] = useState(false);
   const [scenes, setScenes] = useState<TourScene[]>([]);
@@ -51,6 +52,7 @@ export default function VirtualTour({ onStart }: { onStart?: () => void }) {
   const isVideo = !!scene?.video && !videoFailed;
   const duration = isVideo ? scene.durationSeconds : 8;
   const progress = complete ? 100 : Math.min(100, elapsed / duration * 100);
+  const voiceControls=voice&&<div className="tour-voice-controls" aria-label="Tour voice controls"><button type="button" onClick={voice.onToggle} aria-pressed={voice.active}>{voice.active?'Stop voice':'Start voice'}</button><button type="button" onClick={()=>{close();voice.onControls();}}>Voice controls ↗</button><span role="status">{voice.status}</span></div>;
 
   function changePlaying(value: boolean) {
     playback.current.serial += 1;
@@ -314,7 +316,7 @@ export default function VirtualTour({ onStart }: { onStart?: () => void }) {
       <div className="tour-toolbar"><div><p className="eyebrow">PONDSTER / MY VIRTUAL DESIGN TOUR</p><h2 id="virtual-tour-heading">{complete ? 'Thanks for looking around.' : loading ? 'I’m gathering my views…' : scene?.roomName ?? 'Come explore with me.'}</h2>{scene && !loading && !complete && <div className="tour-side-caption" aria-live="polite" aria-atomic="true"><small>{selectionLabel(scene)}</small><strong>{scene.title}</strong></div>}</div>{scene && !loading && <span className="tour-scene-count">{index + 1}<small> / {scenes.length} ROOMS</small></span>}<button ref={closeButton} className="tour-close" onClick={close} aria-label="Close my virtual tour">Close <span aria-hidden="true">×</span></button></div>
       {loading ? <div className="tour-loading" role="status"><span aria-hidden="true">P</span><p>I’m checking my latest votes and lining up my scenes.</p></div> : scene ? <>
         <div className={`tour-stage ${ready ? 'is-ready' : ''}`} aria-label={`${scene.roomName}: ${scene.title}`}>
-          {isVideo ? <video key={scene.id} ref={video} muted playsInline preload="auto" poster={scene.poster ?? scene.image} aria-label={scene.description} onLoadedData={event => { if (currentMedia(scene.id, event.currentTarget)) setReady(true); }} onCanPlay={event => { if (currentMedia(scene.id, event.currentTarget)) setReady(true); }} onEnded={event => { if (currentMedia(scene.id, event.currentTarget) && event.currentTarget === video.current) go(index + 1); }} onError={event => { if (!currentMedia(scene.id, event.currentTarget)) return; setVideoFailed(true); setReady(false); setNotice('My film couldn’t play, so I’m showing my selected design instead.'); }} onPause={event => { const target = event.currentTarget; if (currentMedia(scene.id, target) && target === video.current && target.paused && !target.ended && target.currentTime > 0 && playback.current.playing) changePlaying(false); }} onPlay={event => { const target = event.currentTarget; if (currentMedia(scene.id, target) && target === video.current && !target.paused && !document.hidden && !playback.current.playing) changePlaying(true); }}><source src={scene.video} type="video/mp4"/></video> : <img key={`${scene.id}-still`} src={scene.image} alt={`${scene.roomName} — ${scene.designTitle}, my AI design concept`} onLoad={event => { if (currentMedia(scene.id, event.currentTarget)) setReady(true); }} onError={event => { if (!currentMedia(scene.id, event.currentTarget)) return; setReady(true); setNotice('My image couldn’t load. You can skip ahead or let my tour continue.'); }}/>}
+          {isVideo ? <video key={scene.id} ref={video} muted playsInline preload="auto" poster={scene.poster ?? scene.image} aria-label={scene.description} onLoadedData={event => { if (currentMedia(scene.id, event.currentTarget)) setReady(true); }} onCanPlay={event => { if (currentMedia(scene.id, event.currentTarget)) setReady(true); }} onEnded={event => { if (currentMedia(scene.id, event.currentTarget) && event.currentTarget === video.current) go(index + 1); }} onError={event => { if (!currentMedia(scene.id, event.currentTarget)) return; setVideoFailed(true); setReady(false); setNotice('My film couldn’t play, so I’m showing my selected design instead.'); }} onPause={event => { const target = event.currentTarget; if (currentMedia(scene.id, target) && target === video.current && target.paused && !target.ended && target.currentTime > 0 && playback.current.playing) changePlaying(false); }} onPlay={event => { const target = event.currentTarget; if (currentMedia(scene.id, target) && target === video.current && !target.paused && !document.hidden && !playback.current.playing) changePlaying(true); }}><source src={scene.video} type="video/mp4"/></video> : <img key={`${scene.id}-still`} src={scene.image} alt={`${scene.roomName} — ${scene.designTitle}, my AI design concept`} onLoad={event => { if (currentMedia(scene.id, event.currentTarget)) setReady(true); }} onError={event => { if (!currentMedia(scene.id, event.currentTarget)) return; setReady(true); setNotice('My image couldn’t load. You can skip ahead or let my tour continue.'); }}/>} 
           {complete && <div className="tour-finished"><p className="eyebrow">MY NEXT CHAPTER IS TAKING SHAPE.</p><h3>Thanks for visiting <em>me.</em></h3><p>Your votes help shape my possibilities.</p><button onClick={() => { go(0); changePlaying(true); }}>Watch my tour again ↻</button></div>}
         </div>
         <div className="tour-player-dock">
@@ -327,9 +329,11 @@ export default function VirtualTour({ onStart }: { onStart?: () => void }) {
           <p className="tour-notice" role="status">{notice || loadNote}</p>
           <div className="tour-progress" role="progressbar" aria-label="Room progress" aria-valuemin={0} aria-valuemax={100} aria-valuenow={Math.round(progress)}><span style={{ width: `${progress}%` }}/></div>
           <div className="tour-controls" aria-label="My tour playback controls"><div><button onClick={() => go(index - 1)} disabled={index === 0 && !complete} aria-label="Previous room">← <span>Previous</span></button><button className="tour-play" onClick={togglePlay} aria-label={complete ? 'Replay my tour' : playing ? 'Pause my tour' : 'Play my tour'}>{complete ? '↻ Replay' : playing ? 'Ⅱ Pause' : '▶ Play'}</button><button onClick={() => go(index + 1)} disabled={complete} aria-label="Next room"><span>Next</span> →</button></div><div><button onClick={toggleMusic} aria-pressed={music}>Music {music ? 'on ♫' : 'off'}</button><button onClick={fullScreen} aria-pressed={nativeFullscreen}>{nativeFullscreen ? 'Exit full screen ↙' : 'Full screen ↗'}</button></div></div>
+          {voiceControls}
         </div>
       </> : <div className="tour-loading"><p>I’m still gathering my scenes. Please visit my Design galleries.</p></div>}
       {!scene && <p className="tour-empty-notice" role="status">{notice || loadNote}</p>}
+      {(loading||!scene)&&voiceControls}
     </dialog>
   </>;
 }

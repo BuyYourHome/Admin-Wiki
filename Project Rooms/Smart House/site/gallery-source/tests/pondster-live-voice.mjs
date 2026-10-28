@@ -89,7 +89,7 @@ function control(url, log) {
   });
 }
 
-function setup({ mediaGate, fetchGate, remoteGate, status = { available: true }, iceComplete = true, playPlans = [], activitySamplerFactory, streamMeterFactory } = {}) {
+function setup({ mediaGate, fetchGate, remoteGate, status = { available: true }, iceComplete = true, playPlans = [], activitySamplerFactory, streamMeterFactory, onActionResult } = {}) {
   const clock = fakeClock(), log = [], tracks = [track()], media = stream([...tracks]);
   const peers = [], controls = [], states = [], transcripts = [], actions = [], requests = [];
   let mediaCalls = 0;
@@ -103,7 +103,7 @@ function setup({ mediaGate, fetchGate, remoteGate, status = { available: true },
     audioElement: audio,
     onState: value => states.push({ ...value }),
     onTranscript: (...values) => transcripts.push(values),
-    onAction: value => actions.push(value),
+    onAction: value => {actions.push(value);return onActionResult?.(value);},
     getUserMedia: async () => {
       mediaCalls++;
       if (mediaGate) return mediaGate.promise;
@@ -672,6 +672,14 @@ for (const outcome of ['denied', 'timeout', 'stopped']) {
   if (outcome !== 'stopped') assert.match(h.state().status, /click my logo/i);
   await dispose(h);
 }
+// UI action receipts wait for the real callback and suppress duplicate writes.
+{
+ const result=deferred();const h=setup({onActionResult:()=>result.promise});await connect(h);
+ const socket=h.control(),event={type:'pondster.action',action:{menu:'Design',image:'vote'},actionId:'synthetic-vote-1'};
+ socket.receive(event);socket.receive(event);assert.equal(h.actions.length,1);assert.equal(socket.sent.filter(item=>item.type==='pondster.action.result').length,0);
+ result.resolve({status:'saved',designId:'synthetic-design'});await flush();
+ assert.deepEqual(socket.sent.filter(item=>item.type==='pondster.action.result'),[{type:'pondster.action.result',actionId:event.actionId,result:{status:'saved',designId:'synthetic-design'}}]);await dispose(h);
+}
 // Debounced complete user farewells use the normal immediate-stop/close drain.
 {
   const h=setup();await connect(h);
@@ -683,6 +691,10 @@ for (const outcome of ['denied', 'timeout', 'stopped']) {
   assert.equal(h.peer().events.sent.filter(event=>event.type==='session.close').length,1);
   assert.equal(h.transcripts.filter(([item])=>item.who==='you').length,1,'Farewell flush cannot recurse through end.');
   const starts=h.mediaCalls();await tick(h.clock,60_000);assert.equal(h.mediaCalls(),starts,'No automatic paid restart after goodbye.');
+  const oldControl=h.control(),oldPeer=h.peer();await connect(h);
+  assert.equal(h.mediaCalls(),starts+1,'An explicit restart after goodbye gets a fresh microphone.');assert.equal(h.state().active,true);
+  oldControl.receive({type:'pondster.ended'});oldPeer.events.receive({type:'session.closed'});
+  assert.equal(h.state().active,true,'Late old-session closure cannot switch the new session off.');
   await dispose(h);
 }
 {

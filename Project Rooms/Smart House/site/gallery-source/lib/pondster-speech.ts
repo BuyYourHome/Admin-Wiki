@@ -19,9 +19,10 @@ export function isPondsterSpokenExplanationRequest(input:string) {
 export function getPondsterSpeechText(question:string, reply:GuideReply):string {
   const action=parsePondsterDestination(reply.action);
   if(!action || isPondsterSpokenExplanationRequest(question))return reply.text;
+  if(action.control)return 'I’m checking that website control.';
   const section=action.section;
   if(action.menu==='Design') {
-    if(action.image)return action.image==='close'?'Back to my gallery.':action.image==='first'?'First picture.':action.image==='next'?'Next picture.':'Previous picture.';
+    if(action.image)return action.image==='vote'?'I’m checking your vote.':action.image==='enlarge'?'Here’s the larger picture.':action.image==='close'?'Back to my gallery.':action.image==='first'?'First picture.':action.image==='next'?'Next picture.':'Previous picture.';
     if(section==='overview' && /\b(address|location|city|town|street|where|state|coordinates|geolocation|cary|north carolina)\b/.test(words(question)))return PONDSTER_LOCATION_TEXT;
     if(action.room){const gallery=galleries.find(item=>item.id===action.room);return gallery?gallery.designs.length?`Here’s my ${gallery.name} gallery. You can vote for your favorite and change your vote anytime.`:`I’ll add my ${gallery.name} designs here.`:'Here are my design choices.';}
     return section==='overview'?'Here’s my introduction.':'Here are my design choices. You can vote for your favorite and change your vote anytime.';

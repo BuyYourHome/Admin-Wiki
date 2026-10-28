@@ -29,7 +29,7 @@ body{padding-bottom:95px}.pondster-welcome{margin:0 4% 30px;padding:20px 24px;bo
 .monogram{position:absolute;left:0;top:0;isolation:isolate;overflow:hidden;width:87px;height:117px;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;gap:2px;padding-bottom:10.5px;letter-spacing:0;border-color:#9d8d66;background:linear-gradient(145deg,#fffdf7,#e8e9dd);transition:transform .25s,box-shadow .25s}
 .monogram small{font-size:12px;letter-spacing:4.5px;margin:0;line-height:1}
 .monogram-your{font:italic 13px/1.1 Georgia,serif;letter-spacing:.3px;color:var(--accent)}
-.monogram::before{content:'';position:absolute;top:10.5px;right:10.5px;width:7.5px;height:7.5px;background:var(--accent);transform:rotate(45deg);animation:pondster-glint 7s ease-in-out infinite}
+.monogram::before{display:none}
 .monogram::after{content:'';position:absolute;inset:-20%;background:linear-gradient(105deg,transparent 35%,#ffffffc7 50%,transparent 65%);transform:translateX(-140%) skewX(-15deg);pointer-events:none;animation:pondster-light 7s ease-in-out infinite}
 .brand:hover .monogram,.brand:focus-visible .monogram{transform:translateY(-2px);box-shadow:0 4px 12px #253d3218}
 .viewing-intro{flex-wrap:wrap;gap:24px 40px}
@@ -406,3 +406,21 @@ html{scroll-padding-top:200px}
  .scroll-video-stage.is-expanded.has-media-controls>video{grid-column:1;width:100%;height:100dvh}
  .scroll-video-stage.is-expanded.has-media-controls>.gallery-media-controls{grid-column:2;max-height:100dvh;overflow-y:auto;align-self:stretch}
 }
+
+.lightbox.gallery-image-viewer.is-maximized{width:100vw;width:100dvw;max-width:100dvw;height:100vh;height:100dvh;max-height:100dvh;margin:0;border:0}
+.gallery-viewer-toolbar{flex-wrap:wrap}.gallery-viewer-toolbar>.gallery-viewer-heading{flex:1 1 180px}
+
+/* Align my tagline with the frame and launch my sparks from the orange !. */
+.header-brand .brand-copy{height:var(--logo-height);min-height:var(--logo-height)}
+.header-brand .brand-copy>small{position:absolute;left:87px;bottom:calc(-1 * var(--logo-frame-drop));top:auto;margin:0;line-height:1;white-space:nowrap}
+.signature-exclamation{position:relative;display:inline-block;color:var(--accent);letter-spacing:0}
+.signature-exclamation .pondster-logo-art{position:absolute;left:50%;top:auto;bottom:0;width:90px;height:110px;transform:translateX(-50%);pointer-events:none;overflow:visible}
+.signature-exclamation .logo-firework{display:block;transform-box:view-box;transform-origin:50% 81.82%;animation:pondster-exclamation-burst 4.8s ease-out infinite;animation-delay:var(--burst-delay,0s)}
+@keyframes pondster-exclamation-burst{0%,8%{opacity:0;transform:scale(.08)}12%{opacity:.9}38%{opacity:0;transform:scale(1.35)}100%{opacity:0;transform:scale(1.35)}}
+.monogram::before{display:none}
+.tour-voice-controls{display:flex;flex-wrap:wrap;gap:6px;padding:8px 12px;background:#16261e;color:#fffdf7}
+.tour-voice-controls button{min-height:44px;flex:1;padding:7px;border:1px solid #768a74;background:#233d2d;color:inherit;font-size:11px}
+.tour-voice-controls>span{flex-basis:100%;font-size:10px;line-height:1.4;overflow-wrap:anywhere}
+@media(max-width:720px){.header-brand .brand-copy>small{left:72px;font-size:clamp(10px,3vw,15px)}}
+@media(orientation:landscape) and (max-height:600px){.tour-voice-controls{padding:6px 0}.tour-voice-controls button{flex-basis:100%}}
+@media(prefers-reduced-motion:reduce){.signature-exclamation .logo-firework{animation:none;display:none}}

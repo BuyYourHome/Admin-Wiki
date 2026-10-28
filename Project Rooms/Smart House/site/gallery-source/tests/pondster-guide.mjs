@@ -207,7 +207,8 @@ assert.match(answerPondster('Show the Tesla animation').text, /twenty-five-secon
 assert.match(answerPondster('Show the Tesla animation').text, /swings inward.*slides left.*driving out.*white-marble.*concept/);
 const vote = answerPondster('Vote for black shutters');
 assertGuideAction(vote.action, {menu:'Design',room:'front-elevation'});
-assert.match(vote.text, /do not cast votes/);
+assert.match(vote.text, /vote for this one/);
+assert.equal(vote.action.image,undefined,'A named preference opens its gallery; it never votes for a guessed picture.');
 for (const request of ['Show me the virtual tour', 'Pondster, take me on a tour', 'Start tour', 'Begin the tour', 'Play my virtual design tour']) {
   const reply = answerPondster(request);
   assertGuideAction(reply.action, {menu:'View',tour:true}, request);

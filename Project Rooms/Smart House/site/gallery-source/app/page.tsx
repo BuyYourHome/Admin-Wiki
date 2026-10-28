@@ -17,6 +17,8 @@ import type { GuideAction } from '../lib/pondster-guide';
 import { getGalleryScrollTop, getSectionRevealTop } from '../lib/gallery-scroll';
 import { getPondsterDestinationId, parsePondsterDestination, type PondsterDestination } from '../lib/pondster-destinations';
 import { galleryVoiceSelection } from '../lib/pondster-gallery';
+import {activateSiteControl} from '../lib/pondster-site-controls';
+import type {PondsterUiResult,GalleryUiResult} from '../lib/pondster-gallery-result';
 
 type VoteResults = { scores:Record<string,number>; total:number; selected:string|null; roomTotals:Record<string,number> };
 const empty:VoteResults = {scores:{},total:0,selected:null,roomTotals:{}};
@@ -39,6 +41,8 @@ export default function Home() {
   const [failed,setFailed] = useState(false);
   const [retry,setRetry] = useState(0);
   const [zoom,setZoom] = useState<Design|null>(null);
+  const [zoomExpanded,setZoomExpanded] = useState(false);
+  const hoverVoiceStarted=useRef<number|null>(null);
   const [scene,setScene] = useState('day');
   const [tourRequest,setTourRequest] = useState<number|null>(null);
   const nextTourRequest = useRef(0);
@@ -130,12 +134,17 @@ export default function Home() {
     frame=requestAnimationFrame(reveal);
     return()=>cancelAnimationFrame(frame);
   },[menu,room,sectionReveal]);
-  async function vote(designId:string) {
-    if(saving||loading||failed||resultsRoom!==room||!gallery.designs.some(item=>item.id===designId))return;setSaving(true);setMessage('');
-    try { const response=await fetch('/api/votes',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({room,designId})});const data=await response.json() as VoteResults & {error?:string};if(!response.ok)throw new Error(data.error);setResults(data);setResultsRoom(room);setRoomTotals(data.roomTotals);setRoomTotalsFailed(false);setFailed(false);setMessage('I’ve saved your choice. Thank you for helping shape my design.'); }
-    catch(error){setMessage(error instanceof Error ? error.message : 'I couldn’t save your vote. Please try again.');}
+  async function vote(designId:string):Promise<GalleryUiResult> {
+    if(!gallery.designs.some(item=>item.id===designId))return {status:'no-picture'};
+    if(saving||loading||resultsRoom!==room)return {status:'loading'};
+    if(failed)return {status:'failed'};
+    if(results.selected===designId)return {status:'already',designId};
+    setSaving(true);setMessage('');
+    try { const response=await fetch('/api/votes',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({room,designId})});const data=await response.json() as VoteResults & {error?:string};if(!response.ok)throw new Error(data.error);if(data.selected!==designId)throw new Error('I couldn’t confirm that vote. Please try again.');setResults(data);setResultsRoom(room);setRoomTotals(data.roomTotals);setRoomTotalsFailed(false);setFailed(false);setMessage('I’ve saved your choice. Thank you for helping shape my design.');return {status:'saved',designId}; }
+    catch(error){setMessage(error instanceof Error ? error.message : 'I couldn’t save your vote. Please try again.');return {status:'failed'};}
     finally{setSaving(false);}
   }
+  function voteCurrentPicture():Promise<GalleryUiResult>{return zoom?vote(zoom.id):Promise.resolve({status:'no-picture'});}
   function cancelVoiceHover() {
     if(voiceHoverTimer.current!==null){clearTimeout(voiceHoverTimer.current);voiceHoverTimer.current=null;}
   }
@@ -144,11 +153,15 @@ export default function Home() {
     cancelVoiceHover();
     voiceHoverTimer.current=setTimeout(()=>{
       voiceHoverTimer.current=null;
+      if(!voiceSummary.active)hoverVoiceStarted.current=Date.now();
       guide.current?.startVoice();
     },500);
   }
   function toggleVoice() {
     cancelVoiceHover();
+    const hoverAt=hoverVoiceStarted.current;hoverVoiceStarted.current=null;
+    // A click confirming a just-started hover must not immediately switch it off.
+    if(hoverAt!==null&&voiceSummary.active&&(voiceSummary.connecting||Date.now()-hoverAt<1500))return;
     guide.current?.activateVoice();
   }
   function openDesignImage(design:Design) {
@@ -171,16 +184,25 @@ export default function Home() {
   }
   function navigate(next:Menu){pendingGalleryScroll.current=null;pendingSectionReveal.current=null;setSectionReveal(null);setTourRequest(null);setMenu(next);location.hash=menuHash(next);}
   function openContact(){navigate('Contact');requestAnimationFrame(()=>guide.current?.focusText());}
-  function guideAction(action:GuideAction){
+  function guideAction(action:GuideAction):void|Promise<PondsterUiResult>{
     const destination=parsePondsterDestination(action);
     if(!destination)return;
+    if(destination.control){if(destination.control.kind==='media'&&destination.control.target==='tour'&&['play','restart'].includes(destination.control.value??'')&&!document.querySelector('.virtual-tour-dialog[open]')){guideAction({menu:'View',tour:true});return Promise.resolve({status:'activated'});}
+      return activateSiteControl(destination.control).catch(()=>({status:'unavailable' as const}));}
+    if(destination.image&&destination.image!=='vote'&&document.querySelector('.virtual-tour-dialog[open]')){
+      const labels={next:'Next room',previous:'Previous room',first:'Room 1',close:'Close my virtual tour',enlarge:'Full screen'};
+      if(destination.image==='first'){const details=document.querySelector<HTMLDetailsElement>('.virtual-tour-dialog[open] .tour-details');if(details)details.open=true;}
+      return activateSiteControl({kind:'activate',target:labels[destination.image]});
+    }
     if(destination.image){
-      if(destination.image==='close'){setZoom(null);return;}
+      if(destination.image==='vote')return voteCurrentPicture();
+      if(destination.image==='close'){setZoom(null);setZoomExpanded(false);return;}
+      if(destination.image==='enlarge')setZoomExpanded(true);
       const currentGallery=zoom?galleries.find(item=>item.designs.some(design=>design.id===zoom.id)):undefined;
       const targetRoom=destination.room??currentGallery?.id??room;
       navigate('Design');setRoom(targetRoom);setZoom(galleryVoiceSelection(zoom,targetRoom,destination.image));return;
     }
-    setZoom(null);navigate(action.menu);
+    setZoom(null);setZoomExpanded(false);navigate(action.menu);
     if(action.tour===true&&action.menu==='View'){setTourRequest(++nextTourRequest.current);return;}
     const isPlan=destination.menu==='Explore' && destination.section==='floor-plan';
     if(action.room && !isPlan){
@@ -196,11 +218,10 @@ export default function Home() {
   }
   return <>
     <a className="skip" href="#main">Skip to content</a>
-    <header ref={stickyHeader} className={`header ${voiceIsLive?'voice-is-live':''}`}><div className="header-brand"><button ref={logo} type="button" className="brand" onClick={toggleVoice} aria-label={voiceSummary.active?'Stop Pondster voice':'Start talking with Pondster'} title={voiceSummary.active?'Click my logo to stop voice.':'Hover or click my logo to talk. Find text and voice controls in Contact.'} aria-pressed={voiceSummary.active} aria-describedby="pondster-header-voice-status" onMouseEnter={scheduleVoiceHover} onMouseLeave={cancelVoiceHover} onFocus={()=>setLogoPlay(value=>value+1)}><PondsterLogoArt key={logoPlay}/><span className="monogram" aria-hidden="true"><span className="monogram-your">Your</span><small>HOME</small></span><span className="brand-copy"><strong className="brand-name">Pondster<span className="signature-i-am" aria-hidden="true">I Am</span></strong><small>{voiceIsLive?"A home You can Relate to - I'm listening!":"A Home You can Relate to. Talk to me!"}</small></span></button><div className={`header-voice-status ${voiceIsLive?'is-active':''}`}><span id="pondster-header-voice-status" aria-live="off">{voiceSummary.status}</span><span className="visually-hidden" role="status" aria-live="polite">{voiceSummary.connecting?"Pondster voice is connecting.":voiceIsLive?"Pondster voice is on.":voiceSummary.status}</span><a href="#contact" onClick={event=>{event.preventDefault();openVoiceControls();}}>Voice controls ↗</a></div></div><nav aria-label="Main menu">{menus.map(item=><a key={item} href={`#${menuHash(item)}`} onClick={()=>navigate(item)} aria-current={menu===item?'page':undefined}>{menuLabel(item)}</a>)}</nav><span className="development">I’M A HOME IN THE MAKING</span></header>
+    <header ref={stickyHeader} className={`header ${voiceIsLive?'voice-is-live':''}`}><div className="header-brand"><button ref={logo} type="button" className="brand" onClick={toggleVoice} aria-label={voiceSummary.active?'Stop Pondster voice':'Start talking with Pondster'} title={voiceSummary.active?'Click my logo to stop voice.':'Hover or click my logo to talk. Find text and voice controls in Contact.'} aria-pressed={voiceSummary.active} aria-describedby="pondster-header-voice-status" onMouseEnter={scheduleVoiceHover} onMouseLeave={cancelVoiceHover} onFocus={()=>setLogoPlay(value=>value+1)}><span className="monogram" aria-hidden="true"><span className="monogram-your">Your</span><small>HOME</small></span><span className="brand-copy"><strong className="brand-name">Pondster<span className="signature-exclamation" aria-hidden="true">!<PondsterLogoArt key={logoPlay}/></span><span className="signature-i-am" aria-hidden="true">I Am</span></strong><small>{voiceIsLive?"A home You can Relate to - I'm listening!":"A Home You can Relate to. Talk to me!"}</small></span></button><div className={`header-voice-status ${voiceIsLive?'is-active':''}`}><span id="pondster-header-voice-status" aria-live="off">{voiceSummary.status}</span><span className="visually-hidden" role="status" aria-live="polite">{voiceSummary.connecting?"Pondster voice is connecting.":voiceIsLive?"Pondster voice is on.":voiceSummary.status}</span><a href="#contact" onClick={event=>{event.preventDefault();openVoiceControls();}}>Voice controls ↗</a></div></div><nav aria-label="Main menu">{menus.map(item=><a key={item} href={`#${menuHash(item)}`} onClick={()=>navigate(item)} aria-current={menu===item?'page':undefined}>{menuLabel(item)}</a>)}</nav><span className="development">I’M A HOME IN THE MAKING</span></header>
     <main id="main">
       {menu==='Design' && <>
         <section id="pondster-design-overview" className="intro"><div><h1>Virtually - A Reality <br className="design-title-break"/><em>Have a say.</em></h1></div><div className="intro-note"><p>I will bring each space to life. Browse my designs, vote for the ones you love, and help me choose the finishes that feel right.</p><span>Explore my {galleries.length} galleries.</span></div></section>
-        <section className="pondster-welcome" aria-label="Meet Pondster"><div><p>I’m Pondster, the voice and persona of this house. Ask me about the design ideas and follow my story as it takes shape. {PONDSTER_LOCATION_TEXT} Jean Wright is my SI designer.</p></div><button onClick={openContact}>Talk to me <span aria-hidden="true">↗</span></button></section>
         <section className="design-workspace" aria-label="My design galleries"><aside className="room-nav"><p className="eyebrow">EXPLORE MY ROOMS</p><div role="group" aria-label="Rooms">{galleries.map((item,index)=>{const total=roomTotals[item.id] ?? (item.designs.length===0?0:undefined);return <button key={item.id} onClick={()=>{if(!saving)selectGallery(item.id);}} disabled={saving} aria-pressed={room===item.id} aria-controls="design-gallery"><span className="room-number">0{index+1}</span><span>{item.name}<small>{item.designs.length?`${item.designs.length} ${item.designs.length===1?'design':'designs'}`:'Coming soon'}</small><span className="room-vote-count" title={roomTotalsFailed && total!==undefined?'Last loaded vote count; I couldn’t refresh it.':undefined}>{total!==undefined?`${total} ${total===1?'vote':'votes'} cast`:roomTotalsLoading?'Loading votes…':'Votes unavailable'}</span></span><b aria-hidden="true">↗</b></button>;})}</div><div className="notebook-note"><span>MY FUTURE, IN DESIGN.</span><p>I use AI concepts to show my future features. These aren’t measured plans or photos of my completed spaces.</p></div></aside>
         <div ref={galleryArea} id="design-gallery" className="gallery-area" role="region" aria-labelledby="design-gallery-title"><div ref={galleryHeading} className="gallery-heading"><div><p className="eyebrow">DESIGN GALLERY / {String(galleries.indexOf(gallery)+1).padStart(2,'0')}</p><h2 id="design-gallery-title">{gallery.name}</h2><p>{gallery.summary}</p></div>{gallery.designs.length>0 && <span className="vote-total">{loading?'I’m loading votes…':failed?'I can’t load totals':`${results.total} ${results.total===1?'vote':'votes'}`}<small>COMMUNITY PREFERENCES</small></span>}</div>
         {room==='media-center' && <figure className="media-feature"><div className="media-feature-intro"><div><p className="eyebrow">MY LIVING ROOM / IN MOTION</p><h3>Watch me go from art to game time.</h3></div><span>MY 10-SECOND CONCEPT FILM</span></div><ScrollVideo label="My Living Room" ratio="16 / 9" media={videoControls('media-center')}><video controls autoPlay muted playsInline loop preload="metadata" poster="/media/media-center-art-poster.png" aria-label="My illustrative Living Room film shows my TV turning toward my kitchen; my selected MM-MAX1 mount will be positioned manually" aria-describedby="media-motion-caption"><source src="/media/media-center-kitchen-view.mp4" type="video/mp4"/>Your browser can’t play my video here. <a href="/media/media-center-kitchen-view.mp4">Open my video file</a>.</video></ScrollVideo><figcaption id="media-motion-caption"><span>MY AI MOTION CONCEPT</span>I will feature my selected manual MM-MAX1 TV mount, positioned by hand. My illustrative AI film keeps my decorative frame fixed while my TV turns toward my kitchen and its artwork becomes moving football. The automatic motion is illustrative; my selected mount’s fit and clearances still need validation.<p className="media-source">Football footage: U.S. Marine Corps / Sgt. James Stanfield, via <a href="https://www.dvidshub.net/video/947000/125th-army-navy-football-game-b-roll" target="_blank" rel="noopener noreferrer">DVIDS</a>.<br/>The appearance of U.S. Department of War (DoW) visual information does not imply or constitute DoW endorsement. <a href="https://www.dvidshub.net/about/copyright" target="_blank" rel="noopener noreferrer">Source use notice ↗</a></p></figcaption></figure>}
@@ -215,15 +236,16 @@ export default function Home() {
         {gallery.designs.length ? <><div className={`design-grid ${gallery.designs.length===1?'single':gallery.designs.length===2?'pair':''}`}>{gallery.designs.map((design,index)=>{const votes=results.scores[design.id]??0;const percent=results.total?Math.round(votes/results.total*100):0;const chosen=results.selected===design.id;return <article key={design.id} aria-labelledby={`vote-title-${design.id}`} className={`design-card ${chosen?'chosen':''} ${design.fullImage?'full-scene':''}`}><button className={`vote-button ${chosen?'selected':''}`} disabled={saving||loading||failed||chosen} aria-pressed={chosen} onClick={()=>vote(design.id)}><span className="vote-button-copy"><strong id={`vote-title-${design.id}`}>{design.title}</strong><small>{saving?'I’m saving…':chosen?'✓ Your choice':results.selected?'Change your vote':'Vote for my design'}</small></span><span className="vote-button-icon" aria-hidden="true">{chosen?'':'♡'}</span></button><DesignCardImages design={design} onOpen={openDesignImage} priority={index<3}/><div className="card-content"><span className="option-label">CONCEPT {String(index+1).padStart(2,'0')}</span><p>{design.detail}</p><div className="result-line"><span>{loading?'I’m loading…':failed?'I can’t load totals':`${votes} ${votes===1?'vote':'votes'}`}</span><span>{!loading&&!failed?`${percent}%`:''}</span></div><div className="result-track" aria-hidden="true"><i style={{width:`${percent}%`}} /></div></div></article>;})}</div><p className="vote-explainer">I don’t ask you to sign in. I keep one current choice per gallery in this browser; pick another design to change it. Other browsers or cleared cookies can vote again. I use votes as preferences, not final selections.</p><div className="vote-feedback" role="status" aria-live="polite">{message}{failed && <button className="text-button" onClick={()=>setRetry(retry+1)}>Try again</button>}</div></> : <div className="empty-gallery"><span className="empty-icon" aria-hidden="true">▧</span><p className="eyebrow">MY DESIGNS WILL FOLLOW</p><h3>I will add designs for my {gallery.name}.</h3><p>My design images will appear here. You will be able to browse my options and vote for your favorite.</p><span className="pending-tag">My images are coming</span></div>}
 
         </div></section>
+        <section className="pondster-welcome" aria-label="Meet Pondster"><div><p>I’m Pondster, the voice and persona of this house. Ask me about the design ideas and follow my story as it takes shape. {PONDSTER_LOCATION_TEXT} Jean Wright is my SI designer.</p></div><button onClick={openContact}>Talk to me <span aria-hidden="true">↗</span></button></section>
         <section className="design-footer"><span>MY DESIGN IS A CONVERSATION.</span><p>Come back as I add new rooms and choices.</p><span>{PONDSTER_LOCATION_LABEL}</span></section>
       </>}
       {menu==='Explore' && <ExplorePage scene={scene} onScene={setScene} floorPlanRequest={sectionReveal?.destination.menu==='Explore' && sectionReveal.destination.section==='floor-plan' && sectionReveal.destination.room?{id:sectionReveal.id,room:sectionReveal.destination.room}:undefined} floorPlanDetailRef={floorPlanDetails}/>}
-      {menu==='View' && <ViewPage tourRequest={tourRequest} onTourRequestHandled={()=>setTourRequest(null)} onImage={openDesignImage} onDesign={()=>navigate('Design')} onTourStart={()=>guide.current?.stopVoice()}/>}
+      {menu==='View' && <ViewPage tourRequest={tourRequest} onTourRequestHandled={()=>setTourRequest(null)} onImage={openDesignImage} onDesign={()=>navigate('Design')} onTourStart={cancelVoiceHover} voice={viewerVoice}/>}
       {menu==='Built By' && <BuiltByPage/>}
       {menu==='Own' && <section className="secondary-page manage"><h1 className="single-line-page-title">I come <em>with answers.</em></h1><p className="lead">I will provide a place for my home guides, care information, and handover records. Ask me from any page for public guidance while my owner tools take shape.</p><article id="pondster-own-drawing" className="manage-notice" aria-labelledby="deck-structural-heading"><h2 id="deck-structural-heading">My preliminary deck structural drawing</h2><p>I’m sharing my deck’s preliminary structural design reference. The drawing is marked <strong>PRELIMINARY / NOT FOR PERMIT</strong> and remains a design reference for review.</p><p><a className="solid-link" href="/documents/deck-structural-preliminary.pdf" target="_blank" rel="noopener noreferrer">View my drawing (PDF) ↗</a></p><a href="/documents/deck-structural-preliminary.pdf" download="deck-structural-preliminary.pdf">Download my drawing (PDF)</a></article><div className="knowledge-grid">{[['guides','Home guides','How my systems will work and where you will find them.'],['maintenance','Care & maintenance','My manuals, warranties, and equipment-specific schedules.'],['handover','Owner handover','My records and account checklist for the next chapter.']].map(([section,title,description])=><article id={`pondster-own-${section}`} key={section}><span className="pending-tag">PLANNED</span><h3>{title}</h3><p>{description}</p></article>)}</div><div className="manage-notice"><strong>My owner tools aren’t ready yet.</strong><p>I’ll need separate, authenticated owner access before I can show private records or offer live controls. I’m not connected to my house systems through this public site.</p></div></section>}
       <ContactPage active={menu==='Contact'} comments={menu==='Contact'?<Comments key={menu} page="contact" title="Contact" onAsk={openContact}/>:null}><PondsterGuide ref={guide} open={menu==='Contact'} onOpenChange={nextOpen=>{if(nextOpen)openContact();else if(menu==='Contact')navigate('View');}} onAction={guideAction} onReturnFocus={()=>logo.current?.focus()} onVoiceState={setVoiceSummary}/></ContactPage>
       {menu!=='Contact'&&<Comments key={menu} page={menu==='Own'?'own':menuHash(menu)} title={menuLabel(menu)} onAsk={openContact}/>}
     </main><footer><span>{PONDSTER_LOCATION_LABEL}</span><p>My SI designer: Jean Wright · Buy Your Home</p><span>I’m sharing concepts · No live controls</span></footer>
-    <GalleryImageViewer design={zoom} onChange={openDesignImage} onClose={()=>setZoom(null)} voice={viewerVoice} voting={zoom&&gallery.designs.some(item=>item.id===zoom.id)?{selected:resultsRoom===room?results.selected:null,disabled:saving||loading||failed||resultsRoom!==room,saving,onVote:vote}:undefined}/>
+    <GalleryImageViewer expanded={zoomExpanded} onExpandedChange={setZoomExpanded} design={zoom} onChange={openDesignImage} onClose={()=>{setZoom(null);setZoomExpanded(false);}} voice={viewerVoice} voting={zoom&&gallery.designs.some(item=>item.id===zoom.id)?{selected:resultsRoom===room?results.selected:null,disabled:saving||loading||failed||resultsRoom!==room,saving,onVote:vote,message}:undefined}/>
   </>;
 }

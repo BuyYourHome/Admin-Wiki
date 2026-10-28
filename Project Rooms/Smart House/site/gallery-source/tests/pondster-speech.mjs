@@ -2,6 +2,7 @@ import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
 import { stripTypeScriptTypes } from 'node:module';
 import { answerPondster } from '../lib/pondster-guide.ts';
+import {actionResultSpeech} from '../lib/pondster-gallery-result.ts';
 import { getPondsterSpeechText, isPondsterSpokenExplanationRequest } from '../lib/pondster-speech.ts';
 import { PONDSTER_CITY, PONDSTER_LOCATION_TEXT } from '../lib/pondster-identity.ts';
 
@@ -41,7 +42,7 @@ assert.deepEqual(answerPondster('Where are you and what is your Wi-Fi password?'
 
 // Execute the actual Browser voice question handler: navigate before short speech.
 const source=await readFile(new URL('../app/pondster-guide.tsx',import.meta.url),'utf8');
-const start=source.indexOf('  function showReply(');
+const start=source.indexOf('  async function showReply(');
 const end=source.indexOf('  function ask(',start);
 assert.ok(start>=0&&end>start);
 const handler=stripTypeScriptTypes(source.slice(start,end));
@@ -49,11 +50,17 @@ const order=[],spoken=[],messages=[];
 const show=new Function('setMessages','onOpenChange','onAction','spoken','controller','getPondsterSpeechText',handler+';return showReply;')(
  update=>messages.splice(0,messages.length,...update(messages)),()=>{},
  action=>order.push(['action',action]),{current:true},{current:{speak:text=>{order.push(['speech',text]);spoken.push(text);}}},getPondsterSpeechText);
-show('Who is your general contractor?',answerPondster('Who is your general contractor?'));
+await show('Who is your general contractor?',answerPondster('Who is your general contractor?'));
 assert.deepEqual(order.map(item=>item[0]),['action','speech']);
 assert.deepEqual(order[0][1],{menu:'Contact',section:'gc'});
 assert.deepEqual(spoken,['Here’s my general contractor.']);
 assert.match(messages.at(-1).text,/Glasgow Design Build.*https:/);
+// Browser/typed voice must wait for the real vote response as natural voice does.
+let releaseVote;const voteResult=new Promise(resolve=>{releaseVote=resolve;}),voteSpeech=[];
+const voteShow=new Function('setMessages','onOpenChange','onAction','spoken','controller','getPondsterSpeechText','actionResultSpeech',handler+';return showReply;')(
+ ()=>{},()=>{},()=>voteResult,{current:true},{current:{speak:text=>voteSpeech.push(text)}},getPondsterSpeechText,actionResultSpeech);
+const pendingVote=voteShow('vote for this one',answerPondster('vote for this one'),false);assert.equal(voteSpeech.length,0);
+releaseVote({status:'failed'});await pendingVote;assert.match(voteSpeech[0],/couldn’t confirm/);assert.doesNotMatch(voteSpeech[0],/saved your vote/);
 for(const file of ['app/page.tsx','app/layout.tsx','app/contact-page.tsx','app/built-by-page.tsx','app/pondster-guide.tsx','lib/pondster-live-context.ts']) {
  const copy=await readFile(new URL('../'+file,import.meta.url),'utf8');
  assert.doesNotMatch(copy,/witness protection|MY LOCATION IS CONFIDENTIAL|My location (?:is|remains) confidential/i,file);

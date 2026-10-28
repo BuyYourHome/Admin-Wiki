@@ -1,8 +1,11 @@
 import { galleries, type Design } from './designs';
 import { galleryPictures, movePicture, pictureIndex, pictureSelection } from './design-views';
 import { parsePondsterDestination } from './pondster-destinations';
-export type GalleryVoiceCommand='first'|'next'|'previous'|'close';
+export type GalleryVoiceCommand='first'|'next'|'previous'|'close'|'enlarge'|'vote';
 export function galleryVoiceCommand(words:string):GalleryVoiceCommand|null {
+  const command=words.replace(/^(?:(?:please|can you|could you|would you) )*/,'').replace(/ please$/,'');
+  if(/^(?:(?:enlarge|expand)(?: (?:this|that|the|my)(?: (?:one|picture|image|photo|view))?)?|zoom in(?: on (?:this|that|the) (?:picture|image|photo))?|make (?:this|that|it|the (?:picture|image|photo)) (?:bigger|larger|full screen)|(?:show|open) (?:this|that|the) (?:picture|image|photo) (?:full size|full screen)|full screen|full size)$/.test(command))return 'enlarge';
+  if(/^(?:(?:i )?vote (?:for|on) (?:this|that|the current|the displayed)(?: (?:one|choice|design|picture|image|option))?|(?:save|cast|record) my vote for (?:this|that)(?: (?:one|choice|design|picture|image|option))?|(?:change|switch) my vote to (?:this|that)(?: (?:one|choice|design|picture|image|option))?)$/.test(command))return 'vote';
   if(/^(?:next one|another one|show me another (?:one|picture|image))$/.test(words))return 'next';
   if(/^(?:previous one|back|go back|go back one)$/.test(words))return 'previous';
   if(/^(?:first one|show me the first one)$/.test(words))return 'first';
@@ -17,6 +20,8 @@ export function galleryVoiceSelection(current:Design|null,room:string,command:Ga
   const gallery=galleries.find(item=>item.id===room);
   const pictures=galleryPictures(gallery?.designs??[]);if(!pictures.length)return null;
   const index=current?pictureIndex(pictures,current):-1;
+  if(command==='vote')return current;
+  if(command==='enlarge')return pictureSelection(pictures[index<0?0:index]);
   return pictureSelection(pictures[command==='first'?0:index<0?(command==='previous'?pictures.length-1:0):movePicture(index,command==='next'?1:-1,pictures.length)]);
 }
 

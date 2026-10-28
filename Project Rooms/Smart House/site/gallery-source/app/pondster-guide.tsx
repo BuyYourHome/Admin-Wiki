@@ -7,6 +7,7 @@ import { createPondsterVoice } from '../lib/pondster-voice.js';
 import { createPondsterLiveVoice, type PondsterLiveState } from '../lib/pondster-live-voice';
 import { isPondsterFarewell, PONDSTER_FAREWELL_ACK } from '../lib/pondster-voice-intents';
 import { UNKNOWN_VISITOR, nameFromReply, visitorGreeting, type PondsterVisitor } from '../lib/pondster-visitor';
+import {actionResultSpeech,type PondsterUiResult} from '../lib/pondster-gallery-result';
 
 type Recognition = { start:()=>void; abort:()=>void };
 type SpeechWindow = Window & { SpeechRecognition?:new()=>Recognition; webkitSpeechRecognition?:new()=>Recognition };
@@ -22,7 +23,7 @@ function compactInactiveStatus(status:string) {
 
 export type PondsterGuideHandle = { activateVoice:()=>void; startVoice:()=>void; stopVoice:()=>void; focusText:()=>void };
 export type PondsterVoiceSummary = { active:boolean; connecting?:boolean; status:string };
-type GuideProps = { open:boolean; onOpenChange:(open:boolean)=>void; onAction:(action:GuideAction)=>void; onReturnFocus:()=>void; onVoiceState:(state:PondsterVoiceSummary)=>void };
+type GuideProps = { open:boolean; onOpenChange:(open:boolean)=>void; onAction:(action:GuideAction)=>void|Promise<PondsterUiResult>; onReturnFocus:()=>void; onVoiceState:(state:PondsterVoiceSummary)=>void };
 
 export default forwardRef<PondsterGuideHandle,GuideProps>(function PondsterGuide({open,onOpenChange,onAction,onReturnFocus,onVoiceState},ref) {
   const [messages,setMessages]=useState<Message[]>([{who:'Pondster',text:greeting}]);
@@ -106,11 +107,14 @@ export default forwardRef<PondsterGuideHandle,GuideProps>(function PondsterGuide
     })();
     localStarting.current=task;try{return await task;}finally{if(localStarting.current===task)localStarting.current=null;}
   }
-  function showReply(question:string,reply:{text:string;action?:GuideAction},reveal=true){
-    setMessages(previous=>[...previous,{who:'you' as const,text:question},{who:'Pondster' as const,text:reply.text}].slice(-12));
+  async function showReply(question:string,reply:{text:string;action?:GuideAction},reveal=true){
     if(reveal)onOpenChange(true);
-    if(reply.action)onAction(reply.action);
-    if(spoken.current)controller.current?.speak(getPondsterSpeechText(question,reply));
+    if(reply.action?.image==='vote'||reply.action?.control)reply={text:actionResultSpeech(await onAction(reply.action),reply.action.control?'control':'vote')};
+    else if(reply.action)onAction(reply.action);
+    setMessages(previous=>[...previous,{who:'you' as const,text:question},{who:'Pondster' as const,text:reply.text}].slice(-12));
+    const answer=spoken.current?getPondsterSpeechText(question,reply):reply.text;
+    if(spoken.current)controller.current?.speak(answer);
+    return answer;
   }
   function ask(text:string,reveal=true) {
     const question=text.trim().slice(0,500);if(!question)return;
@@ -129,8 +133,7 @@ export default forwardRef<PondsterGuideHandle,GuideProps>(function PondsterGuide
           reply={text:`Nice to meet you, ${name}. What do you need?`};
         }
         if(isPondsterFarewell(question))reply={text:PONDSTER_FAREWELL_ACK};
-        const savedAnswer=spoken.current?getPondsterSpeechText(question,reply):reply.text;
-        showReply(question,reply,reveal);
+        const savedAnswer=await showReply(question,reply,reveal);
         if(conversation.id)await visitorRequest({action:'turn',conversationId:conversation.id,eventId:crypto.randomUUID(),question,answer:savedAnswer});
         if(isPondsterFarewell(question))stopVoice();
       }catch(error){setPreferenceNotice(error instanceof Error?error.message:'I couldn’t save that exchange.');}
@@ -243,6 +246,7 @@ export default forwardRef<PondsterGuideHandle,GuideProps>(function PondsterGuide
         <p className="pondster-quiet-note">{useNatural?(live.silenceAvailable===false?'I can’t monitor quiet in this connection. I stop my microphone and voice if that check doesn’t recover.':live.active&&live.silenceAvailable===null?'I’m checking quiet detection. You can stop with my logo at any time.':'I end our conversation after 30 seconds of quiet. I stay with you while we keep talking, with no three-minute cutoff.'):'I turn off after 30 seconds without speech. My timer pauses while I speak, then gives you time to reply.'}</p>
         <small>{useNatural?'My natural voice is AI-generated. Starting sends your voice to OpenAI for this conversation. I stop when you stop voice, close this conversation, press Escape, or leave this tab.':`${keepListening?'Say “Pondster” with each question.':'Tap Ask by voice, then ask one question. You don’t need to say my name.'} Your browser may send audio to its speech service. I stop when you close this conversation, stop voice, press Escape, or leave this tab.`} You can browse my other pages while we talk.</small>
       </div>
+      <p className="pondster-control-help">I can work the controls you see. Try “click Next room,” “pause the tour,” “choose Browser voice,” or “set comment to I love the blue scheme.” Open a design picture and say “vote for this one” or “make it bigger.” Use a full button label if more than one matches.</p>
       <div className="pondster-conversation" ref={log} role="log" aria-label="Conversation with Pondster" aria-live="polite" aria-relevant="additions">{messages.map((message,index)=><div className={`pondster-message ${message.who==='you'?'from-you':''}`} key={`${index}-${message.text.slice(0,20)}`}><span>{message.who==='you'?'YOU':'PONDSTER'}</span><p>{message.text}</p></div>)}</div>
       <div className="pondster-prompts"><button onClick={()=>ask('Pondster, who are you?')}>Meet me</button><button onClick={()=>ask('Pondster, show the design galleries')}>Explore my designs ↗</button><button onClick={()=>ask('Pondster, how can I visit?')}>Plan a visit ↗</button></div>
       <form className="pondster-input" onSubmit={submit}><label className="visually-hidden" htmlFor="pondster-question">Ask Pondster a question</label><input id="pondster-question" name="question" ref={input} placeholder="Pondster, tell me about…" required maxLength={500} autoComplete="off" onChange={()=>liveController.current?.noteInteraction()}/><button type="submit" aria-label="Send question to Pondster">↑</button></form>

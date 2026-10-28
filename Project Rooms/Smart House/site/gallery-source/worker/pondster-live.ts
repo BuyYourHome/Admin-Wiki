@@ -8,6 +8,7 @@ import { naturalConversationRecorder, visitorProfile } from './pondster-visitors
 import type { PondsterVisitor } from '../lib/pondster-visitor';
 import { explicitGalleryVoiceAction } from '../lib/pondster-gallery';
 import { PONDSTER_CLIENT_REVISION } from '../lib/pondster-live-protocol';
+import {actionResultSpeech} from '../lib/pondster-gallery-result';
 export const VOICE_COOKIE = 'pondster_voice_visitor';
 export const VOICE_SETUP_MS = 20_000;
 export const VOICE_FINALIZATION_MS = 10_000;
@@ -206,6 +207,7 @@ export function createPondsterLiveControl(options: ControllerOptions) {
   let fragmentCharacters = 0;
   let gallerySettle:ReturnType<typeof setTimeout>|undefined;
   let directGalleryCount=0,lastDirectGalleryEnd=-1;
+  let pendingVote:{id:string;delegationId:string|null;kind:'vote'|'control';timer:ReturnType<typeof setTimeout>}|null=null;
   const abort = new AbortController();
   let resolveProviderClosed: () => void = () => {};
   const providerClosed = new Promise<void>(resolve => { resolveProviderClosed = resolve; });
@@ -235,6 +237,16 @@ export function createPondsterLiveControl(options: ControllerOptions) {
       appendCommentary(nameReply,delegationId);return true;
     }
     const action = parsePondsterDestination(reply.action);
+    if(action?.image==='vote'||action?.control){
+      const kind=action.control?'control':'vote';
+      if(pendingVote){appendCommentary('I’m still checking the previous control request. Please give me a moment.',delegationId);return true;}
+      const id=crypto.randomUUID();
+      const timer=later(()=>{if(pendingVote?.id!==id)return;pendingVote=null;busy('work',false);appendCommentary(actionResultSpeech({status:'failed'},kind),delegationId);},10_000);
+      pendingVote={id,delegationId,timer,kind};busy('work',true);
+      safeSend(options.client,{type:'pondster.action',action,actionId:id});
+      // Success narration waits for the browser's real vote endpoint result.
+      return true;
+    }
     if (delegationId !== null && !action) {
       // A visual keyword miss is not a negative lookup of facts already present
       // in the Live session. Never promote the guide's fallback into a refusal.
@@ -279,7 +291,7 @@ export function createPondsterLiveControl(options: ControllerOptions) {
         const unconsumed=fragments.filter(item=>item.end>consumedTranscriptEnd).sort((a,b)=>a.start-b.start);
         let first=0;for(let index=1;index<unconsumed.length;index++)if(unconsumed[index].start-unconsumed[index-1].end>700)first=index;
         const selected=unconsumed.slice(first),question=selected.map(item=>item.text).join('').trim();
-        if(!question||!explicitGalleryVoiceAction(question,options.answer(question).action))return;
+        if(!question)return;const requested=options.answer(question).action;if(!explicitGalleryVoiceAction(question,requested)&&!parsePondsterDestination(requested)?.control)return;
         consumedTranscriptEnd=Math.max(consumedTranscriptEnd,...selected.map(item=>item.end));
         lastDirectGalleryEnd=consumedTranscriptEnd;directGalleryCount++;
         await deliver(question,null);
@@ -304,7 +316,7 @@ export function createPondsterLiveControl(options: ControllerOptions) {
             const handled=await deliver(question,id);
             if(handled&&selected.length)consumedTranscriptEnd=Math.max(consumedTranscriptEnd,...selected.map(fragment=>fragment.end));
           }
-          else if(lastDirectGalleryEnd>=0&&fragments.every(item=>item.end<=consumedTranscriptEnd))appendCommentary('The same public gallery navigation was already requested for this utterance. Continue briefly from the current picture without repeating the navigation or voting reminder. Do not claim a completed render.',id);
+          else if(lastDirectGalleryEnd>=0&&fragments.every(item=>item.end<=consumedTranscriptEnd))appendCommentary('The same public gallery navigation was already requested for this utterance. Do not repeat the action or voting reminder. If this was a vote request, wait for the separate browser result before saying it was saved. Otherwise continue briefly from the current picture. Do not claim a completed render.',id);
           else appendCommentary('I couldn’t quite catch your question. Please ask me again.', id);
         } catch { error('I couldn’t answer that voice request. Please try again.'); track(stop()); }
         finally {
@@ -417,6 +429,12 @@ export function createPondsterLiveControl(options: ControllerOptions) {
         appendCommentary(content, null);
         const saved=options.history?.greetingSent();if(saved)track(saved);
       } catch { error('I couldn’t begin my voice greeting. Please try again later.'); return stop(); }
+      return;
+    }
+    if(input.type==='pondster.action.result'){
+      if(!ready||!pendingVote||input.actionId!==pendingVote.id)return;
+      const pending=pendingVote;pendingVote=null;cancel(pending.timer);busy('work',false);
+      appendCommentary(`Use only this brief result of the requested website action: ${actionResultSpeech(input.result,pending.kind)}`,pending.delegationId);
       return;
     }
     if (input.type === 'pondster.text' && ready && typeof input.text === 'string' && input.text.trim().length > 0 && input.text.length <= 1000) {

@@ -101,7 +101,7 @@ assert.equal(colorTour.find(scene => scene.roomId === 'media-center').totalVotes
 for (const [roomId, designId, image] of [
   ['media-center', 'media-03', '/concepts/media-03-deep-navy.png'],
   ['spiral-staircase', 'spiral-basement-coastal-blue', '/concepts/basement-coastal-blue.jpg'],
-  ['garage-barn-door', 'garage-08', '/concepts/08-wall-limewashed-brick.png']
+  ['garage-barn-door', 'garage-08', '/concepts/garage-v3-limewashed-brick.png']
 ]) {
   const motion = colorTour.find(scene => scene.id === `${roomId}-motion`);
   assert.equal(colorTour.find(scene => scene.id === `${roomId}-design`), undefined);

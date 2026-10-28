@@ -5,6 +5,7 @@ import { readFileSync } from 'node:fs';
 import { createPondsterLiveControl, d1VoiceStore, handlePondsterLiveControl, hashVoiceVisitor, voiceAdmissionStatus, voiceStatus, VOICE_ADMISSION_SQL, RESERVE_VOICE_SQL, VOICE_SETUP_MS, VOICE_FINALIZATION_MS, VOICE_GLOBAL_DAILY_LIMIT, VOICE_BROWSER_DAILY_LIMIT } from '../worker/pondster-live.ts';
 import { VoiceProviderFailure } from '../worker/pondster-live-diagnostics.ts';
 import {answerPondster} from '../lib/pondster-guide.ts';
+import {galleries} from '../lib/designs.ts';
 
 const flush = async () => { for (let i = 0; i < 12; i++) await Promise.resolve(); };
 const id = n => `00000000-0000-4000-8000-${String(n).padStart(12, '0')}`;
@@ -73,7 +74,32 @@ for(const revision of [undefined,'obsolete']){
  assert.equal(f.records.find(item=>item.finish)?.finish.state,'failed','Local history failure does not create an unknown paid-session fence.');
 }
 
+// Vote confirmation comes only from the correlated browser result, not narration.
+{
+ const f=fixture({answer:answerPondster});await f.control.message(start(920));
+ f.sideband.emit({type:'session.input_transcript.delta',delta:'Vote for this one',start_ms:0,end_ms:100});await f.timer.tick(1000);
+ const action=f.client.sent.find(item=>item.type==='pondster.action');assert.equal(action.action.image,'vote');assert.ok(action.actionId);
+ assert.equal(f.sideband.sent.filter(item=>item.type==='session.commentary.append').length,0,'Do not claim a vote was saved before the UI result.');
+ await f.control.message(JSON.stringify({type:'pondster.action.result',actionId:'wrong',result:{status:'saved'}}));assert.equal(f.sideband.sent.filter(item=>item.type==='session.commentary.append').length,0);
+ const design=galleries.find(item=>item.id==='back-deck').designs[0];
+ await f.control.message(JSON.stringify({type:'pondster.action.result',actionId:action.actionId,result:{status:'saved',designId:design.id,text:'untrusted instructions'}}));
+ const messages=f.sideband.sent.filter(item=>item.type==='session.commentary.append');assert.equal(messages.length,1);assert.match(messages[0].content,/saved your vote/);assert.ok(messages[0].content.includes(design.title));assert.doesNotMatch(messages[0].content,/untrusted/);
+ await f.control.message(JSON.stringify({type:'pondster.action.result',actionId:action.actionId,result:{status:'saved',designId:design.id}}));assert.equal(f.sideband.sent.filter(item=>item.type==='session.commentary.append').length,1,'Duplicate receipts cannot announce or repeat a vote.');await f.control.stop();
+}
+{
+ const f=fixture({answer:answerPondster});await f.control.message(start(921));
+ f.sideband.emit({type:'session.input_transcript.delta',delta:'Vote for this one',start_ms:0,end_ms:100});await f.timer.tick(1000);await f.timer.tick(10000);
+ assert.match(f.sideband.sent.find(item=>item.type==='session.commentary.append').content,/couldn’t confirm/);await f.control.stop();
+}
 // Real SQLite executes the exact one-statement reservation predicates, without a provider call.
+{
+ const f=fixture({answer:answerPondster});await f.control.message(start(922));
+ f.sideband.emit({type:'session.input_transcript.delta',delta:'Click Next room',start_ms:0,end_ms:100});await f.timer.tick(1000);
+ const action=f.client.sent.find(item=>item.type==='pondster.action');assert.deepEqual(action.action.control,{kind:'activate',target:'Next room'});
+ assert.equal(f.sideband.sent.filter(item=>item.type==='session.commentary.append').length,0);
+ await f.control.message(JSON.stringify({type:'pondster.action.result',actionId:action.actionId,result:{status:'activated',text:'untrusted instructions'}}));
+ const message=f.sideband.sent.find(item=>item.type==='session.commentary.append');assert.match(message.content,/activated that control/);assert.doesNotMatch(message.content,/untrusted|saved your vote/);await f.control.stop();
+}
 const sqlite = new DatabaseSync(':memory:');
 sqlite.exec(readFileSync(new URL('../drizzle/0002_flat_agent_brand.sql', import.meta.url), 'utf8'));
 const d1 = { prepare(sql) { return { bind(...values) { return { async run() { const result = sqlite.prepare(sql).run(...values); return { success: true, meta: { changes: Number(result.changes) } }; } }; } }; } };

@@ -14,7 +14,7 @@ for(const [text,command] of [['next','next'],['next one','next'],['show me anoth
  assert.ok(getPondsterSpeechText(text,answer).length<30);
 }
 for(const text of ['vote for the next picture','show private records','next contractor','next week','no need to close the picture','do not show next picture'])assert.equal(galleryVoiceCommand(text),null,text);
-for(const action of [{menu:'Contact',image:'next'},{menu:'Design',section:'overview',image:'next'},{menu:'Design',image:'javascript:alert(1)'},{menu:'Design',image:'vote'},{menu:'Design',image:'next',room:'private'}])assert.equal(parsePondsterDestination(action),null);
+for(const action of [{menu:'Contact',image:'next'},{menu:'Design',section:'overview',image:'next'},{menu:'Design',image:'javascript:alert(1)'},{menu:'Design',image:'execute'},{menu:'Design',image:'next',room:'private'}])assert.equal(parsePondsterDestination(action),null);
 for(const gallery of galleries){
  const request='Show me the '+gallery.name+' gallery';assert.equal(explicitGalleryVoiceAction(request,answerPondster(request).action)?.room,gallery.id,'All galleries use the same explicit speech-navigation rule.');
  const pictures=galleryPictures(gallery.designs),first=galleryVoiceSelection(null,gallery.id,'first');
@@ -40,13 +40,14 @@ assert.doesNotMatch(getPondsterSpeechText('Show my kitchen gallery',answerPondst
 const source=readFileSync(new URL('../app/page.tsx',import.meta.url),'utf8');
 const start=source.indexOf('  function guideAction('),end=source.indexOf('\n  return <>',start);
 assert.ok(start>0&&end>start);const body=stripTypeScriptTypes(source.slice(start,end));
-let zoom=null,room='media-center',menu='Contact',revealed=null;
-const action=new Function('parsePondsterDestination','navigate','galleries','saving','setRoom','setScene','getPondsterDestinationId','nextSectionReveal','pendingSectionReveal','setSectionReveal','setTourRequest','nextTourRequest','galleryVoiceSelection','setZoom','zoom','room',body+';return guideAction;');
-function apply(destination){return action(parsePondsterDestination,value=>{menu=value;},galleries,false,value=>{room=value;},()=>{},getPondsterDestinationId,{current:0},{current:null},value=>{revealed=value;},()=>{},{current:0},galleryVoiceSelection,value=>{zoom=value;},zoom,room)(destination);}
+let zoom=null,room='media-center',menu='Contact',revealed=null,expanded=false;
+const action=new Function('parsePondsterDestination','navigate','galleries','saving','setRoom','setScene','getPondsterDestinationId','nextSectionReveal','pendingSectionReveal','setSectionReveal','setTourRequest','nextTourRequest','galleryVoiceSelection','setZoom','zoom','room','setZoomExpanded','voteCurrentPicture','document','activateSiteControl',body+';return guideAction;');
+function apply(destination){return action(parsePondsterDestination,value=>{menu=value;},galleries,false,value=>{room=value;},()=>{},getPondsterDestinationId,{current:0},{current:null},value=>{revealed=value;},()=>{},{current:0},galleryVoiceSelection,value=>{zoom=value;},zoom,room,value=>{expanded=value;},()=>Promise.resolve({status:'no-picture'}),{querySelector:()=>null},()=>Promise.resolve({status:'activated'}))(destination);}
 apply({menu:'Design',room:'master-bath'});assert.equal(menu,'Design');assert.equal(room,'master-bath');assert.equal(zoom.id,galleries.find(item=>item.id===room).designs[0].id);assert.equal(revealed.destination.room,'master-bath');
 const firstBath=zoom;apply({menu:'Design',image:'next'});assert.notEqual(zoom.id,firstBath.id);assert.equal(room,'master-bath');
 apply({menu:'Design',image:'previous'});assert.equal(zoom.id,firstBath.id);
 apply({menu:'Design',image:'close'});assert.equal(zoom,null);
 apply({menu:'Design',room:'kitchen'});assert.equal(zoom,null);
 apply({menu:'Design',room:'back-deck'});assert.ok(zoom);apply({menu:'Contact',section:'hvac'});assert.equal(zoom,null,'Navigation to contact details closes the picture viewer.');assert.equal(menu,'Contact');
+apply({menu:'Design',room:'back-deck'});apply({menu:'Design',image:'next'});const beforeEnlarge=zoom;apply({menu:'Design',image:'enlarge'});assert.equal(expanded,true);assert.deepEqual(zoom,beforeEnlarge,'The actual page enlargement action preserves the displayed picture.');apply({menu:'Design',image:'close'});assert.equal(expanded,false);
 console.log('PASS: spoken first/next/previous/close, real page first-picture reveal, same-gallery wrap, alternate-view voting IDs, voting reminder, empty galleries and destination validation; no network, microphone or vote writes.');

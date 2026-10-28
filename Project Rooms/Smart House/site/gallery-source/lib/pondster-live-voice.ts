@@ -4,6 +4,7 @@ import { isPondsterFarewell, PONDSTER_FAREWELL_ACK } from './pondster-voice-inte
 import { parsePondsterDestination, type PondsterDestination } from './pondster-destinations';
 import { firstName, type PondsterVisitor } from './pondster-visitor';
 import { PONDSTER_CLIENT_REVISION } from './pondster-live-protocol';
+import type {PondsterUiResult} from './pondster-gallery-result';
 export type PondsterQuietProgress = { reason: 'checking' | 'unavailable' | 'input' | 'output' | 'work' | 'response' | 'quiet'; remainingSeconds: number | null };
 export type PondsterLiveState = {
   available: boolean; connecting: boolean; active: boolean;
@@ -19,7 +20,7 @@ export type PondsterLiveVoiceOptions = {
   audioElement: HTMLAudioElement;
   onState(state: PondsterLiveState): void;
   onTranscript(transcript: PondsterLiveTranscript): void;
-  onAction?(action: PondsterLiveAction): void;
+  onAction?(action: PondsterLiveAction): void|PondsterUiResult|Promise<void|PondsterUiResult>;
   onVisitor?(visitor:PondsterVisitor):void;
   onRecordingNotice?(message:string):void;
   expectsSaving?:()=>boolean;
@@ -51,6 +52,7 @@ type Attempt = {
   cancelled: Promise<symbol>; cancel(): void;
   startPromise: Promise<void>; ready(): void;
   captions: Record<'you' | 'Pondster', Caption>;
+  uiActionIds:Set<string>;
   closeSent: boolean; stopSent: boolean; startedSent: boolean;
   silenceMonitor: PondsterSilenceMonitor | null;
   streamMeter: ReturnType<typeof createPondsterStreamMeter> | null;
@@ -342,7 +344,14 @@ export function createPondsterLiveVoice(options: PondsterLiveVoiceOptions): Pond
         if(typeof event.message==='string')options.onRecordingNotice?.(event.message.slice(0,240));
       } else if (event.type === 'pondster.ready') a.ready();
       else if (event.type === 'pondster.action') {
-        const action = parsePondsterDestination(event.action); if (action) options.onAction?.(action);
+        const action = parsePondsterDestination(event.action);
+        if(action?.image==='vote'||action?.control){
+          const id=event.actionId;
+          if(typeof id!=='string'||id.length>80||a.uiActionIds.has(id)||a.uiActionIds.size>=100)return;
+          a.uiActionIds.add(id);
+          const reply=(result:unknown)=>{if(live(a))send(a.control,{type:'pondster.action.result',actionId:id,result:result??{status:'failed'}});};
+          try{Promise.resolve(options.onAction?.(action)).then(reply,()=>reply({status:'failed'}));}catch{reply({status:'failed'});}
+        }else if(action)options.onAction?.(action);
       } else if (event.type === 'pondster.error') {
         // Only our same-origin service can supply this public, bounded error message.
         const message = typeof event.message === 'string' ? event.message.trim().slice(0, 240) : '';
@@ -491,7 +500,7 @@ export function createPondsterLiveVoice(options: PondsterLiveVoiceOptions): Pond
     const a: Attempt = { id: ++sequence, stopped: false, started: false, finalized: false,
       mic: null, peer: null, channel: null, control: null, abort: new AbortController(), timers: new Set(),
       cancelled, cancel, startPromise: Promise.resolve(), ready: () => {},
-      captions: { you: { text: '', lastEnd: null, timer: null }, Pondster: { text: '', lastEnd: null, timer: null } },
+      captions: { you: { text: '', lastEnd: null, timer: null }, Pondster: { text: '', lastEnd: null, timer: null } },uiActionIds:new Set(),
       closeSent: false, stopSent: false, startedSent: false, silenceMonitor: null,
       streamMeter: options.activitySamplerFactory ? null : (options.streamMeterFactory ?? createPondsterStreamMeter)(),
       busyUntil: { work: 0, response: 0 } };

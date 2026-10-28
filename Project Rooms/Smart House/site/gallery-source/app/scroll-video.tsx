@@ -14,6 +14,13 @@ export default function ScrollVideo({ label, ratio, children,media }: { label: s
     setExpanded(false);
     if (returnFocus) shell.current?.querySelector('video')?.focus({ preventScroll: true });
   }, []);
+  useEffect(()=>{
+    const node=shell.current;if(!node)return;
+    const expand=()=>{if(document.querySelector('dialog[open]'))return;dismissed.current=false;setExpanded(true);};
+    const collapse=()=>dismiss(true);
+    node.addEventListener('pondster-video-expand',expand);node.addEventListener('pondster-video-collapse',collapse);
+    return()=>{node.removeEventListener('pondster-video-expand',expand);node.removeEventListener('pondster-video-collapse',collapse);};
+  },[dismiss]);
 
   useEffect(() => {
     let frame = 0;

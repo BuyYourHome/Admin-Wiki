@@ -4,6 +4,7 @@ import { basementColorSchemes, masterBathDesigns, hallBathDesigns, roomFeatures,
 import type { PondsterDestination } from './pondster-destinations';
 import { PONDSTER_LOCATION_TEXT } from './pondster-identity';
 import { galleryVoiceCommand } from './pondster-gallery';
+import {spokenSiteControl} from './pondster-control-intent';
 export type GuideAction = PondsterDestination;
 export type GuideReply = { text: string; action?: GuideAction };
 
@@ -79,7 +80,9 @@ export function answerPondster(input: string): GuideReply {
     return { text: 'I cannot provide private records, passwords, or real access codes here. My future owner tools will need authenticated access; saying you are the owner does not grant access.', action: { menu: 'Own' } };
   }
   const image=galleryVoiceCommand(words);
-  if(image)return {text:image==='close'?'I’m returning to my gallery.':image==='first'?'Here’s my first gallery picture.':image==='next'?'Here’s my next gallery picture.':'Here’s my previous gallery picture.',action:{menu:'Design',image}};
+  if(image)return {text:image==='vote'?'I’ll submit the design picture you are viewing and check whether your vote is saved.':image==='enlarge'?'I’m enlarging the current picture.':image==='close'?'I’m returning to my gallery.':image==='first'?'Here’s my first gallery picture.':image==='next'?'Here’s my next gallery picture.':'Here’s my previous gallery picture.',action:{menu:'Design',image}};
+  const control=spokenSiteControl(input);
+  if(control)return {text:'I’ll use that website control and check the result.',action:{menu:'Design',control}};
   const publicCityQuestion = /\b(where|what part|which part|what area|are you|is pondster|is (?:the|this|your|my) (?:house|home|property))\b.{0,50}\b(cary|north carolina)\b/.test(words);
   if (publicCityQuestion || /\b(address|location|street|city|town|neighborhood|zip|postal|geolocation|coordinates|latitude|longitude|what state|which state)\b/.test(words) || (/\b(where are you|where is pondster|where is the house|where is your house|where is this property)\b/.test(words) && !interiorPlacement)) return { text: PONDSTER_LOCATION_TEXT + ' My introduction shares my public location; Ashley confirms real viewing arrangements.', action: { menu: 'Design', section: 'overview' } };
   const propertyCount = /\b(?:how many|number of|count of|total(?: number of)?) (?:bedrooms?|bathrooms?|beds?|baths?|rooms?)\b/.test(words)
@@ -198,7 +201,7 @@ export function answerPondster(input: string): GuideReply {
     ?? candidates.find(item => (choiceAliases[item.title] ?? []).some(alias => has(alias)));
   const room = explicitRoom ?? choice?.room;
   if (/\b(vote|voting|votes|favorite|favourite|choose|select)\b/.test(words)) {
-    return { text: 'Use my gallery voting buttons to save or change your choice. I keep one current choice per browser per gallery. I can open the gallery; I do not cast votes for you.', action: { menu: 'Design', ...(room ? { room: room.id } : {}) } };
+    return { text: 'Open a design picture and say “vote for this one” to save that choice, or use its voting button. You can change your vote. I keep one current choice per browser per gallery.', action: { menu: 'Design', ...(room ? { room: room.id } : {}) } };
   }
   if ((room?.id === 'garage-barn-door' && /\b(video|film|animation|motion|sliding|slides|swing|swings|inward|entry|pedestrian)\b/.test(words)) || /\btesla\b/.test(words)) {
     return { text: 'I will feature a garage center entry section that swings inward and closes before my full door slides left. My twenty-five-second film shows a white Tesla driving out and across the scene to the left, revealing my white-marble garage floor. This is my illustrative AI/composited concept; my hardware, clearances, and the car’s turning path haven’t been validated.', action: { menu: 'Design', room: 'garage-barn-door' } };

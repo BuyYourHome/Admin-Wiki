@@ -15,15 +15,15 @@ assert.equal(getSectionRevealTop({...oversized,targetTop:204,targetBottom:1464})
 assert.equal(getSectionRevealTop({...oversized,targetTop:260,targetBottom:500}),null,'A fully visible small voice target stays still.');
 assert.equal(getSectionRevealTop({...oversized,targetTop:NaN}),null);
 assert.equal(getSectionRevealTop({...oversized,headerBottom:720}),null);
-const handler=source.match(/  function guideAction\(action:GuideAction\)\{[\s\S]*?\n  \}/)?.[0];
+const handler=source.match(/  function guideAction\(action:GuideAction\)[^{]*\{[\s\S]*?\n  \}/)?.[0];
 assert.ok(handler,'Exercise the real UI action handler.');
 function actionHarness(saving=false){
   const navigation=[],rooms=[],scenes=[],requests=[],tours=[],pictures=[];
   const pending={current:null},next={current:0},nextTour={current:0};
-  const run=new Function('parsePondsterDestination','navigate','setTourRequest','nextTourRequest','saving','galleries','setRoom','setScene','getPondsterDestinationId','nextSectionReveal','pendingSectionReveal','setSectionReveal','galleryVoiceSelection','setZoom','zoom','room',
+  const run=new Function('parsePondsterDestination','navigate','setTourRequest','nextTourRequest','saving','galleries','setRoom','setScene','getPondsterDestinationId','nextSectionReveal','pendingSectionReveal','setSectionReveal','galleryVoiceSelection','setZoom','zoom','room','setZoomExpanded','voteCurrentPicture','document','activateSiteControl',
     stripTypeScriptTypes(handler)+'\nreturn guideAction;')(
     parsePondsterDestination,menu=>{navigation.push(menu);pending.current=null;},id=>tours.push(id),nextTour,saving,galleries,
-    room=>rooms.push(room),scene=>scenes.push(scene),getPondsterDestinationId,next,pending,request=>requests.push(request),galleryVoiceSelection,design=>pictures.push(design),null,'media-center');
+    room=>rooms.push(room),scene=>scenes.push(scene),getPondsterDestinationId,next,pending,request=>requests.push(request),galleryVoiceSelection,design=>pictures.push(design),null,'media-center',()=>{},()=>Promise.resolve({status:'no-picture'}),{querySelector:()=>null},()=>Promise.resolve({status:'activated'}));
   return{run,navigation,rooms,scenes,requests,tours,pictures,pending};
 }
 {
