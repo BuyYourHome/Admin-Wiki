@@ -57,7 +57,7 @@ function hasPhrase(input: string, phrase: string) { return ` ${input} `.includes
 const planAliases: Record<string,string[]> = { 'master-bedroom':['primary bedroom','main bedroom','master suite'], 'walk-in-closet':['walk in closet'], 'dining-room':['dining area'], 'spiral-stair':['spiral staircase','spiral stairs'], 'open-deck':['back deck'], 'existing-garage':['current garage'], 'new-garage':['proposed garage'] };
 
 export function answerPondster(input: string): GuideReply {
-  const words = normalize(input).replace(/^(?:(?:hey|hi|hello|okay|ok) )?pondster(?: |$)/, '').trim();
+  const words = normalize(input).replace(/\bh\s*v\s*a\s*c\b/g, 'hvac').replace(/^(?:(?:hey|hi|hello|okay|ok) )?pondster(?: |$)/, '').trim();
   const has = (phrase: string) => hasPhrase(words, phrase);
   const planMatches = floorPlanRooms.filter(item => has(item.name) || (planAliases[item.id] ?? []).some(alias => has(alias)))
     .sort((a,b) => b.name.length-a.name.length).filter((item,_,items) => !items.some(other => other !== item && hasPhrase(normalize(other.name),item.name)));
@@ -95,7 +95,9 @@ export function answerPondster(input: string): GuideReply {
     {key:'plumber',terms:/\b(plumber|plumbing|executive plumbing|executiveplumbingcompany)\b/},
   ] as const).flatMap(({key,terms})=>{const match=terms.exec(words);return match?[{key,index:match.index}]:[];}).sort((a,b)=>a.index-b.index);
   const trade = tradeMentions.length > 0 ? tradeMentions[0].key : (/\b(contractors|trade contacts|trades)\b/.test(words)?'all':null);
-  const tradeQuestion = /\b(who|contact|website|web site|url|link|contractors?|company|vendor|selected|hire|hired|phone|email|call)\b/.test(words);
+  const tradeContactQuestion = /\b(who|contact|website|web site|url|link|contractors?|company|vendor|selected|hire|hired|phone|email|call)\b/.test(words);
+  const hvacSystemTopic = trade === 'hvac' && /\b(systems?|plans?|features?|heating|cooling|comfort|automations?)\b/.test(words) && !tradeContactQuestion;
+  const tradeQuestion = tradeContactQuestion || (!hvacSystemTopic && /\b(show|open|find|tell|describe|information|info|details?|about)\b/.test(words));
   if (trade && tradeQuestion && !unverifiedDetail && !/\b(address|location|where)\b/.test(words)) {
     const contacts = {
       gc: 'My selected general contractor is Glasgow Design Build: https://glasgowdb.com/.',

@@ -25,3 +25,15 @@ A current preview was opened on loopback port 19082; the older port 19081 previe
 Version 73 is published. After publication, the GC question was entered through the typed guide on public Pondstr.com with Voice off; its card was visibly aligned beneath the fixed header. The existing design-view regression also passed, preserving gallery/vote identities and seven tour scenes/three films. Final TypeScript, build, diff and 185-file source/build secret checks passed; twenty source text mirrors match. Exact release identifiers are in [[Project Rooms/Smart House/working/hosting-and-domain]].
 
 A fresh natural spoken section-navigation trial remains unverified; end an existing conversation and refresh/start a new one after publication to load the new prompt and client code. The approved key, Vesper, voice lifecycle/limits, public audience, private-location boundary, catalog and media remain unchanged.
+
+## HVAC information wording — version 74
+
+Wes reported that “show me information about my general contractor” works, but the equivalent HVAC request does not. The guide's trade-contact gate included the word contractor, so the GC request passed, while the HVAC wording lacked any accepted contact-intent word and fell through to general climate plans. This follow-up began at `2026-10-28T11:50:53Z`.
+
+Trade-information requests now recognize show/open/find/tell/describe/information/info/details/about, with HVAC acronym spacing normalized. Plain HVAC requests reveal True Service; explicit HVAC system/feature plans stay in Explore. The same information wording covers the plumber. Private access and unknown installed-model/specification guards still take precedence. The Natural prompt explicitly includes the reported phrase.
+
+Guide/context regressions passed for the exact wording, HVAC/H V A C/H.V.A.C./H-vac variants, GC/plumber equivalence, explicit system plans and private/unknown-equipment negatives. Final TypeScript, production build, diff and 185-file secret checks passed; four source mirrors match. After publication, the exact “Show me information about the HVAC” request was entered into the public typed guide with Voice off. Its answer identified True Service, and the HVAC card was visibly beneath the fixed header. No microphone, paid test, vote/comment write or external contact action occurred.
+
+During this follow-up Wes reported the rolling conversation-limit banner. Read-only native inspection at `2026-10-28T11:56:24Z` found 20 starts in the preceding 24 hours (19 closed, 1 unconfirmed), spread across browser counts 11/8/1; the site-wide cap, rather than a single-browser 20-start count, explains the banner. The earliest of those starts ages out at `2026-10-28T14:37:56.107Z` (10:37:56 a.m. Eastern). The configured query counts starts regardless of ended state. The count is a website admission rule, not evidence about API billing balance. No limit, cookie or session row was changed; the unconfirmed record remains preserved. A fresh natural spoken version 74 trial remains pending.
+
+Exact release identifiers are in [[Project Rooms/Smart House/working/hosting-and-domain]].

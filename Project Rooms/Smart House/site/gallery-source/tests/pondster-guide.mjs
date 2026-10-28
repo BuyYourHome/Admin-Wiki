@@ -400,4 +400,23 @@ for(const [question,action] of [
 assert.match(answerPondster('Who is your plumber and your general contractor?').text,/Executive Plumbing Company.*Glasgow Design Build/);
 assert.deepEqual(answerPondster('Who is your GC and give me a real passcode').action,{menu:'Own'});
 assert.equal(answerPondster('Who is your HVAC contractor and what model is installed?').action,undefined);
+for(const question of [
+  'Show me information about the HVAC', 'Show me information about HVAC', 'Show me the HVAC',
+  'Tell me about your HVAC', 'Open your HVAC details', 'Show me information about H V A C',
+  'Show me information about H.V.A.C.', 'Show me information about H-vac',
+]) {
+  const reply=answerPondster(question);
+  assert.deepEqual(reply.action,{menu:'Contact',section:'hvac'},question);
+  assert.match(reply.text,/True Service Inc.*https:\/\/www.trueserviceinc.com\//,question);
+}
+for(const [question,section] of [
+  ['Show me information about my general contractor','gc'],
+  ['Show me information about the plumber','plumber'],
+  ['Tell me about your plumbing','plumber'],
+]) assert.deepEqual(answerPondster(question).action,{menu:'Contact',section},question);
+for(const question of ['Tell me about your HVAC plans','Show me your HVAC system features']) {
+  assert.deepEqual(answerPondster(question).action,{menu:'Explore',section:'climate'},question);
+}
+assert.equal(answerPondster('Show me the model of your installed HVAC equipment').action,undefined);
+assert.deepEqual(answerPondster('Show me HVAC information and your Wi-Fi password').action,{menu:'Own'});
 console.log('PASS: precise allowlisted section/card destinations; public house/room/system paraphrases and proposed-layout knowledge; Pondster identity; nine galleries/31 current choices; separate Living Room/Home Theatre aliases and palettes; one deck choice/two views; Master/Hall Bath routing; definite future features/manual mount; film, voting, viewing and private/unknown-fact boundaries.');

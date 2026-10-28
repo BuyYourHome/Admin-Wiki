@@ -708,6 +708,17 @@ Wes requested that voice requests reveal the relevant section throughout the sit
 - Deployment: `appgdep_6ae1dc1539648191978ef6bfafcb8cef`, succeeded `2026-10-28T11:27:25.243671+00:00`, environment revision **4**.
 - Archive: `sha256:f14aa93c9969bbb1f4ae799d207b7cde4f858ef9dd9d29d052d519b547ac13f7`, 128 files, 66,457,600 bytes.
 
-Destination/Guide, actual UI selection/effect, Contact/navigation, gallery geometry, server/client/context and existing design-view regressions passed. Final TypeScript, production build, diff and185-file source/build secret checks passed. Twenty source text mirrors match. Native in-app-browser local checks confirmed GC-card reveal, Master Bath expansion and committed Pantry detail selection; a large partially visible target was corrected and rechecked directly below the header. After publication, the same GC question was submitted through the public typed guide with Voice off; its card was visibly aligned below the fixed header. These checks prove the UI path and published client action, not a fresh natural spoken round trip. No microphone, paid voice session, production vote/comment write, key, billing, audience or device-control change occurred.
+Destination/Guide, actual UI selection/effect, Contact/navigation, gallery geometry, server/client/context and existing design-view regressions passed. Final TypeScript, production build, diff and 185-file source/build secret checks passed. Twenty source text mirrors match. Native in-app-browser local checks confirmed GC-card reveal, Master Bath expansion and committed Pantry detail selection; a large partially visible target was corrected and rechecked directly below the header. After publication, the same GC question was submitted through the public typed guide with Voice off; its card was visibly aligned below the fixed header. These checks prove the UI path and published client action, not a fresh natural spoken round trip. No microphone, paid voice session, production vote/comment write, key, billing, audience or device-control change occurred.
 
 The current owned19082 preview was stopped; older19081 was identified as obsolete and left untouched. A new voice conversation is needed for the new prompt/client settings. The later question about all house facts was discussion only; no complete house knowledge base or private-record import was added. See [[Project Rooms/Smart House/working/voice-section-navigation-20261028]].
+
+## HVAC information phrasing — version 74, 2026-10-28
+
+Plain HVAC information requests and acronym-spacing variants now reveal the selected True Service Contact card. GC/plumber information wording is consistent; explicit HVAC system plans still reveal Explore climate information, and private/unknown-specification guards remain.
+
+- Source: `4ba0e705df0234cf3dd8231b3f7d3871304fed66`.
+- Saved version: `appgprj_6ad4d98e08708191858cab113814704e~appgver_de2da486a9008191a52c78b557c6150b`, version **74**.
+- Deployment: `appgdep_6ae1e29b49748191bd09f1f2e566c3fa`, succeeded `2026-10-28T11:55:17.246729+00:00`, environment revision **4**.
+- Archive: `sha256:25abf472fea414563bd51e39aa1f10431c7dc8c8abcb17426aca4d9cc8a3ff22`, 128 files, 66,457,600 bytes.
+
+Guide/context, final TypeScript, build, diff and 185-file source/build secret checks passed. Four text mirrors match. The exact request was verified on public Pondstr.com through typed guidance with Voice off; True Service was identified and its card visibly aligned beneath the header. Fresh speech testing remains blocked by the existing 20-start site-wide rolling cap, confirmed read-only at 11:56Z. No cap, session row, key, billing, audience, voice/model or lifecycle setting was changed. See [[Project Rooms/Smart House/working/voice-section-navigation-20261028]].

@@ -32,6 +32,8 @@ assert.match(session.instructions, /Can you show me around the house/);
 assert.match(session.instructions, /Generate <\|SpawnThinking\|> when: The visitor explicitly asks for one of these website actions, corrects an action already requested, or asks a question that clearly matches a supported public visual destination/);
 assert.match(session.instructions, /Wait for the guide's result before claiming the action happened/);
 for(const question of ['Who is your GC?','Who is your plumber?','Who handles your HVAC?','Who is your realtor?'])assert.ok(session.instructions.includes(question));
+assert.ok(session.instructions.includes('Show me information about HVAC'));
+assert.match(session.instructions,/plain HVAC information requests.*True Service.*explicit HVAC system or feature questions/);
 assert.match(session.instructions, /Named room, public system, floor-plan or public-document questions should reveal their matching section/);
 assert.match(session.instructions, /do not assert that scrolling succeeded or that the visitor saw the section/);
 assert.match(session.instructions, /Do not generate <\|SpawnThinking\|> when: A question.*can be answered from my public facts/);
