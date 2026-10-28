@@ -41,7 +41,7 @@ function actionHarness(saving=false){
   assert.deepEqual(h.rooms,['media-center','media-center']);
   assert.deepEqual(h.requests.map(request=>request.id),[1,2],'A voice repeat reveals the current gallery without requiring a room-state change.');
   assert.equal(getPondsterDestinationId(h.pending.current.destination),'design-gallery');
-  assert.equal(h.pictures[0].id,galleries.find(item=>item.id==='media-center').designs[0].id,'A guided gallery opens its first actual choice.');
+  assert.equal(h.pictures.filter(Boolean)[0].id,galleries.find(item=>item.id==='media-center').designs[0].id,'A guided gallery opens its first actual choice after dismissing any previous viewer.');
   const busy=actionHarness(true);busy.run({menu:'Design',section:'gallery',room:'master-bath'});
   assert.deepEqual(busy.rooms,[]);assert.deepEqual(busy.requests,[],'A vote in flight still prevents a gallery switch.');
 }

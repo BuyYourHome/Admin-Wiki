@@ -21,7 +21,7 @@ const rooms = [
   { id: 'master-bath', name: 'Master Bath', aliases: ['master bath', 'primary bath', 'main bath', 'bathroom'], choices: masterBathDesigns.map(design => design.title) },
   { id: 'hall-bath', name: 'Hall Bath', aliases: ['hall bath', 'hall bathroom', 'hallway bath', 'hallway bathroom', 'tub and shower', 'tub shower', 'floating vanity'], choices: hallBathDesigns.map(design => design.title) },
   { id: 'spiral-staircase', name: 'Home Theatre', aliases: ['home theatre', 'home theater', 'theatre', 'theater', 'cinema', 'basement', 'spiral staircase', 'spiral stairs', 'spiral', 'staircase', 'stairs', 'stair setting', 'sequential stair lights'], choices: ['Black spiral staircase', ...basementColorSchemes.map(scheme => `Stair setting · ${scheme.title}`)] },
-  { id: 'back-deck', name: 'Back Deck', aliases: ['back deck', 'rear deck', 'deck', 'courtyard'], choices: ['Barn door stain'] }
+  { id: 'back-deck', name: 'Back Deck', aliases: ['back deck', 'backdeck', 'rear deck', 'deck', 'courtyard'], choices: ['Barn door stain'] }
 ];
 const choiceAliases: Record<string, string[]> = {
   'Warm Ivory Cream': ['warm ivory', 'ivory cream'],
@@ -66,7 +66,7 @@ export function answerPondster(input: string): GuideReply {
   const planMentionPosition=(item:{id:string;name:string})=>Math.min(...[item.name,...(planAliases[item.id] ?? [])].filter(alias=>has(alias)).map(alias=>words.indexOf(normalize(alias))));
   const interiorPlacement = planMatches.length > 0 && /\b(planning|plan|put|putting|place|placing|position|positioning)\b/.test(words);
   const informational = /\b(tell|describe|explain|about|how|what|which|will|can|does|is|are|do)\b/.test(words);
-  const roomInformation = informational && !/\b(show|open|compare|vote|voting|choices?|designs?|galler(?:y|ies)|colou?rs?|palettes?|schemes?|finishes)\b/.test(words);
+  const roomInformation = informational && !/\b(show|open|see|look|pictures?|pics?|photos?|images?|compare|vote|voting|choices?|designs?|galler(?:y|ies)|colou?rs?|palettes?|schemes?|finishes)\b/.test(words);
   const tubContext = /\b(tubs?|showers?|bathtub|floating vanity)\b/.test(words);
   const bathOperation = /\b(start|stop|fill|run|turn on|turn off|shut off|temperature|preferred|recognize|voice|activate|activated)\b/.test(words);
   const tubDesignRequest = tubContext && !bathOperation && (hallBathDesigns.some(design => (choiceAliases[design.title] ?? []).some(alias => has(alias)))

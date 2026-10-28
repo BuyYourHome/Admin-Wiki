@@ -1,12 +1,14 @@
+import {PONDSTER_CLIENT_REVISION} from '../lib/pondster-live-protocol.ts';
 import assert from 'node:assert/strict';
 import { DatabaseSync } from 'node:sqlite';
 import { readFileSync } from 'node:fs';
 import { createPondsterLiveControl, d1VoiceStore, handlePondsterLiveControl, hashVoiceVisitor, voiceAdmissionStatus, voiceStatus, VOICE_ADMISSION_SQL, RESERVE_VOICE_SQL, VOICE_SETUP_MS, VOICE_FINALIZATION_MS, VOICE_GLOBAL_DAILY_LIMIT, VOICE_BROWSER_DAILY_LIMIT } from '../worker/pondster-live.ts';
 import { VoiceProviderFailure } from '../worker/pondster-live-diagnostics.ts';
+import {answerPondster} from '../lib/pondster-guide.ts';
 
 const flush = async () => { for (let i = 0; i < 12; i++) await Promise.resolve(); };
 const id = n => `00000000-0000-4000-8000-${String(n).padStart(12, '0')}`;
-const start = n => JSON.stringify({ type: 'pondster.start', requestId: id(n), sdp: 'v=0\r\ns=local-test-only\r\n' });
+const start = n => JSON.stringify({ type: 'pondster.start', clientRevision:PONDSTER_CLIENT_REVISION, requestId: id(n), sdp: 'v=0\r\ns=local-test-only\r\n' });
 function clock() {
   let now = 1_800_000_000_000, counter = 0;
   const timers = new Map();
@@ -54,6 +56,21 @@ function fixture(extra = {}) {
   };
   const control = createPondsterLiveControl(options);
   return { control, timer, client, sideband, store, records, answers, tasks, creates: () => creates, attaches: () => attaches };
+}
+
+for(const revision of [undefined,'obsolete']){
+ const f=fixture();await f.control.message(JSON.stringify({type:'pondster.start',clientRevision:revision,requestId:id(900),sdp:'v=0\r\ns=synthetic\r\n'}));
+ assert.equal(f.creates(),0);assert.equal(f.records.length,0);assert.ok(f.client.sent.some(item=>String(item.message).includes('refresh')),'Old clients are rejected before reservation or paid creation.');
+}
+{
+ const f=fixture();await f.control.message(JSON.stringify({type:'pondster.start',clientRevision:PONDSTER_CLIENT_REVISION,expectsSaving:true,requestId:id(901),sdp:'v=0\r\ns=synthetic\r\n'}));
+ assert.equal(f.creates(),0);assert.equal(f.records.length,0,'Saving expected without a recorder cannot silently start.');
+}
+{
+ const f=fixture({history:{async start(){throw Error('synthetic storage failure');},async finish(){}}});
+ await f.control.message(start(902));await flush();
+ assert.equal(f.creates(),0,'Text history initializes before a provider call.');
+ assert.equal(f.records.find(item=>item.finish)?.finish.state,'failed','Local history failure does not create an unknown paid-session fence.');
 }
 
 // Real SQLite executes the exact one-statement reservation predicates, without a provider call.
@@ -267,7 +284,7 @@ for (const httpStatus of [400, 401, 403, 404, 422, 429, 500]) {
 }
 {
   const f = fixture();
-  await f.control.message(JSON.stringify({ type: 'pondster.start', requestId: 'invalid-request-id', sdp: 'v=0\r\ns=mock\r\n' }));
+  await f.control.message(JSON.stringify({ type: 'pondster.start', clientRevision:PONDSTER_CLIENT_REVISION, requestId: 'invalid-request-id', sdp: 'v=0\r\ns=mock\r\n' }));
   await f.control.completed;
   assert.equal(f.creates(), 0); assert.equal(f.records.length, 0, 'Invalid UUIDs never reach reservation or provider creation');
 }
@@ -298,7 +315,7 @@ for (const httpStatus of [400, 401, 403, 404, 422, 429, 500]) {
     const upgrade = await handlePondsterLiveControl(new Request('https://pondstr.test/api/voice/control', { headers: baseHeaders }),
       { DB: mockD1, OPENAI_API_KEY: ` ${secret} ` }, { waitUntil(task) { tasks.push(task); } }, () => ({ model: 'gpt-live-1' }), () => ({ text: 'mock public answer' }));
     assert.equal(upgrade.status, 101);
-    server.emit({ type: 'pondster.start', requestId, sdp: 'v=0\r\ns=mock-offer\r\n' });
+    server.emit({ type: 'pondster.start', clientRevision:PONDSTER_CLIENT_REVISION, requestId, sdp: 'v=0\r\ns=mock-offer\r\n' });
     await flush(); await Promise.all(tasks); await flush(); await Promise.all(tasks);
     assert.equal(providerCalls.length, 1, 'A rejected creation never attaches or retries');
     assert.equal(writes[0].values[0], requestId.toLowerCase());
@@ -330,7 +347,7 @@ for (const stage of ['create-fetch', 'attach-fetch']) {
   try {
     await handlePondsterLiveControl(new Request('https://pondstr.test/api/voice/control', { headers: baseHeaders }),
       { DB: mockD1, OPENAI_API_KEY: secret }, { waitUntil(task) { tasks.push(task); } }, () => ({ model: 'gpt-live-1' }), () => ({ text: 'synthetic public answer' }));
-    server.emit({ type: 'pondster.start', requestId: id(530), sdp: 'v=0\r\ns=synthetic-offer\r\n' });
+    server.emit({ type: 'pondster.start', clientRevision:PONDSTER_CLIENT_REVISION, requestId: id(530), sdp: 'v=0\r\ns=synthetic-offer\r\n' });
     await flush(); await Promise.all(tasks); await flush(); await Promise.all(tasks);
     assert.equal(calls, stage === 'create-fetch' ? 1 : 2, 'A thrown fetch is never retried.');
     assert.equal(logs.length, 1);
@@ -372,7 +389,7 @@ for (const seedShape of ['valid', 'null-session', 'array-session', 'null-develop
     await handlePondsterLiveControl(new Request('https://pondstr.test/api/voice/control', { headers: baseHeaders }),
       { DB: mockD1, OPENAI_API_KEY: secret }, { waitUntil(task) { tasks.push(task); } },
       () => sessionConfig, () => ({ text: 'Synthetic public answer' }));
-    server.emit({ type: 'pondster.start', requestId: id(115), sdp: 'v=0\r\ns=synthetic-offer\r\n' });
+    server.emit({ type: 'pondster.start', clientRevision:PONDSTER_CLIENT_REVISION, requestId: id(115), sdp: 'v=0\r\ns=synthetic-offer\r\n' });
     await flush(); await Promise.all(tasks);
     assert.deepEqual(postedSession, sessionConfig);
     assert.equal(sideband.sent.length, 0, 'No sideband greeting is sent before provider-readiness acknowledgement.');
@@ -747,4 +764,39 @@ for (const action of [undefined, {menu:'Contact',section:'private'}]) {
   assert.equal(f.sideband.sent.findLast(event=>event.type==='session.commentary.append').content,fullText,'An explicit spoken explanation keeps its safe full answer.');
   await f.control.stop();
 }
-console.log('Pondster live server: navigation before brief speech, explicit read-aloud exception, validated public targets and fact-preserving misses; rolling100 allowance, SQLite admission/lifecycle/cleanup passed (mocks only).');
+{
+ const f=fixture({answer:answerPondster});await f.control.message(start(700));
+ f.sideband.emit({type:'session.input_transcript.delta',delta:'Show me the back deck',start_ms:100,end_ms:700});
+ await f.timer.tick(999);assert.equal(f.client.sent.filter(event=>event.type==='pondster.action').length,0,'Transcript settling is bounded, not a fabricated completed-turn event.');
+ await f.timer.tick(1);
+ assert.deepEqual(f.client.sent.findLast(event=>event.type==='pondster.action').action,{menu:'Design',room:'back-deck'},'A simple explicit deck request navigates even without a model delegation.');
+ assert.match(f.sideband.sent.findLast(event=>event.type==='session.commentary.append').content,/change your vote/);
+ f.sideband.emit({type:'session.delegation.created',offset_ms:800,delegation:{id:'late-deck',target:'client'}});await f.timer.tick(250);
+ assert.equal(f.client.sent.filter(event=>event.type==='pondster.action').length,1,'Late delegation never resets the picture to the first choice.');
+ assert.doesNotMatch(f.sideband.sent.findLast(event=>event.type==='session.commentary.append').content,/couldn’t quite catch/);
+ f.sideband.emit({type:'session.input_transcript.delta',delta:'next picture',start_ms:2000,end_ms:2300});await f.timer.tick(1000);
+ assert.deepEqual(f.client.sent.findLast(event=>event.type==='pondster.action').action,{menu:'Design',image:'next'});
+ await f.control.stop();
+}
+{
+ const f=fixture({answer:answerPondster});await f.control.message(start(701));
+ f.sideband.emit({type:'session.input_transcript.delta',delta:'Show me the living room gallery',start_ms:100,end_ms:700});
+ f.sideband.emit({type:'session.delegation.created',offset_ms:700,delegation:{id:'ordinary-gallery',target:'client'}});
+ await f.timer.tick(250);await f.timer.tick(750);
+ assert.equal(f.client.sent.filter(event=>event.type==='pondster.action').length,1,'Normal delegation and the fallback share one consumed input watermark.');
+ await f.control.stop();
+}
+for(const text of ['Do not show me the back deck','Show me your private records','Show me the deck and the kitchen']){
+ const f=fixture({answer:answerPondster});await f.control.message(start(702));
+ f.sideband.emit({type:'session.input_transcript.delta',delta:text,start_ms:100,end_ms:700});await f.timer.tick(1000);
+ assert.equal(f.client.sent.filter(event=>event.type==='pondster.action').length,0,'Complex, private or negated requests cannot use the deterministic picture fallback.');await f.control.stop();
+}
+{
+ const f=fixture({answer:answerPondster});await f.control.message(start(703));
+ f.sideband.emit({type:'session.input_transcript.delta',delta:'Show me the back',start_ms:100,end_ms:700});
+ f.sideband.emit({type:'session.delegation.created',offset_ms:700,delegation:{id:'early-fragment',target:'client'}});await f.timer.tick(250);
+ f.sideband.emit({type:'session.input_transcript.delta',delta:' deck',start_ms:700,end_ms:1000});await f.timer.tick(1000);
+ assert.deepEqual(f.client.sent.findLast(event=>event.type==='pondster.action').action,{menu:'Design',room:'back-deck'},'An unresolved early fragment does not consume the start of an explicit gallery request.');
+ await f.control.stop();
+}
+console.log('Pondster live server: direct explicit gallery fallback, no duplicate/late reset, private/negated guards, navigation-first speech and existing lifecycle/rolling100 SQLite checks passed (mocks only).');

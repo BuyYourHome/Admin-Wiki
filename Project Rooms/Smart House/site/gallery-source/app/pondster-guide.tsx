@@ -49,9 +49,7 @@ export default forwardRef<PondsterGuideHandle,GuideProps>(function PondsterGuide
   const [visitor,setVisitor]=useState<PondsterVisitor>(UNKNOWN_VISITOR);
   const visitorRef=useRef(visitor);
   const [preferenceNotice,setPreferenceNotice]=useState('');
-  const [needsChoice,setNeedsChoice]=useState(false);
   const [savingPreference,setSavingPreference]=useState(false);
-  const pendingChoice=useRef<(()=>void)|null>(null);
   const visitorLoading=useRef<Promise<void>|null>(null);
   const visitorGeneration=useRef(0);
   const localConversation=useRef<{id:string|null;mode:'browser'|'typed';greeting:string;awaitingName:boolean}|null>(null);
@@ -64,7 +62,12 @@ export default forwardRef<PondsterGuideHandle,GuideProps>(function PondsterGuide
   }
   function loadVisitor(){
     const generation=visitorGeneration.current;
-    const task=fetch('/api/visitor',{cache:'no-store'}).then(async response=>{if(!response.ok)throw new Error();const data=await response.json() as {visitor?:PondsterVisitor};if(generation===visitorGeneration.current&&data.visitor){updateVisitor(data.visitor);if(data.visitor.returning)setMessages([{who:'Pondster',text:visitorGreeting(data.visitor)}]);}}).catch(()=>{if(generation===visitorGeneration.current)setPreferenceNotice('I can’t check my saved conversation preferences right now. You can choose to continue without saving.');});
+    const task=fetch('/api/visitor',{cache:'no-store'}).then(async response=>{
+      if(!response.ok)throw new Error();let data=await response.json() as {visitor?:PondsterVisitor};
+      if(generation!==visitorGeneration.current)return;
+      if(data.visitor?.choice==='unknown')data=await visitorRequest({action:'choose',save:true,default:true});
+      if(generation===visitorGeneration.current&&data.visitor){updateVisitor(data.visitor);if(data.visitor.returning)setMessages([{who:'Pondster',text:visitorGreeting(data.visitor)}]);}
+    }).catch(()=>{if(generation===visitorGeneration.current){updateVisitor({choice:'private',firstName:null,returning:false});setPreferenceNotice('I can’t save text right now, so this conversation will continue without saving.');}});
     visitorLoading.current=task;return task;
   }
   useEffect(()=>{void loadVisitor();},[]);
@@ -72,20 +75,17 @@ export default forwardRef<PondsterGuideHandle,GuideProps>(function PondsterGuide
     const generation=localGeneration.current;
     await (visitorLoading.current??loadVisitor());
     if(generation!==localGeneration.current)return;
-    if(visitorRef.current.choice==='unknown'){
-      pendingChoice.current=action;setNeedsChoice(true);onOpenChange(true);onAction({menu:'Contact',section:'voice'});return;
-    }
     action();
   }
   async function chooseSaving(save:boolean){
     if(savingPreference)return;setSavingPreference(true);visitorGeneration.current++;
-    try{const result=await visitorRequest({action:'choose',save});updateVisitor(result.visitor);setNeedsChoice(false);setPreferenceNotice('');const next=pendingChoice.current;pendingChoice.current=null;next?.();}
+    try{const result=await visitorRequest({action:'choose',save});updateVisitor(result.visitor);setPreferenceNotice(save?'I’ll save future text conversations on this browser.':'Text saving is off. I ended the call to stop collection; you can start another conversation without saving.');}
     catch(error){setPreferenceNotice(error instanceof Error?error.message:'I couldn’t save that preference.');}
     finally{setSavingPreference(false);}
   }
   async function newVisitor(){
-    stopVoice();visitorGeneration.current++;pendingChoice.current=null;
-    try{const result=await visitorRequest({action:'reset'});updateVisitor(result.visitor);setMessages([{who:'Pondster',text:greeting}]);setNeedsChoice(true);setPreferenceNotice('I’m ready for a different visitor. The previous visitor’s text stays private.');}
+    stopVoice();visitorGeneration.current++;
+    try{const result=await visitorRequest({action:'reset'});updateVisitor(result.visitor);setMessages([{who:'Pondster',text:greeting}]);await loadVisitor();setPreferenceNotice('I’m ready for a different visitor. The previous visitor’s text stays private.');}
     catch{setPreferenceNotice('I couldn’t reset this browser’s preference. Please try again.');}
   }
   async function beginLocal(mode:'browser'|'typed'){
@@ -121,7 +121,7 @@ export default forwardRef<PondsterGuideHandle,GuideProps>(function PondsterGuide
         const conversation=await beginLocal(spoken.current?'browser':'typed');
         if(generation!==localGeneration.current)return;
         let reply=answerPondster(question);
-        const name=reply.action?null:nameFromReply(question,conversation.awaitingName);
+        const name=nameFromReply(question,conversation.awaitingName);
         if(name){
           conversation.awaitingName=false;
           if(visitorRef.current.choice==='save'){const saved=await visitorRequest({action:'name',firstName:name});if(generation!==localGeneration.current)return;updateVisitor(saved.visitor);}
@@ -138,7 +138,6 @@ export default forwardRef<PondsterGuideHandle,GuideProps>(function PondsterGuide
   }
   askRef.current=text=>ask(text,false);
   function stopVoice(){
-    pendingChoice.current=null;
     localGeneration.current++;const current=localConversation.current;localConversation.current=null;localStarting.current=null;
     if(current?.id)void visitorRequest({action:'end',conversationId:current.id}).catch(()=>{});
     spoken.current=false;setSpeakReplies(false);controller.current?.stop();liveController.current?.stop();
@@ -162,7 +161,7 @@ export default forwardRef<PondsterGuideHandle,GuideProps>(function PondsterGuide
       onTranscript:(message:Message)=>setMessages(previous=>[...previous,message].slice(-12)),
       onAction:(action:GuideAction)=>actionRef.current(action),
       onVisitor:updateVisitor,
-      onRecordingNotice:message=>setPreferenceNotice(message),
+      expectsSaving:()=>visitorRef.current.choice==='save',onRecordingNotice:message=>setPreferenceNotice(message),
     });
     liveController.current=natural;
     const hidden=()=>{if(document.hidden){spoken.current=false;setSpeakReplies(false);current.hide();natural.stop();}};
@@ -204,7 +203,7 @@ export default forwardRef<PondsterGuideHandle,GuideProps>(function PondsterGuide
   const voiceActive=live.active||live.connecting||voice.session||voice.outputActive;
   useEffect(()=>{
     if(!open&&!voiceActive)return;
-    const escape=(event:KeyboardEvent)=>{if(event.key==='Escape'){event.preventDefault();if(open)close();else stopVoice();}};
+    const escape=(event:KeyboardEvent)=>{if(event.key==='Escape'&&!event.defaultPrevented&&!document.querySelector('dialog[open]')&&!document.documentElement.classList.contains('has-expanded-scroll-video')){event.preventDefault();if(open)close();else stopVoice();}};
     document.addEventListener('keydown',escape);
     return()=>document.removeEventListener('keydown',escape);
   },[open,voiceActive,onOpenChange,onReturnFocus]);
@@ -226,11 +225,11 @@ export default forwardRef<PondsterGuideHandle,GuideProps>(function PondsterGuide
       <header className="pondster-panel-heading"><span className="pondster-avatar" aria-hidden="true">P</span><div><h2 id="pondster-heading">Talk with me.</h2><p>I’M PONDSTER, YOUR HOUSE WITH A VOICE</p></div><button className="pondster-close" onClick={close} aria-label="Close conversation and stop voice">×</button></header>
       <div className="pondster-voice"><p>{useNatural?'Let’s have a conversation.':'Ask me a question, out loud.'}</p>
         <div className="pondster-preferences" aria-label="Conversation saving preferences">
-          <p>I can save our text conversation and your optional first name privately for 90 days. I save no audio. This browser remembers your choice; a name doesn’t verify who you are.</p>
-          {visitor.choice==='unknown'||needsChoice?<div className="pondster-preference-actions"><button type="button" disabled={savingPreference} onClick={()=>void chooseSaving(true)}>Save my conversations</button><button type="button" disabled={savingPreference} onClick={()=>void chooseSaving(false)}>Continue without saving</button></div>:<>
+          <p>I keep text conversations and optional first names privately for up to 90 days while saving is on. I save no audio. You can turn saving off below. A name doesn’t verify who you are.</p>
+          {visitor.choice==='unknown'?<p>I’m checking my conversation preferences…</p>:<>
             <p>{visitor.choice==='save'?`I’m saving text on this browser${visitor.firstName?` for ${visitor.firstName}`:''}.`:'I’m not saving our text or a first name on this browser.'}</p>
-            {visitor.choice==='save'&&<form className="pondster-name-form" onSubmit={event=>{event.preventDefault();const form=event.currentTarget,generation=visitorGeneration.current;const name=String(new FormData(form).get('firstName')||'');void visitorRequest({action:'name',firstName:name}).then(result=>{if(generation!==visitorGeneration.current)return;updateVisitor(result.visitor);setPreferenceNotice(`I’ll call you ${result.visitor.firstName}.`);form.reset();}).catch(error=>{if(generation===visitorGeneration.current)setPreferenceNotice(error.message);});}}><label htmlFor="pondster-first-name">What should I call you?</label><input id="pondster-first-name" name="firstName" placeholder={visitor.firstName||'First name (optional)'} maxLength={32} autoComplete="given-name"/><button type="submit">Remember my name</button></form>}
-            <div className="pondster-preference-actions"><button type="button" onClick={()=>void newVisitor()}>Not you? Start fresh</button>{visitor.choice==='private'&&<button type="button" disabled={savingPreference||voiceActive} onClick={()=>void chooseSaving(true)}>Save future conversations</button>}{visitor.choice==='save'&&<button type="button" disabled={savingPreference||voiceActive} onClick={()=>{stopVoice();void chooseSaving(false);}}>Stop saving future conversations</button>}</div>
+            {visitor.choice==='save'&&<form className="pondster-name-form" onSubmit={event=>{event.preventDefault();const form=event.currentTarget,generation=visitorGeneration.current;const name=String(new FormData(form).get('firstName')||'');void visitorRequest({action:'name',firstName:name}).then(result=>{if(generation!==visitorGeneration.current)return;updateVisitor(result.visitor);setPreferenceNotice(`I’ll call you ${result.visitor.firstName}.`);form.reset();}).catch(error=>{if(generation===visitorGeneration.current)setPreferenceNotice(error.message);});}}><label htmlFor="pondster-first-name">How would you like me to address you?</label><input id="pondster-first-name" name="firstName" placeholder={visitor.firstName||'First name (optional)'} maxLength={32} autoComplete="given-name"/><button type="submit">Remember my name</button></form>}
+            <div className="pondster-preference-actions"><button type="button" disabled={savingPreference} onClick={()=>void newVisitor()}>Not you? Start fresh</button>{visitor.choice==='private'&&<button type="button" disabled={savingPreference} onClick={()=>{stopVoice();void chooseSaving(true);}}>Turn text saving back on</button>}{visitor.choice==='save'&&<button type="button" disabled={savingPreference} onClick={()=>{stopVoice();void chooseSaving(false);}}>Turn off text saving</button>}</div>
           </>}
           {preferenceNotice&&<p role="status">{preferenceNotice}</p>}
         </div>

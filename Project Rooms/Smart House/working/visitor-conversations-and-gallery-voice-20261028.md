@@ -1,5 +1,7 @@
 # Visitor Conversations And Spoken Gallery Browsing
 
+**Version 77 historical record.** Wes subsequently changed saving to default on with an opt-out, and softened the address question. Current behavior is in [[Project Rooms/Smart House/working/voice-defaults-gallery-navigation-and-garage-v3-20261028]].
+
 ## Wes Authority — 2026-10-28
 
 - Save conversations, introduce Pondster warmly on the first conversation, ask an optional first name and record it. On return, greet by that first name and ask what the visitor needs without another introduction.

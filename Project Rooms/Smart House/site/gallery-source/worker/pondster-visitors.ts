@@ -4,16 +4,16 @@ const COOKIE='pondster_conversation_preference';
 export const RETENTION_MS=90*24*60*60*1000;
 const TOKEN=/^[a-f0-9]{64}$/;
 const ID=/^[a-f0-9-]{36}$/;
-type Profile={id:string;first_name:string|null;consent_at:number;introduced_at:number|null;expires_at:number};
+type Profile={id:string;first_name:string|null;consent_at:number;created_at:number;saving_enabled:number;preference_basis:string;introduced_at:number|null;expires_at:number};
 type Conversation={id:string;visitor_id:string;mode:string;expires_at:number};
 export type VisitorEnvironment={DB?:D1Database};
 function cookie(request:Request){return request.headers.get('cookie')?.split(';').map(part=>part.trim()).find(part=>part.startsWith(COOKIE+'='))?.slice(COOKIE.length+1)??null;}
 async function digest(token:string){return Array.from(new Uint8Array(await crypto.subtle.digest('SHA-256',new TextEncoder().encode(token))),byte=>byte.toString(16).padStart(2,'0')).join('');}
 export async function visitorProfile(request:Request,db:D1Database,now=Date.now()):Promise<Profile|null>{
   const token=cookie(request);if(!token||!TOKEN.test(token))return null;
-  return db.prepare('SELECT id,first_name,consent_at,introduced_at,expires_at FROM pondster_visitors WHERE id=? AND expires_at>?').bind(await digest(token),now).first<Profile>();
+  return db.prepare('SELECT id,first_name,consent_at,created_at,saving_enabled,preference_basis,introduced_at,expires_at FROM pondster_visitors WHERE id=? AND expires_at>?').bind(await digest(token),now).first<Profile>();
 }
-function publicProfile(profile:Profile|null,privateChoice=false):PondsterVisitor{return profile?{choice:'save',firstName:profile.first_name,returning:profile.introduced_at!==null}:{choice:privateChoice?'private':'unknown',firstName:null,returning:false};}
+function publicProfile(profile:Profile|null,privateChoice=false):PondsterVisitor{return profile?.saving_enabled===1?{choice:'save',firstName:profile.first_name,returning:profile.introduced_at!==null}:{choice:privateChoice||profile?.saving_enabled===0?'private':'unknown',firstName:null,returning:false};}
 export async function expireVisitorHistory(db:D1Database,now=Date.now()){
   // Schema is migration-owned. Bounded housekeeping; expired rows are never read.
   await db.batch([
@@ -24,7 +24,7 @@ export async function expireVisitorHistory(db:D1Database,now=Date.now()){
 }
 export async function beginSavedConversation(db:D1Database,profile:Profile,id:string,mode:'natural'|'browser'|'typed',now=Date.now()){
   const inserted=await db.prepare(`INSERT INTO pondster_conversations(id,visitor_id,mode,started_at,expires_at)
-    SELECT ?,?,?,?,? WHERE EXISTS(SELECT 1 FROM pondster_visitors WHERE id=? AND expires_at>?)
+    SELECT ?,?,?,?,? WHERE EXISTS(SELECT 1 FROM pondster_visitors WHERE id=? AND expires_at>? AND saving_enabled=1)
     AND (SELECT COUNT(*) FROM pondster_conversations WHERE visitor_id=? AND started_at>?)<100
     AND (SELECT COUNT(*) FROM pondster_conversations WHERE started_at>?)<1000`).bind(id,profile.id,mode,now,profile.expires_at,profile.id,now,profile.id,now-86400000,now-86400000).run();
   if(!inserted.meta.changes)throw new Error('history unavailable');
@@ -34,7 +34,7 @@ export async function appendConversationEvent(db:D1Database,conversation:Convers
   if(!event.text||event.text.length>8000||!event.id||event.id.length>256)throw new Error('invalid transcript fragment');
   const result=await db.prepare(`INSERT INTO pondster_conversation_events(conversation_id,event_id,sequence,role,text,start_ms,end_ms,created_at,expires_at)
     SELECT ?,?,COALESCE((SELECT MAX(sequence)+1 FROM pondster_conversation_events WHERE conversation_id=?),0),?,?,?,?,?,?
-    WHERE EXISTS(SELECT 1 FROM pondster_visitors WHERE id=? AND expires_at>?)
+    WHERE EXISTS(SELECT 1 FROM pondster_visitors WHERE id=? AND expires_at>? AND saving_enabled=1)
     AND EXISTS(SELECT 1 FROM pondster_conversations WHERE id=? AND visitor_id=? AND expires_at>?)
     AND (SELECT COUNT(*) FROM pondster_conversation_events WHERE conversation_id=?)<5000
     AND COALESCE((SELECT SUM(LENGTH(text)) FROM pondster_conversation_events WHERE conversation_id=?),0)+?<=1000000
@@ -45,11 +45,11 @@ export async function appendConversationEvent(db:D1Database,conversation:Convers
   }
 }
 async function saveName(db:D1Database,profile:Profile,name:string,now=Date.now()){
-  const result=await db.prepare('UPDATE pondster_visitors SET first_name=? WHERE id=? AND expires_at>?').bind(name,profile.id,now).run();
+  const result=await db.prepare('UPDATE pondster_visitors SET first_name=? WHERE id=? AND expires_at>? AND saving_enabled=1').bind(name,profile.id,now).run();
   if(!result.meta.changes)throw new Error('expired consent');profile.first_name=name;
 }
 async function introduced(db:D1Database,profile:Profile,now=Date.now()){
-  await db.prepare('UPDATE pondster_visitors SET introduced_at=COALESCE(introduced_at,?) WHERE id=? AND expires_at>?').bind(now,profile.id,now).run();profile.introduced_at??=now;
+  await db.prepare('UPDATE pondster_visitors SET introduced_at=COALESCE(introduced_at,?) WHERE id=? AND expires_at>? AND saving_enabled=1').bind(now,profile.id,now).run();profile.introduced_at??=now;
 }
 async function boundedJson(request:Request){
   const reader=request.body?.getReader();if(!reader)throw new Error('body');let size=0,text='';const decoder=new TextDecoder();
@@ -76,16 +76,19 @@ export async function handlePondsterVisitor(request:Request,env:VisitorEnvironme
     if(!input||typeof input!=='object'||Array.isArray(input))return reply({error:'I couldn’t read that request.'},400);
     if(input.action==='reset')return reply({visitor:publicProfile(null)},200,'');
     if(input.action==='choose'){
-      if(input.save===false)return reply({visitor:publicProfile(null,true)},200,'private');
+      if(input.save===false){
+        if(profile)await db.prepare('UPDATE pondster_visitors SET saving_enabled=0 WHERE id=?').bind(profile.id).run();
+        return reply({visitor:publicProfile(null,true)},200,'private');
+      }
       if(input.save!==true)return reply({error:'Please choose whether to save text.'},400);
-      if(profile)return reply({visitor:publicProfile(profile)});
+      if(profile?.saving_enabled===1)return reply({visitor:publicProfile(profile)});
       const token=crypto.randomUUID().replaceAll('-','')+crypto.randomUUID().replaceAll('-',''),now=Date.now();
-      profile={id:await digest(token),first_name:null,consent_at:now,introduced_at:null,expires_at:now+RETENTION_MS};
-      const inserted=await db.prepare('INSERT INTO pondster_visitors(id,consent_at,expires_at) SELECT ?,?,? WHERE (SELECT COUNT(*) FROM pondster_visitors WHERE consent_at>?)<1000').bind(profile.id,now,profile.expires_at,now-86400000).run();
+      profile={id:await digest(token),first_name:null,consent_at:input.default===true?0:now,created_at:now,saving_enabled:1,preference_basis:input.default===true?'default_notice':'explicit_save',introduced_at:null,expires_at:now+RETENTION_MS};
+      const inserted=await db.prepare('INSERT INTO pondster_visitors(id,consent_at,created_at,saving_enabled,preference_basis,expires_at) SELECT ?,?,?,?,?,? WHERE (SELECT COUNT(*) FROM pondster_visitors WHERE created_at>? OR (created_at=0 AND consent_at>?))<1000').bind(profile.id,profile.consent_at,now,1,profile.preference_basis,profile.expires_at,now-86400000,now-86400000).run();
       if(!inserted.meta.changes)return reply({error:'I can’t save a new conversation profile right now. You can continue without saving.'},429);
       return reply({visitor:publicProfile(profile)},201,token);
     }
-    if(!profile)return reply({error:'Please choose to save text before I remember a name or conversation.'},409);
+    if(!profile||profile.saving_enabled!==1)return reply({error:'Text saving is off or expired on this browser. You can enable future saving in my Voice controls.'},409);
     if(input.action==='name'){
       const name=firstName(input.firstName);if(!name)return reply({error:'Please use a first name, up to 32 letters.'},400);
       await saveName(db,profile,name);return reply({visitor:publicProfile(profile)});
@@ -142,7 +145,7 @@ export function naturalConversationRecorder(db:D1Database,profile:Profile,onNoti
     async name(text:string){
       const name=nameFromReply(text,awaitingName);if(!name)return null;awaitingName=false;
       await enqueue(()=>saveName(db,profile,name,now()));
-      return healthy?`Nice to meet you, ${name}. I’ll remember your first name on this browser. What do you need?`:'I couldn’t save your name. You can keep talking without saving.';
+      return healthy?`Nice to meet you, ${name}. What can I help you with?`:'I couldn’t save your name. You can keep talking without saving.';
     },
     async finish(){await queue;if(conversation)await db.prepare('UPDATE pondster_conversations SET ended_at=? WHERE id=?').bind(now(),conversation.id).run().catch(()=>{});},
   };

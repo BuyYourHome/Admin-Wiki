@@ -36,12 +36,15 @@ export const voiceSessions = sqliteTable('voice_sessions', {
   index('voice_sessions_state').on(table.state)
 ]);
 
-// Private, opt-in text history. No public transcript reader or audio storage.
+// Private text history with a browser opt-out. No public reader or audio storage.
 export const pondsterVisitors = sqliteTable('pondster_visitors', {
   id:text('id').primaryKey(), firstName:text('first_name'),
   consentAt:integer('consent_at').notNull(), introducedAt:integer('introduced_at'),
+  createdAt:integer('created_at').notNull().default(0),
+  savingEnabled:integer('saving_enabled').notNull().default(1),
+  preferenceBasis:text('preference_basis').notNull().default('legacy_opt_in'),
   expiresAt:integer('expires_at').notNull(),
-}, table=>[index('pondster_visitors_expiry').on(table.expiresAt)]);
+}, table=>[index('pondster_visitors_expiry').on(table.expiresAt),index('pondster_visitors_created').on(table.createdAt)]);
 export const pondsterConversations = sqliteTable('pondster_conversations', {
   id:text('id').primaryKey(), visitorId:text('visitor_id').notNull(), mode:text('mode').notNull(),
   startedAt:integer('started_at').notNull(), endedAt:integer('ended_at'), expiresAt:integer('expires_at').notNull(),

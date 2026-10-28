@@ -6,6 +6,8 @@ import { parsePondsterDestination, type PondsterDestination } from '../lib/ponds
 import { getPondsterSpeechText, isPondsterSpokenExplanationRequest } from '../lib/pondster-speech';
 import { naturalConversationRecorder, visitorProfile } from './pondster-visitors';
 import type { PondsterVisitor } from '../lib/pondster-visitor';
+import { explicitGalleryVoiceAction } from '../lib/pondster-gallery';
+import { PONDSTER_CLIENT_REVISION } from '../lib/pondster-live-protocol';
 export const VOICE_COOKIE = 'pondster_voice_visitor';
 export const VOICE_SETUP_MS = 20_000;
 export const VOICE_FINALIZATION_MS = 10_000;
@@ -202,6 +204,8 @@ export function createPondsterLiveControl(options: ControllerOptions) {
   const pendingDelegations = new Set<string>();
   const fragments: Array<{ text: string; start: number; end: number }> = [];
   let fragmentCharacters = 0;
+  let gallerySettle:ReturnType<typeof setTimeout>|undefined;
+  let directGalleryCount=0,lastDirectGalleryEnd=-1;
   const abort = new AbortController();
   let resolveProviderClosed: () => void = () => {};
   const providerClosed = new Promise<void>(resolve => { resolveProviderClosed = resolve; });
@@ -222,18 +226,20 @@ export function createPondsterLiveControl(options: ControllerOptions) {
   async function deliver(question: string, delegationId: string | null) {
     if (closing || !ready || !sideband) return;
     const reply = options.answer(question);
-    const nameReply=reply.action?null:await options.history?.name(question);
+    // A reply to the first-name question can match a public contact (Wes,
+    // Jean, Ashley). The bounded name parser excludes actual UI commands.
+    const nameReply=await options.history?.name(question);
     if(closing||finished)return;
     if(nameReply){
       safeSend(options.client,{type:'pondster.visitor',visitor:options.history!.currentVisitor()});
-      appendCommentary(nameReply,delegationId);return;
+      appendCommentary(nameReply,delegationId);return true;
     }
     const action = parsePondsterDestination(reply.action);
     if (delegationId !== null && !action) {
       // A visual keyword miss is not a negative lookup of facts already present
       // in the Live session. Never promote the guide's fallback into a refusal.
       appendCommentary('No public visual destination was resolved for this request. Answer the visitor from the authored public facts and current conversation already supplied. A missing visual match does not invalidate those facts. If relevant, say that the visual destination could not be resolved; do not claim a page, section or card was opened or scrolled.', delegationId);
-      return;
+      return false;
     }
     // Short public facts only; no user text is sent as a trusted instruction.
     const content = getPondsterSpeechText(question, {text:reply.text,...(action?{action}:{})}).slice(0,1500);
@@ -241,6 +247,7 @@ export function createPondsterLiveControl(options: ControllerOptions) {
     appendCommentary(action && !isPondsterSpokenExplanationRequest(question)
       ? `Use only this brief acknowledgment for the requested public navigation: ${content} Do not recite the page, contact details or feature text. Do not claim a completed scroll.`
       : content, delegationId);
+    return Boolean(action);
   }
   function providerMessage(data: unknown) {
     if (finished || typeof data !== 'string' || data.length > 131_072) return;
@@ -266,6 +273,17 @@ export function createPondsterLiveControl(options: ControllerOptions) {
       const fragment = { text: event.delta.slice(0, 2000), start: event.start_ms, end: event.end_ms };
       fragments.push(fragment); fragmentCharacters += fragment.text.length;
       while (fragments.length > 80 || fragmentCharacters > 8000) fragmentCharacters -= fragments.shift()!.text.length;
+      cancel(gallerySettle);
+      gallerySettle=later(()=>{track((async()=>{
+        if(closing||!ready||pendingDelegations.size||directGalleryCount>=100)return;
+        const unconsumed=fragments.filter(item=>item.end>consumedTranscriptEnd).sort((a,b)=>a.start-b.start);
+        let first=0;for(let index=1;index<unconsumed.length;index++)if(unconsumed[index].start-unconsumed[index-1].end>700)first=index;
+        const selected=unconsumed.slice(first),question=selected.map(item=>item.text).join('').trim();
+        if(!question||!explicitGalleryVoiceAction(question,options.answer(question).action))return;
+        consumedTranscriptEnd=Math.max(consumedTranscriptEnd,...selected.map(item=>item.end));
+        lastDirectGalleryEnd=consumedTranscriptEnd;directGalleryCount++;
+        await deliver(question,null);
+      })().catch(()=>{error('I couldn’t open that gallery picture. Please try again.');}));},1000);
       return;
     }
     if (event.type === 'session.delegation.created') {
@@ -282,8 +300,11 @@ export function createPondsterLiveControl(options: ControllerOptions) {
           const selected = fragments.filter(fragment => fragment.end > Math.max(previousOffset, consumedTranscriptEnd) && fragment.start <= offset + 250)
             .sort((a, b) => a.start - b.start);
           const question = selected.map(fragment => fragment.text).join('').trim().slice(-1500);
-          if (selected.length) consumedTranscriptEnd = Math.max(consumedTranscriptEnd, ...selected.map(fragment => fragment.end));
-          if (question) await deliver(question, id);
+          if (question) {
+            const handled=await deliver(question,id);
+            if(handled&&selected.length)consumedTranscriptEnd=Math.max(consumedTranscriptEnd,...selected.map(fragment=>fragment.end));
+          }
+          else if(lastDirectGalleryEnd>=0&&fragments.every(item=>item.end<=consumedTranscriptEnd))appendCommentary('The same public gallery navigation was already requested for this utterance. Continue briefly from the current picture without repeating the navigation or voting reminder. Do not claim a completed render.',id);
           else appendCommentary('I couldn’t quite catch your question. Please ask me again.', id);
         } catch { error('I couldn’t answer that voice request. Please try again.'); track(stop()); }
         finally {
@@ -331,6 +352,8 @@ export function createPondsterLiveControl(options: ControllerOptions) {
       reserved = await options.store.reserve({ requestId: requestId!, visitorKey: options.visitorKey, createdAt, expiresAt: createdAt + VOICE_SETUP_MS });
       if (!reserved) { error('I’m taking a short voice break. Please try again later.'); closing = true; return; }
       if (closing) return;
+      await options.history?.start(requestId!);
+      if (closing) return;
       attempted = true;
       const session = await options.createSession(sdp, abort.signal, requestId!);
       try { await options.store.activate(requestId!, session.id); }
@@ -374,6 +397,8 @@ export function createPondsterLiveControl(options: ControllerOptions) {
     if (!input || typeof input !== 'object') { error('I couldn’t read that voice request.'); return stop(); }
     if (input.type === 'pondster.stop') return stop();
     if (input.type === 'pondster.start') {
+      if(input.clientRevision!==PONDSTER_CLIENT_REVISION){error('Please refresh Pondstr.com before starting voice. This open page is using an older version.');return stop();}
+      if(input.expectsSaving===true&&!options.history){error('My text saving is not connected. Please refresh and check Voice controls before starting.');return stop();}
       if (requestId || typeof input.requestId !== 'string' || !UUID.test(input.requestId)
         || typeof input.sdp !== 'string' || !input.sdp.startsWith('v=0') || input.sdp.length < 10) {
         error('I need a fresh voice connection. Please try again.'); return stop();
@@ -420,7 +445,7 @@ export async function handlePondsterLiveControl(request: Request, env: VoiceEnvi
   const pair = new WebSocketPair();
   const [client, server] = Object.values(pair);
   server.accept();
-  const history=profile?naturalConversationRecorder(env.DB!,profile,message=>safeSend(server,{type:'pondster.recording',message})):undefined;
+  const history=profile?.saving_enabled===1?naturalConversationRecorder(env.DB!,profile,message=>safeSend(server,{type:'pondster.recording',message})):undefined;
   let startupGreeting: string | null = null;
   const control = createPondsterLiveControl({
     client: server, store: d1VoiceStore(env.DB!), visitorKey, answer, track: task => ctx.waitUntil(task),
@@ -429,7 +454,6 @@ export async function handlePondsterLiveControl(request: Request, env: VoiceEnvi
     async createSession(sdp, signal, clientRequestId) {
       let response: Response;
       try {
-        await history?.start(clientRequestId);
         const session = buildSession(history?.visitor??{choice:'private',firstName:null,returning:false});
         startupGreeting = greetingFromSession(session);
         response = await fetch('https://api.openai.com/v1/live/sessions', {

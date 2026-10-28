@@ -19,9 +19,9 @@ export const galleries: Gallery[] = [
     { id: 'front-black-shutters', title: 'Black shutters', image: 'front-black-shutters.png', detail: 'In this design, I will feature black louvered shutters, contrasting dark and light siding, and warm exterior lighting at sunset in my exterior concept.' }
   ] },
   { id: 'garage-barn-door', name: 'Garage Barn Door', summary: 'I will feature wood doors with the selected finish from my three exterior design options.', designs: [
-    { id: 'garage-06', title: 'Warm white board & batten', image: '06-wall-warm-white-board-batten.png', detail: 'In this design, I will feature a light exterior finish to bring out the warmth of my wood doors.' },
-    { id: 'garage-07', title: 'Charcoal green board & batten', image: '07-wall-charcoal-green-board-batten.png', detail: 'In this design, I will feature a deeper exterior palette paired with natural wood.' },
-    { id: 'garage-08', title: 'Limewashed brick', image: '08-wall-limewashed-brick.png', detail: 'In this design, I will feature pale masonry with a softer, textured appearance.' }
+    { id: 'garage-06', title: 'Warm white board & batten', image: 'garage-v3-warm-white.png', fullImage:true, detail: 'In this design, I will feature a light exterior finish to bring out the warmth of my wood doors.' },
+    { id: 'garage-07', title: 'Charcoal green board & batten', image: 'garage-v3-charcoal-green.png', fullImage:true, detail: 'In this design, I will feature a deeper exterior palette paired with natural wood.' },
+    { id: 'garage-08', title: 'Limewashed brick', image: 'garage-v3-limewashed-brick.png', fullImage:true, detail: 'In this design, I will feature pale masonry with a softer, textured appearance.' }
   ] },
   { id: 'adu', name: 'ADU', summary: 'I will include an accessory dwelling unit. My design images will follow.', designs: [] },
   { id: 'master-bath', name: 'Master Bath', summary: 'I will feature my refined Master Bath vanity layout in the selected cabinet color. I have six visual concepts for your vote, not manufacturer paint specifications or installed finishes.', designs: masterBathDesigns },

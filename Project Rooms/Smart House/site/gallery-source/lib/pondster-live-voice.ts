@@ -3,6 +3,7 @@ import { createPondsterStreamMeter } from './pondster-stream-meter';
 import { isPondsterFarewell, PONDSTER_FAREWELL_ACK } from './pondster-voice-intents';
 import { parsePondsterDestination, type PondsterDestination } from './pondster-destinations';
 import { firstName, type PondsterVisitor } from './pondster-visitor';
+import { PONDSTER_CLIENT_REVISION } from './pondster-live-protocol';
 export type PondsterQuietProgress = { reason: 'checking' | 'unavailable' | 'input' | 'output' | 'work' | 'response' | 'quiet'; remainingSeconds: number | null };
 export type PondsterLiveState = {
   available: boolean; connecting: boolean; active: boolean;
@@ -21,6 +22,7 @@ export type PondsterLiveVoiceOptions = {
   onAction?(action: PondsterLiveAction): void;
   onVisitor?(visitor:PondsterVisitor):void;
   onRecordingNotice?(message:string):void;
+  expectsSaving?:()=>boolean;
   // Dependency injection keeps lifecycle tests away from real devices/network.
   getUserMedia?: () => Promise<MediaStream>;
   peerFactory?: () => RTCPeerConnection;
@@ -419,7 +421,7 @@ export function createPondsterLiveVoice(options: PondsterLiveVoiceOptions): Pond
         const timeout = timer(a, () => reject(new Error('timeout')), 20000);
         socket.onopen = () => {
           if (!live(a)) { sendClose(a); return; }
-          if (!send(socket, { type: 'pondster.start', requestId, sdp })) reject(new Error('control'));
+          if (!send(socket, { type: 'pondster.start', requestId, sdp, clientRevision:PONDSTER_CLIENT_REVISION,expectsSaving:options.expectsSaving?.()===true })) reject(new Error('control'));
         };
         socket.onmessage = event => {
           if (typeof event.data === 'string' && event.data.length <= 64000) {

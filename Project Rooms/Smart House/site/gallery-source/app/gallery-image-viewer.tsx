@@ -3,10 +3,11 @@
 import { useEffect, useId, useRef, type KeyboardEvent } from 'react';
 import { galleries, type Design } from '../lib/designs';
 import { designImageSource, galleryPictures, movePicture, pictureIndex, pictureSelection } from '../lib/design-views';
+import GalleryMediaControls,{type GalleryVoiceControls} from './gallery-media-controls';
 
-type Props = { design: Design | null; onChange: (design: Design) => void; onClose: () => void; voting?:{selected:string|null;disabled:boolean;saving:boolean;onVote:(id:string)=>void} };
+type Props = { design: Design | null; onChange: (design: Design) => void; onClose: () => void; voting?:{selected:string|null;disabled:boolean;saving:boolean;onVote:(id:string)=>void};voice?:GalleryVoiceControls };
 
-export default function GalleryImageViewer({ design, onChange, onClose, voting }: Props) {
+export default function GalleryImageViewer({ design, onChange, onClose, voting,voice }: Props) {
   const dialog = useRef<HTMLDialogElement>(null);
   const closeButton = useRef<HTMLButtonElement>(null);
   const opener = useRef<HTMLElement | null>(null);
@@ -68,12 +69,9 @@ export default function GalleryImageViewer({ design, onChange, onClose, voting }
         <button ref={closeButton} type="button" className="gallery-viewer-close" onClick={onClose} aria-label="Close image">Close <span aria-hidden="true">×</span></button>
       </header>
       <div className="gallery-viewer-image"><img key={`${design.id}:${picture?.image ?? design.image}`} src={designImageSource(picture?.image ?? design.image)} alt={`My AI design concept: ${design.title}${design.views?.length ? `, ${picture?.label ?? ''}` : ''}`} decoding="async" /></div>
-      <div className="gallery-viewer-navigation" role="group" aria-label="Gallery picture navigation">
-        <button type="button" disabled={!canBrowse} onClick={() => advance(-1)} aria-label={`Previous picture${gallery ? ` in ${gallery.name}` : ''}`}><span aria-hidden="true">←</span> Previous</button>
-        <p className="gallery-viewer-counter" role="status" aria-live="polite" aria-atomic="true"><span className="gallery-viewer-announcement">{design.title}. {design.views?.length ? `${picture?.label ?? ''}. ` : ''}</span><span>{gallery?.name ?? 'My design'}{design.views?.length ? ` · ${picture?.label ?? ''}` : ''}</span><strong>Picture {index + 1} of {pictures.length}</strong></p>
-        <button type="button" disabled={!canBrowse} onClick={() => advance(1)} aria-label={`Next picture${gallery ? ` in ${gallery.name}` : ''}`}>Next <span aria-hidden="true">→</span></button>
-      </div>
-      {voting&&<div className="gallery-viewer-voting"><button type="button" className="vote-button" disabled={voting.disabled||voting.selected===design.id} aria-pressed={voting.selected===design.id} onClick={()=>voting.onVote(design.id)}><strong>{design.title}</strong><small>{voting.saving?'I’m saving…':voting.selected===design.id?'✓ Your choice':voting.selected?'Change your vote':'Vote for my design'}</small></button><span>I keep one choice per gallery. You can change your vote.</span></div>}
+      <GalleryMediaControls name={gallery?.name??'My design'} canBrowse={canBrowse} onPrevious={()=>advance(-1)} onNext={()=>advance(1)} voice={voice}
+        counter={<><span className="gallery-viewer-announcement">{design.title}. {design.views?.length ? `${picture?.label ?? ''}. ` : ''}</span><span>{gallery?.name??'My design'}{design.views?.length?` · ${picture?.label??''}`:''}</span><strong>Picture {index+1} of {pictures.length}</strong></>}
+        vote={voting?<><button type="button" className="vote-button" disabled={voting.disabled||voting.selected===design.id} aria-pressed={voting.selected===design.id} onClick={()=>voting.onVote(design.id)}><strong>{design.title}</strong><small>{voting.saving?'I’m saving…':voting.selected===design.id?'✓ Your choice':voting.selected?'Change your vote':'Vote for my design'}</small></button><span>I keep one choice per gallery. You can change your vote.</span></>:undefined}/>
       <p className="gallery-viewer-caption" id={descriptionId}>I’m showing an AI concept for my design, not a measured plan or a photo of completed work.</p>
     </>}
   </dialog>;

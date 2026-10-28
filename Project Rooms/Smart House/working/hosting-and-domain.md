@@ -752,3 +752,23 @@ Shared public identity and speech modules give Cary/state with a private exact a
 Private schema-only migration 0003 was applied by Sites; owner-only database overview confirms pondster_visitors, pondster_conversations and pondster_conversation_events alongside the existing voting, comments and voice-session tables. Consent/private-mode, isolation, deduplication, exact natural transcript timing, expiry/deletion and actual sideband recorder tests passed in in-memory SQLite. Destination, real page action/reveal, gallery, speech, Guide/context, server lifecycle, Contact and design-view tests passed. Final TypeScript, production build, diff and 195-file secret-absence checks passed. Thirty source text mirrors match. Local browser tests confirmed an optional first name, the return greeting after reload, reset and guided Master Bath picture 1/6 with Next/Previous/Close. Public browser inspection confirmed the notice solely in Voice controls, available natural controls, Cary copy and the full-image vote/change-vote controls. No microphone, paid voice session, production transcript, vote or comment was created by these checks.
 
 The new call policy exempts only closed rows with final usage confirmed from failure backoff. It does not reset the rolling100 limit or release uncertain calls. Vesper was explicitly retained after Wes learned Arbor is not listed for this API. The owned local preview was stopped and owned QA tabs closed; existing user tabs were preserved. A refresh/new natural conversation is needed for these client/prompt changes. See [[Project Rooms/Smart House/working/visitor-conversations-and-gallery-voice-20261028]].
+
+
+## Default saving, shared picture fallback and garage v3 — version 78, 2026-10-28
+
+- Source: `c7b4b0f27e0715554a42a924f131615e4c2f7eb7`.
+- Saved version: `appgprj_6ad4d98e08708191858cab113814704e~appgver_cfb97cc29c9c8191bcebac4951ee5eaf`.
+- Deployment: `appgdep_6ae2034a20508191b8915a9ec3b1cc02`, succeeded `2026-10-28T14:14:48.540352+00:00`, environment revision 4.
+- Archive: `sha256:524fb5b9e49d36294d64d3a0233efd03d0ad80f0093a8501146b3e11423407f0`, 136 files, 74,055,680 bytes.
+
+Published at Wes’s explicit request to release the ready batch while equipment-manual work continues. The additive migration 0004 retains legacy preferences and distinguishes default_notice from explicit_save; production owner-only inspection confirms created_at, saving_enabled and preference_basis. Existing opt-outs remain off, and disabled profiles cannot append even through stale cookies or attached writers. No public transcript reader or audio storage is added. All gallery pictures share the explicit voice fallback, including Back Deck/backdeck and next/previous, with consumed-input deduplication and partial-phrase recovery. Three inspected v3 garage PNGs replace the existing IDs; pixel data is unchanged and no exact address is published in their filenames.
+
+Final TypeScript, production build, 202-file secret scan, diff and focused SQLite/initialization/Guide/context/gallery/server tests passed. Fifteen source text mirrors match; binary PNGs remain only in the independent Site source. Browser control timed out during this batch, so fresh visual and microphone/provider verification remain unperformed. No paid call or production conversation was created for these checks. The owned preview was stopped. See [[Project Rooms/Smart House/working/voice-defaults-gallery-navigation-and-garage-v3-20261028]].
+
+
+## Version 79 — gallery controls and recording startup
+
+
+Native Sites publication succeeded as version **79**, saved version `appgprj_6ad4d98e08708191858cab113814704e~appgver_4db34e8772e881918dc833050eee2886`, source `9306788f73bed46e47a51e14dab8dfe0f337bfbb`, deployment `appgdep_6ae20db12af48191a4bce765ce30aad1`, at `2026-10-28T14:59:07.956914+00:00`. Environment revision 4 and public audience are unchanged. Archive `sha256:0cba77f66e72a582e6272b731b4a604658ff6e633f4dd39790af5bb747f2e867`, 136 files / 74,065,920 bytes. Source helper pushed the matching Site source; the production archive passed the secret scan (204 text files, no key found). Source mirrors were byte-verified. Public site: https://pondstr.com; native alias: https://pondstr.coolnewt4097.chatgpt.site . Fresh real-browser/microphone validation and live text-capture confirmation remain pending; automated checks do not substitute for those.
+
+Details: [[gallery-controls-and-recording-startup-20261028]].

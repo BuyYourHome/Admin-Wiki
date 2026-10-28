@@ -177,3 +177,10 @@ Wes supplied the two PNGs in the owning chat and explicitly requested **one Back
 Both local sources were visually inspected as views of the same design concept, with no visible address. Each selected public copy is byte-identical to its source; source names and private folder paths are not public asset names. Original and public image binaries remain outside Admin Wiki Git, with the public copies packaged only in the separate Sites repository.
 
 The catalog choice is `oak-courtyard`, **Oak courtyard deck**. The overview is the primary Explore/tour view and the closeup is an additional view of that same vote. Counts at version 65 are 31 active choices across nine galleries and seven tour scenes with three films. Earlier pending-image intake records remain historical. Implementation, greeting scope, verification limits and publication continuation are in [[Project Rooms/Smart House/working/deck-and-logo-greeting-20261027]]; version 65 publication is recorded in the implementation note and hosting ledger.
+
+
+## Garage v3 and equipment-manual intake — 2026-10-28
+
+Wes supplied three pond-garage-layout-20261028-v3 PNG references in the property House Render/color-studies folder. Version 78 replaces garage-06/07/08 pixels with Warm White Approved, Charcoal Green Review and Limewashed Brick Review while preserving voting IDs. Exact paths, hashes and publication provenance: [[voice-defaults-gallery-navigation-and-garage-v3-20261028]].
+
+Wes also requested sound-system and surveillance-camera knowledge and manufacturer manuals in Belong. Equipment photos/models are not available in the accessible attachment record or searched property folders; the garage images are not equipment evidence. Hold model-specific research and manual publication until the actual source is supplied.

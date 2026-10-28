@@ -140,3 +140,13 @@ Wes requested public destination reveals before narration. Both Browser and natu
 ## Current visitor memory, restart and gallery behavior — 2026-10-28, version 77
 
 Vesper remains selected by Wes. First-use saving choice/disclosure is solely in Voice controls, with private text/name memory for at most 90 days and no website audio recording. A returning browser gets a first-name welcome without another spoken introduction. Current records are not imported into house facts or owner authority. Confirmed closed calls can restart immediately; failure backoff, rolling100 allowance and uncertain-session fences remain. Guided gallery requests open their first picture and give a brief vote/change-vote reminder; next/previous/first/close commands use the same validated public action path. The 30-second quiet monitor and no-three-minute-cutoff behavior are unchanged. Version 77 is public, with mocked/storage/UI verification and a fresh live microphone test pending. See [[Project Rooms/Smart House/working/visitor-conversations-and-gallery-voice-20261028]].
+
+
+## Current defaults and shared picture navigation — version 78, 2026-10-28
+
+Text saving is now on by default with an opt-out solely in Voice controls. Existing private preferences remain off; default creation is not recorded as explicit consent. A new caller hears the softer “How would you like me to address you?” wording. Offered names that match public contacts are handled in the collection context. A narrow direct gallery fallback covers all gallery pictures when delegation is omitted and prevents a delayed duplicate reset. Thirty-second quiet behavior, Vesper and rolling100 starts remain. Fresh browser/microphone checks are pending after browser-control timeouts. See [[Project Rooms/Smart House/working/voice-defaults-gallery-navigation-and-garage-v3-20261028]].
+
+
+## Gallery controls and startup revision — version 79
+
+Live 2026-10-28. Starting voice stays on the current page; modal images and gallery films expose Start/Stop voice and Voice controls locally. Voice controls reveal Contact’s fixed voice section. A matching browser revision is required before reserving or creating a call; when this visitor expects text saving, a missing recorder blocks startup. History initializes before provider creation. Empty production conversation records from the earlier check are not recovered or claimed saved; the next refreshed real call still needs owner-only capture confirmation. No voice/model/key, audience or hardware-control changes. See [[gallery-controls-and-recording-startup-20261028]].

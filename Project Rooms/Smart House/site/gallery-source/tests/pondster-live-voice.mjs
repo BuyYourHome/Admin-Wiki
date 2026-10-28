@@ -1,4 +1,5 @@
 import assert from 'node:assert/strict';
+import {PONDSTER_CLIENT_REVISION} from '../lib/pondster-live-protocol.ts';
 import { createPondsterLiveVoice, createPondsterAudioSampler, createPondsterSilenceMonitor, PONDSTER_SILENCE_MS } from '../lib/pondster-live-voice.ts';
 
 // Browser, media, audio and transport doubles only: no devices or network access.
@@ -200,7 +201,7 @@ async function dispose(harness) {
   assert.deepEqual(h.peer().channels, ['oai-events']);
   assert.ok(h.log.indexOf('peer.createDataChannel') < h.log.indexOf('peer.createOffer'));
   h.control().open(); await flush();
-  assert.deepEqual(h.control().sent, [{ type: 'pondster.start', requestId: '11111111-1111-4111-8111-111111111111', sdp: 'mock-local-offer' }]);
+  assert.deepEqual(h.control().sent, [{ type: 'pondster.start', requestId: '11111111-1111-4111-8111-111111111111', sdp: 'mock-local-offer',clientRevision:PONDSTER_CLIENT_REVISION,expectsSaving:false }]);
   h.control().receive({ type: 'pondster.ready', session: { id: 'session-one' }, transport: { type: 'webrtc', sdp: 'mock-remote-answer' }, maxDurationSeconds: 180 });
   await flush();
   assert.deepEqual(h.peer().remoteDescription, { type: 'answer', sdp: 'mock-remote-answer' });

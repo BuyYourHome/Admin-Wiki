@@ -10,3 +10,8 @@ Setup does not require guessing these future design decisions:
 - Owner privacy, maintenance responsibilities, approved AI source set, recovery and offline requirements.
 - Approved external source/deliverable storage location.
 - Dedicated-chat and messaging-readiness evidence (tracked in setup-status.md).
+
+
+## Equipment photos needed — 2026-10-28
+
+Need accessible sound-system and camera equipment photos, exact filenames or model numbers. Wes said they were posted above; the current accessible records contain no such attachments. Preserve this as a source-access blocker rather than selecting similar products. Continue completed gallery/voice/garage publication independently. See [[gallery-controls-and-recording-startup-20261028]].
