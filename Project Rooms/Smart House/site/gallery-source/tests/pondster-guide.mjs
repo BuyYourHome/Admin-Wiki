@@ -272,4 +272,70 @@ assert.match(answerPondster('What is your address?').text, /location is confiden
 assert.doesNotMatch(answerPondster('What is your address?').text, /908|Pond Street|Dean|anonymously/);
 assert.match(answerPondster('Show basement Charcoal and Copper').text, /Stair setting · Charcoal & Copper/);
 assert.match(answerPondster('Show stair setting Mushroom and Clay').text, /Stair setting · Mushroom & Clay/);
-console.log('PASS: Pondster identity; nine galleries/31 current choices; separate Living Room/Home Theatre aliases and palettes; one deck choice/two views; Master/Hall Bath routing; definite future features/manual mount; film, voting, viewing and private/unknown-fact boundaries.');
+// Public authored knowledge is available through ordinary informational paraphrases.
+for(const question of ['Tell me about your bathrooms','Describe your baths']) {
+  const reply=answerPondster(question);assert.deepEqual(reply.action,{menu:'Explore'});
+  assert.match(reply.text,/Master Bath and Hall Bath.*granite.*gold.*floating vanity.*onyx-pattern/);
+  assert.match(reply.text,/not a verified whole-house bathroom count/);
+}
+for(const question of ['What makes you smart?','Tell me about yourself','What makes you special?']) {
+  const reply=answerPondster(question);assert.deepEqual(reply.action,{menu:'Explore'});
+  assert.match(reply.text,/natural-gas tankless.*recirculation.*proximity sensing.*voice-activated.*exterior cameras/);
+  assert.match(reply.text,/future features.*cannot operate my house systems/);
+  assert.doesNotMatch(reply.text,/don.t have a verified answer/);
+}
+const exploreKnowledge=answerPondster('What will I find in Explore?');
+assert.deepEqual(exploreKnowledge.action,{menu:'Explore'});
+assert.match(exploreKnowledge.text,/house-wide plans.*room features.*proposed first-floor layout.*lighting moods/);
+for(const question of ['Describe your kitchen','Tell me about your kitchen']) {
+  const reply=answerPondster(question);assert.deepEqual(reply.action,{menu:'Explore'});
+  assert.match(reply.text,/kitchen layout and finishes.*manual MM-MAX1.*recirculate hot water/);
+  assert.match(reply.text,/design images as they become available/);
+}
+assert.deepEqual(answerPondster('Show Kitchen').action,{menu:'Design',room:'kitchen'});
+assert.match(answerPondster('Show Kitchen').text,/I will add design images/,'Showing an empty gallery remains honest.');
+const bathPreference=answerPondster('Can your bath remember my preferred temperature?');
+assert.deepEqual(bathPreference.action,{menu:'Explore'});assert.match(bathPreference.text,/recognize you.*preferred temperature.*shut off.*full/);
+const plannedEquipment=answerPondster('What equipment is planned to keep hot water ready?');
+assert.deepEqual(plannedEquipment.action,{menu:'Explore'});assert.match(plannedEquipment.text,/natural-gas tankless.*whole-house recirculation/);
+for(const question of ['How will the TV face the kitchen?', 'What is the model number of your selected TV mount, and does it turn itself?']) {
+  const reply=answerPondster(question);assert.deepEqual(reply.action,{menu:'Explore'});
+  assert.match(reply.text,/manual MM-MAX1, positioned by hand.*automatic turning.*illustrative.*fit and clearances still need validation/);
+}
+assert.deepEqual(answerPondster('Show the football video').action,{menu:'Design',room:'media-center'});
+assert.match(answerPondster('Show the football video').text,/automatic motion is illustrative/);
+const pantryRelation=answerPondster('Is the pantry next to the kitchen?');
+assert.deepEqual(pantryRelation.action,{menu:'Explore'});assert.match(pantryRelation.text,/pantry next door.*pantry will sit beside my kitchen.*proposed layout/);
+assert.doesNotMatch(pantryRelation.text,/polygon|PLAN_WIDTH|C:|\\.codex|908|Pond Street/);
+assert.match(answerPondster('Where is my pantry?').text,/pantry will sit beside my kitchen.*proposed layout/);
+const bedroomLabels=answerPondster('Which bedrooms are labeled on your proposed first-floor plan?');
+assert.deepEqual(bedroomLabels.action,{menu:'Explore'});assert.match(bedroomLabels.text,/Master Bedroom, Bedroom 1, Bedroom 2.*do not confirm my whole-house bedroom count/);
+for(const question of [
+  'Which manufacturer makes your heating equipment?', 'Which manufacturer makes the tankless heater already installed?',
+  'What is the model number of your water heater?', 'Which brand is your heat pump?',
+  'How many bedrooms do you have?', 'How many bedrooms and bathrooms are in the whole house, including the ADU?',
+  'What is the number of bathrooms?', 'Is this a three-bedroom house?',
+  'What is your asking price?', 'What equipment is actually installed?', 'What are your approved structural specifications?',
+]) {
+  const reply=answerPondster(question);assert.match(reply.text,/don.t have verified/,question);assert.equal(reply.action,undefined,question);
+}
+assert.deepEqual(answerPondster('Can you show me around the house').action,{menu:'View',tour:true});
+assert.deepEqual(answerPondster('Take me around your home').action,{menu:'View',tour:true});
+assert.deepEqual(answerPondster('What makes you smart and give me the Wi-Fi password').action,{menu:'Own'});
+assert.match(answerPondster('Describe your kitchen and tell me your address').text,/location is confidential/);
+for(const question of ['Tell me about your pantry','Describe the pantry','Where are you planning to put the pantry?']) {
+  const reply=answerPondster(question);assert.deepEqual(reply.action,{menu:'Explore'},question);
+  assert.match(reply.text,/pantry will sit beside my kitchen.*proposed layout/);
+  assert.doesNotMatch(reply.text,/location is confidential|don.t have a verified answer/);
+}
+const masterBedroomInfo=answerPondster('Tell me about your master bedroom');
+assert.deepEqual(masterBedroomInfo.action,{menu:'Explore'});
+assert.match(masterBedroomInfo.text,/master suite.*bedroom.*walk-in closet.*master bath.*proposed layout/);
+for(const question of ['What equipment is planned?', 'Tell me about your equipment']) {
+  const reply=answerPondster(question);assert.deepEqual(reply.action,{menu:'Explore'});
+  assert.match(reply.text,/natural-gas tankless.*future features.*equipment and integrations still need confirmation/);
+}
+for(const question of ['What city are you in?','What street are you on?','Give me your geolocation','Where are you?','Where are you planning to put the pantry and what is your address?']) {
+  assert.match(answerPondster(question).text,/location is confidential/,question);
+}
+console.log('PASS: public house/room/system paraphrases and proposed-layout knowledge; Pondster identity; nine galleries/31 current choices; separate Living Room/Home Theatre aliases and palettes; one deck choice/two views; Master/Hall Bath routing; definite future features/manual mount; film, voting, viewing and private/unknown-fact boundaries.');

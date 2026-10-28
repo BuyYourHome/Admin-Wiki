@@ -683,3 +683,18 @@ Wes requested Talk to me as the final Contact-page section. The page now orders 
 - Archive: `sha256:e2e7221d21de892749bd9532ed52589730891c518c2f6c5fdee725214f937474`, 128 files, 66,406,400 bytes.
 
 Static Contact rendering, the existing navigation/hover suite, independent focus review, TypeScript, build, diff and183-file secret checks passed. Public HTTP200 markup confirms contact sections before the bottom conversation; active comments order is verified by static render. Four source mirrors match. Opening the page in Codex returned queued; no fresh browser visual or voice behavior is claimed. See [[Project Rooms/Smart House/working/contact-conversation-last-20261027]].
+
+## Public house answers and visible gallery selection — version 72, 2026-10-27
+
+Wes reported excessive unverified-answer refusals and supplied “Can you show me around the house?” as an example. Natural voice now answers authored public facts and plans directly; requested navigation, lighting illustrations and tours still delegate and wait for the guide's action. The bounded guide covers ordinary room/system questions, selected manual mount information and proposed floor-plan relationships without treating broad nouns as unknown specifications. Public first-floor labels do not establish whole-house bedroom/bathroom counts. Private location/access, unavailable pricing/equipment records, simulated showing and live-control boundaries remain.
+
+Wes then authorized automatic gallery reveal after discussing the below-screen selection problem. Deliberate changed-room selections scroll the selected heading and beginning of the first visible visual below the actual fixed header when needed. Visible content stays still; reduced motion uses the normal non-smooth path. Native focus, saving guards, pressed-state highlight, votes/catalog and menu order are preserved. Pending/stale animation frames and navigation are canceled; initial rendering and result refreshes do not request scrolling.
+
+- Source: `bc2b6e8b1029d975d2b39c7f7871f6d692543d6b`.
+- Saved version: `appgprj_6ad4d98e08708191858cab113814704e~appgver_29bf7c2e0a1c81919306aa33de0e17b9`, version **72**.
+- Deployment: `appgdep_6ae151ea470081919673025b4c72a831`, succeeded `2026-10-28T01:37:54.902504+00:00` (October 27 Eastern), environment revision **4**.
+- Archive: `sha256:2c462b3a169660bfc7f8f58cf47f891583f967b7cc8592ee51c9272bedccdcda`, 128 files, 66,437,120 bytes.
+
+Guide/context, actual gallery selection/effect doubles, Contact/navigation and mocked server/real-SQLite checks passed. Independent knowledge/privacy and scroll review passed. Final TypeScript, production build, diff and 184-file source/build secret checks passed. Seven source text mirrors match. The earlier in-progress build was stopped after the new gallery request; only the complete final build was packaged. No microphone, paid voice request, key, billing, session-row, vote or comment change was made. Fresh Chrome interaction/spoken behavior remains unverified.
+
+See [[Project Rooms/Smart House/working/pondster-house-knowledge-20261027]] and [[Project Rooms/Smart House/working/design-gallery-visibility-20261027]].

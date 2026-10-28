@@ -2,7 +2,9 @@
 
 ## Current verified result — 2026-10-27
 
-Version 70 is published with hover activation, a live header/tagline, measured30-second quiet countdown, explicit farewell shutdown and no three-minute application cutoff during active conversation. Browser playback must be ready before capture or paid session creation; the quiet meter uses fresh PCM and fails closed with a clear health message if measurement is unavailable. Tour and public contractor/Belong knowledge are updated. All focused checks/build/privacy scans passed; the actual version70 spoken quiet/hover/tour result remains pending. See [[Project Rooms/Smart House/working/voice-hover-quiet-and-contact-20261027]].
+Version 72 is published with direct answers from authored public facts and future plans, summary-only proposed room relationships, scoped unknown details and the requested “Can you show me around the house?” tour phrase. Explicit website actions still delegate and wait for confirmation. Guide/context regressions, mocked server/SQLite checks, TypeScript, build and secret checks passed. The approved key, Vesper, model and existing voice lifecycle remain unchanged. A new audible trial remains unverified; refresh and begin a new conversation to load the updated session context. See [[Project Rooms/Smart House/working/pondster-house-knowledge-20261027]].
+
+The version 70 baseline includes hover activation, a live header/tagline, measured30-second quiet countdown, explicit farewell shutdown and no three-minute application cutoff during active conversation. Browser playback must be ready before capture or paid session creation; the quiet meter uses fresh PCM and fails closed with a clear health message if measurement is unavailable. Tour and public contractor/Belong knowledge are updated. All focused checks/build/privacy scans passed; the actual version70 spoken quiet/hover/tour result remains pending. See [[Project Rooms/Smart House/working/voice-hover-quiet-and-contact-20261027]].
 
 ## Earlier release evidence
 

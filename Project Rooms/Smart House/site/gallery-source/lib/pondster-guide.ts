@@ -1,4 +1,5 @@
-import { basementColorSchemes, masterBathDesigns, hallBathDesigns, roomFeatures, systemFeatures } from './features.js';
+import { floorPlanRooms } from './floor-plan';
+import { basementColorSchemes, masterBathDesigns, hallBathDesigns, roomFeatures, systemFeatures, houseFeatures } from './features.js';
 
 export type GuideAction = { menu: 'Design' | 'Explore' | 'View' | 'Own' | 'Contact' | 'Built By'; room?: string; scene?: 'day' | 'evening' | 'relax'; tour?: true };
 export type GuideReply = { text: string; action?: GuideAction };
@@ -52,9 +53,16 @@ const ashley = 'Ashley Morello is my realtor with Element Realty Group at Howard
 function normalize(value: string) { return value.toLowerCase().replace(/[^a-z0-9]+/g, ' ').trim(); }
 function hasPhrase(input: string, phrase: string) { return ` ${input} `.includes(` ${normalize(phrase)} `); }
 
+const planAliases: Record<string,string[]> = { 'master-bedroom':['primary bedroom','main bedroom','master suite'], 'walk-in-closet':['walk in closet'], 'dining-room':['dining area'], 'spiral-stair':['spiral staircase','spiral stairs'], 'open-deck':['back deck'], 'existing-garage':['current garage'], 'new-garage':['proposed garage'] };
+
 export function answerPondster(input: string): GuideReply {
   const words = normalize(input).replace(/^(?:(?:hey|hi|hello|okay|ok) )?pondster(?: |$)/, '').trim();
   const has = (phrase: string) => hasPhrase(words, phrase);
+  const planMatches = floorPlanRooms.filter(item => has(item.name) || (planAliases[item.id] ?? []).some(alias => has(alias)))
+    .sort((a,b) => b.name.length-a.name.length).filter((item,_,items) => !items.some(other => other !== item && hasPhrase(normalize(other.name),item.name)));
+  const interiorPlacement = planMatches.length > 0 && /\b(planning|plan|put|putting|place|placing|position|positioning)\b/.test(words);
+  const informational = /\b(tell|describe|explain|about|how|what|which|will|can|does|is|are|do)\b/.test(words);
+  const roomInformation = informational && !/\b(show|open|compare|vote|voting|choices?|designs?|galler(?:y|ies)|colou?rs?|palettes?|schemes?|finishes)\b/.test(words);
   const tubContext = /\b(tubs?|showers?|bathtub|floating vanity)\b/.test(words);
   const bathOperation = /\b(start|stop|fill|run|turn on|turn off|shut off|temperature|preferred|recognize|voice|activate|activated)\b/.test(words);
   const tubDesignRequest = tubContext && !bathOperation && (hallBathDesigns.some(design => (choiceAliases[design.title] ?? []).some(alias => has(alias)))
@@ -65,8 +73,19 @@ export function answerPondster(input: string): GuideReply {
   if (/\b(password|passcode|secret|private|confidential|live camera feed|camera footage|surveillance feed|saved profile|personal profile|alarm code|wifi|wi fi|owner records|owner data)\b/.test(words)) {
     return { text: 'I cannot provide private records, passwords, or real access codes here. My future owner tools will need authenticated access; saying you are the owner does not grant access.', action: { menu: 'Own' } };
   }
-  if (/\b(address|location|where are you|where is pondster)\b/.test(words)) return { text: 'I’m Pondster, the voice and identity of this house. My location is confidential for now—think witness protection, with better curb appeal. You can explore my design ideas here and find future viewing arrangements on View.', action: { menu: 'View' } };
-  const unverifiedDetail = /\b(price|pricing|cost|budget|tax|mortgage|rent|valuation|square footage|square feet|bedrooms|bathrooms|permit|inspection|wiring|voltage|thermostat|equipment|specifications?|model number|serial number|manufacturer|paint code|paint brand)\b/.test(words) || /\bhow much\b/.test(words);
+  if (/\b(address|location|street|city|town|neighborhood|zip|postal|geolocation|coordinates|latitude|longitude)\b/.test(words) || (/\b(where are you|where is pondster)\b/.test(words) && !interiorPlacement)) return { text: 'I’m Pondster, the voice and identity of this house. My location is confidential for now—think witness protection, with better curb appeal. You can explore my design ideas here and find future viewing arrangements on View.', action: { menu: 'View' } };
+  const propertyCount = /\b(?:how many|number of|count of|total(?: number of)?) (?:bedrooms?|bathrooms?|beds?|baths?|rooms?)\b/.test(words)
+    || /\b(?:one|two|three|four|five|six|seven|eight|nine|ten|\d+) (?:bedrooms?|bathrooms?)\b/.test(words);
+  const knownMountQuestion = informational && /\b(tv|television|mount|mm max1|mmmax1)\b/.test(words)
+    && /\b(mount|mm max1|mmmax1|face|faces|facing|turn|turns|turning|position|positioned|swivel|kitchen)\b/.test(words)
+    && !/\b(manufactur(?:er|ers|es|ed)|brand|serial number|installed|approved|water heater|tankless|hvac|heat pump)\b/.test(words);
+  const unknownEquipment = /\b(manufactur(?:er|ers|es|ed)|serial number|paint code|paint brand)\b/.test(words)
+    || (!knownMountQuestion && /\b(model number|model|brand)\b/.test(words) && /\b(equipment|appliances?|fixtures?|heater|hvac|heat pump|shower|tv|television|mount|cameras?)\b/.test(words))
+    || (/\b(installed|fitted|approved|as built|completed|already have|actually have)\b/.test(words)
+      && /\b(equipment|appliances?|fixtures?|heater|hvac|thermostat|shower|tub|bath|tv|mount|cameras?|systems?|materials?|finishes|paint)\b/.test(words));
+  const unverifiedDetail = propertyCount || unknownEquipment
+    || /\b(price|pricing|cost|budget|tax|mortgage|rent|valuation|square footage|square feet|permit|inspection|wiring|voltage|thermostat|specifications?|dimensions?|measurements?)\b/.test(words)
+    || /\bhow (?:much|far|wide|deep|long|tall)\b/.test(words);
   const trade = /\b(gc|general contractor|glasgow|glasgowdb)\b/.test(words) ? 'gc'
     : /\b(hvac|true service|trueserviceinc)\b/.test(words) ? 'hvac'
     : /\b(plumber|plumbing|executive plumbing|executiveplumbingcompany)\b/.test(words) ? 'plumber'
@@ -80,13 +99,30 @@ export function answerPondster(input: string): GuideReply {
     };
     return { text: (trade === 'all' ? Object.values(contacts).join(' ') : contacts[trade]) + ' I can show you their public websites on my Contact page.', action: { menu: 'Contact' } };
   }
-  if (unverifiedDetail || /\bhvac\b/.test(words)) {
+  if (unverifiedDetail) {
     return { text: "I don't have verified pricing, property specifications, equipment records, or construction approvals to share here. My images show AI concepts, not installed or approved specifications. You can keep asking me about my public information." };
+  }
+  if (knownMountQuestion && !/\b(show|open|compare|vote|video|film|animation|galler(?:y|ies)|colou?rs?)\b/.test(words)) {
+    return { text: 'My selected TV mount is the manual MM-MAX1, positioned by hand. The automatic turning in my AI motion film is illustrative; my selected mount’s fit and clearances still need validation.', action: { menu: 'Explore' } };
+  }
+  if (/\b(bathrooms|baths)\b/.test(words) && roomInformation) {
+    return { text: 'My Master Bath and Hall Bath have separate design studies. ' + roomFeatures['master-bath'].features.slice(0,2).join(' ') + ' ' + roomFeatures['hall-bath'].features.slice(1,3).join(' ') + ' These are my design concepts, not a verified whole-house bathroom count or installed specifications.', action: { menu: 'Explore' } };
+  }
+  const layoutQuestion = /\b(floor plan|floorplan|proposed layout|first floor|where|next to|beside|adjoin|near|connect|relative to|open plan|open space|open to)\b/.test(words);
+  if (layoutQuestion && /\bbedrooms?\b/.test(words) && /\b(labels?|labeled|labelled|plan|layout)\b/.test(words)) {
+    const labels = floorPlanRooms.filter(item => ['master-bedroom','bedroom-1','bedroom-2'].includes(item.id)).map(item => item.name);
+    return { text: 'In my proposed first-floor drawing, I label ' + labels.join(', ') + '. Those plan labels do not confirm my whole-house bedroom count or completed construction.', action: { menu: 'Explore' } };
+  }
+  if (layoutQuestion || (roomInformation && planMatches.some(item => !item.galleryId))) {
+    const matches = planMatches;
+    if (matches.length) return { text: matches.slice(0,3).map(item => item.summary).join(' ') + ' I’m describing my proposed layout, not measured or approved construction.', action: { menu: 'Explore' } };
+    if (/\b(floor plan|floorplan|proposed layout|first floor)\b/.test(words)) return { text: 'I show my proposed first-floor layout in Explore, with my living, dining and kitchen spaces, bedroom-suite labels, pantry, laundry, garages and deck. It is a presentation plan, not a verified whole-house room count or approved construction drawing.', action: { menu: 'Explore' } };
   }
   if (/^(?:(?:show(?: me)?|open)(?: (?:my|your|the))? )?(?:deck structural drawing|preliminary deck drawing)(?: please)?$/.test(words)) {
     return { text: 'I have a preliminary deck structural drawing on my Belong page: /documents/deck-structural-preliminary.pdf. I’m sharing it as a preliminary design reference, not approved construction plans or confirmed specifications.', action: { menu: 'Own' } };
   }
   const virtualTour = has('virtual tour') || has('virtual design tour') || has('virtualtour')
+    || /\b(?:show me|take me|look|walk me) (?:around|through)(?: (?:my|your|the|this))? (?:house|home)\b/.test(words)
     || /\b(?:take me on|give me|start|begin|launch|play|show(?: me)?|open)(?: (?:my|your|the|a))? tour\b/.test(words);
   if (virtualTour) return { text: 'I’m opening my virtual design tour. I show one view per room using my concept films and vote-leading design images. My tour controls let you choose sound or full screen.', action: { menu: 'View', tour: true } };
   const menuCommand = words.match(/\b(?:go to|open|show(?: me)?|take me to|navigate to)\s+(?:my\s+|the\s+)?(built by|contact|explore|design|view|belong|own|manage)(?:\s+(?:page|menu))?(?:\s+(?:please|now|for me))?$/);
@@ -102,6 +138,12 @@ export function answerPondster(input: string): GuideReply {
   if (systemId) {
     const feature = systemFeatures.find(item => item.id === systemId)!;
     return { text: `${feature.text} These are my future features; my equipment and integrations still need confirmation. I can’t operate these systems or show live camera feeds from this website.`, action: { menu: 'Explore' } };
+  }
+  if (/\b(smart|intelligent|automations?|capabilities|abilities)\b/.test(words) || has('what makes you special') || has('what makes you different') || has('what can you do') || has('tell me about pondster') || has('tell me about yourself') || has('tell me about you') || has('tell me about the house') || has('tell me about your house') || has('describe yourself') || (/\bequipment\b/.test(words) && informational)) {
+    return { text: systemFeatures.map(feature => feature.text).join(' ') + ' ' + (houseFeatures.find(feature => feature.title === 'My voice')?.text ?? '') + ' These are my stated future features; my equipment and integrations still need confirmation, and this public website cannot operate my house systems.', action: { menu: 'Explore' } };
+  }
+  if (/\b(hvac|heating|cooling|climate|comfort)\b/.test(words)) {
+    return { text: (houseFeatures.find(feature => feature.title === 'My climate & comfort')?.text ?? '') + ' My installed HVAC equipment, manufacturer and technical specifications are not verified here.', action: { menu: 'Explore' } };
   }
   if (/\b(built by|builder|builders|developer|buy your home|buyyourhomellc|wes|wes browning)\b/.test(words) || /\bwho (built|is building|developed) (you|pondster|the house)\b/.test(words)) {
     return { text: 'Buy Your Home, LLC is the company behind me. Its website describes buying, repairing, managing, and selling homes with personal service and flexible real estate options. I can show you its overview, official website, and Wes Browning at 919-917-7466 on my Built By page.', action: { menu: 'Built By' } };
@@ -141,7 +183,7 @@ export function answerPondster(input: string): GuideReply {
     return { text: 'I will feature a framed TV with my selected manual MM-MAX1 mount, positioned by hand. My ten-second AI film shows a fixed decorative frame, a TV turning toward my kitchen, moving football, and a scrolling caption. The automatic motion is illustrative; my selected mount’s fit and clearances still need validation.', action: { menu: 'Design', room: 'media-center' } };
   }
   if (room) {
-    if (/\bfeatures?\b/.test(words)) return { text: `${roomFeatures[room.id].features.join(' ')} These are my future features and design concepts; my final specifications still need confirmation.`, action: { menu: 'Explore' } };
+    if (/\bfeatures?\b/.test(words) || (roomInformation && !choice)) return { text: `${roomFeatures[room.id].features.join(' ')} These are my future features and design concepts; my final specifications still need confirmation.`, action: { menu: 'Explore' } };
     const action: GuideAction = { menu: 'Design', room: room.id };
     if (choice) return { text: `I have ${choice.title} as an AI design concept in my ${room.name} gallery. I’m opening it so you can compare my options. My concept images do not confirm installed materials or finished work.`, action };
     if (!room.choices.length) return { text: `I will add design images to my ${room.name} gallery. I don’t have choices or specifications to share for it yet.`, action };
@@ -155,7 +197,7 @@ export function answerPondster(input: string): GuideReply {
   if (/\b(video|film|football|artwork|screen|motion)\b/.test(words)) {
     return { text: 'I will feature a framed TV with my selected manual MM-MAX1 mount, positioned by hand. My ten-second AI film shows a fixed decorative frame, a TV turning toward my kitchen, moving football, and a scrolling caption. The automatic motion is illustrative; my selected mount’s fit and clearances still need validation.', action: { menu: 'Design', room: 'media-center' } };
   }
-  if (has('explore') || /\b(features?|room by room)\b/.test(words)) return { text: 'I show the features I will bring to my house and each of my spaces on Explore, alongside my design concepts. You can also try my illustrative lighting moods. My equipment and construction details still need confirmation.', action: { menu: 'Explore' } };
+  if (has('explore') || /\b(features?|room by room)\b/.test(words)) return { text: 'In Explore, I show my house-wide plans: ' + houseFeatures.map(feature => feature.title).join('; ') + '. I also show my room features, proposed first-floor layout and an interactive illustration of my lighting moods. My plans and AI concepts do not confirm installed equipment or approved construction.', action: { menu: 'Explore' } };
   if (has('view')) return { text: 'I introduce Ashley and my simulated viewing preview on View. For a real visit with me, arrange the details separately with Ashley.', action: { menu: 'View' } };
   if (/\b(design|designs|gallery|galleries|choices|colors|colours)\b/.test(words)) return { text: `I have ${rooms.length} design galleries: ${rooms.map(room => room.name).join(', ')}. I share AI concept images where choices are available and will add images for my other galleries.`, action: { menu: 'Design' } };
   return { text: "I can answer from my public website information: future features, design concepts, simulated lighting, viewing previews, Ashley, my SI designer Jean Wright, Buy Your Home, LLC, and my future owner experience. I don't have a verified answer to that question." };

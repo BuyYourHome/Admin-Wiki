@@ -1,6 +1,7 @@
 import assert from 'node:assert/strict';
 import { buildPondsterLiveSession, PONDSTER_LIVE_GREETING } from '../lib/pondster-live-context.ts';
 import { galleries } from '../lib/designs.ts';
+import { floorPlanRooms } from '../lib/floor-plan.ts';
 
 const session = buildPondsterLiveSession(galleries);
 assert.equal(session.model, 'gpt-live-1');
@@ -16,6 +17,7 @@ assert.deepEqual(session.client.data_channel.allowed_client_events, ['session.cl
 assert.ok(session.client.data_channel.allowed_server_events.every(event => typeof event.type === 'string'));
 assert.ok(!session.client.data_channel.allowed_server_events.some(event => event.type === 'session.delegation.created'));
 assert.match(session.instructions, /public voice and identity/);
+assert.match(session.instructions, /My menu is Design, Explore, View, Belong, Built By, Contact\./);
 assert.match(session.instructions, /Jean Wright is my SI designer/);
 assert.match(session.instructions, /location is confidential/);
 assert.match(session.instructions, /not Codex/);
@@ -26,6 +28,23 @@ assert.match(session.instructions, /complete explicit farewell.*website detects.
 assert.match(session.instructions, /do not invent a close tool or protocol event/);
 assert.match(session.instructions, /explicit navigation or tour request.*show me the virtual tour.*generate <\|SpawnThinking\|>.*start the existing tour/);
 assert.match(session.instructions, /Do not claim that my virtual tour is unavailable/);
+assert.match(session.instructions, /Can you show me around the house/);
+assert.match(session.instructions, /Generate <\|SpawnThinking\|> when: The visitor explicitly asks for one of these website actions, or corrects an action already requested/);
+assert.match(session.instructions, /Wait for the guide's result before claiming the action happened/);
+assert.match(session.instructions, /Do not generate <\|SpawnThinking\|> when: A question.*can be answered from my public facts/);
+assert.doesNotMatch(session.instructions, /Generate <\|SpawnThinking\|> before answering a substantive question/);
+assert.match(session.instructions, /authored public plans are known plans.*future features confidently/);
+assert.match(session.instructions, /Answer the known parts first, then qualify only the specific detail/);
+assert.match(session.instructions, /Ask at most one brief clarifying question/);
+assert.match(session.instructions, /Do not replace an answer supported by my public facts with a blanket "no verified answer"/);
+assert.match(session.instructions, /selected MM-MAX1 TV mount is manual; do not promise automatic turning/);
+assert.match(session.instructions, /future features and AI concepts are not proof of installation or validated specifications/);
+assert.match(session.instructions, /proposed room relationships, not verified as-built measurements or approved construction details/);
+assert.match(session.instructions, /proposed first-floor room labels do not establish whole-house bedroom or bathroom counts/);
+const layoutFacts = session.instructions.split('\n').filter(line => line.startsWith('Proposed layout — '));
+assert.deepEqual(layoutFacts, floorPlanRooms.map(room => `Proposed layout — ${room.name}: ${room.summary}`),
+  'Live receives only authored public room names and summaries, without CAD polygons, numeric dimensions or extra feature data.');
+for (const room of floorPlanRooms) assert.ok(!session.instructions.includes(room.polygon), 'Floor-plan drawing coordinates stay out of the voice context.');
 for(const fact of ['Glasgow Design Build is my general contractor, https://glasgowdb.com/',
   'True Service Inc. is my HVAC contractor, https://www.trueserviceinc.com/',
   'Executive Plumbing Company is my plumber, https://www.executiveplumbingcompany.com/'])assert.ok(session.instructions.includes(fact));
@@ -37,4 +56,4 @@ for (const gallery of galleries) {
   for (const design of gallery.designs) assert.ok(session.instructions.includes(design.title));
 }
 assert.deepEqual(buildPondsterLiveSession(galleries), session);
-console.log('PASS: server-owned GPT-Live configuration, trusted answer channel, current public catalog, confidential location, planned-device boundaries, and no private source context.');
+console.log('PASS: direct public-fact conversation and scoped unknowns; confirmed navigation/tour delegation; summary-only proposed layout; unchanged server-owned GPT-Live configuration, planned-device/privacy boundaries and public catalog.');
