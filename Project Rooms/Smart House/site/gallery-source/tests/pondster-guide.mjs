@@ -193,7 +193,9 @@ assert.match(hallFeatures.text, /floating vanity.*onyx-pattern tile.*patterned w
 assert.doesNotMatch(hallFeatures.text, /45-degree|sage baseline/, 'Hall Bath does not borrow the Master Bath vanity layout.');
 assertGuideAction(answerPondster('Try the evening lighting').action, {menu:'Explore',scene:'evening'});
 assertGuideAction(answerPondster('Pondster unwind').action, {menu:'Explore',scene:'relax'});
-assert.match(answerPondster('Turn on the lights').text, /don’t control real house lighting/);
+const lightingControl = answerPondster('Turn on the lights');
+assertGuideAction(lightingControl.action, {menu:'Design',control:{kind:'check',target:'the lights'}});
+assert.equal(lightingControl.text, 'I’ll use that website control and check the result.', 'A website-control request does not claim a change to physical house lighting.');
 assertGuideAction(answerPondster('Show the football video').action, {menu:'Design',room:'media-center'});
 assertGuideAction(answerPondster('Show the spiral staircase video').action, {menu:'Design',room:'spiral-staircase'});
 assert.match(answerPondster('Show the home theater film').text, /twelve-second/);
@@ -298,7 +300,7 @@ for(const question of ['What makes you smart?','Tell me about yourself','What ma
 }
 const exploreKnowledge=answerPondster('What will I find in Explore?');
 assertGuideAction(exploreKnowledge.action,{menu:'Explore'});
-assert.match(exploreKnowledge.text,/house-wide plans.*room features.*proposed first-floor layout.*lighting moods/);
+assert.match(exploreKnowledge.text,/house-wide plans.*room features.*first-floor layout.*lighting moods/);
 for(const question of ['Describe your kitchen','Tell me about your kitchen']) {
   const reply=answerPondster(question);assertGuideAction(reply.action,{menu:'Explore'});
   assert.match(reply.text,/kitchen layout and finishes.*manual MM-MAX1.*recirculate hot water/);
@@ -317,9 +319,9 @@ for(const question of ['How will the TV face the kitchen?', 'What is the model n
 assertGuideAction(answerPondster('Show the football video').action,{menu:'Design',room:'media-center'});
 assert.match(answerPondster('Show the football video').text,/automatic motion is illustrative/);
 const pantryRelation=answerPondster('Is the pantry next to the kitchen?');
-assertGuideAction(pantryRelation.action,{menu:'Explore'});assert.match(pantryRelation.text,/pantry next door.*pantry will sit beside my kitchen.*proposed layout/);
+assertGuideAction(pantryRelation.action,{menu:'Explore'});assert.match(pantryRelation.text,/pantry next door.*pantry will sit beside my kitchen.*planned layout/);
 assert.doesNotMatch(pantryRelation.text,/polygon|PLAN_WIDTH|C:|\\.codex|908|Pond Street/);
-assert.match(answerPondster('Where is my pantry?').text,/pantry will sit beside my kitchen.*proposed layout/);
+assert.match(answerPondster('Where is my pantry?').text,/pantry will sit beside my kitchen.*planned layout/);
 const bedroomLabels=answerPondster('Which bedrooms are labeled on your proposed first-floor plan?');
 assertGuideAction(bedroomLabels.action,{menu:'Explore'});assert.match(bedroomLabels.text,/Master Bedroom, Bedroom 1, Bedroom 2.*do not confirm my whole-house bedroom count/);
 for(const question of [
@@ -337,12 +339,12 @@ assertGuideAction(answerPondster('What makes you smart and give me the Wi-Fi pas
 assert.match(answerPondster('Describe your kitchen and tell me your address').text,/Cary, North Carolina.*exact street address.*private/);
 for(const question of ['Tell me about your pantry','Describe the pantry','Where are you planning to put the pantry?']) {
   const reply=answerPondster(question);assertGuideAction(reply.action,{menu:'Explore'},question);
-  assert.match(reply.text,/pantry will sit beside my kitchen.*proposed layout/);
+  assert.match(reply.text,/pantry will sit beside my kitchen.*planned layout/);
   assert.doesNotMatch(reply.text,/location is confidential|don.t have a verified answer/);
 }
 const masterBedroomInfo=answerPondster('Tell me about your master bedroom');
 assertGuideAction(masterBedroomInfo.action,{menu:'Explore'});
-assert.match(masterBedroomInfo.text,/master suite.*bedroom.*walk-in closet.*master bath.*proposed layout/);
+assert.match(masterBedroomInfo.text,/master suite.*bedroom.*walk-in closet.*master bath.*planned layout/);
 for(const question of ['What equipment is planned?', 'Tell me about your equipment']) {
   const reply=answerPondster(question);assertGuideAction(reply.action,{menu:'Explore'});
   assert.match(reply.text,/natural-gas tankless.*future features.*equipment and integrations still need confirmation/);
@@ -420,4 +422,4 @@ for(const question of ['Tell me about your HVAC plans','Show me your HVAC system
 }
 assert.equal(answerPondster('Show me the model of your installed HVAC equipment').action,undefined);
 assert.deepEqual(answerPondster('Show me HVAC information and your Wi-Fi password').action,{menu:'Own'});
-console.log('PASS: precise allowlisted section/card destinations; public house/room/system paraphrases and proposed-layout knowledge; Pondster identity; nine galleries/31 current choices; separate Living Room/Home Theatre aliases and palettes; one deck choice/two views; Master/Hall Bath routing; definite future features/manual mount; film, voting, viewing and private/unknown-fact boundaries.');
+console.log('PASS: precise allowlisted section/card destinations; public house/room/system paraphrases and planned-layout knowledge; Pondster identity; nine galleries/31 current choices; separate Living Room/Home Theatre aliases and palettes; one deck choice/two views; Master/Hall Bath routing; definite future features/manual mount; film, voting, viewing and private/unknown-fact boundaries.');

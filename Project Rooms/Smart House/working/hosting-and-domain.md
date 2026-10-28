@@ -786,3 +786,12 @@ Voice enlarge/vote/restart fixes first published as version 80; see [[spoken-gal
 Version **82** published at `2026-10-28T16:58:51.339390+00:00`. Source `5f31c916823759f8230f7a21fbeac9707b58732b`; saved version `appgprj_6ad4d98e08708191858cab113814704e~appgver_d8f9c3c78ae88191a325a049c612c987`; deployment `appgdep_6ae229c02d688191b2e5e16aa2b8e1ca`; environment revision 4. Archive `sha256:3a95cede504b5bd1a5e82b1c1f702a9d10bcd14e0104527b8f7db98d26e7d960`, 136 files / 74,106,880 bytes. Public audience retained. Build, whitespace check and secret scan passed; no fresh browser preview was available.
 
 CSS-only launch-point correction requested by Wes after approving the logo. Geometry and rationale: [[site-wide-voice-controls-and-logo-20261028]].
+
+
+## Version 83 — unified Explore room panel and wording
+
+Version **83** published successfully at `2026-10-28T17:39:44.812162+00:00`. Source `a402022dc231f1c3ebd788b5a7d523072d8546da`; saved version `appgprj_6ad4d98e08708191858cab113814704e~appgver_8d28907207548191be90ce98a4e756bd`; deployment `appgdep_6ae233555d9081919c73ca44b5c0dc51`; environment revision 4. Public audience retained. Archive `sha256:8e6bb606f8b59ffc48a6990a05649b2afdee4392c094089f138825d781536803`, 136 files / 74,096,640 bytes. Site source was pushed by the supported helper; native publication returned succeeded.
+
+TypeScript, actual navigation/selected-room regressions, Guide, live-context, speech and fixed-origin logo checks passed. The production build, source diff check and 207-file secret-absence scan passed. The 14 changed source text mirrors are byte-equal to the released checkout. One existing Guide test expectation was updated for the already-shipped safe website-control dispatch; no lighting behavior was changed.
+
+The selected Explore panel retains the complete room features and image, with all 19 plan spaces and nine gallery routes reachable. Supplementary selector choices preserve Front Elevation and ADU. The redundant lower room cards are removed; house features and the lighting preview remain. View’s opening Ashley sentence is removed, descriptions omit “proposed,” and fireworks have a static upper-tip source. No new rendered/browser or microphone verification was available. See [[explore-room-panel-and-copy-20261028]].

@@ -36,3 +36,12 @@ Source mirrors match the released checkout. One pre-existing trailing space in t
 Wes approved the logo and requested only that fireworks originate at the top of the exclamation point. The CSS now uses left .33em and top calc(.065em - 90px), with bottom auto. A read-only independent review of the bundled Allura font found unitsPerEm 1000, typo/hhea ascent 800, descent 450 and USE_TYPO_METRICS enabled. With line-height .95, the baseline is .65em; the exclamation upper tip at (330,585) maps to (.33em,.065em). The unchanged SVG origin is 90px below its top. This anchors the existing bursts to the glyph tip at responsive font sizes. SVG, animation, tagline and other logo styling are unchanged.
 
 Version **82** published at `2026-10-28T16:58:51.339390+00:00`. Source `5f31c916823759f8230f7a21fbeac9707b58732b`; saved version `appgprj_6ad4d98e08708191858cab113814704e~appgver_d8f9c3c78ae88191a325a049c612c987`; deployment `appgdep_6ae229c02d688191b2e5e16aa2b8e1ca`; environment revision 4. Archive `sha256:3a95cede504b5bd1a5e82b1c1f702a9d10bcd14e0104527b8f7db98d26e7d960`, 136 files / 74,106,880 bytes. Public audience retained. Build, whitespace check and secret scan passed; no fresh browser preview was available.
+
+
+## Follow-up — fixed animation source, version 83
+
+Wes reported that the v82 bursts appeared below and crossed the exclamation mark. The font-relative tip placement remains valid, but the old CSS view-box scale pivot moved the local source during expansion. A static SVG parent now translates to (45,90), with native SVG scale/opacity animation only on its inner sparks. The local origin remains fixed at every scale, and every ray stays above it. The fresh burst class avoids the old CSS transform rule; reduced motion hides the artwork. The actual component geometry test and independent read-only cascade review passed. This is structural verification, not a fresh browser rendering check.
+
+Version **83** published successfully at `2026-10-28T17:39:44.812162+00:00`. Source `a402022dc231f1c3ebd788b5a7d523072d8546da`; saved version `appgprj_6ad4d98e08708191858cab113814704e~appgver_8d28907207548191be90ce98a4e756bd`; deployment `appgdep_6ae233555d9081919c73ca44b5c0dc51`; environment revision 4. Public audience retained. Archive `sha256:8e6bb606f8b59ffc48a6990a05649b2afdee4392c094089f138825d781536803`, 136 files / 74,096,640 bytes. Site source was pushed by the supported helper; native publication returned succeeded.
+
+See [[explore-room-panel-and-copy-20261028]] for the accompanying room-panel and copy release.

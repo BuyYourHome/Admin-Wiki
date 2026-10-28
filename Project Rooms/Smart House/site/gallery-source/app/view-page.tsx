@@ -18,7 +18,7 @@ export default function ViewPage({ onImage, onDesign, onTourStart, tourRequest =
     page.current?.querySelector<HTMLButtonElement>('.virtual-tour-invitation button.tour-start')?.click();
   },[tourRequest,onTourRequestHandled]);
   return <section ref={page} className="secondary-page viewing-page">
-    <div className="viewing-intro"><div><h1>Come meet <em>me.</em></h1></div><p className="lead">Meet Ashley, my realtor, and find out about visiting me as I take shape.</p></div>
+    <div className="viewing-intro"><div><h1>Come meet <em>me.</em></h1></div></div>
     <div id="pondster-view-tour"><VirtualTour onStart={onTourStart} voice={voice}/></div>
     <p className="buyer-design-note">Buy me early, while I’m still taking shape, and you can have a say in my final design. Help choose from the finishes and details that are still open, so I can feel like your home from the start. Talk with Ashley, my realtor, about which choices are available and when they need to be made.</p>
     <div className="viewing-layout">

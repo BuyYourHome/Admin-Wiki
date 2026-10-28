@@ -3,7 +3,7 @@ import { readFile } from 'node:fs/promises';
 import { stripTypeScriptTypes } from 'node:module';
 import { galleries } from '../lib/designs.ts';
 import { floorPlanRooms } from '../lib/floor-plan.ts';
-import { houseFeatures } from '../lib/features.js';
+import { houseFeatures, roomFeatures } from '../lib/features.js';
 import { getGalleryScrollTop, getSectionRevealTop } from '../lib/gallery-scroll.ts';
 import { parsePondsterDestination, getPondsterDestinationId, DESTINATION_SECTIONS } from '../lib/pondster-destinations.ts';
 import { galleryVoiceSelection } from '../lib/pondster-gallery.ts';
@@ -53,6 +53,13 @@ function actionHarness(saving=false){
   assert.deepEqual(h.scenes,['evening']);assert.equal(getPondsterDestinationId(h.pending.current.destination),'pondster-explore-lighting');
 }
 {
+  const h=actionHarness();
+  for(const room of ['media-center','spiral-staircase','back-deck','front-elevation','adu','media-center'])h.run({menu:'Explore',section:'room',room});
+  assert.deepEqual(h.requests.map(request=>request.id),[1,2,3,4,5,6],'Same-page Explore room changes and repeats each carry a new selection/reveal intent.');
+  assert.deepEqual(h.requests.map(request=>request.destination.room),['media-center','spiral-staircase','back-deck','front-elevation','adu','media-center']);
+  assert.equal(h.pictures.filter(Boolean).length,0,'Explore room requests stay in the selected floor-plan detail instead of opening the Design gallery.');
+}
+{
   const h=actionHarness();h.run({menu:'View',section:'tour',tour:true});
   assert.deepEqual(h.tours,[1]);assert.deepEqual(h.requests,[],'Tour start remains the separate one-shot action, with no competing background reveal.');
   h.run({menu:'View',section:'tour'});assert.equal(h.requests.length,1);assert.deepEqual(h.tours,[1],'Showing the invitation alone cannot start playback.');
@@ -68,12 +75,12 @@ function revealHarness(destination={menu:'Contact',section:'gc'},{reduce=false,v
   const request={id:1,destination},pending={current:request},jobs=new Map(),scrolls=[],finished=[],reads=[];
   let next=0,focusCalls=0,clickCalls=0;
   const metrics={top:visible?300:900,bottom:visible?600:1200,header:200,scrollY:500,height:844};
-  const target={tagName:details?'DETAILS':'ARTICLE',open:false,dataset:{pondsterRoom:planReady?destination.room:'living-room'},
+  const selectedPlan=destination.menu==='Explore' && destination.room?floorPlanRooms.find(item=>destination.section==='floor-plan'?item.id===destination.room:item.galleryId===destination.room):undefined;
+  const target={tagName:details?'DETAILS':'SECTION',open:false,dataset:{pondsterRoom:planReady?(selectedPlan?.id??`gallery-${destination.room}`):'stale-room',pondsterGallery:planReady?(selectedPlan?.galleryId??destination.room):'stale-gallery'},
     getClientRects:()=>[{}],getBoundingClientRect:()=>{reads.push('target');return{top:metrics.top,bottom:metrics.bottom,height:metrics.bottom-metrics.top};},
     querySelectorAll:()=>[],focus(){focusCalls++;},click(){clickCalls++;}};
-  const outer={...target,getBoundingClientRect(){throw new Error('A requested plan room must reveal its selected detail, not the outer plan.');}};
-  const targetId=getPondsterDestinationId(destination);
-  const document={getElementById(id){assert.equal(id,targetId,'Only the fixed shared-mapper ID is looked up.');return destination.section==='floor-plan'&&destination.room?outer:target;}};
+  const outer={...target,getBoundingClientRect(){throw new Error('An Explore room request must reveal its selected detail, not the outer plan or a removed room card.');}};
+  const document={getElementById(id){assert.equal(id,getPondsterDestinationId(pending.current?.destination??destination),'Only the fixed shared-mapper ID is looked up.');return destination.menu==='Explore'&&destination.room?outer:target;}};
   const window={get innerHeight(){return metrics.height;},get scrollY(){return metrics.scrollY;},
     matchMedia(query){assert.equal(query,'(prefers-reduced-motion: reduce)');return{matches:reduce};},scrollTo:value=>scrolls.push(value)};
   const run=(current=request,menu=destination.menu,room=destination.room??'media-center')=>runEffect(current,pending,menu,room,getPondsterDestinationId,
@@ -96,21 +103,35 @@ function revealHarness(destination={menu:'Contact',section:'gc'},{reduce=false,v
 }
 {
   for(const destination of [{menu:'Explore',section:'floor-plan',room:'pantry'},{menu:'Explore',section:'room',room:'master-bath'}]){
-    const h=revealHarness(destination,{details:destination.section==='room'});
+    const h=revealHarness(destination);
     Object.assign(h.metrics,{top:580,bottom:1840,header:192,height:710});h.run();h.drain();
-    assert.deepEqual(h.scrolls,[{top:876,behavior:'smooth'}],'An oversized selected plan detail or room card near the bottom must reveal its top.');
-    const aligned=revealHarness(destination,{details:destination.section==='room'});
+    assert.deepEqual(h.scrolls,[{top:876,behavior:'smooth'}],'An oversized selected room detail near the bottom must reveal its top.');
+    const aligned=revealHarness(destination);
     Object.assign(aligned.metrics,{top:204,bottom:1464,header:192,height:710});aligned.run();aligned.drain();
-    assert.deepEqual(aligned.scrolls,[],'An already aligned oversized plan detail or room card must not jump again.');
+    assert.deepEqual(aligned.scrolls,[],'An already aligned oversized selected room detail must not jump again.');
   }
   const gallery=revealHarness({menu:'Design',section:'gallery',room:'media-center'});
   Object.assign(gallery.metrics,{top:580,bottom:1840,header:192,height:710});gallery.run();gallery.drain();
   assert.deepEqual(gallery.scrolls,[],'Design gallery reveals retain their existing heading/visual geometry.');
 }
 {
-  const h=revealHarness({menu:'Explore',section:'room',room:'master-bath'},{details:true});
-  h.run();h.flush();assert.equal(h.target.open,true);assert.deepEqual(h.scrolls,[],'Expand the requested native details before measuring its contents.');
-  h.flush();assert.equal(h.scrolls.length,1);assert.equal(h.focusCalls(),0);
+  const h=revealHarness({menu:'Explore',section:'room',room:'master-bath'});
+  h.run();h.flush();assert.equal(h.scrolls.length,1,'The selected room panel is already expanded and reveals without another room-card click.');
+  assert.equal(h.focusCalls(),0);
+}
+{
+  for(const room of ['media-center','spiral-staircase','back-deck','garage-barn-door','front-elevation','adu']){
+    const h=revealHarness({menu:'Explore',section:'room',room},{planReady:false});
+    h.run();h.flush();assert.deepEqual(h.reads,[],'Do not measure the previous selected room for an Explore gallery-room request.');
+    h.target.dataset.pondsterRoom=floorPlanRooms.find(item=>item.galleryId===room)?.id??`gallery-${room}`;
+    h.flush();assert.deepEqual(h.scrolls,[],'A plan identity alone cannot satisfy a gallery-room request.');
+    h.target.dataset.pondsterGallery=room;h.flush();assert.equal(h.scrolls.length,1,`Reveal ${room} after its matching detail has committed.`);
+  }
+  const h=revealHarness({menu:'Explore',section:'room',room:'media-center'});h.run();h.drain();
+  const next={id:2,destination:{menu:'Explore',section:'room',room:'spiral-staircase'}};h.pending.current=next;
+  h.run(next);h.flush();assert.equal(h.scrolls.length,1,'A same-page room change waits while the previous Living Room detail is still mounted.');
+  h.target.dataset.pondsterRoom='spiral-stair';h.target.dataset.pondsterGallery='spiral-staircase';h.flush();
+  assert.equal(h.scrolls.length,2,'The newly selected Home Theatre detail reveals after its own identity is ready.');
 }
 {
   const h=revealHarness({menu:'Explore',section:'floor-plan',room:'pantry'},{planReady:false});
@@ -138,19 +159,43 @@ for(const id of ['ashley','company','trades','voice'])assert.ok(files['contact-p
 assert.ok(files['contact-page'].includes("id={`pondster-contact-${id==='general-contractor'?'gc':id}`}"));
 for(const id of ['tour','ashley','viewing','notebook'])assert.ok(files['view-page'].includes('id="pondster-view-'+id+'"'));
 for(const id of ['company','contact'])assert.ok(files['built-by-page'].includes('id="pondster-built-by-'+id+'"'));
-for(const id of ['house','rooms','lighting'])assert.ok(files['explore-page'].includes('id="pondster-explore-'+id+'"'));
-assert.match(files['explore-page'],/<details id=\{`pondster-explore-room-\$\{gallery.id\}`\}/);
+for(const id of ['house','lighting'])assert.ok(files['explore-page'].includes('id="pondster-explore-'+id+'"'));
+assert.ok(!files['explore-page'].includes('room-feature-grid') && !files['explore-page'].includes('roomFeatures'),'The redundant lower room cards and content are removed.');
 const featureDeclaration=files['explore-page'].match(/const featureSections:Record<string,string> = \{[\s\S]*?\n\};/)?.[0];assert.ok(featureDeclaration);
 const features=new Function(stripTypeScriptTypes(featureDeclaration)+';return featureSections;')();
 for(const feature of houseFeatures){assert.ok(DESTINATION_SECTIONS.Explore.includes(features[feature.title]),'Every published house-feature card has a fixed allowed destination.');}
 const planSource=files['interactive-floor-plan'];
 assert.match(planSource,/id="pondster-explore-floor-plan"/);assert.match(planSource,/data-pondster-room=\{selectedRoom.id\}/);
-const selectionBody=planSource.match(/  useEffect\(\(\) => \{([\s\S]*?)\n  \},\[roomRequest\?\.id,roomRequest\?\.room\]\);/)?.[1];assert.ok(selectionBody);
-const chooseRequested=new Function('roomRequest','floorPlanRooms','setSelectedId',selectionBody),selected=[];
-chooseRequested({id:1,room:'pantry'},floorPlanRooms,room=>selected.push(room));
-chooseRequested({id:2,room:'pantry'},floorPlanRooms,room=>selected.push(room));
-chooseRequested({id:3,room:'private-room'},floorPlanRooms,room=>selected.push(room));
+assert.match(planSource,/data-pondster-gallery=\{selectedRoom.galleryId\}/);
+assert.match(planSource,/id="pondster-explore-rooms"/);
+assert.match(planSource,/id=\{selectedRoom.galleryId \? `pondster-explore-room-\$\{selectedRoom.galleryId\}` : undefined\}/);
+const roomOptionsSource=planSource.match(/const additionalSpaces =[\s\S]*?const exploreRooms =[^\n]+;/)?.[0];assert.ok(roomOptionsSource);
+const {additionalSpaces,exploreRooms}=new Function('galleries','floorPlanRooms',stripTypeScriptTypes(roomOptionsSource)+';return {additionalSpaces,exploreRooms};')(galleries,floorPlanRooms);
+assert.equal(floorPlanRooms.length,19);assert.equal(new Set(exploreRooms.map(room=>room.id)).size,exploreRooms.length);
+assert.deepEqual(additionalSpaces.map(room=>room.galleryId),['front-elevation','adu'],'Spaces outside the first-floor plan remain available in the same selector.');
+assert.match(planSource,/floorPlanRooms.map\(room => <option/);assert.match(planSource,/additionalSpaces.map\(room => <option/);
+const selectionBody=planSource.match(/  useEffect\(\(\) => \{([\s\S]*?)\n  \},\[roomRequest\?\.id,roomRequest\?\.room,roomRequest\?\.section\]\);/)?.[1];assert.ok(selectionBody);
+const chooseRequested=new Function('roomRequest','floorPlanRooms','exploreRooms','setSelectedId',selectionBody),selected=[];
+chooseRequested({id:1,room:'pantry'},floorPlanRooms,exploreRooms,room=>selected.push(room));
+chooseRequested({id:2,room:'pantry'},floorPlanRooms,exploreRooms,room=>selected.push(room));
+chooseRequested({id:3,room:'private-room'},floorPlanRooms,exploreRooms,room=>selected.push(room));
 assert.deepEqual(selected,['pantry','pantry'],'Valid repeated plan requests select before reveal; unknown room IDs do not alter selection.');
+for(const room of floorPlanRooms){
+  const result=[];chooseRequested({id:4,section:'floor-plan',room:room.id},floorPlanRooms,exploreRooms,id=>result.push(id));
+  assert.deepEqual(result,[room.id],`The exact ${room.id} plan region remains selectable.`);
+}
+const featureListSource=planSource.match(/const selectedFeatures =[^\n]+;/)?.[0];assert.ok(featureListSource);
+const contentFor=new Function('selectedRoom','roomFeature',featureListSource+'return selectedFeatures;');
+for(const gallery of galleries){
+  const result=[];chooseRequested({id:5,section:'room',room:gallery.id},floorPlanRooms,exploreRooms,id=>result.push(id));
+  assert.equal(result.length,1,`The ${gallery.id} Explore route selects one detail panel.`);
+  const selectedRoom=exploreRooms.find(room=>room.id===result[0]);assert.equal(selectedRoom.galleryId,gallery.id);
+  const features=contentFor(selectedRoom,roomFeatures[gallery.id]);
+  for(const feature of roomFeatures[gallery.id].features)assert.ok(features.includes(feature),`The selected ${gallery.id} panel retains its full former room-card content.`);
+  assert.equal(new Set(features).size,features.length,'Shared plan/card bullets appear once.');
+}
+assert.equal((planSource.match(/<RoomPrimaryImage\b/g)??[]).length,1,'The single selected panel owns the primary picture.');
+assert.match(planSource,/roomFeature.status/);assert.match(planSource,/<ul>\{selectedFeatures.map/);
 assert.match(source,/floorPlanRequest=\{sectionReveal\?\.destination.menu==='Explore'/);
 assert.match(files['explore-page'],/roomRequest=\{floorPlanRequest\} detailRef=\{floorPlanDetailRef\}/);
-console.log('PASS: precise fixed destinations, repeated same-target/gallery requests, GC card/header geometry, native details expansion, committed plan-room readiness, reduced motion, visible no-op, stale cleanup, focus preservation and independent tour one-shot; no browser/network.');
+console.log('PASS: precise fixed destinations, repeated same-page room/gallery requests, GC card/header geometry, committed plan/gallery detail readiness, all 19 plan rooms and unmapped spaces, complete selected room content without lower duplicates, reduced motion, visible no-op, stale cleanup, focus preservation and independent tour one-shot; no browser/network.');

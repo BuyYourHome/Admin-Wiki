@@ -32,9 +32,9 @@ export function getPondsterSpeechText(question:string, reply:GuideReply):string 
     return section && labels[section]?`${section==='trades'||section==='voice'?'Here are':'Here’s'} my ${labels[section]}.`:'Here’s my Contact page.';
   }
   if(action.menu==='Explore') {
-    if(section==='floor-plan' && action.room){const name=floorPlanRooms.find(item=>item.id===action.room)?.name;return name?`Here are my ${name} plan details.`:'Here’s my proposed floor plan.';}
+    if(section==='floor-plan' && action.room){const name=floorPlanRooms.find(item=>item.id===action.room)?.name;return name?`Here are my ${name} plan details.`:'Here’s my floor plan.';}
     if(action.room){const name=galleries.find(item=>item.id===action.room)?.name;return name?`Here are my ${name} details.`:'Here are my room details.';}
-    const labels:Record<string,string>={'floor-plan':'proposed floor plan',house:'house features',rooms:'room features',lighting:'lighting illustration','hot-water':'hot-water plan',presence:'presence-sensing plan','bath-and-shower':'bath and shower plans','exterior-awareness':'exterior-camera plan','voice-feature':'voice feature','lighting-plans':'lighting plans','sound-screens':'sound and screens',climate:'climate plans','design-participation':'design choices','owner-experience':'future owner experience'};
+    const labels:Record<string,string>={'floor-plan':'floor plan',house:'house features',rooms:'room features',lighting:'lighting illustration','hot-water':'hot-water plan',presence:'presence-sensing plan','bath-and-shower':'bath and shower plans','exterior-awareness':'exterior-camera plan','voice-feature':'voice feature','lighting-plans':'lighting plans','sound-screens':'sound and screens',climate:'climate plans','design-participation':'design choices','owner-experience':'future owner experience'};
     return section && labels[section]?`${['house','rooms','bath-and-shower','lighting-plans','sound-screens','climate','design-participation'].includes(section)?'Here are':'Here’s'} my ${labels[section]}.`:'Here’s my Explore page.';
   }
   if(action.menu==='View')return action.tour?'Let’s take my virtual tour.':section==='ashley'?'Meet Ashley, my realtor.':section==='viewing'?'Here’s my viewing information.':section==='notebook'?'Here’s my visual notebook.':'Here’s my View page.';

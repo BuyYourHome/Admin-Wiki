@@ -52,10 +52,10 @@ assert.match(session.instructions, /Ask at most one brief clarifying question/);
 assert.match(session.instructions, /Do not replace an answer supported by my public facts with a blanket "no verified answer"/);
 assert.match(session.instructions, /selected MM-MAX1 TV mount is manual; do not promise automatic turning/);
 assert.match(session.instructions, /future features and AI concepts are not proof of installation or validated specifications/);
-assert.match(session.instructions, /proposed room relationships, not verified as-built measurements or approved construction details/);
-assert.match(session.instructions, /proposed first-floor room labels do not establish whole-house bedroom or bathroom counts/);
-const layoutFacts = session.instructions.split('\n').filter(line => line.startsWith('Proposed layout — '));
-assert.deepEqual(layoutFacts, floorPlanRooms.map(room => `Proposed layout — ${room.name}: ${room.summary}`),
+assert.match(session.instructions, /planned room relationships, not verified as-built measurements or approved construction details/);
+assert.match(session.instructions, /first-floor room labels do not establish whole-house bedroom or bathroom counts/);
+const layoutFacts = session.instructions.split('\n').filter(line => line.startsWith('Planned layout — '));
+assert.deepEqual(layoutFacts, floorPlanRooms.map(room => `Planned layout — ${room.name}: ${room.summary}`),
   'Live receives only authored public room names and summaries, without CAD polygons, numeric dimensions or extra feature data.');
 for (const room of floorPlanRooms) assert.ok(!session.instructions.includes(room.polygon), 'Floor-plan drawing coordinates stay out of the voice context.');
 for(const fact of ['Glasgow Design Build is my general contractor, https://glasgowdb.com/',
@@ -69,4 +69,4 @@ for (const gallery of galleries) {
   for (const design of gallery.designs) assert.ok(session.instructions.includes(design.title));
 }
 assert.deepEqual(buildPondsterLiveSession(galleries), session);
-console.log('PASS: direct public-fact conversation and scoped unknowns; confirmed navigation/tour delegation; summary-only proposed layout; unchanged server-owned GPT-Live configuration, planned-device/privacy boundaries and public catalog.');
+console.log('PASS: direct public-fact conversation and scoped unknowns; confirmed navigation/tour delegation; summary-only planned layout; unchanged server-owned GPT-Live configuration, planned-device/privacy boundaries and public catalog.');

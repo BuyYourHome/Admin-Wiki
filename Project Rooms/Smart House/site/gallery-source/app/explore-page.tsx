@@ -1,9 +1,7 @@
 'use client';
 import type { Ref } from 'react';
-import { galleries } from '../lib/designs';
-import { houseFeatures, roomFeatures } from '../lib/features.js';
+import { houseFeatures } from '../lib/features.js';
 import InteractiveFloorPlan, { type FloorPlanRoomRequest } from './interactive-floor-plan';
-import RoomPrimaryImage from './room-primary-image';
 
 type Scene = 'day' | 'evening' | 'relax';
 const featureSections:Record<string,string> = {
@@ -23,21 +21,6 @@ export default function ExplorePage({ scene, onScene, floorPlanRequest, floorPla
       <div className="house-feature-grid">{houseFeatures.map(feature => <article id={featureSections[feature.title]?`pondster-explore-${featureSections[feature.title]}`:undefined} key={feature.title}>
         <span className="feature-status">{feature.status}</span><h3>{feature.title}</h3><p>{feature.text}</p>
       </article>)}</div>
-    </section>
-
-    <section id="pondster-explore-rooms" className="room-features" aria-labelledby="room-features-heading">
-      <div className="feature-section-heading"><p className="eyebrow">MY FEATURES / SPACE BY SPACE</p><h2 id="room-features-heading">Take a look around me.</h2><p>I’m sharing design concepts and plans here. My materials, dimensions, equipment, and construction details still need confirmation.</p></div>
-      <div className="room-feature-grid">{galleries.map((gallery,index) => {
-        const feature = roomFeatures[gallery.id];
-        return <article className="room-feature-card" key={gallery.id}>
-          <div className="room-feature-top"><span className="feature-number">{String(index+1).padStart(2,'0')}</span><span className="feature-status">{feature.status}</span></div>
-          <details id={`pondster-explore-room-${gallery.id}`} className="room-feature-details">
-            <summary><h3>My {gallery.name}</h3><span className="room-feature-prompt">My picture &amp; details <span aria-hidden="true">+</span></span></summary>
-            <RoomPrimaryImage galleryId={gallery.id} roomName={gallery.name}/>
-            <ul>{feature.features.map(text => <li key={text}>{text}</li>)}</ul>
-          </details>
-        </article>;
-      })}</div>
     </section>
 
     <section id="pondster-explore-lighting" className="lighting-features" aria-labelledby="lighting-features-heading" tabIndex={-1}>

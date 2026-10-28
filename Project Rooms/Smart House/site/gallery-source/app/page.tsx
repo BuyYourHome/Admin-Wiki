@@ -106,9 +106,10 @@ export default function Home() {
       if(pendingSectionReveal.current!==request)return;
       if(++attempts>6){finish();return;}
       let target=document.getElementById(targetId);
-      if(menu==='Explore' && destination.section==='floor-plan' && destination.room){
+      if(menu==='Explore' && destination.room){
         target=floorPlanDetails.current;
-        if(target?.dataset.pondsterRoom!==destination.room){frame=requestAnimationFrame(reveal);return;}
+        const selectedRoom=destination.section==='floor-plan'?target?.dataset.pondsterRoom:target?.dataset.pondsterGallery;
+        if(selectedRoom!==destination.room){frame=requestAnimationFrame(reveal);return;}
       }
       if(!target || !target.getClientRects().length || target.getBoundingClientRect().height<=0){frame=requestAnimationFrame(reveal);return;}
       if(target.tagName==='DETAILS' && !(target as HTMLDetailsElement).open){
@@ -239,7 +240,7 @@ export default function Home() {
         <section className="pondster-welcome" aria-label="Meet Pondster"><div><p>I’m Pondster, the voice and persona of this house. Ask me about the design ideas and follow my story as it takes shape. {PONDSTER_LOCATION_TEXT} Jean Wright is my SI designer.</p></div><button onClick={openContact}>Talk to me <span aria-hidden="true">↗</span></button></section>
         <section className="design-footer"><span>MY DESIGN IS A CONVERSATION.</span><p>Come back as I add new rooms and choices.</p><span>{PONDSTER_LOCATION_LABEL}</span></section>
       </>}
-      {menu==='Explore' && <ExplorePage scene={scene} onScene={setScene} floorPlanRequest={sectionReveal?.destination.menu==='Explore' && sectionReveal.destination.section==='floor-plan' && sectionReveal.destination.room?{id:sectionReveal.id,room:sectionReveal.destination.room}:undefined} floorPlanDetailRef={floorPlanDetails}/>}
+      {menu==='Explore' && <ExplorePage scene={scene} onScene={setScene} floorPlanRequest={sectionReveal?.destination.menu==='Explore' && sectionReveal.destination.room?{id:sectionReveal.id,room:sectionReveal.destination.room,section:sectionReveal.destination.section==='floor-plan'?'floor-plan':'room'}:undefined} floorPlanDetailRef={floorPlanDetails}/>}
       {menu==='View' && <ViewPage tourRequest={tourRequest} onTourRequestHandled={()=>setTourRequest(null)} onImage={openDesignImage} onDesign={()=>navigate('Design')} onTourStart={cancelVoiceHover} voice={viewerVoice}/>}
       {menu==='Built By' && <BuiltByPage/>}
       {menu==='Own' && <section className="secondary-page manage"><h1 className="single-line-page-title">I come <em>with answers.</em></h1><p className="lead">I will provide a place for my home guides, care information, and handover records. Ask me from any page for public guidance while my owner tools take shape.</p><article id="pondster-own-drawing" className="manage-notice" aria-labelledby="deck-structural-heading"><h2 id="deck-structural-heading">My preliminary deck structural drawing</h2><p>I’m sharing my deck’s preliminary structural design reference. The drawing is marked <strong>PRELIMINARY / NOT FOR PERMIT</strong> and remains a design reference for review.</p><p><a className="solid-link" href="/documents/deck-structural-preliminary.pdf" target="_blank" rel="noopener noreferrer">View my drawing (PDF) ↗</a></p><a href="/documents/deck-structural-preliminary.pdf" download="deck-structural-preliminary.pdf">Download my drawing (PDF)</a></article><div className="knowledge-grid">{[['guides','Home guides','How my systems will work and where you will find them.'],['maintenance','Care & maintenance','My manuals, warranties, and equipment-specific schedules.'],['handover','Owner handover','My records and account checklist for the next chapter.']].map(([section,title,description])=><article id={`pondster-own-${section}`} key={section}><span className="pending-tag">PLANNED</span><h3>{title}</h3><p>{description}</p></article>)}</div><div className="manage-notice"><strong>My owner tools aren’t ready yet.</strong><p>I’ll need separate, authenticated owner access before I can show private records or offer live controls. I’m not connected to my house systems through this public site.</p></div></section>}
