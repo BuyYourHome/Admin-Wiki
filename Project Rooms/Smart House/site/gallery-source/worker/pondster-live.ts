@@ -3,6 +3,9 @@
 // Unconfirmed reservations deliberately remain occupied after a lost connection.
 import { safeNetworkCode, safeProviderFailure, VoiceProviderFailure } from './pondster-live-diagnostics';
 import { parsePondsterDestination, type PondsterDestination } from '../lib/pondster-destinations';
+import { getPondsterSpeechText, isPondsterSpokenExplanationRequest } from '../lib/pondster-speech';
+import { naturalConversationRecorder, visitorProfile } from './pondster-visitors';
+import type { PondsterVisitor } from '../lib/pondster-visitor';
 export const VOICE_COOKIE = 'pondster_voice_visitor';
 export const VOICE_SETUP_MS = 20_000;
 export const VOICE_FINALIZATION_MS = 10_000;
@@ -37,6 +40,7 @@ type ControllerOptions = {
   attach: (id: string, signal: AbortSignal) => Promise<Socket>;
   answer: (question: string) => PublicAnswer;
   greetingInstructions?: () => string | null;
+  history?:ReturnType<typeof naturalConversationRecorder>;
   now?: () => number;
   setTimer?: (callback: () => void, milliseconds: number) => ReturnType<typeof setTimeout>;
   clearTimer?: (timer: ReturnType<typeof setTimeout>) => void;
@@ -69,7 +73,7 @@ export const RESERVE_VOICE_SQL = `INSERT INTO voice_sessions (request_id, visito
  SELECT ?, ?, ?, ?, 'pending', 0, 0
  WHERE (SELECT COUNT(*) FROM voice_sessions WHERE created_at > ?) < ${VOICE_GLOBAL_DAILY_LIMIT}
  AND (SELECT COUNT(*) FROM voice_sessions WHERE visitor_key = ? AND created_at > ?) < ${VOICE_BROWSER_DAILY_LIMIT}
- AND NOT EXISTS (SELECT 1 FROM voice_sessions WHERE visitor_key = ? AND created_at > ?)
+ AND NOT EXISTS (SELECT 1 FROM voice_sessions WHERE visitor_key = ? AND created_at > ? AND (state <> 'closed' OR final_usage_confirmed <> 1))
  AND (SELECT COUNT(*) FROM voice_sessions WHERE state IN (${ACTIVE_STATES})) < 2
  AND NOT EXISTS (SELECT 1 FROM voice_sessions WHERE visitor_key = ? AND state IN (${ACTIVE_STATES}))
  ON CONFLICT(request_id) DO NOTHING`;
@@ -82,7 +86,7 @@ export const VOICE_ADMISSION_SQL = `WITH parameters AS (
  SELECT
   (SELECT COUNT(*) FROM voice_sessions WHERE created_at > p.day_since) AS daily_total,
   (SELECT COUNT(*) FROM voice_sessions WHERE visitor_key = p.visitor_key AND created_at > p.day_since) AS daily_visitor,
-  EXISTS(SELECT 1 FROM voice_sessions WHERE visitor_key = p.visitor_key AND created_at > p.cooldown_since) AS cooldown,
+  EXISTS(SELECT 1 FROM voice_sessions WHERE visitor_key = p.visitor_key AND created_at > p.cooldown_since AND (state <> 'closed' OR final_usage_confirmed <> 1)) AS cooldown,
   (SELECT COUNT(*) FROM voice_sessions WHERE state IN (${ACTIVE_STATES})) AS active_total,
   EXISTS(SELECT 1 FROM voice_sessions WHERE visitor_key = p.visitor_key AND state IN (${ACTIVE_STATES})) AS active_visitor,
   (SELECT COUNT(*) FROM voice_sessions WHERE state IN ('pending','closing','unconfirmed')) AS pending_total,
@@ -92,15 +96,15 @@ export const VOICE_ADMISSION_SQL = `WITH parameters AS (
 SELECT CASE WHEN daily_total < ${VOICE_GLOBAL_DAILY_LIMIT} AND daily_visitor < ${VOICE_BROWSER_DAILY_LIMIT}
  AND NOT cooldown AND active_total < 2 AND NOT active_visitor THEN 1 ELSE 0 END AS admitted,
  CASE WHEN daily_total >= ${VOICE_GLOBAL_DAILY_LIMIT} OR daily_visitor >= ${VOICE_BROWSER_DAILY_LIMIT} THEN 'daily_cap'
-  WHEN cooldown THEN 'cooldown'
   WHEN pending_visitor OR (active_total >= 2 AND pending_total > 0) THEN 'pending_service'
   WHEN active_visitor OR active_total >= 2 THEN 'active'
+  WHEN cooldown THEN 'cooldown'
   ELSE 'ready' END AS reason
 FROM checks`;
 
 const ADMISSION_MESSAGES = {
   daily_cap: 'My natural voice has reached its rolling 24-hour conversation limit. You can use Browser voice or type to me.',
-  cooldown: 'Please wait up to a minute before another natural conversation. You can use Browser voice or type to me.',
+  cooldown: 'A recent voice start did not complete normally. Please wait up to a minute before trying again. You can use Browser voice or type to me.',
   active: 'My natural voice is busy with an open conversation. Please stop any open conversation or try later. You can use Browser voice or type to me.',
   pending_service: 'An earlier natural conversation is still pending or needs a service check. You can use Browser voice or type to me.',
   database: 'My natural voice session records are unavailable right now. You can use Browser voice or type to me.',
@@ -162,7 +166,7 @@ function greetingFromSession(session: unknown) {
     || !('content' in message) || !Array.isArray(message.content) || message.content.length !== 1) return null;
   const part: unknown = message.content[0];
   if (part === null || typeof part !== 'object' || Array.isArray(part) || !('type' in part) || part.type !== 'input_text' || !('text' in part)) return null;
-  return typeof part.text === 'string' && part.text.length > 0 && part.text.length <= 1000 ? part.text : null;
+  return typeof part.text === 'string' && part.text.length > 0 && part.text.length <= 2000 ? part.text : null;
 }
 
 export function createPondsterLiveControl(options: ControllerOptions) {
@@ -215,9 +219,15 @@ export function createPondsterLiveControl(options: ControllerOptions) {
     busy('response', true);
     sideband.send(JSON.stringify({ type: 'session.commentary.append', event_id: crypto.randomUUID(), delegation_id: delegationId, content }));
   }
-  function deliver(question: string, delegationId: string | null) {
+  async function deliver(question: string, delegationId: string | null) {
     if (closing || !ready || !sideband) return;
     const reply = options.answer(question);
+    const nameReply=reply.action?null:await options.history?.name(question);
+    if(closing||finished)return;
+    if(nameReply){
+      safeSend(options.client,{type:'pondster.visitor',visitor:options.history!.currentVisitor()});
+      appendCommentary(nameReply,delegationId);return;
+    }
     const action = parsePondsterDestination(reply.action);
     if (delegationId !== null && !action) {
       // A visual keyword miss is not a negative lookup of facts already present
@@ -226,15 +236,18 @@ export function createPondsterLiveControl(options: ControllerOptions) {
       return;
     }
     // Short public facts only; no user text is sent as a trusted instruction.
-    const content = reply.text.slice(0, 1500);
+    const content = getPondsterSpeechText(question, {text:reply.text,...(action?{action}:{})}).slice(0,1500);
     if (action) safeSend(options.client, { type: 'pondster.action', action });
-    appendCommentary(content, delegationId);
+    appendCommentary(action && !isPondsterSpokenExplanationRequest(question)
+      ? `Use only this brief acknowledgment for the requested public navigation: ${content} Do not recite the page, contact details or feature text. Do not claim a completed scroll.`
+      : content, delegationId);
   }
   function providerMessage(data: unknown) {
     if (finished || typeof data !== 'string' || data.length > 131_072) return;
     let event: Record<string, unknown>;
     try { event = JSON.parse(data); } catch { return; }
     if (!event || typeof event !== 'object') return;
+    const saved=options.history?.event(event);if(saved)track(saved);
     if (event.type === 'session.closed') {
       const usage = event.usage as { seconds?: unknown } | undefined;
       if (typeof usage?.seconds === 'number' && Number.isFinite(usage.seconds) && usage.seconds >= 0) usageSeconds = usage.seconds;
@@ -263,21 +276,21 @@ export function createPondsterLiveControl(options: ControllerOptions) {
       delegations.add(id); lastDelegationOffset = Math.max(offset, lastDelegationOffset);
       pendingDelegations.add(id); busy('work', true);
       // A small buffer admits fragments delivered just after delegation metadata.
-      later(() => {
+      later(() => { track((async()=>{
         try {
           if (closing) return;
           const selected = fragments.filter(fragment => fragment.end > Math.max(previousOffset, consumedTranscriptEnd) && fragment.start <= offset + 250)
             .sort((a, b) => a.start - b.start);
           const question = selected.map(fragment => fragment.text).join('').trim().slice(-1500);
           if (selected.length) consumedTranscriptEnd = Math.max(consumedTranscriptEnd, ...selected.map(fragment => fragment.end));
-          if (question) deliver(question, id);
+          if (question) await deliver(question, id);
           else appendCommentary('I couldn’t quite catch your question. Please ask me again.', id);
         } catch { error('I couldn’t answer that voice request. Please try again.'); track(stop()); }
         finally {
           pendingDelegations.delete(id);
           if (!pendingDelegations.size) busy('work', false);
         }
-      }, 250);
+      })()); }, 250);
     }
   }
   async function finish() {
@@ -294,6 +307,7 @@ export function createPondsterLiveControl(options: ControllerOptions) {
         try { await options.store.finish(requestId, { state: confirmed ? 'closed' : creationRejected ? 'failed' : attempted ? 'unconfirmed' : 'failed', usageSeconds, confirmed }); }
         catch { /* Existing reservation remains occupied: fail closed. */ }
       }
+      await options.history?.finish();
       safeSend(options.client, { type: 'pondster.ended', message: closeMessage });
       safeClose(options.client); fragments.length = 0; complete();
     })();
@@ -376,13 +390,14 @@ export function createPondsterLiveControl(options: ControllerOptions) {
         if (!content) return;
         greetingSent = true;
         appendCommentary(content, null);
+        const saved=options.history?.greetingSent();if(saved)track(saved);
       } catch { error('I couldn’t begin my voice greeting. Please try again later.'); return stop(); }
       return;
     }
     if (input.type === 'pondster.text' && ready && typeof input.text === 'string' && input.text.trim().length > 0 && input.text.length <= 1000) {
       if (textCount >= 20 || now() - lastTextAt < 2000) { error('Please give me a moment before your next question.'); return; }
       textCount++; lastTextAt = now();
-      try { deliver(input.text.trim(), null); } catch { error('I couldn’t answer that question.'); return stop(); }
+      try { await options.history?.text(input.text.trim());await deliver(input.text.trim(), null); } catch { error('I couldn’t answer that question.'); return stop(); }
       return;
     }
     error('I couldn’t use that voice command. Please try my voice controls.'); return stop();
@@ -391,7 +406,7 @@ export function createPondsterLiveControl(options: ControllerOptions) {
 }
 
 export async function handlePondsterLiveControl(request: Request, env: VoiceEnvironment,
-  ctx: { waitUntil: (task: Promise<unknown>) => void }, buildSession: () => unknown, answer: (question: string) => PublicAnswer) {
+  ctx: { waitUntil: (task: Promise<unknown>) => void }, buildSession: (visitor?:PondsterVisitor) => unknown, answer: (question: string) => PublicAnswer) {
   const reject = (message: string, status: number) => new Response(JSON.stringify({ error: message }), { status, headers: { 'Content-Type': 'application/json', 'Cache-Control': 'no-store' } });
   if (request.method !== 'GET') return reject('I need a WebSocket connection for live voice.', 405);
   if (request.headers.get('origin') !== new URL(request.url).origin) return reject('I can only start voice from my website.', 403);
@@ -399,18 +414,23 @@ export async function handlePondsterLiveControl(request: Request, env: VoiceEnvi
   const visitor = voiceVisitor(request);
   if (!visitor) return reject('Please refresh my voice controls before starting.', 409);
   if (!voiceIsAvailable(env)) return reject('My live voice connection isn’t available yet.', 503);
+  let profile:Awaited<ReturnType<typeof visitorProfile>>;
+  try{profile=await visitorProfile(request,env.DB!);}catch{return reject('I can’t check my text-saving preferences right now. Please try again later.',503);}
   const visitorKey = await hashVoiceVisitor(visitor, env.OPENAI_API_KEY!);
   const pair = new WebSocketPair();
   const [client, server] = Object.values(pair);
   server.accept();
+  const history=profile?naturalConversationRecorder(env.DB!,profile,message=>safeSend(server,{type:'pondster.recording',message})):undefined;
   let startupGreeting: string | null = null;
   const control = createPondsterLiveControl({
     client: server, store: d1VoiceStore(env.DB!), visitorKey, answer, track: task => ctx.waitUntil(task),
     greetingInstructions: () => startupGreeting,
+    history,
     async createSession(sdp, signal, clientRequestId) {
       let response: Response;
       try {
-        const session = buildSession();
+        await history?.start(clientRequestId);
+        const session = buildSession(history?.visitor??{choice:'private',firstName:null,returning:false});
         startupGreeting = greetingFromSession(session);
         response = await fetch('https://api.openai.com/v1/live/sessions', {
         method: 'POST', headers: { Authorization: `Bearer ${env.OPENAI_API_KEY!.trim()}`, 'Content-Type': 'application/json', 'X-Client-Request-Id': clientRequestId },

@@ -733,3 +733,22 @@ Wes selected 100 starts per rolling 24 hours after being told that a higher cap 
 - Archive: `sha256:2a04a11effb608c3a221195b7bb22927165dfc138fd35d3745ca9cda07806c57`, 128 files, 66,457,600 bytes.
 
 Real in-memory SQLite boundary/admission/lifecycle tests, final TypeScript, build, diff and 185-file source/build secret checks passed. Tests allow the former 20-start state, admit 100 starts and reject the 101st, and preserve exact rolling-window/cooldown/uncertain-state semantics. Two source mirrors match. Public in-app-browser inspection with Voice off confirms the old daily-cap message is absent and Talk naturally is enabled; no microphone or paid session was started. Existing user tabs remain untouched. See [[Project Rooms/Smart House/working/voice-start-limit-20261028]].
+
+
+## Navigation before narration and public Cary location — version 76, 2026-10-28
+
+Source `caf9c11545d3771a8f43e021e4d3eee24eedb790`; saved version `appgprj_6ad4d98e08708191858cab113814704e~appgver_09d718a429d88191b76c6fb1140dec06`; deployment `appgdep_6ae1ed4b4888819189b15bf5eeb6f65f` succeeded `2026-10-28T12:40:52.379168+00:00`, environment revision 4. Archive SHA256 `f69b53c9ebf5bee6589ddb9eb85f20e2bae01cd5dc5846969d009bde8a416068`, 129 files, 66,467,840 bytes.
+
+Shared public identity and speech modules give Cary/state with a private exact address, and navigate before brief spoken acknowledgments. Explicit reading keeps full safe guidance. Guide/context/speech/server/UI checks, TypeScript, build, diff and 188-file secret checks passed. Public browser inspection confirmed Cary in the title, introduction and footer with Voice off. See [[Project Rooms/Smart House/working/navigation-first-and-cary-20261028]].
+
+
+## Private visitor text history and spoken gallery browsing — version 77, 2026-10-28
+
+- Source: `b9687e60edbf33b5022556ea4cdd1e3ed1ed3a9b`.
+- Saved version: `appgprj_6ad4d98e08708191858cab113814704e~appgver_0b178b432274819189d3f3d9e3cc1501`.
+- Deployment: `appgdep_6ae1f93fe9648191b9bf15ae3c15b6ee`, succeeded `2026-10-28T13:31:56.087576+00:00`, environment revision 4.
+- Archive: `sha256:38ee10de98482c4c35ff305fd9945ccd89d5c067970ecd628477c848d62608c3`, 131 files, 66,519,040 bytes.
+
+Private schema-only migration 0003 was applied by Sites; owner-only database overview confirms pondster_visitors, pondster_conversations and pondster_conversation_events alongside the existing voting, comments and voice-session tables. Consent/private-mode, isolation, deduplication, exact natural transcript timing, expiry/deletion and actual sideband recorder tests passed in in-memory SQLite. Destination, real page action/reveal, gallery, speech, Guide/context, server lifecycle, Contact and design-view tests passed. Final TypeScript, production build, diff and 195-file secret-absence checks passed. Thirty source text mirrors match. Local browser tests confirmed an optional first name, the return greeting after reload, reset and guided Master Bath picture 1/6 with Next/Previous/Close. Public browser inspection confirmed the notice solely in Voice controls, available natural controls, Cary copy and the full-image vote/change-vote controls. No microphone, paid voice session, production transcript, vote or comment was created by these checks.
+
+The new call policy exempts only closed rows with final usage confirmed from failure backoff. It does not reset the rolling100 limit or release uncertain calls. Vesper was explicitly retained after Wes learned Arbor is not listed for this API. The owned local preview was stopped and owned QA tabs closed; existing user tabs were preserved. A refresh/new natural conversation is needed for these client/prompt changes. See [[Project Rooms/Smart House/working/visitor-conversations-and-gallery-voice-20261028]].

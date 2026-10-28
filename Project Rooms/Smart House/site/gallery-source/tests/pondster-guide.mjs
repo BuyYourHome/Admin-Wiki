@@ -5,7 +5,7 @@ import { galleries } from '../lib/designs.ts';
 import { basementColorSchemes, hallBathDesigns } from '../lib/features.js';
 
 assert.match(answerPondster('Hello Pondster').text, /Pondster, the voice and identity of this house/);
-assert.match(answerPondster('Hello Pondster').text, /location is confidential.*witness protection/);
+assert.match(answerPondster('Hello Pondster').text, /Cary, North Carolina.*exact street address.*private/);
 assert.match(answerPondster('Who is Jean Wright?').text, /Jean Wright is my SI designer/);
 assert.match(answerPondster('Who designed you?').text, /Jean Wright is my SI designer/);
 assert.match(answerPondster('Can I ask Jean a question?').text, /Direct your questions to me, Pondster/);
@@ -224,7 +224,7 @@ for(const question of ['Show my deck structural drawing','Show your deck structu
 assertGuideAction(answerPondster('Show my deck structural drawing and the Wi-Fi password').action,{menu:'Own'});
 assert.match(answerPondster('Show my deck structural drawing and the Wi-Fi password').text,/cannot provide private records/);
 assert.match(answerPondster('What is the price of the preliminary deck drawing?').text,/don.t have verified/);
-assert.match(answerPondster('What is your address in the preliminary deck drawing?').text,/location is confidential/);
+assert.match(answerPondster('What is your address in the preliminary deck drawing?').text,/Cary, North Carolina.*exact street address.*private/);
 const booking = answerPondster('Book a viewing and unlock the house');
 assertGuideAction(booking.action, {menu:'View'});
 assert.match(booking.text, /simulated.*book no appointment.*cannot unlock/);
@@ -252,7 +252,7 @@ for(const question of ['Who is your HVAC contractor and what model number is ins
   const reply=answerPondster(question);assert.match(reply.text,/don.t have verified/);assert.equal(reply.action,undefined,'Vendor wording cannot bypass equipment or pricing boundaries.');
 }
 assertGuideAction(answerPondster('Who is your plumber and give me the Wi-Fi password').action,{menu:'Own'});
-assert.match(answerPondster('Who is your GC and what is your location?').text,/location is confidential/);
+assert.match(answerPondster('Who is your GC and what is your location?').text,/Cary, North Carolina.*exact street address.*private/);
 assert.match(answerPondster('What HVAC equipment is installed?').text, /don.t have verified/);
 for (const question of ['Tell me about tankless hot water', 'How does proximity tracking work?', 'Start my voice activated shower', 'Tell me about your exterior security cameras']) {
   const reply = answerPondster(question);
@@ -279,7 +279,7 @@ assertGuideAction(answerPondster('Pondster, who built you?').action, {menu:'Buil
 assertGuideAction(answerPondster('Show Built By').action, {menu:'Built By'});
 assert.match(answerPondster('Tell me about Buy Your Home LLC').text, /Buy Your Home, LLC.*919-917-7466/);
 assertGuideAction(answerPondster('Call Wes').action, {menu:'Built By'});
-assert.match(answerPondster('What is your address?').text, /location is confidential.*witness protection/);
+assert.match(answerPondster('What is your address?').text, /Cary, North Carolina.*exact street address.*private/);
 assert.doesNotMatch(answerPondster('What is your address?').text, /908|Pond Street|Dean|anonymously/);
 assert.match(answerPondster('Show basement Charcoal and Copper').text, /Stair setting · Charcoal & Copper/);
 assert.match(answerPondster('Show stair setting Mushroom and Clay').text, /Stair setting · Mushroom & Clay/);
@@ -333,7 +333,7 @@ for(const question of [
 assertGuideAction(answerPondster('Can you show me around the house').action,{menu:'View',tour:true});
 assertGuideAction(answerPondster('Take me around your home').action,{menu:'View',tour:true});
 assertGuideAction(answerPondster('What makes you smart and give me the Wi-Fi password').action,{menu:'Own'});
-assert.match(answerPondster('Describe your kitchen and tell me your address').text,/location is confidential/);
+assert.match(answerPondster('Describe your kitchen and tell me your address').text,/Cary, North Carolina.*exact street address.*private/);
 for(const question of ['Tell me about your pantry','Describe the pantry','Where are you planning to put the pantry?']) {
   const reply=answerPondster(question);assertGuideAction(reply.action,{menu:'Explore'},question);
   assert.match(reply.text,/pantry will sit beside my kitchen.*proposed layout/);
@@ -347,7 +347,7 @@ for(const question of ['What equipment is planned?', 'Tell me about your equipme
   assert.match(reply.text,/natural-gas tankless.*future features.*equipment and integrations still need confirmation/);
 }
 for(const question of ['What city are you in?','What street are you on?','Give me your geolocation','Where are you?','Where are you planning to put the pantry and what is your address?']) {
-  assert.match(answerPondster(question).text,/location is confidential/,question);
+  assert.match(answerPondster(question).text,/Cary, North Carolina.*exact street address.*private/,question);
 }
 // Full action checks for the new public section/card contract.
 for(const [question,action] of [

@@ -6,6 +6,7 @@ import { floorPlanRooms } from '../lib/floor-plan.ts';
 import { houseFeatures } from '../lib/features.js';
 import { getGalleryScrollTop, getSectionRevealTop } from '../lib/gallery-scroll.ts';
 import { parsePondsterDestination, getPondsterDestinationId, DESTINATION_SECTIONS } from '../lib/pondster-destinations.ts';
+import { galleryVoiceSelection } from '../lib/pondster-gallery.ts';
 
 const source=await readFile(new URL('../app/page.tsx',import.meta.url),'utf8');
 const oversized={targetTop:580,targetBottom:1840,headerBottom:192,viewportHeight:710,scrollY:500};
@@ -17,13 +18,13 @@ assert.equal(getSectionRevealTop({...oversized,headerBottom:720}),null);
 const handler=source.match(/  function guideAction\(action:GuideAction\)\{[\s\S]*?\n  \}/)?.[0];
 assert.ok(handler,'Exercise the real UI action handler.');
 function actionHarness(saving=false){
-  const navigation=[],rooms=[],scenes=[],requests=[],tours=[];
+  const navigation=[],rooms=[],scenes=[],requests=[],tours=[],pictures=[];
   const pending={current:null},next={current:0},nextTour={current:0};
-  const run=new Function('parsePondsterDestination','navigate','setTourRequest','nextTourRequest','saving','galleries','setRoom','setScene','getPondsterDestinationId','nextSectionReveal','pendingSectionReveal','setSectionReveal',
+  const run=new Function('parsePondsterDestination','navigate','setTourRequest','nextTourRequest','saving','galleries','setRoom','setScene','getPondsterDestinationId','nextSectionReveal','pendingSectionReveal','setSectionReveal','galleryVoiceSelection','setZoom','zoom','room',
     stripTypeScriptTypes(handler)+'\nreturn guideAction;')(
     parsePondsterDestination,menu=>{navigation.push(menu);pending.current=null;},id=>tours.push(id),nextTour,saving,galleries,
-    room=>rooms.push(room),scene=>scenes.push(scene),getPondsterDestinationId,next,pending,request=>requests.push(request));
-  return{run,navigation,rooms,scenes,requests,tours,pending};
+    room=>rooms.push(room),scene=>scenes.push(scene),getPondsterDestinationId,next,pending,request=>requests.push(request),galleryVoiceSelection,design=>pictures.push(design),null,'media-center');
+  return{run,navigation,rooms,scenes,requests,tours,pictures,pending};
 }
 {
   const h=actionHarness();h.run({menu:'Contact',section:'gc'});h.run({menu:'Contact',section:'gc'});
@@ -40,6 +41,7 @@ function actionHarness(saving=false){
   assert.deepEqual(h.rooms,['media-center','media-center']);
   assert.deepEqual(h.requests.map(request=>request.id),[1,2],'A voice repeat reveals the current gallery without requiring a room-state change.');
   assert.equal(getPondsterDestinationId(h.pending.current.destination),'design-gallery');
+  assert.equal(h.pictures[0].id,galleries.find(item=>item.id==='media-center').designs[0].id,'A guided gallery opens its first actual choice.');
   const busy=actionHarness(true);busy.run({menu:'Design',section:'gallery',room:'master-bath'});
   assert.deepEqual(busy.rooms,[]);assert.deepEqual(busy.requests,[],'A vote in flight still prevents a gallery switch.');
 }

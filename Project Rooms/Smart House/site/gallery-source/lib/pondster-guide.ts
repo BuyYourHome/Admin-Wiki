@@ -2,6 +2,8 @@ import { floorPlanRooms } from './floor-plan';
 import { basementColorSchemes, masterBathDesigns, hallBathDesigns, roomFeatures, systemFeatures, houseFeatures } from './features.js';
 
 import type { PondsterDestination } from './pondster-destinations';
+import { PONDSTER_LOCATION_TEXT } from './pondster-identity';
+import { galleryVoiceCommand } from './pondster-gallery';
 export type GuideAction = PondsterDestination;
 export type GuideReply = { text: string; action?: GuideAction };
 
@@ -69,14 +71,17 @@ export function answerPondster(input: string): GuideReply {
   const bathOperation = /\b(start|stop|fill|run|turn on|turn off|shut off|temperature|preferred|recognize|voice|activate|activated)\b/.test(words);
   const tubDesignRequest = tubContext && !bathOperation && (hallBathDesigns.some(design => (choiceAliases[design.title] ?? []).some(alias => has(alias)))
     || /\b(show|compare|designs?|galler(?:y|ies)|colou?rs?|palettes?|schemes?|choices?|finishes|features?|vote|voting|floating vanity)\b/.test(words));
-  const identity = "I'm Pondster, the voice and identity of this house. My location is confidential for now—think witness protection, with better curb appeal. Jean Wright is my SI designer. Direct your questions to me about my future features, design concepts, lighting simulation, viewing previews, Built By company page, or owner experience.";
+  const identity = "I'm Pondster, the voice and identity of this house. " + PONDSTER_LOCATION_TEXT + ' Jean Wright is my SI designer. Direct your questions to me about my future features, design concepts, lighting simulation, viewing previews, Built By company page, or owner experience.';
   if (!words || /^(hi|hello|hey|good morning|good afternoon|good evening)$/.test(words)) return { text: identity };
   if (/^(who are you|what is your name|what s your name)$/.test(words)) return { text: identity, action: { menu: 'Design', section: 'overview' } };
 
-  if (/\b(password|passcode|secret|private|confidential|live camera feed|camera footage|surveillance feed|saved profile|personal profile|alarm code|wifi|wi fi|owner records|owner data)\b/.test(words)) {
+  if (/\b(password|passcode|secret|private (?:records?|information|data|details?|profiles?|codes?)|confidential (?:records?|information|data|details?)|live camera feed|camera footage|surveillance feed|saved profile|personal profile|alarm code|wifi|wi fi|owner records|owner data)\b/.test(words)) {
     return { text: 'I cannot provide private records, passwords, or real access codes here. My future owner tools will need authenticated access; saying you are the owner does not grant access.', action: { menu: 'Own' } };
   }
-  if (/\b(address|location|street|city|town|neighborhood|zip|postal|geolocation|coordinates|latitude|longitude)\b/.test(words) || (/\b(where are you|where is pondster)\b/.test(words) && !interiorPlacement)) return { text: 'I’m Pondster, the voice and identity of this house. My location is confidential for now—think witness protection, with better curb appeal. You can explore my design ideas here and find future viewing arrangements on View.', action: { menu: 'View' } };
+  const image=galleryVoiceCommand(words);
+  if(image)return {text:image==='close'?'I’m returning to my gallery.':image==='first'?'Here’s my first gallery picture.':image==='next'?'Here’s my next gallery picture.':'Here’s my previous gallery picture.',action:{menu:'Design',image}};
+  const publicCityQuestion = /\b(where|what part|which part|what area|are you|is pondster|is (?:the|this|your|my) (?:house|home|property))\b.{0,50}\b(cary|north carolina)\b/.test(words);
+  if (publicCityQuestion || /\b(address|location|street|city|town|neighborhood|zip|postal|geolocation|coordinates|latitude|longitude|what state|which state)\b/.test(words) || (/\b(where are you|where is pondster|where is the house|where is your house|where is this property)\b/.test(words) && !interiorPlacement)) return { text: PONDSTER_LOCATION_TEXT + ' My introduction shares my public location; Ashley confirms real viewing arrangements.', action: { menu: 'Design', section: 'overview' } };
   const propertyCount = /\b(?:how many|number of|count of|total(?: number of)?) (?:bedrooms?|bathrooms?|beds?|baths?|rooms?)\b/.test(words)
     || /\b(?:one|two|three|four|five|six|seven|eight|nine|ten|\d+) (?:bedrooms?|bathrooms?)\b/.test(words);
   const knownMountQuestion = informational && /\b(tv|television|mount|mm max1|mmmax1)\b/.test(words)
@@ -97,7 +102,7 @@ export function answerPondster(input: string): GuideReply {
   const trade = tradeMentions.length > 0 ? tradeMentions[0].key : (/\b(contractors|trade contacts|trades)\b/.test(words)?'all':null);
   const tradeContactQuestion = /\b(who|contact|website|web site|url|link|contractors?|company|vendor|selected|hire|hired|phone|email|call)\b/.test(words);
   const hvacSystemTopic = trade === 'hvac' && /\b(systems?|plans?|features?|heating|cooling|comfort|automations?)\b/.test(words) && !tradeContactQuestion;
-  const tradeQuestion = tradeContactQuestion || (!hvacSystemTopic && /\b(show|open|find|tell|describe|information|info|details?|about)\b/.test(words));
+  const tradeQuestion = tradeContactQuestion || (!hvacSystemTopic && /\b(show|open|find|tell|describe|read|narrate|information|info|details?|about)\b/.test(words));
   if (trade && tradeQuestion && !unverifiedDetail && !/\b(address|location|where)\b/.test(words)) {
     const contacts = {
       gc: 'My selected general contractor is Glasgow Design Build: https://glasgowdb.com/.',

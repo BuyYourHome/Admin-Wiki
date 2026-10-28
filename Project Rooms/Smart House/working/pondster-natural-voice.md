@@ -130,3 +130,13 @@ Version 36 implemented Wes's video-first clarification: one scene per populated 
 ## Official references reviewed
 
 [WebRTC setup](https://developers.openai.com/api/docs/guides/voice-webrtc), [session creation](https://developers.openai.com/api/reference/resources/live/methods/create), [trusted server controls](https://developers.openai.com/api/docs/guides/voice-server-controls), [delegation](https://developers.openai.com/api/docs/guides/live-delegation), [conversation events](https://developers.openai.com/api/docs/guides/live-conversations), [prompting](https://developers.openai.com/api/docs/guides/live-prompting), [GPT-Live model](https://developers.openai.com/api/docs/models/gpt-live-1), [latency and cost](https://developers.openai.com/api/docs/guides/voice-latency-cost), and [Cloudflare WebSockets](https://developers.cloudflare.com/workers/runtime-apis/websockets/).
+
+
+## Navigation-first guidance — 2026-10-28, version 76
+
+Wes requested public destination reveals before narration. Both Browser and natural voice now use short acknowledgments after a validated public action; explicit spoken-reading requests retain the full safe answer. Full written answers remain available. Cary, North Carolina is public, while the exact address remains private. See [[Project Rooms/Smart House/working/navigation-first-and-cary-20261028]] and the later [[Project Rooms/Smart House/working/visitor-conversations-and-gallery-voice-20261028]].
+
+
+## Current visitor memory, restart and gallery behavior — 2026-10-28, version 77
+
+Vesper remains selected by Wes. First-use saving choice/disclosure is solely in Voice controls, with private text/name memory for at most 90 days and no website audio recording. A returning browser gets a first-name welcome without another spoken introduction. Current records are not imported into house facts or owner authority. Confirmed closed calls can restart immediately; failure backoff, rolling100 allowance and uncertain-session fences remain. Guided gallery requests open their first picture and give a brief vote/change-vote reminder; next/previous/first/close commands use the same validated public action path. The 30-second quiet monitor and no-three-minute-cutoff behavior are unchanged. Version 77 is public, with mocked/storage/UI verification and a fresh live microphone test pending. See [[Project Rooms/Smart House/working/visitor-conversations-and-gallery-voice-20261028]].

@@ -1,3 +1,4 @@
+import { PONDSTER_LOCATION_TEXT } from '../lib/pondster-identity';
 import type { ReactNode } from 'react';
 
 export default function ContactPage({ active, comments, children }: { active:boolean; comments?:ReactNode; children:ReactNode }) {
@@ -16,7 +17,7 @@ export default function ContactPage({ active, comments, children }: { active:boo
           <address><a href="tel:+19199177466"><span>Call my company</span>919.917.7466 ↗</a></address>
           <a className="contact-website" href="https://www.buyyourhomellc.com/" target="_blank" rel="noopener noreferrer">Meet the company behind me ↗</a>
         </article>
-        <p className="contact-note">My location remains confidential. Ashley confirms real viewing arrangements.</p>
+        <p className="contact-note">{PONDSTER_LOCATION_TEXT} Ashley confirms real viewing arrangements.</p>
       </aside>
     </div>
     <section id="pondster-contact-trades" className="contact-trades" aria-labelledby="contact-trades-heading">

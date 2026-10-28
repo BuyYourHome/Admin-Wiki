@@ -70,7 +70,8 @@ assert.equal(await reserve(2, 'a'), false, 'One browser cannot have two active s
 assert.equal(await reserve(3, 'b'), true);
 assert.equal(await reserve(4, 'c'), false, 'The global active limit is atomic in SQL.');
 await finish(1); await finish(3);
-assert.equal(await reserve(5, 'a'), false, 'Cooldown also applies after a quick confirmed close.');
+assert.equal(await reserve(5, 'a'), true, 'A fully confirmed close can restart immediately, without the one-minute pause.');
+await finish(5);
 timestamp += 60_001;
 sqlite.exec('DELETE FROM voice_sessions');
 assert.equal(VOICE_GLOBAL_DAILY_LIMIT, 100, 'Wes approved 100 starts per rolling 24 hours.');
@@ -132,8 +133,8 @@ assert.notEqual(await hashVoiceVisitor(visitor, secret), await hashVoiceVisitor(
   const visitorKey = await hashVoiceVisitor(visitor, secret);
   const admissionRequest = new Request('https://pondstr.test/api/voice/status', { headers: { Cookie: `pondster_voice_visitor=${visitor}` } });
   const snapshot = () => admissionDb.prepare('SELECT * FROM voice_sessions ORDER BY request_id').all().map(row => ({ ...row }));
-  const seed = (n, { key = visitorKey, at = now - 60_001, state = 'failed' } = {}) => admissionDb.prepare('INSERT INTO voice_sessions (request_id,visitor_key,created_at,expires_at,state,usage_seconds,final_usage_confirmed) VALUES (?,?,?,?,?,0,0)')
-    .run(id(n), key, at, at + 200_000, state);
+  const seed = (n, { key = visitorKey, at = now - 60_001, state = 'failed', confirmed=0 } = {}) => admissionDb.prepare('INSERT INTO voice_sessions (request_id,visitor_key,created_at,expires_at,state,usage_seconds,final_usage_confirmed) VALUES (?,?,?,?,?,0,?)')
+    .run(id(n), key, at, at + 200_000, state,confirmed);
   const reset = () => admissionDb.exec('DELETE FROM voice_sessions');
   const expectAdmission = async (expected, request = admissionRequest, response = voiceStatus(request, environment), key = visitorKey) => {
     const before = snapshot();
@@ -187,6 +188,10 @@ assert.notEqual(await hashVoiceVisitor(visitor, secret), await hashVoiceVisitor(
     seed(VOICE_BROWSER_DAILY_LIMIT); await expectReason('daily_cap');
     reset(); seed(1, { at: now - 59_999, state: 'owner_waived' });
     assert.match((await expectReason('cooldown')).message, /up to a minute/);
+    reset();seed(1,{at:now-1,state:'closed',confirmed:1});await expectAdmission(true);
+    reset();seed(1,{at:now-1,state:'closed',confirmed:0});await expectReason('cooldown');
+    reset();seed(1,{at:now-1,state:'active'});await expectReason('active');
+    reset();seed(1,{at:now-1,state:'unconfirmed'});await expectReason('pending_service');
     reset(); seed(1, { at: now - 60_000 }); await expectAdmission(true);
     reset(); for (let n = 1; n <= VOICE_GLOBAL_DAILY_LIMIT; n++) seed(n, { key: `other-${n}`, at: now - day }); await expectAdmission(true);
     reset(); for (let n = 1; n <= VOICE_GLOBAL_DAILY_LIMIT; n++) seed(n, { key: `other-${n}`, at: now - day + 1 }); await expectAdmission(false);
@@ -725,4 +730,21 @@ for (const action of [undefined, {menu:'Contact',section:'private'}]) {
     'Typed input retains its bounded guide reply rather than the spoken visual fallback cue.');
   await f.control.stop();
 }
-console.log('Pondster live server: validated public section targets, fact-preserving visual misses, trusted bounded hints and legacy actions; unchanged SQLite admission/lifecycle/cleanup passed (mocks only).');
+{
+  const fullText='My selected HVAC contractor is True Service Inc.: https://www.trueserviceinc.com/. Here are the full public contact details.';
+  const f=fixture({answer(){return {text:fullText,action:{menu:'Contact',section:'hvac'}};}});
+  await f.control.message(start(609));
+  f.sideband.emit({type:'session.input_transcript.delta',delta:'Who is your HVAC contact?',start_ms:100,end_ms:800});
+  f.sideband.emit({type:'session.delegation.created',offset_ms:800,delegation:{id:'navigation-before-narration',target:'client'}});
+  await f.timer.tick(250);
+  const brief=f.sideband.sent.findLast(event=>event.type==='session.commentary.append');
+  assert.equal(brief.delegation_id,'navigation-before-narration');
+  assert.match(brief.content,/Here’s my HVAC contact/);
+  assert.match(brief.content,/Do not recite the page/);
+  assert.doesNotMatch(brief.content,/trueserviceinc|full public contact details/,'Matched navigation does not send the full card for recitation.');
+  assert.deepEqual(f.client.sent.findLast(event=>event.type==='pondster.action'),{type:'pondster.action',action:{menu:'Contact',section:'hvac'}});
+  await f.control.message(JSON.stringify({type:'pondster.text',text:'Read the HVAC contact aloud'}));
+  assert.equal(f.sideband.sent.findLast(event=>event.type==='session.commentary.append').content,fullText,'An explicit spoken explanation keeps its safe full answer.');
+  await f.control.stop();
+}
+console.log('Pondster live server: navigation before brief speech, explicit read-aloud exception, validated public targets and fact-preserving misses; rolling100 allowance, SQLite admission/lifecycle/cleanup passed (mocks only).');

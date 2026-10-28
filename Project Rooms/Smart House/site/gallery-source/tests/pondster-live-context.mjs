@@ -19,7 +19,10 @@ assert.ok(!session.client.data_channel.allowed_server_events.some(event => event
 assert.match(session.instructions, /public voice and identity/);
 assert.match(session.instructions, /My menu is Design, Explore, View, Belong, Built By, Contact\./);
 assert.match(session.instructions, /Jean Wright is my SI designer/);
-assert.match(session.instructions, /location is confidential/);
+assert.match(session.instructions, /Cary, North Carolina.*exact street address.*private/);
+assert.match(session.instructions,/Navigation before narration:/);
+assert.match(session.instructions,/Do not read the page, contact details, feature lists or long explanations by default/);
+assert.match(session.instructions,/only when the visitor explicitly asks for spoken explanation or reading/);
 assert.match(session.instructions, /not Codex/);
 assert.match(session.instructions, /No appointment is booked/);
 assert.match(session.instructions, /cannot operate house devices/);

@@ -62,7 +62,7 @@ export default function Comments({page,title,onAsk}:{page:string;title:string;on
     <div className="comments-layout">
       <form className="comment-form" onSubmit={submit}>
         <h3>Leave a comment.</h3>
-        <p id="comment-public-note">I share these comments publicly. Please leave out my address, contact details, entry codes, and other private information.</p>
+        <p id="comment-public-note">I share these comments publicly. Please leave out my exact street address, contact details, entry codes, and other private information.</p>
         <label htmlFor="comment-name">Name <span>optional</span></label>
         <input id="comment-name" name="name" autoComplete="nickname" maxLength={60} value={name} onChange={event=>{setName(event.target.value);requestId.current=null;}} disabled={saving} placeholder="Guest"/>
         <label htmlFor="comment-body">Your comment</label>

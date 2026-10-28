@@ -2,6 +2,7 @@
 import { createPondsterStreamMeter } from './pondster-stream-meter';
 import { isPondsterFarewell, PONDSTER_FAREWELL_ACK } from './pondster-voice-intents';
 import { parsePondsterDestination, type PondsterDestination } from './pondster-destinations';
+import { firstName, type PondsterVisitor } from './pondster-visitor';
 export type PondsterQuietProgress = { reason: 'checking' | 'unavailable' | 'input' | 'output' | 'work' | 'response' | 'quiet'; remainingSeconds: number | null };
 export type PondsterLiveState = {
   available: boolean; connecting: boolean; active: boolean;
@@ -18,6 +19,8 @@ export type PondsterLiveVoiceOptions = {
   onState(state: PondsterLiveState): void;
   onTranscript(transcript: PondsterLiveTranscript): void;
   onAction?(action: PondsterLiveAction): void;
+  onVisitor?(visitor:PondsterVisitor):void;
+  onRecordingNotice?(message:string):void;
   // Dependency injection keeps lifecycle tests away from real devices/network.
   getUserMedia?: () => Promise<MediaStream>;
   peerFactory?: () => RTCPeerConnection;
@@ -330,6 +333,11 @@ export function createPondsterLiveVoice(options: PondsterLiveVoiceOptions): Pond
           a.busyUntil[kind] = event.active ? now() + hold : 0;
           a.silenceMonitor?.setBusy(kind, event.active, hold);
         }
+      } else if(event.type==='pondster.visitor'){
+        const visitor=event.visitor as Partial<PondsterVisitor>|undefined;
+        if(visitor?.choice==='save'&&typeof visitor.returning==='boolean')options.onVisitor?.({choice:'save',returning:visitor.returning,firstName:firstName(visitor.firstName)});
+      } else if(event.type==='pondster.recording'){
+        if(typeof event.message==='string')options.onRecordingNotice?.(event.message.slice(0,240));
       } else if (event.type === 'pondster.ready') a.ready();
       else if (event.type === 'pondster.action') {
         const action = parsePondsterDestination(event.action); if (action) options.onAction?.(action);
