@@ -7,6 +7,7 @@ import { houseFeatures, roomFeatures } from '../lib/features.js';
 import { getGalleryScrollTop, getSectionRevealTop } from '../lib/gallery-scroll.ts';
 import { parsePondsterDestination, getPondsterDestinationId, DESTINATION_SECTIONS } from '../lib/pondster-destinations.ts';
 import { galleryVoiceSelection } from '../lib/pondster-gallery.ts';
+import { equipmentManuals } from '../lib/equipment.ts';
 
 const source=await readFile(new URL('../app/page.tsx',import.meta.url),'utf8');
 const oversized={targetTop:580,targetBottom:1840,headerBottom:192,viewportHeight:710,scrollY:500};
@@ -151,10 +152,31 @@ assert.ok(!effect.includes('.focus(') && !effect.includes('.click('));
 assert.ok(!source.includes('setShowLighting'),'Lighting uses this reveal path instead of a competing focus/scroll effect.');
 assert.match(source,/pendingSectionReveal.current=null;setSectionReveal\(null\);setTourRequest\(null\);setMenu\(next\)/);
 
-const files=Object.fromEntries(await Promise.all(['contact-page','explore-page','interactive-floor-plan','view-page','built-by-page'].map(async name=>[name,await readFile(new URL('../app/'+name+'.tsx',import.meta.url),'utf8')])));
+const files=Object.fromEntries(await Promise.all(['contact-page','explore-page','interactive-floor-plan','view-page','built-by-page','equipment-manuals'].map(async name=>[name,await readFile(new URL('../app/'+name+'.tsx',import.meta.url),'utf8')])));
 for(const id of ['pondster-design-overview','pondster-own-drawing'])assert.ok(source.includes('id="'+id+'"'));
-for(const section of ['guides','maintenance','handover'])assert.ok(source.includes("['"+section+"',"));
 assert.ok(source.includes('id={`pondster-own-${section}`}'));
+assert.match(source,/import EquipmentManuals from '.\/equipment-manuals'/);
+assert.match(source,/<EquipmentManuals\s*\/>/,'Belong mounts the component that owns its equipment destinations.');
+assert.match(files['equipment-manuals'],/id="pondster-own-maintenance"/);
+assert.match(files['equipment-manuals'],/equipmentManuals.map\(equipment => <article/);
+assert.ok(files['equipment-manuals'].includes('id={`pondster-own-${equipment.id}`}'));
+for(const equipment of equipmentManuals){
+  assert.ok(DESTINATION_SECTIONS.Own.includes(equipment.id),'Each generated equipment card is an allowed Own destination.');
+  assert.equal(getPondsterDestinationId({menu:'Own',section:equipment.id}),`pondster-own-${equipment.id}`,'The destination mapper agrees with the actual component registry and card template.');
+}
+for(const section of DESTINATION_SECTIONS.Own){
+  const destination={menu:'Own',section},h=actionHarness();h.run(destination);
+  assert.deepEqual(h.navigation,['Own']);assert.deepEqual(h.pending.current.destination,destination);
+  assert.equal(getPondsterDestinationId(h.pending.current.destination),`pondster-own-${section}`);
+  const reveal=revealHarness(destination);reveal.run();reveal.drain();
+  assert.equal(reveal.scrolls.length,1,`Reveal the exact ${section} Belong card through the real page effect.`);
+  assert.equal(reveal.focusCalls(),0);assert.equal(reveal.clickCalls(),0,'A manual reveal does not open a PDF or activate an external link.');
+}
+{
+  const h=actionHarness();h.run({menu:'Own',section:'cameras'});h.run({menu:'Own',section:'audio'});
+  assert.deepEqual(h.requests.map(request=>request.id),[1,2]);
+  assert.deepEqual(h.requests.map(request=>getPondsterDestinationId(request.destination)),['pondster-own-cameras','pondster-own-audio'],'A same-page equipment change targets its own card.');
+}
 for(const id of ['ashley','company','trades','voice'])assert.ok(files['contact-page'].includes('id="pondster-contact-'+id+'"'));
 assert.ok(files['contact-page'].includes("id={`pondster-contact-${id==='general-contractor'?'gc':id}`}"));
 for(const id of ['tour','ashley','viewing','notebook'])assert.ok(files['view-page'].includes('id="pondster-view-'+id+'"'));

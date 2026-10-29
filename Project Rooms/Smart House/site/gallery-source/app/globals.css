@@ -424,3 +424,6 @@ html{scroll-padding-top:200px}
 @media(max-width:720px){.header-brand .brand-copy>small{left:72px;font-size:clamp(10px,3vw,15px)}}
 @media(orientation:landscape) and (max-height:600px){.tour-voice-controls{padding:6px 0}.tour-voice-controls button{flex-basis:100%}}
 @media(prefers-reduced-motion:reduce){.signature-exclamation .pondster-logo-art{display:none}}
+.equipment-guides .knowledge-grid{grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr))}
+.equipment-guides .equipment-guide-links{list-style:none;padding:0;display:grid;gap:10px}
+.equipment-guides .equipment-guide-links a{display:flex;align-items:center;min-height:44px;white-space:normal;overflow-wrap:anywhere}

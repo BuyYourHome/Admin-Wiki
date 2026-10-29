@@ -5,6 +5,7 @@ import type { PondsterDestination } from './pondster-destinations';
 import { PONDSTER_LOCATION_TEXT } from './pondster-identity';
 import { galleryVoiceCommand } from './pondster-gallery';
 import {spokenSiteControl} from './pondster-control-intent';
+import { equipmentManuals } from './equipment';
 export type GuideAction = PondsterDestination;
 export type GuideReply = { text: string; action?: GuideAction };
 
@@ -76,7 +77,7 @@ export function answerPondster(input: string): GuideReply {
   if (!words || /^(hi|hello|hey|good morning|good afternoon|good evening)$/.test(words)) return { text: identity };
   if (/^(who are you|what is your name|what s your name)$/.test(words)) return { text: identity, action: { menu: 'Design', section: 'overview' } };
 
-  if (/\b(password|passcode|secret|private (?:records?|information|data|details?|profiles?|codes?)|confidential (?:records?|information|data|details?)|live camera feed|camera footage|surveillance feed|saved profile|personal profile|alarm code|wifi|wi fi|owner records|owner data)\b/.test(words)) {
+  if (/\b(password|passcode|secret|private (?:records?|information|data|details?|profiles?|codes?)|confidential (?:records?|information|data|details?)|live cameras?|live (?:camera )?(?:feeds?|footage|streams?)|(?:camera|nvr|eufy|surveillance) (?:footage|recordings?|feeds?)|saved profile|personal profile|alarm code|wifi|wi fi|owner records|owner data)\b/.test(words)) {
     return { text: 'I cannot provide private records, passwords, or real access codes here. My future owner tools will need authenticated access; saying you are the owner does not grant access.', action: { menu: 'Own' } };
   }
   const image=galleryVoiceCommand(words);
@@ -85,15 +86,25 @@ export function answerPondster(input: string): GuideReply {
   if(control)return {text:'I’ll use that website control and check the result.',action:{menu:'Design',control}};
   const publicCityQuestion = /\b(where|what part|which part|what area|are you|is pondster|is (?:the|this|your|my) (?:house|home|property))\b.{0,50}\b(cary|north carolina)\b/.test(words);
   if (publicCityQuestion || /\b(address|location|street|city|town|neighborhood|zip|postal|geolocation|coordinates|latitude|longitude|what state|which state)\b/.test(words) || (/\b(where are you|where is pondster|where is the house|where is your house|where is this property)\b/.test(words) && !interiorPlacement)) return { text: PONDSTER_LOCATION_TEXT + ' My introduction shares my public location; Ashley confirms real viewing arrangements.', action: { menu: 'Design', section: 'overview' } };
+  const manualRequest = /\b(manuals?|guides?|documentation|instructions?|quick start)\b/.test(words);
+  const equipmentQuestion = manualRequest || /\b(models?|brands?|manufactur(?:er|ers|es|ed)|equipment|selected|use|using|have|what|which)\b/.test(words);
+  const cameraEquipment = /\b(eufy|nvr|poe|recorder|s4 ?max)\b/.test(words)
+    || (/\b(cameras?|surveillance|security system)\b/.test(words) && (equipmentQuestion || (/\b(security cameras?|security system)\b/.test(words) && !/\bexterior\b/.test(words))));
+  const audioEquipment = /\b(sony|receiver|(?:sony ?)?(?:str ?|ta ?)?an ?1000)\b/.test(words)
+    || (/\b(audio|sound system|sound|speakers?)\b/.test(words) && equipmentQuestion);
+  const equipmentMatches = equipmentManuals.filter(item => item.id === 'cameras' ? cameraEquipment : audioEquipment);
+  const equipmentLibrary = equipmentMatches.length > 1 || (manualRequest && /\b(equipment|manufacturer|devices?|systems?|all)\b/.test(words));
   const propertyCount = /\b(?:how many|number of|count of|total(?: number of)?) (?:bedrooms?|bathrooms?|beds?|baths?|rooms?)\b/.test(words)
     || /\b(?:one|two|three|four|five|six|seven|eight|nine|ten|\d+) (?:bedrooms?|bathrooms?)\b/.test(words);
   const knownMountQuestion = informational && /\b(tv|television|mount|mm max1|mmmax1)\b/.test(words)
     && /\b(mount|mm max1|mmmax1|face|faces|facing|turn|turns|turning|position|positioned|swivel|kitchen)\b/.test(words)
     && !/\b(manufactur(?:er|ers|es|ed)|brand|serial number|installed|approved|water heater|tankless|hvac|heat pump)\b/.test(words);
-  const unknownEquipment = /\b(manufactur(?:er|ers|es|ed)|serial number|paint code|paint brand)\b/.test(words)
-    || (!knownMountQuestion && /\b(model number|model|brand)\b/.test(words) && /\b(equipment|appliances?|fixtures?|heater|hvac|heat pump|shower|tv|television|mount|cameras?)\b/.test(words))
+  const unknownEquipment = /\b(serial(?: number)?|paint code|paint brand)\b/.test(words)
+    || (!equipmentMatches.length && !equipmentLibrary && /\bmanufactur(?:er|ers|es|ed)\b/.test(words))
+    || (!equipmentMatches.length && !knownMountQuestion && /\b(model number|model|brand)\b/.test(words) && /\b(equipment|appliances?|fixtures?|heater|hvac|heat pump|shower|tv|television|mount|cameras?)\b/.test(words))
     || (/\b(installed|fitted|approved|as built|completed|already have|actually have)\b/.test(words)
-      && /\b(equipment|appliances?|fixtures?|heater|hvac|thermostat|shower|tub|bath|tv|mount|cameras?|systems?|materials?|finishes|paint)\b/.test(words));
+      && (equipmentMatches.length > 0 || /\b(equipment|appliances?|fixtures?|heater|hvac|thermostat|shower|tub|bath|tv|mount|cameras?|systems?|materials?|finishes|paint)\b/.test(words)))
+    || (equipmentMatches.length > 0 && !manualRequest && /\b(configur(?:ation|ed)|settings?|calibrat(?:ion|ed)|connected speakers?|speaker layout|firmware version|mac address|ip address)\b/.test(words));
   const unverifiedDetail = propertyCount || unknownEquipment
     || /\b(price|pricing|cost|budget|tax|mortgage|rent|valuation|square footage|square feet|permit|inspection|wiring|voltage|thermostat|specifications?|dimensions?|measurements?)\b/.test(words)
     || /\bhow (?:much|far|wide|deep|long|tall)\b/.test(words);
@@ -117,6 +128,17 @@ export function answerPondster(input: string): GuideReply {
   if (unverifiedDetail) {
     return { text: "I don't have verified pricing, property specifications, equipment records, or construction approvals to share here. My images show AI concepts, not installed or approved specifications. You can keep asking me about my public information." };
   }
+  const deckDrawing = /\b(deck|backdeck)\b/.test(words) && /\b(structural|engineering|engineered|drawings?|plans?|blueprints?)\b/.test(words);
+  if (deckDrawing) {
+    return { text: 'I have a preliminary deck structural drawing on my Belong page: /documents/deck-structural-preliminary.pdf. I’m sharing it as a preliminary design reference, not approved construction plans or confirmed specifications.', action: { menu: 'Own', section: 'drawing' } };
+  }
+  if (equipmentLibrary && equipmentMatches.length !== 1) {
+    return { text: 'I have public manufacturer guides for my selected ' + equipmentManuals.map(item => item.model).join(' and ') + ' in my equipment manual library on Belong. My selections are identified; my installation, wiring and settings still need confirmation. I provide no live device access here.', action: { menu: 'Own', section: 'maintenance' } };
+  }
+  if (equipmentMatches.length === 1) {
+    const equipment = equipmentMatches[0];
+    return { text: `My selected model is ${equipment.model}. ${equipment.summary} ${equipment.status} ${equipment.facts.join(' ')} My manufacturer guides are in my ${equipment.id === 'cameras' ? 'camera' : 'audio receiver'} card on Belong: ${equipment.guides.map(guide => `${guide.label}: ${guide.url}`).join('; ')}. I provide no live device access through this public website.`, action: { menu: 'Own', section: equipment.id } };
+  }
   if (knownMountQuestion && !/\b(show|open|compare|vote|video|film|animation|galler(?:y|ies)|colou?rs?)\b/.test(words)) {
     return { text: 'My selected TV mount is the manual MM-MAX1, positioned by hand. The automatic turning in my AI motion film is illustrative; my selected mount’s fit and clearances still need validation.', action: { menu: 'Explore', section: 'room', room: 'media-center' } };
   }
@@ -132,9 +154,6 @@ export function answerPondster(input: string): GuideReply {
     const matches = planMatches;
     if (matches.length) return { text: matches.slice(0,3).map(item => item.summary).join(' ') + ' I’m describing my planned layout, not measured or approved construction.', action: { menu: 'Explore', section: 'floor-plan', room: [...matches].sort((a,b)=>planMentionPosition(a)-planMentionPosition(b))[0]!.id } };
     if (/\b(floor plan|floorplan|proposed layout|first floor)\b/.test(words)) return { text: 'I show my first-floor layout in Explore, with my living, dining and kitchen spaces, bedroom-suite labels, pantry, laundry, garages and deck. It is a presentation plan, not a verified whole-house room count or approved construction drawing.', action: { menu: 'Explore', section: 'floor-plan' } };
-  }
-  if (/^(?:(?:show(?: me)?|open)(?: (?:my|your|the))? )?(?:deck structural drawing|preliminary deck drawing)(?: please)?$/.test(words)) {
-    return { text: 'I have a preliminary deck structural drawing on my Belong page: /documents/deck-structural-preliminary.pdf. I’m sharing it as a preliminary design reference, not approved construction plans or confirmed specifications.', action: { menu: 'Own', section: 'drawing' } };
   }
   if (has('visual notebook')) return { text: 'I’m opening my visual notebook on View so you can browse my AI design studies.', action: {menu:'View',section:'notebook'} };
   if (/\b(view|viewing page)\b/.test(words) && /\b(ashley|realtor)\b/.test(words)) return {text:ashley,action:{menu:'View',section:'ashley'}};

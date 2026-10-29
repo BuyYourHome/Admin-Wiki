@@ -10,6 +10,7 @@ import Comments from './comments';
 import ScrollVideo from './scroll-video';
 import TheaterMotion from './theater-motion';
 import ExplorePage from './explore-page';
+import EquipmentManuals from './equipment-manuals';
 import PondsterLogoArt from './pondster-logo-art';
 import GalleryImageViewer from './gallery-image-viewer';
 import DesignCardImages from './design-card-images';
@@ -243,7 +244,19 @@ export default function Home() {
       {menu==='Explore' && <ExplorePage scene={scene} onScene={setScene} floorPlanRequest={sectionReveal?.destination.menu==='Explore' && sectionReveal.destination.room?{id:sectionReveal.id,room:sectionReveal.destination.room,section:sectionReveal.destination.section==='floor-plan'?'floor-plan':'room'}:undefined} floorPlanDetailRef={floorPlanDetails}/>}
       {menu==='View' && <ViewPage tourRequest={tourRequest} onTourRequestHandled={()=>setTourRequest(null)} onImage={openDesignImage} onDesign={()=>navigate('Design')} onTourStart={cancelVoiceHover} voice={viewerVoice}/>}
       {menu==='Built By' && <BuiltByPage/>}
-      {menu==='Own' && <section className="secondary-page manage"><h1 className="single-line-page-title">I come <em>with answers.</em></h1><p className="lead">I will provide a place for my home guides, care information, and handover records. Ask me from any page for public guidance while my owner tools take shape.</p><article id="pondster-own-drawing" className="manage-notice" aria-labelledby="deck-structural-heading"><h2 id="deck-structural-heading">My preliminary deck structural drawing</h2><p>I’m sharing my deck’s preliminary structural design reference. The drawing is marked <strong>PRELIMINARY / NOT FOR PERMIT</strong> and remains a design reference for review.</p><p><a className="solid-link" href="/documents/deck-structural-preliminary.pdf" target="_blank" rel="noopener noreferrer">View my drawing (PDF) ↗</a></p><a href="/documents/deck-structural-preliminary.pdf" download="deck-structural-preliminary.pdf">Download my drawing (PDF)</a></article><div className="knowledge-grid">{[['guides','Home guides','How my systems will work and where you will find them.'],['maintenance','Care & maintenance','My manuals, warranties, and equipment-specific schedules.'],['handover','Owner handover','My records and account checklist for the next chapter.']].map(([section,title,description])=><article id={`pondster-own-${section}`} key={section}><span className="pending-tag">PLANNED</span><h3>{title}</h3><p>{description}</p></article>)}</div><div className="manage-notice"><strong>My owner tools aren’t ready yet.</strong><p>I’ll need separate, authenticated owner access before I can show private records or offer live controls. I’m not connected to my house systems through this public site.</p></div></section>}
+      {menu==='Own' && <section className="secondary-page manage">
+        <h1 className="single-line-page-title">I come <em>with answers.</em></h1>
+        <p className="lead">I keep my camera and audio receiver guides here, alongside my deck structural drawing. Ask me to show you either one.</p>
+        <article id="pondster-own-drawing" className="manage-notice" aria-labelledby="deck-structural-heading">
+          <h2 id="deck-structural-heading">My preliminary deck structural drawing</h2>
+          <p>I’m sharing my deck’s preliminary structural design reference. The drawing is marked <strong>PRELIMINARY / NOT FOR PERMIT</strong> and remains a design reference for review.</p>
+          <p><a className="solid-link" href="/documents/deck-structural-preliminary.pdf" target="_blank" rel="noopener noreferrer">View my drawing (PDF) ↗</a></p>
+          <a href="/documents/deck-structural-preliminary.pdf" download="deck-structural-preliminary.pdf">Download my drawing (PDF)</a>
+        </article>
+        <EquipmentManuals/>
+        <div className="knowledge-grid">{[['guides','More home guides','I will add guides for my other systems as their equipment is confirmed.'],['handover','Owner handover','I will bring my records and account checklist together for my next chapter.']].map(([section,title,description])=><article id={`pondster-own-${section}`} key={section}><span className="pending-tag">PLANNED</span><h3>{title}</h3><p>{description}</p></article>)}</div>
+        <div className="manage-notice"><strong>My private owner tools aren’t ready yet.</strong><p>I’ll need separate, authenticated owner access before I can show private records or offer live controls. I’m not connected to my house systems through this public site.</p></div>
+      </section>}
       <ContactPage active={menu==='Contact'} comments={menu==='Contact'?<Comments key={menu} page="contact" title="Contact" onAsk={openContact}/>:null}><PondsterGuide ref={guide} open={menu==='Contact'} onOpenChange={nextOpen=>{if(nextOpen)openContact();else if(menu==='Contact')navigate('View');}} onAction={guideAction} onReturnFocus={()=>logo.current?.focus()} onVoiceState={setVoiceSummary}/></ContactPage>
       {menu!=='Contact'&&<Comments key={menu} page={menu==='Own'?'own':menuHash(menu)} title={menuLabel(menu)} onAsk={openContact}/>}
     </main><footer><span>{PONDSTER_LOCATION_LABEL}</span><p>My SI designer: Jean Wright · Buy Your Home</p><span>I’m sharing concepts · No live controls</span></footer>

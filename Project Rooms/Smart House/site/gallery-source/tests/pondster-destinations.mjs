@@ -23,8 +23,12 @@ assert.equal(getPondsterDestinationId({menu:'View',tour:true}),'pondster-view-to
 assert.equal(getPondsterDestinationId({menu:'Explore',scene:'evening'}),'pondster-explore-lighting');
 assert.equal(getPondsterDestinationId({menu:'Contact',section:'gc'}),'pondster-contact-gc');
 assert.equal(getPondsterDestinationId({menu:'Built By',section:'contact'}),'pondster-built-by-contact');
+for(const section of ['drawing','maintenance','cameras','audio']){
+  assert.deepEqual(parsePondsterDestination({menu:'Own',section}),{menu:'Own',section});
+  assert.equal(getPondsterDestinationId({menu:'Own',section}),'pondster-own-'+section,'Public documents and manuals use exact Belong card anchors.');
+}
 for(const value of [null,[],false,'Contact',{}, {menu:'Belong'},{menu:'Manage'},
-  {menu:'Contact',section:'drawing'},{menu:'View',section:'gc'},
+  {menu:'Contact',section:'drawing'},{menu:'View',section:'gc'}, {menu:'Explore',section:'cameras'}, {menu:'Contact',section:'audio'}, {menu:'Own',section:'serials'}, {menu:'Own',section:'cameras',room:'kitchen'},
   {menu:'Contact',section:'#contact-gc'},{menu:'Explore',section:'https://example.test'},
   {menu:'Explore',section:'room'}, {menu:'Explore',section:'room',room:'pantry'},
   {menu:'Design',room:'pantry'},{menu:'Contact',room:'kitchen'},

@@ -38,6 +38,6 @@ export function getPondsterSpeechText(question:string, reply:GuideReply):string 
     return section && labels[section]?`${['house','rooms','bath-and-shower','lighting-plans','sound-screens','climate','design-participation'].includes(section)?'Here are':'Here’s'} my ${labels[section]}.`:'Here’s my Explore page.';
   }
   if(action.menu==='View')return action.tour?'Let’s take my virtual tour.':section==='ashley'?'Meet Ashley, my realtor.':section==='viewing'?'Here’s my viewing information.':section==='notebook'?'Here’s my visual notebook.':'Here’s my View page.';
-  if(action.menu==='Own')return section==='drawing'?'Here’s my preliminary deck drawing.':section==='maintenance'?'Here’s my maintenance information.':section==='handover'?'Here’s my handover information.':section==='guides'?'Here are my home guides.':'Here’s my Belong page.';
+  if(action.menu==='Own')return section==='drawing'?'My preliminary deck structural drawing is in Belong.':section==='cameras'?'Here are my camera manuals in Belong.':section==='audio'?'Here are my Sony receiver manuals in Belong.':section==='maintenance'?'Here’s my equipment manual library in Belong.':section==='handover'?'Here’s my handover information.':section==='guides'?'Here are my home guides.':'Here’s my Belong page.';
   return section==='contact'?'Here’s my company’s contact information.':'Here’s the company behind me.';
 }

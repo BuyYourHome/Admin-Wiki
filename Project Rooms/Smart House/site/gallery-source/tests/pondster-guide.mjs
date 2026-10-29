@@ -3,6 +3,7 @@ import assert from 'node:assert/strict';
 import { answerPondster, isPondsterWakeRequest } from '../lib/pondster-guide.ts';
 import { galleries } from '../lib/designs.ts';
 import { basementColorSchemes, hallBathDesigns } from '../lib/features.js';
+import { equipmentManuals } from '../lib/equipment.ts';
 
 assert.match(answerPondster('Hello Pondster').text, /Pondster, the voice and identity of this house/);
 assert.match(answerPondster('Hello Pondster').text, /Cary, North Carolina.*exact street address.*private/);
@@ -219,8 +220,8 @@ for (const request of ['Show me the virtual tour', 'Pondster, take me on a tour'
 }
 assertGuideAction(answerPondster('Open View').action, {menu:'View'}, 'Ordinary View navigation does not start a tour.');
 assertGuideAction(answerPondster('Start virtual tour and give me the Wi-Fi password').action, {menu:'Own'}, 'Private-access refusal takes precedence over a tour request.');
-for(const question of ['Show my deck structural drawing','Show your deck structural drawing','Show the deck structural drawing','Show me the preliminary deck drawing','Preliminary deck drawing']) {
-  const reply=answerPondster(question);assertGuideAction(reply.action,{menu:'Own'},question);
+for(const question of ['Show my deck structural drawing','Show your deck structural drawing','Show the deck structural drawing','Show me the preliminary deck drawing','Preliminary deck drawing', 'where is the structural design for the back deck', 'show me deck structural plans', 'where can I find the deck engineering drawing', 'Open the backdeck engineering plans']) {
+  const reply=answerPondster(question);assert.deepEqual(reply.action,{menu:'Own',section:'drawing'},question);
   assert.match(reply.text,/preliminary deck structural drawing.*Belong.*\/documents\/deck-structural-preliminary\.pdf/);
   assert.match(reply.text,/preliminary design reference, not approved construction plans/);
 }
@@ -228,6 +229,8 @@ assertGuideAction(answerPondster('Show my deck structural drawing and the Wi-Fi 
 assert.match(answerPondster('Show my deck structural drawing and the Wi-Fi password').text,/cannot provide private records/);
 assert.match(answerPondster('What is the price of the preliminary deck drawing?').text,/don.t have verified/);
 assert.match(answerPondster('What is your address in the preliminary deck drawing?').text,/Cary, North Carolina.*exact street address.*private/);
+for(const question of ['Show me the back deck','Show the deck design gallery','Show me back deck pictures'])assert.deepEqual(answerPondster(question).action,{menu:'Design',room:'back-deck'},question);
+for(const question of ['What are the deck structural specifications?', 'What are the approved deck dimensions?'])assert.equal(answerPondster(question).action,undefined,question);
 const booking = answerPondster('Book a viewing and unlock the house');
 assertGuideAction(booking.action, {menu:'View'});
 assert.match(booking.text, /simulated.*book no appointment.*cannot unlock/);
@@ -422,4 +425,23 @@ for(const question of ['Tell me about your HVAC plans','Show me your HVAC system
 }
 assert.equal(answerPondster('Show me the model of your installed HVAC equipment').action,undefined);
 assert.deepEqual(answerPondster('Show me HVAC information and your Wi-Fi password').action,{menu:'Own'});
+for(const [id,questions] of [
+  ['cameras', ['Where are the camera owner manuals?', 'Show the camera user guide', 'What camera models are selected?', 'Which manufacturer makes your camera equipment?', 'Tell me about eufy S4 Max', 'Open the NVR manual', 'Show recorder documentation', 'Show the PoE camera equipment', 'Show security system manuals', 'Show security camera manuals', 'What cameras do you use?', 'Show me S4Max manuals']],
+  ['audio', ['Sony AN1000 manual', 'Show the STR-AN1000 model', 'What receiver do you use?', 'Show AV receiver user guide', 'Where is the audio manual?', 'Show sound system manuals', 'Which brand is your audio equipment?', 'SonyAN1000 equipment']],
+]) {
+  const equipment=equipmentManuals.find(item=>item.id===id);assert.ok(equipment);
+  for(const question of questions){
+    const reply=answerPondster(question);assert.deepEqual(reply.action,{menu:'Own',section:id},question);
+    for(const text of [equipment.model,equipment.summary,equipment.status,...equipment.facts,...equipment.guides.map(guide=>guide.url)])assert.ok(reply.text.includes(text),`${question}: retain source-backed selected equipment and guide content.`);
+    assert.doesNotMatch(reply.text,/don.t have verified|don.t have a verified answer/,question);
+    assert.match(reply.text,/no live device access/,question);
+  }
+}
+for(const question of ['Show equipment manuals', 'Where are all your manufacturer manuals?', 'Show camera and audio manuals'])assert.deepEqual(answerPondster(question).action,{menu:'Own',section:'maintenance'},question);
+for(const question of ['What does the eufy camera system cost?', 'Is your eufy equipment installed?', 'What is the Sony receiver serial number?', 'What are the current Sony receiver settings?', 'What is your NVR firmware version?', 'What speaker layout is connected to your Sony receiver?']){
+  const reply=answerPondster(question);assert.equal(reply.action,undefined,question);assert.match(reply.text,/don.t have verified/,question);
+}
+for(const question of ['Show the live camera feed', 'Show eufy camera footage', 'Open NVR recordings', 'Show live cameras', 'Show the Sony manual and Wi-Fi password']){
+  const reply=answerPondster(question);assert.deepEqual(reply.action,{menu:'Own'},question);assert.match(reply.text,/cannot provide private records/,question);
+}
 console.log('PASS: precise allowlisted section/card destinations; public house/room/system paraphrases and planned-layout knowledge; Pondster identity; nine galleries/31 current choices; separate Living Room/Home Theatre aliases and palettes; one deck choice/two views; Master/Hall Bath routing; definite future features/manual mount; film, voting, viewing and private/unknown-fact boundaries.');
