@@ -164,3 +164,29 @@ Source: Wes's supplied `1000008121.jpg` framing photo and successive direct desi
 Verified external save folder: `C:\Users\wesbr\Buy Your Home\Buy Your Home - Property\26-BYH -908 Pond St\Owning\Planning\Master-Bath-Color-Options-20261025`. It contains the original framing photo, the byte-identical sage baseline, six full-resolution generated PNGs, six 1672×941 web JPEGs, full prompts in `README.md`, and `website-assets.json` with exact source/derived hashes and filenames. Manifest SHA-256: `d87b2f0721c641adac1ffb81a0fa6ae470b3caf21aafe3643a64b4ba3c66557f`. Baseline SHA-256: `35a9a07dc2554fbd0c8c93f36c0fbef42ecc36ba9dbd4f90415b5d9008d9cd7d`; source-photo SHA-256: `35de5ee4e9f5813537bd869c5be7b5299c357a9f058abe875d30c8a6b0c403ed`.
 
 The six voting alternatives are Warm Ivory, Soft Dusty Blue, Deep Navy, Forest Green, Mushroom Taupe, and Muted Terracotta. The saved sage baseline is a reference, not a seventh vote. Their exact catalog IDs/public paths, color pairings, refined layout, privacy checks, and local verification are recorded in [[Project Rooms/Smart House/working/master-bath-color-concepts]]. All were generated with the built-in image tool from the same selected baseline and passed visual review for geometry/reflections. Web copies change encoding only, without cropping, resizing, or creative alteration. These remain AI concepts; requested inch adjustments are not measured construction drawings or installation validation. Keep all binaries outside Admin Wiki Git; selected JPEGs are packaged only in the separate Sites repository. Exact publication identifiers belong in [[Project Rooms/Smart House/working/hosting-and-domain]].
+
+## Back Deck oak courtyard views — 2026-10-27
+
+Wes supplied the two PNGs in the owning chat and explicitly requested **one Back Deck choice with two views**. Authoritative local read-copy folder: `C:\Users\wesbr\Buy Your Home\Buy Your Home - Property\26-BYH -908 Pond St\Owning\Planning\House Render\generated\Deck`. The supplied [SharePoint Deck folder](https://lifeisanadventure.sharepoint.com/sites/SellYourHome/Shared%20Documents/Property/26-BYH%20-908%20Pond%20St/Owning/Planning/House%20Render/generated/Deck/) identifies the same files.
+
+| View | Exact source filename | Bytes | SHA-256 | Anonymous public copy |
+| --- | --- | ---: | --- | --- |
+| Overview | `V13-REVIEW-908-Pond-Deck-Cleaned-Oak.png` | 3,053,181 | `3D03460644BB547F02510B5C004297B5D0FDF2EB3C8B3EF1098B8C00328ECF19` | `/images/deck/oak-courtyard-overview.png` |
+| Closeup | `Owner-Closeup-908-Pond-Deck-2026-10-27.png` | 3,325,074 | `03F0DAC963501CA50DBB735E9A021350165366C9E89844A90C5D64C6F3C7A4B6` | `/images/deck/oak-courtyard-closeup.png` |
+
+Both local sources were visually inspected as views of the same design concept, with no visible address. Each selected public copy is byte-identical to its source; source names and private folder paths are not public asset names. Original and public image binaries remain outside Admin Wiki Git, with the public copies packaged only in the separate Sites repository.
+
+The catalog choice is `oak-courtyard`, **Oak courtyard deck**. The overview is the primary Explore/tour view and the closeup is an additional view of that same vote. Counts at version 65 are 31 active choices across nine galleries and seven tour scenes with three films. Earlier pending-image intake records remain historical. Implementation, greeting scope, verification limits and publication continuation are in [[Project Rooms/Smart House/working/deck-and-logo-greeting-20261027]]; version 65 publication is recorded in the implementation note and hosting ledger.
+
+
+## Garage v3 and equipment-manual intake — 2026-10-28
+
+Wes supplied three pond-garage-layout-20261028-v3 PNG references in the property House Render/color-studies folder. Version 78 replaces garage-06/07/08 pixels with Warm White Approved, Charcoal Green Review and Limewashed Brick Review while preserving voting IDs. Exact paths, hashes and publication provenance: [[voice-defaults-gallery-navigation-and-garage-v3-20261028]].
+
+Wes also requested sound-system and surveillance-camera knowledge and manufacturer manuals in Belong. Equipment photos/models are not available in the accessible attachment record or searched property folders; the garage images are not equipment evidence. Hold model-specific research and manual publication until the actual source is supplied.
+
+## Equipment-photo resolution and manufacturer guides — 2026-10-28
+
+Later authoritative intake supersedes the missing-photo finding above. Wes supplied `1-1000008139.jpg`, `2-1000008138.jpg`, and `3-1000008137.jpg` in `C:\Codex\Wiki Files\.codex-remote-attachments\01a14585-ffe6-7850-8db1-efcdd58e7071\49303806-1d54-4bd7-8fd8-328cc2d723f5`; all three were visually inspected. The sources identify eufy NVR Security System S4 Max packaging (eight-channel NVR, four PoE Bullet-PTZ cameras, 2 TB) and Sony AN1000 Multi Channel AV Receiver packaging. The generic eufy Manual/App/Support QR photo is supporting packaging evidence, not a separate model identification.
+
+Official eufy recorder/camera quick-start PDFs, the eufy user-guide landing page, and Sony AN1000-family English Help Guide/printable guide/operating instructions were verified. Exact URLs, model/region qualifications, capabilities versus installation limits, and the reproduced deck-to-Belong structural-drawing routing gap are recorded in [[Project Rooms/Smart House/working/equipment-manuals-20261028]]. Exact regional Sony rear-label SKU, installation, room assignment, wiring, speaker layout/calibration, camera configuration and operating validation remain unknown. The six guide links are published in Belong as version 84 and public browser inspection confirmed them. Equipment and deck-document routing passed offline checks; no fresh spoken voice test was performed. No source-photo or manufacturer-PDF binaries were added to Git.

@@ -1,8 +1,9 @@
 'use client';
 
 import { useCallback, useEffect, useRef, useState, type ReactNode } from 'react';
+import GalleryMediaControls,{type GalleryMediaControlsProps} from './gallery-media-controls';
 
-export default function ScrollVideo({ label, ratio, children }: { label: string; ratio: string; children: ReactNode }) {
+export default function ScrollVideo({ label, ratio, children,media }: { label: string; ratio: string; children: ReactNode;media?:GalleryMediaControlsProps }) {
   const shell = useRef<HTMLDivElement>(null);
   const stage = useRef<HTMLDivElement>(null);
   const dismissed = useRef(false);
@@ -13,6 +14,13 @@ export default function ScrollVideo({ label, ratio, children }: { label: string;
     setExpanded(false);
     if (returnFocus) shell.current?.querySelector('video')?.focus({ preventScroll: true });
   }, []);
+  useEffect(()=>{
+    const node=shell.current;if(!node)return;
+    const expand=()=>{if(document.querySelector('dialog[open]'))return;dismissed.current=false;setExpanded(true);};
+    const collapse=()=>dismiss(true);
+    node.addEventListener('pondster-video-expand',expand);node.addEventListener('pondster-video-collapse',collapse);
+    return()=>{node.removeEventListener('pondster-video-expand',expand);node.removeEventListener('pondster-video-collapse',collapse);};
+  },[dismiss]);
 
   useEffect(() => {
     let frame = 0;
@@ -57,13 +65,14 @@ export default function ScrollVideo({ label, ratio, children }: { label: string;
     };
   }, [expanded, dismiss]);
 
-  return <div ref={shell} className="scroll-video-shell" style={{ aspectRatio: ratio }} data-expanded={expanded ? 'true' : 'false'}>
-    <div ref={stage} className={`scroll-video-stage${expanded ? ' is-expanded' : ''}`} role="group" aria-label={label}>
+  return <><div ref={shell} className="scroll-video-shell" style={{ aspectRatio: ratio }} data-expanded={expanded ? 'true' : 'false'}>
+    <div ref={stage} className={`scroll-video-stage${expanded ? ' is-expanded' : ''}${media?' has-media-controls':''}`} role="group" aria-label={label}>
       {children}
-      {expanded && <>
+      {expanded&&media&&<GalleryMediaControls {...media} onClose={()=>dismiss(true)}/>}
+      {expanded && !media && <>
         <div className="scroll-video-toolbar"><span>{label}</span><button type="button" onClick={() => dismiss(true)}>Back to my gallery <span aria-hidden="true">↓</span></button></div>
         <p className="scroll-video-hint">Scroll to keep exploring my designs.</p>
       </>}
     </div>
-  </div>;
+  </div>{!expanded&&media&&<GalleryMediaControls {...media}/>}</>;
 }

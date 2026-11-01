@@ -1,0 +1,8 @@
+.frame{min-width:0}
+.controls{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:8px 12px;border-bottom:1px solid var(--line,#d8dbd1);background:var(--paper,#f4f3ed);color:var(--ink,#283b32)}
+.controls button{flex:0 0 44px;min-width:44px;min-height:44px;border:1px solid currentColor;background:transparent;color:inherit;font-size:20px;cursor:pointer}
+.controls button:hover{background:var(--ink,#283b32);color:var(--white,#fff)}
+.controls button:focus-visible{outline:2px solid currentColor;outline-offset:3px}
+.controls p{min-width:0;margin:0;text-align:center;font:11px/1.4 Arial,sans-serif}
+.controls strong,.controls span{display:block}
+.controls span{font-size:10px;margin-top:2px}

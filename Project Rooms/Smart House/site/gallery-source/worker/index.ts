@@ -5,11 +5,13 @@ import { handlePondsterLiveControl } from "./pondster-live";
 import { buildPondsterLiveSession } from "../lib/pondster-live-context";
 import { answerPondster } from "../lib/pondster-guide";
 import { galleries } from "../lib/designs";
+import { handlePondsterVisitor } from './pondster-visitors';
 
 const worker = {
   fetch(request: Request, env: Cloudflare.Env, ctx: ExecutionContext<{ CONNECTORS?: ConnectorBinding }>) {
+    if(new URL(request.url).pathname==='/api/visitor')return handlePondsterVisitor(request,env,ctx);
     if (new URL(request.url).pathname === '/api/voice/control') {
-      return handlePondsterLiveControl(request, env, ctx, () => buildPondsterLiveSession(galleries), answerPondster);
+      return handlePondsterLiveControl(request, env, ctx, visitor => buildPondsterLiveSession(galleries,visitor), answerPondster);
     }
     let binding = ctx.props?.CONNECTORS;
     // Local preview emulates the same request-scoped capability. This branch and

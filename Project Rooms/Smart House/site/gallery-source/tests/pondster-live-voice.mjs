@@ -1,5 +1,6 @@
 import assert from 'node:assert/strict';
-import { createPondsterLiveVoice } from '../lib/pondster-live-voice.ts';
+import {PONDSTER_CLIENT_REVISION} from '../lib/pondster-live-protocol.ts';
+import { createPondsterLiveVoice, createPondsterAudioSampler, createPondsterSilenceMonitor, PONDSTER_SILENCE_MS } from '../lib/pondster-live-voice.ts';
 
 // Browser, media, audio and transport doubles only: no devices or network access.
 const flush = async () => { for (let index = 0; index < 16; index++) await Promise.resolve(); };
@@ -88,7 +89,7 @@ function control(url, log) {
   });
 }
 
-function setup({ mediaGate, fetchGate, status = { available: true }, iceComplete = true, playPlans = [] } = {}) {
+function setup({ mediaGate, fetchGate, remoteGate, status = { available: true }, iceComplete = true, playPlans = [], activitySamplerFactory, streamMeterFactory, onActionResult } = {}) {
   const clock = fakeClock(), log = [], tracks = [track()], media = stream([...tracks]);
   const peers = [], controls = [], states = [], transcripts = [], actions = [], requests = [];
   let mediaCalls = 0;
@@ -102,14 +103,21 @@ function setup({ mediaGate, fetchGate, status = { available: true }, iceComplete
     audioElement: audio,
     onState: value => states.push({ ...value }),
     onTranscript: (...values) => transcripts.push(values),
-    onAction: value => actions.push(value),
+    onAction: value => {actions.push(value);return onActionResult?.(value);},
     getUserMedia: async () => {
       mediaCalls++;
       if (mediaGate) return mediaGate.promise;
       if (mediaCalls === 1) return media;
       const next = track(); tracks.push(next); return stream([next]);
     },
-    peerFactory: () => { const value = peer(log, { iceComplete }); peers.push(value); return value; },
+    peerFactory: () => {
+      const value = peer(log, { iceComplete });
+      if (remoteGate) {
+        const applyAnswer = value.setRemoteDescription.bind(value);
+        value.setRemoteDescription = async description => { await remoteGate.promise; await applyAnswer(description); };
+      }
+      peers.push(value); return value;
+    },
     fetcher: async (url, options = {}) => {
       requests.push({ url, options });
       if (fetchGate) await new Promise((resolve, reject) => {
@@ -122,6 +130,8 @@ function setup({ mediaGate, fetchGate, status = { available: true }, iceComplete
     streamFactory: values => stream(values),
     visibilityTarget: visibility,
     setTimeout: clock.setTimeout, clearTimeout: clock.clearTimeout,
+    now: () => clock.now, activitySamplerFactory: activitySamplerFactory === undefined && !streamMeterFactory
+      ? () => async () => ({ input: true, output: false }) : activitySamplerFactory, streamMeterFactory,
     origin: 'https://pondstr.com',
     requestIdFactory: () => '11111111-1111-4111-8111-111111111111'
   });
@@ -160,12 +170,14 @@ async function connect(harness, start = harness.voice.start(), maxDurationSecond
   return { peer: harness.peer(), control: harness.control(), events: harness.peer().events };
 }
 
+function startedAcks(socket) { return socket.sent.filter(message => message.type === 'pondster.started'); }
+
 async function dispose(harness) {
   harness.voice.dispose(); harness.clock.advance(10000); await flush();
   assert.equal(harness.clock.pending(), 0, 'Disposal leaves no timeout jobs after the close grace period.');
   assert.ok(harness.peers.every(item => item.closeCalls > 0), 'Every created peer is closed.');
   assert.ok(harness.controls.every(item => item.closeCalls > 0), 'Every created control socket is closed.');
-  assert.ok(harness.tracks.every(item => item.stopCalls > 0), 'Acquired microphone tracks are stopped.');
+  assert.ok(harness.mediaCalls() === 0 || harness.tracks.every(item => item.stopCalls > 0), 'Acquired microphone tracks are stopped; a pre-permission refusal acquires none.');
   assert.equal(harness.audio.srcObject, null);
   assert.equal(harness.visibility.listenerCount(), 0, 'Disposal removes the visibility listener.');
 }
@@ -182,25 +194,78 @@ async function dispose(harness) {
   await flush();
   assert.equal(h.mediaCalls(), 1); assert.equal(h.peers.length, 1); assert.equal(h.controls.length, 1);
   assert.equal(h.requests.length, 1);
-  assert.equal(new URL(h.requests[0].url, 'https://pondstr.com').pathname, '/api/voice/status');
+  assert.equal(new URL(h.requests[0].url, 'https://pondstr.com').href, 'https://pondstr.com/api/voice/status', 'Startup uses authoritative admission without making optional model metadata a prerequisite.');
   assert.equal(h.requests[0].options.method, 'GET');
   assert.equal(h.requests[0].options.credentials, 'same-origin');
   assert.equal(h.control().url, 'wss://pondstr.com/api/voice/control');
   assert.deepEqual(h.peer().channels, ['oai-events']);
   assert.ok(h.log.indexOf('peer.createDataChannel') < h.log.indexOf('peer.createOffer'));
   h.control().open(); await flush();
-  assert.deepEqual(h.control().sent, [{ type: 'pondster.start', requestId: '11111111-1111-4111-8111-111111111111', sdp: 'mock-local-offer' }]);
+  assert.deepEqual(h.control().sent, [{ type: 'pondster.start', requestId: '11111111-1111-4111-8111-111111111111', sdp: 'mock-local-offer',clientRevision:PONDSTER_CLIENT_REVISION,expectsSaving:false }]);
   h.control().receive({ type: 'pondster.ready', session: { id: 'session-one' }, transport: { type: 'webrtc', sdp: 'mock-remote-answer' }, maxDurationSeconds: 180 });
   await flush();
   assert.deepEqual(h.peer().remoteDescription, { type: 'answer', sdp: 'mock-remote-answer' });
   assert.equal(h.state().active, false, 'A server answer alone cannot activate voice.');
   assert.equal(h.state().connecting, true);
+  assert.deepEqual(startedAcks(h.control()), [], 'The browser cannot acknowledge startup before provider session.started.');
   h.peer().events.open(); h.peer().events.receive({ type: 'session.started' });
   await settle(h, Promise.all([first, second]));
   assert.equal(h.state().active, true); assert.equal(h.state().connecting, false);
+  assert.deepEqual(startedAcks(h.control()), [{ type: 'pondster.started' }], 'Readiness sends exactly one fixed control acknowledgement.');
+  assert.deepEqual(h.peer().events.sent, [], 'The acknowledgement does not use the provider data channel.');
+  h.peer().events.receive({ type: 'session.started' });
+  h.control().receive({ type: 'pondster.ready', session: { id: 'session-one' }, transport: { type: 'webrtc', sdp: 'mock-remote-answer' } });
+  await flush();
   await h.voice.start();
+  assert.deepEqual(startedAcks(h.control()), [{ type: 'pondster.started' }], 'Duplicate started/ready events and repeated Start never resend readiness.');
   assert.equal(h.mediaCalls(), 1); assert.equal(h.peers.length, 1); assert.equal(h.controls.length, 1);
   assert.equal(h.requests.length, 1, 'An already active session is not renegotiated.');
+  await dispose(h);
+}
+
+// Provider startup cannot acknowledge an unfinished, cancelled, or failed answer application.
+for (const outcome of ['ready', 'cancelled', 'failed']) {
+  const gate = deferred(), h = setup({ remoteGate: gate });
+  const result = Promise.allSettled([h.voice.start()]); await flush();
+  const socket = h.control(); socket.open(); await flush();
+  socket.receive({ type: 'pondster.ready', session: { id: 'session-one' }, transport: { type: 'webrtc', sdp: 'mock-remote-answer' } });
+  await flush();
+  h.peer().events.open(); h.peer().events.receive({ type: 'session.started' }); await flush();
+  assert.deepEqual(startedAcks(socket), [], 'Provider session.started alone cannot bypass pending setRemoteDescription.');
+  if (outcome === 'cancelled') h.voice.stop();
+  if (outcome === 'failed') gate.reject(new Error('The answer could not be applied.'));
+  else gate.resolve();
+  const [finished] = await settle(h, result);
+  if (outcome === 'ready') {
+    assert.equal(finished.status, 'fulfilled');
+    assert.deepEqual(startedAcks(socket), [{ type: 'pondster.started' }]);
+  } else {
+    assert.equal(finished.status, outcome === 'failed' ? 'rejected' : 'fulfilled');
+    h.peer().events.receive({ type: 'session.started' });
+    socket.receive({ type: 'pondster.ready', session: { id: 'session-one' }, transport: { type: 'webrtc', sdp: 'mock-remote-answer' } });
+    await flush();
+    assert.deepEqual(startedAcks(socket), [], 'A cancelled or failed attempt cannot acknowledge late startup events.');
+    assert.equal(h.state().active, false); assert.ok(h.tracks.every(item => item.stopCalls > 0));
+  }
+  await dispose(h);
+}
+
+// A failed readiness send follows the existing startup failure and cleanup path.
+{
+  const h = setup(), result = Promise.allSettled([h.voice.start()]); await flush();
+  const socket = h.control(), originalSend = socket.send.bind(socket);
+  socket.send = data => {
+    if (JSON.parse(data).type === 'pondster.started') throw new Error('Control send failed.');
+    originalSend(data);
+  };
+  socket.open(); await flush();
+  socket.receive({ type: 'pondster.ready', session: { id: 'session-one' }, transport: { type: 'webrtc', sdp: 'mock-remote-answer' } });
+  await flush(); h.peer().events.open(); h.peer().events.receive({ type: 'session.started' });
+  const [finished] = await settle(h, result);
+  assert.equal(finished.status, 'rejected'); assert.equal(h.state().active, false);
+  assert.deepEqual(startedAcks(socket), []);
+  assert.ok(socket.sent.some(message => message.type === 'pondster.stop'));
+  assert.ok(h.tracks.every(item => item.stopCalls > 0)); assert.equal(h.audio.srcObject, null);
   await dispose(h);
 }
 
@@ -339,6 +404,8 @@ async function dispose(harness) {
   const stale = { data: old.events.onmessage, control: old.control.onmessage, track: old.peer.ontrack, connection: old.peer.onconnectionstatechange };
   h.voice.stop();
   const fresh = await connect(h);
+  assert.deepEqual(startedAcks(old.control), [{ type: 'pondster.started' }]);
+  assert.deepEqual(startedAcks(fresh.control), [{ type: 'pondster.started' }], 'A new session gets one new readiness acknowledgement.');
   const state = { ...h.state() }, transcriptCount = h.transcripts.length, actionCount = h.actions.length;
   stale.data?.({ data: JSON.stringify({ type: 'session.started' }) });
   stale.data?.({ data: JSON.stringify({ type: 'session.input_transcript.delta', delta: 'stale words' }) });
@@ -346,11 +413,13 @@ async function dispose(harness) {
   stale.control?.({ data: JSON.stringify({ type: 'pondster.action', action: { menu: 'Own' } }) });
   const late = track(); stale.track?.({ track: late, streams: [stream([late])] });
   old.peer.connectionState = 'failed'; stale.connection?.();
-  h.clock.advance(10000); await flush();
+  await tick(h.clock, 10000);
   assert.deepEqual(h.state(), state); assert.equal(h.transcripts.length, transcriptCount); assert.equal(h.actions.length, actionCount);
   assert.ok(late.stopCalls > 0, 'A stale remote track is stopped.');
   assert.equal(fresh.peer.closeCalls, 0); assert.equal(h.tracks.at(-1).stopCalls, 0);
   assert.equal(h.controls.length, 2, 'Stale events never reconnect automatically.');
+  assert.deepEqual(startedAcks(old.control), [{ type: 'pondster.started' }], 'Stopped-session callbacks never resend readiness.');
+  assert.deepEqual(startedAcks(fresh.control), [{ type: 'pondster.started' }]);
   await dispose(h);
 }
 
@@ -381,7 +450,7 @@ for (const event of [{ type: 'pondster.error', message: 'Voice service is unavai
   await dispose(h);
 }
 
-// A hidden tab ends capture, and the service-provided duration is capped at three minutes.
+// A hidden tab ends capture; active conversation has no application duration cutoff.
 {
   const h = setup(); await connect(h);
   h.visibility.hidden = true; h.visibility.emit('visibilitychange');
@@ -390,12 +459,271 @@ for (const event of [{ type: 'pondster.error', message: 'Voice service is unavai
   await dispose(h);
 }
 {
-  const h = setup(); await connect(h, undefined, 999);
-  h.clock.advance(179999); await flush(); assert.equal(h.state().active, true);
-  h.clock.advance(1); await flush(); assert.equal(h.state().active, false);
-  assert.ok(h.tracks.every(item => item.stopCalls > 0)); assert.match(h.state().status, /three.minute|ended/i);
+  let speaking = true;
+  const h = setup({ activitySamplerFactory: () => async () => ({ input: speaking, output: false }) });
+  await connect(h, undefined, 180);
+  await tick(h.clock, 600_000); assert.equal(h.state().active, true, 'Continuing speech is not cut off at180s or by a legacy duration field.');
+  speaking = false; await tick(h.clock, 250); await tick(h.clock, 30_000);
+  assert.equal(h.state().active, false); assert.match(h.state().status, /thirty seconds of silence/);
+  assert.ok(h.tracks.every(item => item.stopCalls > 0));
   await dispose(h);
   const count = h.mediaCalls(); await assert.rejects(h.voice.start(), /closed/i); assert.equal(h.mediaCalls(), count);
 }
 
-console.log('PASS: lazy Live voice acquisition; same-origin status/control protocol; bounded ICE and session start; idempotence; permission/fetch cancellation; immediate capture/playback stop and ten-second unconfirmed close drain; typed control/actions; bounded debounced captions; autoplay recovery; stale events; availability and server failures; visibility and three-minute limits; disposal.');
+// Advance asynchronous sampling without letting the synthetic clock outrun its
+// promise continuations. No test ever accesses a real microphone or connection.
+async function tick(clock, milliseconds) {
+  while (milliseconds > 0) { const step = Math.min(250, milliseconds); clock.advance(step); await flush(); milliseconds -= step; }
+}
+function silenceFixture(sample = async () => ({ input: false, output: false })) {
+  const clock = fakeClock(), ended = [], available = [], unavailable = [], progress = [];
+  const monitor = createPondsterSilenceMonitor({ sample, now: () => clock.now,
+    setTimeout: clock.setTimeout, clearTimeout: clock.clearTimeout,
+    onSilence: () => ended.push(clock.now), onAvailability: value => available.push(value),
+    onUnavailable: () => unavailable.push(clock.now), onProgress: value => progress.push(value) });
+  return { clock, monitor, ended, available, unavailable, progress };
+}
+{
+  const h = silenceFixture(); await flush();
+  await tick(h.clock, PONDSTER_SILENCE_MS - 1);
+  assert.deepEqual(h.ended, []);
+  await tick(h.clock, 1);
+  assert.deepEqual(h.ended, [PONDSTER_SILENCE_MS], 'Exactly thirty seconds from the first BOTH-quiet snapshot ends the monitor.');
+  assert.deepEqual(h.available, [true]); assert.equal(h.clock.pending(), 0);
+  assert.ok(h.progress.some(value => value.reason === 'quiet' && value.remainingSeconds === 30));
+  assert.ok(h.progress.some(value => value.reason === 'quiet' && value.remainingSeconds === 1));
+}
+{
+  const h = silenceFixture(); await flush(); await tick(h.clock, 29_000);
+  h.monitor.setBusy('work', false); h.monitor.setBusy('response', false);
+  await tick(h.clock, 1000); assert.deepEqual(h.ended, [30_000], 'Redundant idle hints do not restart a quiet deadline.');
+}
+for (const direction of ['input', 'output']) {
+  let speaking = true;
+  const h = silenceFixture(async () => ({ input: direction === 'input' && speaking, output: direction === 'output' && speaking }));
+  await flush(); await tick(h.clock, 45_000);
+  assert.deepEqual(h.ended, [], 'Speech longer than thirty seconds remains active without any transcript events.');
+  speaking = false; await tick(h.clock, 250);
+  const quiet = h.clock.now;
+  await tick(h.clock, 29_999); assert.deepEqual(h.ended, []);
+  await tick(h.clock, 1); assert.deepEqual(h.ended, [quiet + 30_000]);
+}
+{
+  const h = silenceFixture(); await flush(); await tick(h.clock, 29_000);
+  h.monitor.noteInteraction();
+  await tick(h.clock, 29_999); assert.deepEqual(h.ended, []);
+  await tick(h.clock, 1); assert.deepEqual(h.ended, [59_000], 'Real typing resets the quiet deadline.');
+}
+{
+  let output = false;
+  const h = silenceFixture(async () => ({ input: false, output })); await flush();
+  h.monitor.setBusy('work', true, 30_000); h.monitor.setBusy('response', true, 30_000);
+  output = true; await tick(h.clock, 250); output = false;
+  await tick(h.clock, 10_000);
+  h.monitor.setBusy('work', false); await tick(h.clock, 250);
+  const quiet = h.clock.now;
+  await tick(h.clock, 29_999); assert.deepEqual(h.ended, [], 'Output activity clears response wait but not still-pending work.');
+  await tick(h.clock, 1); assert.deepEqual(h.ended, [quiet + 30_000]);
+}
+{
+  const h = silenceFixture(); await flush();
+  h.monitor.setBusy('response', true, 999_999);
+  await tick(h.clock, 59_999); assert.deepEqual(h.ended, []);
+  await tick(h.clock, 1); assert.deepEqual(h.ended, [60_000], 'A response-wait hint is capped; it cannot hold silence indefinitely.');
+}
+{
+  const h = silenceFixture(async () => ({ input: false, output: null })); await flush();
+  await tick(h.clock, 60_000);
+  assert.deepEqual(h.ended, []); assert.deepEqual(h.available, [false], 'Unmeasured output is never interpreted as silence.');
+  assert.deepEqual(h.unavailable, [10_000], 'A broken meter stops through an explicit health failure rather than leaving paid voice open.');
+  h.monitor.stop(); assert.equal(h.clock.pending(), 0);
+}
+{
+  const pending = deferred(); let samples = 0;
+  const h = silenceFixture(() => { samples++; return pending.promise; });
+  await tick(h.clock, 999); assert.equal(samples, 1);
+  await tick(h.clock, 1);
+  assert.deepEqual(h.available, [false]); assert.equal(h.clock.pending(), 0);
+  pending.resolve({ input: false, output: false }); await flush(); await tick(h.clock, 60_000);
+  assert.equal(samples, 1, 'A hung getStats request is never overlapped.');
+  assert.deepEqual(h.ended, [], 'A timed-out stats result cannot later close the session.');
+}
+{
+  const pending = deferred(), h = silenceFixture(() => pending.promise);
+  h.monitor.stop(); pending.resolve({ input: false, output: false }); await flush();
+  assert.deepEqual(h.available, []); assert.deepEqual(h.ended, []); assert.equal(h.clock.pending(), 0, 'Stopped meters ignore stale promises and retain no timer.');
+}
+{
+  let at = 0;
+  const records = [
+    { id: 'mic', type: 'media-source', kind: 'audio', timestamp: 0, audioLevel: 0, totalAudioEnergy: 0, totalSamplesDuration: 1 },
+    { id: 'voice', type: 'inbound-rtp', kind: 'audio', timestamp: 0, audioLevel: 0, totalAudioEnergy: 0, totalSamplesDuration: 1 },
+  ];
+  const sample = createPondsterAudioSampler({ async getStats() { return new Map(records.map(item => [item.id, { ...item }])); } }, () => at);
+  assert.deepEqual(await sample(), { input: false, output: false });
+  at = 250; records.forEach(item => { item.timestamp = at; item.totalSamplesDuration += .25; }); records[0].totalAudioEnergy += .0001;
+  assert.deepEqual(await sample(), { input: true, output: false }, 'Interval RMS detects real microphone energy even with audioLevel zero.');
+  at = 500; records.forEach(item => { item.timestamp = at; item.totalSamplesDuration += .25; }); records[1].totalAudioEnergy += .0004;
+  assert.deepEqual(await sample(), { input: false, output: true }, 'Interval RMS independently detects Pondster output.');
+  at = 750; records.forEach(item => { item.timestamp = at; item.audioLevel = .9; });
+  assert.deepEqual(await sample(), { input: null, output: null }, 'Fresh report timestamps cannot make a latched positive level a fresh measurement.');
+  at = 1000; records.forEach(item => { item.timestamp = at; delete item.audioLevel; });
+  assert.deepEqual(await sample(), { input: null, output: null }, 'Flat counters without a reported audio level cannot establish silence.');
+  at += 1501;
+  assert.deepEqual(await sample(), { input: null, output: null }, 'Stale snapshots cannot establish silence.');
+  at += 250; records.forEach(item => { item.timestamp = at; item.totalAudioEnergy = 0; item.totalSamplesDuration = 0; });
+  assert.deepEqual(await sample(), { input: null, output: null }, 'Reset energy counters are unknown for their first interval.');
+  assert.deepEqual(await createPondsterAudioSampler({})(), { input: null, output: null });
+}
+for (const interaction of ['typing', 'submitted']) {
+  const h = setup({ activitySamplerFactory: () => async () => ({ input: false, output: false }) });
+  assert.equal(h.state().silenceAvailable, null);
+  await connect(h); await flush(); assert.equal(h.state().silenceAvailable, true);
+  await tick(h.clock, 29_000);
+  if (interaction === 'typing') h.voice.noteInteraction();
+  else h.voice.sendText('Tell me about the deck');
+  await tick(h.clock, 29_999); assert.equal(h.state().active, true);
+  await tick(h.clock, 1);
+  assert.equal(h.state().active, false); assert.match(h.state().status, /thirty seconds of silence/);
+  assert.ok(h.tracks.every(item => item.stopCalls > 0)); assert.equal(h.audio.srcObject, null);
+  assert.ok(h.control().sent.some(message => message.type === 'pondster.stop'));
+  assert.equal(h.peer().closeCalls, 0, 'Silence stops capture immediately while the normal finalization drain remains open.');
+  h.clock.advance(10_000); await flush(); await dispose(h);
+}
+{
+  const h = setup({ activitySamplerFactory: () => async () => ({ input: false, output: false }) });
+  await connect(h); await tick(h.clock, 29_000);
+  h.control().receive({ type: 'pondster.busy', kind: 'work', active: true, holdMs: 30_000 });
+  await tick(h.clock, 20_000);
+  assert.equal(h.state().active, true, 'Trusted queued work suspends the otherwise-expiring quiet deadline.');
+  h.control().receive({ type: 'pondster.busy', kind: 'work', active: false, holdMs: 30_000 });
+  await tick(h.clock, 250);
+  await tick(h.clock, 29_999); assert.equal(h.state().active, true);
+  await tick(h.clock, 1); assert.equal(h.state().active, false);
+  await dispose(h);
+}
+{
+  const h = setup({ activitySamplerFactory: null }); await connect(h);
+  h.control().receive({ type: 'pondster.action', action: { menu: 'Contact' } });
+  assert.deepEqual(h.actions.at(-1), { menu: 'Contact' });
+  await tick(h.clock, 10_000);
+  assert.equal(h.state().silenceAvailable, false); assert.equal(h.state().active, false);
+  assert.match(h.state().status, /can’t monitor silence/);
+  assert.ok(h.tracks.every(item => item.stopCalls > 0));
+  await dispose(h);
+}
+{
+  const calls = [], meter = { available: true, setInput: value => calls.push(['input', value]), setOutput: value => calls.push(['output', value]), sample: () => ({ input: false, output: false }), stop: () => calls.push(['stop']) };
+  let creations = 0;
+  const h = setup({ streamMeterFactory: () => { creations++; return meter; } });
+  assert.equal(creations, 0, 'Construction creates no audio context.');
+  await connect(h); assert.equal(creations, 1); assert.equal(calls[0][0], 'input');
+  const remote = stream([track()]); h.peer().emit('track', { track: remote.getTracks()[0], streams: [remote] }); await flush();
+  assert.ok(calls.some(([kind, value]) => kind === 'output' && value === remote));
+  await tick(h.clock, 30_000); assert.equal(h.state().active, false);
+  assert.ok(calls.some(([kind]) => kind === 'stop'), 'Silence cleanup disposes the in-memory audio graph immediately.');
+  await dispose(h);
+}
+
+{
+  const h = setup(); await connect(h);
+  h.control().receive({ type: 'pondster.action', action: { menu: 'View', tour: true } });
+  assert.deepEqual(h.actions.at(-1), { menu: 'View', tour: true });
+  const count = h.actions.length;
+  for (const action of [{ menu: 'View', tour: false }, { menu: 'Contact', tour: true }, { menu: 'View', tour: 'yes' }]) h.control().receive({ type: 'pondster.action', action });
+  h.peer().events.receive({ type: 'pondster.action', action: { menu: 'View', tour: true } });
+  assert.equal(h.actions.length, count, 'Only a validated same-origin View action can start the tour.');
+  await dispose(h);
+}
+{
+  const h = setup(); const {control,events} = await connect(h);
+  const destinations = [
+    {menu:'Contact',section:'gc'}, {menu:'Contact',section:'plumber'}, {menu:'Contact',section:'hvac'}, {menu:'Contact',section:'ashley'},
+    {menu:'Explore',section:'hot-water'}, {menu:'Explore',section:'floor-plan',room:'master-bedroom'}, {menu:'Explore',section:'room',room:'kitchen'},
+    {menu:'Own',section:'drawing'}, {menu:'Own',section:'maintenance'}, {menu:'Own',section:'handover'},
+    {menu:'View',section:'tour',tour:true}, {menu:'Built By',section:'contact'},
+    {menu:'Design',section:'gallery',room:'master-bath'}, {menu:'Design',section:'overview'},
+  ];
+  for(const action of destinations)control.receive({type:'pondster.action',action:{...action,selector:'#private',url:'https://private.invalid/'}});
+  assert.deepEqual(h.actions,destinations,'Validated sections and room selections survive the trusted channel; extras never reach UI.');
+  for(const action of [
+    {menu:'Contact',section:'private'}, {menu:'Contact',section:'#pondster-contact-gc'},
+    {menu:'Contact',section:'https://example.com/'}, {menu:'Contact',section:['gc']},
+    {menu:'Explore',section:'gc'}, {menu:'Contact',section:'hot-water'},
+    {menu:'View',section:'ashley',tour:true}, {menu:'Own',section:'drawing',room:'master-bath'},
+    {menu:'Explore',section:'floor-plan',room:'private-room'}, {menu:'Explore',section:'hot-water',scene:'day'},
+  ])control.receive({type:'pondster.action',action});
+  events.receive({type:'pondster.action',action:{menu:'Contact',section:'gc'}});
+  assert.deepEqual(h.actions,destinations,'Unknown/malformed/wrong-page targets and provider-channel injection never reveal UI.');
+  await dispose(h);
+}
+for (const outcome of ['denied', 'timeout', 'stopped']) {
+  const ready = deferred(), calls = [];
+  const meter = { available: true, whenRunning: () => outcome === 'denied' ? Promise.resolve(false) : ready.promise,
+    setInput() {}, setOutput() {}, sample: () => ({ input: false, output: false }), stop: () => calls.push('stop') };
+  const h = setup({ streamMeterFactory: () => meter });
+  const start = h.voice.start(); await flush();
+  assert.equal(h.mediaCalls(), 0); assert.equal(h.controls.length, 0);
+  if (outcome === 'timeout') await tick(h.clock, 1500);
+  if (outcome === 'stopped') h.voice.stop();
+  ready.resolve(true); await settle(h, start);
+  assert.equal(h.mediaCalls(), 0); assert.equal(h.controls.length, 0, 'Unavailable hover playback never reaches microphone or paid session creation.');
+  assert.ok(calls.includes('stop'));
+  if (outcome !== 'stopped') assert.match(h.state().status, /click my logo/i);
+  await dispose(h);
+}
+// UI action receipts wait for the real callback and suppress duplicate writes.
+{
+ const result=deferred();const h=setup({onActionResult:()=>result.promise});await connect(h);
+ const socket=h.control(),event={type:'pondster.action',action:{menu:'Design',image:'vote'},actionId:'synthetic-vote-1'};
+ socket.receive(event);socket.receive(event);assert.equal(h.actions.length,1);assert.equal(socket.sent.filter(item=>item.type==='pondster.action.result').length,0);
+ result.resolve({status:'saved',designId:'synthetic-design'});await flush();
+ assert.deepEqual(socket.sent.filter(item=>item.type==='pondster.action.result'),[{type:'pondster.action.result',actionId:event.actionId,result:{status:'saved',designId:'synthetic-design'}}]);await dispose(h);
+}
+// Debounced complete user farewells use the normal immediate-stop/close drain.
+{
+  const h=setup();await connect(h);
+  h.peer().events.receive({type:'session.input_transcript.delta',delta:'Pondster, goodbye!',start_ms:0,end_ms:100});
+  await tick(h.clock,349);assert.equal(h.state().active,true,'Partial captions wait for the existing debounce.');
+  await tick(h.clock,1);assert.equal(h.state().active,false);assert.match(h.state().status,/Goodbye.*microphone and voice are off/);
+  assert.ok(h.tracks.every(item=>item.stopCalls>0));assert.equal(h.audio.srcObject,null);
+  assert.equal(h.control().sent.filter(event=>event.type==='pondster.stop').length,1);
+  assert.equal(h.peer().events.sent.filter(event=>event.type==='session.close').length,1);
+  assert.equal(h.transcripts.filter(([item])=>item.who==='you').length,1,'Farewell flush cannot recurse through end.');
+  const starts=h.mediaCalls();await tick(h.clock,60_000);assert.equal(h.mediaCalls(),starts,'No automatic paid restart after goodbye.');
+  const oldControl=h.control(),oldPeer=h.peer();await connect(h);
+  assert.equal(h.mediaCalls(),starts+1,'An explicit restart after goodbye gets a fresh microphone.');assert.equal(h.state().active,true);
+  oldControl.receive({type:'pondster.ended'});oldPeer.events.receive({type:'session.closed'});
+  assert.equal(h.state().active,true,'Late old-session closure cannot switch the new session off.');
+  await dispose(h);
+}
+{
+  const h=setup();await connect(h);
+  h.peer().events.receive({type:'session.output_transcript.delta',delta:'Goodbye!',start_ms:0,end_ms:100});
+  await tick(h.clock,350);assert.equal(h.state().active,true,'Pondster output cannot trigger the user-farewell detector.');
+  for(const text of ['Thanks','Do not stop listening','What does "goodbye" mean?','Goodbye, show me the kitchen']) {
+    h.peer().events.receive({type:'session.input_transcript.delta',delta:text,start_ms:1000,end_ms:1100});
+    await tick(h.clock,350);assert.equal(h.state().active,true,text);
+  }
+  h.peer().events.receive({type:'session.input_transcript.delta',delta:'Goodbye',start_ms:2000,end_ms:2100});
+  await tick(h.clock,100);
+  h.peer().events.receive({type:'session.input_transcript.delta',delta:', can you show the kitchen?',start_ms:2100,end_ms:2400});
+  await tick(h.clock,350);assert.equal(h.state().active,true,'One longer request is classified only after its final buffered text.');
+  await dispose(h);
+}
+{
+  const h=setup();await connect(h);
+  h.peer().events.receive({type:'session.input_transcript.delta',delta:'Bye for now',start_ms:0,end_ms:100});
+  h.voice.stop();assert.equal(h.state().active,false,'Explicit stop can flush a pending farewell without recursive end.');
+  assert.equal(h.control().sent.filter(event=>event.type==='pondster.stop').length,1);
+  await dispose(h);
+}
+{
+  const h=setup();await connect(h);
+  h.peer().events.receive({type:'session.input_transcript.delta',delta:'See you later',start_ms:0,end_ms:100});
+  h.peer().events.receive({type:'session.input_transcript.delta',delta:'A later utterance',start_ms:2000,end_ms:2100});
+  assert.equal(h.state().active,false,'A gap-finalized farewell stops before another caption can create a new timer.');
+  await dispose(h);
+}
+
+console.log('PASS: explicit farewell shutdown; Live lifecycle;30s measured quiet countdown; no active conversation cutoff; PCM cleanup; unavailable-meter stop; hover playback gate; trusted tour action; cancellation and10s finalization; no devices/network.');

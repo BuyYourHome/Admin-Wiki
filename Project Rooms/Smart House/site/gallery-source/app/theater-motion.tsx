@@ -1,9 +1,10 @@
 import ScrollVideo from './scroll-video';
+import type {GalleryMediaControlsProps} from './gallery-media-controls';
 
-export default function TheaterMotion() {
+export default function TheaterMotion({media}:{media?:GalleryMediaControlsProps}) {
   return <figure className="media-feature theater-media-feature">
     <div className="media-feature-intro"><div><p className="eyebrow">MY HOME THEATRE / IN MOTION</p><h3>My screen comes alive. My stairs light the way.</h3></div><span>MY 12-SECOND CONCEPT FILM</span></div>
-    <ScrollVideo label="My Home Theatre and spiral staircase" ratio="1672 / 940">
+    <ScrollVideo label="My Home Theatre and spiral staircase" ratio="1672 / 940" media={media}>
       <video controls autoPlay muted playsInline loop preload="metadata" poster="/media/theater-stair-lights-poster.jpg" aria-label="My Home Theatre concept: moving football on my screen and sequential amber lights on my black spiral staircase" aria-describedby="theater-motion-caption">
         <source src="/media/theater-football-sequential-stair-lights.mp4" type="video/mp4"/>
         Your browser can’t play my video here. <a href="/media/theater-football-sequential-stair-lights.mp4">Open my video file</a>.

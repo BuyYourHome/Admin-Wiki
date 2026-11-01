@@ -1,6 +1,30 @@
 # Pondster natural voice integration
 
-## Current verified result — 2026-10-27
+## Current verified result — 2026-10-28
+
+Version 75 applies Wes’s approved 100-start rolling 24-hour allowance to the site and matching browser limit. Public browser inspection after publication shows the daily-cap banner cleared and Talk naturally available, with Voice off. Real in-memory SQLite boundary/admission tests, TypeScript, build and secret checks passed. Existing rows, uncertainty fences, cooldown, concurrency, 30-second silence stop and uncapped ongoing conversation remain unchanged; no microphone or paid test was started. See [[Project Rooms/Smart House/working/voice-start-limit-20261028]].
+
+Version 74 fixes the reported HVAC wording gap. Plain requests for HVAC information now reveal True Service’s Contact card, including H V A C/H.V.A.C./H-vac spellings; explicit system/feature plans stay in Explore. Public typed-browser verification and Guide/context, TypeScript, build and secret checks passed. The fresh spoken retest is blocked by the existing site-wide 20-start rolling cap; no cap, session record, key or billing change was made. See the version 74 evidence in [[Project Rooms/Smart House/working/voice-section-navigation-20261028]].
+
+Version 73 adds validated section/card destinations throughout the public site. Matched contact, room, feature and document questions delegate a precise reveal; other conversation remains direct, and a visual keyword miss preserves known public facts. Browser checks verified the GC card on public Pondstr.com and room/plan details locally with voice off. Server/client/context mocks, destination/UI regressions, TypeScript, build and secret checks passed. No new microphone/provider session was started; fresh natural spoken section navigation remains pending. End an old conversation and refresh/start a new one to use the new context. See [[Project Rooms/Smart House/working/voice-section-navigation-20261028]].
+
+Version 72 is published with direct answers from authored public facts and future plans, summary-only proposed room relationships, scoped unknown details and the requested “Can you show me around the house?” tour phrase. Explicit website actions still delegate and wait for confirmation. Guide/context regressions, mocked server/SQLite checks, TypeScript, build and secret checks passed. The approved key, Vesper, model and existing voice lifecycle remain unchanged. A new audible trial remains unverified; refresh and begin a new conversation to load the updated session context. See [[Project Rooms/Smart House/working/pondster-house-knowledge-20261027]].
+
+The version 70 baseline includes hover activation, a live header/tagline, measured30-second quiet countdown, explicit farewell shutdown and no three-minute application cutoff during active conversation. Browser playback must be ready before capture or paid session creation; the quiet meter uses fresh PCM and fails closed with a clear health message if measurement is unavailable. Tour and public contractor/Belong knowledge are updated. All focused checks/build/privacy scans passed; the actual version70 spoken quiet/hover/tour result remains pending. See [[Project Rooms/Smart House/working/voice-hover-quiet-and-contact-20261027]].
+
+## Earlier release evidence
+
+Version 68 removed the failing optional model-information startup gate. Wes subsequently confirmed speech, then reported Voice on while quiet followed by the three-minute-ended message. Request aca140ab-2ec7-4b15-bdab-1ecd886f7fb7 closed with179 seconds of confirmed usage. This verifies that release's speech/finalization and old ceiling; its quiet cutoff failed. The version70 follow-up supersedes that behavior. See [[Project Rooms/Smart House/working/voice-start-metadata-gate-20261027]].
+
+Version 67 is published with Contact, voice-only logo activation and the exact tagline **A Home You can Relate to. Talk to me!** The same browser had reached the former four-start rolling 24-hour allowance; four provider-confirmed closed conversations explained the later blocked logo clicks. The browser allowance now matches the unchanged site-wide limit of 20 starts per rolling 24 hours. Cooldown, active-session and unknown-outcome fences remain intact, and the header shows the actual fixed reason when a start is blocked. No records, cookies, credentials or billing were reset. Public read-only checks passed. The fresh spoken confirmation and finalization are recorded below; the separate 30-second quiet test remains pending. See [[Project Rooms/Smart House/working/voice-browser-limit-fix-20261027]] and [[Project Rooms/Smart House/working/contact-and-voice-idle-20261027]].
+
+Wes subsequently confirmed **Pondster now speaks** after refreshing version 67 and clicking the signature. Request `e3d34401-b6a5-4a67-b0a1-3ff79853bf14`, created `2026-10-27T21:19:37.935Z`, received a provider ID and closed with 23 seconds of provider-confirmed usage. This verifies audible logo activation and clean finalization for the fresh trial. The initial version 66 report was retracted and is not proof. The 30-second silence monitor passed mocks but the separate real quiet test remains pending; the 23-second trial does not establish its timing.
+
+Version 65 adds a trusted greeting on explicit Natural conversation startup, plus a short Browser voice greeting and a hover invitation. The application sends one server-owned greeting after provider readiness; hover, ordinary Ask and passive panel opening start no audio or microphone. Current post-publication status is available. Wes confirmed: Yes, Pondster greets me first. Native request 16723377-bc0a-40b9-b058-4541fd859618 received a provider ID and closed with 94 seconds of provider-confirmed final usage (final_usage_confirmed=1). This verifies the fresh Vesper greeting and clean closure for this trial. See [[Project Rooms/Smart House/working/deck-and-logo-greeting-20261027]].
+
+Current default voice: **Vesper** (British masculine), published in Sites version 64 at Wes's direction. It applies to new Natural conversation sessions. The earlier audible confirmations below used Marin; no automated Vesper microphone test was performed.
+
+Wes selected **Vesper (British masculine)** on 2026-10-27 as the intended default for new Natural conversation sessions. The initial successful audible tests used Marin. Voice is fixed at session startup, so hearing a changed default requires a new session.
 
 Natural voice is working in external Chrome. Wes confirmed **“I hear a natural spoken answer”** after refreshing Pondstr.com and starting Natural conversation through the logo. The new production request `fee59c3f-99f8-4d74-a324-dfabb254d82c` has a provider ID, state `closed`, `usage_seconds = 15` and `final_usage_confirmed = 1`. This proves an audible conversation and confirmed closure for this test; interruption and other browsers were not newly tested.
 
@@ -106,3 +130,28 @@ Version 36 implemented Wes's video-first clarification: one scene per populated 
 ## Official references reviewed
 
 [WebRTC setup](https://developers.openai.com/api/docs/guides/voice-webrtc), [session creation](https://developers.openai.com/api/reference/resources/live/methods/create), [trusted server controls](https://developers.openai.com/api/docs/guides/voice-server-controls), [delegation](https://developers.openai.com/api/docs/guides/live-delegation), [conversation events](https://developers.openai.com/api/docs/guides/live-conversations), [prompting](https://developers.openai.com/api/docs/guides/live-prompting), [GPT-Live model](https://developers.openai.com/api/docs/models/gpt-live-1), [latency and cost](https://developers.openai.com/api/docs/guides/voice-latency-cost), and [Cloudflare WebSockets](https://developers.cloudflare.com/workers/runtime-apis/websockets/).
+
+
+## Navigation-first guidance — 2026-10-28, version 76
+
+Wes requested public destination reveals before narration. Both Browser and natural voice now use short acknowledgments after a validated public action; explicit spoken-reading requests retain the full safe answer. Full written answers remain available. Cary, North Carolina is public, while the exact address remains private. See [[Project Rooms/Smart House/working/navigation-first-and-cary-20261028]] and the later [[Project Rooms/Smart House/working/visitor-conversations-and-gallery-voice-20261028]].
+
+
+## Current visitor memory, restart and gallery behavior — 2026-10-28, version 77
+
+Vesper remains selected by Wes. First-use saving choice/disclosure is solely in Voice controls, with private text/name memory for at most 90 days and no website audio recording. A returning browser gets a first-name welcome without another spoken introduction. Current records are not imported into house facts or owner authority. Confirmed closed calls can restart immediately; failure backoff, rolling100 allowance and uncertain-session fences remain. Guided gallery requests open their first picture and give a brief vote/change-vote reminder; next/previous/first/close commands use the same validated public action path. The 30-second quiet monitor and no-three-minute-cutoff behavior are unchanged. Version 77 is public, with mocked/storage/UI verification and a fresh live microphone test pending. See [[Project Rooms/Smart House/working/visitor-conversations-and-gallery-voice-20261028]].
+
+
+## Current defaults and shared picture navigation — version 78, 2026-10-28
+
+Text saving is now on by default with an opt-out solely in Voice controls. Existing private preferences remain off; default creation is not recorded as explicit consent. A new caller hears the softer “How would you like me to address you?” wording. Offered names that match public contacts are handled in the collection context. A narrow direct gallery fallback covers all gallery pictures when delegation is omitted and prevents a delayed duplicate reset. Thirty-second quiet behavior, Vesper and rolling100 starts remain. Fresh browser/microphone checks are pending after browser-control timeouts. See [[Project Rooms/Smart House/working/voice-defaults-gallery-navigation-and-garage-v3-20261028]].
+
+
+## Gallery controls and startup revision — version 79
+
+Live 2026-10-28. Starting voice stays on the current page; modal images and gallery films expose Start/Stop voice and Voice controls locally. Voice controls reveal Contact’s fixed voice section. A matching browser revision is required before reserving or creating a call; when this visitor expects text saving, a missing recorder blocks startup. History initializes before provider creation. Empty production conversation records from the earlier check are not recovered or claimed saved; the next refreshed real call still needs owner-only capture confirmation. No voice/model/key, audience or hardware-control changes. See [[gallery-controls-and-recording-startup-20261028]].
+
+
+## Current public controls — version 81
+
+Explicit current-picture voting and enlargement are voice operable. Saved-vote narration waits for an actual saved-choice result. Website controls share visible-label matching for Natural conversation and Browser voice; ambiguity can use the full label or first/second numbering. Hidden/inert/disabled/read-only controls are excluded; modal and expanded-video scope takes precedence. Tour voice controls are inside the tour and starting the tour no longer ends an ongoing voice session. Browser gesture restrictions remain enforced. Goodbye still shuts voice off, and a click immediately after a hover start no longer toggles it straight off. The prior refreshed gallery test created a completed natural-conversation record with text from both sides, verified through owner-only records; earlier missing text is not recovered. Current browser/spoken testing is pending. See [[site-wide-voice-controls-and-logo-20261028]] and [[spoken-gallery-voting-enlargement-and-restart-20261028]].

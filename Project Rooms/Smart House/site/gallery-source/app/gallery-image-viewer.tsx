@@ -2,10 +2,12 @@
 
 import { useEffect, useId, useRef, type KeyboardEvent } from 'react';
 import { galleries, type Design } from '../lib/designs';
+import { designImageSource, galleryPictures, movePicture, pictureIndex, pictureSelection } from '../lib/design-views';
+import GalleryMediaControls,{type GalleryVoiceControls} from './gallery-media-controls';
 
-type Props = { design: Design | null; onChange: (design: Design) => void; onClose: () => void };
+type Props = { design: Design | null; onChange: (design: Design) => void; onClose: () => void; expanded?:boolean;onExpandedChange?:(expanded:boolean)=>void;voting?:{selected:string|null;disabled:boolean;saving:boolean;onVote:(id:string)=>void;message?:string};voice?:GalleryVoiceControls };
 
-export default function GalleryImageViewer({ design, onChange, onClose }: Props) {
+export default function GalleryImageViewer({ design, onChange, onClose, voting,voice,expanded=false,onExpandedChange }: Props) {
   const dialog = useRef<HTMLDialogElement>(null);
   const closeButton = useRef<HTMLButtonElement>(null);
   const opener = useRef<HTMLElement | null>(null);
@@ -15,8 +17,9 @@ export default function GalleryImageViewer({ design, onChange, onClose }: Props)
   // A notebook image can share its filename with another room. Its unique
   // voting ID, rather than the currently selected room, identifies this gallery.
   const gallery = design ? galleries.find(item => item.designs.some(itemDesign => itemDesign.id === design.id)) : undefined;
-  const pictures = gallery?.designs ?? (design ? [design] : []);
-  const index = design ? pictures.findIndex(picture => picture.id === design.id) : -1;
+  const pictures = galleryPictures(gallery?.designs ?? (design ? [design] : []));
+  const index = design ? pictureIndex(pictures, design) : -1;
+  const picture = pictures[index];
   const canBrowse = pictures.length > 1 && index >= 0;
 
   function restoreFocus() {
@@ -45,7 +48,7 @@ export default function GalleryImageViewer({ design, onChange, onClose }: Props)
 
   function advance(direction: -1 | 1) {
     if (!canBrowse) return;
-    onChange(pictures[(index + direction + pictures.length) % pictures.length]);
+    onChange(pictureSelection(pictures[movePicture(index, direction, pictures.length)]));
   }
 
   function onKeyDown(event: KeyboardEvent<HTMLDialogElement>) {
@@ -58,19 +61,18 @@ export default function GalleryImageViewer({ design, onChange, onClose }: Props)
     advance(event.key === 'ArrowLeft' ? -1 : 1);
   }
 
-  return <dialog ref={dialog} className="lightbox gallery-image-viewer" aria-labelledby={titleId} aria-describedby={descriptionId}
+  return <dialog ref={dialog} className={`lightbox gallery-image-viewer${expanded?' is-maximized':''}`} aria-labelledby={titleId} aria-describedby={descriptionId}
     onKeyDown={onKeyDown} onCancel={event => { event.preventDefault(); onClose(); }} onClose={() => { restoreFocus(); onClose(); }}>
     {design && <>
       <header className="gallery-viewer-toolbar">
         <div className="gallery-viewer-heading"><p className="eyebrow">MY {gallery ? `${gallery.name.toUpperCase()} GALLERY` : 'DESIGN IMAGE'}</p><h2 id={titleId}>{design.title}</h2></div>
+        {onExpandedChange&&<button type="button" className="gallery-viewer-close" onClick={()=>onExpandedChange(!expanded)}>{expanded?'Restore size':'Enlarge'}</button>}
         <button ref={closeButton} type="button" className="gallery-viewer-close" onClick={onClose} aria-label="Close image">Close <span aria-hidden="true">×</span></button>
       </header>
-      <div className="gallery-viewer-image"><img key={design.id} src={`/concepts/${design.image}`} alt={`My AI design concept: ${design.title}`} decoding="async" /></div>
-      <div className="gallery-viewer-navigation" role="group" aria-label="Gallery picture navigation">
-        <button type="button" disabled={!canBrowse} onClick={() => advance(-1)} aria-label={`Previous picture${gallery ? ` in ${gallery.name}` : ''}`}><span aria-hidden="true">←</span> Previous</button>
-        <p className="gallery-viewer-counter" role="status" aria-live="polite" aria-atomic="true"><span className="gallery-viewer-announcement">{design.title}. </span><span>{gallery?.name ?? 'My design'}</span><strong>Picture {index + 1} of {pictures.length}</strong></p>
-        <button type="button" disabled={!canBrowse} onClick={() => advance(1)} aria-label={`Next picture${gallery ? ` in ${gallery.name}` : ''}`}>Next <span aria-hidden="true">→</span></button>
-      </div>
+      <div className="gallery-viewer-image"><img key={`${design.id}:${picture?.image ?? design.image}`} src={designImageSource(picture?.image ?? design.image)} alt={`My AI design concept: ${design.title}${design.views?.length ? `, ${picture?.label ?? ''}` : ''}`} decoding="async" /></div>
+      <GalleryMediaControls name={gallery?.name??'My design'} canBrowse={canBrowse} onPrevious={()=>advance(-1)} onNext={()=>advance(1)} voice={voice}
+        counter={<><span className="gallery-viewer-announcement">{design.title}. {design.views?.length ? `${picture?.label ?? ''}. ` : ''}</span><span>{gallery?.name??'My design'}{design.views?.length?` · ${picture?.label??''}`:''}</span><strong>Picture {index+1} of {pictures.length}</strong></>}
+        vote={voting?<><button type="button" className="vote-button" disabled={voting.disabled||voting.selected===design.id} aria-pressed={voting.selected===design.id} onClick={()=>voting.onVote(design.id)}><strong>{design.title}</strong><small>{voting.saving?'I’m saving…':voting.selected===design.id?'✓ Your choice':voting.selected?'Change your vote':'Vote for my design'}</small></button><span>I keep one choice per gallery. You can change your vote.</span>{voting.message&&<span role="status">{voting.message}</span>}</>:undefined}/>
       <p className="gallery-viewer-caption" id={descriptionId}>I’m showing an AI concept for my design, not a measured plan or a photo of completed work.</p>
     </>}
   </dialog>;

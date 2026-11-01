@@ -597,3 +597,210 @@ The verified temporary operation is removed. Admission is read-only again, with 
 Final https://pondstr.com/api/voice/status returned HTTP 200 and available=true. Native reread preserved all four previously verified rows and showed one additional conversation closed with 43 seconds of confirmed final usage. This additional provider completion is not a separately observed audible test. There are no active or unconfirmed reservations in that five-row snapshot. No automated microphone/provider voice test was run.
 
 Final server regressions and no-emit TypeScript passed. Production builds and the 170-file private secret scan passed. An expired source-push credential caused one upload rejection; local commits were preserved, publishing access renewed, and the same source rebuilt and successfully pushed/packaged by the official helper. No force push or credential exposure occurred. Four final text sources were mirrored and hash-verified in gallery-source. Browser automation remained unavailable; Wes's actual Chrome answer and native provider-finalization record establish the successful spoken result.
+
+## Vesper natural voice — version 64, 2026-10-27
+
+Wes directed, “change it to Vesper.” The fixed server-owned default changes from marin to vesper, with the existing context assertion updated to match. The official OpenAI voice table identifies Vesper as British, masculine English: https://developers.openai.com/api/docs/guides/live-conversations#voice-options . The new default applies when a new Natural conversation session starts. Historical Marin test evidence is preserved.
+
+- Source: `978288608a3e640d7b9cce1467811e47e4ea12c4`.
+- Saved version: `appgprj_6ad4d98e08708191858cab113814704e~appgver_c7ed692d59548191bf17cdc9e8580300`, version **64**.
+- Deployment: `appgdep_6ae1011beab08191ae350017812ea42f`, succeeded `2026-10-27T19:53:10.391512Z`, environment revision **4**.
+- Archive: `sha256:d050b89c213cfcbb663def9c5e5ea0d5e1b21e014de0ba6e5746a7b17907b3ca`, 121 files, 54,077,440 bytes.
+
+The existing voice-context check, production build, source diff check and 170-file private secret-absence scan passed. Source review confirmed exactly the default and its existing assertion changed. Two text mirrors match the independent checkout. The existing approved API key is reused. Model, instructions, public scope, delegation, lifecycle, limits and audience remain unchanged.
+
+The custom-domain status endpoint returned HTTP 200 and available=true after publication. This confirms availability, not an audible Vesper test. No microphone, provider voice session, production vote/comment write, key change or billing action was performed by Codex. Opening the production page in Codex returned queued. The user should refresh https://pondstr.com and start a new natural conversation to hear Vesper.
+
+## Two-view Back Deck choice and logo greeting — version 65, 2026-10-27
+
+Wes selected one voting choice with two deck views and asked Pondster to speak first after logo activation. Back Deck now has Oak courtyard deck (oak-courtyard), with an overview and closeup sharing one vote. Card controls and the lightbox browse both pictures; Explore and the automatic tour use the overview. The catalog has 31 choices across nine galleries, and the tour has seven scenes with three films.
+
+A new Natural conversation seeds trusted developer greeting instructions and sends them once through the server sideband after a fixed browser startup acknowledgement. Vesper and existing permission/lifecycle/usage fences remain. Explicit Browser voice start greets with synthesis recognition pause/resume. Hover only shows the native invitation. The chat introduction says voice and persona. The startup greeting is model-generated; provider acceptance alone does not prove audible playback. Wes confirmed: Yes, Pondster greets me first. Native request 16723377-bc0a-40b9-b058-4541fd859618 received a provider ID and closed with 94 seconds of provider-confirmed final usage (final_usage_confirmed=1). This verifies the fresh Vesper greeting and clean closure for this trial.
+### Release identity
+
+- Source: `3f679988b8e1a164fd49a27b6520d3eb554c8e6a`.
+- Saved version: `appgprj_6ad4d98e08708191858cab113814704e~appgver_905826905abc8191aabd0e68690ac40a`.
+- Deployment: `appgdep_6ae10951d3d48191bf95ec7ac739ecd9`, succeeded `2026-10-27T20:28:13.646080+00:00`, environment revision **4**.
+- Archive: `sha256:2dd0836a153a6b34179ec925fbd0868b3c779b0da2cd1553ec45fb4b248977f6`, 125 files, 60467200 bytes.
+
+The official source helper pushed and packaged the verified source. Public access is preserved. No production vote/comment write, provider voice call, new key or billing action was performed by Codex. Opening the public page in Codex returned queued. Source PNG chunk inspection found no text/EXIF chunks and no private location/path strings in the overview provenance chunk; original provenance remains intact.
+
+## Contact, voice-only logo and quiet detection — version 66, 2026-10-27
+
+Wes requested a 30-second quiet timeout, logo activation without opening the dialog, a Contact menu for text/voice and existing public contacts, and the exact tagline A Home You can Relate to. Talk to me! Menu order is Design, Explore, View, Belong, Contact, Built By; View remains default and legacy Own/Manage aliases remain compatible. Contact has saved public comments using the existing table; no migration was needed. Voice can remain active while the Contact child is hidden, with existing stop, Escape, tour and hidden-tab cleanup.
+
+- Source: `6c733c5d13186982276e2b07b7e1de504b3cb0d9`.
+- Saved version: `appgprj_6ad4d98e08708191858cab113814704e~appgver_1766eac5e9888191994e5a527b2af5e1`, version **66**.
+- Deployment: `appgdep_6ae110a3a47c81918136bff480b51dc0`, succeeded `2026-10-27T20:59:29.149434+00:00`, environment revision **4**.
+- Archive: `sha256:1c2c2fc54a4eb84876db4cf6375436ac99ce026dfd2c2662a8eba5b7a14fcda6`, 125 files, 60,497,920 bytes.
+
+Focused natural/browser voice, Contact/navigation/context/comments and React static-render checks passed, along with TypeScript, production build, diff and 178-file secret scan. Natural quiet detection uses fresh bidirectional WebRTC audio statistics; missing metrics are not counted as silence. The interface reports unavailable measurement honestly and retains the three-minute ceiling. The real 30-second quiet test remains unverified. Wes retracted his initial successful logo-test report and said the click produced no answer. Four same-browser closed conversations were at the former browser allowance; no new provider start followed this release. See [[Project Rooms/Smart House/working/contact-and-voice-idle-20261027]].
+
+## Browser allowance and visible voice feedback — version 67, 2026-10-27
+
+The browser allowance now matches the unchanged site-wide limit of 20 starts per rolling 24 hours. Atomic reservation and read-only admission use equivalent predicates. Fixed messages distinguish daily limit, cooldown, active conversation, pending/service check and database failure, and the header preserves the reason after an explicit attempt. The 60-second cooldown, two global concurrent conversations, one per browser, unknown-outcome handling and three-minute ceiling remain unchanged. No rows or cookies were reset.
+
+- Source: `35a5efbbeaecb32961ab458a799da7e578b70845`.
+- Saved version: `appgprj_6ad4d98e08708191858cab113814704e~appgver_065619cee52881919074e7eb007f0b77`, version **67**.
+- Deployment: `appgdep_6ae1147e0fd0819188bd228ef9b928cb`, succeeded `2026-10-27T21:15:51.374288+00:00`, environment revision **4**.
+- Archive: `sha256:c4759a140a332241a2170c795feda930230a823ac154bc442140752c47ad2946`, 125 files, 60,497,920 bytes.
+
+Server mocks and real-SQLite equivalence passed, including four closed attempts followed by an allowed fifth, 19/20 boundaries, unchanged cooldown/concurrency/unknown fences and fail-closed malformed/database cases. Independent review, TypeScript, production build, diff and the 178-file secret scan passed. Public homepage and anonymous voice status returned HTTP 200 with Contact/tagline present and anonymous availability true; this does not prove user-specific admission or audible behavior. Opening the site in Codex returned queued. Wes subsequently confirmed Pondster now speaks after refreshing and clicking the signature. Fresh request e3d34401-b6a5-4a67-b0a1-3ff79853bf14 closed with 23 seconds of provider-confirmed final usage. The separate real 30-second quiet test remains pending. Matching text sources are mirrored in gallery-source. No provider voice call, capture, vote/comment write, key change, billing action or device operation was performed by Codex. See [[Project Rooms/Smart House/working/voice-browser-limit-fix-20261027]].
+
+## Voice startup independent of optional model metadata — version 68, 2026-10-27
+
+Wes reported another voice failure after the verified version 67 trial. Hosted diagnostics at 21:22:04.944Z recorded a received model-information HTTP 500, with no allowlisted code or valid upstream request ID. Later hosted checks remained unavailable while the same approved key returned HTTP 200/ready from a read-only local metadata check. No new voice-session row followed the failed preflight. The upstream origin and a service-wide outage are not established.
+
+Startup now requests ordinary /api/voice/status, retaining configuration and session admission before microphone access. The actual voice connection remains subject to atomic reservation and existing create/attach/finalization handling. The separate opt-in model diagnostic stays available. No automatic session-create retry, quota change, unknown-outcome release, key change or billing action was added.
+
+- Source: `312b155de529e107cdc6cb3f83f1aa28483c3667`.
+- Saved version: `appgprj_6ad4d98e08708191858cab113814704e~appgver_949cbfc1d35c8191a0bfa6c4ffaef502`, version **68**.
+- Deployment: `appgdep_6ae117df09a081918aab2e2886d093c2`, succeeded `2026-10-27T21:30:16.258459+00:00`, environment revision **4**.
+- Archive: `sha256:9b1cbe0ddc8d8c5d7ad34101ad053d0eacae289d6c1b6394ed7cfbabd6079ed6`, 125 files, 60,497,920 bytes.
+
+Lifecycle regressions, including exact ordinary admission URL, TypeScript, production build, independent review, diff and 178-file secret scan passed. Public homepage and ordinary admission returned HTTP 200, Contact and tagline remained present, and anonymous admission was available. These checks do not establish user-specific admission, audible speech or the real 30-second quiet timeout. A fresh user trial was requested after publication and remains pending. Opening the site in Codex returned queued. Two text mirrors match the hosted source; no binary, secret, provider voice-session call or microphone capture was introduced. See [[Project Rooms/Smart House/working/voice-start-metadata-gate-20261027]].
+
+## Hover voice, quiet/farewell shutdown, contacts and deck — version 70, 2026-10-27
+
+Wes confirmed version68 speech but its quiet test reached the old three-minute ceiling; that trial closed with179 seconds of confirmed usage. He explicitly requested30 seconds of silence only, with no180-second active-conversation cutoff. Version70 uses fresh browser PCM, a visible countdown and explicit farewell shutdown, retains setup/cleanup/usage/unknown-state guards, and removes both application duration caps. Hover starts once after500ms, with cancellation and no stationary-pointer restart; browser playback readiness gates capture and paid creation. The live header background and exact active tagline are A home You can Relate to - I'm listening! Click/tap remains a toggle.
+
+Contact is last: Design, Explore, View, Belong, Built By, Contact. It lists Glasgow Design Build, True Service and Executive Plumbing Company with official website links verified from primary sources. Guide/context know those roles and the public Belong drawing. Spoken virtual-tour requests create one validated action that starts the existing tour and ends voice. New Barn door stain wide/close-up images replace the deck views, retaining oak-courtyard voting ID, one choice/two views and previous votes. Belong links the preliminary PDF with only private-address footer text/metadata removed; all structural pixels outside the footer were unchanged. No Wiki binary copy or new database migration was added.
+
+- Source: `6036d1ee845e84caa286f8ec4219628a3d1fd84c`.
+- Saved version: `appgprj_6ad4d98e08708191858cab113814704e~appgver_f0435ba8e70c8191a61f9a023733d240`, version **70**.
+- Deployment: `appgdep_6ae128a636408191908ea0864771a9a6`, succeeded `2026-10-27T22:41:54.602454+00:00`, environment revision **4**.
+- Archive: `sha256:90798bbc985d78d0c48c1e85737ae90d4ef251a95f260ed7e309eb96353f3179`, 128 files, 66,406,400 bytes.
+
+The intermediate version69 was saved only, never deployed. Final intent/client/server/SQLite/guide/context/navigation/hover/image/tour checks, Contact static rendering, TypeScript, build, diff and183-file secret scan passed. The two-page PDF passed decoded-object/stream/byte privacy scans and Poppler visual/pixel verification. Public homepage/menu/trade links and admission returned HTTP200; new PNG/PDF assets have exact approved hashes and correct MIME types. Browser automation was unavailable; opening the page returned queued. Fresh actual voice/quiet/tour/farewell verification is pending a user trial; no automated paid session or microphone capture occurred. No new key, billing, purchase, vote/comment write, device action or audience change occurred. Detailed authority, hashes and verification: [[Project Rooms/Smart House/working/voice-hover-quiet-and-contact-20261027]].
+
+## Contact conversation last — version 71, 2026-10-27
+
+Wes requested Talk to me as the final Contact-page section. The page now orders public people/company details, trade contacts, Contact comments, then the single voice/text Guide. Comments remain keyed to contact and render once; the hidden Guide remains mounted for off-page voice. Contact navigation no longer automatically jumps to the bottom input, while explicit Ask/Talk/Voice controls retain their focus shortcut. Responsive cards/comments spacing follows the new layout; no controller/provider/billing or data-storage change was made.
+
+- Source: `070635d51f6162514146ce92e4cbec8d7ae25ba3`.
+- Saved version: `appgprj_6ad4d98e08708191858cab113814704e~appgver_75681b5b95dc8191a1d019f296f61862`, version **71**.
+- Deployment: `appgdep_6ae12f7d68888191b30d630288949566`, succeeded `2026-10-27T23:11:03.009345+00:00`, environment revision **4**.
+- Archive: `sha256:e2e7221d21de892749bd9532ed52589730891c518c2f6c5fdee725214f937474`, 128 files, 66,406,400 bytes.
+
+Static Contact rendering, the existing navigation/hover suite, independent focus review, TypeScript, build, diff and183-file secret checks passed. Public HTTP200 markup confirms contact sections before the bottom conversation; active comments order is verified by static render. Four source mirrors match. Opening the page in Codex returned queued; no fresh browser visual or voice behavior is claimed. See [[Project Rooms/Smart House/working/contact-conversation-last-20261027]].
+
+## Public house answers and visible gallery selection — version 72, 2026-10-27
+
+Wes reported excessive unverified-answer refusals and supplied “Can you show me around the house?” as an example. Natural voice now answers authored public facts and plans directly; requested navigation, lighting illustrations and tours still delegate and wait for the guide's action. The bounded guide covers ordinary room/system questions, selected manual mount information and proposed floor-plan relationships without treating broad nouns as unknown specifications. Public first-floor labels do not establish whole-house bedroom/bathroom counts. Private location/access, unavailable pricing/equipment records, simulated showing and live-control boundaries remain.
+
+Wes then authorized automatic gallery reveal after discussing the below-screen selection problem. Deliberate changed-room selections scroll the selected heading and beginning of the first visible visual below the actual fixed header when needed. Visible content stays still; reduced motion uses the normal non-smooth path. Native focus, saving guards, pressed-state highlight, votes/catalog and menu order are preserved. Pending/stale animation frames and navigation are canceled; initial rendering and result refreshes do not request scrolling.
+
+- Source: `bc2b6e8b1029d975d2b39c7f7871f6d692543d6b`.
+- Saved version: `appgprj_6ad4d98e08708191858cab113814704e~appgver_29bf7c2e0a1c81919306aa33de0e17b9`, version **72**.
+- Deployment: `appgdep_6ae151ea470081919673025b4c72a831`, succeeded `2026-10-28T01:37:54.902504+00:00` (October 27 Eastern), environment revision **4**.
+- Archive: `sha256:2c462b3a169660bfc7f8f58cf47f891583f967b7cc8592ee51c9272bedccdcda`, 128 files, 66,437,120 bytes.
+
+Guide/context, actual gallery selection/effect doubles, Contact/navigation and mocked server/real-SQLite checks passed. Independent knowledge/privacy and scroll review passed. Final TypeScript, production build, diff and 184-file source/build secret checks passed. Seven source text mirrors match. The earlier in-progress build was stopped after the new gallery request; only the complete final build was packaged. No microphone, paid voice request, key, billing, session-row, vote or comment change was made. Fresh Chrome interaction/spoken behavior remains unverified.
+
+See [[Project Rooms/Smart House/working/pondster-house-knowledge-20261027]] and [[Project Rooms/Smart House/working/design-gallery-visibility-20261027]].
+
+## Precise section and card navigation — version 73, 2026-10-28
+
+Wes requested that voice requests reveal the relevant section throughout the site, after reporting that the Living Room gallery scroll works but the GC question only opens Contact. Shared allowlisted destinations now flow through Guide, trusted server/client actions and the page reveal handler. Public targets cover all six pages, individual trade contacts, room features, selected proposed plan rooms, systems, viewing, public documents and owner-guide previews. Native room details open before measurement; plan selection waits for its rendered marker. Repeated requests, stale work, reduced motion, focus and actual fixed-header geometry are handled without replaying on votes or ordinary rendering. Existing tours retain their one-shot/start/voice-stop behavior.
+
+- Source: `4780d6bf76dfa28450723ee06e46dc4362085d38`.
+- Saved version: `appgprj_6ad4d98e08708191858cab113814704e~appgver_fe795798d78081919f88491c15c58f0b`, version **73**.
+- Deployment: `appgdep_6ae1dc1539648191978ef6bfafcb8cef`, succeeded `2026-10-28T11:27:25.243671+00:00`, environment revision **4**.
+- Archive: `sha256:f14aa93c9969bbb1f4ae799d207b7cde4f858ef9dd9d29d052d519b547ac13f7`, 128 files, 66,457,600 bytes.
+
+Destination/Guide, actual UI selection/effect, Contact/navigation, gallery geometry, server/client/context and existing design-view regressions passed. Final TypeScript, production build, diff and 185-file source/build secret checks passed. Twenty source text mirrors match. Native in-app-browser local checks confirmed GC-card reveal, Master Bath expansion and committed Pantry detail selection; a large partially visible target was corrected and rechecked directly below the header. After publication, the same GC question was submitted through the public typed guide with Voice off; its card was visibly aligned below the fixed header. These checks prove the UI path and published client action, not a fresh natural spoken round trip. No microphone, paid voice session, production vote/comment write, key, billing, audience or device-control change occurred.
+
+The current owned19082 preview was stopped; older19081 was identified as obsolete and left untouched. A new voice conversation is needed for the new prompt/client settings. The later question about all house facts was discussion only; no complete house knowledge base or private-record import was added. See [[Project Rooms/Smart House/working/voice-section-navigation-20261028]].
+
+## HVAC information phrasing — version 74, 2026-10-28
+
+Plain HVAC information requests and acronym-spacing variants now reveal the selected True Service Contact card. GC/plumber information wording is consistent; explicit HVAC system plans still reveal Explore climate information, and private/unknown-specification guards remain.
+
+- Source: `4ba0e705df0234cf3dd8231b3f7d3871304fed66`.
+- Saved version: `appgprj_6ad4d98e08708191858cab113814704e~appgver_de2da486a9008191a52c78b557c6150b`, version **74**.
+- Deployment: `appgdep_6ae1e29b49748191bd09f1f2e566c3fa`, succeeded `2026-10-28T11:55:17.246729+00:00`, environment revision **4**.
+- Archive: `sha256:25abf472fea414563bd51e39aa1f10431c7dc8c8abcb17426aca4d9cc8a3ff22`, 128 files, 66,457,600 bytes.
+
+Guide/context, final TypeScript, build, diff and 185-file source/build secret checks passed. Four text mirrors match. The exact request was verified on public Pondstr.com through typed guidance with Voice off; True Service was identified and its card visibly aligned beneath the header. Fresh speech testing remains blocked by the existing 20-start site-wide rolling cap, confirmed read-only at 11:56Z. No cap, session row, key, billing, audience, voice/model or lifecycle setting was changed. See [[Project Rooms/Smart House/working/voice-section-navigation-20261028]].
+
+## Approved 100-start voice allowance — version 75, 2026-10-28
+
+Wes selected 100 starts per rolling 24 hours after being told that a higher cap permits more paid voice sessions. The global allowance constant changes 20→100; the browser allowance continues to derive from it. Both read-only admission and atomic reservation use the same value. No stored starts or uncertain reservations are reset, and the 30-second silence timeout, ongoing conversation behavior, one-minute cooldown and concurrency/per-conversation fences remain.
+
+- Source: `972ef4394e6a1e876ef348c88bf3d19e765fb014`.
+- Saved version: `appgprj_6ad4d98e08708191858cab113814704e~appgver_5b9d288723f8819180e35f81496ab46f`, version **75**.
+- Deployment: `appgdep_6ae1e7c288c08191a5c39787969792d7`, succeeded `2026-10-28T12:17:14.968961+00:00`, environment revision **4**.
+- Archive: `sha256:2a04a11effb608c3a221195b7bb22927165dfc138fd35d3745ca9cda07806c57`, 128 files, 66,457,600 bytes.
+
+Real in-memory SQLite boundary/admission/lifecycle tests, final TypeScript, build, diff and 185-file source/build secret checks passed. Tests allow the former 20-start state, admit 100 starts and reject the 101st, and preserve exact rolling-window/cooldown/uncertain-state semantics. Two source mirrors match. Public in-app-browser inspection with Voice off confirms the old daily-cap message is absent and Talk naturally is enabled; no microphone or paid session was started. Existing user tabs remain untouched. See [[Project Rooms/Smart House/working/voice-start-limit-20261028]].
+
+
+## Navigation before narration and public Cary location — version 76, 2026-10-28
+
+Source `caf9c11545d3771a8f43e021e4d3eee24eedb790`; saved version `appgprj_6ad4d98e08708191858cab113814704e~appgver_09d718a429d88191b76c6fb1140dec06`; deployment `appgdep_6ae1ed4b4888819189b15bf5eeb6f65f` succeeded `2026-10-28T12:40:52.379168+00:00`, environment revision 4. Archive SHA256 `f69b53c9ebf5bee6589ddb9eb85f20e2bae01cd5dc5846969d009bde8a416068`, 129 files, 66,467,840 bytes.
+
+Shared public identity and speech modules give Cary/state with a private exact address, and navigate before brief spoken acknowledgments. Explicit reading keeps full safe guidance. Guide/context/speech/server/UI checks, TypeScript, build, diff and 188-file secret checks passed. Public browser inspection confirmed Cary in the title, introduction and footer with Voice off. See [[Project Rooms/Smart House/working/navigation-first-and-cary-20261028]].
+
+
+## Private visitor text history and spoken gallery browsing — version 77, 2026-10-28
+
+- Source: `b9687e60edbf33b5022556ea4cdd1e3ed1ed3a9b`.
+- Saved version: `appgprj_6ad4d98e08708191858cab113814704e~appgver_0b178b432274819189d3f3d9e3cc1501`.
+- Deployment: `appgdep_6ae1f93fe9648191b9bf15ae3c15b6ee`, succeeded `2026-10-28T13:31:56.087576+00:00`, environment revision 4.
+- Archive: `sha256:38ee10de98482c4c35ff305fd9945ccd89d5c067970ecd628477c848d62608c3`, 131 files, 66,519,040 bytes.
+
+Private schema-only migration 0003 was applied by Sites; owner-only database overview confirms pondster_visitors, pondster_conversations and pondster_conversation_events alongside the existing voting, comments and voice-session tables. Consent/private-mode, isolation, deduplication, exact natural transcript timing, expiry/deletion and actual sideband recorder tests passed in in-memory SQLite. Destination, real page action/reveal, gallery, speech, Guide/context, server lifecycle, Contact and design-view tests passed. Final TypeScript, production build, diff and 195-file secret-absence checks passed. Thirty source text mirrors match. Local browser tests confirmed an optional first name, the return greeting after reload, reset and guided Master Bath picture 1/6 with Next/Previous/Close. Public browser inspection confirmed the notice solely in Voice controls, available natural controls, Cary copy and the full-image vote/change-vote controls. No microphone, paid voice session, production transcript, vote or comment was created by these checks.
+
+The new call policy exempts only closed rows with final usage confirmed from failure backoff. It does not reset the rolling100 limit or release uncertain calls. Vesper was explicitly retained after Wes learned Arbor is not listed for this API. The owned local preview was stopped and owned QA tabs closed; existing user tabs were preserved. A refresh/new natural conversation is needed for these client/prompt changes. See [[Project Rooms/Smart House/working/visitor-conversations-and-gallery-voice-20261028]].
+
+
+## Default saving, shared picture fallback and garage v3 — version 78, 2026-10-28
+
+- Source: `c7b4b0f27e0715554a42a924f131615e4c2f7eb7`.
+- Saved version: `appgprj_6ad4d98e08708191858cab113814704e~appgver_cfb97cc29c9c8191bcebac4951ee5eaf`.
+- Deployment: `appgdep_6ae2034a20508191b8915a9ec3b1cc02`, succeeded `2026-10-28T14:14:48.540352+00:00`, environment revision 4.
+- Archive: `sha256:524fb5b9e49d36294d64d3a0233efd03d0ad80f0093a8501146b3e11423407f0`, 136 files, 74,055,680 bytes.
+
+Published at Wes’s explicit request to release the ready batch while equipment-manual work continues. The additive migration 0004 retains legacy preferences and distinguishes default_notice from explicit_save; production owner-only inspection confirms created_at, saving_enabled and preference_basis. Existing opt-outs remain off, and disabled profiles cannot append even through stale cookies or attached writers. No public transcript reader or audio storage is added. All gallery pictures share the explicit voice fallback, including Back Deck/backdeck and next/previous, with consumed-input deduplication and partial-phrase recovery. Three inspected v3 garage PNGs replace the existing IDs; pixel data is unchanged and no exact address is published in their filenames.
+
+Final TypeScript, production build, 202-file secret scan, diff and focused SQLite/initialization/Guide/context/gallery/server tests passed. Fifteen source text mirrors match; binary PNGs remain only in the independent Site source. Browser control timed out during this batch, so fresh visual and microphone/provider verification remain unperformed. No paid call or production conversation was created for these checks. The owned preview was stopped. See [[Project Rooms/Smart House/working/voice-defaults-gallery-navigation-and-garage-v3-20261028]].
+
+
+## Version 79 — gallery controls and recording startup
+
+
+Native Sites publication succeeded as version **79**, saved version `appgprj_6ad4d98e08708191858cab113814704e~appgver_4db34e8772e881918dc833050eee2886`, source `9306788f73bed46e47a51e14dab8dfe0f337bfbb`, deployment `appgdep_6ae20db12af48191a4bce765ce30aad1`, at `2026-10-28T14:59:07.956914+00:00`. Environment revision 4 and public audience are unchanged. Archive `sha256:0cba77f66e72a582e6272b731b4a604658ff6e633f4dd39790af5bb747f2e867`, 136 files / 74,065,920 bytes. Source helper pushed the matching Site source; the production archive passed the secret scan (204 text files, no key found). Source mirrors were byte-verified. Public site: https://pondstr.com; native alias: https://pondstr.coolnewt4097.chatgpt.site . Fresh real-browser/microphone validation and live text-capture confirmation remain pending; automated checks do not substitute for those.
+
+Details: [[gallery-controls-and-recording-startup-20261028]].
+
+
+## Version 81 — shared voice controls and logo
+
+Version **81** published successfully at `2026-10-28T16:00:48.293559+00:00`. Source `e318b97c3f1ee850cf9ccd31ade491d5913c7015`; saved version `appgprj_6ad4d98e08708191858cab113814704e~appgver_2f02655267b08191becef42c9cc1797f`; deployment `appgdep_6ae21c223a708191a0612d07ee40173b`; environment revision 4, public audience unchanged. Archive `sha256:3630240b826bc7a25ef9f060e54a2e63fd2950e2b64eb9385385abf078ea8637`, 136 files / 74,106,880 bytes. TypeScript, focused checks, production build and the 207-file secret scan passed. Site source was pushed by the supported helper; native publication returned succeeded. Public site: https://pondstr.com; native alias: https://pondstr.coolnewt4097.chatgpt.site.
+
+Voice enlarge/vote/restart fixes first published as version 80; see [[spoken-gallery-voting-enlargement-and-restart-20261028]]. Current scope and verification limits: [[site-wide-voice-controls-and-logo-20261028]].
+
+
+## Version 82 — exclamation-top firework origin
+
+Version **82** published at `2026-10-28T16:58:51.339390+00:00`. Source `5f31c916823759f8230f7a21fbeac9707b58732b`; saved version `appgprj_6ad4d98e08708191858cab113814704e~appgver_d8f9c3c78ae88191a325a049c612c987`; deployment `appgdep_6ae229c02d688191b2e5e16aa2b8e1ca`; environment revision 4. Archive `sha256:3a95cede504b5bd1a5e82b1c1f702a9d10bcd14e0104527b8f7db98d26e7d960`, 136 files / 74,106,880 bytes. Public audience retained. Build, whitespace check and secret scan passed; no fresh browser preview was available.
+
+CSS-only launch-point correction requested by Wes after approving the logo. Geometry and rationale: [[site-wide-voice-controls-and-logo-20261028]].
+
+
+## Version 83 — unified Explore room panel and wording
+
+Version **83** published successfully at `2026-10-28T17:39:44.812162+00:00`. Source `a402022dc231f1c3ebd788b5a7d523072d8546da`; saved version `appgprj_6ad4d98e08708191858cab113814704e~appgver_8d28907207548191be90ce98a4e756bd`; deployment `appgdep_6ae233555d9081919c73ca44b5c0dc51`; environment revision 4. Public audience retained. Archive `sha256:8e6bb606f8b59ffc48a6990a05649b2afdee4392c094089f138825d781536803`, 136 files / 74,096,640 bytes. Site source was pushed by the supported helper; native publication returned succeeded.
+
+TypeScript, actual navigation/selected-room regressions, Guide, live-context, speech and fixed-origin logo checks passed. The production build, source diff check and 207-file secret-absence scan passed. The 14 changed source text mirrors are byte-equal to the released checkout. One existing Guide test expectation was updated for the already-shipped safe website-control dispatch; no lighting behavior was changed.
+
+The selected Explore panel retains the complete room features and image, with all 19 plan spaces and nine gallery routes reachable. Supplementary selector choices preserve Front Elevation and ADU. The redundant lower room cards are removed; house features and the lighting preview remain. View’s opening Ashley sentence is removed, descriptions omit “proposed,” and fireworks have a static upper-tip source. No new rendered/browser or microphone verification was available. See [[explore-room-panel-and-copy-20261028]].
+
+
+## Version 84 — Belong equipment guides and deck-document navigation
+
+Version **84** published successfully at `2026-10-29T01:08:59.518874+00:00`. Source `49ac214c8c1bdf4cd1ed5db79575756bf9269592`; saved version `appgprj_6ad4d98e08708191858cab113814704e~appgver_a3c8e532732481919da27d58c299d39c`; deployment `appgdep_6ae29c9fc4a88191bad89bf90dcb9060`; environment revision 4. Public audience retained. Archive `sha256:7d4e3915823c45254d21820c0bf0fa14e9a310c5088eceabd34bd4f198c26a48`, 136 files / 74,117,120 bytes. The supported helper pushed the exact Site source and native publication returned succeeded.
+
+TypeScript, Guide, destinations, speech, live context, actual page navigation/reveal, and rendered equipment/Belong integration checks passed. The production build, diff check and 209-file secret-absence scan passed. All 13 changed source text mirrors were byte-verified. Public Pondstr.com browser inspection after refresh confirmed the deck PDF, both equipment cards and all six guide links, with voice off. The saved screenshot shows both guide cards and readable links. No microphone, paid voice call, live vote/comment or device operation was used.
+
+Belong now contains the eufy system support guide and recorder/camera English-containing quick-start PDFs, plus Sony’s English online Help Guide, printable guide and Operating Instructions. Original source PDFs and photos stay outside Admin Wiki Git. The existing preliminary deck structural PDF is retained. Specific deck-document questions now precede layout/gallery routing while privacy, pricing, unknown installation/configuration and ordinary deck-photo requests retain their boundaries. See [[equipment-manuals-20261028]].
