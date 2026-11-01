@@ -33,7 +33,7 @@ Help Jenny compare Medicare coverage using the prescriptions she provides and re
 ## Dedicated Chat And Skill
 
 - Chat name: Medicare.
-- Task id: pending until the dedicated chat is created.
+- Task id: `01a198bd-6bd0-7013-bd02-2b26a715e552`.
 - Execution machine: WESSTUDIO; project: `C:\Codex\Wiki Files`.
 - Skill: `C:\Codex\Wiki Files\skills\medicare\SKILL.md`.
 - Trigger: on demand or a verified authorized handoff after readiness; no automation.
@@ -42,7 +42,9 @@ Help Jenny compare Medicare coverage using the prescriptions she provides and re
 
 - Status: Pending messaging registration - not dispatchable.
 - Dispatchable: No.
-- Manifest: `C:\Codex\Wiki Files\config\pr-messaging-manifests\medicare.json` (created after exact task identity is returned).
+- Manifest: `C:\Codex\Wiki Files\config\pr-messaging-manifests\medicare.json`.
+- Exact WESSTUDIO client registration and authenticated host access verified 2026-11-01; all 12 prior registrations preserved.
+- Blocker: guarded installer 0.4.10 admits only Codex Environment, Smart House and House Render. Medicare requires worker-owner enrollment support and unattended synthetic validation. No worker configuration or synthetic record was changed/created.
 - A dedicated chat alone is not automatic email routing. Exact registration, host access, guarded enrollment and unattended synthetic lifecycle are required before delegation.
 
 ## Operating Rules

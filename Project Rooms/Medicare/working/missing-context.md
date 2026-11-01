@@ -7,4 +7,4 @@
 - Doctors/hospitals and medical coverage needs if Medicare Advantage is in scope.
 - Relevant assistance status if Jenny elects to provide it; do not request unnecessary identifiers or financial records.
 - Confirm private non-Git storage/output location and intended recipients before saving or sharing health information.
-- Dedicated chat, machine registration and unattended messaging validation.
+- Dedicated chat and machine registration completed; guarded worker enrollment and unattended messaging validation remain blocked by unsupported Medicare endpoint in installer 0.4.10.

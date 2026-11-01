@@ -10,7 +10,7 @@ description: Compare Medicare plan options using authorized prescription and cov
 - Room: `C:\Codex\Wiki Files\Project Rooms\Medicare`.
 - Skill: `C:\Codex\Wiki Files\skills\medicare\SKILL.md`.
 - Read the room README and working source inventory, conflict log and missing-context notes before comparison work.
-- Task id: pending until the dedicated chat is created. Machine: WESSTUDIO.
+- Task id: `01a198bd-6bd0-7013-bd02-2b26a715e552`. Machine: WESSTUDIO.
 
 ## Workflow
 
@@ -33,6 +33,7 @@ Return a private, evidence-backed comparison and recommendation with alternative
 - Status: Pending messaging registration - not dispatchable.
 - Dispatchable: No.
 - Manifest: `C:\Codex\Wiki Files\config\pr-messaging-manifests\medicare.json`.
+- Exact client registration and host access verified 2026-11-01. Installer 0.4.10 does not admit Medicare; worker-owner support and unattended validation remain required.
 - Task identity, local registration, host access, guarded worker enrollment and unattended synthetic validation must pass before production routing. No automation is configured.
 
 ## Operating Rules
