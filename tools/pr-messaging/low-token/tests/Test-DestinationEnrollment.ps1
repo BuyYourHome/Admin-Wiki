@@ -36,6 +36,11 @@ Check 'House Render validation endpoint is eligible only with its matching skill
     $x.manifest.skill='smart-house';$rejected=$false
     try{Enroll $x|Out-Null}catch{$rejected=$true};Assert $rejected
 }
+Check 'Medicare validation endpoint is eligible only with its matching skill' {
+    $x=EnrollmentFixture 'Medicare' 'medicare';Assert ((Enroll $x).config.destinations.Count -eq 2)
+    $x.manifest.skill='house-render';$rejected=$false
+    try{Enroll $x|Out-Null}catch{$rejected=$true};Assert $rejected
+}
 Check 'unreviewed validation endpoint is rejected' {
     $x=EnrollmentFixture 'Other Room' 'other-room';$rejected=$false
     try{Enroll $x|Out-Null}catch{$rejected=$true};Assert $rejected
@@ -66,6 +71,7 @@ Check 'installer enrollment is scoped and preserves runtime structures' {
     Assert ($block.Contains("`$ExpectedMachine -cne 'WESSTUDIO'") -and $block.Contains('Codex Environment') -and $block.Contains('019f84d0-78d4-7013-8c07-42c01f961be1'))
     Assert ($block.Contains('Smart House') -and $block.Contains('01a14585-ffe6-7850-8db1-efcdd58e7071') -and $block.Contains('smart-house.json'))
     Assert ($block.Contains('House Render') -and $block.Contains('01a178f1-8292-7aa3-863d-f6de8a3c44f7') -and $block.Contains('house-render.json'))
+    Assert ($block.Contains('Medicare') -and $block.Contains('01a198bd-6bd0-7013-bd02-2b26a715e552') -and $block.Contains('medicare.json'))
     foreach($required in @('ExpectedManifestSha256','ExpectedValidationPayloadHash','ExpectedConfigSha256','ExpectedOwnerGeneration','Get-LtReviewedCli','Invoke-LtValidationEnrollment')){Assert $block.Contains($required) ('Missing guard '+$required)}
     Assert (!$block.Contains('Set-ScheduledTask') -and !$block.Contains('Write-LtJson $ownerPath') -and !$block.Contains('Write-LtJson $journalPath'))
     Assert (!$block.Contains('Disable-ScheduledTask') -and !$block.Contains('Enable-ScheduledTask'))
