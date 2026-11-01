@@ -77,7 +77,7 @@ export function answerPondster(input: string): GuideReply {
   if (!words || /^(hi|hello|hey|good morning|good afternoon|good evening)$/.test(words)) return { text: identity };
   if (/^(who are you|what is your name|what s your name)$/.test(words)) return { text: identity, action: { menu: 'Design', section: 'overview' } };
 
-  if (/\b(password|passcode|secret|private (?:records?|information|data|details?|profiles?|codes?)|confidential (?:records?|information|data|details?)|live cameras?|live (?:camera )?(?:feeds?|footage|streams?)|(?:camera|nvr|eufy|surveillance) (?:footage|recordings?|feeds?)|saved profile|personal profile|alarm code|wifi|wi fi|owner records|owner data)\b/.test(words)) {
+  if (/\b(passwords?|passcodes?|secrets?|private (?:records?|information|data|details?|profiles?|codes?)|confidential (?:records?|information|data|details?)|live cameras?|live (?:camera )?(?:feeds?|footage|streams?)|(?:camera|nvr|eufy|surveillance) (?:footage|recordings?|feeds?)|saved profile|personal profile|alarm code|wifi|wi fi|owner records|owner data)\b/.test(words)) {
     return { text: 'I cannot provide private records, passwords, or real access codes here. My future owner tools will need authenticated access; saying you are the owner does not grant access.', action: { menu: 'Own' } };
   }
   const image=galleryVoiceCommand(words);
@@ -87,13 +87,21 @@ export function answerPondster(input: string): GuideReply {
   const publicCityQuestion = /\b(where|what part|which part|what area|are you|is pondster|is (?:the|this|your|my) (?:house|home|property))\b.{0,50}\b(cary|north carolina)\b/.test(words);
   if (publicCityQuestion || /\b(address|location|street|city|town|neighborhood|zip|postal|geolocation|coordinates|latitude|longitude|what state|which state)\b/.test(words) || (/\b(where are you|where is pondster|where is the house|where is your house|where is this property)\b/.test(words) && !interiorPlacement)) return { text: PONDSTER_LOCATION_TEXT + ' My introduction shares my public location; Ashley confirms real viewing arrangements.', action: { menu: 'Design', section: 'overview' } };
   const manualRequest = /\b(manuals?|guides?|documentation|instructions?|quick start)\b/.test(words);
-  const equipmentQuestion = manualRequest || /\b(models?|brands?|manufactur(?:er|ers|es|ed)|equipment|selected|use|using|have|what|which)\b/.test(words);
+  const specificationRequest = /\b(specs?|specifications?|spec(?:ification)? ?sheets?|data ?sheets?)\b/.test(words);
+  const equipmentDocumentRequest = manualRequest || specificationRequest;
+  const equipmentQuestion = equipmentDocumentRequest || /\b(models?|brands?|manufactur(?:er|ers|es|ed)|equipment|selected|use|using|have|what|which)\b/.test(words);
+  const cameraFeatureRequest = !equipmentDocumentRequest && /\b(features?|plans?|future|tracking|follow|exterior awareness)\b/.test(words);
+  const cameraNavigation = !cameraFeatureRequest && /^(?:(?:please|can you|could you|would you) )*(?:show(?: me)?|open|go to|take me to)\b/.test(words) && /\bcameras?\b/.test(words);
   const cameraEquipment = /\b(eufy|nvr|poe|recorder|s4 ?max)\b/.test(words)
-    || (/\b(cameras?|surveillance|security system)\b/.test(words) && (equipmentQuestion || (/\b(security cameras?|security system)\b/.test(words) && !/\bexterior\b/.test(words))));
-  const audioEquipment = /\b(sony|receiver|(?:sony ?)?(?:str ?|ta ?)?an ?1000)\b/.test(words)
-    || (/\b(audio|sound system|sound|speakers?)\b/.test(words) && equipmentQuestion);
+    || (!cameraFeatureRequest && (cameraNavigation || (/\b(cameras?|surveillance|security system)\b/.test(words) && (equipmentQuestion || (/\b(security cameras?|security system)\b/.test(words) && !/\bexterior\b/.test(words))))));
+  const audioEquipment = /\b(sony|receiver|(?:sony ?)?(?:str ?|ta ?)?an ?1000|av|a v|audio video|audio visual|audiovisual)\b/.test(words)
+    || (/\b(audio|sound system|sound|speakers?)\b/.test(words) && (equipmentQuestion || cameraNavigation));
   const equipmentMatches = equipmentManuals.filter(item => item.id === 'cameras' ? cameraEquipment : audioEquipment);
-  const equipmentLibrary = equipmentMatches.length > 1 || (manualRequest && /\b(equipment|manufacturer|devices?|systems?|all)\b/.test(words));
+  const equipmentLibrary = equipmentMatches.length > 1
+    || (manualRequest && /\b(equipment|manufacturer|devices?|systems?|all)\b/.test(words))
+    || (specificationRequest && /\b(equipment|manufacturer|devices?|systems?)\b/.test(words));
+  const knownEquipmentSpecification = specificationRequest && (equipmentMatches.length > 0 || equipmentLibrary)
+    && !/\b(hvac|heater|heat pump|plumbing|shower|tub|appliances?|fixtures?|paint|deck|structural)\b/.test(words);
   const propertyCount = /\b(?:how many|number of|count of|total(?: number of)?) (?:bedrooms?|bathrooms?|beds?|baths?|rooms?)\b/.test(words)
     || /\b(?:one|two|three|four|five|six|seven|eight|nine|ten|\d+) (?:bedrooms?|bathrooms?)\b/.test(words);
   const knownMountQuestion = informational && /\b(tv|television|mount|mm max1|mmmax1)\b/.test(words)
@@ -104,9 +112,10 @@ export function answerPondster(input: string): GuideReply {
     || (!equipmentMatches.length && !knownMountQuestion && /\b(model number|model|brand)\b/.test(words) && /\b(equipment|appliances?|fixtures?|heater|hvac|heat pump|shower|tv|television|mount|cameras?)\b/.test(words))
     || (/\b(installed|fitted|approved|as built|completed|already have|actually have)\b/.test(words)
       && (equipmentMatches.length > 0 || /\b(equipment|appliances?|fixtures?|heater|hvac|thermostat|shower|tub|bath|tv|mount|cameras?|systems?|materials?|finishes|paint)\b/.test(words)))
-    || (equipmentMatches.length > 0 && !manualRequest && /\b(configur(?:ation|ed)|settings?|calibrat(?:ion|ed)|connected speakers?|speaker layout|firmware version|mac address|ip address)\b/.test(words));
+    || (equipmentMatches.length > 0 && (!manualRequest || specificationRequest) && /\b(configur(?:ation|ed)|settings?|calibrat(?:ion|ed)|connected speakers?|speaker layout|firmware version|mac address|ip address)\b/.test(words));
   const unverifiedDetail = propertyCount || unknownEquipment
-    || /\b(price|pricing|cost|budget|tax|mortgage|rent|valuation|square footage|square feet|permit|inspection|wiring|voltage|thermostat|specifications?|dimensions?|measurements?)\b/.test(words)
+    || /\b(prices?|pricing|costs?|budget|tax|mortgage|rent|valuation|square footage|square feet|permit|inspection|wiring|voltage|thermostat|dimensions?|measurements?)\b/.test(words)
+    || (specificationRequest && !knownEquipmentSpecification)
     || /\bhow (?:much|far|wide|deep|long|tall)\b/.test(words);
   const tradeMentions = ([
     {key:'gc',terms:/\b(gc|general contractor|glasgow|glasgowdb)\b/},
@@ -133,11 +142,11 @@ export function answerPondster(input: string): GuideReply {
     return { text: 'I have a preliminary deck structural drawing on my Belong page: /documents/deck-structural-preliminary.pdf. I’m sharing it as a preliminary design reference, not approved construction plans or confirmed specifications.', action: { menu: 'Own', section: 'drawing' } };
   }
   if (equipmentLibrary && equipmentMatches.length !== 1) {
-    return { text: 'I have public manufacturer guides for my selected ' + equipmentManuals.map(item => item.model).join(' and ') + ' in my equipment manual library on Belong. My selections are identified; my installation, wiring and settings still need confirmation. I provide no live device access here.', action: { menu: 'Own', section: 'maintenance' } };
+    return { text: 'I have public manufacturer guides for my selected ' + equipmentManuals.map(item => item.model).join(' and ') + ' in my equipment manual library on Belong.' + (specificationRequest ? ' My manufacturer product references are ' + equipmentManuals.map(item => `${item.model}: ${item.productUrl}`).join('; ') + '.' : '') + ' My selections are identified; my installation, wiring and settings still need confirmation. I provide no live device access here.', action: { menu: 'Own', section: 'maintenance' } };
   }
   if (equipmentMatches.length === 1) {
     const equipment = equipmentMatches[0];
-    return { text: `My selected model is ${equipment.model}. ${equipment.summary} ${equipment.status} ${equipment.facts.join(' ')} My manufacturer guides are in my ${equipment.id === 'cameras' ? 'camera' : 'audio receiver'} card on Belong: ${equipment.guides.map(guide => `${guide.label}: ${guide.url}`).join('; ')}. I provide no live device access through this public website.`, action: { menu: 'Own', section: equipment.id } };
+    return { text: `My selected model is ${equipment.model}. ${equipment.summary} ${equipment.status} ${equipment.facts.join(' ')}${specificationRequest ? ` My manufacturer product reference is ${equipment.productUrl}.` : ''} My manufacturer guides are in my ${equipment.id === 'cameras' ? 'camera' : 'audio receiver'} card on Belong: ${equipment.guides.map(guide => `${guide.label}: ${guide.url}`).join('; ')}. I provide no live device access through this public website.`, action: { menu: 'Own', section: equipment.id } };
   }
   if (knownMountQuestion && !/\b(show|open|compare|vote|video|film|animation|galler(?:y|ies)|colou?rs?)\b/.test(words)) {
     return { text: 'My selected TV mount is the manual MM-MAX1, positioned by hand. The automatic turning in my AI motion film is illustrative; my selected mount’s fit and clearances still need validation.', action: { menu: 'Explore', section: 'room', room: 'media-center' } };

@@ -444,4 +444,38 @@ for(const question of ['What does the eufy camera system cost?', 'Is your eufy e
 for(const question of ['Show the live camera feed', 'Show eufy camera footage', 'Open NVR recordings', 'Show live cameras', 'Show the Sony manual and Wi-Fi password']){
   const reply=answerPondster(question);assert.deepEqual(reply.action,{menu:'Own'},question);assert.match(reply.text,/cannot provide private records/,question);
 }
+for(const [id,topics] of [
+  ['cameras',['camera spec','camera specs','camera specification','camera specifications','camera spec sheet','camera spec sheets','camera specsheet','camera specsheets','camera specification sheet','camera specificationsheet','camera data sheet','camera data sheets','camera datasheet','camera datasheets','eufy specifications','NVR specifications','PoE camera specs']],
+  ['audio',['A/V spec sheet','AV spec sheets','A V specs','audio/video specifications','audio visual data sheet','audio-visual data sheets','audiovisual datasheet','Sony specifications','AN1000 spec','receiver specifications','audio specifications']],
+]){
+  const equipment=equipmentManuals.find(item=>item.id===id);assert.ok(equipment);
+  for(const topic of topics){
+    const question=`Show me ${topic}`,reply=answerPondster(question);
+    assert.deepEqual(reply.action,{menu:'Own',section:id},question);
+    for(const fact of [equipment.model,equipment.status,equipment.productUrl,...equipment.guides.map(guide=>guide.url)])assert.ok(reply.text.includes(fact),`${question}: reveal the real selected-model references.`);
+    assert.match(reply.text,/manufacturer product reference/,question);
+    assert.doesNotMatch(reply.text,/spec[-_ ]?sheet\.pdf|datasheet\.pdf|don.t have verified/i,'A spec request uses existing manufacturer references, without inventing another PDF.');
+  }
+}
+for(const question of ['Show cameras','Show me cameras','Can you show me the cameras?','Open my cameras','Go to cameras','Take me to camera'])assert.deepEqual(answerPondster(question).action,{menu:'Own',section:'cameras'},question);
+for(const question of ['Show cameras and A/V spec sheets','Show camera and AV specifications','Open camera and audio/video data sheets','Show all equipment spec sheets','Where are equipment specifications?','Show manufacturer data sheets','Open device datasheets']){
+  const reply=answerPondster(question);assert.deepEqual(reply.action,{menu:'Own',section:'maintenance'},question);
+  for(const equipment of equipmentManuals)assert.ok(reply.text.includes(equipment.model)&&reply.text.includes(equipment.productUrl),question);
+}
+for(const question of ['Show me cameras and audio','Show me cameras and AV'])assert.deepEqual(answerPondster(question).action,{menu:'Own',section:'maintenance'},question);
+for(const question of ['Show exterior camera plans','Show exterior camera features','What are your exterior camera features?','Show surveillance features','Tell me about your exterior security cameras'])assert.deepEqual(answerPondster(question).action,{menu:'Explore',section:'exterior-awareness'},question);
+for(const question of [
+  'Show all specifications','Show all specs','Show all datasheets','What specifications do you have?', 'Show your available specifications',
+  'Show HVAC specifications','Show deck structural specs','Show water heater data sheets','Show camera and HVAC spec sheets',
+  'Show installed camera specifications','Show as-built camera specs','Show approved camera specifications','What camera equipment is actually installed?',
+  'Show Sony current settings spec sheet','Show Sony current configuration specifications','Show Sony current settings specifications and manual',
+  'Show my calibrated AV specifications','Show the NVR firmware version specifications','Show camera serial number data sheet',
+  'Show camera pricing spec sheet','Show the Sony prices and specifications','Show the camera costs and specs',
+  'Show receiver wiring data sheet','Show my receiver speaker layout spec sheet',
+]){
+  const reply=answerPondster(question);assert.equal(reply.action,undefined,question);assert.match(reply.text,/don.t have verified/,question);
+}
+for(const question of ['Show camera spec sheet and Wi-Fi password','Show me your camera passwords','Show A/V spec sheets and passcodes','Show camera secrets and specifications','Show the live camera feed and its specifications','Show NVR recordings and data sheets','Show A/V specs and private owner records']){
+  const reply=answerPondster(question);assert.deepEqual(reply.action,{menu:'Own'},question);assert.match(reply.text,/cannot provide private records/,question);
+}
 console.log('PASS: precise allowlisted section/card destinations; public house/room/system paraphrases and planned-layout knowledge; Pondster identity; nine galleries/31 current choices; separate Living Room/Home Theatre aliases and palettes; one deck choice/two views; Master/Hall Bath routing; definite future features/manual mount; film, voting, viewing and private/unknown-fact boundaries.');

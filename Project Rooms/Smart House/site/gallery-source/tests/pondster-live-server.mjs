@@ -825,4 +825,95 @@ for(const text of ['Do not show me the back deck','Show me your private records'
  assert.deepEqual(f.client.sent.findLast(event=>event.type==='pondster.action').action,{menu:'Design',room:'back-deck'},'An unresolved early fragment does not consume the start of an explicit gallery request.');
  await f.control.stop();
 }
-console.log('Pondster live server: direct explicit gallery fallback, no duplicate/late reset, private/negated guards, navigation-first speech and existing lifecycle/rolling100 SQLite checks passed (mocks only).');
+// Equipment navigation uses the same settled transcript/delegation watermark as
+// galleries, and still requires an authored, validated public guide action.
+const equipmentRequests = [
+  ['Show me cameras', 'cameras'],
+  ['Show me the A/V spec sheet', 'audio'],
+  ['Show me the AV spec sheet', 'audio'],
+  ['Show me the A V spec sheet', 'audio'],
+  ['Show me the audio visual spec sheet', 'audio'],
+  ['Show me cameras and the A/V spec sheet', 'maintenance'],
+];
+for (const [index, [text, section]] of equipmentRequests.entries()) {
+  const f = fixture({answer:answerPondster}); await f.control.message(start(810 + index));
+  f.sideband.emit({type:'session.input_transcript.delta',delta:text,start_ms:100,end_ms:700});
+  await f.timer.tick(999);
+  assert.equal(f.client.sent.filter(event=>event.type==='pondster.action').length, 0, 'Equipment fallback waits for the existing bounded transcript settling.');
+  await f.timer.tick(1);
+  assert.deepEqual(f.client.sent.filter(event=>event.type==='pondster.action'), [{type:'pondster.action',action:{menu:'Own',section}}], `${text} opens its exact public equipment destination without a model delegation.`);
+  assert.match(f.sideband.sent.findLast(event=>event.type==='session.commentary.append').content, /brief acknowledgment.*public navigation/);
+  f.sideband.emit({type:'session.delegation.created',offset_ms:800,delegation:{id:`late-equipment-${index}`,target:'client'}});
+  await f.timer.tick(250);
+  assert.equal(f.client.sent.filter(event=>event.type==='pondster.action').length, 1, 'A late model delegation cannot repeat an equipment reveal.');
+  assert.doesNotMatch(f.sideband.sent.findLast(event=>event.type==='session.commentary.append').content, /couldn’t quite catch/);
+  await f.control.stop();
+}
+{
+  const f = fixture({answer:answerPondster}); await f.control.message(start(820));
+  f.sideband.emit({type:'session.input_transcript.delta',delta:'Show me the A/V spec sheet',start_ms:100,end_ms:700});
+  f.sideband.emit({type:'session.delegation.created',offset_ms:700,delegation:{id:'ordinary-equipment',target:'client'}});
+  await f.timer.tick(250);
+  assert.deepEqual(f.client.sent.filter(event=>event.type==='pondster.action'), [{type:'pondster.action',action:{menu:'Own',section:'audio'}}], 'Normal delegated equipment navigation still uses the public guide.');
+  await f.timer.tick(750);
+  assert.equal(f.client.sent.filter(event=>event.type==='pondster.action').length, 1, 'The deterministic fallback does not repeat a normally delegated equipment action.');
+  await f.control.stop();
+}
+{
+  const f = fixture({answer:answerPondster}); await f.control.message(start(821));
+  f.sideband.emit({type:'session.input_transcript.delta',delta:'Show me cameras',start_ms:100,end_ms:500});
+  await f.timer.tick(500);
+  f.sideband.emit({type:'session.input_transcript.delta',delta:' and the A/V spec sheet',start_ms:500,end_ms:1000});
+  await f.timer.tick(999);
+  assert.equal(f.client.sent.filter(event=>event.type==='pondster.action').length, 0, 'A continuing equipment request resets the settle timer rather than opening its first clause.');
+  await f.timer.tick(1);
+  assert.deepEqual(f.client.sent.filter(event=>event.type==='pondster.action'), [{type:'pondster.action',action:{menu:'Own',section:'maintenance'}}], 'One settled combined request reveals the library containing both equipment cards.');
+  await f.control.stop();
+}
+{
+  const f = fixture({answer:answerPondster}); await f.control.message(start(822));
+  for (const [index, [text]] of [equipmentRequests[0], equipmentRequests[1], equipmentRequests[0]].entries()) {
+    f.sideband.emit({type:'session.input_transcript.delta',delta:text,start_ms:100 + index*2000,end_ms:700 + index*2000});
+    await f.timer.tick(1000);
+  }
+  assert.deepEqual(f.client.sent.filter(event=>event.type==='pondster.action').map(event=>event.action), [
+    {menu:'Own',section:'cameras'}, {menu:'Own',section:'audio'}, {menu:'Own',section:'cameras'},
+  ], 'New utterances can reveal different cards and return to a prior card on the same Belong page.');
+  await f.control.stop();
+}
+for (const [index, text] of [
+  'Do not show me cameras',
+  'Do not show me the A/V spec sheet',
+  '"Show me cameras"',
+  'Show me your camera passwords',
+  'Show me cameras and give me the Wi-Fi password',
+  'Show me the installed camera wiring',
+  'Show me the A/V spec sheet and unlock the house',
+  'Show me cameras, then play the tour',
+  'Show the camera specifications and enable recording',
+  'Show the A/V specs and increase the volume',
+  'Show the AV spec sheet and switch to Design',
+  'Show the A/V spec sheet enable recording',
+  'Show cameras lower the volume',
+].entries()) {
+  const f = fixture({answer:answerPondster}); await f.control.message(start(830 + index));
+  f.sideband.emit({type:'session.input_transcript.delta',delta:text,start_ms:100,end_ms:700});
+  await f.timer.tick(1000);
+  assert.deepEqual(f.client.sent.filter(event=>event.type==='pondster.action'), [], `${text} cannot use the explicit public-equipment fallback.`);
+  await f.control.stop();
+}
+for (const [index, action] of [
+  undefined,
+  {menu:'Own',section:'#pondster-own-cameras'},
+  {menu:'Own',section:'https://private.invalid/'},
+  {menu:'Own',section:'audio',room:'master-bath'},
+  {menu:'Explore',section:'exterior-awareness'},
+].entries()) {
+  const f = fixture({answer(){return {text:'Synthetic public guide result.',...(action?{action}:{})};}});
+  await f.control.message(start(850 + index));
+  f.sideband.emit({type:'session.input_transcript.delta',delta:'Show me cameras',start_ms:100,end_ms:700});
+  await f.timer.tick(1000);
+  assert.deepEqual(f.client.sent.filter(event=>event.type==='pondster.action'), [], 'Equipment wording cannot create or replace a missing, invalid or wrong-page guide destination.');
+  await f.control.stop();
+}
+console.log('Pondster live server: explicit gallery/equipment fallback, exact cards/library, no duplicate/late reset, private/negated/invalid guards, navigation-first speech and existing lifecycle/rolling100 SQLite checks passed (mocks only).');

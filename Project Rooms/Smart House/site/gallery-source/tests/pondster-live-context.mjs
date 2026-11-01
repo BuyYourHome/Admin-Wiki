@@ -2,6 +2,7 @@ import assert from 'node:assert/strict';
 import { buildPondsterLiveSession, PONDSTER_LIVE_GREETING } from '../lib/pondster-live-context.ts';
 import { galleries } from '../lib/designs.ts';
 import { floorPlanRooms } from '../lib/floor-plan.ts';
+import { equipmentManuals } from '../lib/equipment.ts';
 
 const session = buildPondsterLiveSession(galleries);
 assert.equal(session.model, 'gpt-live-1');
@@ -37,6 +38,14 @@ assert.match(session.instructions, /Wait for the guide's result before claiming 
 for(const question of ['Who is your GC?','Who is your plumber?','Who handles your HVAC?','Who is your realtor?'])assert.ok(session.instructions.includes(question));
 assert.ok(session.instructions.includes('Show me information about HVAC'));
 assert.match(session.instructions,/plain HVAC information requests.*True Service.*explicit HVAC system or feature questions/);
+for(const request of ['show me cameras','show me the A/V spec sheet','show me the AV spec sheet','show me the A V spec sheet','show me the audio/video spec sheet','show me the audio visual spec sheet','show me cameras and the A/V spec sheet'])assert.ok(session.instructions.includes(request),`The live navigation policy covers the spoken equipment request: ${request}`);
+assert.match(session.instructions,/For public equipment navigation.*generate <\|SpawnThinking\|>.*existing Belong card/);
+assert.match(session.instructions,/Camera equipment, manufacturer specifications and manuals belong in My exterior cameras.*A\/V, audio or Sony receiver equipment and manufacturer information belong in My audio receiver/);
+assert.match(session.instructions,/Future system or feature plans stay in their matching Explore blocks/);
+assert.match(session.instructions,/request one reveal of My equipment guides, the combined equipment library/);
+assert.match(session.instructions,/Do not invent a separate spec-sheet PDF or substitute an unrelated design film/);
+assert.match(session.instructions,/Negated or quoted commands do not authorize navigation/);
+for(const equipment of equipmentManuals)assert.ok(session.instructions.includes(equipment.productUrl),'The live guide receives the existing official product reference rather than inventing a specification document.');
 assert.match(session.instructions, /Named room, public system, floor-plan or public-document questions should reveal their matching section/);
 assert.match(session.instructions, /do not assert that scrolling succeeded or that the visitor saw the section/);
 assert.match(session.instructions, /Do not generate <\|SpawnThinking\|> when: A question.*can be answered from my public facts/);

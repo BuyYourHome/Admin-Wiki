@@ -7,6 +7,7 @@ import { getPondsterSpeechText, isPondsterSpokenExplanationRequest } from '../li
 import { naturalConversationRecorder, visitorProfile } from './pondster-visitors';
 import type { PondsterVisitor } from '../lib/pondster-visitor';
 import { explicitGalleryVoiceAction } from '../lib/pondster-gallery';
+import { explicitEquipmentVoiceAction } from '../lib/pondster-equipment-navigation';
 import { PONDSTER_CLIENT_REVISION } from '../lib/pondster-live-protocol';
 import {actionResultSpeech} from '../lib/pondster-gallery-result';
 export const VOICE_COOKIE = 'pondster_voice_visitor';
@@ -207,6 +208,7 @@ export function createPondsterLiveControl(options: ControllerOptions) {
   let fragmentCharacters = 0;
   let gallerySettle:ReturnType<typeof setTimeout>|undefined;
   let directGalleryCount=0,lastDirectGalleryEnd=-1;
+  let lastDirectEquipmentEnd=-1;
   let pendingVote:{id:string;delegationId:string|null;kind:'vote'|'control';timer:ReturnType<typeof setTimeout>}|null=null;
   const abort = new AbortController();
   let resolveProviderClosed: () => void = () => {};
@@ -291,11 +293,12 @@ export function createPondsterLiveControl(options: ControllerOptions) {
         const unconsumed=fragments.filter(item=>item.end>consumedTranscriptEnd).sort((a,b)=>a.start-b.start);
         let first=0;for(let index=1;index<unconsumed.length;index++)if(unconsumed[index].start-unconsumed[index-1].end>700)first=index;
         const selected=unconsumed.slice(first),question=selected.map(item=>item.text).join('').trim();
-        if(!question)return;const requested=options.answer(question).action;if(!explicitGalleryVoiceAction(question,requested)&&!parsePondsterDestination(requested)?.control)return;
+        if(!question)return;const requested=options.answer(question).action,equipment=explicitEquipmentVoiceAction(question,requested);if(!explicitGalleryVoiceAction(question,requested)&&!equipment&&!parsePondsterDestination(requested)?.control)return;
         consumedTranscriptEnd=Math.max(consumedTranscriptEnd,...selected.map(item=>item.end));
         lastDirectGalleryEnd=consumedTranscriptEnd;directGalleryCount++;
+        lastDirectEquipmentEnd=equipment?consumedTranscriptEnd:-1;
         await deliver(question,null);
-      })().catch(()=>{error('I couldn’t open that gallery picture. Please try again.');}));},1000);
+      })().catch(()=>{error('I couldn’t open that public section. Please try again.');}));},1000);
       return;
     }
     if (event.type === 'session.delegation.created') {
@@ -316,6 +319,7 @@ export function createPondsterLiveControl(options: ControllerOptions) {
             const handled=await deliver(question,id);
             if(handled&&selected.length)consumedTranscriptEnd=Math.max(consumedTranscriptEnd,...selected.map(fragment=>fragment.end));
           }
+          else if(lastDirectEquipmentEnd===consumedTranscriptEnd&&lastDirectEquipmentEnd>=0&&fragments.every(item=>item.end<=consumedTranscriptEnd))appendCommentary('The same public equipment navigation was already requested for this utterance. Do not repeat the action. Continue briefly from the current public equipment card or library; do not claim a completed scroll.',id);
           else if(lastDirectGalleryEnd>=0&&fragments.every(item=>item.end<=consumedTranscriptEnd))appendCommentary('The same public gallery navigation was already requested for this utterance. Do not repeat the action or voting reminder. If this was a vote request, wait for the separate browser result before saying it was saved. Otherwise continue briefly from the current picture. Do not claim a completed render.',id);
           else appendCommentary('I couldn’t quite catch your question. Please ask me again.', id);
         } catch { error('I couldn’t answer that voice request. Please try again.'); track(stop()); }

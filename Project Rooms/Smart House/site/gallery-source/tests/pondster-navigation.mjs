@@ -8,6 +8,7 @@ import { getGalleryScrollTop, getSectionRevealTop } from '../lib/gallery-scroll.
 import { parsePondsterDestination, getPondsterDestinationId, DESTINATION_SECTIONS } from '../lib/pondster-destinations.ts';
 import { galleryVoiceSelection } from '../lib/pondster-gallery.ts';
 import { equipmentManuals } from '../lib/equipment.ts';
+import { answerPondster } from '../lib/pondster-guide.ts';
 
 const source=await readFile(new URL('../app/page.tsx',import.meta.url),'utf8');
 const oversized={targetTop:580,targetBottom:1840,headerBottom:192,viewportHeight:710,scrollY:500};
@@ -26,6 +27,27 @@ function actionHarness(saving=false){
     parsePondsterDestination,menu=>{navigation.push(menu);pending.current=null;},id=>tours.push(id),nextTour,saving,galleries,
     room=>rooms.push(room),scene=>scenes.push(scene),getPondsterDestinationId,next,pending,request=>requests.push(request),galleryVoiceSelection,design=>pictures.push(design),null,'media-center',()=>{},()=>Promise.resolve({status:'no-picture'}),{querySelector:()=>null},()=>Promise.resolve({status:'activated'}));
   return{run,navigation,rooms,scenes,requests,tours,pictures,pending};
+}
+{
+  const h=actionHarness();
+  for(const [question,section] of [
+    ['Show me cameras','cameras'],
+    ['Show me the camera spec sheet','cameras'],
+    ['Show me the A/V spec sheet','audio'],
+    ['Show me audio/video specifications','audio'],
+    ['Show me cameras and A/V spec sheets','maintenance'],
+    ['Show me the A/V spec sheet','audio'],
+    ['Show me the A/V spec sheet','audio'],
+    ['Show me the camera spec sheet','cameras'],
+  ]){
+    const action=answerPondster(question).action;
+    assert.deepEqual(action,{menu:'Own',section},question);
+    h.run(action);
+    assert.equal(getPondsterDestinationId(h.pending.current.destination),`pondster-own-${section}`,question);
+    assert.equal(h.navigation.at(-1),'Own',question);
+  }
+  assert.deepEqual(h.requests.map(request=>request.id),[1,2,3,4,5,6,7,8],
+    'Equipment requests use the actual reveal handler even when Belong and the same card are already selected.');
 }
 {
   const h=actionHarness();h.run({menu:'Contact',section:'gc'});h.run({menu:'Contact',section:'gc'});
