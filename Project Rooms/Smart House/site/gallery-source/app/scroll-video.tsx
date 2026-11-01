@@ -2,12 +2,19 @@
 
 import { useCallback, useEffect, useRef, useState, type ReactNode } from 'react';
 import GalleryMediaControls,{type GalleryMediaControlsProps} from './gallery-media-controls';
+import useHorizontalSwipe from './use-horizontal-swipe';
 
 export default function ScrollVideo({ label, ratio, children,media }: { label: string; ratio: string; children: ReactNode;media?:GalleryMediaControlsProps }) {
   const shell = useRef<HTMLDivElement>(null);
   const stage = useRef<HTMLDivElement>(null);
   const dismissed = useRef(false);
   const [expanded, setExpanded] = useState(false);
+  const swipe = useHorizontalSwipe<HTMLDivElement>({
+    enabled: Boolean(media?.canBrowse),
+    onPrevious: () => media?.onPrevious(),
+    onNext: () => media?.onNext(),
+    resetKey: `${label}:${expanded}`,
+  });
 
   const dismiss = useCallback((returnFocus = false) => {
     dismissed.current = true;
@@ -66,7 +73,7 @@ export default function ScrollVideo({ label, ratio, children,media }: { label: s
   }, [expanded, dismiss]);
 
   return <><div ref={shell} className="scroll-video-shell" style={{ aspectRatio: ratio }} data-expanded={expanded ? 'true' : 'false'}>
-    <div ref={stage} className={`scroll-video-stage${expanded ? ' is-expanded' : ''}${media?' has-media-controls':''}`} role="group" aria-label={label}>
+    <div ref={stage} {...swipe} className={`scroll-video-stage${expanded ? ' is-expanded' : ''}${media?' has-media-controls':''}`} role="group" aria-label={label}>
       {children}
       {expanded&&media&&<GalleryMediaControls {...media} onClose={()=>dismiss(true)}/>}
       {expanded && !media && <>

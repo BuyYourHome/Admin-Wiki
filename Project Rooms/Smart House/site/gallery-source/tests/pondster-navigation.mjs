@@ -1,6 +1,7 @@
 import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
-import { stripTypeScriptTypes } from 'node:module';
+import { createRequire, stripTypeScriptTypes } from 'node:module';
+import ts from 'typescript';
 import { galleries } from '../lib/designs.ts';
 import { floorPlanRooms } from '../lib/floor-plan.ts';
 import { houseFeatures, roomFeatures } from '../lib/features.js';
@@ -9,6 +10,8 @@ import { parsePondsterDestination, getPondsterDestinationId, DESTINATION_SECTION
 import { galleryVoiceSelection } from '../lib/pondster-gallery.ts';
 import { equipmentManuals } from '../lib/equipment.ts';
 import { answerPondster } from '../lib/pondster-guide.ts';
+import { designImageSource } from '../lib/design-views.ts';
+import { getExploreFeatureDestination } from '../lib/explore-feature-destinations.ts';
 
 const source=await readFile(new URL('../app/page.tsx',import.meta.url),'utf8');
 const oversized={targetTop:580,targetBottom:1840,headerBottom:192,viewportHeight:710,scrollY:500};
@@ -174,7 +177,7 @@ assert.ok(!effect.includes('.focus(') && !effect.includes('.click('));
 assert.ok(!source.includes('setShowLighting'),'Lighting uses this reveal path instead of a competing focus/scroll effect.');
 assert.match(source,/pendingSectionReveal.current=null;setSectionReveal\(null\);setTourRequest\(null\);setMenu\(next\)/);
 
-const files=Object.fromEntries(await Promise.all(['contact-page','explore-page','interactive-floor-plan','view-page','built-by-page','equipment-manuals'].map(async name=>[name,await readFile(new URL('../app/'+name+'.tsx',import.meta.url),'utf8')])));
+const files=Object.fromEntries(await Promise.all(['contact-page','explore-page','interactive-floor-plan','room-primary-image','view-page','built-by-page','equipment-manuals'].map(async name=>[name,await readFile(new URL('../app/'+name+'.tsx',import.meta.url),'utf8')])));
 for(const id of ['pondster-design-overview','pondster-own-drawing'])assert.ok(source.includes('id="'+id+'"'));
 assert.ok(source.includes('id={`pondster-own-${section}`}'));
 assert.match(source,/import EquipmentManuals from '.\/equipment-manuals'/);
@@ -242,4 +245,107 @@ assert.equal((planSource.match(/<RoomPrimaryImage\b/g)??[]).length,1,'The single
 assert.match(planSource,/roomFeature.status/);assert.match(planSource,/<ul>\{selectedFeatures.map/);
 assert.match(source,/floorPlanRequest=\{sectionReveal\?\.destination.menu==='Explore'/);
 assert.match(files['explore-page'],/roomRequest=\{floorPlanRequest\} detailRef=\{floorPlanDetailRef\}/);
-console.log('PASS: precise fixed destinations, repeated same-page room/gallery requests, GC card/header geometry, committed plan/gallery detail readiness, all 19 plan rooms and unmapped spaces, complete selected room content without lower duplicates, reduced motion, visible no-op, stale cleanup, focus preservation and independent tour one-shot; no browser/network.');
+
+// Execute the real Explore -> selected detail -> primary-image callback chain.
+// Hook doubles let this test inspect and activate actual JSX event handlers
+// without a browser, microphone, network, or image download.
+const require=createRequire(import.meta.url),components=new Map();
+let componentState={},stateChanges=[];
+const hooks={
+  useEffect(){},useId(){return 'primary-image-test';},useRef(value){return {current:value};},
+  useState(initial){return [initial==='living-room'&&componentState.room?componentState.room:typeof initial==='boolean'&&componentState.failed!==undefined?componentState.failed:initial,value=>stateChanges.push(value)];}
+};
+function component(name){
+  if(components.has(name))return components.get(name);
+  const module={exports:{}};
+  const dependencies={react:hooks,'../lib/designs':{galleries},'../lib/design-views':{designImageSource},'../lib/features.js':{houseFeatures,roomFeatures},'../lib/floor-plan':{floorPlanRooms,PLAN_WIDTH:1190,PLAN_HEIGHT:1030}};
+  const load=specifier=>specifier in dependencies?dependencies[specifier]:specifier==='./room-primary-image'?{default:component('room-primary-image')}:specifier==='./interactive-floor-plan'?{default:component('interactive-floor-plan')}:require(specifier);
+  new Function('require','module','exports',ts.transpileModule(files[name],{compilerOptions:{module:ts.ModuleKind.CommonJS,target:ts.ScriptTarget.ES2022,jsx:ts.JsxEmit.ReactJSX}}).outputText)(load,module,module.exports);
+  components.set(name,module.exports.default);return module.exports.default;
+}
+function render(name,props,state={}){componentState=state;stateChanges=[];return component(name)(props);}
+function elements(tree,predicate){
+  const found=[];const walk=value=>{if(Array.isArray(value))value.forEach(walk);else if(value&&typeof value==='object'&&value.props){if(predicate(value))found.push(value);walk(value.props.children);}};
+  walk(tree);return found;
+}
+{
+  const defaults=[
+    ['hot-water',{menu:'Explore',section:'room',room:'kitchen'},'pondster-explore-room-kitchen'],
+    ['presence',{menu:'Explore',section:'room',room:'media-center'},'pondster-explore-room-media-center'],
+    ['bath-and-shower',{menu:'Design',room:'hall-bath'},'design-gallery'],
+    ['exterior-awareness',{menu:'Design',room:'media-center'},'design-gallery'],
+    ['voice-feature',{menu:'Contact',section:'voice'},'pondster-contact-voice'],
+    ['lighting-plans',{menu:'Explore',section:'lighting'},'pondster-explore-lighting'],
+    ['sound-screens',{menu:'Own',section:'audio'},'pondster-own-audio'],
+    ['climate',{menu:'Contact',section:'hvac'},'pondster-contact-hvac'],
+    ['design-participation',{menu:'Design',section:'gallery'},'design-gallery'],
+    ['owner-experience',{menu:'Own',section:'handover'},'pondster-own-handover'],
+  ];
+  const sectionIds=defaults.map(([sectionId])=>sectionId),requests=[],mapped=[];
+  const props={scene:'day',onScene(){},onFeature:sectionId=>{
+    requests.push(sectionId);const destination=getExploreFeatureDestination(sectionId);
+    if(destination){const h=actionHarness();h.run(destination);mapped.push({destination,h});}
+  }};
+  const clickable=render('explore-page',props),cards=elements(clickable,node=>node.type==='article');
+  assert.equal(cards.length,houseFeatures.length);
+  const text=value=>Array.isArray(value)?value.map(text).join(''):typeof value==='string'?value:value?.props?text(value.props.children):'';
+  cards.forEach((card,index)=>{
+    const feature=houseFeatures[index],buttons=elements(card,node=>node.type==='button');
+    assert.equal(card.props.id,`pondster-explore-${sectionIds[index]}`,'Clickable feature cards retain their fixed public reveal IDs.');
+    assert.equal(buttons.length,1);assert.equal(buttons[0].props.type,'button','Feature cards use native keyboard activation.');
+    assert.equal(buttons[0].props['aria-label'],`Open feature: ${feature.title}`);
+    for(const value of [feature.status,feature.title,feature.text])assert.ok(text(card).includes(value),'Feature status, title and authored description remain unchanged.');
+    buttons[0].props.onClick();
+    const [sectionId,expected,targetId]=defaults[index],result=mapped[index];
+    assert.deepEqual(result.destination,expected,`${sectionId} uses its approved configurable default.`);
+    assert.deepEqual(result.h.navigation,[expected.menu]);assert.deepEqual(result.h.pending.current.destination,expected,'The real UI handler accepts the mapped feature action.');
+    assert.equal(getPondsterDestinationId(result.h.pending.current.destination),targetId);
+    const reveal=revealHarness(expected);reveal.run();reveal.drain();assert.equal(reveal.scrolls.length,1,`${sectionId} reveals the actual fixed target using the measured existing effect.`);
+    if(expected.menu==='Design'){
+      const gallery=galleries.find(item=>item.id===(expected.room??'media-center'));
+      assert.equal(result.h.pictures.filter(Boolean)[0].id,gallery.designs[0].id,'Design feature links use the existing first-choice flow.');
+    }else assert.equal(result.h.pictures.filter(Boolean).length,0,'Other feature destinations do not open an unrelated design viewer.');
+    if(expected.menu==='Explore'&&expected.room){
+      const chosen=[];chooseRequested({id:1,section:'room',room:expected.room},floorPlanRooms,exploreRooms,id=>chosen.push(id));
+      assert.equal(exploreRooms.find(room=>room.id===chosen[0]).galleryId,expected.room,'Explore feature links select the matching room detail before reveal.');
+    }
+  });
+  assert.deepEqual(requests,sectionIds,'Each card emits only its stable feature ID for the parent’s configurable destination mapping.');
+  for(const unknown of ['', 'unknown-feature', '__proto__', 'constructor', 'https://example.invalid/', 'camera-feed'])assert.equal(getExploreFeatureDestination(unknown),null,'Unknown feature IDs cannot create URLs or private/device actions.');
+  const changed=getExploreFeatureDestination('hot-water');changed.menu='View';assert.deepEqual(getExploreFeatureDestination('hot-water'),defaults[0][1],'Returned actions cannot mutate the central default map.');
+  const plain=render('explore-page',{scene:'day',onScene(){}}),plainCards=elements(plain,node=>node.type==='article');
+  for(const [index,card] of plainCards.entries()){
+    assert.equal(card.props.id,cards[index].props.id);assert.equal(elements(card,node=>node.type==='button').length,0,'A feature without a navigation handler is ordinary readable content.');
+    assert.equal(elements(card,node=>node.type==='h3').length,1);assert.equal(text(card),text(cards[index]));
+  }
+}
+const savedRaf=globalThis.requestAnimationFrame;
+globalThis.requestAnimationFrame=callback=>{callback();return 1;};
+try{
+  for(const room of exploreRooms){
+    const h=actionHarness(),openGallery=galleryId=>h.run({menu:'Design',room:galleryId});
+    const explore=render('explore-page',{scene:'day',onScene(){},onGallery:openGallery});
+    const planProps=elements(explore,node=>node.type===component('interactive-floor-plan'))[0].props;
+    assert.equal(planProps.onGallery,openGallery,'Explore forwards the existing gallery navigation callback.');
+    const plan=render('interactive-floor-plan',planProps,{room:room.id});
+    const mapRoom=elements(plan,node=>node.type==='polygon'&&node.props['aria-label']===`Explore my ${room.name}`)[0];
+    if(mapRoom){mapRoom.props.onClick();assert.deepEqual(stateChanges,[room.id]);assert.deepEqual(h.navigation,[],'A floor-plan room click selects Explore details without opening Design.');}
+    const primaryProps=elements(plan,node=>node.type===component('room-primary-image'))[0].props;
+    assert.equal(primaryProps.galleryId,room.galleryId,`${room.id} retains its authored gallery mapping.`);
+    const picture=render('room-primary-image',primaryProps),buttons=elements(picture,node=>node.type==='button');
+    const gallery=galleries.find(item=>item.id===room.galleryId);
+    if(!gallery?.designs.length){assert.equal(buttons.length,0,`${room.id} has an honest, nonclickable coming-soon placeholder.`);assert.equal(elements(picture,node=>node.type==='img').length,0);continue;}
+    assert.equal(buttons.length,1);assert.equal(buttons[0].props.type,'button','Native buttons provide Enter/Space activation.');
+    assert.equal(buttons[0].props['aria-label'],`Open my ${gallery.name} design gallery`);
+    buttons[0].props.onClick();
+    assert.deepEqual(h.navigation,['Design']);assert.deepEqual(h.rooms,[gallery.id]);
+    assert.equal(h.pictures.filter(Boolean)[0].id,gallery.designs[0].id,'Open the actual first choice through the existing gallery handler.');
+    assert.equal(getPondsterDestinationId(h.pending.current.destination),'design-gallery','Use the existing measured gallery reveal rather than a new scroll path.');
+  }
+  const props={galleryId:'garage-barn-door',roomName:'Existing Garage',onGallery(){throw new Error('A failed picture must not navigate.');}};
+  const loaded=render('room-primary-image',props);elements(loaded,node=>node.type==='img')[0].props.onError();assert.deepEqual(stateChanges,[true]);
+  const failed=render('room-primary-image',props,{failed:true});assert.equal(elements(failed,node=>node.type==='button').length,0);assert.equal(elements(failed,node=>node.props.className==='room-primary-placeholder').length,1);
+  assert.equal(elements(render('room-primary-image',{galleryId:'not-a-gallery',roomName:'Unknown',onGallery(){}}),node=>node.type==='button').length,0);
+  const standalone=render('room-primary-image',{galleryId:'garage-barn-door',roomName:'Garage'});assert.equal(elements(standalone,node=>node.type==='button').length,0);assert.equal(elements(standalone,node=>node.type==='img').length,1,'A preview without a navigation handler remains a plain image.');
+}finally{if(savedRaf===undefined)delete globalThis.requestAnimationFrame;else globalThis.requestAnimationFrame=savedRaf;}
+console.log('PASS: precise fixed destinations, real feature-card callbacks through the typed default map/UI handler/measured reveal, native buttons and unchanged content/IDs, unknown-feature no-op, repeated same-page requests, all plan-room primary-image gallery mappings, nonclickable missing/failed pictures, map-only detail selection, first-choice reveal, stale cleanup and independent tour one-shot; no browser/network.');

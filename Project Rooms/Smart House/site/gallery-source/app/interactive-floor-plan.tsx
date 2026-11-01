@@ -11,7 +11,7 @@ const additionalSpaces = galleries.filter(gallery => !floorPlanRooms.some(room =
 const exploreRooms = [...floorPlanRooms, ...additionalSpaces];
 
 export type FloorPlanRoomRequest = { id:number; room:string; section?:'room'|'floor-plan' };
-export default function InteractiveFloorPlan({ roomRequest, detailRef }: { roomRequest?:FloorPlanRoomRequest; detailRef?:Ref<HTMLElement> }) {
+export default function InteractiveFloorPlan({ roomRequest, detailRef, onGallery }: { roomRequest?:FloorPlanRoomRequest; detailRef?:Ref<HTMLElement>; onGallery?: (galleryId: string) => void }) {
   const instanceId = useId();
   const headingId = `${instanceId}-plan-heading`;
   const detailHeadingId = `${instanceId}-room-heading`;
@@ -110,7 +110,7 @@ export default function InteractiveFloorPlan({ roomRequest, detailRef }: { roomR
         <div id={selectedRoom.galleryId ? `pondster-explore-room-${selectedRoom.galleryId}` : undefined}>
         {roomFeature && <span className="feature-status">{roomFeature.status}</span>}
         <h3 ref={detailHeading} id={detailHeadingId} className="floor-plan-detail-heading" tabIndex={-1}>My {selectedRoom.name}</h3>
-        <RoomPrimaryImage key={selectedRoom.id} galleryId={selectedRoom.galleryId} roomName={selectedRoom.name}/>
+        <RoomPrimaryImage key={selectedRoom.id} galleryId={selectedRoom.galleryId} roomName={selectedRoom.name} onGallery={onGallery}/>
         <p>{selectedRoom.summary}</p>
         <ul>{selectedFeatures.map(feature => <li key={feature}>{feature}</li>)}</ul>
         </div>

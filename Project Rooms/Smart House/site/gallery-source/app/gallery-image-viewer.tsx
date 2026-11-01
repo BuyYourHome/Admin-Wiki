@@ -4,6 +4,7 @@ import { useEffect, useId, useRef, type KeyboardEvent } from 'react';
 import { galleries, type Design } from '../lib/designs';
 import { designImageSource, galleryPictures, movePicture, pictureIndex, pictureSelection } from '../lib/design-views';
 import GalleryMediaControls,{type GalleryVoiceControls} from './gallery-media-controls';
+import useHorizontalSwipe from './use-horizontal-swipe';
 
 type Props = { design: Design | null; onChange: (design: Design) => void; onClose: () => void; expanded?:boolean;onExpandedChange?:(expanded:boolean)=>void;voting?:{selected:string|null;disabled:boolean;saving:boolean;onVote:(id:string)=>void;message?:string};voice?:GalleryVoiceControls };
 
@@ -51,6 +52,13 @@ export default function GalleryImageViewer({ design, onChange, onClose, voting,v
     onChange(pictureSelection(pictures[movePicture(index, direction, pictures.length)]));
   }
 
+  const swipe = useHorizontalSwipe<HTMLDivElement>({
+    onPrevious: () => advance(-1),
+    onNext: () => advance(1),
+    enabled: canBrowse,
+    resetKey: `${design?.id ?? ''}:${picture?.image ?? ''}:${isOpen}:${expanded}`,
+  });
+
   function onKeyDown(event: KeyboardEvent<HTMLDialogElement>) {
     if (event.altKey || event.ctrlKey || event.metaKey || event.shiftKey || !canBrowse) return;
     if (event.key !== 'ArrowLeft' && event.key !== 'ArrowRight') return;
@@ -69,7 +77,7 @@ export default function GalleryImageViewer({ design, onChange, onClose, voting,v
         {onExpandedChange&&<button type="button" className="gallery-viewer-close" onClick={()=>onExpandedChange(!expanded)}>{expanded?'Restore size':'Enlarge'}</button>}
         <button ref={closeButton} type="button" className="gallery-viewer-close" onClick={onClose} aria-label="Close image">Close <span aria-hidden="true">×</span></button>
       </header>
-      <div className="gallery-viewer-image"><img key={`${design.id}:${picture?.image ?? design.image}`} src={designImageSource(picture?.image ?? design.image)} alt={`My AI design concept: ${design.title}${design.views?.length ? `, ${picture?.label ?? ''}` : ''}`} decoding="async" /></div>
+      <div className="gallery-viewer-image" {...swipe}><img key={`${design.id}:${picture?.image ?? design.image}`} src={designImageSource(picture?.image ?? design.image)} alt={`My AI design concept: ${design.title}${design.views?.length ? `, ${picture?.label ?? ''}` : ''}`} decoding="async" draggable={false} /></div>
       <GalleryMediaControls name={gallery?.name??'My design'} canBrowse={canBrowse} onPrevious={()=>advance(-1)} onNext={()=>advance(1)} voice={voice}
         counter={<><span className="gallery-viewer-announcement">{design.title}. {design.views?.length ? `${picture?.label ?? ''}. ` : ''}</span><span>{gallery?.name??'My design'}{design.views?.length?` · ${picture?.label??''}`:''}</span><strong>Picture {index+1} of {pictures.length}</strong></>}
         vote={voting?<><button type="button" className="vote-button" disabled={voting.disabled||voting.selected===design.id} aria-pressed={voting.selected===design.id} onClick={()=>voting.onVote(design.id)}><strong>{design.title}</strong><small>{voting.saving?'I’m saving…':voting.selected===design.id?'✓ Your choice':voting.selected?'Change your vote':'Vote for my design'}</small></button><span>I keep one choice per gallery. You can change your vote.</span>{voting.message&&<span role="status">{voting.message}</span>}</>:undefined}/>

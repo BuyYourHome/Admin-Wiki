@@ -9,18 +9,23 @@ const featureSections:Record<string,string> = {
   'I keep an eye outside':'exterior-awareness','My voice':'voice-feature','My lighting moods':'lighting-plans',
   'My sound & screens':'sound-screens','My climate & comfort':'climate','Your say in my design':'design-participation','My owner experience':'owner-experience'
 };
-export default function ExplorePage({ scene, onScene, floorPlanRequest, floorPlanDetailRef }: { scene: string; onScene: (scene: Scene) => void; floorPlanRequest?:FloorPlanRoomRequest; floorPlanDetailRef?:Ref<HTMLElement> }) {
+export default function ExplorePage({ scene, onScene, floorPlanRequest, floorPlanDetailRef, onGallery, onFeature }: { scene: string; onScene: (scene: Scene) => void; floorPlanRequest?:FloorPlanRoomRequest; floorPlanDetailRef?:Ref<HTMLElement>; onGallery?: (galleryId: string) => void; onFeature?: (sectionId: string) => void }) {
   return <section className="secondary-page explore-page">
     <h1 className="single-line-page-title explore-page-title">Get to know me. <em>Like The Back Of Your Room</em></h1>
     <p className="lead">Start with my floor plan. Choose a room to see its picture and details, then get to know the features that will make me Pondster.</p>
 
-    <InteractiveFloorPlan roomRequest={floorPlanRequest} detailRef={floorPlanDetailRef}/>
+    <InteractiveFloorPlan roomRequest={floorPlanRequest} detailRef={floorPlanDetailRef} onGallery={onGallery}/>
 
     <section id="pondster-explore-house" className="house-features" aria-labelledby="house-features-heading">
       <div className="feature-section-heading"><p className="eyebrow">THE BIG PICTURE</p><h2 id="house-features-heading">What makes me, <span className="pondster-inline-signature">Pondster</span>.</h2></div>
-      <div className="house-feature-grid">{houseFeatures.map(feature => <article id={featureSections[feature.title]?`pondster-explore-${featureSections[feature.title]}`:undefined} key={feature.title}>
-        <span className="feature-status">{feature.status}</span><h3>{feature.title}</h3><p>{feature.text}</p>
-      </article>)}</div>
+      <div className="house-feature-grid">{houseFeatures.map(feature => {
+        const sectionId = featureSections[feature.title];
+        return <article id={sectionId?`pondster-explore-${sectionId}`:undefined} key={feature.title}>
+          {onFeature && sectionId ? <button type="button" className="house-feature-button" aria-label={`Open feature: ${feature.title}`} onClick={() => onFeature(sectionId)}>
+            <span className="feature-status">{feature.status}</span><span className="house-feature-title">{feature.title}</span><span className="house-feature-description">{feature.text}</span>
+          </button> : <><span className="feature-status">{feature.status}</span><h3>{feature.title}</h3><p>{feature.text}</p></>}
+        </article>;
+      })}</div>
     </section>
 
     <section id="pondster-explore-lighting" className="lighting-features" aria-labelledby="lighting-features-heading" tabIndex={-1}>
