@@ -1451,6 +1451,15 @@ Use `Connector and Plugin Usage Rules.md` to see which installed plugins/connect
 - Primary definitions: `Project Rooms\House Render\README.md`, `skills\house-render\SKILL.md`, and `config\pr-messaging-manifests\house-render.json`. Guarded worker enrollment currently rejects this endpoint; no synthetic delivery attempted.
 - Scope: house visual concepts, provenance and external asset archive, initially 908 Pond Street. Smart House retains website/publication; LED lighting retains technical lighting design.
 
+## Medicare
+
+- Type: Project Room with matching skill and required dedicated chat.
+- Status: package prepared; Pending messaging registration - not dispatchable. Prescription source and coverage year not yet confirmed.
+- Execution machine: WESSTUDIO. Task id: pending until the dedicated chat is created.
+- Trigger: on-demand Medicare plan comparison and verified authorized intake; no automation or mailbox polling added.
+- Primary definitions: `Project Rooms\Medicare\README.md`, `skills\medicare\SKILL.md`, and `config\pr-messaging-manifests\medicare.json` after exact task creation.
+- Scope: Jenny's prescription-based plan comparison with current official evidence; no enrollment, insurance changes, treatment advice or health data in Git. Outlook intake and official Medicare/insurer sources are dependencies.
+
 ## Maintenance Rule
 
 When creating, renaming, pausing, deleting, or materially changing an agent-like function, update this registry in the same change.

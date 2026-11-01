@@ -1,0 +1,4 @@
+interface:
+  display_name: "Medicare"
+  short_description: "Compare prescription-based Medicare plan options"
+  default_prompt: "Use $medicare to prepare a source-backed plan comparison from confirmed coverage and prescription inputs."
