@@ -815,3 +815,14 @@ Wes reported missing camera/A/V spec-sheet navigation. Specification, spec-sheet
 - Archive: `sha256:f439e995b72874b0d24a597ecb326502e338414985ff2e5095ae3922a3e925b8`, 136 files / 74,127,360 uncompressed bytes.
 
 Focused Guide, destinations, speech, equipment rendering, actual UI navigation/reveal handler, live-context and expanded voice-server/SQLite mock checks passed, together with TypeScript, production build, diff check, independent review and the 210-file secret-absence scan. The supported helper pushed the matching source and packaged build; all eight text mirrors are byte-equal. Public typed questions verified A/V, camera and combined navigation with the equipment cards below the fixed header. No microphone, paid voice call, public vote/comment or real device control was used. A fresh natural spoken trial remains unperformed. See [[equipment-specification-navigation-20261101]] for exact cases and the public proof screenshot.
+
+## Garage geometry and media replacements — version 86, 2026-11-01
+
+Wes confirmed the three updated garage schemes and supplied warm-white film replace the current media. Version 86 keeps vote IDs garage-06/07/08 and full-image framing, uses the updated primary in Explore, and replaces the one garage tour film while retaining its vote-selected still fallback. The film uses its warm-white finish independently of votes. Counts remain nine galleries, 31 choices, seven tour scenes and three films. Descriptions match outward pedestrian-entry motion and the garage interior; supplied model credits and CC BY links appear in Design and the tour.
+
+- Source: `89937dc22cea536c130350ebf2a82027a08e400d`.
+- Saved version: `appgprj_6ad4d98e08708191858cab113814704e~appgver_80fdb66f953c8191aef770e5724313d0`.
+- Deployment: `appgdep_6ae72b1e5724819191795334fb2fa113`; native succeeded `2026-11-01T12:06:07.751070+00:00`, public audience and environment revision **4** retained.
+- Archive: `sha256:3f9069383963d57d7ac73fe314dfe1636ac1003d73842121aa6a45ccdf85a2bc`, 141 files / 103,485,440 uncompressed bytes.
+
+Full video decode, lossless pixel/stream equality, Guide, page navigation, tour scoring/fallback, live-context, TypeScript, build, diff and 215-file secret checks passed. Independent review found no remaining active stale garage paths/copy, ID changes or missing credits. Eight text mirrors are byte-equal; binary media remain outside Wiki Git. Public delivery of all five replacement files matched their hashes. After a temporary browser interruption recovered, public browser inspection verified the new film playing muted with duration25s/no error and all three replacement images through Next. Local Explore and tour checks also passed. No vote/comment, microphone, paid voice call or real device control was used. See [[garage-v18-replacements-20261101]] for source details and the saved public screenshot.

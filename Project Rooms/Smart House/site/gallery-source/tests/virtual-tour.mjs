@@ -35,6 +35,13 @@ assert.equal(zero.filter(scene => scene.roomId === 'back-deck').length, 1, 'Two 
 
 const media = galleries.find(gallery => gallery.id === 'media-center');
 const garage = galleries.find(gallery => gallery.id === 'garage-barn-door');
+assert.equal(galleries.length, 9);
+assert.equal(galleries.reduce((total, gallery) => total + gallery.designs.length, 0), 31, 'Garage replacements retain the catalog and existing voting choices.');
+assert.deepEqual(garage.designs.map(({id,image,fullImage})=>({id,image,fullImage})),[
+  {id:'garage-06',image:'garage-v18-warm-white.webp',fullImage:true},
+  {id:'garage-07',image:'garage-v18-charcoal-green.webp',fullImage:true},
+  {id:'garage-08',image:'garage-v18-limewashed-brick.webp',fullImage:true},
+],'The three garage images replace the existing IDs in the same order with full-image presentation.');
 const staircase = galleries.find(gallery => gallery.id === 'spiral-staircase');
 const bath = galleries.find(gallery => gallery.id === 'master-bath');
 const front = galleries.find(gallery => gallery.id === 'front-elevation');
@@ -74,7 +81,7 @@ for (const room of [media, garage, staircase]) {
   assert.equal(motion.designTitle, fallback.title);
   assert.notEqual(motion.title, fallback.title, 'An illustrative film has its own title, not the selected finish title.');
   assert.match(motion.description, /separate illustrative film/);
-  assert.match(motion.description, /does not show the selected voting design|keeps its original design rather than the selected voting design/);
+  assert.match(motion.description, /does not show the selected voting design|keeps its original design rather than the selected voting design|keeps its warm-white finish rather than changing with the selected voting design/);
   assert.ok(motion.video.startsWith('/media/') && motion.poster.startsWith('/media/'));
 }
 const mediaMotion = tour.find(scene => scene.id === 'media-center-motion');
@@ -85,7 +92,17 @@ assert.match(mediaMotion.sourceCredit, /Marine Corps.*James Stanfield.*DVIDS/);
 assert.match(mediaMotion.sourceNotice, /does not imply or constitute DoW endorsement/);
 assert.ok(mediaMotion.sourceUrl.startsWith('https://www.dvidshub.net/'));
 assert.ok(mediaMotion.sourceNoticeUrl.startsWith('https://www.dvidshub.net/'));
-assert.equal(tour.find(scene => scene.id === 'garage-barn-door-motion').video, '/media/garage-barn-door-tesla-drive-out.mp4');
+const garageMotion = tour.find(scene => scene.id === 'garage-barn-door-motion');
+assert.equal(garageMotion.video, '/media/garage-v18-warm-white.mp4');
+assert.equal(garageMotion.poster, '/media/garage-v18-poster.jpg');
+assert.equal(garageMotion.durationSeconds, 25);
+assert.match(garageMotion.description, /swings outward.*slides left.*garage interior/);
+assert.doesNotMatch(garageMotion.description, /swings inward|white.marble/);
+assert.match(garageMotion.description, /keeps its warm-white finish rather than changing with the selected voting design/);
+assert.match(garageMotion.sourceCredit, /2024 Tesla Model 3 Highland.*RBLXSupercars.*brandonleong28.*adapted and animated/);
+assert.equal(garageMotion.sourceUrl, 'https://sketchfab.com/3d-models/tesla-model-3-2024-36c52f3f89f6439c90310f14e8ff33f2');
+assert.match(garageMotion.sourceNotice, /CC BY 4\.0.*not endorsed by Tesla/);
+assert.equal(garageMotion.sourceNoticeUrl, 'https://creativecommons.org/licenses/by/4.0/');
 assert.equal(tour.find(scene => scene.id === 'spiral-staircase-motion').video, '/media/theater-football-sequential-stair-lights.mp4');
 assert.match(tour.find(scene => scene.id === 'spiral-staircase-motion').sourceCredit, /credit shown.*Marine Corps.*James Stanfield.*DVIDS/);
 
@@ -101,7 +118,7 @@ assert.equal(colorTour.find(scene => scene.roomId === 'media-center').totalVotes
 for (const [roomId, designId, image] of [
   ['media-center', 'media-03', '/concepts/media-03-deep-navy.png'],
   ['spiral-staircase', 'spiral-basement-coastal-blue', '/concepts/basement-coastal-blue.jpg'],
-  ['garage-barn-door', 'garage-08', '/concepts/garage-v3-limewashed-brick.png']
+  ['garage-barn-door', 'garage-08', '/concepts/garage-v18-limewashed-brick.webp']
 ]) {
   const motion = colorTour.find(scene => scene.id === `${roomId}-motion`);
   assert.equal(colorTour.find(scene => scene.id === `${roomId}-design`), undefined);
@@ -111,7 +128,7 @@ for (const [roomId, designId, image] of [
   assert.equal(motion.image, image, 'A new winning palette becomes the motion fallback still.');
   assert.equal(motion.designTitle, galleries.find(room => room.id === roomId).designs.find(design => design.id === designId).title);
   assert.match(motion.description, /separate illustrative film/);
-  assert.match(motion.description, /does not show the selected voting design|keeps its original design rather than the selected voting design/);
+  assert.match(motion.description, /does not show the selected voting design|keeps its original design rather than the selected voting design|keeps its warm-white finish rather than changing with the selected voting design/);
   assert.match(motion.description, /If my film cannot play.*fallback.*most votes/);
   assert.notEqual(motion.title, motion.designTitle);
   assert.equal(motion.video, tour.find(scene => scene.id === motion.id).video, 'The original film stays separate from the new color winner.');

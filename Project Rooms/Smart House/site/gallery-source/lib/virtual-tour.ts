@@ -87,8 +87,12 @@ export function buildTourScenes(galleries: readonly Gallery[], roomResults: Tour
     };
     else if (gallery.id === 'garage-barn-door') motion = {
       ...shared, id: `${gallery.id}-motion`, kind: 'motion', title: 'My Garage Barn Door in motion', durationSeconds: 25,
-      video: '/media/garage-barn-door-tesla-drive-out.mp4', poster: '/media/garage-barn-door-drive-out-poster.jpg',
-      description: `I will feature a center entry section that swings inward and closes before my full door slides left. My separate illustrative film shows a white Tesla driving out to reveal my white-marble garage floor. My film does not show the selected voting design. My hardware, clearances, and the car’s turning path haven’t been validated. ${fallbackNote}`
+      video: '/media/garage-v18-warm-white.mp4', poster: '/media/garage-v18-poster.jpg',
+      description: `I will feature a center entry section that swings outward and closes before my full door slides left. My separate illustrative film shows a white Tesla driving out to reveal my garage interior. My film keeps its warm-white finish rather than changing with the selected voting design. My hardware, clearances, and the car’s turning path haven’t been validated. ${fallbackNote}`,
+      sourceCredit: 'Supplied car-model credit: 2024 Tesla Model 3 Highland by RBLXSupercars (shared by brandonleong28); adapted and animated for this illustrative film.',
+      sourceUrl: 'https://sketchfab.com/3d-models/tesla-model-3-2024-36c52f3f89f6439c90310f14e8ff33f2',
+      sourceNotice: 'CC BY 4.0. This film is not endorsed by Tesla.',
+      sourceNoticeUrl: 'https://creativecommons.org/licenses/by/4.0/'
     };
     scenes.push(motion ?? still);
   }

@@ -72,8 +72,8 @@ export const roomFeatures = {
     'I have two front-elevation concepts ready for your vote.'
   ] },
   'garage-barn-door': { status: 'MY DESIGN CONCEPT', features: [
-    'I will feature a center entry section that swings inward before my full door slides left. My hardware and clearances still need validation.',
-    'My motion study shows a white Tesla driving out and revealing my white-marble garage floor.',
+    'I will feature a center entry section that opens outward and closes before my full door slides left. My hardware and clearances still need validation.',
+    'My warm-white motion study shows a white Tesla driving out and turning along my driveway, revealing my garage interior.',
     'I will finish my garage exterior in the selected design: warm white board and batten, charcoal green board and batten, or limewashed brick.'
   ] },
   adu: { status: 'IN MY PLANS', features: [

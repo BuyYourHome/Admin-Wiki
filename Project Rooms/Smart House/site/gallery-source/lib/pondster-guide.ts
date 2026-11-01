@@ -231,8 +231,8 @@ export function answerPondster(input: string): GuideReply {
   if (/\b(vote|voting|votes|favorite|favourite|choose|select)\b/.test(words)) {
     return { text: 'Open a design picture and say “vote for this one” to save that choice, or use its voting button. You can change your vote. I keep one current choice per browser per gallery.', action: { menu: 'Design', ...(room ? { room: room.id } : {}) } };
   }
-  if ((room?.id === 'garage-barn-door' && /\b(video|film|animation|motion|sliding|slides|swing|swings|inward|entry|pedestrian)\b/.test(words)) || /\btesla\b/.test(words)) {
-    return { text: 'I will feature a garage center entry section that swings inward and closes before my full door slides left. My twenty-five-second film shows a white Tesla driving out and across the scene to the left, revealing my white-marble garage floor. This is my illustrative AI/composited concept; my hardware, clearances, and the car’s turning path haven’t been validated.', action: { menu: 'Design', room: 'garage-barn-door' } };
+  if ((room?.id === 'garage-barn-door' && /\b(video|film|animation|motion|sliding|slides|swing|swings|inward|outward|entry|pedestrian)\b/.test(words)) || /\btesla\b/.test(words)) {
+    return { text: 'I will feature a garage center entry section that opens outward and closes before my full door slides left. My twenty-five-second warm-white film shows a white Tesla driving out and turning along my driveway, revealing my garage interior. This is my illustrative AI/composited concept; my hardware, clearances, and the car’s turning path haven’t been validated.', action: { menu: 'Design', room: 'garage-barn-door' } };
   }
   if (room?.id === 'spiral-staircase' && /\b(video|film|animation|motion|lights|football)\b/.test(words)) {
     return { text: 'I will feature a Home Theatre screen with amber stair lights that illuminate in sequence. My twelve-second concept film shows moving football and keeps its original amber palette; it does not change to match a winning color. My full-scene AI motion concept leaves my staircase, lighting, dimensions, and clearances to be validated.', action: { menu: 'Design', room: 'spiral-staircase' } };

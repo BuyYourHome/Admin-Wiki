@@ -207,7 +207,7 @@ assert.match(answerPondster('Show the football video').text, /manual MM-MAX1.*po
 assert.match(answerPondster('Show the football video').text, /automatic motion is illustrative.*fit and clearances still need validation/);
 assertGuideAction(answerPondster('Show the barn door video').action, {menu:'Design',room:'garage-barn-door'});
 assert.match(answerPondster('Show the Tesla animation').text, /twenty-five-second/);
-assert.match(answerPondster('Show the Tesla animation').text, /swings inward.*slides left.*driving out.*white-marble.*concept/);
+assert.match(answerPondster('Show the Tesla animation').text, /opens outward.*slides left.*driving out.*garage interior.*concept/);
 const vote = answerPondster('Vote for black shutters');
 assertGuideAction(vote.action, {menu:'Design',room:'front-elevation'});
 assert.match(vote.text, /vote for this one/);
