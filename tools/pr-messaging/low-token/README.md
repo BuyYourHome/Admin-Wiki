@@ -1,5 +1,13 @@
 # Low-token dispatcher releases
 
+## Controlled release 0.4.11 — Medicare validation enrollment (2026-11-01)
+
+Release `0.4.11` adds exactly one reviewed WESSTUDIO validation endpoint to `EnrollValidationDestination`: Medicare task `01a198bd-6bd0-7013-bd02-2b26a715e552`, skill `medicare`, manifest `medicare.json`. Codex Environment, Smart House, and House Render remain supported; every other endpoint remains rejected.
+
+The existing guarded enrollment contract is unchanged. Medicare requires one exact WESSTUDIO client registration, a schema-2 manifest that remains `dispatchable: false` and names one exact `validation_ready` message, and one pristine remote-source synthetic with a one-attempt budget and explicit no-business-action flags. Config, manifest, payload, owner-generation, package, manager, adapter, reviewed CLI, scheduled action, journal, and registration guards all remain mandatory. Enrollment appends one exact pin while preserving existing pin order, owner generation, state, journal, hidden launcher, Live mode, one-minute schedule, message records, and repeat-idempotence evidence.
+
+Upgrade the existing WESSTUDIO worker through guarded `UpgradeLive` before enrollment so the installed release and reviewed normal-user CLI pin are current. Do not force a tick or notify Medicare manually. A natural worker tick must discover the exact synthetic and the Medicare recipient must author `Accepted`, `Processing`, and `Completed` before Create PR may set `dispatchable: true`.
+
 ## Controlled release 0.4.10 — House Render validation enrollment (2026-10-26)
 
 Release `0.4.10` adds exactly one reviewed WESSTUDIO validation endpoint to `EnrollValidationDestination`: House Render task `01a178f1-8292-7aa3-863d-f6de8a3c44f7`, skill `house-render`, manifest `house-render.json`. Codex Environment and Smart House remain supported; every other endpoint remains rejected.
