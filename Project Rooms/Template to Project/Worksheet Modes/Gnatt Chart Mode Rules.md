@@ -16,4 +16,7 @@ The workbook sheet is currently named `Gnatt Chart`. Keep that spelling unless W
 
 ## Lesson Capture
 
+- November 3, 2026 Pond header repair: `Contract_Edits` column 6 at `Gnatt Chart!Q24` was named `0` instead of `Paid`. A structured reference such as `Contract_Edits[0]` refers to that literal header, not a zero-value fallback. Rename the native table column and verify all dependent formulas across every worksheet, not just Gnatt Chart. In Pond, 222 formulas across Depends, Glasgow, Tim, Others and Gnatt Chart followed the rename; 279 source rows were retained.
+- Check VBA, defined names and Power Query separately: Excel's native table rename is not proof that references inside code or text strings were updated. Do not globally replace the number zero. Preserve query logic and do not trigger an unrelated data refresh for a header-only repair. Compare recalculated source and result values in the same engine, then recheck the saved/downloaded file; old cached results alone are not a reliable baseline.
+
 At completion of every Gnatt Chart-mode workbook update, write new reusable lessons to this file before marking the work complete. If there were no Gnatt Chart-specific lessons, say that in the final response.
