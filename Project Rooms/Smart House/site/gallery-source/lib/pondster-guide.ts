@@ -1,4 +1,5 @@
 import { floorPlanRooms } from './floor-plan';
+import { floorPlanCameras } from './floor-plan-cameras';
 import { basementColorSchemes, masterBathDesigns, hallBathDesigns, roomFeatures, systemFeatures, houseFeatures } from './features.js';
 
 import type { PondsterDestination } from './pondster-destinations';
@@ -59,9 +60,10 @@ function normalize(value: string) { return value.toLowerCase().replace(/[^a-z0-9
 function hasPhrase(input: string, phrase: string) { return ` ${input} `.includes(` ${normalize(phrase)} `); }
 
 const planAliases: Record<string,string[]> = { 'master-bedroom':['primary bedroom','main bedroom','master suite'], 'walk-in-closet':['walk in closet'], 'dining-room':['dining area'], 'spiral-stair':['spiral staircase','spiral stairs'], 'open-deck':['back deck'], 'existing-garage':['current garage'], 'new-garage':['proposed garage'] };
+const cameraNumberWords: Record<string,number> = { zero:0,one:1,two:2,three:3,four:4,five:5,six:6,seven:7,eight:8,nine:9,ten:10,eleven:11,twelve:12,first:1,second:2,third:3,fourth:4,fifth:5,sixth:6 };
 
 export function answerPondster(input: string): GuideReply {
-  const words = normalize(input).replace(/\bh\s*v\s*a\s*c\b/g, 'hvac').replace(/^(?:(?:hey|hi|hello|okay|ok) )?pondster(?: |$)/, '').trim();
+  const words = normalize(input).replace(/\bh\s*v\s*a\s*c\b/g, 'hvac').replace(/\b(camera|cam)(\d+)\b/g, '$1 $2').replace(/^(?:(?:hey|hi|hello|okay|ok) )?pondster(?: |$)/, '').trim();
   const has = (phrase: string) => hasPhrase(words, phrase);
   const planMatches = floorPlanRooms.filter(item => has(item.name) || (planAliases[item.id] ?? []).some(alias => has(alias)))
     .sort((a,b) => b.name.length-a.name.length).filter((item,_,items) => !items.some(other => other !== item && hasPhrase(normalize(other.name),item.name)));
@@ -77,7 +79,8 @@ export function answerPondster(input: string): GuideReply {
   if (!words || /^(hi|hello|hey|good morning|good afternoon|good evening)$/.test(words)) return { text: identity };
   if (/^(who are you|what is your name|what s your name)$/.test(words)) return { text: identity, action: { menu: 'Design', section: 'overview' } };
 
-  if (/\b(passwords?|passcodes?|secrets?|private (?:records?|information|data|details?|profiles?|codes?)|confidential (?:records?|information|data|details?)|live cameras?|live (?:camera )?(?:feeds?|footage|streams?)|(?:camera|nvr|eufy|surveillance) (?:footage|recordings?|feeds?)|saved profile|personal profile|alarm code|wifi|wi fi|owner records|owner data)\b/.test(words)) {
+  if (/\b(passwords?|passcodes?|secrets?|private (?:records?|information|data|details?|profiles?|codes?)|confidential (?:records?|information|data|details?)|live cameras?|live (?:camera )?(?:feeds?|footage|streams?)|(?:camera|nvr|eufy|surveillance) (?:footage|recordings?|feeds?)|saved profile|personal profile|alarm code|wifi|wi fi|owner records|owner data)\b/.test(words)
+    || (/\b(?:cameras?|cams?)\b/.test(words) && /\b(live|footage|recordings?|feeds?|streams?)\b/.test(words))) {
     return { text: 'I cannot provide private records, passwords, or real access codes here. My future owner tools will need authenticated access; saying you are the owner does not grant access.', action: { menu: 'Own' } };
   }
   const image=galleryVoiceCommand(words);
@@ -89,6 +92,12 @@ export function answerPondster(input: string): GuideReply {
   const manualRequest = /\b(manuals?|guides?|documentation|instructions?|quick start)\b/.test(words);
   const specificationRequest = /\b(specs?|specifications?|spec(?:ification)? ?sheets?|data ?sheets?)\b/.test(words);
   const equipmentDocumentRequest = manualRequest || specificationRequest;
+  const cameraTopic = /\b(?:cameras?|cams?)\b/.test(words);
+  const cameraNumbers = [...words.matchAll(/\b(?:camera|cam) (?:number )?(\d+|zero|one|two|three|four|five|six|seven|eight|nine|ten|eleven|twelve)\b/g)].map(match => cameraNumberWords[match[1]] ?? Number(match[1]));
+  cameraNumbers.push(...[...words.matchAll(/\b(first|second|third|fourth|fifth|sixth) (?:camera|cam)\b/g)].map(match => cameraNumberWords[match[1]]));
+  const namedCameras = cameraTopic ? floorPlanCameras.filter(camera => has(camera.name) || (camera.id === 'camera-3' && has('backdeck')) || (camera.id === 'camera-4' && has('west wall'))) : [];
+  const cameraTargets = floorPlanCameras.filter(camera => cameraNumbers.includes(camera.number) || namedCameras.includes(camera));
+  const cameraViewRequest = cameraTopic && !equipmentDocumentRequest && (cameraNumbers.length > 0 || namedCameras.length > 0 || /\b(views?|videos?|clips?|concepts?|virtual|simulations?|positions?|map|plan|layout)\b/.test(words));
   const equipmentQuestion = equipmentDocumentRequest || /\b(models?|brands?|manufactur(?:er|ers|es|ed)|equipment|selected|use|using|have|what|which)\b/.test(words);
   const cameraFeatureRequest = !equipmentDocumentRequest && /\b(features?|plans?|future|tracking|follow|exterior awareness)\b/.test(words);
   const cameraNavigation = !cameraFeatureRequest && /^(?:(?:please|can you|could you|would you) )*(?:show(?: me)?|open|go to|take me to)\b/.test(words) && /\bcameras?\b/.test(words);
@@ -101,7 +110,8 @@ export function answerPondster(input: string): GuideReply {
     || (manualRequest && /\b(equipment|manufacturer|devices?|systems?|all)\b/.test(words))
     || (specificationRequest && /\b(equipment|manufacturer|devices?|systems?)\b/.test(words));
   const knownEquipmentSpecification = specificationRequest && (equipmentMatches.length > 0 || equipmentLibrary)
-    && !/\b(hvac|heater|heat pump|plumbing|shower|tub|appliances?|fixtures?|paint|deck|structural)\b/.test(words);
+    && !/\b(hvac|heater|heat pump|plumbing|shower|tub|appliances?|fixtures?|paint|structural)\b/.test(words)
+    && !(has('deck') && !cameraTopic);
   const propertyCount = /\b(?:how many|number of|count of|total(?: number of)?) (?:bedrooms?|bathrooms?|beds?|baths?|rooms?)\b/.test(words)
     || /\b(?:one|two|three|four|five|six|seven|eight|nine|ten|\d+) (?:bedrooms?|bathrooms?)\b/.test(words);
   const knownMountQuestion = informational && /\b(tv|television|mount|mm max1|mmmax1)\b/.test(words)
@@ -136,6 +146,22 @@ export function answerPondster(input: string): GuideReply {
   }
   if (unverifiedDetail) {
     return { text: "I don't have verified pricing, property specifications, equipment records, or construction approvals to share here. My images show AI concepts, not installed or approved specifications. You can keep asking me about my public information." };
+  }
+  if (cameraViewRequest) {
+    const prefix = /^(?:(?:please|can you|could you|would you|will you) )*(?:show(?: me)?|open|view|see|watch|play|display|go to|take me to|where is|where are)\b/;
+    // Consume only public camera-view nouns, so another action cannot be dropped.
+    const remaining = words.replace(prefix, '').replace(/\b(?:front gable|barn door|back deck|west side|west wall|floor plan|first floor)\b/g, ' ')
+      .replace(/\b(?:the|my|your|me|please|on|in|from|explore|cameras?|cams?|number|\d+|zero|one|two|three|four|five|six|seven|eight|nine|ten|eleven|twelve|first|second|third|fourth|fifth|sixth|deck|backdeck|views?|videos?|clips?|conceptual|concepts?|virtual|simulations?|positions?|map|plan|layout)\b/g, ' ').trim();
+    if (!prefix.test(words) || remaining || /["“”«»]|(?:^|\s)['‘]|['’](?:$|\s)/.test(input)) {
+      return { text: 'I can show one of my four conceptual camera views when you ask for it directly.' };
+    }
+    if (cameraNumbers.some(number => !floorPlanCameras.some(camera => camera.number === number)) || cameraTargets.length > 1) {
+      return { text: 'I have four conceptual camera views: Camera 1 — Front gable, Camera 2 — Barn door, Camera 3 — Deck and Camera 4 — West side. Please choose one of these views.' };
+    }
+    const camera = cameraTargets[0];
+    return camera
+      ? { text: `I show Camera ${camera.number} — ${camera.name} in my Explore floor plan. ${camera.summary} My ${camera.durationSeconds}-second clip is a concept simulation; it does not confirm installed equipment, accurate optical coverage or a live connection.`, action: { menu:'Explore', section:'floor-plan', room:camera.id } }
+      : { text: 'I show four conceptual camera positions and their virtual videos on my Explore floor plan. My views do not confirm installed equipment, measured coverage or live feeds.', action: { menu:'Explore', section:'floor-plan' } };
   }
   const deckDrawing = /\b(deck|backdeck)\b/.test(words) && /\b(structural|engineering|engineered|drawings?|plans?|blueprints?)\b/.test(words);
   if (deckDrawing) {

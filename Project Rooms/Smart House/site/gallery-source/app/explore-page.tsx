@@ -2,6 +2,7 @@
 import type { Ref } from 'react';
 import { houseFeatures } from '../lib/features.js';
 import InteractiveFloorPlan, { type FloorPlanRoomRequest } from './interactive-floor-plan';
+import type { GalleryVoiceControls } from './gallery-media-controls';
 
 type Scene = 'day' | 'evening' | 'relax';
 const featureSections:Record<string,string> = {
@@ -9,12 +10,12 @@ const featureSections:Record<string,string> = {
   'I keep an eye outside':'exterior-awareness','My voice':'voice-feature','My lighting moods':'lighting-plans',
   'My sound & screens':'sound-screens','My climate & comfort':'climate','Your say in my design':'design-participation','My owner experience':'owner-experience'
 };
-export default function ExplorePage({ scene, onScene, floorPlanRequest, floorPlanDetailRef, onGallery, onFeature }: { scene: string; onScene: (scene: Scene) => void; floorPlanRequest?:FloorPlanRoomRequest; floorPlanDetailRef?:Ref<HTMLElement>; onGallery?: (galleryId: string) => void; onFeature?: (sectionId: string) => void }) {
+export default function ExplorePage({ scene, onScene, floorPlanRequest, floorPlanDetailRef, onGallery, onFeature, voice }: { scene: string; onScene: (scene: Scene) => void; floorPlanRequest?:FloorPlanRoomRequest; floorPlanDetailRef?:Ref<HTMLElement>; onGallery?: (galleryId: string) => void; onFeature?: (sectionId: string) => void; voice?: GalleryVoiceControls }) {
   return <section className="secondary-page explore-page">
     <h1 className="single-line-page-title explore-page-title">Get to know me. <em>Like The Back Of Your Room</em></h1>
     <p className="lead">Start with my floor plan. Choose a room to see its picture and details, then get to know the features that will make me Pondster.</p>
 
-    <InteractiveFloorPlan roomRequest={floorPlanRequest} detailRef={floorPlanDetailRef} onGallery={onGallery}/>
+    <InteractiveFloorPlan roomRequest={floorPlanRequest} detailRef={floorPlanDetailRef} onGallery={onGallery} voice={voice}/>
 
     <section id="pondster-explore-house" className="house-features" aria-labelledby="house-features-heading">
       <div className="feature-section-heading"><p className="eyebrow">THE BIG PICTURE</p><h2 id="house-features-heading">What makes me, <span className="pondster-inline-signature">Pondster</span>.</h2></div>

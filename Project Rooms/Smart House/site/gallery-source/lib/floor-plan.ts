@@ -1,7 +1,7 @@
 import { roomFeatures } from './features.js';
 
-export const PLAN_WIDTH = 1190;
-export const PLAN_HEIGHT = 1030;
+export const PLAN_WIDTH = 2340;
+export const PLAN_HEIGHT = 2225;
 
 export type FloorPlanRoom = {
   id: string;
@@ -14,9 +14,12 @@ export type FloorPlanRoom = {
 
 // Navigation regions follow the supplied first-floor presentation drawing.
 // The living/dining/kitchen zones share an open space; these are not new walls.
-// Native CAD inches -> PDF points -> the v9 drawing-only crop (140,245,1330,1275).
+// Keep the established CAD room boundaries while moving them onto House Render's
+// v15 camera-map base (Presentation Plan v11). Its image is 5/3 PDF scale, cropped
+// at (105,345) and padded (130,160). Relative to the old drawing-only crop:
+// newX = oldX * 5/3 + 775/3; newY = oldY * 5/3 + 670/3.
 function region(points: [number, number][]) {
-  return points.map(([x, y]) => `${(24 + x * 1.37).toFixed(2)},${(1116 - y * 1.37).toFixed(2)}`).join(' ');
+  return points.map(([x, y]) => `${((24 + x * 1.37) * 5 / 3 + 775 / 3).toFixed(2)},${((1116 - y * 1.37) * 5 / 3 + 670 / 3).toFixed(2)}`).join(' ');
 }
 function box(x1: number, y1: number, x2: number, y2: number) {
   return region([[x1,y1],[x2,y1],[x2,y2],[x1,y2]]);
@@ -82,9 +85,9 @@ export const floorPlanRooms: FloorPlanRoom[] = [
     features: ['I label this space Bedroom 2 on my plan.', 'I will add its furniture, lighting and finish selections here.']
   },
   {
-    id: 'open-deck', name: 'Open Deck', polygon: box(230.5420004593157,412.2386944702037,594.8641685495109,556.2386944702037),
+    id: 'open-deck', name: 'Open Deck', polygon: box(230.5420004593157,412.2386944702037,594.8641685495109,517.86),
     summary: 'My open deck will span the space between my rear return walls, as shown in my planned layout.',
-    features: ['My future deck will extend 12 feet from the exterior face of my rear wall.', 'My deck boards will run parallel to my left return wall.', ...roomFeatures['back-deck'].features],
+    features: ['My deck will stop short of my garage access door and the bend in my garage-side wall.', 'My deck boards will run parallel to my left return wall.', 'My deck edge follows my reviewed visual concept; its final dimensions and level still need confirmation.', ...roomFeatures['back-deck'].features],
     galleryId: 'back-deck'
   },
   {

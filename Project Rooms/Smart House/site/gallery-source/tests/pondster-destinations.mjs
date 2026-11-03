@@ -2,8 +2,9 @@ import assert from 'node:assert/strict';
 import { DESTINATION_SECTIONS, GALLERY_ROOM_IDS, FLOOR_PLAN_ROOM_IDS, parsePondsterDestination, getPondsterDestinationId } from '../lib/pondster-destinations.ts';
 import { galleries } from '../lib/designs.ts';
 import { floorPlanRooms } from '../lib/floor-plan.ts';
+import { floorPlanCameras } from '../lib/floor-plan-cameras.ts';
 assert.deepEqual([...GALLERY_ROOM_IDS].sort(),galleries.map(room=>room.id).sort());
-assert.deepEqual([...FLOOR_PLAN_ROOM_IDS].sort(),floorPlanRooms.map(room=>room.id).sort());
+assert.deepEqual([...FLOOR_PLAN_ROOM_IDS].sort(),[...floorPlanRooms,...floorPlanCameras].map(room=>room.id).sort());
 for(const [menu,sections] of Object.entries(DESTINATION_SECTIONS))for(const section of sections) {
   const action={menu,section,...(menu==='Explore'&&section==='room'?{room:'kitchen'}:{})};
   assert.deepEqual(parsePondsterDestination(action),action);

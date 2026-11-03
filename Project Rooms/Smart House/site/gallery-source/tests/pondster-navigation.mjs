@@ -4,6 +4,7 @@ import { createRequire, stripTypeScriptTypes } from 'node:module';
 import ts from 'typescript';
 import { galleries } from '../lib/designs.ts';
 import { floorPlanRooms } from '../lib/floor-plan.ts';
+import { floorPlanCameras } from '../lib/floor-plan-cameras.ts';
 import { houseFeatures, roomFeatures } from '../lib/features.js';
 import { getGalleryScrollTop, getSectionRevealTop } from '../lib/gallery-scroll.ts';
 import { parsePondsterDestination, getPondsterDestinationId, DESTINATION_SECTIONS } from '../lib/pondster-destinations.ts';
@@ -212,8 +213,8 @@ const featureDeclaration=files['explore-page'].match(/const featureSections:Reco
 const features=new Function(stripTypeScriptTypes(featureDeclaration)+';return featureSections;')();
 for(const feature of houseFeatures){assert.ok(DESTINATION_SECTIONS.Explore.includes(features[feature.title]),'Every published house-feature card has a fixed allowed destination.');}
 const planSource=files['interactive-floor-plan'];
-assert.match(planSource,/id="pondster-explore-floor-plan"/);assert.match(planSource,/data-pondster-room=\{selectedRoom.id\}/);
-assert.match(planSource,/data-pondster-gallery=\{selectedRoom.galleryId\}/);
+assert.match(planSource,/id="pondster-explore-floor-plan"/);assert.match(planSource,/data-pondster-room=\{selectedCamera\?\.id \?\? selectedRoom.id\}/);
+assert.match(planSource,/data-pondster-gallery=\{selectedCamera \? undefined : selectedRoom.galleryId\}/);
 assert.match(planSource,/id="pondster-explore-rooms"/);
 assert.match(planSource,/id=\{selectedRoom.galleryId \? `pondster-explore-room-\$\{selectedRoom.galleryId\}` : undefined\}/);
 const roomOptionsSource=planSource.match(/const additionalSpaces =[\s\S]*?const exploreRooms =[^\n]+;/)?.[0];assert.ok(roomOptionsSource);
@@ -222,13 +223,13 @@ assert.equal(floorPlanRooms.length,19);assert.equal(new Set(exploreRooms.map(roo
 assert.deepEqual(additionalSpaces.map(room=>room.galleryId),['front-elevation','adu'],'Spaces outside the first-floor plan remain available in the same selector.');
 assert.match(planSource,/floorPlanRooms.map\(room => <option/);assert.match(planSource,/additionalSpaces.map\(room => <option/);
 const selectionBody=planSource.match(/  useEffect\(\(\) => \{([\s\S]*?)\n  \},\[roomRequest\?\.id,roomRequest\?\.room,roomRequest\?\.section\]\);/)?.[1];assert.ok(selectionBody);
-const chooseRequested=new Function('roomRequest','floorPlanRooms','exploreRooms','setSelectedId',selectionBody),selected=[];
-chooseRequested({id:1,room:'pantry'},floorPlanRooms,exploreRooms,room=>selected.push(room));
-chooseRequested({id:2,room:'pantry'},floorPlanRooms,exploreRooms,room=>selected.push(room));
-chooseRequested({id:3,room:'private-room'},floorPlanRooms,exploreRooms,room=>selected.push(room));
+const chooseRequested=new Function('roomRequest','floorPlanRooms','exploreRooms','setSelectedId','floorPlanCameras',selectionBody),selected=[];
+chooseRequested({id:1,room:'pantry'},floorPlanRooms,exploreRooms,room=>selected.push(room),floorPlanCameras);
+chooseRequested({id:2,room:'pantry'},floorPlanRooms,exploreRooms,room=>selected.push(room),floorPlanCameras);
+chooseRequested({id:3,room:'private-room'},floorPlanRooms,exploreRooms,room=>selected.push(room),floorPlanCameras);
 assert.deepEqual(selected,['pantry','pantry'],'Valid repeated plan requests select before reveal; unknown room IDs do not alter selection.');
 for(const room of floorPlanRooms){
-  const result=[];chooseRequested({id:4,section:'floor-plan',room:room.id},floorPlanRooms,exploreRooms,id=>result.push(id));
+  const result=[];chooseRequested({id:4,section:'floor-plan',room:room.id},floorPlanRooms,exploreRooms,id=>result.push(id),floorPlanCameras);
   assert.deepEqual(result,[room.id],`The exact ${room.id} plan region remains selectable.`);
 }
 const featureListSource=planSource.match(/const selectedFeatures =[^\n]+;/)?.[0];assert.ok(featureListSource);
@@ -258,7 +259,7 @@ const hooks={
 function component(name){
   if(components.has(name))return components.get(name);
   const module={exports:{}};
-  const dependencies={react:hooks,'../lib/designs':{galleries},'../lib/design-views':{designImageSource},'../lib/features.js':{houseFeatures,roomFeatures},'../lib/floor-plan':{floorPlanRooms,PLAN_WIDTH:1190,PLAN_HEIGHT:1030}};
+  const dependencies={react:hooks,'../lib/designs':{galleries},'../lib/design-views':{designImageSource},'../lib/features.js':{houseFeatures,roomFeatures},'../lib/floor-plan':{floorPlanRooms,PLAN_WIDTH:2340,PLAN_HEIGHT:2225},'../lib/floor-plan-cameras':{floorPlanCameras},'./camera-plan-video':{default:()=>null}};
   const load=specifier=>specifier in dependencies?dependencies[specifier]:specifier==='./room-primary-image'?{default:component('room-primary-image')}:specifier==='./interactive-floor-plan'?{default:component('interactive-floor-plan')}:require(specifier);
   new Function('require','module','exports',ts.transpileModule(files[name],{compilerOptions:{module:ts.ModuleKind.CommonJS,target:ts.ScriptTarget.ES2022,jsx:ts.JsxEmit.ReactJSX}}).outputText)(load,module,module.exports);
   components.set(name,module.exports.default);return module.exports.default;

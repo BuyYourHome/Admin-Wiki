@@ -12,7 +12,7 @@ export type PondsterMenu = keyof typeof DESTINATION_SECTIONS;
 export type PondsterSection = typeof DESTINATION_SECTIONS[PondsterMenu][number];
 export type PondsterDestination = { menu:PondsterMenu; section?:PondsterSection; room?:string; scene?:'day'|'evening'|'relax'; tour?:true; image?:'first'|'next'|'previous'|'close'|'enlarge'|'vote';control?:SiteControlCommand };
 export const GALLERY_ROOM_IDS = ['kitchen','media-center','front-elevation','garage-barn-door','adu','master-bath','hall-bath','spiral-staircase','back-deck'] as const;
-export const FLOOR_PLAN_ROOM_IDS = ['living-room','kitchen','dining-room','master-bedroom','master-bath','hall','hall-bath','spiral-stair','bedroom-1','bedroom-2','open-deck','pantry','laundry','existing-garage','new-garage','walk-in-closet','bedroom-1-closet','bedroom-2-closet','utility-closet'] as const;
+export const FLOOR_PLAN_ROOM_IDS = ['living-room','kitchen','dining-room','master-bedroom','master-bath','hall','hall-bath','spiral-stair','bedroom-1','bedroom-2','open-deck','pantry','laundry','existing-garage','new-garage','walk-in-closet','bedroom-1-closet','bedroom-2-closet','utility-closet','camera-1','camera-2','camera-3','camera-4'] as const;
 const menuSet = new Set<string>(Object.keys(DESTINATION_SECTIONS));
 const gallerySet = new Set<string>(GALLERY_ROOM_IDS), planSet = new Set<string>(FLOOR_PLAN_ROOM_IDS);
 

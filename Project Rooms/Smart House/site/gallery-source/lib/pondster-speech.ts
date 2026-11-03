@@ -2,6 +2,7 @@ import type { GuideReply } from './pondster-guide';
 import { parsePondsterDestination } from './pondster-destinations';
 import { galleries } from './designs';
 import { floorPlanRooms } from './floor-plan';
+import { floorPlanCameras } from './floor-plan-cameras';
 import { PONDSTER_LOCATION_TEXT } from './pondster-identity';
 
 function words(input:string) { return input.toLowerCase().replace(/[^a-z0-9]+/g,' ').trim(); }
@@ -32,6 +33,7 @@ export function getPondsterSpeechText(question:string, reply:GuideReply):string 
     return section && labels[section]?`${section==='trades'||section==='voice'?'Here are':'Here’s'} my ${labels[section]}.`:'Here’s my Contact page.';
   }
   if(action.menu==='Explore') {
+    if(section==='floor-plan' && action.room){const camera=floorPlanCameras.find(item=>item.id===action.room);if(camera)return `Here’s my Camera ${camera.number} — ${camera.name} concept view.`;}
     if(section==='floor-plan' && action.room){const name=floorPlanRooms.find(item=>item.id===action.room)?.name;return name?`Here are my ${name} plan details.`:'Here’s my floor plan.';}
     if(action.room){const name=galleries.find(item=>item.id===action.room)?.name;return name?`Here are my ${name} details.`:'Here are my room details.';}
     const labels:Record<string,string>={'floor-plan':'floor plan',house:'house features',rooms:'room features',lighting:'lighting illustration','hot-water':'hot-water plan',presence:'presence-sensing plan','bath-and-shower':'bath and shower plans','exterior-awareness':'exterior-camera plan','voice-feature':'voice feature','lighting-plans':'lighting plans','sound-screens':'sound and screens',climate:'climate plans','design-participation':'design choices','owner-experience':'future owner experience'};

@@ -56,3 +56,7 @@ Version **59** was published and visually verified on the custom domain. Live ro
 Version **60** publishes v9 at https://pondstr.com/#explore. Live Hall Bath and Spiral Stair selections displayed their separate details. Full release metadata: [[Project Rooms/Smart House/working/hosting-and-domain]]. Proof outside Git: `C:\Users\wesbr\.codex\visualizations\2026\10\27\pondster-v9-floor-plan-published.jpg`. The v7 sections above preserve the original release history; v9 is the current source.
 
 Version 61 keeps the v9 drawing and all 19 regions, and replaces the gallery action with a framed primary picture inside each room detail. The nine room cards expand their pictures and details in place. See [[Project Rooms/Smart House/working/future-feature-language-and-room-pictures]] for image selection, wording and verification limits.
+
+## Unpublished camera-map replacement — 2026-11-02
+
+Wes requested the newest House Render camera plan and matching virtual videos. The local draft uses camera package v15's clean base from presentation plan v11, registers all 19 existing room regions, shortens the deck hit region to source Y517.86, and adds four camera fields/markers with video details. Room images retain the November 1 draft's matching-gallery navigation. The public site still uses its prior plan until Wes explicitly authorizes publication. Exact source hashes, map transform, camera IDs/videos, known viewpoint differences and verification are in [[Project Rooms/Smart House/working/camera-floor-plan-draft-20261102]].
