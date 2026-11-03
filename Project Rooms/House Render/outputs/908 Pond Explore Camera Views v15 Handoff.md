@@ -1,6 +1,8 @@
 # 908 Pond Street Explore camera views v15
 
-Wes authorized this House Render package for Pondstr.com Explore publication on 2026-11-03 with “commit, push & publish,” then explicitly authorized sending it to the existing Smart House task. Smart House owns site implementation and publication. This note records the House Render asset handoff; the Home Designer plan remains the geometry authority.
+**Status: publication handoff canceled before delivery. Do not publish from this request.** Wes authorized this House Render package for Pondstr.com Explore publication on 2026-11-03 with “commit, push & publish,” then explicitly authorized sending it to the existing Smart House task. He subsequently directed cancellation of that exact queued handoff. Smart House owns site implementation and publication. The Home Designer plan remains the geometry authority.
+
+The canceled message ID was `prmsg-house-render-smart-house-camera-v15-20261103-001`, immutable payload hash `6ac0e5672c440e4aa20af2d4f0a580d5e0f90ac12c4f70415de0797a26074ddb`. Before cancellation it was `Queued` with zero delivery attempts, no Smart House receipt and no result. The exact active queue record was removed under the shared queue lock after verifying its ID, hash, source, destination and undelivered state. A subsequent check confirmed it absent. No dispatcher repair was requested and no new Smart House task turn was started by this handoff. The House Render image package remains available for a future separately authorized request.
 
 ## Authoritative asset package
 
@@ -18,7 +20,7 @@ Wes authorized this House Render package for Pondstr.com Explore publication on 
 
 All 17 packaged files passed SHA-256 verification against `sha256-manifest.txt` after copying to the external House Render archive. Earlier v13/v14 versions remain intact.
 
-## Publication scope for Smart House
+## Prepared publication scope (canceled)
 
 - Keep all 19 existing clickable room regions, gallery links, voice controls, and camera videos unless a change is required to make the new stills reachable.
 - Show the four current stills from their corresponding camera mounts on Explore. Preserve the existing video access.
