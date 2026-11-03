@@ -1,10 +1,10 @@
-# Swipe and Explore links — unpublished draft, 2026-11-01
+# Swipe and Explore links — draft 2026-11-01, published version 87
 
 ## Authority and publication gate
 
 Wes requested swiping wherever the website has Previous/Next navigation; Explore floor-plan room pictures that open their matching Design gallery; and clickable cards under “What makes me, Pondster.” He approved best-guess destinations and expects to redirect some later. He specifically requested the camera card lead to a Living Room image showing surveillance cameras on the TV.
 
-Wes explicitly said **do not publish until he says so**. These changes are saved locally only. Public Pondstr.com remains version **86**, Site source `89937dc22cea536c130350ebf2a82027a08e400d`. No Site source commit/push, archive upload, saved version or deployment was made for this draft. Admin Wiki changes are committed locally without a push. This gate overrides the room's ordinary publication default for the pending draft.
+Wes initially said **do not publish until he says so**, so this draft was saved locally over public version 86. On November 2 he lifted the hold with “You can publish all when you get that,” authorizing this draft and the camera plan together. Version **87** is now public from source `1830a53f56c8683c7d3b4fadfd2a5514682feaac`; the supported helper pushed its source and packaged the checked build. Admin Wiki records remain locally committed without a push.
 
 ## Behavior
 
@@ -40,4 +40,4 @@ Local browser verification at `http://127.0.0.1:19082/` confirmed Hall Bath's ma
 
 Unpublished proof: `C:\Users\wesbr\.codex\visualizations\2026\10\16\01a14585-ffe6-7850-8db1-efcdd58e7071\pondster-explore-links-draft-20261101.png`.
 
-Next step: await Wes's explicit publication instruction. Before any later release, recheck the local changes and map, preserve unrelated work, use the supported Sites source/package/deploy workflow, and verify the public result. Do not infer publication permission from acceptance of these provisional destinations.
+Published as version 87 with the camera plan. Public Hall Bath image → first gallery choice and sound feature → exact receiver-guide reveal passed; the 25 combined-release text mirrors match the clean Site checkout. Physical phone swipes remain untested. Full release IDs, archive hash, live proof and verification: [[Project Rooms/Smart House/working/camera-floor-plan-draft-20261102]] and [[Project Rooms/Smart House/working/hosting-and-domain]]. The original destination defaults and missing surveillance-on-TV illustration remain as documented above.

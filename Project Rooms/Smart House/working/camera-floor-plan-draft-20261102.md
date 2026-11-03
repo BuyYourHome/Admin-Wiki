@@ -1,8 +1,8 @@
-# Camera floor plan — unpublished draft, November 2, 2026
+# Camera floor plan — version 87, November 2, 2026
 
 ## Authority and saved state
 
-Wes directed Smart House to use the newest House Render floor plan with camera locations, replace the existing floor plan, retain every established room connection, and treat each camera arc as a room-like target that displays its virtual video. The earlier instruction not to publish until Wes says so still applies. This is a local draft layered onto the saved November 1 swipe/Explore-link draft. Public Pondstr.com remains version 86; no Site source push, archive packaging/upload, saved version, deployment or Wiki push occurred.
+Wes directed Smart House to use the newest House Render floor plan with camera locations, replace the existing floor plan, retain every established room connection, and treat each camera arc as a room-like target that displays its virtual video. The work was initially held locally. Wes subsequently lifted that hold with “You can publish all when you get that,” authorizing both this change and the saved November 1 swipe/Explore-link draft. Version 87 is now public; its source was pushed with the supported Sites helper. No Admin Wiki push occurred.
 
 Source rooms are read-only. Smart House changed only its owned website sources and records, with no changes to House Render, Home Designer, actual cameras, home controls or credentials.
 
@@ -51,4 +51,10 @@ Local browser verification confirmed C1 arc playback; C2 marker playback; C3 key
 
 Proofs outside Git: `C:\Users\wesbr\.codex\visualizations\2026\10\16\01a14585-ffe6-7850-8db1-efcdd58e7071\pondster-camera-map-draft-20261102.png` and `pondster-camera-video-draft-20261102.png` in the same folder. Sixteen text files are mirrored byte-equal in `site/gallery-source`; nine binary copies remain only in the ignored independent Site runtime and their authoritative external sources.
 
-Publication remains on hold. On a later explicit publish instruction, include both this draft and the saved November 1 swipe/Explore draft, recheck source state and exact assets, then use the supported Sites publication workflow and verify the public result. Do not treat this camera integration as publication permission.
+## Publication
+
+Version **87** published successfully at `2026-11-03T02:34:26.142206+00:00` (November 2, 9:34 PM Eastern), preserving public access and environment revision **4**. Source `1830a53f56c8683c7d3b4fadfd2a5514682feaac`; saved version `appgprj_6ad4d98e08708191858cab113814704e~appgver_279632496ca88191a6f63ff1e128ff94`; deployment `appgdep_6ae94824c0b8819182a52da37b8f686b`. Archive `sha256:1673ffbffddea64f2bd672ea26e03e2cb95c81cd9c2e9091b7b2b2471621ae19`, 150 files / 111,452,160 uncompressed bytes. Archive path: `C:\Users\wesbr\AppData\Local\Temp\pondster-cameras-and-swipes-v87-20261102.tar.gz`.
+
+All 25 combined-release text mirrors match the clean pushed Site checkout. All nine new public camera files matched their local hashes. Public browser checks on Pondstr.com confirmed C3/C4 muted playback with duration six seconds/no error, enlargement, Next and Escape; Hall Bath room image opening its first gallery choice; and the sound feature card revealing the receiver guides at top192.875px beneath the fixed header. No vote/comment, microphone, paid voice call or device operation was used. Physical finger swipes and a fresh natural spoken trial remain unperformed.
+
+Live proof: `C:\Users\wesbr\.codex\visualizations\2026\10\16\01a14585-ffe6-7850-8db1-efcdd58e7071\pondster-cameras-and-swipes-published-v87-20261102.png`. The existing user-owned public tab remains open on Explore. This publication record supersedes the earlier local-only hold and draft-state wording in the intake history.

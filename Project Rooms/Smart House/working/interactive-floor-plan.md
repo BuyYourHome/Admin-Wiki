@@ -60,3 +60,5 @@ Version 61 keeps the v9 drawing and all 19 regions, and replaces the gallery act
 ## Unpublished camera-map replacement — 2026-11-02
 
 Wes requested the newest House Render camera plan and matching virtual videos. The local draft uses camera package v15's clean base from presentation plan v11, registers all 19 existing room regions, shortens the deck hit region to source Y517.86, and adds four camera fields/markers with video details. Room images retain the November 1 draft's matching-gallery navigation. The public site still uses its prior plan until Wes explicitly authorizes publication. Exact source hashes, map transform, camera IDs/videos, known viewpoint differences and verification are in [[Project Rooms/Smart House/working/camera-floor-plan-draft-20261102]].
+
+Wes subsequently authorized publishing all completed changes. Version **87** now serves this camera plan and the swipe/Explore links on Pondstr.com. Public camera playback/enlargement and Hall Bath image-to-gallery routing passed verification; the intake's publication hold is superseded. Full release record: [[Project Rooms/Smart House/working/hosting-and-domain]].
