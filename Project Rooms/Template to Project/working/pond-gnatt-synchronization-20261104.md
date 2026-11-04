@@ -1,5 +1,7 @@
 # Pond Gnatt Synchronization
 
+The later [[pond-active-item-alignment-20261104]] follow-up supersedes this repair's all-record sort and filter restrictions. It adds active-first alignment, preserved ordinary filters, one extending K rule, source-event detection and serialized query refreshes.
+
 ## Scope And Authority
 
 - Mode: Gnatt Chart. Target: 26_Project Management - 908 Pond St 3.xlsm only.
