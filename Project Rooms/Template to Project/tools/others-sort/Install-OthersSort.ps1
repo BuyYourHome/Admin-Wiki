@@ -1,5 +1,5 @@
 param(
- [Parameter(Mandatory)][ValidateSet('Build','Verify')][string]$Mode,
+ [Parameter(Mandatory)][ValidateSet('Build','Reorder','Verify')][string]$Mode,
  [Parameter(Mandatory)][string]$File,
  [Parameter(Mandatory)][string]$Evidence,
  [string]$Output
@@ -35,7 +35,7 @@ function Aligned($Source,$Target){
 }
 function NativeSort($Table,[string]$Field,[int]$Direction){$Table.Sort.SortFields.Clear();[void]$Table.Sort.SortFields.Add($Table.ListColumns.Item($Field).DataBodyRange,0,$Direction);$Table.Sort.Header=1;$Table.Sort.Apply()}
 $app=$null;$book=$null;$path=$File
-if($Mode -eq 'Build') {Assert ($Output -and -not(Test-Path -LiteralPath $Output)) 'New output required.';Copy-Item -LiteralPath $File -Destination $Output;$path=$Output}
+if($Mode -ne 'Verify') {Assert ($Output -and -not(Test-Path -LiteralPath $Output)) 'New output required.';Copy-Item -LiteralPath $File -Destination $Output;$path=$Output}
 try {
  $app=New-Object -ComObject Excel.Application
  $app.Visible=$false;$app.DisplayAlerts=$false;$app.EnableEvents=$false;$app.AutomationSecurity=1;$app.AskToUpdateLinks=$false
@@ -46,7 +46,7 @@ try {
  $app.Calculation=-4105;$app.Calculate()
  $s=$book.Worksheets.Item('Others');$main=$s.ListObjects.Item('tblContractOthers');$over=$s.ListObjects.Item('tblOthersPriceOverrides')
  $headerHeight=$s.Rows.Item(4).RowHeight
- $before=if($Mode -eq 'Build'){Metadata $book}else{@{}}
+ $before=if($Mode -ne 'Verify'){Metadata $book}else{@{}}
  $prices=PriceMap $over 'Unit Price Override';$computed=PriceMap $main 'Unit Price 2'
  if($Mode -eq 'Build') {
   Assert (-not $book.ReadOnly) 'Work copy is read-only.'
@@ -87,6 +87,39 @@ try {
   @{passed=$true;before=$before;after=$after;overridePrices=$prices;computedPrices=$computed;table=$over.Range.Address();hiddenPrice=$s.Columns.Item('H').Hidden;hiddenHelper=$new.Range.EntireColumn.Hidden}|ConvertTo-Json -Depth 35|Set-Content -LiteralPath $Evidence -Encoding utf8
   $s.PageSetup.PrintArea='$M$1:$W$24';$s.PageSetup.Orientation=2;$s.PageSetup.Zoom=$false;$s.PageSetup.FitToPagesWide=1;$s.PageSetup.FitToPagesTall=1
   $s.ExportAsFixedFormat(0,[IO.Path]::ChangeExtension($Evidence,'.pdf'))
+ } elseif($Mode -eq 'Reorder') {
+  Assert (-not $book.ReadOnly) 'Work copy is read-only.'
+  Assert ($main.Range.Address() -eq '$A$4:$P$57' -and $over.Range.Address() -eq '$T$4:$X$57') 'Owner layout changed; remap before editing.'
+  $headers=@($over.ListColumns|ForEach-Object {$_.Name})
+  Assert (($headers -join '|') -eq 'Index|Item|Unit Price Override|Mapping Note|_Display Order') 'Unexpected override schema.'
+  Assert (-not $over.AutoFilter.FilterMode) 'Review the independent override filter before moving columns.'
+  $approved=$main.AutoFilter.Filters.Item($main.ListColumns.Item('Approve').Index)
+  Assert ($approved.On -and $approved.Criteria1 -in @('Yes','=Yes')) 'Review the latest main-table filter before editing.'
+  for($i=1;$i -le $main.ListColumns.Count;$i++){if($i -ne $main.ListColumns.Item('Approve').Index){Assert (-not $main.AutoFilter.Filters.Item($i).On) 'Additional main-table filter needs mapping.'}}
+  $criterion=$approved.Criteria1
+  $widths=@{};foreach($c in $over.ListColumns){$widths[$c.Name]=$c.Range.EntireColumn.ColumnWidth}
+  $hidden=@();for($r=5;$r -le 57;$r++){$hidden+= $s.Rows.Item($r).Hidden}
+  $app.Calculation=-4135
+  $main.AutoFilter.ShowAllData()
+  $over.ListColumns.Item('Unit Price Override').Range.Cut()
+  $over.ListColumns.Item('Index').Range.Insert(-4161)
+  $app.CutCopyMode=$false
+  Assert ((@($over.ListColumns|ForEach-Object {$_.Name}) -join '|') -eq 'Unit Price Override|Index|Item|Mapping Note|_Display Order') 'Column move failed.'
+  foreach($c in $over.ListColumns){$c.Range.EntireColumn.ColumnWidth=$widths[$c.Name]}
+  [void]$main.Range.AutoFilter($main.ListColumns.Item('Approve').Index,$criterion)
+  for($r=5;$r -le 57;$r++){$s.Rows.Item($r).Hidden=$hidden[$r-5]}
+  $s.Rows.Item(4).RowHeight=$headerHeight
+  $app.Calculation=-4105;$app.Calculate()
+  [void]$app.Run(($macro+'BYHOthersSort.SyncOthersPrices'),$true)
+  Aligned $main $over
+  SamePrices $prices (PriceMap $over 'Unit Price Override')
+  SamePrices $computed (PriceMap $main 'Unit Price 2')
+  $after=Metadata $book
+  foreach($key in @('queries','names','shapes','links','codes')){Assert (($before[$key]|ConvertTo-Json -Depth 25 -Compress) -ceq ($after[$key]|ConvertTo-Json -Depth 25 -Compress)) "Unrelated change: $key"}
+  $book.Save()
+  @{passed=$true;before=$before;after=$after;overridePrices=$prices;computedPrices=$computed;table=$over.Range.Address();headers=@($over.ListColumns|ForEach-Object {$_.Name});priceCell=$over.ListColumns.Item('Unit Price Override').DataBodyRange.Cells.Item(1,1).Address()}|ConvertTo-Json -Depth 35|Set-Content -LiteralPath $Evidence -Encoding utf8
+  $s.PageSetup.PrintArea='$M$1:$W$24';$s.PageSetup.Orientation=2;$s.PageSetup.Zoom=$false;$s.PageSetup.FitToPagesWide=1;$s.PageSetup.FitToPagesTall=1
+  $s.ExportAsFixedFormat(0,[IO.Path]::ChangeExtension($Evidence,'.pdf'))
  } else {
   Write-Output 'Verify: opening, manual sorts, and immediate price update.'
   Assert ($s.Columns.Item('H').Hidden -and $over.ListColumns.Item('_Display Order').Range.EntireColumn.Hidden) 'Calculated/helper column is visible.'
@@ -110,7 +143,7 @@ try {
   ReadWhenReady {$s.Calculate()}
   Start-Sleep -Seconds 3
   $s.Activate()
-  $s.Range('V5').Select()
+  $over.ListColumns.Item('Unit Price Override').DataBodyRange.Cells.Item(1,1).Select()
   Write-Output "Events=$($app.EnableEvents); status=$($app.StatusBar)"
   Aligned $main $over
   SamePrices $prices (PriceMap $over 'Unit Price Override')

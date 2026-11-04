@@ -1,5 +1,6 @@
 """Independent read-only audit of the adjacent Others table synchronization."""
 import ast
+import copy
 import json
 import pathlib
 import sys
@@ -12,7 +13,8 @@ for node in ast.parse(helper.read_text()).body:
     nodes.append(node)
 exec(compile(ast.Module(body=nodes, type_ignores=[]), '<read-only helpers>', 'exec'))
 
-source, output, evidence = map(pathlib.Path, sys.argv[1:])
+price_first = '--price-first' in sys.argv
+source, output, evidence = map(pathlib.Path, [v for v in sys.argv[1:] if v != '--price-first'])
 a, az, ac = load(source)
 b, bz, bc = load(output)
 issues = []
@@ -21,9 +23,11 @@ for sheet, cells in ac.items():
     for addr in cells.keys() | bc[sheet].keys():
         r, c = coordinate_to_tuple(addr)
         old = cells.get(addr, (None, None, None, 0))
-        new = bc[sheet].get(addr, (None, None, None, 0))
-        override = sheet == 'Others' and 20 <= c <= 24 and 4 <= r <= 57
-        banner = sheet == 'Others' and addr == 'T2'
+        moved_c = {20:21,21:22,22:20}.get(c,c) if price_first and sheet == 'Others' and 4 <= r <= 57 else c
+        moved_addr = get_column_letter(moved_c) + str(r)
+        new = bc[sheet].get(moved_addr, (None, None, None, 0))
+        override = not price_first and sheet == 'Others' and 20 <= c <= 24 and 4 <= r <= 57
+        banner = not price_first and sheet == 'Others' and addr == 'T2'
         if not override and not banner:
             if old[0] != new[0]:
                 issues.append(['formula', sheet, addr, old[0], new[0]])
@@ -43,7 +47,8 @@ for sheet, cells in ac.items():
         if (x_height,x.hidden,x.outlineLevel) != (y_height,y.hidden,y.outlineLevel):
             issues.append(['row dimension', sheet, k])
     for k, x in a[sheet].column_dimensions.items():
-        y = b[sheet].column_dimensions[k]
+        dest = {'T':'U','U':'V','V':'T'}.get(k,k) if price_first and sheet == 'Others' else k
+        y = b[sheet].column_dimensions[dest]
         if x.width != y.width or x.outlineLevel != y.outlineLevel:
             issues.append(['column width', sheet, k])
         if x.hidden != y.hidden and not (sheet == 'Others' and k in ('H','X')):
@@ -53,19 +58,26 @@ for sheet, cells in ac.items():
     for name in a[sheet].tables:
         x,y = a[sheet].tables[name],b[sheet].tables[name]
         if name == 'tblOthersPriceOverrides':
-            if y.ref != 'T4:X57' or [c.name for c in y.tableColumns] != [c.name for c in x.tableColumns]+['_Display Order']:
+            if price_first:
+                expected=copy.deepcopy(x)
+                cols=list(expected.tableColumns)
+                expected.tableColumns=[cols[2],cols[0],cols[1],*cols[3:]]
+                if table_definition(a,expected) != table_definition(b,y):
+                    issues.append(['override reordered schema'])
+            elif y.ref != 'T4:X57' or [c.name for c in y.tableColumns] != [c.name for c in x.tableColumns]+['_Display Order']:
                 issues.append(['override table schema'])
         elif table_definition(a,x) != table_definition(b,y):
             issues.append(['table schema',sheet,name])
 
 def override_records(book):
-    return {book['Others'].cell(r,20).value: tuple(book['Others'].cell(r,c).value for c in range(21,24))
+    headers={c.value:c.column for c in book['Others'][4] if c.value is not None}
+    return {book['Others'].cell(r,headers['Index']).value: tuple(book['Others'].cell(r,headers[c]).value for c in ('Item','Unit Price Override','Mapping Note'))
             for r in range(5,58)}
 
 if override_records(a) != override_records(b):
     issues.append(['override record changed'])
 for r in range(5,58):
-    if b['Others'].cell(r,1).value != b['Others'].cell(r,20).value:
+    if b['Others'].cell(r,1).value != b['Others'].cell(r,21 if price_first else 20).value:
         issues.append(['alignment',r])
 if not b['Others'].column_dimensions['H'].hidden or not b['Others'].column_dimensions['X'].hidden:
     issues.append(['hidden calculated columns'])
