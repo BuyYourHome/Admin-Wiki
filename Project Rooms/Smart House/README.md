@@ -42,6 +42,8 @@ On 2026-10-28 Wes supplied eufy S4 Max and Sony AN1000 packaging photos and reit
 - Setup authority: central message `prmsg-jean-create-pr-smart-house-20261016-001`; dispatch `jeans-voice-20261016-create-smart-house-project-room-v1`.
 - Start with [[Project Rooms/Smart House/working/planning-context]] and the preserved [[Project Rooms/Smart House/sources/planning-conversation-2026-10-16]].
 
+Living Room film update, 2026-11-05: version **88** publishes the newest front-facing 30-second artwork/football/simulated-camera film in Design's Living Room gallery and View's existing tour scene. Poster, captions, guide replies and natural-voice facts match; manual mount caution, attribution, votes and all four separate Explore camera films remain. Full decode, focused checks, TypeScript, build, secret scan and local/public playback passed. See [[Project Rooms/Smart House/working/living-room-film-20261105]].
+
 ## Messaging Readiness
 
 Ready and dispatchable for authorized Smart House handoffs on WESSTUDIO. The exact task, registration, host access, guarded worker enrollment, and unattended cross-machine synthetic lifecycle were verified. Messaging readiness does not expand business authority.

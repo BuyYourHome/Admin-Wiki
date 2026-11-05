@@ -68,9 +68,9 @@ export function buildTourScenes(galleries: readonly Gallery[], roomResults: Tour
     // still. The winning design fields remain the film's fallback/context only.
     let motion: TourScene | undefined;
     if (gallery.id === 'media-center') motion = {
-      ...shared, id: `${gallery.id}-motion`, kind: 'motion', title: 'My Living Room in motion', durationSeconds: 10,
-      video: '/media/media-center-kitchen-view.mp4', poster: '/media/media-center-art-poster.png',
-      description: `I will feature my selected manual MM-MAX1 TV mount, positioned by hand. My separate illustrative film shows my decorative frame staying fixed while my TV turns toward my kitchen and artwork becomes moving football. The automatic motion is illustrative; my selected mount’s fit and clearances still need validation. My film does not show the selected voting design. ${fallbackNote}`,
+      ...shared, id: `${gallery.id}-motion`, kind: 'motion', title: 'My Living Room in motion', durationSeconds: 30,
+      video: '/media/living-room-art-sports-cameras-v2.mp4', poster: '/media/living-room-art-sports-cameras-v2-poster.jpg',
+      description: `I will feature my selected manual MM-MAX1 TV mount, positioned by hand. My separate illustrative film keeps my TV fixed facing my Living Room while the viewpoint moves toward my TV: 2 seconds of still-life artwork, 4 seconds of football, then 24 seconds of four-camera simulations. These camera views are concepts, not live feeds. My selected mount’s fit and clearances still need validation. My film does not show the selected voting design. ${fallbackNote}`,
       sourceCredit: 'Football footage: U.S. Marine Corps / Sgt. James Stanfield, via DVIDS.',
       sourceUrl: 'https://www.dvidshub.net/video/947000/125th-army-navy-football-game-b-roll',
       sourceNotice: 'The appearance of U.S. Department of War (DoW) visual information does not imply or constitute DoW endorsement.',

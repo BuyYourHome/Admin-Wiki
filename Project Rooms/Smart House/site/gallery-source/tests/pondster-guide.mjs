@@ -202,9 +202,9 @@ assertGuideAction(answerPondster('Show the spiral staircase video').action, {men
 assert.match(answerPondster('Show the home theater film').text, /twelve-second/);
 assert.match(answerPondster('Show the home theater film').text, /amber stair lights.*sequence/);
 assert.match(answerPondster('Show the home theater film').text, /original amber palette.*does not change to match a winning color/);
-assert.match(answerPondster('Show the football video').text, /ten-second.*fixed decorative frame.*moving football/);
+assert.match(answerPondster('Show the football video').text, /thirty-second.*TV fixed.*two seconds of artwork.*four seconds of moving football.*24 seconds of simulated exterior camera views/);
 assert.match(answerPondster('Show the football video').text, /manual MM-MAX1.*positioned by hand/);
-assert.match(answerPondster('Show the football video').text, /automatic motion is illustrative.*fit and clearances still need validation/);
+assert.match(answerPondster('Show the football video').text, /simulations, not live surveillance.*fit and clearances still need validation/);
 assertGuideAction(answerPondster('Show the barn door video').action, {menu:'Design',room:'garage-barn-door'});
 assert.match(answerPondster('Show the Tesla animation').text, /twenty-five-second/);
 assert.match(answerPondster('Show the Tesla animation').text, /opens outward.*slides left.*driving out.*garage interior.*concept/);
@@ -317,10 +317,10 @@ const plannedEquipment=answerPondster('What equipment is planned to keep hot wat
 assertGuideAction(plannedEquipment.action,{menu:'Explore'});assert.match(plannedEquipment.text,/natural-gas tankless.*whole-house recirculation/);
 for(const question of ['How will the TV face the kitchen?', 'What is the model number of your selected TV mount, and does it turn itself?']) {
   const reply=answerPondster(question);assertGuideAction(reply.action,{menu:'Explore'});
-  assert.match(reply.text,/manual MM-MAX1, positioned by hand.*automatic turning.*illustrative.*fit and clearances still need validation/);
+  assert.match(reply.text,/manual MM-MAX1, positioned by hand.*TV fixed facing the room.*simulations, not live surveillance.*fit and clearances still need validation/);
 }
 assertGuideAction(answerPondster('Show the football video').action,{menu:'Design',room:'media-center'});
-assert.match(answerPondster('Show the football video').text,/automatic motion is illustrative/);
+assert.match(answerPondster('Show the football video').text,/simulations, not live surveillance/);
 const pantryRelation=answerPondster('Is the pantry next to the kitchen?');
 assertGuideAction(pantryRelation.action,{menu:'Explore'});assert.match(pantryRelation.text,/pantry next door.*pantry will sit beside my kitchen.*planned layout/);
 assert.doesNotMatch(pantryRelation.text,/polygon|PLAN_WIDTH|C:|\\.codex|908|Pond Street/);

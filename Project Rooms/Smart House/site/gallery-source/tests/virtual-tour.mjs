@@ -1,6 +1,13 @@
 import assert from 'node:assert/strict';
+import { readFileSync } from 'node:fs';
+import { createRequire } from 'node:module';
+import ts from 'typescript';
 import { buildTourScenes } from '../lib/virtual-tour.ts';
 import { galleries } from '../lib/designs.ts';
+
+const require = createRequire(import.meta.url);
+for (const extension of ['.ts', '.tsx']) require.extensions[extension] = (module, path) => module._compile(ts.transpileModule(readFileSync(path, 'utf8'), { compilerOptions: { module: ts.ModuleKind.CommonJS, jsx: ts.JsxEmit.ReactJSX, target: ts.ScriptTarget.ES2022 } }).outputText, path);
+const { buildPondsterLiveSession } = require('../lib/pondster-live-context.ts');
 
 const populated = galleries.filter(gallery => gallery.designs.length);
 const emptyVotes = Object.fromEntries(populated.map(gallery => [gallery.id, { scores: {}, total: 0 }]));
@@ -75,7 +82,7 @@ for (const room of [media, garage, staircase]) {
   assert.equal(tour.find(scene => scene.roomId === room.id && scene.kind === 'design'), undefined, 'A film gallery has no extra still scene.');
   const motion = tour.find(scene => scene.roomId === room.id && scene.kind === 'motion');
   const fallback = room.designs[0];
-  assert.equal(motion.durationSeconds, room.id === 'media-center' ? 10 : room.id === 'spiral-staircase' ? 12 : 25);
+  assert.equal(motion.durationSeconds, room.id === 'media-center' ? 30 : room.id === 'spiral-staircase' ? 12 : 25);
   assert.equal(motion.image, `/concepts/${fallback.image}`, 'The vote-selected still is retained only as the playback fallback.');
   assert.equal(motion.designId, fallback.id);
   assert.equal(motion.designTitle, fallback.title);
@@ -85,13 +92,28 @@ for (const room of [media, garage, staircase]) {
   assert.ok(motion.video.startsWith('/media/') && motion.poster.startsWith('/media/'));
 }
 const mediaMotion = tour.find(scene => scene.id === 'media-center-motion');
-assert.equal(mediaMotion.video, '/media/media-center-kitchen-view.mp4');
+assert.equal(mediaMotion.video, '/media/living-room-art-sports-cameras-v2.mp4');
+assert.equal(mediaMotion.poster, '/media/living-room-art-sports-cameras-v2-poster.jpg');
+assert.equal(mediaMotion.durationSeconds, 30);
 assert.match(mediaMotion.description, /manual MM-MAX1.*positioned by hand/);
-assert.match(mediaMotion.description, /automatic motion is illustrative.*fit and clearances still need validation/);
+assert.match(mediaMotion.description, /TV fixed facing my Living Room.*viewpoint moves toward my TV/);
+assert.match(mediaMotion.description, /2 seconds of still-life artwork, 4 seconds of football, then 24 seconds of four-camera simulations/);
+assert.equal([...mediaMotion.description.matchAll(/(\d+) seconds of/g)].reduce((seconds, match) => seconds + Number(match[1]), 0), mediaMotion.durationSeconds, 'The stated art, sports and camera sections fill the new tour scene duration.');
+assert.match(mediaMotion.description, /camera views are concepts, not live feeds/);
+assert.match(mediaMotion.description, /selected mount’s fit and clearances still need validation/);
+assert.doesNotMatch(mediaMotion.description, /turns toward my kitchen|automatic motion|automatic turning/);
 assert.match(mediaMotion.sourceCredit, /Marine Corps.*James Stanfield.*DVIDS/);
 assert.match(mediaMotion.sourceNotice, /does not imply or constitute DoW endorsement/);
 assert.ok(mediaMotion.sourceUrl.startsWith('https://www.dvidshub.net/'));
 assert.ok(mediaMotion.sourceNoticeUrl.startsWith('https://www.dvidshub.net/'));
+const liveInstructions = buildPondsterLiveSession(galleries).instructions;
+const liveFilmFact = liveInstructions.split('\n').find(line => line.startsWith('I will feature a framed TV'));
+assert.ok(liveFilmFact, 'The actual live session retains the authored Living Room film fact.');
+assert.match(liveFilmFact, /30-second Living Room film.*TV fixed facing my Living Room.*viewpoint moves toward my TV/);
+assert.match(liveFilmFact, /2 seconds of still-life artwork, 4 seconds of football, then 24 seconds of four-camera simulations/);
+assert.match(liveFilmFact, /concepts, not live feeds.*fit and clearances still need validation/);
+assert.doesNotMatch(liveFilmFact, /automatic turning|turns toward my kitchen/);
+assert.ok(liveInstructions.includes('My selected MM-MAX1 TV mount is manual; do not promise automatic turning.'), 'Keep the manual-mount safety instruction unchanged while updating the film description.');
 const garageMotion = tour.find(scene => scene.id === 'garage-barn-door-motion');
 assert.equal(garageMotion.video, '/media/garage-v18-warm-white.mp4');
 assert.equal(garageMotion.poster, '/media/garage-v18-poster.jpg');
@@ -172,4 +194,4 @@ const withExtra = buildTourScenes([extra, ...galleries], {});
 const extraScene = withExtra.find(scene => scene.roomId === 'future-room');
 assert.equal(withExtra.indexOf(extraScene), withExtra.findIndex(scene => scene.id === 'garage-barn-door-motion') + 1, 'Other populated spaces follow the prioritized rooms in catalog order.');
 assert.equal(extraScene.image, '/images/future.jpg');
-console.log('PASS: seven scenes/three unchanged films, one primary deck scene for two views, video priority, active-only Living Room winners, separate Home Theatre palettes, front/Master/Hall winners, stable ties, invalid scores, honest missing data, credits and immutable deterministic output.');
+console.log('PASS: seven scenes/three films, updated 30-second fixed-TV art/football/camera film and live facts, manual-mount guard, one primary deck scene for two views, video priority, active-only Living Room winners, separate Home Theatre palettes, front/Master/Hall winners, stable ties, invalid scores, honest missing data, credits and immutable deterministic output.');

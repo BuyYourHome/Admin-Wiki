@@ -838,3 +838,14 @@ Wes lifted the explicit draft publication hold with “You can publish all when 
 - Public custom domain: https://pondstr.com/#explore ; native deployment URL: https://pondstr.coolnewt4097.chatgpt.site .
 
 The immediately preceding TypeScript, production build, geometry/UI/swipe/navigation/guide/speech/context checks and final 229-file secret scan passed. No source inputs changed before packaging, so successful checks/builds were reused. The supported helper verified the remote base, pushed the exact source and packaged the matching output. Site checkout is clean and all 25 changed text mirrors are byte-equal. All nine new public files matched checked hashes. Public browser checks confirmed C3/C4 six-second muted playback/no media error, enlargement/Next/Escape, Hall Bath's first gallery choice from its Explore image, and sound-card-to-receiver-guide reveal below the fixed header. Physical phone swipes and a fresh spoken trial remain untested. No vote/comment, microphone, paid provider session or house control was used. See [[camera-floor-plan-draft-20261102]] and [[swipe-and-explore-links-draft-20261101]] for sources, known view differences, defaults and proof.
+
+## Living Room film publication — 2026-11-05
+
+Version **88** is live at https://pondstr.com . The newest November 5 v2 Living Room film replaces the older ten-second film in Design and the existing tour scene: 30 seconds of artwork, football and four-camera simulations, with the TV fixed facing the room. Updated captions and Pondster facts match the sequence; source credits, manual-mount fit caution, voting identities, seven tour scenes/three films and the separate Explore camera videos remain.
+
+- Source: `44d10b7cee8c94ebc41b748ec47e6cb09739abe1`.
+- Saved version: `appgprj_6ad4d98e08708191858cab113814704e~appgver_e494421647f481919e8161e5457915b5`.
+- Deployment: `appgdep_6aed07aba35481919527379cb869b23e`, succeeded `2026-11-05T22:48:22.834625+00:00`, environment revision **4**; public access unchanged.
+- Archive: `C:\Users\wesbr\AppData\Local\Temp\pondster-living-room-v88-20261105.tar.gz`; `sha256:e044e0397d6b976426106ec5e326d4294681f29f5e69498bf06bf4b7315a3625`; 152 files / 119,091,200 uncompressed bytes.
+
+Full decode, source-copy hash, poster review, focused tour/guide/live-context tests, TypeScript, build and secret-absence scan passed. Public browser playback confirmed 30 seconds, advancing muted playback and no media error. Exact external source and media hashes: [[living-room-film-20261105]]. No microphone, paid session, device control or production data write was used.
