@@ -1,5 +1,5 @@
-window.PROJECT_ROOMS_UPDATED = '2026-09-30 12:20';
-window.PROJECT_ROOMS_HASH = '629966CD1F9B4C372BC97077B909FED6965ED0B0A34B13BE860799B347583542';
+window.PROJECT_ROOMS_UPDATED = '2026-11-05 16:39';
+window.PROJECT_ROOMS_HASH = '6BC0190DCD373553C4EF59298E8F95FFE1B0AE83ADBEF3D7ECF262D1A491B4CC';
 window.PROJECT_ROOM_GROUPS = [
     {
         "name":  "Intake \u0026 Coordination",
@@ -587,6 +587,25 @@ window.PROJECT_ROOMS = [
                          ]
     },
     {
+        "name":  "House Render",
+        "purpose":  "Canonical Project Room; open its README for current responsibilities.",
+        "status":  "Status not recorded",
+        "skill":  "house-render",
+        "skillPath":  "C:\\Codex\\Wiki Files\\skills\\house-render\\SKILL.md",
+        "skillState":  "available",
+        "taskId":  "01a178f1-8292-7aa3-863d-f6de8a3c44f7",
+        "attention":  null,
+        "group":  "Other",
+        "groupBasis":  "Used when a Project Room does not yet have a supported assignment to one of the defined functional groups.",
+        "modes":  [
+
+                  ],
+        "readmeUrl":  "../../House%20Render/README.md",
+        "quickActions":  [
+
+                         ]
+    },
+    {
         "name":  "Investigate Computer",
         "purpose":  "Investigate Computer is the project room for repeatable computer-security diagnostics, incident evidence, cleanup notes, and report outputs for Wes\u0027s Windows computer.",
         "status":  "Status not recorded",
@@ -859,6 +878,25 @@ window.PROJECT_ROOMS = [
                          ]
     },
     {
+        "name":  "Medicare",
+        "purpose":  "Help Jenny compare Medicare coverage using the prescriptions she provides and recommend the best-supported plan for her confirmed needs and coverage year. Wes requested this room on 2026-11-01. No plan recommendation has been made.",
+        "status":  "Pending messaging registration - not dispatchable.",
+        "skill":  "medicare",
+        "skillPath":  "C:\\Codex\\Wiki Files\\skills\\medicare\\SKILL.md",
+        "skillState":  "available",
+        "taskId":  "01a198bd-6bd0-7013-bd02-2b26a715e552",
+        "attention":  null,
+        "group":  "Other",
+        "groupBasis":  "Used when a Project Room does not yet have a supported assignment to one of the defined functional groups.",
+        "modes":  [
+
+                  ],
+        "readmeUrl":  "../../Medicare/README.md",
+        "quickActions":  [
+
+                         ]
+    },
+    {
         "name":  "Network Roadmap",
         "purpose":  "Plan and govern Buy Your Home network and device-management modernization across WesStudio, OfficeAssist, WES-VIDEOEDITOR, and future business computers. The initial direction is to evaluate Microsoft Entra ID join and Intune through a noncritical pilot instead of deploying traditional on-premises Active Directory solely to solve current workgroup credential friction.",
         "status":  "Status not recorded",
@@ -899,11 +937,11 @@ window.PROJECT_ROOMS = [
     {
         "name":  "PR Messaging Dispatcher",
         "purpose":  "Provide one machine-local dispatcher heartbeat on each computer that hosts dispatchable Buy Your Home Project Room tasks. The dispatcher bridges the cross-machine durable queue to Codex task notifications that are local to its own computer.",
-        "status":  "Release 0.4.6 developed for controlled in-place upgrade after an OFFICEASSIST Codex update removed the worker\u0027s pinned CLI executable",
+        "status":  "Release 0.4.11 developed and fixture-verified for guarded Medicare validation enrollment",
         "skill":  "pr-messaging-dispatcher",
         "skillPath":  "C:\\Codex\\Wiki Files\\skills\\pr-messaging-dispatcher\\SKILL.md",
         "skillState":  "available",
-        "taskId":  "",
+        "taskId":  "01a178f1-8292-7aa3-863d-f6de8a3c44f7",
         "attention":  null,
         "group":  "Other",
         "groupBasis":  "Used when a Project Room does not yet have a supported assignment to one of the defined functional groups.",
@@ -1006,6 +1044,25 @@ window.PROJECT_ROOMS = [
 
                   ],
         "readmeUrl":  "../../REI%20BlackBook/README.md",
+        "quickActions":  [
+
+                         ]
+    },
+    {
+        "name":  "Smart House",
+        "purpose":  "Canonical Project Room; open its README for current responsibilities.",
+        "status":  "public website without visitor login, deployed through ChatGPT Sites version 87 at https://pondstr.com . Menu order remains Design, Explore, View, Belong, Built By, Contact; View is default. Vesper remains selected. Text saving is on by default, with the written notice and opt-out only in Voice controls. Returning browsers receive a first-name greeting. Natural voice ends after 30 seconds of measurable quiet or a farewell, with no three-minute cutoff. The rolling allowance is 100 starts; confirmed closed calls restart immediately while failure/uncertain-session safeguards remain. All gallery pictures support first/next/previous/enlarge/close. An explicit current-picture voice vote submits through the voting endpoint and waits for the saved-choice result. Named visible buttons, fields, options, checkboxes, scrolling and media also have shared voice controls, scoped to the active modal or expanded video. Voice stays available within the tour. Simple explicit picture requests have a deterministic fallback when the voice model omits delegation, without duplicate late resets. Garage has the three replacement v18 images under existing vote IDs and the revised warm-white film. Enlarged photos include voting and reachable voice controls; gallery films include Previous/Next and a button to open the still design choices for voting. Voice startup preserves the current page and rejects stale clients or an expected-but-missing text recorder before a paid call. The catalog remains 31 choices and the tour seven scenes/three films. Build, focused tests, secret checks and production database-column verification passed; The current Belong guide links and layout passed public browser verification; a fresh natural spoken trial remains unperformed.",
+        "skill":  "smart-house",
+        "skillPath":  "C:\\Codex\\Wiki Files\\skills\\smart-house\\SKILL.md",
+        "skillState":  "available",
+        "taskId":  "01a14585-ffe6-7850-8db1-efcdd58e7071",
+        "attention":  null,
+        "group":  "Other",
+        "groupBasis":  "Used when a Project Room does not yet have a supported assignment to one of the defined functional groups.",
+        "modes":  [
+
+                  ],
+        "readmeUrl":  "../../Smart%20House/README.md",
         "quickActions":  [
 
                          ]
