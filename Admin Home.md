@@ -30,6 +30,7 @@ This is the starting page for the Buy Your Home admin wiki.
 - [[Project Rooms/Smart House/README|Smart House Project Room]]
 - [[Project Rooms/House Render/README|House Render Project Room]]
 - [[Project Rooms/Medicare/README|Medicare Project Room]]
+- [[Project Rooms/General Contractor/README|General Contractor Project Room]]
 - [[Project Rooms/IRS/README|IRS Project Room]]
 - [[Project Rooms/Codex Environment/README|Codex Environment Project Room]]
 - [[Project Rooms/Computers/README|Computers Project Room]]

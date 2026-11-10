@@ -1460,6 +1460,12 @@ Use `Connector and Plugin Usage Rules.md` to see which installed plugins/connect
 - Primary definitions: `Project Rooms\Medicare\README.md`, `skills\medicare\SKILL.md`, and `config\pr-messaging-manifests\medicare.json`.
 - Scope: Jenny's prescription-based plan comparison with current official evidence; no enrollment, insurance changes, treatment advice or health data in Git. Outlook intake and official Medicare/insurer sources are dependencies.
 
+## General Contractor
+
+- On-demand NC general-contractor licensing and exam study. No automation, purchases, registration or application filing.
+- WESSTUDIO task ID: pending. Pending messaging registration - not dispatchable.
+- Definitions: `Project Rooms/General Contractor/README.md` and `skills/general-contractor/SKILL.md`. Binary study sources belong outside Git.
+
 ## Maintenance Rule
 
 When creating, renaming, pausing, deleting, or materially changing an agent-like function, update this registry in the same change.

@@ -8,6 +8,7 @@ This is the live task registry for the universal [[Project Room Delegation Contr
 
 | Project Room | Matching Skill | Known Task/Thread Id | Dispatcher Route | Notes |
 | --- | --- | --- | --- | --- |
+| General Contractor | `general-contractor` | pending | Pending messaging registration - not dispatchable. | NC licensing/exam study, WESSTUDIO. No purchases or filings. |
 | Medicare | `medicare` | `01a198bd-6bd0-7013-bd02-2b26a715e552` | Pending messaging registration - not dispatchable. | WESSTUDIO; local registration/host access verified; guarded enrollment unsupported in 0.4.10. Prescription-based plan comparison after confirmed year and private intake. No enrollment or medication changes; never copy health details into Git or central payloads. |
 | House Render | `house-render` | `01a178f1-8292-7aa3-863d-f6de8a3c44f7` | Pending messaging registration - not dispatchable. | WESSTUDIO; exact local registration verified; guarded worker enrollment does not yet admit endpoint. House visualizations and Pond Street render archive; no website publication, device control, or lighting engineering. |
 | Smart House | `smart-house` | `01a14585-ffe6-7850-8db1-efcdd58e7071` | Ready and dispatchable for authorized planning handoffs. | WESSTUDIO; guarded enrollment and one-attempt unattended synthetic lifecycle completed 2026-10-17. 908 Pond Street digital-twin/owner-package planning; no implementation, publication, accounts, purchase or device control. |
