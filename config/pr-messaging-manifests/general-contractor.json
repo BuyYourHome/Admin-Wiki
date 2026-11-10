@@ -1,0 +1,39 @@
+{
+  "schema_version": 2,
+  "project_room": "General Contractor",
+  "skill": "general-contractor",
+  "task_id": "01a1c741-3a28-7850-9554-10df08cedf4b",
+  "dispatchable": false,
+  "execution_machine": "WESSTUDIO",
+  "owned_actions": [
+    "NC general-contractor study-source inventory, outline review and original practice questions"
+  ],
+  "accepted_message_types": [
+    "request",
+    "question",
+    "status",
+    "decision",
+    "result",
+    "improvement"
+  ],
+  "related_project_rooms": [
+    "Jean Wright"
+  ],
+  "limitations": [
+    "Study only; no purchases, applications or exam registration",
+    "No binary documents in Git"
+  ],
+  "messaging_readiness": {
+    "status": "pending",
+    "machine_registration_verified_at_utc": "2026-11-10T20:58:55.6947789Z",
+    "host_access_verified_at_utc": "2026-11-10T20:58:55.4872834Z",
+    "validation_message_id": null,
+    "lifecycle_completed_at_utc": null,
+    "notification_count": 0,
+    "dispatcher_task_id": "01a06337-1b59-7dc2-9586-6660eb7b5da7",
+    "dispatcher_automation_id": "pr-messaging-dispatcher",
+    "cross_machine_source": null,
+    "manual_intervention": null,
+    "blocker": "Guarded installer excludes General Contractor. No endpoint pin or unattended synthetic lifecycle verified."
+  }
+}

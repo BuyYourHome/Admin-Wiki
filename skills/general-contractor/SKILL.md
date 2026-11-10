@@ -13,7 +13,7 @@ Keep study sources in the identified Office Admin library, with Markdown links a
 
 ## Messaging Readiness
 
-Pending messaging registration - not dispatchable. WESSTUDIO task ID: pending. No automation.
+Pending messaging registration - not dispatchable. WESSTUDIO task ID: `01a1c741-3a28-7850-9554-10df08cedf4b`. Local registration verified; worker enrollment and unattended validation pending. See `config/pr-messaging-manifests/general-contractor.json`. No automation.
 
 Start PR: Before durable work, follow Start PR in C:\Codex\Wiki Files\Project Room Chat Startup Rule.md. Interpret unqualified requests under the Current PR Scope Rule in that file. Work on main unless Wes explicitly asks for a branch.
 

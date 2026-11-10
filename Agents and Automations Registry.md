@@ -1463,7 +1463,7 @@ Use `Connector and Plugin Usage Rules.md` to see which installed plugins/connect
 ## General Contractor
 
 - On-demand NC general-contractor licensing and exam study. No automation, purchases, registration or application filing.
-- WESSTUDIO task ID: pending. Pending messaging registration - not dispatchable.
+- WESSTUDIO task ID: `01a1c741-3a28-7850-9554-10df08cedf4b`. Pending messaging registration - not dispatchable. Exact local registration verified; guarded enrollment and unattended validation pending.
 - Definitions: `Project Rooms/General Contractor/README.md` and `skills/general-contractor/SKILL.md`. Binary study sources belong outside Git.
 
 ## Maintenance Rule

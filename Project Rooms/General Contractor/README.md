@@ -15,7 +15,9 @@ Use the bulletin outline for the intended classification. For practice, ask Wes 
 
 ## Messaging Readiness
 
-- Ongoing chat: General Contractor on WESSTUDIO. Task ID: pending.
+- Ongoing chat: General Contractor on WESSTUDIO. Task ID: `01a1c741-3a28-7850-9554-10df08cedf4b`.
+- Exact local registration and central host access verified. The guarded installer does not admit this endpoint; no worker enrollment or synthetic validation was performed.
+- Manifest: `config/pr-messaging-manifests/general-contractor.json`. Dispatchable: No.
 - Pending messaging registration - not dispatchable. Direct study in the chat does not require automated routing.
 
 ## Operating rules
