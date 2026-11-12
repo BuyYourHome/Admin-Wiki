@@ -7,6 +7,9 @@
 | [NC Licensing Board: License applicants](https://nclbgc.org/license-applicants/) | Current new-license application entry point; the Board says applications are handled online. | Web link only; no application submitted. |
 | [NC Licensing Board: Contractor FAQ](https://nclbgc.org/faq-contractors/) | Current Board explanation of classification versus limitation, exam prequalification, and PSI scheduling. | Web link only. |
 | [PSI Residential Contractor practice test](https://www.psionlinestore.com/residential-contractor-practice-test-x-1-with-80-total-questions/?setCurrencyId=3) | Paid 80-question national-portion practice option that includes NC; not an NC-only simulation. | Product link only; not purchased or downloaded. |
+| [Town of Cary: Change of Contractor request](https://www.townofcary.org/Home/Components/Form/Form/74baafe266f64139912c92c5c6d4ead9/) | Cary's online request to change a contractor on an existing permit; see its [residential permit guide](https://www.carync.gov/home/showpublisheddocument/29661/639005271080730000), p. 8. | Online form, not a downloadable PDF. Link retained; no request submitted. |
+| [Town of Cary: Owner Exemption Affidavit](https://www.carync.gov/home/showpublisheddocument/1601/637507926301330000) | Official owner-builder exemption form. Whether the exemption applies to a particular owner and permit requires Cary/Board review. | Official PDF link retained. Automated download was denied by Cary on 2026-11-12; no local copy filed or form completed. |
+| [Town of Cary: Residential Guide to Permits and Inspections](https://www.carync.gov/home/showpublisheddocument/29661/639005271080730000) | Official guide explaining the Change of Contractor request and other residential permit steps. | Official PDF link retained. Automated download was denied by Cary on 2026-11-12; no local copy filed. |
 
 ### Filed bulletin
 
@@ -16,3 +19,5 @@
 - Rechecked 2026-11-10: 888,246 bytes, PDF signature, SHA-256 `ca98b803203911c4a4d3b37dbcd39301a2ab914909ad274236b27c85b9f16c13`; the Downloads copy has the same hash. This verifies the local files, not cloud synchronization or byte identity with the live PSI URL.
 
 See [[Project Rooms/General Contractor/outputs/residential-gc-study-reference|Residential GC study reference]] for verified exam details and open questions from the prior discussion.
+
+The Office Admin **General Contractor / Study Materials** folder was checked 2026-11-12 and still contained only the PSI bulletin. The Cary links above remain available for future retrieval; no Cary file was claimed as downloaded or synchronized.
