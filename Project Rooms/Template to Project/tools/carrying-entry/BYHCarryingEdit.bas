@@ -434,17 +434,57 @@ Finished:
 End Function
 
 Public Sub CarryingEdit_InsertGuard()
-    EditContext "Insert Record"
-    If EditActive() Then
-        EditFeedback "Finish Save Changes or Cancel Edit before inserting a record."
-    Else
-        CarryingEntry_Insert
-    End If
+    RunCarryingButtonBatch True
 End Sub
 
 Public Sub CarryingEdit_RecurringGuard()
-    Dim editResult As String
-    editResult = CarryingEdit_RecurringFromSelection()
+    RunCarryingButtonBatch False
+End Sub
+
+Private Sub RunCarryingButtonBatch(ByVal inserting As Boolean)
+    Dim priorCalc As XlCalculation, priorEvents As Boolean, haveState As Boolean
+    Dim failure As String, result As String, cleanup As String
+    On Error GoTo Failed
+    priorCalc = Application.Calculation
+    priorEvents = Application.EnableEvents
+    haveState = True
+    Application.EnableEvents = False
+    If priorCalc <> xlCalculationManual Then Application.Calculation = xlCalculationManual
+    If inserting Then
+        EditContext "Insert Record"
+        If EditActive() Then
+            EditFeedback "Finish Save Changes or Cancel Edit before inserting a record."
+        Else
+            CarryingEntry_Insert
+        End If
+    Else
+        result = CarryingEdit_RecurringFromSelection()
+    End If
+    GoTo Finish
+Failed:
+    failure = Err.Description
+Finish:
+    On Error Resume Next
+    If haveState Then
+        Err.Clear
+        If priorCalc = xlCalculationManual Then
+            If inserting Then ThisWorkbook.Worksheets("Carrying").Calculate
+        Else
+            Application.Calculation = priorCalc
+        End If
+        If Err.Number <> 0 Then cleanup = "Calculation: " & Err.Description & ". "
+        Err.Clear
+        Application.EnableEvents = priorEvents
+        If Err.Number <> 0 Then cleanup = cleanup & "Events: " & Err.Description & "."
+    End If
+    On Error GoTo 0
+    If Len(failure & cleanup) > 0 Then
+        If inserting Then
+            EditFeedback "Check the last table row before retrying Insert. " & failure & " " & cleanup
+        Else
+            EditFeedback "Check the suggested fields before using Insert. " & failure & " " & cleanup
+        End If
+    End If
 End Sub
 
 Public Function CarryingEdit_RecurringFromSelection() As String

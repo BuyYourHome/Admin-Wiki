@@ -4,6 +4,9 @@ Use these rules for Carrying worksheet design, repairs, and approved template mi
 
 ## Current Prototype and Scope
 
+- November 14, 2026: 320 Rose Pl is the pilot for batching the existing Recurring Bill and Insert Record button writes. Do not change other projects until Wes confirms the Rose desktop test; then apply the two-button change to the current active list, not a historical list. See [[rose-carrying-button-performance-pilot-20261114]].
+- Preserve the caller's calculation and event settings on success, validation exit and error. Restore calculation while events are suspended, then restore events. When the caller was already in Manual, update the Carrying sheet after Insert without changing the workbook owner's calculation preference. Do not use a full rebuild or query refresh. Measure Recurring Bill and Insert separately and verify both the record count and the actual labeled subtotal formula, not the visually adjacent blank cell.
+
 - October 3 evening: Wes authorized the Delete Record addition on all active projects. Tensity is complete; remaining targets are Pond, Rose, Pleasant Garden, Rosebrooks, Cool Springs, Britton, Outrigger, Banks and Pinetree. This is the narrow toolbar/function rollout, not authorization to copy Tensity rent records or alter Profit accounting. Use project-specific row counts, grid capacities, undated/empty-table cases and financial baselines; a Tensity-only fixed-row test cannot certify another project. See [[carrying-delete-rollout-20261003]].
 
 - October 3 Delete Record addition: append the button after Cancel Edit, preserving button sizes, owner context-box formatting and a single evenly spaced toolbar. Delete the source ListRow matched by the one selected grid date/amount, never the worksheet row. Installation must not delete records. Require a record preview and Yes/No confirmation defaulting to No; explain that VBA deletion has no Excel Undo and recovery requires a saved version.
