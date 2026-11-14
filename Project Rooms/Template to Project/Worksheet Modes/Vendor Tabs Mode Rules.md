@@ -29,6 +29,8 @@ Current Vendor Tabs mode list:
 
 `STR` is not a vendor tab and is outside Vendor Tabs Mode. Do not include `STR`, `Furnishing`, or other tabs outside this list unless Wes explicitly expands the scope.
 
+Rosebrooks alone has an approved actual-invoice `Legal` destination (`tblLegalInvoices`). It is not an expansion of the group for any other project. Add project-specific destinations to the existing Review destination dropdown without changing its other choices, statuses or request checkbox. Verify both an invoice and a credit through the target's own Gnatt subtotal and Profit expense line; never include pending Review amounts in the rollup. See [[rosebrooks-legal-destination-20261114]].
+
 ## Review Intake Worksheet
 
 - `Review` is the intake and exception queue for Vendor Tabs Mode.
