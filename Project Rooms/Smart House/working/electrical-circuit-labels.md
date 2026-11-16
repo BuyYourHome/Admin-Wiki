@@ -23,7 +23,7 @@ Internal working record. Source: Wes's circuit-label dictation and subsequent fi
 | 13 | Stove | Initial label, grouped with number 15. |
 | 14 | Kitchen counter | Initial label; exact receptacle/location remains unconfirmed after the later identifications of numbers 2 and 20. |
 | 15 | Stove | Initial label, grouped with number 13. |
-| 16 | Light in front of the stairs; discussed attic switch | Confirmed by Wes, replacing the initial kitchen-counter GFI label. Associated fan wiring/function remains unconfirmed. |
+| 16 | Light in front of the stairs; discussed attic switch; Master Bath fan | Confirmed by Wes, replacing the initial kitchen-counter GFI label. Wes explicitly added the Master Bath fan in the later November 16 dictation. GFI protection has not been confirmed. |
 | 17 | Unknown | Wes could not tell what this number served. |
 | 18 | Dining room receptacles — tentative | Original dictation first said dining lights, then dining receptacles “I guess.” Exact load remains unresolved. |
 | 19 | Unknown | Wes could not tell what this number served. |
@@ -42,7 +42,7 @@ Internal working record. Source: Wes's circuit-label dictation and subsequent fi
 ## Observations and unresolved items
 
 - Circuit 1: Wes reported that all currently exposed wiring he identified for this circuit is “old gray.” Preserve this as his visual observation, without inferring cable type, conductor material, condition or concealed wiring.
-- Circuit 16: an attic switch and possible fan wiring were discussed. Wes subsequently said no fan wiring had been identified live. No fan is therefore recorded as a confirmed load on circuit 16 or circuit 1. Earlier assistant descriptions of a living room fan are not independent confirmation.
+- Circuit 16: an attic switch and possible fan wiring were initially discussed without a confirmed fan identification. Wes later explicitly instructed adding the Master Bath fan to circuit 16; that supersedes the earlier uncertainty for this fan. A living room fan on circuit 1 remains unconfirmed; earlier assistant descriptions are not independent confirmation.
 - Original labels 1 = stove, 2 = bath, 16 = kitchen-counter GFI, and 20 = dishwasher / garbage disposal are superseded in the current list. Do not use them as the current answers.
 - The reported groups 5/7, 13/15, 23/25 and 27/29 do not establish pole count or a linked handle. No accessible electrical-panel photo was found in this chat's saved attachments during the November 16 check.
 - Retain the initial labels for 11, 14, 18 and 22 as unresolved rather than treating nearby spoken guesses or questions addressed to Josh as new confirmations.
