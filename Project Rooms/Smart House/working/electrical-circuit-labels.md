@@ -19,7 +19,7 @@ Internal working record. Source: Wes's circuit-label dictation and subsequent fi
 | 9 | Garage door opener | Initial label. |
 | 10 | Refrigerator | Initial label. |
 | 11 | Living room power; porch light | Initial label/read-back accepted by Wes. Keep pending recheck alongside later circuit 1 identification; do not silently move the porch-light label to circuit 1. |
-| 12 | Unknown | No label supplied. |
+| 12 | Wiring coming down to the Master Bath; possible future basement use | Wes identified this circuit's wiring as coming down to the Master Bath in later November 16 dictation. No present connected load specified. Basement use is tentative (“probably”), not an existing assignment or authorization to rewire. |
 | 13 | Stove | Initial label, grouped with number 15. |
 | 14 | Kitchen counter | Initial label; exact receptacle/location remains unconfirmed after the later identifications of numbers 2 and 20. |
 | 15 | Stove | Initial label, grouped with number 13. |
