@@ -13,7 +13,7 @@ Internal working record. Source: Wes's circuit-label dictation and subsequent fi
 | 3 | Heater | Initial label; heater type not specified. |
 | 4 | Garage outdoor lights | Initial label, clarified from garage lights to garage outdoor lights. |
 | 5 | Panel in storage shed | Initial label; Wes also associated number 7 with this panel. |
-| 6 | Master Bath; washing machine (initial label) | Master Bath added by Wes in the later November 16 testing; exact served lights/receptacles/fixtures not specified. The washing-machine label remains from the original dictation and has not been reconfirmed. The Master Bath fan is separately recorded on circuit 16. |
+| 6 | Master Bath | Added by Wes in the later November 16 testing; exact served lights/receptacles/fixtures not specified. The original washing-machine label is superseded by his later identification of circuit 30. The Master Bath fan is separately recorded on circuit 16. |
 | 7 | Panel in storage shed | Initial label; described as also connected to number 5 / panel storage. Breaker arrangement not established. |
 | 8 | Sump pump; basement recessed lights (initial label) | Sump pump confirmed by Wes in the later November 16 testing. Basement recessed lights remain from the original dictation and were not separately reconfirmed in this update. |
 | 9 | Garage door opener | Initial label. |
@@ -37,14 +37,14 @@ Internal working record. Source: Wes's circuit-label dictation and subsequent fi
 | 27 | Clothes dryer | Initial label, grouped with number 29. |
 | 28 | Unknown | No label supplied. |
 | 29 | Clothes dryer | Initial label, grouped with number 27. |
-| 30 | Unknown | No label supplied. |
+| 30 | Washing machine | Confirmed by Wes in later November 16 dictation. Supersedes the original washing-machine label on circuit 6. |
 
 ## Observations and unresolved items
 
 - Circuit 1: Wes reported that all currently exposed wiring he identified for this circuit is “old gray.” Preserve this as his visual observation, without inferring cable type, conductor material, condition or concealed wiring.
 - Circuit 16: an attic switch and possible fan wiring were initially discussed without a confirmed fan identification. Wes later explicitly instructed adding the Master Bath fan, then the office fan and lights, to circuit 16; these supersede the earlier uncertainty for those fans. His correction from “foyer” to “office” applies to this circuit 16 addition, not the separately confirmed foyer load on circuit 1. A living room fan on circuit 1 remains unconfirmed; earlier assistant descriptions are not independent confirmation.
 - Circuit 16 back bedrooms: Wes explicitly confirmed the lights in bedrooms 2 and 3. Preserve his field numbering; no mapping to the website floor-plan bedroom IDs or receptacle circuits has been established by this update.
-- Original labels 1 = stove, 2 = bath, 16 = kitchen-counter GFI, and 20 = dishwasher / garbage disposal are superseded in the current list. Do not use them as the current answers.
+- Original labels 1 = stove, 2 = bath, 6 = washing machine, 16 = kitchen-counter GFI, and 20 = dishwasher / garbage disposal are superseded in the current list. The washing machine is now confirmed on circuit 30. Do not use the original labels as the current answers.
 - The reported groups 5/7, 13/15, 23/25 and 27/29 do not establish pole count or a linked handle. No accessible electrical-panel photo was found in this chat's saved attachments during the November 16 check.
 - Retain the initial labels for 11, 14, 18 and 22 as unresolved rather than treating nearby spoken guesses or questions addressed to Josh as new confirmations.
 
