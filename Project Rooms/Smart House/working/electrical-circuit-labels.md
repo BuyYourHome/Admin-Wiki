@@ -28,7 +28,7 @@ Internal working record. Source: Wes's circuit-label dictation and subsequent fi
 | 18 | Dining room receptacles — tentative | Original dictation first said dining lights, then dining receptacles “I guess.” Exact load remains unresolved. |
 | 19 | Unknown | Wes could not tell what this number served. |
 | 20 | Right-hand kitchen receptacle | Confirmed by Wes. Replaces the original dishwasher / garbage-disposal label. Those appliance assignments need re-identification. |
-| 21 | Pantry | Initial label; load type not specified. |
+| 21 | Laundry room ground-fault receptacle | Identified by Wes in later November 16 dictation. Supersedes the original pantry label. |
 | 22 | Additional kitchen outlets | Tentative original label (“must be more kitchen outlets”). Later repeated for investigation, without an explicit final identification. |
 | 23 | AC compressor | Initial label, grouped with number 25. |
 | 24 | Hall Bath | Confirmed by Wes in the later November 16 test, replacing the previously unlabelled entry. Exact served lights/receptacles not specified. |
@@ -44,7 +44,7 @@ Internal working record. Source: Wes's circuit-label dictation and subsequent fi
 - Circuit 1: Wes reported that all currently exposed wiring he identified for this circuit is “old gray.” Preserve this as his visual observation, without inferring cable type, conductor material, condition or concealed wiring.
 - Circuit 16: an attic switch and possible fan wiring were initially discussed without a confirmed fan identification. Wes later explicitly instructed adding the Master Bath fan, then the office fan and lights, to circuit 16; these supersede the earlier uncertainty for those fans. His correction from “foyer” to “office” applies to this circuit 16 addition, not the separately confirmed foyer load on circuit 1. A living room fan on circuit 1 remains unconfirmed; earlier assistant descriptions are not independent confirmation.
 - Circuit 16 back bedrooms: Wes explicitly confirmed the lights in bedrooms 2 and 3. Preserve his field numbering; no mapping to the website floor-plan bedroom IDs or receptacle circuits has been established by this update.
-- Original labels 1 = stove, 2 = bath, 6 = washing machine, 16 = kitchen-counter GFI, and 20 = dishwasher / garbage disposal are superseded in the current list. The washing machine is now confirmed on circuit 30. Do not use the original labels as the current answers.
+- Original labels 1 = stove, 2 = bath, 6 = washing machine, 16 = kitchen-counter GFI, 20 = dishwasher / garbage disposal, and 21 = pantry are superseded in the current list. The washing machine is now confirmed on circuit 30. Do not use the original labels as the current answers.
 - The reported groups 5/7, 13/15, 23/25 and 27/29 do not establish pole count or a linked handle. No accessible electrical-panel photo was found in this chat's saved attachments during the November 16 check.
 - Retain the initial labels for 11, 14, 18 and 22 as unresolved rather than treating nearby spoken guesses or questions addressed to Josh as new confirmations.
 
