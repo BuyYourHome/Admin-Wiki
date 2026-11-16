@@ -37,7 +37,7 @@ Internal working record. Source: Wes's circuit-label dictation and subsequent fi
 | 27 | Clothes dryer | Initial label, grouped with number 29. |
 | 28 | Unknown | No label supplied. |
 | 29 | Clothes dryer | Initial label, grouped with number 27. |
-| 30 | Washing machine | Confirmed by Wes in later November 16 dictation. Supersedes the original washing-machine label on circuit 6. |
+| 30 | Washing machine; switch in the pantry controlling two receptacles | Confirmed by Wes in later November 16 dictation. Supersedes the original washing-machine label on circuit 6. He subsequently identified a pantry switch on breaker 30 that activates two receptacles; locations of those receptacles were not specified. |
 
 ## Observations and unresolved items
 
