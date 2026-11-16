@@ -31,7 +31,7 @@ Internal working record. Source: Wes's circuit-label dictation and subsequent fi
 | 21 | Pantry | Initial label; load type not specified. |
 | 22 | Additional kitchen outlets | Tentative original label (“must be more kitchen outlets”). Later repeated for investigation, without an explicit final identification. |
 | 23 | AC compressor | Initial label, grouped with number 25. |
-| 24 | Unknown | No label supplied. |
+| 24 | Hall Bath | Confirmed by Wes in the later November 16 test, replacing the previously unlabelled entry. Exact served lights/receptacles not specified. |
 | 25 | AC compressor | Initial label, grouped with number 23. |
 | 26 | Jacuzzi tub | Initial label supplied after the initial skipped-number read-back. |
 | 27 | Clothes dryer | Initial label, grouped with number 29. |
