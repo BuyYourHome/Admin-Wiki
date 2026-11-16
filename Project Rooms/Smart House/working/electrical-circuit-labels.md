@@ -13,7 +13,7 @@ Internal working record. Source: Wes's circuit-label dictation and subsequent fi
 | 3 | Heater | Initial label; heater type not specified. |
 | 4 | Garage outdoor lights | Initial label, clarified from garage lights to garage outdoor lights. |
 | 5 | Panel in storage shed | Initial label; Wes also associated number 7 with this panel. |
-| 6 | Washing machine | Initial label. |
+| 6 | Master Bath; washing machine (initial label) | Master Bath added by Wes in the later November 16 testing; exact served lights/receptacles/fixtures not specified. The washing-machine label remains from the original dictation and has not been reconfirmed. The Master Bath fan is separately recorded on circuit 16. |
 | 7 | Panel in storage shed | Initial label; described as also connected to number 5 / panel storage. Breaker arrangement not established. |
 | 8 | Sump pump; basement recessed lights (initial label) | Sump pump confirmed by Wes in the later November 16 testing. Basement recessed lights remain from the original dictation and were not separately reconfirmed in this update. |
 | 9 | Garage door opener | Initial label. |
