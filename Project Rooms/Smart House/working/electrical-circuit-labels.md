@@ -15,7 +15,7 @@ Internal working record. Source: Wes's circuit-label dictation and subsequent fi
 | 5 | Panel in storage shed | Initial label; Wes also associated number 7 with this panel. |
 | 6 | Washing machine | Initial label. |
 | 7 | Panel in storage shed | Initial label; described as also connected to number 5 / panel storage. Breaker arrangement not established. |
-| 8 | Basement recessed lights and sump pump | Initial label. |
+| 8 | Sump pump; basement recessed lights (initial label) | Sump pump confirmed by Wes in the later November 16 testing. Basement recessed lights remain from the original dictation and were not separately reconfirmed in this update. |
 | 9 | Garage door opener | Initial label. |
 | 10 | Refrigerator | Initial label. |
 | 11 | Living room power; porch light | Initial label/read-back accepted by Wes. Keep pending recheck alongside later circuit 1 identification; do not silently move the porch-light label to circuit 1. |
