@@ -347,7 +347,11 @@ function Invoke-LtManagerOperation {
         # This inventory was read inside the queue lock. Never inherit worker
         # evidence or retain cache state after this one atomic validation.
         Start-PrIntegritySnapshot
-        try{$reason=Test-LtRecord $r $client $manifests $env:COMPUTERNAME $Mode $MessageId $all}
+        try{
+            $freshIntegrity=@{}
+            $destinationHoldIndex=Get-LtDestinationHoldIndex $all $freshIntegrity
+            $reason=Test-LtRecord $r $client $manifests $env:COMPUTERNAME $Mode $MessageId $all $freshIntegrity $destinationHoldIndex
+        }
         finally{Stop-PrIntegritySnapshot}
         if ($reason -cne 'Eligible') { return [pscustomobject]@{claimed=$false;reason=$reason} }
         $attempt=[pscustomobject][ordered]@{attempt_id=$AttemptId;started_at_utc=(Get-UtcTimestamp);completed_at_utc=$null;outcome='Pending';detail=$null;transport_owner=$TransportOwner;transport_generation=$Generation}

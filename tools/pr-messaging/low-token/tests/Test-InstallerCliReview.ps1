@@ -55,6 +55,6 @@ Check 'UpgradeLive preflights before disabling and preserves guarded runtime str
     Assert ($block.Contains('Set-ScheduledTask -TaskName $task -Action $scheduled.Actions'))
     Assert ($block -notmatch '-Action (Send|StartAttempt|ConditionalClaim|Accept|StartProcessing|Complete|Fail)')
 }
-$summary=[ordered]@{release='0.4.11';passed=$script:passed;failed=$script:failed;production_actions=0;queue_mutations=0;worker_runs=0}
+$summary=[ordered]@{release='0.4.12';passed=$script:passed;failed=$script:failed;production_actions=0;queue_mutations=0;worker_runs=0}
 $summary|ConvertTo-Json -Depth 4
 if($script:failed){exit 1}

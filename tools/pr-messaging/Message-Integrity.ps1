@@ -73,6 +73,26 @@ function Get-PrMessageHashEvidence($Record) {
 }
 function Start-PrIntegritySnapshot { $script:PrIntegritySnapshot=@{} }
 function Stop-PrIntegritySnapshot { $script:PrIntegritySnapshot=$null }
+function Test-PrMessageHashValid($Record) {
+    $timer=[Diagnostics.Stopwatch]::StartNew()
+    try {
+        if($script:PrHashMetrics){$script:PrHashMetrics.calculations++}
+        if([string]$Record.payload_hash -cnotmatch '^[0-9a-f]{64}$'){return $false}
+        $immutable=[ordered]@{message_type=[string]$Record.message_type;parent_message_id=[string]$Record.parent_message_id;source=$Record.source;destination=$Record.destination;authorization=$Record.authorization;references=$Record.references;payload=$Record.payload}
+        $canonical=$immutable|ConvertTo-Json -Depth 30 -Compress
+        $plain=Get-PrMessageDigest (Convert-PrMessageJsonEscaping $canonical $false)
+        if($Record.payload_hash -ceq $plain){return $true}
+        $html=Get-PrMessageDigest (Convert-PrMessageJsonEscaping $canonical $true)
+        if($Record.payload_hash -ceq $html){return $true}
+        $legacyCanonical=(Convert-PrMessageLegacyDateValues $immutable)|ConvertTo-Json -Depth 30 -Compress
+        if($legacyCanonical -ceq $canonical){return $false}
+        $legacyPlain=Get-PrMessageDigest (Convert-PrMessageJsonEscaping $legacyCanonical $false)
+        if($Record.payload_hash -ceq $legacyPlain){return $true}
+        $legacyHtml=Get-PrMessageDigest (Convert-PrMessageJsonEscaping $legacyCanonical $true)
+        return ($Record.payload_hash -ceq $legacyHtml)
+    }
+    finally {if($script:PrHashMetrics){$script:PrHashMetrics.calls++;$script:PrHashMetrics.elapsed_ms+=$timer.Elapsed.TotalMilliseconds}}
+}
 function Get-PrMessageHashEvidenceCore($Record) {
     $immutable=[ordered]@{message_type=[string]$Record.message_type;parent_message_id=[string]$Record.parent_message_id;source=$Record.source;destination=$Record.destination;authorization=$Record.authorization;references=$Record.references;payload=$Record.payload}
     $canonical=$immutable|ConvertTo-Json -Depth 30 -Compress
@@ -93,8 +113,8 @@ function Get-PrMessageHashEvidenceCore($Record) {
         legacy_datetime_default_hash=$legacyPlain;legacy_datetime_html_hash=$legacyHtml
     }
 }
-function Test-PrMessageTerminal($Record) {
-    if(!(Get-PrMessageHashEvidence $Record).valid){return $false}
+function Test-PrMessageTerminal($Record,[switch]$IntegrityAlreadyValid) {
+    if(!$IntegrityAlreadyValid -and !(Test-PrMessageHashValid $Record)){return $false}
     if($Record.state -cnotin @('Completed','Blocked','Needs Wes','Rejected as Wrong Room') -or $Record.result.state -cne $Record.state){return $false}
     $r=$Record.receipt
     if(!$r -or $r.project_room -cne $Record.destination.project_room -or $r.task_id -cne $Record.destination.task_id -or $r.machine -cne $Record.destination.machine -or $Record.result.machine -cne $Record.destination.machine){return $false}
