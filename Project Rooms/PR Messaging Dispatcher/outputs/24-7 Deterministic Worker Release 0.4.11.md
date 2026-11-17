@@ -2,6 +2,8 @@
 
 Date: 2026-11-01
 
+Installer preflight amendment: 2026-11-17
+
 ## Scope
 
 Release `0.4.11` adds guarded validation enrollment support for exactly one additional endpoint:
@@ -42,3 +44,27 @@ Windows PowerShell 5.1 isolated tests passed on WES-VIDEOEDITOR under `IRAMa`:
 - `Test-LowTokenWorker.ps1`: 69 passed, 0 failed, 0 production actions, 0 real CLI submissions.
 
 The 114 passing tests cover exact Medicare skill mapping, additive pin preservation, repeat idempotence, config/manifest/payload/owner/CLI/schedule/journal guards, worker-lock and concurrent-enrollment behavior, restart and ambiguity handling, preserved runtime evidence, and rejection of production or any different synthetic ID. Fixture success is code evidence only; it is not WESSTUDIO enrollment or Medicare dispatchability evidence.
+
+## OFFICEASSIST guarded UpgradeLive procedure
+
+This is an installer/preflight repair only. The reviewed OA target is release `0.4.11`, which contains the `0.4.9` UTF-8 manager repair and bounded diagnostics plus the later narrow enrollment additions. Do not downgrade or stop at `0.4.9`.
+
+Run from a normal interactive `OFFICEASSIST\OfficeAssistLogin` PowerShell session after safely fast-forwarding the clean Admin Wiki `main` branch to the published repair commit:
+
+```powershell
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File "C:\Codex\Wiki Files\tools\pr-messaging\low-token\Install-LowTokenWorker.ps1" -Action UpgradeLive -ExpectedMachine OFFICEASSIST -DispatcherTaskId "01a09d84-a309-7591-a790-e770fcb53dee" -LegacyAutomationId "officeassist-morning-email-summary-and-instruction-monitor"
+```
+
+The installer must report `LiveUpgraded`, release `0.4.11`, `RegisteredSignedOpenAICodexPackage`, the exact current package full name, CLI path, CLI SHA-256, CLI version, preserved generation/state/journal, and preserved task structure. It must fail closed if the executing SID is not the installed worker SID or any package, manifest, path, signature, behavior, or hash guard differs.
+
+After installation, verify separately on OFFICEASSIST:
+
+1. owner remains `low-token-officeassist` in `Live` mode with the prior generation;
+2. the existing worker task identity, hidden launcher, one-minute schedule, state directory, journal, and destination pins are unchanged;
+3. the canonical manager can read the central share successfully under `OfficeAssistLogin`;
+4. two natural scheduled ticks reach candidate evaluation and report truthful claims/submissions without forcing a run;
+5. no queue record, attempt, receipt, result, or unfinished-work state was changed for testing.
+
+Remote SMB reachability is not proved by installer success and must be verified independently. Do not retry messages, replace handoffs, or claim invoice or payment work completed from this procedure.
+
+The installer amendment was verified on WES-VIDEOEDITOR under normal user `WES-VIDEOEDITOR\IRAMa` against registered package `OpenAI.Codex_26.1111.2228.0_x64__2p2nqsd0c76g0`: valid `OpenAI OpCo, LLC` signature, `codex-cli 0.169.0-alpha.11.1`, and SHA-256 `094D4DB493DE22025712CC5963854E7654B7C97F4CEE795E3E986270A0F4F6B4`. This proves the guard against the same reviewed package build, not OA installation or SMB reachability. The amendment and retained worker controls passed 209 isolated tests with no production actions, central writes, real notifications, or forced worker runs.

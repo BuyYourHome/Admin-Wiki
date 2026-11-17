@@ -28,6 +28,7 @@ $wscript='C:\Windows\System32\wscript.exe'
 $legacyTask='BYH PR Messaging Assisted Worker - Quickbooks'
 $files=@('Common.ps1','Process.ps1','Canary.Guards.ps1','Invoke-LowTokenWorker.ps1','Invoke-CodexQueueAdapter.ps1','Invoke-ManagerCommand.ps1','Invoke-LowTokenWorkerHidden.vbs')
 . (Join-Path $PSScriptRoot 'Common.ps1')
+. (Join-Path $PSScriptRoot 'installer\CliReview.ps1')
 
 function New-LtWorkerTaskAction([string]$Package,[string]$WorkerConfig,[string]$Mode,[string]$MessageId='') {
     $launcher=Join-Path $Package 'Invoke-LowTokenWorkerHidden.vbs'
@@ -37,17 +38,6 @@ function New-LtWorkerTaskAction([string]$Package,[string]$WorkerConfig,[string]$
     New-ScheduledTaskAction -Execute $wscript -Argument $arguments
 }
 
-function Get-LtReviewedCli {
-    $command=Get-Command codex.exe -ErrorAction Stop
-    $path=[IO.Path]::GetFullPath($command.Source)
-    $root=[IO.Path]::GetFullPath((Join-Path $env:LOCALAPPDATA 'OpenAI\Codex\bin')).TrimEnd('\')+'\'
-    $item=Get-Item -LiteralPath $path -Force -ErrorAction Stop
-    if(!$path.StartsWith($root,[StringComparison]::OrdinalIgnoreCase) -or
-        $item.Name -cne 'codex.exe' -or
-        $item.Directory.Name -cnotmatch '^[0-9a-f]{8,64}$' -or
-        ($item.Attributes -band [IO.FileAttributes]::ReparsePoint)) { throw 'UnreviewedCliLocation' }
-    [pscustomobject]@{path=$path;sha256=(Get-FileHash -LiteralPath $path -Algorithm SHA256).Hash}
-}
 function Get-LtTaskStructure($ScheduledTask) {
     [ordered]@{
         actions=@($ScheduledTask.Actions|ForEach-Object{[ordered]@{execute=[string]$_.Execute;arguments=[string]$_.Arguments;working_directory=[string]$_.WorkingDirectory}})
@@ -113,7 +103,10 @@ if($Action -eq 'UpgradeLive'){
     if($owner.mode -cne 'Live' -or $owner.machine -cne $ExpectedMachine -or
         $owner.task_id -cne $DispatcherTaskId -or $owner.owner -cne $oldCfg.owner -or
         $owner.generation -cne $oldCfg.generation -or $owner.sid -cne $oldCfg.expected_sid){throw 'LiveSourceOwnerMismatch'}
+    if([Security.Principal.WindowsIdentity]::GetCurrent().User.Value -cne $oldCfg.expected_sid){throw 'LiveSourceWindowsIdentityMismatch'}
     $scheduled=Get-ScheduledTask -TaskName $task -ErrorAction Stop
+    $scheduledBefore=Get-LtTaskStructure $scheduled
+    $reviewedCli=Get-LtReviewedCli
     Disable-ScheduledTask -TaskName $task|Out-Null
     $deadline=[DateTime]::UtcNow.AddSeconds(60)
     while((Get-ScheduledTask -TaskName $task).State -eq 'Running' -and [DateTime]::UtcNow -lt $deadline){Start-Sleep -Milliseconds 250}
@@ -132,7 +125,6 @@ if($Action -eq 'UpgradeLive'){
         $cfg.manager_sha256=(Get-FileHash 'C:\Codex\Wiki Files\tools\pr-messaging\Manage-ProjectRoomMessage.ps1').Hash
         $cfg.adapter_path=Join-Path $pkg 'Invoke-CodexQueueAdapter.ps1'
         $cfg.adapter_sha256=(Get-FileHash $cfg.adapter_path).Hash
-        $reviewedCli=Get-LtReviewedCli
         $cfg.cli_path=$reviewedCli.path
         $cfg.cli_sha256=$reviewedCli.sha256
         $cfg.package_sha256=Get-LtPackageHash $pkg
@@ -140,11 +132,16 @@ if($Action -eq 'UpgradeLive'){
         $taskAction=New-LtWorkerTaskAction $pkg $configPath 'Live'
         Set-ScheduledTask -TaskName $task -Action $taskAction|Out-Null
         Enable-ScheduledTask -TaskName $task|Out-Null
+        $scheduledAfter=Get-LtTaskStructure (Get-ScheduledTask -TaskName $task -ErrorAction Stop)
+        foreach($field in @('triggers','principal','settings')){
+            if(($scheduledBefore[$field]|ConvertTo-Json -Depth 12 -Compress) -cne ($scheduledAfter[$field]|ConvertTo-Json -Depth 12 -Compress)){throw ('LiveTaskStructureChanged: '+$field)}
+        }
     }catch{
+        if($scheduled -and $scheduled.Actions){Set-ScheduledTask -TaskName $task -Action $scheduled.Actions -ErrorAction SilentlyContinue|Out-Null}
         Enable-ScheduledTask -TaskName $task -ErrorAction SilentlyContinue|Out-Null
         throw
     }
-    [pscustomobject]@{release=$release;status='LiveUpgraded';task=$task;task_enabled=$true;config_path=$configPath;owner=$owner.owner;generation_preserved=$owner.generation;state_directory=$cfg.state_directory;journal_preserved=$true}|ConvertTo-Json -Depth 8
+    [pscustomobject]@{release=$release;status='LiveUpgraded';task=$task;task_enabled=$true;config_path=$configPath;owner=$owner.owner;generation_preserved=$owner.generation;state_directory=$cfg.state_directory;journal_preserved=$true;cli_path=$reviewedCli.path;cli_sha256=$reviewedCli.sha256;cli_trust_model=$reviewedCli.trust_model;cli_package_full_name=$reviewedCli.package_full_name;cli_version=$reviewedCli.version_output;task_structure_preserved=$true}|ConvertTo-Json -Depth 8
     return
 }
 

@@ -2,6 +2,12 @@
 
 ## Controlled release 0.4.11 — Medicare validation enrollment (2026-11-01)
 
+### Guarded Microsoft Store CLI preflight amendment (2026-11-17)
+
+`UpgradeLive` accepts the normal user's currently registered Microsoft Store Codex CLI only when every exact guard passes: package name `OpenAI.Codex`, family `OpenAI.Codex_2p2nqsd0c76g0`, Store publisher identity `CN=50BDFD77-8903-4850-9FFE-6E8522F64D5B`, x64 architecture, matching AppX manifest, exact package-root-relative path `app\resources\codex.exe`, a valid `OpenAI OpCo, LLC` Authenticode signature, a non-reparse executable, stable before/after SHA-256, and successful `codex-cli <version>` behavior. No other `WindowsApps` executable is trusted. The existing reviewed `%LOCALAPPDATA%\OpenAI\Codex\bin\<build>\codex.exe` path remains supported.
+
+CLI review now occurs under the installed worker SID before the scheduled task is disabled or package files are replaced. A failed preflight leaves the existing task and runtime pin unchanged. The guarded upgrade still targets worker release `0.4.11`; OA must not install the incomplete attempted `0.4.9` target merely because that was the first repair attempt.
+
 Release `0.4.11` adds exactly one reviewed WESSTUDIO validation endpoint to `EnrollValidationDestination`: Medicare task `01a198bd-6bd0-7013-bd02-2b26a715e552`, skill `medicare`, manifest `medicare.json`. Codex Environment, Smart House, and House Render remain supported; every other endpoint remains rejected.
 
 The existing guarded enrollment contract is unchanged. Medicare requires one exact WESSTUDIO client registration, a schema-2 manifest that remains `dispatchable: false` and names one exact `validation_ready` message, and one pristine remote-source synthetic with a one-attempt budget and explicit no-business-action flags. Config, manifest, payload, owner-generation, package, manager, adapter, reviewed CLI, scheduled action, journal, and registration guards all remain mandatory. Enrollment appends one exact pin while preserving existing pin order, owner generation, state, journal, hidden launcher, Live mode, one-minute schedule, message records, and repeat-idempotence evidence.
