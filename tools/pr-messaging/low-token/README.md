@@ -1,8 +1,8 @@
 # Low-token dispatcher releases
 
-## Controlled release 0.4.12 — newest-first bounded candidate evaluation (2026-11-17)
+## Controlled release 0.4.13 — guarded Store CLI discovery fallback (2026-11-17)
 
-Release `0.4.12` evaluates queued candidates newest-first using descending `created_at_utc` and `message_id`. It computes destination holds once per tick and retains unchanged historical integrity results in a machine/SID-bound local cache. That cache is explicitly non-authoritative and cannot permit a claim: `ConditionalClaim` rereads the exact record and current destination inventory under the canonical queue lock, recomputes fresh immutable-hash evidence, rechecks holds/configuration/version, and alone grants submission permission.
+Release `0.4.13` retains release `0.4.12` newest-first selection, bounded historical-integrity cache, and atomic fresh validation. It corrects `UpgradeLive` for a registered Microsoft Store Codex package whose normal-user PowerShell session does not expose `codex.exe` through `Get-Command`. The fallback accepts only one exact normal-user `OpenAI.Codex` AppX registration and derives only its exact `app\resources\codex.exe`; the existing package identity, manifest, Authenticode signer, executable behavior, non-reparse, and stable before/after SHA-256 checks remain mandatory.
 
 The release preserves owner generation, state, journal, task identity, hidden launcher, one-minute schedule, destination pins, acceptance-based hold release, unresolved-submission holds, permanent markers, and duplicate protection. It creates no queue record and authorizes no business action.
 
@@ -12,7 +12,7 @@ The release preserves owner generation, state, journal, task identity, hidden la
 
 `UpgradeLive` accepts the normal user's currently registered Microsoft Store Codex CLI only when every exact guard passes: package name `OpenAI.Codex`, family `OpenAI.Codex_2p2nqsd0c76g0`, Store publisher identity `CN=50BDFD77-8903-4850-9FFE-6E8522F64D5B`, x64 architecture, matching AppX manifest, exact package-root-relative path `app\resources\codex.exe`, a valid `OpenAI OpCo, LLC` Authenticode signature, a non-reparse executable, stable before/after SHA-256, and successful `codex-cli <version>` behavior. No other `WindowsApps` executable is trusted. The existing reviewed `%LOCALAPPDATA%\OpenAI\Codex\bin\<build>\codex.exe` path remains supported.
 
-CLI review now occurs under the installed worker SID before the scheduled task is disabled or package files are replaced. A failed preflight leaves the existing task and runtime pin unchanged. Release `0.4.12` retains this guarded package review; OA must not install the incomplete attempted `0.4.9` target merely because that was the first repair attempt.
+CLI review occurs under the installed worker SID before the scheduled task is disabled or package files are replaced. A failed preflight leaves the existing task and runtime pin unchanged. Release `0.4.13` is the reviewed target for OFFICEASSIST; OA must not install the incomplete attempted `0.4.9` target merely because that was the first repair attempt.
 
 Release `0.4.11` adds exactly one reviewed WESSTUDIO validation endpoint to `EnrollValidationDestination`: Medicare task `01a198bd-6bd0-7013-bd02-2b26a715e552`, skill `medicare`, manifest `medicare.json`. Codex Environment, Smart House, and House Render remain supported; every other endpoint remains rejected.
 

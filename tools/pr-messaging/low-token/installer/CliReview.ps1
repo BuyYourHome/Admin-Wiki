@@ -35,10 +35,34 @@ function Assert-LtPackagedCliEvidence($Evidence) {
     if([string]$Evidence.sha256_after -ine [string]$Evidence.sha256_before){throw 'CliChangedDuringReview'}
 }
 
+function Get-LtRegisteredPackagedCliPath($Packages) {
+    $reviewed=@($Packages | Where-Object {
+        [string]$_.Name -ceq 'OpenAI.Codex' -and
+        [string]$_.Publisher -ceq 'CN=50BDFD77-8903-4850-9FFE-6E8522F64D5B' -and
+        [string]$_.PackageFamilyName -ceq 'OpenAI.Codex_2p2nqsd0c76g0' -and
+        [string]$_.Architecture -ceq 'X64' -and
+        [string]$_.PackageFullName -cmatch '^OpenAI\.Codex_[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+_x64__2p2nqsd0c76g0$' -and
+        ![string]::IsNullOrWhiteSpace([string]$_.InstallLocation)
+    })
+    if($reviewed.Count -eq 0){throw 'CliExecutableMissing'}
+    if($reviewed.Count -ne 1){throw 'UnreviewedCliPackageIdentity'}
+    $install=[IO.Path]::GetFullPath([string]$reviewed[0].InstallLocation).TrimEnd('\')
+    $windowsApps=[IO.Path]::GetFullPath('C:\Program Files\WindowsApps').TrimEnd('\')+'\'
+    if(!$install.StartsWith($windowsApps,[StringComparison]::OrdinalIgnoreCase) -or
+        [IO.Path]::GetFileName($install) -cne [string]$reviewed[0].PackageFullName){throw 'UnreviewedCliPackageLocation'}
+    [IO.Path]::GetFullPath((Join-Path $install 'app\resources\codex.exe'))
+}
+
 function Get-LtReviewedCli {
     $command=Get-Command codex.exe -ErrorAction SilentlyContinue
-    if(!$command -or [string]::IsNullOrWhiteSpace([string]$command.Source)){throw 'CliExecutableMissing'}
-    $path=[IO.Path]::GetFullPath($command.Source)
+    if($command -and ![string]::IsNullOrWhiteSpace([string]$command.Source)){
+        $path=[IO.Path]::GetFullPath($command.Source)
+    } else {
+        # Microsoft Store installs need not expose codex.exe through PATH/App Execution
+        # Aliases. Resolve only the exact normal-user AppX registration; the complete
+        # package, manifest, signature, behavior, and stable-hash review still follows.
+        $path=Get-LtRegisteredPackagedCliPath @(Get-AppxPackage -Name 'OpenAI.Codex' -ErrorAction Stop)
+    }
     if(!(Test-Path -LiteralPath $path -PathType Leaf)){throw 'CliExecutableMissing'}
     $item=Get-Item -LiteralPath $path -Force -ErrorAction Stop
     if($item.Name -cne 'codex.exe' -or ($item.Attributes -band [IO.FileAttributes]::ReparsePoint)){throw 'UnreviewedCliLocation'}

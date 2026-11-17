@@ -70,6 +70,6 @@ Run 'atomic claim ignores a stale local cache and preserves an invalid-hash hold
     Assert ((Record $f).attempt_count -eq 0)
 }
 
-$summary=[ordered]@{release='0.4.12';passed=$script:passed;failed=$script:failed;large_queue_records=371;production_actions=0;real_submissions=0}
+$summary=[ordered]@{release='0.4.13';passed=$script:passed;failed=$script:failed;large_queue_records=371;production_actions=0;real_submissions=0}
 $summary|ConvertTo-Json -Depth 5
 if($script:failed){exit 1}

@@ -24,6 +24,13 @@ function Evidence {
         sha256_before=('A'*64);version_exit_code=0;version_output='codex-cli 0.169.0-alpha.11.1';sha256_after=('A'*64)
     }
 }
+function Package([string]$InstallLocation='C:\Program Files\WindowsApps\OpenAI.Codex_26.1111.2228.0_x64__2p2nqsd0c76g0') {
+    [pscustomobject]@{
+        Name='OpenAI.Codex';Publisher='CN=50BDFD77-8903-4850-9FFE-6E8522F64D5B'
+        PackageFamilyName='OpenAI.Codex_2p2nqsd0c76g0';Architecture='X64';Version='26.1111.2228.0'
+        PackageFullName='OpenAI.Codex_26.1111.2228.0_x64__2p2nqsd0c76g0';InstallLocation=$InstallLocation
+    }
+}
 function Reject($Evidence,[string]$Expected){
     try{Assert-LtPackagedCliEvidence $Evidence;throw 'accepted'}catch{Assert ($_.Exception.Message -ceq $Expected) ('Expected '+$Expected+', got '+$_.Exception.Message)}
 }
@@ -35,6 +42,28 @@ Check 'reject an invalid executable signature' {$e=Evidence;$e.signature_status=
 Check 'reject a changed binary during review' {$e=Evidence;$e.sha256_after=('B'*64);Reject $e 'CliChangedDuringReview'}
 Check 'reject a missing executable' {$e=Evidence;$e.exists=$false;Reject $e 'CliExecutableMissing'}
 Check 'reject failed executable behavior' {$e=Evidence;$e.version_exit_code=1;Reject $e 'UnreviewedCliBehavior'}
+Check 'resolve exact registered Store CLI when command lookup is unavailable' {
+    $path=Get-LtRegisteredPackagedCliPath @((Package))
+    Assert ($path -ceq 'C:\Program Files\WindowsApps\OpenAI.Codex_26.1111.2228.0_x64__2p2nqsd0c76g0\app\resources\codex.exe')
+}
+Check 'reject no registered Store CLI fallback' {
+    try{Get-LtRegisteredPackagedCliPath @()|Out-Null;throw 'accepted'}catch{Assert ($_.Exception.Message -ceq 'CliExecutableMissing')}
+}
+Check 'reject ambiguous registered Store CLI fallback' {
+    try{Get-LtRegisteredPackagedCliPath @((Package),(Package))|Out-Null;throw 'accepted'}catch{Assert ($_.Exception.Message -ceq 'UnreviewedCliPackageIdentity')}
+}
+Check 'reject unreviewed Store package identity during fallback' {
+    $p=Package;$p.PackageFamilyName='Other.Package_2p2nqsd0c76g0'
+    try{Get-LtRegisteredPackagedCliPath @($p)|Out-Null;throw 'accepted'}catch{Assert ($_.Exception.Message -ceq 'CliExecutableMissing')}
+}
+Check 'reject Store registration outside the exact WindowsApps package leaf' {
+    try{Get-LtRegisteredPackagedCliPath @((Package 'C:\Program Files\WindowsApps\Other.Package'))|Out-Null;throw 'accepted'}catch{Assert ($_.Exception.Message -ceq 'UnreviewedCliPackageLocation')}
+}
+Check 'review helper invokes exact AppX fallback only after empty command lookup' {
+    $text=Get-Content -Raw -LiteralPath (Join-Path $release 'installer\CliReview.ps1')
+    Assert ($text.Contains("`$command=Get-Command codex.exe -ErrorAction SilentlyContinue"))
+    Assert ($text.Contains("`$path=Get-LtRegisteredPackagedCliPath @(Get-AppxPackage -Name 'OpenAI.Codex' -ErrorAction Stop)"))
+}
 Check 'review helper accepts the installed normal-user Codex CLI' {
     $x=Get-LtReviewedCli
     Assert ($x.path -ceq (Get-Command codex.exe -ErrorAction Stop).Source)
@@ -55,6 +84,6 @@ Check 'UpgradeLive preflights before disabling and preserves guarded runtime str
     Assert ($block.Contains('Set-ScheduledTask -TaskName $task -Action $scheduled.Actions'))
     Assert ($block -notmatch '-Action (Send|StartAttempt|ConditionalClaim|Accept|StartProcessing|Complete|Fail)')
 }
-$summary=[ordered]@{release='0.4.12';passed=$script:passed;failed=$script:failed;production_actions=0;queue_mutations=0;worker_runs=0}
+$summary=[ordered]@{release='0.4.13';passed=$script:passed;failed=$script:failed;production_actions=0;queue_mutations=0;worker_runs=0}
 $summary|ConvertTo-Json -Depth 4
 if($script:failed){exit 1}

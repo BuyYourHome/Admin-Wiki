@@ -15,7 +15,7 @@ param(
     [string]$ExpectedOwnerGeneration
 )
 $ErrorActionPreference='Stop'
-$release='0.4.12'
+$release='0.4.13'
 $queue='\\WES-VIDEOEDITOR\BYH-PRMessaging$'
 $task="BYH PR Messaging Worker - $ExpectedMachine"
 $root=Join-Path $env:LOCALAPPDATA "BuyYourHome\PRMessaging\low-token\releases\$release"
