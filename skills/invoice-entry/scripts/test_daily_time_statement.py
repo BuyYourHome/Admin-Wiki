@@ -3,6 +3,7 @@ import importlib.util
 import sys
 import tempfile
 import unittest
+from decimal import Decimal
 from pathlib import Path
 
 from pypdf import PdfReader
@@ -42,6 +43,13 @@ class DailyStatementTests(unittest.TestCase):
                 ],
                 "earlier_lines": [],
             },
+            "running_hourly_average": {
+                "basis_type": "recorded_invoice_compensation",
+                "periods": [
+                    {"invoice_id": "FIXTURE-PRIOR", "issuer": "Josh Kennedy LLC", "period_start": "2025-12-16", "period_end": "2025-12-31", "compensation": 60, "minutes": 120, "source_reference": "verified-prior-fixture"},
+                    {"invoice_id": "FIXTURE-001", "issuer": "Josh Kennedy LLC", "period_start": "2026-01-01", "period_end": "2026-01-15", "compensation": 100, "minutes": 390, "source_reference": "verified-current-fixture"},
+                ],
+            },
         }
         for line in self.data["lines"]:
             line["task_group"] = line["project"].lower()
@@ -62,9 +70,9 @@ class DailyStatementTests(unittest.TestCase):
         self.assertIn("6h30m", pages[0])
         self.assertLess(pages[0].index("Prepare surfaces"), pages[0].index("Install fixture"))
         self.assertLess(pages[0].index("Install fixture"), pages[0].index("Inspect work"))
-        self.assertIn("Task Hours to Date", pages[1])
+        self.assertIn("Task Hours Statement", pages[1])
         self.assertIn("Fixture work", pages[1])
-        self.assertIn("Total to date", pages[1])
+        self.assertIn("Est. task", pages[1])
         for task in ("Install fixture", "Prepare surfaces", "Inspect work"):
             self.assertEqual(1, pages[0].count(task))
 
@@ -85,7 +93,7 @@ class DailyStatementTests(unittest.TestCase):
         data["review_notes"] = ["Retain the uncertain end time for review."]
         pages = self.render(data)
         self.assertEqual(2, len(pages))
-        self.assertIn("Task Hours to Date", pages[1])
+        self.assertIn("Task Hours Statement", pages[1])
         self.assertIn("uncertain end time", pages[1])
 
     def historical_line(self):
@@ -97,10 +105,11 @@ class DailyStatementTests(unittest.TestCase):
         pages = self.render(data)
         self.assertIn("$100.00", pages[0])
         self.assertIn("6h30m", pages[0])
-        self.assertIn("Task Hours to Date", pages[1])
+        self.assertIn("Task Hours Statement", pages[1])
         self.assertIn("2h00m", pages[1])
         self.assertIn("6h30m", pages[1])
-        self.assertIn("adds no hours or charges", pages[1])
+        self.assertIn("add no hours or charges", pages[1])
+        self.assertIn("$122.35", pages[1])
         self.assertEqual(2, len(pages))
 
     def test_related_or_uncertain_combined_history_cannot_inflate_task_totals(self):
@@ -119,6 +128,7 @@ class DailyStatementTests(unittest.TestCase):
             for day in range(1, 15)
         ]
         data["invoice_total"] = 140
+        data["running_hourly_average"]["periods"][-1].update(compensation=140, minutes=840)
         for allocation in data["allocation_summary"]:
             allocation.update(hours=7, allocated_cost=70)
         data["review_notes"] = ["Preserve this material date/time interpretation and reconcile corrections without adding another invoice."] * 6
@@ -127,6 +137,38 @@ class DailyStatementTests(unittest.TestCase):
         for day in range(1, 15):
             self.assertIn(f"Supported work {day}", pages[0])
         self.assertIn("Accuracy review notes", pages[1])
+
+    def test_running_rate_is_weighted_and_not_a_mean_of_period_rates(self):
+        rate, amount, minutes, start, end = generator.running_hourly_average(self.data, self.data["lines"])
+        self.assertEqual(Decimal(160)*60/510, rate)
+        self.assertNotEqual((Decimal(60)/2 + Decimal(100)/Decimal('6.5'))/2, rate)
+        self.assertEqual(Decimal(160), amount)
+        self.assertEqual(510, minutes)
+        pages = self.render()
+        self.assertIn("$18.8235/hr", pages[1])
+        self.assertIn("not verified cash paid", pages[1])
+        self.assertIn("$100.00", pages[0])
+
+    def test_running_basis_rejects_duplicates_overlap_future_and_wrong_worker(self):
+        for change in ("duplicate", "overlap", "future", "worker", "source", "minutes", "amount", "current"):
+            with self.subTest(change=change):
+                data = copy.deepcopy(self.data)
+                prior, current = data["running_hourly_average"]["periods"]
+                if change == "duplicate": data["running_hourly_average"]["periods"].append(copy.deepcopy(prior))
+                elif change == "overlap": prior["period_end"] = "2026-01-02"
+                elif change == "future": prior["period_end"] = "2026-02-01"
+                elif change == "worker": prior["issuer"] = "Another worker"
+                elif change == "source": prior["source_reference"] = ""
+                elif change == "minutes": prior["minutes"] = 0
+                elif change == "amount": prior["compensation"] = -1
+                elif change == "current": current["minutes"] = 300
+                with self.assertRaises(ValueError): self.render(data)
+
+    def test_running_basis_must_include_current_invoice(self):
+        data = copy.deepcopy(self.data)
+        data["running_hourly_average"]["periods"].pop()
+        with self.assertRaisesRegex(ValueError, "exact current invoice once"):
+            self.render(data)
 
     def test_overlap_or_later_time_is_rejected(self):
         for date in ("2026-01-01", "2026-01-16"):

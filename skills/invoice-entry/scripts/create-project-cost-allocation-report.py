@@ -2,7 +2,7 @@ import argparse
 import json
 from collections import defaultdict
 from datetime import datetime
-from decimal import Decimal
+from decimal import Decimal, ROUND_HALF_UP
 from pathlib import Path
 from xml.sax.saxutils import escape
 
@@ -91,20 +91,67 @@ def validated_task_history(data, lines):
     return history, groups, current, earlier
 
 
+def running_hourly_average(data, lines):
+    basis = required(data, "running_hourly_average")
+    if basis.get("basis_type") != "recorded_invoice_compensation":
+        raise ValueError("Running average requires a disclosed recorded-invoice compensation basis")
+    cutoff = datetime.strptime(required(data["task_history"], "period_end"), "%Y-%m-%d").date()
+    seen = set()
+    periods = []
+    compensation = Decimal("0")
+    minutes = 0
+    current_found = False
+    for row in required(basis, "periods"):
+        invoice_id = required(row, "invoice_id")
+        if invoice_id in seen:
+            raise ValueError("Duplicate invoice in running average")
+        seen.add(invoice_id)
+        if required(row, "issuer").casefold() != data["issuer"].casefold():
+            raise ValueError("Running average contains another worker")
+        required(row, "source_reference")
+        start = datetime.strptime(required(row, "period_start"), "%Y-%m-%d").date()
+        end = datetime.strptime(required(row, "period_end"), "%Y-%m-%d").date()
+        if start > end or end > cutoff:
+            raise ValueError("Running average period is invalid or after the invoice cutoff")
+        amount = Decimal(str(required(row, "compensation")))
+        count = Decimal(str(required(row, "minutes")))
+        if not amount.is_finite() or amount <= 0 or amount != amount.quantize(Decimal("0.01")):
+            raise ValueError("Running compensation must be a positive cent amount")
+        if not count.is_finite() or count <= 0 or count != count.to_integral_value():
+            raise ValueError("Running average requires positive whole recorded minutes")
+        if invoice_id == data["invoice_no"]:
+            if amount != Decimal(str(data["invoice_total"])) or int(count) != sum(time_minutes(line) for line in lines) or start.isoformat() != data["task_history"]["period_start"] or end != cutoff:
+                raise ValueError("Running average current period disagrees with invoice")
+            current_found = True
+        periods.append((start, end))
+        compensation += amount
+        minutes += int(count)
+    periods.sort()
+    if any(periods[index][0] <= periods[index-1][1] for index in range(1, len(periods))):
+        raise ValueError("Overlapping periods in running average")
+    if not current_found:
+        raise ValueError("Running average must include the exact current invoice once")
+    rate = compensation * 60 / Decimal(minutes)
+    return rate, compensation, minutes, periods[0][0], cutoff
+
+
 def task_summary(data, lines, body, deep, pale, line_color):
     history, groups, current, earlier = validated_task_history(data, lines)
-    story = [PageBreak(), Paragraph("<b>Task Hours to Date</b>", ParagraphStyle("TaskSummaryTitle", parent=body, fontSize=19, leading=23)), Spacer(1, 7)]
+    rate, compensation, basis_minutes, basis_start, cutoff = running_hourly_average(data, lines)
+    story = [PageBreak(), Paragraph("<b>Task Hours Statement</b>", ParagraphStyle("TaskSummaryTitle", parent=body, fontSize=19, leading=23)), Spacer(1, 7)]
     story.append(Paragraph(f"<b>{escape(data['issuer'])}</b> | Invoice {escape(data['invoice_no'])}<br/>Tasks included in {escape(data['period'])}; recorded hours through {escape(history['period_end'])}", body))
-    story.extend([Spacer(1, 9), Paragraph("Earlier matched time + this invoice's time = recorded task total to date. Earlier time is informational only and adds no hours or charges to this invoice.", body), Spacer(1, 8)])
-    rows = [["Project / task", "Earlier", "This period", "Total to date"]]
+    story.extend([Spacer(1, 8), Paragraph(f"<b>Running average: ${rate:,.4f}/hr</b> = ${compensation:,.2f} recorded invoice compensation / {hours_minutes(basis_minutes)} reported work, {basis_start:%m/%d/%Y}-{cutoff:%m/%d/%Y}. Includes all projects and office time; includes unapproved draft compensation where applicable. This is not verified cash paid.", body), Spacer(1, 7), Paragraph("Estimated task compensation = total recorded task hours to date x the unrounded running average, rounded to cents. Earlier hours and these estimates add no hours or charges to this invoice.", body), Spacer(1, 8)])
+    rows = [["Project / task", "Earlier", "This\nperiod", "Total hours\nto date", "Est. task\ncompensation"]]
     projects = list(dict.fromkeys(row['project'] for row in lines))
     for project in projects:
         for key in current:
             group = groups[key]
             if group['project'] != project:
                 continue
-            rows.append([Paragraph(escape(f"{project} - {group['name']}"), body), hours_minutes(earlier[key]) if earlier[key] else "--", hours_minutes(current[key]), hours_minutes(current[key]+earlier[key])])
-    table = Table(rows, colWidths=[3.9*inch, 0.9*inch, 1.0*inch, 1.1*inch], repeatRows=1)
+            total_minutes = current[key]+earlier[key]
+            estimate = (Decimal(total_minutes) * rate / 60).quantize(Decimal("0.01"), rounding=ROUND_HALF_UP)
+            rows.append([Paragraph(escape(f"{project} - {group['name']}"), body), hours_minutes(earlier[key]) if earlier[key] else "--", hours_minutes(current[key]), hours_minutes(total_minutes), f"${estimate:,.2f}"])
+    table = Table(rows, colWidths=[3.0*inch, 0.75*inch, 0.9*inch, 1.05*inch, 1.2*inch], repeatRows=1)
     table.setStyle(TableStyle([
         ("BACKGROUND", (0, 0), (-1, 0), deep), ("TEXTCOLOR", (0, 0), (-1, 0), colors.white),
         ("FONTNAME", (0, 0), (-1, 0), "Helvetica-Bold"), ("FONTSIZE", (0, 0), (-1, -1), 8.5),
