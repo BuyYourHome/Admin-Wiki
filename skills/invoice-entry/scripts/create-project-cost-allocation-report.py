@@ -47,7 +47,7 @@ def statement_day(line):
     raise ValueError(f"Supporting statement requires an unambiguous work date: {value}")
 
 
-def history_statement(data, lines, body, deep, pale, line_color):
+def validated_task_history(data, lines):
     history = required(data, "task_history")
     start = datetime.strptime(required(history, "period_start"), "%Y-%m-%d").date()
     end = datetime.strptime(required(history, "period_end"), "%Y-%m-%d").date()
@@ -85,80 +85,82 @@ def history_statement(data, lines, body, deep, pale, line_color):
         if interval in intervals:
             raise ValueError("Duplicate historical source interval with a different line ID")
         intervals.add(interval)
-        if line.get("relationship") not in ("direct", "related", "combined"):
-            raise ValueError("Historical task relationship must be disclosed")
+        if line.get("relationship") != "direct":
+            raise ValueError("Task totals require a direct historical task match; retain related or combined uncertain work outside the totals")
         earlier[key] += time_minutes(line)
-    story = [PageBreak(), Paragraph("<b>Earlier Recorded Task Summary</b>", ParagraphStyle("HistoryTitle", parent=body, fontSize=18, leading=22)), Spacer(1, 8)]
-    story.append(Paragraph(f"Invoice {escape(data['invoice_no'])} | Through {end:%B %d, %Y}", body))
-    story.extend([Spacer(1, 8), Paragraph(escape(required(history, "coverage")), body), Spacer(1, 8), Paragraph("Earlier time is informational only and adds no hours or charges to this invoice. Totals count each reported interval once within the displayed task group. Related or combined intervals retain their full reported description; their hours cannot be assigned to one task alone. A dash means no matched earlier interval was located, not proof of zero lifetime time.", body), Spacer(1, 8)])
-    rows = [["Project / task group", "Earlier", "This invoice", "Recorded total"]]
-    for key, minutes in current.items():
-        group = groups[key]
-        rows.append([Paragraph(escape(f"{group['project']} - {group['name']}"), body), hours_minutes(earlier[key]) if earlier[key] else "--", hours_minutes(minutes), hours_minutes(earlier[key] + minutes)])
-    table = Table(rows, colWidths=[3.75 * inch, 1.05 * inch, 1.05 * inch, 1.05 * inch], repeatRows=1)
-    table.setStyle(TableStyle([("BACKGROUND", (0, 0), (-1, 0), deep), ("TEXTCOLOR", (0, 0), (-1, 0), colors.white), ("FONTNAME", (0, 0), (-1, 0), "Helvetica-Bold"), ("FONTSIZE", (0, 0), (-1, -1), 8.5), ("ALIGN", (1, 1), (-1, -1), "RIGHT"), ("VALIGN", (0, 0), (-1, -1), "TOP"), ("GRID", (0, 0), (-1, -1), 0.35, line_color), ("TOPPADDING", (0, 0), (-1, -1), 5), ("BOTTOMPADDING", (0, 0), (-1, -1), 5)]))
-    story.append(table)
-    for note in history.get("notes", []):
-        story.extend([Spacer(1, 8), Paragraph(escape(str(note)), body)])
-    if previous:
-        story.extend([PageBreak(), Paragraph("<b>Earlier Recorded Intervals</b>", ParagraphStyle("HistoryDetailTitle", parent=body, fontSize=18, leading=22)), Spacer(1, 8), Paragraph("Earlier dates only; not billed again. Related = associated work, not an identical-task claim. Combined = an unsplit block covering several activities. Source references and duplicate decisions are retained with this statement's structured data.", body), Spacer(1, 8)])
-        rows = [["Date / source", "Project / task group", "Reported work / relationship", "Hours"]]
-        for line in sorted(previous, key=lambda row: (statement_day(row), row["project"], row["source_line_id"])):
-            group = groups[line["task_group"]]
-            rows.append([Paragraph(escape(f"{statement_day(line):%m/%d/%Y} / {line.get('source_label', 'source')}"), body), Paragraph(escape(f"{line['project']} - {group['name']}"), body), Paragraph(escape(f"{line['description']} [{line['relationship']}]"), body), hours_minutes(time_minutes(line))])
-        table = Table(rows, colWidths=[1.0 * inch, 1.5 * inch, 3.5 * inch, 0.9 * inch], repeatRows=1)
-        table.setStyle(TableStyle([("BACKGROUND", (0, 0), (-1, 0), deep), ("TEXTCOLOR", (0, 0), (-1, 0), colors.white), ("FONTNAME", (0, 0), (-1, 0), "Helvetica-Bold"), ("FONTSIZE", (0, 0), (-1, -1), 8.0), ("ALIGN", (-1, 1), (-1, -1), "RIGHT"), ("VALIGN", (0, 0), (-1, -1), "TOP"), ("GRID", (0, 0), (-1, -1), 0.35, line_color), ("TOPPADDING", (0, 0), (-1, -1), 4), ("BOTTOMPADDING", (0, 0), (-1, -1), 4)]))
-        story.append(table)
-    return story
+    return history, groups, current, earlier
 
 
-def supporting_statement(data, lines, body, deep, pale, line_color):
-    grouped = defaultdict(list)
-    for line in lines:
-        grouped[statement_day(line)].append(line)
-    total_minutes = sum(time_minutes(line) for line in lines)
-    project_minutes = defaultdict(int)
-    for line in lines:
-        project_minutes[line["project"]] += time_minutes(line)
-    for allocation in data["allocation_summary"]:
-        summary_minutes = Decimal(str(required(allocation, "hours"))) * 60
-        if summary_minutes != project_minutes[allocation["project"]]:
-            raise ValueError(f"Supporting statement hours disagree with allocation for {allocation['project']}")
-
-    story = [PageBreak(), Paragraph("<b>Supporting Time Statement</b>", ParagraphStyle("StatementTitle", parent=body, fontSize=18, leading=22)), Spacer(1, 8)]
-    story.append(Paragraph(f"<b>{escape(data['issuer'])}</b><br/>Invoice {escape(data['invoice_no'])} | {escape(data['period'])}", body))
-    story.extend([Spacer(1, 8), Paragraph("Day-by-day task hours supporting the preceding invoice. This statement is part of that invoice and is not an additional charge.", body), Spacer(1, 8)])
-    rows = [["Work Date", "Project / Destination", "Task / Work Performed", "Hours"]]
-    subtotals = []
-    for day in sorted(grouped):
-        daily_minutes = 0
-        for line in grouped[day]:
-            minutes = time_minutes(line)
-            daily_minutes += minutes
-            rows.append([str(line["date"]), Paragraph(escape(str(line["project"])), body), Paragraph(escape(str(required(line, "description"))), body), hours_minutes(minutes)])
-        subtotals.append(len(rows))
-        rows.append([f"Daily total - {day:%m/%d/%Y}", "", "", hours_minutes(daily_minutes)])
-    total_row = len(rows)
-    rows.append(["STATEMENT TOTAL", "", "", hours_minutes(total_minutes)])
-    table = Table(rows, colWidths=[0.8 * inch, 1.4 * inch, 3.7 * inch, 1.0 * inch], repeatRows=1)
-    commands = [
+def task_summary(data, lines, body, deep, pale, line_color):
+    history, groups, current, earlier = validated_task_history(data, lines)
+    story = [PageBreak(), Paragraph("<b>Task Hours to Date</b>", ParagraphStyle("TaskSummaryTitle", parent=body, fontSize=19, leading=23)), Spacer(1, 7)]
+    story.append(Paragraph(f"<b>{escape(data['issuer'])}</b> | Invoice {escape(data['invoice_no'])}<br/>Tasks included in {escape(data['period'])}; recorded hours through {escape(history['period_end'])}", body))
+    story.extend([Spacer(1, 9), Paragraph("Earlier matched time + this invoice's time = recorded task total to date. Earlier time is informational only and adds no hours or charges to this invoice.", body), Spacer(1, 8)])
+    rows = [["Project / task", "Earlier", "This period", "Total to date"]]
+    projects = list(dict.fromkeys(row['project'] for row in lines))
+    for project in projects:
+        for key in current:
+            group = groups[key]
+            if group['project'] != project:
+                continue
+            rows.append([Paragraph(escape(f"{project} - {group['name']}"), body), hours_minutes(earlier[key]) if earlier[key] else "--", hours_minutes(current[key]), hours_minutes(current[key]+earlier[key])])
+    table = Table(rows, colWidths=[3.9*inch, 0.9*inch, 1.0*inch, 1.1*inch], repeatRows=1)
+    table.setStyle(TableStyle([
         ("BACKGROUND", (0, 0), (-1, 0), deep), ("TEXTCOLOR", (0, 0), (-1, 0), colors.white),
         ("FONTNAME", (0, 0), (-1, 0), "Helvetica-Bold"), ("FONTSIZE", (0, 0), (-1, -1), 8.5),
-        ("ALIGN", (-1, 1), (-1, -1), "RIGHT"), ("VALIGN", (0, 0), (-1, -1), "TOP"),
-        ("GRID", (0, 0), (-1, -1), 0.35, line_color),
-        ("LEFTPADDING", (0, 0), (-1, -1), 5), ("RIGHTPADDING", (0, 0), (-1, -1), 5),
-        ("TOPPADDING", (0, 0), (-1, -1), 3), ("BOTTOMPADDING", (0, 0), (-1, -1), 3),
-    ]
-    for index in subtotals + [total_row]:
-        commands.extend([("SPAN", (0, index), (2, index)), ("BACKGROUND", (0, index), (-1, index), pale), ("FONTNAME", (0, index), (-1, index), "Helvetica-Bold")])
-    table.setStyle(TableStyle(commands))
-    story.extend([table, Spacer(1, 8), Paragraph("When one reported interval covers multiple tasks, its hours apply to the combined work. Separate task hours are not invented. An asterisk retains a disclosed date or time interpretation; review notes follow when applicable.", body)])
-    story.extend(history_statement(data, lines, body, deep, pale, line_color))
-    if data.get("review_notes"):
-        story.extend([PageBreak(), Paragraph("<b>Accuracy Review Notes</b>", ParagraphStyle("StatementNotesTitle", parent=body, fontSize=18, leading=22)), Spacer(1, 8), Paragraph(f"Invoice {escape(data['invoice_no'])} | {escape(data['period'])}", body)])
-        for index, note in enumerate(data["review_notes"], 1):
-            story.extend([Spacer(1, 10), Paragraph(f"<b>{index}.</b> {escape(str(note))}", body)])
+        ("ALIGN", (1, 1), (-1, -1), "RIGHT"), ("VALIGN", (0, 0), (-1, -1), "TOP"),
+        ("GRID", (0, 0), (-1, -1), 0.35, line_color), ("TOPPADDING", (0, 0), (-1, -1), 6),
+        ("BOTTOMPADDING", (0, 0), (-1, -1), 6),
+    ]))
+    story.extend([table, Spacer(1, 9), Paragraph(escape(required(history, 'coverage')), body)])
+    for note in history.get('summary_notes', []):
+        story.extend([Spacer(1, 6), Paragraph(escape(str(note)), body)])
+    notes = data.get('display_review_notes', data.get('review_notes', []))
+    if notes:
+        story.extend([Spacer(1, 10), Paragraph('<b>Accuracy review notes</b>', body)])
+        for index, note in enumerate(notes, 1):
+            story.extend([Spacer(1, 4), Paragraph(f'<b>{index}.</b> {escape(str(note))}', body)])
     return story
+
+
+def project_time_detail(data, lines, body, deep, pale, line_color):
+    grouped = defaultdict(list)
+    for line in lines:
+        grouped[required(line, 'project')].append(line)
+    allocations = {row['project']: row for row in data['allocation_summary']}
+    if set(grouped) != set(allocations):
+        raise ValueError('Project detail and allocation projects disagree')
+    compact = ParagraphStyle('ProjectDetail', parent=body, fontSize=7.6, leading=9.2)
+    rows = [['Date', 'Task / work performed', 'Hours', 'Amount']]
+    project_rows, subtotal_rows = [], []
+    for project, entries in grouped.items():
+        project_rows.append(len(rows))
+        rows.append([project, '', '', ''])
+        minutes = 0
+        for line in sorted(entries, key=statement_day):
+            minutes += time_minutes(line)
+            rows.append([str(line['date']), Paragraph(escape(required(line, 'description')), compact), hours_minutes(time_minutes(line)), money(line['allocated_cost'])])
+        allocation = allocations[project]
+        if Decimal(str(required(allocation,'hours')))*60 != minutes:
+            raise ValueError(f'Invoice detail hours disagree with allocation for {project}')
+        subtotal_rows.append(len(rows))
+        rows.append([f'{project} subtotal', '', hours_minutes(minutes), money(allocation['allocated_cost'])])
+    rows.append(['CURRENT PERIOD TOTAL', '', hours_minutes(sum(time_minutes(line) for line in lines)), money(data['invoice_total'])])
+    subtotal_rows.append(len(rows)-1)
+    table = Table(rows, colWidths=[0.8*inch, 4.3*inch, 0.85*inch, 0.95*inch], repeatRows=1)
+    commands = [
+        ('BACKGROUND',(0,0),(-1,0),deep),('TEXTCOLOR',(0,0),(-1,0),colors.white),
+        ('FONTNAME',(0,0),(-1,0),'Helvetica-Bold'),('FONTSIZE',(0,0),(-1,-1),8),
+        ('ALIGN',(2,1),(-1,-1),'RIGHT'),('VALIGN',(0,0),(-1,-1),'TOP'),
+        ('GRID',(0,0),(-1,-1),0.35,line_color),('TOPPADDING',(0,0),(-1,-1),4),
+        ('BOTTOMPADDING',(0,0),(-1,-1),4),
+    ]
+    for row in project_rows:
+        commands.extend([('SPAN',(0,row),(-1,row)),('BACKGROUND',(0,row),(-1,row),pale),('FONTNAME',(0,row),(-1,row),'Helvetica-Bold')])
+    for row in subtotal_rows:
+        commands.extend([('SPAN',(0,row),(1,row)),('BACKGROUND',(0,row),(-1,row),pale),('FONTNAME',(0,row),(-1,row),'Helvetica-Bold')])
+    table.setStyle(TableStyle(commands))
+    return [Paragraph('<b>Current-period time by project</b>', body), Spacer(1,4), table, Spacer(1,6), Paragraph('An asterisk marks an unresolved date/time interpretation. See the review notes on page 2. Combined work blocks remain unsplit.',body), Spacer(1,8)]
 
 
 def build_invoice(data, output_path):
@@ -320,7 +322,8 @@ def build_invoice(data, output_path):
         ("TOPPADDING", (0, 0), (-1, -1), 4),
         ("BOTTOMPADDING", (0, 0), (-1, -1), 4),
     ]))
-    story.extend([Paragraph("<b>Project Allocation Summary</b>", body), Spacer(1, 0.04 * inch), summary, Spacer(1, 0.12 * inch)])
+    if not josh_statement:
+        story.extend([Paragraph("<b>Project Allocation Summary</b>", body), Spacer(1, 0.04 * inch), summary, Spacer(1, 0.12 * inch)])
 
     rows = [["Work Date", "Project / Destination", "Description", "Hours", "Allocated Cost"]]
     for line in lines:
@@ -350,7 +353,7 @@ def build_invoice(data, output_path):
         ("BOTTOMPADDING", (0, 0), (-1, -1), detail_padding),
     ]))
     if josh_statement:
-        story.extend([Paragraph("The following supporting statement lists each work day, task, and hours included in this invoice, with daily subtotals.", body), Spacer(1, 0.12 * inch)])
+        story.extend(project_time_detail(data, lines, body, deep, pale, line_color))
     else:
         story.extend([Paragraph("<b>Time and Allocation Detail</b>", body), Spacer(1, 0.04 * inch), items, Spacer(1, 0.08 * inch)])
 
@@ -370,7 +373,7 @@ def build_invoice(data, output_path):
     ]))
     story.append(total)
     if josh_statement:
-        story.extend(supporting_statement(data, lines, body, deep, pale, line_color))
+        story.extend(task_summary(data, lines, body, deep, pale, line_color))
     doc.build(story)
 
 

@@ -51,19 +51,22 @@ class DailyStatementTests(unittest.TestCase):
         generator.build_invoice(data or self.data, path)
         return [page.extract_text() for page in PdfReader(path).pages]
 
-    def test_statement_follows_invoice_and_reconciles_daily_tasks(self):
+    def test_invoice_itemizes_period_by_project_then_task_summary(self):
         pages = self.render()
-        self.assertEqual(3, len(pages))
+        self.assertEqual(2, len(pages))
         self.assertIn("APPROVED BY WES", pages[0])
         self.assertIn("$100.00", pages[0])
-        self.assertNotIn("Supporting Time Statement", pages[0])
-        self.assertIn("Supporting Time Statement", pages[1])
-        self.assertIn("Daily total - 01/01/2026", pages[1])
-        self.assertIn("5h30m", pages[1])
-        self.assertIn("6h30m", pages[1])
-        self.assertLess(pages[1].index("Prepare surfaces"), pages[1].index("Install fixture"))
+        self.assertIn("Current-period time by project", pages[0])
+        self.assertIn("Alpha subtotal", pages[0])
+        self.assertIn("Beta subtotal", pages[0])
+        self.assertIn("6h30m", pages[0])
+        self.assertLess(pages[0].index("Prepare surfaces"), pages[0].index("Install fixture"))
+        self.assertLess(pages[0].index("Install fixture"), pages[0].index("Inspect work"))
+        self.assertIn("Task Hours to Date", pages[1])
+        self.assertIn("Fixture work", pages[1])
+        self.assertIn("Total to date", pages[1])
         for task in ("Install fixture", "Prepare surfaces", "Inspect work"):
-            self.assertEqual(1, pages[1].count(task))
+            self.assertEqual(1, pages[0].count(task))
 
     def test_statement_rejects_time_disagreement(self):
         data = copy.deepcopy(self.data)
@@ -81,23 +84,49 @@ class DailyStatementTests(unittest.TestCase):
         data = copy.deepcopy(self.data)
         data["review_notes"] = ["Retain the uncertain end time for review."]
         pages = self.render(data)
-        self.assertEqual(4, len(pages))
-        self.assertIn("Supporting Time Statement", pages[1])
-        self.assertIn("uncertain end time", pages[3])
+        self.assertEqual(2, len(pages))
+        self.assertIn("Task Hours to Date", pages[1])
+        self.assertIn("uncertain end time", pages[1])
 
     def historical_line(self):
-        return {"date": "2025-12-20", "project": "Alpha", "description": "Earlier combined fixture work", "task_group": "alpha", "hours": 2, "minutes": 120, "source_line_id": "fixture-prior-1", "source_reference": "verified-fixture", "relationship": "combined"}
+        return {"date": "2025-12-20", "project": "Alpha", "description": "Earlier fixture work", "task_group": "alpha", "hours": 2, "minutes": 120, "source_line_id": "fixture-prior-1", "source_reference": "verified-fixture", "relationship": "direct"}
 
     def test_earlier_time_is_separate_and_does_not_change_invoice(self):
         data = copy.deepcopy(self.data)
         data["task_history"]["earlier_lines"] = [self.historical_line()]
         pages = self.render(data)
         self.assertIn("$100.00", pages[0])
+        self.assertIn("6h30m", pages[0])
+        self.assertIn("Task Hours to Date", pages[1])
+        self.assertIn("2h00m", pages[1])
         self.assertIn("6h30m", pages[1])
-        self.assertIn("Earlier Recorded Task Summary", pages[2])
-        self.assertIn("2h00m", pages[2])
-        self.assertIn("adds no hours or charges", pages[2])
-        self.assertIn("Earlier combined fixture work", pages[3])
+        self.assertIn("adds no hours or charges", pages[1])
+        self.assertEqual(2, len(pages))
+
+    def test_related_or_uncertain_combined_history_cannot_inflate_task_totals(self):
+        for relationship in ("related", "combined"):
+            data = copy.deepcopy(self.data)
+            line = self.historical_line()
+            line["relationship"] = relationship
+            data["task_history"]["earlier_lines"] = [line]
+            with self.assertRaisesRegex(ValueError, "direct historical task match"):
+                self.render(data)
+
+    def test_fourteen_lines_and_material_notes_fit_two_pages(self):
+        data = copy.deepcopy(self.data)
+        data["lines"] = [
+            {"date": f"01/{day:02d}/26", "project": "Alpha" if day % 2 else "Beta", "description": f"Supported work {day}", "hours": 1, "minutes": 60, "allocated_cost": 10, "task_group": "alpha" if day % 2 else "beta"}
+            for day in range(1, 15)
+        ]
+        data["invoice_total"] = 140
+        for allocation in data["allocation_summary"]:
+            allocation.update(hours=7, allocated_cost=70)
+        data["review_notes"] = ["Preserve this material date/time interpretation and reconcile corrections without adding another invoice."] * 6
+        pages = self.render(data)
+        self.assertEqual(2, len(pages))
+        for day in range(1, 15):
+            self.assertIn(f"Supported work {day}", pages[0])
+        self.assertIn("Accuracy review notes", pages[1])
 
     def test_overlap_or_later_time_is_rejected(self):
         for date in ("2026-01-01", "2026-01-16"):
