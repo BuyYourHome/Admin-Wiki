@@ -38,6 +38,18 @@ If a platform approval UI is required, use it; a chat YES is not a substitute fo
 - The originating PR retains end-to-end responsibility for tracking the outcome; delegation, acceptance, or a confirmation request is not business completion. The receiving PR owns its action and return evidence.
 - This rule cannot guarantee an unloaded chat wakes up. Report execution/wake-up failure separately from missing approval. Do not ask for renewed invoice or email approval to fix a transport failure.
 
+### Email Monitor Send Approvals In Needs Wes
+
+For every Email Monitor send that genuinely needs Wes's confirmation, including direct requests without a central handoff, retain one opaque approval UUID per exact immutable delivery package in Email Monitor's existing durable state. Include that approval ID in the exact question. From the approved OFFICEASSIST normal-user execution context, publish `awaiting_approval` with `Project Rooms\Dashboard\tools\Publish-EmailApprovalAttention.ps1` before ending the turn. Do not create another central dispatch for visibility. The Dashboard copy is status only: the prepared email, decision evidence, refusal details, and safe continuation stay with Email Monitor.
+
+Pass the same `-ApprovalId` and `-PackageHash` on each update. For a delegated send, also pass `-CentralMessageId` and `-CentralPayloadHash` for the original verified record; keep the pair fixed even if work resumes through a linked continuation. For a direct send with no central record, omit both. Apply status changes after recording their evidence in the existing delivery state:
+
+- `approved_awaiting_send`: the direct YES or required platform confirmation is verified for the exact package and no other blocker is known. This is not proof of sending.
+- `sent_verified`: the exact email was verified in Sent Items. `declined`: Wes said NO for the exact pending approval. `superseded`: the version was explicitly replaced; use a new approval ID if the new version needs a decision.
+- `technical_blocker`: a technical failure or continuing platform refusal needs owner follow-up, not another YES. `submission_uncertain`: reconcile Sent Items before considering any retry. Publish these separately from decisions, including direct blocked sends with no central record. Return to a decision only when a genuine approval gate is independently established and there is no unresolved possible submission.
+
+Do not put an actual email address, subject, attachment, exact question, refusal text, or decision evidence in the status feed. If publication fails, keep the existing durable decision and report that it is not visible in the Dashboard; reconcile or republish the status without attempting or repeating a send. At rollout, Email Monitor should reconcile existing unresolved sends and publish only independently verified current states; a historical chat request is not evidence that approval is still owed.
+
 ## Required Review Cases
 
 A compliant workflow must handle: existing exact authority without re-prompting; a genuine gate with a specific YES/NO question; YES and automatic continuation; NO and no action; ambiguous YES; changed package; uncertain prior send; continued platform refusal; and an unavailable receiving chat. Review these cases when changing an affected workflow.
