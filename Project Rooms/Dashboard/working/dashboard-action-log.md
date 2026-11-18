@@ -1,5 +1,9 @@
 # Dashboard Action Log
 
+## 2026-11-17 - Email Send Approval Visibility
+
+Added a status-only Email Monitor feed for the Needs Wes list, a separate Approved, awaiting send group, and separate technical and uncertain-delivery blockers. Verified direct and delegated fixture lifecycles, exact central-record deduplication, privacy projection, and read-only rendering. The local Dashboard and live read endpoint loaded, reporting the feed not yet initialized. No production approval status, email, queue record, alert, or automation changed. OFFICEASSIST adoption and live status publication remain unverified.
+
 ## 2026-10-10 - Needs Wes Review Surface
 
 Wes explicitly authorized Jean to edit Dashboard code/documentation for grouped decisions and separate system blockers. Added a first-screen Needs Wes list with safe text rendering and copyable owning-chat review requests. Failed loads clear stale controls and report unknown status. Corrected ambiguous-delivery guidance to require reconciliation, not automatic retry. Direct approval remains unavailable pending an authenticated package-bound channel and recipient/platform validation. No email, invoice, automation, or central queue mutation was performed.

@@ -1,5 +1,6 @@
 param(
-    [string]$RepositoryRoot = 'C:\Codex\Wiki Files'
+    [string]$RepositoryRoot = 'C:\Codex\Wiki Files',
+    [string]$QueuePath = '\\WES-VIDEOEDITOR\BYH-PRMessaging$'
 )
 
 $ErrorActionPreference = 'Stop'
@@ -73,10 +74,49 @@ if (-not (Test-Path -LiteralPath $managerPath)) {
     throw "Canonical Project Room message manager is missing: $managerPath"
 }
 
-$recordsJson = (& $managerPath -Action List | Out-String)
+$recordsJson = (& $managerPath -Action List -QueuePath $QueuePath | Out-String)
 $records = if ([string]::IsNullOrWhiteSpace($recordsJson)) { @() } else { @($recordsJson | ConvertFrom-Json) }
 $items = [System.Collections.Generic.List[object]]::new()
 $latestTerminalByReference = @{}
+
+# The feed carries status only. Never send its stored package bindings to the browser.
+$emailSnapshots = @()
+$emailApprovalFeed = 'unavailable'
+try {
+    Import-Module (Join-Path $PSScriptRoot 'EmailApprovalAttention.psm1') -Scope Local
+    if (!(Test-Path -LiteralPath (Join-Path $QueuePath 'health') -PathType Container -ErrorAction Stop)) { throw 'Missing shared health directory.' }
+    if (Test-Path -LiteralPath (Get-EmailApprovalDirectory $QueuePath) -PathType Container -ErrorAction Stop) {
+        $emailSnapshots = @(Get-EmailApprovalSnapshot $QueuePath)
+        $emailApprovalFeed = 'available'
+    } else {
+        $emailApprovalFeed = 'not-initialized'
+    }
+} catch {
+    $emailSnapshots = @()
+}
+
+$emailPresentation = @{
+    awaiting_approval = @('wes-decision', 'Approval needed', 'Approve or decline the prepared email in the owning chat or required approval dialog.')
+    approved_awaiting_send = @('approved-awaiting-send', 'Approved, awaiting send', 'Email Monitor owns send verification. No further approval is requested.')
+    technical_blocker = @('system-blocker', 'Email send blocked', 'Email Monitor must resolve the technical or platform blocker. This is not a new approval request.')
+    submission_uncertain = @('automatic-recovery', 'Email submission uncertain', 'Email Monitor must reconcile Sent Items before any retry. No approval is requested.')
+}
+$trackedEmailRecords = [System.Collections.Generic.HashSet[string]]::new([StringComparer]::Ordinal)
+foreach ($snapshot in $emailSnapshots) {
+    if ($snapshot.central_message_id) {
+        $null = $trackedEmailRecords.Add("$($snapshot.central_message_id):$($snapshot.central_payload_hash)")
+    }
+    $display = $emailPresentation[$snapshot.state]
+    if (!$display) { continue }
+    $items.Add([ordered]@{
+        messageId = [string]$snapshot.approval_id
+        emailApprovalId = [string]$snapshot.approval_id
+        state = $display[1]; classification = $display[0]; destinationRoom = 'Email Monitor'; destinationMachine = 'OFFICEASSIST'
+        updatedAt = ([DateTimeOffset]$snapshot.updated_at_utc).UtcDateTime.ToString('yyyy-MM-ddTHH:mm:ssZ')
+        reference = "Email send $($snapshot.approval_id.Substring(0, 8))"
+        nextAction = $display[2]
+    })
+}
 
 foreach ($record in $records) {
     if ($record.state -notin @('Completed', 'Rejected as Wrong Room')) { continue }
@@ -92,6 +132,8 @@ foreach ($record in $records) {
 
 foreach ($record in $records) {
     if ($record.state -notin @('Delivery Ambiguous', 'Blocked', 'Needs Wes')) { continue }
+    if ($record.state -ne 'Delivery Ambiguous' -and $record.destination.project_room -eq 'Email Monitor' -and $record.destination.machine -eq 'OFFICEASSIST' -and
+        $trackedEmailRecords.Contains("$($record.message_id):$($record.payload_hash)")) { continue }
     if ($record.payload.synthetic_test -eq $true -or $record.result.data.synthetic_test -eq $true) { continue }
     if ($record.source.project_room -notin $transactionRooms -and $record.destination.project_room -notin $transactionRooms) { continue }
     if ($record.message_id -match '(?i)readiness|profile-migration|docscan-remediation|rollback-review|connector-readiness|browser-readiness|machine-readiness|dispatcher-validation') { continue }
@@ -135,14 +177,16 @@ foreach ($record in $records) {
     })
 }
 
-$classificationRank = @{ 'wes-decision' = 0; 'automatic-recovery' = 1; 'system-blocker' = 2; 'workflow-blocker' = 3 }
+$classificationRank = @{ 'wes-decision' = 0; 'approved-awaiting-send' = 1; 'automatic-recovery' = 2; 'system-blocker' = 3; 'workflow-blocker' = 4 }
 $sorted = @($items | Sort-Object @{ Expression = { $classificationRank[$_.classification] } }, @{ Expression = { $_.updatedAt }; Descending = $true })
 $payload = [ordered]@{
     ok = $true
     generatedAtUtc = [DateTime]::UtcNow.ToString('yyyy-MM-ddTHH:mm:ssZ')
+    emailApprovalFeed = $emailApprovalFeed
     counts = [ordered]@{
         total = $sorted.Count
         wesDecision = @($sorted | Where-Object { $_.classification -eq 'wes-decision' }).Count
+        approvedAwaitingSend = @($sorted | Where-Object { $_.classification -eq 'approved-awaiting-send' }).Count
         automaticRecovery = @($sorted | Where-Object { $_.classification -eq 'automatic-recovery' }).Count
         systemBlocker = @($sorted | Where-Object { $_.classification -eq 'system-blocker' }).Count
         workflowBlocker = @($sorted | Where-Object { $_.classification -eq 'workflow-blocker' }).Count

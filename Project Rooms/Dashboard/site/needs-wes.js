@@ -26,7 +26,8 @@
         row.className = "wes-request";
         row.append(text("h4", item.reference || item.messageId));
         row.append(text("p", `${item.state} | ${item.destinationMachine || "Machine unverified"} | Updated ${item.updatedAt || "unknown"}`, "wes-request-meta"));
-        row.append(text("p", item.exactDecision || item.blocker || "Decision details unavailable."));
+        const decisionDetail = item.exactDecision || item.blocker;
+        if (decisionDetail) row.append(text("p", decisionDetail));
         row.append(text("p", item.nextAction || "Owning Project Room review required."));
         if (decisions) {
           const review = document.createElement("button");
@@ -35,7 +36,8 @@
           const detail = document.createElement("div");
           detail.hidden = true;
           detail.append(text("p", "Awaiting confirmation in the owning chat. No approval or send has been recorded."));
-          const prompt = `Review central request ${item.messageId} in ${room} on ${item.destinationMachine || "its registered machine"}. Verify the current record and whether it is already resolved. Show the exact action, sender/recipients and attachment when applicable, and ask me a specific YES/NO question only if approval is genuinely required. Do not send, retry, or approve anything from this review request.`;
+          const request = item.emailApprovalId ? `email approval ${item.emailApprovalId}` : `central request ${item.messageId}`;
+          const prompt = `Review ${request} in ${room} on ${item.destinationMachine || "its registered machine"}. Verify the current record and whether it is already resolved. Show the exact action, sender/recipients and attachment when applicable, and ask me a specific YES/NO question only if approval is genuinely required. Do not send, retry, or approve anything from this review request.`;
           const field = document.createElement("textarea");
           field.readOnly = true;
           field.value = prompt;
@@ -74,7 +76,12 @@
   async function load() {
     refresh.disabled = true;
     status.textContent = "Checking current attention records...";
+    const approvedSection = byId("wesApprovedSection");
+    const feedStatus = byId("wesEmailApprovalStatus");
+    approvedSection.hidden = true;
+    feedStatus.hidden = true;
     byId("wesAttentionGroups").replaceChildren();
+    byId("wesApprovedGroups").replaceChildren();
     byId("wesSystemGroups").replaceChildren();
     try {
       const response = await fetch("__dashboard-transaction-attention", { cache: "no-store", headers: { Accept: "application/json" } });
@@ -82,11 +89,24 @@
       const data = await response.json();
       if (data.ok !== true || !Array.isArray(data.items)) throw new Error("Invalid attention response");
       const decisions = data.items.filter(item => item.classification === "wes-decision");
-      const blockers = data.items.filter(item => item.classification !== "wes-decision");
+      const approved = data.items.filter(item => item.classification === "approved-awaiting-send");
+      const blockers = data.items.filter(item => !["wes-decision", "approved-awaiting-send"].includes(item.classification));
       renderGroups(byId("wesAttentionGroups"), decisions, true);
+      if (approved.length) {
+        renderGroups(byId("wesApprovedGroups"), approved, false);
+        byId("wesApprovedGroups").querySelector("details").open = true;
+        byId("wesApprovedSummary").textContent = `Approved, awaiting send (${approved.length})`;
+        approvedSection.hidden = false;
+      }
       renderGroups(byId("wesSystemGroups"), blockers, false);
       byId("wesSystemSummary").textContent = `System and workflow blockers (${blockers.length})`;
-      status.textContent = `${decisions.length} records marked Needs Wes | Snapshot ${data.generatedAtUtc || "time unavailable"}`;
+      status.textContent = `${decisions.length} pending decision${decisions.length === 1 ? "" : "s"} | Snapshot ${data.generatedAtUtc || "time unavailable"}`;
+      if (data.emailApprovalFeed !== "available") {
+        feedStatus.textContent = data.emailApprovalFeed === "not-initialized"
+          ? "Email approval tracking has not reported any status yet. This does not confirm that there are no approvals."
+          : "Email approval tracking is unavailable. Some decisions or approved sends may be missing.";
+        feedStatus.hidden = false;
+      }
     } catch (error) {
       status.textContent = `Requests unavailable: ${error.message}. Queue status is unknown, not empty.`;
       byId("wesSystemSummary").textContent = "System and workflow blockers (unavailable)";

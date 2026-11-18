@@ -36,6 +36,7 @@
   };
   const attentionClassLabels = {
     "wes-decision": "Needs Wes",
+    "approved-awaiting-send": "Approved, awaiting send",
     "automatic-recovery": "Automatic recovery",
     "system-blocker": "System blocker",
     "workflow-blocker": "Workflow blocker"
@@ -1289,6 +1290,7 @@
         [
           ["All", "all", counts.total || 0],
           ["Needs Wes", "wes-decision", counts.wesDecision || 0],
+          ["Awaiting send", "approved-awaiting-send", counts.approvedAwaitingSend || 0],
           ["Auto", "automatic-recovery", counts.automaticRecovery || 0],
           ["System", "system-blocker", counts.systemBlocker || 0],
           ["Workflow", "workflow-blocker", counts.workflowBlocker || 0]
@@ -1340,7 +1342,7 @@
           next.textContent = `Next: ${item.nextAction}`;
           const footer = document.createElement("p");
           footer.className = "transaction-attention-meta";
-          const attemptText = item.maxAttempts ? `Attempt ${item.attemptCount || 0} of ${item.maxAttempts}` : "No delivery limit recorded";
+          const attemptText = item.emailApprovalId ? "Email approval" : item.maxAttempts ? `Attempt ${item.attemptCount || 0} of ${item.maxAttempts}` : "No delivery limit recorded";
           footer.textContent = `${attemptText} | Updated ${item.updatedAt || "unknown"} | ${item.messageId}`;
           entry.append(top, ownership, blocker, next, footer);
           list.append(entry);
