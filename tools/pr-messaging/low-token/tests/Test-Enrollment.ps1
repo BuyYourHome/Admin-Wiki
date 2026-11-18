@@ -47,7 +47,7 @@ function EnrollmentFixture([string]$Room='Codex Environment',[string]$Skill='cod
     $manifest.messaging_readiness|Add-Member dispatcher_automation_id 'pr-messaging-dispatcher'
     $manifest.messaging_readiness|Add-Member manual_intervention $null
     Write-LtJson (Join-Path $f.manifests 'test.json') $manifest
-    $cfg=Read-LtJson $f.config;$cfg.release='0.4.11';$cfg.adapter_kind='CodexQueue'
+    $cfg=Read-LtJson $f.config;$cfg.release='0.4.13';$cfg.adapter_kind='CodexQueue'
     $cfg.adapter_path=Join-Path $pkg 'FakeAdapter.ps1';$cfg.adapter_sha256=(Get-FileHash $cfg.adapter_path).Hash
     $cfg|Add-Member cli_path $cli;$cfg|Add-Member cli_sha256 (Get-FileHash $cli).Hash
     $cfg|Add-Member destinations @(@{project_room='Existing A';task_id='33333333-3333-4333-8333-333333333333';machine=$env:COMPUTERNAME},@{project_room='Existing B';task_id='44444444-4444-4444-8444-444444444444';machine=$env:COMPUTERNAME})

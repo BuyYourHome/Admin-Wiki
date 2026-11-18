@@ -146,10 +146,66 @@ function New-LtValidationEnrollmentConfig($Config,$Client,$Manifests,$Record,[st
     }
     return [pscustomobject]@{config=$updated;already_enrolled=($exact.Count -eq 1);manifest=$manifest}
 }
-function Test-LtRecord($Record,$Client,$Manifests,[string]$Machine,[string]$Mode,[string]$MessageId,$AllRecords=@()) {
+function Get-LtIntegrityFingerprint($Record) {
+    @(
+        [string]$Record.message_id,[string]$Record.updated_at_utc,[string]$Record.payload_hash,[string]$Record.state,
+        [string]$Record.attempt_count,[string]$Record.receipt.accepted_at_utc,[string]$Record.receipt.payload_hash,
+        [string]$Record.result.completed_at_utc,[string]$Record.result.state,[string]$Record.administrative_closure.closed_at_utc
+    ) -join "`n"
+}
+function Get-LtIntegrityValidityIndex($Records,[string]$CachePath,[string]$Machine,[string]$Sid) {
+    $prior=@{}
+    if(Test-Path -LiteralPath $CachePath){
+        try{
+            $saved=Read-LtJson $CachePath
+            if($saved.schema_version -eq 1 -and $saved.machine -ceq $Machine -and $saved.sid -ceq $Sid){
+                foreach($entry in @($saved.entries)){
+                    if(![string]::IsNullOrWhiteSpace([string]$entry.message_id) -and $entry.valid -is [bool]){$prior[[string]$entry.message_id]=$entry}
+                }
+            }
+        }catch{$prior=@{}}
+    }
+    $validity=@{};$entries=[System.Collections.Generic.List[object]]::new();$hits=0;$calculations=0
+    foreach($record in @($Records)){
+        $attempts=@($record.attempts)
+        $complex=($attempts.Count -gt 0 -or $record.receipt -or $record.result -or $record.state -cne 'Queued' -or $record.administrative_closure)
+        if(!$complex){continue}
+        $fingerprint=Get-LtIntegrityFingerprint $record
+        $cached=$prior[[string]$record.message_id]
+        if($cached -and $cached.fingerprint -ceq $fingerprint){$valid=[bool]$cached.valid;$hits++}
+        else{$valid=Test-PrMessageHashValid $record;$calculations++}
+        $validity[[string]$record.message_id]=$valid
+        $entries.Add([pscustomobject]@{message_id=[string]$record.message_id;fingerprint=$fingerprint;valid=$valid})
+    }
+    Write-LtJson $CachePath ([pscustomobject][ordered]@{schema_version=1;machine=$Machine;sid=$Sid;updated_at_utc=[DateTime]::UtcNow.ToString('o');authoritative=$false;entries=@($entries)})
+    [pscustomobject]@{validity=$validity;cache_hits=$hits;calculations=$calculations;entries=$entries.Count}
+}
+function Test-LtRecordIntegrity($Record,$IntegrityValidity=$null) {
+    $id=[string]$Record.message_id
+    if($null -ne $IntegrityValidity -and $IntegrityValidity.ContainsKey($id)){return [bool]$IntegrityValidity[$id]}
+    $valid=Test-PrMessageHashValid $Record
+    if($null -ne $IntegrityValidity){$IntegrityValidity[$id]=$valid}
+    return $valid
+}
+function Get-LtDestinationHoldIndex($Records,$IntegrityValidity=$null) {
+    $holds=@{}
+    foreach($record in @($Records)){
+        $key=[string]$record.destination.task_id
+        if([string]::IsNullOrWhiteSpace($key)){continue}
+        if(Test-LtDestinationOutstanding $record $IntegrityValidity){
+            if(!$holds.ContainsKey($key)){$holds[$key]=[System.Collections.Generic.List[string]]::new()}
+            $holds[$key].Add([string]$record.message_id)
+        }
+    }
+    return $holds
+}
+function Get-LtOrderedCandidates($Records) {
+    @($Records|Sort-Object @{Expression='created_at_utc';Descending=$true},@{Expression='message_id';Descending=$true})
+}
+function Test-LtRecord($Record,$Client,$Manifests,[string]$Machine,[string]$Mode,[string]$MessageId,$AllRecords=@(),$IntegrityValidity=$null,$DestinationHoldIndex=$null) {
     if (!$Record) { return 'MissingTarget' }
     if ($MessageId -and $Record.message_id -cne $MessageId) { return 'WrongTarget' }
-    if (!(Get-PrMessageHashEvidence $Record).valid) { return 'HashMismatch' }
+    if (!(Test-LtRecordIntegrity $Record $IntegrityValidity)) { return 'HashMismatch' }
     if($Record.administrative_closure.disposition -ceq 'ObsoleteRollbackRetired' -and (Test-PrAdministrativeClosure $Record)){return 'AdministrativelyRetired'}
     try { Assert-LtId $Record.message_id; Assert-LtUuid $Record.destination.task_id; Assert-LtUuid $Record.source.task_id } catch { return 'InvalidIdentity' }
     if ($Record.authoritative -ne $true) { return 'NotAuthoritative' }
@@ -180,8 +236,13 @@ function Test-LtRecord($Record,$Client,$Manifests,[string]$Machine,[string]$Mode
     }
     $exception = $synthetic -and $m.messaging_readiness.status -ceq 'validation_ready' -and $m.messaging_readiness.validation_message_id -ceq $Record.message_id
     if ($m.dispatchable -ne $true -and !$exception) { return 'NotDispatchable' }
-    foreach ($other in @($AllRecords)) {
-        if ($other.message_id -cne $Record.message_id -and $other.destination.task_id -ceq $Record.destination.task_id -and (Test-LtDestinationOutstanding $other)) { return 'DestinationOutstanding' }
+    if($null -ne $DestinationHoldIndex){
+        $held=if($DestinationHoldIndex.ContainsKey([string]$Record.destination.task_id)){@($DestinationHoldIndex[[string]$Record.destination.task_id]|Where-Object {$_ -cne $Record.message_id})}else{@()}
+        if($held.Count){return 'DestinationOutstanding'}
+    }else{
+        foreach ($other in @($AllRecords)) {
+            if ($other.message_id -cne $Record.message_id -and $other.destination.task_id -ceq $Record.destination.task_id -and (Test-LtDestinationOutstanding $other $IntegrityValidity)) { return 'DestinationOutstanding' }
+        }
     }
     if ($Record.attempt_count -gt 0) {
         $last = @($Record.attempts)[-1]
@@ -191,14 +252,14 @@ function Test-LtRecord($Record,$Client,$Manifests,[string]$Machine,[string]$Mode
     }
     return 'Eligible'
 }
-function Test-LtReceipt($Record) {
+function Test-LtReceipt($Record,[switch]$IntegrityAlreadyValid) {
     $r=$Record.receipt
     if($null -eq $r -or $r.project_room -cne $Record.destination.project_room -or
         $r.task_id -cne $Record.destination.task_id -or $r.machine -cne $Record.destination.machine){return $false}
     try{
         Assert-LtId ([string]$Record.message_id)
         Assert-LtId ([string]$Record.dispatch_id)
-        if([string]$Record.payload_hash -cnotmatch '^[0-9a-f]{64}$' -or !(Get-PrMessageHashEvidence $Record).valid){return $false}
+        if([string]$Record.payload_hash -cnotmatch '^[0-9a-f]{64}$' -or (!$IntegrityAlreadyValid -and !(Test-PrMessageHashValid $Record))){return $false}
         [void][DateTimeOffset]::Parse([string]$r.accepted_at_utc)
     }catch{return $false}
     $bindingFields=@('message_id','dispatch_id','payload_hash')
@@ -213,8 +274,8 @@ function Test-LtReceipt($Record) {
         $_.actor.task_id -ceq $Record.destination.task_id -and $_.actor.machine -ceq $Record.destination.machine
     }).Count -eq 1
 }
-function Test-LtAcceptedNotification($Record) {
-    if(!(Test-LtReceipt $Record) -or $Record.result){return $false}
+function Test-LtAcceptedNotification($Record,[switch]$IntegrityAlreadyValid) {
+    if(!(Test-LtReceipt $Record -IntegrityAlreadyValid:$IntegrityAlreadyValid) -or $Record.result){return $false}
     return $Record.state -in @('Accepted','Processing')
 }
 function Test-LtCompleted($Record) {
@@ -226,13 +287,13 @@ function Test-LtCompleted($Record) {
         return ($completed -ge $accepted)
     } catch { return $false }
 }
-function Test-LtDestinationOutstanding($Record) {
+function Test-LtDestinationOutstanding($Record,$IntegrityValidity=$null) {
     $attempts=@($Record.attempts)
     if (!$attempts.Count -and !$Record.receipt -and !$Record.result -and $Record.state -eq 'Queued') { return $false }
     if (Test-PrAdministrativeClosure $Record) { return $false }
-    if (!(Get-PrMessageHashEvidence $Record).valid) { return $true }
-    if (Test-PrMessageTerminal $Record) { return $false }
-    if (Test-LtAcceptedNotification $Record) { return $false }
+    if (!(Test-LtRecordIntegrity $Record $IntegrityValidity)) { return $true }
+    if (Test-PrMessageTerminal $Record -IntegrityAlreadyValid) { return $false }
+    if (Test-LtAcceptedNotification $Record -IntegrityAlreadyValid) { return $false }
     if (!$Record.receipt -and !$Record.result -and $Record.state -eq 'Queued' -and $attempts.Count -gt 0 -and !@($attempts | Where-Object outcome -ne 'NotDelivered').Count) { return $false }
     return $true
 }

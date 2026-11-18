@@ -49,7 +49,7 @@ Out of scope:
 
 ## Status
 
-Status: `Release 0.4.11 developed and fixture-verified for guarded Medicare validation enrollment`.
+Status: `Release 0.4.13 developed and fixture-verified for guarded Microsoft Store CLI discovery`.
 
 WES-VIDEOEDITOR promoted release `0.4.0` after exact synthetic `prmsg-wve-low-token-worker-validation-20260913-001` completed with one delivered attempt and no business action, then upgraded in place to `0.4.1`. Scheduled task `BYH PR Messaging Worker - WES-VIDEOEDITOR` runs every 60 seconds in `Live` mode for its pinned Quickbooks destination. The old assisted QuickBooks task is disabled and the model-driven dispatcher heartbeat remains paused. OFFICEASSIST promoted after exact synthetic `prmsg-officeassist-low-token-worker-docscan-validation-20260914-001` completed through one delivered attempt, then upgraded in place to `0.4.1`. Its worker runs every 60 seconds in `Live` mode for Email Monitor, Doc Scan, and Invoice Entry, and Email Monitor's embedded dispatcher stage has been removed while its mailbox heartbeat remains active.
 
@@ -72,6 +72,10 @@ Release `0.4.9` retains the complete `0.4.8` worker and guarded destination-enro
 Release `0.4.10` retains every `0.4.9` transport, integrity, journal, CLI-pin, and bounded-diagnostic control. It adds only House Render task `01a178f1-8292-7aa3-863d-f6de8a3c44f7` on WESSTUDIO to the exact guarded validation-enrollment allowlist. House Render remains non-dispatchable until one remote-source, one-attempt synthetic is enrolled and completes naturally through recipient-authored `Accepted`, `Processing`, and `Completed` lifecycle evidence.
 
 Release `0.4.11` retains every `0.4.10` transport, integrity, journal, CLI-pin, bounded-diagnostic, and exact-endpoint enrollment control. It adds only Medicare task `01a198bd-6bd0-7013-bd02-2b26a715e552` on WESSTUDIO, skill `medicare`, and manifest `medicare.json` to the guarded validation-enrollment allowlist. Medicare remains non-dispatchable until Create PR supplies a hash-pinned schema-2 `validation_ready` manifest and one pristine remote-source, one-attempt no-business-action synthetic; the installed worker is upgraded in place; the exact destination is enrolled; and a natural worker tick completes recipient-authored `Accepted`, `Processing`, and `Completed` lifecycle evidence without manual notification.
+
+Release `0.4.12` retains every `0.4.11` control and changes only candidate-order and eligibility-scan performance. It evaluates queued candidates newest-first, keeps stable descending creation-time/message-id ordering, caches unchanged historical integrity results locally as a non-authoritative hint, and builds destination holds once per tick. The canonical manager ignores the worker cache and freshly rebuilds exact integrity and hold evidence inside the queue lock before one atomic claim. This prevents an old expensive record from starving later work without permitting a duplicate or ambiguous resubmission.
+
+Release `0.4.13` retains all release `0.4.12` behavior and corrects only guarded CLI discovery. If `Get-Command codex.exe` is empty, `UpgradeLive` may derive the executable from exactly one registered normal-user `OpenAI.Codex` AppX package. It still rejects an absent or ambiguous registration, another package identity, a non-exact WindowsApps package leaf or executable path, a reparse point, an invalid manifest or signature, failed CLI behavior, and any before/after hash change.
 
 The dispatcher now distinguishes a pre-PowerShell tool-wrapper failure from a helper or queue failure. It retries one pre-execution wrapper failure, records deterministic skip counts, writes machine-local health to `%LOCALAPPDATA%\BuyYourHome\PRMessaging\dispatcher-health.json`, and allows up to 120 seconds for destination startup before final delivery reconciliation.
 
