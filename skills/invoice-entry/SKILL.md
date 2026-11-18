@@ -141,16 +141,39 @@ For Email Monitor and Jean cross-Project-Room dispatches, the durable queue reco
 
 ### Required Messaging Identity And Immediate Acceptance
 
-Use the approved `OFFICEASSIST` normal-user execution path running as `OfficeAssist\OfficeAssistLogin` for every read or write to the central PR-messaging share, including queue inspection, exact-record retrieval, acceptance receipts, status updates, and terminal results. Before the first messaging-share operation in a run or execution context, verify `whoami` from that same command context and confirm it reports `OfficeAssist\OfficeAssistLogin`; also confirm the machine is `OFFICEASSIST`. Do not assume the command tool, task, or computer name proves which Windows identity is executing.
+Use the observed command invocation below first for every read or write to the central PR-messaging share, including queue inspection, exact-record retrieval, acceptance receipts, status updates, and terminal results. It must verify `OfficeAssist\OfficeAssistLogin` on `OFFICEASSIST` and successfully retrieve the intended record through the canonical manager. Identity alone does not prove share access.
 
 #### Select And Verify The Execution Path
 
-- Use the ordinary managed PowerShell command context for central messaging: `exec_command` with `shell: "powershell.exe"` and `workdir: "C:\\Codex\\Wiki Files"`. In this environment that invocation was verified to run as the ordinary Windows account `OfficeAssist\OfficeAssistLogin` on `OFFICEASSIST`; it is not a Windows administrator/RunAs identity. Do not add an elevation request or substitute another machine, Windows account, browser, or connector for this path.
-- In the exact command invocation that will perform messaging work, run `whoami` and check `$env:COMPUTERNAME` first. Continue only when they report `OfficeAssist\OfficeAssistLogin` and `OFFICEASSIST`, respectively. Put the guard and the canonical `Manage-ProjectRoomMessage.ps1` operation in that same invocation, with `$ErrorActionPreference = 'Stop'`; on either mismatch, throw and do not call the manager.
-- Do not identify a command context as approved based only on a prior turn, tool name, task context, generic runtime description, or assumption. The observed identity is decisive. If a check in one context fails or reports another identity, do not access the messaging share there. If the ordinary command context is not exposed or itself returns a specific denial, report that exact capability/denial. Do not change ACLs or credentials, use the browser, or treat a different execution context's failure as evidence that the approved path is unavailable.
-- Report an environment-access blocker only after verifying that no approved normal-user execution path is exposed or that the verified approved path itself returns a specific denial. Name the exact unavailable tool capability or observed denial. Never infer this blocker from a sandbox result alone.
+- The verified tool is `tools.exec_command` called through `functions.exec`, with **`shell: "powershell"`, `workdir: "C:\\Codex\\Wiki Files"`, `login: false`, and `sandbox_permissions: "require_escalated"`**. A successful canonical `Get` under these exact settings verified `OfficeAssist\OfficeAssistLogin` on `OFFICEASSIST`. Request this supported execution setting first; do not begin messaging calls with omitted/default `sandbox_permissions` or `use_default`. The setting requests execution outside the managed restriction; it does not by itself prove the Windows identity, administrator status, or share access.
+- Put `$ErrorActionPreference = 'Stop'`, `whoami.exe`, the machine check, and the canonical manager operation in the same invocation. Throw before calling the manager if either identity or machine differs. For a write, first retrieve and validate the exact current record read-only through the same settings, then retain the guard in the authorized write invocation. Existing hash, destination, authorization, receipt, state, duplicate, and action-ownership requirements still apply.
+- Use this reusable read pattern, substituting only the actual message ID supplied by the authorized request; validate the returned record against its expected immutable hash and destination before any subsequent action:
 
-The managed `CodexSandboxOffline` identity is not the messaging identity. If that sandbox cannot reach the share or receives Access Denied, do not retry queue operations there, call the queue unavailable, report missing business authorization, or wait for Wes to point out the still-queued record. Switch to the approved normal-user path and verify its identity, then continue with the exact central record. A sandbox denial is not evidence that the approved path is unavailable. If the approved normal-user path itself is unavailable or denies access, stop only the messaging operation and report the exact unavailable execution capability or denial as an environment-access blocker; do not change ACLs/credentials, create another dispatch, or infer that the source record is missing.
+```javascript
+const result = await tools.exec_command({
+  shell: "powershell",
+  workdir: "C:\\Codex\\Wiki Files",
+  login: false,
+  sandbox_permissions: "require_escalated",
+  justification: "Verify OfficeAssistLogin and OFFICEASSIST, then retrieve the exact authorized central record read-only.",
+  cmd: String.raw`$ErrorActionPreference = 'Stop'
+$identity = (& whoami.exe).Trim()
+$machine = $env:COMPUTERNAME
+if ($identity -ine 'OfficeAssist\OfficeAssistLogin' -or $machine -ine 'OFFICEASSIST') {
+    throw "Messaging context mismatch: $identity / $machine"
+}
+Write-Output "IDENTITY=$identity MACHINE=$machine"
+& 'C:\Codex\Wiki Files\tools\pr-messaging\Manage-ProjectRoomMessage.ps1' -Action Get -QueuePath '\\WES-VIDEOEDITOR\BYH-PRMessaging$' -MessageId '<exact-message-id>'`,
+  yield_time_ms: 10000,
+  max_output_tokens: 6000
+});
+text(result);
+```
+
+- A successful `whoami`/machine check proves the execution context only. Require the actual canonical manager result to establish record/share access. A restricted-context failure, Access Denied, or a generic host-unavailable message from another context is not proof of a messaging-host outage. Do not repeat queue reads in the restricted context or wait for Wes to restate this path.
+- If `require_escalated` is absent, rejected, or denied, report the exact missing tool option, approval-review refusal, or execution denial as an environment-access blocker. If the guarded manager call fails under the verified settings, report its exact error and identity/machine/settings; distinguish permission, authentication, record-not-found, and connectivity evidence. Do not call the host unavailable from identity alone or a restricted-context failure. Do not change ACLs/credentials, grant the sandbox access, use a browser, or substitute another machine/account.
+
+The managed `CodexSandboxOffline` identity is not the messaging identity. Use the guarded `require_escalated` invocation above for central messaging. Its availability and actual manager result control access reporting; a failed restricted call does not establish missing business authorization, missing records, or host outage. If the documented invocation is blocked, preserve the record and report the specific environment-access blocker without creating another dispatch.
 
 An authorized, valid, nonterminal record addressed to this exact registered task is sufficient authority to accept its intake. Once it is found, retrieve it through the canonical manager, verify the exact message ID, dispatch ID, destination task/machine, payload hash, authorization fields, state, and receipts, and write the required `Accept` receipt before substantive work. Do this without waiting for the user to repeat the dispatch ID, ask why it is queued, or say “go” again. A wake-up notification prompts the check but is not required proof of delivery; startup queue inspection is also an independent trigger. Acceptance authorizes intake only: continue through the authorized workflow while preserving all separate downstream approval, email, filing, workbook, QuickBooks, payment, and other business-action gates.
 
