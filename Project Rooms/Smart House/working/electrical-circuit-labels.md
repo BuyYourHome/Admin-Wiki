@@ -1,6 +1,8 @@
 # Pond Street electrical circuit labels
 
-Internal working record. Source: Wes's circuit-label dictation and subsequent field-identification updates in this Smart House conversation, through 2026-11-16. Wes requested a list of 30 circuit numbers to update as loads are identified. This record is not published to Pondster or connected to house controls.
+Internal working record. Source: Wes's circuit-label dictation and subsequent field-identification updates in this Smart House conversation, through 2026-11-18. Wes requested a list of 30 circuit numbers to update as loads are identified. This record is not published to Pondster or connected to house controls.
+
+Summary email hold, 2026-11-18: Wes explicitly said not to send a new summary yet. Send a further circuit summary only when he requests it.
 
 “Confirmed by Wes” records his reported identification; Codex did not perform an electrical test. “Initial label” has not received a later explicit field confirmation. Unknown numbers are not designated spare circuits. Breaker amperages, pole arrangements, handle ties and full load coverage have not been verified from a panel photo.
 
@@ -18,7 +20,7 @@ Internal working record. Source: Wes's circuit-label dictation and subsequent fi
 | 8 | Sump pump; basement recessed lights (initial label) | Sump pump confirmed by Wes in the later November 16 testing. Basement recessed lights remain from the original dictation and were not separately reconfirmed in this update. |
 | 9 | Garage door opener | Initial label. |
 | 10 | Refrigerator | Initial label. |
-| 11 | Living room power; porch light | Initial label/read-back accepted by Wes. Keep pending recheck alongside later circuit 1 identification; do not silently move the porch-light label to circuit 1. |
+| 11 | Basement receptacles | Identified by Wes on 2026-11-18. Supersedes the original living-room power / porch-light label. |
 | 12 | Wiring coming down to the Master Bath; possible future basement use | Wes identified this circuit's wiring as coming down to the Master Bath in later November 16 dictation. No present connected load specified. Basement use is tentative (“probably”), not an existing assignment or authorization to rewire. |
 | 13 | Stove | Initial label, grouped with number 15. |
 | 14 | Kitchen counter | Initial label; exact receptacle/location remains unconfirmed after the later identifications of numbers 2 and 20. |
@@ -44,9 +46,9 @@ Internal working record. Source: Wes's circuit-label dictation and subsequent fi
 - Circuit 1: Wes reported that all currently exposed wiring he identified for this circuit is “old gray.” Preserve this as his visual observation, without inferring cable type, conductor material, condition or concealed wiring.
 - Circuit 16: an attic switch and possible fan wiring were initially discussed without a confirmed fan identification. Wes later explicitly instructed adding the Master Bath fan, then the office fan and lights, to circuit 16; these supersede the earlier uncertainty for those fans. His correction from “foyer” to “office” applies to this circuit 16 addition, not the separately confirmed foyer load on circuit 1. A living room fan on circuit 1 remains unconfirmed; earlier assistant descriptions are not independent confirmation.
 - Circuit 16 back bedrooms: Wes explicitly confirmed the lights in bedrooms 2 and 3. Preserve his field numbering; no mapping to the website floor-plan bedroom IDs or receptacle circuits has been established by this update.
-- Original labels 1 = stove, 2 = bath, 6 = washing machine, 16 = kitchen-counter GFI, 20 = dishwasher / garbage disposal, and 21 = pantry are superseded in the current list. The washing machine is now confirmed on circuit 30. Do not use the original labels as the current answers.
+- Original labels 1 = stove, 2 = bath, 6 = washing machine, 11 = living-room power / porch light, 16 = kitchen-counter GFI, 20 = dishwasher / garbage disposal, and 21 = pantry are superseded in the current list. The washing machine is now confirmed on circuit 30. Do not use the original labels as the current answers.
 - The reported groups 5/7, 13/15, 23/25 and 27/29 do not establish pole count or a linked handle. No accessible electrical-panel photo was found in this chat's saved attachments during the November 16 check.
-- Retain the initial labels for 11, 14, 18 and 22 as unresolved rather than treating nearby spoken guesses or questions addressed to Josh as new confirmations.
+- Retain the initial labels for 14, 18 and 22 as unresolved rather than treating nearby spoken guesses or questions addressed to Josh as new confirmations.
 
 ## Dictation handling
 
