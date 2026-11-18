@@ -1,5 +1,5 @@
-window.PROJECT_ROOMS_UPDATED = '2026-11-05 16:39';
-window.PROJECT_ROOMS_HASH = '6BC0190DCD373553C4EF59298E8F95FFE1B0AE83ADBEF3D7ECF262D1A491B4CC';
+window.PROJECT_ROOMS_UPDATED = '2026-11-11 06:56';
+window.PROJECT_ROOMS_HASH = 'BC581B0978F0B54B86C62CF303ABCAE4B10E8483DBB55C0745A1D5D10799E3FB';
 window.PROJECT_ROOM_GROUPS = [
     {
         "name":  "Intake \u0026 Coordination",
@@ -537,6 +537,25 @@ window.PROJECT_ROOMS = [
 
                   ],
         "readmeUrl":  "../../Geico%20Insurance%20Claim/README.md",
+        "quickActions":  [
+
+                         ]
+    },
+    {
+        "name":  "General Contractor",
+        "purpose":  "Canonical Project Room; open its README for current responsibilities.",
+        "status":  "Status not recorded",
+        "skill":  "",
+        "skillPath":  "",
+        "skillState":  "not-applicable",
+        "taskId":  "",
+        "attention":  null,
+        "group":  "Other",
+        "groupBasis":  "Used when a Project Room does not yet have a supported assignment to one of the defined functional groups.",
+        "modes":  [
+
+                  ],
+        "readmeUrl":  "../../General%20Contractor/README.md",
         "quickActions":  [
 
                          ]
