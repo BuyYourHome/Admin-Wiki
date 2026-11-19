@@ -1,0 +1,47 @@
+# Credit Cards Table and Rollover Payoff
+
+## Scope and Source
+
+- Authorized by Wes on 2026-11-19: convert Cards columns A:AE into a table and place a final payoff-date formula to its right, using highest-interest-first payment rollover.
+- Wes confirmed the workbook saved and closed and moved the existing summaries to the right himself. Preserve those summaries in their new locations.
+- Source: [Credit Cards Sheet.xlsx in Teams](https://lifeisanadventure.sharepoint.com/sites/SellYourHome/_layouts/15/Doc.aspx?sourcedoc=%7BC92BCFBD-D418-473F-821A-4725718FBE42%7D&action=default), saved 11:27:30 AM Eastern.
+- Rollback: `Property/Project Template/Rollback Copies/Credit Cards Sheet - before Cards table and rollover 2026-11-19 1127 ET.xlsx`. Cloud hash verified against the source.
+- Published and freshly downloaded/verified at 11:46:57 AM Eastern.
+- Published SHA256: `2EBFE006B21DE6317D10DFFC028C1E21B37F6C3EB7783B7712371F73CAF19010`.
+
+## Design
+
+- Native Excel table `tblCards`: `Cards!A1:AE56`. Includes the existing final partial row; no whole-column or summary-row table expansion.
+- Preserve existing values, formulas, colors, widths, merged areas, workbook links, and the relocated summaries. Native table creation turns the numeric percentage headers into equivalent text headers `35%` and `50%`. Their existing dependent formulas retain their results.
+- `Cards!AL1` links to `Payoff Plan!B2`. The new summary occupies the previously unused `AH1:AM8` area.
+- A separate formula-based Payoff Plan supports 100 table records and 600 months. Exceeding capacity or horizon produces a warning, not a false date.
+- All positive balances in the table participate, including listed credit lines and home loans. Blank balances are excluded and their count is displayed; this is an estimate for recorded balances, not proof those accounts owe nothing.
+- Maintain the initial combined payment budget. Each month, accrue each account's APR/12 interest, pay its existing regular payment capped at its amount due, then allocate unused payment funds by descending APR. Any remaining funds continue to the next account in the same month. Ties use source table order.
+- Assumptions: no new charges or fees, unchanged rates, fixed total monthly payment, monthly end-of-period payments. Dates run from TODAY(); they are estimates, not actual contractual payment dates or lender payoff quotes. No macros added.
+- No invented APR or payment values. Missing required inputs on positive balances block the final date. No payment budget and all-zero balances have explicit outcomes.
+
+## Result and Verification
+
+- Recorded positive balances: $542,617.41.
+- Current monthly budget: $21,914.058333333327, displayed as $21,914.06.
+- Final payoff: 28 monthly payments, March 19, 2029, using November 19, 2026 as the estimate date.
+- Two blank-balance accounts excluded; no missing APR/payment inputs for the positive balances in this source.
+- Native Excel opened normally; automatic calculation enabled in the saved workbook.
+- Independent month-by-month simulation reconciled all 28 monthly interest, payment, and ending-balance totals within $0.00001.
+- Passed native Excel tests: table sorting; adding a new table record; zero-interest debt; single interest-bearing debt; partial final payments rolling within the same month; equal-rate ties; zero base payment with eventual rollover; missing APR; zero payment budget; no debt; and the 100-record capacity guard.
+- Full native recalculation measured approximately 0.8-1.1 seconds in the isolated test instance.
+- Compared all pre-existing worksheet values and formulas by sheet name, expanding shared formulas through a read-only parser. No changes except the required equivalent percentage-header text conversion. All pre-existing cached results and merged areas preserved.
+- All operational tests used a disposable, isolated Excel instance. Test transactions and input changes were discarded. No linked project workbook was updated.
+
+## Reusable Lessons
+
+- Re-fetch the latest Teams save after Wes rearranges a sheet. The prior bottom summaries had moved; old coordinates were not authoritative.
+- Do not estimate pooled payoff by taking the maximum individual payoff date or using an average APR. Allocate the fixed monthly budget account by account and reconcile monthly results independently.
+- Show omitted/unknown balances and missing inputs. Do not present an unconditional all-debt payoff date when some balances are blank.
+- Test structured-reference dependencies after table sorting and row addition, not only on the initial arrangement.
+- Native table headers are text. Verify formulas using numeric percentage headers still evaluate equivalently after conversion.
+- The general spreadsheet exporter could not safely round-trip this workbook's existing hyperlinks. An assembled candidate also failed normal native opening and was rejected. Use native Excel for final table creation and integration of the authored formulas when existing features cannot be preserved through export; never publish a candidate requiring repair.
+- Shared-formula serialization and worksheet file numbering can change on native save. Compare expanded formulas by worksheet name, not raw `<f>` text or fixed sheet XML file numbers.
+- Large previews must not replace native calculation tests. Use a lightweight render of native-saved summary values and formatting if importing the full calculation model stalls.
+
+No rollout to project workbooks was performed. No Git push was authorized for this change.
