@@ -2,7 +2,7 @@
 
 Internal working record. Source: Wes's circuit-label dictation and subsequent field-identification updates in this Smart House conversation, through 2026-11-18. Wes requested a list of 30 circuit numbers to update as loads are identified. This record is not published to Pondster or connected to house controls.
 
-Summary email hold, 2026-11-18: Wes explicitly said not to send a new summary yet. Send a further circuit summary only when he requests it.
+Summary email authority, 2026-11-18: Wes's earlier hold is superseded for the updated breaker-chart email he explicitly requested after adding the backyard lights. Further circuit summaries remain by request.
 
 “Confirmed by Wes” records his reported identification; Codex did not perform an electrical test. “Initial label” has not received a later explicit field confirmation. Unknown numbers are not designated spare circuits. Breaker amperages, pole arrangements, handle ties and full load coverage have not been verified from a panel photo.
 
@@ -25,7 +25,7 @@ Summary email hold, 2026-11-18: Wes explicitly said not to send a new summary ye
 | 13 | Stove | Initial label, grouped with number 15. |
 | 14 | Kitchen counter | Initial label; exact receptacle/location remains unconfirmed after the later identifications of numbers 2 and 20. |
 | 15 | Stove | Initial label, grouped with number 13. |
-| 16 | Light in front of the stairs; discussed attic switch; Master Bath fan; office fan and lights; lights in back bedrooms 2 and 3 | Confirmed by Wes, replacing the initial kitchen-counter GFI label. Later November 16 additions: Master Bath fan; office fan and lights (corrected from “foyer”); back-bedroom lights, explicitly numbered bedrooms 2 and 3. GFI protection has not been confirmed. |
+| 16 | Light in front of the stairs; discussed attic switch; Master Bath fan; office fan and lights; lights in back bedrooms 2 and 3; backyard outdoor lights | Confirmed by Wes, replacing the initial kitchen-counter GFI label. November 16 additions: Master Bath fan; office fan and lights (corrected from “foyer”); back-bedroom lights, explicitly numbered bedrooms 2 and 3. On November 18 he added the backyard outdoor lights. GFI protection has not been confirmed. |
 | 17 | Unknown | Wes could not tell what this number served. |
 | 18 | Dining room receptacles — tentative | Original dictation first said dining lights, then dining receptacles “I guess.” Exact load remains unresolved. |
 | 19 | Unknown | Wes could not tell what this number served. |
