@@ -45,3 +45,24 @@
 - Large previews must not replace native calculation tests. Use a lightweight render of native-saved summary values and formatting if importing the full calculation model stalls.
 
 No rollout to project workbooks was performed. No Git push was authorized for this change.
+
+## Summary Column References - 2026-11-19
+
+- Wes authorized converting `Cards!AV8:BA24` summary ranges to table-column references and confirmed the workbook saved and closed.
+- Fresh Teams baseline: 1:12:55 PM Eastern, eTag ending `5446`. Wes's latest layout has `tblCards` at `A2:AE57`; preserve that layout rather than the earlier table position above.
+- Replaced 60 SUMIF formulas across rows 8-14, 18-20, 22, and 24. Match `tblCards[Name]` against the existing `$AO` row label, and sum the corresponding `Current Balance`, `Credit Limit`, `Available Credit`, `Interest Paid`, or `Monthly Payment` column.
+- Example: `=SUMIF(tblCards[Name],$AO8,tblCards[Current Balance])`.
+- Preserved AZ utilization formulas and the existing `BA10` subtraction of `U43`. Preserved all other cell contents/formulas, merged areas, styles, table structure, calculation settings, and external links. No linked project workbook was edited.
+- The old fixed ranges omitted the final First Citizens loan row. `AV22` and `AW22` now include $14,134.88; `AY22` includes $73.03 monthly interest; `AZ22` now calculates 100% instead of division by zero.
+- Passed native Excel checks for all 60 formula results, the first table data row, an appended table row, and reopening the final saved candidate. All temporary test edits were discarded. Recalculated dependent totals without changing their formulas; the existing `Private Lenders!G31` timestamp also advanced during recalculation.
+- Rollback: `Property/Project Template/Rollback Copies/Credit Cards Sheet - before summary column references 2026-11-19 1312 ET.xlsx`. Its cloud hash matches the fetched baseline.
+- Rechecked unchanged Teams eTag immediately before publication. Published at 1:25:33 PM Eastern and verified a fresh Teams download against the tested candidate.
+- Published SHA256: `0073DBFB17BAE54C00E33511BFD62477DCD35B949C26BE838F5BE8C2A1EE1D15`.
+
+### Separate Issue Not Changed
+
+`AV29 = SUM(AV18:AV28)` includes the individual lines of credit and their subtotal at AV27, plus Personal Home at AV24 and its repeated summary at AV28. This double-counting predates the requested correction. Review row 29 separately; do not treat its recalculated balance as a validated unique-debt total. Its formula was deliberately left unchanged, as were the analogous row-29 formulas.
+
+### Summary Migration Lesson
+
+After converting a source range into a table, audit summaries outside that table for full-column and fixed-body references. Map each source by its actual header and preserve criteria, adjustments, and ratios. Test first, last, and newly appended table rows: matching an old total is insufficient when that old total omitted a valid row. Keep unrelated aggregation defects separate from the approved reference conversion.
