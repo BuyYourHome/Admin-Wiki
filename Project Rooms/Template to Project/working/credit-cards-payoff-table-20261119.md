@@ -66,3 +66,15 @@ No rollout to project workbooks was performed. No Git push was authorized for th
 ### Summary Migration Lesson
 
 After converting a source range into a table, audit summaries outside that table for full-column and fixed-body references. Map each source by its actual header and preserve criteria, adjustments, and ratios. Test first, last, and newly appended table rows: matching an old total is insufficient when that old total omitted a valid row. Keep unrelated aggregation defects separate from the approved reference conversion.
+
+## Property Cash Flow Conditional Fill - 2026-11-20
+
+- Wes requested formatting only on `Projects!C24` and confirmed the workbook saved and closed. Fresh Teams source: 8:42:37 AM Eastern, eTag ending `5470`.
+- Negative values use the same `#FF0000` background as adjacent debt-payment cells. Positive values use `#000000`. Zero retains the existing black background. Existing white text and `#,##0` number format remain unchanged.
+- Preserved `=+C8-C7` and all other formulas, cached values, tables, external links, calculation settings, and workbook features. No financial-model change or project-workbook edit was included.
+- Authored the two conditional-format rules in an isolated spreadsheet model. Integrated only their differential fills and the C24 rules into the original workbook package because full re-export previously could not preserve this workbook's links reliably. Verified that reversing those exact additions restores both XML trees and that every other package part is byte-identical to the source.
+- Compared before/after and positive-state previews. The final candidate opened normally in hidden native Excel; negative, positive, and zero display tests passed with white text. Temporary test values were discarded without saving.
+- Rollback: `Property/Project Template/Rollback Copies/Credit Cards Sheet - before C24 conditional fill 2026-11-20.xlsx`. Verified its cloud hash against the source and rechecked the live eTag before replacement.
+- Published to the same Teams file at 8:51:32 AM Eastern and verified the fresh download against the tested candidate.
+- Lesson: for a single-cell conditional-format change, match the actual neighboring fill and preserve the existing font/number format. Test both signs and zero in native Excel. Avoid recalculating or rewriting unrelated financial data just to change a background color.
+- No Git push authorized. Unrelated Dashboard changes remain untouched.
