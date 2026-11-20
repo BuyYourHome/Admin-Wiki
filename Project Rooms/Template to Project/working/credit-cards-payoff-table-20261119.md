@@ -78,3 +78,43 @@ After converting a source range into a table, audit summaries outside that table
 - Published to the same Teams file at 8:51:32 AM Eastern and verified the fresh download against the tested candidate.
 - Lesson: for a single-cell conditional-format change, match the actual neighboring fill and preserve the existing font/number format. Test both signs and zero in native Excel. Avoid recalculating or rewriting unrelated financial data just to change a background color.
 - No Git push authorized. Unrelated Dashboard changes remain untouched.
+
+## Annual Liquidation Funding - 2026-11-20
+
+- Historical initial implementation: the limited-sale-pool runway in this section was superseded by the Portfolio Resource Split correction below. The final overall runway uses the entire combined resource estimate, not only planned annual liquidation.
+- Wes added row 24, requested annual cash needed in E24, whole-property surplus in C24, and a property-count description in F24. He approved using C24 plus E24 instead of E23 for runway and confirmed the workbook saved and closed.
+- Fresh Teams source: 9:02:10 AM Eastern, eTag ending `5475`. Existing property-cash-flow conditional formatting had shifted to C25 with Wes's row insertion; preserved it there.
+- Only four cells changed: `Projects!E24`, `C24`, `F24`, and `D38`. Existing profit/reserve totals, expense formulas, table structures, links, styles, merged cells, and calculation settings were preserved. No project workbook was edited.
+- E24 annualizes the current net monthly outflow in B38: `=MAX(0,-$B$38*12)`. It is a current annual run-rate estimate, not a forecast of individual closing dates or a declining-debt annual schedule.
+- C24 uses the whole number of properties required at the current C16 average expected profit, less E24. F24 displays that whole count and explicitly identifies the average-profit basis. Missing/nonpositive average profit is flagged instead of inventing sale proceeds.
+- Current results: E24 $344,193.79; C24 $156,149.21; F24 three properties; combined modeled funding $500,343.01. Existing $28,400 cash reserves and the E23 portfolio total remain unchanged and are not included in this new funding pool.
+- D38 now estimates depletion of C24 plus E24, using current ongoing net cash costs and the existing Payoff Plan debt payments. It accounts for depletion before payoff, during the partial final payment month, or after debt payoff; debt payments stop at payoff and ongoing business/personal/property cash costs continue. Current result: 1.453666555 years, approximately 17.44 months (existing one-decimal display shows 1.5 years).
+- Verified monthly debt budget $20,942.535 matches the three central debt-payment categories; ongoing net monthly costs are $7,740.281248. A future payment-budget mismatch, invalid Payoff Plan, invalid average, no current cash shortfall, and no debt have explicit handling.
+- This is a conditional funding estimate based on realizing three average-profit properties. It is not a validated net-liquidation valuation, proof of cash availability before closing, the entire portfolio's runway, or a resolution of the separate profit/equity/card-principal reconciliation question. Do not add these proceeds to a portfolio total that already includes the same properties.
+- Authored formulas in an isolated spreadsheet model, integrated through hidden native Excel, and tested against an independent monthly cash-depletion simulation. Eleven native scenarios passed: current case, before payoff, final payoff month, after payoff, zero ongoing cost, ongoing income, invalid average, no shortfall, mismatched debt payments, invalid payoff, and no debt. Disposable test edits were discarded.
+- Reopened the final package read-only in native Excel and recalculated the four cells successfully. Transferred only the four calculated cell formula/cache nodes to the source package; all other package parts are byte-identical, and all other cells and worksheet settings are unchanged. Reviewed before/after previews.
+- Rollback: `Property/Project Template/Rollback Copies/Credit Cards Sheet - before liquidation funding 2026-11-20 0902 ET.xlsx`. Its cloud hash matches the baseline. Confirmed the live source eTag remained unchanged immediately before publishing.
+- Published to the same Teams item at 9:12:57 AM Eastern. Fresh download matches tested SHA256 `55B0EE744ABEBE1C6548DCCEA06A770F388E8C73F882FBF3447190833507F8FC`.
+
+### Liquidation Formula Lessons
+
+- Find the current layout after user row changes; preserve merged-cell anchors and existing conditional formatting rather than applying stale coordinates.
+- Keep annual funding and whole-property surplus outside the monthly-expense sum to avoid circular references and double-counting the funding.
+- Do not subtract all future scheduled debt payments upfront from a short-lived funding pool. Model cash depletion through payoff and test the final partial payment month independently.
+- Label average-profit-based property counts as estimates. Expected profit is not automatically net sale cash, and a formula test cannot certify the accounting basis or closing timing.
+- For a narrow formula edit, native calculation can be combined with exact-cell package integration to retain unrelated external-link caches and timestamps. Reopen the final integrated package, not just its native intermediate, before publishing.
+- No Git push authorized. Unrelated Dashboard changes remain untouched.
+
+## Portfolio Resource Split Correction - 2026-11-20
+
+- Wes clarified that overall runway must reflect all modeled portfolio resources. Planned liquidation is a transfer out of the remaining resource total, not new value and not the entire runway funding pool. He added the row-23 description, authorized the proposed split, and confirmed the workbook saved and closed.
+- Fresh Teams source: 9:23:12 AM Eastern, eTag ending `5479`. Preserved his exact `F23` description and all row-24 formulas.
+- Changed only `Projects!E23` and `D38`. E23 is now `=SUM(C22:D23)-SUM(C24,E24)`. D38 uses `SUM($E$23:$E$24,$C$24)` as funding, preserving the payoff-aware debt logic. Its no-shortfall test now reads B38 directly so a zero planned liquidation allocation does not suppress the portfolio runway.
+- Reconciliation: E23 $1,195,867.02 + E24 $344,193.79 + C24 $156,149.21 = $1,696,210.03 combined resources. The full modeled liquidation amount is removed from E23, including surplus. Existing $28,400 reserves are unchanged and counted once.
+- Runway is 11.8772609344 years, displayed as 11.9 under the existing format. This restores the portfolio scope, not a certification of true net sale proceeds, sale timing, or the separate profit/equity/debt accounting assumptions.
+- Eleven native checks passed, including independent monthly depletion before/during/after payoff, ongoing cost/income scenarios, mismatched debt-payment warning, no-shortfall handling, and three different liquidation allocations (including zero). Changing only the allocation leaves combined resources and runway invariant.
+- Final integrated workbook reopened and recalculated normally in hidden read-only Excel. Verified only the two formula/cache cells changed; all other package parts, sheet cells/settings, styles, links, names, and the new description are preserved. Compared before/after previews.
+- Rollback: `Property/Project Template/Rollback Copies/Credit Cards Sheet - before portfolio runway split 2026-11-20 0923 ET.xlsx`. Its cloud hash matches the source. Rechecked unchanged live eTag before publication.
+- Published at 9:28:37 AM Eastern. Fresh Teams download matches the tested candidate SHA256 `2D88A3A01CBA6704F7DA7ECFB20A8C914C7D58D69A16D682F58A8073509D8B93`.
+- Lesson: distinguish whole-portfolio runway from the duration of a planned-sale funding pool before reconnecting inputs. A presentation split must reconcile to the original resource base. Test allocation invariance explicitly; include whole-property surplus on both sides of the transfer and keep annual sales planning out of the monthly expense sum.
+- No Git push authorized. No other project room or shared Admin rule changed.
