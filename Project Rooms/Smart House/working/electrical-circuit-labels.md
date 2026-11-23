@@ -31,23 +31,23 @@ Summary email authority, 2026-11-18: Wes's earlier hold is superseded for the up
 | 19 | Furnace | Identified by Wes on November 23, replacing the previously unknown entry. Furnace type/fuel not specified. |
 | 20 | Dishwasher | Identified by Wes on November 23, superseding his earlier right-hand kitchen receptacle label. The garbage disposal is not included in this new identification. |
 | 21 | Laundry room ground-fault receptacle | Identified by Wes in later November 16 dictation. Supersedes the original pantry label. |
-| 22 | Additional kitchen outlets | Tentative original label (“must be more kitchen outlets”). Later repeated for investigation, without an explicit final identification. |
-| 23 | AC compressor | Initial label, grouped with number 25. |
-| 24 | Hall Bath | Confirmed by Wes in the later November 16 test, replacing the previously unlabelled entry. Exact served lights/receptacles not specified. |
-| 25 | AC compressor | Initial label, grouped with number 23. |
-| 26 | Jacuzzi tub | Initial label supplied after the initial skipped-number read-back. |
-| 27 | Clothes dryer | Initial label, grouped with number 29. |
-| 28 | Unknown | No label supplied. |
-| 29 | Clothes dryer | Initial label, grouped with number 27. |
+| 22 | Right kitchen outlets | Identified by Wes on November 23, replacing the earlier tentative additional-kitchen-outlets label. |
+| 23 | AC compressor | Confirmed by Wes on November 23; remove the initial-label asterisk in the revised printout. Grouped with number 25; pole/handle arrangement remains unverified. |
+| 24 | Hall Bath | Confirmed by Wes in the later November 16 test and reconfirmed on November 23. Exact served lights/receptacles not specified. |
+| 25 | AC compressor | Confirmed by Wes on November 23; remove the initial-label asterisk in the revised printout. Grouped with number 23; pole/handle arrangement remains unverified. |
+| 26 | Jacuzzi tub | Confirmed by Wes on November 23; remove the initial-label asterisk in the revised printout. |
+| 27 | Clothes dryer | Confirmed by Wes on November 23; remove the initial-label asterisk in the revised printout. Grouped with number 29; pole/handle arrangement remains unverified. |
+| 28 | No breaker | Wes explicitly reported on November 23 that no breaker occupies position 28. Do not label this as an unidentified circuit or infer an installed spare breaker. |
+| 29 | Clothes dryer | Confirmed by Wes on November 23; remove the initial-label asterisk in the revised printout. Grouped with number 27; pole/handle arrangement remains unverified. |
 | 30 | Washing machine; switch in the pantry controlling two receptacles; garage receptacle by the garbage-can location | Confirmed by Wes in later November 16 dictation. Supersedes the original washing-machine label on circuit 6. He subsequently identified the pantry switch and the garage receptacle where the garbage can goes. Whether that garage receptacle is one of the two pantry-switch-controlled receptacles was not specified. |
 
 ## Label revision intake — 2026-11-23
 
 Wes is dictating label changes as a batch. Preserve the existing odd-left/even-right panel arrangement. Remove an initial-label asterisk only when he explicitly confirms that circuit; a wording correction alone does not establish field confirmation. Existing confirmed statuses remain unchanged.
 
-Intake recorded through circuit 20: wording changes for 1, 2 and 3; explicit confirmations for 4, 5, 7, 8, 9, 13 and 15; red unresolved notes for 10 and 14; right kitchen light added to the existing circuit 16 entries; circuit 17 identified as the dining room receptacle, replacing Unknown; circuit 18 explicitly remains Unknown; circuit 19 identified as the furnace; circuit 20 identified as the dishwasher, superseding the earlier right-hand kitchen receptacle label. No new confirmation was supplied for 3, 10 or 14.
+November 23 dictation recorded through circuit 29; circuit 30 retains the existing record. Wording changes for 1, 2 and 3; explicit confirmations for 4, 5, 7, 8, 9, 13, 15, 23, 24, 25, 26, 27 and 29; red unresolved notes for 10 and 14; right kitchen light added to the existing circuit 16 entries; circuit 17 identified as the dining room receptacle; circuit 18 remains Unknown; circuit 19 identified as the furnace; circuit 20 identified as the dishwasher; circuit 21 repeated as the laundry room ground-fault receptacle; circuit 22 identified as the right kitchen outlets; position 28 has no breaker. No new confirmation was supplied for 3, 10 or 14; retain their asterisks.
 
-For the revised printout, show Wes's specified planned circuit uses, wiring changes and unresolved notes in red, separate from present load labels. Do not describe planned notes as completed work or authorization to perform wiring. The current intake changes the working record; the printable PDF has not yet been regenerated for this batch. Further summary emails remain by request.
+For the revised printout, show Wes's specified planned circuit uses, wiring changes and unresolved notes in red, separate from present load labels. Do not describe planned notes as completed work or authorization to perform wiring. Wes requested one printed copy when these changes are complete. Further summary emails remain by request.
 
 | Circuit | Text for red printing | Source / status |
 | --- | --- | --- |
@@ -55,15 +55,21 @@ For the revised printout, show Wes's specified planned circuit uses, wiring chan
 | 10 | Refrigerator receptacle has not been found; still looking. | Wes's November 23 instruction; unresolved location, not a confirmed load identification. |
 | 14 | This circuit has not been found coming out anywhere. | Wes's November 23 instruction; unresolved circuit/location. |
 
+### Current printable labels
+
+[November 23 label sheet](<C:/Users/wesbr/.codex/visualizations/2026/10/16/01a14585-ffe6-7850-8db1-efcdd58e7071/circuit-labels-20261123/output/pdf/Pond-Street-Breaker-Box-Labels-2026-11-23.pdf>) replaces the November 18 sheet for current use; earlier PDFs remain unchanged. Verified one US Letter page, 15 paired rows, odd numbers left/even numbers right, all 30 positions, and red notes only for 3, 10 and 14. Only 3, 10 and 14 retain initial-label asterisks. Each cut box remains 3.69 by 0.58 inches at 100% size. Circuit 16's complete label fits four lines.
+
+The authorized one-copy color print was submitted at actual size to the configured default printer, Xante EnVite (Copy 1). Windows returned successfully and its queue was subsequently empty with no reported printer error; physical paper output was not independently observed. External print evidence is in `circuit-labels-20261123/tmp/pdfs/print-receipt.json` under the same visualization output root. No email or public website change is part of this revision.
+
 ## Observations and unresolved items
 
 - Circuit 1: Wes reported that all currently exposed wiring he identified for this circuit is “old gray.” Preserve this as his visual observation, without inferring cable type, conductor material, condition or concealed wiring.
 - Circuit 16: an attic switch and possible fan wiring were initially discussed without a confirmed fan identification. Wes later explicitly instructed adding the Master Bath fan, then the office fan and lights, to circuit 16; these supersede the earlier uncertainty for those fans. His correction from “foyer” to “office” applies to this circuit 16 addition, not the separately confirmed foyer load on circuit 1. A living room fan on circuit 1 remains unconfirmed; earlier assistant descriptions are not independent confirmation.
 - Circuit 16 back bedrooms: Wes explicitly confirmed the lights in bedrooms 2 and 3. Preserve his field numbering; no mapping to the website floor-plan bedroom IDs or receptacle circuits has been established by this update.
 - Original labels 1 = stove, 2 = bath, 6 = washing machine, 11 = living-room power / porch light, 16 = kitchen-counter GFI, and 21 = pantry are superseded in the current list. The washing machine is now confirmed on circuit 30. Do not use the original labels as the current answers.
-- Circuit 20's November 23 dishwasher identification supersedes the November 16 right-hand kitchen receptacle identification. The right-hand kitchen receptacle's current circuit needs re-identification. The original combined dishwasher / garbage-disposal label does not establish a present garbage-disposal assignment; only the dishwasher was identified in this latest update.
+- Circuit 20's November 23 dishwasher identification supersedes the November 16 right-hand kitchen receptacle identification. Circuit 22 now records the right kitchen outlets. The original combined dishwasher / garbage-disposal label does not establish a present garbage-disposal assignment; only the dishwasher was identified on 20 in this latest update.
 - The reported groups 5/7, 13/15, 23/25 and 27/29 do not establish pole count or a linked handle. No accessible electrical-panel photo was found in this chat's saved attachments during the November 16 check.
-- Retain the initial labels for 14 and 22 as unresolved rather than treating nearby spoken guesses or questions addressed to Josh as new confirmations.
+- Retain circuit 14's initial kitchen-counter label as unresolved; Wes explicitly reported on November 23 that its wiring has not been located. Circuit 22's earlier tentative label is superseded by his November 23 right-kitchen-outlets identification.
 - Circuit 17 is now identified as a dining room receptacle. Circuit 18's earlier tentative dining-room-receptacles label is superseded by Wes's explicit November 23 statement that 18 is unknown.
 
 ## Dictation handling
