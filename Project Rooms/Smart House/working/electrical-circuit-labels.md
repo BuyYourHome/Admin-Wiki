@@ -25,8 +25,8 @@ Summary email authority, 2026-11-18: Wes's earlier hold is superseded for the up
 | 13 | Stove | Confirmed by Wes on November 23; remove the initial-label asterisk in the revised printout. Grouped with number 15; pole/handle arrangement remains unverified. |
 | 14 | Kitchen counter | Initial label remains unconfirmed. On November 23 Wes said this circuit has not been found coming out anywhere; print the unresolved note below in red. |
 | 15 | Stove | Confirmed by Wes on November 23; remove the initial-label asterisk in the revised printout. Grouped with number 13; pole/handle arrangement remains unverified. |
-| 16 | Light in front of the stairs; discussed attic switch; Master Bath fan; office fan and lights; lights in back bedrooms 2 and 3; backyard outdoor lights | Confirmed by Wes, replacing the initial kitchen-counter GFI label. November 16 additions: Master Bath fan; office fan and lights (corrected from “foyer”); back-bedroom lights, explicitly numbered bedrooms 2 and 3. On November 18 he added the backyard outdoor lights. GFI protection has not been confirmed. |
-| 17 | Unknown | Wes could not tell what this number served. |
+| 16 | Light in front of the stairs; discussed attic switch; Master Bath fan; office fan and lights; lights in back bedrooms 2 and 3; backyard outdoor lights; right kitchen light | Confirmed by Wes, replacing the initial kitchen-counter GFI label. November 16 additions: Master Bath fan; office fan and lights (corrected from “foyer”); back-bedroom lights, explicitly numbered bedrooms 2 and 3. On November 18 he added the backyard outdoor lights. On November 23 he retained everything already listed and added the right kitchen light. GFI protection has not been confirmed. |
+| 17 | Dining room receptacle | Identified by Wes on November 23; he explicitly noted that this replaces the previously unidentified entry. |
 | 18 | Dining room receptacles — tentative | Original dictation first said dining lights, then dining receptacles “I guess.” Exact load remains unresolved. |
 | 19 | Unknown | Wes could not tell what this number served. |
 | 20 | Right-hand kitchen receptacle | Confirmed by Wes. Replaces the original dishwasher / garbage-disposal label. Those appliance assignments need re-identification. |
@@ -45,7 +45,7 @@ Summary email authority, 2026-11-18: Wes's earlier hold is superseded for the up
 
 Wes is dictating label changes as a batch. Preserve the existing odd-left/even-right panel arrangement. Remove an initial-label asterisk only when he explicitly confirms that circuit; a wording correction alone does not establish field confirmation. Existing confirmed statuses remain unchanged.
 
-Intake recorded through circuit 15: wording changes for 1, 2 and 3; explicit confirmations for 4, 5, 7, 8, 9, 13 and 15; red unresolved notes for 10 and 14. No new confirmation was supplied for 3, 10 or 14.
+Intake recorded through circuit 17: wording changes for 1, 2 and 3; explicit confirmations for 4, 5, 7, 8, 9, 13 and 15; red unresolved notes for 10 and 14; right kitchen light added to the existing circuit 16 entries; circuit 17 identified as the dining room receptacle, replacing Unknown. No new confirmation was supplied for 3, 10 or 14.
 
 For the revised printout, show Wes's specified planned circuit uses, wiring changes and unresolved notes in red, separate from present load labels. Do not describe planned notes as completed work or authorization to perform wiring. The current intake changes the working record; the printable PDF has not yet been regenerated for this batch. Further summary emails remain by request.
 
@@ -63,6 +63,7 @@ For the revised printout, show Wes's specified planned circuit uses, wiring chan
 - Original labels 1 = stove, 2 = bath, 6 = washing machine, 11 = living-room power / porch light, 16 = kitchen-counter GFI, 20 = dishwasher / garbage disposal, and 21 = pantry are superseded in the current list. The washing machine is now confirmed on circuit 30. Do not use the original labels as the current answers.
 - The reported groups 5/7, 13/15, 23/25 and 27/29 do not establish pole count or a linked handle. No accessible electrical-panel photo was found in this chat's saved attachments during the November 16 check.
 - Retain the initial labels for 14, 18 and 22 as unresolved rather than treating nearby spoken guesses or questions addressed to Josh as new confirmations.
+- Circuit 17 is now identified as a dining room receptacle. Circuit 18's earlier tentative dining-room-receptacles label has not been revised or confirmed; no relationship between those receptacles has been established by the November 23 update.
 
 ## Dictation handling
 
