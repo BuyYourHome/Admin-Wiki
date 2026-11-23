@@ -1,6 +1,6 @@
 # Pond Street electrical circuit labels
 
-Internal working record. Source: Wes's circuit-label dictation and subsequent field-identification updates in this Smart House conversation, through 2026-11-18. Wes requested a list of 30 circuit numbers to update as loads are identified. This record is not published to Pondster or connected to house controls.
+Internal working record. Source: Wes's circuit-label dictation and subsequent field-identification updates in this Smart House conversation, through 2026-11-23. Wes requested a list of 30 circuit numbers to update as loads are identified. This record is not published to Pondster or connected to house controls.
 
 Summary email authority, 2026-11-18: Wes's earlier hold is superseded for the updated breaker-chart email he explicitly requested after adding the backyard lights. Further circuit summaries remain by request.
 
@@ -10,9 +10,9 @@ Summary email authority, 2026-11-18: Wes's earlier hold is superseded for the up
 
 | Circuit | Current label | Source status / qualification |
 | --- | --- | --- |
-| 1 | Living room receptacles; living room lights; foyer light and switch; front exterior light switch by the front door | Confirmed by Wes. Replaces the original stove label. Exposed-wiring observation below. Fan assignment remains unconfirmed. |
-| 2 | Left-hand kitchen receptacle | Confirmed by Wes. Replaces the original provisional bath label. |
-| 3 | Heater | Initial label; heater type not specified. |
+| 1 | All living room receptacles; living room lights; foyer light and switch; front exterior light switch by the front door | Confirmed by Wes. On November 23 he specified all living room receptacles. Replaces the original stove label. Exposed-wiring observation below. Fan assignment remains unconfirmed. |
+| 2 | Left-hand kitchen receptacles, front and back | Confirmed by Wes. On November 23 he clarified coverage of both front and back on the left side. Replaces the original provisional bath label. |
+| 3 | Water heater | Original heater label clarified to water heater by Wes on November 23; no separate field confirmation supplied in that dictation. Planned extension below is not an existing wiring condition. |
 | 4 | Garage outdoor lights | Initial label, clarified from garage lights to garage outdoor lights. |
 | 5 | Panel in storage shed | Initial label; Wes also associated number 7 with this panel. |
 | 6 | Master Bath | Added by Wes in the later November 16 testing; exact served lights/receptacles/fixtures not specified. The original washing-machine label is superseded by his later identification of circuit 30. The Master Bath fan is separately recorded on circuit 16. |
@@ -40,6 +40,16 @@ Summary email authority, 2026-11-18: Wes's earlier hold is superseded for the up
 | 28 | Unknown | No label supplied. |
 | 29 | Clothes dryer | Initial label, grouped with number 27. |
 | 30 | Washing machine; switch in the pantry controlling two receptacles; garage receptacle by the garbage-can location | Confirmed by Wes in later November 16 dictation. Supersedes the original washing-machine label on circuit 6. He subsequently identified the pantry switch and the garage receptacle where the garbage can goes. Whether that garage receptacle is one of the two pantry-switch-controlled receptacles was not specified. |
+
+## Label revision intake — 2026-11-23
+
+Wes is dictating label changes as a batch. Preserve the existing odd-left/even-right panel arrangement. Remove an initial-label asterisk only when he explicitly confirms that circuit; a wording correction alone does not establish field confirmation. Existing confirmed statuses remain unchanged.
+
+For the revised printout, show planned circuit uses or wiring changes in red, separate from present load labels. Do not describe those notes as completed work or authorization to perform wiring. The current intake changes the working record; the printable PDF has not yet been regenerated for this batch. Further summary emails remain by request.
+
+| Circuit | Planned-work text for red printing | Source / status |
+| --- | --- | --- |
+| 3 | Wire will need to be extended into the new garage. | Wes's November 23 instruction; planned work only. |
 
 ## Observations and unresolved items
 
