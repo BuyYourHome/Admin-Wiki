@@ -210,3 +210,16 @@ Subsequent owner authorization, “You can publish all when you get that,” lif
 ## Living Room front-facing film — 2026-11-05
 
 The newest bounded House Render source is `motion\living-room-facing-tv-20261105-v2\908-Pond-Living-Room-Still-Life-Sports-Cameras-30s-REVIEW-v2.mp4`, verified against its adjacent README and exact SHA-256. Version **88** publishes the unmodified 30-second silent film in Design and the tour, with a decoded first-frame poster and matching public descriptions. It shows a fixed front-facing TV with artwork, football and simulated cameras; no live surveillance or calibrated coverage is claimed. Original source and all four independent camera clips remain unchanged. Exact paths, hashes, caveats and release identifiers: [[living-room-film-20261105]].
+
+## Shelly switch and relay planning — 2026-11-24
+
+Wes requested one smart control function per independently switched lighting group, retaining ordinary manual wall switches, then confirmed this work belongs in Smart House. Earlier LED lighting records are read-only references. Review packet: [[Project Rooms/Smart House/outputs/908-pond-shelly-controls-review-2026-11-24]].
+
+| Source | Verified status | Use / limitation |
+| --- | --- | --- |
+| Property `Owning\Planning\908-Pond-Electrical-Circuit-Schedule.xlsx` | October 23 revision; SHA-256 `8c3750aaa51628456b13380f5a4f485442fad0982203140263d64026ea75b6d4`; read-only audit | Detailed rows assign 14 ordinary groups, eight strip zones, 27 relay functions, 12 RGBW PM controllers and one GLEDOPTO. Proposed 12 V strip basis supersedes the earlier 24 V draft; not a final whole-house takeoff. |
+| [[Project Rooms/LED lighting/outputs/908-pond-lighting-specification]] | Earlier model/photo inventory reviewed without changes | Seven model types identified; no owned quantities. Earlier 56-position ceiling count is superseded for this packet by the October workbook. |
+| [[Project Rooms/Smart House/working/electrical-circuit-labels]] | Wes's field identifications through November 23 | Adds exterior, basement, foyer, office and other coverage not fully mapped to the October control groups; breaker numbers are not lighting-zone IDs. |
+| Official Shelly KB, USA store and API pages linked in the review packet | Rechecked November 24 | Plus 1 UL discontinued; Gen4 UL US candidate needs exact label/rating reconciliation. Corrected 1PM Gen3 AC-only assertion. Decoupler is an alternative to evaluate, not an automatic quantity change. |
+
+No quantities of owned stock, final switch-group reconciliation, measured strip runs, installation acceptance or live operation were inferred. Source workbook, LED lighting files and public website remain unchanged.

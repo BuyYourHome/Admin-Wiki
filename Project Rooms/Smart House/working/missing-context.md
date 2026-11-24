@@ -1,5 +1,9 @@
 # Missing context
 
+## Shelly whole-house purchase quantities — 2026-11-24
+
+The source-based review list is prepared in [[Project Rooms/Smart House/outputs/908-pond-shelly-controls-review-2026-11-24]]. To calculate final net purchases, obtain actual stock quantities and exact labels; reconcile independent wall-switch groups for the later exterior/basement/foyer/office/bedroom field records and bathroom strip stations; resolve analog-strip power switching versus isolated-input control; and verify loads, inrush, installation acceptance and recovery behavior. The 27 relay functions are the existing assigned-plan subtotal, not a complete whole-house total. No source identifies the left kitchen light. Do not treat any blank count as zero or assume workbook bedroom numbers match the field labels.
+
 Setup does not require guessing these future design decisions:
 
 - Exact 908 Pond Street Teams folder and authoritative drawings/specifications.

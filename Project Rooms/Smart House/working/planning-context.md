@@ -42,6 +42,8 @@ Prior assistant responses discussed ChatGPT Sites hosting/custom domains, includ
 
 ## Owning Workflows
 
+Task-specific scope clarification, November 24, 2026: Wes requested the whole-house Shelly switch/relay list here, then explicitly said “all this work should be part of the smart house” and pointed to earlier LED lighting work as a source. Smart House owns this review packet and coverage reconciliation. Read the LED lighting records without editing them or their workbook. This supersedes the setup-only restriction for this specific planning task; it does not change another room's ownership, its skill, or live implementation authority. Current packet: [[Project Rooms/Smart House/outputs/908-pond-shelly-controls-review-2026-11-24]].
+
 - Smart House: property-level requirements, experience planning, knowledge structure, portability, and approved future project coordination.
 - LED lighting: lighting zones, loads, supplies, controls, compatibility, specifications. Task `01a0b696-05a2-7291-a857-084a6f2bc2eb`; currently not dispatchable.
 - Home Assistant: live integrations, permissions, automation/configuration, backups and safe control implementation. Task `01a02e53-5f75-7103-b5e7-17b842547cef`; reverify routing/readiness before handoff.
