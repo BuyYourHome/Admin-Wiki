@@ -107,7 +107,7 @@ assert.ok(markup.includes(snapshot.revision));
 assert.match(markup,/public schedule extract/);
 assert.match(markup,/recorded/);
 assert.doesNotMatch(markup,/lighting-three-controls/);
-assert.match(markup,/Load controllers.*Ordinary remotes.*Input modules.*Total smart devices.*Additional load relays/);
+assert.match(markup,/Load controllers.*Ordinary manual controls.*Input devices \/ wall stations.*Total smart devices.*Additional load relays/);
 const Diagram=require('../app/lighting-diagram.tsx').default;
 const diagramMarkup=renderToStaticMarkup(React.createElement(Diagram));
 assert.match(diagramMarkup,/Four lights, six control locations/);

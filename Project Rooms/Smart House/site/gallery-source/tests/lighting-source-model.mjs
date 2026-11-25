@@ -110,7 +110,7 @@ const exporterJs=ts.transpileModule(exporterSource,{compilerOptions:{target:ts.S
 const {generateLightingPublicWorkbook}=await import('data:text/javascript;base64,'+Buffer.from(exporterJs).toString('base64'));
 const bytes=generateLightingPublicWorkbook(result),parts=unzipSync(bytes);
 const roleWorkbookXml=Object.values(unzipSync(generateLightingPublicWorkbook(roleResult))).map(bytes=>strFromU8(bytes)).join('\n');
-assert.match(roleWorkbookXml,/Load controller qty/);assert.match(roleWorkbookXml,/Input module qty/);assert.match(roleWorkbookXml,/Manual remote qty/);assert.match(roleWorkbookXml,/Shelly Plus Wall Dimmer/);assert.ok(roleWorkbookXml.includes(meta.revision));
+assert.match(roleWorkbookXml,/Load controller qty/);assert.match(roleWorkbookXml,/Input devices \/ wall stations qty/);assert.match(roleWorkbookXml,/Manual remote qty/);assert.match(roleWorkbookXml,/Shelly Plus Wall Dimmer/);assert.ok(roleWorkbookXml.includes(meta.revision));
 assert.ok(bytes.length>1000);
 assert.equal(Object.keys(parts).filter(p=>/^xl\/worksheets\/sheet\d+\.xml$/.test(p)).length,2);
 const xml=Object.values(parts).map(bytes=>strFromU8(bytes)).join('\n');

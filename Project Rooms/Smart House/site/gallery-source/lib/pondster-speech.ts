@@ -42,6 +42,7 @@ export function getPondsterSpeechText(question:string, reply:GuideReply):string 
   if(action.menu==='View')return action.tour?'Let’s take my virtual tour.':section==='ashley'?'Meet Ashley, my realtor.':section==='viewing'?'Here’s my viewing information.':section==='notebook'?'Here’s my visual notebook.':'Here’s my View page.';
   if(action.menu==='Own') {
     if(section==='lighting-diagram')return 'Here’s my example control diagram in Belong.';
+    if(section==='led-strip-diagram')return 'Here’s my supplied LED-strip control example in Belong.';
     if(section==='lighting-schedule')return 'Here’s my lighting circuit schedule in Belong.';
     if(section==='shelly-review')return /\b(why|need|necessary|required)\b/.test(words(question))
       ? 'Here’s my Shelly controls review. I count integral relays with their smart devices; additional relay quantities are separate.'

@@ -1,6 +1,7 @@
 import type { GuideReply } from './pondster-guide';
 import { lightingDocuments } from './lighting-controls';
 import { lightingDiagram } from './lighting-diagram';
+import { ledStripDiagram } from './led-strip-diagram';
 import { LIGHTING_SEED_SNAPSHOT } from './lighting-source-fallback';
 import type { LightingGroup, LightingSnapshot } from './lighting-source-model';
 
@@ -19,40 +20,45 @@ function proposal(group:LightingGroup){
   const load=group.kind==='fixture'?'fixture positions':group.kind==='strip'?'strip loads':'loads';
   const primary=group.smartDeviceQty===null?'an unresolved smart-device quantity':`${count(group.smartDeviceQty)} total smart device${group.smartDeviceQty===1?'':'s'}`;
   const relays=group.additionalRelayQty===null?'an unresolved additional-relay quantity':`${count(group.additionalRelayQty)} additional relay${group.additionalRelayQty===1?'':'s'}`;
-  return `${group.id} is my ${group.room}: ${count(group.quantity)} proposed ${load}, ${primary}${group.smartDeviceModel?` (${group.smartDeviceModel})`:''} and ${relays}${group.additionalRelayModel?` (${group.additionalRelayModel})`:''}. Control locations: ${count(group.manualSwitches)}, including the primary local control. Proposed roles: ${count(group.loadControllerQty)} load controllers${group.loadControllerModel?` (${group.loadControllerModel})`:''}, ${count(group.inputModuleQty)} input modules${group.inputModuleModel?` (${group.inputModuleModel})`:''} and ${count(group.manualRemoteQty)} ordinary manual remotes. Input modules are smart devices, not additional load relays. A load controller’s integral relay is part of that device, not another item to buy.`;
+  const inputRole=/BLU/i.test(group.inputModuleModel??'')?'input devices / wall stations':'input modules';
+  return `${group.id} is my ${group.room}: ${count(group.quantity)} proposed ${load}, ${primary}${group.smartDeviceModel?` (${group.smartDeviceModel})`:''} and ${relays}${group.additionalRelayModel?` (${group.additionalRelayModel})`:''}. Control locations: ${count(group.manualSwitches)}. Proposed roles: ${count(group.loadControllerQty)} load controllers${group.loadControllerModel?` (${group.loadControllerModel})`:''}, ${count(group.inputModuleQty)} ${inputRole}${group.inputModuleModel?` (${group.inputModuleModel})`:''} and ${count(group.manualRemoteQty)} ordinary manual remotes. Input devices are smart devices, not additional load relays. A load controller’s integral relay is part of that device, not another item to buy.`;
 }
 function stripLoad(group:LightingGroup){
-  if(group.stripWatts===null||group.voltage===null)return ' My strip wattage or DC voltage is unresolved, so I cannot calculate its current.';
+  const allocation=` Assigned PWM outputs: ${count(group.pwmOutputQty)}. ${group.pwmOutputPlan??'The output allocation is unresolved or not applicable.'} Outputs count channels, not extra controllers. Never parallel PWM outputs.`;
+  if(group.stripWatts===null||group.voltage===null)return ' My strip wattage or DC voltage is unresolved, so I cannot calculate its current.'+allocation;
   const watts=Number(group.stripWatts.toFixed(4)),current=(group.stripWatts/group.voltage).toFixed(2),idealInput=(group.stripWatts/120).toFixed(2);
-  return ` My strip allowance is ${watts} watts at ${group.voltage} volts DC, about ${current} amps on the low-voltage side. For comparison, an ideal 120-volt input is about ${idealInput} amps before supply losses; the strip-side current is not the current on the house AC supply.`;
+  return ` My strip allowance is ${watts} watts at ${group.voltage} volts DC, about ${current} amps on the low-voltage side. For comparison, an ideal 120-volt input is about ${idealInput} amps before supply losses; the strip-side current is not the current on the house AC supply.`+allocation;
 }
 function summary(snapshot:LightingSnapshot){
   const t=snapshot.totals;
-  return `My current known planning subtotals are ${t.ordinaryGroups} ordinary lighting groups with ${t.ordinarySmartDevices} total smart devices and ${t.ordinaryAdditionalRelays} additional relays, plus ${t.stripZones} strip zones with ${t.proposedStripRelays} proposed additional relay modules. Across all listed loads, ${t.unresolvedSmartDeviceGroups} smart-device quantities and ${t.unresolvedAdditionalRelayGroups} additional-relay quantities remain unresolved. Unknown quantities are not zero, and owned stock remains separate.`;
+  return `My current known planning subtotals are ${t.ordinaryGroups} ordinary lighting groups with ${t.ordinarySmartDevices} total smart devices and ${t.ordinaryAdditionalRelays} additional relays, plus ${t.stripZones} strip zones with ${t.proposedStripRelays} proposed additional relay modules. Across all listed loads, ${t.unresolvedSmartDeviceGroups} smart-device quantities and ${t.unresolvedAdditionalRelayGroups} additional-relay quantities remain unresolved. Unknown quantities are not zero. These requirements do not deduct stock already owned.`;
 }
 
 /** Numeric answers always come from the supplied public projection, with generated seed only as fallback. */
 export function answerLightingReference(input:string,normalizedWords:string,provided?:LightingSnapshot):GuideReply|null {
   const snapshot=provided??LIGHTING_SEED_SNAPSHOT,words=normalize(normalizedWords);
   const id=words.match(/\b(ls|l)\s*0*(\d{1,5})\b/),zoneId=id?`${id[1].toUpperCase()}-${id[2].padStart(3,'0')}`:undefined;
-  const stripTopic=/\b(strips?|perimeter|niche|treads?|cabinets?|island|rgbw)\b/.test(words);
+  const stripTopic=/\b(strips?|perimeter|niche|treads?|cabinets?|island|rgbww?|pwm)\b/.test(words);
   const named=namedGroup(snapshot.groups.filter(group=>stripTopic?group.kind==='strip':group.kind==='fixture'),words);
   const group=snapshot.groups.find(group=>group.id===zoneId)??named;
-  const schedule=/\b(?:(?:lighting|light|electrical|electric|circuit) (?:circuit )?(?:schedules?|spreadsheets?|tables?|charts?|lists?)|spreadsheet|lighting circuits?|lighting zones?|lighting groups?)\b/.test(words);
-  const review=/\b(shelly|relays?|smart switches?|smart lighting (?:controls?|devices?)|lighting (?:and )?(?:smart )?(?:controls?|review))\b/.test(words);
-  const loadQuestion=/\b(watts?|wattage|amps?|amperage|current|volts?|voltage|controllers?|smart devices?|how many)\b/.test(words);
-  const lightingTopic=/\b(lights?|lighting|recessed|strips?|perimeter|treads?|rgbw)\b/.test(words);
+  const schedule=/\b(?:(?:lighting|light|electrical|electric|circuit) (?:circuit )?(?:schedules?|spreadsheets?|tables?|charts?|lists?)|spreadsheet|lighting circuits?|lighting zones?|lighting groups?|pwm outputs?|output allocation|output plan)\b/.test(words);
+  const review=/\b(shelly|relays?|smart switches?|smart lighting (?:controls?|devices?)|lighting (?:and )?(?:smart )?(?:controls?|review)|pro rgbww pm|blu)\b/.test(words);
+  const loadQuestion=/\b(watts?|wattage|amps?|amperage|current|volts?|voltage|controllers?|smart devices?|how many|outputs?|channels?)\b/.test(words);
+  const lightingTopic=/\b(lights?|lighting|recessed|strips?|perimeter|treads?|rgbww?|pwm)\b/.test(words);
   const diagram=(/\b(diagram|schematic)\b/.test(words)&&!/\b(deck|cameras?|floor plan|house plan)\b/.test(words))
     || (/\b(six|6) (?:wall )?(?:switches|controls|control locations)\b/.test(words)&&/\b(four|4) lights?\b/.test(words));
-  if(!diagram&&!schedule&&!review&&!(loadQuestion&&lightingTopic&&group)&&!zoneId)return null;
-  const reference='My lighting schedule, Shelly review and example diagram are public planning references on Belong.';
+  const ledReference=(/\b(diagram|schematic|pdf|example|reference|generic|supplied)\b/.test(words)&&/\b(led|strips?|12v|12 v|twelve volt|blu|bluetooth|rgbww|pwm)\b/.test(words))
+    || /\b(two|2) controls? (?:and )?(one|1) controller\b/.test(words);
+  if(!diagram&&!ledReference&&!schedule&&!review&&!(loadQuestion&&lightingTopic&&group)&&!zoneId)return null;
+  const reference='My lighting schedule, Shelly review and separate AC and LED-strip examples are public planning references on Belong.';
   const quoted=/["“”«»]|(?:^|\s)['‘]|['’](?:$|\s)/.test(input);
   const declined=/\b(don t|do not|dont|never|stop|cancel|not now)\b/.test(words);
   const compound=/\b(?:and|then|also|but)\b.*\b(?:show|open|go|play|send|email|buy|unlock|turn|switch|activate|enable|disable)\b/.test(words)
     || (/\b(and|plus|with)\b/.test(words)&&/\b(cameras?|sony|receiver|audio|tour|gallery|galleries)\b/.test(words));
   if(quoted||declined||compound)return {text:reference+' Ask directly for the reference you want to see.'};
   if(/\b(installed|as built|approved|actual wiring|serial number)\b/.test(words))return {text:reference+' My equipment installation, wiring and final approvals are not confirmed here.'};
-  if(diagram&&group&&!/\bexample\b/.test(words))return {text:proposal(group)+' My current Shelly review includes source-based group sketches. The separate four-light, six-location example does not change this group’s quantities or prove its wiring.',action:{menu:'Own',section:'shelly-review'}};
+  if(diagram&&group&&!/\b(example|generic|supplied)\b/.test(words))return {text:proposal(group)+(group.kind==='strip'?stripLoad(group):'')+' My current Shelly review includes source-based group sketches. Separate generic examples do not change this group’s quantities or prove its wiring.',action:{menu:'Own',section:'shelly-review'}};
+  if(ledReference)return {text:`${ledStripDiagram.summary} ${ledStripDiagram.caption} ${ledStripDiagram.limits} The supplied public PDF is ${ledStripDiagram.pdf}.`,action:{menu:'Own',section:'led-strip-diagram'}};
   if(diagram)return {text:`${lightingDiagram.summary} ${lightingDiagram.limits} The example does not assign a particular lighting group; my current source schedule controls those assignments. The public PDF is ${lightingDiagram.pdf}.`,action:{menu:'Own',section:'lighting-diagram'}};
   const action={menu:'Own' as const,section:schedule||group||zoneId?'lighting-schedule' as const:'shelly-review' as const};
   if(group)return {text:proposal(group)+(group.kind==='strip'?stripLoad(group)+' Additional load relays depend on the proposed controller and input arrangement; a switch count alone does not require another load relay. Controller/channel capacity and whole-zone behavior still need validation.':'')+' This is a planning group, not a breaker number or confirmed installation.',action};

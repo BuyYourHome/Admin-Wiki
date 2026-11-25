@@ -938,6 +938,8 @@ for (const [index,[text,section]] of [
   ['Show me the spreadsheet','lighting-schedule'],
   ['Show me the Shelly review','shelly-review'],
   ['Show the six switches diagram','lighting-diagram'],
+  ['Show the generic LED strip diagram','led-strip-diagram'],
+  ['Open the supplied 12V LED control PDF','led-strip-diagram'],
   ['Show LS-011','lighting-schedule'],
 ].entries()) {
   const f=fixture({answer:answerPondster});await f.control.message(start(950+index));

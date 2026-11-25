@@ -2,7 +2,9 @@
 
 ## Current lighting controls — 2026-11-25
 
-Wes authorized the revised wall-controller/i4 approach and the Teams-master connection. The prepared source update distinguishes role quantities and models and retains unknown station/input counts in two bathroom groups. Final net purchases still require exact stock, fixture/driver and motor compatibility, neutral/conductor/module placement, analog-strip voltage/channel loading, coordinated commands/recovery and the addressable stair-controller path. The previous 27-relay-function subtotal below is historical, not the current proposed equipment list. See [[Project Rooms/Smart House/working/lighting-master-and-control-diagrams-20261125]] for the current source and publication/connection evidence.
+Wes authorized the revised wall-controller/i4 approach and the Teams-master connection, then supplied his generic 12 V LED example and chose both a BLU station and a wired manual switch in all seven standard analog zones. The two bathroom station counts are resolved as a new design choice. He requested gross totals, so missing stock counts do not block the list and must not cause an assumed inventory deduction.
+
+Remaining installation details include actual single-channel strip type and run allocation, supply quantities/models and overhead, protection, exact device/model acceptance, fixture/driver and motor compatibility, neutral/conductor/module placement, Bluetooth coverage, coordinated multi-output commands/recovery and the addressable stair-controller path. The previous 27-relay-function subtotal below is historical, not the current equipment list. Current evidence: [[Project Rooms/Smart House/working/led-pro-rgbww-and-total-list-20261125]]; prior connection history: [[Project Rooms/Smart House/working/lighting-master-and-control-diagrams-20261125]].
 
 ## Shelly whole-house purchase quantities — 2026-11-24
 

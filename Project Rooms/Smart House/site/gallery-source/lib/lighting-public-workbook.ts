@@ -43,7 +43,8 @@ function worksheet(sheet: Sheet, snapshot: LightingSnapshot): string {
     `<row r="5" ht="20" customHeight="1">${cell('A5', `Publication revision: ${snapshot.revision}`, 5)}</row>`,
     `<row r="6" ht="36" customHeight="1">${sheet.headers.map((v, i) => cell(`${letter(i)}6`, v, 2)).join('')}</row>`,
   ];
-  sheet.rows.forEach((values, i) => rows.push(`<row r="${i + 7}" ht="32" customHeight="1">${values.map((value, j) => cell(`${letter(j)}${i + 7}`, value, typeof value === 'number' ? (!Number.isInteger(value) && sheet.decimalColumns.includes(j) ? (j === 4 ? 6 : 4) : 3) : 0)).join('')}</row>`));
+  const planColumn = sheet.headers.indexOf('PWM output plan');
+  sheet.rows.forEach((values, i) => rows.push(`<row r="${i + 7}" ht="${planColumn >= 0 && values[planColumn] ? 108 : 48}" customHeight="1">${values.map((value, j) => cell(`${letter(j)}${i + 7}`, value, typeof value === 'number' ? (!Number.isInteger(value) && sheet.decimalColumns.includes(j) ? (j === 4 ? 6 : 4) : 3) : 0)).join('')}</row>`));
   rows.push(`<row r="${last + 2}" ht="24" customHeight="1">${cell(`A${last + 2}`, sheet.summary, 5)}</row>`);
   rows.push(`<row r="${last + 3}" ht="24" customHeight="1">${cell(`A${last + 3}`, 'Blank quantities are unresolved. Explicit zero means no additional device. These are planning counts, not verified installed equipment.', 5)}</row>`);
   return `${XML}<worksheet xmlns="${MAIN}" xmlns:r="${REL}">`+
@@ -82,16 +83,16 @@ export function generateLightingPublicWorkbook(input: LightingSnapshot): Uint8Ar
   const snapshot = validateProjection(input), t = snapshot.totals;
   const sheets: Sheet[] = [
     { name:'Circuit schedule', title:'Pondster lighting circuit schedule',
-      headers:['Record ID','Room / control group','Light type','Light quantity','Manual switches','Smart device qty','Smart device / model','Additional relay qty','Additional relay / model','Load controller qty','Load controller / model','Manual remote qty','Input module qty','Input module / model','Planning status'],
-      widths:[12,31,28,15,17,18,45,20,38,20,38,20,20,38,18], decimalColumns:[],
-      rows:snapshot.groups.map(g => [g.id,g.room,g.loadType,g.quantity,g.manualSwitches,g.smartDeviceQty,g.smartDeviceModel,g.additionalRelayQty,g.additionalRelayModel,g.loadControllerQty,g.loadControllerModel,g.manualRemoteQty,g.inputModuleQty,g.inputModuleModel,g.controlStatus]),
+      headers:['Record ID','Room / control group','Light type','Light quantity','Manual switches','Smart device qty','Smart device / model','Additional relay qty','Additional relay / model','Load controller qty','Load controller / model','Manual remote qty','Input devices / wall stations qty','Input devices / wall stations model','PWM output qty','PWM output plan','Planning status'],
+      widths:[12,31,28,15,17,18,45,20,38,20,38,20,20,38,18,72,18], decimalColumns:[],
+      rows:snapshot.groups.map(g => [g.id,g.room,g.loadType,g.quantity,g.manualSwitches,g.smartDeviceQty,g.smartDeviceModel,g.additionalRelayQty,g.additionalRelayModel,g.loadControllerQty,g.loadControllerModel,g.manualRemoteQty,g.inputModuleQty,g.inputModuleModel,g.pwmOutputQty,g.pwmOutputPlan,g.controlStatus]),
       summary:`Known subtotals: ${t.primarySmartDevicesKnown} smart devices (${t.loadControllersKnown} explicit load controllers; ${t.inputModulesKnown} explicit input modules), ${t.additionalRelaysKnown} additional LOAD relays. Partial known roles are included even when the row total is unresolved.`,
     },
     { name:'Control specifications', title:'Pondster strip control specifications',
-      headers:['Record ID','Room / control group','Strip allowance W','DC supply V','Estimated strip current A','Smart device qty','Smart device / model','Additional relay qty','Additional relay / model','Load controller qty','Load controller / model','Manual remote qty','Input module qty','Input module / model','Planning status'],
-      widths:[12,31,20,17,25,18,45,20,38,20,38,20,20,38,18], decimalColumns:[2,3,4],
-      rows:snapshot.groups.filter(g=>g.kind==='strip').map(g => [g.id,g.room,g.stripWatts,g.voltage,g.stripWatts!==null&&g.voltage!==null?g.stripWatts/g.voltage:null,g.smartDeviceQty,g.smartDeviceModel,g.additionalRelayQty,g.additionalRelayModel,g.loadControllerQty,g.loadControllerModel,g.manualRemoteQty,g.inputModuleQty,g.inputModuleModel,g.controlStatus]),
-      summary:'Strip currents describe the DC side, not house AC current. Input modules are not load relays. Additional LOAD relays follow the source proposal and remain separate from primary load controllers.',
+      headers:['Record ID','Room / control group','Strip allowance W','DC supply V','Estimated strip current A','Smart device qty','Smart device / model','Additional relay qty','Additional relay / model','Load controller qty','Load controller / model','Manual remote qty','Input devices / wall stations qty','Input devices / wall stations model','PWM output qty','PWM output plan','Planning status'],
+      widths:[12,31,20,17,25,18,45,20,38,20,38,20,20,38,18,72,18], decimalColumns:[2,3,4],
+      rows:snapshot.groups.filter(g=>g.kind==='strip').map(g => [g.id,g.room,g.stripWatts,g.voltage,g.stripWatts!==null&&g.voltage!==null?g.stripWatts/g.voltage:null,g.smartDeviceQty,g.smartDeviceModel,g.additionalRelayQty,g.additionalRelayModel,g.loadControllerQty,g.loadControllerModel,g.manualRemoteQty,g.inputModuleQty,g.inputModuleModel,g.pwmOutputQty,g.pwmOutputPlan,g.controlStatus]),
+      summary:'Allocation assumes single-color, single-channel constant-voltage analog strips; confirm actual type and physical runs. PWM quantity counts separate outputs, not extra controllers. Never parallel PWM outputs; both controls must coordinate every assigned output.',
     },
   ];
   // A valid empty table still needs a data row when no strip zones are assigned.
