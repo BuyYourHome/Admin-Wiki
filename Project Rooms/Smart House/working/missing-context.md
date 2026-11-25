@@ -1,5 +1,9 @@
 # Missing context
 
+## Current lighting controls — 2026-11-25
+
+Wes authorized the revised wall-controller/i4 approach and the Teams-master connection. The prepared source update distinguishes role quantities and models and retains unknown station/input counts in two bathroom groups. Final net purchases still require exact stock, fixture/driver and motor compatibility, neutral/conductor/module placement, analog-strip voltage/channel loading, coordinated commands/recovery and the addressable stair-controller path. The previous 27-relay-function subtotal below is historical, not the current proposed equipment list. See [[Project Rooms/Smart House/working/lighting-master-and-control-diagrams-20261125]] for the current source and publication/connection evidence.
+
 ## Shelly whole-house purchase quantities — 2026-11-24
 
 The source-based review list is prepared in [[Project Rooms/Smart House/outputs/908-pond-shelly-controls-review-2026-11-24]]. To calculate final net purchases, obtain actual stock quantities and exact labels; reconcile independent wall-switch groups for the later exterior/basement/foyer/office/bedroom field records and bathroom strip stations; resolve analog-strip power switching versus isolated-input control; and verify loads, inrush, installation acceptance and recovery behavior. The 27 relay functions are the existing assigned-plan subtotal, not a complete whole-house total. No source identifies the left kitchen light. Do not treat any blank count as zero or assume workbook bedroom numbers match the field labels.

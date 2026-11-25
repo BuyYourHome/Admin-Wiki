@@ -12,6 +12,8 @@ import TheaterMotion from './theater-motion';
 import ExplorePage from './explore-page';
 import { getExploreFeatureDestination } from '../lib/explore-feature-destinations';
 import EquipmentManuals from './equipment-manuals';
+import LightingControls from './lighting-controls';
+import LightingDiagram from './lighting-diagram';
 import PondsterLogoArt from './pondster-logo-art';
 import GalleryImageViewer from './gallery-image-viewer';
 import DesignCardImages from './design-card-images';
@@ -247,13 +249,15 @@ export default function Home() {
       {menu==='Built By' && <BuiltByPage/>}
       {menu==='Own' && <section className="secondary-page manage">
         <h1 className="single-line-page-title">I come <em>with answers.</em></h1>
-        <p className="lead">I keep my camera and audio receiver guides here, alongside my deck structural drawing. Ask me to show you either one.</p>
+        <p className="lead">I keep my lighting schedule, Shelly review, example control diagram, equipment guides and deck structural drawing here. Ask me to show you the reference you need.</p>
         <article id="pondster-own-drawing" className="manage-notice" aria-labelledby="deck-structural-heading">
           <h2 id="deck-structural-heading">My preliminary deck structural drawing</h2>
           <p>I’m sharing my deck’s preliminary structural design reference. The drawing is marked <strong>PRELIMINARY / NOT FOR PERMIT</strong> and remains a design reference for review.</p>
           <p><a className="solid-link" href="/documents/deck-structural-preliminary.pdf" target="_blank" rel="noopener noreferrer">View my drawing (PDF) ↗</a></p>
           <a href="/documents/deck-structural-preliminary.pdf" download="deck-structural-preliminary.pdf">Download my drawing (PDF)</a>
         </article>
+        <LightingControls/>
+        <LightingDiagram/>
         <EquipmentManuals/>
         <div className="knowledge-grid">{[['guides','More home guides','I will add guides for my other systems as their equipment is confirmed.'],['handover','Owner handover','I will bring my records and account checklist together for my next chapter.']].map(([section,title,description])=><article id={`pondster-own-${section}`} key={section}><span className="pending-tag">PLANNED</span><h3>{title}</h3><p>{description}</p></article>)}</div>
         <div className="manage-notice"><strong>My private owner tools aren’t ready yet.</strong><p>I’ll need separate, authenticated owner access before I can show private records or offer live controls. I’m not connected to my house systems through this public site.</p></div>

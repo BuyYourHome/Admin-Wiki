@@ -54,3 +54,14 @@ export const pondsterConversationEvents = sqliteTable('pondster_conversation_eve
   sequence:integer('sequence').notNull(), role:text('role').notNull(), text:text('text').notNull(),
   startMs:integer('start_ms'), endMs:integer('end_ms'), createdAt:integer('created_at').notNull(), expiresAt:integer('expires_at').notNull(),
 },table=>[primaryKey({columns:[table.conversationId,table.eventId]}),index('pondster_events_expiry').on(table.expiresAt)]);
+
+// One atomic, sanitized public lighting revision; source identity/revision remain server-only.
+export const lightingSourcePublication = sqliteTable('lighting_source_publication', {
+  id: text('id').primaryKey(),
+  revision: text('revision').notNull(), publicJson: text('public_json').notNull(),
+  sourceDriveId: text('source_drive_id').notNull(), sourceItemId: text('source_item_id').notNull(),
+  sourceEtag: text('source_etag').notNull(), sourceModifiedAt: text('source_modified_at'),
+  publishedAt: text('published_at').notNull(), lastCheckedAt: text('last_checked_at').notNull(),
+  lastSuccessAt: text('last_success_at').notNull(), syncStatus: text('sync_status').notNull(),
+  lastErrorCode: text('last_error_code'),
+});

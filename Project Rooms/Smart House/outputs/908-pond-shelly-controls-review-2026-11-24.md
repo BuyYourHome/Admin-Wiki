@@ -1,5 +1,7 @@
 # Pond Street Shelly switch and relay review
 
+Historical review: Wes authorized an expanded source-workbook update on November 25. Its wall-controller/i4 role assignments and additional-load-relay proposal supersede the quantities below. Use the Teams master and [[Project Rooms/Smart House/working/lighting-master-and-control-diagrams-20261125]] for current assignments and publication/connection status; retain this review for source provenance.
+
 Prepared November 24, 2026 in Smart House. Status: review-ready planning list, with unresolved quantities shown explicitly. This is not a purchase order or a wiring diagram.
 
 Wes requested a smart controller for every independently controlled lighting group, retaining inexpensive manual wall switches where appropriate. He then confirmed, “all this work should be part of the smart house.” This review belongs to Smart House. The LED lighting room and its source workbook remain unchanged; this packet records the current source proposal, manufacturer corrections and remaining whole-house coverage.

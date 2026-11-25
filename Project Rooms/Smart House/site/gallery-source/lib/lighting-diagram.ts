@@ -1,0 +1,9 @@
+/** The supplied example is a document reference, separate from the current source assignments. */
+export const lightingDiagram = {
+  title: 'Four lights, six control locations',
+  pdf: '/documents/lighting-four-lights-six-controls.pdf',
+  image: '/documents/lighting-four-lights-six-controls.png',
+  summary: 'My example uses one Shelly Plus Wall Dimmer, five ordinary remote wall switches and two Shelly Plus i4 UL input modules to control four compatible dimmable lights.',
+  limits: 'That is three smart devices and zero additional load relays. The i4 modules send on/off commands over local Wi-Fi; they do not switch the lighting load. Brightness is adjusted at the dimmer. The powered dimmer face still works if Wi-Fi is unavailable; the remote commands depend on Wi-Fi.',
+  knowledge: 'My Belong example is titled Four lights, six control locations. It shows one Shelly Plus Wall Dimmer at location one, five ordinary remote wall switches at locations two through six, two Shelly Plus i4 UL input modules and four compatible dimmable fixtures. That is three smart devices and zero additional load relays; i4 modules are input devices, not load relays. The first i4 uses three inputs and the second uses two. A spare input could add a seventh total location, which is not included in the six-location example. The remotes toggle all four lights together over local Wi-Fi; brightness is adjusted at the dimmer. The powered dimmer face still works without Wi-Fi, while remote commands depend on Wi-Fi. This is an illustrative planning schematic, not proof of installation or a universal replacement for traveler wiring. The dimmer has a 150-watt combined compatible dimmable LED/CFL limit. Fixture/driver compatibility, exact listed devices, conductor routes, box fill and grounding need electrician review. The current source schedule determines each house group’s assignment; this separate example must not silently change any row or quantity.',
+} as const;

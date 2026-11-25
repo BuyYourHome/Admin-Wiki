@@ -7,6 +7,8 @@ import { PONDSTER_LOCATION_TEXT } from './pondster-identity';
 import { galleryVoiceCommand } from './pondster-gallery';
 import {spokenSiteControl} from './pondster-control-intent';
 import { equipmentManuals } from './equipment';
+import { answerLightingReference } from './pondster-lighting-guide';
+import type { LightingSnapshot } from './lighting-source-model';
 export type GuideAction = PondsterDestination;
 export type GuideReply = { text: string; action?: GuideAction };
 
@@ -62,7 +64,7 @@ function hasPhrase(input: string, phrase: string) { return ` ${input} `.includes
 const planAliases: Record<string,string[]> = { 'master-bedroom':['primary bedroom','main bedroom','master suite'], 'walk-in-closet':['walk in closet'], 'dining-room':['dining area'], 'spiral-stair':['spiral staircase','spiral stairs'], 'open-deck':['back deck'], 'existing-garage':['current garage'], 'new-garage':['proposed garage'] };
 const cameraNumberWords: Record<string,number> = { zero:0,one:1,two:2,three:3,four:4,five:5,six:6,seven:7,eight:8,nine:9,ten:10,eleven:11,twelve:12,first:1,second:2,third:3,fourth:4,fifth:5,sixth:6 };
 
-export function answerPondster(input: string): GuideReply {
+export function answerPondster(input: string, lightingSnapshot?:LightingSnapshot): GuideReply {
   const words = normalize(input).replace(/\bh\s*v\s*a\s*c\b/g, 'hvac').replace(/\b(camera|cam)(\d+)\b/g, '$1 $2').replace(/^(?:(?:hey|hi|hello|okay|ok) )?pondster(?: |$)/, '').trim();
   const has = (phrase: string) => hasPhrase(words, phrase);
   const planMatches = floorPlanRooms.filter(item => has(item.name) || (planAliases[item.id] ?? []).some(alias => has(alias)))
@@ -79,7 +81,8 @@ export function answerPondster(input: string): GuideReply {
   if (!words || /^(hi|hello|hey|good morning|good afternoon|good evening)$/.test(words)) return { text: identity };
   if (/^(who are you|what is your name|what s your name)$/.test(words)) return { text: identity, action: { menu: 'Design', section: 'overview' } };
 
-  if (/\b(passwords?|passcodes?|secrets?|private (?:records?|information|data|details?|profiles?|codes?)|confidential (?:records?|information|data|details?)|live cameras?|live (?:camera )?(?:feeds?|footage|streams?)|(?:camera|nvr|eufy|surveillance) (?:footage|recordings?|feeds?)|saved profile|personal profile|alarm code|wifi|wi fi|owner records|owner data)\b/.test(words)
+  if (/\b(passwords?|passcodes?|secrets?|private (?:records?|information|data|details?|profiles?|codes?)|confidential (?:records?|information|data|details?)|live cameras?|live (?:camera )?(?:feeds?|footage|streams?)|(?:camera|nvr|eufy|surveillance) (?:footage|recordings?|feeds?)|saved profile|personal profile|alarm code|owner records|owner data)\b/.test(words)
+    || (/\b(wifi|wi fi)\b/.test(words) && !/\b(diagram|schematic|dimmer|i4)\b/.test(words))
     || (/\b(?:cameras?|cams?)\b/.test(words) && /\b(live|footage|recordings?|feeds?|streams?)\b/.test(words))) {
     return { text: 'I cannot provide private records, passwords, or real access codes here. My future owner tools will need authenticated access; saying you are the owner does not grant access.', action: { menu: 'Own' } };
   }
@@ -87,6 +90,8 @@ export function answerPondster(input: string): GuideReply {
   if(image)return {text:image==='vote'?'I’ll submit the design picture you are viewing and check whether your vote is saved.':image==='enlarge'?'I’m enlarging the current picture.':image==='close'?'I’m returning to my gallery.':image==='first'?'Here’s my first gallery picture.':image==='next'?'Here’s my next gallery picture.':'Here’s my previous gallery picture.',action:{menu:'Design',image}};
   const control=spokenSiteControl(input);
   if(control)return {text:'I’ll use that website control and check the result.',action:{menu:'Design',control}};
+  const lighting=answerLightingReference(input,words,lightingSnapshot);
+  if(lighting)return lighting;
   const publicCityQuestion = /\b(where|what part|which part|what area|are you|is pondster|is (?:the|this|your|my) (?:house|home|property))\b.{0,50}\b(cary|north carolina)\b/.test(words);
   if (publicCityQuestion || /\b(address|location|street|city|town|neighborhood|zip|postal|geolocation|coordinates|latitude|longitude|what state|which state)\b/.test(words) || (/\b(where are you|where is pondster|where is the house|where is your house|where is this property)\b/.test(words) && !interiorPlacement)) return { text: PONDSTER_LOCATION_TEXT + ' My introduction shares my public location; Ashley confirms real viewing arrangements.', action: { menu: 'Design', section: 'overview' } };
   const manualRequest = /\b(manuals?|guides?|documentation|instructions?|quick start)\b/.test(words);

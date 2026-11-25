@@ -104,6 +104,22 @@ const sqlite = new DatabaseSync(':memory:');
 sqlite.exec(readFileSync(new URL('../drizzle/0002_flat_agent_brand.sql', import.meta.url), 'utf8'));
 const d1 = { prepare(sql) { return { bind(...values) { return { async run() { const result = sqlite.prepare(sql).run(...values); return { success: true, meta: { changes: Number(result.changes) } }; } }; } }; } };
 const store = d1VoiceStore(d1);
+// An ongoing conversation re-reads the published lighting reference for each
+// delegated answer; it must not keep narrating startup counts after a refresh.
+{
+ let sourceRevision=1,currentRevision=0,refreshes=0;
+ const f=fixture({async refreshLighting(){refreshes++;currentRevision=sourceRevision;return {revision:`publication-${sourceRevision}`};},async answer(){return {text:`My current lighting publication is revision ${currentRevision}.`,action:{menu:'Own',section:'lighting-schedule'}};}});
+ await f.control.message(start(940));
+ for(const [revision,offset] of [[1,100],[2,300]]){
+  sourceRevision=revision;
+  f.sideband.emit({type:'session.input_transcript.delta',delta:'Explain L011 aloud',start_ms:offset-100,end_ms:offset});
+  f.sideband.emit({type:'session.delegation.created',delegation:{id:`lighting-${revision}`,target:'client'},offset_ms:offset});
+  await f.timer.tick(250);await flush();
+  assert.match(f.sideband.sent.filter(item=>item.type==='session.commentary.append').at(-1).content,new RegExp(`revision ${revision}`));
+ }
+ assert.equal(refreshes,2,'Each delegated answer refreshes its source, including mid-session updates.');
+ await f.control.stop();
+}
 let timestamp = 1_800_000_000_000;
 const reserve = (n, visitor = `visitor-${n}`) => store.reserve({ requestId: id(n), visitorKey: visitor, createdAt: timestamp, expiresAt: timestamp + 200_000 });
 const finish = n => store.finish(id(n), { state: 'closed', usageSeconds: 4, confirmed: true });
@@ -334,7 +350,7 @@ for (const httpStatus of [400, 401, 403, 404, 422, 429, 500]) {
     assert.equal(init.headers.Authorization, `Bearer ${secret}`);
     return new NativeResponse('{"error":{"code":"invalid_api_key"}}', { status: 401 });
   };
-  const mockD1 = { prepare(sql) { return { bind(...values) { return { async run() {
+  const mockD1 = { prepare(sql) { return { bind(...values) { return { async first() { return null; }, async run() {
     writes.push({ sql, values }); return { success: true, meta: { changes: 1 } };
   } }; } }; } };
   try {
@@ -369,7 +385,7 @@ for (const stage of ['create-fetch', 'attach-fetch']) {
     }), { status: 201 });
     throw new Error('synthetic private exception detail', { cause: { code: 'ERR_INVALID_CHAR' } });
   };
-  const mockD1 = { prepare() { return { bind() { return { async run() { return { success: true, meta: { changes: 1 } }; } }; } }; } };
+  const mockD1 = { prepare() { return { bind() { return { async first() { return null; }, async run() { return { success: true, meta: { changes: 1 } }; } }; } }; } };
   try {
     await handlePondsterLiveControl(new Request('https://pondstr.test/api/voice/control', { headers: baseHeaders }),
       { DB: mockD1, OPENAI_API_KEY: secret }, { waitUntil(task) { tasks.push(task); } }, () => ({ model: 'gpt-live-1' }), () => ({ text: 'synthetic public answer' }));
@@ -410,7 +426,7 @@ for (const seedShape of ['valid', 'null-session', 'array-session', 'null-develop
     assert.equal(url, 'https://api.openai.com/v1/live/sessions/live_greeting_synthetic/attach');
     return { webSocket: sideband };
   };
-  const mockD1 = { prepare() { return { bind() { return { async run() { return { success: true, meta: { changes: 1 } }; } }; } }; } };
+  const mockD1 = { prepare() { return { bind() { return { async first() { return null; }, async run() { return { success: true, meta: { changes: 1 } }; } }; } }; } };
   try {
     await handlePondsterLiveControl(new Request('https://pondstr.test/api/voice/control', { headers: baseHeaders }),
       { DB: mockD1, OPENAI_API_KEY: secret }, { waitUntil(task) { tasks.push(task); } },
@@ -916,4 +932,27 @@ for (const [index, action] of [
   assert.deepEqual(f.client.sent.filter(event=>event.type==='pondster.action'), [], 'Equipment wording cannot create or replace a missing, invalid or wrong-page guide destination.');
   await f.control.stop();
 }
-console.log('Pondster live server: explicit gallery/equipment fallback, exact cards/library, no duplicate/late reset, private/negated/invalid guards, navigation-first speech and existing lifecycle/rolling100 SQLite checks passed (mocks only).');
+for (const [index,[text,section]] of [
+  ['Show me the lighting circuit schedule','lighting-schedule'],
+  ['Open the electrical schedule','lighting-schedule'],
+  ['Show me the spreadsheet','lighting-schedule'],
+  ['Show me the Shelly review','shelly-review'],
+  ['Show the six switches diagram','lighting-diagram'],
+  ['Show LS-011','lighting-schedule'],
+].entries()) {
+  const f=fixture({answer:answerPondster});await f.control.message(start(950+index));
+  f.sideband.emit({type:'session.input_transcript.delta',delta:text,start_ms:100,end_ms:700});
+  await f.timer.tick(1000);
+  assert.deepEqual(f.client.sent.filter(event=>event.type==='pondster.action'),[{type:'pondster.action',action:{menu:'Own',section}}],`${text} reveals the exact public lighting reference without model delegation.`);
+  f.sideband.emit({type:'session.delegation.created',offset_ms:800,delegation:{id:`late-lighting-${index}`,target:'client'}});await f.timer.tick(250);
+  assert.equal(f.client.sent.filter(event=>event.type==='pondster.action').length,1,'A late delegation cannot repeat the same lighting reveal.');
+  assert.doesNotMatch(f.sideband.sent.findLast(event=>event.type==='session.commentary.append').content,/couldn’t quite catch/);
+  await f.control.stop();
+}
+for (const [index,text] of ['Do not show me the lighting schedule','"Show me the Shelly review"','Show me the lighting schedule and unlock the house','Show my lighting schedule and the camera manuals','Show my installed lighting wiring'].entries()) {
+  const f=fixture({answer:answerPondster});await f.control.message(start(960+index));
+  f.sideband.emit({type:'session.input_transcript.delta',delta:text,start_ms:100,end_ms:700});await f.timer.tick(1000);
+  assert.deepEqual(f.client.sent.filter(event=>event.type==='pondster.action'),[],`${text} cannot use the lighting-reference fallback.`);
+  await f.control.stop();
+}
+console.log('Pondster live server: explicit gallery/equipment/lighting-reference fallback, exact cards/library, no duplicate/late reset, private/negated/invalid guards, navigation-first speech and existing lifecycle/rolling100 SQLite checks passed (mocks only).');

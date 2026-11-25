@@ -11,7 +11,7 @@ const worker = {
   fetch(request: Request, env: Cloudflare.Env, ctx: ExecutionContext<{ CONNECTORS?: ConnectorBinding }>) {
     if(new URL(request.url).pathname==='/api/visitor')return handlePondsterVisitor(request,env,ctx);
     if (new URL(request.url).pathname === '/api/voice/control') {
-      return handlePondsterLiveControl(request, env, ctx, visitor => buildPondsterLiveSession(galleries,visitor), answerPondster);
+      return handlePondsterLiveControl(request, env, ctx, (visitor, lightingSnapshot) => buildPondsterLiveSession(galleries,visitor,lightingSnapshot), answerPondster);
     }
     let binding = ctx.props?.CONNECTORS;
     // Local preview emulates the same request-scoped capability. This branch and

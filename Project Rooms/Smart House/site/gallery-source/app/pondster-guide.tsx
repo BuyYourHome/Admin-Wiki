@@ -1,6 +1,8 @@
 'use client';
 import { forwardRef, useEffect, useImperativeHandle, useRef, useState, type FormEvent } from 'react';
-import { answerPondster, isPondsterWakeRequest, type GuideAction } from '../lib/pondster-guide';
+import { answerPondster as answerFromPublicGuide, isPondsterWakeRequest, type GuideAction } from '../lib/pondster-guide';
+import { getLightingSourceState } from '../lib/lighting-source-client';
+import { useLightingSource } from './use-lighting-source';
 import { getPondsterSpeechText } from '../lib/pondster-speech';
 import { PONDSTER_LOCATION_TEXT } from '../lib/pondster-identity';
 import { createPondsterVoice } from '../lib/pondster-voice.js';
@@ -56,6 +58,8 @@ export default forwardRef<PondsterGuideHandle,GuideProps>(function PondsterGuide
   const localConversation=useRef<{id:string|null;mode:'browser'|'typed';greeting:string;awaitingName:boolean}|null>(null);
   const localStarting=useRef<Promise<NonNullable<typeof localConversation.current>>|null>(null);
   const localGeneration=useRef(0);
+  useLightingSource(open||voice.session||live.active);
+  const answerPondster=(question:string)=>answerFromPublicGuide(question,getLightingSourceState().snapshot);
   function updateVisitor(value:PondsterVisitor){visitorRef.current=value;setVisitor(value);}
   async function visitorRequest(body:Record<string,unknown>){
     const response=await fetch('/api/visitor',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body),cache:'no-store'});

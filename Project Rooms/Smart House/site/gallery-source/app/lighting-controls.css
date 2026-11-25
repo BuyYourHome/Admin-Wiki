@@ -1,0 +1,30 @@
+.lighting-guides{margin:2.5rem 0;padding-top:1rem;border-top:1px solid var(--line)}
+.lighting-guides h2{font:400 clamp(1.6rem,3vw,2.2rem)/1.2 Georgia,serif}
+.lighting-guides p{font-size:1rem;line-height:1.65}
+.lighting-document-grid{grid-template-columns:repeat(auto-fit,minmax(min(100%,24rem),1fr));align-items:start}
+.lighting-document-grid article{scroll-margin-top:var(--header-height,14rem);min-width:0}
+.lighting-document-grid h3{font:400 1.6rem/1.25 Georgia,serif}
+.lighting-guides .solid-link{display:inline-flex;align-items:center;min-height:2.75rem;font-size:1rem;white-space:normal}
+.lighting-guides .lighting-document-date{font-size:.875rem;color:var(--muted)}
+.lighting-zone-details{margin:1rem 0}
+.lighting-zone-details summary{cursor:pointer;min-height:2.75rem;align-content:center;font-size:1rem;font-weight:600}
+.lighting-table-scroll{max-width:100%;overflow-x:auto;margin:.75rem 0;overscroll-behavior-x:contain}
+.lighting-table-scroll:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+.lighting-table-scroll table{width:100%;border-collapse:collapse;font-size:1rem;line-height:1.45}
+.lighting-table-scroll caption{text-align:left;font-size:.875rem;padding:.5rem 0;color:var(--muted)}
+.lighting-table-scroll th,.lighting-table-scroll td{padding:.65rem .5rem;border-bottom:1px solid var(--line);vertical-align:top;text-align:left}
+.lighting-table-scroll th[scope=row]{white-space:nowrap}
+.lighting-sync-status{padding:.75rem 1rem;border-left:3px solid var(--accent);background:color-mix(in srgb,var(--paper,#f5f2ea) 80%,white);font-size:.875rem;line-height:1.55;overflow-wrap:anywhere}
+.lighting-sync-status p{font-size:.875rem;margin:.25rem 0}
+.lighting-version-details{font-size:.875rem;margin:.5rem 0}
+.lighting-version-details summary{cursor:pointer;min-height:2.75rem;align-content:center}
+.lighting-diagram{margin:2.5rem 0;padding-top:1.5rem;border-top:1px solid var(--line);scroll-margin-top:var(--header-height,14rem)}
+.lighting-diagram h2{font:400 clamp(1.6rem,3vw,2.2rem)/1.2 Georgia,serif}
+.lighting-diagram p,.lighting-diagram figcaption{font-size:1rem;line-height:1.65}
+.lighting-diagram figure{margin:1.25rem 0}
+.lighting-diagram figure a{display:block}
+.lighting-diagram img{display:block;width:100%;height:auto;max-width:100%;border:1px solid var(--line);background:white}
+.lighting-diagram figcaption{margin-top:.75rem;color:var(--muted)}
+.lighting-diagram-links{display:flex;gap:1rem;align-items:center;flex-wrap:wrap}
+.lighting-diagram-links a{display:inline-flex;min-height:2.75rem;align-items:center}
+@media(max-width:720px){.lighting-guides{margin:2rem 0}.lighting-document-grid{grid-template-columns:minmax(0,1fr)}}

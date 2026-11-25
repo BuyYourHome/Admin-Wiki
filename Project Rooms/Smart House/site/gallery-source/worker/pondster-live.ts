@@ -10,6 +10,8 @@ import { explicitGalleryVoiceAction } from '../lib/pondster-gallery';
 import { explicitEquipmentVoiceAction } from '../lib/pondster-equipment-navigation';
 import { PONDSTER_CLIENT_REVISION } from '../lib/pondster-live-protocol';
 import {actionResultSpeech} from '../lib/pondster-gallery-result';
+import { readLightingSnapshot } from './lighting-source';
+import type { LightingSnapshot } from '../lib/lighting-source-model';
 export const VOICE_COOKIE = 'pondster_voice_visitor';
 export const VOICE_SETUP_MS = 20_000;
 export const VOICE_FINALIZATION_MS = 10_000;
@@ -42,7 +44,9 @@ type ControllerOptions = {
   visitorKey: string;
   createSession: (sdp: string, signal: AbortSignal, requestId: string) => Promise<{ id: string; sdp: string }>;
   attach: (id: string, signal: AbortSignal) => Promise<Socket>;
-  answer: (question: string) => PublicAnswer;
+  answer: (question: string) => PublicAnswer | Promise<PublicAnswer>;
+  lighting?: LightingSnapshot;
+  refreshLighting?: () => Promise<LightingSnapshot>;
   greetingInstructions?: () => string | null;
   history?:ReturnType<typeof naturalConversationRecorder>;
   now?: () => number;
@@ -178,6 +182,10 @@ export function createPondsterLiveControl(options: ControllerOptions) {
   const setTimer = options.setTimer ?? setTimeout;
   const clearTimer = options.clearTimer ?? clearTimeout;
   const track = options.track ?? ((task: Promise<unknown>) => { void task.catch(() => {}); });
+  async function currentAnswer(question: string): Promise<PublicAnswer> {
+    if (options.refreshLighting) options.lighting = await options.refreshLighting();
+    return options.answer(question);
+  }
   const timers = new Set<ReturnType<typeof setTimeout>>();
   const later = (callback: () => void, milliseconds: number) => {
     const timer = setTimer(() => { timers.delete(timer); callback(); }, milliseconds);
@@ -229,7 +237,8 @@ export function createPondsterLiveControl(options: ControllerOptions) {
   }
   async function deliver(question: string, delegationId: string | null) {
     if (closing || !ready || !sideband) return;
-    const reply = options.answer(question);
+    const reply = await currentAnswer(question);
+    if (closing || !ready || !sideband) return;
     // A reply to the first-name question can match a public contact (Wes,
     // Jean, Ashley). The bounded name parser excludes actual UI commands.
     const nameReply=await options.history?.name(question);
@@ -293,7 +302,7 @@ export function createPondsterLiveControl(options: ControllerOptions) {
         const unconsumed=fragments.filter(item=>item.end>consumedTranscriptEnd).sort((a,b)=>a.start-b.start);
         let first=0;for(let index=1;index<unconsumed.length;index++)if(unconsumed[index].start-unconsumed[index-1].end>700)first=index;
         const selected=unconsumed.slice(first),question=selected.map(item=>item.text).join('').trim();
-        if(!question)return;const requested=options.answer(question).action,equipment=explicitEquipmentVoiceAction(question,requested);if(!explicitGalleryVoiceAction(question,requested)&&!equipment&&!parsePondsterDestination(requested)?.control)return;
+        if(!question)return;const requested=(await currentAnswer(question)).action;if(closing)return;const equipment=explicitEquipmentVoiceAction(question,requested,options.lighting);if(!explicitGalleryVoiceAction(question,requested)&&!equipment&&!parsePondsterDestination(requested)?.control)return;
         consumedTranscriptEnd=Math.max(consumedTranscriptEnd,...selected.map(item=>item.end));
         lastDirectGalleryEnd=consumedTranscriptEnd;directGalleryCount++;
         lastDirectEquipmentEnd=equipment?consumedTranscriptEnd:-1;
@@ -453,7 +462,7 @@ export function createPondsterLiveControl(options: ControllerOptions) {
 }
 
 export async function handlePondsterLiveControl(request: Request, env: VoiceEnvironment,
-  ctx: { waitUntil: (task: Promise<unknown>) => void }, buildSession: (visitor?:PondsterVisitor) => unknown, answer: (question: string) => PublicAnswer) {
+  ctx: { waitUntil: (task: Promise<unknown>) => void }, buildSession: (visitor?:PondsterVisitor, lighting?:LightingSnapshot) => unknown, answer: (question: string, lighting?:LightingSnapshot) => PublicAnswer) {
   const reject = (message: string, status: number) => new Response(JSON.stringify({ error: message }), { status, headers: { 'Content-Type': 'application/json', 'Cache-Control': 'no-store' } });
   if (request.method !== 'GET') return reject('I need a WebSocket connection for live voice.', 405);
   if (request.headers.get('origin') !== new URL(request.url).origin) return reject('I can only start voice from my website.', 403);
@@ -461,6 +470,9 @@ export async function handlePondsterLiveControl(request: Request, env: VoiceEnvi
   const visitor = voiceVisitor(request);
   if (!visitor) return reject('Please refresh my voice controls before starting.', 409);
   if (!voiceIsAvailable(env)) return reject('My live voice connection isn’t available yet.', 503);
+  let lightingSnapshot: LightingSnapshot;
+  try { lightingSnapshot = await readLightingSnapshot(env); }
+  catch { return reject('I can’t load my current house reference right now. Please try again later.', 503); }
   let profile:Awaited<ReturnType<typeof visitorProfile>>;
   try{profile=await visitorProfile(request,env.DB!);}catch{return reject('I can’t check my text-saving preferences right now. Please try again later.',503);}
   const visitorKey = await hashVoiceVisitor(visitor, env.OPENAI_API_KEY!);
@@ -470,13 +482,14 @@ export async function handlePondsterLiveControl(request: Request, env: VoiceEnvi
   const history=profile?.saving_enabled===1?naturalConversationRecorder(env.DB!,profile,message=>safeSend(server,{type:'pondster.recording',message})):undefined;
   let startupGreeting: string | null = null;
   const control = createPondsterLiveControl({
-    client: server, store: d1VoiceStore(env.DB!), visitorKey, answer, track: task => ctx.waitUntil(task),
+    client: server, store: d1VoiceStore(env.DB!), visitorKey, answer: question => answer(question, lightingSnapshot), lighting: lightingSnapshot,
+    refreshLighting: async () => { lightingSnapshot = await readLightingSnapshot(env); return lightingSnapshot; }, track: task => ctx.waitUntil(task),
     greetingInstructions: () => startupGreeting,
     history,
     async createSession(sdp, signal, clientRequestId) {
       let response: Response;
       try {
-        const session = buildSession(history?.visitor??{choice:'private',firstName:null,returning:false});
+        const session = buildSession(history?.visitor??{choice:'private',firstName:null,returning:false}, lightingSnapshot);
         startupGreeting = greetingFromSession(session);
         response = await fetch('https://api.openai.com/v1/live/sessions', {
         method: 'POST', headers: { Authorization: `Bearer ${env.OPENAI_API_KEY!.trim()}`, 'Content-Type': 'application/json', 'X-Client-Request-Id': clientRequestId },
