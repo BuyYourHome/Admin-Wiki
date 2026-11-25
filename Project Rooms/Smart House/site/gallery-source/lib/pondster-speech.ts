@@ -4,6 +4,7 @@ import { galleries } from './designs';
 import { floorPlanRooms } from './floor-plan';
 import { floorPlanCameras } from './floor-plan-cameras';
 import { PONDSTER_LOCATION_TEXT } from './pondster-identity';
+import { permitPortal, permitReferences } from './permits';
 
 function words(input:string) { return input.toLowerCase().replace(/[^a-z0-9]+/g,' ').trim(); }
 
@@ -41,6 +42,10 @@ export function getPondsterSpeechText(question:string, reply:GuideReply):string 
   }
   if(action.menu==='View')return action.tour?'Let’s take my virtual tour.':section==='ashley'?'Meet Ashley, my realtor.':section==='viewing'?'Here’s my viewing information.':section==='notebook'?'Here’s my visual notebook.':'Here’s my View page.';
   if(action.menu==='Own') {
+    if(section==='permits')return 'Here are my permits and inspection records in Belong.';
+    if(section===permitPortal.section)return 'Here’s my Cary permit-search link in Belong.';
+    const permit=permitReferences.find(item=>item.section===section);
+    if(permit)return `Here’s my saved ${permit.title.toLowerCase()} reference in Belong.`;
     if(section==='lighting-diagram')return 'Here’s my example control diagram in Belong.';
     if(section==='led-strip-diagram')return 'Here’s my supplied LED-strip control example in Belong.';
     if(section==='lighting-schedule')return 'Here’s my lighting circuit schedule in Belong.';

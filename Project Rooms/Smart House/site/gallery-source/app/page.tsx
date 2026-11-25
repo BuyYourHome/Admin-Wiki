@@ -15,6 +15,7 @@ import EquipmentManuals from './equipment-manuals';
 import LightingControls from './lighting-controls';
 import LightingDiagram from './lighting-diagram';
 import LedStripDiagram from './led-strip-diagram';
+import Permits from './permits';
 import PondsterLogoArt from './pondster-logo-art';
 import GalleryImageViewer from './gallery-image-viewer';
 import DesignCardImages from './design-card-images';
@@ -250,7 +251,8 @@ export default function Home() {
       {menu==='Built By' && <BuiltByPage/>}
       {menu==='Own' && <section className="secondary-page manage">
         <h1 className="single-line-page-title">I come <em>with answers.</em></h1>
-        <p className="lead">I keep my lighting schedule, Shelly review, separate LED-strip and AC control examples, equipment guides and deck structural drawing here. Ask me to show you the reference you need.</p>
+        <p className="lead">I keep my permits, inspection records, lighting schedule, Shelly review, separate LED-strip and AC control examples, equipment guides and deck structural drawing here. Ask me to show you the reference you need.</p>
+        <Permits/>
         <article id="pondster-own-drawing" className="manage-notice" aria-labelledby="deck-structural-heading">
           <h2 id="deck-structural-heading">My preliminary deck structural drawing</h2>
           <p>I’m sharing my deck’s preliminary structural design reference. The drawing is marked <strong>PRELIMINARY / NOT FOR PERMIT</strong> and remains a design reference for review.</p>

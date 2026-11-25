@@ -8,6 +8,7 @@ import { galleryVoiceCommand } from './pondster-gallery';
 import {spokenSiteControl} from './pondster-control-intent';
 import { equipmentManuals } from './equipment';
 import { answerLightingReference } from './pondster-lighting-guide';
+import { answerPermitReference } from './permits';
 import type { LightingSnapshot } from './lighting-source-model';
 export type GuideAction = PondsterDestination;
 export type GuideReply = { text: string; action?: GuideAction };
@@ -90,6 +91,8 @@ export function answerPondster(input: string, lightingSnapshot?:LightingSnapshot
   if(image)return {text:image==='vote'?'I’ll submit the design picture you are viewing and check whether your vote is saved.':image==='enlarge'?'I’m enlarging the current picture.':image==='close'?'I’m returning to my gallery.':image==='first'?'Here’s my first gallery picture.':image==='next'?'Here’s my next gallery picture.':'Here’s my previous gallery picture.',action:{menu:'Design',image}};
   const control=spokenSiteControl(input);
   if(control)return {text:'I’ll use that website control and check the result.',action:{menu:'Design',control}};
+  const permit=answerPermitReference(input,words);
+  if(permit)return permit;
   const lighting=answerLightingReference(input,words,lightingSnapshot);
   if(lighting)return lighting;
   const publicCityQuestion = /\b(where|what part|which part|what area|are you|is pondster|is (?:the|this|your|my) (?:house|home|property))\b.{0,50}\b(cary|north carolina)\b/.test(words);

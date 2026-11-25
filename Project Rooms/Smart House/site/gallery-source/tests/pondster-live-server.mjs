@@ -940,6 +940,13 @@ for (const [index,[text,section]] of [
   ['Show the six switches diagram','lighting-diagram'],
   ['Show the generic LED strip diagram','led-strip-diagram'],
   ['Open the supplied 12V LED control PDF','led-strip-diagram'],
+  ['Show my permits','permits'],
+  ['Show my building permit','building-permit'],
+  ['Open my HVAC permit','hvac-permit'],
+  ['Show my HVAC required inspections','hvac-inspections'],
+  ['Show my erosion inspection status','erosion-inspection'],
+  ['Show my under-slab plumbing inspection status','under-slab-plumbing'],
+  ['Open the Cary permit portal','permit-portal'],
   ['Show LS-011','lighting-schedule'],
 ].entries()) {
   const f=fixture({answer:answerPondster});await f.control.message(start(950+index));

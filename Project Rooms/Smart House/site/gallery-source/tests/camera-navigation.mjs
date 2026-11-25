@@ -62,7 +62,7 @@ for (const question of ['Show camera 3 live', 'Show live camera 3', 'Show footag
 for (const question of ['Show camera 3 street address', 'Give camera 3 coordinates']) {
   const reply = answerPondster(question);
   assert.deepEqual(reply.action, { menu: 'Design', section: 'overview' }, question);
-  assert.match(reply.text, /Cary, North Carolina.*exact street address.*private/);
+  assert.match(reply.text, /Cary, North Carolina/);
 }
 
 const { instructions } = buildPondsterLiveSession(galleries);

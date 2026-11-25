@@ -17,3 +17,7 @@ Published source `caf9c11545d3771a8f43e021e4d3eee24eedb790`; saved version `appg
 Guide/context/speech and actual Browser handler checks, real in-memory SQLite natural-server tests, existing Contact/navigation checks, TypeScript, production build, diff check and 188-file secret-absence scan passed. Public in-app-browser inspection confirmed the Cary title, introduction and footer with Voice off. No microphone, paid voice session, vote or comment was submitted. Fresh spoken verification is distinct from these mocked and typed/UI checks.
 
 Later gallery-specific changes deliberately add a brief voting reminder to a gallery acknowledgment; see [[Project Rooms/Smart House/working/visitor-conversations-and-gallery-voice-20261028]].
+
+## Later public-record exception — November 25
+
+Wes explicitly authorized the five supplied permit/inspection PDFs to show their exact address and other record details publicly on Belong. Version 93 removes blanket address-private claims while keeping ordinary page/location text at Cary, North Carolina and preserving other private-record/device boundaries. This supersedes the address-withholding policy above only for the approved public records. See [[permits-card-20261125]] for sources, preparation, scope and publication evidence.

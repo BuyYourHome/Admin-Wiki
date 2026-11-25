@@ -42,7 +42,7 @@ for(const question of ['Read the camera manual information aloud','Read the Sony
 assert.equal(PONDSTER_CITY,'Cary, North Carolina');
 for(const question of ['Where are you?','What city are you in?','Which state are you in?','Are you in Cary?','Is this property in Cary, North Carolina?','What part of Cary are you in?','What is your exact street address?','Give me your coordinates']) {
  const reply=answerPondster(question);
- assert.match(reply.text,/Cary, North Carolina.*exact street address.*private/,question);
+ assert.match(reply.text,/Cary, North Carolina/,question);
  assert.deepEqual(reply.action,{menu:'Design',section:'overview'},question);
  assert.equal(getPondsterSpeechText(question,reply),PONDSTER_LOCATION_TEXT,question);
  assert.doesNotMatch(reply.text,/908|Pond Street|witness protection|latitude.*\d/i,question);
@@ -75,4 +75,4 @@ for(const file of ['app/page.tsx','app/layout.tsx','app/contact-page.tsx','app/b
  assert.doesNotMatch(copy,/witness protection|MY LOCATION IS CONFIDENTIAL|My location (?:is|remains) confidential/i,file);
  assert.match(copy,/pondster-identity/,file);
 }
-console.log('PASS: navigation before brief speech, full written guidance, explicit spoken-reading exception, public Cary/state with private exact address, and consistent public copy; no audio/network.');
+console.log('PASS: navigation before brief speech, full written guidance, explicit spoken-reading exception, city-only location copy and approved permit-reference exception, and consistent public copy; no audio/network.');

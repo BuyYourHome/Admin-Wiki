@@ -4,7 +4,7 @@ export const DESTINATION_SECTIONS = {
   Design: ['overview','gallery'],
   Explore: ['house','room','rooms','floor-plan','lighting','hot-water','presence','bath-and-shower','exterior-awareness','voice-feature','lighting-plans','sound-screens','climate','design-participation','owner-experience'],
   View: ['tour','ashley','viewing','notebook'],
-  Own: ['drawing','guides','maintenance','cameras','audio','handover','lighting-schedule','shelly-review','lighting-diagram','led-strip-diagram'],
+  Own: ['drawing','guides','maintenance','cameras','audio','handover','lighting-schedule','shelly-review','lighting-diagram','led-strip-diagram','permits','permit-portal','building-permit','hvac-permit','hvac-inspections','erosion-inspection','under-slab-plumbing'],
   Contact: ['gc','plumber','hvac','ashley','company','voice','trades'],
   'Built By': ['company','contact'],
 } as const;
