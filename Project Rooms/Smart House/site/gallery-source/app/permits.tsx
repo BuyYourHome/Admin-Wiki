@@ -1,9 +1,9 @@
 import { permitPortal, permitReferences, PERMIT_STATUS_NOTE } from '../lib/permits';
 import './permits.css';
+import BelongCard from './belong-card';
 
 export default function Permits() {
-  return <article id="pondster-own-permits" className="manage-notice permit-records" aria-labelledby="permits-heading">
-    <h2 id="permits-heading">My permits and inspections</h2>
+  return <BelongCard id="pondster-own-permits" className="permit-records" title="My permits and inspections" headingId="permits-heading">
     <p>{PERMIT_STATUS_NOTE}</p>
     <div id={`pondster-own-${permitPortal.section}`} className="permit-reference">
       <h3>My Cary permit portal</h3>
@@ -17,5 +17,5 @@ export default function Permits() {
         <a className="solid-link" href={reference.pdf} target="_blank" rel="noopener noreferrer" aria-label={`View my ${reference.title.toLowerCase()} PDF (opens in a new tab)`}>View my {reference.title.toLowerCase()} (PDF)</a>
       </li>)}
     </ul>
-  </article>;
+  </BelongCard>;
 }

@@ -1,0 +1,24 @@
+.manage>.belong-card{margin:0;border:1px solid var(--line);border-bottom:0}
+.manage>.belong-card:last-of-type{border-bottom:1px solid var(--line)}
+.belong-card{min-width:0;scroll-margin-top:var(--header-height,14rem)}
+.belong-card>summary{display:block;list-style:none;cursor:pointer;padding:.85rem 1.15rem;min-height:3.25rem;background:var(--white)}
+.belong-card>summary::-webkit-details-marker{display:none}
+.belong-card>summary::marker{content:''}
+.belong-card>summary>h2,.belong-card>summary>h3{display:flex;align-items:center;justify-content:space-between;gap:1rem;margin:0;font:400 1.2rem/1.3 Georgia,serif;color:var(--ink)}
+.belong-card>summary>h2::after,.belong-card>summary>h3::after{content:'';flex:0 0 .5rem;width:.5rem;height:.5rem;border-right:2px solid var(--accent);border-bottom:2px solid var(--accent);transform:rotate(45deg);margin:.1rem .25rem .35rem 0}
+.belong-card[open]>summary>h2::after,.belong-card[open]>summary>h3::after{transform:rotate(225deg);margin:.4rem .25rem 0 0}
+.belong-card>summary:hover{background:var(--soft)}
+.belong-card>summary:focus-visible{outline:3px solid var(--accent);outline-offset:-3px}
+.belong-card[open]>summary{border-bottom:1px solid var(--line)}
+.belong-card-body{padding:1.25rem;min-width:0}
+.belong-card-body>p:first-child{margin-top:0}
+.belong-card-body>.belong-card{border:1px solid var(--line);margin:1rem 0 0}
+.belong-card-body .knowledge-grid{margin-top:1.25rem}
+.manage .lead{max-width:70rem;margin:1rem 0 1.5rem}
+.manage.secondary-page{padding-top:2rem}
+.belong-card.lighting-guides,.belong-card.lighting-diagram,.belong-card.permit-records{padding:0;max-width:none}
+.belong-card-body .lighting-document-grid,.belong-card-body .equipment-card-list{display:block;margin:0}
+.belong-card-body .lighting-document-grid>.belong-card,.belong-card-body .equipment-card-list>.belong-card{border:1px solid var(--line);margin:1rem 0}
+.belong-card-body .lighting-document-grid>.belong-card:first-child,.belong-card-body .equipment-card-list>.belong-card:first-child{margin-top:1rem}
+.belong-card .permit-reference{margin-top:1rem}
+@media(max-width:720px){.belong-card>summary{padding:.85rem 1rem}.belong-card-body{padding:1rem}.manage.secondary-page{padding-top:1.5rem}}

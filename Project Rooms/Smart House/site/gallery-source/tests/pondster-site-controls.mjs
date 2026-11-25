@@ -16,9 +16,9 @@ class Node extends EventTarget{
  constructor(tag,attrs={},text=''){super();this.tagName=tag.toUpperCase();this.attrs=attrs;this.textContent=text;this.id=attrs.id??'';this.children=[];this.parent=null;this.clicks=0;this.visible=true;this.disabled=false;this.classList={contains:name=>(attrs.class??'').split(' ').includes(name)};}
  getAttribute(name){return this.attrs[name]??null;}hasAttribute(name){return name in this.attrs;}
  closest(){let n=this;while(n){if(n.attrs.hidden||n.attrs.inert||n.attrs['aria-hidden']==='true')return n;n=n.parent;}return null;}
- getClientRects(){return this.visible?[{}]:[];}focus(){this.focused=true;}scrollIntoView(){this.revealed=true;}
+ getClientRects(){if(!this.visible)return[];let child=this;for(let parent=this.parent;parent;child=parent,parent=parent.parent){if(parent.tagName==='DETAILS'&&!parent.open&&(child.tagName!=='SUMMARY'||parent.children.find(node=>node.tagName==='SUMMARY')!==child))return[];}return[{}];}focus(){this.focused=true;}scrollIntoView(){this.revealed=true;}
  querySelector(){return null;}querySelectorAll(selector){const all=this.children.flatMap(child=>[child,...child.querySelectorAll('*')]);if(selector==='*')return all;if(selector==='video')return all.filter(n=>n.tagName==='VIDEO');if(selector==='select')return all.filter(n=>n.tagName==='SELECT');if(selector==='dialog[open]')return all.filter(n=>n.tagName==='DIALOG'&&n.attrs.open);return all.filter(n=>['BUTTON','A','INPUT','SELECT','TEXTAREA','SUMMARY'].includes(n.tagName)||n.attrs.role);}
- click(){this.clicks++;if(this.type==='checkbox')this.checked=!this.checked;this.dispatchEvent(new Event('click'));}
+ click(){this.clicks++;if(this.type==='checkbox')this.checked=!this.checked;if(this.tagName==='SUMMARY'&&this.parent?.tagName==='DETAILS')this.parent.open=!this.parent.open;this.dispatchEvent(new Event('click'));}
  append(n){n.parent=this;n.ownerDocument=this.ownerDocument??this;this.children.push(n);return n;}
  scrollTo(value){this.scroll=value;}scrollBy(value){this.scroll=value;}
 }
@@ -31,6 +31,13 @@ globalThis.Element=Node;
 class Document extends Node{constructor(){super('document');this.ownerDocument=this;this.defaultView={Event,HTMLInputElement:Input,HTMLSelectElement:Select,HTMLTextAreaElement:Textarea,innerHeight:800,scrollBy:v=>this.scroll=v,scrollTo:v=>this.scroll=v};this.documentElement={scrollHeight:4000};}getElementById(id){return this.querySelectorAll('*').find(n=>n.id===id)??null;}}
 const doc=new Document(),next=doc.append(new Node('button',{'aria-label':'Next room'},'Next'));
 assert.equal((await activateSiteControl({kind:'activate',target:'Next room'},doc)).status,'activated');assert.equal(next.clicks,1);assert.equal(next.revealed,true);
+const equipmentCard=doc.append(new Node('details')),equipmentSummary=equipmentCard.append(new Node('summary',{},'My equipment guides'));
+const cameraCard=equipmentCard.append(new Node('details')),cameraSummary=cameraCard.append(new Node('summary',{},'My camera system guides'));
+assert.equal((await activateSiteControl({kind:'activate',target:'My camera system guides'},doc)).status,'not-found','A nested summary in a closed ancestor is not a currently visible control.');
+assert.equal(cameraSummary.clicks,0);
+assert.equal((await activateSiteControl({kind:'activate',target:'My equipment guides'},doc)).status,'activated');assert.equal(equipmentCard.open,true,'The generic voice control activates the real native summary toggle.');
+assert.equal((await activateSiteControl({kind:'activate',target:'My camera system guides'},doc)).status,'activated');assert.equal(cameraCard.open,true);
+assert.equal((await activateSiteControl({kind:'activate',target:'My equipment guides'},doc)).status,'activated');assert.equal(equipmentCard.open,false);assert.equal(cameraCard.open,true,'Closing the parent preserves the independently open nested card.');
 const hidden=doc.append(new Node('button',{'aria-hidden':'true'},'Delete private record'));
 assert.equal((await activateSiteControl({kind:'activate',target:'Delete private record'},doc)).status,'not-found');assert.equal(hidden.clicks,0);
 next.disabled=true;assert.equal((await activateSiteControl({kind:'activate',target:'Next room'},doc)).status,'unavailable');assert.equal(next.clicks,1);next.disabled=false;

@@ -13,6 +13,7 @@ import { equipmentManuals } from '../lib/equipment.ts';
 import { answerPondster } from '../lib/pondster-guide.ts';
 import { designImageSource } from '../lib/design-views.ts';
 import { getExploreFeatureDestination } from '../lib/explore-feature-destinations.ts';
+import { openTargetDisclosures } from '../lib/pondster-disclosures.ts';
 
 const source=await readFile(new URL('../app/page.tsx',import.meta.url),'utf8');
 const oversized={targetTop:580,targetBottom:1840,headerBottom:192,viewportHeight:710,scrollY:500};
@@ -97,8 +98,8 @@ const prefix='  useEffect(() => {';
 const effectStart=source.lastIndexOf(prefix,marker),effectEnd=source.indexOf('  },[menu,room,sectionReveal]);',marker);
 assert.ok(marker>=0 && effectStart>=0 && effectEnd>marker);
 const effect=stripTypeScriptTypes('function revealEffect(){'+source.slice(effectStart+prefix.length,effectEnd)+'\n}');
-const runEffect=new Function('sectionReveal','pendingSectionReveal','menu','room','getPondsterDestinationId','requestAnimationFrame','cancelAnimationFrame','document','floorPlanDetails','galleryHeading','stickyHeader','window','getGalleryScrollTop','getSectionRevealTop','setSectionReveal',effect+'\nreturn revealEffect();');
-function revealHarness(destination={menu:'Contact',section:'gc'},{reduce=false,visible=false,details=false,planReady=true}={}){
+const runEffect=new Function('sectionReveal','pendingSectionReveal','menu','room','getPondsterDestinationId','requestAnimationFrame','cancelAnimationFrame','document','floorPlanDetails','galleryHeading','stickyHeader','window','getGalleryScrollTop','getSectionRevealTop','setSectionReveal','openTargetDisclosures',effect+'\nreturn revealEffect();');
+function revealHarness(destination={menu:'Contact',section:'gc'},{reduce=false,visible=false,details=false,planReady=true,ancestorCount=0}={}){
   const request={id:1,destination},pending={current:request},jobs=new Map(),scrolls=[],finished=[],reads=[];
   let next=0,focusCalls=0,clickCalls=0;
   const metrics={top:visible?300:900,bottom:visible?600:1200,header:200,scrollY:500,height:844};
@@ -106,16 +107,40 @@ function revealHarness(destination={menu:'Contact',section:'gc'},{reduce=false,v
   const target={tagName:details?'DETAILS':'SECTION',open:false,dataset:{pondsterRoom:planReady?(selectedPlan?.id??`gallery-${destination.room}`):'stale-room',pondsterGallery:planReady?(selectedPlan?.galleryId??destination.room):'stale-gallery'},
     getClientRects:()=>[{}],getBoundingClientRect:()=>{reads.push('target');return{top:metrics.top,bottom:metrics.bottom,height:metrics.bottom-metrics.top};},
     querySelectorAll:()=>[],focus(){focusCalls++;},click(){clickCalls++;}};
+  const ancestors=[];let parent=target;
+  for(let index=0;index<ancestorCount;index++){const next={tagName:'DETAILS',open:false,parentElement:null};parent.parentElement=next;ancestors.push(next);parent=next;}
+  const originalRects=target.getClientRects,originalBounds=target.getBoundingClientRect;
+  target.getClientRects=()=>{assert.ok(ancestors.every(item=>item.open),'All hidden ancestors must open before visibility is checked.');return originalRects();};
+  target.getBoundingClientRect=()=>{assert.ok(ancestors.every(item=>item.open),'All hidden ancestors must open before geometry is measured.');return originalBounds();};
   const outer={...target,getBoundingClientRect(){throw new Error('An Explore room request must reveal its selected detail, not the outer plan or a removed room card.');}};
   const document={getElementById(id){assert.equal(id,getPondsterDestinationId(pending.current?.destination??destination),'Only the fixed shared-mapper ID is looked up.');return destination.menu==='Explore'&&destination.room?outer:target;}};
   const window={get innerHeight(){return metrics.height;},get scrollY(){return metrics.scrollY;},
     matchMedia(query){assert.equal(query,'(prefers-reduced-motion: reduce)');return{matches:reduce};},scrollTo:value=>scrolls.push(value)};
   const run=(current=request,menu=destination.menu,room=destination.room??'media-center')=>runEffect(current,pending,menu,room,getPondsterDestinationId,
     fn=>{const id=++next;jobs.set(id,fn);return id;},id=>jobs.delete(id),document,{current:target},{current:target},
-    {current:{getBoundingClientRect:()=>({bottom:metrics.header})}},window,getGalleryScrollTop,getSectionRevealTop,value=>finished.push(value));
+    {current:{getBoundingClientRect:()=>({bottom:metrics.header})}},window,getGalleryScrollTop,getSectionRevealTop,value=>finished.push(value),openTargetDisclosures);
   const flush=()=>{for(const[id,fn]of[...jobs]){jobs.delete(id);fn();}};
   const drain=()=>{let count=0;while(jobs.size){assert.ok(++count<=8,'Readiness retries stay bounded.');flush();}return count;};
-  return{request,pending,jobs,scrolls,finished,metrics,target,reads,run,flush,drain,focusCalls:()=>focusCalls,clickCalls:()=>clickCalls};
+  return{request,pending,jobs,scrolls,finished,metrics,target,ancestors,reads,run,flush,drain,focusCalls:()=>focusCalls,clickCalls:()=>clickCalls};
+}
+{
+  for(const destination of [{menu:'Own',section:'building-permit'},{menu:'Own',section:'cameras'},{menu:'Own',section:'lighting-schedule'}]){
+    const h=revealHarness(destination,{details:destination.section!=='building-permit',ancestorCount:2});
+    h.run();h.flush();assert.ok(h.ancestors.every(item=>item.open));
+    if(h.target.tagName==='DETAILS')assert.equal(h.target.open,true);
+    assert.deepEqual(h.reads,[],'The opening frame performs no layout measurement.');
+    assert.deepEqual(h.scrolls,[],'Scrolling waits for expanded layout.');
+    h.flush();assert.equal(h.scrolls.length,1,'Nested public targets are revealed on the next animation frame.');
+    assert.equal(h.focusCalls(),0);assert.equal(h.clickCalls(),0);
+  }
+  const h=revealHarness({menu:'Own',section:'shelly-review'},{details:true,ancestorCount:1});
+  h.ancestors[0].open=true;h.run();h.drain();assert.equal(h.ancestors[0].open,true,'Already open ancestors remain open.');
+  const schedule=revealHarness({menu:'Own',section:'lighting-schedule'},{details:true,ancestorCount:1});
+  const ordinary={open:false},strips={open:false},other={open:false};
+  schedule.target.querySelectorAll=selector=>{assert.equal(selector,'details[data-pondster-open-with-target]');return[ordinary,strips];};
+  schedule.run();schedule.flush();assert.equal(ordinary.open,true);assert.equal(strips.open,true);assert.equal(other.open,false);
+  assert.deepEqual(schedule.reads,[],'Manually closed source tables expand before the explicit schedule reveal measures layout.');
+  schedule.flush();assert.equal(schedule.scrolls.length,1);
 }
 {
   const h=revealHarness();h.run();h.metrics.header=245;h.drain();
@@ -184,7 +209,7 @@ assert.ok(source.includes('id={`pondster-own-${section}`}'));
 assert.match(source,/import EquipmentManuals from '.\/equipment-manuals'/);
 assert.match(source,/<EquipmentManuals\s*\/>/,'Belong mounts the component that owns its equipment destinations.');
 assert.match(files['equipment-manuals'],/id="pondster-own-maintenance"/);
-assert.match(files['equipment-manuals'],/equipmentManuals.map\(equipment => <article/);
+assert.match(files['equipment-manuals'],/equipmentManuals.map\(equipment => <BelongCard/);
 assert.ok(files['equipment-manuals'].includes('id={`pondster-own-${equipment.id}`}'));
 for(const equipment of equipmentManuals){
   assert.ok(DESTINATION_SECTIONS.Own.includes(equipment.id),'Each generated equipment card is an allowed Own destination.');

@@ -4,6 +4,7 @@ import type { LightingGroup, LightingSnapshot } from '../lib/lighting-source-mod
 import { lightingSourceStatus, refreshLightingSource, type LightingSourceState } from '../lib/lighting-source-client';
 import { useLightingSource } from './use-lighting-source';
 import './lighting-controls.css';
+import BelongCard from './belong-card';
 
 function count(value:number|null){return value===null?'Unresolved':String(value);}
 function subtotal(groups:LightingGroup[],field:'smartDeviceQty'|'additionalRelayQty'|'loadControllerQty'|'inputModuleQty'|'manualRemoteQty'){
@@ -21,8 +22,8 @@ export function LightingControlsView({source,onRefresh}:{source:LightingSourceSt
       <tbody>{groups.map(group=><tr key={group.id}><th scope="row">{group.id}</th><td>{group.room}<br/><span className="lighting-document-date">{group.loadType}</span></td><td>{count(group.quantity)}</td><td>{count(group.manualSwitches)}</td><td>{count(group.loadControllerQty)}<br/><span className="lighting-document-date">{group.loadControllerModel??(group.loadControllerQty===0?'Not required':'Model unresolved')}</span></td><td>{count(group.manualRemoteQty)}</td><td>{count(group.inputModuleQty)}<br/><span className="lighting-document-date">{group.inputModuleModel??(group.inputModuleQty===0?'Not required':'Model unresolved')}</span></td><td>{count(group.smartDeviceQty)}<br/><span className="lighting-document-date">{group.smartDeviceModel??(group.smartDeviceQty===0?'Not required':'Model unresolved')}</span></td><td>{count(group.additionalRelayQty)}<br/><span className="lighting-document-date">{group.additionalRelayModel??(group.additionalRelayQty===0?'None additional':'Model unresolved')}</span></td><td>{count(group.pwmOutputQty)}</td><td>{group.pwmOutputPlan??(group.pwmOutputQty===0?'Not applicable':'Allocation unresolved')}</td></tr>)}</tbody>
     </table>
   </div>;}
-  return <section className="lighting-guides" aria-labelledby="lighting-controls-heading" data-lighting-revision={snapshot.revision}>
-    <h2 id="lighting-controls-heading">My lighting and smart controls</h2>
+  return <BelongCard className="lighting-guides" title="My lighting and smart controls" headingId="lighting-controls-heading">
+    <div data-lighting-revision={snapshot.revision}>
     <p>I keep my public lighting schedule and Shelly review here. They follow my source workbook, with room assignments and equipment still to confirm.</p>
     <div className="lighting-sync-status" role="status" aria-live="polite">
       <p>{lightingSourceStatus(source)}</p>
@@ -32,18 +33,16 @@ export function LightingControlsView({source,onRefresh}:{source:LightingSourceSt
       {onRefresh&&<button type="button" className="text-link" disabled={source.checking} onClick={onRefresh}>Check for lighting updates</button>}
     </div>
     <div className="knowledge-grid lighting-document-grid">
-      <article id="pondster-own-lighting-schedule" aria-labelledby="lighting-schedule-heading">
-        <h3 id="lighting-schedule-heading">My circuit schedule</h3>
+      <BelongCard id="pondster-own-lighting-schedule" title="My circuit schedule" headingId="lighting-schedule-heading" level={3}>
         <p>I have {t.ordinaryGroups} ordinary lighting groups and {t.stripZones} strip-lighting zones in this public schedule. Lighting-group IDs describe separate controls; they are not my breaker numbers.</p>
         {recessed&&<p><strong>{recessed.id}:</strong> {recessed.room}; {count(recessed.quantity)} fixture positions, {count(recessed.smartDeviceQty)} total smart devices and {count(recessed.additionalRelayQty)} additional load relays. {perimeter&&<><strong>{perimeter.id}</strong> is the separate strip group.</>}</p>}
         <p>My <strong>Circuit schedule</strong> extract separates load controllers, ordinary manual controls, input devices or wall stations, and additional load relays. The output allocation counts PWM channels separately from controllers. Input devices count as smart devices, not load relays.</p>
         <p><a className="solid-link" href={lightingDocuments.schedule} download="pondster-lighting-public-extract.xlsx">Download my public schedule extract (Excel)</a></p>
-        <details className="lighting-zone-details" open><summary>My ordinary lighting groups ({ordinary.length})</summary>{groupTable(ordinary,'Ordinary lighting groups')}</details>
-        <details className="lighting-zone-details" open><summary>My LED-strip zones ({strips.length})</summary>{groupTable(strips,'LED-strip zones')}</details>
+        <details className="lighting-zone-details" data-pondster-open-with-target open><summary>My ordinary lighting groups ({ordinary.length})</summary>{groupTable(ordinary,'Ordinary lighting groups')}</details>
+        <details className="lighting-zone-details" data-pondster-open-with-target open><summary>My LED-strip zones ({strips.length})</summary>{groupTable(strips,'LED-strip zones')}</details>
         {snapshot.groups.some(group=>group.kind==='other')&&<details className="lighting-zone-details"><summary>Other loads still under review</summary>{groupTable(snapshot.groups.filter(group=>group.kind==='other'),'Other loads and unresolved assignments')}</details>}
-      </article>
-      <article id="pondster-own-shelly-review" aria-labelledby="shelly-review-heading">
-        <h3 id="shelly-review-heading">My Shelly controls review</h3>
+      </BelongCard>
+      <BelongCard id="pondster-own-shelly-review" title="My Shelly controls review" headingId="shelly-review-heading" level={3}>
         <p>A suitable smart load controller may already perform the relay function. I count its integral relay as part of that device, rather than buying it twice.</p>
         <p>Ordinary lighting: <strong>{subtotal(ordinary,'smartDeviceQty')} total smart devices; {subtotal(ordinary,'additionalRelayQty')} additional load relays</strong>. The proposed roles are {subtotal(ordinary,'loadControllerQty')} load controllers and {subtotal(ordinary,'inputModuleQty')} input modules.</p>
         <p>My strip-light proposal records {subtotal(strips,'loadControllerQty')} load controllers, {subtotal(strips,'inputModuleQty')} input devices or wall stations and {subtotal(strips,'additionalRelayQty')} additional load relays. A Pro with a BLU station has separate Bluetooth and wired manual control paths into the same controller. Both controls must coordinate every assigned PWM output.</p>
@@ -51,10 +50,11 @@ export function LightingControlsView({source,onRefresh}:{source:LightingSourceSt
         <p>The generic LED allocations assume single-color, single-channel constant-voltage strips at the source-stated voltage. Actual strip type and physical runs still need confirmation before using these channel allocations.</p>
         <p>Across all listed loads, {t.unresolvedSmartDeviceGroups} groups have an unresolved smart-device quantity and {t.unresolvedAdditionalRelayGroups} have an unresolved additional-relay quantity. These are required source quantities before any stock deductions.</p>
         <p><a className="solid-link" href={lightingDocuments.review} target="_blank" rel="noopener noreferrer">Read my current Shelly review</a></p>
-      </article>
+      </BelongCard>
     </div>
     <p>These are source planning requirements before any stock deductions, not confirmation of installed equipment or completed purchases. Room coverage, wiring and fixture compatibility still need review. The public extract is read-only and does not operate my lights or breakers.</p>
-  </section>;
+    </div>
+  </BelongCard>;
 }
 
 export default function LightingControls({snapshot}:{snapshot?:LightingSnapshot}={}){

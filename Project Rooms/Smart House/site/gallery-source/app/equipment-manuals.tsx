@@ -1,16 +1,17 @@
 import { equipmentManuals } from '../lib/equipment';
+import BelongCard from './belong-card';
 
 export default function EquipmentManuals() {
-  return <section id="pondster-own-maintenance" className="equipment-guides" aria-labelledby="pondster-equipment-guides-heading">
-    <h2 id="pondster-equipment-guides-heading">My equipment guides</h2>
+  return <BelongCard id="pondster-own-maintenance" className="equipment-guides" title="My equipment guides" headingId="pondster-equipment-guides-heading">
     <p className="manage-notice">I’m sharing manufacturer guides for my selected equipment. I still need to confirm installation, connections and setup; these links do not give visitors access to my cameras or control of my receiver.</p>
-    <div className="knowledge-grid">
-      {equipmentManuals.map(equipment => <article
+    <div className="equipment-card-list">
+      {equipmentManuals.map(equipment => <BelongCard
         key={equipment.id}
         id={`pondster-own-${equipment.id}`}
-        aria-labelledby={`pondster-own-${equipment.id}-heading`}
+        title={equipment.title}
+        headingId={`pondster-own-${equipment.id}-heading`}
+        level={3}
       >
-        <h3 id={`pondster-own-${equipment.id}-heading`}>{equipment.title}</h3>
         <p><strong>{equipment.model}</strong></p>
         <p>{equipment.summary}</p>
         <p>{equipment.status}</p>
@@ -33,7 +34,7 @@ export default function EquipmentManuals() {
           rel="noopener noreferrer"
           aria-label={`${equipment.model} manufacturer product page (opens in a new tab)`}
         >Manufacturer product page <span aria-hidden="true">↗</span></a>
-      </article>)}
+      </BelongCard>)}
     </div>
-  </section>;
+  </BelongCard>;
 }

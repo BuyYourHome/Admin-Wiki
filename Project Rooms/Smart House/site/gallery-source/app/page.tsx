@@ -16,6 +16,8 @@ import LightingControls from './lighting-controls';
 import LightingDiagram from './lighting-diagram';
 import LedStripDiagram from './led-strip-diagram';
 import Permits from './permits';
+import BelongCard from './belong-card';
+import { openTargetDisclosures } from '../lib/pondster-disclosures';
 import PondsterLogoArt from './pondster-logo-art';
 import GalleryImageViewer from './gallery-image-viewer';
 import DesignCardImages from './design-card-images';
@@ -117,10 +119,9 @@ export default function Home() {
         const selectedRoom=destination.section==='floor-plan'?target?.dataset.pondsterRoom:target?.dataset.pondsterGallery;
         if(selectedRoom!==destination.room){frame=requestAnimationFrame(reveal);return;}
       }
-      if(!target || !target.getClientRects().length || target.getBoundingClientRect().height<=0){frame=requestAnimationFrame(reveal);return;}
-      if(target.tagName==='DETAILS' && !(target as HTMLDetailsElement).open){
-        (target as HTMLDetailsElement).open=true;frame=requestAnimationFrame(reveal);return;
-      }
+      if(!target){frame=requestAnimationFrame(reveal);return;}
+      if(openTargetDisclosures(target)){frame=requestAnimationFrame(reveal);return;}
+      if(!target.getClientRects().length || target.getBoundingClientRect().height<=0){frame=requestAnimationFrame(reveal);return;}
       const isGallery=targetId==='design-gallery';
       const heading=isGallery?galleryHeading.current:target;
       if(!heading){finish();return;}
@@ -251,19 +252,18 @@ export default function Home() {
       {menu==='Built By' && <BuiltByPage/>}
       {menu==='Own' && <section className="secondary-page manage">
         <h1 className="single-line-page-title">I come <em>with answers.</em></h1>
-        <p className="lead">I keep my permits, inspection records, lighting schedule, Shelly review, separate LED-strip and AC control examples, equipment guides and deck structural drawing here. Ask me to show you the reference you need.</p>
+        <p className="lead">Open a section below for my permits, plans and equipment guides, or ask me to show you what you need.</p>
         <Permits/>
-        <article id="pondster-own-drawing" className="manage-notice" aria-labelledby="deck-structural-heading">
-          <h2 id="deck-structural-heading">My preliminary deck structural drawing</h2>
+        <BelongCard id="pondster-own-drawing" title="My preliminary deck structural drawing" headingId="deck-structural-heading">
           <p>I’m sharing my deck’s preliminary structural design reference. The drawing is marked <strong>PRELIMINARY / NOT FOR PERMIT</strong> and remains a design reference for review.</p>
           <p><a className="solid-link" href="/documents/deck-structural-preliminary.pdf" target="_blank" rel="noopener noreferrer">View my drawing (PDF) ↗</a></p>
           <a href="/documents/deck-structural-preliminary.pdf" download="deck-structural-preliminary.pdf">Download my drawing (PDF)</a>
-        </article>
+        </BelongCard>
         <LightingControls/>
         <LedStripDiagram/>
         <LightingDiagram/>
         <EquipmentManuals/>
-        <div className="knowledge-grid">{[['guides','More home guides','I will add guides for my other systems as their equipment is confirmed.'],['handover','Owner handover','I will bring my records and account checklist together for my next chapter.']].map(([section,title,description])=><article id={`pondster-own-${section}`} key={section}><span className="pending-tag">PLANNED</span><h3>{title}</h3><p>{description}</p></article>)}</div>
+        {[['guides','More home guides','I will add guides for my other systems as their equipment is confirmed.'],['handover','Owner handover','I will bring my records and account checklist together for my next chapter.']].map(([section,title,description])=><BelongCard id={`pondster-own-${section}`} key={section} title={title} headingId={`pondster-own-${section}-heading`}><span className="pending-tag">PLANNED</span><p>{description}</p></BelongCard>)}
         <div className="manage-notice"><strong>My private owner tools aren’t ready yet.</strong><p>I’ll need separate, authenticated owner access before I can show private records or offer live controls. I’m not connected to my house systems through this public site.</p></div>
       </section>}
       <ContactPage active={menu==='Contact'} comments={menu==='Contact'?<Comments key={menu} page="contact" title="Contact" onAsk={openContact}/>:null}><PondsterGuide ref={guide} open={menu==='Contact'} onOpenChange={nextOpen=>{if(nextOpen)openContact();else if(menu==='Contact')navigate('View');}} onAction={guideAction} onReturnFocus={()=>logo.current?.focus()} onVoiceState={setVoiceSummary}/></ContactPage>
