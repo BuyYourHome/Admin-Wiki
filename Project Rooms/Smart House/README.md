@@ -27,6 +27,8 @@ On 2026-10-28 Wes supplied eufy S4 Max and Sony AN1000 packaging photos and reit
 
 ## Status And Ownership
 
+- Equipment names, version 91, November 25: parenthetical model qualifiers are removed from the Teams master and all derived public model labels. Counts, formulas, operating notes and circuit assignments are preserved. The separate generic LED example is awaiting Wes's own diagram after he cancelled Codex drawing; no new LED example was published or applied. See [[Project Rooms/Smart House/working/lighting-master-and-control-diagrams-20261125]].
+
 - Lighting source and diagrams, version 90, November 25: Belong now includes the revised four-light/six-location example and current per-group control diagrams for all 25 master groups. The Teams/SharePoint workbook owns formulas and separate load-controller, ordinary-remote, input-module and additional-load-relay assignments. A real owner import/readback and unchanged-source replay passed; public JSON, review and Excel extract match. Hourly cloud synchronization is enabled, with its first independent run still unverified. Two bathroom input counts and final hardware/load acceptance remain unresolved. See [[Project Rooms/Smart House/working/lighting-master-and-control-diagrams-20261125]].
 
 - Internal circuit inventory: [[Project Rooms/Smart House/working/electrical-circuit-labels]] preserves Wes's 30-number dictation and November 16 corrections, with confirmed identifications separate from tentative labels. It includes circuit 1's reported old-gray exposed wiring. This private working record is not published to Pondster; unknown loads, fans, breaker pole arrangements and ratings remain unverified.

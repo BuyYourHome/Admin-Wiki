@@ -62,6 +62,16 @@ Live proof: `C:\Users\wesbr\.codex\visualizations\2026\10\16\01a14585-ffe6-7850-
 
 ## Source and evidence references
 
+### Equipment-name cleanup and deferred LED example
+
+Wes subsequently requested concise equipment designations without parenthetical qualifiers such as “compatible dimmable load.” Keep operating conditions and rating notes separate from model names. Exactly 51 authoritative model cells were simplified: primary models O6:O30, input models R6:R30 and the stair supply-relay model L17. Fifty derived string caches followed the existing links. All 371 formulas, 465 numeric cached values, eight tabs, quantities, styles, row/column layout and separate control/rating notes were preserved; strict ArtifactTool reimport and visual checks passed.
+
+The cleaned master was hash-checked, backed up as `908-Pond-Electrical-Circuit-Schedule-before-label-cleanup-20261125.xlsx`, copied and read back. Current workbook SHA-256 is `f1df844e3bf0a17681c99ad0504d403cbc9437a21dc3468e8caf4e351f9bae8d` (44,713 bytes). Native SharePoint metadata remained stable across the extracted-text read; the real owner writer published revision `8a732026ee8580e6fe3ba58a8e61b27ef4f85a66adaaac767bcb0e25acd05390` at `2026-11-25T11:37:43.650Z`. Public JSON has no parenthetical model names and preserves all 25 groups, 30 known load controllers, 12 known input modules and one additional load relay.
+
+One independent report reference caption also dropped the word “candidate”; its separate functional/rating notes were retained. Source `568bd24df78adb24e6e6eef5370d784b80939eb0` was built and published as version 91, saved version `appgprj_6ad4d98e08708191858cab113814704e~appgver_60655f6e913c8191a024bb8ab1b19ef5`, deployment `appgdep_6b06c98ec0a881919118aac5a1a1290d`, succeeded `2026-11-25T11:42:23.404411+00:00`, environment revision 5. Archive hash: `sha256:7755d9380aae17990d18775824925f9826d9180046e6050016cefa7aa40d6426`. Focused model/server tests, supported build, exact-caption diff and public report/readback passed. The current report uses the same data revision as the API; its 25 diagrams remain.
+
+Wes also described a separate, generic LED-strip example with one Shelly wall dimmer, one ordinary manual switch and one LED controller, explicitly without revising any house group. He then cancelled Codex diagram creation: “forget the diagram. I will provide it.” No new LED example was published or applied to the workbook. Await Wes's supplied diagram; do not resume or substitute a generated draft. This cancellation does not undo the completed equipment-name cleanup or the previously published six-location example.
+
 - Earlier technical review: [[Project Rooms/Smart House/outputs/908-pond-shelly-controls-review-2026-11-24]].
 - Supplied revised PDF: `C:\Users\wesbr\Downloads\shelly-four-lights-six-controls.pdf`; SHA-256 `d425dce2998be4c32b5c1e66b69afeb26b28d3fd17b487be4831ee161753af40`.
 - Pre-expansion master SHA-256: `381a9c10702199e07a9f5e9f08d58e5c482bba337740aceaee3c95e70be4519d`.
