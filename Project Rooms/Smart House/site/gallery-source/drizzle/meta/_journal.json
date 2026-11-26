@@ -43,6 +43,13 @@
       "when": 1795599940695,
       "tag": "0005_open_the_hunter",
       "breakpoints": true
+    },
+    {
+      "idx": 6,
+      "version": "6",
+      "when": 1795651091012,
+      "tag": "0006_cuddly_siren",
+      "breakpoints": true
     }
   ]
 }

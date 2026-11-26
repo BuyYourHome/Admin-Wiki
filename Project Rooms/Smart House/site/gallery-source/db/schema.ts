@@ -48,7 +48,20 @@ export const pondsterVisitors = sqliteTable('pondster_visitors', {
 export const pondsterConversations = sqliteTable('pondster_conversations', {
   id:text('id').primaryKey(), visitorId:text('visitor_id').notNull(), mode:text('mode').notNull(),
   startedAt:integer('started_at').notNull(), endedAt:integer('ended_at'), expiresAt:integer('expires_at').notNull(),
+  rememberedFirstName:text('remembered_first_name'),
+  firstSelfReportedName:text('first_self_reported_name'), firstSelfReportedAt:integer('first_self_reported_at'),
 },table=>[index('pondster_conversations_visitor').on(table.visitorId,table.startedAt),index('pondster_conversations_expiry').on(table.expiresAt)]);
+// Self-reported names are private labels, never verified identities or owner authority.
+export const pondsterVisitorNameEvents = sqliteTable('pondster_visitor_name_events', {
+  id:text('id').primaryKey(), requestId:text('request_id').notNull(), visitorId:text('visitor_id').notNull(),
+  conversationId:text('conversation_id'), previousFirstName:text('previous_first_name'), firstName:text('first_name').notNull(),
+  source:text('source').notNull(), createdAt:integer('created_at').notNull(), expiresAt:integer('expires_at').notNull(),
+},table=>[
+  uniqueIndex('pondster_name_events_visitor_request').on(table.visitorId,table.requestId),
+  index('pondster_name_events_visitor_created').on(table.visitorId,table.createdAt),
+  index('pondster_name_events_conversation_created').on(table.conversationId,table.createdAt),
+  index('pondster_name_events_expiry').on(table.expiresAt),
+]);
 export const pondsterConversationEvents = sqliteTable('pondster_conversation_events', {
   conversationId:text('conversation_id').notNull(), eventId:text('event_id').notNull(),
   sequence:integer('sequence').notNull(), role:text('role').notNull(), text:text('text').notNull(),

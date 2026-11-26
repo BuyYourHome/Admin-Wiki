@@ -235,13 +235,13 @@ export function createPondsterLiveControl(options: ControllerOptions) {
     busy('response', true);
     sideband.send(JSON.stringify({ type: 'session.commentary.append', event_id: crypto.randomUUID(), delegation_id: delegationId, content }));
   }
-  async function deliver(question: string, delegationId: string | null) {
+  async function deliver(question: string, delegationId: string | null, nameRequestId?:string) {
     if (closing || !ready || !sideband) return;
     const reply = await currentAnswer(question);
     if (closing || !ready || !sideband) return;
     // A reply to the first-name question can match a public contact (Wes,
     // Jean, Ashley). The bounded name parser excludes actual UI commands.
-    const nameReply=await options.history?.name(question);
+    const nameReply=await options.history?.name(question,nameRequestId);
     if(closing||finished)return;
     if(nameReply){
       safeSend(options.client,{type:'pondster.visitor',visitor:options.history!.currentVisitor()});
@@ -325,7 +325,7 @@ export function createPondsterLiveControl(options: ControllerOptions) {
             .sort((a, b) => a.start - b.start);
           const question = selected.map(fragment => fragment.text).join('').trim().slice(-1500);
           if (question) {
-            const handled=await deliver(question,id);
+            const handled=await deliver(question,id,`natural:${requestId}:${Math.min(...selected.map(fragment=>fragment.start))}:${Math.max(...selected.map(fragment=>fragment.end))}`);
             if(handled&&selected.length)consumedTranscriptEnd=Math.max(consumedTranscriptEnd,...selected.map(fragment=>fragment.end));
           }
           else if(lastDirectEquipmentEnd===consumedTranscriptEnd&&lastDirectEquipmentEnd>=0&&fragments.every(item=>item.end<=consumedTranscriptEnd))appendCommentary('The same public equipment navigation was already requested for this utterance. Do not repeat the action. Continue briefly from the current public equipment card or library; do not claim a completed scroll.',id);
@@ -453,7 +453,7 @@ export function createPondsterLiveControl(options: ControllerOptions) {
     if (input.type === 'pondster.text' && ready && typeof input.text === 'string' && input.text.trim().length > 0 && input.text.length <= 1000) {
       if (textCount >= 20 || now() - lastTextAt < 2000) { error('Please give me a moment before your next question.'); return; }
       textCount++; lastTextAt = now();
-      try { await options.history?.text(input.text.trim());await deliver(input.text.trim(), null); } catch { error('I couldn’t answer that question.'); return stop(); }
+      try { await options.history?.text(input.text.trim());await deliver(input.text.trim(), null,`typed:${requestId}:${textCount}`); } catch { error('I couldn’t answer that question.'); return stop(); }
       return;
     }
     error('I couldn’t use that voice command. Please try my voice controls.'); return stop();

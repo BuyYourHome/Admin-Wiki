@@ -41,11 +41,13 @@ export type PondsterLiveVoiceOptions = {
 };
 export type PondsterLiveVoice = {
   start(): Promise<void>; stop(): void; dispose(): void;
+  currentConversationId(): string|null;
   sendText(text: string): void; noteInteraction(): void; resumeAudio(): Promise<void>;
 };
 type Caption = { text: string; lastEnd: number | null; timer: Timer | null };
 type Attempt = {
   id: number; stopped: boolean; started: boolean; finalized: boolean;
+  requestId:string|null;
   mic: MediaStream | null; peer: RTCPeerConnection | null;
   channel: RTCDataChannel | null; control: WebSocket | null;
   abort: AbortController; timers: Set<Timer>;
@@ -426,6 +428,7 @@ export function createPondsterLiveVoice(options: PondsterLiveVoiceOptions): Pond
       url.protocol = url.protocol === 'https:' ? 'wss:' : 'ws:';
       const socket = a.control = controlFactory(url.toString());
       const requestId = options.requestIdFactory?.() || globalThis.crypto.randomUUID();
+      a.requestId=requestId;
       const serverReady = new Promise<Record<string, unknown>>((resolve, reject) => {
         const timeout = timer(a, () => reject(new Error('timeout')), 20000);
         socket.onopen = () => {
@@ -497,7 +500,7 @@ export function createPondsterLiveVoice(options: PondsterLiveVoiceOptions): Pond
     if (visibility?.hidden) return Promise.reject(new Error('Open this tab before starting my live voice.'));
     let cancel!: () => void;
     const cancelled = new Promise<symbol>(resolve => { cancel = () => resolve(CANCELLED); });
-    const a: Attempt = { id: ++sequence, stopped: false, started: false, finalized: false,
+    const a: Attempt = { id: ++sequence, stopped: false, started: false, finalized: false, requestId:null,
       mic: null, peer: null, channel: null, control: null, abort: new AbortController(), timers: new Set(),
       cancelled, cancel, startPromise: Promise.resolve(), ready: () => {},
       captions: { you: { text: '', lastEnd: null, timer: null }, Pondster: { text: '', lastEnd: null, timer: null } },uiActionIds:new Set(),
@@ -514,6 +517,7 @@ export function createPondsterLiveVoice(options: PondsterLiveVoiceOptions): Pond
   options.onState({ ...state });
   return {
     start, stop,
+    currentConversationId(){const a=current;return a&&live(a)&&a.started&&a.startedSent&&state.active&&!state.connecting?a.requestId:null;},
     dispose() {
       if (disposed) return;
       stop(); disposed = true;

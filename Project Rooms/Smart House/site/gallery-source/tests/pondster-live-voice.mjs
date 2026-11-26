@@ -89,7 +89,7 @@ function control(url, log) {
   });
 }
 
-function setup({ mediaGate, fetchGate, remoteGate, status = { available: true }, iceComplete = true, playPlans = [], activitySamplerFactory, streamMeterFactory, onActionResult } = {}) {
+function setup({ mediaGate, fetchGate, remoteGate, status = { available: true }, iceComplete = true, playPlans = [], activitySamplerFactory, streamMeterFactory, onActionResult, requestIdFactory } = {}) {
   const clock = fakeClock(), log = [], tracks = [track()], media = stream([...tracks]);
   const peers = [], controls = [], states = [], transcripts = [], actions = [], requests = [];
   let mediaCalls = 0;
@@ -133,7 +133,7 @@ function setup({ mediaGate, fetchGate, remoteGate, status = { available: true },
     now: () => clock.now, activitySamplerFactory: activitySamplerFactory === undefined && !streamMeterFactory
       ? () => async () => ({ input: true, output: false }) : activitySamplerFactory, streamMeterFactory,
     origin: 'https://pondstr.com',
-    requestIdFactory: () => '11111111-1111-4111-8111-111111111111'
+    requestIdFactory: requestIdFactory??(() => '11111111-1111-4111-8111-111111111111')
   });
   return {
     voice, clock, log, tracks, media, peers, controls, states, transcripts, actions, requests, visibility, audio,
@@ -171,6 +171,19 @@ async function connect(harness, start = harness.voice.start(), maxDurationSecond
 }
 
 function startedAcks(socket) { return socket.sent.filter(message => message.type === 'pondster.started'); }
+
+// The private form can bind only a fully started, current natural conversation.
+{
+ let serial=0;const h=setup({requestIdFactory:()=>`00000000-0000-4000-8000-${String(++serial).padStart(12,'0')}`});
+ assert.equal(h.voice.currentConversationId(),null);
+ const starting=h.voice.start();await flush();assert.equal(h.voice.currentConversationId(),null,'A connecting attempt is not a name-association target.');
+ const old=await connect(h,starting);assert.equal(h.voice.currentConversationId(),'00000000-0000-4000-8000-000000000001');
+ h.voice.stop();assert.equal(h.voice.currentConversationId(),null,'Stop clears association immediately, before final closure.');
+ const next=h.voice.start();await flush();assert.equal(h.voice.currentConversationId(),null);
+ await connect(h,next);assert.equal(h.voice.currentConversationId(),'00000000-0000-4000-8000-000000000002');
+ old.events.receive({type:'session.started'});assert.equal(h.voice.currentConversationId(),'00000000-0000-4000-8000-000000000002','A stale callback cannot restore the previous ID.');
+ await dispose(h);assert.equal(h.voice.currentConversationId(),null,'Disposal exposes no conversation ID.');
+}
 
 async function dispose(harness) {
   harness.voice.dispose(); harness.clock.advance(10000); await flush();
