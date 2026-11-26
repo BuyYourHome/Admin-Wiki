@@ -1,4 +1,5 @@
 /** Owner-only queue; Outlook delivery and Sent Items verification happen outside this worker. */
+import {resolveConversationIdentity} from '../lib/pondster-conversation-identity';
 export const EMAIL_START_AFTER='2026-11-26T00:15:17.000Z';
 export const EMAIL_START_AFTER_MS=Date.parse(EMAIL_START_AFTER);
 export const CONVERSATION_EMAIL_SENDER='OfficeAssist@BuyYourHomeLLC.com';
@@ -29,7 +30,8 @@ function chunks(body:string){const parts:string[]=[];for(let start=0;start<body.
 async function pending(db:D1Database,now:number,limit:number,state?:string){const rows=await db.prepare(`SELECT * FROM pondster_conversation_emails WHERE expires_at>? AND ${state?'state=?':`state IN (${PENDING})`} ORDER BY created_at,id LIMIT ?`).bind(...(state?[now,state,limit]:[now,limit])).all<EmailRow>();return(rows.results??[]).map(metadata);}
 
 function render(conversation:Conversation,events:Transcript[],names:Array<{previous_first_name:string|null;first_name:string;source:string;created_at:number}>,updated:boolean){
-  const lines=[updated?'Pondster — updated full conversation transcript':'Pondster — conversation transcript',`Conversation: ${conversation.id}`,`Mode: ${conversation.mode}`,`Started (UTC): ${iso(conversation.started_at)}`,`Ended (UTC): ${iso(conversation.ended_at)}`,`Last captured text (UTC): ${iso(conversation.last_at)}`,`Remembered name at start (unconfirmed): ${conversation.remembered_first_name??'Not recorded'}`,`Name offered during this conversation (self-reported): ${conversation.first_self_reported_name??'Not provided'}`,'','Text transcript only; no audio.',''];
+  const identity=resolveConversationIdentity(conversation,events,names),basis=identity.basis==='assumed'?' (assumed from the uncorrected welcome-back greeting)':identity.basis==='explicit'?' (self-identified)':'';
+  const lines=[updated?'Pondster — updated full conversation transcript':'Pondster — conversation transcript',`Guest: ${identity.label??'Not identified'}${basis}`,`Conversation: ${conversation.id}`,`Mode: ${conversation.mode}`,`Started (UTC): ${iso(conversation.started_at)}`,`Ended (UTC): ${iso(conversation.ended_at)}`,`Last captured text (UTC): ${iso(conversation.last_at)}`,'','Text transcript only; no audio.',''];
   if(names.length){lines.push('Names offered / corrected:');let previous:string|null=null;for(const name of names){if(name.previous_first_name!==name.first_name)lines.push(`${iso(name.created_at)}: ${name.previous_first_name??'(none)'} → ${name.first_name}`);else if(previous!==name.first_name)lines.push(`${iso(name.created_at)}: ${name.first_name}`);previous=name.first_name;}lines.push('');}
   const turns:Array<{role:string;text:string}>=[];let previous:Transcript|undefined;
   for(const event of events){

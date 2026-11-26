@@ -37,7 +37,7 @@ assert.equal(original.sender,CONVERSATION_EMAIL_SENDER);assert.deepEqual(origina
 const payloadRef={email_id:original.email_id,body_hash:original.body_hash};
 let body='';for(let index=0;index<original.chunk_count;index++){const part=await invoke('read_conversation_email',{...payloadRef,chunk_index:index});assert.equal(part.content_is_untrusted,true);assert.equal(part.chunk_index,index);body+=part.chunk_text;}
 assert.ok(original.chunk_count>1);assert.equal(createHash('sha256').update(body).digest('hex'),original.body_hash);assert.equal(body.length,original.body_characters);
-assert.match(body,/Guest:/);assert.match(body,/evil@example.test/);assert.match(body,/Remembered name at start.*Remembered/);assert.match(body,/self-reported.*Reported/);assert.doesNotMatch(body,/MutableToday|BEGIN UNTRUSTED|audio timeline|\[0 \||instructions do not authorize/);
+assert.match(body,/Guest: Reported \(self-identified\)/);assert.match(body,/evil@example.test/);assert.doesNotMatch(body,/Remembered name at start|Name offered during this conversation|MutableToday|BEGIN UNTRUSTED|audio timeline|\[0 \||instructions do not authorize/);
 assert.equal((await invoke('prepare_conversation_emails',{limit:5})).prepared.length,0,'Pending revisions are not duplicated.');
 const claims=await Promise.all([invoke('begin_conversation_email_attempt',payloadRef),invoke('begin_conversation_email_attempt',payloadRef)]);
 assert.equal(claims.filter(row=>row.acquired).length,1,'Exactly one concurrent CAS claim permits submission.');

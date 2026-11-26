@@ -21,7 +21,7 @@ The old schema kept a name only on the mutable browser profile. Consequently, lo
 
 ## Retention And Review Limits
 
-Text, name history and conversation metadata inherit the profile's deadline, at most 90 days from profile creation. Bounded request-driven cleanup remains in place; this is not an independent daily purge. Existing opt-outs stay off. Anonymous past conversations cannot be reliably identified after the fact.
+Text, name history and conversation metadata inherit the profile's deadline, at most 90 days from profile creation. Bounded request-driven cleanup remains in place; this is not an independent daily purge. Existing opt-outs stay off. Historical identification must come from captured evidence. Wes subsequently instructed that an uncorrected returning greeting may supply an assumed conversation label; direct visitor identification overrides it. See [[Project Rooms/Smart House/working/returning-guest-name-rule-20261125]].
 
 Raw visitor names, transcript text, identifiers and live database exports belong outside Wiki Git, public house facts and the buyer-transfer package. Owner inspection uses the native Sites database reader. No production microphone test or synthetic guest conversation is needed for this update.
 
