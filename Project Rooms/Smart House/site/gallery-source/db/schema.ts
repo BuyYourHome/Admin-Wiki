@@ -1,4 +1,5 @@
 import { sqliteTable, text, integer, primaryKey, index, uniqueIndex } from 'drizzle-orm/sqlite-core';
+import { sql } from 'drizzle-orm';
 
 export const designVotes = sqliteTable('design_votes', {
   room: text('room').notNull(),
@@ -67,6 +68,27 @@ export const pondsterConversationEvents = sqliteTable('pondster_conversation_eve
   sequence:integer('sequence').notNull(), role:text('role').notNull(), text:text('text').notNull(),
   startMs:integer('start_ms'), endMs:integer('end_ms'), createdAt:integer('created_at').notNull(), expiresAt:integer('expires_at').notNull(),
 },table=>[primaryKey({columns:[table.conversationId,table.eventId]}),index('pondster_events_expiry').on(table.expiresAt)]);
+
+// Private immutable text-email revisions. No sender credentials or audio.
+export const pondsterConversationEmails = sqliteTable('pondster_conversation_emails', {
+  id:text('id').primaryKey(), conversationId:text('conversation_id').notNull(),
+  maxSequence:integer('max_sequence').notNull(), bodyHash:text('body_hash').notNull(),
+  subject:text('subject').notNull(), sender:text('sender').notNull(), recipient:text('recipient').notNull(),
+  state:text('state').notNull(), isUpdate:integer('is_update').notNull(),
+  chunkCount:integer('chunk_count').notNull(), bodyCharacters:integer('body_characters').notNull(),
+  sourceLastAt:integer('source_last_at').notNull(), createdAt:integer('created_at').notNull(), expiresAt:integer('expires_at').notNull(),
+  attemptToken:text('attempt_token'), attemptStartedAt:integer('attempt_started_at'),
+  attemptCount:integer('attempt_count').notNull().default(0), lastErrorCode:text('last_error_code'),
+  sentMessageId:text('sent_message_id'), sentAt:integer('sent_at'),
+},table=>[
+  uniqueIndex('pondster_email_revision').on(table.conversationId,table.maxSequence,table.bodyHash),
+  uniqueIndex('pondster_email_one_pending').on(table.conversationId).where(sql`${table.state} IN ('ready','attempting','ambiguous')`),
+  index('pondster_email_state_created').on(table.state,table.createdAt),
+  index('pondster_email_expiry').on(table.expiresAt),
+]);
+export const pondsterConversationEmailChunks = sqliteTable('pondster_conversation_email_chunks', {
+  emailId:text('email_id').notNull(), chunkIndex:integer('chunk_index').notNull(), body:text('body').notNull(), expiresAt:integer('expires_at').notNull(),
+},table=>[primaryKey({columns:[table.emailId,table.chunkIndex]}),index('pondster_email_chunks_expiry').on(table.expiresAt)]);
 
 // One atomic, sanitized public lighting revision; source identity/revision remain server-only.
 export const lightingSourcePublication = sqliteTable('lighting_source_publication', {

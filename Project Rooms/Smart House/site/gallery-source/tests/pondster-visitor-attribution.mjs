@@ -9,6 +9,7 @@ const legacyProfile='0'.repeat(64),legacyConversation='00000000-0000-4000-8000-0
 sqlite.prepare('INSERT INTO pondster_visitors(id,first_name,consent_at,expires_at) VALUES(?,?,?,?)').run(legacyProfile,'Current',0,deadline);
 sqlite.prepare('INSERT INTO pondster_conversations(id,visitor_id,mode,started_at,expires_at) VALUES(?,?,?,?,?)').run(legacyConversation,legacyProfile,'typed',1,deadline);
 sqlite.exec(readFileSync(new URL('../drizzle/0006_cuddly_siren.sql',import.meta.url),'utf8'));
+sqlite.exec(readFileSync(new URL('../drizzle/0007_tranquil_iceman.sql',import.meta.url),'utf8'));
 const row=id=>sqlite.prepare('SELECT * FROM pondster_conversations WHERE id=?').get(id);
 assert.equal(row(legacyConversation).remembered_first_name,null);assert.equal(row(legacyConversation).first_self_reported_name,null);assert.equal(row(legacyConversation).first_self_reported_at,null,'Migration never backfills a historical identity from the current profile.');
 function statement(sql,values=[]){return{bind(...args){return statement(sql,args);},async first(){return sqlite.prepare(sql).get(...values)??null;},async run(){const r=sqlite.prepare(sql).run(...values);return{success:true,meta:{changes:Number(r.changes)}};}};}

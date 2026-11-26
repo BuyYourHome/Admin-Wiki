@@ -1,5 +1,6 @@
 import seedValue from '../lib/lighting-source-seed.json' with { type: 'json' };
 import { parseLightingSource, validateProjection, type LightingSnapshot } from '../lib/lighting-source-model';
+import {CONVERSATION_EMAIL_TOOLS,callConversationEmailTool,ConversationEmailFailure} from './pondster-conversation-email';
 
 export type LightingEnvironment = {
   DB?: D1Database;
@@ -176,7 +177,7 @@ export async function handleLightingMcp(request: Request, env: LightingEnvironme
     if (input.jsonrpc !== '2.0' || typeof input.method !== 'string') throw new SyncFailure('invalid_rpc', 'Invalid JSON-RPC request.');
     // Discovery carries no private configuration and must work for the Site publisher.
     if (input.method === 'server/discover') return reply({ supportedVersions: ['2026-07-28'], capabilities: { tools: {} } });
-    if (input.method === 'tools/list') return reply({ tools: LIGHTING_MCP_TOOLS });
+    if (input.method === 'tools/list') return reply({ tools: [...LIGHTING_MCP_TOOLS,...CONVERSATION_EMAIL_TOOLS] });
     if (input.method !== 'tools/call') return new Response(JSON.stringify({ jsonrpc: '2.0', id, error: { code: -32601, message: 'Method not found.' } }), { headers: JSON_HEADERS });
     const origin = request.headers.get('origin');
     if (origin && origin !== new URL(request.url).origin) throw new SyncFailure('forbidden', 'Cross-origin browser lighting operations are not allowed.', 403);
@@ -186,10 +187,11 @@ export async function handleLightingMcp(request: Request, env: LightingEnvironme
     if (params.name === 'get_lighting_sync_status') { exactKeys(args, []); result = await ownerStatus(env); }
     else if (params.name === 'sync_lighting_schedule') result = await syncLighting(args, env);
     else if (params.name === 'report_lighting_sync_failure') result = await reportFailure(args, env);
+    else if (CONVERSATION_EMAIL_TOOLS.some(tool=>tool.name===params.name)) result=await callConversationEmailTool(env.DB,params.name as string,args);
     else throw new SyncFailure('unknown_tool', 'Unknown lighting operation.');
     return reply({ structuredContent: result, content: [{ type: 'text', text: JSON.stringify(result) }] });
   } catch (failure) {
-    const known = failure instanceof SyncFailure ? failure : new SyncFailure('storage_unavailable', 'The lighting operation could not complete. The last good publication was retained.', 503);
+    const known = failure instanceof SyncFailure ? failure : failure instanceof ConversationEmailFailure?new SyncFailure(failure.code,failure.message,failure.status):new SyncFailure('storage_unavailable', 'The lighting operation could not complete. The last good publication was retained.', 503);
     return reply({ isError: true, structuredContent: { error: known.code, message: known.message }, content: [{ type: 'text', text: known.message }] }, known.status);
   }
 }

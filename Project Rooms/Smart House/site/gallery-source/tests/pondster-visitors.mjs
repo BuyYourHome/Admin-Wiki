@@ -11,6 +11,7 @@ const sqlite=new DatabaseSync(':memory:');
 sqlite.exec(readFileSync(new URL('../drizzle/0003_mature_ink.sql',import.meta.url),'utf8'));
 sqlite.exec(readFileSync(new URL('../drizzle/0004_nappy_captain_america.sql',import.meta.url),'utf8'));
 sqlite.exec(readFileSync(new URL('../drizzle/0006_cuddly_siren.sql',import.meta.url),'utf8'));
+sqlite.exec(readFileSync(new URL('../drizzle/0007_tranquil_iceman.sql',import.meta.url),'utf8'));
 function statement(sql,values=[]){return{bind(...args){return statement(sql,args);},async first(){return sqlite.prepare(sql).get(...values)??null;},async all(){return{results:sqlite.prepare(sql).all(...values)};},async run(){const result=sqlite.prepare(sql).run(...values);return{success:true,meta:{changes:Number(result.changes)}};}};}
 const db={prepare:statement,async batch(statements){sqlite.exec('BEGIN');try{const results=[];for(const s of statements)results.push(await s.run());sqlite.exec('COMMIT');return results;}catch(error){sqlite.exec('ROLLBACK');throw error;}}};
 const origin='https://pondstr.example',jobs=[];const ctx={waitUntil:task=>jobs.push(task)};

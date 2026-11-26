@@ -1,4 +1,5 @@
 import { firstName, nameFromReply, visitorGreeting, type PondsterVisitor } from '../lib/pondster-visitor';
+import {expireConversationEmailHistory} from './pondster-conversation-email';
 
 const COOKIE='pondster_conversation_preference';
 export const RETENTION_MS=90*24*60*60*1000;
@@ -17,10 +18,11 @@ export async function visitorProfile(request:Request,db:D1Database,now=Date.now(
 function publicProfile(profile:Profile|null,privateChoice=false):PondsterVisitor{return profile?.saving_enabled===1?{choice:'save',firstName:profile.first_name,returning:profile.introduced_at!==null}:{choice:privateChoice||profile?.saving_enabled===0?'private':'unknown',firstName:null,returning:false};}
 export async function expireVisitorHistory(db:D1Database,now=Date.now()){
   // Schema is migration-owned. Bounded housekeeping; expired rows are never read.
+  await expireConversationEmailHistory(db,now);
   await db.batch([
     db.prepare('DELETE FROM pondster_visitor_name_events WHERE rowid IN (SELECT rowid FROM pondster_visitor_name_events WHERE expires_at<=? LIMIT 5000)').bind(now),
     db.prepare('DELETE FROM pondster_conversation_events WHERE rowid IN (SELECT rowid FROM pondster_conversation_events WHERE expires_at<=? LIMIT 5000)').bind(now),
-    db.prepare('DELETE FROM pondster_conversations WHERE id IN (SELECT c.id FROM pondster_conversations c WHERE c.expires_at<=? AND NOT EXISTS(SELECT 1 FROM pondster_visitor_name_events n WHERE n.conversation_id=c.id) AND NOT EXISTS(SELECT 1 FROM pondster_conversation_events e WHERE e.conversation_id=c.id) LIMIT 500)').bind(now),
+    db.prepare('DELETE FROM pondster_conversations WHERE id IN (SELECT c.id FROM pondster_conversations c WHERE c.expires_at<=? AND NOT EXISTS(SELECT 1 FROM pondster_conversation_emails q WHERE q.conversation_id=c.id) AND NOT EXISTS(SELECT 1 FROM pondster_visitor_name_events n WHERE n.conversation_id=c.id) AND NOT EXISTS(SELECT 1 FROM pondster_conversation_events e WHERE e.conversation_id=c.id) LIMIT 500)').bind(now),
     db.prepare('DELETE FROM pondster_visitors WHERE id IN (SELECT p.id FROM pondster_visitors p WHERE p.expires_at<=? AND NOT EXISTS(SELECT 1 FROM pondster_visitor_name_events n WHERE n.visitor_id=p.id) AND NOT EXISTS(SELECT 1 FROM pondster_conversations c WHERE c.visitor_id=p.id) LIMIT 500)').bind(now),
   ]);
 }
